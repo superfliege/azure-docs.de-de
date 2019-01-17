@@ -10,16 +10,15 @@ ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: c7cd9dfa019ca0d8560833b10a3e8a1a37a1e1ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296549"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074052"
 ---
 # <a name="authentication-requests-and-responses"></a>Authentifizierung, Anforderungen und Antworten
 
@@ -65,13 +64,13 @@ Dieses Thema behandelt Besonderheiten für den Azure Key Vault-Dienst. Allgemein
 ## <a name="error-responses"></a>Fehlerantworten  
  Die Fehlerbehandlung verwendet HTTP-Statuscodes. Typische Ergebnisse sind:  
 
--   2xx – Erfolg: Für normalen Betrieb verwendet. Der Antworttext wird das erwartete Ergebnis enthalten.  
+-   2xx – Erfolg: Für normalen Betrieb. Der Antworttext wird das erwartete Ergebnis enthalten.  
 
--   3xx – Umleitung: Der Code 304 „Nicht geändert“ kann zurückgegeben werden, um einen bedingten GET-Vorgang zu erfüllen. Weitere 3xx-Codes können künftig verwendet werden, um DNS- und Pfadänderungen anzugeben.  
+-   3xx – Umleitung: Der Code 304 (Nicht geändert) kann zurückgegeben werden, um einen bedingten GET-Vorgang zu erfüllen. Weitere 3xx-Codes können künftig verwendet werden, um DNS- und Pfadänderungen anzugeben.  
 
--   4xx – Clientfehler: Verwendet für ungültige Anforderungen, fehlende Schlüssel, Syntaxfehler, ungültige Parameter, Authentifizierungsfehler usw. Der Antworttext wird ausführliche Fehlererläuterungen enthalten.  
+-   4xx – Clientfehler: Für ungültige Anforderungen, fehlende Schlüssel, Syntaxfehler, ungültige Parameter, Authentifizierungsfehler und Ähnliches. Der Antworttext wird ausführliche Fehlererläuterungen enthalten.  
 
--   5xx – Serverfehler: Für interne Serverfehler verwendet. Der Antworttext wird zusammengefasste Fehlerinformationen enthalten.  
+-   5xx – Serverfehler: Für interne Serverfehler. Der Antworttext wird zusammengefasste Fehlerinformationen enthalten.  
 
  Das System ist darauf ausgelegt, hinter einem Proxy oder einer Firewall zu arbeiten. Daher erhält ein Client möglicherweise andere Fehlercodes.  
 
@@ -115,9 +114,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  Die Parameter im Header „WWW-Authenticate“ sind:  
 
--   Autorisierung: Die Adresse des OAuth2-Autorisierungdiensts, die zum Abrufen eines Zugriffstokens für die Anforderung verwendet werden kann.  
+-   authorization: Die Adresse des OAuth2-Autorisierungsdiensts, die zum Abrufen eines Zugriffstokens für die Anforderung verwendet werden kann.  
 
--   Ressource: Der Name der in der Autorisierungsanforderung zu verwendenden Ressource.  
+-   resource: Der Name der in der Autorisierungsanforderung zu verwendenden Ressource.  
 
 ## <a name="see-also"></a>Siehe auch  
  [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)

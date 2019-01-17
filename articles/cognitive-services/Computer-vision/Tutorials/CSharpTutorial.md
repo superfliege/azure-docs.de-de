@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584444"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232752"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Tutorial: Erstellen einer Bildverarbeitungs-App – C&#35;
 
@@ -97,9 +97,6 @@ Sie können die Beispiel-App ausführen, um ihre Interaktion mit Ihnen und der C
    |Text erkennen (OCR) | Verwendet den Vorgang [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) zum Erkennen und Extrahieren von gedrucktem Text aus einem Bild. Die zu verwendende Sprache kann entweder manuell ausgewählt oder von maschinelles Sehen automatisch erkannt werden. |
    |Text erkennen V2 (Englisch) | Verwendet die Vorgänge [Text erkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) und [Ergebnis der Texterkennung abrufen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) zum asynchronen Erkennen und Extrahieren von gedrucktem oder handgeschriebenem Text aus einem Bild. |
    |Miniaturansicht abrufen | Verwendet den Vorgang [Miniaturansicht abrufen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) zum Generieren einer Miniaturansicht für ein lokales oder Remotebild. |
-
-   > [!IMPORTANT]
-   > Microsoft empfängt die Bilder, die Sie hochladen, und nutzt sie ggf. zur Verbesserung der Maschinelles Sehen-API und der dazugehörigen Dienste. Wenn Sie ein Bild übermitteln, bestätigen Sie dadurch, dass Sie sich an unsere [Verhaltensregeln für Entwickler](https://azure.microsoft.com/support/legal/developer-code-of-conduct/) gehalten haben.
 
    Der folgende Screenshot zeigt die Seite für das Szenario „Bild analysieren“ nach dem Analysieren eines Beispielbilds.
    ![Screenshot der Seite für die Bildanalyse](../Images/Analyze_Image_Example.PNG)

@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269588"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013144"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Erste Schritte mit Azure Machine Learning für Visual Studio Code
 
@@ -80,7 +80,8 @@ Bevor Sie mit dem Trainieren und Bereitstellen von Machine Learning-Modellen mit
 
 1. Klicken Sie auf der Aktivitätsleiste von Visual Studio Code auf das Azure-Symbol. Die Seitenleiste für Azure Machine Learning wird angezeigt.
 
-   [![Seitenleiste](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![Installieren](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+
 
 1. Klicken Sie mit der rechten Maustaste auf Ihr Azure-Abonnement, und wählen Sie **Arbeitsbereich erstellen** aus. Eine Liste wird angezeigt. Im animierten Bild ist der Name des Abonnements „Free Trial“, und der Arbeitsbereich lautet „TeamWorkspace“. 
 
@@ -96,11 +97,11 @@ Bevor Sie mit dem Trainieren und Bereitstellen von Machine Learning-Modellen mit
  
 1. Drücken Sie die EINGABETASTE, um das neue Experiment zu erstellen. Es wird dann in der Struktur unter dem Namen des Arbeitsbereichs angezeigt.
 
-1. Klicken Sie mit der rechten Maustaste auf den Namen des Experiments, und wählen Sie **Ordner an Experiment anfügen** aus. Dieser Ordner sollte Ihre lokalen Python-Skripts enthalten. Der Ordner wird dann mit dem Experiment in der Cloud verknüpft. 
+1. Sie können mit der rechten Maustaste auf ein Experiment in einem Arbeitsbereich klicken und „Set as Active Experiment“ (Als aktives Experiment festlegen) auswählen. Das **aktive** Experiment ist das Experiment, das Sie aktuell verwenden, und der geöffnete Ordner in VS Code wird mit diesem Experiment in der Cloud verknüpft. Dieser Ordner sollte Ihre lokalen Python-Skripts enthalten.
 
-   Nun wird jedes Ihrer Experiment vollständig ausgeführt, sodass alle wichtigen Metriken im Experimentverlauf gespeichert werden. Die trainierten Modelle werden zudem automatisch in Azure Machine Learning hochgeladen und mit den Metriken und Protokollen Ihres Experiments gespeichert.
+   Nun wird jedes Ihrer Experimente vollständig ausgeführt, sodass alle wichtigen Metriken im Experimentverlauf gespeichert werden. Die trainierten Modelle werden zudem automatisch in Azure Machine Learning hochgeladen und mit den Metriken und Protokollen Ihres Experiments gespeichert.
 
-   [![Hinzufügen eines Ordners in VS Code](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
+   [![Hinzufügen eines Ordners in VS Code](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>Verwenden von Tastenkombinationen
 

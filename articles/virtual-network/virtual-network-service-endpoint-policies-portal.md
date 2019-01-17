@@ -1,13 +1,10 @@
 ---
-title: Erstellen und Zuordnen von Dienstendpunktrichtlinien – Azure-Portal | Microsoft-Dokumentation
+title: Erstellen und Zuordnen von Dienstendpunktrichtlinien – Azure-Portal
+titlesuffix: Azure Virtual Network
 description: In diesem Artikel erfahren Sie, wie Dienstendpunktrichtlinien über das Azure-Portal eingerichtet und zugeordnet werden.
 services: virtual-network
 documentationcenter: virtual-network
 author: anithaa
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 6bd318da5b3cd667d0a39b9c963e8d3ffd472f41
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633009"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054434"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Erstellen, Ändern oder Löschen einer Dienstendpunktrichtlinie über das Azure-Portal
 
@@ -47,7 +44,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 3. Geben Sie unter **Allgemeine Informationen** folgende Informationen ein, bzw. wählen Sie sie aus: 
 
    - Abonnement: Wählen Sie Ihr Abonnement für die Richtlinie aus.    
-   - Ressourcengruppe: Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroup* ein.     
+   - Ressourcengruppe: Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.     
    - Name: myEndpointPolicy
    - Standort: USA, Westen-Mitte     
  
@@ -64,10 +61,10 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
    
    ![Erstellen von Definitionen einer Dienstendpunktrichtlinie](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. Optional: Geben Sie unter **Tags** folgende Informationen ein, oder wählen Sie sie aus:
+5. Optional: Geben Sie unter **Tags** folgende Informationen ein, bzw. wählen Sie sie aus:
    
-   - Schlüssel: Wählen Sie Ihren Schlüssel für die Richtlinie aus. Beispiel: Dept     
-   - Wert: Geben Sie den Wert für den Schlüssel als Schlüssel-Wert-Paar ein. Beispiel: Finance
+   - Schlüssel: Wählen Sie Ihren Schlüssel für die Richtlinie aus. Beispiel: Abtlg     
+   - Wert: Geben Sie den Wert für den Schlüssel ein. Beispiel: Finanzen
 
 6. Klicken Sie auf **Überprüfen + erstellen**. Überprüfen Sie die Informationen, und klicken Sie auf **Erstellen**. Um weitere Änderungen vorzunehmen, klicken Sie auf **Zurück**. 
 

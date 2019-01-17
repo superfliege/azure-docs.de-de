@@ -1,13 +1,10 @@
 ---
-title: Erstellen, Ändern oder Löschen des Präfix einer öffentlichen Azure-IP-Adresse | Microsoft-Dokumentation
+title: Erstellen, Ändern oder Löschen des Präfix einer öffentlichen Azure-IP-Adresse
+titlesuffix: Azure Virtual Network
 description: Erfahren Sie, wie Sie das Präfix einer öffentlichen IP-Adresse erstellen, ändern oder löschen.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: a0ae1f3fbf9189068cae4b18ac92f0bea0498f67
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427572"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015286"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 
@@ -29,7 +26,7 @@ Sie erhalten Informationen über Präfixe öffentlicher IP-Adressen und darüber
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 > [!IMPORTANT]
-> Präfixe öffentlicher IP-Adressen befinden sich in einigen Regionen in der öffentlichen Vorschau. [Hier erfahren Sie mehr über die Nutzungsbedingungen der Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Präfixe öffentlicher IP-Adressen sind zurzeit in folgenden Regionen verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“. Eine aktualisierte Liste der Regionen finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
+> Präfixe öffentlicher IP-Adressen befinden sich in einigen Regionen in der öffentlichen Vorschau. [Hier erfahren Sie mehr über die Nutzungsbedingungen der Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Das Präfix ist aktuell in folgenden Regionen verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“. Eine aktualisierte Liste der Regionen finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
 Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
 
@@ -84,8 +81,8 @@ Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem
 1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Präfix öffentlicher IP-Adressen* ein. Wenn **Präfix öffentlicher IP-Adressen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
 2. Wählen Sie den Namen des Präfix der öffentlichen IP-Adresse aus, das Sie anzeigen oder aus der Liste löschen oder dessen Einstellungen Sie ändern möchten.
 3. Führen Sie eine der folgenden Aktionen aus, je nachdem, ob Sie das Präfix der öffentlichen IP-Adresse anzeigen, löschen oder ändern möchten.
-    - **Anzeigen**: Der Abschnitt **Übersicht** zeigt wichtige Einstellungen für das Präfix der öffentlichen IP-Adresse.
-    - **Löschen**: Um das Präfix der öffentlichen IP-Adresse zu löschen, klicken Sie im Abschnitt **Übersicht** auf **Löschen**. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+    - **Anzeigen**: Der Abschnitt **Übersicht** enthält wichtige Einstellungen für das Präfix der öffentlichen IP-Adresse.
+    - **Löschen**: Klicken Sie im Abschnitt **Übersicht** auf **Löschen**, um das Präfix der öffentlichen IP-Adresse zu löschen. Wenn Adressen innerhalb des Präfix mit öffentlichen IP-Adressressourcen verknüpft sind, müssen Sie zuerst die öffentlichen IP-Adressressourcen löschen. Informationen dazu finden Sie unter [Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
 
 **Befehle**
 

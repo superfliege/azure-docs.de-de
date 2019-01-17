@@ -9,12 +9,12 @@ ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: c2aeab6888cf93be75742028b0354c45a1834d51
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 58b19a039bb6aebcd2687ab80cdd29c5f378645e
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537281"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200206"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung
 
@@ -41,7 +41,7 @@ Ihr Azure-Anmeldekonto muss außerdem Mitglied der Rolle „Besitzer“ des Abon
 
 ## <a name="overview"></a>Übersicht
 
-In der TSI-Umgebung werden die Daten gesammelt und gespeichert. Nach dem Speichern in der TSI-Umgebung können Sie den [TSI-Explorer](time-series-quickstart.md) und die [TSI-Abfrage-API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) nutzen, um die Daten abzufragen und zu analysieren.
+In der TSI-Umgebung werden die Daten gesammelt und gespeichert. Nach dem Speichern in der TSI-Umgebung können Sie den [TSI-Explorer](time-series-quickstart.md) und die [TSI-Abfrage-API](/rest/api/time-series-insights/ga-query-api) nutzen, um die Daten abzufragen und zu analysieren.
 
 Wie bei allen Geräten – ob simuliert oder physisch – ist der IoT Hub der Verbindungspunkt, der von Geräten zum sicheren Herstellen einer Verbindung und zum Übertragen von Daten in die Azure-Cloud verwendet wird. Wie in der [Übersicht über TSI](time-series-insights-overview.md) beschrieben, dient der IoT Hub auch als Ereignisquelle zum Streamen von Daten in die TSI-Umgebung. 
 

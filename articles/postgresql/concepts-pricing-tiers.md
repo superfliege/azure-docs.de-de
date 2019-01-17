@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548929"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318577"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -53,14 +53,14 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | USA Süd Mitte | X | X |
 | USA (Westen) | X | X |
 | USA, Westen 2 |  | X |
+| Brasilien Süd | X | X |
 | Kanada, Mitte | X | X |
 | Kanada, Osten | X | X |
-| Brasilien Süd | X | X |
 | Nordeuropa | X | X |
 | Europa, Westen |  | X |
 | Frankreich, Mitte |  | X |
-| UK, Westen |  | X |
 | UK, Süden |  | X |
+| UK, Westen |  | X |
 | Asien, Osten | X | X |
 | Asien, Südosten | X | X |
 | Australien (Osten) |  | X |
@@ -68,17 +68,22 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Australien, Mitte 2 |  | X |
 | Australien, Südosten |  | X |
 | Indien, Mitte | X | X |
-| Indien, Westen | X | X |
 | Indien (Süden) |  | X |
+| Indien, Westen | X | X |
 | Japan, Osten | X | X |
 | Japan, Westen | X | X |
 | Korea, Mitte |  | X |
 | Korea, Süden |  | X |
+| China, Osten 1 | X |  |
+| China, Osten 2 |  | X |
+| China, Norden 1 | X |  |
+| China, Norden 2 |  | X |
 | Deutschland, Mitte |  | X |
 | US DoD, Mitte  | X |  |
 | US DoD, Osten  | X |  |
 | US Gov Arizona |  | X |
 | US Gov Texas |  | X |
+| US Government, Virginia |  | X |
 
 ## <a name="storage"></a>Storage
 

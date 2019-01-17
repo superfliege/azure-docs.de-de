@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77e81dce7857433481f501410419f1067a51c3fc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 25e47ecc9d9915ab618bc45f2e95f12bae68c7f0
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020335"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332607"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,18 +31,18 @@ ms.locfileid: "54020335"
 In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden. Der Artikel enthält ausführliche Informationen zu jedem Abschnitt (z. B. „structure“, „availability“ und „policy“) in der JSON-Definition eines Datasets. Außerdem werden im Artikel Beispiele dazu bereitgestellt, wie die Eigenschaften **offset**, **anchorDateTime** und **style** in der Definition eines Datasets verwendet werden.
 
 > [!NOTE]
-> Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](data-factory-introduction.md) lesen, um eine Übersicht zu erhalten. Wenn Sie keine praktische Erfahrung mit dem Erstellen von Data Factorys haben, können Sie sich ein besseres Verständnis aneignen, indem Sie das [Tutorial zu Datentransformation](data-factory-build-your-first-pipeline.md) und das [Tutorial zu Datenverschiebung](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lesen. 
+> Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](data-factory-introduction.md) lesen, um eine Übersicht zu erhalten. Wenn Sie keine praktische Erfahrung mit dem Erstellen von Data Factorys haben, können Sie sich ein besseres Verständnis aneignen, indem Sie das [Tutorial zu Datentransformation](data-factory-build-your-first-pipeline.md) und das [Tutorial zu Datenverschiebung](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) lesen.
 
 ## <a name="overview"></a>Übersicht
 Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer **Pipeline** handelt es sich um eine logische Gruppierung von **Aktivitäten**, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie könnten z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Anschließend könnten Sie eine Hive-Aktivität verwenden, die ein Hive-Skript für einen Azure HDInsight-Cluster ausführt, um Daten aus dem Blob Storage zu verarbeiten, um Ausgabedaten zu produzieren. Schließlich könnten Sie die Ausgabedaten mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse kopieren, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden. Weitere Informationen zu Pipelines und Aktivitäten finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md).
 
-Eine Aktivität kann über null oder mehr **Eingabedatasets** verfügen und ein oder mehrere Ausgabedatasets erstellen. Ein Eingabedataset entspricht der Eingabe für eine Aktivität in der Pipeline, und ein Ausgabedataset entspricht der Ausgabe für die Aktivität. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure-Blobdataset kann beispielsweise den Blobcontainer und -ordner in Blob Storage angeben, aus dem die Pipeline die Daten lesen soll. 
+Eine Aktivität kann über null oder mehr **Eingabedatasets** verfügen und ein oder mehrere Ausgabedatasets erstellen. Ein Eingabedataset entspricht der Eingabe für eine Aktivität in der Pipeline, und ein Ausgabedataset entspricht der Ausgabe für die Aktivität. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure-Blobdataset kann beispielsweise den Blobcontainer und -ordner in Blob Storage angeben, aus dem die Pipeline die Daten lesen soll.
 
-Bevor Sie ein Dataset erstellen, erstellen Sie einen **verknüpften Dienst**, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Datasets bestimmen Daten in den verknüpften Datenspeichern, z.B. SQL-Tabellen, Dateien, Ordnern und Dokumenten. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset stellt den Blobcontainer und den Ordner dar, der die zu verarbeitenden Eingabeblobs enthält. 
+Bevor Sie ein Dataset erstellen, erstellen Sie einen **verknüpften Dienst**, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Datasets bestimmen Daten in den verknüpften Datenspeichern, z.B. SQL-Tabellen, Dateien, Ordnern und Dokumenten. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset stellt den Blobcontainer und den Ordner dar, der die zu verarbeitenden Eingabeblobs enthält.
 
 Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
 
-Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an: 
+Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
 
 ![Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpften Diensten](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
 
@@ -70,14 +70,14 @@ Ein Dataset in Data Factory wird wie folgt im JSON-Format definiert:
             "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
             "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
         },
-       "policy":
-        {      
+        "policy":
+        {
         }
     }
 }
 ```
 
-In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:   
+In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
@@ -115,8 +115,8 @@ Beachten Sie folgende Punkte:
 
 * **type** ist auf „AzureSqlTable“ festgelegt.
 * Die Typeigenschaft **tableName** (speziell für den Typ „AzureSplTable“) ist auf „MyTable“ festgelegt.
-* **linkedServiceName** verweist auf einen verknüpften Dienst vom Typ „AzureSqlDatabase“, der im nächsten JSON-Codeausschnitt definiert ist. 
-* Die Verfügbarkeitshäufigkeit (**availability frequency**) ist auf „Day“ und **interval** ist auf „1“ festgelegt. Dies bedeutet, dass der Datasetslice täglich erzeugt wird.  
+* **linkedServiceName** verweist auf einen verknüpften Dienst vom Typ „AzureSqlDatabase“, der im nächsten JSON-Codeausschnitt definiert ist.
+* Die Verfügbarkeitshäufigkeit (**availability frequency**) ist auf „Day“ und **interval** ist auf „1“ festgelegt. Dies bedeutet, dass der Datasetslice täglich erzeugt wird.
 
 **AzureSqlLinkedService** ist wie folgt definiert:
 
@@ -136,13 +136,12 @@ Beachten Sie folgende Punkte:
 Im vorherigen JSON-Codeausschnitt:
 
 * **type** wird auf „AzureSqlDatabase“ festgelegt.
-* Die **connectionString**-Typeigenschaft gibt Informationen zur Verbindung mit einer SQL-Datenbank an.  
+* Die **connectionString**-Typeigenschaft gibt Informationen zur Verbindung mit einer SQL-Datenbank an.
 
-Wie Sie sehen, definiert der verknüpfte Dienst das Herstellen einer Verbindung mit einer SQL-Datenbank. Das Dataset definiert, welche Tabelle als Eingabe und Ausgabe für die Aktivität in einer Pipeline verwendet wird.   
+Wie Sie sehen, definiert der verknüpfte Dienst das Herstellen einer Verbindung mit einer SQL-Datenbank. Das Dataset definiert, welche Tabelle als Eingabe und Ausgabe für die Aktivität in einer Pipeline verwendet wird.
 
 > [!IMPORTANT]
-> Falls ein Dataset nicht von der Pipeline erzeugt wird, sollte es als **external** markiert werden. Diese Einstellung gilt im Allgemeinen für Eingaben der ersten Aktivität in einer Pipeline.   
-
+> Falls ein Dataset nicht von der Pipeline erzeugt wird, sollte es als **external** markiert werden. Diese Einstellung gilt im Allgemeinen für Eingaben der ersten Aktivität in einer Pipeline.
 
 ## <a name="Type"></a> Dataset: type
 Der Typ des Datasets hängt von dem Datenspeicher ab, den Sie verwenden. In der folgenden Tabelle finden Sie eine Liste der von Data Factory unterstützten Datenspeicher. Klicken Sie auf einen Datenspeicher, um Informationen zum Erstellen eines verknüpften Diensts und eines Datasets für diesen Datenspeicher zu erhalten.
@@ -182,7 +181,7 @@ Im vorherigen Abschnitt ist im Beispiel der Typ des Datasets auf **AzureSqlTable
 Der Abschnitt **structure** ist optional. In ihm ist das Schema des Datasets in einer Sammlung der Namen und Datentypen der Spalten definiert. Im Abschnitt „structure“ legen Sie Typinformationen fest, die zum Konvertieren von Typen und Zuordnen von Spalten von der Quelle zum Ziel bereitgestellt werden. Im folgenden Beispiel hat das Dataset drei Spalten: `slicetimestamp`, `projectname` und `pageviews`. Die Spalten haben jeweils den folgenden Typ: „String“, „String“, „Decimal“.
 
 ```json
-structure:  
+structure:
 [
     { "name": "slicetimestamp", "type": "String"},
     { "name": "projectname", "type": "String"},
@@ -201,15 +200,14 @@ Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 
 Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
 
-* **Für strukturierte Datenquellen** geben Sie den Abschnitt „structure“ nur an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten und die Spaltennamen nicht identisch sind. Diese Art von strukturierter Datenquelle speichert Informationen zu Datenschema und Datentyp zusammen mit den Daten selbst. Zu Beispielen für strukturierte Datenquellen gehören SQL Server-, Oracle- und Azure-Tabellen. 
+* **Für strukturierte Datenquellen** geben Sie den Abschnitt „structure“ nur an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten und die Spaltennamen nicht identisch sind. Diese Art von strukturierter Datenquelle speichert Informationen zu Datenschema und Datentyp zusammen mit den Daten selbst. Zu Beispielen für strukturierte Datenquellen gehören SQL Server-, Oracle- und Azure-Tabellen.
   
     Da Typinformationen für strukturierte Datenquellen bereits verfügbar sind, sollten Sie keine Typinformationen einschließen, wenn Sie sich für die Verwendung des Abschnitts „structure“ entscheiden.
-* **Für das Schema von Lesedatenquellen (insbesondere Blob Storage)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Für diese Datenquellentypen geben Sie „structure“ an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten. Geben Sie „structure“ auch an, wenn das Dataset eine Eingabe für eine Kopieraktivität ist und die Datentypen des Quelldatasets in systemeigene Typen für das Ziel (Senke) konvertiert werden müssen. 
+* **Für das Schema von Lesedatenquellen (insbesondere Blob Storage)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Für diese Datenquellentypen geben Sie „structure“ an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten. Geben Sie „structure“ auch an, wenn das Dataset eine Eingabe für eine Kopieraktivität ist und die Datentypen des Quelldatasets in systemeigene Typen für das Ziel (Senke) konvertiert werden müssen.
     
     Data Factory unterstützt die folgenden Werte für das Bereitstellen von Typinformationen in der Struktur: **„Int16“, „Int32“, „Int64“, „Single“, „Double“, „Decimal“, „Byte[]“, „Boolean“, „String“, „Guid“, „Datetime“, „Datetimeoffset“ und „Timespan“**. Diese Werte sind CLS-kompatible (Common Language Specification) .NET-basierte Typwerte.
 
-Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch. 
-  
+Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch.
 
 ## <a name="dataset-availability"></a>Dataset: availability
 Der Abschnitt **availability** in einem Dataset definiert das Verarbeitungsfenster (etwa stündlich, täglich oder wöchentlich) für das Dataset. Weitere Informationen zum Aktivitätsfenster finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md).
@@ -217,21 +215,21 @@ Der Abschnitt **availability** in einem Dataset definiert das Verarbeitungsfenst
 Der folgende „availability“-Abschnitt gibt an, dass entweder das Ausgabedataset stündlich erstellt wird oder das Eingabedataset stündlich verfügbar ist:
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 1    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 1
 }
 ```
 
-Wenn die Pipeline die folgende Start- und Endzeit hat:  
+Wenn die Pipeline die folgende Start- und Endzeit hat:
 
 ```json
     "start": "2016-08-25T00:00:00Z",
     "end": "2016-08-25T05:00:00Z",
 ```
 
-Das Ausgabedataset wird zwischen Start- und Endzeit der Pipeline stündlich erzeugt. Aus diesem Grund werden fünf Datasetslices von dieser Pipeline erzeugt, einer für jedes Aktivitätsfenster (00:00 Uhr – 01:00 Uhr, 01:00 Uhr – 02:00 Uhr, 02:00 Uhr – 03:00 Uhr, 3:00 Uhr – 4:00 Uhr, 4:00 Uhr – 5: 00 Uhr). 
+Das Ausgabedataset wird zwischen Start- und Endzeit der Pipeline stündlich erzeugt. Aus diesem Grund werden fünf Datasetslices von dieser Pipeline erzeugt, einer für jedes Aktivitätsfenster (00:00 Uhr – 01:00 Uhr, 01:00 Uhr – 02:00 Uhr, 02:00 Uhr – 03:00 Uhr, 3:00 Uhr – 4:00 Uhr, 4:00 Uhr – 5: 00 Uhr).
 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt „availability“ verwenden können:
 
@@ -244,7 +242,7 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 | offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>Wenn sowohl **anchorDateTime** als auch **offset** angegeben sind, ist das Ergebnis die kombinierte Verschiebung. |Nein  |Nicht verfügbar |
 
 ### <a name="offset-example"></a>Beispiel zu Offset
-Standardmäßig beginnen tägliche (`"frequency": "Day", "interval": 1`) Slices um 00: 00 Uhr (Mitternacht) koordinierte Weltzeit (UTC). Wenn die Startzeit 6:00 Uhr UTC-Zeit sein soll, legen Sie den Versatz wie im folgenden Codeausschnitt gezeigt fest: 
+Standardmäßig beginnen tägliche (`"frequency": "Day", "interval": 1`) Slices um 00: 00 Uhr (Mitternacht) koordinierte Weltzeit (UTC). Wenn die Startzeit 6:00 Uhr UTC-Zeit sein soll, legen Sie den Versatz wie im folgenden Codeausschnitt gezeigt fest:
 
 ```json
 "availability":
@@ -258,11 +256,11 @@ Standardmäßig beginnen tägliche (`"frequency": "Day", "interval": 1`) Slices 
 Im folgenden Beispiel wird das Dataset einmal alle 23 Stunden erstellt. Der erste Slice beginnt zu dem durch **anchorDateTime** angegebenen Zeitpunkt, der auf `2017-04-19T08:00:00` (UTC) festgelegt ist.
 
 ```json
-"availability":    
-{    
-    "frequency": "Hour",        
-    "interval": 23,    
-    "anchorDateTime":"2017-04-19T08:00:00"    
+"availability":
+{
+    "frequency": "Hour",
+    "interval": 23,
+    "anchorDateTime":"2017-04-19T08:00:00"
 }
 ```
 
@@ -320,16 +318,16 @@ Ein Dataset sollte, sofern es nicht von Data Factory erzeugt wird, es als **exte
 
 | NAME | BESCHREIBUNG | Erforderlich | Standardwert |
 | --- | --- | --- | --- |
-| dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit.  Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein  |0 |
+| dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit. Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein  |0 |
 | retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Versuch. Diese Einstellung gilt für die aktuelle Zeit. Wenn beim vorherigen Versuch ein Fehler auftrat, wird der nächste Versuch nach Verstreichen des **retryInterval**-Zeitraums durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein  |00:01:00 (1 Minute) |
 | retryTimeout |Das Timeout für die einzelnen Wiederholungsversuche.<br/><br/>Wenn diese Eigenschaft auf 10 Minuten festgelegt ist, sollte die Überprüfung innerhalb von 10 Minuten abgeschlossen werden. Wenn die Ausführung der Überprüfung länger als 10 Minuten dauert, wird das Timeout für die Wiederholung wirksam.<br/><br/>Wenn für alle Überprüfungsversuche ein Timeout aufgetreten ist, wird der Slice als **TimedOut** gekennzeichnet. |Nein  |00:10:00 (10 Minuten) |
 | maximumRetry |Gibt an, wie oft die Verfügbarkeit der externen Daten überprüft werden soll. Der zulässige größte Wert ist „10“. |Nein  |3 |
 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
-Sie können Datasets mit einem dieser Tools oder SDKs erstellen: 
+Sie können Datasets mit einem dieser Tools oder SDKs erstellen:
 
-- Kopier-Assistent 
+- Kopier-Assistent
 - Azure-Portal
 - Visual Studio
 - PowerShell
@@ -338,18 +336,17 @@ Sie können Datasets mit einem dieser Tools oder SDKs erstellen:
 - .NET API
 
 In den folgenden Tutorials finden Sie schrittweise Anleitungen zum Erstellen von Pipelines und Datasets mit einem dieser Tools oder SDKs:
- 
+
 - [Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md)
 - [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Sobald eine Pipeline erstellt und bereitgestellt ist, können Sie diese über die Blätter des Azure-Portals oder über die App „Überwachung und Verwaltung“ überwachen und verwalten. In den nächsten Themen finden Sie schrittweise Anweisungen: 
+Sobald eine Pipeline erstellt und bereitgestellt ist, können Sie diese über die Blätter des Azure-Portals oder über die App „Überwachung und Verwaltung“ überwachen und verwalten. In den nächsten Themen finden Sie schrittweise Anweisungen:
 
 - [Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell](data-factory-monitor-manage-pipelines.md)
 - [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)
 
-
 ## <a name="scoped-datasets"></a>Zugeordnete Datasets
-Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipeline zugeordnet sind. Diese Datasets können nur von Aktivitäten innerhalb dieser Pipeline, nicht von Aktivitäten in anderen Pipelines verwendet werden. Das folgende Beispiel definiert eine Pipeline mit zwei Datasets („InputDataset-rdc“ und „OutputDataset-rdc“), die in der Pipeline verwendet werden sollen.  
+Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipeline zugeordnet sind. Diese Datasets können nur von Aktivitäten innerhalb dieser Pipeline, nicht von Aktivitäten in anderen Pipelines verwendet werden. Das folgende Beispiel definiert eine Pipeline mit zwei Datasets („InputDataset-rdc“ und „OutputDataset-rdc“), die in der Pipeline verwendet werden sollen.
 
 > [!IMPORTANT]
 > Zugeordnete Datasets werden nur mit einmalig ausgeführten Pipelines (dabei ist **pipelineMode** auf **OneTime** festgelegt) unterstützt. Weitere Informationen finden Sie unter [Pipeline mit einmaliger Ausführung](data-factory-create-pipelines.md#onetime-pipeline) .
@@ -448,5 +445,5 @@ Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipel
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu Pipelines finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md). 
-- Weitere Informationen über die Planung und Ausführung von Pipelines finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
+- Weitere Informationen zu Pipelines finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md).
+- Weitere Informationen über die Planung und Ausführung von Pipelines finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md).

@@ -10,29 +10,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380215"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036238"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanbietern
 
 In diesem Artikel finden Sie den Ressourcenanbieter und die Versionsnummern für jedes API-Profil, das von Azure Stack verwendet wird. In den Tabellen in diesem Artikel sind die Versionen aufgeführt, die für die einzelnen Ressourcenanbieter und die API-Versionen der Profile unterstützt werden. Jeder Ressourcenanbieter enthält einen Satz mit Ressourcentypen und spezifischen Versionsnummern.
 
 Für das API-Profil gelten drei Benennungskonventionen:
- - neueste
- - jjjj-mm-tt-hybrid
- - jjjj-mm-tt-profile
+
+ - **Neueste**
+ - **jjjj-mm-tt-hybrid**
+ - **jjjj-mm-tt-profile**
 
 Eine Erklärung der API-Profile und des Rhythmus der Versionsveröffentlichung für Azure Stack finden Sie unter [Verwalten von API-Versionsprofilen in Azure Stack](azure-stack-version-profiles.md).
 
 > [!Note]  
-> Das API-Profil **latest** enthält die aktuelle Ressourcenanbieter-API-Version und ist in diesem Artikel nicht aufgeführt.
+> Das API-Profil **latest** enthält die neueste Version der Ressourcenanbieter-API und ist in diesem Artikel nicht aufgeführt.
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>Übersicht über 2018 – 03-01-hybrid
 
@@ -49,7 +50,7 @@ Eine Erklärung der API-Profile und des Rhythmus der Versionsveröffentlichung f
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Richtlinie | 2016-10-01 |
-| angeben | 2016-10-01 |
+| Ressourcen | 2016-10-01 |
 | Resources_Links | 2016-10-01 |
 | Resources_Locks | 2016-10-01 |
 | Abonnements | 2016-10-01 |
@@ -71,18 +72,18 @@ Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Richtlinie | 2015-10-01-preview |
-| angeben | 2016-02-01 |
+| Ressourcen | 2016-02-01 |
 | Resources_Links | 2016-09-01 |
 | Resources_Locks | 2016-09-01 |
 | Abonnements | 2016-06-1 |
 
-Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im API-Profil finden Sie unter [Details zu 2018-03-01-hybrid](#details-for-the-2018-03-01-hybrid).
+Eine Liste mit den Versionen der einzelnen Ressourcentypen für die Anbieter im API-Profil finden Sie im nächsten Abschnitt.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Details zu 2018-03-01-hybrid
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Mit der rollenbasierten Zugriffssteuerung werden die Aktionen verwaltet, die Benutzer in Ihrer Organisation für Ressourcen ausführen können. Diese Gruppe von Vorgängen ermöglicht das Definieren von Rollen, Zuweisen von Rollen zu Benutzern oder Gruppen und das Abrufen von Informationen zu Berechtigungen. Weitere Informationen finden Sie unter [Autorisierung](https://docs.microsoft.com/rest/api/authorization/).
+Mit der rollenbasierten Zugriffssteuerung werden die Aktionen verwaltet, die Benutzer in Ihrer Organisation für Ressourcen ausführen können. Diese Gruppe von Vorgängen ermöglicht das Definieren von Rollen, Zuweisen von Rollen zu Benutzern oder Gruppen und das Abrufen von Informationen zu Berechtigungen. Weitere Informationen finden Sie unter [Autorisierung](/rest/api/authorization/).
 
 | Ressourcentypen | API-Versionen |
 |---------------------|--------------------|
@@ -108,7 +109,7 @@ Mit der rollenbasierten Zugriffssteuerung werden die Aktionen verwaltet, die Ben
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Die Azure Compute-APIs ermöglichen Ihnen den programmgesteuerten Zugriff auf virtuelle Computer und die zugehörigen unterstützenden Ressourcen. Weitere Informationen finden Sie unter [Azure Compute](https://docs.microsoft.com/rest/api/compute/).
+Die Azure Compute-APIs ermöglichen Ihnen den programmgesteuerten Zugriff auf virtuelle Computer und die zugehörigen unterstützenden Ressourcen. Weitere Informationen finden Sie unter [Azure Compute](/rest/api/compute/).
 
 | Ressourcentyp | API-Version |
 |---------------------------------------------------------------|-------------|
@@ -155,7 +156,7 @@ Die Azure Compute-APIs ermöglichen Ihnen den programmgesteuerten Zugriff auf vi
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-Hiermit verwalten Sie Ihre Schlüsseltresore sowie die Schlüssel, Geheimnisse und Zertifikate in Ihren Schlüsseltresoren. Weitere Informationen finden Sie unter [Referenz zur REST-API für Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/).
+Hiermit verwalten Sie Ihre Schlüsseltresore sowie die Schlüssel, Geheimnisse und Zertifikate in Ihren Schlüsseltresoren. Weitere Informationen finden Sie in der [Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault/).
 
 | Ressourcentypen | API-Versionen |
 |-------------------------|--------------|
@@ -166,7 +167,7 @@ Hiermit verwalten Sie Ihre Schlüsseltresore sowie die Schlüssel, Geheimnisse u
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Das Ergebnis der Vorgangsaufrufe ist die Darstellung einer Liste verfügbarer Netzwerkcloudvorgänge. Weitere Informationen finden Sie unter [REST-API für Vorgänge](https://docs.microsoft.com/rest/api/operation/).
+Das Ergebnis des Vorgangsaufrufs ist eine Darstellung der Liste verfügbarer Netzwerkcloudvorgänge. Weitere Informationen finden Sie unter [REST-API für Vorgänge](/rest/api/operation/).
 
 | Ressourcentypen | API-Versionen |
 |---------------------------|--------------|
@@ -188,7 +189,7 @@ Das Ergebnis der Vorgangsaufrufe ist die Darstellung einer Liste verfügbarer Ne
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Mit Azure Resource Manager können Sie die Infrastruktur für Ihre Azure-Lösungen bereitstellen und verwalten. Sie organisieren zugehörige Ressourcen in Ressourcengruppen, und stellen Ihre Ressourcen mit JSON-Vorlagen bereit. Eine Einführung in die Bereitstellung und Verwaltung von Ressourcen mit dem Resource Manager finden Sie unter [Übersicht über Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Mit Azure Resource Manager können Sie die Infrastruktur für Ihre Azure-Lösungen bereitstellen und verwalten. Sie organisieren zugehörige Ressourcen in Ressourcengruppen, und stellen Ihre Ressourcen mit JSON-Vorlagen bereit. Eine Einführung in die Bereitstellung und Verwaltung von Ressourcen mit Resource Manager finden Sie in der [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 | Ressourcentypen | API-Versionen |
 |-----------------------------------------|-------------------|
@@ -206,7 +207,7 @@ Mit Azure Resource Manager können Sie die Infrastruktur für Ihre Azure-Lösung
 | Vorgänge | 2015-01-01 |
 | Anbieter | 2017-08-01 |
 | Ressourcengruppen | 2016-09-01 |
-| angeben | 2016-09-01 |
+| Ressourcen | 2016-09-01 |
 | Abonnements | 2016-09-01 |
 | Abonnements/Speicherort | 2016-09-01 |
 | Abonnements/Vorgangsergebnisse | 2016-09-01 |
@@ -220,7 +221,7 @@ Mit Azure Resource Manager können Sie die Infrastruktur für Ihre Azure-Lösung
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-Mit dem Speicherressourcenanbieter (Storage Resource Provider, SRP) können Sie Ihr Speicherkonto und Ihre Schlüssel programmgesteuert verwalten. Weitere Informationen finden Sie unter [Referenz zur Ressourcenanbietern-REST-API für Azure Storage](https://docs.microsoft.com/rest/api/storagerp/).
+Mit dem Speicherressourcenanbieter (Storage Resource Provider, SRP) können Sie Ihr Speicherkonto und Ihre Schlüssel programmgesteuert verwalten. Weitere Informationen finden Sie in der [Referenz zur Ressourcenanbieter-REST-API für Azure Storage](/rest/api/storagerp/).
 
 | Ressourcentypen | API-Versionen |
 |-------------------------|--------------|
@@ -303,7 +304,7 @@ Mit dem Speicherressourcenanbieter (Storage Resource Provider, SRP) können Sie 
 | Vorgänge | 2015-01-01 |
 | Anbieter | 2017-08-01 |
 | Ressourcengruppen | 2016-09-01 |
-| angeben | 2016-09-01 |
+| Ressourcen | 2016-09-01 |
 | Abonnements | 2016-09-01 |
 | Abonnements/Speicherort | 2016-09-01 |
 | Abonnements/Vorgangsergebnisse | 2016-09-01 |

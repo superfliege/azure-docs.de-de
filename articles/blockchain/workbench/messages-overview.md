@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 1/8/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: f8f3584475415cf9ca19458f6da78d34df37f438
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 34731bb96a83a901b3fc1a59ce1846083d69bfd7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614360"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103382"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
@@ -41,7 +41,7 @@ Für die Anforderung sind folgende Felder erforderlich:
 | emailAddress         | E-Mail-Adresse des Benutzers                           |
 | externalId           | Azure AD-Objekt-ID des Benutzers                      |
 | connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
-| messageSchemaVersion | Schemaversion für Nachrichten                            |
+| messageSchemaVersion | Version des Messagingschemas                            |
 | messageName          | **CreateUserRequest**                               |
 
 Beispiel:
@@ -67,7 +67,7 @@ Blockchain Workbench gibt eine Antwort mit den folgenden Feldern zurück:
 | userId                | ID des erstellten Benutzers |
 | userChainIdentifier   | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist die Adresse des Benutzers  **on-chain** . |
 | connectionId          | Eindeutiger Bezeichner für die Blockchainverbindung|
-| messageSchemaVersion  | Schemaversion für Nachrichten |
+| messageSchemaVersion  | Version des Messagingschemas |
 | messageName           | **CreateUserUpdate** |
 | status                | Status der Anforderung zum Erstellen des Benutzers.  Bei einer erfolgreichen Ausführung lautet der Wert **Success**. Bei einem Fehler lautet der Wert **Failure**.     |
 | additionalInformation | Weitere Informationen basierend auf dem Status |
@@ -87,7 +87,7 @@ Beispiel für eine erfolgreiche Antwort auf **create user** von Blockchain Workb
 } 
 ```
 
-Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler bei den zusätzlichen Informationen bereitgestellt.
+Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler in den zusätzlichen Informationen bereitgestellt.
 
 ``` json
 {
@@ -119,7 +119,7 @@ Für die Anforderung sind folgende Felder erforderlich:
 | workflowName         | Name des Workflows |
 | Parameter           | Parametereingabe für die Vertragserstellung |
 | connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
-| messageSchemaVersion | Schemaversion für Nachrichten |
+| messageSchemaVersion | Version des Messagingschemas |
 | messageName          | **CreateContractRequest** |
 
 Beispiel:
@@ -154,7 +154,7 @@ Blockchain Workbench gibt eine Antwort mit den folgenden Feldern zurück:
 | contractId               | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
 | contractLedgerIdentifier | Adresse des Vertrags im Ledger                                            |
 | connectionId             | Eindeutiger Bezeichner für die Blockchainverbindung                               |
-| messageSchemaVersion     | Schemaversion für Nachrichten                                                         |
+| messageSchemaVersion     | Version des Messagingschemas                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
 | status                   | Status der Anforderung zum Erstellen des Vertrags.  Mögliche Werte: **Submitted**, **Committed**, **Failure**.  |
 | additionalInformation    | Weitere Informationen basierend auf dem Status                              |
@@ -189,7 +189,7 @@ Beispiel für eine committete Antwort auf **create contract** von Blockchain Wor
 }
 ```
 
-Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler bei den zusätzlichen Informationen bereitgestellt.
+Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler in den zusätzlichen Informationen bereitgestellt.
 
 ``` json
 {
@@ -216,12 +216,12 @@ Für die Anforderung sind folgende Felder erforderlich:
 | **Name**                 | **Beschreibung**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | Vom Client bereitgestellte GUID |
-| userChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist dies die **on chain**-Adresse des Benutzers. |
+| userChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
 | contractLedgerIdentifier | Adresse des Vertrags im Ledger |
 | workflowFunctionName     | Name der Workflowfunktion |
 | Parameter               | Parametereingabe für die Vertragserstellung |
 | connectionId             | Eindeutiger Bezeichner für die Blockchainverbindung |
-| messageSchemaVersion     | Schemaversion für Nachrichten |
+| messageSchemaVersion     | Version des Messagingschemas |
 | messageName              | **CreateContractActionRequest** |
 
 Beispiel:
@@ -255,7 +255,7 @@ Blockchain Workbench gibt eine Antwort mit den folgenden Feldern zurück:
 | requestId             | Vom Client bereitgestellte GUID|
 | contractId            | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
 | connectionId          | Eindeutiger Bezeichner für die Blockchainverbindung |
-| messageSchemaVersion  | Schemaversion für Nachrichten |
+| messageSchemaVersion  | Version des Messagingschemas |
 | messageName           | **CreateContractActionUpdate** |
 | status                | Status der Anforderung zum Erstellen der Vertragsaktion. Mögliche Werte: **Submitted**, **Committed**, **Failure**.                         |
 | additionalInformation | Weitere Informationen basierend auf dem Status |
@@ -288,7 +288,7 @@ Beispiel für eine committete Antwort auf **create contract action** von Blockch
 }
 ```
 
-Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler bei den zusätzlichen Informationen bereitgestellt.
+Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler in den zusätzlichen Informationen bereitgestellt.
 
 ``` json
 {
@@ -345,8 +345,8 @@ Wenn ein Benutzer mit Event Grid über Ereignisse in Blockchain Workbench benach
 
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>Nutzen von Event Grid-Ereignissen mit Logic Apps
 
-1.  Erstellen Sie im Azure-Portal eine neue **Azure Logic-App**.
-2.  Beim Öffnen der Azure Logic-App im Portal werden Sie aufgefordert, einen Trigger auszuwählen. Wählen Sie **Azure Event Grid – Wenn ein Ressourcenereignis eintritt** aus.
+1. Erstellen Sie im Azure-Portal eine neue **Azure Logic-App**.
+2. Beim Öffnen der Azure Logic-App im Portal werden Sie aufgefordert, einen Trigger auszuwählen. Wählen Sie **Azure Event Grid – Wenn ein Ressourcenereignis eintritt** aus.
 3. Wenn der Workflow-Designer angezeigt wird, werden Sie aufgefordert, sich anzumelden.
 4. Wählen Sie das Abonnement aus. Ressource als **Microsoft.EventGrid.Topics**. Wählen Sie den **Ressourcennamen** aus dem Namen der Ressource aus der Azure Blockchain Workbench-Ressourcengruppe aus.
 5. Wählen Sie das Event Grid aus der Blockchain Workbench-Ressourcengruppe aus.
@@ -355,11 +355,11 @@ Wenn ein Benutzer mit Event Grid über Ereignisse in Blockchain Workbench benach
 
 Mithilfe von Service Bus-Themen können Benutzer über Ereignisse in Blockchain Workbench benachrichtigt werden. 
 
-1.  Navigieren Sie zum Service Bus innerhalb der Workbench-Ressourcengruppe.
-2.  Wählen Sie **Themen** aus.
-3.  Wählen Sie **workbench-external** aus.
-4.  Erstellen Sie ein neues Abonnement zu diesem Thema. Erhalten Sie dafür einen Schlüssel.
-5.  Erstellen Sie ein Programm, das Ereignisse aus diesem Abonnement abonniert.
+1. Navigieren Sie zum Service Bus innerhalb der Workbench-Ressourcengruppe.
+2. Wählen Sie **Themen** aus.
+3. Wählen Sie **egress-topic** aus.
+4. Erstellen Sie ein neues Abonnement zu diesem Thema. Erhalten Sie dafür einen Schlüssel.
+5. Erstellen Sie ein Programm, das Ereignisse aus diesem Abonnement abonniert.
 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Nutzen von Service Bus-Nachrichten mit Logic Apps
 
@@ -373,240 +373,531 @@ Mithilfe von Service Bus-Themen können Benutzer über Ereignisse in Blockchain 
 
 Abhängig von **OperationName** weisen die Benachrichtigungen einen der folgenden Nachrichtentypen auf:
 
-### <a name="accountcreated"></a>AccountCreated
+### <a name="block-message"></a>Blocknachricht
 
-Zeigt an, dass ein neues Konto zur angegebenen Blockchain hinzugefügt werden soll.
-
-| NAME    | BESCHREIBUNG  |
-|----------|--------------|
-| UserId  | ID des erstellten Benutzers. |
-| ChainIdentifier | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum wäre dies die **on-chain**-Adresse des Benutzers. |
-
-``` csharp
-public class NewAccountRequest : MessageModelBase
-{
-  public int UserID { get; set; }
-  public string ChainIdentifier { get; set; }
-}
-```
-
-### <a name="contractinsertedorupdated"></a>ContractInsertedOrUpdated
-
-Gibt an, dass eine Anforderung zum Einfügen oder Aktualisieren eines Vertrags in ein Distributed Ledger vorliegt.
+Enthält Informationen zu einzelnen Blöcken. Die Blocknachricht (*BlockMessage*) enthält einen Abschnitt mit Block-Level-Informationen und einen Abschnitt mit Transaktionsinformationen.
 
 | NAME | BESCHREIBUNG |
-|-----|--------------|
-| ChainID | Eindeutiger Bezeichner für die mit der Anforderung verknüpfte Kette |
-| BlockId | Eindeutiger Bezeichner für einen Block im Ledger |
-| ContractId | Ein eindeutiger Bezeichner für den Vertrag |
-| ContractAddress |       Die Adresse des Vertrags im Ledger |
-| TransactionHash  |     Der Hash der Transaktion im Ledger |
-| OriginatingAddress |   Die Adresse des Erstellers der Transaktion |
-| ActionName       |     Der Name der Aktion |
-| IsUpdate        |      Identifiziert, ob es sich um ein Update handelt. |
-| Parameter       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren. |
-| TopLevelInputParams |  In Szenarien, in denen ein Vertrag mit mindestens einem anderen Vertrag verbunden ist, sind dies die Parameter aus dem übergeordneten Vertrag. |
+|------|-------------|
+| block | Enthält [Blockinformationen](#block-information) |
+| transactions | Enthält eine Sammlung mit [Transaktionsinformationen](#transaction-information) für den Block |
+| connectionId | Eindeutiger Bezeichner für die Verbindung |
+| messageSchemaVersion | Version des Messagingschemas |
+| messageName | **BlockMessage** |
+| additionalInformation | Bereitgestellte Zusatzinformationen |
 
-``` csharp
-public class ContractInsertOrUpdateRequest : MessageModelBase
+#### <a name="block-information"></a>Blockinformationen
+
+| NAME              | BESCHREIBUNG |
+|-------------------|-------------|
+| blockId           | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
+| blockNumber       | Eindeutiger Bezeichner für einen Block im Ledger |
+| blockHash         | Der Hash des Blocks |
+| previousBlockHash | Der Hash des vorherigen Blocks |
+| blockTimestamp    | Der Zeitstempel des Blocks |
+
+#### <a name="transaction-information"></a>Transaktionsinformationen
+
+| NAME               | BESCHREIBUNG |
+|--------------------|-------------|
+| transactionId      | Eindeutiger Bezeichner für die Transaktion innerhalb von Azure Blockchain Workbench |
+| transactionHash    | Der Hash der Transaktion im Ledger |
+| from               | Eindeutiger Bezeichner im Ledger für den Transaktionsursprung |
+| zu                 | Eindeutiger Bezeichner im Ledger für das Transaktionsziel |
+| provisioningStatus | Identifiziert den aktuellen Status des Bereitstellungsprozesses für die Transaktion. Mögliche Werte: </br>0 – Die Transaktion wurde von der API in der Datenbank erstellt</br>1 – Die Transaktion wurde an den Ledger gesendet</br>2 – Die Transaktion wurde erfolgreich im Ledger committet</br>3 oder 4 – Fehler beim Committen der Transaktion im Ledger</br>5 – Transaktion erfolgreich im Ledger committet |
+
+Beispiel für eine Blocknachricht (*BlockMessage*) aus Blockchain Workbench:
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public int ContractId { get; set; }
-    public string ContractAddress { get; set; }
-    public string TransactionHash { get; set; }
-    public string OriginatingAddress { get; set; }
-    public string ActionName { get; set; }
-    public bool IsUpdate { get; set; }
-    public List<ContractProperty> Parameters { get; set; }
-    public bool IsTopLevelUpdate { get; set; }
-    public List<ContractInputParameter> TopLevelInputParams { get; set; }
+    "block": {
+        "blockId": 123
+        "blockNumber": 1738312,
+        "blockHash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
+        "previousBlockHash": null,
+        "blockTimestamp": "2018-10-09T23:35:58Z",
+    },
+    "transactions": [
+        {
+            "transactionId": 234
+            "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": null,
+            "provisioningStatus": 1
+        },
+        {
+            "transactionId": 235
+            "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+            "from": "0xadd97e1e595916e29ea94fda894941574000ffff",
+            "to": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff",
+            "provisioningStatus": 2
+        }
+    ],
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "BlockMessage",
+    "additionalInformation": {}
 }
 ```
 
-#### <a name="updatecontractaction"></a>UpdateContractAction
+### <a name="contract-message"></a>Vertragsnachricht
 
-Gibt an, dass eine Anforderung zum Ausführen einer Aktion für einen bestimmten Vertrag in einem Distributed Ledger vorliegt.
+Enthält Informationen zu einem Vertrag. Die Nachricht enthält einen Abschnitt mit Vertragseigenschaften und einen Abschnitt mit Transaktionsinformationen. Alle Transaktionen, durch die der Vertrag für den spezifischen Block geändert wurde, sind im Transaktionsabschnitt enthalten.
 
-| NAME                     | BESCHREIBUNG                                                                                                                                                                   |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ContractActionId         | Eindeutiger Bezeichner für diese Vertragsaktion |
-| ChainIdentifier          | Eindeutiger Bezeichner für die Kette |
-| ConnectionId             | Eindeutiger Bezeichner für die Verbindung |
-| UserChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
-| ContractLedgerIdentifier | Adresse des Vertrags im Ledger |
-| WorkflowFunctionName     | Name der Workflowfunktion |
-| WorkflowName             | Name des Workflows |
-| WorkflowBlobStorageURL   | Die URL des Vertrags in Blob Storage |
-| ContractActionParameters | Parameter für die Vertragsaktion |
-| TransactionHash          | Der Hash der Transaktion im Ledger |
-| Bereitstellungsstatus      | Der aktuelle Bereitstellungsstatus der Aktion</br>0 – Erstellt</br>1 – In Bearbeitung</br>2 – Abgeschlossen</br> Der Status „Abgeschlossen“ weist auf eine Bestätigung aus dem Ledger hin, dass dies erfolgreich hinzugefügt wurde. |
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| blockId | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
+| blockHash | Hash des Blocks |
+| modifyingTransactions | [Transaktionen, die den Vertrag geändert haben](#modifying-transaction-information) |
+| contractId | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
+| contractLedgerIdentifier | Eindeutiger Bezeichner für den Vertrag im Ledger |
+| contractProperties | [Eigenschaften des Vertrags](#contract-properties) |
+| isNewContract | Gibt an, ob dieser Vertrag neu erstellt wurde. Mögliche Werte: „true“: Der Vertrag wurde neu erstellt. „false“: Der Vertrag wurde aktualisiert. |
+| connectionId | Eindeutiger Bezeichner für die Verbindung |
+| messageSchemaVersion | Version des Messagingschemas |
+| messageName | **ContractMessage** |
+| additionalInformation | Bereitgestellte Zusatzinformationen |
 
-```csharp
-public class ContractActionRequest : MessageModelBase
+#### <a name="modifying-transaction-information"></a>Ändern von Transaktionsinformationen
+
+| NAME               | BESCHREIBUNG |
+|--------------------|-------------|
+| transactionId | Eindeutiger Bezeichner für die Transaktion innerhalb von Azure Blockchain Workbench |
+| transactionHash | Der Hash der Transaktion im Ledger |
+| from | Eindeutiger Bezeichner im Ledger für den Transaktionsursprung |
+| zu | Eindeutiger Bezeichner im Ledger für das Transaktionsziel |
+
+#### <a name="contract-properties"></a>Vertragseigenschaften
+
+| NAME               | BESCHREIBUNG |
+|--------------------|-------------|
+| workflowPropertyId | Eindeutiger Bezeichner für die Workfloweigenschaft innerhalb von Azure Blockchain Workbench |
+| name | Name der Workfloweigenschaft |
+| value | Wert der Workfloweigenschaft |
+
+Beispiel für eine Vertragsnachricht (*ContractMessage*) aus Blockchain Workbench:
+
+``` json
 {
-    public int ContractActionId { get; set; }
-    public int ConnectionId { get; set; }
-    public string UserChainIdentifier { get; set; }
-    public string ContractLedgerIdentifier { get; set; }
-    public string WorkflowFunctionName { get; set; }
-    public string WorkflowName { get; set; }
-    public string WorkflowBlobStorageURL { get; set; }
-    public IEnumerable<ContractActionParameter> ContractActionParameters { get; set; }
-    public string TransactionHash { get; set; }
-    public int ProvisioningStatus { get; set; }
+    "blockId": 123,
+    "blockhash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
+    "modifyingTransactions": [
+        {
+            "transactionId": 234,
+            "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": "0xf8559473b3c7197d59212b401f5a9f07ffff"
+        },
+        {
+            "transactionId": 235,
+            "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
+            "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+            "to": "0xf8559473b3c7197d59212b401f5a9f07b429ffff"
+        }
+    ],
+    "contractId": 111,
+    "contractLedgerIdentifier": "0xf8559473b3c7197d59212b401f5a9f07b429ffff",
+    "contractProperties": [
+        {
+            "workflowPropertyId": 1,
+            "name": "State",
+            "value": "0"
+        },
+        {
+            "workflowPropertyId": 2,
+            "name": "Description",
+            "value": "1969 Dodge Charger"
+        },
+        {
+            "workflowPropertyId": 3,
+            "name": "AskingPrice",
+            "value": "30000"
+        },
+        {
+            "workflowPropertyId": 4,
+            "name": "OfferPrice",
+            "value": "0"
+        },
+        {
+            "workflowPropertyId": 5,
+            "name": "InstanceAppraiser",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 6,
+            "name": "InstanceBuyer",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 7,
+            "name": "InstanceInspector",
+            "value": "0x0000000000000000000000000000000000000000"
+        },
+        {
+            "workflowPropertyId": 8,
+            "name": "InstanceOwner",
+            "value": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff"
+        },
+        {
+            "workflowPropertyId": 9,
+            "name": "ClosingDayOptions",
+            "value": "[21,48,69]"
+        }
+    ],
+    "isNewContract": false,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "ContractMessage",
+    "additionalInformation": {}
 }
 ```
 
-### <a name="updateuserbalance"></a>UpdateUserBalance
+### <a name="event-message-contract-function-invocation"></a>Ereignisnachricht: Aufruf der Vertragsfunktion
 
-Gibt an, dass eine Anforderung zum Aktualisieren des Benutzerguthabens in einem bestimmten Distributed Ledger gesendet wurde.
+Enthält Informationen, wenn eine Vertragsfunktion aufgerufen wird. Hierzu zählen etwa der Funktionsname, die Eingabeparameter und der Aufrufer der Funktion.
 
-> [!NOTE]
-> Diese Nachricht wird nur für diejenigen Ledger generiert, für die eine Kontenfinanzierung erforderlich ist.
-> 
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| eventName                   | **ContractFunctionInvocation** |
+| caller                      | [Aufruferinformationen](#caller-information) |
+| contractId                  | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
+| contractLedgerIdentifier    | Eindeutiger Bezeichner für den Vertrag im Ledger |
+| functionName                | Name der Funktion |
+| Parameter                  | [Parameterinformationen](#parameter-information) |
+| transaction                 | [Transaktionsinformationen](#eventmessage-transaction-information) |
+| inTransactionSequenceNumber | Die Sequenznummer der Transaktion im Block |
+| connectionId                | Eindeutiger Bezeichner für die Verbindung |
+| messageSchemaVersion        | Version des Messagingschemas |
+| messageName                 | **EventMessage** |
+| additionalInformation       | Bereitgestellte Zusatzinformationen |
 
-| NAME    | BESCHREIBUNG                              |
-|---------|------------------------------------------|
-| Adresse | Die Adresse des finanzierten Benutzers |
-| Balance | Das Guthaben des Benutzers         |
-| ChainID | Eindeutiger Bezeichner für die Kette     |
+#### <a name="caller-information"></a>Aufruferinformationen
 
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| type | Art des Aufrufers (beispielsweise Benutzer oder Vertrag) |
+| id | Eindeutiger Bezeichner für den Aufrufer innerhalb von Azure Blockchain Workbench |
+| ledgerIdentifier | Eindeutiger Bezeichner für den Aufrufer im Ledger |
 
-``` csharp
-public class UpdateUserBalanceRequest : MessageModelBase
+#### <a name="parameter-information"></a>Parameterinformationen
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| name | Parametername |
+| value | Parameterwert |
+
+#### <a name="event-message-transaction-information"></a>Ereignisnachricht: Transaktionsinformationen
+
+| NAME               | BESCHREIBUNG |
+|--------------------|-------------|
+| transactionId      | Eindeutiger Bezeichner für die Transaktion innerhalb von Azure Blockchain Workbench |
+| transactionHash    | Der Hash der Transaktion im Ledger |
+| from               | Eindeutiger Bezeichner im Ledger für den Transaktionsursprung |
+| zu                 | Eindeutiger Bezeichner im Ledger für das Transaktionsziel |
+
+Beispiel für *EventMessage ContractFunctionInvocation* aus Blockchain Workbench:
+
+``` json
 {
-    public string Address { get; set; }
-    public decimal Balance { get; set; }
-    public int ChainID { get; set; }
+    "eventName": "ContractFunctionInvocation",
+    "caller": {
+        "type": "User",
+        "id": 21,
+        "ledgerIdentifier": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60ffff"
+    },
+    "contractId": 34,
+    "contractLedgerIdentifier": "0xf8559473b3c7197d59212b401f5a9f07b429ffff",
+    "functionName": "Modify",
+    "parameters": [
+        {
+            "name": "description",
+            "value": "a new description"
+        },
+        {
+            "name": "price",
+            "value": "4567"
+        }
+    ],
+    "transaction": {
+        "transactionId": 234,
+        "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
+        "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
+        "to": "0xf8559473b3c7197d59212b401f5a9f07b429ffff"
+    },
+    "inTransactionSequenceNumber": 1,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation": { }
 }
 ```
 
-### <a name="insertblock"></a>InsertBlock
+### <a name="event-message-application-ingestion"></a>Ereignisnachricht: Anwendungserfassung
 
-Die Nachricht, die angibt, dass eine Anforderung zum Hinzufügen eines Blocks in einem Distributed Ledger vorliegt.
+Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – etwa Name und Version der hochgeladenen Anwendung.
 
-| NAME           | BESCHREIBUNG                                                            |
-|----------------|------------------------------------------------------------------------|
-| ChainId        | Eindeutiger Bezeichner der Kette, zu der der Block hinzugefügt wurde             |
-| BlockId        | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
-| BlockHash      | Der Hash des Blocks                                                 |
-| BlockTimeStamp | Der Zeitstempel des Blocks                                            |
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| eventName | **ApplicationIngestion** |
+| applicationId | Eindeutiger Bezeichner für die Anwendung innerhalb von Azure Blockchain Workbench |
+| applicationName | Anwendungsname |
+| applicationDisplayName | Anwendungsanzeigename |
+| applicationVersion | Anwendungsversion |
+| applicationDefinitionLocation | URL, unter der sich die Anwendungskonfigurationsdatei befindet |
+| contractCodes | Sammlung von [Vertragscodes](#contract-code-information) für die Anwendung |
+| applicationRoles | Sammlung von [Anwendungsrollen](#application-role-information) für die Anwendung |
+| applicationWorkflows | Sammlung von [Anwendungsworkflows](#application-workflow-information) für die Anwendung |
+| connectionId | Eindeutiger Bezeichner für die Verbindung |
+| messageSchemaVersion | Version des Messagingschemas |
+| messageName | **EventMessage** |
+| additionalInformation | Zu den hier bereitgestellten Zusatzinformationen zählen unter anderem die Anwendungsworkflowzustände sowie Übergangsinformationen. |
 
-``` csharp
-public class InsertBlockRequest : MessageModelBase
+#### <a name="contract-code-information"></a>Vertragscodeinformationen
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner für die Vertragscodedatei innerhalb von Azure Blockchain Workbench |
+| ledgerId | Eindeutiger Bezeichner für den Ledger innerhalb von Azure Blockchain Workbench |
+| location | URL, unter der sich die Vertragscodedatei befindet |
+
+#### <a name="application-role-information"></a>Anwendungsrolleninformationen
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner für die Anwendungsrolle innerhalb von Azure Blockchain Workbench |
+| name | Name der Anwendungsrolle |
+
+#### <a name="application-workflow-information"></a>Anwendungsworkflowinformationen
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner für den Anwendungsworkflow innerhalb von Azure Blockchain Workbench |
+| name | Name des Anwendungsworkflows |
+| displayName | Anzeigename des Anwendungsworkflows |
+| functions | Sammlung von [Funktionen für den Anwendungsworkflow](#workflow-function-information)|
+| states | Sammlung von [Zuständen für den Anwendungsworkflow](#workflow-state-information) |
+| Eigenschaften | [Informationen zu Workfloweigenschaften](#workflow-property-information) für die Anwendung |
+
+##### <a name="workflow-function-information"></a>Workflowfunktionsinformationen
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner für die Anwendungsworkflowfunktion innerhalb von Azure Blockchain Workbench |
+| name | Funktionsname |
+| Parameter | Parameter für die Funktion |
+
+##### <a name="workflow-state-information"></a>Informationen zum Workflowstatus
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| name | Name des Zustands |
+| displayName | Anzeigename des Zustands |
+| style | Zustandsstil (erfolgreich oder Fehler) |
+
+##### <a name="workflow-property-information"></a>Workfloweigenschaftsinformationen
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner für die Anwendungsworkfloweigenschaft innerhalb von Azure Blockchain Workbench |
+| name | Eigenschaftenname |
+| type | Eigenschaftstyp |
+
+Beispiel für *EventMessage ApplicationIngestion* aus Blockchain Workbench:
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public string BlockHash { get; set; }
-    public int BlockTimestamp { get; set; }
+    "eventName": "ApplicationIngestion",
+    "applicationId": 31,
+    "applicationName": "AssetTransfer",
+    "applicationDisplayName": "Asset Transfer",
+    "applicationVersion": “1.0”,
+    "applicationDefinitionLocation": "http://url"
+    "contractCodes": [
+        {
+            "id": 23,
+            "ledgerId": 1,
+            "location": "http://url"
+        }
+    ],
+    "applicationRoles": [
+            {
+                "id": 134,
+                "name": "Buyer"
+            },
+            {
+                "id": 135,
+                "name": "Seller"
+            }
+       ],
+    "applicationWorkflows": [
+        {
+            "id": 89,
+            "name": "AssetTransfer",
+            "displayName": "Asset Transfer",
+            "functions": [
+                {
+                    "id": 912,
+                    "name": "",
+                    "parameters": [
+                        {
+                            "name": "description",
+                            "type": {
+                                "name": "string"
+                             }
+                        },
+                        {
+                            "name": "price",
+                            "type": {
+                                "name": "int"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 913,
+                    "name": "modify",
+                    "parameters": [
+                        {
+                            "name": "description",
+                            "type": {
+                                "name": "string"
+                             }
+                        },
+                        {
+                            "name": "price",
+                            "type": {
+                                "name": "int"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "states": [ 
+                 {
+                      "name": "Created",
+                      "displayName": "Created",
+                      "style" : "Success"
+                 },
+                 {
+                      "name": "Terminated",
+                      "displayName": "Terminated",
+                      "style" : "Failure"
+                 }
+            ],
+            "properties": [
+                {
+                    "id": 879,
+                    "name": "Description",
+                    "type": {
+                                "name": "string"
+                     }
+                },
+                {
+                    "id": 880,
+                    "name": "Price",
+                    "type": {
+                                "name": "int"
+                     }
+                }
+            ]
+        }
+    ]
+    "connectionId": [ ],
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation":
+        {
+            "states" :
+            [
+                {
+                    "Name": "BuyerAccepted",
+                    "Transitions": [
+                        {
+                            "DisplayName": "Accept"
+                            "AllowedRoles": [ ],
+                            "AllowedInstanceRoles": [ "InstanceOwner" ],
+                            "Function": "Accept",
+                            "NextStates": [ "SellerAccepted" ]
+                        }
+                    ]
+                }
+            ]
+        }
 }
 ```
 
-### <a name="inserttransaction"></a>InsertTransaction
+### <a name="event-message-role-assignment"></a>Ereignisnachricht: Rollenzuweisung
 
-Die Nachricht, die Details über eine Anforderung zum Hinzufügen eines Übergangs in einem Distributed Ledger enthält.
+Enthält Informationen, wenn einem Benutzer eine Rolle in Workbench zugewiesen wird. Hierzu zählt unter anderem, wer die Rollenzuweisung vorgenommen hat, sowie der Name der Rolle und die entsprechende Anwendung.
 
-| NAME            | BESCHREIBUNG                                                            |
-|-----------------|------------------------------------------------------------------------|
-| ChainId         | Eindeutiger Bezeichner der Kette, zu der der Block hinzugefügt wurde             |
-| BlockId         | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
-| TransactionHash | Der Hash der Transaktion                                           |
-| From            | Die Adresse des Erstellers der Transaktion                      |
-| To              | Die Adresse des beabsichtigten Empfängers der Transaktion              |
-| Wert           | Der in der Transaktion enthaltene Wert                                 |
-| IsAppBuilderTx  | Identifiziert, ob dies eine Blockchain Workbench-Transkation ist                         |
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| eventName | **RoleAssignment** |
+| applicationId | Eindeutiger Bezeichner für die Anwendung innerhalb von Azure Blockchain Workbench |
+| applicationName | Anwendungsname |
+| applicationDisplayName | Anwendungsanzeigename |
+| applicationVersion | Anwendungsversion |
+| applicationRole        | Informationen zur [Anwendungsrolle](#roleassignment-application-role) |
+| assigner               | Informationen zum [Zuweiser](#roleassignment-assigner) |
+| assignee               | Informationen zur [zugewiesenen Person](#roleassignment-assignee) |
+| connectionId           | Eindeutiger Bezeichner für die Verbindung |
+| messageSchemaVersion   | Version des Messagingschemas |
+| messageName            | **EventMessage** |
+| additionalInformation  | Bereitgestellte Zusatzinformationen |
 
-``` csharp
-public class InsertTransactionRequest : MessageModelBase
+#### <a name="roleassignment-application-role"></a>RoleAssignment: Anwendungsrolle
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner für die Anwendungsrolle innerhalb von Azure Blockchain Workbench |
+| name | Name der Anwendungsrolle |
+
+#### <a name="roleassignment-assigner"></a>RoleAssignment: Zuweiser
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner des Benutzers innerhalb von Azure Blockchain Workbench |
+| type | Art des Zuweisers |
+| chainIdentifier | Eindeutiger Bezeichner des Benutzers im Ledger |
+
+#### <a name="roleassignment-assignee"></a>RoleAssignment: zugewiesene Person
+
+| NAME | BESCHREIBUNG |
+|------|-------------|
+| id | Eindeutiger Bezeichner des Benutzers innerhalb von Azure Blockchain Workbench |
+| type | Art der zugewiesenen Person |
+| chainIdentifier | Eindeutiger Bezeichner des Benutzers im Ledger |
+
+Beispiel für *EventMessage RoleAssignment* aus Blockchain Workbench:
+
+``` json
 {
-    public int ChainId { get; set; }
-    public int BlockId { get; set; }
-    public string TransactionHash { get; set; }
-    public string From { get; set; }
-    public string To { get; set; }
-    public decimal Value { get; set; }
-    public bool IsAppBuilderTx { get; set; }
-}
-```
-
-### <a name="assigncontractchainidentifier"></a>AssignContractChainIdentifier
-
-Enthält Details über die Zuordnung eines Kettenbezeichners für einen Vertrag. In einer Ethereum-Blockchain wäre dies beispielsweise die Adresse eines Vertrags im Ledger.
-
-| NAME            | BESCHREIBUNG                                                                       |
-|-----------------|-----------------------------------------------------------------------------------|
-| ContractId      | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
-| ChainIdentifier | Bezeichner für den Vertrag in der Kette                             |
-
-``` csharp
-public class AssignContractChainIdentifierRequest : MessageModelBase
-{
-    public int ContractId { get; set; }
-    public string ChainIdentifier { get; set; }
-}
-```
-
-## <a name="classes-used-by-message-types"></a>Von Nachrichtentypen verwendete Klassen
-
-### <a name="messagemodelbase"></a>MessageModelBase
-
-Das Basismodell für alle Nachrichten.
-
-| NAME          | BESCHREIBUNG                          |
-|---------------|--------------------------------------|
-| NameVorgang | Name des Vorgangs           |
-| RequestId     | Eindeutiger Bezeichner für die Anforderung |
-
-``` csharp
-public class MessageModelBase
-{
-    public string OperationName { get; set; }
-    public string RequestId { get; set; }
-}
-```
-
-### <a name="contractinputparameter"></a>ContractInputParameter
-
-Enthält Name, Wert und Typ eines Parameters.
-
-| NAME  | BESCHREIBUNG                 |
-|-------|-----------------------------|
-| NAME  | Der Name des Parameters  |
-| Wert | Der Wert des Parameters |
-| Typ  | Der Typ des Parameters  |
-
-``` csharp
-public class ContractInputParameter
-{
-    public string Name { get; set; }
-    public string Value { get; set; }
-    public string Type { get; set; }
-}
-```
-
-#### <a name="contractproperty"></a>ContractProperty
-
-Enthält ID, Name, Wert und Typ einer Eigenschaft.
-
-| NAME  | BESCHREIBUNG                |
-|-------|----------------------------|
-| id    | Die ID der Eigenschaft    |
-| NAME  | Der Name der Eigenschaft.  |
-| Wert | Der Wert der Eigenschaft. |
-| Typ  | Der Typ der Eigenschaft  |
-
-``` csharp
-public class ContractProperty
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Value { get; set; }
-    public string DataType { get; set; }
+    "eventName": "RoleAssignment",
+    "applicationId": 31,
+    "applicationName": "AssetTransfer",
+    "applicationDisplayName": "Asset Transfer",
+    "applicationVersion": “1.0”,
+    "applicationRole": {
+        "id": 134,
+        "name": "Buyer"
+    },
+    "assigner": {
+        "id": 1,
+        "type": null,
+        "chainIdentifier": "0xeFFC7766d38aC862d79706c3C5CEEf089564ffff"
+    },
+    "assignee": {
+        "id": 3,
+        "type": null,
+        "chainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff"
+    },
+    "connectionId": [ ],
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "EventMessage",
+    "additionalInformation": { }
 }
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Smart Contract-Integrationsmuster](integration-patterns.md)
+- [Smart Contract-Integrationsmuster](integration-patterns.md)

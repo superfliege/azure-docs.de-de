@@ -12,30 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233734"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321413"
 ---
 # <a name="application-architecture-on-azure"></a>Anwendungsarchitektur bei Azure
 Für den Schutz Ihrer cloudbasierten Lösungen in Microsoft Azure ist eine stabile Architekturgrundlage entscheidend. Architekten, Designer und Implementierer profitieren von einer umfassenden Kenntnis der Architektur von Anwendungen und Diensten. Diese grundlegende Kenntnis hilft Ihnen, alle Komponenten Ihrer cloudbasierten Lösungen zu verstehen, und vereinfacht die Integration der Sicherheit in alle Aspekte von Entwurf und Implementierung.
 
 Um Sie bei Ihren architektonischen Ermittlungen und Entwürfen zu helfen, bieten wir Ihnen Folgendes:
 
-* Infografiken zur Architektur
 * Architekturpläne
 * Cloud- und Enterprise-Symbolsatz
 * Visio-Vorlage „3D Blueprint“
-
-## <a name="architectural-infographics"></a>Infografiken zur Architektur
-Microsoft veröffentlicht mehrere architekturbezogene Poster/Infografiken. Hierzu gehören folgende Berechtigungen:
-
-* [Reale Cloudanwendungen erstellen](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [Skalieren mit Clouddiensten](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
 ## <a name="architectural-blueprints"></a>Architekturpläne
 Microsoft veröffentlicht eine Reihe allgemeiner [Architekturpläne](https://aka.ms/azblueprints) , die veranschaulichen, wie bestimmte Systemtypen mithilfe von Microsoft-Produkten erstellt werden.

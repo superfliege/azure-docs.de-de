@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: ef1180a8e8c833648e3b61705abf354cb4dfaed3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d0bc4f5877a09380a2c7053134ae0505b31ae685
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117485"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330941"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Tutorial: Maschinelles Sehen-API (Java)
 
@@ -456,7 +456,7 @@ Drücken Sie **F6**, um die Anwendung auszuführen. Geben Sie Ihren Abonnementsc
 
 ### <a name="intelligently-generate-a-thumbnail"></a>Intelligentes Generieren einer Miniaturansicht
 
-Die Funktion „Miniaturansicht“ für maschinelles Sehen generiert Miniaturansichten aus Bildern. Mithilfe der Funktion **Intelligentes Zuschneiden** identifiziert die Funktion „Miniaturansicht“ den für ein Bild relevanten Bereich, und zentriert das Miniaturbild in diesem Bereich, um optisch ansprechendere Miniaturansichten zu generieren.
+Die Funktion „Miniaturansicht“ für Maschinelles Sehen generiert Miniaturansichten aus Bildern. Mithilfe der Funktion **Intelligentes Zuschneiden** identifiziert die Funktion „Miniaturansicht“ den für ein Bild relevanten Bereich, und zentriert das Miniaturbild auf diesem Bereich, um optisch ansprechendere Miniaturbilder zu generieren.
 
 Um die Funktion „Miniaturansicht“ der Tutorialanwendung abzuschließen, führen Sie die folgenden Schritte aus:
 

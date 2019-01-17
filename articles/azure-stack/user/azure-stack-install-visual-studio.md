@@ -12,19 +12,19 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2afbea68c017805e9bd7db43b03face0705608b7
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6bb3215e63e2fc672cde5746e6a9867df899ee88
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42358746"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016697"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Installieren von Visual Studio und Herstellen einer Verbindung mit Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können Visual Studio zum Schreiben und Bereitstellen von [Azure Resource Manager-Vorlagen](azure-stack-arm-templates.md) für Azure Stack verwenden. Die Schritte in diesem Artikel beschreiben die Installation von Visual Studio in [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder auf einem externen Computer, wenn Sie eine Verbindung mit Azure Stack per [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) herstellen möchten.
 
@@ -77,17 +77,18 @@ Nach der Anmeldung können Sie [Vorlagen bereitstellen](azure-stack-deploy-templ
     ![Screenshot von Cloud-Explorer nach dem Anmelden und dem Herstellen einer Verbindung mit Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
 
 6. Wählen Sie im Menü **Ansicht** die Option **Cloud-Explorer** aus.
-7. Wählen Sie **Konto hinzufügen** aus, und melden Sie sich mit Ihren AD FS-Anmeldeinformationen an.  
 
-    ![X](./media/azure-stack-install-visual-studio/image7.png)
+1. Wählen Sie **Konto hinzufügen** aus, und melden Sie sich mit Ihren AD FS-Anmeldeinformationen an.  
+
+    ![Cloud-Explorer](./media/azure-stack-install-visual-studio/image7.png)
 
     Cloud-Explorer fragt die verfügbaren Abonnements ab. Sie können ein für die Verwaltung verfügbares Abonnement auswählen.
 
-    ![X](./media/azure-stack-install-visual-studio/image8.png)
+    ![Cloud-Explorer](./media/azure-stack-install-visual-studio/image8.png)
 
 8. Durchsuchen Sie Ihre vorhandenen Ressourcen und Ressourcengruppen, oder stellen Sie Vorlagen bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- - Erfahren Sie mehr zur [Koexistenz](https://msdn.microsoft.com/library/ms246609.aspx) mit anderen Versionen von Visual Studio.
- - [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)
+ - Erfahren Sie mehr über die [parallele Installation mehrerer Visual Studio-Versionen](https://msdn.microsoft.com/library/ms246609.aspx).
+ - [Entwickeln Sie Vorlagen für Azure Stack.](azure-stack-develop-templates.md)

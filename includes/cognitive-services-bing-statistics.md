@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
-ms.openlocfilehash: a8d588b186652ab86ee1e8152bd9be08f0f1ef04
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978862"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193386"
 ---
 Die Bing-Statistik stellt Analysen für Bing-Suche-APIs bereit. Die Analysen enthalten das Aufrufvolumen, die häufigsten Abfragezeichenfolgen, die geografische Verteilung und vieles mehr. Wenn Sie die Bing-Statistik in Ihrem kostenpflichtigen Abonnement für die Bing-Suche aktivieren möchten, navigieren Sie zu Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7), wählen Sie Ihr kostenpflichtiges Abonnement aus, und klicken Sie auf „Enable Bing Statistics“ (Bing-Statistik aktivieren). Durch das Aktivieren der Bing-Statistik wird Ihre Abonnementrate leicht erhöht (siehe [Preise](https://aka.ms/bingstatisticspricing)).
 
@@ -85,7 +85,7 @@ Im Folgenden werden die möglichen Metriken beschrieben. Jede Metrik weist auf E
 
 - **Verteilung von Antwortcodes:** Die HTTP-Statuscodes aller Aufrufe während des Berichtszeitraums.
 
-- **Verteilung des Aufrufursprungs:** Die verschiedenen Browser, die von den Benutzern verwendet werden, z.B. Edge, Chrome, Safari und Firefox. Aufrufe, die von außerhalb eines Browsers durchgeführt werden, z.B. von Bots, Postman oder „curl“ über eine Konsolen-App, werden unter „Bibliotheken“ gruppiert. Der Ursprung wird mithilfe des Werts ermittelt, den der Header „User-Agent“ der Anforderung aufweist. Wenn die Anforderung den Header „User-Agent“ nicht enthält, versucht Bing, den Ursprung aus anderen Signalen abzuleiten.  
+- **Verteilung des Aufrufursprungs:** Die verschiedenen Browser, die von den Benutzern verwendet werden, z.B. Microsoft Edge, Chrome, Safari und Firefox. Aufrufe, die von außerhalb eines Browsers durchgeführt werden, z.B. von Bots, Postman oder „curl“ über eine Konsolen-App, werden unter „Bibliotheken“ gruppiert. Der Ursprung wird mithilfe des Werts ermittelt, den der Header „User-Agent“ der Anforderung aufweist. Wenn die Anforderung den Header „User-Agent“ nicht enthält, versucht Bing, den Ursprung aus anderen Signalen abzuleiten.  
 
 - **Verteilung der sicheren Suche:** Die Verteilung der Werte für sicheres Suchen, z.B. „Deaktiviert“, „Mittel“ oder „Streng“. Der Abfrageparameter `safeSearch` enthält den Wert (falls angegeben). Andernfalls legt Bing den Wert standardmäßig auf „Mittel“ fest.  
 

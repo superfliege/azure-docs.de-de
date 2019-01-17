@@ -1,19 +1,19 @@
 ---
 title: Verbinden einer generischen Node.js-Clientanwendung mit Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein generisches Node.js-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 9d97b14d52a33d6879ee92b38993f4526823c4a0
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963987"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198081"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine generisch
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-1. Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie im [Schnellstart zum Erstellen einer Anwendung](quick-deploy-iot-central.md).
+1. Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 1. Einen Entwicklungscomputer mit installierter [Node.js](https://nodejs.org/) Version 4.0.0 oder höher. Sie können `node --version` in der Befehlszeile ausführen, um Ihre Version zu überprüfen. Node.js ist für eine Vielzahl von Betriebssystemen verfügbar.
 
 ## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage

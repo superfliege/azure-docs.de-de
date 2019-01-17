@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 2c83526ac5fd6fb6c757bffab08414d940694998
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: eddf85df3f9efb6a742e226e9582e2e284cbd4cf
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635424"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215132"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrieren von Blobs zwischen Speicherkonten mit AzCopy unter Windows
 
@@ -68,8 +68,8 @@ Dieses Skript verwendet die folgenden Befehle, um Daten aus einem Speicherkonto 
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzStorageContainer](/powershell/module/azure.storage/Get-AzStorageContainer) | Gibt die Container zurück, die diesem Storage-Konto zugeordnet sind. |
-| [New-AzStorageContext](/powershell/module/azure.storage/New-AzStorageContext) | Erstellt einen Azure Storage-Kontext. |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Gibt die Container zurück, die diesem Storage-Konto zugeordnet sind. |
+| [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Erstellt einen Azure Storage-Kontext. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

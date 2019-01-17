@@ -1,11 +1,11 @@
 ---
-title: Einrichten von Stagingumgebungen für Web-Apps – Azure App Service | Microsoft-Dokumentation
+title: Einrichten von Stagingumgebungen für Web-Apps in Azure App Service | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Stagingveröffentlichungen Ihrer Web-Apps in Azure App Service verwenden.
 services: app-service
 documentationcenter: ''
 author: cephalin
 writer: cephalin
-manager: erikre
+manager: jpconnoc
 editor: mollybos
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.service: app-service
@@ -13,60 +13,67 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 85fa047fbe94904c2bd665ff0318426920661e76
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1d0f89285095e7edd67883a2bad1411f6e8942d2
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730687"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107197"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
 
-Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im Tarif **Standard**, **Premium** oder **I*** des App Service-Plans erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
+> [!NOTE]
+> In dieser Schrittanleitung erfahren Sie, wie Sie Slots über eine neue Verwaltungsseite (Vorschauversion) verwalten. Kunden, die mit der bereits vorhandenen Slotverwaltungsseite vertraut sind, können diese weiter wie gewohnt verwenden. 
+>
+
+Sie können die Bereitstellung Ihrer Web-App, Web-App unter Linux, Ihres mobilen Back-Ends oder Ihrer API-App in [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) in einem separaten Bereitstellungsslot anstelle des Standardproduktionsslots vornehmen, wenn die Ausführung im Tarif **Standard**, **Premium** oder **I*** des App Service-Plans erfolgt. Bereitstellungsslots sind tatsächlich aktive Apps mit eigenen Hostnamen. Elemente für App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem produktionsfremden Slot hat folgende Vorteile:
 
 * Sie können App-Änderungen in einem Stagingbereitstellungsslot überprüfen, bevor Sie die App in den Produktionsslot überführen.
-* Indem Sie eine App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Verkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Überführungsoperationen fallengelassen. Dieser gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.
-* Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie denselben Austausch sofort noch einmal vornehmen, um die "letzte als gut befundene Website" zurückzuerhalten.
+* Wenn Sie eine App zuerst in einem Slot bereitstellen und dann in den Produktionsslot überführen, ist sichergestellt, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Umleitung des Datenverkehrs erfolgt übergangslos, und es gehen keine Anforderungen aufgrund des Tauschs verloren. Der gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Tausch erforderlich ist.
+* Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie den gleichen Tausch sofort noch einmal vornehmen, um Ihre „letzte als funktionierend bekannte Website“ zurückzuerhalten.
 
 Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Informationen zur Ermittlung, wie viele Slots der Tarif Ihrer App unterstützt, finden Sie unter [App Service-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif die Anzahl von Slots unterstützen, die Ihre App bereits verwendet. Falls Ihre App also beispielsweise mehr als fünf Slots besitzt, können Sie sie nicht auf den Tarif **Standard** herunterskalieren, da der Tarif **Standard** nur fünf Bereitstellungsslots unterstützt.
 
 <a name="Add"></a>
 
-## <a name="add-a-deployment-slot"></a>Hinzufügen eines Bereitstellungsslots
-Die App muss im Tarif **Standard**, **Premium** oder **I** ausgeführt werden, damit mehrere Bereitstellungsslots aktiviert werden können.
+## <a name="add-slot"></a>Hinzufügen eines Slots
+Die App muss im Tarif **Standard**, **Premium** oder **I*** ausgeführt werden, um mehrere Bereitstellungsslots aktivieren zu können.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) das Blatt [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
-2. Wählen Sie die Option **Bereitstellungsslots** aus, und klicken Sie auf **Slot hinzufügen**.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) die Seite [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
+
+2. Wählen Sie im linken Navigationsbereich die Option **Bereitstellungsslots (Vorschau)** aus, und klicken Sie anschließend auf **Slot hinzufügen**.
    
-    ![Neuen Bereitstellungsslot hinzufügen][QGAddNewDeploymentSlot]
+    ![Neuen Bereitstellungsslot hinzufügen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Wenn die App nicht bereits im Tarif **Standard**, **Premium** oder **I** ausgeführt wird, wird eine Meldung angezeigt, in der auf die unterstützten Tarife für die Veröffentlichung in einer Stagingumgebung hingewiesen wird. An diesem Punkt können Sie **Upgrade** auswählen und zur Registerkarte **Skalierung** der App navigieren, bevor Sie den Vorgang fortsetzen.
+   > Wenn die App nicht bereits im Tarif **Standard**, **Premium** oder **I*** ausgeführt wird, wird eine Meldung angezeigt, in der auf die unterstützten Tarife für die Veröffentlichung in einer Stagingumgebung hingewiesen wird. An diesem Punkt können Sie **Upgrade** auswählen und zur Registerkarte **Skalierung** der App navigieren, bevor Sie den Vorgang fortsetzen.
    > 
-   > 
-3. Weisen Sie dem Slot auf dem Blatt **Slot hinzufügen** einen Namen zu, und wählen Sie aus, ob Sie die App-Konfiguration von einem anderen vorhandenen Bereitstellungsslot klonen möchten. Klicken Sie auf das Häkchen, um fortzufahren.
-   
-    ![Konfigurationsquelle][ConfigurationSource1]
-   
-    Beim ersten Hinzufügen eines Slots stehen Ihnen nur zwei Optionen zur Verfügung: Klonen der Konfiguration aus dem Standardslot in einem Produktionsslot oder kein Klonen der Konfiguration.
-    Nachdem Sie mehrere Slots erstellt haben, können Sie die Konfiguration von einem anderen Slot als dem Produktionsslot klonen:
-   
-    ![Konfigurationsquellen][MultipleConfigurationSources]
-4. Klicken Sie auf dem Blatt „Ressourcen“ der App auf **Bereitstellungsslots** und dann auf einen Bereitstellungsslot, um das Blatt „Ressourcen“ dieses Slots zu öffnen. Darauf befinden sich wie bei anderen Apps verschiedene Metriken und Konfigurationsinformationen. Der Name des Slots wird oben auf dem Blatt gezeigt, um Sie daran zu erinnern, dass Sie den Bereitstellungsslot betrachten.
-   
-    ![Titel des Bereitstellungsslots][StagingTitle]
-5. Klicken Sie auf der Seite des Slots auf die App-URL. Beachten Sie, dass der Bereitstellungsslot über einen eigenen Hostnamen verfügt und eine Live-App ist. Weitere Informationen darüber, wie Sie den öffentlichen Zugriff auf den Bereitstellungsslot beschränken, finden Sie unter [App Service-Web-App – Blockieren des Webzugangs auf Nicht-Produktionsslots](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
-Nach der Erstellung des Bereitstellungsslots ist kein Inhalt vorhanden. Sie können die Bereitstellung im Slot von einem anderen Repositoryzweig oder einem ganz anderen Repository vornehmen. Darüber hinaus können Sie die Konfiguration des Slots ändern. Verwenden Sie für Aktualisierungen des Inhalts das Veröffentlichungsprofil oder die Bereitstellungsanmeldeinformationen, die dem Bereitstellungsslot zugeordnet sind.  Beispiel: [Für die Veröffentlichung in diesem Slot können Sie Git verwenden](deploy-local-git.md).
+3. Weisen Sie dem Slot im Dialogfeld **Slot hinzufügen** einen Namen zu, und wählen Sie aus, ob Sie die App-Konfiguration eines anderen vorhandenen Bereitstellungsslots klonen möchten. Klicken Sie auf **Hinzufügen**, um den Vorgang fortzusetzen.
+   
+    ![Konfigurationsquelle](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+   
+    Sie können die Konfiguration aus einem beliebigen vorhandenen Slot klonen. Zu den Einstellungen, die geklont werden können, zählen App-Einstellungen, Verbindungszeichenfolgen, Sprachframework-Versionen, Websockets, die HTTP-Version und die Bitanzahl der Plattform.
+
+4. Klicken Sie nach dem Hinzufügen des Slots auf **Schließen**, um das Dialogfeld zu schließen. Der neue Slot wird nun auf der Seite **Bereitstellungsslots (Vorschau)** angezeigt. **Datenverkehr %** ist für den neuen Slot standardmäßig auf „0“ festgelegt, sodass der gesamte Kundendatenverkehr an den Produktionsslot weitergeleitet wird.
+
+5. Klicken Sie auf den neuen Bereitstellungsslot, um die Ressourcenseite dieses Slots zu öffnen.
+   
+    ![Titel des Bereitstellungsslots](./media/web-sites-staged-publishing/StagingTitle.png)
+
+    Der Stagingslot verfügt genau wie jede andere App Service-App über eine Verwaltungsseite. Sie können die Konfiguration des Slots ändern. Am oberen Seitenrand wird der Name des Slots angezeigt, um Sie daran zu erinnern, dass es sich um den Bereitstellungsslot handelt.
+
+6. Klicken Sie auf der Ressourcenseite des Slots auf die App-URL. Der Bereitstellungsslot besitzt einen eigenen Hostnamen und ist außerdem eine Live-App. Informationen zum Beschränken des öffentlichen Zugriffs auf den Bereitstellungsslot finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).
+
+Der neue Bereitstellungsslot hat keinen Inhalt. Das gilt auch, wenn Sie die Einstellungen eines anderen Slots klonen. Beispiel: [Für die Veröffentlichung in diesem Slot können Sie Git verwenden](app-service-deploy-local-git.md). Die Bereitstellung im Slot kann aus einem anderen Repository-Branch oder aus einem anderen Repository erfolgen. 
 
 <a name="AboutConfiguration"></a>
 
 ## <a name="which-settings-are-swapped"></a>Welche Einstellungen werden ausgetauscht?
-Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann die geklonte Konfiguration bearbeitet werden. Darüber hinaus folgen einige Konfigurationselemente bei einem Austausch dem Inhalt (nicht Slot-spezifisch), während andere Konfigurationselemente nach einem Austausch beim Slot verbleiben (Slot-spezifisch). Im Anschluss sind die Einstellungen aufgeführt, die sich beim Austauschen der Slots ändert.
+Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann die geklonte Konfiguration bearbeitet werden. Darüber hinaus folgen einige Konfigurationselemente bei einem Austausch dem Inhalt (nicht slotspezifisch), während andere Konfigurationselemente nach einem Austausch beim Slot verbleiben (slotspezifisch). Im Anschluss sind die Einstellungen aufgeführt, die sich beim Austauschen der Slots ändert.
 
 **Einstellungen, die ausgetauscht werden**:
 
@@ -75,6 +82,7 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 * Verbindungszeichenfolgen (können so konfiguriert werden, dass sie beim Slot verbleiben)
 * Handlerzuordnungen
 * Überwachungs- und Diagnoseeinstellungen
+* Öffentliche Zertifikate
 * WebJobs-Inhalte
 * Hybridverbindungen
 
@@ -82,95 +90,113 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 
 * Veröffentlichungsendpunkte
 * Benutzerdefinierte Domänennamen
-* SSL-Zertifikate und -Bindungen
+* Private Zertifikate und SSL-Bindungen
 * Skalierungseinstellungen
 * WebJobs-Planer
 
-Um eine App-Einstellung oder eine Verbindungszeichenfolge so zu konfigurieren, dass sie beim Slot verbleibt (nicht ausgetauscht wird), greifen Sie auf das Blatt **Anwendungseinstellungen** für einen bestimmten Slot zu, und aktivieren Sie dann das Kontrollkästchen **Sloteinstellung** für die Konfigurationselemente, die beim Slot verbleiben sollten. Das Markieren eines Konfigurationselements als slotspezifisch sorgt dafür, dass dieses Element in allen Bereitstellungsslots für die App als nicht austauschbar festgelegt wird.
+<!-- VNET, IP restrictions, CORS, hybrid connections? -->
 
-![Slot-Einstellungen][SlotSettings]
+Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge so konfigurieren möchten, dass sie bei einem bestimmten Slot verbleibt (also nicht ausgetauscht wird), navigieren Sie zur Seite **Anwendungseinstellungen** für den gewünschten Slot, und aktivieren Sie das Kontrollkästchen **Sloteinstellung** für die Konfigurationselemente, die bei dem Slot verbleiben sollten. Als slotspezifisch markierte Konfigurationselemente werden von App Service nicht ausgetauscht.
+
+![Sloteinstellung](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-deployment-slots"></a>Überführen von Bereitstellungsslots 
-Auf dem Blatt „Ressourcen“ Ihrer App können Sie Bereitstellungsslots in der Ansicht **Übersicht** oder **Bereitstellungsslots** austauschen.
+## <a name="swap-two-slots"></a>Austauschen von zwei Slots 
+Bereitstellungsslots können auf der Seite **Bereitstellungsslots (Vorschau)** Ihrer App ausgetauscht werden. 
+
+Slots können auch auf den Seiten **Übersicht** und **Bereitstellungsslots** ausgetauscht werden (momentan allerdings nur über die alte Benutzeroberfläche). In dieser Anleitung wird die Verwendung der neuen Benutzeroberfläche auf der Seite **Bereitstellungsslots (Vorschau)** behandelt.
 
 > [!IMPORTANT]
-> Bevor Sie eine App aus einem Bereitstellungsslot in die Produktion überführen, stellen Sie sicher, dass alle nicht slotspezifischen Einstellungen im Austauschziel genau wie gewünscht konfiguriert sind.
+> Vergewissern Sie sich vor dem Überführen einer App aus einem Bereitstellungsslot in die Produktion, dass alle Einstellungen im Austauschziel wie gewünscht konfiguriert sind.
 > 
 > 
 
-1. Um Bereitstellungsslots auszutauschen, klicken Sie auf der Befehlsleiste der App oder der Befehlsleiste eines Bereitstellungsslots auf die Schaltfläche **Austauschen**.
+Gehen Sie zum Austauschen von Bereitstellungsslots wie folgt vor:
+
+1. Navigieren Sie zur Seite **Bereitstellungsslots (Vorschau)** Ihrer App, und klicken Sie auf **Austauschen**.
    
-    ![Schaltfläche Swap][SwapButtonBar]
+    ![Schaltfläche Swap](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-2. Stellen Sie sicher, dass die Austauschquelle und das Austauschziel ordnungsgemäß festgelegt wurden. Normalerweise ist das Austauschziel ein Produktionsslot. Klicken Sie auf **OK** , um den Vorgang abzuschließen. Wenn der Vorgang abgeschlossen ist, wurden die Bereitstellungsslots ausgetauscht.
+    Im Dialogfeld **Austauschen** werden Einstellungen in den ausgewählten Quell- und Zielslots angezeigt, die ausgetauscht werden.
 
-    ![Vollständiger Austausch](./media/web-sites-staged-publishing/SwapImmediately.png)
+2. Wählen Sie die gewünschten Slots für **Quelle** und **Ziel** aus. Bei dem Ziel handelt es sich in der Regel um einen Produktionsslot. Klicken Sie auch auf die Registerkarten **Quelländerungen** und **Zieländerungen**, und vergewissern Sie sich, dass die Konfigurationsänderungen Ihren Erwartungen entsprechen. Klicken Sie anschließend auf **Austauschen**, um die Slots umgehend auszutauschen.
 
-    Informationen zum Austauschtyp **Mit Vorschau austauschen** finden Sie unter [Mit Vorschau austauschen (Austausch mit mehreren Phasen)](#Multi-Phase).  
+    ![Abschließen des Austausch](./media/web-sites-staged-publishing/SwapImmediately.png)
+
+    Wenn Sie sich vor dem tatsächlichen Austausch ansehen möchten, wie der Zielslot mit den neuen Einstellungen funktioniert, klicken Sie nicht auf **Austauschen**, sondern führen Sie die Schritte unter [Mit Vorschau austauschen](#Multi-Phase) aus.
+
+3. Klicken Sie abschließend auf **Schließen**, um das Dialogfeld zu schließen.
 
 <a name="Multi-Phase"></a>
 
-## <a name="swap-with-preview-multi-phase-swap"></a>Mit Vorschau austauschen (Austausch mit mehreren Phasen)
-
-Das Feature „Mit Vorschau austauschen“ bzw. Austausch mit mehreren Phasen vereinfacht die Überprüfung slotspezifischer Konfigurationselemente, wie z.B. Verbindungszeichenfolgen.
-Für unternehmenswichtige Workloads möchten Sie ggf. prüfen, ob sich die App wie erwartet verhält, wenn die Konfiguration des Produktionsslots angewendet wird. Eine solche Überprüfung müssen Sie durchführen, *ehe* die App in die Produktionsumgebung überführt wird. „Mit Vorschau austauschen“ ist das Feature, das Sie hierfür brauchen.
+### <a name="swap-with-preview-multi-phase-swap"></a>Mit Vorschau austauschen (Austausch mit mehreren Phasen)
 
 > [!NOTE]
 > „Mit Vorschau austauschen“ wird in Web-Apps unter Linux nicht unterstützt.
 
-Bei Verwendung der Option **Mit Vorschau austauschen** (siehe [Austauschen von Bereitstellungsslots](#Swap)) führt App Service Folgendes aus:
+Vergewissern Sie sich vor der Überführung in die Produktion (Zielslot), dass die App mit den ausgetauschten Einstellungen funktioniert, bevor der tatsächliche Austausch erfolgt. Der Quellslot wird auch vor Abschluss des Austauschs vorbereitet, was für unternehmenskritische Anwendungen von Vorteil ist.
+
+Bei einem Austausch mit Vorschau geschieht Folgendes, wenn Sie den Austausch starten:
 
 - Der Zielslot bleibt unverändert, sodass die in diesem Slot vorhandene Workload (beispielsweise Produktion) nicht beeinträchtigt wird.
-- Die Konfigurationselemente des Zielslots werden auf den Quellslot angewendet, einschließlich der slotspezifischen Verbindungszeichenfolgen und App-Einstellungen.
-- Die Workerprozesse für den Quellslot werden unter Verwendung der zuvor erwähnten Konfigurationselemente neu gestartet.
-- Nach Abschluss des Austauschs: Der vorbereitete Quellslot wird in den Zielslot verschoben. Der Zielslot wird wie bei einem manuellen Austausch in den Quellslot verschoben.
-- Wenn Sie den Austausch abbrechen: Die Konfigurationselemente des Quellslots werden erneut auf den Quellslot angewendet.
+- Die Konfigurationselemente des Zielslots werden auf den Quellslot angewendet (einschließlich der slotspezifischen Verbindungszeichenfolgen und App-Einstellungen).
+- Die Workerprozesse für den Quellslot werden unter Verwendung dieser Konfigurationselemente neu gestartet. Sie können zum Quellslot navigieren und sich die mit Konfigurationsänderungen ausgeführte App ansehen.
 
-Sie können eine Vorschau anzeigen, wie genau sich die App mit der Konfiguration des Zielslot verhält. Schließen Sie den Austausch nach Abschluss der Validierung in einem gesonderten Schritt ab. Dieser Schritt hat den zusätzlichen Vorteil, dass der Quellslot bereits mit der gewünschten Konfiguration vorbereitet ist, sodass es auf den Clients zu keinen Ausfallzeiten kommt.  
+Wenn Sie den Austausch in einem separaten Schritt abschließen, überführt App Service den vorbereiteten Quellslot in den Zielslot und den Zielslot in den Quellslot. Wenn Sie den Austausch abbrechen, wendet App Service die Konfigurationselemente des Quellslots wieder auf den Quellslot an.
 
-Beispiele für Azure PowerShell-Cmdlets für den mehrstufigen Austausch sind im Abschnitt „Azure-PowerShell-Cmdlets für Bereitstellungsslots“ enthalten.
+Gehen Sie für einen Austausch mit Vorschau wie folgt vor:
+
+1. Führen Sie die Schritte unter [Überführen von Bereitstellungsslots](#Swap) aus, wählen Sie dabei jedoch **Tausch mit Vorschau ausführen** aus.
+
+    ![Austauschen mit Vorschau](./media/web-sites-staged-publishing/SwapWithPreview.png)
+
+    Das Dialogfeld zeigt, wie sich die Konfiguration im Quellslot ändert (Phase 1) und wie sich der Quell- und der Zielslot ändern (Phase 2).
+
+2. Wenn Sie bereit sind, den Austausch zu starten, klicken Sie auf **Tausch starten**.
+
+    Sie werden im Dialogfeld über den Abschluss von Phase 1 informiert. Navigieren Sie zu `https://<app_name>-<source-slot-name>.azurewebsites.net`, um sich eine Vorschau des Austauschs im Quellslot anzusehen. 
+
+3. Wenn Sie bereit sind, den ausstehenden Austausch abzuschließen, wählen Sie unter **Austauschaktion** die Option **Austausch abschließen** aus, und klicken Sie anschließend auf **Austausch abschließen** .
+
+    Wenn Sie einen ausstehenden Austausch abbrechen möchten, wählen Sie stattdessen **Austausch abbrechen** aus, und klicken Sie anschließend auf **Austausch abbrechen**.
+
+4. Klicken Sie abschließend auf **Schließen**, um das Dialogfeld zu schließen.
+
+Informationen zum Automatisieren eines mehrstufigen Austauschs finden Sie unter [Automatisieren mit PowerShell](#automate-with-azure-powershell).
+
+<a name="Rollback"></a>
+
+## <a name="roll-back-swap"></a>Ausführen eines Rollbacks für einen Austausch
+Sollten nach einem Slotaustausch Fehler im Zielslot (etwa im Produktionsslot) auftreten, stellen Sie für die Slots den Zustand vor dem Austausch wieder her, indem Sie die beiden gleichen Slots sofort erneut austauschen.
 
 <a name="Auto-Swap"></a>
 
 ## <a name="configure-auto-swap"></a>Konfigurieren des automatischen Austauschs
-Das Feature „Automatisch tauschen“ rationalisiert DevOps-Szenarien, bei denen Ihre App ständig ohne Kaltstarts und ohne Ausfallzeiten für Endkunden der App bereitgestellt werden soll. Wenn ein Bereitstellungsslot in der Produktion für „Automatisch tauschen“ konfiguriert wurde, überführt App Service bei jeder Codeaktualisierung die App per Push in die Produktion, nachdem sie bereits im Slot vorbereitet wurde.
-
-> [!IMPORTANT]
-> Wenn Sie Auto Swap für einen Slot aktivieren, stellen Sie sicher, dass die Slotkonfiguration genau der erforderlichen Konfiguration für den Zielslot (normalerweise der Produktionsslot) entspricht.
-> 
-> 
 
 > [!NOTE]
-> „Automatisch tauschen“ wird in Web-Apps unter Linux nicht unterstützt.
+> Automatisches Austauschen wird in Web-Apps unter Linux nicht unterstützt.
 
-Das Konfigurieren von Auto Swap für einen Slot ist einfach. Folgen Sie diesen Schritten:
+Das Feature „Automatisch tauschen“ rationalisiert DevOps-Szenarien, bei denen Ihre App kontinuierlich ohne Kaltstarts und ohne Ausfallzeiten für Endkunden der App bereitgestellt werden soll. Bei automatischer Überführung eines Slots in die Produktion gilt Folgendes: Sobald Sie Ihre Codeänderungen per Push an diesen Slot übertragen, überführt App Service die App automatisch in die Produktion, nachdem sie im Quellslot vorbereitet wurde.
 
-1. Wählen Sie in **Bereitstellungsslots** einen Nicht-Produktionsslot und auf dem Blatt „Ressourcen“ dieses Slots **Anwendungseinstellungen** aus.  
-   
-    ![][Autoswap1]
-2. Wählen Sie**Ein** für **Automatisch tauschen** sowie unter **Slot für automatischen Tausch** den gewünschten Zielslot aus, und klicken Sie auf der Befehlsleiste auf **Speichern**. Stellen Sie sicher, dass die Konfiguration für den Slot genau der für den Zielslot vorgesehenen Konfiguration entspricht.
-   
-    Auf der Registerkarte **Benachrichtigungen** blinkt in grüner Schrift der Text **ERFOLGREICH**, sobald der Vorgang abgeschlossen wurde.
-   
-    ![][Autoswap2]
-   
    > [!NOTE]
-   > Um „Automatisch tauschen“ für Ihre App zu testen, können Sie zunächst unter **Slot für automatischen Tausch** einen Nicht-Produktionszielslot auswählen, um sich mit dem Feature vertraut zu machen.  
+   > Es empfiehlt sich, das Feature „Automatisch tauschen“ zunächst in einem produktionsfremden Zielslot zu testen, bevor Sie es für den Produktionsslot konfigurieren.
    > 
-   > 
-3. Führen Sie einen Code-Push für diesen Bereitstellungsslot aus. Der automatische Austausch erfolgt nach kurzer Zeit, und die URL Ihres Zielslots spiegelt die Änderung wider.
 
-<a name="Rollback"></a>
+Gehen Sie zum Konfigurieren des Features „Automatisch tauschen“ wie folgt vor:
 
-## <a name="roll-back-a-production-app-after-swap"></a>Ausführen eines Rollbacks für eine Produktions-App nach dem Austausch
-Wenn nach dieser Aktion Fehler in der Produktionswebsite feststellen, führen Sie ein Rollback in den Zustand vor dem Austausch aus, indem Sie dieselben beiden Slots sofort austauschen.
+1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots (Vorschau)** > *\<gewünschter Quellslot>* > **Anwendungseinstellungen** aus.
+   
+2. Wählen Sie unter **Automatisch tauschen** die Option **Ein** und anschließend unter **Slot für automatischen Tausch** den gewünschten Zielslot aus, und klicken Sie dann auf der Befehlsleiste auf **Speichern**. 
+   
+    ![](./media/web-sites-staged-publishing/AutoSwap02.png)
+
+3. Führen Sie einen Codepushvorgang an den Quellslot aus. Der automatische Austausch erfolgt nach kurzer Zeit, und die URL Ihres Zielslots spiegelt die Änderung wider.
 
 <a name="Warm-up"></a>
 
-## <a name="custom-warm-up-before-swap"></a>Benutzerdefiniertes Aufwärmen vor dem Austausch
-Bei Verwendung von [Auto-Swap](#Auto-Swap) erfordern einige Apps benutzerdefinierte Aufwärmaktionen. Über das Konfigurationselement `applicationInitialization` in der Datei „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben, die vor dem Empfang einer Anforderung ausgeführt werden. Der Austauschvorgang wartet, bis diese benutzerdefinierte Aufwärmphase abgeschlossen ist. Im Folgenden finden Sie ein Beispielfragment aus der Datei „Web.config“.
+## <a name="custom-warm-up"></a>Benutzerdefinierte Aufwärmphase
+Bei Verwendung des Features [Automatisch tauschen](#Auto-Swap) müssen für einige Apps vor dem Austausch unter Umständen benutzerdefinierte Vorbereitungsschritte ausgeführt werden. Mithilfe des Konfigurationselements `applicationInitialization` in „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben, die ausgeführt werden sollen. Der Austausch mit dem Zielslot erfolgt dann erst nach Abschluss dieser benutzerdefinierten Aufwärmphase. Im Folgenden finden Sie ein Beispielfragment aus der Datei „Web.config“.
 
     <system.webServer>
         <applicationInitialization>
@@ -179,54 +205,89 @@ Bei Verwendung von [Auto-Swap](#Auto-Swap) erfordern einige Apps benutzerdefinie
         </applicationInitialization>
     </system.webServer>
 
-## <a name="monitor-swap-progress"></a>Überwachen des Austauschstatus
+## <a name="monitor-swap"></a>Überwachen des Austauschs
 
-Der Austauschvorgang kann ggf. etwas dauern – beispielsweise, wenn die App, die ausgetauscht wird, eine lange Aufwärmphase besitzt. Weitere Informationen zu Austauschvorgängen finden Sie im [Azure-Portal](https://portal.azure.com) im [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md).
+Bei länger dauernden Austauschvorgängen finden Sie Informationen zum Austauschvorgang im [Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-Klicken Sie im Portal auf der Seite Ihrer App im linken Navigationsbereich auf **Aktivitätsprotokoll**.
+Klicken Sie im Portal auf der Ressourcenseite Ihrer App im linken Navigationsbereich auf **Aktivitätsprotokoll**.
 
-Ein Austauschvorgang wird in der Protokollabfrage als `Slotsswap` angezeigt. Sie können die Abfrage erweitern und Untervorgänge oder Fehler auswählen, um die entsprechenden Details anzuzeigen.
+Ein Austauschvorgang wird in der Protokollabfrage als `Swap Web App Slots` angezeigt. Sie können die Abfrage erweitern und Untervorgänge oder Fehler auswählen, um die entsprechenden Details anzuzeigen.
 
-![Aktivitätsprotokoll für Slotaustausch](media/web-sites-staged-publishing/activity-log.png)
+## <a name="route-traffic"></a>Weiterleiten von Datenverkehr
+
+Standardmäßig werden alle an die Produktions-URL Ihrer App (`http://<app_name>.azurewebsites.net`) gerichteten Clientanforderungen an den Produktionsslot weitergeleitet. Sie können einen Teil des Datenverkehrs an einen anderen Slot weiterleiten. Dieses Feature ist hilfreich, wenn Sie Benutzerfeedback zu einem neuen Update benötigen, das noch nicht für die Veröffentlichung in der Produktionsumgebung bereit ist.
+
+### <a name="route-production-traffic-automatically"></a>Automatisches Weiterleiten von Produktionsdatenverkehr
+
+Gehen Sie zum automatischen Weiterleiten von Produktionsdatenverkehr wie folgt vor:
+
+1. Navigieren Sie zur Ressourcenseite Ihrer App, und wählen Sie **Bereitstellungsslots (Vorschau)** aus.
+
+2. Geben Sie in der Spalte **Datenverkehr %** des gewünschten Zielslots für die Weiterleitung durch einen Prozentwert (zwischen 0 und 100) an, welcher Anteil des gesamten Datenverkehrs weitergeleitet werden soll. Klicken Sie auf **Speichern**.
+
+    ![](./media/web-sites-staged-publishing/RouteTraffic.png)
+
+Nach dem Speichern der Einstellung wird der angegebene Prozentsatz von Clients nach dem Zufallsprinzip an den produktionsfremden Slot weitergeleitet. 
+
+Sobald ein Client automatisch an einen bestimmten Slot weitergeleitet wird, ist er für die Dauer der Clientsitzung auf diesen Slot festgelegt. Im Clientbrowser sehen Sie anhand des Cookies `x-ms-routing-name` in Ihren HTTP-Headern, mit welchem Slot Ihre Sitzung verknüpft ist. Anforderungen, die an den Stagingslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=staging`. Anforderungen, die an den Produktionsslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=self`.
+
+### <a name="route-production-traffic-manually"></a>Manuelles Weiterleiten von Produktionsdatenverkehr
+
+Neben dem automatischen Datenverkehrsrouting kann App Service Anforderungen auch an einen bestimmten Slot weiterleiten. Dies ist hilfreich, wenn Sie Ihren Benutzern ermöglichen möchten, die Beta-App zu nutzen oder die Nutzung zu beenden. Zur manuellen Weiterleitung von Produktionsdatenverkehr wird der Abfrageparameter `x-ms-routing-name` verwendet.
+
+Damit Benutzer die Nutzung Ihrer Beta-App beenden können, können Sie z. B. folgenden Link auf Ihre Webseite bereitstellen:
+
+```HTML
+<a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
+```
+
+Die Zeichenfolge `x-ms-routing-name=self` gibt den Produktionsslot an. Wenn der Clientbrowser auf den Link zugreift, wird er nicht nur an den Produktionsslot weitergeleitet, auch jede nachfolgende Anforderung erhält das Cookie `x-ms-routing-name=self`, das die Sitzung mit dem Produktionsslot verknüpft.
+
+Damit Benutzer Ihre Beta-App nutzen können, legen Sie den gleichen Abfrageparameter auf den Namen des nicht produktiven Slots fest, z. B.:
+
+```
+<webappname>.azurewebsites.net/?x-ms-routing-name=staging
+```
 
 <a name="Delete"></a>
 
-## <a name="delete-a-deployment-slot"></a>Löschen eines Bereitstellungsslots
-Klicken Sie auf dem geöffneten Blatt eines Bereitstellungsslots auf **Übersicht** (die Standardseite) und dann auf der Befehlsleiste auf **Löschen**.  
+## <a name="delete-slot"></a>Löschen eines Slots
 
-![Löschen eines Bereitstellungsslots][DeleteStagingSiteButton]
+Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots (Vorschau)** > *\<zu löschender Slot>* > **Übersicht** aus. Klicken Sie auf der Befehlsleiste auf **Löschen**.  
+
+![Löschen eines Bereitstellungsslots](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
 <a name="PowerShell"></a>
 
-## <a name="automate-with-azure-powershell"></a>Automatisieren mit Azure PowerShell
+## <a name="automate-with-powershell"></a>Automatisieren mit PowerShell
 
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Azure über Windows PowerShell bietet, einschließlich Unterstützung der Verwaltung von Bereitstellungsslots für Azure App Service.
 
-* Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](/powershell/azure/overview).  
+Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 - - -
-### <a name="create-a-web-app"></a>Erstellen einer Web-App
+### <a name="create-web-app"></a>Web-App erstellen
 ```PowerShell
 New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
-### <a name="create-a-deployment-slot"></a>Erstellen eines Bereitstellungsslots
+### <a name="create-slot"></a>Erstellen eines Slots
 ```PowerShell
 New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
-### <a name="initiate-a-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Einleiten eines Austauschs mit Überprüfung (Austausch in mehreren Phasen) und Anwenden der Konfiguration des Zielslots auf den Quellslot
+### <a name="initiate-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Initiieren des Austauschs mit Überprüfung (Austausch in mehreren Phasen) und Anwenden der Konfiguration des Zielslots auf den Quellslot
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Abbrechen eines ausstehenden Austauschs (Austausch mit Überprüfung) und Wiederherstellen der Konfiguration des Quellslots
+### <a name="cancel-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Abbrechen des ausstehenden Austauschs (Austausch mit Überprüfung) und Wiederherstellen der Konfiguration des Quellslots
 ```PowerShell
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
@@ -244,7 +305,7 @@ Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Calle
 ```
 
 - - -
-### <a name="delete-deployment-slot"></a>Löschen von Bereitstellungsslots
+### <a name="delete-slot"></a>Löschen eines Slots
 ```
 Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
@@ -254,27 +315,9 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 
 <a name="CLI"></a>
 
-## <a name="automate-with-azure-cli"></a>Automatisieren mit der Azure CLI
+## <a name="automate-with-cli"></a>Automatisieren mithilfe der Befehlszeilenschnittstelle
 
 Informationen zu Befehlen der [Azure CLI](https://github.com/Azure/azure-cli) für Bereitstellungsslots finden Sie unter [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure App Service-Web-App – Blockieren des Webzugriffs auf Nicht-Produktionsslots](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
-[Einführung in App Service unter Linux](../app-service/containers/app-service-linux-intro.md)  
-[Kostenlose Microsoft Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
-
-<!-- IMAGES -->
-[QGAddNewDeploymentSlot]:  ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png
-[AddNewDeploymentSlotDialog]: ./media/web-sites-staged-publishing/AddNewDeploymentSlotDialog.png
-[ConfigurationSource1]: ./media/web-sites-staged-publishing/ConfigurationSource1.png
-[MultipleConfigurationSources]: ./media/web-sites-staged-publishing/MultipleConfigurationSources.png
-[SiteListWithStagedSite]: ./media/web-sites-staged-publishing/SiteListWithStagedSite.png
-[StagingTitle]: ./media/web-sites-staged-publishing/StagingTitle.png
-[SwapButtonBar]: ./media/web-sites-staged-publishing/SwapButtonBar.png
-[SwapConfirmationDialog]:  ./media/web-sites-staged-publishing/SwapConfirmationDialog.png
-[DeleteStagingSiteButton]: ./media/web-sites-staged-publishing/DeleteStagingSiteButton.png
-[SwapDeploymentsDialog]: ./media/web-sites-staged-publishing/SwapDeploymentsDialog.png
-[Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
-[Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
-[SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
-
+[Blockieren des Zugriffs auf produktionsfremde Slots](app-service-ip-restrictions.md)

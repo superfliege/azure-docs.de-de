@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: e922e2c18ebb87783bf0ed229ce7107c4577c994
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15767107a5c535cfda98da2a5177e15ca221f35d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884805"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214693"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Log Analytics-Abfragen
 
@@ -38,7 +38,7 @@ Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 |Kurzform   | Zeiteinheit    |
 |:---|:---|
 |d           | day          |
-|  h.           | hour         |
+|h.           | hour         |
 |m           | Minute       |
 |s           | Sekunde       |
 |ms          | Millisekunde  |
@@ -133,7 +133,7 @@ Event
 
 Dadurch werden die folgenden Ergebnisse erzeugt:
 
-| timestamp|count_|
+|timestamp|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7.136|
 |2018-07-29T00:00:00.000|12.315|
@@ -157,7 +157,7 @@ Event
 | Konvertieren von Datentypen | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | Runden eines Werts auf die bin-Größe | [bin](/azure/kusto/query/binfunction) |
 | Abrufen einer bestimmten Datums oder einer bestimmten Uhrzeit | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
-| Abrufen eines Teils des Werts | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweek) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| Abrufen eines Teils des Werts | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
 | Abrufen eines Datums relativ zum Wert  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Nächste Schritte

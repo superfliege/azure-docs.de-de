@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: df4f6066a4bf03f6b09777f3556c52a237501592
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497651"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052341"
 ---
 # <a name="using-dns-in-azure-stack"></a>Verwenden von DNS in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack unterstützt die folgenden Domain Name System-Features (DNS):
 
 * DNS-Hostnamenauflösung
-* Erstellen und Verwalten von DNS-Zonen und -Einträgen mithilfe der API
+* Erstellen und Verwalten von DNS-Zonen und -Einträgen mit der API
 
 ## <a name="support-for-dns-hostname-resolution"></a>Unterstützung für DNS-Hostnamenauflösung
 
@@ -54,27 +54,23 @@ Sie können DNS-Zonen und -Einträge in Azure Stack erstellen und verwalten.
 
 Azure Stack stellt ähnlich wie Azure einen DNS-Dienst bereit. Dabei werden APIs verwendet, die mit den Azure DNS-APIs konsistent sind.  Durch das Hosten Ihrer Domänen in Azure Stack-DNS können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs und Tools verwalten. Sie können auch die gleiche Abrechnung und den gleichen Support wie für die anderen Azure-Dienste verwenden.
 
-Die Azure Stack-DNS-Infrastruktur ist kompakter als in Azure. Die Größe und der Speicherort einer Azure Stack-Bereitstellung wirken sich auf den Bereich, den Umfang und die Leistung von DNS aus. Dies bedeutet auch, dass Leistung, Verfügbarkeit, globale Verteilung und Hochverfügbarkeit von Bereitstellung zu Bereitstellung variieren können.
+Die Azure Stack-DNS-Infrastruktur ist kompakter als in Azure. Die Größe und der Speicherort einer Azure Stack-Bereitstellung wirken sich auf den Bereich, den Umfang und die Leistung von DNS aus. Das bedeutet auch, dass Leistung, Verfügbarkeit, globale Verteilung und Hochverfügbarkeit von Bereitstellung zu Bereitstellung variieren können.
 
 ## <a name="comparison-with-azure-dns"></a>Vergleich mit dem Azure-DNS
 
-DNS in Azure Stack ist DNS in Azure ähnlich, aber es gibt wichtige Ausnahmen.
+DNS in Azure Stack ist DNS in Azure ähnlich, aber es gibt ein paar wichtige Ausnahmen:
 
-* **AAAA-Einträge werden nicht unterstützt**
+* **AAAA-Einträge werden nicht unterstützt:** Azure Stack unterstützt keine AAAA-Einträge, weil Azure Stack keine Unterstützung von IPv6-Adressen aufweist. Dies ist ein wichtiger Unterschied zwischen DNS in Azure und Azure Stack.
 
-    Azure Stack unterstützt keine AAAA-Einträge, weil Azure Stack keine Unterstützung von IPv6-Adressen aufweist. Dies ist ein wichtiger Unterschied zwischen DNS in Azure und Azure Stack.
-* **Nicht mehrinstanzenfähig**
+* **Nicht mehrinstanzenfähig:** Der DNS-Dienst in Azure Stack ist nicht mehrinstanzenfähig. Es ist also nicht möglich, dass für jeden Mandanten die gleiche DNS-Zone erstellt wird. Dies ist nur für das erste Abonnement erfolgreich, mit dem versucht wird, die Zone zu erstellen. Nachfolgende Anforderungen schlagen fehl. Dies ist ein wichtiger Unterschied zwischen DNS in Azure und Azure Stack.
 
-    Der DNS-Dienst in Azure Stack ist nicht mehrinstanzenfähig. Es ist also nicht möglich, dass für jeden Mandanten die gleiche DNS-Zone erstellt wird. Dies ist nur für das erste Abonnement erfolgreich, mit dem versucht wird, die Zone zu erstellen. Nachfolgende Anforderungen schlagen fehl. Dies ist ein wichtiger Unterschied zwischen DNS in Azure und Azure Stack.
-* **Tags, Metadaten und ETags**
-
-    Außerdem gibt es kleinere Unterschiede in Bezug darauf, wie Azure Stack Tags, Metadaten, ETags und Grenzwerte verarbeitet.
+* **Tags, Metadaten und ETags:** Außerdem gibt es kleinere Unterschiede in Bezug darauf, wie Azure Stack Tags, Metadaten, ETags und Grenzwerte verarbeitet.
 
 Weitere Informationen zu Azure DNS finden Sie unter [DNS-Zonen und -Einträge](../../dns/dns-zones-records.md).
 
 ### <a name="tags"></a>Tags
 
-Das Azure Stack-DNS unterstützt die Verwendung von Azure Resource Manager-Tags in DNS-Zonenressourcen. Tags für DNS-Ressourceneintragssätze werden nicht unterstützt, aber als Alternative werden „Metadaten“ für DNS-Ressourceneintragssätze wie unten beschrieben unterstützt.
+Das Azure Stack-DNS unterstützt die Verwendung von Azure Resource Manager-Tags in DNS-Zonenressourcen. Tags für DNS-Ressourceneintragssätze werden nicht unterstützt. Als Alternative werden jedoch **Metadaten** für DNS-Ressourceneintragssätze unterstützt, wie im nächsten Abschnitt beschrieben.
 
 ### <a name="metadata"></a>Metadaten
 
@@ -84,9 +80,9 @@ Das Azure Stack-DNS unterstützt das Hinzufügen von Ressourceneintragssätzen m
 
 Angenommen, zwei Personen oder zwei Prozesse versuchen, einen DNS-Eintrag zur gleichen Zeit zu ändern. Welcher hat Vorrang? Und weiß die Person, die Vorrang erhalten hat, dass sie die Änderungen einer anderen Person überschrieben hat?
 
-Das Azure Stack-DNS verwendet *ETags*, um gleichzeitige Änderungen an derselben Ressource sicher verarbeiten zu können. ETags unterscheiden sich von Azure Resource Manager-*Tags*. Jeder DNS-Ressource (Zone oder Datensatzgruppe) ist ein ETag zugeordnet. Wenn eine Ressource abgerufen wird, wird auch ihr ETag abgerufen. Beim Aktualisieren einer Ressource können Sie auswählen, dass die ETags wieder zurückgegeben werden sollen, damit das Azure Stack-DNS überprüfen kann, ob das ETag auf dem Server übereinstimmt. Da jedes Update einer Ressource dazu führt, dass das ETag erneut generiert wird, weist eine Nichtübereinstimmung des ETags darauf hin, dass eine gleichzeitige Änderung vorgenommen wurde. ETags können auch beim Erstellen einer neuen Ressource verwendet werden, um sicherzustellen, dass die Ressource nicht bereits vorhanden ist.
+Das Azure Stack-DNS verwendet *ETags*, um gleichzeitige Änderungen an derselben Ressource sicher verarbeiten zu können. ETags unterscheiden sich von Azure Resource Manager-*Tags*. Jeder DNS-Ressourcen (Zone oder Datensatzgruppe) ist ein ETag zugeordnet. Wenn eine Ressource abgerufen wird, wird auch ihr ETag abgerufen. Beim Aktualisieren einer Ressource können Sie auswählen, dass die ETags wieder zurückgegeben werden sollen, damit das Azure Stack-DNS überprüfen kann, ob das ETag auf dem Server übereinstimmt. Da jedes Update einer Ressource dazu führt, dass das ETag erneut generiert wird, weist eine Nichtübereinstimmung des ETags darauf hin, dass eine gleichzeitige Änderung vorgenommen wurde. ETags können auch beim Erstellen einer neuen Ressource verwendet werden, um sicherzustellen, dass die Ressource nicht bereits vorhanden ist.
 
-Standardmäßig verwenden die PowerShell-Cmdlets des Azure Stack-DNS ETags, um gleichzeitige Änderungen an Zonen und Ressourceneintragssätzen zu blockieren. Der optionale Switch **-Overwrite** kann verwendet werden, um ETag-Überprüfungen zu unterdrücken. In diesem Fall werden gleichzeitig vorgenommene Änderungen überschrieben.
+Standardmäßig verwenden die PowerShell-Cmdlets des Azure Stack-DNS ETags, um gleichzeitige Änderungen an Zonen und Ressourceneintragssätzen zu blockieren. Mit dem optionalen Switch `-Overwrite` können ETag-Überprüfungen unterdrückt werden. In diesem Fall werden gleichzeitig vorgenommene Änderungen überschrieben.
 
 Auf Ebene der REST-API des Azure Stack-DNS werden ETags mithilfe von HTTP-Headern angegeben. Ihr Verhalten wird in der folgenden Tabelle beschrieben:
 
@@ -109,4 +105,4 @@ Bei Verwendung des Azure Stack-DNS gelten folgende Standardgrenzwerte:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Introducing iDNS for Azure Stack](azure-stack-understanding-dns.md) (Einführung in iDNS für Azure Stack)
+- [Introducing iDNS for Azure Stack](azure-stack-understanding-dns.md) (Einführung in iDNS für Azure Stack)

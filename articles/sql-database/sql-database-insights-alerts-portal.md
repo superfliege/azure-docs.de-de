@@ -1,28 +1,31 @@
 ---
-title: Verwenden des Azure-Portals zum Erstellen von SQL-Datenbankwarnungen | Microsoft Docs
+title: Einrichten von Warnungen und Benachrichtigungen über das Azure-Portal | Microsoft-Dokumentation
 description: Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634608"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156901"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure SQL-Datenbanken und Data Warehouse
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Data Warehouse über das Azure-Portal
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure SQL-Datenbank- und Data Warehouse-Warnungen einrichten können. Dieser Artikel nennt auch bewährte Methoden für das Festlegen von Warnungszeiträumen.    
+In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure SQL-Datenbank- und Data Warehouse-Warnungen einrichten können. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird. Dieser Artikel nennt auch bewährte Methoden für das Festlegen von Warnungszeiträumen.    
+
+> [!IMPORTANT]
+> Dieses Feature steht in einer verwalteten Instanz noch nicht zur Verfügung. Als Alternative können Sie den SQL-Agent verwenden, um E-Mail-Warnungen für einige Metriken auf der Grundlage [dynamischer Verwaltungssichten](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) zu senden.
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 

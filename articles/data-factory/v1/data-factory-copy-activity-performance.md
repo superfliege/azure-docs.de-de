@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 632e605a6f7c9885f3854ca1f7b69ed337a1eacc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025877"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331644"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
@@ -108,7 +108,7 @@ Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist ein
 Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -135,7 +135,7 @@ Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss
 ### <a name="parallelcopies"></a>parallelCopies
 Mithilfe der **parallelCopies** -Eigenschaft können Sie die gewünschte Parallelität für die Kopieraktivität angeben. Diese Eigenschaft können Sie sich als die maximale Anzahl von Threads in einer Kopieraktivität vorstellen, die parallel aus Quelldatenspeichern lesen oder in Senkendatenspeicher schreiben können.
 
-Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralleler Kopien, die zum Kopieren von Daten aus dem Quelldatenspeicher sowie zum Kopieren von Daten in den Zieldatenspeicher verwendet werden. Die verwendete Standardanzahl paralleler Kopien hängt von der Art der verwendeten Quelle und Senke ab.  
+Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralleler Kopien, die zum Kopieren von Daten aus dem Quelldatenspeicher sowie zum Kopieren von Daten in den Zieldatenspeicher verwendet werden. Die verwendete Standardanzahl paralleler Kopien hängt von der Art der verwendeten Quelle und Senke ab.
 
 | Quelle und Senke | Standardanzahl der vom Dienst ermittelten parallelen Kopien |
 | --- | --- |
@@ -146,7 +146,7 @@ Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralle
 In der Regel sollten Sie mit dem Standardverhalten den besten Durchsatz erzielen. Sie können den Standardwert jedoch überschreiben und einen Wert für die **parallelCopies** -Eigenschaft angeben, um die Auslastung der Computer zu steuern, auf denen Ihre Datenspeicher gehostet werden, oder um die Kopierleistung zu optimieren. Der Wert muss zwischen 1 und 32 (jeweils einschließlich) liegen. Zur Laufzeit verwendet die Kopieraktivität maximal den von Ihnen festgelegten Wert, um eine optimale Leistung zu erzielen.
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -176,7 +176,7 @@ Beachten Sie Folgendes:
 >
 >
 
-Informationen zur optimalen Verwendung dieser beiden Eigenschaften sowie zur Erhöhung des Durchsatzes beim Verschieben von Daten finden Sie in den [Beispielen für Anwendungsfälle](#case-study-use-parallel-copy). Das Standardverhalten kann verwendet werden, ohne **parallelCopies** zu konfigurieren. Wenn Sie das Feature konfigurieren und **parallelCopies** zu klein ist, werden mehrere Cloud-DMUs unter Umständen nicht optimal genutzt.  
+Informationen zur optimalen Verwendung dieser beiden Eigenschaften sowie zur Erhöhung des Durchsatzes beim Verschieben von Daten finden Sie in den [Beispielen für Anwendungsfälle](#case-study-use-parallel-copy). Das Standardverhalten kann verwendet werden, ohne **parallelCopies** zu konfigurieren. Wenn Sie das Feature konfigurieren und **parallelCopies** zu klein ist, werden mehrere Cloud-DMUs unter Umständen nicht optimal genutzt.
 
 ### <a name="billing-impact"></a>Auswirkungen auf die Abrechnung
 **Wichtig:** Die Berechnung der Gebühren basiert auf der Gesamtdauer des Kopiervorgangs. Wenn ein Kopierauftrag mit einer einzelnen Cloudeinheit bislang eine Stunde gedauert hat und nun mit vier Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus. Ein Beispiel: Angenommen, Sie verwenden vier Cloudeinheiten. Die erste Cloudeinheit benötigt zehn Minuten, die zweite ebenfalls, die dritte fünf Minuten und die vierte ebenfalls fünf Minuten – alles in einer einzelnen Kopieraktivität. Ihnen wird die gesamte Kopierzeit (Datenverschiebungszeit) in Rechnung gestellt. Das sind in diesem Fall 30 Minuten (10 + 10 + 5 + 5). Die Verwendung von **parallelCopies** hat keine Auswirkungen auf die Abrechnung.
@@ -216,7 +216,7 @@ Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, u
 Hier sehen Sie eine Beispieldefinition der Kopieraktivität mit den Eigenschaften aus der obigen Tabelle:
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity",
     "type": "Copy",
@@ -273,9 +273,9 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 3. **Erweitern der Konfiguration auf das gesamte Dataset** Wenn Sie mit den Ausführungsergebnissen und mit der Leistung zufrieden sind, können Sie die Definition und den aktiven Zeitraum der Pipeline auf Ihr gesamtes Dataset erweitern.
 
 ## <a name="considerations-for-data-management-gateway"></a>Hinweise zum Datenverwaltungsgateway
-**Gatewaysetup**: Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Siehe [Hinweise zum Datenverwaltungsgateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
+**Gatewaysetup**: Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Siehe [Hinweise zum Datenverwaltungsgateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways**: In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das zentrale Hochskalieren oder horizontale Skalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen. 
+**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways**: In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das zentrale Hochskalieren oder horizontale Skalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen.
 
 ## <a name="considerations-for-the-source"></a>Hinweise zur Quelle
 ### <a name="general"></a>Allgemein
@@ -355,7 +355,7 @@ Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopierakti
 
 **Ebene**: Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
 
-**Hinweis**: Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. einen Blobzwischenspeicher mit Komprimierung. Dies ist hilfreich, wenn die Bandbreite Ihres Unternehmensnetzwerks und Ihrer Azure-Dienste einen limitierenden Faktor darstellt und sowohl das Eingabe- als auch das Ausgabedataset in unkomprimierter Form vorliegen sollen. Um genau zu sein, können Sie eine einzelne Kopieraktivität in zwei Kopieraktivitäten aufteilen:  Die erste Kopieraktivität kopiert Daten aus der Quelle in komprimierter Form in ein Zwischen- oder Stagingblob. Die zweite Kopieraktivität kopiert die komprimierten Daten aus der Stagingumgebung und dekomprimiert sie beim Schreiben in die Senke.
+**Hinweis**: Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. einen Blobzwischenspeicher mit Komprimierung. einen Blobzwischenspeicher mit Komprimierung. Dies ist hilfreich, wenn die Bandbreite Ihres Unternehmensnetzwerks und Ihrer Azure-Dienste einen limitierenden Faktor darstellt und sowohl das Eingabe- als auch das Ausgabedataset in unkomprimierter Form vorliegen sollen. Um genau zu sein, können Sie eine einzelne Kopieraktivität in zwei Kopieraktivitäten aufteilen: Die erste Kopieraktivität kopiert Daten aus der Quelle in komprimierter Form in ein Zwischen- oder Stagingblob. Die zweite Kopieraktivität kopiert die komprimierten Daten aus der Stagingumgebung und dekomprimiert sie beim Schreiben in die Senke.
 
 ## <a name="considerations-for-column-mapping"></a>Hinweise zur Spaltenzuordnung
 Mit der **columnMappings** -Eigenschaft der Kopieraktivität können Eingabespalten ganz oder teilweise den Ausgabespalten zugeordnet werden. Nach dem Lesen der Daten aus der Quelle muss der Datenverschiebungsdienst eine Spaltenzuordnung für die Daten vornehmen, bevor sie in die Senke geschrieben werden. Dieser zusätzliche Verarbeitungsaufwand reduziert den Kopierdurchsatz.
@@ -404,7 +404,7 @@ In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die ges
 
 **Szenario II**: Kopieren von 20 Blobs mit jeweils 500 MB aus Blob Storage in Data Lake Store Analytics mit anschließender Leistungsoptimierung
 
-**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten unter Verwendung einer einzelnen Kopie (**parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen aus Blob Storage in Data Lake Store. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).   
+**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten unter Verwendung einer einzelnen Kopie (**parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen aus Blob Storage in Data Lake Store. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).
 
 ![Szenario 2:](./media/data-factory-copy-activity-performance/scenario-2.png)
 

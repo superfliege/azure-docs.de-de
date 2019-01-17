@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: tutorial
-ms.date: 10/30/2017
+ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 311abe4583d29098ebd26dfcf2214553aa1fe1c9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 02cfd00b8ab1f51c46e745dae480e39dee2ed710
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262043"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262335"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
 
-Mit der Bing-News-Suche-API können Sie das Web durchsuchen und Ergebnisse für verschiedene Arten von News finden, die für eine Suchabfrage relevant sind. In diesem Tutorial wird eine Single-Page-Web-App erstellt, die unter Verwendung der Bing-News-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
+Mit der Bing-News-Suche-API können Sie das Web durchsuchen und Ergebnisse für verschiedene Arten von News finden, die für eine Suchabfrage relevant sind. In diesem Tutorial wird eine Single-Page-Web-App erstellt, die unter Verwendung der Bing-News-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -39,8 +39,6 @@ In dieser Tutorial-App wird Folgendes veranschaulicht:
 > * Behandeln von möglicherweise auftretenden Fehlern
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks, Stylesheets oder Bilddateien. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
-
-In diesem Tutorial werden ausgewählte Teile des Quellcodes erläutert. Der vollständige [Quellcode](tutorial-bing-news-search-single-page-app-source.md) steht zur Verfügung. Zum Ausführen des Beispiels kopieren Sie den Quellcode, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 ## <a name="app-components"></a>App-Komponenten
 Diese Tutorial-App setzt sich ebenso wie alle anderen Single-Page-Web-Apps aus drei Teilen zusammen:

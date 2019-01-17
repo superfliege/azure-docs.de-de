@@ -16,12 +16,12 @@ ms.workload: ''
 ms.date: 05/02/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2b8766a5353b015030872176e9032034afb7cb9d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a0153cf11c3fe817ce397b4d0c47a786a4334f39
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779555"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214809"
 ---
 # <a name="azure-policy-sample-templates-for-virtual-network"></a>Beispiele für Azure-Richtlinienvorlagen für virtuelle Netzwerke
 
@@ -43,7 +43,7 @@ In der folgenden Tabelle sind Links zu [Azure Policy](../azure-policy/azure-poli
 | [Übereinstimmungsmuster erfordern](../azure-policy/scripts/enforce-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Stellen Sie sicher, dass Ressourcennamen einem angegebenen Benennungsmuster entsprechen. |
 | [Tagübereinstimmungsmuster erfordern](../azure-policy/scripts/enforce-tag-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Stellen Sie sicher, dass ein Tagwert einem Textmuster entspricht. |
 |**Tags**||
-| [Richtlinieninitiative zur Abrechnung von Tags](../azure-policy/scripts/billing-tags-policy-init.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Verlangt angegebene Tagwerte für die Kostenstelle und den Produktnamen. Verwendet integrierte Richtlinien, um erforderliche Tags anzuwenden und zu erzwingen. Sie geben die erforderlichen Werte für die Tags an.  |
+| [Richtlinieninitiative zur Abrechnung von Tags](../governance/policy/samples/billing-tags-policy-initiative.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Verlangt angegebene Tagwerte für die Kostenstelle und den Produktnamen. Verwendet integrierte Richtlinien, um erforderliche Tags anzuwenden und zu erzwingen. Sie geben die erforderlichen Werte für die Tags an.  |
 | [Erzwingen eines Tags und dessen Werts für Ressourcengruppen](../azure-policy/scripts/enforce-tag-rg.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Verlangt einen Tag und einen Wert für eine Ressourcengruppe. Sie geben den erforderlichen Tagnamen und -wert an.  |
 | [Erzwingen eines Tags und dessen zugehörigen Werts](../azure-policy/scripts/enforce-tag-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Erfordert einen angegebenen Tagnamen und-wert. Sie geben den zu erzwingenden Tagnamen und -wert an.  |
 | [Tag und Standardwert anwenden](../azure-policy/scripts/apply-tag-def-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | Fügt einen angegebenen Tagnamen und -wert an, wenn dieses Tag nicht bereitgestellt wird. Sie geben den anzuwendenden Tagnamen und -wert an.  |

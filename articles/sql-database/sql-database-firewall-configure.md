@@ -11,21 +11,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/03/2019
+ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945466"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035269"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse
 
 Microsoft Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) stellen einen relationalen Datenbankdienst für Ihre internetbasierten Azure-Anwendungen (und weitere Anwendungen) bereit. Zum Schutz Ihrer Daten verhindern Firewalls jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 
 > [!NOTE]
-> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. 
-
+> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für **verwaltete Azure SQL-Datenbank-Instanzen**. Weitere Informationen über die erforderliche Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
 
@@ -58,9 +57,9 @@ Verbindungsversuche über das Internet und Azure müssen zunächst die Firewall 
 
 Microsoft empfiehlt, nach Möglichkeit Firewallregeln auf Datenbankebene zu verwenden, um die Sicherheit und die Portabilität der Datenbank zu verbessern. Verwenden Sie Firewallregeln auf Serverebene für Administratoren und wenn Sie über viele Datenbanken mit identischen Zugriffsanforderungen verfügen und die Datenbanken nicht einzeln konfigurieren möchten.
 
-> [!Important]
+> [!IMPORTANT]
 > Microsoft Azure SQL-Datenbank unterstützt maximal 128 Firewallregeln.
-> [!Note]
+> [!NOTE]
 > Informationen zu portablen Datenbanken im Kontext der Geschäftskontinuität finden Sie unter [Authentifizierungsanforderungen für die Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
 ### <a name="connecting-from-the-internet"></a>Herstellen einer Verbindung über das Internet
@@ -102,7 +101,7 @@ Zum Festlegen einer Firewallregel auf Serverebene im Azure-Portal können Sie en
 
 ### <a name="from-database-overview-page"></a>Auf der Seite „Übersicht“ der Datenbank
 
-1. Um eine Firewallregel auf Serverebene auf der Seite „Übersicht“ der Datenbank festzulegen, klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**, wie in der folgenden Abbildung dargestellt. Die Seite **Firewalleinstellungen** für den Server Ihrer SQL-Datenbank-Instanz wird geöffnet.
+1. Um eine Firewallregel auf Serverebene auf der Seite „Übersicht“ der Datenbank festzulegen, klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**, wie in der folgenden Abbildung dargestellt: Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet.
 
       ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png)
 

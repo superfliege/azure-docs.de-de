@@ -1,24 +1,21 @@
 ---
 title: Konsistenzebenen in Azure Cosmos DB
 description: Azure Cosmos DB bietet fünf Konsistenzebenen, um für vorhersehbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz sorgen zu können.
-keywords: Letztliche Konsistenz, Azure Cosmos DB, Azure, Microsoft Azure
-services: cosmos-db
-author: aliuy
-ms.author: andrl
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089733"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034963"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
-Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: starke Konsistenz und letztliche Konsistenz. Die  [Linearisierbarkeit](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) bzw. die starke Konsistenz ist zwar das Nonplusultra in Sachen Datenprogrammierbarkeit, sie wird jedoch durch hohe Latenzen (im stabilen Zustand) und durch geringere Verfügbarkeit (bei Ausfällen) teuer erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert jedoch die Programmierung von Anwendungen erheblich. 
+Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz und Verfügbarkeit, Latenz sowie Durchsatz. Die meisten kommerziell verfügbaren verteilten Datenbanken verlangen von Entwicklern, dass sie zwischen den beiden extremen Konsistenzmodellen wählen: starke Konsistenz und letztliche Konsistenz. Die [Linearisierbarkeit](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) oder das Modell für starke Konsistenz ist das Nonplusultra in Sachen Datenprogrammierbarkeit. Es wird jedoch teuer durch hohe Wartezeit (im stabilen Zustand) bzw. durch geringere Verfügbarkeit (im Falle eines Ausfalls) erkauft. Auf der anderen Seite bietet die letztliche Konsistenz eine höhere Verfügbarkeit und bessere Leistung, erschwert jedoch die Programmierung von Anwendungen erheblich. 
 
 Azure Cosmos DB bietet für die Datenkonsistenz nicht nur diese beiden Extreme, sondern ein ganzes Spektrum von Auswahlmöglichkeiten. Die starke und die letztliche Konsistenz bilden die beiden Enden des Spektrums, aber dazwischen gibt es viele weitere Konsistenzoptionen. Entwickler können mit diesen Optionen eine genaue Auswahl treffen und differenzierte Kompromisse in Bezug auf Hochverfügbarkeit oder Leistung eingehen. 
 
@@ -71,7 +68,7 @@ Ein Azure Cosmos DB-Container enthält die Gesamtanzahl von Runs des Gast- und d
 | **Konsistenzebene** | **Punktestände** |
 | - | - |
 | **Starke Konsistenz** | 2-5 |
-| **Begrenzte Veraltung** | Punktestände, die mindestens ein Inning „veraltet“ sind: 2-3, 2-4, 2-5 |
+| **Begrenzte Veraltung** | Punktestände, die mindestens ein Inning alt sind: 2-3, 2-4, 2-5 |
 | **Sitzungskonsistenz** | <ul><li>Für den Writer: 2-5</li><li> Für alle anderen (außer dem Writer): 0-0, 0-1, 0-2, 0-3, 0-4, 0-5, 1-0, 1-1, 1-2, 1-3, 1-4, 1-5, 2-0, 2-1, 2-2, 2-3, 2-4, 2-5</li><li>Nach dem Lesen von 1-3: 1-3, 1-4, 1-5, 2-3, 2-4, 2-5</li> |
 | **Präfixkonsistenz** | 0-0, 0-1, 1-1, 1-2, 1-3, 2-3, 2-4, 2-5 |
 | **Letztliche Konsistenz** | 0-0, 0-1, 0-2, 0-3, 0-4, 0-5, 1-0, 1-1, 1-2, 1-3, 1-4, 1-5, 2-0, 2-1, 2-2, 2-3, 2-4, 2-5 |

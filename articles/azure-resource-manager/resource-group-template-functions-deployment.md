@@ -4,22 +4,20 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2018
+ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: d802af1d48405518f26f4b52ecc3023cbb15caff
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 110b909106f5b9eae639639adf418647e3e8bea9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407353"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022341"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
@@ -97,6 +95,8 @@ Sie können „deployment()“ verwenden, um basierend auf dem URI der übergeor
     "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
 }
 ```  
+
+Wenn Sie eine Vorlage aus dem Bereitstellungsverlauf im Portal erneut bereitstellen, wird die Vorlage als lokale Datei bereitgestellt. Die Eigenschaft `templateLink` wird in der Bereitstellungsfunktion nicht zurückgegeben. Falls Ihre Vorlage `templateLink` benötigt, um eine Verknüpfung mit einer anderen Vorlage zu erstellen, führen Sie die erneute Bereitstellung nicht über das Portal durch. Verwenden Sie stattdessen die Befehle, die Sie bei der ursprünglichen Bereitstellung der Vorlage verwendet haben.
 
 ### <a name="example"></a>Beispiel
 

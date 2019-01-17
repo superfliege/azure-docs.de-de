@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994962"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215268"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Bewährte Methoden zum Einrichten von Netzwerken für zu Azure migrierte Workloads
 
@@ -185,7 +185,7 @@ Beim Einrichten eines Site-to-Site-VPN gehen Sie folgendermaßen vor:
 **Weitere Informationen:**
 
 - [Informieren Sie sich](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) über kompatible lokale VPN-Geräte.
-- [Verschaffen Sie sich einen Überblick](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway) über VPN-Gateways.
+- [Verschaffen Sie sich einen Überblick](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) über VPN-Gateways.
 - [Erhalten Sie Informationen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable) zu hochverfügbaren VPN-Verbindungen.
 - [Erfahren Sie mehr](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) über das Planen und Entwerfen eines VPN-Gateways.
 - [Informieren Sie sich](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) über VPN-Gatewayeinstellungen.

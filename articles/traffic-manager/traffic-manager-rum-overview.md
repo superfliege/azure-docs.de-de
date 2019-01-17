@@ -1,13 +1,9 @@
 ---
-title: Benutzer-Realmessungen in Azure Traffic Manager | Microsoft-Dokumentation
+title: Benutzer-Realmessungen im Azure Traffic Manager
 description: Einführung in Benutzer-Realmessungen in Traffic Manager
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4e8d808d65c9898d230455d128e3ffc50db303d6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fd37ef739522955ae8227db39a41aecf199d65c3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178112"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052818"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Übersicht über Benutzer-Realmessungen in Traffic Manager
 
@@ -31,7 +27,7 @@ Mithilfe von Benutzer-Realmessungen können Sie die Netzwerkwartezeiten in Azure
 
 ## <a name="how-real-user-measurements-work"></a>Funktionsweise von Benutzer-Realmessungen
 
-Für Benutzer-Realmessungen messen Ihre Clientanwendungen die Wartezeit in Azure-Regionen, wie diese in den Endbenutzernetzwerken wahrgenommen wird, in denen diese genutzt werden. Wenn Sie beispielsweise eine Webseite haben, auf die Benutzer von verschiedenen Standorten aus zugreifen (z.B. in den nordamerikanischen Regionen), können Sie die Leistung von Benutzer-Realmessungen nutzen. Verwenden Sie dazu die Leistungsroutingmethode, um sie zur besten Azure-Region zu leiten, in der Ihre Serveranwendung gehostet wird.
+Für Benutzer-Realmessungen messen Ihre Clientanwendungen die Wartezeit in Azure-Regionen aus der Perspektive der Endbenutzernetzwerke, in denen sie verwendet werden. Wenn Sie beispielsweise eine Webseite haben, auf die Benutzer von verschiedenen Standorten aus zugreifen (etwa in den nordamerikanischen Regionen), können Sie Benutzer-Realmessungen mit der Leistungsroutingmethode verwenden, um Benutzer zur besten Azure-Region zu leiten, in der Ihre Serveranwendung gehostet wird.
 
 Zunächst müssen Sie in Ihre Webseiten ein von Azure bereitgestelltes JavaScript (mit enthaltenem eindeutigen Schlüssel) einbetten. Sobald dies erfolgt ist, fragt das JavaScript, wann immer ein Benutzer diese Webseite besucht, Traffic Manager ab, um Informationen zu den Azure-Regionen zu erhalten, die es messen soll. Der Dienst gibt eine Reihe von Endpunkten an das Skript zurück. Dieses misst dann nacheinander diese Regionen, indem ein in diesen Azure-Regionen gehostetes 1-Pixel-Bild heruntergeladen wird. Anschließend wird die Wartezeit zwischen dem Zeitpunkt des Sendens der Anforderung und dem Empfang des ersten Bytes erfasst. Diese Messungen werden dann dem Traffic Manager-Dienst zurückgemeldet.
 
