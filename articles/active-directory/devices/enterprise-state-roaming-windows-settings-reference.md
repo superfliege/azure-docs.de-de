@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: c225761f18a89539ea4966fab620104a25d1270e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 45bf554e457e48704684fe8ac3b32c29f3f646b2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50129212"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189280"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
@@ -44,15 +44,15 @@ Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einst
 
 * Design: Desktophintergrund, Benutzerkachel, Taskleistenposition usw. 
 * Internet Explorer-Einstellungen: Browserverlauf, eingegebene URLs, Favoriten usw. 
-* Kennwörter: Windows-Anmeldeinformationsverwaltung, einschließlich WLAN-Profile 
+* Kennwörter: Windows-Anmeldeinformationsverwaltung, einschließlich WLAN-Profilen 
 * Spracheinstellungen: Wörterbuch, Einstellungen für Systemsprache 
 * Erleichterte Bedienung: Sprachausgabe, Bildschirmtastatur, Bildschirmlupe 
 * Weitere Windows-Einstellungen: siehe Details zu Windows-Einstellungen
-* Edge-Browser-Einstellung: Microsoft Edge-Favoriten, Leseliste und andere Einstellungen
+* Microsoft Edge-Browsereinstellung: Microsoft Edge-Favoriten, Leseliste und andere Einstellungen
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
-Die Synchronisierung der Einstellungsgruppe des Microsoft Edge-Browser (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Microsoft Edge-Browser aktiviert oder deaktiviert werden.
+Die Synchronisierung der Einstellungsgruppe des Microsoft Edge-Browsers (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Microsoft Edge-Browsers aktiviert oder deaktiviert werden.
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
@@ -70,14 +70,14 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | --- | --- | --- | --- |
 | **Konten**: Kontobild |sync |X |Design |
 | **Konten**: weitere Kontoeinstellungen |X |X | |
-| **Erweitertes mobiles Breitband**: Netzwerkname der Internetverbindungsfreigabe (ermöglicht automatische Ermittlung von mobilen WLAN-Hotspots per Bluetooth) |X |X |Kennwörter |
+| **Erweitertes mobiles Breitband:** Netzwerkname der Internetverbindungsfreigabe (ermöglicht automatische Ermittlung von mobilen WLAN-Hotspots per Bluetooth) |X |X |Kennwörter |
 | **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |Intern |
 | **App-Liste**: Liste der installierten Apps |X |Sicherung |Andere |
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
 | **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |Intern |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
 | **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |Language |
-| **Datum, Uhrzeit und Region**: 24-Stunden-Format |sync |X |Language |
+| **Datum, Uhrzeit und Region:** 24-Stunden-Format |sync |X |Language |
 | **Datum, Uhrzeit und Region**: Datum und Uhrzeit |sync |X |Language |
 | **Datum, Uhrzeit und Region**: Zeitzone | |X |Language |
 | **Datum, Uhrzeit und Region**: Sommerzeit |sync |X |Language |
@@ -93,23 +93,23 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Desktoppersonalisierung**: Einstellungen der Taskleiste (Position, automatisches Ausblenden usw.) |sync |X |Design |
 | **Desktoppersonalisierung**: Layout des Startbildschirms |X |Sicherung | |
 | **Geräte**: verbundene freigegebene Drucker |X |X |Sonstige |
-| **Microsoft Edge-Browser**: Leseliste |sync |sync |Intern |
-| **Microsoft Edge-Browser**: Favoriten |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Leseliste |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Favoriten |sync |sync |Intern |
 | **Microsoft Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser**: Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:**: Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Microsoft Edge-Browser:** Cookies-Voreinstellung <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
+| **Microsoft Edge-Browser:** Voreinstellung für Cookies <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
 | **Microsoft Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Intern |
-| **Hoher Kontrast**: Ein/Aus |sync |X |Erleichterte Bedienung |
-| **Hoher Kontrast**: Designeinstellungen |sync |X |Erleichterte Bedienung |
+| **Hoher Kontrast:** Ein oder Aus |sync |X |Erleichterte Bedienung |
+| **Hoher Kontrast:** Designeinstellungen |sync |X |Erleichterte Bedienung |
 | **Internet Explorer**: geöffnete Registerkarten (URL und Titel) |sync |sync |Internet Explorer |
 | **Internet Explorer**: Leseliste |sync |sync |Internet Explorer |
 | **Internet Explorer**: eingegebene URLs |sync |sync |Internet Explorer |
@@ -122,23 +122,23 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Tastatur**: Einrastfunktion einschalten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
 | **Tastatur**: Anschlagverzögerung einschalten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
 | **Tastatur**: Umschalttasten einschalten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
-| **Internet Explorer**: Domänensprache: Chinesisch (CHS) QWERTY – Selbstlernfunktion aktivieren |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – dynamische Kandidateneinstufung aktivieren |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – Zeichensatz Chinesisch (vereinfacht) |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – Zeichensatz Chinesisch (traditionell) |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – Fuzzy Pinyin |sync |Sicherung |Sprache |
-| **Sprache**: CHS QWERTY – Fuzzy Pairs |sync |Sicherung |Sprache |
-| **Sprache**: CHS QWERTY – Pinyin (vollständig) |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – Doppel-Pinyin |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – Autokorrektur beim Lesen |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – C/E-Umschalttaste, UMSCHALT |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – C/E-Umschalttaste, STRG |sync |X |Sprache |
-| **Sprache**: CHS WUBI – Eingabemodus für einzelne Zeichen |sync |X |Sprache |
-| **Sprache**: CHS WUBI – verbleibende Codierung des Kandidaten anzeigen |sync |X |Sprache |
-| **Sprache**: CHS WUBI – Signalton bei ungültigem 4-Code |sync |X |Sprache |
+| **Internet Explorer:** Domänensprache: Chinesisch (CHS) QWERTY – Selbstlernfunktion aktivieren |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – dynamische Kandidateneinstufung aktivieren |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – Zeichensatz Chinesisch (vereinfacht) |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – Zeichensatz Chinesisch (traditionell) |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – Fuzzy Pinyin |sync |Sicherung |Sprache |
+| **Sprache:** CHS QWERTY – Fuzzy Pairs |sync |Sicherung |Sprache |
+| **Sprache:** CHS QWERTY – Pinyin (vollständig) |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – Doppel-Pinyin |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – Autokorrektur beim Lesen |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – C/E-Umschalttaste, UMSCHALT |sync |X |Sprache |
+| **Sprache:** CHS QWERTY – C/E-Umschalttaste, STRG |sync |X |Sprache |
+| **Sprache:** CHS WUBI – Eingabemodus für einzelne Zeichen |sync |X |Sprache |
+| **Sprache:** CHS WUBI – verbleibende Codierung des Kandidaten anzeigen |sync |X |Sprache |
+| **Sprache:** CHS WUBI – Signalton bei ungültigem 4-Code |sync |X |Sprache |
 | **Sprache:** CHT Bopomofo – CJK-Erweiterung A einschließen |sync |X |Sprache |
-| **Sprache**: Japanisches IME – Eingabevorhersage und benutzerdefinierte Wörter |sync |sync |Sprache |
-| **Sprache**: Koreanisches (KOR) IME |X |X |Sprache |
+| **Sprache:** Japanischer IME – Eingabevorhersage und benutzerdefinierte Wörter |sync |sync |Sprache |
+| **Sprache:** Koreanischer (Südkorea) IME |X |X |Sprache |
 | **Sprache**: Handschrifterkennung |X |X |Sprache |
 | **Sprache**: Sprachprofil |sync |Sicherung |Sprache |
 | **Sprache**: Rechtschreibprüfung – AutoKorrektur und Hervorhebung von Rechtschreibfehlern |sync |Sicherung |Sprache |
@@ -175,12 +175,12 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Eingabe**: beim Doppeltippen auf die UMSCHALTTASTE Großbuchstaben verwenden |sync |Sicherung |Sprache |
 | **Eingabe**: Tastentöne bei der Eingabe |sync |Sicherung |Sprache |
 | **Eingabe**: Personalisierungsdaten für Bildschirmtastatur |sync |Sicherung |Sprache |
-| **WLAN**: WLAN-Profile (nur WPA) |sync |sync |Kennwörter |
+| **WLAN:** WLAN-Profile (nur WPA) |sync |sync |Kennwörter |
 
 ###### <a name="footnote-1"></a>Fußnote 1
 Minimale unterstützte Betriebssystemversion des Windows Creators Updates (Build 15063). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die Übersicht zum [Enterprise State Roaming](enterprise-state-roaming-overview.md) an.
+Grundlegendes erfahren Sie unter [Überblick über Enterprise State Roaming](enterprise-state-roaming-overview.md).
 

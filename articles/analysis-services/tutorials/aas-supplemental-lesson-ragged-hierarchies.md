@@ -1,19 +1,19 @@
 ---
-title: Ergänzende Lektion zum Azure Analysis Services-Tutorial – Unregelmäßige Hierarchien | Microsoft-Dokumentation
+title: 'Azure Analysis Services-Tutorial, ergänzende Lektion: Unregelmäßige Hierarchien | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie Sie unregelmäßige Hierarchien im Azure Analysis Services-Tutorial beseitigen können.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f5bd679c11139b7ac439247df81a7adb0b02b0fe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 50926b7c8b06668770d9a00b8342d209fdb94649
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426329"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191104"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Ergänzende Lektion – Unregelmäßige Hierarchien
 
@@ -87,7 +87,7 @@ Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt ha
     =LOOKUPVALUE(DimEmployee[FullName],DimEmployee[EmployeeKey],PATHITEM([Path],5,1)) 
     ```
 
-6.  Erstellen Sie in der Tabelle **DimEmployee** eine [Hierarchie](../tutorials/aas-lesson-9-create-hierarchies.md) mit dem Namen **Organization**. Fügen Sie folgende Spalten in dieser Reihenfolge hinzu: **Ebene1**, **Ebene2**, **Ebene3**, **Ebene4** und **Ebene5**.
+6.  Erstellen Sie in der Tabelle **DimEmployee** eine [Hierarchie](../tutorials/aas-lesson-9-create-hierarchies.md) mit dem Namen **Organization**. Fügen Sie folgende Spalten in dieser Reihenfolge hinzu: **Level1**, **Level2**, **Level3**, **Level4**, **Level5**.
 
 7.  Erstellen Sie in der Tabelle **FactResellerSales** das folgende [Measure](../tutorials/aas-lesson-6-create-measures.md):
 

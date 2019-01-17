@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: c23bdba74ab528a0774b73598dbee8888ebfdc7e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d53de431ea619dfc8865ef23439146517d37764
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076114"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013297"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
@@ -34,7 +34,7 @@ In diesem Artikel werden die folgenden Architekturelemente behandelt:
  *  Rechenzentren
 
 ### <a name="service-architecture-design"></a>Design der Dienstarchitektur
-Zum Erstellen eines zugänglichen und verwendbaren Systems mit umfassenden Daten werden am häufigsten unabhängige Bausteine oder Skalierungseinheiten für die Azure AD-Datenschicht verwendet. Skalierungseinheiten werden als *Partitionen* bezeichnet. 
+Zum Erstellen eines zugänglichen und verwendbaren Systems mit umfassenden Daten werden am häufigsten unabhängige Bausteine oder Skalierungseinheiten verwendet. In der Azure AD-Datenschicht werden Skalierungseinheiten als *Partitionen* bezeichnet. 
 
 Die Datenschicht verfügt über mehrere Front-End-Dienste, über die Lese-/Schreibfunktionen bereitgestellt werden. Im folgenden Diagramm ist dargestellt, wie die Komponenten einer Partition mit einem Verzeichnis in geografisch verteilten Rechenzentren bereitgestellt werden. 
 

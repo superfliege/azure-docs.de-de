@@ -12,27 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d40f9e8bf319f327879a71b23f9d9b82da924c2f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: fec5378b9165ca7e240f52c629c47cdda799ef51
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365433"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155183"
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Bereitstellen von Vorlagen in Azure Stack mithilfe der Befehlszeile
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Verwenden Sie die Befehlszeile zum Bereitstellen von Azure Resource Manager-Vorlagen in der Azure Stack Development Kit-Umgebung. Azure Resource Manager-Vorlagen stellen alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereit.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
- - Verwenden Sie die Azure CLI, um Azure Stack zu [installieren und eine Verbindung herzustellen](azure-stack-version-profiles-azurecli2.md).
- - Laden Sie die Dateien *azuredeploy.json* und *azuredeploy.parameters.json* aus der [Beispielvorlage zum Erstellen von Speicherkonten](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account) herunter.
- 
+- Verwenden Sie die Azure CLI, um Azure Stack zu [installieren und eine Verbindung herzustellen](azure-stack-version-profiles-azurecli2.md).
+- Laden Sie die Dateien *azuredeploy.json* und *azuredeploy.parameters.json* aus der [Beispielvorlage zum Erstellen von Speicherkonten](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account) herunter.
+
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Navigieren Sie zu dem Ordner, in den diese Dateien heruntergeladen wurden, und führen Sie den folgenden Befehl zum Bereitstellen der Vorlage aus:
@@ -45,7 +45,7 @@ Dieser Befehl stellt die Vorlage für die Ressourcengruppe **cliRG** am Standard
 
 ## <a name="validate-template-deployment"></a>Überprüfen der Vorlagenbereitstellung
 
-Um diese Ressourcengruppe und das Speicherkonto anzuzeigen, verwenden Sie die folgenden Befehle:
+Um diese Ressourcengruppe und das Speicherkonto anzuzeigen, verwenden Sie die folgenden CLI-Befehle:
 
 ```azurecli
 az group list
@@ -55,7 +55,6 @@ az storage account list
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Bereitstellen von Vorlagen finden Sie unter:
+- Weitere Informationen zum Bereitstellen von Vorlagen finden Sie unter:
 
 [Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)
-

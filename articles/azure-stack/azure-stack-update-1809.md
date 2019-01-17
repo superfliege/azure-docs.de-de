@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754049"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077962"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
@@ -48,6 +48,8 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
    Weitere Informationen finden Sie unter [Azure Stack-Syslog-Weiterleitung](azure-stack-integrate-security.md).
 
 - Sie können die [Registrierungsressource in Azure zwischen Ressourcengruppen verschieben](azure-stack-registration.md#move-a-registration-resource), ohne sich erneut registrieren zu müssen. Cloudlösungsanbieter (Cloud Solution Providers, CSPs) können ebenfalls die Registrierungsressource zwischen Abonnements verschieben, sofern sowohl das alte als auch das neue Abonnement der gleichen CSP-Partner-ID zugeordnet sind. Dies wirkt sich nicht auf die vorhandenen Mandantenzuordnungen des Kunden aus. 
+
+- Unterstützung für das Zuweisen mehrerer IP-Adressen pro Netzwerkschnittstelle wurde hinzugefügt.  Ausführlichere Informationen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe von PowerShell](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
 
 ### <a name="fixed-issues"></a>Behobene Probleme
 

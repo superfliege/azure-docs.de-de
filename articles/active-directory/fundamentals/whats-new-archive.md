@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d727c9c3a9add701263e799dba778b37e637adef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194282"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191920"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -385,7 +385,7 @@ Weitere Informationen finden Sie unter [Azure AD-Kennwortzurücksetzung über de
  
 ### <a name="certificate-expire-notification"></a>Benachrichtigung über Zertifikatablauf
 
-**Typ:** Fest  
+**Typ:** Korrigiert  
 **Dienstkategorie:** Unternehmens-Apps  
 **Produktfunktion:** SSO
  
@@ -1278,7 +1278,7 @@ Aufgrund dieser neuen Funktionen werden die Berichts-APIs auf dem Endpunkt unter
 
 ### <a name="automatic-sign-in-field-detection"></a>Automatische Erkennung von Anmeldefeldern
 
-**Typ:** Fest   
+**Typ:** Korrigiert   
 **Dienstkategorie:** Meine Apps  
 **Produktfunktion:** Einmaliges Anmelden  
 

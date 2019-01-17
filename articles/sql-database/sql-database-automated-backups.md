@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001276"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035422"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -42,7 +42,7 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 ## <a name="how-long-are-backups-kept"></a>Wie lange werden Sicherungen aufbewahrt?
 
-Der Zeitraum zur Beibehaltung der Sicherung beträgt standardmäßig für jede SQL-Datenbank-Instanz zwischen 7 und 35 Tagen, was von [Kaufmodell und Dienstebene](#pitr-retention-period) abhängt. Sie können den Zeitraum zur Beibehaltung der Sicherung für eine Datenbank auf Azure Logical Server aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
+Der Aufbewahrungszeitraum der Sicherung beträgt für jede SQL-Datenbank-Instanz standardmäßig zwischen 7 und 35 Tagen, was von Kaufmodell und Dienstebene abhängt. Sie können den Aufbewahrungszeitraum der Sicherung für eine Datenbank auf Azure Logical Server aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
 
 Wenn Sie eine Datenbank löschen, bewahrt SQL-Datenbank die Sicherungen auf die gleiche Weise wie für eine Onlinedatenbank auf. Beim Löschen einer Datenbank vom Typ „Basic“, für die eine Aufbewahrungsdauer von sieben Tagen gilt, wird eine vier Tage alte Sicherung weitere drei Tage lang aufbewahrt.
 
@@ -109,7 +109,7 @@ Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit 
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Ändern der PITR-Aufbewahrungsdauer über das Azure-Portal
 
-Um die Aufbewahrungsdauer der PITR-Sicherung über das Azure-Portal zu ändern, navigieren Sie zu dem Serverobjekt, dessen Aufbewahrungsdauer Sie innerhalb des Portals ändern möchten, und wählen Sie dann die entsprechende Option basierend auf dem Serverobjekt aus, das Sie ändern. 
+Um die Aufbewahrungsdauer der PITR-Sicherung über das Azure-Portal zu ändern, navigieren Sie zu dem Serverobjekt, dessen Aufbewahrungsdauer Sie innerhalb des Portals ändern möchten, und wählen Sie dann die entsprechende Option basierend auf dem Serverobjekt aus, das Sie ändern.
 
 #### <a name="change-pitr-for-a-logical-server"></a>Ändern von PITR für einen logischen Server
 

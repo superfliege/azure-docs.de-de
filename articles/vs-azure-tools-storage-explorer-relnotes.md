@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94c1f255d7aae63d6faf44cc500c48c68bf6d3fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd6384dcd132ffb53e3531707c600465e8d0b649
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608952"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190016"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
@@ -27,15 +27,18 @@ Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Exp
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
-## <a name="version-161"></a>Version 1.6.1
-18.12.2018
+## <a name="version-162"></a>Version 1.6.2
+9.1.2019
 
-### <a name="download-azure-storage-explorer-161"></a>Herunterladen von Azure Storage-Explorer 1.6.1
-- [Azure Storage-Explorer 1.6.1 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 1.6.1 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 1.6.1 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-162"></a>Herunterladen von Azure Storage-Explorer 1.6.2
+- [Azure Storage-Explorer 1.6.2 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 1.6.2 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 1.6.2 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Hotfixes
+* In Version 1.6.1 wurden Entitäten, die ADLS Gen2-ACLs nach ObjectId hinzugefügt wurden und keine Benutzer waren, immer als Gruppen hinzugefügt. Jetzt werden nur Gruppen als Gruppen hinzugefügt, und Entitäten wie Unternehmensanwendungen und Dienstprinzipale werden als Benutzer hinzugefügt. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* Wenn ein ADLS Gen2-Speicherkonto keine Container hatte und mit Name und Schlüssel angefügt wurde, hat der Storage-Explorer nicht erkannt, dass es sich um ein ADLS Gen2-Speicherkonto handelt. Dies wurde korrigiert. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* In Version 1.6.0 wurde bei Konflikten beim Kopieren und Einfügen keine Lösung angefordert. Stattdessen führte der Kopiervorgang mit dem Konflikt einfach zu einem Fehler. Jetzt werden Sie beim ersten Konflikt aufgefordert, die gewünschte Lösung anzugeben. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * Aufgrund von API-Einschränkungen wurden sämtliche Validierungen von Objekt-IDs im Dialogfeld „Zugriff verwalten“ deaktiviert. Die Validierung erfolgt nun ausschließlich für Benutzer-UPNs. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
 * Im Dialogfeld „Zugriff verwalten“ von ADLS Gen2 konnten die Berechtigungen für eine Gruppe nicht geändert werden. Dies wurde korrigiert. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * Unterstützung für das Hochladen per Drag & Drop wurde im ADLS Gen2-Editor hinzugefügt. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
@@ -103,6 +106,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 
 ## <a name="previous-releases"></a>Vorgängerversionen
 
+* [Version 1.6.1](#version-161)
 * [Version 1.6.0](#version-160)
 * [Version 1.5.0](#version-150)
 * [Version 1.4.4](#version-144)
@@ -135,6 +139,75 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 * [Version 0.7.20160129.1](#version-07201601291)
 * [Version 0.7.20160105.0](#version-07201601050)
 * [Version 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-161"></a>Version 1.6.1
+18.12.2018
+
+### <a name="hotfixes"></a>Hotfixes
+* Aufgrund von API-Einschränkungen wurden sämtliche Validierungen von Objekt-IDs im Dialogfeld „Zugriff verwalten“ deaktiviert. Die Validierung erfolgt nun ausschließlich für Benutzer-UPNs. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* Im Dialogfeld „Zugriff verwalten“ von ADLS Gen2 konnten die Berechtigungen für eine Gruppe nicht geändert werden. Dies wurde korrigiert. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* Unterstützung für das Hochladen per Drag & Drop wurde im ADLS Gen2-Editor hinzugefügt. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* In der URL-Eigenschaft im Eigenschaftendialogfeld für ADLS Gen2-Dateien und -Ordner fehlte manchmal ein „/“. Dies wurde korrigiert. [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* Wenn beim Abrufen der aktuellen Berechtigungen für einen Container, eine Datei oder einen Ordner in ADLS Gen2 ein Fehler auftritt, wird dieser Fehler nun ordnungsgemäß im Aktivitätsprotokoll angezeigt. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Der zum Öffnen von Dateien erstellte temporäre Pfad wurde gekürzt, um die Wahrscheinlichkeit der Erstellung eines Pfads, der länger als MAX_PATH für Windows ist, zu verringern. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* Das Dialogfeld „Verbinden“ wird jetzt ordnungsgemäß angezeigt, wenn keine Benutzer angemeldet sind und keine Ressourcen angefügt wurden. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* In 1.6.0 wurde beim Speichern von Eigenschaften für Nicht-HNS-Blobs und -Dateien der Wert jeder Eigenschaft codiert. Dies führte zu unnötigen Codierungen von Werten, die nur ASCII-Zeichen enthielten. Jetzt werden die Werte nur codiert, wenn sie Nicht-ASCII-Zeichen enthalten. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* Das Hochladen eines Ordners in einen Nicht-HNS-Blobcontainer führte zu einem Fehler, wenn eine SAS verwendet wurde, die über keine Leseberechtigungen verfügte. Dies wurde korrigiert. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* Das Abbrechen einer AzCopy-Übertragung funktionierte nicht. Dies wurde korrigiert. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* AzCopy verursachte einen Fehler, wenn versucht wurde, einen Ordner aus einem ADLS Gen2-Blobcontainer herunterzuladen, und der Ordner Leerzeichen im Namen enthielt. Dies wurde korrigiert. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* Der Cosmos DB-Editor war in Version 1.6.0 fehlerhaft. Dies wurde jetzt behoben. [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
+### <a name="new"></a>Neu
+
+* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
+* Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
+    * Erstellen und Löschen von Containern
+    * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
+    * Anzeigen von Daten in Containern und Navigieren zu diesen
+    * Erstellen neuer Ordner
+    * Hochladen, Herunterladen, Umbenennen und Löschen von Dateien und Ordnern
+    * Verwalten von Eigenschaften und Berechtigungen von Dateien und Ordnern (rechte Seite).
+    
+    Andere typische Blobfunktionen wie vorläufiges Löschen und Momentaufnahmen sind aktuell noch nicht verfügbar. Das Verwalten von Berechtigungen ist ebenfalls nur möglich, wenn Sie angemeldet sind. Darüber hinaus verwendet Storage-Explorer bei der Arbeit in einem ADLS Gen2-Speicherkonto AzCopy für sämtliche Uploads und Downloads. Dabei nutzt er standardmäßig die Namen und Schlüsselanmeldeinformationen für alle Vorgänge (sofern verfügbar).
+* Nach deutlichem Benutzerfeedback kann „Lease abbrechen“ wieder zum Unterbrechen von Leases in mehreren Blobs gleichzeitig verwendet werden.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+* Wenn beim Herunterladen aus einem ADLS Gen2-Speicherkonto eine der übertragenen Dateien bereits vorhanden ist, stürzt AzCopy manchmal ab. Dies wird mit einem zukünftigen Hotfix behoben.
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie unter #537.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-160"></a>Version 1.6.0
 5.12.2018

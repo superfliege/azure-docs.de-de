@@ -12,15 +12,15 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 53536604ed2f371d1ae7e63b286b17501b260c8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 286c46f760dda4991fd89651bc3a01424d8a5502
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100717"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054791"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Registrieren Ihrer Organisation für die Verwendung von Azure Active Directory
-Registrieren Sie für Azure Active Directory (Azure AD) ein neues Microsoft Azure-Abonnement mit einer der folgenden Metoden:
+Registrieren Sie sich für Azure Active Directory (Azure AD) oder ein neues Microsoft Azure-Abonnement. Verwenden Sie dazu eines der folgenden Konten:
 
 - **Microsoft-Konto.** Verwenden Sie Ihr persönliches Microsoft-Konto, um Zugriff auf Azure und alle für den normalen Computerbenutzer entwickelten Microsoft-Produkte und Clouddienste wie Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE oder Office 365 zu erhalten. Wenn Sie sich für ein Outlook.com-Postfach registrieren, wird automatisch ein Microsoft-Konto erstellt. Weitere Informationen finden Sie in der [Übersicht zum Microsoft-Konto](https://account.microsoft.com/account).
 

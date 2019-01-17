@@ -9,16 +9,15 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249586"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024092"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Data Factory.  
@@ -50,7 +49,7 @@ Mit Data Factory können Sie nun flexibel einen beliebigen Ablaufstil modelliere
 - Deltaabläufe:
     - Verwenden Sie Parameter, und definieren Sie die Obergrenze für Deltakopien beim Verschieben von Dimensions- oder Referenztabellen aus einem relationalen Speicher (entweder lokal oder in der Cloud), um die Daten in den Lake zu laden. 
 
-Weitere Informationen finden Sie im [Tutorial zur Ablaufsteuerung](tutorial-control-flow.md).
+Weitere Informationen finden Sie unter [Tutorial: Ablaufsteuerungen](tutorial-control-flow.md).
 
 ### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>Bedarfsabhängiges Transformieren Ihrer Daten mit Pipelines ohne Code
 Die neue browserbasierte Toolumgebung ermöglicht die Erstellung und Bereitstellung von Pipelines ohne Code mit einer modernen, interaktiven webbasierten Benutzeroberfläche.
@@ -92,9 +91,9 @@ Seit der ersten öffentlichen Vorschauversion von 2017 wurden über Data Factory
 ## <a name="what-is-integration-runtime"></a>Was ist Integration Runtime?
 Integration Runtime ist die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
 
-- **Datenverschiebung**: Zur Datenverschiebung werden die Daten von der Integration Runtime zwischen dem Quell- und Zieldatenspeicher verschoben, und es wird gleichzeitig Unterstützung für integrierte Connectors, Formatkonvertierungen, Spaltenzuordnungen und performante sowie skalierbare Datenübertragungen bereitgestellt.
-- **Verteilungsaktivitäten**: Für die Transformation bietet die Integration Runtime Funktionen zur nativen Ausführung von SSIS-Paketen.
-- **SSIS-Pakete ausführen**: Dient zum nativen Ausführen von SSIS-Paketen in einer verwalteten Azure-Compute-Umgebung. Zudem unterstützt die Integration Runtime auch die Übermittlung und Überwachung von Transformationsaktivitäten, die in verschiedensten Computediensten wie Azure HDInsight, Azure Machine Learning, Azure SQL-Datenbank, SQL Server und vielen weiteren ausgeführt werden.
+- **Datenverschiebung:** Zur Datenverschiebung werden die Daten von Integration Runtime zwischen dem Quell- und Zieldatenspeicher verschoben und gleichzeitig Unterstützung für integrierte Connectors, Formatkonvertierungen, Spaltenzuordnungen und leistungsfähige sowie skalierbare Datenübertragungen bereitgestellt.
+- **Verteilungsaktivitäten:** Für die Transformation bietet Integration Runtime Funktionen zur nativen Ausführung von SSIS-Paketen.
+- **SSIS-Pakete ausführen:** Dient zum nativen Ausführen von SSIS-Paketen in einer verwalteten Azure-Compute-Umgebung. Zudem unterstützt die Integration Runtime auch die Übermittlung und Überwachung von Transformationsaktivitäten, die in verschiedensten Computediensten wie Azure HDInsight, Azure Machine Learning, Azure SQL-Datenbank, SQL Server und vielen weiteren ausgeführt werden.
 
 Sie können zum Verschieben und Transformieren von Daten je nach Bedarf eine oder mehrere Integration Runtime-Instanzen bereitstellen. Integration Runtime kann in einem öffentlichen Azure-Netzwerk oder einem privaten Netzwerk (lokal, Azure Virtual Network oder Virtual Private Cloud (VPC) von Amazon Web Services) ausgeführt werden. 
 

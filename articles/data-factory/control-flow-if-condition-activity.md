@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 799348c14bba80909d6e443f09d232e5a4783f25
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857377"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015150"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
 Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
@@ -67,11 +66,11 @@ Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der Aktivität „If Condition“ | Zeichenfolge | Ja
-type | Muss auf **IfCondition** festgelegt werden. | Zeichenfolge | Ja
-expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck mit Ergebnistyp „Boolesch“ | Ja
-ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Array | Ja
-ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Array | Ja
+name | Der Name der Aktivität „If Condition“ | Zeichenfolge | JA
+type | Muss auf **IfCondition** festgelegt werden. | Zeichenfolge | JA
+expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck mit Ergebnistyp „Boolesch“ | JA
+ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Array | JA
+ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Array | JA
 
 ## <a name="example"></a>Beispiel
 Die Pipeline in diesem Beispiel kopiert Daten aus einem Eingabeordner in einen Ausgabeordner. Der Ausgabeordner wird durch den Wert des Pipelineparameters bestimmt: routeSelection. Wenn der routeSelection-Wert „true“ lautet, werden die Daten in „outputPath1“ kopiert. Wenn der routeSelection-Wert „false“ lautet, werden die Daten in „outputPath2“ kopiert. 
@@ -246,7 +245,7 @@ Die Pipeline legt für **folderPath** entweder den Wert des Parameters **outputP
 ```
 
 ### <a name="powershell-commands"></a>PowerShell-Befehle
-Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im Ordner „C:\ADF“ gespeichert haben. 
+Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im folgenden Ordner gespeichert haben: C:\ADF. 
 
 ```powershell
 Connect-AzureRmAccount

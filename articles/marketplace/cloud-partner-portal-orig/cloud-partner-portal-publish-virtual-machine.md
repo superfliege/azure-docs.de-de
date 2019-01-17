@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247074"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078115"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Veröffentlichen eines virtuellen Computers in Azure Marketplace
 
@@ -31,35 +31,23 @@ Für die Veröffentlichung eines virtuellen Computers im Azure Marketplace gelte
 
 ### <a name="technical"></a>Technisch
 
--   [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](../cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
 -   [Erstellen und Hochladen einer virtuellen Linux-Festplatte](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [Erstellen und Testen eines virtuellen Linux-Computers aus einem Image](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Erstellen und Hochladen einer Windows-VHD ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [Erstellen und Testen eines virtuellen Windows-Computers aus einem Image](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
-
--   [Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
+-   [Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 -   [Sicherheitsempfehlungen für Azure Marketplace-Images](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>Nicht technisch (Geschäftsanforderungen)
 
  -   Der Standort Ihres Unternehmens (oder der Niederlassung) befindet sich in einem vom Azure Marketplace unterstützten Verkäuferland.
-
 -   Ihr Produkt muss auf eine Weise lizenziert sein, die mit den vom Azure Marketplace unterstützten Abrechnungsmodellen kompatibel ist.
-
 -   Sie sind dafür zuständig, technischen Support für Kunden in einer wirtschaftlich vertretbaren Weise zur Verfügung zu stellen. Der Support kann kostenlos, kostenpflichtig oder mittels der Unterstützung durch die Community erfolgen.
-
 -   Sie sind für die Lizenzierung Ihrer Software und sämtlicher Abhängigkeiten von Drittanbietersoftware verantwortlich.
-
--   Sie stellen Inhalte bereit, die die Kriterien erfüllen, damit Ihr Angebot im Azure Marketplace und im Azure-Verwaltungsportal aufgelistet wird.
-
+-   Sie stellen Inhalte bereit, die die Kriterien erfüllen, damit Ihr Angebot im Azure Marketplace und im Azure-Portal aufgelistet wird.
 -   Sie stimmen den Bedingungen der Azure Marketplace-Teilnahmerichtlinien und der Herausgebervereinbarung zu.
-
 -   Stimmen Sie der Einhaltung der [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/), der [Datenschutzerklärung von Microsoft](https://www.microsoft.com/privacystatement/default.aspx) und der [Microsoft Azure Certified-Programmvereinbarung](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/) zu.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -177,7 +165,7 @@ Sie übernehmen die Lizenzierung der Software, die auf dem virtuellen Computer a
 
 #### <a name="usage-based-monthly-billed-sku"></a>Nutzungsbasierte, monatlich abgerechnete SKU
 
-Die Abrechnung für den Kunden erfolgt auf Stundenbasis gemäß den Gebühren, die von den Herausgebern für die VM-Größen festgelegt sind. Beim **stündlichen Abrechnungsmodell** für die SKUs ergibt sich der Gesamtpreis aus der Summe der vom Herausgeber in Rechnung gestellten Softwarekosten und der von Microsoft in Rechnung gestellten Infrastrukturkosten. Diese Gesamtkosten werden dem Kunden als stündlicher und monatlicher Preis angezeigt, wenn er den Kauf erwägt. In diesem Fall erfolgt die Abrechnung monatlich.
+Die Abrechnung für den Kunden erfolgt auf Stundenbasis gemäß den Gebühren, die von den Herausgebern für die VM-Größen festgelegt sind. Beim **stündlichen Abrechnungsmodell** ergibt sich der Gesamtpreis aus der Summe der vom Herausgeber in Rechnung gestellten Softwarekosten und der von Microsoft in Rechnung gestellten Infrastrukturkosten. Diese Gesamtkosten werden dem Kunden als stündlicher und monatlicher Preis angezeigt, wenn er den Kauf erwägt. In diesem Fall erfolgt die Abrechnung monatlich.
 
 Für das nutzungsbasierte Modell müssen Sie zusätzliche Einstellungen festlegen.
 
@@ -188,7 +176,7 @@ Hier werden dem Kunde für die ersten 30/90 Tage (von der Auswahl abhängig) nac
 
 **Preis pro Kern**
 
-Sie können einen Preis pro Kern für die SKU festlegen. Hierzu müssen Sie lediglich den Grundpreis für einen einzelnen Kern eingeben. Anschließend werden die Preise für die restlichen Kerne automatisch berechnet. Geben Sie die Preise im Portal in US-Dollar ein, und die Preise für andere Regionen werden automatisch berechnet. Sie können die Preise in den anderen Regionen überprüfen, indem Sie **Preisdaten exportieren** verwenden.
+Sie können einen Preis pro Kern für die SKU festlegen. Für diese Option müssen Sie lediglich den Grundpreis für einen einzelnen Kern eingeben. Anschließend werden die Preise für die restlichen Kerne automatisch berechnet. Geben Sie die Preise im Portal in US-Dollar ein, und die Preise für andere Regionen werden automatisch berechnet. Sie können die Preise in den anderen Regionen überprüfen, indem Sie **Preisdaten exportieren** verwenden.
 
 ![Preis pro Kern](./media/cloud-partner-portal-publish-virtual-machine/publishvm6.png)
 
@@ -201,7 +189,7 @@ Sie können die Preise für jeden Kernsatz einzeln festlegen, wenn Sie für jede
 
 **Exportieren und Importieren von Preisen**
 
-Sie können die im Portal konfigurierten Preise exportieren, um über die Excel-Schnittstelle Änderungen vorzunehmen. So können Sie auch die Preise pro Region und die Preise in lokalen Währungen überprüfen.
+Sie können die im Portal konfigurierten Preise exportieren, um über die Excel-Schnittstelle Änderungen vorzunehmen. Mit dieser Option können Sie auch die Preise pro Region und die Preise in lokalen Währungen überprüfen.
 Klicken Sie auf **Exportpreise**, um eine Excel-Datei mit den bereits eingetragenen Preisdetails herunterzuladen. Diese Details können Sie dann in Excel bearbeiten. Verwenden Sie anschließend **Importpreise**, um die vorgenommenen Änderungen zu importieren.
 Die importierten Preise werden auch im Portal widergespiegelt.
 
@@ -219,24 +207,18 @@ In dieser Excel-Preistabelle werden die Preise für die verschiedenen Regionen i
 
 Als Nächstes wird der Abschnitt für die VM-Images bearbeitet. Bevor Sie mit diesem Abschnitt beginnen, sollten Sie die VHD vorbereiten, die Sie veröffentlichen möchten. Die folgenden Links helfen Ihnen beim Erstellen der VHD:
 
--   [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
 -   [Erstellen und Hochladen einer Linux-VHD](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [Erstellen und Testen eines virtuellen Linux-Computers aus einem Image](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [Erstellen und Hochladen einer Windows-VHD ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [Erstellen und Testen eines virtuellen Windows-Computers aus einem Image](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
+-   [Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 
--   [Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
-Wenn die VHD vorbereitet ist, können Sie beginnen, diesen Abschnitt zu bearbeiten.
-Hier finden Sie einige Details für einige der Felder.
+Wenn die VHD vorbereitet ist, können Sie beginnen, diesen Abschnitt zu bearbeiten.  Hier finden Sie einige Details für einige der Felder.
 
 ### <a name="recommended-vm-sizes"></a>Empfohlene VM-Größen
 
-Wählen Sie bis zu sechs empfohlene VM-Größen aus. Dies sind Empfehlungen, die für Kunden im Azure Marketplace und auf dem Blatt „Tarif“ im Azure-Portal sichtbar sind, wenn sie Ihr Image erwerben und bereitstellen möchten. **Es handelt sich hierbei nur um Empfehlungen. Der Kunde kann eine beliebige VM-Größe auswählen, die sich für die in Ihrem Image festgelegten Datenträger eignet.**  Der folgende Screenshot zeigt die empfohlenen VM-Größen, die einem Kunden im Azure Portal angezeigt werden.
+Wählen Sie bis zu sechs empfohlene VM-Größen aus. Diese Empfehlungen werden für Kunden im Azure Marketplace und auf dem Blatt „Tarif“ im Azure-Portal angezeigt, wenn sie Ihr Image erwerben und bereitstellen möchten. *Bei diesen Größen handelt es sich nur um Empfehlungen. Der Kunde kann eine beliebige VM-Größe auswählen, die sich für die in Ihrem Image festgelegten Datenträger eignet.*  Der folgende Screenshot zeigt die empfohlenen VM-Größen, die einem Kunden im Azure-Portal angezeigt werden.
 
 
 ![Empfohlene VM-Größen](./media/cloud-partner-portal-publish-virtual-machine/publishvm9.png)
@@ -248,9 +230,9 @@ Geben Sie die Ports an, die Sie öffnen und verfügbar machen möchten. Diese Po
 
 ### <a name="adding-vm-images"></a>Hinzufügen von VM-Images
 
-Als Nächstes fügen Sie ein VM-Image für die SKU hinzu. Sie können bis zu 8 Datenträgerversionen pro SKU hinzufügen. Im Azure Marketplace wird nur die höchste Datenträger-Versionsnummer für eine SKU angezeigt. Die weiteren Nummern sind über APIs sichtbar.
+Als Nächstes fügen Sie ein VM-Image für die SKU hinzu. Sie können bis zu acht Datenträgerversionen pro SKU hinzufügen. Im Azure Marketplace wird nur die höchste Datenträger-Versionsnummer für eine SKU angezeigt. Die weiteren Nummern sind über APIs sichtbar.
 
-Wählen Sie unter der **Datenträgerversion** die Option **+ Neue Version** aus. Dadurch werden die folgenden Felder angezeigt, die Sie ausfüllen müssen.
+Wählen Sie unter der **Datenträgerversion** die Option **+ Neue Version** aus. Mit dieser Option werden die folgenden Felder angezeigt, die Sie ausfüllen müssen.
 
 #### <a name="vm-image-version"></a>VM-Imageversion
 
@@ -258,13 +240,13 @@ Die VM-Imageversion muss dem Format der [semantischen Version](http://semver.org
 
 #### <a name="os-vhd-url"></a>URL DER BETRIEBSSYSTEM-VHD
 
-Geben Sie den [Shared Access Signature-URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) ein, der für die Betriebssystem-VHD erstellt wurde.
+Geben Sie den [Shared Access Signature-URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) ein, der für die Betriebssystem-VHD erstellt wurde.
 
 Wenn der SKU Datenträger zugeordnet sind, können Sie diese Datenträger hinzufügen, indem Sie den Link **+ Neuer Datenträger** auswählen. Mit dieser Aktion werden zusätzliche Felder angezeigt, die Sie ausfüllen können.
 
 #### <a name="lun-vhd-url"></a>URL DER LUN-VHD
 
-Geben Sie den [Shared Access Signature-URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images) für den Datenträger ein.
+Geben Sie den [Shared Access Signature-URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md) für den Datenträger ein.
 
 #### <a name="lun-number"></a>LUN-Nummer
 
@@ -277,16 +259,16 @@ Weisen Sie dieser LUN eine Nummer zu. Diese Nummer wird für diesen Datenträger
 
 | Problem                                                                 | Message                                                                           | Behebung                                                           |  Link zur Dokumentation                                                                                |
 |---------------------------------------------------------------------  |-------------------------------------------------------------------------------    |-----------------------------------------------------------    |---------------------------------------------------------------------------------------------------    |
-| Fehler beim Kopieren von Bildern: „?“ nicht in der SAS-URL enthalten                | Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.       | Aktualisieren Sie die SAS-URL mithilfe empfohlener Tools.                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Fehler beim Kopieren von Bilder: Parameter „st“ und „se“ nicht in SAS-URL enthalten   | Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.        | Aktualisieren Sie die SAS-URL mit Start- und Enddatum.             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Fehler beim Kopieren von Bildern: „sp=rl“ nicht in der SAS-URL enthalten                    | Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.         | Aktualisieren Sie die SAS-URL durch Festlegen der Berechtigungen „Lesen“ und „Auflisten“.     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Fehler beim Kopieren von Bildern: SAS-URL enthält Leerzeichen im VHD-Namen.     | Fehler: Kopieren von Bildern. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.        | Entfernen Sie die Leerzeichen aus der SAS-URL.                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
-| Fehler beim Kopieren von Bildern: SAS-URL-Autorisierungsfehler               | Fehler: Kopieren von Bildern. Blob aufgrund eines Autorisierungsfehlers nicht heruntergeladen werden.     | Erstellen Sie die SAS-URL neu.                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Fehler beim Kopieren von Bildern: „?“ nicht in der SAS-URL enthalten                | Fehler: Image wird kopiert. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.       | Aktualisieren Sie die SAS-URL mithilfe empfohlener Tools.                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Fehler beim Kopieren von Bilder: Parameter „st“ und „se“ nicht in SAS-URL enthalten   | Fehler: Image wird kopiert. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.        | Aktualisieren Sie die SAS-URL mit Start- und Enddatum.             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Fehler beim Kopieren von Bildern: „sp=rl“ nicht in der SAS-URL enthalten                    | Fehler: Image wird kopiert. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.         | Aktualisieren Sie die SAS-URL durch Festlegen der Berechtigungen „Lesen“ und „Auflisten“.     | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Fehler beim Kopieren von Bildern: SAS-URL enthält Leerzeichen im VHD-Namen.     | Fehler: Image wird kopiert. Blob kann mit dem angegebenen SAS-URI nicht heruntergeladen werden.        | Entfernen Sie die Leerzeichen aus der SAS-URL.                       | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
+| Fehler beim Kopieren von Bildern: SAS-URL-Autorisierungsfehler               | Fehler: Image wird kopiert. Blob aufgrund eines Autorisierungsfehlers nicht heruntergeladen werden.     | Erstellen Sie die SAS-URL neu.                                        | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
 
 
 ## <a name="to-configure-the-marketplace"></a>So konfigurieren Sie den Marketplace
 
-Verwenden Sie die Marketplace-Ansicht, um die Felder, die für das Angebot im [Azure Marketplace](https://azuremarketplace.microsoft.com) und im [Azure-Portal](https://portal.azure.com/) angezeigt werden, zu konfigurieren.
+Verwenden Sie die Marketplace-Ansicht, um die Felder zu konfigurieren, die für das Angebot im [Azure Marketplace](https://azuremarketplace.microsoft.com) und im [Azure-Portal](https://portal.azure.com/) angezeigt werden.
 
 ### <a name="preview-subscription-ids"></a>Preview-Abonnement-IDs
 
@@ -294,7 +276,7 @@ Die Liste der Azure-Abonnement-IDs, die nach der Veröffentlichung des Angebots 
 
 ### <a name="suggested-categories"></a>Vorgeschlagene Kategorien
 
-Wählen Sie bis zu 5 Kategorien aus der Liste, denen Ihr Angebot am besten zugeordnet werden kann. Die ausgewählten Kategorien werden verwendet, um Ihr Angebot den Produktkategorien zuzuordnen, die im [Azure Marketplace](https://azuremarketplace.microsoft.com) und im [Azure-Portal](https://portal.azure.com/) verfügbar sind.
+Wählen Sie bis zu fünf Kategorien aus der vorhandenen Liste, denen Ihr Angebot am besten zugeordnet werden kann. Die ausgewählten Kategorien werden verwendet, um Ihr Angebot den Produktkategorien zuzuordnen, die im [Azure Marketplace](https://azuremarketplace.microsoft.com) und im [Azure-Portal](https://portal.azure.com/) verfügbar sind.
 
 Die folgenden Beispiele zeigen die Marketplace-Informationen im Azure Marketplace und im Azure-Portal.
 
@@ -316,7 +298,6 @@ Die folgenden Beispiele zeigen die Marketplace-Informationen im Azure Marketplac
 ![publishvm12](./media/cloud-partner-portal-publish-virtual-machine/publishvm12.png)
 
 
-
 ![publishvm13](./media/cloud-partner-portal-publish-virtual-machine/publishvm13.png)
 
 
@@ -333,7 +314,7 @@ Befolgen Sie die folgenden Richtlinien für Logos, die Sie im Cloud-Partnerporta
 
 -   Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
 
--   Vermeiden Sie die Platzierung von Text auf dem Logo. Dies schließt Ihren Firmen- oder Markennamen ein. Das Erscheinungsbild Ihres Logos sollte *klar und direkt* und frei von Farbverläufen sein.
+-   Platzieren Sie nach Möglichkeit keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.  Das Erscheinungsbild Ihres Logos sollte *klar und direkt* und frei von Farbverläufen sein.
 
 -   Das Logo sollte nicht gestreckt werden.
 
@@ -345,7 +326,7 @@ Ein Herologo ist optional. Der Herausgeber muss kein Herologo hochladen. Nachdem
 
 -   Anzeigename des Herausgebers, Plantitel und ausführliche Angebotsübersicht werden in weißer Schrift angezeigt. Vermeiden Sie helle Farben im Hintergrund. Ein schwarzer, weißer oder transparenter Hintergrund ist für Herosymbole nicht zulässig.
 
--   Der Anzeigename des Herausgebers, der Plantitel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herosymbol eingebettet, wenn das Angebot live geschaltet wird. Geben Sie beim Entwerfen des Herosymbols keinen Text ein. Lassen Sie einen Bereich auf der rechten Seite des Logos leer. Dieser Bereich sollte 415 x 100 Pixel groß und 370 Pixel von links versetzt sein.
+-   Der Anzeigename des Herausgebers, der Plantitel, die ausführliche Angebotsübersicht und die Schaltfläche „Erstellen“ werden programmgesteuert in das Herosymbol eingebettet, wenn das Angebot live geschaltet wird. Geben Sie beim Entwerfen des Herosymbols keinen Text ein. Lassen Sie einen Bereich auf der rechten Seite des Logos leer. Dieser Bereich sollte 415 x 100 Pixel groß und 370 Pixel von links versetzt sein.
 
 ![Beispiel für Herologo](./media/cloud-partner-portal-publish-virtual-machine/publishvm14.png)
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e92e86f59058f1f226c67f873530cd9c06b5d5fc
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c26da5d047a1e904510f96b44d81632b6e98689e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428333"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190968"
 ---
 # <a name="create-perspectives"></a>Erstellen von Perspektiven
 
@@ -23,10 +23,10 @@ Die Perspektive für Internetverkäufer, die Sie in dieser Lektion erstellen, um
   
 In dieser Lektion soll beschrieben werden, wie Sie Perspektiven erstellen und sich mit den tabellarischen Modellerstellungstools vertraut machen können. Wenn Sie dieses Modell später um zusätzliche Tabellen erweitern, können Sie zusätzliche Perspektiven erstellen, um unterschiedliche Sichtweisen für das Modell zu definieren, z. B. Bestand und Verkauf.  
   
-Geschätzte Zeit zum Bearbeiten dieser Lektion: **5 Minuten**  
+Geschätzte Zeit zum Bearbeiten dieser Lektion: **Fünf Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 7: Erstellen von Key Performance Indicators](../tutorials/aas-lesson-7-create-key-performance-indicators.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 7: Erstellen von Key Performance Indicators](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
   
 ## <a name="create-perspectives"></a>Erstellen von Perspektiven  
   
@@ -45,7 +45,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
     In einer späteren Lektion werden Sie diese Perspektive mit „In Excel analysieren“ testen. Die PivotTable-Feldliste in Excel enthält alle Tabellen außer „DimCustomer“.  
 
 ## <a name="whats-next"></a>Wie geht es weiter?
-[Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md).
+[Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md)
   
   
   

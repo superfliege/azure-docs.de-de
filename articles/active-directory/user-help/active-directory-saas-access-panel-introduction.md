@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f51fb1d92fdec93fdb57fd25f8ca1cbaeb4fc46
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834705"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188928"
 ---
 # <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
@@ -65,7 +65,7 @@ Das Installationsprogramm ist architekturspezifisch. Wenn Sie auf Downloadlink k
 
 
 Die Portalerweiterung „Meine Apps“ ist derzeit verfügbar für:
-- **Microsoft Edge:** Unter Windows 10 Anniversary Edition oder höher 
+- **Microsoft Edge:** Windows 10 Anniversary Edition oder höher 
 - **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 - **Internet Explorer 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)

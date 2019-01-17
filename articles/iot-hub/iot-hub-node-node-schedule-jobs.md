@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: juanpere
-ms.openlocfilehash: 1b6f3a3d4f130792ee606050338a2c30f7fc7847
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a0614b5a1eadafe78537a4793d2dc0a866337487
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514977"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118879"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Planen und Übertragen von Aufträgen (Node)
 
@@ -30,8 +30,8 @@ Vom Konzept her umschließt ein Auftrag eine dieser Aktionen und verfolgt den Au
 
 Weitere Informationen zu diesen Funktionen finden Sie in den folgenden Artikeln:
 
-* Gerätezwilling und -eigenschaften: [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-get-started-twin] und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-props]
-* Direkte Methoden: [Verstehen und Aufrufen direkter Methoden von IoT Hub][lnk-dev-methods] und [Verwenden direkter Methoden auf Ihrem IoT-Gerät mit Node.js][lnk-c2d-methods]
+* Gerätezwillinge und Eigenschaften: [Erste Schritte mit Gerätezwillingen][lnk-get-started-twin] und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-props]
+* Direkte Methoden: [Verstehen und Aufrufen direkter Methoden von IoT Hub][lnk-dev-methods] und [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Node.js)][lnk-c2d-methods]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -97,7 +97,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf eine von de
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (!err) {
-                console.error('An error occured when sending a method response:\n' + err.toString());
+                console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }

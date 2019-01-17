@@ -1,22 +1,23 @@
 ---
-title: Übersicht über Azure-Sicherheitsgruppen | Microsoft-Dokumentation
+title: Übersicht über Azure-Sicherheitsgruppen
+titlesuffix: Azure Virtual Network
 description: Hier finden Sie Informationen zu Netzwerk- und Anwendungssicherheitsgruppen. Mithilfe von Sicherheitsgruppen können Sie den Netzwerkdatenverkehr zwischen Azure-Ressourcen filtern.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: ad5205bcf063cd3375e68ef609c71ced2f551b61
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311761"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159059"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -70,15 +71,18 @@ Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle N
 * **MicrosoftContainerRegistry** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Microsoft Container Registry-Diensts an. Wenn Sie *MicrosoftContainerRegistry* als Wert angeben, wird der Datenverkehr für MicrosoftContainerRegistry zugelassen oder verweigert. Falls Sie den Zugriff auf MicrosoftContainerRegistry nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: MicrosoftContainerRegistry.[Name der Region]. 
 * **AzureContainerRegistry** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Container Registry-Diensts an. Wenn Sie *AzureContainerRegistry* als Wert angeben, wird der Datenverkehr für AzureContainerRegistry zugelassen oder verweigert. Falls Sie den Zugriff auf AzureContainerRegistry nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureContainerRegistry.[Name der Region]. 
 * **AppService** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure App Service-Diensts an. Wenn Sie *AppService* als Wert angeben, wird der Datenverkehr für AppService zugelassen oder verweigert. Falls Sie den Zugriff auf AppService nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AppService.[Name der Region]. 
-* **AppServiceManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure App Service Management-Diensts an. Wenn Sie *AppServiceManagement* als Wert angeben, wird der Datenverkehr für AppServiceManagement zugelassen oder verweigert. Falls Sie den Zugriff auf AppServiceManagement nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AppServiceManagement.[Name der Region]. 
-* **ApiManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure API Management-Diensts an. Wenn Sie *ApiManagement* als Wert angeben, wird der Datenverkehr für ApiManagement zugelassen oder verweigert. Falls Sie den Zugriff auf ApiManagement nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: ApiManagement.[Name der Region]. 
+* **AppServiceManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure App Service Management-Diensts an. Wenn Sie *AppServiceManagement* als Wert angeben, wird der Datenverkehr für AppServiceManagement zugelassen oder verweigert. 
+* **ApiManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure API Management-Diensts an. Wenn Sie *ApiManagement* als Wert angeben, wird der Datenverkehr für ApiManagement zugelassen oder verweigert.  
 * **AzureConnectors** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Connectors-Diensts an. Wenn Sie *AzureConnectors* als Wert angeben, wird der Datenverkehr für AzureConnectors zugelassen oder verweigert. Falls Sie den Zugriff auf AzureConnectors nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureConnectors.[Name der Region]. 
-* **GatewayManager** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Gateway Manager-Diensts an. Wenn Sie *GatewayManager* als Wert angeben, wird der Datenverkehr für GatewayManager zugelassen oder verweigert. Falls Sie den Zugriff auf GatewayManager nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: GatewayManager.[Name der Region]. 
+* **GatewayManager** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Gateway Manager-Diensts an. Wenn Sie *GatewayManager* als Wert angeben, wird der Datenverkehr für GatewayManager zugelassen oder verweigert.  
 * **AzureDataLake** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Data Lake-Diensts an. Wenn Sie *AzureDataLake* als Wert angeben, wird der Datenverkehr für AzureDataLake zugelassen oder verweigert. 
 * **AzureActiveDirectory** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Active Directory-Diensts an. Wenn Sie *AzureActiveDirectory* als Wert angeben, wird der Datenverkehr für AzureActiveDirectory zugelassen oder verweigert.  
+* **AzureMonitor** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureMonitor-Diensts an. Wenn Sie *AzureMonitor* als Wert angeben, wird der Datenverkehr für AzureMonitor zugelassen oder verweigert. 
+* **ServiceFabric** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des ServiceFabric-Diensts an. Wenn Sie *ServiceFabric* als Wert angeben, wird der Datenverkehr für ServiceFabric zugelassen oder verweigert. 
+* **AzureMachineLearning** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureMachineLearning-Diensts an. Wenn Sie *AzureMachineLearning* als Wert angeben, wird der Datenverkehr für AzureMachineLearning zugelassen oder verweigert. 
 
 > [!NOTE]
-> Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. Regionale Diensttags werden in nationalen Clouds nicht unterstützt, sondern nur im globalen Format. Beispiel: *Storage* und *Sql*.
+> Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. 
 
 > [!NOTE]
 > Wenn Sie einen [Dienstendpunkt für ein virtuelles Netzwerk](virtual-network-service-endpoints-overview.md) für einen Dienst implementieren, z.B. Azure Storage oder Azure SQL-Datenbank, fügt Azure eine [Route](virtual-networks-udr-overview.md#optional-default-routes) zu einem Subnetz des virtuellen Netzwerks für den Dienst hinzu. Die Adresspräfixe für die Route sind die gleichen Adresspräfixe bzw. CIDR-Bereiche wie für das entsprechende Diensttag.

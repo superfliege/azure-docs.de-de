@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965375"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159790"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -70,13 +70,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |json-to-xml|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Die Konvertierung immer anwenden.<br />– content-type-json – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von JSON angibt.|JA|N/V|
 |consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein |true|
@@ -114,13 +114,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |xml-to-json|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |kind|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – javascript-friendly – Die konvertierte JSON hat ein für JavaScript-Entwickler verständliches Format.<br />– direct – Die konvertierte JSON spiegelt die Struktur des ursprünglichen XML-Dokuments wider.|JA|N/V|
 |apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Immer konvertieren.<br />– content-type-xml – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von XML angibt.|JA|N/V|
@@ -150,13 +150,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |find-and-replace|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |from|Die zu suchende Zeichenfolge.|JA|N/V|
 |To|Die Ersatzzeichenfolge. Geben Sie eine leere Ersatzzeichenfolge an, um die Suchzeichenfolge zu entfernen.|JA|N/V|
@@ -188,7 +188,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |redirect-content-urls|Stammelement|JA|
 
@@ -252,13 +252,13 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-backend-service|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |base-url|Neue Basis-URL für den Back-End-Dienst.|Nein |N/V|
 |backend-id|Der Bezeichner des Back-Ends, an den die Weiterleitung stattfinden soll|Nein |N/V|
@@ -318,7 +318,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 </set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Beispiel für den Zugriff auf den Text als JObject. Da der ursprüngliche Anforderungstext nicht erhalten bleibt, wird beim späteren Zugriff darauf in der Pipeline eine Ausnahme ausgelöst.
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Beispiel für den Zugriff auf den Text als JObject. Da der ursprüngliche Anforderungstext nicht erhalten bleibt, wird beim späteren Zugriff darauf in der Pipeline eine Ausnahme ausgelöst.
 
 ```xml
 <set-body> 
@@ -353,7 +353,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 ```
 
 ### <a name="using-liquid-templates-with-set-body"></a>Verwenden von Liquid-Vorlagen mit Festlegen von Text
-Die `set-body`-Richtlinie kann so konfiguriert werden, dass Sie die [Liquid](https://shopify.github.io/liquid/basics/introduction/)-Vorlagensprache verwendet, um den Hauptteil einer Anforderung oder Antwort zu transformieren. Dies kann sehr effektiv sein, wenn Sie das Format Ihrer Nachricht vollständig umformen müssen.
+Die Richtlinie `set-body` kann so konfiguriert werden, dass Sie den Hauptteil einer Anforderung oder Antwort mit der Vorlagensprache [Liquid](https://shopify.github.io/liquid/basics/introduction/) transformiert. Dies kann sehr effektiv sein, wenn Sie das Format Ihrer Nachricht vollständig umformen müssen.
 
 > [!IMPORTANT]
 > Die Implementierung von Liquid, verwendet in der `set-body`-Richtlinie, wird im „C#-Modus“ konfiguriert. Dies ist beim Ausführen von Aktionen wie z.B. dem Filtern besonders wichtig. Beispielsweise erfordert die Verwendung eines Datumfilters das Verwenden der Pascal-Schreibweise und die C#-Datumsformatierung, z.B.:
@@ -388,13 +388,13 @@ Die `set-body`-Richtlinie kann so konfiguriert werden, dass Sie die [Liquid](htt
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|JA|
 
 ### <a name="properties"></a>Eigenschaften
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |Vorlage|Es wird verwendet, um den Vorlagenmodus zu ändern, in dem die Richtlinie zum Festlegen von Text ausgeführt werden wird. Der einzige derzeit unterstützte Wert ist:<br /><br />– Liquid: Die Richtlinie zum Festlegen von Text verwendet die Liquid-Vorlagen-Engine. |Nein |Liquid|
 
@@ -497,14 +497,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-header|Stammelement|JA|
 |value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|JA|
 
 ### <a name="properties"></a>Eigenschaften
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
 |name|Der Name des zu setzenden Headers.|JA|N/V|
@@ -557,14 +557,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-query-parameter|Stammelement|JA|
 |value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|JA|
 
 ### <a name="properties"></a>Eigenschaften
 
-|Name|Beschreibung|Erforderlich|Standard|
+|NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Abfrageparameter bereits vorhanden ist. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Parameters.<br />– skip – Ersetzt den vorhandenen Abfrageparameterwert nicht.<br />– append – Fügt den Wert an den vorhandenen Abfrageparameterwert an.<br />– delete – Entfernt den Abfrageparameter aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Abfrageparameter gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
 |name|Gibt den Namen des festzulegenden Abfrageparameters an.|JA|N/V|
@@ -636,13 +636,13 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |rewrite-uri|Stammelement|JA|
 
 ### <a name="attributes"></a>Attribute
 
-|Attribut|Beschreibung|Erforderlich|Standard|
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|JA|N/V|
 |copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein |true|
@@ -705,7 +705,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |xsl-transform|Stammelement|JA|
 |Parameter|Wird verwendet, um in der Transformation verwendete Variablen zu definieren.|Nein |

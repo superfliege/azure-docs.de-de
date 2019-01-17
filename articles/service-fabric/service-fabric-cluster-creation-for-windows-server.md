@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257604"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159451"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet.
@@ -104,7 +104,7 @@ Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss au
     Passed                     : True
     ```
 
-2. Erstellen Sie den Cluster: Führen Sie das Skript *CreateServiceFabricCluster.ps1* aus, um den Service Fabric-Cluster auf allen Computern in der Konfiguration bereitzustellen. 
+2. Erstellen Sie den Cluster:  Führen Sie das Skript *CreateServiceFabricCluster.ps1* aus, um den Service Fabric-Cluster auf allen Computern in der Konfiguration bereitzustellen. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -114,7 +114,7 @@ Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss au
 > 
 > 
 
-### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>Schritt 1C: Erstellen eines Clusters ohne Internetverbindung (Offlinecluster)
+### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>Schritt 1C: Erstellen eines Offlineclusters (Clusters ohne Internetverbindung)
 Das Service Fabric-Laufzeitpaket wird bei der Clustererstellung automatisch heruntergeladen. Wenn Sie einen Cluster auf Computern ohne Internetverbindung bereitstellen, müssen Sie das Service Fabric-Laufzeitpaket separat herunterladen und bei der Clustererstellung den Pfad angeben, an dem sich das Paket befindet.
 Das Laufzeitpaket kann über einen anderen Computer, der über eine Internetverbindung verfügt, heruntergeladen werden (unter [Downloadlink: Service Fabric Runtime – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)). Kopieren Sie das Laufzeitpaket an den Ort, von dem aus Sie den Offlinecluster bereitstellen, und erstellen Sie den Cluster, indem Sie `CreateServiceFabricCluster.ps1` mit dem Parameter `-FabricRuntimePackagePath` ausführen, wie in diesem Beispiel dargestellt: 
 
@@ -124,7 +124,7 @@ Das Laufzeitpaket kann über einen anderen Computer, der über eine Internetverb
 
 *.\ClusterConfig.json* und *.\MicrosoftAzureServiceFabric.cab* sind hierbei die Pfade zur Clusterkonfiguration bzw. zur CAB-Datei der Laufzeit.
 
-### <a name="step-2-connect-to-the-cluster"></a>Schritt 2: Herstellen einer Verbindung mit dem Cluster
+### <a name="step-2-connect-to-the-cluster"></a>Schritt 2: Verbinden mit dem Cluster
 Verbinden Sie sich mit dem Cluster, um sicherzustellen, dass der Cluster ausgeführt wird und verfügbar ist. Das ServiceFabric-PowerShell-Modul wird zusammen mit der Laufzeit installiert.  Sie können sich über einen der Clusterknoten oder über einen Remotecomputer mit einer Service Fabric-Laufzeit mit dem Cluster verbinden.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.
 
 Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem unsicheren Cluster herzustellen:
@@ -200,8 +200,8 @@ Zur Verbesserung des Produkts werden standardmäßig Telemetriedaten zur Service
 * Länge der Warteschlange für Failovereinheiten
 * Länge der Commitwarteschlange
 * Anzahl von Knoten
-* IsContextComplete: „true“ oder „false“
-* Cluster-ID: Eine für jeden Cluster nach dem Zufallsprinzip generierte GUID.
+* IsContextComplete: True/False
+* ClusterId: Eine für jeden Cluster nach dem Zufallsprinzip generierte GUID
 * Service Fabric-Version
 * IP-Adresse des (virtuellen) Computers, von dem die Telemetriedaten hochgeladen werden
 

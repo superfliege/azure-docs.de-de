@@ -6,21 +6,21 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 36f4caac38f2f4891af6f61b78b55c7eff15eae4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974512"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116737"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
-Blobs sind unstrukturierte Darstellungen gängiger Dateitypen (z. B. Bilder oder Protokolle). Blobs verwenden einen MIME-Typ (beispielsweise „image/jpeg“) sowie Metadaten (Name, Beschreibung, Typ usw.), um die Art der dargestellten Daten nachzuverfolgen.
+Blobs sind unstrukturierte Darstellungen gängiger Dateitypen (z. B. Bilder oder Protokolle). Blobs verfolgen mithilfe eines MIME-Typs (beispielsweise „image/jpeg“) sowie Metadaten (Name, Beschreibung, Typ usw.) die Art der dargestellten Daten nach.
 
-Azure Digital Twins unterstützt das Anfügen von Blobs an Geräte, Räume und Benutzer. Blobs können ein Profilbild für einen Benutzer, ein Gerätefoto, ein Video, eine Karte oder ein Protokoll darstellen.
+Azure Digital Twins unterstützt das Anfügen von Blobs an Geräte, Räume und Benutzer. Blobs können ein Profilbild für einen Benutzer, ein Gerätefoto, ein Video, eine Karte, ein Firmware-ZIP-Archiv, JSON-Daten, ein Protokoll o.ä. darstellen.
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
@@ -28,27 +28,11 @@ Azure Digital Twins unterstützt das Anfügen von Blobs an Geräte, Räume und B
 
 Sie können Blobs unter Verwendung mehrteiliger Anforderungen in bestimmte Endpunkte und deren jeweilige Funktionen hochladen.
 
-> [!IMPORTANT]
-> Mehrteilige Anforderungen müssen drei Informationselemente umfassen:
-> * Einen Header vom Typ **Content-Type**:
->   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * Element vom Typ **Content-Disposition**: `form-data; name="metadata"`
-> * Der hochzuladende Dateiinhalt
->
-> Die Informationselemente **Content-Type** und **Content-Disposition** können je nach Verwendungsszenario variieren.
-
-Mehrteilige Anforderungen an Verwaltungs-APIs von Azure Digital Twins bestehen aus zwei Teilen:
-
-* Blobmetadaten (z. B. ein zugeordneter MIME-Typ) gemäß den Elementen **Content-Type** und **Content-Disposition**
-
-* BLOB-Inhalte (der unstrukturierte Inhalt der Datei)  
-
-Bei **PATCH**-Anforderungen wird keiner der beiden Teile benötigt. Bei **POST**- oder Erstellungsvorgängen werden dagegen beide Teile benötigt.
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ### <a name="blob-metadata"></a>Blobmetadaten
 
-Neben **Content-Type** und **Content-Disposition** müssen mehrteilige Anforderungen auch den korrekten JSON-Text angeben. Der zu übermittelnde JSON-Text hängt von der Art des ausgeführten HTTP-Anforderungsvorgangs ab.
+Neben **Content-Type** und **Content-Disposition** müssen mehrteilige Anforderungen für Azure Digital Twins-Blobs auch den richtigen JSON-Text angeben. Der zu übermittelnde JSON-Text hängt von der Art des ausgeführten HTTP-Anforderungsvorgangs ab.
 
 Nachfolgend finden Sie die vier wichtigsten JSON-Schemas:
 
@@ -64,12 +48,15 @@ Informationen zur Verwendung der Referenzdokumentation finden Sie unter [Verwend
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-So erstellen Sie eine **POST**-Anforderung, die eine Textdatei als Blob hochlädt und einem Raum zuordnet:
+Um eine Textdatei als Blob hochzuladen und einem Bereich zuzuordnen, richten Sie eine authentifizierte HTTP POST-Anforderung an:
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
-Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/spaces/blobs
+```
 
+Verwenden Sie folgenden Text:
+
+```plaintext
 --USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
@@ -112,6 +99,16 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
+In beiden Beispielen gilt:
+
+1. Vergewissern Sie sich, dass die Header Folgendes enthalten: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Vergewissern Sie sich, dass der Hauptteil mehrteilig ist:
+
+   - Der erste Teil enthält die erforderliche Metadaten für das Blob.
+   - Der zweite Teil enthält die Textdatei.
+
+1. Vergewissern Sie sich, dass die Textdatei als `Content-Type: text/plain` bereitgestellt wird.
+
 ## <a name="api-endpoints"></a>API-Endpunkte
 
 Die folgenden Abschnitte beschreiben die wichtigsten blobbezogenen API-Endpunkte und ihre Funktionen.
@@ -122,7 +119,7 @@ Blobs können an Geräte angefügt werden. Die folgende Abbildung zeigt die Swag
 
 ![Geräteblobs][2]
 
-Wenn Sie beispielsweise ein Blob aktualisieren oder erstellen und dann an ein Gerät anfügen möchten, richten Sie eine **PATCH**-Anforderung an:
+Wenn Sie beispielsweise ein Blob aktualisieren oder erstellen und dann an ein Gerät anfügen möchten, richten Sie eine authentifizierte HTTP PATCH-Anforderung an:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -148,7 +145,7 @@ Blobs können auch an Räume angefügt werden. Die folgende Abbildung enthält a
 
 ![Raumblobs][3]
 
-Wenn beispielsweise ein an einen Raum angefügtes Blob zurückgegeben werden soll, richten Sie eine **GET**-Anforderung an:
+Wenn beispielsweise ein an einen Raum angefügtes Blob zurückgegeben werden soll, richten Sie eine authentifizierte HTTP GET-Anforderung an:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -158,7 +155,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | Die gewünschte Blob-ID |
 
-Mit einer **PATCH**-Anforderung an den gleichen Endpunkt können Sie eine Metadatenbeschreibung aktualisieren und eine neue Version des Blobs erstellen. Die HTTP-Anforderung wird unter Verwendung der **PATCH**-Methode zusammen mit sämtlichen erforderlichen Metadaten und mehrteiligen Formulardaten ausgeführt.
+Eine PATCH-Anforderung an denselben Endpunkt aktualisiert die Metadatenbeschreibungen und erstellt neue Versionen des Blobs. Die HTTP-Anforderung wird unter Verwendung der PATCH-Methode zusammen mit den erforderlichen Metadaten und mehrteiligen Formulardaten ausgeführt.
 
 Bei erfolgreichen Vorgängen wird ein **Raumblob** zurückgegeben, das dem folgenden Schema entspricht. Es kann zur Nutzung zurückgegebener Daten verwendet werden.
 
@@ -173,7 +170,7 @@ Blobs können an Benutzermodelle angefügt werden (z. B. um ein Profilbild zuzu
 
 ![Benutzerblobs][4]
 
-Wenn Sie beispielsweise ein Blob abrufen möchten, das an einen Benutzer angefügt ist, richten Sie eine **GET**-Anforderung mit allen ggf. erforderlichen Formulardaten an:
+Wenn Sie beispielsweise ein Blob abrufen möchten, das an einen Benutzer angefügt ist, richten Sie eine authentifizierte HTTP GET-Anforderung mit den erforderlichen Formulardaten an:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
@@ -205,7 +202,7 @@ Ein häufiger Fehler ist die Verwendung falscher Headerinformationen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Swagger-Referenzdokumentation von Azure Digital Twins finden Sie unter [Verwenden von Azure Digital Twins-Swagger](how-to-use-swagger.md).
+- Weitere Informationen zur Swagger-Referenzdokumentation von Azure Digital Twins finden Sie unter [Verwenden von Azure Digital Twins-Swagger](how-to-use-swagger.md).
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG

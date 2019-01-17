@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1d7c5df1b49a1f8c2fe4fbae4d8c8fdbd481e0e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339262"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053907"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-Geräte-SDK für C
 
@@ -75,11 +75,11 @@ Für die Verwaltung Ihrer IoT Hub-Instanz stehen mehrere Open-Source-Tools zur V
 
 * Eine Windows-Anwendung namens [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-* Eine plattformübergreifende Visual Studio Code-Erweiterung namens [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (zuvor Azure IoT Toolkit).
+* Eine plattformübergreifende Visual Studio Code-Erweiterung namens [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 * Eine plattformübergreifende Python CLI hat die [IoT-Erweiterung für Azure CLI](https://github.com/Azure/azure-iot-cli-extension) aufgerufen.
 
-In diesem Tutorial wird der grafische *Geräte-Explorer* verwendet. Sie können die *Azure IoT Hub Toolkit-Erweiterung für VS Code* verwenden, wenn Sie in VS Code entwickeln. Falls Sie lieber mit einem CLI-Tool arbeiten, können Sie auch das Tool für die *IoT-Erweiterung für Azure CLI 2.0* verwenden.
+In diesem Tutorial wird der grafische *Geräte-Explorer* verwendet. Sie können die *Azure IoT-Tools für VS Code* bei der Entwicklung in VS Code verwenden. Falls Sie lieber mit einem CLI-Tool arbeiten, können Sie auch das Tool für die *IoT-Erweiterung für Azure CLI 2.0* verwenden.
 
 Der Geräte-Explorer führt mithilfe der Azure IoT-Dienstbibliotheken verschiedene Aufgaben in IoT Hub durch – etwa das Hinzufügen von Geräten. Wenn Sie mithilfe des Geräte-Explorers ein Gerät hinzufügen, erhalten Sie eine Verbindungszeichenfolge für Ihr Gerät. Diese Verbindungszeichenfolge wird zum Ausführen der Beispielanwendungen benötigt.
 

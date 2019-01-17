@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3eeabd4c3bf099d7a0c7007bdf0c8c7e85f3381e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 702e1ef9c8593c2106be256e6fd7de602bf41aa7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889666"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019995"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Einführung in das Service Fabric-Ressourcenmodell
 
@@ -84,7 +84,7 @@ Ihr Anwendungscode bleibt auch außerhalb von Service Fabric Mesh portabel, und 
 
 ## <a name="packaging-and-deployment"></a>Verpacken und Bereitstellung
 
-Service Fabric Mesh-Anwendungen, die auf dem Ressourcenmodell basieren, werden als Docker-Container gepackt.  Service Fabric Mesh ist eine gemeinsame, mehrinstanzenfähigen Umgebung, und Container bieten Ihnen ein hohes Maß an Isolierung.  Diese Anwendungen werden mit einem JSON-Format oder einem YAML-Format (das dann in JSON konvertiert wird) beschrieben. Beim Bereitstellen einer Mesh-Anwendung in Azure Service Fabric Mesh ist der JSON-Code, der verwendet wird, um die Anwendung zu beschreiben, eine Azure Resource Manager-Vorlage. Ressourcen werden Azure-Ressourcen zugeordnet.  Beim Bereitstellen einer Mesh-Anwendung in einem Service Fabric-Cluster (eigenständig oder in Azure gehostet) liegt der JSON-Code, mit dem die Anwendung beschrieben wird, in einem Format ähnlich einer Azure Resource Manager-Vorlage vor.  Nach der Bereitstellung können Mesh-Anwendungen über HTTP-Schnittstellen oder die Azure CLI verwaltet werden. 
+Service Fabric Mesh-Anwendungen, die auf dem Ressourcenmodell basieren, werden als Docker-Container gepackt.  Service Fabric Mesh ist eine gemeinsame, mehrinstanzenfähigen Umgebung, und Container bieten Ihnen ein hohes Maß an Isolierung.  Diese Anwendungen werden mit einem JSON-Format oder einem YAML-Format (das dann in JSON konvertiert wird) beschrieben. Beim Bereitstellen einer Mesh-Anwendung in Azure Service Fabric Mesh ist der JSON-Code, der zum Beschreiben der Anwendung verwendet wird, eine Azure Resource Manager-Vorlage. Ressourcen werden Azure-Ressourcen zugeordnet.  Beim Bereitstellen einer Mesh-Anwendung in einem Service Fabric-Cluster (eigenständig oder in Azure gehostet) liegt der JSON-Code, mit dem die Anwendung beschrieben wird, in einem Format ähnlich einer Azure Resource Manager-Vorlage vor.  Nach der Bereitstellung können Mesh-Anwendungen über HTTP-Schnittstellen oder die Azure CLI verwaltet werden. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: cd4b58dea43e497a2d7a5b977379d95f7004af45
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9a1623cca1c185ff3dba07ad5fbe354d8662dc68
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052306"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020964"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
 Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben. 
@@ -55,11 +54,11 @@ Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenst
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Until`-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **Until** festgelegt werden. | Zeichenfolge | Ja
-expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
-timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage. | Nein 
-Aktivitäten | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
+name | Der Name der `Until`-Aktivität. | Zeichenfolge | JA
+type | Muss auf **Until** festgelegt werden. | Zeichenfolge | JA
+expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | JA
+timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage | Nein 
+Aktivitäten | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  JA
 
 ## <a name="example-1"></a>Beispiel 1
 
@@ -67,7 +66,7 @@ Aktivitäten | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck 
 > Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Pipeline mit Until-Aktivität
-In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
+In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -248,7 +247,7 @@ Die Pipeline legt für **folderPath** entweder den Wert des Parameters **outputP
 ```
 
 ### <a name="powershell-commands"></a>PowerShell-Befehle
-Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im Ordner „C:\ADF“ gespeichert haben. 
+Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im folgenden Ordner gespeichert haben: C:\ADF. 
 
 ```powershell
 Connect-AzureRmAccount

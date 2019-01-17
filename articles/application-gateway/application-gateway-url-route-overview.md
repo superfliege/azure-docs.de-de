@@ -1,18 +1,17 @@
 ---
-title: URL-basiertes Inhaltsrouting – Übersicht | Microsoft-Dokumentation
-description: Diese Seite bietet eine Übersicht über das URL-basierte Inhaltsrouting mit Application Gateway sowie über das urlPathMap-Konfigurationselement und die PathBasedRouting-Regel.
+title: Übersicht über URL-basiertes Inhaltsrouting mit Azure Application Gateway
+description: Diese Seite bietet eine Übersicht über das URL-basierte Inhaltsrouting mit Azure Application Gateway, die UrlPathMap-Konfiguration und die Regel PathBasedRouting.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218422"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188758"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -20,7 +19,7 @@ Mit dem Routing auf URL-Pfadbasis kann Datenverkehr basierend auf URL-Pfaden von
 
 Ein mögliches Szenario ist die Weiterleitung von Anforderungen für unterschiedliche Inhaltstypen an verschiedene Back-End-Serverpools.
 
-Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für „contoso.com“ aus drei Back-End-Serverpools: VideoServerPool, ImageServerPool und DefaultServerPool.
+Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für contoso.com aus drei Back-End-Serverpools: VideoServerPool, ImageServerPool und DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
@@ -62,8 +61,37 @@ Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Server
 }]
 ```
 
-> [!NOTE]
-> PathPattern: Diese Einstellung ist eine Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die in den Pfadabgleich eingegeben wird, enthält keinen Text nach dem ersten Fragezeichen (?) oder der ersten Raute (#), und diese Zeichen sind hier nicht zulässig. Ansonsten sind in PathPattern alle Zeichen zulässig, die auch in einer URL zulässig sind.
+### <a name="pathpattern"></a>PathPattern
+
+Eine Liste der Pfadmuster für den Abgleich. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die in den Pfadabgleich eingegeben wird, enthält keinen Text nach dem ersten Fragezeichen (?) oder der ersten Raute (#), und diese Zeichen sind hier nicht zulässig. Ansonsten sind in PathPattern alle Zeichen zulässig, die auch in einer URL zulässig sind.
+
+Die unterstützten Muster sind davon abhängig, ob Sie Application Gateway v1 oder v2 bereitgestellt haben:
+
+#### <a name="v1"></a>v1
+
+Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
+
+|v1-Pfadmuster  |Unterstützt?  |
+|---------|---------|
+|`/images/*`     |Ja|
+|`/images*`     |no|
+|`/images/*.jpg`     |no|
+|`/*.jpg`     |no|
+|`/Repos/*/Comments/*`     |no|
+|`/CurrentUser/Comments/*`     |Ja|
+
+#### <a name="v2"></a>V2
+
+Bei den Pfadregeln wird die Groß-/Kleinschreibung beachtet.
+
+|v2-Pfadmuster  |Unterstützt?  |
+|---------|---------|
+|`/images/*`     |Ja|
+|`/images*`     |Ja|
+|`/images/*.jpg`     |no|
+|`/*.jpg`     |no|
+|`/Repos/*/Comments/*`     |no|
+|`/CurrentUser/Comments/*`     |Ja|
 
 Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) .
 

@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 13: Bereitstellen | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 13: Bereitstellen | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie das Tutorialprojekt an Azure Analysis Services bereitgestellt werden kann.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0528af5f3a6b7309d81c36ca5bc7a3faccfa293
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427111"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188384"
 ---
 # <a name="deploy"></a>Bereitstellen
 
@@ -22,7 +22,7 @@ In dieser Lektion konfigurieren Sie Bereitstellungseigenschaften, indem Sie eine
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **5 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieser Artikel ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 12: Analysieren in Excel](../tutorials/aas-lesson-12-analyze-in-excel.md) abgeschlossen haben.  
+Dieser Artikel ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 12: Analysieren in Excel](../tutorials/aas-lesson-12-analyze-in-excel.md)  
 
 > [!IMPORTANT]  
 > Sie müssen über [Administratorberechtigungen](../analysis-services-server-admins.md) auf dem Analysis Services-Remoteserver verfügen, um dort Modelle bereitstellen zu können.  

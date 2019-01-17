@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7aaadb6237a3b16d166d3bc931fddc70fb4a792
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6643d0851be1ad9d2827f51af3662a469020654c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427619"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189319"
 ---
 # <a name="get-data"></a>Datensammlung
 
 In dieser Lektion verwenden Sie Get Data in SSDT zum Herstellen einer Verbindung mit der AdventureWorks-Beispieldatenbank. Außerdem wählen Sie Daten aus, erstellen eine Vorschau und einen Filter und führen dann den Import in Ihr Arbeitsbereichsmodell durch.  
   
-Mit Get Data können Sie Daten aus einer großen Anzahl von Quellen importieren: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, Dateien etc. Die Daten können auch mit einem Power Query-M-Formelausdruck abgefragt werden.
+Mit „Get Data“ können Sie Daten aus einer Vielzahl von Quellen importieren: Azure SQL-Datenbank, Oracle, Sybase, OData-Feed, Teradata, Dateien und andere. Die Daten können auch mit einem Power Query-M-Formelausdruck abgefragt werden.
 
 > [!NOTE]
 > Die Aufgaben und Bilder in diesem Tutorial zeigen das Herstellen einer Verbindung mit einer AdventureWorksDW2014-Datenbank auf einem lokalen Server. In bestimmten Fällen kann sich eine AdventureWorks-Datenbank in Azure hiervon unterscheiden.
@@ -27,7 +27,7 @@ Mit Get Data können Sie Daten aus einer großen Anzahl von Quellen importieren:
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie mit den Aufgaben dieser Lektion beginnen, sollten Sie die vorherige Lektion abschließen: [Lektion 1: Erstellen eines neuen tabellarischen Modellprojekts](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 1: Erstellen eines neuen Projekts mit tabellarischem Modell](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
 ## <a name="create-a-connection"></a>Verbindung herstellen  
   

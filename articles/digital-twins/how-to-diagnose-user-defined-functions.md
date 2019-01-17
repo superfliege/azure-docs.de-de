@@ -9,41 +9,41 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: e373e7c3ca83a0200cd1b6b945c5e4cb43b77a51
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974861"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119216"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
-Dieser Artikel beschreibt, wie Sie benutzerdefinierte Funktionen (User-Defined Functions, UDFs) diagnostizieren können. Danach werden einige der häufigsten Szenarien vorgestellt, die bei der Arbeit mit diesen Funktionen wahrscheinlich anzutreffen sind.
+Dieser Artikel beschreibt, wie Sie benutzerdefinierte Funktionen diagnostizieren und debuggen. Danach werden einige der häufigsten Szenarien vorgestellt, die beim Debuggen dieser Funktionen anzutreffen sind.
 
 >[!TIP]
 > Lesen Sie [Vorgehensweise: Konfigurieren von Überwachung und Protokollierung](./how-to-configure-monitoring.md), um Informationen zum Einrichten der Debuggingtools in Azure Digital Twins mithilfe von Aktivitätsprotokollen, Diagnoseprotokollen und Azure Monitor zu erhalten.
 
 ## <a name="debug-issues"></a>Debuggen von Problemen
 
-Wenn Sie wissen, wie Probleme, die in Ihrer Azure Digital Twins-Instanz auftreten, diagnostiziert werden können, können Sie auf effiziente Weise das Problem bestimmen, die Ursache des Problems ermitteln und eine Lösung finden.
+Wenn Sie wissen, wie Probleme in Ihrer Azure Digital Twins-Instanz diagnostiziert werden, können Sie auf effiziente Weise das Problem und seine Ursache ermitteln und eine Lösung finden.
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Aktivieren von Log Analytics für Ihre Instanz
 
-Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden über Azure Monitor verfügbar gemacht. Bei der folgenden Dokumentation wird davon ausgegangen, dass Sie einen [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) oder über [ PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
+Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden in Azure Monitor angezeigt. Bei dieser Dokumentation wird davon ausgegangen, dass Sie einen [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure-Befehlszeilenschnittstelle](../azure-monitor/learn/quick-create-workspace-cli.md) oder [ PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
 
 > [!NOTE]
 > Wenn Sie zum ersten Mal Ereignisse an Azure Log Analytics senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
 
 Informationen zum Konfigurieren von Überwachung und Protokollierung für Azure Digital Twins-Ressourcen finden Sie unter [Vorgehensweise: Konfigurieren von Überwachung und Protokollierung](./how-to-configure-monitoring.md).
 
-Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md), um einen umfassenden Überblick der Diagnoseeinstellungen für Ihre Azure Digital Twins-Instanz über das Azure-Portal, die Azure CLI oder über PowerShell zu erhalten.
+Informationen zum Konfigurieren von Diagnoseprotokolleinstellungen in Azure Digital Twins über das Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell finden Sie im Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 >[!IMPORTANT]
 > Wählen Sie alle Protokollkategorien, Metriken und Ihren Azure Log Analytics-Arbeitsbereich aus.
 
 ### <a name="trace-sensor-telemetry"></a>Nachverfolgen von Sensortelemetriedaten
 
-Stellen Sie sicher, dass die Diagnoseeinstellungen auf Ihrer Azure Digital Twins-Instanz aktiviert sind, alle Protokollkategorien aktiviert sind und dass die Protokolle an Azure Log Analytics gesendet werden.
+Vergewissern Sie sich beim Verfolgen von Sensortelemetriedaten, dass die Diagnoseeinstellungen für Ihre Azure Digital Twins-Instanz aktiviert sind. Stellen Sie sicher, dass alle gewünschten Protokollkategorien ausgewählt sind. Bestätigen Sie abschließend, dass die gewünschten Protokolle an Azure Log Analytics gesendet werden.
 
 Um eine Sensortelemetriemeldung den entsprechenden Protokollen zuzuordnen, können Sie eine Korrelations-ID für die Ereignisdaten angeben, die gesendet werden. Legen Sie dazu die `x-ms-client-request-id`-Eigenschaft auf eine GUID fest.
 
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Die Korrelations-ID, die für die Ereignisdaten angegeben wurde. |
 
-Wenn Sie Ihre benutzerdefinierte Funktion, protokollieren, werden diese Protokolle in Ihrer Azure Log Analytics-Instanz mit der Kategorie `UserDefinedFunction` angezeigt. Um sie abzurufen, geben Sie die folgende Abfragebedingung in Azure Log Analytics ein:
+Wenn Sie die Protokollierung für Ihre benutzerdefinierte Funktion aktivieren, werden diese Protokolle in Ihrer Azure Log Analytics-Instanz mit der Kategorie `UserDefinedFunction` angezeigt. Um sie abzurufen, geben Sie die folgende Abfragebedingung in Azure Log Analytics ein:
 
 ```Kusto
 AzureDiagnostics
@@ -69,13 +69,13 @@ Weitere Informationen zu leistungsstarken Abfragevorgängen finden Sie unter [Er
 
 ## <a name="identify-common-issues"></a>Identifizieren von häufig auftretenden Problemen
 
-Für die Problembehandlung Ihrer Lösung spielen sowohl die Diagnostizierung als auch die Ermittlung von häufig auftretenden Problemen eine wichtige Rolle. Einige häufig auftretende Probleme beim Entwickeln von benutzerdefinierten Funktionen werden im Folgenden zusammengefasst.
+Für die Problembehandlung Ihrer Lösung spielen sowohl die Diagnostizierung als auch die Ermittlung von häufig auftretenden Problemen eine wichtige Rolle. Einige häufig auftretende Probleme beim Entwickeln von benutzerdefinierten Funktionen werden in den folgenden Unterabschnitten zusammengefasst.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="ensure-a-role-assignment-was-created"></a>Sicherstellen, dass eine Rollenzuweisung erstellt wurde
+### <a name="check-if-a-role-assignment-was-created"></a>Überprüfen, ob eine Rollenzuweisung erstellt wurde
 
-Wenn keine Rollenzuweisung innerhalb der Verwaltungs-API erstellt wird, hat die benutzerdefinierte Funktion keinen Zugriff, um Aktionen wie das Senden von Benachrichtigungen, Abrufen von Metadaten und Festlegen von berechneten Werten in der Topologie auszuführen.
+Wenn keine Rollenzuweisung innerhalb der Verwaltungs-API erstellt wird, hat die benutzerdefinierte Funktion keinen Zugriff zum Ausführen von Aktionen wie dem Senden von Benachrichtigungen, Abrufen von Metadaten und Festlegen von berechneten Werten in der Topologie.
 
 Überprüfen Sie, ob eine Rollenzuweisung für Ihre benutzerdefinierte Funktion über die Verwaltungs-API vorhanden ist:
 
@@ -89,9 +89,9 @@ GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_U
 
 Informationen, wenn keine Rollenzuweisungen vorhanden sind, finden Sie unter [Gewusst wie: Verwenden von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
 
-### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>Überprüfen, ob der Matcher bei Telemetriedaten eines Sensors funktioniert
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>Überprüfen, ob der Matcher für die Telemetriedaten eines Sensors funktioniert
 
-Mit dem folgenden Aufruf anhand der Verwaltungs-API Ihrer Azure Digital Twins-Instanzen können Sie feststellen, ob ein bestimmter Matcher für den angegebenen Sensor gilt.
+Mit dem folgenden Aufruf der Verwaltungs-API Ihrer Azure Digital Twins-Instanzen können Sie feststellen, ob ein bestimmter Matcher für den angegebenen Sensor gilt.
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
@@ -113,9 +113,9 @@ Antwort:
 }
 ```
 
-### <a name="check-what-a-sensor-will-trigger"></a>Überprüfen, wodurch ein Sensor ausgelöst wird
+### <a name="check-what-a-sensor-triggers"></a>Überprüfen, wodurch ein Sensor ausgelöst wird
 
-Mit dem folgenden Aufruf anhand der Verwaltungs-API Ihrer Azure Digital Twins-Instanzen ist es möglich, die Bezeichner der benutzerdefinierten Funktionen zu ermitteln, die durch die eingehenden Telemetriedaten des angegebenen Sensors ausgelöst werden:
+Mit dem folgenden Aufruf der Verwaltungs-APIs von Azure Digital Twins können Sie die Bezeichner der benutzerdefinierten Funktionen ermitteln, die durch die eingehenden Telemetriedaten des angegebenen Sensors ausgelöst werden:
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -123,7 +123,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 | Parameter | Ersetzen durch |
 | --- | --- |
-| *YOUR_SENSOR_IDENTIFIER* | Die ID des Sensors, der Telemetriedaten sendet |
+| *YOUR_SENSOR_IDENTIFIER* | Die ID des Sensors zum Senden von Telemetriedaten |
 
 Antwort:
 
@@ -156,7 +156,7 @@ Antwort:
 
 ### <a name="issue-with-receiving-notifications"></a>Problem mit dem Empfang von Benachrichtigungen
 
-Wenn keine Benachrichtigungen von der ausgelösten benutzerdefinierten Funktion aus empfangen werden, stellen sicher, dass der Objekttypparameter Ihrer Topologie dem Typ des Bezeichners entspricht, der verwendet wird.
+Wenn Sie keine Benachrichtigungen von der ausgelösten benutzerdefinierten Funktion erhalten, vergewissern Sie sich, dass der Objekttypparameter Ihrer Topologie dem Typ des verwendeten Bezeichners entspricht.
 
 **Negativbeispiel**:
 
@@ -201,12 +201,12 @@ function process(telemetry, executionContext) {
 
 Wenn Sie Diagnoseeinstellungen aktivieren, können die folgenden allgemeinen Ausnahmen auftreten:
 
-1. **Drosselung**: Wenn Ihre benutzerdefinierte Funktion die Ausführungsratenlimits überschreitet, die im Artikel [Dienstlimits der öffentlichen Vorschau](./concepts-service-limits.md) genannt werden, wird sie gedrosselt. Bei einer Drosselung können weitere Vorgänge erst dann erfolgreich ausgeführt werden, wenn die Limits verfallen.
+1. **Drosselung**: Wenn Ihre benutzerdefinierte Funktion die Ausführungsratenlimits überschreitet, die im Artikel [Dienstlimits der öffentlichen Vorschau](./concepts-service-limits.md) genannt werden, wird sie gedrosselt. Es werden keine weiteren Vorgänge erfolgreich ausgeführt, bis die Drosselungslimits ablaufen.
 
-1. **Daten nicht gefunden**: Wenn Ihre benutzerdefinierte Funktion versucht, auf Metadaten zuzugreifen, die nicht vorhanden sind, tritt bei dem Vorgang ein Fehler auf.
+1. **Daten nicht gefunden:** Wenn Ihre benutzerdefinierte Funktion versucht, auf Metadaten zuzugreifen, die nicht vorhanden sind, tritt bei dem Vorgang ein Fehler auf.
 
-1. **Nicht autorisiert**: Wenn für Ihre benutzerdefinierte Funktion keine Rollenzuweisung festgelegt ist oder nicht ausreichende Berechtigungen für den Zugriff auf bestimmte Metadaten aus der Topologie besitzt, tritt bei dem Vorgang ein Fehler auf.
+1. **Nicht autorisiert:** Wenn für Ihre benutzerdefinierte Funktion keine Rollenzuweisung festgelegt ist oder sie keine ausreichenden Berechtigungen für den Zugriff auf bestimmte Metadaten aus der Topologie besitzt, tritt bei dem Vorgang ein Fehler auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie [die Überwachung und Protokolle in Azure Digital Twins aktiviert werden](../azure-monitor/platform/activity-logs-overview.md).
+- Erfahren Sie, wie [die Überwachung und Protokolle in Azure Digital Twins aktiviert werden](../azure-monitor/platform/activity-logs-overview.md).

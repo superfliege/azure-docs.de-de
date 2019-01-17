@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 951a202f8d57c736af8c17af91859ce89e9efc7d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4e2feb1f5b0cad9a05f796d160a0a641622d6b59
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717958"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189218"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Der LUIS-Bot in C# wird mit Bot Framework 3.x und dem Azure Web-App-Bot erstellt.
 
@@ -161,6 +161,8 @@ Erfahren Sie mehr über das [Bot-Framework](https://dev.botframework.com/) und d
 ## <a name="next-steps"></a>Nächste Schritte
 
 Fügen Sie die LUIS-Absichten und die Dialoge des Botdiensts zum Behandeln der Absichten **Help**, **Cancel**, und **Greeting** hinzu. Denken Sie daran, den Web-App-Bot zu trainieren, zu veröffentlichen und zu [erstellen](#build-the-bot). LUIS und der Bot sollten die gleichen Absichten aufweisen.
+
+Sehen Sie sich weitere [Beispiele](https://github.com/Microsoft/AI) mit Konversationsbots an. 
 
 > [!div class="nextstepaction"]
 > [Hinzufügen von Absichten](./luis-how-to-add-intents.md)

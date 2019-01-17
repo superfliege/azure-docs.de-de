@@ -1,6 +1,6 @@
 ---
 title: Erfassen benutzerdefinierter JSON-Daten in Azure Monitor | Microsoft-Dokumentation
-description: Benutzerdefinierte JSON-Datenquellen können in Azure Monitor unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, z.B. Curl oder eines von mehr als 300 Plug-Ins von FluentD. Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
+description: Benutzerdefinierte JSON-Datenquellen können in Log Analytics unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, z.B. Curl oder eines von mehr als 300 Plug-Ins von FluentD. Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 64f1d7b1437ea018a25db18e5f92bffaac8f7099
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438454"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105218"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Erfassen benutzerdefinierter JSON-Datenquellen mit dem Log Analytics-Agent für Linux in Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Benutzerdefinierte JSON-Datenquellen können in [Azure Monitor-Protokollen](data-collection.md) unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, wie z.B. [Curl](https://curl.haxx.se/) oder eines von mehr als [300 FluentD-Plug-Ins](http://www.fluentd.org/plugins/all). Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
+
+Benutzerdefinierte JSON-Datenquellen können in [Log Analytics](data-collection.md) unter Verwendung des Log Analytics-Agents für Linux erfasst werden.  Diese benutzerdefinierten Datenquellen können einfache Skripts sein, die JSON zurückgeben, wie z.B. [Curl](https://curl.haxx.se/) oder eines von mehr als [300 FluentD-Plug-Ins](http://www.fluentd.org/plugins/all). Dieser Artikel beschreibt die Konfiguration, die für diese Datenerfassung erforderlich ist.
+
 
 > [!NOTE]
 > Der Log Analytics-Agent für Linux v1.1.0-217+ ist für benutzerdefinierte JSON-Daten erforderlich.
@@ -31,7 +33,7 @@ Benutzerdefinierte JSON-Datenquellen können in [Azure Monitor-Protokollen](data
 
 ### <a name="configure-input-plugin"></a>Konfigurieren des Eingabe-Plug-Ins
 
-Fügen Sie zum Erfassen von JSON-Daten in Azure Monitor `oms.api.` am Anfang eines FluentD-Tags in einem Eingabe-Plug-In hinzu.
+Fügen Sie zum Erfassen von JSON-Daten in Log Analytics `oms.api.` am Anfang eines FluentD-Tags in einem Eingabe-Plug-In hinzu.
 
 Folgendes ist z.B. eine separate Konfigurationsdatei `exec-json.conf` in `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Dabei wird das FluentD-Plug-In `exec` verwendet, um im Abstand von 30 Sekunden einen Curl-Befehl auszuführen.  Die Ausgabe dieses Befehls wird vom JSON-Ausgabe-Plug-In erfasst.
 
@@ -85,9 +87,9 @@ Starten Sie den Log Analytics-Agent für den Linux-Dienst mit dem folgenden Befe
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Output
-Die Daten werden in Azure Monitor-Protokollen mit dem Datensatztyp `<FLUENTD_TAG>_CL` erfasst.
+Die Daten werden in die Log Analytics mit einem Datensatz vom Typ `<FLUENTD_TAG>_CL` erfasst.
 
-Beispiel: Das benutzerdefinierte Tag `tag oms.api.tomcat` in Azure Monitor mit dem Datensatztyp `tomcat_CL`.  Sie können alle Datensätze dieses Typs mit der folgenden Protokollabfrage abrufen:
+Beispiel: Das benutzerdefinierte Tag `tag oms.api.tomcat` in Log Analytics mit einem Datensatz vom Typ `tomcat_CL`.  Sie können alle Datensätze dieses Typs mit der folgenden Protokollabfrage abrufen:
 
     Type=tomcat_CL
 

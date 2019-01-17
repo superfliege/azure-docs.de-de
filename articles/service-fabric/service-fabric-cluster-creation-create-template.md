@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 9482b1a33caaf73838101431dfc1faac7020ee42
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: cd4871e3e4613973a50c8ee0994fe0440150eddf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234688"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044024"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für Service Fabric-Cluster
 
@@ -143,7 +143,7 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
 Fügen Sie die Azure AD-Konfiguration einer Resource Manager-Vorlage für einen Cluster hinzu, indem Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln verweisen. Fügen Sie die Azure AD-Parameter und -werte zu einer Resource Manager-Vorlagenparameterdatei (*azuredeploy.parameters.json*) hinzu. 
 
 > [!NOTE]
-> Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Set up Azure AD to authenticate clients (Einrichten von Azure AD zum Authentifizieren von Clients)](service-fabric-cluster-creation-setup-aad.md).
+> Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Einrichten der Azure Active Directory-Authentifizierung](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -258,6 +258,14 @@ Das folgende Diagramm veranschaulicht die Platzierung der Schlüsseltresor- und 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie nun eine Vorlage für Ihren Cluster besitzen, lernen Sie, wie Sie [den Cluster in Azure bereitstellen](service-fabric-cluster-creation-via-arm.md).  Wenn Sie die [Prüfliste für die Produktionsbereitschaft](service-fabric-production-readiness-checklist.md) noch nicht gelesen haben, holen Sie dies nach, bevor Sie einen Produktionscluster bereitstellen.
 
+Informationen zur JSON-Syntax und zu den Eigenschaften für die in diesem Artikel bereitgestellten Ressourcen finden Sie unter:
+
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

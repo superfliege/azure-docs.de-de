@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/08/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afd98026a2aad552258b636ba078ca4f9bd2d58
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8693c5e255020e30c2e8ed52a3199712089e4503
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723141"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119083"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Verknüpfen Sie in folgenden Szenarien Ihre Azure SSIS-Integration Runtime (IR) mit einem virtuellen Azure-Netzwerk: 
@@ -73,6 +72,10 @@ Die folgenden Abschnitte enthalten hierzu weitere Informationen.
 -   Wenn Sie Azure ExpressRoute verwenden oder eine benutzerdefinierte Route (User Defined Route, UDR) konfigurieren, helfen Ihnen die Informationen unter [Verwenden von Azure ExpressRoute oder einer benutzerdefinierten Route](#route) weiter. 
 
 -   Stellen Sie sicher, dass für die Ressourcengruppe des virtuellen Netzwerks das Erstellen und Löschen bestimmter Ressourcen des Azure-Netzwerks möglich ist. Weitere Informationen finden Sie unter [Anforderungen an die Ressourcengruppe](#resource-group). 
+
+Hier sehen Sie ein Diagramm mit den erforderlichen Verbindungen für Ihre Azure-SSIS IR:
+
+![Azure-SSIS-Integrationslaufzeit](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
 ### <a name="perms"></a> Erforderliche Berechtigungen
 

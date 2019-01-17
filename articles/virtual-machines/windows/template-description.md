@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987695"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023837"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -287,7 +287,7 @@ Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Eini
 
 ## <a name="disks-and-images"></a>Datenträger und Images
    
-In Azure können VHD-Dateien für [Datenträger oder Images](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) stehen. Wenn das Betriebssystem in einer VHD-Datei für eine spezifische VM spezialisiert wurde, wird dies als Datenträger bezeichnet. Wenn das Betriebssystem in einer VHD-Datei allgemein gehalten ist, um für die Erstellung von vielen VMs verwendet zu werden, wird es als Image bezeichnet.   
+In Azure können VHD-Dateien für [Datenträger oder Images](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) stehen. Wenn das Betriebssystem in einer VHD-Datei für einen spezifischen virtuellen Computer spezialisiert wurde, wird dies als Datenträger bezeichnet. Wenn das Betriebssystem in einer VHD-Datei allgemein gehalten ist, um für die Erstellung von vielen virtuellen Computern verwendet zu werden, wird es als Image bezeichnet.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Erstellen neuer virtueller Computer und neuer Datenträger aus einem Plattformimage
 
@@ -374,7 +374,7 @@ Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl vo
 
 ## <a name="extensions"></a>Erweiterungen
 
-[Erweiterungen](extensions-features.md) sind zwar eine separate Ressource, aber sie sind eng an VMs gebunden. Erweiterungen können als untergeordnete Ressource der VM oder als separate Ressource hinzugefügt werden. Im Beispiel ist zu sehen, wie die [Diagnoseerweiterung](extensions-diagnostics-template.md) den VMs hinzugefügt wird:
+[Erweiterungen](extensions-features.md) sind zwar eine separate Ressource, aber sie sind eng an virtuelle Computer gebunden. Erweiterungen können als untergeordnete Ressource der VM oder als separate Ressource hinzugefügt werden. Im Beispiel ist zu sehen, wie die [Diagnoseerweiterung](extensions-diagnostics-template.md) den VMs hinzugefügt wird:
 
 ```
 { 
@@ -436,7 +436,7 @@ Es gibt viele Erweiterungen, die Sie auf einer VM installieren können, aber am 
 }
 ```
 
-Mit dem Skript „start.ps1“ können viele Konfigurationsaufgaben durchgeführt werden. Beispielsweise werden die Datenträger, die den VMs im Beispiel hinzugefügt werden, nicht initialisiert. Sie können ein benutzerdefiniertes Skript verwenden, um sie zu initialisieren. Falls Sie mehrere Startaufgaben durchführen müssen, können Sie die Datei „start.ps1“ verwenden, um andere PowerShell-Skripts im Azure-Speicher aufzurufen. Im Beispiel wird PowerShell verwendet, aber Sie können alle Skripterstellungsmethoden nutzen, die unter dem von Ihnen eingesetzten Betriebssystem verfügbar sind.
+Mit dem Skript „start.ps1“ können viele Konfigurationsaufgaben durchgeführt werden. Beispielsweise werden die Datenträger, die den virtuellen Computern im Beispiel hinzugefügt werden, nicht initialisiert. Sie können ein benutzerdefiniertes Skript verwenden, um sie zu initialisieren. Falls Sie mehrere Startaufgaben durchführen müssen, können Sie die Datei „start.ps1“ verwenden, um andere PowerShell-Skripts im Azure-Speicher aufzurufen. Im Beispiel wird PowerShell verwendet, aber Sie können alle Skripterstellungsmethoden nutzen, die unter dem von Ihnen eingesetzten Betriebssystem verfügbar sind.
 
 Sie können den Status der installierten Erweiterungen über die Erweiterungseinstellungen im Portal anzeigen:
 
@@ -448,7 +448,7 @@ Sie können die Erweiterungsinformationen auch abrufen, indem Sie den PowerShell
 
 Beim Bereitstellen einer Vorlage verfolgt Azure die Ressourcen nach, die Sie als Gruppe bereitgestellt haben, und weist dieser bereitgestellten Gruppe automatisch einen Namen zu. Der Name der Bereitstellung entspricht dem Namen der Vorlage.
 
-Wenn Sie den Status der Ressourcen einer Bereitstellung anzeigen möchten, können Sie das Blatt „Ressourcengruppe“ im Azure-Portal verwenden:
+Wenn Sie den Status der Ressourcen einer Bereitstellung anzeigen möchten, zeigen Sie die Ressourcengruppe im Azure-Portal an:
 
 ![Abrufen von Bereitstellungsinformationen](./media/template-description/virtual-machines-deployment-info.png)
     
@@ -459,3 +459,4 @@ Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualis
 - Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
 - Stellen Sie die Vorlagen bereit, die Sie erstellt haben: [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](ps-template.md).
 - Erfahren Sie, wie Sie die erstellten virtuellen Computer verwalten, indem Sie [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) durcharbeiten.
+- Informationen zur JSON-Syntax und zu den Eigenschaften von Ressourcentypen in Vorlagen finden Sie in der [Azure Resource Manager-Vorlagenreferenz](/azure/templates/).

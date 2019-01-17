@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846469"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077554"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -97,7 +97,7 @@ Die Person, die sich beim [Dev Center](https://developer.microsoft.com/store/reg
 Nach Abschluss der [Dev Center](https://developer.microsoft.com/store/register)-Registrierung verknüpfen Sie Ihr Cloud-Partnerprofil mit Ihrem [Dev Center](https://developer.microsoft.com/store/register)-Konto (weitere Details finden Sie in den hier aufgeführten Schritten). Dieser Schritt muss vor der Veröffentlichung Ihres Transaktionsangebots ausgeführt werden. 
 
 >[!Note]
->Um die Developer Center-Registrierungsgebühr in Höhe von 99 US-Dollar zu umgehen, füllen Sie das [Marketplace-Registrierungsformular](https://azuremarketplace.microsoft.com/en-us/sell/signup) aus – Sie erhalten dann eine E-Mail mit Ihrem Werbeaktionscode. 
+>Um die Developer Center-Registrierungsgebühr in Höhe von 99 US-Dollar zu umgehen, füllen Sie das [Marketplace-Registrierungsformular](https://azuremarketplace.microsoft.com/sell/signup) aus – Sie erhalten dann eine E-Mail mit Ihrem Werbeaktionscode. 
 
 >[!Important]
 >Stellen Sie vor der Erstellung eines Microsoft Dev Center-Kontos sicher, dass Ihre Organisation noch kein Dev Center-Konto besitzt, um zu verhindern, dass doppelte Konten erstellt werden. Weitere Informationen finden Sie im Abschnitt [Registrieren bei Dev Center](https://docs.microsoft.com/azure/marketplace/register-dev-center).

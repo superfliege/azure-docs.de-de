@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 4: Erstellen von Beziehungen | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 4: Erstellen von Beziehungen | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie Beziehungen im Azure Analysis Services-Tutorialprojekt erstellt werden.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4a595e4c955b08bda6fcf49b9ca6a050e8440621
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428489"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187500"
 ---
 # <a name="create-relationships"></a>Erstellen von Beziehungen
 
@@ -22,10 +22,10 @@ In dieser Lektion erfahren Sie, wie Sie die Beziehungen, die beim Importieren vo
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 3: Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md) abgeschlossen haben. 
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 3: Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md). 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Überprüfen von vorhandenen Beziehungen und Hinzufügen von neuen Beziehungen  
-Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen aus der Datenbank „AdventureWorksDW2014“ abgerufen. Beim Importieren von Daten aus einer relationalen Quelle werden im Allgemeinen vorhandene Beziehungen automatisch zusammen mit den Daten importiert. Damit mit Get Data im Datenmodell automatisch Beziehungen erstellt werden, müssen Beziehungen zwischen den Tabellen der Datenquelle bestehen.
+Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen aus der Datenbank „AdventureWorksDW2014“ abgerufen. Beim Importieren von Daten aus einer relationalen Quelle werden im Allgemeinen vorhandene Beziehungen automatisch zusammen mit den Daten importiert. Damit mit „Get Data“ im Datenmodell automatisch Beziehungen erstellt werden, müssen Beziehungen zwischen den Tabellen der Datenquelle bestehen.
 
 Bevor Sie mit der Erstellung Ihres Modells fortfahren, sollten Sie überprüfen, ob die Beziehungen zwischen den Tabellen korrekt sind. In diesem Tutorial fügen Sie außerdem drei neue Beziehungen hinzu.  
 
@@ -60,7 +60,7 @@ Bevor Sie mit der Erstellung Ihres Modells fortfahren, sollten Sie überprüfen,
     |JA|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |JA|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Falls einige dieser Beziehungen fehlen, sollten Sie sicherstellen, dass Ihr Modell die folgenden Tabellen enthält: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory und FactInternetSales. Wenn Tabellen aus derselben Datenquellenverbindung zu unterschiedlichen Zeitpunkten importiert werden, werden zwischen diesen Tabellen keine Beziehungen erstellt, sondern dies muss anschließend manuell erfolgen. Falls keine Beziehungen angezeigt werden, bedeutet dies, dass in der Datenquelle keine Beziehungen vorhanden sind. Sie können sie im Datenmodell manuell erstellen.
+    Wenn Beziehungen fehlen, überprüfen Sie, ob das Modell die folgenden Tabellen enthält: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory und FactInternetSales. Wenn Tabellen aus derselben Datenquellenverbindung zu unterschiedlichen Zeitpunkten importiert werden, werden zwischen diesen Tabellen keine Beziehungen erstellt, sondern dies muss anschließend manuell erfolgen. Falls keine Beziehungen angezeigt werden, bedeutet dies, dass in der Datenquelle keine Beziehungen vorhanden sind. Sie können sie im Datenmodell manuell erstellen.
 
 ### <a name="take-a-closer-look"></a>Ausführlichere Betrachtung
 In der Diagrammansicht wird die Beziehung zwischen den Tabellen durch einen Pfeil, ein Sternchen und eine Zahl auf den Linien dargestellt.
@@ -95,7 +95,7 @@ In einigen Fällen möchten Sie möglicherweise zusätzliche Beziehungen zwische
      ![AAS-Lektion4-neuinaktiv](../tutorials/media/aas-lesson4-newinactive.png)
   
 ## <a name="whats-next"></a>Wie geht es weiter?
-[Lektion 5: Erstellen berechneter Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md)
+[Lektion 5: Erstellen berechneter Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md).
   
   
   

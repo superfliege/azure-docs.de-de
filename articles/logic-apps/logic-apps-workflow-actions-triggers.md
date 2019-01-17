@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 27c074b12d2b151015e6946c483302387726dfc5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044772"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190821"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen für die Workflowdefinitionssprache in Azure Logic Apps
 
@@ -54,8 +54,8 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 | <*trigger-name*> | Zeichenfolge | Name des Triggers | 
 | <*trigger-type*> | Zeichenfolge | Triggertyp, z.B. „Http“ oder „ApiConnection“ | 
 | <*trigger-inputs*> | JSON-Objekt | Eingaben, die das Verhalten des Triggers definieren | 
-| <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1–16 Monate </br>- Day: 1–500 Tage </br>- Hour: 1–12.000 Stunden </br>- Minute: 1–72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -135,8 +135,8 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 | <*verbindungsname*> | Zeichenfolge | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
 | <*method-type*> | Zeichenfolge | HTTP-Methode für die Kommunikation mit der verwalteten API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*api-operation*> | Zeichenfolge | Aufzurufender API-Vorgang | 
-| <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1–16 Monate </br>- Day: 1–500 Tage </br>- Hour: 1–12.000 Stunden </br>- Minute: 1–72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -306,8 +306,8 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 |-------|------|-------------| 
 | <*method-type*> | Zeichenfolge | HTTP-Methode zum Abrufen des angegebenen Endpunkts: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-URL*> | Zeichenfolge | HTTP- oder HTTPS-URL für den abzurufenden Endpunkt <p>Maximal zulässige Zeichenfolgengröße: 2 KB | 
-| <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1–16 Monate </br>- Day: 1–500 Tage </br>- Hour: 1–12.000 Stunden </br>- Minute: 1–72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -401,7 +401,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*method-type*> | Zeichenfolge | HTTP-Methode für die Abonnementanforderung: „GET“, „PUT“, „POST“, „PATCH“ oder „DELETE“ | 
+| <*method-type*> | Zeichenfolge | HTTP-Methode für die Abonnementanforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-subscribe-URL*> | Zeichenfolge | Endpunkt-URL, an die die Abonnementanforderung gesendet werden soll | 
 |||| 
 
@@ -409,7 +409,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*method-type*> | Zeichenfolge | HTTP-Methode für die Kündigungsanforderung: „GET“, „PUT“, „POST“, „PATCH“ oder „DELETE“ | 
+| <*method-type*> | Zeichenfolge | HTTP-Methode für die Kündigungsanforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-unsubscribe-URL*> | Zeichenfolge | Endpunkt-URL, an die die Kündigungsanforderung gesendet werden soll | 
 | <*body-content*> | Zeichenfolge | Beliebiger Nachrichteninhalt, der in der Abonnement- oder Kündigungsanforderung gesendet werden soll | 
 | <*authentication-method*> | JSON-Objekt | Die Methode, die von der Anforderung für die Authentifizierung verwendet wird. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
@@ -495,19 +495,19 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1–16 Monate </br>- Day: 1–500 Tage </br>- Hour: 1–12.000 Stunden </br>- Minute: 1–72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | Zeichenfolge | Das Startdatum und die -uhrzeit im folgenden Format: <p>JJJJ-MM-TTTHH:mm:ss (bei Angabe einer Zeitzone; beachten Sie dabei, dass „TT“ den Tag bezeichnet, während das dritte „T“ wie in den nachfolgenden Beispielen gezeigt nicht verändert werden darf) <p>Oder <p>JJJJ-MM-TTTHH:mm:ssZ (ohne Angabe einer Zeitzone) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (etwa „Pacific Standard Time“) angeben oder „2017-09-18T14:00:00Z“ ohne eine Zeitzone. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone angeben, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. Weitere Informationen zu Startdatum und -uhrzeit finden Sie unter [Schedule tasks and workflows that run regularly with logic apps](../connectors/connectors-native-recurrence.md) (Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps). | 
+| <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | Zeichenfolge | Das Startdatum und die -uhrzeit im folgenden Format: <p>JJJJ-MM-TTTHH:mm:ss (bei Angabe einer Zeitzone; beachten Sie dabei, dass „TT“ den Tag bezeichnet, während das dritte „T“ wie in den nachfolgenden Beispielen gezeigt nicht verändert werden darf) <p>Oder <p>JJJJ-MM-TTTHH:mm:ssZ (ohne Angabe einer Zeitzone) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (etwa „Pacific Standard Time“) angeben oder „2017-09-18T14:00:00Z“ ohne eine Zeitzone. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone angeben, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. Weitere Informationen zu Startdatum und -uhrzeit finden Sie unter [Schedule tasks and workflows that run regularly with logic apps](../connectors/connectors-native-recurrence.md) (Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps). | 
 | <*time-zone*> | Zeichenfolge | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Geben Sie die anzuwendende Zeitzone an. | 
 | <*one-or-more-hour-marks*> | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 23 als die Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
 | <*one-or-more-minute-marks*> | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 59 als die Minuten der Stunde angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
-| weekDays | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine kommagetrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“ oder „Sunday“ | 
+| weekDays | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine durch Trennzeichen getrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“, „Sunday“ | 
 | <*max-runs*> | Ganze Zahl  | Standardmäßig werden Logik-App-Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Ganze Zahl  | Wenn Ihre Logik-App bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
@@ -892,7 +892,7 @@ Diese Aktion sendet eine HTTP-Anforderung an eine [von Microsoft verwaltete API]
 |-------|------|-------------| 
 | <*action-name*> | Zeichenfolge | Name der vom Connector bereitgestellten Aktion | 
 | <*api-name*> | Zeichenfolge | Name der von Microsoft verwalteten API, die für die Verbindung verwendet wird | 
-| <*method-type*> | Zeichenfolge | HTTP-Methode zum Aufrufen der API: „GET“, „PUT“, „POST“, „PATCH“ oder „DELETE“ | 
+| <*method-type*> | Zeichenfolge | HTTP-Methode zum Aufrufen der API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*api-operation*> | Zeichenfolge | Aufzurufender API-Vorgang | 
 |||| 
 
@@ -971,7 +971,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*action-name*> | Zeichenfolge | Name der vom Connector bereitgestellten Aktion | 
-| <*method-type*> | Zeichenfolge | HTTP-Methode zum Abonnieren oder Kündigen des Abonnements über einen Endpunkt: „GET“, „PUT“, „POST“, „PATCH“ oder „DELETE“ | 
+| <*method-type*> | Zeichenfolge | HTTP-Methode zum Abonnieren oder Kündigen des Abonnements über einen Endpunkt: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*api-subscribe-URL*> | Zeichenfolge | URI, der zum Abonnieren der API verwendet wird | 
 |||| 
 
@@ -1072,7 +1072,7 @@ Mit dieser Aktion wird eine zuvor erstellte [Azure-Funktion](../azure-functions/
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------|  
 | <*Azure-function-ID*> | Zeichenfolge | Die Ressourcen-ID für die Azure-Funktion, die Sie aufrufen möchten. Das Format für diesen Wert lautet wie folgt:<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
-| <*method-type*> | Zeichenfolge | HTTP-Methode, die zum Aufrufen der Funktion verwendet wird: „GET“, „PUT“, „POST“, „PATCH“ oder „DELETE“ <p>Wenn nichts angegeben wird, wird standardmäßig die Methode „POST“ verwendet. | 
+| <*method-type*> | Zeichenfolge | HTTP-Methode zum Aufrufen der Funktion: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ <p>Wenn nichts angegeben wird, wird standardmäßig die Methode „POST“ verwendet. | 
 ||||
 
 *Optional*
@@ -1142,7 +1142,7 @@ Diese Aktion sendet eine Anforderung an den angegebenen Endpunkt und überprüft
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*method-type*> | Zeichenfolge | Methode, die zum Senden der Anforderung verwendet wird: „GET“, „PUT“, „POST“, „PATCH“ oder „DELETE“ | 
+| <*method-type*> | Zeichenfolge | Methode zum Senden der Anforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*HTTP-or-HTTPS-endpoint-URL*> | Zeichenfolge | Der aufzurufende HTTP- oder HTTPS-Endpunkt. Maximal zulässige Zeichenfolgengröße: 2 KB | 
 |||| 
 
@@ -1238,7 +1238,7 @@ Mit dieser Aktion werden benutzerfreundliche Felder oder *Token* aus den Eigensc
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*JSON-source*> | JSON-Objekt | JSON-Inhalt, den Sie analysieren möchten | 
-| <*JSON-schema*> | JSON-Objekt | JSON-Schema, mit dem der zugrunde liegende JSON-Inhalt beschrieben wird, der von der Aktion zum Analysieren des JSON-Quellinhalts verwendet wird. <p>**Tipp**: Im Logik-App-Designer können Sie entweder das Schema bereitstellen oder eine Beispielnutzlast angeben, damit die Aktion das Schema generieren kann. | 
+| <*JSON-schema*> | JSON-Objekt | JSON-Schema, mit dem der zugrunde liegende JSON-Inhalt beschrieben wird, der von der Aktion zum Analysieren des JSON-Quellinhalts verwendet wird. <p>**Tipp**: Im Logik-App-Designer können Sie das Schema bereitstellen oder eine Beispielnutzlast angeben, damit die Aktion das Schema generieren kann. | 
 |||| 
 
 *Beispiel*
@@ -1666,7 +1666,7 @@ Mit dieser Aktion wird die Ausführung für die Logik-App-Workflowinstanz beende
 
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*status*> | Zeichenfolge | Status, der für die Ausführung zurückgegeben wird: „Failed“, „Cancelled“ oder „Succeeded“ |
+| <*status*> | Zeichenfolge | Der zurückzugebende Status für die Ausführung: „Failed“, „Cancelled“, „Succeeded“ |
 |||| 
 
 *Optional*
@@ -1737,7 +1737,7 @@ Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum ode
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*number-of-units*> | Ganze Zahl  | Für die Aktion **Delay** die Anzahl von Zeiteinheiten für die Wartedauer | 
-| <*interval*> | Zeichenfolge | Für die Aktion **Delay** der Zeitraum für die Wartedauer: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
+| <*interval*> | Zeichenfolge | Das zu wartende Intervall für die Aktion **Delay**: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
 | <*date-time-stamp*> | Zeichenfolge | Für die Aktion **Delay Until** das Datum und die Uhrzeit zum Fortsetzen der Ausführung. Für diesen Wert muss das [UTC-Format für Datum und Uhrzeit](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) verwendet werden. | 
 |||| 
 
@@ -2350,9 +2350,9 @@ Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Ins
 
 1. Wählen Sie im Trigger oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Standard außer Kraft setzen** auf **Ein** fest. 
+2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
 
-3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. 
+3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2387,9 +2387,9 @@ Hier ist ein Beispiel angegeben, in dem gleichzeitige Ausführungen auf zehn Ite
 
 1. Wählen Sie in der Aktion **For each** oben rechts die Schaltfläche mit den Auslassungspunkten (...) und dann **Einstellungen** aus.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Standard außer Kraft setzen** auf **Ein** fest. 
+2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest. 
 
-3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. 
+3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
 
 <a name="change-waiting-runs"></a>
 
@@ -2465,7 +2465,7 @@ Legen Sie die `operationOptions`-Eigenschaft auf `SingleInstance` fest:
 
 1. Wählen Sie im Trigger oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Standard außer Kraft setzen** auf **Ein** fest. 
+2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
 
 3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`. 
 
@@ -2516,7 +2516,7 @@ Legen Sie die `operationOptions`-Eigenschaft auf `Sequential` fest:
 
 1. Wählen Sie in der Aktion **For each** oben rechts die Ellipsenschaltfläche (...) und dann **Einstellungen**.
 
-2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Standard außer Kraft setzen** auf **Ein** fest. 
+2. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest. 
 
 3. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den Wert `1`. 
 
@@ -2644,7 +2644,7 @@ Für diesen Authentifizierungstyp kann Ihr Trigger oder Ihre Aktion ein `authent
 | **secret** | Ja, nur für den Anmeldeinformationstyp „Secret“ | <*secret-for-authentication*> | Das base64-codierte-Geheimnis, das der Client zum Anfordern der Autorisierung verwendet |
 ||||| 
 
-Hier ist beispielsweise das Format für das `authentication`-Objekt, wenn Ihre Trigger- oder Aktionsdefinition den Anmeldeinformationstyp „Secret“ verwendet: Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern von vertraulichen Informationen](#secure-info). 
+Hier ist das Format für das `authentication`-Objekt, wenn in der Trigger- oder Aktionsdefinition der Anmeldeinformationstyp „Secret“ verwendet wird. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern von vertraulichen Informationen](#secure-info). 
 
 ```javascript
 "authentication": {
@@ -2706,7 +2706,7 @@ Definieren Sie im `parameters`-Abschnitt der Definition Ihrer Logik-App die Para
 },
 ```
 
-Wenn Sie eine Azure Resource Manager-Bereitstellungsvorlage erstellen oder verwenden, müssen Sie auch einen äußeren `parameters`-Abschnitt für Ihre Vorlagendefinition einschließen. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern des Zugriffs auf Ihre Logik-Apps](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
+Wenn Sie eine Azure Resource Manager-Bereitstellungsvorlage erstellen oder verwenden, müssen Sie auch einen äußeren `parameters`-Abschnitt für Ihre Vorlagendefinition einschließen. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern des Zugriffs auf Ihre Logik-Apps](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

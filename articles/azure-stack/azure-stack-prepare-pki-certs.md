@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f31d995ba4390eb5a893c3ebde49ee4e96e8023
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631480"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021134"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Vorbereiten von Azure Stack-PKI-Zertifikaten für die Verwendung bei der Bereitstellung oder Rotation
 Die [von der Zertifizierungsstelle Ihrer Wahl bezogenen](azure-stack-get-pki-certs.md) Zertifikatdateien müssen mit Eigenschaften importiert und exportiert werden, die mit den Zertifikatanforderungen von Azure Stack in Einklang stehen.
@@ -73,7 +73,14 @@ Verwenden Sie diese Schritte zum Vorbereiten und Überprüfen der Azure Stack-PK
 
 1. Wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
 
-1. Wählen Sie im Abschnitt für das Exportdateiformat **Alle erweiterten Eigenschaften exportieren** aus, und klicken Sie dann auf **Weiter**.
+1. Gehen Sie im Abschnitt für das Exportdateiformat wie folgt vor:
+    
+    - Wählen Sie **Wenn möglich, alle Zertifikate im Zertifizierungspfad einbeziehen**.  
+    - Wählen Sie **Alle erweiterten Eigenschaften exportieren**.  
+    - Wählen Sie **Zertifikatdatenschutz aktivieren**.  
+    - Klicken Sie auf **Weiter**.  
+    
+    ![Zertifikatexport-Assistent mit ausgewählten Optionen](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
 1. Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Merken Sie sich dieses Kennwort. Es wird als Bereitstellungsparameter verwendet. Klicken Sie auf **Weiter**.
 
@@ -82,4 +89,5 @@ Verwenden Sie diese Schritte zum Vorbereiten und Überprüfen der Azure Stack-PK
 1. Wählen Sie **Fertig stellen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Überprüfen von Azure Stack-PKI-Zertifikaten](azure-stack-validate-pki-certs.md)

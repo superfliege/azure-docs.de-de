@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868666"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074001"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
@@ -40,7 +40,7 @@ In der folgenden Tabelle sind die Voraussetzungen für das Veröffentlichen auf 
 | ***SaaS-App (Software-as-a-Service) für Unternehmen*** | Ihre App muss die folgenden Anforderungen erfüllen:<ul> <li>eine Line-of-Business-SaaS-App sein</li> <li>den Fokus auf Geschäftsprozesse legen</li> <li>an Geschäftskunden gerichtet sein</li> <li>Benutzern erlauben, ihre Unternehmensanmeldeinformationen für die Anmeldung (Benutzername und Kennwort) zu verwenden</li> </ul> | Erforderlich |  
 | ***Kostenloser Testzeitraum und Testversion*** | Ihre App muss eine der folgenden Optionen enthalten, damit ein Kunde Ihre App kostenlos für einen begrenzten Zeitraum verwenden kann.<ul> <li>Stellen Sie eine `try`-Methode bereit, sodass Kunden eine Testversion Ihrer App in AppSource starten können.</li> <li>Stellen Sie eine `request trial`-Option in AppSource bereit, damit Kunden eine Testversion Ihrer App anfordern können.</li> </ul>Die kostenlose Testversion, die Sie bereitstellen, muss dem Kunden eine vorab festgelegte Zeitspanne bieten, in der er Ihre App ohne zusätzliche Kosten ausprobieren kann. | Erforderlich |  
 | ***Einfach konfigurierbare und einsatzbereite Lösung*** | Ihre App muss sich einfach und schnell konfigurieren und einrichten lassen (keine Anpassung erforderlich). | Erforderlich |  
-| ***Leadverwaltung*** | Sie müssen Ihre CRM aktivieren, um Leaddaten zu akzeptieren, bevor Sie Leads von der Storefront erhalten.<ul> <li>CRM-Beispiele sind Marketo, Microsoft Dynamics oder Salesforce.</li> </ul> | Erforderlich |  
+| ***Leadverwaltung*** | Aktivieren Sie Ihre CRM-Instanz für den Empfang von Leaddaten, bevor Sie Leads von der Storefront erhalten.<ul> <li>CRM-Beispiele sind Marketo, Microsoft Dynamics oder Salesforce.</li> </ul> | Erforderlich |  
 | ***Datenschutz- und Nutzungsrichtlinien*** | Ihre App muss einen Link zu Ihrer Seite mit den Datenschutzrichtlinien (über eine öffentliche URL) bereitstellen. Die Nutzungsbedingungen müssen während der Veröffentlichung als Text bereitgestellt werden. | Erforderlich |  
 | ***Unterstützung*** | Ihre App muss einen Link zu Ihrer Kundendienstseite (über eine öffentliche URL) bereitstellen. Wenn es sich bei Ihrer App um eine Testversion handelt, müssen Sie die Unterstützen ohne zusätzliche Kosten während des Testzeitraums bereitstellen. | Erforderlich |  
 
@@ -52,7 +52,7 @@ Unten sind die Voraussetzungen für die Auflistung von Typen in Azure Marketplac
 | ***Teilnahmerichtlinien*** | Ihre App muss die Teilnahmerichtlinien von Azure Marketplace befolgen.<ul> <li>Weitere Informationen zu den Teilnahmerichtlinien finden Sie unter den Teilnahmerichtlinien für Microsoft Azure Marketplace unter [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).</li></ul> | list<br />Transaktion<br />Testversion |  
 | ***Integration in Microsoft*** | Ihr Angebot sollte Microsoft Azure-Diensttypen, z.B. Compute, Netzwerk oder Speicher, nutzen bzw. erweitern. Ihr Angebot sollte an einer vorhandenen Azure Marketplace-Kategorie ausgerichtet sein, z.B. Datenbanken, Sicherheit oder Netzwerk.<ul> <li>Weitere Informationen zu den Marketplace-Angeboten finden Sie auf der Marketplace-Apps-Seite unter [azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps).</li> </ul> | list<br />Transaktion<br />Testversion |  
 | ***Zielgruppe*** | Ihr Angebot muss sich an IT-Experten, Cloudentwickler oder andere technische Kundenrollen richten. | list<br />Transaktion<br />Testversion |  
-| ***Leadverwaltung*** | Bevor Sie Leads von der Storefront erhalten, müssen Sie Ihr Kundenbeziehungsmanagement (Customer Relationship Management, CRM) (Marketo, Microsoft Dynamics oder Salesforce) für den Empfang von Leaddaten aktivieren. | list<br />Transaktion<br />Testversion |  
+| ***Leadverwaltung*** | Bevor Sie Leads von der Storefront erhalten, müssen Sie Ihr CRM (Marketo, Microsoft Dynamics oder Salesforce) für den Empfang von Leaddaten aktivieren. | list<br />Transaktion<br />Testversion |  
 | ***Datenschutz- und Nutzungsrichtlinien*** | Ihre App muss einen Link zu Ihrer Seite mit den Datenschutzrichtlinien (über eine öffentliche URL) bereitstellen. Die Nutzungsbedingungen müssen während der Veröffentlichung als Text bereitgestellt werden. | list<br />Transaktion<br />Testversion |  
 | ***Unterstützung*** | Ihr Angebot muss einen Link zu Ihrer Kundendienstseite (über eine öffentliche URL) enthalten. Wenn es sich bei Ihrem Angebot um eine Testversion handelt, müssen Sie die Unterstützen ohne zusätzliche Kosten während des Testzeitraums bereitstellen. | Transaktion<br />Testversion |    
 
@@ -164,9 +164,8 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 | Anforderung | Details |  
 |:--- |:--- | 
 | Abrechnung und Messung | Ihre VM muss entweder BYOL oder die monatliche nutzungsbasierte Bezahlung unterstützen. |  
-| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden.<ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter „Erstellen einer Azure-kompatiblen VHD (Linux-basiert)“ unter [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter „Erstellen einer Azure-kompatiblen VHD (Windows-basiert)“ unter [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul> |  
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden.<ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter [Von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter [Erstellen einer Azure-kompatiblen VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md).</li> </ul> |  
 
 ## <a name="next-steps"></a>Nächste Schritte
 *   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
- 
----  
+

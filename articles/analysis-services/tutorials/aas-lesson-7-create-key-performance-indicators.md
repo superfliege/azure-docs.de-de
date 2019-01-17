@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 7: Erstellen von Key Performance Indicators | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 7: Erstellen von Key Performance Indicators | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie Key Performance Indicators im Azure Analysis Services-Tutorialprojekt erstellt werden.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1e7fc5cd684610a5d96b5986f5c169741055c9b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d238b3bf159a5e540eb9c72ecbcee188bd357b05
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426815"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186531"
 ---
 # <a name="create-key-performance-indicators"></a>Erstellen von Key Performance Indicators
 
@@ -22,7 +22,7 @@ In dieser Lektion erstellen Sie Key Performance Indicators (KPIs). KPIs werden v
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 6: Erstellen von Measures](../tutorials/aas-lesson-6-create-measures.md) abgeschlossen haben.   
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 6: Erstellen von Measures](../tutorials/aas-lesson-6-create-measures.md)   
   
 ## <a name="create-key-performance-indicators"></a>Erstellen von Key Performance Indicators  
   
@@ -76,6 +76,6 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
 6.  Wählen Sie unter **Symbolart auswählen** die Raute (rot), das Dreieck, (gelb) und den Kreis (grün) aus, und klicken Sie anschließend auf **OK**.  
   
 ## <a name="whats-next"></a>Wie geht es weiter?
-[Lektion 8: Erstellen von Perspektiven](../tutorials/aas-lesson-8-create-perspectives.md)
+[Lektion 8: Erstellen von Perspektiven](../tutorials/aas-lesson-8-create-perspectives.md).
   
   

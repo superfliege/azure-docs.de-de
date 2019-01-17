@@ -5,8 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457288"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052392"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von NSGs mit einer Azure Resource Manager-Vorlage 
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -52,7 +50,7 @@ Der Abschnitt „Referenzen“ enthält einen Link zu einer Azure Resource Manag
 **So erstellen Sie diese Umgebung** (ausführliche Anweisungen finden Sie im Abschnitt „Referenzen“ dieses Dokuments):
 
 1. Stellen Sie die Azure Resource Manager-Vorlage unter [Azure-Schnellstartvorlagen][Template] bereit.
-2. Installieren Sie die Beispielanwendung unter [Beispielanwendung zur Verwendung in Umgebungen mit Sicherheitsbegrenzung][SampleApp].
+2. Installieren die Sie Beispielanwendung unter [Beispielanwendungsskript][SampleApp].
 
 >[!NOTE]
 >Für eine RDP-Verbindung mit Back-End-Servern in dieser Instanz wird der IIS-Server als „Sprungplattform“ verwendet. Stellen Sie erst eine RDP-Verbindung mit dem IIS-Server her und dann eine RDP-Verbindung des IIS-Servers mit dem Back-End-Server. Alternativ können Sie eine öffentliche IP-Adresse mit jeder Server-NIC verknüpfen, um einfacher RDP-Datenverkehr zu realisieren.
@@ -350,7 +348,7 @@ Um die Vorlage bereitzustellen, die dieses Beispiel mithilfe von GitHub und Azur
 Um diese Bereitstellung zu entfernen, löschen Sie die Ressourcengruppe, und dann werden alle untergeordneten Ressourcen ebenfalls gelöscht.
 
 #### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
-Sobald die Vorlage erfolgreich ausgeführt wurde, können Sie den Webserver und den App-Server mit einer einfachen Webanwendung einrichten, um Tests mit dieser DMZ-Konfiguration zu ermöglichen. Um eine Beispielanwendung für dieses und weitere DMZ-Beispiele zu installieren, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
+Sobald die Vorlage erfolgreich ausgeführt wurde, können Sie den Webserver und den App-Server mit einer einfachen Webanwendung einrichten, um Tests mit dieser DMZ-Konfiguration zu ermöglichen. Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310367"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189512"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -113,7 +113,7 @@ Bei der Erstellung von Benutzern in:
 
 - **Azure AD** ist keine zusätzliche Einrichtung erforderlich.
 
-[Alternative Anmelde-IDs](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) werden auf in Azure AD eingebundenen Geräten nicht unterstützt. Wenn Ihre Benutzer eine alternative Anmelde-ID verwenden, sollten Sie auf die Verwendung ihres primären UPN in Azure AD umstellen.
+Lokale UPNs, die sich von Azure AD-UPNs unterscheiden, werden auf in Azure AD eingebundenen Geräten nicht unterstützt. Wenn Ihre Benutzer einen lokalen UPN verwenden, sollten Sie auf die Verwendung ihres primären UPN in Azure AD umstellen.
 
 
 
@@ -167,7 +167,7 @@ In den folgenden Abschnitten werden Aspekte für verschiedene Arten von Anwendun
 
 ### <a name="cloud-based-applications"></a>Cloudbasierte Anwendungen
 
-Wenn eine Anwendung zum Azure AD-App-Katalog hinzugefügt wird, erhalten Benutzer SSO über die in Azure AD eingebundenen Geräte. Es ist keine zusätzliche Konfiguration erforderlich. Benutzer erhalten SSO in den Browsern Edge und Chrome. Wenn Sie Chrome verwenden, müssen Sie die [Erweiterung „Windows 10 Accounts“](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) bereitstellen. 
+Wenn eine Anwendung zum Azure AD-App-Katalog hinzugefügt wird, erhalten Benutzer SSO über die in Azure AD eingebundenen Geräte. Es ist keine zusätzliche Konfiguration erforderlich. Benutzer erhalten SSO in den Browsern Microsoft Edge und Chrome. Wenn Sie Chrome verwenden, müssen Sie die [Erweiterung „Windows 10 Accounts“](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) bereitstellen. 
 
 Für Win32-Anwendungen gilt Folgendes:
 

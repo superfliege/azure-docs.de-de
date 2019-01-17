@@ -1,47 +1,48 @@
 ---
-title: Bedrohungserkennung – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Konfigurieren der Bedrohungserkennung – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
 description: Die Bedrohungserkennung identifiziert anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank in der verwalteten Instanz hinweisen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: a456a214143f39ed9504af40129f9199b2535e46
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997138"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158668"
 ---
-# <a name="azure-sql-database-managed-instance-threat-detection-preview"></a>Bedrohungserkennung für eine verwaltete Azure SQL-Datenbank-Instanz (Vorschau)
+# <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurieren der Bedrohungserkennung (Vorschau) für eine verwaltete Azure SQL-Datenbank-Instanz
 
 Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für eine [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu verwenden. Mithilfe der Bedrohungserkennung können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Warnungen der Bedrohungserkennung](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
 
 Sie können sich über [E-Mail-Benachrichtigungen](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) oder im [Azure-Portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
 
-Die [Bedrohungserkennung](sql-advanced-threat-protection.md) ist Bestandteil des Angebots [SQL Advanced Threat Protection](sql-database-threat-detection-overview.md) (ATP). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ATP-Portal möglich. Für den Bedrohungserkennungsdienst werden pro verwalteter Instanz 15 USD/Monat berechnet, hierbei sind die ersten 30 Tage kostenlos.
+Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestandteil des Angebots [SQL Advanced Threat Protection](sql-advanced-threat-protection.md) (ATP). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ATP-Portal möglich. Für den Bedrohungserkennungsdienst werden pro verwalteter Instanz 15 USD/Monat berechnet, hierbei sind die ersten 30 Tage kostenlos.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Einrichten der Bedrohungserkennung für Ihre verwaltete Instanz im Azure-Portal
+
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
-2. Navigieren Sie zur Konfigurationsseite der verwalteten Instanz, die geschützt werden soll. Wählen Sie auf der Seite **Einstellungen** die Option **Bedrohungserkennung** aus. 
-3. Auf der Konfigurationsseite für die Bedrohungserkennung 
+2. Navigieren Sie zur Konfigurationsseite der verwalteten Instanz, die geschützt werden soll. Wählen Sie auf der Seite **Einstellungen** die Option **Bedrohungserkennung** aus.
+3. Auf der Konfigurationsseite für die Bedrohungserkennung
    - **Aktivieren Sie** die Bedrohungserkennung.
    - Konfigurieren Sie die **Liste der E-Mail-Empfänger**, die bei Erkennung anomaler Datenbankaktivitäten Sicherheitswarnungen erhalten sollen.
-   - Wählen Sie das **Azure Storage-Konto** aus, in dem Überwachungsdatensätze zu anomalen Bedrohungen gespeichert werden. 
-4.  Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Bedrohungserkennung zu speichern.
+   - Wählen Sie das **Azure Storage-Konto** aus, in dem Überwachungsdatensätze zu anomalen Bedrohungen gespeichert werden.
+4. Klicken Sie auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Bedrohungserkennung zu speichern.
 
    ![Bedrohungserkennung](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur [Bedrohungserkennung](sql-database-threat-detection-overview.md) 
-- Informationen zur verwalteten Instanz finden Sie hier: [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md) 
-- Weitere Informationen zur [Bedrohungserkennung für eine Einzeldatenbank](sql-database-threat-detection.md) 
-- Weitere Informationen zur [Überwachung einer verwalteten Instanz](https://go.microsoft.com/fwlink/?linkid=869430) 
+- Weitere Informationen zur [Bedrohungserkennung](sql-database-threat-detection-overview.md)
+- Informationen zur verwalteten Instanz finden Sie hier: [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
+- Weitere Informationen zur [Bedrohungserkennung für eine Einzeldatenbank](sql-database-threat-detection.md)
+- Weitere Informationen zur [Überwachung einer verwalteten Instanz](https://go.microsoft.com/fwlink/?linkid=869430)
 - Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: ac80cd5ee1c530736666338e8bc3763b110c688c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388426"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191444"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -41,12 +41,12 @@ So aktivieren Sie die PHP-Protokollierung
 6. Legen Sie den Dateinamen auf **.user.ini** fest.
 7. Aktivieren Sie das Stiftsymbol neben **.user.ini**.
 8. Fügen Sie der Datei diesen Code hinzu: `log_errors=on`
-9. Wählen Sie **Speichern**aus.
+9. Wählen Sie **Speichern** aus.
 10. Aktivieren Sie das Stiftsymbol neben **wp-config.php**.
 11. Ändern Sie den Text in den folgenden Code:
    ```php
    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
+   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
    ```
 12. Starten Sie im Azure-Portal im Menü „Web-App“ Ihre Web-App neu.
 
@@ -219,4 +219,4 @@ Nachdem Sie sichergestellt haben, dass der MySQL-In-App-Prozess ausgeführt wird
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Ich erhalte die HTTP-Fehlermeldung 403, wenn ich versuche, meine MySQL-In-App-Datenbank mithilfe von PHPMyadmin zu importieren oder zu exportieren. Wie löse ich dieses Problem?
 
-Wenn Sie eine ältere Version von Chrome verwenden, ist möglicherweise ein bekannter Fehler aufgetreten. Um das Problem zu beheben, aktualisieren Sie auf eine neuere Version von Chrome. Oder probieren Sie einen anderen Browser wie Internet Explorer oder Edge aus, in dem das Problem nicht auftritt.
+Wenn Sie eine ältere Version von Chrome verwenden, ist möglicherweise ein bekannter Fehler aufgetreten. Um das Problem zu beheben, aktualisieren Sie auf eine neuere Version von Chrome. Oder verwenden Sie einen anderen Browser wie Internet Explorer oder Microsoft Edge, in dem das Problem nicht auftritt.

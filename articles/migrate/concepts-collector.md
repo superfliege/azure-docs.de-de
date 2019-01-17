@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/08/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255974"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104208"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -63,20 +63,20 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
     - Wählen Sie Azure Global aus, wenn Sie planen, zur kommerziellen Azure-Cloud zu migrieren.
     - Basierend auf der hier angegebenen Cloud sendet die Appliance ermittelte Metadaten an die jeweiligen Endpunkte.
 - **Internetverbindung prüfen**: Der Collector kann eine direkte Verbindung mit dem Internet herstellen oder über einen Proxy.
-    - Bei der Voraussetzungsprüfung wird die Konnektivität mit [erforderlichen und optionalen URLs](#connect-to-urls) überprüft.
+    - Bei der Voraussetzungsprüfung wird die Konnektivität mit [erforderlichen und optionalen URLs](#urls-for-connectivity) überprüft.
     - Wenn Sie eine direkte Verbindung mit dem Internet haben, müssen Sie lediglich sicherstellen, dass der Collector die erforderlichen URLs erreichen kann.
     - Wenn Sie eine Verbindung über einen Proxy herstellen, sollten Sie die [nachfolgenden Anforderungen](#connect-via-a-proxy) beachten.
-- **Zeitsynchronisierung überprüfen**:  Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden.
+- **Überprüfen der Zeitsynchronisierung:** Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden.
     - Die URL „portal.azure.com“ muss über den Collector erreichbar sein, damit die Uhrzeit überprüft werden kann.
     - Wenn der Computer nicht synchronisiert wird, müssen Sie die Uhrzeit auf der Collector-VM an die aktuelle Uhrzeit anpassen. Öffnen Sie hierzu auf der VM eine Eingabeaufforderung für Administratoren, und führen Sie **w32tm /tz** zum Überprüfen der Zeitzone aus. Führen Sie **w32tm /resync** zum Synchronisieren der Zeit aus.
-- **Ausführung des Collectordiensts überprüfen**:   Der Azure Migrate-Collectordienst sollte auf der Collector-VM ausgeführt werden.
+- **Ausführung des Collectordiensts:**  Der Azure Migrate-Collectordienst muss auf dem virtuellen Collectorcomputer ausgeführt werden.
     - Dieser Dienst wird beim Hochfahren des Computers automatisch gestartet.
     - Starten Sie den Dienst über die Einstellungen, falls er nicht ausgeführt wird.
     - Der Collectordienst stellt eine Verbindung mit vCenter Server her, sammelt die VM-Metadaten und -Leistungsdaten und sendet diese an den Azure Migrate-Dienst.
-- **Installation von VMware PowerCLI 6.5 überprüfen**:  Das PowerShell-Modul VMware PowerCLI 6.5 muss auf der Collector-VM installiert sein, damit eine Kommunikation mit vCenter Server möglich ist.
+- **Überprüfen der Installation von VMware PowerCLI 6.5:** Das PowerShell-Modul VMware PowerCLI 6.5 muss auf der Collector-VM installiert sein, damit eine Kommunikation mit vCenter Server möglich ist.
     - Wenn der Collector auf die URLs zugreifen kann, die für die Installation des Moduls erforderlich sind, erfolgt die Installation automatisch während der Bereitstellung des Collectors.
     - Wenn der Collector das Modul während der Bereitstellung nicht installieren kann, müssen Sie es [manuell installieren](#install-vwware-powercli-module-manually).
-- **Verbindung mit vCenter Server überprüfen**:  Der Collector muss eine Verbindung mit vCenter Server herstellen und VMs, die zugehörigen Metadaten und Leistungsindikatoren abfragen können. [Überprüfen Sie die Voraussetzungen](#connect-to-vcenter-server) zum Herstellen einer Verbindung.
+- **Überprüfen der Verbindung mit vCenter Server:** Der Collector muss eine Verbindung mit vCenter Server herstellen und VMs, zugehörige Metadaten und Leistungsindikatoren abfragen können. [Überprüfen Sie die Voraussetzungen](#connect-to-vcenter-server) zum Herstellen einer Verbindung.
 
 
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Herstellen einer Verbindung mit dem Internet über einen Proxy
@@ -105,7 +105,7 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
 
 
 
-### <a name="connect-to-urls"></a>Verbinden mit URLs
+### <a name="urls-for-connectivity"></a>URLs für Konnektivität
 
 Die Konnektivitätsprüfung wird durch das Herstellen einer Verbindung mit einer Liste von URLs durchgeführt.
 

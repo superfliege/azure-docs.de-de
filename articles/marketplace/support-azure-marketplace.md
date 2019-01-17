@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 9af0a8cc8e1e0cd57aa3baf79bbe5a552aa2ef12
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ae3716654f40322205212ca02a99993326a1cf35
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087587"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073355"
 ---
 # <a name="support-for-the-marketplace"></a>Support für Marketplace  
 Hier finden Sie eine Liste der Supportoptionen für den Marketplace.  
@@ -28,7 +28,7 @@ Darüber hinaus erhalten Sie im [Marketplace-Kanal des C+AI Community-Forums](ht
 
 ## <a name="onboarding"></a>Onboarding
 
-Öffnen Sie bei Microsoft ein Ticket für [Marketplace-Herausgebersupport](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820), wenn Sie ein Onboarding-Problem oder ein Problem bei den ersten Schritten haben.
+Öffnen Sie bei Microsoft ein Ticket für [Marketplace-Herausgebersupport](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820), wenn Sie ein Onboarding-Problem oder ein Problem bei den ersten Schritten haben.
 
 ## <a name="cloud-partner-portal"></a>Cloudpartnerportal  
 

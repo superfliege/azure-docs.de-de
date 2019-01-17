@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/03/2019
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c0672ddb3e6791fae3b9b8c04e9ff98827c9e22f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 03d307a324826a4805da5ed6ff8b995b7c3eab62
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256730"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019301"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Übertragen von Daten mit AzCopy unter Windows
 AzCopy ist ein Befehlszeilenprogramm, das entwickelt wurde, um Daten in/aus Microsoft Azure Blob, File und Table Storage zu kopieren. Hierbei werden einfache Befehle verwendet, die für optimale Leistung konzipiert sind. Sie können Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.  
@@ -642,13 +642,13 @@ Parameter für AzCopy werden unten beschrieben. Sie können auch einen der folge
 
 Gibt die Quelldaten an, aus denen kopiert werden soll. Die Quelle kann ein Dateisystemverzeichnis, ein Blobcontainer, ein virtuelles Blobverzeichnis, eine Speicherdateifreigabe, ein Speicherdateiverzeichnis oder eine Azure-Tabelle sein.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="destdestination"></a>/Dest:"Ziel"
 
 Geben das Ziel für das Kopieren an. Das Ziel kann ein Dateisystemverzeichnis, ein Blobcontainer, ein virtuelles Blobverzeichnis, eine Speicherdateifreigabe, ein Speicherdateiverzeichnis oder eine Azure-Tabelle sein.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="patternfile-pattern"></a>/Pattern:"Dateimuster"
 
@@ -662,15 +662,15 @@ Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, mü
 
 AzCopy beachtet für das Abgleichen die Groß-/Kleinschreibung, wenn die Quelle (/Source) ein BLOB-Container oder ein virtuelles BLOB-Verzeichnis ist. In allen anderen Fällen wird die Groß-/Kleinschreibung nicht beachtet.
 
-Wenn kein Dateimuster angegeben ist, ist das Standarddateimuster für einen Dateisystem-Speicherort *auskennen.* oder ein leeres Präfix für einen Azure Storage-Speicherort. Das Angeben mehrerer Dateimuster wird nicht unterstützt.
+Wenn kein Dateimuster angegeben ist, ist das Standarddateimuster für einen Dateisystem-Speicherort *auskennen.*  oder ein leeres Präfix für einen Azure Storage-Speicherort. Das Angeben mehrerer Dateimuster wird nicht unterstützt.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="destkeystorage-key"></a>/DestKey:"Speicherschlüssel"
 
 Gibt den Speicherkontoschlüssel für die Zielressource an.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="destsassas-token"></a>/DestSAS:"SAS-Token"
 
@@ -680,13 +680,13 @@ Wenn die Zielressource ein BLOB-Container, eine Dateifreigabe oder eine Tabelle 
 
 Wenn es sich bei der Quelle und beim Ziel um Blobs handelt, muss sich das Zielblob im selben Speicherkonto wie das Quellblob befinden.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="sourcekeystorage-key"></a>/SourceKey:"Speicherschlüssel"
 
 Gibt den Speicherkontoschlüssel für die Quellressource an.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="sourcesassas-token"></a>/SourceSAS:"SAS-Token"
 
@@ -696,29 +696,29 @@ Wenn die Quellressource ein Blobcontainer ist und weder ein Schlüssel noch eine
 
 Wenn die Quelle eine Dateifreigabe oder Tabelle ist, muss ein Schlüssel oder eine SAS angegeben werden.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="s"></a>/S
 
 Gibt den rekursiven Modus für Kopiervorgänge an. Im rekursiven Modus kopiert AzCopy alle Blobs oder Dateien, die mit dem angegebenen Dateimuster übereinstimmen, einschließlich der Blobs oder Dateien in den Unterordnern.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="blobtypeblock--page--append"></a>/BlobType:"block" | "page" | "append"
 
 Gibt an, ob es sich beim Zielblob um ein Block-, Seiten- oder Anfügeblob handelt. Diese Option gilt nur, wenn Sie einen Blob hochladen. Andernfalls tritt ein Fehler auf. Wenn das Ziel ein Blob ist und diese Option nicht angegeben wurde, erstellt AzCopy standardmäßig ein Blockblob.
 
-**Gilt für:** Blobs
+**Geltungsbereich:** Blobs (in englischer Sprache)
 
 ### <a name="checkmd5"></a>/CheckMD5
 
-Berechnet einen MD5-Hash für heruntergeladene Daten und überprüft, ob der in der Content-MD5-Eigenschaft des BLOBs oder der Datei gespeicherte MD5-Hash mit dem berechneten Hash übereinstimmt. Die MD5-Prüfung ist standardmäßig deaktiviert, daher müssen Sie diese Option angeben, um die MD5-Prüfung beim Herunterladen von Daten auszuführen.
+Berechnet einen MD5-Hash für heruntergeladene Daten und überprüft, ob der in der Content-MD5-Eigenschaft des BLOBs oder der Datei gespeicherte MD5-Hash mit dem berechneten Hash übereinstimmt. Wenn die Werte nicht übereinstimmen, tritt beim Herunterladen der Daten durch AzCopy ein Fehler auf. Die MD5-Prüfung ist standardmäßig deaktiviert, daher müssen Sie diese Option angeben, um die MD5-Prüfung beim Herunterladen von Daten auszuführen.
 
-Beachten Sie, dass Azure Storage nicht dafür garantiert, dass der für den BLOB oder die Datei gespeicherte MD5-Hash auf dem neuesten Stand ist. Der Client ist für die MD5-Aktualisierung zuständig, wenn der BLOB oder die Datei geändert wird.
+Beachten Sie, dass Azure Storage nicht dafür garantiert, dass der für den BLOB oder die Datei gespeicherte MD5-Hash auf dem neuesten Stand ist. Der Client ist für die MD5-Aktualisierung zuständig, wenn der BLOB oder die Datei geändert wird. Im Fall von Datenträgerimages (verwaltete oder nicht verwaltete Datenträger) aktualisieren virtuelle Azure-Computer den MD5-Wert nicht, wenn sich die Datenträgerinhalte ändern. Daher wird beim Herunterladen von Datenträgerimages von „/CheckMD5“ ein Fehler ausgegeben.
 
-AzCopy legt die Content-MD5-Eigenschaft für einen Azure-BLOB oder eine entsprechende Datei immer fest, nachdem diese(r) in den Dienst hochgeladen wurde.  
+AzCopy v8 legt die Content-MD5-Eigenschaft für ein Azure-Blob oder eine Azure-Datei immer fest, nachdem diese(s) in den Dienst hochgeladen wurde.  
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="snapshot"></a>/Snapshot
 
@@ -728,7 +728,7 @@ Die übertragenen Blobmomentaufnahmen werden im folgenden Format umbenannt: „B
 
 Momentaufnahmen werden standardmäßig nicht kopiert.
 
-**Gilt für:** Blobs
+**Geltungsbereich:** Blobs (in englischer Sprache)
 
 ### <a name="vverbose-log-file"></a>/V:[Ausführliche Protokolldatei]
 
@@ -736,7 +736,7 @@ Gibt ausführliche Statusmeldungen in eine Protokolldatei aus.
 
 Die ausführliche Protokolldatei erhält in `%LocalAppData%\Microsoft\Azure\AzCopy`standardmäßig die Bezeichnung „AzCopyVerbose.log“. Wenn Sie für diese Option einen vorhandenen Dateispeicherort angeben, wird das ausführliche Protokoll an diese Datei angefügt.  
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="zjournal-file-folder"></a>/Z:[Journaldatei-Ordner]
 
@@ -754,7 +754,7 @@ Nachdem der Vorgang erfolgreich abgeschlossen wurde, wird die Journaldatei gelö
 
 Beachten Sie, dass die Fortsetzung eines Vorgangs aus einer Journaldatei nicht unterstützt wird, die mit einer früheren Version von AzCopy erstellt wurde.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="parameter-file"></a>/@:"Parameterdatei"
 
@@ -766,13 +766,13 @@ Antwortdateien können Kommentarzeilen einbeziehen, die mit dem Symbol „#“ b
 
 Sie können mehrere Antwortdateien angeben. Beachten Sie jedoch, dass AzCopy geschachtelte Antwortdateien nicht unterstützt.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="y"></a>/Y
 
 Unterdrückt alle Bestätigungsaufforderungen von AzCopy. Diese Option ermöglicht zudem die Verwendung von lesegeschützten SAS-Token für Datenuploadszenarien, wenn /XO und /XN nicht angegeben sind.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="l"></a>/L
 
@@ -784,30 +784,30 @@ Das Verhalten dieser Option wird auch durch den Speicherort der Quelldaten sowie
 
 Wird diese Option verwendet, benötigt AzCopy AUFLISTUNGS- und LESE-Berechtigung für den Quellspeicherort.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="mt"></a>/MT
 
 Legt für die Uhrzeit der letzten Änderung der heruntergeladenen Datei denselben Zeitpunkt wie für den Quell-BLOB oder die Quelldatei fest.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="xn"></a>/XN
 
 Schließt eine neuere Quellressource aus. Die Ressource wird nicht kopiert, wenn der Zeitpunkt der letzten Änderung der Quelle mit dem Ziel identisch ist oder danach liegt.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="xo"></a>/XO
 Schließt eine ältere Quellressource aus. Die Ressource wird nicht kopiert, wenn der Zeitpunkt der letzten Änderung der Quelle mit dem Ziel identisch ist oder davor liegt.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="a"></a>/A
 
 Lädt ausschließlich Dateien hoch, für die das Archivattribut festgelegt ist.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="iarashcnetoi"></a>/IA:[RASHCNETOI]
 
@@ -826,7 +826,7 @@ Zu den verfügbaren Attributen zählen:
 * O = Offlinedateien
 * I = Nicht indizierte Dateien
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="xarashcnetoi"></a>/XA:[RASHCNETOI]
 
@@ -845,7 +845,7 @@ Zu den verfügbaren Attributen zählen:
 * O = Offlinedateien
 * I = Nicht indizierte Dateien
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="delimiterdelimiter"></a>/Delimiter:"Trennzeichen"
 
@@ -855,7 +855,7 @@ AzCopy verwendet „/“ standardmäßig als Trennzeichen. AzCopy unterstützt j
 
 Diese Option kann nur zum Herunterladen von BLOBs angewendet werden.
 
-**Gilt für:** Blobs
+**Geltungsbereich:** Blobs (in englischer Sprache)
 
 ### <a name="ncnumber-of-concurrent-operations"></a>/NC:"Anzahl-gleichzeitiger-Vorgänge"
 
@@ -865,19 +865,19 @@ AzCopy startet standardmäßig eine bestimmte Anzahl gleichzeitiger Vorgänge zu
 
 Maximal können 512 gleichzeitige Vorgänge ausgeführt werden.
 
-**Gilt für:** Blobs, Dateien, Tabellen
+**Geltungsbereich:** Blobs, Dateien, Tabellen
 
 ### <a name="sourcetypeblob--table"></a>/SourceType:"Blob" | "Table"
 
 Gibt an, dass die Ressource `source` ein Blob ist, das in der lokalen Entwicklungsumgebung verfügbar ist und im Speicheremulator ausgeführt wird.
 
-**Gilt für:** Blobs, Tabellen
+**Geltungsbereich:** Blobs, Tabellen
 
 ### <a name="desttypeblob--table"></a>/DestType:"Blob" | "Table"
 
 Gibt an, dass die Ressource `destination` ein Blob ist, das in der lokalen Entwicklungsumgebung verfügbar ist und im Speicheremulator ausgeführt wird.
 
-**Gilt für:** Blobs, Tabellen
+**Geltungsbereich:** Blobs, Tabellen
 
 ### <a name="pkrskey1key2key3"></a>/PKRS:"Schlüssel1#Schlüssel2#Schlüssel3#..."
 
@@ -893,7 +893,7 @@ Jeder Vorgang exportiert einen der drei Partitionsschlüsselbereiche, wie dies i
 
   [bb, letzter Partitionsschlüssel]
 
-**Gilt für:** Tabellen
+**Geltungsbereich:** Tabellen
 
 ### <a name="splitsizefile-size"></a>/SplitSize:"Dateigröße"
 
@@ -903,7 +903,7 @@ Wenn diese Option nicht angegeben ist, exportiert AzCopy Tabellendaten in eine e
 
 Wenn die Tabellendaten in ein Blob exportiert werden und die exportierte Dateigröße die 200-GB-Begrenzung für die Blobgröße erreicht, teilt AzCopy die exportierte Datei auf, selbst wenn diese Option nicht angegeben ist.
 
-**Gilt für:** Tabellen
+**Geltungsbereich:** Tabellen
 
 ### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/EntityOperation:"InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
 
@@ -913,7 +913,7 @@ Gibt das Tabellendaten-Importverhalten an.
 * InsertOrMerge – Führt eine vorhandene Entität zusammen oder fügt eine neue Entität ein, wenn sie in der Tabelle nicht vorhanden ist.
 * InsertOrReplace – Ersetzt eine vorhandene Entität oder fügt eine neue Entität ein, wenn sie in der Tabelle nicht vorhanden ist.
 
-**Gilt für:** Tabellen
+**Geltungsbereich:** Tabellen
 
 ### <a name="manifestmanifest-file"></a>/Manifest: "Manifestdatei"
 
@@ -923,7 +923,7 @@ Diese Option ist beim Exportvorgang optional. AzCopy generiert eine Manifestdate
 
 Diese Option ist während eines Importvorgangs erforderlich, damit die Datendateien gefunden werden.
 
-**Gilt für:** Tabellen
+**Geltungsbereich:** Tabellen
 
 ### <a name="synccopy"></a>/SyncCopy
 
@@ -933,7 +933,7 @@ Standardmäßig führt AzCopy serverseitige asynchrone Kopiervorgänge aus. Gebe
 
 Diese Option eignet sich zum Kopieren von Dateien innerhalb eines Blob-Speichers oder eines Dateispeichers sowie zwischen Blob- und Dateispeicher.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="setcontenttypecontent-type"></a>/SetContentType: "Inhaltstyp"
 
@@ -943,7 +943,7 @@ AzCopy legt den Inhaltstyp eines Blobs oder einer Datei standardmäßig als „a
 
 Wenn Sie für diese Option keinen Wert angeben, legt AzCopy den Inhaltstyp jedes Blobs und jeder Datei gemäß der jeweiligen Dateierweiterung fest.
 
-**Gilt für:** Blobs, Dateien
+**Geltungsbereich:** Blobs, Dateien
 
 ### <a name="payloadformatjson--csv"></a>/ PayloadFormat: "JSON" | "CSV"
 
@@ -951,7 +951,7 @@ Gibt das Format der exportierten Tabellendatendatei an.
 
 Ist diese Option nicht angegeben, exportiert AzCopy eine Tabellendatendatei standardmäßig im JSON-Format.
 
-**Gilt für:** Tabellen
+**Geltungsbereich:** Tabellen
 
 ## <a name="known-issues-and-best-practices"></a>Bekannte Probleme und Best Practices
 
@@ -997,10 +997,10 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage-Blogbeiträge:
 * [Einführung in die Vorschau der Microsoft Azure Storage Data Movement-Bibliothek](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy: Einführung in das synchrone Kopieren und benutzerdefinierte Inhaltstypen](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Ab sofort allgemein verfügbar: AzCopy 3.0 sowie die Vorschau auf AzCopy 4.0 mit Tabellen- und Dateiunterstützung](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Optimiert für große Kopierszenarien](https://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy: Unterstützung des Lesezugriffs auf georedundanten Speicher](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy: Transfer data with restartable mode and SAS token (AzCopy: Übertragen von Daten mit neu startbarem Modus und SAS-Token)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Verwenden des kontoübergreifenden Kopierblobs](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy: Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy: Introducing synchronous copy and customized content type](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx) (AzCopy: Einführung in das synchrone Kopieren und benutzerdefinierte Inhaltstypen)
+* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx) (AzCopy: Ab sofort allgemein verfügbar: AzCopy 3.0 sowie die Vorschau auf AzCopy 4.0 mit Tabellen- und Dateiunterstützung)
+* [AzCopy: Optimized for Large-Scale Copy Scenarios](https://go.microsoft.com/fwlink/?LinkId=507682) (Optimiert für große Kopierszenarien)
+* [AzCopy: Support for read-access geo-redundant storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx) (Unterstützung des Lesezugriffs auf georedundanten Speicher)
+* [AzCopy: Transfer data with restartable mode and SAS token](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx) (AzCopy: Übertragen von Daten mit neu startbarem Modus und SAS-Token)
+* [AzCopy: Using cross-account Copy Blob](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx) (Verwenden des kontoübergreifenden Kopierblobs)
+* [AzCopy: Uploading/downloading files for Azure Blobs](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx) (Hochladen/Herunterladen von Dateien für Microsoft Azure-Blobs)

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/13/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321273"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190828"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -74,15 +74,19 @@ Klicken Sie in der **Übersicht** für das Modell auf das Symbol **Modell synchr
 ![Schieberegler für horizontales Hochskalieren](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST-API
+
 Verwenden Sie die **sync**-Operation.
 
 #### <a name="synchronize-a-model"></a>Synchronisieren eines Modells   
+
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>Abrufen des Synchronisierungsstatus  
+
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
+
 Vor der Verwendung von PowerShell müssen Sie [das neueste AzureRM-Modul installieren oder aktualisieren](https://github.com/Azure/azure-powershell/releases). 
 
 Verwenden Sie [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver), um die Anzahl der Abfragereplikate festzulegen. Geben Sie den optionalen Parameter `-ReadonlyReplicaCount` an.
@@ -101,9 +105,9 @@ Für SSMS, SSDT und Verbindungszeichenfolgen in PowerShell, Azure Functions-Apps
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-**Problem:** Benutzer erhalten die Fehlermeldung **Serverinstanz '\<Name des Servers>' im Verbindungsmodus 'ReadOnly' nicht gefunden.**
+**Problem:** Benutzer erhalten die Fehlermeldung **Serverinstanz „\<Name des Servers>“ im Verbindungsmodus „ReadOnly“ nicht gefunden.**
 
-**Lösung:** Wenn die Option **Verarbeitungsserver vom Abfragepool trennen** ausgewählt wird, werden Clientverbindungen, die die Standardverbindungszeichenfolge (ohne: rw) verwenden, an Abfragepoolreplikate umgeleitet. Wenn Replikate im Abfragepool noch nicht online sind, weil die Synchronisierung noch nicht abgeschlossen ist, können umgeleitete Clientverbindungen fehlschlagen. Um Verbindungsfehler zu verhindern, wählen Sie aus, dass der Verarbeitungsserver nicht vom Abfragepool getrennt wird, bis ein horizontaler Skalierungs- und Synchronisierungsvorgang abgeschlossen sind. Sie können die Metriken „Arbeitsspeicher“ und „QPU“ verwenden, um den Synchronisierungsstatus zu überwachen.
+**Lösung:** Beim Auswählen der **Verarbeitungsserver vom Abfragepool trennen** werden Clientverbindungen, die die Standardverbindungszeichenfolge (ohne „:rw“) verwenden, an Abfragepoolreplikate umgeleitet. Wenn Replikate im Abfragepool noch nicht online sind, weil die Synchronisierung noch nicht abgeschlossen ist, können umgeleitete Clientverbindungen fehlschlagen. Um Verbindungsfehler zu verhindern, wählen Sie aus, dass der Verarbeitungsserver nicht vom Abfragepool getrennt wird, bis ein horizontaler Skalierungs- und Synchronisierungsvorgang abgeschlossen sind. Sie können die Metriken „Arbeitsspeicher“ und „QPU“ verwenden, um den Synchronisierungsstatus zu überwachen.
 
 ## <a name="related-information"></a>Verwandte Informationen
 

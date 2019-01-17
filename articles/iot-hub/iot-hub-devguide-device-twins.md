@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 7f66c87322aadafaa7167dff4190de6d08e5d18d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 606a7c64cc60fa81a71bf40a8087875e08e7c984
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338412"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053022"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -382,4 +382,4 @@ Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie
 
 * [Verwenden des Gerätezwillings](iot-hub-node-node-twin-getstarted.md)
 * [Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
-* [Geräteverwaltung mit dem Azure IoT Hub-Toolkit für VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Geräteverwaltung mit Azure IoT-Tools für VS Code](iot-hub-device-management-iot-toolkit.md)

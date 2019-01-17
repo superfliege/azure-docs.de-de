@@ -6,23 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 1a4fe30881f06d8af851a67f389a6faafbe3dfef
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 412727d79c194172f2855d014d1eaf18f44167f6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389461"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159348"
 ---
-# <a name="azure-data-box-disk-limits-preview"></a>Begrenzungen für Azure Data Box-Datenträger (Vorschau)
+# <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
 
 Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betreiben Ihrer Microsoft Azure Data Box-Datenträgerlösung. 
-
-> [!IMPORTANT] 
-> Der Azure Data Box-Datenträger befindet sich in der Vorschau. Lesen Sie die [Vertragsbedingungen für die Nutzung der Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen. 
-
 
 ## <a name="data-box-service-limits"></a>Data Box-Diensteinschränkungen
 

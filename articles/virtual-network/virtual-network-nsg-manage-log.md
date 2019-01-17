@@ -1,13 +1,10 @@
 ---
-title: Azure-Diagnoseprotokolle für Ereignis- und Regelzähler der Netzwerksicherheitsgruppe | Microsoft-Dokumentation
+title: Azure-Diagnoseprotokolle für Ereignis- und Regelzähler der Netzwerksicherheitsgruppe
+titlesuffix: Azure Virtual Network
 description: In diesem Artikel erfahren Sie, wie Diagnoseprotokolle für Ereignis- und Regelzähler für eine Azure-Netzwerksicherheitsgruppe aktiviert werden.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2e699078-043f-48bd-8aa8-b011a32d98ca
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 383c870148193f4831f06d75aba241e827af9006
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 63dd7b0aad3ce42eff3c135bd2fdccc8fcb4ed61
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543358"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014079"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
 

@@ -4,30 +4,27 @@ description: Beschreibt, wie Sie Probleme mit dem Azure Data Box-Datenträger be
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: overview
-ms.date: 10/09/2018
+ms.subservice: disk
+ms.topic: article
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 776108b109bc27e0f8059d287e87c67aeca9fbd2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091849"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191699"
 ---
-# <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Behandeln von Problemen mit dem Azure Data Box-Datenträger (Vorschau)
+# <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Behandeln von Problemen mit Azure Data Box Disk
 
-Dieser Artikel gilt für Microsoft Azure Data Box im Vorschaurelease. Dieser Artikel beschreibt einige der komplexen Workflows und Verwaltungsaufgaben, die für Azure Data Box und den Azure Data Box-Datenträger ausgeführt werden können. 
+Dieser Artikel gilt für Microsoft Azure Data Box Disk. Er beschreibt die Workflows zum Beheben von Problemen, die beim Bereitstellen dieser Lösung auftreten können. 
 
-Die Data Box Disk-Instanz kann über das Azure-Portal verwaltet werden. Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe des Azure-Portals ausgeführt werden können. Verwenden Sie das Azure-Portal, um Bestellungen und Geräte zu verwalten und den Status der Bestellung bis zum Abschluss nachzuverfolgen.
-
-Dieser Artikel enthält folgende Lernprogramme:
+Dieser Artikel enthält die folgenden Abschnitte:
 
 - Herunterladen von Diagnoseprotokollen
 - Abfragen von Aktivitätsprotokollen
-
-
-> [!IMPORTANT]
-> Data Box befindet sich in der Vorschau. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
+- Fehler des Data Box Disk-Tools zum Entsperren
+- Fehler des Data Box Disk-Tools zum Aufteilen/Kopieren
 
 ## <a name="download-diagnostic-logs"></a>Herunterladen von Diagnoseprotokollen
 
@@ -76,7 +73,7 @@ Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datu
 | Volumes konnten nicht entsperrt oder überprüft werden. Wenden Sie sich an den Microsoft Support.  <br><br>Das Tool entsperrt bzw. überprüft keine gesperrten Laufwerke. | Das Tool konnte keines der entsperrten Laufwerke mit dem angegebenen Hauptschlüssel entsperren. Erkundigen Sie sich beim Support von Microsoft nach den weiteren Schritten.                                                |
 | Folgende Volumes sind entsperrt und überprüft. <br>Volumelaufwerkbuchstaben: E:<br>Es konnten keine Volumes mit den folgenden Hauptschlüsseln entsperrt werden: werwerqomnf, qwerwerqwdfda <br><br>Das Tool entsperrt einige Laufwerke und zeigt die erfolgreichen und fehlerhaften Laufwerkbuchstaben an.| Teilweise erfolgreich. Einige der Laufwerke konnten mit dem angegebenen Hauptschlüssel nicht entsperrt werden. Erkundigen Sie sich beim Support von Microsoft nach den weiteren Schritten. |
 | Es wurden keine gesperrten Laufwerke gefunden. Stellen Sie sicher, dass der von Microsoft erhaltene Datenträger ordnungsgemäß verbunden ist und einen gesperrten Zustand aufweist.          | Das Tool findet keine gesperrten Laufwerke. Die Laufwerke sind bereits entsperrt, oder sie werden nicht erkannt. Stellen Sie sicher, dass die Laufwerke verbunden und gesperrt sind.                                                           |
-| Schwerwiegender Fehler: Ungültiger Parameter<br>Parametername: invalid_arg<br>SYNTAX:<br>DataBoxDiskUnlock /PassKeys:<Durch_Semicolons_getrennte_Liste_der_Hauptschlüssel><br><br>Beispiel: DataBoxDiskUnlock /PassKeys:Hauptschlüssel1;Hauptschlüssel2;Hauptschlüssel3<br>Beispiel: DataBoxDiskUnlock /SystemCheck<br>Beispiel: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Abrufen dieses Schlüssels aus der Bestellung des Azure DataBox-Datenträgers. Der Hauptschlüssel entsperrt Ihre Datenträger.<br>/Help:           Diese Option bietet Hilfe für die Cmdlet-Verwendung sowie Beispiele.<br>/SystemCheck:    Diese Option überprüft, ob Ihr System die Anforderungen zum Ausführen des Tools erfüllt.<br><br>Drücken Sie zum Beenden eine beliebige Taste. | Ungültige Parametereingabe. Der einzigen zulässigen Parameter sind /SystemCheck, /PassKey und /Help.                                                                            |
+| Schwerwiegender Fehler: Ungültiger Parameter<br>Parametername: invalid_arg<br>SYNTAX:<br>DataBoxDiskUnlock /PassKeys:<Durch_Semicolons_getrennte_Liste_der_Hauptschlüssel><br><br>Beispiel: DataBoxDiskUnlock /PassKeys:Hauptschlüssel1;Hauptschlüssel2;Hauptschlüssel3<br>Beispiel: DataBoxDiskUnlock /SystemCheck<br>Beispiel: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Abrufen dieses Schlüssels aus dem Azure Data Box Disk-Auftrag. Der Hauptschlüssel entsperrt Ihre Datenträger.<br>/Help:           Diese Option bietet Hilfe und Beispiele für die Cmdlet-Verwendung.<br>/SystemCheck:    Diese Option überprüft, ob Ihr System die Anforderungen zum Ausführen des Tools erfüllt.<br><br>Drücken Sie zum Beenden eine beliebige Taste. | Ungültige Parametereingabe. Der einzigen zulässigen Parameter sind /SystemCheck, /PassKey und /Help.                                                                            |
 
 ## <a name="data-box-disk-split-copy-tool-errors"></a>Fehler des Data Box Disk-Tools zum Aufteilen/Kopieren
 
@@ -87,9 +84,78 @@ Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datu
 |[Error] Exception thrown: A DriveManifest.xml file exists on the target drive. <br> This indicates the target drive may have been prepared with a different journal file. <br>To add more data to the same drive, use the previous journal file. To delete existing data and reuse target drive for a new import job, delete the DriveManifest.xml on the drive. Rerun this command with a new journal file. ([Fehler] Eine Ausnahme wurde ausgelöst: Auf dem Ziellaufwerk befindet sich eine Datei vom Typ „DriveManifest.xml“. Das Ziellaufwerk wurde möglicherweise mit einer anderen Journaldatei vorbereitet. Wenn Sie dem gleichen Laufwerk weitere Daten hinzufügen möchten, verwenden Sie die vorherige Journaldatei. Wenn Sie die vorhandenen Daten löschen und das Ziellaufwerk für einen neuen Importauftrag verwenden möchten, löschen Sie die Datei „DriveManifest.xml“ auf dem Laufwerk, und führen Sie diesen Befehl mit einer neuen Journaldatei aus.)| Dieser Fehler tritt auf, wenn Sie versuchen, die gleiche Gruppe von Laufwerken für mehrere Importsitzungen zu verwenden. <br> Verwenden Sie pro Aufteilungs-/Kopiersitzung immer nur eine Gruppe von Laufwerken.|
 |[Error] Exception thrown: CopySessionId importdata-sept-test-1 refers to a previous copy session and cannot be reused for a new copy session. ([Fehler] Eine Ausnahme wurde ausgelöst: „CopySessionId importdata-sept-test-1“ bezieht sich auf eine vorherige Kopiersitzung und kann nicht für diese neue Kopiersitzung wiederverwendet werden.)|Dieser Fehler tritt auf, wenn Sie versuchen, den Auftragsnamen eines bereits erfolgreich abgeschlossenen Auftrags für einen neuen Auftrag zu verwenden.<br> Weisen Sie Ihrem neuen Auftrag einen eindeutigen Namen zu.|
 |[Info] Destination file or directory name exceeds the NTFS length limit. ([Information] Der Name der Zieldatei oder des Zielverzeichnisses übersteigt die NTFS-Längenbeschränkung.) |Diese Meldung wird zurückgegeben, wenn die Zieldatei aufgrund eines langen Dateipfads umbenannt wurde.<br> Ändern Sie die Dispositionsoption in der Datei `config.json`, um dieses Verhalten zu steuern.|
-|[Error] Exception thrown: Bad JSON escape sequence. ([Fehler] Eine Ausnahme wurde ausgelöst: Ungültige JSON-Escapesequenz.) |Diese Meldung wird zurückgegeben, wenn das Format von „config.json“ ungültig ist. <br> Überprüfen Sie die Datei `config.json` vor dem Speichern mithilfe von [JSONLint](https://jsonlint.com/).|
+|[Error] Exception thrown: Bad JSON escape sequence. ([Fehler] Eine Ausnahme wurde ausgelöst: fehlerhafte JSON-Escapesequenz.) |Diese Meldung wird zurückgegeben, wenn das Format von „config.json“ ungültig ist. <br> Überprüfen Sie die Datei `config.json` vor dem Speichern mithilfe von [JSONLint](https://jsonlint.com/).|
 
+## <a name="deployment-issues-for-linux"></a>Bereitstellungsprobleme unter Linux
 
+In diesem Abschnitt werden einige der wichtigsten Probleme bei der Bereitstellung von Data Box Disk unter Verwendung eines Linux-Clients zum Kopieren von Daten beschrieben.
+
+### <a name="issue-drive-getting-mounted-as-read-only"></a>Problem: Das Laufwerk wird schreibgeschützt eingebunden.
+ 
+**Ursache** 
+
+Dies kann auf ein fehlerhaftes Dateisystem zurückzuführen sein. 
+
+- Das erneute Einbinden eines Laufwerks mit Lesezugriff funktioniert nicht mit Data Box Disk-Datenträgern. Dieses Szenario wird mit Laufwerken, die mit dislocker entschlüsselt werden, nicht unterstützt. 
+- Ein erneutes Einbinden mit Lese-/Schreibzugriff ist nicht möglich. Möglicherweise haben Sie das Gerät mithilfe des folgenden Befehls erfolgreich erneut eingebunden: 
+
+    `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
+
+   Das erneute Einbinden war zwar erfolgreich, die Daten werden jedoch nicht beibehalten.
+
+**Lösung**
+
+Wenn der oben angegebene Fehler angezeigt wird, können Sie eine der folgenden Lösungen ausprobieren:
+
+- Installieren Sie [`ntfsfix`](https://linux.die.net/man/8/ntfsfix) (verfügbar im Paket `ntfsprogs`), und führen Sie es für die entsprechende Partition aus.
+
+- Bei Zugriff auf ein Windows-System
+
+    - Laden Sie das Laufwerk in das Windows-System.
+    - Öffnen Sie eine Eingabeaufforderung mit Administratorberechtigungen. Führen Sie `chkdsk` auf dem Volume aus.
+    - Entfernen Sie das Volume sicher, und versuchen Sie es erneut.
+ 
+### <a name="issue-error-with-data-not-persisting-after-copy"></a>Problem: Fehler mit Daten, die nach dem Kopieren nicht beibehalten werden
+ 
+**Ursache** 
+
+Wenn Sie feststellen, dass nach dem Aufheben der Einbindung auf dem Laufwerk keine Daten mehr vorhanden sind (obwohl Daten darauf kopiert wurden), ist es möglich, dass Sie das Laufwerk mit Lese-/ Schreibzugriff eingebunden haben, nachdem es schreibgeschützt eingebunden wurde.
+
+**Lösung**
+ 
+Wenn dies der Fall ist, finden Sie weitere Informationen in der Lösung für Probleme durch [schreibgeschützt eingebundene Laufwerke](#issue-drive-getting-mounted-as-read-only).
+
+Ist das nicht der Fall, [laden Sie Diagnoseprotokolle](#download-diagnostic-logs) von Ihrem System herunter, und [wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md).
+
+## <a name="deployment-issues-for-windows"></a>Bereitstellungsprobleme unter Windows
+
+In diesem Abschnitt werden einige der wichtigsten Probleme bei der Bereitstellung von Data Box Disk unter Verwendung eines Linux-Clients zum Kopieren von Daten beschrieben.
+
+### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problem: Laufwerk von BitLocker konnte nicht entsperrt werden.
+ 
+**Ursache** 
+
+Sie haben das Kennwort im BitLocker-Dialogfeld verwendet und versuchen, den Datenträger über das BitLocker-Dialogfeld zum Entsperren von Laufwerken zu entsperren. Dies funktioniert nicht. 
+
+**Lösung**
+
+Um die Data Box Disk-Datenträger zu entsperren, müssen Sie das Data Box Disk-Entsperrtool verwenden und das Kennwort aus dem Azure-Portal angeben.
+ 
+### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problem: Einige Volumes konnten nicht entsperrt oder überprüft werden. Wenden Sie sich an den Microsoft Support.
+ 
+**Ursache** 
+
+Möglicherweise ist der folgende Fehler im Fehlerprotokoll aufgeführt, und Sie können einige Volumes nicht entsperren oder überprüfen.
+
+`Exception System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.`
+ 
+Dies deutet darauf hin, dass wahrscheinlich die geeignete Version von Windows PowerShell auf Ihrem Windows-Client fehlt.
+
+**Lösung**
+
+Sie können [Windows PowerShell v5.0](https://www.microsoft.com/download/details.aspx?id=54616) installieren und den Vorgang wiederholen.
+ 
+Wenn Sie die Volumes weiterhin nicht entsperren können [wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

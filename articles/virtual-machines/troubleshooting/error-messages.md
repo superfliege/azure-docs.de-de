@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: b996d42e5c543235d09b46d29889bc5eaeafd52a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411527"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118974"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Grundlegendes zu allgemeinen Fehlermeldungen bei der Verwaltung virtueller Computer in Azure
 
@@ -108,7 +108,7 @@ In diesem Abschnitt sind die allgemeinen Fehlermeldungen aufgeführt, die bei de
 |  InvalidParameter  |  Benutzerimage-Außerkraftsetzungen für einen Datenträger, der bereits im angegebenen Imageverweis definiert wurde, können nicht angegeben werden.  |
 |  InvalidParameter  |  Ein Datenträger namens „{0}“ verwendet bereits dieselbe VHD-URL „{1}“.  |
 |  InvalidParameter  |  Die angegebene Fehlerdomänenanzahl {0} muss im Bereich {1} bis {2} liegen.  |
-|  InvalidParameter  |  Der Lizenztyp „{0}“ ist ungültig. Gültige Lizenztypen sind „Windows_Client“ oder „Windows_Server“ . Die Groß-/Kleinschreibung ist relevant.  |
+|  InvalidParameter  |  Der Lizenztyp „{0}“ ist ungültig. Gültige Lizenztypen: „Windows_Client“ oder „Windows_Server“. Die Groß-/Kleinschreibung muss beachtet werden.  |
 |  InvalidParameter  |  Der Linux-Hostname darf nicht mehr als {0} Zeichen umfassen und darf die folgenden Zeichen nicht enthalten: {1}.  |
 |  InvalidParameter  |  Zielpfad für öffentliche SSH-Schlüssel ist aktuell aufgrund eines bekannten Problems im Linux-Bereitstellungs-Agent auf den Standardwert {0} beschränkt.  |
 |  InvalidParameter  |  Ein Datenträger für LUN „{0}“ ist bereits vorhanden.  |

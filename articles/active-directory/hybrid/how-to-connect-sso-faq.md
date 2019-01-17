@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Nahtloses einmaliges Anmelden – Häufig gestellte Fragen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Nahtloses einmaliges Anmelden – häufig gestellte Fragen | Microsoft-Dokumentation'
 description: Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden mit Azure Active Directory.
 services: active-directory
 keywords: Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e47dcda90682bd1f83dbb5fdc6a106f80853d2d0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0672fc06130ce58ae3155672c66ac06ae96bc7b9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424832"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190634"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)
+# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
 
 In diesem Artikel werden häufig gestellte Fragen zum nahtlosen einmaligen Anmelden (Seamless Single Sign-On, Seamless SSO) mit Azure Active Directory behandelt. Schauen Sie öfter vorbei, da wir regelmäßig neue Fragen hinzufügen.
 
@@ -65,7 +65,7 @@ Ja. Die nahtlose SSO unterstützt `Alternate ID` als Benutzername, wenn dies in 
 
 ## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>Was ist der Unterschied zwischen dem einmaligen Anmelden durch [Azure AD Join](../active-directory-azureadjoin-overview.md) und dem nahtlosen einmaligen Anmelden?
 
-[Azure AD Join](../active-directory-azureadjoin-overview.md) stellt SSO für Benutzer bereit, wenn deren Geräte bei Azure AD registriert sind. Diese Geräte müssen nicht unbedingt in eine Domäne eingebunden sein. SSO wird über *primäre Aktualisierungstoken* oder *PRTs* (Primary Refresh Token) bereitgestellt und nicht per Kerberos. Die Benutzeroberfläche ist für Windows 10-Geräte optimiert. Das einmalige Anmelden erfolgt automatisch im Edge-Browser. Es kann mithilfe einer Browsererweiterung auch in Chrome genutzt werden.
+[Azure AD Join](../active-directory-azureadjoin-overview.md) stellt SSO für Benutzer bereit, wenn deren Geräte bei Azure AD registriert sind. Diese Geräte müssen nicht unbedingt in eine Domäne eingebunden sein. SSO wird über *primäre Aktualisierungstoken* oder *PRTs* (Primary Refresh Token) bereitgestellt und nicht per Kerberos. Die Benutzeroberfläche ist für Windows 10-Geräte optimiert. Das einmalige Anmelden erfolgt im Microsoft Edge-Browser automatisch. Es kann mithilfe einer Browsererweiterung auch in Chrome genutzt werden.
 
 Sie können sowohl Azure AD Join als auch das nahtlose einmalige Anmelden für Ihren Mandanten verwenden. Diese beiden Features ergänzen einander. Wenn beide Features aktiviert sind, hat das einmalige Anmelden aus Azure AD Join eine höhere Priorität als das nahtlose einmalige Anmelden.
 
@@ -118,7 +118,7 @@ Nach Abschluss des Assistenten ist die nahtlose SSO für Ihren Mandanten deaktiv
 
 Um den Bereinigungsprozess abzuschließen, führen Sie die Schritte 2 und 3 auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird.
 
-#### <a name="option-b-disable-using-powershell"></a>Option B: Deaktivieren mithilfe von PowerShell
+#### <a name="option-b-disable-using-powershell"></a>Option B: Deaktivieren mit PowerShell
 
 Führen Sie die folgenden Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 

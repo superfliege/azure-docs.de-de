@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 14035fe9061af98b10b822c3b7b9213cdda3fbbd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3fdbbd1d3cf27172ed9ba5c5087ffc331e01ccf9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098294"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076806"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch das Hinzufügen von benutzerdefinierten Domänennamen können Sie Benutzernamen erstellen, die Ihren Benutzern vertraut sind, beispielsweise *alain@contoso.com*.
@@ -63,7 +63,7 @@ Nachdem Sie Ihr Verzeichnis erstellt haben, können Sie Ihren benutzerdefinierte
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>Hinzufügen Ihrer DNS-Informationen in der Domänenregistrierungsstelle
 Nachdem Sie Azure AD Ihren benutzerdefinierten Domänennamen hinzugefügt haben, müssen Sie zur Domänenregistrierungsstelle zurückkehren und die DNS-Informationen von Azure AD aus der kopierten TXT-Datei hinzufügen. Durch die Erstellung dieses TXT-Eintrags wird der Besitz des Domänennamens überprüft.
 
--  Kehren Sie zur Domänenregistrierungsstelle zurück, erstellen Sie auf Grundlage der kopierten DNS-Informationen einen neuen TXT-Eintrag für Ihre Domäne, legen Sie die **Gültigkeitsdauer** (TTL) auf 60 Minuten fest, und speichern Sie anschließend die Informationen.
+-  Kehren Sie zur Domänenregistrierungsstelle zurück, erstellen Sie auf Grundlage der kopierten DNS-Informationen einen neuen TXT-Eintrag für Ihre Domäne, legen Sie die **Gültigkeitsdauer** (TTL) auf 3.600 Sekunden (60 Minuten) fest, und speichern Sie anschließend die Informationen.
 
     >[!Important]
     >Sie können beliebig viele Domänennamen registrieren. Jeder Domäne wird jedoch ein eigener TXT-Eintrag von Azure AD zugewiesen. Achten Sie darauf, dass Sie die Informationen aus der TXT-Datei in der Domänenregistrierungsstelle korrekt eingeben. Wenn Sie versehentlich falsche oder doppelte Informationen eingeben, müssen Sie warten, bis die Gültigkeitsdauer (60 Minuten) abgelaufen ist, bevor Sie es erneut versuchen können.

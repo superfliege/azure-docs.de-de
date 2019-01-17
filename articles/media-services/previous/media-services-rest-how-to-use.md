@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako;johndeu
-ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233462"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159739"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -28,7 +28,7 @@ Die **Media Services Operations-REST-API** wird zum Erstellen von Aufträgen, Me
 
 Media Services stellt eine REST-API zur Verfügung, die sowohl das JSON- als auch das XML-Format für „atom+pub“ akzeptiert. Die Media Services REST-API erfordert spezifische HTTP-Header, die jeder Client beim Herstellen der Verbindung mit Media Services senden muss, sowie eine Reihe optionaler Header. In den folgenden Abschnitten werden die Header und HTTP-Verben beschrieben, die Sie verwenden können, um Anforderungen zu erstellen und Antworten von Media Services zu empfangen.
 
-Die Authentifizierung für die Media Serivces REST-API erfolgt über die Azure Active Directory-Authentifizierung, die im Artikel [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST](media-services-rest-connect-with-aad.md) beschrieben wird.
+Die Authentifizierung für die Media Services-REST-API erfolgt über die Azure Active Directory-Authentifizierung, die im Artikel [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST](media-services-rest-connect-with-aad.md) beschrieben wird.
 
 ## <a name="considerations"></a>Überlegungen
 

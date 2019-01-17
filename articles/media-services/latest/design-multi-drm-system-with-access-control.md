@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753488"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191240"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung 
 
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der nativen DRM-Unterstützun
 | **Clientplattform** | **Natives DRM-System** | **EME** |
 | --- | --- | --- | --- |
 | **Smart-TVs, STBs** | PlayReady, Widevine und/oder andere | Eingebetteter Browser/EME für PlayReady und/oder Widevine|
-| **Windows 10** | PlayReady | MS Edge/IE11 für PlayReady|
+| **Windows 10** | PlayReady | Microsoft Edge/IE11 für PlayReady|
 | **Android-Geräte (Telefon, Tablet, TV)** |Widevine |Chrome für Widevine |
 | **iOS** | FairPlay | Safari für FairPlay (ab iOS 11.2) |
 | **macOS** | FairPlay | Safari für FairPlay (ab Safari 9 und höher unter Mac OS X 10.11 und höher El Capitan)|
@@ -119,11 +119,11 @@ Dieser Faktor ist wichtig,
 
 Wenn Sie eine öffentliche Cloud für die Lizenzbereitstellung nutzen, wirkt sich die Verwendung von permanenten und nicht permanenten Lizenzen direkt auf die Kosten für die Lizenzbereitstellung aus. Die beiden folgenden Entwurfsmodelle veranschaulichen dies:
 
-* Monatliches Abonnement: Permanente Lizenz mit einer 1:n-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. Beispielsweise wird für alle Kinderfilme ein einziger Inhaltsschlüssel für die Verschlüsselung verwendet. In diesem Fall:
+* Monatliches Abonnement: Verwenden Sie eine permanente Lizenz mit einer 1:n-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. Beispielsweise wird für alle Kinderfilme ein einziger Inhaltsschlüssel für die Verschlüsselung verwendet. In diesem Fall:
 
     Gesamtanzahl der für alle Kinderfilme pro Gerät angeforderten Lizenzen = 1
 
-* Monatliches Abonnement: Keine permanente Lizenz mit einer 1:1-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. In diesem Fall:
+* Monatliches Abonnement: Verwenden Sie eine nicht permanente Lizenz mit einer 1:1-Zuordnung zwischen Inhaltsschlüssel und Medienobjekt. In diesem Fall:
 
     Gesamtanzahl der für alle Kinderfilme pro Gerät angeforderten Lizenzen = [Anzahl der konsumierten Filme] × [Anzahl der Sitzungen]
 
@@ -247,7 +247,7 @@ Falls bei der Implementierung Probleme auftreten, verwenden Sie die folgenden In
 
 * Erteilen Sie Berechtigungen in Form von Gruppenmitgliedschaftsansprüchen. Vergewissern Sie sich, dass die Azure AD-Anwendungsmanifestdatei Folgendes enthält: 
 
-    „groupMembershipClaims“: „All“    (Standardwert ist „null“)
+    "groupMembershipClaims": "All"    (Standardwert ist „null“)
 
 * Legen Sie beim Erstellen der Einschränkungsanforderungen den richtigen TokenType fest.
 
@@ -327,7 +327,7 @@ Um die Zeiger-App in Azure AD zu registrieren und zu konfigurieren, führen Sie 
 
 2. Fügen Sie einen neuen Schlüssel für die Ressourcen-App hinzu.
 
-3. Aktualisieren Sie die Manifestdatei der App so, dass die groupMembershipClaims-Eigenschaft folgenden Wert aufweist: „groupMembershipClaims“: „All“.
+3. Aktualisieren Sie die Manifestdatei der App so, dass die groupMembershipClaims-Eigenschaft folgenden Wert aufweist: "groupMembershipClaims": "All".
 
 4. Fügen Sie in der Azure AD-App, die auf die Player-Web-App zeigt, im Abschnitt **Berechtigungen für andere Anwendungen** die Ressourcen-App hinzu, die zuvor in Schritt 1 hinzugefügt wurde. Wählen Sie unter **Delegierte Berechtigung** die Option **Auf [Ressourcenname] zugreifen** aus. Mit dieser Option erhält die Web-App die Berechtigung zum Erstellen von Zugriffstoken für den Zugriff auf die Ressourcen-App. Dies muss sowohl für die lokale als auch für die bereitgestellte Version der Web-App erfolgen, wenn Sie mit Visual Studio und der Azure-Web-App entwickeln.
 
@@ -366,7 +366,7 @@ Es gibt zwei Arten von Sicherheitsschlüsseln:
 > [!NOTE]
 > Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat für einen asymmetrischen Sicherheitsschlüssel eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst:
 
-> IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als 2.048 Bit sein.
+> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" für die Signierung darf nicht kleiner als 2.048s Bit sein.
 
 ## <a name="the-completed-system-and-test"></a>Das fertige System und Tests
 Dieser Abschnitt beschreibt die folgenden Szenarien im fertig gestellten, vollständigen System, sodass Sie sich ein grundlegendes Bild des Verhaltens machen können, bevor Sie ein Anmeldekonto erhalten:

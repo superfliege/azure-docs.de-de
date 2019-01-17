@@ -1,6 +1,6 @@
 ---
 title: Sicherer Zugriff auf Azure Logic Apps | Microsoft-Dokumentation
-description: Schützen des Zugriffs auf Trigger, Eingaben und Ausgaben, Aktionsparameter und Dienste in Workflows für Azure Logic Apps
+description: Hinzufügen von Sicherheit für Azure Logic Apps, einschließlich Triggern, Eingaben und Ausgaben, Parametern und anderer Dienste
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,262 +9,362 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 11/22/2016
-ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/08/2019
+ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232595"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189529"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
-Sie können den Zugriff auf verschiedene Komponenten in Ihrer Logik-App schützen:
+Für diese Elemente in Ihrer Logik-App können Sie den Zugriff schützen:
 
-* Schützen Sie den Zugriff auf das Auslösen eines Logik-App-Workflows mit dem HTTP-Anforderungstrigger.
-* Schützen Sie den Zugriff auf die Verwaltung, die Bearbeitung oder das Lesen einer Logik-App.
-* Schützen Sie den Zugriff auf den Inhalt von Ein-/Ausgaben für eine Logik-App-Ausführung.
-* Schützen Sie Parameter oder Eingaben für Aktionen in einem Logik-App-Workflow.
-* Schützen Sie den Zugriff auf Dienste, die Anforderungen von einem Logik-App-Workflow erhalten.
+* [Anforderung oder Webhooktrigger](#secure-triggers)
+* [Vorgänge wie das Verwalten, Bearbeiten oder Anzeigen](#secure-operations) Ihrer Logik-App
+* [Eingaben und Ausgaben](#secure-run-history) aus dem Ausführungsverlauf Ihrer Logik-App
+* [Aktionsparameter und Eingaben](#secure-action-parameters)
+* [Dienste, die Anforderungen](#secure-requests) von Ihrer Logik-App erhalten
 
-## <a name="secure-access-to-trigger"></a>Sichern des Zugriffs für Trigger
+<a name="secure-triggers"></a>
 
-Bei der Arbeit mit einer Logik-App, die durch eine HTTP-Anforderung ([Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md)) ausgelöst wird, können Sie den Zugriff einschränken, sodass nur autorisierte Clients die Logik-App auslösen können. Alle Anforderungen an eine Logik-App werden verschlüsselt und mit SSL gesichert.
+## <a name="secure-access-to-request-triggers"></a>Sichern des Zugriffs zum Anfordern von Triggern
 
-### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
+Wenn Ihre Logik-App einen auf HTTP-Anforderungen basierenden Trigger verwendet, z.B. einen der Trigger [Anforderung](../connectors/connectors-native-reqres.md) oder [Webhook](../connectors/connectors-native-webhook.md), können Sie den Zugriff einschränken, sodass nur autorisierte Clients die Logik-App starten können. Alle von einer Logik-App empfangenen Anforderungen werden mit dem Secure Sockets Layer-Protokoll (SSL) verschlüsselt und gesichert. Hier finden Sie verschiedene Möglichkeiten, wie Sie den Zugriff auf diesen Triggertyp absichern können:
 
-Jeder Anforderungsendpunkt einer Logik-App enthält als Teil der URL eine [Shared Access Signature (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Jede URL enthält einen `sp`-, `sv`- und `sig`-Abfrageparameter. Berechtigungen werden mit `sp` festgelegt und entsprechen zulässigen HTTP-Methoden. `sv` ist die Version, die zum Generieren verwendet wurde. `sig` dient zum Authentifizieren des Zugriffs für Trigger. Die Signatur wird mit dem SHA256-Algorithmus mit einem geheimen Schlüssel für alle URL-Pfade und -Eigenschaften generiert. Der geheime Schlüssel wird nie verfügbar gemacht bzw. veröffentlicht. Er bleibt verschlüsselt und wird als Teil der Logik-App gespeichert. Die Logik-App autorisiert nur Trigger, die eine gültige Signatur enthalten, die mit dem geheimen Schlüssel erstellt wurde.
+* [Generieren von Shared Access Signatures](#sas)
+* [Beschränken eingehender IP-Adressen](#restrict-incoming-IP)
+* [Hinzufügen von Azure Active Directory, OAuth oder anderen Sicherheitsfeatures](#add-authentication)
+
+<a name="sas"></a>
+
+### <a name="generate-shared-access-signatures"></a>Generieren von Shared Access Signatures
+
+Jeder Anforderungsendpunkt einer Logik-App enthält in der URL des Endpunkts eine [Shared Access Signature (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Jede URL enthält die Abfrageparameter `sp`, `sv` und `sig`.
+
+* `sp` gibt Berechtigungen an, die den zulässigen HTTP-Methoden zugeordnet sind.
+* `sv` gibt die Version zum Generieren der Signatur an.
+* `sig` dient zum Authentifizieren des Zugriffs auf den Trigger.
+
+Die Signatur wird mit dem SHA256-Algorithmus mit einem geheimen Zugriffsschlüssel für alle URL-Pfade und -Eigenschaften generiert. Der geheime Schlüssel wird nie verfügbar gemacht oder veröffentlicht. Er bleibt verschlüsselt und wird mit der Logik-App gespeichert. Die Logik-App autorisiert nur Trigger, die eine gültige, mit dem geheimen Schlüssel erstellte Signatur enthalten. 
+
+Hier finden Sie weitere Informationen zum Absichern des Zugriffs mit einer Shared Access Signature:
+
+* [Erneutes Generieren von Zugriffsschlüsseln](#access-keys)
+* [Erstellen von ablaufenden Rückruf-URLs](#expiring-URLs)
+* [Erstellen von URLs mit Primär- oder Sekundärschlüssel](#primary-secondary-key)
+
+<a name="access-keys"></a>
 
 #### <a name="regenerate-access-keys"></a>Erneutes Generieren von Zugriffsschlüsseln
 
-Sie können jederzeit über die REST-API oder das Azure-Portal erneut einen neuen sicheren Schlüssel generieren. Alle aktuellen URLs, die zuvor mit dem alten Schlüssel generiert wurden, werden ungültig und sind nicht mehr berechtigt, die Logik-App auszulösen.
+Verwenden Sie die Azure-REST-API oder das Azure-Portal, um jederzeit einen neuen sicheren Schlüssel zu generieren. Alle zuvor generierten URLs, die den alten Schlüssel verwenden, werden ungültig und sind nicht mehr berechtigt, die Logik-App auszulösen. Die URLs, die Sie nach der erneuten Generierung abrufen, werden mithilfe des neuen Zugriffsschlüssels signiert.
 
-1. Öffnen Sie im Azure-Portal die Logik-App, für die Sie erneut einen Schlüssel generieren möchten.
-1. Klicken Sie unter **Einstellungen** auf das Menüelement **Zugriffsschlüssel**.
+1. Öffnen Sie im Azure-Portal die Logik-App mit dem Schlüssel, den Sie erneut generieren möchten.
+
+1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+
 1. Wählen Sie den Schlüssel aus, den Sie erneut generieren möchten, und schließen Sie den Vorgang ab.
 
-URLs, die Sie nach der erneuten Generierung abrufen, werden mithilfe des neuen Zugriffsschlüssels signiert.
+<a name="expiring-urls"></a>
 
-#### <a name="creating-callback-urls-with-an-expiration-date"></a>Erstellen von Rückruf-URLs mit einem Ablaufdatum
+#### <a name="create-callback-urls-with-expiration-dates"></a>Erstellen von Rückruf-URLs mit einem Ablaufdatum
 
-Wenn Sie die URL an andere Parteien weitergeben, können Sie nach Bedarf URLs mit bestimmten Schlüsseln und Ablaufdaten generieren. Sie können dann nahtlos Schlüssel bereitstellen oder sicherstellen, dass der Zugriff zum Auslösen einer App auf eine bestimmte Zeitspanne beschränkt ist. Über die [Logik-Apps-REST-API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) können Sie ein Ablaufdatum für eine URL angeben:
-
-``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
-```
-
-Nehmen Sie in den Text die Eigenschaft `NotAfter` als eine JSON-Datumszeichenfolge auf, die eine Rückruf-URL zurückgibt, die nur bis zum Datums- und Uhrzeitwert `NotAfter` gültig ist.
-
-#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>Erstellen von URLs mit einem primären oder sekundären geheimen Schlüssel
-
-Beim Generieren oder Auflisten von Rückruf-URLs für anforderungsbasierte Trigger können Sie auch angeben, welcher Schlüssel zum Signieren der URL verwendet werden soll.  Sie können mit der [Logik-Apps-REST-API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) wie folgt eine mit einem bestimmten Schlüssel signierte URL generieren:
+Wenn Sie die URL eines anforderungsbasierten Triggerendpunkts für andere Parteien freigeben, können Sie nach Bedarf Rückruf-URLs mit bestimmten Schlüsseln und Ablaufdaten generieren. Sie können dann nahtlos Schlüssel bereitstellen oder den Zugriff für das Auslösen Ihrer Logik-App auf einen bestimmten Zeitraum einschränken. Über die [Logic Apps-REST-API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) können Sie ein Ablaufdatum für eine URL angeben, z.B.:
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-Nehmen Sie in den Text die Eigenschaft `KeyType` entweder als `Primary` oder `Secondary` auf.  Dadurch wird eine URL zurückgegeben, die mit dem angegebenen sicheren Schlüssel signiert wurde.
+Schließen Sie mithilfe einer JSON-Datumszeichenfolge die `NotAfter`-Eigenschaft in den Textkörper ein. Diese Eigenschaft gibt eine Rückruf-URL zurück, die nur bis zum Datum und der Uhrzeit in `NotAfter` gültig ist.
+
+<a name="primary-secondary-key"></a>
+
+#### <a name="create-urls-with-primary-or-secondary-secret-key"></a>Erstellen von URLs mit einem primären oder sekundären geheimen Schlüssel
+
+Beim Generieren oder Auflisten von Rückruf-URLs für anforderungsbasierte Trigger können Sie auch den Schlüssel zum Signieren der URL angeben. Sie können mit der [Logic Apps-REST-API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) eine mit einem bestimmten Schlüssel signierte URL generieren, z.B.:
+
+``` http
+POST 
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+```
+
+Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder als `Secondary` ein. Diese Eigenschaft gibt eine URL zurück, die mit dem angegebenen sicheren Schlüssel signiert ist.
+
+<a name="restrict-incoming-ip"></a>
 
 ### <a name="restrict-incoming-ip-addresses"></a>Beschränken eingehender IP-Adressen
 
-Zusätzlich zur Verwendung der Shared Access Signature möchten Sie möglicherweise das Aufrufen einer Logik-App auf bestimmte Clients beschränken.  Beispiel: Wenn Sie den Endpunkt mithilfe von Azure API Management verwalten, können Sie für die Logik-App festlegen, dass sie eine Anforderung nur annimmt, wenn die Anforderung von der IP-Adresse der API Management-Instanz stammt.
+Im Zusammenhang mit der Shared Access Signature empfiehlt es sich, die Clients, die Ihre Logik-App aufrufen können, einzuschränken.  
+Beispiel: Wenn Sie den Anforderungsendpunkt mit Azure API Management verwalten, können Sie für die Logik-App festlegen, dass sie Anforderungen nur von der IP-Adresse der API Management-Instanz annimmt. 
 
-Diese Einstellung kann in den Logik-App-Einstellungen konfiguriert werden:
+#### <a name="set-ip-ranges---azure-portal"></a>Festlegen von IP-Adressbereichen – Azure-Portal
 
-1. Öffnen Sie im Azure-Portal die Logik-App, der Sie IP-Adressbeschränkungen hinzufügen möchten.
-1. Klicken Sie unter **Einstellungen** auf das Menüelement **Workfloweinstellungen**.
-1. Geben Sie die Liste der IP-Adressbereiche an, die vom Trigger akzeptiert werden sollen.
+Um diese Einschränkung im Azure-Portal einzurichten, wechseln Sie zu den Einstellungen Ihrer Logik-App: 
 
-Ein gültiger IP-Adressbereich weist das Format `192.168.1.1/32` auf. Wenn die Logik-App nur als geschachtelte Logik-App ausgelöst werden soll, wählen Sie die Option **Nur andere Logik-Apps** aus. Durch diese Option wird ein leeres Array in die Ressource geschrieben. Dies bedeutet, dass nur Aufrufe vom Dienst selbst (übergeordnete Logik-Apps) erfolgreich ausgelöst werden.
+1. Öffnen Sie die Logik-App im Azure-Portal im Logik-App-Designer. 
+
+1. Wählen Sie im Menü Ihrer Logik-App unter **Einstellungen** die Option **Workfloweinstellungen** aus.
+
+1. Wählen Sie unter **Konfiguration der Zugriffssteuerung** > 
+**Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
+
+1. Geben Sie unter **IP-Bereiche für Trigger** die IP-Adressbereiche an, die der Trigger akzeptiert. Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*. 
+
+Wenn Sie Ihre Logik-App nur als geschachtelte Logik-App auslösen möchten, wählen Sie in der Liste **Zulässige eingehende IP-Adressen** die Option **Nur andere Logik-Apps** aus. Diese Option schreibt ein leeres Array in Ihre Logik-App-Ressource, damit nur Anrufe vom Logic Apps-Dienst (übergeordnete Logik-Apps) die geschachtelte Logik-App auslösen können.
 
 > [!NOTE]
-> Sie können weiterhin eine Logik-App mit einem Anforderungstrigger über REST-API/Management `/triggers/{triggerName}/run` ausführen, unabhängig von der IP. In diesem Szenario ist eine Authentifizierung über die Azure-REST-API erforderlich, und alle Ereignisse werden dann im Azure-Überwachungsprotokoll angezeigt. Legen Sie die Richtlinien für die Zugriffssteuerung entsprechend fest.
+> Unabhängig von der IP-Adresse können Sie eine Logik-App, die einen anforderungsbasierten Trigger hat, mithilfe von `/triggers/{triggerName}/run` über die Azure-REST-API oder über API Management weiterhin ausführen. In diesem Szenario ist jedoch weiterhin eine Authentifizierung über die Azure-REST-API erforderlich, und alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Festlegen von IP-Adressbereichen in der Ressourcendefinition
+#### <a name="set-ip-ranges---logic-app-deployment-template"></a>Festlegen von IP-Adressbereichen – Bereitstellungsvorlage für Logik-Apps
 
-Bei Verwendung einer [Bereitstellungsvorlage](logic-apps-create-deploy-template.md) zum Automatisieren Ihrer Bereitstellungen können die IP-Bereichseinstellungen in der Ressourcenvorlage konfiguriert werden.  
+Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstellungsvorlage](logic-apps-create-deploy-template.md) automatisieren, können Sie die IP-Adressbereiche in dieser Vorlage festlegen, z.B.:
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "triggers": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "triggers": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
-
 ```
 
-### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Hinzufügen von Azure Active Directory, OAuth oder weiteren Sicherheitsfunktionen
+<a name="add-authentication"></a>
 
-Um zusätzlich zu einer Logik-App weitere Autorisierungsprotokolle hinzuzufügen, bietet [Azure API Management](https://azure.microsoft.com/services/api-management/) umfangreiche Überwachungsfunktionen, Sicherheit, Gruppenrichtlinien und Dokumentationen für einen beliebigen Endpunkt mit der Möglichkeit, eine Logik-App als API verfügbar zu machen. Azure API Management kann einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Dadurch können Azure Active Directory, Zertifikate, OAuth oder andere Sicherheitsstandards genutzt werden. Wenn eine Anforderung empfangen wird, leitet Azure API Management die Anforderung an die Logik-App weiter (und führt dabei alle erforderlichen Transformationen oder Einschränkungen durch). Sie können die Einstellungen für den eingehenden IP-Bereich der Logik-App verwenden, um vorzuschreiben, dass die Logik-App nur über API Management ausgelöst werden kann.
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Hinzufügen von Azure Active Directory, OAuth oder anderen Sicherheitsfeatures
 
-## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Sichern des Zugriffs zum Verwalten oder Bearbeiten von Logik-Apps
+Um Ihrer Logik-App weitere Autorisierungsprotokolle hinzuzufügen, können Sie [Azure API Management](https://azure.microsoft.com/services/api-management/) verwenden. Dieser Dienst bietet umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Er bietet Ihnen außerdem die Möglichkeit, Ihre Logik-App als API verfügbar zu machen. API Management kann einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Dadurch können Azure Active Directory, OAuth, Zertifikate oder andere Sicherheitsstandards genutzt werden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App auslösen kann, können Sie die Einstellungen für den eingehenden IP-Bereich Ihrer Logik-App anpassen. 
 
-Damit nur bestimmte Benutzer oder Gruppen Vorgänge für die Ressource ausführen können, können Sie den Zugriff auf Verwaltungsvorgänge für eine Logik-App einschränken. Für Logik-Apps wird die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/role-assignments-portal.md) von Azure verwendet, und sie können mit den gleichen Tools angepasst werden.  Es gibt auch einige integrierte Rollen, die Sie Mitgliedern Ihres Abonnements zuweisen können:
+<a name="secure-operations"></a>
 
-* **Mitwirkender für Logik-Apps**: Bietet Zugriff zum Anzeigen, Bearbeiten und Aktualisieren einer Logik-App.  Das Entfernen der Ressource oder das Ausführen von Verwaltungsvorgängen ist nicht möglich.
-* **Logik-App-Operator**: Kann die Logik-App und den Ausführungsverlauf anzeigen und sie aktivieren/deaktivieren.  Das Bearbeiten oder Aktualisieren der Definition ist nicht möglich.
+## <a name="secure-access-to-logic-app-operations"></a>Sichern des Zugriffs auf Logik-App-Vorgänge
 
-Sie können auch [Azure-Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md) verwenden, um das Ändern oder Löschen von Logik-Apps zu verhindern. Diese Funktion ist nützlich, um zu verhindern, dass Produktionsressourcen geändert oder gelöscht werden.
+Damit nur bestimmte Benutzer oder Gruppen Vorgänge mit Ihrer Logik-App ausführen können, beschränken Sie den Zugriff auf Vorgänge wie das Verwalten, Bearbeiten und Anzeigen. Logic Apps unterstützt [rollenbasierte Zugriffssteuerung (RBAC) von Azure](../role-based-access-control/role-assignments-portal.md), die Sie anpassen oder integrierten Rollen für Mitglieder in Ihrem Abonnement zuzuweisen können, z.B.:
 
-## <a name="secure-access-to-contents-of-the-run-history"></a>Sichern des Zugriffs auf Inhalte des Ausführungsverlaufs
+* **Logik-App-Mitwirkender:** Benutzer können Ihre Logik-App anzeigen, bearbeiten und aktualisieren. Diese Rolle kann die Logik-App nicht löschen oder Vorgänge für Administratoren ausführen.
+* **Logik-App-Operator:** Benutzer können Ihre Logik-App und den Ausführungsverlauf anzeigen und Ihre Logik-App aktivieren oder deaktivieren. Diese Rolle kann Ihre Logik-App nicht bearbeiten oder aktualisieren.
 
-Sie können den Zugriff auf Inhalte von Eingaben oder Ausgaben früherer Ausführungen auf bestimmte IP-Adressbereiche beschränken.  
+Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, können Sie [Azure-Ressourcensperren](../azure-resource-manager/resource-group-lock-resources.md) verwenden. Diese Funktion hilft dabei, andere Personen am Ändern oder Löschen von Produktionsressourcen zu hindern.
 
-Alle Daten innerhalb einer Workflowausführung werden während der Übertragung und im Ruhezustand verschlüsselt. Wenn der Ausführungsverlauf aufgerufen wird, authentifiziert der Dienst die Anforderung und stellt Links zur Anforderung und zu Antworteingaben und -ausgaben bereit. Dieser Link kann geschützt werden, sodass nur Anforderungen zum Anzeigen des Inhalts von einem bestimmten IP-Adressbereich die Inhalte zurückgibt. Sie können diese Funktion für eine zusätzliche Zugriffssteuerung verwenden. Sie können auch eine IP-Adresse wie `0.0.0.0` angeben, damit niemand auf Eingaben/Ausgaben zugreifen kann. Nur Benutzer mit Administratorberechtigungen könnten diese Einschränkung entfernen, sodass die Möglichkeit für „Just-In-Time-Zugriff“ auf Workflowinhalte besteht.
+<a name="secure-run-history"></a>
 
-Diese Einstellung kann in den Ressourceneinstellungen des Azure-Portals konfiguriert werden:
+## <a name="secure-access-to-logic-app-run-history"></a>Sichern des Zugriffs auf den Verlauf von Logik-Apps
 
-1. Öffnen Sie im Azure-Portal die Logik-App, der Sie IP-Adressbeschränkungen hinzufügen möchten.
-2. Klicken Sie unter **Einstellungen** auf das Menüelement **Konfiguration der Zugriffssteuerung**.
-3. Geben Sie die Liste der IP-Adressbereiche für den Zugriff auf den Inhalt an.
+Um Inhalte zu schützen, die als Eingaben oder Ausgaben früherer Ausführungen weitergegeben wurden, können Sie den Zugriff auf bestimmte IP-Adressbereiche beschränken. Diese Funktion bietet Ihnen eine bessere Zugriffssteuerung. Alle Daten in der Ausführung einer Logik-App werden bei der Übertragung und im Ruhezustand verschlüsselt. Wenn Sie den Ausführungsverlauf einer Logik-App anfordern, authentifiziert Logic Apps die Anforderung und stellt Links zu den Eingaben und Ausgaben der Anforderungen sowie die Antworten im Workflow Ihrer Logik-App bereit. Sie können diese Links schützen, sodass dieser Inhalt nur bei Anforderungen von einer bestimmten IP-Adresse zurückgegeben wird. Beispielsweise können Sie auch eine IP-Adresse wie `0.0.0.0-0.0.0.0` angeben, damit niemand auf die Eingaben und Ausgaben zugreifen kann. Nur Personen mit Administratorberechtigungen können diese Einschränkung entfernen und erhalten damit die Möglichkeit für Just-In-Time-Zugriff auf Workflowinhalte.
 
-#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Festlegen von IP-Adressbereichen in der Ressourcendefinition
+### <a name="set-ip-ranges---azure-portal"></a>Festlegen von IP-Adressbereichen – Azure-Portal
 
-Bei Verwendung einer [Bereitstellungsvorlage](logic-apps-create-deploy-template.md) zum Automatisieren Ihrer Bereitstellungen können die IP-Bereichseinstellungen in der Ressourcenvorlage konfiguriert werden.  
+Um diese Einschränkung im Azure-Portal einzurichten, wechseln Sie zu den Einstellungen Ihrer Logik-App:
+
+1. Öffnen Sie die Logik-App im Azure-Portal im Logik-App-Designer. 
+
+1. Wählen Sie im Menü Ihrer Logik-App unter **Einstellungen** die Option **Workfloweinstellungen** aus.
+
+1. Wählen Sie unter **Konfiguration der Zugriffssteuerung** > 
+**Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
+
+1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können. Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*. 
+
+### <a name="set-ip-ranges---logic-app-deployment-template"></a>Festlegen von IP-Adressbereichen – Bereitstellungsvorlage für Logik-Apps
+
+Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstellungsvorlage](logic-apps-create-deploy-template.md) automatisieren, können Sie die IP-Adressbereiche in dieser Vorlage festlegen, z.B.:
 
 ``` json
 {
-    "properties": {
-        "definition": {
-        },
-        "parameters": {},
-        "accessControl": {
-            "contents": {
-                "allowedCallerIpAddresses": [
-                    {
-                        "addressRange": "192.168.12.0/23"
-                    },
-                    {
-                        "addressRange": "2001:0db8::/64"
-                    }
-                ]
-            }
-        }
-    },
-    "type": "Microsoft.Logic/workflows"
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "accessControl": {
+         "contents": {
+            "allowedCallerIpAddresses": [
+               {
+               "addressRange": "192.168.12.0/23"
+               },
+               {
+                  "addressRange": "2001:0db8::/64"
+               }
+            ]
+         }
+      }
+   },
+   "type": "Microsoft.Logic/workflows",
 }
 ```
 
-## <a name="secure-parameters-and-inputs-within-a-workflow"></a>Sichern von Parametern und Eingaben innerhalb eines Workflows
+<a name="secure-action-parameters"></a>
 
-Sie könnten einige Aspekte einer Workflowdefinition für umgebungsübergreifende Bereitstellungen parametrisieren. Darüber hinaus können einige dieser Parameter sichere Parameter sein, die nicht angezeigt werden sollen, wenn ein Workflow bearbeitet wird, z.B. eine Client-ID und ein geheimer Clientschlüssel für die [Azure Active Directory-Authentifizierung](../connectors/connectors-native-http.md#authentication) einer HTTP-Aktion.
+## <a name="secure-action-parameters-and-inputs"></a>Sichere Aktionsparameter und Eingaben
 
-### <a name="using-parameters-and-secure-parameters"></a>Verwenden von Parametern und sicheren Parametern
+Wenn Sie die Bereitstellung über unterschiedliche Umgebungen ausführen, empfiehlt es sich, bestimmte Aspekte in der Workflowdefinition Ihrer Logik-App zu parametrisieren. Beispielsweise können Sie Parameter in der [Azure Resource Manager-Bereitstellungsvorlage](../azure-resource-manager/resource-group-authoring-templates.md#parameters) angeben. Um zur Laufzeit auf einen Parameterwert einer Ressource zuzugreifen, können Sie den Ausdruck `@parameters('parameterName')` verwenden, der durch die [Definitionssprache für Workflows](https://aka.ms/logicappsdocs) bereitgestellt wird. 
 
-Für den Zugriff auf den Wert eines Ressourcenparameters zur Laufzeit bietet die [Workflowdefinitionssprache](https://aka.ms/logicappsdocs) einen `@parameters()`-Vorgang. Darüber hinaus können Sie [Parameter in der Ressourcenbereitstellungsvorlage angeben](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Wenn Sie jedoch den Parametertyp als `securestring` angeben, wird der Parameter nicht mit dem Rest der Ressourcendefinition zurückgegeben und auf ihn kann nicht durch Anzeigen der Ressource nach der Bereitstellung zugegriffen werden.
+Sie können auch bestimmte Parameter absichern, die beim Bearbeiten des Workflows Ihrer Logik-App nicht angezeigt werden sollen, indem Sie den Parametertyp `securestring` verwenden. Sie können beispielsweise Parameter wie die Client-ID und das Clientgeheimnis für die Authentifizierung einer HTTP-Aktion mit [Azure Active Directory](../connectors/connectors-native-http.md#authentication) schützen.
+Wenn Sie als Parametertyp `securestring` angeben, wird der Parameter nicht mit der Ressourcendefinition zurückgegeben und ist nach der Bereitstellung nicht durch Anzeigen der Ressource zugänglich. 
 
 > [!NOTE]
-> Wenn der Parameter im Header oder Text einer Anforderung verwendet wird, kann der Parameter durch den Zugriff auf den Ausführungsverlauf und die ausgehende HTTP-Anforderung sichtbar sein. Achten Sie darauf, dass Sie Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festlegen.
-> Autorisierungsheader sind nie über Eingaben oder Ausgaben sichtbar. Wenn der geheime Schlüssel also dort verwendet wird, ist der geheime Schlüssel nicht abrufbar.
+> Wenn Sie einen Parameter in einem Anforderungsheader oder -text verwenden, kann dieser Parameter beim Zugreifen auf den Ausführungsverlauf Ihrer Logik-App und die ausgehende HTTP-Anforderung sichtbar sein. Achten Sie darauf, Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festzulegen.
+> Autorisierungsheader sind nie über Eingaben oder Ausgaben sichtbar. Wenn hier ein Geheimnis verwendet wird, ist dieses daher nicht abrufbar.
 
-#### <a name="resource-deployment-template-with-secrets"></a>Ressourcenbereitstellungsvorlage mit geheimen Schlüsseln
+Dieses Beispiel zeigt eine Azure Resource Manager-Bereitstellungsvorlage, in der mehrere Laufzeitparameter vom Typ `securestring` verwendet werden: 
 
-Das folgende Beispiel veranschaulicht eine Bereitstellung, die zur Laufzeit auf den sicheren Parameter `secret` verweist. In einer separaten Parameterdatei könnten Sie den Umgebungswert für `secret` angeben oder den [Azure Resource Manager-Schlüsseltresor](../azure-resource-manager/resource-manager-keyvault-parameter.md) nutzen, um geheime Schlüssel zum Zeitpunkt der Bereitstellung abzurufen.
+* `armTemplatePasswordParam` als Eingabe für den Parameter `logicAppWfParam` der Logik-App-Definition
 
-``` json
+* `logicAppWfParam` als Eingabe für die HTTP-Aktion mit Standardauthentifizierung
+
+Sie können in einer separaten Parameterdatei den Umgebungswert für den Parameter `armTemplatePasswordParam` angeben oder Geheimnisse bei der Bereitstellung mithilfe des [Azure Resource Manager-Schlüsseltresors](../azure-resource-manager/resource-manager-keyvault-parameter.md) abrufen.
+Der innere Abschnitt `parameters` gehört zur Workflowdefinition Ihrer Logik-App und der äußere Abschnitt `parameters` zu Ihrer Bereitstellungsvorlage.
+
+```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "secretDeploymentParam": {
-         "type": "securestring"
+      "logicAppName": {       
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 80,
+         "metadata": {         
+            "description": "Name of the Logic App."       
+         }     
+      },
+      "armTemplatePasswordParam": {
+         "type": "securestring"     
+      },     
+      "logicAppLocation": {       
+         "type": "string",
+         "defaultValue": "[resourceGroup().location]",
+         "allowedValues": [         
+            "[resourceGroup().location]",
+            "eastasia",
+            "southeastasia",
+            "centralus",
+            "eastus",
+            "eastus2",
+            "westus",
+            "northcentralus",
+            "southcentralus",
+            "northeurope",
+            "westeurope",
+            "japanwest",
+            "japaneast",
+            "brazilsouth",
+            "australiaeast",
+            "australiasoutheast",
+            "southindia",
+            "centralindia",
+            "westindia",
+            "canadacentral",
+            "canadaeast",
+            "uksouth",
+            "ukwest",
+            "westcentralus",
+            "westus2"
+         ],
+         "metadata": {
+            "description": "Location of the Logic App."
+         }
       }
    },
    "variables": {},
-   "resources": [ {
-      "name": "secret-deploy",
-      "type": "Microsoft.Logic/workflows",
-      "location": "westus",
-      "tags": {
-         "displayName": "LogicApp"
-      },
-      "apiVersion": "2016-06-01",
-      "properties": {
-         "definition": {
-            "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-            "actions": {
-               "Call_External_API": {
-                  "type": "Http",
-                  "inputs": {
-                     "headers": {
-                        "Authorization": "@parameters('secret')"
+   "resources": [
+      {       
+         "name": "[parameters('logicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('logicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "actions": {
+                  "HTTP": {
+                     "type": "Http",
+                     "inputs": {
+                        "method": "GET",
+                        "uri": "http://www.microsoft.com",
+                        "authentication": {
+                           "type": "Basic",
+                           "username": "username",
+                              "password": "@parameters('logicAppWfParam')"
+                        }
                      },
-                     "body": "This is the request"
-                  },
                   "runAfter": {}
-               }
+                  }
+               },
+               "parameters": { 
+                  "logicAppWfParam": {
+                     "type": "securestring"
+                  }
+               },
+               "triggers": {
+                  "manual": {
+                     "type": "Request",
+                     "kind": "Http",
+                     "inputs": {
+                        "schema": {}
+                     }
+                  }
+               },
+               "contentVersion": "1.0.0.0",
+               "outputs": {}
             },
             "parameters": {
-               "secret": {
-                  "type": "SecureString"
+               "logicAppWfParam": {
+                  "value": "[parameters('armTemplatePasswordParam')]"
                }
-            },
-            "triggers": {
-               "manual": {
-                  "type": "Request",
-                  "kind": "Http",
-                  "inputs": {
-                     "schema": {}
-                  }
-               }
-            },
-            "contentVersion": "1.0.0.0",
-            "outputs": {}
-         },
-         "parameters": {
-            "secret": {
-               "value": "[parameters('secretDeploymentParam')]"
             }
          }
       }
-   } ],
-   "outputs": {}
-}
+   ],
+   "outputs": {} 
+}   
 ```
 
-## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>Sichern des Zugriffs auf Dienste, die Anforderungen von einem Workflow empfangen
+<a name="secure-requests"></a>
 
-Es gibt viele Methoden zum Sichern eines Endpunkts, auf den die Logik-App zugreifen muss.
+## <a name="secure-access-to-services-receiving-requests"></a>Sichern des Zugriffs auf Dienste, die Anforderungen empfangen
 
-### <a name="using-authentication-on-outbound-requests"></a>Verwenden der Authentifizierung für ausgehende Anforderungen
+Hier finden Sie einige Möglichkeiten, einen beliebigen Endpunkt zu schützen, auf den Ihre Logik-App Zugriff benötigt und an den sie Anforderungen sendet.
 
-Bei der Arbeit mit einer Aktion vom Typ HTTP, HTTP + Swagger (offene API) oder Webhook können Sie der gesendeten Anforderung eine Authentifizierung hinzufügen. Sie könnten eine Standardauthentifizierung, eine Zertifikatauthentifizierung oder eine Azure Active Directory-Authentifizierung einschließen. Informationen zum Konfigurieren dieser Authentifizierung finden Sie [in diesem Artikel](../connectors/connectors-native-http.md#authentication).
+### <a name="add-authentication-on-outbound-requests"></a>Hinzufügen von Authentifizierung für ausgehende Anforderungen
 
-### <a name="restricting-access-to-logic-app-ip-addresses"></a>Einschränken des Zugriffs auf Logik-App-IP-Adressen
+Bei der Arbeit mit einer Aktion vom Typ HTTP, HTTP + Swagger (offene API) oder Webhook können Sie der von Ihrer Logik-App gesendeten Anforderung eine Authentifizierung hinzufügen. Beispielsweise können Sie eine grundlegende Authentifizierung, eine Zertifikatauthentifizierung oder eine Azure Active Directory-Authentifizierung verwenden. Weitere Informationen finden Sie unter [Authentifizieren von Triggern oder Aktionen](logic-apps-workflow-actions-triggers.md#connector-authentication) und [Authentifizierung für HTTP-Aktionen](../connectors/connectors-native-http.md#authentication).
 
-Alle Aufrufe von Logik-Apps stammen aus einem bestimmten Satz von IP-Adressen pro Region. Sie können zusätzliche Filter hinzufügen, um nur Anforderungen von diesen IP-Adressen anzunehmen. Eine Liste der IP-Adressen finden Sie unter [Logik-App-Grenzwerte und -Konfiguration](logic-apps-limits-and-config.md#configuration).
+### <a name="restrict-access-to-logic-app-ip-addresses"></a>Einschränken des Zugriffs auf IP-Adressen von Logik-Apps
 
-### <a name="on-premises-connectivity"></a>Lokale Konnektivität
+Alle Aufrufe von Logik-Apps stammen basierend auf der Region von bestimmten IP-Adressen. Sie können Filter hinzufügen, die Anforderungen nur von diesen IP-Adressen akzeptieren. Weitere Informationen zu diesen IP-Adressen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](logic-apps-limits-and-config.md#configuration).
 
-Logik-Apps ermöglichen die Integration in mehrere Dienste, um eine sichere und zuverlässige lokale Kommunikation bereitzustellen.
+### <a name="secure-on-premises-connectivity"></a>Absichern der lokalen Konnektivität
+
+Azure Logic Apps bietet eine Integration mit diesen Diensten, um eine sichere und zuverlässige lokale Kommunikation bereitzustellen.
 
 #### <a name="on-premises-data-gateway"></a>Lokales Datengateway
 
-Viele verwaltete Connectors oder Logik-Apps bieten sichere Verbindungen mit lokalen Systemen, einschließlich des Dateisystems, SQL, SharePoint, DB2 und mehr. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über Azure Service Bus. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Erfahren Sie mehr darüber, [wie das Datengateway funktioniert](logic-apps-gateway-install.md#gateway-cloud-service).
+Viele verwaltete Connectors für Azure Logic Apps bieten sichere Verbindungen mit lokalen Systemen wie dem Dateisystem, SQL, SharePoint, DB2 und anderen. Das Gateway sendet Daten von lokalen Quellen durch verschlüsselte Kanäle über Azure Service Bus. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Erfahren Sie, [wie das lokale Datengateway funktioniert](logic-apps-gateway-install.md#gateway-cloud-service).
 
 #### <a name="azure-api-management"></a>Azure API Management
 
-[Azure API Management](https://azure.microsoft.com/services/api-management/) bietet lokale Konnektivitätsoptionen, einschließlich Site-to-Site-VPN- und ExpressRoute-Integration, für geschützte Proxys und eine gesicherte Kommunikation mit lokalen Systemen. Im Logik-App-Designer können Sie schnell innerhalb eines Workflows eine API auswählen, die über Azure API Management verfügbar gemacht wird, und so schnellen Zugriff auf lokale Systeme bereitstellen.
+[Azure API Management](https://azure.microsoft.com/services/api-management/) bietet lokale Konnektivitätsoptionen wie die Integration von Site-to-Site-VPN und ExpressRoute für geschützte Proxys und die Kommunikation mit lokalen Systemen. Im Logik-App-Designer können Sie innerhalb des Workflows Ihrer Logik-App eine API auswählen, die über API Management verfügbar gemacht wird, und so schnellen Zugriff auf lokale Systeme bereitstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Bereitstellungsvorlage](logic-apps-create-deploy-template.md)  
-[Fehlerbehandlung](logic-apps-exception-handling.md)  
-[Überwachen von Logik-Apps](logic-apps-monitor-your-logic-apps.md)  
-[Diagnostizieren von Fehlern und Problemen bei Logik-Apps](logic-apps-diagnosing-failures.md)  
+
+* [Erstellen einer Bereitstellungsvorlage](logic-apps-create-deploy-template.md)  
+* [Fehlerbehandlung](logic-apps-exception-handling.md)  
+* [Überwachen von Logik-Apps](logic-apps-monitor-your-logic-apps.md)  
+* [Diagnostizieren von Fehlern und Problemen bei Logik-Apps](logic-apps-diagnosing-failures.md)  

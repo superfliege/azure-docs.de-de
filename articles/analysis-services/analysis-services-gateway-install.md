@@ -5,20 +5,22 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa089db385995f6c44ea2238c91a3ac59946daae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407655"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190373"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
+
 Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet. Weitere Informationen zum Gateway finden Sie unter [Lokales Datengateway](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 **Mindestanforderungen.**
 
 * .NET 4.5 Framework
@@ -44,6 +46,7 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 
 
 ## <a name="download"></a>Herunterladen
+
  [Gateway herunterladen](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Installieren
@@ -62,6 +65,7 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
    > Wenn Sie sich mit einem Domänenkonto anmelden, wird es Ihrem Unternehmenskonto in Azure AD zugeordnet. Ihr Unternehmenskonto wird vom Gatewayadministrator verwendet.
 
 ## <a name="register"></a>Registrieren
+
 Um eine Gatewayressource in Azure zu erstellen, müssen Sie die lokale Instanz registrieren, die Sie mit dem Gateway-Clouddienst installiert haben. 
 
 1.  Wählen Sie **Ein neues Gateway auf diesem Computer registrieren** aus.
@@ -77,6 +81,7 @@ Um eine Gatewayressource in Azure zu erstellen, müssen Sie die lokale Instanz r
 
 
 ## <a name="create-resource"></a>Erstellen einer Azure-Gatewayressource
+
 Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem Azure-Abonnement eine Gatewayressource erstellen. Melden Sie sich bei Azure mit dem Konto an, das Sie beim Registrieren des Gateways verwendet haben.
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Integration** > **Lokales Datengateway**.
@@ -87,15 +92,15 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem 
 
     * **Name**: Geben Sie einen Namen für die Gatewayressource ein. 
 
-    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das Sie Ihrer Gatewayressource zuordnen möchten. 
+    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das Sie der Gatewayressource zuordnen möchten. 
    
       Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben.
 
     * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 
-    * **Speicherort**: Wählen Sie die Region aus, in der Sie Ihr Gateway registriert haben.
+    * **Standort**: Wählen Sie die Region aus, in der Sie Ihr Gateway registriert haben.
 
-    * **Installationsname**: Wenn Ihre Gatewayinstallation noch nicht ausgewählt ist, wählen Sie das registrierte Gateway aus. 
+    * **Installationsname:** Wenn Ihre Gatewayinstallation nicht bereits ausgewählt ist, wählen Sie das registrierte Gateway aus. 
 
     Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
@@ -115,6 +120,7 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem 
 Das ist alles. Wenn Sie Ports öffnen oder eine Problembehandlung durchführen müssen, lesen Sie den Artikel zum [lokalen Datengateway](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Verwalten von Analysis Services](analysis-services-manage.md)   
 * [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md)   
 * [Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz](analysis-services-vnet-gateway.md)

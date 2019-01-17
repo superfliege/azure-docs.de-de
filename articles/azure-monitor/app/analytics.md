@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52b18f3f6f1166650fb13694f3eed54c28bbc0a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730677"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120885"
 ---
 # <a name="analytics-in-application-insights"></a>Analytics in Application Insights
-Analytics ist das leistungsfähige Such- und Abfragetool von [Application Insights](../../application-insights/app-insights-overview.md). Analytics ist ein Webtool, sodass keine Installation erforderlich ist. Wenn Sie Application Insights bereits für eine Ihrer Apps konfiguriert haben, können Sie die Daten Ihrer App analysieren, indem Sie Analytics vom [Übersichtsblatt](../../azure-monitor/app/app-insights-dashboards.md) Ihrer App aus öffnen.
+Analytics ist das leistungsfähige Such- und Abfragetool von [Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics ist ein Webtool, sodass keine Installation erforderlich ist. Wenn Sie Application Insights bereits für eine Ihrer Apps konfiguriert haben, können Sie die Daten Ihrer App analysieren, indem Sie Analytics vom [Übersichtsblatt](../../azure-monitor/app/app-insights-dashboards.md) Ihrer App aus öffnen.
 
 ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/analytics/001.png)
 
@@ -48,7 +48,7 @@ Wir zählen dann die Anzahl der Datensätze pro Land (diese Daten befinden sich 
 Die Sprache verfügt über viele attraktive Features:
 
 * [Filtern](/azure/kusto/query/whereoperator) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
-* [Verknüpfen](/azure/kusto/query/joinoperator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
+* [Verbinden](/azure/kusto/query/joinoperator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
 * Leistungsstarke statistische [Aggregationen](/azure/kusto/query/summarizeoperator).
 * Sofortige und leistungsfähige Visualisierungen.
 * Eine [REST-API](https://dev.applicationinsights.io/), die Sie verwenden können, um Abfragen programmgesteuert auszuführen, z.B. über PowerShell.

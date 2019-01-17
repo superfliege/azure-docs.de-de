@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997823"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156866"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Bindungen zu externer Tabelle für Azure Functions (experimentell)
 
-In diesem Artikel wird erläutert, wie mit tabellarischen Daten aus SaaS-Anbietern, z. B. Sharepoint und Dynamics, in Azure Functions gearbeitet wird. Azure Functions unterstützt Eingabe- und Ausgabebindungen für externe Tabellen.
+In diesem Artikel wird erläutert, wie mit Tabellendaten aus SaaS-Anbietern, z. B. SharePoint und Dynamics, in Azure Functions gearbeitet wird. Azure Functions unterstützt Eingabe- und Ausgabebindungen für externe Tabellen.
 
 > [!IMPORTANT]
 > Die Bindung zu externer Tabelle ist experimentell und erreicht möglicherweise nie den Status „Allgemein verfügbar“. Die Bindung ist nur in Azure Functions 1.x enthalten, und es ist nicht geplant, sie zu Azure Functions 2.x hinzuzufügen. Für Szenarien, in denen Zugriff auf Daten in SaaS-Anbietern erforderlich ist, empfiehlt sich das Verwenden von [Logik-Apps, aus denen Funktionen aufgerufen werden](functions-twitter-email.md).

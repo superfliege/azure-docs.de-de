@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138584"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159165"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
@@ -60,8 +60,8 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Anzahl der Objekte | 10 Millionen Objekte | 
 | Datasetgröße| Ca. 4 TiB |
 | Durchschnittliche Dateigröße | Ca. 500 KiB (größte Datei: 100 GiB) |
-| Uploaddurchsatz | 15 Objekte pro Sekunde |
-| Durchsatz beim Download von Namespaces* | 350 Objekte pro Sekunde |
+| Uploaddurchsatz | 20 Objekte pro Sekunde |
+| Durchsatz beim Download von Namespaces* | 400 Objekte pro Sekunde |
  
 *Wenn ein neuer Serverendpunkt erstellt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
 
@@ -70,8 +70,8 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Anzahl der synchronisierten Objekte| 125.000 Objekte (Änderungsumfang ca. 1 %) | 
 | Datasetgröße| 50 GiB |
 | Durchschnittliche Dateigröße | Ca. 500 KiB |
-| Uploaddurchsatz | 20 Objekte pro Sekunde |
-| Durchsatz bei vollständigen Downloads* | 30 Objekte pro Sekunde |
+| Uploaddurchsatz | 30 Objekte pro Sekunde |
+| Durchsatz bei vollständigen Downloads* | 60 Objekte pro Sekunde |
  
 *Wenn Cloudtiering aktiviert ist, werden Sie wahrscheinlich eine bessere Leistung beobachten, da nur ein Teil der Dateidaten heruntergeladen wird. Die Azure-Dateisynchronisierung lädt die Daten zwischengespeicherter Dateien nur dann herunter, wenn sie auf einem der Endpunkte geändert werden. Bei mehrstufigen oder neu erstellten Dateien lädt der Agent nicht die Dateidaten herunter, sondern synchronisiert lediglich den Namespace auf allen Serverendpunkten. Der Agent unterstützt auch teilweise Downloads von mehrstufigen Dateien, wenn Benutzer auf diese zugreifen. 
  

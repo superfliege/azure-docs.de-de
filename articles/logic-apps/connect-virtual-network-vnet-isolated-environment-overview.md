@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845194"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061022"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
@@ -33,7 +33,7 @@ In dieser Übersicht wird beschrieben, wie eine ISE Logik-Apps und Integrationsk
 
 ## <a name="isolated-versus-global"></a>„Isoliert“ im Vergleich zu „global“
 
-Wenn Sie in Azure eine Integrationsdienstumgebung (ISE) erstellen, wählen Sie ein virtuelles Azure-Netzwerk aus, in das Sie Ihre Umgebung *einfügen*. Azure stellt eine private Instanz des Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereit. Dadurch wird eine isolierte Umgebung erstellt, in der Sie Logik-Apps auf dedizierten Ressourcen erstellen und ausführen können. Wenn Sie eine Logik-App erstellen, wählen Sie diese Umgebung als Speicherort Ihrer App aus, wodurch die Logik-App direkten Zugriff auf die Ressourcen im virtuellen Netzwerk erhält. 
+Wenn Sie in Azure eine Integrationsdienstumgebung (ISE) erstellen, wählen Sie das virtuelle Azure-Netzwerk aus, in das Sie Ihre ISE *einfügen* möchten. Azure stellt eine private Instanz des Logic Apps-Dienst in Ihrem virtuellen Netzwerk bereit. Dadurch wird eine isolierte Umgebung erstellt, in der Sie Logik-Apps auf dedizierten Ressourcen erstellen und ausführen können. Wenn Sie eine Logik-App erstellen, wählen Sie diese Umgebung als Speicherort Ihrer App aus, wodurch die Logik-App direkten Zugriff auf die Ressourcen im virtuellen Netzwerk erhält. 
 
 Logik-Apps in einer Integrationsdienstumgebung bieten die gleiche Benutzeroberfläche und ähnliche Funktionen wie im globalen Logic Apps-Dienst. Sie können nicht nur die gleichen integrierten Aktionen und Connectors im globalen Logic Apps-Dienst verwenden, sondern auch ISE-spezifische Connectors. Zum Beispiel bieten die folgenden Standardconnectors Versionen an, die in einer Integrationsdienstumgebung ausgeführt werden können:
  

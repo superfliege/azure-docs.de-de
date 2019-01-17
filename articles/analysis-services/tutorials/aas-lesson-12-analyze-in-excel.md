@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 12: Analysieren in Excel | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 12: Analysieren in Excel | Microsoft-Dokumentation'
 description: In diesem Tutorial wird das Analysieren in Excel im Azure Analysis Services-Tutorialprojekt beschrieben.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 425c3a351c75c63cb07df66d6122f4d900b4932e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e5ac04c7bd8174f823cacc67401af8a98b3d8170
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429761"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186480"
 ---
 # <a name="analyze-in-excel"></a>Analysieren in Excel
 
@@ -21,10 +21,10 @@ In dieser Lektion verwenden Sie die Funktion „In Excel analysieren“, um Micr
   
 Excel muss auf demselben Computer wie Visual Studio installiert sein, um diese Lektion durcharbeiten zu können.
   
-Geschätzte Zeit zum Bearbeiten dieser Lektion: **5 Minuten**  
+Geschätzte Zeit zum Bearbeiten dieser Lektion: **Fünf Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 11: Erstellen von Rollen ](../tutorials/aas-lesson-11-create-roles.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md).  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Durchsuchen mithilfe der Standard- und Internet Sales-Perspektive  
 In den ersten Aufgaben durchsuchen Sie Ihr Modell mithilfe der Standardperspektive, die alle Modellobjekte enthält, und der Internet Sales-Perspektive, die Sie vorher erstellt haben. Die Internet Sales-Perspektive schließt das Customer-Tabellenobjekt aus.  
@@ -69,7 +69,7 @@ Rollen sind ein wesentlicher Bestandteil tabellarischer Modelle. Ohne mindestens
 3.  Schließen Sie Excel, ohne die Arbeitsmappe zu speichern.  
   
 ## <a name="whats-next"></a>Wie geht es weiter?
-Wechseln Sie zur nächsten Lektion: [Lektion 13: Bereitstellen](../tutorials/aas-lesson-13-deploy.md).
+Fahren Sie mit der nächsten Lektion fort: [Lektion 13: Bereitstellen](../tutorials/aas-lesson-13-deploy.md).
 
   
   

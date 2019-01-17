@@ -1,19 +1,19 @@
 ---
-title: Ergänzende Lektion zum Azure Analysis Services-Tutorial – Dynamische Sicherheit | Microsoft-Dokumentation
+title: 'Azure Analysis Services-Tutorial, ergänzende Lektion: Dynamische Sicherheit | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie die dynamische Sicherheit mit Zeilenfiltern im Tutorial zu Azure Analysis Services verwenden können.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1908d655064a4a320191695c048271246951c29c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235921"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187483"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Ergänzende Lektion – Dynamische Sicherheit
 
@@ -21,7 +21,7 @@ In dieser ergänzenden Lektion erstellen Sie eine zusätzliche Rolle, die dynami
   
 Fügen Sie Ihrem Modell eine Tabelle hinzu, die die Benutzernamen der Benutzer enthält, die eine Verbindung mit dem Modell herstellen, und die Modellobjekte und -daten durchsuchen, um die dynamische Sicherheit zu implementieren. Das Modell, dass Sie in diesem Tutorial erstellen, steht im Zusammenhang mit Adventure Works. Sie müssen allerdings eine Tabelle mit Benutzern aus Ihrer eigenen Domäne hinzufügen, um diese Lektion abschließen zu können. Die Kennwörter für die hinzugefügten Benutzernamen benötigen Sie nicht. Verwenden Sie die Einfügen-Funktion, um die Tabelle „EmployeeSecurity“ mit einer kleinen Benutzerauswahl aus Ihrer eigenen Domäne zu erstellen. Fügen Sie die Mitarbeiterdaten aus einer Excel-Tabelle ein. In einem realistischen Szenario wäre die Tabelle mit den Benutzernamen normalerweise eine Tabelle aus einer tatsächlichen Datenquelle, also z.B. aus einer vorhandenen DimEmployee-Tabelle.  
   
-Zur Implementierung von dynamischer Sicherheit verwenden Sie zwei DAX-Funktionen: [die Funktion USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) und [die Funktion LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Diese in einem Zeilenfilter angewandten Funktionen werden in einer neuen Rolle definiert. Mit der LOOKUPVALUE-Funktion gibt die Formel einen Wert aus der Tabelle „EmployeeSecurity“ an. Die Formel übergibt diesen Wert dann an die USERNAME-Funktion, die angibt, dass der Benutzername des angemeldeten Benutzers zu dieser Rolle gehört. Anschließend kann der Benutzer nur noch Daten durchsuchen, die vom Zeilenfilter der Rolle angegeben werden. In diesem Szenario geben Sie an, dass die Vertriebsmitarbeiter nur die Daten zu Internetverkäufen Ihres eigenen Gebiets durchsuchen können.  
+Um dynamische Sicherheit zu implementieren, verwenden Sie zwei DAX-Funktionen: [USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) und [LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Diese in einem Zeilenfilter angewandten Funktionen werden in einer neuen Rolle definiert. Mit der LOOKUPVALUE-Funktion gibt die Formel einen Wert aus der Tabelle „EmployeeSecurity“ an. Die Formel übergibt diesen Wert dann an die USERNAME-Funktion, die angibt, dass der Benutzername des angemeldeten Benutzers zu dieser Rolle gehört. Anschließend kann der Benutzer nur noch Daten durchsuchen, die vom Zeilenfilter der Rolle angegeben werden. In diesem Szenario geben Sie an, dass die Vertriebsmitarbeiter nur die Daten zu Internetverkäufen Ihres eigenen Gebiets durchsuchen können.  
   
 Die Aufgaben, die sich auf dieses spezielle Szenario des tabellarischen Adventure Works-Modells beziehen, aber nicht unbedingt auf realistische Szenarios anwendbar sind, sind als solche gekennzeichnet. Jede Aufgabe enthält Zusatzinformationen zum Zweck der Aufgabe.  
   
@@ -37,7 +37,7 @@ Sie müssen zwei weitere Tabellen in Ihr Modell einfügen, um die dynamische Sic
   
 1.  Erweitern Sie im tabellarischen Modell-Explorer **Datenquellen**, und klicken Sie anschließend auf Ihre Verbindung und dann auf **Neue Tabelle importieren**.  
 
-    Wenn das Dialogfeld „Identitätswechsel-Anmeldeinformationen“ angezeigt wird, geben Sie die Anmeldeinformationen zum Identitätswechsel aus Lektion 2: Hinzufügen von Daten ein.
+    Wenn das Dialogfeld „Identitätswechsel-Anmeldeinformationen“ angezeigt wird, geben Sie die Anmeldeinformationen zum Identitätswechsel aus „Lektion 2: Hinzufügen von Daten“ ein.
   
 2.  Wählen Sie im Navigator die Tabelle **DimSalesTerritory** aus, und klicken Sie anschließend auf **OK**.    
   
@@ -107,7 +107,7 @@ In dieser Aufgabe blenden Sie die Tabelle „EmployeeSecurity“ aus, sodass sie
 In dieser Aufgabe erstellen Sie eine Benutzerrolle. Diese Rolle beinhaltet einen neuen Zeilenfilter, der definiert, welche Zeilen der Tabelle „DimSalesTerritory“ die Benutzer sehen können. Der Filter wird dann nach der „1:n-Beziehung“ auf alle anderen Tabellen, die mit „DimSalesTerritory“ in Verbindung stehen, angewendet. Außerdem wenden Sie einen Filter an, der die gesamte Tabelle „EmployeeSecurity“ davor schützt, von jedem Benutzer dieser Rolle abgerufen zu werden.  
   
 > [!NOTE]  
-> Die Rolle „Sales Employees by Territory“, die Sie in dieser Lektion erstellen, bewirkt, dass Member nur Verkaufsdaten Ihres eigenen Gebiets durchsuchen oder abfragen können. Wenn Sie einen Benutzer als Member der Rolle „Sales Employees by Territory“ hinzufügen, der auch Member einer in [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md) erstellten Rolle ist, erhalten Sie eine Kombination der Berechtigungen. Wenn ein Benutzer ein Member mehrerer Rollen ist, sind die Berechtigungen und Zeilenfilter jeder Rolle kumulativ. Das heißt, dass der Benutzer durch die Kombination von Rollen höhere Berechtigungen hat.  
+> Die Rolle „Sales Employees by Territory“, die Sie in dieser Lektion erstellen, bewirkt, dass Member nur Verkaufsdaten Ihres eigenen Gebiets durchsuchen oder abfragen können. Wenn Sie der Rolle „Sales Employees by Territory“ einen Benutzer als Mitglied hinzufügen, der auch Mitglied einer in [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md) erstellten Rolle ist, erhält dieser eine Kombination der Berechtigungen. Wenn ein Benutzer ein Member mehrerer Rollen ist, sind die Berechtigungen und Zeilenfilter jeder Rolle kumulativ. Das heißt, dass der Benutzer durch die Kombination von Rollen höhere Berechtigungen hat.  
   
 #### <a name="to-create-a-sales-employees-by-territory-user-role"></a>So erstellen Sie die Benutzerrolle „Sales Employees by Territory“  
   

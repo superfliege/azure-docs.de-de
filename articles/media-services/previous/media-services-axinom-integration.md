@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d269818e82261c51b63379bb41f69efdc21de18a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061153"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191257"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom
 > [!div class="op_single_selector"]
@@ -44,11 +44,11 @@ Das vollständige System und die Übermittlung von Inhaltsschlüssel, Schlüssel
 ![DASH und CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>Inhaltsschutz
-Informationen zum Konfigurieren des dynamischen Schutzes und der Hauptbereitstellungsrichtlinie finden Sie im Blog von Mingfei: [How to configure Widevine packaging with Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
+Informationen zum Konfigurieren des dynamischen Schutzes und der Schlüsselübermittlungs-Richtlinie finden Sie im Blog von Mingfei: [How to configure Widevine packaging with Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services) (Konfigurieren der Widevine-Paketerstellung mit Azure Media Services).
 
 Sie können dynamischen CENC-Schutz mit Multi-DRM für DASH-Streaming mit den beiden folgenden Merkmalen konfigurieren:
 
-1. PlayReady-Schutz für MS-Edge und IE11, der Einschränkungen für die Autorisierung mittels Token aufweisen kann. Eine Einschränkungsrichtlinie mit Token muss von einem Token begleitet werden, das von einem Sicherheitstokendienst (STS) wie Azure Active Directory ausgestellt wird.
+1. PlayReady-Schutz für Microsoft Edge und IE11, der Einschränkungen für die Autorisierung mittels Token aufweisen kann. Eine Einschränkungsrichtlinie mit Token muss von einem Token begleitet werden, das von einem Sicherheitstokendienst (STS) wie Azure Active Directory ausgestellt wird.
 2. Widevine-Schutz für Chrome, für den eine Authentifizierung mittels Token mithilfe eines von einem anderen STS ausgestellten Tokens erfolgen kann. 
 
 Im Abschnitt [Generierung von JWT-Token](media-services-axinom-integration.md#jwt-token-generation) erfahren Sie, warum Azure Active Directory nicht als ein STS für den Widevine-Lizenzserver von Axinom verwendet werden kann.
@@ -200,5 +200,5 @@ Die folgenden Parameter sind in der Minilösung erforderlich, die den Widevine-L
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>Danksagungen
-Wir möchten folgenden Personen für ihre Beiträge zur Erstellung dieses Dokuments danken: Kristjan Jõgi of Axinom, Mingfei Yan und Amit Rajput.
+Wir möchten folgenden Personen für ihre Beiträge bei der Erstellung dieses Dokuments danken: Kristjan Jõgi von Axinom, Mingfei Yan und Amit Rajput.
 

@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a28ae46a449d4aacf046636793585a84adc5ba83
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2b4fcb42c913149f8caf05a72fb089586ee21e2a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089622"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106119"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von Event Processor Host
 
@@ -123,7 +123,9 @@ In diesem Beispiel übernimmt jeder Host den Besitz einer Partition für eine be
 
 ## <a name="receive-messages"></a>Empfangen von Nachrichten
 
-Bei jedem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) wird eine Sammlung von Ereignissen bereitgestellt. Die Verarbeitung dieser Ereignisse liegt in Ihrer Verantwortung. Es wird empfohlen, relativ schnell vorzugehen, möglichst wenige Verarbeitungsvorgänge durchzuführen. Verwenden Sie stattdessen Consumergruppen. Wenn Ereignisse in den Speicher geschrieben und einige Routingvorgänge durchgeführt werden sollen, empfiehlt es sich in der Regel, zwei Consumergruppen zu verwenden und zwei [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungen separat auszuführen.
+Bei jedem Aufruf von [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) wird eine Sammlung von Ereignissen bereitgestellt. Die Verarbeitung dieser Ereignisse liegt in Ihrer Verantwortung. Wenn Sie sicherstellen möchten, dass der Prozessorhost jede Nachricht mindestens einmal verarbeitet, müssen Sie Ihren eigenen Wiederholungscode schreiben. Lassen Sie bei nicht verarbeitbaren Nachrichten jedoch Vorsicht walten.
+
+Es wird empfohlen, relativ schnell vorzugehen, möglichst wenige Verarbeitungsvorgänge durchzuführen. Verwenden Sie stattdessen Consumergruppen. Wenn Ereignisse in den Speicher geschrieben und einige Routingvorgänge durchgeführt werden sollen, empfiehlt es sich in der Regel, zwei Consumergruppen zu verwenden und zwei [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)-Implementierungen separat auszuführen.
 
 Zu einem Zeitpunkt während der Verarbeitung möchten Sie möglicherweise nachverfolgen, welche Daten Sie gelesen und abgeschlossen haben. Die Nachverfolgung ist wichtig: Wenn Sie das Lesen wieder aufnehmen, müssen Sie dann nicht zum Anfang des Datenstroms zurückkehren. In [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wird diese Nachverfolgung durch Verwenden von *Prüfpunkten* vereinfacht. Ein Prüfpunkt ist eine Position (oder ein Offset) für eine bestimmte Partition in einer bestimmten Consumergruppe, bis zu der Sie die Nachrichten bereits verarbeitet haben. Das Markieren eines Prüfpunkts in **EventProcessorHost** erfolgt durch Aufrufen der [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync)-Methode für das [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext)-Objekt. Dieser Vorgang erfolgt innerhalb der [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)-Methode, kann jedoch auch in [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) durchgeführt werden.
 

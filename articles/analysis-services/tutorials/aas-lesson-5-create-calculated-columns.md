@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 5: Erstellen von berechneten Spalten | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 5: Erstellen berechneter Spalten | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie berechnete Spalten im Azure Analysis Services-Tutorialprojekt erstellt werden.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bb0a17d4b7e11dd83439d943abf0bdd34ef915ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428129"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187449"
 ---
 # <a name="create-calculated-columns"></a>Erstellen berechneter Spalten
 
@@ -26,7 +26,7 @@ In dieser Lektion benutzen Sie auch zum ersten Mal Data Analysis Expressions (DA
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 4: Erstellen von Beziehungen](../tutorials/aas-lesson-4-create-relationships.md). 
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 4: Erstellen von Beziehungen](../tutorials/aas-lesson-4-create-relationships.md) 
   
 ## <a name="create-calculated-columns"></a>Erstellen berechneter Spalten  
   
@@ -42,7 +42,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
     Eine neue Spalte mit dem Namen **Calculated Column 1**  (Berechnete Spalte 1) wird auf der linken Seite der Spalte **Calendar Quarter** eingefügt.  
   
-4.  Geben Sie in der Bearbeitungsleiste über der Tabelle die folgende DAX-Formel ein: Die Funktion AutoVervollständigen unterstützt Sie beim Eingeben des vollqualifizierten Namens von Spalten und Tabellen und listet die verfügbaren Funktionen auf.  
+4.  Geben Sie auf der Bearbeitungsleiste über der Tabelle die folgende DAX-Formel ein: Die Funktion AutoVervollständigen unterstützt Sie beim Eingeben des vollqualifizierten Namens von Spalten und Tabellen und listet die verfügbaren Funktionen auf.  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  

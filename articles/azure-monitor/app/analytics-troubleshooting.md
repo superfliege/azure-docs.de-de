@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1dc312598fa9bbacedc085480b0771adeb2d182a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730738"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189931"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Problembehandlung für Analytics in Application Insights
 Probleme mit [Analytics in Application Insights](analytics.md)? Beginnen Sie hier Analytics, das leistungsfähige Suchtool von Azure Application Insights.
 
 ## <a name="limits"></a>Einschränkungen
 * Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
-* Getestete Browser: die neuesten Versionen von Chrome, Edge und Internet Explorer.
+* Getestete Browser: die neuesten Versionen von Chrome, Microsoft Edge und Internet Explorer.
 
 ## <a name="known-incompatible-browser-extensions"></a>Bekannte nicht kompatible Browsererweiterungen
 * Ghostery
@@ -78,7 +78,7 @@ Die Anwendungsressource wurde aus Application Insights gelöscht und ist nicht m
 
 Sie verfügen nicht über die Berechtigung, diese Anwendung in Analytics zu öffnen.
 
-* Haben Sie den Link von einer anderen Person erhalten? Bitten Sie diese Person, sicherzustellen, dass Sie zu [den Lesern oder Mitwirkenden für diese Ressourcengruppe](../../application-insights/app-insights-resources-roles-access-control.md)gehören.
+* Haben Sie den Link von einer anderen Person erhalten? Bitten Sie diese Person, sicherzustellen, dass Sie zu [den Lesern oder Mitwirkenden für diese Ressourcengruppe](../../azure-monitor/app/resources-roles-access-control.md)gehören.
 * Haben Sie den Link mit anderen Anmeldeinformationen gespeichert? Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich ab. Versuchen Sie dann erneut, den Link zu öffnen, und verwenden Sie dabei die richtigen Anmeldeinformationen.
 
 ## <a name="html-storage"></a>403 ... HTML5 Storage

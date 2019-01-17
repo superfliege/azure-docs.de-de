@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: cb2c548a94a91fe9126f684e382e9626adb93dd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
+ms.lasthandoff: 01/08/2019
 ms.locfileid: "52319059"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-a-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
@@ -35,7 +35,7 @@ Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffs
 
 ### <a name="online-troubleshooting"></a>Onlineproblembehandlung 
 
-#### <a name="mitigation-1-custom-script-extension"></a>Vorbeugende Maßnahme 1: Benutzerdefinierte Skripterweiterung
+#### <a name="mitigation-1-custom-script-extension"></a>Lösung 1: Benutzerdefinierte Skripterweiterung
 
 1.  Erstellen Sie Ihr Skript mit der folgenden Vorlage.
 
@@ -51,7 +51,7 @@ Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffs
 
 2.  Laden Sie dieses Skript mithilfe des Features [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md) in das Azure-Portal hoch. 
 
-#### <a name="mitigation-2-remote-powershell"></a>Vorbeugende Maßnahme 2: Remote-PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Lösung 2: Remote-PowerShell
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die folgenden vorbeugenden Maßnahmen mithilfe des anderen virtuellen Computers durchführen.
 
@@ -73,7 +73,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
         exit
         ```
 
-#### <a name="mitigation-3-pstools-commands"></a>Vorbeugende Maßnahme 3: PSTools-Befehle
+#### <a name="mitigation-3-pstools-commands"></a>Lösung 3: PSTools-Befehle
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die folgenden vorbeugenden Maßnahmen mithilfe des anderen virtuellen Computers durchführen.
 
@@ -93,7 +93,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>Vorbeugende Maßnahme 4: Remoteregistrierung
+#### <a name="mitigation-4-remote-registry"></a>Lösung 4: Remoteregistrierung
 
 Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die [Remoteregistrierung](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) auf dem anderen virtuellen Computer verwenden.
 
@@ -125,7 +125,7 @@ Wenn Sie mit keiner Methode auf den virtuellen Computer zugreifen können, ist d
 
 Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter  [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
-1.  [Fügen Sie den Betriebssystemdatenträger einer VM für die Wiederherstellung an.](troubleshoot-recovery-disks-portal-windows.md)
+1.  [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md)
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 

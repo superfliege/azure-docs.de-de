@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
-ms.openlocfilehash: b3b26869a84b8519ced19a4c93a6d39d6ed20f9b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050351"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021831"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
 Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filterausdruck auf ein Eingabearray anzuwenden. 
@@ -40,10 +39,10 @@ Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filtera
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Filter`-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **filter** festgelegt sein. | Zeichenfolge | Ja
-condition | Die Bedingung zum Filtern der Eingaben. | Ausdruck | Ja
-items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck | Ja
+name | Der Name der `Filter`-Aktivität. | Zeichenfolge | JA
+type | Muss auf **filter** festgelegt sein. | Zeichenfolge | JA
+condition | Die Bedingung zum Filtern der Eingaben. | Ausdruck | JA
+items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck | JA
 
 ## <a name="example"></a>Beispiel
 

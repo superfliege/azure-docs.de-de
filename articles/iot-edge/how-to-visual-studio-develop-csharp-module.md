@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/21/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 954fb0fd4c8b9773edad904fa82a0a90111a66fa
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754593"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054922"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Verwenden von Visual Studio 2017 zum Entwickeln und Debuggen von C#-Modulen für Azure IoT Edge (Vorschauversion)
 
@@ -37,7 +37,7 @@ Weil in diesem Artikel Visual Studio 2017 als Hauptentwicklungstool verwendet wi
 
 Wenn Ihr Visual Studio 2017 bereit ist, benötigen Sie auch die folgenden Tools und Komponenten:
 
-- Laden Sie die [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) vom Visual Studio Marketplace herunter, und installieren Sie sie, um ein IoT Edge-Projekt in Visual Studio 2017 erstellen zu können.
+- Laden Sie die [Azure IoT Edge-Erweiterung (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) vom Visual Studio Marketplace herunter, und installieren Sie sie, um ein IoT Edge-Projekt in Visual Studio 2017 erstellen zu können.
 
 - Laden Sie die [Docker Community Edition](https://docs.docker.com/install/) auf Ihren Entwicklungscomputer herunter, und installieren Sie sie, um Ihre Modulimages erstellen und ausführen zu können. Sie müssen für die Docker CE festlegen, dass sie entweder im Linux-Containermodus oder im Windows-Containermodus ausgeführt wird.
 
@@ -86,7 +86,7 @@ Die Azure IoT Edge-Projektvorlage in Visual Studio erstellt ein Projekt, das auf
 
 1. Wählen Sie **OK** aus, um das Azure IoT Edge-Projekt mit einem C#-Modul zu erstellen.
 
-Ihre Lösung enthält jetzt ein **AzureIoTEdgeApp1**- und ein **IoTEdgeModule1**-Projekt. Das **AzureIoTEdgeApp1**-Projekt verfügt über eine **deployment.template.json**-Datei. Diese Datei definiert die Module, die Sie für Ihre IoT Edge-Lösung erstellen und bereitstellen möchten, und sie definiert auch die Routen zwischen Modulen. Die Standardlösung besteht aus einem **TempSensor**-und einem **IoTEdgeModule1**-Modul. Das **TempSensor**-Modul generiert simulierte Daten für das **IoTEdgeModule1**-Modul, und der Standardcode im **IoTEdgeModule1**-Modul sendet empfangene Nachrichten direkt an den Azure IoT Hub.
+Ihre Lösung enthält jetzt ein **AzureIoTEdgeApp1**- und ein **IoTEdgeModule1**-Projekt. Die **AzureIoTEdgeApp1**-Projekt verfügt über eine **deployment.template.json**-Datei. Diese Datei definiert die Module, die Sie für Ihre IoT Edge-Lösung erstellen und bereitstellen möchten, und sie definiert auch die Routen zwischen Modulen. Die Standardlösung besteht aus einem **TempSensor**-und einem **IoTEdgeModule1**-Modul. Das **TempSensor**-Modul generiert simulierte Daten für das **IoTEdgeModule1**-Modul, und der Standardcode im **IoTEdgeModule1**-Modul sendet empfangene Nachrichten direkt an den Azure IoT Hub.
 
 Das **IoTEdgeModule1**-Projekt ist eine .NET Core 2.1-Konsolenanwendung. Es enthält die erforderlichen Dockerfiles, die Sie für Ihr IoT Edge-Gerät benötigen, das entweder mit einem Windows-Container oder einem Linux-Container läuft. Die **module.json**-Datei beschreibt die Metadaten eines Moduls. Die **program.cs**-Datei ist der tatsächlichen Modulcode, der das Azure IoT-Geräte-SDK als Abhängigkeit verwendet.
 
@@ -140,7 +140,7 @@ In der Regel möchten Sie jedes Modul testen und debuggen, bevor Sie es in einer
    > [!TIP]
    > Sie können auch [PostMan](https://www.getpostman.com/) oder andere API-Tools (anstelle von `curl`) zum Senden von Nachrichten verwenden.
 
-1. Drücken Sie zum Beenden des Debuggens **STRG+F5**, oder klicken Sie auf die Schaltfläche „Beenden“.
+1. Drücken Sie zum Beenden des Debuggen auf **STRG + F5** oder klicken Sie auf die Schaltfläche „Beenden“.
 
 ## <a name="build-and-debug-iot-edge-solution-with-multiple-modules"></a>Erstellen und Debuggen einer IoT Edge-Lösung mit mehreren Modulen
 
@@ -167,7 +167,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
 
 1. Drücken Sie zum Beenden des Debuggens **STRG+F5**, oder wählen Sie die Schaltfläche „Beenden“ aus.
 
-## <a name="build-and-push-images"></a>Erstellen und Pushen von Images
+## <a name="build-and-push-images"></a>Erstellen und Übermitteln des Images mithilfe von Push
 
 1. Stellen Sie sicher, dass **AzureIoTEdgeApp1** das Startprojekt ist. Wählen Sie entweder **Debuggen** oder **Version** als Konfiguration zum Kompilieren Ihrer Modulimages aus.
 
@@ -198,7 +198,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
 
 1. Klicken Sie mit der rechten Maustaste auf **AzureIoTEdgeApp1**, und wählen Sie die Option **Edge-Lösung kompilieren und pushen** aus, um das Docker-Image für jedes Modul zu kompilieren und zu pushen.
 
-   ![Erstellen und Pushen von Images](./media/how-to-visual-studio-develop-csharp-module/build-and-push.png)
+   ![Erstellen und des Images mithilfe von Push](./media/how-to-visual-studio-develop-csharp-module/build-and-push.png)
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 

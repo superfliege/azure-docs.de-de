@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337919"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157072"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -90,13 +90,13 @@ Die folgenden Informationen gelten nur in diesen speziellen Szenarien:
 
 In den folgenden Abschnitten werden allgemeine Szenarien beschrieben, die komplexer sind. Das grundlegende Prinzip dabei ist, dass Richtlinien für den bedingten Zugriff zu dem Zeitpunkt ausgewertet werden, zu dem das Token für einen Dienst mit einer Richtlinie für den bedingten Zugriff angefordert wird. Dies gilt jedoch nicht, wenn der Zugriff über Microsoft Graph erfolgt.
 
-## <a name="scenario-app-accessing-microsoft-graph"></a>Szenario: App, die auf Microsoft Graph zugreift
+## <a name="scenario-app-accessing-microsoft-graph"></a>Szenario: App mit Zugriff auf Microsoft Graph
 
-In diesem Szenario erfahren Sie, wie eine Web-App den Zugriff auf Microsoft Graph anfordert. In diesem Fall könnte die Richtlinie für den bedingten Zugriff SharePoint, Exchange oder einem anderen Dienst, auf den als Workload über Microsoft Graph zugegriffen wird, zugewiesen sein. In diesem Beispiel nehmen wir an, dass es eine Richtlinie für den bedingten Zugriff auf SharePoint Online ist.
+In diesem Szenario erfahren Sie, wie eine Web-App den Zugriff auf Microsoft Graph anfordert. In diesem Fall könnte die Richtlinie für den bedingten Zugriff SharePoint, Exchange oder einem anderen Dienst, auf den als Workload über Microsoft Graph zugegriffen wird, zugewiesen sein. In diesem Beispiel nehmen wir an, dass es eine Richtlinie für den bedingten Zugriff auf SharePoint Online gibt.
 
 ![Flussdiagramm für Apps mit Zugriff auf Microsoft Graph](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
 
-Die App fordert zunächst die Autorisierung für Microsoft Graph an, die wiederum Zugriff auf eine Downstream-Workload ohne bedingten Zugriff erfordert. Die Anforderung wird ohne Aufruf einer Richtlinie erfolgreich abgeschlossen, und die App erhält Token für Microsoft Graph. An diesem Punkt kann die App das Zugriffstoken in einer Beareranforderung für den angeforderten Endpunkt verwenden. Nun benötigt die App Zugriff auf einen SharePoint Online-Endpunkt von Microsoft Graph, z.B.: `https://graph.microsoft.com/v1.0/me/mySite`
+Die App fordert zunächst die Autorisierung für Microsoft Graph an, die wiederum Zugriff auf eine Downstream-Workload ohne bedingten Zugriff erfordert. Die Anforderung wird ohne Aufruf einer Richtlinie erfolgreich abgeschlossen, und die App erhält Token für Microsoft Graph. An diesem Punkt kann die App das Zugriffstoken in einer Beareranforderung für den angeforderten Endpunkt verwenden. Nun benötigt die App Zugriff auf einen SharePoint Online-Endpunkt von Microsoft Graph, beispielsweise `https://graph.microsoft.com/v1.0/me/mySite`.
 
 Die App verfügt bereits über ein gültiges Token für Microsoft Graph, sodass sie die neue Anforderung durchführen kann, ohne dass ein neues Token ausgestellt werden muss. Diese Anforderung führt jedoch zu einem Fehler, und Microsoft Graph gibt eine Anspruchanforderung in Form eines HTTP-403-Fehlers mit einer ```WWW-Authenticate```-Anforderung aus.
 
@@ -144,7 +144,7 @@ Der Header ```WWW-Authenticate``` hat eine eindeutige Struktur und kann nicht ei
 
 Codebeispiele, die veranschaulichen, wie die Anspruchsanforderung behandelt werden sollte, finden Sie im [„Im-Auftrag-von“-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) für ADAL .NET.
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Szenario: App, die den „Im Auftrag von“-Ablauf ausführt
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Szenario: App für den Ablauf vom Typ „Im Auftrag von“
 
 In diesem Szenario wird der Fall behandelt, bei dem eine native App einen Webdienst bzw. eine API aufruft. Der Dienst wiederum führt den Fluss „Im-Auftrag-von“ aus, um einen Downstreamdienst aufzurufen. In diesem Fall haben wir die Richtlinie für den bedingten Zugriff auf den Downstreamdienst (Web-API 2) angewendet und verwenden eine native App anstelle einer Server-/Daemon-App.
 

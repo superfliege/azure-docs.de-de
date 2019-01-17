@@ -8,14 +8,14 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 586f3c81fad79f49b3506b0bd84a4f7b218d8605
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426484"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054961"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: PowerShell-Referenz zu ADSyncTools
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADSyncTools
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADSyncTools.psm1“, das in Azure AD Connect enthalten ist.
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
@@ -338,7 +338,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>Beschreibung
-Gibt ein AD-Objekt zurück. AUFGABE: Unterstützung für mehrere Gesamtstrukturen.
+Gibt ein AD-Objekt zurück. AUFGABE: Unterstützung für mehrere Gesamtstrukturen
 
 ### <a name="examples"></a>BEISPIELE
 
@@ -479,7 +479,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>Beschreibung
-Eine Funktion, die den Ausführungsverlauf von AAD Connect im XML-Format zurückgibt.
+Eine Funktion, die den Ausführungsverlauf von AAD Connect im XML-Format zurückgibt
 
 ### <a name="examples"></a>BEISPIELE
 
@@ -593,7 +593,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>Beschreibung
-Generiert eine Datei mit allen in Azure AD synchronisierten Benutzern, die den „ImmutableID“-Wert im GUID-Format enthalten. Anforderungen: PowerShell-Modul „MSOnline“.
+Generiert eine Datei mit allen in Azure AD synchronisierten Benutzern, die den Wert „ImmutableID“ im GUID-Format enthalten. Voraussetzungen: PowerShell-Modul „MSOnline“
 
 ### <a name="examples"></a>BEISPIELE
 
@@ -719,7 +719,7 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 Dieses Skript akzeptiert alle Objekte von einer Zielorganisationseinheit in Ihrer Active Directory-Domäne – gefiltert nach Objektklasse (Benutzer/Computer), und löscht alle abgelaufene Zertifikate, die im Attribut „UserCertificate“ vorhanden sind.
 Standardmäßig (BackupOnly-Modus) werden nur abgelaufene Zertifikate in einer Datei gesichert und keine Änderungen in Active Directory vorgenommen.
 Wenn Sie „-BackupOnly $false“ verwenden, werden alle für diese Objekte im Attribut „UserCertificate“ vorhandenen abgelaufenen Zertifikate aus AD entfernt, nachdem sie in eine Datei kopiert wurden.
-Jedes Zertifikat wird unter einem gesonderten Dateinamen gesichert: ObjectClass_ObjectGUID_CertThumprint.cer. Das Skript erstellt außerdem eine Protokolldatei im CSV-Format, die alle Benutzer enthält, die Zertifikate besitzen, die entweder gültig oder abgelaufen sind, inklusive der tatsächlich ausgeführten Aktion (Übersprungen/Exportiert/Gelöscht).
+Jedes Zertifikat wird unter einem gesonderten Dateinamen gesichert: ObjectClass_ObjectGUID_CertThumprint.cer. Das Skript erstellt außerdem eine Protokolldatei im CSV-Format mit allen Benutzern, die Zertifikate besitzen, die entweder gültig oder abgelaufen sind, inklusive der tatsächlich ausgeführten Aktion (Übersprungen/Exportiert/Gelöscht).
 
 ### <a name="examples"></a>BEISPIELE
 
@@ -1227,7 +1227,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>Beschreibung
-Aktualisiert Benutzer mit dem neuen Wert von „ConsistencyGuid“ (ImmutableId), der dem ConsistencyGuid-Bericht entnommen wurde. Diese Funktion unterstützt den „WhatIf“-Schalter. Hinweis: Der ConsistencyGuid-Bericht muss mit Tabstopps als Trennzeichen importiert werden.
+Aktualisiert Benutzer mit dem neuen Wert von „ConsistencyGuid“ (ImmutableId), der dem ConsistencyGuid-Bericht entnommen wurde. Diese Funktion unterstützt den WhatIf-Schalter. Hinweis: Der ConsistencyGuid-Bericht muss mit Tabstopps als Trennzeichen importiert werden.
 
 ### <a name="examples"></a>BEISPIELE
 

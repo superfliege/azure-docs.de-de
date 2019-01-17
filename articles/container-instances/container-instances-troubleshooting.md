@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 01/08/2019
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820357"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119049"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -48,7 +48,7 @@ Wenn Sie ein Image angeben, das von Azure Container Instances nicht unterstützt
 
 Dieser Fehler tritt am häufigsten bei der Bereitstellung von Windows-Images auf, die auf einem SAC-Release (Semi-Annual Channel, halbjährlicher Kanal) basieren. Zum Beispiel sind die Windows-Versionen 1709 und 1803 SAC-Releases und generieren diesen Fehler bei der Bereitstellung.
 
-Azure Container Instances unterstützt Windows-Images, die ausschließlich auf LTSC-Versionen (Long-Term Servicing Channel, langfristiger Wartungskanal) basieren. Um dieses Problem bei der Bereitstellung von Windows-Containern zu beheben, sollten Sie immer LTSC-basierte Images einsetzen.
+Azure Container Instances unterstützt derzeit Windows-Images, die ausschließlich auf dem **LTSC-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server 2016**  basieren. Um dieses Problem bei der Bereitstellung von Windows-Containern zu beheben, sollten Sie immer Windows Server 2016 (LTSC)-basierte Images einsetzen. Auf Windows Server 2019 (LTSC) basierende Images werden nicht unterstützt.
 
 Weitere Informationen zu den LTSC- und SAC-Versionen von Windows finden Sie unter [Übersicht: Windows Server, Semi-Annual Channel][windows-sac-overview].
 

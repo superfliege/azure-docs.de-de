@@ -1,23 +1,23 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 11: Erstellen von Rollen | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 11: Erstellen von Rollen | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie Rollen im Azure Analysis Services-Tutorialprojekt erstellt werden.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1a9ecea835e42c90ce7d71617666d210182fe465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b89051cab7e89f79a2b62a392173e6dc234e48d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428901"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189744"
 ---
 # <a name="create-roles"></a>Erstellen von Rollen
 
-In dieser Lektion lernen Sie, wie Sie Rollen erstellen können. Rollen bieten Modelldatenbankobjekt- und Datensicherheit, indem sie den Zugriff auf diejenigen Benutzer einschränken, die Mitglieder der Rolle sind. Jede Rolle ist mit einer einzigen Berechtigung definiert: Keine, Lesen, Lesen und Verarbeiten, Verarbeiten und Administrator. Rollen können während des Schreibens des Modells mit dem Rollen-Manager definiert werden. Nachdem ein Modell bereitgestellt wurde, können Sie Rollen verwalten, indem Sie SSMS verwenden. Weitere Informationen finden Sie unter [Rollen](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
+In dieser Lektion lernen Sie, wie Sie Rollen erstellen können. Rollen bieten Modelldatenbankobjekt- und Datensicherheit, indem sie den Zugriff auf diejenigen Benutzer einschränken, die Mitglieder der Rolle sind. Jede Rolle wird mit einer einzigen Berechtigung definiert: „Keine“, „Lesen“, „Lesen und verarbeiten“, „Verarbeiten“ oder „Administrator“. Rollen können während des Schreibens des Modells mit dem Rollen-Manager definiert werden. Nachdem ein Modell bereitgestellt wurde, können Sie Rollen verwalten, indem Sie SSMS verwenden. Weitere Informationen finden Sie unter [Rollen](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
   
 > [!NOTE]  
 > Das Erstellen von Rollen ist für den Abschluss dieses Tutorials nicht erforderlich. Standardmäßig hat das Konto, mit dem Sie gerade angemeldet sind, Administratorberechtigungen für das Modell. Sie müssen allerdings mindestens eine Rolle mit Leseberechtigungen erstellen und dieser Rolle Benutzer hinzufügen, damit andere Benutzer in Ihrer Organisation das Modell mit einem Berichterstellungsclient durchsuchen können.  
@@ -35,7 +35,7 @@ Da Benutzer- und Gruppenkonten Ihrer Organisation unter Windows eindeutig sind, 
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 10: Erstellen von Hierarchien](../tutorials/aas-lesson-10-create-partitions.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 10: Erstellen von Partitionen](../tutorials/aas-lesson-10-create-partitions.md)  
   
 ## <a name="create-roles"></a>Erstellen von Rollen  
   
@@ -51,7 +51,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
 
     ![aas-lektion11-neue-rolle](../tutorials/media/aas-lesson11-new-role.png) 
   
-5.  Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten.  
+5.  Optional: Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten.  
   
 #### <a name="to-create-a-sales-analyst-us-user-role"></a>So erstellen Sie die Benutzerrolle „Verkaufsanalytiker USA“  
   
@@ -70,7 +70,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
     Eine Zeilenfilterformel muss einen Booleschen Wert ergeben (TRUE/FALSE). Mit dieser Formel geben Sie an, dass Benutzern nur Zeilen angezeigt werden, in denen der Wert des Landes/der Region dem Code „US“ entspricht.  
     ![aas-lektion11-rolle-filter](../tutorials/media/aas-lesson11-role-filter.png) 
   
-6.  Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten.  
+6.  Optional: Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten.  
   
 #### <a name="to-create-an-administrator-user-role"></a>So erstellen Sie die Benutzerrolle „Administrator“  
   
@@ -80,7 +80,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
 3.  Erteilen Sie dieser Rolle die Berechtigung **Administrator**.  
   
-4.  Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten. 
+4.  Optional: Optional: Klicken Sie auf die Registerkarte **Member** und anschließend auf **Hinzufügen**. Geben Sie im Dialogfeld **Select Users or Groups** (Benutzer oder Gruppen auswählen) die Windows-Benutzer oder -Gruppen Ihrer Organisation ein, denen Sie die Rolle erteilen möchten. 
   
   
 ## <a name="whats-next"></a>Wie geht es weiter?

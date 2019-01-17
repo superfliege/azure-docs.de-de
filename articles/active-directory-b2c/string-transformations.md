@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce2ad3e699b930f801ad47083d6cfcf6a7937a5c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: f2823ec32b6658aa22c38294c09c9738c9121c39
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433445"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121582"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -31,7 +31,7 @@ Zwei Ansprüche werden miteinander verglichen, und es wird eine Ausnahme ausgel�
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | Zeichenfolge | Der Typ des ersten Anspruchs, der verglichen werden soll. |
 | inputClaim | inputClaim2 | Zeichenfolge | Der Typ des zweiten Anspruchs, der verglichen werden soll. |
-| InputParameter | stringComparison | Zeichenfolge | Zeichenfolgenvergleich, einer der folgenden Werte: Ordinal, OrdinalIgnoreCase. |
+| InputParameter | stringComparison | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 
 Die Anspruchstransformation **AssertStringClaimsAreEqual** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationStringsAreNotEqual** steuern die Fehlermeldung, die dem Benutzer anzeigt wird.
 
@@ -82,7 +82,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
     - **inputClaim2**: someone@outlook.com
  - Eingabeparameter:
     - **stringComparison**:  ordinalIgnoreCase
-- Ergebnis: Fehler wird ausgelöst
+- Ergebnis: Fehler wird ausgelöst.
 
 ## <a name="changecase"></a>ChangeCase 
 
@@ -115,7 +115,7 @@ Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Gr
 - Eingabeansprüche:
     - **email**: SomeOne@contoso.com
 - Eingabeparameter:
-    - **toCase**: LOWER
+    - **toCase:** LOWER
 - Ausgabeansprüche:
     - **email**: someone@contoso.com
 
@@ -144,9 +144,9 @@ Mithilfe dieser Anspruchstransformation können Sie den Wert für den Zeichenfol
 ### <a name="example"></a>Beispiel
 
 - Eingabeparameter:
-    - **value**: Contoso terms of service...
+    - **value:** Contoso-AGB ...
 - Ausgabeansprüche:
-    - **createdClaim**: Der Anspruchstyp für Vertragsbedingungen enthält den Wert „Contoso terms of service...“.
+    - **createdClaim:** Der Anspruchstyp für Vertragsbedingungen enthält den Wert „Contoso-AGB ...“.
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -184,7 +184,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
     - **inputClaim1**: someone@contoso.com
     - **inputClaim2**: someone@outlook.com
 - Eingabeparameter:
-    - **operator**:  NOT EQUAL
+    - **operator:**  NOT EQUAL
     - **ignoreCase**: true
 - Ausgabeansprüche:
     - **outputClaim**: true
@@ -197,7 +197,7 @@ Bestimmt, ob der Wert eines Anspruchs gleich dem Wert des Eingabeparameters ist.
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
 | InputParameter | operator | Zeichenfolge | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
-| InputParameter | compareTo | Zeichenfolge | Zeichenfolgenvergleich, einer der folgenden Werte: Ordinal, OrdinalIgnoreCase. |
+| InputParameter | compareTo | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | boolean | Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den Zeichenfolgen, die miteinander verglichen werden, ignoriert werden soll. |
 | OutputClaim | outputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
@@ -223,8 +223,8 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 - Eingabeansprüche:
     - **inputClaim1**: v1
 - Eingabeparameter:
-    - **compareTo**: V1
-    - **operator**: EQUAL 
+    - **compareTo:** V1
+    - **operator:** EQUAL 
     - **ignoreCase**:  true
 - Ausgabeansprüche:
     - **outputClaim**: true
@@ -257,7 +257,7 @@ Im folgenden Beispiel wird eine globale eindeutige ID generiert. Mithilfe dieser
 ### <a name="example"></a>Beispiel
 
 - Eingabeparameter:
-    - **randomGeneratorType**: GUID
+    - **randomGeneratorType:** GUID
 - Ausgabeansprüche: 
     - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
@@ -280,12 +280,12 @@ Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 gen
 ### <a name="example"></a>Beispiel
 
 - Eingabeparameter:
-    - **randomGeneratorType**: INTEGER
-    - **maximumNumber**: 1000
-    - **stringFormat**: OTP_{0}
+    - **randomGeneratorType:** INTEGER
+    - **maximumNumber:** 1000
+    - **stringFormat:** OTP_{0}
     - **base64**: false
 - Ausgabeansprüche: 
-    - **outputClaim**: OTP_853
+    - **outputClaim:** OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -317,7 +317,7 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim:** 5164db16-3eee-4629-bfda-dcc3326790e9
 - Eingabeparameter:
     - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
 - Ausgabeansprüche:
@@ -354,12 +354,12 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim1**: Joe
-    - **inputClaim2**: Fernando
+    - **inputClaim1:** Joe
+    - **inputClaim2:** Fernando
 - Eingabeparameter:
     - **stringFormat**: {0} {1}
 - Ausgabeansprüche:
-    - **outputClaim**: Joe Fernando
+    - **outputClaim:** Joe Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -392,7 +392,7 @@ Bei der Anspruchstransformation wird nach dem Text des Elements gesucht und der 
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -400,9 +400,9 @@ Bei der Anspruchstransformation wird nach dem Text des Elements gesucht und der 
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **mapFromClaim**: B2C_V1_90001
+    - **mapFromClaim:** B2C_V1_90001
 - Ausgabeansprüche:
-    - **restrictionValueClaim**: You cant sign in because you are a minor.
+    - **restrictionValueClaim:** Sie können sich nicht anmelden, da Sie nicht volljährig sind.
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -439,8 +439,8 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
 - Eingabeansprüche:
     - **inputParameterId**: test.com
 - Eingabeparameter:
-    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **contoso.com:** 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com:** 0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
 - Ausgabeansprüche:
@@ -465,9 +465,9 @@ Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eige
 ```
 
 - Eingabeansprüche:
-    - **outputClaim**: Welcome to Contoso App. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions...
+    - **outputClaim:** Willkommen bei der Contoso-App. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions...
 - Ausgabeansprüche:
-    - **outputClaim**: NULL
+    - **outputClaim:** NULL
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -538,13 +538,13 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 - Eingabeansprüche:
     - **inputClaim**: v1
 - Eingabeparameter:
-    - **matchTo**: V1
+    - **matchTo:** V1
     - **stringComparison**: ordinalIgnoreCase 
-    - **stringMatchMsg**:  B2C_V1_90005
-    - **stringMatchMsgCode**:  The TOS is upgraded to v2
+    - **stringMatchMsg:**  B2C_V1_90005
+    - **stringMatchMsgCode:**  Die TOS wurden auf v2 aktualisiert.
 - Ausgabeansprüche:
-    - **outputClaim1**: B2C_V1_90005
-    - **outputClaim2**: The TOS is upgraded to v2
+    - **outputClaim1:** B2C_V1_90005
+    - **outputClaim2:** Die TOS wurden auf v2 aktualisiert.
     - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
@@ -582,12 +582,12 @@ Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob de
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **claimToMatch**: Minor
+    - **claimToMatch:** Nebenversion
 - Eingabeparameter:
-    - **matchTo**: Minor
+    - **matchTo:** Nebenversion
     - **stringComparison**: ordinalIgnoreCase 
-    - **outputClaimIfMatched**:  B2C_V1_90001
+    - **outputClaimIfMatched:**  B2C_V1_90001
 - Ausgabeansprüche:
-    - **IsMinorResponseCode**: B2C_V1_90001
+    - **isMinorResponseCode:** B2C_V1_90001
     - **isMinor**: true
 

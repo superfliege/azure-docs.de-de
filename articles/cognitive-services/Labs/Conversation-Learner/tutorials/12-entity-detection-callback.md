@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 147887151abd5c1f7455b0efbf9aadbc2d884183
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a96cfcb07252dc4a9089eab2decaec9efb01a67b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796480"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064988"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Verwenden des Rückrufs zur Entitätserkennung
 
@@ -25,7 +25,7 @@ Dieses Tutorial veranschaulicht den Rückruf zur Entitätserkennung und demonstr
 
 [![Rückruf zur Entitätserkennung: Tutorial (Vorschauversion)](https://aka.ms/cl_Tutorial_v3_EntityDetection_Preview)](https://aka.ms/cl_Tutorial_v3_EntityDetection)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der `tutorialEntityDetectionCallback`-Bot ausgeführt werden.
 
     npm run tutorial-entity-detection
@@ -95,7 +95,7 @@ Rückrufcode:
 6. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
     - Durch Klicken auf die Schaltfläche wird der Rückruf zur Entitätserkennung ausgelöst.
     - Der Rückrufcode legt den Wert der Entität „CityResolved“ korrekt auf „new york“ fest.
-7. Wählen Sie die Antwort „new york is very nice.“ (New York ist sehr schön.) aus.
+7. Wählen Sie die Antwort „new york is very nice“ (New York ist sehr schön) aus.
 
 Dieses Muster wird in vielen Botszenarien verwendet. Benutzeräußerungen und extrahierte Entitäten werden für Ihre Geschäftslogik bereitgestellt, und diese Logik transformiert die Äußerung in das kanonische Format, das daraufhin für nachfolgende Durchläufe des Dialogs in programmgesteuerten Entitäten gespeichert wird.
 

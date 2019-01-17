@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: b4229ca7ff96a9806ac82cf9452de496d858f6b4
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705683"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191034"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Beheben von Problemen bei Zugriff und Verwendung des Portals „Meine Apps“
 
@@ -49,7 +49,7 @@ Das Portal „Meine Apps“ erfordert einen Browser, der JavaScript unterstützt
 
 Stellen Sie sicher, dass folgende Browseranforderungen erfüllt sind:
 
-- **Edge**: unter Windows 10 Anniversary Edition oder höher.
+- **Microsoft Edge:** Windows 10 Anniversary Edition oder höher
 - **Chrome**: unter Windows 7 oder höher und Mac OS X oder höher.
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 - **Internet Explorer 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
@@ -87,7 +87,7 @@ Wenn Sie die Erweiterung installiert haben und dennoch weiterhin Probleme auftre
    2. Klicken Sie auf das Symbol für die Erweiterung, um das dazugehörige Menü zu öffnen.
    3. Suchen Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
    4. Wählen Sie die App in den Suchergebnissen aus.  
-       In der Verknüpfungsliste **Zuletzt verwendet** werden die letzten drei verwendeten Apps angezeigt.
+       In der Verknüpfungsliste **Zuletzt verwendet** werden die drei zuletzt verwendeten Apps angezeigt.
 
 > [!NOTE]
 > Diese Optionen sind nur für Microsoft Edge, Chrome und Firefox verfügbar.

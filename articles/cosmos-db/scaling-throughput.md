@@ -1,25 +1,24 @@
 ---
 title: Skalieren des Durchsatzes in Azure Cosmos DB
 description: Dieser Artikel beschreibt, wie Azure Cosmos DB den Durchsatz elastisch skaliert.
-services: cosmos-db
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 7e3f6d053e9466f07e15b0c2c1092fece76c98a4
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: c5e4720a6b830158581d17bbdcb9aba49e13183b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160663"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064490"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Skalieren des Durchsatzes in Azure Cosmos DB
 
 In Azure Cosmos DB wird der bereitgestellte Durchsatz als Anforderungseinheit/Sekunde (RU/s, Mehrzahl: RUs) dargestellt. Anforderungseinheiten messen die Kosten für Lese- und Schreibvorgänge für Ihre Cosmos-Container wie in der folgenden Abbildung dargestellt:
 
-![Anforderungseinheiten](./media/scale-throughput/figure1.png)
+![Anforderungseinheiten](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 Sie können Anforderungseinheiten für einen Cosmos-Container oder eine Cosmos-Datenbanken bereitstellen. In einem Container bereitgestellte Anforderungseinheiten stehen ausschließlich für Vorgänge zur Verfügung, die in diesem Container ausgeführt werden. In einer Datenbank bereitgestellte Anforderungseinheiten werden für alle Container in dieser Datenbank (ausgenommen Container mit exklusiv zugewiesenen RUs) freigegeben.
 

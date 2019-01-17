@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336525"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037275"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Übersicht der Funktionstypen und Features für permanente Funktionen (Azure Functions)
 
@@ -37,7 +37,7 @@ Weitere Informationen und Beispiele finden sich im [Artikel zu Bindungen für pe
 
 ### <a name="orchestrator-functions"></a>Orchestratorfunktionen
 
-Orchestratorfunktionen bilden das Herzstück aller permanenten Funktionen.  Orchestratorfunktionen beschreiben die Art und die Reihenfolge, in denen Aktionen ausgeführt werden.  Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie in der [Übersicht der permanenten Funktionen](durable-functions-overview.md) dargestellt.  Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers).  
+Orchestratorfunktionen bilden das Herzstück aller permanenten Funktionen.  Orchestratorfunktionen beschreiben die Art und die Reihenfolge, in denen Aktionen ausgeführt werden.  Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie unter [Durable Functions patterns and technical concepts](durable-functions-concepts.md) (Muster und technische Konzepte von Durable Functions) dargestellt.  Eine Orchestrierung kann viele verschiedene Aktionsarten aufweisen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers).  
 
 Eine Orchestratorfunktion muss durch einen [Orchestrierungstrigger](durable-functions-bindings.md#orchestration-triggers) ausgelöst werden.
 

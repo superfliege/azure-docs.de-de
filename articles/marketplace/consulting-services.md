@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dbd97ba8faacdc387a6e0b78c206f65a201ca246
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261546"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074086"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 
@@ -66,8 +66,8 @@ Partner müssen über eine **Silver- oder Gold-Kompetenz** im entsprechenden Ber
 |Hauptprodukt |Berechtigungsvoraussetzung |
 |---------|---------|
 | Dynamics 365 for Customer Engagement    |   [Cloud Customer Relationship Management](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)-Kompetenz Silber oder Gold.    | 
-|Dynamics 365 for Finance and Operations, Enterprise Edition  |  [Enterprise Resource Planning](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency)-Kompetenz Silber oder Gold und ein Mindestumsatz von 25.000 USD bei Cloudvorgängen in den letzten 12 Monaten.       |
-|Dynamics 365 for Finance and Operations, Business Edition  |  Sie fungieren als [Cloud-Dienstanbieter (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) oder [Digital Partner of Record (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) für mindestens einen Kunden.      |
+|Dynamics 365 for Finance and Operations, Enterprise Edition  |  [Enterprise Resource Planning](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)-Kompetenz Silber oder Gold und ein Mindestumsatz von 25.000 USD bei Cloudvorgängen in den letzten 12 Monaten.       |
+|Dynamics 365 for Finance and Operations, Business Edition  |  Sie fungieren als [Cloud-Dienstanbieter (CSP)](https://partner.microsoft.com/cloud-solution-provider) oder [Digital Partner of Record (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) für mindestens einen Kunden.      |
 |Power BI, benutzerdefinierte visuelle Power BI-Elemente | Sie erfüllen die [Kriterien für Lösungspartner](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf).|
 |PowerApps | Sie haben eine [Partnershowcase]()-Lösung veröffentlicht.
 
@@ -84,10 +84,10 @@ Partner müssen über eine **Silver- oder Gold-Kompetenz** im entsprechenden Ber
 |Dänemark   |Italien   |     Norwegen          |USA |
 |Finnland   |Japan   |     Polen          
 
-Der Start von Beratungsdiensten wird in bestimmten geografischen Region live geschaltet. Der erste Start findest statt in: USA, Kanada, Großbritannien und Australien. Die Kataloge für andere Länder werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
+Der Start von Beratungsdiensten wird in bestimmten geografischen Region live geschaltet. Der erste Start findet statt in: USA, Kanada, Großbritannien und Australien. Die Kataloge für andere Länder werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Registrieren für Beratungsdienste in Azure Marketplace und AppSource
-[Registrieren](https://azuremarketplace.microsoft.com/en-us/sell/signup) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 
+[Registrieren](https://azuremarketplace.microsoft.com/sell/signup) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 
 
 **Was erwartet Sie nach der Registrierung?** Das Onboardingteam sendet Ihnen innerhalb von 1 bis 3 Arbeitstagen eine Willkommens-E-Mail mit Ihren Anmeldeinformationen für das Cloud-Partnerportal (CPP). Das [Cloud-Partnerportal](https://cloudpartner.azure.com) ist das Portal für die Angebotsauflistung, über das Herausgeber Auflistungsinformationen und Einreichungen übermitteln. 
 
@@ -119,38 +119,38 @@ Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte 
 ## <a name="publishing-process"></a>Veröffentlichungsvorgang
 Die folgenden Schritte sind erforderlich, um Ihr Beratungsdienstangebot in Azure Marketplace und AppSource zu listen:
 
-1. **Auflisten**: Beginnen Sie mit dem Entwurf einer neuen Angebotsauflistung, indem Sie sich bei Ihrem [Cloud-Partnerportal](https://cloudpartner.azure.com)-Konto anmelden. Wählen Sie im Dropdownmenü „Neues Angebot“ und „Beratungsdienste“ aus. Geben Sie den zu listenden Gegenstand ein, und veröffentlichen Sie Ihr Angebot.
-2. **Überprüfung**: Ihre Anfrage wird geprüft, um sicherzustellen, dass Sie die Eignungskriterien erfüllen. Wir senden Ihnen dann Anweisungen zum Listen von Beratungsdienstangeboten zu. 
-3. **Übermittlung**: Geben Sie die erforderlichen Informationen ein, wie in den Anweisungen aufgeführt. Alle Inhalte und Begleitmaterialien müssen in englischer Sprache übermittelt werden. 
-4. **Überprüfung**: Unser Marketing- und Redaktionsteam überprüft die von Ihnen übermittelten Angaben und optimiert diese, um deren Lesbarkeit, Grammatik und Effizienz zu verbessern. 
-5. **Staging**: Ihre übermittelten Angaben werden für Sie zur Durchsicht bereitgestellt. 
-6. **Veröffentlichung**: Wenn Sie und Microsoft mit dem bereitgestellten Inhalt zufrieden sind, kann Ihr Listing in Marketplace online geschaltet werden. Das Datum, an dem das Listing live geschaltet wird, hängt von dem Land ab, das in Ihrem Angebot angegeben wurde. Wenn der Katalog für das ausgewählte Land bereits in Azure Marketplace oder AppSource aktiv ist, wird Ihr Listing innerhalb weniger Stunden angezeigt. Andernfalls wird das Listing erst angezeigt, wenn der Katalog live geschaltet wird.
+1. **Auflisten:** Beginnen Sie mit dem Entwurf einer neuen Angebotsauflistung, indem Sie sich bei Ihrem [Cloud-Partnerportal](https://cloudpartner.azure.com)-Konto anmelden. Wählen Sie im Dropdownmenü „Neues Angebot“ und „Beratungsdienste“ aus. Geben Sie den zu listenden Gegenstand ein, und veröffentlichen Sie Ihr Angebot.
+2. **Überprüfung:** Ihre Anfrage wird geprüft, um sicherzustellen, dass Sie die Eignungskriterien erfüllen. Wir senden Ihnen dann Anweisungen zum Listen von Beratungsdienstangeboten zu. 
+3. **Übermittlung:** Geben Sie die erforderlichen Informationen ein, wie in den Anweisungen aufgeführt. Alle Inhalte und Begleitmaterialien müssen in englischer Sprache übermittelt werden. 
+4. **Überprüfung:** Unser Marketing- und Redaktionsteam überprüft die von Ihnen übermittelten Angaben und optimiert diese, um deren Lesbarkeit, Grammatik und Effizienz zu verbessern. 
+5. **Staging:** Ihre übermittelten Angaben werden für Sie zur Durchsicht bereitgestellt. 
+6. **Veröffentlichung:** Wenn Sie und Microsoft mit dem bereitgestellten Inhalt zufrieden sind, kann Ihr Listing in Marketplace online geschaltet werden. Das Datum, an dem das Listing live geschaltet wird, hängt von dem Land ab, das in Ihrem Angebot angegeben wurde. Wenn der Katalog für das ausgewählte Land bereits in Azure Marketplace oder AppSource aktiv ist, wird Ihr Listing innerhalb weniger Stunden angezeigt. Andernfalls wird das Listing erst angezeigt, wenn der Katalog live geschaltet wird.
 
 ## <a name="offer-listings-and-content-review-criteria"></a>Kriterien für Angebotslisten und Überprüfung des Inhalts
 Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können mehr als einen auflisten): 
 
-* **Bewertung**: Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und zeitlichen Steuerung zu bieten. 
-* **Briefing**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um die Aufmerksamkeit von Kunden durch Frameworks, Demos und Beispiele für Kunden zu erhöhen. 
-* **Implementierung**: Eine umfassende Installation, die zu einer vollständig funktionierenden Lösung führt. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
-* **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt. 
-* **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
+* **Bewertung:** Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und des zeitlichen Umfangs aufzustellen 
+* **Briefing:** Eine Einführung in eine Lösung oder einen Beratungsdienst, um das Interesse von Kunden durch Frameworks, Demos und Kundenbeispiele zu wecken 
+* **Implementierung:** Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
+* **Proof of Concept:** Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt 
+* **Workshop:** Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
 
-**Hinweis:** Abgesehen vom Diensttyp *Briefing* können Beratungsdienste persönlich (d. h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d. h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
+**Hinweis:** Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
 
 Sobald Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung für Ihre Zielgruppe aussagekräftig und vollständig ist. 
 
 #### <a name="listing-title"></a>Auflistungstitel
 
-Das Feld „Titel“ ist auf 50 Zeichen begrenzt und muss die Dauer und Art der Dienstleistung des Angebots angeben, um eine maximale Suchmaschinenoptimierung zu erzielen. Das erforderliche Format ist wie folgt: NAME: DAUER TYP
+Das Feld „Titel“ ist auf 50 Zeichen begrenzt und muss die Dauer und Art der Dienstleistung des Angebots angeben, um eine maximale Suchmaschinenoptimierung zu erzielen. Das erforderliche Format ist wie folgt: NAME: DAUER ART
 
 Beispiele:
 
 
 |Beispieltitel  |Richtiges Format  |
 |---------|---------|
-|Erste Schritte mit Azure IoT in der Fertigung    |   IoT in der Fertigung: 2-tägige Bewertung      |
-|Workshop zu intelligenten Toastern        |  Intelligente Toaster: 1-wöchiger Workshop       |
-|  PoC für SQL Server-Migration    | SQL Server-Migration: 3-wöchiger Proof of Concept        |
+|Erste Schritte mit Azure IoT in der Fertigung    |   IoT in der Fertigung: 2-Tag Bewertung      |
+|Workshop zu intelligenten Toastern        |  Intelligente Toaster: 1-Wo Workshop       |
+|  PoC für SQL Server-Migration    | SQL-Migration: 3-tägige Proof of Concept-Verifizierung        |
 
 #### <a name="listing-summaries-and-descriptions"></a>Zusammenfassungen und Beschreibungen der Auflistung
 
@@ -180,8 +180,9 @@ Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https:/
 
 Falls Sie dies noch nicht getan haben, 
 
-- [registrieren](https://azuremarketplace.microsoft.com/sell) Sie sich im Marketplace.
+- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
 
 Wenn Sie registriert sind und im Cloud-Partnerportal arbeiten, 
 
 - [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
+- Weitere Informationen finden Sie unter [Azure- und Dynamics 365-Beratungsdienstangebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer).

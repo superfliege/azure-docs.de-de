@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321442"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190169"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Erstellen einer Routingtabelle für einen virtuellen Hub für Virtual WAN zum Steuern des Datenverkehrs zu einem virtuellen Netzwerkgerät
 
@@ -21,7 +21,7 @@ In diesem Artikel wird veranschaulicht, wie Sie Datenverkehr von einem virtuelle
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-route-table/vwanroute.png)
 
-In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel wird Folgendes behandelt:
 
 * Erstellen eines WAN
 * Erstellen eines Hubs
@@ -43,7 +43,7 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 
 ## <a name="signin"></a>1. Anmelden
 
-Installieren Sie die neueste Version der PowerShell-Cmdlets für Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/overview) (Übersicht über Azure PowerShell). Dies ist wichtig, da frühere Versionen der Cmdlets nicht die aktuellen Werte enthalten, die Sie für diese Übung benötigen.
+Installieren Sie die neueste Version der PowerShell-Cmdlets für Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/azurerm/overview) (Übersicht über Azure PowerShell). Dies ist wichtig, da frühere Versionen der Cmdlets nicht die aktuellen Werte enthalten, die Sie für diese Übung benötigen. Die Module in den folgenden Beispielen stammen aus Azure-RM. Der Artikel wird demnächst für Azure Az aktualisiert.
 
 1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und melden Sie sich bei Ihrem Azure-Konto an. Das Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen auf. Nach der Anmeldung werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen.
 

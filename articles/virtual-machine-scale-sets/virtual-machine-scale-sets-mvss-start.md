@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741878"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036561"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
 [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine kleinstmögliche Skalierungsgruppe erstellen und für verschiedene Szenarios anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss). 
@@ -70,7 +70,7 @@ Als Nächstes wird der Ressourcenabschnitt der Vorlage bearbeitet. Hier definier
    "resources": [
 ```
 
-Alle Ressourcen erfordern die Eigenschaften `type`, `name`, `apiVersion` und `location`. Die erste Ressource in diesem Beispiel weist den Typ `Microsft.Network/virtualNetwork`, den Namen `myVnet` und apiVersion `2016-03-30` auf. (Die neueste API-Version für einen Ressourcentyp finden Sie in der [Azure-REST-API-Dokumentation](https://docs.microsoft.com/rest/api/).)
+Alle Ressourcen erfordern die Eigenschaften `type`, `name`, `apiVersion` und `location`. Die erste Ressource dieses Beispiels hat den Typ [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), den Namen `myVnet` und die API-Version `2016-03-30`. (Die neueste API-Version für einen Ressourcentyp finden Sie in der [Azure Resource Manager-Vorlagenreferenz](/azure/templates/).)
 
 ```json
      {
@@ -124,7 +124,7 @@ In diesem Fall gibt es nur ein Element in der Liste: das virtuelle Netzwerk aus 
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>Angeben von Eigenschaften der Skalierungsgruppe
-Skalierungsgruppen verfügen über viele Eigenschaften zum Anpassen der virtuellen Computer in der Skalierungsgruppe. Eine vollständige Liste dieser Eigenschaften finden Sie in der [REST-API-Dokumentation für Skalierungsgruppen](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). In diesem Tutorial werden nur einige häufig verwendete Eigenschaften festgelegt.
+Skalierungsgruppen verfügen über viele Eigenschaften zum Anpassen der virtuellen Computer in der Skalierungsgruppe. Eine vollständige Liste dieser Eigenschaften finden Sie in der [Vorlagenreferenz](/azure/templates/microsoft.compute/virtualmachinescalesets). In diesem Tutorial werden nur einige häufig verwendete Eigenschaften festgelegt.
 ### <a name="supply-vm-size-and-capacity"></a>Angeben der Größe und der Kapazität der virtuellen Computer
 Für die Skalierungsgruppe muss festgelegt werden, welche Größe der virtuelle Computer haben soll („SKU-Name“) und wie viele solcher virtueller Computer erstellt werden sollen („SKU-Kapazität“). Welche Größen für virtuelle Computer verfügbar sind, erfahren Sie unter [Größen für virtuelle Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 

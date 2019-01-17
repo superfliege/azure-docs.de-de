@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 146467ef50c605f730fe6f65c349fc8a3a1fd045
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 92bab3e6dcea0b6b234d361a346698be15088fc0
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426242"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191512"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Tutorial mit Adventure Works
 
@@ -45,7 +45,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 -   Eine [Azure SQL Data Warehouse](../../sql-data-warehouse/create-data-warehouse-portal.md)-Instanz mit der **AdventureWorksDW-Beispieldatenbank** oder eine SQL Server Data Warehouse-Instanz mit der [AdventureWorks-Beispieldatenbank](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks).
 
-    **Wichtig**: Wenn Sie die Beispieldatenbank auf einer lokalen SQL Server Data Warehouse-Instanz installieren und Ihr Modell für einen Server mit Azure Analysis Services bereitstellen, benötigen Sie ein [lokales Datengateway](../analysis-services-gateway.md).
+    **Wichtig:** Wenn Sie die Beispieldatenbank auf einer lokalen SQL Server Data Warehouse-Instanz installieren und Ihr Modell für einen Server mit Azure Analysis Services bereitstellen, benötigen Sie ein [lokales Datengateway](../analysis-services-gateway.md).
 
 -   Die aktuelle Version von [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) für Visual Studio.
 
@@ -93,7 +93,7 @@ Diese Lektionen sind nicht erforderlich, um das Tutorial abzuschließen. Allerdi
 
   
 ## <a name="next-steps"></a>Nächste Schritte  
-Die ersten Schritte finden Sie unter [Lektion 1: Erstellen eines neuen tabellarischen Modellprojekts](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Informationen zu den ersten Schritten finden Sie unter [Lektion 1: Erstellen eines neuen Projekts mit tabellarischem Modell](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   
   

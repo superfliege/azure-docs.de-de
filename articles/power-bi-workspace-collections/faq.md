@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83f4ebd9c3f5ad05173b045b3fa15804ddc88df6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249199"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157563"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Häufig gestellte Fragen zu Power BI-Arbeitsbereichssammlungen
 
@@ -61,7 +61,7 @@ Einzelheiten zur Verwendung von Power BI-Arbeitsbereichssammlungen finden Sie in
 Ja. Sie können den Dienst Power BI-Arbeitsbereichssammlungen mit Ihrem vorhandenen Azure-Abonnement bereitstellen und verwenden.
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>Benötigt ein Endbenutzer meiner Anwendung eine Power BI-Lizenz?
-Nein. Benutzer Ihrer Anwendung müssen kein eigenes Power BI-Abonnement erwerben, um auf die In-App-Datenvisualisierungen zuzugreifen. Im Modell Power BI-Arbeitsbereichssammlungen wird der Dienst dem Anwendungsanbieter über den Azure-Verbrauchszähler in Rechnung gestellt. Weitere Informationen finden Sie auf der [Seite mit Preis- und Lizenzierungsinformationen](https://go.microsoft.com/fwlink/?LinkId=760527).
+ Nein. Benutzer Ihrer Anwendung müssen kein eigenes Power BI-Abonnement erwerben, um auf die In-App-Datenvisualisierungen zuzugreifen. Im Modell Power BI-Arbeitsbereichssammlungen wird der Dienst dem Anwendungsanbieter über den Azure-Verbrauchszähler in Rechnung gestellt. Weitere Informationen finden Sie auf der [Seite mit Preis- und Lizenzierungsinformationen](https://go.microsoft.com/fwlink/?LinkId=760527).
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>Wie funktioniert die Benutzerauthentifizierung bei Power BI-Arbeitsbereichssammlungen?
 Der Dienst Power BI-Arbeitsbereichssammlungen nutzt App-Token zur Authentifizierung und Autorisierung anstelle der expliziten Benutzerauthentifizierung. Im App-Token-Modell verwaltet Ihre Anwendung die Authentifizierung und Autorisierung für Ihre Benutzer. Bei Bedarf erstellt und sendet Ihre App
@@ -77,7 +77,7 @@ Beim Modell Power BI-Arbeitsbereichssammlungen müssen sich Ihre Kunden nicht un
 Entwickler/Mitarbeiter, die Ihre Anwendung erstellen oder daran arbeiten, benötigen ein AAD-Benutzerkonto, damit sie Ihr Azure-Abonnement und Ihre Arbeitsbereichssammlungen über das Azure-Portal verwalten können. Programmgesteuerte APIs, mit denen Entwickler Berichte importieren, Verbindungszeichenfolgen ändern und Einbettungs-URLs abrufen können, verwenden stattdessen App-Token zur Authentifizierung und benötigen daher AAD nicht.
 
 ## <a name="where-can-i-learn-more"></a>Wo kann ich mehr erfahren?
-Auf der [Dokumentationsseite zu Power BI-Arbeitsbereichssammlungen](get-started.md). Weitere aktuelle Informationen finden Sie im [Power BI-Blog](https://powerbi.microsoft.com/blog/) sowie im Power BI Developer Center unter „dev.powerbi.com“. Bei [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi)können Sie außerdem Fragen stellen.
+Auf der [Dokumentationsseite zu Power BI-Arbeitsbereichssammlungen](get-started.md). Weitere aktuelle Informationen finden Sie im [Power BI-Blog](https://powerbi.microsoft.com/blog/) sowie im Power BI Developer Center unter „dev.powerbi.com“. Bei [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi) können Sie außerdem Fragen stellen.
 
 ## <a name="how-do-i-get-started"></a>Wie fange ich an?
 Sie können jetzt kostenlos beginnen! Wenn Sie ein Azure-Abonnement besitzen, können Sie Power BI-Arbeitsbereichssammlungen jetzt direkt über das Azure-Portal bereitstellen. Sie können auch ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen. Sobald Sie den Dienst Power BI-Arbeitsbereichssammlungen bereitgestellt haben, können Sie Power BI-REST-APIs problemlos direkt nutzen oder das Developer SDK auf [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) verwenden. Es werden Beispiele für die Nutzung des Developer SDK bereitgestellt.

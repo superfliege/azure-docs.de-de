@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853828"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159025"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -85,10 +85,10 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
-| Triggerparallelität | 50 | Der Standardgrenzwert lautet 20. Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern der Triggerparallelität](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maximale Anzahl von wartenden Ausführungen | 100 | Der Standardgrenzwert lautet 10. Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. <p><p>Informationen zum Ändern des Standardgrenzwerts auf einen Wert zwischen 0 und 100 (einschließlich) finden Sie unter [Ändern des Grenzwerts für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Foreach-Elemente | 100.000 | Dieser Grenzwert beschreibt die maximale Anzahl von Arrayelementen, die eine Foreach-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. | 
-| Foreach-Iterationen | 50 | Der Standardgrenzwert lautet 20. Dieser Grenzwert beschreibt die maximale Anzahl von Foreach-Schleifendurchläufen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern der Foreach-Parallelität](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Triggerparallelität | 50, wenn die Parallelität eingeschränkt wird | Wenn Sie die Gleichzeitigkeitssteuerung für einen Trigger aktivieren, ist die Standardbegrenzung 25. Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Triggerparallelitäts-Grenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximale Anzahl von wartenden Ausführungen | 100, wenn die Parallelität eingeschränkt wird | Wenn Sie die Gleichzeitigkeitssteuerung für einen Trigger aktivieren, ist die Standardbegrenzung 10. Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. <p><p>Informationen zum Ändern des Standardgrenzwerts auf einen Wert zwischen 0 und 100 (einschließlich) finden Sie unter [Ändern des Grenzwerts für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Foreach-Arrayelemente | 100.000 | Dieser Grenzwert beschreibt die maximale Anzahl von Arrayelementen, die eine Foreach-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. | 
+| Foreach-Parallelität | 50, wenn die Parallelität eingeschränkt wird | Wenn Sie die Gleichzeitigkeitssteuerung für diese Schleife aktivieren, ist die Standardbegrenzung 20. Dieser Grenzwert beschreibt die maximale Anzahl von Foreach-Schleifendurchläufen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Foreach-Parallelitätsgrenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | SplitOn-Elemente | 100.000 | | 
 | Until-Iterationen | 5.000 | | 
 |||| 
@@ -102,10 +102,10 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Aktion: Ausführungen pro 5 Minuten | 300.000 | Der Standardgrenzwert lautet 100.000. Weitere Informationen zum Ändern des Standardgrenzwerts finden Sie unter [Ausführen Ihre Logik-App im Modus „Hoher Durchsatz“](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) (Vorschauversion). Sie können auch die Workload nach Bedarf auf mehrere Logik-Apps verteilen. | 
-| Aktion: gleichzeitig ausgehende Aufrufe | ca. 2.500 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
-| Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
-| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
-| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
+| Aktion: Gleichzeitig ausgehende Aufrufe | ca. 2.500 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
+| Endpunkt zur Laufzeit: Gleichzeitig eingehende Aufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
+| Endpunkt zur Laufzeit: Leseaufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
+| Endpunkt zur Laufzeit: Aufrufe pro 5 Minuten | 45.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
 | Inhaltsdurchsatz pro 5 Minuten | 600 MB | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
 |||| 
 
@@ -119,9 +119,9 @@ Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastu
 
 | NAME | Begrenzung | Notizen |
 |------|-------|-------|
-| FTP | 50 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
-| SFTP | 50 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [SFTP-SSH connector](../connectors/connectors-sftp-ssh.md) oder [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
-| SFTP-SSH | 1 GB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
+| FTP | 50 MB | Informationen zum Überschreiten dieser Beschränkung finden Sie unter [Verarbeiten umfangreicher Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
+| SFTP | 50 MB | Informationen zum Überschreiten dieser Beschränkung finden Sie unter [SFTP-SSH-Connector](../connectors/connectors-sftp-ssh.md) und [Verarbeiten umfangreicher Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
+| SFTP-SSH | 1 GB | Informationen zum Überschreiten dieser Beschränkung finden Sie unter [Verarbeiten umfangreicher Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
 |||| 
 
 <a name="request-limits"></a>
@@ -238,10 +238,10 @@ Verwenden Sie den Free-Tarif nur für Versuchsszenarien, nicht für Produktionss
 | ---- | ----- | ----- | 
 | Schema | 8 MB | Wenn Sie Dateien hochladen möchten, die größer sind als 2 MB, verwenden Sie den [Blob-URI](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Zuordnung (XSLT-Datei) | 2 MB | | 
-| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Aufrufüberwachungen pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Gleichzeitige Aufrufe zum Blockieren | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
+| Endpunkt zur Laufzeit: Leseaufrufe pro 5 Minuten | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Endpunkt zur Laufzeit: Aufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Endpunkt zur Laufzeit: Nachverfolgungsaufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Endpunkt zur Laufzeit: Gleichzeitige Blockierungsaufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

@@ -1,5 +1,5 @@
 ---
-title: Deaktivieren der Überwachung mit Azure Monitor für VMs (Vorschau) | Microsoft-Dokumentation
+title: Deaktivieren der Überwachung mit Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihrer virtuellen Computer mit Azure Monitor für VMs beenden können.
 services: azure-monitor
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b65df1489112bf6e9fe44fe4d4a11db76ff6f5b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183708"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191070"
 ---
-# <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Deaktivieren der Überwachung Ihrer virtuellen Computer mit Azure Monitor für VMs (Vorschau)
+# <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Deaktivieren der Überwachung Ihrer virtuellen Computer mit Azure Monitor für VMs (Vorschauversion)
 
 Wenn Sie nach dem Aktivieren der Überwachung Ihrer virtuellen Computer mit Azure Monitor für VMs entscheiden, dass Sie diese nicht mehr überwachen möchten, können Sie die Überwachung deaktivieren. Dieser Artikel erläutert die Vorgehensweise für einen oder mehrere virtuelle Computer.  
 

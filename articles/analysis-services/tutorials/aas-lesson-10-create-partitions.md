@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services-Tutorial – Lektion 10: Erstellen von Partitionen | Microsoft-Dokumentation'
+title: 'Azure Analysis Services-Tutorial, Lektion 10: Erstellen von Partitionen | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie Partitionen im Azure Analysis Services-Tutorialprojekt erstellt werden.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aaaee6f9a69f9cb619935f18f614d7572a755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429694"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191835"
 ---
 # <a name="create-partitions"></a>Erstellen von Partitionen
 
@@ -22,7 +22,7 @@ In dieser Lektion wird erläutert, wie Partitionen erstellt werden, um die Tabel
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige Lektion abgeschlossen haben: [Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Erstellen von Partitionen  
   
@@ -40,7 +40,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
 
     ![AAS-Lektion10-Abfrage-Editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  Wählen Sie im Dialogfeld „Zeilen filtern“ bei **Zeilen anzeigen: OrderDate** die Option **ist nach oder gleich** aus, und geben Sie im Datumsfeld **1/1/2010** ein. Lassen Sie den Operator **Und** ausgewählt, und wählen Sie **Ist vor** aus. Geben Sie im Datumsfeld **1/1/2011** ein, und klicken Sie anschließend auf **OK**.
+6.  Lassen Sie im Dialogfeld „Zeilen filtern“ unter **Show rows where: OrderDate** (Zeilen anzeigen mit: OrderDate) die Option **ist nach oder gleich** unverändert, und geben Sie im Feld „Datum“ den Wert **1.1.2010** ein. Lassen Sie den Operator **Und** ausgewählt, und wählen Sie **Ist vor** aus. Geben Sie im Datumsfeld **1/1/2011** ein, und klicken Sie anschließend auf **OK**.
 
     ![AAS-Lektion10-Zeilen-filtern](../tutorials/media/aas-lesson10-filter-rows.png)
     
@@ -109,4 +109,4 @@ Beachten Sie, dass im Partitions-Manager in der Spalte **Zuletzt verarbeitet** f
     ![AAS-Lektion10-Verarbeitung-abgeschlossen](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>Wie geht es weiter?
-Wechseln Sie zur nächsten Lektion: [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md). 
+Fahren Sie mit der nächsten Lektion fort: [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md). 
