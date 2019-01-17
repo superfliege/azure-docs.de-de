@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145582"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158923"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Nutzung des Bewegungssensors zum Abrufen einer Twitter-Nachricht mit Azure Functions
 
@@ -52,7 +52,7 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 Erweitern Sie auf der linken Seite den Abschnitt **ARDUINO-BEISPIELE**, wechseln Sie zu **Beispiele für MXCHIP AZ3166 > AzureIoT**, und wählen Sie **ShakeShake** aus. Daraufhin wird ein neues VS Code-Fenster mit dem Projektordner geöffnet. Wenn Sie den Abschnitt „MXCHIP AZ3166“ nicht anzeigen können, stellen Sie sicher, dass Ihr Gerät ordnungsgemäß verbunden ist, und starten Sie Visual Studio Code neu.  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Sie können das Beispielprojekt auch über die Befehlspalette öffnen. Klicken Sie zum Öffnen der Befehlspalette auf `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`), geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
+Sie können das Beispielprojekt auch über die Befehlspalette öffnen. Klicken Sie auf `Ctrl+Shift+P`(macOS: `Cmd+Shift+P`), um die Befehlspalette zu öffnen, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie den Eintrag aus.
 
 ## <a name="provision-azure-services"></a>Bereitstellen von Azure-Diensten
 
@@ -118,7 +118,7 @@ Nachdem die Verbindungszeichenfolge festgelegt wurde, überprüft es die App, l�
 
 2. Das DevKit startet neu und beginnt mit der Ausführung des Codes.
 
-Möglicherweise wird Ihnen folgende Meldung angezeigt: „Fehler: AZ3166: Unbekanntes Paket.“ Dieser Fehler tritt auf, wenn der Boardpaketindex nicht ordnungsgemäß aktualisiert wurde. Um dieses Problem zu beheben, lesen Sie den [Abschnitt zum Fehler bezüglich eines unbekanntes Pakets in den FAQs zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+Möglicherweise wird die Fehlermeldung „Fehler: AZ3166: Unbekanntes Paket“ angezeigt. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht ordnungsgemäß aktualisiert wurde. Um dieses Problem zu beheben, lesen Sie den [Abschnitt zum Fehler bezüglich eines unbekanntes Pakets in den FAQs zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testen des Projekts
 
@@ -202,7 +202,7 @@ Oder, beim Ausführen des Codes treten einige Abweichungen auf, die einen Neusta
 Wenn andere Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) weiter, oder wenden Sie sich über folgende Kanäle an uns:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

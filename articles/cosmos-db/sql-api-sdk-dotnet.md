@@ -1,20 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL .NET-API, -SDK und -Ressourcen'
 description: Erhalten Sie alle Informationen zu SQL .NET-API und -SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB .NET SDK.
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.author: sngun
+ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337936"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051950"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -49,11 +48,19 @@ ms.locfileid: "53337936"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
-* Preview 1 von [Version 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) des .NET SDKs als Public Preview.
+* Preview 1 von [Version 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) des .NET SDK als Public Preview.
 * Ziel: .NET Standard, unterstützt .NET Framework 4.6.1 und höher sowie .NET Core 2.0 und höher
 * Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden. 
 * Unterstützung von Streams. 
 * Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* Verbesserung der Wiederholungslogik während des Failovers für den StoredProcedure-Ausführungsaufruf.
+
+* DocumentClientEventSource-Singleton wurde vorgenommen. 
+
+* Behebung des Problems, dass GatewayAddressCache-Timeout ConnectionPolicy RequestTimeout nicht berücksichtigt.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -187,7 +194,7 @@ ms.locfileid: "53337936"
 * Es wurden Fehler behoben, um das SDK für automatische Failover unter bestimmten Bedingungen stabiler zu machen.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Korrektur eines Problems, das bisweilen eine WebException verursacht: Der Remotename konnte nicht aufgelöst werden.
+* Korrektur eines Problems, das bisweilen eine WebException verursacht: Der Remotename konnte nicht aufgelöst werden.“ verursacht.
 * Unterstützung zum direkten Lesen eines eingegebenen Dokuments durch Hinzufügen neuer Überladungen zur ReadDocumentAsync-API.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -350,6 +357,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |24. Dezember 2018 |--- |
 | [2.2.0](#2.2.0) |07. Dezember 2018 |--- |
 | [2.1.3](#2.1.3) |15. Oktober 2018 |--- |
 | [2.1.2](#2.1.2) |4. Oktober 2018 |--- |

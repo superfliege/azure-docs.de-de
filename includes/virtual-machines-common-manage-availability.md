@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e6c5f4623f3483dcfb0dde0f55b77161eee2c562
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035392"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084054"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -65,6 +65,10 @@ Gehen Sie wie folgt vor, wenn Sie planen, VMs mit [nicht verwalteten Datenträge
 1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
 2. **Überprüfen Sie die [Grenzwerte](../articles/storage/common/storage-scalability-targets.md) für die Anzahl von nicht verwalteten Datenträgern eines Storage-Kontos**, bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
 3. **Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe.** Geben Sie Storage-Konten mit mehreren VMs in derselben Verfügbarkeitsgruppe nicht für die gemeinsame Nutzung frei. Für VMs, die über verschiedene Verfügbarkeitsgruppen hinweg verteilt sind, können Speicherkonten freigegeben werden, solange die oben genannten bewährten Methoden befolgt werden. ![Fehlerdomänen nicht verwalteter Datenträger](./media/virtual-machines-common-manage-availability/umd-updated.png)
+
+## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Verwenden von Scheduled Events für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken
+
+Wenn Sie [geplante Ereignisse](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events) abonnieren, wird Ihr virtueller Computer über geplante Wartungsereignisse unterrichtet, die Ihren virtuellen Computer beeinträchtigen können. Wenn geplante Ereignisse aktiviert sind, erhält Ihr virtueller Computer ein Mindestmaß an Zeit, bevor die Wartungsaktivität ausgeführt wird. Beispielsweise werden Host-BS-Updates, die Ihren virtuellen Computer beeinträchtigen könnten, als Ereignisse in die Warteschlange gestellt, die die Auswirkung sowie den Zeitpunkt angeben, zu dem die Wartung durchgeführt wird, wenn keine Aktion ausgeführt wird. Geplante Ereignisse werden auch in eine Warteschlange gestellt, wenn Azure den bevorstehenden Hardwarefehler erkennt, der sich auf Ihren virtuellen Computer auswirken könnte, sodass Sie entscheiden können, wann die Reparatur ausgeführt werden soll. Kunden können das Ereignis nutzen, um Aufgaben vor der Wartung auszuführen, z.B. Speichern des Status, Failover zum sekundären Standort usw. Nachdem Sie Ihre Logik zur ordnungsgemäßen Behandlung des Wartungsereignisses fertig gestellt haben, können Sie das ausstehende geplante Ereignis genehmigen, um der Plattform zu ermöglichen, die Wartung fortzusetzen.
 
 ## <a name="configure-each-application-tier-into-separate-availability-sets"></a>Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen
 Wenn Ihre virtuellen Computer fast alle identisch sind und die Anwendung auf die gleiche Weise unterstützen, wird empfohlen, für jede einzelne Anwendungsebene eine Verfügbarkeitsgruppe zu konfigurieren.  Wenn Sie eine Verfügbarkeitsgruppe mit zwei verschiedenen Ebenen anlegen, können alle virtuellen Computer derselben Anwendungsebene zur gleichen Zeit neu gestartet werden. Indem Sie mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe für jede Ebene konfigurieren, gewährleisten Sie, dass mindestens ein virtueller Computer pro Ebene verfügbar ist.

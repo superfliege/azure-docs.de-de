@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747914"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157206"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -168,15 +168,15 @@ SELECT * FROM devices.modules
 Eine Verknüpfung zwischen den Sammlungen „devices“ und „devices.modules“ ist nicht zulässig. Wenn Sie Modulzwillinge geräteübergreifend abfragen möchten, müssen dazu Tags verwendet werden. Die folgende Abfrage gibt alle Modulzwillinge auf allen Geräten mit dem Status „scanning“ zurück:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning'
+SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
 Die folgende Abfrage gibt alle Modulzwillinge mit dem Status „scanning“ nur für die angegebene Teilmenge der Geräte zurück:
 
 ```sql
-Select * from devices.modules 
-  where properties.reported.status = 'scanning' 
-  and deviceId IN ['device1', 'device2']
+SELECT * FROM devices.modules 
+  WHERE properties.reported.status = 'scanning' 
+  AND deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>C#-Beispiel
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>Die FROM-Klausel
 
-Die **FROM <Spezifikation>**-Klausel kann nur zwei Werte annehmen: **FROM devices** zum Abfragen von Gerätezwillingen oder **FROM devices.jobs** zum Abfragen der Details pro Gerät für den Auftrag.
+Die Klausel **FROM <from_specification>** kann nur zwei Werte annehmen: **FROM-Geräte** zum Abfragen von Gerätezwillingen oder **FROM devices.jobs** beim Abfragen von Auftragsdetails pro Gerät.
 
 
 ## <a name="where-clause"></a>WHERE-Klausel

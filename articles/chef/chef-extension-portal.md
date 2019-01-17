@@ -3,23 +3,23 @@ title: Installieren des Chef-Clients aus dem Azure-Portal
 description: Informationen zum Bereitstellen und Konfigurieren des Chef-Clients aus dem Azure-Portal
 keywords: Azure, Chef, Devops, Client, Installation, Portal
 ms.service: virtual-machines-linux
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378651"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051327"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installieren des Chef-Clients aus dem Azure-Portal
 Beim Erstellen oder Ändern einer Linux- oder Windows-VM im Azure-Portal können Sie dem virtuellen Computer die Chef-Erweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch diesen Prozess.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure-Abonnement:** Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+- **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
 - **Chef**: Wenn Sie nicht über ein aktives Chef-Konto verfügen, melden Sie sich für eine [kostenlose Testversion von Hosted Chef](https://manage.chef.io/signup) an. Um die Anweisungen in diesem Artikel zu befolgen, benötigen Sie die folgenden Werte aus Ihrem Chef-Konto: 
     - organization_validation-Schlüssel
@@ -87,7 +87,7 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
     - **Name des Überprüfungsclients**: Geben Sie den Namen des Chef-Überprüfungsclients ein. Beispiel: *Tarcher-Validierungssteuerelement*.
     - **Validierungsschlüssel**: Wählen Sie eine Datei aus, die den Validierungsschlüssel enthält, der beim Bootstrapping Ihrer Computer verwendet wird. 
     - **Clientkonfigurationsdatei**: Wählen Sie eine Konfigurationsdatei für den Chef-Client aus. Dieser Wert kann leer bleiben.
-    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer bleiben. Ein leerer Wert führt dazu, dass die neueste Version installiert wird. 
+    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer bleiben. Bei einem leeren Wert wird die neueste Version installiert. 
     - **SSL-Überprüfungsmodus**: Wählen Sie entweder **Keine** oder **Peer**. Für die Demo wurde *Keine* ausgewählt.
     - **Chef-Umgebung**: Geben Sie die Chef-Umgebung ein, in der dieser Knoten ein Mitglied sein sollte. Dieser Wert kann leer bleiben.
     - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer Zugriff haben sollte. Dieser Wert kann leer bleiben.

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bf16c0fbc7090bf9b548796765502cde1731aef9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669707"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050488"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung 
 
@@ -19,7 +19,7 @@ Nachdem Sie einen neuen vFXT-Cluster erstellt haben, besteht Ihre erste Aufgabe 
 
 Da der Avere vFXT-Cluster ein skalierbarer Multi-Client-Cache ist, besteht die schnellste und effizienteste Methode darin, die Daten mit mehreren Clients zu kopieren. Dieses Verfahren sorgt für die parallele Erfassung der Dateien und Objekte.
 
-![Diagramm mit Darstellung der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf Avere vFXT. Von Avere vFXT aus zeigen mehrere Pfeile auf Blobspeicher.](media/avere-vfxt-parallel-ingest.png) 
+![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf Avere vFXT. Von Avere vFXT aus zeigen mehrere Pfeile auf Blobspeicher.](media/avere-vfxt-parallel-ingest.png) 
 
 Die Befehle ``cp`` oder ``copy``, die häufig verwendet werden, um Daten von einem Speichersystem zu einem anderen zu übertragen, sind Singlethread-Prozesse, die nur eine Datei zur Zeit kopieren. Das bedeutet, dass der Dateiserver immer nur eine Datei auf einmal erfasst, was eine Verschwendung der Ressourcen des Clusters darstellt.
 
@@ -272,7 +272,7 @@ Befolgen Sie die folgenden Anweisungen, um mit msrsync ein Azure-Cloudvolume mit
 1. Installieren Sie msrsync und die erforderlichen Komponenten (rsync und Python 2.6 oder höher).
 1. Bestimmen Sie die Gesamtzahl der zu kopierenden Dateien und Verzeichnisse.
 
-   Verwenden Sie z. B. das Avere-Hilfsprogramm ``prime.py`` mit den Argumenten ```prime.py --directory /path/to/some/directory``` (verfügbar durch Herunterladen der URL https://raw.githubusercontent.com/Azure/Avere/master/src/dataingestor/prime.py).
+   Verwenden Sie z. B. das Avere-Hilfsprogramm ``prime.py`` mit den Argumenten ```prime.py --directory /path/to/some/directory``` (verfügbar durch Herunterladen der URL https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
 
    Wenn Sie ``prime.py`` nicht verwenden, können Sie die Anzahl der Elemente mit dem Gnu ``find``-Tool wie folgt berechnen:
 

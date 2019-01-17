@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 031cb10e476ba068f7e3d7baf3b19f7703caf170
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580044"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159926"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen
 
@@ -52,7 +52,7 @@ Auf dem Datenträger wird die Momentaufnahme im SAP HANA-Datenverzeichnis angeze
 
 Es muss auch sichergestellt werden, dass die Konsistenz des Dateisystems gewährleistet ist, bevor die Speichermomentaufnahme ausgeführt wird, während sich SAP HANA im Vorbereitungsmodus für Momentaufnahmen befindet. Informationen hierzu finden Sie unter _Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen_ im Artikel [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](sap-hana-backup-guide.md) dieser Reihe.
 
-Nachdem die Speichermomentaufnahme erstellt wurde, ist es wichtig, dass die SAP HANA-Momentaufnahme bestätigt wird. Hierzu muss eine entsprechende SQL-Anweisung ausgeführt werden: BACKUP DATA CLOSE SNAPSHOT (siehe [BACKUP DATA CLOSE SNAPSHOT Statement (Backup and Recovery)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm) (BACKUP DATA CLOSE SNAPSHOT-Anweisung (Sicherung und Wiederherstellung)).
+Nachdem die Speichermomentaufnahme erstellt wurde, ist es wichtig, dass die SAP HANA-Momentaufnahme bestätigt wird. Hierzu muss eine entsprechende SQL-Anweisung ausgeführt werden: BACKUP DATA CLOSE SNAPSHOT (siehe [BACKUP DATA CLOSE SNAPSHOT-Anweisung (Sicherung und Wiederherstellung)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
 > Bestätigen Sie die HANA-Momentaufnahme. Aufgrund des &quot;Copy-on-Write&quot;-Vorgangs benötigt SAP HANA im Vorbereitungsmodus für Momentaufnahmen ggf. zusätzlichen Datenträger-Speicherplatz. Es ist erst möglich, neue Sicherungen zu starten, nachdem die SAP HANA-Momentaufnahme bestätigt wurde.

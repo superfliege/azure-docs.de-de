@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185425"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159654"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container 
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer Azure Kubernetes Service-Cluster (AKS) aus zwei Perspektiven zu überwachen, direkt aus einem AKS-Cluster oder aus allen AKS-Clustern in einem Abonnement von Azure Monitor. Die Anzeige von Azure Container Instances (ACI) ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -98,6 +98,8 @@ Das Leistungsdiagramm zeigt vier Leistungsmetriken an:
 - **Knotenanzahl**: Die Anzahl von Knoten und der Status von Kubernetes. Die Status der dargestellten Clusterknoten sind *Alle*, *Bereit* und *Nicht bereit*. Der Status kann im Selektor oberhalb des Diagramms einzeln oder kombiniert gefiltert werden. 
 - **Podanzahl der Aktivität**: Die Podanzahl und der Status von Kubernetes. Die Status der dargestellten Pods sind *Alle*, *Ausstehend*, *Wird ausgeführt* und *Unbekannt*. Der Status kann im Selektor oberhalb des Diagramms einzeln oder kombiniert gefiltert werden. 
 
+Mit den Pfeiltasten nach links/rechts können Sie durch jeden Datenpunkt im Diagramm blättern und mit den Pfeiltasten nach oben/unten durch die Perzentilzeilen.
+
 Wenn Sie zur Registerkarte **Knoten**, **Controller** und **Container** wechseln, wird der Eigenschaftenbereich automatisch rechts auf der Seite angezeigt.  Dort werden die Eigenschaften des ausgewählten Elements einschließlich der Bezeichnungen angezeigt, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Klicken Sie auf den **>>**-Link im Bereich, um ihn anzuzeigen\auszublenden.  
 
 ![Beispiel für den Eigenschaftenbereich von Kubernetes-Perspektiven](./media/container-insights-analyze/perspectives-preview-pane-01.png)
@@ -129,7 +131,7 @@ Standardmäßig beziehen sich Leistungsdaten auf die letzten sechs Stunden, jedo
 
 ![Perzentilauswahl für die Datenfilterung](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-Wenn Sie den Mauszeiger über das Balkendiagramm unter der Spalte **Trend** bewegen, zeigt jeder Balken innerhalb eines Stichprobenzeitraums von 15 Minuten entweder die CPU- oder Speicherauslastung an, je nachdem, welche Metrik ausgewählt ist.  
+Wenn Sie den Mauszeiger über das Balkendiagramm unter der Spalte **Trend** bewegen, zeigt jeder Balken innerhalb eines Stichprobenzeitraums von 15 Minuten entweder die CPU- oder Speicherauslastung an, je nachdem, welche Metrik ausgewählt ist. Nachdem Sie das Trenddiagramm über eine Tastatur ausgewählt haben, können Sie mit den Tasten Alt+Bild-auf oder Alt+Bild-ab durch jeden Balken einzeln blättern und die gleichen Details wie beim Bewegen mit der Maus erhalten.
 
 ![Beispiel für ein Trend-Balkendiagramm mit Mauszeigerbewegung](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 

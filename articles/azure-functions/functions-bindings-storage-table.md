@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bd85214efc3c8f67d41563e3ca46a1e2278c4868
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999540"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062672"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -779,7 +779,7 @@ Die Table Storage-Ausgabebindung unterstützt folgende Szenarien:
 
   Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out T paramName` oder den Rückgabewert der Funktion, um auf die Ausgabetabellenentität zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. `T` kann ein beliebiger serialisierbarer Typ sein, wenn der Partitionsschlüssel und der Zeilenschlüssel durch die Datei *function.json* oder das Attribut `Table` angegeben werden. Andernfalls muss `T` ein Typ sein, der die Eigenschaften `PartitionKey` und `RowKey` enthält. In diesem Szenario implementiert `T` in der Regel `ITableEntity` oder wird von `TableEntity` abgeleitet. Dies ist jedoch nicht zwingend erforderlich.
 
-* **Schreiben von Zeilen in C# oder C#-Skript**
+* **Lesen einer oder mehrerer Zeilen in C# oder C#-Skript**
 
   Verwenden Sie in C# und C#-Skripts einen Methodenparameter vom Typ `ICollector<T> paramName` oder `IAsyncCollector<T> paramName`, um auf die Ausgabetabellenentität zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. `T` gibt das Schema der hinzuzufügenden Entitäten an. In der Regel leitet sich `T` von `TableEntity` ab oder implementiert `ITableEntity`, dies ist aber nicht zwingend erforderlich. Die Partitionsschlüssel- und Zeilenschlüsselwerte in *function.json* oder im Konstruktor des Attributs `Table` werden in diesem Szenario nicht verwendet.
 

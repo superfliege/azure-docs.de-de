@@ -13,25 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 45a65c7a94f3e6917b2882f27c9ad7d764ef97d7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52621714"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049757"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Abonnements in Azure API Management
 
-Abonnements sind ein wichtiges Konzept in Azure API Management (APIM). Am häufigsten erhalten API-Nutzer Zugriff auf APIs, die über eine APIM-Instanz veröffentlicht wurden. Dieser Artikel bietet eine Übersicht über das Konzept.
+Abonnements sind ein wichtiges Konzept in Azure API Management. Über sie erhalten API-Nutzer am häufigsten Zugriff auf APIs, die über eine API Management-Instanz veröffentlicht werden. Dieser Artikel bietet eine Übersicht über das Konzept.
 
-## <a name="what-is-subscriptions"></a>Was sind Abonnements?
+## <a name="what-are-subscriptions"></a>Was sind Abonnements?
 
-Beim Veröffentlichen von APIs über APIM ist die einfachste und gängigste Methode zum Schutz des Zugriffs auf diese APIs die Verwendung von Abonnementschlüsseln. Anders ausgedrückt: Entwickler, die die veröffentlichten APIs nutzen möchten, müssen einen gültigen Abonnementschlüssel in HTTP-Anforderungen einschließen, wenn Aufrufe an diese APIs gesendet werden. Andernfalls werden die Aufrufe sofort durch das APIM-Gateway abgelehnt und nicht an die Back-End-Dienste weitergeleitet.
+Wenn Sie APIs mit API Management veröffentlichen, ist es einfach und üblich, auf diese APIs mithilfe von Abonnementschlüsseln sicher zuzugreifen. Entwickler, die die veröffentlichten APIs nutzen möchten, müssen einen gültigen Abonnementschlüssel in HTTP-Anforderungen einschließen, wenn sie Aufrufe an diese APIs senden. Andernfalls werden die Aufrufe sofort vom API Management-Gateway abgelehnt. Sie werden nicht an die Back-End-Dienste weitergeleitet.
 
-Um einen Abonnementschlüssel für den API-Zugriff zu erhalten, ist ein Abonnement erforderlich. Ein Abonnement ist im Wesentlichen ein benannter Container für ein Paar von Abonnementschlüsseln. Abonnements können von Entwicklern abgerufen werden, die die veröffentlichten APIs nutzen möchten, mit oder ohne Genehmigung durch die API-Herausgeber. API-Herausgeber können Abonnements im Namen von API-Nutzern auch direkt erstellen.
+Um einen Abonnementschlüssel für den API-Zugriff zu erhalten, ist ein Abonnement erforderlich. Ein Abonnement ist im Wesentlichen ein benannter Container für ein Paar von Abonnementschlüsseln. Entwickler, die die veröffentlichten APIs verarbeiten müssen, können Abonnements erhalten. Sie benötigen keine Genehmigung durch API-Herausgeber. API-Herausgeber können Abonnements für API-Nutzer auch direkt erstellen.
 
 > [!TIP]
-> APIM bietet außerdem Unterstützung für weitere Mechanismen zum Schutz des API-Zugriffs, darunter [OAuth2.0](api-management-howto-protect-backend-with-aad.md), [Clientzertifikate](api-management-howto-mutual-certificates-for-clients.md) und [IP-Whitelists](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs).
+> API Management unterstützt auch andere Mechanismen zum Schützen des Zugriffs auf APIs, einschließlich der folgenden Beispiele:
+> - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
+> - [Clientzertifikate](api-management-howto-mutual-certificates-for-clients.md)
+> - [IP-Whitelisting](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Bereich von Abonnements
 
@@ -39,7 +42,7 @@ Abonnements können verschiedenen Bereichen zugeordnet werden: einem Produkt, al
 
 ### <a name="subscriptions-for-a-product"></a>Abonnements für ein Produkt
 
-Traditionell wurden Abonnements in APIM als Bereich immer ein einzelnes [API-Produkt](api-management-terminology.md) zugeordnet. Entwickler konnten die Liste der Produkte im Entwicklerportal einsehen und Abonnementanforderungen für die Produkte übermitteln, die sie verwenden wollten. Nachdem eine Abonnementanforderung genehmigt wurde (entweder automatisch oder durch den API-Herausgeber), können die Entwickler die Schlüssel darin für den Zugriff auf alle APIs im Produkt verwenden.
+Traditionell wurden Abonnements in APIM als Bereich immer einem einzelnen [API-Produkt](api-management-terminology.md) zugeordnet. Entwickler fanden die Liste der Produkte im Entwicklerportal. Dann sendeten sie Abonnementanforderungen für die Produkte, die sie verwenden wollten. Nachdem eine Abonnementanforderung genehmigt wurde – entweder automatisch oder durch den API-Herausgeber – können die Entwickler die Schlüssel darin für den Zugriff auf alle APIs im Produkt verwenden.
 
 ![Produktabonnements](./media/api-management-subscriptions/product-subscription.png)
 
@@ -51,13 +54,14 @@ Traditionell wurden Abonnements in APIM als Bereich immer ein einzelnes [API-Pro
 > [!NOTE]
 > Aktuell ist dieses Feature nur im API Management-Verbrauchstarif verfügbar.
 
-Bei Einführung des [Verbrauchstarifs](https://aka.ms/apimconsumptionblog) für APIM wurde einige Änderungen vorgenommen, um die Schlüsselverwaltung zu optimieren. Zunächst wurden zwei weitere Abonnementbereiche hinzugefügt: alle APIs und eine einzelne API. Der Bereich von Abonnements ist nicht länger auf ein API-Produkt beschränkt. Es ist jetzt möglich, Schlüssel zur Zugriffserteilung für eine API (oder alle APIs innerhalb einer APIM-Instanz) zu erstellen, ohne dass zunächst ein Produkt erstellt und diesem die APIs hinzugefügt werden müssen. Darüber hinaus umfasst jede APIM-Instanz jetzt ein unveränderbares Abonnement für alle APIs für ein einfacheres Testen und Debuggen von APIs innerhalb der Testkonsole.
+Bei Einführung des [Verbrauchstarifs](https://aka.ms/apimconsumptionblog) für API Management wurde einige Änderungen vorgenommen, um die Schlüsselverwaltung zu optimieren:
+- Zunächst wurden zwei weitere Abonnementbereiche hinzugefügt: alle APIs und eine einzelne API. Der Bereich von Abonnements ist nicht länger auf ein API-Produkt beschränkt. Es ist jetzt möglich, Schlüssel zur Zugriffserteilung für eine API (oder alle APIs innerhalb einer API Management-Instanz) zu erstellen, ohne dass zunächst ein Produkt erstellt und diesem die APIs hinzugefügt werden müssen. Außerdem gehört zu jeder API Management-Instanz nun ein unveränderliches Abonnement für alle APIs. Dieses Abonnement erleichtert das Testen und Debuggen von APIs in der Testkonsole.
 
-Außerdem lässt APIM jetzt „eigenständige“ Abonnements zu. Es ist nicht mehr erforderlich, dass Abonnements einem Entwicklerkonto zugeordnet sind. Dies ist insbesondere in Szenarien nützlich, in denen ein Abonnement von mehreren Entwicklern oder Teams gemeinsam genutzt wird.
+- Außerdem lässt API Management jetzt **eigenständige** Abonnements zu. Es ist nicht mehr erforderlich, dass Abonnements einem Entwicklerkonto zugeordnet sind. Dieses Feature ist insbesondere in Szenarien nützlich, in denen ein Abonnement von mehreren Entwicklern oder Teams gemeinsam genutzt wird.
 
-Und schließlich können API-Herausgeber jetzt direkt im Azure-Portal [Abonnements erstellen](api-management-howto-create-subscriptions.md):
+- Und schließlich können API-Herausgeber jetzt direkt im Azure-Portal [Abonnements erstellen](api-management-howto-create-subscriptions.md):
 
-![Flexible Abonnements](./media/api-management-subscriptions/flexible-subscription.png)
+    ![Flexible Abonnements](./media/api-management-subscriptions/flexible-subscription.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu API Management:

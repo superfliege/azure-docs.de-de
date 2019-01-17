@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: da676b5d1cb3c25adc72d04882915ee0440c2d98
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002330"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121224"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
-[Azure Functions](functions-overview.md) verfügt über eine integrierte Integration in [Azure Application Insights](../application-insights/app-insights-overview.md) zum Überwachen von Funktionen. In diesem Artikel wird veranschaulicht, wie Sie Functions zum Senden von systemseitig generierten Protokolldateien an Application Insights konfigurieren.
+[Azure Functions](functions-overview.md) verfügt über eine integrierte Integration in [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) zum Überwachen von Funktionen. In diesem Artikel wird veranschaulicht, wie Sie Functions zum Senden von systemseitig generierten Protokolldateien an Application Insights konfigurieren.
 
 ![Metrik-Explorer für Application Insights](media/functions-monitoring/metrics-explorer.png)
 
@@ -329,7 +329,7 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 
 ## <a name="configure-sampling"></a>Konfigurieren des Samplings
 
-Application Insights verfügt über ein [Sampling](../application-insights/app-insights-sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Rate der eingehenden Telemetrieelemente einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden Elemente zufällig zu ignorieren. Die Standardeinstellung für die maximale Anzahl von Elementen pro Sekunde ist 5. Sie können das Sampling in der Datei [host.json](functions-host-json.md) konfigurieren.  Hier sehen Sie ein Beispiel:
+Application Insights verfügt über ein [Sampling](../azure-monitor/app/sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Rate der eingehenden Telemetrieelemente einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden Elemente zufällig zu ignorieren. Die Standardeinstellung für die maximale Anzahl von Elementen pro Sekunde ist 5. Sie können das Sampling in der Datei [host.json](functions-host-json.md) konfigurieren.  Hier sehen Sie ein Beispiel:
 
 ### <a name="version-2x"></a>Version 2.x 
 
@@ -360,7 +360,7 @@ Application Insights verfügt über ein [Sampling](../application-insights/app-i
 ```
 
 > [!NOTE]
-> Das [Sampling](../application-insights/app-insights-sampling.md) ist standardmäßig aktiviert. Wenn Ihnen Daten zu fehlen scheinen, müssen Sie möglicherweise nur die Sampling-Einstellungen an Ihr spezielles Überwachungsszenario anpassen.
+> Das [Sampling](../azure-monitor/app/sampling.md) ist standardmäßig aktiviert. Wenn Ihnen Daten zu fehlen scheinen, müssen Sie möglicherweise nur die Sampling-Einstellungen an Ihr spezielles Überwachungsszenario anpassen.
 
 ## <a name="write-logs-in-c-functions"></a>Schreiben von Protokollen in C#-Funktionen
 
@@ -414,7 +414,7 @@ Hier ist eine JSON-Beispieldarstellung von `customDimensions`-Daten angegeben:
 In C#-Skriptfunktionen können Sie die `LogMetric`-Erweiterungsmethode in `ILogger` verwenden, um in Application Insights benutzerdefinierte Metriken zu erstellen. Hier ist ein Beispiel für einen Methodenaufruf angegeben:
 
 ```csharp
-logger.LogMetric("TestMetric", 1234); 
+logger.LogMetric("TestMetric", 1234);
 ```
 
 Dieser Code ist eine Alternative zum Aufrufen von `TrackMetric` mithilfe der [Application Insights-API für .NET](#custom-telemetry-in-c-functions).
@@ -429,10 +429,10 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="logging-custom-metrics"></a>Protokollieren von benutzerdefinierten Metriken  
 
-In Node.js-Funktionen können Sie die `context.log.metric`-Methode verwenden, um in Application Insights benutzerdefinierte Metriken zu erstellen. Hier ist ein Beispiel für einen Methodenaufruf angegeben:
+Bei der Ausführung von [Version 1.x](functions-versions.md#creating-1x-apps) der Functions-Runtime können Node.js-Funktionen die `context.log.metric`-Methode verwenden, um in Application Insights benutzerdefinierte Metriken zu erstellen. Diese Methode wird derzeit in Version 2.x nicht unterstützt. Hier ist ein Beispiel für einen Methodenaufruf angegeben:
 
 ```javascript
-context.log.metric("TestMetric", 1234); 
+context.log.metric("TestMetric", 1234);
 ```
 
 Dieser Code ist eine Alternative zum Aufrufen von `trackMetric` mithilfe des [Node.js SDK für Application Insights](#custom-telemetry-in-javascript-functions).

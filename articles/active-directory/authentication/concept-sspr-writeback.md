@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4d311794c1c0f2dd6b9a0b2a44983b47bfeef362
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319370"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040539"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -35,11 +35,11 @@ Kennwortrückschreiben wird in Umgebungen unterstützt, die folgende Elemente ve
 
 Kennwortrückschreiben bietet:
 
-* **Erzwingung von lokalen Active Directory-Kennwortrichtlinien:**: Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Diese Überprüfung umfasst Prüfen des Verlaufs, der Komplexität, des Alters, der Kennwortfilter und aller weiteren Kennwortbeschränkungen, die Sie im lokalen Active Directory definiert haben.
-* **Feedback ohne Verzögerung**: Kennwortrückschreiben ist ein synchroner Vorgang. Ihre Benutzer werden sofort benachrichtigt, wenn ihre Kennwörter nicht der Richtlinie entsprechen oder das Zurücksetzen oder Ändern des Kennworts aus irgendeinem Grund nicht möglich war.
-* **Unterstützung von Kennwortänderungen über den Zugriffsbereich und Office 365**: Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre abgelaufenen oder noch nicht abgelaufenen Kennwörter ändern möchten, werden diese Kennwörter in die lokale Active Directory-Umgebung zurückgeschrieben.
-* **Unterstützung für Kennwortrückschreiben, wenn die Kennwörter im Azure-Portal von einem Administrator zurückgesetzt werden**: Wenn ein Administrator das Kennwort eines Benutzers im [Azure-Portal](https://portal.azure.com) zurücksetzt und der Benutzer ein Verbundkonto oder ein Konto mit Kennworthashsynchronisierung verwendet, wird das Kennwort lokale zurückgeschrieben. Diese Funktionalität wird im Office-Verwaltungsportal derzeit nicht unterstützt.
-* **Keine Anforderung, dass irgendeine eingehende Firewallregel vorhanden sein muss**: Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
+* **Erzwingung von lokalen Active Directory-Kennwortrichtlinien**: Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Diese Überprüfung umfasst Prüfen des Verlaufs, der Komplexität, des Alters, der Kennwortfilter und aller weiteren Kennwortbeschränkungen, die Sie im lokalen Active Directory definiert haben.
+* **Feedback ohne Verzögerung**:  Die Kennwortrückschreibung ist ein synchroner Vorgang. Ihre Benutzer werden sofort benachrichtigt, wenn ihre Kennwörter nicht der Richtlinie entsprechen oder das Zurücksetzen oder Ändern des Kennworts aus irgendeinem Grund nicht möglich war.
+* **Unterstützung für das Ändern von Kennwörtern über den Zugriffsbereich und Office 365**: Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre abgelaufenen oder noch nicht abgelaufenen Kennwörter ändern möchten, werden diese Kennwörter in die lokale Active Directory-Umgebung zurückgeschrieben.
+* **Unterstützung für Kennwortrückschreiben, wenn die Kennwörter im Azure-Portal von einem Administrator zurückgesetzt werden**: Wenn ein Administrator das Kennwort eines Benutzers im [Azure-Portal](https://portal.azure.com) zurücksetzt und der Benutzer ein Verbundkonto oder ein Konto mit Kennworthashsynchronisierung verwendet, wird das Kennwort lokal zurückgeschrieben. Diese Funktionalität wird im Office-Verwaltungsportal derzeit nicht unterstützt.
+* **Keine Notwendigkeit zur Festlegung von eingehenden Firewallregeln**: Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
 
 > [!Note]
 > Benutzerkonten in geschützten Gruppen im lokalen Active Directory können nicht zum Kennwortrückschreiben verwendet werden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Geschützte Konten und Gruppen in Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
@@ -60,7 +60,7 @@ Damit Kennwortrückschreiben verwendet werden kann, muss in Ihrem Mandanten eine
 * Microsoft 365 F1
 
 > [!WARNING]
-> Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für das Kennwortrückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.
+> Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.
 >
 
 ## <a name="how-password-writeback-works"></a>Funktionsweise der Kennwortrückschreibung
@@ -121,7 +121,7 @@ Das Kennwortrückschreiben ist ein äußerst sicherer Dienst. Zum Schutz Ihrer I
 
 Nachdem ein Benutzer eine Kennwortzurücksetzung übermittelt hat, durchläuft die Zurücksetzungsanforderung verschiedene Verschlüsselungsschritte, bevor sie in Ihrer lokalen Umgebung eintrifft. Diese Verschlüsselungsschritte stellen maximale Dienstzuverlässigkeit und -sicherheit sicher. Die Schritte lassen sich wie folgt beschreiben:
 
-* **Schritt 1: Kennwortverschlüsselung mit 2048-Bit-RSA-Schlüssel**: Nachdem ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt hat, wird dieses Kennwort mit einem 2048-Bit-RSA-Schlüssel verschlüsselt.
+* **Schritt 1: Kennwortverschlüsselung mit 2.048-Bit-RSA-Schlüssel**: Nachdem ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt hat, wird dieses Kennwort mit einem 2.048-Bit-RSA-Schlüssel verschlüsselt.
 * **Schritt 2: Verschlüsselung auf Paketebene mit AES-GCM**: Das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) wird mithilfe von AES-GCM verschlüsselt. Diese Verschlüsselung verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden ServiceBus-Kanal den Inhalt anzeigen oder manipulieren kann.
 * **Schritt 3: Abwicklung der gesamten Kommunikation über TLS/SSL**: Die gesamte Kommunikation mit ServiceBus wird über einen TLS/SSL-Kanal abgewickelt. Diese Verschlüsselung schützt den Inhalt vor nicht autorisierten Dritten.
 * **Automatischer Schlüsselrollover im Abstand von sechs Monaten**: Alle sechs Monate oder jedes Mal, wenn das Kennwortrückschreiben deaktiviert und dann in Azure AD Connect wieder aktiviert wird, erfolgt ein Rollover aller Schlüssel, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu erreichen.

@@ -1,5 +1,5 @@
 ---
-title: Erfassen der Linux-Anwendungsleistung in Azure Monitor | Microsoft-Dokumentation
+title: Erfassen der Linux-Anwendungsleistung in Log Analytics | Microsoft-Dokumentation
 description: Dieser Artikel enthält Details zum Konfigurieren des Log Analytics-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 824d3f2402861ed8a54a29c9571654cc581e4c5e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434629"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104844"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Azure Monitor 
+# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Dieser Artikel enthält Details zum Konfigurieren des [Log Analytics-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen in Azure Monitor zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
+Dieser Artikel enthält Details zum Konfigurieren des [Log Analytics-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen in Log Analytics zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -114,7 +114,7 @@ Diese Berechtigungen können durch Ausführen der folgenden „grant“-Befehle 
 
 ### <a name="define-performance-counters"></a>Definieren von Leistungsindikatoren
 
-Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Monitor konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsdatenquellen in Azure Monitor](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
+Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Definieren von Leistungsindikatoren
 
-Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Monitor konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsdatenquellen in Azure Monitor](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
+Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|

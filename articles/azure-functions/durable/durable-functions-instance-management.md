@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab2e35c916c6bd6f2d73a328f71710378fac890
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8dbf7b6f6741998972070234d90e87baca1154a4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343937"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042460"
 ---
-# <a name="manage-instances-in-durable-functions-azure-functions"></a>Verwalten von Instanzen in Durable Functions (Azure Functions)
+# <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
 In [Durable Functions](durable-functions-overview.md) können Orchestrierungsinstanzen gestartet, beendet und abgefragt sowie Benachrichtigungsereignisse gesendet werden. Die gesamte Instanzenverwaltung erfolgt mithilfe der [Orchestrierungsclientbindung](durable-functions-bindings.md). In diesem Artikel wird jeder Instanzenverwaltungsvorgang im Detail erläutert.
 
@@ -520,7 +520,7 @@ Eine fehlerhafte Orchestrierungsinstanz kann mithilfe der [RewindAsync](https://
 > [!NOTE]
 > Diese API ist nicht als Ersatz für ordnungsgemäße Richtlinien zur Fehlerbehandlung und Wiederholung gedacht. Sie soll nur in Fällen verwendet werden, in denen Orchestrierungsinstanzen aus unerwarteten Gründen ausfallen. Weitere Informationen zur Richtlinien für Fehlerbehandlung und Wiederholung finden Sie im Thema [Fehlerbehandlung](durable-functions-error-handling.md).
 
-Ein Beispiel-Anwendungsfall für *Zurückspulen* ist ein Workflow, der eine Reihe von [menschlichen Genehmigungen](durable-functions-overview.md#pattern-5-human-interaction) umfasst. Angenommen, eine Reihe von Aktivitätsfunktionen benachrichtigt jemanden, dass seine Genehmigung erforderlich ist und wartet in Echtzeit auf die Antwort. Nachdem alle Genehmigungsaktivitäten Antworten erhalten haben oder abgelaufen sind, tritt aufgrund einer Fehlkonfiguration einer Anwendung, z.B. eine ungültige Datenbank-Verbindungszeichenfolge, ein Fehler bei einer anderen Aktivität auf. Das Ergebnis ist ein Orchestrierungsfehler tief im Workflow. Mit der `RewindAsync`-API (.NET) oder `rewindAsync`-API (JavaScript) kann ein Anwendungsadministrator den Konfigurationsfehler beheben und die fehlerhafte Orchestrierung zum Zustand unmittelbar vor dem Fehler *zurückspulen*. Keiner der Schritte, die menschliche Interaktion erforderten, muss erneut genehmigt werden, und die Orchestrierung kann jetzt erfolgreich abgeschlossen werden.
+Ein Beispiel-Anwendungsfall für *Zurückspulen* ist ein Workflow, der eine Reihe von [menschlichen Genehmigungen](durable-functions-concepts.md#human) umfasst. Angenommen, eine Reihe von Aktivitätsfunktionen benachrichtigt jemanden, dass seine Genehmigung erforderlich ist und wartet in Echtzeit auf die Antwort. Nachdem alle Genehmigungsaktivitäten Antworten erhalten haben oder abgelaufen sind, tritt aufgrund einer Fehlkonfiguration einer Anwendung, z.B. eine ungültige Datenbank-Verbindungszeichenfolge, ein Fehler bei einer anderen Aktivität auf. Das Ergebnis ist ein Orchestrierungsfehler tief im Workflow. Mit der `RewindAsync`-API (.NET) oder `rewindAsync`-API (JavaScript) kann ein Anwendungsadministrator den Konfigurationsfehler beheben und die fehlerhafte Orchestrierung zum Zustand unmittelbar vor dem Fehler *zurückspulen*. Keiner der Schritte, die menschliche Interaktion erforderten, muss erneut genehmigt werden, und die Orchestrierung kann jetzt erfolgreich abgeschlossen werden.
 
 > [!NOTE]
 > Die Funktion *Zurückspulen* unterstützt kein Zurückspulen von Orchestrierungsinstanzen, die permanente Timer verwenden.

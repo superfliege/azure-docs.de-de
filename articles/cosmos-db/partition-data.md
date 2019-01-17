@@ -1,17 +1,17 @@
 ---
 title: Partitionierung und horizontale Skalierung in Azure Cosmos DB
 description: Erfahren Sie, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Partitionierung und Partitionsschlüssel konfiguriert werden und wie Sie den richtigen Partitionsschlüssel für Ihre Anwendung auswählen.
-author: aliuy
+ms.author: mjbrown
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: andrl
-ms.openlocfilehash: 38f587fc24478beff3ab236207de3ed8a892c915
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dd62e0f4ff110ec8454031f1b66b56025328c33c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998947"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101478"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 
@@ -23,13 +23,11 @@ Eine logische Partition besteht aus einem Satz von Elementen mit demselben Parti
 
 In Azure Cosmos DB ist ein Container die grundlegende Einheit für die Skalierbarkeit. Die Daten, die dem Container hinzugefügt werden, und der Durchsatz, den Sie für den Container bereitstellen, werden automatisch (horizontal) über einen Satz von logischen Partitionen partitioniert. Sie werden basierend auf dem Partitionsschlüssel, den Sie für den Cosmos-Container angeben, partitioniert. Weitere Informationen finden Sie im Artikel [Angeben des Partitionsschlüssels für Ihre Cosmos-Container](how-to-create-container.md).
 
-Eine logische Partition definiert den Bereich für Datenbanktransaktionen. Sie können Elemente in einer logischen Partition mithilfe einer Transaktion mit Momentaufnahmeisolation aktualisieren.
-
-Wenn dem Container neue Elemente hinzugefügt werden oder der für den Container bereitgestellte Durchsatz erhöht wird, werden vom System transparent neue logische Partitionen erstellt.
+Eine logische Partition definiert den Bereich für Datenbanktransaktionen. Sie können Elemente in einer logischen Partition mithilfe einer Transaktion mit Momentaufnahmeisolation aktualisieren. Wenn dem Container neue Elemente hinzugefügt werden, werden neue logische Partitionen transparent vom System erstellt.
 
 ## <a name="physical-partitions"></a>Physische Partitionen
 
-Ein Cosmos-Container wird skaliert, indem die Daten und der Durchsatz auf eine große Anzahl von logischen Partitionen verteilt werden. Intern werden eine oder mehrere logische Partitionen einer **physischen Partition** zugeordnet, die aus einem auch als Replikatgruppe bezeichneten Satz von Replikaten besteht. Jede Replikatgruppe hostet eine Instanz der Cosmos-Datenbank-Engine. Eine Replikatgruppe macht die in der physischen Partition gespeicherten Daten dauerhaft, hochverfügbar und konsistent. Eine physische Partition unterstützt eine feste, maximale Menge an Speicher und RUs. Jedes Replikat der physischen Partition erbt das Speicherkontingent. Und alle Replikate einer physischen Partition unterstützen den Durchsatz, der der physischen Partition zugeordnet wurde. Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
+Ein Azure Cosmos-Container wird skaliert, indem die Daten und der Durchsatz auf eine große Anzahl von logischen Partitionen verteilt werden. Intern werden eine oder mehrere logische Partitionen einer **physischen Partition** zugeordnet, die aus einem auch als Replikatgruppe bezeichneten Satz von Replikaten besteht. Jede Replikatgruppe hostet eine Instanz der Azure Cosmos-Datenbank-Engine. Eine Replikatgruppe macht die in der physischen Partition gespeicherten Daten dauerhaft, hochverfügbar und konsistent. Eine physische Partition unterstützt eine feste, maximale Menge an Speicher und RUs. Jedes Replikat der physischen Partition erbt das Speicherkontingent. Und alle Replikate einer physischen Partition unterstützen den Durchsatz, der der physischen Partition zugeordnet wurde. Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
 
 ![Partitionierung in Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 

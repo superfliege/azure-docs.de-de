@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten | Microsoft-Dokumentation
+title: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung in Azure Active Directory (Azure AD) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren.
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993285"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102277"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
 Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden können. Dafür können Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
 
@@ -54,7 +54,6 @@ Um Ihre Azure AD-Hybridimplementierung zu planen, sollten Sie sich mit folgenden
 
 
  
-
 
 ## <a name="review-supported-devices"></a>Überprüfung unterstützter Geräte 
 
@@ -112,6 +111,11 @@ Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden
 
 Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. Es kann auch vorkommen, dass Sie nicht alle Ihre Geräte automatisch registrieren möchten. In diesem Fall finden Sie weitere Informationen unter [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md).
 
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) sind, sollten Sie erwägen, diesen Status vor dem Aktivieren der Azure AD-Hybrideinbindung zu entfernen. Der Doppelstatus eines Geräts, Azure AD-Hybrideinbindung und Registrierung bei Azure AD, wird nicht unterstützt. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden: 
+ - Eine etwaige Registrierung bei Azure AD würde nach der Azure AD-Hybrideinbindung des Geräts automatisch entfernt werden. 
+ - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001
+
+
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern von Azure AD Hybrid Join für Ihre Geräte
 
 Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. In einigen Fällen sollten Sie nicht alle Ihre Geräte automatisch registrieren. Dies gilt beispielsweise während des anfänglichen Rollouts, um sicherzustellen, dass alles wie erwartet funktioniert.
@@ -144,9 +148,9 @@ Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfigur
  Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](../device-management-hybrid-azuread-joined-devices-setup.md). 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Unterstützung für alternative Anmelde-IDs in Azure AD Hybrid Join
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Unterstützung der alternativen Anmelde-ID in Azure Active Directory-Hybrideinbindung
 
-Unter Windows 10 bietet Azure AD Hybrid Join eingeschränkte Unterstützung für [alternative Anmelde-IDs](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) basierend auf dem Typ der alternativen Anmelde-ID, der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version. Es gibt zwei Typen von alternativen Anmelde-IDs, die in Ihrer Umgebung vorhanden sein können.
+Unter Windows 10 bietet die Azure Active Directory-Hybrideinbindung eingeschränkte Unterstützung für [alternative Anmelde-IDs](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) basierend auf dem Typ der alternativen Anmelde-ID, der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version. Es gibt zwei Typen von alternativen Anmelde-IDs, die in Ihrer Umgebung vorhanden sein können:
 
  - Routingfähige alternative Anmelde-ID: Eine routingfähige alternative Anmelde-ID verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, sind „contoso.org“ und „contoso.co.uk“ gültige Domänen, die Contoso gehören und [in Azure AD überprüft werden](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
  

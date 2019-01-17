@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: cdc53aeb0ecbea5714a8587c8d03ab6aa292394c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27e946dfdbb71bec03d3e4001ec63bd2d889e1b9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634997"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063504"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 
@@ -22,7 +22,7 @@ ms.locfileid: "34634997"
 Sie können den Azure-Ressourcen-Manager verwenden, um Azure IoT Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Tutorial erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage und PowerShell einen IoT Hub erstellen.
 
 > [!NOTE]
-> Azure bietet zwei Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-model.md) und klassisch. Dieser Artikel behandelt die Verwendung des Azure Resource Manager-Bereitstellungsmodells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Azure Resource Manager-Bereitstellungsmodells.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -144,6 +144,7 @@ Nachdem Sie nun einen IoT Hub mithilfe einer Azure Resource Manager-Vorlage mit 
 
 * Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API][lnk-rest-api].
 * Weitere Informationen zu den Funktionen des Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager][lnk-azure-rm-overview].
+* Informationen zur JSON-Syntax und zu den Eigenschaften, die in Vorlagen verwendet werden sollen, finden Sie unter [Microsoft.Network-Ressourcentypen](/azure/templates/microsoft.devices/iothub-allversions).
 
 Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 

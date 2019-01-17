@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: John.Haskin
-ms.openlocfilehash: fc2659fb9bbe043a61f1ad49bb4290b7ccf834f8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 245826e816f77db3394d1fc3858246ec5d1d605a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422013"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102005"
 ---
 # <a name="create-an-oem-package"></a>Erstellen eines OEM-Pakets
 
@@ -28,7 +28,7 @@ Das Azure Stack-OEM-Erweiterungspaket ist der Mechanismus, über den Ihrer Azure
 
 ## <a name="creating-the-package"></a>Erstellen des Pakets
 
-Nach dem Erstellen und Überprüfen kann das OEM-Erweiterungspaket in VaaS verwendet werden.  Stellen Sie vor dem Fortfahren sicher, dass Sie die Schritte zum [Erstellen eines OEM-Pakets](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true) abgeschlossen haben. Das Paket wird dann zusammen mit VaaS Testergebnissen für die Anmeldung beim Workflow „Paketvalidierung“ an Microsoft übermittelt. Die folgenden Schritte beschreiben, wie Sie die generierten Dateien in einer einzelnen ZIP-Datei bündeln können, die von VaaS verwendet werden kann.
+Nach dem Erstellen und Überprüfen kann das OEM-Erweiterungspaket in VaaS verwendet werden.  Stellen Sie vor dem Fortfahren sicher, dass Sie die Schritte zum [Erstellen eines OEM-Pakets](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true) abgeschlossen haben. Das Paket wird dann zusammen mit VaaS-Testergebnissen für die Anmeldung beim Workflow „Lösungsvalidierung“ an Microsoft übermittelt. Die folgenden Schritte beschreiben, wie Sie die generierten Dateien in einer einzelnen ZIP-Datei bündeln können, die von VaaS verwendet werden kann.
 
 1. Identifizieren Sie den folgenden Inhalt für das Paket:
     - Eine ausführbare Datei mit dem Namen `<Publisher>-<Model>-<Version>.exe`.
@@ -49,7 +49,7 @@ Um die Struktur der ZIP-Datei zu überprüfen, untersuchen Sie sie, und vergewis
 
 ![Ordnungsgemäß gezippter Paketinhalt](media/vaas-create-oem-package-3.png)
 
-Die ZIP-Datei kann jetzt zu VaaS hochgeladen und im Rahmen des Workflows „Paketvalidierung“ von Microsoft signiert werden.
+Die ZIP-Datei kann jetzt zu VaaS hochgeladen und im Rahmen des Workflows „Lösungsvalidierung“ von Microsoft signiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

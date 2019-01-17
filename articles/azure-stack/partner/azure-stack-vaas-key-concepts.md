@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 871df693878611b0322a0f06634c62a7a9efd90a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6a14a806b48b30d84b021a84a1ef0a2f4318ea94
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335162"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106469"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Wichtige Begriffe zu Validation-as-a-Service
 
@@ -44,7 +44,7 @@ Workflows werden nach dem Testszenariotyp kategorisiert. Bei inoffiziellen Tests
 ![VaaS-Workflowkacheln](media/tile_all-workflows.png)
 
 > [!NOTE]
-> Der Workflow **Paketvalidierung** unterstützt derzeit zwei Szenarien: [Überprüfen von OEM-Paketen](azure-stack-vaas-validate-oem-package.md) und [Überprüfen von Softwareupdates von Microsoft](azure-stack-vaas-validate-microsoft-updates.md).
+> Der **Lösungsvalidierungs**-Workflow unterstützt derzeit zwei Szenarien: [Überprüfen der OEM-Pakete](azure-stack-vaas-validate-oem-package.md) und [Überprüfen der Softwareupdates von Microsoft](azure-stack-vaas-validate-microsoft-updates.md).
 
 Weitere Informationen zu Workflowtypen finden Sie unter [Was ist Validation-as-a-Service für Azure Stack?](azure-stack-vaas-overview.md).
 
@@ -54,8 +54,8 @@ Weitere Informationen zu Workflowtypen finden Sie unter [Was ist Validation-as-a
 2. Wählen Sie zum Erstellen eines neuen Workflows auf einer beliebigen Kachel die Option **Starten** aus. Spezifische Informationen zu den einzelnen Workflows finden Sie in den folgenden Artikeln:
     - Testdurchlauf: [Schnellstart: Planen des ersten Tests mithilfe des Validation-as-a-Service-Portals](azure-stack-vaas-schedule-test-pass.md)
     - Lösungsvalidierung: [Überprüfen einer neuen Azure Stack-Lösung](azure-stack-vaas-validate-solution-new.md)
-    - Paketvalidierung: [Überprüfen der Softwareupdates von Microsoft](azure-stack-vaas-validate-microsoft-updates.md)
-    - Paketvalidierung: [Überprüfen von OEM-Paketen](azure-stack-vaas-validate-oem-package.md)
+    - Lösungsvalidierung: [Überprüfen der Softwareupdates von Microsoft](azure-stack-vaas-validate-microsoft-updates.md)
+    - Lösungsvalidierung: [Überprüfen von OEM-Paketen](azure-stack-vaas-validate-oem-package.md)
 
 3. Wählen Sie zum Verwalten oder Überwachen eines vorhandenen Workflows auf der Workflow-Kachel die Option **Verwalten** aus. Wählen Sie den Namen des Workflows aus, und zeigen Sie mithilfe der Schaltfläche **Bearbeiten** die Eigenschaften an, oder ändern Sie allgemeine Testparameter.
 

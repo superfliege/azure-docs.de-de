@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231626"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063215"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Erstellen von Variablen für das Speichern und Verwalten von Werten in Azure Logic Apps
 
@@ -28,7 +28,10 @@ Variablen können für Datentypen wie „integer“, „float“, „boolean“,
 * Zuweisen eines anderen Werts zu der Variablen
 * Einfügen oder *Anfügen* des Variablenwerts als Letztes in einer Zeichenfolge oder einem Array
 
-Vorhandene Variabeln sind nur innerhalb der Logic App-Instanz, die sie erstellt, global. Außerdem bleiben sie über alle Schleifeniterationen innerhalb einer Logic App-Instanz bestehen. Zum Verweisen auf eine Variable verwenden Sie den Namen der Variablen als Token und nicht den Namen der Aktion, was die übliche Vorgehensweise wäre, um auf die Ausgaben einer Aktion zu verweisen.
+Vorhandene Variabeln sind nur innerhalb der Logic App-Instanz, die sie erstellt, global. Außerdem bleiben sie über alle Schleifeniterationen innerhalb einer Logic App-Instanz bestehen. Zum Verweisen auf eine Variable verwenden Sie den Namen der Variablen als Token und nicht den Namen der Aktion, was die übliche Vorgehensweise wäre, um auf die Ausgaben einer Aktion zu verweisen. 
+
+> [!IMPORTANT]
+> Standardmäßig werden Zyklen in einer „ForEach“-Schleife parallel ausgeführt. Wenn Sie Variablen in Schleifen verwenden, führen Sie die Schleife [sequenziell](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) aus, damit Variablen vorhersagbare Ergebnisse zurückgeben. 
 
 Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>. 
 
@@ -38,7 +41,7 @@ Damit Sie diesem Artikel folgen können, benötigen Sie die folgenden Komponente
 
 * Die Logik-App, für die Sie eine Variable erstellen möchten. 
 
-  Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), der als erster Schritt in Ihrer Logik-App verwendet wird. 
 

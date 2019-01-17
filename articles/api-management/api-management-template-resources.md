@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4a7e3e9ff414c8f7ba1c49924f1d8659d72ae3e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970330"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158209"
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
 Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung in Entwicklerportalvorlagen.  
@@ -108,7 +108,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (Möchten Sie die Anwendung entfernen?)|  
 |WebDevelopersAppNotPublished|Not published (Nicht veröffentlicht)|  
-|WebDevelopersAppNotSubminted|Not submitted (Nicht gesendet)|  
+|WebDevelopersAppNotSubmitted|Not submitted (Nicht gesendet)|  
 |WebDevelopersAppTableCategoryHeader|Category (Kategorie)|  
 |WebDevelopersAppTableNameHeader|Name|  
 |WebDevelopersAppTableStateHeader|State (Zustand)|  
@@ -287,7 +287,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |OAuth2SendingMethod_QueryParam|Query parameter (Abfrageparameter)|  
 |OAuth2AuthorizationServerGeneralException|Beim Autorisieren des Zugriffs über {0} ist ein Fehler aufgetreten|  
 |OAuth2AuthorizationServerCommunicationException|An HTTP connection to authorization server could not be established or it has been unexpectedly closed. (Eine HTTP-Verbindung mit dem Autorisierungsserver konnte nicht hergestellt werden oder wurde unerwartet geschlossen.)|  
-|WebDocumentationOAuth2GeneralErrorMessage|Unexpected error occured. (Unerwarteter Fehler.)|  
+|WebDocumentationOAuth2GeneralErrorMessage|Unerwarteter Fehler.|  
 |AuthorizationServerCommunicationException|Authorization server communication exception has happened. (Für den Autorisierungsserver ist eine Ausnahme bei der Kommunikation aufgetreten.) Please contact administrator. (Wenden Sie sich an den Administrator.)|  
 |TextblockSubscriptionKeyHeaderDescription|Subscription key which provides access to this API. (Abonnementschlüssel, der den Zugriff auf diese API ermöglicht.) Found in your <a href='/developer'\>Profile</a\> (Gefunden in Ihrem Profil).|  
 |TextblockOAuthHeaderDescription|OAuth 2.0-Zugriffstoken erhalten von <i\>{0}</i\>. Unterstützte Gewährungstypen: <i\>{1}</i\>.|  
@@ -517,7 +517,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebDevelopersSecondaryKey|Secondary key (Sekundärschlüssel)|  
 |ButtonLabelShowKey|Show (Anzeigen)|  
 |ButtonLabelRenewSubscription|Erneuern|  
-|WebDevelopersSubscriptionReqested|Angefordert am {0}|  
+|WebDevelopersSubscriptionRequested|Angefordert am {0}|  
 |WebDevelopersSubscriptionRequestedState|Requested (Angefordert)|  
 |WebDevelopersSubscriptionTableNameHeader|Name|  
 |WebDevelopersSubscriptionTableStateHeader|Zustand|  

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 797cef2d3a0e2cfeb28411c30a7da8a5b6f2d953
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 79ad4b3598c227ad2c2e3b76562cf95a30e82ad3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834518"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101546"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replizieren von virtuellen Azure-Computern in einer anderen Azure-Region
 
@@ -62,10 +62,10 @@ Aktivieren Sie die Replikation. In diesem Verfahren wird davon ausgegangen, dass
     >Nach der Aktivierung der Replikation können Sie den Verfügbarkeitstyp (einzelne Instanz, Verfügbarkeitsgruppe oder Verfügbarkeitszone) nicht mehr ändern. Wenn Sie den Verfügbarkeitstyp ändern möchten, müssen Sie die Replikation deaktivieren und wieder aktivieren.
     >
     
-    - **Replikationsrichtlinie**: Site Recovery definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die Häufigkeit von App-konsistenten Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die Häufigkeit App-konsistenter Momentaufnahmen.
+    - **Replikationsrichtlinie**: Site Recovery definiert die Einstellungen für den Aufbewahrungsverlauf des Wiederherstellungspunkts und die Häufigkeit von App-konsistenten Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit der Standardeinstellung „24 Stunden“ für den Aufbewahrungszeitraum des Wiederherstellungspunkts und „60 Minuten“ für die App-konsistente Momentaufnahmenhäufigkeit.
 
     ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
-
+  
 ## <a name="customize-target-resources"></a>Anpassen der Zielressourcen
 
 Sie können die von Site Recovery verwendeten Standardzieleinstellungen ändern.
@@ -79,7 +79,13 @@ Sie können die von Site Recovery verwendeten Standardzieleinstellungen ändern.
     - Wählen Sie unter **Zielspeicherkonten** das Konto aus, das Sie verwenden möchten.
 
         ![Aktivieren der Replikation](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
-
+1. Klicken Sie zum Ändern der Replikationseinstellungen auf **Anpassen**.
+   - Wählen Sie in **Konsistenz mehrerer virtueller Computer** die VMs aus, die Sie zusammen replizieren möchten. 
+   - Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken (da der Vorgang CPU-intensiv ist) und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist. Wenn eine Anwendung z.B. über 2 SQL-VMs und 2 Webserver verfügt, sollten Sie nur SQL-VMs als Teil der Replikationsgruppe hinzufügen.
+   - Eine Replikationsgruppe kann maximal 16 virtuelle Computer enthalten.
+   - Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
+![Replikation aktivieren](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+    
 2. Klicken Sie auf **Zielressource erstellen** > **Replikation aktivieren**.
 3. Nachdem Sie die Replikation für die virtuellen Computer aktiviert haben, können Sie unter **Replizierte Elemente** den VM-Integritätsstatus überprüfen.
 

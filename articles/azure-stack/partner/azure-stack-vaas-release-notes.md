@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: a6245472f0fc3f65dcbeebdf251387efed5f02b8
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333017"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106272"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Versionshinweise zu Validation-as-a-Service
 
@@ -49,7 +49,7 @@ Dieser Artikel enthält die Versionshinweise zu Validation-as-a-Service in Azure
 
 - Voraussetzungen für VaaS und VHD-Updates
 
-    `Install-VaaSPrerequisites` erfordert nun Cloudadministrator-Anmeldeinformationen aufgrund eines Problems bei der Paketvalidierung. Die Dokumentation unter [Herunterladen und Installieren des Agents](azure-stack-vaas-local-agent.md#download-and-install-the-agent) wurde folgendermaßen aktualisiert:
+    `Install-VaaSPrerequisites` erfordert nun Cloudadministrator-Anmeldeinformationen aufgrund eines Problems bei der Lösungsvalidierung. Die Dokumentation unter [Herunterladen und Installieren des Agents](azure-stack-vaas-local-agent.md#download-and-install-the-agent) wurde folgendermaßen aktualisiert:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -76,7 +76,7 @@ Dieser Artikel enthält die Versionshinweise zu Validation-as-a-Service in Azure
 
   - Benachrichtigungen bei der Paketsignierung
 
-    Wenn ein OEM-Anpassungspaket im Rahmen des Workflows „Paketvalidierung“ gesendet wird, wird das Paketformat überprüft, um sicherzustellen, dass es die veröffentlichte Spezifikation erfüllt. Wenn das Paket sie nicht erfüllt, tritt bei der Ausführung ein Fehler auf. E-Mail-Benachrichtigungen werden an die E-Mail-Adresse des registrierten Azure Active Directory-Kontakts für den Mandanten gesendet.
+    Wenn ein OEM-Anpassungspaket im Rahmen des Workflows „Lösungsvalidierung“ gesendet wird, wird das Paketformat überprüft, um sicherzustellen, dass es die veröffentlichte Spezifikation erfüllt. Wenn das Paket sie nicht erfüllt, tritt bei der Ausführung ein Fehler auf. E-Mail-Benachrichtigungen werden an die E-Mail-Adresse des registrierten Azure Active Directory-Kontakts für den Mandanten gesendet.
 
   - Testkategorie „Interaktiv“
 

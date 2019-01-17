@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 8a552356163e9c585ce9fea18e8cd5208c26a8be
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1332a06cf955be3fe2a77194f455c9315993998c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956356"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159909"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -400,7 +400,7 @@ In diesen Microsoft-Artikeln werden SAP-Bereitstellungen in Azure behandelt:
 
 Sie haben mehrere Optionen, um VMs und die dazugehörigen Datenträger in Azure bereitzustellen. Es ist wichtig, die Unterschiede zwischen den Bereitstellungsoptionen zu verstehen. Der Grund ist, dass Sie unter Umständen je nach gewähltem Bereitstellungstyp andere Schritte ausführen, um Ihre VMs für die Bereitstellung vorzubereiten.
 
-### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>Szenario 1: Bereitstellen einer VM über den Azure Marketplace für SAP
+### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>Szenario 1: Bereitstellen eines virtuellen Computers aus dem Azure Marketplace für SAP
 
 Sie können ein Image verwenden, das von Microsoft oder einem Drittanbieter im Azure Marketplace angeboten wird, um Ihre VM bereitzustellen. Auf dem Marketplace sind einige OS-Standardimages von Windows Server und verschiedenen Linux-Distributionen verfügbar. Sie können auch ein Image bereitstellen, das DBMS-SKUs (Database Management System) enthält, z.B. Microsoft SQL Server. Weitere Informationen zur Verwendung von Images mit DBMS-SKUs finden Sie im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide].
 
@@ -421,9 +421,9 @@ Die einfachste Möglichkeit zum Erstellen eines neuen virtuellen Computers mit e
 Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Parameter für die Erstellung des virtuellen Computers mit allen erforderlichen Ressourcen wie Netzwerkschnittstellen oder Speicherkonten geführt. Diese Parameter sind beispielsweise:
 
 1. **Grundlagen**:
- * **Name**: Dies ist der Name der Ressource (VM-Name).
+ * **Name**: Dies ist der Name der Ressource (Name des virtuellen Computers).
  * **VM-Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
- * **Benutzername und Kennwort** oder **öffentlicher SSH-Schlüssel**: Geben Sie Benutzername und Kennwort des Benutzers ein, der während der Bereitstellung erstellt wird. Für einen virtuellen Linux-Computer können Sie den öffentlichen SSH-Schlüssel (Secure Shell) eingeben, den Sie zum Anmelden am Computer verwenden.
+ * **Benutzername und Kennwort** oder **öffentlicher SSH-Schlüssel**: Geben Sie Benutzernamen und Kennwort des Benutzers ein, der während der Bereitstellung erstellt wird. Für einen virtuellen Linux-Computer können Sie den öffentlichen SSH-Schlüssel (Secure Shell) eingeben, den Sie zum Anmelden am Computer verwenden.
  * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten, um den neuen virtuellen Computer bereitzustellen.
  * **Ressourcengruppe**: Name der Ressourcengruppe für die VM. Sie können entweder den Namen einer neuen oder einer bereits vorhanden Ressourcengruppe eingeben.
  * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
@@ -435,16 +435,16 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
   * **Speicher**
     * **Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu verwalteten Datenträgern finden Sie im Kapitel [Verwaltete Datenträger][planning-guide-managed-disks] des Planungshandbuchs.
-    * **Speicherkonto**: Wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Nicht alle Speichertypen funktionieren in Bezug auf die Ausführung von SAP-Anwendungen. Weitere Informationen zu Speichertypen finden Sie unter [Microsoft Azure Storage][dbms-guide-2.3] im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide].
+    * **Speicherkonto**: Wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Nicht alle Speichertypen funktionieren in Bezug auf die Ausführung von SAP-Anwendungen. Weitere Informationen zu Speichertypen finden Sie unter [Speicherstruktur eines virtuellen Computers für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
   * **Netzwerk**
     * **Virtuelles Netzwerk** und **Subnetz**: Wählen Sie das virtuelle Netzwerk aus, das mit dem lokalen Netzwerk verbunden ist, um den virtuellen Computer in das Intranet zu integrieren.
-    * **Öffentliche IP-Adresse**: Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
+    * **Öffentliche IP-Adresse:** Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
     * **Netzwerksicherheitsgruppe**: Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen][virtual-networks-nsg].
   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterungen hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
   * **Hochverfügbarkeit**: Wählen Sie eine vorhandene Verfügbarkeitsgruppe aus, oder geben Sie die Parameter zum Erstellen einer neuen ein. Weitere Informationen finden Sie unter [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3].
   * **Überwachung**
     * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
-    * **Diagnose des Gastbetriebssystems**: Sie können für die Überwachungsdiagnose die Option **Deaktivieren** auswählen.
+    * **Diagnose des Gastbetriebssystems**: Sie können für die Überwachungsdiagnose die Option **Deaktivieren** wählen.
 
 1. **Zusammenfassung**:
 
@@ -474,10 +474,10 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
 1. **Grundlagen**:
   * **Abonnement**: Das Abonnement, das zum Bereitstellen der Vorlage verwendet wird.
   * **Ressourcengruppe**: Die Ressourcengruppe, die zum Bereitstellen der Vorlage verwendet wird. Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe des Abonnements auswählen.
-  * **Standort**: Gibt an, wo die Vorlage bereitgestellt wird. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
+  * **Standort**: Hier stellen Sie die Vorlage bereit. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
 
 1. **Einstellungen**:
-  * **SAP-System-ID**: Die ID des SAP-Systems (SID).
+  * **SAP-System-ID**: Die SAP-System-ID (SID).
   * **Betriebssystemtyp**: Das Betriebssystem, das Sie bereitstellen möchten, z.B. Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12) oder Red Hat Enterprise Linux 7.2 (RHEL 7.2) oder Oracle Linux 7.2.
 
     In der Listenansicht werden nicht alle unterstützten Betriebssysteme angezeigt. Weitere Informationen zu unterstützten Betriebssystemen für die Bereitstellung von SAP-Software finden Sie im SAP-Hinweis [1928533].
@@ -487,17 +487,17 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **Systemverfügbarkeit** (nur Vorlage für drei Ebenen): Gibt die Systemverfügbarkeit an.
 
     Wählen Sie **HA** (hohe Verfügbarkeit) aus, um eine Konfiguration für eine Installation mit hoher Verfügbarkeit zu erhalten. Es werden zwei Datenbankserver und zwei Server für ABAP SAP Central Services (ASCS) erstellt.
-  * **Speichertyp** (nur Vorlage für zwei Ebenen): Gibt an, welcher Speichertyp verwendet werden soll.
+  * **Speichertyp** (nur Vorlage für zwei Ebenen): Der zu verwendende Speicherkontotyp.
 
     Für größere Systeme empfehlen wir dringend die Verwendung von Azure Storage Premium. Weitere Informationen zu Speichertypen finden Sie unter den folgenden Ressourcen:
       * [Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz][2367194]
-      * [Microsoft Azure Storage][dbms-guide-2.3] im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-      * [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern][storage-premium-storage-preview-portal]
+      * [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
-  * **Administratorbenutzername** und **Administratorkennwort**: Benutzername und Kennwort.
+  * **Administratorbenutzername** und **Administratorkennwort**: Ein Benutzername und Kennwort.
     Für die Anmeldung am virtuellen Computer wird ein neuer Benutzer erstellt.
-  * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein bestehendes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-  * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
+  * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
+  * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
 1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
@@ -561,9 +561,9 @@ Die einfachste Möglichkeit zum Erstellen eines neuen virtuellen Computers mit e
 Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Parameter für die Erstellung des virtuellen Computers mit allen erforderlichen Ressourcen wie Netzwerkschnittstellen oder Speicherkonten geführt. Diese Parameter sind beispielsweise:
 
 1. **Grundlagen**:
- * **Name**: Dies ist der Name der Ressource (VM-Name).
+ * **Name**: Dies ist der Name der Ressource (Name des virtuellen Computers).
  * **VM-Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
- * **Benutzername und Kennwort** oder **öffentlicher SSH-Schlüssel**: Geben Sie Benutzername und Kennwort des Benutzers ein, der während der Bereitstellung erstellt wird. Für einen virtuellen Linux-Computer können Sie den öffentlichen SSH-Schlüssel (Secure Shell) eingeben, den Sie zum Anmelden am Computer verwenden.
+ * **Benutzername und Kennwort** oder **öffentlicher SSH-Schlüssel**: Geben Sie Benutzernamen und Kennwort des Benutzers ein, der während der Bereitstellung erstellt wird. Für einen virtuellen Linux-Computer können Sie den öffentlichen SSH-Schlüssel (Secure Shell) eingeben, den Sie zum Anmelden am Computer verwenden.
  * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten, um den neuen virtuellen Computer bereitzustellen.
  * **Ressourcengruppe**: Name der Ressourcengruppe für die VM. Sie können entweder den Namen einer neuen oder einer bereits vorhanden Ressourcengruppe eingeben.
  * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
@@ -577,13 +577,13 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu verwalteten Datenträgern finden Sie im Kapitel [Verwaltete Datenträger][planning-guide-managed-disks] des Planungshandbuchs.
   * **Netzwerk**
     * **Virtuelles Netzwerk** und **Subnetz**: Wählen Sie das virtuelle Netzwerk aus, das mit dem lokalen Netzwerk verbunden ist, um den virtuellen Computer in das Intranet zu integrieren.
-    * **Öffentliche IP-Adresse**: Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
+    * **Öffentliche IP-Adresse:** Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
     * **Netzwerksicherheitsgruppe**: Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen][virtual-networks-nsg].
   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterung hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
   * **Hochverfügbarkeit**: Wählen Sie eine vorhandene Verfügbarkeitsgruppe aus, oder geben Sie die Parameter zum Erstellen einer neuen ein. Weitere Informationen finden Sie unter [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3].
   * **Überwachung**
     * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
-    * **Diagnose des Gastbetriebssystems**: Sie können für die Überwachungsdiagnose die Option **Deaktivieren** auswählen.
+    * **Diagnose des Gastbetriebssystems**: Sie können für die Überwachungsdiagnose die Option **Deaktivieren** wählen.
 
 1. **Zusammenfassung**:
 
@@ -613,31 +613,31 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
 1. **Grundlagen**:
   * **Abonnement**: Das Abonnement, das zum Bereitstellen der Vorlage verwendet wird.
   * **Ressourcengruppe**: Die Ressourcengruppe, die zum Bereitstellen der Vorlage verwendet wird. Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe im Abonnement auswählen.
-  * **Standort**: Gibt an, wo die Vorlage bereitgestellt wird. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
+  * **Standort**: Hier stellen Sie die Vorlage bereit. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
 1. **Einstellungen**:
-  * **SAP-System-ID**: Die ID des SAP-Systems.
-  * **Betriebssystemtyp**: Betriebssystem für die Bereitstellung (Windows oder Linux).
+  * **SAP-System-ID**: Die SAP-System-ID.
+  * **Betriebssystemtyp**: Der Betriebssystemtyp für die Bereitstellung (Windows oder Linux).
   * **SAP-Systemgröße**: Die Größe des SAP-Systems.
 
     Die SAPS-Zahl des neuen Systems. Wenn Sie nicht sicher sind, welche SAPS-Zahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
   * **Systemverfügbarkeit** (nur Vorlage für drei Ebenen): Gibt die Systemverfügbarkeit an.
 
     Wählen Sie **HA** (hohe Verfügbarkeit) aus, um eine Konfiguration für eine Installation mit hoher Verfügbarkeit zu erhalten. Es werden zwei Datenbankserver und zwei Server für ASCS erstellt.
-  * **Speichertyp** (nur Vorlage für zwei Ebenen): Gibt an, welcher Speichertyp verwendet werden soll.
+  * **Speichertyp** (nur Vorlage für zwei Ebenen): Der zu verwendende Speicherkontotyp.
 
     Für größere Systeme empfehlen wir dringend die Verwendung von Azure Storage Premium. Weitere Informationen zu Speichertypen finden Sie in den folgenden Ressourcen:
       * [Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz][2367194]
-      * [Microsoft Azure Storage][dbms-guide-2.3] im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-      * [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern][storage-premium-storage-preview-portal]
+      * [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
-  * **URI der VHD mit dem Benutzerimage** (nur Vorlage für Images auf verwalteten Datenträgern): Der URI der VHD mit dem privaten Betriebssystemimage, z.B. „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/userimage.vhd“.
-  * **Benutzerimage-Speicherkonto** (nur Vorlage für Images auf nicht verwalteten Datenträgern): Der Name des Speicherkontos, in dem das private Betriebssystemimage gespeichert ist, z.B. &lt;Kontoname&gt; in „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/userimage.vhd“.
-  * **userImageId** (nur Vorlage für Images auf verwalteten Datenträgern): ID des Images auf einem verwalteten Datenträger, das Sie verwenden möchten.
-  * **Administratorbenutzername** und **Administratorkennwort**: Benutzername und Kennwort.
+  * **VHD-URI für das Benutzerimage** (Nur Vorlage für Images für nicht verwaltete Datenträger): Der URI der VHD mit dem privaten Betriebssystemimage, z.B. „https://&lt;Kontoname>.blob.core.windows.net/vhds/userimage.vhd“.
+  * **Speicherkonto für das Benutzerimage** (Nur Vorlage für Images für nicht verwaltete Datenträger): Der Name des Speicherkontos, unter dem das private Betriebssystemimage gespeichert ist, z.B. &lt;Kontoname&gt; in „https://&lt;Kontoname>.blob.core.windows.net/vhds/userimage.vhd“.
+  * **userImageId** (Nur Vorlage für Images für nicht verwaltete Datenträger): ID des Images des verwalteten Datenträgers, das Sie verwenden möchten.
+  * **Administratorbenutzername** und **Administratorkennwort**: Der Benutzername und das Kennwort.
 
     Für die Anmeldung am virtuellen Computer wird ein neuer Benutzer erstellt.
-  * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein vorhandenes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-  * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
+  * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
+  * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
 1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
@@ -708,24 +708,24 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
 1. **Grundlagen**:
   * **Abonnement**: Das Abonnement, das zum Bereitstellen der Vorlage verwendet wird.
   * **Ressourcengruppe**: Die Ressourcengruppe, die zum Bereitstellen der Vorlage verwendet wird. Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe im Abonnement auswählen.
-  * **Standort**: Gibt an, wo die Vorlage bereitgestellt wird. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
+  * **Standort**: Hier stellen Sie die Vorlage bereit. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
 1. **Einstellungen**:
-  * **SAP-System-ID**: Die ID des SAP-Systems.
-  * **Betriebssystemtyp**: Betriebssystem für die Bereitstellung (Windows oder Linux).
+  * **SAP-System-ID**: Die SAP-System-ID.
+  * **Betriebssystemtyp**: Der Betriebssystemtyp für die Bereitstellung (Windows oder Linux).
   * **SAP-Systemgröße**: Die Größe des SAP-Systems.
 
     Die SAPS-Zahl des neuen Systems. Wenn Sie nicht sicher sind, welche SAPS-Zahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
-  * **Speichertyp** (nur Vorlage für zwei Ebenen): Gibt an, welcher Speichertyp verwendet werden soll.
+  * **Speichertyp** (nur Vorlage für zwei Ebenen): Der zu verwendende Speicherkontotyp.
 
     Für größere Systeme empfehlen wir dringend die Verwendung von Azure Storage Premium. Weitere Informationen zu Speichertypen finden Sie in den folgenden Ressourcen:
       * [Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz][2367194]
-      * [Microsoft Azure Storage][dbms-guide-2.3] im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-      * [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern][storage-premium-storage-preview-portal]
+      * [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
-  * **URI der VHD mit dem Betriebssystemdatenträger** (nur Vorlage für nicht verwaltete Datenträger): Der URI des Datenträgers mit dem privaten Betriebssystem, z.B. „https://&lt;Kontoname&gt;.blob.core.windows.net/vhds/osdisk.vhd“.
+  * **VHD-URI des Betriebssystemdatenträgers** (nur Vorlage für nicht verwaltete Datenträger): Der URI des Datenträgers mit dem privaten Betriebssystem, z.B. „https://&lt;Kontoname>.blob.core.windows.net/vhds/osdisk.vhd“.
   * **ID des verwalteten Betriebssystemdatenträgers** (nur Vorlage für verwaltete Datenträger): Die ID des verwalteten Datenträgers mit dem Betriebssystem, z.B. „/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN“.
-  * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein bestehendes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-  * **Subnetz-ID**: Wenn Sie den virtuellen Computer in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem der virtuelle Computer zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
+  * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
+  * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
 1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
@@ -1036,7 +1036,7 @@ Mit dieser Prüfung wird sichergestellt, dass alle Leistungsmetriken, die in Ihr
 
 1.  Melden Sie sich am virtuellen Azure-Computer an (die Verwendung eines Administratorkontos ist nicht erforderlich).
 1.  Öffnen Sie ein Eingabeaufforderungsfenster.
-1.  Wechseln Sie an der Eingabeaufforderung in das Installationsverzeichnis der Azure-Erweiterung zur verbesserten Überwachung für SAP: „C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;Version>\\drop“.
+1.  Ändern Sie in der Eingabeaufforderung das Verzeichnis für den Installationsordner der erweiterten Azure-Überwachungserweiterung für SAP: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
   Die *Version* im Pfad zur Überwachungserweiterung kann variieren. Sollten Ordner für mehrere Versionen der Überwachungserweiterung im Installationsordner vorhanden sein, sollten Sie die Konfiguration des Windows-Diensts „AzureEnhancedMonitoring“ überprüfen und dann in den Ordner wechseln, der als *Pfad zur ausführbaren Datei* angegeben ist.
 
@@ -1083,7 +1083,7 @@ Wenn für den Wert **Integritätsstatus** nicht **OK** angezeigt wird, hilft Ihn
 
   a.  Führen Sie `more /var/lib/AzureEnhancedMonitor/PerfCounters` aus.
 
-   **Erwartetes Ergebnis**: Gibt eine Liste mit Leistungsindikatoren zurück. Die Datei sollte nicht leer sein.
+   **Erwartetes Ergebnis**: Gibt die Liste der Leistungsindikatoren zurück. Die Datei sollte nicht leer sein.
 
  b. Führen Sie `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` aus.
 
@@ -1109,7 +1109,7 @@ Führen Sie diese zusätzliche Überprüfungen durch, wenn die vorherige Überpr
 
   a.  Führen Sie `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` aus.
 
-    **Erwartetes Ergebnis**: Listet den Inhalt des Verzeichnisses für die Azure-Erweiterung zur verbesserten Überwachung auf.
+    **Erwartetes Ergebnis**: Listet den Inhalt des Ordners der Azure-Erweiterung zur verbesserten Überwachung auf.
 
   b. Führen Sie `ps -ax | grep AzureEnhanced` aus.
 
@@ -1156,7 +1156,7 @@ Stellen Sie sicher, dass das Ergebnis für jede Integritätsprüfung **OK** laut
 
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP
 
-#### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
+#### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows]  Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Mit dem Windows-Dienst „AzureEnhancedMonitoring“ werden in Azure Leistungsmetriken gesammelt. Wenn der Dienst nicht richtig installiert wurde oder wenn er auf der VM nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
@@ -1197,13 +1197,13 @@ Der Windows-Dienst „AzureEnhancedMonitoring“ ist vorhanden und aktiviert, ka
 
 Die Konfiguration ist fehlerhaft. Starten Sie die Überwachungserweiterung für die VM neu, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben.
 
-#### <a name="windowslogowindows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Einige Azure-Leistungsindikatoren fehlen.
+#### <a name="windowslogowindows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows]  Einige Azure-Leistungsindikatoren fehlen.
 
 Mit dem Windows-Dienst „AzureEnhancedMonitoring“ werden in Azure Leistungsmetriken gesammelt. Mit dem Dienst werden Daten aus mehreren Quellen abgerufen. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus der Azure-Diagnose ausgelesen. Die Speicherindikatoren werden aus Ihrer Protokollierung auf Speicherabonnementebene verwendet.
 
 Führen Sie das Konfigurationsskript `Set-AzureRmVMAEMExtension` erneut aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
 
-#### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
+#### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux]  Es werden keinerlei Azure-Leistungsindikatoren angezeigt.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst. Wenn der Daemon nicht ausgeführt wird, können keine Leistungsmetriken erfasst werden.
 
@@ -1236,7 +1236,7 @@ Beim Ausführen von „azperfli.exe“ wie oben beschrieben können Sie ein Erge
 Diese Meldungen werden dadurch verursacht, dass verwaltete Standarddatenträger nicht die APIs bereitstellen, die von der Überwachungserweiterung verwendet werden, um die Statistiken der Azure Storage Standard-Konten zu überprüfen. Dies ist kein Grund zur Besorgnis. Der Grund für die Einführung der Überwachung der Storage Standard-Konten war die häufig auftretende Drosselung von E/A-Vorgängen. Verwaltete Datenträger verhindern eine solche Drosselung, indem die Anzahl von Datenträgern in einem Storage-Konto eingeschränkt wird. Daher ist es kein Problem, wenn diese Art Überwachungsdaten nicht verfügbar ist.
 
 
-#### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Einige Azure-Leistungsindikatoren fehlen.
+#### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux]  Einige Azure-Leistungsindikatoren fehlen.
 
 Leistungsmetriken werden in Azure über einen Daemon erfasst, der Daten aus mehreren Quellen abruft. Einige Konfigurationsdaten werden lokal gesammelt, und einige Leistungsmetriken werden aus der Azure-Diagnose ausgelesen. Speicherindikatoren stammen aus den Protokollen in Ihrem Speicherabonnement.
 

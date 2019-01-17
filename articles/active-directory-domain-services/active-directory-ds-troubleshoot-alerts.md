@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Problembehandlung von Warnungen| Microsoft-Dokumentation'
+title: 'Azure Active Directory Domain Services: Behandlung von Warnungen | Microsoft-Dokumentation'
 description: Problembehandlung von Warnungen für die Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c30e18c42f310172b07995e0ad88a505a01c4218
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036137"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159603"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -114,7 +114,7 @@ Innerhalb des virtuellen Netzwerks können Computer Anforderungen für Azure-Res
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. Um sicherzustellen, dass die Warnung aufgelöst wurde, überprüfen Sie den Status Ihrer Domäne nach zwei Stunden noch einmal.
 
-## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Ihr Azure-Abonnement wurde nicht gefunden.
+## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: Ihr Azure-Abonnement wurde nicht gefunden
 
 **Warnmeldung:**
 
@@ -128,7 +128,7 @@ Azure AD Domain Services benötigt ein Abonnement und kann nicht in ein anderes 
 2. [Löschen Sie Ihre verwaltete Domäne](active-directory-ds-disable-aadds.md) aus Ihrem vorhandenen Azure AD-Verzeichnis.
 3. Folgen Sie den Anweisungen im Leitfaden [Erste Schritte](active-directory-ds-getting-started.md), um eine verwaltete Domäne neu zu erstellen.
 
-## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Ihr Azure-Abonnement wurde deaktiviert.
+## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Das Azure-Abonnement wurde deaktiviert
 
 **Warnmeldung:**
 
@@ -150,7 +150,7 @@ Azure AD Domain Services benötigt ein Abonnement und kann nicht in ein anderes 
 
 Sie können das mit Azure AD Domain Services verknüpfte Abonnement wieder in das vorherige Verzeichnis verschieben. Alternativ dazu müssen Sie [Ihre verwaltete Domäne aus dem vorhandenen Verzeichnis löschen](active-directory-ds-disable-aadds.md) und im ausgewählten Verzeichnis neu erstellen (entweder mit einem neuen Abonnement oder indem Sie das Verzeichnis ändern, in dem sich Ihre Azure AD Domain Services-Instanz befindet).
 
-## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Ressourcen für Ihre verwaltete Domäne nicht gefunden
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: Keine Ressourcen für Ihre verwalteten Domäne gefunden
 
 **Warnmeldung:**
 
@@ -179,7 +179,7 @@ Azure AD Domain Services erstellt für eine ordnungsgemäße Funktion bestimmte 
 
 Dieser Fehler ist nicht behebbar. Um das Problem zu lösen, müssen Sie [Ihre vorhandene verwaltete Domäne löschen](active-directory-ds-disable-aadds.md) und [sie neu erstellen](active-directory-ds-getting-started.md).
 
-## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: Dienstprinzipal nicht autorisiert
+## <a name="aadds111-service-principal-unauthorized"></a>AADDS111: Dienstprinzipal nicht autorisiert
 
 **Warnmeldung:**
 
@@ -214,7 +214,7 @@ Unsere Dienstprinzipale benötigen Zugriff, um Ressourcen in Ihrer verwalteten D
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. Überprüfen Sie in zwei Stunden die Integrität Ihrer Domäne, um sicherzustellen, dass Sie die Schritte ordnungsgemäß abgeschlossen haben.
 
-## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Resources nicht wiederherstellbar
+## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Ressourcen nicht wiederherstellbar
 
 **Warnmeldung:**
 
@@ -272,7 +272,7 @@ Einige häufige Gründe, warum die Synchronisierung in verwalteten Domänen unte
 - Die Netzwerkverbindung ist für die verwaltete Domäne blockiert. Weitere Informationen zum Überprüfen des Netzwerks auf Probleme finden Sie unter [Problembehandlung bei Netzwerksicherheitsgruppen](active-directory-ds-troubleshoot-nsg.md) und [Netzwerkanforderungen für Azure AD Domain Services](active-directory-ds-networking.md).
 -  Die Kennwortsynchronisierung wurde nicht eingerichtet oder nicht abgeschlossen. Informationen zum Einrichten der Kennwortsynchronisierung finden Sie in [diesem Artikel](active-directory-ds-getting-started-password-sync.md).
 
-## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Eine Sicherung wurde eine Weile nicht durchgeführt.
+## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: Eine Sicherung wurde eine Weile nicht durchgeführt
 
 **Warnmeldung:**
 

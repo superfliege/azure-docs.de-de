@@ -1,60 +1,76 @@
 ---
 title: Aktivieren von mehrinstanzenfähigen Anwendungen mit Azure Digital Twins | Microsoft-Dokumentation
-description: Grundlegendes zum Registrieren von Azure Active Directory-Mandanten Ihrer Kunden für Azure Digital Twins
+description: Konfigurieren von mehrinstanzenfähigen Anwendungen für Azure Digital Twins.
 author: mavoge
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: a2d9ece119003c341f49ee03d735d5636b179a32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259886"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119967"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Aktivieren von mehrinstanzenfähigen Anwendungen mit Azure Digital Twins
 
-Entwickler, die Azure Digital Twins nutzen, möchten im Allgemeinen mehrinstanzenfähige Anwendungen erstellen. Eine *mehrinstanzenfähige Anwendung* ist eine einzelne bereitgestellte Instanz, die mehrere Kunden unterstützt. Jeder Kunde verfügt über eigene unabhängige Daten und Berechtigungen.
+Entwickler, die ihre Lösungen auf Azure Digital Twins erstellen, möchten möglicherweise mehrere Kunden mit einem einzigen Dienst oder einer einzelnen Lösung unterstützen. *Mehrinstanzenfähige* Anwendungen gehören zu den häufigsten Azure Digital Twins-Konfigurationen.
 
-In diesem Dokument wird beschrieben, wie Sie eine mehrinstanzenfähigen Azure Digital Twins-App erstellen, in der mehrere Azure AD-Mandanten (Azure Active Directory) und Kunden unterstützt werden.
+In diesem Dokument ist beschrieben, wie eine Azure Digital Twins-App konfiguriert wird, in der mehrere AD-Mandanten (Azure Active Directory) und Kunden unterstützt werden.
 
-## <a name="scenario-summary"></a>Szenariozusammenfassung
+## <a name="multitenancy"></a>Mehrinstanzenfähigkeit
 
-Nehmen Sie für dieses Szenario an, es gibt den Entwickler D und den Kunden C:
+Eine *mehrinstanzenfähige* Ressource ist eine einzelne bereitgestellte Instanz, die mehrere Kunden unterstützt. Jeder Kunde verfügt über eigene unabhängige Daten und Berechtigungen. Die Erfahrungen jedes Kunden sind voneinander isoliert, sodass jeweils eine andere „Ansicht“ angezeigt wird.
 
-- Entwickler D hat ein Azure-Abonnement mit einem Azure AD-Mandanten.
-- Entwickler D hat eine Digital Twins-Instanz in seinem Azure-Abonnement bereitgestellt.
-- Benutzer im Azure AD-Mandanten von Entwickler D können Token für den Azure Digital Twins-Dienst abrufen, da Azure AD einen Dienstprinzipal im Azure AD-Mandanten von Entwickler D erstellt hat.
-- Entwickler D erstellt jetzt eine mobile App, die direkt in die Verwaltungs-API von Azure Digital Twins integriert ist.
-- Entwickler D gestattet dem Kunden C die Nutzung der mobilen App.
-- Kunde C muss autorisiert werden, um die Verwaltungs-API von Azure Digital Twins in der Anwendung von Entwickler D verwenden zu können.
+Weitere Informationen zur Mehrinstanzenfähigkeit finden unter [Mehrinstanzenfähige Anwendungen in Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
-  > [!IMPORTANT]
-  > - Wenn sich Kunde C bei der App von Entwickler D anmeldet, kann die App keine Token für die Benutzer von Kunde C abrufen, um mit der Verwaltungs-API zu kommunizieren.
-  > - Azure AD löst dann einen Fehler aus, der angibt, dass Azure Digital Twins im Verzeichnis von Kunde C nicht erkannt wird.
+## <a name="problem-scenario"></a>Problemszenario
 
-## <a name="solution"></a>Lösung
+In diesem Szenario erstellt ein Entwickler eine Azure Digital Twins-Lösung (**ENTWICKLER**) und ein Kunde verwendet die Lösung (**KUNDE**):
 
-Um das vorgenannte Szenario zu lösen, müssen die folgenden Aktionen ausgeführt werden, um einen Azure Digital Twins-Dienstprinzipal im Azure AD-Mandanten von Kunde C zu erstellen:
+- Der **ENTWICKLER** hat ein Azure-Abonnement mit einem Azure Active Directory-Mandanten.
+- Der **ENTWICKLER** hat eine Azure Digital Twins-Instanz in seinem Azure-Abonnement bereitgestellt. Azure Active Directory hat automatisch ein Dienstprinzipal im Azure Active Directory-Mandanten des **ENTWICKLERS** erstellt.
+- Benutzer innerhalb des Azure Active Directory-Mandanten des **ENTWICKLERS** können dann [OAuth 2.0-Token](./security-authenticating-apis.md) vom Azure Digital Twins-Dienst abrufen.
+- Der **ENTWICKLER** erstellt jetzt eine mobile App, die direkt in die Verwaltungs-API von Azure Digital Twins integriert ist.
+- Der **ENTWICKLER** gestattet dem **KUNDEN** die Nutzung der mobilen App.
+- Der **KUNDE** muss autorisiert werden, um die Verwaltungs-API von Azure Digital Twins in der Anwendung des **ENTWICKLERS** verwenden zu können.
 
-- Wenn Kunde C noch kein Azure-Abonnement für den Azure AD-Mandanten hat:
+Die Problematik:
 
-  - Der Azure AD-Mandantenadministrator von Kunde C muss ein [Azure-Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) erwerben.
-  - Der Azure AD-Mandantenadministrator von Kunde C muss dann [den Mandanten mit dem neuen Abonnement verknüpfen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+- Wenn sich der **KUNDE** bei der Anwendung des **ENTWICKLERS** anmeldet, kann die App keine Token für die Benutzer des **KUNDEN** abrufen, um sich mit den Azure Digital Twins-Verwaltungs-APIs zu authentifizieren.
+- In Azure Active Directory wird eine Ausnahme ausgegeben, die anzeigt, dass Azure Digital Twins nicht im Verzeichnis des **KUNDEN** erkannt wird.
 
-- Im [Azure-Portal](https://portal.azure.com) führt der Azure AD-Mandantenadministrator von Kunde C folgende Schritte aus:
+## <a name="problem-solution"></a>Problemlösung
+
+Um das vorgenannte Szenario zu lösen, müssen die folgenden Aktionen ausgeführt werden, um einen Azure Digital Twins-Dienstprinzipal im Azure Active Directory-Mandanten des **KUNDEN** zu erstellen:
+
+- Wenn der **KUNDE** noch kein Azure-Abonnement für den Azure Active Directory-Mandanten hat:
+
+  - Der Azure Active Directory-Mandantenadministrator des **KUNDEN** muss ein [Azure-Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) erwerben.
+  - Der Azure Active Directory-Mandantenadministrator des **KUNDEN** muss dann den [Mandanten mit dem neuen Abonnement verknüpfen](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
+
+- Im [Azure-Portal](https://portal.azure.com) führt der Azure Active Directory-Mandantenadministrator des **KUNDEN** folgende Schritte aus:
 
   1. Er öffnet **Abonnements**.
-  1. Er wählt das Abonnement aus, das den Azure AD-Mandanten umfasst, der in der App des Entwicklers D verwendet werden soll.
+  1. Er wählt das Abonnement aus, das den Azure Active Directory-Mandanten umfasst, der in der App des **ENTWICKLERS** verwendet werden soll.
+
+     ![Azure Active Directory-Abonnements][1]
+
   1. Er wählt **Ressourcenanbieter** aus.
   1. Er sucht nach **Microsoft.IoTSpaces**.
   1. Wählen Sie **Registrieren**.
+
+     ![Azure Active Directory-Ressourcenanbieter][2]
   
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von benutzerdefinierten Funktionen mit Azure Digital Twins finden Sie unter [Verwenden von benutzerdefinierten Funktionen in Azure Digital Twins](how-to-user-defined-functions.md).
+- Weitere Informationen zur Verwendung von benutzerdefinierten Funktionen mit Azure Digital Twins finden Sie unter [Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
 
-Informationen dazu, wie die rollenbasierte Zugriffssteuerung verwendet werden kann, um Anwendung zusätzlich mit Rollenzuweisungen zu schützen, finden Sie unter [Rollenbasierte Zugriffssteuerung mit Azure Digital Twins](security-create-manage-role-assignments.md).
+- Informationen zur Verwendung der rollenbasierten Zugriffssteuerung zum zusätzlichen Schutz von Anwendung mit Rollenzuweisungen finden Sie unter [Erstellen und Verwalten von rollenbasierter Zugriffssteuerung mit Azure Digital Twins](./security-create-manage-role-assignments.md).
+
+<!-- Images -->
+[1]: media/multitenant/ad-subscriptions.png
+[2]: media/multitenant/ad-resource-providers.png

@@ -1,18 +1,18 @@
 ---
 title: Arbeiten mit Azure Cosmos DB-Datenbanken, -Containern und -Elementen
 description: In diesem Artikel wird die Erstellung und Verwendung von Azure Cosmos DB-Datenbanken, -Containern und -Elementen beschrieben.
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807685"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107734"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Arbeiten mit Azure Cosmos-Datenbanken, -Containern und -Elementen
 
@@ -77,10 +77,10 @@ Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaft
 
 | **Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar** | **Zweck** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__rid | Systemgeneriert | Eindeutiger Bezeichner des Containers | JA | Nein  | Nein  | Nein  | Nein  |
-|__etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | JA | Nein  | Nein  | Nein  | Nein  |
-|__ts | Systemgeneriert | Zuletzt aktualisierter Zeitstempel des Containers | JA | Nein  | Nein  | Nein  | Nein  |
-|__self | Systemgeneriert | Adressierbarer URI des Containers | JA | Nein  | Nein  | Nein  | Nein  |
+|_rid | Systemgeneriert | Eindeutiger Bezeichner des Containers | JA | Nein  | Nein  | Nein  | Nein  |
+|_etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | JA | Nein  | Nein  | Nein  | Nein  |
+|_ts | Systemgeneriert | Zuletzt aktualisierter Zeitstempel des Containers | JA | Nein  | Nein  | Nein  | Nein  |
+|_self | Systemgeneriert | Adressierbarer URI des Containers | JA | Nein  | Nein  | Nein  | Nein  |
 |id | Vom Benutzer konfigurierbar | Benutzerdefinierter eindeutiger Name des Containers | JA | Ja | Ja | Ja | JA |
 |indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, die Genauigkeit und das Konsistenzmodell zu ändern. | JA | Nein  | Nein  | Nein  | JA |
 |TimeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem bestimmten Zeitraum automatisch aus einem Container zu löschen. Weitere Details finden Sie im Artikel zur [Gültigkeitsdauer](time-to-live.md). | JA | Nein  | Nein  | Nein  | JA |
@@ -113,10 +113,10 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 
 |**Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar**| **Zweck** | **SQL-API** | **Cassandra-API** | **API für MongoDB von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__id | Systemgeneriert | Eindeutiger Bezeichner eines Elements | JA | Nein  | Nein  | Nein  | Nein  |
-|__etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | JA | Nein  | Nein  | Nein  | Nein  |
-|__ts | Systemgeneriert | Zuletzt aktualisierter Zeitstempel des Elements | JA | Nein  | Nein  | Nein  | Nein  |
-|__self | Systemgeneriert | Adressierbarer URI des Elements | JA | Nein  | Nein  | Nein  | Nein  |
+|_id | Systemgeneriert | Eindeutiger Bezeichner eines Elements | JA | Nein  | Nein  | Nein  | Nein  |
+|_etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | JA | Nein  | Nein  | Nein  | Nein  |
+|_ts | Systemgeneriert | Zuletzt aktualisierter Zeitstempel des Elements | JA | Nein  | Nein  | Nein  | Nein  |
+|_self | Systemgeneriert | Adressierbarer URI des Elements | JA | Nein  | Nein  | Nein  | Nein  |
 |id | Sie können das | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. Wenn der Benutzer die ID nicht angibt, wird im System automatisch eine generiert. | JA | Ja | Ja | Ja | JA |
 |Beliebige benutzerdefinierte Eigenschaften | Benutzerdefiniert | Benutzerdefinierte Eigenschaften, die in einer API-nativen Darstellung (JSON, BSON, CQL usw.) dargestellt werden | JA | Ja | Ja | Ja | JA |
 

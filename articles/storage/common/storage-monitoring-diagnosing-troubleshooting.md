@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e451fd2c2dad5c411d0a8faa8e9c044648759001
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625996"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121734"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,9 +220,9 @@ Mit der Speicher-Clientbibliothek für .NET können Sie clientseitige Protokolli
 ### <a name="using-network-logging-tools"></a>Verwendung von Netzwerk-Protokollierungstools
 Sie können den Verkehr zwischen Client und Server erfassen, um detaillierte Informationen über die Daten, die Client und Server austauschen, und die zugrunde liegenden Netzwerkbedingungen bereitzustellen. Nützliche Netzwerkprotokollierungstools sind:
 
-* [Fiddler](http://www.telerik.com/fiddler) ist ein kostenloser Web Debugging Proxy, mit dem Sie die Header und Nutzlastdaten von HTTP- und HTTPS-Anfrage- und Antwortnachrichten untersuchen können. Weitere Informationen finden Sie unter [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr](#appendix-1).
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) und [Wireshark](http://www.wireshark.org/) sind kostenlose Tools zur Netzwerkprotokollanalyse, mit denen Sie detaillierte Paketinformationen für eine Vielzahl von Netzwerkprotokollen anzeigen können. Weitere Informationen zu Wireshark finden Sie unter[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr](#appendix-2).
-* Microsoft Message Analyzer ist ein Tool von Microsoft, das Netmon ersetzt und Sie zusätzlich zur Erfassung von Netzwerkpaketdaten bei der Anzeige und Analyse von Protokollierungsdaten unterstützt, die von anderen Tools erfasst werden. Weitere Informationen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr](#appendix-3).
+* [Fiddler](http://www.telerik.com/fiddler) ist ein kostenloser Web Debugging Proxy, mit dem Sie die Header und Nutzlastdaten von HTTP- und HTTPS-Anfrage- und Antwortnachrichten untersuchen können. Weitere Informationen finden Sie in [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr](#appendix-1).
+* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) und [Wireshark](http://www.wireshark.org/) sind kostenlose Tools zur Netzwerkprotokollanalyse, mit denen Sie detaillierte Paketinformationen für eine Vielzahl von Netzwerkprotokollen anzeigen können. Weitere Informationen zu Wireshark finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr](#appendix-2).
+* Microsoft Message Analyzer ist ein Tool von Microsoft, das Netmon ersetzt und Sie zusätzlich zur Erfassung von Netzwerkpaketdaten bei der Anzeige und Analyse von Protokollierungsdaten unterstützt, die von anderen Tools erfasst werden. Weitere Informationen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr](#appendix-3).
 * Wenn Sie einen Basis-Konnektivitätstest durchführen möchten, um zu überprüfen, ob sich der Client-Computer über das Netzwerk mit dem Azure-Speicherdienst verbinden kann, können Sie dazu nicht das standardmäßige **Ping** -Tool auf dem Client verwenden. Dennoch können Sie das Tool [**tcping**](http://www.elifulkerson.com/projects/tcping.php) zur Überprüfung der Konnektivität verwenden.
 
 In vielen Fällen reichen die Protokollierungsdaten aus der Speicherprotokollierung und der Speicher-Clientbibliothek aus, um ein Problem zu diagnostizieren, aber in einigen Szenarien können detailliertere Informationen benötigt werden, als diese Netzwerkprotokollierungstools bereitstellen können. Beispielsweise können Sie Fiddler zur Anzeige von HTTP- und HTTPS-Nachrichten verwenden. Anhand der Header- und Nutzlastdaten, die an die und von den Speicherdiensten gesendet werden, können Sie untersuchen, wie eine Clientanwendung Speicheroperationen wiederholt. Protokollierungsanalysatoren wie Wireshark operieren auf Paketebene und erlauben Ihnen dadurch die Anzeige von TCP-Daten, mit denen Sie Probleme bezüglich verlorener Pakete und Konnektivität beheben können. Message Analyzer kann sowohl auf HTTP- und TCP-Schichten ausgeführt werden.
@@ -372,9 +372,9 @@ Sie sollten die clientseitigen Protokollierungen überprüfen, um zu sehen, wie 
 #### <a name="investigating-network-latency-issues"></a>Untersuchung von Netzwerklatenzproblemen
 In der Regel wird eine hohe durchgängige Latenz durch die Übermittlungsbedingungen im Netzwerk verursacht. Sie können sowohl vorübergehende als auch permanente Netzwerkprobleme wie gedroppte Pakete mithilfe von Tools wie Wireshark oder Microsoft Message Analyzer untersuchen.
 
-Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
 
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ### <a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Metriken zeigen niedrige AverageE2ELatency und niedrige AverageServerLatency an, aber der Client erfährt hohe Latenz
 In diesem Szenario ist ein verzögertes Erreichen des Speicherdiensts durch die Speicheranfragen die wahrscheinlichste Ursache. Sie sollten untersuchen, warum Clientanfragen den Blob-Dienst nicht erreichen.
@@ -389,9 +389,9 @@ Prüfen Sie auch, ob der Client mehrere Wiederholungen ausführt, und untersuche
 
 Wenn das Problem nicht beim Client liegt, sollten Sie potenzielle Netzwerkprobleme wie Paketverlust untersuchen. Sie können Tools wie Wireshark oder Microsoft Message Analyzer verwenden, um Netzwerkprobleme zu untersuchen.
 
-Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
 
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ### <a name="metrics-show-high-AverageServerLatency"></a>Metriken zeigen hohe AverageServerLatency an
 Im Fall von hoher **AverageServerLatency** bei Blob-Download-Anfragen sollten Sie die Speicherprotokollierungen verwenden, um herauszufinden, ob wiederholte Anfragen für den gleichen Blob (oder die gleiche Blob-Gruppe) vorliegen. In Bezug auf Blobuploadanfragen sollten Sie untersuchen, welche Blockgröße der Client verwendet (zum Beispiel können Blöcke mit weniger als 64 K zu Overheads führen, wenn Lesevorgänge auch in Blöcken von weniger als 64 K erfolgen) und ob mehrere Clients parallel Blöcke in den gleichen Blob hochladen. Sie sollten auch die Pro-Minute-Metriken für Anfrageanzahlspitzen überprüfen, die zu einer Überschreitung der Pro-Sekunde-Skalierbarkeitsziele führen "[Metriken zeigen Anstieg bei PercentTimeoutError an]".
@@ -401,7 +401,7 @@ Im Falle von hoher **AverageServerLatency** bei wiederholten Blob-Downloadanford
 Hohe Werte bei der **AverageServerLatency** können auch ein Zeichen für schlecht entworfene Tabellen oder Abfragen sein, die zu Scanoperationen führen oder die dem angehängten/vorangestellten Gegenmuster folgen. Weitere Informationen finden Sie unter [Metriken zeigen Anstieg bei PercentThrottlingError an].
 
 > [!NOTE]
-> Hier finden Sie eine umfassende Checkliste im Hinblick auf die Leistung: [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](storage-performance-checklist.md).
+> Hier finden Sie eine umfassende Leistungscheckliste: [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](storage-performance-checklist.md)
 > 
 > 
 
@@ -471,12 +471,12 @@ Wenn Ihre Clientanwendung einen HTTP 403 (Verboten)-Fehler ausgibt, ist eine wa
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Vorgang mit Primärspeicherort pro Speicherortmodus PrimaryOnly starten. |
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Synchronanfrage starten an https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14. |
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Warten auf Antwort. |
-| Microsoft.WindowsAzure.Storage |Warnung |2 |85d077ab-… |Ausnahme beim Warten auf Antwort: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. |
+| Microsoft.WindowsAzure.Storage |Warnung |2 |85d077ab-… |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Antwort erhalten. Statuscode = 403, Anfrage-ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = , ETag = . |
-| Microsoft.WindowsAzure.Storage |Warnung |2 |85d077ab-… |Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. |
-| Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Prüfung, ob Vorgang wiederholt werden sollte. Wiederholungsanzahl = 0, HTTP-Statuscode = 403, Ausnahme = Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. |
+| Microsoft.WindowsAzure.Storage |Warnung |2 |85d077ab-… |Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
+| Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Prüfung, ob Vorgang wiederholt werden sollte. Wiederholungsanzahl = 0, HTTP-Statuscode = 403, Ausnahme = Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Der nächste Speicherort wurde auf Primär gesetzt, basierend auf dem Speicherortmodus. |
-| Microsoft.WindowsAzure.Storage |Error |1 |85d077ab-… |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. |
+| Microsoft.WindowsAzure.Storage |Error |1 |85d077ab-… |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten: |
 
 In diesem Szenario sollten Sie untersuchen, warum der SAS-Token abläuft, bevor der Client den Token an den Server sendet:
 
@@ -534,7 +534,7 @@ Protokollierungseinträge:
 | de8b1c3c-... |Synchronanfrage starten an https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Vorbereitung, um Anfragedaten zu schreiben. |
-| e2d06d78-... |Ausnahme beim Warten auf Antwort: Der Remoteserver hat einen Fehler zurückgegeben: (404) Verboten. |
+| e2d06d78-... |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
 | e2d06d78-... |Antwort erhalten. Statuscode = 404, Anfrage-ID = 353ae3bc-..., Content-MD5 = , ETag = . |
 | e2d06d78-... |Antwortheader wurden erfolgreich verarbeitet, fortfahren mit dem Rest der Operation. |
 | e2d06d78-... |Antworttext downloaden. |
@@ -544,14 +544,14 @@ Protokollierungseinträge:
 | e2d06d78-... |Warten auf Antwort. |
 | de8b1c3c-... |Anfragedaten schreiben. |
 | de8b1c3c-... |Warten auf Antwort. |
-| e2d06d78-... |Ausnahme beim Warten auf Antwort: Der Remoteserver hat einen Fehler zurückgegeben: (409) Konflikt. |
+| e2d06d78-... |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: 409 (Konflikt). |
 | e2d06d78-... |Antwort erhalten. Statuscode = 409, Anfrage-ID = c27da20e-..., Content-MD5 = , ETag = . |
 | e2d06d78-... |Fehlerantworttext downloaden. |
-| de8b1c3c-... |Ausnahme beim Warten auf Antwort: Der Remoteserver hat einen Fehler zurückgegeben: (404) Verboten. |
+| de8b1c3c-... |Beim Warten auf Antwort ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
 | de8b1c3c-... |Antwort erhalten. Statuscode = 404, Anfrage-ID = 0eaeab3e-..., Content-MD5 = , ETag = . |
-| de8b1c3c-... |Ausnahme beim Warten auf Antwort: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
+| de8b1c3c-... |Während des Vorgangs ausgelöste Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
 | de8b1c3c-... |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden. |
-| e2d06d78-... |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: (409) Konflikt. |
+| e2d06d78-... |Wiederholungsrichtlinie hat keinen erneuten Versuch erlaubt. Scheitern mit: Der Remoteserver hat einen Fehler zurückgegeben: 409 (Konflikt). |
 
 In diesem Beispiel zeigt das Protokoll, dass der Client Anforderungen der Methode **CreateIfNotExists** (Anforderungs-ID e2d06d78…) mit den Anforderungen aus der Methode **UploadFromStream** (de8b1c3c-...) verschachtelt. Diese Verschachtelung tritt auf, da die Clientanwendung diese Methoden asynchron aufruft. Ändern Sie den asynchronen Code im Client, um sicherzustellen, dass er die Container erstellt, bevor er versucht, Daten an ein Blob in diesem Container hochzuladen. Idealerweise sollten Sie alle Ihre Container im Voraus erstellen.
 
@@ -623,7 +623,7 @@ Die wahrscheinlichste Ursache dieses Szenarios ist, dass der Client eine Löscha
 Wenn dieses Problem häufig auftritt, sollten Sie untersuchen, warum der Client keine Bestätigungen aus dem Tabellendienst erhält. Wenn das Problem intermittierend ist, sollten Sie den Fehler "HTTP (404) Nicht gefunden" eingrenzen und im Client protokollieren, aber dem Client die Fortführung erlauben.
 
 ### <a name="the-client-is-receiving-409-messages"></a>Der Client empfängt HTTP 409 (Konflikt)-Meldungen
-Die folgende Tabelle enthält einen Auszug aus dem serverseitigen Protokoll für zwei Clientvorgänge: **DeleteIfExists**, unmittelbar gefolgt von **CreateIfNotExists** unter Verwendung des gleichen Blobcontainernamens. Jeder Clientvorgang führt zu zwei an den Server gesendeten Anforderungen: **GetContainerProperties** (um zu prüfen, ob der Container vorhanden ist) und anschließend entweder **DeleteContainer** oder **CreateContainer**.
+Die folgende Tabelle zeigt einen Auszug aus dem serverseitigen Protokoll für zwei Clientvorgänge: **DeleteIfExists** unmittelbar gefolgt von **CreateIfNotExists** mit dem gleichen Namen des Blob-Container. Jeder Clientvorgang führt zu zwei an den Server gesendeten Anforderungen: **GetContainerProperties** (um zu prüfen, ob der Container vorhanden ist) und anschließend entweder **DeleteContainer** oder **CreateContainer**.
 
 | Zeitstempel | Vorgang | Ergebnis | Containername | Clientanfrage-ID |
 | --- | --- | --- | --- | --- |
@@ -677,8 +677,8 @@ Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für
 ### <a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme
 Wenn Sie versuchen, SDK zu installieren, scheitert dies beim Versuch, den Speicheremulator auf Ihrem lokalen Computer zu installieren. Die Installationsprotokollierung beinhaltet eine der folgenden Nachrichten:
 
-* CAQuietExec: Fehler: Nicht in der Lage, auf SQL-Instanz zuzugreifen
-* CAQuietExec: Fehler: Nicht in der Lage, Datenbank anzulegen
+* CAQuietExec:  Fehler Zugriff auf SQL-Instanz nicht möglich
+* CAQuietExec:  Fehler Erstellen der Datenbank nicht möglich
 
 Die Ursache ist ein Problem mit der vorhandenen LocalDB- Installationen. Standardmäßig verwendet der Speicheremulator LocalDB zur Datenaufbewahrung, wenn er die Azure-Speicherdienste simuliert. Sie können Ihre LocalDB-Instanz zurücksetzen, indem Sie die folgenden Befehle in einem Eingabeaufforderungs-Fenster ausführen, bevor Sie versuchen, SDK zu installieren.
 
@@ -698,16 +698,16 @@ Wenn die vorherigen Abschnitte nicht Ihr Problem mit dem Speicherdienst enthalte
 * Die Metrikinformationen unterstützen Sie bei der Suche nach serverseitigen Protokollierungsdaten, um weitere detaillierte Informationen über alle auftretenden Fehler zu erhalten. Diese Informationen können Ihnen dabei helfen, das Problem zu finden und zu beheben.
 * Wenn die Informationen in den serverseitigen Protokollen nicht ausreichen, um das Problem erfolgreich zu beheben, können Sie die Clientprotokolle der Speicher-Clientbibliothek zur Untersuchung des Verhaltens Ihrer Clientanwendung und Tools wie Fiddler, Wireshark und Microsoft Message Analyzer zur Untersuchung Ihres Netzwerks verwenden.
 
-Weitere Informationen finden Sie in[Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr].
+Weitere Informationen zur Verwendung von Fiddler finden Sie in [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr].
 
-Weitere Informationen zu Wireshark finden Sie in[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Wireshark finden Sie in [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
 
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer finden Sie in[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Microsoft Message Analyzer finden Sie in [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ## <a name="appendices"></a>Anhänge
 Die Anhänge beschreiben verschiedene Tools, die bei der Diagnose und Fehlerbehandlung von Problemen mit Azure-Speicher (und anderen Diensten) nützlich sein könnten. Diese Werkzeuge sind nicht Teil von Azure-Speicher, und einige sind Produkte von Drittanbietern. Als solche sind die in diesen Anhängen diskutierten Tools nicht durch Support-Vereinbarungen abgedeckt, die Sie ggf. mit Microsoft Azure oder Azure-Speicher getroffenen haben. Als Bestandteil Ihrer Evaluierung sollten Sie daher die Lizenz- und Supportoptionen prüfen, die die Anbieter dieser Tools zur Verfügung stellen.
 
-### <a name="appendix-1"></a>Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr
+### <a name="appendix-1"></a>Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr.
 [Fiddler](http://www.telerik.com/fiddler) ist ein nützliches Werkzeug für die Analyse des HTTP- und HTTPS-Datenverkehrs zwischen Ihrer Clientanwendung und dem von Ihnen verwendeten Azure-Speicherdienst.
 
 > [!NOTE]
@@ -726,7 +726,7 @@ Um die Menge des von Fiddler erfassten Verkehrs einzuschränken, können Sie Fil
 
 ![][5]
 
-### <a name="appendix-2"></a>Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr
+### <a name="appendix-2"></a>Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr.
 [Wireshark](http://www.wireshark.org/) ist ein Netzwerkprotokoll-Analysator, mit dem Sie detaillierte Paketinformationen für einen breiten Netzwerkprotokollbereich anzeigen können.
 
 Das folgende Verfahren zeigt, wie Sie detaillierte Paketinformationen für Datenverkehr aus dem lokalen Computer erfassen, auf dem Sie Wireshark für den Tabellendienst Ihres Azure-Speicherkontos installiert haben.
@@ -754,7 +754,7 @@ Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vor
 > 
 > 
 
-### <a name="appendix-3"></a>Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr
+### <a name="appendix-3"></a>Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr.
 Sie können Microsoft Message Analyzer verwenden, um HTTP- und HTTPS-Datenverkehr ähnlich wie Fiddler und Netzwerkverkehr ähnlich wie Wireshark zu erfassen.
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Konfigurieren einer Web-Rückverfolgungssession mit Microsoft Message Analyzer
@@ -799,13 +799,13 @@ Um Speicherprotokollierungsdaten in Excel zu importieren, nachdem Sie diese aus 
 
 Wählen Sie in Schritt 1 des **Textimport-Assistenten** die Option **Semikolon** als einziges Trennzeichen und doppelte Anführungszeichen als **Textbegrenzungszeichen** aus. Klicken Sie anschließend auf **Fertigstellen** und wählen Sie aus, wo Sie die Datei in Ihrer Arbeitsmappe ablegen möchten.
 
-### <a name="appendix-5"></a>Anhang 5: Überwachung mit Application Insights für Azure DevOps
+### <a name="appendix-5"></a>Anhang 5: Überwachung mit Application Insights für Azure DevOps.
 Sie können die Application Insights-Funktion für Azure DevOps auch als Bestandteil der Leistungs- und Verfügbarkeitsüberwachung verwenden. Dieses Tool kann:
 
 * Sicherstellen, dass Ihr Webdienst verfügbar und reaktionsschnell ist. Ob Ihre Anwendung eine Website ist, die einen Webdienst verwendet, oder eine Geräteanwendung: Sie kann Ihre URL alle paar Minuten von Standorten auf der ganzen Welt testen, und Ihnen mitteilen, ob es ein Problem gibt.
 * Leistungsprobleme oder Ausnahmen in Ihrem Webdienst schnell diagnostizieren. Finden Sie heraus, ob für CPU oder andere Ressourcen Stretching durchgeführt wird, gewinnen Sie Stapelnachverfolgungen aus Ausnahmen, und durchsuchen Sie ganz einfach Protokollablaufverfolgungen. Wenn die Leistung der Anwendung unter akzeptable Grenzwerte fällt, kann Microsoft Ihnen eine E-Mail senden. Sie können sowohl .NET- als auch Java-Webdienste überwachen.
 
-Weitere Informationen finden Sie unter [Was ist Application Insights](../../application-insights/app-insights-overview.md).
+Weitere Informationen finden Sie unter [Was ist Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 <!--Anchors-->
 [Einführung]: #introduction

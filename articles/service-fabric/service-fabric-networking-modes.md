@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866065"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024789"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -35,7 +35,7 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
 
 ## <a name="set-up-open-networking-mode"></a>Einrichten des Netzwerkmodus „Open“
 
-1. Richten Sie die Azure Resource Manager-Vorlage ein. Aktivieren Sie im Abschnitt **fabricSettings** den DNS-Dienst und den IP-Anbieter: 
+1. Richten Sie die Azure Resource Manager-Vorlage ein. Aktivieren Sie im Abschnitt **fabricSettings** der Cluster-Ressource den DNS-Dienst und den IP-Anbieter: 
 
     ```json
     "fabricSettings": [
@@ -77,8 +77,10 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
                 }
             ],
     ```
+    
+2. Richten Sie den Netzwerkprofilabschnitt der Virtual Machine Scale Set-Ressource ein. So können für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden. Im folgenden Beispiel werden für einen Windows/Linux Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. Über den Port auf jedem Knoten können fünf Dienstinstanzen lauschen. Damit die fünf IP-Adressen von Azure Load Balancer aus zugänglich sind, registrieren Sie die fünf IP-Adressen wie unten dargestellt im Back-End-Adresspool von Azure Load Balancer.  Sie werden auch die Variablen am Anfang der Vorlage im Variablenabschnitt hinzufügen müssen.
 
-2. Richten Sie den Netzwerkprofilabschnitt so ein, dass für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden können. Im folgenden Beispiel werden für einen Windows/Linux Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. Über den Port auf jedem Knoten können fünf Dienstinstanzen lauschen. Damit die fünf IP-Adressen von Azure Load Balancer aus zugänglich sind, registrieren Sie die fünf IP-Adressen wie unten dargestellt im Back-End-Adresspool von Azure Load Balancer.
+    Fügen Sie diesen Abschnitt „Variables“ hinzu:
 
     ```json
     "variables": {
@@ -97,6 +99,11 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]"
     }
+    ```
+    
+    Fügen Sie diesen Abschnitt der Virtual Machine Scale Set-Ressource hinzu:
+
+    ```json   
     "networkProfile": {
                 "networkInterfaceConfigurations": [
                   {

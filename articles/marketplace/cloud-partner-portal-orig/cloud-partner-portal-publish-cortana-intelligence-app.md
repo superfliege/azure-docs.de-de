@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6357640ceeb7c5f1bde4eea85aa5265990935f4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257206"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157155"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Veröffentlichen eines Cortana Intelligence-Angebots über das Cloud-Partnerportal
 
@@ -126,7 +126,7 @@ In den folgenden Anweisungen wird gezeigt, wie Sie ein Video mit Skype for Busin
 3. [Starten einer Aufzeichnung](https://support.office.com/article/Share-sites-or-documents-with-people-outside-your-organization-80e49744-e30f-44db-8d51-16661b1d4232)
 4. Nachdem Sie die Aufzeichnung beendet haben, [verwenden Sie den Aufzeichnungs-Manager zur Veröffentlichung der Aufzeichnung](https://support.office.com/article/Recording-Manager-save-and-publish-59a3beb7-c700-40cf-ab21-bc82a2b06351)
 
-Laden Sie Ihr aufgezeichnetes Video in einen Dienst hoch, der es Ihnen ermöglicht, eine freigegebene URL zu generieren. Dies kann beispielsweise ein [Gästelink in OneDrive oder Sharepoint](https://support.office.com/article/Share-sites-or-documents-with-people-outside-your-organization-80e49744-e30f-44db-8d51-16661b1d4232) sein.
+Laden Sie Ihr aufgezeichnetes Video in einen Dienst hoch, der es Ihnen ermöglicht, eine freigegebene URL zu generieren. Dies kann beispielsweise ein [Gästelink in OneDrive oder SharePoint](https://support.office.com/article/Share-sites-or-documents-with-people-outside-your-organization-80e49744-e30f-44db-8d51-16661b1d4232) sein.
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -153,7 +153,7 @@ Wählen Sie die Geschäftsprozesse aus, die Ihre Lösung am besten beschreiben. 
 
 ### <a name="trial-info"></a>Testinformationen
 
--   **URL für SaaS-Test:** Geben Sie die URL für die Testbenutzeroberfläche Ihrer Anwendung ein.
+-   **URL für SaaS-Testversion:** Geben Sie die URL für die Testbenutzeroberfläche Ihrer Anwendung ein.
 -   **URL für Testversion:** Geben Sie die URL für die Testversionsoberfläche Ihrer Anwendung ein.
 
 Weitere Informationen zu Testmöglichkeiten finden Sie unter **App-Typ** im nächsten Abschnitt dieses Artikels.
@@ -292,7 +292,7 @@ Geben Sie die Nutzungsbedingungen Ihrer App ein. AppSource-Kunden müssen diese 
 
 Wählen Sie ein CRM-System aus, in dem Ihre Leads gespeichert werden. 
 
-Wählen Sie **Azure-Tabelle** aus, wenn Sie eines der folgenden CRM-Systeme verwenden: Salesforce, Marketo oder Microsoft Dynamics CRM. 
+Wählen Sie **Azure-Tabelle** aus, wenn Sie eines diese CRM-Systeme verwenden: Salesforce, Marketo oder Microsoft Dynamics CRM. 
 
 Wenn Sie weitere Informationen über das CRM-System wünschen, das Sie verwenden möchten, wählen Sie einen der folgenden Links für die unterstützten Systeme aus.
 

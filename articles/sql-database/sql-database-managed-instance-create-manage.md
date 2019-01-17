@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: 7fb6917e129c015536143a707fd2a89fc5423a99
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 01/03/2019
+ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323079"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040199"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -37,25 +37,33 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
 |[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlInstance)|Gibt Informationen zur verwalteten Azure SQL-Instanz zurück|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Set-AzureRmSqlInstance)|Legt Eigenschaften für eine verwaltete Azure SQL-Datenbank-Instanz fest|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/Remove-AzureRmSqlInstance)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz|
+|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Gibt Informationen zur verwalteten Azure SQL-Instanz zurück|
+|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Legt Eigenschaften für eine verwaltete Azure SQL-Datenbank-Instanz fest|
+|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz|
+|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
+|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Gibt Informationen zur verwalteten Azure SQL-Instanz-Datenbank zurück|
+|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
+|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Stellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank wieder her|
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure CLI: Verwalten von logischen Servern und Datenbanken
+## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure-Befehlszeilenschnittstelle: Verwalten von logischen Servern und Datenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-Befehle für eine verwaltete SQL-Instanz](/cli/azure/sql/mi). Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows.
 
 > [!TIP]
 > Eine Azure CLI-Schnellstartanleitung finden Sie unter [Arbeiten mit einer verwalteten SQL-Instanz mithilfe der Azure CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
->
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-|[az sql mi create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-create) |Erstellt eine verwaltete Instanz|
-|[az sql mi list](https://docs.microsoft.com/cli/azure/sql/db#az-sql-mi-list)|Listet verfügbare verwaltete Instanzen auf|
-|[az sql mi show](/cli/azure/sql/db#az-sql-mi-show)|Ruft die Details für eine verwaltete Instanz ab|
-|[az sql mi update](/cli/azure/sql/db#az-sql-mi-update)|Aktualisiert eine verwaltete Instanz|
-|[az sql mi delete](/cli/azure/sql/db#az-sql-mi-delete)|Entfernt eine verwaltete Instanz|
+|[az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Erstellt eine verwaltete Instanz|
+|[az sql mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Listet verfügbare verwaltete Instanzen auf|
+|[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Ruft die Details für eine verwaltete Instanz ab|
+|[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Aktualisiert eine verwaltete Instanz|
+|[az sql mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Entfernt eine verwaltete Instanz|
+|[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Erstellt eine verwaltete Datenbank|
+|[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Listet verfügbare verwaltete Datenbanken auf|
+|[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Stellt eine verwaltete Datenbank wieder her|
+|[az sql midb update](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|Aktualisiert eine verwaltete Datenbank|
+|[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Entfernt eine verwaltete Datenbank|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Verwalten von logischen Servern und Datenbanken
 
@@ -66,7 +74,7 @@ Verwenden Sie zum Erstellen und Verwalten einer Datenbank der verwalteten Azure 
 > [!IMPORTANT]
 > Sie können eine verwaltete Instanz mithilfe von Transact-SQL nicht erstellen oder löschen.
 
-| Befehl | BESCHREIBUNG |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Erstellt eine neue Datenbank der verwalteten Instanz. Sie müssen über eine Verbindung mit der Masterdatenbank verfügen, um eine neue Datenbank erstellen zu können.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Ändert eine Datenbank der verwalteten Azure SQL-Instanz.|
@@ -75,7 +83,7 @@ Verwenden Sie zum Erstellen und Verwalten einer Datenbank der verwalteten Azure 
 
 Verwenden Sie die folgenden REST-API-Anforderungen zum Erstellen und Verwalten einer verwalteten Azure SQL-Datenbank-Instanz.
 
-| Befehl | BESCHREIBUNG |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[Verwaltete Instanzen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Erstellt oder aktualisiert eine verwaltete Instanz.|
 |[Verwaltete Instanzen – Löschen](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Löscht eine verwaltete Instanz.|

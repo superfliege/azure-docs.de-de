@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: bc311ca5c49584ae3715fa4507e1fd678bcc93bb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53007937"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54122835"
 ---
 GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen oder mehreren NVIDIA-GPUs verfügbar. Diese Größen sind für rechenintensive, grafikintensive und visualisierungsorientierte Workloads vorgesehen. Dieser Artikel enthält Informationen über die Anzahlen und Typen von GPUs, vCPUs, Datenträgern und NICs. Der Speicherdurchsatz und die Netzwerkbandbreite sind für die jeweiligen Größen in dieser Gruppe ebenfalls enthalten. 
 
 * Die Größen **NC, NCv2, NCv3, ND und NDv2** sind für compute- und netzwerkintensive Anwendungen und Algorithmen optimiert. Einige Beispiele sind CUDA- und OpenCL-basierte Anwendungen und Simulationen, KI und Deep Learning. Die NCv3-Serie ist für High Performance Computing-Workloads, die mit der Tesla V100-GPU von NVIDIA ausgestattet sind, konzipiert.  Die ND-Serie ist auf Trainings- und Rückschlussszenarien für Deep Learning spezialisiert. Sie wird mit der NVIDIA Tesla P40-GPU betrieben.
+
+* Die **NC-Serie** verfügt über einen Intel Xeon® E5-2690 v3-Prozessor mit 2,60 GHz.
+
+* Die **NCSv3**, **NCSv2** und **ND** verfügen über einen Intel Xeon® E5-2690 v4-Prozessor mit 2,60 GHz.
+                      
 * Die Größen **NV und NVv2** sind für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX optimiert und konzipiert.  Diese VMs werden von der NVIDIA Tesla M60-GPU unterstützt.
 
 

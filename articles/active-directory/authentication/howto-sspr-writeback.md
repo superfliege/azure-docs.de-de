@@ -10,16 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086946"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040658"
 ---
-# <a name="how-to-configure-password-writeback"></a>Vorgehensweise: Konfigurieren des Kennwortrückschreibens
-
-Sie sollten das automatische Update von [Azure AD Connect](../hybrid/how-to-connect-install-express.md) verwenden, wenn Sie das Kennwortrückschreiben nutzen möchten.
+# <a name="how-to-configure-password-writeback"></a>Gewusst wie: Konfigurieren von Kennwortrückschreiben
 
 Für die folgenden Schritte wird davon ausgegangen, dass Sie Azure AD Connect bereits in Ihrer Umgebung konfiguriert haben, indem Sie die [Express](../hybrid/how-to-connect-install-express.md)- oder [benutzerdefinierten](../hybrid/how-to-connect-install-custom.md) Einstellungen verwendet haben.
 
@@ -39,6 +37,24 @@ Informationen zu allgemeinen Aufgaben zur Problembehandlung im Zusammenhang mit 
 > Das Kennwortrückschreiben funktioniert nicht mehr für Kunden, die Azure AD Connect-Versionen bis 1.0.8641.0 verwenden, wenn der [Azure Access Control Service (ACS) am 7. November 2018 eingestellt wird](../develop/active-directory-acs-migration.md). Azure AD Connect-Versionen bis 1.0.8641.0 lassen ab diesem Zeitpunkt kein Kennwortrückschreiben mehr zu, da sie für diese Funktionalität von ACS abhängen.
 >
 > Um eine Dienstunterbrechung zu vermeiden, führen Sie bei früheren Versionen von Azure AD Connect ein Upgrade auf eine neuere Version durch. Weitere Informationen finden Sie unter [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](../hybrid/how-to-upgrade-previous-version.md).
+>
+
+## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
+
+**Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben ist eine Premium-Funktion von Azure AD**. Weitere Informationen zur Lizenzierung finden Sie auf der [Preiswebsite für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Damit Kennwortrückschreiben verwendet werden kann, muss in Ihrem Mandanten eine der folgenden Lizenzen zugewiesen sein:
+
+* Azure AD Premium P1
+* Azure AD Premium P2
+* Enterprise Mobility + Security E3 oder A3
+* Enterprise Mobility + Security E5 oder A5
+* Microsoft 365 E3 oder A3
+* Microsoft 365 E5 oder A5
+* Microsoft 365 F1
+
+> [!WARNING]
+> Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.
 >
 
 ## <a name="active-directory-permissions"></a>Active Directory-Berechtigungen

@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 514516dcc28e99d03611c7db6ec09c7b4a48ff0e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306662"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051440"
 ---
 # <a name="visualize-data-with-power-bi"></a>Visualisieren von Daten mit Power BI
 In diesem Lernprogramm erfahren Sie, wie Sie Power BI zum Herstellen einer Verbindung mit SQL Data Warehouse verwenden und einige einfache Visualisierungen erstellen.
@@ -32,7 +32,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 ## <a name="1-connect-to-your-database"></a>1. Verbinden mit der Datenbank
 Gehen Sie wie folgt vor, um Power BI zu öffnen und eine Verbindung mit der AdventureWorksDW-Datenbank herzustellen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie auf **SQL-Datenbanken** , und wählen Sie Ihre AdventureWorks SQL Data Warehouse-Datenbank aus.
    
     ![Datenbank suchen](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -77,7 +77,7 @@ Sie können Power BI jetzt zum Analysieren Ihrer AdventureWorksDW-Beispieldaten 
 
 Sie können Ihren Fortschritt jederzeit speichern, indem Sie auf **Datei** und auf **Speichern** klicken.
 
-## <a name="using-direct-connnect"></a>Verwenden von Direct Connnect
+## <a name="using-direct-connect"></a>Verwendung von Direct Connect
 Wie bei Azure SQL-Datenbank ermöglicht auch SQL Data Warehouse Direct Connect logische Pushdowns in Verbindung mit den Analysefunktionen von Power BI. Abfragen werden mit Direct Connect in Echtzeit zurück an Ihre Azure SQL Data Warehouse-Instanz gesendet, während Sie die Daten durchsuchen.  Dieses Feature ermöglicht Ihnen in Kombination mit der Skalierung von SQL Data Warehouse, in Minuten dynamische Berichte für Terabytes an Daten zu erstellen. Darüber hinaus ermöglicht die Einführung der Schaltfläche "Open in Power BI" Benutzern, direkt eine Verbindung zwischen Power BI und SQL Data Warehouse herzustellen, ohne dass Informationen aus anderen Teilen von Azure gesammelt werden müssen.
 
 Beachten Sie bei der Verwendung von Direct Connect Folgendes:

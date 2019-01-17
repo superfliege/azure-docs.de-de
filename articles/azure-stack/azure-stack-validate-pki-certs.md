@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515827"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121174"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Überprüfen von Azure Stack-PKI-Zertifikaten
 
@@ -28,7 +28,7 @@ Das in diesem Artikel beschriebene Tool Azure Stack Readiness Checker steht im [
 Das Readiness Checker-Tool führt folgende Zertifikatüberprüfungen durch:
 
 - **Lesen der PFX-Datei**  
-    Sucht nach einer gültigen PFX-Datei und einem korrekten Kennwort und gibt eine Warnung aus, falls öffentliche Informationen nicht durch das Kennwort geschützt sind. 
+    Sucht nach einer gültigen PFX-Datei und einem korrekten Kennwort und prüft, ob öffentliche Informationen durch das Kennwort geschützt sind. 
 - **Signaturalgorithmus**  
     Überprüft, ob SHA1 als Signaturalgorithmus verwendet wird (was nicht der Fall sein darf).
 - **Privater Schlüssel**  
@@ -86,8 +86,8 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate für die Bereitstell
     
      - Platzieren Sie Ihre Zertifikate in den entsprechenden Verzeichnissen aus dem vorherigen Schritt. Beispiel:   
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
+        - `c:\certificates\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\ARM Admin\CustomerCertificate.pfx`
 
 3. Ändern Sie im PowerShell-Fenster die Werte von **RegionName** und **FQDN** entsprechend der Azure Stack-Umgebung, und führen Sie Folgendes aus:
 
@@ -145,7 +145,7 @@ Invoke-AzsCertificateValidation Completed
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-**Symptom:** Tests werden übersprungen.
+**Symptom**: Tests werden übersprungen.
 
 **Ursache:** AzsReadinessChecker überspringt bestimmte Tests, wenn eine Abhängigkeit nicht erfüllt ist:
 

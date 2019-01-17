@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993814"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074524"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -674,6 +674,10 @@ In C# und anderen .NET-Sprachen können Sie ein imperatives Bindungsmuster verwe
 ## <a name="functionjson-file-schema"></a>function.json-Dateischema
 
 Das Dateischema *function.json* steht unter [http://json.schemastore.org/function](http://json.schemastore.org/function) zur Verfügung.
+
+## <a name="testing-bindings"></a>Bindungen werden getestet
+
+Wenn Sie Funktionen lokal entwickeln, können Sie Ihre Bindungen entweder mit Visual Studio 2017 oder Visual Studio Code testen. Weitere Informationen finden Sie unter [Strategien zum Testen Ihres Codes in Azure Functions](functions-test-a-function.md). Sie können auch Nicht-HTTP-Bindungen mit REST-APIs aufrufen. Weitere Informationen finden Sie unter [Manuelles Ausführen einer Funktion ohne HTTP-Trigger](functions-manually-run-non-http.md).
 
 ## <a name="handling-binding-errors"></a>Beheben von Bindungsfehlern
 

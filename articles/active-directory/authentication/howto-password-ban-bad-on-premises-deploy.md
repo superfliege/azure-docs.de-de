@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5774af4e0550ceb7a51e399fcab203a503a7f23f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011492"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033603"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>Vorschauversion: Bereitstellen des Kennwortschutzes für Azure AD
+# <a name="preview-deploy-azure-ad-password-protection"></a>Vorschau: Bereitstellen des Kennwortschutzes für Azure AD
 
 |     |
 | --- |
@@ -85,6 +85,9 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
 
 2. Installieren Sie die Software für den Kennwortrichtlinien-Proxydienst mit dem MSI-Paket „AzureADPasswordProtectionProxy.msi“.
    * Nach der Softwareinstallation ist kein Neustart erforderlich. Die Softwareinstallation lässt sich mit Standard-MSI-Prozeduren automatisieren, z.B.: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`
+
+      > [!NOTE]
+      > Der Windows-Firewall-Dienst muss vor der Installation des MSI-Pakets AzureADPasswordProtectionProxy.msi ausgeführt werden, da ansonsten ein Installationsfehler auftritt. Wenn die Windows-Firewall dafür konfiguriert ist, nicht ausgeführt zu werden, besteht die Problemumgehung im vorübergehenden Aktivieren und Starten des Windows-Firewall-Diensts während des Installationsvorgangs. Die Proxysoftware ist nach der Installation nicht in bestimmter Weise von der Windows-Firewall-Software abhängig. Wenn Sie eine Drittanbieterfirewall verwenden, muss sie dennoch konfiguriert werden, um die Bereitstellungsanforderungen zu erfüllen (Zulassen des eingehenden Zugriffs an Port 135 und dem Proxy-RPC-Serverport, ob dynamisch oder statisch). [Siehe Bereitstellungsanforderungen](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
 
 3. Öffnen Sie ein PowerShell-Fenster als Administrator.
    * Die Software für den Azure AD-Kennwortschutz-Proxydienst enthält ein neues PowerShell-Modul namens „AzureADPasswordProtection“. Die folgenden Schritte basieren auf der Ausführung verschiedener Cmdlets aus diesem PowerShell-Modul und setzen voraus, dass Sie ein neues PowerShell-Fenster geöffnet und das neue Modul wie folgt importiert haben:

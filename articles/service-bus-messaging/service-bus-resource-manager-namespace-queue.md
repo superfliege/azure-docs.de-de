@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4010f1582b726993a5540898492c76aa543fa2d9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 4d16e6161d2e31ed104f6b1ed9842470dd5faae9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407738"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062416"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage
 
@@ -32,7 +32,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue temp
 > [!NOTE]
 > Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 > 
-> * [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template (Erstellen einer Service Bus-Autorisierungsregel für Namespace und Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 > * [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
 > * [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
@@ -116,6 +116,8 @@ Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**mit
         }]
     }]
 ```
+
+JSON-Syntax und Eigenschaften finden Sie unter [Namespaces](/azure/templates/microsoft.servicebus/namespaces) und [Warteschlangen](/azure/templates/microsoft.servicebus/namespaces/queues).
 
 ## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]

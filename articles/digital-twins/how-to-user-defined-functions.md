@@ -1,20 +1,20 @@
 ---
 title: Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins | Microsoft-Dokumentation
-description: Anleitung zum Erstellen benutzerdefinierter Funktionen, Matcher (Abgleicher) und Rollenzuweisungen mit Azure Digital Twins.
+description: Erstellen benutzerdefinierter Funktionen, Matcher und Rollenzuweisungen in Azure Digital Twins.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993404"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076245"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -73,21 +73,17 @@ Mit JSON-Text:
 
 ## <a name="create-a-user-defined-function"></a>Erstellen einer benutzerdefinierten Funktion
 
-Nachdem die Matcher erstellt wurden, laden Sie den Funktionsocdeausschnitt mit der folgenden authentifizierten HTTP-**POST**-Anforderung hoch:
+Das Erstellen einer benutzerdefinierten Funktion beinhaltet das Erstellen einer mehrteiligen HTTP-Anforderung an die Azure Digital Twins-Verwaltungs-APIs.
+
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+Nachdem die Matcher erstellt wurden, laden Sie den Funktionsocdeausschnitt mit der folgenden authentifizierten mehrteiligen HTTP-POST-Anforderung hoch:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-> [!IMPORTANT]
-> - Vergewissern Sie sich, dass die Header Folgendes enthalten: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-> - Der angegebene Hauptteil ist mehrteilig:
->   - Der erste Teil enthält die erforderliche Metadaten für die benutzerdefinierte Funktion.
->   - Der zweite Teil enthält die JavaScript-Computelogik.
-> - Ersetzen Sie im Abschnitt **USER_DEFINED_BOUNDARY** die Werte für **spaceId** (`YOUR_SPACE_IDENTIFIER`) und **Matchers** (`YOUR_MATCHER_IDENTIFIER`).
-> - Beachten Sie die als `Content-Type: text/javascript` angegebene JavaScript-UDF.
-
-Verwenden Sie den folgendem JSON-Text:
+Verwenden Sie folgenden Text:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -116,6 +112,15 @@ function process(telemetry, executionContext) {
 | USER_DEFINED_BOUNDARY | Name für die Begrenzung mehrteiliger Inhalte |
 | YOUR_SPACE_IDENTIFIER | Den Raumbezeichner (Raum-ID)  |
 | YOUR_MATCHER_IDENTIFIER | Die ID des Matchers, den Sie verwenden möchten |
+
+1. Vergewissern Sie sich, dass die Header Folgendes enthalten: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Vergewissern Sie sich, dass der Text mehrteilig ist:
+
+   - Der erste Teil enthält die erforderliche Metadaten für die benutzerdefinierte Funktion.
+   - Der zweite Teil enthält die JavaScript-Computelogik.
+
+1. Ersetzen Sie im Abschnitt **USER_DEFINED_BOUNDARY** die Werte für **spaceId** (`YOUR_SPACE_IDENTIFIER`) und **Matchers** (`YOUR_MATCHER_IDENTIFIER`).
+1. Vergewissern Sie sich, dass die benutzerdefinierte JavaScript-Funktion als `Content-Type: text/javascript` bereitgestellt wird.
 
 ### <a name="example-functions"></a>Beispielfunktionen
 
@@ -190,7 +195,7 @@ Ein komplexeres Beispiel für eine benutzerdefinierte Funktion finden Sie im [Be
 
 ## <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
 
-Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion ausgeführt werden soll. Wenn keine Rollenzuweisung für die benutzerdefinierte Funktion vorhanden ist, besitzt sie nicht die erforderlichen Berechtigungen für die Interaktion mit der Verwaltungs-API oder hat keinen Zugriff zum Ausführen von Aktionen mit Graphobjekten. Aktionen, die eine benutzerdefinierte Funktion ausführen kann, werden über die rollenbasierte Zugriffssteuerung innerhalb der Azure Digital Twins-Verwaltungs-APIs angegeben und definiert. Benutzerdefinierte Funktionen können beispielsweise hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Weitere Informationen finden Sie in der Dokumentation zur [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md).
+Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion ausgeführt werden soll. Wenn für die benutzerdefinierte Funktion keine Rollenzuweisung vorhanden ist, verfügt sie nicht über die erforderlichen Berechtigungen für die Interaktion mit der Verwaltungs-API oder den Zugriff zum Ausführen von Aktionen an Graphobjekten. Aktionen, die eine benutzerdefinierte Funktion ausführen kann, werden über eine rollenbasierte Zugriffskontrolle innerhalb der Azure Digital Twins-Verwaltungs-APIs spezifiziert und definiert. Benutzerdefinierte Funktionen können beispielsweise hinsichtlich des Geltungsbereichs eingeschränkt werden, indem bestimmte Rollen oder bestimmte Zugriffssteuerungspfade angegeben werden. Weitere Informationen finden Sie in der Dokumentation zur [rollenbasierten Zugriffssteuerung](./security-role-based-access-control.md).
 
 1. [Fragen Sie die System-API](./security-create-manage-role-assignments.md#all) nach allen Rollen ab, um die Rollen-ID zu erhalten, die Sie Ihrer benutzerdefinierten Funktion zuweisen möchten. Stellen Sie hierzu eine authentifizierte HTTP-GET-Anforderung an:
 
@@ -211,7 +216,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
     | --- | --- |
     | YOUR_SPACE_NAME | Der Name des Raums, den Sie verwenden möchten |
 
-1. Fügen Sie den zurückgegebenen `spacePaths`-Wert in **Path** ein, um eine UDF-Rollenzuweisung zu erstellen, indem Sie eine authentifizierte HTTP-POST-Anforderung an folgende URL sellen:
+1. Fügen Sie den zurückgegebenen `spacePaths`-Wert in **path** ein, um eine benutzerdefinierte Funktionsrollenzuweisung zu erstellen, indem Sie eine authentifizierte HTTP-POST-Anforderung an folgende URL stellen:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -230,12 +235,12 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
     | Wert | Ersetzen durch |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | Der Bezeichner für die gewünschte Rolle |
-    | YOUR_USER_DEFINED_FUNCTION_ID | Die ID für die benutzerdefinierte Funktion, die Sie verwenden möchten |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Die ID zur Angabe des UDF-Typs |
+    | YOUR_USER_DEFINED_FUNCTION_ID | Die ID für die benutzerdefinierte Funktion, die Sie verwenden möchten. |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Die ID, die den Typ der benutzerdefinierten Funktion angibt. |
     | YOUR_ACCESS_CONTROL_PATH | Der Zugriffssteuerungspfad |
 
 >[!TIP]
-> Weitere Informationen zu UDF-bezogenen Verwaltungs-API-Vorgängen und Endpunkten finden Sie in dem Artikel [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md).
+> Weitere Informationen zu auf benutzerdefinierte Funktionen bezogenen Verwaltungs-API-Vorgängen und Endpunkten finden Sie in dem Artikel [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md).
 
 ## <a name="send-telemetry-to-be-processed"></a>Senden der Telemetriedaten, die verarbeitet werden sollen
 

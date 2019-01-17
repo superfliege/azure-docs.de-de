@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: fdb3c5cbd3acee90386352c6f180a71aa81f54fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23127158"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119440"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Beispiel 3: Erstellen einer DMZ zum Schutz von Netzwerken mit Firewall, UDR und NSG
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -31,8 +31,8 @@ In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern, benut
 ## <a name="environment-setup"></a>Einrichten der Umgebung
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
-* Drei Clouddienste: "SecSvc001", "FrontEnd001" und "BackEnd001"
-* Ein virtuelles Netzwerk namens „CorpNetwork“ mit drei Subnetzen: „SecNet“, „FrontEnd“ und „BackEnd“
+* Drei Clouddienste: „SecSvc001“, „FrontEnd001“ und „BackEnd001“
+* Ein virtuelles Netzwerk „CorpNetwork“ mit drei Subnetzen: „SecNet“, „FrontEnd“ und „BackEnd“
 * Ein virtuelles Netzwerkgerät, in diesem Beispiel eine Firewall, das mit dem Subnetz "SecNet" verbunden ist
 * Eine Windows Server-Instanz, die einen Anwendungswebserver darstellt ("IIS01")
 * Zwei Windows Server-Instanzen, die Back-End-Anwendungsserver darstellen ("AppVM01", "AppVM02")
@@ -50,10 +50,10 @@ So erstellen Sie die Umgebung:
 
 Nachdem das Skript erfolgreich ausgeführt wurde, können folgende Schritte ausgeführt werden:
 
-1. Richten Sie die Firewallregeln ein. Dieses Thema wird im unten stehenden Abschnitt "Firewallregeln" beschrieben.
+1. Richten Sie die Firewallregeln ein. Dieses Thema wird im unteren Abschnitt beschrieben: Beschreibung der Firewallregel.
 2. Optional stehen im Referenzabschnitt zwei Skripts zum Einrichten des Webservers und des Anwendungsservers mit einer einfachen Webanwendung zur Verfügung, um Tests mit dieser DMZ-Konfiguration zu ermöglichen.
 
-Nachdem das Skript erfolgreich ausgeführt wurde, müssen die Firewallregeln eingerichtet werden. Dieses Thema wird im Abschnitt "Firewallregeln" beschrieben.
+Nachdem das Skript erfolgreich ausgeführt wurde, müssen die Firewallregeln eingerichtet werden. Dieses Thema wird in folgendem Abschnitt beschrieben: Firewallregeln.
 
 ## <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
 Standardmäßig sind folgende Systemrouten definiert:
@@ -201,7 +201,7 @@ In diesem Beispiel werden 7 Arten von Regeln benötigt, die wie folgt beschrieb
 * Externe Regeln (für eingehenden Datenverkehr):
   1. Firewallverwaltungsregel: Diese Regel zur Anwendungsumleitung ermöglicht die Weiterleitung von Datenverkehr an die Verwaltungsports des virtuellen Netzwerkgeräts.
   2. RDP-Regeln (für jeden Windows-Server): Diese vier Regeln (eine für jeden Server) ermöglichen die Verwaltung der einzelnen Server über RDP. Diese können je nach Funktionsumfang des verwendeten virtuellen Netzwerkgeräts in eine Regel gebündelt werden.
-  3. Regeln für den Anwendungsdatenverkehr: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z. B. vom Webserver zur Datenebene). Die Konfiguration dieser Regeln richtet sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
+  3. Regeln für den Anwendungsdatenverkehr: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z.B. vom Webserver zur Datenebene). Die Konfiguration dieser Regeln richtet sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
      * Mit der ersten Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit, Verwaltung usw. sorgen, ermöglichen Anwendungsregeln es Benutzern oder Diensten, auf die Anwendung(en) zuzugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet eine einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver um. Die umgeleitete Datenverkehrssitzung wird per Netzwerkadressübersetzung (Network Address Translation, NAT) an den internen Server weitergeleitet.
      * Bei der zweiten Regel für Anwendungsdatenverkehr handelt es sich um die Back-End-Regel, dank derer der Webserver über jeden Port mit dem Server AppVM01 (nicht jedoch mit dem Server AppVM02) kommunizieren kann.
 * Interne Regeln (für VNet-internen Datenverkehr)
@@ -241,7 +241,7 @@ Aufgrund der Verwendung von Variablen ist es hier nicht klar ersichtlich, aber E
 
 Zur Verwaltung der Firewall und Erstellung der erforderlichen Konfigurationen muss ein Verwaltungsclient auf einem PC installiert werden. Informationen zur Verwaltung des Geräts finden Sie in der Dokumentation zu Ihrer Firewall (bzw. einem anderen virtuellen Netzwerkgerät). Im Rest dieses Abschnitts und im nächsten Abschnitt, "Erstellen von Firewallregeln", wird die Konfiguration der Firewall über den Verwaltungsclient des Anbieters beschrieben (d. h. nicht über das Azure-Portal oder PowerShell).
 
-Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie unter [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie hier: [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 Nach der Anmeldung bei der Firewall, jedoch noch vor dem Erstellen von Firewallregeln sollten Sie zwei erforderliche Objektklassen einrichten, die die Erstellung der Regeln vereinfachen können: "Network" und "Service".
 
@@ -275,11 +275,11 @@ Wiederholen Sie den Prozess, um die RDP-Dienste für die anderen Server zu erste
 ### <a name="firewall-rules-creation"></a>Erstellen von Firewallregeln
 In diesem Beispiel werden drei Arten von Firewallregeln verwendet, die jeweils unterschiedliche Symbole aufweisen:
 
-Die Regel zur Anwendungsumleitung: ![Symbol der Regel zur Anwendungsumleitung][7]
+Die Regel zur Anwendungsumleitung:  ![Symbol der Regel zur Anwendungsumleitung][7]
 
-Die Ziel-NAT-Regel: ![Symbol der Ziel-NAT-Regel][8]
+Die Ziel-NAT-Regel:  ![Symbol der Ziel-NAT-Regel][8]
 
-Die Übergaberegel: ![Symbol der Übergaberegel][9]
+Die Übergaberegel:  ![Symbol der Übergaberegel][9]
 
 Weitere Informationen zu diesen Regeln finden Sie auf der Barracuda-Website.
 
@@ -298,7 +298,7 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
 > 
 > 
 
-* **RDP-Regeln**: Diese Ziel-NAT-Regeln ermöglichen die Verwaltung der einzelnen Server über RDP.
+* **RDP-Regeln**:  Diese Ziel-NAT-Regeln ermöglichen die Verwaltung der einzelnen Server über RDP.
   Zum Erstellen dieser Regel sind vier wichtige Felder erforderlich:
   
   1. Source: Um eine Verwaltung per RDP von einem beliebigen Standort aus zu ermöglichen, wird im Feld "Source" der Verweis "Any" verwendet.
@@ -322,7 +322,7 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
 > 
 > 
 
-* **Regeln für den Anwendungsdatenverkehr**: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z.B. vom Webserver zur Datenebene). Diese Regeln richten sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
+* **Regeln für den Anwendungsdatenverkehr:** Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z.B. vom Webserver zur Datenebene). Diese Regeln richten sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
   
     Zunächst wird die Front-End-Regel für Webdatenverkehr beschrieben:
   
@@ -419,7 +419,7 @@ Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Inte
 5. Firewall beginnt mit Regelverarbeitung:
    1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
    2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
-   3. WL-Regel 6 (Anwendung-Web) trifft zu, Datenverkehr wird zugelassen, Firewall leitet per NAT an 10.0.1.4 (IIS01) weiter.
+   3. WL-Regel 6 (Anwendung: Web) trifft zu, Datenverkehr wird zugelassen, Firewall leitet per NAT an 10.0.1.4 (IIS01) weiter.
 6. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu (der Datenverkehr wurde von der Firewall per NAT weitergeleitet, daher gilt als Quelladresse jetzt die Firewall, die sich im Sicherheitssubnetz befindet und von der NSG des Front-End-Subnetzes als "lokaler" Datenverkehrs angesehen und daher zugelassen wird), weiter zur nächsten Regel.
    2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
@@ -430,8 +430,8 @@ Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Inte
 11. Firewall beginnt mit Regelverarbeitung:
     1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
     2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
-    3. WL-Regel 6 (Anwendung-Web) trifft nicht zu, weiter zur nächsten Regel.
-    4. WL-Regel 7 (Anwendung-Back-End) trifft zu, Datenverkehr wird zugelassen, Firewall leitet Datenverkehr an 10.0.2.5 (AppVM01).
+    3. WL-Regel 6 (Anwendung: Web) trifft nicht zu, weiter zur nächsten Regel.
+    4. WL-Regel 7 (Anwendung: Back-End) trifft zu, Datenverkehr wird zugelassen, Firewall leitet Datenverkehr an 10.0.2.5 (AppVM01).
 12. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
     1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
     2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
@@ -782,7 +782,7 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
@@ -959,7 +959,7 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
-Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
+Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp]
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, NSG und benutzerdefiniertem Routing"

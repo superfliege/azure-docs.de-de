@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fdc4885c079a3659d394517f0a10394eff0720c8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126928"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119152"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Beispiel 2 – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -31,8 +31,8 @@ In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern und Ne
 ## <a name="environment-description"></a>Beschreibung der Umgebung
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
-* Zwei Clouddienste: "FrontEnd001" und "BackEnd001"
-* Ein virtuelles Netzwerk namens „CorpNetwork“ mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
+* Zwei Clouddienste: „FrontEnd001“ und „BackEnd001“
+* Ein virtuelles Netzwerk „CorpNetwork“ mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
 * Eine einzelne Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
 * Ein virtuelles Netzwerkgerät, in diesem Fall eine Barracuda NextGen-Firewall, das mit dem Front-End-Subnetz verbunden ist
 * Eine Windows Server-Instanz, die einen Anwendungswebserver darstellt ("IIS01")
@@ -56,7 +56,7 @@ So erstellen Sie die Umgebung:
 
 Nachdem das Skript erfolgreich ausgeführt wurde, können folgende Schritte ausgeführt werden:
 
-1. Richten Sie die Firewallregeln ein. Dieses Thema wird unten im Abschnitt „Firewallregeln“ beschrieben.
+1. Richten Sie die Firewallregeln ein. Dieses Thema wird im unteren Abschnitt beschrieben: „Firewallregeln“.
 2. Optional stehen im Referenzabschnitt zwei Skripts zum Einrichten des Webservers und des Anwendungsservers mit einer einfachen Webanwendung zur Verfügung, um Tests mit dieser DMZ-Konfiguration zu ermöglichen.
 
 Im nächsten Abschnitt werden die meisten Skriptanweisungen für Netzwerksicherheitsgruppen beschrieben.
@@ -87,7 +87,7 @@ Die oben beschriebenen NSG-Regeln weisen eine starke Ähnlichkeit mit den NSG-Re
 ## <a name="firewall-rules"></a>Firewallregeln
 Zur Verwaltung der Firewall und Erstellung der erforderlichen Konfigurationen muss ein Verwaltungsclient auf einem PC installiert werden. Informationen zur Verwaltung des Geräts finden Sie in der Dokumentation zu Ihrer Firewall (bzw. einem anderen virtuellen Netzwerkgerät). Im Rest dieses Abschnitts wird die Konfiguration der Firewall über den Verwaltungsclient des Anbieters beschrieben (d. h. nicht über das Azure-Portal oder PowerShell).
 
-Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie unter [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie hier: [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 In der Firewall müssen Weiterleitungsregeln erstellt werden. Da in diesem Beispiel nur eingehender Internetdatenverkehr an die Firewall und dann an den Webserver geleitet wird, ist nur eine NAT-Weiterleitungsregel erforderlich. Für die Barracuda NextGen-Firewall in diesem Beispiel würde es sich bei der Regel um eine Destination NAT-Regel („Dst NAT“) zum Übergeben des Datenverkehrs handeln.
 
@@ -95,7 +95,7 @@ Um die folgende Regel zu erstellen (oder vorhandene Standardregeln zu überprüf
 
 Erstellen Sie eine neue Regel, und geben Sie einen Namen ein, z. B. „WebTraffic“. 
 
-Das Symbol für die Ziel-NAT-Regel sieht wie folgt aus: ![Symbol der Ziel-NAT-Regel][2]
+Das Symbol für die Destination NAT-Regel sieht wie folgt aus:  ![Symbol der Ziel-NAT-Regel][2]
 
 Die Regel selbst würde wie folgt aussehen:
 
@@ -427,7 +427,7 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
@@ -568,7 +568,7 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
-Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
+Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp]
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Eingehende DMZ mit NSG"

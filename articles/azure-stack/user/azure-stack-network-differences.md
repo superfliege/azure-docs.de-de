@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: de98387b0c7d5eb3c5ca99f9aa31619397e2aadf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4aa62319ee37b2f82455d1a3c7ad2d224988d93e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944578"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160062"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Überlegungen zu Azure Stack-Netzwerken
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack-Netzwerke bieten viele Features von Azure-Netzwerken. Es gibt jedoch einige wichtige Unterschiede, die Sie kennen sollten, bevor Sie ein Azure Stack-Netzwerk bereitstellen.
 
 Dieser Artikel enthält eine Übersicht über die besonderen Überlegungen für Azure Stack-Netzwerke und die entsprechenden Features. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
 
-## <a name="cheat-sheet-networking-differences"></a>Spickzettel: Unterschiede bei Netzwerken
+## <a name="cheat-sheet-networking-differences"></a>Cheat Sheet: Unterschiede bei Netzwerken
 
 | Dienst | Feature | Azure (global) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,7 +54,6 @@ Dieser Artikel enthält eine Übersicht über die besonderen Überlegungen für 
 |  | Gateway-Standardwebsite | Azure unterstützt die Konfiguration einer Standardwebsite für Tunnelerzwingung. | Noch nicht unterstützt. |
 |  | Ändern der Gatewaygröße | Azure unterstützt das Ändern der Gatewaygröße nach der Bereitstellung. | Die Änderung der Größe wird nicht unterstützt. |
 |  | Aktiv/Aktiv-Konfiguration | Unterstützt | Noch nicht unterstützt. |
-|  | IKE/IPSec-Richtlinien | Azure unterstützt benutzerdefinierte Konfigurationen für IPSec-Richtlinien. | Noch nicht unterstützt. |
 |  | UsePolicyBasedTrafficSelectors | Azure unterstützt die Verwendung richtlinienbasierter Datenverkehrsselektoren mit routenbasierten Gatewayverbindungen. | Noch nicht unterstützt. |
 | Load Balancer | SKU | Load Balancer Basic und Standard werden unterstützt. | Nur Load Balancer Basic wird unterstützt.  Die SKU-Eigenschaft wird nicht unterstützt. |
 |  | Zones | Verfügbarkeitszonen werden unterstützt. | Noch nicht unterstützt |
@@ -65,11 +64,9 @@ Dieser Artikel enthält eine Übersicht über die besonderen Überlegungen für 
 |  | Abrufen der effektiven ACLs | Unterstützt | Noch nicht unterstützt. |
 |  | Aktivieren des beschleunigten Netzwerkbetriebs | Unterstützt | Noch nicht unterstützt. |
 |  | SSL-Weiterleitung | Standardmäßig deaktiviert.  Kann aktiviert werden. | Das Umschalten dieser Einstellung wird nicht unterstützt.  Standardmäßig aktiviert. |
-|  | Mehrere IP-Konfigurationen pro Schnittstelle | Unterstützt | Noch nicht unterstützt. |
 |  | Anwendungssicherheitsgruppen | Unterstützt | Noch nicht unterstützt. |
 |  | Interne DNS-Namensbezeichnung | Unterstützt | Noch nicht unterstützt. |
 |  | Version der privaten IP-Adresse | IPv6 und IPv4 werden unterstützt. | Es wird nur IPv4 unterstützt. |
-|  | Primäre IP-Konfiguration | Unterstützt. Identifiziert die primäre IP-Konfiguration auf der Schnittstelle. | Noch nicht unterstützt. |
 | Network Watcher | Überwachungsfunktionen für Network Watcher-Mandantennetzwerk | Unterstützt | Noch nicht unterstützt. |
 | CDN | Content Delivery Network-Profile | Unterstützt | Noch nicht unterstützt. |
 | Anwendungsgateway | Lastenausgleich auf Schicht 7 | Unterstützt | Noch nicht unterstützt. |

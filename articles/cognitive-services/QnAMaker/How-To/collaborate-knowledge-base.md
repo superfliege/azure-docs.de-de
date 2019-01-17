@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/08/2018
 ms.author: tulasim
-ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ec26e7ab535084fa5d8f52c11c671212eeab0f13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035231"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119832"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Zusammenarbeiten an einer Wissensdatenbank
 
@@ -35,7 +35,7 @@ Führen Sie die folgenden Schritte aus, um Ihren QnA Maker-Dienst für andere fr
 
     ![Hinzufügen von IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. Wählen Sie die Rolle **Besitzer** oder **Mitwirkender** aus.
+4. Wählen Sie die Rolle **Besitzer** oder **Mitwirkender** aus. Durch die rollenbasierte Zugriffssteuerung können Sie keinen schreibgeschützten Zugriff gewähren. Die Rollen „Besitzer“ und „Mitwirkender“ haben Lese-/Schreibzugriffsrechte auf den QnA Maker-Dienst.
 
     ![Hinzufügen einer IAM-Rolle in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 

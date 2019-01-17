@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: efa367157a8fd896cdc9680bf2ab6ba6a9e3dbb0
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429968"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084003"
 ---
 Schlüsseltransaktionen (Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region<sup>1</sup>):
 
@@ -23,6 +23,9 @@ Schlüsseltransaktionen (Max. Transaktionen innerhalb von 10 Sekunden pro Tresor
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
 |
+
+> [!NOTE]
+> Die oben genannten Schwellenwerte sind gewichtet und ihre Summe wird erzwungen. Sie können 125 RSA-HSM-4k- und 0 RSA-HSM-2k- oder 124 RSA-HSM-4-k- und 16 RSA-HSM-2k-Vorgänge durchführen. Anschließend verursacht im gleichen 10-Sekunden-Intervall jeder andere Vorgang eine AKV-Clientausnahme.
 
 > [!NOTE]
 > In der folgenden Tabelle sehen Sie, dass wir für softwaregestützte Schlüssel 2.000 Transaktionen pro 10 Sekunden und für HSM-gestützte Schlüssel 1.000 Transaktionen pro 10 Sekunden zulassen. Das Verhältnis von softwaregestützten Transaktionen für 3.072 Schlüssel zu 2.048 Schlüssel ist 500/2000 oder 0,4. Das bedeutet, dass ein Kunde sein maximales Limit erreicht, wenn er 500 3.072 Schlüsseltransaktionen in 10 Sekunden durchführt und keine anderen Schlüsseloperationen durchführen kann. 

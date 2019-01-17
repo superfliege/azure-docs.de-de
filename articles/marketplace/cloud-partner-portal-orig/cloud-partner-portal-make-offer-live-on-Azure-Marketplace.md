@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ff3ca665382efc9133a4c4ce3f3fde25c03c5e52
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ad22f1944d3fe9a088b66da4cf4df7136db497f7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806740"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075337"
 ---
 <a name="make-your-virtual-machine-offer-live-on-azure-marketplace"></a>Live-Schaltung Ihres Angebots zu virtuellen Maschinen im Azure Marketplace
 =========================================================
@@ -41,7 +41,7 @@ Auf der Registerkarte „Status“ sehen Sie die Veröffentlichungsschritte und 
 
 ![Angebotsaktivierungssequenz 2 – Status](./media/cloud-partner-portal-offer-go-live-azure-marketplace/status.png)
 
-Während des Veröffentlichungsprozesses können Sie sich auch jederzeit anmelden und auf die Registerkarte „Alle Angebote“ klicken, um den neuesten Status für irgendeines Ihrer Angebot einzusehen. Sie können direkt auf den Status Ihres Angebots klicken, um ausführliche Informationen darüber zu erhalten, wo sich Ihr Angebot im Veröffentlichungsvorgang befindet.
+Während des Veröffentlichungsprozesses können Sie sich auch jederzeit anmelden und auf die Registerkarte „Alle Angebote“ klicken, um den neuesten Status für Ihre Angebote einzusehen. Sie können direkt auf den Status Ihres Angebots klicken, um ausführliche Informationen darüber zu erhalten, wo sich Ihr Angebot im Veröffentlichungsvorgang befindet.
 
 ![Angebotsaktivierungssequenz 3 – Status aller Angebote](./media/cloud-partner-portal-offer-go-live-azure-marketplace/alloffersstatus.png)
 
@@ -57,7 +57,7 @@ Wenn Sie diesen Schritt korrekt ausgeführt haben, wird eine Popupmeldung angeze
 
 **Zertifizierung (\<5 Tage)**
 
-In diesem Schritt werden verschiedene Tests durchgeführt, um sicherzustellen, dass Ihr VM-Image die Anforderungen für Azure Certified erfüllt. Sämtliche Informationen, die Sie benötigen, um die Zertifizierungsanforderungen zu bestehen, finden Sie [hier](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites).
+In diesem Schritt werden verschiedene Tests durchgeführt, um sicherzustellen, dass Ihr VM-Image die Anforderungen für Azure Certified erfüllt. Sämtliche Informationen, die Sie benötigen, um die Zertifizierungsanforderungen zu bestehen, finden Sie [hier](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md).
 
 Da dieser Schritt mehrere Tage in Anspruch nehmen kann, können Sie sich vom Cloud Partner-Portal abmelden. Wir senden Ihnen eine E-Mail-Benachrichtigung, falls Fehler aufgetreten sind, die von Ihnen behoben werden müssen. Wenn alle Anforderungen erfolgreich bestanden wurden, wird der Vorgang automatisch mit dem Bereitstellungsschritt fortgesetzt.
 
@@ -75,11 +75,11 @@ Wenn Sie die Leadgenerierungsfunktion konfiguriert haben, wird durch Senden eine
 
 Sie erhalten eine E-Mail-Benachrichtigung, die darauf hinweist, dass Ihr Angebot die Schritte, die für den Zugriff auf das Angebot in der Vorschau erforderlich sind, erfolgreich durchlaufen hat. Bei diesem Schritt sollten Sie eine Vorschau von Ihrem Angebot anzeigen. Hierbei sollten Sie es auf seine Richtigkeit überprüfen und sicherstellen, dass Ihre VM korrekt in der Stagingumgebung bereitgestellt wurde.
 
-**Nur Abonnements in der Whitelist können überprüft werden.**\*
+*Nur Abonnements in der Whitelist können diese Überprüfung ausführen.*
 
 **Einholen der Genehmigung des Herausgebers**
 
-Nachdem Sie überprüft haben, ob alles seine Richtigkeit hat und ordnungsgemäß in der Vorschau funktioniert, können Sie das Angebot nun live schalten. Klicken Sie hierzu auf der Registerkarte „Status“ auf „Live schalten“, um mit den Schritten zum Aktivieren Ihres Angebot für die Produktion und auf der Website zu beginnen. Nachdem Sie auf „Live schalten“ geklickt haben, dauert es in der Regel mehrere Stunden, bis das Angebot auf der Website live geschaltet wird. Sobald Ihr Angebot offiziell auf der Website live geschaltet ist, senden wir Ihnen eine E-Mail-Benachrichtigung.
+Nachdem Sie überprüft haben, ob alles seine Richtigkeit hat und ordnungsgemäß in der Vorschau funktioniert, können Sie das Angebot nun live schalten. Klicken Sie auf der Registerkarte **Status** auf **Live schalten**, um mit den Schritten zum Aktivieren Ihres Angebot für die Produktion und auf der Website zu beginnen. Nachdem Sie auf „Live schalten“ geklickt haben, dauert es in der Regel mehrere Stunden, bis das Angebot auf der Website live geschaltet wird. Sobald Ihr Angebot offiziell auf der Website live geschaltet ist, senden wir Ihnen eine E-Mail-Benachrichtigung.
 
 ![Angebotsaktivierungssequenz 5 – Freischalten](./media/cloud-partner-portal-offer-go-live-azure-marketplace/golive.png)
 

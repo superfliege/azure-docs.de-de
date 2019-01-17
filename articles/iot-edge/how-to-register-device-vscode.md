@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6d1abedf7186aaef4a13c7c958609c9de50299b8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2b851e7f2ebdbff08fa09002765fbd7d7927deba
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968841"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051168"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>Registrieren eines neuen Azure IoT Edge-Geräts über Visual Studio Code
 
@@ -26,7 +26,7 @@ Dieser Artikel zeigt die Registrierung eines neuen IoT Edge-Geräts mithilfe von
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code
+* [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) für Visual Studio Code
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Anmeldung zum Zugreifen auf Ihren IoT Hub
 

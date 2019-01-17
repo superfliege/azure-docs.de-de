@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 963960657fb8c16307dbf062c0b16cd74a4a7b3f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013235"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101716"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-Empfehlungen zur Leistung
 
@@ -39,11 +39,6 @@ Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empfehlungen f
 
 Weitere Informationen zu SQL Database Advisor finden Sie unter [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Verbessern der Leistung und Zuverlässigkeit von Azure Cache for Redis
-
-Der Advisor ermittelt Azure Cache for Redis-Instanzen, bei denen die Leistung ggf. durch eine hohe Auslastung von Arbeitsspeicher oder Netzwerkbandbreite, Serverlast oder große Anzahl von Clientverbindungen beeinträchtigt wird. Darüber hinaus empfiehlt der Advisor bewährte Methoden, um potenzielle Probleme zu vermeiden. Weitere Informationen zu Azure Cache for Redis-Empfehlungen finden Sie unter [Azure Cache for Redis-Ratgeber](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
-
-
 ## <a name="improve-app-service-performance-and-reliability"></a>Verbessern der Leistung und Zuverlässigkeit von App Services
 
 Azure Advisor befolgt empfohlene bewährte Methoden zum Verbessern der App Services-Leistung und Erkennen relevanter Plattformfunktionen. Beispielempfehlungen für App Services sind u.a.:
@@ -52,6 +47,16 @@ Azure Advisor befolgt empfohlene bewährte Methoden zum Verbessern der App Servi
 
 Weitere Informationen zu App Services-Empfehlungen finden Sie unter [Bewährte Methoden für Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
+## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Verwenden Sie zum Verhindern einer Datenträger-E/A-Drosselung Managed Disks.
+
+Advisor identifiziert virtuelle Computer, die zu einem Speicherkonto gehören, das das Skalierbarkeitsziel erreicht. Dies macht ihn anfällig für E/A-Drosselung. Advisor empfiehlt, dass diese virtuellen Computer Managed Disks verwenden, um Leistungseinbußen zu verhindern.
+
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Verbessern der Leistung und Zuverlässigkeit von Datenträgern virtueller Computer mit Storage Premium
+
+Advisor ermittelt virtuelle Computer mit Standarddatenträgern, die eine große Anzahl von Transaktionen auf Ihrem Speicherkonto ausgeführt haben, und empfiehlt ein Upgrade auf Premium-Datenträger. 
+
+Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Datenträger von virtuellen Computern, die Storage Premium-Konten nutzen, speichern Daten auf Solid State Drives (SSD). Für eine optimale Leistung Ihrer Anwendung empfehlen wir, alle Datenträger von virtuellen Computern, die eine hohe IOPS-Leistung erfordern, zu Storage Premium zu migrieren.
+
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Entfernen von Datenschiefe in Ihrer SQL Data Warehouse-Tabelle zum Erhöhen der Abfrageleistung
 
 Datenschiefe kann unnötige Datenverschiebungen oder Ressourcenengpässe beim Ausführen Ihrer Workload verursachen. Advisor erkennt eine Datenschiefe mit einer Verteilung von über 15 % und empfiehlt, Ihre Daten neu zu verteilen und die Hauptauswahl für Ihre Tabellenverteilung erneut zu überprüfen. Weitere Informationen zum Identifizieren und Entfernen von Datenschiefe finden Sie unter [Problembehandlung bei Datenschiefe](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
@@ -59,6 +64,14 @@ Datenschiefe kann unnötige Datenverschiebungen oder Ressourcenengpässe beim Au
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Erstellen von Datenstatistiken oder Aktualisieren von veralteten Datenstatistiken für Ihre SQL Data Warehouse-Tabelle zum Erhöhen der Abfrageleistung
 
 Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) aufweisen, und empfiehlt das Erstellen oder Aktualisieren der Tabellenstatistiken. Der SQL Data Warehouse-Abfrageoptimierer verwendet aktuelle Statistiken zur Schätzung der Kardinalität oder Zeilenanzahl im Abfrageergebnis und ermöglicht somit dem Optimierer, einen Abfrageplan für die schnellste Leistung zu erstellen.
+
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Zentrales Hochskalieren zum Optimieren der Cachenutzung durch Ihre SQL Data Warehouse-Tabellen, um die Abfrageleistung zu verbessern
+
+Azure Advisor erkennt, ob Ihre SQL Data Warehouse-Instanz eine hohe prozentuale Cachenutzung und einen niedrigen Trefferprozentsatz aufweist. Dies bedeutet, dass die hohe Cachenutzung aufgehoben wird, was sich auf die Leistung Ihrer SQL Data Warehouse-Instanz auswirken kann. Advisor schlägt vor, dass Sie Ihre SQL Data Warehouse-Instanz zentral hochskalieren, um sicherzustellen, dass Sie ausreichend Cachekapazität für Ihre Workload zuweisen.
+
+## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Konvertieren von SQL Data Warehouse-Tabellen in replizierte Tabellen, um die Abfrageleistung zu erhöhen
+
+Advisor identifiziert die Tabellen, die keine replizierten Tabellen sind, würde jedoch von der Konvertierung profitieren und schlägt Ihnen vor, diese Tabellen zu konvertieren. Die Empfehlungen basieren auf der Größe der replizierten Tabelle, der Anzahl der Spalten, dem Verteilungstyp der Tabelle und der Anzahl der Partitionen der SQL Data Warehouse-Tabelle. Zusätzliche Heuristiken können in der Empfehlung für den Kontext bereitgestellt werden. Weitere Informationen dazu, was diese Empfehlung bestimmt, finden Sie unter [SQL Data Warehouse-Empfehlungen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables). 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migrieren Ihres Speicherkontos zu Azure Resource Manager, um die neuesten Azure-Features zu erhalten
 

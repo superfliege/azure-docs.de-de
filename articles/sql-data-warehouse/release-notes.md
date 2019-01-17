@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: b702d375f7a66843918a960ca3783c078eac541e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579315"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118437"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
@@ -23,6 +23,7 @@ Azure SQL Data Warehouse ist ein cloudbasiertes Enterprise Data Warehouse (EDW) 
 
 Klicken Sie unten auf die Links, um weitere Informationen zu den neuen Features und Verbesserungen zu erhalten, die Sie in der aktuellen Version von Azure SQL Data Warehouse erwarten können. Sie können davon ausgehen, dass Sie diese Dienstupdates während Ihres identifizierten Wartungszeitplans erhalten.
 
+- [Dezember 2018](./release-notes-december-2018.md)
 - [Oktober 2018](./release-notes-october-2018.md)
 - [September 2018](./release-notes-september-2018.md)
 - [August 2018](./release-notes-august-2018.md)

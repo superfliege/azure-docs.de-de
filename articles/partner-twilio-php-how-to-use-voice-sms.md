@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 50613e4ba244403c61d711927f1e809accbcebeb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421707"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158073"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in PHP
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -44,16 +44,16 @@ Die API verwendet Twilio-Verben; so weist beispielsweise das Verb **&lt;Say&gt;*
 
 Nachfolgend finden Sie eine Liste mit Twilio-Verben. Andere Verben und Funktionen werden in der [Dokumentation zur Twilio Markup Language](https://www.twilio.com/docs/api/twiml)erläutert.
 
-* **&lt;Dial&gt;**: Verbindet den Anrufer mit einem anderen Telefon.
-* **&lt;Gather&gt;**: Erfasst Ziffern, die über die Telefontasten eingegeben werden.
-* **&lt;Hangup&gt;**: Beendet einen Anruf.
-* **&lt;Play&gt;**: Gibt eine Audiodatei wieder.
-* **&lt;Pause&gt;**: Wartet ohne Ton für eine angegebene Anzahl von Sekunden.
-* **&lt;Record&gt;**: Zeichnet die Stimme des Anrufers auf und gibt eine URL einer Datei mit der Aufzeichnung zurück.
-* **&lt;Redirect&gt;**: Überträgt die Steuerung eines Anrufs oder einer SMS an die TwiML an einer anderen URL.
-* **&lt;Reject&gt;**: Lehnt einen bei Ihrer Twilio-Nummer eingehenden Anruf ab, ohne dass Ihnen Kosten entstehen.
-* **&lt;Say&gt;**: Konvertiert Text in Sprache für einen Anruf.
-* **&lt;Sms&gt;**: Sendet eine SMS-Nachricht.
+* **&lt;Dial:&gt;** Verbindet den Anrufer mit einem anderen Telefon.
+* **&lt;Gather:&gt;** Erfasst Ziffern, die über die Telefontasten eingegeben werden.
+* **&lt;Hangup:&gt;** Beendet einen Anruf.
+* **&lt;Play:&gt;** Gibt eine Audiodatei wieder.
+* **&lt;Pause:&gt;** Wartet ohne Ton für eine angegebene Anzahl von Sekunden.
+* **&lt;Record:&gt;** Zeichnet die Stimme des Anrufers auf und gibt eine URL einer Datei mit der Aufzeichnung zurück.
+* **&lt;Redirect:&gt;** Überträgt die Steuerung eines Anrufs oder einer SMS an die TwiML an einer anderen URL.
+* **&lt;Reject:&gt;** Lehnt einen bei Ihrer Twilio-Nummer eingehenden Anruf ab, ohne dass Ihnen Kosten entstehen.
+* **&lt;Say:&gt;** Konvertiert Text in Sprache für einen Anruf.
+* **&lt;Sms:&gt;** Sendet eine SMS-Nachricht.
 
 ### <a id="TwiML"></a>TwiML
 TwiML ist ein Satz XML-basierter Anweisungen auf Grundlage der Twilio-Verben, die Twilio anweisen, wie ein Anruf oder eine SMS verarbeitet werden soll.
@@ -75,7 +75,7 @@ Wenn Sie ein Twilio-Konto erstellen möchten, melden Sie sich bei [Try Twilio][t
 Wenn Sie sich für ein Twilio-Konto anmelden, erhalten Sie eine Konto-ID und ein Authentifizierungstoken. Beide Angaben benötigen Sie zum Tätigen von Twilio-API-Anrufen. Bewahren Sie Ihr Authentifizierungstoken sicher auf, um unbefugten Zugriff auf Ihr Konto zu verhindern. Ihre Konto-ID und das Authentifizierungstoken können Sie auf der [Twilio-Kontoseite][twilio_account] in den Feldern **ACCOUNT SID** bzw. **AUTH TOKEN** einsehen.
 
 ## <a id="create_app"></a>Erstellen einer PHP-Anwendung
-PHP-Anwendungen, die den Twilio-Dienst verwenden und in Azure ausgeführt werden, unterscheiden sich nicht von anderen PHP-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in PHP auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio mit der [Twilio-Bibliothek für PHP von GitHub][twilio_php]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für PHP finden Sie unter [https://readthedocs.org/docs/twilio-php/en/latest/index.html][twilio_lib_docs].
+PHP-Anwendungen, die den Twilio-Dienst verwenden und in Azure ausgeführt werden, unterscheiden sich nicht von anderen PHP-Anwendungen, die den Twilio-Dienst verwenden. Twilio-Dienste sind REST-basiert und können in PHP auf verschiedene Arten aufgerufen werden. Dieser Artikel konzentriert sich auf die Verwendung von Twilio mit der [Twilio-Bibliothek für PHP von GitHub][twilio_php]. Weitere Informationen zur Verwendung der Twilio-Bibliothek für PHP finden Sie unter [https://www.twilio.com/docs/libraries/php][twilio_lib_docs].
 
 Ausführliche Anweisungen zum Erstellen und Bereitstellen von Twilio-/PHP-Anwendungen in Azure finden Sie unter [Tätigen eines Telefonanrufs mit Twilio in einer PHP-Anwendung in Azure][howto_phonecall_php].
 
@@ -96,7 +96,7 @@ Nachdem Sie die Twilio-Bibliothek für PHP installiert haben, können Sie eine *
 
 Weitere Informationen finden Sie unter [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
 
-## <a id="howto_make_call"></a>Tätigen von ausgehenden Anrufen
+## <a id="howto_make_call"></a>Gewusst wie: Tätigen von ausgehenden Anrufen
 Nachfolgend wird erläutert, wie Sie einen ausgehenden Anruf mit der **Services_Twilio**-Klasse tätigen. Dieser Code verwendet eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort (Twilio Markup Language). Geben Sie Ihre Werte für die Telefonnummern **From** und **To** ein, und stellen Sie sicher, dass Sie die **From**-Telefonnummer für Ihr Twilio-Konto verifizieren, bevor Sie den Code ausführen.
 
     // Include the Twilio PHP library.
@@ -140,9 +140,9 @@ Nachfolgend wird erläutert, wie Sie einen ausgehenden Anruf mit der **Services_
 
 Wie bereits erwähnt, verwendet dieser Code eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Stattdessen können Sie die TwiML-Antwort auch von Ihrer eigenen Website bereitstellen lassen. Weitere Informationen dazu finden Sie unter [Bereitstellen von TwiML-Antworten von der eigenen Website](#howto_provide_twiml_responses).
 
-* **Hinweis:** Informationen zur Problembehandlung bei Validierungsfehlern für das SSL-Zertifikat finden Sie unter [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation]. 
+* **Hinweis**: Informationen zur Problembehandlung bei Validierungsfehlern für das SSL-Zertifikat finden Sie unter [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
-## <a id="howto_send_sms"></a>Senden von SMS-Nachrichten
+## <a id="howto_send_sms"></a>Gewusst wie: Senden einer SMS-Nachricht
 Das folgende Beispiel zeigt, wie Sie eine SMS-Nachricht mit der **Services_Twilio**-Klasse senden. Die **From** -Nummer wird von Twilio für Testkonten zum Senden von SMS-Nachrichten bereitgestellt. Die **To** -Nummer muss für Ihr Twilio-Konto überprüft werden, bevor Sie den Code ausführen.
 
     // Include the Twilio PHP library.
@@ -173,7 +173,7 @@ Das folgende Beispiel zeigt, wie Sie eine SMS-Nachricht mit der **Services_Twili
         echo 'Error: ' . $e->getMessage();
     }
 
-## <a id="howto_provide_twiml_responses"></a>Bereitstellen von TwiML-Antworten von der eigenen Website
+## <a id="howto_provide_twiml_responses"></a>Gewusst wie: Bereitstellen von TwiML-Antworten von der eigenen Website
 Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert, sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das obige Beispiel verwendet die von Twilio bereitgestellte URL [https://twimlets.com/message][twimlet_message_url]. (TwiML wurde für die Verwendung durch Twilio konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie beispielsweise auf [https://twimlets.com/message][twimlet_message_url], um ein leeres `<Response>`-Element anzuzeigen. Ein weiteres Beispiel: Klicken Sie auf [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world], um ein `<Response>`-Element mit einem `<Say>`-Element anzuzeigen.)
 
 Anstelle der von Twilio bereitgestellten URL können Sie auch Ihre eigene Website für die Rückgabe von HTTP-Antworten erstellen. Sie können die Website in allen Sprachen erstellen, die XML-Antworten zurückgeben. Dieses Beispiel geht davon aus, dass Sie die TwiML-Antwort mit PHP erstellen.
@@ -228,7 +228,7 @@ Sobald Sie Ihre PHP-Seite mit den TwiML-Antworten eingerichtet haben, können Si
 
 Weitere Informationen zur Verwendung von Twilio in Azure mit PHP finden Sie unter [Tätigen eines Telefonanrufs mit Twilio in einer PHP-Anwendung in Azure][howto_phonecall_php].
 
-## <a id="AdditionalServices"></a>Verwenden zusätzlicher Twilio-Dienste
+## <a id="AdditionalServices"></a>Gewusst wie: Verwenden zusätzlicher Twilio-Dienste
 Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit denen Sie zusätzliche Twilio-Funktionen in Ihrer Azure-Anwendung verwenden können. Ausführliche Informationen finden Sie in der [Twilio API documentation (Twilio API-Dokumentation)][twilio_api_documentation].
 
 ## <a id="NextSteps"></a>Nächste Schritte
@@ -241,7 +241,7 @@ Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie
 * [Kontakt zum Twilio-Support][twilio_support]
 
 [twilio_php]: https://github.com/twilio/twilio-php
-[twilio_lib_docs]: https://readthedocs.org/docs/twilio-php/en/latest/index.html
+[twilio_lib_docs]: https://www.twilio.com/docs/libraries/php
 [twilio_github_readme]: https://github.com/twilio/twilio-php/blob/master/README.md
 [ssl_validation]: https://www.twilio.com/docs/api/errors
 [twilio_api_service]: https://api.twilio.com

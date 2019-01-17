@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 31f0517cd4d61fa324072eae954404c899451cc3
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320236"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117400"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -68,7 +68,7 @@ Sie sehen eine Liste der Aktivitäten, die in den letzten sieben Tagen protokoll
 ### <a name="prerequisites"></a>Voraussetzungen
 Um den Azure AD-Berichterstellungs-API zu authentifizieren, müssen Sie zunächst eine Anwendung registrieren. Führen Sie in jedem Fall die Schritte unter [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/) aus.
 
-### <a name="accesing-the-api"></a>Zugriff auf die API
+### <a name="accessing-the-api"></a>Zugriff auf die API
 Um die Active Directory B2C-Überwachungsprotokolle über die API herunterzuladen, müssen Sie die Protokolle nach der Kategorie **B2C** filtern. Verwenden Sie zum Filtern nach Kategorie den Abfragezeichenfolgen-Parameter, wenn Sie den Azure AD-Berichterstellungs-API-Endpunkt aufrufen, wie unten gezeigt:
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`

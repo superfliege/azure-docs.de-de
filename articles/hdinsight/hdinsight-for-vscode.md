@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c86fd2affa08999ae574f55315c6a0b32fa58fca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723670"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076789"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
@@ -127,7 +127,7 @@ Sie können einen normalen Cluster verknüpfen, indem Sie einen per [Apache Amba
 
 1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** auswählen, und geben Sie dann **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
 2. Wählen Sie **Generic Livy Endpoint** (Generischer Livy-Endpunkt) aus.
-3. Geben Sie den generischen Livy-Endpunkt ein, z.B. http://10.172.41.42:18080.
+3. Geben Sie den generischen Livy-Endpunkt ein, z.B. http\://10.172.41.42:18080.
 4. Wählen Sie **Basic** (Standard) aus, wenn eine Autorisierung für den generischen Livy-Endpunkt erforderlich ist. Wählen Sie andernfalls **None** (Kein) aus.
 5. Geben Sie den Benutzernamen ein, wenn **Basic** (Standard) in Schritt 4 ausgewählt wurde.
 6. Geben Sie das Kennwort ein, wenn **Basic** (Standard) in Schritt 4 ausgewählt wurde.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 5ff6e29fc4d7607c44541c7947404a0bc0301207
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c7b4da7292600f3d477d5c16263660eb6d4d4226
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581486"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051271"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
@@ -247,3 +247,5 @@ Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalier
 [Verwalten der automatischen Skalierung über die CLI](cli-samples.md#autoscale)
 
 [Konfigurieren von Webhook- und E-Mail-Benachrichtigungen für die automatische Skalierung](autoscale-webhook-email.md)
+
+[Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)-Vorlagenreferenz

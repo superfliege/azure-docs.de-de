@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 71b6fa765ff8223cf3b128cae1c672984e370738
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: fdb55cab87c3b04f814e7a5738da8c26d0c97166
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213383"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077283"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Bevorzugte Lösungen im Azure Marketplace und in AppSource
 
-Eine bevorzugte Microsoft-Lösung ist eine Cloudanwendung, die aufgrund ihrer Qualität, Leistung und Möglichkeit, den Kundenanforderungen in einer bestimmten Branche oder einem bestimmten Anwendungsbereich gerecht zu werden, ausgewählt wird. Ein Team von Microsoft-Branchen- und -Vertriebsexperten wählt Lösungen von Partnern des Microsoft Partner Network mit [Gold-Mitgliedschaft](https://partner.microsoft.com/en-us/membership/core-benefits) aus. Diese Lösungen werden in unseren Storefronts in der Cloud – Azure Marketplace und AppSource – vorgestellt. Bevorzugte Lösungen in AppSource können nach Branchen angezeigt werden, während Sie im Azure Marketplace auf verschiedene Kategorien von Lösungsbereichen klicken können. 
+Eine bevorzugte Microsoft-Lösung ist eine Cloudanwendung, die aufgrund ihrer Qualität, Leistung und Möglichkeit, den Kundenanforderungen in einer bestimmten Branche oder einem bestimmten Anwendungsbereich gerecht zu werden, ausgewählt wird. Ein Team von Microsoft-Branchen- und -Vertriebsexperten wählt Lösungen von Partnern des Microsoft Partner Network mit [Gold-Mitgliedschaft](https://partner.microsoft.com/membership/core-benefits) aus. Diese Lösungen werden in unseren Storefronts in der Cloud vorgestellt: Azure Marketplace und AppSource. Bevorzugte Lösungen in AppSource können nach Branchen angezeigt werden, während Sie im Azure Marketplace auf verschiedene Kategorien von Lösungsbereichen klicken können. 
 
 Microsoft kontaktiert Lösungsanbieter, wenn eine oder mehrere ihrer Lösungen als bevorzugte Lösung ausgewählt wurden.

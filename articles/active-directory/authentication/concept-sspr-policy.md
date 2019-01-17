@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3a16977f2d3bc7321de2d2a1538276f182e7fa10
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d7f364ac5863c70cd0034d9c458e94cfb164cba
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190985"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116958"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
-In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen beschrieben, die zu Benutzerkonten gehören, die in Ihrem Azure Active Directory-Mandenten (Azure AD-Mandanten) gespeichert sind.
+In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen beschrieben, die Benutzerkonten in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) zugeordnet sind.
 
 ## <a name="administrator-reset-policy-differences"></a>Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern
 
@@ -79,7 +79,7 @@ In der folgenden Tabelle sind die verfügbaren Kennwortrichtlinieneinstellungen 
 | Eigenschaft | Requirements (Anforderungen) |
 | --- | --- |
 | Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur sichere Kennwörter</li></ul> |
+| Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur für sichere Kennwörter: Darf keinen Punkt („.“) enthalten. Unmittelbar vor dem „\@ \"-Symbol“.</li></ul> |
 | Kennworteinschränkungen |<ul><li>Mindestens 8 Zeichen und höchstens 16 Zeichen.</li><li>Nur für sichere Kennwörter: Muss drei der folgenden vier Elemente enthalten:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0 bis 9)</li><li>Symbole (siehe die vorherigen Kennworteinschränkungen)</li></ul></li></ul> |
 | Zeitraum bis zum Ablauf des Kennworts |<ul><li>Standardwert: **90** Tage</li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |
 | Benachrichtigung bei Ablauf des Kennworts |<ul><li>Standardwert: **14** Tage (bevor das Kennwort abläuft)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolPasswordPolicy` konfiguriert werden.</li></ul> |

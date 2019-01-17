@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 1/09/2019
 ms.author: jeffgilb
 ms.reviewer: georgel
-ms.openlocfilehash: 7bcec2d17f61345986c1676d13011946a0036666
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5cbbc3c1c2371264e3e29028d4b9d68533cc59ff
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164721"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154945"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>Versionshinweise zum SQL-Ressourcenanbieter 1.1.30.0
 
@@ -81,7 +81,10 @@ Diese Version des Azure Stack-SQL-Ressourcenanbieters enthält die folgenden Ver
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
+- **SQL-Ressourcenanbieter kann SQL Server AlwaysOn-Listener nicht hinzufügen**. Wenn Sie die Listener-IP-Adresse des SQL Server AlwaysOn-Listener verwenden möchten, kann die SQL-Ressourcenanbieter-VM den Hostnamen des Listeners nicht auflösen.
 
+    **Problemumgehung**: Stellen Sie sicher, dass DNS ordnungsgemäß funktioniert, um die Listener-IP-Adresse in den Hostnamen des Listeners aufzulösen.
+    
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Bekannte Probleme von Cloudadministratoren, die Azure Stack betreiben
 Lesen Sie die Dokumentation in den [Versionshinweisen zu Azure Stack](azure-stack-servicing-policy.md).
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035372"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122801"
 ---
 Azure-VMs durchlaufen verschiedene Zustände, die sich in die Kategorien *Bereitstellungszustände* und *Betriebszustände* unterteilen lassen. Im vorliegenden Artikel werden diese Zustände beschrieben, und zudem enthält er genaue Angaben dazu, wann die Instanznutzung Kunden in Rechnung gestellt wird. 
 
@@ -108,7 +108,7 @@ Abrechnung der Instanznutzung
  ]</code><br>
 </td>
 <td>
-<p><b>Nicht in Rechnung gestellt&#42;</b></p>
+<p><b>Billed&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -151,7 +151,7 @@ Abrechnung der Instanznutzung
 </table>
 
 
-&#42;Für einige Azure-Ressourcen (z.B. Datenträger und Netzwerk) fallen unabhängig vom Zustand der Instanz Kosten an. 
+&#42;Für einige Azure-Ressourcen (z.B. Datenträger und Netzwerk) fallen Kosten an. Für Softwarelizenzen für die Instanz fallen keine Gebühren an.
 
 ## <a name="provisioning-states"></a>Bereitstellungszustände
 

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 01/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6cf415112f245421b3225c2e2ccb07a7bbf9332
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098293"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103164"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
 
@@ -72,6 +72,9 @@ Für alle angewendeten Einstellungen von Netzwerksicherheitsgruppen muss es erm�
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault hinter einer Firewall
 Die VM muss auf einen Schlüsseltresor zugreifen können. Lesen Sie den Leitfaden für den Zugriff auf den Schlüsseltresor hinter einer Firewall, die vom [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md)-Team verwaltet wird. 
+
+### <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst 
+Der virtuelle Computer muss Zugriff auf den [Azure-Instanzmetadatendienst](../virtual-machines/windows/instance-metadata-service.md)-Endpunkt haben, der eine bekannte nicht routingfähige IP-Adresse (`169.254.169.254`) verwendet, auf die nur von innerhalb des virtuellen Computers aus zugegriffen werden kann.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Linux-Paketverwaltung hinter einer Firewall
 

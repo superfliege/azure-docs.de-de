@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 64011614c28fc2d94132e0bf4848b9a2c4fad599
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844565"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118323"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -126,7 +126,7 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
         }catch
         {    
             [system.exception]
-            Write-Host "Error occured" -ForegroundColor "Red"
+            Write-Host "Error occurred" -ForegroundColor "Red"
             $error[0]
             Write-Host "FAILED" -ForegroundColor "Red"
         }
@@ -138,7 +138,7 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 
 1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
 2. Wählen Sie auf der Seite **Replikation deaktivieren** eine der folgenden Optionen aus:
-    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem Konfigurationsserver wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem Konfigurationsserver wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet. Beachten Sie, dass diese Option nur verwendet werden kann, wenn der Konfigurationsserver verbunden ist.
     - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem Konfigurationsserver wird **nicht** bereinigt. 
 
 > [!NOTE]

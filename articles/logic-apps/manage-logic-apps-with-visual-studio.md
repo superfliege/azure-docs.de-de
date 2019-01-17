@@ -3,20 +3,20 @@ title: Verwalten von Logik-Apps mit Visual Studio – Azure Logic Apps | Microso
 description: Verwalten von Logik-Apps und anderen Azure-Ressourcen mit dem Cloud-Explorer von Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: dbb38336f0521f8f8e526ad3f5e13829075e7cca
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445642"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158144"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -172,6 +172,13 @@ Um Ihre Logik-App aus dem Azure-Portal zu löschen, öffnen Sie im Cloud-Explore
 
 > [!NOTE]
 > Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden abgebrochen. Bei Tausenden von Ausführungen kann der Abbruch möglicherweise erhebliche Zeit in Anspruch nehmen. 
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn Sie Ihr Logik-App-Projekt im Designer für Logik-Apps öffnen, erhalten Sie möglicherweise nicht die Option zur Auswahl Ihres Azure-Abonnements. Stattdessen wird Ihre Logik-App in einem Azure-Abonnement geöffnet, das Sie nicht verwenden möchten. Dieses Verhalten tritt auf, da Visual Studio nach dem Öffnen der JSON-Datei einer Logik-App das erste ausgewählte Abonnement für die zukünftige Verwendung zwischenspeichert. Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
+
+* Benennen Sie die JSON-Datei der Logik-App um. Die Abonnement-Cache basiert auf dem Dateinamen. 
+* Um zuvor ausgewählte Abonnements für *alle* Logik-Apps in Ihrer Lösung zu entfernen, löschen Sie den VS-Ordner *hidden* im Projektmappenverzeichnis. Hier werden Ihre Abonnementinformationen gespeichert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

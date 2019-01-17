@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5e83eb46a4d62c6aaf0862d4bb1aa046c5d64dde
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166745"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120512"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway (Vorschauversion) 
 
@@ -84,7 +84,10 @@ Sie befinden sich jetzt im **Dashboard** Ihres Geräts.
     - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. Daher werden IP-Adresse, Subnetz, Gateway und DNS automatisch zugewiesen.
     - Wenn DHCP nicht aktiviert ist, weisen Sie bei Bedarf statische IP-Adressen zu.
     - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
-   
+
+    >[!NOTE] 
+    > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DCHP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät beim Dienst registriert hat, und ändern Sie dann. Sie können dann die IPs aller Adpater in den **Geräteeigenschaften** im Azure-Portal für Ihren Dienst anzeigen.
+
 4. Optional: Konfigurieren Sie Ihren Webproxyserver. Die Webproxykonfiguration ist optional. Achten Sie jedoch bei Verwendung eines Webproxys darauf, dass dieser nur hier konfiguriert werden kann.
    
    ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Funktionsreferenz | Microsoft Docs'
+title: 'Azure AD Connect-Synchronisierung: Funktionsreferenz | Microsoft-Dokumentation'
 description: Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425692"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157478"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
 Die Syntax der Funktionen wird im folgenden Format ausgedrückt:   
 `<output type> FunctionName(<input type> <position name>, ..)`
@@ -146,7 +146,7 @@ Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 **Syntax:**  
 `dt CDate(str value)`
 
-* value: Eine Zeichenfolge mit Datum, Uhrzeit und optional einer Zeitzone.
+* Wert: Eine Zeichenfolge mit Datum, Uhrzeit und optional einer Zeitzone
 
 **Hinweise:**  
  Die zurückgegebene Zeichenfolge ist immer ein UTC-Wert.
@@ -248,7 +248,7 @@ Gibt die Namen des Antragstellers und des Ausstellers aus einem Zertifikat zurü
 **Syntax:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
-*   X509NameType: Der X509NameType-Wert des Antragstellers
+*   X509NameType: Der X509NameType-Wert des Antragstellers.
 *   includesIssuerName: TRUE, um den Ausstellernamen einzuschließen, andernfalls FALSE
 
 - - -
@@ -394,7 +394,7 @@ Wenn das proxyAddresses-Attribut eine primäre E-Mail-Adresse besitzt (angegeben
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * source: Base64-codierte Zeichenfolge  
-* Codierung: Unicode, ASCII, UTF8.
+* Codierung: Unicode, ASCII, UTF8
 
 **Beispiel**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
@@ -556,7 +556,7 @@ Konvertiert den Wert eines Arrays von ganzen Zahlen in die entsprechende mit Bas
 
 * dn: Das zu interpretierende Verweisattribut
 * ComponentNumber: Die Komponente im zurückzugebenden DN
-* Options: DC – alle Komponenten mit „dc=“ ignorieren.
+* Optionen: DC – alle Komponenten mit „dc=“ ignorieren
 
 **Beispiel:**  
 Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, geben beide  
@@ -600,7 +600,7 @@ Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, gebe
 * format: Eine Zeichenfolge, die das Format darstellt, in das konvertiert werden soll.
 
 **Hinweise:**  
-Die möglichen Werte für das Format finden Sie unter [Benutzerdefinierte Datums-/Zeitformate (Format-Funktion)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx).
+Die möglichen Werte für das Format finden Sie hier: [Benutzerdefinierte Datums- und Uhrzeitformate für die FORMAT-Funktion](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Beispiel:**  
 
@@ -627,8 +627,8 @@ Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 * condition: Ein beliebiger Wert oder Ausdruck, der als True oder False ausgewertet werden kann.
-* valueIfTrue: Der zurückgegebene Wert, wenn die Bedingung als True ausgewertet wird.
-* valueIfFalse: Der zurückgegebene Wert, wenn die Bedingung als False ausgewertet wird.
+* valueIfTrue: Der zurückgegebene Wert, wenn die Bedingung als „True“ ausgewertet wird.
+* valueIfFalse: Der zurückgegebene Wert, wenn die Bedingung als „False“ ausgewertet wird.
 
 **Beispiel:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
@@ -852,7 +852,7 @@ Liegt der Index außerhalb des gültigen Bereichs, wird ein Nullwert zurückgege
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attribute: Mehrwertiges Attribut mit Zeichenfolgen, die verknüpft werden sollen.
+* Attribut: Mehrwertiges Attribut mit Zeichenfolgen, die verknüpft werden sollen.
 * delimiter: Eine beliebige Zeichenfolge, die die Teilzeichenfolgen in der zurückgegebenen Zeichenfolge trennt. Wenn nicht angegeben, wird das Leerzeichen (" ") verwendet. Wenn "delimiter" eine Zeichenfolge der Länge 0 ("") oder "Nothing" ist, werden alle Elemente in der Liste ohne Trennzeichen verkettet.
 
 **Hinweise:**  

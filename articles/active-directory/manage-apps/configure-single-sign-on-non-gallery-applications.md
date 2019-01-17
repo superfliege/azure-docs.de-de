@@ -1,37 +1,33 @@
 ---
-title: Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD für Anwendungen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Apps per Self-Service und mithilfe von SAML und kennwortbasiertem SSO mit Azure Active Directory verbinden.
+title: Einmaliges Anmelden bei Nicht-Kataloganwendungen – Azure Active Directory | Microsoft-Dokumentation
+description: Konfigurieren des einmaligen Anmeldens für Nicht-Kataloganwendungen in Azure Active Directory (Azure AD)
 services: active-directory
 author: barbkess
-documentationcenter: na
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2018
+ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: bb2fcbad3d415a8ac7a8e0c3237fcb97042defd7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408125"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121344"
 ---
-# <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind.
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurieren des einmaligen Anmeldens für Nicht-Kataloganwendungen in Azure Active Directory
 
-In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
+In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
 
 Der Azure Active Directory-Anwendungskatalog enthält eine Liste der Anwendungen, die bekanntermaßen eine Form der einmaligen Anmeldung mit Azure Active Directory unterstützen, wie [in diesem Artikel](what-is-single-sign-on.md)beschrieben. Wenn Sie (als IT-Spezialist oder Systemintegrator in Ihrer Organisation) die Anwendung gefunden haben, mit der Sie eine Verbindung herstellen möchten, können Sie mithilfe der Schritt-für-Schritt-Anleitungen im Azure-Portal das einmalige Anmelden aktivieren.
 
-Kunden mit [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md)-Lizenzen erhalten außerdem diese zusätzlichen Funktionen:
+Diese Funktionen sind gemäß Ihrem Lizenzvertrag ebenfalls verfügbar. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/active-directory/). 
 
-* Self-Service-Integration für Anwendungen, die SAML 2.0-Identitätsanbieter unterstützen (SP-initiiert oder IdP-initiiert)
-* Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](what-is-single-sign-on.md#password-based-sso)
+- Self-Service-Integration für Anwendungen, die SAML 2.0-Identitätsanbieter unterstützen (SP-initiiert oder IdP-initiiert)
+- Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](what-is-single-sign-on.md#password-based-sso)
 * Self-Service-Verbindung für Anwendungen, die das SCIM-Protokoll für die Benutzerbereitstellung verwenden ([wie hier beschrieben](use-scim-to-provision-users-and-groups.md))
 * Möglichkeit zum Hinzufügen von Links zu Anwendungen im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](what-is-single-sign-on.md#linked-sso)
 

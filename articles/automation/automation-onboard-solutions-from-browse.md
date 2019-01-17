@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f1607a7d795e3934881429feb18c711a75995e31
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039427"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062943"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -59,6 +59,24 @@ Wenn der ausgewählte Arbeitsbereich nicht mit einem Automation-Konto verknüpft
 
 ![Kein Arbeitsbereich](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
+Wenn Sie Lösungen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt.
+
+Die folgende Tabelle zeigt die unterstützten Zuordnungen:
+
+|**Log Analytics-Arbeitsbereichsregion**|**Azure Automation-Region**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS|WestCentralUS|
+|Europa, Westen|Europa, Westen|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP|CentralUSEUAP|
+
 Deaktivieren Sie das Kontrollkästchen neben jedem virtuellen Computern, den Sie nicht aktivieren möchten. Die Auswahl für virtuelle Computer, die nicht aktiviert werden können, ist bereits aufgehoben.
 
 Klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
@@ -80,13 +98,13 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
-1. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
+2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
    ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
-1. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
+3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
 
 Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
@@ -106,13 +124,13 @@ Beim Integrieren mehrerer Computer, werden einige Computer möglicherweise mit *
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM berichtet an einen anderen Arbeitsbereich: '\<workspaceName\>'.  Ändern der Konfiguration für die Verwendung zum Aktivieren
 
-**Ursache**: Dieser Fehler zeigt an, dass der virtuelle Computer, den Sie integrieren möchten, an einen anderen Arbeitsbereich berichtet.
+**Ursache:** Dieser Fehler zeigt an, dass der virtuelle Computer, den Sie integrieren möchten, an einen anderen Arbeitsbereich berichtet.
 
 **Lösung**: Klicken Sie auf **Als Konfiguration verwenden**, um das angestrebte Automation-Konto und den angestrebten Log Analytics-Arbeitsbereich zu ändern.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM berichtet an einen Arbeitsbereich, der in diesem Abonnement nicht verfügbar ist.
 
-**Ursache**: Der Arbeitsbereich, an den der virtuelle Computer berichtet:
+**Ursache:** Der Arbeitsbereich, an den der virtuelle Computer berichtet:
 
 * Befindet sich in einem anderen Abonnement oder
 * Ist nicht mehr vorhanden oder
@@ -128,13 +146,13 @@ Beim Integrieren mehrerer Computer, werden einige Computer möglicherweise mit *
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klassische VMs können nicht aktiviert werden.
 
-**Ursache**: Virtuelle Computer, die das klassische Bereitstellungsmodell verwenden, werden nicht unterstützt.
+**Ursache:** Virtuelle Computer, die das klassische Bereitstellungsmodell verwenden, werden nicht unterstützt.
 
 **Lösung**: Migrieren Sie den virtuellen Computer zum Resource Manager-Bereitstellungsmodell. Informationen zur Vorgehensweise finden Sie in [Migrieren klassischer Bereitstellungsmodellressourcen](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 
 ### <a name="vm-is-stopped-deallocated"></a>Die VM wurde beendet. (Zuordnung aufgehoben)
 
-**Ursache**: Der virtuelle Computer ist nicht im Status **Wird ausgeführt**.
+**Ursache:** Der virtuelle Computer ist nicht im Status **Wird ausgeführt**.
 
 **Lösung**: Um einen virtuellen Computer in eine Lösung zu integrieren, muss dieser ausgeführt werden. Klicken Sie auf den Inlinelink**VM starten**, um den virtuellen Computer zu starten, ohne die Seite zu verlassen.
 

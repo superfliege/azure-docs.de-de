@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 01/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837170"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121191"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
-In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup).
+In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist](directory-self-service-signup.md).
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Entscheiden, wie ein nicht verwaltetes Verzeichnis übernommen werden soll
 Während der Administratorübernahme können Sie die Inhaberschaft wie in [Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md) beschrieben nachweisen. In den nächsten Abschnitten wird die Administratorerfahrung im Detail erläutert. Hier zunächst eine Zusammenfassung:
@@ -41,7 +41,7 @@ Einige Produkte, die SharePoint und OneDrive enthalten, z.B. Office 365, unterst
 
 3. Wählen Sie in der Bestätigungs-E-Mail von Power BI **Yes, that's me** (Ja, das bin ich) aus.
 
-4. Melden Sie sich mit dem Power BI-Benutzerkonto im [Office 365 Admin Center](https://portal.office.com/adminportal/Home) an. Sie erhalten eine Nachricht mit der Aufforderung, der Administrator des Domänennamens zu werden (**Become the Admin**), der bereits im nicht verwalteten Mandanten bestätigt wurde. Wählen Sie **Yes, I want to be the admin** (Ja, ich möchte der Administrator werden) aus.
+4. Melden Sie sich mit dem Power BI-Benutzerkonto im [Office 365 Admin Center](https://portal.office.com/admintakeover) an. Sie erhalten eine Nachricht mit der Aufforderung, der Administrator des Domänennamens zu werden (**Become the Admin**), der bereits im nicht verwalteten Mandanten bestätigt wurde. Wählen Sie **Yes, I want to be the admin** (Ja, ich möchte der Administrator werden) aus.
   
   ![Erster Screenshot für „Become the Admin“](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -53,9 +53,9 @@ Wenn die DNS-TXT-Einträge bei Ihrer Domänennamen-Registrierungsstelle bestäti
 
 Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale Administrator des Fourth Coffee-Mandanten in Office 365. Um den Domänennamen in Ihre anderen Azure-Dienste zu integrieren, entfernen Sie ihn aus Office 365, und fügen Sie ihn einem anderen verwalteten Mandanten in Azure hinzu.
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Hinzufügen des Domänennamens zu einem verwalteten Mandanten in Azure AD 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Hinzufügen des Domänennamens zu einem verwalteten Mandanten in Azure AD
 
-1. Öffnen Sie das [Office 365 Admin Center](https://portal.office.com/adminportal/Home).
+1. Öffnen Sie das [Office 365 Admin Center](https://portal.office.com/admintakeover).
 2. Wählen Sie Registerkarte **Benutzer** aus, und erstellen Sie ein neues Benutzerkonto mit einem Namen wie *user@fourthcoffeexyz.onmicrosoft.com*, der keinen benutzerdefinierten Domänennamen verwendet. 
 3. Stellen Sie sicher, dass das neue Benutzerkonto globale Administratorberechtigungen für den Azure AD-Mandanten hat.
 4. Öffnen Sie die Registerkarte **Domänen** im Office 365 Admin Center, wählen Sie den Domänennamen aus, und klicken Sie auf **Entfernen**. 

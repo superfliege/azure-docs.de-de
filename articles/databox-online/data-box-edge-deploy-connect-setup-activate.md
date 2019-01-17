@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: f4ca513e3c2e2345dc0005b95ddb7927c0164ffe
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383016"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121616"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge (Vorschauversion) 
 
@@ -85,7 +85,10 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
     - Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
     - Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
     - Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
-   
+
+    >[!NOTE] 
+    > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DCHP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät beim Dienst registriert hat, und ändern Sie dann. Sie können dann die IPs aller Adpater in den **Geräteeigenschaften** im Azure-Portal für Ihren Dienst anzeigen.
+
 1. (Optional) Klicken Sie im linken Bereich auf **Webproxyeinstellungen**, und konfigurieren Sie anschließend den Webproxyserver. Die Webproxykonfiguration ist optional. Bei Verwendung eines Webproxys kann dieser jedoch nur auf dieser Seite konfiguriert werden.
    
    ![Seite „Webproxyeinstellungen“](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)

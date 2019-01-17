@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
-ms.openlocfilehash: fe9d4f6b232e9abcf1fe9fc5657044b6c72fedb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 635b5f4edf5d403c569b4957540fc105997b3e8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109338"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117672"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>Versionsanmerkungen zu Update 0.3 für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -40,15 +40,15 @@ Update 0.3 ist in erster Linie ein Build zur Fehlerkorrektur. In dieser Version 
 ## <a name="issues-fixed-in-the-update-03"></a>In Update 0.3 behobene Probleme
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Funktion | Problem |
+|  Nein. | Feature | Problem |
 | --- | --- | --- |
-| 1 |Backups |In der vorherigen Version wurde das Problem festgestellt, dass die Sicherungen für eine Dateifreigabe nicht abgeschlossen werden konnten. In diesem Fall trat beim Sicherungsauftrag ein Fehler auf, und im StorSimple Manager-Dienst wurde eine kritische Warnung ausgelöst, um den Benutzer zu benachrichtigen. Das Problem wirkte sich nicht auf die Daten auf den Freigaben oder den Zugriff auf die Daten aus. Die Ursache wurde identifiziert und in dieser Version beseitigt. <br></br> Die Korrektur gilt nicht rückwirkend für Freigaben, bei denen dieses Problem bereits aufgetreten ist. Kunden, bei denen dieses Problem auftritt, sollten zuerst Update 0.3 anwenden und sich dann an den Microsoft-Support wenden, um zur Behebung des Problems eine vollständige Systemsicherung durchführen zu lassen. Anstatt den Microsoft-Support zu kontaktieren, können Kunden auch für die betroffenen Freigaben eine Wiederherstellung einer fehlerfreien Sicherung in einer neuen Freigabe ausführen. |
-| 2 |iSCSI |In der vorherigen Version wurde ein Problem festgestellt, bei dem Volumes verschwanden, wenn Daten auf ein Volume des StorSimple Virtual Arrays kopiert wurden. Dieses Problem wurde in dieser Version behoben. <br></br> Die Korrekturen gelten nur für neu erstellte Volumes. Sie gelten nicht rückwirkend für Volumes, bei denen dieses Problem bereits aufgetreten ist. Kunden sollten die betroffenen Datenträger über das klassische Azure-Portal online schalten, eine Sicherung für diese Volumes durchführen und diese Volumes dann auf neuen Volumes wiederherstellen. |
+| 1 |Backups |In der vorherigen Version wurde das Problem festgestellt, dass die Sicherungen für eine Dateifreigabe nicht abgeschlossen werden konnten. In diesem Fall trat beim Sicherungsauftrag ein Fehler auf, und im StorSimple Manager-Dienst wurde eine kritische Warnung ausgelöst, um den Benutzer zu benachrichtigen. Das Problem wirkte sich nicht auf die Daten auf den Freigaben oder den Zugriff auf die Daten aus. Die Ursache wurde identifiziert und in dieser Version beseitigt. <br></br>  Die Korrektur gilt nicht rückwirkend für Freigaben, bei denen dieses Problem bereits aufgetreten ist. Kunden, bei denen dieses Problem auftritt, sollten zuerst Update 0.3 anwenden und sich dann an den Microsoft-Support wenden, um zur Behebung des Problems eine vollständige Systemsicherung durchführen zu lassen. Anstatt den Microsoft-Support zu kontaktieren, können Kunden auch für die betroffenen Freigaben eine Wiederherstellung einer fehlerfreien Sicherung in einer neuen Freigabe ausführen. |
+| 2 |iSCSI |In der vorherigen Version wurde ein Problem festgestellt, bei dem Volumes verschwanden, wenn Daten auf ein Volume des StorSimple Virtual Arrays kopiert wurden. Dieses Problem wurde in dieser Version behoben. <br></br>  Die Korrekturen gelten nur für neu erstellte Volumes. Sie gelten nicht rückwirkend für Volumes, bei denen dieses Problem bereits aufgetreten ist. Kunden sollten die betroffenen Datenträger über das klassische Azure-Portal online schalten, eine Sicherung für diese Volumes durchführen und diese Volumes dann auf neuen Volumes wiederherstellen. |
 
 ## <a name="known-issues-in-the-update-03"></a>Bekannte Probleme in Update 0.3
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen. 
 
-| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
+|  Nein. | Feature | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorabversion erstellte virtuellen Geräte können nicht auf eine unterstützte Version für allgemeine Verfügbarkeit aktualisiert werden. |Für diese virtuellen Geräte muss mithilfe eines Notfallwiederherstellungs-Workflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende virtuelle StorSimple-Gerät erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |

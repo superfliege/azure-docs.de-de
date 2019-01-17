@@ -1,23 +1,23 @@
 ---
 title: 'PowerShell-Skript: Erstellen einer Azure Notification Hub-Instanz | Microsoft-Dokumentation'
 description: Dieses PowerShell-Skript erstellt eine Azure Notification Hub-Instanz.
-services: data-factory
+services: notification-hubs
 author: dimazaid
 manager: kpiteira
 editor: spelluru
-ms.service: data-factory
+ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 747d743a0573bd959b4d3c7100be8ae9451c5ed5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f1408f7b6bdc0aa58d4e1ee43173a0bfbd02ab6a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786729"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120157"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>Erstellen einer Azure Notification Hub-Instanz mithilfe von PowerShell
 

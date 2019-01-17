@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 408d43f07179f9f18c05f22fdd4ea36a3a90cb49
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075340"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157308"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Bereitstellung von SAP MaxDB, SAP liveCache und SAP Content Server auf Azure-VMs
 
@@ -331,7 +331,7 @@ Die aktualisierte Liste zur SAP MaxDB-Dokumentation finden Sie in SAP-Hinweis [7
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-Konfigurationsrichtlinien für SAP-Installationen in Azure-VMs
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Speicherkonfiguration
-Die Best Practices für Azure Storage mit SAP MaxDB orientieren sich an den allgemeinen Empfehlungen, die im Kapitel [Struktur einer RDBMS-Bereitstellung][dbms-guide-2] beschrieben werden.
+Die Best Practices für Azure Storage mit SAP MaxDB orientieren sich an den allgemeinen Empfehlungen, die im Kapitel [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64) beschrieben werden.
 
 > [!IMPORTANT]
 > Wie andere Datenbanken verfügt auch SAP MaxDB über Daten- und Protokolldateien. Die korrekte Terminologie bei SAP MaxDB lautet allerdings „Volume“ (nicht „Datei“). Bei SAP MaxDB sprechen wir also z.B. von Datenvolumes und Protokollvolumes. Diese sind nicht zu verwechseln mit den Datenträgervolumes des Betriebssystems. 
@@ -373,7 +373,7 @@ Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderun
 Weitere Informationen zum Striping von Volumes über mehrere bereitgestellte Datenträger finden Sie in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md). 
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Weitere Überlegungen
-Alle anderen allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)) gelten ebenfalls für die Bereitstellung von VMs mit der SAP MaxDB-Datenbank  .
+Alle anderen allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md))  gelten ebenfalls für die Bereitstellung von VMs mit der SAP MaxDB-Datenbank.
 Andere SAP MaxDB-spezifische Einstellungen sind für Azure-VMs transparent. Diese sind in verschiedenen Dokumenten beschrieben, die in SAP-Hinweis [767598] und den folgenden SAP-Hinweisen aufgelistet sind:
 
 * [826037] 
@@ -458,7 +458,7 @@ Hier haben Sie zwei Möglichkeiten:
 
 1. **Client ist ein Back-End-SAP-System** Falls ein Back-End-SAP-System für den Zugriff auf den SAP Content Server konfiguriert wurde, ist dieses SAP-System ein Client. Da sowohl das SAP-System als auch der SAP Content Server im selben Datencenter einer Azure-Region bereitgestellt werden, befinden sie sich in physischer Nähe zueinander. Es besteht also keine Veranlassung für einen dedizierten SAP Cache Server. SAP UI-Clients (SAP-GUI oder Webbrowser) haben direkten Zugriff auf das SAP-System, während das SAP-System Dokumente vom SAP Content Server abruft.
 2. **Client ist ein lokaler Webbrowser** Der SAP Content Server lässt sich so konfigurieren, dass der Zugriff direkt über den Webbrowser erfolgen kann. In diesem Fall ist ein lokal ausgeführter Webbrowser ein Client des SAP Content Servers. Das lokale Datencenter und das Azure-Datencenter befinden sich an unterschiedlichen physischen Standorten (idealerweise nicht weit voneinander entfernt). Ihr lokales Datencenter ist per Azure-Site-to-Site-VPN oder ExpressRoute mit Azure verbunden. Beide Optionen bieten eine sichere VPN-Netzwerkverbindung mit Azure. Die Site-to-Site-Verbindung verfügt allerdings nicht über Netzwerkbandbreite und Latenz-SLA zwischen dem lokalen Datencenter und dem Azure-Datencenter. Um den Zugriff auf Dokumente zu beschleunigen, können Sie eine der folgenden Maßnahmen ergreifen:
-   1. Lokale Installation des SAP Cache Servers in der Nähe zum lokalen Webbrowser (Option in [dieser][dbms-guide-900-sap-cache-server-on-premises] Abbildung)
+   1. Lokale Installation des SAP Cache Servers in der Nähe zum lokalen Webbrowser (Option im Bild unten)
    2. Konfigurieren von Azure ExpressRoute, das hohe Geschwindigkeit und niedrige Wartezeit mit einer dedizierten Netzwerkverbindung zwischen dem lokalen Datencenter und dem Azure-Datencenter bietet
 
 ![Option zur lokalen Installation des SAP Cache Servers](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)

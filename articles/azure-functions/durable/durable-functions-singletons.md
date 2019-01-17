@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4832a48489a043493639bdedd6c6adf3c828de11
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3eaa5de1b1378ba78a7c57172fd0a155f72cd6c5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434697"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102515"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestratoren in Durable Functions (Azure Functions)
 
@@ -91,7 +91,7 @@ Standardmäßig handelt es sich bei Instanz-IDs um zufällig generierte GUIDs. A
 > Wenn Sie lokal in JavaScript entwickeln, müssen Sie die Umgebungsvariable `WEBSITE_HOSTNAME` auf `localhost:<port>` festlegen, z. B. `localhost:7071`, um Methoden mit `DurableOrchestrationClient` zu verwenden. Weitere Informationen zu dieser Anforderung finden Sie in der [Beschreibung des Problems auf GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 > [!NOTE]
-> In diesem Beispiel gibt es eine potenzielle Racebedingung. Wenn zwei Instanzen von **HttpStartSingle** gleichzeitig ausgeführt werden, sind als Ergebnis zwei verschiedene erstellte Instanzen des Singleton möglich, wobei eine die andere überschreibt. Je nach Ihren Anforderungen kann dies unerwünschte Nebenwirkungen haben. Aus diesem Grund muss sichergestellt werden, dass diese Triggerfunktion nicht von zwei Anforderungen gleichzeitig ausgeführt werden kann.
+> In diesem Beispiel gibt es eine potenzielle Racebedingung. Wenn zwei Instanzen von **HttpStartSingle** gleichzeitig ausgeführt werden, sind beide Funktionsaufrufe erfolgreich, aber nur eine Orchestrierungsinstanz wird gestartet. Je nach Ihren Anforderungen kann dies unerwünschte Nebenwirkungen haben. Aus diesem Grund muss sichergestellt werden, dass diese Triggerfunktion nicht von zwei Anforderungen gleichzeitig ausgeführt werden kann.
 
 Die Implementierungsdetails der Orchestratorfunktion sind hier nicht so wichtig. Es kann eine reguläre Orchestratorfunktion sein, die gestartet und abgeschlossen wird, oder es kann eine Orchestratorfunktion mit unendlicher Ausführung sein (also eine [endlose Orchestrierung](durable-functions-eternal-orchestrations.md)). Der wichtigste Punkt hierbei ist, dass nur jeweils eine Instanz ausgeführt wird.
 

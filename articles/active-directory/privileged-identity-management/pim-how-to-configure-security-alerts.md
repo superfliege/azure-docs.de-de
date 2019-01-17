@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/21/2018
+ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291214"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063284"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM
 
@@ -30,8 +30,8 @@ Azure AD Privileged Identity Management (PIM) generiert bei verdächtigen oder n
 
 Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowie Informationen zur Behebung und Vermeidung. Der Schweregrad hat folgende Bedeutung:
 
-* **Hoch**: Aufgrund einer Richtlinienverletzung ist eine sofortige Aktion erforderlich.
-* **Mittel**: Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
+* **Hoch:** Aufgrund einer Richtlinienverletzung ist eine sofortige Aktion erforderlich.
+* **Mittel:** Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
 * **Niedrig**: Es ist keine sofortige Aktion erforderlich, aber es wird eine Richtlinienänderung vorgeschlagen.
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Administratoren verwenden ihre privilegierten Rollen nicht.
@@ -69,7 +69,7 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowi
 | | |
 | --- | --- |
 | **Severity** | Mittel |
-| **Warum erhalte ich diese Warnung?** | Konten, die ihr Kennwort in letzter Zeit nicht geändert haben, können Dienst- oder freigegebene Konten sein, die nicht gepflegt werden. Diese Konten in privilegierten Rollen sind anfällig für Angriffe. |
+| **Warum erhalte ich diese Warnung?** | Konten in einer privilegierten Rolle, die ihr Kennwort in den letzten 90 Tagen nicht geändert haben. Diese Konten können Dienst- oder gemeinsam genutzte Konten sein, die nicht verwaltet werden und anfällig für Angriffe sind. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
 | **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
 | **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |

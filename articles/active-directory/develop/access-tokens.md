@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 164fc42d905c9354a58ea6f66a739ea05f12e601
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979232"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157767"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory-Zugriffstoken
 
@@ -38,7 +38,7 @@ In den folgenden Abschnitten erfahren Sie, wie eine Ressource die Ansprüche inn
 
 ## <a name="sample-tokens"></a>Beispieltoken
 
-v1.0- und v2.0-Token ähneln sich sehr und enthalten viele der gleichen Ansprüche. Im Folgenden ist jeweils ein Beispiel aufgeführt.
+v1.0- und v2.0-Token ähneln sich und enthalten viele der gleichen Ansprüche. Im Folgenden ist jeweils ein Beispiel aufgeführt.
 
 ### <a name="v10"></a>v1.0
 
@@ -79,7 +79,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `nonce` | Zeichenfolge | Ein eindeutiger Bezeichner, der zum Schutz vor Token-Replay-Angriffen verwendet wird. Ihre Ressource kann diesen Wert zum Schutz vor Wiedergaben aufzeichnen. |
 | `alg` | Zeichenfolge | Gibt den Algorithmus an, mit dem das Token signiert wurde, beispielsweise „RS256“. |
 | `kid` | Zeichenfolge | Gibt den Fingerabdruck des öffentlichen Schlüssels an, der zum Signieren dieses Tokens verwendet wird. Wird in v1.0- und v2.0-Zugriffstoken ausgegeben. |
-| `x5t` | Zeichenfolge | Hat dieselbe Funktion (hinsichtlich Verwendung und Wert) wie `kid`. Dies ist ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-Zugriffstoken ausgegeben wird. |
+| `x5t` | Zeichenfolge | Hat dieselbe Funktion (hinsichtlich Verwendung und Wert) wie `kid`. `x5t` ist ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-Zugriffstoken ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
@@ -121,7 +121,7 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 | Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 | `ipaddr`| Zeichenfolge | Die IP-Adresse, mit der sich der Benutzer authentifiziert hat. |
-| `onprem_sid`| Zeichenfolge, im [SID-Format](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Dieser Anspruch kann für die Autorisierung in älteren Anwendungen verwendet werden. |
+| `onprem_sid`| Zeichenfolge, im [SID-Format](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden. |
 | `pwd_exp`| Ganze Zahl, ein UNIX-Zeitstempel | Gibt an, wann das Kennwort des Benutzers abläuft. |
 | `pwd_url`| Zeichenfolge | Eine URL, an die Benutzer zum Zurücksetzen ihres Kennworts weitergeleitet werden können. |
 | `in_corp`|boolean | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten. |
@@ -200,7 +200,7 @@ Diesen Schritt bestimmt die Geschäftslogik Ihrer Anwendung. Im Folgenden finden
 * Überprüfen Sie den Authentifizierungsstatus des aufrufenden Clients mit `appidacr`. Er sollte nicht 0 sein, wenn öffentlichen Clients das Aufrufen Ihrer API nicht erlaubt ist.
 * Stellen Sie anhand einer Liste früherer `nonce`-Ansprüche sicher, dass das Token nicht wiedergegeben wird.
 * Stellen Sie sicher, dass der `tid`-Anspruch einem Mandanten entspricht, dem das Aufrufen Ihrer API erlaubt ist.
-* Verwenden Sie den `acr`-Anspruch, um zu überprüfen, ob der Benutzer die MFA ausgeführt hat. Die Ausführung der MFA sollte durch [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) erzwungen werden.
+* Verwenden Sie den `acr`-Anspruch, um zu überprüfen, ob der Benutzer die MFA ausgeführt hat. Dies sollte durch [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) erzwungen werden.
 * Wenn Sie die `roles`- oder `groups`-Ansprüche im Zugriffstoken angefordert haben, stellen Sie sicher, dass der Benutzer der Gruppe angehört, der das Ausführen dieser Aktion erlaubt ist.
   * Bei Token, die mit dem impliziten Flow abgerufen werden, müssen Sie wahrscheinlich den [Microsoft Graph](https://developer.microsoft.com/graph/) nach diesen Daten abfragen, weil sie oft zu groß für das Token sind. 
 

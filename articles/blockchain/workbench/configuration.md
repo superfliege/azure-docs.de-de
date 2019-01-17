@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/4/2018
+ms.date: 1/8/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: caaee4cb155fc05b78bc47f1e53c79ecb0597183
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f93bfcb076bfae5c50c751ac664a145e1b375f23
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341938"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107768"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
 
@@ -53,17 +53,17 @@ Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-
 
 Die Geschäftslogik einer Anwendung kann als Zustandsautomat modelliert werden, bei der eine Aktion bewirkt, dass während des Ablaufs der Geschäftslogik von einem Zustand in einen anderen gewechselt wird. Ein Workflow ist eine Sammlung solcher Zustände und Aktionen. Jeder Workflow besteht aus mindestens einem intelligenten Vertrag, der die Geschäftslogik in Codedateien darstellt. Bei einem ausführbaren Vertrag handelt es sich um eine Instanz eines Workflows.
 
-| Feld | BESCHREIBUNG | Erforderlich |
-|-------|-------------|:--------:|
-| NAME | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | JA |
-| DisplayName | Der Anzeigename des Workflows | JA |
-| BESCHREIBUNG | Die Beschreibung des Workflows | Nein  |
-| Initiators | Sammlung von [Anwendungsrollen](#application-roles). Rollen, die Benutzern zugeordnet sind, die zum Erstellen von Verträgen im Workflow berechtigt sind. | JA |
-| StartState | Der Name des Anfangszustands des Workflows | JA |
-| Eigenschaften | Sammlung von [Bezeichnern](#identifiers). Stellt Daten dar, die Off-Chain gelesen oder in einem Tool zum Erstellen von Benutzeroberflächen visualisiert werden können. | JA |
-| Konstruktor | Definiert Eingabeparameter für die Erstellung einer Instanz des Workflows. | JA |
-| Functions | Eine Sammlung von [Funktionen](#functions), die im Workflow ausgeführt werden können. | JA |
-| Zustände | Eine Sammlung von [Zuständen](#states) des Workflows. | JA |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+|-------|-------------|:--------:|-----------:|
+| NAME | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | JA | 50 |
+| DisplayName | Der Anzeigename des Workflows | JA | 255 |
+| BESCHREIBUNG | Die Beschreibung des Workflows | Nein  | 255 |
+| Initiators | Sammlung von [Anwendungsrollen](#application-roles). Rollen, die Benutzern zugeordnet sind, die zum Erstellen von Verträgen im Workflow berechtigt sind. | JA | |
+| StartState | Der Name des Anfangszustands des Workflows | JA | |
+| Eigenschaften | Sammlung von [Bezeichnern](#identifiers). Stellt Daten dar, die Off-Chain gelesen oder in einem Tool zum Erstellen von Benutzeroberflächen visualisiert werden können. | JA | |
+| Konstruktor | Definiert Eingabeparameter für die Erstellung einer Instanz des Workflows. | JA | |
+| Functions | Eine Sammlung von [Funktionen](#functions), die im Workflow ausgeführt werden können. | JA | |
+| Zustände | Eine Sammlung von [Zuständen](#states) des Workflows. | JA | |
 
 Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-example).
 
@@ -207,12 +207,12 @@ Definiert Eingabeparameter für eine Instanz eines Workflows.
 
 Definiert Funktionen, die im Workflow ausgeführt werden können.
 
-| Feld | BESCHREIBUNG | Erforderlich |
-|-------|-------------|:--------:|
-| NAME | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | JA |
-| DisplayName | Der Anzeigename der Funktion | JA |
-| BESCHREIBUNG | Beschreibung der Funktion | Nein  |
-| Parameter | Sammlung von [Bezeichnern](#identifiers), die den Parametern der Funktion entsprechen. | JA |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+|-------|-------------|:--------:|-----------:|
+| NAME | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | JA | 50 |
+| DisplayName | Der Anzeigename der Funktion | JA | 255 |
+| BESCHREIBUNG | Beschreibung der Funktion | Nein  | 255 |
+| Parameter | Sammlung von [Bezeichnern](#identifiers), die den Parametern der Funktion entsprechen. | JA | |
 
 ### <a name="functions-example"></a>Funktionsbeispiel
 
@@ -255,14 +255,14 @@ Definiert Funktionen, die im Workflow ausgeführt werden können.
 
 Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustand erfasst einen Schritt in der Ablaufsteuerung der Geschäftslogik. 
 
-| Feld | BESCHREIBUNG | Erforderlich |
-|-------|-------------|:--------:|
-| NAME | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | JA |
-| DisplayName | Der Anzeigename des Zustands | JA |
-| BESCHREIBUNG | Beschreibung des Zustands | Nein  |
-| PercentComplete | Ein ganzzahliger Wert in der Blockchain Workbench-Benutzeroberfläche, der den Fortschritt der Ablaufsteuerung innerhalb der Geschäftslogik anzeigt. | JA |
-| Style | Visueller Hinweis, ob es sich um einen erfolgreichen oder fehlerhaften Zustand handelt. Es gibt zwei gültige Werte: `Success` oder `Failure`. | JA |
-| Transitions | Sammlung von verfügbaren [Übergängen](#transitions) von dem aktuellen Zustand in die nächsten Zustände. | Nein  |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+|-------|-------------|:--------:|-----------:|
+| NAME | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | JA | 50 |
+| DisplayName | Der Anzeigename des Zustands | JA | 255 |
+| BESCHREIBUNG | Beschreibung des Zustands | Nein  | 255 |
+| PercentComplete | Ein ganzzahliger Wert in der Blockchain Workbench-Benutzeroberfläche, der den Fortschritt der Ablaufsteuerung innerhalb der Geschäftslogik anzeigt. | JA | |
+| Style | Visueller Hinweis, ob es sich um einen erfolgreichen oder fehlerhaften Zustand handelt. Es gibt zwei gültige Werte: `Success` oder `Failure`. | JA | |
+| Transitions | Sammlung von verfügbaren [Übergängen](#transitions) von dem aktuellen Zustand in die nächsten Zustände. | Nein  | |
 
 ### <a name="states-example"></a>Beispiel zu Zuständen (States)
 
@@ -369,10 +369,10 @@ Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Ben
 
 Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werden können, die innerhalb der Anwendung agieren oder teilnehmen möchten. Anwendungsrollen können verwendet werden, um Aktionen und Teilnahme innerhalb der Blockchainanwendung und entsprechender Workflows einzuschränken. 
 
-| Feld | BESCHREIBUNG | Erforderlich |
-|-------|-------------|:--------:|
-| NAME | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| JA |
-| BESCHREIBUNG | Die Beschreibung der Anwendungsrolle | Nein  |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+|-------|-------------|:--------:|-----------:|
+| NAME | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| JA | 50 |
+| BESCHREIBUNG | Die Beschreibung der Anwendungsrolle | Nein  | 255 |
 
 ### <a name="application-roles-example"></a>Beispiel zu Anwendungsrollen (ApplicationRoles)
 
@@ -392,11 +392,11 @@ Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werd
 
 Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workfloweigenschaften, Konstruktor und Funktionsparametern dar. 
 
-| Feld | BESCHREIBUNG | Erforderlich |
-|-------|-------------|:--------:|
-| NAME | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | JA |
-| DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | JA |
-| BESCHREIBUNG | Die Beschreibung der Eigenschaft bzw. des Parameters | Nein  |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
+|-------|-------------|:--------:|-----------:|
+| NAME | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | JA | 50 |
+| DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | JA | 255 |
+| BESCHREIBUNG | Die Beschreibung der Eigenschaft bzw. des Parameters | Nein  | 255 |
 
 ### <a name="identifiers-example"></a>Beispiel zu Bezeichnern
 
@@ -423,7 +423,7 @@ Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workflow
 
 ## <a name="configuration-file-example"></a>Beispielkonfigurationsdatei
 
-Die Güterübertragung ist ein Smart Contract-Szenario für den Kauf und Verkauf wertvoller Güter, die einen Prüfer und einen Gutachter erfordern. Verkäufer können ihre Güter auflisten, indem sie ein Smart Contract für die Güterübertragung instanziieren. Käufer können Angebote unterbreiten, indem sie eine Aktion für den Smart Contract durchführen und andere Parteien Aktionen zur Überprüfung oder Begutachtung der Ressource durchführen. Sobald das Gut als überprüft und begutachtet gekennzeichnet wurde, bestätigen Käufer und Verkäufer erneut den Verkauf, bevor der Vertrag auf abgeschlossen gesetzt wird. Jederzeit während des Prozesses können alle Teilnehmer Einblick in den Status des Vertrags erhalten, während dieser aktualisiert wird. 
+Die Güterübertragung ist ein Smart Contract-Szenario für den Kauf und Verkauf wertvoller Güter, die einen Prüfer und einen Gutachter erfordern. Verkäufer können ihre Güter auflisten, indem sie ein Smart Contract für die Güterübertragung instanziieren. Käufer können Angebote unterbreiten, indem sie eine Aktion für den Smart Contract durchführen und andere Parteien Aktionen zur Überprüfung oder Begutachtung der Ressource durchführen. Sobald das Gut als überprüft und begutachtet gekennzeichnet wurde, bestätigen Käufer und Verkäufer erneut den Verkauf, bevor der Vertrag auf abgeschlossen gesetzt wird. Jederzeit während des Prozesses können alle Teilnehmer Einblick in den Status des Vertrags erhalten, während dieser aktualisiert wird. 
 
 Weitere Informationen, einschließlich der Codedateien, finden Sie unter [Beispiel für die Güterübertragung für Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer).
 

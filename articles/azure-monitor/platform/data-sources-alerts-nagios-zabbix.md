@@ -1,6 +1,6 @@
 ---
-title: Erfassen von Nagios- und Zabbix-Warnungen in Azure Monitor | Microsoft-Dokumentation
-description: Nagios und Zabbix sind Open-Source-Überwachungstools. Sie können Warnungen in Azure Monitor von diesen Tools erfassen, um sie zusammen mit Warnungen aus anderen Quellen zu analysieren.  In diesem Artikel wird beschrieben, wie der Log Analytics-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
+title: Erfassen von Nagios- und Zabbix-Warnungen in Log Analytics | Microsoft-Dokumentation
+description: Nagios und Zabbix sind Open-Source-Überwachungstools. Sie können Warnungen von diesen Tools in Log Analytics erfassen, um diese zusammen mit Warnungen aus anderen Quellen zu analysieren.  In diesem Artikel wird beschrieben, wie der Log Analytics-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: cccc42cd925c123b52c0f2416599bb989ce44d8a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1ae719237cb1afee6d2340e1734d008799da8a86
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713496"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107530"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Azure Monitor durch den Log Analytics-Agent für Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools. Sie können Warnungen in Azure Monitor von diesen Tools erfassen, um sie zusammen mit Protokolldaten aus anderen Quellen zu analysieren.  In diesem Artikel wird beschrieben, wie der Log Analytics-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
+[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools. Sie können Warnungen in Log Analytics von diesen Tools erfassen, um sie zusammen mit Protokolldaten aus anderen Quellen zu analysieren.  In diesem Artikel wird beschrieben, wie der Log Analytics-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
+
 
 > [!NOTE]
 > [Von Azure Monitor erstellte Warnungen](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) werden getrennt von Protokolldaten gespeichert und sind über Protokollabfragen nicht zugänglich.
@@ -83,7 +84,7 @@ Führen Sie die folgenden Schritte aus, um Warnungen auf dem Nagios-Server zu er
 
 
 ## <a name="alert-records"></a>Warnungsdatensätze
-Sie können mit [Protokollabfragen](../log-query/log-query-overview.md) Warnungsdatensätze von Nagios und Zabbix in Azure Monitor abrufen.
+Sie können mit [Protokollabfragen](../log-query/log-query-overview.md) Warnungsdatensätze von Nagios und Zabbix in Log Analytics abrufen.
 
 ### <a name="nagios-alert-records"></a>Nagios-Warnungsdatensätze
 

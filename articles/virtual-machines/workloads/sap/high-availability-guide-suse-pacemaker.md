@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076354"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074375"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -483,12 +483,12 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microsoft Azure. Führen Sie die folgenden Schritte aus, um einen Dienstprinzipal zu erstellen.
 
-1. Besuchen Sie <https://portal.azure.com>.
+1. Wechseln Sie zu <https\://portal.azure.com>.
 1. Öffnen Sie das Blatt „Azure Active Directory“.  
    Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
 1. Klicken Sie auf „App-Registrierungen“.
 1. Klicken Sie auf "Hinzufügen".
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“ aus, geben Sie eine Anmelde-URL ein (z.B. http://localhost)), und klicken Sie auf „Erstellen“.
+1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z.B. „http\://localhost“), und klicken Sie auf „Erstellen“.
 1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
 1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
 1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“, und klicken Sie auf „Speichern“.
@@ -525,7 +525,7 @@ Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an 
 
 Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle „Linux Fence Agent Role“ zu, die im letzten Abschnitt erstellt wurde. Verwenden Sie die Rolle „Owner“ nicht mehr.
 
-1. Besuchen Sie https://portal.azure.com.
+1. Wechseln Sie zu „https\://portal.azure.com“.
 1. Öffnen Sie das Blatt „Alle Ressourcen“.
 1. Wählen Sie den virtuellen Computer des ersten Clusterknotens aus.
 1. Klicken Sie auf „Zugriffssteuerung (IAM)“.

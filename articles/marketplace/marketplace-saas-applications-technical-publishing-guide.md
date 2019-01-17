@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123481"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074715"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -34,8 +34,8 @@ SaaS-Anwendungen stehen in beiden Azure-Storefronts zur Verfügung. In der folge
 | AppSource | Ja (Kontaktaufnahme) | Ja (Power BI/Dynamics) |
 | Azure Marketplace | Nein  | Ja (SaaS-Apps) |   
 
-**Liste**: Diese Veröffentlichungsoption besteht aus dem Angebotstyp „Kontakt mit mir aufnehmen“ und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
-**Testversion/Transaktion**: Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
+**Liste**:  Diese Veröffentlichungsoption besteht aus dem Angebotstyp „Kontakt mit mir aufnehmen“ und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
+**Testversion/Transaktion**:  Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  
@@ -49,7 +49,7 @@ Der Aktionsaufruf für eine SaaS-Auflistung ohne Testversion und Abrechnungsfunk
 
 Zum Auflisten einer SaaS-Anwendung müssen Sie nicht Azure Active Directory konfigurieren. 
 
-|Anforderungen  |Details  |
+|Requirements (Anforderungen)  |Details  |
 |---------|---------|
 |Ihre App ist ein SaaS-Angebot  |   Ihre Lösung ist ein SaaS-Angebot, und Sie bieten ein mehrinstanzenfähiges SaaS-Produkt an.      |
 
@@ -59,7 +59,7 @@ Zum Auflisten einer SaaS-Anwendung müssen Sie nicht Azure Active Directory konf
 Sie stellen eine Lösung oder App mithilfe einer kostenlos zu testenden, SaaS-basierten Testversion bereit. Kostenlose Testangebote können als Testkonten mit eingeschränkter Nutzung oder begrenzter Dauer angeboten werden. 
 
 
-|Anforderungen  |Details  |
+|Requirements (Anforderungen)  |Details  |
 |---------|---------|
 |Ihre App ist ein SaaS-Angebot  |   Ihre Lösung ist ein SaaS-Angebot, und Sie bieten ein mehrinstanzenfähiges SaaS-Produkt an.      |
 |Ihre App ist AAD-tauglich     |   Der Kunde wird zu Ihrer Domäne umgeleitet, und Sie führen direkt mit dem Kunden eine Transaktion durch.       |
@@ -94,7 +94,7 @@ Videotutorials finden Sie hier:
 * [Verschiedene Microsoft Azure-Videos rund um Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Eine kostenlose Azure Active Directory-Schulung finden Sie hier:  
-* [Microsoft Azure for IT Pros Content Series: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965) (Themenreihe zu Microsoft Azure für IT-Experten: Azure Active Directory)
+* [Themenreihe über Microsoft Azure für IT-Experten: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Darüber hinaus bietet Azure Active Directory eine Website für die Suche nach Dienstupdates:   
 * [Azure AD-Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
@@ -145,10 +145,11 @@ Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnun
 | Abonnement-API | Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. |  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Falls Sie dies noch nicht getan haben, 
+Falls Sie dies noch nicht getan haben,
 
-- [registrieren](https://azuremarketplace.microsoft.com/sell) Sie sich im Marketplace.
+- [Registrieren Sie](https://azuremarketplace.microsoft.com/sell) beim Marketplace.
 
 Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
 
 - [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
+- Unter [Azure-SaaS-Anwendungsangebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer) finden Sie weitere Informationen.
