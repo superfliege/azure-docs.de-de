@@ -13,13 +13,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 01/12/2019
+ms.openlocfilehash: 716c4caa1b28cc40470d366e5fc6901de9462f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063876"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267265"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -172,9 +172,9 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen.
 
 - Verwenden Sie die Systemfunktion `sys.fn_get_audit_file` (T-SQL), um die Daten der Überwachungsprotokolle im Tabellenformat zurückzugeben. Weitere Informationen zur Verwendung dieser Funktion finden Sie in der [Dokumentation zu „sys.fn_get_audit_file“](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
-- Sie können Überwachungsprotokolle mithilfe eines Tools wie Azure Storage-Explorer untersuchen. In Azure Storage werden Überwachungsprotokolle als Sammlung von Blobdateien in einem Container namens „sqldbauditlogs“ gespeichert. Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie in der Formatreferenz für Blobüberwachungsprotokolle.
+- Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) untersuchen. In Azure Storage werden Überwachungsprotokolle als Sammlung von Blobdateien in einem Container namens „sqldbauditlogs“ gespeichert. Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Eine vollständige Liste der Verbrauchsmethoden für Überwachungsprotokolle finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing).
+- Eine vollständige Liste der Verbrauchsmethoden für Überwachungsprotokolle finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 
 > [!IMPORTANT]
 > Das Anzeigen von Überwachungsdatensätzen im Azure-Portal (Bereich „Überwachungsdatensätze“) steht derzeit für verwaltete Instanzen nicht zur Verfügung.

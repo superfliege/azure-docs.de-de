@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074001"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264681"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
@@ -155,7 +155,7 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 | Anforderung | Details |  
 |:--- |:--- |  
 | Abrechnung und Messung | Ihr Angebot wird über eine monatliche Flatrate abgerechnet. Derzeit werden nutzungsbasierte Preise und nutzungsbasierte *Anpassungsoptionen* nicht unterstützt. |  
-| Stornierung | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
+| Abbruch | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
 | Transaktionszielseite | Hostet eine Transaktion-Zielseite mit Azure-Co-Branding. Ihre Zielseite ermöglicht Ihren Kunden, Ihr SaaS-Dienstkonto zu erstellen und zu verwalten. |  
 | SaaS-Abonnement-API | Stellen Sie einen Dienst bereit, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Alle wichtigen API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig aktualisiert. |  
 

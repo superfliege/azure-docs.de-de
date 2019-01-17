@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 6d15715379b06f55e1e190ebf5410995e3703d70
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3b49d568b1ca19a99359314bb181712f56ca5615
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053329"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201056"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -418,7 +418,7 @@ Hier sind die wichtigsten Schritte des Tokendienstmusters:
 4. Das Gerät/Modul nutzt das Token direkt mit IoT Hub.
 
 > [!NOTE]
-> Sie können die .NET-Klasse [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) oder die Java-Klasse [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token) zum Erstellen eines Tokens im Tokendienst verwenden.
+> Sie können die .NET-Klasse [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) oder die Java-Klasse [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) zum Erstellen eines Tokens im Tokendienst verwenden.
 
 Der Tokendienst kann die Gültigkeitsdauer für das Token wie gewünscht festlegen. Wenn das Token abläuft, trennt IoT Hub die Geräte-/Modulverbindung. Das Gerät/Modul muss dann ein neues Token vom Tokendienst anfordern. Eine kurze Ablaufzeit erhöht die Last für das Gerät/Modul und den Tokendienst gleichermaßen.
 
