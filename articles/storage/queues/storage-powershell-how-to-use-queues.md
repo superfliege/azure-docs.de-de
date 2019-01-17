@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634421"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213228"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Ausführen von Vorgängen für Azure Queue Storage mit Azure PowerShell
 
@@ -77,7 +77,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 
-Im folgenden Beispiel wird zuerst mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird das [New-AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue)-Cmdlet aufgerufen, um eine Warteschlange namens „queuename“ zu erstellen.
+Im folgenden Beispiel wird zuerst mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird das [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue)-Cmdlet aufgerufen, um eine Warteschlange namens „queuename“ zu erstellen.
 
 ```powershell
 $queueName = "howtoqueue"
@@ -88,7 +88,7 @@ Informationen zu Namenskonventionen für den Azure-Warteschlangendienst finden S
 
 ## <a name="retrieve-a-queue"></a>Abrufen einer Warteschlange
 
-Sie können eine bestimmte Warteschlange oder Liste aller Warteschlangen in einem Speicherkonto abfragen und abrufen. Die folgenden Beispiele veranschaulichen das Abrufen aller Warteschlangen im Speicherkonto und einer bestimmten Warteschlange. Beide Befehle verwenden das Cmdlet [Get-AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue).
+Sie können eine bestimmte Warteschlange oder Liste aller Warteschlangen in einem Speicherkonto abfragen und abrufen. Die folgenden Beispiele veranschaulichen das Abrufen aller Warteschlangen im Speicherkonto und einer bestimmten Warteschlange. Beide Befehle verwenden das Cmdlet [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue).
 
 ```powershell
 # Retrieve a specific queue

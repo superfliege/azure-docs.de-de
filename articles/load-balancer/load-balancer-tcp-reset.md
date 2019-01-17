@@ -82,8 +82,8 @@ Dieser Parameter gilt zurzeit in den folgenden Regionen.  In hier nicht aufgefü
 | Japan, Westen |
 | Korea, Mitte |
 | Korea, Süden |
-| Großbritannien, Norden |
-| Großbritannien, Süden 2 |
+| Vereinigtes Königreich, Norden |
+| Vereinigtes Königreich, Süden 2 |
 | USA, Osten |
 | USA (Ost 2) |
 | Vereinigtes Königreich, Norden |

@@ -3,9 +3,9 @@ title: Bedrohungen – Microsoft Threat Modeling Tool – Azure | Microsoft-Doku
 description: Seite „Bedrohungskategorie“ für das Microsoft Threat Modeling Tool mit Kategorien für alle generierten Bedrohungen.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 704f9995828866d4d2e4969e3aa922ed1e23c4ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043305"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359033"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool-Bedrohungen
 
@@ -37,7 +37,7 @@ Mit dem Threat Modeling Tool können Sie Fragen wie die folgenden beantworten:
 
 Um Ihnen beim Formulieren dieser Arten von gezielten Fragen besser helfen zu können, verwendet Microsoft das STRIDE-Modell, in dem die verschiedenen Typen von Bedrohungen kategorisiert und Gespräche über die allgemeine Sicherheit vereinfacht werden.
 
-| Kategorie | Beschreibung |
+| Kategorie | BESCHREIBUNG |
 | -------- | ----------- |
 | **Spoofing** | Umfasst unberechtigten Zugriff auf und die anschließende Verwendung der Authentifizierungsinformationen eines anderen Benutzers, z.B. Benutzername und Kennwort. |
 | **Tampering** (Manipulation) | Umfasst die böswillige Änderung von Daten. Beispiele sind nicht autorisierte Änderungen von persistenten Daten, z.B. der Daten in einer Datenbank, und die Änderung von Daten bei der Übertragung zwischen zwei Computern über ein offenes Netzwerk wie das Internet. |

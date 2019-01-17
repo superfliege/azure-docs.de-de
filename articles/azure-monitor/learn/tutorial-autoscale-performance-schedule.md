@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.component: autoscale
-ms.openlocfilehash: d676af42b80d12ac0e537ce0c2bc008e196990c6
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: bf9cf931964fec9b2089cce100757e044788a972
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53586714"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262318"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -63,7 +63,7 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm für die automat
   ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrance-profile"></a>Erstellen eines Wiederholungsprofils
+## <a name="create-recurrence-profile"></a>Erstellen eines Wiederholungsprofils
 
 1. Klicken Sie im Standardprofil auf den Link **Skalierungsbedingung hinzufügen**.
 

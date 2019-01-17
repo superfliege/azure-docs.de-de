@@ -3,9 +3,9 @@ title: Entschärfungen – Microsoft Threat Modeling Tool – Azure | Microsoft-
 description: Die Seite „Entschärfungen“ für das Microsoft Threat Modeling Tool mit möglichen Lösungen für die meisten generierten Bedrohungen.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 07ef1fd3d81d795c9164741d22b5a689f86bd720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043435"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359135"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool-Entschärfungen
 
@@ -31,7 +31,7 @@ Das Threat Modeling Tool ist ein Kernelement im Microsoft Security Development L
 
 Die Gegenmaßnahmen im Threat Modeling Tool sind gemäß dem Sicherheitsrahmen für Webanwendungen in folgende Kategorien unterteilt:
 
-| Kategorie | Beschreibung |
+| Category (Kategorie) | BESCHREIBUNG |
 | -------- | ----------- |
 | **[Überwachung und Protokollierung](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Wer hat was wann gemacht? Überwachung und Protokollierung beziehen sich darauf, wie Ihre Anwendung Sicherheitsereignisse aufzeichnet. |
 | **[Authentifizierung](./azure-security-threat-modeling-tool-authentication.md)** | Wer sind Sie? Authentifizierung ist der Prozess, in dem eine Entität die Identität einer anderen Entität beweist, in der Regel durch Anmeldeinformationen wie Benutzername und Kennwort. |

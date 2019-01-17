@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 768a9d930314882f88eab630365475d69aa5f83b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134827"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213721"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -62,7 +62,7 @@ Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-An
 
 Wenn der Fehler „Verboten“ angezeigt wird, wurde der Benutzer der Anwendung nicht zugewiesen. Dieser Fehler kann entweder Azure Active Directory oder die Back-End-Anwendung betreffen.
 
-Informationen über das Zuweisen von Benutzern zur Anwendung in Azure finden Sie in der [Konfigurationsdokumentation](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user).
+Informationen über das Zuweisen von Benutzern zur Anwendung in Azure finden Sie in der [Konfigurationsdokumentation](application-proxy-add-on-premises-application.md#test-the-application).
 
 Wenn Sie bestätigen, dass der Benutzer der Anwendung in Azure zugewiesen ist, überprüfen Sie die Benutzerkonfiguration in der Back-End-Anwendung. Wenn Sie die eingeschränkte Kerberos-Delegierung bzw. integrierte Windows-Authentifizierung verwenden, finden Sie nützliche Informationen auf der Seite zur KCD-Problembehandlung.
 

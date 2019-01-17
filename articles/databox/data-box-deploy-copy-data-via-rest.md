@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 88880fbfe0f6020a0a982c42b6df0e9eb71b2fc9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550451"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215285"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -154,7 +154,7 @@ Im ersten Schritt wird ein Container erstellt, da Blobs immer in einen Container
 
    ![Kontextmenü „Blobcontainer erstellen“](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. Unter dem Ordner **Blobcontainer** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Informationen zu Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](/articles/storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions).
+4. Unter dem Ordner **Blobcontainer** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Informationen zu Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](../storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions).
 5. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen des Blobcontainers fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung des Blobcontainers wird er im Ordner **Blobcontainer** für das ausgewählte Speicherkonto angezeigt.
 
    ![Blobcontainer erstellt](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)

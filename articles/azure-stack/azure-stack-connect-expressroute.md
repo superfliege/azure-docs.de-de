@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/22/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: e9365008c47c2aac71d3983a16db37b0c5ea62ea
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: unknown
+ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648104"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246227"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Herstellen einer Verbindung zwischen Azure Stack und Azure mithilfe von Azure ExpressRoute
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In diesem Artikel erfahren Sie, wie Sie ein virtuelles Azure Stack-Netzwerk über eine direkte [Microsoft Azure ExpressRoute](/azure/expressroute/)-Verbindung mit einem virtuellen Azure-Netzwerk verbinden.
 
@@ -107,7 +107,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 
    |Feld  |Wert  |
    |---------|---------|
-   |Name     |Tenant1VNet1         |
+   |NAME     |Tenant1VNet1         |
    |Adressraum     |10.1.0.0/16|
    |Subnetzname     |Tenant1-Sub1|
    |Subnetzadressbereich     |10.1.1.0/24|
@@ -128,7 +128,7 @@ Verwenden Sie die folgenden Verfahren, um die erforderlichen Netzwerkressourcen 
 1. Überprüfen Sie, ob die unter **Adressbereich** angegebene Adresse **10.1.0.0/24** lautet.
 1. Klicken Sie auf **OK**, um das Gatewaysubnetz zu erstellen.
 
-#### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für virtuelle Netzwerke
+#### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
 
 1. Klicken Sie im Azure Stack-Benutzerportal auf **+ Ressource erstellen**.
 1. Wählen Sie unter **Azure Marketplace** die Option **Netzwerk** aus.
@@ -333,7 +333,7 @@ Weitere Informationen zum Erstellen virtueller Netzwerke in Azure finden Sie unt
 
 1. Führen Sie die Schritte unter [Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung](../expressroute/expressroute-howto-routing-portal-resource-manager.md) aus, um das private Peering für die ExpressRoute-Verbindung zu konfigurieren.
 
-### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für virtuelle Netzwerke
+### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
 
 Führen Sie die Schritte unter [Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell](../expressroute/expressroute-howto-add-gateway-resource-manager.md) aus, um ein Gateway des virtuellen Netzwerks für ExpressRoute im Hub-VNET zu erstellen.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 898080f445c54c93543a481bdd0487c70e772160
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994333"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214393"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Einführung in Azure Data Lake Storage Gen2 Preview
 
@@ -51,7 +51,7 @@ Azure Storage ist unabhängig davon skalierbar, ob der Zugriff über Data Lake S
 
 ### <a name="cost-effectiveness"></a>Kosteneffizienz
 
-Einer der vielen Vorteile davon, dass Data Lake Storage Gen2 auf Azure Blob Storage aufsetzt, sind die niedrigen Kosten für Speicherkapazität und -transaktionen. Im Gegensatz zu anderen Cloudspeicherdiensten müssen in Data Lake Storage Gen2 gespeicherte Daten vor der Analyse nicht verschoben oder transformiert werden. Weitere Informationen zu den Preisen finden Sie unter [Preise für Azure Storage]((https://azure.microsoft.com/pricing/details/storage)).
+Einer der vielen Vorteile davon, dass Data Lake Storage Gen2 auf Azure Blob Storage aufsetzt, sind die niedrigen Kosten für Speicherkapazität und -transaktionen. Im Gegensatz zu anderen Cloudspeicherdiensten müssen in Data Lake Storage Gen2 gespeicherte Daten vor der Analyse nicht verschoben oder transformiert werden. Weitere Informationen zu den Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 Zusätzlich verbessern Features wie der [hierarchische Namespace](data-lake-storage-namespace.md) die Gesamtleistung vieler Analyseaufträge erheblich. Diese Leistungsverbesserung bedeutet, dass Sie weniger Rechenleistung benötigen, um die gleiche Datenmenge zu verarbeiten, was zu niedrigeren Gesamtbetriebskosten für den gesamten Analyseauftrag führt.
 

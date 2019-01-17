@@ -14,12 +14,12 @@ ms.service: Cloud Foundry
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 9514118e1f29faab937ed01899b5947789ca9735
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7995d1a22984279f36e2a4ec84a57f1131acab2d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101397"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331559"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Erstellen eines Pivotal Cloud Foundry-Clusters in Azure
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 
     Sie können stattdessen auch den folgenden Befehl verwenden.
 
-    `az role assignment create --assignee {service-princ-name} --role “Contributor” `
+    `az role assignment create --assignee {service-principal-name} --role “Contributor” `
 
     ![Rollenzuweisung für den Dienstprinzipal](media/deploy/svc-princ.png )
 

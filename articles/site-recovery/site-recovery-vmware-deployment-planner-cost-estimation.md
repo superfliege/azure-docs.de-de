@@ -1,18 +1,18 @@
 ---
 title: Überprüfen des Kostenvorkalkulationsberichts im Azure Site Recovery-Bereitstellungsplaner | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie den Kostenvorkalkulationsbericht im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure überprüfen.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 46ec116b357df8cc5de889f64d4620544c062979
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848339"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321487"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Überprüfen des Kostenvorkalkulationsberichts im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure
 
@@ -28,11 +28,11 @@ Die Zusammenfassung erleichtert das Verständnis der Kosten, die für Speicher, 
  
 Sie können die Kosten entweder monatlich oder jährlich anzeigen. Erfahren Sie mehr zu [unterstützten Zielregionen](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) und [unterstützten Währungen](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher- und Netzwerkkosten sowie Azure Site Recovery-Lizenzkosten. Die Kosten werden basierend auf der Nutzung berechnet, die während der Replikations- und DR-Drillvorgänge für die Bereiche Compute, Speicher (Premium und Standard), konfigurierte ExpressRoute/VPN-Verbindung zwischen lokalem Standort und Azure sowie Azure Site Recovery-Lizenz anfallen.
+**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher-, Netzwerk- und Azure Site Recovery-Lizenzkosten. Die Kosten werden basierend auf der Nutzung berechnet, die während der Replikations- und DR-Drillvorgänge für die Bereiche Compute, Speicher (Premium und Standard), konfigurierte ExpressRoute/VPN-Verbindung zwischen lokalem Standort und Azure sowie Azure Site Recovery-Lizenz anfallen.
 
 **Cost by states** (Kosten nach Zustand): Die Gesamtkosten für die Notfallwiederherstellung werden basierend auf zwei unterschiedlichen Zuständen kategorisiert: Replikation und DR-Drill. 
 
-**Replication cost** (Replikationskosten):  Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und Azure Site Recovery-Lizenz enthalten. 
+**Replication cost** (Replikationskosten):  Die Kosten, die bei der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und Azure Site Recovery-Lizenz enthalten. 
 
 **DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die bei einem Testfailover anfallen. Während des Testfailovers startet Azure Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab. 
 
@@ -51,7 +51,7 @@ Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Kom
 
 **Compute**: Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die von Azure Site Recovery bei DR-Drills (Testfailovern) erstellt werden, und VMs, die in Azure ausgeführt werden, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern/Domänennamenservern.
 
-**Storage** (Speicher): Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
+**Speicher**: Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
 „Network“ (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
 **ASR license** (ASR-Lizenz): Azure Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Azure Site Recovery-Lizenzkosten für diese VM enthalten.
@@ -88,7 +88,7 @@ In dieser Tabelle werden die Anzahl von Windows-VMs und anderen VMs sowie die da
 ### <a name="settings"></a>Einstellungen 
 **Using managed disk** (Verwalteten Datenträger verwenden): Gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Standardeinstellung ist „Yes“ (Ja). Wenn Sie „-UseManagedDisks“ auf „No“ (Nein) festgelegt haben, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
 
-**Currency** (Währung): Die Währung, in der der Bericht erstellt wird. „Cost duration“ (Kostendauer):  Sie können alle Kosten für den Monat oder für das ganze Jahr anzeigen. 
+**Currency**: Die Währung, in der der Bericht erstellt wird. „Cost duration“ (Kostendauer):  Sie können alle Kosten für den Monat oder für das ganze Jahr anzeigen. 
 
 ## <a name="detailed-cost-analysis-table"></a>Tabelle „Detailed cost analysis“ (Ausführliche Kostenanalyse)
 ![Detailed cost analysis](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png) (Ausführliche Kostenanalyse): In dieser Tabelle sind die Kosten für die einzelnen kompatiblen VMs aufgeschlüsselt. Sie können diese Tabelle auch verwenden, um die geschätzten Kosten für die Azure-Notfallwiederherstellung für VMs ohne Profilerstellung zu erhalten, wenn Sie VMs manuell hinzufügen. Dies ist hilfreich, wenn Sie die Azure-Kosten für eine neue Bereitstellung der Notfallwiederherstellung kalkulieren müssen, ohne dass eine ausführliche Profilerstellung durchgeführt wird.

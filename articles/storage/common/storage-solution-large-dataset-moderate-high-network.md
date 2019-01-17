@@ -8,12 +8,12 @@ ms.subservice: blob
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 7243edbe0b51a3cca69bec018d6cbb15e9aa1674
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bc5668d826395fb71ee70907f095303a43f1ec7f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263505"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214316"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
  
@@ -67,7 +67,7 @@ Wenn Sie die Offlinedatenübertragung nutzen, verwenden Sie die folgende Tabelle
 |    Datengröße                        |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
 |    Datentyp                        |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |
 |    Formfaktor                      |    5 SSDs pro Auftrag             |    1 x 22,7 kg Gerät in Desktopgröße pro Auftrag    |    1 x ca. 226,8 kg großes Gerät pro Auftrag    |    Bis zu 10 HDDs/SSDs pro Auftrag        |
-|    Für Anfangskonfiguration benötigte Zeit               |    Niedrig <br>(15 Min.)            |    Niedrig bis mittel <br> (< 30 Min.)               |    Moderat<br>(1 bis 2 Stunden)               |    Mittel bis schwierig.<br>(variabel) |
+|    Für Anfangskonfiguration benötigte Zeit               |    Niedrig <br>(15 Min.)            |    Niedrig bis mittel <br> (< 30 Min.)               |    Moderat<br>(1 bis 2 Stunden)               |    Mittel bis schwierig<br>(variabel) |
 |    Senden von Daten an Azure               |    JA                          |    Ja                                           |    Ja                                   |    JA                                 |
 |    Exportieren von Daten aus Azure           |    Nein                            |    Nein                                             |    Nein                                     |    JA                                 |
 |    Verschlüsselung                       |    AES 128-Bit                  |    AES 256-Bit                                   |    AES 256-Bit                           |    AES 128-Bit                         |
@@ -102,7 +102,7 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
     - [Übertragen von Daten mit Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
 - [Übertragen von Daten mit AzCopy](/azure/storage/common/storage-use-azcopy-v10)
 - Informationen zum
-    - [Übertragen von Daten mit Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares.md)
+    - [Übertragen von Daten mit Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)
     - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
 - [Informationen zum Übertragen von Daten mit Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal).
 - Verwenden der REST-APIs zum Übertragen von Daten

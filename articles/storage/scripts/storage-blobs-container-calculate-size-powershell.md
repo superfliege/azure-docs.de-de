@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: b41366b89a0598d52ae973e2a6d27e60ed548765
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 03a0f8885d51e6d45fabda86714afdeefc01f992
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634455"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213483"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Berechnen der Größe eines Blob Storage-Containers
 
@@ -52,7 +52,7 @@ Dieses Skript verwendet die folgenden Befehle, um die Größe des Blob Storage-C
 | Get-Help | Notizen |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Ruft ein angegebenes Speicherkonto oder alle Speicherkonten in einer Ressourcengruppe oder im Abonnement ab. |
-| [Get-AzStorageBlob](/powershell/module/azure.storage/get-AzStorageblob) | Listet die Blobs in einem Container auf. ||
+| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Listet die Blobs in einem Container auf. ||
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 977c464e0c172a25d069fa7db55d8aefb78d89d9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f6267bd2d97dabd71c007bcb8112936093124f74
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339092"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267027"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL, Daten und Anwendungen.
 
-In diesem Artikel werden Empfehlungen für den Azure SQL-Dienst und die Daten behandelt. Bei den Empfehlungen steht das Aktivieren der Überwachung für Azure SQL-Server und -Datenbanken sowie das Aktivieren der Verschlüsselung für SQL-Datenbanken und Ihr Azure Storage-Konto im Mittelpunkt.  Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen für den SQL-Dienst und die Daten verfügbar sind und welche Aktionen jeweils ausgeführt werden, wenn Sie sie anwenden.
+
 ### <a name="monitor-data-security"></a>Überwachen der Datensicherheit
 
 Wenn Sie im Abschnitt **Prävention** auf **Datensicherheit** klicken, wird **Datenressourcen** mit Empfehlungen für SQL und Speicher geöffnet. Außerdem werden [Empfehlungen](security-center-sql-service-recommendations.md) zum allgemeinen Integritätsstatus der Datenbank abgegeben. Weitere Informationen zur Speicherverschlüsselung finden Sie unter [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Aktivieren der Verschlüsselung für Azure-Speicherkonten in Azure Security Center).
@@ -60,7 +60,6 @@ Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option 
 |SQL|15|Überwachung für SQL-Datenbanken aktivieren|Aktivieren Sie die Überwachung für Azure SQL-Datenbanken. (Nur Azure SQL-Dienst. Schließt nicht die Ausführung von SQL auf Ihren virtuellen Computern mit ein.)|
 |Data Lake Analytics|15|Verschlüsselung ruhender Daten von Data Lake Analytics aktivieren|Aktivieren Sie transparente Datenverschlüsselung, um ruhende Daten in Ihrer Data Lake Analytics-Instanz zu sichern. Die Verschlüsselung ruhender Daten ist transparent, d.h. Data Lake Analytics verschlüsselt Daten vor der persistenten Speicherung automatisch und entschlüsselt sie vor dem Abrufen. In Anwendungen und Diensten, die mit Data Lake Analytics interagieren, sind keine verschlüsselungsbedingten Änderungen erforderlich. Die Verschlüsselung ruhender Daten minimiert das Risiko von Datenverlust durch physischen Diebstahl und trägt auch zur Einhaltung gesetzlicher Bestimmungen bei.|
 |Data Lake Store|15|Verschlüsselung ruhender Daten für Data Lake Store aktivieren|Aktivieren Sie transparente Datenverschlüsselung, um ruhende Daten in Ihrer Data Lake Store-Instanz zu sichern. Die Verschlüsselung ruhender Daten ist transparent, d.h. Data Lake Store verschlüsselt Daten vor der persistenten Speicherung automatisch und entschlüsselt sie vor dem Abrufen. Sie müssen keine Änderungen in den Anwendungen und Diensten vornehmen, die mit Data Lake Store interagieren, um Verschlüsselung zu ermöglichen. Die Verschlüsselung ruhender Daten minimiert das Risiko von Datenverlust durch physischen Diebstahl und trägt auch zur Einhaltung gesetzlicher Bestimmungen bei.|
-|Speicherkonto|15|Verschlüsselung für Azure Storage-Konto aktivieren|Aktivieren Sie die Azure-Speicherdienstverschlüsselung für ruhende Daten. Storage Service Encryption (SSE) verschlüsselt die Daten, wenn diese in Azure Storage geschrieben werden, und entschlüsselt sie vor dem Abrufen. SSE steht zurzeit nur für den Azure Blob-Dienst zur Verfügung und kann für Blockblobs, Seitenblobs und Anfügeblobs verwendet werden.|
 |Data Lake Analytics|5|Diagnoseprotokolle in Data Lake Analytics aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
 |Data Lake Store|5|Diagnoseprotokolle in Azure Data Lake Store aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
 |SQL|30|Sicherheitsrisiken in SQL-Datenbanken beseitigen|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von bewährten Methoden wie z. B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.|

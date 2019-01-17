@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e1fe5af1769a0a1a83a3ce849a7eb1874369ce9a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fb0448e5ad5bd91c63c2fcde9887ec23544bed3f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023367"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331349"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,15 +28,15 @@ ms.locfileid: "54023367"
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Pipelines in V2](../concepts-pipelines-activities.md).
 
-In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter lückenloser Workflows für Ihre Datenverschiebungs- und Datenverarbeitungsszenarien genutzt werden können.  
+In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter lückenloser Workflows für Ihre Datenverschiebungs- und Datenverarbeitungsszenarien genutzt werden können.
 
 > [!NOTE]
-> Dieser Artikel setzt voraus, dass Sie die [Einführung in den Azure Data Factory-Dienst](data-factory-introduction.md)gelesen haben. Wenn Sie noch nicht über praktische Erfahrung mit dem Erstellen von Data Factorys verfügen, erleichtert Ihnen das Tutorial [Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md) oder [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) das Verständnis des vorliegenden Artikels.  
+> Dieser Artikel setzt voraus, dass Sie die [Einführung in den Azure Data Factory-Dienst](data-factory-introduction.md)gelesen haben. Wenn Sie noch nicht über praktische Erfahrung mit dem Erstellen von Data Factorys verfügen, erleichtert Ihnen das Tutorial [Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md) oder [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) das Verständnis des vorliegenden Artikels.
 
 ## <a name="overview"></a>Übersicht
-Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie die Ausgabedaten schließlich mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden. 
+Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie die Ausgabedaten schließlich mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden.
 
-Eine Aktivität kann über null oder mehr [Eingabedatasets](data-factory-create-datasets.md) verfügen und ein oder mehrere [Ausgabedatasets](data-factory-create-datasets.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an: 
+Eine Aktivität kann über null oder mehr [Eingabedatasets](data-factory-create-datasets.md) verfügen und ein oder mehrere [Ausgabedatasets](data-factory-create-datasets.md) erstellen. Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität und Dataset in der Data Factory an:
 
 ![Beziehung zwischen Pipeline, Aktivität und Dataset](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
 
@@ -61,7 +61,7 @@ Weitere Informationen finden Sie im Artikel [Datenverschiebungsaktivitäten](dat
 
 Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md).
 
-### <a name="custom-net-activities"></a>Benutzerdefinierte .NET-Aktivitäten 
+### <a name="custom-net-activities"></a>Benutzerdefinierte .NET-Aktivitäten
 Falls Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der Kopieraktivität nicht unterstützt wird, oder Daten mit Ihrer eigenen Logik transformieren möchten, erstellen Sie eine **benutzerdefinierte .NET-Aktivität**. Informationen zum Erstellen und Verwenden einer benutzerdefinierten Aktivität finden Sie unter [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](data-factory-use-custom-activities.md).
 
 ## <a name="schedule-pipelines"></a>Planen von Pipelines
@@ -73,7 +73,7 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 ```json
 {
     "name": "PipelineName",
-    "properties": 
+    "properties":
     {
         "description" : "pipeline description",
         "activities":
@@ -85,7 +85,7 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
         "isPaused": true/false,
         "pipelineMode": "scheduled/onetime",
         "expirationTime": "15.00:00:00",
-        "datasets": 
+        "datasets":
         [
         ]
     }
@@ -96,7 +96,7 @@ Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generisch
 | --- | --- | --- |
 | name |Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |JA |
 | Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. |JA |
-| Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im nächsten Abschnitt. | JA |  
+| Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im nächsten Abschnitt. | JA |
 | Start | Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: `2016-10-14T16:32:41Z`. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Die Eigenschaften "start" und "end" geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. |Nein <br/><br/>Wenn Sie einen Wert für die Endeigenschaft angeben, müssen Sie auch einen Wert für die Starteigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein. Sie müssen beide Werte angeben, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Set-AzureRmDataFactoryPipelineActivePeriod-Cmdlet verwenden. |
 | end | Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel: `2016-10-14T17:32:41Z` <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: `2016-02-27T06:00:00-05:00`. Entspricht 6 Uhr EST.<br/><br/>Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie „9999-09-09“ als Wert für die Endeigenschaft an. <br/><br/> Eine Pipeline ist nur zwischen ihrer Start- und ihrer Endzeit aktiv. Sie wird weder vor der Startzeit noch nach der Endzeit ausgeführt. Wenn die Pipeline angehalten wird, wird sie unabhängig von Start- und Endzeit nicht ausgeführt. Wenn eine Pipeline ausgeführt werden soll, darf sie nicht angehalten werden. Informationen zur Planung und Ausführung in Azure Data Factory finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md) . |Nein  <br/><br/>Wenn Sie einen Wert für die Starteigenschaft angeben, müssen Sie auch einen Wert für die Endeigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **Start** -Eigenschaft. |
 | isPaused | Bei der Einstellung „true“ wird die Pipeline nicht ausgeführt. Sie befindet sich im Status „angehalten“. Standardwert = false. Sie können diese Eigenschaft zum Aktivieren oder Deaktivieren einer Pipeline verwenden. |Nein  |
@@ -110,10 +110,10 @@ Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Je
 ```json
 {
     "name": "ActivityName",
-    "description": "description", 
+    "description": "description",
     "type": "<ActivityType>",
-    "inputs":  "[]",
-    "outputs":  "[]",
+    "inputs": "[]",
+    "outputs": "[]",
     "linkedServiceName": "MyLinkedService",
     "typeProperties":
     {
@@ -142,7 +142,6 @@ In der folgenden Tabelle werden Eigenschaften in der JSON-Definition der Aktivit
 | policy |Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Falls dies nicht angegeben wird, werden Standardrichtlinien verwendet. |Nein  |
 | scheduler | Die „scheduler“-Eigenschaft wird verwendet, um die gewünschte Planung für die Aktivität zu definieren. Die untergeordneten Eigenschaften sind identisch mit denen der [availability-Eigenschaft in einem Dataset](data-factory-create-datasets.md#dataset-availability). |Nein  |
 
-
 ### <a name="policies"></a>Richtlinien
 Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann, wenn der Slice einer Tabelle verarbeitet wird. Die Details finden Sie in der folgenden Tabelle.
 
@@ -157,7 +156,7 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann,
 | longRetryInterval |Zeitraum |00:00:00 |Die Verzögerung zwischen langen Wiederholungsversuchen |
 
 ## <a name="sample-copy-pipeline"></a>Beispiel einer Kopierpipeline
-In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivitäten** . In diesem Beispiel kopieren Sie mit der [Kopieraktivität](data-factory-data-movement-activities.md) Daten aus Azure Blob Storage in eine Azure SQL-Datenbank. 
+In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivitäten** . In diesem Beispiel kopieren Sie mit der [Kopieraktivität](data-factory-data-movement-activities.md) Daten aus Azure Blob Storage in eine Azure SQL-Datenbank.
 
 ```json
 {
@@ -199,19 +198,19 @@ In der folgenden Beispielpipeline gibt es im Abschnitt **Copy** in the **Aktivit
     "start": "2016-07-12T00:00:00Z",
     "end": "2016-07-13T00:00:00Z"
   }
-} 
+}
 ```
 
 Beachten Sie folgende Punkte:
 
 * Der Abschnitt „Activities“ enthält nur eine Aktivität, deren **Typ** auf **Copy** festgelegt ist.
-* Die Eingabe für die Aktivität ist auf **InputDataset** und die Ausgabe für die Aktivität ist auf **OutputDataset** festgelegt. Informationen zum Definieren von Datasets im JSON-Format finden Sie im Artikel [Datasets](data-factory-create-datasets.md). 
-* Im Abschnitt **typeProperties** ist **BlobSource** als Quelltyp und **SqlSink** als Senkentyp angegeben. Klicken Sie im Abschnitt [Datenverschiebungsaktivitäten](#data-movement-activities) auf den Datenspeicher, den Sie als Quelle oder Senke verwenden möchten, um weitere Informationen zum Verschieben von Daten in den/aus dem Datenspeicher zu erhalten. 
+* Die Eingabe für die Aktivität ist auf **InputDataset** und die Ausgabe für die Aktivität ist auf **OutputDataset** festgelegt. Informationen zum Definieren von Datasets im JSON-Format finden Sie im Artikel [Datasets](data-factory-create-datasets.md).
+* Im Abschnitt **typeProperties** ist **BlobSource** als Quelltyp und **SqlSink** als Senkentyp angegeben. Klicken Sie im Abschnitt [Datenverschiebungsaktivitäten](#data-movement-activities) auf den Datenspeicher, den Sie als Quelle oder Senke verwenden möchten, um weitere Informationen zum Verschieben von Daten in den/aus dem Datenspeicher zu erhalten.
 
-Eine ausführliche exemplarische Vorgehensweise zum Erstellen dieser Pipeline finden Sie im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Eine ausführliche exemplarische Vorgehensweise zum Erstellen dieser Pipeline finden Sie im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="sample-transformation-pipeline"></a>Beispiel einer Transformationspipeline
-In der folgenden Beispielpipeline gibt es im Abschnitt **HDInsightHive** in the **Aktivitäten** . In diesem Beispiel transformiert die [HDInsight Hive-Aktivität](data-factory-hive-activity.md) Daten aus Azure Blob Storage durch Anwenden einer Hive-Skriptdatei auf einen Azure HDInsight Hadoop-Cluster. 
+In der folgenden Beispielpipeline gibt es im Abschnitt **HDInsightHive** in the **Aktivitäten** . In diesem Beispiel transformiert die [HDInsight Hive-Aktivität](data-factory-hive-activity.md) Daten aus Azure Blob Storage durch Anwenden einer Hive-Skriptdatei auf einen Azure HDInsight Hadoop-Cluster.
 
 ```json
 {
@@ -258,39 +257,38 @@ In der folgenden Beispielpipeline gibt es im Abschnitt **HDInsightHive** in the 
 }
 ```
 
-Beachten Sie folgende Punkte: 
+Beachten Sie folgende Punkte:
 
 * Der Abschnitt „Activities“ enthält nur eine Aktivität, deren **Typ** auf **HDInsightHive** festgelegt ist.
 * Die Hive-Skriptdatei **partitionweblogs.hql** ist im Azure-Speicherkonto (das durch den scriptLinkedService-Dienst namens **AzureStorageLinkedService** angegeben ist) und im Ordner **script** im Container **adfgetstarted** gespeichert.
 * Der Abschnitt `defines` wird zum Angeben der Runtimeeinstellungen verwendet, die als Hive-Konfigurationswerte an das Hive-Skript übergeben werden (z.B. `${hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
-Der Abschnitt **typeProperties** ist für jede Transformation unterschiedlich. Um weitere Informationen zu Typeigenschaften zu erhalten, die für eine Transformationsaktivität unterstützt werden, klicken Sie in der Tabelle [Datentransformationsaktivitäten](#data-transformation-activities) auf die Transformationsaktivität. 
+Der Abschnitt **typeProperties** ist für jede Transformation unterschiedlich. Um weitere Informationen zu Typeigenschaften zu erhalten, die für eine Transformationsaktivität unterstützt werden, klicken Sie in der Tabelle [Datentransformationsaktivitäten](#data-transformation-activities) auf die Transformationsaktivität.
 
-Eine ausführliche exemplarische Vorgehensweise zum Erstellen dieser Pipeline finden Sie im [Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md). 
+Eine ausführliche exemplarische Vorgehensweise zum Erstellen dieser Pipeline finden Sie im [Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Mehrere Aktivitäten in einer Pipeline
-Die vorherigen beiden Beispielpipelines enthalten nur jeweils eine Aktivität. Sie können mehrere Aktivitäten in einer Pipeline verwenden.  
+Die vorherigen beiden Beispielpipelines enthalten nur jeweils eine Aktivität. Sie können mehrere Aktivitäten in einer Pipeline verwenden.
 
-Wenn in einer Pipeline mehrere Aktivitäten vorliegen und die Ausgabe einer Aktivität nicht die Eingabe für eine andere Aktivität ist, können die Aktivitäten parallel ausgeführt werden, sofern Eingabedatenslices für die Aktivitäten bereitstehen. 
+Wenn in einer Pipeline mehrere Aktivitäten vorliegen und die Ausgabe einer Aktivität nicht die Eingabe für eine andere Aktivität ist, können die Aktivitäten parallel ausgeführt werden, sofern Eingabedatenslices für die Aktivitäten bereitstehen.
 
 Sie können zwei Aktivitäten verketten, indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität verwenden. Die zweite Aktivität wird nur ausgeführt, wenn die erste erfolgreich abgeschlossen wurde.
 
 ![Verketten von Aktivitäten in derselben Pipeline](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-In diesem Beispiel enthält die Pipeline zwei Aktivitäten: „Activity1“ und „Activity2“. „Activity1“ akzeptiert „Dataset1“ als Eingabe und erzeugt die Ausgabe „Dataset2“. Die Aktivität akzeptiert „Dataset2“ als Eingabe und erzeugt die Ausgabe „Dataset3“. Da die Ausgabe von „Activity1“ („Dataset2“) die Eingabe von „Activity2“ ist, wird „Activity2“ nur ausgeführt, nachdem die Aktivität erfolgreich abgeschlossen wurde und den Slice „Dataset2“ erzeugt hat. Wenn bei „Activity1“ aus beliebigen Gründen ein Fehler auftritt, und der Slice „Dataset2“ nicht erzeugt wird, wird „Activity2“ nicht für diesen Slice ausgeführt (z. B. 9 Uhr bis 10 Uhr). 
+In diesem Beispiel enthält die Pipeline zwei Aktivitäten: „Activity1“ und „Activity2“. „Activity1“ akzeptiert „Dataset1“ als Eingabe und erzeugt die Ausgabe „Dataset2“. Die Aktivität akzeptiert „Dataset2“ als Eingabe und erzeugt die Ausgabe „Dataset3“. Da die Ausgabe von „Activity1“ („Dataset2“) die Eingabe von „Activity2“ ist, wird „Activity2“ nur ausgeführt, nachdem die Aktivität erfolgreich abgeschlossen wurde und den Slice „Dataset2“ erzeugt hat. Wenn bei „Activity1“ aus beliebigen Gründen ein Fehler auftritt, und der Slice „Dataset2“ nicht erzeugt wird, wird „Activity2“ nicht für diesen Slice ausgeführt (z. B. 9 Uhr bis 10 Uhr).
 
 Sie können auch Aktivitäten verketten, die sich in verschiedenen Pipelines befinden.
 
 ![Verketten von Aktivitäten in zwei Pipelines](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
 
-In diesem Beispiel hat „Pipeline1“ nur eine Aktivität, die „Dataset1“ als Eingabe akzeptiert und „Dataset2“ als Ausgabe erzeugt. „Pipeline2“ hat ebenfalls nur eine Aktivität, die „Dataset2“ als Eingabe akzeptiert und „Dataset3“ als Ausgabe erzeugt. 
+In diesem Beispiel hat „Pipeline1“ nur eine Aktivität, die „Dataset1“ als Eingabe akzeptiert und „Dataset2“ als Ausgabe erzeugt. „Pipeline2“ hat ebenfalls nur eine Aktivität, die „Dataset2“ als Eingabe akzeptiert und „Dataset3“ als Ausgabe erzeugt.
 
-Weitere Informationen finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
-
+Weitere Informationen finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 ## <a name="create-and-monitor-pipelines"></a>Erstellen und Überwachen von Pipelines
-Sie können mit einem dieser Tools oder SDKs Pipelines erstellen. 
+Sie können mit einem dieser Tools oder SDKs Pipelines erstellen.
 
-- Kopier-Assistent. 
+- Kopier-Assistent.
 - Azure-Portal
 - Visual Studio
 - Azure PowerShell
@@ -299,15 +297,14 @@ Sie können mit einem dieser Tools oder SDKs Pipelines erstellen.
 - .NET API
 
 In den folgenden Tutorials finden Sie schrittweise Anleitungen zum Erstellen von Pipelines mit einem dieser Tools oder SDKs.
- 
+
 - [Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md)
 - [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Sobald eine Pipeline erstellt/bereitgestellt ist, können Sie sie mit den Blättern des Azure-Portals oder der App „Überwachung und Verwaltung“ überwachen und verwalten. In den nächsten Themen finden Sie schrittweise Anweisungen. 
+Sobald eine Pipeline erstellt/bereitgestellt ist, können Sie sie mit den Blättern des Azure-Portals oder der App „Überwachung und Verwaltung“ überwachen und verwalten. In den nächsten Themen finden Sie schrittweise Anweisungen.
 
 - [Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell](data-factory-monitor-manage-pipelines.md).
 - [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)
-
 
 ## <a name="onetime-pipeline"></a>Pipeline mit einmaliger Ausführung
 Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. stündlich oder täglich) innerhalb der in der Pipelinedefinition angegebenen Start- und Endzeiten planen. Weitere Informationen finden Sie unter [Planen von Aktivitäten](#scheduling-and-execution). Sie können auch eine Pipeline erstellen, die nur einmal ausgeführt wird. Legen Sie zu diesem Zweck wie im folgenden JSON-Beispiel gezeigt die **pipelineMode**-Eigenschaft in der Pipelinedefinition auf **onetime** (einmalig) fest. Der Standardwert für diese Eigenschaft lautet **scheduled** (geplant).
@@ -339,10 +336,10 @@ Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. st�
                     {
                         "name": "OutputDataset"
                     }
-                ]
+                ],
                 "name": "CopyActivity-0"
             }
-        ]
+        ],
         "pipelineMode": "OneTime"
     }
 }
@@ -351,13 +348,10 @@ Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. st�
 Beachten Sie Folgendes:
 
 * Es werden keine Start- und Endzeiten (**start** und **end**) für die Pipeline angegeben.
-* Die Verfügbarkeit (**availability**) von Ein- und Ausgabedatasets (**frequency** und **interval**) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
+* Die Verfügbarkeit (**availability**) von Ein- und Ausgabedatasets (**frequency** und **interval**) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.
 * Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dieses Verhalten ist beabsichtigt.
 * Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen über Datasets finden Sie im Artikel [Datasets in Azure Data Factory](data-factory-create-datasets.md). 
-- Weitere Informationen über die Planung und Ausführung von Pipelines finden Sie im Artikel [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
-  
-
+- Weitere Informationen über Datasets finden Sie im Artikel [Datasets in Azure Data Factory](data-factory-create-datasets.md).
+- Weitere Informationen über die Planung und Ausführung von Pipelines finden Sie im Artikel [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md).

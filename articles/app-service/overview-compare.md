@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729692"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322026"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
 
@@ -53,7 +53,7 @@ In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, 
 | Horizontale Skalierung auf mehrere Instanzen ohne erneute Bereitstellung |X |X |X |X |Bei virtuellen Computern ist eine horizontale Skalierung auf mehrere Instanzen möglich. Die Dienste, die auf diesen Computern ausgeführt werden, müssen jedoch so geschrieben werden, dass sie diese horizontale Skalierung unterstützen. Sie müssen einen Lastenausgleich konfigurieren, um Anforderungen über die Computer weiterzuleiten, und sicherstellen, dass die [Verfügbarkeitsgruppe](../virtual-machines/windows/manage-availability.md) mindestens eine VM-Instanz enthält. |
 | SSL-Unterstützung |X |X |X |X |Für App Service-Web-Apps wird SSL für benutzerdefinierte Domänen nur in den Modi "Basic" und "Standard" unterstützt. Weitere Informationen zur Verwendung von SSL mit Web-Apps finden Sie unter [Konfigurieren eines SSL-Zertifikats für eine Azure-Website](app-service-web-tutorial-custom-ssl.md). |
 | Visual Studio-Integration |X |X |X |X | |
-| Remotedebugging |X |X |X | | |
+| Remotedebugging |X |X |X |X | |
 | Bereitstellung von Code mit TFS |X |X |X |X | |
 | Netzwerkisolierung mit [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |Siehe auch [Virtual Network-Integration in Azure Websites](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
 | Unterstützung für [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |

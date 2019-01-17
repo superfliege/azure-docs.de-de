@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185782"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214129"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>Analysieren von Textdaten in Log Analytics
 Einige von Log Analytics gesammelte Daten umfassen mehrere Arten von Informationen in einer einzelnen Eigenschaft. Das Analysieren dieser Daten in mehrere Eigenschaften erleichtert die Verwendung in Abfragen. Ein gängiges Beispiel ist ein [benutzerdefiniertes Protokoll](../../log-analytics/log-analytics-data-sources-custom-logs.md), das einen kompletten Protokolleintrag mit mehreren Werten in einer einzelnen Eigenschaft sammelt. Durch die Erstellung separater Eigenschaften für die verschiedenen Werte können Sie nach den einzelnen Eigenschaften suchen und sie aggregieren.
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Reguläre Ausdrücke
-Wenn Ihre Daten durch einen regulären Ausdruck identifiziert werden können, können Sie mithilfe von [Funktionen, die reguläre Ausdrücke verwenden](/azure/kusto/query/re2), einzelne Werte extrahieren. Das folgende Beispiel verwendet [extract](/kusto/query/extractfunction), um das Feld _UPN_ aus _AzureActivity_-Datensätzen herauszufiltern und dann verschiedene Benutzer zurückzugeben.
+Wenn Ihre Daten durch einen regulären Ausdruck identifiziert werden können, können Sie mithilfe von [Funktionen, die reguläre Ausdrücke verwenden](/azure/kusto/query/re2), einzelne Werte extrahieren. Das folgende Beispiel verwendet [extract](/azure/kusto/query/extractfunction), um das Feld _UPN_ aus _AzureActivity_-Datensätzen herauszufiltern und dann verschiedene Benutzer zurückzugeben.
 
 ```Kusto
 AzureActivity

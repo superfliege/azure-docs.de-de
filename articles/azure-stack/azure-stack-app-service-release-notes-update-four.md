@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.reviewer: ''
-ms.openlocfilehash: 80948b973e6d20b4760e97311c5a65886cf91f8f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.reviewer: anwestg
+ms.openlocfilehash: b721545f27135e36b2999de5acc61e77539a94b2
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617030"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247315"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service in Azure Stack: Versionshinweise zu Update 4
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In diesen Versionshinweisen werden die Verbesserungen und Fixes in Update 4 für Azure App Service in Azure Stack sowie bekannte Probleme beschrieben. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf die Bereitstellung und den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -207,10 +207,10 @@ Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk u
  * Quelle: Beliebig
  * Quellportbereich: *
  * Ziel: IP-Adressen
- * Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
+ * IP-Zieladressbereich: Bereich der IPs für Ihren Dateiserver
  * Zielportbereich: 445
  * Protokoll: TCP
- * Aktion: Zulassen
+ * Aktion: ZULASSEN
  * Priorität: 700
  * Name: Outbound_Allow_SMB445
 

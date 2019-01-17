@@ -1,5 +1,5 @@
 ---
-title: Einführung in FreeBSD in Azure | Microsoft-Dokumentation
+title: Einführung in FreeBSD in Azure | Microsoft Docs
 description: Erfahren Sie, wie Sie virtuelle FreeBSD-Computer auf Azure verwenden
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e6f284b2a3483b21901dc4ad26bff83b8fcd8848
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f2d3c40352d60d3cc7366aca6f38a8255a7a629
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843018"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302390"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Einführung in FreeBSD in Azure
 Dieser Artikel enthält einen Überblick über die Ausführung eines virtuellen FreeBSD-Computers in Azure.
@@ -41,8 +41,7 @@ Die Strategie für künftige Versionen von FreeBSD ist, stets aktuell zu bleiben
 ## <a name="deploying-a-freebsd-virtual-machine"></a>Bereitstellen eines virtuellen FreeBSD-Computers
 Die Bereitstellung eines virtuellen FreeBSD-Computers ist ein unkomplizierter Prozess, wenn Sie ein Image aus dem Azure Marketplace vom Azure-Portal verwenden:
 
-- [FreeBSD 10.4 im Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11.1 im Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
+- [FreeBSD 10.4 auf Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 - [FreeBSD 11.2 im Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Erstellen eines virtuellen FreeBSD-Computers über die Azure CLI auf FreeBSD
@@ -134,4 +133,4 @@ Optional können Sie über `sudo -s` eine Root-Shell abrufen.
 Version 2.2.2 des [Azure VM-Gast-Agents](https://github.com/Azure/WALinuxAgent/) weist ein [bekanntes Problem](https://github.com/Azure/WALinuxAgent/pull/517) auf, das die Bereitstellung der FreeBSD-VM in Azure verhindert. Die Korrektur wurde mit dem [Gast-Agent für virtuelle Azure-Computer](https://github.com/Azure/WALinuxAgent/) ab Version 2.2.3 zur Verfügung gestellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Wechseln Sie zum [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111) , um eine FreeBSD-VM zu erstellen.
+* Wechseln Sie zum [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) , um eine FreeBSD-VM zu erstellen.

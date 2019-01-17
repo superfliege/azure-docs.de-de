@@ -11,18 +11,18 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079237"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321873"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
 In diesem Tutorial erfahren Sie, wie Sie Daten mit dem Azure Machine Learning Data Prep SDK für die Regressionsmodellierung vorbereiten. Sie führen verschiedene Transformationen durch, um zwei Datasets für New Yorker Taxis zu filtern und miteinander zu kombinieren.  
 
-Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe. Nach Abschluss der Tutorialreihe können Sie die Kosten für eine Taxifahrt prognostizieren, indem Sie ein Modell mit Datenfeatures trainieren. Zu den Features zählen der Abholzeitpunkt (Tag und Uhrzeit), die Anzahl der Fahrgäste und der Abholort.
+Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**. Nach Abschluss der Tutorialreihe können Sie die Kosten für eine Taxifahrt prognostizieren, indem Sie ein Modell mit Datenfeatures trainieren. Zu den Features zählen der Abholzeitpunkt (Tag und Uhrzeit), die Anzahl der Fahrgäste und der Abholort.
 
 In diesem Tutorial führen Sie Folgendes durch:
 
@@ -1073,7 +1073,7 @@ Falls Sie nicht mit dem zweiten Teil fortfahren möchten, löschen Sie die Datei
 Im ersten Teil einer Tutorialreihe haben Sie folgende Schritte ausgeführt:
 
 > [!div class="checklist"]
-> * Einrichten Ihrer Entwicklungsumgebung
+> * Einrichten Ihrer Entwicklungsumgebung.
 > * Laden und Bereinigen von Datasets
 > * Prognostizieren Ihrer Logik anhand eines Beispiels unter Verwendung intelligenter Transformationen
 > * Zusammenführen und Verpacken von Datasets zum Trainieren von maschinellem Lernen

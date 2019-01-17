@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 33da0b09339460d66650c492ec125461bc0980b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730578"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215098"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory
 Konfigurieren Sie eine lokale Anwendung in Azure Active Directory (Azure AD) für die Verwendung von Microsoft Cloud App Security (MCAS) für die Echtzeitüberwachung. MCAS nutzt die App-Steuerung für bedingten Zugriff zum Überwachen und Steuern von Sitzungen in Echtzeit mithilfe von Richtlinien für bedingten Zugriff. Sie können diese Richtlinien auf lokale Anwendungen anwenden, die den Anwendungsproxy in Azure Active Directory (Azure AD) verwenden.
@@ -27,7 +27,7 @@ Im Folgenden finden Sie einige Beispiele für die Typen von Richtlinien, die Sie
 - Verwenden Sie Clientzertifikate oder Gerätekonformität, um den Zugriff von nicht verwalteten Geräten auf bestimmte Anwendungen zu blockieren.
 - Beschränken Sie Benutzersitzungen, die nicht aus dem Unternehmensnetzwerk stammen. Sie können Benutzern, die von außerhalb des Unternehmensnetzwerks auf eine Anwendung zugreifen, eingeschränkten Zugriff gewähren. Beispielsweise kann dieser eingeschränkte Zugriff den Benutzer daran hindern, vertrauliche Dokumenten herunterzuladen.
 
-Weitere Informationen finden Sie unter [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad.md).
+Weitere Informationen finden Sie unter [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5ba596a85abbb529990efdf7b15ac50515de011b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117264"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214452"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -47,7 +47,7 @@ Anwendungen sind nur so zuverlässig wie ihre zugrunde liegende Infrastruktur. D
 - Fügen Sie [Überwachungslösungen](insights/solutions-inventory.md) für verschiedene Anwendungen und Dienste in Ihrer Umgebung hinzu.
 
 
-[Infrastruktur als Code](/devops/learn/what-is-infrastructure-as-code) ist die Verwaltung der Infrastruktur in einem beschreibenden Modell, wobei dieselbe Versionsverwaltung verwendet wird, die DevOps-Teams für Quellcode verwenden. Es erhöht die Zuverlässigkeit und Skalierbarkeit Ihrer Umgebung und ermöglicht es Ihnen, ähnliche Prozesse wie bei der Verwaltung Ihrer Anwendungen zu nutzen.
+[Infrastruktur als Code](/azure/devops/learn/what-is-infrastructure-as-code) ist die Verwaltung der Infrastruktur in einem beschreibenden Modell, wobei dieselbe Versionsverwaltung verwendet wird, die DevOps-Teams für Quellcode verwenden. Es erhöht die Zuverlässigkeit und Skalierbarkeit Ihrer Umgebung und ermöglicht es Ihnen, ähnliche Prozesse wie bei der Verwaltung Ihrer Anwendungen zu nutzen.
 
 -  Verwenden Sie [Resource Manager-Vorlagen](platform/template-workspace-configuration.md), um die Überwachung und Konfiguration von Warnungen über eine große Anzahl von Ressourcen zu ermöglichen.
 - Verwenden Sie [Azure Policy](../governance/policy/overview.md), um unterschiedliche Regeln für Ihre Ressourcen zu erzwingen. Auf diese Weise wird sichergestellt, dass diese Ressourcen mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform sind. 
@@ -63,7 +63,7 @@ Mit Continuous Integration/Continuous Deployment können Sie Codeänderungen aut
 
 
 - Verwenden Sie [Azure Pipelines](/azure/devops/pipelines), um Continuous Deployment zu implementieren und Ihren gesamten Prozess (vom Codecommit bis zur Produktion) auf Basis Ihrer CI/CD-Tests zu automatisieren.
-- Verwenden Sie [Quality Gates](/devops/pipelines/release/approvals/gates), um die Überwachung in die Prozesse vor oder nach der Bereitstellung zu integrieren. Dadurch wird sichergestellt, dass Sie die wichtigsten Integritäts-/Leistungsmetriken (KPIs) erfüllen, wenn Ihre Anwendungen von der Entwicklung in die Produktionsumgebung wechseln und Unterschiede in der Infrastrukturumgebung oder -größe sich nicht negativ auf Ihre KPIs auswirken.
+- Verwenden Sie [Quality Gates](/azure/devops/pipelines/release/approvals/gates), um die Überwachung in die Prozesse vor oder nach der Bereitstellung zu integrieren. Dadurch wird sichergestellt, dass Sie die wichtigsten Integritäts-/Leistungsmetriken (KPIs) erfüllen, wenn Ihre Anwendungen von der Entwicklung in die Produktionsumgebung wechseln und Unterschiede in der Infrastrukturumgebung oder -größe sich nicht negativ auf Ihre KPIs auswirken.
 - [Unterhalten Sie separate Überwachungsinstanzen](../azure-monitor/app/separate-resources.md) zwischen Ihren verschiedenen Bereitstellungsumgebungen wie Entwicklung, Test, Canary und Produktion. Auf diese Weise wird sichergestellt, dass die gesammelten Daten für alle zugehörigen Anwendungen und Infrastrukturen relevant sind. Wenn Sie Daten umgebungsübergreifend korrelieren müssen, können Sie [Diagramme für mehrere Ressourcen im Metrik-Explorer](../azure-monitor/platform/metrics-charts.md) verwenden oder [ressourcenübergreifende Abfragen in Log Analytics](log-query/cross-workspace-query.md) erstellen.
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960095"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247672"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -54,14 +54,13 @@ Das Herstellen einer Verbindung für ein einzelnes Gerät mit IoT Central per SA
 
     Unten sind die Verweise für andere Sprachen angegeben, die Sie ggf. nutzen möchten.
 
-    *   **Programmiersprache C:** Nutzen Sie bei Verwendung von C [dieses C-Beispiel für einen Geräteclient](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md), um ein Beispielgerät zu verbinden. Verwenden Sie im Beispiel die folgenden Einstellungen.   
+    *   **Programmiersprache C:** Nutzen Sie bei Verwendung von C [dieses C-Beispiel für einen Geräteclient](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md), um ein Beispielgerät zu verbinden. Verwenden Sie im Beispiel die folgenden Einstellungen.   
 
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
-         
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
 
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
 
     *   **Node.js:**  Wenn Sie Node.js verwenden möchten, können Sie [diese Schritt-für-Schritt-Anleitung](tutorial-add-device.md#prepare-the-client-code) befolgen. Beginnen Sie beim Abschnitt **Vorbereiten des Clientcodes**.
@@ -118,12 +117,12 @@ Wenn Sie das **MxChip**-Gerät für die Verbindungsherstellung verwenden, könne
 
 Unten sind die Verweise für andere Sprachen angegeben, die Sie ggf. nutzen möchten.
 
-   *   **Programmiersprache C:** Nutzen Sie bei Verwendung von C [dieses C-Beispiel für einen Geräteclient](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md), um ein Beispielgerät zu verbinden. Verwenden Sie im Beispiel die folgenden Einstellungen.   
+   *   **Programmiersprache C:** Nutzen Sie bei Verwendung von C [dieses C-Beispiel für einen Geräteclient](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md), um ein Beispielgerät zu verbinden. Verwenden Sie im Beispiel die folgenden Einstellungen.   
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
     * **Node.js:**  Wenn Sie Node.js verwenden möchten, können Sie [diese Schritt-für-Schritt-Anleitung](tutorial-add-device.md#prepare-the-client-code) befolgen. Beginnen Sie beim Abschnitt **Vorbereiten des Clientcodes**.
 

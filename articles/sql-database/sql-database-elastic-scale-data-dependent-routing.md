@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 2a862a6f1165b0cdd4dfe46e638dc6b10eae9ee5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191325"
+ms.locfileid: "54201107"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Verwenden des datenabhängigen Routings für das Weiterleiten einer Abfrage an die richtige Datenbank
 
@@ -68,7 +68,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * Der **key** -Parameter wird als Suchschlüssel in der Shard-Zuordnung verwendet, um die passende Datenbank für die Anforderung zu bestimmen.
 * **connectionString** wird verwendet, um nur die Benutzeranmeldeinformationen für die gewünschte Verbindung zu übergeben. In diesem *connectionString*-Element ist kein Datenbankname oder Servername enthalten, da die Datenbank und der Server von der Methode anhand von **ShardMap** bestimmt werden.
-* **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) sollte auf **ConnectionOptions.Validate** festgelegt werden, wenn in der Umgebung die Shardzuordnungen geändert und Zeilen aufgrund von Teilungen oder Zusammenführungen in andere Datenbanken verschoben werden können. Diese Validierung umfasst eine kurze Abfrage der lokalen Shardzuordnung in der Zieldatenbank (nicht der globalen Shardzuordnung), bevor die Verbindung der Anwendung bereitgestellt wird.
+* **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) sollte auf **ConnectionOptions.Validate** festgelegt werden, wenn in der Umgebung die Shardzuordnungen geändert und Zeilen aufgrund von Teilungen oder Zusammenführungen in andere Datenbanken verschoben werden können. Diese Validierung umfasst eine kurze Abfrage der lokalen Shardzuordnung in der Zieldatenbank (nicht der globalen Shardzuordnung), bevor die Verbindung der Anwendung bereitgestellt wird.
 
 Wenn die Validierung der lokalen Shard-Zuordnung fehlschlägt (was angibt, dass der Zwischenspeicher nicht korrekt ist), fragt der Shard-Zuordnungs-Manager die globale Shard-Zuordnung ab, um den neuen, richtigen Wert für die Suche zu erhalten, den Zwischenspeicher zu aktualisieren und die passende Datenbankverbindung zu erhalten und zurückzugeben.
 

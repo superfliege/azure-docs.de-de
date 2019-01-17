@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313631"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306117"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>Was sind FPGAs, und was ist Project Brainwave?
 
@@ -39,7 +39,7 @@ Der folgende Abbildung und die Tabelle zeigen FPGAs im Vergleich zu anderen Proz
 
 ## <a name="project-brainwave-on-azure"></a>Project Brainwave für Azure
 
-[Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) ist eine Hardwarearchitektur von Microsoft. Sie basiert auf FPGA-Geräten von Intel, die Data Scientists und Entwickler zu verwenden, um KI-Echtzeitberechnungen zu beschleunigen. Diese FPGA-fähige Architektur bietet Leistung, Flexibilität und Skalierbarkeit und ist in Azure verfügbar.
+[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) ist eine Hardwarearchitektur von Microsoft. Sie basiert auf FPGA-Geräten von Intel, die Data Scientists und Entwickler zu verwenden, um KI-Echtzeitberechnungen zu beschleunigen. Diese FPGA-fähige Architektur bietet Leistung, Flexibilität und Skalierbarkeit und ist in Azure verfügbar.
 
 FPGAs ermöglichen eine geringe Latenzzeit für Echtzeit-Inferenzanforderungen. Asynchrone Anforderungen (Batchverarbeitung) sind nicht erforderlich. Die Batchverarbeitung kann zu Wartezeiten führen, weil mehr Daten verarbeitet werden müssen. Bei Project Brainwave-Implementierungen von neuronalen Prozessoren ist keine Batchverarbeitung erforderlich. Daher kann die Wartezeit im Vergleich zu CPU- und GPU-Prozessoren um ein Vielfaches geringer ausfallen.
 

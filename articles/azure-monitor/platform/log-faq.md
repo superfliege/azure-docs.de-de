@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107226"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214741"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -63,7 +63,7 @@ A: Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>F: Warum kann ich im OMS-Portal auf meinen Arbeitsbereich zugreifen, erhalte aber im Azure-Portal die Fehlermeldung „Sie haben keinen Zugriff“?  
 
-A: Für den Zugriff auf einen Arbeitsbereich in Azure benötigen Sie Azure-Berechtigungen. Es kann Fälle geben, in denen Sie nicht über die entsprechenden Zugriffsberechtigungen verfügen. In diesen Fällen muss Ihnen Ihr Administrator Berechtigungen in Azure erteilen. Weitere Informationen finden Sie unter [OMS portal moving to Azure](/../../azure-monitor/platform/oms-portal-transition.md) (Übergang vom OMS-Portal zu Azure).
+A: Für den Zugriff auf einen Arbeitsbereich in Azure benötigen Sie Azure-Berechtigungen. Es kann Fälle geben, in denen Sie nicht über die entsprechenden Zugriffsberechtigungen verfügen. In diesen Fällen muss Ihnen Ihr Administrator Berechtigungen in Azure erteilen. Weitere Informationen finden Sie unter [OMS portal moving to Azure](oms-portal-transition.md) (Übergang vom OMS-Portal zu Azure).
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>F: Warum kann ich den Ansicht-Designer-Eintrag in Protokolle nicht sehen? 
 A: Der Ansicht-Designer ist in der Protokollumgebung nur für Benutzer verfügbar, denen mindestens Berechtigungen vom Typ „Mitwirkender“ zugewiesen wurden.

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: 9e153cca321e94233cfda2a03cf52ba85a0f6b02
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.date: 01/15/2019
+ms.openlocfilehash: e9f1b1a3df92c08b913a56aadc8eb8a9e80c7fdf
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102804"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320054"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden
 Azure Database Migration Service wurde zur Unterstützung einer Vielzahl von Migrationsszenarios (Quelle/Ziel-Paare) und sowohl für die Offline- (einmalig) als auch die Onlinemigration (fortlaufende Synchronisierung) konzipiert. Der von Azure Database Migration Service bereitgestellte Szenarioumfang wird im Laufe der Zeit erweitert. In regelmäßigen Abständen werden neue Szenarios hinzugefügt. Dieser Artikel beschreibt die Migrationsszenarien, die derzeit von Azure Database Migration Service unterstützt werden, sowie die Status der einzelnen Szenarien (private [eingeschränkte] Vorschau, öffentliche Vorschau oder allgemein verfügbar).
@@ -45,10 +45,10 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Azure SQL-Datenbank MI**  | SQL Server  | ✔ |
 |   | RDS SQL  | ✔ |
 |   | Oracle  | ✔  |
-| **Virtueller Azure SQL-Computer**  | SQL Server  | ✔ |
+| **Virtueller Azure SQL-Computer**  | SQL Server | ✔ |
 |   | Oracle  |   |
-| **Cosmos DB**  | MongoDB  | ✔ |
-| **Azure-Datenbank für MySQL**  | MySLQ  |  |
+| **Cosmos DB**  | MongoDB | ✔ |
+| **Azure-Datenbank für MySQL**  | MySQL |  |
 |   | RDS MySQL  |  |
 | **Azure-Datenbank für PostgreSQL**  | PostgreSQL |  |
 |  | RDS PostgreSQL  |  |
@@ -67,7 +67,7 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Virtueller Azure SQL-Computer**  | SQL Server  |   |
 |   | Oracle  | ✔  |
 | **Cosmos DB**  | MongoDB  | ✔ |
-| **Azure-Datenbank für MySQL**  | MySLQ  | ✔ |
+| **Azure-Datenbank für MySQL**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
 | **Azure-Datenbank für PostgreSQL**  | PostgreSQL | ✔ |
 |  | RDS PostgreSQL  | ✔ |

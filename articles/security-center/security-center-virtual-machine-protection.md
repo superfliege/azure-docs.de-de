@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723228"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321589"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -44,7 +44,6 @@ Unter **Compute und Apps** finden Sie die folgenden Registerkarten:
 - **Clouddienste:** Liste mit Ihren von Security Center überwachten Web- und Workerrollen
 - **App Services (Vorschau):** Liste mit Ihren App Service-Umgebungen und deren jeweiliger aktueller Sicherheitsstatus.
 - **Container (Vorschau)**: Liste der auf IaaS-Linux-Computern gehosteten Container und Bewertung der Sicherheit ihrer Docker-Konfigurationen.
-- **VM-Skalierungsgruppen (Vorschau)**: Liste Ihrer Skalierungsgruppen und Empfehlungen für jede Gruppe.
 - **Computeressourcen (Vorschauversion)**: Liste mit Empfehlungen für Ihre Computeressourcen wie Service Fabric-Cluster und Event Hubs.
 
 Wählen Sie zum Fortsetzen des Vorgangs **Compute und Apps** unter **Ressourcensicherheitshygiene** aus.
@@ -162,24 +161,6 @@ Die Liste enthält drei Arten von Symbolen:
 
     ![App Service-Wiederherstellung](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets-preview"></a>VM-Skalierungsgruppen (Vorschau)
-Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und es sich empfiehlt, dass Sie den Microsoft Monitoring Agent auf diesen Skalierungsgruppen installieren. 
-
-So installieren Sie den Microsoft Monitoring Agent: 
-
-1. Wählen Sie die Empfehlung **Überwachungs-Agent für VM-Skalierungsgruppen installieren** aus. Sie erhalten eine Liste der nicht überwachten Skalierungsgruppen.
-2. Wählen Sie eine Skalierungsgruppe in fehlerhaftem Zustand aus. Führen Sie die Anweisungen zum Installieren des Überwachungs-Agents mit einem vorhandenen aufgefüllten Arbeitsbereich aus, oder erstellen Sie einen neuen. Stellen Sie unbedingt den [Tarif](security-center-pricing.md) des Arbeitsbereichs ein, wenn er nicht festgelegt ist.
-
- ![Installieren von MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
-
-Wenn Sie neue Skalierungsgruppen festlegen möchten, um automatisch den Microsoft Monitoring Agent zu installieren:
-1. Wechseln Sie zu Azure Policy, und klicken Sie auf **Definitionen**.
-2. Suchen Sie nach der Richtlinie **Bereitstellen von Log Analytics-Agent für Windows-VM-Skalierungsgruppen**, und klicken Sie darauf.
-3. Klicken Sie auf **Zuweisen**.
-4. Legen Sie **Bereich** und **Log Analytics-Arbeitsbereich** fest, und klicken Sie auf **Zuweisen**.
-
-Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
-
 
 ## <a name="compute-and-app-recommendations"></a>Compute- und App-Empfehlungen
 |Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
@@ -238,11 +219,7 @@ Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für al
 |Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
 |Computer|1|Virtuelle Computer zu neuen Azure Resource Manager-Ressourcen migrieren|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung. |
 |Computer|30|Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung beseitigen|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
-|VM-Skalierungsgruppe |4|Diagnoseprotokolle in Virtual Machine Scale Sets aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. So können Sie Aktivitätsspuren zu Untersuchungszwecken neu erstellen. Dies ist nützlich, wenn ein Sicherheitsvorfall eintritt, oder Ihr Netzwerk kompromittiert ist.|
-|VM-Skalierungsgruppe|35|Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration Ihrer VM-Skalierungsgruppen, um sie vor Angriffen zu schützen. |
-|VM-Skalierungsgruppe|5|Endpoint Protection-Integritätsfehler in VM-Skalierungsgruppen beheben|Beheben Sie Endpoint Protection-Integritätsfehler in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |
-|VM-Skalierungsgruppe|10|Endpoint Protection-Lösung in VM-Skalierungsgruppen installieren|Installieren Sie eine Endpoint Protection-Lösung in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |
-|VM-Skalierungsgruppe|40|Systemupdates für VM-Skalierungsgruppen installieren|Installieren Sie fehlende Systemsicherheitsupdates und kritische Updates zum Schutz Ihrer Windows- und Linux-VM-Skalierungsgruppen. |
+
  
 
 

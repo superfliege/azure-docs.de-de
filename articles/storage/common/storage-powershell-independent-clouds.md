@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 842a9354cf20648393c3262736c0a1e9654a3c70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f7d5fcf1905200bc214a3ff42db9b7b511768dd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628339"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214894"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Verwalten von Speicher in den unabhängigen Azure-Clouds mithilfe von PowerShell
 
@@ -37,7 +37,7 @@ Für die Beispiele ist mindestens Version 0.7 des Azure PowerShell-Moduls Az erf
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Führen Sie das Cmdlet [Get-AzEnvironment](/powershell/module/az.profile/get-Azenvironment) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
+Führen Sie das Cmdlet [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
    
 ```powershell
 Get-AzEnvironment
@@ -71,7 +71,7 @@ Das Endpunktsuffix der einzelnen Umgebungen unterscheidet sich vom Azure Public-
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Abrufen des Endpunkts mit „Get-AzEnvironment“ 
 
-Rufen Sie das Endpunktsuffix mit [Get-AzEnvironment](/powershell/module/az.profile/get-azenvironment) ab. Beim Endpunkt handelt es sich um die *StorageEndpointSuffix*-Eigenschaft der Umgebung. Dies wird in den folgenden Codeausschnitten veranschaulicht. Alle diese Befehle geben Ergebnisse wie „core.cloudapp.net“ oder „core.cloudapi.de“ zurück. Fügen Sie die Ausgabe an den Speicherdienst an, um auf diesen Dienst zuzugreifen. Beispiel: „queue.core.cloudapi.de“ greift auf den Warteschlangendienst in der Deutschland-Cloud zu.
+Rufen Sie das Endpunktsuffix mit [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) ab. Beim Endpunkt handelt es sich um die *StorageEndpointSuffix*-Eigenschaft der Umgebung. Dies wird in den folgenden Codeausschnitten veranschaulicht. Alle diese Befehle geben Ergebnisse wie „core.cloudapp.net“ oder „core.cloudapi.de“ zurück. Fügen Sie die Ausgabe an den Speicherdienst an, um auf diesen Dienst zuzugreifen. Beispiel: „queue.core.cloudapi.de“ greift auf den Warteschlangendienst in der Deutschland-Cloud zu.
 
 Dieser Codeausschnitt ruft alle Umgebungen und ihre Endpunktsuffixe ab.
 

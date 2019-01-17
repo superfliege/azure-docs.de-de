@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971715"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243677"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Ermitteln und Verwenden von Beispielnotebooks
 
@@ -33,7 +33,7 @@ Sobald Sie ein Notebook ermittelt haben, das Sie untersuchen möchten, sollten S
 
 - Das [Azure Notebooks-Startset](https://notebooks.azure.com/#sample-redirect) beinhaltet Einführungen in Python, R und F#, außerdem Notebooks zur Veranschaulichung des Datenzugriffs, Azure Machine Learning Services und einige Data Science-Übungen.
 - [Introduction to Jupyter notebooks](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (Einführung in Jupyter-Notebooks, jupyter.org)
-- [Introduction to Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) (Einführung in Data Science) von Jake Vanderplas.
+- [Introduction to Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) (Einführung in Data Science) von Jake Vanderplas.
 - [Katalog mit interessanten Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-Projekt auf GitHub)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Physikunterweisung vom [Fachbereich Physik am Imperial College of London](https://notebooks.azure.com/cvanbreu/libraries)

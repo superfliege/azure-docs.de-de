@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b5a129c2a92c18b979a3b0c2eeea7fa19791551c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633764"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214044"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Verwenden einer Azure AD-Identität für den Zugriff auf Azure Storage mit der Befehlszeilenschnittstelle oder PowerShell (Vorschau)
 
@@ -84,7 +84,7 @@ So verwenden Sie Azure PowerShell für die Anmeldung mit einer Azure AD-Identit�
    Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
    ```
 1. Schließen Sie das PowerShell-Fenster, und öffnen Sie es dann erneut.
-1. Rufen Sie das Cmdlet [New-AzStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext) auf, um einen Kontext zu erstellen und den Parameter `-UseConnectedAccount` einzufügen. 
+1. Rufen Sie das Cmdlet [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) auf, um einen Kontext zu erstellen und den Parameter `-UseConnectedAccount` einzufügen. 
 1. Für das Aufrufen eines Cmdlets mit einer Azure AD-Identität übergeben Sie den neu erstellten Kontext an das Cmdlet.
 
 Das folgende Beispiel zeigt, wie Sie die Blobs in einem Container aus Azure PowerShell mit einer Azure AD-Identität auflisten. Achten Sie darauf, dass Sie Platzhalterkonto- und Containernamen durch Ihre eigenen Werte ersetzen: 

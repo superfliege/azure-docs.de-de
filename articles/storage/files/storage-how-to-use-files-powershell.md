@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a8ac01850c090b36a5b9d896f6de6c122edfbcaa
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e041d61c628a54b7a55b11fceba0973f3f427b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628424"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214962"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -51,7 +51,7 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
-Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Für die Erstellung einer Dateifreigabe können Sie das Cmdlet [New-AzStorageShare](/powershell/module/azure.storage/new-AzStorageshare) verwenden. In diesem Beispiel wird eine Freigabe mit dem Namen `myshare` erstellt.
+Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Für die Erstellung einer Dateifreigabe können Sie das Cmdlet [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) verwenden. In diesem Beispiel wird eine Freigabe mit dem Namen `myshare` erstellt.
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -81,7 +81,7 @@ In den meisten Fällen werden Sie ihre Azure-Dateifreigabe über das SMB-Protoko
 Die folgenden Beispiele zeigen, wie Sie mit dem Azure PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
 
 #### <a name="create-directory"></a>Erstellen eines Verzeichnisses
-Verwenden Sie das Cmdlet [New-AzStorageDirectory](/powershell/module/azure.storage/new-AzStoragedirectory), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.
+Verwenden Sie das Cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `
@@ -91,7 +91,7 @@ New-AzStorageDirectory `
 ```
 
 #### <a name="upload-a-file"></a>Hochladen einer Datei
-Um das Hochladen einer Datei mit dem Cmdlet [Set-AzStorageFileContent](/powershell/module/azure.storage/set-AzStoragefilecontent) demonstrieren zu können, müssen wir zuerst auf Ihrem temporären Laufwerk von PowerShell Cloud Shell eine Datei erstellen, die hochgeladen werden kann. 
+Um das Hochladen einer Datei mit dem Cmdlet [Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) demonstrieren zu können, müssen wir zuerst auf Ihrem temporären Laufwerk von PowerShell Cloud Shell eine Datei erstellen, die hochgeladen werden kann. 
 
 In diesem Beispiel werden das aktuelle Datum und die Uhrzeit in eine neue Datei auf Ihrem temporären Laufwerk eingefügt, und anschließend wird die Datei auf die Dateifreigabe hochgeladen.
 
@@ -109,14 +109,14 @@ Set-AzStorageFileContent `
 
 Beim lokalen Ausführen von PowerShell sollten Sie `C:\Users\ContainerAdministrator\CloudDrive\` durch einen Pfad ersetzen, der auf Ihrem Computer vorhanden ist.
 
-Nach dem Hochladen der Datei können Sie das Cmdlet [Get-AzStorageFile](/powershell/module/Azure.Storage/Get-AzStorageFile) zum Überprüfen verwenden, um sicherzustellen, dass die Datei auf Ihre Azure-Dateifreigabe hochgeladen wurde. 
+Nach dem Hochladen der Datei können Sie das Cmdlet [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) zum Überprüfen verwenden, um sicherzustellen, dass die Datei auf Ihre Azure-Dateifreigabe hochgeladen wurde. 
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
 #### <a name="download-a-file"></a>Herunterladen einer Datei
-Sie können das Cmdlet [Get-AzStorageFileContent](/powershell/module/azure.storage/get-AzStoragefilecontent) verwenden, um eine Kopie der Datei herunterzuladen, die Sie gerade auf das temporäre Laufwerk von Cloud Shell hochgeladen haben.
+Sie können das Cmdlet [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) verwenden, um eine Kopie der Datei herunterzuladen, die Sie gerade auf das temporäre Laufwerk von Cloud Shell hochgeladen haben.
 
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
@@ -139,7 +139,7 @@ Get-ChildItem -Path "C:\Users\ContainerAdministrator\CloudDrive"
 ``` 
 
 #### <a name="copy-files"></a>Kopieren von Dateien
-Eine häufige Aufgabe besteht darin, Dateien von einer Dateifreigabe auf eine andere oder in bzw. aus einem Azure Blob-Speichercontainer zu kopieren. Zum Demonstrieren dieser Funktionalität können Sie eine neue Freigabe erstellen und die Datei, die Sie gerade hochgeladen haben, mit dem Cmdlet [Start-AzStorageFileCopy](/powershell/module/azure.storage/start-AzStoragefilecopy) auf diese neue Freigabe kopieren. 
+Eine häufige Aufgabe besteht darin, Dateien von einer Dateifreigabe auf eine andere oder in bzw. aus einem Azure Blob-Speichercontainer zu kopieren. Zum Demonstrieren dieser Funktionalität können Sie eine neue Freigabe erstellen und die Datei, die Sie gerade hochgeladen haben, mit dem Cmdlet [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) auf diese neue Freigabe kopieren. 
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -173,7 +173,7 @@ Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchfüh
 - [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
 - Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
 - Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS 
- Sie können eine Freigabemomentaufnahme für eine Freigabe erstellen, indem Sie die `Snapshot`-Methode im PowerShell-Objekt für eine Dateifreigabe verwenden, die mit dem Cmdlet [Get-AzStorageShare](/powershell/module/azure.storage/get-AzStorageshare) abgerufen wird. 
+ Sie können eine Freigabemomentaufnahme für eine Freigabe erstellen, indem Sie die `Snapshot`-Methode im PowerShell-Objekt für eine Dateifreigabe verwenden, die mit dem Cmdlet [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) abgerufen wird. 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name "myshare"
@@ -213,7 +213,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
-Sie können eine Freigabemomentaufnahme löschen, indem Sie das Cmdlet [Remove-AzStorageShare](/powershell/module/azure.storage/remove-AzStorageshare) mit der Variablen verwenden, die den Verweis `$snapshot` auf den Parameter `-Share` enthält.
+Sie können eine Freigabemomentaufnahme löschen, indem Sie das Cmdlet [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) mit der Variablen verwenden, die den Verweis `$snapshot` auf den Parameter `-Share` enthält.
 
 ```azurepowershell-interactive
 Remove-AzStorageShare -Share $snapshot

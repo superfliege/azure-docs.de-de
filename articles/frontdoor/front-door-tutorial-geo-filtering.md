@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/20/2018
 ms.author: sharadag
-ms.openlocfilehash: c4032f7c33cec7b7a7864ccff07a05b87c945949
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 68da9a0255cde6cbad5c675901c80193888bf255
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988588"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214877"
 ---
 # <a name="how-to-set-up-a-geo-filtering-policy-for-your-front-door"></a>Einrichten einer Geofilterungsrichtlinie für Ihre Front Door-Instanz
 In diesem Tutorial wird veranschaulicht, wie Sie mit Azure PowerShell eine Beispielrichtlinie für die Geofilterung erstellen und sie Ihrem vorhandenen Front Door-Front-End-Host zuordnen. Diese Beispielrichtlinie für die Geofilterung blockiert Anforderungen aus allen Ländern, mit Ausnahme der USA.
@@ -47,7 +47,7 @@ Install-Module -Name AzureRM.FrontDoor -AllowPrerelease
 ```
 
 ## <a name="2-define-geo-filtering-match-conditions"></a>2. Definieren der Übereinstimmungsbedingung(en) für die Geofilterung
-Erstellen Sie zuerst eine Übereinstimmungsbedingung, mit der Anforderungen ausgewählt werden, die nicht von „US“ stammen. Informationen zu Parametern beim Erstellen einer Übereinstimmungsbedingung finden Sie im PowerShell-[Leitfaden](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject). Den zweistelligen Ländercode für die Zuordnung des Lands finden Sie [hier](/Protection/GeoFiltering).
+Erstellen Sie zuerst eine Übereinstimmungsbedingung, mit der Anforderungen ausgewählt werden, die nicht von „US“ stammen. Informationen zu Parametern beim Erstellen einer Übereinstimmungsbedingung finden Sie im PowerShell-[Leitfaden](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject). Den zweistelligen Ländercode für die Zuordnung des Lands finden Sie [hier](front-door-geo-filtering.md).
 
 ```
 $nonUSGeoMatchCondition = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RemoteAddr -OperatorProperty GeoMatch -NegateCondition $true -MatchValue "US"

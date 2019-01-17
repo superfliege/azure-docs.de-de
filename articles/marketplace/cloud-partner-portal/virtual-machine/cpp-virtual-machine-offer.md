@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d51fffad897ba2658c7bee51c26e7e3be9f10e88
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bbe757ccd1d6a37cbcf04f3ecd6dd088ef1ff211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188757"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353019"
 ---
 # <a name="virtual-machine-offer"></a>VM-Angebot
 
@@ -32,7 +32,7 @@ ms.locfileid: "53188757"
 
 Das folgende Video, [Optimize Your Azure Marketplace Offer](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), gibt einen umfassenden Überblick über den Azure Marketplace. Dazu gehören Informationen, wie in diesem Marketplace veröffentlicht wird (über eine Lösung für virtuelle Computer), wie die Bedienbarkeit Ihrer Produktseite und, optional, die Testversionsoberfläche optimiert werden können, wie Benutzerleads generiert werden und wie Sie diese nutzen sowie die Kundenbindung optimieren können.
 
-> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026]
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
 ## <a name="vm-publishing-process-flow"></a>Ablauf des VM-Veröffentlichungsprozesses

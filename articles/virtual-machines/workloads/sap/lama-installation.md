@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 17/07/2018
 ms.author: sedusch
-ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728224"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262579"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -116,7 +116,7 @@ Verbindung erfolgreich: Verbindung mit Microsoft-Cloud war erfolgreich. 7 Ressou
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>Bereitstellen eines neuen adaptiven SAP-Systems
 
-Sie können eine neue VM manuell bereitstellen oder eine Azure-Vorlage im [Schnellstartrepository](https://github.com/Azure/azure-quickstart-templates) verwenden. Das Repository enthält Vorlagen für [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [SAP NetWeaver-Anwendungsserver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps) und die [Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-db). Sie können diese Vorlagen auch verwenden, um neue Hosts beispielsweise als Teil einer Systemkopie/eines Systemklons bereitzustellen.
+Sie können eine neue VM manuell bereitstellen oder eine Azure-Vorlage im [Schnellstartrepository](https://github.com/Azure/azure-quickstart-templates) verwenden. Das Repository enthält Vorlagen für [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs), [SAP NetWeaver-Anwendungsserver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps) und die [Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database). Sie können diese Vorlagen auch verwenden, um neue Hosts beispielsweise als Teil einer Systemkopie/eines Systemklons bereitzustellen.
 
 Es wird empfohlen, für alle VMs, die Sie mit SAP LaMa verwalten möchten, ein eigenes Subnetz und keine dynamischen IP-Adressen zu verwenden, um das „Stehlen“ von IP-Adressen zu verhindern, wenn neue VMs bereitgestellt werden, und SAP-Instanzen nicht vorbereitet sind.
 

@@ -2,18 +2,18 @@
 title: Überprüfen der Kostenvorkalkulation des Azure Site Recovery-Bereitstellungsplaners für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie den Kostenvorkalkulationsbericht überprüfen, der vom Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure generiert wird.
 services: site-recovery
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: eaccbc93fa1e78132527798dcef27babc8a2cc09
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845024"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320279"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -32,9 +32,9 @@ Sie können die Kosten entweder monatlich oder jährlich anzeigen. Erfahren Sie 
 
 **Cost by states** (Kosten nach Zustand): Die Kategorie für die Gesamtkosten der Notfallwiederherstellung basieren auf zwei unterschiedlichen Zuständen: Replikation und DR-Drill. 
 
-**Replication cost** (Replikationskosten): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
+**Replication cost** (Replikationskosten): Die Kosten, die bei der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
 
-**DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die während eines Testfailovers anfallen. Während des Testfailovers startet Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab. 
+**DR-Drill cost** (Kosten für DR-Drills): Die Kosten, die bei einem Testfailover anfallen. Während des Testfailovers startet Site Recovery virtuelle Computer (VMs). Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab. 
 
 **Azure storage cost per Month/Year** (Azure-Speicherkosten pro Monat/Jahr): Die Speichergesamtkosten, die bei der Replikation und bei DR-Drills für Storage Premium und Standardspeicher anfallen.
 
@@ -52,7 +52,7 @@ Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Kom
 
 **Compute**: Die Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die mit Site Recovery bei DR-Drills (Testfailovern) erstellt werden. Außerdem sind die in Azure ausgeführten VMs enthalten, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern oder Domänennamenservern.
 
-**Storage** (Speicher): Die Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
+**Speicher**: Die Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
 
 **Network** (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
@@ -92,7 +92,7 @@ In dieser Tabelle werden die Anzahl von Windows-VMs und anderen VMs sowie die da
 ### <a name="settings"></a>Einstellungen 
 **Using managed disk** (Verwalteten Datenträger verwenden): Diese Einstellung gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Option ist standardmäßig auf **Ja**festgelegt. Wenn Sie **-UseManagedDisks** auf **No** festlegen, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
 
-**Currency** (Währung): Die Währung, in der der Bericht erstellt wird.
+**Currency**: Die Währung, in der der Bericht erstellt wird.
 
 **Cost duration** (Kostendauer): Sie können alle Kosten für den Monat oder für das ganze Jahr anzeigen. 
 

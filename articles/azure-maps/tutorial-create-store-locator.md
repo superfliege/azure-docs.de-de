@@ -109,7 +109,7 @@ Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.micr
 
 Fügen Sie zum Erstellen der Benutzeroberfläche der Datei *index.html* Code hinzu:
 
-1. Fügen Sie dem Element `head` von *index.html* die folgenden `meta`-Tags hinzu. Mit den Tags wird der Zeichensatz (UTF-8) definiert, Internet Explorer und Edge werden angewiesen, die aktuellen Browserversionen zu verwenden, und es wird ein Anzeigebereich angegeben, der für dynamische Layouts gut funktioniert.
+1. Fügen Sie dem Element `head` von *index.html* die folgenden `meta`-Tags hinzu. Mit den Tags wird der Zeichensatz (UTF-8) definiert, Internet Explorer und Microsoft Edge werden angewiesen, die aktuellen Browserversionen zu verwenden, und es wird ein Anzeigebereich angegeben, der für dynamische Layouts gut funktioniert.
 
     ```HTML
     <meta charset="utf-8" /> 

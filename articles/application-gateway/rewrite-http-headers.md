@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187416"
+ms.locfileid: "54198524"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)
 
@@ -116,8 +116,6 @@ Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der 
 ## <a name="limitations"></a>Einschränkungen
 
 - Die Möglichkeit, HTTP-Header erneut zu generieren, ist momentan nur über Azure PowerShell, die Azure-API und Azure SDK verfügbar. Die Unterstützung über das Portal und die Azure-Befehlszeilenschnittstelle folgt in Kürze.
-
-- Sobald Sie das erneute Generieren eines Headers auf Ihrem Application Gateway-Dienst angewendet haben, sollten Sie das Portal solange nicht mehr dazu verwenden, Änderungen an diesem Dienst durchzuführen, bis die Unterstützung dieser Möglichkeit für das Portal verfügbar ist. Wenn Sie das Portal verwenden, um Änderungen am Application Gateway-Dienst vorzunehmen, nachdem Sie eine Regel zum erneuten Generieren angewendet haben, generiert der Header die Regel neu. Mit Azure PowerShell, den Azure-APIs oder Azure SDK können Sie weiterhin Änderungen vornehmen.
 
 - Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die neue SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) verfügbar. Auf der alten SKU wird diese Möglichkeit nicht unterstützt.
 
