@@ -5,6 +5,7 @@ description: In diesem Tutorial wird gezeigt, wie Sie die Portweiterleitung per 
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/18
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e3431ff7ee6991e5af3ecab0e734cc587009dcde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273522"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232191"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
@@ -145,10 +146,10 @@ Erstellen Sie eine Netzwerksicherheitsgruppen-Regel (NSGS) für die virtuellen C
    - **Quelldiensttag**: Wählen Sie **Internet** aus. 
    - **Zielportbereiche**: Geben Sie *80* ein.
    - **Protokoll**: Wählen Sie **TCP** aus. 
-   - **Aktion**: Wählen Sie **Zulassen**.  
+   - **Aktion**: Wählen Sie **Zulassen** aus.  
    - **Priorität**: Geben Sie *100* ein. 
    - **Name**: Geben Sie *MyHTTPRule* ein. 
-   - **Beschreibung:** Geben Sie *HTTP zulassen* ein. 
+   - **Beschreibung:** Geben Sie *Allow HTTP* ein. 
    
 1. Wählen Sie **Hinzufügen**. 
    
