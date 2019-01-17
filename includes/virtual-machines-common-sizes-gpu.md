@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fd37c0c118812bb3554b19fec9bf5ae3f33a2fdc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122835"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54314090"
 ---
 GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einzelnen oder mehreren NVIDIA-GPUs verfügbar. Diese Größen sind für rechenintensive, grafikintensive und visualisierungsorientierte Workloads vorgesehen. Dieser Artikel enthält Informationen über die Anzahlen und Typen von GPUs, vCPUs, Datenträgern und NICs. Der Speicherdurchsatz und die Netzwerkbandbreite sind für die jeweiligen Größen in dieser Gruppe ebenfalls enthalten. 
 
@@ -108,9 +108,9 @@ Die virtuellen Computer der NDv2-Serie sind neu in der Familie von GPUs, die auf
 <br>
 
 
-| Größe              | vCPUs | GPU              | Arbeitsspeicher  | Netzwerkkarten (max.) | Maximal Datenträgergröße           | Maximal Datenträger (jeweils 1023 GB) | Max. Netzwerkbandbreite | 
-|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
-| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GiB | 8          | 1344/2948XIO temporär | 32    | 24.000 MBit/s             | 
+| Größe              | vCPU | GPU              | Arbeitsspeicher  | Netzwerkkarten (max.) | Maximal Datenträgergröße           | Maximal Datenträger (jeweils 1023 GB) | Max. Netzwerkbandbreite | 
+|-------------------|------|------------------|---------|------------|--------------------------|--------------------------------|-----------------------|
+| Standard_ND40s_v2 | 40   | 8 V100 (NVlilnk) | 672 GiB | 8          | 1344/2948XIO temporär | 32                             | 24.000 MBit/s           |
 
 ## <a name="nd-series"></a>ND-Serie
 

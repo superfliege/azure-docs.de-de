@@ -2,18 +2,18 @@
 title: Navigieren in Azure Digital Twins-APIs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie gängige Muster der Abfrage der Azure Digital Twins-Verwaltungs-APIs verwenden können.
 author: dsk-2015
-manager: bertvanhoof
+manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 2221e8b22450a353da42564e5b93342a11e59f71
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109395"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200954"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Verwenden der Azure Digital Twins-Verwaltungs-APIs
 
@@ -25,11 +25,11 @@ Die folgende Liste enthält die Komponenten der Digital Twins-APIs.
 
 * [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Diese APIs interagieren mit den physischen Speicherorten in Ihrem Setup. Sie helfen Ihnen, die digitalen Mappings Ihrer physischen Speicherorte in Form eines [räumlichen Graphs](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph) zu erstellen, zu löschen und zu verwalten.
 
-* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Diese APIs helfen Ihnen, Ressourcen, wie beispielsweise einen IoT-Hub, für Ihre Digital Twins-Instanz einzurichten.
-
 * [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Diese APIs interagieren mit den Geräten in Ihrem Setup. Diese Geräte können einen oder mehrere Sensoren verwalten. Ein Gerät kann beispielsweise Ihr Telefon sein, ein Raspberry Pi-Sensorhalter oder ein Lora-Gateway usw.
 
 * [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Diese APIs helfen Ihnen bei der Kommunikation mit den Sensoren, die mit Ihren Geräten und Ihren physischen Speicherorten verbunden sind. Die Sensoren erfassen und senden Umgebungswerte, mit denen Sie Ihre räumliche Umgebung manipulieren können.  
+
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Diese APIs helfen Ihnen, Ressourcen, wie beispielsweise einen IoT-Hub, für Ihre Digital Twins-Instanz einzurichten.
 
 * [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Diese APIs ermöglichen es Ihnen, erweiterte Typen mit Ihren Digital Twins -Objekten zu verknüpfen, um diesen Objekten spezifische Merkmale hinzuzufügen. Diese Typen ermöglichen eine einfache Filterung und Gruppierung von Objekten in der Benutzeroberfläche und den benutzerdefinierten Funktionen, die Ihre Telemetriedaten verarbeiten. Beispiele für erweiterte Typen sind *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType*, *SpaceBlobType*, *SpaceResourceType* usw.
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/09/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 5cbbc3c1c2371264e3e29028d4b9d68533cc59ff
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.reviewer: jiahan
+ms.openlocfilehash: c8186ed6bb8b3af906ed871eea8e0b33a281aece
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154945"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247519"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>Versionshinweise zum SQL-Ressourcenanbieter 1.1.30.0
 
@@ -81,7 +81,7 @@ Diese Version des Azure Stack-SQL-Ressourcenanbieters enthält die folgenden Ver
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
-- **SQL-Ressourcenanbieter kann SQL Server AlwaysOn-Listener nicht hinzufügen**. Wenn Sie die Listener-IP-Adresse des SQL Server AlwaysOn-Listener verwenden möchten, kann die SQL-Ressourcenanbieter-VM den Hostnamen des Listeners nicht auflösen.
+- **SQL-Ressourcenanbieter kann SQL Server AlwaysOn-Listener nicht hinzufügen**. Bei Verwendung der Listener-IP-Adresse des SQL Server Always On-Listeners kann die SQL-Ressourcenanbieter-VM den Hostnamen des Listeners nicht auflösen.
 
     **Problemumgehung**: Stellen Sie sicher, dass DNS ordnungsgemäß funktioniert, um die Listener-IP-Adresse in den Hostnamen des Listeners aufzulösen.
     
