@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: f3c5d7bc1907e94ff2e590fe77cc531ac4b01f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628560"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034086"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Indextypen in Azure Cosmos DB
 
 Beim Konfigurieren der Indizierungsrichtlinie für einen Pfad stehen Ihnen mehrere Optionen zur Verfügung. Für jeden Pfad können Sie eine oder mehrere Indizierungsdefinitionen angeben:
 
-- **Datentyp**: „String“, „Number“, „Point“, „Polygon“ oder „LineString“ (kann nur einen Eintrag pro Datentyp pro Pfad enthalten).
+- **Datentyp:** „String“, „Number“, „Point“, „Polygon“ oder „LineString“ (kann nur einen Eintrag pro Datentyp pro Pfad enthalten).
 
-- **Indexart**: „Hash“ (Gleichheitsabfragen), „Range“ (Gleichheits-, Bereichs- und ORDER BY-Abfragen) oder „Spatial“ (räumliche Abfragen).
+- **Indexart:** „Hash“ (Gleichheitsabfragen), „Range“ (Gleichheits-, Bereichs- oder ORDER BY-Abfragen) oder „Spatial“ (räumliche Abfragen).
 
-- **Genauigkeit**: Beim Hashindex variiert dies von 1 bis 8 für Zeichenfolgen und Zahlen und der Standardwert ist 3. Für einen Bereichsindex beträgt der Wert der maximalen Genauigkeit „-1“. Für Zeichenfolgen- oder numerische Werte kann dieser zwischen 1 und 100 (maximale Genauigkeit) variieren.
+- **Genauigkeit:** Beim Hashindex variiert dieser Wert sowohl für Zeichenfolgen als auch Zahlen von 1 bis 8. Der Standardwert ist 3. Für einen Bereichsindex beträgt der Wert der maximalen Genauigkeit „-1“. Für Zeichenfolgen- oder numerische Werte kann dieser zwischen 1 und 100 (maximale Genauigkeit) variieren.
 
 ## <a name="index-kind"></a>Indexart
 
@@ -31,7 +31,7 @@ Azure Cosmos DB unterstützt die Indexarten „Hash“ und „Range“ für alle
 
 - **Index „Range“** unterstützt effiziente Gleichheitsabfragen, Bereichsabfragen (mit >, <, >=, <=, !=) und ORDER By-Abfragen. Bei ORDER BY-Abfragen muss standardmäßig auch die maximale Indexgenauigkeit (-1) angegeben werden. Der Datentyp kann „String“ oder „Number“ sein.
 
-- **Index „Spatial“** unterstützt effiziente räumliche Abfragen zur Entfernung und zu enthaltenen Elementen. Der Datentyp kann „Point“, „Polygon“ oder „LineString“ sein. Azure Cosmos DB unterstützt auch die Indexart „Spatial“ für alle Pfade, die für den Datentyp „Point“, „Polygon“ oder „LineString“ angegeben werden können. Der Wert im angegebenen Pfad muss ein gültiges GeoJSON-Fragment wie {"type": "Point", "coordinates": [0.0, 10.0]} sein. Azure Cosmos DB unterstützt die automatische Indizierung der Datentypen „Point“, „Polygon“ und „LineString“.
+- **Index „Spatial“** unterstützt effiziente räumliche Abfragen zur Entfernung und zu enthaltenen Elementen. Der Datentyp kann „Point“, „Polygon“ oder „LineString“ sein. Azure Cosmos DB unterstützt auch die Indexart „Spatial“ für alle Pfade, die für den Datentyp „Point“, „Polygon“ oder „LineString“ angegeben werden können. Der Wert am angegebenen Pfad muss ein gültiges GeoJSON-Fragment sein, beispielsweise {"type": "Point", "coordinates": [0.0, 10.0]}. Azure Cosmos DB unterstützt die automatische Indizierung der Datentypen „Point“, „Polygon“ und „LineString“.
 
 Im Folgenden finden Sie einige Beispiele, wie die Indizes „Hash“, „Range“ und „Spatial“ für die Verarbeitung genutzt werden können:
 
@@ -39,7 +39,7 @@ Im Folgenden finden Sie einige Beispiele, wie die Indizes „Hash“, „Range�
 | ---------- | ---------------- |
 | Hash  | Hash über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash über /props/[]/? (oder / oder /props/) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
 | Range  | Bereich über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop   |
-| Spatial     | Bereich über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) --mit aktivierter Indizierung nach Punkten<br><br>SELECT FROM collection c WHERE ST_WITHIN({„type": "Point", ... }, c.prop) --mit aktivierter Indizierung nach Polygonen.     |
+| Spatial     | Bereich über /prop/? (oder /) kann verwendet werden, um die folgenden Abfragen effizient zu bedienen:<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) -- mit aktivierter Indizierung nach Punkten<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) -- mit aktivierter Indizierung nach Polygonen     |
 
 ## <a name="default-behavior-of-index-kinds"></a>Standardverhalten von Indexarten
 

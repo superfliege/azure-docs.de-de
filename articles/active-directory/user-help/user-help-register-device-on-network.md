@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7126a47bd90168c7d86fe9fcc05fab0a60955063
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: dc3a0974eed7b044e137b45ec367c56d7534cee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180586"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054077"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation
-Registrieren Sie Ihr persönliches Gerät, in der Regel ein Smartphone oder ein Tablet, im Netzwerk Ihrer Organisation. Nachdem Ihr Gerät registriert wurde, können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen.
+Registrieren Sie Ihr persönliches Gerät (in der Regel ein Smartphone oder Tablet) im Netzwerk Ihrer Organisation. Nachdem Ihr Gerät registriert wurde, können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen.
 
 >[!Note]
 >In diesem Artikel wird ein Windows-Gerät zu Demonstrationszwecken verwendet, aber Sie können auch Geräte unter iOS, Android oder macOS registrieren.
@@ -34,7 +34,7 @@ Wenn Sie Ihr Gerät im Netzwerk Ihrer Organisation registrieren, geschieht Folge
 
 - Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
 
-- Für den Anmeldevorgang verwenden Sie den Benutzernamen und das Kennwort für Ihr persönliches Microsoft-Konto.
+- Verwenden Sie für den Anmeldeprozess den Benutzernamen und das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto.
 
 ## <a name="to-register-your-windows-device"></a>So registrieren Sie Ihr Windows-Gerät
 
@@ -44,30 +44,26 @@ Folgen Sie diesen Schritten, um Ihr persönliches Gerät in Ihrem Netzwerk zu re
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Klicken Sie auf **Email & accounts** (E-Mail & Konten), und wählen Sie dann **Join a Microsoft account** (Ein Microsoft-Konto verknüpfen) aus.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** und dann auf dem Bildschirm **Auf Arbeits- oder Schulkonto zugreifen** die Option **Verbinden** aus.
 
-    ![Links „E-Mail & Konten“ und „Ein Microsoft-Konto verknüpfen“](./media/user-help-register-device-on-network/register-device-email-and-accounts.png)
+    ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit hervorgehobener Option „Verbinden“](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. Geben Sie auf dem Bildschirm **Microsoft-Konto hinzufügen** Ihre E-Mail-Adresse für Ihr persönliches Microsoft-Konto ein.
+3. Geben Sie auf dem Bildschirm **Add a work or school account** (Geschäfts-, Schul- oder Unikonto hinzufügen) Ihre E-Mail-Adresse für Ihr Geschäfts-, Schul- oder Unikonto ein, und klicken Sie dann auf **Weiter**. Beispiel: alain@contoso.com.
 
-    ![Bildschirm „Fügen Sie ein Microsoft-Konto hinzu“, mit E-Mail-Adresse](./media/user-help-register-device-on-network/register-device-add-accounts.png)
-
-4. Geben Sie auf dem Bildschirm **Kennwort eingeben** das Kennwort für Ihr persönliches Microsoft-Konto ein, und klicken Sie dann auf **Anmelden**.
-
-    ![Bildschirm „Kennwort eingeben“](./media/user-help-register-device-on-network/register-device-enter-password.png)
+4. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und wählen Sie dann **Anmelden** aus.
 
 5. Schließen Sie die restlichen Schritte des Registrierungsprozesses ab, einschließlich der Genehmigung Ihrer Identitätsüberprüfungsanforderung (wenn Sie eine zweistufige Überprüfung verwenden) und dem Einrichten von Windows Hello (falls erforderlich).
 
-## <a name="to-make-sure-youre-registered"></a>So stellen Sie sicher, dass Sie registriert werden
+## <a name="to-verify-that-youre-registered"></a>So überprüfen Sie, ob Sie registriert sind
 Um sicherzustellen, dass Sie registriert wurden, können Sie Ihre Einstellungen überprüfen.
 
 1. Öffnen Sie **Einstellungen**, und klicken Sie dann auf **Konten**.
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Klicken Sie auf **E-Mail & Konten**, und stellen Sie sicher, dass Ihr persönliches Microsoft-Konto angezeigt wird.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass Ihr Geschäfts-, Schul- oder Unikonto angezeigt wird.
 
-    ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-register-device-on-network/register-device-verify-account.png)
+    ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nach der Registrierung Ihres persönlichen Geräts im Netzwerk Ihrer Organisation sollten Sie auf die meisten Ihrer Ressourcen zugreifen können.

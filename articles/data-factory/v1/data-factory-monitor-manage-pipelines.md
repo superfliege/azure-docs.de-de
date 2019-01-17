@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618868"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015491"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -88,7 +87,7 @@ Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 
 <table>
 <tr>
-    <th align="left">State (Zustand)</th><th align="left">Unterzustand</th><th align="left">BESCHREIBUNG</th>
+    <th align="left">Zustand</th><th align="left">Unterzustand</th><th align="left">BESCHREIBUNG</th>
 </tr>
 <tr>
     <td rowspan="8">Warten</td><td>ScheduleTime</td><td>Der Zeitpunkt für die Sliceausführung ist noch nicht erreicht.</td>
@@ -162,7 +161,7 @@ Nachdem Sie eine Data Factory bereitgestellt haben und die Pipelines einen gült
 
 ![Statusdiagramm](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-In Data Factory gibt es die folgenden Übergänge beim Status von Datasets: Warten > In Bearbeitung/In Bearbeitung (Überprüfung) > Bereit/Fehler.
+Der Statusübergang für das Dataset in der Data Factory läuft wie folgt ab: Warten > In Bearbeitung/In Bearbeitung (Wird überprüft) > Bereit/Fehler.
 
 Der Slice startet im Status **Warten**. Es wird gewartet, bis die Vorbedingungen erfüllt sind, bevor die Ausführung beginnen kann. Anschließend beginnt die Ausführung der Aktivität, und der Slice wechselt in den Status **In Bearbeitung**. Die Ausführung der Aktivität kann erfolgreich oder nicht erfolgreich sein. Der Slice wird basierend auf dem Ergebnis der Ausführung als **Bereit** oder **Fehler** markiert.
 

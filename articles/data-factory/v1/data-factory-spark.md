@@ -10,17 +10,16 @@ ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2c00e42284783439b0a01f6ba6bab31be053b1c9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736409"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015813"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -338,7 +337,7 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | className | Die Java-/Spark-Hauptklasse der Anwendung. | Nein  |
 | arguments | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein  |
 | proxyUser | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein  |
-| sparkConfig | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die unter [Spark-Konfiguration: Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt werden. | Nein  |
+| sparkConfig | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die unter [Spark-Konfiguration: Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt sind. | Nein  |
 | getDebugInfo | Gibt an, ob die Spark-Protokolldateien in den Speicher kopiert werden, der vom HDInsight-Cluster verwendet oder von „sparkJobLinkedService“ angegeben wird. Zulässige Werte sind “Keine“, „Immer“ oder „Fehler“. Der Standardwert lautet „Keine“. | Nein  |
 | sparkJobLinkedService | Der verknüpfte Speicherdienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält. Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. | Nein  |
 

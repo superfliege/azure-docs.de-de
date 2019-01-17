@@ -8,17 +8,16 @@ ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047563"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022537"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -169,7 +168,7 @@ Das Gateway kann über Service Bus keine Verbindung mit dem Clouddienst herstell
 #### <a name="resolution"></a>Lösung
 Um das Gateway wieder online zu schalten, gehen Sie wie folgt vor:
 
-1. Lassen Sie Regeln für ausgehende IP-Adressen auf dem Gatewaycomputer und in der Unternehmensfirewall zu. Sie finden die IP-Adressen im Windows-Ereignisprotokoll (ID = 401): Der Zugriff auf einen Socket war aufgrund der Zugriffsrechte des Sockets unzulässig XX.XX.XX.XX:9350.
+1. Lassen Sie Regeln für ausgehende IP-Adressen auf dem Gatewaycomputer und in der Unternehmensfirewall zu. Sie finden IP-Adressen im Windows-Ereignisprotokoll (ID == 401): Es wurde versucht, auf eine Socket in einer Weise zuzugreifen, die gemäß ihren Zugriffsberechtigungen XX.XX.XX.XX:9350 unzulässig ist.
 * Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie unter [Aspekte zu Proxyservern](#proxy-server-considerations).
 * Aktivieren Sie die ausgehenden Ports 5671 und 9350-9354 in der Windows-Firewall sowohl auf dem Gatewaycomputer als auch in der Unternehmensfirewall. Weitere Informationen finden Sie unter [Ports und Firewall](#ports-and-firewall). Dieser Schritt ist optional, wird jedoch für die Leistungsoptimierung empfohlen.
 

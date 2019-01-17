@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2940e1d8328ffaea799ddff4afc9669aaa85a2f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255761"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065629"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -23,33 +23,13 @@ Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 
-Azure Storage bietet drei Typen von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
-
-* **[Konten vom Typ Allgemein v2](#general-purpose-v2-accounts)** (für die meisten Szenarien empfohlen)
-* **[Konten vom Typ Allgemein v1](#general-purpose-v1-accounts)**
-* **[Blob-Speicherkonten](#blob-storage-accounts)** 
-
-Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funktionen:
-
-| Speicherkontotyp | Unterstützte Dienste                       | Unterstützte Leistungsstufen | Unterstützte Zugriffsebenen               | Replikationsoptionen                                                | Bereitstellungsmodell<sup>1</sup>  | Verschlüsselung<sup>2</sup> |
-|----------------------|------------------------------------------|-----------------------------|--------------------------------------|--------------------------------------------------------------------|-------------------|------------|
-| Allgemein v2   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium           | Heiß, kalt, Archiv<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Ressourcen-Manager | Verschlüsselt  |
-| Allgemein v1   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium           | N/V                                  | LRS, GRS, RA-GRS                                                   | Resource Manager, klassisch  | Verschlüsselt  |
-| Blob Storage         | Blob (nur Blockblobs und Anfügeblobs) | Standard                    | Heiß, kalt, Archiv<sup>3</sup>                            | LRS, GRS, RA-GRS                                                   | Ressourcen-Manager  | Verschlüsselt  |
-
-<sup>1</sup>Die Verwendung des Azure Resource Manager-Bereitstellungsmodells wird empfohlen. Speicherkonten, die das klassische Bereitstellungsmodell verwenden, können an einigen Standorten weiterhin erstellt werden, und vorhandene klassische Konten werden weiterhin unterstützt. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../../azure-resource-manager/resource-manager-deployment-model.md).
-
-<sup>2</sup>Alle Speicherkonten sind per Storage Service Encryption (SSE) für ruhende Daten verschlüsselt. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](storage-service-encryption.md).
-
-<sup>3</sup>Die Ebene „Archiv“ ist nur auf Ebene der einzelnen Blobs verfügbar, nicht auf Ebene des Speicherkontos. Nur Blockblobs und Anfügeblobs können archiviert werden. Weitere Informationen finden Sie unter [Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
-
-<sup>4</sup>Zonenredundanter Speicher (ZRS) ist nur für Storage Standard-Konten des Typs „Allgemein v2“ verfügbar. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md). Weitere Informationen zu weiteren Replikationsoptionen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
 ### <a name="general-purpose-v2-accounts"></a>Allgemeines Konto vom Typ „General Purpose v2“
 
 Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise. Speicherkonten vom Typ „Allgemein v2“ unterstützen die folgenden Azure Storage-Dienste:
 
-- Blobs (alle Typen: Blockblob, Anfügeblob, Seitenblob)
+- Blobs (alle Typen: Block-, Anfüge- und Seitenblobs)
 - Dateien
 - Datenträger
 - Warteschlangen
@@ -98,7 +78,7 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
 * Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern.
-* Eine Premium-Leistungsstufe zum ausschließlichen Speichern von Azure-VM-Datenträgern. Eine ausführliche Übersicht über Azure Premium Storage finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../../virtual-machines/windows/premium-storage.md) .
+* Eine Premium-Leistungsstufe zum ausschließlichen Speichern von Azure-VM-Datenträgern. Eine ausführliche Übersicht über Azure Storage Premium finden Sie unter [Storage Premium: Hochleistungsspeicher für Azure-VM-Workloads](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="access-tiers-for-block-blob-data"></a>Zugriffsebenen für Blockblobdaten
 
@@ -114,7 +94,7 @@ Folgende Zugriffsebenen sind verfügbar:
 * Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Ebene „Archiv“ ist die kosteneffektivste Option für das Speichern von Daten, aber der Zugriff auf die Daten ist kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“ oder „Kalt“. 
 
 
-Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Premium-Speicherebenen (Vorschau) – „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
 > Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie im Abschnitt [Speicherkontoabrechnung](#storage-account-billing).
@@ -157,9 +137,9 @@ Jede Anforderung, die für Ihr Speicherkonto gesendet wird, muss autorisiert wer
 
 Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in Ihrem Speicherkonto zu gewähren:
 
-- **Azure Active Directory**: Verwenden Sie Azure Active Directory-Anmeldeinformationen, um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren (Vorschau). Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
-- **Autorisierung mit freigegebenen Schlüsseln**: Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
-- **Shared Access Signature (SAS)**: Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Authentifizierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Azure Active Directory:** Verwenden Sie Anmeldeinformationen von Azure Active Directory (Azure AD), um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren (Vorschauversion). Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
+- **Autorisierung mit gemeinsam verwendetem Schlüssel:** Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+- **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Authentifizierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
 > Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. 

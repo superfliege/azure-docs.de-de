@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7a5c0866bc08c5a73888d9baca41980106a62ae2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954935"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020080"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 
@@ -38,7 +37,7 @@ ms.locfileid: "49954935"
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [update machine learning models in Data Factory](../update-machine-learning-models.md) (Aktualisieren von Machine Learning-Modellen in Data Factory).
 
-Dieser Artikel stellt eine Ergänzung zum Hauptartikel zur Integration von Azure Data Factory und Azure Machine Learning dar: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
+Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Learning-Integration: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
 
 ## <a name="overview"></a>Übersicht
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure ML-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten ML-Modell aktualisieren. Typische Schritte, um das erneute Trainieren und das Aktualisieren von Azure ML-Modellen über Webdienste zu ermöglichen:
@@ -262,7 +261,7 @@ Die Azure ML-Aktivität zur Ressourcenaktualisierung generiert keine Ausgabe. F�
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline weist zwei Aktivitäten auf: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Azure ML-Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
+Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Azure ML-Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
 
 ![Pipelinediagramm](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

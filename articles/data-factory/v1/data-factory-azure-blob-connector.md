@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten in und aus Azure Blob Storage | Microsoft Docs
-description: Hier erfahren Sie, wie Sie Blobdaten in Azure Data Factory kopieren. Verwenden Sie unser Beispiel zum Kopieren von Daten aus und in Azure Blob Storage und Azure SQL-Datenbank.
+description: 'Hier erfahren Sie, wie Sie Blobdaten in Azure Data Factory kopieren. Verwenden Sie unser Beispiel: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank (und umgekehrt).'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,17 +9,16 @@ ms.assetid: bec8160f-5e07-47e4-8ee1-ebb14cfb805d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2efc20d5a2248fed69f38880a9e75a6ccb2403dd
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: cb26813f565e6ba3f4a1e15dd84e93e1e50347c6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146645"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025809"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +53,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Dieser Artikel enthält eine [exemplarische Vorgehensweise](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) zur Erstellung einer Pipeline zum Kopieren von Daten von einem Azure Blob Storage-Standort an einen anderen Azure Blob Storage-Standort. Ein Tutorial zur Erstellung einer Pipeline zum Kopieren von Daten aus einer Azure Blob Storage-Instanz in Azure SQL-Datenbank finden Sie unter [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -68,7 +67,7 @@ Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für di
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Azure Blob Storage verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
-Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um einen Azure Storage mit einer Azure Data Factory zu verknüpfen. **AzureStorage** und **AzureStorageSas**. Dagegen bietet der mit Azure Storage SAS (Shared Access Signature) verknüpfte Dienst der Data Factory einen eingeschränkten bzw. zeitgebundenen Zugriff auf Azure-Speicher. Es gibt keine weitere Unterschiede zwischen diesen beiden verknüpften Diensten. Wählen Sie den verknüpften Dienst, der Ihren Anforderungen entspricht. Die folgenden Abschnitte bieten weitere Informationen zu diesen beiden verknüpften Diensten.
+Es gibt zwei Arten von verknüpften Diensten, die Sie verwenden können, um einen Azure Storage mit einer Azure Data Factory zu verknüpfen. Sie lauten wie folgt: verknüpfter Dienst **AzureStorage** und verknüpfter Dienst **AzureStorageSas**. Dagegen bietet der mit Azure Storage SAS (Shared Access Signature) verknüpfte Dienst der Data Factory einen eingeschränkten bzw. zeitgebundenen Zugriff auf Azure-Speicher. Es gibt keine weitere Unterschiede zwischen diesen beiden verknüpften Diensten. Wählen Sie den verknüpften Dienst, der Ihren Anforderungen entspricht. Die folgenden Abschnitte bieten weitere Informationen zu diesen beiden verknüpften Diensten.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
 
@@ -77,17 +76,17 @@ Um ein Dataset zur Darstellung von Eingabe- oder Ausgabedaten in einem Azure Blo
 
 Eine vollständige Liste der JSON-Abschnitte und -Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Data Factory unterstützt für das Schema von Lesedatenquellen wie Azure-Blob die folgenden CLS-kompatiblen auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in „structure“: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset, Timespan. Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch.
+Data Factory unterstützt die folgenden CLS-konformen und auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in „structure“ für Schema-on-Read-Datenquellen wie Azure-Blob: Int16, Int32, Int64, Single, Double, Decimal, Byte[], Bool, String, Guid, Datetime, Datetimeoffset, Timespan. Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält unter anderem Informationen zum Speicherort und Format der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **AzureBlob** hat die folgenden Eigenschaften:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |JA |
-| fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** für ein Ausgabedataset nicht angegeben ist und **preserveHierarchy** in der Aktivitätssenke nicht angegeben ist, hat der Name der generierten Datei folgendes Format: „Data.<Guid>.txt“ (z.B. „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“). |Nein  |
+| fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: Data.<Guid>.txt (z.B. Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein  |
 | partitionedBy |"partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt [Nutzen der Eigenschaft „partitionedBy“](#using-partitionedBy-property) finden Sie Details und Beispiele. |Nein  |
-| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
+| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Folgende Ebenen werden unterstützt: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
 
 ### <a name="using-partitionedby-property"></a>Nutzen der partitionedBy-Eigenschaft
 Wie im vorherigen Abschnitt erwähnt, können die **partitionedBy**-Eigenschaft, [Data Factory-Funktionen und Systemvariablen](data-factory-functions-variables.md) verwendet werden, um für Zeitreihendaten einen dynamischen Wert für folderPath und filename anzugeben.
@@ -144,7 +143,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 **BlobSink** unterstützt zum Zweck der Abwärtskompatibilität die folgende Eigenschaft:
 
-* **blobWriterAddHeader**: Gibt an, ob beim Schreiben in ein Ausgabedataset ein Header der Spaltendefinitionen hinzugefügt werden soll.
+* **blobWriterAddHeader**: Gibt an, ob beim Schreiben in ein Ausgabedataset ein Header mit Spaltendefinitionen hinzugefügt werden soll.
 
 Datasets unterstützen jetzt die folgenden Eigenschaften, die die gleichen Funktionen implementieren: **treatEmptyAsNull**, **skipLineCount**, **firstRowAsHeader**.
 
@@ -211,7 +210,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Wählen Sie zum Verwenden eines vorhandenen verknüpften Diensts die Option **AUS VORHANDENEN VERKNÜPFTEN DIENSTEN** aus, und wählen Sie den richtigen verknüpften Dienst aus. 
     ![Kopiertool – Seite „Quelldatenspeicher“](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
 4. Auf der Seite **Azure Blob Storage-Konto angeben** :
-   1. Übernehmen Sie den automatisch generierten Namen für **Verbindungsname**. Der Verbindungsname ist der Name des verknüpften Diensts des Typs „Azure Storage“. 
+   1. Übernehmen Sie den automatisch generierten Namen für **Verbindungsname**. Der Verbindungsname ist der Name des verknüpften Diensts vom Typ „Azure Storage“. 
    2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
    3. Wählen Sie Ihr Azure-Abonnement aus, oder übernehmen Sie **Alle auswählen** für **Azure-Abonnement**.   
    4. Wählen Sie in der Liste mit den **Azure-Speicherkonten**, die im ausgewählten Abonnement verfügbar sind, ein Azure-Speicherkonto aus. Sie können sich auch für das manuelle Eingeben von Speicherkontoeinstellungen entscheiden, indem Sie unter **Kontoauswahlmethode** die Option **Manuell eingeben** auswählen.
@@ -229,7 +228,7 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     5. Klicken Sie auf **Weiter**.
     ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt. 
-    1. Bestätigen Sie die folgenden Optionen: a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Zum Beispiel: JSON, Avro, ORC, Parquet.
+    1. Bestätigen Sie die folgenden Optionen: a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Beispiel:  JSON, Avro, ORC, Parquet.
         b. Das **Spaltentrennzeichen** ist auf `Comma (,)` festgelegt. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
         c. Das **Zeilentrennzeichen** ist auf `Carriage Return + Line feed (\r\n)` festgelegt. Die weiteren Zeilentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
         d. Die **Anzahl zu überspringender Zeilen** ist auf **0** festgelegt. Wenn Sie möchten, dass einige Zeilen am Anfang der Datei übersprungen werden sollen, geben Sie hier die Anzahl ein.
@@ -502,11 +501,11 @@ Im Beispiel werden Zeitreihendaten aus einem Azure-Blob stündlich in eine Azure
   }
 }
 ```
-Azure Data Factory unterstützt zwei Arten von mit Azure Storage verknüpften Diensten: **AzureStorage** und **AzureStorageSas**. Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).  
+Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Diensten: **AzureStorage** und **AzureStorageSas**. Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).  
 
 **Azure-Blob-Eingabedataset:**
 
-Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "interval": 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet die Bestandteile Jahr, Monat und Tag der Startzeit, und der Dateiname verwendet die Stunde der Startzeit. Die Festlegung von „external“ auf „true“ teilt dem Data Factory-Dienst mit, dass diese Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Daten werden stündlich aus einem neuen Blob übernommen (frequency: hour, interval: 1). Ordnerpfad und Dateiname des Blobs werden basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Der Ordnerpfad verwendet die Bestandteile Jahr, Monat und Tag der Startzeit, und der Dateiname verwendet die Stunde der Startzeit. Die Festlegung von „external“ auf „true“ teilt dem Data Factory-Dienst mit, dass diese Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 ```json
 {
@@ -613,7 +612,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
    }
 }
 ```
-### <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Azure SQL nach Azure-Blob
+### <a name="json-example-copy-data-from-azure-sql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus Azure SQL in ein Azure-Blob
 Dieses Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties)
@@ -650,7 +649,7 @@ Im Beispiel werden Zeitreihendaten aus einer Azure SQL-Tabelle stündlich in ein
   }
 }
 ```
-Azure Data Factory unterstützt zwei Arten von mit Azure Storage verknüpften Diensten: **AzureStorage** und **AzureStorageSas**. Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).  
+Azure Data Factory unterstützt zwei Arten von verknüpften Azure Storage-Diensten: **AzureStorage** und **AzureStorageSas**. Für den ersten geben Sie die Verbindungszeichenfolge an, die den Kontoschlüssel enthält. Für den zweiten geben Sie den SAS-URI (Shared Access Signature) an. Weitere Informationen finden Sie unter [Verknüpfte Dienste](#linked-service-properties).  
 
 **Azure SQL-Eingabedataset:**
 
@@ -685,7 +684,7 @@ Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst m
 
 **Azure-Blob-Ausgabedataset:**
 
-Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
 ```json
 {

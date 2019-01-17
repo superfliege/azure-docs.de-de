@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 501dc942fc41a4e06aa13fba2eb670f8bc0f8a21
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597819"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156237"
 ---
 # <a name="door-monitor"></a>Türüberwachung          
 
@@ -66,7 +66,7 @@ Das Formular für die SendGrid-Registrierung wird angezeigt.
 
 Füllen Sie das Registrierungsformular aus:
 
-   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-portal.md).
+   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene Ressourcengruppe. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-portal.md).
 
    * **Name**: Der Name für Ihren SendGrid-Dienst. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
 
@@ -106,9 +106,9 @@ Das Registrierungsformular wird angezeigt.
 
 Füllen Sie die Felder des Registrierungsformulars aus.
 
-   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-portal.md).
+   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene Ressourcengruppe. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-portal.md).
 
-   * **IoT Hub-Name**: Der Name für Ihren IoT Hub. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
+   * **IoT Hub-Name**: Der Name Ihres IoT-Hubs. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
 
    * **IoT Hub-SKU**: F1 ist kostenlos (auf 1 pro Abonnement beschränkt). Weitere Preisinformationen finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -135,7 +135,7 @@ Erweitern Sie auf der linken Seite den Abschnitt **ARDUINO-BEISPIELE**, wechseln
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Sie können die Beispiel-App auch über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
+Sie können die Beispiel-App auch über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie den Eintrag aus.
 
 ### <a name="provision-azure-services"></a>Bereitstellen von Azure-Diensten
 
@@ -162,7 +162,7 @@ Als Nächstes laden Sie den Code für das Gerät hoch.
 
 #### <a name="macos"></a>macOS
 
-1. Setzen Sie DevKit in den Konfigurationsmodus: Halten Sie hierfür Taste A gedrückt, und drücken Sie anschließend gleichzeitig einmal die Reset-Taste. Auf dem Bildschirm wird „Konfiguration“ angezeigt.
+1. Versetzen Sie das DevKit in den Konfigurationsmodus: Halten Sie hierfür Taste „A“ gedrückt, und drücken Sie anschließend gleichzeitig einmal die Reset-Taste. Auf dem Bildschirm wird „Konfiguration“ angezeigt.
 
 2. Verwenden Sie `Cmd+P`, um `task device-upload` auszuführen.
 
@@ -177,7 +177,7 @@ Anschließend startet VS Code die Überprüfung und den Upload des Arduino-Sketc
 Das DevKit startet neu und beginnt mit der Ausführung des Codes.
 
 > [!NOTE]
-> Es kann vorkommen, dass Sie eine Fehlermeldung der Art „Fehler: AZ3166: Unbekanntes Paket“ erhalten. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht richtig aktualisiert wurde. Informationen zum Beheben dieses Fehlers finden Sie im [Abschnitt „Development“ (Entwicklung) in den häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> In einigen Fällen wird möglicherweise die Fehlermeldung „Fehler: AZ3166: Unbekanntes Paket“ angezeigt. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht richtig aktualisiert wurde. Informationen zum Beheben dieses Fehlers finden Sie im [Abschnitt „Development“ (Entwicklung) in den häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testen des Projekts
 
@@ -194,7 +194,7 @@ Nach der Initialisierung wird `Door closed` angezeigt. Wenn sich das Magnetfeld 
 Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) weiter, oder wenden Sie sich über folgende Kanäle an uns:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

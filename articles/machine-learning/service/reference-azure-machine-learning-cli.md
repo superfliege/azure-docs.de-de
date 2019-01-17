@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e16506773e38f1732a55161cdd58ffb7523602d4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bbe843f3481c6cd15f2c14386088cbb8d2d355d6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277283"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053124"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 
@@ -52,7 +52,7 @@ Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein erg�
 Um die Machine Learning-CLI-Erweiterung zu installieren, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.2-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.6-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 Klicken Sie bei Aufforderung auf `y`, um die Erweiterung zu installieren.
@@ -119,11 +119,15 @@ Die folgenden Befehle veranschaulichen, wie Sie die CLI zum Arbeiten mit Experim
     az ml project attach --experiment-name myhistory
     ```
 
-* Starten Sie eine Ausführung Ihres Experiments. Wenn Sie diesen Befehl verwenden, geben Sie ein Computeziel an. In diesem Beispiel verwendet `local` den lokalen Computer, um das Modell über das Skript `train.py` zu trainieren:
+* Starten Sie eine Ausführung Ihres Experiments. Geben Sie bei der Verwendung dieses Befehls den Namen der `.runconfig`-Datei an, die die Ausführungskonfiguration enthält. Das Computeziel verwendet die Ausführungskonfiguration, um die Trainingsumgebung für das Modell zu erstellen. In diesem Beispiel wird die Ausführungskonfiguration aus der Datei `./aml_config/myrunconfig.runconfig` geladen.
 
     ```azurecli-interactive
-    az ml run submit -c local train.py
+    az ml run submit -c myrunconfig train.py
     ```
+
+    Die `.runconfig`-Standarddateien namens `docker.runconfig` und `local.runconfig` werden erstellt, wenn Sie ein Projekt mit dem Befehl `az ml project attach` anfügen. Möglicherweise müssen Sie diese Dateien ändern, bevor Sie sie zum Trainieren eines Modells verwenden. 
+
+    Sie können eine Ausführungskonfiguration auch mit der [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)-Klasse programmgesteuert erstellen. Nach der Erstellung können Sie dann die `save()`-Methode verwenden, um die `.runconfig`-Datei zu erstellen.
 
 * Hiermit zeigen Sie eine Liste der übermittelten Experimente an:
 

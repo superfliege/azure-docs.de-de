@@ -1,5 +1,5 @@
 ---
-title: 'Data Factory-Tutorial: erste Datenpipeline | Microsoft Docs'
+title: 'Data Factory-Tutorial: Erste Datenpipeline | Microsoft-Dokumentation'
 description: In diesem Azure Data Factory-Tutorial erfahren Sie, wie Sie eine Data Factory erstellen und planen, die Daten unter Verwendung eines Hive-Skripts in einem Hadoop-Cluster verarbeitet.
 services: data-factory
 documentationcenter: ''
@@ -10,19 +10,18 @@ ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734251"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015949"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zum Transformieren von Daten mithilfe eines Hadoop-Clusters
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
 > * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,11 +32,11 @@ ms.locfileid: "45734251"
 
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Schnellstart: Erstellen einer Data Factory mithilfe von Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-dot-net.md) weiter.
 
 In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline. Die Pipeline transformiert Eingabedaten durch Ausführen des Hive-Skripts in einem Azure HDInsight (Hadoop)-Cluster in Ausgabedaten.  
 
-Dieser Artikel enthält eine Übersicht und Voraussetzungen für das Tutorial. Nach dem Erfüllen der Voraussetzungen können Sie das Tutorial mit einem der folgenden Tools/SDKs ausführen: Azure-Portal, Visual Studio, PowerShell, Resource Manager-Vorlage, REST-API. Wählen Sie eine der Optionen in der Dropdownliste am Anfang oder die Links am Ende dieses Artikels, um das Tutorial mithilfe einer der folgenden Optionen auszuführen.    
+Dieser Artikel enthält eine Übersicht und Voraussetzungen für das Tutorial. Wählen Sie nach dem Erfüllen der Voraussetzungen eines der folgenden Tools/SDKs aus, um das Tutorial durchzuarbeiten: Azure-Portal, Visual Studio, PowerShell, Resource Manager-Vorlage, REST-API. Wählen Sie eine der Optionen in der Dropdownliste am Anfang oder die Links am Ende dieses Artikels, um das Tutorial mithilfe einer der folgenden Optionen auszuführen.    
 
 ## <a name="tutorial-overview"></a>Übersicht über das Tutorial
 In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -45,7 +44,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 1. Eine **Data Factory**. Eine Data Factory kann mindestens eine Datenpipeline enthalten, die Daten verschiebt und verarbeitet. 
 
     In diesem Tutorial erstellen Sie eine Pipeline in der Data Factory. 
-2. Erstellen einer **Pipeline** Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen (Beispiele: Kopieraktivität, HDInsight Hive-Aktivität). Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript für einen HDInsight-Hadoop-Cluster ausführt. Das Skript erstellt zunächst eine Tabelle, die auf die Webprotokoll-Rohdaten in Azure Blob Storage verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
+2. Erstellen einer **Pipeline** Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen (z.B. Kopieraktivität, HDInsight Hive-Aktivität). Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript für einen HDInsight-Hadoop-Cluster ausführt. Das Skript erstellt zunächst eine Tabelle, die auf die Webprotokoll-Rohdaten in Azure Blob Storage verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
 
     In diesem Tutorial verwendet die Pipeline die Hive-Aktivität zum Transformieren von Daten durch Ausführen einer Hive-Abfrage in einem Azure HDInsight Hadoop-Cluster. 
 3. Erstellen von **verknüpften Diensten**. Sie erstellen einen verknüpften Dienst, um einen Datenspeicher oder einen Computedienst mit der Data Factory zu verknüpfen. Ein Datenspeicher wie Azure Storage hält Ein-/Ausgabedaten von Aktivitäten in der Pipeline. Ein Computedienst (etwa ein HDInsight-Hadoop-Cluster) verarbeitet/transformiert Daten.
@@ -63,7 +62,7 @@ Die Diagrammansicht der Beispiel-Data Factory, die Sie in diesem Tutorial erstel
 ![Diagrammansicht im Data Factory-Tutorial](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-In diesem Tutorial enthält der Ordner **inputdata** des Azure-Blobcontainers **adfgetstarted** eine Datei namens „input.log“. Diese Protokolldatei enthält Einträge von drei Monaten: Januar, Februar und März 2016. Hier sind die Beispielzeilen für jeden Monat in der Eingabedatei. 
+In diesem Tutorial enthält der Ordner **inputdata** des Azure-Blobcontainers **adfgetstarted** eine Datei namens „input.log“. Diese Protokolldatei enthält Einträge für drei Monate: Januar, Februar und März 2016. Hier sind die Beispielzeilen für jeden Monat in der Eingabedatei. 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 
@@ -103,7 +102,7 @@ Nach dem Erfüllen der Voraussetzungen wählen Sie eines der folgenden Tools/SDK
 Azure-Portal und Visual Studio bieten eine GUI-Methode zum Erstellen von Data Factorys. Die Optionen PowerShell, Resource Manager-Vorlage und REST-API bieten jedoch Skripting-/Programmiermethoden zum Erstellen von Data Factorys.
 
 > [!NOTE]
-> Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Sie kopiert keine Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Sie kopiert keine Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das Ausgabedataset einer Aktivität als Eingabedataset der anderen Aktivität festlegen. Ausführliche Informationen finden Sie unter [Data Factory – Planung und Ausführung](data-factory-scheduling-and-execution.md). 
 

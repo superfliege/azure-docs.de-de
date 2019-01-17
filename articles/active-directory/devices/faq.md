@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a0cfd65aa2444956336e5363d20acab61a404c68
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d1e44eae7e87a450ac5f36e621d559fca92ca74
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309177"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016153"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -180,6 +180,9 @@ Gelöschte oder deaktivierte Benutzer, die zuvor noch nicht angemeldet waren, k�
 
 - [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](troubleshoot-hybrid-join-windows-legacy.md)
  
+**F: Warum wird in der Liste mit den Azure AD-Geräten für mein in Azure AD eingebundenes Windows 10-Hybridgerät ein doppelter Azure AD-Registrierungseintrag angezeigt?**
+
+**A:** Wenn Benutzer ihr Konto den Apps auf einem in die Domäne eingebundenen Gerät hinzufügen, wird ggf. eine Frage der Art „Soll das Konto Windows hinzugefügt werden?“ angezeigt. Wenn Sie in der Aufforderung auf „Ja“ klicken, wird das Gerät bei Azure AD registriert, und der Vertrauenstyp wird auf „Bei Azure AD registriert“ festgelegt. Nachdem Sie die Azure AD-Hybrideinbindung in Ihrer Organisation aktiviert haben, wird das Gerät auch in die Azure AD-Hybridumgebung eingebunden. Aus diesem Grund werden für ein Gerät zwei Gerätestatuseinträge angezeigt. Die Azure AD-Hybrideinbindung hat aber Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Gerät wird also für alle Auswertungen in Bezug auf die Authentifizierung und den bedingten Zugriff als Azure AD-Hybrideinbindung angesehen. Sie können den Azure AD-Registrierungseintrag für das Gerät daher ohne Weiteres aus dem Azure AD-Portal löschen. Lesen Sie [diesen Abschnitt](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know) im Artikel zur Azure AD-Hybrideinbindung, um sich damit vertraut zu machen, wie Sie diesen doppelten Eintrag auf einem Computer mit Windows 10 vermeiden bzw. bereinigen. 
 
 ---
 

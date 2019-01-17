@@ -10,17 +10,16 @@ ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b74a431664faa95e8be9c9ff90970fd6e7c0ec7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048719"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020352"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Einfaches Kopieren oder Verschieben von Daten mit dem Kopier-Assistenten von Azure Data Factory
 > [!NOTE]
@@ -41,7 +40,7 @@ Mit diesem Assistenten können Sie problemlos Daten in wenigen Minuten aus einer
 > 
 > 
 
-Der Assistent ist von Beginn an für Big Data ausgelegt. Mit dem Assistenten zum Kopieren von Daten ist es einfach und effizient, Data Factory-Pipelines zu erstellen, die Hunderte von Ordnern, Dateien oder Tabellen verschieben können. Der Assistent unterstützt diese drei Funktionen: automatische Datenvorschau, Schema-Erfassung und Filtern von Daten. 
+Der Assistent ist von Beginn an für Big Data ausgelegt. Mit dem Assistenten zum Kopieren von Daten ist es einfach und effizient, Data Factory-Pipelines zu erstellen, die Hunderte von Ordnern, Dateien oder Tabellen verschieben können. Der Assistent unterstützt die folgenden drei Funktionen: Automatische Datenvorschau, Schemaerfassung und -zuordnung und Datenfilterung. 
 
 ## <a name="automatic-data-preview"></a>Automatische Datenvorschau
 Sie können mit dem Kopier-Assistenten Teile der Daten aus der jeweiligen Datenquelle überprüfen, um festzustellen, ob es sich tatsächlich um die Daten handelt, die Sie kopieren möchten. Darüber hinaus analysiert der Kopier-Assistent, wenn die Datenquelle eine Textdatei ist, diese Datei, und erfasst Trennzeichen für Zeilen und Spalten sowie Schemata automatisch. 

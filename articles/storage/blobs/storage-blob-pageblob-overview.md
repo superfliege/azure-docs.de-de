@@ -1,35 +1,35 @@
 ---
-title: Einzigartige Features von Azure-Seitenblobs | Microsoft-Dokumentation
+title: Übersicht über Azure-Seitenblobs | Microsoft-Dokumentation
 description: Eine Übersicht über Azure-Seitenblobs und deren Vorteile sowie Anwendungsfälle mit Beispielskripts.
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022687"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063930"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Einzigartige Features von Azure-Seitenblobs
+# <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
-Azure Storage verfügt über drei Arten von Blobspeicher: Blockblobs, Anfügeblobs und Seitenblobs. Blockblobs bestehen aus Blöcken und eignen sich ideal für das Speichern von Text- oder Binärdateien und zum effizienten Hochladen großer Dateien. Anfügeblobs bestehen auch aus Blöcken, sind aber für Anfügevorgänge optimiert und damit ideal für Protokollierungsszenarien. Seitenblobs bestehen aus 512-Byte-Seiten, können insgesamt 8 TB groß sein und sind für häufige wahlfreie Lese-/Schreibzugriffe vorgesehen. Seitenblobs sind die Grundlage von Azure-IaaS-Datenträgern. In diesem Artikel werden die Features und Vorteile von Seitenblobs erläutert.
+Azure Storage bietet drei Typen von Blobs: Blockblobs, Seitenblobs und Anfügeblobs. Blockblobs bestehen aus Blöcken und eignen sich ideal für das Speichern von Text- oder Binärdateien und zum effizienten Hochladen großer Dateien. Anfügeblobs bestehen auch aus Blöcken, sind aber für Anfügevorgänge optimiert und damit ideal für Protokollierungsszenarien. Seitenblobs bestehen aus 512-Byte-Seiten, können insgesamt 8 TB groß sein und sind für häufige wahlfreie Lese-/Schreibzugriffe vorgesehen. Seitenblobs sind die Grundlage von Azure-IaaS-Datenträgern. In diesem Artikel werden die Features und Vorteile von Seitenblobs erläutert.
 
 Seitenblobs sind eine Sammlung von 512-Byte-Seiten, die Lese-/Schreibzugriff auf beliebige Bytebereiche ermöglichen. Dadurch eignen sich Seitenblobs perfekt zum Speichern indexbasierter und platzsparender Datenstrukturen wie Betriebssystemdatenträger und sonstiger Datenträger für VMs und Datenbanken. Azure SQL-Datenbank verwendet Seitenblobs beispielsweise als zugrunde liegenden permanenten Speicher für seine Datenbanken. Darüber hinaus werden Seitenblobs auch häufig für Dateien mit bereichsbasierten Updates verwendet.  
 
-Schlüsselfeatures von Azure-Seitenblobs sind die REST-Schnittstelle, die Dauerhaftigkeit des zugrunde liegenden Speichers und die Fähigkeit zur nahtlosen Migration zu Azure. Diese Features werden im nächsten Abschnitt ausführlicher besprochen. Darüber hinaus werden Azure-Seitenblobs derzeit von zwei Arten von Speicher unterstützt: Storage Premium und Standardspeicher. Storage Premium wurde speziell für Workloads konzipiert, die konsistent hohe Leistung und geringe Latenz erfordern, sodass Premium-Seitenblobs für die hochleistungsfähige Speicherung von Datenbanken ideal sind.  Standardspeicher ist kostengünstiger zur Ausführung latenzunempfindlicher Workloads.
+Schlüsselfeatures von Azure-Seitenblobs sind die REST-Schnittstelle, die Dauerhaftigkeit des zugrunde liegenden Speichers und die Fähigkeit zur nahtlosen Migration zu Azure. Diese Features werden im nächsten Abschnitt ausführlicher besprochen. Darüber hinaus werden Azure-Seitenblobs derzeit von zwei Speichertypen unterstützt: Storage Premium und Storage Standard. Storage Premium wurde speziell für Workloads konzipiert, die konsistent hohe Leistung und geringe Latenz erfordern, sodass Premium-Seitenblobs für die hochleistungsfähige Speicherung von Datenbanken ideal sind.  Standardspeicher ist kostengünstiger zur Ausführung latenzunempfindlicher Workloads.
 
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
 
 In diesem Abschnitt werden einige Anwendungsfälle für Seitenblobs erläutert. Den Anfang machen Azure-IaaS-Datenträger. Azure-Seitenblobs bilden das Rückgrat der Plattform für virtuelle Datenträger für Azure-IaaS. Sowohl Azure-Datenträger für das Betriebssystem als auch für die zu speichernden Daten werden als virtuelle Datenträger implementiert, wo Daten auf der Azure Storage-Plattform persistent gespeichert und anschließend für optimale Leistung an die virtuellen Computer übermittelt werden. Azure-Datenträger liegen im [VHD-Format](https://technet.microsoft.com/library/dd979539.aspx) von Hyper-V vor und werden als [Seitenblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in Azure Storage gespeichert. Zusätzlich zur Verwendung virtueller Datenträger für Azure-IaaS-VMs ermöglichen Seitenblobs auch PaaS- und DBaaS-Szenarien. Ein Beispiel wäre etwa der Azure SQL-DB-Dienst, der derzeit Seitenblobs zum Speichern von SQL-Daten verwendet, um schnelle wahlfreie Lese-/Schreibzugriffe für die Datenbank zu ermöglichen. Ein weiteres Beispiel: Bei einem PaaS-Dienst für den Zugriff auf freigegebene Medien für Anwendungen für gemeinsame Videobearbeitung ermöglichen Seitenblobs schnellen Zugriff auf zufällige Positionen in den Medien. Außerdem ermöglichen sie schnelles und effizientes Bearbeiten und Zusammenführen derselben Medien durch mehrere Benutzer. 
 
 Für Microsoft-Erstanbieterdienste wie Azure Site Recovery und Azure Backup sowie von vielen Drittanbieterentwicklern wurden branchenführende Innovationen mithilfe der REST-Schnittstelle des Seitenblobs implementiert. Zu den einzigartigen in Azure implementierten Szenarien zählen: 
-* Anwendungsorientierte inkrementelle Momentaufnahmenverwaltung: Anwendungen können Seitenblobmomentaufnahmen und REST-APIs nutzen, um die Anwendungsprüfpunkte ohne kostspielige Datenduplizierung zu speichern. Azure Storage unterstützt lokale Momentaufnahmen für Seitenblobs, für die nicht das Kopieren des gesamten Blobs erforderlich ist. Diese öffentlichen Momentaufnahmen-APIs ermöglichen auch das Zugreifen auf und Kopieren von Deltas zwischen Momentaufnahmen.
-* Livemigration von Anwendung und Daten aus der lokalen Umgebung in die Cloud: Kopieren Sie die lokalen Daten, und schreiben Sie unter Verwendung von REST-APIs direkt in ein Azure-Seitenblob, während der lokale virtuelle Computer weiterhin ausgeführt wird. Sobald das Ziel erreicht ist, können Sie schnell ein Failover zu der Azure-VM ausführen, die die Daten verwendet. Dies ermöglicht die Migration Ihrer virtuellen Computer und virtuellen Datenträger vom lokalen Standort zur Cloud mit minimaler Ausfallzeit, da die Datenmigration im Hintergrund durchgeführt wird, während Sie weiterhin den virtuellen Computer verwenden. Die für das Failover erforderliche Ausfallzeit ist kurz (wenige Minuten).
+* Anwendungsorientierte inkrementelle Momentaufnahmeverwaltung: Anwendungen können Momentaufnahmen von Seitenblobs und REST-APIs nutzen, um die Anwendungsprüfpunkte ohne kostspielige Datenduplizierung zu speichern. Azure Storage unterstützt lokale Momentaufnahmen für Seitenblobs, für die nicht das Kopieren des gesamten Blobs erforderlich ist. Diese öffentlichen Momentaufnahmen-APIs ermöglichen auch das Zugreifen auf und Kopieren von Deltas zwischen Momentaufnahmen.
+* Livemigration der Anwendung und Daten aus der lokalen Umgebung zur Cloud: Kopieren Sie die lokalen Daten, und schreiben Sie mithilfe von REST-APIs direkt in ein Azure-Seitenblob, während die lokale VM weiterhin ausgeführt wird. Sobald das Ziel erreicht ist, können Sie schnell ein Failover zu der Azure-VM ausführen, die die Daten verwendet. Dies ermöglicht die Migration Ihrer virtuellen Computer und virtuellen Datenträger vom lokalen Standort zur Cloud mit minimaler Ausfallzeit, da die Datenmigration im Hintergrund durchgeführt wird, während Sie weiterhin den virtuellen Computer verwenden. Die für das Failover erforderliche Ausfallzeit ist kurz (wenige Minuten).
 * [SAS-basierter](../common/storage-dotnet-shared-access-signature-part-1.md) freigegebener Zugriff, der Szenarien wie z.B. mehrere Lese- und einzelne Schreibvorgänge mit Unterstützung für Gleichzeitigkeitssteuerung ermöglicht.
 
 ## <a name="page-blob-features"></a>Features für Seitenblobs

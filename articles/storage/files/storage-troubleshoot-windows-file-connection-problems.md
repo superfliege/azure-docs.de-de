@@ -6,15 +6,15 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744233"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023089"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -261,6 +261,15 @@ Um dieses Problem zu beheben, passen Sie den Registrierungswert **DirectoryCache
  
 Sie können den Wert beispielsweise auf 0x100000 festlegen und überprüfen, ob sich die Leistung verbessert.
 
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fehler „AadDsTenantNotFound“ beim Aktivieren der Azure Active Directory-Authentifizierung für Azure Files mit der Fehlermeldung „Unable to locate active tenants with tenant Id aad-tenant-id“ (Es wurden keine aktiven Mandanten mit der Mandanten-ID „aad-tenant-id“ gefunden)
+
+### <a name="cause"></a>Ursache
+
+Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure Active Directory-Authentifizierung (AAD) für Azure Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
+
+### <a name="solution"></a>Lösung
+
+Aktivieren Sie AAD DS im AAD-Mandanten des Abonnements, in dem Ihr Speicherkonto bereitgestellt ist. Sie benötigen Administratorrechte für den AAD-Mandanten, um eine verwaltete Domäne zu erstellen. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

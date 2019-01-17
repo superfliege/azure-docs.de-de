@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 01/04/2019
 ms.author: danlep
-ms.openlocfilehash: a1644f68465cffa8cce27257bb91100c111af8a1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b18638057def03a02024200edb157e5caf08a669
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857770"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065170"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Löschen von Containerimages in Azure Container Registry
 
@@ -60,7 +60,7 @@ In einer privaten Registrierung wie Azure Container Registry enthält der Imagen
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
 ```
 
-Bewährte Methoden zum Tagging finden Sie im Blogbeitrag [Docker Tagging: Best practices for tagging and versioning docker images][tagging-best-practices] (Docker-Tagging: Best Practices für Tagging und Versionsverwaltung von Docker-Images) auf MSDN.
+Bewährte Methoden für die Imagemarkierung finden Sie im Blogbeitrag [Docker Tagging: Best practices for tagging and versioning docker images][tagging-best-practices] (Docker-Markierung: Bewährte Methoden für die Markierung und Versionsverwaltung von Docker-Images) auf MSDN.
 
 ### <a name="layer"></a>Ebene
 
@@ -129,9 +129,9 @@ $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea
 
 Sie haben mehrere Möglichkeiten, die Imagedaten aus Ihrer Containerregistrierung zu löschen:
 
-* Löschen eines [Repositorys](#delete-repository): Löscht alle Bilder und alle eindeutigen Ebenen innerhalb des Repositorys.
-* Löschen nach [Tag](#delete-by-tag): Löscht ein Image, das Tag, alle eindeutigen Ebenen, die auf das Bild verweisen, und alle anderen Tags, die dem Bild zugeordnet sind.
-* Löschen nach [Manifest-Digest](#delete-by-manifest-digest): Löscht ein Image, alle eindeutigen Ebenen, die auf das Bild verweisen, und alle Tags, die dem Bild zugeordnet sind.
+* Löschen eines [Repositorys](#delete-repository): Löscht alle Images und alle eindeutigen Ebenen innerhalb des Repositorys.
+* Löschen nach [Tag](#delete-by-tag): Löscht ein Image, das Tag, alle eindeutigen Ebenen, die auf das Image verweisen, und alle anderen Tags, die dem Image zugeordnet sind.
+* Löschen nach [Manifest-Digest](#delete-by-manifest-digest): Löscht ein Image, alle eindeutigen Ebenen, die auf das Image verweisen, und alle Tags, die dem Image zugeordnet sind.
 
 ## <a name="delete-repository"></a>Löschen des Repositorys
 
@@ -239,20 +239,20 @@ Wie im Abschnitt [Manifest-Digest](#manifest-digest) werden beim Pushen eines ve
      },
      {
        "digest": "sha256:d2bdc0c22d78cde155f53b4092111d7e13fe28ebf87a945f94b19c248000ceec",
-       "tags": null,
+       "tags": [],
        "timestamp": "2018-07-11T21:32:21.1400513Z"
      }
    ]
    ```
 
-Wie Sie in der Ausgabe des letzten Schritts in der Sequenz sehen können, ist nun ein verwaistes Manifest mit der `"tags"`-Eigenschaft `null` entstanden. Dieses Manifest ist weiterhin in der Registrierung vorhanden, zusammen mit eindeutigen Datenebenen, auf die es verweist. **Um solche verwaisten Images und die zugehörigen Ebenendaten zu löschen, müssen Sie nach Manifest-Digest löschen**.
+Wie Sie in der Ausgabe des letzten Schritts in der Sequenz sehen können, ist nun ein verwaistes Manifest vorhanden, dessen `"tags"`-Eigenschaft ein leeres Array ist. Dieses Manifest ist weiterhin in der Registrierung vorhanden, zusammen mit eindeutigen Datenebenen, auf die es verweist. **Um solche verwaisten Images und die zugehörigen Ebenendaten zu löschen, müssen Sie nach Manifest-Digest löschen**.
 
 ### <a name="list-untagged-images"></a>Auflisten von Images ohne Tags
 
 Sie können alle nicht markierten Images in Ihrem Repository mit dem folgenden Azure-CLI-Befehl auflisten. Ersetzen Sie `<acrName>` und `<repositoryName>` durch entsprechende Werte für Ihre Umgebung.
 
 ```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName>  --query "[?tags==null].digest"
+az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?!(tags[?'*'])].digest"
 ```
 
 ### <a name="delete-all-untagged-images"></a>Löschen aller Images ohne Tags
@@ -283,7 +283,7 @@ REPOSITORY=myrepository
 # Delete all untagged (orphaned) images
 if [ "$ENABLE_DELETE" = true ]
 then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags==null].digest" -o tsv \
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?!(tags[?'*'])].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
     echo "No data deleted. Set ENABLE_DELETE=true to enable image deletion."
@@ -310,7 +310,7 @@ $registry = "myregistry"
 $repository = "myrepository"
 
 if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags==null].digest" -o tsv `
+    az acr repository show-manifests --name $registry --repository $repository --query "[?!(tags[?'*'])].digest" -o tsv `
     | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
 } else {
     Write-Host "No data deleted. Set `$enableDelete = `$TRUE to enable image deletion."

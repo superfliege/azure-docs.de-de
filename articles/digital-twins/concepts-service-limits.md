@@ -1,19 +1,19 @@
 ---
 title: Diensteinschränkungen der öffentlichen Vorschauversion von Azure Digital Twins | Microsoft-Dokumentation
-description: Grundlegendes zu den Diensteinschränkungen der Public Preview von Azure Digital Twins
+description: Grundlegendes zu den Diensteinschränkungen der Public Preview von Azure Digital Twins.
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1e7b6ed7c401bed741142dfc02efc7990cf67f6e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961754"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118813"
 ---
 # <a name="public-preview-service-limits"></a>Diensteinschränkungen der öffentlichen Vorschauversion
 
@@ -35,21 +35,25 @@ In der Public Preview kann jedes Azure-Abonnement jeweils genau eine Azure Digit
 
 Der Reihe nach kann jede Azure Digital Twins-Instanz Folgendes haben:
 
-- Eine **IoTHub**-Ressource
-- Einen **EventHub**-Endpunkt für den Ereignistyp **DeviceMessage**
+- Genau eine **IoTHub**-Ressource
+- Genau einen **EventHub**-Endpunkt für den Ereignistyp **DeviceMessage**
 - Bis zu drei **EventHub**-, **ServiceBus**- oder **EventGrid**-Endpunkte der Ereignistypen **SensorChange**, **SpaceChange**, **TopologyOperation** oder **UdfCustom**
 
-## <a name="management-api-limits"></a>Verwaltungs-API-Grenzwerte
+> [!NOTE]
+> Einige Parameter, die normalerweise beim Erstellen der obigen Azure IoT-Entitäten definiert werden, sind während der Public Preview-Phase nicht erforderlich.
+> - Die aktuellen API-Spezifikationen finden Sie in der [Swagger-Referenzdokumentation](./how-to-use-swagger.md).
 
-Die Anforderungsanzahlgrenzwerte für eine Verwaltungs-API sind wie folgt:
+## <a name="azure-digital-twins-management-api-limits"></a>Einschränkungen der Azure Digital Twins-Verwaltungs-API
 
-- 100 Anforderungen pro Sekunde an die Verwaltungs-API
-- Bis zu 1.000 Objekte, die von einer einzelnen Verwaltungs-API-Abfrage zurückgegeben werden 
+Die Grenzwerte für die Anforderungsanzahl Ihrer Azure Digital Twins-Verwaltungs-API lauten wie folgt:
+
+- 100 Anforderungen pro Sekunde an die Azure Digital Twins-Verwaltungs-API
+- Bis zu 1.000 Objekte, die von einer einzelnen Azure Digital Twins-Verwaltungs-API-Abfrage zurückgegeben werden
 
 > [!IMPORTANT]
 > Beim Überschreiten des Grenzwerts von 1.000 Objekten tritt ein Fehler auf, und Sie müssen die Abfrage vereinfachen.
 
-## <a name="udf-rate-limits"></a>Grenzwerte für die Aufrufanzahl von benutzerdefinierten Funktionen
+## <a name="user-defined-functions-rate-limits"></a>Ratenbegrenzungen für benutzerdefinierte Funktionen
 
 Es gelten die folgenden Grenzwerte für die Gesamtanzahl der Aufrufe, die von benutzerdefinierten Funktionen an die Azure Digital Twins-Instanz gesendet werden:
 
@@ -59,7 +63,7 @@ Es gelten die folgenden Grenzwerte für die Gesamtanzahl der Aufrufe, die von be
 > [!NOTE]
 > Die folgenden Aktionen führen ggf. dazu, dass temporär zusätzliche Anzahlgrenzwerte angewendet werden:
 > - Bearbeitungen an den Metadaten von Topologieobjekten
-> - Updates von Definitionen benutzerdefinierter Funktionen
+> - Aktualisierungen der Definition der benutzerdefinierten Funktion
 > - Erstmaliges Senden von Telemetriedaten von Geräten
 
 ## <a name="device-telemetry-limits"></a>Grenzwerte für Gerätetelemetrie
@@ -70,4 +74,4 @@ Die folgenden Grenzwerte deckeln die Gesamtanzahl aller Nachrichten, die Ihre Ge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um ein Azure Digital Twins-Beispiel auszuprobieren, wechseln Sie zu [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](./quickstart-view-occupancy-dotnet.md).
+- Um ein Azure Digital Twins-Beispiel auszuprobieren, wechseln Sie zu [Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins](./quickstart-view-occupancy-dotnet.md).

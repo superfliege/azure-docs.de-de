@@ -9,20 +9,19 @@ ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050317"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020845"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-usql-activity.md)
 > * [Version 2 (aktuelle Version)](../transform-data-using-data-lake-analytics.md)
 
@@ -49,8 +48,8 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| **type** |Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics**fest. |Ja |
-| **accountName** |Name des Azure Data Lake Analytics-Kontos. |Ja |
+| **type** |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |JA |
+| **accountName** |Name des Azure Data Lake Analytics-Kontos. |JA |
 | **dataLakeAnalyticsUri** |URI des Azure Data Lake Analytics-Kontos. |Nein  |
 | **subscriptionId** |Azure-Abonnement-ID |Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
 | **resourceGroupName** |Azure-Ressourcengruppenname |Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
@@ -65,9 +64,9 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Geben Sie die Client-ID der Anwendung an. | Ja |
-| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an. | Ja |
-| **tenant** | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
+| **servicePrincipalId** | Geben Sie die Client-ID der Anwendung an. | JA |
+| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an. | JA |
+| **tenant** | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | JA |
 
 **Beispiel: Dienstprinzipalauthentifizierung**
 ```json
@@ -93,8 +92,8 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen f�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| **authorization** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
-| **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
+| **authorization** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | JA |
+| **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | JA |
 
 **Beispiel: Authentifizierung mit Benutzeranmeldeinformationen**
 ```json
@@ -115,7 +114,7 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen f�
 ```
 
 #### <a name="token-expiration"></a>Tokenablauf
-Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
+Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Möglicherweise wird folgende Fehlermeldung angezeigt, wenn das **Authentifizierungstoken abläuft**: Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z
 
 | Benutzertyp | Läuft ab nach |
 |:--- |:--- |
@@ -149,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Fügen Sie für die WindowsFormsWebAuthenticationDialog-Klasse einen Verweis auf Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll hinzu. 
+Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Fügen Sie einen Verweis auf Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll für die WindowsFormsWebAuthenticationDialog-Klasse hinzu. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität für Data Lake Analytics. Die Aktivitätsdefinition verwendet einen Verweis auf den zuvor erstellten mit Azure Data Lake Analytics verknüpften Dienst.   
@@ -209,8 +208,8 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft            | BESCHREIBUNG                              | Erforderlich                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. | Ja                                      |
-| linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | Ja                                      |
+| type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. | JA                                      |
+| linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | JA                                      |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Nein (wenn script verwendet wird)                   |
 | scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Nein (wenn script verwendet wird)                   |
 | script              | Geben Sie anstelle von scriptPath und scriptLinkedService ein Inlineskript an. Beispiel: `"script": "CREATE DATABASE test"`. | Nein (wenn scriptPath and scriptLinkedService verwendet werden) |
@@ -218,7 +217,7 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein                                        |
 | Parameter          | Parameter für das U-SQL-Skript          | Nein                                        |
 | runtimeVersion      | Die Runtime-Version der zu verwendenden U-SQL-Engine | Nein                                        |
-| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen:</p> <ul><li>**Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt.</li><li>**Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.</li><li>**SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist.</li></ul><p>Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. </p> | Nein                                        |
+| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen:</p> <ul><li>**Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen durchgeführt.</li><li>**Full:** Es wird die vollständige Kompilierung durchgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.</li><li>**SingleBox:** Es wird die vollständige Kompilierung durchgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist.</li></ul><p>Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. </p> | Nein                                        |
 
 Die Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script) . 
 

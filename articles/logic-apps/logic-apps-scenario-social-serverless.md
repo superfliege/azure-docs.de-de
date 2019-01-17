@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229416"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061056"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
-Azure bietet serverlose Tools, mit denen Sie Apps schnell erstellen und in der Cloud hosten können, ohne sich um die Infrastruktur kümmern zu müssen. In diesem Tutorial können Sie ein Dashboard erstellen, das bei Kundenfeedback ausgelöst wird, Feedback mittels Machine Learning analysiert und Erkenntnisse in einer Quelle wie Power BI oder Azure Data Lake veröffentlicht.
+Azure bietet [serverlose](https://azure.microsoft.com/solutions/serverless/) Tools, mit denen Sie Apps schnell erstellen und in der Cloud hosten können, ohne sich um die Infrastruktur kümmern zu müssen. In diesem Tutorial können Sie ein Dashboard erstellen, das bei Kundenfeedback ausgelöst wird, Feedback mittels Machine Learning analysiert und Erkenntnisse in einer Quelle wie Power BI oder Azure Data Lake veröffentlicht.
 
 Für diese Lösung verwenden Sie die folgenden Azure-Schlüsselkomponenten für serverlose Apps: [Azure Functions](https://azure.microsoft.com/services/functions/) und [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps stellt ein serverloses Workflowmodul in der Cloud bereit, sodass Sie Orchestrierungen für serverlose Komponenten erstellen und eine Verbindung mit mehr als 200 Diensten und APIs herstellen können. Azure Functions ermöglicht serverloses Computing in der Cloud. Diese Lösung verwendet Azure Functions, um Kundentweets anhand von vordefinierten Schlüsselwörtern zu kennzeichnen.
@@ -34,7 +34,7 @@ Sie können [die gesamte Lösung in Visual Studio erstellen](../logic-apps/quick
 
    Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie die [Schnellstartanleitung für das Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) oder [Quickstart: Automate tasks and processes with Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) (Schnellstart: Automatisieren von Aufgaben und Prozessen mit Azure Logic Apps – Visual Studio).
 
-2. Suchen Sie im Logik-App-Designer nach dem Twitter-Trigger mit der Aktion **Wenn ein neuer Tweet gepostet wird**, und fügen Sie ihn hinzu.
+2. Suchen Sie im Logik-App-Designer nach dem Twitter-Trigger mit der folgenden Aktion: **Wenn ein neuer Tweet gepostet wird**
 
 3. Richten Sie den Trigger so ein, dass er basierend auf einem Schlüsselwort oder Hashtag auf Tweets lauscht.
 
@@ -60,10 +60,10 @@ Um die Stimmungslage zu erkennen, die sich hinter einem Text verbirgt, können S
 
 Nachdem Sie die Tweetdaten und Erkenntnisse zum Tweet abgerufen haben, können Sie mehrere andere relevante Connectors und deren Aktionen verwenden:
 
-* **Power BI – Zeilen zum Streamingdataset hinzufügen**: Eingehende Tweets in einem Power BI-Dashboard anzeigen.
-* **Azure Data Lake – Datei anfügen**: Kundendaten zu einem Azure Data Lake-Dataset hinzufügen, um sie in Analyseaufträge einzubinden.
-* **SQL – Zeilen hinzufügen**: Daten zur späteren Wiederverwendung in einer Datenbank speichern.
-* **Slack – Nachricht senden**: Einen Slack-Kanal über negatives Feedback benachrichtigen, das möglicherweise eine Aktion erfordert.
+* **Power BI – Zeilen zum Streamingdataset hinzufügen**: Eingehende Tweets in einem Power BI-Dashboard anzeigen
+* **Azure Data Lake – Datei anfügen**: Kundendaten zu einem Azure Data Lake-Dataset hinzufügen, um sie in Analyseaufträge einzubinden
+* **SQL – Zeilen hinzufügen**: Daten zur späteren Wiederverwendung in einer Datenbank speichern
+* **Slack – Nachricht senden**: Einen Slack-Kanal über negatives Feedback benachrichtigen, das möglicherweise eine Aktion erfordert
 
 Sie können auch eine Azure-Funktion erstellen und hinzufügen, um eine benutzerdefinierte Verarbeitung Ihrer Daten auszuführen. 
 

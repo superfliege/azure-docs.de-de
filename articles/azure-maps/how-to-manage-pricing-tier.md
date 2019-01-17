@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 87c8816297b5cb01f489ceea4233af159b13835a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f08f4cc74c37ccbbcab071b82f67f912e9fd9fd1
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52854552"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065323"
 ---
-# <a name="how-to-manage-pricing-tier-of-your-azure-maps-account"></a>Verwalten des Tarifs Ihres Azure Maps-Kontos
+# <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Verwalten des Tarifs Ihres Azure Maps-Kontos
 
 Sie können den Tarif Ihres Azure Maps-Kontos über das Azure-Portal verwalten. Nach dem Erstellen eines [Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) können Sie den Tarif Ihres Kontos anzeigen oder ändern.
 
-Weitere Informationen zur Auswahl des richtigen Tarifs finden Sie unter dem entsprechenden Thema zum [Auswählen des richtigen Tarifs](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
+Informieren Sie sich über die [Auswahl des richtigen Tarifs in Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
 
-## <a name="view-pricing-tier"></a>Anzeigen des Tarifs
+## <a name="view-your-pricing-tier"></a>Anzeigen des Tarifs
 
 Zur Anzeige des gewählten Tarifs navigieren Sie im Menü „Einstellungen“ zur Option **Tarif**.
 
 ![Anzeigen des gewählten Tarifs](./media/how-to-manage-pricing-tier/view-pricing-tier.png)
 
-## <a name="change-pricing-tier"></a>Ändern des Tarifs
+## <a name="change-a-pricing-tier"></a>Ändern eines Tarifs
 
-Nach dem Erstellen Ihres Azure Maps-Kontos können Sie eine höhere oder niedrigere Tarifstufe für dieses Konto auswählen. Navigieren Sie zum Herauf- bzw. Herabstufen im Menü „Einstellungen“ zur Option **Tarif**, und wählen Sie den Tarif aus, der nicht hervorgehoben ist. Klicken Sie auf die Schaltfläche „Speichern“, um die gewünschte Tarifoption zu speichern.
+Nachdem Sie Ihr Azure Maps-Konto erstellt haben, können Sie einen höheren oder niedrigeren Tarif für dieses Konto auswählen. Wählen Sie zum Herauf- oder Herabstufen im Menü „Einstellungen“ die Option **Tarif** aus. Wählen Sie den Tarif aus, der nicht hervorgehoben ist. Klicken Sie auf die Schaltfläche **Speichern**, um die ausgewählte Tarifoption zu speichern.
 
-![Ändern des Tarifs](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
+![Ändern eines Tarifs](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
-> [!Note]
+> [!NOTE]
 > Wenn Sie den Tarif für Ihr Azure Maps-Konto herauf- oder herabstufen, müssen Sie keine neuen Abonnementschlüssel generieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure Maps-Konto anzeigen:
 
-> [!div class="nextstepaction"]
+> [!div class="nextstepaction"] 
 > [Anzeigen von Nutzungsmetriken](./how-to-view-api-usage.md)

@@ -9,17 +9,16 @@ ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242839"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015830"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -63,13 +62,13 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
     ![Zum Startmenü hinzufügen](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data factory name ADFTutorialOnPremDF is not available** ändern Sie den Namen der Data Factory (z. B.in „IhrNameADFTutorialOnPremDF“) und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
+   > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der folgenden Fehlermeldung: **Data factory name ADFTutorialOnPremDF is not available**. Ändern Sie den Namen der Data Factory (z.B.in „IhrNameADFTutorialOnPremDF“), und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
    >
    > Der Name der Data Factory kann in Zukunft als **DNS**-Name registriert und so öffentlich sichtbar gemacht werden.
    >
    >
 4. Wählen Sie das **Azure-Abonnement** , in dem die Data Factory erstellt werden soll.
-5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine Ressourcengruppe. Erstellen Sie für das Tutorial eine Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup**.
+5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine Ressourcengruppe. Erstellen Sie für das Tutorial eine Ressourcengruppe mit dem folgenden Namen: **ADFTutorialResourceGroup**.
 6. Klicken Sie auf der Seite **Neue Data Factory** auf **Erstellen**.
 
    > [!IMPORTANT]
@@ -106,7 +105,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 
     ![Seite „Gateway konfigurieren“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Dies ist die einfachste Möglichkeit (One-Click) zum Herunterladen, Installieren, Konfigurieren und Registrieren des Gateways in einem einzigen Schritt. Sie können sehen, dass die Anwendung **Microsoft Datenverwaltungsgateway – Konfigurations-Manager** auf Ihrem Computer installiert ist. Die ausführbare Datei **ConfigManager.exe** befindet sich auch im Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
+    Dies ist die einfachste Möglichkeit (One-Click) zum Herunterladen, Installieren, Konfigurieren und Registrieren des Gateways in einem einzigen Schritt. Sie können sehen, dass die Anwendung **Microsoft Datenverwaltungsgateway – Konfigurations-Manager** auf Ihrem Computer installiert ist. Im folgenden Ordner ist auch die ausführbare Datei **ConfigManager.exe** enthalten: **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
 
     Sie können das Gateway auch manuell über die Links auf dieser Seite herunterladen und installieren und mit dem Schlüssel im Textfeld **NEUER SCHLÜSSEL** registrieren.
 
@@ -119,7 +118,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 5. Warten Sie einige Minuten, oder warten Sie, bis die folgende Benachrichtigung angezeigt wird:
 
     ![Gatewayinstallation erfolgreich](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf Ihrem Computer. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen. Die ausführbare Datei **ConfigManager.exe** befindet sich auch im Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**
+6. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf Ihrem Computer. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen. Im folgenden Ordner ist auch die ausführbare Datei **ConfigManager.exe** enthalten: **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
 
     ![Gatewaykonfigurations-Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. Vergewissern Sie sich, dass die Meldung `adftutorialgateway is connected to the cloud service` angezeigt wird. Die Statusleiste im unteren Bereich zeigt **Verbunden mit Clouddienst** sowie ein **grünes Häkchen** an.
@@ -281,7 +280,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
    * **folderPath** ist auf **adftutorial/outfromonpremdf** festgelegt, wobei „outfromonpremdf“ der Ordner im „adftutorial“-Container ist. ErsteIlen Sie den Container **adftutorial** , falls er nicht bereits vorhanden ist.
    * Die Verfügbarkeit (**availability**) ist auf **hourly**, (**frequency** auf **hour** und **interval** auf **1**) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
 
-   Wenn Sie keinen **fileName** für eine **Ausgabetabelle** angeben, werden die generierten Dateien in **folderPath** im folgenden Format benannt: Data.<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt).
+   Wenn Sie kein **fileName**-Element für eine **Ausgabetabelle** angeben, werden die generierten Dateien unter **folderPath** nach dem folgenden Format benannt: Data.<Guid>.txt (z.B. Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt).
 
    Um **folderPath** und **fileName** dynamisch basierend auf der **SliceStart**-Zeit festzulegen, verwenden Sie die Eigenschaft „partitionedBy“. Im folgenden Beispiel verwendet folderPath die Angaben für Jahr, Monat und Tag aus „SliceStart“ (Startzeit des zu verarbeitenden Slices) und „fileName“ die Angabe für Stunde aus „SliceStart“. Wenn beispielsweise ein Slice für den Zeitpunkt "2014-10-20T08:00:00" erzeugt wird, wird "folderName" auf "wikidatagateway/wikisampledataout/2014/10/20" und "filName" auf "08.csv" festgelegt.
 
@@ -363,7 +362,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
    * Im Abschnitt **typeProperties** ist **SqlSource** als **Quelltyp** und **BlobSink** als **Senkentyp** angegeben.
    * Die SQL-Abfrage `select * from emp` ist für die **sqlReaderQuery**-Eigenschaft von **SqlSource** angegeben.
 
-   Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
+   Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel:  2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet.
 
    Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9/9/9999** an.
 

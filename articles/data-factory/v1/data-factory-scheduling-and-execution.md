@@ -9,17 +9,16 @@ ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a70c3ddb624639411dbee961b1c4d59ac1277147
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054601"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016085"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory – Planung und Ausführung
 > [!NOTE]
@@ -62,7 +61,7 @@ Die Eigenschaft **scheduler** für eine Aktivität ist optional. Wenn Sie diese 
 ## <a name="specify-schedule-for-a-dataset"></a>Festlegen des Zeitplans für ein Dataset
 Eine Aktivität in einer Data Factory-Pipeline kann über null oder mehr **Eingabedatasets** verfügen und ein oder mehrere Ausgabedatasets erstellen. Für eine Aktivität können Sie den Rhythmus angeben, mit dem die Eingabedaten verfügbar sind, bzw. die Ausgabedaten, die mithilfe des **availability**-Abschnitts in den Datasetdefinitionen erzeugt werden. 
 
-**Frequency** im Abschnitt **availability** gibt die Zeiteinheit an. Die zulässigen Werte für „frequency“ sind: „Minute“, „Hour“, „Day“, „Week“ und „Month“. Die **interval**-Eigenschaft im Abschnitt „availability“ gibt einen Multiplikator für „frequency“ an. Beispiel: Wenn für ein Ausgabedataset „frequency“ auf „Day“ und „interval“ auf „1“ festgelegt ist, werden die Ausgabedaten täglich generiert. Wenn Sie für „frequency“ „Minute“ festlegen, sollten Sie für „interval“ mindestens „15“ festlegen. 
+**Frequency** im Abschnitt **availability** gibt die Zeiteinheit an. Die zulässigen Werte für die Häufigkeit sind: „Minute“, „Hour“, „Day“, „Week“ und „Month“. Die **interval**-Eigenschaft im Abschnitt „availability“ gibt einen Multiplikator für „frequency“ an. Beispiel: Wenn für ein Ausgabedataset „frequency“ auf „Day“ und „interval“ auf „1“ festgelegt ist, werden die Ausgabedaten täglich generiert. Wenn Sie für „frequency“ „Minute“ festlegen, sollten Sie für „interval“ mindestens „15“ festlegen. 
 
 Im folgenden Beispiel ist das Eingabedataset stündlich verfügbar, und die Ausgabedaten werden stündlich erzeugt (`"frequency": "Hour", "interval": 1`). 
 
@@ -173,7 +172,7 @@ Jede Einheit von Daten, die von einer Aktivitätsausführung genutzt oder produz
 
 Im Diagramm sind die stündlichen Datenslices für das Eingabe- und Ausgabedataset dargestellt. Das Diagramm enthält drei Eingabeslices, die bereit für die Verarbeitung sind. Die Aktivität von 10 bis 11 Uhr ist in Bearbeitung und produziert den Ausgabeslice für „10-11 AM“. 
 
-Sie können im JSON-Code des Datasets über die Variablen [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) und [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables) auf das Zeitintervall des aktuellen Slices zugreifen. Auf ähnliche Weise können Sie mit WindowStart und WindowEnd auf das Zeitintervall zugreifen, das einem Aktivitätsfenster zugeordnet ist. Der Zeitplan einer Aktivität muss dem Zeitplan des Ausgabedatasets für die Aktivität entsprechen. Daher sind die Werte von SliceStart und SliceEnd jeweils mit den Werten von WindowStart und WindowEnd identisch. Weitere Informationen zu diesen Variablen finden Sie in den Artikeln zu [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md#data-factory-system-variables).  
+Sie können im JSON-Code des Datasets über die folgenden Variablen auf das Zeitintervall des aktuellen Slice zugreifen: [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) und [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Auf ähnliche Weise können Sie mit WindowStart und WindowEnd auf das Zeitintervall zugreifen, das einem Aktivitätsfenster zugeordnet ist. Der Zeitplan einer Aktivität muss dem Zeitplan des Ausgabedatasets für die Aktivität entsprechen. Daher sind die Werte von SliceStart und SliceEnd jeweils mit den Werten von WindowStart und WindowEnd identisch. Weitere Informationen zu diesen Variablen finden Sie in den Artikeln zu [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md#data-factory-system-variables).  
 
 Sie können diese Variablen für unterschiedliche Zwecke im JSON-Code der Aktivität verwenden. Beispielsweise können Sie sie zum Auswählen von Daten aus Eingabe- und Ausgabedatasets verwenden, die Zeitreihendaten darstellen (Beispiel: 8:00 Uhr bis 9:00 Uhr). In diesem Beispiel werden **WindowStart** und **WindowEnd** auch verwendet, um relevante Daten für eine Aktivitätsausführung auszuwählen und in ein Blob mit entsprechendem **folderPath** zu kopieren. Der Ordnerpfad ( **folderPath** ) ist so parametrisiert, dass für jede Stunde ein separater Ordner angelegt wird.  
 
@@ -187,11 +186,11 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
-| interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>Frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/><b>Hinweis:</b> Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |Ja |Nicht verfügbar |
+| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |JA |Nicht verfügbar |
+| interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>Frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/><b>Hinweis</b>: Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |JA |Nicht verfügbar |
 | style |Gibt an, ob der Slice am Anfang/Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Wenn „Frequency“ auf „Month“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn „style“ auf „StartOfInterval“ festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn „Frequency“ auf „Day“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn „Frequency“ auf „Hour“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein  |EndOfInterval |
-| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/><b>Hinweis</b>: Wenn AnchorDateTime Datumsteile aufweist, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn <b>interval</b> z.B. auf <b>hourly</b> festgelegt ist („frequency: hour“ und „interval: 1“) und <b>AnchorDateTime</b> Angaben für <b>Minuten und Sekunden</b> enthält, werden die <b>Minuten- und Sekundenteile</b> von AnchorDateTime ignoriert. |Nein  |01/01/0001 |
-| offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/><b>Hinweis:</b> Wenn sowohl „anchorDateTime“ als auch „offset“ angegeben werden, ist das Ergebnis die kombinierte Verschiebung. |Nein  |Nicht verfügbar |
+| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/><b>Hinweis</b>: Wenn AnchorDateTime Datumsteile aufweist, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn <b>interval</b> beispielsweise auf <b>hourly</b> festgelegt ist (frequency: hour, interval: 1) und das <b>AnchorDateTime</b>-Element <b>Minuten und Sekunden</b> enthält, wird der Teil mit den <b>Minuten und Sekunden</b> von AnchorDateTime ignoriert. |Nein  |01/01/0001 |
+| offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/><b>Hinweis</b>: Wenn sowohl „anchorDateTime“ als auch „offset“ angegeben werden, ist das Ergebnis die kombinierte Verschiebung. |Nein  |Nicht verfügbar |
 
 ### <a name="offset-example"></a>Beispiel zu Offset
 Standardmäßig beginnen Slices täglich (`"frequency": "Day", "interval": 1`) um 00:00 Uhr UTC-Zeit (Mitternacht). Wenn die Startzeit 6:00 Uhr UTC-Zeit sein soll, legen Sie den Versatz wie im folgenden Codeausschnitt gezeigt fest: 
@@ -271,12 +270,12 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann,
 
 | Eigenschaft | Zulässige Werte | Standardwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| Parallelität |Ganze Zahl  <br/><br/>Höchstwert: 10 |1 |Anzahl von gleichzeitigen Ausführungen der Aktivität.<br/><br/>Legt die Anzahl der parallelen Ausführungen einer Aktivität fest, die für verschiedene Slices stattfinden können. Wenn eine Aktivität beispielsweise eine große Menge verfügbarer Daten durchlaufen muss, kann die Datenverarbeitung durch einen höheren Parallelitätswert beschleunigt werden. |
+| Parallelität |Ganze Zahl  <br/><br/>Maximalwert: 10 |1 |Anzahl von gleichzeitigen Ausführungen der Aktivität.<br/><br/>Legt die Anzahl der parallelen Ausführungen einer Aktivität fest, die für verschiedene Slices stattfinden können. Wenn eine Aktivität beispielsweise eine große Menge verfügbarer Daten durchlaufen muss, kann die Datenverarbeitung durch einen höheren Parallelitätswert beschleunigt werden. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Bestimmt die Reihenfolge der Datenslices, die verarbeitet werden.<br/><br/>Nehmen Sie beispielsweise an, Sie haben zwei Slices (einen um 16:00 Uhr und einen weiteren um 17:00 Uhr), und beide warten auf ihre Ausführung. Wenn Sie „executionPriorityOrder“ auf „NewestFirst“ setzen, wird der Slice von 17 Uhr zuerst verarbeitet. Wenn Sie „executionPriorityOrder“ auf „OldestFirst“ festlegen, wird der Slice von 16 Uhr verarbeitet. |
 | retry |Ganze Zahl <br/><br/>Höchstwert ist 10. |0 |Anzahl der Wiederholungsversuche, bevor die Datenverarbeitung für den Slice als Fehler markiert wird. Die Ausführung der Aktivitäten für einen Datenslice wird bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt. Die Wiederholung erfolgt so bald wie möglich nach dem Fehler. |
 | timeout |Zeitraum |00:00:00 |Timeout für die Aktivität. Beispiel: 00:10:00 (Timeout nach 10 Minuten)<br/><br/>Wenn kein Wert oder 0 angegeben wird, ist das Zeitlimit unendlich.<br/><br/>Wenn die Datenverarbeitungszeit für einen Slice den Timeoutwert überschreitet, wird der Vorgang abgebrochen, und das System versucht, die Verarbeitung zu wiederholen. Die Anzahl der Wiederholungsversuche hängt von der Eigenschaft "retry" ab. Wenn ein Timeout auftritt, lautet der Status „TimedOut“. |
-| delay |Zeitraum |00:00:00 |Geben Sie die Verzögerung an, mit der die Datenverarbeitung des Slice beginnt.<br/><br/>Die Ausführung der Aktivität für einen Datenslice wird gestartet, nachdem die Verzögerung die erwartete Ausführungszeit überschreitet.<br/><br/>Beispiel: 00:10:00 (Verzögerung von 10 Minuten). |
-| longRetry |Ganze Zahl <br/><br/>Höchstwert: 10 |1 |Die Anzahl von langen Wiederholungsversuchen, bevor die Sliceausführung einen Fehler verursacht.<br/><br/>longRetry-Versuche werden durch longRetryInterval über einen Zeitraum verteilt. Wenn Sie eine Zeit zwischen den Wiederholungsversuchen angeben müssen, verwenden Sie "longRetry". Wenn sowohl „retry“ als auch „longRetry“ angegeben werden, umfasst jeder „longRetry“-Versuch „retry“-Versuche, und die maximale Anzahl von Versuchen errechnet sich aus „retry \* longRetry“.<br/><br/>Beispiel: Die Richtlinie für die Aktivität enthält folgende Einstellungen:<br/>retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Wir nehmen an, dass nur ein Slice auszuführen ist (Status lautet „Waiting“) und dass die Ausführung der Aktivität jedes Mal einen Fehler verursacht. Zunächst würden drei aufeinander folgende Ausführungsversuche durchgeführt. Nach jedem Versuch wäre der Slicestatus „Retry“. Nachdem die ersten drei Versuche durchgeführt wurden, lautet der Slicestatus „LongRetry“.<br/><br/>Nach einer Stunde (Wert von „longRetryInterval“) würden drei weitere aufeinander folgende Ausführungsversuche unternommen werden. Danach würde der Slicestatus "Failed" lauten, und es fänden keine weiteren Versuche statt. Somit wurden insgesamt sechs Versuche unternommen.<br/><br/>Bei einer erfolgreichen Ausführung lautet der Slicestatus „Ready“, und es werden keine weiteren Versuche durchgeführt.<br/><br/>„longRetry“ kann in Situationen verwendet werden, in denen abhängige Daten zu nicht festgelegten Zeiten eingehen oder die gesamte Umgebung, in der die Datenverarbeitung erfolgt, unzuverlässig ist. In solchen Fällen ist die Durchführung von aufeinander folgenden Wiederholungen möglicherweise nicht hilfreich, und die Wiederholung nach einem bestimmten Zeitraum führt vielleicht zur gewünschten Ausgabe.<br/><br/>Vorsicht: Legen Sie für „longRetry“ und „longRetryInterval“ keine hohen Werte fest. In der Regel weisen höhere Werte auf andere Systemprobleme hin. |
+| delay |Zeitraum |00:00:00 |Geben Sie die Verzögerung an, mit der die Datenverarbeitung des Slice beginnt.<br/><br/>Die Ausführung der Aktivität für einen Datenslice wird gestartet, nachdem die Verzögerung die erwartete Ausführungszeit überschreitet.<br/><br/>Beispiel: 00:10:00 (Verzögerung von 10 Minuten) |
+| longRetry |Ganze Zahl <br/><br/>Maximalwert: 10 |1 |Die Anzahl von langen Wiederholungsversuchen, bevor die Sliceausführung einen Fehler verursacht.<br/><br/>longRetry-Versuche werden durch longRetryInterval über einen Zeitraum verteilt. Wenn Sie eine Zeit zwischen den Wiederholungsversuchen angeben müssen, verwenden Sie "longRetry". Wenn sowohl „retry“ als auch „longRetry“ angegeben werden, umfasst jeder „longRetry“-Versuch „retry“-Versuche, und die maximale Anzahl von Versuchen errechnet sich aus „retry \* longRetry“.<br/><br/>Beispiel: Die Richtlinie für die Aktivität enthält folgende Einstellungen:<br/>Wiederholung: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Wir nehmen an, dass nur ein Slice auszuführen ist (Status lautet „Waiting“) und dass die Ausführung der Aktivität jedes Mal einen Fehler verursacht. Zunächst würden drei aufeinander folgende Ausführungsversuche durchgeführt. Nach jedem Versuch wäre der Slicestatus „Retry“. Nachdem die ersten drei Versuche durchgeführt wurden, lautet der Slicestatus „LongRetry“.<br/><br/>Nach einer Stunde (Wert von „longRetryInterval“) würden drei weitere aufeinander folgende Ausführungsversuche unternommen werden. Danach würde der Slicestatus "Failed" lauten, und es fänden keine weiteren Versuche statt. Somit wurden insgesamt sechs Versuche unternommen.<br/><br/>Bei einer erfolgreichen Ausführung lautet der Slicestatus „Ready“, und es werden keine weiteren Versuche durchgeführt.<br/><br/>„longRetry“ kann in Situationen verwendet werden, in denen abhängige Daten zu nicht festgelegten Zeiten eingehen oder die gesamte Umgebung, in der die Datenverarbeitung erfolgt, unzuverlässig ist. In solchen Fällen ist die Durchführung von aufeinander folgenden Wiederholungen möglicherweise nicht hilfreich, und die Wiederholung nach einem bestimmten Zeitraum führt vielleicht zur gewünschten Ausgabe.<br/><br/>Vorsicht: Legen Sie für „longRetry“ und „longRetryInterval“ keine hohen Werte fest. In der Regel weisen höhere Werte auf andere Systemprobleme hin. |
 | longRetryInterval |Zeitraum |00:00:00 |Die Verzögerung zwischen langen Wiederholungsversuchen |
 
 Weitere Informationen finden Sie im Artikel [Pipelines und Aktivitäten in Azure Data Factory](data-factory-create-pipelines.md). 
@@ -333,7 +332,7 @@ Dieses Szenario können Sie wie folgt mit Data Factory realisieren:
 
 **Eingabedataset**
 
-Die stündlichen Eingabedateien werden im Ordner für den jeweiligen Tag abgelegt. Für die Eingabe ist „availability“ auf „Stündlich“ festgelegt (frequency: **Hour** , interval: 1).
+Die stündlichen Eingabedateien werden im Ordner für den jeweiligen Tag abgelegt. Für die Eingabe ist „availability“ auf **Stündlich** festgelegt (frequency: Hour, interval: 1).
 
 ```json
 {
@@ -362,7 +361,7 @@ Die stündlichen Eingabedateien werden im Ordner für den jeweiligen Tag abgeleg
 ```
 **Ausgabedataset**
 
-Jeden Tag wird eine Ausgabedatei im Ordner des jeweiligen Tags erstellt. Für die Ausgabe ist „availability“ auf „Täglich“ festgelegt (frequency: **Day** , interval: 1).
+Jeden Tag wird eine Ausgabedatei im Ordner des jeweiligen Tags erstellt. Für die Ausgabe ist „availability“ auf **Täglich** festgelegt (frequency: Day, interval: 1).
 
 ```json
 {
@@ -515,7 +514,7 @@ Die zweite Eingabe ist das wöchentlich aktualisierte Azure-Blob.
 
 **Ausgabe: Azure-Blob**
 
-Jeden Tag wird eine Ausgabedatei im Ordner des jeweiligen Tags erstellt. Für die Ausgabe ist „availability“ auf „Täglich“ festgelegt (frequency: **Day** , interval: 1).
+Jeden Tag wird eine Ausgabedatei im Ordner des jeweiligen Tags erstellt. Für die Ausgabe ist „availability“ auf **Täglich** festgelegt (frequency: Day, interval: 1).
 
 ```json
 {
@@ -607,11 +606,11 @@ Es ist möglich, mehrere Kopiervorgänge nacheinander sequenziell/sortiert auszu
 
 CopyActivity1
 
-Eingabe: Dataset Ausgabe: Dataset2
+Eingabe: Dataset. Ausgabe: Dataset2.
 
 CopyActivity2
 
-Eingabe: Dataset2  Ausgabe: Dataset3
+Eingabe: Dataset2.  Ausgabe: Dataset3.
 
 CopyActivity2 wird nur ausgeführt, wenn CopyActivity1 erfolgreich ausgeführt wurde und Dataset2 verfügbar ist.
 
@@ -702,11 +701,11 @@ Im Beispiel kann CopyActivity2 eine andere Eingabe haben, z.B. Dataset3. Sie leg
 
 CopyActivity1
 
-Eingabe: Dataset1 Ausgabe: Dataset2
+Eingabe: Dataset1. Ausgabe: Dataset2.
 
 CopyActivity2
 
-Eingaben: Dataset3, Dataset2 Ausgabe: Dataset4
+Eingaben: Dataset3, Dataset2. Ausgabe: Dataset4.
 
 ```json
 {

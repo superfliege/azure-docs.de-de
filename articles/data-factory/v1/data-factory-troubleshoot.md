@@ -9,17 +9,16 @@ ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: cbd51c48ec5b1801062e7aaf0b77e7b347018b31
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051864"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023021"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "37051864"
 Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung von Azure Data Factory. Dieser Artikel führt nicht alle Probleme auf, die bei Verwendung des Diensts möglicherweise auftreten können, sondern erläutert einige ausgewählte Probleme und die allgemeine Problembehandlung.   
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Fehler Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
 Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter nicht auf Ihrem Computer registriert. Gehen Sie wie folgt vor:
 
 1. Starten Sie Azure PowerShell.
@@ -63,7 +62,7 @@ Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder e
 ### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank
 Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problem: Eingabeslices haben dauerhaft den Status „Waiting“
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problem: Eingabeslices haben dauerhaft den Status „Warten“.
 Die Slices können sich aus verschiedenen Gründen im Status **Warten** befinden. Einer der häufigsten Gründe ist, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Diese Eigenschaft weist darauf hin, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
 Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external** . Sie können optional **externalData*** angeben, wenn Sie „external“ auf „true“ festlegen.

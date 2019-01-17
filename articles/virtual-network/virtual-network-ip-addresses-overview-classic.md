@@ -1,13 +1,10 @@
 ---
-title: IP-Adresstypen in Azure (klassisch) | Microsoft-Dokumentation
+title: IP-Adresstypen in Azure (klassisch)
+titlesuffix: Azure Virtual Network
 description: Erfahren Sie mehr zu öffentlichen und privaten IP-Adressen (klassisch) in Azure.
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 2f8664ab-2daf-43fa-bbeb-be9773efc978
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011685"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024568"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden: öffentliche und private.
@@ -30,7 +27,7 @@ Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit ande
 Private IP-Adressen werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet), Clouddiensts und Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen:  [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung von Resource Manager. Informationen zu IP-Adressen in Resource Manager finden Sie im Artikel [IP-Adressen](virtual-network-ip-addresses-overview-arm.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen:  [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung von Resource Manager. Informationen zu IP-Adressen in Resource Manager finden Sie im Artikel [IP-Adressen](virtual-network-ip-addresses-overview-arm.md).
 
 ## <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Cache for Redis](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/common/storage-introduction.md).
@@ -44,7 +41,7 @@ Eine öffentliche IP-Adresse wird folgenden Ressourcentypen zugeordnet:
 * Anwendungsgateways
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
-Die öffentliche IP-Adresse einer Azure-Ressource wird bei Bedarf *dynamisch* aus einem Pool mit verfügbaren öffentlichen IP-Adressen des Ressourcenerstellungsorts zugewiesen. Bei Beendigung der Ressource wird die IP-Adresse wieder freigegeben. Bei einem Clouddienst tritt dieser Fall ein, wenn alle Rolleninstanzen beendet werden. Dies lässt sich durch Verwendung einer *statischen* (reservierten) IP-Adresse verhindern. (Weitere Informationen finden Sie unter [Clouddienste](#Cloud-services).)
+Die öffentliche IP-Adresse einer Azure-Ressource wird bei Bedarf *dynamisch* aus einem Pool mit verfügbaren öffentlichen IP-Adressen des Ressourcenerstellungsorts zugewiesen. Bei Beendigung der Ressource wird die IP-Adresse wieder freigegeben. Bei einem Clouddienst tritt dieser Fall auf, wenn alle Rolleninstanzen angehalten werden. Dies lässt sich durch Verwendung einer *statischen* (reservierten) IP-Adresse verhindern. (Weitere Informationen finden Sie unter [Clouddienste](#Cloud-services).)
 
 > [!NOTE]
 > Die Liste mit den IP-Adressbereichen, aus denen Azure-Ressourcen öffentliche IP-Adressen zugewiesen werden, finden Sie unter [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653).
@@ -130,7 +127,7 @@ Statische private IP-Adressen werden häufig für Folgendes verwendet:
 #### <a name="internal-dns-hostname-resolution"></a>Interne DNS-Hostnamenauflösung
 Alle Azure-VMs und PaaS-Rolleninstanzen werden standardmäßig mit [von Azure verwalteten DNS-Servern](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) konfiguriert, sofern nicht explizit benutzerdefinierte DNS-Server konfiguriert werden. Diese DNS-Server stellen die interne Namensauflösung für VMs und Rolleninstanzen im gleichen VNet oder Clouddienst bereit.
 
-Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Hostnamenzuordnung für die private IP-Adresse hinzugefügt. Bei einer VM mit mehreren NICs wird der Hostname der privaten IP-Adresse der primären NIC zugeordnet. Diese Zuordnungsinformationen sind allerdings auf Ressourcen innerhalb des gleichen Clouddiensts oder VNets beschränkt.
+Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Hostnamenzuordnung für die private IP-Adresse hinzugefügt. Im Fall einer VM mit mehreren Netzwerkschnittstellenkarten wird der Hostname der privaten IP-Adresse der primären Netzwerkschnittstellenkarte zugeordnet. Diese Zuordnungsinformationen sind allerdings auf Ressourcen innerhalb des gleichen Clouddiensts oder VNets beschränkt.
 
 Bei einem *eigenständigen* Clouddienst können nur die Hostnamen der VMs/Rolleninstanzen innerhalb des gleichen Clouddiensts aufgelöst werden. Bei einem Clouddienst innerhalb eines VNets können die Hostnamen aller VMs/Rolleninstanzen innerhalb des VNets aufgelöst werden.
 

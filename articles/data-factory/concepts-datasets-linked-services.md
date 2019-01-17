@@ -9,25 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38581265"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044245"
 ---
-# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datasets und verknüpfte Dienste in Azure Data Factory 
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+# <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datasets und verknüpfte Dienste in Azure Data Factory
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
 > * [Aktuelle Version](concepts-datasets-linked-services.md)
 
-In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden. 
+In diesem Artikel ist beschrieben, was Datasets sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden.
 
-Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](introduction.md) lesen, um eine Übersicht zu erhalten. 
+Wenn Sie noch nicht mit Data Factory vertraut sind, sollten Sie [Einführung in Azure Data Factory](introduction.md) lesen, um eine Übersicht zu erhalten.
 
 ## <a name="overview"></a>Übersicht
 Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer **Pipeline** handelt es sich um eine logische Gruppierung von **Aktivitäten**, die zusammen eine Aufgabe bilden. Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie könnten z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Anschließend könnten Sie eine Hive-Aktivität verwenden, die ein Hive-Skript für einen Azure HDInsight-Cluster ausführt, um Daten aus dem Blob Storage zu verarbeiten, um Ausgabedaten zu produzieren. Schließlich könnten Sie die Ausgabedaten mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse kopieren, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden. Weitere Informationen zu Pipelines und Aktivitäten finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md).
@@ -36,7 +35,7 @@ Ein **Datensatz** ist eine benannte Ansicht von Daten, die einfach auf die Daten
 
 Bevor Sie ein Dataset erstellen, müssen Sie einen **verknüpften Dienst** erstellen, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Sie können sich dies wie folgt vorstellen: Das Dataset stellt die Struktur der Daten innerhalb des verknüpften Datenspeichers dar, und der verknüpfte Dienst definiert die Verbindung mit der Datenquelle. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset stellt den Blobcontainer und den Ordner innerhalb des Azure-Speicherkontos dar, das die zu verarbeitenden Eingabeblobs enthält.
 
-Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie dann zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
+Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
 
@@ -65,13 +64,13 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 
 Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
-name | Name des verknüpften Diensts. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
-type | Typ des verknüpften Diensts. Beispiel: AzureStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | Ja |
-typeProperties | Die Typeigenschaften unterscheiden sich für jeden Datenspeicher- oder Computetyp. <br/><br/> Informationen zu den unterstützten Datenspeichertypen und ihren Typeigenschaften finden Sie in der Tabelle [Datensatztyp](#dataset-type) in diesem Artikel. Navigieren Sie zum Artikel über den Datenspeicherconnector, um mehr über die für einen Datenspeicher spezifischen Typeigenschaften zu erfahren. <br/><br/> Informationen zu den unterstützten Computetypen und ihren Typeigenschaften finden Sie unter [Verknüpfte Computedienste](compute-linked-services.md). | Ja |
+name | Name des verknüpften Diensts. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  JA |
+type | Typ des verknüpften Diensts. Beispiel:  AzureStorage (Datenspeicher) oder AzureBatch (Compute). Siehe die Beschreibung von „typeProperties“. | JA |
+typeProperties | Die Typeigenschaften unterscheiden sich für jeden Datenspeicher- oder Computetyp. <br/><br/> Informationen zu den unterstützten Datenspeichertypen und ihren Typeigenschaften finden Sie in der Tabelle [Datensatztyp](#dataset-type) in diesem Artikel. Navigieren Sie zum Artikel über den Datenspeicherconnector, um mehr über die für einen Datenspeicher spezifischen Typeigenschaften zu erfahren. <br/><br/> Informationen zu den unterstützten Computetypen und ihren Typeigenschaften finden Sie unter [Verknüpfte Computedienste](compute-linked-services.md). | JA |
 connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein 
 
 ## <a name="linked-service-example"></a>Beispiel für einen verknüpften Dienst
-Der folgende verknüpfte Dienst ist ein mit Azure Storage verknüpfter Dienst. Beachten Sie, dass „type“ auf „AzureStorage“ festgelegt ist. Die Typeigenschaften für den verknüpften Azure Storage-Dienst umfassen eine Verbindungszeichenfolge. Der Data Factory-Dienst verwendet diese Verbindungszeichenfolge für die Verbindung mit dem Datenspeicher zur Laufzeit. 
+Der folgende verknüpfte Dienst ist ein mit Azure Storage verknüpfter Dienst. Beachten Sie, dass „type“ auf „AzureStorage“ festgelegt ist. Die Typeigenschaften für den verknüpften Azure Storage-Dienst umfassen eine Verbindungszeichenfolge. Der Data Factory-Dienst verwendet diese Verbindungszeichenfolge für die Verbindung mit dem Datenspeicher zur Laufzeit.
 
 ```json
 {
@@ -102,7 +101,7 @@ Ein Dataset in Data Factory wird wie folgt im JSON-Format definiert:
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
         "linkedServiceName": {
                 "referenceName": "<name of linked service>",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "structure": [
             {
@@ -122,10 +121,10 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 
 Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
-name | Name des Datasets. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
-type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | Ja |
+name | Name des Datasets. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  JA |
+type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: AzureBlob, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | JA |
 structure | Schema des Datasets. Unter [Dataset: structure](#dataset-structure) finden Sie weitere Details. | Nein  |
-typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | Ja |
+typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z. B.: Azure-BLOB, Azure SQL-Tabelle). Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | JA |
 
 ## <a name="dataset-example"></a>Datasetbeispiel
 Im folgenden Beispiel stellt das Dataset eine Tabelle namens MyTable in einer SQL-Datenbank dar.
@@ -137,7 +136,7 @@ Im folgenden Beispiel stellt das Dataset eine Tabelle namens MyTable in einer SQ
         "type": "AzureSqlTable",
         "linkedServiceName": {
                 "referenceName": "MyAzureSqlLinkedService",
-                 "type": "LinkedServiceReference",
+                "type": "LinkedServiceReference",
         },
         "typeProperties":
         {
@@ -167,9 +166,9 @@ Im vorherigen Abschnitt ist im Beispiel der Typ des Datasets auf **AzureSqlTable
         "type": "AzureBlob",
         "linkedServiceName": {
                 "referenceName": "MyAzureStorageLinkedService",
-                 "type": "LinkedServiceReference",
-        }, 
- 
+                "type": "LinkedServiceReference",
+        },
+
         "typeProperties": {
             "fileName": "input.log",
             "folderPath": "adfgetstarted/inputdata",
@@ -188,8 +187,8 @@ Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
-name | Name der Spalte. | Ja
-type | Datentyp der Spalte. Data Factory unterstützt die folgenden Zwischendatentypen als zulässige Werte: **Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset und Timespan**. | Nein 
+name | Name der Spalte. | JA
+type | Datentyp der Spalte. Data Factory unterstützt die folgenden Zwischendatentypen als zulässige Werte: **„Int16“, „Int32“, „Int64“, „Single“, „Double“, „Decimal“, „Byte[]“, „Boolean“, „String“, „Guid“, „Datetime“, „Datetimeoffset“ und „Timespan“**. | Nein 
 culture | Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. | Nein 
 format | Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein 
 
@@ -219,14 +218,14 @@ Datasets können Sie mit einem dieser Tools oder SDKs erstellen: [.NET API](quic
 
 ## <a name="current-version-vs-version-1-datasets"></a>Gegenüberstellung von Datasets der aktuellen Version und Datasets der Version 1
 
-Im Anschluss sind einige Unterschiede zwischen Data Factory-Datasets und Data Factory-Datasets der Version 1aufgeführt: 
+Im Anschluss sind einige Unterschiede zwischen Data Factory-Datasets und Data Factory-Datasets der Version 1aufgeführt:
 
 - Die externe Eigenschaft wird in der aktuellen Version nicht unterstützt. Sie wird durch einen [Trigger](concepts-pipeline-execution-triggers.md) ersetzt.
 - Die Richtlinien- und Verfügbarkeitseigenschaften werden in der aktuellen Version nicht unterstützt. Die Startzeit für eine Pipeline hängt von [Triggern](concepts-pipeline-execution-triggers.md) ab.
-- Bereichsbezogene (in einer Pipeline definierte) Datasets werden in der aktuellen Version nicht unterstützt. 
+- Bereichsbezogene (in einer Pipeline definierte) Datasets werden in der aktuellen Version nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im folgenden Tutorial finden Sie schrittweise Anleitungen zum Erstellen von Pipelines und Datasets mit einem dieser Tools oder SDKs. 
+Im folgenden Tutorial finden Sie schrittweise Anleitungen zum Erstellen von Pipelines und Datasets mit einem dieser Tools oder SDKs.
 
 - [Schnellstart: Erstellen einer Data Factory mithilfe von .NET](quickstart-create-data-factory-dot-net.md)
 - [Schnellstart: Erstellen einer Data Factory mithilfe von PowerShell](quickstart-create-data-factory-powershell.md)

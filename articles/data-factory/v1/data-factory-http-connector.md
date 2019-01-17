@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 06eb11132d7e3968850aadb4bfdaa53261f14ada
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167476"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017258"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 
@@ -44,7 +43,7 @@ Beim Kopieren von Daten von einem lokalen HTTP-Endpunkt müssen Sie in der lokal
 
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools oder APIs aus einer HTTP-Quelle verschiebt:
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+- Am einfachsten erstellen Sie eine Pipeline mit dem Assistenten zum Kopieren von Daten. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: das **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. JSON-Beispiele zum Kopieren von Daten aus einer HTTP-Quelle in Azure Blob Storage finden Sie unter [JSON-Beispiele](#json-examples).
 
@@ -57,7 +56,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | type | Die **type**-Eigenschaft muss auf **Http** festgelegt werden. | JA |
 | URL | Die Basis-URL zum Webserver. | JA |
 | authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen finden Sie in den späteren Abschnitten in diesem Artikel. | JA |
-| enableServerCertificateValidation | Gibt an, ob die SSL-Serverzertifikatüberprüfung aktiviert werden soll, wenn die Quelle ein HTTPS-Webserver ist. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diesen Parameter auf **FALSE** fest. | Nein <br /> (Der Standardwert ist **TRUE**.) |
+| enableServerCertificateValidation | Gibt an, ob die SSL-Serverzertifikatüberprüfung aktiviert werden soll, wenn die Quelle ein HTTPS-Webserver ist. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diesen Parameter auf **FALSE** fest. | Nein <br /> (der Standardwert ist **TRUE**) |
 | gatewayName | Der Name der Instanz des Datenverwaltungsgateways, die für die Verbindung mit einer lokalen HTTP-Quelle verwendet werden soll. | Ja, wenn Daten aus einer lokalen HTTP-Quelle kopiert werden. |
 | encryptedCredential | Die verschlüsselten Anmeldeinformation für den Zugriff auf den HTTP-Endpunkt. Der Wert wird automatisch generiert, wenn Sie die Authentifizierungsinformationen im Kopier-Assistenten oder über das Dialogfeld **ClickOnce** konfigurieren. | Nein <br /> (Betrifft nur das Kopieren von Daten von einem lokalen HTTP-Server.) |
 
@@ -167,7 +166,7 @@ Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. 
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein  |
 | requestBody | Der Text der HTTP-Anforderung. | Nein  |
 | format | Wenn Sie *die Daten ohne Änderung von einem HTTP-Endpunkt abrufen* möchten, ohne sie zu analysieren, überspringen Sie die Einstellung **format**. <br><br> Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nein  |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Folgende Ebenen werden unterstützt: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
 
 **Beispiel: Verwenden der GET-Methode (Standard)**
 

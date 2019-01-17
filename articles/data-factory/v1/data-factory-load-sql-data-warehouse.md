@@ -9,17 +9,16 @@ ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5fb4034d49982d600fe5b0de17d0b198e3ee653e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246520"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020148"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "40246520"
 
 Die ersten Schritte mit Azure SQL Data Warehouse sind jetzt mithilfe von **Azure Data Factory** einfacher als je zuvor.  Azure Data Factory ist ein vollständig verwalteter cloudbasierter Daten-Integrationsdienst, der verwendet werden kann, um SQL Data Warehouse mit den Daten Ihres bestehenden Systems aufzufüllen. Dieser Dienst spart Ihnen wertvolle Zeit beim Bewerten von SQL Data Warehouse und Erstellen von Analyselösungen. Die wichtigsten Vorteile beim Laden von Daten in Azure SQL Data Warehouse mithilfe von Azure Data Factory sind:
 
-* **Mühelose Einrichtung**: Intuitiver Assistent mit 5 Schritten. Keine Skripterstellung erforderlich.
+* **Mühelose Einrichtung**: Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
 * **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher.
 * **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen, und globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
 * **Beispiellose Leistung mithilfe von PolyBase** – Die Verwendung von PolyBase ist die effizienteste Methode zum Verschieben von Daten in Azure SQL Data Warehouse. Mit der Funktion „Stagingblob“ sinkt die Ladezeit für alle Arten von Datenspeicher drastisch. Dies gilt nicht für Azure Blob Storage, da dies von Polybase standardmäßig unterstützt wird.
@@ -42,7 +41,7 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
 > [!NOTE]
 >  Im Artikel [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) finden Sie allgemeine Informationen zu den Möglichkeiten von Data Factory beim Verschieben von Daten aus/in Azure SQL Data Warehouse.
 >
-> Sie können auch mithilfe des Azure-Portals, Visual Studio, PowerShell usw. Pipelines, erstellen. Unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
+> Sie können auch mithilfe des Azure-Portals, Visual Studio, PowerShell usw. Pipelines, erstellen. Im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
 >
 >
 
@@ -118,7 +117,7 @@ Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopierakt
 3. Gehen Sie im Bereich **Neue Data Factory** wie folgt vor:
 
    1. Geben Sie **LoadIntoSQLDWDataFactory** als **Name** ein.
-       Der Name der Azure Data Factory muss global eindeutig sein. Ändern Sie bei Anzeige der Fehlermeldung **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar** den Namen der Data Factory (z.B.in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
+       Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der folgenden Fehlermeldung: **Data Factory-Name „LoadIntoSQLDWDataFactory“ ist nicht verfügbar**. Ändern Sie den Namen der Data Factory (z.B. in „yournameLoadIntoSQLDWDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .  
    2. Wählen Sie Ihr Azure- **Abonnement**aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
@@ -148,7 +147,7 @@ Auf der Seite **Eigenschaften**:
     ![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Schritt 2: Konfigurieren der Quelle
-In diesem Abschnitt werden die Schritte beschrieben, mit denen Sie die Quelle konfigurieren: Azure Blob mit 1 TB TPC-H-Elementdateien.
+In diesem Abschnitt werden die Schritte zum Konfigurieren der Quelle angezeigt: Azure Blob mit den TPC-H-Elementdateien mit 1 TB.
 
 1. Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter**.
 
@@ -189,7 +188,7 @@ Dieser Abschnitt beschreibt das Konfigurieren des Ziels: Tabelle `lineitem` in d
 
 ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>Schritt 5: Bereitstellen und Ladeergebnisse überwachen
+## <a name="step-5-deploy-and-monitor-load-results"></a>Schritt 5: Bereitstellen und Überwachen der Auslastungsergebnisse
 1. Klicken Sie für die Bereitstellung auf **Fertig stellen**.
 
     ![Kopier-Assistent – Seite Zusammenfassung](media/data-factory-load-sql-data-warehouse/summary-page.png)

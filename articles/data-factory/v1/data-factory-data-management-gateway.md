@@ -9,17 +9,16 @@ ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698756"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022307"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -51,7 +50,7 @@ Das Datenverwaltungsgateway bietet die folgenden Funktionen:
 ### <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
 Wenn Sie Daten mithilfe einer Kopieraktivität zwischen der lokalen Umgebung und der Cloud kopieren, verwendet diese Aktivität ein Gateway, um die Daten aus einer lokalen Datenquelle in die Cloud und umgekehrt zu übertragen.
 
-Hier ist eine Darstellung des allgemeinen Datenflusses sowie eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway angegeben: ![Datenfluss über ein Gateway](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Im Anschluss finden Sie eine Darstellung des allgemeinen Datenflusses sowie eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway: ![Datenfluss über ein Gateway](./media/data-factory-data-management-gateway/data-flow-using-gateway.png).
 
 1. Der Datenentwickler erstellt entweder über das [Azure-Portal](https://portal.azure.com) oder mit einem [PowerShell-Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.datafactories/) ein Gateway für Azure Data Factory.
 2. Der Datenentwickler erstellt durch Angabe des Gateways einen verknüpften Dienst für einen lokalen Datenspeicher. Als Teil der Einrichtung des verknüpften Diensts verwendet der Datenentwickler die Anwendung „Anmeldeinformationen festlegen“, um Authentifizierungstypen und Anmeldeinformationen anzugeben.  Die Anwendung „Anmeldeinformationen festlegen“ kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit dem Gateway, um die Anmeldeinformationen zu speichern.
@@ -152,7 +151,7 @@ Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktivi
 
 > [!NOTE]
 > 1. Basierend auf Ihrer Datenquelle und den Senken müssen Sie unter Umständen der Whitelist Ihrer Unternehmens-/Windows-Firewall zusätzliche Domänen und ausgehende Ports hinzufügen.
-> 2. Für einige Clouddatenbanken (z.B. [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) usw.) müssen Sie die IP-Adresse des Gatewaycomputers für die Firewallkonfiguration ggf. auf eine Whitelist setzen.
+> 2. Für einige Clouddatenbanken (z.B. [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) usw.) müssen Sie der Whitelist in der Firewallkonfiguration ggf. die IP-Adresse des Gatewaycomputers hinzufügen.
 >
 >
 
@@ -184,7 +183,7 @@ Es gibt drei Konfigurationsoptionen:
 
 * **Proxy nicht verwenden**: Das Gateway verwendet nicht explizit einen Proxy, um eine Verbindung mit den Clouddiensten herzustellen.
 * **Systemproxy verwenden**: Das Gateway verwendet die in „diahost.exe.config“ und „diawp.exe.config“ konfigurierten Proxyeinstellungen.  Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy konfiguriert ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her.
-* **Benutzerdefinierten Proxy verwenden**: Konfigurieren Sie die für das Gateway zu verwendenden HTTP-Proxyeinstellungen hier statt in den Dateien „diahost.exe.config“ und „diawp.exe.config“.  Adresse und Port sind erforderlich.  Benutzername und Kennwort sind je nach den Authentifizierungseinstellungen Ihres Proxys optional.  Alle Einstellungen werden mit dem Zertifikat für Anmeldeinformationen des Gateways verschlüsselt und lokal auf dem Gatewayhostcomputer gespeichert.
+* **Benutzerdefinierten Proxy verwenden**: Konfigurieren Sie die für das Gateway zu verwendenden HTTP-Proxyeinstellungen hier, anstatt in den Dateien „diahost.exe.config“ und „diawp.exe.config“.  Adresse und Port sind erforderlich.  Benutzername und Kennwort sind je nach den Authentifizierungseinstellungen Ihres Proxys optional.  Alle Einstellungen werden mit dem Zertifikat für Anmeldeinformationen des Gateways verschlüsselt und lokal auf dem Gatewayhostcomputer gespeichert.
 
 Der Datenverwaltungsgateway-Hostdienst wird automatisch neu gestartet, nachdem Sie die aktualisierten Proxyeinstellungen gespeichert haben.
 
@@ -236,7 +235,7 @@ Zusätzlich zu diesen Punkten müssen Sie auch sicherstellen, dass Microsoft Azu
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers, die verhindert, dass das Gateway eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
 
-1. Wenn Sie versuchen, das Gateway zu registrieren, wird die folgende Fehlermeldung angezeigt: „Fehler beim Registrieren des Gatewayschlüssels. Prüfen Sie, ob sich das Datenverwaltungsgateway im Status „Verbunden“ befindet und der Datenverwaltungsgateway-Hostdienst gestartet wurde, bevor Sie versuchen, den Gatewayschlüssel erneut zu registrieren.“
+1. Beim Versuch, das Gateway zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren des Gatewayschlüssels. Prüfen Sie, ob sich das Datenverwaltungsgateway im Status „Verbunden“ befindet und der Datenverwaltungsgateway-Hostdienst gestartet wurde, bevor Sie versuchen, den Gatewayschlüssel erneut zu registrieren.“
 2. Wenn Sie den Konfigurations-Manager öffnen, wird als Status „Getrennt“ oder „Verbindung wird hergestellt“ angezeigt. Wenn Sie Windows-Ereignisprotokolle anzeigen, sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Datenverwaltungsgateway“ Fehlermeldungen wie die folgende: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
@@ -307,7 +306,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
 1. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
-2. Führen Sie die Datei **ConfigManager.exe** im Ordner **C:\Programme\Microsoft Data Management Gateway\2.0\Shared** aus.
+2. Führen Sie die ausführbare Datei **ConfigManager.exe** im folgenden Ordner aus: **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
 
 ### <a name="home-page"></a>Startseite
 Auf der Startseite können Sie die folgenden Aktionen ausführen:
@@ -439,7 +438,7 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
 Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie folgt vor:
 
 1. Starten Sie auf dem **Gatewaycomputer** einen Webbrowser, und navigieren Sie zum [Azure-Portal](http://portal.azure.com). Suchen Sie ggf. nach Ihrer Data Factory, und öffnen Sie die Data Factory auf der Seite **DATA FACTORY**. Klicken Sie anschließend auf **Erstellen und bereitstellen**, um den Data Factory-Editor zu starten.   
-2. Klicken Sie in der Strukturansicht auf einen vorhandenen **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen verknüpften Dienst, der ein Datenverwaltungsgateway erfordert (z.B. SQL Server oder Oracle).
+2. Klicken Sie in der Strukturansicht auf einen vorhandenen **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen verknüpften Dienst, für den ein Datenverwaltungsgateway erforderlich ist (z.B. SQL Server oder Oracle).
 3. Geben Sie im JSON-Editor für die **gatewayName** -Eigenschaft den Namen des Gateways ein.
 4. Geben Sie den Servernamen für die **Data Source**-Eigenschaft in **connectionString** ein.
 5. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** ein.    

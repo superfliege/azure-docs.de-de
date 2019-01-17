@@ -1,6 +1,6 @@
 ---
-title: Zugreifen auf lokale Datenquellen für Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen Sie das lokale Datengateway und richten Sie es ein, damit Sie aus Logik-Apps auf lokale Datenquellen zugreifen können.
+title: Zugreifen auf lokale Datenquellen in Azure Logic Apps | Microsoft-Dokumentation
+description: Herstellen einer Verbindung mit lokalen Datenquellen in Logik-Apps durch Erstellen eines lokalen Datengateways
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,19 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413705"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064065"
 ---
-# <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps mit dem lokalen Datengateway
+# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
-Um aus Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, können Sie eine Datengatewayressource in Azure erstellen, damit Ihre Logik-Apps die [lokalen Connectors](../logic-apps/logic-apps-gateway-install.md#supported-connections) verwenden können. In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource erstellen, *nachdem* Sie [das Gateway auf Ihren lokalen Computer heruntergeladen und installiert haben](../logic-apps/logic-apps-gateway-install.md). 
+Um in Ihren Logik-Apps auf lokale Datenquellen zuzugreifen, erstellen Sie eine lokale Datengatewayressource im Azure-Portal. Ihre Logik-Apps können dann die [lokalen Connectors](../logic-apps/logic-apps-gateway-install.md#supported-connections) verwenden. In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource erstellen, *nachdem* Sie [das Gateway auf Ihren lokalen Computer heruntergeladen und installiert haben](../logic-apps/logic-apps-gateway-install.md). 
+
+> [!TIP]
+> Erwägen Sie zum Herstellen einer Verbindung mit virtuellen Azure-Netzwerken stattdessen die Erstellung einer [*Integrationsdienstumgebung*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (Integration Service Environment, ISE). 
 
 Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den folgenden Artikeln:
 

@@ -9,17 +9,16 @@ ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3d5832f63a3ebe7583d18fcd863c8cc60b9b045d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f4bdeee08e81c16dfdd03620eb1fc61251f90400
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048763"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025172"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop-Streamingaktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -43,7 +42,7 @@ Mit der Aktivität „HDInsightStreamingActivity“ können Sie einen Hadoop-Str
 Die HDInsight-Streamingaktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet Hadoop-Streamingprogramme auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 > [!NOTE] 
-> Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md), und führen Sie das Tutorial durch: [Erstellen Ihrer ersten Pipeline zur Transformierung von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md), bevor Sie diesen Artikel lesen. 
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md) lesen und anschließend das Tutorial zum Thema [Erstellen Ihrer ersten Datenpipeline](data-factory-build-your-first-pipeline.md) durcharbeiten, bevor Sie diesen Artikel lesen. 
 
 ## <a name="json-sample"></a>JSON-Beispiel
 Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und „cat.exe“) und Daten („davinci.txt“) aufgefüllt. Standardmäßig entspricht der Name des Containers, der im HDInsight-Cluster verwendet wird, dem Namen des Clusters. Wenn der Name Ihres Clusters beispielsweise „myhdicluster“ lautet, lautet der Name des zugeordneten Blob-Containers auch „myhdicluster“. 
@@ -176,7 +175,7 @@ Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Für die HDInsight-St
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline in diesem Beispiel weist nur eine einzelne Aktivität vom Typ **HDInsightStreaming**auf. 
+Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ **HDInsightStreaming**. 
 
 Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und „cat.exe“) und Daten („davinci.txt“) aufgefüllt. Standardmäßig entspricht der Name des Containers, der im HDInsight-Cluster verwendet wird, dem Namen des Clusters. Wenn der Name Ihres Clusters beispielsweise „myhdicluster“ lautet, lautet der Name des zugeordneten Blob-Containers auch „myhdicluster“.  
 

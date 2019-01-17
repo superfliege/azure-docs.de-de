@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409576"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015082"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-salesforce-connector.md)
 > * [Aktuelle Version](connector-salesforce.md)
 
@@ -99,7 +98,7 @@ Folgende Eigenschaften werden für den mit Salesforce verknüpften Dienst unters
 }
 ```
 
-**Beispiel: Speichern von Anmeldeinformationen im Key Vault**
+**Beispiel: Speichern von Anmeldeinformationen in Key Vault**
 
 ```json
 {
@@ -168,7 +167,7 @@ Legen Sie zum Kopieren von Daten aus und nach Salesforce die type-Eigenschaft de
 ```
 
 >[!NOTE]
->Abwärtskompatibilität: Beim Kopieren von Daten aus Salesforce funktioniert weiterhin das vorherige Dataset vom Typ „RelationalTable“. Ihnen wird jedoch empfohlen, auf den neuen Typ „SalesforceObject“ umzustellen.
+>Abwärtskompatibilität: Wenn Sie beim Kopieren von Daten aus Salesforce das vorherige Dataset vom Typ „RelationalTable“ verwenden, funktioniert dieses weiterhin. Es wird jedoch eine Empfehlung angezeigt, stattdessen den neuen Typ „SalesforceObject“ zu verwenden.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -227,7 +226,7 @@ Legen Sie zum Kopieren von Daten aus Salesforce den Quelltyp in der Kopieraktivi
 ```
 
 >[!NOTE]
->Abwärtskompatibilität: Beim Kopieren von Daten aus Salesforce funktioniert die Quelle weiterhin bei Verwendung des Typs „RelationalSource“. Ihnen wird jedoch empfohlen, auf den neuen Typ „SalesforceSource“ umzustellen.
+>Abwärtskompatibilität: Wenn Sie beim Kopieren von Daten aus Salesforce den vorherigen Typ „RelationalSource“ verwenden, funktioniert die Quelle weiterhin. Es wird jedoch eine Empfehlung angezeigt, stattdessen den neuen Typ „SalesforceSource“ zu verwenden.
 
 ### <a name="salesforce-as-a-sink-type"></a>Salesforce als Senkentyp
 
@@ -239,7 +238,7 @@ Legen Sie zum Kopieren von Daten nach Salesforce den Senkentyp in der Kopierakti
 | writeBehavior | Das Schreibverhalten für den Vorgang.<br/>Zulässige Werte: **Insert** und **Upsert**. | Nein (Standardwert ist „Insert“) |
 | externalIdFieldName | Der Name des externen ID-Felds für den upsert-Vorgang. Das angegebene Feld muss als „Externes ID-Feld“ im Salesforce-Objekt definiert werden. Es kann keine NULL-Werte in den entsprechenden Eingabedaten haben. | Ja für „Upsert“ |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Salesforce geschrieben werden. | Nein (Standardwert ist 5000) |
-| ignoreNullValues | Gibt an, ob NULL-Werte aus Eingabedaten während eines Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte: **true** und **false**.<br>- **True**: Lassen Sie die Daten im Zielobjekt unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügen Sie beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **False**: Aktualisieren Sie die Daten im Zielobjekt auf NULL, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
+| ignoreNullValues | Gibt an, ob NULL-Werte aus Eingabedaten während eines Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- **True**: Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **False**: Daten im Zielobjekt werden auf NULL aktualisiert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
 
 **Beispiel: Salesforce-Senke in einer Kopieraktivität**
 

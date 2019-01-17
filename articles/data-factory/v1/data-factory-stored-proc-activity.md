@@ -9,17 +9,16 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047387"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017700"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -47,7 +46,7 @@ Sie können die Aktivität „Gespeicherte Prozedur“ verwenden, um eine gespei
 - SQL Server-Datenbank.  Wenn Sie SQL Server verwenden, müssen Sie das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, der Zugriff auf die Datenbank hat. Das Datenverwaltungsgateway ist eine Komponente, die lokale Datenquellen/Datenquellen auf virtuellen Azure Computern mit Clouddiensten auf sichere und geschickte Weise verbindet. Ausführliche Informationen finden Sie im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md).
 
 > [!IMPORTANT]
-> Beim Kopieren von Daten nach Azure SQL-Datenbank oder SQL Server können Sie **SqlSink** in der Kopieraktivität für das Aufrufen einer gespeicherten Prozedur mit der **sqlWriterStoredProcedureName**-Eigenschaft konfigurieren. Weitere Informationen finden Sie unter [Aufrufen von gespeicherten Prozeduren aus der Kopieraktivität](data-factory-invoke-stored-procedure-from-copy-activity.md). Ausführliche Informationen zur Eigenschaft finden Sie in den folgenden Artikeln zu Connectors: [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Das Aufrufen einer gespeicherten Prozedur während des Kopierens von Daten in ein Azure SQL Data Warehouse mithilfe einer Kopieraktivität wird nicht unterstützt. Sie können jedoch mithilfe der Aktivität „Gespeicherte Prozedur“ eine gespeicherte Prozedur in einem SQL Data Warehouse aufrufen. 
+> Beim Kopieren von Daten nach Azure SQL-Datenbank oder SQL Server können Sie **SqlSink** in der Kopieraktivität für das Aufrufen einer gespeicherten Prozedur mit der **sqlWriterStoredProcedureName**-Eigenschaft konfigurieren. Weitere Informationen finden Sie unter [Aufrufen von gespeicherten Prozeduren aus der Kopieraktivität](data-factory-invoke-stored-procedure-from-copy-activity.md). Ausführliche Informationen zur Eigenschaft finden Sie in folgenden Artikeln zu Connectors: [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Das Aufrufen einer gespeicherten Prozedur während des Kopierens von Daten in ein Azure SQL Data Warehouse mithilfe einer Kopieraktivität wird nicht unterstützt. Sie können jedoch mithilfe der Aktivität „Gespeicherte Prozedur“ eine gespeicherte Prozedur in einem SQL Data Warehouse aufrufen. 
 >  
 > Beim Kopieren von Daten aus Azure SQL-Datenbank, SQL Server oder Azure SQL Data Warehouse können Sie **SqlSource** in der Kopieraktivität für das Aufrufen einer gespeicherten Prozedur zum Lesen von Daten aus der Quelldatenbank mit der **sqlReaderStoredProcedureName**-Eigenschaft konfigurieren. Weitere Informationen finden Sie in den folgenden Artikeln zu Connectors: [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties).          
 
@@ -223,7 +222,7 @@ In der exemplarischen Vorgehensweise weist die Aktivität der gespeicherten Proz
 ## <a name="chaining-with-other-activities"></a>Verketten mit anderen Aktivitäten
 Wenn Sie eine Upstreamaktivität mit dieser Aktivität verketten möchten, geben Sie die Ausgabe der Upstreamaktivität als Eingabe dieser Aktivität an. Wenn Sie dies tun, wird die Aktivität der gespeicherten Prozedur erst ausgeführt, wenn die Upstreamaktivität abgeschlossen wurde und das Ausgabedataset der Upstreamaktivität verfügbar ist (sich im Status „Bereit“ befindet). Sie können Ausgabedatasets mehrerer Upstreamaktivitäten als Eingabedatasets der Aktivität der gespeicherten Prozedur angeben. Wenn Sie dies tun, wird die Aktivität der gespeicherten Prozedur erst ausgeführt, wenn alle Slices der Eingabedatasets verfügbar sind.  
 
-Im folgenden Beispiel lautet die Ausgabe der Kopieraktivität „OutputDataset“. Dies ist eine Eingabe der Aktivität der gespeicherten Prozedur. Aus diesem Grund wird die Aktivität der gespeicherten Prozedur erst ausgeführt, wenn die Kopieraktivität abgeschlossen wurde und das OutputDataset-Slice verfügbar ist (sich im Status „Bereit“ befindet). Wenn Sie mehrere Eingabedatasets angeben, wird die Aktivität der gespeicherten Prozedur erst ausgeführt, wenn alle Slices der Eingabedatasets verfügbar sind (sich im Status „Bereit“ befinden). Die Eingabedatasets können nicht direkt als Parameter für die Aktivität der gespeicherten Prozedur verwendet werden. 
+Im folgenden Beispiel lautet die Ausgabe der Kopieraktivität wie folgt: „OutputDataset“. Dies ist eine Eingabe der Aktivität der gespeicherten Prozedur. Aus diesem Grund wird die Aktivität der gespeicherten Prozedur erst ausgeführt, wenn die Kopieraktivität abgeschlossen wurde und das OutputDataset-Slice verfügbar ist (sich im Status „Bereit“ befindet). Wenn Sie mehrere Eingabedatasets angeben, wird die Aktivität der gespeicherten Prozedur erst ausgeführt, wenn alle Slices der Eingabedatasets verfügbar sind (sich im Status „Bereit“ befinden). Die Eingabedatasets können nicht direkt als Parameter für die Aktivität der gespeicherten Prozedur verwendet werden. 
 
 Weitere Informationen zum Verketten von Aktivitäten finden Sie unter [Mehrere Aktivitäten in einer Pipeline](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline).
 
@@ -311,12 +310,12 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| name | Der Name der Aktivität |Ja |
+| name | Der Name der Aktivität |JA |
 | Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein  |
-| type | Muss festgelegt sein auf: **SqlServerStoredProcedure** | Ja |
+| type | Muss festgelegt werden auf: **SqlServerStoredProcedure** | JA |
 | inputs | Optional. Wenn Sie ein Eingabedataset angeben, muss es (im Status „Bereit“) verfügbar sein, damit die Aktivität „Gespeicherte Prozedur“ ausgeführt wird. Das Eingabedataset kann nicht als Parameter in der gespeicherten Prozedur genutzt werden. Es wird nur verwendet, um vor dem Start der Aktivität „Gespeicherte Prozedur“ die Abhängigkeit zu überprüfen. |Nein  |
-| outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |Ja |
-| storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank oder dem Azure SQL Data Warehouse oder der SQL Server-Datenbank an, die bzw. das vom verknüpften Dienst dargestellt wird, den die Ausgabetabelle verwendet. |Ja |
+| outputs | Sie müssen ein Ausgabedataset für eine Aktivität „Gespeicherte Prozedur“ angeben. Das Ausgabedataset gibt den **Zeitplan** für die Aktivität „Gespeicherte Prozedur“ an (stündlich, wöchentlich, monatlich usw.). <br/><br/>Das Ausgabedataset muss einen **verknüpften Dienst** verwenden, der auf eine Azure SQL-Datenbank, ein Azure SQL Data Warehouse oder eine SQL Server-Datenbank verweist, in der bzw. dem die gespeicherte Prozedur ausgeführt werden soll. <br/><br/>Das Ausgabedataset kann verwendet werden, um das Ergebnis der gespeicherten Prozedur für die nachfolgende Verarbeitung durch eine andere Aktivität in der Pipeline zu übergeben ([Verketten von Aktivitäten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)). Data Factory schreibt die Ausgabe einer gespeicherten Prozedur jedoch nicht automatisch in dieses Dataset. Die gespeicherte Prozedur schreibt die Ausgabe in eine SQL-Tabelle, auf die das Ausgabedataset verweist. <br/><br/>In einigen Fällen kann das Ausgabedataset ein **Dummy-Dataset** sein, das nur dazu dient, den Zeitplan für die Ausführung der Aktivität „Gespeicherte Prozedur“ anzugeben. |JA |
+| storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank oder dem Azure SQL Data Warehouse oder der SQL Server-Datenbank an, die bzw. das vom verknüpften Dienst dargestellt wird, den die Ausgabetabelle verwendet. |JA |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein  |
 
 ## <a name="passing-a-static-value"></a>Übergeben eines statischen Werts

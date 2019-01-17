@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145832"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016766"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
@@ -171,7 +170,7 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 - Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
 - Zertifikate mit CNG-Schlüsseln werden nicht unterstützt.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Häufig gestellte Frage: Wann sollte ich diese Verschlüsselung nicht aktivieren?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Häufig gestellte Fragen: Wann sollte ich diese Verschlüsselung nicht aktivieren?
 Das Aktivieren der Verschlüsselung kann einen gewissen Aufwand für Ihre Infrastruktur (die das öffentliche Zertifikat besitzt) bedeuten, daher sollten Sie in den folgenden Fällen auf das Aktivieren der Verschlüsselung verzichten:
 - Wenn Integration Runtime in einem vertrauenswürdigen Netzwerk oder einem Netzwerk mit transparenter Verschlüsselung wie IP/SEC ausgeführt wird. Da diese Kanalkommunikation auf Ihr vertrauenswürdiges Netzwerk beschränkt ist, ist eventuell keine zusätzliche Verschlüsselung erforderlich.
 - Wenn Integration Runtime nicht in einer Produktionsumgebung ausgeführt wird. Dies hilft bei der Reduzierung des Aufwands für TLS/SSL-Zertifikate.

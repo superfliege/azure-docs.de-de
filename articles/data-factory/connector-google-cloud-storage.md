@@ -1,0 +1,178 @@
+---
+title: Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie mithilfe von Azure Data Factory Daten aus Google Cloud Storage in unterstützte Senkendatenspeicher kopieren.
+services: data-factory
+author: linda33wj
+manager: craigg
+ms.reviewer: douglasl
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+ms.date: 12/20/2018
+ms.author: jingwang
+ms.openlocfilehash: b829528daeeb49be9b46206d8ae0add88c4441bd
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54068938"
+---
+# <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory
+
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Google Cloud Storage zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+
+## <a name="supported-capabilities"></a>Unterstützte Funktionen
+
+Sie können Daten aus Google Cloud Storage in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+
+Der Google Cloud Storage-Connector unterstützt insbesondere das Kopieren von Dateien im jeweiligen Zustand oder Analysieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md).
+
+>[!NOTE]
+>Beim Kopieren von Daten aus Google Cloud Storage wird der [Amazon S3-Connector](connector-amazon-simple-storage-service.md) mit dem entsprechenden benutzerdefinierten S3-Endpunkt genutzt, da Google Cloud Storage über S3-kompatible Interoperabilität verfügt.
+
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
+
+Um Daten aus Google Cloud Storage zu kopieren, müssen Sie sicherstellen, dass Ihnen die folgenden Berechtigungen erteilt wurden:
+
+- **Für die Ausführung der Kopieraktivität:** `s3:GetObject` und `s3:GetObjectVersion` für Objektvorgänge.
+- **Für das Erstellen mit der Data Factory-Benutzeroberfläche:** Berechtigungen `s3:ListAllMyBuckets` und `s3:ListBucket`/`s3:GetBucketLocation` für Bucketvorgänge sind zusätzlich erforderlich für Vorgänge wie das Testen der Verbindung und das Durchsuchen/Navigieren in Dateipfaden. Wenn Sie diese Berechtigung nicht erteilen möchten, überspringen Sie die Testverbindung auf der Seite zur Erstellung verlinkter Dienste, und geben Sie den Pfad direkt in den Dataseteinstellungen an.
+
+## <a name="getting-started"></a>Erste Schritte
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
+
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Google Cloud Storage-spezifischen Data Factory-Entitäten verwendet werden.
+
+## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
+
+Folgende Eigenschaften werden für den mit Google Cloud Storage verknüpften Dienst unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft muss auf **AmazonS3** festgelegt werden. | JA |
+| accessKeyId | ID des geheimen Zugriffsschlüssels. Den Zugriffsschlüssel und das Geheimnis finden Sie unter **Google Cloud Storage** > **Einstellungen** > **Interoperabilität**. |JA |
+| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |JA |
+| serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt als **`https://storage.googleapis.com`** an. | JA |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+
+Beispiel: 
+
+```json
+{
+    "name": "GoogleCloudStorageLinkedService",
+    "properties": {
+        "type": "AmazonS3",
+        "typeProperties": {
+            "accessKeyId": "<access key id>",
+            "secretAccessKey": {
+                "type": "SecureString",
+                "value": "<secret access key>"
+            },
+            "serviceUrl": "https://storage.googleapis.com"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+## <a name="dataset-properties"></a>Dataset-Eigenschaften
+
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste mit Eigenschaften, die vom Google Cloud Storage-Dataset unterstützt werden.
+
+Legen Sie zum Kopieren von Daten aus Google Cloud Storage die type-Eigenschaft des Datasets auf **AmazonS3Object** fest. Folgende Eigenschaften werden unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AmazonS3Object** |JA |
+| bucketName | Der Name des S3-Buckets. Der Platzhalterfilter wird nicht unterstützt. |Ja für die Copy/Lookup-Aktivität, Nein für die GetMetadata-Aktivität |
+| key | Der **Name oder Platzhalterfilter** des S3-Objektschlüssels unter dem angegebenen Bucket. Ist nur anwendbar, wenn die prefix-Eigenschaft nicht angegeben ist. <br/><br/>Der Platzhalterfilter wird nur für den Dateinamen, aber nicht für den Ordner unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen).<br/>- Beispiel 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- Beispiel 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält. |Nein  |
+| prefix | Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Ist nur anwendbar, wenn die key-Eigenschaft nicht angegeben ist. |Nein  |
+| Version | Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |Nein  |
+| modifiedDatetimeStart | Dateifilterung basierend auf dem Attribut: Letzte Änderung. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein  |
+| modifiedDatetimeEnd | Dateifilterung basierend auf dem Attribut: Letzte Änderung. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird.  Wenn `modifiedDatetimeStart` den datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist.  Wenn `modifiedDatetimeEnd` den datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein  |
+| format | Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Folgende Typen werden unterstützt: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**.<br/>Folgende Ebenen werden unterstützt: **Optimal** und **Fastest**. |Nein  |
+
+>[!TIP]
+>Um alle Dateien in einem Ordner zu kopieren, geben Sie **bucketName** für den Bucket und **prefix** für den Ordner an.<br>Um eine einzelne Datei mit einem angegebenen Namen zu kopieren, geben Sie **bucketName** für den Bucket und **key** für den Ordner mit dem Dateinamen an.<br>Um eine Teilmenge der Dateien in einem Ordner zu kopieren, geben Sie **bucketName** für den Bucket und **key** für den Ordner mit dem Platzhalterfilter an.
+
+**Beispiel: Verwenden eines Präfixes**
+
+```json
+{
+    "name": "GoogleCloudStorageDataset",
+    "properties": {
+        "type": "AmazonS3Object",
+        "linkedServiceName": {
+            "referenceName": "<linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "bucketName": "testbucket",
+            "prefix": "testFolder/test",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "rowDelimiter": "\n"
+            },
+            "compression": {
+                "type": "GZip",
+                "level": "Optimal"
+            }
+        }
+    }
+}
+```
+
+## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
+
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste mit den Eigenschaften, die von der Google Cloud Storage-Quelle unterstützt werden.
+
+### <a name="google-cloud-storage-as-source"></a>Google Cloud Storage als Quelle
+
+Wenn Sie Daten aus Google Cloud Storage kopieren möchten, müssen Sie den Quelltyp in der Kopieraktivität auf **FileSystemSource** festlegen. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+|:--- |:--- |:--- |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **FileSystemSource** |JA |
+| recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein  |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromGoogleCloudStorage",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "FileSystemSource",
+                "recursive": true
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).

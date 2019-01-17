@@ -9,17 +9,16 @@ ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3f234e49f1a28fd0881e47ede13ae72483ed31f3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053115"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025418"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]
@@ -110,7 +109,7 @@ Klicken Sie auf die Option **Pipeline öffnen**, um alle Aktivitäten anzuzeigen
 
 ![Menü "Pipeline öffnen"](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es mit der Kopieraktivität nur eine Aktivität. 
+In der geöffneten Pipelineansicht sehen Sie alle Aktivitäten in der Pipeline. In diesem Beispiel gibt es nur eine Aktivität: die Kopieraktivität. 
 
 ![Geöffnete Pipeline](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -146,7 +145,7 @@ Im Popupfenster „Aktivitätsfenster“ und im Aktivitätsfenster-Explorer kön
 
 ![Aktivitätsfenster-Explorer, Pfeile nach links/rechts](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-Am unteren Rand der Diagrammansicht sehen Sie die Schaltflächen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ und „Layout sperren“. Mit der Schaltfläche **Layout sperren** können Sie verhindern, dass Sie versehentlich Tabellen und Pipelines in der Diagrammansicht verschieben. Diese Funktion ist standardmäßig aktiviert. Sie können sie deaktivieren und Entitäten im Diagramm verschieben. Wenn Sie sie deaktivieren, können Sie die letzte Schaltfläche verwenden, um Tabellen und Pipelines automatisch zu positionieren. Sie können mithilfe des Mausrads auch vergrößern oder verkleinern.
+Unten in der Diagrammansicht werden die folgenden Schaltflächen angezeigt: Vergrößern, Verkleinern, Mit Zoom anpassen, Zoom: 100, Layout sperren. Mit der Schaltfläche **Layout sperren** können Sie verhindern, dass Sie versehentlich Tabellen und Pipelines in der Diagrammansicht verschieben. Diese Funktion ist standardmäßig aktiviert. Sie können sie deaktivieren und Entitäten im Diagramm verschieben. Wenn Sie sie deaktivieren, können Sie die letzte Schaltfläche verwenden, um Tabellen und Pipelines automatisch zu positionieren. Sie können mithilfe des Mausrads auch vergrößern oder verkleinern.
 
 ![Diagrammansicht, Zoombefehle](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -291,7 +290,7 @@ In demselben Fenster können Sie Filter auch aufheben. Um alle Filter für die L
 Wählen Sie ein Aktivitätsfenster aus, klicken Sie für die erste Befehlsleisten-Schaltfläche auf den Pfeil nach unten, und wählen Sie **Erneut ausführen** / **Rerun with upstream in pipeline** (Mit Upstream in der Pipeline erneut ausführen) aus. Wenn Sie die Option **Rerun with upstream in pipeline** (Mit Upstream in der Pipeline erneut ausführen) auswählen, werden alle Upstream-Aktivitätsfenster ebenfalls erneut ausgeführt.
     ![Erneutes Ausführen eines Aktivitätsfensters](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-Sie können auch mehrere Aktivitätsfenster in der Liste auswählen und diese gleichzeitig wiederholen. Sie können Aktivitätsfenster basierend auf dem Status (z.B. **Fehlerhaft**) filtern und das fehlerhafte Aktivitätsfenster erneut ausführen, nachdem Sie das Problem behoben haben, das den Fehler des Aktivitätsfensters verursacht hat. Im folgenden Abschnitt finden Sie Details zum Filtern von Aktivitätsfenstern in der Liste.  
+Sie können auch mehrere Aktivitätsfenster in der Liste auswählen und diese gleichzeitig wiederholen. Es kann auch sein, dass Sie Aktivitätsfenster nach dem Status filtern (z.B. **Fehler**) und anschließend die Aktivitätsfenster mit den Fehlern erneut ausführen möchten, nachdem Sie das Problem behoben haben, das den Fehler für die Aktivitätsfenster verursacht hat. Im folgenden Abschnitt finden Sie Details zum Filtern von Aktivitätsfenstern in der Liste.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Anhalten/Fortsetzen mehrerer Pipelines
 Mithilfe der STRG-TASTE können Sie mehrere Pipelines auswählen. Sie können die Schaltflächen auf der Befehlsleiste (in der folgenden Abbildung durch ein rotes Rechteck gekennzeichnet) verwenden, um sie anzuhalten bzw. fortzusetzen.

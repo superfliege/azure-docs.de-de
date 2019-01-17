@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: twhitney
-ms.openlocfilehash: 587ba52a1a30d187268119567b84d2dd8e471b8d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300590"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063827"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -330,6 +330,61 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 </ServiceManifestImport>
 ```
 
+### <a name="configure-cluster-wide-credentials"></a>Konfigurieren von Anmeldeinformationen für den gesamten Cluster
+
+Ab Version 6.3 der Runtime können Sie mit Service Fabric Anmeldeinformationen konfigurieren, die für den gesamten Cluster gelten und von Anwendungen als Standardanmeldeinformationen für Repositorys verwendet werden können.
+
+Sie können das Feature aktivieren bzw. deaktivieren, indem Sie in der Datei „ApplicationManifest.xml“ dem `ContainerHostPolicies`-Element das Attribut `UseDefaultRepositoryCredentials` mit dem Wert `true` oder `false` hinzufügen.
+
+```xml
+<ServiceManifestImport>
+    ...
+    <Policies>
+        <ContainerHostPolicies CodePackageRef="Code" UseDefaultRepositoryCredentials="true">
+            <PortBinding ContainerPort="80" EndpointRef="Guest1TypeEndpoint"/>
+        </ContainerHostPolicies>
+    </Policies>
+    ...
+</ServiceManifestImport>
+```
+
+In Service Fabric werden die Standardanmeldeinformationen für Repositorys dann verwendet, und Sie können sie im ClusterManifest im Abschnitt `Hosting` angeben.  Wenn `UseDefaultRepositoryCredentials` auf `true` festgelegt ist, liest Service Fabric die folgenden Werte aus dem ClusterManifest:
+
+* DefaultContainerRepositoryAccountName (Zeichenfolge)
+* DefaultContainerRepositoryPassword (Zeichenfolge)
+* IsDefaultContainerRepositoryPasswordEncrypted (Boolescher Wert)
+* DefaultContainerRepositoryPasswordType (Zeichenfolge) – Wird ab Version 6.4 der Runtime unterstützt
+
+Hier ist ein Beispiel dafür angegeben, was Sie in der Datei „ClusterManifestTemplate.json“ im Abschnitt `Hosting` hinzufügen können. Weitere Informationen finden Sie unter [Ändern von Azure Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md) und [Verwalten von Azure Service Fabric-Anwendungsgeheimnissen](service-fabric-application-secret-management.md).
+
+```json
+      {
+        "name": "Hosting",
+        "parameters": [
+          {
+            "name": "EndpointProviderEnabled",
+            "value": "true"
+          },
+          {
+            "name": "DefaultContainerRepositoryAccountName",
+            "value": "someusername"
+          },
+          {
+            "name": "DefaultContainerRepositoryPassword",
+            "value": "somepassword"
+          },
+          {
+            "name": "IsDefaultContainerRepositoryPasswordEncrypted",
+            "value": "false"
+          },
+          {
+            "name": "DefaultContainerRepositoryPasswordType",
+            "value": "PlainText"
+          }
+        ]
+      },
+```
+
 ## <a name="configure-isolation-mode"></a>Isolationsmodus konfigurieren
 Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. Mit dem Prozessisolationsmodus verwenden alle auf demselben Host ausgeführten Container denselben Kernel wie der Host. Mit dem Hyper-V-Isolationsmodus werden die Kernels der einzelnen Hyper-V-Container und des Containerhosts voneinander getrennt. Der Isolationsmodus wird im `ContainerHostPolicies`-Element der Anwendungsmanifestdatei angegeben. Als Isolationsmodi können `process`, `hyperv` und `default` angegeben werden. In der Voreinstellung wird auf Windows Server-Hosts der Prozessisolationsmodus verwendet. Auf Windows 10-Hosts wird nur der Hyper-V-Isolationsmodus unterstützt, daher wird der Container im Hyper-V-Isolationsmodus unabhängig von der Einstellung für den Isolationsmodus ausgeführt. Im folgenden Codeausschnitt wird gezeigt, wie der Isolationsmodus in der Anwendungsmanifestdatei angegeben wird.
 
@@ -342,7 +397,7 @@ Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. M
    >
 
 ## <a name="configure-resource-governance"></a>Konfigurieren der Ressourcenkontrolle
-Die [Ressourcenkontrolle](service-fabric-resource-governance.md) beschränkt die Ressourcen, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, werden Ressourceneinschränkungen für ein Dienstcodepaket deklariert. Ressourceneinschränkungen können für die folgenden Ressourcen festgelegt werden: Arbeitsspeicher, MemorySwap, CpuShares (relative CPU-Gewichtung), MemoryReservationInMB, BlkioWeight (relative BlockIO-Gewichtung). In diesem Beispiel erhält das Dienstpaket „Guest1Pkg“ einen Kern auf den Clusterknoten, auf denen es platziert wurde. Die Einschränkungen des Arbeitsspeichers sind absolut, daher ist das Codepaket auf 1024 MB Arbeitsspeicher (sowie eine weiche Reservierungsgarantie desselben) beschränkt. Codepakete (Container oder Prozesse) können nicht mehr Arbeitsspeicher zuzuweisen, als dieser Grenzwert zulässt, ein entsprechender Versuch führt daher zu einer Ausnahme „Nicht genügend Arbeitsspeicher“. Damit die Erzwingung des Ressourcenlimits funktioniert, sollten für alle Codepakete innerhalb eines Dienstpakets Arbeitsspeicherlimits festgelegt sein.
+Die [Ressourcenkontrolle](service-fabric-resource-governance.md) beschränkt die Ressourcen, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, werden Ressourceneinschränkungen für ein Dienstcodepaket deklariert. Ressourcenlimits können für die folgenden Ressourcen festgelegt werden: Arbeitsspeicher, MemorySwap, CpuShares (relative CPU-Gewichtung), MemoryReservationInMB, BlkioWeight (relative BlockIO-Gewichtung). In diesem Beispiel erhält das Dienstpaket „Guest1Pkg“ einen Kern auf den Clusterknoten, auf denen es platziert wurde. Die Einschränkungen des Arbeitsspeichers sind absolut, daher ist das Codepaket auf 1024 MB Arbeitsspeicher (sowie eine weiche Reservierungsgarantie desselben) beschränkt. Codepakete (Container oder Prozesse) können nicht mehr Arbeitsspeicher zuzuweisen, als dieser Grenzwert zulässt, ein entsprechender Versuch führt daher zu einer Ausnahme „Nicht genügend Arbeitsspeicher“. Damit die Erzwingung des Ressourcenlimits funktioniert, sollten für alle Codepakete innerhalb eines Dienstpakets Arbeitsspeicherlimits festgelegt sein.
 
 ```xml
 <ServiceManifestImport>
@@ -386,9 +441,9 @@ Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ei
 
 Klicken Sie auf **Veröffentlichen**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Navigieren Sie in einem Browser zu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, und führen Sie die Anwendungsbereitstellung durch. Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Image auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Navigieren Sie in einem Browser zu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, und führen Sie die Anwendungsbereitstellung durch. Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Images auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
 
-Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Bereit][2]
+Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Bereit][2].
 
 Öffnen Sie einen Browser, und navigieren Sie zu http://containercluster.westus2.cloudapp.azure.com:8081. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 

@@ -9,20 +9,19 @@ ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c6751a0432d66aee0ff3056b212dc1b348e333f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4059d8d2f6020a23e3593bb906c2e3fc64a4779e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045825"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025588"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Dienstes aus, den Sie verwenden:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-on-premises-mongodb-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-mongodb.md)
 
@@ -37,7 +36,7 @@ Sie können Daten aus einer lokalen MongoDB-Datenbank in beliebige unterstützte
 ## <a name="prerequisites"></a>Voraussetzungen
 Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Datenbank herstellen kann, müssen die folgenden Komponenten installiert werden:
 
-- Diese MongoDB-Versionen werden unterstützt: 2.4, 2.6, 3.0, 3.2, 3.4 und 3.6.
+- Diese MongoDB-Versionen werden unterstützt:  2.4, 2.6, 3.0, 3.2, 3.4 und 3.6.
 - Datenverwaltungsgateway auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. Schritt-für-Schritt-Anweisungen zum Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
     Beim Installieren des Gateways wird automatisch ein Microsoft MongoDB-ODBC-Treiber installiert, der zum Herstellen einer Verbindung mit MongoDB verwendet wird.
@@ -48,9 +47,9 @@ Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Da
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen MongoDB-Datenspeicher verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
 
@@ -58,7 +57,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen MongoDB-Datenspeicher verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus MongoDB in ein Azure-Blob](#json-example-copy-data-from-mongodb-to-azure-blob). 
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen MongoDB-Datenspeicher verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus MongoDB in ein Azure-Blob](#json-example-copy-data-from-mongodb-to-azure-blob) in diesem Artikel. 
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für MongoDB-Quellen verwendet werden:
 
@@ -67,15 +66,15 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf **OnPremisesMongoDb** |Ja |
-| server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesMongoDb**. |JA |
+| server |IP-Adresse oder Hostname des MongoDB-Servers |JA |
 | port |Der TCP-Port, den der MongoDB-Server verwendet, um auf Clientverbindungen zu lauschen |Optional, Standardwert: 27017 |
-| authenticationType |Basic oder Anonymous |Ja |
+| authenticationType |Basic oder Anonymous |JA |
 | username |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | password |Kennwort für den Benutzer |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | authSource |Der Name der MongoDB-Datenbank, die Sie zum Überprüfen Ihrer Anmeldeinformationen zur Authentifizierung verwenden möchten |Optional (wenn die Standardauthentifizierung verwendet wird). Standardwert: verwendet das Administratorkonto und die Datenbank, die mit der databaseName-Eigenschaft angegeben wird |
-| databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |Ja |
-| gatewayName |Der Name des Gateways, das auf den Datenspeicher zugreift |Ja |
+| databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |JA |
+| gatewayName |Der Name des Gateways, das auf den Datenspeicher zugreift |JA |
 | encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden |Optional |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -100,7 +99,7 @@ Bei einer Quelle des Typs **MongoDbSource** sind im Abschnitt „typeProperties�
 
 
 
-## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus MongoDB in Azure-Blob
+## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus MongoDB in ein Azure-Blob
 Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Es wird gezeigt, wie Sie Daten aus einer lokalen MongoDB in eine Azure Blob Storage-Instanz kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
@@ -152,7 +151,7 @@ Als ersten Schritt richten Sie das Datenverwaltungsgateway gemäß den Anweisung
 }
 ```
 
-**MongoDB-Eingabedataset**. Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+**MongoDB-Eingabedataset:** Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass die Tabelle für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 ```json
 {
@@ -174,7 +173,7 @@ Als ersten Schritt richten Sie das Datenverwaltungsgateway gemäß den Anweisung
 
 **Azure-Blob-Ausgabedataset:**
 
-Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
 ```json
 {
@@ -310,7 +309,7 @@ Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen 
 > [!NOTE]
 > Weitere Informationen zur Unterstützung für Arrays mit virtuellen Tabellen finden Sie im Abschnitt [Unterstützung für komplexe Typen mit virtuellen Tabellen](#support-for-complex-types-using-virtual-tables) unten.
 
-Die folgenden MongoDB-Datentypen werden derzeit nicht unterstützt: DBPointer, JavaScript, MaxKey/MinKey, Regular Expression, Symbol, Timestamp, Undefined
+Die folgenden MongoDB-Datentypen werden derzeit nicht unterstützt: „DBPointer“, „JavaScript“, „MaxKey/MinKey“, „Regular Expression“, „Symbol“, „Timestamp“, „Undefined“.
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>Unterstützung für komplexe Typen mit virtuellen Tabellen
 Azure Data Factory verwendet einen integrierten ODBC-Treiber, um eine Verbindung mit der MongoDB-Datenbank herzustellen und Daten daraus zu kopieren. Für komplexe Typen wie Arrays oder Objekte mit unterschiedlichen Typen in den Dokumenten renormalisiert der Treiber die Daten in die entsprechenden virtuellen Tabellen. Wenn eine Tabelle solche Spalten enthält, generiert der Treiber die folgenden virtuellen Tabellen:

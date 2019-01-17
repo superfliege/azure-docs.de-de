@@ -9,17 +9,16 @@ ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f68e1077ebc26245b25eae3b0310db74b6d1357e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4d3c67974bc1dd0e52d3de457071d550a6379e36
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046444"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023085"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in den Azure Search-Index mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,9 +38,9 @@ Das Datenverwaltungsgateway verbindet die lokalen Datenquellen mit Cloud-Dienste
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem Quelldatenspeicher per Push in den Azure Search-Index überträgt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools für das Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt: 
 
@@ -49,7 +48,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten in den Azure Search-Index verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer lokalen SQL Server-Instanz in den Azure Search-Index](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index). 
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem Azure Search-Index verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer lokalen SQL Server-Instanz in den Azure Search-Index](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index) in diesem Artikel. 
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Azure Search-Index verwendet werden:
 
@@ -59,9 +58,9 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
-| type | Die Typeigenschaft muss auf **AzureSearch** festgelegt werden. | Ja |
-| URL | URL für den Azure Search-Dienst. | Ja |
-| key | Admin-Schlüssel für den Azure Search-Dienst. | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch**. | JA |
+| URL | URL für den Azure Search-Dienst. | JA |
+| key | Admin-Schlüssel für den Azure Search-Dienst. | JA |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
@@ -69,8 +68,8 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
-| type | Die Typeigenschaft muss auf **AzureSearchIndex** eingestellt sein.| Ja |
-| IndexName | Name eines Azure Search-Index. Data Factory erstellt den Index nicht. Der Index muss in Azure Search vorhanden sein. | Ja |
+| type | Die Typeigenschaft muss auf **AzureSearchIndex** eingestellt sein.| JA |
+| IndexName | Name eines Azure Search-Index. Data Factory erstellt den Index nicht. Der Index muss in Azure Search vorhanden sein. | JA |
 
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
@@ -89,7 +88,7 @@ AzureSearchSink fügt Daten ein/aktualisiert beim Schreiben von Daten. Dies bede
 AzureSearchSink bietet die folgenden zwei Verhalten zum Einfügen/Aktualisieren (mithilfe des Azure Search SDK):
 
 - **Merge** (Zusammenführen): kombiniert alle Spalten im neuen Dokument mit dem bestehenden. Bei Spalten mit Null-Wert im neuen Dokument wird der Wert im bestehenden Dokument beibehalten.
-- **Hochladen**: das neue Dokument ersetzt das bestehende. Bei Spalten, die nicht im neuen Dokument angegeben werden, wird der Wert auf Null gesetzt, unabhängig davon, ob ein Null-Wert im bestehenden Dokument vorhanden ist oder nicht.
+- **Hochladen**: Das neue Dokument ersetzt das bestehende. Bei Spalten, die nicht im neuen Dokument angegeben werden, wird der Wert auf Null gesetzt, unabhängig davon, ob ein Null-Wert im bestehenden Dokument vorhanden ist oder nicht.
 
 Das Standardverhalten ist **Merge**.
 

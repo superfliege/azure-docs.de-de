@@ -9,17 +9,16 @@ ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299859"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014680"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Verschieben von Daten mit der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +78,7 @@ Die Kopieraktivität in Data Factory kopiert die Daten aus einem Quelldatenspeic
 ### <a name="supported-file-formats"></a>Unterstützte Dateiformate
 Sie können mit der Kopieraktivität **Dateien unverändert zwischen zwei dateibasierten Datenspeichern kopieren** und den [Formatabschnitt](data-factory-create-datasets.md) in den Definitionen von Eingabe- und Ausgabedatasets überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
 
-Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: **Text, JSON, Avro, ORC und Parquet**. Außerdem unterstützt sie folgende Komprimierungscodecs: **„GZip“, „Deflate“, „BZip2“ und „ZipDeflate“**. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md).
+Die Kopieraktivität liest auch aus Dateien der angegebenen Formate bzw. schreibt in diese Dateien: **Text, JSON, Avro, ORC und Parquet** sowie die Komprimierungscodecs **GZip, Deflate, BZip2 und ZipDeflate** werden unterstützt. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md).
 
 Sie können z.B. folgende Kopieraktivitäten ausführen:
 
@@ -139,7 +138,7 @@ Sie können eine Pipeline mit einer Kopieraktivität auf verschiedene Arten erst
 Der Data Factory-Kopier-Assistent unterstützt Sie beim Erstellen einer Pipeline mit einer Kopieraktivität. Diese Pipeline ermöglicht das Kopieren von Daten aus unterstützten Quellen an Ziele *ohne das Schreiben von JSON-Definitionen* für verknüpfte Dienste, Datasets und Pipelines. Unter [Assistent zum Kopieren in Data Factory](data-factory-copy-wizard.md) finden Sie Einzelheiten zum Assistenten.  
 
 ### <a name="by-using-json-scripts"></a>Mithilfe von JSON-Skripts
-Sie können den Data Factory-Editor im Azure-Portal, Visual Studio oder Azure PowerShell verwenden, um eine JSON-Definition für eine Pipeline (mit Kopieraktivität) zu erstellen. Anschließend können Sie diese bereitstellen, um die Pipeline in Data Factory zu erstellen. Unter [Tutorial: Verwenden der Kopieraktivität in einer Azure Data Factory-Pipeline](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie ein Tutorial mit Schrittanleitungen.    
+Sie können den Data Factory-Editor im Azure-Portal, Visual Studio oder Azure PowerShell verwenden, um eine JSON-Definition für eine Pipeline (mit Kopieraktivität) zu erstellen. Anschließend können Sie diese bereitstellen, um die Pipeline in Data Factory zu erstellen. Unter [Tutorial: Verwenden der Kopieraktivität in einer Azure Data Factory-Pipeline](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie ein Tutorial mit Schritt-für-Schritt-Anleitungen.    
 
 JSON-Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar. Die Eigenschaften, die im Abschnitt `typeProperties` der Aktivität verfügbar sind, variieren je nach Aktivitätstyp.
 
