@@ -1,27 +1,8 @@
 ---
-title: 'Nutzen eines Studio-Webdiensts mit einer Web-App-Vorlage: Azure Machine Learning Studio | Microsoft-Dokumentation'
-description: Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen.
-keywords: Webdienst, Operationalisierung, REST-API, Machine Learning
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273883"
+Titel: Nutzen eines Studio-Webdiensts mit einer Web-App-Vorlage titleSuffix: Azure Machine Learning Studio Beschreibung: Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 20.03.2017
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Verwenden eines Azure Machine Learning Studio-Webdiensts mit einer Web-App-Vorlage
 

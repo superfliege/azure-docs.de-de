@@ -1,26 +1,8 @@
 ---
-title: Häufig gestellte Fragen (FAQs) zu Machine Learning Studio – Azure | Microsoft-Dokumentation
-description: Azure Machine Learning Studio Häufig gestellte Fragen (FAQs) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.
-keywords: Einführung in maschinelles Lernen,Vorhersagemodellierung,was ist maschinelles Lernen
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/02/2017
-ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091284"
+Titel: Häufig gestellte Fragen (FAQs) zu Machine Learning Studio titleSuffix: Azure Machine Learning Studio Beschreibung: „Azure Machine Learning Studio: Häufig gestellte Fragen (FAQs) zu Abrechnung, Funktionen und Einschränkungen von Clouddiensten für die optimierte Vorhersagemodellierung.“
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: conceptual
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02.06.2017
 ---
 # <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio FAQ: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.

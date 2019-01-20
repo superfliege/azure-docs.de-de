@@ -3,9 +3,9 @@ title: Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
 description: Erfahren Sie mehr über alle Funktionen im Threat Modeling Tool
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8bbc13aa77c50c6ae02ecc67869035e7ec85effa
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "26754744"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359339"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
@@ -119,7 +119,7 @@ Wenn Sie die App zu öffnen, wird der Bildschirm **Willkommen** angezeigt.
 
 ### <a name="open-a-model"></a>Öffnen eines Modells
 
-Bewegen Sie den Mauszeiger über der Schaltfläche **Modell öffnen**, um zwei Optionen anzuzeigen: **Auf diesem Computer öffnen** und **Auf OneDrive öffnen**. Mit der ersten Option wird der Bildschirm **Datei öffnen** angezeigt. Die zweite Option führt Sie durch den Anmeldevorgang für OneDrive. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
+Zeigen Sie auf **Modell öffnen** um zwei Optionen anzuzeigen: **Auf diesem Computer öffnen** und **Auf OneDrive öffnen**. Mit der ersten Option wird der Bildschirm **Datei öffnen** angezeigt. Die zweite Option führt Sie durch den Anmeldevorgang für OneDrive. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
 
 ![Modell öffnen](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -139,15 +139,15 @@ Beim Öffnen oder Erstellen eines neuen Modells wird die **Entwurfsansicht** ge�
 
 Sie können dem Raster Elemente auf zwei Arten hinzufügen:
 
-- **Drag &amp; Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
-- **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Kontextmenü. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
+- **Drag &amp; Drop**:  Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
+- **Klicken mit der rechten Maustaste**:  Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Kontextmenü. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
 
 ### <a name="connect-elements"></a>Verbinden von Elementen
 
 Sie können Elemente auf zwei Arten verbinden:
 
-- **Drag &amp; Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
-- **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
+- **Drag &amp; Drop**:  Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
+- **Klicken bei gedrückter UMSCHALTTASTE**:  Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
 
 ### <a name="properties"></a>Eigenschaften
 

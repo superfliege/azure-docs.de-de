@@ -8,20 +8,20 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 790f49f0fae98162b3443c78d813b1070e4514a0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063912"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303886"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Tutorial zu Azure Log Integration: Verarbeiten von Azure Key Vault-Ereignissen mithilfe von Event Hubs
 
 >[!IMPORTANT]
-> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
+> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads wurden am 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
 
 Sie können die Azure-Protokollintegration verwenden, um protokollierte Ereignisse abzurufen und sie Ihrem Sicherheits- und Ereignisverwaltungssystem (SIEM) zur Verfügung zu stellen. Dieses Tutorial veranschaulicht anhand eines Beispiels, wie Sie über Azure Event Hubs bezogene Protokolle mithilfe der Azure-Protokollintegration verarbeiten können.
 
@@ -56,21 +56,21 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
  
 1. Ein System mit Zugriff auf das Internet, das die Voraussetzungen für die Installation der Azure-Protokollintegration erfüllt. Das System kann sich auf einem Clouddienst befinden oder lokal gehostet sein.
 
-1. [Azure-Protokollintegration](https://www.microsoft.com/download/details.aspx?id=53324) muss installiert sein. So installieren Sie sie:
+1. Azure-Protokollintegration installiert. So installieren Sie sie:
 
    a. Stellen Sie über Remotedesktop eine Verbindung zu dem in Schritt 2 erwähnten System her.   
-   b. Kopieren Sie das Installationsprogramm für die Azure-Protokollintegration auf das System. Sie können [die Installationsdateien herunterladen](https://www.microsoft.com/download/details.aspx?id=53324).   
-   c. Starten Sie das Installationsprogramm, und akzeptieren Sie die Microsoft-Software-Lizenzbedingungen.   
-   d. Wenn Sie Telemetriedaten bereitstellen möchten, lassen Sie das Kontrollkästchen aktiviert. Wenn Sie keine Nutzungsinformationen an Microsoft senden möchten, deaktivieren Sie das Kontrollkästchen.
-   
+   b. Kopieren Sie das Installationsprogramm für die Azure-Protokollintegration auf das System. c. Starten Sie das Installationsprogramm, und akzeptieren Sie die Microsoft-Software-Lizenzbedingungen.
+
+1. Wenn Sie Telemetriedaten bereitstellen möchten, lassen Sie das Kontrollkästchen aktiviert. Wenn Sie keine Nutzungsinformationen an Microsoft senden möchten, deaktivieren Sie das Kontrollkästchen.
+
    Weitere Informationen zur Azure-Protokollintegration und zur Installation finden Sie unter [Azure-Protokollintegration mit Azure-Diagnoseprotokollierung und Windows-Ereignisweiterleitung](security-azure-log-integration-get-started.md).
 
 1. Die neueste Version von PowerShell
- 
+
    Wenn Sie Windows Server 2016 installiert haben, haben Sie mindestens PowerShell 5.0. Wenn Sie eine andere Version von Windows Server verwenden, haben Sie möglicherweise eine frühere Version von PowerShell installiert. Sie können die Version überprüfen, indem Sie in einem PowerShell-Fenster ```get-host``` eingeben. Wenn Sie nicht PowerShell 5.0 installiert haben, können Sie [es herunterladen](https://www.microsoft.com/download/details.aspx?id=50395).
 
    Nachdem Sie mindestens PowerShell 5.0 haben, können Sie damit fortfahren, die neueste Version zu installieren:
-   
+
    a. Geben Sie in einem PowerShell-Fenster den Befehl ```Install-Module Azure``` ein. Führen Sie die Installationsschritte durch.    
    b. Geben Sie den Befehl ```Install-Module AzureRM``` ein. Führen Sie die Installationsschritte durch.
 

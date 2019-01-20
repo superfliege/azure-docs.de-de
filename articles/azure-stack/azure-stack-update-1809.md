@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f4a1bf9e2fee9278713315c98f25dbc820a553a1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077962"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352409"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
@@ -134,7 +134,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Installieren Sie das neueste Azure Stack-Hotfix für 1808, bevor Sie 1809 anwenden. Weitere Informationen finden Sie hier: [KB 4481066 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/).
+- Installieren Sie das neueste Azure Stack-Hotfix für 1808, bevor Sie 1809 anwenden. Weitere Informationen finden Sie hier: [KB 4481066 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). Zwar empfiehlt Microsoft den neuesten verfügbaren Hotfix, doch ist die mindestens erforderliche Version für die Installation von 1809 1.1808.5.110.
 
   > [!TIP]  
   > Abonnieren Sie die folgenden *RRS*- oder *Atom*-Feeds, um im Hinblick auf Azure Stack-Hotfixes auf dem neuesten Stand zu bleiben:
@@ -252,6 +252,8 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 ### <a name="compute"></a>Compute
 
+- Beim Erstellen eines [virtuellen Computers der Dv2-Serie](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) gestatten Ihnen D11-14v2 VMs das Erstellen von 4, 8, 16 bzw. 32 Datenträgern. Im Bereich „VM erstellen“ werden jedoch 8, 16, 32 und 64 Datenträger angezeigt.
+
 <!-- 3235634 – IS, ASDK -->
 - Um VMs mit Größen bereitzustellen, die das Suffix **v2** enthalten – z.B. **Standard_A2_v2** –, geben Sie das Suffix mit klein geschriebenem „v“ an: **Standard_A2_v2**. Verwenden Sie nicht **Standard_A2_V2** mit groß geschriebenem „V“. Dies funktioniert in der globalen Azure-Umgebung und ist eine Inkonsistenz in Azure Stack.
 
@@ -286,7 +288,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 <!-- 3507629 - IS, ASDK --> 
 - Managed Disks erstellt zwei neue [Computekontingenttypen](azure-stack-quota-types.md#compute-quota-types) zur Begrenzung der maximalen Kapazität von verwalteten Datenträgern, die bereitgestellt werden können. Standardmäßig werden für jeden Kontingenttyp von verwalteten Datenträgern 2.048 GiB zugeordnet. Allerdings können die folgenden Probleme auftreten:
 
-   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das "Managed Disks"-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
+   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das „Managed Disks“-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
    - Wenn Sie den Kontingentwert auf „0“ aktualisieren, entspricht dies dem Standardwert 2.048 GiB. Als Problemumgehung können Sie den Kontingentwert auf „1“ festlegen.
 
 <!-- TBD - IS ASDK --> 

@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 6eb7993b4dbec3ab4901dc7071d18eae98ab8ae4
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079254"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267730"
 ---
 > [!NOTE]
 > Mehrteilige Anforderungen umfassen in der Regel drei Informationselemente:
@@ -26,11 +26,11 @@ ms.locfileid: "54079254"
 >
 > **Content-Type** und **Content-Disposition** variieren je nach Verwendungsszenario.
 
-Mehrteilige Anforderungen können programmgesteuert vorgenommen werden (über C#), über einen REST-Client oder Tools wie z.B. [Postman](https://www.getpostman.com/). REST-Clienttools weisen möglicherweise verschiedene Ebenen der Unterstützung für komplexe mehrteiligen Anforderungen auf. Überprüfen Sie, welches Tool am besten für Ihre Anforderungen geeignet ist.
+Mehrteilige Anforderungen können programmgesteuert vorgenommen werden (über C#), über einen REST-Client oder Tools wie z.B. [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). REST-Clienttools weisen möglicherweise verschiedene Ebenen der Unterstützung für komplexe mehrteiligen Anforderungen auf. Konfigurationseinstellungen können von Tool zu Tool leicht variieren. Überprüfen Sie, welches Tool am besten für Ihre Anforderungen geeignet ist.
 
 > [!IMPORTANT]
-> Mehrteilige Anforderungen an Verwaltungs-APIs von Azure Digital Twins bestehen aus zwei Teilen:
-> * Blobmetadaten (z.B. ein zugeordneter MIME-Typ), der von **Content-Type** und **Content-Disposition** deklariert wird.
+> Mehrteilige Anforderungen an Verwaltungs-APIs von Azure Digital Twins bestehen normalerweise aus zwei Teilen:
+> * Blobmetadaten (z.B. ein zugeordneter MIME-Typ), der von **Content-Type** und/oder **Content-Disposition** deklariert wird.
 > * Blobinhalt einschließlich der unstrukturierten Inhalte einer hochzuladenden Datei
 >
 > Bei **PATCH**-Anforderungen wird keiner der beiden Teile benötigt. Bei **POST**- oder Erstellungsvorgängen werden dagegen beide Teile benötigt.

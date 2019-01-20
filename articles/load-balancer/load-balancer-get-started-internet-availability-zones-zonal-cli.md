@@ -1,9 +1,11 @@
 ---
-title: Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI einen öffentlichen Standard-Lastenausgleich mit einem Zonen-Front-End erstellen.
+title: Erstellen eines Load Balancers mit einem Zonen-Front-End – Azure CLI
+titlesuffix: Azure Load Balancer
+description: Erfahren Sie, wie Sie einen Load Balancer Standard mit einem Zonen-Front-End mithilfe der Azure CLI erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -11,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 3a0fc37b8e2865163ae6c55813d145a568d796e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c9926b78955a193f750c1e5ca3ff7461b4192df5
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414481"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247009"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Erstellen eines Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
 
-In diesem Artikel wird die Erstellung eines öffentlichen [Standard-Lastenausgleichs](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End erläutert. Ein Zonen-Front-End bedeutet, dass alle eingehenden oder ausgehenden Datenflüsse von einer einzelnen Zone in einer Region verarbeitet werden. Sie können einen Lastenausgleich mit einem Zonen-Front-End erstellen, indem Sie eine öffentliche Standard-IP-Adresse in einer Zone in der jeweiligen Front-End-Konfiguration verwenden. Um zu verstehen, wie Verfügbarkeitszonen mit dem Standard-Lastenausgleich arbeiten, lesen Sie [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md). 
+In diesem Artikel wird die Erstellung eines öffentlichen [Load Balancers Standard](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End erläutert. Ein Zonen-Front-End bedeutet, dass alle eingehenden oder ausgehenden Datenflüsse von einer einzelnen Zone in einer Region verarbeitet werden. Sie können einen Lastenausgleich mit einem Zonen-Front-End erstellen, indem Sie eine öffentliche Standard-IP-Adresse in einer Zone in der jeweiligen Front-End-Konfiguration verwenden. Um zu verstehen, wie Verfügbarkeitszonen mit dem Standard-Lastenausgleich arbeiten, lesen Sie [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md). 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

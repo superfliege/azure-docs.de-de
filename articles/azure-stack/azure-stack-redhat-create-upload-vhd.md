@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 397f07c23d1c272e540741a339b57a8e1bcce198
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9b8c44cd0afa7e156cfa7a20ff47316fa5242d7
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104011"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320615"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Vorbereiten eines auf Red Hat basierenden virtuellen Computers für Azure Stack
 
@@ -670,6 +670,6 @@ Weitere Informationen finden Sie unter [Erneutes Erstellen von „initramfs“](
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können jetzt mit Ihrer Red Hat Enterprise Linux-VHD-Datei neue virtuelle Azure-Computer in Azure Stack erstellen. Ist dies das erste Mal, dass Sie die VHD-Datei in Azure Stack hochladen, finden Sie weitere Informationen unter [Erstellen und Veröffentlichen von Marketplace-Elementen mithilfe des Marketplace-Toolkits](azure-stack-marketplace-publisher.md).
+Sie können jetzt mit Ihrer Red Hat Enterprise Linux-VHD-Datei neue virtuelle Azure-Computer in Azure Stack erstellen. Ist dies das erste Mal, dass Sie die VHD-Datei in Azure Stack hochladen, finden Sie weitere Informationen unter [Erstellen und Veröffentlichen eines Marketplace-Elements](azure-stack-create-and-publish-marketplace-item.md).
 
 Weitere Informationen zu Hypervisoren, die zum Ausführen von Red Hat Enterprise Linux zertifiziert sind, finden Sie auf der [Red Hat-Website](https://access.redhat.com/certified-hypervisors).

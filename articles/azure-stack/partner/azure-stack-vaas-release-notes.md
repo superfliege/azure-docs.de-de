@@ -13,18 +13,35 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106272"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319647"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Versionshinweise zu Validation-as-a-Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Dieser Artikel enthält die Versionshinweise zu Validation-as-a-Service in Azure Stack.
+
+## <a name="version-402"></a>Version 4.0.2
+
+7. Januar 2019
+
+Wenn Sie den Workflow für die monatliche Updateüberprüfung für Azure Stack ausführe, und die Version für Ihr OEM-Updatepaket nicht 1810 oder höher ist, erhalten Sie einen Fehler, sobald Sie zum Schritt für das OEM-Update gelangen. Dies ist ein Fehler. Eine Korrektur wird derzeit entwickelt. Die Schritte zur Behebung sehen wie folgt aus:
+
+1.  Führen Sie das OEM-Update wie gewohnt aus.
+2.  Führen Sie nach der erfolgreichen Anwendung des Pakets „Test-AzureStack“ aus, und speichern Sie die Ausgabe.
+3.  Brechen Sie den Test ab.
+4.  Senden Sie die gespeicherte Ausgabe an VaaSHelp@microsoft.com, um erfolgreiche Ergebnisse für die Ausführung zu erhalten.
+
+## <a name="version-402"></a>Version 4.0.2
+
+30. November 2018
+
+- Interne Fehlerkorrekturen
 
 ## <a name="version-401"></a>Version 4.0.1
 

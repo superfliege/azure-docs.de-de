@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 01/16/2019
 ms.author: sethm
-ms.openlocfilehash: 570c1adc2f4615e78cbe5656c13b0e22b863baf7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3fcbf2b3160d57e56a59ba9c374c9b1b2a75a159
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192663"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330244"
 ---
 # <a name="store-service-principal-credentials-in-key-vault"></a>Speichern von Dienstprinzipal-Anmeldeinformationen in Key Vault
 
@@ -83,7 +83,7 @@ Gehen Sie folgendermaßen vor, um einen Schlüsseltresor zu erstellen:
 
 2. Wählen Sie im Bereich **Geheimnis** die Option **Generieren/importieren** aus.
 
-3. Wählen Sie im Bereich **Geheimnis erstellen** in der Liste der Optionen **Manuell** aus.
+3. Wählen Sie im Bereich **Geheimnis erstellen** in der Liste der Optionen **Manuell** aus. Wenn Sie den Dienstprinzipal mithilfe von Zertifikaten erstellt haben, wählen Sie die Zertifikate aus der Dropdownliste aus, und laden Sie dann die Datei hoch.
 
 4. Geben Sie als Namen für Ihren Schlüssel die **Anwendungs-ID** ein, die Sie vom Dienstprinzipal kopiert haben. Schlüsselnamen dürfen nur alphanumerische Zeichen und Bindestriche (-) enthalten.
 

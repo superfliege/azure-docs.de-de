@@ -1,27 +1,8 @@
 ---
-title: 'Algorithmusbeispiele: Azure Machine Learning Studio| Microsoft-Dokumentation'
-description: Eine einfach verständliche Übersicht über Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Die herunterladbare Infografik behandelt die meisten Fragen zu maschinellem Lernen.
-keywords: Grundlagen des maschinellen Lernens,Algorithmusbeispiele,maschinelles Lernen für Einsteiger,Fragen zu maschinellem Lernen,verbreitete Algorithmen,Infografik zu Algorithmen
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodc18
-ms.author: garye
-editor: cgronlun
-ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.openlocfilehash: df628447a441d1580fa1a3862275f2b461f8d18a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275736"
+Titel: Algorithmusbeispiele titleSuffix: Azure Machine Learning Studio Beschreibung: Eine einfach verständliche Übersicht über Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Die herunterladbare Infografik behandelt die meisten Fragen zu maschinellem Lernen.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+Autor: garyericson ms.author: garye ms.custom: seodc18 ms.date: 18.12.2017
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen von Machine Learning mit Algorithmusbeispielen
 Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von Machine Learning herunter, um die gängigen Algorithmen für häufige Fragen zu Machine Learning zu identifizieren. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.

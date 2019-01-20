@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104208"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262607"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -126,12 +126,9 @@ Die Konnektivitätsprüfung wird durch das Herstellen einer Verbindung mit einer
 
 Der Collector stellt eine Verbindung mit vCenter Server her und fragt VM-Metadaten und Leistungsindikatoren ab. Für das Herstellen der Verbindung benötigen Sie Folgendes:
 
-- Nur die vCenter Server-Versionen 5.5, 6.0 und 6.5 werden unterstützt.
+- Nur die vCenter Server-Versionen 5.5, 6.0, 6.5 und 6.7 werden unterstützt.
 - Für die Ermittlung benötigen Sie ein schreibgeschütztes Konto mit den nachfolgend zusammengefassten Berechtigungen. Für die Ermittlung sind nur die Rechenzentren zugänglich, auf die mit dem Konto zugegriffen werden kann.
 - Sie stellen standardmäßig über einen FQDN oder eine IP-Adresse eine Verbindung mit vCenter Server her. Wenn vCenter Server auf einem anderen Port lauscht, stellen Sie mithilfe des Formulars *IPAddress:Port_Number* oder *FQDN:Port_Number* eine Verbindung her.
-- Die Statistikeinstellungen für vCenter Server müssen auf Ebene 3 festgelegt sein, damit Leistungsdaten für Speicher und Netzwerk gesammelt werden können.
-- Bei einer niedrigeren Ebene ist eine Ermittlung möglich, die Leistungsdaten werden jedoch nicht gesammelt. Einige Leistungsindikatoren werden möglicherweise gesammelt, andere werden jedoch auf 0 (null) festgelegt.
-- Wenn keine Leistungsdaten für Speicher und Netzwerk gesammelt werden, werden die Größenempfehlungen für die Bewertung basierend auf Leistungsdaten für CPU und Arbeitsspeicher sowie auf Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 - Der Collector benötigt eine „Sichtverbindung“ mit dem vCenter-Server über das Netzwerk.
 
 #### <a name="account-permissions"></a>Kontoberechtigungen

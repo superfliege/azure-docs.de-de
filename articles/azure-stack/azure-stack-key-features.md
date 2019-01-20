@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/14/2019
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.reviewer: unknown
+ms.openlocfilehash: 1b533c945fdcfc3d1072a7d8a513126ca3f1f72a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185731"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303583"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
 Wenn Sie mit Microsoft Azure Stack noch nicht vertraut sind, können diese Begriffe und Featurebeschreibungen möglicherweise hilfreich sein.
@@ -129,23 +129,13 @@ Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. 
 Der KeyVault-Ressourcenanbieter stellt die Verwaltung und Überwachung von Geheimnissen wie Kennwörtern und Zertifikaten bereit. Beispielsweise kann ein Mandant den KeyVault-Ressourcenanbieter während der Bereitstellung eines virtuellen Computers zum Angeben von Administratorkennwörtern oder Schlüsseln verwenden.
 
 ## <a name="high-availability-for-azure-stack"></a>Hochverfügbarkeit für Azure Stack
-*Anwendungsbereich: Azure Stack 1802 oder höhere Versionen*
+Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren VMs in Azure werden die VMs in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) angeordnet, um sie auf mehrere Fehlerdomänen und Updatedomänen zu verteilen. Im kleineren Rahmen von Azure Stack ist eine Fehlerdomäne in einer Verfügbarkeitsgruppe als einzelner Knoten in der Skalierungseinheit definiert.  
 
-Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren VMs in Azure werden die VMs in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen und Updatedomänen zu verteilen. Auf diese Weise werden [in Verfügbarkeitsgruppen bereitgestellte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) in separaten Serverracks physisch voneinander isoliert, um Ausfallresilienz zu ermöglichen. Dies ist im folgenden Diagramm dargestellt:
-
-  ![Azure Stack-Hochverfügbarkeit](media/azure-stack-key-features/high-availability.png)
-
-### <a name="availability-sets-in-azure-stack"></a>Verfügbarkeitsgruppen in Azure Stack
 Die Infrastruktur von Azure Stack verfügt zwar bereits über Resilienz gegenüber Ausfällen, aber bei einem Hardwarefehler kommt es bei der zugrunde liegenden Technologie (Failoverclustering) für VMs auf einem betroffenen physischen Server trotzdem noch zu Ausfallzeiten. Azure Stack unterstützt die Verwendung einer Verfügbarkeitsgruppe mit maximal drei Fehlerdomänen, um Konsistenz mit Azure zu erzielen.
 
 - **Fehlerdomänen**: In einer Verfügbarkeitsgruppe angeordnete VMs werden physisch voneinander isoliert, indem sie so gleichmäßig wie möglich auf mehrere Fehlerdomänen (Azure Stack-Knoten) verteilt werden. Bei einem Hardwarefehler werden VMs aus der betroffenen Fehlerdomäne in anderen Fehlerdomänen neu gestartet. Dies sind nach Möglichkeit aber Fehlerdomänen, die von den anderen VMs in derselben Verfügbarkeitsgruppe getrennt sind. Nachdem die Hardware wieder in den Onlinezustand versetzt wurde, wird für die VMs ein neuer Ausgleichsvorgang durchgeführt, um die Hochverfügbarkeit sicherzustellen. 
  
 - **Updatedomänen**: Updatedomänen sind ein anderes Azure-Konzept, mit dem für Hochverfügbarkeit in Verfügbarkeitsgruppen gesorgt wird. Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die zur gleichen Zeit gewartet werden kann. VMs in derselben Updatedomäne werden während einer geplanten Wartung gemeinsam neu gestartet. Wenn Mandanten VMs in einer Verfügbarkeitsgruppe erstellen, werden die VMs von der Azure-Plattform automatisch auf diese Updatedomänen verteilt. In Azure Stack wird für VMs eine Livemigration über die anderen Onlinehosts im Cluster durchgeführt, bevor der zugrunde liegende Host aktualisiert wird. Da es während eines Hostupdates nicht zu Mandantenausfallzeiten kommt, ist das Updatedomänenfeature in Azure Stack nur für die Vorlagenkompatibilität mit Azure vorhanden. 
-
-### <a name="upgrade-scenarios"></a>Upgradeszenarien 
-VMs in Verfügbarkeitsgruppen, die vor Azure Stack-Version 1802 erstellt wurden, erhalten eine Standardanzahl von Fehler- und Updatedomänen (1 und 1). Zur Erreichung der Hochverfügbarkeit für VMs in diesen bereits vorhandenen Verfügbarkeitsgruppen müssen Sie zuerst die vorhandenen VMs löschen und dann mit der richtigen Anzahl von Fehler- und Updatedomänen in einer neuen Verfügbarkeitsgruppe erneut bereitstellen. Dies ist unter [Ändern der Verfügbarkeitsgruppe für einen virtuellen Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set) beschrieben. 
-
-Für VM-Skalierungsgruppen wird eine Verfügbarkeitsgruppe intern mit einer Standardanzahl von Fehler- und Updatedomänen erstellt (3 bzw. 5). Alle VM-Skalierungsgruppen, die vor Update 1802 erstellt wurden, werden in einer Verfügbarkeitsgruppe mit der Standardanzahl von Fehler- und Updatedomänen (1 und 1) angeordnet. Gehen Sie wie folgt vor, um diese VM-Skalierungsgruppeninstanzen zu aktualisieren und die neuere Verteilung zu erreichen: Skalieren Sie die VM-Skalierungsgruppen horizontal um die Anzahl von Instanzen hoch, die vor Update 1802 vorhanden waren, und löschen Sie anschließend die älteren Instanzen der VM-Skalierungsgruppen. 
 
 ## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung
 Mit der rollenbasierten Zugriffssteuerung (Role Based Access Control, RBAC) können Sie autorisierten Benutzern, Gruppen und Diensten Systemzugriff gewähren, indem Sie ihnen Rollen auf Abonnement-, Ressourcengruppen- oder Ressourcenebene zuweisen. Jede Rolle definiert die Zugriffsebene, die ein Benutzer, eine Gruppe oder ein Dienst auf Microsoft Azure Stack-Ressourcen hat.

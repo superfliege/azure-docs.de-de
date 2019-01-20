@@ -8,23 +8,24 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051327"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358149"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installieren des Chef-Clients aus dem Azure-Portal
-Beim Erstellen oder Ändern einer Linux- oder Windows-VM im Azure-Portal können Sie dem virtuellen Computer die Chef-Erweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch diesen Prozess.
+Im Azure-Portal können Sie einem Linux- oder Windows-Computer direkt die Chef-Clienterweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch den Prozess.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 - **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-- **Chef**: Wenn Sie nicht über ein aktives Chef-Konto verfügen, melden Sie sich für eine [kostenlose Testversion von Hosted Chef](https://manage.chef.io/signup) an. Um die Anweisungen in diesem Artikel zu befolgen, benötigen Sie die folgenden Werte aus Ihrem Chef-Konto: 
-    - organization_validation-Schlüssel
-    - rb
-    - run_list
+- **Chef**: Wenn Sie nicht über ein aktives Chef-Konto verfügen, melden Sie sich für eine [kostenlose Testversion von Hosted Chef](https://manage.chef.io/signup) an. Um die Anweisungen in diesem Artikel zu befolgen, benötigen Sie die folgenden Werte aus Ihrem Chef-Konto:
+  - organization_validation-Schlüssel
+  - rb
+  - run_list
 
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Installieren der Chef-Erweiterung auf einen neuen virtuellen Linux-Computer
 In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu erstellen. Während des Prozesses sehen Sie auch, wie die Chef-Erweiterung auf dem neuen virtuellen Computer installiert wird.
@@ -81,13 +82,13 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
 
 1. Geben Sie auf der Registerkarte **Erweiterung installieren** die folgenden Werte an, und wählen Sie dann **OK** aus.
 
-    - **URL des Chef-Servers:** Geben Sie die URL des Chef-Servers ein, die den Namen der Organisation enthält, z.B. *https://api.chef.io/organization/hessco*.
+    - **URL des Chef-Servers:** Geben Sie die URL des Chef-Servers ein, die den Namen der Organisation enthält, z.B. *https://api.chef.io/organization/mycompany*.
     - **Chef-Knotenname**: Geben Sie den Namen des Chef-Knotens ein. Dies kann ein beliebiger Wert sein.
     - **Ausführungsliste**: Geben Sie die Chef-Ausführungsliste ein, die dem Computer hinzugefügt wird. Dieser Wert kann leer bleiben.
     - **Name des Überprüfungsclients**: Geben Sie den Namen des Chef-Überprüfungsclients ein. Beispiel: *Tarcher-Validierungssteuerelement*.
-    - **Validierungsschlüssel**: Wählen Sie eine Datei aus, die den Validierungsschlüssel enthält, der beim Bootstrapping Ihrer Computer verwendet wird. 
+    - **Validierungsschlüssel**: Wählen Sie eine Datei aus, die den Validierungsschlüssel enthält, der beim Bootstrapping Ihrer Computer verwendet wird.
     - **Clientkonfigurationsdatei**: Wählen Sie eine Konfigurationsdatei für den Chef-Client aus. Dieser Wert kann leer bleiben.
-    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer bleiben. Bei einem leeren Wert wird die neueste Version installiert. 
+    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer bleiben. Bleibt der Wert leer, wird die aktuelle Version installiert.
     - **SSL-Überprüfungsmodus**: Wählen Sie entweder **Keine** oder **Peer**. Für die Demo wurde *Keine* ausgewählt.
     - **Chef-Umgebung**: Geben Sie die Chef-Umgebung ein, in der dieser Knoten ein Mitglied sein sollte. Dieser Wert kann leer bleiben.
     - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer Zugriff haben sollte. Dieser Wert kann leer bleiben.
@@ -106,4 +107,5 @@ Wenn der Prozess zum Erstellen und Bereitstellen der VM mit der Chef-Erweiterung
 ![Installieren des Chef-Servers auf einem virtuellen Linux-Computer](./media/chef-extension-portal/resource-created.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen eines virtuellen Windows-Computers in Azure mithilfe von Chef](/azure/virtual-machines/windows/chef-automation)
+
+- [Erstellen eines virtuellen Windows-Computers in Azure mithilfe von Chef](/azure/virtual-machines/windows/chef-automation)
