@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 03acd7c283fd1296af06dd19d0170a4b3c65eeb3
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621971"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352494"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
@@ -61,19 +61,19 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Azure Active Directory**.
    
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Wählen Sie auf der Seite **Azure Active Directory** die Option **App-Registrierungen**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
 3. Wählen Sie auf der Seite **App-Registrierungen** die Option **Registrierung einer neuen Anwendung**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. Führen Sie auf der Seite **Erstellen** die folgenden Schritte aus:
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. Geben Sie im Textfeld **Name** Folgendes ein: `Reporting API application`.
 
@@ -94,7 +94,7 @@ Abhängig von der API, auf die Sie zugreifen möchten, müssen Sie Ihrer App die
 | Microsoft Graph | Alle Überwachungsprotokolldaten lesen |
 
 
-![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 Im folgenden Abschnitt werden die Schritte für beide APIs aufgelistet. Wenn Sie nicht auf eine der APIs zugreifen möchten, können Sie die zugehörigen Schritte überspringen.
 
@@ -102,45 +102,45 @@ Im folgenden Abschnitt werden die Schritte für beide APIs aufgelistet. Wenn Sie
 
 1. Wählen Sie Ihre Anwendung auf der Seite **App-Registrierungen** aus, und wählen Sie dann die Option **Einstellungen**. 
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
 2. Klicken Sie auf der Seite **Einstellungen** auf **Erforderliche Berechtigungen**. 
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
 3. Klicken Sie auf der Seite **Erforderliche Berechtigungen** in der **API**-Liste auf **Microsoft Azure Active Directory**. 
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
 4. Wählen Sie auf der Seite **Zugriff aktivieren** die Option **Verzeichnisdaten lesen** aus, und deaktivieren Sie **Anmelden und Benutzerprofil lesen**. 
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
 5. Klicken Sie auf der Symbolleiste am oberen Rand auf **Speichern**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 6. Klicken Sie auf der Seite **Erforderliche Berechtigungen** auf der Symbolleiste am oberen Rand auf **Hinzufügen**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/32.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/32.png)
 
 7. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **API auswählen**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/31.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/31.png)
 
 8. Klicken Sie auf der Seite **API auswählen** auf **Microsoft Graph** und dann auf **Auswählen**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/33.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/33.png)
 
 9. Wählen Sie auf der Seite **Zugriff aktivieren** die Option **Alle Überwachungsprotokolldaten lesen** aus, und klicken Sie dann auf **Auswählen**.  
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/34.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/34.png)
 
 10. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **Fertig**.  
 
 11. Klicken Sie auf der Seite **Erforderliche Berechtigungen** auf der Symbolleiste am oberen Rand auf **Berechtigungen erteilen** und dann auf **Ja**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/17.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/17.png)
 
 
 ## <a name="gather-configuration-settings"></a>Erfassen von Konfigurationseinstellungen 
@@ -159,11 +159,11 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Azure Active Directory**.
    
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Wählen Sie auf der Seite **Azure Active Directory** die Option **Benutzerdefinierte Domänennamen**.
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. Kopieren Sie Ihren Domänennamen aus der Liste der Domänen.
 
@@ -174,13 +174,13 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 1. Klicken Sie im linken Navigationsbereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**.
    
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Wählen Sie Ihre Anwendung auf der Seite **App-Registrierungen** aus.
 
 3. Navigieren Sie auf der Anwendungsseite zu **Anwendungs-ID**, und wählen Sie die Option **Click to copy** (Zum Kopieren klicken).
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>Abrufen des geheimen Clientschlüssels der Anwendung
@@ -190,21 +190,21 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
 
 1. Klicken Sie im linken Navigationsbereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**.
    
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Wählen Sie Ihre Anwendung auf der Seite **App-Registrierungen** aus.
 
 3. Wählen Sie auf der Anwendungsseite oben in der Symbolleiste die Option **Einstellungen**. 
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
 4. Klicken Sie auf der Seite **Einstellungen** im Abschnitt **API-Zugriff** auf **Schlüssel**. 
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. Führen Sie auf der Seite **Schlüssel** die folgenden Schritte durch:
 
-    ![Anwendung registrieren](./media/howto-configure-prerequisites-for-reporting-api/14.png)
+    ![Register application (Anwendung registrieren)](./media/howto-configure-prerequisites-for-reporting-api/14.png)
 
     a. Geben Sie im Textfeld **Beschreibung** Folgendes ein: `Reporting API`.
 
@@ -214,6 +214,42 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
 
     d. Kopieren Sie den Schlüsselwert.
 
+## <a name="troubleshoot-errors-in-the-reporting-api"></a>Beheben von Fehlern in der Berichterstellungs-API
+
+In diesem Abschnitt werden die häufigsten Fehlermeldungen aufgeführt, die beim Zugreifen auf Aktivitätsberichte über die Microsoft Graph-API auftreten können, sowie Schritte zu deren Behebung.
+
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 HTTP: Interner Serverfehler beim Zugriff auf den Microsoft Graph V2-Endpunkt.
+
+Der Microsoft Graph v2-Endpunkt wird zurzeit nicht unterstützt. Stellen Sie sicher, dass Sie auf die Aktivitätsprotokolle mit dem Microsoft Graph v1-Endpunkt zugreifen.
+
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Fehler Fehler beim Abrufen von Benutzerrollen aus AD Graph
+
+Sie erhalten diese Fehlermeldung ggf. beim Versuch, auf Anmeldungen mithilfe des Graph-Explorers zuzugreifen. Stellen Sie sicher, dass Sie mit Ihrem Konto über beide Anmeldeschaltflächen in der Benutzeroberfläche des Graph-Explorers angemeldet sind, wie in der folgenden Abbildung gezeigt. 
+
+![Graph-Tester](./media/troubleshoot-graph-api/graph-explorer.png)
+
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Fehler Fehler beim Überprüfen der Premium-Lizenz aus AD Graph 
+
+Wenn Sie diese Fehlermeldung beim Versuch erhalten, auf Anmeldungen mithilfe des Graph-Explorers zuzugreifen, wählen Sie **Berechtigungen ändern** unter Ihrem Konto im linken Navigationsbereich aus, und wählen Sie dann **Tasks.ReadWrite** und **Directory.Read.All** aus. 
+
+![Benutzeroberfläche zum Ändern von Berechtigungen](./media/troubleshoot-graph-api/modify-permissions.png)
+
+
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Fehler Kein Mandant ist B2C, oder der Mandant besitzt keine Premium-Lizenz
+
+Für den Zugriff auf Anmeldeberichte ist eine Azure Active Directory Premium 1-Lizenz (P1) erforderlich. Wenn diese Fehlermeldung beim Zugriff auf Anmeldungen angezeigt wird, stellen Sie sicher, dass Ihr Mandant mit einer Azure AD P1-Lizenz lizenziert ist.
+
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Fehler Der Benutzer gehört nicht den zulässigen Rollen an 
+
+Wenn Sie diese Fehlermeldung sehen, während Sie versuchen, über die API auf Überwachungsprotokolle oder Anmeldungen zuzugreifen, stellen Sie sicher, dass Ihr Konto Teil der Rolle **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Berichtsleser** in Ihrem Azure Active Directory-Mandanten ist. 
+
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fehler Der Anwendung fehlt die AAD-Berechtigung „Verzeichnisdaten lesen“ 
+
+Führen Sie die Schritte unter [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) aus, um sicherzustellen, dass die Anwendung mit dem richtigen Berechtigungssatz ausgeführt wird. 
+
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Fehler Der Anwendung fehlt die Berechtigung „Alle Überwachungsprotokolldaten lesen“ der MSGraph-API
+
+Führen Sie die Schritte unter [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) aus, um sicherzustellen, dass die Anwendung mit dem richtigen Berechtigungssatz ausgeführt wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Wiederherstellen des Systemstatus auf einem Windows-Server'
+title: 'Azure Backup: Wiederherstellen des Systemstatus auf einem Windows Server-Computer'
 description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Systemstatus aus einer Sicherung in Azure.
 services: backup
 author: saurabhsensharma
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 31784c44d7561c690278aa4764e98992fbca73ae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0b880d77004013d3b3eb1999b7e9344577b9fb4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230783"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266483"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -157,7 +157,7 @@ Nachdem Sie mit dem Azure Recovery Services-Agent den Systemstatus als Dateien w
 
 10. Wählen Sie als Speicherort für die Systemstatuswiederherstellung **Ursprünglicher Speicherort** aus, und klicken Sie auf **Weiter**.
 
-11. Überprüfen Sie die Details zur Bestätigung und die Neustarteinstellungen, und klicken Sie auf **Wiederherstellen**, um die wiederhergestellten Systemstatusdateien anzuwenden.
+11. Überprüfen Sie die Bestätigungsdetails und die Neustarteinstellungen, und klicken Sie dann auf **Wiederherstellen**, um die wiederhergestellten Systemstatusdateien anzuwenden.
 
     ![Wiederherstellung der Systemstatusdateien starten](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 

@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4d1a9696587ae128b35970414c6c8753179c3f81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385124"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332573"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -43,11 +43,11 @@ Sie können Gastbenutzer auch bitten, ihren eigenen Zugriff zu überprüfen. Fü
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Erstellen und Durchführen einer Zugriffsüberprüfung für Gäste
 
-Aktivieren Sie zunächst Zugriffsüberprüfungen, damit diese in den Zugriffsbereichen eines Prüfers angezeigt werden. Als globaler Administrator oder Benutzerkontoadministrator navigieren Sie zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Navigieren Sie zuerst als globaler Administrator oder Benutzerkontoadministrator zur [Seite „Zugriffsüberprüfungen“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), um sicherzustellen, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann. 
 
 Azure AD ermöglicht mehrere Szenarien für die Überprüfung von Gastbenutzern.
 
-Wählen Sie eines der folgenden Szenarien aus:
+Sie können Folgendes überprüfen:
 
  - Eine Gruppe in Azure AD mit mindestens einem Gast als Mitglied
  - Eine mit Azure AD verbundene Anwendung, der mindestens ein Gastbenutzer zugewiesen ist 
@@ -86,7 +86,7 @@ Mithilfe von Zugriffsüberprüfungen können Sie sicherstellen, dass Benutzer, d
 
 1. Um eine Zugriffsüberprüfung für die Anwendung zu starten, geben Sie an, dass die Überprüfung nur Gäste umfasst und die Benutzer ihren eigenen Zugriff überprüfen. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
 
-2. Bitten Sie Gäste, ihren eigenen Zugriff auf die Anwendung zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD mit einem Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](perform-access-review.md).
+2. Bitten Sie Gäste, ihren eigenen Zugriff auf die Anwendung zu überprüfen. Standardmäßig erhält jeder Gast, der eine Einladung angenommen hat, eine E-Mail von Azure AD. Diese E-Mail enthält einen Link zu der Zugriffsüberprüfung im Zugriffsbereich Ihrer Organisation. Azure AD stellt Anweisungen für Gäste bereit, [wie sie ihren Zugriff überprüfen können](perform-access-review.md).
 
 3. Nachdem die Prüfer ihre Einschätzung abgegeben haben, können Sie die Zugriffsüberprüfung beenden und die Änderungen anwenden. Weitere Informationen finden Sie unter [Durchführen einer Zugriffsüberprüfung von Mitgliedern einer Gruppe oder des Benutzerzugriffs auf eine Anwendung mit Azure AD](complete-access-review.md).
 
@@ -109,7 +109,7 @@ In einigen Organisationen sind Gästen ihre Gruppenmitgliedschaften möglicherwe
 > [!NOTE]
 > In früheren Versionen des Azure-Portals war ein Administratorzugriff durch Benutzer mit dem UserType-Wert „Guest“ nicht zulässig. In einigen Fällen hat ein Administrator in Ihrem Verzeichnis möglicherweise den UserType-Wert eines Gasts mithilfe von PowerShell in „Member“ geändert. Wenn diese Änderung zuvor in Ihrem Verzeichnis vorgenommen wurde, enthält die vorherige Abfrage möglicherweise nicht alle Gastbenutzer, die in der Vergangenheit über Administratorrechte verfügten. In diesem Fall müssen Sie entweder den UserType-Wert des Gasts ändern oder den Gast manuell in die Gruppenmitgliedschaft aufnehmen.
 
-1. Erstellen Sie eine Sicherheitsgruppe mit den Gästen als Mitgliedern in Azure AD, wenn noch keine geeignete Gruppe vorhanden ist. Sie können z.B. eine Gruppe mit einer manuell verwalteten Mitgliedschaft von Gästen erstellen. Oder Sie können eine dynamische Gruppe mit einem Namen wie „Gäste von Contoso“ für Benutzer im Contoso-Mandanten erstellen, deren UserType-Attributwert „Guest“ lautet.  Stellen Sie aus Gründen der Effizienz sicher, dass die Gruppe vorwiegend aus Gästen besteht. Wählen Sie keine Gruppe mit Benutzern aus, die nicht überprüft werden müssen.
+1. Erstellen Sie eine Sicherheitsgruppe mit den Gästen als Mitgliedern in Azure AD, wenn noch keine geeignete Gruppe vorhanden ist. Sie können z.B. eine Gruppe mit einer manuell verwalteten Mitgliedschaft von Gästen erstellen. Oder Sie können eine dynamische Gruppe mit einem Namen wie „Gäste von Contoso“ für Benutzer im Contoso-Mandanten erstellen, deren UserType-Attributwert „Guest“ lautet.  Stellen Sie aus Gründen der Effizienz sicher, dass die Gruppe vorwiegend aus Gästen besteht. Wählen Sie keine Gruppe mit Mitgliedsbenutzern aus, da Mitgliedsbenutzer nicht überprüft werden müssen.  Beachten Sie außerdem, dass einem Gastbenutzer, der ein Mitglied der Gruppe ist, die anderen Mitglieder der Gruppe angezeigt werden.
 
 2. Um eine Zugriffsüberprüfung für diese Gruppe zu starten, geben Sie an, dass die Prüfer selbst Mitglieder sind. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](create-access-review.md).
 

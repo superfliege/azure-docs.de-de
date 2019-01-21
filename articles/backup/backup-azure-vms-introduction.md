@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107428"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265412"
 ---
 # <a name="about-azure-vm-backup"></a>Informationen zur Sicherung von Azure-VMs
 
@@ -55,6 +55,10 @@ Um Momentaufnahmen zu erstellen, während Apps ausgeführt werden, erstellt Azur
         [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
         ""USEVSSCOPYBACKUP"="TRUE"
         ```
+        - Führen Sie (als Administrator) an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl aus, um den obigen Registrierungsschlüssel festzulegen:
+          ```
+          REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f
+          ```
 - **Virtuelle Linux-Computer:** Um sicherzustellen, dass Ihre Linux-VMs App-konsistent sind, wenn Azure Backup eine Momentaufnahme erstellt, können Sie das Pre-Skript- und Post-Skript-Framework von Linux verwenden. Sie können eigene benutzerdefinierte Skripts zur Gewährleistung der Konsistenz beim Erstellen einer VM-Momentaufnahme schreiben.
     -  Azure Backup ruft nur von Ihnen geschriebene Pre- und Post-Skripts auf.
     - Wenn das Pre-Skript und das Post-Skript erfolgreich ausgeführt werden, markiert Azure Backup den Wiederherstellungspunkt als anwendungskonsistent. Allerdings sind Sie bei Verwendung benutzerdefinierter Skripts letztendlich für die Anwendungskonsistenz verantwortlich.
@@ -132,11 +136,10 @@ Eine Wiederherstellung umfasst zwei zentrale Vorgänge: Kopieren von Daten aus d
 
 Berücksichtigen Sie beim Konfigurieren von VM-Sicherungen die folgenden bewährten Methoden:
 
-- Aktualisieren Sie Tresore auf den sofortigen Wiederherstellungspunkt. Sehen Sie sich [diese Vorteile](backup-upgrade-to-vm-backup-stack-v2.md) und [Überlegungen](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade) an, und führen Sie anschließend ein Upgrade mithilfe [dieser Anweisungen](backup-upgrade-to-vm-backup-stack-v2.md#upgrade) durch.  
 - Ziehen Sie in Betracht, die Standardeinstellung für die Richtlinienuhrzeit für die Erstellung der Datenmomentaufnahmen zu ändern, um sicherzustellen, dass Ressourcen optimal genutzt werden. Wenn Ihre Richtlinienuhrzeit beispielsweise standardmäßig 00:00 Uhr ist, sollten Sie sie um einige Minuten erhöhen.
 - Bei Premium-VM-Sicherungen ohne das Feature für den sofortigen Wiederherstellungspunkt werden etwa 50 % des gesamten Platzes im Speicherkonto reserviert. Der Backup-Dienst benötigt diesen Speicherplatz, um die Momentaufnahme in dasselbe Speicherkonto zu kopieren und in den Tresor zu übertragen.
 - Zum Wiederherstellen von VMs in einem einzigen Tresor wird dringend empfohlen, verschiedene  [v2-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) zu verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. (Wenn 10 VMs wiederhergestellt werden, sollten Sie die Verwendung von 10 verschiedenen Speicherkonten in Betracht ziehen.)
-- Wiederherstellungen von Speicherebene 1 (Momentaufnahme) werden in wenigen Minuten abgeschlossen (da es sich um dasselbe Speicherkonto handelt). Im Gegensatz dazu kann eine Wiederherstellung von Speicherebene 2 (Tresor) mehrere Stunden dauern. Wir empfehlen Ihnen, das Feature für den [sofortigen Wiederherstellungspunkt](backup-upgrade-to-vm-backup-stack-v2.md) zu verwenden, um eine schnellere Wiederherstellung zu erzielen, wenn Daten auf Ebene 1 verfügbar sind. (Wenn die Daten aus dem Tresor wiederhergestellt werden müssen, dauert dies einige Zeit.)
+- Wiederherstellungen von Speicherebene 1 (Momentaufnahme) werden in wenigen Minuten abgeschlossen (da es sich um dasselbe Speicherkonto handelt). Im Gegensatz dazu kann eine Wiederherstellung von Speicherebene 2 (Tresor) mehrere Stunden dauern. Wir empfehlen Ihnen, das Feature [Sofortige Wiederherstellung](backup-instant-restore-capability.md) zu verwenden, um eine schnellere Wiederherstellung zu erzielen, wenn Daten auf Ebene 1 verfügbar sind. (Wenn die Daten aus dem Tresor wiederhergestellt werden müssen, dauert dies einige Zeit.)
 - Die maximale Anzahl von Datenträgern pro Speicherkonto ist davon abhängig, wie stark durch Anwendungen, die auf IaaS-VMs ausgeführt werden, auf den Datenträger zugegriffen wird. Überprüfen Sie, ob mehrere Datenträger in einem einzelnen Speicherkonto gehostet werden. Wenn 5 bis 10 Datenträger oder mehr in einem einzelnen Speicherkonto vorhanden sind, sollten Sie grundsätzlich die Last ausgleichen, indem Sie einige Datenträger in getrennte Speicherkonten verschieben.
 
 ## <a name="backup-costs"></a>Sicherungskosten

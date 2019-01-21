@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 3c683b24db2899ee680988c7bedc760d6bb8ec73
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fae5b9ee84c9352bbeb6f14b1f3a6006ce4804e8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053265"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261671"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Übermitteln einer großen Anzahl von Aufgaben an einen Batch-Auftrag
 
@@ -45,7 +45,7 @@ Die maximale Größe der Aufgabensammlung, die Sie in einem einzigen Aufruf hinz
 * Die folgenden APIs unterstützen viel größere Aufgabensammlungen – die Anzahl wird nur durch die Verfügbarkeit des Arbeitsspeichers auf dem übermittelnden Client beschränkt. Diese APIs verarbeiten transparent die Unterteilung der Aufgabensammlung in „Blöcke“ für die APIs auf niedrigerer Ebene sowie die Wiederholungen, wenn beim Hinzufügen der Aufgaben ein Fehler auftritt.
 
     * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
-    * [Java-API](/java/api/com.microsoft.azure.batch.protocol._tasks.addcollectionasync?view=azure-java-stable)
+    * [Java-API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
     * [Azure Batch-CLI-Erweiterung](batch-cli-templates.md) mit Batch-CLI-Vorlagen
     * [Python SDK-Erweiterung](https://pypi.org/project/azure-batch-extensions/)
 
@@ -65,7 +65,7 @@ Das Hinzufügen einer großen Sammlung von Aufgaben zu einem Auftrag kann einige
 
 Die folgenden C#-Codeausschnitte zeigen die Einstellungen, die konfiguriert werden müssen, wenn Sie eine große Anzahl von Aufgaben mithilfe der Batch-.NET-API hinzufügen.
 
-Um den Aufgabendurchsatz zu vergrößern, erhöhen Sie den Wert der [MaxDegreeofParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism)-Eigenschaft von [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Beispiel: 
+Um den Aufgabendurchsatz zu steigern, erhöhen Sie den Wert der [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism)-Eigenschaft von [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Beispiel: 
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()

@@ -1,6 +1,6 @@
 ---
 title: Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“
-description: Verwenden Sie die Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“, um ein Multi-Member-Netzwerk für das Ethereum-Konsortium bereitzustellen und zu konfigurieren.
+description: Verwenden der Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“ zum Bereitstellen und Konfigurieren eines Multi-Member-Netzwerks für das Ethereum-Konsortium
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231796"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260532"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“
 
@@ -67,7 +67,7 @@ Für diesen Prozess ist ein Azure-Abonnement erforderlich, das dafür ausgelegt 
 
 Sobald ein Abonnement gesichert ist, wechseln Sie zum Azure-Portal. Wählen Sie **+ Ressource erstellen**, „Marketplace (alle anzeigen)“, und suchen Sie nach **Ethereum – Proof-of-Work-Konsortium**.
 
-Während der Vorlagenbereitstellung werden Sie durch die Konfiguration des Netzwerk-Fußabdrucks für das erste Mitglied geführt. Der Bereitstellungsablauf ist in fünf Schritte unterteilt: Grundlagen, Operations Management Suite, Bereitstellungsregionen, Netzwerkgröße und -leistung sowie Ethereum-Einstellungen.
+Während der Vorlagenbereitstellung werden Sie durch die Konfiguration des Netzwerk-Fußabdrucks für das erste Mitglied geführt. Der Ablauf der Bereitstellung ist in fünf Schritte unterteilt: Grundlagen, Operations Management Suite, Bereitstellungsregionen, Netzwerkgröße und -leistung sowie Ethereum-Einstellungen.
 
 ### <a name="basics"></a>Grundlagen
 
@@ -82,7 +82,7 @@ Netzwerk bereitstellen, das Teil eines Konsortiums ist?|Bei einem Konsortiumsnet
 Ressourcenpräfix |Eine Zeichenfolge, die als Basis für Namensressourcen verwendet wird (zwei bis vier alphanumerische Zeichen). Bei einigen Ressourcen ist der Zeichenfolge ein eindeutiger Hash vorangestellt, während ressourcenspezifischen Informationen angefügt werden.|Alphanumerische Zeichen (2 bis 4)|Nicht verfügbar
 VM-Benutzername| Der Benutzername des Administrators für jede bereitgestellte VM (nur alphanumerische Zeichen).|1–64 Zeichen |gethadmin
 Authentifizierungsart|Die Methode zur Authentifizierung des virtuellen Computers. |Kennwort oder öffentlicher SSH-Schlüssel|Kennwort
-Kennwort (Authentifizierungstyp = Kennwort)|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss 3 der folgenden Zeichen umfassen: 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Ziffer und 1 Sonderzeichen. <br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|Nicht verfügbar
+Kennwort (Authentifizierungstyp = Kennwort)|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss drei der folgenden Elemente enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen. <br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|Nicht verfügbar
 SSH-Schlüssel (Authentifizierungstyp = öffentlicher Schlüssel)|Der Secure Shell-Schlüssel für die Remoteanmeldung.|| Nicht verfügbar
 Abonnement| Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
 Ressourcengruppe| Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
@@ -143,8 +143,8 @@ Parametername |BESCHREIBUNG |Zulässige Werte|Standardwerte
 ConsortiumMember-ID|Die ID, die jedem Mitglied im Konsortiumsnetzwerk zugeordnet ist. Wird zur Konfiguration von IP-Adressräumen verwendet, um Konflikte zu vermeiden. <br /><br />Die Mitglieds-ID sollte für verschiedene Organisationen im selben Netzwerk eindeutig sein. Eine eindeutige Mitglieds-ID ist erforderlich, auch dieselbe Organisation Bereitstellungen in mehreren Regionen vornimmt.<br /><br />Notieren Sie sich den Wert dieses Parameters, da Sie ihn mit anderen teilnehmenden Mitgliedern teilen müssen.|0–255
 Ethereum-Netzwerk-ID|Die Netzwerk-ID für das bereitgestellte Ethereum-Konsortiumsnetzwerk. Jedes Ethereum-Netzwerk verfügt über eine eigene Netzwerk-ID, wobei 1 die ID für das öffentliche Netzwerk ist. Obwohl der Netzwerkzugriff für Miningknoten beschränkt ist, wird eine große Zahl empfohlen, um Konflikte zu vermeiden.|5–999.999.999| 10101010
 Benutzerdefinierter Genesis-Block|Ein Genesis-Block kann automatisch generiert werden, oder es wird ein benutzerdefinierter Block angegeben.|Ja/Nein| Nein 
-Kennwort des Ethereum-Kontos (Benutzerdefinierter Genesis-Block = Nein)|Das Administratorkennwort zur Sicherung des in jeden Knoten importierten Ethereum-Kontos. Das Kennwort muss Folgendes enthalten: 1 Großbuchstabe, 1 Kleinbuchstabe und 1 Ziffer.|Min. 12 Zeichen|Nicht verfügbar
-Passphrase des privaten Ethereum-Schlüssels (Benutzerdefinierter Genesis Block = Nein)|Die Passphrase, die zum Generieren des privaten ECC-Schlüssels verwendet wird, der dem generierten Ethereum-Standardkonto zugeordnet ist. Ein vorab generierter, privater Schlüssel muss nicht explizit übergeben werden.<br /><br />Verwenden Sie eine Passphrase mit einer ausreichenden Zufälligkeitsstufe, um einen starken privaten Schlüssel zu erhalten, der keine Überlappung mit anderen Konsortiumsmitgliedern erzeugt. Die Passphrase muss mindestens Folgendes enthalten: 1 Großbuchstabe, 1 Kleinbuchstabe und 1 Ziffer.<br /><br />Hinweis: Wenn zwei Mitglieder dieselbe Passphrase verwenden, sind die generierten Konten identisch. Eine identische Passphrase ist hilfreich, wenn eine einzelne Organisation eine Bereitstellung über mehrere Regionen implementiert und ein einzelnes Konto (Coinbase) für alle Knoten freigegeben werden soll.|Min. 12 Zeichen|Nicht verfügbar
+Kennwort des Ethereum-Kontos (Benutzerdefinierter Genesis-Block = Nein)|Das Administratorkennwort zur Sicherung des in jeden Knoten importierten Ethereum-Kontos. Das Kennwort muss Folgendes enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben und 1 Zahl.|Min. 12 Zeichen|Nicht verfügbar
+Passphrase des privaten Ethereum-Schlüssels (Benutzerdefinierter Genesis Block = Nein)|Die Passphrase, die zum Generieren des privaten ECC-Schlüssels verwendet wird, der dem generierten Ethereum-Standardkonto zugeordnet ist. Ein vorab generierter, privater Schlüssel muss nicht explizit übergeben werden.<br /><br />Verwenden Sie eine Passphrase mit einer ausreichenden Zufälligkeitsstufe, um einen starken privaten Schlüssel zu erhalten, der keine Überlappung mit anderen Konsortiumsmitgliedern erzeugt. Die Passphrase muss mindestens Folgendes enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben und 1 Zahl.<br /><br />Hinweis: Wenn zwei Mitglieder dieselbe Passphrase verwenden, sind die generierten Konten identisch. Eine identische Passphrase ist hilfreich, wenn eine einzelne Organisation eine Bereitstellung über mehrere Regionen implementiert und ein einzelnes Konto (Coinbase) für alle Knoten freigegeben werden soll.|Min. 12 Zeichen|Nicht verfügbar
 Genesis-Block (Benutzerdefinierter Genesis Block = Ja)|Die JSON-Zeichenfolge, die den benutzerdefinierten Genesis-Block darstellt. Weitere Informationen zum Format des Genesis-Blocks finden Sie hier unter „Benutzerdefinierte Netzwerke“.<br /><br />Auch wenn Sie einen benutzerdefinierten Genesis-Block angeben, wird ein Ethereum-Konto erstellt. Geben Sie ggf. ein vorab aufgeladenes Ethereum-Konto im Genesis-Block an, um nicht auf das Mining warten zu müssen.|Gültige JSON |Nicht verfügbar
 Gemeinsam verwendeter Schlüssel für die Verbindung|Eine gemeinsam verwendeter Schlüssel für die Verbindung zwischen VNET-Gateways.| Min. 12 Zeichen|Nicht verfügbar
 URL der Konsortiumsdaten|Die URL, die auf die relevanten Konsortiumkonfigurationsdaten verweist, die durch die Bereitstellung eines anderen Mitglieds zur Verfügung gestellt werden. <br /><br />Diese Informationen werden durch ein bereits verbundenes Mitglied bereitgestellt, das über eine Bereitstellung verfügt. Nachdem Sie das Netzwerk vollständig bereitgestellt haben, befindet sich die URL im Ausgabebereich CONSORTIUM-DATA der Vorlagenbereitstellung.||Nicht verfügbar
@@ -226,8 +226,8 @@ mn-ethwvu-reg1_2 |mn-ethwvu-reg1000002
 Wenn Sie das erste (oder ein verbundenes) Mitglied des Konsortiums sind, benötigen andere Mitglieder einige Informationen von Ihnen, damit sie beitreten und eine Verbindung herstellen können. Dies gilt insbesondere in folgenden Fällen:
 
 1. **Freigegebene Konfigurationsdaten für das Konsortium**: Eine Gruppe von Daten sorgt dafür, die Ethereum-Verbindung zwischen zwei Mitglieder zu orchestrieren. Die erforderlichen Informationen, einschließlich Genesis-Block, Konsortiumsnetzwerk-ID und Startknoten, werden in eine Datei auf den Transaktionsknoten der LEADER- oder einer anderen MEMBER-Bereitstellung geschrieben. Den Speicherort der Datei können Sie dem Ausgabeparameter **CONSORTIUM-DATA** der Vorlagenbereitstellung entnehmen.
-2. **Endpunkt für Peerinformationen**: Der Registrierungsstelle für den Endpunkt der Peerinformationen wird dazu verwendet, Informationen von allen Knoten abzurufen, die bereits mit dem Ethereum-Netzwerk der LEADER- oder einer anderen MEMBER-Bereitstellung verbunden sind. Die Datenbank speichert Informationen zu jedem Knoten, der mit dem Netzwerk verbunden ist, z. B. den Hostnamen des Knotens, die private IP-Adresse usw. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_ENDPOINT** der Vorlagenbereitstellung entnehmen.
-3. **Primärer Schlüssel für Peerinformationen**: Der primäre Schlüssel für die Registrierungsstelle von Peerinformationen wird verwendet, um auf den primären Schlüssel für Peerinformationen der LEADER- oder einer anderen MEMBER-Bereitstellung zuzugreifen. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_PRIMARY_KEY** der Vorlagenbereitstellung entnehmen.
+2. **Endpunkt für Peerinformationen**: Die Registrierungsstelle für den Endpunkt der Peerinformationen wird dazu verwendet, Informationen von allen Knoten abzurufen, die bereits mit dem Ethereum-Netzwerk der Leader-Bereitstellung oder der Bereitstellung eines anderen Mitglieds verbunden sind. Die Datenbank speichert Informationen zu jedem Knoten, der mit dem Netzwerk verbunden ist, z. B. den Hostnamen des Knotens, die private IP-Adresse usw. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_ENDPOINT** der Vorlagenbereitstellung entnehmen.
+3. **Primärer Schlüssel für Peerinformationen**: Der primäre Schlüssel für die Registrierungsstelle von Peerinformationen wird verwendet, um auf den primären Schlüssel für Peerinformationen des Leaders oder eines anderen Mitglieds zuzugreifen. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_PRIMARY_KEY** der Vorlagenbereitstellung entnehmen.
 
 
 4. **VNET-Gateway**: Jedes Mitglied stellt über ein vorhandenes Mitglied eine Verbindung mit dem gesamten Blockchain-Netzwerk her. Um sich mit VNET zu verbinden, benötigen Sie einen Ressourcenpfad zum VNET-Gateway des Mitglieds, mit dem Sie eine Verbindung herstellen. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
@@ -261,24 +261,24 @@ Importieren Sie dann das Modul:
 
 Führen Sie abschließend die Funktion mithilfe der entsprechenden Eingabe aus:
 
-- **MyGatewayResourceId**: Ressourcenpfad des Gateways. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
-- **OtherGatewayResourceId**: Ressourcenpfad des Gateways des beitretenden Mitglieds. Dieser wird vom beitretenden Mitglied angegeben und entspricht dem gleichnamigen Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung.
-- **ConnectionName**: Ein Name zur Identifizierung dieser Gatewayverbindung.
-- **Shared Key**: Das vorab festgelegte Geheimnis zwischen den beiden Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
+- **MyGatewayResourceId:** Der Ressourcenpfad Ihres Gateways. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
+- **OtherGatewayResourceId:** Der Ressourcenpfad des Gateways des beitretenden Mitglieds. Dieser wird vom beitretenden Mitglied angegeben und entspricht dem gleichnamigen Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung.
+- **ConnectionName:** Ein Name zur Identifizierung dieser Gatewayverbindung.
+- **Gemeinsam verwendeter Schlüssel:** Der vorab festgelegte geheime Schlüssel zwischen den beiden Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
 
 **CreateConnection** - MyGatewayResourceId <resource path of your Gateway> -OtherGatewayResourceId <Ressourcenpfad des Gateways des beitretenden Mitglieds> -ConnectionName myConnection -SharedKey "MySharedKeyAbc123"
 
-**xPlat CLI: Verbindung herstellen**
+**xPlat-CLI: Verbindung herstellen**
 
 Laden Sie das Azure CLI-Skript herunter, und speichern Sie es lokal. Der Speicherort des Azure CLI-Skripts ist im Parameter **PAIR-GATEWAY-AZURE-CLI-SCRIPT** der Vorlagenbereitstellung angegeben.
 
 Führen Sie das Skript mit dem entsprechenden Eingabewert aus:
 
-- **MyGatewayResourceId**: Ressourcenpfad des Gateways. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
-- **OtherGatewayResourceId**: Ressourcenpfad des Gateways des beitretenden Mitglieds. Dieser wird vom beitretenden Mitglied angegeben und entspricht dem gleichnamigen Parameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung.
-- **ConnectionName**: Ein Name zur Identifizierung dieser Gatewayverbindung.
-- **Shared Key**: Das vorab festgelegte Geheimnis zwischen den beiden Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
-- **Location**: Die Azure-Region, in der die Gatewayressource bereitgestellt wird.
+- **MyGatewayResourceId:** Der Ressourcenpfad Ihres Gateways. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.
+- **OtherGatewayResourceId:** Der Ressourcenpfad des Gateways des beitretenden Mitglieds. Dieser wird vom beitretenden Mitglied angegeben und entspricht dem gleichnamigen Parameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung.
+- **ConnectionName:** Ein Name zur Identifizierung dieser Gatewayverbindung.
+- **Gemeinsam verwendeter Schlüssel:** Der vorab festgelegte geheime Schlüssel zwischen den beiden Mitgliedern des Konsortiumsnetzwerks, zwischen denen eine Verbindung hergestellt wird.
+- **Standort:** Die Azure-Region, in der die Gatewayressource bereitgestellt wird.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group

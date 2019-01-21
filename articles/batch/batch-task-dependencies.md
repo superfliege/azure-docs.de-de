@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 40e925fff9d87d8590ea3a83be9e7d93a84d6e26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865232"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266653"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen
 
@@ -123,7 +123,7 @@ Um die Abhängigkeit zu erstellen, geben Sie die IDs des ersten und letzten Task
 > [!IMPORTANT]
 > Wenn Sie Task-ID-Bereiche für Ihre Abhängigkeiten verwenden, werden nur Tasks mit IDs, die Integerwerte darstellen, durch den Bereich ausgewählt. Der Bereich `1..10` wählt somit die Aufgaben `3` und `7` aus, aber nicht `5flamingoes`. 
 > 
-> Führende Nullen haben für die Auswertung von Bereichsabhängigkeiten keine Bedeutung, die Aufgaben mit den Zeichenfolgenbezeichnern `4`, `04` und `004` befinden sich daher alle *im* Bereich und werden alle als die Aufgabe `4` behandelt, sodass der erste Abschluss die Abhängigkeit erfüllt.
+> Führende Nullen haben für die Auswertung von Bereichsabhängigkeiten keine Bedeutung. Tasks mit den Zeichenfolgenbezeichnern `4`, `04` und `004` befinden sich daher alle *im* Bereich und werden alle als Task `4` behandelt, sodass der erste abgeschlossene Task die Abhängigkeit erfüllt.
 > 
 > Jeder Task in dem Bereich muss die Abhängigkeit erfüllen. Dies kann durch erfolgreichen Abschluss geschehen oder durch Abschließen mit einem Fehler, der einer Abhängigkeitsaktion zugeordnet ist, die auf **Satisfy** (Erfüllen) festgelegt ist. Weitere Informationen finden Sie im Abschnitt [Abhängigkeitsaktionen](#dependency-actions).
 >

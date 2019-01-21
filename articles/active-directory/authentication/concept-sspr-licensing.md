@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6a23ea08ee14efbc7850e555d9ad84daf855638f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043038"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320734"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
 
@@ -33,15 +33,15 @@ Die Azure AD-Self-Service-Kennwortzurücksetzung wird pro Benutzer lizenziert. A
 * Self-Service-Kennwortrücksetzung für Cloudbenutzer
    * Ich bin ein **reiner Cloudbenutzer** und habe mein Kennwort vergessen.
       * Ich würde mein Kennwort gerne auf etwas **zurücksetzen**, was ich kenne.
-   * Diese Funktionalität ist in den Editionen Azure AD Basic, Premium P1 oder Premium P2 enthalten.
+   * Diese Funktionalität ist in Azure AD Basic, Premium P1 oder P2 oder Microsoft 365 Business enthalten.
 
 * Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung **mit lokalem Rückschreiben**
    * Ich bin ein **Hybridbenutzer** – mein lokales Active Directory-Benutzerkonto ist mittels Azure AD Connect mit meinem Azure AD-Konto synchronisiert. Ich möchte mein Kennwort ändern, habe mein Kennwort vergessen oder wurde ausgesperrt.
       * Ich möchte mein Kennwort ändern oder auf etwas zurücksetzen, das mir bekannt ist, bzw. mein Konto entsperren, **und** habe diese Änderung wieder mit meinem lokalen Active Directory synchronisiert.
-   * Diese Funktionalität ist in den Editionen Azure AD Premium P1 oder Premium P2 enthalten.
+   * Diese Funktionalität ist in Azure AD Premium P1 oder P2 oder Microsoft 365 Business enthalten.
 
 > [!WARNING]
-> Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben* und erfordern einen Plan mit Azure AD Premium P1 oder Premium P2-Editionen, damit diese Funktion verwendbar ist.
+> Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben* und erfordern einen Plan, der Azure AD Premium P1, Premium P2 oder Microsoft 365 Business umfasst, damit diese Funktion verwendbar ist.
 >
 
 Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie auf den folgenden Seiten:
@@ -50,6 +50,7 @@ Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie a
 * [Azure Active Directory-Features und -Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
+* [Microsoft 365 Business – Dienstbeschreibung](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Aktivieren der gruppen- oder benutzerbasierten Lizenzierung
 

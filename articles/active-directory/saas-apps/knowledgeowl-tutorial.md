@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit KnowledgeOwl | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von KnowledgeOwl | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und KnowledgeOwl konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80d8d1664100cdfbbf6d537b41823c2db0204040
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446138"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318916"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Tutorial: Azure Active Directory-Integration mit KnowledgeOwl
+# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Tutorial: Azure Active Directory-Integration von KnowledgeOwl
 
 In diesem Tutorial erfahren Sie, wie Sie KnowledgeOwl in Azure Active Directory (Azure AD) integrieren.
 
@@ -142,7 +142,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     |||
      
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diesen Wert durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL ersetzen. Dies wird an späterer Stelle im Tutorial erläutert.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL ersetzen. Darauf wird später im Tutorial eingegangen.
 
 1. Die KnowledgeOwl-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
 
@@ -186,7 +186,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure1.png)
 
-1. Scrollen Sie nach unten bis zu **SAML SSO Integration**, und führen Sie die folgenden Schritte aus:
+1. Scrollen Sie bis zu **SAML SSO Integration**, und führen Sie die folgenden Schritte aus:
     
     ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure2.png)
 
@@ -254,7 +254,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in KnowledgeOwl. KnowledgeOwl unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf KnowledgeOwl ein neuer Benutzer erstellt.
 >[!Note]
->Setzen Sie sich mit dem [KnowledgeOwl-Supportteam](mailto:support@knowledgeowl.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von KnowledgeOwl](mailto:support@knowledgeowl.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

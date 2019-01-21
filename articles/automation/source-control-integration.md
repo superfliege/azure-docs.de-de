@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342237"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330771"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -59,6 +59,9 @@ Geben Sie auf der Seite **Quellcodeverwaltung – Übersicht** die Informationen
 |BESCHREIBUNG     | Ein Textfeld, in dem weitere Details bereitgestellt werden können.        |
 
 ![Zusammenfassung der Quellcodeverwaltung](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> Stellen Sie sicher, dass Sie mit dem richtigen Konto angemeldet sind, wenn Sie die Quellcodeverwaltung konfigurieren. Wenn Sie diesbezüglich unsicher sind, öffnen Sie in Ihrem Browser eine neue Registerkarte, und melden Sie sich von „visualstudio.com“ oder „github.com“ ab, und stellen Sie erneut eine Verbindung mit der Quellcodeverwaltung her.
 
 ## <a name="syncing"></a>Synchronisierung wird durchgeführt
 

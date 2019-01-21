@@ -1,10 +1,10 @@
 ---
-title: Sicheres Migrieren von Benutzern zwischen Produktlizenzen mithilfe von gruppenbasierter Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
+title: Migrieren von Benutzern zwischen Produktlizenzen mithilfe von Gruppen – Azure Active Directory | Microsoft-Dokumentation
 description: Beschreibt die empfohlene Vorgehensweise beim Migrieren von Benutzern zwischen verschiedenen Produktlizenzen (Office 365 Enterprise E1 und E3) mithilfe von gruppenbasierter Lizenzierung
 services: active-directory
 keywords: Azure AD-Lizenzierung
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/29/2018
-ms.author: piotrci
-ms.openlocfilehash: 643339545dac6ec35ab44f2a05fbe417dea2bb71
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 01/14/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.openlocfilehash: 68d4cdf3c7ba08f7cf37132936c6769c99c177cc
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211790"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319417"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Sicheres Migrieren von Benutzern zwischen Produktlizenzen mithilfe von gruppenbasierter Lizenzierung in Azure Active Directory
 
@@ -47,7 +48,7 @@ Vor dem Beginn der Migration ist es wichtig, sicherzustellen, dass bestimmte Ann
 -   Sie sind darüber informiert, wie Gruppen in Ihrer Umgebung verwaltet werden. Wenn Sie beispielsweise Gruppen lokal verwalten und über Azure AD Connect in Azure Active Directory (Azure AD) synchronisieren, erfolgt das Hinzufügen/Entfernen von Benutzern in Ihrem lokalen System. Das Synchronisieren der Änderungen in Azure AD und ihre Erfassung durch die gruppenbasierte Lizenzierung dauert eine Zeit. Bei Verwendung von dynamischen Gruppenmitgliedschaften in Azure AD erfolgt das Hinzufügen/Entfernen von Benutzern stattdessen durch das Ändern ihrer Attribute. Der allgemeine Migrationsvorgang bleibt jedoch gleich. Der einzige Unterschied besteht beim Hinzufügen/Entfernen von Benutzern für die Gruppenmitgliedschaft.
 
 ## <a name="migrate-users-between-products-that-dont-have-conflicting-service-plans"></a>Migrieren von Benutzern zwischen Produkten ohne widersprüchliche Servicepläne
-Das Migrationsziel ist es, mithilfe von gruppenbasierter Lizenzierung die Benutzerlizenzen von einer *Quelllizenz* (in diesem Beispiel: Office 365 Enterprise E3) in eine *Ziellizenz* (in diesem Beispiel: Office 365 Enterprise E5) zu ändern. Die beiden Produkte in diesem Szenario enthalten keine widersprüchlichen Servicepläne, sodass sie vollständig und ohne Konflikte gleichzeitig zugewiesen werden können. Während der Migration sollten Benutzer zu keinem Zeitpunkt die Zugriffsmöglichkeit für Dienste oder Daten verlieren. Die Migration erfolgt in kleinen „Batches“. Sie können das Ergebnis für jeden Batch überprüfen und die Anzahl möglicher Probleme einschränken, die während des Prozesses auftreten können. Im Ganzen verläuft der Prozess dann wie folgt:
+Das Migrationsziel ist es, mithilfe der gruppenbasierten Lizenzierung die Benutzerlizenzen von einer *Quelllizenz* (in diesem Beispiel: Office 365 Enterprise E3) in eine *Ziellizenz* (in diesem Beispiel: Office 365 Enterprise E5) zu ändern. Die beiden Produkte in diesem Szenario enthalten keine widersprüchlichen Servicepläne, sodass sie vollständig und ohne Konflikte gleichzeitig zugewiesen werden können. Während der Migration sollten Benutzer zu keinem Zeitpunkt die Zugriffsmöglichkeit für Dienste oder Daten verlieren. Die Migration erfolgt in kleinen „Batches“. Sie können das Ergebnis für jeden Batch überprüfen und die Anzahl möglicher Probleme einschränken, die während des Prozesses auftreten können. Im Ganzen verläuft der Prozess dann wie folgt:
 
 1.  Benutzer sind Mitglieder einer Quellgruppe und erben die *Quelllizenz* aus dieser Gruppe.
 
@@ -176,7 +177,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>Migrieren von Benutzern zwischen Produkten mit widersprüchlichen Serviceplänen
-Das Migrationsziel ist es, mithilfe von gruppenbasierter Lizenzierung die Benutzerlizenzen von einer *Quelllizenz* (in diesem Beispiel: Office 365 Enterprise E1) in eine *Ziellizenz* (in diesem Beispiel: Office 365 Enterprise E3) zu ändern. Die beiden Produkte in diesem Szenario enthalten widersprüchliche Servicepläne, sodass eine Problemumgehung gefunden werden muss, um eine nahtlose Benutzermigration zu ermöglichen. Weitere Informationen zu diesen Konflikten finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory: In Konflikt stehende Diensteeinstellungen](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). Während der Migration sollten Benutzer zu keinem Zeitpunkt die Zugriffsmöglichkeit für Dienste oder Daten verlieren. Die Migration erfolgt in kleinen „Batches“. Sie können das Ergebnis für jeden Batch überprüfen und die Anzahl möglicher Probleme einschränken, die während des Prozesses auftreten können. Im Ganzen verläuft der Prozess dann wie folgt:
+Das Migrationsziel ist es, mithilfe der gruppenbasierten Lizenzierung die Benutzerlizenzen von einer *Quelllizenz* (in diesem Beispiel: Office 365 Enterprise E1) in eine *Ziellizenz* (in diesem Beispiel: Office 365 Enterprise E3) zu ändern. Die beiden Produkte in diesem Szenario enthalten widersprüchliche Servicepläne, sodass eine Problemumgehung gefunden werden muss, um eine nahtlose Benutzermigration zu ermöglichen. Weitere Informationen zu diesen Konflikten finden Sie unter [Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory: In Konflikt stehende Diensteeinstellungen](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). Während der Migration sollten Benutzer zu keinem Zeitpunkt die Zugriffsmöglichkeit für Dienste oder Daten verlieren. Die Migration erfolgt in kleinen „Batches“. Sie können das Ergebnis für jeden Batch überprüfen und die Anzahl möglicher Probleme einschränken, die während des Prozesses auftreten können. Im Ganzen verläuft der Prozess dann wie folgt:
 
 1.  Benutzer sind Mitglieder einer Quellgruppe und erben die *Quelllizenz* aus dieser Gruppe.
 

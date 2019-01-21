@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 54e562cca800a19829b985e3fd529368350104a1
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211535"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329479"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -63,7 +63,7 @@ Klicken Sie auf ein Produkt, um zu ermitteln, welche Benutzer und Gruppen Lizenz
 
 ## <a name="conflicting-service-plans"></a>In Konflikt stehende Diensteeinstellungen
 
-**Problem:** Eines der in der Gruppe angegebenen Produkte enthält einen Dienstplan, für den ein Konflikt mit einem anderen Dienstplan besteht, der dem Benutzer bereits über ein anderes Produkt zugewiesen ist. Einige Dienstpläne sind so konfiguriert, dass sie dem gleichen Benutzer nicht als anderer verwandter Dienstplan zugewiesen werden können.
+**Problem:** Eines der in der Gruppe angegebenen Produkte enthält einen Dienstplan, der in Konflikt mit einem anderen Dienstplan steht, der dem Benutzer bereits über ein anderes Produkt zugewiesen ist. Einige Dienstpläne sind so konfiguriert, dass sie dem gleichen Benutzer nicht als anderer verwandter Dienstplan zugewiesen werden können.
 
 Betrachten Sie das folgende Beispiel. Einem Benutzer ist eine Lizenz für Office 365 Enterprise *E1* direkt zugewiesen worden, wobei alle Pläne aktiviert wurden. Der Benutzer wurde einer Gruppe hinzugefügt, der das Produkt Office 365 Enterprise *E3* zugewiesen ist. Das E3-Produkt enthält Dienstpläne, die sich nicht mit den in E1 enthaltenen Plänen überschneiden dürfen. Daher tritt bei der Gruppenlizenzzuweisung der Fehler „Widersprüchliche Servicepläne“ auf. Bei diesem Beispiel stehen die folgenden Dienstpläne in Konflikt:
 
@@ -118,6 +118,12 @@ Azure AD versucht, den einzelnen Benutzern alle in der Gruppe angegebenen Lizenz
 
 Sie können die Benutzer anzeigen, für die die Zuweisung nicht erfolgreich war, und ermitteln, welche Produkte von diesem Problem betroffen sind.
 
+## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>Was passiert, wenn eine Gruppe mit zugewiesenen Lizenzen gelöscht wird?
+
+Sie müssen alle einer Gruppe zugewiesenen Lizenzen entfernen, bevor Sie die Gruppe löschen können. Das Entfernen der Lizenzen aller Benutzer in der Gruppe kann jedoch einige Zeit in Anspruch nehmen. Beim Entfernen von Lizenzzuweisungen einer Gruppe können Fehler auftreten, wenn einem Benutzer eine abhängige Lizenz zugewiesen ist oder ein Konflikt mit einer Proxyadresse besteht, der das Entfernen der Lizenz verhindert. Wenn ein Benutzer über eine Lizenz verfügt, die von einer Lizenz abhängig ist, die aufgrund einer Gruppenlöschung entfernt wird, erfolgt für den Benutzer eine Umwandlung der Lizenzzuweisung von geerbt in direkt.
+
+Beispiel: Einer Gruppe sind Office 365 E3-/E5-Lizenzen zugewiesen, und es ist ein Skype for Business-Dienstplan aktiviert. Darüber hinaus wurden einigen Mitgliedern der Gruppe Lizenzen für Audiokonferenz direkt zugewiesen. Wenn die Gruppe gelöscht wird, versucht die gruppenbasierte Lizenzierung, Office 365 E3/E5 für alle Benutzer zu entfernen. Weil Audiokonferenz von Skype for Business abhängig ist, wandelt die gruppenbasierte Lizenzierung die Office 365 E3-/E5-Lizenzen für alle Benutzer, denen Audiokonferenz zugewiesen ist, in direkte Lizenzzuweisungen um.
+
 ## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>Wie werden Lizenzen für Produkte verwaltet, für die bestimmte Voraussetzungen gelten?
 
 Bei einigen Ihrer Microsoft Online-Produkte handelt es sich unter Umständen um *Add-Ons*. Bei Add-Ons muss für einen Benutzer oder eine Gruppe ein Dienstplan mit Voraussetzungen aktiviert werden, bevor eine Lizenz zugewiesen werden kann. Bei der gruppenbasierten Lizenzierung müssen der Dienstplan mit den Voraussetzungen und der Add-On-Dienstplan in der gleichen Gruppe enthalten sein. Hierdurch wird sichergestellt, dass alle Benutzer, die der Gruppe hinzugefügt werden, das voll funktionsfähige Produkt erhalten können. Betrachten Sie das folgende Beispiel:
@@ -146,8 +152,6 @@ Ab jetzt verwenden alle Benutzer, die dieser Gruppe hinzugefügt werden, eine Li
 
 > [!TIP]
 > Für jeden Dienstplan mit Voraussetzungen können mehrere Gruppen erstellt werden. Wenn Sie für Ihre Benutzer sowohl „Office 365 Enterprise E1“ als auch „Office 365 Enterprise E3“ verwenden, können Sie zwei Gruppen erstellen, um Microsoft Workplace Analytics zu lizenzieren: eine mit E1 als Voraussetzung und die andere mit E3. So können Sie das Add-On auf E1- und E3-Benutzer verteilen, ohne zusätzliche Lizenzen zu verbrauchen.
-
-
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Wie können Sie die Lizenzverarbeitung für eine Gruppe durchsetzen, um Fehler zu beheben?
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 32606f988152b061fa1923c409207b2a650e64ba
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259782"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332454"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Verwenden von Azure Blockchain Workbench-Daten mit SQL Server Management Studio
 
@@ -43,7 +43,7 @@ Microsoft SQL Server Management Studio bietet die Möglichkeit zum schnellen Sch
     ![Datenbankliste](./media/data-sql-management-studio/db-list.png)
 
 5. Um die den Datenbanksichten zugeordneten Daten anzuzeigen, können Sie mithilfe der folgenden Schritte automatisch eine SELECT-Anweisung generieren.
-6. Klicken Sie mit der mit der rechten Maustaste auf die Datenbanksichten im Objekt-Explorer.
+6. Klicken Sie mit der rechten Maustaste auf eine der Datenbanksichten im Objekt-Explorer.
 7. Klicken Sie auf **Skript für Sicht als**.
 8. Wählen Sie **SELECT nach** aus.
 9. Wählen Sie **Neues Abfrage-Editor-Fenster** aus.

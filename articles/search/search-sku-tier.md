@@ -7,32 +7,32 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315552"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354551"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
-In Azure Search erfolgt die [Bereitstellung eines Diensts](search-create-service-portal.md) für einen Tarif oder eine SKU, der/die für die Lebensdauer des Diensts fest ist. Tarife umfassen : **Free**, **Basic** und **Standard**, wobei **Standard** mit verschiedenen Konfigurationen und Kapazitäten verfügbar ist. Die meisten Kunden beginnen mit dem Tarif **Free** zu Evaluierungszwecken und steigen dann für Entwicklung-s und Produktionsumgebungen auf **Standard** um. Sie können alle Schnellstartanleitungen und Tutorials im Tarif **Free** absolvieren, einschließlich jener für ressourcenintensive kognitive Suchen. 
+In Azure Search erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif oder einer SKU, der/die für die Lebensdauer des Diensts fest ist. Die Tarife lauten **Free**, **Basic** und **Standard**, wobei **Standard** in verschiedenen Konfigurationen und mit verschiedenen Kapazitäten verfügbar ist. Die meisten Kunden beginnen mit dem Tarif **Free** zu Evaluierungszwecken und steigen dann für Entwicklung-s und Produktionsumgebungen auf **Standard** um. Sie können alle Schnellstartanleitungen und Tutorials im Tarif **Free** absolvieren, einschließlich jener für ressourcenintensive kognitive Suchen. 
 
 Tarife bestimmen die Kapazität, nicht die Features, und werden wie folgt differenziert:
 
 + Anzahl der Indizes, die Sie erstellen können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 
-Obwohl alle Tarife, einschließlich des Tarifs **Free**, in der Regel Featureparität anbieten, können größere Workloads Anforderungen für höhere Tarife diktieren. Beispielsweise ist die Indizierung für [kognitive Suche](cognitive-search-concept-intro.md) mit Vorgängen mit langer Laufzeit verbunden, sodass bei einem kostenlosen Dienst ein Timeout auftritt, wenn das Dataset sehr klein ist.
+Obwohl alle Tarife, einschließlich des Tarifs **Free**, in der Regel Featureparität anbieten, können größere Workloads Anforderungen für höhere Tarife diktieren. Beispielsweise ist die Indizierung für die [kognitive Suche](cognitive-search-concept-intro.md) mit Vorgängen zum Ausführen von Qualifikationen mit langer Laufzeit verbunden, sodass bei einem kostenlosen Dienst ein Timeout auftritt, sofern es sich nicht um ein kleines Dataset handelt.
 
 > [!NOTE] 
 > Die Ausnahme bei der Featureparität sind die [Indexer](search-indexer-overview.md), die bei S3HD nicht verfügbar sind.
 >
 
-Innerhalb eines Tarifs können Sie [Replikat- und Partitionsressourcen](search-capacity-planning.md) zur Optimieren der Leistung anpassen. Wenn Sie beispielsweise mit zwei oder drei von jedem beginnen, können Sie Ihre Rechenleistung für einen hohen Indizierungsworkload vorübergehend erhöhen. Die Möglichkeit, Ressourcenniveaus innerhalb eines Tarifs zu optimieren, sorgt für mehr Flexibilität, verkompliziert aber auch etwas Ihre Analyse. Möglicherweise müssen Sie experimentieren, um herauszufinden, ob ein niedrigerer Tarif mit höheren Ressourcen-/Replikatangeboten einen besseren Wert und höhere Leistung bietet, als ein höherer Tarif mit weniger Ressourcen. Weitere Informationen dazu, wann und warum Sie Kapazität anpassen sollten, finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Innerhalb eines Tarifs können Sie [Replikat- und Partitionsressourcen](search-capacity-planning.md) zur Optimieren der Leistung anpassen. Sie können mit jeweils zwei oder drei Replikaten und Partitionen beginnen und dann Ihre Rechenleistung für einen hohen Indizierungsworkload vorübergehend erhöhen. Die Möglichkeit, Ressourcenniveaus innerhalb eines Tarifs zu optimieren, sorgt für mehr Flexibilität, verkompliziert aber auch etwas Ihre Analyse. Möglicherweise müssen Sie experimentieren, um herauszufinden, ob ein niedrigerer Tarif mit höheren Ressourcen-/Replikatangeboten einen besseren Wert und höhere Leistung bietet, als ein höherer Tarif mit weniger Ressourcen. Weitere Informationen dazu, wann und warum Sie Kapazität anpassen sollten, finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
 <!---
 The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
@@ -40,23 +40,46 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 ## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
 
-In Azure Search ist das wichtigste Abrechnungskonzept, das Sie kennen sollten, eine *Sucheinheit* (Search Unit, SU). Da die Funktion von Azure Search sowohl von Replikaten als auch Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider. 
+In Azure Search gibt es vier Möglichkeiten, wie Kosten beim Erstellen einer Suchressource im Portal anfallen können:
+
+* Hinzufügen von Replikaten und Partitionen, die für normale Indizierungs- und Abfrageaufgaben verwendet werden. Sie beginnen mit jeweils einem Replikat und einer Partition, aber Sie können die Anzahl erhöhen, um die Kapazität zu steigern, wobei Sie zusätzliche Ebenen der Ressourcenbereitstellung auswählen und bezahlen. 
+* Gebühren für ausgehende Daten während der Indizierung. Wenn Sie Daten aus einer Azure SQL-Datenbank oder Cosmos DB-Datenquelle abrufen, werden entsprechende Gebühren für die Transaktion in der Rechnung für diese Ressourcen aufgeführt.
+* Nur bei der [kognitiven Suche](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos.
+* Nur bei der [kognitiven Suche](cognitive-search-concept-intro.md) werden auf [integrierten kognitiven Qualifikationen](cognitive-search-predefined-skills.md) basierende Anreicherungen für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
+
+Wenn Sie keine [kognitive Suche](cognitive-search-concept-intro.md) oder [Azure Search-Indexer](search-indexer-overview.md) verwenden, beziehen sich Ihre Kosten nur auf die Replikate und Partitionen, die aktiv für normale Indizierungs- und Abfrageworkloads verwendet werden.
+
+### <a name="billing-for-general-purpose-indexing-and-queries"></a>Abrechnung für allgemeine Indizierungs- und Abfragevorgänge
+
+Für Azure Search-Vorgänge ist das wichtigste Abrechnungskonzept, das Sie verstehen sollten, eine *Sucheinheit* (Search Unit, SU). Da Azure Search bei der Indizierung und bei Abfragen sowohl von Replikaten als auch von Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider. 
 
 SU ist das Produkt der von einem Dienst verwendeten *Replikate* und *Partitionen*: **`(R X P = SU)`**
 
-Jeder Dienst beginnt mit einer SU (ein Replikat multipliziert mit einer Partition) als Minimum. Das Maximum für jeden Dienst liegt bei 36 SUs. Dies lässt sich auf verschiedene Arten erreichen – beispielsweise mit sechs Partitionen mal sechs Replikate oder drei Partitionen mal 12 Replikate. 
-
-Es ist üblich, weniger als die Gesamtkapazität zu verwenden. Z. B. ein Dienst mit 3 Replikaten und 3 Partitionen, abgerechnet als 9 SUs. 
+Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Das Maximum für jeden Dienst liegt bei 36 SUs. Dies lässt sich auf verschiedene Arten erreichen – beispielsweise mit sechs Partitionen mal sechs Replikate oder drei Partitionen mal 12 Replikate. Es ist üblich, weniger als die Gesamtkapazität zu verwenden. Z. B. ein Dienst mit 3 Replikaten und 3 Partitionen, abgerechnet als 9 SUs. 
 
 Es wird **stündlich pro SU** abgerechnet, wobei jeder Tarif einen progressiv steigenden Abrechnungssatz hat. Höhere Tarife enthalten größere und schnellere Partitionen, was zu einem insgesamt höheren Stundensatz für den jeweiligen Tarif beiträgt. Die Preise für die einzelnen Tarife finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/). 
 
 Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halten den Rest in Reserve. Im Hinblick auf die Abrechnung bestimmt die Anzahl der Partitionen und Replikate, die Sie online bringen, mithilfe der SU-Formel berechnet, was Sie tatsächlich stündlich bezahlen.
 
-### <a name="tips-for-reducing-costs"></a>Tipps zur Reduzierung von Kosten
+### <a name="billing-for-image-extraction-in-cognitive-search"></a>Abrechnung für das Extrahieren von Bildern bei der kognitiven Suche
+
+Wenn Sie Bilder aus Dateien in einer Indizierungspipeline für die kognitive Suche extrahieren, wird Ihnen in Ihrer Azure Search-Rechnung dieser Vorgang in Rechnung gestellt. In einer [Indexerkonfiguration](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters) ist **imageAction** der Parameter, der die Bildextraktion auslöst. Wenn **imageAction** auf „None“ festgelegt ist (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an.
+
+Die Preise können sich ändern, dies wird jedoch immer auf der [Seite „Azure Search – Preise“](https://azure.microsoft.com/pricing/details/search/) dokumentiert. 
+
+### <a name="billing-for-built-in-skills-in-cognitive-search"></a>Abrechnung für integrierte Qualifikationen bei der kognitiven Suche
+
+Beim Einrichten einer Anreicherungspipeline basieren alle in der Pipeline verwendeten [integrierten Qualifikationen](cognitive-search-predefined-skills.md) auf Machine Learning-Modellen. Diese Modelle werden von Cognitive Services bereitgestellt. Die Verwendung dieser Modelle während der Indizierung wird mit der gleichen Gebühr abgerechnet, als ob Sie die Ressource direkt angefordert hätten.
+
+Nehmen wir beispielsweise eine Pipeline an, die aus optischer Zeichenerkennung (Optical Character Recognition, OCR) für gescannte JPEG-Bilddateien besteht, wobei der resultierende Text mittels Push in einen Azure Search-Index für Freiform-Suchabfragen übertragen wird. Ihre Indizierungspipeline würde einen Indexer mit der [Qualifikation „OCR“](cognitive-search-skill-ocr.md) enthalten, und diese Qualifikation wäre [einer Cognitive Services-Ressource zugeordnet](cognitive-search-attach-cognitive-services.md). Wenn Sie den Indexer ausführen, werden die entsprechenden Gebühren auf Ihrer Rechnung der Cognitive Services-Ressourcen für die OCR-Ausführung aufgeführt.
+
+## <a name="tips-for-reducing-costs"></a>Tipps zur Reduzierung von Kosten
 
 Sie können den Dienst nicht herunterfahren, um die Rechnung zu senken. Dedizierte Ressourcen werden während der gesamten Lebensdauer des Diensts 24-7 betrieben und sind für Ihre exklusive Nutzung zugeordnet. Die einzige Möglichkeit, um eine Rechnung zu senken, besteht darin, Replikate und Partitionen auf ein niedriges Niveau zu senken, das immer noch eine akzeptable Leistung und [SLA-Compliance](https://azure.microsoft.com/support/legal/sla/search/v1_0/) bietet. 
 
-Ein Hebel zur Reduzierung der Kosten ist die Auswahl eines Tarifs mit einem niedrigeren Stundensatz. Stundensätze von S1 sind niedriger als die von S2 oder S3. Sie können einen Dienst bereitstellen, der auf das untere Ende Ihrer projizierten Auslastungen abzielt. Wenn Sie diesem Dienst entwachsen, erstellen Sie einen zweiten Dienst in einem höheren Tarif, erstellen Ihre Indizes in diesem zweiten Dienst neu und löschen dann den ersten. Wenn Sie eine Kapazitätsplanung für lokale Server durchgeführt haben, wissen Sie, dass es üblich ist, „aufzukaufen“, damit Sie projiziertes Wachstum kompensieren können. Bei einem Clouddienst können Sie jedoch bei den Kosteneinsparungen aggressiver vorgehen, da Sie nicht an einen bestimmten Kauf gebunden sind. Sie können jederzeit in einen Dienst mit höherem Tarif wechseln, wenn der aktuelle nicht ausreicht.
+Ein Hebel zur Reduzierung der Kosten ist die Auswahl eines Tarifs mit einem niedrigeren Stundensatz. Stundensätze von S1 sind niedriger als die von S2 oder S3. Angenommen, Sie stellen einen Dienst bereit, der auf das untere Ende Ihrer projizierten Auslastungen abzielt. Wenn dieser Dienst Ihre Anforderungen nicht mehr erfüllt, können Sie einen zweiten Dienst in einem höheren Tarif erstellen, Ihre Indizes für diesen zweiten Dienst neu erstellen und dann den ersten Dienst löschen. 
+
+Wenn Sie eine Kapazitätsplanung für lokale Server durchgeführt haben, wissen Sie, dass es üblich ist, „aufzukaufen“, damit Sie projiziertes Wachstum kompensieren können. Bei einem Clouddienst können Sie jedoch bei den Kosteneinsparungen aggressiver vorgehen, da Sie nicht an einen bestimmten Kauf gebunden sind. Sie können jederzeit in einen Dienst mit höherem Tarif wechseln, wenn der aktuelle nicht ausreicht.
 
 ### <a name="capacity-drill-down"></a>Kapazitätsdrilldown
 
@@ -143,9 +166,9 @@ Indexzahl und -größe sind gleichermaßen für die Analyse relevant, da die max
 
 **Überlegungen zum Abfragevolumen**
 
-Abfragen pro Sekunde (Queries-Per-Second, QPS) ist eine Metrik, die häufig bei der Leistungsoptimierung verwendet wird, aber in der Regel bei der Tarifauswahl keine Rolle spielt, solange Sie nicht am Anfang ein sehr hohes Abfragevolumen erwarten.
+Abfragen pro Sekunde (Queries-Per-Second, QPS) ist eine Metrik, die häufig bei der Leistungsoptimierung verwendet wird, aber im Allgemeinen bei der Tarifauswahl keine Rolle spielt, solange Sie nicht am Anfang ein hohes Abfragevolumen erwarten.
 
-Alle Standardtarife können eine Ausgewogenheit zwischen Replikaten und Partitionen bieten, unterstützen eine kürzere Abfrageverarbeitungszeit durch zusätzliche Replikate für den Lastenausgleich und zusätzliche Partitionen für die parallele Verarbeitung. Sie können die Leistung optimieren, sobald der Dienst bereitgestellt wird.
+Die Standardtarife können eine Ausgewogenheit zwischen Replikaten und Partitionen bieten, wobei kürzere Abfrageverarbeitungszeiten durch zusätzliche Replikate für den Lastenausgleich und zusätzliche Partitionen für die parallele Verarbeitung unterstützt werden. Sie können die Leistung optimieren, sobald der Dienst bereitgestellt wird.
 
 Kunden, die von Anfang an ein hohes durchgängiges Abfragevolumen erwarten, sollten höhere Tarife in Verbindung mit leistungsfähigerer Hardware in Erwägung ziehen. Sie können dann Partitionen und Replikate offline schalten oder auch zu einem niedrigeren Tarifdienst wechseln, wenn diese Abfragevolumen ausbleiben. Weitere Informationen zum Berechnen des Abfragedurchsatzes finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
@@ -158,7 +181,7 @@ Für Funktionen des **Kostenlos**-Tarifs und der Vorschauversion gelten keine [V
 
 + Erfahren Sie, wie Sie effiziente Indizes erstellen, und welche Aktualisierungsmethoden die geringste Auswirkung haben. Wir empfehlen die [Datenverkehrsanalyse](search-traffic-analytics.md) für Erkenntnisse zur Abfrageaktivität.
 
-+ Erstellen Sie Metriken zu Abfragen, und sammeln Sie Daten zu Verwendungsmustern (Abfragen während der Geschäftszeiten, Indizierung außerhalb der Spitzenzeiten), und treffen Sie anhand dieser Daten Entscheidungen zur zukünftigen Dienstbereitstellung. Da es auf stündlicher oder täglicher Ebene nicht praktikabel ist, können Sie Partitionen und Ressourcen dynamisch anpassen, um geplante Änderungen von Abfragevolumen oder ungeplante, jedoch nachhaltige Änderungen aufzunehmen, wenn Ebenen beständig genug sind, um die Durchführung von Aktionen zu garantieren.
++ Erstellen Sie Metriken zu Abfragen, und sammeln Sie Daten zu Verwendungsmustern (Abfragen während der Geschäftszeiten, Indizierung außerhalb der Spitzenzeiten), und treffen Sie anhand dieser Daten Entscheidungen zur zukünftigen Dienstbereitstellung. Da ein stündliches oder tägliches Intervall nicht praktikabel ist, können Sie Partitionen und Ressourcen dynamisch anpassen, um geplante Änderungen von Abfragevolumen oder ungeplante, jedoch nachhaltige Änderungen zu berücksichtigen, wenn Ebenen beständig genug sind, um die Durchführung von Aktionen zu garantieren.
 
 + Beachten Sie, dass der einzige Nachteil einer unterdimensionierten Bereitstellung ist, dass Sie ggf. einen Dienst entfernen müssen, wenn die tatsächlichen Anforderungen Ihre Schätzungen überschreiten. Um Dienstunterbrechungen zu vermeiden, sollten Sie einen neuen Dienst im gleichen Abonnement in einem höheren Tarif erstellen und parallel ausführen, bis alle Apps und Anforderungen auf den neuen Endpunkt abzielen.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6793a83002029c009e3d4e124b4386feabecd5f8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583067"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201073"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
@@ -128,6 +128,8 @@ Gehen Sie anhand der folgenden Schritte vor, um Backup die erforderlichen Berech
 Nachdem Berechtigungen gewährt wurden, können Sie damit fortfahren, die Sicherung für verschlüsselte virtuelle Computer zu aktivieren.
 
 ## <a name="restore-an-encrypted-vm"></a>Wiederherstellen eines verschlüsselten virtuellen Computers
+Azure Backup unterstützt jetzt auch das Wiederherstellen eines [verschlüsselten virtuellen Azure-Computers ohne Azure AD](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad) zusätzlich zum vorherigen Angebot der unterstützten Wiederherstellung eines verschlüsselten virtuellen Azure-Computers mit Azure AD.<br>
+
 Stellen Sie zum Wiederherstellen verschlüsselter virtueller Computer zunächst Datenträger gemäß den Schritten im Abschnitt „Wiederherstellen von gesicherten Datenträgern“ unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration) wieder her. Sie können anschließend eine der folgenden Optionen wählen:
 
 * Führen Sie die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) beschriebenen PowerShell-Schritte aus, um auf der Grundlage der wiederhergestellten Datenträger einen vollständigen virtuellen Computer zu erstellen.

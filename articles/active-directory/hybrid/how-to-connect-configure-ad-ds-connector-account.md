@@ -7,19 +7,19 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c7b1d74c7750a281f8c961789d39a7ae323f304e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809878"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304039"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
-Mit Build 1.1.880.0 (August 2018 veröffentlicht) wurde ein neues PowerShell-Modul namens [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) eingeführt, das eine Sammlung von Cmdlets enthält, die Ihnen bei der Konfiguration der richtigen Active Directory-Berechtigungen für Ihre Azure AD Connect-Bereitstellung helfen sollen. 
+Mit Build 1.1.880.0 (veröffentlicht im August 2018) wurde das PowerShell-Modul namens [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) eingeführt, das eine Sammlung von Cmdlets enthält, die Sie beim Konfigurieren der richtigen Active Directory-Berechtigungen für Ihre Azure AD Connect-Bereitstellung unterstützen. 
 
 ## <a name="overview"></a>Übersicht 
 Die folgenden PowerShell-Cmdlets können verwendet werden, um Active Directory-Berechtigungen des AD DS-Connector-Kontos für jede Funktion einzurichten, die Sie in Azure AD Connect zu aktivieren vorgeben. Um Probleme zu vermeiden, sollten Sie immer dann Active Directory-Berechtigungen im Voraus vorbereiten, wenn Sie Azure AD Connect so installieren möchten, dass es mithilfe eines benutzerdefinierten Domänenkontos eine Verbindung mit Ihrer Gesamtstruktur herstellt. Dieses ADSyncConfig-Modul kann auch verwendet werden, um Berechtigungen zu konfigurieren, nachdem Azure AD Connect bereitgestellt wurde.
@@ -280,7 +280,7 @@ Beispiel:
 
 ``` powershell
 $credential = Get-Credential 
-Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
+Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 

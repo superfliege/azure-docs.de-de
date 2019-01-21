@@ -1,5 +1,5 @@
 ---
-title: 'Suchexplorer im Azure-Portal zum Abfragen von Indizes: Azure Search'
+title: Suchexplorer-Tool zum Abfragen von Daten im Azure-Portal – Azure Search
 description: Verwenden Sie die im Azure-Portal verfügbaren Tools wie den Suchexplorer, um Indizes in Azure Search abzufragen. Geben Sie Suchbegriffe oder vollqualifizierte Suchzeichenfolgen mit erweiterter Syntax ein.
 manager: cgronlun
 author: HeidiSteen
@@ -9,48 +9,25 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2aa372d1f917608de753007cc75ab0d608cafbba
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85e574a56380384b10d0916385a8816fd26c2eeb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188724"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244799"
 ---
-# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Gewusst wie: Abfragen von Indizes in Azure Search mit dem Suchexplorer 
+# <a name="search-explorer-for-querying-data-in-azure-search"></a>Suchexplorer zum Abfragen von Daten in Azure Search 
 
-In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln.
-
-## <a name="start-search-explorer"></a>Starten des Suchexplorers
-
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im Dashboard die Seite mit dem Suchdienst, oder [suchen Sie Ihren Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in der Liste mit den Diensten.
-
-2. Klicken Sie auf der Dienstübersichtsseite auf **Suchexplorer**.
+In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Mit dem Suchexplorer können Sie einfache oder vollständige Lucene-Abfragezeichenfolgen an einen beliebigen Index in Ihrem Dienst übermitteln. 
 
    ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
 
-3. Wählen Sie den abzufragenden Index aus.
 
-   ![Auswählen des abzufragenden Index](./media/search-explorer/search-explorer-changeindex-se2.png "Auswählen des abzufragenden Index")
-
-4. Legen Sie optional die API-Version fest. Standardmäßig wird die aktuelle allgemein verfügbare API-Version ausgewählt. Sie können jedoch eine Vorschauversion oder eine ältere API auswählen, wenn die Syntax, die Sie verwenden möchten, versionsspezifisch ist.
-
-5. Nachdem der Index und die API-Version ausgewählt wurden, geben Sie Suchbegriffe oder die vollqualifizierten Abfrageausdrücke in der Suchleiste ein und klicken auf **Suchen**, um die Suche auszuführen.
-
-   ![Eingeben der Suchbegriffe und Klicken auf „Suchen“](./media/search-explorer/search-explorer-query-string-example.png "Eingeben der Suchbegriffe und Klicken auf „Suchen“")
-
-Tipps für die Suche im **Suchexplorer**:
-
-+ Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben, sodass Sie den Dokumentaufbau und den Inhalt vollständig anzeigen können. Sie können in den Beispielen gezeigte Abfrageausdrücke verwenden, um die zurückgegebenen Felder einzuschränken.
-
-+ Dokumente bestehen aus allen Feldern, die im Index als **abrufbar** gekennzeichnet sind. Klicken Sie zum Anzeigen von Indexattributen im Portal auf der Übersichtsseite der Suche in der Liste **Indizes** auf *realestate-us-sample*.
-
-+ Freiformabfragen ähneln der Eingabe in kommerziellen Webbrowsern und eignen sich zum Testen der Endbenutzererfahrung. Beim integrierten Beispielimmobilienindex könnten Sie z.B. „Seattle apartments lake washington“ eingeben und dann mit STRG+F Begriffe in den Suchergebnissen finden. 
-
-+ Abfrage- und Filterausdrücke müssen in einer Syntax formuliert sein, die von Azure Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
+Hilfe zu den ersten Schritten finden Sie unter [So starten Sie den Suchexplorer](#start-search-explorer).
 
 ## <a name="basic-search-strings"></a>Grundlegende Suchzeichenfolgen
 
-In den folgenden Beispielen wird vom integrierten Beispielimmobilienindex ausgegangen. Weitere Informationen zum Erstellen dieses Index finden Sie unter [Schnellstart: Importieren, Indizieren und Abfragen im Azure-Portal](search-get-started-portal.md).
+In den folgenden Beispielen wird vom integrierten Beispielimmobilienindex ausgegangen. Hilfe zum Erstellen dieses Index finden Sie unter [Schnellstart: Importieren, Indizieren und Abfragen im Azure-Portal](search-get-started-portal.md).
 
 ### <a name="example-1---empty-search"></a>Beispiel 1: leere Suche
 
@@ -128,6 +105,37 @@ Fügen Sie **$orderby** hinzu, um die Ergebnisse nach einem anderen Feld als der
    ![orderby-Ausdruck](./media/search-explorer/search-explorer-example-ordery.png "Ändern der Sortierreihenfolge")
 
 Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
+
+<a name="start-search-explorer"></a>
+
+## <a name="how-to-start-search-explorer"></a>So starten Sie den Suchexplorer
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im Dashboard die Seite mit dem Suchdienst, oder [suchen Sie Ihren Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in der Liste mit den Diensten.
+
+2. Klicken Sie auf der Dienstübersichtsseite auf **Suchexplorer**.
+
+   ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
+
+3. Wählen Sie den abzufragenden Index aus.
+
+   ![Auswählen des abzufragenden Index](./media/search-explorer/search-explorer-changeindex-se2.png "Auswählen des abzufragenden Index")
+
+4. Legen Sie optional die API-Version fest. Standardmäßig wird die aktuelle allgemein verfügbare API-Version ausgewählt. Sie können jedoch eine Vorschauversion oder eine ältere API auswählen, wenn die Syntax, die Sie verwenden möchten, versionsspezifisch ist.
+
+5. Nachdem der Index und die API-Version ausgewählt wurden, geben Sie Suchbegriffe oder die vollqualifizierten Abfrageausdrücke in der Suchleiste ein und klicken auf **Suchen**, um die Suche auszuführen.
+
+   ![Eingeben der Suchbegriffe und Klicken auf „Suchen“](./media/search-explorer/search-explorer-query-string-example.png "Eingeben der Suchbegriffe und Klicken auf „Suchen“")
+
+Tipps für die Suche im **Suchexplorer**:
+
++ Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben, sodass Sie den Dokumentaufbau und den Inhalt vollständig anzeigen können. Sie können in den Beispielen gezeigte Abfrageausdrücke verwenden, um die zurückgegebenen Felder einzuschränken.
+
++ Dokumente bestehen aus allen Feldern, die im Index als **abrufbar** gekennzeichnet sind. Klicken Sie zum Anzeigen von Indexattributen im Portal auf der Übersichtsseite der Suche in der Liste **Indizes** auf *realestate-us-sample*.
+
++ Freiformabfragen ähneln der Eingabe in kommerziellen Webbrowsern und eignen sich zum Testen der Endbenutzererfahrung. Beim integrierten Beispielimmobilienindex könnten Sie z.B. „Seattle apartments lake washington“ eingeben und dann mit STRG+F Begriffe in den Suchergebnissen finden. 
+
++ Abfrage- und Filterausdrücke müssen in einer Syntax formuliert sein, die von Azure Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
