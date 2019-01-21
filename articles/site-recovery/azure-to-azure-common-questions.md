@@ -1,5 +1,5 @@
 ---
-title: 'Häufig gestellte Fragen: Azure-zu-Azure-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation'
+title: 'Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation'
 description: In diesem Artikel sind häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von Azure Site Recovery zusammengefasst.
 author: asgang
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 20311f904356f16b34f64d0aaf6ed438ba692857
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155149"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260463"
 ---
-# <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen: Azure-zu-Azure-Replikation
+# <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Replikation
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Bereitstellen der Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
@@ -74,10 +74,16 @@ Ein absturzkonsistenter Wiederherstellungspunkt stellt die Daten auf einem Daten
 
 Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahmen gut wiederhergestellt werden. Ein absturzkonsistenter Wiederherstellungspunkt ist normalerweise ausreichend für Betriebssysteme ohne Datenbank und Anwendungen wie Dateiserver, DHCP-Server und Druckerserver.
 
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Mit welcher Häufigkeit wird ein absturzkonsistenter Wiederherstellungspunkt generiert?
+Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
+
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt? 
 Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Momentaufnahmen erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst. 
 
 Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mit welcher Mindesthäufigkeit wird ein anwendungskonsistenter Wiederherstellungspunkt generiert?
+Die Site Recovery kann einen anwendungskonsistenten Wiederherstellungspunkt mit einer Mindesthäufigkeit von 1 pro Stunde erstellen.
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Wie werden Wiederherstellungspunkte generiert und gespeichert?
 Um zu verstehen, wie Site Recovery Wiederherstellungspunkte generiert, nehmen wir als Beispiel eine Replikationsrichtlinie, die für Wiederherstellungspunkte ein Aufbewahrungsfenster von 24 Stunden vorsieht und jede Stunde eine anwendungskonsistente Momentaufnahme anfertigt.
@@ -154,6 +160,9 @@ Mit der Option **Letzte Verarbeitung** wird ein Failover aller virtuellen Comput
 ### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Was geschieht, wenn ich eine Replikation zwischen zwei Azure-Regionen ausführe und in meiner primären Region ein unerwarteter Ausfall auftritt?
 Sie können nach dem Ausfall ein Failover auslösen. Site Recovery benötigt keine Verbindung mit der primären Region, um das Failover auszuführen.
 
+### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Was ist ein RTO des Failovers eines virtuellen Computers?
+Site Recovery besitzt eine [RTO SLA von 2 Stunden](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). In den meisten Fällen erfolgt ein Failover virtueller Computer durch Site Recovery jedoch innerhalb weniger Minuten. Sie können den RTO-Wert berechnen, indem Sie zu den Failoveraufträgen wechseln, wo die Zeit angezeigt wird, die es gedauert hat, den virtuellen Computer wieder verfügbar zu machen. Informationen zum Wiederherstellungsplan-RTO finden Sie weiter unten. 
+
 ## <a name="recovery-plan"></a>Wiederherstellungsplan
 
 ### <a name="what-is-a-recovery-plan"></a>Was ist ein Wiederherstellungsplan?
@@ -163,7 +172,7 @@ Ein Wiederherstellungsplan in Site Recovery orchestriert die Wiederherstellung v
 - Definieren der Abhängigkeiten zwischen virtuellen Computern, damit die Anwendung korrekt funktioniert
 - Automatisieren der Wiederherstellung zusammen mit benutzerdefinierten manuellen Aktionen, damit auch andere Vorgänge als das Failover der virtuellen Computer erreicht werden können
 
-[Hier](site-recovery-create-recovery-plans.md) erfahren Sie mehr über Wiederherstellungspläne.
+[hier](site-recovery-create-recovery-plans.md) .
 
 ### <a name="how-is-sequencing-achieved-in-a-recovery-plan"></a>Wie wird die Sequenzierung in einem Wiederherstellungsplan erreicht?
 

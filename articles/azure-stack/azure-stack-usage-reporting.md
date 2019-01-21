@@ -11,24 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/16/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: e4e1b3cb823d08948c31aa6486c08a930a377dfa
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 147242e7d5d62204198360f580848cd997850d09
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161955"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332522"
 ---
-# <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure 
+# <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure
 
-Nutzungsdaten, auch Verbrauchsdaten genannt, stellen die Menge der verwendeten Ressourcen dar. 
+Nutzungsdaten, auch Verbrauchsdaten genannt, stellen die Menge der verwendeten Ressourcen dar.
 
 Azure Stack-Systeme mit mehreren Knoten, die das nutzungsbasierte Abrechnungsmodell verwenden, sollten die Nutzungsdaten zu Abrechnungszwecken an Azure melden. Azure Stack-Betreiber sollten ihre Azure Stack-Instanz so konfigurieren, dass diese Nutzungsdaten an Azure meldet.
 
-> [!NOTE]
-> Die Nutzungsdaten-Berichterstellung ist für die Benutzer der Azure Stack-Systeme mit mehreren Knoten erforderlich, die im Rahmen des nutzungsbasierten Modells lizenziert sind. Sie ist optional für Kunden, die im Rahmen des Kapazitätsmodells lizenziert sind (siehe [Azure Stack erwerben](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)). Für Azure Stack Development Kit-Benutzer können Azure Stack-Betreiber Nutzungsdaten melden und die Funktion testen. Allerdings werden Benutzern keinerlei Kosten berechnet, die für die Nutzung anfallen. 
+> [!IMPORTANT]
+> Alle Workloads [müssen unter Mandantenabonnements bereitgestellt werden](#are-users-charged-for-the-infrastructure-vms), um die Lizenzbedingungen von Azure Stack einzuhalten.
+
+Die Nutzungsdaten-Berichterstellung ist für die Benutzer der Azure Stack-Systeme mit mehreren Knoten erforderlich, die im Rahmen des nutzungsbasierten Modells lizenziert sind. Sie ist optional für Kunden, die im Rahmen des Kapazitätsmodells lizenziert sind (siehe [Azure Stack erwerben](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)). Für Azure Stack Development Kit-Benutzer können Azure Stack-Betreiber Nutzungsdaten melden und die Funktion testen. Allerdings werden Benutzern keinerlei Kosten berechnet, die für die Nutzung anfallen.
 
 ![Abrechnungsablauf](media/azure-stack-usage-reporting/billing-flow.png)
 
@@ -75,7 +77,7 @@ Die Ressourcennutzung für Azure Stack Development Kit ist kostenlos. Bei Azure 
 
 ## <a name="are-users-charged-for-the-infrastructure-vms"></a>Müssen Benutzer für die Infrastruktur-VMs bezahlen?
 
- Nein. Nutzungsdaten für einige VMs von Azure Stack-Ressourcenanbietern werden Azure gemeldet, aber es fallen keine Gebühren für diese VMs oder die während der Bereitstellung erstellten VMs an, um die Azure Stack-Infrastruktur zu aktivieren.  
+Nein. Nutzungsdaten für einige VMs von Azure Stack-Ressourcenanbietern werden Azure gemeldet, aber es fallen keine Gebühren für diese VMs oder die während der Bereitstellung erstellten VMs an, um die Azure Stack-Infrastruktur zu aktivieren.  
 
 Benutzern werden nur VMs in Rechnung gestellt, die unter den Mandantenabonnements ausgeführt werden. Alle Workloads müssen unter Mandantenabonnements bereitgestellt werden, um die Lizenzbedingungen von Azure Stack einzuhalten.
 

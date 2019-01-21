@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1a341bf36842e49faf8e39f4056232c97cc4232c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 99c41dc010ae589cc43c093646fd1c05c1333f7e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195979"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265123"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows-Remoteverwaltung über HTTPS
 
 In diesem Abschnitt wird erläutert, wie ein in Azure gehosteter Windows-basierter virtueller Computer so konfiguriert wird, dass er mit Remotezugriff über PowerShell verwaltet und bereitgestellt werden kann.  Um PowerShell-Remoting zu aktivieren, muss der virtuelle Zielcomputer einen HTTPS-Endpunkt für Windows-Remoteverwaltung (WinRM) verfügbar machen.  Weitere Informationen über PowerShell-Remoting finden Sie unter [Ausführen von Remotebefehlen](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Weitere Informationen über WinRM finden Sie unter [Windows-Remoteverwaltung](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Wenn Sie einen virtuellen Computer mit einer der „klassischen“ Azure-Methoden erstellt haben – entweder über das Azure Service Manager-Portal oder die veraltete [Azure Dienstverwaltungs-API] (https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) –, wurde er automatisch mit einem WinRM-Endpunkt konfiguriert.  Wenn Sie einen virtuellen Computer jedoch über eine der folgenden „modernen“ Azure-Methoden erstellen, wird der virtuelle Computer *nicht* für WinRM über HTTPS konfiguriert.  
+Wenn Sie einen virtuellen Computer mit einer der „klassischen“ Azure-Methoden erstellt haben – entweder über das Azure Service Manager-Portal oder die veraltete [Azure Dienstverwaltungs-API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) –, wurde er automatisch mit einem WinRM-Endpunkt konfiguriert.  Wenn Sie einen virtuellen Computer jedoch über eine der folgenden „modernen“ Azure-Methoden erstellen, wird der virtuelle Computer *nicht* für WinRM über HTTPS konfiguriert.  
 
 - Über das [Azure-Portal](https://portal.azure.com/), in der Regel aus einem genehmigten Basisimage, wie dies im Abschnitt [Erstellen einer Azure-kompatiblen VHD](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd) beschrieben ist
 - [Verwenden der Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
