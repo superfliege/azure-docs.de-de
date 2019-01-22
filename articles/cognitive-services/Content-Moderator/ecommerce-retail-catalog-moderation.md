@@ -97,7 +97,7 @@ Rufen Sie nach dem Trainieren Ihrer Klassifizierung den Vorhersageschlüssel und
 
 ## <a name="create-reviews-for-review-tool"></a>Erstellen von Prüfungen für das Prüfungstool
 
-In den vorherigen Abschnitten haben Sie sich mit den Methoden beschäftigt, die eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (maschinelles Sehen) und verschiedene Objekte (Custom Vision) überprüfen. Sehen Sie sich als Nächstes die Methode **CreateReview** an. Diese Methode lädt die Bilder mit allen angewendeten (als _Metadaten_ übergebenen) Tags in das Content Moderator-Prüfungstool hoch, damit sie von menschlichen Prüfern geprüft werden können. 
+In den vorherigen Abschnitten haben Sie sich mit den Methoden beschäftigt, die eingehende Bilder auf nicht jugendfreie und freizügige Inhalte (Content Moderator), Prominente (maschinelles Sehen) und verschiedene Objekte (Custom Vision) überprüfen. Sehen Sie sich als Nächstes die Methode **CreateReview** an. Diese Methode lädt die Bilder mit allen angewendeten (als _Metadata_ übergebenen) Tags in das Content Moderator-Prüfungstool hoch, damit sie von menschlichen Prüfern geprüft werden können. 
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
