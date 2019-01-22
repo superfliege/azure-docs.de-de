@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>Schutzstatus
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Computer mit dem Schutzstatus „Keine Berichterstattung“ (Dauer)
-In diesem Beispiel werden Computer, die den Schutzstatus _Keine Berichterstattung_ hatten, zusammen mit der jeweiligen Dauer dieses Status aufgelistet.
+In diesem Beispiel werden Computer, die den Schutzstatus _Not Reporting_ (Keine Berichterstattung) hatten, zusammen mit der jeweiligen Dauer dieses Status aufgelistet.
 
 ```Kusto
 ProtectionStatus
