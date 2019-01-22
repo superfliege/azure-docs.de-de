@@ -12,118 +12,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 1/2/2019
 ms.author: rkarlin
-ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b973bb0e5cd9504725be385ab8505adbb140c950
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340690"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261858"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können.
 
-> [!NOTE]
-> Dieser Artikel setzt auf den Rollen und Konzepten auf, die im [Planungs- und Betriebshandbuch](security-center-planning-and-operations-guide.md) für Security Center vorgestellt wurden. Es empfiehlt sich, einen Blick in das Planungshandbuch zu werfen, ehe Sie fortfahren.
->
->
-
-## <a name="managing-security-recommendations"></a>Umsetzen von Sicherheitsempfehlungen
-In einer Sicherheitsrichtlinie werden die Sicherheitsmechanismen definiert, die für Ressourcen im angegebenen Abonnement oder in der angegebenen Ressourcengruppe zu empfehlen sind. In Security Center definieren Sie Richtlinien auf Grundlage der Sicherheitsanforderungen Ihres Unternehmens. Weitere Informationen finden Sie unter [Festlegen von Sicherheitsrichtlinien in Security Center](tutorial-security-policy.md).
-
-Sicherheitsrichtlinien für Ressourcengruppen werden von der Abonnementebene geerbt.
-
-![Vererbung von Sicherheitsrichtlinien][1]
-
-Falls Sie benutzerdefinierte Richtlinien für bestimmte Ressourcengruppen benötigen, können Sie die Vererbung in der Ressourcengruppe deaktivieren. Legen Sie zum Deaktivieren auf dem Blatt „Sicherheitsrichtlinie“ die Einstellung „Vererbung“ auf „Eindeutig“ fest, und passen Sie die Elemente an, für die Security Center Empfehlungen zeigt.
-
-Wenn Sie also etwa über Workloads verfügen, für die die Richtlinie „Transparent Data Encryption“ für SQL-Datenbank nicht benötigt wird, können Sie die Richtlinie auf Abonnementebene deaktivieren und nur in den Ressourcengruppen aktivieren, in denen sie benötigt wird.
-
-> [!NOTE]
-> Bei einem Konflikt zwischen der Richtlinie auf Abonnementebene und der Richtlinie auf Ressourcengruppenebene hat die Richtlinie auf Ressourcengruppenebene Vorrang.
->
->
-
-Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Wenn Security Center potenzielle Sicherheitsrisiken identifiziert, werden basierend auf den in der Sicherheitsrichtlinie festgelegten Elementen Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration der erforderlichen Sicherheitsmaßnahmen geführt.
-
-Aktuelle Empfehlungen in Security Center konzentrieren sich auf Systemupdates, die Betriebssystemkonfiguration, Netzwerksicherheitsgruppen für Subnetze und virtuelle Computer (VMs), die SQL-Datenbanküberwachung, TDE für SQL-Datenbank und Firewalls von Webanwendungen. Die neuesten Security Center-Empfehlungen finden Sie unter [Umsetzen von Sicherheitsempfehlungen in Security Center](security-center-recommendations.md).
+Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Sicherheitskontrollen unterstützen.
 
 ## <a name="scenario"></a>Szenario
-Dieses Szenario veranschaulicht die Nutzung von Security Center zum Eindämmen der Wahrscheinlichkeit eines erheblichen Sicherheitsvorfalls, indem Security Center-Empfehlungen befolgt und Maßnahmen ergriffen werden. In diesem Szenario werden das fiktive Unternehmen Contoso und die im [Planungs- und Betriebshandbuch](security-center-planning-and-operations-guide.md#security-roles-and-access-controls) vorgestellten Rollen verwendet. Die Rollen stellen Einzelpersonen und Teams dar, die Security Center für verschiedene sicherheitsbezogene Aufgaben verwenden können. Die Rollen lauten:
+Dieses Szenario veranschaulicht die Nutzung von Security Center zum Eindämmen der Wahrscheinlichkeit eines Sicherheitsvorfalls, indem Security Center-Empfehlungen befolgt und Maßnahmen ergriffen werden. In diesem Szenario werden das fiktive Unternehmen Contoso und die im [Planungs- und Betriebshandbuch](security-center-planning-and-operations-guide.md#security-roles-and-access-controls) vorgestellten Rollen verwendet. In diesem Szenario konzentrieren wir uns auf die Rollen der folgenden Personen:
 
-![Rollen im Szenario][2]
+![Rollen im Szenario](./media/security-center-using-recommendations/scenario-roles.png)
 
-Contoso hat vor Kurzem einige seiner lokalen Ressourcen nach Azure migriert. Contoso möchte Schutzmaßnahmen umsetzen und aufrechterhalten, die die Angriffsfläche seiner Ressourcen in der Cloud verkleinern.
+Contoso hat vor Kurzem einige seiner lokalen Ressourcen nach Azure migriert. Contoso möchte ihre Ressourcen schützen und Sicherheitsrisiken für ihre Ressourcen in der Cloud verringern.
 
-## <a name="recommended-solution"></a>Empfohlene Lösung
-Eine Lösung besteht darin, Security Center verwenden, um Sicherheitsrisiken zu verhindern und zu erkennen. Contoso hat im Rahmen seines Azure-Abonnements Zugriff auf Security Center. Der [Free-Tarif](security-center-pricing.md) von Security Center ist automatisch für alle Azure-Abonnements aktiviert. Die Datensammlung ist für alle VMs im Abonnement aktiviert.
+## <a name="use-azure-security-center"></a>Verwenden des Azure Security Centers
+David, Mitarbeiter der IT-Sicherheit von Contoso, hat sich bereits für ein Onboarding beim Security Center im Rahmen des Azure Security Center-Abonnements von Contoso entschlossen, um Sicherheitsrisiken zu verhindern und zu erkennen. 
 
-David aus der IT-Sicherheitsabteilung von Contoso konfiguriert mithilfe von Security Center eine **Sicherheitsrichtlinie**. Security Center analysiert den Sicherheitsstatus der Azure-Ressourcen von Contoso. Wenn Security Center potenzielle Sicherheitsrisiken ermittelt, werden basierend auf den in der Sicherheitsrichtlinie festgelegten Elementen **Empfehlungen** erstellt.
+Das Security Center analysiert automatisch den Sicherheitszustand der Azure-Ressourcen von Contoso und wendet Standardsicherheitsrichtlinien an. Wenn Security Center potenzielle Sicherheitsrisiken ermittelt, werden basierend auf den in der Sicherheitsrichtlinie festgelegten Elementen **Empfehlungen** erstellt. 
 
-Jeff, Zuständiger für eine Cloudwordkload, ist gemäß den Sicherheitsrichtlinien von Contoso verantwortlich für die Umsetzung und Aufrechterhaltung von Schutzmaßnahmen. Jeff kann die von Security Center erstellten Empfehlungen überwachen, um Schutzmaßnahmen anzuwenden. Entsprechend den Empfehlungen wird Jeff durch den Prozess der Konfiguration der erforderlichen Sicherheitselemente geführt.
+David führt den Azure Security-Standardtarif für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfunktionen zu erhalten. Jeff nimmt ebenfalls ein Onboarding all seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er die Hybridunterstützung des Security Centers auf allen [Windows](quick-onboard-windows-computer.md)- und [Linux](quick-onboard-linux-computer.md)-Servern ausnutzen kann.
 
-Damit Jeff die Schutzmaßnahmen umsetzen und aufrechterhalten sowie Sicherheitsrisiken beseitigen kann, muss er wie folgt vorgehen:
+Jeff ist Besitzer einer Cloudworkload. Jeff ist verantwortlich für die Anwendung von Sicherheitskontrollen gemäß den Sicherheitsrichtlinien von Contoso. 
+
+Jeff führt die folgenden Aufgaben aus:
 
 - Überwachen der von Security Center bereitgestellten Sicherheitsempfehlungen
 - Auswerten von Sicherheitsempfehlungen und entscheiden, ob sie umgesetzt werden sollen oder nicht
 - Umsetzen von Sicherheitsempfehlungen
 
-Wir wollen nun Jeffs Schritten folgen, um zu prüfen, wie er Security Center-Empfehlungen befolgt, um zum Beseitigen von Sicherheitsrisiken Maßnahmen zu konfigurieren.
+### <a name="remediate-threats-using-recommendations"></a>Beseitigen von Bedrohungen mittels Empfehlungen
+Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure an und öffnet das Security Center. 
 
-## <a name="how-to-implement-this-solution"></a>Implementieren dieser Lösung
-Jeff meldet sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an und öffnet die Security Center-Konsole. Im Rahmen seiner täglichen Überwachungsaktivitäten prüft er, ob Sicherheitsempfehlungen vorliegen, indem er die folgenden Schritte ausführt:
+1. Jeff wählt die Abonnements seiner Workload aus.
 
-1. Jeff wählt die Kachel **Empfehlungen** aus, um **Empfehlungen** zu öffnen.
-   ![Auswählen der Kachel „Empfehlungen“][3]
-2. Jeff überprüft die Liste der Empfehlungen. Er sieht, dass Security Center die Liste der Empfehlungen nach Priorität (von der höchsten zur niedrigsten) bereitstellt. Er beschließt, sich mit der Empfehlung mit der Priorität „Hoch“ in der Liste zu beschäftigen. Er wählt unter **Empfehlungen** die Option **Endpoint Protection installieren** aus.
-3. **Endpoint Protection installieren** wird mit einer Liste virtueller Computer geöffnet, für die keine Antischadsoftware aktiviert ist. Jeff prüft die Liste der VMs. Er wählt alle VMs und dann **Auf 3 VMs installieren** aus.
-   ![Endpoint Protection installieren][4]
-4. **Endpoint Protection auswählen** wird geöffnet und stellt Jeff zwei Antischadsoftwarelösungen zur Auswahl. Jeff wählt die Lösung **Microsoft Antimalware** aus.
-5. Weitere Informationen zur Antischadsoftware-Lösung werden angezeigt. Jeff klickt auf **Erstellen**.
-   ![Microsoft Antimalware][5]
-6. Jeff gibt die erforderlichen Konfigurationseinstellungen unter **Installieren** ein und wählt **OK** aus.
+2. Jeff überprüft seine **Sicherheitsbewertung**, um einen Gesamteindruck davon zu bekommen, wie sicher die Abonnements sind, und er sieht, dass seine Bewertung 548 ist.
 
-[Microsoft Antimalware](../security/azure-security-antimalware.md) ist jetzt auf den ausgewählten virtuellen Computern aktiv.
+3. Jeff muss entscheiden, welche Empfehlungen er zuerst umsetzt. Also klickt Jeff auf „Sicherheitsbewertung“ und beginnt, die Empfehlungen abzuarbeiten, basierend darauf, um wie viel sie seine [Sicherheitsbewertung](security-center-secure-score.md) verbessern.
 
-Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Jeff konsultiert den Artikel [Umsetzen von Sicherheitsempfehlungen](security-center-recommendations.md), um die Empfehlungen und die Auswirkungen bei ihrer Umsetzung zu verstehen.
+4. Da Jeff über viele verbundene virtuelle Computer und Server verfügt, entscheidet er, dass er sich auf **Compute und Apps** konzentriert.
 
-Jeff erfährt, dass [Microsoft Security Response Center (MSRC)](../security/azure-security-response-center.md) eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durchführt und Bedrohungsanalysendaten und Missbrauchsmeldungen von Drittanbietern empfängt. Nachdem Jeff Sicherheitskontaktinformationen zum Azure-Abonnement von Contoso bereitgestellt hat, wird Contoso von Microsoft kontaktiert, sobald das MSRC feststellt, dass auf die Kundendaten von Contoso ein rechtswidriger oder nicht autorisierter Zugriff erfolgt ist. Sehen wir uns an, wie Jeff die Empfehlung **Sicherheitskontaktinformationen bereitstellen** umsetzt (eine Empfehlung mit dem Schweregrad „Mittel“ in der Liste der zuvor genannten Empfehlungen).
+5. Als Jeff auf **Compute und Apps** klickt, wird ihm eine Liste mit Empfehlungen angezeigt, und er arbeitet diese gemäß ihrer Auswirkungen auf die Sicherheitsbewertung ab.
 
-1. Jeff wählt unter **Empfehlungen** die Option **Sicherheitskontaktinformationen bereitstellen** aus, woraufhin **Sicherheitskontaktinformationen bereitstellen** geöffnet wird.
-2. Jeff wählt das Azure-Abonnement aus, für das er Kontaktinformationen angeben möchten. Ein zweites Blatt **Details für Sicherheitskontakt angeben** wird geöffnet.
-   ![Sicherheitskontaktinformationen][6]
-3. Unter **Details für Sicherheitskontakt angeben** gibt Jeff Folgendes ein:
+6. Jeff verfügt über zahlreiche virtuelle Computer mit Internetzugriff, und da deren Ports verfügbar sind, macht er sich Sorgen, dass ein Angreifer die Kontrolle über die Server erlangen könnte. Also entscheidet sich Jeff für die Verwendung von (**Just-in-Time VM Access**)[security-center-just-in-time.md].
 
-  - die durch Kommas getrennten E-Mail-Adressen der Sicherheitskontakte (die Anzahl der E-Mail-Adressen ist hier unbegrenzt)
-  - eine Telefonnummer eines Sicherheitskontakts
-
-4. Jeff aktiviert auch die Option **E-Mails zu Warnungen an mich senden**, um E-Mails zu Warnungen mit hohem Schweregrad zu erhalten.
-5. Jeff klickt auf **OK**, um die Sicherheitskontaktinformationen für das Abonnement von Contoso zu übernehmen.
-
-Schließlich überprüft Jeff die Empfehlung mit niedriger Priorität **Betriebssystem-Sicherheitsrisiken beheben** und stellt fest, dass diese Empfehlung nicht umsetzbar ist. Er möchte die Empfehlung verwerfen. Jeff klickt auf die drei Punkte, die auf der rechten Seite angezeigt werden, und dann auf **Verwerfen**.
-   ![Empfehlung verwerfen][7]
+Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Bei jeder Empfehlung sieht sich Jeff die ausführlichen Informationen an, die vom Security Center bereitgestellt werden, um zu verstehen, welche Ressourcen betroffen sind, wie die Auswirkungen auf die Sicherheitsbewertung sind, und was jede Empfehlung bedeutet, sowie die Korrekturschritte dafür, wie jedes Problem korrigiert werden kann.
 
 ## <a name="conclusion"></a>Zusammenfassung
-Das Überwachen von Empfehlungen in Security Center kann helfen, Sicherheitsrisiken zu beseitigen, ehe ein Angriff erfolgt. Sie können einen Sicherheitsvorfall verhindern, indem Sie mithilfe von Sicherheitsrichtlinien in Security Center Schutzmaßnahmen umsetzen und aufrechterhalten.
+Die Überwachungsempfehlungen im Security Center helfen Ihnen dabei, Sicherheitsrisiken zu beseitigen, ehe ein Angriff erfolgt. Wenn Sie Korrekturen gemäß den Empfehlungen vornehmen, verbessern Sie Ihre Sicherheitsbewertung sowie den Sicherheitsstatus Ihrer Workloads. Security Center ermittelt automatisch neue Ressourcen, die Sie bereitstellen, bewertet diese anhand Ihrer Sicherheitsrichtlinie und stellt neue Empfehlungen zu deren Schutz bereit.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
+Stellen Sie sicher, dass Sie einen Überwachungsprozess eingerichtet haben, in dessen Rahmen Sie regelmäßig die Empfehlungen im Security Center überprüfen, damit Sie sicherstellen können, dass Ihre Ressourcen im Laufe der Zeit geschützt bleiben.
+
 In diesem Szenario wurde veranschaulicht, wie Sicherheitsangriffe mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center abgewehrt werden können. Im [Szenario für eine Reaktion auf Vorfälle](security-center-incident-response.md) erfahren Sie, wie Sie einen Plan zur Reaktion auf Vorfälle bereitstellen, bevor es zu einem Angriff kommt.
 
-Weitere Informationen zu Security Center finden Sie unter folgendem Link:
-
-* [Überwachen der Sicherheitsintegrität:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Überwachung und Verarbeitung von Sicherheitsereignisse](security-center-events-dashboard.md) – Hier erfahren Sie, wie Sie im Laufe der Zeit erfasste Sicherheitsereignisse überwachen und verarbeiten.
-* [Überwachen von Partnerlösungen:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
-
-<!--Image references-->
-[1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png
-[2]: ./media/security-center-using-recommendations/scenario-roles.png
-[3]: ./media/security-center-using-recommendations/select-recommendations-tile.png
-[4]: ./media/security-center-using-recommendations/install-endpoint-protection.png
-[5]:./media/security-center-using-recommendations/microsoft-antimalware.png
-[6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
-[7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
+Informationen, wie Sie auf Bedrohungen mittels [Reaktion auf Vorfälle](security-center-incident-response.md) reagieren.
