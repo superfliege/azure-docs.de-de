@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 12/03/2018
-ms.openlocfilehash: 507425a6cffc6f3b49e117ebf5a604bf0d252164
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7fecc280d4e92df88f5f8e9b9e571273328d2458
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542015"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352310"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
@@ -45,7 +45,7 @@ Für den Azure Database for MariaDB-Dienst sind verschiedene Diensttarife verfü
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
-Wie entscheiden Sie, wann Sie hoch- oder herunterskalieren müssen? Sie können die integrierten Leistungsüberwachungs- und Warnungsfeatures von Azure Database for MariaDB verwenden – kombiniert mit V-Kern-basierten Leistungsbewertungen. Mit diesen Tools können Sie schnell die Auswirkungen des zentralen Hoch- oder Herunterskalierens von virtuellen Kernen auf der Grundlage Ihrer derzeitigen oder erwarteten Leistungsanforderungen bewerten. <!--See [Alerts](howto-alert-on-metric.md) for details.-->
+Wie entscheiden Sie, wann Sie hoch- oder herunterskalieren müssen? Sie können die integrierten Leistungsüberwachungs- und Warnungsfeatures von Azure Database for MariaDB verwenden – kombiniert mit V-Kern-basierten Leistungsbewertungen. Mit diesen Tools können Sie schnell die Auswirkungen des zentralen Hoch- oder Herunterskalierens von virtuellen Kernen auf der Grundlage Ihrer derzeitigen oder erwarteten Leistungsanforderungen bewerten. Einzelheiten hierzu finden Sie unter [Warnungen](howto-alert-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Aufrechterhalten von App-Ausführung und Geschäftskontinuität
 
@@ -55,7 +55,7 @@ Die branchenführende SLA von Azure mit einer Verfügbarkeit von 99,99 Prozent w
 
 Azure-Datenbankdienste sind für ihren Datenschutz bekannt. Diese Tradition wird auch von Azure Database for MariaDB fortgeführt. Azure Database for MariaDB bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
 
-Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Daten werden auf dem Datenträger verschlüsselt. Das gilt auch für Sicherungsdaten. (Temporäre Dateien, die von der Engine beim Ausführen von Abfragen erstellt werden, werden auf dem Datenträger nicht verschlüsselt.) Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren. Die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
+Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten und ist mit FIPS 140-2 konform. Daten werden auf dem Datenträger verschlüsselt. Das gilt auch für Sicherungsdaten. (Temporäre Dateien, die von der Engine beim Ausführen von Abfragen erstellt werden, werden auf dem Datenträger nicht verschlüsselt.) Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren. Die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 
 In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass für Daten während der Übertragung innerhalb des Netzwerks [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Falls Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die SSL-Anforderung deaktivieren, um eine Verbindung mit Ihrem Datenbankdienst herstellen zu können.
 

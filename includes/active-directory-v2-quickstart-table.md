@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 01/09/2019
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 196435a8bd260c7f1679c06127610aeee29c0fe3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 3f863d0d5d0a7ee30ff7cfdfd55f0b656d487ed0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843577"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54242349"
 ---
-| Mobile und native Apps | Web-Apps und Web-APIs | Direktes Integrieren mit Protokollen |
+| Mobile und native Apps | Web-Apps und SPAs | Web-APIs |
 | --- | --- | --- |
-| [Hinzufügen der Anmeldung zu einer iOS-Anwendung](../articles/active-directory/develop/tutorial-v2-ios.md) | [Hinzufügen der Anmeldung zu einer JavaScript-Single-Page-Anwendung (SPA)](../articles/active-directory/develop/tutorial-v2-javascript-spa.md) |[Registrieren einer Anwendung](../articles/active-directory/develop/quickstart-v2-register-an-app.md) |
-| [Hinzufügen der Anmeldung zu einer Android-Anwendung](../articles/active-directory/develop/tutorial-v2-android.md) | [Hinzufügen der Anmeldung zu einer ASP.NET-Anwendung](../articles/active-directory/develop/tutorial-v2-asp-webapp.md) |[Mobile Anwendungen mit dem OAuth 2.0-Protokoll](../articles/active-directory/develop/v2-oauth2-auth-code-flow.md) |
-| [Hinzufügen der Anmeldung zu einer Windows-Desktopanwendung](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  [Hinzufügen der Anmeldung zu einer ASP.NET Core Web-Anwendung](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [Webanwendungen mit dem OpenID Connect-Protokoll](../articles/active-directory/develop/v2-protocols-oidc.md) |
-| [Hinzufügen der Anmeldung zu einer Xamarin-Anwendung für mehrere Plattformen](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| [Hinzufügen der Anmeldung zu einer Node.js-Webanwendung](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) |[JavaScript-SPAs mit dem OpenID Connect-Protokoll](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) |
-|  | [Schützen einer ASP.NET-Web-API](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet) | [Daemon-Anwendungen mit dem Clientanmeldeinformations-Flow von OAuth 2.0](../articles/active-directory/develop/v2-oauth2-client-creds-grant-flow.md) |
-|  | [Schützen einer ASP.NET Core-Web-API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) | |
+|<img width="40" role="presentation" alt="iOS" src="../articles/active-directory/develop/media/index/logo_ios.svg" data-linktype="relative-path" /><br/>[Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer nativen iOS-App](../articles/active-directory/develop/quickstart-v2-ios.md) | <img width="40" role="presentation" alt="JavaScript" src="../articles/active-directory/develop/media/index/logo_js.svg"/><br/>[Schnellstart: Anmelden von Benutzern und Beschaffen eines Zugriffstokens von einer JavaScript-Anwendung](../articles/active-directory/develop/quickstart-v2-javascript.md) |<img width="40" role="presentation" alt="ASP.NET Web API" src="../articles/active-directory/develop/media/index/logo_net.svg" /><br/> [Schützen einer ASP.NET-Web-API](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)  |
+|<img width="40" role="presentation" alt="Android" src="../articles/active-directory/develop/media/index/logo_android.svg" /><br/>[Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App](../articles/active-directory/develop/quickstart-v2-android.md) | <img width="40" role="presentation" alt="ASP.NET" src="../articles/active-directory/develop/media/index/logo_net.svg" /><br/>[Hinzufügen der Anmeldung zu einer ASP.NET-Anwendung](../articles/active-directory/develop/quickstart-v2-aspnet-webapp.md) |<img width="40" role="presentation" alt="ASP.NET Core Web API" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/>[Schützen einer ASP.NET Core-Web-API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) |
+|<img width="40" role="presentation" alt="Windows Desktop" src="../articles/active-directory/develop/media/index/logo_windows.svg" /><br/>[Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-Anwendung aus](../articles/active-directory/develop/quickstart-v2-windows-desktop.md) | <img width="40" role="presentation" alt=".NET Core" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [Hinzufügen der Anmeldung zu einer ASP.NET Core Web-Anwendung](../articles/active-directory/develop/quickstart-v2-aspnet-core-webapp.md) | |
+|<img width="40" role="presentation" alt="Xamarin" src="../articles/active-directory/develop/media/index/logo_xamarin.svg" /><br/> [Hinzufügen der Anmeldung zu einer Xamarin-Anwendung für mehrere Plattformen](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| <img width="40" role="presentation" alt="Node.js" src="../articles/active-directory/develop/media/index/logo_nodejs.svg" /><br/>[Hinzufügen der Anmeldung zu einer Node.js-Webanwendung](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+|<img width="40" role="presentation" alt="Universal Windows Platform" src="../articles/active-directory/develop/media/index/logo_windows.svg" /><br/> [Schnellstart: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (Universelle Windows-Plattform)](../articles/active-directory/develop/quickstart-v2-uwp.md)| | |
+|<img width="40" role="presentation" alt=".NET Core Daemon" src="../articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App](../articles/active-directory/develop/quickstart-v2-netcore-daemon.md)| | |

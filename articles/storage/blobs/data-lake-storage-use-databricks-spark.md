@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548985"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321805"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten in Data Lake Storage Gen2 (Vorschauversion) mit Azure Databricks unter Verwendung von Spark
 
@@ -36,12 +36,31 @@ In diesem Tutorial wird veranschaulicht, wie Sie die Flugdaten einer Fluggesells
 2. Wählen Sie **Herunterladen** aus, und speichern Sie die Ergebnisse auf Ihrem Computer.
 3. Notieren Sie sich den Dateinamen und den Pfad des Downloads. Diese Angaben werden in einem späteren Schritt benötigt.
 
-Für dieses Tutorial benötigen Sie ein Speicherkonto mit Analysefunktionen. Wir empfehlen, anhand der entsprechenden [Schnellstartanleitung](data-lake-storage-quickstart-create-account.md) ein geeignetes Speicherkonto zu erstellen. Navigieren Sie anschließend zu dem erstellten Speicherkonto, um Konfigurationseinstellungen abzurufen.
+Für dieses Tutorial benötigen Sie ein Speicherkonto mit Analysefunktionen. Wir empfehlen, anhand der entsprechenden [Schnellstartanleitung](data-lake-storage-quickstart-create-account.md) ein geeignetes Speicherkonto zu erstellen. 
 
-1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
-2. Wählen Sie neben **key1** die Schaltfläche **Kopieren** aus, um den Schlüsselwert zu kopieren.
+## <a name="set-aside-storage-account-configuration"></a>Bereithalten der Speicherkontokonfiguration
 
-Sowohl der Kontoname als auch der Schlüssel sind für weitere Schritte dieses Tutorials erforderlich. Öffnen Sie einen Text-Editor, und notieren Sie sich darin den Kontonamen und Schlüssel zur späteren Verwendung.
+Sie benötigen den Namen Ihres Speicherkontos und den URI eines Dateisystemendpunkts.
+
+Wählen Sie zum Abrufen des Namens Ihres Speicherkontos im Azure-Portal **Alle Dienste** aus, und filtern Sie nach dem Begriff *Speicher*. Wählen Sie anschließend **Speicherkonten** aus, und suchen Sie Ihr Speicherkonto.
+
+Wählen Sie zum Abrufen des Dateisystemendpunkt-URIs **Eigenschaften** aus, und suchen Sie im Eigenschaftenbereich den Wert des Felds **Primärer ADLS-Dateisystemendpunkt** .
+
+Fügen Sie beide Werte in eine Textdatei ein. Sie benötigen sie in Kürze.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
+
+Erstellen Sie gemäß den Anleitungen im folgenden Thema einen Dienstprinzipal: [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
+
+:heavy_check_mark: Geben Sie beim Ausführen der Schritte im Abschnitt [Erstellen einer Azure Active Directory-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) des Artikels im Dialogfeld **Erstellen** im Feld **Anmelde-URL** unbedingt den Endpunkt-URI an, den Sie eben abgerufen haben.
+
+:heavy_check_mark: Stellen Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels sicher, dass Ihre Anwendung der Rolle **Blob Storage Contributor** (Blob Storage-Mitwirkender) zugewiesen ist.
+
+:heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, Anwendungs-ID und Authentifizierungsschlüssel in eine Textdatei ein. Sie benötigen sie in Kürze.
 
 ## <a name="create-a-databricks-cluster"></a>Erstellen eines Databricks-Clusters
 
@@ -63,22 +82,24 @@ Im nächsten Schritt wird ein Databricks-Cluster erstellt, um einen Datenarbeits
 14. Geben Sie im Feld **Name** den gewünschten Namen ein, und wählen Sie **Python** als Sprache aus.
 15. Für alle anderen Felder können die Standardwerte übernommen werden.
 16. Klicken Sie auf **Erstellen**.
-17. Fügen Sie den folgenden Code in die Zelle **Cmd 1** ein. Ersetzen Sie die in Klammern angegebenen Platzhalter durch Ihre eigenen Werte:
+17. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in die erste Zelle ein, führen Sie den Code jedoch noch nicht aus.
 
-    ```scala
-    %python%
+    ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-        
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<application-id>",
+           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
     dbutils.fs.mount(
-        source = "abfss://dbricks@<account-name>.dfs.core.windows.net/folder1",
-        mount_point = "/mnt/flightdata",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
     ```
-18. Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
+18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte in den Abschnitten [Bereithalten der Speicherkontokonfiguration](#config) und [Erstellen eines Dienstprinzipals](#service-principal) dieses Artikels notiert haben. Ersetzen Sie den Platzhalter `file-system-name` durch einen beliebigen Namen für Ihr Dateisystem.
+
+19. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
 ## <a name="ingest-data"></a>Erfassen von Daten
 

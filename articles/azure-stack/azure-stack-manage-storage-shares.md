@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d4a40b07ef70d8dd43eb410ba396057551cd483
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249896"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304394"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack 
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Die Informationen in diesem Artikel helfen Azure Stack-Cloudbetreibern bei der Überwachung und Verwaltung der Speicherkapazität ihrer Azure Stack-Bereitstellung. Die Speicherinfrastruktur von Azure Stack ordnet einen Teil der Gesamtspeicherkapazität der Azure Stack-Bereitstellung für die Verwendung durch **Speicherdienste** zu. Die Speicherdienste speichern Daten eines Mandanten in Freigaben auf Volumes, die den Knoten der Bereitstellung entsprechen.
 
@@ -101,10 +101,10 @@ Bei Verwendung des Administratorportals erhalten Sie Benachrichtigungen zu Freig
 > [!IMPORTANT]
 > Achten Sie als Cloudbetreiber darauf, dass Freigaben nicht vollständig belegt sind. Wenn eine Freigabe vollständig belegt ist, funktioniert der Speicherdienst für diese Freigabe nicht mehr. Wenden Sie sich an den Support von Microsoft, um Speicherplatz freizugeben und wieder Vorgänge für eine Freigabe zu ermöglichen.
 
-**Warnung:** Wenn eine Dateifreigabe zu mehr als 80 Prozent belegt ist, erhalten Sie im Administratorportal eine Benachrichtigung vom Typ *Warnung*: ![Beispiel: Benachrichtigung vom Typ „Warnung“](media/azure-stack-manage-storage-shares/alert-warning.png)
+**Warnung**: Wenn eine Dateifreigabe zu mehr als 80 Prozent belegt ist, erhalten Sie im Administratorportal eine Benachrichtigung vom Typ *Warnung*: ![Beispiel: Benachrichtigung vom Typ „Warnung“](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**Kritisch:** Wenn eine Dateifreigabe zu mehr als 90 Prozent belegt ist, erhalten Sie im Administratorportal eine Benachrichtigung vom Typ *Kritisch*: ![Beispiel: Benachrichtigung vom Typ „Kritisch“](media/azure-stack-manage-storage-shares/alert-critical.png)
+**Kritisch**: Wenn eine Dateifreigabe zu mehr als 90 Prozent belegt ist, erhalten Sie im Administratorportal eine Benachrichtigung vom Typ *Kritisch*: ![Beispiel: Kritische Warnung](media/azure-stack-manage-storage-shares/alert-critical.png)
 
 **Anzeigen von Details:** Im Administratorportal können Sie Details zu einer Benachrichtigung öffnen, um mögliche Maßnahmen anzuzeigen: ![Beispiel: Anzeigen von Benachrichtigungsdetails](media/azure-stack-manage-storage-shares/alert-details.png)
 

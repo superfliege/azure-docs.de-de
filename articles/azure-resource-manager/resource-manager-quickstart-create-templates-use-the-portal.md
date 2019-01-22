@@ -10,33 +10,37 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f989a006251313a8439432861477dc133374af35
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104725"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304668"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal
 
-Hier erfahren Sie, wie Sie Ihre erste Azure Resource Manager-Vorlage erstellen, indem Sie über das Azure-Portal eine Vorlage erstellen diese dann über das Portal bearbeiten und bereitstellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. In diesem Tutorial wird ein Azure Storage-Konto erstellt. Der gleiche Prozess kann aber auch zur Erstellung anderer Azure-Ressourcen verwendet werden.
+Hier erfahren Sie, wie Sie mit dem Azure-Portal eine Resource Manager-Vorlage erstellen und diese dann über das Portal bearbeiten und bereitstellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md).
+
+Nach Abschluss des Tutorials stellen Sie ein Azure Storage-Konto bereit. Andere Azure-Ressourcen werden nach dem gleichen Verfahren bereitgestellt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="generate-a-template-using-the-portal"></a>Generieren einer Vorlage über das Portal
 
-In diesem Abschnitt erstellen Sie ein Speicherkonto über das Azure-Portal. Vor dem Bereitstellen des Speicherkontos haben Sie die Möglichkeit, sich die Vorlage anzusehen, die durch das Portal auf der Grundlage Ihrer Konfigurationen generiert wurde. Die Vorlage kann gespeichert und später wiederverwendet werden.
+Das Erstellen einer Resource Manager-Vorlage von Grund auf ist keine einfache Aufgabe, insbesondere dann, wenn Sie noch nicht mit der Azure-Bereitstellung und dem JSON-Format vertraut sind. Über das Azure-Portal können Sie eine Ressource konfigurieren, z.B. ein Azure Storage-Konto. Vor dem Bereitstellen der Ressource können Sie Ihre Konfiguration in eine Resource Manager-Vorlage exportieren. Die Vorlage kann gespeichert und später wiederverwendet werden.
+
+Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Arbeitsvorlagen zu generieren, wenn sie versuchen, Azure-Ressourcen bereitzustellen, mit denen sie nicht vertraut sind.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Ressource erstellen** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
 
     ![Erstellen eines Azure-Speicherkontos über das Azure-Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-3. Geben Sie Folgendes ein: 
+3. Geben Sie Folgendes ein:
 
-    - **Ressourcengruppe**: Erstellen Sie eine neue Azure-Ressourcengruppe mit einem Namen Ihrer Wahl. Auf dem Screenshot lautet der Name der Ressourcengruppe *mystorage1016rg*.
+    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie den gewünschten Namen für die Ressourcengruppennamen ein. Auf dem Screenshot lautet der Name der Ressourcengruppe *mystorage1016rg*. Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Eine Ressourcengruppe vereinfacht das Verwalten von Azure-Ressourcen.
     - **Name**: Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein. Auf dem Screenshot lautet der Name *mystorage1016*.
 
     Für die restlichen Eigenschaften können Sie die Standardwerte verwenden.
@@ -46,14 +50,14 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto über das Azure-Portal. Vor 
     > [!NOTE]
     > Bei manchen der exportierten Vorlagen sind vor der Bereitstellung noch einige Änderungen erforderlich.
 
-4. Wählen Sie am unteren Bildschirmrand **Überprüfen + erstellen** aus. 
+4. Wählen Sie am unteren Bildschirmrand **Überprüfen + erstellen** aus.
 5. Wählen Sie am unteren Bildschirmrand **Download a template for automation** (Herunterladen einer Vorlage für die Automatisierung) aus. Das Portal zeigt die generierte Vorlage:
 
     ![Generieren einer Vorlage über das Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    Im Hauptbereich wird die Vorlage angezeigt. Dabei handelt es sich um eine JSON-Datei mit vier übergeordneten Elementen: `schema`, `contentVersion`, `parameters` und `resources`. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
+    Im Hauptbereich wird die Vorlage angezeigt. Dabei handelt es sich um eine JSON-Datei mit sechs übergeordneten Elementen: `schema`, `contentVersion`, `parameters`, `variables`, `resources`, and `output`. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
 
-    Sechs Parameter wurden definiert. Einer davon heißt **storageAccountName**. Der zweite hervorgehobene Teil veranschaulicht, wie dieser Parameter in der Vorlage zu verwenden ist. Im nächsten Abschnitt bearbeiten Sie die Vorlage, um einen generierten Name für das Speicherkonto zu verwenden.
+    Sechs Parameter wurden definiert. Einer davon heißt **storageAccountName**. Der zweite hervorgehobene Teil im vorherigen Screenshot veranschaulicht, wie in der Vorlage auf diesen Parameter zu verweisen ist. Im nächsten Abschnitt bearbeiten Sie die Vorlage, um einen generierten Name für das Speicherkonto zu verwenden.
 
     In der Vorlage ist eine Azure-Ressource definiert. Der Typ ist [Microsoft.Storage/storageAccounts]. Sehen Sie sich die Definition der Ressource und die Ressourcenstruktur an.
 6. Wählen Sie **Herunterladen** aus. Speichern Sie **template.json** aus dem heruntergeladenen Paket auf Ihrem Computer. Im nächsten Abschnitt verwenden Sie ein Bereitstellungstool für Vorlagen, um die Vorlage zu bearbeiten.
@@ -61,13 +65,13 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto über das Azure-Portal. Vor 
 
     ![Generieren einer Vorlage über das Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    Mit der Kombination aus Vorlagen- und Parameterdatei können Sie ein Azure-Speicherkonto erstellen.
+    Mit der Kombination aus Vorlagen- und Parameterdatei können Sie eine Ressource erstellen. In diesem Tutorial erstellen Sie ein Azure-Speicherkonto.
 
 ## <a name="edit-and-deploy-the-template"></a>Bearbeiten und Bereitstellen der Vorlage
 
-Das Azure-Portal kann für einige grundlegende Bearbeitungen der Vorlage verwendet werden. In dieser Schnellstartanleitung verwenden Sie ein Portaltool namens *Vorlagenbereitstellung*. Komplexere Vorlagen sollten ggf. in [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md) bearbeitet werden, da dort umfangreichere Bearbeitungsfunktionen zur Verfügung stehen.
+Das Azure-Portal kann für einige grundlegende Bearbeitungen der Vorlage verwendet werden. In dieser Schnellstartanleitung verwenden Sie ein Portaltool namens *Vorlagenbereitstellung*. *Vorlagenbereitstellung* wird in diesem Tutorial verwendet, damit Sie für das gesamte Tutorial nur eine Schnittstelle benötigen: das Azure-Portal. Komplexere Vorlagen sollten ggf. in [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md) bearbeitet werden, da dort umfangreichere Bearbeitungsfunktionen zur Verfügung stehen.
 
-Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die Bereitstellung schlägt fehl, wenn Sie einen bereits vorhandenen Speicherkontonamen eingeben. Um dieses Problem zu vermeiden, können Sie durch Aufrufen der Vorlagenfunktion `uniquestring()` einen eindeutigen Speicherkontonamen generieren.
+Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die Bereitstellung schlägt u.U. fehl, wenn Sie einen bereits vorhandenen Speicherkontonamen eingegeben haben. Um dieses Problem zu vermeiden, ändern Sie die Vorlage so, dass durch Aufrufen der Vorlagenfunktion `uniquestring()` ein eindeutiger Speicherkontoname generiert wird.
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
@@ -84,7 +88,7 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
     ```
     ![Azure-Ressourcen-Manager-Vorlagen](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    Zwei Funktionen werden hier verwendet: `concat()` und `uniqueString()`.
+    Zwei Vorlagenfunktionen werden hier verwendet: `concat()` und `uniqueString()`.
 
 8. Entfernen Sie den im vorherigen Screenshot hervorgehobenen Parameter **storageAccountName**.
 9. Aktualisieren Sie das Element „name“ der Ressource **Microsoft.Storage/storageAccounts**, um anstelle des Parameters die neu definierte Variable zu verwenden:
@@ -142,9 +146,9 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
 7. Wählen Sie **Speichern** aus.
 8. Geben Sie die folgenden Werte ein:
 
-    - **Ressourcengruppe**: Versehen Sie Ihre Ressourcengruppe mit einem eindeutigen Namen.
-    - **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus.
-    - **Standort**: Wählen Sie einen Standort für das Speicherkonto aus.  Sie können den gleichen Standort verwenden wie für die Ressourcengruppe.
+    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie Ihrer Ressourcengruppe einen eindeutigen Namen.
+    - **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus. Beispiel: **USA, Mitte**. 
+    - **Standort**: Wählen Sie einen Standort für das Speicherkonto aus. Beispiel: **USA, Mitte**.
     - **Kontotyp**: Geben Sie für diese Schnellstartanleitung **Standard_LRS** ein.
     - **Variante**: Geben Sie für diese Schnellstartanleitung **StorageV2** ein.
     - **Zugriffsebene**: Geben Sie für diese Schnellstartanleitung **Heiße Ebene** ein.
@@ -156,7 +160,7 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
     ![Azure Resource Manager-Vorlagenbereitstellung](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-deploy.png)
 
 10. Wählen Sie die Option **Kaufen**.
-11. Klicken Sie am oberen Bildschirmrand auf das Glockensymbol (Benachrichtigungen), um den Bereitstellungsstatus anzuzeigen. Warten Sie, bis die Bereitstellung abgeschlossen wurde.
+11. Klicken Sie am oberen Bildschirmrand auf das Glockensymbol (Benachrichtigungen), um den Bereitstellungsstatus anzuzeigen. Dieser sollte **Die Bereitstellung wird ausgeführt...** lauten. Warten Sie, bis die Bereitstellung abgeschlossen wurde.
 
     ![Bereitstellung von Azure Resource Manager-Vorlagen – Benachrichtigung](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
 

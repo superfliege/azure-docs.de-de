@@ -4,17 +4,17 @@ description: Erstellen, Definieren und Bereitstellen von Artefakten mithilfe von
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 01/15/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b66a1c2c12a97ea8754377a138b51a4ca1739c21
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311421"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320683"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -68,7 +68,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- Ersetzen Sie `{YourMG}` durch den Namen Ihrer Verwaltungsgruppe.
+- Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
 - Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
 1. Erstellen Sie das anfängliche _blueprint_-Objekt. Der **Anforderungstext** enthält Eigenschaften der Blaupause, alle zu erstellenden Ressourcengruppen und alle Parameter auf Blaupausenebene. Die Parameter werden im Rahmen der Zuweisung festgelegt und von den in späteren Schritten hinzugefügten Artefakten verwendet.
@@ -130,7 +130,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die am Rollendefinitionsbezeichner ausgerichtet sind. Die Prinzipalbezeichner werden als Array von Werten übergeben. Im Beispiel unten ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird.
+1. Fügen Sie eine Rollenzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die am Rollendefinitionsbezeichner ausgerichtet sind. Die Prinzipalbezeichner werden als Array von Werten übergeben. Im Beispiel unten ist für die Prinzipalbezeichner, denen die angegebene Rolle zugewiesen wird, ein Parameter konfiguriert, der bei der Blaupausenzuweisung festgelegt wird. In diesem Beispiel wird die integrierte Rolle _Mitwirkender_ mit der GUID `b24988ac-6180-42a0-ab88-20f7382dd24c` verwendet.
 
    - REST-API-URI
 
@@ -150,7 +150,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine Richtlinienzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die sich an einer Richtlinie oder Initiativdefinition orientieren. Er konfiguriert außerdem die Richtlinienzuweisung für die Verwendung der definierten Blaupausenparameter, die im Rahmen der Blaupausenzuweisung konfiguriert werden.
+1. Fügen Sie eine Richtlinienzuweisung für das Abonnement hinzu. Der **Anforderungstext** definiert die _Art_ des Artefakts sowie die Eigenschaften, die sich an einer Richtlinie oder Initiativdefinition orientieren. Er konfiguriert außerdem die Richtlinienzuweisung für die Verwendung der definierten Blaupausenparameter, die im Rahmen der Blaupausenzuweisung konfiguriert werden. In diesem Beispiel wird die integrierte Richtlinie _Tag und dessen Standardwert auf Ressourcengruppen anwenden_ mit der `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` verwendet.
 
    - REST-API-URI
 
@@ -178,7 +178,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine weitere Richtlinienzuweisung für das Storage-Tag (unter Wiederverwendung des Parameters _storageAccountType_) für das Abonnement hinzu. Dieses zusätzliche Artefakt der Richtlinienzuweisung veranschaulicht, dass ein für die Blaupause definierter Parameter von mehreren Artefakten verwendet werden kann. In dem Beispiel wird **storageAccountType** verwendet, um ein Tag für die Ressourcengruppe festzulegen. Dieser Wert stellt Informationen zum im nächsten Schritt erstellten Speicherkonto bereit.
+1. Fügen Sie eine weitere Richtlinienzuweisung für das Storage-Tag (unter Wiederverwendung des Parameters _storageAccountType_) für das Abonnement hinzu. Dieses zusätzliche Artefakt der Richtlinienzuweisung veranschaulicht, dass ein für die Blaupause definierter Parameter von mehreren Artefakten verwendet werden kann. In dem Beispiel wird **storageAccountType** verwendet, um ein Tag für die Ressourcengruppe festzulegen. Dieser Wert stellt Informationen zum im nächsten Schritt erstellten Speicherkonto bereit. In diesem Beispiel wird die integrierte Richtlinie _Tag und dessen Standardwert auf Ressourcengruppen anwenden_ mit der `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` verwendet.
 
    - REST-API-URI
 
@@ -292,7 +292,7 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      }
      ```
 
-1. Fügen Sie eine Rollenzuweisung unter der Ressourcengruppe hinzu. Ähnlich wie beim vorherigen Rollenzuweisungseintrag wird im folgenden Beispiel der Definitionsbezeichner für die Rolle **Besitzer** verwendet und dafür ein anderer Parameter aus der Blaupause angegeben.
+1. Fügen Sie eine Rollenzuweisung unter der Ressourcengruppe hinzu. Ähnlich wie beim vorherigen Rollenzuweisungseintrag wird im folgenden Beispiel der Definitionsbezeichner für die Rolle **Besitzer** verwendet und dafür ein anderer Parameter aus der Blaupause angegeben. In diesem Beispiel wird die integrierte Rolle _Besitzer_ mit der GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` verwendet.
 
    - REST-API-URI
 

@@ -6,14 +6,14 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 12/17/2018
 ms.author: dkshir
-ms.openlocfilehash: b21e5a87561757e2991a7b9addce0d1f3383204f
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 28433f8f3f181c507521cb12f064df045ae21d9d
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557715"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212191"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins und Konfigurieren eines Raumgraphen
 
@@ -33,9 +33,7 @@ Im ersten Tutorial dieser Reihe lernen Sie Folgendes:
 > * Ändern einer Digital Twins-Beispiel-App
 > * Bereitstellen Ihres Gebäudes
 
-
 In diesen Tutorials werden die Beispiele aus [Quickstart: Find available rooms](quickstart-view-occupancy-dotnet.md) (Schnellstart: Ermitteln von verfügbaren Räumen) verwendet und geändert, um die Konzepte ausführlicher zu erläutern.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +43,7 @@ In diesen Tutorials werden die Beispiele aus [Quickstart: Find available rooms](
 
 - [Visual Studio Code](https://code.visualstudio.com/) zum Untersuchen des Beispielcodes. 
 
-<a id="deploy" />
+<a id="deploy"></a>
 
 ## <a name="deploy-digital-twins"></a>Bereitstellen von Azure Digital Twins
 
@@ -53,8 +51,7 @@ Erstellen Sie anhand der Schritte in diesem Abschnitt eine neue Instanz des Azur
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
-
-<a id="permissions" />
+<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Gewähren von Berechtigungen für Ihre App
 
@@ -64,19 +61,20 @@ Falls Sie bereits über eine App-Registrierung verfügen, können Sie sie für d
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
-
 ## <a name="configure-the-digital-twins-sample"></a>Konfigurieren des Digital Twins-Beispiels
 
 In diesem Abschnitt wird die Konfiguration einer Azure Digital Twins-Anwendung erläutert, die mit den [Digital Twins-REST-APIs](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index) kommuniziert. 
 
 ### <a name="download-the-sample"></a>Herunterladen des Beispiels
+
 Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-occupancy-dotnet.md) (Schnellstart: Ermitteln verfügbarer Räume) bereits heruntergeladen haben, können Sie diese Schritte überspringen.
 
-1. Laden Sie die [.NET-Beispiele für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip) herunter. 
-2. Extrahieren Sie den Inhalt des ZIP-Ordners auf Ihrem Computer. 
+1. Laden Sie die [.NET-Beispiele für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip) herunter.
+2. Extrahieren Sie den Inhalt des ZIP-Ordners auf Ihrem Computer.
 
 ### <a name="explore-the-sample"></a>Untersuchen des Beispiels
-Öffnen Sie im extrahierten Ordner die Datei **digital-twins-samples-csharp\digital-twins-samples.code-workspace** in Visual Studio Code. Das Beispiel umfasst zwei Projekte: 
+
+Öffnen Sie im extrahierten Ordner die Datei **digital-twins-samples-csharp\digital-twins-samples.code-workspace** in Visual Studio Code. Das Beispiel umfasst zwei Projekte:
 
 * Mit dem Bereitstellungsbeispiel **occupancy-quickstart** können Sie einen [Raumintelligenzgraphen](concepts-objectmodel-spatialgraph.md#graph) konfigurieren und bereitstellen. Bei diesem Graphen handelt es sich um das digitalisierte Abbild Ihrer physischen Gebäudebereiche und der darin enthaltenen Ressourcen. Im Beispiel wird ein [Objektmodell](concepts-objectmodel-spatialgraph.md#model) verwendet, das Objekte für ein intelligentes Gebäude definiert. Eine vollständige Liste der Digital Twins-Objekte und -REST-APIs finden Sie in der [REST-API-Dokumentation](https://docs.westcentralus.azuresmartspaces.net/management/swagger) oder unter der Verwaltungs-API-URL, die für [Ihre Instanz](#deploy) erstellt wurde.
 
@@ -89,6 +87,7 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
 * Das Simulationsbeispiel **device-connectivity** simuliert Sensordaten und sendet diese an den für Ihre Digital Twins-Instanz bereitgestellten IoT-Hub. Sie verwenden dieses Beispiel im [nächsten Tutorial, nachdem Sie den Raumgraphen bereitgestellt haben](tutorial-facilities-udf.md#simulate). Die zum Konfigurieren des Beispiels verwendeten Sensor- und Gerätebezeichner sollten mit den Bezeichnern identisch sein, die Sie zum Bereitstellen Ihres Graphen verwenden.
 
 ### <a name="configure-the-provisioning-sample"></a>Konfigurieren des Bereitstellungsbeispiels
+
 1. Öffnen Sie ein Befehlsfenster, und navigieren Sie zum heruntergeladenen Beispiel. Führen Sie den folgenden Befehl aus:
 
     ```cmd/sh
@@ -101,10 +100,10 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
     dotnet restore
     ```
 
-1. Öffnen Sie in Visual Studio Code die Datei **appSettings.json** des Projekts **occupancy-quickstart**. Aktualisieren Sie die folgenden Werte:
+1. Öffnen Sie in Visual Studio Code die Datei [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) des Projekts **occupancy-quickstart**. Aktualisieren Sie die folgenden Werte:
    * **ClientId**: Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein. Diese ID haben Sie sich im Abschnitt zum [Festlegen der App-Berechtigungen](#permissions) notiert.
    * **Tenant**: Geben Sie die Verzeichnis-ID Ihres [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ein. Diese ID haben Sie sich ebenfalls im Abschnitt zum [Festlegen der App-Berechtigungen](#permissions) notiert.
-   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: _https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/**.
+   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/**.
 
 1. Zeigen Sie eine Liste der Digital Twins-Funktionen an, die Sie mithilfe des Beispiels erkunden können. Führen Sie den folgenden Befehl aus:
 
@@ -112,10 +111,11 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
     dotnet run
     ```
 
-<a id="provision-spaces" />
+<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>Grundlegendes zum Bereitstellungsprozess
-In diesem Abschnitt wird erläutert, wie mit dem Beispiel ein Raumgraph eines Gebäudes bereitgestellt wird. 
+
+In diesem Abschnitt wird erläutert, wie mit dem Beispiel ein Raumgraph eines Gebäudes bereitgestellt wird.
 
 Navigieren Sie in Visual Studio Code zum Ordner **occupancy-quickstart\src\actions**, und öffnen Sie Datei **provisionSample.cs**. Beachten Sie die folgende Funktion:
 
@@ -137,15 +137,16 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-Diese Funktion verwendet die Datei **provisionSample.yaml** im selben Ordner. Öffnen Sie diese Datei. Dort sehen Sie die Hierarchie eines Bürogebäudes: *Venue* (Ort), *Floor* (Etage), *Area* (Bereich) und *Rooms* (Räume). Jeder dieser physischen Gebäudebereiche kann *devices*(Geräte) und *sensors* (Sensoren) enthalten. Jeder Eintrag besitzt einen vordefinierten `type`, beispielsweise „Floor“ oder „Room“. 
+Diese Funktion verwendet die Datei [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) im selben Ordner. Öffnen Sie diese Datei. Dort sehen Sie die Hierarchie eines Bürogebäudes: *Venue* (Ort), *Floor* (Etage), *Area* (Bereich) und *Rooms* (Räume). Jeder dieser physischen Gebäudebereiche kann *devices*(Geräte) und *sensors* (Sensoren) enthalten. Jeder Eintrag besitzt einen vordefinierten `type`, beispielsweise „Floor“ oder „Room“.
 
 Die **YAML**-Beispieldatei zeigt einen Raumgraphen mit dem Digital Twins-Objektmodell `Default`. Dieses Modell stellt allgemeine Namen für die meisten Typen bereit. Allgemeine Namen sind für ein Gebäude ausreichend. Beispiele sind „Temperature“ für „SensorDataType“ und „Map“ für „SpaceBlobType“. Ein Beispielbereichstyp ist „Room“ mit den Untertypen „FocusRoom“, „ConferenceRoom“ usw. 
 
 Zum Erstellen eines Raumgraphen für eine andere Art von Ort (z. B. eine Fabrik) benötigen Sie möglicherweise ein anderes Objektmodell. Sie können die verfügbaren Modelle anzeigen, indem Sie den Befehl `dotnet run GetOntologies` in der Befehlszeile für das Bereitstellungsbeispiel ausführen. 
 
-Weitere Informationen zu Raumgraphen und den Objektmodellen finden Sie unter [Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen](concepts-objectmodel-spatialgraph.md). 
+Weitere Informationen zu Raumgraphen und den Objektmodellen finden Sie unter [Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen](concepts-objectmodel-spatialgraph.md).
 
 ### <a name="modify-the-sample-spatial-graph"></a>Ändern des Beispielraumgraphen
+
 Die Datei **provisionSample.yaml** enthält die folgenden Knoten:
 
 - **resources**: Der Knoten `resources` erstellt eine Azure IoT Hub-Ressource für die Kommunikation mit den Geräten in Ihrem Setup. Ein IoT-Hub im Stammknoten des Graphen kann mit allen Geräten und Sensoren in Ihrem Graphen kommunizieren.  
@@ -168,22 +169,19 @@ Speichern und schließen Sie die Datei „provisionSample.yaml“. Im nächsten 
 > [!TIP]
 > Sie können Ihren Raumgraphen mithilfe des [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer) anzeigen und ändern.
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Falls Sie sich nicht weiter mit Azure Digital Twins befassen möchten, können Sie die in diesem Tutorial erstellten Ressourcen löschen:
 
 1. Wählen Sie im [Azure-Portal](http://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** und Ihre Digital Twins-Ressourcengruppe aus, und klicken Sie auf **Löschen**.
-   
+
     > [!TIP]
     > Für den Fall, dass bei Ihnen Probleme beim Löschen der Digital Twins-Instanz aufgetreten sind, wurde ein Dienstupdate mit einer entsprechenden Korrektur bereitgestellt. Versuchen Sie erneut, die Instanz zu löschen.
 
-1. Löschen Sie ggf. die Beispielanwendung auf Ihrem Arbeitscomputer. 
-
+1. Löschen Sie ggf. die Beispielanwendung auf Ihrem Arbeitscomputer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Im nächsten Tutorial dieser Reihe erfahren Sie, wie Sie eine benutzerdefinierte Logik zum Überwachen von Bedingungen in Ihrem Beispielgebäude implementieren. 
 > [!div class="nextstepaction"]
 > [Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen](tutorial-facilities-udf.md)
-

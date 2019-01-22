@@ -1,6 +1,6 @@
 ---
 title: Netzwerksicherheit in Azure Data Lake Storage Gen1 | Microsoft-Dokumentation
-description: Grundlegendes zur Funktionsweise der IP-Firewall und der Integration virtueller Netzwerke in Azure Data Lake Storage Gen1
+description: Grundlegendes zur Funktionsweise der Integration virtueller Netzwerke in Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: a363b5688e5fe915bd96393c35b3f39c69052d7c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287998"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359305"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Integration eines virtuellen Netzwerks für Azure Data Lake Storage Gen1 – Vorschauversion
 
-Dieser Artikel enthält eine Einführung in die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1 (Vorschauversion). Bei der Integration virtueller Netzwerke können Sie Ihre Konten so konfigurieren, dass Datenverkehr nur von bestimmten virtuellen Netzwerken und Subnetzen akzeptiert wird. 
+Dieser Artikel enthält eine Einführung in die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1. Bei der Integration virtueller Netzwerke können Sie Ihre Konten so konfigurieren, dass Datenverkehr nur von bestimmten virtuellen Netzwerken und Subnetzen akzeptiert wird. 
 
 Mit diesem Feature können Sie Ihr Data Lake Storage-Konto vor externen Bedrohungen schützen.
 
@@ -65,7 +65,7 @@ Neben dem Schützen der Data Lake Storage-Konten vor dem Zugriff aus dem virtuel
 Verwenden Sie eine Firewalllösung in Ihrem virtuellen Netzwerk, um den ausgehenden Datenverkehr basierend auf der Zielkonto-URL zu filtern. Lassen Sie den Zugriff nur für genehmigte Data Lake Storage Gen1-Konten zu.
 
 Einige der verfügbaren Optionen sind:
-- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): [Stellen Sie eine Azure Firewall für Ihr virtuelles Netzwerk bereit, und konfigurieren Sie sie](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Schützen Sie den ausgehenden Data Lake Storage-Datenverkehr, und sperren Sie ihn für die bekannte und genehmigte Konto-URL.
+- [Azure Firewall:](https://docs.microsoft.com/azure/firewall/overview) [Stellen Sie eine Azure Firewall für Ihr virtuelles Netzwerk bereit, und konfigurieren Sie sie](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Schützen Sie den ausgehenden Data Lake Storage-Datenverkehr, und sperren Sie ihn für die bekannte und genehmigte Konto-URL.
 - Firewall für [virtuelle Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/): Ihr Administrator lässt unter Umständen nur die Verwendung der Produkte von bestimmten kommerziellen Firewallanbietern zu. Verwenden Sie eine Firewalllösung vom Azure Marketplace, die auf einem virtuellen Netzwerkgerät basiert, um die gleiche Funktion durchzuführen.
 
 > [!NOTE]
@@ -73,11 +73,11 @@ Einige der verfügbaren Optionen sind:
 
 ## <a name="limitations"></a>Einschränkungen
 
-- HDI-Cluster, die erstellt wurden, bevor die Unterstützung für die Integration von virtuellen Netzwerken per Data Lake Storage Gen1 verfügbar war, müssen für dieses neue Feature neu erstellt werden.
+- HDInsight-Cluster, die erstellt wurden, bevor die Unterstützung für die Integration von virtuellen Netzwerken per Data Lake Storage Gen1 verfügbar war, müssen für dieses neue Feature neu erstellt werden.
  
-- Wenn Sie einen neuen HDInsight-Cluster erstellen und ein Data Lake Storage Gen1-Konto mit aktivierter Integration virtueller Netzwerke auswählen, tritt für den Prozess ein Fehler auf. Deaktivieren Sie zuerst die Regel für das virtuelle Netzwerk. Sie können auch auf dem Blatt **Firewall und virtuelle Netzwerke** des Data Lake Storage-Kontos die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** wählen. Weitere Informationen finden Sie im Abschnitt [Ausnahmen](##Exceptions).
+- Wenn Sie einen neuen HDInsight-Cluster erstellen und ein Data Lake Storage Gen1-Konto mit aktivierter Integration virtueller Netzwerke auswählen, tritt für den Prozess ein Fehler auf. Deaktivieren Sie zuerst die Regel für das virtuelle Netzwerk. Sie können auch auf dem Blatt **Firewall und virtuelle Netzwerke** des Data Lake Storage-Kontos die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** wählen. Erstellen Sie dann den HDInsight-Cluster, bevor Sie abschließend die Regel für virtuelle Netzwerke erneut aktivieren oder die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** deaktivieren. Weitere Informationen finden Sie im Abschnitt [Ausnahmen](##Exceptions).
 
-- Die Vorschauversion der Integration virtueller Netzwerke per Data Lake Storage Gen1 funktioniert mit [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Die Integration virtueller Netzwerke per Data Lake Storage Gen1 funktioniert nicht mit [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   
 - Auf Datei- und Ordnerdaten in Ihrem VNET-fähigen Data Lake Storage Gen1-Konto kann über das Portal nicht zugegriffen werden. Diese Einschränkung gilt auch für den Zugriff von einem virtuellen Computer innerhalb des virtuellen Netzwerks und für Aktivitäten wie die Verwendung des Daten-Explorers. Aktivitäten zur Kontoverwaltung funktionieren weiterhin. Auf die Datei- und Ordnerdaten in Ihrem VNET-fähigen Data Lake Storage-Konto kann über alle Ressourcen außerhalb des Portals zugegriffen werden. Zu diesen Ressourcen gehören SDK-Zugriff, PowerShell-Skripts und andere Azure-Dienste, sofern sie nicht über das Portal verlaufen. 
 
@@ -128,7 +128,7 @@ Einige der verfügbaren Optionen sind:
 
     ![Überprüfen des virtuellen Netzwerks und der Subnetze](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  Stellen Sie sicher, dass die virtuellen Netzwerke und Subnetze in der Liste korrekt angezeigt werden. Wählen Sie **Speichern**aus.
+6.  Stellen Sie sicher, dass die virtuellen Netzwerke und Subnetze in der Liste korrekt angezeigt werden. Wählen Sie **Speichern** aus.
 
     ![Speichern der neuen Regel](media/data-lake-store-network-security/config-adls-4.png)
 

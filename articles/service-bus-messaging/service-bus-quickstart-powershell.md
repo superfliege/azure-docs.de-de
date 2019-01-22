@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Senden und Empfangen von Nachrichten an bzw. von Azure Service Bus | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Service Bus-Nachrichten mit PowerShell und dem .NET Standard-Client senden und empfangen.
+title: 'Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Service Bus-Warteschlange erstellen. Anschließend nutzen Sie eine Beispielanwendung, um Nachrichten an die Warteschlange zu senden und Nachrichten von der Warteschlange zu empfangen.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2669b3ad9abc2370b4ecb66596d6edde17c82ddd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9fe9952c3885e0e6145141bac7db13694dcdbd11
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242431"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259664"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>Schnellstart: Senden und Empfangen von Nachrichten mit Azure PowerShell und .NET
-
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
 Microsoft Azure Service Bus ist ein Nachrichtenbroker für die Unternehmensintegration, der sicheres Messaging und absolute Zuverlässigkeit bietet. Ein typisches Service Bus-Szenario umfasst normalerweise die Entkopplung von zwei oder mehr Anwendungen, Diensten oder Prozessen und die Übertragung von Zustands- oder Datenänderungen. Szenarien dieser Art können die Planung mehrerer Batchaufträge in einer anderen Anwendung oder einem Dienst oder die Auslösung der Auftragsabwicklung umfassen. Beispielsweise kann es sein, dass ein Einzelhandelsunternehmen seine Point-of-Sale-Daten an ein Backoffice oder regionales Verteilungszentrum sendet, um den Bestand auffüllen bzw. aktualisieren zu lassen. Bei diesem Szenario sendet die Client-App Nachrichten an eine Service Bus-Warteschlange und empfängt Nachrichten von dieser Warteschlange.
 
 ![queue](./media/service-bus-quickstart-powershell/quick-start-queue.png)

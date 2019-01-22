@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087279"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351848"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Bereitstellen eines Service Fabric-Clusters in Azure Stack
 
@@ -118,7 +118,7 @@ Verwenden Sie das folgende Skript, um die Key Vault-Instanz zu erstellen, und f�
    ``` 
 
 
-Weitere Informationen finden Sie unter [Verwalten von Key Vault in Azure Stack mithilfe von PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell).
+Weitere Informationen finden Sie unter [Verwalten von Key Vault in Azure Stack mithilfe von PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-key-vault-manage-powershell).
 
 ## <a name="deploy-the-marketplace-item"></a>Bereitstellen des Marketplace-Elements
 
@@ -138,7 +138,7 @@ Weitere Informationen finden Sie unter [Verwalten von Key Vault in Azure Stack m
 
    Geben Sie unter *Admin Client Certificate Thumbprint* (Fingerabdruck des Administratorclientzertifikats) den Fingerabdruck des *Clientzertifikats des Administrators* ein. (Siehe [Voraussetzungen](#prerequisites).)
    
-   - Quellschlüsseltresor: Geben Sie die gesamte Zeichenfolge der Key Vault-ID (*keyVault id*) aus den Skriptergebnissen an. 
+   - Quellschlüsseltresor:  Geben Sie die gesamte Zeichenfolge der Key Vault-ID (*keyVault id*) aus den Skriptergebnissen an. 
    - Cluster Certificate URL (Clusterzertifikat-URL): Geben Sie die gesamte URL der Geheimnis-ID (*Secret Id*) aus den Skriptergebnissen an. 
    - Cluster Certificate thumbprint (Clusterzertifikatfingerabdruck): Geben Sie den *Clusterzertifikatfingerabdruck* aus den Skriptergebnissen an.
    - Admin Client Certificate Thumbprints (Fingerabdrücke des Administratorclientzertifikats): Geben Sie den *Fingerabdruck des Administratorclientzertifikats* an, der unter „Voraussetzungen“ erstellt wurde. 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713606"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246210"
 ---
 # <a name="overview-of-azure-notebooks"></a>Übersicht über Azure Notebooks
 
@@ -57,7 +57,7 @@ Kurz zusammengefasst: Mit Azure Notebooks können Sie Ihre Arbeit effizienter er
 
 Azure Notebooks ist ein kostenloser Dienst, aber jedes Projekt ist auf 4 GB Speicher und 1 GB an Daten beschränkt, um Missbrauch zu vermeiden. Für berechtigte Benutzer, die diese Grenzwerte überschreiten, wird eine Captcha-Eingabe abgefragt, bevor die Notebooks weiter ausgeführt werden können.
 
-Sie können Ihr Konto einem Azure-Abonnement zuordnen, um alle Beschränkungen aufzuheben. Sie haben dann die Möglichkeit, Premium-Computetarife auszuwählen.
+Melden Sie sich mit einem Konto, das Azure Active Directory nutzt (etwa einem Unternehmenskonto), bei Azure Notebooks an, um alle Beschränkungen aufzuheben. Ist dieses Konto mit einem Azure-Abonnement verknüpft, können Sie Azure Data Science Virtual Machine-Computetarife verwenden.
 
 ## <a name="available-kernels-and-environments"></a>Verfügbare Kernel und Umgebungen
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034317"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359458"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Erstellen Ihrer ersten dauerhaften Funktion in JavaScript
 
@@ -94,7 +94,7 @@ Damit haben Sie einen Orchestrator für die Koordinierung von Aktivitätsfunktio
 
 ## <a name="create-an-activity-function"></a>Erstellen einer Aktivitätsfunktion
 
-1. Erstellen Sie mithilfe der Schritte aus den vorherigen Abschnitten eine dritte Funktion unter Verwendung der HTTP-Triggervorlage. Nennen Sie diese Funktion `SayHello`.
+1. Erstellen Sie mithilfe der Schritte aus den vorherigen Abschnitten eine dritte Funktion unter Verwendung der HTTP-Triggervorlage. Nennen Sie diese Funktion `E1_SayHello`.
 
 2. Öffnen Sie die Datei „index.js“ für die neue Funktion, und ersetzen Sie den Inhalt durch folgenden Code:
 
@@ -121,9 +121,11 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
 
     ![Lokale Azure-Ausgabe](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein, und sehen Sie sich den Status Ihrer Orchestrierung an.
+4. Ersetzen Sie `{functionName}` durch `OrchestratorFunction`.
 
-5. Drücken Sie UMSCHALT+F1, um das Debuggen zu beenden.
+5. Senden Sie mit einem Tool wie [Postman](https://www.getpostman.com/) oder [cURL](https://curl.haxx.se/) eine HTTP-POST-Anforderung an den URL-Endpunkt.
+
+6. Drücken Sie in VS Code UMSCHALT+F1, um das Debuggen zu beenden.
 
 Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
 

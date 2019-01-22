@@ -1,23 +1,23 @@
 ---
-title: Benutzer, Gruppen, Lizenzierung und Rollen für große Organisationen in Azure Active Directory | Microsoft-Dokumentation
+title: 'Übersicht über Benutzer, Gruppen, Lizenzierung und Rollen: Azure Active Directory | Microsoft-Dokumentation'
 description: Enthält eine Beschreibung der Beziehung zwischen zugewiesenen Benutzern und Lizenzen, Administratorrollen und Gruppenmitgliedschaft in Azure Active Directory.
 keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 10/01/2018
+ms.date: 01/14/2019
 ms.topic: overview
 ms.service: active-directory
 ms.workload: identity
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 7f588766ead19f2cbca22aab596e6dc9d0210791
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 2689ec400b7d29c9f086481056e5f554d7fde95a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019917"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321958"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Benutzer, Gruppen, Lizenzierung und Rollen für große Organisationen
 

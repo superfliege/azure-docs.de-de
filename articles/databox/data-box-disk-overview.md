@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 874142df31d96de36b2b5be81a863c2f31317c52
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 506e36f72237f776c3969d945156c3edd6a64ffb
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158039"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319969"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Was ist ein Azure Data Box-Datenträger?
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie unter [Azure Data Box-Datenträger – Sicherhe
 
 | Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
-| Weight                                                  | Weniger als ca. 900 g pro Paket; Paket enthält maximal fünf Datenträger                |
+| Weight                                                  | Weniger als ca. 900 g pro Paket; Paket enthält maximal fünf Datenträger.                |
 | Dimensionen                                              | Datenträger – SSD 2,5 Zoll |            
 | Kabel                                                  | 1 USB-3.1-Kabel pro Datenträger|
 | Speicherkapazität pro Auftrag                              | 40 TB (ca. 35 TB nutzbar)|

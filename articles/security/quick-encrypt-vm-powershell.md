@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/14/2019
 ms.author: mstewart
 ms.custom: seodec18
-ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f94ec1a64108cde6ff69a572559960a988a1b7c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087863"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261280"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell
 
@@ -30,9 +30,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Windows PowerShell ISE
-- Installieren der [neuesten Version von Azure PowerShell](/powershell/azure/install-azurerm-ps) bzw. Aktualisieren auf die neueste Version
-    - Sie müssen mindestens Version 6.0.0 des AzureRM-Moduls verwenden. `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
-- Eine Kopie des [Skripts zur Überprüfung der Voraussetzungen für Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)
+- Installieren der [neuesten Version des AzureRM PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0) bzw. Aktualisieren auf die neueste Version
+    - Das AzureRM-Modul muss mindestens Version 6.0.0 aufweisen. `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
+- Eine Kopie des [Skripts zur Überprüfung der Voraussetzungen für Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)
     - Wenn Sie dieses Skript bereits besitzen, laden Sie eine neue Kopie herunter, da es vor Kurzem geändert wurde. 
     - Markieren Sie mithilfe von **STRG+A** den gesamten Text, und kopieren Sie ihn mit **STRG+C** in Editor.
     - Speichern Sie die Datei unter dem Namen **ADEPrereqScript.ps1**.

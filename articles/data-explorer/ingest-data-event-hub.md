@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064694"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352934"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer
 
@@ -189,7 +189,7 @@ Anhand der von der App generierten Daten können Sie den Datenfluss vom Event Hu
     ![Nachrichten-Resultset](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > ADX verfügt über eine Aggregationsrichtlinie (Batching) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist. Da die Richtlinie auf fünf Minuten konfiguriert wird, kann es zu Latenz kommen.
+    > Azure Data Explorer verfügt über eine Aggregationsrichtlinie (Batching) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist. Da die Richtlinie auf fünf Minuten konfiguriert wird, kann es zu Latenz kommen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

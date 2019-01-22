@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7bf8258524b0b5e73c1a499fb6d3578098a0821e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08638f0b55c84a6b0e42d3782246ef5b2ce833f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039162"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359067"
 ---
 # <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Verwenden der API für MongoDB-Unterstützung von Azure Cosmos DB für MongoDB-Features und -Syntax.
 
@@ -20,13 +20,13 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehr
 
 Mit der API für MongoDB von Azure Cosmos DB können Sie die Vorteile der vertrauten MongoDB mit allen Unternehmensfunktionen von Cosmos DB kombinieren. Hierzu zählen unter anderem [globale Verteilung](distribute-data-globally.md), [automatisches Sharding](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, automatische Indizierung der einzelnen Felder, Verschlüsselung ruhender Daten sowie Sicherungen.
 
-## <a name="mongodb-protocol-support"></a>Protokollunterstützung für MongoDB
+## <a name="protocol-support"></a>Protokollunterstützung
 
 Die API für MongoDB von Azure Cosmos DB ist standardmäßig mit der MongoDB-Serverversion **3.2** kompatibel. Die unterstützten Operatoren und alle Einschränkungen oder Ausnahmen sind unten aufgeführt. Features oder Abfrageoperatoren, die in der MongoDB-Version **3.4** hinzugefügt wurden, sind derzeit als Vorschaufunktion verfügbar. Alle Clienttreiber, die diese Protokolle verstehen, sollten auch mit der API für MongoDB von Azure Cosmos DB eine Verbindung herstellen können.
 
 Die [MongoDB-Aggregationspipeline](#aggregation-pipeline) ist derzeit auch als separate Vorschaufunktion verfügbar.
 
-## <a name="mongodb-query-language-support"></a>Unterstützung der MongoDB-Abfragesprache
+## <a name="query-language-support"></a>Unterstützung der Abfragesprache
 
 Die API für MongoDB von Azure Cosmos DB bietet umfassende Unterstützung für MongoDB-Abfragesprachkonstrukte. Im Folgenden finden Sie die detaillierte Aufstellung der aktuell unterstützten Vorgänge, Operatoren, Phasen, Befehle und Optionen.
 

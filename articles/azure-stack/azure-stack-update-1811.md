@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/15/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055165"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267316"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack-Update 1811
 
@@ -40,9 +40,9 @@ Die Buildnummer des Azure Stack-Updates 1811 ist **1.1811.0.101**.
 Azure Stack veröffentlicht regelmäßig Hotfixes. Stellen Sie sicher, dass Sie das [neueste Azure Stack-Hotfix](#azure-stack-hotfixes) für 1809 installieren, bevor Sie Azure Stack auf 1811 aktualisieren.
 
 > [!TIP]  
-> Abonnieren Sie die folgenden *RRS*- oder *Atom*-Feeds, um im Hinblick auf Azure Stack-Hotfixes auf dem neuesten Stand zu bleiben:
-> - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
-> - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
+> Abonnieren Sie die folgenden *RSS*- oder *Atom*-Feeds, um im Hinblick auf Azure Stack-Hotfixes auf dem neuesten Stand zu bleiben:
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack-Hotfixes
 
@@ -82,7 +82,7 @@ Azure Stack veröffentlicht regelmäßig Hotfixes. Stellen Sie sicher, dass Sie 
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    Nachdem Sie die obligatorischen Erweiterungshostzertifikate ordnungsgemäß importiert haben, können Sie das Update 1811 aus dem Administratorportal fortsetzen. Zwar rät Microsoft Azure Stack-Betreibern, die Skalierungseinheit während des Updateprozesses in den Wartungsmodus zu versetzen, doch sollte ein Fehler aufgrund der fehlenden Erweiterungshostzertifikate keine Auswirkungen auf vorhandene Workloads oder Dienste haben.  
+    Nachdem Sie die obligatorischen Erweiterungshostzertifikate ordnungsgemäß importiert haben, können Sie das Update 1811 aus dem Administratorportal fortsetzen. Zwar rät Microsoft Azure Stack-Betreibern, während des Updateprozesses ein Wartungsfenster zu planen, doch sollte ein Fehler aufgrund der fehlenden Erweiterungshostzertifikate keine Auswirkungen auf vorhandene Workloads oder Dienste haben.  
 
     Während der Installation dieses Updates ist das Azure Stack-Benutzerportal nicht verfügbar, solange der Erweiterungshost konfiguriert wird. Die Konfiguration des Erweiterungshosts kann bis zu fünf Stunden dauern. Während dieser Zeit können Sie den Status eines Updates überprüfen oder eine nicht erfolgreiche Updateinstallation über [PowerShell für Azure Stack-Administratoren oder über den privilegierten Endpunkt](azure-stack-monitor-update.md) fortsetzen.
 
@@ -254,6 +254,22 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 ### <a name="compute"></a>Compute
 
 - Beim Erstellen eines neuen virtuellen Windows-Computer s erfordert das Blatt **Einstellungen**, dass Sie einen öffentlichen eingehenden Port auswählen, um fortzufahren. In 1811 ist diese Einstellung zwar erforderlich, hat aber keine Auswirkungen. Dies liegt daran, dass die Funktion von Azure Firewall abhängig ist, die in Azure Stack nicht implementiert ist. Sie können **Keine öffentlichen Eingangsports** oder eine beliebige der anderen Optionen auswählen, um mit dem Erstellen des virtuellen Computers fortzufahren. Die Einstellung hat keine Auswirkungen.
+
+- Wenn Sie einen neuen virtuellen Windows-Computer erstellen, wird möglicherweise der folgende Fehler angezeigt:
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   Der Fehler tritt auf, wenn Sie die Startdiagnose bei einem virtuellen Computer aktivieren, aber Ihr Startdiagnose-Speicherkonto löschen. Um dieses Problem zu umgehen, erstellen Sie das Speicherkonto erneut mit demselben Namen wie zuvor.
+
+- Beim Erstellen eines [virtuellen Computers der Dv2-Serie](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) gestatten Ihnen D11-14v2 VMs das Erstellen von 4, 8, 16 bzw. 32 Datenträgern. Im Bereich „VM erstellen“ werden jedoch 8, 16, 32 und 64 Datenträger angezeigt.
+
+- Verwendungseinträge in Azure Stack können unerwartete Großschreibung enthalten, z. B.:
+
+   `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
+   virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
+   "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
+
+   In diesem Beispiel sollte der Name der Ressourcengruppe **AndrewRG** lauten. Sie können diese Inkonsistenz problemlos ignorieren.
 
 <!-- 3235634 – IS, ASDK -->
 - Um VMs mit Größen bereitzustellen, die das Suffix **v2** enthalten – z. B. **Standard_A2_v2** –, geben Sie das Suffix mit klein geschriebenem „v“ an: **Standard_A2_v2**. Verwenden Sie nicht **Standard_A2_V2** mit groß geschriebenem „V“. Dies funktioniert in der globalen Azure-Umgebung und ist eine Inkonsistenz in Azure Stack.

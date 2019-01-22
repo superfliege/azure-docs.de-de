@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Facebook-Inhaltsmoderation – Azure Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie Facebook-Seiten mit Content Moderator moderieren.
+description: In diesem Tutorial wird beschrieben, wie Sie Content Moderator auf Machine Learning-Basis verwenden, um Facebook-Posts und -Kommentare zu moderieren.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 09/18/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 085ddaf757f2a11b4db4aadb22ad16009d29231e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255430"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260444"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Tutorial: Facebook-Inhaltsmoderation mit Content Moderator
 
@@ -35,7 +35,7 @@ In der folgenden Abbildung sind die Bausteine der Lösung dargestellt.
 
 ## <a name="create-a-content-moderator-team"></a>Erstellen eines Content Moderator-Teams
 
-Informationen zur Registrierung für Content Moderator und zum Zusammenstellen eines Teams finden Sie in der [Schnellstartanleitung](quick-start.md).
+Informationen zur Registrierung für Content Moderator und zum Zusammenstellen eines Teams finden Sie unter [Schnellstart: Erste Schritte mit Content Moderato](quick-start.md).
 
 ## <a name="configure-image-moderation-workflow-threshold"></a>Konfigurieren des Workflows für die Bildmoderation (Schwellenwert)
 
@@ -152,10 +152,6 @@ Die Lösung sendet alle Bilder und Texte, die auf Ihrer Facebook-Seite gepostet 
 ## <a name="license"></a>Lizenz
 
 Alle Microsoft Cognitive Services-SDKs und -Beispiele sind mit der MIT-Lizenz lizenziert. Weitere Informationen finden Sie unter [The MIT License (MIT)](https://microsoft.mit-license.org/) (Die MIT-Lizenz (MIT)).
-
-## <a name="developer-code-of-conduct"></a>Verhaltensregeln für Entwickler
-
-Von Entwicklern, die Cognitive Services (einschließlich dieser Clientbibliothek und der Beispiele) verwenden, wird erwartet, dass sie die Verhaltensregeln zu Microsoft Cognitive Services für Entwickler („Developer Code of Conduct for Microsoft Cognitive Services“) unter http://go.microsoft.com/fwlink/?LinkId=698895 befolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

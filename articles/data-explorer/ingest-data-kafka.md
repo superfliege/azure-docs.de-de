@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
-ms.openlocfilehash: 21eb28611c1e40695356d502c262c23013591986
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b53c26f265cc5d944c8e15ae5bf436e8f71dcc2f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117366"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352732"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Kafka in Azure Data Explorer
  
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer ermöglicht die Erfassung (Laden von Daten) aus Kafka. Bei Kafka handelt es sich um eine verteilte Streamingplattform zum Erstellen von Echzeitstreaming-Datenpipelines, mit denen Daten auf zuverlässige Weise zwischen Systemen oder Anwendungen verschoben werden. 
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer ermöglicht die Erfassung (Laden von Daten) aus Kafka. Bei Kafka handelt es sich um eine verteilte Streamingplattform zum Erstellen von Echzeitstreaming-Datenpipelines, mit denen Daten auf zuverlässige Weise zwischen Systemen oder Anwendungen verschoben werden.
  
 ## <a name="prerequisites"></a>Voraussetzungen
  
@@ -30,9 +30,11 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 * [Visual Studio 2017, Version 15.3.2 oder höher](https://www.visualstudio.com/vs/) zum Ausführen der Beispiel-App
  
 ## <a name="kafka-connector-setup"></a>Einrichtung des Kafka-Connectors
+
 Kafka Connect ist ein Tool zum skalierbaren und zuverlässigen Streamen von Daten zwischen Apache Kafka und anderen Systemen. Es ist einfach, schnell Connectors zu definieren, mit denen umfangreiche Datensammlungen in und aus Kafka verschoben werden. Die Azure Data Explorer-Kafka-Senke dient als Kafka-Connector.
  
-### <a name="bundle"></a>Paket 
+### <a name="bundle"></a>Paket
+
 Für Kafka kann ein `.jar`-Element als Plug-In geladen werden, das als benutzerdefinierter Connector fungiert. Um ein `.jar`-Element dieser Art zu erstellen, klonen wir den Code lokal und verwenden Maven für die Erstellung. 
 
 #### <a name="clone"></a>Klonen
@@ -41,7 +43,7 @@ Für Kafka kann ein `.jar`-Element als Plug-In geladen werden, das als benutzerd
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
- 
+
 #### <a name="build"></a>Entwickeln
 
 Führen Sie Erstellung lokal mit Maven durch, um ein `.jar`-Element mit Abhängigkeiten zu erstellen.
@@ -55,9 +57,9 @@ Führen Sie im Stammverzeichnis *kafka-sink-azure-kusto* Folgendes aus:
 ```bash
 mvn clean compile assembly:single
 ```
- 
+
 ### <a name="deploy"></a>Bereitstellen 
- 
+
 Laden Sie das Plug-In in Kafka. Ein Bereitstellungsbeispiel mit Docker finden Sie unter [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy).
  
 
@@ -112,13 +114,16 @@ Erstellen Sie eine Tabelle in Azure Data Explorer, an die Kafka Daten senden kan
 Nachdem für den Kafka-Cluster die Verbindung mit Azure Data Explorer hergestellt wurde, können Sie die [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) verwenden, die Sie zum Generieren von Daten heruntergeladen haben.
 
 ### <a name="clone"></a>Klonen
+
 Klonen Sie die Beispiel-App lokal:
 
 ```cmd
 git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
 cd ./azure-kusto-samples-dotnet/kafka/
 ```
+
 ### <a name="run-the-app"></a>Ausführen der App
+
 1. Öffnen Sie die Beispiel-App-Projektmappe in Visual Studio.
 
 1. Aktualisieren Sie in der Datei `Program.cs` die Konstante `connectionString` auf Ihre Kafka-Verbindungszeichenfolge.
@@ -131,7 +136,7 @@ cd ./azure-kusto-samples-dotnet/kafka/
 
 1. Nachdem die App einige Nachrichten gesendet hat, können Sie mit dem nächsten Schritt fortfahren.
  
-## <a name="query-and-review-the-data"></a>Abfragen und Überprüfen der Daten 
+## <a name="query-and-review-the-data"></a>Abfragen und Überprüfen der Daten
 
 1. Stellen Sie wie folgt sicher, dass während der Erfassung keine Fehler aufgetreten sind:
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: be9de3c10fdfd040b249dd8da568259c599d7215
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c4f78d8bb43b26814dc3a4b94109dfd8719cb48f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050386"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258831"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Erstellen und Konfigurieren von Azure Kubernetes Service-Clustern in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können Ansible verwenden, um Ihren Azure Kubernetes Service (AKS) zu verwalten. Dieser Artikel beschreibt, wie Sie mithilfe von Ansible einen Azure Kubernetes Service-Cluster erstellen und verwalten können.
@@ -28,7 +28,10 @@ Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von
 > Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.6 erforderlich. 
 
 ## <a name="create-a-managed-aks-cluster"></a>Erstellen eines verwalteten AKS-Clusters
-Das folgende Ansible-Beispielplaybook erstellt eine Ressourcengruppe und einen AKS-Cluster, der sich in der Ressourcengruppe befindet:
+Der Code in diesem Abschnitt stellt ein Ansible-Beispielplaybook dar, das eine Ressourcengruppe und einen AKS-Cluster erstellt, der sich in der Ressourcengruppe befindet.
+
+> [!Tip]
+> Geben Sie für den Platzhalter `your_ssh_key` Ihren öffentlichen RSA-Schlüssel im einzeiligen Format beginnend mit „ssh-rsa“ (ohne Anführungszeichen) ein. 
 
   ```yaml
   - name: Create Azure Kubernetes Service
@@ -99,7 +102,8 @@ Die Ausgabe des Befehls **ansible-playbook* sieht in etwa folgendermaßen aus un
 
 Das Beispielplaybook aus dem vorherigen Abschnitt definiert zwei Knoten. Wenn Sie größere oder kleinere Containerworkloads in Ihrem Cluster benötigen, können Sie die Anzahl der Knoten auf einfache Weise anpassen. Im Beispielplaybook in diesem Abschnitt wird die Anzahl von Knoten von 2 auf 3 Knoten erhöht. Die Knotenanzahl wird geändert, indem der Wert **count** im Block **agent_pool_profiles** geändert wird. 
 
-Geben Sie Ihren eigenen Wert für `ssh_key` `client_id` und `client_secret` in den Block **service_principal** ein:
+> [!Tip]
+> Geben Sie für den Platzhalter `your_ssh_key` Ihren öffentlichen RSA-Schlüssel im einzeiligen Format beginnend mit „ssh-rsa“ (ohne Anführungszeichen) ein. 
 
 ```yaml
 - name: Scale AKS cluster

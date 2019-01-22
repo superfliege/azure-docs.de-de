@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 44f5ea606efafbb310e4740d75cbf86b7069e7ca
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2c9385e55559e53c9118e047bdddbe178a10770
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722514"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359560"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js- und MongoDB-App in Azure App Service unter Linux
 
@@ -28,14 +28,14 @@ ms.locfileid: "53722514"
 > In diesem Artikel wird eine App in App Service unter Linux bereitgestellt. Informationen zur Bereitstellung in App Service unter _Windows_ finden Sie unter [Erstellen einer Node.js- und MongoDB-App in Azure](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. In diesem Tutorial wird gezeigt, wie eine Node.js-App erstellt, diese lokal mit einer MongoDB-Datenbank verbunden und dann als Azure Cosmos DB für MongoDB-API-Datenbank bereitgestellt wird. Nachdem Sie diese Schritte ausgeführt haben, wird eine MEAN-Anwendung (MongoDB, Express, AngularJS und Node.js) in App Service unter Linux ausgeführt. Zur Vereinfachung verwendet die Beispielanwendung das [MEAN.js-Webframework](https://meanjs.org/).
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. In diesem Tutorial wird gezeigt, wie eine Node.js-App erstellt, diese lokal mit einer MongoDB-Datenbank verbunden und dann in einer Datenbank in der Azure Cosmos DB-API für MongoDB bereitgestellt wird. Nachdem Sie diese Schritte ausgeführt haben, wird eine MEAN-Anwendung (MongoDB, Express, AngularJS und Node.js) in App Service unter Linux ausgeführt. Zur Vereinfachung verwendet die Beispielanwendung das [MEAN.js-Webframework](https://meanjs.org/).
 
 ![In Azure App Service ausgeführte MEAN.js-App](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
 Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Datenbank mit Azure Cosmos DB für MongoDB-API
+> * Erstellen einer Datenbank mit der Azure Cosmos DB-API für MongoDB
 > * Verbinden einer Node.js-App mit MongoDB
 > * Bereitstellen der Anwendung in Azure
 > * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
@@ -121,7 +121,7 @@ Sie können Node.js jederzeit beenden, indem Sie im Terminal `Ctrl+C` drücken.
 
 ## <a name="create-production-mongodb"></a>Erstellen einer Produktions-MongoDB
 
-In diesem Schritt erstellen Sie eine Cosmos-Datenbank, die mit MongoDB-API konfiguriert wurde, in Azure. Wenn Ihre App in Azure bereitgestellt ist, nutzt sie diese Clouddatenbank.
+In diesem Schritt erstellen Sie ein Datenbankkonto mithilfe der Azure Cosmos DB-API für MongoDB. Wenn Ihre App in Azure bereitgestellt ist, nutzt sie diese Clouddatenbank.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -157,7 +157,7 @@ Nach dem Erstellen des Cosmos DB-Kontos zeigt die Azure-Befehlszeilenschnittstel
 }
 ```
 
-## <a name="connect-app-to-production-cosmos-db-configured-with-mongodb-api"></a>Verbinden der App mit der Cosmos DB-Produktionsdatenbank, die mit MongoDB-API konfiguriert wurde
+## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>Verbinden der App mit der Produktionsinstanz, die mit der Azure Cosmos DB-API für MongoDB konfiguriert wurde
 
 In diesem Schritt verbinden Sie die MEAN.js-Beispielanwendung mithilfe einer MongoDB-Verbindungszeichenfolge mit der soeben erstellten Cosmos DB-Datenbank.
 
@@ -317,7 +317,7 @@ http://<app_name>.azurewebsites.net
 
 Klicken Sie oben im Menü auf **Sign Up** (Registrieren), und erstellen Sie einen Dummy-Benutzer.
 
-Wenn der Vorgang erfolgreich abgeschlossen und der erstellte Benutzer automatisch in der App angemeldet wird, verfügt die MEAN.js-App in Azure über eine Verbindung mit Azure Cosmos DB für MongoDB-API.
+Wenn der Vorgang erfolgreich abgeschlossen und der erstellte Benutzer automatisch bei der App angemeldet wird, verfügt die MEAN.js-App in Azure über eine Verbindung mit der Azure Cosmos DB-API für MongoDB.
 
 ![In Azure App Service ausgeführte MEAN.js-App](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -472,7 +472,7 @@ Standardmäßig wird im Portal die Seite **Übersicht** Ihrer App angezeigt. Die
 Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen einer Datenbank mit Azure Cosmos DB für MongoDB-API
+> * Erstellen einer Datenbank mit der Azure Cosmos DB-API für MongoDB
 > * Verbinden einer Node.js-App mit einer Datenbank
 > * Bereitstellen der Anwendung in Azure
 > * Aktualisieren des Datenmodells und erneutes Bereitstellen der App

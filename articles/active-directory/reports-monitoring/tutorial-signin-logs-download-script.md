@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8b9097a62ca4bfa67fb5eb35e06f7834df6691e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 07239e3411bc8df06cdff731343649867b59a3c9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622804"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213093"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Tutorial: Herunterladen und Verwenden eines Skripts zum Zugreifen auf Anmeldeprotokolle
 
@@ -33,7 +33,7 @@ In diesem Tutorial erfahren Sie, wie Sie ein Skript zum Herunterladen aller Anme
 
 Sie benötigen Folgendes:
 
-* Einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1/P2) 
+* Einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1/P2) Beachten Sie Folgendes: Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben. 
 * Einen Benutzer, der über die Rolle **Globaler Administrator**, **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Benutzer mit Leseberechtigung für Berichte** für den Mandanten verfügt. Darüber hinaus kann jeder Benutzer auf die eigenen Anmeldungen zugreifen. 
 * Wenn Sie das heruntergeladene Skript auf Ihrem Windows 10-Computer ausführen möchten, [richten Sie das AzureRM-Modul ein, und legen Sie die Ausführungsrichtlinie fest](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 

@@ -4,22 +4,22 @@ description: Schritte zum Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azu
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/25/2018
+ms.topic: tutorial
+ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 1215e0060662e0d5261d3aeac4874e5833131ba3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287437"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260838"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
@@ -27,19 +27,19 @@ ms.locfileid: "51287437"
 
 1. Wählen Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) die Option **Azure Active Directory** aus. 
 
-    ![Azure Active Directory-Schaltfläche](./media/openidoauth-tutorial/tutorial_general_01.png)
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png))
 
 2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
 
-    ![Blatt „Unternehmensanwendungen“](./media/openidoauth-tutorial/tutorial_general_02.png)
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 3. Wählen Sie oben im Dialogfeld **Neue Anwendung** aus.
 
-    ![Schaltfläche „Neue Anwendung“](./media/openidoauth-tutorial/tutorial_general_03.png)
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
 4. Geben Sie in das Suchfeld den Namen der Anwendung ein. Wählen Sie im Ergebnisbereich die gewünschte Anwendung aus, und melden Sie sich bei der Anwendung an.
 
-    ![Hinzufügen der Anwendung](./media/openidoauth-tutorial/addfromgallery.png)
+    ![OpenID in der Ergebnisliste](common/search-new-app.png)
 
     > [!NOTE]
     > Für OpenID Connect- und OAuth-Apps ist die Schaltfläche **Hinzufügen** standardmäßig deaktiviert. Hier muss der Mandantenadministrator die Schaltfläche zum Registrieren auswählen und die Anwendung zulassen. Die Anwendung wird dann dem Kundenmandanten hinzugefügt. Dort können Sie die Konfigurationen vornehmen. Die Anwendung muss nicht explizit hinzugefügt werden.

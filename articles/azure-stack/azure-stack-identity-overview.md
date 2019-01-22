@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: 1bc4fcda360a899fb2f58e2ac26270d160227a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902840"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306538"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Übersicht über die Identität für Azure Stack
 
 Für Azure Stack ist Azure Active Directory (Azure AD) oder Active Directory-Verbunddienste (AD FS) mit Unterstützung durch Active Directory als Identitätsanbieter erforderlich. Die Wahl eines Anbieters ist eine einmalige Entscheidung, die Sie bei der ersten Bereitstellung von Azure Stack treffen. Die Konzepte und Autorisierungsdetails in diesem Artikel können Ihnen bei der Wahl des Identitätsanbieters als Hilfe dienen.
 
-Die Entscheidung zur Wahl von Azure AD oder AD FS kann beispielsweise durch den Modus beeinflusst werden, in dem Sie Azure Stack bereitstellen:
+Die Wahl von Azure AD oder AD FS wird durch den Modus beeinflusst, in dem Sie Azure Stack bereitstellen:
 
 - Wenn Sie die Bereitstellung im Modus „Verbunden“ durchführen, können Sie entweder Azure AD oder AD FS verwenden.
 - Bei der Bereitstellung im nicht verbundenen Modus ohne Internetverbindung wird nur AD FS unterstützt.
 
 Weitere Informationen zu Ihren Optionen, die von Ihrer Azure Stack-Umgebung abhängen, finden Sie in den folgenden Artikeln:
 
-- Azure Stack Deployment Kit: [Überlegungen zur Identität](azure-stack-datacenter-integration.md#identity-considerations).
-- Integrierte Azure Stack-Systeme: [Planungsentscheidungen für in Azure Stack integrierte Systeme](azure-stack-deployment-decisions.md).
+- Azure Stack Deployment Kit: [Überlegungen zur Identität](azure-stack-datacenter-integration.md#identity-considerations)
+- Integrierte Azure Stack-Systeme: [Verbindungsmodell von in Azure Stack integrierten Systemen](azure-stack-deployment-decisions.md)
 
 ## <a name="common-concepts-for-identity"></a>Häufige Konzepte für die Identität
 
@@ -80,12 +80,12 @@ Sie können Anwendungen für Azure AD oder AD FS registrieren und diese dann Ben
 
 Dies können diese Arten von Anwendungen sein:
 
-- **Webanwendung**: Beispiele hierfür sind das Azure-Portal und Azure Resource Manager. Sie unterstützen Web-API-Aufrufe.
-- **Nativer Client**: Beispiele hierfür sind Azure PowerShell, Visual Studio und die Azure CLI.
+- **Webanwendung:** Beispiele hierfür sind das Azure-Portal und Azure Resource Manager. Sie unterstützen Web-API-Aufrufe.
+- **Nativer Client:** Beispiele hierfür sind Azure PowerShell, Visual Studio und die Azure CLI.
 
 Anwendungen können zwei Arten von Mandanten unterstützen:
 
-- **Ein Mandant**: Unterstützt Benutzer und Dienste nur für das Verzeichnis, unter dem die Anwendung registriert ist.
+- **Ein Mandant:** Unterstützt Benutzer und Dienste nur für das Verzeichnis, unter dem die Anwendung registriert ist.
 
   > [!NOTE]
   > Da AD FS nur ein einzelnes Verzeichnis unterstützt, sind Anwendungen, die Sie in einer AD FS-Topologie erstellen, entsprechend immer Anwendungen mit nur einem Mandanten.
@@ -98,9 +98,9 @@ Anwendungen können zwei Arten von Mandanten unterstützen:
 
 Beim Registrieren einer Anwendung erstellen Sie zwei Objekte:
 
-- **Anwendungsobjekt**: Die globale Darstellung der Anwendung über alle Mandanten hinweg. Dies ist eine 1:1-Beziehung mit der Softwareanwendung, die nur in dem Verzeichnis vorhanden ist, in dem die Anwendung zuerst registriert wurde.
+- **Anwendungsobjekt:** Die globale Darstellung der Anwendung über alle Mandanten hinweg. Dies ist eine 1:1-Beziehung mit der Softwareanwendung, die nur in dem Verzeichnis vorhanden ist, in dem die Anwendung zuerst registriert wurde.
 
-- **Dienstprinzipalobjekt**: Ein Anmeldeinformationselement, das für eine Anwendung in dem Verzeichnis erstellt wird, in dem die Anwendung zuerst registriert wurde. Ein Dienstprinzipal wird auch in dem Verzeichnis jedes zusätzlichen Mandanten erstellt, in dem diese Anwendung verwendet wird. Dies kann eine 1:n-Beziehung mit der Softwareanwendung sein.
+- **Dienstprinzipalobjekt:** Ein Anmeldeinformationselement, das für eine Anwendung in dem Verzeichnis erstellt wird, in dem die Anwendung zuerst registriert wurde. Ein Dienstprinzipal wird auch in dem Verzeichnis jedes zusätzlichen Mandanten erstellt, in dem diese Anwendung verwendet wird. Dies kann eine 1:n-Beziehung mit der Softwareanwendung sein.
 
 Weitere Informationen zu Anwendungs- und Dienstprinzipalobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -155,10 +155,10 @@ Für Anwendungen und Benutzer wird die Architektur von Azure Stack anhand von vi
 
 Sie müssen über die folgenden Informationen verfügen, um die Authentifizierung mit dem Identitätsanbieter durchzuführen und ein JSON Web Token zu erhalten:
 
-1. **URL für das Identitätssystem (Autorität)**: Die URL, unter der Ihr Identitätsanbieter erreichbar ist. Beispiel: *https://login.windows.net*
-2. **App-ID-URI für Azure Resource Manager**: Der eindeutige Bezeichner für Azure Resource Manager, der bei Ihrem Identitätsanbieter registriert ist. Außerdem ist er für jede Azure Stack-Installation eindeutig.
-3. **Anmeldeinformationen**: Die Anmeldeinformationen, die Sie zum Authentifizieren beim Identitätsanbieter verwenden.
-4. **URL für Azure Resource Manager**: Die URL gibt den Speicherort des Azure Resource Manager-Diensts an. Beispiel: *https://management.azure.com* oder *https://management.local.azurestack.external*.
+1. **URL für das Identitätssystem (Autorität):** Die URL, unter der Ihr Identitätsanbieter erreichbar ist. Beispiel: *https://login.windows.net*
+2. **App-ID-URI für Azure Resource Manager:** Der eindeutige Bezeichner für Azure Resource Manager, der bei Ihrem Identitätsanbieter registriert ist. Außerdem ist er für jede Azure Stack-Installation eindeutig.
+3. **Anmeldeinformationen**: Die Anmeldeinformationen, die Sie zum Authentifizieren beim Identitätsanbieter verwenden
+4. **URL für Azure Resource Manager:** Die URL gibt den Speicherort des Azure Resource Manager-Diensts an. Beispiel: *https://management.azure.com* oder *https://management.local.azurestack.external*.
 
 Wenn ein Prinzipal (Client, Anwendung oder Benutzer) eine Authentifizierungsanforderung zum Zugreifen auf eine Ressource sendet, muss diese Folgendes enthalten:
 

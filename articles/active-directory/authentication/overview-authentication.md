@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 0b232ed8bacfeb896fd5ee6ff9e2a58b71dc1517
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 92c493a59cc14d61b09e59bdf0fa23be72b7137a
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162970"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232548"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>Welche Methoden stehen für die Authentifizierung zur Verfügung?
 
 In den Nachrichten hören wir davon, dass Kennwörter gestohlen und Identitäten kompromittiert werden. Indem zusätzlich zu einem Kennwort die Abfrage eines zweiten Faktors erzwungen wird, wird die Sicherheit für Ihre Organisation sofort erhöht. Microsoft Azure Active Directory (Azure AD) enthält Features, z.B. Azure Multi-Factor Authentication (Azure MFA) und Azure AD-Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR), damit Administratoren ihre Organisationen und Benutzer mit zusätzlichen Authentifizierungsmethoden schützen können.
 
-Wenn ein Benutzer Zugriff auf eine sensible Anwendung benötigt, sein Kennwort zurücksetzt oder Windows Hello aktiviert, wird er ggf. dazu aufgefordert, sich noch auf eine weitere Weise als Person zu verifizieren.
+Es gibt u.a. folgende Szenarien: Anmelden bei einer Anwendung, Zurücksetzen des Kennworts und Aktivieren von Windows Hello. Ihre Benutzer werden unter Umständen zur zusätzlichen Bestätigung ihrer Identität aufgefordert.
 
 Die zusätzliche Verifizierung kann beispielsweise über die folgenden Authentifizierungsmethoden durchgeführt werden:
 
@@ -43,8 +43,8 @@ Mit der Self-Service-Kennwortzurücksetzung können Ihre Benutzer jederzeit ihr 
 Die Self-Service-Kennwortzurücksetzung umfasst Folgendes:
 
 * **Kennwortänderung:** Mir ist mein Kennwort bekannt, aber ich möchte es in ein neues Kennwort ändern.
-* **Kennwortzurücksetzung**: Ich kann mich nicht anmelden und möchte mein Kennwort mithilfe einer oder mehrerer genehmigter Authentifizierungsmethoden zurücksetzen.
-* **Kontoentsperrung**: Ich kann mich nicht anmelden, weil mein Konto gesperrt ist, und ich möchte es mithilfe einer oder mehrerer genehmigter Authentifizierungsmethoden entsperren.
+* **Kennwortzurücksetzung:** Ich kann mich nicht anmelden und möchte mein Kennwort mithilfe einer oder mehrerer genehmigter Authentifizierungsmethoden zurücksetzen.
+* **Kontoentsperrung:** Ich kann mich nicht anmelden, weil mein Konto gesperrt ist, und ich möchte es mithilfe einer oder mehrerer genehmigter Authentifizierungsmethoden entsperren.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -56,6 +56,6 @@ Der nächste Schritt besteht darin, tiefer einzusteigen und mit dem Konfiguriere
 
 Informationen zum Einstieg in die Self-Service-Kennwortzurücksetzung finden Sie in der entsprechenden [Schnellstartanleitung zur Aktivierung](quickstart-sspr.md).
 
-Weitere Informationen zur Self-Service-Kennwortzurücksetzung finden Sie im Artikel [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](concept-sspr-howitworks.md).
+Weitere Informationen zur Self-Service-Kennwortzurücksetzung finden Sie im Artikel [Funktionsweise der Self-Service-Kennwortzurücksetzung in Azure AD](concept-sspr-howitworks.md).
 
-Informieren Sie sich über Azure Multi-Factor Authentication im Artikel [Funktionsweise von Azure Multi-Factor Authentication](concept-mfa-howitworks.md).
+Informationen zur Azure Multi-Factor Authentication finden Sie im Artikel [Funktionsweise: Azure Multi-Factor Authentication](concept-mfa-howitworks.md).

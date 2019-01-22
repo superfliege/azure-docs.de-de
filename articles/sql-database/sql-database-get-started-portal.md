@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: b8ff482f2aec406ef4c1c545db7844a861317518
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 1/9/2019
+ms.openlocfilehash: b11eb08a960e81ab938a9b15a1153c44706231c5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994418"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198286"
 ---
 # <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Schnellstart: Erstellen einer Azure SQL-Datenbank im Azure-Portal
 
 Azure SQL-Datenbank ist ein *Database as a Service*-Angebot, das Ihnen die Ausführung und Skalierung von hoch verfügbaren SQL Server-Datenbanken in der Cloud ermöglicht. In diesem Schnellstart wird gezeigt, wie Sie zum Einstieg eine Azure SQL-Datenbank im Azure-Portal erstellen und anschließend abfragen. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 
 Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -37,19 +37,19 @@ So erstellen Sie eine SQL-Datenbank mit den AdventureWorksLT-Beispieldaten:
    
 1. Wählen Sie **Datenbanken** und dann **SQL-Datenbank** aus.
    
-1. Geben Sie im Formular **SQL-Datenbank** die folgenden Werte ein, oder wählen Sie sie aus: 
+1. Geben Sie im Formular **SQL-Datenbank erstellen** die folgenden Werte ein, oder wählen Sie sie aus: 
    
    - **Datenbankname**: Geben Sie *mySampleDatabase* ein.
-   - **Abonnement**: Wählen Sie in der Dropdownliste das richtige Abonnement aus, falls es nicht angezeigt wird.  
+   - **Abonnement**: Wählen Sie in der Dropdownliste das richtige Abonnement aus, falls es nicht angezeigt wird.
    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *myResourceGroup* ein, und klicken Sie auf **OK**. 
-   - **Quelle auswählen**: Wählen Sie in der Dropdownliste **Sample (AdventureWorksLT)** aus. 
-   
-   >[!IMPORTANT]
-   >Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, ausführen zu können. 
-   
+   - **Quelle auswählen**: Wählen Sie in der Dropdownliste **Sample (AdventureWorksLT)** aus.
+    
+    >[!IMPORTANT]
+    >Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, ausführen zu können.
+  
    ![Erstellen einer Azure SQL-Datenbank](./media/sql-database-get-started-portal/create-database-1.png)
    
-1. Wählen Sie **Server** und dann **Neuen Server erstellen** aus. 
+1. Wählen Sie unter **Server** die Option **Neu erstellen**. 
    
 1. Geben Sie im Formular **Neuer Server** die folgenden Werte ein, oder wählen Sie sie aus: 
    
@@ -60,11 +60,11 @@ So erstellen Sie eine SQL-Datenbank mit den AdventureWorksLT-Beispieldaten:
    - **Standort**: Wählen Sie in der Dropdownliste einen gültigen Standort aus.  
    
    >[!IMPORTANT]
-   >Merken oder notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
+   >Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
    
+    ![Server erstellen](./media/sql-database-get-started-portal/create-database-server.png)
+
 1. Wählen Sie **Auswählen**.
-   
-   ![Server erstellen](./media/sql-database-get-started-portal/create-database-server.png)
    
 1. Wählen Sie im Formular **SQL-Datenbank** die Option **Tarif** aus. Sehen Sie sich die Anzahl von Datenbanktransaktionseinheiten (Database Transaction Unit, DTU) und den verfügbaren Speicher für die einzelnen Dienstebenen an.
    
@@ -94,7 +94,7 @@ Nachdem Sie eine Azure SQL-Datenbank erstellt haben, verwenden Sie das integrier
    
    ![Anmelden beim Abfrage-Editor](./media/sql-database-get-started-portal/query-editor-login.png)
    
-1. Geben Sie Ihre Anmeldeinformationen ein, und klicken Sie auf **OK**.
+1. Geben Sie Ihre Anmeldeinformationen ein, und wählen Sie **OK**.
    
 1. Geben Sie die folgende Abfrage im Bereich **Abfrage-Editor** ein.
    
@@ -113,7 +113,7 @@ Nachdem Sie eine Azure SQL-Datenbank erstellt haben, verwenden Sie das integrier
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Behalten Sie diese Ressourcengruppe, den SQL-Server und die SQL-Datenbank bei, wenn Sie mit den [nächsten Schritten](#next-steps) fortfahren möchten, um zu erfahren, wie Sie eine Verbindung herstellen und Ihre Datenbank mit verschiedenen Methoden abfragen. 
+Behalten Sie die Ressourcengruppe, den SQL-Server und die SQL-Datenbank, wenn Sie mit [Nächste Schritte](#next-steps) fortfahren möchten. Die nächsten Schritte zeigen, wie Sie mithilfe verschiedener Methoden eine Verbindung mit Ihrer Datenbank herstellen und die Datenbank abfragen. 
 
 Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie sie wie folgt löschen:
 
@@ -123,7 +123,7 @@ Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie sie wie folgt lösc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sie müssen eine Firewallregel auf Serverebene erstellen, um über lokale Tools oder Remotetools eine Verbindung mit Ihrer Azure SQL-Datenbank herstellen zu können. Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md).
+- Erstellen Sie eine Firewallregel auf Serverebene, um über lokale Tools oder Remotetools eine Verbindung mit Ihrer Azure SQL-Datenbank herstellen zu können. Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md).
 - Nachdem Sie eine Firewallregel auf Serverebene erstellt haben, können Sie mit verschiedenen Tools und Programmiersprachen eine [Verbindung mit Ihrer Datenbank herstellen und Abfragen ausführen](sql-database-connect-query.md). 
   - [Verbinden und Abfragen mit SQL Server Management Studio (SSMS)](sql-database-connect-query-ssms.md)
   - [Verbinden und Abfragen mit Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)

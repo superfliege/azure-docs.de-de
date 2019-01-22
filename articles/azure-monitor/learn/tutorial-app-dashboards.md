@@ -3,19 +3,19 @@ title: Erstellen benutzerdefinierter Dashboards in Azure Application Insights | 
 description: Tutorial zum Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 keywords: ''
 services: application-insights
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 09/20/2017
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 01/11/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: e008a53ce71a55b344dfc3a76bdb4ae39b954c46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104878"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318422"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
@@ -42,90 +42,68 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="create-a-new-dashboard"></a>Erstellen eines neuen Dashboards
 Ein einzelnes Dashboard kann Ressourcen aus mehreren Anwendungen, Ressourcengruppen und Abonnements enthalten.  Starten Sie das Tutorial, indem Sie ein neues Dashboard für Ihre Anwendung erstellen.  
 
-2.  Klicken Sie auf dem Hauptbildschirm des Portals auf **Neues Dashboard**.
+2.  Wählen Sie im Bereich „Dashboard“ die Option **Neues Dashboard**
 
-    ![Neues Dashboard](media/tutorial-app-dashboards/new-dashboard.png)
+    ![Neues Dashboard](media/tutorial-app-dashboards/1newdashboard.png)
 
 3. Geben Sie einen Namen für das Dashboard ein.
 4. Werfen Sie einen Blick auf den **Kachelkatalog**. Dort finden Sie verschiedene Kacheln, die Sie zum Dashboard hinzufügen können.  Sie können aber nicht nur Kacheln aus dem Katalog hinzufügen. Sie haben außerdem die Möglichkeit, Diagramme und andere Ansichten direkt aus Application Insights an das Dashboard anzuheften.
 5. Suchen Sie die Kachel **Markdown**, und ziehen Sie sie in Ihr Dashboard.  Diese Kachel ermöglicht es Ihnen, in Markdown formatierten Text hinzuzufügen. Diese Funktion eignet sich ideal, um Ihrem Dashboard beschreibenden Text hinzuzufügen.
 6. Fügen Sie den Eigenschaften der Kachel Text hinzu, und passen Sie deren Größe im Dashboardbereich an.
     
-    ![Bearbeiten der Markdown-Kachel](media/tutorial-app-dashboards/edit-markdown.png)
+    ![Bearbeiten der Markdown-Kachel](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. Klicken Sie oben im Bildschirm auf **Anpassung abgeschlossen**, um den Bearbeitungsmodus für die Kachel zu beenden, und klicken Sie dann auf **Änderungen veröffentlichen**, um sie zu speichern.
-
-    ![Dashboard mit Markdown-Kachel](media/tutorial-app-dashboards/dashboard-01.png)
-
+6. Klicken Sie oben auf dem Bildschirm auf **Anpassung abgeschlossen**, um den Bearbeitungsmodus für die Kachel zu beenden.
 
 ## <a name="add-health-overview"></a>Hinzufügen der Integritätsübersicht
 Ein Dashboard, das nur statischen Text enthält, ist nicht besonders interessant. Fügen Sie daher eine Kachel aus Application Insights hinzu, um Informationen zu Ihrer Anwendung darzustellen.  Application Insights-Kacheln lassen sich aus dem Kachelkatalog hinzufügen oder direkt von Application Insights-Bildschirmen anheften.  Dadurch können Sie Diagramme und Ansichten konfigurieren, mit denen Sie bereits vertraut sind, bevor Sie diese an Ihr Dashboard anheften.  Fügen Sie zuerst die Standardübersicht über die Integrität Ihrer Anwendung hinzu.  Dies erfordert keine Konfiguration und ermöglicht minimale Anpassungen im Dashboard.
 
 
-1. Klicken Sie im Azure-Menü auf **Application Insights**, und wählen Sie dann die Anwendung aus.
-2. Rufen Sie in der **Übersichtszeitachse** das Kontextmenü auf, und klicken Sie auf **An Dashboard anheften**.  Dadurch wird die Kachel dem letzten Dashboard hinzugefügt, das Sie aufgerufen haben.  
+1. Wählen Sie auf dem Startbildschirm Ihre **Application Insights**-Ressource aus.
+2. Klicken Sie im Bereich **Übersicht** auf das Reißzweckensymbol, um die Kachel zum zuletzt angezeigten Dashboard hinzuzufügen.  
 
-    ![Übersichtszeitachse anheften](media/tutorial-app-dashboards/pin-overview-timeline.png)
+    ![Übersichtszeitachse anheften](media/tutorial-app-dashboards/3overview.png)
  
-3. Klicken Sie oben im Bildschirm auf **Dashboard anzeigen**, um zum Dashboard zurückzukehren.
-4. Die Übersichtszeitachse wurde Ihrem Dashboard hinzugefügt.  Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen** und **Änderungen veröffentlichen**.  Ihr Dashboard verfügt jetzt über eine Kachel mit hilfreichen Informationen.
+3. Oben rechts wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Kachel an Ihr Dashboard angeheftet wurde. Klicken Sie in der Benachrichtigung auf **An Dashboard angeheftet**, um zum Dashboard zurückzukehren oder den Bereich „Dashboard“ zu verwenden.
+4. Diese Kachel wurde Ihrem Dashboard hinzugefügt. Wählen Sie **Bearbeiten**, um die Positionierung der Kachel zu ändern. Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen**. Ihr Dashboard verfügt jetzt über eine Kachel mit hilfreichen Informationen.
 
-    ![Dashboard mit einer Übersichtszeitachse](media/tutorial-app-dashboards/dashboard-02.png)
+    ![Dashboard mit einer Übersichtszeitachse](media/tutorial-app-dashboards/4dashboard-edit.png)
 
 
 
 ## <a name="add-custom-metric-chart"></a>Hinzufügen eines benutzerdefinierten Metrikdiagramms
 Im Bereich **Metriken** können Sie eine Metrik grafisch darstellen, die von Application Insights über einen Zeitraum hinweg mit optionalen Filtern und Gruppierungen erfasst wurde.  Wie alle anderen Elemente in Application Insights auch, können Sie dieses Diagramm dem Dashboard hinzufügen.  Dies erfordert aber kleine Anpassungen.
 
-1. Klicken Sie im Azure-Menü auf **Application Insights**, und wählen Sie dann die Anwendung aus.
+1. Wählen Sie auf dem Startbildschirm die **Application Insights**-Ressource aus.
 1. Klicken Sie auf **Metriken**.  
 2. Ein leeres Diagramm wurde bereits erstellt, und Sie werden aufgefordert, eine Metrik hinzuzufügen.  Fügen Sie dem Diagramm eine Metrik hinzu sowie optional einen Filter und eine Gruppierung.  Im folgenden Beispiel wird die Anzahl der Serveranforderungen gruppiert nach Erfolg dargestellt.  Dies bietet einen aktuellen Überblick über erfolgreiche und fehlgeschlagene Anforderungen.
 
-    ![Hinzufügen von Metriken](media/tutorial-app-dashboards/metrics-chart.png)
+    ![Hinzufügen von Metriken](media/tutorial-app-dashboards/5sumserverrequests.png)
 
-4. Rufen Sie das Kontextmenü für das Diagramm auf, und klicken Sie auf **An Dashboard anheften**.  Dadurch wird die Ansicht dem letzten Dashboard hinzugefügt, mit dem Sie gearbeitet haben.
+4. Wählen Sie rechts die Option **An Dashboard anheften** aus. Dadurch wird die Ansicht dem letzten Dashboard hinzugefügt, mit dem Sie gearbeitet haben.
 
-    ![PIN-Metrikdiagramm](media/tutorial-app-dashboards/pin-metrics-chart.png)
+    ![PIN-Metrikdiagramm](media/tutorial-app-dashboards/6sumserverrequests-pin.png)
 
-3. Klicken Sie oben im Bildschirm auf **Dashboard anzeigen**, um zum Dashboard zurückzukehren.
+3.  Oben rechts wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Kachel an Ihr Dashboard angeheftet wurde. Klicken Sie in der Benachrichtigung auf **An Dashboard angeheftet**, um zum Dashboard zurückzukehren oder das Blatt „Dashboard“ zu verwenden.
 
-4. Das Diagramm mit den Zeitachsenmetriken wird jetzt Ihrem Dashboard hinzugefügt. Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen** und **Änderungen veröffentlichen**. 
+4. Diese Kachel wurde Ihrem Dashboard hinzugefügt. Wählen Sie **Bearbeiten**, um die Positionierung der Kachel zu ändern. Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen**.
 
-    ![Dashboard mit Metriken](media/tutorial-app-dashboards/dashboard-03.png)
-
-
-## <a name="metrics-explorer"></a>Metrik-Explorer
-Der **Metrik-Explorer** ähnelt Metriken, obwohl er deutlich größere Anpassung ermöglicht, wenn er dem Dashboard hinzugefügt wird.  Welche Sie verwenden, um die Metriken grafisch darzustellen, hängt von Ihren Anforderungen ab.
-
-1. Klicken Sie im Azure-Menü auf **Application Insights**, und wählen Sie dann die Anwendung aus.
-1. Klicken Sie auf **Metrik-Explorer**. 
-2. Klicken Sie auf diese Option, um das Diagramm zu bearbeiten, und wählen Sie mindestens eine Metrik und optional eine detaillierte Konfiguration aus.  Im Beispiel wird ein Liniendiagramm gezeigt, das die durchschnittliche Seitenantwortzeit nachverfolgt.
-3. Klicken Sie oben rechts auf das Reißzweckensymbol, um das Diagramm Ihrem Dashboard hinzuzufügen, und ziehen Sie es dann an die gewünschte Position.
-
-    ![Metrik-Explorer](media/tutorial-app-dashboards/metrics-explorer.png)
-
-4. Die Kachel „Metrik-Explorer“ ermöglicht eine stärkere Anpassung, wenn sie dem Dashboard hinzugefügt wird.  Klicken Sie mit der rechten Maustaste auf die Kachel, und wählen Sie **Kachel bearbeiten** aus, um einen benutzerdefinierten Titel hinzuzufügen.  Nehmen Sie bei Bedarf weitere Anpassungen vor.
-
-    ![Dashboard mit Metrik-Explorer](media/tutorial-app-dashboards/dashboard-04a.png)
-
-5. Das Metrik-Explorer-Diagramm wurde nun Ihrem Dashboard hinzugefügt.
-
-    ![Dashboard mit Metrik-Explorer](media/tutorial-app-dashboards/dashboard-04.png)
+    ![Dashboard mit Metriken](media/tutorial-app-dashboards/7dashboard-edit2.png)
 
 ## <a name="add-analytics-query"></a>Exportieren einer Analytics-Abfrage
 Azure Application Insights Analytics bietet eine umfangreiche Abfragesprache, mit der Sie alle von Application Insights erfassten Daten analysieren können.  Sie können Ihrem Dashboard die Ausgabe einer Analytics-Abfrage genauso wie Diagramme und andere Ansichten hinzufügen.   
 
-Da es sich bei Azure Applications Insights Analytics um einen separaten Dienst handelt, müssen Sie Ihr Dashboard dafür freigeben, damit eine Analytics-Abfrage eingeschlossen werden kann.  Wenn Sie ein Azure-Dashboard freigeben, können Sie es als Azure-Ressource veröffentlichen, wodurch es für andere Benutzer und Ressourcen verfügbar wird.  
+Da es sich bei Azure Applications Insights Analytics um einen separaten Dienst handelt, müssen Sie Ihr Dashboard dafür freigeben, damit eine Analytics-Abfrage eingeschlossen werden kann. Wenn Sie ein Azure-Dashboard freigeben, können Sie es als Azure-Ressource veröffentlichen, wodurch es für andere Benutzer und Ressourcen verfügbar wird.  
 
 1. Klicken Sie dazu oben im Dashboard auf **Freigeben**.
 
-    ![Veröffentlichen des Dashboards](media/tutorial-app-dashboards/publish-dashboard.png)
+    ![Veröffentlichen des Dashboards](media/tutorial-app-dashboards/8dashboard-share.png)
 
 2. Behalten Sie für **Dashboardname** den ursprünglichen bei, und legen Sie für **Abonnementname** denselben wie für das Dashboard fest.  Klicken Sie auf **Veröffentlichen**.  Das Dashboard ist jetzt für andere Abonnements und Dienste verfügbar.  Sie können optional bestimmte Benutzer definieren, die Zugriff auf das Dashboard haben sollen.
-1. Klicken Sie im Azure-Menü auf **Application Insights**, und wählen Sie dann die Anwendung aus.
+1. Wählen Sie auf dem Startbildschirm die **Application Insights**-Ressource aus.
 2. Klicken Sie oben im Bildschirm auf **Analytics**, um das Analytics-Portal zu öffnen.
 
-    ![Starten von Analytics](media/tutorial-app-dashboards/start-analytics.png)
+    ![Starten von Analytics](media/tutorial-app-dashboards/9analytics.png)
 
 3. Geben Sie die folgende Abfrage ein, die die zehn am häufigsten angeforderten Seiten und die Anzahl der Anforderungen zurückgibt:
 
@@ -136,10 +114,10 @@ Da es sich bei Azure Applications Insights Analytics um einen separaten Dienst h
     | take 10 
     ```
 
-4. Klicken Sie auf **Go** (Los), um die Ergebnisse der Abfrage zu überprüfen.
-5. Klicken Sie auf das Reißzweckensymbol, und wählen Sie den Namen des Dashboards aus.  Im Gegensatz zu den vorherigen Schritten, in denen das zuletzt verwendete Dashboard genutzt wurde, müssen Sie für diese Option ein Dashboard auswählen, weil die Analytics-Konsole ein separater Dienst ist und aus allen verfügbaren, freigegebenen Dashboards eine Auswahl treffen muss.
+4. Klicken Sie auf **Ausführen**, um die Ergebnisse der Abfrage zu überprüfen.
+5. Klicken Sie auf das Reißzweckensymbol, und wählen Sie den Namen des Dashboards aus. Im Gegensatz zu den vorherigen Schritten, in denen das zuletzt verwendete Dashboard genutzt wurde, müssen Sie für diese Option ein Dashboard auswählen, weil die Analytics-Konsole ein separater Dienst ist und aus allen verfügbaren, freigegebenen Dashboards eine Auswahl treffen muss.
 
-    ![Anheften der Analytics-Abfrage](media/tutorial-app-dashboards/analytics-pin.png)
+    ![Anheften der Analytics-Abfrage](media/tutorial-app-dashboards/10query.png)
 
 5. Fügen Sie eine weitere Abfrage hinzu, bevor Sie zum Dashboard zurückkehren. Rendern Sie sie dieses Mal jedoch als Diagramm, um die verschiedenen Möglichkeiten der Visualisierung von Analytics-Abfragen in einem Dashboard kennenzulernen.  Beginnen Sie mit der folgenden Abfrage, die die zehn häufigsten Vorgänge mit den meisten Ausnahmen zusammenfasst.
 
@@ -152,15 +130,15 @@ Da es sich bei Azure Applications Insights Analytics um einen separaten Dienst h
 
 6. Klicken Sie auf **Diagramm**, und ändern Sie es in ein **Ringdiagramm**, um die Ausgabe anzuzeigen.
 
-    ![Analytics-Diagramm](media/tutorial-app-dashboards/analytics-chart.png)
+    ![Analytics-Diagramm](media/tutorial-app-dashboards/11querychart.png)
 
 6. Klicken Sie auf das Reißzweckensymbol, um das Diagramm an Ihr Dashboard anzuheften, und klicken Sie dieses Mal auf den Link, um zum Dashboard zurückzukehren.
-4. Die Ergebnisse der Abfragen werden Ihrem Dashboard jetzt in dem Format hinzugefügt, das Sie ausgewählt haben.  Klicken Sie auf jedes, ziehen Sie es an die gewünschte Position, und klicken Sie dann auf **Bearbeitung abgeschlossen**.
-5. Klicken Sie mit der rechten Maustaste auf jede der Kacheln, und wählen Sie **Titel bearbeiten** aus, um ihnen einen aussagekräftigen Namen zu geben.
+4. Die Ergebnisse der Abfragen werden Ihrem Dashboard jetzt in dem Format hinzugefügt, das Sie ausgewählt haben.  Klicken Sie auf die einzelnen Ergebnisse, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen**.
+5. Wählen Sie das Stiftsymbol für jeden Titel aus, um einen aussagekräftigen Titel einzugeben.
 
-    ![Dashboard mit Analytics](media/tutorial-app-dashboards/dashboard-05.png)
+    ![Dashboard mit Analytics](media/tutorial-app-dashboards/12edit-title.png)
 
-5. Klicken Sie auf **Änderungen veröffentlichen**, um die Änderungen an Ihrem Dashboard zu committen, das jetzt eine Vielzahl von Diagrammen und Visualisierungen aus Application Insights enthält.
+5. Wählen Sie **Freigeben**, um die Änderungen an Ihrem Dashboard erneut zu veröffentlichen, das jetzt eine Vielzahl von Diagrammen und Visualisierungen aus Application Insights enthält.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

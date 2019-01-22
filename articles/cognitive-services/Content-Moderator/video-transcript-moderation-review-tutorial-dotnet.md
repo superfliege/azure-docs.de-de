@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Moderieren von Videos und Transkripts in .NET – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Es wird beschrieben, wie Sie Content Moderator verwenden, um Videos und Transkripts in .NET zu moderieren.
+description: In diesem ausführlichen Tutorial erfahren Sie, wie Sie eine vollständige Lösung für die Video- und Transkriptmoderation mit computergestützter Moderation und Erstellung von Überprüfungen mit menschlicher Beteiligung entwickeln.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 45f1b4d16bd982e17b67d6fb337e0d917f635851
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118573"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332692"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
 
@@ -241,7 +241,7 @@ Mit diesem Code werden die folgenden Schritte ausgeführt:
 
 - Es wird überprüft, ob die Konfiguration in `App.config` alle erforderlichen Daten enthält.
 - Es wird überprüft, ob die `ffmpeg`-Binärdaten vorhanden sind.
-- Der Name der Ausgabedatei wird erstellt, indem `_c.mp4` an den Basisnamen der Datei angefügt wird (z.B. `Example.mp4` -> `E>xample_c.mp4`).
+- Der Name der Ausgabedatei wird erstellt, indem `_c.mp4` an den Basisnamen der Datei angefügt wird (z.B. `Example.mp4` -> `Example_c.mp4`).
 - Erstellt eine Befehlszeilen-Zeichenfolge zum Durchführen der Konvertierung.
 - Startet einen `ffmpeg`-Prozess über die Befehlszeile.
 - Es wird gewartet, bis das Video verarbeitet wurde.

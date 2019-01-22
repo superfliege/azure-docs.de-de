@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: anajod
+ms.openlocfilehash: da6c9fa416d19916243860178d15619306aaf3c0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714847"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305314"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack
 
@@ -93,7 +93,7 @@ Ein Azure-Abonnement und eine Azure Stack-Installation sind erforderlich.
 
 ### <a name="obtain-a-custom-domain-and-configure-dns"></a>Abrufen einer benutzerdefinierten Domäne und Konfigurieren des DNS
 
-Aktualisieren Sie die DNS-Zonendatei für die Erstellung von Web-Apps, und veröffentlichen Sie die Domäne. Azure AD kann dann die Eigentümerschaft für den Namen der benutzerdefinierten Domäne überprüfen. Verwenden Sie [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) für Azure-/Office 365-/externe DNS-Einträge in Azure, oder Sie fügen den DNS-Eintrag bei einer [anderen DNS-Registrierungsstelle](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/) hinzu.
+Aktualisieren Sie die DNS-Zonendatei für die Domäne. Azure AD kann dann die Eigentümerschaft für den Namen der benutzerdefinierten Domäne überprüfen. Verwenden Sie [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) für Azure-/Office 365-/externe DNS-Einträge in Azure, oder Sie fügen den DNS-Eintrag bei einer [anderen DNS-Registrierungsstelle](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/) hinzu.
 
 1. Registrieren Sie eine benutzerdefinierte Domäne bei einer öffentlichen Registrierungsstelle.
 
@@ -106,7 +106,7 @@ Aktualisieren Sie die DNS-Zonendatei für die Erstellung von Web-Apps, und verö
 Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure Stack bereitzustellen und Änderungen automatisch an beide Clouds zu pushen.
 
 > [!Note]  
-> Azure Stack mit den passenden syndizierten Images für die Ausführung (Windows Server und SQL) und eine App Service-Bereitstellung sind erforderlich. Lesen Sie in der App Service-Dokumentation den Abschnitt [Vor den ersten Schritten mit App Service in Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started) für den Azure Stack-Bediener.
+> Azure Stack mit den passenden syndizierten Images für die Ausführung (Windows Server und SQL) und eine App Service-Bereitstellung sind erforderlich. Lesen Sie in der App Service-Dokumentation den Abschnitt [Vor den ersten Schritten mit App Service in Azure Stack](../azure-stack-app-service-before-you-get-started.md) für den Azure Stack-Bediener.
 
 #### <a name="add-code-to-azure-repos"></a>Hinzufügen von Code zu Azure Repos
 
@@ -122,7 +122,7 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Erstellen der Web-App-Bereitstellung in beiden Clouds
 
-1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie Runtimeidentifier, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
+1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier**, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -302,7 +302,7 @@ Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
 2.  Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App eine Unterdomäne zuzuordnen.
 
-  Fügen Sie für das Beispiel mit der Domäne „www.northwindcloud.com“ einen CNAME-Eintrag hinzu, mit dem der Name „www“ der URL „<app\_name>.azurewebsites.net“ zugeordnet wird.
+  Fügen Sie für das Beispiel mit der Domäne „www.northwindcloud.com“ einen CNAME-Eintrag hinzu, mit dem der Name der URL „<app\_name>.azurewebsites.net“ zugeordnet wird.
 
 Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstartanleitung: Ausführen eines Workflows über Microsoft Genomics'
+title: 'Schnellstart: Ausführen eines Workflows über Microsoft Genomics'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Eingabedaten in Azure Blob Storage laden und einen Workflow über den Microsoft Genomics-Dienst ausführen.
 services: genomics
 author: grhuynh
@@ -7,22 +7,22 @@ manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
-ms.date: 12/07/2017
-ms.openlocfilehash: 152aa51c6dee12216dc9e5fac70f43f638c2c8da
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/11/2019
+ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242856"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261688"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstartanleitung: Ausführen eines Workflows über den Microsoft Genomics-Dienst
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstart: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Eingabedaten in Azure Blob Storage laden und einen Workflow über den Microsoft Genomics-Dienst ausführen. Microsoft Genomics ist ein skalierbarer, sicherer Sekundäranalysedienst für die schnelle Verarbeitung eines Genoms – von unaufbereiteten Abschnitten zu aufbereiteten Abschnitten und Variantendetektierung. 
 
 Der Einstieg ist ganz einfach: 
 1.  Einrichten: Erstellen Sie über das Azure-Portal ein Microsoft Genomics-Konto, und installieren Sie den Microsoft Genomics-Python-Client in Ihrer lokalen Umgebung. 
 2.  Hochladen von Eingabedaten: Erstellen Sie über das Azure-Portal ein Microsoft Azure-Speicherkonto, und laden Sie die Eingabedateien hoch. Bei den Eingabedateien muss es sich um Abschnitte mit gepaarten Enden handeln (FASTQ- oder BAM-Dateien).
-3.  Ausführen: Verwenden Sie die Befehlszeilenschnittstelle von Microsoft Genomics, um Workflows über den Microsoft Genomics-Dienst auszuführen. 
+3.  Führen Sie folgenden Befehl aus: Verwenden Sie die Befehlszeilenschnittstelle von Microsoft Genomics, um Workflows über den Microsoft Genomics-Dienst auszuführen. 
 
 Weitere Informationen zu Microsoft Genomics finden Sie unter [Was ist Microsoft Genomics?](overview-what-is-genomics.md)
 
@@ -38,9 +38,9 @@ Konfigurieren Sie Ihr Genomics-Konto mit den folgenden Informationen, wie in der
 
  |**Einstellung**          |  **Empfohlener Wert**  | **Feldbeschreibung** |
  |:-------------       |:-------------         |:----------            |
- |Kontoname         | MyGenomicsAccount     |Wählen Sie einen eindeutigen Kontobezeichner. Informationen zu gültigen Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
  |Abonnement         | Ihr Abonnementname|Hierbei handelt es sich um die Abrechnungseinheit für Ihre Azure-Dienste. Ausführliche Informationen zu Ihrem Abonnement finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |      
  |Ressourcengruppe       | MyResourceGroup       |  Mit Ressourcengruppen können Sie mehrere Azure-Ressourcen (Speicherkonto, Genomics-Konto usw.) zur einfacheren Verwaltung in einer einzelnen Gruppe zusammenfassen. Weitere Informationen finden Sie unter [Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Informationen zu gültigen Ressourcengruppennamen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
+ |Kontoname         | MyGenomicsAccount     |Wählen Sie einen eindeutigen Kontobezeichner. Informationen zu gültigen Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
  |Standort                   | USA, Westen 2                    |    Der Dienst steht an den Standorten „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ zur Verfügung. |
 
 
@@ -59,7 +59,7 @@ Benutzer müssen in ihrer lokalen Umgebung sowohl Python als auch den Microsoft 
 
 Der Microsoft Genomics-Python-Client ist mit Python 2.7 kompatibel. 12 oder eine höhere 2.7.xx-Version; 2.7.15 ist zum Zeitpunkt der Erstellung dieses Artikels die neueste Version. 2.7.14 ist die empfohlene Version. Den Download finden Sie [hier](https://www.python.org/downloads/). 
 
-HINWEIS: Python 3.x ist nicht mit Python 2.7.xx kompatibel.  MSGen ist eine Python 2.7-Anwendung. Stellen Sie bei der Ausführung von MSGen sicher, dass Ihre aktive Python-Umgebung eine 2.7.xx-Version von Python verwendet. Bei der Verwendung von MSGen mit einer 3.x-Version von Python treten Fehler auf.
+HINWEIS:  Python 3.x ist nicht mit Python 2.7.xx kompatibel.  MSGen ist eine Python 2.7-Anwendung. Stellen Sie bei der Ausführung von MSGen sicher, dass Ihre aktive Python-Umgebung eine 2.7.xx-Version von Python verwendet. Bei der Verwendung von MSGen mit einer 3.x-Version von Python treten Fehler auf.
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>Installieren des Microsoft Genomics-Clients
@@ -112,28 +112,22 @@ Wenn sich Ihre Daten bereits in einem Azure-Speicherkonto befinden, müssen Sie 
 
 ![Blatt für die Speicherkontoerstellung](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "Blatt für die Speicherkontoerstellung")
 
-Konfigurieren Sie Ihr Speicherkonto mit den folgenden Informationen, wie in der obigen Abbildung zu sehen. Geben Sie an, dass es sich um ein Blob Storage-Konto handelt (nicht um ein universelles Konto), und behalten Sie ansonsten die Standardoptionen bei. Blob Storage kann bei Downloads und Uploads zwei- bis fünfmal schneller sein. 
+Konfigurieren Sie Ihr Speicherkonto mit den folgenden Informationen, wie in der obigen Abbildung zu sehen. Geben Sie an, dass es sich um ein Blob Storage-Konto handelt (nicht um ein universelles Konto), und behalten Sie ansonsten die Standardoptionen bei. Blob Storage kann bei Downloads und Uploads zwei- bis fünfmal schneller sein.  Das Standardbereitstellungsmodell (Resource Manager) wird empfohlen.  
 
 
  |**Einstellung**          |  **Empfohlener Wert**  | **Feldbeschreibung** |
  |:-------------------------       |:-------------         |:----------            |
- |NAME         | MyStorageAccount     |Wählen Sie einen eindeutigen Kontobezeichner. Informationen zu gültigen Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Bereitstellungsmodell         | Ressourcen-Manager| „Resource Manager“ ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model). |      
- |Kontoart       | Blob Storage       |  Im Vergleich zu einem universellen Konto kann Blob Storage bei Downloads und Uploads zwei- bis fünfmal schneller sein. |
- |Leistung                  | Standard                   | Die Standardeinstellung ist „Standard“. Ausführlichere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).    |
- |Replikation                  | Lokal redundanter Speicher                  | Lokal redundanter Speicher repliziert Ihre Daten innerhalb des Datencenters in der Region, in der Sie Ihr Speicherkonto erstellt haben. Weitere Informationen finden Sie unter [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy).    |
- |Sichere Übertragung erforderlich                  | Deaktiviert                 | Der Standardwert ist deaktiviert. Weitere Informationen zur Sicherheit bei der Datenübertragung finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer).    |
- |Zugriffsebene                  | Heiß                   | Heißer Zugriff bedeutet, dass auf Objekte im Speicherkonto häufiger zugegriffen wird.    |
  |Abonnement         | Ihr Azure-Abonnement |Ausführliche Informationen zu Ihrem Abonnement finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |      
  |Ressourcengruppe       | MyResourceGroup       |  Sie können die gleiche Ressourcengruppe auswählen wie bei Ihrem Genomics-Konto. Informationen zu gültigen Ressourcengruppennamen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Standort                  | USA, Westen 2                  | Verwenden Sie den gleichen Standort wie bei Ihrem Genomics-Konto, um die Gebühren für ausgehenden Datenverkehr und die Wartezeit zu verringern. Der Genomics-Dienst steht an den Standorten „USA, Westen“, „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ zur Verfügung.    |
- |Virtuelle Netzwerke                | Deaktiviert                   | Der Standardwert ist deaktiviert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)](https://docs.microsoft.com/azure/storage/common/storage-network-security).    |
+ |Speicherkontoname         | MyStorageAccount     |Wählen Sie einen eindeutigen Kontobezeichner. Informationen zu gültigen Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
+ |Standort                  | USA, Westen 2                  | Verwenden Sie den gleichen Standort wie bei Ihrem Genomics-Konto, um die Gebühren für ausgehenden Datenverkehr und die Wartezeit zu verringern.  | 
+ |Leistung                  | Standard                   | Die Standardeinstellung ist „Standard“. Ausführlichere Informationen zu Standard- und Premium-Speicherkonten finden Sie unter [Einführung in Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).    |
+ |Kontoart       | Blob Storage       |  Im Vergleich zu einem universellen Konto kann Blob Storage bei Downloads und Uploads zwei- bis fünfmal schneller sein. |
+ |Replikation                  | Lokal redundanter Speicher                  | Lokal redundanter Speicher repliziert Ihre Daten innerhalb des Datencenters in der Region, in der Sie Ihr Speicherkonto erstellt haben. Weitere Informationen finden Sie unter [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy).    |
+ |Zugriffsebene                  | Heiß                   | Heißer Zugriff bedeutet, dass auf Objekte im Speicherkonto häufiger zugegriffen wird.    |
 
 
-
-
-
-Klicken Sie anschließend auf „Erstellen“, um Ihr Speicherkonto zu erstellen. Genau wie bei der Erstellung Ihres Genomics-Kontos können Sie auch hier auf der oberen Menüleiste auf „Benachrichtigungen“ klicken, um den Bereitstellungsprozess zu überwachen. 
+Klicken Sie anschließend auf `Review + create`, um Ihr Speicherkonto zu erstellen. Genau wie bei der Erstellung Ihres Genomics-Kontos können Sie auch hier auf der oberen Menüleiste auf „Benachrichtigungen“ klicken, um den Bereitstellungsprozess zu überwachen. 
 
 
 ## <a name="upload-input-data-to-your-storage-account"></a>Hochladen von Eingabedaten in Ihr Speicherkonto
@@ -156,6 +150,11 @@ Wenn Sie einen Workflow über den Microsoft Genomics-Dienst ausführen möchten,
 
 
 ![Genomics-Konfiguration](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomics-Konfiguration")
+
+
+Wenn Sie GATK4 ausführen möchten, legen Sie den Parameter `process_name` auf „gatk4“ oder „gatk4-promo“ fest. Weitere Informationen zur GATK4-Höherstufung finden Sie auf [dieser Seite](https://aka.ms/msgatk4).
+
+Standardmäßig werden vom Genomics-Dienst VCF-Dateien ausgegeben. Wenn Sie eine gVCF-Ausgabe statt einer VCF-Ausgabe (entspricht `-emitRefConfidence` in GATK 3.x und `emit-ref-confidence` in GATK 4.x) wünschen, fügen Sie `config.txt` den Parameter `emit_ref_confidence` hinzu, und legen Sie ihn auf `gvcf` fest (siehe Abbildung oben).  Wenn Sie wieder auf die VCF-Ausgabe umstellen möchten, entfernen Sie entweder den Parameter `emit_ref_confidence` aus der Datei `config.txt`, oder legen Sie ihn auf `none` fest. 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Übermitteln des Workflows an den Microsoft-Genomics-Dienst unter Verwendung des Microsoft Genomics-Clients
 

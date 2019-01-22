@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792525"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199276"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Was ist Azure IoT (Internet der Dinge)?
 
@@ -34,6 +34,8 @@ Geräte bestehen in der Regel aus einer Leiterplatte mit Sensoren, die mit dem I
 * Präsenzmelder in einem Raum
 
 Zwei Geräte, die häufig zum Erstellen von Prototypen verwendet werden, sind das einfache MXChip IoT DevKit von Microsoft und Raspberry PI-Geräte. Das MXChip DevKit verfügt über integrierte Sensoren für Temperatur, Druck und Feuchtigkeit sowie über ein Gyroskop, einen Beschleunigungsmesser, ein Magnetometer und einen WLAN-Chip. Raspberry PI ist ein IoT-Gerät, an das verschiedenste Sensoren angefügt werden können, sodass Sie genau die für Ihr Szenario benötigten Produkte auswählen können. 
+
+Weitere Informationen zu verfügbaren IoT-Geräten finden Sie im branchenweit größten [Katalog mit für IoT zertifizierten Geräten](https://catalog.azureiotsolutions.com/alldevices).
 
 Die [IoT-Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md) ermöglichen Ihnen das Erstellen von Apps, die auf Ihren Geräten ausgeführt werden, damit sie die erforderlichen Aufgaben ausführen können. Mit den SDKs können Sie Telemetriedaten an Ihren IoT-Hub senden, Nachrichten und Updates vom IoT-Hub empfangen usw.
 

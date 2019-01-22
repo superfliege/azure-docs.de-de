@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 6b73cf04d768381bcc0e27cc76b6c2a25d4d9a2c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341054"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265616"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack-Telemetriedaten
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Die Telemetrie von Azure Stack lädt über „Benutzererfahrung und Telemetrie im verbundenen Modus“ automatisch Systemdaten an Microsoft hoch. Microsoft-Teams verwenden die von der Azure Stack-Telemetrie erfassten Daten, um die Kundenerfahrung zu verbessern. Die Daten werden auch für die Analyse von Sicherheit, Integrität, Qualität und Leistung verwendet.
 
@@ -112,7 +112,7 @@ Mit dem Registrierungs-Editor von Windows können Sie die Telemetrieebene auf de
 Starten Sie das System mit „CloudBuilder.vhdx1“, bevor Sie Azure Stack auf dem Development Kit-Host bereitstellen, und führen Sie in einem PowerShell-Fenster mit erhöhten Rechten das folgende Skript aus:
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host

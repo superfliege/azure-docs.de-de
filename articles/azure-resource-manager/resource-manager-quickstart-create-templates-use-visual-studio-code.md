@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 6a52355360ef2c892cb45af77366e09864cd7837
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: f4657209dfda2b515e29b4d462368ae6b5c1eae7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611793"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302492"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
@@ -55,7 +55,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherk
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-Fügen Sie dem Bereich `outputs` ein weiteres Element hinzu, um sich mit der Bearbeitung einer Vorlage über Visual Studio Code vertraut zu machen.
+Wenn Sie sich mit der Bearbeitung einer Vorlage über Visual Studio Code vertraut machen möchten, fügen Sie dem Bereich `outputs` ein weiteres Element hinzu, um den Speicher-URI anzuzeigen.
 
 1. Fügen Sie der exportierten Vorlage eine weitere Ausgabe hinzu:
 
@@ -89,12 +89,12 @@ Fügen Sie dem Bereich `outputs` ein weiteres Element hinzu, um sich mit der Bea
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell.
+Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell ist eine Webanwendung, die nicht konfiguriert werden muss. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell.
 
 1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
     ![Azure-Portal, Cloud Shell, CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-2. Klicken Sie in Cloud Shell oben links auf **PowerShell** oder **Bash**. Zur Verwendung der CLI müssen Sie eine Bash-Sitzung öffnen. Zur Ausführung von PowerShell müssen Sie eine PowerShell-Sitzung öffnen. Wählen Sie den nach unten gerichteten Pfeil, um zwischen Bash und PowerShell zu wechseln. Betrachten Sie hierzu den vorherigen Screenshot. Bei einem Wechsel ist ein Neustart der Shell erforderlich.
+2. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie in der Ecke oben links **PowerShell** oder **Bash** wählen. Zur Verwendung der CLI müssen Sie eine Bash-Sitzung öffnen. Zur Ausführung von Azure PowerShell müssen Sie eine PowerShell-Sitzung öffnen. Wählen Sie den nach unten gerichteten Pfeil, um zwischen Bash und PowerShell zu wechseln. Betrachten Sie hierzu den vorherigen Screenshot. Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 3. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus.
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
@@ -107,9 +107,9 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     
     ---
 
-    Sie müssen die Vorlagendatei hochladen, bevor Sie sie über die Shell bereitstellen können.
-5. Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Der Standardname lautet **azuredeploy.json**.
-6. Führen Sie aus Cloud Shell den Befehl **ls** aus, um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde. Sie können auch den Befehl **Cat** verwenden, um den Inhalt der Vorlage zu überprüfen. In der folgenden Abbildung ist die Ausführung des Befehls über Bash dargestellt.  In einer PowerShell-Sitzung verwenden Sie die gleichen Befehle.
+    Wählen Sie die Datei aus, die Sie im vorherigen Abschnitt gespeichert haben. Der Standardname lautet **azuredeploy.json**. Auf die Vorlagendatei muss über die Shell zugegriffen werden können.
+
+    Sie können optional den Befehl **ls** und den Befehl **cat** verwenden, um zu überprüfen, ob die Datei hochgeladen wurde. 
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
@@ -120,7 +120,7 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     ![Azure-Portal, Cloud Shell, Datei auflisten](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
     
     ---
-7. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
+4. Führen Sie in Cloud Shell die folgenden Befehle aus. Klicken Sie auf die Registerkarte, um den PowerShell-Code oder den CLI-Code anzuzeigen.
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
     ```azurecli
@@ -163,7 +163,7 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
 
     Der Speicherkontoname und die Speicher-URL im Ausgabeabschnitt sind auf dem Screenshot hervorgehoben. Den Speicherkontonamen benötigen Sie im nächsten Schritt.
 
-7. Führen Sie den folgenden CLI- oder PowerShell-Befehl zum Auflisten des neu erstellen Speicherkontos aus:
+5. Führen Sie den folgenden CLI- oder PowerShell-Befehl zum Auflisten des neu erstellen Speicherkontos aus:
 
     # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
     ```azurecli
@@ -183,6 +183,8 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     ```
     
     ---
+
+Weitere Informationen zur Verwendung von Azure-Speicherkonten finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

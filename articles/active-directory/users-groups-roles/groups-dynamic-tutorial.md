@@ -1,5 +1,5 @@
 ---
-title: 'Dynamische Gruppenmitgliedschaft: Tutorial zum automatischen Hinzufügen oder Entfernen von Benutzern in Azure Active Directory'
+title: 'Dynamische Gruppenmitgliedschaft: Tutorial zum Hinzufügen oder Entfernen von Benutzern in Azure Active Directory'
 description: In diesem Tutorial verwenden Sie Gruppen mit Benutzermitgliedschaftsregeln, um Benutzer automatisch hinzuzufügen oder zu entfernen.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 08/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 6efb649142f43a98ea08c99ae853de0fc0c8ea3c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209150"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321261"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern
 

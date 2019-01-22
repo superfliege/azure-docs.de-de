@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/18/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e4da34be5b1e9eb2675f540fe4069cfd3dc1d056
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.reviewer: anajod
+ms.openlocfilehash: 1629c4b62fb04e057c38261a33fd3bc759b279c1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409916"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267401"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Tutorial: Bereitstellen einer Hybrid Cloud-Lösung mit Azure und Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In diesem Tutorial erfahren Sie, wie Sie eine Hybrid Cloud-Lösung bereitstellen, für die die öffentliche Azure-Cloud und die private Azure Stack-Cloud verwendet werden.
 
@@ -79,11 +79,11 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
     ![Azure Stack-Marketplace](media/azure-stack-solution-hybrid-cloud/image1.png)
 
-3. Wählen Sie unter **Marketplace** die Option **Compute** und dann **Mehr**. Wählen Sie unter **Mehr** das Image **Free SQL Server License: SQL Server 2017 Developer on Windows Server** aus.
+3. Wählen Sie unter **Marketplace** die Option **Compute** und dann **Mehr**. Wählen Sie unter **Mehr** das Image **Free SQL Server License: SQL Server 2017 Developer on Windows Server** (Kostenlose SQL Server-Lizenz: SQL Server 2017 Developer unter Windows Server) aus.
 
     ![Auswählen eines Images für einen virtuellen Computer](media/azure-stack-solution-hybrid-cloud/image2.png)
 
-4. Wählen Sie unter **Free SQL Server License: SQL Server 2017 Developer on Windows Server** die Option **Erstellen**.
+4. Wählen Sie unter **Free SQL Server License: SQL Server 2017 Developer on Windows Server** (Kostenlose SQL Server-Lizenz: SQL Server 2017 Developer unter Windows Server) die Option **Erstellen** aus.
 
 5. Geben Sie unter **Grundlagen > Grundeinstellungen konfigurieren** einen **Namen** für den virtuellen Computer (VM) und einen **Benutzernamen** und ein **Kennwort** für den SQL Server-Systemadministrator an.  Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, für das Sie die Bereitstellung durchführen möchten. Wählen Sie unter **Ressourcengruppe** die Option **Vorhandene auswählen**, und ordnen Sie die VM in derselben Ressourcengruppe wie Ihre Azure Stack-Web-App an.
 

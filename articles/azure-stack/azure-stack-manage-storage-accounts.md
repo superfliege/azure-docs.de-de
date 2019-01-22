@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240714"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302713"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
 Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
@@ -148,7 +148,7 @@ Sie können auch PowerShell verwenden, um den Aufbewahrungszeitraum explizit au�
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-Weitere Informationen finden Sie in der [Azure Stack-PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage).
+Weitere Informationen finden Sie in der [Azure Stack-PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
  
 
 ## <a name="next-steps"></a>Nächste Schritte

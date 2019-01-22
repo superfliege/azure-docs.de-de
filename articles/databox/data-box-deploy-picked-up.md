@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 42ed9091ff7ab8059ba253f62726b30899d6e697
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036053"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358557"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden der Azure Data Box und Überprüfen des Datenuploads in Azure
 
@@ -28,7 +28,7 @@ In diesem Tutorial werden folgende Themen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass Sie das [Tutorial zum Kopieren von Daten auf die Azure Data Box und Durchführen der Überprüfung](data-box-deploy-copy-data.md) durchgearbeitet haben.
+Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-deploy-copy-data.md).
 
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
@@ -37,9 +37,7 @@ Stellen Sie zunächst sicher, dass Sie das [Tutorial zum Kopieren von Daten auf 
 
     Wenn das Gerät in Europa versendet wird, wird das Adressetikett nicht auf der E-Ink-Anzeige angezeigt. Das Adressetikett für den Rückversand befindet sich stattdessen in einer durchsichtigen Tasche unter dem Adressetikett für den Hinversand. Entfernen Sie das alte Adressetikett, und achten Sie darauf, dass das Adressetikett gut sichtbar ist.
     
-3. Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA zurücksenden. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben. Greifen Sie auf die DHL Express-Website für Ihr Land zu, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**. 
-
-    Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
+3. Planen Sie die Abholung durch UPS, falls Sie das Gerät zurücksenden. Rufen Sie zum Planen der Abholung eine UPS-Niederlassung in Ihrer Nähe (landesspezifische gebührenfreie Nummer) an, oder geben Sie die Data Box am nächstgelegenen Abgabeort ab.
 
 4. Nachdem die Data Box vom Kurierdienst abgeholt und eingescannt wurde, wird der Status der Bestellung im Portal in **Abgeholt** geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
 

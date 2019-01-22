@@ -3,7 +3,7 @@ title: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwend
 description: In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von Azure PowerShell einen virtuellen Windows-Computer mit SQL Server 2017 erstellen.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
-ms.author: jroth
-ms.openlocfilehash: bebb153d5ff840a0eed7d6afffccd03a5236592d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 12/21/2018
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: aa4ea4e724ec383fc9f22bd56572d2fd0e844abc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42024234"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332437"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Schnellstartanleitung: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwendung von Azure PowerShell
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwendung von Azure PowerShell
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen SQL Server-Computer erstellen.
 
@@ -47,7 +48,7 @@ Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder
    Connect-AzureRmAccount
    ```
 
-1. Es sollte eine Anmeldeseite angezeigt werden, auf der Sie Ihre Anmeldeinformationen eingeben können. Verwenden Sie die E-Mail-Adresse und das Kennwort für die Anmeldung beim Azure-Portal.
+1. Es sollte ein Bildschirm zur Eingabe Ihrer Anmeldeinformationen angezeigt werden. Verwenden Sie die E-Mail-Adresse und das Kennwort für die Anmeldung beim Azure-Portal.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -122,11 +123,11 @@ Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder
 
 ## <a name="create-the-sql-vm"></a>Erstellen des virtuellen SQL-Computers
 
-1. Definieren Sie Ihre Anmeldeinformationen für den virtuellen Computer. Der Benutzername lautet „azureadmin“. Denken Sie daran, das Kennwort zu ändern, bevor Sie den Befehl ausführen.
+1. Definieren Sie Ihre Anmeldeinformationen für den virtuellen Computer. Der Benutzername lautet „azureadmin“. Denken Sie daran, „\<password>“ zu ändern, bevor Sie den Befehl ausführen.
 
    ``` PowerShell
    # Define a credential object
-   $SecurePassword = ConvertTo-SecureString 'Change.This!000' `
+   $SecurePassword = ConvertTo-SecureString '<password>' `
       -AsPlainText -Force
    $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
    ```
@@ -136,7 +137,7 @@ Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13 | `
+   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
       Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
       Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
       Add-AzureRmVMNetworkInterface -Id $Interface.Id
@@ -164,7 +165,7 @@ Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie 
    Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. Übergeben Sie die zurückgegebene IP-Adresse dann als Befehlszeilenparameter an **mstsc**, um eine Remotedesktopsitzung mit dem neuen virtuellen Computer zu starten:
+1. Übergeben Sie die zurückgegebene IP-Adresse als Befehlszeilenparameter an **mstsc**, um eine Remotedesktopsitzung mit dem neuen virtuellen Computer zu starten:
 
    ```
    mstsc /v:<publicIpAddress>
@@ -176,7 +177,7 @@ Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie 
 
 1. Starten Sie nach der Anmeldung bei der Remotedesktopsitzung **SQL Server Management Studio 2017** über das Startmenü.
 
-1. Behalten Sie im Dialogfeld **Mit Server verbinden** die Standardeinstellungen bei. Der Servername ist der Name des virtuellen Computers. Die Authentifizierung ist auf **Windows-Authentifizierung** festgelegt. Klicken Sie auf **Verbinden**.
+1. Behalten Sie im Dialogfeld **Mit Server verbinden** die Standardeinstellungen bei. Der Servername ist der Name des virtuellen Computers. Die Authentifizierung ist auf **Windows-Authentifizierung** festgelegt. Wählen Sie **Verbinden**aus.
 
 Sie sind nun lokal mit SQL Server verbunden. Falls Sie eine Remoteverbindung herstellen möchten, müssen Sie die [Konnektivität konfigurieren](virtual-machines-windows-sql-connect.md) (entweder über das Portal oder manuell).
 

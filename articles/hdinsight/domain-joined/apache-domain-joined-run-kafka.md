@@ -7,13 +7,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/14/2019
+ms.openlocfilehash: 9e6ebd45f08d2479c73e0753fe1e8df3455df1e1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438607"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265293"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -50,7 +50,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Besuchen Sie [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster), um Informationen zum Erstellen der Domänenbenutzer **sales_user** und **marketing_user** zu erhalten. In einem Produktionsszenario stammen Domänenbenutzer aus Ihrem Active Directory-Mandanten.
 
-## <a name="create-ranger-policy"></a>Erstellen der Ranger-Richtlinie 
+## <a name="create-ranger-policy"></a>Erstellen der Ranger-Richtlinie
 
 Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
@@ -74,7 +74,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
    ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE]   
+   >[!NOTE]
    >Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
 
 4. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
@@ -94,17 +94,15 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Erstellen von Themen in einem Kafka-Cluster mit ESP
 
-So erstellen Sie zwei Themen, **salesevents** und **marketingspend**:
+So erstellen Sie zwei Themen, `salesevents` und `marketingspend`:
 
 1. Führen Sie folgenden Befehl aus, um eine SSH-Verbindung mit dem Cluster zu öffnen:
 
    ```bash
-   ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net
+   ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Ersetzen Sie `SSHUSER` durch den SSH-Benutzer für Ihren Cluster und `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das SSH-Benutzerkonto ein. Weitere Informationen zum Verwenden von `scp` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix).
-
-   In einem Produktionsszenario können während der Clustererstellung konfigurierte Domänenbenutzer eine SSH-Verbindung mit dem Cluster herstellen.
+   Ersetzen Sie `DOMAINADMIN` durch den Administratorbenutzer für Ihren Cluster, den Sie während der [Clustererstellung](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-hdinsight-cluster-with-esp) konfiguriert haben, und ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das Administratorbenutzerkonto ein. Weitere Informationen zum Verwenden von `SSH` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix).
 
 2. Um den Clusternamen in einer Variablen zu speichern und ein JSON-Analysehilfsprogramm (`jq`) zu installieren, verwenden Sie die folgenden Befehle. Geben Sie bei entsprechender Aufforderung den Namen des Kafka-Clusters ein.
 
@@ -113,14 +111,15 @@ So erstellen Sie zwei Themen, **salesevents** und **marketingspend**:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. Verwenden Sie die folgenden Befehle, um die Kafka-Brokerhosts und die Apache Zookeeper-Hosts abzurufen. Geben Sie bei entsprechender Aufforderung das Kennwort des Administratorkontos für den Cluster ein.
+3. Um die Kafka-Brokerhosts abzurufen, verwenden Sie die folgenden Befehle. Geben Sie bei entsprechender Aufforderung das Kennwort des Administratorkontos für den Cluster ein.
 
    ```bash
-   export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]  
-> Vor dem Fortfahren müssen Sie unter Umständen Ihre Entwicklungsumgebung einrichten, falls Sie dies nicht bereits getan haben. Sie benötigen Komponenten wie Java JDK, Apache Maven und einen SSH-Client mit scp. Ausführlichere Informationen finden Sie in der [Setupanleitung](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+
+   > [!Note]  
+   > Vor dem Fortfahren müssen Sie unter Umständen Ihre Entwicklungsumgebung einrichten, falls Sie dies nicht bereits getan haben. Sie benötigen Komponenten wie Java JDK, Apache Maven und einen SSH-Client mit scp. Ausführlichere Informationen finden Sie in der [Setupanleitung](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   
 1. Laden Sie die [Apache Kafka-Producer/Consumer-Beispiele mit Domäneneinbindung](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer) herunter.
 
 1. Befolgen Sie die Schritte 2 und 3 unter **Erstellen und Bereitstellen des Beispiels** im [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example).
@@ -132,13 +131,9 @@ So erstellen Sie zwei Themen, **salesevents** und **marketingspend**:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE]   
-   >Nur der Besitzer des Prozesses des Kafka-Diensts, z.B. „root“, kann in Zookeeper-ZNodes `/config/topics` schreiben. Ranger-Richtlinien werden nicht erzwungen, wenn ein Benutzer ohne Berechtigungen ein Thema erstellt. Der Grund hierfür ist, dass das `kafka-topics.sh`-Skript zum Erstellen des Themas direkt mit Zookeeper kommuniziert. Den Zookeeper-Knoten werden Einträge hinzugefügt, während die Watcher auf der Brokerseite Themen entsprechend überwachen und erstellen. Die Autorisierung kann nicht über das Ranger-Plug-In ausgeführt werden, und der obige Befehl wird mithilfe von `sudo` über den Kafka-Broker ausgeführt.
-
-
 ## <a name="test-the-ranger-policies"></a>Testen der Ranger-Richtlinien
 
-Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das Thema **salesevents** produzieren/es nutzen, aber dies gilt nicht für Thema **marketingspend**. Umgekehrt kann **marketing_user** für das Thema **marketingspend** produzieren/es nutzen, aber dies gilt nicht für Thema **salesevents**.
+Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das Thema `salesevents` produzieren/es nutzen, dies gilt jedoch nicht für das Thema `marketingspend`. Umgekehrt kann **marketing_user** für das Thema `marketingspend` produzieren/es nutzen, dies gilt jedoch nicht für das Thema `salesevents`.
 
 1. Stellen Sie eine neue SSH-Verbindung mit dem Cluster her. Führen Sie den folgenden Befehl aus, um sich als **sales_user1** anzumelden:
 
@@ -152,59 +147,51 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
    export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
    ```
 
-3. Verwenden Sie die Broker- und Zookeeper-Namen aus dem vorherigen Abschnitt, um die folgenden Umgebungsvariablen festzulegen:
+3. Verwenden Sie die Broker-Namen aus dem vorherigen Abschnitt, um die folgenden Umgebungsvariable festzulegen:
 
    ```bash
-   export KAFKABROKERS=<brokerlist>:9092 
+   export KAFKABROKERS=<brokerlist>:9092
    ```
 
    Beispiel: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
+4. Führen Sie Schritt 3 im Abschnitt **Erstellen und Bereitstellen des Beispiels** unter [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) aus, um sicherzustellen, dass `kafka-producer-consumer.jar` auch für **sales_user** verfügbar ist.
+
+5. Überprüfen Sie, ob **sales_user1** für das Thema `salesevents` produzieren kann. Führen Sie dazu den folgenden Befehl aus:
+
    ```bash
-   export KAFKAZKHOSTS=<zklist>:2181
+   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-   Beispiel: `export KAFKAZKHOSTS=zk1-khdicl.contoso.com:2181,zk2-khdicl.contoso.com:2181`
-
-4. Überprüfen Sie, ob **sales_user1** für das Thema **salesevents** produzieren kann.
-   
-   Führen Sie den folgenden Befehl zum Starten des Console-Producers für Thema **salesevents** aus:
+6. Führen Sie den folgenden Befehl zum Nutzen des Themas `salesevents` aus:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic salesevents --security-protocol SASL_PLAINTEXT
+   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
-   Geben Sie dann einige Nachrichten in die Konsole ein. Drücken Sie **STRG+C**, um den Console-Producer zu beenden.
+   Stellen Sie sicher, dass Sie die Nachrichten lesen können.
 
-5. Führen Sie den folgenden Befehl zum Nutzen des Themas **salesevents** aus:
-
-   ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic salesevents --security-protocol PLAINTEXTSASL --from-beginning
-   ```
- 
-6. Überprüfen Sie, ob die Nachrichten, die Sie im vorherigen Schritt eingegeben haben, angezeigt werden, und ob **sales_user1** nicht für Thema **marketingspend** produzieren kann.
-
-   Führen Sie im gleichen SSH-Fenster wie oben den folgenden Befehl aus, um für das Thema **marketingspend** zu produzieren:
+7. Vergewissern Sie sich, dass **sales_user1** nicht für das Thema `marketingspend` produzieren kann. Führen Sie dazu im gleichen SSH-Fenster den folgenden Befehl aus:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic marketingspend --security-protocol SASL_PLAINTEXT
+   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
-   Ein Autorisierungsfehler tritt auf und kann ignoriert werden. 
+   Ein Autorisierungsfehler tritt auf und kann ignoriert werden.
 
-7. Beachten Sie, dass **marketing_user1** Thema **salesevents** nicht nutzen kann.
+8. Beachten Sie, dass **marketing_user1** Thema `salesevents` nicht nutzen kann.
 
-   Wiederholen Sie die obigen Schritte 1-3, aber dieses Mal als **marketing_user1**.
+   Wiederholen Sie die Schritte 1 bis 4, aber dieses Mal als **marketing_user1**.
 
-   Führen Sie den folgenden Befehl zum Nutzen des Themas **salesevents** aus:
+   Führen Sie den folgenden Befehl zum Nutzen des Themas `salesevents` aus:
 
    ```bash
-   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic marketingspend --security-protocol PLAINTEXTSASL --from-beginning
+   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    Vorherige Meldungen werden nicht angezeigt.
 
-8. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
+9. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
    ![Ranger-Benutzeroberfläche – Richtlinienüberwachung](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 

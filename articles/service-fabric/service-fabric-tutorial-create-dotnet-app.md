@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
+ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078493"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321737"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 
@@ -326,8 +326,6 @@ Beim Erstellen des VotingWeb Front-End-Diensts wählt Visual Studio nach dem Zuf
 
 Aktualisieren Sie außerdem den Wert der Eigenschaft „Anwendungs-URL“ im Projekt „Voting“, damit ein Webbrowser beim Debuggen der Anwendung mit dem korrekten Port geöffnet wird.  Wählen Sie im Projektmappen-Explorer das Projekt **Voting** aus, und ändern Sie die Eigenschaft **Anwendungs-URL** in **8080**.
 
-![Anwendungs-URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
-
 ### <a name="deploy-and-run-the-voting-application-locally"></a>Lokales Bereitstellen und Ausführen der Anwendung „Voting“
 Sie können die Anwendung „Voting“ jetzt zum Debuggen ausführen. Drücken Sie in Visual Studio **F5**, um die Anwendung für Ihren lokalen Service Fabric-Cluster im Debugmodus bereitzustellen. Die Anwendung schlägt fehl, wenn Sie Visual Studio zuvor nicht als **Administrator** geöffnet haben.
 
@@ -454,12 +452,7 @@ Im nächsten Schritt verbinden Sie die beiden Dienste miteinander und sorgen daf
 
 Service Fabric bietet absolute Flexibilität bei der Kommunikation mit Reliable Services. Sie können in einer Anwendung über Dienste verfügen, auf die über TCP zugegriffen werden kann. Auf andere Dienste wird möglicherweise über eine HTTP-REST-API zugegriffen, und bei wieder anderen Diensten erfolgt der Zugriff über Websockets. Ausführliche Informationen zu den verfügbaren Optionen und deren Vor- und Nachteilen finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md).
 
-In diesem Tutorial verwenden Sie die [ASP.NET Core-Web-API](service-fabric-reliable-services-communication-aspnetcore.md) und den [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md), damit der Front-End-Webdienst „VotingWeb“ mit dem Back-End-Datendienst „VotingData“ kommunizieren kann. Der Reverseproxy ist standardmäßig zur Verwendung des Ports 19081 konfiguriert und sollte für dieses Tutorial funktionieren. Der Port wird in der ARM-Vorlage, die zum Einrichten des Clusters verwendet wird, festgelegt. Sehen Sie sich die Clustervorlage in der Ressource **Microsoft.ServiceFabric/clusters** oder das Element „HttpApplicationGatewayEndpoint“ im Clustermanifest an, um herauszufinden, welcher Port verwendet wird.
-
-> [!NOTE]
-> Der Reverseproxy wird nur in einem Cluster unter Windows 8 und höher oder Windows Server 2012 und höher unterstützt.
-
-<u>Ressource „reverseProxyEndpointPort“ aus Microsoft.ServiceFabric/clusters</u>
+In diesem Tutorial verwenden Sie die [ASP.NET Core-Web-API](service-fabric-reliable-services-communication-aspnetcore.md) und den [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md), damit der Front-End-Webdienst „VotingWeb“ mit dem Back-End-Datendienst „VotingData“ kommunizieren kann. Der Reverseproxy ist standardmäßig zur Verwendung des Ports 19081 konfiguriert und sollte für dieses Tutorial funktionieren. Der Port des Reverseproxys ist in der Azure Resource Manager-Vorlage zum Einrichten des Clusters festgelegt. Welcher Port verwendet wird, geht aus der Cluster-Vorlage in der Ressource **Microsoft.ServiceFabric/clusters** hervor: 
 
 ```json
 "nodeTypes": [
@@ -472,13 +465,10 @@ In diesem Tutorial verwenden Sie die [ASP.NET Core-Web-API](service-fabric-relia
           }
         ],
 ```
-So zeigen Sie das Element „HttpApplicationGatewayEndpoint“ im lokalen Service Fabric-Clustermanifest an:
-1. Öffnen Sie ein Browserfenster, und navigieren Sie zu http://localhost:19080.
-2. Klicken Sie auf **Manifest**.
+Um den in Ihrem lokalen Entwicklungscluster verwendeten Port des Reverseproxys zu ermitteln, sehen Sie sich das **HttpApplicationGatewayEndpoint**-Element im lokalen Service Fabric-Clustermanifest an:
+1. Öffnen Sie ein Browserfenster, und navigieren Sie zu http://localhost:19080, um das Tool Service Fabric Explorer zu öffnen.
+2. Wählen Sie **Cluster > Manifest** aus.
 3. Notieren Sie sich den Port des Elements „HttpApplicationGatewayEndpoint“. Dieser sollte standardmäßig 19081 sein. Wenn es nicht 19081 ist, müssen Sie den Port in der Methode „GetProxyAddress“ im folgenden Code in der Datei „VotesController.cs“ ändern.
-
-
-
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
@@ -622,9 +612,9 @@ Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 
-1. Öffnen Sie die Datei **VotingWeb\VotesController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 63) einen Haltepunkt fest.
+1. Öffnen Sie die Datei **VotingWeb\VotesController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 72) einen Haltepunkt fest.
 
-2. Öffnen Sie die Datei **VotingData\VoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 53) einen Haltepunkt fest.
+2. Öffnen Sie die Datei **VotingData\VoteDataController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 54) einen Haltepunkt fest.
 
 3. Drücken Sie **F5**, um die Anwendung im Debugmodus auszuführen.
 

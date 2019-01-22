@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88904b27e114c27dc7b1051c755d3c831c90554f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286689"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232468"
 ---
 # <a name="about-v20"></a>Informationen zu v2.0
 
@@ -30,13 +30,13 @@ Der v2.0-Endpunkt und die -Plattform wurden in einer Vorschau vorgestellt und ko
 > [!NOTE]
 > Für MSAL Android, iOS und .NET befinden sich noch Features in der Entwicklung. Sie können sie verwenden, um Anwendungen zu erstellen und uns Feedback zu geben.
 
-Die Entwicklerbenutzeroberfläche des Azure Portals wurde erheblich aktualisiert, um nun alle Ihre mit ADAL oder MSAL erstellten Anwendungen zu integrieren und die Benutzerfreundlichkeit zu verbessern.
+Die Benutzeroberfläche [App-Registrierungen (Vorschau)](quickstart-register-app.md) des Azure Portals wurde erheblich aktualisiert, um nun alle Ihre mit ADAL oder MSAL erstellten Anwendungen zu integrieren und die Benutzerfreundlichkeit zu verbessern.
 
 In der Vergangenheit benötigten Anwendungsentwickler, die sowohl persönliche Microsoft-Konten als auch Geschäftskonten über Azure Active Directory (Azure AD) unterstützen wollten, eine Integration für zwei separate Systeme. Der v2.0-Endpunkt und die -Plattform bieten eine Version der Authentifizierungs-API, die diesen Vorgang vereinfacht. Mit dem v2.0-Endpunkt ist die Anmeldung über beide Arten von Konten mit einer einzelnen Integration möglich. Anwendungen, die den v2.0-Endpunkt verwenden, können auch die REST-APIs aus der [Microsoft Graph-API](https://developer.microsoft.com/graph) mit beiden Kontotypen nutzen.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Wählen Sie in der Liste weiter unten Ihre bevorzugte Plattform aus, um eine Anwendung mit den Open Source-Bibliotheken und -Frameworks von Microsoft zu erstellen. Sie können auch das OAuth 2.0-Protokoll und das OpenID Connect-Protokoll verwenden, um Protokollnachrichten direkt ohne Verwendung einer Authentifizierungsbibliothek zu senden und zu empfangen.
+Wählen Sie in folgenden Liste Ihre bevorzugte Plattform aus, um eine Anwendung mit den Open-Source-Bibliotheken und -Frameworks von Microsoft zu erstellen:
 
 [!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
 
@@ -46,14 +46,12 @@ Lernen Sie die Möglichkeiten kennen, die Ihnen der Azure AD v2.0-Endpunkt biete
 
 * Informieren Sie sich über die [Arten von Anwendungen, die Sie mit dem Azure AD v2.0-Endpunkt erstellen können](v2-app-types.md).
 * Machen Sie sich mit den [Einschränkungen](active-directory-v2-limitations.md) des Azure AD v2.0-Endpunkts vertraut.
-* Das folgende Video bietet einen Überblick über den Azure AD v2.0-Endpunkt:
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 Hier erhalten Sie detaillierte Informationen zu v2.0:
 
+* [Informationen zu Microsoft Identity Platform](about-microsoft-identity-platform.md)
 * [v2.0-Protokollreferenz](active-directory-v2-protocols.md)
 * [Zugriffstokenreferenz](access-tokens.md)
 * [ID-Tokenreferenz](id-tokens.md)

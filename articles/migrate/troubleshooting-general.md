@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Die
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189495"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261229"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -28,6 +28,18 @@ Die Appliance für die kontinuierliche Ermittlung sammelt nur kontinuierlich Lei
    ![Beenden der Ermittlung](./media/troubleshooting-general/stop-discovery.png)
 
 - Gelöschte virtuelle Computer: Das Löschen von virtuellen Computern wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Löschen von Azure Migrate-Projekten und zugehörigen Log Analytics-Arbeitsbereichen
+
+Wenn Sie ein Azure Migrate-Projekt löschen, wird das Migrationsprojekt zusammen mit allen Gruppen und Bewertungen gelöscht. Wenn Sie dem Projekt jedoch einen Log Analytics-Arbeitsbereich angefügt hatten, wird dieser nicht automatisch gelöscht. Dies liegt daran, dass derselbe Log Analytics-Arbeitsbereich für mehrere Anwendungsfälle verwendet werden kann. Wenn Sie den Log Analytics-Arbeitsbereich ebenfalls löschen möchten, müssen Sie dies manuell tun.
+
+1. Navigieren Sie zu dem Log Analytics-Arbeitsbereich, der dem Projekt angefügt ist.
+   a. Wenn Sie das Migrationsprojekt noch nicht gelöscht haben, finden den Link zum Arbeitsbereich auf der Übersichtsseite des Projekts im Abschnitt "Essentials".
+
+   ![LA-Arbeitsbereich](./media/troubleshooting-general/LA-workspace.png)
+
+   b. Wenn Sie das Migrationsprojekt bereits gelöscht haben, klicken Sie im Azure-Portal im linken Bereich auf **Ressourcengruppen**, und wechseln Sie zu der Ressourcengruppe, in der der Arbeitsbereich erstellt wurde, und navigieren Sie dann zu diesem.
+2. Befolgen Sie die Anweisungen [in diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace), um den Arbeitsbereich zu löschen.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Erstellen des Migrationsprojekts mit dem Fehler *Anforderungen müssen Benutzeridentitätsheader enthalten*
 
@@ -80,13 +92,13 @@ Sie können zum Abschnitt **Grundlagen** auf der Seite **Übersicht** des Projek
 
    ![Projektspeicherort](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>Collector-Fehler
+## <a name="collector-issues"></a>Collector-Probleme
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Die Bereitstellung von Azure Migrate-Collector schlägt mit folgendem Fehler fehl: Die angegebene Manifestdatei ist ungültig: Ungültiger OVF-Manifesteintrag.
 
 1. Überprüfen Sie, ob die OVA-Datei für Azure Migrate-Collector ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. Informationen zum Überprüfen des Hashwerts finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
 2. Wenn der Fehler weiterhin auftritt und Sie zum Bereitstellen der OVF-Datei VMware vSphere-Client verwenden, führen Sie die Bereitstellung über den vSphere-Webclient aus. Wenn der Fehler weiterhin auftritt, versuchen Sie es mit einem anderen Webbrowser.
-3. Wenn Sie den vSphere-Webclient und die Bereitstellung auf vCenter Server 6.5 ausführen möchten, stellen Sie die OVA-Datei mit den folgenden Schritten direkt auf dem ESXi-Host bereit:
+3. Wenn Sie den vSphere-Webclient und die Bereitstellung auf vCenter Server 6.5 oder 6.7 ausführen möchten, stellen Sie die OVA-Datei mit den folgenden Schritten direkt auf dem ESXi-Host bereit:
   - Stellen Sie mithilfe des Webclients (https://<*Host-IP-Adresse*>/ui) eine direkte Verbindung mit dem ESXi-Host her (anstelle von vCenter Server).
   - Wechseln Sie zu „Startseite > Inventar“.
   - Klicken Sie auf „Datei“ > „Deploy OVF template“ (OVF-Vorlage bereitstellen). Navigieren Sie zur OVA-Datei, und stellen Sie die Bereitstellung fertig.
@@ -156,6 +168,17 @@ Wenn das Problem auch bei der neuesten Version auftritt, kann der Collectorcompu
 2. Wenn Schritt 1 nicht erfolgreich ist, können Sie versuchen, über die IP-Adresse eine Verbindung mit vCenter Server herzustellen.
 3. Ermitteln Sie die richtige Portnummer für die Verbindungsherstellung mit vCenter.
 4. Überprüfen Sie abschließend, ob vCenter Server ausgeführt wird und betriebsbereit ist.
+
+### <a name="antivirus-exclusions"></a>Antivirenausschlüsse
+
+Um die Azure Migrate Appliance zu härten, müssen Sie die folgenden Ordner in der Appliance von Antivirenscans ausschließen:
+
+- Ordner mit den Binärdateien für den Azure Migrate-Dienst. Schließen Sie alle Unterordner aus.
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate-Webanwendung. Schließen Sie alle Unterordner aus.
+  %SystemDrive%\inetpub\wwwroot
+- Lokaler Cache für Datenbank- und Protokolldateien. Der Azure Migrate-Dienst benötigt Lese-/Schreibzugriff auf diesen Ordner.
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>Probleme bei der Visualisierung von Abhängigkeiten
 

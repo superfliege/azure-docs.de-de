@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e66acd6a94b891ac3f727fddb7a88a9c56f465d3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120834"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246567"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -153,7 +153,13 @@ Ein interner Load Balancer ermöglicht die folgenden Arten von Lastenausgleich:
 *Abbildung: Durchführen eines Lastenausgleichs für Anwendungen mit mehreren Ebenen mithilfe eines öffentlichen und eines internen Load Balancers*
 
 ## <a name="pricing"></a>Preise
-Die Nutzung des Standard-Load Balancers wird anhand der Anzahl konfigurierter Regeln für den Lastenausgleich und die Menge von eingehenden und ausgehenden Daten berechnet. Informationen zu den Preisen für den Standard-Load Balancer finden Sie auf der Seite [Load Balancer – Preise](https://azure.microsoft.com/pricing/details/load-balancer/).
+
+Die Verwendung von Load Balancer Standard ist kostenpflichtig.
+
+- Anzahl konfigurierter Lastenausgleichs- und Ausgangsregeln (NAT-Regeln für eingehenden Datenverkehr werden nicht auf die Gesamtanzahl der Regeln angerechnet.)
+- Menge der eingehenden und ausgehenden verarbeiteten Daten, ungeachtet der Regel. 
+
+Informationen zu den Preisen für den Standard-Load Balancer finden Sie auf der Seite [Load Balancer – Preise](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 Basic Load Balancer wird kostenlos angeboten.
 

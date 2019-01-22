@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190335"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359322"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 
@@ -59,10 +59,10 @@ Version | **10.2** | Die Hauptversion der MariaDB-Engine.
 admin-user | **myadmin** | Der Benutzername für die Administratoranmeldung. Der **admin-user**-Parameter darf nicht auf **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** festgelegt werden.
 admin-password | *Ihr Kennwort* | Das Kennwort des Administratorbenutzers. Ihr Kennwort muss zwischen acht und 128 Zeichen lang sein. Es muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen.
 
-Der **sku-name**-Parameterwert folgt wie in den folgenden Beispielen gezeigt der Konvention *Tarif*\_*Computegeneration*\_*V-Kerne*:
-+ `--sku-name B_Gen5_4` entspricht Tarif „Basic“, Computegeneration 5, vier virtuelle Kerne.
-+ `--sku-name GP_Gen5_32` entspricht Tarif „Universell“, Computegeneration 5, 32 virtuelle Kerne.
-+ `--sku-name MO_Gen5_2` entspricht Tarif „Arbeitsspeicheroptimiert“, Computegeneration 5, zwei virtuelle Kerne.
+Für den Parameterwert des SKU-Namens wird die Konvention „{Tarif}\_{Computegeneration}\_{V-Kerne}“ verwendet, wie in den folgenden Beispielen:
++ `--sku-name B_Gen5_1` ist „Basic“, „Gen 5“ und „1 virtueller Kern“ zugeordnet. Bei dieser Option handelt es sich um die kleinste verfügbare SKU.
++ `--sku-name GP_Gen5_32` ist „Universell“, „Gen 5“ und „32 V-Kerne“ zugeordnet.
++ `--sku-name MO_Gen5_2` ist „Arbeitsspeicheroptimiert“, „Gen 5“ und „2 V-Kerne“ zugeordnet.
 
 Weitere Informationen zu den gültigen Werten für die einzelnen Regionen und den Tarifen finden Sie unter [Tarife](./concepts-pricing-tiers.md).
 

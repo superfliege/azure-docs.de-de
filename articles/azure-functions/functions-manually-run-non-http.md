@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406929"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247111"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Manuelles Ausführen einer Funktion ohne HTTP-Trigger
 
@@ -51,19 +51,20 @@ Klicken Sie nach dem Kopieren des Hauptschlüssels auf den Funktionsnamen, um zu
 
 Öffnen Sie Postman, und führen Sie die folgenden Schritte aus:
 
-1. Geben Sie den **Anforderungsort in das Textfeld für die URL** ein. 
-2. **Klicken** Sie auf die Registerkarte **Header**.
-3. Geben Sie **x-functions-key** als ersten **Schlüssel** ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) ins Feld **Wert** ein.
-4. Geben Sie **Content-Type** als zweiten **Schlüssel** und **application/json** als **Wert** ein.
+1. Geben Sie den **Anforderungsort in das Textfeld für die URL** ein.
+2. Vergewissern Sie sich, dass die HTTP-Methode auf **POST** festgelegt ist.
+3. **Klicken** Sie auf die Registerkarte **Header**.
+4. Geben Sie **x-functions-key** als ersten **Schlüssel** ein, und fügen Sie den Hauptschlüssel (aus der Zwischenablage) ins Feld **Wert** ein.
+5. Geben Sie **Content-Type** als zweiten **Schlüssel** und **application/json** als **Wert** ein.
 
     ![Header-Einstellungen in Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-5. **Klicken** Sie auf die Registerkarte **Text**.
-6. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
+6. **Klicken** Sie auf die Registerkarte **Text**.
+7. Geben Sie **{ "input": "test" }** als Anforderungstext ein.
 
     ![Postman-Einstellungen für den Anforderungstext](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-7. Klicken Sie auf **Send**.
+8. Klicken Sie auf **Send**.
 
     ![Senden einer Anforderung mit Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
