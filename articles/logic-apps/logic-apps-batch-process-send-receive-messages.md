@@ -8,13 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
-ms.date: 08/19/2018
-ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 01/16/2019
+ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410152"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352511"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -48,22 +48,29 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als Ziel vorhanden sein, an das die Nachrichten gesendet werden. Daher müssen Sie zunächst die Logik-App für den Batchempfang erstellen, die über den Trigger **Batch** gestartet wird. Dadurch können Sie die Logik-App für den Batchempfang auswählen, wenn Sie die Logik-App für den Batchversand erstellen. Die Logik-App für den Batchempfang sammelt Nachrichten, bis die angegebenen Kriterien zur Freigabe und Verarbeitung der Nachrichten erfüllt sind. Beim Batchempfang sind keine Angaben zum Batchversand erforderlich, beim Batchversand wird dagegen das Ziel benötigt, an das die Nachrichten gesendet werden. 
 
-1. Erstellen Sie über das [Azure-Portal](https://portal.azure.com) oder Visual Studio eine Logik-App mit dem Namen „BatchReceiver“. 
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) oder in Visual Studio eine Logik-App mit diesem Namen: „BatchReceiver“ 
 
-2. Fügen Sie im Designer für Logik-Apps den Trigger **Batch** hinzu, um den Workflow Ihrer Logik-App zu starten. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. Wählen Sie den Trigger **Batchnachrichten** aus.
+2. Fügen Sie im Designer für Logik-Apps den Trigger **Batch** hinzu, um den Workflow Ihrer Logik-App zu starten. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. Wählen Sie den folgenden Trigger aus: **Batchnachrichten**
 
    ![Hinzufügen des Triggers „Batchnachrichten“](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 
-3. Legen Sie die Eigenschaften für den Batchempfang fest: 
+3. Legen Sie diese Eigenschaften für den Batchempfang fest: 
 
-   | Eigenschaft | Beschreibung | 
+   | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------|
-   | **Batchmodus** | - **Inline**: Zum Definieren von Freigabekriterien im Batchtrigger <br>- **Integrationskonto**: Zum Definieren mehrerer Konfigurationen für Freigabekriterien über ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Mit einem Integrationskonto können Sie diese Konfigurationen an zentraler Stelle statt in separaten Logik-Apps verwalten. | 
+   | **Batchmodus** | - **Inline**: Zum Definieren von Freigabekriterien im Batchtrigger <br>- **Integrationskonto**:  Zum Definieren mehrerer Konfigurationen für Freigabekriterien über ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Mit einem Integrationskonto können Sie diese Konfigurationen an zentraler Stelle statt in separaten Logik-Apps verwalten. | 
    | **Batchname** | Der Name für Ihren Batch (in diesem Beispiel „TestBatch“). Er gilt nur für den Batchmodus **Inline**. |  
-   | **Freigabekriterien** | Diese Eigenschaft gilt nur für den Batchmodus **Inline** und gibt die Kriterien an, die vor der Verarbeitung der einzelnen Batches erfüllt sein müssen: <p>- **Basierend auf der Nachrichtenanzahl**: Die Anzahl von Nachrichten, die im Batch gesammelt werden sollen, z.B. 10 Nachrichten <br>- **Basierend auf Größe**: Die maximale Batchgröße in Bytes, z.B. 100 MB <br>- **Basierend auf dem Zeitplan**: Intervall und Häufigkeit zwischen Batchfreigaben, z.B. 10 Minuten. Der Mindestwert für die Wiederholungen beträgt 60 Sekunden bzw. 1 Minute. Minutenbruchteile werden auf 1 Minute aufgerundet. Um ein Startdatum und eine Startuhrzeit anzugeben, wählen Sie **Erweiterte Optionen anzeigen** aus. <br>- **Alle auswählen**: Verwenden Sie alle angegebenen Kriterien. | 
+   | **Freigabekriterien** | Diese Eigenschaft gilt nur für den Batchmodus **Inline** und gibt die Kriterien an, die vor der Verarbeitung der einzelnen Batches erfüllt sein müssen: <p>- **Basierend auf der Nachrichtenanzahl**:  Den Batch auf Grundlage der Anzahl der vom Batch gesammelten Nachrichten freigeben. <br>- **Basierend auf der Größe**:  Den Batch auf Grundlage der Gesamtgröße aller von diesem Batch gesammelten Nachrichten in Bytes freigeben. <br>- **Zeitplan**: Den Batch auf Grundlage eines Wiederholungszeitplans freigeben, der ein Intervall und eine Häufigkeit angibt. In den erweiterten Optionen können Sie außerdem eine Zeitzone auswählen und ein Startdatum sowie eine Startzeit bereitstellen. <br>- **Alle auswählen**: Alle angegebenen Kriterien verwenden. | 
+   | **Nachrichtenanzahl** | Die Anzahl von Nachrichten, die im Batch gesammelt werden sollen, z. B. 10 Nachrichten Der Grenzwert für einen Batch ist 8.000 Nachrichten. | 
+   | **Batch Size** | Die Gesamtgröße in Bytes, die im Batch gesammelt werden soll, z. B. 10 MB. Das Größenlimit für einen Batch beträgt 80 MB. | 
+   | **Zeitplan** | Das Intervall und die Häufigkeit zwischen Batchfreigaben, z. B. 10 Minuten. Der Mindestwert für die Wiederholungen beträgt 60 Sekunden bzw. 1 Minute. Minutenbruchteile werden auf 1 Minute aufgerundet. Um eine Zeitzone oder ein Startdatum und eine Startuhrzeit anzugeben, wählen Sie **Erweiterte Optionen anzeigen** aus. | 
    ||| 
-   
-   In diesem Beispiel werden alle Kriterien ausgewählt:
+
+   > [!NOTE]
+   > 
+   > Wenn Sie die Freigabekriterien ändern, während der Trigger noch über als Stapel zusammengefasste, aber nicht gesendete Nachrichten verfügt, verwendet er die aktualisierten Freigabekriterien, um die nicht gesendeten Nachrichten zu verarbeiten. 
+
+   Dieses Beispiel zeigt alle Kriterien, doch probieren Sie für Ihre eigenen Tests nur ein Kriterium aus:
 
    ![Angeben von Details für den Batchtrigger](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 
@@ -76,7 +83,7 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
    2. Geben Sie im Suchfeld den Begriff „E-Mail senden“ als Filter ein.
    Wählen Sie basierend auf Ihrem E-Mail-Anbieter einen E-Mail-Connector aus.
-      
+
       Beispiel: Wenn Sie ein persönliches Konto wie @outlook.com oder @hotmail.com besitzen, wählen Sie den Outlook.com-Connector aus. 
       Wenn Sie ein Gmail-Konto besitzen, wählen Sie den Gmail-Connector aus. 
       In diesem Beispiel wird Office 365 Outlook verwendet. 
@@ -98,7 +105,7 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
      ![Auswählen von „Partitionsname“ in der Liste „Dynamischer Inhalt“](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
-     In einem späteren Abschnitt können Sie einen eindeutigen Partitionsschlüssel angeben, um den Zielbatch in logische Untergruppen zu unterteilen, an die Nachrichten gesendet werden können. 
+     Später im Batchversand können Sie einen eindeutigen Partitionsschlüssel angeben, um den Zielbatch in logische Untergruppen zu unterteilen, an die Nachrichten gesendet werden können. 
      Jede Gruppe besitzt eine eindeutige Nummer, die von der Logik-App für den Batchversand generiert wird. 
      Dadurch können Sie einen einzelnen Batch mit mehreren Untergruppen verwenden und die einzelnen Untergruppen jeweils mit einem Namen Ihrer Wahl definieren.
 
@@ -127,10 +134,10 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
 
 * Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand in der gleichen Azure-Region *und* dem gleichen Azure-Abonnement befinden. Wenn dies nicht der Fall ist, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie gegenseitig nicht sichtbar sind.
 
-1. Erstellen Sie eine weitere Logik-App namens „BatchSender“.
+1. Erstellen Sie eine weitere Logik-App mit diesem Namen: „BatchSender“
 
    1. Geben Sie im Suchfeld den Begriff „Wiederholung“ als Filter ein. 
-   Wählen Sie den Trigger **Wiederholung – Zeitplan** aus.
+   Wählen Sie den folgenden Trigger aus: **Wiederholung – Zeitplan**
 
       ![Hinzufügen des Triggers „Wiederholung – Zeitplan“](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
@@ -143,7 +150,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
    1. Wählen Sie unter dem Wiederholungstrigger die Option **Neuer Schritt** aus.
 
    2. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. 
-   Wählen Sie die Liste **Aktionen** und dann die Aktion **Logik-App-Workflow mit Batchtrigger auswählen – Nachrichten an Batch senden** aus.
+   Wählen Sie die Liste **Aktionen** und dann die Aktion  **Logik-App-Workflow mit Batchtrigger auswählen – Nachrichten an Batch senden** aus.
 
       ![Auswählen von „Logik-App-Workflow mit Batchtrigger auswählen“](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 
@@ -156,15 +163,15 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
       > 
       > Wenn Sie Visual Studio verwenden und keine Logik-Apps für den Batchempfang zum Auswählen angezeigt werden, vergewissern Sie sich, dass Sie die Logik-App für den Batchempfang in Azure bereitgestellt haben. Ist dies nicht der Fall, lesen Sie die Informationen zum [Bereitstellen der Logik-App für den Batchempfang in Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). 
 
-   4. Wählen Sie die Aktion **Batch_messages – <*Ihre Logik-App für den Batchempfang*>** aus.
+   4. Wählen Sie diese Aktion aus: **Batch_messages – <*Ihre Logik-App für den Batchempfang*>**
 
-      ![Auswählen der Aktion „Batch_messages – <Ihre Logik-App für den Batchempfang“](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Wählen Sie diese Aktion aus: „Batch_messages – <Ihre Logik-App>“](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 3. Legen Sie die Eigenschaften für den Batchversand fest.
 
-   | Eigenschaft | Beschreibung | 
+   | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------| 
-   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig:** Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
+   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig**: Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
    | **Nachrichteninhalt** | Der Inhalt für die Nachricht, die Sie senden möchten | 
    ||| 
 
@@ -180,7 +187,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
 
 4. Richten Sie nun eine Partition für den Batch ein. Wählen Sie in der Aktion „BatchReceiver“ die Option **Erweiterte Optionen anzeigen** aus, und legen Sie die folgenden Eigenschaften fest:
 
-   | Eigenschaft | Beschreibung | 
+   | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------| 
    | **Partitionsname** | Ein optionaler eindeutiger Partitionsschlüssel, der es ermöglicht, den Zielbatch in logische Untergruppen aufzuteilen und Nachrichten auf der Grundlage dieses Schlüssels zu sammeln | 
    | **Nachrichten-ID** | Eine optionale Nachrichten-ID, bei der es sich um einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) handelt, wenn nichts angegeben wird | 

@@ -1,7 +1,7 @@
 ---
 title: Einrichten einer Python-Entwicklungsumgebung
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Artikel erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Jupyter Notebooks, Azure Notebooks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
+description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Artikel erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Jupyter Notebooks, Azure Notebooks, Azure Databricks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: 46a1872d2ac5d1670620148edf7ee273580826d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811272"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353225"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -41,7 +41,7 @@ Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegend
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning Service-Arbeitsbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-get-started.md).
+- Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-get-started.md).
 
 - Einen der Paket-Manager [Continuum Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
 
@@ -242,12 +242,55 @@ Sie können eine angepasste Version des Azure Machine Learning SDK für Azure Da
 
 So bereiten Sie Ihren Databricks-Cluster vor und erhalten Beispiele für Notebooks
 
-1. Erstellen Sie mit Python 3 einen [Databricks-Cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) mit einer Databricks-Runtimeversion von 4.x (bevorzugt mit hoher Parallelität). 
+1. Erstellen Sie einen [Databricks-Cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) mit den folgenden Einstellungen:
 
-1. Um das Azure Machine Learning SDK für das Python `azureml-sdk[databricks]` PyPi-Paket zu installieren und an Ihren Cluster anzufügen, [erstellen Sie eine Bibliothek](https://docs.databricks.com/user-guide/libraries.html#create-a-library).  
-    Wenn Sie fertig sind, wird die Bibliothek wie in der folgenden Abbildung gezeigt angefügt. Beachten Sie diese [häufigen Probleme mit Databricks](resource-known-issues.md#databricks).
+    | Einstellung | Wert |
+    |----|---|
+    | Clustername | IhrClustername |
+    | Databricks-Laufzeit | Beliebige Nicht-ML-Runtime (nicht ML 4.x, 5.x) |
+    | Python-Version | 3 |
+    | Worker | 2 oder mehr |
 
-   ![Auf Databricks installiertes SDK ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+    Verwenden Sie diese Einstellungen nur, wenn Sie automatisiertes maschinelles Lernen mit Databricks verwenden:
+    
+    |   Einstellung | Wert |
+    |----|---|
+    | VM-Typen des Workerknotens | Arbeitsspeicheroptimierte VM bevorzugt |
+    | Automatische Skalierung aktivieren | Deaktivieren |
+    
+    Die Anzahl der Workerknoten in Ihrem Databricks-Cluster bestimmt die maximale Anzahl gleichzeitiger Iterationen in den Einstellungen für automatisiertes ML.  
+
+    Die Erstellung des Clusters dauert einige Minuten. Warten Sie, bis der Cluster ausgeführt wird, bevor Sie fortfahren.
+
+1. Installieren Sie das Azure Machine Learning SDK-Paket, und fügen Sie es an Ihren Cluster an.  
+
+    * [Erstellen Sie eine Bibliothek](https://docs.databricks.com/user-guide/libraries.html#create-a-library) mit einer dieser Einstellungen (_wählen Sie nur eine dieser Optionen aus_):
+    
+        * So installieren Sie das Azure Machine Learning SDK _ohne_ die Funktion für automatisiertes maschinelles Lernen
+            | Einstellung | Wert |
+            |----|---|
+            |Quelle | Python Egg oder PyPI hochladen
+            |PyPi-Name | azureml-sdk[databricks]
+    
+        * So installieren Sie das Azure Machine Learning SDK _mit_ automatisiertem maschinellen Lernen
+            | Einstellung | Wert |
+            |----|---|
+            |Quelle | Python Egg oder PyPI hochladen
+            |PyPi-Name | azureml-sdk[automl_databricks]
+    
+    * Aktivieren Sie nicht **Automatisch an alle Cluster anfügen**.
+
+    * Aktivieren Sie **Anfügen** neben dem Namen Ihres Clusters.
+
+    * Stellen Sie sicher, dass keine Fehler vorliegen, bis der Status zu **Angefügt** wechselt. Dies kann einige Minuten dauern.
+
+    Wenn Sie eine alte SDK-Version haben, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn danach ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
+
+    Wenn Sie fertig sind, wird die Bibliothek wie in den folgenden Abbildungen gezeigt angefügt. Beachten Sie diese [häufigen Probleme mit Databricks](resource-known-issues.md#databricks).
+
+    * Wenn Sie das Azure Machine Learning SDK _ohne_ automatisiertes maschinelles Lernen installiert haben: ![SDK ohne installiertes automatisiertes maschinelles Lernen in Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+
+    * Wenn Sie das Azure Machine Learning SDK _mit_ automatisiertes maschinelles Lernen installiert haben: ![SDK mit installiertem automatisierten maschinellen Lernen in Databricks](./media/how-to-configure-environment/automlonadb.jpg)
 
    Wenn dieser Schritt nicht ausgeführt werden kann, starten Sie Ihren Cluster folgendermaßen neu:
 
@@ -257,13 +300,12 @@ So bereiten Sie Ihren Databricks-Cluster vor und erhalten Beispiele für Noteboo
 
    c. Klicken Sie auf der Registerkarte **Bibliotheken** auf **Neu starten**.
 
-1. Laden Sie die [Notebookarchivdatei für Azure Databricks/Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc) herunter.
+1. Laden Sie die [Notebookarchivdatei für Azure Databricks/Azure Machine Learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) herunter.
 
    >[!Warning]
    > Für die Verwendung mit Azure Machine Learning Service stehen zahlreiche Beispiel-Notebooks zur Verfügung. Mit Azure Databricks funktionieren nur [diese Beispiel-Notebooks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks).
-   > 
 
-1.  [Importieren Sie diese Archivdatei](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) in Ihren Databricks-Cluster, und sehen Sie sich diese genauer an, wie auf der Seite [Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) beschrieben.
+1.  [Importieren Sie die Archivdatei](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) in Ihren Databricks-Cluster, und sehen Sie sich diese genauer an, wie auf der Seite [Machine Learning Notebooks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) beschrieben.
 
 
 ## <a id="workspace"></a>Erstellen einer Konfigurationsdatei für den Arbeitsbereich
@@ -311,6 +353,6 @@ Sie können die Konfigurationsdatei auf drei Arten erstellen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Trainieren eines Modells in Azure Machine Learning mit dem MNIST-Dataset](tutorial-train-models-with-aml.md)
-- [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)
-- [Azure Machine Learning – Datenaufbereitungs-SDK](https://aka.ms/data-prep-sdk)
+- [Trainieren eines Modells](tutorial-train-models-with-aml.md) in Azure Machine Learning mit dem MNIST-Dataset]
+- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk)
+- Informationen zum [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk)
