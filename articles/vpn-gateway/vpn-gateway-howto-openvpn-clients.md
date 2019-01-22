@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971265"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352323"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Vorschau)
 
@@ -72,6 +72,10 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 7. Doppelklicken Sie auf die Profildatei, um das Profil in Tunnelblick zu erstellen.
 8. Starten Sie Tunnelblick im Anwendungsordner.
 9. Klicken Sie auf das Symbol „Tunnelblick“, und wählen Sie „Verbinden“ aus.
+
+> [!IMPORTANT]
+>Für das OpenVPN-Protokoll werden nur iOS 11.0 und höher und MacOS 10.13 und höher unterstützt.
+>
 
 ## <a name="linux"></a>Linux-Clients
 

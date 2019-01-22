@@ -1,5 +1,6 @@
 ---
-title: Verwenden von Tags in Azure Content Moderator | Microsoft-Dokumentation
+title: Verwenden von benutzerdefinierten Tags für Inhaltsmoderation – Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Content Moderator enthält Standardtags, und Sie können darüber hinaus benutzerdefinierte Tags für die Moderation von unternehmensspezifischen Inhalten erstellen.
 services: cognitive-services
 author: sanjeev3
@@ -7,20 +8,20 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: c462ff2937453f942db7fdd5b751f3356b6fe715
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: c1a547f99995d25d19dafb03276306c50a544c9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310078"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264715"
 ---
-# <a name="about-tags"></a>Infos zu Tags #
+# <a name="create-and-use-moderation-tags"></a>Erstellen und Verwenden von Moderationstags
 
 Neben den beiden Standardtags **isadult** (**a**) und **isracy** (**r**) können Sie benutzerdefinierte Tags für ein gezielteres Scannen erstellen. Diese benutzerdefinierten Tags stehen dann für menschliche Prüfer zur Verfügung, um sie Bildern oder Texten zuzuweisen.
 
-## <a name="create-tags"></a>Erstellen von Tags ##
+## <a name="create-tags"></a>Erstellen von Tags
 
 1.  Wählen Sie Tags auf der Registerkarte „Einstellungen“.
 
@@ -34,7 +35,7 @@ Neben den beiden Standardtags **isadult** (**a**) und **isracy** (**r**) können
 
 ![Tags für die Inhaltsmoderation definieren](images/tags-2-define.png)
 
-## <a name="using-custom-tags"></a>Verwenden von benutzerdefinierten Tags ##
+## <a name="using-custom-tags"></a>Verwenden von benutzerdefinierten Tags
 
 Benutzerdefinierte Tags werden während der Überprüfung durch Personen verwendet. Sie werden in der Vorschau angezeigt, und der Prüfer wählt sie durch Anklicken aus.
 
@@ -48,6 +49,6 @@ Die beiden Standardtags **isadult** und **isracy** können nicht gelöscht werde
 
 ![Tags für die Inhaltsmoderation löschen](images/tags-5-delete.png)
 
-## <a name="next-steps"></a>Nächste Schritte ##
+## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Verwenden von Tags für die Bildmoderation finden Sie in [Überprüfen von moderierten Bildern](Review-Moderated-Images.md).

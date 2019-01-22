@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340775"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215404"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-APIs in Durable Functions (Azure Functions)
 
@@ -96,9 +96,9 @@ Alle HTTP-APIs, die von der Erweiterung implementiert werden, verwenden die folg
 | taskHub    | Abfragezeichenfolge    | Der Name des [Aufgabenhub](durable-functions-task-hubs.md). Wenn er nicht angegeben ist, wird der Name des Aufgabenhub der aktuellen Funktionen-App verwendet. |
 | connection | Abfragezeichenfolge    | Der **Name** der Verbindungszeichenfolge für das Speicherkonto. Wenn nichts angegeben ist, wird die Standardverbindungszeichenfolge für die Funktionen-App genutzt. |
 | systemKey  | Abfragezeichenfolge    | Der Autorisierungsschlüssel, der zum Aufrufen der API erforderlich ist. |
-| showInput  | Abfragezeichenfolge    | Dieser Parameter ist optional. Bei Festlegung auf `false` wird die Ausführungseingabe nicht die Antwortnutzlast aufgenommen.|
-| showHistory| Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn diese Option auf `true` gesetzt ist, wird der Ausführungsverlauf der Orchestrierung in die Antwortnutzlast aufgenommen.|
-| showHistoryOutput| Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn diese Option auf `true` gesetzt ist, wird die Aktivitätsausgabe in den Ausführungsverlauf der Orchestrierung aufgenommen.|
+| showInput  | Abfragezeichenfolge    | Optionaler Parameter; nur für Einzelinstanzanforderung. Bei Festlegung auf `false` wird die Ausführungseingabe nicht die Antwortnutzlast aufgenommen.|
+| showHistory| Abfragezeichenfolge    | Optionaler Parameter; nur für Einzelinstanzanforderung. Wenn diese Option auf `true` gesetzt ist, wird der Ausführungsverlauf der Orchestrierung in die Antwortnutzlast aufgenommen.|
+| showHistoryOutput| Abfragezeichenfolge    | Optionaler Parameter; nur für Einzelinstanzanforderung. Wenn diese Option auf `true` gesetzt ist, wird die Aktivitätsausgabe in den Ausführungsverlauf der Orchestrierung aufgenommen.|
 | createdTimeFrom  | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | createdTimeTo    | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | runtimeStatus    | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Thema [Abfragen von Instanzen](durable-functions-instance-management.md). |
@@ -146,7 +146,7 @@ Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-O
 | output          | JSON      | Die JSON-Ausgabe der Instanz. Dieses Feld ist `null`, wenn die Instanz nicht den Status „Completed“ (Abgeschlossen) aufweist. |
 | createdTime     | Zeichenfolge    | Der Zeitpunkt, zu dem die Instanz erstellt wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
 | lastUpdatedTime | Zeichenfolge    | Der Zeitpunkt, zu dem die Instanz zuletzt persistent gemacht wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
-| historyEvents   | JSON      | Ein JSON-Array, das den Ausführungsverlauf der Orchestrierung enthält. Dieses Feld ist `null`, sofern der Abfragezeichenfolgen-Parameter `showHistory` auf `true` festgelegt ist.  |
+| historyEvents   | JSON      | Ein JSON-Array, das den Ausführungsverlauf der Orchestrierung enthält. Dieses Feld ist `null`, sofern der Abfragezeichenfolgen-Parameter `showHistory` auf `true` festgelegt ist. |
 
 Hier sehen Sie ein Beispiel für eine Antwortnutzlast mit dem Ausführungsverlauf der Orchestrierung und den Aktivitätsausgaben (zur besseren Lesbarkeit formatiert):
 

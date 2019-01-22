@@ -3,48 +3,54 @@ title: Verwalten von IoT Central über das Azure-Portal | Microsoft-Dokumentatio
 description: Verwalten Sie IoT Central über das Azure-Portal.
 services: iot-central
 ms.service: iot-central
-author: tbhagwat3
-ms.author: tanmayb
-ms.date: 08/30/2018
+author: dominicbetts
+ms.author: dobett
+ms.date: 01/14/2019
 ms.topic: conceptual
-manager: peterpr
-ms.openlocfilehash: 20b1c7500587324f6f7dbb5cc679a3603eff56bd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+manager: philmea
+ms.openlocfilehash: 89109dec83342a8f4b5962778b1803eb36656e42
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963826"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352211"
 ---
-# <a name="manage-iot-central-from-the-azure-portal"></a>Verwalten von IoT Central über das Azure-Portal 
-Zusätzlich zum Erstellen und Verwalten von IoT Central-Anwendungen über die IoT Central-Website, können Sie IoT Central auch über das Azure-Portal verwalten. Dieser Artikel führt Sie durch Ihre Möglichkeiten und die dazu erforderlichen Vorgehensweisen.
+# <a name="manage-iot-central-from-the-azure-portal"></a>Verwalten von IoT Central über das Azure-Portal
+
+Statt IoT Central-Anwendungen über die IoT Central-Seite [Anwendungs-Manager](https://aka.ms/iotcentral) zu erstellen und zu verwalten, können Sie das [Azure-Portal](https://portal.azure.com) verwenden, um Ihre Anwendungen zu verwalten.
 
 ## <a name="create-iot-central-applications"></a>Erstellen von IoT Central-Anwendungen
-Um eine neue Anwendung zu erstellen, navigieren Sie zum [Azure-Portal](https://ms.portal.azure.com), und klicken Sie im Hauptnavigationsmenü links auf "Ressource erstellen". 
+
+Um eine Anwendung zu erstellen, navigieren Sie zum [Azure-Portal](https://ms.portal.azure.com), und klicken Sie im Hauptnavigationsmenü auf der linken Seite auf **Ressource erstellen**.
 
 ![Verwaltungsportal: Navigationsmenü](media/howto-manage-iot-central-from-portal/image0.png)
 
-Geben Sie in der Suchleiste den Begriff „IoT Central“ ein.
+Geben Sie in der Suchleiste den Begriff **IoT Central** ein.
 
 ![Verwaltungsportal: Suchen](media/howto-manage-iot-central-from-portal/image0a.png)
 
-Klicken Sie in den Suchergebnissen auf die Position „IoT Central-Anwendung“.
+Klicken Sie in den Suchergebnissen auf die Position **IoT Central-Anwendung**.
 
 ![Verwaltungsportal: Suchergebnisse](media/howto-manage-iot-central-from-portal/image0b.png)
 
-Klicken Sie jetzt auf die Schaltfläche „Erstellen“, um das Formular anzuzeigen, das Sie ausfüllen müssen.
+Klicken Sie nun auf die Schaltfläche **Erstellen**.
 
 ![Verwaltungsportal: IoT Central-Ressource](media/howto-manage-iot-central-from-portal/image0c.png)
 
-Füllen Sie alle Felder im Formular aus. Dieses Formular ist ähnlich wie das Formular, das Sie ausfüllen müssen, um Anwendungen über die IoT Central-Website zu erstellen. Weitere Informationen zum Ausfüllen der einzelnen Felder finden Sie im Schnellstart [Erstellen einer IoT Central-Anwendung](quick-deploy-iot-central.md). 
+Füllen Sie alle Felder im Formular aus. Dieses Formular ist ähnlich wie das Formular, das Sie ausfüllen müssen, um Anwendungen auf der IoT Central-Seite [Anwendungs-Manager](https://aka.ms/iotcentral) zu erstellen. Weitere Informationen finden Sie unter dem Schnellstart [Erstellen einer Azure IoT Central-Anwendung](quick-deploy-iot-central.md).
 
 ![Verwaltungsportal: IoT Central-Ressource erstellen](media/howto-manage-iot-central-from-portal/image1.png)  
 
-Nachdem Sie alle Felder ausgefüllt haben, klicken Sie auf die Schaltfläche „Erstellen“.
+Nachdem Sie alle Felder ausgefüllt haben, klicken Sie auf die Schaltfläche **Erstellen**.
 
 ## <a name="manage-existing-iot-central-applications"></a>Verwalten vorhandener IoT Central-Anwendungen
-Wenn Sie bereits über eine Azure IoT Central-Anwendung verfügen, können Sie sie löschen oder aber im Azure-Portal in ein anderes Abonnement oder eine andere Ressourcengruppe verschieben. Im Azure-Portal werden keine Testanwendungen angezeigt, weil kein Abonnement diese Testversionen unterstützt.
 
-Klicken Sie zuerst im Hauptnavigationsmenü links auf "Alle Ressourcen". Geben Sie im Suchfeld den Namen Ihrer Anwendung ein, um sie in Ihrer Liste von Ressourcen zu finden. Klicken Sie dann auf die IoT Central-Anwendung, die Sie verwalten möchten.
+Wenn Sie bereits über eine Azure IoT Central-Anwendung verfügen, können Sie sie löschen oder aber im Azure-Portal in ein anderes Abonnement oder eine andere Ressourcengruppe verschieben.
+
+> [!NOTE]
+> Testversionsanwendungen werden im Azure-Portal nicht angezeigt, da sie nicht mit Ihrem Abonnement verknüpft sind.
+
+Klicken Sie zuerst im Hauptnavigationsmenü auf der linken Seite auf **Alle Ressourcen**. Geben Sie in das Suchfeld den Namen Ihrer Anwendung ein, um sie in Ihrer Liste von Ressourcen zu finden. Klicken Sie dann auf die IoT Central-Anwendung, die Sie verwalten möchten.
 
 ![Verwaltungsportal: Ressourcenverwaltung](media/howto-manage-iot-central-from-portal/image2.png)
 
@@ -52,7 +58,7 @@ Um zur Anwendung zu navigieren, klicken Sie auf die URL der IoT Central-Anwendun
 
 ![Verwaltungsportal: Ressourcenverwaltung](media/howto-manage-iot-central-from-portal/image3.png)
 
-Um die Anwendung in eine andere Ressourcengruppe zu verschieben, klicken Sie neben der Gruppe auf den Link **Ändern**. Wählen Sie in dem daraufhin angezeigten Dialogfeld die Ressourcengruppe aus, in die Sie diese Anwendung migrieren möchten.
+Um die Anwendung in eine andere Ressourcengruppe zu verschieben, klicken Sie auf **Ändern** neben der Ressourcengruppe. Wählen Sie auf der Seite **Ressourcen verschieben** die Ressourcengruppe aus, in die Sie diese Anwendung migrieren möchten.
 
 ![Verwaltungsportal: Ressourcenverwaltung](media/howto-manage-iot-central-from-portal/image4.png)
 

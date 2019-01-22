@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: fba62a7838ad4b8f349e233eef5e8d82450f1453
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949018"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320224"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
 
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [Azure-CLI](data-lake-store-get-started-cli-2.0.md)
+> * [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
    * **Name**: Geben Sie einen eindeutigen Namen für das Data Lake Storage Gen1-Konto ein.
    * **Abonnement**. Wählen Sie das Abonnement aus, unter dem Sie ein neues Data Lake Storage Gen1-Konto erstellen möchten.
    * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder wählen Sie die Option **Neu erstellen**, um eine Ressourcengruppe zu erstellen. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Anwendung enthält. Weitere Informationen finden Sie unter [Ressourcengruppen in Azure](../azure-resource-manager/resource-group-overview.md#resource-groups).
-   * **Speicherort**: Wählen Sie einen Speicherort aus, an dem Sie das Data Lake Storage Gen1-Konto erstellen möchten.
+   * **Standort**: Wählen Sie einen Standort aus, an dem Sie das Data Lake Storage Gen1-Konto erstellen möchten.
    * **Verschlüsselungseinstellungen**. Drei Optionen stehen zur Verfügung:
      
      * **Verschlüsselung nicht aktivieren**.

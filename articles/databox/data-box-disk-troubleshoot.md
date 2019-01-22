@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 13e42ae9b25c769a468a8c9839fd1aaf0abf2787
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191699"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213143"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Behandeln von Problemen mit Azure Data Box Disk
 
@@ -96,12 +96,11 @@ In diesem Abschnitt werden einige der wichtigsten Probleme bei der Bereitstellun
 
 Dies kann auf ein fehlerhaftes Dateisystem zurückzuführen sein. 
 
-- Das erneute Einbinden eines Laufwerks mit Lesezugriff funktioniert nicht mit Data Box Disk-Datenträgern. Dieses Szenario wird mit Laufwerken, die mit dislocker entschlüsselt werden, nicht unterstützt. 
-- Ein erneutes Einbinden mit Lese-/Schreibzugriff ist nicht möglich. Möglicherweise haben Sie das Gerät mithilfe des folgenden Befehls erfolgreich erneut eingebunden: 
+Das erneute Einbinden eines Laufwerks mit Lese-/Schreibzugriff funktioniert nicht mit Data Box Disk-Datenträgern. Dieses Szenario wird mit Laufwerken, die mit dislocker entschlüsselt werden, nicht unterstützt. Möglicherweise haben Sie das Gerät mithilfe des folgenden Befehls erfolgreich erneut eingebunden: 
 
     `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
 
-   Das erneute Einbinden war zwar erfolgreich, die Daten werden jedoch nicht beibehalten.
+Das erneute Einbinden war zwar erfolgreich, die Daten werden jedoch nicht beibehalten.
 
 **Lösung**
 
@@ -125,11 +124,11 @@ Wenn Sie feststellen, dass nach dem Aufheben der Einbindung auf dem Laufwerk kei
  
 Wenn dies der Fall ist, finden Sie weitere Informationen in der Lösung für Probleme durch [schreibgeschützt eingebundene Laufwerke](#issue-drive-getting-mounted-as-read-only).
 
-Ist das nicht der Fall, [laden Sie Diagnoseprotokolle](#download-diagnostic-logs) von Ihrem System herunter, und [wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md).
+Wenn dies nicht der Fall war, kopieren Sie die Protokolle aus dem Ordner, in dem sich das Data Box Disk-Tool zum Entsperren befindet, und [wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="deployment-issues-for-windows"></a>Bereitstellungsprobleme unter Windows
 
-In diesem Abschnitt werden einige der wichtigsten Probleme bei der Bereitstellung von Data Box Disk unter Verwendung eines Linux-Clients zum Kopieren von Daten beschrieben.
+In diesem Abschnitt werden einige der wichtigsten Probleme beschrieben, die bei der Bereitstellung von Data Box Disk auftreten können, wenn ein Windows-Client zum Kopieren von Daten verwendet wird.
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problem: Laufwerk von BitLocker konnte nicht entsperrt werden.
  
@@ -139,7 +138,7 @@ Sie haben das Kennwort im BitLocker-Dialogfeld verwendet und versuchen, den Date
 
 **Lösung**
 
-Um die Data Box Disk-Datenträger zu entsperren, müssen Sie das Data Box Disk-Entsperrtool verwenden und das Kennwort aus dem Azure-Portal angeben.
+Um die Data Box Disk-Datenträger zu entsperren, müssen Sie das Data Box Disk-Entsperrtool verwenden und das Kennwort aus dem Azure-Portal angeben. Weitere Informationen finden Sie unter [Tutorial: Entpacken, Verbinden und Entsperren von Azure Data Box Disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problem: Einige Volumes konnten nicht entsperrt oder überprüft werden. Wenden Sie sich an den Microsoft Support.
  
@@ -155,7 +154,7 @@ Dies deutet darauf hin, dass wahrscheinlich die geeignete Version von Windows Po
 
 Sie können [Windows PowerShell v5.0](https://www.microsoft.com/download/details.aspx?id=54616) installieren und den Vorgang wiederholen.
  
-Wenn Sie die Volumes weiterhin nicht entsperren können [wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md).
+Wenn es Ihnen weiterhin nicht möglich ist, die Volumes zu entsperren, kopieren Sie die Protokolle aus dem Ordner, in dem sich das Data Box Disk-Tool zum Entsperren befindet, und [wenden Sie sich an den Microsoft-Support](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

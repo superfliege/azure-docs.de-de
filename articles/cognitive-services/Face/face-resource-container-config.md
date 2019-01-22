@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725053"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359441"
 ---
 # <a name="configure-containers"></a>Konfigurieren von Containern
 
@@ -116,7 +116,7 @@ Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschl
   Der Container für die Gesichtserkennung verwendet Azure Storage und Azure Cosmos DB, um diese vier Datentypen auf permanente Speicher zu verteilen. Blob- und Warteschlangendaten werden durch Azure Storage verarbeitet. Meta- und Cachedaten werden von Azure Cosmos DB verarbeitet. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, werden sämtliche gespeicherte Daten für den betreffenden Container in Azure Storage und Azure Cosmos DB gespeichert.  
   Für die Ressourcen, die beim Azure-Speicherszenario verwendet werden, gelten die folgenden zusätzlichen Anforderungen:
   * Die Azure Storage-Ressource muss den Kontotyp StorageV2 verwenden.
-  * Die Azure Cosmos DB-Ressource muss die Azure Cosmos DB für MongoDB-API verwenden.
+  * Die Azure Cosmos DB-Ressource muss die Azure Cosmos DB-API für MongoDB verwenden.
 
 Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vom `Storage`-Objekt unter dem Konfigurationsabschnitt `CloudAI` verwaltet. Die folgenden Konfigurationseinstellungen sind im `Storage`-Objekt verfügbar:
 

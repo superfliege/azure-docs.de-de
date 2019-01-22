@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: 522f1cff2d735081daecc8be6384badcd378fd75
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 547291fa5c4a49adff7a080db985388ef152d0b8
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599585"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319782"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Grundlegendes zur Verwendung einer LUIS-Version
 
-Versionen in LUIS sind mit den aus der herkömmlichen Programmierung bekannten Versionen vergleichbar. Jede Version ist eine Momentaufnahme der App. Bevor Sie Änderungen an der App vornehmen, erstellen Sie eine neue Version. Es ist einfacher, zur vorherigen Version der App zurückzukehren, als die Absicht und die Äußerungen einer App umständlich auf einen früheren Zustand zurückzusetzen. 
+Versionen in LUIS sind mit den aus der herkömmlichen Programmierung bekannten Versionen vergleichbar. Jede Version ist eine Momentaufnahme der App. Bevor Sie Änderungen an der App vornehmen, erstellen Sie eine neue Version. Es ist einfacher, zur identischen vorherigen Version zurückzukehren, als Absichten und Äußerungen zu entfernen, um einen früheren Zustand zu erhalten.
 
 Mithilfe von [Versionen](luis-how-to-manage-versions.md) können Sie unterschiedliche Modelle derselben App erstellen. 
 

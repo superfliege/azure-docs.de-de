@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407965"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352358"
 ---
 # <a name="using-a-cloud-dvr"></a>Verwenden eines Cloud-DVR
 
@@ -35,7 +35,10 @@ Jedem **LiveOutput**-Objekt ist ein **Medienobjekt** zugeordnet, das zum Aufzeic
 Ein **LiveEvent** unterstützt bis zu drei gleichzeitig ausgeführte **LiveOutput**-Objekte, sodass Sie maximal 3 Aufzeichnungen/Archive aus einem Livestream erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Angenommen, Sie müssen rund um die Uhr einen linearen Livefeed senden. Sie möchten jedoch den ganzen Tag über „Aufzeichnungen“ der unterschiedlichen Programme erstellen, die Sie Ihren Kunden auf Abruf zur Nachbetrachtung anbieten können. Für dieses Szenario erstellen Sie zunächst einen primären LiveOutput mit einem kurzen Archivfenster von maximal einer Stunde. Dies ist der primäre Livestream, in den sich die Zuschauer einschalten können. Sie erstellen einen **StreamingLocator** für diesen **LiveOutput** und veröffentlichen ihn als „Livefeed“ in Ihrer Anwendung oder auf Ihrer Website. Während das **LiveEvent** ausgeführt wird, können Sie programmgesteuert einen zweiten parallelen **LiveOutput** zu Beginn eines Programms erstellen (oder 5 Minuten früher, um Material zum späteren Schneiden bereitzustellen). Dieser zweite **LiveOutput** kann 5 Minuten nach Programmende gelöscht werden. Mit diesem zweiten **Medienobjekt** können Sie einen neuen **StreamingLocator** erstellen, um dieses Programm als On-Demand-Medienobjekt in Ihrem Anwendungskatalog bereitzustellen. Sie können diesen Vorgang für andere Programmgrenzen oder für Highlights, die Sie als On-Demand-Videos freischalten möchten, mehrfach wiederholen, während der „Livefeed“ für den ersten **LiveOutput** weiterhin den linearen Feed sendet. 
 
 > [!NOTE]
-> Ein **LiveOutput** wird bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie den **LiveOutput** löschen, werden das zugrunde liegende **Medienobjekt** und sein Inhalt nicht gelöscht.  
+> **LiveOutput** wird bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie den **LiveOutput** löschen, werden das zugrunde liegende **Medienobjekt** und sein Inhalt nicht gelöscht. 
+>
+> Wenn Sie **Streaminglocator**s im Medienobjekt für den **LiveOutput** veröffentlicht haben, bleibt das Ereignis (bis zu der DVR-Fensterlänge) weiterhin sichtbar bis zum Endzeitpunkt des **Streaminglocator**s oder bis Sie den Locator löschen, je nachdem, welcher Fall zuerst eintritt.   
+  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

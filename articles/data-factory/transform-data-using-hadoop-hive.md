@@ -8,15 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 6dc702b4bcffc0d1dec299093aa05ba480e9bbf8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019978"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321332"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop Hive-Aktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,17 +56,18 @@ Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst de
 }
 ```
 ## <a name="syntax-details"></a>Syntaxdetails
-| Eigenschaft            | BESCHREIBUNG                              | Erforderlich |
-| ------------------- | ---------------------------------------- | -------- |
-| name                | Der Name der Aktivität                     | JA      |
-| Beschreibung         | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein        |
-| type                | Für die Hive-Aktivität ist der Aktivitätstyp „HDInsightHive“. | JA      |
+| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich |
+| ------------------- | ------------------------------------------------------------ | -------- |
+| name                | Der Name der Aktivität                                         | JA      |
+| Beschreibung         | Ein Text, der beschreibt, wofür die Aktivität verwendet wird.                | Nein        |
+| type                | Für die Hive-Aktivität ist der Aktivitätstyp „HDInsightHive“.        | JA      |
 | linkedServiceName   | Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | JA      |
 | scriptLinkedService | Verweis auf einen verknüpften Azure Storage-Dienst, der zum Speichern des auszuführenden Hive-Skripts verwendet wird. Wenn Sie diesen verknüpften Dienst nicht angeben, wird der im verknüpften HDInsight-Dienst definierte verknüpfte Azure Storage-Dienst genutzt. | Nein        |
 | scriptPath          | Geben Sie den Pfad der Skriptdatei an, die im Azure Storage-Speicher gespeichert ist, auf den „scriptLinkedService“ verweist. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. | JA      |
-| getDebugInfo        | Gibt an, ob die Protokolldateien in den Azure Storage-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von „scriptLinkedService“ angegeben wird. Zulässige Werte: „Keine“, „Immer“ oder „Fehler“ Standardwert: None (Keine): | Nein        |
+| getDebugInfo        | Gibt an, ob die Protokolldateien in den Azure Storage-Speicher kopiert werden, der vom HDInsight-Cluster verwendet (oder) von „scriptLinkedService“ angegeben wird. Zulässige Werte: „None“, „Always“ oder „Failure“. Standardwert: None (Keine): | Nein        |
 | arguments           | Gibt ein Array von Argumenten für einen Hadoop-Auftrag an. Die Argumente werden als Befehlszeilenargumente an jeden Vorgang übergeben. | Nein        |
 | defines             | Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Hive-Skripts an. | Nein        |
+| queryTimeout        | Abfragetimeoutwert (in Minuten).  Zutreffend, wenn der HDInsight-Cluster mit dem Enterprise-Sicherheitspaket versehen ist. | Nein        |
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden: 

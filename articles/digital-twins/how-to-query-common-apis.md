@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 0112853bf36c6b7b594400d303234d204b2ea24a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109355"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198642"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Gewusst wie: Abfragen von Azure Digital Twins-APIs für allgemeine Aufgaben
 
@@ -26,7 +26,7 @@ Dieser Artikel zeigt Abfragemuster, die Ihnen helfen, allgemeine Szenarien für 
 
 Dieser Abschnitt zeigt Beispiele für Abfragen zum Abrufen von Informationen zu den von Ihnen bereitgestellten Räumen. Stellen Sie authentifizierte GET HTTP-Anforderungen mit den Beispielabfragen, und ersetzen Sie die Platzhalter durch Werte aus Ihrem Setup. 
 
-- Rufen Sie Stammknoten ab.
+- Rufen Sie Räume ab, die Stammknoten sind.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
@@ -38,7 +38,7 @@ Dieser Abschnitt zeigt Beispiele für Abfragen zum Abrufen von Informationen zu 
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Rufen Sie Räume ab, deren übergeordnetes Element die angegebene Raum-ID ist, und beziehen Sie Abhängigkeiten ein. 
+- Rufen Sie Räume und deren Geräte-/Sensorinformationen ab, deren übergeordnetes Element der angegebenen Raum-ID entspricht und die sich auf den Ebenen zwei bis fünf [relativ zum angegebenen Raum](how-to-navigate-apis.md#api-navigation) befinden. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
@@ -91,7 +91,7 @@ Dieser Abschnitt zeigt einige Abfragen, um weitere Informationen zu Rollen und i
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-device-management"></a>Abfragen für die Geräteverwaltung
+## <a name="queries-for-devices"></a>Abfragen für Geräte
 
 Dieser Abschnitt zeigt einige Beispiele, wie Sie die Verwaltungs-APIs verwenden können, um spezifische Informationen über Ihre Geräte zu erhalten. Alle API-Aufrufe müssen authentifizierte GET HTTP-Anforderungen sein.
 
@@ -167,7 +167,7 @@ Dieser Abschnitt zeigt einige Beispiele, wie Sie die Verwaltungs-APIs verwenden 
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Rufen Sie die IoT Hub-Verbindungszeichenfolge für ein bestimmtes Gerät ab.
+- Rufen Sie die IoT Hub-Geräte-Verbindungszeichenfolge für Ihr Gerät ab.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString

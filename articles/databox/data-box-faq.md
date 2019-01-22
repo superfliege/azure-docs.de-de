@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/27/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: e03d913e1887bceb9267207e3a9abea93ab6d000
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568029"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359407"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -86,7 +86,7 @@ A. Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftra
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>F: Wie entsperre ich die Data Box? 
-A.  Navigieren Sie im Azure-Portal zu Ihrem Data Box-Auftrag und dann zu **Gerätedetails**. Kopieren Sie das Kennwort zum Entsperren. Melden Sie sich mit diesem Kennwort auf der lokalen Webbenutzeroberfläche bei Ihrer Data Box an. Weitere Informationen finden Sie in unter [Tutorial: Verkabeln und Herstellen einer Verbindung mit Data Box](data-box-deploy-set-up.md).
+A.  Navigieren Sie im Azure-Portal zu Ihrem Data Box-Auftrag und dann zu **Gerätedetails**. Kopieren Sie das Kennwort zum Entsperren. Melden Sie sich mit diesem Kennwort auf der lokalen Webbenutzeroberfläche bei Ihrer Data Box an. Weitere Informationen finden Sie unter [Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box](data-box-deploy-set-up.md).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>F: Kann ich einen Linux-Hostcomputer verwenden, um eine Verbindung herzustellen und die Daten auf die Data Box zu kopieren?
 A.  Ja. Sie können mit Data Box eine Verbindung mit SMB- und NFS-Clients herstellen. Weitere Informationen finden Sie in der Liste mit den [unterstützten Betriebssystemen](data-box-system-requirements.md) für Ihren Hostcomputer.
@@ -95,7 +95,7 @@ A.  Ja. Sie können mit Data Box eine Verbindung mit SMB- und NFS-Clients herste
 A.  Sie können den Auftrag nur stornieren, wenn die Data Box bestellt, aber der Auftrag noch nicht bearbeitet wurde. Sobald der Data Box-Auftrag bearbeitet wurde, können Sie ihn nicht mehr stornieren. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>F: Kann ich eine Data Box gleichzeitig an mehrere Hostcomputer anschließen, um Daten zu übertragen?
-A. Ja. Mehrere Hostcomputer können sich mit der Data Box verbinden, um Daten zu übertragen, und mehrere Kopieraufträge können parallel erfolgen. Weitere Informationen finden Sie unter [Tutorial: Kopieren von Daten in Azure Data Box](data-box-deploy-copy-data.md).
+A. Ja. Mehrere Hostcomputer können sich mit der Data Box verbinden, um Daten zu übertragen, und mehrere Kopieraufträge können parallel erfolgen. Weitere Informationen finden Sie unter [Tutorial: Kopieren von Daten auf Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -114,6 +114,9 @@ A. Wenn die LED zur Anzeige von Systemfehlern leuchtet, bedeutet dies, dass Ihr 
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>F: Ich kann im Azure-Portal nicht auf das Kennwort zum Entsperren der Data Box zugreifen. Was könnte der Grund sein?
 A. Wenn Sie im Azure-Portal nicht auf das Entsperrkennwort zugreifen können, überprüfen Sie die Berechtigungen in Ihrem Abonnement und Speicherkonto. Vergewissern Sie sich, dass Sie auf Ressourcengruppenebene über die Berechtigung „Mitwirkender“ oder „Besitzer“ verfügen. Falls nicht, benötigen Sie mindestens die Berechtigung des Data Box-Bedieners, um die Anmeldeinformationen für den Zugriff einzusehen.
+
+### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>F: Wird die Portkanalkonfiguration in Data Box unterstützt? Wie sieht es mit Multipfad-E/A aus?
+A. Die Portkanalkonfiguration, die Konfiguration von Multipfad-E/A (Multipath IO, MPIO) und die vLAN-Konfiguration werden in Data Box nicht unterstützt.
 
 ## <a name="track-status"></a>Nachverfolgen des Status
 
@@ -142,12 +145,12 @@ A.  Wenn Sie einen SMB-Client verwenden, können Sie ein SMB-Kopiertool wie Robo
 
 Wenn Sie einen NFS-Client nutzen, können Sie [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) oder [Ultracopier](https://ultracopier.first-world.info/) verwenden. 
 
-Weitere Informationen finden Sie unter [Tutorial: Kopieren von Daten in Azure Data Box](data-box-deploy-copy-data.md).
+Weitere Informationen finden Sie unter [Tutorial: Kopieren von Daten auf Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>F: Gibt es Tipps zur Beschleunigung des Datenkopiervorgangs?
 A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 
-- Nutzen Sie mehrere Datenströme zum Kopieren von Daten. Verwenden Sie bei Robocopy beispielsweise die Option für Multithreading. Weitere Informationen zu den genauen Befehlen, die jeweils verwendet werden, finden Sie unter [Tutorial: Kopieren von Daten in Azure Data Box](data-box-deploy-copy-data.md).
+- Nutzen Sie mehrere Datenströme zum Kopieren von Daten. Verwenden Sie bei Robocopy beispielsweise die Option für Multithreading. Weitere Informationen zu den genauen Befehlen, die jeweils verwendet werden, finden Sie unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-deploy-copy-data.md).
 - Verwenden Sie mehrere Sitzungen.
 - Stellen Sie sicher, dass sich die Daten lokal auf dem Computer befinden, an den die Data Box angeschlossen ist, anstatt den Kopiervorgang über die Netzwerkfreigabe durchzuführen (um Beeinträchtigungen aufgrund der Netzwerkgeschwindigkeit zu vermeiden).
 - Erstellen Sie Benchmarkwerte zur Leistung des Computers, der zum Kopieren der Daten verwendet wird. Laden Sie das [Bluestop-Tool FIO](https://bluestop.org/fio/) herunter, um Benchmarkwerte zur Leistung der Serverhardware zu erhalten.
@@ -223,17 +226,17 @@ A.  Der Azure Data Box-Dienst stellt nativ Berichte zur Verfügung, die Sie für
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>Welche Art der Berichterstellung ist zur Unterstützung von Rückverfolgbarkeit verfügbar?
 A.  Die folgende Art der Berichterstellung ist zur Unterstützung von Rückverfolgbarkeit verfügbar:
 
-- Logistikdokumente von DHL und UPS
+- Transportlogistik von UPS
 - Protokollierung des Einschaltens und Zugriffs auf die Benutzerfreigabe
 - Manifestdatei mit CRC-64-Prüfung (Cyclic Redundancy Check) oder Prüfsumme für jede Datei, die erfolgreich in der Data Box erfasst wurde
 - Berichte zu Dateien, die nicht in das Azure Storage-Konto hochgeladen wurden
 - Bereinigung des Data Box-Geräts (gemäß NIST 800-88R1-Standards) nach Kopieren der Daten in Ihr Azure Storage-Konto
 
-### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>Stehen die Sendungsverfolgungsprotokolle des Zustelldiensts (UPS/DHL) zur Verfügung? 
+### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Stehen die Sendungsverfolgungsprotokolle des Zustelldiensts (UPS) zur Verfügung? 
 A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Data Box-Auftragsverlauf erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch direkt die Website des Zustelldiensts besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kann ich die Data Box selbst zum Azure-Rechenzentrum transportieren? 
-A.   Nein. Derzeit nimmt das Azure-Rechenzentrum die Zustellung der Data Box von Kunden oder von anderen Zustelldiensten als UPS/DHL nicht an.
+A.   Nein. Derzeit nimmt das Azure-Rechenzentrum die Zustellung der Data Box von Kunden oder anderen Zustelldiensten als UPS nicht an.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e75fa6560feb01ae912ad2040df7a8748ed0077b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714201"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246550"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -84,6 +84,14 @@ Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwen
 Die Gesamtzahl der Endpunktabrufe in Ihrem App-Dashboard wird regelmäßig aktualisiert. Die Metriken, die dem LUIS-Endpunktschlüssel im Azure-Portal zugeordnet sind, werden jedoch häufiger aktualisiert.
 
 Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich im Azure-Portal an, suchen Sie nach der Ressource, die Ihrem LUIS-Endpunktschlüssel zugeordnet ist, und öffnen Sie **Metriken**. Wählen Sie darin die Metrik **Aufrufe gesamt** aus. Wenn der Endpunktschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregierten Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
+
+### <a name="is-there-a-powershell-command-to-the-endpoint-quota"></a>Gibt es einen PowerShell-Befehl für das Endpunktkontingent?
+
+Sie können einen PowerShell-Befehl verwenden, um das Endpunktkontingent anzuzeigen:
+
+```powershell
+Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Bisher hat meine LUIS-App problemlos funktioniert. Nun werden jedoch 403-Fehlermeldungen angezeigt. Ich habe die App nicht geändert. Wie behebe ich das Problem?
 Führen Sie die Schritte in der [nächsten FAQ-Anleitung](#how-do-i-create-and-assign-a-luis-endpoint-key) durch, um einen LUIS-Endpunktschlüssel zu erstellen und ihn der App zuzuweisen. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
@@ -194,6 +202,12 @@ Wenn Sie eine LUIS-Vorlage auswählen und im Vorlagenbereich auf **Select** (Aus
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Welche LUIS-Regionen unterstützen die Bot Framework-Sprachoptimierung?
 Die [Sprachoptimierung ](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) wird nur von LUIS-Apps in der Instanz für die mittlere USA unterstützt.
+
+## <a name="api-programming-strategies"></a>Strategien für die API-Programmierung
+
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Wie kann ich programmgesteuert die LUIS-Region einer Ressource abrufen? 
+
+Verwenden Sie das LUIS-Beispiel für Regionsssuche ([find-region](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)), um programmgesteuert mit C# oder Node.Js nach einer Region zu suchen. 
 
 ## <a name="luis-service"></a>LUIS-Dienst
 

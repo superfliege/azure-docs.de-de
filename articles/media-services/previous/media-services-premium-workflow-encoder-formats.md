@@ -6,22 +6,22 @@ documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: b197fce8-3b9b-4189-8d08-486810c0426f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/15/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 337ee0edc3d6e644415b2b3f7524d829d0e3c692
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 5059e4c00fc3bcbee76f8f5a3746b4d8783d901b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246465"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359271"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow-Formate und -Codecs
+
 > [!NOTE]
 > Fragen zu Encoder Premium senden Sie per E-Mail an mepd@microsoft.com.
 > 
@@ -38,9 +38,11 @@ Dieses Dokument enthält eine Liste von Eingabe- und Ausgabedateiformaten sowie 
 **Medienencoder-Premium-Workflow** unterstützt Untertitel, wie in [diesem](#closed_captioning) Abschnitt beschrieben. 
 
 ## <a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
+
 Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Medienprozessor als Eingabe unterstützt.
 
 ### <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
+
 * Adobe® Flash® F4V
 * MXF/SMPTE 377M
 * GXF
@@ -51,6 +53,7 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 * AVI (unkomprimiert, 8-Bit/10-Bit)
 
 ### <a name="input-video-codecs"></a>Codecs für Videoeingang
+
 * AVC 8-Bit/10-Bit, bis zu 4:2:2, einschließlich AVCIntra
 * Avid DNxHD (in MXF)
 * DVCPro/DVCProHD (in MXF)
@@ -61,6 +64,7 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 * Windows Media Video/VC-1
 
 ### <a name="input-audio-codecs"></a>Codecs für Audioeingang
+
 * AES (SMPTE 331M und 302M, AES3-2003)
 * Dolby® E
 * Dolby® Digital (AC3)
@@ -71,9 +75,11 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 * WAV/PCM
 
 ## <a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
+
 Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als Ausgabe für diesen Medienprozessor unterstützt werden.
 
 ### <a name="output-containerfile-formats"></a>Ausgabecontainer/Dateiformate
+
 * Adobe® Flash® F4V
 * MXF (OP1a, XDCAM und AS02)
 * DPP (einschließlich AS11)
@@ -85,6 +91,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 * MPEG-TS 
 
 ### <a name="output-video-codecs"></a>Codecs für Videoausgang
+
 * AVC (H.264; 8-Bit; bis High Profile, Level 5.2; 4K Ultra HD; AVC Intra)
 * Avid DNxHD (in MXF)
 * DVCPro/DVCProHD (in MXF)
@@ -92,8 +99,13 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 * MPEG-1
 * Windows Media Video/VC-1
 * Erstellung von JPEG-Miniaturansichten
+* HEVC (H.265; 8 Bit und 10 Bit, Main- und Main10-Profil)
+
+  Unterstützung für HDR 10 ist in bestimmten Szenarien verfügbar, wenden Sie sich an mepd@microsoft.com, wenn Sie weitere Informationen wünschen
+
 
 ### <a name="output-audio-codecs"></a>Codecs für Audioausgabe
+
 * AES (SMPTE 331M und 302M, AES3-2003)
 * Dolby® Digital (AC3)
 * Dolby® Digital Plus (E-AC3) bis 7.1
@@ -106,6 +118,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 >Wenn Sie in Dolby® Digital (AC3) codieren, kann die Ausgabe nur in eine ISO MP4-Datei geschrieben werden.
 
 ## <a id="closed_captioning"></a>Unterstützung für Untertitel
+
 Bei der Erfassung unterstützt **Medienencoder-Premium-Workflow** Folgendes:
 
 1. SCC-Dateien
@@ -122,14 +135,18 @@ Bei der Ausgabe sind die folgenden Optionen verfügbar:
 5. SRT-Untertiteldatei
 6. DVB-Untertitelstreams
 
-Hinweis: Nicht alle der oben genannten Ausgabeformate werden zur Übermittlung per Streaming in Azure Media Services unterstützt.
+> [!NOTE]
+> Nicht alle der oben genannten Ausgabeformate werden zur Übermittlung per Streaming in Azure Media Services unterstützt.
 
 ## <a name="known-issues"></a>Bekannte Probleme
+
 Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei. 
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

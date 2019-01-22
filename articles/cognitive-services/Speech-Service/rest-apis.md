@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338889"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330671"
 ---
 # <a name="speech-service-rest-apis"></a>REST-APIs des Speech-Diensts
 
@@ -272,7 +272,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Ihr Abonnementschlüssel des Speech-Diensts. | Entweder dieser Header oder `Authorization` ist erforderlich. |
 | `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Entweder dieser Header oder `Ocp-Apim-Subscription-Key` ist erforderlich. |
-| `Content-type` | Beschreibt das Format und den Codec der bereitgestellten Audiodaten. Zulässige Werte sind `audio/wav; codec=audio/pcm; samplerate=16000` und `audio/ogg; codec=audio/pcm; samplerate=16000`. | Erforderlich |
+| `Content-type` | Beschreibt das Format und den Codec der bereitgestellten Audiodaten. Zulässige Werte sind `audio/wav; codecs=audio/pcm; samplerate=16000` und `audio/ogg; codecs=opus`. | Erforderlich |
 | `Transfer-Encoding` | Gibt an, dass segmentierte Audiodaten anstatt einer einzelnen Datei gesendet werden. Verwenden Sie diesen Header nur, wenn Sie Audiodaten segmentieren. | Optional |
 | `Expect` | Wenn Sie segmentierte Übertragung verwenden, senden Sie `Expect: 100-continue`. Der Speech-Dienst bestätigt die ursprüngliche Anforderung und wartet auf weitere Daten.| Erforderlich, wenn segmentierte Audiodaten gesendet werden. |
 | `Accept` | Wenn angegeben, muss der Wert `application/json` entsprechen. Der Speech-Dienst übermittelt Ergebnisse im JSON-Format. Einige Webanforderungsframeworks stellen einen inkompatiblen Standardwert bereit, wenn Sie keinen Wert angeben. Deswegen wird empfohlen, `Accept` immer zu verwenden. | Optional, wird jedoch empfohlen. |
@@ -296,7 +296,7 @@ Hier sehen Sie eine übliche HTTP-Anforderung. Das folgende Beispiel enthält de
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codecs=audio/pcm; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -330,7 +330,7 @@ Dieses Codebeispiel zeigt, wie Sie Audio in Blöcken senden. Nur der erste Block
     request.Method = "POST";
     request.ProtocolVersion = HttpVersion.Version11;
     request.Host = host;
-    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
     request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
     request.AllowWriteStreamBuffering = false;
 
@@ -469,7 +469,10 @@ Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung al
 
 ### <a name="request-body"></a>Anforderungstext
 
-Der Text wird als HTTP-`POST`-Anforderungstext gesendet. Es gibt zwei gültige Formate: Nur-Text (ASCII oder UTF-8) oder [Speech Synthesis Markup Language](speech-synthesis-markup.md) (SSML) (UTF-8). Nur-Text-Anforderungen verwenden die Standardstimme und -sprache des Speech-Diensts. Mit SSML können Sie die Stimme und die Sprache angeben.
+Der Text jeder `POST`-Anforderung wird als [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) gesendet. SSML ermöglicht es Ihnen, die Stimme und Sprache der synthetisierten Sprachausgabe auszuwählen, die vom Text-zu-Sprache-Dienst zurückgegeben wird. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+
+> [!NOTE]
+> Wenn Sie eine benutzerdefinierte Stimme verwenden, kann der Text der Anforderung als Nur-Text (ASCII oder UTF-8) gesendet werden.
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 

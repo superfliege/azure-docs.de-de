@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 26bccc07e402288db696bce8a2371cab9ef7aff9
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055080"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320089"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -114,9 +114,6 @@ Der [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/
 ## <a name="device-identity"></a>Geräteidentität
 Die Geräteidentität ist der eindeutige Bezeichner, der jedem Gerät zugewiesen wird, das in der [Identitätsregistrierung](#identity-registry) registriert ist.
 
-## <a name="module-identity"></a>Modulidentität
-Bei der Modulidentität handelt es sich um den eindeutigen Bezeichner, der jedem Modul zugeordnet ist, das einem Gerät angehört. Die Modulidentität wird auch in der [Identitätsregistrierung](#identity-registry) registriert.
-
 ## <a name="device-management"></a>Geräteverwaltung
 Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltung der Geräte in Ihrer IoT-Lösung zugeordnet ist, z.B. Planen, Bereitstellen, Konfigurieren, Überwachen und Ausmustern.
 
@@ -131,15 +128,6 @@ Die Gerätebereitstellung ist der Prozess des Hinzufügens der ersten [Geräteda
 
 ## <a name="device-twin"></a>Gerätezwilling
 Ein [Gerätezwilling](iot-hub-devguide-device-twins.md) ist ein JSON-Dokument, mit dem Informationen zum Gerätezustand gespeichert werden, z.B. Metadaten, Konfigurationen und Bedingungen. [IoT Hub](#iot-hub) speichert einen Gerätezwilling für jedes Gerät, das Sie für IoT Hub bereitstellen. Mit Gerätezwillingen können Sie [Gerätebedingungen](#device-condition) und Konfigurationen zwischen dem Gerät und dem Lösungs-Back-End synchronisieren. Sie können Gerätezwillinge abfragen, um bestimmte Geräte zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
-
-## <a name="module-twin"></a>Modulzwilling
-Modulzwillinge ähneln Gerätezwillingen und sind JSON-Dokumente, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. IoT Hub speichert einen Modulzwilling für jede Modulidentität, die Sie unter einer Geräteidentität in Ihrer IoT Hub-Instanz bereitstellen. Mit Modulzwillingen können Sie Modulbedingungen und Konfigurationen zwischen dem Modul und dem Lösungs-Back-End synchronisieren. Sie können Modulzwillinge abfragen, um bestimmte Module zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
-
-## <a name="twin-queries"></a>Zwillingsabfragen
-Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
-
-## <a name="twin-synchronization"></a>Zwillingssynchronisierung
-Bei der Zwillingssynchronisierung werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Geräte- oder Modulzwillingen verwendet, um die Geräte oder Module zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten oder Modulen abzurufen und im entsprechenden Zwilling zu speichern.
 
 ## <a name="direct-method"></a>Direkte Methode
 Eine [direkte Methode](iot-hub-devguide-direct-methods.md) ist eine Möglichkeit zum Auslösen einer auf einem Gerät auszuführenden Methode, indem eine API auf Ihrem IoT Hub aufgerufen wird.
@@ -190,6 +178,17 @@ Die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.c
 
 ## <a name="job"></a>Auftrag
 Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). [IoT Hub](#iot-hub) nutzt zudem Aufträge zum [Importieren und Exportieren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
+
+## <a name="modules"></a>Module
+Auf der Geräteseite können Sie mithilfe der IoT Hub-Geräte-SDKs [Module](iot-hub-devguide-module-twins.md) erstellen, die jeweils eine unabhängige Verbindung mit IoT Hub herstellen. Durch diese Funktionalität können Sie separate Namespaces für unterschiedliche Komponenten auf Ihrem Gerät verwenden.
+
+Modulidentität und Modulzwilling bieten die gleichen Funktionen wie [Geräteidentität](#device-identity) und [Gerätezwilling](#device-twin), aber mit einer höheren Granularität. Dank dieser höheren Granularität können geeignete Geräte (etwa betriebssystembasierte Geräte oder Firmwaregeräte, die mehrere Komponenten verwalten) Konfigurationen und Zustände für die einzelnen Komponenten isolieren.
+
+## <a name="module-identity"></a>Modulidentität
+Bei der Modulidentität handelt es sich um den eindeutigen Bezeichner, der jedem Modul zugeordnet ist, das einem Gerät angehört. Die Modulidentität wird auch in der [Identitätsregistrierung](#identity-registry) registriert.
+
+## <a name="module-twin"></a>Modulzwilling
+Modulzwillinge ähneln Gerätezwillingen und sind JSON-Dokumente, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. IoT Hub speichert einen Modulzwilling für jede Modulidentität, die Sie unter einer Geräteidentität in Ihrer IoT Hub-Instanz bereitstellen. Mit Modulzwillingen können Sie Modulbedingungen und Konfigurationen zwischen dem Modul und dem Lösungs-Back-End synchronisieren. Sie können Modulzwillinge abfragen, um bestimmte Module zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
@@ -256,6 +255,12 @@ Mit Geräten werden Telemetriedaten erfasst, z.B. Windgeschwindigkeit oder Tempe
 
 ## <a name="token-service"></a>Tokendienst
 Sie können einen Tokendienst verwenden, um einen Authentifizierungsmechanismus für Ihre Geräte zu implementieren. Er verwendet eine [SAS-Richtlinie](#shared-access-policy) von IoT Hub mit **DeviceConnect**-Berechtigungen, um Token mit *Gerätebereich* zu erstellen. Mit diesen Token kann ein Gerät eine Verbindung mit Ihrem IoT Hub herstellen. Ein Gerät verwendet einen benutzerdefinierten Authentifizierungsmechanismus für die Authentifizierung mit dem Tokendienst. Sofern die Authentifizierung des Geräts erfolgreich ist, stellt der Tokendienst ein SAS-Token für das Gerät bereit, mit dem auf IoT Hub zugegriffen werden kann.
+
+## <a name="twin-queries"></a>Zwillingsabfragen
+Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
+
+## <a name="twin-synchronization"></a>Zwillingssynchronisierung
+Bei der Zwillingssynchronisierung werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Geräte- oder Modulzwillingen verwendet, um die Geräte oder Module zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten oder Modulen abzurufen und im entsprechenden Zwilling zu speichern.
 
 ## <a name="x509-client-certificate"></a>X.509-Clientzertifikat
 Ein Gerät kann ein X.509-Zertifikat für die Authentifizierung beim [IoT Hub](#iot-hub) verwenden. Der Einsatz eines X.509-Zertifikats ist eine Alternative zur Verwendung eines [SAS-Tokens](#shared-access-signature).

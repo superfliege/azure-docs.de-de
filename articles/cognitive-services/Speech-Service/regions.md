@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091644"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329506"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -46,11 +46,24 @@ Das Speech SDK ist in den folgenden Regionen für **Spracherkennung** und **Übe
 
 ### <a name="intent-recognition"></a>Absichtserkennung
 
-Die **Absichtserkennung** für das Speech SDK weist die gleiche Unterstützung für Regionen wie LUIS auf. Eine vollständige Liste der verfügbaren Regionen finden Sie unter [Veröffentlichen von Regionen und Endpunkten – LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions).
+Verfügbare Regionen für **Absichtserkennung** über das Speech SDK sind die folgenden:
 
-Verfügbare Regionen für die **Absichtserkennung** über das Speech SDK finden Sie auf der [Seite mit den Regionen des Language Understanding-Diensts](/azure/cognitive-services/luis/luis-reference-regions).
+ Globale Region | Region | Speech SDK-Parameter
+ ------|-------|--------
+ Asien | Asien, Osten | `eastasia`
+ Asien | Asien, Südosten | `southeastasia`
+ Australien | Australien (Osten) | `australiaeast`
+ Europa | Nordeuropa | `northeurope`
+ Europa | Europa, Westen | `westeurope`
+ Nordamerika | USA (Ost) | `eastus`
+ Nordamerika | USA (Ost) 2 | `eastus2`
+ Nordamerika | USA Süd Mitte | `southcentralus`
+ Nordamerika | USA, Westen-Mitte | `westcentralus`
+ Nordamerika | USA (Westen) | `westus`
+ Nordamerika | USA, Westen 2 | `westus2`
+ Südamerika | Brasilien Süd | `brazilsouth`
 
-Verwenden Sie für jede aufgeführte Veröffentlichungsregion den bereitgestellten **API-Regionsnamen**. Verwenden Sie z.B. `westus` für USA (Westen).
+Dies ist eine Teilmenge der Veröffentlichungsregionen, die vom [Language Understanding Intelligent Service (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) unterstützt werden.
 
 ## <a name="rest-apis"></a>REST-APIs
 

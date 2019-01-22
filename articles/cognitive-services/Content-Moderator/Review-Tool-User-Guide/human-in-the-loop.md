@@ -1,22 +1,23 @@
 ---
-title: Computergestützte Inhaltsmoderation und Überprüfungen durch Personen in Content Moderator | Microsoft-Dokumentation
+title: Einbinden von Überprüfungen durch Personen in eine Inhaltsmoderation – Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Wie Computer und Menschen zusammen optimale Ergebnisse für die Inhaltsmoderation erzielen
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 03/16/2018
+ms.date: 01/10/2019
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7d2e87ac5353f103e654f4dcb6656916e4b271ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854219"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264732"
 ---
-# <a name="review-tool-overview"></a>Übersicht über das Prüfungstool
+# <a name="learn-about-the-review-tool"></a>Erfahren Sie mehr über das Überprüfungstool
 
 Die besten Ergebnisse werden erzielt, wenn Mensch und Computer bei der Inhaltsmoderation zusammenarbeiten. Computer ergänzen effektiv Überprüfungen durch Personen, bei denen die Vorhersagegenauigkeit in einem realen Kontext unterstützt oder verringert werden muss. Das Ergebnis ist ein hybrider Inhaltsmoderationsprozess, der besser funktioniert, als wenn Mensch oder Computer allein arbeiten würden.
 

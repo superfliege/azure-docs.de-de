@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e514f35567f4be0932c7bcc591cbd0f05cd9814
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606757"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246873"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -133,7 +133,11 @@ Azure erzwingt ein IOPS-Kontingent pro Datenträger. Diese Kontingente sind für
 
 > [!NOTE]
 > Um die Vorteile vom [SLA für VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) von Azure zu nutzen, müssen alle angefügten Datenträger vom Typ Azure Storage Premium sein, einschließlich der Basis-VHD.
->
+
+
+> [!NOTE]
+> Es wird nicht unterstützt, Hauptdatenbankdateien (Daten- und Protokolldateien) von SAP-Datenbanken auf Speicherhardware zu hosten, die sich in gemeinsam untergebrachten Drittanbieter-Datencentern neben Azure-Datencentern befindet. Für SAP-Workload wird für Daten- und Transaktionsprotokolldateien von SAP-Datenbanken nur Speicher unterstützt, der als nativer Azure-Dienst umgesetzt ist.
+> 
 
 Die Platzierung der Datenbankdateien, der Protokolldateien und der Wiederholungsdateien sowie der verwendete Azure Storage-Typ müssen durch die Anforderungen an IOPS, Latenz und Durchsatz bestimmt werden. Damit ausreichend IOPS verfügbar sind, müssen Sie möglicherweise mehrere Datenträger oder einen größeren Storage Premium-Datenträger verwenden. Falls Sie mehrere Datenträger verwenden, müssen Sie einen Softwarestripe über die Datenträger hinweg erstellen, die die Datendateien oder Protokoll-/Wiederholungsdateien enthalten. In solchen Fällen sind die IOPS- und die Datenträgerdurchsatz-SLAs der zugrunde liegenden Storage Premium-Datenträger oder der maximal erzielbare IOPS der Azure-Standardspeicherdatenträger kumulativ für das resultierende Stripeset.
 

@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 86c8e8c10811b1478ae2c853f1efef5b6b5caa83
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406327"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353140"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
@@ -45,7 +45,7 @@ August 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
 ## <a name="whats-new-for-july-2017"></a>Neuerungen im Juli 2017 
 Juli 2017 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
-*   Unterstützung einer detaillierteren Steuerung zulässiger Vorgänge mit Metadaten:
+*   Unterstützung für eine detailliertere Steuerung über zulässige Metadatenvorgänge, einschließlich:
     - Katalogadministratoren können die Fähigkeit von Benutzern, dem Katalog Tags und zugehörige Metadaten hinzuzufügen, einschränken, indem sie einen schreibgeschützten Zugriff auf den Katalog aktivieren.
     - Katalogadministratoren können die Fähigkeit der Benutzer einschränken, neue Datenquellen im Katalog zu registrieren.
     - Katalogadministratoren können die Fähigkeit der Benutzer einschränken, den Besitz von Metadaten von Datenobjekten im Katalog zu übernehmen.
@@ -153,7 +153,7 @@ Februar 2016 wurden Azure Data Catalog folgende Funktionen hinzugefügt:
 
 * Eine neu gestaltete Datenquellenauswahl im Tool zum Registrieren von Datenquellen von Azure Data Catalog. Das Tool zum Registrieren von Datenquellen wurde aktualisiert, um Ihnen das Suchen und Auswählen der von Azure Data Catalog unterstützten Datenquellen zu erleichtern.
 * Unterstützung für zehn weitere Sprachen im Azure Data Catalog-Portal und dem Tool zum Registrieren von Datenquellen. Zusätzlich zu Englisch ist Azure Data Catalog jetzt in Deutsch, Spanisch, Französisch, Italienisch, Japanisch, Koreanisch, Portugiesisch (Brasilien), Russisch, Chinesisch (vereinfacht) und Chinesisch (traditionell) verfügbar. Die in Azure Data Catalog verwendete Sprache entspricht den in Windows oder im Webbrowser des Benutzers festgelegten Spracheinstellungen.
-* Unterstützung für die Georeplikation von Azure Data Catalog-Daten für die Geschäftskontinuität und Notfallwiederherstellung. Alle Azure Data Catalog-Inhalte, einschließlich Datenquellenmetadaten und per Crowdsourcing gesammelter Kommentare, werden jetzt zwischen zwei Azure-Regionen repliziert, ohne dass für Kunden zusätzliche Kosten anfallen. Die Azure-Regionen sind vorab festgelegt, mindestens 500 Meilen voneinander entfernt und entsprechen der unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](../best-practices-availability-paired-regions.md)beschriebenen Zuordnung.
+* Unterstützung für die Georeplikation von Azure Data Catalog-Daten für die Geschäftskontinuität und Notfallwiederherstellung. Alle Azure Data Catalog-Inhalte, einschließlich Datenquellenmetadaten und per Crowdsourcing gesammelter Kommentare, werden jetzt zwischen zwei Azure-Regionen repliziert, ohne dass für Kunden zusätzliche Kosten anfallen. Die Azure-Regionen sind vorab festgelegt, mindestens 800 Kilometer voneinander entfernt und entsprechen der Zuordnung, die beschrieben ist unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 * Unterstützung der Änderung der von Azure Data Catalog verwendeten Azure-Abonnements. Administratoren von Azure Data Catalog können auf der Seite „Einstellungen“ im Azure Data Catalog-Portal zu Abrechnungszwecken ein anderes Azure-Abonnement auswählen.
 
 ## <a name="whats-new-for-january-2016"></a>Neuerungen im Januar 2016

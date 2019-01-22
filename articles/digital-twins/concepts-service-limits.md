@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 1e7b6ed7c401bed741142dfc02efc7990cf67f6e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118813"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302424"
 ---
 # <a name="public-preview-service-limits"></a>Diensteinschränkungen der öffentlichen Vorschauversion
 
@@ -35,7 +35,7 @@ In der Public Preview kann jedes Azure-Abonnement jeweils genau eine Azure Digit
 
 Der Reihe nach kann jede Azure Digital Twins-Instanz Folgendes haben:
 
-- Genau eine **IoTHub**-Ressource
+- Genau eine eingebettete **IoTHub**-Ressource, die während der Dienstbereitstellung automatisch erstellt wird.
 - Genau einen **EventHub**-Endpunkt für den Ereignistyp **DeviceMessage**
 - Bis zu drei **EventHub**-, **ServiceBus**- oder **EventGrid**-Endpunkte der Ereignistypen **SensorChange**, **SpaceChange**, **TopologyOperation** oder **UdfCustom**
 

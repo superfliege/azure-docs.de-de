@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384682"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265889"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalisieren von zeitgesteuerten Metadaten beim Livestreaming
 
@@ -89,7 +89,7 @@ Für den einfachen RTMP-Modus unterstützt Media Services eine einzelne AMF-Posi
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 Stornierung und Updates
+#### <a name="211-cancellation-and-updates"></a>2.1.1 Stornierung und Updates
 
 Nachrichten können durch das Senden mehrerer Nachrichten mit der gleichen Präsentationszeit und ID storniert oder aktualisiert werden. Ein Ereignis wird durch die Präsentationszeit und die ID eindeutig identifiziert, und die letzte für eine bestimmte Präsentationszeit empfangene Nachricht, die den Vorlaufbedingungen entspricht, ist die Nachricht, für die die Aktion ausgeführt wird. Das aktualisierte Ereignis ersetzt alle zuvor empfangenen Nachrichten. Die Vorlaufbedingung beträgt vier Sekunden. Aktionen werden für Nachrichten ausgeführt, die mindestens vier Sekunden vor der Präsentationszeit empfangen wurden.
 
@@ -157,7 +157,7 @@ Die MediaDataBox (‚mdat‘) MUSS das folgende Format aufweisen:
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 Stornierung und Updates
+### <a name="224-cancellation-and-updates"></a>2.2.4 Stornierung und Updates
 Nachrichten können durch das Senden mehrerer Nachrichten mit der gleichen Präsentationszeit und ID storniert oder aktualisiert werden.  Das Ereignis ist durch die Präsentationszeit und die ID eindeutig identifiziert. Die letzte für eine bestimmte Präsentationszeit empfangene Nachricht, die den Vorlaufbedingungen entspricht, ist die Nachricht, für die die Aktion ausgeführt wird. Die aktualisierte Nachricht ersetzt alle zuvor empfangenen Nachrichten.  Die Vorlaufbedingung beträgt vier Sekunden. Aktionen werden für Nachrichten ausgeführt, die mindestens vier Sekunden vor der Präsentationszeit empfangen wurden. 
 
 

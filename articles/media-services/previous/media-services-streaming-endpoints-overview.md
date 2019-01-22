@@ -7,20 +7,19 @@ author: Juliako
 writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240221"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359986"
 ---
 # <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht 
 
@@ -28,14 +27,20 @@ ms.locfileid: "50240221"
 
 In Microsoft Azure Media Services (AMS) stellt ein **Streamingendpunkt** einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Media Services bietet auch eine nahtlose Integration von Azure CDN. Der ausgehende Stream des StreamingEndpoint-Diensts kann ein Livestream oder ein bei Bedarf abgerufenes Video oder ein progressiver Download Ihres Medienobjekts in Ihrem Media Services-Konto sein. Jedes Azure Media Services-Konto enthält einen Standard-StreamingEndpoint. Zusätzliche StreamingEndpoints können unter dem Konto erstellt werden. Es gibt zwei Versionen von StreamingEndpoint, 1.0 und 2.0. Ab dem 10. Januar 2017 gehört zu allen neu erstellten AMS-Konten **standardmäßig** StreamingEndpoint in Version 2.0. Zusätzliche Streamingendpunkte, die Sie diesem Konto hinzufügen, haben auch die Version 2.0. Diese Änderung hat keine Auswirkung auf vorhandene Konten. Vorhandenen Streamingendpunkte haben die Version 1.0 und können auf Version 2.0 aktualisiert werden. Durch diese Änderung ergeben sich Änderungen am Verhalten, an der Abrechnung und an Features (weitere Informationen finden Sie im nachstehenden Abschnitt **Streamingtypen und -versionen**).
 
-Darüber wurden in der (im Januar 2017 veröffentlichten) Azure Media Services-Version 2.15 der Entität „Streamingendpunkt“ die folgenden Eigenschaften hinzugefügt: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime** und **StreamingEndpointVersion**. Eine detaillierte Übersicht über diese Eigenschaften finden Sie [hier](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Mit Azure Media Services wurden der Entität „Streamingendpunkt“ folgende Eigenschaften hinzugefügt: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Eine ausführliche Übersicht über diese Eigenschaften finden Sie [hier](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Beim Erstellen eines Azure Media Services-Kontos wird ein Standard-Streamingendpunkt im Zustand **Beendet** erstellt. Der Standard-Streamingendpunkt kann nicht gelöscht werden. Abhängig von der Verfügbarkeit von Azure CDN in der Zielregion bietet der neu erstellte Standard-Streamingendpunkt standardmäßig eine Integration mit dem CDN-Anbieter „StandardVerizon“. 
-
->[!NOTE]
->Vor dem Starten des Streamingendpunkts kann die Azure CDN-Integration deaktiviert werden.
+                
+> [!NOTE]
+> Vor dem Starten des Streamingendpunkts kann die Azure CDN-Integration deaktiviert werden. Der `hostname` und die Streaming-URL ändern sich nicht, und zwar unabhängig davon, ob Sie CDN aktivieren oder nicht.
 
 Dieses Thema bietet einen Überblick über die wichtigsten Funktionen, die von Streamingendpunkten bereitgestellt werden.
+
+## <a name="naming-conventions"></a>Benennungskonventionen
+
+Für den Standardendpunkt: `{AccountName}.streaming.mediaservices.windows.net`
+
+Für alle zusätzlichen Endpunkte: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Streamingtypen und -versionen
 

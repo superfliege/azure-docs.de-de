@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3f13cb2626394d16a127b172bb69c4ab88121cdb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017700"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352528"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -76,7 +76,7 @@ In der folgenden exemplarischen Vorgehensweise wird die SQL Server-Aktivität in
 2. Erstellen Sie die folgende **gespeicherte Prozedur**, die Daten in **sampletable** einfügt.
 
     ```SQL
-    CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+    CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
     AS
 
     BEGIN
@@ -108,7 +108,7 @@ In der folgenden exemplarischen Vorgehensweise wird die SQL Server-Aktivität in
    ![Data Factory-Startseite](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Erstellen eines mit Azure SQL verknüpften Diensts
-Nachdem Sie die Data Factory erstellt haben, können Sie einen mit Azure SQL verknüpften Dienst erstellen, der Ihre Azure SQL-Datenbank, die die Beispieltabelle „sampletable“ und die gespeicherte Prozedur „sp_sample“. enthält, mit Ihrer Data Factory verknüpft.
+Nachdem Sie die Data Factory erstellt haben, können Sie einen mit Azure SQL verknüpften Dienst erstellen, der Ihre Azure SQL-Datenbank, die die Beispieltabelle „sampletable“ und die gespeicherte Prozedur „usp_sample“. enthält, mit Ihrer Data Factory verknüpft.
 
 1. Klicken Sie auf dem Blatt **Data Factory** für **SProcDF** auf **Verfassen und bereitstellen**, um den Data Factory-Editor zu starten.
 2. Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure SQL-Datenbank**. Das JSON-Skript zum Erstellen eines mit Azure SQL verknüpften Diensts wird im Editor angezeigt.
@@ -160,7 +160,7 @@ Wir erstellen jetzt eine Pipeline mit einer Aktivität der gespeicherten Prozedu
 Beachten Sie die folgenden Eigenschaften: 
 
 - Die **type**-Eigenschaft ist auf **SqlServerStoredProcedure** festgelegt. 
-- **storedProcedureName** in Typeigenschaften ist auf **sp_sample** (Name der gespeicherten Prozedur) festgelegt.
+- **storedProcedureName** in Typeigenschaften ist auf **usp_sample** (Name der gespeicherten Prozedur) festgelegt.
 - Der Abschnitt **storedProcedureParameters** enthält einen Parameter mit dem Namen **DateTime**. Name und Schreibweise des Parameters im JSON-Format müssen mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: `"param1": null` (nur Kleinbuchstaben).
  
 1. Klicken Sie in der Symbolleiste auf **... Weitere** und dann auf **Neue Pipeline**.
@@ -174,7 +174,7 @@ Beachten Sie die folgenden Eigenschaften:
                 {
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-                        "storedProcedureName": "sp_sample",
+                        "storedProcedureName": "usp_sample",
                         "storedProcedureParameters": {
                             "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                         }
@@ -340,7 +340,7 @@ CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
 **Gespeicherte Prozedur:**
 
 ```SQL
-CREATE PROCEDURE sp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
+CREATE PROCEDURE usp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
 
 AS
 
@@ -355,7 +355,7 @@ END
 ```JSON
 "typeProperties":
 {
-    "storedProcedureName": "sp_sample",
+    "storedProcedureName": "usp_sample",
     "storedProcedureParameters":
     {
         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
@@ -394,7 +394,7 @@ END
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample2",
+                    "storedProcedureName": "usp_sample2",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
                         "Scenario": "Document sample"

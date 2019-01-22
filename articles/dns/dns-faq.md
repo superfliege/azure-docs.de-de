@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880147"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352924"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -94,7 +94,7 @@ Das Feature für die URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Verwe
 
 Ja. Azure DNS unterstützt den erweiterten ASCII-Codierungssatz für TXT-Eintragssätze. Sie müssen aber die aktuelle Version der Azure-REST-APIs und SDKs und von PowerShell und der CLI verwenden. Versionen, die ein älteres Datum als 1. Oktober 2017 haben, oder das SDK 2.1 unterstützen den erweiterten ASCII-Satz nicht. 
 
-Beispielsweise kann ein Benutzer eine Zeichenfolge als Wert für einen TXT-Eintrag angeben, der über das erweiterte ASCII-Zeichen \128 verfügt. Ein Beispiel hierfür ist „abcd\128efgh“. Azure DNS nutzt den Bytewert dieses Zeichens (128) für die interne Darstellung. Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\097\098\099“, was die Auflösung betrifft, austauschbar sind. 
+Beispielsweise können Sie eine Zeichenfolge als Wert für einen TXT-Eintrag angeben, der das erweiterte ASCII-Zeichen \128 enthält. Ein Beispiel hierfür ist „abcd\128efgh“. Azure DNS nutzt den Bytewert dieses Zeichens (128) für die interne Darstellung. Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\097\098\099“, was die Auflösung betrifft, austauschbar sind. 
 
 Wir befolgen für TXT-Einträge die Escaperegeln für das Zonendatei-Masterformat in [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Zum Beispiel fungiert `\` jetzt tatsächlich laut RFC als Escapezeichen für alles. Wenn Sie `A\B` als TXT-Eintragswert angeben, wird dieser nur als `AB` dargestellt und aufgelöst. Wenn Sie wirklich möchten, dass der TXT-Eintrag in `A\B` aufgelöst wird, müssen Sie `\` wieder mit dem Escapezeichen versehen. Geben Sie beispielsweise `A\\B` an.
 
@@ -195,7 +195,7 @@ Konvertieren Sie den Zonennamen oder den Namen des Ressourceneintragssatzes in P
 
 Unterstützung für „private“ Domänen wird mit dem Feature für private Zonen implementiert. Dieses Feature ist derzeit in der Public Preview-Version verfügbar. Private Zonen werden verwaltet, indem die gleichen Tools wie für Azure DNS-Zonen mit Internetzugriff verwendet werden. Sie können aber nur innerhalb der von Ihnen angegebenen virtuellen Netzwerke aufgelöst werden. Weitere Informationen finden Sie in der [Übersicht](private-dns-overview.md).
 
-Derzeit werden private Zonen im Azure-Portal nicht unterstützt. 
+Derzeit werden private Zonen im Azure-Portal nicht unterstützt.
 
 Informationen zu anderen internen DNS-Optionen in Azure finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -217,7 +217,7 @@ Ja. Kunden können einer einzelnen privaten Zone bis zu zehn virtuelle Auflösun
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, einer privaten Zone als virtuelles Auflösungsnetzwerk hinzugefügt werden?
 
-Ja. Der Benutzer muss über eine Schreibvorgangsberechtigung für die virtuellen Netzwerke und die private DNS-Zone verfügen. Die Schreibberechtigung kann mehreren RBAC-Rollen gewährt werden. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
+Ja. Sie müssen über eine Schreibvorgangsberechtigung für die virtuellen Netzwerke und die private DNS-Zone verfügen. Die Schreibberechtigung kann mehreren RBAC-Rollen gewährt werden. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn die virtuellen Computer vom Kunden gelöscht werden?
 
@@ -257,7 +257,7 @@ Ja. Während der öffentlichen Vorschauphase gelten die folgenden Einschränkung
 * Wenn ein virtuelles Registrierungsnetzwerk angegeben wird, können die DNS-Einträge für die VMs dieses virtuellen Netzwerks, die für die private Zone registriert sind, nicht über PowerShell, die CLI oder APIs angezeigt oder abgerufen werden. Die VM-Datensätze werden registriert und erfolgreich aufgelöst.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im virtuellen Netzwerk für die Registrierung.
 * Reverse-DNS für eine private IP-Adresse, die nicht in der privaten Zone registriert ist, gibt „internal.cloudapp.net“ als DNS-Suffix zurück. Dieses Suffix kann nicht aufgelöst werden. Ein Beispiel ist eine private IP-Adresse für einen virtuellen Computer in einem virtuellen Netzwerk, das als virtuelles Auflösungsnetzwerk mit einer privaten Zone verknüpft ist.
-* Ein virtuelles Netzwerk kann nicht über virtuelle Computer mit einer Netzwerkkarte verfügen, wenn es zum ersten Mal die Verknüpfung mit einer privaten Zone als virtuelles Registrierungs- oder Auflösungsnetzwerk herstellt. Anders ausgedrückt: Das virtuelle Netzwerk muss leer sein. Bei anschließenden Verknüpfungen mit anderen privaten Zonen als virtuelles Registrierungs- oder Auflösungsnetzwerk ist es dann nicht erforderlich, dass das virtuelle Netzwerk leer ist. 
+* Ein virtuelles Netzwerk muss leer sein, wenn es zum ersten Mal die Verknüpfung mit einer privaten Zone als virtuelles Registrierungs- oder Auflösungsnetzwerk herstellt. Bei anschließenden Verknüpfungen mit anderen privaten Zonen als virtuelles Registrierungs- oder Auflösungsnetzwerk ist es dann nicht erforderlich, dass das virtuelle Netzwerk leer ist.
 * Die bedingte Weiterleitung wird nicht unterstützt, z.B. zum Ermöglichen der Auflösung zwischen Azure und lokalen Netzwerken. Informieren Sie sich darüber, wie Kunden dieses Szenario mit anderen Mechanismen realisieren können. Informationen hierzu finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Gibt es Kontingente oder Grenzwerte in Bezug auf Zonen oder Einträge für private Zonen?

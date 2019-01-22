@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025452"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358710"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Daten der Empfangsquelle (Senkendaten) beim Kopieren der Daten ausführt.
@@ -142,7 +142,7 @@ Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId:
 
 ## <a name="schema-mapping"></a>Schemazuordnung
 
-Die Schemazuordnung wird angewendet, wenn Daten an Orte mit hierarchisch und tabellarisch strukturierten Daten kopiert werden, z. B. aus MongoDB/REST in eine Textdatei oder aus SQL zur Azure Cosmos DB-MongoDB-API. Folgende Eigenschaften werden im Abschnitt `translator` der Kopieraktivität unterstützt:
+Die Schemazuordnung wird angewendet, wenn Daten zwischen hierarchisch und tabellarisch strukturierten Daten kopiert werden, z. B. Kopieren aus MongoDB/REST in eine Textdatei oder aus SQL in die Azure Cosmos DB-API für MongoDB. Folgende Eigenschaften werden im Abschnitt `translator` der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
