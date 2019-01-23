@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427062"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231171"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technischer Leitfaden zur Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs
 ## <a name="overview"></a>**Übersicht**
@@ -163,8 +163,8 @@ In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus 
 
 1. Fügen Sie die Power BI-Ausgabe in Azure Stream Analytics hinzu.
 
-   * Folgen Sie den Anweisungen unter [Azure Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse und -sichtbarkeit von Streamingdaten](stream-analytics/stream-analytics-power-bi-dashboard.md), um die Ausgabe des Azure Stream Analytics-Auftrags an Ihr Power BI-Dashboard einzurichten.
-   * Suchen Sie den Stream Analytics-Auftrag im [Azure-Portal](https://portal.azure.com). Der Name des Auftrags sollte wie folgt lauten: NameIhrerLösung + „streamingjob“ + Zufallszahl + „asapbi“ (also „demostreamingjob123456asapbi“).
+   * Sie müssen die Anweisungen unter [Azure Stream Analytics und Power BI: Ein Dashboard mit Analyse und Echtzeitsichtbarkeit von Streamingdaten](stream-analytics/stream-analytics-power-bi-dashboard.md) befolgen, um die Ausgabe des Azure Stream Analytics-Auftrags an Ihr Power BI-Dashboard einzurichten.
+   * Suchen Sie den Stream Analytics-Auftrag im [Azure-Portal](https://portal.azure.com). Der Name des Auftrags sollte sein: NameIhrerLösung + „streamingjob“ + Zufallszahl + „asapbi“ (also „demostreamingjob123456asapbi“).
    * Fügen Sie eine Power BI-Ausgabe für den ASA-Auftrag hinzu. Legen Sie den **Ausgabealias** auf **PBIoutput** fest. Legen Sie **Datasetname** und **Tabellenname** auf **EnergyStreamData** fest. Nachdem Sie die Ausgabe hinzugefügt haben, klicken Sie im unteren Seitenbereich auf **Starten**, um den Stream Analytics-Auftrag zu starten. Sie sollten eine Bestätigungsmeldung erhalten. (Beispiel: Der Stream Analytics-Auftrag „myteststreamingjob12345asablob“ wurde erfolgreich gestartet.)
 2. Melden Sie sich bei [Power BI online](https://www.powerbi.com)
 

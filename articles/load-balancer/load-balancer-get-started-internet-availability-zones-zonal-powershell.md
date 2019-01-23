@@ -1,10 +1,11 @@
 ---
-title: Erstellen eines öffentlichen Lastenausgleichs im Tarif „Standard“ mit Zonen-Front-End-IP – Azure PowerShell
+title: Erstellen eines Load Balancers mit einem Zonen-Front-End – Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell einen öffentlichen Standard-Lastenausgleich mit einem Zonen-Front-End mit öffentlicher IP-Adresse erstellen.
+description: Erfahren Sie, wie Sie einen Load Balancer Standard mit einem Zonen-Front-End mithilfe von Azure PowerShell erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: da30bce34425d3537f9610c6e1f64ded4a836fd7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 861759eec266f0ab66d30a466c06e7d2ee14bf06
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100683"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247156"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-powershell"></a>Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe von Azure PowerShell
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Erstellen eines Load Balancer Standard mit einem Zonen-Front-End mithilfe von Azure PowerShell
 
-In diesem Artikel wird die Erstellung eines öffentlichen [Standard-Lastenausgleichs](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End mithilfe einer öffentlichen Standard-IP-Adresse erläutert. Um zu verstehen, wie Verfügbarkeitszonen mit dem Standard-Lastenausgleich arbeiten, lesen Sie [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md). 
+In diesem Artikel wird die Erstellung einer öffentlichen [Load Balancer Standard-Instanz](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End mithilfe einer öffentlichen Standard-IP-Adresse erläutert. Um zu verstehen, wie Verfügbarkeitszonen mit dem Standard-Lastenausgleich arbeiten, lesen Sie [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md). 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

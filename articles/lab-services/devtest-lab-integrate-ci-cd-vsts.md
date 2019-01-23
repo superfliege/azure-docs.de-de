@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcc39f2d8cf1ca0440f8028464d9041435914477
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082950"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263406"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrieren von Azure DevTest Labs in Ihre Azure DevOps-Pipeline für Continuous Integration und Continuous Delivery
 Sie können die in Azure DevOps installierte Erweiterung *Azure DevTest Labs Tasks* für eine einfache Integration von Azure DevTest Labs in Ihre CI/CD-Build- und -Releasepipeline nutzen. Die Erweiterung installiert drei Aufgaben: 
@@ -138,7 +138,7 @@ Der nächste Schritt bei der Bereitstellung besteht darin, die VM zu erstellen, 
 1. Wählen Sie in der Releasepipeline die Option **Aufgaben hinzufügen** aus, und fügen Sie dann auf der Registerkarte **Bereitstellen** eine *Azure PowerShell*-Aufgabe hinzu. Konfigurieren Sie die Aufgabe wie folgt:
 
    > [!NOTE]
-   > Um die Details der DevTest Labs-VM zu erfassen, wechseln Sie zu [Bereitstellen:  Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) und führen das Skript aus.
+   > Um die Details der DevTest Labs-VM zu erfassen, lesen Sie [Deploy: Azure PowerShell (Bereitstellen: Azure PowerShell)](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3), und führen Sie das Skript aus.
 
    a. Wählen Sie für **Azure-Verbindungstyp** die Option **Azure Resource Manager** aus.
 

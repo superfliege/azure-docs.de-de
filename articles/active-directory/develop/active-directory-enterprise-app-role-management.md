@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/07/2019
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 2bb9d69487b8576cdae60a1a613a341898495f06
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a354d5d0242bfdbb618eb325c8157a7bed3d3b64
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903877"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263669"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
 
@@ -151,25 +151,29 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
 8. Aktualisieren Sie die Tabelle **Attribute**, um eine benutzerdefinierte Zuordnung des Rollenanspruchs zu definieren.
 
-9. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden** wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus.
+9. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute und Ansprüche** des Dialogfelds **Einmaliges Anmelden** wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus.
 
     | Attributname | Attributwert |
     | -------------- | ----------------|
     | Rollenname  | user.assignedroles |
 
-    a. Wählen Sie **Attribut hinzufügen**, um den Bereich **Attribut hinzufügen** zu öffnen.
+    a. Klicken Sie auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+
+      ![Schaltfläche „Attribut hinzufügen“](./media/active-directory-enterprise-app-role-management/editattribute.png)
+
+    b. Wählen Sie **Attribut hinzufügen** zum Öffnen des Bereichs **Benutzeransprüche verwalten** aus.
 
       ![Schaltfläche „Attribut hinzufügen“](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
       ![Bereich „Attribut bearbeiten“](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. Geben Sie im Feld **Name** den gewünschten Attributnamen ein. In diesem Beispiel wird **Rollenname** als Anspruchsname verwendet.
-
-    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    c. Geben Sie im Feld **Name** den gewünschten Attributnamen ein. In diesem Beispiel wird **Rollenname** als Anspruchsname verwendet.
 
     d. Lassen Sie das Feld **Namespace** leer.
 
-    e. Klicken Sie auf **OK**.
+    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
+
+    f. Wählen Sie **Speichern** aus.
 
 10. Melden Sie sich am [Zugriffsbereich](https://myapps.microsoft.com) an, und wählen Sie Ihre Anwendungskachel aus, um für die Anwendung das einmalige Anmelden zu testen, das von einem Identitätsanbieter initiiert wird. Im SAML-Token sollten alle zugewiesenen Rollen für den Benutzer mit dem von Ihnen festgelegten Anspruchsnamen angezeigt werden.
 

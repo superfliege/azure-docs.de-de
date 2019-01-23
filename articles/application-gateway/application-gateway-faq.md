@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/6/2018
+ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994857"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247502"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -25,7 +25,7 @@ Azure Application Gateway ist ein ADC (Application Delivery Controller) als Dien
 
 ### <a name="what-features-does-application-gateway-support"></a>Welche Funktionen werden von Application Gateway unterstützt?
 
-Application Gateway unterstützt automatische Skalierung, SSL-Abladung und End-to-End-SSL, Web Application-Firewall, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Multi-Site-Hosting und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+Application Gateway unterstützt automatische Skalierung, SSL-Abladung und End-to-End-SSL, Web Application-Firewall, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, Hosting für mehrere Standorte und vieles mehr. Eine vollständige Liste der unterstützten Funktionen finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?
 
@@ -53,7 +53,7 @@ Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Ad
 
 ### <a name="what-regions-is-the-service-available-in"></a>In welchen Regionen ist der Dienst verfügbar?
 
-Application Gateway ist in allen Regionen des globalen Azure verfügbar. Er ist auch in [Azure China](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/overview/clouds/government/) verfügbar.
+Application Gateway ist in allen Regionen des globalen Azure verfügbar. Er ist auch in [Azure China 21Vianet](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/overview/clouds/government/) verfügbar.
 
 ### <a name="is-this-a-dedicated-deployment-for-my-subscription-or-is-it-shared-across-customers"></a>Ist dies eine dedizierte Bereitstellung für mein Abonnement, oder wird sie zur gemeinsamen Nutzung für Kunden freigegeben?
 
@@ -138,6 +138,8 @@ Benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Application Gate
 
 Beispielsweise können Sie eine UDR im Application Gateway-Subnetz einrichten, um für die Paketüberprüfung auf eine Firewallappliance zu verweisen, aber Sie müssen sicherstellen, dass das Paket die vorgesehene Zielnachprüfung erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
 
+UDRs im Application Gateway-Subnetz werden vom v2 SKU **nicht** unterstützt. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations).
+
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Was sind die Grenzwerte für Application Gateway? Kann ich diese Grenzwerte erhöhen?
 
 Unter [Application Gateway-Grenzwerte](../azure-subscription-service-limits.md#application-gateway-limits) können Sie die Grenzwerte anzeigen.
@@ -206,7 +208,7 @@ Ja, die Application Gateway v2-SKU unterstützt automatische Skalierung. Weitere
 
 ### <a name="does-manual-scale-updown-cause-downtime"></a>Werden durch das manuelle Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
 
-Es gibt keine Ausfallzeiten, da Instanzen auf Upgrade- und Fehlerdomänen verteilt sind.
+Es gibt keine Ausfallzeiten. Instanzen sind auf Upgrade- und Fehlerdomänen verteilt.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Unterstützt Application Gateway den Verbindungsausgleich?
 
@@ -214,7 +216,7 @@ Ja. Sie können den Verbindungsausgleich konfigurieren, um die Mitglieder in ein
 
 ### <a name="what-are-application-gateway-sizes"></a>In welchen Größen ist Application Gateway verfügbar?
 
-Application Gateway wird derzeit in drei Größen angeboten:  **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
+Application Gateway wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 
 Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -292,7 +294,7 @@ Ja, die [Konfiguration von Verschlüsselungssammlungen](application-gateway-ssl-
 
 ### <a name="how-many-ssl-certificates-are-supported"></a>Wie viele SSL-Zertifikate werden unterstützt?
 
-Bis zu 20 SSL-Zertifikate werden unterstützt.
+Bis zu 100 SSL-Zertifikate werden unterstützt.
 
 ### <a name="how-many-authentication-certificates-for-backend-re-encryption-are-supported"></a>Wie viele Authentifizierungszertifikate für die erneute Back-End-Verschlüsselung werden unterstützt?
 
@@ -380,7 +382,7 @@ Wir haben auch eine Resource Manager-Vorlage veröffentlicht, die die beliebte [
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Die Back-End-Integrität gibt den Status „Unbekannt“ zurück. Was kann die Ursache sein?
 
-Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch eine NSG oder einen benutzerdefinierten DNS. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
+Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch eine NSG oder ein benutzerdefiniertes DNS. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

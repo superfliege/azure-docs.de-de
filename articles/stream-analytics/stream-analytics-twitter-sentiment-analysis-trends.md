@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248726"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231137"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -36,7 +36,7 @@ In diesem Tutorial verwenden Sie eine Clientanwendung, die eine Verbindung mit T
 * Ein Azure-Abonnement
 * Ein Twitter-Konto 
 * Eine Twitter-Anwendung und das [OAuth-Zugriffstoken](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) für die jeweilige Anwendung. Allgemeine Anweisungen zum Erstellen einer Twitter-Anwendung werden im weiteren Verlauf bereitgestellt.
-* Die Anwendung TwitterWPFClient, die den Twitter-Feed liest. Um diese Anwendung zu beziehen, laden Sie über GitHub die Datei [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) herunter, und entzippen Sie das Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die Anwendung in einem Debugger ausführen möchten, können Sie den Quellcode über [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) beziehen. 
+* Die Anwendung TwitterWPFClient, die den Twitter-Feed liest. Um diese Anwendung zu beziehen, laden Sie über GitHub die Datei [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) herunter, und entzippen Sie das Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die Anwendung in einem Debugger ausführen möchten, können Sie den Quellcode über [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient) beziehen. 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Erstellen eines Event Hubs für die Stream Analytics-Eingabe
 
@@ -215,12 +215,12 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 2. Klicken Sie auf dem Blatt **Eingaben** auf **+&nbsp;Hinzufügen**, und füllen Sie das Blatt dann mit den folgenden Werten aus:
 
     * **Eingabealias**: Verwenden Sie den Namen `TwitterStream`. Wenn Sie einen anderen Namen verwenden, notieren Sie sich diesen, da Sie ihn später benötigen.
-    * **Quelltyp**: Wählen Sie **Datenstrom**.
-    * **Quelle**: Wählen Sie **Event Hub**.
-    * **Importoption**: Wählen Sie **Event Hub aus aktuellem Abonnement verwenden**. 
-    * **Service Bus-Namespace**: Wählen Sie den Event Hub-Namespace, den Sie zuvor erstellt haben (`<yourname>-socialtwitter-eh-ns`).
-    * **Event Hub**: Wählen Sie den Event Hub, den Sie zuvor erstellt haben (`socialtwitter-eh`).
-    * **Name der Event Hub-Richtlinie**: Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben (`socialtwitter-access`).
+    * **Quellentyp**: Wählen Sie den **Datenstrom** aus.
+    * **Quelle**: Wählen Sie **Event Hub** aus.
+    * **Importoption**: Wählen Sie **Event Hub aus aktuellem Abonnement verwenden** aus. 
+    * **Service Bus-Namespace**: Wählen Sie den Event Hub-Namespace aus, den Sie zuvor erstellt haben (`<yourname>-socialtwitter-eh-ns`).
+    * **Event Hub**: Wählen Sie den Event Hub aus, den Sie zuvor erstellt haben (`socialtwitter-eh`).
+    * **Event Hub-Richtlinienname**: Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben (`socialtwitter-access`).
 
     ![Erstellen einer neuen Eingabe für einen Stream Analytics-Auftrag](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
@@ -298,7 +298,7 @@ In diesem Tutorial schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftr
 2. Klicken Sie auf dem Blatt **Ausgaben** auf **+&nbsp;Hinzufügen**, und füllen Sie das Blatt dann mit den folgenden Werten aus:
 
     * **Ausgabealias**: Verwenden Sie den Namen `TwitterStream-Output`. 
-    * **Senke**: Wählen Sie **Blobspeicher** aus.
+    * **Senke**: Wählen Sie **Blob Storage** aus.
     * **Importoptionen**: Wählen Sie **Blob Storage aus aktuellem Abonnement verwenden** aus.
     * **Speicherkonto**: Wählen Sie **Neues Speicherkonto erstellen** aus.
     * **Speicherkonto** (zweites Feld): Geben Sie `YOURNAMEsa` ein, wobei `YOURNAME` für Ihren Namen oder eine andere eindeutige Zeichenfolge steht. Der Name darf nur Kleinbuchstaben und Zahlen enthalten und muss innerhalb von Azure eindeutig sein. 

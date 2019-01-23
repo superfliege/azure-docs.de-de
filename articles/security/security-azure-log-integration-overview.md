@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: e9b547b6b582e38a51196815522132dd807c971b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 93ed7620636535d45791a657d012a9c7056be09d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079033"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303189"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Einführung in Azure Log Integration
 
 >[!IMPORTANT]
-> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der zukünftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Verwenden von Azure Monitor für die Integration mit SIEM-Tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/). 
+> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads wurden am 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
 
 Azure Log Integration wurde zur Verfügung gestellt, um die Integration von Azure-Protokollen in Ihr lokales SIEM-System (Security Information and Event Management) zu vereinfachen.
 

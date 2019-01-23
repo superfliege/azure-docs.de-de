@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5a5d052052be447ea2ccbd9231d3b03d38c7615c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420080"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266942"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Einrichten von Tomcat7 auf einem virtuellen Linux-Computer mit Microsoft Azure
 Apache Tomcat (oder einfach Tomcat, früher auch Jakarta Tomcat) ist ein Open-Source-Webserver und Servlet-Container und wurde von der Apache Software Foundation (ASF) entwickelt. Tomcat implementiert das Java-Servlet und die Java Server Pages-Spezifikationen (JSP) von Sun Microsystems. Tomcat bietet eine reine Java-HTTP-Webserverumgebung, in der Java-Code ausgeführt wird. In der einfachsten Konfiguration wird Tomcat in einem einzelnen Betriebssystem-Prozess ausgeführt. Dieser Prozess führt eine Java Virtual Machine (JVM) aus. Jede HTTP-Anforderung von einem Browser an Tomcat wird als separater Thread im Tomcat-Prozess verarbeitet.  
 
 > [!IMPORTANT]
-> Azure bietet zwei Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager](../../../resource-manager-deployment-model.md) und klassisch. Dieser Artikel gilt für das klassische Bereitstellungsmodell. Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Informationen zum Bereitstellen einer Ubuntu-VM mit Open JDK und Tomcat mithilfe einer Resource Manager-Vorlage finden Sie [in diesem Artikel](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../../resource-manager-deployment-model.md). Dieser Artikel gilt für das klassische Bereitstellungsmodell. Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Informationen zum Bereitstellen einer Ubuntu-VM mit Open JDK und Tomcat mithilfe einer Resource Manager-Vorlage finden Sie [in diesem Artikel](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 In diesem Handbuch installieren Sie Tomcat7 in einem Linux-Image, das Sie in Azure bereitstellen.  
@@ -37,11 +37,11 @@ Sie erhalten Informationen zu folgenden Themen:
 * Vorbereiten des virtuellen Computers für Tomcat7.
 * Installieren von Tomcat7.
 
-Es wird vorausgesetzt, dass Sie bereits über ein Azure-Abonnement verfügen.  Falls nicht, können Sie sich auf der [Azure-Website](https://azure.microsoft.com/) für eine kostenlose Testversion registrieren. Wenn Sie über ein MSDN-Abonnement verfügen, finden Sie weitere Informationen unter [Microsoft Azure-Sonderpreis: MSDN-, MPN- und Bizspark-Leistungen](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Weitere Informationen zu Azure finden Sie unter [Was ist Azure?](https://azure.microsoft.com/overview/what-is-azure/)
+Es wird vorausgesetzt, dass Sie bereits über ein Azure-Abonnement verfügen.  Falls nicht, können Sie sich auf der [Azure-Website](https://azure.microsoft.com/) für eine kostenlose Testversion registrieren. Wenn Sie über ein MSDN-Abonnement verfügen, finden Sie weitere Informationen unter [Microsoft Azure-Sonderpreis: MSDN-, MPN- und BizSpark-Leistungen](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Weitere Informationen zu Azure finden Sie unter [Was ist Azure?](https://azure.microsoft.com/overview/what-is-azure/)
 
 In diesem Artikel wird davon ausgegangen, dass Sie über allgemeine Kenntnisse zu Tomcat und Linux verfügen.  
 
-## <a name="phase-1-create-an-image"></a>Phase 1: Erstellen eines Image
+## <a name="phase-1-create-an-image"></a>Phase 1: Erstellen eines Images
 In dieser Phase erstellen Sie einen virtuellen Computer mit einem Linux-Image in Azure.  
 
 ### <a name="step-1-generate-an-ssh-authentication-key"></a>Schritt 1: Generieren eines SSH-Authentifizierungsschlüssels
@@ -75,10 +75,10 @@ Führen Sie die folgenden Schritte aus, um den SSH-Authentifizierungsschlüssel 
 
 4. Konfigurieren Sie weitere Einstellungen nach Bedarf, und klicken Sie dann auf **Erstellen**.  
 
-## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Phase 2: Vorbereiten des virtuellen Computers für Tomcat7
+## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Phase 2: Vorbereiten des virtuellen Computers für Tomcat7
 In dieser Phase konfigurieren Sie einen Endpunkt für Tomcat-Datenverkehr und stellen dann eine Verbindung mit dem neuen virtuellen Computer her.
 
-### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Schritt 1: Öffnen des HTTP-Ports, um Webzugriff zu erlauben
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Schritt 1: Öffnen des HTTP-Ports, um Webzugriff zu erlauben
 Endpunkte in Azure bestehen aus einem Protokoll (TCP oder UDP) sowie aus einem öffentlichen und einem privaten Port. Der private Port ist der Port, an dem der Dienst auf dem virtuellen Computer lauscht. Der öffentliche Port ist der Port, an dem der Azure-Clouddienst extern auf internetbasierten Datenverkehr lauscht.  
 
 TCP-Port 8080 ist die Standardportnummer, an der Tomcat lauscht. Wenn Sie diesen Port auf einem Azure-Endpunkt öffnen, können Sie und andere Internetclients auf Tomcat-Seiten zugreifen.  
@@ -98,7 +98,7 @@ TCP-Port 8080 ist die Standardportnummer, an der Tomcat lauscht. Wenn Sie diesen
       ![Screenshot der Benutzeroberfläche mit den Befehlen „Hinzufügen“, „Öffentlicher Port“ und „Privater Port“][7]
 4. Klicken Sie auf **OK**, um den Endpunkt Ihrem virtuellen Computer hinzuzufügen.
 
-### <a name="step-2-connect-to-the-image-you-created"></a>Schritt 2: Herstellen einer Verbindung mit dem Image, das Sie erstellt haben
+### <a name="step-2-connect-to-the-image-you-created"></a>Schritt 2: Herstellen einer Verbindung mit dem Image, das Sie erstellt haben
 Sie können ein beliebiges SSH-Tool für das Herstellen einer Verbindung mit Ihrem virtuellen Computer auswählen. In diesem Beispiel wird PuTTY verwendet.  
 
 1. Rufen Sie den DNS-Namen Ihres virtuellen Computers aus dem Portal ab.
@@ -126,7 +126,7 @@ Sie können ein beliebiges SSH-Tool für das Herstellen einer Verbindung mit Ihr
 8. Geben Sie den Benutzernamen an, den Sie zum Erstellen der virtuellen Computers in „Phase 1: Erstellen eines Images“ weiter oben in diesem Artikel verwendet haben. Folgendes sollte angezeigt werden:  
 ![Screenshot mit der Authentifizierungsbestätigung][13]
 
-## <a name="phase-3-install-software"></a>Phase 3: Installieren von Software
+## <a name="phase-3-install-software"></a>Phase 3: Installieren von Software
 In dieser Phase installieren Sie die Java-Laufzeitumgebung, Tomcat7 und andere Tomcat7-Komponenten.  
 
 ### <a name="java-runtime-environment"></a>Java-Laufzeitumgebung
@@ -141,7 +141,7 @@ Befolgen Sie die `apt-get`-Installationsanweisungen, die auf der [Azul Zulu Ente
 Sie können einen Befehl wie den folgenden verwenden, um zu testen, ob die Java-Laufzeitumgebung ordnungsgemäß installiert ist:  
     Java-Version  
 
-Es sollte eine Meldung wie die folgende angezeigt werden: ![Meldung zur erfolgreichen Installation von OpenJDK][14]
+Es wird eine Meldung ähnlich der folgenden angezeigt: ![Meldung zur erfolgreichen Installation von OpenJDK][14]
 
 
 ### <a name="install-tomcat7"></a>Installieren von Tomcat7
@@ -207,7 +207,7 @@ Nachdem die Verbindung hergestellt wurde, müsste in etwa Folgendes angezeigt we
 ## <a name="common-issues"></a>Häufige Probleme
 ### <a name="cant-access-the-virtual-machine-with-tomcat-and-moodle-from-the-internet"></a>Auf den virtuellen Computer mit Tomcat und Moodle kann nicht über das Internet zugegriffen werden.
 #### <a name="symptom"></a>Symptom  
-  Tomcat wird ausgeführt, die Tomcat-Standardseite wird jedoch nicht in Ihrem Browser angezeigt.
+   Tomcat wird ausgeführt, die Tomcat-Standardseite wird jedoch nicht in Ihrem Browser angezeigt.
 #### <a name="possible-root-cause"></a>Mögliche Ursache   
 
   * Der Tomcat-Überwachungsport ist nicht identisch mit dem privaten Port des Endpunkts des virtuellen Computers für Tomcat-Datenverkehr.  

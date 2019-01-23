@@ -2,22 +2,17 @@
 title: Konfigurieren von End-to-End-SSL mit Azure Application Gateway
 description: Dieser Artikel beschreibt das Konfigurieren von End-to-End-SSL mit Azure Application Gateway mit PowerShell.
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945330"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214061"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
 
@@ -25,7 +20,7 @@ ms.locfileid: "49945330"
 
 Azure Application Gateway unterstützt die End-to-End-Verschlüsselung des Datenverkehrs. Hierfür wird in Application Gateway die SSL-Verbindung am Anwendungsgateway getrennt. Das Gateway wendet dann die Routingregeln auf den Datenverkehr an, verschlüsselt das Paket erneut und leitet das Paket basierend auf den definierten Routingregeln an den entsprechenden Back-End-Server weiter. Antworten vom Webserver durchlaufen denselben Prozess zurück an den Endbenutzer.
 
-Application Gateway unterstützt das Definieren benutzerdefinierter SSL-Optionen. Außerdem wird das Deaktivieren der Protokollversionen **TLSv1.0**, **TLSv1.1** und **TLSv1.2** sowie das Definieren der zu verwendenden Verschlüsselungssammlungen und der jeweiligen Priorität unterstützt. Weitere Informationen zu konfigurierbaren SSL-Optionen finden Sie in der [SSL-Richtlinienübersicht](application-gateway-SSL-policy-overview.md).
+Application Gateway unterstützt das Definieren benutzerdefinierter SSL-Optionen. Es unterstützt auch das Deaktivieren der folgenden Protokollversionen: **TLSv1.0**, **TLSv1.1** und **TLSv1.2**; außerdem werden das Definieren der zu verwendenden Verschlüsselungssammlungen und die jeweilige Priorität unterstützt. Weitere Informationen zu konfigurierbaren SSL-Optionen finden Sie in der [SSL-Richtlinienübersicht](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2.0 und SSL 3.0 sind standardmäßig deaktiviert und können nicht aktiviert werden. Sie werden als unsicher eingestuft und können mit Application Gateway nicht verwendet werden.
@@ -45,9 +40,9 @@ Dieses Szenario umfasst Folgendes:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Zum Konfigurieren von End-to-End-SSL mit einem Anwendungsgateway wird ein Zertifikat für das Gateway benötigt. Außerdem sind weitere Zertifikate für die Back-End-Server erforderlich. Das Gatewayzertifikat wird zum Verschlüsseln und Entschlüsseln des Datenverkehrs verwendet, der über SSL an das Gateway gesendet wird. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
+Zum Konfigurieren von End-to-End-SSL mit einem Anwendungsgateway wird ein Zertifikat für das Gateway benötigt. Außerdem sind weitere Zertifikate für die Back-End-Server erforderlich. Das Gatewayzertifikat wird zum Ableiten eines symmetrischen Schlüssels gemäß der Spezifikation des SSL-Protokolls verwendet. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
-Für die End-to-End-SSL-Verschlüsselung muss das Back-End der Whitelist des Anwendungsgateways hinzugefügt werden. Dazu laden Sie das öffentliche Zertifikat der Back-End-Server auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
+Für die End-to-End-SSL-Verschlüsselung muss das Back-End der Whitelist des Anwendungsgateways hinzugefügt werden. Laden Sie das öffentliche Zertifikat der Back-End-Server auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
 
 Der Konfigurationsprozess wird in den folgenden Abschnitten beschrieben.
 
@@ -258,7 +253,7 @@ Die vorangehenden Schritte führen Sie durch die Erstellung einer Anwendung mit 
 
    ```
 
-   3. Zum Schluss aktualisieren Sie das Gateway. Beachten Sie, dass dieser letzte Schritt einen längeren Zeitraum in Anspruch nimmt. Nach Abschluss des Vorgangs ist End-to-End-SSL für das Anwendungsgateway konfiguriert.
+   3. Zum Schluss aktualisieren Sie das Gateway. Dieser letzte Schritt nimmt einen längeren Zeitraum in Anspruch. Nach Abschluss des Vorgangs ist End-to-End-SSL für das Anwendungsgateway konfiguriert.
 
    ```powershell
    $gw | Set-AzureRmApplicationGateway

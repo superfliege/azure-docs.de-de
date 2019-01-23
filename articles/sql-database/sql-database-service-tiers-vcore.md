@@ -12,19 +12,19 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 01/08/2019
-ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6b5ff7294735048347c500d64b411f16bda5422f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156815"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212933"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Diensttarife, Azure-Hybridvorteil und Migration
 
 Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Es ermöglicht Ihnen auch die Wahl der Hardwaregeneration:
 
 - Gen 4: bis zu 24 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
-- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,1 GB pro Kern, schnelle eNVM-SSD
+- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,1 GB pro Kern, schnelles eNVM-SSD
 
 Mit dem V-Kern-Modell können Sie auch den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Kosten einzusparen.
 

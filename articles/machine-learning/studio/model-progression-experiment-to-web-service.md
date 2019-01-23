@@ -1,26 +1,8 @@
 ---
-title: Entwicklung eines Machine Learning Studio-Modells zu einem Webdienst – Azure | Microsoft-Dokumentation
-description: Ein Überblick darüber, wie Ihr Azure Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253866"
+Titel: Entwicklung eines Machine Learning Studio-Modells zu einem Webdienst titleSuffix: Azure Machine Learning Studio – Beschreibung: Ein Überblick darüber, wie Ihr Azure Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 20.03.2017
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Entwicklung eines Machine Learning Studio-Modells von einem Experiment zu einem betriebsbereiten Webdienst
 Azure Machine Learning Studio bietet einen interaktiven Arbeitsbereich, in dem Sie ein ***Experiment*** entwickeln, ausführen, testen und durchlaufen können, das ein Vorhersageanalysemodell darstellt. Es gibt eine Vielzahl von Modulen, die Folgendes ermöglichen:

@@ -16,12 +16,12 @@ ms.custom: ''
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 91ac75f3cb41f73ea18595138969dfb7b1444173
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037378"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263510"
 ---
 # <a name="redeploy-the-asdk"></a>Erneutes Bereitstellen des ASDK
 In diesem Artikel erfahren Sie, wie Sie das Azure Stack Development Kit (ASDK) in einer produktionsfremden Umgebung neu bereitstellen. Da für das ASDK keine Upgrades unterstützt werden, müssen Sie es vollständig neu bereitstellen, um zu einer neueren Version zu wechseln. Darüber hinaus können Sie das ASDK jederzeit neu bereitstellen, wenn Sie wieder von vorn beginnen möchten.

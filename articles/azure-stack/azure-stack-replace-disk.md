@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 7ce501be5458282273e51a5b2bc18482592d2333
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ad1234b6a0296a2fa46fe56786bbca4aca9ed470
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376951"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305960"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Ersetzen eines physischen Datenträgers in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Dieser Artikel beschreibt das allgemeine Verfahren, um einen physischen Datenträger in Azure Stack zu ersetzen. Wenn ein physischer Datenträger ausfällt, sollten Sie ihn so bald wie möglich ersetzen.
 
 Sie können dieses Verfahren für integrierte Systeme verwenden, und für Development Kit-Bereitstellungen, die über im laufenden Betrieb austauschbare Datenträger verfügen.
 
-Die tatsächlichen Schritte zum Austausch von Datenträgern variieren und hängen von Ihrem Originalgerätehersteller-Hardwareanbieter (Original Equipment Manufacturer, OEM) ab. Die für Ihr System spezifischen ausführlichen Schritte finden Sie in der FRU-Dokumentation (Field Replaceable Unit) des Herstellers. 
+Die tatsächlichen Schritte zum Austausch von Datenträgern variieren und hängen von Ihrem Originalgerätehersteller-Hardwareanbieter (Original Equipment Manufacturer, OEM) ab. Die für Ihr System spezifischen ausführlichen Schritte finden Sie in der FRU-Dokumentation (Field Replaceable Unit) des Herstellers. 
 
 ## <a name="review-disk-alert-information"></a>Überprüfen von Datenträger-Warnungsinformationen
-Wenn ein Datenträger ausfällt, teilt Ihnen eine Warnung mit, dass die Konnektivität mit einem physischen Datenträger verloren gegangen ist. 
+Wenn ein Datenträger ausfällt, teilt Ihnen eine Warnung mit, dass die Konnektivität mit einem physischen Datenträger verloren gegangen ist. 
 
  ![Warnung, die den Verlust der Konnektivität mit einem physischen Datenträger anzeigt](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -47,7 +47,7 @@ Befolgen Sie die FRU-Anweisungen des OEM-Hardwareanbieters beim tatsächlichen A
 
 Um die Verwendung eines nicht unterstützten Datenträgers in einem integrierten System zu verhindern, blockiert das System Datenträger, die von Ihrem Anbieter nicht unterstützt werden. Wenn Sie versuchen, einen nicht unterstützten Datenträger zu verwenden, teilt Ihnen eine neue Warnung mit, dass ein Datenträger aufgrund eines nicht unterstützten Modells oder nicht unterstützter Firmware isoliert wurde.
 
-Nachdem Sie den Datenträger ersetzt haben, ermittelt Azure Stack automatisch den neuen Datenträger und startet die Reparatur des virtuellen Datenträgers.  
+Nachdem Sie den Datenträger ersetzt haben, ermittelt Azure Stack automatisch den neuen Datenträger und startet die Reparatur des virtuellen Datenträgers.  
  
  ## <a name="check-the-status-of-virtual-disk-repair"></a>Überprüfen des Status der Reparatur des virtuellen Datenträgers
  

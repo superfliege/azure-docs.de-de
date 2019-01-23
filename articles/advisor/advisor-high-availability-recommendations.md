@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 928fb5421297fedbffabc45db35a89a74026477e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839507"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305070"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor-Empfehlungen für Hochverfügbarkeit
 
@@ -35,20 +35,16 @@ Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierun
 
 Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Der Advisor ermittelt Verfügbarkeitsgruppen mit nur einem virtuellen Computer und empfiehlt, dieser weitere hinzuzufügen. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die Azure-SLA für virtuelle Computer eingehalten wird. Sie können einen virtuellen Computer erstellen oder der Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzufügen.  
 
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Verwenden von Managed Disks zur Erhöhung der Datenzuverlässigkeit
+Virtuelle Computer, die sich in einer Verfügbarkeitsgruppe mit Datenträgern befinden, die entweder Speicherkonten oder Speicherskalierungseinheiten gemeinsam nutzen, sind nicht widerstandsfähig gegen Ausfälle einzelner Speicherskalierungseinheiten während eines Ausfalls. Advisor identifiziert diese Verfügbarkeitsgruppen und empfehlen die Migration zu Azure Managed Disks. Dadurch wird sichergestellt, dass die Datenträger der verschiedenen virtuellen Computer in der Verfügbarkeitsgruppe ausreichend isoliert sind, um einen Single Point of Failure zu vermeiden. 
+
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Sicherstellen von Fehlertoleranz für Anwendungsgateways
+
 Um die Geschäftskontinuität unternehmenswichtiger, durch Anwendungsgateways unterstützter Anwendungen zu gewährleisten, identifiziert der Advisor Anwendungsgatewayinstanzen, die nicht für die Fehlertoleranz konfiguriert sind, und schlägt Ihnen Wartungsaktionen vor. Der Advisor identifiziert mittelgroße oder große Einzelinstanz-Anwendungsgateways und empfiehlt, mindestens eine weitere Instanz hinzufügen. Identifiziert außerdem kleine Einzel- und Mehrinstanz-Anwendungsgateways und empfiehlt die Migration zu mittelgroßen oder großen SKUs. Der Advisor empfiehlt diese Aktionen, um sicherzustellen, dass Ihre Anwendungsgatewayinstanzen so konfiguriert sind, dass sie die aktuellen SLA-Anforderungen für diese Ressourcen erfüllen.
-
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Verbessern der Leistung und Zuverlässigkeit von Datenträgern virtueller Computer
-
-Der Advisor ermittelt virtuelle Computer mit Standard-Datenträgern und empfiehlt ein Upgrade auf Premium-Datenträger.
- 
-Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Datenträger von virtuellen Computern, die Storage Premium-Konten nutzen, speichern Daten auf Solid State Drives (SSD). Für eine optimale Leistung Ihrer Anwendung empfehlen wir, alle Datenträger von virtuellen Computern, die eine hohe IOPS-Leistung erfordern, zu Storage Premium zu migrieren. 
-
-Wenn Ihre Datenträger keinen hohen IOPS-Wert erfordern, können Sie die Kosten begrenzen, indem Sie sie mit Storage Standard betreiben. Bei Storage Standard werden VM-Datenträgerdaten auf Festplattenlaufwerken (HDD) statt auf Solid State Drives (SSD) gespeichert. Sie können Ihre VM-Datenträger zu Premium-Datenträgern migrieren. Premium-Datenträger werden für die meisten VM-SKUs unterstützt. In einigen Fällen müssen Sie, wenn Sie Premium-Datenträger nutzen möchten, auch Ihre VM-SKUs aktualisieren.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Schützen Ihrer VM-Daten vor zufälligem Löschen
 
-Durch das Einrichten der Sicherung eines virtuellen Computers wird die Verfügbarkeit Ihrer geschäftskritischen Daten sichergestellt, und Ihre Daten werden vor versehentlichem Löschen oder vor Beschädigung geschützt.  Der Advisor identifiziert virtuelle Computer, auf denen die Sicherung nicht aktiviert ist, und empfiehlt das Aktivieren der Sicherung. 
+Durch das Einrichten der Sicherung eines virtuellen Computers wird die Verfügbarkeit Ihrer geschäftskritischen Daten sichergestellt, und Ihre Daten werden vor versehentlichem Löschen oder vor Beschädigung geschützt. Der Advisor identifiziert virtuelle Computer, auf denen die Sicherung nicht aktiviert ist, und empfiehlt das Aktivieren der Sicherung. 
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Sicherstellen, dass Sie bei Bedarf Zugang zu Azure-Cloudexperten haben
 
@@ -69,6 +65,10 @@ Wenn ein Traffic Manager-Profil für das geografische Routing konfiguriert ist, 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Speichern und Wiederherstellen von Daten bei versehentlichem Überschreiben oder Löschen durch vorläufiges Löschen in Ihrem Azure Storage-Konto
 
 Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in Ihrem Speicherkonto, sodass gelöschte Blobs in einen vorläufig gelöschten Zustand übergehen, anstatt endgültig gelöscht zu werden. Wenn Daten überschrieben werden, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. So können Sie Daten nach einer versehentlichen Löschung oder Überschreibung wiederherstellen. Der Advisor identifiziert Azure Storage-Konten, bei denen das vorläufige Löschen deaktiviert ist und schlägt vor, es zu aktivieren.
+
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurieren des VPN-Gateway zu aktiv-aktiv für Verbindungsresilienz
+
+In der Aktiv-Aktiv-Konfiguration richten beide Instanzen eines VPN-Gateways S2S-VPN-Tunnel zu Ihrem lokalen VPN-Gerät ein. Wenn ein geplantes Wartungsereignis oder ein ungeplantes Ereignis mit einer Gateway-Instanz eintritt, wird der Datenverkehr automatisch auf den anderen aktiven IPsec-Tunnel umgeschaltet. Azure Advisor identifiziert VPN-Gateways, die nicht als aktiv-aktiv konfiguriert sind, und schlägt vor, dass Sie sie für Hochverfügbarkeit konfigurieren.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 

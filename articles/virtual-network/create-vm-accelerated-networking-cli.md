@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990959"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214486"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -33,12 +33,12 @@ Ohne beschleunigten Netzwerkbetrieb muss sämtlicher Netzwerkdatenverkehr zur un
 
 Mit beschleunigtem Netzwerkbetrieb gelangt der Netzwerkdatenverkehr zur Netzwerkkarte (NIC) der VM und wird dann an die VM weitergeleitet. Alle Netzwerkrichtlinien, die vom virtuellen Switch angewendet werden, werden ab sofort ausgelagert und in der Hardware angewendet. Durch das Anwenden von Richtlinien in der Hardware kann die NIC Netzwerkdatenverkehr direkt an den virtuellen Computer weiterleiten und dabei den Host und den virtuellen Switch umgehen, während gleichzeitig sämtliche Richtlinien umgesetzt werden, die sonst auf dem Host angewendet worden wären.
 
-Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der dieses Feature aktiviert ist. Die besten Ergebnisse erzielen Sie, wenn Sie dieses Feature auf mindestens zwei VMs aktivieren, die mit demselben virtuellen Azure-Netzwerk (VNet) verbunden sind. Bei der Kommunikation über VNets oder bei lokalen Verbindungen hat dieses Feature nur minimale Auswirkungen auf die Wartezeit.
+Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der dieses Feature aktiviert ist. Die besten Ergebnisse erzielen Sie, wenn Sie dieses Feature auf mindestens zwei VMs aktivieren, die mit demselben virtuellen Azure-Netzwerk (VNET) verbunden sind. Bei der Kommunikation über VNets oder bei lokalen Verbindungen hat dieses Feature nur minimale Auswirkungen auf die Wartezeit.
 
 ## <a name="benefits"></a>Vorteile
-* **Geringere Latenz/mehr Pakete pro Sekunde (pps):** Durch das Entfernen des virtuellen Switch aus dem Datenpfad wird die Zeit reduziert, die Pakete auf dem Host für die Verarbeitung von Richtlinien warten müssen. Gleichzeitig wird die Anzahl von Paketen erhöht, die im virtuellen Computer verarbeitet werden können.
+* **Niedrigere Latenz / mehr Pakete pro Sekunde (pps):** Durch das Entfernen des virtuellen Switch aus dem Datenpfad wird die Zeit reduziert, die Pakete auf dem Host für die Verarbeitung von Richtlinien warten müssen. Gleichzeitig wird die Anzahl von Paketen erhöht, die im virtuellen Computer verarbeitet werden können.
 * **Reduzierte Jitter:** Die Verarbeitung im virtuellen Switch hängt vom Umfang der anzuwendenden Richtlinien und von der Workload der CPU ab, die die Verarbeitung durchführt. Das Auslagern der Richtlinienerzwingung auf die Hardware entfernt diesen Umweg, indem die Pakete direkt an den virtuellen Computer gesendet werden. Damit werden der Host und alle Softwareinterrupts und Kontextwechsel aus der VM-Kommunikation entfernt.
-* **Verringerte CPU-Auslastung:** Das Umgehen des virtuellen Switchs auf dem Host führt zu weniger CPU-Auslastung für die Verarbeitung des Netzwerkdatenverkehrs.
+* **Verringerte CPU-Auslastung:** Das Umgehen des virtuellen Switch auf dem Host führt zu weniger CPU-Auslastung für die Verarbeitung des Netzwerkdatenverkehrs.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt: 
@@ -62,8 +62,9 @@ Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle 
 ### <a name="regions"></a>Regionen
 Verfügbar in allen öffentlichen Azure-Regionen und in Azure Government-Clouds
 
-### <a name="network-interface-creation"></a>Erstellen der Netzwerkschnittstelle 
-Der beschleunigte Netzwerkbetrieb kann nur für eine neue Netzwerkschnittstelle aktiviert werden. Er kann nicht für eine vorhandene NIC aktiviert werden.
+<!-- ### Network interface creation 
+Accelerated networking can only be enabled for a new NIC. It cannot be enabled for an existing NIC.
+removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Aktivieren des beschleunigten Netzwerkbetriebs auf einer ausgeführten VM
 Bei einer unterstützten VM-Größe ohne aktivierten beschleunigten Netzwerkbetrieb kann das Feature nur aktiviert werden, wenn die VM beendet und ihre Zuordnung aufgehoben wird.  
 ### <a name="deployment-through-azure-resource-manager"></a>Bereitstellung über Azure Resource Manager
@@ -75,7 +76,7 @@ In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers m
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version von [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
+Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
 Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b1020389ef28c18c03536d686cd47ef0c65b9204
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e50a82f0f141fec266a8348c0a1a8b5fbdb38b45
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240888"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329853"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Verwenden von Azure Blockchain Workbench-Daten mit Microsoft Power BI
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält eine schrittweise exemplarische Vorgehensweise zum Herst
 
 * Laden Sie [Power BI Desktop](https://aka.ms/pbidesktopstore) herunter.
 
-## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>Verbinden von Power BI mit Daten in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Verbinden von Power BI mit Daten in Azure Blockchain Workbench
 
 1.  Öffnen Sie Power BI Desktop.
 2.  Wählen Sie **Daten abrufen** aus.
@@ -49,7 +49,7 @@ Dieser Artikel enthält eine schrittweise exemplarische Vorgehensweise zum Herst
 
     ![Navigator](./media/data-powerbi/navigator.png)
 
-7.  Wählen Sie die Sichten aus, die Sie einschließen möchten. Zu Demonstrationszwecken schließen wir **vwContractAction** ein. Diese Sicht enthält die Details für alle Aktionen, die für einen Vertrag ausgeführt wurden.
+7.  Wählen Sie die Sichten aus, die Sie einschließen möchten. Zu Demonstrationszwecken schließen wir **vwContractAction** ein. Diese Sicht enthält die Details für die Aktionen, die für einen Vertrag ausgeführt wurden.
 
     ![Auswählen von Sichten](./media/data-powerbi/select-views.png)
 

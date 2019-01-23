@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 8d477997e71843307f6c756a6974a23267842015
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754542"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244969"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack-Update 1808
 
@@ -255,6 +255,8 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 ### <a name="compute"></a>Compute
 
+- Beim Erstellen eines [virtuellen Computers der Dv2-Serie](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) gestatten Ihnen D11-14v2 VMs das Erstellen von 4, 8, 16 bzw. 32 Datenträgern. Im Bereich „VM erstellen“ werden jedoch 8, 16, 32 und 64 Datenträger angezeigt.
+
 <!-- 3164607 – IS, ASDK -->
 - Das erneute Anfügen eines abgetrennten Datenträgers an denselben virtuellen Computer mit dem gleichen Namen und der gleichen LUN führt zu einem Fehler wie **Datenträger „Datenträger“ kann nicht an VM „vm1“ angefügt werden**. Der Fehler tritt auf, da der Datenträger derzeit getrennt wird oder beim letzten Trennvorgang ein Fehler aufgetreten ist. Warten Sie, bis der Datenträger vollständig getrennt wurde, und versuchen Sie es dann erneut, oder löschen/trennen Sie den Datenträger explizit erneut. Die Problemumgehung besteht darin, ihn unter einem anderen Namen oder mit einer anderen LUN erneut anzufügen. 
 
@@ -278,7 +280,7 @@ Von den Azure Stack-Nutzungs-APIs erstellte Nutzungsberichte zeigen richtige Men
 <!-- 3507629 - IS, ASDK --> 
 - Managed Disks erstellt zwei neue [Computekontingenttypen](azure-stack-quota-types.md#compute-quota-types) zur Begrenzung der maximalen Kapazität von verwalteten Datenträgern, die bereitgestellt werden können. Standardmäßig werden für jeden Kontingenttyp von verwalteten Datenträgern 2.048 GiB zugeordnet. Allerdings können die folgenden Probleme auftreten:
 
-   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das "Managed Disks"-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
+   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das „Managed Disks“-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
    - Wenn Sie den Kontingentwert auf „0“ aktualisieren, entspricht dies dem Standardwert 2.048 GiB. Als Problemumgehung können Sie den Kontingentwert auf „1“ festlegen.
 
 <!-- 2869209 – IS, ASDK --> 

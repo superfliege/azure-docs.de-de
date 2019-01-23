@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c2d121106218c0965cd8f4e07776cf8d2578543f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651451"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354160"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Verwenden des Power BI-Inhaltspakets für Azure Active Directory
 
@@ -42,7 +42,7 @@ Im [Schnellstart](quickstart-install-power-bi-content-pack.md) finden Sie Inform
 
 Die folgenden Berichte sind im Power-BI-Inhaltspaket für Azure AD enthalten. Die Berichte enthalten Daten aus den **letzten 30 Tagen**.
 
-**Bericht zur App-Nutzung und zu Trends**:  Dieser Bericht bietet Ihnen einen Einblick in die Anwendungen, die in Ihrer Organisation verwendet werden. Sie können eine Liste der am häufigsten verwendeten Anwendungen abrufen, oder Sie können herausfinden, wie eine Anwendung verwendet wird, die vor kurzem in Ihrer Organisation eingeführt wurde. Dadurch können Sie die Nutzung im Laufe der Zeit nachverfolgen und verbessern.
+**Bericht zur App-Nutzung und zu Trends**:  Dieser Bericht bietet Ihnen einen Erkenntnisse zu den Anwendungen, die in Ihrer Organisation verwendet werden. Sie können eine Liste der am häufigsten verwendeten Anwendungen abrufen, oder Sie können herausfinden, wie eine Anwendung verwendet wird, die vor kurzem in Ihrer Organisation eingeführt wurde. Dadurch können Sie die Nutzung im Laufe der Zeit nachverfolgen und verbessern.
 
 **Anmeldungen nach Ort und Benutzer**: Dieser Bericht enthält Daten zu allen Anmeldungen, die mit einer Azure-Identität ausgeführt wurden. Mit diesem Bericht können Sie einzelne Anmeldungen eingehender untersuchen und beispielsweise folgende Fragen beantworten:
 
@@ -101,13 +101,45 @@ Gehen Sie wie folgt vor, wenn Sie Ihr Inhaltspaket auf eine neuere Version aktua
 
 Nachdem Sie überprüft haben, ob die neue Version des Inhaltspakets wie erwartet funktioniert, können Sie die alte Version bei Bedarf entfernen, indem Sie die zugrunde liegenden Berichte und Datasets löschen, die diesem Inhaltspaket zugeordnet sind.
 
-## <a name="still-having-issues"></a>Es treten weiterhin Probleme auf? 
+## <a name="troubleshoot-content-pack-errors"></a>Problembehandlung bei Fehlern mit dem Inhaltspaket
 
-Hilfreiche Informationen finden Sie in unserem [Handbuch zur Problembehandlung](troubleshoot-content-pack.md). Allgemeine Hilfe zu Power BI finden Sie in diesen [Hilfeartikeln](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+Bei der Arbeit mit dem Inhaltspaket können eventuell folgende Fehler auftreten: 
+
+- [Fehler beim Aktualisieren](#refresh-failed) 
+- [Fehler beim Aktualisieren der Anmeldeinformationen für die Datenquelle](#failed-to-update-data-source-credentials) 
+- [Der Import von Daten dauert zu lange.](#data-import-is-too-slow) 
+
+Allgemeine Hilfe zu Power BI finden Sie in diesen [Hilfeartikeln](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+
+### <a name="refresh-failed"></a>Fehler beim Aktualisieren 
+ 
+**So werden Sie auf diesen Fehler aufmerksam**: E-Mail von Power BI oder Fehlerstatus im Aktualisierungsverlauf. 
+
+
+| Ursache | So behebt man den Fehler |
+| ---   | ---        |
+| Aktualisierungsfehler können auftreten, wenn die Anmeldeinformationen der Benutzer, die eine Verbindung mit dem Inhaltspaket herstellen, zurückgesetzt, aber nicht in den Verbindungseinstellungen des Inhaltspakets aktualisiert wurden. | Suchen Sie in Power BI das Dataset, das dem Dashboard für Azure AD-Aktivitätsprotokolle (**Azure Active Directory-Aktivitätsprotokolle**) entspricht. Wählen Sie die geplante Aktualisierung aus, und geben Sie dann Ihre Azure AD-Anmeldeinformationen ein. |
+| Bei einer Aktualisierung können aufgrund von Datenproblemen im zugrunde liegenden Inhaltspaket Fehler auftreten. | [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+ 
+### <a name="failed-to-update-data-source-credentials"></a>Fehler beim Aktualisieren der Anmeldeinformationen für die Datenquelle 
+ 
+**So werden Sie auf diesen Fehler aufmerksam**: In Power BI beim Herstellen einer Verbindung mit dem Inhaltspaket des Azure AD-Aktivitätsprotokolls. 
+
+| Ursache | So behebt man den Fehler |
+| ---   | ---        |
+| Der Benutzer, der eine Verbindung herstellt, ist kein globaler Administrator, kein Benutzer mit Leseberechtigung für Sicherheitsfunktionen bzw. kein Sicherheitsadministrator. | Verwenden Sie für den Zugriff auf die Inhaltspakete ein Konto, dem entweder die Rolle eines globalen Administrators, eines Benutzers mit Leseberechtigung für Sicherheitsfunktionen oder eines Sicherheitsadministrators zugewiesen ist. |
+| Ihr Mandant ist kein Premium-Mandant oder weist keinen Benutzer mit einer Premium-Lizenzdatei auf. | [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+### <a name="data-import-is-too-slow"></a>Der Datenimport ist zu langsam 
+ 
+**So werden Sie auf diesen Fehler aufmerksam**: Nachdem Sie in Power BI eine Verbindung mit Ihrem Inhaltspaket hergestellt haben, wird der Datenimportvorgang gestartet, und Ihr Dashboard wird für Azure AD-Aktivitätsprotokolle vorbereitet. Es wird folgende Nachricht angezeigt: **Daten werden importiert** wird ohne weitere Fortschritte angezeigt.  
+
+| Ursache | So behebt man den Fehler |
+| ---   | ---        |
+| Je nach Größe Ihres Mandanten kann dieser Schritt bis zu 30 Minuten dauern. | Wenn die Meldung innerhalb einer Stunde nicht ausgeblendet und Ihr Dashboard nicht angezeigt wird, [öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+  
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Installieren des Power BI-Inhaltspakets](quickstart-install-power-bi-content-pack.md)
-* [Problembehandlung bei Fehlern mit dem Inhaltspaket](troubleshoot-content-pack.md)
 * [Was sind Azure AD-Berichte?](overview-reports.md)

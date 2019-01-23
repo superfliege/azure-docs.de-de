@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302312"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212548"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Entwerfen von Tabellen in Azure SQL Data Warehouse
 
@@ -103,7 +103,7 @@ In einer partitionierten Tabelle werden die Tabellenzeilen nach Datenbereichen g
 ## <a name="columnstore-indexes"></a>ColumnStore-Indizes
 Standardmäßig speichert SQL Data Warehouse eine Tabelle als gruppierten Columnstore-Index. Mit dieser Form der Datenspeicherung wird eine hohe Datenkomprimierung und Abfrageleistung für große Tabellen erreicht.  Der gruppierte Columnstore-Index ist in der Regel die beste Wahl, aber in einigen Fällen ist ein gruppierter Index oder ein Heap die geeignete Speicherstruktur.
 
-Eine Liste der Columnstore-Funktionen finden Sie unter [Columnstore-Indizes – Neuigkeiten](/sql/relational-databases/indexes/columnstore-indexes-whats-new). Informationen zum Verbessern der Leistung von Columnstore-Indizes finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Eine Liste der Columnstore-Funktionen finden Sie unter [Columnstore-Indizes – Neuigkeiten](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Informationen zum Verbessern der Leistung von Columnstore-Indizes finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistiken
 Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, Statistiken für einzelne Spalten zu erstellen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Die Erstellung und die Aktualisierung von Statistiken werden nicht automatisch ausgeführt. [Erstellen Sie Statistiken](/sql/t-sql/statements/create-statistics-transact-sql), nachdem eine Tabelle erstellt wurde. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
@@ -133,7 +133,7 @@ SQL Data Warehouse unterstützt viele, aber nicht alle Tabellenfunktionen andere
 - [Indizierte Sichten](/sql/relational-databases/views/create-indexed-views)
 - [Sequenz](/sql/t-sql/statements/create-sequence-transact-sql)
 - [Spalten mit geringer Dichte](/sql/relational-databases/tables/use-sparse-columns)
-- [Ersatzschlüssel](). Implementierung mit [Identity](sql-data-warehouse-tables-identity.md).
+- Ersatzschlüssel. Implementierung mit [Identity](sql-data-warehouse-tables-identity.md).
 - [Synonyme](/sql/t-sql/statements/create-synonym-transact-sql)
 - [Trigger](/sql/t-sql/statements/create-trigger-transact-sql)
 - [Eindeutige Indizes](/sql/t-sql/statements/create-index-transact-sql)

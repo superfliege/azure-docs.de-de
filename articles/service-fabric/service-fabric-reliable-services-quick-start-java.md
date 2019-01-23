@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: d4e3419241d44744f8a692896848edb6cebb56a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 84a495274ffadfe816ced21cd095f7a5e18d7f89
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049693"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199543"
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Wenn Sie sie einrichten müssen, wechseln Sie zu [Einrichten Ihrer Entwicklungsu
 Für den Einstieg in Reliable Services müssen Sie sich nur mit einigen grundlegenden Konzepten vertraut machen:
 
 * **Diensttyp**: Dies ist Ihre Dienstimplementierung. Sie wird durch die von Ihnen geschriebene Klasse definiert, mit der `StatelessService` und alle anderen darin verwendeten Codeelemente oder Abhängigkeiten erweitert werden, einschließlich eines Namens und der Versionsnummer.
-* **Instanz des benannten Diensts**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Bei Dienstinstanzen handelt es sich eigentlich um Objektinstanziierungen der von Ihnen geschriebenen Dienstklasse.
+* **Benannte Dienstinstanz**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Bei Dienstinstanzen handelt es sich eigentlich um Objektinstanziierungen der von Ihnen geschriebenen Dienstklasse.
 * **Diensthost**: Die benannten Dienstinstanzen, die Sie erstellen, müssen in einem Host ausgeführt werden. Der Diensthost ist nur ein Prozess, für den Instanzen Ihres Diensts ausgeführt werden können.
 * **Dienstregistrierung**: Bei der Registrierung werden alle Elemente zusammengeführt. Der Diensttyp muss bei der Service Fabric-Laufzeit in einem Diensthost registriert werden, damit von Service Fabric Instanzen davon für die Ausführung erstellt werden können.  
 
@@ -201,7 +201,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable HashMaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Mit Reliable HashMaps kann die Hochverfügbarkeit Ihrer Daten ermöglicht werden. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable HashMaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Mit Reliable HashMaps kann die Hochverfügbarkeit Ihrer Daten ermöglicht werden. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
 
 Reliable Collections können mit gewissen Einschränkungen beliebige Java-Typen – einschließlich benutzerdefinierten Typen – speichern:
 

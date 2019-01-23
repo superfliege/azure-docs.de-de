@@ -14,15 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5f6334f80b9c48832facba97b816d254baeb94bc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5cb1fe623062816955278da7b0a9e63cbc19254
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341302"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258474"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Grundlegendes zu Azure Security Center-Containerempfehlungen
 
+Wie Sie Ihre monolithischen Anwendungen zum Ausführen unternehmenskritischer, cloudnativer Anwendungen in Containern migrieren, können Sie die Vorteile der Features von Containern einschließlich müheloser und schneller Bereitstellung und Aktualisierung nutzen. Während die Anzahl der bereitgestellten Container kontinuierlich wächst, müssen Sicherheitslösungen eingerichtet werden, die Ihnen Einblick in den Sicherheitszustand Ihrer Container bieten und sie vor Bedrohungen schützen.
+
+Azure Security Center bietet die folgenden Funktionen, um Ihre Container zu sichern:
+
+- **Einblick in die Container, die auf IaaS-Linux-Computern gehostet werden**<br>In Azure Security Center zeigt die Registerkarte „Container“ alle mit Docker bereitgestellten VMs an. Bei der Untersuchung von Sicherheitsproblemen auf einem virtuellen Computer bietet Security Center zusätzliche Informationen, die im Zusammenhang mit den Containern im Computer stehen, z.B. die Docker-Version und die Anzahl der auf dem Host ausgeführten Images.
+
+    ![Registerkarte „Container“](./media/security-center-container-recommendations/docker-recommendation.png)
+
+
+- **Empfehlungen zur Sicherheit basierend auf der CIS-Benchmark für Docker**<br>Security Center scannt Ihre Docker-Konfigurationen und bietet Ihnen durch die Bereitstellung einer Liste aller festgestellten Regelverstöße Einblick in die Fehlkonfigurationen. Security Center bietet Richtlinien, mit denen Sie diese Probleme schnell beheben und Zeit sparen können. Security Center bewertet fortlaufend die Docker-Konfigurationen und unterrichtet Sie über deren aktuellen Zustand.
+
+    ![Registerkarte „Container“](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+- **Erkennung von Containerbedrohungen in Echtzeit**<br> Security Center bietet Bedrohungserkennung in Echtzeit für Ihre Container auf Linux-Computern mit AuditD-Komponente. Die Warnungen identifizieren mehrere verdächtige Docker-Aktivitäten, wie z.B. die Erstellung eines privilegierten Containers auf dem Host, ein Anzeichen, dass ein Secure Shell-Server (SSH) in einem Docker-Container ausgeführt wird, oder die Verwendung von Crypto-Minern. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
+
+    ![Registerkarte „Container“](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>Empfehlungen
 Verwenden Sie die folgenden Tabellen als Referenz, um die verfügbaren Container, die auf IaaS-Linux-Computern gehostet sind, und die Sicherheitsbewertung ihrer Docker-Konfigurationen zu verstehen.

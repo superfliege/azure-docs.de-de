@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b45284f8fe4bd7fb45e89eeecf13ae7b9b2969b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de472cd25997b0c48f258927b2617c2399b2bb21
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016680"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353361"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory (Vorschauversion)
 
@@ -31,6 +31,9 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 Sie können Daten aus Salesforce Marketing Cloud in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
+
+>[!NOTE]
+>Das Abrufen benutzerdefinierter Objekte oder benutzerdefinierter Datenerweiterungen wird von diesem Connector nicht unterstützt.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -46,7 +49,7 @@ Folgende Eigenschaften werden für den mit Salesforce Marketing Cloud verknüpft
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SalesforceMarketingCloud** | JA |
 | clientId | Die Client-ID, die der Salesforce Marketing Cloud-Anwendung zugeordnet ist.  | JA |
-| clientSecret | Der geheime Clientschlüssel, der der Salesforce Marketing Cloud-Anwendung zugeordnet ist. Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | JA |
+| clientSecret | Der geheime Clientschlüssel, der der Salesforce Marketing Cloud-Anwendung zugeordnet ist. Sie können dieses Feld optional als „SecureString“ markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | JA |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |

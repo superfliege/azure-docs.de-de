@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 21689cf7fe3df7ca7e362ba49824fadd5daaa3ea
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888765"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231733"
 ---
 # <a name="add-html-markers-to-the-map"></a>Hinzufügen von HTML-Markern zur Karte
 
@@ -77,7 +77,7 @@ Wenn der `htmlContent` des Markers ein DOM-Element ist (div, img...), können Si
 <iframe height='500' scrolling='no' title='Hinzufügen von Mausereignissen zu HTML-Markern' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Adding Mouse Events to HTML Markers</a> (Hinzufügen von Mausereignissen zu HTML-Markern) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Wenn `htmlContent` eine Zeichenfolge ist (z. B.   wie der Standard), können Sie ein DOM-Element erstellen und die Zeichenfolge als innerHTML und dann das DOM-Element als htmlContent hinzufügen. Wenn `htmlContent` eine auf Vorlagen basierende Zeichenfolge ist, müssen Sie zuerst `{text}`- und `{color}`-Werte in der Zeichenfolge suchen/ersetzen.
+Wenn `htmlContent` eine Zeichenfolge ist (z.B. wie der Standard), können Sie ein DOM-Element erstellen und die Zeichenfolge als innerHTML und dann das DOM-Element als htmlContent hinzufügen. Wenn `htmlContent` eine auf Vorlagen basierende Zeichenfolge ist, müssen Sie zuerst `{text}`- und `{color}`-Werte in der Zeichenfolge suchen/ersetzen.
 
 <br/>
 

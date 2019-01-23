@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 15c86d1d5af3ba4d373f8dfb199d9ea56edb60b4
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7413ebac82adce9f034d5ceec16ec76b9ad53f82
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002483"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359543"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 
@@ -52,9 +52,9 @@ Vor der Registrierung von Azure Stack in Azure müssen Sie folgende Bedingungen 
 
 - Sie müssen über den Benutzernamen und das Kennwort eines Kontos verfügen, das der Besitzer eines Abonnements ist.
 
-- Das Benutzerkonto muss Zugriff auf das Azure-Abonnement besitzen und berechtigt sein, Identitätsanwendungen und Dienstprinzipale in dem Verzeichnis zu erstellen, das diesem Abonnement zugeordnet ist.
+- Das Benutzerkonto muss Zugriff auf das Azure-Abonnement besitzen und berechtigt sein, Identitätsanwendungen und Dienstprinzipale in dem Verzeichnis zu erstellen, das diesem Abonnement zugeordnet ist. Wir empfehlen, dass Sie Azure Stack mithilfe einer Verwaltung mit geringstmöglichen Berechtigungen bei Azure registrieren, indem Sie [ein für die Registrierung zu verwendendes Dienstkonto erstellen](azure-stack-registration-role.md), statt Anmeldeinformationen eine globalen Administrators zu verwenden.
 
-- Sie müssen den Azure Stack-Ressourcenanbieter registriert haben. (Weitere Informationen finden Sie weiter unten im Abschnitt „Registrieren des Azure Stack-Ressourcenanbieters“.)
+- Sie müssen den Azure Stack-Ressourcenanbieter registriert haben. (Weitere Informationen finden Sie im folgenden Abschnitt „Registrieren des Azure Stack-Ressourcenanbieters“.)
 
 Nach der Registrierung ist globale Azure Active Directory-Administratorberechtigung nicht erforderlich. Einige Vorgänge erfordern jedoch möglicherweise die Anmeldeinformationen für den globalen Administrator. Beispielsweise ein Ressourcenanbieter-Installationsskript oder ein neues Feature, dem eine Berechtigung erteilt werden muss. Sie können entweder die globalen Administratorrechte des Kontos vorübergehend wiederherstellen oder ein separates globales Administratorkonto verwenden, das Besitzer des *Standardanbieterabonnements* ist.
 
@@ -72,7 +72,7 @@ Vergewissern Sie sich, dass in der Ausgabe **FullLanguageMode** zurückgegeben w
 
 ### <a name="install-powershell-for-azure-stack"></a>Installieren von PowerShell für Azure Stack
 
-Für die Registrierung bei Azure muss die neueste Version von PowerShell für Azure Stack verwendet werden.
+Verwenden Sie für die Registrierung bei Azure die neueste Version von PowerShell für Azure Stack.
 
 Siehe [Installieren von PowerShell für Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install), falls die aktuelle Version noch nicht installiert ist.
 
@@ -147,7 +147,7 @@ In mit Azure verbundenen Umgebungen kann auf das Internet und Azure zugegriffen 
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Stellen Sie als Nächstes in derselben PowerShell-Sitzung sicher, dass Sie im richtigen Azure PowerShell-Kontext angemeldet sind. Dies ist das Azure-Konto, das verwendet wurde, um den oben genannten Azure Stack-Ressourcenanbieter zu registrieren. Führen Sie diesen PowerShell-Befehl aus:
+6. Stellen Sie als Nächstes in derselben PowerShell-Sitzung sicher, dass Sie im richtigen Azure PowerShell-Kontext angemeldet sind. Dies ist das Azure-Konto, das zuvor verwendet wurde, um den Azure Stack-Ressourcenanbieter zu registrieren. Führen Sie diesen PowerShell-Befehl aus:
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -170,7 +170,7 @@ In mit Azure verbundenen Umgebungen kann auf das Internet und Azure zugegriffen 
    ```
    Weitere Informationen zum Cmdlet „Set-AzsRegistration“ finden Sie in der [Referenz zur Registrierung](#registration-reference).
 
-  Der Vorgang dauert 10 bis 15 Minuten. Wenn der Befehl abgeschlossen ist, sehen Sie die Meldung, dass **Ihre Umgebung nun registriert und mit den angegebenen Parametern aktiviert wurde**.
+  Der Vorgang dauert zwischen 10 und 15 Minuten. Wenn der Befehl abgeschlossen ist, sehen Sie die Meldung, dass **Ihre Umgebung nun registriert und mit den angegebenen Parametern aktiviert wurde**.
 
 ## <a name="register-connected-with-capacity-billing"></a>Registrieren einer verbundenen Instanz mit kapazitätsbasierter Abrechnung
 
@@ -306,9 +306,21 @@ Sie können die Kachel **Regionsverwaltung** verwenden, um zu überprüfen, ob d
 
 2. Wählen Sie im Dashboard **Regionsverwaltung** aus.
 
+3. Wählen Sie **Eigenschaften** aus. Auf diesem Blatt werden der Status und Details Ihrer Umgebung angezeigt. Der Status kann **registriert** oder **nicht registriert** lauten.
+
     [ ![Kachel „Regionsverwaltung“](media/azure-stack-registration/admin1sm.png "Kachel „Regionsverwaltung“")](media/azure-stack-registration/admin1.png#lightbox)
 
-3. Wählen Sie **Eigenschaften** aus. Auf diesem Blatt werden der Status und Details Ihrer Umgebung angezeigt. Der Status kann **registriert** oder **nicht registriert** lauten. Beim Status „registriert“ wird außerdem die ID des Azure-Abonnements angezeigt, mit dem Sie Ihren Azure Stack registriert haben, sowie die Gruppe und der Name der Registrierungsressource.
+    Wenn Sie die Registrierung durchgeführt haben, finden Sie folgende Eigenschaften vor:
+    
+    - **Abonnement-ID für die Registrierung**: Die Azure-Abonnement-ID, die registriert und mit Azure Stack verknüpft wurde
+    - **Ressourcengruppe für die Registrierung**: Die Azure-Ressourcengruppe im zugeordneten Abonnement mit den Azure Stack-Ressourcen.
+
+4. Verwenden Sie das Azure-Portal, um die Azure Stack-App-Registrierungen anzuzeigen. Melden Sie sich beim Azure-Portal mit einem Konto an, das dem Abonnement zugeordnet ist, mit dem Sie die Registrierung von Azure Stack durchgeführt haben. Wechseln Sie zu dem Mandanten, der mit Azure Stack verknüpft ist.
+5. Navigieren Sie zu **Azure Active Directory > App-Registrierungen > Alle Anwendungen anzeigen**.
+
+    ![App-Registrierungen](media/azure-stack-registration/app-registrations.png)
+
+    Azure Stack-App-Registrierungen ist das Präfix **Azure Stack** vorangestellt.
 
 Alternativ dazu können Sie mit dem Marketplace-Verwaltungsfeature überprüfen, ob Ihre Registrierung erfolgreich war. Wenn auf dem Marketplace-Verwaltungsblatt eine Liste mit Marketplace-Elementen angezeigt wird, war Ihre Registrierung erfolgreich. Allerdings werden in nicht verbundenen Umgebungen unter der Marketplace-Verwaltung keine Marketplace-Elemente angezeigt. Sie können jedoch das Offlinetool verwenden, um die Registrierung zu überprüfen.
 

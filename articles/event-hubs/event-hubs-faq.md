@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7308b122d878c225aa98a19a303bc9520f3201ef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcbb249c6cb3c886b94f8ad68dd668cb8858ac77
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088226"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354588"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -181,6 +181,9 @@ Capture verwendet ein Speicherkonto, das Sie angeben, wenn es auf einem Event Hu
 Eine Liste aller Kontingente für Event Hubs finden Sie unter [Event Hubs-Kontingente](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Warum kann ich keinen Namespace erstellen, nachdem ich ihn aus einem anderen Abonnement gelöscht habe? 
+Wenn Sie einen Namespace aus einem Abonnement löschen, warten Sie vier Stunden, bevor Sie ihn mit dem gleichen Namen in einem anderen Abonnement erstellen. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Event Hubs generiert werden, und die vorgeschlagenen Aktionen?
 

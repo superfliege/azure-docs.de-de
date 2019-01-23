@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002653"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304838"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -58,6 +58,8 @@ Weitere Informationen zum Auswählen der richtigen Anzahl an SUs finden Sie auf 
 Temporale (zeitlich orientierte) Abfrageelemente sind die Kerngruppe der zustandsbehafteten Operatoren, die von Stream Analytics bereitgestellt werden. Stream Analytics verwaltet den Zustand dieser Vorgänge intern im Auftrag des Benutzers durch Verwaltung des Speicherverbrauchs, Prüfpunktausführung für höhere Resilienz und Zustandswiederherstellung bei Dienstupgrades. Obwohl Stream Analytics die Zustände vollständig verwaltet, sollte der Benutzer einige Empfehlungen zu bewährten Methoden berücksichtigen.
 
 Beachten Sie, dass ein Auftrag mit komplexer Abfragelogik eine hohe prozentuelle Auslastung der SUs aufweisen kann, wenn er nicht kontinuierlich Eingabeereignisse empfängt. Dies kann nach einer plötzlichen Spitze bei den Eingabe- und Ausgabeereignissen auftreten. Möglicherweise wird der Zustand des Auftrags im Arbeitsspeicher weiterhin beibehalten, wenn die Abfrage komplex ist.
+
+Die Speichereinheitnutzung in % kann für einen kurzen Zeitraum plötzlich auf 0 fallen, bevor wieder die erwartete Ebene erreicht wird. Dies geschieht aufgrund von vorübergehenden Fehlern oder durch vom System initiierte Upgrades.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Zustandsbehaftete Abfragelogik in temporalen Elementen
 Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren enthalten Zustandsinformationen. Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 

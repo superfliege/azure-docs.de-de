@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: f220aee3fa0d9a79723383fc31fec0eed2554bb4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833685"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261552"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -98,6 +98,9 @@ Suchen Sie nach **Microsoft.Media** und **Microsoft.EventGrid**. Klicken Sie auf
 
 Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie versuchen, das Problem über eine manuelle Verbindungsherstellung zu beheben.
 
+> [!NOTE]
+> Die folgenden drei Konten sollten unbedingt in derselben Region vorhanden sein: das Video Indexer-Konto, dessen Verbindung mit dem Media Services-Konto Sie herstellen, sowie das mit demselben Media Services-Konto verbundene Azure Storage-Konto.
+
 ### <a name="create-and-configure-a-media-services-account"></a>Erstellen und Konfigurieren eines Media Services-Konto
 
 1. Verwenden Sie das [Azure](https://portal.azure.com/)-Portal, um ein Azure Media Services-Konto zu erstellen, wie beschrieben unter [Erstellen eines Kontos](../previous/media-services-portal-create-account.md).
@@ -135,7 +138,7 @@ Klicken Sie auf der Seite **Video Indexer** im Dialogfeld [Video Indexer mit ein
 
 Geben Sie im Dialogfeld die folgenden Informationen ein:
 
-|Einstellung|Beschreibung|
+|Einstellung|BESCHREIBUNG|
 |---|---|
 |Region für Video Indexer-Konto|Der Name der Region für das Video Indexer-Konto. Zur Verbesserung der Leistung und Senkung der Kosten wird dringend empfohlen, den Namen der Region anzugeben, in der sich die Azure Media Services-Ressourcen und das Azure Storage-Konto befinden. |
 |Azure Active Directory-Mandant (AAD)|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers. Der Name befindet sich rechts neben **Domäne**.|

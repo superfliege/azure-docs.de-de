@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557280"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304906"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 
@@ -50,7 +50,7 @@ In dieser exemplarischen Vorgehensweise entwickeln Sie eine .NET Framework-Web-A
 * Verwenden des RESTful-Diensts in der User Journey
 * Senden von Eingabeansprüchen und Lesen in Ihrem Code
 * Überprüfen des Vornamens des Benutzers
-* Zurücksenden einer Treuenummer 
+* Zurücksenden einer Treuenummer
 * Hinzufügen der Treuenummer zum JSON Web Token (JWT)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -77,11 +77,11 @@ Führen Sie die Schritte im Artikel [Erste Schritte mit benutzerdefinierten Rich
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Schritt 2: Vorbereiten des REST-API-Endpunkts
 
 ### <a name="step-21-add-data-models"></a>Schritt 2.1: Hinzufügen von Datenmodellen
-Die Modelle stehen für die Eingabeanspruchs- und Ausgabeanspruchsdaten in Ihrem RESTful-Dienst. Ihr Code liest die Eingabedaten, indem das Eingabeanspruchsmodell aus einer JSON-Zeichenfolge in ein C#-Objekt (Ihr Modell) deserialisiert wird. Mit der ASP.NET-Web-API wird das Ausgabeanspruchsmodell automatisch zurück in JSON deserialisiert, und anschließend werden die serialisierten Daten in den Hauptteil der HTTP-Antwortnachricht geschrieben. 
+Die Modelle stehen für die Eingabeanspruchs- und Ausgabeanspruchsdaten in Ihrem RESTful-Dienst. Ihr Code liest die Eingabedaten, indem das Eingabeanspruchsmodell aus einer JSON-Zeichenfolge in ein C#-Objekt (Ihr Modell) deserialisiert wird. Mit der ASP.NET-Web-API wird das Ausgabeanspruchsmodell automatisch zurück in JSON deserialisiert, und anschließend werden die serialisierten Daten in den Hauptteil der HTTP-Antwortnachricht geschrieben.
 
 Erstellen eines Modells, das Eingabeansprüche darstellt, indem es Folgendes ausführt:
 
-1. Wenn der Projektmappen-Explorer nicht geöffnet ist, wählen Sie **Ansicht** > **Projektmappen-Explorer** aus. 
+1. Wenn der Projektmappen-Explorer nicht geöffnet ist, wählen Sie **Ansicht** > **Projektmappen-Explorer** aus.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Modelle**, und wählen Sie dann **Hinzufügen** und anschließend **Klasse** aus.
 
     ![Modell hinzufügen](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,7 +128,7 @@ Erstellen eines Modells, das Eingabeansprüche darstellt, indem es Folgendes aus
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
@@ -241,20 +241,20 @@ Der `loyaltyNumber`-Anspruch ist in unserem Schema noch nicht definiert. Fügen 
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>Schritt 5: Hinzufügen eines Anspruchsanbieters 
-Jeder Anspruchsanbieter muss über mindestens ein technisches Profil verfügen, mit dem die Endpunkte und die Protokolle bestimmt werden, die für die Kommunikation mit diesem Anspruchsanbieter erforderlich sind. 
+## <a name="step-5-add-a-claims-provider"></a>Schritt 5: Hinzufügen eines Anspruchsanbieters
+Jeder Anspruchsanbieter muss über mindestens ein technisches Profil verfügen, mit dem die Endpunkte und die Protokolle bestimmt werden, die für die Kommunikation mit diesem Anspruchsanbieter erforderlich sind.
 
-Ein Anspruchsanbieter kann aus verschiedenen Gründen über mehrere technische Profile verfügen. Beispielsweise können mehrere technische Profile definiert werden, da der Anspruchsanbieter mehrere Protokolle unterstützt, Endpunkte unterschiedliche Funktionen aufweisen können oder Releases unterschiedliche Ansprüche mit verschiedenen Vertrauensgraden enthalten können. Es kann akzeptabel sein, in einer User Journey vertrauliche Ansprüche freizugeben, während dies für eine andere nicht der Fall ist. 
+Ein Anspruchsanbieter kann aus verschiedenen Gründen über mehrere technische Profile verfügen. Beispielsweise können mehrere technische Profile definiert werden, da der Anspruchsanbieter mehrere Protokolle unterstützt, Endpunkte unterschiedliche Funktionen aufweisen können oder Releases unterschiedliche Ansprüche mit verschiedenen Vertrauensgraden enthalten können. Es kann akzeptabel sein, in einer User Journey vertrauliche Ansprüche freizugeben, während dies für eine andere nicht der Fall ist.
 
 Der folgende XML-Ausschnitt enthält einen Anspruchsanbieterknoten mit zwei technischen Profilen:
 
-* **TechnicalProfile Id="REST-API-SignUp"** definiert Ihren RESTful-Dienst. 
-   * `Proprietary` wird als das Protokoll für einen RESTful-basierten Anbieter beschrieben. 
-   * `InputClaims` definiert die Ansprüche, die von Azure AD B2C an den REST-Dienst gesendet werden. 
+* **TechnicalProfile Id="REST-API-SignUp"**: Definiert Ihren RESTful-Dienst.
+   * `Proprietary` wird als das Protokoll für einen RESTful-basierten Anbieter beschrieben.
+   * `InputClaims` definiert die Ansprüche, die von Azure AD B2C an den REST-Dienst gesendet werden.
 
    In diesem Beispiel werden der Inhalt des Anspruchs `givenName` als `firstName` und der Inhalt des Anspruchs `surname` als `lastName` an den REST-Dienst gesendet, während `email` unverändert gesendet wird. Mit dem `OutputClaims`-Element werden die Ansprüche definiert, die vom RESTful-Dienst abgerufen werden, um zurück an Azure AD B2C gesendet zu werden.
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** fügt einem vorhandenen technischen Profil (definiert in der Basisrichtlinie) ein technisches Validierungsprofil hinzu. Während des Anmeldeablaufs ruft das technische Validierungsprofil das obige technische Profil auf. Wenn der RESTful-Dienst einen HTTP-Fehler 409 (Konfliktfehler) zurückgibt, wird die Fehlermeldung dem Benutzer angezeigt. 
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**: Fügt das technische Validierungsprofil einem vorhandenen technischen Profil (in der Basisrichtlinie definiert) hinzu. Während des Anmeldeablaufs ruft das technische Validierungsprofil das obige technische Profil auf. Wenn der RESTful-Dienst einen HTTP-Fehler 409 (Konfliktfehler) zurückgibt, wird die Fehlermeldung dem Benutzer angezeigt.
 
 Suchen Sie nach dem Knoten `<ClaimsProviders>`, und fügen Sie dann unter dem Knoten `<ClaimsProviders>` den folgenden XML-Codeausschnitt hinzu:
 
@@ -329,7 +329,7 @@ Nachdem Sie den neuen Anspruch hinzugefügt haben, sieht der Code für die vertr
 
 2. Wählen Sie **Framework für die Identitätsfunktion** aus.
 
-3. Öffnen Sie **Alle Richtlinien**. 
+3. Öffnen Sie **Alle Richtlinien**.
 
 4. Wählen Sie **Richtlinie hochladen** aus.
 
@@ -354,7 +354,7 @@ Nachdem Sie den neuen Anspruch hinzugefügt haben, sieht der Code für die vertr
 
     ![Testen Ihrer Richtlinie](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  Geben Sie in das Feld **Vorname** einen Namen (nicht „Test“) ein.  
+4. Geben Sie in das Feld **Vorname** einen Namen (nicht „Test“) ein.  
     Azure AD B2C meldet den Benutzer an und sendet dann eine „loyaltyNumber“ an Ihre Anwendung. Die Treuenummer ist in diesem JWT-Code enthalten.
 
 ```
@@ -381,7 +381,7 @@ Nachdem Sie den neuen Anspruch hinzugefügt haben, sieht der Code für die vertr
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(Optional:) Herunterladen der vollständigen Richtliniendateien und des Codes
 * Nachdem Sie die exemplarische Vorgehensweise unter [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) abgeschlossen haben, empfiehlt es sich, ein Szenario mit Ihren eigenen benutzerdefinierten Richtliniendateien zu erstellen. Zu Referenzzwecken haben wir [Beispiele für Richtliniendateien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw) bereitgestellt.
 * Sie können den vollständigen Code unter [Sample Visual Studio solution for reference](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/) (Visual Studio-Beispiellösung zur Referenz) herunterladen.
-    
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Secure your RESTful API with basic authentication (username and password)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) (Schützen Ihrer RESTful-API per Standardauthentifizierung (Benutzername und Kennwort))
 * [Schützen Ihrer RESTful-API mit Clientzertifikaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

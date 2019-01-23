@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631854"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214996"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -125,6 +125,15 @@ Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [
 > [!NOTE]
 > Damit Systeme mit dem Operations Manager-Agent vollständig durch die Updateverwaltung verwaltet werden können, muss der Agent auf den Microsoft Monitoring Agent aktualisiert werden. Informationen zum Aktualisieren des Agents finden Sie unter [Aktualisieren eines Operations Manager-Agents](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
 
+## <a name="onboard"></a>Aktivieren der Updateverwaltung
+
+Um mit dem Patchen von Systemen zu beginnen, müssen Sie die Updateverwaltungslösung aktivieren. Es gibt viele Methoden, Computer in die Updateverwaltung zu integrieren. Die folgenden Methoden zum Integrieren der Lösung werden empfohlenen und unterstützt:
+
+* [Über einen virtuellen Computer](automation-onboard-solutions-from-vm.md)
+* [Über Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md)
+* [Über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md)
+* [Über ein Azure Automation-Runbook](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Bestätigen der Integration von Nicht-Azure-Computern
 
 Nach einigen Minuten können Sie eine der folgenden Protokollsuchen ausführen, um zu bestätigen, dass direkt verbundene Computer mit Log Analytics kommunizieren.

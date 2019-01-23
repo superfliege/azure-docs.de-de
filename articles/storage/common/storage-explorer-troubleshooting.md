@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2434c04260c223fdcc03bc7f91a6fd147e1d8503
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616196"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264102"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -21,7 +21,7 @@ Bei Microsoft Azure Storage-Explorer handelt es sich um eine eigenständige App,
 
 In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme im Storage-Explorer zusammengefasst.
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Fehler: selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Fehler selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
 
 Zertifikatfehler werden durch eine der beiden folgenden Situationen verursacht:
 
@@ -100,7 +100,7 @@ Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, pr
 Wenn ein zugeordnetes Konto oder eine verbundene Speicherressource über die Benutzeroberfläche nicht entfernt werden kann, können Sie alle zugeordneten Ressourcen manuell löschen, indem Sie die folgenden Ordner löschen:
 
 * Windows: `%AppData%/StorageExplorer`
-* macOS: `/Users/<your_name>/Library/Applicaiton Support/StorageExplorer`
+* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]

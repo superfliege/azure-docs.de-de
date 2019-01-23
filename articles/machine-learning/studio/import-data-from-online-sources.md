@@ -1,27 +1,8 @@
 ---
-title: Importieren von Daten in Machine Learning Studio aus Onlinedatenquellen – Azure | Microsoft-Dokumentation
-description: In diesem Artikel werden die Unterstützung des Importierens von Onlinedaten aus verschiedenen Datenquellen und die erforderlichen Informationen zum Verschieben von Daten aus diesen Quellen in ein Azure Machine Learning Studio-Experiment beschrieben.
-keywords: Importieren von Daten,Datenformat,Datentypen,Datenquellen,Trainingsdaten
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/29/2017
-ms.openlocfilehash: a81765620b31af8a23d70d35cf8f86fc4b8e0033
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256093"
+Titel: Importieren von Daten in Machine Learning Studio aus Onlinedatenquellen titleSuffix: Azure Machine Learning Studio – Beschreibung: In diesem Artikel werden die Unterstützung des Importierens von Onlinedaten aus verschiedenen Datenquellen und die erforderlichen Informationen zum Verschieben von Daten aus diesen Quellen in ein Azure Machine Learning Studio-Experiment beschrieben.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 29.11.2017
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Importieren von Daten in Azure Machine Learning Studio aus Onlinedatenquellen 
 In diesem Artikel werden die Unterstützung des Importierens von Onlinedaten aus verschiedenen Datenquellen und die erforderlichen Informationen zum Verschieben von Daten aus diesen Quellen in ein Azure Machine Learning Studio-Experiment beschrieben.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 70bae1558860b763d17d04e10d5d926b39300101
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38301563"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321244"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Erste Schritte mit der Azure CDN-Entwicklung
 > [!div class="op_single_selector"]
@@ -340,7 +340,7 @@ function cdnDelete() {
 Wir können unser Node.js-Programm jetzt ausführen, indem wir unseren bevorzugten Debugger oder die Konsole verwenden.
 
 > [!TIP]
-> Wenn Sie Visual Studio Code als Debugger verwenden, müssen Sie Ihre Umgebung so einrichten, dass die Befehlszeilenparameter übergeben werden.  Visual Studio Code verwendet hierfür die Datei **launch.json** .  Suchen Sie nach einer Eigenschaft mit dem Namen **args**, und fügen Sie ein Array mit Zeichenfolgenwerten für Ihre Parameter hinzu, um in etwa Folgendes zu erhalten: `"args": ["list", "profiles"]`.
+> Wenn Sie Visual Studio Code als Debugger verwenden, müssen Sie Ihre Umgebung so einrichten, dass die Befehlszeilenparameter übergeben werden.  Visual Studio Code verwendet hierfür die Datei **launch.json**.  Suchen Sie nach einer Eigenschaft mit dem Namen **args**, und fügen Sie ein Array mit Zeichenfolgenwerten für Ihre Parameter hinzu, um in etwa Folgendes zu erhalten: `"args": ["list", "profiles"]`.
 > 
 > 
 

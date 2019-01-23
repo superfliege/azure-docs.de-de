@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1674a54ea78e7fea2cc39cb26fefc52b8764bc4c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093283"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200852"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption für virtuelle IaaS-Computer
 
@@ -81,7 +81,7 @@ Folgende Szenarien, Features und Technologien werden von der Lösung nicht unter
 
 * IaaS-VMs des Basic-Tarifs
 * Deaktivieren der Verschlüsselung auf einem Betriebssystemlaufwerk für Linux-IaaS-VMs
-* Deaktivieren der Verschlüsselung auf einem Datenlaufwerk, wenn das Betriebssystemlaufwerk für Linux-IaaS-VMs verschlüsselt ist
+* Deaktivieren der Verschlüsselung auf einem Datenlaufwerk, wenn das Betriebssystemlaufwerk für Linux-IaaS-VMs verschlüsselt ist.
 * IaaS-VMs, die mithilfe der klassischen Methode zum Erstellen von VMs erstellt werden
 * Aktivieren der Verschlüsselung für benutzerdefinierte Images von Kunden auf Linux-IaaS-VMs
 * Integration in das lokale Schlüsselverwaltungssystem

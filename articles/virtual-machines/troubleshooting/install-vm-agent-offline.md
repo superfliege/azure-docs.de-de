@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192055"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259681"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -35,6 +35,14 @@ In den folgenden Szenarien können Sie den VM-Agent im Offlinemodus installieren
 ## <a name="how-to-install-the-vm-agent-in-offline-mode"></a>Installieren des VM-Agents im Offlinemodus
 
 Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
+
+> [!NOTE]
+> Sie können das Installieren des VM-Agents im Offlinemodus automatisieren.
+> Verwenden Sie hierzu die [Azure VM-Wiederherstellungsskripts](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Wenn Sie die Azure VM-Wiederherstellungsskripts verwenden möchten, können Sie den folgenden Prozess verwenden:
+> 1. Überspringen Sie Schritt 1, indem Sie mit Hilfe der Skripte den Betriebssystemdatenträger der betroffenen VM einer Wiederherstellungs-VM anfügen.
+> 2. Führen Sie die Schritte 2 bis 10 aus, um die Risikominderungen anzuwenden.
+> 3. Überspringen Sie Schritt 11 mithilfe der Skripts, um die VM neu zu erstellen.
+> 4. Führen Sie Schritt 12 aus.
 
 ### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Schritt 1: Anfügen des Betriebssystem-Datenträgers des virtuellen Computers als Datenträger an einen anderen virtuellen Computer
 

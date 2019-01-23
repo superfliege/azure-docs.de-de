@@ -5,15 +5,15 @@ services: storage
 author: yuemlu
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264419"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193381"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
@@ -42,15 +42,15 @@ Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden 
 
 In diesem Abschnitt werden einige der Features von Standardspeicher erläutert. Ausführlichere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../articles/storage/common/storage-introduction.md).
 
-**Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure-Dateien, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](../articles/storage/common/storage-quickstart-create-account.md).
+**Storage Standard**: Azure Storage Standard unterstützt Azure-Datenträger, Azure-Blobs, Azure Files, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](../articles/storage/common/storage-quickstart-create-account.md).
 
-**SSD Standard-Datenträger:** SSD Standard-Datenträger bieten eine zuverlässigere Leistung als HDD Standard-Datenträger und sind derzeit verfügbar. Weitere Informationen zur Verfügbarkeit von SSD Standard-Datenträgern in verschiedenen Regionen finden Sie unter [Regionale Verfügbarkeit von SSD Standard-Datenträgern](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**SSD Standard-Datenträger**: SSD Standard-Datenträger bieten eine zuverlässigere Leistung als HDD Standard-Datenträger und sind derzeit verfügbar. Weitere Informationen zur Verfügbarkeit von SSD Standard-Datenträgern in verschiedenen Regionen finden Sie unter [Regionale Verfügbarkeit von SSD Standard-Datenträgern](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
-**Standard-HDD-Datenträger:** Standard-HDD-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standard-HDD-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben.
+**HDD Standard-Datenträger**: HDD Standard-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standard-HDD-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben.
 
-**Standardseitenblob:** Standardseitenblobs dienen zum Speichern persistenter Datenträger für virtuelle Computer, und Sie können wie bei anderen Arten von Azure-Blobs direkt über REST auf sie zugreifen. Bei [Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) handelt es sich um eine Sammlung von 512-Byte-Seiten, die für zufällige Lese- und Schreibvorgänge optimiert sind. 
+**Standardseitenblob**: Standardseitenblobs dienen zum Speichern persistenter Datenträger für virtuelle Computer, und Sie können wie bei anderen Arten von Azure-Blobs direkt über REST auf sie zugreifen. Bei [Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) handelt es sich um eine Sammlung von 512-Byte-Seiten, die für zufällige Lese- und Schreibvorgänge optimiert sind. 
 
-**Speicherreplikation:** In den meisten Regionen können in Standardspeicherkonten gespeicherte Daten lokal oder georedundant in mehreren Rechenzentren repliziert werden. Zur Verfügung stehen vier Replikationsarten: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und georedundanter Speicher mit Lesezugriff (RA-GRS). Für Managed Disks in Standardspeicher wird derzeit nur lokal redundanter Speicher (LRS) unterstützt. Weitere Informationen finden Sie unter [Azure Storage-Replikation](../articles/storage/common/storage-redundancy.md).
+**Speicherreplikation**: In den meisten Regionen können in Standardspeicherkonten gespeicherte Daten lokal oder georedundant in mehreren Rechenzentren repliziert werden. Zur Verfügung stehen vier Replikationsarten: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und georedundanter Speicher mit Lesezugriff (RA-GRS). Für Managed Disks in Standardspeicher wird derzeit nur lokal redundanter Speicher (LRS) unterstützt. Weitere Informationen finden Sie unter [Azure Storage-Replikation](../articles/storage/common/storage-redundancy.md).
 
 ## <a name="scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele
 
@@ -75,15 +75,7 @@ Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen 
 
 ### <a name="standard-disks-limits"></a>Grenzwerte für Standarddatenträger
 
-Im Gegensatz zu Premium-Datenträgern werden für Standarddatenträger keine E/A-Vorgänge pro Sekunde (Input/Output Operations Per Second, IOPS) und kein Durchsatz (Bandbreite) bereitgestellt. Die Leistung von Standarddatenträgern hängt nicht von der Größe des Datenträgers ab, sondern von der Größe des virtuellen Computers, an den der jeweilige Datenträger angefügt ist. Erwartungsgemäß kann maximal der in der folgenden Tabelle angegebene Leistungsgrenzwert erreicht werden.
-
-**Grenzwerte für (verwaltete und nicht verwaltete) Standarddatenträger**
-
-| **VM-Tarif**            | **Virtueller Computer – Basic-Tarif** | **Virtueller Computer – Standard-Tarif** |
-|------------------------|-------------------|----------------------|
-| Maximale Datenträgergröße          | 32767 GiB           | 32767 GiB        |
-| Max. 8 KB an IOPS pro Datenträger | Bis zu 2.000         | Bis zu 2.000        |
-| Max. Bandbreite pro Datenträger | Bis zu 500 MB/s     | Bis zu 500 MB/s      |
+Im Gegensatz zu Premium-Datenträgern werden für Standarddatenträger keine E/A-Vorgänge pro Sekunde (Input/Output Operations Per Second, IOPS) und kein Durchsatz (Bandbreite) bereitgestellt. Die Leistung von Standarddatenträgern hängt von der Größe des virtuellen Computers ab, dem der jeweilige Datenträger angefügt ist, und der Größe des Datenträgers.
 
 Wenn Ihre Workload Datenträgerunterstützung für hohe Leistung und geringe Latenz erfordert, empfiehlt sich unter Umständen die Verwendung von Storage Premium. Weitere Informationen zu den Vorteilen von Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
 
@@ -117,9 +109,9 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 * Ausgehende Datenübertragungen
 * Transaktionen
 
-**Nicht verwaltete Speicherdaten und Datenträgergröße:** Bei nicht verwalteten Datenträgern und anderen Daten (Blobs, Tabellen, Warteschlangen und Dateien) fallen nur Kosten für den genutzten Speicherplatz an. Wenn Sie also beispielsweise über einen virtuellen Computer verfügen, bei dem das Seitenblob mit 127 GB bereitgestellt ist, aber nur 10 GB des Speicherplatzes tatsächlich genutzt werden, werden nur 10 GB in Rechnung gestellt. Standardspeicher bis zu 8191 GB und nicht verwaltete Standard-Datenträger bis zu 4.095 GB werden unterstützt. 
+**Nicht verwaltete Speicherdaten und Datenträgergröße**: Bei nicht verwalteten Datenträgern und anderen Daten (Blobs, Tabellen, Warteschlangen und Dateien) fallen nur Kosten für den genutzten Speicherplatz an. Wenn Sie also beispielsweise über einen virtuellen Computer verfügen, bei dem das Seitenblob mit 127 GB bereitgestellt ist, aber nur 10 GB des Speicherplatzes tatsächlich genutzt werden, werden nur 10 GB in Rechnung gestellt. Standardspeicher bis zu 8191 GB und nicht verwaltete Standard-Datenträger bis zu 4.095 GB werden unterstützt. 
 
-**Verwaltete Datenträger:** Die Abrechnung für verwaltete Standard-Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GiB angeben, erfolgt die Abrechnung gemäß den Preisen für den Datenträgertyp S15.
+**Verwaltete Datenträger**: Die Abrechnung für verwaltete Standard-Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GiB angeben, erfolgt die Abrechnung gemäß den Preisen für den Datenträgertyp S15.
 
 Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau.
 
@@ -128,11 +120,11 @@ Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in 
 | Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16385 GiB (16 TiB) | 32767 GiB (32 TiB) |
 
 
-**Momentaufnahmen:** Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+**Momentaufnahmen**: Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 **Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten für die Bandbreitennutzung.
 
-**Transaktionen**: Bei Azure-Standardspeicher fällt pro 100.000 Transaktionen eine Gebühr von 0,0036 USD an. Transaktionen umfassen Lese- und Schreibvorgänge im Speicher.
+**Transaktion**: Bei Azure-Standardspeicher fällt pro 100.000 Transaktionen eine Gebühr von 0,0036 USD an. Transaktionen umfassen Lese- und Schreibvorgänge im Speicher.
 
 Ausführliche Informationen zu den Preisen für Standardspeicher, Virtual Machines und Managed Disks finden Sie unter den folgenden Links:
 

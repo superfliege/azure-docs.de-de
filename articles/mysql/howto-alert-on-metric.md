@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 999b1d03ad8cb0b27de10ff6457c0e6cc9112ee7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/10/2019
+ms.openlocfilehash: 1287df97f10033472c9717309688cf89887a66ed
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548730"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242963"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL 
 
@@ -25,48 +25,54 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
-* [Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure-Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik aus dem Azure-Portal
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) den zu überwachenden Azure Database for MySQL-Server aus.
 
-2. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Warnungsregeln** aus, wie unten gezeigt:
+2. Wählen Sie im Abschnitt **Überwachung** in der Randleiste die Option **Warnungen** aus, wie unten gezeigt:
 
-   ![„Warnungsregeln“ auswählen](./media/howto-alert-on-metric/1-alert-rules.png)
+   ![„Warnungsregeln“ auswählen](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. Wählen Sie **Metrikwarnung hinzufügen** (Plussymbol) aus. 
+3. Wählen Sie **Metrikwarnung hinzufügen** (Plussymbol) aus.
 
-4. Die Seite **Regel hinzufügen** wird geöffnet, wie unten gezeigt.  Füllen Sie die erforderlichen Informationen aus:
+4. Die Seite **Regel erstellen** wird geöffnet, wie unten gezeigt. Füllen Sie die erforderlichen Informationen aus:
 
-   ![Formular „Metrikwarnung hinzufügen“](./media/howto-alert-on-metric/2-add-rule-form.png)
+   ![Formular „Metrikwarnung hinzufügen“](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-   | Einstellung | BESCHREIBUNG  |
-   |---------|---------|
-   | NAME | Geben Sie einen Namen für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
-   | BESCHREIBUNG | Geben Sie eine kurze Beschreibung für die Warnungsregel an. Dieser Wert wird in der E-Mail zur Warnungsbenachrichtigung gesendet. |
-   | Warnung bei | Wählen Sie für diese Art der Warnung die Option **Metriken** aus. |
-   | Abonnement | Dieses Feld ist bereits mit dem Abonnement ausgefüllt, das Ihr Azure Database for MySQL hostet. |
-   | Ressourcengruppe | Dieses Feld ist bereits mit der Ressourcengruppe für Ihr Azure Database for MySQL ausgefüllt. |
-   | Ressource | Dieses Feld ist bereits mit dem Namen für Ihr Azure Database for MySQL ausgefüllt. |
-   | Metrik | Wählen Sie die Metrik aus, für die Sie eine Warnung ausgeben möchten. Beispiel: **Speicher in Prozent**. |
-   | Bedingung | Wählen Sie die Bedingung aus, mit der die Metrik verglichen wird. Beispiel **Größer als**. |
-   | Schwellenwert | Der Schwellenwert für die Metrik, z. B. 85 (Prozent). |
-   | Zeitraum | Der Zeitraum für die Metrikregel, der erfüllt sein muss, ehe die Warnung ausgelöst wird. Beispiel: **Innerhalb der letzten 30 Minuten**. |
+5. Wählen Sie im Abschnitt **Bedingung** **Bedingung hinzufügen**.
 
-   Auf Basis des Beispiels sucht die Warnung nach „Speicher in Prozent“ über 85 % über einen Zeitraum von 30 Minuten. Diese Warnung wird ausgelöst, wenn der durchschnittliche Speicher in Prozent für 30 Minuten über 85 % lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn der durchschnittliche Speicher in Prozent für mehr als 30 Minuten unter 85 % bleibt.
+6. Wählen Sie eine Metrik aus der Liste der Signale aus, bei denen eine Warnung erfolgen soll. Wählen Sie in diesem Beispiel „Speicher in Prozent“ aus.
+   
+   ![Metrik auswählen](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-5. Wählen Sie die gewünschte Benachrichtigungsmethode für die Warnungsregel aus. 
+7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation**, **Zeitraum**, die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit**.
+   
+   Wählen Sie anschließend **Fertig** aus.
 
-   Aktivieren Sie die Option **E-Mail-Besitzer, Mitwirkende und Leser**, wenn Sie möchten, dass Administratoren und Co-Administratoren per E-Mail benachrichtigt werden, wenn die Warnung ausgelöst wird.
+   ![Metrik auswählen](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-   Wenn Sie möchten, dass bei Auslösen der Warnung eine Benachrichtigung an weitere E-Mail-Adressen gesendet wird, fügen Sie diese dem Feld **Zusätzliche Administrator-E-Mail-Adresse** hinzu. Trennen Sie mehrere E-Mail-Adressen durch Semikolons: *email@contoso.com;email2@contoso.com*
+8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
+9. Tragen Sie in das Formular „Aktionsgruppe hinzufügen“ einen Namen, Kurznamen, ein Abonnement und eine Ressourcengruppe ein.
+
+10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf**.
+    
+   Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
+   
    Geben Sie optional einen gültigen URI im Feld **Webhook** an, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
 
-6. Wählen Sie **OK** , um die Warnung zu erstellen.
+   Wählen Sie **OK** aus, wenn Sie fertig sind.
+
+   ![Aktionsgruppe](./media/howto-alert-on-metric/10-action-group-type.png)
+
+11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
+
+   ![Aktionsgruppe](./media/howto-alert-on-metric/11-name-description-severity.png) 
+
+12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 
    Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 

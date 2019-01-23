@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021117"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331808"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -86,7 +86,7 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Installieren und Registrieren der selbstgehosteten IR über das Download Center
 
 1. Navigieren Sie zur [Downloadseite für die Microsoft-Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Wählen Sie **Herunterladen**, die entsprechende Version (**32-Bit** oder **64-Bit**) und **Weiter** aus.
+2. Wählen Sie **Herunterladen**, wählen Sie die 64-Bit-Version (32-Bit wird nicht unterstützt), und wählen Sie **Weiter**.
 3. Führen Sie die MSI-Datei direkt aus, oder speichern Sie sie zur späteren Ausführung auf Ihrer Festplatte.
 4. Wählen Sie auf der **Willkommensseite** eine Sprache und dann **Weiter** aus.
 5. Akzeptieren Sie die Microsoft-Software-Lizenzbedingungen, und wählen Sie **Weiter** aus.

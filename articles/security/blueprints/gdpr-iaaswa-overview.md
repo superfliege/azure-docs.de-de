@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5f04fdaa12c716b21bafcc0abccc719428fe791
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 08e078841a6fb7f43db6d052ecefca3aabec8687
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242074"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263372"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-gdpr"></a>Azure Security and Compliance Blueprint – IaaS-Webanwendungen gemäß DSGVO
 
@@ -24,9 +24,9 @@ Microsoft hat Azure basierend auf branchenweit führenden Sicherheitsmaßnahmen 
 
 Dieser Azure Security and Compliance Blueprint bietet Anleitungen für die Bereitstellung einer IaaS-Umgebung (Infrastructure-as-a-Service), die für eine einfache, internetfähige Webanwendung geeignet ist. Diese Lösung zeigt Möglichkeiten, mit denen Kunden bestimmte Sicherheits- und Complianceanforderungen der DSGVO erfüllen können, und sie dient Kunden als Grundlage für das Erstellen und Konfigurieren eigener IaaS-Webanwendungslösungen in Azure. Kunden können diese Referenzarchitektur nutzen und für die Einhaltung der DSGVO den aus [vier Schritten bestehenden Prozess](https://aka.ms/gdprebook) von Microsoft befolgen:
 1. Ermitteln: Identifizieren Sie, welche personenbezogenen Daten vorhanden sind und wo sie sich befinden.
-2. Verwalten: Legen Sie fest, wie personenbezogene Daten verwendet werden und wie darauf zugegriffen wird.
+2. Verwalten: Legen Sie fest, wie personenbezogene Daten genutzt werden und wie darauf zugegriffen wird.
 3. Schützen: Richten Sie Sicherheitsmaßnahmen ein, um Sicherheitsrisiken und Sicherheitsverletzungen bei Daten zu verhindern, zu erkennen und darauf zu reagieren.
-4. Melden: Führen Sie die erforderliche Dokumentation, und erfassen Sie Datenanforderungen und Benachrichtigungen über Sicherheitsverletzungen.
+4. Berichten: Bewahren Sie benötigte Unterlagen auf, und verwalten Sie Datenanfragen und Benachrichtigungen zu Datenschutzverletzungen.
 
 Diese Referenzarchitektur, die zugehörige Implementierungsanleitung und das Bedrohungsmodell sollen Kunden als Grundlage für die Anpassung an ihre spezifischen Anforderungen dienen. Sie sollten nicht unverändert in einer Produktionsumgebung verwendet werden. Beachten Sie Folgendes:
 - Diese Architektur dient als Basis, um Kunden bei der Bereitstellung von Workloads in Azure in DSGVO-konformer Weise zu unterstützen.
@@ -71,7 +71,7 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung beschrieben.
 
-**Bastionhost:** Der Bastionhost ist der einzelne Zugangspunkt, über den Benutzer Zugriff auf die bereitgestellten Ressourcen in dieser Umgebung erhalten. Der Bastionhost bietet eine sichere Verbindung mit den bereitgestellten Ressourcen, indem nur Remotedatenverkehr von öffentlichen IP-Adressen auf einer Sicherheitsliste zugelassen wird. Damit RDP-Datenverkehr (Remotedesktopprotokoll) zugelassen wird, muss die Quelle des Datenverkehrs in der NSG (Netzwerksicherheitsgruppe) definiert sein.
+**Bastionhost**: Der Bastionhost ist der einzelne Zugangspunkt, über den Benutzer Zugriff auf die bereitgestellten Ressourcen in dieser Umgebung erhalten. Der Bastionhost bietet eine sichere Verbindung mit den bereitgestellten Ressourcen, indem nur Remotedatenverkehr von öffentlichen IP-Adressen auf einer Sicherheitsliste zugelassen wird. Damit RDP-Datenverkehr (Remotedesktopprotokoll) zugelassen wird, muss die Quelle des Datenverkehrs in der NSG (Netzwerksicherheitsgruppe) definiert sein.
 
 Diese Lösung erstellt einen virtuellen Computer als Bastionhost in der Domäne mit den folgenden Konfigurationen:
 -   [Antimalware-Erweiterung](https://docs.microsoft.com/azure/security/azure-security-antimalware)
@@ -84,7 +84,7 @@ Diese Lösung erstellt einen virtuellen Computer als Bastionhost in der Domäne 
 ### <a name="virtual-network"></a>Virtuelles Netzwerk
 Die Architektur definiert ein privates virtuelles Netzwerk mit dem Adressraum 10.200.0.0/16.
 
-**Netzwerksicherheitsgruppen:** Diese Lösung stellt Ressourcen in einer Architektur mit separatem Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz innerhalb eines virtuellen Netzwerks bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken.
+**Netzwerksicherheitsgruppen**: Diese Lösung stellt Ressourcen in einer Architektur mit einem separaten Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Managementsubnetz in einem virtuellen Netzwerk bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken.
 
 Details finden Sie in der Konfiguration für [Netzwerksicherheitsgruppen](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json), die mit dieser Lösung bereitgestellt wird. Organisationen können Netzwerksicherheitsgruppen konfigurieren, indem sie die Datei oben bearbeiten und dabei [diese Dokumentation](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) als Leitfaden verwenden.
 
@@ -101,9 +101,9 @@ Azure verschlüsselt standardmäßig die gesamte Kommunikation zu und von Azure-
 ### <a name="data-at-rest"></a>Ruhende Daten
 Die Architektur schützt ruhende Daten durch verschiedene Maßnahmen wie Verschlüsselung und Datenbanküberwachung.
 
-**Azure Storage:** Um die Anforderungen an verschlüsselte ruhende Daten zu erfüllen, wird für den gesamten [Azure Storage](https://azure.microsoft.com/services/storage/) die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/storage-service-encryption) verwendet. Dadurch werden personenbezogene Daten geschützt, um die Zusagen und Anforderungen der Organisation im Hinblick auf Sicherheit und Compliance gemäß der DSGVO einzuhalten.
+**Azure Storage**: Um die Anforderungen für verschlüsselte ruhende Daten zu erfüllen, wird überall in [Azure Storage](https://azure.microsoft.com/services/storage/) die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/storage-service-encryption) verwendet. Dadurch werden personenbezogene Daten geschützt, um die Zusagen und Anforderungen der Organisation im Hinblick auf Sicherheit und Konformität gemäß der DSGVO einzuhalten.
 
-**Azure Disk Encryption:** Azure Disk Encryption wird zur Verschlüsselung der Datenträger von virtuellen Windows-IaaS-Computern verwendet. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Betriebssysteme und Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern.
+**Azure Disk Encryption**: Azure Disk Encryption wird zur Verschlüsselung der Datenträger von virtuellen Windows-IaaS-Computern verwendet. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Betriebssysteme und Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern.
 
 **SQL Server:** In der SQL Server-Instanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
 -   Die [AD-Authentifizierung und -Autorisierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten.
@@ -126,7 +126,7 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf p
 - Eine bereitgestellte IaaS-Active-Directory-Instanz bietet Identitätsverwaltung auf Betriebssystemebene für bereitgestellte virtuelle IaaS-Computer.
 
 ### <a name="security"></a>Sicherheit
-**Geheimnisverwaltung:** Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die folgenden Funktionen von Azure Key Vault unterstützen Kunden beim Schützen personenbezogener Daten und des Zugriffs auf diese Daten:
+**Geheimnisverwaltung**: Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die folgenden Funktionen von Azure Key Vault unterstützen Kunden beim Schützen personenbezogener Daten und des Zugriffs auf diese Daten:
 - Erweiterte Zugriffsrichtlinien werden auf Bedarfsbasis konfiguriert.
 - Key Vault-Zugriffsrichtlinien werden mit minimalen erforderlichen Berechtigungen für Schlüssel und Geheimnisse definiert.
 - Alle Schlüssel und Geheimnisse in Key Vault besitzen ein Ablaufdatum.
@@ -136,13 +136,13 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf p
 - Zulässige kryptographische Vorgänge für Schlüssel sind auf die erforderlichen Vorgänge beschränkt.
 - Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern.
 
-**Patchverwaltung:** Virtuelle Windows-Computer, die mit dieser Referenzarchitektur bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung umfasst auch den Dienst [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), über den aktualisierte Bereitstellungen erstellt werden können, um virtuelle Computer bei Bedarf zu patchen.
+**Patchverwaltung**: Virtuelle Windows-Computer, die mit dieser Referenzarchitektur bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung umfasst auch den Dienst [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), über den aktualisierte Bereitstellungen erstellt werden können, um virtuelle Computer bei Bedarf zu patchen.
 
-**Schutz vor Schadsoftware**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für Virtual Machines bietet Echtzeitschutzfunktionen, mit denen die Identifizierung und Entfernung von Viren, Spyware und anderer bösartiger Software ermöglicht wird – mit konfigurierbaren Warnmeldungen, wenn bekannte bösartige oder unerwünschte Software versucht, sich auf geschützten virtuellen Computern zu installieren oder die Ausführung zu starten.
+**Schutz vor Schadsoftware**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für Virtual Machines bietet Echtzeitschutzfunktionen, mit denen die Identifizierung und Entferung von Viren, Spyware und anderer bösartiger Software ermöglicht wird, mit konfigurierbaren Warnmeldungen, wenn bekannte bösartige oder unerwünschte Software versucht, sich auf geschützten virtuellen Computern zu installieren oder die Ausführung zu starten.
 
-**Sicherheitswarnungen:** [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) ermöglicht Kunden die Überwachung von Datenverkehr, das Erfassen von Protokollen und das Analysieren von Datenquellen auf Bedrohungen. Darüber hinaus greift Azure Security Center auf die vorhandene Konfiguration der Azure-Dienste zu, um Empfehlungen für die Konfiguration und Verwaltung zu geben und zur Verbesserung der Sicherheit und zum Schutz personenbezogener Daten beizutragen. Azure Security Center bietet einen [Bericht über Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-report) zu jeder erkannten Bedrohung, der den mit der Bearbeitung von Incidents zuständigen Teams beim Untersuchen und Beheben von Bedrohungen hilft.
+**Sicherheitswarnungen**: [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) ermöglicht Kunden die Überwachung von Datenverkehr, das Erfassen von Protokollen und das Analysieren von Datenquellen auf Bedrohungen. Darüber hinaus greift Azure Security Center auf die vorhandene Konfiguration der Azure-Dienste zu, um Empfehlungen für die Konfiguration und Verwaltung zu geben und zur Verbesserung der Sicherheit und zum Schutz personenbezogener Daten beizutragen. Azure Security Center umfasst einen [Bericht über Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-report) zu jeder erkannten Bedrohung, der den Teams, die für die Bearbeitung von Incidents zuständig sind, beim Untersuchen und Beheben von Bedrohungen als Hilfe dient.
 
-**Application Gateway**: Die Architektur verringert die Gefahr von Sicherheitsrisiken durch ein Application Gateway mit Web Application Firewall (WAF) und aktiviertem OWASP-Regelsatz. Weitere Funktionen:
+**Application Gateway**: Die Architektur verringert das Risiko von Sicherheitsschwachstellen durch ein Application Gateway mit Web Application Firewall (WAF) und dem aktivierten OWASP-Regelsatz. Weitere Funktionen:
 
 - [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - Aktivierte [SSL-Auslagerung](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
@@ -155,29 +155,29 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf p
 
 ### <a name="business-continuity"></a>Geschäftskontinuität
 
-**Hochverfügbarkeit:** Die Lösung stellt alle virtuellen Computer in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereit. Verfügbarkeitsgruppen stellen sicher, dass die virtuellen Computer über mehrere isolierte Hardwarecluster verteilt sind, um die Verfügbarkeit zu verbessern. Während einer geplanten oder ungeplanten Wartung ist mindestens ein virtueller Computer verfügbar, um die Azure-SLA von 99,95 % zu erfüllen.
+**Hochverfügbarkeit**: Die Lösung stellt alle virtuellen Computer in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereit. Verfügbarkeitsgruppen stellen sicher, dass die virtuellen Computer über mehrere isolierte Hardwarecluster verteilt sind, um die Verfügbarkeit zu verbessern. Während einer geplanten oder ungeplanten Wartung ist mindestens ein virtueller Computer verfügbar, um die Azure-SLA von 99,95 % zu erfüllen.
 
-**Recovery Services-Tresor:** Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von Azure Virtual Machines in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
+**Recovery Services-Tresor**: Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von Azure Virtual Machines in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
 
 **Cloudzeuge**: Ein [Cloudzeuge](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) ist ein Failovercluster-Quorumzeuge in Windows Server 2016, der Azure als Vermittlungspunkt nutzt. Der Cloudzeuge erhält wie jeder andere Quorumzeuge eine Stimme und kann damit an Quorumberechnungen teilnehmen. Er verwendet aber den öffentlich verfügbaren Azure Blob Storage-Standard. Damit entfällt der zusätzliche Wartungsaufwand für virtuelle Computer, die in einer öffentlichen Cloud gehostet werden.
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
 
 Log Analytics bietet eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist eine Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure-basierten und lokalen Umgebungen generiert werden.
-- **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
-- **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von den einzelnen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
-- **Protokollarchivierung:** Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
+- **Aktivitätsprotokolle**: [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
+- **Diagnoseprotokolle**: [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) umfassen sämtliche Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
+- **Protokollarchivierung**: Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
 
 Darüber hinaus sind in dieser Architektur die folgenden Überwachungslösungen enthalten:
--   [Active Directory-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment) Die Active Directory-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
--   [Antischadsoftwarebewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware) Die Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
--   [Azure Automation:](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) Die Azure Automation-Lösung dient der Speicherung, Ausführung und Verwaltung von Runbooks.
--   [Sicherheit und Überwachung:](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) Das Sicherheits- und Überwachungsdashboard bietet einen allgemeinen Einblick in den Sicherheitszustand von Ressourcen. Hierzu werden Metriken zu Sicherheitsdomänen, relevanten Problemen, Erkennungen, Bedrohungsdaten und allgemeinen Sicherheitsabfragen bereitgestellt.
--   [SQL-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment) Die SQL-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
--   [Updateverwaltung:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management) Die Updateverwaltungslösung ermöglicht die Verwaltung von Betriebssystem-Sicherheitsupdates durch die Kunden. Dies umfasst auch den Status der verfügbaren Updates und den Fortschritt beim Installieren der erforderlichen Updates.
--   [Agent-Integritätsdiagnose:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth) Die Agent-Integritätsdiagnoselösung meldet, wie viele Agents bereitgestellt werden und wie ihre geografische Verteilung ist. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
--   [Azure-Aktivitätsprotokolle:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
--   [Änderungsnachverfolgung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Änderungsnachverfolgungslösung ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
+-   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Die Lösung „Active Directory-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
+-   [Antischadsoftwarebewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Die Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Die Azure Automation-Lösung dient der Speicherung, Ausführung und Verwaltung von Runbooks.
+-   [Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): Das Sicherheits- und Überwachungsdashboard ermöglicht einen allgemeinen Einblick in den Sicherheitszustand von Ressourcen. Hierzu werden Metriken zu Sicherheitsdomänen, relevanten Problemen, Erkennungen, Bedrohungsdaten und allgemeinen Sicherheitsabfragen bereitgestellt.
+-   [SQL-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Die Lösung „SQL-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit speziellen Empfehlungen für die bereitgestellte Serverinfrastruktur.
+-   [Updateverwaltung](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Die Updateverwaltungslösung ermöglicht die Verwaltung von Sicherheitsupdates des Betriebssystems durch die Kunden. Dies umfasst auch den Status der verfügbaren Updates und den Fortschritt beim Installieren der erforderlichen Updates.
+-   [Agent-Integritätsdiagnose](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Die Lösung „Agent-Integritätsdiagnose“ meldet die Anzahl bereitgestellter Agents sowie deren geografische Verteilung. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
+-   [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Lösung „Aktivitätsprotokollanalyse“ hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
+-   [Änderungsnachverfolgung](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Lösung „Änderungsnachverfolgung“ ermöglicht es Kunden, problemlos Änderungen in der Umgebung zu erkennen.
 
 ## <a name="threat-model"></a>Bedrohungsmodell
 

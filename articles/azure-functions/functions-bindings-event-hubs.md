@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1df948d2b3127ede7129d26401cd5f0c80e964fb
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002160"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331740"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 
@@ -59,9 +59,9 @@ Wenn Ihre Funktion zuerst aktiviert wird, gibt es nur eine Instanz der Funktion.
 
 * **Es sind keine neuen Funktionsinstanzen erforderlich**: `Function_0` ist in der Lage, alle 1000 Ereignisse zu verarbeiten, bevor die Skalierungslogik von Functions einsetzt. In diesem Fall werden alle 1000 Nachrichten von `Function_0` verarbeitet.
 
-* **Eine weitere Funktionsinstanz wird hinzugefügt**:  Die Skalierungslogik von Functions bestimmt, dass `Function_0` mehr Nachrichten enthält, als verarbeitet werden können. In diesem Fall wird eine Funktions-App-Instanz (`Function_1`) und eine neue [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)-Instanz erstellt. Event Hub erkennt, dass eine neue Hostinstanz versucht, Nachrichten zu lesen. Event Hub nimmt einen Lastenausgleich über alle Hostinstanzen hinweg vor. Zum Beispiel können die Partitionen 0-4 `Function_0` und die Partitionen 5-9 `Function_1` zugewiesen werden.
+* **Eine weitere Funktionsinstanz wird hinzugefügt**: Die Skalierungslogik von Functions bestimmt, dass `Function_0` mehr Nachrichten enthält, als verarbeitet werden können. In diesem Fall wird eine Funktions-App-Instanz (`Function_1`) und eine neue [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)-Instanz erstellt. Event Hub erkennt, dass eine neue Hostinstanz versucht, Nachrichten zu lesen. Event Hub nimmt einen Lastenausgleich über alle Hostinstanzen hinweg vor. Zum Beispiel können die Partitionen 0-4 `Function_0` und die Partitionen 5-9 `Function_1` zugewiesen werden.
 
-* **N weitere Funktionsinstanzen werden hinzufügt**:  Die Skalierungslogik von Functions bestimmt, dass sowohl `Function_0` als auch `Function_1` mehr Nachrichten aufweisen, als sie verarbeiten können. Neue Funktions-App-Instanzen `Function_2`...`Functions_N` werden erstellt, wobei `N` größer ist, als die Anzahl der Event Hub-Partitionen. In unserem Beispiel für Event Hubs erneut einen Lastenausgleich für die Partitionen aus, in diesem Fall für die Instanzen `Function_0`... `Functions_9`.
+* **N weitere Funktionsinstanzen werden hinzufügt**: Die Skalierungslogik von Functions bestimmt, dass sowohl `Function_0` als auch `Function_1` mehr Nachrichten aufweisen, als sie verarbeiten können. Neue Funktions-App-Instanzen `Function_2`...`Functions_N` werden erstellt, wobei `N` größer ist, als die Anzahl der Event Hub-Partitionen. In unserem Beispiel für Event Hubs erneut einen Lastenausgleich für die Partitionen aus, in diesem Fall für die Instanzen `Function_0`... `Functions_9`.
 
 Beachten Sie, dass wenn Functions auf `N` Instanzen skaliert, ist diese Zahl größer als die Anzahl der Event-Hub-Partitionen. Damit wird sichergestellt, dass immer [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)-Instanzen verfügbar sind, um Partitionen zu sperren, sobald diese von anderen Instanzen bereitgestellt werden. Es werden Ihnen nur die Ressourcen berechnet, die bei der Ausführung der Funktionsinstanz in Anspruch genommen werden, und nicht die Kosten für diese übermäßige Bereitstellung.
 
@@ -423,6 +423,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**consumerGroup** |**ConsumerGroup** | Eine optionale Eigenschaft, die zum Festlegen der [Consumergruppe](../event-hubs/event-hubs-features.md#event-consumers) verwendet wird, mit der Ereignisse im Hub abonniert werden. Wird sie nicht angegeben, wird die Consumergruppe `$Default` verwendet. |
 |**cardinality** | – | Für JavaScript. Legen Sie hierfür `many` fest, um Batchverarbeitung zu aktivieren.  Wenn nicht angegeben oder auf `one` gesetzt, wird eine einzelne Nachricht an die Funktion übergeben. |
 |**Verbindung** |**Connection** | Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace des Event Hubs enthält. Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den [Namespace](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.|
+|**path**|**EventHubName**|Der Name des Event Hubs. Darauf kann über `%eventHubName%` in den App-Einstellungen verwiesen werden.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -452,7 +453,7 @@ Die Datei [host.json](functions-host-json.md#eventhub) enthält Einstellungen, d
 
 Mit der Event Hubs-Ausgabebindung werden Ereignisse in einen Ereignisdatenstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
 
-Stellen Sie sicher, dass die erforderlichen Paketverweise vorhanden sind:  [Functions 1.x](#packages---functions-1.x) oder [Function 2.x](#packages---functions-2.x).
+Stellen Sie sicher, dass die erforderlichen Paketverweise vorhanden sind: [Functions 1.x](#packages---functions-1.x) oder [Functions 2.x](#packages---functions-2.x)
 
 ## <a name="output---example"></a>Ausgabe: Beispiel
 

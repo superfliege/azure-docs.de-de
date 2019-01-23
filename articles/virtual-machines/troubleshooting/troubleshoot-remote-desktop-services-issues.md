@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957692"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215115"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Remotedesktopdienste für eine Azure-VM werden nicht gestartet
 
 Dieser Artikel beschreibt, wie Sie Probleme beim Verbinden mit einem virtuellen Azure-Computer (Azure-VM) beheben, wenn die Remotedesktopdienste bzw. TermService nicht starten/startet oder ein Startfehler auftritt.
 
 > [!NOTE]  
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Azure Resource Manager-Bereitstellung und klassische Bereitstellung](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager und klassische Bereitstellung](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -42,11 +42,11 @@ Wenn Sie versuchen, eine Verbindung mit einer VM herzustellen, beobachten Sie di
     **Datum:**          12/16/2017 11:19:36 AM</br>
     **Ereignis-ID:**      7022</br>
     **Aufgabenkategorie:** Keine</br>
-    **Ebene:**         Fehler</br>
+    **Ebene:**         Error</br>
     **Schlüsselwörter:**      Klassisch</br>
     **Benutzer:**          N/V</br>
     **Computer:**      vm.contoso.com</br>
-    **Beschreibung:** Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
+    **Beschreibung:** Die Remotedesktopdienste wurden nicht ordnungsgemäß gestartet. 
 
     Sie können diese Fehler auch über die serielle Zugriffskonsole suchen. Führen Sie dazu die folgende Abfrage aus: 
 
@@ -112,7 +112,7 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService-Dienst wird aufgrund eines „Zugriff verweigert“-Fehlers beendet
 
-1. Stellen Sie eine Verbindung mit der [seriellen Konsole](serial-console-windows.md#) her, und öffnen Sie eine PowerShell-Instanz.
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole](serial-console-windows.md) her, und öffnen Sie eine PowerShell-Instanz.
 2. Laden Sie das Tool Process Monitor herunter, indem Sie das folgende Skript ausführen:
 
    ```

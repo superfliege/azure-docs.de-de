@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2823772787adf56dfbe216a68161f633eadba255
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 519fd063e52d1e202ea76db0fd4be15ebd117cd0
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001615"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214928"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Tipps:
 
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können für diese virtuellen Computer sowohl Premium- als auch Standard-Datenträger verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können für diese virtuellen Computer sowohl Premium- als auch Standard-Datenträger verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../windows/premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Nach dem Anfügen des Datenträgers müssen Sie [eine Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers herstellen](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
@@ -96,7 +96,12 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Hier ist *sdc* der Datenträger, den wir möchten. Partitionieren Sie nun den Datenträger mit `fdisk`, legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte. Das folgende Beispiel startet den `fdisk` -Prozess auf */dev/sdc*:
+Hier ist *sdc* der Datenträger, den wir möchten. 
+
+### <a name="partion-a-new-disk"></a>Partionieren eines neuen Datenträgers
+Wenn Sie einen vorhandenen Datenträger verwenden, der Daten enthält, überspringen Sie die Schritte bis zum Einbinden des Datenträgers. Wenn Sie einen neuen Datenträger anfügen, müssen Sie den Datenträger partitionieren.
+
+Partitionieren Sie den Datenträger mit `fdisk`, legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte. Das folgende Beispiel startet den `fdisk` -Prozess auf */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
@@ -176,8 +181,8 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
-
-Erstellen Sie jetzt mit `mkdir` ein Verzeichnis zum Bereitstellen des neuen Dateisystems. Im folgenden Beispiel wird ein Verzeichnis mit dem Namen */datadrive* erstellt:
+### <a name="mount-the-disk"></a>Einbinden des Datenträgers
+Erstellen Sie mit `mkdir` ein Verzeichnis zum Einbinden des Dateisystems. Im folgenden Beispiel wird ein Verzeichnis mit dem Namen */datadrive* erstellt:
 
 ```bash
 sudo mkdir /datadrive

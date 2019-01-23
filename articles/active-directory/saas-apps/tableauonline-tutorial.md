@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Tableau Online | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration von Tableau Online | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Tableau Online konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 10b82a6c51f8fc31b5b6f4b8c661f764fc6b309d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421730"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198829"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Tutorial: Azure Active Directory-Integration mit Tableau Online
+# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Tutorial: Azure Active Directory-Integration von Tableau Online
 
 In diesem Tutorial erfahren Sie, wie Sie Tableau Online in Azure Active Directory (Azure AD) integrieren.
 
@@ -154,7 +154,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
    ![Configure single sign-on](./media/tableauonline-tutorial/attributesection2.png)
 
-    f. Befolgen Sie vorherigen Anweisungen, um die Namespacewerte für „email“ und „surname“ zu kopieren.
+    f. Befolgen Sie die vorherigen Anweisungen, um die Namespacewerte für „email“ und „surname“ zu kopieren.
 
     g. Wechseln Sie zur Tableau Online-Anwendung, und legen Sie den Abschnitt **Tableau Online Attributes** (Tableau Online-Attribute) dann wie folgt fest:
      * E-Mail: **mail** oder **userprincipalname**

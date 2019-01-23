@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537619"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320598"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -56,7 +56,7 @@ Für Cluster, die NICHT in Azure ausgeführt werden, haben wir [eine Anwendung b
 
 **Kurze Antwort**: Nein. 
 
-**Lange Antwort:** Obwohl Sie dank großer VM-Skalierungsgruppen eine VM-Skalierungsgruppe mit bis zu 1.000 VM-Instanzen skalieren können, werden dazu Platzierungsgruppen (PGs) verwendet. Fehlerdomänen (FDs) und Upgradedomänen (UDs) sind nur innerhalb einer Platzierungsgruppe konsistent. Service Fabric verwendet FDs und UDs für Platzierungsentscheidungen, die Ihre Dienstreplikate/Dienstinstanzen betreffen. Da die FDs und UDs nur innerhalb einer Platzierungsgruppe vergleichbar sind, kann SF sie nicht verwenden. Wenn beispielsweise VM1 in PG1 über eine Topologie FD=0 und VM9 in PG2 über eine Topologie FD=4 verfügt, bedeutet dies nicht, dass VM1 und VM2 sich in zwei verschiedenen Hardwareracks befinden, daher kann SF die FD-Werte in diesem Fall nicht für Platzierungsentscheidungen verwenden.
+**Lange Antwort**: Obwohl Sie dank großer VM-Skalierungsgruppen eine VM-Skalierungsgruppe mit bis zu 1000 VM-Instanzen skalieren können, werden dazu Platzierungsgruppen (PGs) verwendet. Fehlerdomänen (FDs) und Upgradedomänen (UDs) sind nur innerhalb einer Platzierungsgruppe konsistent. Service Fabric verwendet FDs und UDs für Platzierungsentscheidungen, die Ihre Dienstreplikate/Dienstinstanzen betreffen. Da die FDs und UDs nur innerhalb einer Platzierungsgruppe vergleichbar sind, kann SF sie nicht verwenden. Wenn beispielsweise VM1 in PG1 über eine Topologie FD=0 und VM9 in PG2 über eine Topologie FD=4 verfügt, bedeutet dies nicht, dass VM1 und VM2 sich in zwei verschiedenen Hardwareracks befinden, daher kann SF die FD-Werte in diesem Fall nicht für Platzierungsentscheidungen verwenden.
 
 Es gibt derzeit andere Probleme mit großen VM-Skalierungsgruppen, z.B. den Mangel an Unterstützung von Ebene-4-Lastenausgleich. Weitere Informationen finden Sie unter [Näheres zu großen Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md).
 

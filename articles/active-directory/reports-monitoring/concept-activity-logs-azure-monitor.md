@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 298d4a7a003963e3466b595243c294679f581346
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b8051ea7f8e7c188e4ed287db626f2a989def619
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582184"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231750"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
 
@@ -116,6 +116,12 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 **F: Wie schnell werden die entsprechenden Protokolle nach einer Aktion in meinem Speicherkonto angezeigt?**
 
 **A**: Bei Azure-Speicherkonten beträgt die Wartezeit zwischen 5 und 15 Minuten nach Durchführung der Aktion.
+
+---
+
+**F: Was geschieht, wenn ein Administrator die Aufbewahrungsdauer für eine Diagnoseeinstellung ändert?**
+
+**A**: Die neue Aufbewahrungsrichtlinie wird auf nach der Änderung erfasste Protokolle angewendet. Vor der Richtlinienänderung gesammelte Protokolle sind nicht betroffen.
 
 ---
 

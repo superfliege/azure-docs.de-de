@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253073"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359832"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
 In diesem Tutorial erfahren Sie, wie Sie die Voraussetzungen zum Erstellen einer [SQL Server AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-tutorial.md) erfüllen. Wenn die Voraussetzungen erfüllt sind, verfügen Sie über einen Domänencontroller, zwei SQL Server-VMs und einen Zeugenserver in einer einzigen Ressourcengruppe.
 
-**Geschätzte Zeit**: Es dauert möglicherweise einige Stunden, um die Voraussetzungen zu erfüllen. Ein großer Teil dieser Zeit wird zum Erstellen virtueller Computer aufgewendet.
+**Geschätzter Zeitaufwand**: Es dauert möglicherweise einige Stunden, um die Voraussetzungen zu erfüllen. Ein großer Teil dieser Zeit wird zum Erstellen virtueller Computer aufgewendet.
 
 Das folgende Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstellen.
 
@@ -135,7 +135,7 @@ In der folgenden Tabelle sind die Netzwerkkonfigurationseinstellungen zusammenge
 
 ## <a name="create-availability-sets"></a>Erstellen von Verfügbarkeitsgruppen
 
-Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeit bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeit bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Sie benötigen zwei Verfügbarkeitsgruppen: Eine für die Domänencontroller Eine für die SQL Server-VMs
 
@@ -189,7 +189,7 @@ Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 | **Subnetz** |admin |
 | **Öffentliche IP-Adresse** |*Gleicher Name wie der VM* |
 | **Netzwerksicherheitsgruppe** |*Gleicher Name wie der VM* |
-| **Verfügbarkeitsgruppe** |adavailabilityset </br>**Fehlerdomänen**: 2</br>**Updatedomänen**: 2|
+| **Verfügbarkeitsgruppe** |adavailabilityset </br>**Fehlerdomänen**: 2 </br>**Updatedomänen**: 2|
 | **Diagnose** |Aktiviert |
 | **Diagnosespeicherkonto** |*Automatisch erstellt* |
 
@@ -370,7 +370,7 @@ Im nächsten Schritt erstellen Sie drei virtuelle Computer: zwei virtuelle SQL S
 | Wählen Sie das passende Katalogelement aus. |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise unter Windows Server 2016** |**SQL Server 2016 SP1 Enterprise unter Windows Server 2016** |
 | **Grundlagen** |**Name** = cluster-fsw<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |**Name** = sqlserver-0<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |**Name** = sqlserver-1<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |
 | Konfiguration des virtuellen Computers: **Größe** |**Größe** = DS1\_V2 (1 vCPU, 3,5 GB) |**Größe** = DS2\_V2 (2 vCPUs, 7 GB)</br>Die Größe muss SSD-Speicher (Premium-Datenträger) unterstützen. ) |**Größe** = DS2\_V2 (2 vCPUs, 7 GB) |
-| Konfiguration des virtuellen Computers: **Einstellungen** |**Speicher:** verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Speicher:** verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Speicher:** verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |
+| Konfiguration des virtuellen Computers: **Einstellungen** |**Speicher**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Speicher**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Speicher**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |
 | Konfiguration des virtuellen Computers: **SQL Server-Einstellungen** |Nicht zutreffend |**SQL-Konnektivität** = Privat (innerhalb von Virtual Network)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisiertes Patchen** = Sonntags, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert |**SQL-Konnektivität** = Privat (innerhalb von Virtual Network)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisiertes Patchen** = Sonntags, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert |
 
 <br/>
@@ -462,6 +462,10 @@ Um Failoverclusteringfeatures hinzuzufügen, führen Sie die folgenden Schritte 
 6. Klicken Sie auf **Installieren**, um die Features hinzuzufügen.
 
 Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
+
+  >[!NOTE]
+  > Dieser Schritt kann jetzt zusammen mit dem tatsächlich Verknüpfen von SQL Server-VMs mit dem Failovercluster über eine Azure-Schnellstartvorlage automatisiert werden. Weitere Informationen finden Sie unter [Erstellen von WSFC und Listener sowie Konfigurieren von ILB für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> Konfigurieren der Firewall auf jedem virtuellen SQL-Server-Computer
 

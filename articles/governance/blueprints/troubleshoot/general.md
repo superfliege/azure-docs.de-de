@@ -4,17 +4,17 @@ description: Erfahren Sie mehr über die Problembehandlung durch die Erstellung 
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 04c038eb11cc40cec3552feff183bea55b22bb57
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315523"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261926"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 
@@ -52,6 +52,20 @@ Eine Richtlinie kann aus verschiedenen Gründen einer Bereitstellung widersprech
 #### <a name="resolution"></a>Lösung
 
 Ändern Sie die Blaupause so, dass sie nicht in Konflikt mit den Richtlinien in den Fehlerdetails steht. Wenn diese Änderung nicht möglich ist, besteht eine alternative Option darin, den Umfang der Richtlinienzuordnung so zu ändern, dass die Blaupause der Richtlinie nicht mehr widerspricht.
+
+### <a name="escape-function-parameter"></a>Szenario: Blaupausenparameter ist eine Funktion
+
+#### <a name="issue"></a>Problem
+
+Blaupausenparameter, die Funktionen sind, werden vor der Übergabe an Artefakte verarbeitet.
+
+#### <a name="cause"></a>Ursache
+
+Die Übergabe eines Blaupausenparameters, der eine Funktion verwendet, wie z.B. `[resourceGroup().tags.myTag]`, an ein Artefakt resultiert darin, dass das verarbeitete Ergebnis der Funktion auf dem Artefakt anstelle der dynamischen Funktion festgelegt wird.
+
+#### <a name="resolution"></a>Lösung
+
+Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfolge mit `[` als Escapezeichen, sodass der Blaupausenparameter aussieht wie `[[resourceGroup().tags.myTag]`. Das Escapezeichen bewirkt, dass Blueprints den Wert bei der Verarbeitung der Blaupause als Zeichenfolge behandelt. Dann platziert Blueprints die Funktion auf dem Artefakt, sodass sie so dynamisch wie erwartet sein kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

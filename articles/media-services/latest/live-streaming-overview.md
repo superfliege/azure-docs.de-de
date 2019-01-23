@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/26/2018
+ms.date: 01/15/2019
 ms.author: juliako
-ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788207"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354177"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -29,6 +29,22 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 - Komponenten in Media Services, mit denen das Liveereignis erfasst, in einer Vorschau angezeigt, paketiert, aufgezeichnet, verschlüsselt und an Ihre Kunden übertragen oder zur weiteren Verteilung an ein CDN gesendet wird.
 
 Dieser Artikel bietet einen detaillierten Überblick und umfasst einen Leitfaden und Diagramme der wichtigsten Komponenten für ein Livestreaming mit Media Services.
+
+## <a name="live-streaming-workflow"></a>Workflow für das Livestreaming
+
+Nachfolgend werden die Schritte in einem Workflow für das Livestreaming aufgeführt:
+
+1. Erstellen Sie ein **Liveereignis**.
+2. Erstellen Sie ein neues **Medienobjekt**.
+3. Erstellen Sie eine **Liveausgabe**, und verwenden Sie den Namen des erstellten Medienobjekts.
+4. Erstellen Sie eine **Streamingrichtlinie** und einen **Inhaltsschlüssel**, wenn Sie Ihren Inhalt mit DRM verschlüsseln möchten.
+5. Falls Sie kein DRM verwenden, erstellen Sie einen **Streaminglocator** mit den integrierten Typen von **Streamingrichtlinien**.
+6. Listen Sie die Pfade für die **Streamingrichtlinie** auf, um die zu verwendenden URLs zurückzugeben (diese sind deterministisch).
+7. Rufen Sie den Hostnamen für den **Streamingendpunkt** ab, von dem aus Sie streamen möchten. (Stellen Sie sicher, dass der Streamingendpunkt ausgeführt wird.) 
+8. Kombinieren Sie die URL aus Schritt 6 mit dem Hostnamen aus Schritt 7, um die vollständige URL zu erhalten.
+9. Wenn Ihr **Liveereignis** nicht mehr sichtbar sein soll, müssen Sie das Streaming des Ereignisses durch Löschen des **Streaminglocators** beenden.
+
+Weitere Informationen finden Sie in diesem [Tutorial zum Livestreaming](stream-live-tutorial-with-api.md), das auf dem [.NET Core-Beispiel für Liveereignisse](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) basiert.
 
 ## <a name="overview-of-main-components"></a>Übersicht über die wichtigsten Komponenten
 
@@ -89,9 +105,10 @@ Der folgende Artikel enthält eine Tabelle zum Vergleich der Features der zwei L
 
 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) ermöglicht es Ihnen, die Eigenschaften des ausgehenden Livestreams zu steuern, z.B. wie viel des Streams aufgezeichnet wird (beispielsweise die Kapazität des Cloud-DVR) und ob die Zuschauer mit der Wiedergabe des Livestreams beginnen können oder nicht. Die Beziehung zwischen einem **LiveEvent** und dem zugehörigen **LiveOutput** ist ähnlich wie bei einer traditionellen Fernsehsendung, bei der ein Kanal (**LiveEvent**) einen konstanten Videodatenstrom darstellt und eine Aufzeichnung (**LiveOutput**) auf ein bestimmtes Zeitsegment (z.B. Abendnachrichten von 18:30 bis 19:00 Uhr) ausgerichtet ist. Sie können Fernsehsendungen mit einem digitalen Videorecorder (DVR) aufnehmen – die entsprechende Funktion in LiveEvents wird über die ArchiveWindowLength-Eigenschaft verwaltet. Es handelt sich um eine ISO-8601-Zeitspanne (z.B. PTHH:MM:SS), die die Kapazität des Digitalrecorders angibt. Diese kann von mindestens 3 Minuten auf bis zu maximal 25 Stunden eingestellt werden.
 
-
 > [!NOTE]
-> **LiveOutput** wird bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie den **LiveOutput** löschen, werden das zugrunde liegende **Medienobjekt** und sein Inhalt nicht gelöscht.  
+> **LiveOutput** wird bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie den **LiveOutput** löschen, werden das zugrunde liegende **Medienobjekt** und sein Inhalt nicht gelöscht. 
+>
+> Wenn Sie **Streaminglocators** im Medienobjekt für den **LiveOutput** veröffentlicht haben, bleibt das Ereignis (bis zu der DVR-Fensterlänge) weiterhin sichtbar bis zum Endzeitpunkt des **Streaminglocators** oder bis Sie den Locator löschen, je nachdem, welcher Fall zuerst eintritt.   
 
 Weitere Informationen finden Sie unter [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md).
 
@@ -110,21 +127,6 @@ Ausführliche Informationen finden Sie unter [Zustandswerte und Abrechnung](live
 ## <a name="latency"></a>Latency
 
 Ausführliche Informationen zur LiveEvent-Latenz finden Sie unter [Latenz](live-event-latency.md).
-
-## <a name="live-streaming-workflow"></a>Workflow für das Livestreaming
-
-Nachfolgend werden die Schritte in einem Workflow für das Livestreaming aufgeführt:
-
-1. Erstellen Sie ein LiveEvent.
-2. Erstellen Sie ein neues Medienobjekt.
-3. Erstellen Sie einen LiveOutput, und verwenden Sie den Namen des erstellten Medienobjekts.
-4. Erstellen Sie eine Streamingrichtlinie und einen Inhaltsschlüssel, wenn Sie Ihren Inhalt mit DRM verschlüsseln möchten.
-5. Falls Sie kein DRM verwenden, erstellen Sie einen Streaminglocator mit den integrierten Streamingrichtlinientypen.
-6. Listen Sie die Pfade für die Streamingrichtlinie auf, um die zu verwendenden URLs zurückzugeben (diese sind deterministisch).
-7. Rufen Sie den Hostnamen für den Streamingendpunkt ab, von dem aus Sie streamen möchten. 
-8. Kombinieren Sie die URL aus Schritt 6 mit dem Hostnamen aus Schritt 7, um die vollständige URL zu erhalten.
-
-Weitere Informationen finden Sie in diesem [Tutorial zum Livestreaming](stream-live-tutorial-with-api.md), das auf dem [.NET Core-Beispiel für Liveereignisse](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) basiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

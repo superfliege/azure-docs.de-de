@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b46539758d88fe7a0e27799b5da581255fa5f075
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578670"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229331"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -80,7 +80,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 Fahren Sie mit den folgenden Beispielen fort, um mit einer vom Benutzer oder vom System zugewiesenen verwalteten Identität in Azure Container Instances auf die Key Vault-Instanz zuzugreifen.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Beispiel 1: Verwenden einer vom Benutzer zugewiesenen Identität für den Zugriff auf Azure Key Vault
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Beispiel 1: Verwenden einer vom Benutzer zugewiesenen Identität für den Zugriff auf Azure Key Vault
 
 ### <a name="create-an-identity"></a>Erstellen einer Identität
 
@@ -134,7 +134,7 @@ Der Abschnitt `identity` in der Ausgabe sieht in etwa wie folgt aus und zeigt, d
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Gewähren des Zugriffs auf die Key Vault-Instanz für die vom Benutzer zugewiesene Identität
 
-Führen Sie den folgenden Befehl [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) aus, um eine Zugriffsrichtlinie für die Key Vault-Instanz festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
+Führen Sie den folgenden Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) aus, um eine Zugriffsrichtlinie für die Key Vault-Instanz festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -179,7 +179,7 @@ Die Antwort sieht in etwa wie folgt aus und enthält das Geheimnis. In Ihrem Cod
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Beispiel 2: Verwenden einer vom System zugewiesenen Identität für den Zugriff auf Azure Key Vault
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Beispiel 2: Verwenden einer vom System zugewiesenen Identität für den Zugriff auf Azure Key Vault
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Aktivieren einer vom System zugewiesenen Identität in einer Containergruppe
 
@@ -216,7 +216,7 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Gewähren des Zugriffs auf die Key Vault-Instanz für die Containergruppe
 
-Führen Sie den folgenden Befehl [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) aus, um eine Zugriffsrichtlinie für die Key Vault-Instanz festzulegen. Das folgende Beispiel ermöglicht der vom System verwalteten Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
+Führen Sie den folgenden Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) aus, um eine Zugriffsrichtlinie für die Key Vault-Instanz festzulegen. Das folgende Beispiel ermöglicht der vom System verwalteten Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get

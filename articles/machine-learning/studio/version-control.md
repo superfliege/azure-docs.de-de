@@ -1,27 +1,7 @@
 ---
-title: Application Lifecycle Management – Azure Machine Learning Studio | Microsoft-Dokumentation
-description: Anwenden bewährter Application Lifecycle Management-Methoden in Azure Machine Learning Studio
-keywords: ALM, AML, Azure ML, Application Life Cycle Management, Versionskontrolle
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1be6577d-f2c7-425b-b6b9-d5038e52b395
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2016
-ms.openlocfilehash: f331ebb85e1cf47dc1235138376704b08d217e82
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249752"
+Titel: Application Lifecycle Management titleSuffix: Azure Machine Learning Studio-Beschreibung: Anwenden bewährter Methoden für Application Lifecycle Management in Azure Machine Learning Studio-Diensten: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 27.10.2016
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Application Lifecycle Management in Azure Machine Learning Studio
 Azure Machine Learning Studio ist ein Tool, mit dem Machine Learning-Experimente entwickelt und auf der Azure-Cloudplattform ausgeführt werden. Es ist vergleichbar mit der Zusammenführung der Visual Studio IDE mit skalierbaren Clouddiensten zu einer einzelnen Plattform. Sie können standardmäßige ALM-Vorgehensweisen (Application Lifecycle Management) – von der Versionsverwaltung verschiedener Ressourcen bis zur automatischen Ausführung und Bereitstellung – in Azure Machine Learning Studio integrieren. In diesem Artikel werden einige der Optionen und Ansätze behandelt.

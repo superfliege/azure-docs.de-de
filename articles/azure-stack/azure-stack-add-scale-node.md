@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982996"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232871"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Hinzufügen zusätzlicher Knoten zu Skalierungseinheiten in Azure Stack
 
@@ -105,6 +105,7 @@ Der Status für Skalierungseinheit und Skalierungseinheitknoten kann mit PowerSh
 
 ### <a name="status-for-the-add-node-operation"></a>Status für den Vorgang zum Hinzufügen eines Knoten 
 **Für eine Skalierungseinheit:**
+
 |Status               |BESCHREIBUNG  |
 |---------------------|---------|
 |Wird ausgeführt              |Alle Knoten sind aktiv an der Skalierungseinheit beteiligt.|
@@ -115,6 +116,7 @@ Der Status für Skalierungseinheit und Skalierungseinheitknoten kann mit PowerSh
 
 
 **Für einen Skalierungseinheitknoten:**
+
 |Status                |BESCHREIBUNG  |
 |----------------------|---------|
 |Wird ausgeführt               |Der Knoten ist aktiv an der Skalierungseinheit beteiligt.|
@@ -128,17 +130,17 @@ Der Status für Skalierungseinheit und Skalierungseinheitknoten kann mit PowerSh
 ## <a name="troubleshooting"></a>Problembehandlung
 Die folgenden Probleme treten häufig beim Hinzufügen eines Knotens auf. 
 
-**Szenario 1:** Beim Vorgang zum Hinzufügen eines Knotens zur Skalierungseinheit tritt ein Fehler auf, aber mindestens ein Knoten wird mit dem Status „Angehalten“ aufgeführt.  
-- Problemlösung: Verwenden Sie den Reparaturvorgang, um einen oder mehrere Knoten zu reparieren. Es kann immer nur ein einziger Reparaturvorgang gleichzeitig ausgeführt werden.
+**Szenario 1:**  Beim Vorgang zum Hinzufügen eines Knotens zur Skalierungseinheit tritt ein Fehler auf, aber mindestens ein Knoten wird mit dem Status „Angehalten“ aufgeführt.  
+- Abhilfe: Verwenden Sie den Reparaturvorgang, um einen oder mehrere Knoten zu reparieren. Es kann immer nur ein einziger Reparaturvorgang gleichzeitig ausgeführt werden.
 
 **Szenario 2:** Ein oder mehrere Skalierungseinheitknoten wurden hinzugefügt, aber die Speichererweiterung war nicht erfolgreich. In diesem Szenario meldet das Objekt des Skalierungseinheitknotens den Status „Wird ausgeführt“, aber die Aufgabe „Speicher wird konfiguriert“ wird nicht gestartet.  
-- Problemlösung: Verwenden Sie den privilegierten Endpunkt, um die Speicherintegrität zu überprüfen, indem Sie das folgende PowerShell-Cmdlet ausführen:
+- Abhilfe: Verwenden Sie den privilegierten Endpunkt, um die Speicherintegrität zu überprüfen, indem Sie das folgende PowerShell-Cmdlet ausführen:
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
 **Szenario 3:** Sie haben eine Warnung erhalten, die darauf hinweist, dass ein Fehler bei der horizontalen Skalierung des Speichers aufgetreten ist.  
-- Problemlösung: In diesem Fall war die Aufgabe der Speicherkonfiguration nicht erfolgreich. Bitte wenden Sie sich bei diesem Problem an den Support.
+- Abhilfe: In diesem Fall war die Aufgabe der Speicherkonfiguration nicht erfolgreich. Bitte wenden Sie sich bei diesem Problem an den Support.
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

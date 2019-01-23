@@ -1,20 +1,21 @@
 ---
-title: Definieren und Verwenden von Workflows in Azure Content Moderator | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie benutzerdefinierte Workflows basierend auf Ihren Inhaltsrichtlinien erstellen.
+title: Definieren und Verwenden von Inhaltsmoderationsworkflows – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Sie können den Workflow-Designer und die APIs von Azure Content Moderator verwenden, um benutzerdefinierte Workflows und Schwellenwerte basierend auf Ihren Inhaltsrichtlinien zu definieren.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 01/07/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: dfe3ba8a2ef1bcbc69ef585b504a9367d9420bf0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 265d5a2bd6a256d287e6ae164e883ade783f960f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373026"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262403"
 ---
 # <a name="define-test-and-use-workflows"></a>Definieren, Testen und Verwenden von Workflows
 

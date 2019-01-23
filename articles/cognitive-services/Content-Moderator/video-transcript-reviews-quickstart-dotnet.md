@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e862a8b74339bc8dd1de6c0b231ddb15425974c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 672d801b9a6c45a8ab3eb9964b6e061eeee11f59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220940"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266823"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
 
@@ -33,8 +33,7 @@ Außerdem wird in diesem Artikel davon ausgegangen, dass Sie bereits mit Visual 
 
 ## <a name="sign-up-for-content-moderator"></a>Registrieren für Content Moderator
 
-Um Content Moderator-Dienste über die REST-API oder über das SDK verwenden zu können, benötigen Sie einen Abonnementschlüssel.
-Informationen zum Abrufen des Schlüssels finden Sie in [diesem Schnellstart](quick-start.md).
+Um Content Moderator-Dienste über die REST-API oder über das SDK verwenden zu können, benötigen Sie einen Abonnementschlüssel. Gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um Content Moderator zu abonnieren und Ihren Schlüssel zu erhalten.
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrieren für ein Überprüfungstoolkonto, falls dies nicht bereits im vorhergehenden Schritt geschehen ist
 
@@ -215,7 +214,7 @@ Sie fügen ein Transkript einer Videoüberprüfung mit **ContentModeratorClient.
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung
 1. Ein **Stream**-Objekt mit dem Transkript
 
-Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
+Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
 
 > [!NOTE]
 > Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](https://docs.microsoft.com/azure/media-services/media-services-index-content).
@@ -252,7 +251,7 @@ Zusätzlich zum Hinzufügen eines Transkripts zu einer Videoüberprüfung fügen
 - **Term**: Eine Zeichenfolge, die den Begriff enthält
 - **Timestamp**: Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
 
-Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
+Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
 
 Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Mit dieser Methode wird ein Transkript an die **ContentModeratorClient.TextModeration.ScreenText**-Methode übermittelt. Außerdem wird das Ergebnis in ein „IList<TranscriptModerationBodyItem>“-Element übersetzt und an **AddVideoTranscriptModerationResult** übermittelt.
 

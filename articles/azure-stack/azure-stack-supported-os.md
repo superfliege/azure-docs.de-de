@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 056c44de4f89b04149c275b1508c7ea8f397d6e6
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.reviewer: unknown
+ms.openlocfilehash: cd44aa1dcc0ac5f97d39dee91fb547a333cb6ccf
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810778"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247706"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Für Azure Stack unterstützte Gastbetriebssysteme
 
@@ -71,7 +71,7 @@ Die im Marketplace verfügbaren Linux-Distributionen enthalten den erforderliche
 | Ubuntu 16.04-LTS | 64 Bit | Canonical | JA |
 | Ubuntu 18.04-LTS | 64 Bit | Canonical | JA |
 
-Informationen zur Unterstützung von Red Hat Enterprise Linux finden Sie unter [Red Hat und Azure Stack:  Häufig gestellte Fragen](https://access.redhat.com/articles/3413531) (in englischer Sprache).
+Informationen zur Unterstützung von Red Hat Enterprise Linux finden Sie unter [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531) (Red Hat und Azure Stack: häufig gestellte Fragen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

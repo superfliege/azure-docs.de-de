@@ -3,7 +3,7 @@ title: Authentifizierung mit Azure AD in nationalen Clouds
 description: Hier erhalten Sie Informationen zu App-Registrierungs- und Authentifizierungsendpunkten für nationale Clouds.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
+author: negoe
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 12/20/2018
 ms.author: negoe
-ms.reviewer: negoe,andret,saeeda
+ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
-ms.openlocfilehash: 866a86178d66b7b4af069d684e4eb56c12db47ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dfca40c14ad0da3a3e3a8a32757ec40ace9acf6a
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982000"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200563"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -33,7 +33,11 @@ Azure Active Directory wird in den folgenden nationalen Clouds bereitgestell
 - Azure Deutschland
 - Azure China 21Vianet
 
+Nationale Clouds sind eindeutig und eine andere Umgebung als globales Azure. Darum müssen Sie bei der Entwicklung Ihrer Anwendungen für diese Umgebungen, wie z.B. Registrierungsanwendungen und Anwendungen zum Abrufen von Token und Konfigurieren von Endpunkten, einige wesentliche Unterschiede beachten.
+
 ## <a name="app-registration-endpoints"></a>App-Registrierungsendpunkte
+
+Es gibt für jede nationale Cloud ein separates Azure-Portal. Um Anwendungen mit der Microsoft Identity Platform in eine nationale Cloud zu integrieren, müssen Sie Ihre Anwendung separat jeweils im spezifischen Azure-Portal der Umgebung registrieren.
 
 Die folgende Tabelle enthält die Basis-URLs für die Azure Active Directory-Endpunkte (Azure AD), die zum Registrieren einer Anwendung für die einzelnen nationalen Clouds verwendet werden:
 
@@ -42,11 +46,13 @@ Die folgende Tabelle enthält die Basis-URLs für die Azure Active Directory-End
 | Azure AD für US-Regierungsbehörden |https://portal.azure.us
 |Azure AD Deutschland |https://portal.microsoftazure.de
 |Azure AD China, betrieben von 21Vianet |https://portal.azure.cn
-|Azure AD (globaler Dienst)|https://portal.azure.com
+|Azure AD (globaler Dienst)|https://portal.azure.com 
 
 ## <a name="azure-ad-authentication-endpoints"></a>Azure AD-Authentifizierungsendpunkte
 
-Die folgende Tabelle enthält die Basis-URLs für die Azure Active Directory-Endpunkte (Azure AD), die zum Abrufen von Token für den Aufruf von Microsoft Graph für die einzelnen nationalen Clouds verwendet werden:
+Alle nationalen Clouds authentifizieren Benutzer in jeder Umgebung separat und verfügen über separate Authentifizierungsendpunkte.
+
+Die folgende Tabelle enthält die Basis-URLs für die Azure Active Directory-Endpunkte (Azure AD), die zum Abrufen von Token für die einzelnen nationalen Clouds verwendet werden.
 
 | Nationale Cloud | Azure AD-Authentifizierungsendpunkt
 | --- | --- |
@@ -55,20 +61,28 @@ Die folgende Tabelle enthält die Basis-URLs für die Azure Active Directory-End
 |Azure AD China, betrieben von 21Vianet | `https://login.chinacloudapi.cn`
 |Azure AD (globaler Dienst)|`https://login.microsoftonline.com`
 
-Anforderungen an die Autorisierungs- oder Tokenendpunkte von Azure AD können mit der entsprechenden regionsspezifischen Basis-URL generiert werden. Beispiel für Deutschland:
+- Anforderungen an die Autorisierungs- oder Tokenendpunkte von Azure AD können mit der entsprechenden regionsspezifischen Basis-URL generiert werden. Z.B. für Azure Deutschland:
 
-- Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/authorize`.
-- Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/token`. 
+  - Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/authorize`.
+  - Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/token`.
 
-Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten. Beispiel: `https://login.microsoftonline.de/contoso.com`
+- Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten, z.B. `https://login.microsoftonline.de/contoso.com`.
 
 >[!NOTE]
 > Die Endpunkte für die [Azure AD v2.0-Autorisierung]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) und -Token sind nur für den globalen Dienst verfügbar. Für Bereitstellungen nationaler Clouds werden sie noch nicht unterstützt.
 
+## <a name="microsoft-graph-api"></a>Microsoft Graph-API
+
+Informationen zum Aufrufen der Microsoft Graph-APIs in der Umgebung der nationalen Cloud finden Sie unter [Nationale Cloudbereitstellungen](https://developer.microsoft.com/graph/docs/concepts/deployments).
+
+
+
+>[!IMPORTANT]
+Bestimmte Dienste und Funktionen, die in bestimmten Regionen des globalen Diensts vorhanden sind, sind möglicherweise nicht in allen nationalen Clouds verfügbar. Um herauszufinden, welche Dienste verfügbar sind, wechseln Sie zu [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- Weitere Informationen zu [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- Weitere Informationen zu [Azure Deutschland](https://docs.microsoft.com/azure/germany/)
-- Weitere Informationen zu den [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md)
-- Weitere Informationen zur [Microsoft Graph-Bereitstellung in nationalen Clouds](https://developer.microsoft.com/graph/docs/concepts/deployments)
+- Weitere Informationen zu [Azure Government](https://docs.microsoft.com/azure/azure-government/).
+- Weitere Informationen zu [Azure China 21Vianet](https://docs.microsoft.com/azure/china/).
+- Weitere Informationen zu [Azure Deutschland](https://docs.microsoft.com/azure/germany/).
+- Weitere Informationen zu den [Authentifizierungsgrundlagen von Azure AD](authentication-scenarios.md).

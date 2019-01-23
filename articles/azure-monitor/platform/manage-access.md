@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 71987fcde08c5098d98d21405ce79e61d3094424
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6c8f48ce71e11d1de0c28b4dab5327ab03e54f28
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186054"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231783"
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -40,7 +40,7 @@ Ein Arbeitsbereich bietet jetzt Folgendes:
 
 * Einen geografischen Standort für die Speicherung von Daten
 * Datenisolation zum Definieren unterschiedlicher Benutzerzugriffsrechte
-* Bereich für die Konfiguration von Einstellungen wie Aufbewahrung und Datenobergrenzen
+* Bereich für die Konfiguration von Einstellungen wie [Tarif](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [Aufbewahrung](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) und [Datenobergrenzen](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#daily-cap) 
 
 Im Hinblick auf die Nutzung wird empfohlen, möglichst wenige Arbeitsbereiche zu erstellen. Dadurch werden Verwaltung und Abfragen einfacher und schneller. Auf der Grundlage der obigen Merkmale können Sie jedoch in folgenden Szenarien mehrere Arbeitsbereiche erstellen:
 
@@ -145,96 +145,6 @@ Mit diesen Rollen können Sie Benutzern Zugriff auf verschiedenen Ebenen gewähr
 - Ressource: Nur Zugriff auf den angegebenen Arbeitsbereich
 
 Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzunehmen, um eine korrekte Zugriffssteuerung zu gewährleisten.  Verwenden Sie [benutzerdefinierte Rollen](../../role-based-access-control/custom-roles.md), um Rollen mit spezifischen Berechtigungen zu erstellen.
-
-## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Verknüpfen eines vorhandenen Arbeitsbereichs mit einem Azure-Abonnement
-Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit einem Azure-Abonnement verknüpft werden. Vor diesem Datum erstellte Arbeitsbereiche müssen bei der Anmeldung mit einem Abonnement verknüpft werden. Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Organisationskonto verknüpft.
-
-### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>So verknüpfen Sie einen Arbeitsbereich mit einem Azure-Abonnement im Azure-Portal
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.  
-
-2. Klicken Sie im Bereich mit den Log Analytics-Abonnements auf **Hinzufügen**.  
-
-    ![Liste der Arbeitsbereiche](./media/manage-access/workspace-link-existing-01.png)
-
-3. Klicken Sie im Bereich **Log Analytics-Arbeitsbereich** auf **Vorhandene verknüpfen**.  
-
-4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**.  
-
-5. Daraufhin wird eine Liste mit Arbeitsbereichen angezeigt, die noch nicht mit Ihrem Azure-Konto verknüpft sind. Wählen Sie den Arbeitsbereich aus.  
-   
-6. Bei Bedarf können Sie die Werte für die folgenden Elemente ändern:
-   * Abonnement
-   * Ressourcengruppe
-   * Standort
-   * Tarif  
-
-7. Klicken Sie auf **OK**. Der Arbeitsbereich ist jetzt mit Ihrem Azure-Konto verknüpft.
-
-> [!NOTE]
-> Wenn der Arbeitsbereich, den Sie verknüpfen möchten, hier nicht angezeigt wird, hat Ihr Azure-Abonnement keinen Zugriff auf den Arbeitsbereich, den Sie mit dem OMS-Portal erstellt haben.  Unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace) erfahren Sie, wie Sie über das OMS-Portal Zugriff auf dieses Konto gewähren.
->
->
-
-## <a name="upgrade-a-workspace-to-a-paid-plan"></a>Upgraden eines Arbeitsbereichs auf einen kostenpflichtigen Plan
-Für OMS stehen drei Arten von Arbeitsbereichsplänen zur Verfügung: **Free**, **Eigenständig** und **OMS**.  Bei der Planoption *Free* ist das an Log Analytics gesendete Datenvolumen auf 500 MB pro Tag beschränkt.  Wenn Sie diese Menge überschreiten, müssen Sie Ihren Arbeitsbereich auf einen kostenpflichtigen Plan upgraden, um zu vermeiden, dass die über diesen Grenzwert hinausgehenden Daten nicht erfasst werden. Der Plantyp kann jederzeit geändert werden.  Weitere Informationen zu den Preisen für OMS finden Sie unter [Preise](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing).
-
-### <a name="using-entitlements-from-an-oms-subscription"></a>Verwenden von Berechtigungen aus einem OMS-Abonnement
-Wenn Sie die Berechtigungen nutzen möchten, die Sie durch den Kauf von OMS E1, OMS E2 oder des OMS-Add-Ons für System Center erwerben, wählen Sie die Planoption *OMS* von OMS Log Analytics aus.
-
-Beim Kauf eines OMS-Abonnements werden die Berechtigungen Ihrem Enterprise Agreement hinzugefügt. Die Berechtigungen stehen für alle Azure-Abonnements zur Verfügung, die im Rahmen dieses Vertrags erstellt werden. Verwenden Sie für alle Arbeitsbereiche in diesen Abonnements die OMS-Berechtigungen.
-
-Gehen Sie wie folgt vor, um sicherzustellen, dass die Verwendung eines Arbeitsbereichs auf Ihre Berechtigungen des OMS-Abonnements angewendet wird:
-
-1. Erstellen Sie Ihren Arbeitsbereich unter einem Azure-Abonnement, das zum Enterprise Agreement mit dem OMS-Abonnement gehört.
-
-2. Wählen Sie für den Arbeitsbereich die Planoption *OMS* aus.
-
-> [!NOTE]
-> Wenn Ihr Arbeitsbereich vor dem 26. September 2016 erstellt wurde und Ihr Log Analytics-Preisplan *Premium* lautet, verwendet dieser Arbeitsbereich Berechtigungen aus dem OMS-Add-On für System Center. Die Berechtigungen können auch durch einen Wechsel zum Tarif *OMS* genutzt werden.
->
->
-
-Die OMS-Abonnementberechtigungen werden im Azure-Portal nicht angezeigt. Die Berechtigungen und die Nutzung können im Enterprise Portal angezeigt werden.  
-
-Wenn Sie das Azure-Abonnement ändern möchten, mit dem Ihr Arbeitsbereich verknüpft ist, können Sie das Azure PowerShell-Cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) verwenden.
-
-### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>Verwenden von Azure Commitment von einem Enterprise Agreement
-Wenn Sie über kein OMS-Abonnement verfügen, wird jede OMS-Komponente separat abgerechnet, und die Nutzung wird auf Ihrer Azure-Rechnung ausgewiesen.
-
-Wenn Sie über einen monetären Azure-Verpflichtungsbetrag für die Unternehmensanmeldung verfügen, mit der Ihre Azure-Abonnements verknüpft sind, wird die Nutzung von Log Analytics automatisch mit dem verbleibenden monetären Verpflichtungsbetrag verrechnet.
-
-Zum Ändern des Azure-Abonnements, mit dem der Arbeitsbereich verknüpft ist, können Sie das Azure PowerShell-Cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) verwenden.  
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Umstellen eines Arbeitsbereichs auf einen kostenpflichtigen Tarif über das Azure-Portal
-1. Wählen Sie im Azure-Portal im Bereich mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
-
-2. Klicken Sie im Bereich des Arbeitsbereichs unter **Allgemein** auf **Tarif**.  
-
-3. Wählen Sie unter **Tarif** einen Tarif aus, und klicken Sie anschließend auf **Auswählen**.  
-    ![Ausgewählter Tarif](./media/manage-access/workspace-pricing-tier-info.png)
-
-> [!NOTE]
-> Falls Ihr Arbeitsbereich mit einem Automation-Konto verknüpft ist und Sie den Tarif *Standalone (Per GB)* (Eigenständig (pro GB)) auswählen möchten, müssen Sie zuvor alle Lösungen vom Typ **Automation & Control** löschen und die Verknüpfung mit dem Automation-Konto aufheben. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Lösungen**, um die Lösungen anzuzeigen und zu löschen. Klicken Sie zum Aufheben der Verknüpfung mit dem Automation-Konto auf dem Blatt **Tarif** auf den Namen des Automatisierungskontos.
->
->
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>Umstellen eines Arbeitsbereichs auf einen kostenpflichtigen Tarif über das OMS-Portal
-
-Sie müssen über ein Azure-Abonnement verfügen, um den Tarif mithilfe des OMS-Portals zu ändern.
-
-1. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen**.
-
-2. Klicken Sie auf die Registerkarte **Konten** **Azure Subscription & Data Plan** (Azure-Abonnement und -Datentarif).
-
-3. Klicken Sie auf den Tarif, den Sie verwenden möchten.
-
-4. Klicken Sie auf **Speichern**.  
-
-    ![Abonnement und Datentarife](./media/manage-access/subscription-tab.png)
-
-Der neue Datentarif wird oben auf der Webseite im Menüband des OMS-Portals angezeigt.
-
-![OMS-Menüband](./media/manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Erfassen der Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Collect log data with the Azure Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) (Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent).

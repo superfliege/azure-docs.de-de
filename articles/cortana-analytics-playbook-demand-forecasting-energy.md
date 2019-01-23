@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426253"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306487"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs
 ## <a name="executive-summary"></a>Kurzfassung
@@ -172,7 +172,7 @@ In vielen Fällen sind Kunden unter Umständen daran interessiert, eine Business
 
 Andererseits ist ein gutes Verständnis des geschäftlichen Nutzens einer Vorhersage des Energiebedarfs (kurz- oder langfristig) unerlässlich. Es ist sogar wichtig, sich den geschäftlichen Nutzen jedes Vorhersagevorgangs klar zu machen. Durch das genaue Vorhersagen der Stromlast für die nächsten 24 Stunden kann beispielsweise eine Überproduktion verhindert werden, oder es können Überlastungen im Netz vermieden werden. Dies kann dann in Form von täglichen Kosteneinsparungen quantifiziert werden.
 
-Eine einfache Formel zur Berechnung des finanziellen Vorteils einer Lösung für die Bedarfsvorhersage lautet wie folgt: ![Einfache Formel zur Berechnung des finanziellen Vorteils von Lösungen zur Bedarfsvorhersage](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Eine einfache Formel zur Berechnung des finanziellen Vorteils einer Lösung für die Bedarfsvorhersage lautet wie folgt:  ![Einfache Formel zur Berechnung des finanziellen Vorteils von Lösungen zur Bedarfsvorhersage](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
 Da die Cortana Intelligence Suite über ein Preismodell mit nutzungsbasierter Bezahlung verfügt, ist es nicht erforderlich, in diese Formel eine Festkostenkomponente einzufügen. Diese Formel kann für die tägliche, monatliche oder jährliche Abrechnung verwendet werden.
 
@@ -269,14 +269,14 @@ Die Cortana Intelligence Suite unterstützt die gängigsten Datenformate, z.B. C
 ### <a name="data-ingestion"></a>Datenerfassung
 Da die Vorhersage des Energiebedarfs ständig und sehr häufig erfolgt, müssen wir sicherstellen, dass die Rohdaten bereitgestellt werden. Hierfür verwenden wir einen robusten und zuverlässigen Datenerfassungsprozess. Für den Erfassungsprozess muss sichergestellt werden, dass die Rohdaten für den Vorhersageprozess zum erforderlichen Zeitpunkt verfügbar sind. Dies bedeutet, dass die Datenerfassungshäufigkeit höher als die Vorhersagehäufigkeit sein sollte.
 
-Beispiel: Wenn von der Lösung für die Vorhersage des Bedarfs täglich um 8:00 Uhr eine neue Vorhersage generiert wird, müssen wir Folgendes sicherstellen: Alle Daten, die während der letzten 24 Stunden gesammelt wurden, wurden bis zu diesem Zeitpunkt vollständig erfasst, und auch die Daten der letzten Stunde müssen vollständig erfasst worden sein.
+Beispiel:  Wenn von der Lösung für die Vorhersage des Bedarfs täglich um 8:00 Uhr eine neue Vorhersage generiert wird, müssen wir Folgendes sicherstellen: Alle Daten, die während der letzten 24 Stunden gesammelt wurden, wurden bis zu diesem Zeitpunkt vollständig erfasst, und auch die Daten der letzten Stunde müssen vollständig erfasst worden sein.
 
 Hierfür verfügt die Cortana Intelligence Suite über verschiedene Wege zur Unterstützung eines zuverlässigen Datenerfassungsprozesses. Dies wird im Abschnitt **Bereitstellung** dieses Dokuments näher erläutert.
 
 ### <a name="data-quality"></a>Datenqualität
 Die Rohdatenquelle, die zur Durchführung einer zuverlässigen und genauen Bedarfsvorhersage erforderlich ist, muss einige grundlegende Kriterien in Bezug auf die Datenqualität erfüllen. Es können zwar erweiterte statistische Methoden verwendet werden, um mögliche Probleme mit der Datenqualität aufzufangen, aber wir müssen trotzdem sicherstellen, dass bei der Erfassung neuer Daten einige Mindestanforderungen an die Datenqualität erfüllt werden. Zu berücksichtigende Aspekte in Bezug auf die Qualität von Rohdaten:
 
-* **Fehlender Wert:** Dies bezieht sich auf eine Situation, in der eine bestimmte Messung nicht erfasst wurde. Die Grundvoraussetzung hierbei ist, dass die Rate der fehlenden Werte für einen bestimmten Zeitraum nicht größer als 10 % ist. Falls ein einzelner Wert fehlt, sollte dies mit einer vordefinierten Angabe (z. B. „9999“) angezeigt werden, und nicht mit dem Wert „0“, da es sich hierbei um einen gültigen Messwert handeln kann.
+* **Fehlender Wert:** Dies bezieht sich auf eine Situation, in der eine bestimmte Messung nicht erfasst wurde. Die Grundvoraussetzung hierbei ist, dass die Rate der fehlenden Werte für einen bestimmten Zeitraum nicht größer als 10 % ist. Falls ein einzelner Wert fehlt, sollte dies mit einer vordefinierten Angabe (z.B. „9999“) angezeigt werden, und nicht mit dem Wert „0“, da es sich hierbei um einen gültigen Messwert handeln kann.
 * **Genauigkeit der Messung:** Der tatsächliche Verbrauchs- bzw. Temperaturwert sollte genau aufgezeichnet werden. Ungenaue Messungen führen zu ungenauen Vorhersagen. Der Messfehler sollte relativ zum richtigen Wert in einem Bereich von unter 1 % liegen.
 * **Zeitpunkt der Messung:** Der tatsächliche Zeitstempel der erfassten Daten darf relativ zum wirklichen Zeitpunkt der Messung nicht um mehr als zehn Sekunden abweichen.
 * **Synchronisierung:** Wenn mehrere Datenquellen verwendet werden (*z.B.* Verbrauch und Temperatur), müssen wir sicherstellen, dass hierfür keine Probleme mit der Zeitsynchronisierung auftreten. Dies bedeutet, dass der Zeitunterschied zwischen dem erfassten Zeitstempel von zwei unabhängigen Datenquellen nicht mehr als zehn Sekunden betragen sollte.
@@ -320,21 +320,21 @@ Bei der Bedarfsvorhersage nutzen wir Verlaufsdaten, die nach der Zeit sortiert s
 In den letzten Jahren wurden erweiterte Algorithmen entwickelt, um die Zeitreihenvorhersage abzudecken und die Vorhersagegenauigkeit zu verbessern. Einige davon werden hier kurz beschrieben.
 
 > [!NOTE]
-> Dieser Abschnitt soll nicht als Übersicht über Machine Learning und Vorhersagen dienen, sondern als kurzer Überblick über Modellierungsverfahren, die für Bedarfsvorhersagen häufig eingesetzt werden. Falls Sie weitere Informationen und Lehrmittel zur Zeitreihenvorhersage benötigen, legen wir Ihnen die Onlinedokumentation [Forecasting: principles and practice](https://www.otexts.org/book/fpp)(Vorhersagen: Prinzipien und Vorgehensweisen) ans Herz.
+> Dieser Abschnitt soll nicht als Übersicht über Machine Learning und Vorhersagen dienen, sondern als kurzer Überblick über Modellierungsverfahren, die für Bedarfsvorhersagen häufig eingesetzt werden. Falls Sie weitere Informationen und Lehrmittel zur Zeitreihenvorhersage benötigen, legen wir Ihnen die Onlinedokumentation [Forecasting: principles and practice](https://www.otexts.org/)(Vorhersagen: Prinzipien und Vorgehensweisen) ans Herz.
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (Moving Average)**](https://www.otexts.org/fpp/6/2) (Gleitender Durchschnitt)
+#### <a name="ma-moving-average"></a>**MA (Moving Average, gleitender Durchschnitt)**
 Der gleitende Durchschnitt ist eines der ersten Analyseverfahren, das für die Zeitreihenvorhersage verwendet wurde, und ist immer noch eines der am häufigsten genutzten Verfahren. Außerdem ist es die Grundlage für anspruchsvollere Vorhersageverfahren. Mit dem gleitenden Durchschnitt sagen wir den nächsten Datenpunkt voraus, indem wir den Mittelwert der „K“ häufigsten Punkte bilden. „K“ steht hierbei für die Reihenfolge des gleitenden Durchschnitts.
 
 Beim Verfahren des gleitenden Durchschnitts wird die Vorhersage geglättet, sodass es unter Umständen nicht gut geeignet ist, wenn die Daten eine hohe Volatilität aufweisen.
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (Exponential Smoothing)**](https://www.otexts.org/fpp/7/5) (Exponentielle Glättung)
-Unter der exponentiellen Glättung sind verschiedene Methoden zusammengefasst, bei denen der gewichtete Durchschnitt der letzten Datenpunkte verwendet wird, um den nächsten Datenpunkt vorherzusagen. Die Idee hierbei ist, dass neueren Werten eine höhere Gewichtung zugewiesen wird und diese Gewichtung für ältere Messwerte allmählich verringert wird. Es werden verschiedene Methoden verwendet, von denen einige eine Behandlung der Saisonabhängigkeit in den Daten umfassen, z.B. die [Holt-Winters Seasonal Method](https://www.otexts.org/fpp/7/5).
+#### <a name="ets-exponential-smoothing"></a>**ETS (Exponential Smoothing, exponentielle Glättung)**
+Unter der exponentiellen Glättung sind verschiedene Methoden zusammengefasst, bei denen der gewichtete Durchschnitt der letzten Datenpunkte verwendet wird, um den nächsten Datenpunkt vorherzusagen. Die Idee hierbei ist, dass neueren Werten eine höhere Gewichtung zugewiesen wird und diese Gewichtung für ältere Messwerte allmählich verringert wird. Es werden verschiedene Methoden verwendet, von denen einige eine Behandlung der Saisonabhängigkeit in den Daten umfassen, z.B. die Holt-Winters Seasonal Method.
 
 Bei einem Teil dieser Methoden fließt die Saisonabhängigkeit der Daten ein.
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (Auto Regression Integrated Moving Average)**](https://www.otexts.org/fpp/8)
+#### <a name="arima-auto-regression-integrated-moving-average"></a>**ARIMA (Auto Regression Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert)**
 Bei „Auto Regression Integrated Moving Average“ (ARIMA) wird eine andere Gruppe von Methoden genutzt, die häufig für Zeitreihenvorhersagen eingesetzt wird. Hierbei wird die Autoregression quasi mit dem gleitenden Durchschnitt kombiniert. Für Autoregressionsmethoden werden Regressionsmodelle verwendet, indem vorherige Zeitreihenwerte zum Berechnen des nächsten Datumspunkts genutzt werden. Bei ARIMA-Methoden werden auch Differenzmethoden angewendet, bei denen die Differenz zwischen Datenpunkten berechnet und dann anstelle des ursprünglich gemessenen Werts verwendet wird. Schließlich werden bei ARIMA auch die Verfahren mit dem gleitenden Durchschnitt eingesetzt, die oben beschrieben sind. Die Kombination all dieser Methoden auf unterschiedliche Weise macht die Gruppe der ARIMA-Methoden aus.
 
 ETS und ARIMA werden heutzutage häufig für Vorhersagen des Energiebedarfs und viele andere Vorhersageprobleme genutzt. In vielen Fällen wird eine Kombination verwendet, um Ergebnisse mit hoher Genauigkeit zu liefern.

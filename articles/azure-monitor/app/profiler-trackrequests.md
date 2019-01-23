@@ -12,19 +12,20 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 20f408d9dd32c3fd7a0e319e4051483e3aa54dd9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 978f9a341eec2f16b9f6fe3d164e97805d7a8e93
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081732"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359636"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Schreiben von Code zum Verfolgen von Anforderungen mit Application Insights
 
-Damit auf der Seite „Leistung“ Profile für Ihre Anwendung angezeigt werden, muss Application Insights Anforderungen für Ihre Anwendung verfolgen. Für Anwendungen wie ASP.NET und ASP.NET Core, die auf bereits instrumentierten Frameworks beruhen, kann Application Insights Anforderungen automatisch verfolgen. Für andere Anwendungen, wie Azure Cloud Services-Workerrollen und zustandslose Service Fabric-APIs, müssen Sie Code schreiben, um Application Insights mitzuteilen, wo Ihre Anforderungen beginnen und enden. Sobald Sie diesen Code geschrieben haben, werden Anforderungstelemetriedaten an Application Insights gesendet. Die Telemetriedaten werden auf der Seite „Leistung“ angezeigt, und es werden Profile für diese Anforderungen gesammelt. 
+Damit auf der Seite „Leistung“ Profile für Ihre Anwendung angezeigt werden, muss Azure Application Insights Anforderungen für Ihre Anwendung verfolgen. Für Anwendungen, die auf bereits instrumentierten Frameworks beruhen, kann Application Insights Anforderungen automatisch verfolgen. Zwei Beispiele sind ASP.NET und ASP.NET Core. 
 
-Im Folgenden werden die Schritte aufgeführt, die Sie zum manuellen Verfolgen von Anforderungen ausführen müssen:
+Für andere Anwendungen, wie Azure Cloud Services-Workerrollen und zustandslose Service Fabric-APIs, müssen Sie Code schreiben, um Application Insights mitzuteilen, wo Ihre Anforderungen beginnen und enden. Nachdem Sie diesen Code geschrieben haben, werden die Telemetriedaten der Anforderungen an Application Insights gesendet. Sie können die Telemetriedaten auf der Seite „Leistung“ anzeigen, und es werden Profile für diese Anforderungen gesammelt. 
 
+Gehen Sie folgendermaßen vor, um Anforderungen manuell zu verfolgen:
 
   1. Fügen Sie den folgenden Code zu einem frühen Zeitpunkt der Anwendungslebensdauer hinzu:  
 
@@ -36,7 +37,7 @@ Im Folgenden werden die Schritte aufgeführt, die Sie zum manuellen Verfolgen vo
         ```
       Weitere Informationen zu dieser globalen Konfiguration des Instrumentierungsschlüssels finden Sie unter [Verwenden von Service Fabric mit Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  1. Schließen Sie zu instrumentierende Codepassagen in eine `StartOperation<RequestTelemetry>` **USING**-Anweisung ein, wie im folgenden Beispiel gezeigt:
+  1. Schließen Sie zu instrumentierende Codepassagen in eine `StartOperation<RequestTelemetry>` **using**-Anweisung ein, wie im folgenden Beispiel gezeigt:
 
         ```csharp
         using Microsoft.ApplicationInsights;

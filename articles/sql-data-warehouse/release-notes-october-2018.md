@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966822"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213688"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Neuerungen in Azure SQL Data Warehouse Oktober 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im Oktober 2018 eingeführt wurden.
@@ -41,7 +41,7 @@ Noch stärker vereinfacht wurde die erweiterte Optimierung für Azure SQL Data W
 Accelerated Database Recovery (ADR) für Azure SQL Data Warehouse ist ab sofort als öffentliche Vorschau verfügbar. ADR ist eine neue SQL Server-Engine, mit der die Datenbankverfügbarkeit aufgrund eines Neuentwurfs des aktuellen Wiederherstellungsprozesses rundum verbessert wird, insbesondere bei Transaktionen mit langer Ausführungsdauer. Die wichtigsten Vorteile von ADR sind die schnelle und konsistente Datenbankwiederherstellung und der sofortige Transaktionsrollback.
 
 ## <a name="azure-monitor-diagnostics-logs"></a>Azure Monitor-Diagnoseprotokolle
-SQL Data Warehouse (SQL DW) bietet dank der direkten Integration in Azure Monitor-Diagnoseprotokolle ab sofort bessere Einblicke in Analyseworkloads. Dank dieser neuen Funktion können Entwickler das Workloadverhalten über einen längeren Zeitraum analysieren und fundierte Entscheidungen zur Abfrageoptimierung oder Kapazitätsverwaltung treffen. Wir haben nun einen externen Protokollierungsprozess über [Azure Monitor-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) eingeführt, die zusätzliche Einblicke in Ihre Data Warehouse-Workload bereitstellen. Mit einem einzigen Mausklick können Sie so jetzt Diagnoseprotokolle mithilfe von [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries) konfigurieren, um Funktionen zur Problembehandlung bezüglich der Leistung von Verlaufsabfragen nutzen zu können. Azure Monitor-Diagnoseprotokolle unterstützen anpassbare Aufbewahrungszeiträume, indem die Protokolle für Überwachungszwecke in einem Speicherkonto gespeichert werden, die Möglichkeit, Protokolle zur Bereitstellung von Telemetriedaten nahezu in Echtzeit an Event Hubs zu streamen, und die Option, Protokolle mithilfe von Log Analytics mit [Protokollabfragen]() zu analysieren. Diagnoseprotokolle umfassen Telemetrieansichten zu Ihrem Data Warehouse, die den am häufigsten verwendeten DMVs zur Behandlung von Leistungsproblemen für SQL Data Warehouse entsprechen. Für dieses erste Release haben wir Ansichten für folgende dynamische Systemverwaltungssichten aktiviert:
+SQL Data Warehouse (SQL DW) bietet dank der direkten Integration in Azure Monitor-Diagnoseprotokolle ab sofort bessere Einblicke in Analyseworkloads. Dank dieser neuen Funktion können Entwickler das Workloadverhalten über einen längeren Zeitraum analysieren und fundierte Entscheidungen zur Abfrageoptimierung oder Kapazitätsverwaltung treffen. Wir haben nun einen externen Protokollierungsprozess über [Azure Monitor-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) eingeführt, die zusätzliche Einblicke in Ihre Data Warehouse-Workload bereitstellen. Mit einem einzigen Mausklick können Sie so jetzt Diagnoseprotokolle mithilfe von [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries) konfigurieren, um Funktionen zur Problembehandlung bezüglich der Leistung von Verlaufsabfragen nutzen zu können. Azure Monitor-Diagnoseprotokolle unterstützen anpassbare Aufbewahrungszeiträume, indem die Protokolle für Überwachungszwecke in einem Speicherkonto gespeichert werden, die Möglichkeit, Protokolle zur Bereitstellung von Telemetriedaten nahezu in Echtzeit an Event Hubs zu streamen, und die Option, Protokolle mithilfe von Log Analytics mit Protokollabfragen zu analysieren. Diagnoseprotokolle umfassen Telemetrieansichten zu Ihrem Data Warehouse, die den am häufigsten verwendeten DMVs zur Behandlung von Leistungsproblemen für SQL Data Warehouse entsprechen. Für dieses erste Release haben wir Ansichten für folgende dynamische Systemverwaltungssichten aktiviert:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)
@@ -57,7 +57,7 @@ Azure SQL Data Warehouse (SQL DW) verfügt jetzt über native Integration in Azu
 
 ## <a name="bug-fixes"></a>Fehlerbehebungen
 
-| Titel | Beschreibung |
+| Titel | BESCHREIBUNG |
 |:---|:---|
 | **Fehler bei CETAS zu PARQUET in kleinen Ressourcenklassen in Data Warehouses vom Typ DW2000 und vieles mehr** | Durch diese Fehlerbehebung wird ein Nullverweis im Codepfad von CREATE EXTERNAL TABLE AS zu PARQUET korrekt identifiziert. |
 |**Wert der Identitätsspalte kann in einigen CTAS-Vorgängen verloren gehen.** | Der Wert einer Identitätsspalte kann nicht beibehalten werden, wenn CTAS auf eine andere Tabelle angewendet wird. In einem Blog gemeldet: [https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |

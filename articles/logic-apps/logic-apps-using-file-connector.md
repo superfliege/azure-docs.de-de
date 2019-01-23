@@ -8,19 +8,19 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.date: 08/25/2018
-ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/13/2019
+ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232544"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264325"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Dateisystemen mit Azure Logic Apps
 
 Mit dem Dateisystem-Connector und Azure Logic Apps können Sie automatisierte Aufgaben und Workflows erstellen, die Dateien auf einer lokalen Dateifreigabe erstellen und verwalten, um beispielsweise folgende Aufgaben auszuführen:  
 
-- Erstellen, Abrufen, Anfügen, Aktualisieren und Löschen von Dateien
+- Erstellen, Abrufen, Anfügen, Aktualisieren und Löschen von Dateien.
 - Auflisten von Dateien in Ordnern oder Stammordnern
 - Abrufen von Dateiinhalten und Metadaten
 
@@ -28,13 +28,17 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+Für dieses Beispiel benötigen Sie Folgendes:
+
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
 * Bevor Sie eine Verbindung zwischen Logik-Apps und lokalen Systemen wie etwa Ihrem Dateisystemserver herstellen können, müssen Sie [ein lokales Datengateway installieren und einrichten](../logic-apps/logic-apps-gateway-install.md). So können Sie beim Erstellen der Dateisystemverbindung in Ihrer Logik-App angeben, dass die Gatewayinstallation verwendet werden soll.
 
-* Ein [Dropbox-Konto](https://www.dropbox.com/) und Ihre Benutzeranmeldeinformationen.
+* Ein [Dropbox-Konto](https://www.dropbox.com/) und Ihre Anmeldeinformationen. Ihre DropBox-Anmeldeinformationen sind zum Herstellen einer Verbindung zwischen Ihrer Logik-App und Ihrem Dropbox-Konto erforderlich. 
 
-  Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Ihrem Dropbox-Konto sowie zum Zugriff auf das Konto. 
+* Ihre Kontoanmeldeinformationen für den Computer mit dem Dateisystem, auf das Sie zugreifen möchten. Wenn Sie z.B. das Datengateway auf dem gleichen Computer installieren, auf dem sich Ihr Dateisystem befindet, benötigen Sie die Anmeldeinformationen für diesen Computer. 
+
+* Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters wie etwa Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Logik-App verwenden wir ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab. 
 
 * Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Für dieses Beispiel benötigen Sie eine leere Logik-App.
 
@@ -56,7 +60,7 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
 
 ## <a name="add-actions"></a>Hinzufügen von Aktionen
 
-1. Klicken Sie unter dem Trigger auf **Nächster Schritt**. Geben Sie im Suchfeld „Dateisystem“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die folgende Aktion aus: **Datei erstellen – Dateisystem**.
+1. Klicken Sie unter dem Trigger auf **Nächster Schritt**. Geben Sie im Suchfeld „Dateisystem“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Datei erstellen – Dateisystem**
 
    ![Suchen nach dem Dateisystem-Connector](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -67,10 +71,10 @@ In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie e
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    | -------- | -------- | ----- | ----------- | 
    | **Verbindungsname** | JA | <*verbindungsname*> | Der gewünschte Name für die Verbindung. | 
-   | **Stammordner** | JA | <*Name des Stammordners*> | Der Stammordner für Ihr Dateisystem – beispielsweise ein lokaler Ordner auf dem Computer, auf dem das lokale Datengateway installiert ist, oder der Ordner für eine Netzwerkfreigabe, auf die der Computer zugreifen kann. <p>Beispiel: `\\PublicShare\\DropboxFiles` <p>Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. | 
+   | **Stammordner** | JA | <*Name des Stammordners*> | Der Stammordner für Ihr Dateisystem – beispielsweise, wenn Sie Ihr lokales Datengateway installiert haben, ein lokaler Ordner auf dem Computer, auf dem das lokale Datengateway installiert ist, oder der Ordner für eine Netzwerkfreigabe, auf die der Computer zugreifen kann. <p>Beispiel: `\\PublicShare\\DropboxFiles` <p>Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. | 
    | **Authentifizierungstyp** | Nein  | <*Authentifizierungstyp*> | Die Art der Authentifizierung, die von Ihrem Dateisystem verwendet wird (beispielsweise **Windows**). | 
-   | **Benutzername** | JA | <*Domäne*>\\<*Benutzername*> | Der Benutzername für Ihr zuvor installiertes Datengateway. | 
-   | **Kennwort** | JA | <*Ihr Kennwort*> | Das Kennwort für Ihr zuvor installiertes Datengateway. | 
+   | **Benutzername** | JA | <*Domäne*>\\<*Benutzername*> | Der Benutzername für den Computer, auf dem sich das Dateisystem befindet | 
+   | **Kennwort** | JA | <*Ihr Kennwort*> | Das Kennwort für den Computer, auf dem sich das Dateisystem befindet | 
    | **Gateway** | JA | <*Name des installierten Gateways*> | Der Name für das zuvor installierte Gateway. | 
    ||| 
 

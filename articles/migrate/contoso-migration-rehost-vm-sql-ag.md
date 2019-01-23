@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880215"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267384"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale App zu Azure-VMs und zur SQL Server Always On-Verfügbarkeitsgruppe
 
@@ -26,7 +26,7 @@ Dieses Dokument stammt aus einer Reihe von Artikeln, die zeigen, wie das fiktive
 [Artikel 1: Übersicht](contoso-migration-overview.md) | Dies ist eine Übersicht über die Artikelreihe, die Migrationsstrategie von Contoso und die in der Reihe verwendeten Beispiel-Apps. | Verfügbar
 [Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-infrastructure.md) | Contoso bereitet seine lokale Infrastruktur und die Azure-Infrastruktur für die Migration vor. Für alle Migrationsartikel der Reihe wird dieselbe Infrastruktur verwendet. | Verfügbar
 [Artikel 3: Bewerten der lokalen Ressourcen für die Migration zu Azure](contoso-migration-assessment.md)  | Contoso führt eine Bewertung seiner lokalen App SmartHotel360 durch, die in VMware ausgeführt wird. Contoso bewertet virtuelle Computer der App mit dem Azure Migrate-Dienst und die SQL Server-Datenbank der App mit dem Datenmigrations-Assistenten. | Verfügbar
-[Artikel 4: Zuweisen eines neuen Hosts für eine App auf einer Azure-VM und einer verwalteten Azure SQL-Datenbank-Instanz](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso führt für seine lokale App SmartHotel360 eine Migration per Lift & Shift zu Azure aus. Contoso migriert den virtuellen Front-End-Computer der App mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migriert die App-Datenbank mit dem [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) zu einer verwalteten Azure SQL-Datenbank-Instanz. | Verfügbar   
+[Artikel 4: Rehosten einer App auf einer Azure-VM und einer verwalteten Azure SQL-Datenbank-Instanz](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso führt für seine lokale App SmartHotel360 eine Migration per Lift & Shift zu Azure aus. Contoso migriert den virtuellen Front-End-Computer der App mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migriert die App-Datenbank mit dem [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) zu einer verwalteten Azure SQL-Datenbank-Instanz. | Verfügbar   
 [Artikel 5: Zuweisen eines neuen Hosts für eine App auf Azure-VMs](contoso-migration-rehost-vm.md) | Contoso migriert die VMs der App SmartHotel360 mithilfe des Site Recovery-Diensts zu Azure-VMs. | Verfügbar
 Artikel 6: Zuweisen eines neuen Hosts für eine App auf Azure-VMs und in einer SQL Server Always On-Verfügbarkeitsgruppe | Contoso migriert die App SmartHotel360. Contoso verwendet Site Recovery, um die App-VMs zu migrieren. Der Database Migration Service wird verwendet, um die App-Datenbank zu einem SQL Server-Cluster zu migrieren, der mit einer Always On-Verfügbarkeitsgruppe geschützt ist. | Dieser Artikel
 [Artikel 7: Zuweisen eines neuen Hosts für eine Linux-App auf Azure-VMs](contoso-migration-rehost-linux-vm.md) | Contoso führt mithilfe von Azure Site Recovery per Lift & Shift eine Migration der Linux-App „osTicket“ zu virtuellen Azure-Computern durch. | Verfügbar
@@ -34,7 +34,7 @@ Artikel 6: Zuweisen eines neuen Hosts für eine App auf Azure-VMs und in einer S
 [Artikel 9: Umgestalten einer App in Azure-Web-Apps und Azure SQL-Datenbank](contoso-migration-refactor-web-app-sql.md) | Contoso migriert die App SmartHotel360 zu einer Azure-Web-App und die App-Datenbank mithilfe des Datenbankmigrations-Assistenten zu einer Azure SQL Server-Instanz. | Verfügbar
 [Artikel 10: Umgestalten einer Linux-App in Azure-Web-Apps und Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migriert die Linux-App „osTicket“ mithilfe von Azure Traffic Manager zu einer Azure-Web-App in mehreren Azure-Regionen. Zur Sicherstellung der Continuous Delivery erfolgt eine Integration in GitHub. Contoso migriert die App-Datenbank zu einer Azure Database for MySQL-Instanz. | Verfügbar 
 [Artikel 11: Umgestalten einer TFS-Bereitstellung für Azure DevOps Services](contoso-migration-tfs-vsts.md) | Contoso migriert die lokale Team Foundation Server-Bereitstellung zu Azure DevOps Services in Azure. | Verfügbar
-[Artikel 12: Umstrukturieren einer App in Azure-Containern und Azure SQL-Datenbank](contoso-migration-rearchitect-container-sql.md) | Contoso migriert die SmartHotel-App zu Azure. Anschließend wird die App-Webschicht zu einem Windows-Container umstrukturiert, der in Azure Service Fabric ausgeführt wird, und die Datenbank wird zu einer Azure SQL-Datenbank umstrukturiert. | Verfügbar
+[Artikel 12: Umstrukturieren einer App in Azure-Containern und Azure SQL-Datenbank](contoso-migration-rearchitect-container-sql.md) | Contoso migriert seine SmartHotel-App zu Azure. Anschließend wird die App-Webschicht zu einem Windows-Container umstrukturiert, der in Azure Service Fabric ausgeführt wird, und die Datenbank wird zu einer Azure SQL-Datenbank umstrukturiert. | Verfügbar
 [Artikel 13: Neuerstellen einer App in Azure](contoso-migration-rebuild.md) | Contoso erstellt die SmartHotel-App mit verschiedenen Azure-Funktionen und -Diensten neu – z.B. Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services und Azure Cosmos DB. | Verfügbar
 [Artikel 14: Skalieren einer Migration zu Azure](contoso-migration-scale.md) | Nachdem Contoso verschiedene Kombinationen für die Migration getestet hat, bereitet das Unternehmen sich jetzt auf eine vollständige Migration nach Azure in großem Umfang vor. | Verfügbar
 
@@ -47,7 +47,7 @@ Das IT Leadership-Team hat eng mit den Geschäftspartnern zusammengearbeitet, um
 
 - **Unternehmenswachstum**: Contoso wächst, und daher geraten die lokalen Systeme und Infrastrukturen unter Druck.
 - **Effizienzsteigerung**: Contoso muss unnötige Verfahren beseitigen und Prozesse für Entwickler und Benutzer optimieren.  Die IT-Abteilung muss schnell sein, weder Geld noch Zeit verschwenden, und Kundenanforderungen schneller bearbeiten.
-- **Steigerung der Flexibilität**:  Die Contoso-IT-Abteilung muss schneller auf die Unternehmensanforderungen reagieren. Die IT-Experten müssen schneller reagieren als die Änderungen im Marketplace geschehen, um den Erfolg in einer globalen Wirtschaft zu garantieren.  IT darf nicht im Weg stehen oder zum Geschäftshindernis werden.
+- **Steigerung der Flexibilität:**  Die Contoso-IT-Abteilung muss schneller auf die Unternehmensanforderungen reagieren. Die IT-Experten müssen schneller reagieren als die Änderungen im Marketplace geschehen, um den Erfolg in einer globalen Wirtschaft zu garantieren.  IT darf nicht im Weg stehen oder zum Geschäftshindernis werden.
 - **Skalierung**: Da das Unternehmen erfolgreich wächst, muss die Contoso-IT Systeme bereitstellen, die mit der gleichen Geschwindigkeit wachsen können.
 
 ## <a name="migration-goals"></a>Migrationsziele
@@ -108,7 +108,7 @@ Contoso wertet den vorgeschlagen Entwurf durch Erstellen einer Liste mit Vor- un
 **Aspekt** | **Details**
 --- | ---
 **Vorteile** | WEBVM wird ohne Änderungen nach Azure verlagert, was die Migration vereinfacht.<br/><br/> Die SQL Server-Schicht wird auf SQL Server 2017 und Windows Server 2016 ausgeführt. Dadurch wird das derzeitige Betriebssystem Windows Server 2008 R2 außer Betrieb genommen, und die Ausführung von SQL Server 2017 unterstützt die technischen Anforderungen und Ziele von Contoso. IT bietet 100%-ige Kompatibilität, während SQL Server 2008 R2 ausgemustert wird.<br/><br/> Contoso kann seine Investition in die Software Assurance mit dem Azure-Hybridvorteil nutzen.<br/><br/> Ein hoch verfügbare SQL Server-Bereitstellung in Azure bietet Fehlertoleranz, sodass die App-Datenschicht kein Single Point of Failover mehr ist.
-**Nachteile** | Auf WEBVM wird Windows Server 2008 R2 ausgeführt. Das Betriebssystem wird für bestimmte Rollen von Azure unterstützt (Juli 2018). [Weitere Informationen](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> Die Webschicht der App bleibt ein Single Point of Failover.</br><br/> Contoso muss die Webschicht weiterhin als virtuellen Azure-Computer unterstützen, anstatt auf einen verwalteten Dienst wie Azure App Service umzustellen.<br/><br/> Mit der gewählten Lösung muss Contoso weiterhin zwei virtuelle SQL Server-Computer verwalten, anstatt auf eine verwaltete Plattform wie die verwaltete Azure SQL-Datenbank-Instanz umzustellen. Zudem könnte Contoso mit Software Assurance seine vorhandenen Lizenzen gegen reduzierte Tarife der verwalteten Azure SQL-Datenbank-Instanz eintauschen.
+**Nachteile** | Auf WEBVM wird Windows Server 2008 R2 ausgeführt. Das Betriebssystem wird für bestimmte Rollen von Azure unterstützt (Juli 2018). [Weitere Informationen](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)<br/><br/> Die Webschicht der App bleibt ein Single Point of Failover.</br><br/> Contoso muss die Webschicht weiterhin als virtuellen Azure-Computer unterstützen, anstatt auf einen verwalteten Dienst wie Azure App Service umzustellen.<br/><br/> Mit der gewählten Lösung muss Contoso weiterhin zwei virtuelle SQL Server-Computer verwalten, anstatt auf eine verwaltete Plattform wie die verwaltete Azure SQL-Datenbank-Instanz umzustellen. Zudem könnte Contoso mit Software Assurance seine vorhandenen Lizenzen gegen reduzierte Tarife der verwalteten Azure SQL-Datenbank-Instanz eintauschen.
 
 
 ### <a name="azure-services"></a>Azure-Dienste
@@ -156,12 +156,12 @@ Contoso geht bei der Ausführung der Migration wie folgt vor:
 > * **Schritt 2: Bereitstellen und Einrichten des Clusters**: Bereiten Sie einen Azure SQL Server-Cluster vor.  Datenbanken werden in diesen vorab erstellten Cluster migriert.
 > * **Schritt 3: Bereitstellen des Lastenausgleichs**: Stellen Sie einen Lastenausgleich für den Datenverkehr zu den SQL Server-Knoten bereit.
 > * **Schritt 4: Vorbereiten von Azure für Site Recovery**: Erstellen Sie ein Azure-Speicherkonto zum Speichern replizierter Daten sowie einen Recovery Services-Tresor. 
-> * **Schritt 5: Vorbereiten einer lokalen VMware-Instanz für Site Recovery**: Bereiten Sie Konten für die VM-Ermittlung und die Agent-Installation vor. Bereiten Sie lokale virtuelle Computer vor, damit Benutzer nach der Migration eine Verbindung mit virtuellen Azure-Computern herstellen können
+> * **Schritt 5: Vorbereiten einer lokalen VMware-Instanz für Site Recovery**: Bereiten Sie Konten für die VM-Ermittlung und die Agent-Installation vor. Vorbereiten lokaler virtueller Computer, damit Benutzer nach der Migration eine Verbindung mit virtuellen Azure-Computern herstellen können
 > * **Schritt 6: Replizieren von VMs**: Ermöglichen Sie die VM-Replikation in Azure.
 > * **Schritt 7: Installieren des DMA**: Laden Sie den Datenmigrations-Assistenten herunter, und installieren Sie ihn.
 > * **Schritt 7: Migrieren der Datenbank mit dem DMA**: Migrieren Sie die Datenbank zu Azure.
 > * **Schritt 9: Schützen der Datenbank**: Erstellen Sie eine Always On-Verfügbarkeitsgruppe für den Cluster.
-> * **Schritt 10: Migration der Web-App-VM**: Führen Sie ein Testfailover aus, um sicherzustellen, dass alles wie erwartet funktioniert. Führen Sie anschließend ein vollständiges Failover zu Azure aus. 
+> * **Schritt 10: Migration der Web-App-VM**: Führen Sie ein Testfailover aus, um sicherzustellen, dass alles wie erwartet funktioniert. Anschließendes Ausführen eines vollständigen Failovers zu Azure. 
 
 
 ## <a name="step-1-prepare-a-sql-server-alwayson-availability-group-cluster"></a>Schritt 1: Vorbereiten eines Clusters für SQL Server Always On-Verfügbarkeitsgruppen
@@ -696,7 +696,7 @@ Das Sicherheitsteam von Contoso überprüft die Azure-VMs WEBVM, SQLAOG1 und SQL
 
 - Das Team überprüft die Netzwerksicherheitsgruppen (NSGs) der des virtuellen Computers zur Steuerung des Zugriffs. Mithilfe von NSGs wird sichergestellt, dass nur für die App zulässiger Datenverkehr übergeben werden kann.
 - Das Team zieht darüber hinaus in Erwägung, die Daten über Azure Disk Encryption und KeyVault zu sichern.
-- Das Team sollte die transparente Datenverschlüsselung (Transparent Data Encryption, TDE) auswerten und dann in der SmartHotel360-Datenbank aktivieren, die auf dem neuen SQL AOG ausgeführt wird. [Weitere Informationen](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017).
+- Das Team sollte die transparente Datenverschlüsselung (Transparent Data Encryption, TDE) auswerten und dann in der SmartHotel360-Datenbank aktivieren, die auf dem neuen SQL AOG ausgeführt wird. [Weitere Informationen](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)
 
 [Erfahren Sie mehr](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) über Sicherheitsverfahren für VMs.
 
@@ -706,8 +706,8 @@ Das Sicherheitsteam von Contoso überprüft die Azure-VMs WEBVM, SQLAOG1 und SQL
  Für die Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR) führt Contoso die folgenden Aktionen durch:
  - Schützen von Daten: Contoso sichert die Daten mithilfe des Azure Backup-Diensts auf den virtuellen Computern WEBVM, SQLAOG1 und SQLAOG2. [Weitere Informationen].
 (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- Contoso erfährt auch, wie Azure Storage zum Sichern von SQL Server direkt im Blobspeicher verwendet wird. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
-- Sicherstellen eines unterbrechungsfreien Betriebs der Apps: Contoso repliziert die virtuellen Computer von Apps mithilfe von Site Recovery in eine sekundäre Region. [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
+- Contoso erfährt auch, wie Azure Storage zum Sichern von SQL Server direkt im Blobspeicher verwendet wird. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)
+- Sicherstellen eines unterbrechungsfreien Betriebs der Apps: Contoso repliziert die App-VMs in Azure mithilfe von Site Recovery in einer sekundären Region. [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 
 ### <a name="licensing-and-cost-optimization"></a>Lizenzierung und Kostenoptimierung

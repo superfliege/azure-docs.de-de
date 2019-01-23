@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016024"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247825"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -99,7 +99,13 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 ## <a name="add-or-remove-an-address-range"></a>Hinzufügen oder Entfernen eines Adressbereichs
 
-Sie können Adressbereiche eines virtuellen Netzwerks hinzufügen und entfernen. Ein Adressbereich muss in der CIDR-Notation angegeben werden und darf sich innerhalb desselben virtuellen Netzwerks nicht mit anderen Adressbereichen überlappen. Die von Ihnen definierten Adressbereiche können öffentlich oder privat (RFC 1918) sein. Ganz gleich, ob Sie den Adressbereich als öffentlich oder privat definieren – der Adressbereich ist nur innerhalb des virtuellen Netzwerks, über miteinander verbundene virtuelle Netzwerke und über beliebige lokale Netzwerke erreichbar, die Sie mit dem virtuellen Netzwerk verbunden haben. Sie können die folgenden Adressbereiche nicht hinzufügen:
+Sie können Adressbereiche eines virtuellen Netzwerks hinzufügen und entfernen. Ein Adressbereich muss in der CIDR-Notation angegeben werden und darf sich innerhalb desselben virtuellen Netzwerks nicht mit anderen Adressbereichen überlappen. Die von Ihnen definierten Adressbereiche können öffentlich oder privat (RFC 1918) sein. Ganz gleich, ob Sie den Adressbereich als öffentlich oder privat definieren – der Adressbereich ist nur innerhalb des virtuellen Netzwerks, über miteinander verbundene virtuelle Netzwerke und über beliebige lokale Netzwerke erreichbar, die Sie mit dem virtuellen Netzwerk verbunden haben. 
+
+Sie können den Adressbereich für ein virtuelles Netzwerk verringern, wenn Sie ihm keine Subnetze zugeordnet haben. Andernfalls können Sie nur den Adressbereich erweitern, z.B. „/16“ in „/8“ ändern. Sie könnten mit einem kleinen Adressbereich beginnen und ihn dann später erweitern oder weitere Adressbereiche hinzufügen.
+
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+
+Sie können die folgenden Adressbereiche nicht hinzufügen:
 
 - 224.0.0.0/4 (Multicast)
 - 255.255.255.255/32 (Übertragung)

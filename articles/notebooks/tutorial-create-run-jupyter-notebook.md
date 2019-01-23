@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106673"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244583"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -28,22 +28,22 @@ Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (G
 
 ## <a name="create-the-project"></a>Erstellen des Projekts
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (Ausführliche Informationen hierzu finden Sie unter [Quickstart - Sign in <<<to Azure Notebooks (Schnellstart: Anmelden bei Azure Notebooks)](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (Ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
-1. Klicken Sie am oberen Rand Ihrer öffentlichen Profilseite auf **My Projects** (Meine Projekte):
+1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 
-    ![Link „My Projects“ am oberen Rand des Browserfensters](media/quickstarts/my-projects-link.png)
+    ![Link „Meine Projekte“ am oberen Rand des Browserfensters](media/quickstarts/my-projects-link.png)
 
-1. Klicken Sie auf der Seite **My Projects** (Meine Projekte) auf **+ New Project** (+ Neues Projekt) (Tastenkombination: N). Wenn Ihr Browserfenster schmal ist, wird möglicherweise nur **+** für die Schaltfläche angezeigt:
+1. Klicken Sie auf der Seite **My Projects** (Meine Projekte) auf **+ New Project** (+ Neues Projekt, Tastenkombination: n). Wenn Ihr Browserfenster schmal ist, wird möglicherweise nur **+** für die Schaltfläche angezeigt:
 
-    ![Befehl „New Project“ auf der Seite „My Projects“](media/quickstarts/new-project-command.png)
+    ![Befehl „New Project“ (Neues Projekt) auf der Seite „My Projects“ (Meine Projekte)](media/quickstarts/new-project-command.png)
 
 1. Geben Sie folgende Informationen im angezeigten Popupfenster **Create New Project** (Neues Projekt erstellen) an, und klicken Sie anschließend auf **Create** (Erstellen):
 
     - **Project name** (Projektname): Linear Regression Example - Cricket Chirps
     - **Project ID** (Projekt-ID): linear-regression-example
     - **Public project** (Öffentliches Projekt): (deaktiviert)
-    - **Create a README.md** (README-Datei erstellen): (deaktiviert)
+    - **Create a README.md** (README-Datei erstellen): (nicht aktiviert)
 
 1. Kurz darauf navigiert Azure Notebooks zum neuen Projekt.
 
@@ -112,7 +112,7 @@ Befehle wie `!pip install` können Sie innerhalb eines Notebooks immer in einer 
 1. Wählen Sie unter **Environment Setup Steps** (Schritte für das Setup der Umgebung) im ersten Dropdown-Steuerelement (Vorgang) die Datei **Requirements.txt** aus.
 1. Wählen Sie im zweiten Dropdown-Steuerelement (Dateiname) die Datei *requirements.txt* (die Sie erstellt haben) aus.
 1. Wählen Sie im dritten Dropdown-Steuerelement (Python-Version) die Option **Python Version 3.6** aus.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ![Die Datei „requirements.txt“ auf der Registerkarte „Environment“ (Umgebung) in den Projekteinstellungen](media/tutorial/tutorial-requirements-txt.png)
 
@@ -411,17 +411,13 @@ Wenn Sie mit einem Notebook fertig sind, verwenden Sie den Befehl **File** > **C
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Debuggen von Notebooks über Visual Studio Code
 
-Wenn sich Codezellen im Notebook nicht so verhalten, wie Sie es von ihnen erwarten, haben Sie möglicherweise Fehler im Code oder andere Fehler. Ein Jupyter-Notebook bietet außer den `print`-Anweisungen zum Anzeigen der Werte von Variablen jedoch keine Debugfunktionen.
+Wenn sich Codezellen im Notebook nicht so verhalten, wie Sie es von ihnen erwarten, haben Sie möglicherweise Fehler im Code oder andere Fehler. Eine typische Jupyter-Umgebung bietet außer den `print`-Anweisungen zum Anzeigen der Werte von Variablen jedoch keine Debugfunktionen.
 
-Glücklicherweise kann die Python-Erweiterung für Visual Studio Code ein Jupyter-Notebook direkt als einzelne Codedatei importiert, wobei sich Ihre Markdownzellen in den Kommentaren befinden. Die können den Visual Studio Code-Debugger anschließend ausführen, um Ihren Code schrittweise zu durchlaufen, Haltepunkte festzulegen, den Zustand zu untersuchen usw. 
+Sie können glücklicherweise die *IPYNB*-Datei des Notebooks herunterladen und dann in Visual Studio Code unter Verwendung der Python-Erweiterung öffnen. Die Erweiterung importiert ein Notebook direkt als einzelne Codedatei, die Markdown-Zellen in den Kommentaren beibehält. Sobald Sie das Notebook importiert haben, können Sie den Visual Studio Code-Debugger ausführen, um Ihren Code schrittweise zu durchlaufen, Haltepunkte festzulegen, den Zustand zu untersuchen usw. Nachdem Sie Ihren Code korrigiert haben, exportieren Sie die *IPYNB*-Datei aus Visual Studio Code und laden sie wieder in Azure Notebooks hoch.
 
-Sobald Sie Korrekturen an Ihrem Code vorgenommen haben, speichern Sie die *IPYNB*-Datei, und laden Sie sie in Azure Notebooks hoch.
+Weitere Informationen finden Sie in der Visual Studio Code-Dokumentation unter [Debug a Jupyter notebook (Debuggen eines Jupyter-Notebooks)](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook).
 
-Weitere Informationen finden Sie in den folgenden Artikeln in der Visual Studio Code-Dokumentation:
-
-- [Übersicht über Jupyter-Notebooks in VS Code](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Python-Tutorial: Konfigurieren und Ausführen des Debuggers](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [Bearbeitung: Jupyter-Codezellen](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+Zusätzliche Funktionen von Visual Studio Code für Jupyter-Notebooks werden auch in [Working with Jupyter Notebooks in Visual Studio Code (Arbeiten mit Jupyter-Notebooks in Visual Studio Code)](https://code.visualstudio.com/docs/python/jupyter-support) beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

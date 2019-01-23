@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 52e034f9a0c11c2b27888d181304bc16c3369e4a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 69f36773b702d9f0059e0cd27dbb864ccd7f7b2b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390022"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262760"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -64,8 +64,10 @@ Bevor Sie Azure Application Insights verwenden können, müssen Sie zunächst ei
 6. Aktivieren Sie das Kontrollkästchen **Aktivieren**.
 7. Wählen Sie eine angefügte Protokollierung in der Dropdownliste **Ziel** aus.
 8. Geben Sie **100** als **Sampling (%)** ein, und aktivieren Sie das Kontrollkästchen **Fehler immer protokollieren**.
-9. Geben Sie **1024** in das Feld **Erste Bytes des Texts** ein.
-10. Klicken Sie auf **Speichern**.
+9. Klicken Sie auf **Speichern**.
+
+> [!WARNING]
+> Überschreiben des Standardwerts **0** im Feld **Erste Bytes des Texts** kann die Leistung Ihrer APIs erheblich beeinträchtigen.
 
 > [!NOTE]
 > Im Hintergrund wird eine [Diagnoseentität](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.

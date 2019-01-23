@@ -13,12 +13,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 804e0dd4b510b40c1ebbc5790308a429c2715724
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8d168e4171c96441162f1090a215cab8a70b7d1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573313"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198693"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Verwenden von Service Bus-Warteschlangen mit Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -109,7 +109,7 @@ public void run() throws Exception {
 
 ```
 
-Nachrichten, die an die Service Bus-Warteschlangen gesendet bzw. von diesen empfangen werden, sind Instanzen der [Message](/java/api/com.microsoft.azure.servicebus._message?view=azure-java-stable)-Klasse. Nachrichtenobjekte verfügen über einen Satz von Standardeigenschaften (z.B. „Label“ und „TimeToLive“), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Textteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Text der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor der Nachricht übergeben wird. Anschließend erfolgt die Serialisierung des Objekts mit dem entsprechenden Serialisierer. Alternativ können Sie ein **java.IO.InputStream**-Objekt bereitstellen.
+Nachrichten, die an die Service Bus-Warteschlangen gesendet bzw. von diesen empfangen werden, sind Instanzen der [Message](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable)-Klasse. Nachrichtenobjekte verfügen über einen Satz von Standardeigenschaften (z.B. „Label“ und „TimeToLive“), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Textteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Text der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt an den Konstruktor der Nachricht übergeben wird. Anschließend erfolgt die Serialisierung des Objekts mit dem entsprechenden Serialisierer. Alternativ können Sie ein **java.IO.InputStream**-Objekt bereitstellen.
 
 
 Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.

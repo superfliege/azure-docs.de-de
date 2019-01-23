@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5714ed552c81d28a253aa57ad6e2ba1d67e543a1
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961959"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214265"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Tutorial: Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 
@@ -30,24 +30,28 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Schließen Sie zuerst die [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) ab. 
+1. Stellen Sie für den Zugriff auf Anmeldedaten sicher, dass Sie über einen Azure Active Directory-Mandanten mit einer Premium-Lizenz (P1/P2) verfügen. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Beachten Sie Folgendes: Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben. 
 
-2. Laden Sie [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) herunter, und installieren Sie die Software.
+2. Erstellen Sie ein Benutzerkonto in der Rolle **Globaler Administrator**, **Sicherheitsadministrator**, **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** oder **Benutzer mit Leseberechtigung für Berichte** für den Mandanten, oder wechseln Sie zu einem Benutzerkonto. 
 
-3. Installieren Sie [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Dieses Modul enthält mehrere Hilfsprogramm-Cmdlets, z.B.:
+3. Schließen Sie die [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) ab. 
+
+4. Laden Sie [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) herunter, und installieren Sie die Software.
+
+5. Installieren Sie [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Dieses Modul enthält mehrere Hilfsprogramm-Cmdlets, z.B.:
     - Die für die Authentifizierung benötigten ADAL-Bibliotheken
     - Zugriffstoken für Benutzer, Anwendungsschlüssel und Zertifikate mit Verwendung von ADAL
     - Graph-API zur Verarbeitung von auf Seiten aufgeteilten Ergebnissen
 
-4. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Ansonsten können Sie es einfach mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Wenn Sie das Modul erstmalig verwenden, führen Sie **Install-MSCloudIdUtilsModule** aus. Ansonsten können Sie es einfach mit dem PowerShell-Befehl **Import-Module** importieren. Ihre Sitzung sollte etwa wie folgt aussehen: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-5. Verwenden Sie das PowerShell-Cmdlet **New-SelfSignedCertificate**, um ein Testzertifikat zu erstellen.
+7. Verwenden Sie das PowerShell-Cmdlet **New-SelfSignedCertificate**, um ein Testzertifikat zu erstellen.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-6. Verwenden Sie das Cmdlet **Export-Certificate**, um es in eine Zertifikatdatei zu exportieren.
+8. Verwenden Sie das Cmdlet **Export-Certificate**, um es in eine Zertifikatdatei zu exportieren.
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"

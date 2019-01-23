@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52dc78b03a1be73763b5a3c494404f4d439d04ca
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139023"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198030"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
@@ -73,11 +73,11 @@ Für IaaS-Anwendungen mit Cloudzugriff bieten Connectorgruppen einen gemeinsamen
 
 Betrachten Sie z.B. eine Organisation, die über eine Reihe virtueller Computer verfügt, die über ein eigenes, per IaaS gehostetes virtuelles Netzwerk verbunden sind. Damit Mitarbeiter die Anwendungen verwenden können, sind diese privaten Netzwerke über Site-to-Site-VPN mit dem Unternehmensnetzwerk verbunden. Für Mitarbeiter, die vor Ort im lokalen Netzwerk arbeiten, funktioniert dieses Setup gut. Für Remotemitarbeiter ist die Konfiguration allerdings möglicherweise nicht ganz ideal, da sie weitere lokale Infrastruktur zum Weiterleiten des Zugriffs erfordert, wie in der folgenden Abbildung veranschaulicht:
 
-![Azure AD-IaaS-Netzwerk](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![AzureAD-IaaS-Netzwerk](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Mit Azure AD-Anwendungsproxy-Connectorgruppen können Sie einen gemeinsamen Dienst zum Sichern des Zugriffs auf alle Anwendungen verwenden, ohne weitere Abhängigkeiten in Ihrem Unternehmensnetzwerk einzuführen:
 
-![Azure AD-IaaS – mehrere Cloudanbieter](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![AzureAD-IaaS – mehrere Cloudanbieter](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Mehrere Gesamtstrukturen – verschiedene Connectorgruppen für jede Gesamtstruktur
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972170"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231936"
 ---
 # <a name="offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“
 
@@ -27,35 +27,36 @@ Der erste Schritt unter **Neues Angebot** besteht darin, die Angebots-ID zu erst
 
 ![Erstellen eines neuen Beratungsdienstangebots – Registerkarte „Angebotseinstellungen“](media/consultingoffer-settings-tab.png)
 
-*Angebots-ID*
+### <a name="offer-id"></a>Angebots-ID
 
-Dieser Bezeichner ist ein eindeutiger Name, den Sie bei der ersten Übermittlung des Angebots erstellen. Dieser Name darf nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Die **Angebots-ID** ist in der URL sichtbar und wirkt sich auf Suchmaschinenergebnisse aus. Beispiel: *yourcompanyname_exampleservice*.
+Dieser Bezeichner ist ein eindeutiger Name, den Sie bei der ersten Übermittlung des Angebots erstellen. Dieser Name darf nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Die **Angebots-ID** ist in der URL sichtbar und wirkt sich auf Suchmaschinenergebnisse aus. Ein Beispiel ist *yourcompanyname_exampleservice*.
 
-Wie im Beispiel gezeigt, wird die **Angebots-ID** an Ihre Herausgeber-ID angefügt, um einen eindeutigen Bezeichner zu erstellen. Dieser Bezeichner wird als permanenter Link verfügbar gemacht, der abonniert werden kann und von Suchmaschinen indiziert wird.
+Wie im Beispiel gezeigt, wird die **Angebots-ID** Ihrer Herausgeber-ID angefügt, um einen eindeutigen Bezeichner zu erstellen. Dieser eindeutige Bezeichner wird als permanenter Link verfügbar gemacht, der abonniert werden kann und von Suchmaschinen indiziert wird.
 
-*Nachdem ein Angebot live geschaltet wurde, kann der Bezeichner nicht mehr aktualisiert werden.*
+>[!Note]
+>Nachdem ein Angebot live geschaltet wurde, kann der Bezeichner nicht mehr aktualisiert werden.
 
-*Herausgeber-ID*
+### <a name="publisher-id"></a>Herausgeber-ID
 
-Dieser Bezeichner bezieht sich auf Ihr Konto. Wenn Sie sich mit Ihrem Organisationskonto angemeldet haben, wird Ihre **Herausgeber**-ID im Dropdownmenü angezeigt.
+Dieser Bezeichner bezieht sich auf Ihr Konto. Wenn Sie sich mit Ihrem Organisationskonto angemeldet haben, wird Ihre **Herausgeber-ID** im Dropdownmenü angezeigt.
 
-*Name*
+### <a name="name"></a>NAME
 
-Dies ist die Zeichenfolge, die als Angebotsname in AppSource oder Azure Marketplace angezeigt wird. Das Feld *Name* ist auf 50 Zeichen begrenzt.  Der Prüfer muss Ihren Titel ggf. bearbeiten, damit die Dauer und der Angebotstyp an den Angebotsnamen angefügt werden können.
+Diese Zeichenfolge wird als Angebotsname in AppSource oder Azure Marketplace angezeigt. Das Feld **Name** ist auf 50 Zeichen begrenzt. Der Prüfer muss Ihren Titel ggf. bearbeiten, um die Dauer und den Angebotstyp Ihrem Angebotsnamen anzufügen.
 
-Das folgende Beispiel von Edgewater Fullscope zeigt, wie der Angebotsname aufgebaut ist. Der Angebotsname wird wie folgt angezeigt:
+Das folgende Beispiel zeigt, wie der Angebotsname aufgebaut ist. 
 
 ![Erstellen eines neuen Beratungsdienstangebots](media/cppsampleconsultingoffer.png)
 
 Ein Angebotsname besteht aus vier Teilen:
 
--   **Dauer**: Die Dauer wird im Editor auf der Registerkarte **Details der digitalen Ladenzeile** definiert. Eine Dauer kann in Stunden, Tagen oder Wochen ausgedrückt werden.
--   **Diensttyp**: Der Diensttyp wird im Editor auf der Registerkarte **Details der digitalen Ladenzeile** definiert. Die Diensttypen lauten `Assessment` (Bewertung), `Briefing` (Einweisung), `Implementation` (Implementierung), `Proof of concept` und `Workshop`.
+-   **Dauer:** Die Dauer wird im Editor auf der Registerkarte **Details der digitalen Ladenzeile** definiert. Eine Dauer kann in Stunden, Tagen oder Wochen ausgedrückt werden.
+-   **Diensttyp**: Die Dauer wird im Editor auf der Registerkarte **Details der digitalen Ladenzeile** definiert. Die Diensttypen lauten `Assessment` (Bewertung), `Briefing` (Einweisung), `Implementation` (Implementierung), `Proof of concept` und `Workshop`.
 -   **Präposition**: Die Präposition wird vom Prüfer eingefügt.
--   **Name**: Der Name wird auf der Seite **Angebotseinstellungen** definiert.
+-   **Name:** Der Name wird auf der Seite **Angebotseinstellungen** definiert.
 
 >[!Note]
->Das Feld „Name“ ist auf 50 Zeichen begrenzt. Der von Ihnen übermittelte Name muss vom Prüfer ggf. bearbeitet werden, damit die Dauer und der Angebotstyp an den Angebotsnamen angefügt werden können.
+>Das Feld **Name** ist auf 50 Zeichen begrenzt. Der Prüfer muss Ihren Titel ggf. bearbeiten, um die Dauer und den Angebotstyp Ihrem Angebotsnamen anzufügen.
 
 In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt:
 
@@ -63,7 +64,7 @@ In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt
 -   Plattform für Cloudmigration: 1-Std. Einweisung
 -   PowerApps und Microsoft Flow: 1-Tag Workshop
 -   Azure Machine Learning Services: 3-Wo PoC
--   Einzelhandelslösung für Ladengeschäft und Onlineshop: 1-Std. Einweisung
+-   Einzelhandelslösung für Ladengeschäft und Onlineshop: Einstündige Einweisung
 -   Aufbereitung Ihrer Daten: 1-Wo Workshop
 -   Cloud-Analysen: 3-Tag Workshop
 -   Power BI-Schulung: 3-Tag Workshop
@@ -71,8 +72,8 @@ In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt
 -   CRM-Schnellstart: 1-Tag Workshop
 -   Dynamics 365 for Sales: 2-Tag Bewertung
 
-Nachdem Sie die Registerkarte **Angebotseinstellungen** ausgefüllt haben, können Sie Ihr Angebot speichern. Der Angebotsname wird jetzt über dem Editor angezeigt, und Sie finden ihn in „Alle Angebote“.
+Speichern Sie nach dem Ausfüllen der Registerkarte **Angebotseinstellungen** Ihre Übermittlung. Der Angebotsname wird jetzt über dem Editor angezeigt, und Sie finden ihn in **Alle Angebote**.
 
-**Nächste Schritte**
+## <a name="next-steps"></a>Nächste Schritte
 
 Jetzt können Sie [Details der digitalen Ladenzeile eingeben und festlegen, ob in Azure Marketplace oder in AppSource veröffentlicht werden soll](./cpp-consulting-service-storefront-details.md).

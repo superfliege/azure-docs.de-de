@@ -1,5 +1,5 @@
 ---
-title: Überprüfen von Text in Azure Content Moderator | Microsoft-Dokumentation
+title: Überprüfen von Text in Azure Content Moderator – Content Moderator
 description: Erfahren Sie, wie Sie Text im Content Moderator überprüfen können, um seine Bewertung und die erkannten Tags anzuzeigen. Verwenden Sie die Informationen, um zu entscheiden, ob der Inhalt angemessen ist.
 services: cognitive-services
 author: sanjeev3
@@ -7,16 +7,16 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 005e6ed853cbc6013d74e7ff479097dcbb0a1043
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852094"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259562"
 ---
-# <a name="review-text"></a>Überprüfen von Text
+# <a name="let-human-reviewers-review-text"></a>Lassen Sie menschliche Prüfer Texte prüfen
 
 Sie können Azure Content Moderator verwenden, um Text anhand von Bewertungen und erkannten Tags zu überprüfen. Verwenden Sie die Informationen, um zu entscheiden, ob der Inhalt angemessen ist. 
 

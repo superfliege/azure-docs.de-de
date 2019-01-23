@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112278"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267288"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
@@ -36,19 +36,19 @@ Die hier beschriebenen Verfahren dauern zwischen 30 Minuten und einer Stunde. D
 Überprüfen Sie Folgendes, bevor Sie Ihr StorSimple Virtual Array konfigurieren und einrichten:
 
 * Sie haben ein virtuelles Array bereitgestellt und die Verbindung dafür hergestellt, wie unter [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Arrays in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) oder [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) beschrieben.
-* Sie verfügen über den Dienstregistrierungsschlüssel aus dem StorSimple-Geräte-Manager-Dienst, den Sie zum Verwalten von StorSimple Virtual Arrays erstellt haben. Weitere Informationen finden Sie unter **Schritt 2: Abrufen des Dienstregistrierungsschlüssels** in [Bereitstellen von StorSimple Virtual Array – Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+* Sie verfügen über den Dienstregistrierungsschlüssel aus dem StorSimple-Geräte-Manager-Dienst, den Sie zum Verwalten von StorSimple Virtual Arrays erstellt haben. Weitere Informationen finden Sie unter **Schritt 2: Abrufen des Dienstregistrierungsschlüssels** in [Bereitstellen des StorSimple Virtual Array – Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
 * Falls dies das zweite oder ein nachfolgendes virtuelles Array ist, das Sie für einen vorhandenen StorSimple-Geräte-Manager-Dienst registrieren, sollten Sie den Dienstdaten-Verschlüsselungsschlüssel bereithalten. Dieser Schlüssel wurde generiert, als das erste Gerät erfolgreich für den Dienst registriert wurde. Wenn Sie diesen Schlüssel verloren haben, helfen Ihnen die Informationen unter **Abrufen des Verschlüsselungsschlüssels für Dienstdaten** in [Verwaltung des StorSimple Virtual Array (Vorschau) mithilfe der Web-UI](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)weiter.
 
 ## <a name="step-by-step-setup"></a>Schritt-für-Schritt-Einrichtung
 
 Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Virtual Array einzurichten und zu konfigurieren:
 
-* [Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [Schritt 2: Durchführen der erforderlichen Geräteinstallation](#step-2-complete-the-required-device-setup)
-* [Schritt 3: Hinzufügen eines Volumes](#step-3-add-a-volume)
-* [Schritt 4: Bereitstellen, Initialisieren und Formatieren eines Volumes](#step-4-mount-initialize-and-format-a-volume)
+* [Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* [Schritt 2: Durchführen der erforderlichen Geräteinstallation](#step-2-complete-the-required-device-setup)
+* [Schritt 3: Hinzufügen eines Volumes](#step-3-add-a-volume)
+* [Schritt 4: Einlegen, Initialisieren und Formatieren eines Volumes](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts
 
 #### <a name="to-complete-the-setup-and-register-the-device"></a>So führen Sie das Setup durch und registrieren das Gerät
 
@@ -59,7 +59,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
     Verwenden Sie die Verbindungs-URL aus dem vorherigen Schritt. Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website aufgetreten ist. Klicken Sie auf **Mit dieser Webseite fortfahren**.
    
     ![Sicherheitszertifikatfehler](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
-2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie unter „Schritt 3: Starten des virtuellen Geräts“ im Abschnitt [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) geändert haben.
+2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie in Schritt 3: Starten des virtuellen Geräts“ im Abschnitt [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) geändert haben.
    
     ![Anmeldeseite](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
 3. Sie gelangen auf die **Startseite** . Auf dieser Seite werden die verschiedenen Einstellungen beschrieben, die zum Konfigurieren und Registrieren des virtuellen Geräts beim StorSimple-Geräte-Manager-Dienst erforderlich sind. Beachten Sie, dass die **Netzwerkeinstellungen**, **Webproxyeinstellungen** und **Uhrzeiteinstellungen** optional sind. Die einzigen erforderlichen Einstellungen sind **Geräteeinstellungen** und **Cloudeinstellungen**.
@@ -74,8 +74,8 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
     Wenn Sie während der Bereitstellung des Geräts mehr als eine Netzwerkschnittstelle hinzugefügt haben, können Sie diese hier konfigurieren. Beachten Sie, dass Sie die Netzwerkschnittstelle als nur IPv4 oder als IPv4 und IPv6 konfigurieren können. Konfigurationen für nur IPv6 werden nicht unterstützt.
 5. DNS-Server sind erforderlich, da sie verwendet werden, wenn Ihr Gerät versucht, mit Ihren Cloudspeicher-Dienstanbietern zu kommunizieren. Sie werden auch genutzt, um Ihr Gerät nach dem Namen aufzulösen, wenn es als Dateiserver konfiguriert ist. Auf der Seite **Netzwerkeinstellungen** unter **DNS-Server**:
    
-   1. Es werden automatisch ein primärer und ein sekundärer DNS-Server konfiguriert. Wenn Sie sich für die Konfiguration statischer IP-Adressen entscheiden, können Sie DNS-Server angeben. Zur Sicherstellung der hohen Verfügbarkeit wird empfohlen, einen primären und einen sekundären DNS-Server zu konfigurieren.
-   2. Klicken Sie auf **Übernehmen**. Die Netzwerkeinstellungen werden angewendet und überprüft.
+   1. Es werden automatisch ein primärer und ein sekundärer DNS-Server konfiguriert. Wenn Sie sich für die Konfiguration statischer IP-Adressen entscheiden, können Sie DNS-Server angeben. Zur Sicherstellung der Hochverfügbarkeit wird empfohlen, einen primären und einen sekundären DNS-Server zu konfigurieren.
+   2. Klicken Sie auf **Anwenden**. Die Netzwerkeinstellungen werden angewendet und überprüft.
 6. Auf der Seite **Geräteeinstellungen** :
    
    1. Weisen Sie Ihrem Gerät einen eindeutigen **Namen** zu. Dieser Name kann 1 bis 15 Zeichen lang sein und Buchstaben, Zahlen und Bindestriche enthalten.
@@ -88,20 +88,20 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
       > Stellen Sie beim Beitritt Ihres iSCSI-Servers zu einer Domäne sicher, dass sich Ihr virtuelles Array in seiner eigenen Organisationseinheit für Microsoft Azure Active Directory befindet und keine Gruppenrichtlinienobjekte darauf angewendet sind.
       > 
       > 
-   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
+   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchen  ![Häkchensymbol](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png) beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
       
        ![Anmeldeinformationen](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. Klicken Sie auf **Übernehmen**. Die Geräteeinstellungen werden angewendet und überprüft.
+   5. Klicken Sie auf **Anwenden**. Die Geräteeinstellungen werden angewendet und überprüft.
 7. Optional: Konfigurieren Sie Ihren Webproxyserver. Die Webproxykonfiguration ist optional. Achten Sie jedoch bei Verwendung eines Webproxys darauf, dass dieser nur hier konfiguriert werden kann.
    
     ![Webproxy konfigurieren](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
    
     Auf der Seite **Webproxy** :
    
-   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://Host-IP-Adresse* oder FDQN *Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
+   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://host-IP Adresse* oder *FQDN:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
    2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
    3. Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
-   4. Klicken Sie auf **Übernehmen**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
+   4. Klicken Sie auf **Anwenden**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
 8. Optional: Konfigurieren Sie die Zeiteinstellungen für Ihr Gerät, z. B. die Zeitzone und die primären und sekundären NTP-Server. NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
    
     ![Uhrzeiteinstellungen](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
@@ -114,8 +114,8 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
    4. Klicken Sie auf **Übernehmen**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
 9. Konfigurieren Sie die Cloudeinstellungen für Ihr Gerät. In diesem Schritt führen Sie die lokale Gerätekonfiguration durch und registrieren das Gerät anschließend beim StorSimple-Geräte-Manager-Dienst.
    
-   1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in **Schritt 2: Abrufen des Dienstregistrierungsschlüssels** unter [Bereitstellen von StorSimple Virtual Array – Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) erhalten haben.
-   2. Falls dies nicht das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den **Verschlüsselungsschlüssel für Dienstdaten**angeben. Dieser Schlüssel ist zusammen mit dem Dienstregistrierungsschlüssel zum Registrieren weiterer Geräte beim StorSimple-Geräte-Manager-Dienst erforderlich. Sehen Sie sich die weiteren Informationen zum [Abrufen des Verschlüsselungsschlüssels für Dienstdaten](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) für Ihre lokale Webbenutzeroberfläche an.
+   1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in **Schritt 2: Abrufen des Dienstregistrierungsschlüssels** in [Bereitstellen des StorSimple Virtual Array – Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) erhalten haben.
+   2. Falls dies nicht das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den **Dienstdaten-Verschlüsselungsschlüssel**angeben. Dieser Schlüssel ist zusammen mit dem Dienstregistrierungsschlüssel zum Registrieren weiterer Geräte beim StorSimple-Geräte-Manager-Dienst erforderlich. Sehen Sie sich die weiteren Informationen zum [Abrufen des Verschlüsselungsschlüssels für Dienstdaten](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) für Ihre lokale Webbenutzeroberfläche an.
    3. Klicken Sie auf **Registrieren**. Das Gerät wird neu gestartet. Sie müssen ggf. zwei bis drei Minuten warten, bis das Gerät erfolgreich registriert wurde. Nachdem das Gerät neu gestartet wurde, wird die Anmeldeseite angezeigt.
       
       ![Gerät registrieren](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
@@ -125,7 +125,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
     
     ![Gerät registrieren](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>Schritt 2: Konfigurieren des Geräts als iSCSI-Server
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>Schritt 2: Konfigurieren des Geräts als ISCSI-Server
 
 Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Geräteinstallation durchzuführen.
 
@@ -152,7 +152,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
    
     ![Konfigurieren des Geräts als ISCSI-Server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
-## <a name="step-3-add-a-volume"></a>Schritt 3: Hinzufügen eines Volumes
+## <a name="step-3-add-a-volume"></a>Schritt 3: Hinzufügen eines Volumes
 
 1. Wählen Sie auf dem Blatt **Geräte** das Gerät aus, das Sie gerade als iSCSI-Server konfiguriert haben. Klicken Sie auf **...** (Sie können auch mit der rechten Maustaste in dieser Zeile klicken), und wählen Sie im Kontextmenü **Volume hinzufügen** aus. Sie können auch in der Befehlsleiste auf **+ Volume hinzufügen** klicken. Daraufhin öffnet sich das Blatt **Volume hinzufügen**.
    
@@ -169,7 +169,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
      
      ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Klicken Sie auf **Verbundene Hosts**, wählen Sie einen Access Control-Datensatz (ACR) aus, der dem iSCSI-Initiator entspricht, den Sie mit diesem Volume verbinden möchten, und klicken Sie anschließend auf **Auswählen**. <br><br> 
-3. Klicken Sie zum Hinzufügen eines neuen verbundenen Hosts auf **Neu hinzufügen**, geben Sie einen Namen für den Host und seinen IQN-Namen (qualifizierter iSCSI-Name) ein, und klicken Sie anschließend auf **Hinzufügen**. Wenn Sie den IQN nicht kennen, fahren Sie mit [Anhang A: Abrufen des IQN eines Windows Server-Hosts](#appendix-a-get-the-iqn-of-a-windows-server-host)fort.
+3. Klicken Sie zum Hinzufügen eines neuen verbundenen Hosts auf **Neu hinzufügen**, geben Sie einen Namen für den Host und seinen IQN-Namen (qualifizierter iSCSI-Name) ein, und klicken Sie anschließend auf **Hinzufügen**. Wenn Sie den IQN nicht haben, gehen Sie zu [Anhang A: Abrufen des IQN eines Windows Server-Hosts](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
       ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Klicken Sie nach Abschluss der Konfiguration Ihres Volume auf **OK**. Ein Volume wird mit den angegebenen Einstellungen erstellt, und Sie erhalten eine Benachrichtigung. Standardmäßig werden für das Volume die Überwachung und die Sicherung aktiviert.
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
    
    ![Hinzufügen eines Volumes](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
-## <a name="step-4-mount-initialize-and-format-a-volume"></a>Schritt 4: Bereitstellen, Initialisieren und Formatieren eines Volumes
+## <a name="step-4-mount-initialize-and-format-a-volume"></a>Schritt 4: Einlegen, Initialisieren und Formatieren eines Volumes
 
 Führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Windows Server-Host bereitzustellen, zu initialisieren und zu formatieren.
 
@@ -228,7 +228,7 @@ Führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Win
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Ihr [StorSimple Virtual Array über die lokale Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
+Erfahren Sie, wie Sie die lokale Webbenutzeroberfläche verwenden, um [Ihr StorSimple Virtual Array zu verwalten](storsimple-ova-web-ui-admin.md).
 
 ## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Anhang A: Abrufen des IQN eines Windows Server-Hosts
 

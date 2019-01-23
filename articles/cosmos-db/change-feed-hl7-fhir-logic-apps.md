@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044517"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354483"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Benachrichtigen von Patienten über Änderungen an HL7 FHIR-Krankenakten mithilfe von Logic Apps und Azure Cosmos DB
 
@@ -130,11 +130,11 @@ Wir verwenden die [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/l
             /// <param name="maximumItemCount">-1 returns all (default)</param>
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
-                "Query for new or modifed FHIR Documents By Resource Type " +
+                "Query for new or modified FHIR Documents By Resource Type " +
                 "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
-            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]
+            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modified Documents found")]
             [SwaggerOperation("GetNewOrModifiedFHIRDocuments")]
             public async Task<dynamic> GetNewOrModifiedFhirDocuments(
                 [Metadata("Database Id", "Database Id")] string databaseId,
@@ -222,6 +222,6 @@ Die folgende Abbildung zeigt alle im Azure-Portal ausgeführten Azure-Dienste f�
 - Und über Azure Service Bus-Warteschlangen können Sie die Verteilung der HL7 FHIR-Dokumente abwickeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Azure Cosmos DB-Startseite](https://azure.microsoft.com/services/cosmos-db/). Weitere Informationen zur Logic Apps finden Sie unter [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Azure Cosmos DB-Startseite](https://azure.microsoft.com/services/cosmos-db/). Weitere Informationen zu Logic Apps finden Sie unter [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 

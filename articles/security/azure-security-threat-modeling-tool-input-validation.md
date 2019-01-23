@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: da2e742f0dde0cb4b98bfb107d18eca779d10021
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234594"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266913"
 ---
-# <a name="security-frame-input-validation--mitigations"></a>Sicherheitsrahmen: Eingabeüberprüfung | Gegenmaßnahmen 
+# <a name="security-frame-input-validation--mitigations"></a>Sicherheitsrahmen: Eingabeüberprüfung | Risikominderung 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Web Application** | <ul><li>[Deaktivieren der XSLT-Skripterstellung für alle Transformationen, die nicht vertrauenswürdige Stylesheets verwenden](#disable-xslt)</li><li>[Sicherstellen, dass jede Seite, die von Benutzern steuerbare Inhalte enthalten könnte, von der automatischen MIME-Ermittlung abgemeldet wird](#out-sniffing)</li><li>[Absichern oder Deaktivieren der XML-Entitätsauflösung](#xml-resolution)</li><li>[Anwendungen, die „http.sys“ verwenden, überprüfen die Kanonisierungstransformation](#app-verification)</li><li>[Sicherstellen, dass entsprechende Kontrolle gelten, wenn Dateien vom Benutzer akzeptiert werden](#controls-users)</li><li>[Sicherstellen, dass typsichere Parameter für den Datenzugriff in Webanwendungen verwendet werden](#typesafe)</li><li>[Verwenden separater Modellbindungsklassen oder Bindungsfilterlisten, um Sicherheitslücken bei der MVC-Massenzuweisung vorzubeugen](#binding-mvc)</li><li>[Codieren nicht vertrauenswürdiger Webausgabe vor dem Rendering](#rendering)</li><li>[Ausführen der Eingabeüberprüfung und Filtern von Modelleigenschaften aller Zeichenfolgentypen](#typemodel)</li><li>[Anwenden der Bereinigung auf Formularfelder, die alle Zeichen akzeptieren, z.B. Rich-Text-Editor](#richtext)</li><li>[Kein Zuweisen von DOM-Elementen, die keine integrierte Codierung aufweisen](#inbuilt-encode)</li><li>[Überprüfen, ob alle Umleitungen innerhalb der Anwendung geschlossen sind oder sicher ausgeführt werden](#redirect-safe)</li><li>[Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Controllermethoden akzeptiert werden](#string-method)</li><li>[Festlegen einer Obergrenze für Timeouts bei der Verarbeitung regulärer Ausdrücke, um DoS aufgrund ungültiger Ausdrücke zu verhindern ](#dos-expression)</li><li>[Vermeiden der Verwendung von Html.Raw in Razor-Ansichten](#html-razor)</li></ul> | 

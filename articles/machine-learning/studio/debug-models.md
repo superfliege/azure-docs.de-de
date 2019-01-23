@@ -1,34 +1,17 @@
 ---
-title: 'Debuggen Ihres Modells: Azure Machine Learning Studio | Microsoft-Dokumentation'
-description: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio generiert wurden.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
-ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268885"
+Titel: Debuggen Ihres Modells titleSuffix: Azure Machine Learning Studio – Beschreibung: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio generiert wurden.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 14.03.2017
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debuggen Ihres Modells in Azure Machine Learning Studio
 
-Dieser Artikel erläutert die möglichen Gründe, warum bei der Ausführung eines Modells die folgenden beiden Fehler auftreten können:
+Wenn Sie ein Modell ausführen, können die folgenden Fehler auftreten:
 
 * Für das Modul [Train Model][train-model] tritt ein Fehler auf. 
 * Das Modul [Score Model][score-model] liefert falsche Ergebnisse. 
 
+Dieser Artikel beschreibt mögliche Ursachen für diese Fehler.
 
 
 ## <a name="train-model-module-produces-an-error"></a>Für das Modul „Train Model“ tritt ein Fehler auf
@@ -38,7 +21,7 @@ Dieser Artikel erläutert die möglichen Gründe, warum bei der Ausführung eine
 Für das Modul [Train Model][train-model] werden zwei Eingaben erwartet:
 
 1. Der Typ des Modells für maschinelles Lernen aus der in Azure Machine Learning bereitgestellten Modellsammlung.
-2. Die Trainingsdaten mit einer angegebenen Spalte „Label“, die die vorherzusagende Variable angibt. (Bei den anderen Spalten wird davon ausgegangen, dass es sich um Features handelt.)
+2. Die Trainingsdaten mit einer angegebenen Spalte „Label“, die die vorherzusagende Variable angibt. (Bei den anderen Spalten wird davon ausgegangen, dass es sich um Features handelt).
 
 Für dieses Modul kann in den folgenden Fällen ein Fehler auftreten:
 
@@ -59,11 +42,11 @@ Für das Modul [Score Model][score-model] sind zwei Eingaben erforderlich:
 1. Die Ausgabe eines trainierten Modells aus dem Modul [Train Model][train-model]
 2. Ein Dataset für die Bewertung, das sich von dem Dataset unterscheidet, mit dem das Modell trainiert wurde
 
-Es ist möglich, dass das Modul [Score Model][score-model] auch dann falsche Ergebnisse liefert, wenn das Experiment erfolgreich ausgeführt wird. Dies kann durch verschiedene Szenarios verursacht werden:
+Es ist möglich, dass das Modul [Score Model][score-model] auch dann falsche Ergebnisse liefert, wenn das Experiment erfolgreich ausgeführt wird. Dieses Problem kann durch verschiedene Szenarios verursacht werden:
 
 1. Wenn der angegebene Bezeichner kategorisch ist und ein Regressionsmodell für die Daten trainiert wird, gibt das [Score Model][score-model]-Modul eine falsche Ausgabe aus. Dies ist darauf zurückzuführen, dass für die Regression eine stetige Antwortvariable erforderlich ist. In diesem Fall empfiehlt sich die Verwendung eines Klassifizierungsmodells. 
 
-2. In ähnlicher Weise liefert ein Klassifizierungsmodell möglicherweise unerwünschte Ergebnisse, wenn es für ein Dataset mit Gleitkommazahlen in der Spalte "Label" trainiert wird. Dies liegt daran, dass für die Klassifizierung eine diskrete Antwortvariable erforderlich ist, die nur Werte zulässt, die innerhalb einer begrenzten und normalerweise eher kleinen Gruppe von Klassen liegen.
+2. In ähnlicher Weise liefert ein Klassifizierungsmodell möglicherweise unerwünschte Ergebnisse, wenn es für ein Dataset mit Gleitkommazahlen in der Spalte "Label" trainiert wird. Dies liegt daran, dass für die Klassifizierung eine diskrete Antwortvariable erforderlich ist, die nur Werte zulässt, die innerhalb einer begrenzten und kleinen Gruppe von Klassen liegen.
 
 3. Wenn das Dataset für die Bewertung nicht alle Funktionen enthält, mit denen das Modell trainiert wird, gibt das [Score Model][score-model]-Modul einen Fehler aus.
 

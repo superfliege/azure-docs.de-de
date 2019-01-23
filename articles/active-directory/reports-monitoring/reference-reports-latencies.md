@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c6d36f3e1cef4fffbe38b0a70d42069577590627
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623178"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212259"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
@@ -40,10 +40,14 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Aktivitätsberichte.
 > **Latenz (95. Perzentil)** bezieht sich auf die Zeit, bis zu der 95 % der Protokolle gemeldet werden, und **Latenz (99. Perzentil)** bezieht sich auf die Zeit, bis zu der 99 % der Protokolle gemeldet werden. 
 >
 
-| Bericht | Latenz (95. Perzentil) |Latenz (99. Perzentil)|
-| :-- | --- | --- | 
-| Überwachungsprotokolle | 2 Min.  | 5 Min.  |
-| Anmeldungen | 2 Min.  | 5 Min. |
+| Bericht | Latenz (95. Perzentil) |Latenz (99. Perzentil)|Zeitraum, in dem Protokolle gemeldet werden.|
+| :-- | --- | --- | --- |
+| Überwachungsprotokolle | 2 Min.  | 5 Min.  | 2-60 Min. |
+| Anmeldungen | 2 Min.  | 5 Min. | 2-120 Min. |
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Wie schnell werden nach Erwerb einer Premium-Lizenz Daten zu Aktivitäten angezeigt?
+
+Wenn Ihnen bereits mit einer kostenlosen Lizenz Daten zu Aktivitäten angezeigt werden, können Sie diese sofort nach dem Upgrade sehen. Wenn Sie noch keine Daten haben, dauert es ein bis zwei Tage, bis die Daten in den Berichten nach dem Upgrade auf eine Premium-Lizenz angezeigt werden.
 
 ## <a name="security-reports"></a>Sicherheitsberichte
 

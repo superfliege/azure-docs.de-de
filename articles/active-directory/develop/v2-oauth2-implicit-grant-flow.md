@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ce54ad77893557b595f9777dfc82939aacf41608
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962578"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321516"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
 
@@ -54,7 +54,7 @@ Das folgende Diagramm zeigt, wie der gesamte implizite Anmeldevorgang aussieht, 
 Zur anfänglichen Anmeldung des Benutzers bei Ihrer App können Sie eine [OpenID Connect](v2-protocols-oidc.md)-Autorisierungsanforderung senden und ein `id_token` vom v2.0-Endpunkt abrufen.
 
 > [!IMPORTANT]
-> Zur erfolgreichen Anforderung eines ID-Token muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die Option **Impliziten Fluss zulassen** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: **The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘.** (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
+> Zur erfolgreichen Anforderung eines ID-Tokens muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die Option **Impliziten Fluss zulassen** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: **The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘.** (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
 
 ```
 // Line breaks for legibility only

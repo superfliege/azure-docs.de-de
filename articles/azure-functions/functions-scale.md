@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722073"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359866"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
 Azure Functions wird in zwei verschiedenen Modi ausgeführt: Verbrauchsplan oder Azure App Service-Plan. Der Verbrauchsplan weist bei Ausführung Ihres Codes automatisch Computeleistung zu. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn der Code nicht ausgeführt wird. Für virtuelle Computer im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren.
 
 > [!NOTE]  
-> [Linux-Hosting](functions-create-first-azure-function-azure-cli-linux.md) ist derzeit nur im Rahmen eines App Service-Plans verfügbar.
+> Der Verbrauchstarif für Linux befindet sich [jetzt in der öffentlichen Vorschau](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/).
 
 Wenn Sie mit Azure Functions nicht vertraut sind, informieren Sie sich in der [Übersicht über Azure Functions](functions-overview.md).
 

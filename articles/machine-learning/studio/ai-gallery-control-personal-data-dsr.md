@@ -1,21 +1,22 @@
 ---
-title: 'Verwalten von Daten über die Azure AI Gallery: Azure Machine Learning Studio | Microsoft-Dokumentation'
+title: Verwalten von Daten aus der Azure AI Gallery
+titleSuffix: Azure Machine Learning Studio
 description: Sie können Ihre im Produkt enthaltenen Benutzerdaten in Azure AI Gallery über die Benutzeroberfläche oder die Katalog-API von AI Gallery exportieren und löschen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
 services: machine-learning
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 05/25/2018
-ms.openlocfilehash: 2fc2d8a21a4090a02822607eac1695ed192eac27
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: jmartens, mldocs
+ms.openlocfilehash: 14f46ffd45f0b1948dfc4892a45dc880dc378355
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250245"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263989"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Anzeigen und Löschen von im Produkt enthaltenen Benutzerdaten in Azure AI Gallery
 

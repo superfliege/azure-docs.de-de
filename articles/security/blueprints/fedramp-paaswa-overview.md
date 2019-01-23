@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: 50a49a8bcb6bec6c177823ea61cc340da6876357
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9bfd748e6b10106587e3fce64e15d7f1f6d50e59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602085"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261586"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Azure-Blaupause für Sicherheit und Compliance: PaaS-Webanwendung für FedRAMP
 
@@ -57,9 +57,9 @@ Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung 
 
 **App Service-Umgebung v2**: Die [Azure App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/intro) (Azure App Service Environment, ASE) ist ein App Service-Feature, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Anwendungen in großem Umfang bereitstellt.
 
-ASEs sind isoliert und führen nur die Anwendungen eines einzelnen Kunden aus. Zudem werden sie immer in einem virtuellen Netzwerk bereitgestellt. Kunden haben eine genauere Kontrolle über den eingehenden und ausgehenden Anwendungs-Netzwerkdatenverkehr, und Anwendungen können über virtuelle Netzwerke sichere Hochgeschwindigkeitsverbindungen mit lokalen Unternehmensressourcen herstellen.
+Aufgrund der Isolierung werden in ASUs nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt. Kunden haben eine genauere Kontrolle über den eingehenden und ausgehenden Anwendungs-Netzwerkdatenverkehr, und Anwendungen können über virtuelle Netzwerke sichere Hochgeschwindigkeitsverbindungen mit lokalen Unternehmensressourcen herstellen.
 
-Die Verwendung von ASEs für diese Architektur ist für die folgenden Steuerungen/Konfigurationen zulässig:
+Die Verwendung von ASUs für diese Architektur ist für die folgenden Steuerelemente/Konfigurationen zulässig:
 
 - Hosten in einem geschützten virtuellen Azure-Netzwerk und in Netzwerksicherheitsregeln
 - ASE, konfiguriert mit einem selbstsignierten ILB-Zertifikat für die HTTPS-Kommunikation

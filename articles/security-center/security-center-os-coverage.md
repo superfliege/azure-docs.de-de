@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 1/9/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 98d2d29e7822d9ca97ba488fcf67298a0b40efbf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608833"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265463"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -77,7 +77,7 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Windows Defender ATP-Integration|✔ (für unterstützte Versionen)|✔|X|X|
 |Fehlende Patches|✔|✔|✔|✔|
 |Sicherheitskonfigurationen|✔|✔|✔|✔|
-|Antischadsoftware|✔|✔|X|X|
+|Endpoint Protection|✔|✔|X|X|
 |JIT-VM-Zugriff|✔|X|✔|X|
 |Adaptive Anwendungssteuerungen|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
@@ -88,8 +88,27 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Netzwerkübersicht|✔|X|✔|X|
 |Adaptive Netzwerksteuerungen|✔|X|✔|X|
 
-\* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt.
 
+### <a name="supported-endpoint-protection-solutions"></a>Unterstützte Endpunktschutz-Lösungen
+
+In der folgenden Tabelle finden Sie eine Matrix zu folgenden Fragen:
+ - Ob Sie mit Azure Security Center jede Lösung für sich installieren können.
+ - Welche Endpunktschutz-Lösungen Security Center erkennen kann. Wenn eine dieser Endpunktschutz-Lösungen ermittelt wird, empfiehlt Security Center nicht deren Installation.
+
+| Endpoint Protection| Plattformen | Security Center-Installation | Security Center-Ermittlung |
+|------|------|-----|-----|
+| Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nein, in Betriebssystem integriert| JA |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (siehe Hinweis unten) | Per Erweiterung | JA |
+| Trend Micro – alle Versionen | Windows Server-Familie  | Nein  | JA |
+| Symantec v12.1.1100+| Windows Server-Familie  | Nein  | JA |
+| McAfee v10+ | Windows Server-Familie  | Nein  | JA |
+| Kaspersky| Windows Server-Familie  | Nein  | Nein   |
+| Sophos| Windows Server-Familie  | Nein  | Nein   |
+
+> [!NOTE]
+> - Für die Erkennung von System Center Endpoint Protection (SCEP) auf einem virtuellen Computer mit Windows Server 2008 R2 muss SCEP nach PowerShell 3.0 (oder einer höheren Version) installiert werden.
+>
+>
 
 ## <a name="supported-paas-features"></a>Unterstützte PaaS-Features 
 
@@ -109,6 +128,8 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Abonnement|✔| ✔|
 
 \* Diese Features werden derzeit in der öffentlichen Vorschau unterstützt. 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,7 +1,7 @@
 ---
 title: Lastenausgleich für zonenredundante VMs mithilfe der Azure CLI
 titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie mithilfe der Azure CLI einen öffentlichen Standard-Lastenausgleich mit einem zonenredundanten Front-End erstellen.
+description: Erfahren Sie, wie Sie mithilfe der Azure CLI einen öffentlichen Load Balancer Standard mit einem zonenredundanten Front-End erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 82bb0387d8f1603b4b436bfe70d75d19b88f28b1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250806"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197792"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mithilfe der Azure CLI
 
-In diesem Artikel werden die Schritte zum Erstellen eines öffentlichen [Standard-Lastenausgleichs](https://aka.ms/azureloadbalancerstandard) mit einem zonenredundanten Front-End erläutert, um Zonenredundanz ohne Abhängigkeit von mehreren DNS-Einträgen zu erzielen. Eine einzelne Front-End-IP-Adresse ist automatisch zonenredundant.  Durch die Verwendung eines zonenredundanten Front-Ends für Ihren Load Balancer können Sie mit einer einzelnen IP-Adresse jetzt eine beliebige VM in einem virtuellen Netzwerk innerhalb einer Region über alle Verfügbarkeitszonen hinweg erreichen. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
+In diesem Artikel werden die Schritte zum Erstellen eines öffentlichen [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) mit einem zonenredundanten Front-End erläutert, um Zonenredundanz ohne Abhängigkeit von mehreren DNS-Einträgen zu erzielen. Eine einzelne Front-End-IP-Adresse ist automatisch zonenredundant.  Durch die Verwendung eines zonenredundanten Front-Ends für Ihren Load Balancer können Sie mit einer einzelnen IP-Adresse jetzt eine beliebige VM in einem virtuellen Netzwerk innerhalb einer Region über alle Verfügbarkeitszonen hinweg erreichen. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
 
 Informationen zur Verwendung von Verfügbarkeitszonen mit Load Balancer Standard finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
@@ -60,7 +60,7 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-load-balancer-standard"></a>Erstellen eines Azure-Lastenausgleichs mit der SKU „Standard“
+## <a name="create-azure-standard-load-balancer"></a>Erstellen eines Azure Load Balancer Standard
 In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
 - Front-End-IP-Pool, der den eingehenden Netzwerkdatenverkehr für den Load Balancer empfängt
 - Back-End-IP-Pool, an den der Front-End-Pool den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde

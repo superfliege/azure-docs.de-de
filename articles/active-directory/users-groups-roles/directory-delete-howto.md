@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139685"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243881"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Löschen eines Azure Active Directory-Mandanten
+
 Beim Löschen eines Mandanten werden auch alle darin enthaltenen Ressourcen gelöscht. Sie müssen den Mandanten vorbereiten, indem Sie die mit ihm verbundenen Ressourcen minimieren, ehe Sie ihn löschen. Nur ein globaler Administrator von Azure Active Directory (Azure AD) kann einen Azure AD-Mandanten im Portal löschen.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>Vorbereiten des Mandanten auf das Löschen
@@ -59,17 +60,17 @@ Abonnementzustand | Daten | Zugriff auf Daten
 Aktiv (30 Tage für die Testversion)  | Daten für alle zugänglich    | <li>Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<li>Administratoren haben normalen Zugriff auf das Office 365 Admin Center und -Ressourcen 
 Abgelaufen (30 Tage)   | Daten für alle zugänglich    | <li>Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<li>Administratoren haben normalen Zugriff auf das Office 365 Admin Center und -Ressourcen
 Deaktiviert (30 Tage) | Daten nur für Administrator zugänglich  | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Office 365 Admin Center zugreifen, aber keine Lizenzen zuweisen oder Benutzer aktualisieren
-Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden automatisch gelöscht, wenn keine anderen Dienste verwendet werden) | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Office 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten 
+Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden automatisch gelöscht, wenn keine anderen Dienste verwendet werden) | <li>Benutzer können nicht auf Office 365-Dateien oder -Apps zugreifen<li>Administratoren können auf das Office 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten
 
 Sie können ein Abonnement in den Zustand **Bereitstellung aufgehoben** versetzen, um es innerhalb von 3 Tagen im Admin Center von Microsoft Store für Unternehmen zu löschen. Diese Funktion wird in Kürze im Office 365 Admin Center verfügbar sein.
 
 1. Melden Sie sich beim [Admin Center von Microsoft Store für Unternehmen](https://businessstore.microsoft.com/manage/) mit einem Konto mit Rechten eines globalen Administrators im Mandanten an. Wenn Sie versuchen, den Mandanten „Contoso“ zu löschen, der die anfängliche Domäne contoso.onmicrosoft.com hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
 
-2. Wechseln Sie zur Registerkarte **Verwalten**, wählen Sie **Produkte und Dienste** und dann das Abonnement aus, das Sie kündigen möchten. Nachdem Sie auf **Kündigen** geklickt haben, aktualisieren Sie die Seite.
+2. Wechseln Sie zur Registerkarte **Verwalten**, wählen Sie **Produkte und Dienste**, dann das Abonnement, das Sie kündigen möchten, und **Löschen** aus.
   
   ![Link „Löschen“ zum Löschen des Abonnements](./media/directory-delete-howto/delete-command.png)
   
-3. Klicken Sie auf **Löschen**, um das Abonnement zu löschen, und akzeptieren Sie die Geschäftsbedingungen. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Sie können das Abonnement innerhalb der dreitägigen Frist reaktivieren, sollten Sie Ihre Meinung ändern.
+3. Wählen Sie **Abonnement löschen** aus, um die Geschäftsbedingungen zu akzeptieren und das Abonnement zu löschen. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Sie können das Abonnement innerhalb der nächsten drei Tage reaktivieren, sollten Sie Ihre Meinung ändern.
   
   ![Geschäftsbedingungen](./media/directory-delete-howto/delete-terms.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 31e675b101d903af5dd4a07fee3bc56fbc3353d9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bb5d7306558f46f84d1f4a1b7a61332bf767479f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412787"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267044"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Zurücksetzen eines lokalen Windows-Kennworts im Offlinemodus für einen virtuellen Azure-Computer
 Sie können das lokale Windows-Kennwort eines virtuellen Computers in Azure im [Azure-Portal oder mithilfe von Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zurücksetzen, sofern der Azure-Gast-Agent installiert ist. Diese Methode ist die einfachste Möglichkeit zum Zurücksetzen eines Kennworts für einen virtuellen Azure-Computer. Wenn der Azure-Gast-Agent nicht reagiert oder nach dem Hochladen eines benutzerdefinierten Images nicht installiert wird, können Sie ein Windows-Kennwort manuell zurücksetzen. In diesem Artikel wird erläutert, wie das Kennwort eines lokalen Kontos durch Anfügen des virtuellen Quellbetriebssystem-Datenträgers an einen anderen virtuellen Computer zurückgesetzt wird. Die in diesem Artikel beschriebenen Schritte gelten nicht für Windows-Domänencontroller. 
@@ -37,6 +37,19 @@ Wenn kein Zugriff auf den Azure-Gast-Agent besteht, sehen die wichtigsten Schrit
 * Trennen Sie den Betriebssystemdatenträger des virtuellen Quellcomputers vom virtuellen Problembehandlungscomputer.
 * Erstellen Sie mithilfe einer Resource Manager-Vorlage und unter Verwendung des ursprünglichen virtuellen Datenträgers einen virtuellen Computer.
 * Wenn der neue virtuelle Computer gestartet wird, wird das Kennwort des entsprechenden Benutzers über die erstellten Konfigurationsdateien aktualisiert.
+
+> [!NOTE]
+> Sie können die folgenden Prozesse automatisieren:
+>
+> - Erstellen einer Problembehebungs-VM
+> - Anfügen des Betriebssystemdatenträgers
+> - Erneutes Erstellen der ursprüngliche VM
+> 
+> Verwenden Sie hierzu die [Azure VM-Wiederherstellungsskripts](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Wenn Sie die Azure VM-Wiederherstellungsskripts verwenden möchten, können Sie den folgenden Prozess im Abschnitt „Detaillierte Schritte“ verwenden:
+> 1. Überspringen Sie die Schritte 1 und 2, indem Sie mit Hilfe der Skripte den Betriebssystemdatenträger der betroffenen VM an eine Wiederherstellungs-VM anfügen.
+> 2. Führen Sie die Schritte 3 bis 6 aus, um die Risikominderung anzuwenden.
+> 3. Überspringen Sie die Schritte 7 bis 9 mithilfe der Skripts, um die VM neu zu erstellen.
+> 4. Führen Sie die Schritte 10 und 11 aus.
 
 ## <a name="detailed-steps"></a>Ausführliche Schritte
 

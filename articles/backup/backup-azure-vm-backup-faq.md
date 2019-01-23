@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041287"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332250"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Häufig gestellte Fragen zu Azure Backup
 
@@ -57,14 +57,13 @@ Wenn Sie die Ressourcengruppe sperren, kann der Azure Backup-Dienst die älteren
  Nein. Das Datum und die Uhrzeit auf Ihrem lokalen Computer stimmt mit der aktuellen lokalen Zeit überein (Sommerzeit berücksichtigt). Die festgelegte Zeit für geplante Sicherungen kann aufgrund der Sommerzeit von der lokalen Zeit abweichen.
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Wie viele Datenträger kann ich an eine VM anfügen, die durch Azure Backup gesichert wird?
-Azure Backup kann VMs mit bis zu 16 Datenträgern sichern. Die Unterstützung von 16 Datenträgern wird in der [aktuellen Version](backup-upgrade-to-vm-backup-stack-v2.md) von Azure VM Backup Stack V2 bereitgestellt.
+Azure Backup kann VMs mit bis zu 16 Datenträgern sichern. Unterstützung für 16 Datenträger wird in der [sofortigen Wiederherstellung](backup-instant-restore-capability.md) bereitgestellt.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
-Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Verwaltete SSD-Datenträger stellen eine neue Art dauerhaften Speichers für Azure-VMs bereit. Die Unterstützung von verwalteten SSD-Datenträgern wird in der [aktuellen Version](backup-upgrade-to-vm-backup-stack-v2.md) von Azure Backup Stack V2 bereitgestellt.
+Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Verwaltete SSD-Datenträger stellen eine neue Art dauerhaften Speichers für Azure-VMs bereit. Unterstützung für verwaltete SSD-Datenträger wird in der [sofortigen Wiederherstellung](backup-instant-restore-capability.md) bereitgestellt.
 
-### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Kann ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
-Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen. Der Ausschluss von Datenträgern für VMs mit Datenträgern mit aktivierter Schreibbeschleunigung wird nur für Abonnements unterstützt, für die ein Upgrade auf Azure VM Backup Stack V2 durchgeführt wurde. Informationen zum Upgraden auf Azure VM Backup Stack V2 finden Sie in diesem [Artikel](backup-upgrade-to-vm-backup-stack-v2.md). Dieses Feature ist aktuell in folgenden Regionen verfügbar: Japan, Osten; Europa, Norden; Asien, Südosten; USA, Osten; USA, Westen 2; Europa, Westen und USA, Osten 2.
-
+### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Können ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
+Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen. Der Ausschluss von Datenträgern für VMs mit Datenträgern mit aktivierter Schreibbeschleunigung wird nur für Abonnements unterstützt, für die ein Upgrade auf die sofortige Wiederherstellung durchgeführt wurde.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Ich verfüge über eine VM mit Datenträgern mit Schreibbeschleunigung und installiertem SAP HANA. Wie kann ich diese sichern?
 Azure Backup kann den Datenträger mit aktivierter Schreibbeschleunigung nicht sichern, kann ihn aber von der Sicherung ausschließen. Die Sicherung bietet jedoch keine Datenbankkonsistenz, da die Informationen auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht gesichert werden. Sie können Datenträger mit dieser Konfiguration sichern, wenn Sie eine Sicherung des Betriebssystemdatenträgers möchten, sowie Sicherungen von Datenträgern ohne aktivierte Schreibbeschleunigung durchführen.
@@ -77,7 +76,7 @@ Ich verfügen über eine private Vorschau zu einer SAP HANA-Sicherung mit einer 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Wie entscheide ich, ob ich nur Datenträger oder eine vollständige VM wiederherstelle?
 Bei der Wiederherstellung einer VM handelt es sich gewissermaßen um eine Schnellerstellungsoption für eine Azure-VM. Diese Option ändert die Namen von Datenträgern, von Containern, die von den Datenträgern verwendet werden, von öffentlichen IP-Adressen und Netzwerkschnittstellen. Die Änderung behält bei der Erstellung einer VM eindeutige Ressourcen bei. Die VM wird nicht zu einer Verfügbarkeitsgruppe hinzugefügt.
 
-Sie können die Option zur Wiederherstellung eines Datenträgers verwenden, wenn Sie ...
+Die Option zur Wiederherstellung eines Datenträgers können Sie verwenden, wenn Sie ...
   * ...die VM, die erstellt wird, anpassen möchten. Zum Beispiel, wenn Sie die Größe ändern möchten.
   * ...Konfigurationseinstellungen hinzufügen möchten, die zur Zeit der Sicherung nicht vorhanden waren.
   * ...die Namenskonvention für Ressourcen steuern möchten, die erstellt werden.
@@ -104,7 +103,7 @@ Ja. Selbst wenn Sie die VM gelöscht haben, können Sie diese über das entsprec
 Bei Azure-VMs mit verwalteten Datenträgern ist die Wiederherstellung in Verfügbarkeitsgruppen durch eine Option in der Vorlage beim Wiederherstellen als verwaltete Datenträger möglich. Diese Vorlage verfügt über den Eingabeparameter **Verfügbarkeitsgruppen**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Wie erreichen ich bei Wiederherstellungen eine schnellere Leistung?
-Es wird empfohlen, auf VM Backup Stack V2 und das [Instant Restore-Feature](backup-upgrade-to-vm-backup-stack-v2.md) (sofortige Wiederherstellung) umzusteigen, um eine schnellere Wiederherstellungsleistung zu erreichen.
+Um die Wiederherstellungsleistung zu verbessern, stellen wir auf die Funktion [Sofortige Wiederherstellung](backup-instant-restore-capability.md) um.
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 

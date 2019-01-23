@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1f142d7551859396b789ee0594880f077e4a7f9f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106565"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267129"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-Ausgabe an Azure Cosmos DB  
 Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt.
@@ -58,16 +58,17 @@ Bei festen Azure Cosmos DB-Sammlungen lässt Stream Analytics kein zentrales ode
 Das Schreiben in mehrere feste Container ist veraltet. Von diesem Ansatz für die horizontale Skalierung Ihres Stream Analytics-Auftrags wird abgeraten. Der Artikel [Partitionieren und Skalieren von Daten in Cosmos DB](../cosmos-db/sql-api-partition-data.md) enthält weitere Details.
 
 ## <a name="cosmos-db-settings-for-json-output"></a>Cosmos DB-Einstellungen für die JSON-Ausgabe
-Beim Erstellen einer Cosmos DB-Datenbank als Ausgabe in Stream Analytics wird eine Aufforderung zur Eingabe von Informationen eingeblendet. Dieser Abschnitt enthält eine Erklärung der Definition der Eigenschaften.
 
+Beim Erstellen einer Cosmos DB-Datenbank als Ausgabe in Stream Analytics wird eine Aufforderung zur Eingabe von Informationen eingeblendet. Dieser Abschnitt enthält eine Erklärung der Definition der Eigenschaften.
 
 ![Bildschirm mit DocumentDB als Stream Analytics-Ausgabe](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-Feld           | BESCHREIBUNG 
--------------   | -------------
-Ausgabealias    | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage   
-Kontoname    | Der Name oder Endpunkt-URI des Azure Cosmos DB-Kontos 
-Kontoschlüssel     | Der Schlüssel für den gemeinsamen Zugriff für das Azure Cosmos DB-Konto
-Datenbank        | Der Name der Azure Cosmos DB-Datenbank
-Sammlungsname | Der Sammlungsname für die zu verwendende Sammlung. `MyCollection` ist eine gültige Beispieleingabe – es muss eine Sammlung mit dem Namen `MyCollection` vorhanden sein.  
-Dokument-ID     | Optional. Der Spaltenname in Ausgabeergebnissen, der als eindeutiger Schlüssel verwendet wird, auf dem Einfüge- oder Aktualisierungsvorgänge basieren müssen. Wenn das Feld leer gelassen wird, werden sämtliche Ereignisse eingefügt, ohne Update-Option.
+|Feld           | BESCHREIBUNG|
+|-------------   | -------------|
+|Ausgabealias    | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage.|
+|Abonnement    | Wählen Sie Ihr Azure-Abonnement aus.|
+|Konto-ID      | Der Name oder Endpunkt-URI des Azure Cosmos DB-Kontos.|
+|Kontoschlüssel     | Der Schlüssel für den gemeinsamen Zugriff für das Azure Cosmos DB-Konto.|
+|Datenbank        | Der Name der Azure Cosmos DB-Datenbank.|
+|Muster des Sammlungsnamen | Der Sammlungsname für die zu verwendende Sammlung. `MyCollection` ist eine gültige Beispieleingabe – es muss eine Sammlung mit dem Namen `MyCollection` vorhanden sein.  |
+|Dokument-ID     | Optional. Der Spaltenname in Ausgabeergebnissen, der als eindeutiger Schlüssel verwendet wird, auf dem Einfüge- oder Aktualisierungsvorgänge basieren müssen. Wenn das Feld leer gelassen wird, werden sämtliche Ereignisse eingefügt, ohne Update-Option.|

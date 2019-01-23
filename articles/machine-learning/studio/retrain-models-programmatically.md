@@ -1,26 +1,8 @@
 ---
-title: Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Modell programmgesteuert mit C# und dem Machine Learning Batch Execution-Dienst erneut trainieren können.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257392"
+Titel: Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie ein Modell programmgesteuert mit C# und dem Machine Learning Batch Execution-Dienst erneut trainieren können.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 19.04.2017
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programmgesteuertes erneutes Trainieren von Azure Machine Learning Studio-Modellen
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie einen Azure Machine Learning Studio-Webdienst mithilfe von C# und dem Machine Learning Batch Execution-Dienst neu trainieren.

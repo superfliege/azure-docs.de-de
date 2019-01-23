@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fda0f600fa7cb130511f2bd8b53543acfbcc7759
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2478a5dd3f5d685253ef9145bec0a68ff324c6c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054295"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263814"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Laden und Lesen von Daten mit Azure Machine Learning
 
@@ -27,7 +27,25 @@ In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem [
 * Typkonvertierung unter Verwendung der Ermittlung beim Laden der Datei
 * Verbindungsunterstützung für MS SQL Server und Azure Data Lake Storage
 
-## <a name="load-text-line-data"></a>Laden von Textzeilendaten 
+## <a name="load-data-automatically"></a>Automatisches Laden von Daten
+
+Um Daten automatisch ohne Angabe des Dateityps zu laden, verwenden Sie die `auto_read_file()`-Funktion. Der Typ der Datei und die Argumente, die erforderlich sind, um sie zu lesen, werden automatisch abgeleitet.
+
+```python
+import azureml.dataprep as dprep
+
+dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+```
+
+Diese Funktion ist nützlich, um Dateityp, Codierung und andere Analyseargumente von einem geeigneten Einstiegspunkt aus automatisch zu ermitteln. Die Funktion führt auch automatisch die folgenden Schritte aus, die häufig beim Laden durch Trennzeichen getrennter Daten ausgeführt werden:
+
+* Ableiten und Festlegen von Trennzeichen
+* Überspringen leerer Datensätze am Anfang der Datei
+* Ableiten und Festlegen der Kopfzeile
+
+Wenn Sie den Dateityp vorab kennen und explizit steuern möchten, wie er analysiert wird, lesen Sie in diesem Artikel weiter, um die speziellen Funktionen kennenzulernen, die das SDK bietet.
+
+## <a name="load-text-line-data"></a>Laden von Textzeilendaten
 
 Verwenden Sie zum Einlesen von einfachen Textdaten in einen Dataflow `read_lines()` ohne Angabe optionaler Parameter.
 
@@ -188,7 +206,7 @@ dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
 
 Das SDK kann auch Daten aus einer SQL-Quelle laden. Derzeit wird nur Microsoft SQL Server unterstützt. Um Daten von SQL Server zu lesen, erstellen Sie ein `MSSQLDataSource`-Objekt, das die Verbindungsparameter enthält. Der Kennwortparameter von `MSSQLDataSource` akzeptiert ein `Secret`-Objekt. Sie können ein Geheimnisobjekt auf zwei Arten erstellen:
 
-* Registrieren Sie das Geheimnis und dessen Wert mit der Ausführungs-Engine. 
+* Registrieren Sie das Geheimnis und dessen Wert mit der Ausführungs-Engine.
 * Erstellen Sie das Geheimnis mit nur einer `id` (wenn der Wert des Geheimnis bereits in der Ausführungsumgebung registriert ist) unter Verwendung von `dprep.create_secret("[SECRET-ID]")`.
 
 ```python
@@ -232,7 +250,7 @@ az account show --query tenantId
 dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Wenn Ihr Benutzerkonto Mitglied von mehr als einem Azure-Mandanten ist, müssen Sie den Mandanten in Form des AAD-URL-Hostnamens angeben.
 
 ### <a name="create-a-service-principal-with-the-azure-cli"></a>Erstellen eines Dienstprinzipals über die Azure CLI
@@ -256,7 +274,7 @@ Verwenden Sie zum Konfigurieren der ACL für das Azure Data Lake Storage-Dateisy
 az ad sp show --id "8dd38f34-1fcb-4ff9-accd-7cd60b757174" --query objectId
 ```
 
-Um den Zugriff auf `Read` und `Execute` für das Azure Data Lake Storage-Dateisystem zu konfigurieren, konfigurieren Sie die ACL für Ordner und Dateien separat. Dies ist darauf zurückzuführen, dass das zugrunde liegende HDFS-ACL-Modell keine Vererbung unterstützt. 
+Um den Zugriff auf `Read` und `Execute` für das Azure Data Lake Storage-Dateisystem zu konfigurieren, konfigurieren Sie die ACL für Ordner und Dateien separat. Dies ist darauf zurückzuführen, dass das zugrunde liegende HDFS-ACL-Modell keine Vererbung unterstützt.
 
 ```azurecli
 az dls fs access set-entry --account dpreptestfiles --acl-spec "user:e37b9b1f-6a5e-4bee-9def-402b956f4e6f:r-x" --path /

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 976b46a26d95b5e252b0df2383ea94b4dd280d24
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094184"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229624"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Grundlegendes zu Azure IoT Edge-Modulen
 
@@ -30,7 +30,7 @@ Azure IoT Edge ermöglicht Ihnen die Bereitstellung und Verwaltung von Geschäft
 IoT Edge-Modulimages enthalten Anwendungen, die die Verwaltungs-, Sicherheits- und Kommunikationsfeatures der IoT Edge-Runtime nutzen. Sie können Ihre eigenen Modulimages entwickeln oder eines aus einem unterstützten Azure-Dienst exportieren, beispielsweise aus Azure Stream Analytics.
 Die Images sind in der Cloud enthalten und können aktualisiert, geändert und in verschiedenen Lösungen bereitgestellt werden. Beispielsweise liegt ein Modul, das eine Fließbandausgabe anhand von Machine Learning prognostiziert, in einem anderen Image vor als ein Modul, das mithilfe von maschinellem Sehen eine Drohne steuert. 
 
-Jedes Mal, wenn ein Modulimage auf einem Gerät bereitgestellt und von der IoT Edge-Runtime gestartet wird, wird eine neue Instanz des jeweiligen Moduls erstellt. Zwei Geräte in unterschiedlichen Teilen der Welt könnten dasselbe Modulimage verwenden; allerdings würde jedes eine eigene Modulinstanz besitzen, wenn das Modul auf dem Gerät gestartet wird. 
+Jedes Mal, wenn ein Modulimage auf einem Gerät bereitgestellt und von der IoT Edge-Runtime gestartet wird, wird eine neue Instanz des jeweiligen Moduls erstellt. Zwei Geräte in verschiedenen Teilen der Welt könnten dasselbe Modulimage verwenden. Allerdings würde jedes Gerät über eine eigene Modulinstanz verfügen, wenn das Modul auf dem Gerät gestartet wird. 
 
 ![Diagramm: Modulimages in der Cloud, Modulinstanzen auf Geräten](./media/iot-edge-modules/image_instance.png)
 
@@ -73,9 +73,9 @@ Azure IoT Edge unterstützt Offlinevorgänge auf Ihren IoT Edge-Geräten. Diese 
 IoT Edge-Module können sich längere Zeit im Offlinemodus befinden, solange die folgenden Anforderungen erfüllt sind: 
 
 * **Die Gültigkeitsdauer (TTL) der Nachricht ist nicht abgelaufen**. Der Standardwert für die Gültigkeitsdauer von Nachrichten beträgt zwei Stunden, aber er kann in den IoT Edge Hub-Einstellungen unter „Konfiguration speichern und weiterleiten“ erhöht bzw. verringert werden. 
-* **Module müssen sich gegenüber dem IoT Edge Hub nicht erneut authentifizieren, wenn sie sich im Offlinezustand befinden**. Module können sich nur gegenüber Edge Hubs authentifizieren, die über eine aktive Verbindung mit einem IoT Hub verfügen. Module müssen sich erneut authentifizieren, falls sie aus irgendeinem Grund neu gestartet werden. Module können weiterhin Nachrichten an den Edge Hub senden, nachdem ihr SAS-Token abgelaufen ist. Nachdem die Konnektivität wiederhergestellt wurde, fordert der Edge Hub ein neues Token vom Modul an und überprüft es mit dem IoT Hub. Wenn die Überprüfung erfolgreich ist, leitet der Edge Hub die gespeicherten Modulnachrichten weiter. Dies gilt auch für die Nachrichten, die gesendet wurden, während das Token des Moduls abgelaufen war. 
-* **Das Modul, mit dem die Nachrichten im Offlinezustand gesendet wurden, ist noch betriebsbereit, wenn die Konnektivität wiederhergestellt wird**. Beim Wiederherstellen der Verbindung mit dem IoT Hub muss der Edge Hub ein neues Modultoken überprüfen (falls das vorherige abgelaufen ist), bevor er die Modulnachrichten weiterleiten kann. Wenn das Modul nicht verfügbar ist, um ein neues Token bereitzustellen, kann der Edge Hub für die gespeicherten Nachrichten des Moduls keine Aktionen durchführen. 
-* **Der Edge Hub verfügt auf dem Datenträger über Speicherplatz für die Nachrichten**. Nachrichten werden standardmäßig im Dateisystem des Edge Hub-Containers gespeichert. Es ist eine Konfigurationsoption zum Angeben eines bereitgestellten Volumes vorhanden, auf dem die Nachrichten stattdessen gespeichert werden können. In beiden Fällen muss Platz zum Speichern der Nachrichten für die verzögerte Bereitstellung für einen IoT Hub vorhanden sein.  
+* **Module müssen sich gegenüber dem IoT Edge Hub nicht erneut authentifizieren, wenn sie sich im Offlinezustand befinden**. Module können sich nur gegenüber IoT Edge Hubs authentifizieren, die über eine aktive Verbindung mit einem IoT-Hub verfügen. Module müssen sich erneut authentifizieren, falls sie aus irgendeinem Grund neu gestartet werden. Module können weiterhin Nachrichten an den IoT Edge-Hub senden, nachdem ihr SAS-Token abgelaufen ist. Nachdem die Konnektivität wiederhergestellt wurde, fordert der IoT Edge-Hub ein neues Token vom Modul an und überprüft es mit dem IoT-Hub. Wenn die Überprüfung erfolgreich ist, leitet der IoT Edge-Hub die gespeicherten Modulnachrichten weiter. Dies gilt auch für die Nachrichten, die gesendet wurden, während das Token des Moduls abgelaufen war. 
+* **Das Modul, mit dem die Nachrichten im Offlinezustand gesendet wurden, ist noch betriebsbereit, wenn die Konnektivität wiederhergestellt wird**. Beim Wiederherstellen der Verbindung mit IoT Hub muss der IoT Edge-Hub ein neues Modultoken überprüfen (falls das vorherige abgelaufen ist), bevor er die Modulnachrichten weiterleiten kann. Wenn das Modul nicht verfügbar ist, um ein neues Token bereitzustellen, kann der IoT Edge-Hub für die gespeicherten Nachrichten des Moduls keine Aktionen durchführen. 
+* **Der IoT Edge-Hub verfügt auf dem Datenträger über Speicherplatz für die Nachrichten**. Nachrichten werden standardmäßig im Dateisystem des IoT Edge-Hub-Containers gespeichert. Es ist eine Konfigurationsoption zum Angeben eines bereitgestellten Volumes vorhanden, auf dem die Nachrichten stattdessen gespeichert werden können. In beiden Fällen muss Platz zum Speichern der Nachrichten für die verzögerte Bereitstellung für einen IoT Hub vorhanden sein.  
 
 Zusätzliche Offlinefunktionen sind in der öffentlichen Vorschauversion verfügbar. Weitere Informationen finden Sie unter [Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte](offline-capabilities.md).
 

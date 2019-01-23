@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: f4b5fccefb08597a13fcc91eda11bbf3eb122914
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 994f321a0bfcb6b8e9b7abc6f4b1f61abed618e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394845"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262012"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Überprüfen von Abrechnungsdaten der Enterprise-Registrierung mit REST-APIs
 
 Mit Azure-Berichterstellungs-APIs können Sie Ihre Azure-Kosten überprüfen und verwalten.
 
-In diesem Artikel erfahren Sie, wie Sie die Abrechnungsinformationen zu Abrechnungskonten, Abteilungs- oder Enterprise Agreement (EA)-Registrierungskonten mithilfe der Azure-REST-APIs abrufen. 
+In diesem Artikel erfahren Sie, wie Sie die Abrechnungsinformationen zu Abrechnungskonten, Abteilungs- oder Enterprise Agreement-Registrierungskonten (EA) mithilfe der Azure-REST-APIs abrufen. 
 
 ## <a name="individual-account-billing"></a>Einzelkontoabrechnung
 

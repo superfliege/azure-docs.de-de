@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ac3c3d8f2a5ae37f1d32f9781f0cdbec0b293e8
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 85c284c2a0e49d7fa20c0ec342878ffdf9d47387
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145579"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261161"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup
 Dieser Artikel befasst sich mit Azure VM Backup für die Wiederherstellung von verschlüsselten Azure-VMs, wenn Schlüssel und Geheimschlüssel nicht im Schlüsseltresor vorhanden sind. Diese Schritte können auch verwendet werden, wenn Sie eine separate Kopie von Schlüssel (Key Encryption Key) und Geheimschlüssel (BitLocker-Verschlüsselungsschlüssel) für den wiederhergestellten virtuellen Computer verwalten möchten.
@@ -28,8 +28,8 @@ Dieser Artikel befasst sich mit Azure VM Backup für die Wiederherstellung von v
 
 > [!NOTE]
 > Nachdem der Datenträger für den verschlüsselten virtuellen Computer wiederhergestellt wurde, überprüfen Sie Folgendes:
-> 1. „$details“ ist mit Auftragsdetails zur Wiederherstellung von Datenträgern aufgefüllt, wie unter [Schritte zu PowerShell im Abschnitt zur Wiederherstellung von Datenträgern](backup-azure-vms-automation.md#restore-an-azure-vm) beschrieben wird.
-> 2. Die VM sollte erst über wiederhergestellte Datenträger erstellt werden, **wenn der Schlüssel und das Geheimnis im Schlüsseltresor wiederhergestellt wurden**.
+> * „$details“ ist mit Auftragsdetails zur Wiederherstellung von Datenträgern aufgefüllt, wie unter [Schritte zu PowerShell im Abschnitt zur Wiederherstellung von Datenträgern](backup-azure-vms-automation.md#restore-an-azure-vm) beschrieben wird.
+> * Die VM sollte erst über wiederhergestellte Datenträger erstellt werden, **wenn der Schlüssel und das Geheimnis im Schlüsseltresor wiederhergestellt wurden**.
 >
 >
 
@@ -61,7 +61,10 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 ```
 
 ## <a name="restore-secret"></a>Geheimen Schlüssel wiederherstellen
-Rufen Sie mithilfe der zuvor generierten JSON-Datei den Geheimnisnamen und -wert ab, und fügen Sie sie in das Cmdlet zum Festlegen von Geheimnissen ein, um das Geheimnis (BEK) wieder im Schlüsseltresor zu platzieren. **Verwenden Sie diese Cmdlets, wenn Ihr virtueller Computer mit BEK und KEK verschlüsselt ist.**
+
+Rufen Sie mithilfe der zuvor generierten JSON-Datei den Geheimnisnamen und -wert ab, und fügen Sie sie in das Cmdlet zum Festlegen von Geheimnissen ein, um das Geheimnis (BEK) wieder im Schlüsseltresor zu platzieren. Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Computer mit BEK und KEK verschlüsselt ist**.
+
+Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Windows-Computer mit BEK und KEK verschlüsselt ist**.
 
 ```
 PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -71,17 +74,27 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Falls der virtuelle Computer **nur mit BEK verschlüsselt** ist, erstellen Sie eine Datei mit einem geheimen Blob auf Grundlage des JSON-Codes, und übergeben Sie sie an das Cmdlet zur Geheimniswiederherstellung, um das Geheimnis (BEK) im Schlüsseltresor wiederherzustellen.
+Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Linux-Computer mit BEK und KEK verschlüsselt ist**.
+
+```
+PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
+PS C:\> $Secret = ConvertTo-SecureString -String $secretdata -AsPlainText -Force
+PS C:\> $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
+PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = $encryptionObject.OsDiskKeyAndSecretDetails.KeyUrl;'MachineName' = 'vm-name'}
+PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
+```
+
+Rufen Sie mithilfe der zuvor generierten JSON-Datei den Geheimnisnamen und -wert ab, und fügen Sie sie in das Cmdlet zum Festlegen von Geheimnissen ein, um das Geheimnis (BEK) wieder im Schlüsseltresor zu platzieren. Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Computer nur mit BEK verschlüsselt ist**.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'
 PS C:\> [io.file]::WriteAllBytes($secretDestination, [System.Convert]::FromBase64String($encryptionObject.OsDiskKeyAndSecretDetails.KeyVaultSecretBackupData))
 PS C:\> Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $secretDestination -Verbose
-```
+  ```
 
 > [!NOTE]
-> 1. Der Wert für $secretname kann über die Ausgabe von $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl und den Text nach secrets/ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
-> 2. Der Wert der Markierung „DiskEncryptionKeyFileName“ ist mit dem Namen des Geheimnisses identisch.
+> * Der Wert für $secretname kann über die Ausgabe von $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl und den Text nach secrets/ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
+> * Der Wert der Markierung „DiskEncryptionKeyFileName“ ist mit dem Namen des Geheimnisses identisch.
 >
 >
 
@@ -111,9 +124,9 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secr
 ```
 
 > [!NOTE]
-> 1. Der Wert für $secretname kann über die Ausgabe von $rp1.KeyAndSecretDetails.SecretUrl und den Text nach secrets/ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
-> 2. Der Wert der Markierung „DiskEncryptionKeyFileName“ ist mit dem Namen des Geheimnisses identisch.
-> 3. Der Wert für „DiskEncryptionKeyEncryptionKeyURL“ kann mithilfe des Cmdlet [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) aus dem Schlüsseltresor abgerufen werden, nachdem die Schlüssel wiederhergestellt wurden.
+> * Der Wert für $secretname kann über die Ausgabe von $rp1.KeyAndSecretDetails.SecretUrl und den Text nach secrets/ abgerufen werden, z.B. lautet die Geheimnis-URL der Ausgabe https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 und der Geheimnisname „B3284AAA-DAAA-4AAA-B393-60CAA848AAAA“.
+> * Der Wert der Markierung „DiskEncryptionKeyFileName“ ist mit dem Namen des Geheimnisses identisch.
+> * Der Wert für „DiskEncryptionKeyEncryptionKeyURL“ kann mithilfe des Cmdlet [Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) aus dem Schlüsseltresor abgerufen werden, nachdem die Schlüssel wiederhergestellt wurden.
 >
 >
 

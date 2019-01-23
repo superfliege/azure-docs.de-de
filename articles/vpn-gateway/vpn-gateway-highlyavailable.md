@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140303"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353276"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit hoher Verfügbarkeit
 In diesem Artikel erhalten Sie einen Überblick über Optionen zur Konfiguration der hohen Verfügbarkeit für standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit Azure-VPN-Gateways.
@@ -49,7 +49,8 @@ Diese Konfiguration enthält mehrere aktive Tunnel von demselben Azure-VPN-Gatew
 3. Für diese Konfiguration wird BGP benötigt. Für jedes Gateway des lokalen Netzwerks, das für ein VPN-Gerät steht, muss in der „BgpPeerIpAddress“-Eigenschaft eine eindeutige BGP-Peer-IP-Adresse angegeben werden.
 4. Die AddressPrefix-Eigenschaftenfelder dürfen sich in einem Gateway des lokalen Netzwerks jeweils nicht überlappen. Geben Sie „BgpPeerIpAddress“ im Feld „AddressPrefix“ im CIDR-Format „/32“ ein, z.B. 10.200.200.254/32.
 5. Sie sollten BGP verwenden, um die Präfixe jeweils gegenüber denselben Präfixen des lokalen Netzwerks für das Azure-VPN-Gateway anzukündigen. Der Datenverkehr wird gleichzeitig durch diese Tunnel geleitet.
-6. Jede Verbindung wird anhand der maximalen Anzahl von Tunneln für Ihr Azure-VPN-Gateway gezählt: 10 für Basic- und Standard-SKUs und 30 für die HighPerformance-SKU. 
+6. Sie müssen ECMP-Routing (Equal-Cost Multi Path) verwenden.
+7. Jede Verbindung wird anhand der maximalen Anzahl von Tunneln für Ihr Azure-VPN-Gateway gezählt: 10 für Basic- und Standard-SKUs und 30 für die HighPerformance-SKU. 
 
 Bei dieser Konfiguration befindet sich das Azure-VPN-Gateway noch im aktiven Standbymodus. Es kommt also zum gleichen Failover und zur gleichen kurzen Unterbrechung wie [oben](#activestandby) beschrieben. Diese Einrichtung bietet aber Schutz vor Ausfällen oder Unterbrechungen in Ihrem lokalen Netzwerk und für Ihre VPN-Geräte.
 

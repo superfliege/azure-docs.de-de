@@ -1,8 +1,7 @@
 ---
-title: Metriken und Warnungen in Azure Traffic Manager | Microsoft-Dokumentation
+title: Metriken und Warnungen in Azure Traffic Manager
 description: Dieser Artikel beschreibt die verfügbaren Metriken für Traffic Manager in Azure.
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: bb7817b082da11de3071925d01a3402902410a6f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437962"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200189"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 
@@ -24,15 +23,15 @@ Traffic Manager bietet Ihnen DNS-basierten Lastenausgleich, der mehrere Routingm
 
 ## <a name="metrics-available-in-traffic-manager"></a>In Traffic Manager verfügbare Metriken 
 
-Traffic Manager bietet die folgenden Metriken auf der Basis von Profilen, die von Kunden genutzt werden können, um ihre Verwendung von Traffic Manager und den Status ihrer Endpunkte unter diesem Profil zu verstehen.  
+Traffic Manager bietet die folgenden Metriken auf der Basis von Profilen, die Kunden nutzen können, um ihre Verwendung von Traffic Manager und den Status ihrer Endpunkte unter diesem Profil zu verstehen.  
 
 ### <a name="queries-by-endpoint-returned"></a>Abfragen nach zurückgegebenem Endpunkt
-Verwenden Sie [diese Metrik](../azure-monitor/platform/metrics-supported.md), um die Anzahl der Abfragen anzuzeigen, die von einem Traffic Manager-Profil in einem bestimmten Zeitraum verarbeitet wurden. Sie können die gleichen Informationen auch mit Granularität auf Endpunktebene anzeigen, um besser zu verstehen, wie oft ein Endpunkt in den Abfrageantworten von Traffic Manager zurückgegeben wurde.
+Verwenden Sie [diese Metrik](../azure-monitor/platform/metrics-supported.md), um die Anzahl der Abfragen anzuzeigen, die ein Traffic Manager-Profil in einem bestimmten Zeitraum verarbeitet. Sie können die gleichen Informationen auch mit Granularität auf Endpunktebene anzeigen, um besser zu verstehen, wie oft ein Endpunkt in den Abfrageantworten von Traffic Manager zurückgegeben wurde.
 
-Im folgenden Beispiel zeigt die Abbildung 1 alle Abfrageantworten, die vom Traffic Manager-Profil zurückgegeben wurden. 
+Im folgenden Beispiel zeigt die Abbildung 1 alle Abfrageantworten, die das Traffic Manager-Profil zurückgibt. 
 
   
-![Traffic Manager-Metriken – Aggregatansicht aller Abfragen](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
+![Aggregatansicht aller Abfragen](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
 *Abbildung 1: Aggregatansicht mit allen Abfragen*
   
@@ -66,4 +65,4 @@ Zusätzlich zum Verarbeiten und Anzeigen von Metriken aus Traffic Manager ermög
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über den [Azure Monitor-Dienst](../azure-monitor/platform/metrics-supported.md).
-- Erfahren Sie, wie Sie [ein neues Diagramm mithilfe von Azure Monitor erstellen](../azure-monitor/platform/metrics-charts.md#create-a-new-chart).
+- Erfahren Sie, wie Sie [ein Diagramm mithilfe von Azure Monitor erstellen](../azure-monitor/platform/metrics-charts.md#create-a-new-chart).

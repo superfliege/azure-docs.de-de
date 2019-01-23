@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/09/2019
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 071f07e9d485a5fab5f2ce3d23a383e974001143
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f992b4539711d66c51e423eae94c40a325842241
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158020"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267163"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Voraussetzungen für Azure Disk Encryption (Vorgängerversion)
 
@@ -147,7 +147,7 @@ Die [Azure CLI 2.0](/cli/azure) ist ein Befehlszeilentool zum Verwalten von Azur
 
 ## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Vorbereitung für Key Vault und die Azure AD-App
 
-Wenn Sie bereits mit den Key Vault- und Azure AD-Voraussetzungen für Azure Disk Encryption vertraut sind, können Sie das [PowerShell-Skript zur Überprüfung der Azure Disk Encryption-Voraussetzungen](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ) verwenden. Weitere Informationen zur Verwendung des Skripts zur Überprüfung der Voraussetzungen finden Sie in der [Schnellstartanleitung zum Verschlüsseln eines virtuellen Computers](quick-encrypt-vm-powershell.md) sowie im [Anhang zu Azure Disk Encryption](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Wenn Sie bereits mit den Key Vault- und Azure AD-Voraussetzungen für Azure Disk Encryption vertraut sind, können Sie das [PowerShell-Skript zur Überprüfung der Azure Disk Encryption-Voraussetzungen](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ) verwenden. Weitere Informationen zur Verwendung des Skripts zur Überprüfung der Voraussetzungen finden Sie in der [Schnellstartanleitung zum Verschlüsseln eines virtuellen Computers](quick-encrypt-vm-powershell.md) sowie im [Anhang zu Azure Disk Encryption](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Erstellen eines Schlüsseltresors 
 2. Richten Sie eine Azure AD-Anwendung und einen Dienstprinzipal ein.

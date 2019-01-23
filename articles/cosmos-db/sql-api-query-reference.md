@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044381"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354466"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB-SQL-Sprachreferenz 
 
@@ -2332,7 +2332,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
  **Syntax**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **Argumente**  
@@ -2343,7 +2343,7 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     Ist ein beliebiger gültiger numerischer Ausdruck.  
+     Ist ein beliebiger gültiger numerischer Ausdruck zur Angabe des Start- und des Endzeichens angibt.    
   
  **Rückgabetypen**  
   
@@ -2544,7 +2544,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. Kann angeben, ob es sich um eine vollständige oder teilweise Übereinstimmung handelt. 
+Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. Anhand eines booleschen Ausdrucks innerhalb des Befehls können Sie nach einem Objekt suchen, das vollständig oder teilweise übereinstimmt. 
 
  **Syntax**  
   
@@ -2564,7 +2564,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 -   `bool_expr`  
   
-     Ist ein beliebiger boolescher Ausdruck.       
+     Ist ein beliebiger boolescher Ausdruck. Wenn er auf TRUE festgelegt ist und als Suchwert ein Objekt angegeben wurde, prüft der Befehl auf eine teilweise Übereinstimmung. (Das Suchobjekt ist eine Teilmenge eines der Objekte.) Wenn er auf FALSE festgelegt ist, prüft der Befehl auf eine vollständige Übereinstimmung aller Objekte innerhalb des Arrays. Wenn Sie hier nichts angeben, lautet der Standardwert FALSE. 
   
  **Rückgabetypen**  
   

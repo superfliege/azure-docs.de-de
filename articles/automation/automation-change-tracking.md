@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408917"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213211"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -51,15 +51,14 @@ Die folgenden Linux-Distributionen werden offiziell unterstützt. Der Linux-Agen
 * Debian GNU/Linux 8 und 9
 * Ubuntu Linux 14.04 LTS und 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
+## <a name="onboard"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Lösung für die Änderungsnachverfolgung und den Bestand für Ihr Automation-Konto aktivieren.
+Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Lösung für die Änderungsnachverfolgung und den Bestand aktivieren. Es gibt viele Methoden, Computer in die Änderungsnachverfolgung und den Bestand zu integrieren. Die folgenden Methoden zum Integrieren der Lösung werden empfohlenen und unterstützt.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
-2. Wählen Sie **Änderungsnachverfolgung** unter **KONFIGURATION** aus.
-3. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus, und klicken Sie auf **Aktivieren**.
-
-Dadurch wird die Lösung für Ihr Automation-Konto aktiviert. Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Das blaue Banner dient zur Benachrichtigung, wenn die Lösung aktiviert ist. Navigieren Sie zurück zur Seite **Änderungsnachverfolgung**, um die Lösung zu verwalten.
+* [Über einen virtuellen Computer](automation-onboard-solutions-from-vm.md)
+* [Über Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md)
+* [Über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md)
+* [Über ein Azure Automation-Runbook](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurieren der Änderungs- und Bestandsnachverfolgung
 

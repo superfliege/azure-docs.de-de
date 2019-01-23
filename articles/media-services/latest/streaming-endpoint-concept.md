@@ -9,20 +9,26 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 8f3bcc3c631f17880c66e482234effcc4ea6424d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744546"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359634"
 ---
 # <a name="streaming-endpoints"></a>Streamingendpunkte
 
 In Microsoft Azure Media Services (AMS) stellt die Entität [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt für eine Clientwiedergabeanwendung oder ein Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video-on-Demand-Medienobjekt in Ihrem Media Services-Konto sein. Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können zusätzliche Streamingendpunkte erstellt werden. Um das Streaming von Videos zu starten, muss der Streamingendpunkt gestartet werden, von dem aus Sie das Video streamen möchten. 
 
-## <a name="streamingendpoint-types"></a>Streamingendpunkt-Typen  
+## <a name="naming-convention"></a>Benennungskonvention
+
+Für den Standardendpunkt: `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+
+Für alle zusätzlichen Endpunkte: `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+
+## <a name="types"></a>Typen  
 
 Es gibt zwei **Streamingendpunkt**-Typen: **Standard** und **Premium**. Der Typ wird durch die Anzahl der Skalierungseinheiten (`scaleUnits`) definiert, die Sie für den Streamingendpunkt zuordnen. 
 
@@ -37,13 +43,16 @@ Die Typen werden in der folgenden Tabelle beschrieben:
 
 In den meisten Fällen sollte das CDN aktiviert sein. Wenn Sie jedoch von einer maximalen Parallelität von weniger als 500 Benutzern ausgehen, wird empfohlen, das CDN zu deaktivieren, da sich das CDN am besten mit Parallelität skalieren lässt.
 
+> [!NOTE]
+> Der Streamingendpunkt `hostname` und die Streaming-URL ändern sich nicht, und zwar unabhängig davon, ob Sie CDN aktivieren oder nicht.
+
 ### <a name="detailed-explanation-of-how-caching-works"></a>Ausführliche Erläuterung der Funktionsweise der Zwischenspeicherung
 
 Beim Hinzufügen des CDN gilt kein spezifischer Bandbreitenwert, da die erforderliche Bandbreite für einen CDN-aktivierten Streamingendpunkt variieren kann. Vieles hängt ab von der Art des Inhalts, davon, wie beliebt dieser ist, sowie von Bitraten und den Protokollen. Im CDN wird nur der Inhalt zwischengespeichert, der angefordert wird. Das heißt, dass beliebter Inhalt direkt über das CDN bereitgestellt wird – wenn das Videofragment zwischengespeichert ist. Liveinhalte werden wahrscheinlich zwischengespeichert, da normalerweise viele Benutzer sich genau dasselbe ansehen. On-Demand-Inhalte können sich etwas schwieriger gestalten, da beliebte Inhalte und weniger beliebte Inhalte enthalten sein können. Bei Millionen von Videoobjekten, von denen keine beliebt sind (nur 1 oder 2 Benutzer pro Woche), jedoch Tausenden von Benutzern, die sich alle unterschiedlichen Videos ansehen, wird das CDN viel weniger effektiv. Mit diesen Cachefehlern erhöht sich die Last für den Streamingendpunkt.
  
 Sie müssen zudem die Funktionsweise des adaptiven Streamings berücksichtigen. Jedes einzelne Videofragment wird als eigene Entität zwischengespeichert. Wenn ein Benutzer beispielsweise bei der ersten Wiedergabe eines bestimmten Videos Sequenzen überspringt und sich nur einige wenige Sekunden hier und dort ansieht, werden nur die vom Benutzer angesehenen Videofragmente im CDN zwischengespeichert. Mit dem adaptiven Streaming gibt es normalerweise 5 bis 7 unterschiedliche Videobitraten. Wenn ein Benutzer eine Bitrate ansieht und ein anderer Benutzer eine andere Bitrate, werden die Bitraten jeweils separat im CDN zwischengespeichert. Auch wenn zwei Benutzer die gleiche Bitrate ansehen, kann es sein, dass das Streaming über unterschiedliche Protokolle erfolgt. Jedes Protokoll (HLS, MPEG-DASH, Smooth Streaming) wird separat zwischengespeichert. Somit werden jede Bitrate und jedes Protokoll separat zwischengespeichert, und nur die Videofragmente, die angefordert wurden, werden zwischengespeichert.
  
-## <a name="streamingendpoint-properties"></a>Streamingendpunkt-Eigenschaften 
+## <a name="properties"></a>Eigenschaften 
 
 Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 

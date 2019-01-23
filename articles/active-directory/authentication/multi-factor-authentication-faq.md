@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: eb0fa1edaadddfe055f3fc53a6d232e5a1293490
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 46d8a26398ed63bef4fa101fbaf0be9087880109
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424934"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214146"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -116,9 +116,11 @@ Azure Active Directory ist für das Lizenzmodell erforderlich, da Lizenzen dem A
 
 ## <a name="manage-and-support-user-accounts"></a>Verwalten von Benutzerkonten und Bereitstellen von Support
 
-**F: Was soll ich meinen Benutzern raten, wenn Sie auf ihrem Smartphone keine Antwort erhalten oder ihr Smartphone nicht zur Hand haben?**
+**F: Was soll ich meinen Benutzern raten, wenn Sie auf ihrem Smartphone keine Antwort erhalten?**
 
-Im Idealfall haben alle Ihre Benutzer mehrere Überprüfungsmethoden konfiguriert. Fordern Sie sie auf, sich erneut anzumelden und dabei auf der Anmeldeseite eine andere Überprüfungsmethode auszuwählen.
+Bitten Sie Ihre Benutzer, bis zu 5 Mal innerhalb von 5 Minuten zu versuchen, einen Telefonanruf oder eine SMS für die Authentifizierung zu erhalten. Microsoft verwendet mehrere Anbieter für die Übermittlung von Anrufen und SMS-Nachrichten. Wenn dies nicht funktioniert, öffnen Sie bitte zur weiteren Problembehandlung einen Supportfall bei Microsoft.
+
+Für den Fall, dass die obigen Schritte nicht funktionieren, haben alle Ihre Benutzer hoffentlich mehrere Überprüfungsmethoden konfiguriert. Fordern Sie sie auf, sich erneut anzumelden und dabei auf der Anmeldeseite eine andere Überprüfungsmethode auszuwählen.
 
 Unter [Probleme bei der Überprüfung in zwei Schritten](../user-help/multi-factor-authentication-end-user-troubleshoot.md) finden Ihre Endbenutzer einen Problembehandlungsleitfaden.
 
@@ -199,7 +201,7 @@ Benutzer können aus mehreren Gründen zur Registrierung ihrer Sicherheitsinform
 
 ## <a name="errors"></a>Errors
 
-**F: Was sollten Benutzer tun, wenn bei der Verwendung von Benachrichtigungen über die mobile App die Fehlermeldung „Authentication request is not for an activated account“ (Authentifizierungsanforderung gilt nicht für ein aktiviertes Konto) angezeigt wird?**
+**F: Was sollten Benutzer tun, wenn bei der Verwendung von Benachrichtigungen über die mobile App die Fehlermeldung „Authentifizierungsanforderung gilt nicht für ein aktiviertes Konto“ angezeigt wird?**
 
 Informieren Sie die Benutzer, dass sie wie Folgt vorgehen sollen, um ihr Konto aus der mobilen App zu löschen, und anschließend wieder hinzuzufügen:
 

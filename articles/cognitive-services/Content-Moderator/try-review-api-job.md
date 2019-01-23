@@ -1,21 +1,21 @@
 ---
 title: Inhaltsmoderationsaufträge mit der API-Konsole ausführen – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Inhaltsmoderationsaufträge in der API-Konsole ausführen.
+description: Verwenden Sie die Auftragsvorgänge der Überprüfungs-API, um End-to-End-Inhaltsmoderationsaufträge für Bild- und Textinhalt in Azure Content Moderator zu initiieren.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4d1f96cbf7a94c59476f077cc4e72a26ee9c8296
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227107"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259120"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>Starten eines Moderationsauftrags über die API-Konsole
 
@@ -33,7 +33,7 @@ Navigieren Sie zum [Prüfungstool](https://contentmoderator.cognitive.microsoft.
 Um die API über die Online-Konsole zu testen, benötigen Sie einige Werte, die Sie in die Konsole eingeben müssen:
     
 - `teamName`: Verwenden Sie das `Id`-Feld aus dem Bildschirm mit den Anmeldeinformationen des Prüfungstools. 
-- `ContentId`: Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. **ContentId** ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen.- `Workflowname`: der Name des [Workflows, den Sie im vorherigen Abschnitt erstellt haben](Review-Tool-User-Guide/Workflows.md).
+- `ContentId`: Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. Die **ContentId** ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen. – `Workflowname`: Der Name des [Workflows](Review-Tool-User-Guide/Workflows.md), den Sie im vorherigen Abschnitt erstellt haben.
 - `Ocp-Apim-Subscription-Key`: Befindet sich auf der Registerkarte **Einstellungen**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
 
 Greifen Sie auf die API-Konsole über das Fenster **Anmeldeinformationen** zu.

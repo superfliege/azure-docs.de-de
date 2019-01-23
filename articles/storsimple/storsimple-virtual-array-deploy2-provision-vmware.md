@@ -12,26 +12,26 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972339"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247842"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Übersicht
-In diesem Tutorial wird beschrieben, wie Sie ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 bereitstellen und eine Verbindung dafür herstellen. Dieser Artikel bezieht sich auf die Bereitstellung von StorSimple Virtual Arrays im Azure-Portal und in der Microsoft Azure Government-Cloud.
+In diesem Tutorial wird beschrieben, wie Sie ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5, 6.0 oder 6.5 bereitstellen und eine Verbindung dafür herstellen. Dieser Artikel bezieht sich auf die Bereitstellung von StorSimple Virtual Arrays im Azure-Portal und in der Microsoft Azure Government-Cloud.
 
 Sie benötigen Administratorrechte, um ein virtuelles Gerät bereitzustellen und zu verbinden. Die Bereitstellung und die anfängliche Einrichtung dauern ca. 10 Minuten.
 
 ## <a name="provisioning-prerequisites"></a>Voraussetzungen für die Bereitstellung
-Im Folgenden werden die Voraussetzungen zum Bereitstellen eines virtuellen Geräts auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 erläutert.
+Für die Bereitstellung eines virtuellen Geräts auf einem Hostsystem mit VMware ESXi 5.0, 5.5, 6.0 oder 6.5 gelten die folgenden Voraussetzungen.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Voraussetzungen für den StorSimple-Geräte-Manager-Dienst
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
@@ -62,10 +62,10 @@ Zum Bereitstellen und Herstellen der Verbindung mit einem virtuellen Gerät müs
 2. Stellen Sie ein virtuelles Gerät in Ihrem Hypervisor bereit.
 3. Starten Sie das virtuelle Gerät, und rufen Sie die IP-Adresse ab.
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt
 Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 
-* Zugriff auf ein Hostsystem mit VMware ESXi Server 5.0, 5.5 oder 6.0
+* Zugriff auf ein Hostsystem mit VMware ESXi Server 5.0, 5.5, 6.0 oder 6.5.
 * VMware vSphere-Client auf Ihrem System zum Verwalten des ESXi-Hosts
 
   * Mindestens 4 Kerne
@@ -73,8 +73,8 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
   * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann. Die Internetbandbreite sollte mindestens 5 MBit/s betragen, um die optimale Nutzung des Geräts zu ermöglichen.
   * Einen virtuellen Datenträger mit 500 GB
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Schritt 2: Bereitstellen eines virtuellen Geräts in Hypervisor
-Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor bereitzustellen.
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Schritt 2: Bereitstellen eines virtuellen Geräts in VMware
+Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware bereitzustellen.
 
 1. Kopieren Sie das Image mit dem virtuellen Gerät auf Ihr System. Dies ist das virtuelle Image, das Sie über das Azure-Portal heruntergeladen haben.
 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 17. Wählen Sie auf der Seite **Speicher** einen Datenspeicher aus, den Sie zum Bereitstellen der VM verwenden möchten.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. Wählen Sie auf der Seite **Version des virtuellen Computers** die Option **Version des virtuellen Computers: 8**.
+18. Wählen Sie auf der Seite **Version des virtuellen Computers** die Option **Version des virtuellen Computers aus: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. Wählen Sie auf der Seite **Gastbetriebssystem** unter **Gastbetriebssystem** die Option **Windows** aus. Wählen Sie unter in der Dropdownliste **Version** die Option **Microsoft Windows Server 2012 (64 Bit)** aus.
@@ -188,7 +188,7 @@ Ihre virtuelle Maschine wird nun bereitgestellt. Der nächste Schritt umfasst da
 > [!NOTE]
 > Es wird empfohlen, VMware-Tools nicht auf Ihrem virtuellen Array zu installieren (wie oben beschrieben wird). Die Installation von VMware-Tools führt zu einer nicht unterstützten Konfiguration.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Schritt 3: Starten des virtuellen Geräts und Abrufen der IP-Adresse
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Schritt 3: Starten des virtuellen Geräts und Abrufen der IP-Adresse
 Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und eine Verbindung dafür herzustellen.
 
 #### <a name="to-start-the-virtual-device"></a>So starten Sie das virtuelle Gerät
@@ -235,7 +235,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
        >
        >
 
-Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit sie über ausreichende Ressourcen zum Erfüllen der Mindestanforderungen verfügt. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
+Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit sie über ausreichende Ressourcen zum Erfüllen der Mindestanforderungen verfügt. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie in [Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

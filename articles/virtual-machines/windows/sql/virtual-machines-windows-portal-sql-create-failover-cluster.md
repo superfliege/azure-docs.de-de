@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237963"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359934"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -71,8 +71,10 @@ Es gibt einige Dinge, die Sie wissen müssen, und einige Voraussetzungen müssen
 ### <a name="what-to-know"></a>Erforderliche Informationen
 Sie sollten die folgende Technologie verwenden können:
 
-- [Windows-Clustertechnologie](https://technet.microsoft.com/library/hh831579.aspx)
-- [SQL Server-Failoverclusterinstanzen](https://msdn.microsoft.com/library/ms189134.aspx).
+- [Windows-Clustertechnologie](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server-Failoverclusterinstanzen](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
+
+Ein wichtiger Unterschied besteht darin, dass wir in einem Azure IaaS-VM-Gastfailovercluster einen einzelnen Netzwerkadapter pro Server (Clusterknoten) und ein einzelnes Subnetz empfehlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden. 
 
 Außerdem sollten Sie über Grundlagenkenntnisse in Bezug auf die folgende Technologie verfügen:
 
@@ -113,10 +115,10 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
    - Legen Sie auf dem Blatt **Verfügbarkeitsgruppe erstellen** die folgenden Werte fest:
       - **Name**: Ein Name für die Verfügbarkeitsgruppe.
       - **Abonnement**: Ihr Azure-Abonnement.
-      - **Ressourcengruppe**: Falls Sie eine vorhandene Gruppe verwenden möchten, können Sie auf **Use existing** (Vorhandene verwenden) klicken und die Gruppe in der Dropdownliste auswählen. Wählen Sie andernfalls die Option **Neu erstellen**, und geben Sie einen Namen für die Gruppe ein.
+      - **Ressourcengruppe**: Falls Sie eine vorhandene Gruppe verwenden möchten, können Sie auf **Vorhandene verwenden** klicken und die Gruppe in der Dropdownliste auswählen. Wählen Sie andernfalls die Option **Neu erstellen**, und geben Sie einen Namen für die Gruppe ein.
       - **Standort**: Legen Sie den Standort fest, an dem Sie Ihre virtuellen Computer erstellen möchten.
-      - **Fehlerdomänen**: Verwenden Sie die Standardeinstellung (3).
-      - **Updatedomänen**: Verwenden Sie die Standardeinstellung (5).
+      - **Fehlerdomänen**: Verwenden Sie den Standardwert (3).
+      - **Updatedomänen**: Verwenden Sie den Standardwert (5).
    - Klicken Sie auf **Erstellen**, um die Verfügbarkeitsgruppe zu erstellen.
 
 1. Erstellen Sie die virtuellen Computer in der Verfügbarkeitsgruppe.
@@ -345,7 +347,7 @@ Nachdem Sie den Failovercluster und alle Clusterkomponenten konfiguriert haben, 
    >[!NOTE]
    >Wenn Sie ein Azure Marketplace-Katalogimage mit SQL Server verwendet haben, sind die SQL Server-Tools im Image enthalten. Wenn Sie dieses Image nicht verwendet haben, müssen Sie die SQL Server-Tools separat installieren. Weitere Informationen finden Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-## <a name="step-5-create-azure-load-balancer"></a>Schritt 5: Erstellen einer Azure Load Balancer-Instanz
+## <a name="step-5-create-azure-load-balancer"></a>Schritt 5: Erstellen eines Azure Load Balancers
 
 Auf virtuellen Azure-Computern wird für Cluster ein Lastenausgleich für eine IP-Adresse verwendet, die zu einem bestimmten Zeitpunkt auf einem Clusterknoten vorhanden sein muss. In dieser Lösung enthält der Lastenausgleich die IP-Adresse für die SQL Server-FCI.
 
@@ -396,10 +398,10 @@ So erstellen Sie den Lastenausgleich
 1. Legen Sie auf dem Blatt **Add health probe**<a name="probe"></a> (Integritätstest hinzufügen) die Parameter für den Integritätstest fest:
 
    - **Name**: Ein Name für den Integritätstest.
-   - **Protokoll**: TCP.
-   - **Port**: Legen Sie diese Option auf einen verfügbaren TCP-Port fest. Für diesen Port ist ein geöffneter Firewallport erforderlich. Verwenden Sie [denselben Port](#ports), den Sie für den Integritätstest in der Firewall festgelegt haben.
+   - **Protokoll:** TCP.
+   - **Port:** Legen Sie diese Option auf einen verfügbaren TCP-Port fest. Für diesen Port ist ein geöffneter Firewallport erforderlich. Verwenden Sie [denselben Port](#ports), den Sie für den Integritätstest in der Firewall festgelegt haben.
    - **Intervall**: 5 Sekunden.
-   - **Unhealthy threshold** (Fehlerschwellenwert): Zwei aufeinanderfolgende Fehler.
+   - **Fehlerschwellenwert**: Zwei aufeinanderfolgende Fehler.
 
 1. Klicken Sie auf OK.
 
@@ -413,13 +415,13 @@ So erstellen Sie den Lastenausgleich
 
    - **Name**: Ein Name für die Lastenausgleichsregeln.
    - **Front-End-IP-Adresse**: Verwenden Sie die IP-Adresse für die Clusternetzwerkressource der SQL Server-FCI.
-   - **Port**: Legen Sie den TCP-Port für die SQL Server-FCI fest. Der Standardport der Instanz lautet 1433.
+   - **Port:** Legen Sie den TCP-Port für die SQL Server-FCI fest. Der Standardport der Instanz lautet 1433.
    - **Back-End-Port**: Für diesen Wert wird der gleiche Port verwendet, den Sie als Wert für **Port** angeben, wenn Sie **Floating IP (Direct Server Return)** aktivieren.
    - **Back-End-Pool**: Verwenden Sie den Namen des Back-End-Pools, den Sie zuvor konfiguriert haben.
    - **Integritätstest**: Verwenden Sie den Integritätstest, den Sie zuvor konfiguriert haben.
-   - **Sitzungspersistenz**: Keine.
+   - **Sitzungspersistenz**: None (Keine):
    - **Leerlaufzeitüberschreitung (Minuten)**: 4.
-   - **Floating IP (Direct Server Return)**: Aktiviert.
+   - **Floating IP (Direct Server Return)**: Aktiviert
 
 1. Klicken Sie auf **OK**.
 
@@ -444,11 +446,11 @@ Legen Sie die Werte für Ihre Umgebung im vorherigen Skript fest. Die Werte werd
 
    - `<Cluster Network Name>`: Name des Windows Server-Failoverclusters für das Netzwerk. Klicken Sie in **Failovercluster-Manager** > **Netzwerke** mit der rechten Maustaste auf das Netzwerk, und klicken Sie dann auf **Eigenschaften**. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**. 
 
-   - `<SQL Server FCI IP Address Resource Name>`: Name der FCI-IP-Adressressource des SQL-Servers. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „SQL Server-FCI“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und klicken Sie dann auf **Eigenschaften**. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**. 
+   - `<SQL Server FCI IP Address Resource Name>`: Name der IP-Adressressource der SQL Server-FCI. Klicken Sie in **Failovercluster-Manager** > **Rollen** unter der Rolle „SQL Server-FCI“ unter **Servername** mit der rechten Maustaste auf die IP-Adressressource, und klicken Sie dann auf **Eigenschaften**. Der richtige Wert befindet sich auf der Registerkarte **Allgemein** unter **Name**. 
 
    - `<ILBIP>`: Die ILB-IP-Adresse. Diese Adresse wird als ILB-Front-End-Adresse im Azure-Portal konfiguriert. Dies ist auch die FCI-IP-Adresse von SQL Server. Sie finden sie im **Failovercluster-Manager** auf der gleichen Eigenschaftenseite, auf der sich der `<SQL Server FCI IP Address Resource Name>` befindet.  
 
-   - `<nnnnn>`: Der Testport, den Sie im Load Balancer-Integritätstest konfiguriert haben. Alle nicht verwendeten TCP-Ports sind zulässig. 
+   - `<nnnnn>`: Der Testport, den Sie im Integritätstest des Lastenausgleichs konfiguriert haben. Alle nicht verwendeten TCP-Ports sind zulässig. 
 
 >[!IMPORTANT]
 >Die Subnetzmaske für den Clusterparameter muss die TCP/IP-Broadcastadresse sein: `255.255.255.255`.

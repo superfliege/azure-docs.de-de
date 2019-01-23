@@ -13,12 +13,12 @@ caps.latest.revision: 60
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: e548841f334705aa71ada92c43ccde207a1f6318
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0bb0946ea48a4c206d6bfe683da0835aca9b198b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002312"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331944"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services-Definition – WebRole-Schema
 Die Azure-Webrolle ist eine Rolle, die für die Programmierung von Webanwendungen gemäß Unterstützung durch IIS 7 angepasst wird, z.B. ASP.NET, PHP, Windows Communication Foundation und FastCGI.
@@ -44,11 +44,11 @@ Das Standardformat einer Dienstdefinitionsdatei, die eine Webrolle enthält, lau
       <InputEndpoint certificate="<certificate-name>" ignoreRoleInstanceStatus="[true|false]" name="<input-endpoint-name>" protocol="[http|https|tcp|udp]" localPort="<port-number>" port="<port-number>" loadBalancerProbe="<load-balancer-probe-name>" />  
       <InternalEndpoint name="<internal-endpoint-name>" protocol="[http|tcp|udp|any]" port="<port-number>">  
          <FixedPort port="<port-number>"/>  
-         <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>  
+         <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>  
       </InternalEndpoint>  
      <InstanceInputEndpoint name="<instance-input-endpoint-name>" localPort="<port-number>" protocol="[udp|tcp]">  
          <AllocatePublicPortFrom>  
-            <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>  
+            <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>  
          </AllocatePublicPortFrom>  
       </InstanceInputEndpoint>  
     </Endpoints>  
@@ -106,7 +106,7 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [LocalStorage](#LocalStorage)
 
-[EndPoints](#Endpoints)
+[Endpunkte](#Endpoints)
 
 [InternalEndpoint](#InternalEndpoint)
 
@@ -148,9 +148,9 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [Binding](#Binding)
 
-[Starten](#Startup)
+[Startup](#Startup)
 
-[Task](#Task)
+[Aufgabe](#Task)
 
 [Contents](#Contents)
 
@@ -224,7 +224,7 @@ In der folgenden Tabelle werden die Attribute des Elements `InputEndpoint` besch
 |port|int|Erforderlich. Der Port für den externen Endpunkt. Sie können eine beliebige Portnummer angeben, die Sie auswählen, aber die angegebenen Portnummern für die einzelnen Rollen im Dienst müssen eindeutig sein.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).|  
 |Zertifikat|Zeichenfolge|Für einen HTTPS-Endpunkt erforderlich. Der Name eines Zertifikats, das durch ein `Certificate`-Element definiert wird.|  
 |localPort|int|Optional. Gibt einen Port an, der für interne Verbindungen am Endpunkt verwendet wird. Mit dem `localPort`-Attribut wird der externe Port auf dem Endpunkt einem internen Port auf einer Rolle zugeordnet. Dies ist nützlich, wenn eine Rolle mit einer internen Komponente über einen Port kommunizieren muss, der sich von dem Port unterscheidet, der extern verfügbar gemacht wird.<br /><br /> Wenn nichts angegeben ist, entspricht der Wert von `localPort` dem Wert des `port`-Attributs. Legen Sie den Wert von `localPort` auf „*“ fest, um automatisch einen nicht zugeordneten Port zuzuweisen, der mit der Runtime-API ermittelbar ist.<br /><br /> Mögliche Werte reichen von 1 bis 65.535 einschließlich (Azure SDK-Version 1.7 oder höher).<br /><br /> Das `localPort`-Attribut ist nur verfügbar, wenn die Azure SDK-Version 1.3 oder höher verwendet wird.|  
-|ignoreRoleInstanceStatus|boolean|Optional. Wenn der Wert dieses Attributs auf `true` festgelegt ist, wird der Status eines Diensts ignoriert, und der Endpunkt wird vom Lastenausgleich nicht entfernt. Das Festlegen dieses Werts auf `true` ist hilfreich, um stark ausgelastete Instanzen eines Diensts zu debuggen. Standardwert: `false`. **Hinweis:** Ein Endpunkt kann auch dann weiterhin Datenverkehr empfangen, wenn sich die Rolle nicht im Status „Bereit“ befindet.|  
+|ignoreRoleInstanceStatus|boolean|Optional. Wenn der Wert dieses Attributs auf `true` festgelegt ist, wird der Status eines Diensts ignoriert, und der Endpunkt wird vom Lastenausgleich nicht entfernt. Das Festlegen dieses Werts auf `true` ist hilfreich, um stark ausgelastete Instanzen eines Diensts zu debuggen. Standardwert: `false`. **Hinweis:**  Ein Endpunkt kann auch dann weiterhin Datenverkehr empfangen, wenn die Rolle nicht den Status „Bereit“ aufweist.|  
 |loadBalancerProbe|Zeichenfolge|Optional. Der Name des Lastenausgleichstests, der dem Eingabeendpunkt zugeordnet ist. Weitere Informationen finden Sie unter [LoadBalancerProbe-Schema](schema-csdef-loadbalancerprobe.md).|  
 
 ##  <a name="InternalEndpoint"></a>InternalEndpoint  

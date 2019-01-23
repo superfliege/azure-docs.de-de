@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager – Häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation
+title: Azure Traffic Manager – häufig gestellte Fragen (FAQ)
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Traffic Manager
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963571"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200046"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -60,7 +60,7 @@ Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traf
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Kann ich Traffic Manager mit einem reinen Domänennamen verwenden?
 
-Nein. Die DNS-Standards lassen keine Koexistenz von CNAME-Einträgen und anderen DNS-Einträgen mit demselben Namen zu. Die Spitze (oder der Stamm) einer DNS-Zone enthält immer zwei bereits vorhandene DNS-Einträge: den SOA-Eintrag und den autoritativen NS-Eintrag. Das bedeutet, dass im Zonenspitze kein CNAME-Eintrag erstellt werden kann, ohne gegen die DNS-Standards zu verstoßen.
+ Nein. Die DNS-Standards lassen keine Koexistenz von CNAME-Einträgen und anderen DNS-Einträgen mit demselben Namen zu. Die Spitze (oder der Stamm) einer DNS-Zone enthält immer zwei bereits vorhandene DNS-Einträge: den SOA-Eintrag und den autoritativen NS-Eintrag. Das bedeutet, dass im Zonenspitze kein CNAME-Eintrag erstellt werden kann, ohne gegen die DNS-Standards zu verstoßen.
 
 Traffic Manager benötigt einen DNS-CNAME-Eintrag zum Zuordnen des Vanity-DNS-Namens. Angenommen, Sie ordnen `www.contoso.com` dem DNS-Namen `contoso.trafficmanager.net` des Traffic Manager-Profils zu. Darüber hinaus gibt das Traffic Manager-Profil selbst einen zweiten DNS-CNAME-Eintrag zurück, um anzugeben, mit welchem Endpunkt der Client eine Verbindung herstellen soll.
 

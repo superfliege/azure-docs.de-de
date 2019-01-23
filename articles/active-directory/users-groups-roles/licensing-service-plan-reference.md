@@ -1,10 +1,10 @@
 ---
-title: Produktnamen und Serviceplanbezeichner für die Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
-description: Bezeichnerzuordnung zum Verwalten der Azure AD-Lizenzierung im Azure-Portal, im Office 365-Portal, in PowerShell oder in Microsoft Graph
+title: Produktnamen und Serviceplanbezeichner für die Lizenzierung – Azure AD| Microsoft-Dokumentation
+description: Bezeichnerzuordnung zum Verwalten der Azure Active Directory-Lizenzierung im Azure-Portal, im Office 365-Portal, in PowerShell oder in Microsoft Graph
 services: active-directory
 keywords: Servicepläne für die Azure Active Directory-Lizenzierung
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -13,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 8/17/2018
-ms.author: piotrci
-ms.openlocfilehash: 7ebf0149af9e012d3b0135c7ee9b8167c4cf76c9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.date: 01/14/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.openlocfilehash: 9d229dfa11a317c1f3b3121cdc7c1cdfa7df9c5e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145126"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321635"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Produktnamen und Serviceplanbezeichner für die Lizenzierung
 
-Bei der Verwaltung von Lizenzen im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) oder im Office 365-Portal werden Ihnen Produktnamen wie *Office 365 Enterprise E3* angezeigt. Wenn Sie PowerShell-Cmdlets (PowerShell 1.0) verwenden, wird dasselbe Produkt über den konkreten, jedoch weniger benutzerfreundlichen Namen *ENTERPRISEPACK* identifiziert. Wenn Sie PowerShell-Cmdlets (PowerShell 2.0) oder Microsoft Graph verwenden, wird dasselbe Produkt über den GUID-Wert *6fd2c87f-b296-42f0-b197-1e91e994b900* identifiziert. In der folgenden Tabelle sind die am häufigsten verwendeten Microsoft-Onlinedienstprodukte sowie ihre verschiedenen ID-Werte aufgeführt. Diese Tabellen dienen zur Referenz und sind nur zum Datum der letzten Aktualisierung dieses Artikels zutreffend. Microsoft plant keine regelmäßige Aktualisierung mit neu hinzugefügten Diensten.
+Bei der Verwaltung von Lizenzen im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) oder im Office 365-Portal werden Ihnen Produktnamen wie *Office 365 Enterprise E3* angezeigt. Wenn Sie PowerShell-Cmdlets (PowerShell 1.0) verwenden, wird dasselbe Produkt über einen konkreten, jedoch weniger benutzerfreundlichen Namen identifiziert: *ENTERPRISEPACK*. Wenn Sie PowerShell-Cmdlets (PowerShell 2.0) oder Microsoft Graph verwenden, wird dasselbe Produkt über einen GUID-Wert identifiziert: *6fd2c87f-b296-42f0-b197-1e91e994b900*. In der folgenden Tabelle sind die am häufigsten verwendeten Microsoft-Onlinedienstprodukte sowie ihre verschiedenen ID-Werte aufgeführt. Diese Tabellen dienen zur Referenz und sind nur zum Datum der letzten Aktualisierung dieses Artikels zutreffend. Microsoft plant keine regelmäßige Aktualisierung mit neu hinzugefügten Diensten.
 
 - **Produktname**: wird in Verwaltungsportalen verwendet
-- **Zeichenfolgen-ID**: wird von PowerShell-Cmdlets (PowerShell 1.0) verwendet, wenn Vorgänge für Lizenzen durchgeführt werden
+- **Zeichenfolgen-ID**: wird von PowerShell v1.0-Cmdlets verwendet, wenn Vorgänge für Lizenzen durchgeführt werden
 - **GUID-ID**: GUID, die von Azure AD Graph und Microsoft Graph verwendet wird
 - **Enthaltene Servicepläne**: eine Liste der im Produkt enthaltenen Servicepläne, die der Zeichenfolgen-ID und der GUID entsprechen
 
@@ -116,12 +117,12 @@ Diese [Fehlerbedingung](licensing-groups-resolve-problems.md#conflicting-service
 
 In diesem Abschnitt sind die am häufigsten verwendeten Servicepläne, die sich gegenseitig ausschließen, nach Servicetyp gruppiert aufgeführt. Mithilfe dieser Informationen können Sie Ihre Lizenzbereitstellung planen und Zuweisungsfehler vermeiden. Diese Tabellen dienen zur Referenz und sind nur zum Datum der letzten Aktualisierung dieses Artikels zutreffend. Microsoft plant keine regelmäßige Aktualisierung mit neu hinzugefügten Diensten.
 
-### <a name="service-azure-active-directory"></a>Service: *Azure Active Directory*
+### <a name="service-azure-active-directory"></a>Dienst: *Azure Active Directory*
 
 >[!NOTE]
 >Alle Servicepläne, die sich auf Azure Active Directory beziehen, können jetzt demselben Benutzer gemeinsam zugewiesen werden. Dies vereinfacht bestimmte Szenarien der Lizenzverwaltung, z. B. das Verschieben von Benutzern von Azure AD Basic zu Azure AD Premium P1.
 
-### <a name="service-dynamics-crm"></a>Service: *Dynamics CRM*
+### <a name="service-dynamics-crm"></a>Dienst: *Dynamics CRM*
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
@@ -137,7 +138,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 | DYN365_ENTERPRISE_TEAM_MEMBERS    | 6a54b05e-4fab-40e7-9828-428db3b336fa |
 | EMPLOYEE_SELF_SERVICE | ba5f0cfa-d54a-4ea0-8cf4-a7e1dc4423d8 |
 
-### <a name="service-exchange-online"></a>Service: *Exchange Online*
+### <a name="service-exchange-online"></a>Dienst: *Exchange Online*
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
@@ -152,7 +153,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 | EXCHANGE_S_STANDARD   | 9aaf7827-d63c-4b61-89c3-182f06f82e5c |
 | EXCHANGE_S_STANDARD_MIDMARKET | fc52cc4b-ed7d-472d-bbe7-b081c23ecc56 |
 
-### <a name="service-intune"></a>Service: *Intune*
+### <a name="service-intune"></a>Dienst: *Intune*
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
@@ -162,7 +163,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
 | INTUNE_B  | 2dc63b8a-df3d-448f-b683-8655877c9360 |
 
-### <a name="service-sharepoint-online"></a>Service: *SharePoint Online*
+### <a name="service-sharepoint-online"></a>Dienst: *SharePoint Online*
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
@@ -179,7 +180,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 | SHAREPOINTSTANDARD_EDU    | 0a4983bb-d3e5-4a09-95d8-b2d0127b3df5 |
 | SHAREPOINTSTANDARD_YAMMERSHADOW | 4c9efd0c-8de7-4c71-8295-9f5fdb0dd048 |
 
-### <a name="service-skype-for-business"></a>Service: *Skype for Business*
+### <a name="service-skype-for-business"></a>Dienst: *Skype für Business*
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 
@@ -198,7 +199,7 @@ Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
 | MCOPSTN5  | 54a152dc-90de-4996-93d2-bc47e670fc06 |
 
-### <a name="service-yammer"></a>Service: *Yammer*
+### <a name="service-yammer"></a>Dienst: *Yammer*
 
 Die folgenden Servicepläne können nicht zusammen zugewiesen werden:
 

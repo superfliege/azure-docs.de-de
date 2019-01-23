@@ -3,7 +3,7 @@ title: Automatisierte Sicherung für SQL Server 2014-VMs in -Azure | Microsoft-D
 description: Erläutert das Feature „Automatisierte Sicherung“ für SQL Server 2014-VMs, die in Azure ausgeführt werden. Dieser Artikel bezieht sich speziell auf VMs, die das Resource Manager-Modell verwenden.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 0a1ad6d50c624115bab7ad09ff0e30a36e7df500
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: ca9c7611197de001265f70fd1b34314d90ee83b2
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256611"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329838"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 
@@ -191,7 +192,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 Die Installation und Konfiguration des SQL Server-IaaS-Agents kann mehrere Minuten in Anspruch nehmen.
 
 > [!NOTE]
-> Es gibt andere Einstellungen für **New-AzureRmVMSqlServerAutoBackupConfig**, die nur für SQL Server 2016 und die automatisierte Sicherung, Version 2, gelten. SQL Server 2014 unterstützt nicht die folgenden Einstellungen: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours** und **LogBackupFrequencyInMinutes**. Wenn Sie versuchen, diese Einstellungen auf einem virtuellen Computer mit SQL Server 2014 zu konfigurieren, wird zwar kein Fehler angezeigt, doch die Einstellungen werden nicht angewendet. Wenn Sie diese Einstellungen auf einem virtuellen Computer mit SQL Server 2016verwenden möchten, siehe [Automatisierte Sicherung v2 für Azure Virtual Machines mit SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md).
+> Es gibt andere Einstellungen für **New-AzureRmVMSqlServerAutoBackupConfig**, die nur für SQL Server 2016 und die automatisierte Sicherung, Version 2, gelten. Die folgenden Einstellungen werden von SQL Server 2014 nicht unterstützt: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours** und **LogBackupFrequencyInMinutes**. Wenn Sie versuchen, diese Einstellungen auf einem virtuellen Computer mit SQL Server 2014 zu konfigurieren, wird zwar kein Fehler angezeigt, doch die Einstellungen werden nicht angewendet. Wenn Sie diese Einstellungen auf einem virtuellen Computer mit SQL Server 2016verwenden möchten, siehe [Automatisierte Sicherung v2 für Azure Virtual Machines mit SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md).
 
 Um die Verschlüsselung zu aktivieren, ändern Sie das vorherige Skript, um den **EnableEncryption**-Parameter und ein Kennwort (sichere Zeichenfolge) für den **CertificatePassword**-Parameter zu übergeben. Das folgende Skript aktiviert die Einstellungen der automatisierten Sicherung im vorherigen Beispiel und fügt die Verschlüsselung hinzu.
 

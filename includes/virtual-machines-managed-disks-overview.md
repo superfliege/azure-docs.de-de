@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264133"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54211845"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks – Übersicht
 
@@ -37,7 +37,7 @@ Managed Disks ermöglicht eine bessere Zuverlässigkeit für Verfügbarkeitsgrup
 
 ### <a name="highly-durable-and-available"></a>Hoch verfügbar und stabil
 
-Azure-Datenträger sind auf eine Verfügbarkeit von 99,999% ausgelegt. Schlafen Sie ruhiger in dem Bewusstsein, dass Sie drei Replikate Ihrer Daten besitzen und so eine hohe Dauerhaftigkeit gewährleisten. Wenn bei einem oder sogar bei zwei Ihrer Replikate Probleme auftreten, stellen Sie mit den übrigen Replikaten die Persistenz Ihrer Daten und eine hohe Fehlertoleranz sicher. Durch diese Architektur konnte Azure für IaaS-Datenträger durchgängig eine Dauerhaftigkeit auf Unternehmensniveau bereitstellen, mit einer branchenweit führenden auf das Jahr umgerechneten Fehlerrate von 0 %. 
+Azure-Datenträger sind auf eine Verfügbarkeit von 99,999% ausgelegt. Schlafen Sie ruhiger in dem Bewusstsein, dass Sie drei Replikate Ihrer Daten besitzen und so eine hohe Dauerhaftigkeit gewährleisten. Wenn bei einem oder sogar bei zwei Ihrer Replikate Probleme auftreten, stellen Sie mit den übrigen Replikaten die Persistenz Ihrer Daten und eine hohe Fehlertoleranz sicher. Durch diese Architektur konnte Azure für IaaS-Datenträger durchgängig eine Dauerhaftigkeit auf Unternehmensniveau bereitstellen, mit einer branchenweit führenden auf das Jahr umgerechneten Fehlerrate von 0 %.
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 
@@ -45,7 +45,7 @@ Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/r
 
 ### <a name="azure-backup-service-support"></a>Azure Backup-Dienst – Unterstützung
 
-Sie können den Azure Backup-Dienst in Kombination mit Managed Disks verwenden, um einen Sicherungsauftrag mit zeitbasierten Sicherungen, unkomplizierter Wiederherstellung von virtuellen Computern und Aufbewahrungsrichtlinien für Sicherungen zu erstellen. Managed Disks unterstützt nur lokal redundanten Speicher (LRS) als Replikationsoption. Drei Kopien der Daten werden innerhalb einer Region beibehalten. Für eine regionale Notfallwiederherstellung müssen Sie Ihre VM-Datenträger mit dem [Azure Backup-Dienst](../articles/backup/backup-introduction-to-azure-backup.md) und einem GRS-Speicherkonto als Sicherungstresor in einer anderen Region sichern. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu 4 TB. Sie müssen [VM-Sicherungsstapel auf v2 aktualisieren](../articles/backup/backup-upgrade-to-vm-backup-stack-v2.md), um 4-TB-Datenträger zu unterstützen. Weitere Informationen finden Sie unter [Verwenden des Azure Backup-Diensts für virtuelle Computer mit Managed Disks](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Sie können den Azure Backup-Dienst in Kombination mit Managed Disks verwenden, um einen Sicherungsauftrag mit zeitbasierten Sicherungen, unkomplizierter Wiederherstellung von virtuellen Computern und Aufbewahrungsrichtlinien für Sicherungen zu erstellen. Managed Disks unterstützt nur lokal redundanten Speicher (LRS) als Replikationsoption. Drei Kopien der Daten werden innerhalb einer Region beibehalten. Für eine regionale Notfallwiederherstellung müssen Sie Ihre VM-Datenträger mit dem [Azure Backup-Dienst](../articles/backup/backup-introduction-to-azure-backup.md) und einem GRS-Speicherkonto als Sicherungstresor in einer anderen Region sichern. Derzeit unterstützt Azure Backup Datenträgergrößen von bis zu 4TB. Informationen zur Unterstützung von 4-TB-Datenträgern finden Sie unter [Sofortige Wiederherstellung](../articles/backup/backup-instant-restore-capability.md). Weitere Informationen finden Sie unter [Verwenden des Azure Backup-Diensts für virtuelle Computer mit Managed Disks](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
@@ -63,7 +63,7 @@ Bei der Verwendung von Managed Disks gelten die folgenden Abrechnungsaspekte:
 
 Die einzelnen Optionen werden nun genauer betrachtet.
 
-**Speichertyp:** Managed Disks bietet drei Leistungsstufen: [HDD Standard](../articles/virtual-machines/windows/standard-storage.md), [SSD Standard](../articles/virtual-machines/windows/disks-standard-ssd.md) und [Premium](../articles/virtual-machines/windows/premium-storage.md). Die Abrechnung für einen verwalteten Datenträger richtet sich danach, welchen Speichertyp Sie für den Datenträger ausgewählt haben.
+**Speichertyp**: Managed Disks bietet 3 Leistungsstufen: [HDD Standard](../articles/virtual-machines/windows/standard-storage.md), [SSD Standard](../articles/virtual-machines/windows/disks-standard-ssd.md) und [Premium](../articles/virtual-machines/windows/premium-storage.md). Die Abrechnung für einen verwalteten Datenträger richtet sich danach, welchen Speichertyp Sie für den Datenträger ausgewählt haben.
 
 **Datenträgergröße**: Die Abrechnung für verwaltete Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standarddatenträger erstellen und eine bereitgestellte Größe von 200 GB angeben, wird die Abrechnung gemäß den Preisen für den Datenträgertyp S15 durchgeführt.
 
@@ -85,13 +85,13 @@ Hier sind die Datenträgergrößen angegeben, die für einen verwalteten Standar
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16384 GiB (16 TiB) | 32767 GiB (TiB) |
 
-**Anzahl von Transaktionen**: Ihnen wird die Anzahl von Transaktionen berechnet, die Sie für einen verwalteten Standard-Datenträger durchführen.
+**Anzahl von Transaktionen**: Ihnen wird die Anzahl von Transaktionen berechnet, die Sie für einen verwalteten Standarddatenträger durchführen.
 
 Standard-SSD-Datenträger verwenden eine E/A-Einheitengröße von 256 KB. Wenn die Daten, die übertragen werden, kleiner als 256 KB sind, werden sie als eine E/A-Einheit angesehen. Höhere E/A-Größen werden als mehrere Ein- bzw. Ausgaben der Größe 256 KB gezählt. Beispielsweise wird eine EA von 1.100 KB als fünf E/A-Einheiten gezählt.
 
 Für einen verwalteten Premium-Datenträger fallen keine Kosten für Transaktionen an.
 
-**Ausgehende Datenübertragungen:**[Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
+**Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) (Daten, die von den Azure-Datencentern ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 
 Ausführliche Informationen zu Preisen für Managed Disks finden Sie unter [Managed Disks Preise](https://azure.microsoft.com/pricing/details/managed-disks).
 

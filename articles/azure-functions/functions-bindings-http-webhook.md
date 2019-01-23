@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 8d2bd74609447463b7ff857aa1037eaf5b6e3abb
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dc9c3b6740533ae26cf395e436908a359cadf8d9
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727002"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321312"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -53,7 +53,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#](#trigger---c-example)
 * [C#-Skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
@@ -332,10 +332,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
+### <a name="trigger---java-examples"></a>Trigger: Java-Beispiele
 
-Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [Java-Funktion](functions-reference-java.md), die die Bindung verwendet. Die Funktion gibt eine Antwort mit dem HTTP-Statuscode 200 und einem Anforderungstext zurück, in der dem Text der auslösenden Anforderung die Begrüßung „Hello, “ vorangestellt ist.
+* [Lesen eines Parameters aus der Abfragezeichenfolge](#read-parameter-from-the-query-string-java)
+* [Lesen des Hauptteils aus einer POST-Anforderung](#read-body-from-a-post-request-java)
+* [Lesen eines Parameters aus einer Route](#read-parameter-from-a-route-java)
+* [Lesen des POJO-Hauptteils aus einer POST-Anforderung](#read-pojo-body-from-a-post-request-java)
 
+Das folgende Beispiel zeigt die HTTP-Triggerbindung in einer Datei *function.json* sowie die entsprechenden [Java-Funktionen](functions-reference-java.md), die die Bindung verwenden. 
 
 Die Datei *function.json* sieht wie folgt aus:
 
@@ -358,17 +362,181 @@ Die Datei *function.json* sieht wie folgt aus:
 }
 ```
 
-Dies ist der Java-Code:
+#### <a name="read-parameter-from-the-query-string-java"></a>Lesen eines Parameters aus der Abfragezeichenfolge (Java)  
+
+Dieses Beispiel liest einen Parameter namens ```id``` aus der Abfragezeichenfolge und verwendet ihn zum Erstellen eines JSON-Dokuments mit dem Inhaltstyp ```application/json```, das an den Client zurückgegeben wird. 
 
 ```java
-@FunctionName("hello")
-public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
-                        final ExecutionContext context)
-    {
-        // default HTTP 200 response code
-        return String.format("Hello, %s!", request);
+    @FunctionName("TriggerStringGet")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET}, 
+              authLevel = AuthorizationLevel.ANONYMOUS)
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("GET parameters are: " + request.getQueryParameters());
+
+        // Get named parameter
+        String id = request.getQueryParameters().getOrDefault("id", "");
+
+        // Convert and display
+        if (id.isEmpty()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from to the client
+            // Generate document
+            final String name = "fake_name";
+            final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                         "\"description\": \"" + name + "\"}";
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(jsonDocument)
+                          .build();
+        }
     }
+```
+
+#### <a name="read-body-from-a-post-request-java"></a>Lesen des Hauptteils aus einer POST-Anforderung (Java)  
+
+Dieses Beispiel liest den Hauptteil einer POST-Anforderung als ```String``` und verwendet ihn zum Erstellen eines JSON-Dokuments mit dem Inhaltstyp ```application/json```, das an den Client zurückgegeben wird.
+
+```java
+    @FunctionName("TriggerStringPost")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS)
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Request body is: " + request.getBody().orElse(""));
+
+        // Check request body
+        if (!request.getBody().isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from to the client
+            // Generate document
+            final String body = request.getBody().get();
+            final String jsonDocument = "{\"id\":\"123456\", " + 
+                                         "\"description\": \"" + body + "\"}";
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(jsonDocument)
+                          .build();
+        }
+    }
+```
+
+#### <a name="read-parameter-from-a-route-java"></a>Lesen eines Parameters aus einer Route (Java)  
+
+Dieses Beispiel liest einen obligatorischen Parameter namens ```id``` sowie einen optionalen Parameter ```name``` aus dem Routenpfad und verwendet sie zum Erstellen eines JSON-Dokuments mit dem Inhaltstyp ```application/json```, das an den Client zurückgegeben wird. T
+
+```java
+    @FunctionName("TriggerStringRoute")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.GET}, 
+              authLevel = AuthorizationLevel.ANONYMOUS,
+              route = "trigger/{id}/{name=EMPTY}") // name is optional and defaults to EMPTY
+            HttpRequestMessage<Optional<String>> request,
+            @BindingName("id") String id,
+            @BindingName("name") String name,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Route parameters are: " + id);
+
+        // Convert and display
+        if (id == null) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from to the client
+            // Generate document
+            final String jsonDocument = "{\"id\":\"" + id + "\", " + 
+                                         "\"description\": \"" + name + "\"}";
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(jsonDocument)
+                          .build();
+        }
+    }
+```
+
+#### <a name="read-pojo-body-from-a-post-request-java"></a>Lesen des POJO-Hauptteils aus einer POST-Anforderung (Java)  
+
+Hier sehen Sie den Code für die ```ToDoItem```-Klasse, auf die in diesem Beispiel verwiesen wird:
+
+```java
+
+public class ToDoItem {
+
+  private String id;
+  private String description;  
+
+  public ToDoItem(String id, String description) {
+    this.id = id;
+    this.description = description;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+  
+  @Override
+  public String toString() {
+    return "ToDoItem={id=" + id + ",description=" + description + "}";
+  }
 }
+
+```
+
+In diesem Beispiel wird der Hauptteil einer POST-Anforderung gelesen. Der Anforderungstext wird automatisch in ein ```ToDoItem```-Objekt deserialisiert und mit dem Inhaltstyp ```application/json``` an den Client zurückgegeben. Der Parameter ```ToDoItem``` wird durch die Functions-Runtime serialisiert, wenn er der Eigenschaft ```body``` der ```HttpMessageResponse.Builder```-Klasse zugewiesen wird.
+
+```java
+    @FunctionName("TriggerPojoPost")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", 
+              methods = {HttpMethod.POST}, 
+              authLevel = AuthorizationLevel.ANONYMOUS)
+            HttpRequestMessage<Optional<ToDoItem>> request,
+            final ExecutionContext context) {
+        
+        // Item list
+        context.getLogger().info("Request body is: " + request.getBody().orElse(null));
+
+        // Check request body
+        if (!request.getBody().isPresent()) {
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
+                          .body("Document not found.")
+                          .build();
+        } 
+        else {
+            // return JSON from to the client
+            // Generate document
+            final ToDoItem body = request.getBody().get();
+            return request.createResponseBuilder(HttpStatus.OK)
+                          .header("Content-Type", "application/json")
+                          .body(body)
+                          .build();
+        }
+    }
 ```
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute

@@ -3,7 +3,7 @@ title: Leistungsrichtlinien für SQL Server in Azure | Microsoft-Dokumentation
 description: Dieses Thema enthält Richtlinien zur Optimierung der Leistung von SQL Server in Microsoft Azure Virtual Machines.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
-ms.author: jroth
-ms.openlocfilehash: 395994e2ac017bcdadaca4defad4ec0f910cea17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 120f88e6bb8b2c6a1408ef98eadfcbb520b5cdb3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258128"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332658"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Leistungsrichtlinien für SQL Server in Azure Virtual Machines
 
@@ -51,7 +52,7 @@ Weitere Informationen dazu, *wie* und *warum* diese Optimierungen vorgenommen we
 
 Für leistungsabhängige Anwendungen empfiehlt sich die Verwendung der folgenden [Größen für virtuelle Computer](../sizes.md):
 
-* **SQL Server Enterprise Edition:** DS3_v2 oder höher
+* **SQL Server Enterprise Edition**: DS3_v2 oder höher
 * **SQL Server Standard und Web Edition**: DS2_v2 oder höher
 
 VMs der [DSv2-Serie](../sizes-general.md#dsv2-series) unterstützen Storage Premium, was für eine optimale Leistung empfohlen wird. Die hier empfohlenen Größen sind Richtwerte, doch die tatsächliche VM-Größe hängt von den Anforderungen Ihrer Workloads ab. VMs der DSv2-Serie sind universelle VMs, die für eine Vielzahl von Workloads geeignet sind, während andere VM-Größen für bestimmte Workloadtypen optimiert sind. Die [M-Serie](../sizes-memory.md#m-series) bietet beispielsweise die höchste vCPU-Anzahl und Arbeitsspeicher für die größten SQL Server-Workloads. Die [GS-Serie](../sizes-memory.md#gs-series) und [DSv2-Serie 11-15](../sizes-memory.md#dsv2-series-11-15) sind für große Arbeitsspeicheranforderungen optimiert. Beide Serien sind auch mit [eingeschränkten Kerngrößen](../../windows/constrained-vcpu.md) erhältlich, was Kosten bei Workloads mit geringeren Computeanforderungen spart. VMs der [Ls-Serie](../sizes-storage.md) sind für hohen Datenträgerdurchsatz und hohe E/A-Werte optimiert. Es ist wichtig, Ihre spezifische SQL Server-Workload zu prüfen und diese bei der Auswahl der VM-Serie und -Größe zu berücksichtigen.
@@ -69,9 +70,9 @@ Außerdem sollten Sie Ihr Azure-Speicherkonto im selben Rechenzentrum wie Ihre S
 
 Es gibt drei Haupttypen von Datenträgern auf einer Azure-VM:
 
-* **Betriebssystemdatenträger:** Wenn Sie einen virtuellen Azure-Computer erstellen, fügt die Plattform mindestens einen Datenträger (mit der Bezeichnung Laufwerk **C:**) für das Betriebssystem zum virtuellen Computer hinzu. Bei diesem Datenträger handelt es sich um eine VHD, die als Seitenblob gespeichert wird.
-* **Temporärer Datenträger:** Virtuelle Azure-Computer enthalten einen weiteren Datenträger, der als temporärer Datenträger bezeichnet wird (Laufwerk **D:**). Dies ist ein Datenträger für temporären Speicherbereich auf dem Knoten.
-* **Datenträger für Daten:** Sie können auch weitere Datenträger für Daten zum virtuellen Computer hinzufügen. Diese werden als Seitenblobs im Speicher gespeichert.
+* **Betriebssystemdatenträger**: Wenn Sie einen virtuellen Azure-Computer erstellen, fügt die Plattform dem virtuellen Computer mindestens einen Datenträger (mit der Bezeichnung Laufwerk **C:**) für das Betriebssystem hinzu. Bei diesem Datenträger handelt es sich um eine VHD, die als Seitenblob gespeichert wird.
+* **Temporärer Datenträger**: Virtuelle Azure-Computer enthalten einen weiteren Datenträger, der als temporärer Datenträger bezeichnet wird (Laufwerk **D:**). Dies ist ein Datenträger für temporären Speicherbereich auf dem Knoten.
+* **Datenträger für Daten**: Sie können dem virtuellen Computer auch weitere Datenträger für Daten hinzufügen. Diese werden als Seitenblobs im Speicher gespeichert.
 
 In den folgenden Abschnitten werden Empfehlungen zur Verwendung dieser unterschiedlichen Datenträger erläutert.
 
@@ -85,16 +86,16 @@ Die für den Betriebssystem-Datenträger verwendete Caching-Standardrichtlinie e
 
 Das temporäre Speicherlaufwerk, das als Laufwerk **D:** bezeichnet wird, wird nicht in Azure Blob Storage beibehalten. Speichern Sie die Datenbank- oder Transaktionsprotokolldateien für Ihre Benutzer nicht auf Laufwerk **D:**.
 
-Das temporäre Laufwerk auf virtuellen Computern der D-Serie, Dv2-Serie und G-Serie ist SSD-basiert. Falls Ihre Workload intensiv TempDB nutzt (beispielsweise für temporäre Objekte oder komplexe Verknüpfungen), kann das Speichern von TempDB auf Laufwerk **D:** zu einem höheren Durchsatz und einer geringeren TempDB-Wartezeit führen. Ein Beispielszenario finden Sie in der Besprechung der „TempDB“ im folgenden Blogbeitrag: [Richtlinien für die Speicherkonfiguration für SQL Server auf virtuellen Azure-Computern](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/).
+Das temporäre Laufwerk auf virtuellen Computern der D-Serie, Dv2-Serie und G-Serie ist SSD-basiert. Falls Ihre Workload intensiv TempDB nutzt (beispielsweise für temporäre Objekte oder komplexe Verknüpfungen), kann das Speichern von TempDB auf Laufwerk **D:** zu einem höheren Durchsatz und einer geringeren TempDB-Wartezeit führen. Ein Beispielszenario finden Sie in der TempDB-Diskussion im folgenden Blogbeitrag: [Storage Configuration Guidelines for SQL Server on Azure VM](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/) (Richtlinien zur Speicherkonfiguration für SQL Server auf einer Azure-VM).
 
 Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie und GS-Serie), sollten Sie TempDB auf einem Datenträger speichern, der Storage Premium mit aktiviertem Lesecache unterstützt. Es gibt eine Ausnahme von dieser Empfehlung: Wenn die „tempdb“-Auslastung schreibintensiv ist, können Sie eine höhere Leistung erzielen, indem Sie „tempdb“ auf dem lokalen Laufwerk **D:** speichern, das für diese Computergrößen auch SSD-basiert ist.
 
 ### <a name="data-disks"></a>Datenträger
 
-* **Verwenden von Datenträgern für Daten- und Protokolldateien:** Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) in Storage Premium verwenden, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Daten- und TempDB-Dateien befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit. Informationen hierzu finden Sie im Artikel [Verwenden von Storage Premium für Datenträger](../premium-storage.md). Wenn Sie ein Verfahren zum Datenträgerstriping verwenden, z. B. Speicherplätze, erzielen Sie eine optimale Leistung, indem Sie zwei Pools einrichten, einen für die Protokolldatei(en) und den anderen für die Datendateien. Wenn Sie jedoch planen, SQL Server-Failoverclusterinstanzen (FCI) zu verwenden, müssen Sie einen Pool konfigurieren.
+* **Verwenden von Datenträgern für Daten- und Protokolldateien**: Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) in Storage Premium verwenden, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Daten- und TempDB-Dateien befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit. Informationen hierzu finden Sie im Artikel [Verwenden von Storage Premium für Datenträger](../premium-storage.md). Wenn Sie ein Verfahren zum Datenträgerstriping verwenden, z. B. Speicherplätze, erzielen Sie eine optimale Leistung, indem Sie zwei Pools einrichten, einen für die Protokolldatei(en) und den anderen für die Datendateien. Wenn Sie jedoch planen, SQL Server-Failoverclusterinstanzen (FCI) zu verwenden, müssen Sie einen Pool konfigurieren.
 
    > [!TIP]
-   > Testergebnisse zu verschiedenen Datenträgern und Workloadkonfigurationen finden Sie im folgenden Blogbeitrag: [Richtlinien für die Speicherkonfiguration für SQL Server auf virtuellen Azure-Computern](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/).
+   > Testergebnisse zu verschiedenen Datenträger- und Workloadkonfigurationen finden Sie im folgenden Blogbeitrag: [Storage Configuration Guidelines for SQL Server on Azure VM](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/) (Richtlinien zur Speicherkonfiguration für SQL Server auf einer Azure-VM).
 
    > [!NOTE]
    > Beim Bereitstellen einer SQL Server-VM im Portal haben Sie die Möglichkeit, Ihre Speicherkonfiguration zu bearbeiten. Je nach Konfiguration konfiguriert Azure einen oder mehrere Datenträger. Mehrere Datenträger werden in einem einzelnen Speicherpool mit Striping zusammengefasst. Daten- und Protokolldateien befinden sich in dieser Konfiguration zusammen. Weitere Informationen finden Sie unter [Speicherkonfiguration für SQL Server-VMs](virtual-machines-windows-sql-server-storage-configuration.md).
@@ -123,7 +124,7 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
 
   * Wenn Sie Storage Premium nicht verwenden (Entwicklungs-/Testszenarios), sollten Sie die für Ihre [Größe des virtuellen Computers](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) maximal unterstützte Anzahl von Datenträgern für Daten hinzufügen und Datenträgerstriping verwenden.
 
-* **Cacherichtlinie:** Berücksichtigen Sie die folgenden Empfehlungen für die Cacherichtlinie (abhängig von Ihrer Speicherkonfiguration).
+* **Cacherichtlinie**: Berücksichtigen Sie die folgenden Empfehlungen für die Cacherichtlinie (abhängig von Ihrer Speicherkonfiguration).
 
   * Wenn Sie separate Datenträger für Daten- und Protokolldateien verwenden, aktivieren Sie das Zwischenspeichern für Lesevorgänge für die Datenträger, auf denen Ihre Datendateien und TempDB-Datendateien gehostet werden. Dadurch lässt sich die Leistung mitunter erheblich verbessern. Aktivieren Sie die Zwischenspeicherung nicht für den Datenträger mit der Protokolldatei, da sich dadurch die Leistung minimal verschlechtert.
 
@@ -131,12 +132,12 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
 
   * Die obigen Empfehlungen gelten für Storage Premium-Datenträger. Wenn Sie Storage Premium nicht verwenden, aktivieren Sie Caching für keinen Datenträger für Daten.
 
-  * Informationen zum Konfigurieren des Datenträgercachings finden Sie in den folgenden Artikeln. Informationen zum klassischen Bereitstellungsmodell (ASM) finden Sie unter [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) und [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) und [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+  * Informationen zum Konfigurieren des Datenträgercachings finden Sie in den folgenden Artikeln. Für das klassische Bereitstellungsmodell (ASM): [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) und [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Für das Azure Resource Manager-Bereitstellungsmodell: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) und [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
 
      > [!WARNING]
      > Beenden Sie den SQL Server-Dienst beim Ändern der Cacheeinstellung der Azure-VM-Datenträger, um eine Beschädigung der Datenbank zu vermeiden.
 
-* **Größe der NTFS-Zuordnungseinheiten**: Es empfiehlt sich, beim Formatieren des Datenträgers für Daten als Größe der Zuordnungseinheiten für Daten- und Protokolldateien sowie für TempDB einen Wert von 64 KB zu verwenden.
+* **Größe der NTFS-Zuordnungseinheiten**: Beim Formatieren des Datenträgers für Daten empfiehlt es sich, als Größe der Zuordnungseinheiten für Daten- und Protokolldateien sowie für TempDB einen Wert von 64 KB zu verwenden.
 
 * **Bewährte Methoden für die Datenträgerverwaltung**: Beenden Sie den SQL Server-Dienst, wenn Sie einen Datenträger für Daten entfernen oder dessen Cachetyp ändern. Wenn die Cacheeinstellungen auf dem Betriebssystemdatenträger geändert werden, beendet Azure den virtuellen Computer, ändert den Cachetyp und startet den virtuellen Computer neu. Wenn die Cacheeinstellungen eines Datenträgers für Daten geändert werden, wird der virtuelle Computer nicht beendet, aber der Datenträger für Daten wird während der Änderung vom virtuellen Computer getrennt und dann erneut angefügt.
 
@@ -174,11 +175,11 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
 
 Für manche Bereitstellungen können durch Verwendung erweiterter Konfigurationsmethoden zusätzliche Leistungsvorteile erzielt werden. In der folgenden Liste sind einige SQL Server-Features zusammengestellt, mit denen Sie eine bessere Leistung erzielen können:
 
-* **Sicherung in Azure Storage**: Informationen zum Durchführen von Sicherungen für SQL Server, die in Azure Virtual Machines ausgeführt werden, finden Sie unter [SQL Server-Sicherung über URLs](https://msdn.microsoft.com/library/dn435916.aspx). Dieses Feature steht ab SQL Server 2012 SP1 CU2 zur Verfügung und wird für Sicherungen auf die angefügten Datenträgern für Daten empfohlen. Bei Sicherungen/Wiederherstellungen nach/von Azure Storage folgen Sie den Empfehlungen unter [SQL Server-URL-Sicherung – bewährte Methoden und Problembehandlung](https://msdn.microsoft.com/library/jj919149.aspx)und „Wiederherstellen von in Microsoft Azure gespeicherten Sicherungen“. Darüber hinaus können Sie diese Sicherungen mit [automatisierten Sicherungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-automated-backup.md)automatisieren.
+* **Sicherung in Azure-Speicher**: Wenn Sie Sicherungen für eine SQL Server-Instanz durchführen, die auf virtuellen Azure-Computern ausgeführt wird, können Sie die [SQL Server-Sicherung über URLs](https://msdn.microsoft.com/library/dn435916.aspx) verwenden. Dieses Feature steht ab SQL Server 2012 SP1 CU2 zur Verfügung und wird für Sicherungen auf die angefügten Datenträgern für Daten empfohlen. Bei Sicherungen/Wiederherstellungen nach/von Azure Storage folgen Sie den Empfehlungen unter [SQL Server-URL-Sicherung – bewährte Methoden und Problembehandlung](https://msdn.microsoft.com/library/jj919149.aspx)und „Wiederherstellen von in Microsoft Azure gespeicherten Sicherungen“. Darüber hinaus können Sie diese Sicherungen mit [automatisierten Sicherungen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-automated-backup.md)automatisieren.
 
     In Versionen vor SQL Server 2012 können Sie das [Microsoft SQL Server Backup to Microsoft Azure Tool](https://www.microsoft.com/download/details.aspx?id=40740)verwenden. Dieses Tool hilft, den Sicherungsdurchsatz durch Verwenden mehrerer Sicherungsstripeset-Ziele zu erhöhen.
 
-* **SQL Server-Datendateien in Azure**: Das neue Feature [SQL Server-Datendateien in Microsoft Azure](https://msdn.microsoft.com/library/dn385720.aspx)ist ab SQL Server 2014 verfügbar. Das Ausführen von SQL Server mit Datendateien in Azure zeigt vergleichbare Leistungseigenschaften wie die Verwendung von Azure-Datenträgern.
+* **SQL Server-Datendateien in Azure**: Das neue Feature [SQL Server-Datendateien in Azure](https://msdn.microsoft.com/library/dn385720.aspx) ist ab SQL Server 2014 verfügbar. Das Ausführen von SQL Server mit Datendateien in Azure zeigt vergleichbare Leistungseigenschaften wie die Verwendung von Azure-Datenträgern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

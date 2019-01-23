@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10c8c0043d04d99ad10e475f903979edb0ddcb70
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633953"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266895"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -87,14 +87,14 @@ Der **fünfte Schritt** besteht darin, „etc/hosts“ zu prüfen. Wenn die Blad
 
 Der Auslagerungsbereich des bereitgestellten Betriebssystemimage ist gemäß [SAP Support Note #1999997 – FAQ: SAP HANA Memory](https://launchpad.support.sap.com/#/notes/1999997/E) (SAP-Supporthinweis #1999997 – FAQ: SAP HANA-Arbeitsspeicher) auf 2 GB festgelegt. Wenn Sie als Kunde eine andere Einstellung wünschen, müssen Sie diese selbst festlegen.
 
-[SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/hana) ist die Distribution von Linux, die für SAP HANA in Azure (große Instanzen) installiert wird. Diese spezielle Distribution bietet sofort einsatzbereite SAP-spezifische Funktionen (einschließlich vorab festgelegter Parameter für die effektive Ausführung von SAP unter SLES).
+[SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/download/) ist die Distribution von Linux, die für SAP HANA in Azure (große Instanzen) installiert wird. Diese spezielle Distribution bietet sofort einsatzbereite SAP-spezifische Funktionen (einschließlich vorab festgelegter Parameter für die effektive Ausführung von SAP unter SLES).
 
 Auf der SUSE-Website unter [Resource Library/White Papers](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) und unter [SAP on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) im SAP Community Network (SCN) finden Sie verschiedene nützliche Ressourcen in Zusammenhang mit der Bereitstellung von SAP HANA unter SLES (einschließlich der Einrichtung für Hochverfügbarkeit und Verstärkung der Sicherheit speziell für den SAP-Betrieb).
 
 Zusätzliche nützliche Links zu SAP unter SUSE:
 
 - [Website zu SAP HANA unter SUSE Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) (in englischer Sprache)
-- [Best Practice for SAP: Enqueue Replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113) (Bewährte Methode für SAP: Enqueue Replication – SAP NetWeaver unter SUSE Linux Enterprise 12)
+- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
 - [ClamSAP – SLES Virus Protection for SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (einschließlich SLES 12 für SAP-Anwendungen)
 
 SAP-Supporthinweise zur Implementierung von SAP HANA unter SLES 12:
@@ -102,7 +102,7 @@ SAP-Supporthinweise zur Implementierung von SAP HANA unter SLES 12:
 - [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html) (SAP-Supporthinweis 1944799 – SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems)
 - [SAP Support Note #2205917 – SAP HANA DB Recommended OS Settings for SLES 12 for SAP Applications](https://launchpad.support.sap.com/#/notes/2205917/E) (SAP-Supporthinweis 2205917 – SAP HANA DB: Empfohlene Betriebssystemeinstellungen für SLES 12 für SAP-Anwendungen)
 - [SAP Support Note #1984787 – SUSE Linux Enterprise Server 12: Installation Notes](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise)
-- [SAP Support Note #171356 – SAP Software on Linux: General Information](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 171356 – SAP-Software unter Linux: allgemeine Informationen)
+- [SAP Support Note #171356 – SAP Software on Linux:  General Information](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 171356 – SAP-Software unter Linux: allgemeine Informationen)
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070) (SAP-Supporthinweis 1391070 – Linux UUID-Lösungen)
 
 [Red Hat Enterprise Linux für SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) ist ein weiteres Angebot zum Ausführen von SAP HANA auf großen SAP HANA-Instanzen. Versionen von RHEL 6.7 und 7.2 sind verfügbar. Beachten Sie, dass im Gegensatz zu nativen virtuellen Azure-Computern, für die nur RHEL 7.2 und neuere Releases unterstützt werden, große HANA-Instanzen auch RHEL 6.7 unterstützen. Wir empfehlen jedoch die Verwendung eines RHEL 7.x-Release.
@@ -113,13 +113,13 @@ Zusätzliche nützliche Links zu SAP unter Red Hat:
 SAP-Supporthinweise zur Implementierung von SAP HANA unter Red Hat:
 
 - [SAP Support Note #2009879 – SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System](https://launchpad.support.sap.com/#/notes/2009879/E) (SAP-Supporthinweis 2009879 – SAP HANA-Richtlinien für das RHEL-Betriebssystem [Red Hat Enterprise Linux])
-- [SAP Support Note #2292690 – SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690) (SAP-Supporthinweis 2292690 – SAP HANA-Datenbank: empfohlene Betriebssystemeinstellungen für RHEL 7)
-- [SAP Support Note #2247020 – SAP HANA DB: Recommended OS Settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020) (SAP-Supporthinweis #2292690 – SAP HANA-Datenbank: Empfohlene Betriebssystemeinstellungen für RHEL 7)
+- [SAP support note #2292690 - SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690) (SAP-Supporthinweis 2292690 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 7)
+- [SAP Support Note #2247020 - SAP HANA DB: Recommended OS Settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020) (SAP-Supporthinweis 2247020 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 6.7)
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070) (SAP-Supporthinweis 1391070 – Linux UUID-Lösungen)
-- [SAP Support Note #2228351 – Linux: SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351) (SAP-Supporthinweis 2228351 – Linux: SAP HANA-Datenbank SPS 11 Revision 110 (oder höher) unter RHEL 6 oder SLES 11)
-- [SAP Support Note #2397039 – FAQ: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039) (SAP-Supporthinweis 2397039 – häufig gestellte Fragen zu SAP unter RHEL)
+- [SAP support note #2228351 - Linux: SAP HANA Database SPS 110 revision 6 (or higher) on RHEL 11 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351) (SAP-Supporthinweis 2228351 – Linux: SAP HANA-Datenbank SPS 11 Revision 110 (oder höher) unter RHEL 6 oder SLES 11)
+- [SAP support note #2397039 - FAQ: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039) (SAP-Supporthinweis 2397039 – Häufig gestellte Fragen: SAP unter RHEL)
 - [SAP Support Note #1496410 – Red Hat Enterprise Linux 6.x: Installation and Upgrade](https://launchpad.support.sap.com/#/notes/1496410) (SAP-Supporthinweis 1496410 – Red Hat Enterprise Linux 6.x: Installation und Upgrade)
-- [SAP Support Note #2002167 – Red Hat Enterprise Linux 7.x: Installation and Upgrade](https://launchpad.support.sap.com/#/notes/2002167) (SAP-Supporthinweis 2002167 – Red Hat Enterprise Linux 7.x: Installation und Upgrade)
+- [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation and upgrade](https://launchpad.support.sap.com/#/notes/2002167) (SAP-Supporthinweis 2002167 – Red Hat Enterprise Linux 7.x: Installation und Upgrade)
 
 ### <a name="time-synchronization"></a>Zeitsynchronisierung
 
@@ -140,7 +140,7 @@ Es gibt einige Details zum Netzwerkbetrieb der einzelnen Einheiten, die Sie kenn
 
 Weitere Informationen zu den Ethernet-Daten für Ihre Architektur finden Sie unter [Unterstützte Szenarien für große HANA-Instanzen](hana-supported-scenario.md).
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 
 Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA in der Azure-Dienstverwaltung basierend auf von SAP empfohlenen Richtlinien konfiguriert. Diese Richtlinien sind im Whitepaper [SAP HANA Storage Requirements](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA-Speicheranforderungen) dokumentiert. 
 
@@ -201,7 +201,7 @@ Für SAP HANA 1.0-Versionen bis SPS12 können diese Parameter während der Insta
 
 Sie können die Parameter auch nach der Installation der SAP HANA-Datenbank konfigurieren, indem Sie das hdbparam-Framework verwenden. 
 
-Seit SAP HANA Version 2.0 ist das hdbparam-Framework veraltet. Daher müssen die Parameter mithilfe von SQL-Befehlen festgelegt werden. Weitere Informationen finden Sie in [SAP Note #2399079: Elimination of hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079) (SAP-Hinweis 2399079 – Eliminierung von hdbparam in HANA 2).
+Seit SAP HANA Version 2.0 ist das hdbparam-Framework veraltet. Daher müssen die Parameter mithilfe von SQL-Befehlen festgelegt werden. Weitere Informationen finden Sie in [SAP-Hinweis 2399079: Beseitigung von hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
 Informationen zum Speicherlayout für Ihre Architektur finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 

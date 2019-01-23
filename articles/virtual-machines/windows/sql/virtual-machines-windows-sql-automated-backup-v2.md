@@ -3,7 +3,7 @@ title: Automatisierte Sicherung v2 für virtuelle Azure-Computer mit SQL Server 
 description: Erläutert das Feature „Automatisierte Sicherung“ für VMs mit SQL Server 2016/2017, die in Azure ausgeführt werden. Dieser Artikel bezieht sich speziell auf VMs, die das Resource Manager-Modell verwenden.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 432df6d73b2eaa42645fe25ad9c743b7fcef06a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246819"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331653"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 
@@ -73,7 +74,7 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 
 | Einstellung | Bereich (Standard) | BESCHREIBUNG |
 | --- | --- | --- |
-| **System Database Backups** (Systemdatenbanksicherungen) | Aktivieren/Deaktivieren (deaktiviert) | Ist dieses Feature aktiviert, werden auch die Systemdatenbanken (Master, MSDB und Modell) gesichert. Vergewissern Sie sich bei der MSDB- und der Modelldatenbank, dass sie sich im vollständigen Wiederherstellungsmodus befinden, wenn Sie Protokollsicherungen erstellen möchten. Für die Masterdatenbank werden niemals Protokollsicherungen erstellt. Und für die TempDB-Datenbank werden gar keine Sicherungen ausgeführt. |
+| **System Database Backups** (Systemdatenbanksicherungen) | Aktivieren/Deaktivieren (deaktiviert) | Ist dieses Feature aktiviert, werden auch die Systemdatenbanken gesichert: Master, MSDB und Modell. Vergewissern Sie sich bei der MSDB- und der Modelldatenbank, dass sie sich im vollständigen Wiederherstellungsmodus befinden, wenn Sie Protokollsicherungen erstellen möchten. Für die Masterdatenbank werden niemals Protokollsicherungen erstellt. Und für die TempDB-Datenbank werden gar keine Sicherungen ausgeführt. |
 | **Sicherungszeitplan** | Manuell/Automatisiert (automatisch) | Der Sicherungszeitplan wird standardmäßig automatisch auf der Grundlage des Protokollwachstums festgelegt. Bei einem manuellen Sicherungszeitplan kann der Benutzer das gewünschte Zeitfenster für Sicherungen angeben. In diesem Fall werden Sicherungen ausschließlich gemäß dem angegebenen Intervall und während des angegebenen Zeitfensters eines bestimmten Tags durchgeführt. |
 | **Full backup frequency** (Intervall für vollständige Sicherungen) | Täglich/Wöchentlich | Intervall für vollständige Sicherungen. In beiden Fällen werden vollständige Sicherungen während des nächsten geplanten Zeitfensters gestartet. Bei Verwendung der wöchentlichen Option können sich die Sicherungen über mehrere Tage erstrecken, bis alle Datenbanken erfolgreich gesichert wurden. |
 | **Full backup start time** (Startzeit für vollständige Sicherungen) | 00:00–23:00 (01:00) | Die Startzeit eines bestimmten Tags, an dem eine vollständige Sicherung stattfinden kann. |
@@ -89,9 +90,9 @@ Sie verfügen über einen virtuellen SQL Server-Computer mit einer Reihe großer
 Am Montag aktivieren Sie die automatisierte Sicherung v2 mit den folgenden Einstellungen:
 
 - Sicherungszeitplan: **Manuell**
-- Intervall für vollständige Sicherungen: **Wöchentlich**
-- Startzeit für vollständige Sicherungen: **01:00**
-- Zeitfenster für vollständige Sicherungen: **1 Stunde**
+- Häufigkeit der vollständigen Sicherung: **Wöchentlich**
+- Startzeit für vollständige Sicherung: **01:00**
+- Zeitfenster für vollständige Sicherung: **1 Stunde**
 
 Das nächste verfügbare Sicherungszeitfenster ist also am Dienstag ab 1 Uhr für eine Stunde. Zu dieser Zeit beginnt die automatisierte Sicherung damit, Ihre Datenbanken nacheinander zu sichern. In diesem Szenario sind Ihre Datenbanken so groß, dass die vollständige Sicherung nur für die ersten Datenbanken abgeschlossen werden kann. Nach einer Stunde wurden also noch nicht alle Datenbanken gesichert.
 
@@ -107,9 +108,9 @@ Sie verfügen über einen virtuellen SQL Server-Computer mit einer Reihe großer
 Am Montag aktivieren Sie die automatisierte Sicherung v2 mit den folgenden Einstellungen:
 
 - Sicherungszeitplan: Manuell
-- Intervall für vollständige Sicherungen: Täglich
-- Startzeit für vollständige Sicherungen: 22:00
-- Zeitfenster für vollständige Sicherungen: 6 Stunden
+- Häufigkeit der vollständigen Sicherung: Täglich
+- Startzeit für vollständige Sicherung: 22:00
+- Zeitfenster für vollständige Sicherung: 6 Stunden
 
 Das nächste verfügbare Sicherungszeitfenster ist also am Montag ab 10 Uhr für sechs Stunden. Zu dieser Zeit beginnt die automatisierte Sicherung damit, Ihre Datenbanken nacheinander zu sichern.
 

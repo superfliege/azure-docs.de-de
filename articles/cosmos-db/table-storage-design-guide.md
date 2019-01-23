@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044177"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331961"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure Storage Table – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 
@@ -213,7 +213,7 @@ Im Abschnitt [Übersicht über den Azure-Tabellenspeicherdienst](#overview) weit
 * Die zweitbeste Lösung ist eine ***Bereichsabfrage***, die den **PartitionKey** verwendet und einen Bereich von **RowKey**-Werten filtert, um mehrere Entitäten zurückzugeben. Der **PartitionKey**-Wert identifiziert eine bestimmte Partition, die **RowKey**-Werte identifizieren eine Teilmenge der Entitäten in dieser Partition. Beispiel: $filter=PartitionKey eq 'Sales' und RowKey ge 'S' und RowKey lt 'T'  
 * Die drittbeste Lösung ist ein ***Partitionsscan***, der den **PartitionKey** sowie Filter für eine andere schlüsselfremde Eigenschaft verwendet und möglicherweise mehrere Entitäten zurückgibt. Der **PartitionKey** -Wert identifiziert eine bestimmte Partition und die Eigenschaftswerte wählen eine Teilmenge der Entitäten in dieser Partition aus. Beispiel: $filter=PartitionKey eq 'Sales' und LastName eq 'Smith'  
 * Ein ***Tabellenscan*** umfasst keinen **PartitionKey** und ist ineffizient, da er alle Partitionen, aus denen Ihre Tabelle besteht, auf übereinstimmende Entitäten untersucht. Er führt einen Tabellenscan durch, unabhängig davon, ob der Filter **RowKey**verwendet. Beispiel: $filter=LastName eq 'Jones'  
-* Abfragen, die mehrere Entitäten zurückgeben, geben diese nach **PartitionKey** und **RowKey** sortiert zurück. Um eine Neusortierung der Entitäten im Client zu vermeiden, müssen Sie einen **RowKey** mit der am häufigsten verwendeten Sortierreihenfolge auswählen.  
+* Azure Table Storage-Abfragen, die mehrere Entitäten zurückgeben, geben diese nach **PartitionKey** und **RowKey** sortiert zurück. Um eine Neusortierung der Entitäten im Client zu vermeiden, müssen Sie einen **RowKey** mit der am häufigsten verwendeten Sortierreihenfolge auswählen. Von der Azure-Tabellen-API in Azure Cosmso DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Die Verwendung von **or** für die Festlegung eines Filters, der auf **RowKey**-Werten basiert, führt zu einem Partitionsscan und wird nicht als Bereichsabfrage behandelt. Aus diesem Grund sollten Sie Abfragen vermeiden, die z. B. folgende Filter verwenden: $filter=PartitionKey eq 'Sales' und (RowKey eq '121' or RowKey eq '322')  
 
@@ -251,7 +251,13 @@ Viele Entwürfe müssen Anforderungen erfüllen, um die Suche nach Entitäten au
 * [Indexmuster für Entitäten](#index-entities-pattern) – Verwalten von Indexentitäten, um effiziente Suchvorgänge zu ermöglichen, die Listen mit Entitäten zurückgeben.  
 
 ### <a name="sorting-data-in-the-table-service"></a>Sortieren von Daten im Tabellenspeicherdienst
-Der Tabellenspeicherdienst gibt Entitäten zurück, die in aufsteigender Reihenfolge nach **PartitionKey** und **RowKey** sortiert sind. Diese Schlüssel sind String-Werte. Um sicherzustellen, dass die numerischen Werte ordnungsgemäß sortieren, sollten sie mit einer festen Länge konvertiert und mit Nullen aufgefüllt werden. Wenn etwa der als **RowKey** verwendete Mitarbeiter-ID-Wert ein ganzzahliger Wert ist, sollten Sie die Mitarbeiter-ID **123** in **00000123** konvertieren.  
+
+Die zurückgegebenen Abfrageergebnisse sind in aufsteigender Reihenfolge nach **PartitionKey** und **RowKey** sortiert.
+
+> [!NOTE]
+> Von der Azure-Tabellen-API in Azure Cosmso DB zurückgegebene Abfrageergebnisse werden nicht nach Partitionsschlüssel oder Zeilenschlüssel sortiert. Eine detaillierte Liste der Featureunterschiede finden Sie unter [Unterschiede zwischen der Tabellen-API in Azure Cosmos DB und Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+
+Schlüssel in Azure Table Storage sind Zeichenfolgenwerte. Um sicherzustellen, dass die numerischen Werte ordnungsgemäß sortiert werden, müssen sie in eine feste Länge konvertiert und mit Nullen aufgefüllt werden. Wenn etwa der als **RowKey** verwendete Mitarbeiter-ID-Wert ein ganzzahliger Wert ist, sollten Sie die Mitarbeiter-ID **123** in **00000123** konvertieren. 
 
 Viele Anwendungen verfügen über Anforderungen für die Verwendung von Daten, die in unterschiedlicher Reihenfolge sortiert sind,z. B. bei Sortierung von Mitarbeitern nach Name oder durch das Verknüpfen eines Datums. Die folgenden Muster im Abschnitt [Entwurfsmuster für die Tabelle](#table-design-patterns) befassen sich mit der Verwendung alternativer Sortierreihenfolgen für Entitäten:  
 

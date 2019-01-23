@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: raynew
-ms.openlocfilehash: 09d3b698edfc99b9340772aa0ffc4e8de20b286d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7e5f72ca637cb657369a3b384aee666e0935b9d0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103764"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263544"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -44,9 +44,7 @@ In diesem Artikel sind unterstützte Konfigurationen und Komponenten zusammengef
 
 Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geografischen Cluster replizieren. Geographische Cluster werden unter Berücksichtigung von Datenlatenz und Souveränität definiert.
 
->[!NOTE]
->Wenn Sie während der Aktivierung der Replikation keine Region innerhalb eines geografischen Clusters sehen können, stellen Sie sicher, dass Ihr Abonnement über Zugriff verfügt, um virtuelle Computer in dieser Region zu erstellen. Wenn dies nicht der Fall ist, stellen Sie eine Supportanfrage unter dem „Problemtyp“-Abonnement.
->
+
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
 Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
@@ -59,9 +57,13 @@ China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
 
 >[!NOTE]
 >
-> Für die Region „Brasilien, Süden“ können Sie eine Replikation und ein Failover auf eine der folgenden Regionen durchführen: USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2 und USA, Norden-Mitte.
->
-> Es sei darauf hingewiesen, dass in Site Recovery „Brasilien, Süden“ nur als Quellregion ausgewählt werden kann, aus der VMs geschützt werden können. Die Region kann nicht als Zielregion für die Notfallwiederherstellung anderer Azure-Regionen wie „USA, Süden-Mitte“ verwendet werden. Da aufgrund der geografischen Entfernung eine Latenz auftritt, wird empfohlen, eine andere amerikanische Region als „Brasilien, Süden“ auszuwählen.
+> - Für die Region **Brasilien, Süden** können Sie eine Replikation und ein Failover auf eine der folgenden Regionen durchführen: USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2 und USA, Norden-Mitte. Es sei darauf hingewiesen, dass in Site Recovery „Brasilien, Süden“ nur als Quellregion ausgewählt werden kann, aus der VMs geschützt werden können. Die Region **kann nicht als Zielregion für die Notfallwiederherstellung** anderer Azure-Regionen wie „USA, Süden-Mitte“ verwendet werden. Da aufgrund der geografischen Entfernung eine Latenz auftritt, wird empfohlen, eine andere amerikanische Region als „Brasilien, Süden“ auszuwählen.
+> 
+> - Wenn Sie **eine Region nicht sehen können**, in der Sie **einen Tresor erstellen** möchten, dann stellen Sie sicher, dass Ihr Abonnement in dieser Region Zugriff auf das Erstellen von Ressourcen hat. Beispiel:  Wenn Sie keinen Tresor in „Frankreich, Süden“ erstellen können, hat Ihr Abonnement keinen Zugriff auf die Region „Frankreich, Süden“. Bitte erstellen Sie ein Supportticket unter dem Problemtyp „Abonnementverwaltung“ und dem Problemtyp „andere allgemeine Fragen“, Betreff „Abonnement für die Azure-Region XXX auf Whitlelist setzen“.
+> 
+> - Wenn Sie **während der Aktivierung der Replikation** **keine Region innerhalb eines geografischen Clusters sehen können**, stellen Sie sicher, dass Ihr Abonnement über Zugriff verfügt, um virtuelle Computer in dieser Region zu erstellen. Beispiel:  Wenn Sie versuchen, virtuelle Computer aus „Frankreich, Mitte“ in „Frankreich, Süden“ zu schützen, und „Frankreich, Süden“ nicht in der Regionendropdownliste angezeigt wird, hat Ihr Abonnement in dieser Region keinen Zugriff zum Bereitstellen virtueller Computer. Bitte erstellen Sie ein Supportticket unter dem Problemtyp „Abonnementverwaltung“ und dem Problemtyp „andere allgemeine Fragen“, Betreff „Abonnement für die Azure-Region XXX auf Whitlelist setzen“.
+> - Sie können Regionen nicht oben genannte geografische Cluster übergreifend auswählen.
+
 
 ## <a name="cache-storage"></a>Cachespeicher
 

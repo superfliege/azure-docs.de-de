@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Routingmethode „MultiValue“ für Datenverkehr in Azure Traffic Manager | Microsoft-Dokumentation
+title: Konfigurieren der Routingmethode „MultiValue“ für Datenverkehr in Azure Traffic Manager
 description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr an A/AAAA-Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: d4a51551fb0f9067929df1fdf074e7286938004b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 40b266c92a86006746ab5341ac5fa1d785ee6032
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187704"
+ms.locfileid: "54197167"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurieren der Routingmethode „MultiValue“ in Traffic Manager
 

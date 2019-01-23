@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789856"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353960"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -52,7 +52,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 * Dieses Problem kann auch auftreten, wenn mehrere Sicherungen pro Tag ausgelöst werden. Zurzeit wird nur eine Sicherung pro Tag empfohlen, da die Instant RPs 7 Tage lang aufbewahrt werden und nur 18 Instant RPs gleichzeitig mit einem virtuellen Computer verknüpft werden können. <br>
 
 Empfohlene Maßnahme:<br>
-Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen. 
+Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.
 > [!NOTE]
     > Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe lautet: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
@@ -105,14 +105,14 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
 **Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB <br>
 
-Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Datenträgergröße von über 1.023 GB sichern, da für Ihren Tresor kein Upgrade auf den Azure-VM-Sicherungsstapel v2 durchgeführt wird. Ein Upgrade auf den Azure-VM-Sicherungsstapel v2 bietet Unterstützung für bis zu 4 TB. Sehen Sie sich [diese Vorteile](backup-upgrade-to-vm-backup-stack-v2.md) und [Überlegungen](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade) an, und führen Sie anschließend ein Upgrade mithilfe [dieser Anweisungen](backup-upgrade-to-vm-backup-stack-v2.md#upgrade) durch.  
+Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Datenträgergröße von über 1.023 GB sichern, da für Ihren Tresor kein Upgrade auf die sofortige Wiederherstellung durchgeführt wird. Ein Upgrade auf die sofortige Wiederherstellung bietet Unterstützung für bis zu 4 TB. Weitere Informationen finden Sie in diesem [Artikel](backup-instant-restore-capability.md).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – Azure Backup unterstützt derzeit keine SSD Standard-Datenträger.
 
 **Fehlercode**: UserErrorStandardSSDNotSupported <br>
 **Fehlermeldung**: Azure Backup unterstützt zurzeit keine SSD Standard-Datenträger. <br>
 
-Azure Backup unterstützt derzeit nur SSD Standard-Datenträger für Tresore, für die ein Upgrade auf den Azure-VM-Sicherungsstapel v2 durchgeführt wurde. Sehen Sie sich [diese Vorteile](backup-upgrade-to-vm-backup-stack-v2.md) und [Überlegungen](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade) an, und führen Sie anschließend ein Upgrade mithilfe [dieser Anweisungen](backup-upgrade-to-vm-backup-stack-v2.md#upgrade) durch.
+Azure Backup unterstützt derzeit nur SSD Standard-Datenträger für Tresore, für die ein Upgrade auf die [sofortige Wiederherstellung](backup-instant-restore-capability.md) durchgeführt wurde.
 
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
@@ -122,33 +122,8 @@ Gemäß Bereitstellungsanforderung verfügt der virtuelle Computer nicht über I
 
 Die Sicherungserweiterung muss eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit sie richtig funktioniert. Die Erweiterung sendet Befehle an einen Azure Storage-Endpunkt (HTTPs-URL), um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, tritt bei der Sicherung letztendlich ein Fehler auf.
 
-Sie können einen Proxyserver bereitstellen, um den VM-Datenverkehr weiterzuleiten.
-##### <a name="create-a-path-for-https-traffic"></a>Erstellen eines Pfads für HTTPs-Datenverkehr
-
-1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise in Form einer Netzwerksicherheitsgruppe), ist es ratsam, einen HTTPs-Proxyserver zum Weiterleiten des Datenverkehrs bereitzustellen.
-2. Um den Zugriff auf das Internet über den HTTPs-Proxyserver zuzulassen, fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu.
-
-Informationen dazu, wie Sie einen HTTPs-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-
-Der gesicherte virtuelle Computer oder der Proxyserver, über den der Datenverkehr weitergeleitet wird, benötigt Zugriff auf öffentliche IP-Adressen in Azure.
-
 ####  <a name="solution"></a>Lösung
-Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>Zulassen des Zugriffs auf den der Region entsprechenden Azure-Speicher
-
-Sie können [Diensttags](../virtual-network/security-overview.md#service-tags) verwenden, um Verbindungen zum Speicher in einer bestimmten Region zuzulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto gewährt, eine höhere Priorität hat als die Regel, die den Internetzugriff blockiert.
-
-![Netzwerksicherheitsgruppe mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-Schauen Sie sich zum besseren Verständnis der Schrittanleitung zur Konfiguration von Diensttags [dieses Video](https://youtu.be/1EjLQtbKm1M) an.
-
-> [!WARNING]
-> Diensttags für Speicher befinden sich in der Vorschau. Sie sind nur in bestimmten Regionen verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
-
-Wenn Sie verwaltete Azure-Datenträger verwenden, müssen Sie in den Firewalls möglicherweise einen weiteren Port öffnen (Port 8443).
-
-Wenn Ihr Subnetz keine Route für den ausgehenden Internetverkehr hat, müssen Sie außerdem einen Dienstendpunkt mit dem Diensttag „Microsoft.Storage“ zu Ihrem Subnetz hinzufügen.
+Informationen zum Beheben des Netzwerkproblems finden Sie unter [Herstellen der Netzwerkverbindung](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
 

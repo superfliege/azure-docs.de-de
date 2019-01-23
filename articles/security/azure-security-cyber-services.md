@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 01/14/2019
 ms.author: barclayn
-ms.openlocfilehash: eed545c88b840f942ad763793595ef5b9c3cd19d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6729a800450b9602bff1f85a3a40804edf05b048
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233693"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321754"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-Dienste in der Sicherheit im Internet
 
-Die Microsoft-Dienste bieten einen umfassenden Ansatz zu Sicherheit, Identität und Sicherheit im Internet. Die Microsoft-Dienste bieten eine Reihe von Sicherheits- und Identitätsdiensten für Strategie, Planung, Implementierung und kontinuierlichen Support. Diese Dienste können Unternehmenskunden dabei unterstützen, ganzheitliche Sicherheitslösungen zu implementieren, die mit ihren strategischen Zielen in Einklang stehen.
+Die Microsoft-Dienste bieten einen umfassenden Ansatz zu Sicherheit, Identität und Sicherheit im Internet. Sie bieten eine Reihe von Sicherheits- und Identitätsdiensten für Strategie, Planung, Implementierung und kontinuierlichen Support. Diese Dienste können Unternehmenskunden bei der Implementierung von Sicherheitslösungen unterstützen, die mit ihren strategischen Zielen in Einklang stehen.
 
-Mit direktem Zugriff auf Produktentwicklungsteams können wir integrierte Lösungen erstellen und die neuesten Sicherheits- und Identitätsfunktionen unserer Produkte erweitern, um das Geschäft unserer Kunden zu schützen und Innovationen voranzutreiben.
+Microsoft-Dienste können integrierte Lösungen erstellen und die neuesten Sicherheits- und Identitätsfunktionen unserer Produkte erweitern, um Ihr Geschäft zu schützen und Innovationen voranzutreiben.
 
-Unsere fassettenreiche Gruppe technischer Spezialisten, die von den weltweit größten Unternehmen damit beauftragt ist, zu ihrem Schutz beizutragen und ihren Geschäftsbetrieb zu ermöglichen, setzt sich aus anspruchsvoll geschulten Experten zusammen, die über immense Erfahrung in den Bereichen Sicherheit und Identität verfügen.
+Unser Team aus technischen Spezialisten besteht aus geschulten Experten, die über umfangreiche Erfahrungen auf dem Gebiet der Sicherheit und Identität verfügen.
 
 Hier erfahren Sie mehr über die Leistungen von Microsoft-Dienste:
 
@@ -37,7 +37,6 @@ Hier erfahren Sie mehr über die Leistungen von Microsoft-Dienste:
 * [Enhanced Security Administration Environment](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
 * [Azure Active Directory Implementation Services](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
 * [POP - Securing Lateral Account Movement (SLAM) Credential Theft Mitigation](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Microsoft Threat Erkennung Services](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
 * [Respond and recover after a security incident](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
 [Erfahren Sie mehr](https://aka.ms/cyberserv) über die Sicherheits-Consulting Services der Microsoft-Dienste.

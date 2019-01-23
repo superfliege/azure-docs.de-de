@@ -9,12 +9,12 @@ ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: ecdb36af786d96a5b343d11cd689642d59528445
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 81d9fc7babef7c1d14a0acc420d0c16c05b83215
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888528"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354330"
 ---
 # <a name="state-management-with-service-fabric"></a>Zustandsverwaltung mit Service Fabric
 
@@ -30,7 +30,7 @@ Container verwenden häufig temporäre Datenträger. Temporäre Datenträger sin
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable Volume ist ein Docker-Volumetreiber, der verwendet wird, um ein lokales Volume für einen Container bereitzustellen. Lese- und Schreibvorgänge sind lokale Vorgänge und sehr schnell. Daten werden auf sekundäre Knoten repliziert und werden damit hochverfügbar. Failover ist ebenfalls schnell. Wenn ein Container abstürzt, wird ein Failover auf einen Knoten ausgeführt, der bereits über eine Kopie Ihrer Daten verfügt. Ein Beispiel finden Sie unter [Bereitstellen einer App mit Service Fabric Reliable Volume](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/counter).
+Service Fabric Reliable Volume ist ein Docker-Volumetreiber, der verwendet wird, um ein lokales Volume für einen Container bereitzustellen. Lese- und Schreibvorgänge sind lokale Vorgänge und sehr schnell. Daten werden auf sekundäre Knoten repliziert und werden damit hochverfügbar. Failover ist ebenfalls schnell. Wenn ein Container abstürzt, wird ein Failover auf einen Knoten ausgeführt, der bereits über eine Kopie Ihrer Daten verfügt. Ein Beispiel finden Sie unter [Bereitstellen einer App mit Service Fabric Reliable Volume](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
 
 ### <a name="azure-files-volume"></a>Azure Files Volume
 

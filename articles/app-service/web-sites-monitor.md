@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994945"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247254"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile Back-Ends und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -72,7 +72,7 @@ Für eine App sind folgende Metriken verfügbar:
 | Metrik | BESCHREIBUNG |
 | --- | --- |
 | **Durchschnittliche Antwortzeit** | Die durchschnittliche Zeit in Millisekunden, die die App zum Verarbeiten von Anforderungen benötigt. |
-| **Durchschnittlicher Arbeitssatz für Arbeitsspeicher** | Die durchschnittliche Menge an Arbeitsspeicher, die von der App verwendet wird (in Mebibytes, kurz MiB). |
+| **Durchschnittlicher Arbeitssatz für Arbeitsspeicher** | Die durchschnittliche Menge an Arbeitsspeicher, die von der App verwendet wird, in Megabytes (MiB). |
 | **CPU-Zeit** | Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie unter [CPU-Zeit und CPU-Prozentsatz](#cpu-time-vs-cpu-percentage). |
 | **Eingehende Daten** | Die Menge an eingehender Bandbreite in MiB, die von der App verbraucht wird. |
 | **Ausgehende Daten** | Die Menge an ausgehender Bandbreite in MiB, die von der App verbraucht wird. |
@@ -141,14 +141,12 @@ Weitere Informationen zu Metriken finden Sie unter [Von Azure Monitor gesammelte
 ## <a name="alerts-and-autoscale"></a>Warnungen und automatische Skalierung
 Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen finden Sie unter [Verwenden des Azure-Portals zum Erstellen von Warnungen für Azure-Dienste](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-App Service-Apps, die unter App Service-Plänen vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden, unterstützen die automatische Skalierung. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, wodurch bei Bedarf zusätzliche Ressourcen bereitgestellt werden können. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die App zu oft bereitgestellt wird. 
+App Service-Apps, die unter App Service-Plänen vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden, unterstützen die automatische Skalierung. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, wodurch bei Bedarf zusätzliche Ressourcen bereitgestellt werden können. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die App zu oft bereitgestellt wird.
 
 Weitere Informationen zur automatischen Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](../monitoring-and-diagnostics/insights-how-to-scale.md) und [Bewährte Methoden für die automatische Skalierung](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
-
-
 
 <!-- Images. -->
 [http403]: ./media/web-sites-monitor/http403.png

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: danlep
-ms.openlocfilehash: 63affd4ad22d5246274ddfa3160d5675f702003f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: cd2b14dc29f865a162cb1ced605e740a96f7a46a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855761"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329972"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks
 
@@ -25,7 +25,7 @@ Container bieten neue Virtualisierungsmöglichkeiten und trennen Anwendungs- und
 Es gibt vier Möglichkeiten zum Erstellen und Testen von Containerimages mit ACR Tasks:
 
 * [Schnelltask](#quick-task): Bedarfsgesteuertes Erstellen und Pushen von Containerimages in Azure ohne lokale Docker Engine-Installation. Kurz: `docker build`, `docker push` in die Cloud. Buildvorgang aus lokalem Quellcode oder einem Git-Repository.
-* [Buildvorgang beim Quellcodecommit](#automatic-build-on-source-code-commit): Lösen Sie automatisch einen Containerimage-Buildvorgang aus, wenn Code in ein Git-Repository committet wird.
+* [Buildvorgang beim Commit von Quellcode](#automatic-build-on-source-code-commit): Lösen Sie automatisch einen Containerimage-Buildvorgang aus, sobald ein Commit von Code in ein Git-Repository erfolgt.
 * [Buildvorgang beim Aktualisieren des Basisimages](#automate-os-and-framework-patching): Lösen Sie einen Containerimage-Buildvorgang aus, wenn das Basisimage des jeweiligen Images aktualisiert wurde.
 * [Mehrstufige Aufgaben](#multi-step-tasks-preview) (Vorschau): Definieren Sie mehrstufige Aufgaben, die Images erstellen, Container als Befehle ausführen und Images in eine Registrierung pushen. Dieses Vorschaufeature von ACR Tasks unterstützt die bedarfsgesteuerte Aufgabenausführung und parallele Imagebuilds, Tests und Pushvorgänge.
 
@@ -65,7 +65,7 @@ Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode
 
 Durch die Möglichkeit zur Erkennung von Basisimageaktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
 
-Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren in der Regel auf öffentlichen Upstreamimages (z. B. [Alpine Linux ][base-alpine], [Windows][base-windows], [.NET][base-dotnet] oder [Node.js][base-node]). Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
+Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren üblicherweise auf öffentlichen Upstreamimages, beispielsweise [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet] oder [Node.js][base-node]. Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
 
 Wenn ein Betriebssystem- oder App-Framework-Image durch die zuständige Upstream-Instanz aktualisiert wird (etwa mit einem wichtigen Sicherheitspatch für das Betriebssystem), müssen Sie auch Ihre Basisimages aktualisieren, um die Korrektur zu integrieren. Daraufhin müssen auch alle Anwendungsimages neu erstellt werden, um die Upstreamkorrekturen aus Ihrem Basisimage zu integrieren.
 
@@ -85,8 +85,8 @@ Beispielsweise können Sie eine mehrstufige Aufgaben erstellen, die die folgende
 1. Erstellen eines Webanwendungsimages
 1. Ausführen des Webanwendungscontainers
 1. Erstellen eines Webanwendungs-Testimages
-1. Ausführen den Webanwendungs-Testcontainers, der Tests für den aktuell ausgeführten Anwendungscontainer durchführt
-1. Wenn die Tests bestanden werden, Erstellen eines Helm-Diagramm-Archivpakets
+1. Ausführen des Webanwendungs-Testcontainers, der Tests für den aktuell ausgeführten Anwendungscontainer durchführt
+1. Wenn die Tests erfolgreich sind: Erstellen eines Helm-Chart-Archivpakets
 1. Ausführen eines `helm upgrade` mithilfe des neuen Helm-Diagramm-Archivpakets
 
 Mit mehrstufigen Aufgaben können Sie das Erstellen, Ausführen und Testen eines Images in mehrere individuelle Schritte aufteilen, wobei Abhängigkeiten zwischen den Schritten unterstützt werden. Mit mehrstufigen Aufgaben in ACR Tasks erhalten Sie eine bessere Kontrolle über die Workflows zur Erstellung von Images, Tests, Betriebssystem- und Frameworkpatches.

@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b868e20ebb1054864116957fd671a17e2d980c0a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1ef0fc9037548a58d9b0a4f46c212a43796d529b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083851"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231596"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 
@@ -28,7 +28,7 @@ Halten Sie sich diese Kontingente beim Entwerfen und Skalieren Ihrer Azure ML-Re
 
 + Bei einem Kontingent handelt es sich um ein Kreditlimit und keine Kapazitätsgarantie. Wenn Sie einen umfangreichen Kapazitätsbedarf haben, wenden Sie sich an den Azure-Support.
 
-+ Ihr Kontingent wird auf alle Dienste in Ihren Abonnements verteilt, einschließlich des Azure Machine Learning Service. Die einzige Ausnahme ist Azure Machine Learning Compute, das über ein separates Kontingent vom Kerncomputekontingent verfügt. Berechnen Sie den Kontingentbedarf für alle Dienste, wenn Sie Ihre Kapazitätsanforderungen auswerten.
++ Ihr Kontingent wird auf alle Dienste in Ihren Abonnements verteilt, einschließlich des Azure Machine Learning Service. Die einzige Ausnahme ist Azure Machine Learning Compute, das über ein vom Kerncomputekontingent separates Kontingent verfügt. Berechnen Sie den Kontingentbedarf für alle Dienste, wenn Sie Ihre Kapazitätsanforderungen auswerten.
 
 + Die Standardlimits variieren je nach angebotenem Kategorietyp, z.B. kostenlose Testversion, nutzungsbasierte Bezahlung und Serien wie Dv2, F und G.
 

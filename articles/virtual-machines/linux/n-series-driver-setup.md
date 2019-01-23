@@ -3,7 +3,7 @@ title: Einrichtung von GPU-Treibern für die Azure N-Serie unter Linux | Microso
 description: Einrichtung von NVIDIA-GPU-Treibern für virtuelle Computer der N-Serie mit Linux in Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 01/09/2019
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bd9f8508f67a3c4b87533fb514854b5f66a5f6b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017262"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201039"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -51,9 +51,9 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus (zeigt eine NVIDIA Tesla
 
 Führen Sie dann die für Ihre Verteilung spezifischen Installationsbefehle aus.
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
-1. Laden Sie die CUDA-Treiber herunter, und installieren Sie sie.
+1. Laden Sie die CUDA-Treiber von der NVIDIA-Website herunter, und installieren Sie sie. Beispielsweise für Ubuntu 16.04 LTS:
   ```bash
   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -97,7 +97,7 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS oder Red Hat Enterprise Linux 7.3 oder 7.4
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS oder Red Hat Enterprise Linux
 
 1. Aktualisieren Sie den Kernel (empfohlen). Wenn Sie den Kernel nicht aktualisieren, stellen sicher, dass die Versionen von `kernel-devel` und `dkms` für Ihren Kernel geeignet sind.
 
@@ -174,7 +174,7 @@ Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Ma
 
 Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern der NV- oder NVv2-Serie eine SSH-Verbindung mit jedem virtuellen Computer her, und führen Sie die Schritte für Ihre Linux-Distribution aus. 
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
 1. Führen Sie den Befehl `lspci` aus. Überprüfen Sie, ob die NVIDIA M60-Karte bzw. -Karten als PCI-Geräte angezeigt werden.
 

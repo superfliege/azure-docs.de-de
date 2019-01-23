@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943580"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329768"
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Manuelles Migrieren eines klassischen virtuellen Computers zu einem neuen virtuellen ARM Managed Disks-Computer von der virtuellen Festplatte 
+# <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Migrieren eines klassischen virtuellen Computers zu Managed Disks 
 
 
 In diesem Abschnitt erhalten Sie Informationen zum Migrieren Ihrer vorhandenen Azure-VMs vom klassischen Bereitstellungsmodell zu [Managed Disks](managed-disks-overview.md) im Ressourcen-Manager-Bereitstellungsmodell.
@@ -33,35 +33,35 @@ In diesem Abschnitt erhalten Sie Informationen zum Migrieren Ihrer vorhandenen A
 Dieser Abschnitt hilft Ihnen, hinsichtlich VM- und Datenträgertypen die beste Entscheidung zu treffen.
 
 
-### <a name="location"></a>Speicherort
+### <a name="location"></a>Standort
 
-Wählen Sie einen Standort, an dem Azure Managed Disks verfügbar sind. Wenn Sie zu Premium Managed Disks migrieren, stellen Sie außerdem sicher, dass Storage Premium in der Region verfügbar ist, in die die Migration erfolgen soll. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services).
+Wählen Sie einen Standort, an dem Managed Disks verfügbar ist. Wenn Sie zu Managed Disks mit Storage Premium-Unterstützung migrieren, stellen Sie außerdem sicher, dass Storage Premium in der jeweiligen Region verfügbar ist. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services).
 
 ### <a name="vm-sizes"></a>VM-Größen
 
-Wenn Sie zu Premium Managed Disks migrieren, müssen Sie die Größe der VM in eine Storage Premium-fähige Größe ändern, die in der Region mit dem Standort der VM verfügbar ist. Überprüfen Sie die Storage Premium-fähigen VM-Größen. Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](sizes.md)aufgelistet.
+Wenn Sie zu Managed Disks mit Storage Premium-Unterstützung migrieren, müssen Sie die Größe der VM in eine Storage Premium-fähige Größe ändern, die in der Region mit dem Standort der VM verfügbar ist. Überprüfen Sie die Storage Premium-fähigen VM-Größen. Die Größenspezifikationen der Azure-VM sind unter [Größen für virtuelle Computer](sizes.md)aufgelistet.
 Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premium an, und wählen Sie die am besten für Ihre Workload geeignete VM-Größe aus. Stellen Sie sicher, dass auf Ihrem virtuellen Computer ausreichend Bandbreite zum Steuern des Datenverkehrs des Datenträgers verfügbar ist.
 
 ### <a name="disk-sizes"></a>Datenträgergrößen
 
-**Premium Managed Disks**
+**Premium**
 
-Es gibt sieben verwaltete Premium-Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Einschränkungen beim Auswählen des Premium-Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
+Es gibt sieben verwaltete Storage Premium-Typen, die Sie mit Ihrem virtuellen Computer verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Einschränkungen beim Auswählen des Premium-Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Premium-Datenträgertyp  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Datenträgergröße           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS pro Datenträger       | 120   | 240   | 500   | 2.300              | 5.000              | 7.500              | 7.500              | 
-| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 
+| Datenträgergröße           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS pro Datenträger       | 120   | 240   | 500   | 2.300              | 5.000              | 7.500              | 7.500              | 
+| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 
 
-**Verwaltete Standard-Datenträger**
+**Standard**
 
-Es gibt sieben Arten von verwalteten Standard-Datenträgern, die mit Ihrem virtuellen Computer verwendet werden können. Jede davon bietet unterschiedliche Kapazität, jedoch gelten für alle dieselben IOPS- und Durchsatzgrenzwerte. Wählen Sie den Typ der verwalteten Standard-Datenträger basierend auf den Kapazitätsanforderungen Ihrer Anwendung.
+Es gibt sieben Arten von Standard-Datenträgern, die mit Ihrem virtuellen Computer verwendet werden können. Jede davon bietet unterschiedliche Kapazität, jedoch gelten für alle dieselben IOPS- und Durchsatzgrenzwerte. Wählen Sie den Typ der verwalteten Standard-Datenträger basierend auf den Kapazitätsanforderungen Ihrer Anwendung.
 
-| Standard-Datenträgertyp  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+| Standard-Datenträgertyp  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| IOPS pro Datenträger       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| IOPS pro Datenträger       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
 | Durchsatz pro Datenträger | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 
 
 
@@ -73,7 +73,7 @@ Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-
 
 ### <a name="pricing"></a>Preise
 
-Überprüfen Sie die [Preise für Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Die Preise für Premium Managed Disks (verwaltete Premium-Datenträger) sind identisch mit denen für Premium Unmanaged Disks (nicht verwaltete Premium-Datenträger). Doch die Preise für verwaltete Standard-Datenträger unterscheiden sich von denen für nicht verwaltete Standard-Datenträger.
+Überprüfen Sie die [Preise für Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Die Preise für verwaltete Premium-Datenträger sind identisch mit denen für nicht verwaltete Premium-Datenträger. Die Preise für verwaltete Standard-Datenträger unterscheiden sich jedoch von denen für nicht verwaltete Standard-Datenträger.
 
 
 ## <a name="checklist"></a>Checkliste
@@ -96,77 +96,104 @@ Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migra
 Für diesen Teil benötigen Sie mindestens Version 6.0.0 des Azure PowerShell-Moduls. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
-1.  Legen Sie zunächst die allgemeinen Parameter fest:
+Erstellen Sie Variablen für gängige Parameter.
 
-    ```powershell
-    $resourceGroupName = 'yourResourceGroupName'
-    
-    $location = 'your location' 
-    
-    $virtualNetworkName = 'yourExistingVirtualNetworkName'
-    
-    $virtualMachineName = 'yourVMName'
-    
-    $virtualMachineSize = 'Standard_DS3'
-    
-    $adminUserName = "youradminusername"
-    
-    $adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
-    
-    $imageName = 'yourImageName'
-    
-    $osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-    
-    $dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
-    
-    $dataDiskName = 'dataDisk1'
-    ```
+```powershell
+$resourceGroupName = 'yourResourceGroupName'
 
-2.  Erstellen Sie einen verwalteten Betriebssystem-Datenträger mithilfe des VHD-Images der klassischen VM.
+$location = 'your location' 
 
-    Vergewissern Sie sich, dass Sie den vollständigen URI der Betriebssystem-VHD im Parameter „$osVhdUri“ angegeben haben. Geben Sie außerdem für **-AccountType** entweder **PremiumLRS** oder **StandardLRS** an – je nachdem, zu welchem Datenträgertyp (Premium oder Standard) Sie migrieren möchten.
+$virtualNetworkName = 'yourExistingVirtualNetworkName'
 
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
-    -ResourceGroupName $resourceGroupName
-    ```
+$virtualMachineName = 'yourVMName'
 
-3.  Fügen Sie den Betriebssystem-Datenträger an die neue VM an.
+$virtualMachineSize = 'Standard_DS3'
 
-    ```powershell
-    $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
+$adminUserName = "youradminusername"
 
-4.  Erstellen Sie anhand der VHD-Datendatei einen verwalteten Datenträger, und fügen Sie ihn der neuen VM hinzu.
+$adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
 
-    ```powershell
-    $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
-    -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
+$imageName = 'yourImageName'
+
+$osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
+
+$dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
+
+$dataDiskName = 'dataDisk1'
+```
+
+Erstellen Sie einen verwalteten Betriebssystem-Datenträger mithilfe des VHD-Images der klassischen VM. Vergewissern Sie sich, dass Sie den vollständigen URI der Betriebssystem-VHD im Parameter „$osVhdUri“ angegeben haben. Geben Sie außerdem für **-AccountType** entweder **Premium_LRS** oder **Standard_LRS** an – je nachdem, zu welchem Datenträgertyp (Premium oder Standard) Sie migrieren möchten.
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreateOption Import '
+   -SourceUri $osVhdUri) '
+   -ResourceGroupName $resourceGroupName
+```
+
+Fügen Sie den Betriebssystem-Datenträger an die neue VM an.
+
+```powershell
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+$VirtualMachine = Set-AzureRmVMOSDisk '
+   -VM $VirtualMachine '
+   -ManagedDiskId $osDisk.Id '
+   -StorageAccountType Premium_LRS '
+   -DiskSizeInGB 128 '
+   -CreateOption Attach -Windows
+```
+
+Erstellen Sie anhand der VHD-Datendatei einen verwalteten Datenträger, und fügen Sie ihn der neuen VM hinzu.
+
+```powershell
+$dataDisk1 = New-AzureRmDisk '
+   -DiskName $dataDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreationOption Import '
+   -SourceUri $dataVhdUri ) '
+   -ResourceGroupName $resourceGroupName
     
-    $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
-    -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
-    ```
+$VirtualMachine = Add-AzureRmVMDataDisk '
+   -VM $VirtualMachine '
+   -Name $dataDiskName '
+   -CreateOption Attach '
+   -ManagedDiskId $dataDisk1.Id '
+   -Lun 1
+```
 
-5.  Erstellen Sie die neue VM, indem Sie die öffentliche IP-Adresse, das virtuelle Netzwerk und die Netzwerkkarte festlegen.
+Erstellen Sie die neue VM, indem Sie die öffentliche IP-Adresse, das virtuelle Netzwerk und den Netzwerkadapter festlegen.
 
-    ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
-    -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+```powershell
+$publicIp = New-AzureRmPublicIpAddress '
+   -Name ($VirtualMachineName.ToLower()+'_ip') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -AllocationMethod Dynamic
     
-    $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+$vnet = Get-AzureRmVirtualNetwork '
+   -Name $virtualNetworkName '
+   -ResourceGroupName $resourceGroupName
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
-    -PublicIpAddressId $publicIp.Id
+$nic = New-AzureRmNetworkInterface '
+   -Name ($VirtualMachineName.ToLower()+'_nic') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -SubnetId $vnet.Subnets[0].Id '
+   -PublicIpAddressId $publicIp.Id
     
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+$VirtualMachine = Add-AzureRmVMNetworkInterface '
+   -VM $VirtualMachine '
+   -Id $nic.Id
     
-    New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
-    ```
+New-AzureRmVM -VM $VirtualMachine '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location
+```
 
 > [!NOTE]
 >Möglicherweise sind weitere Schritte zur Unterstützung Ihrer Anwendung erforderlich, die in dieser Anleitung nicht behandelt werden.

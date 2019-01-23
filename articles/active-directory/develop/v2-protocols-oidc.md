@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 756d00786005fb6de26ff363d4e233fc28b48687
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 01d73d9c42f99dde02a801af9967430c9735932d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426841"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320955"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 und das OpenID Connect-Protokoll
 
@@ -33,7 +33,7 @@ OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, 
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-*Autorisierungsprotokoll*, das als *Authentifizierungsprotokoll* verwendet werden soll, sodass das einmalige Anmelden mithilfe von OAuth funktioniert. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Da OpenID Connect das OAuth 2.0-Protokoll erweitert, können Apps auf sichere Weise *Zugriffstoken* abrufen, die für den Zugriff auf Ressourcen verwendet werden können, welche mithilfe eines [Autorisierungsservers](active-directory-v2-protocols.md#the-basics) geschützt werden. Der v2.0-Endpunkt lässt auch zu, dass bei Azure AD registrierte Drittanbieter-Apps Zugriffstoken für gesicherte Ressourcen wie Web-APIs ausstellen. Weitere Informationen zum Einrichten einer Anwendung zum Ausstellen von Zugriffstoken finden Sie unter [Registrieren einer App mit dem v2.0-Endpunkt](quickstart-v2-register-an-app.md). OpenID Connect wird für das Erstellen von [Webanwendungen](v2-app-types.md#web-apps) empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
 
-## <a name="protocol-diagram-sign-in"></a>Protokolldiagramm – Anmeldung
+## <a name="protocol-diagram-sign-in"></a>Protokolldiagramm: Anmeldung
 
 Der grundlegende Anmeldefluss besteht aus den in der nächsten Abbildung gezeigten Schritten. Jeder Schritt wird in diesem Artikel detailliert beschrieben.
 
@@ -86,7 +86,7 @@ Wenn die Web-App den Benutzer authentifizieren muss, kann sie ihn direkt an den 
 * Die Anforderung muss den `nonce` -Parameter enthalten.
 
 > [!IMPORTANT]
-> Zur erfolgreichen Anforderung eines ID-Token muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die **[implizite Gewährung](v2-oauth2-implicit-grant-flow.md)** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: „The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘“. (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
+> Zur erfolgreichen Anforderung eines ID-Tokens muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die **[implizite Genehmigung](v2-oauth2-implicit-grant-flow.md)** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: „Der angegebene Wert für den Eingabeparameter 'response_type' ist für diesen Client unzulässig. Expected value is ‚code‘“. (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
 
 Beispiel: 
 
@@ -207,13 +207,13 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 Wenn Sie Benutzer an `end_session_endpoint` umleiten, löscht der v2.0-Endpunkt die Sitzung des Benutzers aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Microsoft-Konten für die Authentifizierung verwenden. Damit diese Anwendungen den Benutzer gleichzeitig abmelden können, sendet der v2.0-Endpunkt eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine solche `LogoutUrl` im Code Ihrer Anwendung implementieren. Sie können die `LogoutUrl` über das App-Registrierungsportal festlegen.
 
-## <a name="protocol-diagram-access-token-acquisition"></a>Protokolldiagramm – Zugriffstokenabruf
+## <a name="protocol-diagram-access-token-acquisition"></a>Protokolldiagramm: Zugriffstokenbeschaffung
 
 Viele Web-Apps müssen nicht nur den Benutzer anmelden, sondern auch mithilfe von OAuth im Namen dieses Benutzers auf einen Webdienst zugreifen. Dieses Szenario kombiniert OpenID Connect für die Benutzerauthentifizierung und ruft gleichzeitig einen Autorisierungscode ab, der mithilfe des OAuth-Autorisierungscodeflusses Zugriffstoken abrufen kann.
 
 Der vollständige Ablauf für die Anmeldung mit OpenID Connect und den Abruf von Token sieht etwa wie folgt aus. Die einzelnen Schritte werden in den nächsten Abschnitten dieses Artikels im Detail beschrieben.
 
-![OpenID Connect-Protokoll: Tokenabruf](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
+![OpenID Connect-Protokoll: Tokenbeschaffung](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
 
 ## <a name="get-access-tokens"></a>Abrufen von Zugriffstoken
 Zum Abrufen von Zugriffstoken müssen Sie die Anmeldeanforderung abwandeln:

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fc32cf40266bdad1aa5365b30a27210ad735f299
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606181"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354381"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Erstellen einer Windows-Desktop-App
 Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Desktop-Apps in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel erfahren Sie, wie eine .NET Windows Presentation Foundation-App (WPF) für eine Aufgabenliste erstellt wird, die Benutzerregistrierung, -anmeldung und die Verwaltung von Profilen umfasst. Die App verfügt über Unterstützung für die Registrierung und Anmeldung mit einem Benutzernamen oder einer E-Mail-Adresse. Sie bietet auch Unterstützung für die Registrierung und Anmeldung über Konten für soziale Netzwerke wie Facebook und Google.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Erstellen eines Azure AD B2C-Verzeichnisses
-Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie [ein B2C-Verzeichnis erstellen](active-directory-b2c-get-started.md) , bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
+Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie [ein B2C-Verzeichnis erstellen](tutorial-create-tenant.md) , bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
 
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch werden Azure AD die Informationen bereitgestellt, die für die sichere Kommunikation mit Ihrer App erforderlich sind. Befolgen Sie zum Erstellen einer App [diese Anweisungen](active-directory-b2c-app-registration.md). Führen Sie folgende Schritte aus:
@@ -31,16 +31,14 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch w
 * Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Sie benötigen sie später.
 
 ## <a name="create-your-policies"></a>Erstellen der Richtlinien
-In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Dieses Codebeispiel enthält drei Benutzeroberflächen, für die Identitäten relevant sind: Registrierung, Anmeldung und Profilbearbeitung. Sie müssen für jeden Typ eine Richtlinie erstellen, wie im [Artikel mit Richtlinienreferenzen](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)beschrieben. Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Dieses Codebeispiel enthält drei Benutzeroberflächen, für die Identitäten relevant sind: Registrierung, Anmeldung und Profilbearbeitung. Beachten Sie beim Erstellen der beiden Richtlinien Folgendes:
 
 * Wählen Sie auf dem Blatt für den Identitätsanbieter **User ID sign-up** (Registrierung mit Benutzer-ID) oder **Email sign-up** (Registrierung mit E-Mail-Adresse) aus.
 * Wählen Sie den **Anzeigenamen** und andere Registrierungsattribute in der Registrierungsrichtlinie aus.
 * Wählen Sie den **Anzeigenamen** und die **Objekt-ID** als Anwendungsansprüche für jede Richtlinie aus. Sie können auch andere Ansprüche auswählen.
 * Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Sie müssen das Präfix `b2c_1_`aufweisen. Sie benötigen diese Richtliniennamen später.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-Nachdem Sie die drei Richtlinien erfolgreich erstellt haben, können Sie Ihre App erstellen.
+Nachdem Sie die Richtlinien erfolgreich erstellt haben, können Sie Ihre App erstellen.
 
 ## <a name="download-the-code"></a>Laden Sie den Code herunter.
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet)verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:

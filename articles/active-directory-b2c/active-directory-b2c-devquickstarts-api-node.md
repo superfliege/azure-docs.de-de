@@ -10,15 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117910"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354415"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Schützen einer Web-API mit Node.js
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Schützen einer Web-API mithilfe von Node.js in Azure Active Directory B2C
 
 Mit Azure Active Directory (Azure AD) B2C können Sie eine Web-API mithilfe von OAuth 2.0-Zugriffstoken sichern. Mit diesen Token können Ihre Client-Apps, die Azure AD B2C verwenden, sich bei der API authentifizieren. In diesem Artikel erfahren Sie, wie Sie eine Art Aufgabenlisten-API erstellen, mit der Benutzer Aufgaben hinzufügen und auflisten können. Die Web-API wird mit Azure AD B2C geschützt, und nur authentifizierte Benutzer können ihre Aufgabenliste verwalten.
 
@@ -36,7 +35,7 @@ Gehen Sie für dieses Beispiel wie folgt vor:
 3. Konfigurieren Sie eine Clientanwendung für den Aufruf der Web-API „To Do List“.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Erstellen eines Azure AD B2C-Verzeichnisses
-Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen.  Ein Verzeichnis ist ein Container für alle Benutzer, Apps, Gruppen und Ähnliches.  [Erstellen Sie zunächst ein B2C-Verzeichnis](active-directory-b2c-get-started.md) , sofern noch keines vorhanden ist.
+Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen.  Ein Verzeichnis ist ein Container für alle Benutzer, Apps, Gruppen und Ähnliches.  [Erstellen Sie zunächst ein B2C-Verzeichnis](tutorial-create-tenant.md) , sofern noch keines vorhanden ist.
 
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 Als nächstes müssen Sie eine App in Ihrem B2C-Verzeichnis erstellen, sodass Azure AD die Informationen erhält, die für die sichere Kommunikation mit Ihrer App erforderlich sind. In diesem Fall werden die Client-App und die Web-API durch eine einzelne **Anwendungs-ID**dargestellt, da sie zusammen eine logische App bilden. Befolgen Sie zum Erstellen einer App [diese Anweisungen](active-directory-b2c-app-registration.md). Führen Sie folgende Schritte aus:
@@ -47,17 +46,13 @@ Als nächstes müssen Sie eine App in Ihrem B2C-Verzeichnis erstellen, sodass Az
 * Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Diese Daten benötigen Sie später noch.
 
 ## <a name="create-your-policies"></a>Erstellen der Richtlinien
-In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält zwei identitätsbezogene Erfahrungen: Registrieren und Anmeldung. Sie müssen eine Richtlinie jedes Typs erstellen, wie im [Richtlinienreferenzartikel](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)beschrieben.  Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese Anwendung enthält zwei identitätsbezogene Oberflächen: Registrieren und Anmeldung. Sie müssen eine Richtlinie jedes Typs erstellen.  Achten Sie beim Erstellen der Richtlinien auf Folgendes:
 
 * Wählen Sie den **Anzeigenamen** und andere Registrierungsattribute in der Registrierungsrichtlinie aus.
 * Wählen Sie den **Anzeigenamen** und die **Objekt-ID** als Anwendungsansprüche in jeder Richtlinie aus.  Sie können auch andere Ansprüche auswählen.
 * Notieren Sie sich die **Namen** der einzelnen Richtlinien nach ihrer Erstellung. Sie müssen das Präfix `b2c_1_`aufweisen.  Diese Richtliniennamen werden später benötigt.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-Nachdem Sie die drei Richtlinien erstellt haben, können Sie Ihre App erstellen.
-
-Grundlegende Informationen zur Funktionsweise von Richtlinien in Azure AD B2C finden Sie im [Tutorial zu den ersten Schritten mit .NET-Web-Apps](active-directory-b2c-devquickstarts-web-dotnet.md).
+Nachdem Sie die Richtlinien erstellt haben, können Sie Ihre App erstellen.
 
 ## <a name="download-the-code"></a>Laden Sie den Code herunter.
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS)verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Sie können das Gerüst auch klonen:

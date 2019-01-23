@@ -1,6 +1,6 @@
 ---
 title: Was ist der Azure-Schlüsseltresor? Azure Key Vault | Microsoft-Dokumentation
-description: Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Durch Verwenden des Schlüsseltresors können Kunden Schlüssel und geheime Schlüssel (beispielsweise Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter) verschlüsseln, indem sie durch Hardwaresicherheitsmodule (HSMs) geschützte Schlüssel verwenden.
+description: Azure Key Vault schützt kryptografische Schlüssel und Geheimnisse, die von Cloudanwendungen und -diensten verwendet werden. Kunden können Authentifizierungsschlüssel, Schlüssel für Speicherkonten, Datenverschlüsselungsschlüssel, PFX-Dateien und Kennwörter verschlüsseln, indem sie Schlüssel verwenden, die durch Hardwaresicherheitsmodule (HSMs) geschützt werden.
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: f3c198ab8a17df019f1735a9b62e27f1051f64c5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 889f12b935eaad72eb7637524ab578f28fbc412f
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076330"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198489"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -76,7 +76,7 @@ Jeder Benutzer mit einem Azure-Abonnement kann Schlüsseltresore erstellen und v
 
 Dieser Administrator kann anschließend den Entwicklern die URIs für den Aufruf der Schlüssel aus ihren Anwendungen und den Sicherheitsadministratoren Protokollinformationen zur Schlüsselverwendung bereitstellen. 
 
-![Übersicht über Azure Key Vault][1]
+![Überblick über die Funktionsweise von Azure Key Vault][1]
 
 Entwickler können die Schlüssel außerdem durch Verwendung von APIs direkt verwalten. Weitere Informationen finden Sie im [Entwicklerhandbuch für den Schlüsseltresor](key-vault-developers-guide.md).
 

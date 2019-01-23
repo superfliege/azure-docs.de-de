@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405483"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329734"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench
 
@@ -26,7 +26,7 @@ Für das Debuggen durch Entwickler und zur Unterstützung ist ein PowerShell-Skr
 * Application Insights
 * Azure-Überwachung (Log Analytics)
 
-Anhand dieser Informationen können Sie die nächsten Schritte bestimmen und die Grundursache von Problemen ermitteln. 
+Anhand dieser Informationen können Sie die nächsten Schritte bestimmen und die Grundursache von Problemen ermitteln.
 
 ## <a name="troubleshooting-script"></a>Skript für die Problembehandlung
 
@@ -75,4 +75,4 @@ Der Ordner **Metrics** enthält Metriken verschiedener Systemkomponenten über e
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench-Architektur](architecture.md)
+> [Azure Blockchain Workbench Application Insights – Handbuch zur Problembehandlung](https://aka.ms/workbenchtroubleshooting)

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 01/14/2019
 ms.author: heidist
-ms.openlocfilehash: fbea686ba0f67cdab79f1553344bd99dd105fc00
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 139699fac1a84273174f2c3bd30da2a911de46b8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605248"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302256"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service
 
@@ -25,7 +25,7 @@ ms.locfileid: "45605248"
 
 + [Text Analytics API original announcement (Azure blog) (Ursprüngliche Ankündigung zur Textanalyse-API (Azure-Blog))](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
 
-+ [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (MSDN blog) (Verwenden der Textanalyse-API für Schlüsselbegriffe für Cognitive Services aus PowerShell (MSDN-Blog))](https://blogs.msdn.microsoft.com/riteshmodi/2017/03/24/text-analytics-key-phrase-cognitive-services-powershell/)
++ [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (AutomationNext blog) (Verwenden der Textanalyse-API für Schlüsselbegriffe für Cognitive Services aus PowerShell (AutomationNext-Blog))](https://automationnext.wordpress.com/tag/text-analytics/)
 
 + [R Quick tip: Microsoft Cognitive Services’ Text Analytics API (R Bloggers) (Schneller Tipp zu R: Für Cognitive Services allgemein verfügbare Textanalyse-API (R-Blogger))](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
@@ -33,7 +33,7 @@ ms.locfileid: "45605248"
 
 + [Sentiment analysis with Dynamics 365 CRM Online (MSDN blog) (Standpunktanalyse mit Dynamics 365 CRM Online (MSDN-Blog))](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ PowerBI blog: Extraction of key phrases from Facebook messages (Power BI-Blog: Schlüsselbegriffserkennung bei Facebook-Nachrichten): [Teil 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) und [Teil 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487).
++ PowerBI blog: Extraction of key phrases from Facebook messages: [Part 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) and [Part 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487) (Power BI-Blog: Schlüsselbegriffserkennung bei Facebook-Nachrichten): Teil 1 und Teil 2).
 
 ## <a name="videos"></a>Videos
 
@@ -49,5 +49,5 @@ Benötigen Sie Informationen zu einem Feature oder einem Anwendungsfall, die wir
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [StackOverflow: Text Analytics API (StackOverflow: Textanalyse-API)](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Azure Textanalyse-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

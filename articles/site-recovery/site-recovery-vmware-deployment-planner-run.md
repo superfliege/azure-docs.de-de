@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: mayg
-ms.openlocfilehash: 5de8bc9acd97016b401bd1c2bcce46f5ab851430
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 210872a468f92f92edef9c8e29a26382c5646dae
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811561"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321550"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -90,7 +90,7 @@ Während der Profilerstellung können Sie optional den Namen eines Speicherkonto
 
 Sie können mehrere Instanzen des Tools für verschiedene Gruppen von VMs ausführen. Stellen Sie sicher, dass die VM-Namen in den Gruppen für die Profilerstellung nicht mehr als einmal vorkommen. Wenn Sie beispielsweise Profile für zehn VMs (VM1 bis VM10) erstellt haben und nach einigen Tagen Profile für fünf weitere VMs (VM11 bis VM15) erstellen möchten, können Sie das Tool für die zweite Gruppe von VMs (VM11 bis VM15) über eine andere Befehlszeilenkonsole ausführen. Stellen Sie hierbei sicher, dass die zweite Gruppe von VMs keine Namen der VMs aus der ersten Profilerstellungsinstanz enthält, oder verwenden Sie für die zweite Ausführung ein anderes Ausgabeverzeichnis. Wenn zwei Instanzen des Tools für die Profilerstellung derselben VMs verwendet werden und dabei dasselbe Ausgabeverzeichnis genutzt wird, ist der generierte Bericht fehlerhaft.
 
-Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1.000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
+Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -168,7 +168,7 @@ Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmo
 |-OfferId|(Optional) Das Angebot, das dem jeweiligen Abonnement zugeordnet ist. Die Standardeinstellung ist MS-AZR-0003P (nutzungsbasierte Bezahlung).|
 |-Currency|(Optional) Die Währung, in der Kosten im generierten Bericht angezeigt werden. Die Standardeinstellung ist „US-Dollar ($)“ bzw. die zuletzt verwendete Währung.<br>Weitere Informationen finden Sie in der Liste mit den [unterstützten Währungen](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).|
 
-Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1.000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
+Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>

@@ -4,34 +4,37 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: victorh
-ms.openlocfilehash: 3d66d825306c5183bdd8d8e611d98904eef2022a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 66dea07a1ff725c6707b19bc6ebdc5563f1b158b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440169"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54211846"
 ---
 | Ressource | Standardlimit | Hinweis |
 | --- | --- | --- |
 | Application Gateway |1.000 pro Abonnement | |
-| Front-End-IP-Konfiguration |2 |1 öffentliche und 1 private |
-| Front-End-Ports |40 | |
-| Back-End-Adresspools |40 | |
+| Front-End-IP-Konfigurationen |2 |1 öffentliche und 1 private |
+| Front-End-Ports |100<sup>1</sup> | |
+| Back-End-Adresspools |100<sup>1</sup> | |
 | Back-End-Server pro Pool |1200 | |
-| HTTP-Listener |40 | |
-| HTTP-Lastenausgleichsregeln |400 |# der HTTP-Listener * n |
-| Back-End-HTTP-Einstellungen |40 | |
-| Instanzen pro Gateway |75 | |
-| SSL-Zertifikate |40 |1 pro HTTP-Listener |
-| Authentifizierungszertifikate |40 | |
+| HTTP-Listener |100<sup>1</sup> | |
+| HTTP-Lastenausgleichsregeln |100<sup>1</sup> | |
+| Back-End-HTTP-Einstellungen |100<sup>1</sup> | |
+| Instanzen pro Gateway |32 | |
+| SSL-Zertifikate |100<sup>1</sup> |1 pro HTTP-Listener |
+| Authentifizierungszertifikate |100 | |
+| Vertrauenswürdige Stammzertifikate |100 | |
 | Anforderungstimeout min. |1 Sekunde | |
 | Anforderungstimeout max. |24 Stunden | |
-| Anzahl der Websites |40 |1 pro HTTP-Listener |
+| Anzahl der Websites |100<sup>1</sup> |1 pro HTTP-Listener |
 | URL-Zuordnungen pro Listener |1 | |
-| Maximale Anzahl pfadbasierter Regeln pro URL-Zuordnung|100|
-| Umleitungskonfiguration |40| |
+| Maximale Anzahl pfadbasierter Regeln pro URL-Zuordnung|100||
+| Umleitungskonfiguration |100<sup>1</sup>| |
 | Gleichzeitige WebSocket-Verbindungen |5.000| |
-|Maximale URL-Länge|8.000|
+| Maximale URL-Länge|8.000||
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
 | Maximale Dateiuploadgröße (WAF) |Mittlere WAF-Gateways – 100 MB<br>Große WAF-Gateways – 500 MB| |
-|WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB|
+| WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB||
+
+<sup>1</sup> Bei WAF-fähigen SKUs sollten Sie für optimale Leistung die Anzahl der Ressourcen auf 40 beschränken.

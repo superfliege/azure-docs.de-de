@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren der Einstellungen des Prüfungstools in Content Moderator | Microsoft-Dokumentation
+title: Konfigurieren der Einstellungen des Prüfungstools in Content Moderator – Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Sie können Ihr Team, Ihre Tags, Konnektoren, Workflows und Anmeldeinformationen konfigurieren oder abrufen.
 services: cognitive-services
 author: sanjeev3
@@ -7,34 +8,34 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2ffed5e561cf9988ec10ecb7e10318d148281057
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8717eb58538889e99938164f97f10c010f87d6a5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851536"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262947"
 ---
-# <a name="review-tool-settings"></a>Einstellungen des Prüfungstools #
+# <a name="configure-review-tool-settings"></a>Konfigurieren der Einstellungen des Prüfungstools
 
 Über die Registerkarte „Einstellungen“ auf dem Dashboard des Prüfungstools können Sie problemlos zahlreiche Komponenten definieren und ändern.
 
 ![Prüfungseinstellungen in Content Moderator](images/settings-1.png)
 
-## <a name="team-and-subteams"></a>Team und untergeordnete Teams ## 
+## <a name="team-and-subteams"></a>Team und untergeordnete Teams
 
 Auf dieser Registerkarte können Sie Ihr Team und die untergeordneten Teams verwalten. Sie können nur ein Team haben, aber Sie können [mehrere untergeordnete Teams](subteams.md) erstellen und Einladungen an zukünftige Mitglieder senden. Nachdem Sie Einladungen verschickt haben, können Sie diese überwachen, Berechtigungen für Teammitglieder ändern und weitere Benutzer einladen. Nachdem die Teammitglieder Ihre Einladung angenommen haben, können Sie diese Mitglieder verschiedenen untergeordneten Teams zuordnen. Sie können die Rollen der Teammitglieder entweder als Administratoren oder als Prüfer festlegen: Administratoren können im Gegensatz zu Prüfern andere Benutzer einladen.
 
 ![Teameinstellungen in Content Moderator](images/settings-2-team.png)
 
-## <a name="tags"></a>Tags ##
+## <a name="tags"></a>Tags
 
 Hier können Sie [benutzerdefinierte Tags](tags.md) definieren, indem Sie den Kurzcode, den Namen und die Beschreibung für Ihre Tags eingeben. Nach der Erstellung sind sie während der Überprüfungen verfügbar. Sie können verschiedene Tags für unterschiedliche Überprüfungen verwenden, indem Sie deren Sichtbarkeit ein- bzw. ausschalten.
 
 ![Tag-Einstellungen in Content Moderator](images/settings-3-tags.png)
 
-## <a name="connectors"></a>Connectors ##
+## <a name="connectors"></a>Connectors
 
 Workflows erweitern den Funktionsumfang, indem sie über Connectors mit dem Prüfungstool kommunizieren. Das Prüfungstool ruft die Content Moderator-APIs mit dem Standardworkflow für die Inhaltsmoderation auf. Wenn Sie sich für das Prüfungstool registrieren, werden die Anmeldeinformationen für die Moderator-API automatisch für Sie bereitgestellt. Darüber hinaus wird die Integration anderer Konnektor-APIs unterstützt, sofern ein Konnektor verfügbar ist. Einige Konnektor sind sofort verfügbar.
 
@@ -42,13 +43,13 @@ Auf der [Registerkarte „Verbindungen“](connectors.md) können Sie Konnektore
 
 ![Konnektoreinstellungen in Content Moderator](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Workflows ##
+## <a name="workflows"></a>Workflows
 
 Workflows werden auf der Registerkarte „Workflows“ verwaltet. Sie können Workflows testen, indem Sie eine Beispieldatei hochladen. Sie können für Bilder und Text auch [benutzerdefinierte Workflows definieren](workflows.md), indem Sie die verfügbaren API-Konnektoren (auf der Registerkarte „Konnektoren“) verwenden. 
 
 ![Workfloweinstellungen in Content Moderator](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Anmeldeinformationen ##
+## <a name="credentials"></a>Anmeldeinformationen
 
 Diese Registerkarte bietet schnellen Zugriff auf Ihren Content Moderator-Abonnementschlüssel, den Sie benötigen, um die in Content Moderator enthaltenen APIs (APIs für Bildmoderation, Textmoderation, Listenverwaltung, Workflow und Überprüfung) zu verwenden.
  

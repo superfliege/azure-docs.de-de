@@ -14,24 +14,24 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6dbcee3ef5f1d58c78d088d21382c0ad6e731381
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f130f20643ba80bf706b8b5ba8f4b7eab0acaa59
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345539"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231443"
 ---
-# <a name="create-offer"></a>Erstellen eines Angebots
+# <a name="create-an-offer"></a>Erstellen von Angeboten
 
 In diesem Artikel wird erläutert, wie ein Beratungsdienstangebot erstellt und veröffentlicht wird.
 
 ## <a name="define-your-offer"></a>Definieren Ihres Angebots
 
-Definieren Sie Ihr konfiguriertes Beratungsdienstangebot. Fokussieren Sie auf Angebote, die einen festen Umfang, eine feste Laufzeit und einen geschätzten Festpreis haben (oder kostenlos sind) und primär presales-orientierte Angebote für einen einzelnen Kunden sind. Wählen Sie wiederholbare konfigurierte Projekte aus, die sich als beliebt und effektiv erwiesen haben, Ihnen neue Geschäfte zu bringen.
+Definieren Sie Ihr konfiguriertes Beratungsdienstangebot. Fokussieren Sie auf Angebote, die einen festen Umfang, eine feste Laufzeit und einen geschätzten Festpreis haben (oder kostenlos sind) und primär presales-orientierte Angebote für einen einzelnen Kunden sind. Wählen Sie wiederholbare konfigurierte Projekte aus, die beliebt sind und Ihnen effektiv neue Geschäftschancen bescheren.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
-Führen Sie die folgenden Schritte aus, um ein neues Angebot zu erstellen:
+Führen Sie die folgenden Schritte aus, um ein neues Angebot zu erstellen.
 1. Wählen Sie im Hauptmenü des Cloud-Partnerportals den Befehl **Neues Angebot** aus.
 1. Wählen Sie im Menü **Neues Angebot** den Eintrag **Beratungsdienst** aus.
 
@@ -39,7 +39,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Angebot zu erstellen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Seite *Neues Angebot* für den Beratungsdienst enthält eine Reihe von Registerkarten und Formularfeldern zum Erstellen eines neuen Angebots. In den folgenden Artikeln wird erläutert, wie Sie auf der jeweiligen Registerkarte die Angebotseinstellungen und Details der digitalen Ladenzeile für Ihr neues Angebot definieren.
+Die Seite **Neues Angebot** für den Beratungsdienst enthält eine Reihe von Registerkarten und Formularfeldern zum Erstellen eines neuen Angebots. In den folgenden Artikeln wird erläutert, wie Sie auf der Registerkarte die Angebotseinstellungen und Details der digitalen Ladenzeile für Ihr neues Angebot definieren:
 
-1.  [Definieren der Angebotseinstellungen](./cpp-consulting-service-define-offer-settings.md)
-1.  [Eingeben der Details der digitalen Ladenzeile und Festlegen, ob in Azure Marketplace oder in AppSource veröffentlicht werden soll](./cpp-consulting-service-storefront-details.md)
+-   [Definieren der Angebotseinstellungen](./cpp-consulting-service-define-offer-settings.md)
+-   [Eingeben der Details der digitalen Ladenzeile und Festlegen, ob im Azure Marketplace oder in AppSource veröffentlicht werden soll](./cpp-consulting-service-storefront-details.md)

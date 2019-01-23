@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994435"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354598"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -341,6 +341,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 | BlobCapacity | Der gesamte im Speicherkonto beanspruchte Blobspeicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
 | BlobCount    | Die Anzahl von im Speicherkonto gespeicherten Blobs. <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 <br/> Dimension: BlobType ([Definition](#metrics-dimensions)) |
 | ContainerCount    | Die Anzahl von Containern im Speicherkonto. <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
+| IndexCapacity     | Die vom hierarchischen ADLS Gen2-Index verwendete Speichermenge <br/><br/> Einheit: Byte <br/> Aggregationstyp: Durchschnitt <br/> Beispielwert: 1024 |
 
 ### <a name="table-storage"></a>Table Storage
 
@@ -368,7 +369,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ## <a name="transaction-metrics"></a>Transaktionsmetriken
 
-Transaktionsmetriken werden im Minutentakt von Azure Storage an Azure Monitor gesendet. Alle Transaktionsmetriken stehen sowohl auf der Konto- als auch auf der Dienstebene (Blob Storage, Table Storage, Azure Files und Queue Storage) zur Verfügung. Das Aggregationsintervall definiert das Zeitintervall für die dargestellten Metrikwerte. Für alle Transaktionsmetriken werden die Aggregationsintervalle PT1H und PT1M unterstützt.
+Transaktionsmetriken werden für jede Anforderung an ein Speicherkonto aus Azure Storage an Azure Monitor ausgegeben. Falls in Ihrem Speicherkonto keine Aktivität stattfindet, gibt es in diesem Zeitraum keine Daten zu Transaktionsmetriken. Alle Transaktionsmetriken stehen sowohl auf der Konto- als auch auf der Dienstebene (Blob Storage, Table Storage, Azure Files und Queue Storage) zur Verfügung. Das Aggregationsintervall definiert das Zeitintervall für die dargestellten Metrikwerte. Für alle Transaktionsmetriken werden die Aggregationsintervalle PT1H und PT1M unterstützt.
 
 Azure Storage stellt in Azure Monitor folgende Transaktionsmetriken bereit:
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 570c427166c07e93d3c8a7d3be079d9007238243
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 05fda1b4f71f67714b4723e15533d3555d497249
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656821"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321669"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Erstellen einer SAP NetWeaver Multi-SID-Konfiguration
 
@@ -72,7 +72,7 @@ Das Ziel besteht darin, mehrere SAP ABAP ASCS- oder SAP Java SCS-Clusterinstanze
 >Dies bedeutet, dass die maximale Anzahl von SAP ASCS/SCS-Instanzen auf einem WSFC-Cluster gleich der maximalen Anzahl privater Front-End-IPs pro internem Azure-Lastenausgleichsmodul ist.
 >
 
-Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerklimits – Azure Resource Manager][networking-limits-azure-resource-manager].
+Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 Die vollständige Szene mit zwei hoch verfügbaren SAP-Systemen sieht dann so aus:
 
@@ -208,7 +208,7 @@ foreach ($Port in $Ports) {
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 Nach Ausführung des Skripts werden die Ergebnisse im Azure-Portal angezeigt, wie im folgenden Screenshot gezeigt:

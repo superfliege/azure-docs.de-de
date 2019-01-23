@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: d2021873b36a55bd36cf500eff168fe7311d944c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579429"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265633"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
 Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.

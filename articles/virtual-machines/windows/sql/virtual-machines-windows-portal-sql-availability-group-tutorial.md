@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51238074"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359713"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
 In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen. Im Rahmen des vollständigen Tutorials wird eine Verfügbarkeitsgruppe mit einem Datenbankreplikat in zwei SQL Server-Instanzen erstellt.
 
-**Geschätzte Zeit**: Etwa 30 Minuten nach Abschluss der erforderlichen Vorbereitungen.
+**Geschätzter Zeitaufwand**: Etwa 30 Minuten nach Abschluss der erforderlichen Vorbereitungen.
 
 Das Diagramm veranschaulicht, was Sie im Rahmen dieses Tutorials erstellen.
 
@@ -51,6 +51,9 @@ Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sei
 
 
 Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md) ausgeführt werden. Falls die Voraussetzungen bereits erfüllt werden, können Sie direkt mit dem [Erstellen des Clusters](#CreateCluster) fortfahren.
+
+  >[!NOTE]
+  > Viele Schritte in diesem Tutorial können mit einer Azure-Schnellstartvorlage automatisiert werden. Weitere Informationen hierzu finden Sie unter [Erstellen von WSFC und Listener sowie Konfigurieren von ILB für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -296,7 +299,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\\**. Klicken Sie auf **Weiter**.
+8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\\\**. Klicken Sie auf **Weiter**.
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715769"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354314"
 ---
 # <a name="understand-role-definitions"></a>Grundlegendes zu Rollendefinitionen
 
@@ -166,12 +166,20 @@ Um Datenvorgänge anzuzeigen und mit diesen zu arbeiten, müssen Sie über die r
 | Tool  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 oder höher |
-| [Azure-CLI](/cli/azure/install-azure-cli) | 2.0.30 oder höher |
+| [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) | 2.0.30 oder höher |
 | [Azure für .NET](/dotnet/azure/) | 2.8.0-preview oder höher |
 | [Azure SDK für Go](/go/azure/azure-sdk-go-install) | 15.0.0 oder höher |
 | [Azure für Java](/java/azure/) | 1.9.0 oder höher |
 | [Azure für Python](/python/azure) | 0.40.0 oder höher |
 | [Azure SDK für Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 oder höher |
+
+Um die Datenvorgänge in der REST-API anzuzeigen und zu verwenden, müssen Sie den Parameter **api-version** auf die folgende Version oder höher festlegen:
+
+- 2018-01-01-preview
+
+Das Azure-Portal ermöglicht zudem das Durchsuchen und Verwalten der Inhalte von Warteschlangen- und Blobcontainern über die Azure AD-Vorschauoberfläche. Um den Inhalt eines Warteschlangen- oder Blobcontainers anzuzeigen und zu verwalten, klicken Sie in der Speicherkontoübersicht auf **Daten mithilfe der Azure AD-Vorschau erkunden**.
+
+![Erkunden von Warteschlangen- und Blobcontainern mit der Azure AD-Vorschau](./media/role-definitions/rbac-dataactions-browsing.png)
 
 ## <a name="actions"></a>Aktionen
 

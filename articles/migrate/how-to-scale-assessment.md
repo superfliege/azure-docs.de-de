@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 809d892c6238441f5a0bd93382acd7a783a4f0e9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2bc6f14eeb974ded462b8dcaf65d5401cc35291d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260717"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262216"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -19,10 +19,10 @@ Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In die
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen über die vCenter Server-Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen.
-- **vCenter-Konto**:  Sie benötigen ein schreibgeschütztes Konto für den Zugriff auf vCenter Server. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
-- **Berechtigungen:**  In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
-- **Statistikeinstellungen:**  Diese Anforderung gilt nur für das [Modell für einmalige Ermittlung](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), das nun veraltet ist. Für das Modell für einmalige Ermittlung sollten die Statistikeinstellungen für vCenter Server vor der Bereitstellung auf Ebene 3 festgelegt werden. Die Statistikebene muss für das Tages-, Wochen- und Monatssammlungsintervall jeweils auf 3 festgelegt werden. Bei einer niedrigeren Ebene für eines dieser Sammlungsintervalle wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden dann auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
+- **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen über die vCenter Server-Version 5.5, 6.0, 6.5 oder 6.7 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen.
+- **vCenter-Konto**: Sie benötigen ein schreibgeschütztes Konto, um auf vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
+- **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
+- **Statistikeinstellungen**: Diese Anforderung gilt nur für das [Modell für einmalige Ermittlung](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), das nun veraltet ist. Für das Modell für einmalige Ermittlung sollten die Statistikeinstellungen für vCenter Server vor der Bereitstellung auf Ebene 3 festgelegt werden. Die Statistikebene muss für das Tages-, Wochen- und Monatssammlungsintervall jeweils auf 3 festgelegt werden. Bei einer niedrigeren Ebene für eines dieser Sammlungsintervalle wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden dann auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 
 > [!NOTE]
 > Die Appliance zur einmaligen Ermittlung ist inzwischen veraltet, da diese Methode bei der Verfügbarkeit der Leistungsdatenpunkte von den Statistikeinstellungen von vCenter Server abhängig war und durchschnittliche Leistungsindikatoren erfasst hat, was zu unterdimensionierten virtuellen Computern für die Migration zu Azure führte.
@@ -79,16 +79,16 @@ Je nach Szenario können Sie Ihre Ermittlungen wie folgt aufteilen:
 ### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>Bei mehreren vCenter Server-Instanzen mit weniger als 1500 VMs
 Wenn Ihre Umgebung mehrere vCenter-Server enthält und die Gesamtanzahl virtueller Computer unter 1.500 liegt, können Sie basierend auf Ihrem Szenario folgendermaßen vorgehen:
 
-**Kontinuierliche Ermittlung:**  Bei kontinuierlicher Ermittlung kann eine Appliance mit nur einem einzelnen Projekt verbunden werden. Sie müssen daher eine Appliance für jeden vCenter-Server bereitstellen und dann ein Projekt für jede Appliance erstellen und die Ermittlungen entsprechend auslösen.
+**Kontinuierliche Ermittlung**: Bei kontinuierlicher Ermittlung kann eine Appliance mit nur einem einzelnen Projekt verbunden werden. Sie müssen daher eine Appliance für jeden vCenter-Server bereitstellen und dann ein Projekt für jede Appliance erstellen und die Ermittlungen entsprechend auslösen.
 
-**Einmalige Ermittlung (jetzt veraltet):**  Sie können einen einzelnen Collector und ein einziges Migrationsprojekt zum Ermitteln der virtuellen Computer für alle vCenter-Server verwenden. Da der Collector bei einmaliger Ermittlung jeweils nur eine vCenter Server-Instanz ermittelt, können Sie denselben Collector nacheinander für alle vCenter Server-Instanzen ausführen und ihn auf dasselbe Migrationsprojekt verweisen. Nach Abschluss aller Ermittlungen lassen sich Bewertungen für die Computer erstellen.
+**Einmalige Ermittlung (jetzt veraltet):** Sie können einen einzelnen Collector und ein einziges Migrationsprojekt zum Ermitteln der virtuellen Computer für alle vCenter-Server verwenden. Da der Collector bei einmaliger Ermittlung jeweils nur eine vCenter Server-Instanz ermittelt, können Sie denselben Collector nacheinander für alle vCenter Server-Instanzen ausführen und ihn auf dasselbe Migrationsprojekt verweisen. Nach Abschluss aller Ermittlungen lassen sich Bewertungen für die Computer erstellen.
 
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Bei mehreren vCenter Server-Instanzen mit mehr als 1500 VMs
 
 Wenn Sie mehrere vCenter Server-Instanzen mit weniger als 1.500 virtuellen Computern pro vCenter Server-Instanz, aber mehr als 1.500 virtuelle Computer über alle vCenter Server-Instanzen hinweg haben, müssen Sie mehrere Migrationsprojekte erstellen, da ein einzelnes Migrationsprojekt nur 1.500 virtuelle Computer enthalten kann. Hierzu können Sie ein Migrationsprojekt pro vCenter Server-Instanz erstellen und die Ermittlungen aufteilen.
 
-**Kontinuierliche Ermittlung:**  Sie müssen mehrere Collectorappliances (eine für jeden vCenter-Server) erstellen und jede Einheit mit einem Projekt verbinden und die Ermittlung entsprechend auslösen.
+**Kontinuierliche Ermittlung**: Sie müssen mehrere Collectorappliances (eine für jede vCenter Server-Instanz) erstellen und jede Einheit mit einem Projekt verbinden und die Ermittlung entsprechend auslösen.
 
 **Einmalige Ermittlung (jetzt veraltet):** Sie können jede vCenter Server-Instanz (nacheinander) mithilfe eines einzigen Collectors ermitteln. Wenn Sie möchten, dass die Ermittlungen zeitgleich beginnen, lassen sie sich durch die Bereitstellung mehrerer Appliances parallel ausführen.
 
@@ -96,7 +96,7 @@ Wenn Sie mehrere vCenter Server-Instanzen mit weniger als 1.500 virtuellen Compu
 
 Wenn Sie mehr als 1500 virtuelle Computer in einer einzelnen vCenter Server-Instanz haben, müssen Sie die Ermittlungen auf mehrere Migrationsprojekte aufteilen. Zum Aufteilen der Ermittlungen können Sie in der Appliance das Feld „Bereich“ nutzen und die folgenden zu ermittelnden Daten angeben: Host, Cluster, Ordner oder Rechenzentrum. Angenommen, Sie haben zwei Ordner in der vCenter Server-Instanz – einen mit 1.000 VMs (Ordner1) und einen anderen mit 800 VMs (Ordner2). In diesem Fall können Sie mit dem Feld „Bereich“ die Ermittlung zwischen diesen Ordnern aufteilen.
 
-**Kontinuierliche Ermittlung:**  In diesem Fall müssen Sie zwei Collectorappliances erstellen. Geben Sie dann für den ersten Collector den Bereich als „Ordner1“ an, und verbinden Sie ihn mit dem ersten Migrationsprojekt. Parallel dazu können Sie die Ermittlung von Ordner2 mithilfe der zweiten Collectorappliance starten und sie mit dem zweiten Migrationsprojekt verbinden.
+**Kontinuierliche Ermittlung**: In diesem Fall müssen Sie zwei Collectorappliances erstellen. Geben Sie dann für den ersten Collector den Bereich als „Ordner1“ an, und verbinden Sie ihn mit dem ersten Migrationsprojekt. Parallel dazu können Sie die Ermittlung von Ordner2 mithilfe der zweiten Collectorappliance starten und sie mit dem zweiten Migrationsprojekt verbinden.
 
 **Einmalige Ermittlung (jetzt veraltet):** Sie können mit demselben Collector beide Ermittlungen auslösen. Für die erste Ermittlung können Sie Ordner1 als Bereich festlegen und ihn auf das erste Migrationsprojekt verweisen. Nach Abschluss der ersten Ermittlung lässt sich derselbe Collector verwenden. Ändern Sie dazu seinen Bereich zu Ordner2, passen Sie die Details zum Migrationsprojekt an das zweite Migrationsprojekt an und führen Sie die zweite Ermittlung aus.
 
@@ -134,7 +134,7 @@ Wenn Sie über mehrere Projekte verfügen, müssen Sie die Collectorappliance nu
     > [!NOTE]
     > Die Appliance zur einmaligen Ermittlung ist inzwischen veraltet, da diese Methode bei der Verfügbarkeit der Leistungsdatenpunkte von den Statistikeinstellungen von vCenter Server abhängig war und durchschnittliche Leistungsindikatoren erfasst hat, was zu unterdimensionierten virtuellen Computern für die Migration zu Azure führte.
 
-    **Sofortige Ergebnisse:**  Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um sofortige Ergebnisse zu erzielen. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
+    **Sofortige Ergebnisse:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um sofortige Ergebnisse zu erzielen. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
 
     Beachten Sie, dass die Appliance nur Leistungsdaten kontinuierlich erfasst. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger etc.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
 

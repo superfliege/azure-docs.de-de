@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: cea5cb924914cff1195520d6bd28a8b62fce8698
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049961"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264409"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
@@ -32,7 +32,7 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 ### <a name="advantages"></a>Vorteile
 - Enge Integration in Azure. Visualisierungen mehrerer Azure-Seiten, z.B. Metrikanalysen, Protokollanalysen und Application Insights, können in Dashboards angeheftet werden.
 - Sowohl Metriken als auch Protokolle werden unterstützt.
-- Die Daten aus mehreren Quellen einschließlich der Ausgabe von [Metriken-Explorer](../azure-monitor/platform/metrics-charts.md) und [Log Analytics-Abfragen](../azure-monitor/log-query/log-query-overview.md) sowie [Karten](../azure-monitor/app/app-map.md) und [Verfügbarkeit]() in Application Insights werden kombiniert.
+- Die Daten aus mehreren Quellen einschließlich der Ausgabe von [Metriken-Explorer](../azure-monitor/platform/metrics-charts.md) und [Log Analytics-Abfragen](../azure-monitor/log-query/log-query-overview.md) sowie [Karten](../azure-monitor/app/app-map.md) und Verfügbarkeit in Application Insights werden kombiniert.
 - Option für persönliche oder freigegebene Dashboards. In [rollenbasierte Authentifizierung (Role Based Authentication, RBAC)](../role-based-access-control/overview.md) in Azure integriert.
 - Automatische Aktualisierung. Metriken werden abhängig vom Zeitbereich mindestens alle fünf Minuten aktualisiert. Protokolle werden jede Minute aktualisiert.
 - Dashboards mit parametrisierten Metriken mit Zeitstempel und benutzerdefinierten Parametern.

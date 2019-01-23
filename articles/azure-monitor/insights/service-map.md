@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186496"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232922"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -269,7 +269,7 @@ Im Bereich für **Computersicherheit** werden Daten aus der Sicherheits- und Üb
 ![Bereich für Computersicherheit](media/service-map/machine-security.png)
 
 ## <a name="updates-integration"></a>Integration von Updates
-Die Integration von Service Map in die Updateverwaltung erfolgt automatisch, wenn beide Lösungen im Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind.
+Die Integration der Dienstzuordnung in die Updateverwaltung erfolgt automatisch, wenn beide Lösungen im Log Analytics-Arbeitsbereich aktiviert und konfiguriert sind.
 
 Im Bereich für **Computerupdates** werden Daten aus der Updateverwaltungslösung für den ausgewählten Server angezeigt. Im Bereich wird ggf. für den ausgewählten Zeitraum eine Zusammenfassung fehlender Updates für den Server angezeigt.
 

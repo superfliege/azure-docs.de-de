@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: aa7169e29ec46abc1c7de2858a118745e7363411
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6aa4be204070423f91a2a4494b89a0bb8c8f5926
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587363"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258714"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -54,7 +54,7 @@ Informationen zum Migrieren vorhandener Aufträge zur Benutzerbereitstellung zu 
 Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden und den vorhandenen Bereitstellungsauftrag migrieren möchten, um die neuesten Fehlerbehebungen hinzuzufügen, gehen Sie wie im folgenden Verfahren beschrieben vor. Dieses Verfahren beschreibt die Verwendung von Microsoft Graph-API und Microsoft Graph-API-Explorer zum Entfernen Ihres alten Bereitstellungsauftrags aus Ihrer vorhandenen SCIM-App und zum Erstellen einer neuen mit dem neuen Verhalten.
 
 > [!NOTE]
-> Wenn sich die Anwendung noch in der Entwicklung befindet und bisher nicht für einmaliges Anmelden oder die Benutzerbereitstellung bereitgestellt wurde, ist es am einfachsten, den Anwendungseintrag im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen** zu löschen und mit der Option **Anwendung erstellen > Non-gallery** (Nicht aus dem Katalog) einfach einen neuen Eintrag für die Anwendung hinzuzufügen. Dies stellt eine Alternative zum Ausführen der folgenden Prozedur dar.
+> Wenn sich die Anwendung noch in der Entwicklung befindet und bisher nicht für einmaliges Anmelden oder die Benutzerbereitstellung bereitgestellt wurde, ist es am einfachsten, den Anwendungseintrag im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen** zu löschen und mit der Option **Anwendung erstellen > Nicht-Katalog** einfach einen neuen Eintrag für die Anwendung hinzuzufügen. Dies stellt eine Alternative zum Ausführen der folgenden Prozedur dar.
  
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Navigieren Sie im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen** zu Ihrer SCIM-Anwendung, und wählen Sie sie aus.

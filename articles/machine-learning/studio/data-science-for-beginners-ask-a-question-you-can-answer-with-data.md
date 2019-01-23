@@ -1,27 +1,8 @@
 ---
-title: Stellen Sie eine Frage, die durch Daten beantwortet werden kann – Azure Machine Learning Studio | Microsoft-Dokumentation
-description: Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen.
-keywords: Data Science-Probleme,Data Science-Fragen,Formulieren von Fragen,Regressionsfragen,Klassifizierungsfragen,genaue Frage
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cjgronlund
-ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250976"
+Titel: Stellen von Fragen, die durch Daten beantwortet werden können titleSuffix: Azure Machine Learning Studio-Beschreibung: Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03.01.2018
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Reihe „Data Science für Einsteiger“

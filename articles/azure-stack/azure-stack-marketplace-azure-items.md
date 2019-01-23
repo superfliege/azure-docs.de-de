@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 05a0e0d88f09853274d6bc6b65f66cf66369f77d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.reviewer: unknown
+ms.openlocfilehash: d006deb83ca16860eb669548ae8563304f7937fa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044194"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306606"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
@@ -90,7 +90,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![Debian 8 „Jessie“](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux ist eine der am häufigsten verwendeten Linux-Distributionen. | credativ |
 | ![6.9 (CentOS-basiert)](media/azure-stack-marketplace-azure-items/roguewave.png) | [6.9 (CentOS-basiert)](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | Diese Linux-Distribution basiert auf CentOS und wird von Rogue Wave Software bereitgestellt. | Rogue Wave Software (früher OpenLogic)  |
 | ![6.10 (CentOS-basiert)](media/azure-stack-marketplace-azure-items/roguewave.png) | [6.10 (CentOS-basiert)](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | Diese Linux-Distribution basiert auf CentOS und wird von Rogue Wave Software bereitgestellt. | Rogue Wave Software (früher OpenLogic)  |
-| ![7.3 (CentOS-basiert)](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.3 (CentOS-basiert)](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73) | Diese Linux-Distribution basiert auf CentOS und wird von Rogue Wave Software bereitgestellt. | Rogue Wave Software (früher OpenLogic) |
+| ![7.3 (CentOS-basiert)](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.3 (CentOS-basiert)](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73HPC) | Diese Linux-Distribution basiert auf CentOS und wird von Rogue Wave Software bereitgestellt. | Rogue Wave Software (früher OpenLogic) |
 | ![7.5 (CentOS-basiert)](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.5 (CentOS-basiert)](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | Diese Linux-Distribution basiert auf CentOS und wird von Rogue Wave Software bereitgestellt. | Rogue Wave Software (früher OpenLogic) |
 | ![7.5 LVM (CentOS-basiert)](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.5 LVM (CentOS-basiert)](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | Diese Linux-Distribution basiert auf CentOS und wird von Rogue Wave Software bereitgestellt. | Rogue Wave Software (früher OpenLogic) |
 | ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 11 SP4 | SUSE |
@@ -243,7 +243,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | Diese Lösung stellt einen Kubernetes-Cluster bereit, der als eigenständiger Cluster mit Vorlagen ausgeführt wird, die mithilfe der ACS Engine generiert wurden.<br>**Diese Lösungsvorlage erfordert auch Ubuntu Server 16.04 LTS und Custom Script for Linux 2.0.**| Microsoft |
 | ![Service Fabric-Cluster](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric-Cluster](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | Diese Lösung stellt Service Fabric als eigenständigen Cluster in einer VM-Skalierungsgruppe bereit. <br>**Diese Lösungsvorlage erfordert, dass Sie auch Windows Server 2016 Datacenter** herunterladen.| Microsoft |
 | ![NRI mPLAT Suite – Multi-Cloud Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite – Multi-Cloud Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Eine Verwaltungskonsole zum Überwachen, Konfigurieren, Bereitstellen, Automatisieren und Steuern einer Workload oder Cloud. | NRI |
-| ![NooBaa Hybrid AWS S3 compatible – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 compatible – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibler Speicherdienst für öffentliche und lokale Kapazitätsressourcen | NooBaa |
+| ![NooBaa Hybrid AWS S3 compatible – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3-kompatibel – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibler Speicherdienst für öffentliche und lokale Kapazitätsressourcen | NooBaa |
 | ![NetFoundry-Gateway für Multipoint, Zero Trust Azure Stack-Verbindungen](media/azure-stack-marketplace-azure-items/netfoundry.png) | [NetFoundry-Gateway für Multipoint, Zero Trust Azure Stack-Verbindungen](https://azuremarketplace.microsoft.com/marketplace/apps/tata_communications.netfoundry_cloud_gateway) | Ausschließlich softwarebasierte Multipoint-Konnektivität zwischen Azure Stack und beliebigen Zielen, über jede Netzwerkverbindung, mit branchenführender Zero Trust-Sicherheit, dem 5-fachen Durchsatz des VPN und einer unbegrenzten Anzahl gleichzeitiger Benutzer. | NetFoundry |
 | ![VM-Series-Firewall der nächsten Generation von Palo Alto](media/azure-stack-marketplace-azure-items/paloalto.png) | [VM-Series-Firewall der nächsten Generation von Palo Alto](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | Die VM-Series-Firewall der nächsten Generation ermöglicht Kunden das sichere Migrieren ihrer Anwendungen und Daten zu Azure Stack. Sie werden dabei mit Richtlinien für Anwendungswhitelists und Bedrohungsschutz vor bekannten und unbekannten Bedrohungen geschützt. **Für die Bereitstellung dieses Images ist eine Vorlage erforderlich. In diesem [Artikel](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack) finden Sie wichtige Informationen.**| Palo Alto Networks, Inc. |
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application Firewall erkennt bekannte und unbekannte Sicherheitsrisiken und verhindert Angriffe auf Web-Apps. **Laden Sie beide Marketplace-Elemente für PT herunter.** | Positive Technologien |

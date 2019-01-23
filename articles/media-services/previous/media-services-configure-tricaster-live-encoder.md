@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: 8084f32ac8cc2184d93796468ad66fb73398e876
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e3a3a9946c3352be0409d1a773408e17302911fc
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783779"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304804"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des NewTek TriCaster-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
 > [!div class="op_single_selector"]
@@ -40,17 +40,20 @@ In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * [Erstellen eines Azure Media Services-Kontos](media-services-portal-create-account.md)
 * Stellen Sie sicher, dass ein Streamingendpunkt vorhanden ist, der ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md)
 * Installieren Sie die neueste Version des [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) -Tools.
 * Starten Sie das Tool, und stellen Sie eine Verbindung mit Ihrem AMS-Konto her.
 
 ## <a name="tips"></a>Tipps
+
 * Verwenden Sie nach Möglichkeit eine Kabelverbindung zum Internet.
 * Als Faustregel zum Bestimmen der erforderlichen Bandbreite verdoppeln Sie die Streamingbitraten. Dies ist zwar keine zwingende Voraussetzung, aber hilfreich, um die Auswirkungen einer Überlastung des Netzwerks zu verringern.
 * Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
 
 ## <a name="create-a-channel"></a>Erstellen eines Kanals
+
 1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live**, und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen** aus.
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
@@ -75,24 +78,26 @@ Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media
 >
 >
 
-## <a id=configure_tricaster_rtmp></a>Konfigurieren des NewTek TriCaster-Encoders
+## <a name="a-idconfiguretricasterrtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>Konfigurieren des NewTek TriCaster-Encoders
+
 In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restlichen Teil dieses Abschnitts werden die Konfigurationsschritte im Detail beschrieben.
 
 **Video**:
 
 * Codec: H.264
-* Profil: Hoch (Level 4.0)
-* Bitrate: 5.000 KBit/s
+* Profil: Hoch (Ebene 4.0)
+* Bitrate: 5.000 KBit/s
 * Keyframe: 2 Sekunden (60 Sekunden)
 * Bildfrequenz: 30
 
 **Audio**:
 
 * Codec: AAC (LC)
-* Bit Rate: 192 Kbit/s
+* Bitrate: 192 KBit/s
 * Abtastrate: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurationsschritte
+
 1. Erstellen Sie ein neues **NewTek TriCaster** -Projekt abhängig von der verwendeten Videoeingabequelle.
 2. Suchen Sie in diesem Projekt die Schaltfläche **Streamen** , und klicken Sie auf das Zahnradsymbol daneben, um das Konfigurationsmenü für den Datenstrom zu öffnen.
 
@@ -131,6 +136,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 >
 
 ## <a name="test-playback"></a>Testen der Wiedergabe
+
 Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Playback the Preview** (Vorschau wiedergeben), und wählen Sie **with Azure Media Player** (mit Azure Media Player) aus.  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
@@ -140,6 +146,7 @@ Wenn der Datenstrom im Player angezeigt wird, wurde der Encoder ordnungsgemäß 
 Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und die Encodereinstellungen anpassen. Eine Anleitung finden Sie im Artikel zur [Problembehandlung](media-services-troubleshooting-live-streaming.md).  
 
 ## <a name="create-a-program"></a>Erstellen eines Programms
+
 1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Create New Program** (Neues Programm erstellen) aus.  
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
@@ -156,12 +163,15 @@ Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und 
 Der Datenstrom kann jetzt in einen Player eingebettet oder an eine Zielgruppe für die Livewiedergabe verteilt werden.  
 
 ## <a name="troubleshooting"></a>Problembehandlung
+
 Eine Anleitung finden Sie im Artikel zur [Problembehandlung](media-services-troubleshooting-live-streaming.md).
 
 ## <a name="next-step"></a>Nächster Schritt
+
 Überprüfen Sie die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

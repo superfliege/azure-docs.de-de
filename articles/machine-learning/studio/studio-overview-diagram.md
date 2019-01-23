@@ -1,27 +1,8 @@
 ---
-title: 'Übersichtsdiagramm der Machine Learning Studio-Funktionen: Azure | Microsoft-Dokumentation'
-description: Eine druckbares Diagramm der Funktionen von Azure Machine Learning Studio, in dem dargestellt ist, wie Sie mithilfe von Studio ein Predictive Analytics-Experiment entwickeln und dieses in der Azure-Cloud anwenden können.
-keywords: Machine Learning Studio,Übersichtsdiagramm,Download
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: garye
-editor: cgronlun
-ms.assetid: 5b302c6c-41fd-4551-a4ae-0f5b450e1e6b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
-ms.date: 04/04/2017
-ms.openlocfilehash: ce842d11d47529eca2be894a230b60417cea102f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278014"
+Titel: Übersichtsdiagramm der Machine Learning Studio-Funktionen titleSuffix: Azure Machine Learning Studio – Beschreibung: Eine druckbares Diagramm der Funktionen von Azure Machine Learning Studio, in dem dargestellt ist, wie Sie mithilfe von Studio ein Predictive Analytics-Experiment entwickeln und dieses in der Azure-Cloud anwenden können.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: overview
+
+Autor: garyericson ms.author: garye ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 04.04.2017
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen
 Das Diagramm **Übersicht der Microsoft Azure Machine Learning Studio-Funktionen** bietet eine allgemeine Übersicht, wie Machine Learning Studio dazu verwendet werden kann, Predictive Analytics-Modelle zu entwickeln und diese in der Azure-Cloud anzuwenden.

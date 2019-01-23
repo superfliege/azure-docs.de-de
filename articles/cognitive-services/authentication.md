@@ -7,14 +7,14 @@ author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 81a902c6cf6b9b3491933e4bc14dc1e774185869
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726289"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305450"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -58,6 +58,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+Das folgende Video veranschaulicht die Verwendung eines Cognitive Services-Schlüssels. 
+
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für mehrere Dienste
 
 >[!WARNING]
@@ -66,6 +68,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 Bei dieser Option wird ebenfalls ein Abonnementschlüssel zum Authentifizieren von Anforderungen verwendet. Der Hauptunterschied besteht darin, dass der Abonnementschlüssel nicht an einen bestimmten Dienst gebunden ist, sondern dass ein einzelner Schlüssel zum Authentifizieren von Anforderungen für mehrere Cognitive Services-Dienste verwendet werden kann. Weitere Informationen zur regionalen Verfügbarkeit, den unterstützten Funktionen und den Preisen finden Sie unter [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
 
 Der Abonnementschlüssel wird in jeder Anforderung als `Ocp-Apim-Subscription-Key`-Header bereitgestellt.
+
+[![Demonstration eines Abonnementschlüssels für mehrere Dienste für Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 

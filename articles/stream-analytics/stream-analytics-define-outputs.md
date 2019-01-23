@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d7c8aa73f72f6db93c6ef78c333c36e1d26b74e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 805df837d5d33c5f21799e39145c62e71afdb4b5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995064"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231392"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen.
@@ -73,6 +73,8 @@ Um die Autorisierung zu erneuern, klicken Sie in Ihrem Auftrag auf **Beenden**, 
 | Username | Der Benutzername, der Schreibzugriff auf die Datenbank besitzt. Stream Analytics unterstützt nur die SQL-Authentifizierung. |
 | Kennwort | Das Kennwort zum Herstellen einer Verbindung mit der Datenbank |
 | Table | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Für den Tabellennamen muss zwischen Groß-/Kleinschreibung unterschieden werden. Das Schema dieser Tabelle sollte genau mit der Anzahl Felder und ihrer Typen übereinstimmen, die von der Auftragsausgabe generiert werden. |
+|Erben des Partitionsschemas| Dadurch können Sie das Partitionsschema aus Ihrem vorherigen Abfrageschritt erben, um die vollständig parallele Topologie mit mehreren in die Tabelle Schreibenden zu aktivieren. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).|
+|Übereinstimmung mit der Batchanzahl| Die empfohlene Obergrenze der Anzahl von Datensätzen, die mit jeder Transaktion zum Masseneinfügen gesendet werden.|
 
 > [!NOTE]
 > Zurzeit wird das Azure SQL-Datenbank-Angebot für eine Auftragsausgabe in Stream Analytics unterstützt. Eine Azure-VM mit SQL Server und angefügter Datenbank wird jedoch nicht unterstützt. Dies soll in zukünftigen Versionen geändert werden.

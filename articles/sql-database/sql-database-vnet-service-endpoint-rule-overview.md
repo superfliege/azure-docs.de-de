@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 1/16/2019
+ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728124"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359849"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL
 
@@ -118,8 +118,9 @@ Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende
 
 - Regeln für ein virtuelles Netzwerk gelten nur für virtuelle Netzwerke gemäß dem Azure Resource Manager-Modell und nicht gemäß dem [klassischen Bereitstellungsmodell][arm-deployment-model-568f].
 
-- Durch das Aktivieren virtueller Netzwerkdienst-Endpunkte für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und PostgreSQL aktiviert. Jedoch treten bei Verbindungen von den Endpunkten mit den MySQL- oder PostgreSQL-Instanzen Fehler auf, wenn Endpunkte aktiviert sind.
-  - Der Grund dafür ist, dass ACLing derzeit von MySQL und PostgreSQL nicht unterstützt wird.
+- Durch das Aktivieren virtueller Netzwerkdienst-Endpunkte für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und PostgreSQL aktiviert. Jedoch treten bei Verbindungen von den Endpunkten mit den MySQL- oder PostgreSQL-Instanzen möglicherweise Fehler auf, wenn Endpunkte aktiviert sind.
+  - Der Grund dafür ist, dass für MySQL und PostgreSQL wahrscheinlich keine Regel für virtuelle Netzwerke konfiguriert wurde. Sie müssen für Azure Database for MySQL und PostgreSQL eine Regel für virtuelle Netzwerke konfigurieren, damit die Verbindung erfolgreich hergestellt wird.
+
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, Regeln für virtuelle Netzwerke jedoch nicht:
   - [Virtuelles privates Netzwerk zwischen Standorten][vpn-gateway-indexmd-608y]
   - Lokal über [ExpressRoute][expressroute-indexmd-744v]

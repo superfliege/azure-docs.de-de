@@ -6,14 +6,14 @@ author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792888"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353854"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Schnellstart: Einrichten von Clustern in HDInsight
 
@@ -25,6 +25,10 @@ Ein Hadoop-Cluster besteht aus mehreren virtuellen Computern (Knoten), die zur v
 >Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Gebühren werden anteilig nach Minuten erhoben. Daher sollten Sie Ihren Cluster immer löschen, wenn Sie ihn nicht mehr verwenden. Erfahren Sie, wie Sie [einen Cluster löschen](../../hdinsight/hdinsight-delete-cluster.md).
 
 In diesem Schnellstart wird ein Speicherkonto mit Data Lake Storage Gen2-Funktionen als Datenschicht verwendet. Mit dem Dienst für hierarchischen Namespace und dem [Hadoop-Treiber](data-lake-storage-abfs-driver.md) ist Data Lake Storage Gen2 für die verteilte Verarbeitung und Analyse optimiert. In einem Speicherkonto mit aktiviertem Data Lake Storage Gen2 gespeicherte Daten bleiben auch nach dem Löschen eines HDInsight-Clusters erhalten.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie müssen eine benutzerseitig zugewiesene verwaltete Identität erstellen und dieser dann die Rolle **Mitwirkender an Blob Storage** zuweisen. Informationen hierzu finden Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer benutzerseitig zugewiesenen verwalteten Identität über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 ## <a name="cluster-setup-methods"></a>Methoden für die Clustereinrichtung
 
@@ -104,8 +108,7 @@ Während der Konfiguration geben Sie als Standardspeicherendpunkt Data Lake Stor
 
 ![Clusterspeichereinstellungen: HDFS-kompatible Speicherendpunkte](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
-> [!IMPORTANT]
-> Vergessen Sie nicht, den **Zugriff auf Data Lake Store zu deaktivieren**. Diese Einstellungen beziehen sich auf die alte *Data Lake Store*-Funktionalität und müssen deaktiviert werden, damit *Data Lake Storage*-Funktionen einwandfrei arbeiten.
+Wählen Sie unter **Benutzerseitig zugewiesene verwaltete Identität** die benutzerseitig verwaltete, benutzerseitig zugewiesene verwaltete Identität aus, die Sie als Voraussetzung für diesen Artikel erstellt haben.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 1e81f165c3ab38fffae7523efc6cb2ae307a1a25
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549631"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232888"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
@@ -816,7 +816,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |ClusterDataCapacityFactor|Cacheauslastung|Prozent|Durchschnitt|Auslastungsgrad im Clusterbereich|Keine Dimensionen|
 |QueryDuration|Abfragedauer|Millisekunden|Durchschnitt|Abfragedauer in Sekunden|QueryStatus|
 |IngestionsLoadFactor|Datenerfassungsauslastung|Prozent|Durchschnitt|Verhältnis der verwendeten Datenerfassungsslots im Cluster|Keine Dimensionen|
-|IsEngineAnsweringQuery|Keep-Alive|Count|Durchschnitt|Die Integritätsprüfung zeigt an, dass der Cluster auf Abfragen reagiert|Keine Dimensionen|
+|IsEngineAnsweringQuery|Keep-Alive|Count|Durchschnitt|Die Integritätsprüfung zeigt an, dass der Cluster auf Abfragen reagiert.|Keine Dimensionen|
 |IngestCommandOriginalSizeInMb|Datenerfassungsvolumen (in MB)|Count|Gesamt|Gesamtvolumen der im Cluster erfassten Daten (in MB)|Keine Dimensionen|
 |EventAgeSeconds|Erfassungswartezeit (in Sekunden)|Sekunden|Durchschnitt|Erfassungszeit von der Quelle (z. B. Nachricht in EventHub) zum Cluster in Sekunden|Keine Dimensionen|
 |EventReceivedFromEventHub|Verarbeitete Ereignisse (für Event Hubs)|Count|Gesamt|Anzahl der vom Cluster verarbeiteten Ereignisse beim Erfassen aus Event Hub|Keine Dimensionen|

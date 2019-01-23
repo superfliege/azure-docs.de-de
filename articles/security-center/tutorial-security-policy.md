@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
+ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: f9cc6f5c35b528d3a545293b9a946bc3eda3d7ac
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339331"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259963"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -28,12 +28,15 @@ In diesem Artikel wird beschrieben, wie Sicherheitsrichtlinien konfiguriert werd
 
 Anweisungen dazu, wie Richtlinien über PowerShell festgelegt werden, finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure RM-PowerShell-Moduls](../azure-policy/assign-policy-definition-ps.md).
 
+>[!NOTE]
+> Die Integration von Security Center in Azure Policy hat begonnen. Bestandskunden werden automatisch zur neuen integrierten Initiative in Azure Policy anstelle der vorherigen Sicherheitsrichtlinien in Security Center migriert. Diese Änderung wirkt sich nicht auf Ihre Ressourcen oder Umgebung aus, mit der Ausnahme, dass die neue Initiative in Azure Policy vorhanden ist.
+
 ## <a name="what-are-security-policies"></a>Was sind Sicherheitsrichtlinien?
 Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Azure Policy können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen. So kann etwa für Anwendungen mit regulierten Daten (beispielsweise personenbezogene Informationen) eine höhere Sicherheitsstufe erforderlich sein als für andere Workloads. Um eine Richtlinie mehreren Abonnements oder Verwaltungsgruppen zuzuweisen, legen Sie diese in [Azure Policy](../azure-policy/azure-policy-introduction.md) fest.
 
-
-
 Ihre Sicherheitsrichtlinien sind die Grundlage der Sicherheitsempfehlungen, die Sie in Azure Security Center erhalten. Sie können ihre Einhaltung überwachen, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen eindämmen können. Weitere Informationen zur Ermittlung der Option, die für Sie geeignet ist, finden Sie in der Liste mit den [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md).
+
+Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sicherheitsrichtlinie in Azure Policy als integrierte Initiative unter der Kategorie Security Center dargestellt. Die integrierte Initiative wird automatisch allen in Security Center registrierten Abonnements (Tarife „Free“ oder „Standard“) zugewiesen. Die integrierte Initiative enthält nur Überwachungsrichtlinien. 
 
 
 ### <a name="management-groups"></a>Verwaltungsgruppen
@@ -57,8 +60,6 @@ Eine Azure-Richtlinie umfasst die folgenden Komponenten:
 - Eine **Initiative** ist eine Sammlung mit Richtlinien.
 - Eine **Zuweisung** ist die Anwendung einer Initiative oder Richtlinie auf einen bestimmten Bereich (Verwaltungsgruppe, Abonnement oder Ressourcengruppe).
 
-Eine Ressource wird basierend auf den Richtlinien ausgewertet, die ihr zugewiesen sind, und erhält gemäß der Anzahl von Richtlinien, mit denen die Ressource konform ist, einen Konformitätsverhältniswert.
-
 ## <a name="view-security-policies"></a>Anzeigen von Sicherheitsrichtlinien
 
 Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
@@ -76,12 +77,9 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
   In den Spalten der Tabelle wird Folgendes angezeigt:
 
  - **Zuweisung der Richtlinieninitiative**: [Integrierte Richtlinien](security-center-policy-definitions.md) und Initiativen von Security Center, die einem Abonnement oder einer Verwaltungsgruppe zugewiesen sind.
- - **Konformität**: Die Gesamtbewertung zur Konformität (Compliance) für eine Verwaltungsgruppe, ein Abonnement oder einen Arbeitsbereich. Die Bewertung drückt den gewichteten Mittelwert der Zuweisungen aus. In den gewichteten Mittelwert werden die Anzahl von Richtlinien einer einzelnen Zuweisung und die Anzahl von Ressourcen einbezogen, für die die Zuweisung gilt.
-
- Wenn Ihr Abonnement beispielsweise über zwei VMs und eine Initiative mit fünf zugewiesenen Richtlinien verfügt, weist Ihr Abonnement zehn Bewertungen auf. Falls eine der VMs die Anforderungen für zwei Richtlinien nicht erfüllt, hat die Gesamtbewertung für die Konformität der Abonnementzuweisung den Wert 80%.
-
  - **Abdeckung**: Identifiziert den Tarif („Free“ oder „Standard“), unter dem die Verwaltungsgruppe, das Abonnement oder der Arbeitsbereich ausgeführt werden.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
  - **Einstellungen**: Abonnements verfügen über den Link **Einstellungen bearbeiten**. Indem Sie **Einstellungen bearbeiten** wählen, können Sie Ihre [Security Center-Einstellungen](security-center-policies-overview.md) für jedes Abonnement bzw. jede Verwaltungsgruppe aktualisieren.
+ - **Sicherheitsbewertung**: Die [Sicherheitsbewertung](security-center-secure-score.md) informiert Sie über den Sicherheitszustand Ihrer Workload und hilft Ihnen, Verbesserungsempfehlungen Priorität einzuräumen.
 
 2. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, zu dem bzw. der Sie die Richtlinien anzeigen möchten.
 

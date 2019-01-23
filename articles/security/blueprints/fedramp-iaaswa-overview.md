@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5ba6a001f8933283e0867367ef7bd8d3918c3fd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 59a3a92640c7f0bc434881921e520d1b9cb352c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405377"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265496"
 ---
-# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Blaupause für Azure Security and Compliance: IaaS-Webanwendung für FedRAMP
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure-Blaupause für Sicherheit und Compliance: IaaS-Webanwendung für FedRAMP
 
 ## <a name="overview"></a>Übersicht
 
@@ -84,7 +84,7 @@ Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung 
 ### <a name="virtual-network"></a>Virtuelles Netzwerk
 Die Architektur definiert ein privates virtuelles Netzwerk mit dem Adressraum 10.200.0.0/16.
 
-**Netzwerksicherheitsgruppen:** Diese Lösung stellt Ressourcen in einer Architektur mit separatem Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz innerhalb eines virtuellen Netzwerks bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken.
+**Netzwerksicherheitsgruppen**: Diese Lösung stellt Ressourcen in einer Architektur mit einem separaten Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Managementsubnetz in einem virtuellen Netzwerk bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken.
 
 Details finden Sie in der Konfiguration für [Netzwerksicherheitsgruppen](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json), die mit dieser Lösung bereitgestellt wird. Kunden können Netzwerksicherheitsgruppen konfigurieren, indem sie die Datei oben bearbeiten und dabei [diese Dokumentation](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) als Leitfaden verwenden.
 
@@ -95,15 +95,15 @@ Jedes der Subnetze verfügt über eine dedizierte Netzwerksicherheitsgruppe (NSG
 - 1 NSG für SQL Server-Instanzen (SQLNSG)
 - 1 NSG für Webschicht (WEBNSG)
 
-**Subnetze:** Jedes Subnetz ist seiner entsprechenden NSG zugeordnet.
+**Subnetze**: Jedem Subnetz ist die entsprechende NSG zugeordnet.
 
 ### <a name="data-at-rest"></a>Ruhende Daten
 
 Die Architektur schützt ruhende Daten mithilfe mehrerer Verschlüsselungsmaßnahmen.
 
-**Azure Storage**: Um den Verschlüsselungsanforderungen von ruhenden Daten gerecht zu werden, verwenden alle Speicherkonten die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+**Azure Storage**: Um den Verschlüsselungsanforderungen von ruhenden Daten gerecht zu werden, verwenden alle Speicherkonten [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
-**SQL Server**: SQL Server ist für die Verwendung der [TDE-Technologie (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) konfiguriert, die die Echtzeitverschlüsselung und -entschlüsselung von Daten und Protokolldateien ausführt, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind.
+**SQL Server:** SQL Server ist für die Verwendung der [TDE-Technologie (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) konfiguriert, die Echtzeitverschlüsselung und -entschlüsselung von Daten und Protokolldateien ausführt, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind.
 
 Kunden können auch die folgenden SQL Server-Sicherheitsmaßnahmen konfigurieren:
 -   Die [AD-Authentifizierung und -Autorisierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten.
@@ -113,7 +113,7 @@ Kunden können auch die folgenden SQL Server-Sicherheitsmaßnahmen konfigurieren
 -   [Always Encrypted-Spalten](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) stellen sicher, dass vertrauliche Daten im Datenbanksystem niemals im Klartextformat angezeigt werden. Nach dem Aktivieren der Datenverschlüsselung können nur Clientanwendungen oder App-Server, die Zugriff auf die Schlüssel haben, auf Klartextdaten zugreifen.
 -   Die [dynamische Datenmaskierung in SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) kann durchgeführt werden, nachdem die Referenzarchitektur bereitgestellt wurde. Kunden müssen die Einstellungen für die dynamische Datenmaskierung an ihr Datenbankschema anpassen.
 
-**Azure Disk Encryption:** Azure Disk Encryption wird zur Verschlüsselung der Datenträger von virtuellen Windows-IaaS-Computern verwendet. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Betriebssysteme und Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern.
+**Azure Disk Encryption**: Azure Disk Encryption wird zur Verschlüsselung der Datenträger von virtuellen Windows-IaaS-Computern verwendet. [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Betriebssysteme und Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträger-Verschlüsselungsschlüssel zu erleichtern.
 
 ### <a name="identity-management"></a>Identitätsverwaltung
 
@@ -124,13 +124,13 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 - Eine bereitgestellte IaaS-Active-Directory-Instanz bietet Identitätsverwaltung auf Betriebssystemebene für bereitgestellte virtuelle IaaS-Computer.
 
 ### <a name="security"></a>Sicherheit
-**Geheimnisverwaltung:** Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Azure Key Vault unterstützt die Verwaltung von Datenträger-Verschlüsselungsschlüsseln und -geheimnissen virtueller IaaS-Computer für diese Referenzarchitektur.
+**Geheimnisverwaltung**: Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Azure Key Vault unterstützt die Verwaltung von Datenträger-Verschlüsselungsschlüsseln und -geheimnissen virtueller IaaS-Computer für diese Referenzarchitektur.
 
-**Patchverwaltung**: Virtuelle Windows-Computer, die durch diese Automatisierung per Vorlage für Azure Security and Compliance bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates vom Windows Update-Dienst erhalten. Diese Lösung stellt auch die Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um bei Bedarf Patches auf Windows-Servern bereitzustellen.
+**Patchverwaltung**: Virtuelle Windows-Computer, die durch diese Azure Security and Compliance Blueprint-Automatisierung bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates von Windows Update Service erhalten. Diese Lösung stellt auch die Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um bei Bedarf Patches auf Windows-Servern bereitzustellen.
 
-**Schutz vor Schadsoftware**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für Virtual Machines bietet Echtzeitschutzfunktionen, mit denen die Identifizierung und Entfernung von Viren, Spyware und anderer bösartiger Software ermöglicht wird – mit konfigurierbaren Warnmeldungen, wenn bekannte bösartige oder unerwünschte Software versucht, sich auf geschützten virtuellen Computern zu installieren oder die Ausführung zu starten.
+**Schutz vor Schadsoftware**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) für Virtual Machines bietet Echtzeitschutzfunktionen, mit denen die Identifizierung und Entferung von Viren, Spyware und anderer bösartiger Software ermöglicht wird, mit konfigurierbaren Warnmeldungen, wenn bekannte bösartige oder unerwünschte Software versucht, sich auf geschützten virtuellen Computern zu installieren oder die Ausführung zu starten.
 
-**Application Gateway**: Die Architektur verringert die Gefahr von Sicherheitsrisiken durch ein Application Gateway mit Web Application Firewall (WAF) und aktiviertem OWASP-Regelsatz. Weitere Funktionen:
+**Application Gateway**: Die Architektur verringert das Risiko von Sicherheitsschwachstellen durch ein Application Gateway mit Web Application Firewall (WAF) und dem aktivierten OWASP-Regelsatz. Weitere Funktionen:
 
 - [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - Aktivierte [SSL-Auslagerung](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
@@ -140,9 +140,9 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 
 ### <a name="business-continuity"></a>Geschäftskontinuität
 
-**Hochverfügbarkeit**: Während einer geplanten oder ungeplanten Wartung ist mindestens ein virtueller Computer verfügbar, um die Azure-SLA von 99,95% zu erfüllen. Die Lösung stellt alle virtuellen Computer der Web- und Datenschicht in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereit. Verfügbarkeitsgruppen stellen sicher, dass die virtuellen Computer über mehrere isolierte Hardwarecluster verteilt sind, um die Verfügbarkeit zu verbessern. Außerdem stellt diese Lösung virtuelle SQL Server-Computer in einer Verfügbarkeitsgruppe als [AlwaysOn-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview) bereit. Das Feature „AlwaysOn-Verfügbarkeitsgruppe“ ermöglicht für Funktionen für hohe Verfügbarkeit und Notfallwiederherstellung.
+**Hochverfügbarkeit**: Während einer geplanten oder ungeplanten Wartung ist mindestens ein virtueller Computer verfügbar, um die Azure-SLA von 99,95 % zu erfüllen. Die Lösung stellt alle virtuellen Computer der Web- und Datenschicht in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereit. Verfügbarkeitsgruppen stellen sicher, dass die virtuellen Computer über mehrere isolierte Hardwarecluster verteilt sind, um die Verfügbarkeit zu verbessern. Außerdem stellt diese Lösung virtuelle SQL Server-Computer in einer Verfügbarkeitsgruppe als [AlwaysOn-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview) bereit. Das Feature „AlwaysOn-Verfügbarkeitsgruppe“ ermöglicht für Funktionen für hohe Verfügbarkeit und Notfallwiederherstellung.
 
-**Recovery Services-Tresor:** Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von Azure Virtual Machines in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
+**Recovery Services-Tresor**: Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von Azure Virtual Machines in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
 
 **Cloudzeuge**: Ein [Cloudzeuge](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) ist ein Failovercluster-Quorumzeuge in Windows Server 2016, der Azure als Vermittlungspunkt nutzt. Der Cloudzeuge erhält wie jeder andere Quorumzeuge eine Stimme und kann damit an Quorumberechnungen teilnehmen. Er verwendet aber den öffentlich verfügbaren Azure Blob Storage-Standard. Damit entfällt der zusätzliche Wartungsaufwand für virtuelle Computer, die in einer öffentlichen Cloud gehostet werden.
 
@@ -150,20 +150,20 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 
 Log Analytics bietet eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ist eine Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure-basierten und lokalen Umgebungen generiert werden.
 
-- **Aktivitätsprotokolle**: [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) ermöglichen Einblicke in Vorgänge, die für Ressourcen in einem Abonnement durchgeführt werden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
-- **Diagnoseprotokolle**: [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure-Speicherprotokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
-- **Protokollarchivierung**: Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
+- **Aktivitätsprotokolle**:  [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
+- **Diagnoseprotokolle:**  [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure-Speicherprotokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
+- **Protokollarchivierung**:  Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
 
 Darüber hinaus sind in dieser Architektur die folgenden Überwachungslösungen installiert. Beachten Sie, dass der Kunde für die Konfiguration dieser Lösungen verantwortlich ist, um die Anpassung an die FedRAMP-Sicherheitskontrollen vorzunehmen:
--   [Active Directory-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment) Die Active Directory-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
--   [Antischadsoftwarebewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware) Die Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
--   [Azure Automation:](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) Die Azure Automation-Lösung dient der Speicherung, Ausführung und Verwaltung von Runbooks.
--   [Sicherheit und Überwachung:](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) Das Sicherheits- und Überwachungsdashboard bietet einen allgemeinen Einblick in den Sicherheitszustand von Ressourcen. Hierzu werden Metriken zu Sicherheitsdomänen, relevanten Problemen, Erkennungen, Bedrohungsdaten und allgemeinen Sicherheitsabfragen bereitgestellt.
--   [SQL-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment) Die SQL-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
--   [Updateverwaltung:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management) Die Updateverwaltungslösung ermöglicht die Verwaltung von Betriebssystem-Sicherheitsupdates durch die Kunden. Dies umfasst auch den Status der verfügbaren Updates und den Fortschritt beim Installieren der erforderlichen Updates.
--   [Agent-Integritätsdiagnose:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth) Die Agent-Integritätsdiagnoselösung meldet, wie viele Agents bereitgestellt werden und wie ihre geografische Verteilung ist. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
--   [Azure-Aktivitätsprotokolle:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
--   [Änderungsnachverfolgung](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Änderungsnachverfolgungslösung ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
+-   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Die Lösung „Active Directory-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
+-   [Antischadsoftwarebewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Die Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Die Azure Automation-Lösung dient der Speicherung, Ausführung und Verwaltung von Runbooks.
+-   [Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): Das Sicherheits- und Überwachungsdashboard ermöglicht einen allgemeinen Einblick in den Sicherheitszustand von Ressourcen. Hierzu werden Metriken zu Sicherheitsdomänen, relevanten Problemen, Erkennungen, Bedrohungsdaten und allgemeinen Sicherheitsabfragen bereitgestellt.
+-   [SQL-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Die Lösung „SQL-Integritätsüberprüfung“ bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit speziellen Empfehlungen für die bereitgestellte Serverinfrastruktur.
+-   [Updateverwaltung](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Die Updateverwaltungslösung ermöglicht die Verwaltung von Sicherheitsupdates des Betriebssystems durch die Kunden. Dies umfasst auch den Status der verfügbaren Updates und den Fortschritt beim Installieren der erforderlichen Updates.
+-   [Agent-Integritätsdiagnose](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Die Lösung „Agent-Integritätsdiagnose“ meldet die Anzahl bereitgestellter Agents sowie deren geografische Verteilung. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
+-   [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Lösung „Aktivitätsprotokollanalyse“ hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
+-   [Änderungsnachverfolgung](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Lösung „Änderungsnachverfolgung“ ermöglicht es Kunden, problemlos Änderungen in der Umgebung zu erkennen.
 
 **Azure Monitor**
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) unterstützt Benutzer beim Nachverfolgen der Leistung, Aufrechterhalten der Sicherheit und Identifizieren von Trends, indem Organisationen das Überwachen, Erstellen von Warnungen und Archivieren von Daten ermöglicht wird, z.B. die Nachverfolgung von API-Aufrufen in den Azure-Ressourcen von Kunden.

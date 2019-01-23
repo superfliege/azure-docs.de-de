@@ -7,20 +7,20 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: alkohli
-ms.openlocfilehash: c28eaf22d05bfda5085f9e269bda85ca0d46a7d3
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b5ced2814aff51317304cd44c41b04ab9a954844
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578116"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213194"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Vergleich der Datenübertragungsoptionen für StorSimple mit denen für Azure-Dateisynchronisierung und Data Box Edge 
  
-Dieses Dokument enthält eine Übersicht der Optionen für die lokale Datenübertragung an Azure. Dabei werden Data Box Edge, die Azure-Dateisynchronisierung (AFS) und die StorSimple 8000-Serie verglichen.
+Dieses Dokument enthält eine Übersicht der Optionen für die lokale Datenübertragung an Azure; dabei werden Data Box Edge, die Azure-Dateisynchronisierung (AFS) und die StorSimple 8000-Serie verglichen.
 
-- **[Data Box Edge:](/azure/databox-online/data-box-edge-overview.md)** Data Box Edge ist ein lokales Netzwerkgerät, das Daten in und aus Azure verschieben sowie mithilfe von KI-fähigem Edgecomputing auch beim Hochladen verarbeiten kann. Es wurde auf der Ignite 2018 angekündigt und befindet sich in der öffentlichen Vorschau. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen.
-- **[Azure-Dateisynchronisierung:](/azure/storage/files/storage-sync-files-deployment-guide.md)** Mit der Azure-Dateisynchronisierung können die Dateifreigaben Ihrer Organisation in Azure Files zentralisiert werden, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Die allgemeine Verfügbarkeit von Azure File Sync wurde Anfang des Jahres 2018 bekannt gegeben.
-- **[StorSimple:](/azure/storsimple/storsimple-overview.md)** StorSimple ist ein Hybridgerät, mit dem Unternehmen ihre Speicherinfrastruktur für primären Speicher, Datenschutz, Archivierung und Notfallwiederherstellung auf eine einzige Lösung konsolidieren können, da es eng mit Azure Storage integriert ist. Den Produktlebenszyklus von StorSimple finden Sie [hier](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+- **[Data Box Edge:](/azure/databox-online/data-box-edge-overview)** Data Box Edge ist ein lokales Netzwerkgerät, das Daten in und aus Azure verschieben sowie mithilfe von KI-fähigem Edgecomputing auch beim Hochladen verarbeiten kann. Es wurde auf der Ignite 2018 angekündigt und befindet sich in der öffentlichen Vorschau. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen.
+- **[Azure-Dateisynchronisierung:](/azure/storage/files/storage-sync-files-deployment-guide)** Mit der Azure-Dateisynchronisierung können die Dateifreigaben Ihrer Organisation in Azure Files zentralisiert werden, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Die allgemeine Verfügbarkeit von Azure File Sync wurde Anfang des Jahres 2018 bekannt gegeben.
+- **[StorSimple:](/azure/storsimple/storsimple-overview)** StorSimple ist ein Hybridgerät, mit dem Unternehmen ihre Speicherinfrastruktur für primären Speicher, Datenschutz, Archivierung und Notfallwiederherstellung auf eine einzige Lösung konsolidieren können, da es eng mit Azure Storage integriert ist. Den Produktlebenszyklus von StorSimple finden Sie [hier](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 ## <a name="comparison-summary"></a>Zusammenfassender Vergleich
 

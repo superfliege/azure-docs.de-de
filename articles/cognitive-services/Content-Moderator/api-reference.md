@@ -1,7 +1,7 @@
 ---
 title: API-Referenz – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Erfahren Sie mehr über die Inhaltsmoderation und die Überprüfungs-APIs für Content Moderator
+description: Erfahren Sie mehr über die verschiedenen Inhaltsmoderations- und die Überprüfungs-APIs für Content Moderator.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a64b2f7ce54d5ace26ad18c0ca1a9facb66245e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229746"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266960"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator-API-Referenz
 
-Sie haben folgende Möglichkeiten, um mit den Azure Content Moderator-APIs zu starten(siehe auch [Verwalten von Anmeldeinformationen](review-tool-user-guide/credentials.md).):
+Sie können die ersten Schritte mit Azure Content Moderator-APIs folgendermaßen unternehmen: (Siehe auch [Verwalten von Anmeldeinformationen](review-tool-user-guide/credentials.md).)
 
 - [Abonnieren Sie die Content Moderator-APIs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) im Azure-Portal.
-- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/). Weitere Informationen finden Sie im [Schnellstart](quick-start.md).
+- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/). Siehe [Testen von Content Moderator im Web](quick-start.md).
 
 ## <a name="moderation-apis"></a>Moderations-APIs
 

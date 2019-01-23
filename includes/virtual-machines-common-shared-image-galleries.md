@@ -5,20 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 48404c8b6f45ab79a9136154c44c7fd44572a3e6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: c65fb1f0f635e79d594a7f080124827e3218f612
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678188"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193384"
 ---
-Katalog mit geteilten Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten VM-Images zu strukturieren und organisieren. Der Katalog mit geteilten Images bietet drei Hauptwertbeiträge:
-- Einfache Verwaltung
-- Skalieren Ihrer benutzerdefinierten Images
-- Teilen Ihrer Images – Teilen Sie Ihre Images mit verschiedenen Benutzern, Dienstprinzipalen oder AD-Gruppen in Ihrer Organisation sowie mit verschiedenen Regionen, indem Sie die Replikation in mehrere Regionen verwenden.
+Der Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und organisieren. Mit einem Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen in Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
 
 Ein verwaltetes Image ist eine Kopie entweder einer vollständigen VM (einschließlich sämtlicher angefügter Datenträger) oder lediglich des Betriebssystemdatenträgers, je nachdem, wie Sie das Image erstellen. Wenn Sie aus dem Image einen virtuellen Computer erstellen, werden Kopien der virtuellen Festplatten in dem Image verwendet, um die Datenträger für die neue VM zu erstellen. Das verwaltete Image verbleibt im Speicher und kann immer wieder zum Erstellen neuer VMs verwendet werden.
 
@@ -28,10 +25,10 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 | Ressource | BESCHREIBUNG|
 |----------|------------|
-| **Verwaltetes Image** | Dies ist ein Basisimage, das eigenständig verwendet werden kann oder zum Erstellen mehrerer **geteilter Imageversionen** in einem Imagekatalog.|
+| **Verwaltetes Image** | Dies ist ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversionen** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus generalisierten virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
 | **Imagekatalog** | Wie der Azure Marketplace ist ein **Imagekatalog** ein Repository zum Verwalten und Teilen von Images, aber Sie kontrollieren, wer Zugriff hat. |
-| **Katalogimage** | Abbilder sind innerhalb eines Katalogs definiert und enthalten intern Informationen über das Image und die Anforderungen für seine Verwendung. Dies schließt ein, ob das Image Windows oder Linux ist, Anmerkungen zu dieser Version und Anforderungen an den minimalen und maximalen Arbeitsspeicher. Dieser Typ von Image ist eine Ressource im Resource Manager-Bereitstellungsmodell, er wird aber nicht direkt zum Erstellen von VMs verwendet. Es ist eine Definition eines Imagetyps. |
-| **Version eines geteilten Images** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
+| **Imagedefinition** | Abbilder sind innerhalb eines Katalogs definiert und enthalten intern Informationen über das Image und die Anforderungen für seine Verwendung. Dies schließt ein, ob das Image Windows oder Linux ist, Anmerkungen zu dieser Version und Anforderungen an den minimalen und maximalen Arbeitsspeicher. Es ist eine Definition eines Imagetyps. |
+| **Imageversion** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
 
 <br>
 
@@ -44,21 +41,19 @@ Die Regionsunterstützung für Kataloge mit geteilten Images befindet sich in ei
 
 | Katalog erstellen in  | Version replizieren in |
 |--------------------|----------------------|
-| USA, Westen-Mitte    |USA Süd Mitte|
-| USA (Ost) 2          |USA (Ost)|
-| USA Süd Mitte   |USA (Ost) 2|
-| Asien, Südosten     |USA (Westen)|
-| Europa, Westen        |USA, Westen 2|
-|                    |USA (Mitte)|
-|                    |USA Nord Mitte|
-|                    |Kanada, Mitte|
-|                    |Kanada, Osten|
-|                    |Nordeuropa|
-|                    |Europa, Westen|
-|                    |Indien (Süden)|
-|                    |Asien, Südosten|
+| USA, Westen-Mitte    |Alle öffentlichen Regionen &#42;|
+| USA (Ost) 2          ||
+| USA Süd Mitte   ||
+| Asien, Südosten     ||
+| Europa, Westen        ||
+| USA (Westen)            ||
+| USA (Ost)            ||
+| Kanada, Mitte     ||
+|                    ||
 
 
+
+&#42; Um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://www.microsoft.com/en-au/central-regions-eligibility/
 
 ## <a name="scaling"></a>Skalieren
 Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
@@ -67,7 +62,9 @@ Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben
 
 
 ## <a name="replication"></a>Replikation
-Der Katalog mit geteilten Images ermöglicht Ihnen außerdem die automatische Replikation Ihrer Images in andere Azure-Regionen. Jede Version eines freigegebenen Images kann entsprechend den Anforderungen Ihrer Organisation in unterschiedliche Regionen repliziert werden. Ein Beispiel ist, immer das neueste Image in mehrere Regionen zu replizieren, während alle ältere Versionen nur in einer Region zur Verfügung stehen. Dadurch können die Speicherkosten für Versionen freigegebener Images gesenkt werden. Die Regionen, in die eine Versionen eines freigegebenen Images repliziert wird, können nach der Erstellung aktualisiert werden. Der Zeitaufwand für die Replikation in verschiedene Regionen hängt von der kopierten Datenmenge ab sowie von der Anzahl der Regionen, in die die Version repliziert wird. Dies kann in einigen Fällen mehrere Stunden dauern. Während die Replikation durchgeführt wird, können Sie den Status der Replikation pro Region anzeigen. Sobald die Imagereplikation in einer Region abgeschlossen ist, können Sie einen virtuellen Computer oder eine VMSS unter Verwendung dieser Version in der Region bereitstellen.
+Der Katalog mit geteilten Images ermöglicht Ihnen außerdem die automatische Replikation Ihrer Images in andere Azure-Regionen. Jede Version eines freigegebenen Images kann entsprechend den Anforderungen Ihrer Organisation in unterschiedliche Regionen repliziert werden. Ein Beispiel ist, immer das neueste Image in mehrere Regionen zu replizieren, während alle ältere Versionen nur in einer Region zur Verfügung stehen. Dadurch können die Speicherkosten für Versionen freigegebener Images gesenkt werden. 
+
+Die Regionen, in die eine Versionen eines freigegebenen Images repliziert wird, können nach der Erstellung aktualisiert werden. Der Zeitaufwand für die Replikation in verschiedene Regionen hängt von der kopierten Datenmenge ab sowie von der Anzahl der Regionen, in die die Version repliziert wird. Dies kann in einigen Fällen mehrere Stunden dauern. Während die Replikation durchgeführt wird, können Sie den Status der Replikation pro Region anzeigen. Sobald die Imagereplikation in einer Region abgeschlossen ist, können Sie einen virtuellen Computer oder eine VMSS unter Verwendung dieser Version in der Region bereitstellen.
 
 ![Eine Abbildung, die zeigt, wie Sie Images replizieren können](./media/shared-image-galleries/replication.png)
 
@@ -87,6 +84,25 @@ Da es sich bei dem Katalog mit freigegebenen Images, dem freigegebenen Image und
 Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche Gebühren an. Für folgende Ressourcen werden Gebühren berechnet:
 - Speicherkosten für die Speicherung der Versionen freigegebener Images. Dies hängt von der Anzahl der Replikate der Version ab sowie der Anzahl der Regionen, in die die Version repliziert wird.
 - Gebühren für ausgehenden Netzwerkdatenverkehr für die Replikation aus der Quellregion der Version in die replizierten Regionen.
+
+## <a name="sdk-support"></a>SDK-Unterstützung
+
+Die folgenden SDKs unterstützen das Erstellen von Katalogen mit freigegebenen Images:
+
+- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
+- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](https://docs.microsoft.com/go/azure/)
+
+## <a name="templates"></a>Vorlagen
+
+Sie können einen Katalog mit freigegebenen Images mithilfe von Vorlagen erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
+
+- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Erstellen eines virtuellen Computers aus einer Imageversion](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen 
 
@@ -221,7 +237,7 @@ Imageversion:
 1. Die regionale Replikatanzahl, die die Anzahl der Replikate angibt, die Sie pro Region erstellen möchten. 
 2. Die allgemeine Replikatanzahl, bei der es sich um die Standardanzahl pro Region handelt für den Fall, dass die regionale Replikatanzahl nicht angegeben ist. 
 
-Um die regionale Replikatanzahl anzugeben, übergeben Sie den Ort zusammen mit der Anzahl der Replikate, die Sie in dieser Region erstellen möchten, wie folgt : „USA, Süden-Mitte=2“. 
+Um die regionale Replikatanzahl anzugeben, übergeben Sie den Ort zusammen mit der Anzahl der Replikate, die Sie in dieser Region erstellen möchten, wie folgt: „USA, Süden-Mitte=2“. 
 
 Wenn die regionale Replikatanzahl nicht für jeden Ort angegeben ist, entspricht die Standardanzahl der Replikate der allgemeinen Replikatanzahl, die Sie angegeben haben. 
 

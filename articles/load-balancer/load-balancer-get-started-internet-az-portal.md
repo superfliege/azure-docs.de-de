@@ -1,10 +1,11 @@
 ---
-title: Erstellen einer Load Balancer Standard-Instanz mit zonenredundantem Front-End über das Azure-Portal
+title: Erstellen eines Load Balancer mit zonenredundantem Front-End – Azure-Portal
 titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie im Azure-Portal eine öffentlichen Load Balancer Standard-Instanz mit zonenredundantem öffentlichem IP-Adressen-Front-End erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2b898a9228e251003a049b2d82c0b1039eb54114
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135684"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247434"
 ---
-#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Erstellen einer öffentlichen Load Balancer Standard-Instanz mit zonenredundantem Front-End über das Azure-Portal
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Erstellen einer Load Balancer Standard-Instanz mit zonenredundantem Front-End über das Azure-Portal
 
 In diesem Artikel wird die Erstellung eines öffentlichen [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) mit zonenredundantem Front-End mithilfe einer öffentlichen IP-Standard-Adresse erläutert. Eine einzelne Front-End-IP-Adresse auf einem standardmäßigen Load Balancer ist standardmäßig zonenredundant.
 

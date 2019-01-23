@@ -1,26 +1,8 @@
 ---
-title: Erstellen mehrerer Modelle mit einem Studio-Experiment – Azure Machine Learning Studio | Microsoft-Dokumentation
-description: Verwenden Sie PowerShell, um mehrere Machine Learning-Modelle und Webdienst-Endpunkte mit demselben Algorithmus, aber verschiedenen Trainingsdatasets, zu erstellen.
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/04/2017
-ms.openlocfilehash: f54f9f9ff4b55ef1e2e68f61b709cef6635dc231
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250262"
+Titel: Erstellen mehrerer Modelle mit einem Studio-Experiment titleSuffix: Azure Machine Learning Studio – Beschreibung: Verwenden Sie PowerShell, um mehrere Machine Learning-Modelle und Webdienst-Endpunkte mit demselben Algorithmus, aber verschiedenen Trainingsdatasets, zu erstellen.
+Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+
+Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04.04.2017
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Erstellen mehrerer Studio-Modelle und Webdienst-Endpunkte in einem Experiment mit PowerShell
 

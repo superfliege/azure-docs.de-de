@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 84333b26ac70db4b400f7236d4255f4b57a6ca7d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572185"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249631"
 ---
 In der folgenden Tabelle werden die für die Azure Storage geltenden Standardgrenzwerte beschrieben. Der Grenzwert für *Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. Der Grenzwert für *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
 
@@ -29,15 +29,20 @@ In der folgenden Tabelle werden die für die Azure Storage geltenden Standardgre
 | Max. Ausgang für universelle v1-Speicherkonten (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS, 30 GBit/s für LRS/ZRS <sup>2</sup> |
 | Max. Ausgang für universelle v1-Speicherkonten (Nicht-US-Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS, 15 GBit/s für LRS/ZRS <sup>2</sup> |
 
-<sup>1</sup> Azure-Speicherkonten unterstützen höhere Grenzwerte für Eingang auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte für Eingang anzufordern.
+<sup>1</sup> Azure-Speicherkonten unterstützen höhere Grenzwerte für Eingang und IOPS auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte anzufordern.
 
-<sup>2</sup>[Für Azure Storage sind folgende Replikationsoptionen](https://docs.microsoft.com/azure/storage/common/storage-redundancy) verfügbar:
-* **RA-GRS**: Georedundanter Speicher mit Lesezugriff (RA-GRS) Wenn RA-GRS aktiviert ist, sind die Ausgangsziele für den sekundären Standort mit denen für den primären Standort identisch.
-* **GRS**: Georedundanter Speicher 
-* **ZRS**: Zonenredundanter Speicher
-* **LRS**: Lokal redundanter Speicher 
+<sup>2</sup> Für die [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy) sind folgende Replikationsoptionen verfügbar:
+* **RA-GRS**: Georedundanter Speicher mit Lesezugriff. Wenn RA-GRS aktiviert ist, sind die Ausgangsziele für den sekundären Standort mit denen für den primären Standort identisch.
+* **GRS**: Georedundanter Speicher. 
+* **ZRS**: Zonenredundanter Speicher.
+* **LRS**: Lokal redundanter Speicher. 
+
+> [!NOTE]
+> Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „Allgemein v2“. Sie können ganz einfach ein Upgrade von einem Allgemein v1-Konto oder einem Blob Storage-Konto auf ein Allgemein v2-Konto durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren.
+>
+> Weitere Informationen zu Azure Storage-Konten finden Sie unter [Azure storage account overview (Übersicht zum Azure Storage-Konto)](../articles/storage/common/storage-account-overview.md). 
 
 Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, können Sie die Anwendung so erstellen, dass mehrere Speicherkonten verwendet werden. Sie können Ihre Datenobjekte dann basierend auf diesen Speicherkonten partitionieren. Informationen zu Volumenpreisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
 
-Alle Speicherkonten werden in einer flachen Netzwerktopologie ausgeführt und unterstützen die in diesem Artikel beschriebenen Skalierbarkeits- und Leistungsziele, unabhängig vom Zeitpunkt ihrer Erstellung. Weitere Informationen zur flachen Netzwerkarchitektur von Azure Storage sowie zur Skalierbarkeit finden Sie unter [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)(in englischer Sprache).
+Alle Speicherkonten werden in einer flachen Netzwerktopologie ausgeführt und unterstützen die in diesem Artikel beschriebenen Skalierbarkeits- und Leistungsziele, unabhängig vom Zeitpunkt ihrer Erstellung. Weitere Informationen zur flachen Netzwerkarchitektur von Azure Storage sowie zur Skalierbarkeit finden Sie unter [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Hochverfügbarer Cloud-Speicherdienst mit starker Konsistenz).
 

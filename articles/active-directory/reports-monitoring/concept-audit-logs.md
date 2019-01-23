@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 03206baf0e70e7be247e9848bfd5a80a1a1e1b35
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624657"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247757"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
@@ -33,7 +33,7 @@ Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
     - **Anmeldungen:** Der [Bericht „Anmeldungen“](concept-sign-ins.md) enthält Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
     - **Überwachungsprotokolle:** Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD, z.B. das Hinzufügen oder Entfernen von Benutzern, Apps, Gruppen, Rollen und Richtlinien.
 - **Sicherheit** 
-    - **Riskante Anmeldungen:** Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
+    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
     - **Benutzer mit Risikomarkierung:** Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
 Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
@@ -45,7 +45,7 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
-Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. 
+Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. Beachten Sie, dass Überwachungsprotokolle eine Latenz von bis zu einer Stunde haben können, es kann also so lange dauern, bis die Daten der Überwachungsaktivität im Portal angezeigt werden, nachdem Sie die Aufgabe abgeschlossen haben.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/61.png "Überwachungsprotokolle")
 
@@ -178,6 +178,11 @@ Sie können die Ansicht nach **Gruppen** oder **Benutzern** filtern.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/25.png "Überwachungsprotokolle")
 
+## <a name="office-365-activity-logs"></a>Office 365-Aktivitätsprotokolle
+
+Sie können Office 365-Aktivitätsprotokolle im [Office 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Office 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
+
+Mithilfe der [Office 365-Verwaltungs-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

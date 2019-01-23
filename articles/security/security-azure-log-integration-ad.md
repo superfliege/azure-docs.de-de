@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0b27cd314dd03375b2d2e6ba537cda74e2ec4310
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c01d911a59647956914518aa62a616823241ab3b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313240"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304923"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrieren von Azure Active Directory-Überwachungsprotokollen
 
@@ -28,7 +28,7 @@ Azure AD-Überwachungsereignisse (Azure Active Directory) helfen Ihnen, privileg
 
 
 >[!IMPORTANT]
-> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
+> Das Feature Azure Log Integration gilt ab dem 01.06.2019 als veraltet. AzLog-Downloads wurden am 27. Juni 2018 deaktiviert. Um Unterstützung bei der künftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Schritte zum Integrieren von Azure Active Directory-Überwachungsprotokollen
 
@@ -73,7 +73,7 @@ Sie können zudem eine [Supportanfrage](../azure-supportability/how-to-create-az
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Azure-Protokollintegration finden Sie auf den folgenden Webseiten:
 
-* [Microsoft Azure Log Integration for Azure logs](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure-Protokoll-Integration für Azure-Protokolle, in englischer Sprache): Diese Seite im Download Center bietet Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
-* [Einführung in die Microsoft Azure-Protokollintegration](security-azure-log-integration-overview.md): Dieser Artikel stellt die Azure-Protokollintegration, die wichtigsten Funktionen sowie die Funktionsweise vor.
-* [Azure-Protokollintegration – Häufig gestellte Fragen](security-azure-log-integration-faq.md): In diesem Artikel werden Fragen zur Azure-Protokollintegration beantwortet.
-* [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle, in englischer Sprache): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.
+* [Microsoft Azure Log Integration for Azure logs](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure Log Integration für Azure-Protokolle, in englischer Sprache): Diese Seite im Download Center bietet Details, Systemanforderungen und Installationsanweisungen für Azure Log Integration.
+* [Einführung in Azure Log Integration](security-azure-log-integration-overview.md): Dieser Artikel stellt Azure Log Integration, die wichtigsten Funktionen sowie die Funktionsweise vor.
+* [Häufig gestellte Fragen zu Azure Log Integration:](security-azure-log-integration-faq.md) In diesem Artikel werden Fragen zur Azure-Protokollintegration beantwortet.
+* [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für die Azure-Diagnose und Azure-Überwachungsprotokolle, in englischer Sprache): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.

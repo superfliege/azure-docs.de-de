@@ -13,12 +13,12 @@ caps.latest.revision: 55
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 2e487bd3fda787cf9f869cc352de4c97d5c1678b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002176"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331690"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services-Definition – WorkerRole-Schema
 Die Azure-Workerrolle ist eine Rolle, die für die generalisierte Entwicklung nützlich ist und die Hintergrundverarbeitung für eine Webrolle durchführen kann.
@@ -41,11 +41,11 @@ Das Standardformat einer Dienstdefinitionsdatei, die eine Workerrolle enthält, 
       <InputEndpoint name="<input-endpoint-name>" protocol="[http|https|tcp|udp]" localPort="<local-port-number>" port="<port-number>" certificate="<certificate-name>" loadBalancerProbe="<load-balancer-probe-name>" />
       <InternalEndpoint name="<internal-endpoint-name" protocol="[http|tcp|udp|any]" port="<port-number>">
          <FixedPort port="<port-number>"/>
-         <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>
+         <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>
       </InternalEndpoint>
      <InstanceInputEndpoint name="<instance-input-endpoint-name>" localPort="<port-number>" protocol="[udp|tcp]">
          <AllocatePublicPortFrom>
-            <FixedPortRange min="<minium-port-number>" max="<maximum-port-number>"/>
+            <FixedPortRange min="<minimum-port-number>" max="<maximum-port-number>"/>
          </AllocatePublicPortFrom>
       </InstanceInputEndpoint>
     </Endpoints>
@@ -98,7 +98,7 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [LocalStorage](#LocalStorage)
 
-[EndPoints](#Endpoints)
+[Endpunkte](#Endpoints)
 
 [InputEndpoint](#InputEndpoint)
 
@@ -134,9 +134,9 @@ Die Dienstdefinitionsdatei enthält die unten angegebenen Elemente, die in den f
 
 [RoleInstanceValue](#RoleInstanceValue)
 
-[Starten](#Startup)
+[Startup](#Startup)
 
-[Task](#Task)
+[Aufgabe](#Task)
 
 [Contents](#Contents)
 

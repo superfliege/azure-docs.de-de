@@ -1,21 +1,21 @@
 ---
 title: Inhaltsmoderationsworkflows über die API-Konsole – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Inhaltsmoderationsworkflows über die API-Konsole verwenden.
+description: Verwenden Sie die Workflowvorgänge in Azure Content Moderator, um mithilfe der API für die Überprüfung einen Workflow zu erstellen oder aktualisieren oder Workflowdetails abzurufen.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4ef8951b30fa7aede08a1af3c834192b5ed18649
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 24c451dda398cfa65dd24a4500871c67943b79bf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223849"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259458"
 ---
 # <a name="workflows-from-the-api-console"></a>Workflows über die API-Konsole
 

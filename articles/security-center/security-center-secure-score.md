@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3a377441758fcd7dd91deefb5cae91579e881498
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007050"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261297"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbessern des Secure Score in Azure Security Center
 
 
 Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Der Azure Secure Score überprüft Ihre Sicherheitsempfehlungen und priorisiert sie für Sie, damit Sie wissen, welche Empfehlungen Sie zuerst durchführen sollten. Dies hilft Ihnen, die schwerwiegendsten Sicherheitsrisiken zu finden, damit Sie die Untersuchung priorisieren können. Secure Score ist ein Tool, mit dem Sie den Sicherheitsstatus bewerten können.
-
-![Secure Score-Dashboard](./media/security-center-secure-score/secure-score-dashboard.png)
 
 ## <a name="secure-score-calculation"></a>Secure Score-Berechnung
 
@@ -43,11 +41,25 @@ Um zu überprüfen, welche Empfehlungen die größte Auswirkung auf den Secure S
 
 So zeigen Sie den Secure Score-Gesamtwert an:
 
-1. Klicken Sie auf dem Azure-Dashboard auf **Security Center** und dann auf **Empfehlungen**.
-2. Oben sehen Sie den Secure Score, der die Bewertung nach Richtlinien und ausgewähltem Abonnement angibt. 
-2. In der Tabelle darunter, in der die Empfehlungen aufgeführt sind, können Sie sehen, dass für jede Empfehlung eine Spalte mit der **Secure Score-Auswirkung** enthalten ist. Dieser Wert gibt an, um wie viel sich der Secure Score-Gesamtwert verbessert, wenn Sie den Empfehlungen folgen. Wenn Sie im folgenden Bildschirm beispielsweise **Sicherheitsrisiken in Containersicherheitskonfigurationen beseitigen**, erhöht sich Ihr Secure Score um 35 Punkte.
+1. Klicken Sie auf dem Azure-Dashboard auf **Security Center** und dann auf **Sicherheitsbewertung**.
+2. Oben sehen Sie Hervorhebungen der Sicherheitsbewertung:
+   - **Gesamte Sicherheitsbewertung** stellt die Bewertung nach Richtlinien und ausgewähltem Abonnement dar.
+   - **Sicherheitsbewertung nach Kategorie** zeigt Ihnen, welche Ressourcen, die meiste Aufmerksamkeit benötigen.
+   - **Beste Empfehlungen gemäß Auswirkung auf die Sicherheitsbewertung** bietet Ihnen eine Liste von Empfehlungen, die Ihre Sicherheitsbewertung am meisten verbessern, wenn Sie sie befolgen.
+ 
+   ![Secure Score](./media/security-center-secure-score/secure-score-dashboard.png)
+
+3. In der folgenden Tabelle sehen Sie alle Ihre Abonnements und die jeweilige gesamte Sicherheitsbewertung.
+
+   > [!NOTE]
+   > Das Sicherheitsbewertungsergebnis einzelner Abonnements entspricht nicht der gesamten Sicherheitsbewertung. Die Sicherheitsbewertung ist eine Berechnung, die auf dem Verhältnis zwischen Ihren fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen gemäß Empfehlung basiert, nicht ein Ergebnis der Ihre Abonnements übergreifenden Sicherheitsbewertungen. 
+   >
+4. Klicken Sie auf **Empfehlungen anzeigen**, um die Empfehlungen für dieses Abonnement anzuzeigen, die Sie durchführen können, um Ihre Sicherheitsbewertung zu verbessern.
+4. In der Liste der Empfehlungen können Sie sehen, dass für jede Empfehlung eine Spalte mit der **Auswirkung auf die Sicherheitsbewertung** enthalten ist. Dieser Wert gibt an, um wie viel sich der Secure Score-Gesamtwert verbessert, wenn Sie den Empfehlungen folgen. Wenn Sie im folgenden Bildschirm beispielsweise **Sicherheitsrisiken in Containersicherheitskonfigurationen beseitigen**, erhöht sich Ihr Secure Score um 35 Punkte.
 
    ![Secure Score](./media/security-center-secure-score/security-center-secure-score1.png)
+
+
 
 ## <a name="individual-secure-score"></a>Einzelner Secure Score
 
@@ -60,6 +72,12 @@ Anhand der **Auswirkungen der Empfehlung** können Sie sehen, um wie viel sich d
 Die Empfehlung zeigt, welche Bedrohungen für Ihre Workload bestehen, falls die Schritte zur Behebung nicht ausgeführt werden.
 
 ![Secure Score für einzelne Empfehlung](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde gezeigt, wie Sie den Sicherheitsstatus mithilfe von **Secure Score** in Azure Security Center verbessern. Weitere Informationen zu Security Center finden Sie unter folgendem Link:

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274737"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354347"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff
 
@@ -32,7 +32,7 @@ Klicken Sie für die Erstellung einer Richtlinie für die Azure-Verwaltung unter
 
 ![Bedingter Zugriff für die Azure-Verwaltung](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, einschließlich des klassischen Azure-Portals, des Azure-Portals, des Azure Resource Manager-Anbieters, der klassischen Dienstverwaltungs-APIs und von Azure PowerShell. Hinweis: Die Richtlinie gilt für Azure PowerShell, von dem die Azure Resource Manager-API aufgerufen wird. Sie gilt nicht für [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), von dem Microsoft Graph aufgerufen wird.
+Die von Ihnen erstellte Richtlinie gilt für alle Azure-Verwaltungsendpunkte, einschließlich des Azure-Portals, des Azure Resource Manager-Anbieters, der klassischen Dienstverwaltungs-APIs, des Administratorportals für Visual Studio-Abonnements und Azure PowerShell. Hinweis: Die Richtlinie gilt für Azure PowerShell, von dem die Azure Resource Manager-API aufgerufen wird. Sie gilt nicht für [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), von dem Microsoft Graph aufgerufen wird.
 
 > [!CAUTION]
 > Stellen Sie sicher, dass Sie die Funktionsweise des bedingten Zugriffs verstehen, bevor Sie eine Richtlinie einrichten, um den Zugriff auf die Azure-Verwaltung zu steuern. Versichern Sie sich, dass Sie keine Bedingungen erstellen, die Ihren eigenen Zugriff auf das Portal blockieren könnten.

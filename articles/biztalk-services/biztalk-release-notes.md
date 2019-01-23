@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253430"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260331"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
 
@@ -35,10 +35,10 @@ Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannt
 ## <a name="update-history"></a>Updateverlauf
 ### <a name="october-update"></a>Update vom Oktober
 * Unterstützung von Organisationskonten:  
-  * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung mit einem Microsoft-Konto registriert (z.B. user@live.com). In diesem Szenario können nur Microsoft-Kontobenutzer den BizTalk Service im BizTalk Services-Portal verwalten. Ein Organisationskonto kann nicht verwendet werden.  
-  * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung, mithilfe eines Organisationskontos in Azure Active Directory registriert (z.B. user@fabrikam.com oder user@contoso.com). In diesem Szenario können nur Azure Active Directory-Benutzer innerhalb derselben Organisation den BizTalk Service im BizTalk Services-Portal verwalten. Ein Microsoft-Konto kann nicht verwendet werden.  
+  * **Szenario:** Sie haben eine BizTalk Service-Bereitstellung mit einem Microsoft-Konto registriert (z.B. user@live.com). In diesem Szenario können nur Microsoft-Kontobenutzer den BizTalk Service im BizTalk Services-Portal verwalten. Ein Organisationskonto kann nicht verwendet werden.  
+  * **Szenario:** Sie haben eine BizTalk Service-Bereitstellung mithilfe eines Organisationskontos in Azure Active Directory registriert (z.B. user@fabrikam.com oder user@contoso.com). In diesem Szenario können nur Azure Active Directory-Benutzer innerhalb derselben Organisation den BizTalk Service im BizTalk Services-Portal verwalten. Ein Microsoft-Konto kann nicht verwendet werden.  
 * Wenn Sie einen BizTalk Service erstellen, werden Sie automatisch beim BizTalk Services-Portal registriert.
-  * **Szenario**: Sie melden sich bei Azure an, erstellen einen BizTalk Service und wählen dann zum ersten Mal **Verwalten** aus. Beim Öffnen des BizTalk Services-Portals wird der BizTalk Service automatisch registriert und steht für Ihre Bereitstellungen zur Verfügung.  
+  * **Szenario:** Sie melden sich bei Azure an, erstellen einen BizTalk Service und wählen dann zum ersten Mal **Verwalten** aus. Beim Öffnen des BizTalk Services-Portals wird der BizTalk Service automatisch registriert und steht für Ihre Bereitstellungen zur Verfügung.  
     Weitere Informationen finden Sie unter [Registrieren und Aktualisieren einer BizTalk Service-Bereitstellung im BizTalk Services-Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
 ### <a name="august-14-update"></a>Update vom 14. August
@@ -180,7 +180,7 @@ Stellen Sie sich ein Szenario vor, in dem Sie in Ihrem BizTalk Service-Projekt f
 
 **Problemumgehung**: Aktualisieren Sie das Zertifikat im BizTalk Service-Projekt, und stellen Sie das Projekt erneut bereit.  
 
-**Szenario 2: Verwenden namensbasierter Verhaltensmuster zum Identifizieren von Zertifikaten für die sichere Nachrichtenübertragung von einer Bridge an einen Dienstendpunkt**
+**Szenario 2: Verwenden namensbasierter Verhaltensmuster zum Identifizieren von Zertifikaten für die sichere Nachrichtenübertragung von einer Bridge an einen Dienstendpunkt**
 
 Stellen Sie sich ein Szenario vor, in dem Sie in Ihrem BizTalk Service-Projekt namensbasierte Verhaltensmuster zum Identifizieren von Zertifikaten verwenden. Sie aktualisieren das Zertifikat im BizTalk Services-Portal, aktualisieren aber das BizTalk Service-Projekt nicht entsprechend. In einem solchen Szenario werden die Nachrichten möglicherweise weiterhin von der Bridge verarbeitet, da sich die älteren Zertifikatdaten noch im Kanalcache befinden. Danach kann die Nachrichtenverarbeitung nicht mehr ausgeführt werden.  
 
@@ -199,7 +199,7 @@ Wenn Nachrichten mithilfe von WCF an eine Bridge gesendet werden, erfolgt keine 
 ### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UPGRADE: Tokenanbieterfehler nach dem Upgrade von BizTalk Services Preview auf die allgemein verfügbare Version
 Es gibt eine EDI- oder AS2-Vereinbarung mit aktiven Batches. Wenn der BizTalk Service von der Vorschauversion auf die allgemein verfügbare Version aktualisiert wird, kann Folgendes geschehen:
 
-* Fehler: Der Tokenanbieter konnte kein Sicherheitstoken bereitstellen. Vom Tokenanbieter zurückgegebene Meldung: Der Remotename konnte nicht aufgelöst werden.
+* Fehler Der Tokenanbieter konnte kein Sicherheitstoken bereitstellen. Vom Tokenanbieter zurückgegebene Meldung: Der Remotename konnte nicht aufgelöst werden.“ verursacht.
 * Stapelverarbeitungsaufgaben werden abgebrochen.
 
 **Problemumgehung**: Stellen Sie die Vereinbarung nach dem BizTalk Service-Upgrade auf die allgemein verfügbare Version erneut bereit.  
@@ -214,7 +214,7 @@ Wenn Sie beim BizTalk Services-Portal angemeldet sind, während das BizTalk Se
 
 Diese Funktion ist in dieser Edition von Microsoft Azure BizTalk Services nicht verfügbar. Wechseln Sie zur Verwendung dieser Funktionen zu einer geeigneten Edition.  
 
-**Lösung**: Melden Sie sich vom Portal ab, schließen Sie den Browser, öffnen Sie ihn wieder, und melden Sie sich dann erneut beim Portal an.  
+**Lösung:** Melden Sie sich vom Portal ab, schließen Sie den Browser, öffnen Sie ihn wieder, und melden Sie sich dann erneut beim Portal an.  
 
 ### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UPGRADE: Nach dem Upgraden von BizTalk Services auf die allgemein verfügbare Version werden keine neuen Nachverfolgungsdaten angezeigt
 Szenario: Sie haben im Abonnement der Vorschauversion von BizTalk Services eine XML-Bridge bereitgestellt. Sie senden Nachrichten an die Bridge, und die entsprechenden Nachverfolgungsdaten sind im BizTalk Services-Portal verfügbar. Das BizTalk Services-Portal und die BizTalk Services-Laufzeitkomponenten werden auf die allgemein verfügbare Version aktualisiert, und Sie senden eine Nachricht an den gleichen (zuvor bereitgestellten) Bridgeendpunkt.  

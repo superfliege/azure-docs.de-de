@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf507fb21b314a6811db1c1e45a4356381caada1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111848"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267180"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver über das Azure-Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -28,7 +28,7 @@ ms.locfileid: "23111848"
 ## <a name="introduction"></a>Einführung
 In diesem Artikel wird beschrieben, wie Sie die anfängliche Einrichtung durchführen, Ihren StorSimple-Dateiserver registrieren, die Geräteinstallation durchführen und SMB-Freigaben erstellen und die Verbindung dafür herstellen. Dies ist der letzte Artikel einer Reihe von Tutorials, in denen die vollständige Bereitstellung Ihres virtuellen Arrays als Dateiserver oder iSCSI-Server erläutert wird.
 
-Der Einrichtungs- und Konfigurationsvorgang kann ca. zehn Minuten dauern. Die Informationen in diesem Artikel beziehen sich nur auf das Bereitstellen des StorSimple Virtual Arrays. Wechseln Sie zum Bereitstellen von StorSimple-Geräten der 8000-Serie zu: [Bereitstellen lokaler StorSimple-Geräte (Update 2)](storsimple-deployment-walkthrough-u2.md).
+Der Einrichtungs- und Konfigurationsvorgang kann ca. zehn Minuten dauern. Die Informationen in diesem Artikel beziehen sich nur auf das Bereitstellen des StorSimple Virtual Arrays. Informationen zum Bereitstellen von Geräten der StorSimple 8000-Serie finden Sie hier: [Bereitstellen Ihres Gerät der StorSimple 8000-Serie mit Update 2](storsimple-deployment-walkthrough-u2.md).
 
 ## <a name="setup-prerequisites"></a>Voraussetzungen für das Setup
 Überprüfen Sie Folgendes, bevor Sie Ihr StorSimple Virtual Array konfigurieren und einrichten:
@@ -40,16 +40,16 @@ Der Einrichtungs- und Konfigurationsvorgang kann ca. zehn Minuten dauern. Die In
 ## <a name="step-by-step-setup"></a>Schritt-für-Schritt-Einrichtung
 Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Virtual Array einzurichten und zu konfigurieren:
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts
 #### <a name="to-complete-the-setup-and-register-the-device"></a>So führen Sie das Setup durch und registrieren das Gerät
-1. Öffnen Sie ein Browserfenster, und stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her. Geben Sie Folgendes ein:
+1. Öffnen Sie ein Browserfenster, und stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her. Geben Sie Folgendes ein: 
    
    `https://<ip-address of network interface>`
    
    Verwenden Sie die Verbindungs-URL aus dem vorherigen Schritt. Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website aufgetreten ist. Klicken Sie auf **Mit dieser Webseite fortfahren**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. Melden Sie sich bei der Webbenutzeroberfläche Ihres virtuellen Arrays als **StorSimpleAdmin** an. Geben Sie das Kennwort des Geräteadministrators ein, das Sie in „Schritt 3: Starten des virtuellen Geräts“ unter [Bereitstellen von StorSimple Virtual Array in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) geändert haben.
+2. Melden Sie sich bei der Webbenutzeroberfläche Ihres virtuellen Arrays als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie in Schritt 3: Starten des virtuellen Geräts“ unter [Bereitstellen von StorSimple Virtual Array in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) geändert haben.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. Sie gelangen auf die **Startseite**. Auf dieser Seite werden die verschiedenen Einstellungen beschrieben, die zum Konfigurieren und Registrieren des virtuellen Arrays beim StorSimple-Geräte-Manager-Dienst erforderlich sind. Die **Netzwerkeinstellungen**, **Webproxyeinstellungen** und **Uhrzeiteinstellungen** sind optional. Die einzigen erforderlichen Einstellungen sind **Geräteeinstellungen** und **Cloudeinstellungen**.
@@ -62,18 +62,18 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
    Wenn Sie während der Bereitstellung des Geräts mehr als eine Netzwerkschnittstelle hinzugefügt haben, können Sie diese hier konfigurieren. Beachten Sie, dass Sie die Netzwerkschnittstelle als nur IPv4 oder als IPv4 und IPv6 konfigurieren können. Konfigurationen für nur IPv6 werden nicht unterstützt.
 5. DNS-Server sind erforderlich, da sie verwendet werden, wenn Ihr Gerät versucht, mit Ihren Cloudspeicher-Dienstanbietern zu kommunizieren. Sie werden auch genutzt, um Ihr Gerät nach dem Namen aufzulösen, wenn es als Dateiserver konfiguriert ist. Auf der Seite **Netzwerkeinstellungen** unter **DNS-Server**:
    
-   1. Es wird automatisch ein primärer und ein sekundärer DNS-Server konfiguriert. Wenn Sie sich für die Konfiguration statischer IP-Adressen entscheiden, können Sie DNS-Server angeben. Zur Sicherstellung der hohen Verfügbarkeit wird empfohlen, einen primären und einen sekundären DNS-Server zu konfigurieren.
+   1. Es wird automatisch ein primärer und ein sekundärer DNS-Server konfiguriert. Wenn Sie sich für die Konfiguration statischer IP-Adressen entscheiden, können Sie DNS-Server angeben. Zur Sicherstellung der Hochverfügbarkeit wird empfohlen, einen primären und einen sekundären DNS-Server zu konfigurieren.
    2. Klicken Sie auf **Übernehmen**, um die Netzwerkeinstellungen anzuwenden und zu überprüfen.
 6. Auf der Seite **Geräteeinstellungen** :
    
    1. Weisen Sie Ihrem Gerät einen eindeutigen **Namen** zu. Dieser Name kann 1 bis 15 Zeichen lang sein und Buchstaben, Zahlen und Bindestriche enthalten.
    2. Klicken Sie auf das **Dateiserver**-Symbol ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) für den **Typ** des Geräts, das Sie erstellen. Mit einem Dateiserver können Sie freigegebene Ordner erstellen.
    3. Da es sich bei Ihrem Gerät um einen Dateiserver handelt, müssen Sie dafür den Beitritt zu einer Domäne durchführen. Geben Sie einen **Domänennamen**ein.
-   4. Klicken Sie auf **Übernehmen**.
+   4. Klicken Sie auf **Anwenden**.
 7. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
-8. Klicken Sie auf **Übernehmen**. Die Geräteeinstellungen werden angewendet und überprüft.
+8. Klicken Sie auf **Anwenden**. Die Geräteeinstellungen werden angewendet und überprüft.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
@@ -87,10 +87,10 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
    
    Auf der Seite **Webproxy** :
    
-   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://&lt;Host-IP-Adresse oder FDQN&gt;:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
+   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://&lt;Host-IP-Adresse oder FQDN&gt;:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
    2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
    3. Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
-   4. Klicken Sie auf **Übernehmen**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
+   4. Klicken Sie auf **Anwenden**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
 10. Optional: Konfigurieren Sie die Zeiteinstellungen für Ihr Gerät, z. B. die Zeitzone und die primären und sekundären NTP-Server. NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.
     
     ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
@@ -103,7 +103,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
     4. Klicken Sie auf **Übernehmen**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
 11. Konfigurieren Sie die Cloudeinstellungen für Ihr Gerät. In diesem Schritt führen Sie die lokale Gerätekonfiguration durch und registrieren das Gerät anschließend beim StorSimple-Geräte-Manager-Dienst.
     
-    1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) für StorSimple Virtual Array erhalten haben.
+    1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in[Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) für StorSimple Virtual Array erhalten haben.
     2. Falls dies das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den **Dienstdaten-Verschlüsselungsschlüssel** angeben. Kopieren Sie diesen Schlüssel, und bewahren Sie ihn an einem sicheren Ort auf. Dieser Schlüssel ist zusammen mit dem Dienstregistrierungsschlüssel zum Registrieren weiterer Geräte beim StorSimple-Geräte-Manager-Dienst erforderlich. 
        
        Falls dies nicht das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den Dienstdaten-Verschlüsselungsschlüssel angeben. Sehen Sie sich die weiteren Informationen zum Abrufen des [Dienstdaten-Verschlüsselungsschlüssels](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) für Ihre lokale Webbenutzeroberfläche an.
@@ -166,7 +166,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    
    Sie können nun fortfahren, um eine Freigabe hinzufügen.
 
-## <a name="step-3-add-a-share"></a>Schritt 3: Hinzufügen einer Freigabe
+## <a name="step-3-add-a-share"></a>Schritt 3: Hinzufügen einer Freigabe
 Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) aus, um eine Freigabe zu erstellen.
 
 #### <a name="to-create-a-share"></a>So erstellen Sie eine Freigabe
@@ -196,7 +196,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    
     ![Hinzufügen einer Freigabe](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
-## <a name="step-4-connect-to-the-share"></a>Schritt 4: Herstellen der Verbindung mit der Freigabe
+## <a name="step-4-connect-to-the-share"></a>Schritt 4: Herstellen einer Verbindung mit der Freigabe
 Als Nächstes müssen Sie eine Verbindung mit einer oder mehreren Freigaben herstellen, die Sie im vorherigen Schritt erstellt haben. Führen Sie diese Schritte auf dem Windows Server-Host aus, der mit Ihrem StorSimple Virtual Array verbunden ist.
 
 #### <a name="to-connect-to-the-share"></a>So stellen Sie eine Verbindung mit der Freigabe her

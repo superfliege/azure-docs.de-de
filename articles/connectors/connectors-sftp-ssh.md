@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 10/31/2018
-ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 01/15/2019
+ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979096"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320785"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -27,9 +27,9 @@ Um Aufgaben zu automatisieren, die Dateien auf einem [Secure File Transfer Proto
 * Sie können Dateiinhalte und Metadaten abrufen.
 * Sie können Archive in Ordner extrahieren.
 
-Im Vergleich zum [SFTP-Connector](../connectors/connectors-create-api-sftp.md) kann der SSH-Connector Dateien mit einer Größe von *1 GB* lesen oder schreiben. Für Dateien, die größer als 1 GB sind, können Sie den SFTP-SSH-Connector in Kombination mit der [Blockerstellung für die Behandlung großer Nachrichten](../logic-apps/logic-apps-handle-large-messages.md) verwenden. Weitere Unterschiede finden Sie im Artikel [Vergleichen von SFTP-SSH und SFTP](#comparison) im weiteren Verlauf.
+Im Vergleich zum [SFTP-Connector](../connectors/connectors-create-api-sftp.md) kann der SSH-Connector Dateien mit einer Größe von *1 GB* lesen oder schreiben. Weitere Unterschiede finden Sie im Artikel [Vergleichen von SFTP-SSH und SFTP](#comparison) im weiteren Verlauf.
 
-Sie können Trigger verwenden, die Ereignisse auf Ihrem SFTP-Server überwachen und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen verwenden, die verschiedene Aufgaben auf Ihrem SFTP-Server ausführen. Sie können die Ausgaben von SFTP-Aktionen auch in anderen Aktionen in Ihrer Logik-App verwenden. Wenn Sie z.B. regelmäßig Dateien von Ihrem SFTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder mithilfe des Outlook.com-Connectors E-Mail-Benachrichtigungen zu diesen Dateien und ihren Inhalten senden.
+Sie können Trigger verwenden, die Ereignisse auf Ihrem SFTP-Server überwachen und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen verwenden, die verschiedene Aufgaben auf Ihrem SFTP-Server ausführen. Darüber hinaus können die Ausgaben von SFTP-Aktionen auch von anderen Aktionen in Ihrer Logik-App verwendet werden. Wenn Sie beispielsweise regelmäßig Dateien von Ihrem SFTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder des Outlook.com-Connectors E-Mail-Benachrichtigungen zu diesen Dateien und ihren Inhalten senden.
 Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 <a name="comparison"></a>
@@ -48,7 +48,7 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
   > * **Verschlüsselungsalgorithmen**: DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
   > * **Fingerabdruck**: MD5
 
-* Er liest oder schreibt Dateien bis zu einer Größe von *1 GB* im Vergleich zum SFTP-Connector. Verwenden Sie für Dateien, die größer als 1 GB sind, die [Blockerstellung für die Behandlung großer Nachrichten](../logic-apps/logic-apps-handle-large-messages.md). 
+* Liest oder schreibt Dateien bis zu einer Größe von *1 GB* im Vergleich zum SFTP-Connector, verarbeitet Daten jedoch in Blöcken von 50 MB, nicht 1 GB.
 
 * Er stellt die Aktion **Ordner erstellen** bereit, wodurch ein Ordner unter dem angegebenen Pfad auf dem SFTP-Server erstellt wird.
 
@@ -60,7 +60,7 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
-* Ihre SFTP-Serveradresse und Anmeldeinformationen, über die Ihre Logik-App auf Ihr SFTP-Konto zugreifen kann. Außerdem benötigen Sie Zugriff auf einen privaten SSH-Schlüssel und das Kennwort für den privaten SSH-Schlüssel. 
+* Ihre SFTP-Serveradresse und Kontoanmeldeinformationen, über die Ihre Logik-App auf Ihr SFTP-Konto zugreifen kann. Außerdem benötigen Sie Zugriff auf einen privaten SSH-Schlüssel und das Kennwort für den privaten SSH-Schlüssel. 
 
   > [!IMPORTANT]
   >
@@ -72,7 +72,7 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
   >
   > Wenn Sie Ihre Logik-App erstellen, müssen Sie nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion Verbindungsinformationen für Ihren SFTP-Server bereitstellen. 
   > Wenn Sie einen privaten SSH-Schlüssel verwenden, stellen Sie sicher, dass Sie ***den Schlüssel aus Ihrer privaten SSH-Schlüsseldatei kopieren*** und diesen Schlüssel in die Verbindungsdetails ***einfügen***. ***Der Schlüssel darf nicht manuell eingegeben oder bearbeitet werden***, da anderenfalls ein Verbindungsfehler auftritt. 
-  > Weitere Informationen finden Sie in den weiteren Schritten weiter unten in diesem Artikel.
+  > Weitere Informationen finden Sie weiter unten in diesem Artikel.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -102,12 +102,12 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
    > Wenn Sie Ihren privaten SSH-Schlüssel in der Eigenschaft **SSH private key** eingeben, führen Sie diese zusätzlichen Schritte aus, um sicherzustellen, dass Sie den vollständigen und korrekten Wert für diese Eigenschaft angeben. 
    > Ein ungültiger Schlüssel führt zu einem Verbindungsfehler.
    
-   Obwohl Sie jeden Text-Editor verwenden können, finden Sie hier Beispielschritte, die zeigen, wie Sie Ihren Schlüssel am Beispiel von Notepad.exe korrekt kopieren und einfügen können.
+   Sie können jeden Text-Editor verwenden. Hier finden Sie Beispielschritte, die zeigen, wie Sie Ihren Schlüssel am Beispiel von Notepad.exe korrekt kopieren und einfügen.
     
-   1. Öffnen Sie Ihre privaten SSH-Schlüsseldatei in einem Text-Editor. 
-   Bei diesen Schritten verwenden wir als Beispiel Notepad.
+   1. Öffnen Sie die Datei für den privaten SSH-Schlüssel in einem Text-Editor. 
+   Bei diesen Schritten verwenden wir als Beispiel Editor.
 
-   1. Wählen Sie über das Notepad- Menü **Bearbeiten** und **Alle auswählen**.
+   1. Wählen Sie im Menü **Bearbeiten** von Editor die Option **Alles markieren** aus.
 
    1. Klicken Sie auf **Bearbeiten** > **Kopieren**.
 
@@ -120,12 +120,12 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
 
 ## <a name="trigger-limits"></a>Triggergrenzwerte
 
-Die SFTP-SSH-Trigger rufen das SFTP-Dateisystem ab und suchen nach jeder Datei, die seit des letzten Abrufs geändert wurde. Bei einigen Tools können Sie den Zeitstempel beibehalten, wenn Sie die Dateien ändern. In diesen Fällen müssen Sie diese Funktion deaktivieren, sodass der Trigger arbeiten kann. Hier sind einige gängige Einstellungen:
+Die SFTP-SSH-Trigger rufen das SFTP-Dateisystem ab und suchen nach jeder Datei, die seit des letzten Abrufs geändert wurde. Bei einigen Tools können Sie den Zeitstempel beibehalten, wenn sich die Dateien ändern. In diesen Fällen müssen Sie diese Funktion deaktivieren, sodass der Trigger arbeiten kann. Hier sind einige gängige Einstellungen:
 
 | SFTP-Client | Aktion | 
 |-------------|--------| 
-| Winscp | Wechseln Sie zu **Optionen** > **Voreinstellungen** > **Übertragen** > **Bearbeiten** > **Zeitstempel beibehalten** > **Deaktivieren**. |
-| FileZilla | Wechseln Sie zu **Übertragen** > **Zeitstempel übertragener Dateien beibehalten** > **Deaktivieren**. | 
+| Winscp | Navigieren Sie zu **Optionen** > **Voreinstellungen** > **Übertragen** > **Bearbeiten** > **Zeitstempel beibehalten** > **Deaktivieren**. |
+| FileZilla | Wechseln Sie zu **Übertragung** > **Änderungszeitpunkt der übertragenen Dateien beibehalten** > **Deaktivieren**. | 
 ||| 
 
 Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei vollständig ist und nicht nur teilweise geschrieben wurde. Zum Beispiel werden bei einer Datei möglicherweise gerade Änderungen vorgenommen, wenn der Trigger den Dateiserver überprüft. Um zu vermeiden, dass eine nur zum Teil geschriebene Datei zurückgegeben wird, vermerkt der Trigger den Zeitstempel für die Datei mit den kürzlichen Änderungen, gibt diese Datei jedoch nicht sofort zurück. Der Trigger gibt die Datei erst dann zurück, wenn der Server erneut abgerufen wird. Dieses Verhalten kann in manchen Fällen zu Verzögerungen führen, die bis zu zweimal länger als das Abrufintervall des Triggers sein können. 
@@ -137,13 +137,13 @@ Wenn der Trigger Dateiinhalte anfordert, ruft er keine Dateien ab, die größer 
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP-SSH-Trigger: wenn eine Datei hinzugefügt oder geändert wird
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP – SSH-Trigger: When a file is added or modified (Wenn eine Datei hinzugefügt oder geändert wird)
 
-Dieser Trigger startet einen Logik-App-Workflow, wenn auf einem SFTP-Server hinzugefügt oder geändert wurde. Sie können z.B. eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und den Inhalt basierend darauf abruft, ob der Inhalt eine bestimmte Bedingung erfüllt oder nicht. Sie können dann eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt. 
+Dieser Trigger startet einen Logik-App-Workflow, wenn auf einem SFTP-Server eine Datei hinzugefügt oder geändert wird. Sie können beispielsweise eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und den Inhalt basierend darauf abruft, ob er eine bestimmte Bedingung erfüllt. Sie können dann eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt. 
 
-**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Dann können Sie eine SFTP-Aktion wie z.B. **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank abzurufen.
+**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Anschließend können Sie eine SFTP-Aktion wie etwa **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung abzurufen und in einer Bestelldatenbank zu speichern.
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP-SSH-Aktion: Inhalt abrufen
+### <a name="sftp---ssh-action-get-content"></a>SFTP – SSH-Aktion: Inhalte abrufen
 
 Diese Aktion ruft den Inhalt einer Datei auf einem SFTP-Server ab. Sie können z.B. den Trigger aus dem vorherigen Beispiel sowie eine Bedingung hinzufügen, die vom Dateiinhalt erfüllt werden muss. Wenn die Bedingung als TRUE ausgewertet wird, kann die Aktion ausgeführt werden, die den Inhalt abruft. 
 
