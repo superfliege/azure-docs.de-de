@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 0680140d9f4f4e77b5029c30c37f4c531652c6f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119117"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262488"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
 
@@ -175,7 +175,7 @@ Verwenden Sie eines der folgenden Verfahren, um den Windows- oder Linux-Agent ü
 Die heruntergeladene Datei für den Agent ist ein eigenständiges Installationspaket, das mit IExpress erstellt wurde. Das Setup-Programm für den Agent und die unterstützenden Dateien sind im Paket enthalten und müssen extrahiert werden, um eine ordnungsgemäße Deinstallation mit der im folgenden Beispiel gezeigten Befehlszeile durchführen zu können.
 
 1. Melden Sie sich auf dem Computer mit einem Konto an, das über Administratorrechte verfügt.
-2. Um die Installationsdateien des Agent zu extrahieren, führen Sie `extract MMASetup-<platform>.exe` von einer Eingabeaufforderung mit erhöhten Rechten aus. Sie werden dann nach dem Pfad gefragt, in den die Dateien extrahiert werden sollen. Alternativ können Sie den Pfad angeben, indem Sie die Argumente `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` übergeben. Weitere Informationen zu den von IExpress unterstützten Befehlszeilenswitches finden Sie unter [Befehlszeilenoptionen für IExpress-Softwareupdatepakete](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages). Sie können anschließend das Beispiel aktualisieren, um es an Ihre Bedürfnisse anzupassen.
+2. Um die Installationsdateien des Agent zu extrahieren, führen Sie `extract MMASetup-<platform>.exe` von einer Eingabeaufforderung mit erhöhten Rechten aus. Sie werden dann nach dem Pfad gefragt, in den die Dateien extrahiert werden sollen. Alternativ können Sie den Pfad angeben, indem Sie die Argumente `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` übergeben. Weitere Informationen zu den von IExpress unterstützten Befehlszeilenschaltern finden Sie unter [Befehlszeilenoptionen für IExpress-Softwareupdatepakete](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages). Sie können anschließend das Beispiel aktualisieren, um es an Ihre Bedürfnisse anzupassen.
 3. Geben Sie an der Eingabeaufforderung `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` ein.
 
 ### <a name="linux-agent"></a>Linux-Agent

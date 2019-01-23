@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352939"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264749"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 
@@ -50,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen Sie die folgenden Voraussetzunge
 Notfallwiederherstellung (NW) ist ein wichtiger Aspekt für viele Anwendungen, sei es aus Konformitätsgründen oder für Geschäftskontinuität. Sollte es zu einem längeren Dienstausfall kommen, können Sie die Geschäftsunterbrechung mit einem gut vorbereiteten Notfallwiederherstellungsplan minimieren. Ein NW-Plan, der auf Geowiederherstellung basiert, muss mehrere Ziele erfüllen:
  * Jegliche erforderliche Kapazität in der ausgewählten Wiederherstellungsregion muss so schnell wie möglich reserviert werden, damit sichergestellt ist, dass sie zum Wiederherstellen der Mandantendatenbanken verfügbar ist.
  * Es muss eine Umgebung für die Spiegelimagewiederherstellung eingerichtet werden, die der ursprünglichen Pool- und Datenbankkonfiguration entspricht. 
- * Der Wiederherstellungsvorgang muss während der Ausführung abgebrochen werden können, wenn die ursprüngliche Region wieder online geschaltet wurde.
+ * Der Wiederherstellungsvorgang muss während der Ausführung abgebrochen werden können, wenn die ursprüngliche Region wieder online geschaltet wird.
  * Eine schnelle Mandantenbereitstellung, damit das Onboarding neuer Mandanten so schnell wie möglich wieder gestartet werden kann.
  * Der Plan muss für das Wiederherstellen der Mandanten in der Reihenfolge ihrer Priorität optimiert sein.
  * Der Plan muss dafür optimiert sein, Mandanten schnellstmöglich online schalten zu können, indem Schritte nach Möglichkeit parallel ausgeführt werden.
@@ -114,7 +114,7 @@ In dieser Aufgabe starten Sie einen Prozess, in dem die Konfiguration der Server
 
 3. Legen Sie Folgendes fest:
 
-    „$DemoScenario = 1“: Starten eines Hintergrundauftrags, bei dem Mandantenserver- und Poolkonfigurationsinformationen in den Katalog synchronisiert werden.
+    $DemoScenario = 1: Starten eines Hintergrundauftrags, bei dem Mandantenserver- und Poolkonfigurationsinformationen in den Katalog synchronisiert werden.
 
 4. Wählen Sie F5 aus, um das Synchronisierungsskript auszuführen. 
 
@@ -174,7 +174,7 @@ Stellen Sie sich vor, dass es in der Region, in der die Anwendung bereitgestellt
 
 1. Legen Sie in PowerShell ISE im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1“ den folgenden Wert fest:
 
-    „$DemoScenario = 2“: Wiederherstellen der App in einer Wiederherstellungsregion, indem sie aus georedundanten Sicherungen wiederhergestellt wird.
+    $DemoScenario = 2: Wiederherstellen der App in einer Wiederherstellungsregion, indem sie aus georedundanten Sicherungen wiederhergestellt wird.
 
 2. Wählen Sie F5 aus, um das Skript auszuführen.  
 
@@ -209,7 +209,7 @@ Schon bevor Mandantendatenbanken wiederhergestellt sind, können Sie neue Mandan
 
 1. Legen Sie in PowerShell ISE im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1“ die folgende Eigenschaft fest:
 
-    „$DemoScenario = 3“: Bereitstellen eines neuen Mandanten in der Wiederherstellungsregion.
+    $DemoScenario = 3: Bereitstellen eines neuen Mandanten in der Wiederherstellungsregion.
 
 2. Wählen Sie F5 aus, um das Skript auszuführen.
 
@@ -262,7 +262,7 @@ In dieser Aufgabe aktualisieren Sie eine der wiederhergestellten Mandantendatenb
 
 2. Legen Sie in PowerShell ISE im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1“ den folgenden Wert fest:
 
-    „$DemoScenario = 4“: Löschen einer Veranstaltung aus einem Mandanten in der Wiederherstellungsregion.
+    $DemoScenario = 4: Löschen eines Ereignisses von einem Mandanten in der Wiederherstellungsregion.
 
 3. Wählen Sie F5 aus, um das Skript auszuführen.
 
@@ -320,13 +320,13 @@ Wenn Sie dem Tutorial gefolgt sind, werden Fabrikam Jazz Club und Dogwood Dojo v
   
 1. Überprüfen Sie in PowerShell ISE im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1“, ob der Katalogsynchronisierungsprozess weiterhin in seiner PowerShell-Instanz ausgeführt wird. Starten Sie ihn bei Bedarf neu, indem Sie Folgendes festlegen:
 
-    „$DemoScenario = 1“: Starten der Synchronisierung der Mandantenserver-, Pool- und Datenbankkonfigurationsinformationen in den Katalog.
+    $DemoScenario = 1: Starten der Synchronisierung der Mandantenserver-, Pool- und Datenbankkonfigurationsinformationen in den Katalog.
 
     Wählen Sie F5 aus, um das Skript auszuführen.
 
 2.  Legen Sie dann Folgendes fest, um den Rückführungsprozess zu starten:
 
-    „$DemoScenario = 5“: Rückführen der App in ihre ursprüngliche Region.
+    $DemoScenario = 5: Rückführen der App in ihre ursprüngliche Region.
 
     Wählen Sie F5 aus, um das Wiederherstellungsskript in einem neuen PowerShell-Fenster auszuführen. Die Rückführung dauert einige Minuten und kann im PowerShell-Fenster überwacht werden.
 
@@ -352,7 +352,7 @@ Im Wiederherstellungsprozess werden alle Wiederherstellungsressourcen in einer W
 
 1. Legen Sie in PowerShell ISE im Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1“ Folgendes fest:
     
-    „$DemoScenario = 6“: Löschen von veralteten Ressourcen aus der Wiederherstellungsregion.
+    $DemoScenario = 6: Löschen veralteter Ressourcen aus der Wiederherstellungsregion.
 
 2. Wählen Sie F5 aus, um das Skript auszuführen.
 

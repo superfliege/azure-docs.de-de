@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 213190863702ec5a7f2ae764c8e2d892764740f9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233098"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332199"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault
 ## <a name="introduction"></a>Einführung
 In diesem Lernprogramm erfahren Sie, wie Sie die clientseitige Speicherverschlüsselung mit Azure Key Vault verwenden. Sie werden durch die Schritte zum Verschlüsseln und Entschlüsseln eines Blobs in einer Konsolenanwendung mit dieser Technologie geführt.
 
-**Geschätzter Zeitaufwand:** 20 Minuten
+**Geschätzter Zeitaufwand**: 20 Minuten
 
 Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../../key-vault/key-vault-whatis.md).
 
@@ -52,7 +52,7 @@ Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, d
 
 Notieren Sie ClientID und ClientSecret. Diese Angaben werden generiert, wenn Sie eine Anwendung mit Azure Active Directory registrieren.
 
-Erstellen Sie beide Schlüssel im Schlüsseltresor. Im weiteren Verlauf des Lernprogramms setzen wir voraus, dass Sie die folgenden Namen verwendet haben: ContosoKeyVault und TestRSAKey1.
+Erstellen Sie beide Schlüssel im Schlüsseltresor. Im weiteren Verlauf des Tutorials setzen wir voraus, dass Sie die folgenden Namen verwendet haben: ContosoKeyVault und TestRSAKey1.
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>Erstellen einer Konsolenanwendung mit Paketen und AppSettings
 Erstellen Sie in Visual Studio eine neue Konsolenanwendung.
@@ -184,14 +184,14 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Es sind einige andere Arten von Konfliktlösern (Resolvers) vorhanden, um die Schlüsselverwaltung zu vereinfachen, z. B. AggregateKeyResolver und CachingKeyResolver.
+> Es sind einige andere Arten von Konfliktlösern (Resolvers) vorhanden, um die Schlüsselverwaltung zu vereinfachen, z.B. AggregateKeyResolver und CachingKeyResolver.
 > 
 > 
 
 ## <a name="use-key-vault-secrets"></a>Verwenden von geheimen Schlüsseltresor-Schlüsseln
 Für die Verwendung eines geheimen Schlüssels mit clientseitiger Verschlüsselung wird die SymmetricKey-Klasse genutzt, da ein geheimer Schlüssel im Wesentlichen ein symmetrischer Schlüssel ist. Wie oben erwähnt, wird ein geheimer Schlüssel im Schlüsseltresor nicht exakt einem "SymmetricKey" zugeordnet. Hierbei sind einige Dinge zu beachten:
 
-* Der Schlüssel in einem "SymmetricKey" muss eine feste Länge haben: 128, 192, 256, 384 oder 512 Bit.
+* Der Schlüssel in einem "SymmetricKey" muss eine feste Länge haben: 128, 192, 256, 384 oder 512 Bit.
 * Der Schlüssel in einem "SymmetricKey" sollte über eine Base64-Codierung verfügen.
 * Ein geheimer Schlüsseltresor-Schlüssel, der als "SymmetricKey" verwendet wird, muss im Schlüsseltresor den Inhaltstyp "application/octet-stream" aufweisen.
 
@@ -208,7 +208,7 @@ $enc = [System.Convert]::ToBase64String($b)
 $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 
 // Substitute the VaultName and Name in this command.
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
+$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
 In Ihrer Konsolenanwendung können Sie den gleichen Aufruf wie vorher verwenden, um diesen geheimen Schlüssel als "SymmetricKey" abzurufen.

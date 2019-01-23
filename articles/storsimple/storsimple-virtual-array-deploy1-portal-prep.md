@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257264"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244782"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
@@ -43,8 +43,8 @@ Sehen Sie sich die folgenden Artikel in der angegebenen Reihenfolge an, um Ihr S
 | **#** | **Schritt** | **Aktion** | **Verwendete Dokumente** |
 | --- | --- | --- | --- |
 | 1. |**Einrichten des Azure-Portals** |Erstellen und konfigurieren Sie Ihren StorSimple-Geräte-Manager-Dienst, bevor Sie ein StorSimple Virtual Array bereitstellen. |[Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Bereitstellen des Virtual Array** |Stellen Sie für Hyper-V ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereit, und stellen Sie die Verbindung her. <br></br> <br></br> Stellen Sie für VMware ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 bereit, und stellen Sie eine Verbindung her.<br></br> |[Bereitstellen eines Virtual Arrays in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**Einrichten des Virtual Array** |Führen Sie für Ihren Dateiserver das anfängliche Setup durch, registrieren Sie Ihren StorSimple-Dateiserver, und führen Sie die Geräteinstallation durch. Anschließend können Sie die SMB-Freigaben bereitstellen. <br></br> <br></br> Führen Sie für Ihren iSCSI-Server das anfängliche Setup durch, registrieren Sie Ihren StorSimple-iSCSI-Server, und führen Sie die Geräteinstallation durch. Anschließend können Sie die iSCSI-Volumes bereitstellen. |[Einrichten des virtuellen Arrays als Dateiserver](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Einrichten des virtuellen Arrays als iSCSI-Server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 2. |**Bereitstellen des Virtual Array** |Stellen Sie für Hyper-V ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereit, und stellen Sie die Verbindung her. <br></br> <br></br> Stellen Sie für VMware ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5, 6.0 oder 6.5 bereit, und stellen Sie eine Verbindung her.<br></br> |[Bereitstellen eines Virtual Arrays in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 3. |**Einrichten des Virtual Array** |Führen Sie für Ihren Dateiserver das anfängliche Setup durch, registrieren Sie Ihren StorSimple-Dateiserver, und führen Sie die Geräteinstallation durch. Anschließend können Sie die SMB-Freigaben bereitstellen. <br></br> <br></br>  Führen Sie für Ihren iSCSI-Server das anfängliche Setup durch, registrieren Sie Ihren StorSimple-iSCSI-Server, und führen Sie die Geräteinstallation durch. Anschließend können Sie die iSCSI-Volumes bereitstellen. |[Einrichten des virtuellen Arrays als Dateiserver](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Einrichten des virtuellen Arrays als iSCSI-Server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
 
@@ -71,7 +71,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Array bereitstellen:
 
-* Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2008 R2 oder höher oder VMware (ESXi 5.0, 5.5 oder 6.0), das zum Bereitstellen eines Geräts verwendet werden kann.
+* Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2008 R2 oder höher oder VMware (ESXi 5.0, 5.5, 6.0 oder 6.5), das zum Bereitstellen eines Geräts verwendet werden kann.
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Arrays über die folgenden Ressourcen:
   
   * Mindestens 4 Kerne
@@ -90,9 +90,9 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr Portal für den StorSimple-Geräte-Manager-Dienst vorzubereiten.
 
-## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
+## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
 
-Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) fortfahren.
+Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit Folgendem fortfahren: [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -100,7 +100,7 @@ Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehre
 > Wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben, müssen Sie mindestens ein Speicherkonto erstellen, nachdem Sie einen Dienst erstellt haben.
 > 
 > * Wenn Sie nicht automatisch ein Speicherkonto erstellt haben, finden Sie unter [Konfigurieren eines neuen Speicherkontos für den Dienst](#optional-step-configure-a-new-storage-account-for-the-service) ausführliche Anweisungen.
-> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key)fort.
+> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit Folgendem fort: [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key).
 > 
 > 
 
@@ -137,7 +137,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    
    * VHDX für Hyper-V unter Windows Server 2012 und höher
    * VHD für Hyper-V unter Windows Server 2008 R2 und höher
-   * VMDK für VMware ESXi 5.0, 5.5 oder 6.0
+   * VMDK für VMWare ESXi 5.0, 5.5, 6.0 oder 6.5
 5. Laden Sie die Datei auf einen lokalen Datenträger herunter, und entzippen Sie sie. Notieren Sie den Speicherort der entzippten Datei.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Optionaler Schritt: Konfigurieren eines neuen Speicherkontos für den Dienst

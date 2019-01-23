@@ -11,20 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 01/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194231"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353038"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway
 In diesem Dokument wird beschrieben, wie Sie die Kommunikation mit Azure Automation und Log Analytics über das Log Analytics-Gateway konfigurieren, wenn direkt verbundene oder durch Operations Manager überwachte Computer nicht über Internetzugriff verfügen.  Das Log Analytics-Gateway ist ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, und kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
 
 Das Log Analytics-Gateway unterstützt Folgendes:
 
+* Berichterstattung an bis zu vier derselben Log Analytics-Arbeitsbereiche, mit denen Agents dahinter konfiguriert sind  
 * Azure Automation – Hybrid-Runbook-Worker  
 * Direkt mit einem Log Analytics-Arbeitsbereich verbundene Windows-Computer mit Microsoft Monitoring Agent
 * Direkt mit einem Log Analytics-Arbeitsbereich verbundene Linux-Computer mit dem Log Analytics-Agent für Linux  
@@ -36,11 +37,11 @@ Wenn eine Operations Manager-Verwaltungsgruppe in Log Analytics integriert wird,
 
 Zur Gewährleistung der Hochverfügbarkeit für direkt verbundene Gruppen oder Operations Management-Gruppen, die über das Gateway mit Log Analytics kommunizieren, können Sie den Datenverkehr mithilfe des Netzwerklastenausgleichs umleiten und auf mehrere Gatewayserver verteilen.  Wenn ein Gatewayserver ausfällt, wird der Datenverkehr an einen anderen verfügbaren Knoten umgeleitet.  
 
-Der Log Analytics-Agent ist auf dem Computer erforderlich, auf dem das Log Analytics-Gateway ausgeführt wird. Dort identifiziert er die Dienstendpunkte, mit denen er kommunizieren muss, und überwacht das Log Analytics-Gateway, um die entsprechenden Leistungs- oder Ereignisdaten zu analysieren.
+Der Log Analytics-Windows-Agent ist auf dem Computer mit dem Log Analytics-Gateway erforderlich, damit er nicht nur die Dienstendpunkte ermitteln kann, mit denen er kommunizieren muss, sondern auch zum Berichten an dieselben Arbeitsbereiche, mit denen die Agents oder die Operations Manager-Verwaltungsgruppe hinter dem Gateway konfiguriert sind. Dies ist erforderlich, damit das Gateway die Kommunikation mit dem zugewiesenen Arbeitsbereich ermöglichen kann. Ein Gateway kann mit bis zu vier Arbeitsbereichen mehrfach vernetzt sein, da dies die Gesamtanzahl der Arbeitsbereiche ist, die ein Windows-Agent unterstützt.  
 
-Jeder Agent benötigt eine Netzwerkverbindung mit dem entsprechenden Gateway, damit Agents automatisch Daten an das und vom Gateway übertragen können. Das Gateway sollte nicht auf einem Domänencontroller installiert werden.
+Jeder Agent benötigt eine Netzwerkverbindung mit dem Gateway, damit Agents automatisch Daten an das und vom Gateway übertragen können. Das Gateway sollte nicht auf einem Domänencontroller installiert werden.
 
-Die folgende Abbildung zeigt den Datenfluss von direkten Agents an Azure Automation und Log Analytics unter Verwendung des Gatewayservers.  In der Proxykonfiguration der Agents muss der Port verwendet werden, mit dem das Log Analytics-Gateway für die Kommunikation mit dem Dienst konfiguriert ist.  
+Die folgende Abbildung zeigt den Datenfluss von direkten Agents an Azure Automation und Log Analytics unter Verwendung des Gatewayservers. In der Proxykonfiguration der Agents muss der Port verwendet werden, mit dem das Log Analytics-Gateway konfiguriert ist.  
 
 ![Abbildung der direkten Kommunikation von Agents mit Diensten](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
@@ -56,7 +57,7 @@ Ein Computer, der für die Ausführung des Log Analytics-Gateways vorgesehen ist
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, Windows Server 2008
 * .NET Framework 4.5
 * Vierkernprozessor und 8 GB Arbeitsspeicher (mindestens) 
-* Log Analytics-Agent für Windows 
+* [Log Analytics-Agent für Windows](agent-windows.md) wird installiert und zum Berichten an denselben Arbeitsbereich konfiguriert wie die Agents, die über das Gateway kommunizieren.  
 
 ### <a name="language-availability"></a>Verfügbare Sprachen
 
@@ -83,7 +84,7 @@ Das Log Analytics-Gateway ist in folgenden Sprachen verfügbar:
 Das Log Analytics-Gateway unterstützt nur Transport Layer Security (TLS) 1.0, 1.1 und 1.2.  Secure Sockets Layer (SSL) wird nicht unterstützt.  Um die Sicherheit von Daten bei der Übertragung an Log Analytics sicherzustellen, wird dringend empfohlen, das Gateway so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.  Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Unterstützte Anzahl von Agent-Verbindungen
-Die folgende Tabelle zeigt die unterstützte Anzahl der Agents, die mit einem Gatewayserver kommunizieren können.  Diese Unterstützung basiert auf Agents, die alle 6 Sekunden ungefähr 200 KB Daten hochladen. Die Datenmenge pro getestetem Agent beträgt etwa 2,7 GB pro Tag.
+Die folgende Tabelle zeigt die unterstützte Anzahl der Agents, die mit einem Gatewayserver kommunizieren können.  Diese Unterstützung basiert auf Agents, die alle 6 Sekunden ungefähr 200 KB Daten hochladen. Das Datenvolumen pro getestetem Agent beträgt etwa 2,7 GB pro Tag.
 
 |Gateway |Ungefähre Anzahl unterstützter Agents|  
 |--------|----------------------------------|  
@@ -124,7 +125,8 @@ Führen Sie die folgenden Schritte aus, um ein Gateway zu installieren.  Falls e
 1. Falls Microsoft Update nicht aktiviert ist, wird die Seite „Microsoft Update“ angezeigt, auf der Sie Microsoft Update aktivieren können. Treffen Sie eine Auswahl, und klicken Sie dann auf **Weiter**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
 1. Übernehmen Sie auf der Seite **Zielordner** entweder den Standardordner „C:\Programme\OMS Gateway“, oder geben Sie den Speicherort zum Installieren des Gateways ein, und klicken Sie anschließend auf **Weiter**.
 1. Klicken Sie auf der Seite **Bereit zur Installation** auf **Installieren**. Unter Umständen fordert die Benutzerkontensteuerung eine Installationsberechtigung an. Ist dies der Fall, klicken Sie auf **Ja**.
-1. Nachdem Setup abgeschlossen ist, klicken Sie auf **Fertig stellen**. Sie können überprüfen, ob der Dienst ausgeführt wird. Öffnen Sie dazu das Snap-In „services.msc“, und vergewissern Sie sich, dass **Log Analytics-Gateway** in der Liste der Dienste angezeigt wird und den Status **Wird ausgeführt** aufweist.<br><br> ![Dienste – Log Analytics-Gateway](./media/gateway/gateway-service.png)  
+1. Nachdem Setup abgeschlossen ist, klicken Sie auf **Fertig stellen**. Sie können überprüfen, ob der Dienst ausgeführt wird. Öffnen Sie dazu das Snap-In „services.msc“, und überprüfen Sie, ob **OMS-Gateway** in der Liste mit den Diensten angezeigt wird und den Status **Wird ausgeführt** besitzt.<br><br> ![Dienste – Log Analytics-Gateway](./media/gateway/gateway-service.png)  
+
 
 ## <a name="configure-network-load-balancing"></a>Konfigurieren des Netzwerklastenausgleichs 
 Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den Microsoft-Netzwerklastenausgleich (NLB) oder einen hardwarebasierten Lastenausgleich verwenden.  Beim Lastenausgleich werden die angeforderten Verbindungen von Log Analytics-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten umgeleitet. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
@@ -140,7 +142,11 @@ Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clu
 Im folgenden Abschnitt erfahren Sie, wie Sie direkt verbundene Log Analytics-Agents, eine Operations Manager-Verwaltungsgruppe oder Azure Automation Hybrid Runbook Worker mit dem Log Analytics-Gateway konfigurieren, um die Kommunikation mit Azure Automation und Log Analytics zu ermöglichen.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Konfigurieren eines eigenständigen Log Analytics-Agents
-Informationen zu den Anforderungen und Schritten zum Installieren des Log Analytics-Agents auf Windows-Computern mit Log Analytics-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](agent-windows.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden von Linux-Computern mit Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Statt einen Proxyserver bei der Konfiguration des Agents anzugeben, ersetzen Sie diesen Wert durch die IP-Adresse und die Portnummer des Log Analytics-Gatewayservers.  Wenn Sie mehrere Gatewayserver hinter einem Netzwerklastenausgleich bereitgestellt haben, handelt es sich bei der Log Analytics-Agent-Proxykonfiguration um die virtuelle IP-Adresse des NLB.  
+Informationen zu den Anforderungen und Schritten zum Installieren des Log Analytics-Agents auf dem Gateway und Windows-Computern mit Log Analytics-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](agent-windows.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden von Linux-Computern mit Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Statt einen Proxyserver bei der Konfiguration des Agents anzugeben, ersetzen Sie diesen Wert durch die IP-Adresse und die Portnummer des Log Analytics-Gatewayservers. Wenn Sie mehrere Gatewayserver hinter einem Netzwerklastenausgleich bereitgestellt haben, handelt es sich bei der Log Analytics-Agent-Proxykonfiguration um die virtuelle IP-Adresse des NLB.  
+
+Nach der Installation des Agents auf dem Gatewayserver können Sie ihn zum Berichten an den Arbeitsbereich oder die Arbeitsbereiche konfigurieren, über die Agents mit dem Gateway kommunizieren. Wenn der Log Analytics-Windows-Agent nicht auf dem Gateway installiert ist, wird Ereignis 300 in das Ereignisprotokoll **OMS-Gatewayprotokoll** geschrieben und gibt an, dass der Agent installiert werden muss. Wenn der Agent installiert ist, aber nicht zum Berichten an denselben Arbeitsbereich konfiguriert ist wie die Agents, die darüber kommunizieren, wird Ereignis 105 in das gleiche Ereignisprotokoll geschrieben und gibt an, dass der Agent auf dem Gateway zum Berichten an denselben Arbeitsbereich konfiguriert werden muss wie die Agents, die mit dem Gateway kommunizieren.
+
+Nachdem Sie die Konfiguration abgeschlossen haben, müssen Sie den **OMS-Gatewaydienst** neu starten, damit die Änderungen wirksam werden. Andernfalls lehnt das Gateway Agents, die mit Log Analytics zu kommunizieren versuchen, ab und meldet Ereignis-ID 105 im Ereignisprotokoll **OMS-Gatewayprotokoll**. Dies gilt auch beim Hinzufügen oder Entfernen eines Arbeitsbereichs aus der Agent-Konfiguration auf dem Gatewayserver.   
 
 Informationen zum Automation Hybrid Runbook Worker finden Sie unter [Bereitstellen von Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 
@@ -149,18 +155,20 @@ Sie konfigurieren Operations Manager, um den Gatewayserver hinzuzufügen.  Die O
 
 Voraussetzungen für die Unterstützung von Operations Manager mithilfe des Gateways:
 
-* Microsoft Monitoring Agent (Agent-Version: **8.0.10900.0** oder höher) muss auf dem Gateway-Server installiert und für die Log Analytics-Arbeitsbereiche konfiguriert sein, mit denen Sie kommunizieren möchten.
+* Auf dem Gateway-Server muss Microsoft Monitoring Agent (Agent-Version: **8.0.10900.0** oder höher) installiert und mit denselben Log Analytics-Arbeitsbereichen konfiguriert sein, denen Ihre Verwaltungsgruppe unterstellt ist.
 * Das Gateway benötigt Internetkonnektivität oder muss mit einem Proxyserver verbunden sein, bei dem dies der Fall ist.
 
 > [!NOTE]
 > Wenn Sie keinen Wert für das Gateway angeben, werden mithilfe von Push leere Werte an alle Agents übertragen.
 > 
 
-Wenn sich Ihre Operations Manager-Verwaltungsgruppe zum ersten Mal bei einem Log Analytics-Arbeitsbereich registriert, ist die Option zum Angeben der Proxykonfiguration für die Verwaltungsgruppe in der Betriebskonsole nicht verfügbar.  Die Verwaltungsgruppe muss erfolgreich beim Dienst registriert werden. Erst dann wird diese Option verfügbar.  Sie müssen die Systemproxykonfiguration mit Netsh auf dem System aktualisieren, von dem aus Sie die Betriebskonsole ausführen, um die Integration sowie alle Verwaltungsserver in der Verwaltungsgruppe zu konfigurieren.  
+Wenn sich Ihre Operations Manager-Verwaltungsgruppe zum ersten Mal bei einem Log Analytics-Arbeitsbereich registriert, ist die Option zum Angeben der Proxykonfiguration für die Verwaltungsgruppe in der Betriebskonsole nicht verfügbar.  Die Verwaltungsgruppe muss erfolgreich beim Dienst registriert werden. Erst dann wird diese Option verfügbar.  Aktualisieren Sie die Systemproxykonfiguration mit Netsh auf dem System, von dem aus Sie die Betriebskonsole ausführen, um die Integration sowie alle Verwaltungsserver in der Verwaltungsgruppe zu konfigurieren.  
 
 1. Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten.
-   a. Navigieren Sie zu **Start**, und geben Sie **cmd** ein.
-   b. Klicken Sie mit der rechten Maustaste auf **Eingabeaufforderung**, und wählen Sie „Als Administrator ausführen“** aus.
+
+    a. Navigieren Sie zu **Start**, und geben Sie **cmd** ein.  
+    b. Klicken Sie mit der rechten Maustaste auf **Eingabeaufforderung**, und wählen Sie **Als Administrator ausführen** aus.  
+
 1. Geben Sie den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
 
     `netsh winhttp set proxy <proxy>:<port>`

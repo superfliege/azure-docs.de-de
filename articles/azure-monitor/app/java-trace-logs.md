@@ -1,5 +1,5 @@
 ---
-title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Azure Application Insights | Microsoft Docs
+title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Azure Application Insights | Microsoft-Dokumentation
 description: Durchsuchen von Log4J- oder Logback-Ablaufverfolgungen in Application Insights
 services: application-insights
 documentationcenter: java
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: e1575afde326875558cea437de775515b8606f01
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d3f8e5ac1f85483d04da99744809f4bc72295024
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981634"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266193"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.

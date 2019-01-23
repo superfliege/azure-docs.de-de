@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051950"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354576"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.locfileid: "54051950"
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
-* Verbesserung der Wiederholungslogik während des Failovers für den StoredProcedure-Ausführungsaufruf.
+* Verbesserung der Wiederholungslogik während des Failovers für StoredProcedure-Ausführungsaufrufe.
 
 * DocumentClientEventSource-Singleton wurde vorgenommen. 
 
@@ -265,7 +265,7 @@ ms.locfileid: "54051950"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
 * Unterstützung für Wiederholungsversuche für gedrosselte Anforderungen hinzugefügt.  Benutzer kann die Anzahl von Wiederholungsversuchen und die maximale Wartezeit durch Konfigurieren der ConnectionPolicy.RetryOptions-Eigenschaft anpassen.
-* Neue IDocumentClient-Schnittstelle hinzugefügt, die die Signaturen aller DocumentClient-Eigenschaften und -Methoden definiert.  Im Rahmen dieser Änderung wurden auch die Erweiterungsmethoden zum Erstellen von IQueryable und IOrderedQueryable in Methoden der DocumentClient-Klasse selbst geändert.
+* Es wurde eine neue IDocumentClient-Schnittstelle hinzugefügt, die die Signaturen aller DocumentClient-Eigenschaften und -Methoden definiert.  Im Rahmen dieser Änderung wurden auch die Erweiterungsmethoden zum Erstellen von IQueryable und IOrderedQueryable in Methoden der DocumentClient-Klasse selbst geändert.
 * Eine Konfigurationsoption zum Festlegen des „ServicePoint.ConnectionLimit“-Werts für einen bestimmten Azure Cosmos DB-Endpunkt-URI wurde hinzugefügt.  Verwenden Sie ConnectionPolicy.MaxConnectionLimit zum Ändern des Standardwerts, der auf 50 festgelegt ist.
 * IPartitionResolver und die zugehörige Implementierung wurden als „veraltet“ markiert.  Unterstützung für IPartitionResolver ist jetzt veraltet. Um mehr Speicher und höheren Durchsatz zu erzielen, empfiehlt sich die Verwendung von partitionierten Sammlungen.
 

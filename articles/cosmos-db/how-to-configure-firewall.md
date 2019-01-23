@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033161"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359424"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Konfigurieren einer IP-Firewall für Ihr Azure Cosmos DB-Konto
 
@@ -145,10 +145,10 @@ Sie haben folgende Optionen, um Probleme mit einer IP-Zugriffssteuerungsrichtlin
 Durch das Aktivieren einer IP-Zugriffssteuerungsrichtlinie für Ihr Azure Cosmos DB-Konto werden alle Anforderungen für das Konto von Computern außerhalb der Liste der zugelassenen IP-Adressbereiche blockiert. Um Vorgänge auf Portaldatenebene zu ermöglichen, z.B. das Durchsuchen von Containern und das Abfragen von Dokumenten, müssen Sie den Zugriff über das Azure-Portal im Bereich **Firewall** im Portal explizit zulassen.
 
 ### <a name="sdks"></a>SDKs 
-Beim Zugriff auf Azure Cosmos DB-Ressourcen mithilfe von SDKs über Computer, die nicht in der Zulassungsliste enthalten sind, wird eine generische **404: Nicht gefunden**-Antwort ohne weitere Details zurückgegeben. Überprüfen Sie die Liste der zugelassenen IP-Adressen für Ihr Konto, und stellen Sie sicher, dass die richtige Richtlinienkonfiguration auf das Cosmos DB-Konto angewendet wird. 
+Beim Zugriff auf Azure Cosmos DB-Ressourcen mithilfe von SDKs über Computer, die nicht in der Zulassungsliste enthalten sind, wird eine generische Antwort **403: Nicht zulässig** ohne weitere Details zurückgegeben. Überprüfen Sie die Liste der zugelassenen IP-Adressen für Ihr Konto, und stellen Sie sicher, dass die richtige Richtlinienkonfiguration auf das Cosmos DB-Konto angewendet wird. 
 
 ### <a name="source-ips-in-blocked-requests"></a>Überprüfen von Quell-IP-Adressen in blockierten Anforderungen
-Aktivieren Sie die Diagnoseprotokollierung für Ihr Azure Cosmos DB-Konto. Diese Protokolle zeigen jede Anforderung und Antwort. Die firewallbezogenen Meldungen werden intern mit einem 403-Rückgabecode protokolliert. Wenn Sie diese Meldungen filtern, können Sie die Quell-IP-Adressen für die blockierten Anforderungen anzeigen. Siehe [Diagnoseprotokollierung für Azure Cosmos DB](logging.md).
+Aktivieren Sie die Diagnoseprotokollierung für Ihr Azure Cosmos DB-Konto. Diese Protokolle zeigen jede Anforderung und Antwort. Die firewallbezogenen Meldungen werden mit einem „403“-Rückgabecode protokolliert. Wenn Sie diese Meldungen filtern, können Sie die Quell-IP-Adressen für die blockierten Anforderungen anzeigen. Siehe [Diagnoseprotokollierung für Azure Cosmos DB](logging.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Anforderungen über ein Subnetz mit einem aktiviertem Dienstendpunkt für Azure Cosmos DB
 Bei Anforderungen über ein Subnetz in einem virtuellen Netzwerk, für das der Dienstendpunkt für Azure Cosmos DB aktiviert ist, werden die Identitäten des virtuellen Netzwerks und des Subnetzes an Azure Cosmos DB-Konten gesendet. Diese Anforderungen enthalten nicht die öffentliche IP-Adresse der Quelle und werden deshalb durch die IP-Filter abgelehnt. Um den Zugriff über bestimmte Subnetze in virtuellen Netzwerken zu ermöglichen, fügen Sie eine VNET-Zugriffssteuerungsliste hinzu. Informationen dazu finden Sie unter [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md). Es kann bis zu 15 Minuten dauern, bis die Firewallregeln angewandt werden.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034086"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199067"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Indextypen in Azure Cosmos DB
 
@@ -29,6 +29,9 @@ Azure Cosmos DB unterstützt die Indexarten „Hash“ und „Range“ für alle
 
 - **Index „Hash“** unterstützt effiziente Gleichheits- und JOIN-Abfragen. In den meisten Fällen benötigen Hashindizes keine höhere Genauigkeit als den Standardwert von 3 Byte. Der Datentyp kann „String“ oder „Number“ sein.
 
+  > [!NOTE]
+  > Azure Cosmos-Container unterstützen ein neues Indexlayout, das die Indexart „Hash“ nicht mehr verwendet. Wenn Sie die Indexart „Hash“ in der Indizierungsrichtlinie angeben, ignorieren die CRUD-Anfragen für den Container automatisch die Indexart, und die Antwort vom Container enthält nur die Indexart „Range“. Alle neuen Cosmos-Container verwenden standardmäßig das neue Indexlayout. 
+  
 - **Index „Range“** unterstützt effiziente Gleichheitsabfragen, Bereichsabfragen (mit >, <, >=, <=, !=) und ORDER By-Abfragen. Bei ORDER BY-Abfragen muss standardmäßig auch die maximale Indexgenauigkeit (-1) angegeben werden. Der Datentyp kann „String“ oder „Number“ sein.
 
 - **Index „Spatial“** unterstützt effiziente räumliche Abfragen zur Entfernung und zu enthaltenen Elementen. Der Datentyp kann „Point“, „Polygon“ oder „LineString“ sein. Azure Cosmos DB unterstützt auch die Indexart „Spatial“ für alle Pfade, die für den Datentyp „Point“, „Polygon“ oder „LineString“ angegeben werden können. Der Wert am angegebenen Pfad muss ein gültiges GeoJSON-Fragment sein, beispielsweise {"type": "Point", "coordinates": [0.0, 10.0]}. Azure Cosmos DB unterstützt die automatische Indizierung der Datentypen „Point“, „Polygon“ und „LineString“.
@@ -58,6 +61,9 @@ Im Folgenden finden Sie einige Beispiele, wie die Indizes „Hash“, „Range�
 - Räumliche Indizes verwenden stets die Standardindexgenauigkeit für alle Typen („Point“, „LineString“ und „Polygon“). Die Standardindexgenauigkeit für räumliche Indizes kann nicht überschrieben werden.
 
 Azure Cosmos DB gibt einen Fehler zurück, wenn in einer Abfrage ORDER BY verwendet wird, aber kein Bereichsindex für den abgefragten Pfad mit maximaler Genauigkeit vorhanden ist.
+
+> [!NOTE]
+> Azure Cosmos-Container unterstützen ein neues Indexlayout, das nur den Wert für die maximale Genauigkeit (-1) und keine andere benutzerdefinierte Indexgenauigkeit mehr erfordert. Mit dieser Methode werden die Pfade stets mit maximaler Genauigkeit indiziert. Wenn Sie in der Indizierungsrichtlinie einen Genauigkeitswert angeben, ignorieren die CRUD-Anfragen für den Container automatisch den Genauigkeitswert, und die Antwort vom Container enthält nur den Wert für die maximale Genauigkeit (-1).  Alle neuen Cosmos-Container verwenden standardmäßig das neue Indexlayout.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

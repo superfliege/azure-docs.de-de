@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: d8d8e344ce9ee317a7f864492514162b1dc085f9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885006"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213126"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Datenerfassungszeit in Log Analytics
 Azure Log Analytics ist ein Hochleistungs-Datendienst in Azure Monitor, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Daten bis zu ihrer Verfügbarkeit in Log Analytics zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -46,7 +46,7 @@ Agents und Managementlösungen verwenden verschiedene Strategien, um Daten eines
 Um einen schlanken Log Analytics-Agent zu gewährleisten, speichert der Agent Protokolle zwischen und lädt sie in regelmäßigen Abständen nach Log Analytics hoch. Die Uploadhäufigkeit schwankt zwischen 30 Sekunden und 2 Minuten, abhängig vom Datentyp. Die meisten Daten werden in unter 1 Minute hochgeladen. Die Netzwerkbedingungen können sich für diese Daten nachteilig auf die Wartezeit bis zum Erreichen des Log Analytics-Erfassungspunkts auswirken.
 
 ### <a name="azure-logs-and-metrics"></a>Azure-Protokolle und -Metriken 
-Bis zur Verfügbarkeit von Daten des Aktivitätsprotokolls in Log Analytics vergehen ungefähr 5 Minuten. Für Daten aus Diagnoseprotokollen und Metriken kann es 1–5 Minuten bis zur Verfügbarkeit brauchen, abhängig vom Azure-Dienst. Anschließend braucht es weitere 30–60 Sekunden bei Protokollen und 3 Minuten bei Metriken, bis die Daten an den Erfassungspunkt von Log Analytics gesendet werden.
+Bis zur Verfügbarkeit von Daten des Aktivitätsprotokolls in Log Analytics vergehen ungefähr 5 Minuten. Für Daten aus Diagnoseprotokollen und Metriken kann es je nach Azure-Dienst 1–15 Minuten dauern, bis sie zur Verarbeitung zur Verfügbarkeit stehen. Sobald sie verfügbar sind, braucht es weitere 30–60 Sekunden bei Protokollen und 3 Minuten bei Metriken, bis die Daten an den Erfassungspunkt von Log Analytics gesendet werden.
 
 ### <a name="management-solutions-collection"></a>Sammlung von Verwaltungslösungen
 Einige Lösungen sammeln ihre Daten nicht mithilfe eines Agents, sondern verwenden eine Erfassungsmethode, die zusätzliche Wartezeit mit sich bringt. Einige Lösungen erfassen Daten in regelmäßigen Intervallen, ohne eine Sammlung nahezu in Echtzeit zu versuchen. Dies sind einige spezifische Beispiele:
@@ -73,22 +73,60 @@ Dieser Prozess nimmt derzeit ungefähr 5 Minuten bei geringem Datenaufkommen in 
 
 
 ## <a name="checking-ingestion-time"></a>Überprüfen der Erfassungszeit
-Sie können die **Heartbeat**-Tabelle verwenden, um eine Abschätzung der Wartezeit für Daten von Agents zu erhalten. Da der Heartbeat ein Mal pro Minute gesendet wird, liegt der Unterschied zwischen der aktuellen Uhrzeit und dem letzten Heartbeatdatensatz im Idealfall so nahe wie möglich an einer Minute.
+Die Erfassungszeit kann für verschiedene Ressourcen unter verschiedenen Umständen variieren. Mithilfe von Protokollabfragen können Sie das spezifische Verhalten Ihrer Umgebung ermitteln.
 
-Verwenden Sie die folgende Abfrage, um die Computer mit der längsten Wartezeit aufzulisten.
+### <a name="ingestion-latency-delays"></a>Verzögerungen der Erfassungswartezeit
+Sie können die Wartezeit eines bestimmten Datensatzes messen, indem Sie das Ergebnis der Funktion [ingestion_time()](/azure/kusto/query/ingestiontimefunction) mit dem Feld _TimeGenerated_ vergleichen. Diese Daten können mit verschiedenen Aggregationen verwendet werden, um das Verhalten der Erfassungswartezeit zu ermitteln. Untersuchen Sie ein Perzentil der Erfassungszeit, um Einblicke für große Datenmengen zu erhalten. 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | top 50 by IngestionTime asc
+Die folgende Abfrage zeigt beispielsweise, welche Computer am aktuellen Tag die höchste Erfassungszeit aufwiesen: 
 
+``` Kusto
+Heartbeat
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc  
+```
  
-Verwenden Sie die folgende Abfrage in großen Umgebungen, um die Wartezeit für verschiedene Prozentsätze der Gesamtmenge der Computer zusammenzufassen.
+Wenn Sie detaillierte Informationen zur Erfassungszeit für einen bestimmten Computer über einen Zeitraum anzeigen möchten, verwenden Sie die folgende Abfrage, mit der die Daten zudem in einem Diagramm visualisiert werden: 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | summarize percentiles(IngestionTime, 50,95,99)
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart  
+```
+ 
+Mit der folgenden Abfrage können Sie die Erfassungszeit von Computern nach dem Land anzeigen, in dem sich diese basierend auf der IP-Adresse befinden: 
 
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+```
+ 
+Verschiedene Datentypen, die vom Agent stammen, weisen möglicherweise unterschiedliche Erfassungswartezeiten auf. Daher können die vorherigen Abfragen mit anderen Typen verwendet werden. Mit der folgenden Abfrage können Sie die Erfassungszeit verschiedener Azure-Dienste überprüfen: 
 
+``` Kusto
+AzureDiagnostics 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+```
+
+### <a name="resources-that-stop-responding"></a>Ressourcen, die nicht mehr reagieren 
+In einigen Fällen kann eine Ressource das Senden von Daten beendet. Um festzustellen, ob eine Ressource Daten sendet oder nicht, sehen Sie sich den letzten Datensatz an, der anhand des Standardfelds _TimeGenerated_ ermittelt werden kann.  
+
+Prüfen Sie anhand der Tabelle _Heartbeat_ die Verfügbarkeit eines virtuellen Computers, da einmal pro Minute ein Heartbeat vom Agent gesendet wird. Mit der folgenden Abfrage können Sie die aktiven Computer auflisten, die kürzlich keinen Heartbeat gemeldet haben: 
+
+``` Kusto
+Heartbeat  
+| where TimeGenerated > ago(1d) //show only VMs that were active in the last day 
+| summarize NoHeartbeatPeriod = now() - max(TimeGenerated) by Computer  
+| top 20 by NoHeartbeatPeriod desc 
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) für Log Analytics.

@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a20e4d713440ca6fe1adaf5b89bff347a8fd0bde
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744087"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332318"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Verwalten von Nutzung und Kosten für Log Analytics
 
@@ -67,7 +66,7 @@ In den folgenden Schritten erfahren Sie, wie Sie ein Tageslimit für die von Log
 
 1. Klicken Sie links in Ihrem Arbeitsbereich auf **Nutzung und geschätzte Kosten**.
 2. Klicken Sie im oberen Bereich der Seite **Nutzung und geschätzte Kosten** für den ausgewählten Arbeitsbereich auf **Datenmengenverwaltung**. 
-5. Die tägliche Obergrenze ist standardmäßig **AUS**. Klicken Sie auf **EIN**, um sie zu aktivieren, und legen Sie das Limit für das Datenvolumen in GB/Tag fest.<br><br> ![Konfigurieren des Log Analytics-Datenlimits](media/manage-cost-storage/set-daily-volume-cap-01.png)
+3. Die tägliche Obergrenze ist standardmäßig **AUS**. Klicken Sie auf **EIN**, um sie zu aktivieren, und legen Sie das Limit für das Datenvolumen in GB/Tag fest.<br><br> ![Konfigurieren des Log Analytics-Datenlimits](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>Warnung bei Erreichen der täglichen Obergrenze
 Im Azure-Portal wird bei Erreichen des Schwellenwerts für das Datenlimit zwar ein visueller Hinweis angezeigt, dieses Verhalten steht jedoch möglicherweise nicht im Einklang mit der gewünschten Behandlung von Betriebsproblemen, die eine umgehende Reaktion erfordern.  Wenn Sie eine Warnbenachrichtigung erhalten möchten, können Sie in Azure Monitor eine neue Warnregel erstellen.  Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion)](alerts-metric.md).      
@@ -98,6 +97,25 @@ Die folgenden Schritte zeigen, wie Sie die Aufbewahrungsdauer von Protokolldaten
 ## <a name="legacy-pricing-tiers"></a>Legacytarife
 
 Wenn Sie ein Enterprise Agreement vor dem 1. Juli 2018 unterzeichnet haben oder wenn Sie bereits einen Log Analytics-Arbeitsbereich in einem Abonnement erstellt haben, können Sie weiterhin auf den Tarif *Free* zugreifen. Wenn Ihr Abonnement nicht an eine vorhandene EA-Registrierung gebunden ist, steht der Tarif *Free* nicht zur Verfügung, wenn Sie nach dem 2. April 2018 einen Arbeitsbereich in einem neuen Abonnement erstellen.  Im Tarif *Free* ist die Aufbewahrung von Daten auf sieben Tage beschränkt.  Für die Legacytarife *Eigenständig* oder *Pro Knoten* sowie den aktuellen einzigen Tarif für 2018 sind die gesammelten Daten für die letzten 31 Tage verfügbar. Im Tarif *Free* liegt das Erfassungslimit bei 500MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf einen anderen Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. 
+
+> [!NOTE]
+> Wenn Sie die Berechtigungen nutzen möchten, die Sie durch den Kauf der OMS E1-Suite, OMS E2-Suite oder des OMS-Add-Ons für System Center erwerben, wählen Sie den Tarif *Pro Knoten* für Log Analytics aus.
+
+## <a name="changing-pricing-tier"></a>Ändern des Tarifs
+
+Wenn Ihr Log Analytics-Arbeitsbereich über Zugriff auf Legacytarife verfügt, können Sie auf folgende Weise zwischen Legacytarifen wechseln:
+
+1. Wählen Sie im Azure-Portal im Bereich mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
+
+2. Klicken Sie im Bereich des Arbeitsbereichs unter **Allgemein** auf **Tarif**.  
+
+3. Wählen Sie unter **Tarif** einen Tarif aus, und klicken Sie anschließend auf **Auswählen**.  
+    ![Ausgewählter Tarif](media/manage-cost-storage/workspace-pricing-tier-info.png)
+
+Wenn Sie Ihren Arbeitsbereich in den aktuellen Tarif verschieben möchten, müssen Sie das [Überwachungspreismodell Ihres Abonnements in Azure Monitor ändern](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model). Dadurch ändert sich der Tarif für alle Arbeitsbereiche in diesem Abonnement.
+
+> [!NOTE]
+> Falls Ihr Arbeitsbereich mit einem Automation-Konto verknüpft ist und Sie den Tarif *Standalone (Per GB)* (Eigenständig (pro GB)) auswählen möchten, müssen Sie zuvor alle Lösungen vom Typ **Automation & Control** löschen und die Verknüpfung mit dem Automation-Konto aufheben. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Lösungen**, um die Lösungen anzuzeigen und zu löschen. Klicken Sie zum Aufheben der Verknüpfung mit dem Automation-Konto auf dem Blatt **Tarif** auf den Namen des Automatisierungskontos.
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Beheben des Problems, dass Log Analytics keine Daten mehr erfasst
@@ -136,22 +154,55 @@ Sie können einen Drilldown durchführen, um Datentrends für spezifische Datent
 
 ### <a name="nodes-sending-data"></a>Knoten, die Daten senden
 
-Um die Anzahl von Knoten zu ermitteln, die im letzten Monat Daten gemeldet haben, verwenden Sie die folgende Abfrage:
+Um die Anzahl von Computern (Knoten) zu ermitteln, die im letzten Monat täglich Daten gemeldet haben, verwenden Sie die folgende Abfrage:
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Um die Anzahl von erfassten Ereignissen pro Computer anzuzeigen, führen Sie diese Abfrage aus:
+Zum Abrufen einer Liste von Computern, die **kostenpflichtige Datentypen** senden (einige Datentypen sind kostenlos), verwenden Sie die [_IsBillable](log-standard-properties.md#isbillable)-Eigenschaft:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+
+Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind. 
+
+Diese Abfrage kann so erweitert werden, dass die Anzahl von Computern pro Stunde zurückgegeben wird, die kostenpflichtige Datentypen senden:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+
+Um die **Größe** der pro Computer erfassten abrechenbaren Ereignisse anzuzeigen, verwenden Sie die `_BilledSize`-Eigenschaft, die die Größe in Bytes bereitstellt:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+Diese Abfrage ersetzt die alte Abfrage durch den Datentyp für die Nutzung. 
+
+Um die **Anzahl** von erfassten Ereignissen pro Computer anzuzeigen, führen Sie diese Abfrage aus:
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Nutzen Sie diese Abfrage nicht zu häufig, da sie mit hohen Ausführungskosten verbunden ist. Wenn Sie anzeigen möchten, welche Datentypen Daten an einen bestimmten Computer senden, führen Sie diese Abfrage aus:
+Um die Anzahl von Ereignissen pro Computer anzuzeigen, für die Gebühren anfallen, verwenden Sie diese Abfrage: 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Wenn Sie die Anzahl für gebührenpflichtigen Datentypen anzeigen möchten, die Daten an einen bestimmten Computer senden, verwenden Sie Folgendes:
 
 `union withsource = tt *
-| where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 > [!NOTE]
 > Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.

@@ -1,59 +1,33 @@
 ---
-title: Replikation mit verwalteter Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Verwendung der SQL Server-Replikation mit einer verwalteten Azure SQL-Datenbank-Instanz
+title: Konfigurieren der Replikation in verwalteter Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zum Konfigurieren der Transaktionsreplikation in einer verwalteten Azure SQL-Datenbank-Instanz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 4a272b028e1e3ef2778227f259c0b1b980af885d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/16/2019
+ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547591"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360087"
 ---
-# <a name="replication-with-sql-database-managed-instance"></a>Replikation mit einer verwalteten SQL-Datenbank-Instanz
+# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurieren der Replikation in verwalteter Azure SQL-Datenbank-Instanz
 
-Die Replikation ist unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) als öffentliche Vorschau verfügbar. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten.
-
-## <a name="common-configurations"></a>Häufig verwendete Konfigurationen
-
-Im Allgemeinen müssen sich Verleger und Verteiler gemeinsam entweder in der Cloud oder an einem lokalen Standort befinden. Die folgenden Konfigurationen werden unterstützt:
-
-- **Verleger mit lokalem Verteiler in verwalteter Instanz**
-
-   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
-
-   Verleger- und Verteilerdatenbanken werden in einer einzelnen verwalteten Instanz konfiguriert.
-
-- **Verleger mit Remoteverteiler in verwalteter Instanz**
-
-   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
-
-   Verleger und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei dieser Konfiguration gilt Folgendes:
-
-  - Die beiden verwalteten Instanzen befinden sich im gleichen vNet.
-
-  - Die beiden verwalteten Instanzen befinden sich am gleichen Standort.
-
-- **Verleger und Verteiler am lokalen Standort mit Abonnent in verwalteter Instanz**
-
-   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
-
-   Bei dieser Konfiguration ist eine Azure SQL-Datenbank ein Abonnent. Diese Konfiguration unterstützt die Migration vom lokalen Standort zu Azure. In der Rolle des Abonnenten erfordert die SQL-Datenbank keine verwaltete Instanz. Sie können jedoch eine verwaltete SQL-Datenbank-Instanz als Schritt bei der Migration vom lokalen Standort zu Azure verwenden. Weitere Informationen zu Azure SQL-Datenbank-Abonnenten finden Sie unter [Replikation in SQL-Datenbank](replication-to-sql-database.md).
+Mit der Transaktionsreplikation können Sie Daten von SQL Server-Datenbanken oder Datenbanken einer verwalteten Azure SQL-Datenbank-Instanz in die verwaltete Instanz replizieren oder Änderungen, die Sie an Ihren Datenbanken in der verwalteten Instanz vornehmen, mithilfe von Push an andere SQL Server-Datenbanken, eine Azure-Einzeldatenbank oder eine andere verwaltete Instanz übertragen. Die Replikation ist als Public Preview in der [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) verfügbar. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Unter [Konfigurationen für die Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 Für Verleger und Verteiler in Azure SQL-Datenbank ist Folgendes erforderlich:
 
-- Verwaltete Azure SQL-Datenbank-Instanz.
+- Verwaltete Azure SQL-Datenbank-Instanz ohne georedundante Notfallwiederherstellungskonfiguration.
 
    >[!NOTE]
    >Azure SQL-Datenbanken, die nicht mit „Verwalteter Instanz“ konfiguriert werden, können nur Abonnenten sein.
@@ -74,7 +48,13 @@ Unterstützt:
 
 - Abonnenten können lokale, einzelne Datenbanken in Azure SQL-Datenbank oder in Pools für elastische Datenbanken in Azure SQL-Datenbank zusammengefasste Datenbanken sein.
 
-- Unidirektionale oder bidirektionale Replikation
+- Unidirektionale oder bidirektionale Replikation.
+
+Folgende Funktionen werden nicht unterstützt:
+
+- Aktualisierbare Abonnements.
+
+- Aktive Georeplikation.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurieren eines Beispiels für Veröffentlichung und Verteilung
 
@@ -87,7 +67,7 @@ Unterstützt:
 
    Ersetzen Sie in den folgenden Beispielskripts `<Publishing_DB>` durch den Namen der Datenbank.
 
-4. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Siehe [Erstellen von Datenbankbenutzern](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Verwenden Sie ein sicheres Kennwort.
+4. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Verwenden Sie ein sicheres Kennwort.
 
    Verwenden Sie in den folgenden Beispielskripts `<SQL_USER>` und `<PASSWORD>` als Datenbankbenutzer und Kennwort für dieses SQL Server-Konto.
 
@@ -188,15 +168,8 @@ Unterstützt:
                 @job_password = N'<PASSWORD>'
    GO
    ```
-
-## <a name="limitations"></a>Einschränkungen
-
-Folgende Funktionen werden nicht unterstützt:
-
-- Aktualisierbare Abonnements
-
-- Aktive Georeplikation
-
+   
 ## <a name="see-also"></a>Siehe auch
 
+- [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md)
 - [Was ist eine verwaltete Instanz?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

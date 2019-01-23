@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364093"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244986"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>Wartungsvorgänge von SQL-Ressourcenanbietern
 
@@ -32,16 +32,6 @@ Der SQL-Ressourcenanbieter wird nicht als Teil von Azure Stack gewartet, da es s
 ### <a name="provider-virtual-machine"></a>Anbieter-VM
 
 Da der Ressourcenanbieter auf einer *Benutzer*-VM ausgeführt wird, müssen Sie die erforderlichen Patches und Updates installieren, sobald sie veröffentlicht werden. Sie können die Windows Update-Pakete verwenden, die als Teil des Patch- und Updatezyklus bereitgestellt werden, um die VM zu aktualisieren.
-
-## <a name="backuprestoredisaster-recovery"></a>Sicherung/Wiederherstellung/Notfallwiederherstellung
-
- Der SQL-Ressourcenanbieter wird nicht als Teil des Sicherungs-/Notfallwiederherstellungsprozesses von Azure Stack gesichert, da es sich um eine Add-On-Komponente handelt. Skripts werden für folgende Vorgänge bereitgestellt:
-
-- Sichern der Zustandsinformationen (in einem Azure Stack-Speicherkonto gespeichert)
-- Wiederherstellen des Ressourcenanbieters bei einer vollständigen Stack-Wiederherstellung (falls erforderlich)
-
->[!NOTE]
->Bei einer Wiederherstellung müssen vor dem Ressourcenanbieter die Datenbankserver wiederhergestellt werden.
 
 ## <a name="updating-sql-credentials"></a>Aktualisieren von SQL-Anmeldeinformationen
 

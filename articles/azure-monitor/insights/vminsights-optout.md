@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191070"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263355"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Deaktivieren der Überwachung Ihrer virtuellen Computer mit Azure Monitor für VMs (Vorschauversion)
 
@@ -31,7 +31,7 @@ Azure Monitor für VMs nutzt die folgenden Komponenten:
 * Einen Log Analytics-Arbeitsbereich, in dem die von VMs und anderen Quellen gesammelten Überwachungsdaten gespeichert werden.
 * Die im Arbeitsbereich konfigurierte Sammlung von Leistungsindikatoren, wodurch die Überwachungskonfiguration auf allen mit dem Arbeitsbereich verbundenen VMs aktualisiert wird.
 * Zwei im Arbeitsbereich konfigurierte Überwachungslösungen – **InfrastructureInsights** und **ServiceMap** –, wodurch die Überwachungskonfiguration auf allen mit dem Arbeitsbereich verbundenen VMs aktualisiert wird.
-* Zwei Azure-VM-Erweiterungen – **MicrosoftMonitoringAgent** und **DepenendencyAgent** –, die Daten sammeln und an den Arbeitsbereich senden.
+* Zwei Azure-VM-Erweiterungen – **MicrosoftMonitoringAgent** und **DependencyAgent** –, die Daten sammeln und an den Arbeitsbereich senden.
 
 Berücksichtigen Sie folgende Aspekte, wenn Sie die Deaktivierung der Überwachung Ihrer virtuellen Computer mit Azure Monitor für VMs vorbereiten:
 
@@ -43,7 +43,7 @@ Berücksichtigen Sie folgende Aspekte, wenn Sie die Deaktivierung der Überwachu
 
 ## <a name="complete-removal-of-azure-monitor-for-vms"></a>Vollständige Entfernung von Azure Monitor für VMs
 
-Die folgenden Schritte beschreiben, wie Sie Azure Monitor für VMs vollständig entfernen, wenn Sie den Log Analytics-Arbeitsbereich weiterhin benötigen. Sie werden die Lösungen **InfastructureInsights** und **ServiceMap** aus dem Arbeitsbereich entfernen.  
+Die folgenden Schritte beschreiben, wie Sie Azure Monitor für VMs vollständig entfernen, wenn Sie den Log Analytics-Arbeitsbereich weiterhin benötigen. Sie werden die Lösungen **InfrastructureInsights** und **ServiceMap** aus dem Arbeitsbereich entfernen.  
 
 >[!NOTE]
 >Wenn Sie die ServiceMap-Überwachungslösung zuvor zum Aktivieren von Azure Monitor für VMs verwendet haben und die Lösung weiterhin benötigen, entfernen Sie sie nicht (wie in Schritt 6 beschrieben).  

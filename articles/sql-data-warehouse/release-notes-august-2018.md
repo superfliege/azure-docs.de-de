@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c52fcd544e22c274d0e9053da93d2b9dee0df695
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286631"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320360"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Neuerungen in Azure SQL Data Warehouse August 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im August 2018 eingeführt wurden.
@@ -23,9 +23,9 @@ Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informie
 ## <a name="automatic-intelligent-insights"></a>Automatic Intelligent Insights
 Microsoft hat [Automatic Intelligent Insights](https://azure.microsoft.com/blog/automatic-intelligent-insights-to-optimize-performance-with-sql-data-warehouse/) eingeführt, um die Automatisierung von Data Warehouses durch die Cloud zu ermöglichen. Somit müssen Sie Ihr Data Warehouse nicht mehr im Hinblick auf Datenschiefe und suboptimale Tabellenstatistik überwachen. SQL Data Warehouse stellt ohne Aufpreis intelligente Informationen für alle Gen2-Instanzen bereit. Durch die Integration in [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) können Sie automatisch Empfehlungen zu Best Practices erhalten, um die Leistung Ihrer aktiven Workloads zu verbessern. SQL Data Warehouse analysiert Ihre Workload und stellt Empfehlungen basierend auf Ihrer Nutzung bereit. Diese Analyse erfolgt täglich, sodass Sie die Nutzungsberichte und Empfehlungen für Verbesserungen an Ihrer Workload überwachen können.
 
-Sie können die Empfehlungen im Azure Advisor-Portal sehen: ![Empfehlungen im Azure Advisor-Portal für Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
+Sie können die Empfehlungen im Azure Advisor-Portal anzeigen: ![Azure Advisor-Portal – Empfehlungen für Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
-Sie können einen Drilldown auf jede Kategorie ausführen, um die Empfehlungen für die jeweilige Warnung anzuzeigen: ![Details im Azure Advisor-Portal zu Empfehlungen für Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+Sie können jede Kategorie genauer untersuchen, um die Empfehlungen für die jeweilige Warnung anzuzeigen: ![Azure Advisor-Portal – Detaillierte Empfehlungen für Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
 
 
 ## <a name="bug-fixes"></a>Fehlerbehebungen

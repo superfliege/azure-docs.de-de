@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119212"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214000"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -92,7 +92,7 @@ Die von der Warnungsverwaltungslösung gesammelten Daten (Datensätze vom Typ �
 Der Lebenszyklus der mobilen OMS-App endet zusammen mit dem OMS-Portal. Statt die mobile OMS-App zu verwenden, können Sie für den Zugriff auf Informationen über Ihre IT-Infrastruktur, Dashboards und gespeicherte Abfragen direkt über den Browser auf Ihrem mobilen Gerät auf das Azure-Portal zugreifen. Um Warnungen zu erhalten, sollten Sie [Azure-Aktionsgruppen](../../azure-monitor/platform/action-groups.md) konfigurieren, damit Sie Benachrichtigungen in Form einer SMS oder eines Sprachanrufs empfangen.
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-Connector und -Lösung
-[Application Insights-Connector](../../azure-monitor/platform/app-insights-connector.md) bietet eine Möglichkeit, Application Insights-Daten in einen Log Analytics-Arbeitsbereich einzuschließen. Diese Datenduplizierung war für die Sichtbarkeit in der gesamten Infrastruktur und für alle Anwendungsdaten erforderlich. Dank der Unterstützung der erweiterten Datenaufbewahrung von Application Insights (März 2019) und der Möglichkeit zum Ausführen [ressourcenübergreifender Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) müssen keine Daten aus Ihren Application Insights-Ressourcen dupliziert und an Log Analytics gesendet werden. Darüber hinaus sendet der Connector einen Teil der Anwendungseigenschaften an Log Analytics, und die ressourcenübergreifenden Abfragen sorgen für mehr Flexibilität.  
+[Application Insights-Connector](../../azure-monitor/platform/app-insights-connector.md) bietet eine Möglichkeit, Application Insights-Daten in einen Log Analytics-Arbeitsbereich einzuschließen. Diese Datenduplizierung war für die Sichtbarkeit in der gesamten Infrastruktur und für alle Anwendungsdaten erforderlich. Dank der Unterstützung der erweiterten Datenaufbewahrung von Application Insights (März 2019) und der Möglichkeit zum Ausführen [ressourcenübergreifender Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) sowie dem [Anzeigen mehrerer Azure Monitor Application Insights-Ressourcen](../log-query/unify-app-resource-data.md) müssen keine Daten aus Ihren Application Insights-Ressourcen dupliziert und an Log Analytics gesendet werden. Darüber hinaus sendet der Connector einen Teil der Anwendungseigenschaften an Log Analytics, und die ressourcenübergreifenden Abfragen sorgen für mehr Flexibilität.  
 
 Der Application Insights-Connector wird daher als veraltet markiert und aus dem Azure Marketplace entfernt. Gleichzeitig ist das OMS-Portal ab 30. März 2019 veraltet. Bereits vorhandene Verbindungen können allerdings noch bis zum 30. Juni 2019 verwendet werden. Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Dies wird über die REST-API unterstützt, die im Januar 2019 bereitgestellt wird, und eine entsprechende Benachrichtigung wird unter [Azure-Updates](https://azure.microsoft.com/updates/) veröffentlicht. 
 

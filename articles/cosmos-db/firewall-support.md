@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 84e56610cb0f9090d8cacc461a73bf41d05f2251
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033484"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358112"
 ---
 # <a name="ip-firewall-for-azure-cosmos-accounts"></a>IP-Firewall für Azure Cosmos-Konten
 
@@ -19,7 +19,7 @@ Zum Sichern von in Ihrem Konto gespeicherten Daten unterstützt Azure Cosmos DB 
 
 ## <a id="ip-access-control-overview"></a>Übersicht über die IP-Zugriffssteuerung
 
-Standardmäßig ist ein Azure Cosmos-Konto über das Internet zugänglich, solange die Anforderung zusammen mit einem gültigen Autorisierungstoken erfolgt. Zum Konfigurieren der auf IP-Richtlinien basierenden Zugriffssteuerung muss der Benutzer die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angeben, die als Liste der zulässigen Client-IPs für den Zugriff auf ein bestimmtes Azure Cosmos-Konto aufgenommen wird. Nachdem diese Konfiguration angewendet wurde, erhalten alle Anforderungen von Computern, die nicht in dieser Zulassungsliste enthalten sind, die Antwort „404 (Nicht gefunden)“. Wenn Sie eine IP-Firewall verwenden, empfiehlt es sich, dem Azure-Portal Zugriff auf Ihr Konto zu gewähren. Zugriff ist erforderlich, um den Daten-Explorer verwenden zu können und um Metriken für Ihr Konto, die im Azure-Portal angezeigt werden, abzurufen.
+Standardmäßig ist ein Azure Cosmos-Konto über das Internet zugänglich, solange die Anforderung zusammen mit einem gültigen Autorisierungstoken erfolgt. Zum Konfigurieren der auf IP-Richtlinien basierenden Zugriffssteuerung muss der Benutzer die Gruppe der IP-Adressen oder IP-Adressbereiche im CIDR-Format (Classless Inter-Domain Routing, klassenloses domänenübergreifendes Routing) angeben, die als Liste der zulässigen Client-IPs für den Zugriff auf ein bestimmtes Azure Cosmos-Konto aufgenommen wird. Nachdem diese Konfiguration angewendet wurde, erhalten alle Anforderungen von Computern, die nicht in dieser Zulassungsliste enthalten sind, die Antwort „403 (Nicht zulässig)“. Wenn Sie eine IP-Firewall verwenden, empfiehlt es sich, dem Azure-Portal Zugriff auf Ihr Konto zu gewähren. Zugriff ist erforderlich, um den Daten-Explorer verwenden zu können und um Metriken für Ihr Konto, die im Azure-Portal angezeigt werden, abzurufen.
 
 Sie können die IP-basierte Firewall mit Subnetz- und VNET-Zugriffssteuerung kombinieren. Durch diese Kombination können Sie den Zugriff auf eine beliebigen Quelle beschränken, die eine öffentliche IP-Adresse aufweist bzw. zu einem bestimmten Subnetz im VNET gehört. Weitere Informationen zur Verwendung von Subnetz- und VNET-basierter Zugriffssteuerung finden Sie unter [Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke](vnet-service-endpoint.md).
 

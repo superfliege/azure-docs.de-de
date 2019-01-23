@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631432"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352137"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -21,7 +21,8 @@ Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Stora
 Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden. 
 
 > [!NOTE]
-> Die Änderung der Speicherebene kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
+> Das Upgrade Ihres Speicherkontos auf ein Konto vom Typ „Allgemein v2“ ist kostenlos.
+> Das Ändern der Speicherzugriffsebene kann zu Änderungen an Ihrer Rechnung führen. Weitere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade mithilfe des Azure-Portals
 
@@ -62,8 +63,8 @@ Zugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ih
 
 Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (Hot) erstellt, und für ein Speicherkonto vom Typ „Universell v1“ wird ein Upgrade auf die Zugriffsebene „Heiß“ durchgeführt. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade Ihrer Daten verwendet werden soll, sollten Sie Ihr Szenario berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
 
-* Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten eine Umstellung auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherebene für Blobdaten evaluieren.
-* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Universell v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten evaluieren, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
+* Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherzugriffsebene für Blobdaten bewerten.
+* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten bewerten, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
 
 In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem Speicherkonto vom Typ „Allgemein v2“ schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
 
@@ -71,9 +72,9 @@ In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Ar
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 
-* **Speicherkosten:** Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
+* **Speicherkosten:** Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherzugriffsebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
 
-* **Kosten für den Datenzugriff:** Je „kälter“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherebenen „Cool“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
+* **Kosten für den Datenzugriff:** Je „kälter“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherzugriffsebenen „Kalt“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
 
 * **Transaktionskosten:** Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „kälter“ die Ebene ist.
 
@@ -81,7 +82,7 @@ Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf de
 
 * **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
 
-* **Änderung der Speicherebene:** Bei einem Wechsel der Kontospeicherebene von „Kalt“ zu „Heiß“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Kontospeicherebene von „Hot“ in „Cool“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Cool“ entspricht (nur GPv2-Konten).
+* **Änderung der Speicherzugriffsebene:** Bei einem Wechsel der Zugriffsebene des Speicherkontos von „Kalt“ zu „Heiß“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Zugriffsebene des Kontos von „Heiß“ in „Kalt“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Kalt“ entspricht (nur GPv2-Konten).
 
 > [!NOTE]
 > Weitere Informationen zum Preismodell für Speicherkonten finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie auf der Seite [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -156,7 +157,7 @@ Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müs
 Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragungskosten mit Georeplikation für Blob-Speicherkonten auch auf der Grundlage der Schätzung für die Menge an geschriebenen Daten berechnet werden.
 
 > [!NOTE]
-> Ein ausführlicheres Beispiel zur Berechnung der Kosten für die Verwendung der Speicherebene „Hot“ oder „Cool“ finden Sie unter *Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?* im FAQ-Bereich mit dem Titel [Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?](https://azure.microsoft.com/pricing/details/storage/)an.
+> Ein ausführlicheres Beispiel zur Berechnung der Kosten für die Verwendung der Speicherzugriffsebene „Heiß“ oder „Kalt“ finden Sie im FAQ-Bereich mit dem Titel *Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?* auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

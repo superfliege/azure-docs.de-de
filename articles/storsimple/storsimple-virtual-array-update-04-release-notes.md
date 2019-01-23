@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
-ms.openlocfilehash: cc2b025b7f3e28954c7f95409ffab03e5cbcf13d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110598"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319400"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>Versionshinweise zu Update 0.4 für StorSimple Virtual Array
 
@@ -53,11 +53,11 @@ Update 0.4 ist in erster Linie ein Fehlerbehebungs-Build in Verbindung mit ein p
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Funktion | Problem |
+|  Nein. | Feature | Problem |
 | --- | --- | --- |
 | 1 |Backupleistung|Bei früheren Versionen dauerten Backups mit einer großen Anzahl von Dateien sehr lange (einige Tage). In dieser Version wurde die Dauer für vollständige und inkrementelle Backups erheblich reduziert. |
 | 2 |Supportpaket|Statistiken für Datenträger, CPU, Arbeitsspeicher, Netzwerk und Cloud werden jetzt im Supportprotokoll erfasst. Dadurch wird die Effizienz der Supportpakete bei der Behandlung von Geräteproblemen gesteigert.|
-| 3 |Sicherung |In früheren Versionen konnten lange dauernde Backups zu Platzproblemen auf dem Gerät und letztendlich zu Backupfehlern führen. Dieses Problem wird in dieser Version behoben, da in der Warteschlange nicht mehr als fünf Backups gleichzeitig zugelassen werden.|
+| 3 |Backup |In früheren Versionen konnten lange dauernde Backups zu Platzproblemen auf dem Gerät und letztendlich zu Backupfehlern führen. Dieses Problem wird in dieser Version behoben, da in der Warteschlange nicht mehr als fünf Backups gleichzeitig zugelassen werden.|
 | 4 |iSCSI | In früheren Versionen betrug die lokale Reservierung für mehrstufige oder lokale Volumes 10 Prozent der Größe des bereitgestellten Volumes. In dieser Version ist die lokale Reservierung für alle iSCSI-Volumes (lokal oder mehrstufig) auf 10 Prozent und höchstens 200 GB (bei mehrstufigen Volumes mit mehr als 2 TB) begrenzt. Dadurch ist mehr Speicherplatz auf der lokalen Festplatte frei. Wir empfehlen eine Begrenzung der lokalen Volumes in dieser Version auf 200 GB.|
 
 
@@ -65,7 +65,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen. 
 
-| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
+|  Nein. | Feature | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorabversion erstellte virtuellen Geräte können nicht auf eine unterstützte Version für allgemeine Verfügbarkeit aktualisiert werden. |Für diese virtuellen Geräte muss mithilfe eines Notfallwiederherstellungs-Workflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende virtuelle StorSimple-Gerät erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |

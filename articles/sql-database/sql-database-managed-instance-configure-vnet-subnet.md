@@ -1,6 +1,6 @@
 ---
-title: Verwenden einer verwalteten Azure SQL-Datenbank-Instanz zum Konfigurieren eines vorhandenen VNET/Subnetzes | Microsoft-Dokumentation
-description: In diesem Thema wird beschrieben, wie Sie ein vorhandenes virtuelles Netzwerk (VNET) und Subnetz konfigurieren, in dem Sie eine verwaltete Azure SQL-Datenbank-Instanz bereitstellen können.
+title: Konfigurieren eines vorhandenen virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie ein vorhandenes virtuelles Netzwerk und Subnetz konfigurieren, in dem Sie eine verwaltete Azure SQL-Datenbank-Instanz bereitstellen können.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,21 +12,26 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 1718177a0902bc7049eb6986e5a1d128eeb3f233
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 16684619ccf542783e425852a075eaa74e96e592
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040957"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332182"
 ---
-# <a name="configure-an-existing-vnet-for-azure-sql-database-managed-instance"></a>Konfigurieren eines vorhandenen VNET für eine verwaltete Azure SQL-Datenbank-Instanz
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurieren eines vorhandenen virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz
 
-Eine verwaltete Azure SQL-Datenbank-Instanz darf nur in einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) und in dem Subnetz bereitgestellt werden, das speziell für verwaltete Instanzen bestimmt ist. Sie können das vorhandene VNET und Subnetz verwenden, wenn diese jeweils gemäß den [VNET-Anforderungen für verwaltete Instanzen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) konfiguriert sind.
+Eine verwaltete Azure SQL-Datenbank-Instanz darf nur in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) und in dem Subnetz bereitgestellt werden, das speziell für verwaltete Instanzen bestimmt ist. Sie können das vorhandene virtuelle Netzwerk und Subnetz verwenden, wenn diese jeweils gemäß den [Anforderungen an virtuelle Netzwerke für verwaltete Instanzen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) konfiguriert sind.
 
-Falls Sie über ein neues Subnetz verfügen, das immer noch nicht konfiguriert ist, und nicht sicher sind, ob das Subnetz die [Anforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) erfüllt, oder falls Sie nach dem Vornehmen von Änderungen die Konformität des Subnetzes mit den [Netzwerkanforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) überprüfen möchten, können Sie wie folgt vorgehen: Überprüfen und ändern Sie Ihr Netzwerk mit dem Skript, das in diesem Abschnitt beschrieben wird.
+Wenn einer der folgenden Fälle auf Sie zutrifft, können Sie Ihr Netzwerk mithilfe des in diesem Artikel erläuterten Skripts überprüfen und ändern:
 
-  > [!Note]
-  > Sie können nur eine verwaltete Instanz in virtuellen Resource Manager-Netzwerken erstellen. Azure-VNETs, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, werden nicht unterstützt. Berechnen Sie die Subnetzgröße, indem Sie die Richtlinien im Artikel [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](sql-database-managed-instance-determine-size-vnet-subnet.md) befolgen. Der Grund ist, dass die Größe des Subnetzes nicht mehr geändert werden kann, nachdem Sie die Ressourcen darin bereitgestellt haben.
+* Sie haben ein neues Subnetz, das noch nicht konfiguriert ist.
+* Sie sind nicht sicher, ob das Subnetz den [Anforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) entspricht.
+* Sie möchten überprüfen, ob das Subnetz weiterhin die [Netzwerkanforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) erfüllt, nachdem Sie Änderungen vorgenommen haben.
+
+
+> [!Note]
+> Sie können eine verwaltete Instanz nur in virtuellen Netzwerken erstellen, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Virtuelle Azure-Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden, werden nicht unterstützt. Berechnen Sie die Subnetzgröße anhand der Richtlinien im Artikel [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](sql-database-managed-instance-determine-size-vnet-subnet.md). Die Größe des Subnetzes kann nach der Bereitstellung der darin enthaltenen Ressourcen nicht mehr geändert werden.
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>Überprüfen und Ändern eines vorhandenen virtuellen Netzwerks
 
@@ -45,14 +50,14 @@ $parameters = @{
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-Die Subnetzvorbereitung erfolgt in drei einfachen Schritten:
+Mit dem Skript wird das Subnetz in drei Schritten vorbereitet:
 
-1. Überprüfen: Das ausgewählte virtuelle Netzwerk und das Subnetz werden im Hinblick auf die Netzwerkanforderungen der verwalteten Instanz überprüft.
-2. Bestätigen: Dem Benutzer wird eine Reihe von Änderungen angezeigt, mit denen das Subnetz für die Bereitstellung der verwalteten Instanz vorbereitet werden soll und die er bestätigen muss.
-3. Vorbereiten: Das virtuelle Netzwerk und das Subnetz werden richtig konfiguriert.
+1. Überprüfen: Das ausgewählte virtuelle Netzwerk und das Subnetz werden in Hinblick auf die Netzwerkanforderungen für verwaltete Instanzen überprüft.
+2. Bestätigen: Dem Benutzer werden Änderungen angezeigt, die für die Vorbereitung des Subnetzes zur Bereitstellung der verwalteten Instanz vorgenommen werden müssen. Sie müssen dann diesen Änderungen zustimmen.
+3. Vorbereiten: Das virtuelle Netzwerk und das Subnetz werden ordnungsgemäß konfiguriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md).
-- Ein Tutorial zum Erstellen eines VNET, Erstellen einer verwalteten Instanz und Wiederherstellen einer Datenbank anhand einer Datenbanksicherung finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).
+- Ein Tutorial zum Erstellen eines virtuellen Netzwerks, Erstellen einer verwalteten Instanz und Wiederherstellen einer Datenbank aus einer Datenbanksicherung finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).
 - Lesen Sie bei Problemen im Zusammenhang mit dem DNS den Artikel [Konfigurieren eines benutzerdefinierten DNS](sql-database-managed-instance-custom-dns.md).

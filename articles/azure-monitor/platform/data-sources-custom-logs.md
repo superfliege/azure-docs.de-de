@@ -1,6 +1,6 @@
 ---
-title: Erfassen benutzerdefinierter Protokolle in Azure Monitor | Microsoft-Dokumentation
-description: Azure Monitor kann Ereignisse aus Textdateien auf Windows- und Linux-Computern erfassen.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die in Azure Monitor erstellt werden.
+title: Erfassen benutzerdefinierter Protokolle in Log Analytics | Microsoft-Dokumentation
+description: Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linux-Computern sammeln.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die in Log Analytics erstellt werden.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,17 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 28c8ca5a81f76e10e7c8b84897f77702ee68cdc0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434391"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198778"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
-Mithilfe der Datenquelle „Benutzerdefinierte Protokolle“ in Azure Monitor können Ereignisse aus Textdateien auf Windows- und Linux-Computern erfasst werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien. Die erfassten Daten können entweder in Ihren Abfragen zu einzelnen Feldern aufgeschlüsselt oder während der Erfassung in einzelne Felder extrahiert werden.
+# <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
+Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien. Die erfassten Daten können entweder in Ihren Abfragen zu einzelnen Feldern aufgeschlüsselt oder während der Erfassung in einzelne Felder extrahiert werden.
 
 ![Benutzerdefinierte Protokollsammlung](media/data-sources-custom-logs/overview.png)
 
@@ -35,7 +35,7 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 - Die Protokolldatei muss ASCII- oder UTF-8-Codierung verwenden.  Andere Formate wie UTF-16 werden nicht unterstützt.
 
 >[!NOTE]
->Azure Monitor erfasst doppelte Einträge in der Protokolldatei.  Allerdings sind die Abfrageergebnisse inkonsistent, wenn die Anzahl angezeigter Filterergebnisse die Ergebnisanzahl übersteigt.  Sie müssen unbedingt das Protokoll überprüfen, um festzustellen, ob dieses Verhalten durch die Anwendung, die es erstellt, verursacht wird, und es nach Möglichkeit vor der Erstellung der benutzerdefinierten Protokollsammlungsdefinition beheben.  
+>Log Analytics erfasst doppelte Einträge in der Protokolldatei.  Allerdings sind die Abfrageergebnisse inkonsistent, wenn die Anzahl angezeigter Filterergebnisse die Ergebnisanzahl übersteigt.  Sie müssen unbedingt das Protokoll überprüfen, um festzustellen, ob dieses Verhalten durch die Anwendung, die es erstellt, verursacht wird, und es nach Möglichkeit vor der Erstellung der benutzerdefinierten Protokollsammlungsdefinition beheben.  
 >
   
 >[!NOTE]
@@ -54,11 +54,11 @@ Mit dem im Azure-Portal ausgeführten Assistenten für benutzerdefinierte Protok
 4. Klicken Sie auf **Hinzufügen+** , um den Assistenten für benutzerdefinierte Protokolle zu öffnen.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Schritt 2: Hochladen und Analysieren eines Beispielprotokolls
-Als Erstes muss ein benutzerdefiniertes Beispielprotokoll hochgeladen werden.  Der Assistent überprüft die Einträge in dieser Datei und zeigt sie zur Überprüfung an.  Azure Monitor verwendet bei der Identifizierung der einzelnen Datensätze das von Ihnen angegebene Trennzeichen.
+Als Erstes muss ein benutzerdefiniertes Beispielprotokoll hochgeladen werden.  Der Assistent überprüft die Einträge in dieser Datei und zeigt sie zur Überprüfung an.  Log Analytics verwendet bei der Identifizierung der einzelnen Datensätze das von Ihnen angegebene Trennzeichen.
 
 Das Standardtrennzeichen **Neue Zeile** wird für Protokolldateien verwendet, die pro Zeile jeweils einen einzelnen Eintrag enthalten.  Falls die Zeile mit einer Datums- und Uhrzeitangabe in einem kompatiblen Format beginnt, können Sie als Trennzeichen die Option **Zeitstempel** angeben. Diese Option unterstützt Einträge, die sich über mehrere Zeilen erstrecken.
 
-Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in Azure Monitor gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, zu dem Azure Monitor den Eintrag erfasst hat.
+Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in Log Analytics gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, an dem Log Analytics den Eintrag gesammelt hat.
 
 
 1. Klicken Sie auf **Durchsuchen**, und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
@@ -97,16 +97,16 @@ Der angegebene Name wird für den oben beschriebenen Protokolltyp verwendet.  Er
 3. Klicken Sie auf **Weiter** , um die Definition des benutzerdefinierten Protokolls zu speichern.
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>Schritt 5: Überprüfen, ob die benutzerdefinierten Protokolle gesammelt werden
-Es kann bis zu einer Stunde dauern, bis die ersten Daten aus einem neuen benutzerdefinierten Protokoll in Azure Monitor erscheinen.  Die Sammlung von Einträgen aus Protokollen, die sich am angegebenen Pfad befinden, beginnt, nachdem Sie das benutzerdefinierte Protokoll definiert haben.  Die bei der Erstellung des benutzerdefinierten Protokolls hochgeladenen Einträge werden zwar nicht gespeichert, es werden aber bereits vorhandene Einträge aus den gefundenen Protokolldateien gesammelt.
+Es kann bis zu einer Stunde dauern, bis die ersten Daten aus einem neuen benutzerdefinierten Protokoll in Log Analytics erscheinen.  Die Sammlung von Einträgen aus Protokollen, die sich am angegebenen Pfad befinden, beginnt, nachdem Sie das benutzerdefinierte Protokoll definiert haben.  Die bei der Erstellung des benutzerdefinierten Protokolls hochgeladenen Einträge werden zwar nicht gespeichert, es werden aber bereits vorhandene Einträge aus den gefundenen Protokolldateien gesammelt.
 
-Sobald Azure Monitor mit der Erfassung von Einträgen aus dem benutzerdefinierten Protokoll begonnen hat, stehen die entsprechenden Datensätze über eine Protokollabfrage zur Verfügung.  Geben Sie in Ihrer Abfrage den Namen, mit dem Sie das benutzerdefinierte Protokoll benannt haben, als **Typ** an.
+Sobald Log Analytics mit dem Sammeln von Einträgen aus dem benutzerdefinierten Protokoll begonnen hat, stehen die entsprechenden Datensätze bei einer Protokollabfrage zur Verfügung.  Geben Sie in Ihrer Abfrage den Namen, mit dem Sie das benutzerdefinierte Protokoll benannt haben, als **Typ** an.
 
 > [!NOTE]
 > Sollte die RawData-Eigenschaft in der Abfrage nicht vorhanden sein, müssen Sie unter Umständen Ihren Browser schließen und wieder öffnen.
 
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Schritt 6: Analysieren der Einträge des benutzerdefinierten Protokolls
-Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawData**gespeichert.  Wahrscheinlich möchten Sie die verschiedenen Einzelinformationen der jeweiligen Einträge auf einzelne Eigenschaften für jeden Datensatz aufteilen. Optionen zum Aufschlüsseln von **RawData** in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).
+Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawData**gespeichert.  Wahrscheinlich möchten Sie die verschiedenen Einzelinformationen der jeweiligen Einträge auf einzelne Eigenschaften für jeden Datensatz aufteilen. Optionen zum Aufschlüsseln von **RawData** in mehrere Eigenschaften finden Sie unter [Analysieren von Textdaten in Log Analytics](../log-query/parse-text.md).
 
 ## <a name="removing-a-custom-log"></a>Entfernen eines benutzerdefinierten Protokolls
 Gehen Sie im Azure-Portal wie folgt vor, um ein benutzerdefiniertes Protokoll zu entfernen, das Sie zuvor definiert haben:
@@ -116,16 +116,16 @@ Gehen Sie im Azure-Portal wie folgt vor, um ein benutzerdefiniertes Protokoll zu
 
 
 ## <a name="data-collection"></a>Datensammlung
-Azure Monitor erfasst etwa alle fünf Minuten neue Einträge aus den einzelnen benutzerdefinierten Protokollen.  Der Agent protokolliert für jede Protokolldatei, aus der er Daten sammelt, seine Position.  Wenn der Agent für einen bestimmten Zeitraum offline geht, erfasst Azure Monitor Einträge ab dem Zeitpunkt der letzten Erfassung – unabhängig davon, ob die Einträge erstellt wurden, während der Agent offline war.
+Log Analytics sammelt etwa alle fünf Minuten neue Einträge aus den einzelnen benutzerdefinierten Protokollen.  Der Agent protokolliert für jede Protokolldatei, aus der er Daten sammelt, seine Position.  Wenn der Agent für einen bestimmten Zeitraum offline geht, sammelt Log Analytics Einträge ab dem Zeitpunkt der letzten Sammlung, unabhängig davon, ob die Einträge erstellt wurden, während der Agent offline war.
 
-Sämtliche Inhalte des Protokolleintrags werden in eine einzelne Eigenschaft namens **RawData** geschrieben.  Methoden zum Aufschlüsseln der einzelnen importierten Protokolleinträge in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).
+Sämtliche Inhalte des Protokolleintrags werden in eine einzelne Eigenschaft namens **RawData** geschrieben.  Methoden zum Aufschlüsseln der einzelnen importierten Protokolleinträge in mehrere Eigenschaften finden Sie unter [Analysieren von Textdaten in Log Analytics](../log-query/parse-text.md).
 
 ## <a name="custom-log-record-properties"></a>Eigenschaften benutzerdefinierter Protokolldatensätze
 Benutzerdefinierte Protokolldatensätze besitzen einen Typ mit dem von Ihnen angegebenen Protokollnamen sowie die Eigenschaften aus der folgenden Tabelle:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| TimeGenerated |Der Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz von Azure Monitor erfasst wurde.  Wenn das Protokoll ein zeitbasiertes Trennzeichen verwendet, handelt es sich hierbei um die Zeitangabe aus dem Eintrag. |
+| TimeGenerated |Der Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz von Log Analytics gesammelt wurde.  Wenn das Protokoll ein zeitbasiertes Trennzeichen verwendet, handelt es sich hierbei um die Zeitangabe aus dem Eintrag. |
 | SourceSystem |Die Art des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (Direktverbindung oder System Center Operations Manager) <br>  Linux: Alle Linux-Agents |
 | RawData |Der vollständige Text des gesammelten Eintrags. Wahrscheinlich möchten Sie [diese Daten in einzelne Eigenschaften aufschlüsseln](../log-query/parse-text.md). |
 | ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
@@ -165,6 +165,18 @@ Wir definieren mithilfe benutzerdefinierter Felder die Felder *EventTime*, *Code
 
 ![Protokollabfrage mit benutzerdefinierten Feldern](media/data-sources-custom-logs/query-02.png)
 
+## <a name="alternatives-to-custom-logs"></a>Alternativen zu benutzerdefinierten Protokollen
+Benutzerdefinierte Protokolle sind hilfreich, wenn Ihre Daten den oben aufgeführten Kriterien entsprechen, es gibt jedoch Fälle wie die folgenden, die eine andere Strategie erfordern:
+
+- Die Daten weisen nicht die erforderliche Struktur auf, z.B. hat der Zeitstempel ein anderes Format.
+- Die Protokolldatei erfüllt nicht die Anforderungen, z.B. Dateicodierung oder eine nicht unterstützte Ordnerstruktur.
+- Die Daten erfordern vor dem Sammeln eine Vorverarbeitung oder müssen gefiltert werden. 
+
+In Fällen, in denen Ihre Daten nicht mit benutzerdefinierten Protokollen gesammelt werden können, gibt es die folgenden alternativen Strategien:
+
+- Verwenden Sie ein benutzerdefiniertes Skript oder eine andere Methode zum Schreiben von Daten in [Windows-Ereignisse](data-sources-windows-events.md) oder [Syslog](data-sources-syslog.md), die von Log Analytics gesammelt werden. 
+- Senden Sie die Daten mithilfe der [HTTP-Datensammler-API](data-collector-api.md) direkt an Log Analytics. Ein Beispiel zur Verwendung von Runbooks in Azure Automation finden Sie unter [Sammeln von Daten in Log Analytics mit einem Azure Automation-Runbook](runbook-datacollect.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
-* Methoden zum Aufschlüsseln der einzelnen importierten Protokolleinträge in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).
+* Methoden zum Aufschlüsseln der einzelnen importierten Protokolleinträge in mehrere Eigenschaften finden Sie unter [Analysieren von Textdaten in Log Analytics](../log-query/parse-text.md).
 * Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.

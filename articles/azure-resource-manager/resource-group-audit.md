@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 09f7fba2b8ae3b3ccc8710ffe9302d02d311c74c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 636e4d5216f87440463fbaecd7f6c7a5a25c7502
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514331"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359390"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen
 
@@ -53,7 +53,7 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
 
     ![Filteroptionen festlegen](./media/resource-group-audit/set-filter.png)
 
-4. Wenn Sie die Abfrage später erneut ausführen möchten, wählen Sie **Speichern** aus, und benennen Sie die Abfrage.
+4. Wenn Sie die Abfrage später erneut ausführen möchten, wählen Sie **Aktuelle Filter anheften** aus, und geben Sie der Abfrage einen Namen.
 
     ![Abfrage speichern](./media/resource-group-audit/save-query.png)
 5. Zum schnellen Ausführen einer Abfrage können Sie eine der integrierten Abfragen auswählen, z.B. Bereitstellungsfehler.

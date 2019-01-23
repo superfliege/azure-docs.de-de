@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/09/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: e12e29a5a627110ce845cd44be6dd97b717f9b26
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 19a9ef3e3f6a33e1f8e4d1e47ddc7562c0b90e37
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014496"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197673"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“
 
@@ -47,7 +47,7 @@ Jedes dieser Datenzugriffsszenarien profitiert von einer differenzierten Speiche
 
 ## <a name="storage-accounts-that-support-tiering"></a>Speicherkonten mit Tiering-Unterstützung
 
-Sie können das Tiering für „Heiß“, „Kalt“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blobspeicherkonten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Sie können das Tiering für „Heiß“, „Kalt“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten und GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blobspeicherkonten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Bei Blobspeicher- und GPv2-Konten wird das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar gemacht. Hiermit können Sie die Standardspeicherebene für alle Blobs des Speicherkontos, für die auf Objektebene keine explizite Ebene festgelegt ist, als „Heiß“ oder „Kalt“ angeben. Für Objekte, für die die Ebene auf Objektebene festgelegt ist, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen diesen Speicherebenen wechseln.
 
@@ -63,7 +63,7 @@ Während der Preview-Phase gilt für die Premium-Zugriffsebene:
 
 - Verfügbarkeit als lokal redundanter Speicher (LRS)
 - Nur verfügbar in folgenden Regionen: „USA, Osten 2“, „USA, Mitte“ und „USA, Westen“
-- Keine Unterstützung von automatischem Tiering und der Verwaltung des Datenlebenszyklus
+- Das Tiering auf Objektebene und das automatisierte Tiering mit Lebenszyklusverwaltung werden nicht unterstützt.
 
 Um zu erfahren, wie Sie sich für die Preview von Premium-Zugriffsebene registrieren, lesen Sie [Einführung in Azure Blob Storage Premium](https://aka.ms/premiumblob).
 
@@ -86,7 +86,8 @@ Für die kalte Speicherebene fallen im Vergleich mit der heißen Speicherebene n
 
 Archivspeicher zeichnet sich im Vergleich zu den heißen und kalten Speicherebenen durch die niedrigsten Speicherkosten und höhere Datenabrufkosten aus. Diese Ebene ist für Daten bestimmt, die mehrere Stunden Abrufwartezeit tolerieren und mindestens 180 Tage lang auf der Archivebene verbleiben.
 
-Während sich ein Blob im Archivspeicher befindet, ist es offline und kann nicht gelesen (mit Ausnahme der Metadaten, die online und verfügbar sind), kopiert, überschrieben oder geändert werden. Auch können Sie keine Momentaufnahmen von einem Blob im Archivspeicher erstellen. Sie können jedoch vorhandene Vorgänge verwenden, um das Blob zu löschen, aufzulisten, Eigenschaften/Metadaten des Blobs abzurufen oder die Ebene des Blobs zu ändern.
+Solange ein Blob im Archivspeicher ist, sind die Blobdaten offline und können nicht gelesen, kopiert, überschrieben oder geändert werden. Auch können Sie keine Momentaufnahmen von einem Blob im Archivspeicher erstellen. Die Blobmetadaten bleiben jedoch online und verfügbar, sodass Sie das Blob und seine Eigenschaften auflisten können. Für Blobs auf der Archivspeicherebene sind GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier und DeleteBlob die einzigen gültigen Vorgänge. 
+
 
 Beispielszenarien für die Verwendung der Archivspeicherebene:
 
@@ -110,14 +111,19 @@ Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine
 > [!NOTE]
 > Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt. Außerdem ist es nicht möglich, die Ebene eines Blockblobs zu ändern, das über Momentaufnahmen verfügt.
 
-Auf der Premium-Zugriffsebene gespeicherte Daten können weder mithilfe von [Set Blob Tier](/rest/api/storageservices/set-blob-tier) noch unter Verwendung der Azure Blob Storage-Lebenszyklusverwaltung auf die Ebene „Heiß“, „Kalt“ oder „Archiv“ verschoben werden. Um Daten zu verschieben, müssen Sie Blobs synchron vom Premium-Zugriff auf die Ebene „Heiß“ kopieren und hierzu die [Put Block From URL-API](/rest/api/storageservices/put-block-from-url) oder eine AzCopy-Version, die diese API unterstützt, verwenden. Die *Put Block From URL*-API kopiert Daten synchron auf den Server, was heißt, dass der Aufruf erst abgeschlossen wird, nachdem alle Daten vom ursprünglichen Serverspeicherort an den Zielspeicherort verschoben wurden.
+> [!NOTE]
+> Auf der Premium-Zugriffsebene gespeicherte Daten können derzeit weder mithilfe von [Set Blob Tier](/rest/api/storageservices/set-blob-tier) noch unter Verwendung der Azure Blob Storage-Lebenszyklusverwaltung auf die Ebene „Heiß“, „Kalt“ oder „Archiv“ verschoben werden. Um Daten zu verschieben, müssen Sie Blobs synchron vom Premium-Zugriff auf die Ebene „Heiß“ kopieren und hierzu die [Put Block From URL-API](/rest/api/storageservices/put-block-from-url) oder eine AzCopy-Version, die diese API unterstützt, verwenden. Die *Put Block From URL*-API kopiert Daten synchron auf den Server, was heißt, dass der Aufruf erst abgeschlossen wird, nachdem alle Daten vom ursprünglichen Serverspeicherort an den Zielspeicherort verschoben wurden.
 
 ### <a name="blob-lifecycle-management"></a>Lebenszyklusverwaltung für Blobs
 Die Blob Storage-Lebenszyklusverwaltung (Preview) bietet eine umfassende, regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten in die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md).  
 
 ### <a name="blob-level-tiering-billing"></a>Abrechnung für das Blobebenentiering
 
-Wenn ein Blob in eine „kältere“ Ebene verschoben wird (von „Heiß“ zu „Kalt“, von „Heiß“ zu „Archiv“ oder von „Kalt“ zu „Archiv“), wird der Vorgang als Schreibvorgang auf die Zielebene berechnet, und es gelten die Zielebenengebühren für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB). Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Kalt“, von „Archiv“ zu „Heiß“ oder von „Kalt“ zu „Heiß“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB).
+Wenn ein Blob in eine „kältere“ Ebene verschoben wird (von „Heiß“ zu „Kalt“, von „Heiß“ zu „Archiv“ oder von „Kalt“ zu „Archiv“), wird der Vorgang als Schreibvorgang auf die Zielebene berechnet, und es gelten die Zielebenengebühren für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB). Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Kalt“, von „Archiv“ zu „Heiß“ oder von „Kalt“ zu „Heiß“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB). Die folgende Tabelle gibt Aufschluss darüber, wie Ebenenänderungen abgerechnet werden.
+
+| | **Schreibgebühren (Vorgang + Zugriff)** | **Lesegebühren (Vorgang + Zugriff)** 
+| ---- | ----- | ----- |
+| **SetBlobTier-Richtung** | Heiß -> Kalt, Heiß -> Archiv, Kalt -> Archiv | Archiv -> Kalt, Archiv -> Heiß, Kalt -> Heiß
 
 Wenn Sie für die Kontoebene von „Heiß“ zu „Kalt“ wechseln, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für diese Änderung bei Blobspeicherkonten fallen keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie für Ihr Blob Storage- oder GPv2-Konto von „Kalt“ zu „Heiß“ wechseln. Für alle Blobs, die aus der Ebene „Kalt“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen.
 
@@ -125,22 +131,24 @@ Wenn Sie für die Kontoebene von „Heiß“ zu „Kalt“ wechseln, werden Ihne
 
 Zusätzlich zur Gebühr, die pro GB und pro Monat berechnet wird, gilt Folgendes: Alle Blobs, die in die kalte Ebene (nur GPv2-Konten) verschoben werden, unterliegen einem Zeitraum von 30 Tagen für das frühe Löschen für „Kalt“, und alle Blobs, die in die Archivebene verschoben werden, unterliegen einem Zeitraum von 180 Tagen für das frühe Löschen für „Archiv“. Diese Gebühr fällt anteilig an. Wenn ein Blob beispielsweise in das Archiv verschoben und dann nach 45 Tagen gelöscht oder in die heiße Ebene verschoben wird, wird Ihnen eine Gebühr für das frühe Löschen berechnet, die 135 Speichertagen (180 minus 45) dieses Blobs im Archiv entspricht.
 
+Sie können das frühe Löschen mithilfe der Blobeigenschaft **creation-time** berechnen, sofern keine Änderungen an der Zugriffsebene vorgenommen wurden. Andernfalls können Sie den Zeitpunkt der letzten Änderung der Zugriffsebene auf „Kalt“ oder „Archiv“ verwenden, indem Sie die Blobeigenschaft **access-tier-change-time** anzeigen. Weitere Informationen zu Blobeigenschaften finden Sie unter [Abrufen von Blobeigenschaften](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
+
 ## <a name="comparison-of-the-storage-tiers"></a>Vergleich der Speicherebenen
 
 Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Heiß“, „Kalt“ und „Archiv“.
 
 | | **Speicherebene „Hot“** | **Speicherebene „Cool“** | **Speicherebene „Archiv“**
 | ---- | ----- | ----- | ----- |
-| **Verfügbarkeit** | 99,9 % | 99 % | N/V |
-| **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % | N/V |
+| **Verfügbarkeit** | 99,9 % | 99 % | – |
+| **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % | – |
 | **Nutzungsgebühren** | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
-| **Mindestobjektgröße** | N/V | N/V | N/V |
-| **Mindestspeicherdauer** | N/V | 30 Tage (nur GPv2) | 180 Tage
+| **Mindestobjektgröße** | – | – | – |
+| **Mindestspeicherdauer** | – | 30 Tage (nur GPv2) | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Millisekunden | Millisekunden | < 15 Stunden
 | **Skalierbarkeits- und Leistungsziele** | Identisch mit allgemeinen Speicherkonten | Identisch mit allgemeinen Speicherkonten | Identisch mit allgemeinen Speicherkonten |
 
 > [!NOTE]
-> Blob-Speicherkonten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie allgemeine Speicherkonten. Weitere Informationen finden Sie unter [Microsoft Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Speicherskalierbarkeit und Leistungsziele von Azure, in englischer Sprache).
+> Blob-Speicherkonten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie allgemeine Speicherkonten. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungszielen für Azure Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
 ## <a name="quickstart-scenarios"></a>Schnellstartszenarien
 
@@ -229,7 +237,7 @@ Die Berechnung für ein Blob basiert immer auf der Ebene, die in der Eigenschaft
 
 **Wie kann ich ermitteln, ob eine Gebühr für das frühe Löschen anfällt, wenn ich ein Blob lösche oder aus der Ebene „Kalt“ oder „Archiv“ verschiebe?**
 
-Für alle Blobs, die vor Ablauf von 30 bzw. 180 Tagen gelöscht oder aus der Ebene „Kalt“ (nur GPv2-Konten) oder „Archiv“ verschoben werden, fällt eine anteilige Gebühr für frühes Löschen an. Sie können ermitteln, wie lange sich ein Blob auf der Ebene „Kalt“ oder „Archiv“ befunden hat, indem Sie in der Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) den Zeitstempel der letzten Ebenenänderung überprüfen. Weitere Informationen finden Sie im Abschnitt [Frühzeitiges Löschen für kalte Speicher und Archivspeicher](#cool-and-archive-early-deletion).
+Für alle Blobs, die vor Ablauf von 30 bzw. 180 Tagen gelöscht oder aus der Ebene „Kalt“ (nur GPv2-Konten) oder „Archiv“ verschoben werden, fällt eine anteilige Gebühr für frühes Löschen an. Sie können ermitteln, wie lange sich ein Blob auf der Ebene „Kalt“ oder „Archiv“ befunden hat, indem Sie in der Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) den Zeitstempel der letzten Ebenenänderung überprüfen. Weitere Informationen finden Sie unter [Frühzeitiges Löschen für kalte Speicher und Archivspeicher](#cool-and-archive-early-deletion).
 
 **Welche Azure-Tools und SDKs unterstützen das Blobebenentiering und die Speicherebene „Archiv“?**
 

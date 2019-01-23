@@ -1,5 +1,5 @@
 ---
-title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays | Microsoft Docs
+title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Software- und Netzwerkanforderungen für StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7e5cf79613bdbd62427e99a0d1f2aa29ed8f85be
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24815227"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245190"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -42,7 +42,7 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Webbrowse
 | **Hypervisor** | **Version** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 und höher |
-| VMware ESXi |5.0, 5.5 und 6.0 <br> (6.5 wird nicht unterstützt.) |
+| VMware ESXi |5.0, 5.5, 6.0 und 6.5 |
 
 > [!IMPORTANT]
 > Installieren Sie VMware-Tools nicht im StorSimple Virtual Array. Dies führt zu einer nicht unterstützten Konfiguration.
@@ -54,7 +54,7 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Webbrowse
 | Minimaler Arbeitsspeicher (RAM) |8 GB <br> Dateiserver: 8 GB für weniger als 2 Millionen Dateien und 16 GB für 2 bis 4 Millionen Dateien|
 | Festplattenspeicher<sup>1</sup> |Betriebssystemdatenträger: 80 GB  <br></br>Datendatenträger: 500 GB bis 8 TB |
 | Mindestanzahl von Netzwerkschnittstellen |1 |
-| Internetbandbreite<sup>2</sup> |Erforderliche minimale Bandbreite: 5 Mbit/s <br> Empfohlene Bandbreite: 100 Mbit/s <br> Die Geschwindigkeit der Datenübertragung wird entsprechend der Internetbandbreite skaliert. Beispiel: Bei einer Geschwindigkeit von 5 Mbit/s dauert die Übertragung von 100 GB an Daten zwei Tage. Dies kann zu Sicherungsfehlern führen, da tägliche Sicherungen nicht an einem Tag abgeschlossen werden. Mit einer Bandbreite von 100 Mbit/s können 100 GB an Daten in 2,5 Stunden übertragen werden.   |
+| Internetbandbreite<sup>2</sup> |Erforderliche minimale Bandbreite: 5 MBit/s <br> Empfohlene Bandbreite: 100 MBit/s <br> Die Geschwindigkeit der Datenübertragung wird entsprechend der Internetbandbreite skaliert. Beispiel: Bei einer Geschwindigkeit von 5 Mbit/s dauert die Übertragung von 100 GB an Daten zwei Tage. Dies kann zu Sicherungsfehlern führen, da tägliche Sicherungen nicht an einem Tag abgeschlossen werden. Mit einer Bandbreite von 100 Mbit/s können 100 GB an Daten in 2,5 Stunden übertragen werden.   |
 
 <sup>1</sup> : Bereitgestelltes Thin-Gerät
 
@@ -94,13 +94,13 @@ In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iS
 
 | **Portnr.<sup>1</sup>** | **ein oder aus** | **Portbereich** | **Erforderlich** | **Hinweise** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |aus |WAN |Nein |Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
-| TCP 443 (HTTPS) |aus |WAN |Ja |Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
+| TCP 80 (HTTP) |aus |WAN |Nein  |Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
+| TCP 443 (HTTPS) |aus |WAN |JA |Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
 | UDP 53 (DNS) |aus |WAN |In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten DNS-Server verwenden. <br></br> Beachten Sie, dass bei der Bereitstellung eines Dateiservers die Verwendung eines lokalen DNS-Servers empfohlen wird. |
 | UDP 123 (NTP) |aus |WAN |In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten NTP-Server verwenden.<br></br> Beachten Sie, dass bei der Bereitstellung eines Dateiservers empfohlen wird, die Zeit mit Ihren Active Directory-Domänencontrollern zu synchronisieren. |
-| TCP 80 (HTTP) |Geben Sie in |LAN |Ja |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. <br></br> Beachten Sie, dass beim Zugriff auf die lokale Benutzeroberfläche über HTTP automatisch eine Umleitung auf HTTPS erfolgt. |
-| TCP 443 (HTTPS) |Geben Sie in |LAN |Ja |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. |
-| TCP 3260 (iSCSI) |Geben Sie in |LAN |Nein |Dieser Port wird für den Datenzugriff über iSCSI verwendet. |
+| TCP 80 (HTTP) |Geben Sie in |LAN |JA |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. <br></br> Beachten Sie, dass beim Zugriff auf die lokale Benutzeroberfläche über HTTP automatisch eine Umleitung auf HTTPS erfolgt. |
+| TCP 443 (HTTPS) |Geben Sie in |LAN |JA |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. |
+| TCP 3260 (iSCSI) |Geben Sie in |LAN |Nein  |Dieser Port wird für den Datenzugriff über iSCSI verwendet. |
 
 <sup>1</sup> Es müssen keine eingehenden Ports für das öffentliche Internet geöffnet werden.
 
@@ -123,7 +123,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster | Komponente/Funktionalität |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure Service Bus<br>Authentifizierungsdienst|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst|
 | `http://*.backup.windowsazure.com` |Geräteregistrierung |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Zertifikatswiderruf |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |

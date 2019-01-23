@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 148a83cb57675e2e8bda8147041987180df998f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037394"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358727"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke
 
 Sie können das Azure Cosmos DB-Konto so konfigurieren, dass der Zugriff nur aus einem bestimmten Subnetz des virtuellen Netzwerks (VNET) zugelassen wird. Wenn der [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wird, um auf Azure Cosmos DB im Subnetz innerhalb eines virtuellen Netzwerks zuzugreifen, wird der Datenverkehr dieses Subnetzes mit der Identität des Subnetzes und des virtuellen Netzwerks an Azure Cosmos DB gesendet. Sobald der Azure Cosmos DB-Dienstendpunkt aktiviert ist, können Sie den Zugriff auf das Subnetz einschränken, indem Sie es Ihrem Azure Cosmos DB-Konto hinzufügen.
 
-Standardmäßig ist ein Azure Cosmos DB-Konto über jede beliebige Quelle zugänglich, wenn die Anforderung zusammen mit einem gültigen Autorisierungstoken erfolgt. Wenn Sie mindestens ein Subnetz im VNET hinzufügen, erhalten nur Anforderungen aus dem jeweiligen Subnetz eine gültige Antwort. Anforderungen, die aus anderen Quellen stammen, erhalten eine „404“Antwort (Nicht gefunden). 
+Standardmäßig ist ein Azure Cosmos DB-Konto über jede beliebige Quelle zugänglich, wenn die Anforderung zusammen mit einem gültigen Autorisierungstoken erfolgt. Wenn Sie mindestens ein Subnetz im VNET hinzufügen, erhalten nur Anforderungen aus dem jeweiligen Subnetz eine gültige Antwort. Anforderungen, die aus anderen Quellen stammen, erhalten die Fehlermeldung „403“ (Nicht zulässig). 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -34,7 +34,7 @@ Um den Zugriff auf das Azure Cosmos DB-Konto über ein Subnetz einzuschränken, 
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Werden Zugriffssteuerungslisten virtueller Netzwerke und die IP-Firewall Anforderungen oder Verbindungen zurückgewiesen? 
 
-Wenn eine IP-Firewall oder Zugriffsregeln für virtuelle Netzwerke hinzugefügt werden, erhalten nur Anforderungen von zulässigen Quellen gültige Antworten. Andere Anforderungen werden mit einer „404“-Fehlermeldung (Nicht gefunden) zurückgewiesen. Es ist wichtig, die Firewall des Azure Cosmos DB-Kontos von einer Firewall auf Verbindungsebene zu unterscheiden. Die Quelle kann sich weiterhin mit dem Dienst verbinden, und die Verbindungen selbst werden nicht zurückgewiesen.
+Wenn eine IP-Firewall oder Zugriffsregeln für virtuelle Netzwerke hinzugefügt werden, erhalten nur Anforderungen von zulässigen Quellen gültige Antworten. Andere Anforderungen werden mit einer „403“-Fehlermeldung (Nicht zulässig) zurückgewiesen. Es ist wichtig, die Firewall des Azure Cosmos DB-Kontos von einer Firewall auf Verbindungsebene zu unterscheiden. Die Quelle kann sich weiterhin mit dem Dienst verbinden, und die Verbindungen selbst werden nicht zurückgewiesen.
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Meine Anforderungen werden blockiert, wenn ich den Dienstendpunkt für Azure Cosmos DB im Subnetz aktiviere. Was ist passiert?
 
