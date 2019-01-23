@@ -13,61 +13,63 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: c47a4d853ba6360fb7f8017b7ad9a59e10040401
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d27c0e9570959e01267d83a768ead45b48b7cea1
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120851"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267231"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
-[Microsoft Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) können mit [Application Insights][start] auf Verfügbarkeit, Leistung, Fehler und Verwendung überwacht werden. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
+[Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
 
-![Screenshot des Übersichtsdashboards](./media/cloudservices/overview-graphs.png)
+![Übersichtsdashboard](./media/cloudservices/overview-graphs.png)
 
-## <a name="before-you-start"></a>Vorbereitung
-Sie benötigen Folgendes:
+## <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* Ein Abonnement für [Microsoft Azure](https://azure.com). Melden Sie sich mit einem Microsoft-Konto an, das Sie möglicherweise für Windows, XBox Live oder andere Microsoft-Clouddienste verwenden. 
-* Microsoft Azure-Tools 2.9 oder höher
-* Developer Analytics Tools 7.10 oder höher
+* Ein [Azure](https://azure.com)-Abonnement. Melden Sie sich mit Ihrem Microsoft-Konto für Windows, Xbox Live oder andere Microsoft-Clouddienste an. 
+* Microsoft Azure-Tools 2.9 oder höher.
+* Developer Analytics Tools 7.10 oder höher.
 
-## <a name="quick-start"></a>Schnellstart
+## <a name="get-started-quickly"></a>Schneller Einstieg
 Am schnellsten und einfachsten können Sie Ihren Clouddienst mit Application Insights überwachen, wenn Sie diese Option beim Veröffentlichen des Diensts in Azure auswählen.
 
-![Beispiel](./media/cloudservices/azure-cloud-application-insights.png)
+![Seite mit Beispiel für Diagnoseeinstellungen](./media/cloudservices/azure-cloud-application-insights.png)
 
-Mit dieser Option wird die App zur Laufzeit instrumentiert, sodass Sie alle erforderlichen Telemetriedaten zum Überwachen von Anforderungen, Ausnahmen und Abhängigkeiten in Ihrer Webrolle sowie die Leistungsindikatoren von Ihren Workerrollen erhalten. Auch alle Diagnoseablaufverfolgungen, die von der App generiert werden, werden an Application Insights gesendet.
+Mit dieser Option wird die App zur Laufzeit instrumentiert, sodass Sie alle erforderlichen Telemetriedaten zum Überwachen von Anforderungen, Ausnahmen und Abhängigkeiten in Ihrer Webrolle erhalten. Leistungsindikatoren aus Ihren Workerrollen werden ebenfalls überwacht. Auch alle von Ihrer App generierten Diagnoseablaufverfolgungen werden an Application Insights gesendet.
 
-Wenn Sie nicht mehr als das benötigen, sind Sie damit fertig! Die nächsten Schritte sind: [Anzeigen von Metriken aus der App](../../azure-monitor/app/metrics-explorer.md), [Abfragen von Daten mit Analytics](../../azure-monitor/app/analytics.md) und eventuell Einrichten eines [Dashboards](../../azure-monitor/app/app-insights-dashboards.md). Möglicherweise möchten Sie [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) einrichten und [Ihren Webseiten Code hinzufügen](../../azure-monitor/app/javascript.md), um die Leistung im Browser zu überwachen.
+Wenn Sie nur diese Option benötigen, sind Sie fertig. 
 
-Sie können jedoch auch weitere Optionen abrufen:
+Die nächsten Schritte sind: [Anzeigen von Metriken aus der App](../../azure-monitor/app/metrics-explorer.md), [Abfragen von Daten mit Analytics](../../azure-monitor/app/analytics.md) und eventuell Einrichten eines [Dashboards](../../azure-monitor/app/app-insights-dashboards.md). 
+
+Zur Überwachung der Leistung im Browser sollten Sie [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) einrichten und [Ihren Webseiten Code hinzufügen](../../azure-monitor/app/javascript.md).
+
+In den nächsten Abschnitten werden die folgenden zusätzlichen Optionen erläutert:
 
 * Senden von Daten aus verschiedenen Komponenten und Erstellen von Konfigurationen zum Trennen von Ressourcen
 * Hinzufügen von benutzerdefinierten Telemetriedaten aus der App
 
-Lesen Sie weiter, wenn diese Optionen von Interesse für Sie sind.
+## <a name="sample-app-instrumented-with-application-insights"></a>Mit Application Insights instrumentierte Beispiel-App
+In dieser [Beispiel-App](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wird Application Insights einem Clouddienst mit zwei in Azure gehosteten Workerrollen hinzugefügt. 
 
-## <a name="sample-application-instrumented-with-application-insights"></a>Mit Application Insights instrumentierte Beispielanwendung
-Sehen Sie sich diese [Beispielanwendung](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) an, in der Application Insights mit zwei in Azure gehosteten Workerrollen einem Clouddienst hinzugefügt wird. 
-
-Im Folgenden wird erläutert, wie Sie Ihr eigenes Clouddienstprojekt auf die gleiche Weise anpassen können.
+Im nächsten Abschnitt erfahren Sie, wie Sie Ihr eigenes Clouddienstprojekt auf die gleiche Weise anpassen können.
 
 ## <a name="plan-resources-and-resource-groups"></a>Planen von Ressourcen und Ressourcengruppen
-Die Telemetriedaten aus Ihrer App werden in einer Azure-Ressource des Typs Application Insights gespeichert, analysiert und angezeigt. 
+Die Telemetriedaten aus Ihrer App werden in einer Azure-Ressource vom Typ Application Insights gespeichert, analysiert und angezeigt. 
 
 Jede Ressource gehört jeweils zu einer Ressourcengruppe. Ressourcengruppen werden zum Verwalten von Kosten, zum Gewähren des Zugriffs für Teammitglieder und zum Bereitstellen von Updates in einer koordinierten Transaktion verwendet. Beispielsweise können Sie [ein Skript zum Bereitstellen](../../azure-resource-manager/resource-group-template-deploy.md) eines Azure-Clouddiensts und der zugehörigen Application Insights-Überwachungsressourcen in einem kombinierten Vorgang schreiben.
 
 ### <a name="resources-for-components"></a>Ressourcen für Komponenten
-Als Schema wird empfohlen, für die einzelnen Komponenten der Anwendung, d.h. für jede Webrolle und Workerrolle, jeweils eine separate Ressource zu erstellen. Sie können jede Komponente einzeln analysieren, können jedoch auch ein [Dashboard](../../azure-monitor/app/app-insights-dashboards.md) erstellen, das die wichtigsten Diagramme aus allen Komponenten vereint, sodass Sie diese vergleichen und zusammen überwachen können. 
+Es wird empfohlen, für jede Komponente Ihrer App eine separate Ressource zu erstellen. D.h. Sie erstellen eine Ressource für jede Web- und Workerrolle. Sie können jede Komponente einzeln analysieren, können jedoch auch ein [Dashboard](../../azure-monitor/app/app-insights-dashboards.md) erstellen, das die wichtigsten Diagramme aus allen Komponenten vereint, sodass Sie diese in einer zentralen Ansicht vergleichen und zusammen überwachen können. 
 
-Ein alternatives Schema besteht darin, die Telemetriedaten von mehreren Rollen an dieselbe Ressource zu senden, jedoch [jedem Telemetrieelement eine Dimensionseigenschaft hinzuzufügen](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer), mit der die jeweilige Quellrolle identifiziert wird. In diesem Schema wird in Metrikdiagrammen (z.B. Ausnahmen) normalerweise eine Aggregation der Zählungen aus den unterschiedlichen Rollen angezeigt. Sie können jedoch das Diagramm bei Bedarf nach Rollenbezeichnern segmentieren. Suchvorgänge können auch nach der gleichen Dimension gefiltert werden. Mit diesem alternativen Schema können alle Daten etwas einfacher gleichzeitig angezeigt werden, es kann jedoch zu einer gewissen Verwirrung im Hinblick auf die Rollen führen.
+Ein alternativer Ansatz besteht darin, die Telemetriedaten von mehreren Rollen an dieselbe Ressource zu senden, jedoch [jedem Telemetriedatenelement eine Dimensionseigenschaft hinzuzufügen](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer), mit der die jeweilige Quellrolle identifiziert wird. In diesem Ansatz wird in Metrikdiagrammen (z.B. Ausnahmen) normalerweise eine Aggregation der Zählungen aus den unterschiedlichen Rollen angezeigt. Sie können jedoch das Diagramm bei Bedarf nach Rollenbezeichnern segmentieren. Suchvorgänge können auch nach der gleichen Dimension gefiltert werden. Mit dieser Alternative können alle Daten etwas einfacher gleichzeitig angezeigt werden, es kann jedoch zu einer gewissen Verwirrung im Hinblick auf die Rollen führen.
 
 Browsertelemetriedaten sind in der Regel in der gleichen Ressource wie die zugehörige serverseitige Webrolle enthalten.
 
-Legen Sie die Application Insights-Ressourcen für die verschiedenen Komponenten in einer Ressourcengruppe ab. So können sie einfach zusammen verwaltet werden. 
+Legen Sie die Application Insights-Ressourcen für die verschiedenen Komponenten in einer Ressourcengruppe ab. Mit diesem Ansatz können sie einfach zusammen verwaltet werden. 
 
-### <a name="separating-development-test-and-production"></a>Trennen von Entwicklung, Test und Produktion
+### <a name="separate-development-test-and-production"></a>Trennen von Entwicklung, Test und Produktion
 Wenn Sie benutzerdefinierte Ereignisse für das nächste Feature entwickeln, während die vorherige Version aktiv ist, sollten die Entwicklungstelemetriedaten an eine separate Application Insights-Ressource gesendet werden. Andernfalls ist es schwierig, die Testtelemetriedaten im gesamten Datenverkehr von der Livewebsite zu finden.
 
 Um dies zu vermeiden, erstellen Sie separate Ressourcen für jede Buildkonfiguration oder jeden „Stempel“ (Entwicklung, Test, Produktion usw.) des Systems. Legen Sie die Ressourcen für jede Buildkonfiguration jeweils in einer separaten Ressourcengruppe ab. 
@@ -75,107 +77,119 @@ Um dies zu vermeiden, erstellen Sie separate Ressourcen für jede Buildkonfigura
 Um die Telemetriedaten an die entsprechenden Ressourcen zu senden, können Sie das Application Insights SDK so einrichten, dass abhängig von der Buildkonfiguration jeweils ein anderer Instrumentierungsschlüssel abgerufen wird. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Erstellen einer Application Insights-Ressource für die einzelnen Rollen
-Wenn Sie eine separate Ressource für die einzelnen Rollen – und eventuell eine separate Gruppe für die einzelnen Buildkonfigurationen – erstellen möchten, ist es am einfachsten, diese im Application Insights-Portal zu erstellen. (Wenn Sie häufig Ressourcen erstellen, können Sie [den Vorgang automatisieren](../../azure-monitor/app/powershell.md).
 
-1. Erstellen Sie im [Azure-Portal][portal] eine neue Application Insights-Ressource. Wählen Sie als Anwendungstyp "ASP.NET-App" aus. 
+Wenn Sie eine separate Ressource für die einzelnen Rollen und eventuell eine separate Gruppe für die einzelnen Buildkonfigurationen erstellen möchten, ist es am einfachsten, diese im Application Insights-Portal zu erstellen. Wenn Sie häufig Ressourcen erstellen, können Sie [den Prozess automatisieren](../../azure-monitor/app/powershell.md).
 
-    ![Klicken Sie auf "Neu > Application Insights"](./media/cloudservices/01-new.png)
-2. Jede Ressource wird durch einen Instrumentierungsschlüssel identifiziert. Möglicherweise benötigen Sie diesen später, wenn Sie die Konfiguration des SDK manuell konfigurieren oder überprüfen möchten.
+1. Wählen Sie im [Azure-Portal][portal] **Neu** > **Entwicklerdienste** > **Application Insights** aus.  
+
+    ![Bereich „Application Insights“](./media/cloudservices/01-new.png)
+
+1. Wählen Sie in der Dropdownliste **Anwendungstyp** die Option **ASP.NET-Webanwendung** aus.  
+    Jede Ressource wird durch einen Instrumentierungsschlüssel identifiziert. Möglicherweise benötigen Sie diesen Schlüssel später, wenn Sie die Konfiguration des SDK manuell konfigurieren oder überprüfen möchten.
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Einrichten von Azure-Diagnose für die einzelnen Rollen
-Legen Sie diese Option zum Überwachen Ihrer App mit Application Insights fest. Für Webrollen umfasst dies die Leistungsüberwachung, Warnungen und Diagnose sowie die Verwendungsanalyse. Für andere Rollen können Sie Azure-Diagnose durchsuchen und überwachen, z.B. Neustarten, Leistungsindikatoren und Aufrufe von „System.Diagnostics.Trace“. 
+Legen Sie diese Option zum Überwachen Ihrer App mit Application Insights fest. Für Webrollen umfasst diese Option die Leistungsüberwachung, Warnungen, Diagnose und die Verwendungsanalyse. Für andere Rollen können Sie Azure-Diagnose durchsuchen und überwachen, z.B. Neustarten, Leistungsindikatoren und Aufrufe von „System.Diagnostics.Trace“. 
 
-1. Öffnen Sie im Visual Studio-Projektmappen-Explorer unter &lt;YourCloudService&gt; die Eigenschaften der einzelnen Rollen.
-2. Aktivieren Sie unter **Konfiguration** das Kontrollkästchen **Diagnosedaten an Application Insights senden**, und wählen Sie die entsprechende Application Insights-Ressource aus, die Sie zuvor erstellt haben.
+1. Öffnen Sie im Visual Studio-Projektmappen-Explorer unter **\<YourCloudService>** > **Rollen** die Eigenschaften der einzelnen Rollen.
+
+1. Aktivieren Sie unter **Konfiguration** das Kontrollkästchen **Diagnosedaten an Application Insights senden**, und wählen Sie dann die entsprechende Application Insights-Ressource aus, die Sie zuvor erstellt haben.
 
 Wenn Sie sich entschieden haben, eine separate Application Insights-Ressource für jede Buildkonfiguration zu verwenden, wählen Sie zuerst die Konfiguration aus.
 
-![Konfigurieren Sie Application Insights in den Eigenschaften jeder Azure-Rolle.](./media/cloudservices/configure-azure-diagnostics.png)
+![Application Insights konfigurieren](./media/cloudservices/configure-azure-diagnostics.png)
 
-Dadurch werden die Application Insights-Instrumentierungsschlüssel in die Dateien mit dem Namen `ServiceConfiguration.*.cscfg` eingefügt. ([Beispielcode](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
+Dadurch werden die Application Insights-Instrumentierungsschlüssel in die Dateien mit dem Namen *ServiceConfiguration.\*.cscfg* eingefügt. Hier ist der [Beispielcode](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
-Wenn Sie festlegen möchten, welche Diagnosedaten an Application Insights gesendet werden, können Sie dies [direkt durch Bearbeiten der `.cscfg`-Dateien erledigen](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+Wenn Sie festlegen möchten, welche Diagnosedaten an Application Insights gesendet werden, können Sie dies [direkt durch Bearbeiten der *CSCFG*-Dateien erledigen](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 ## <a name="sdk"></a>Installieren des SDK in den einzelnen Projekten
-Hierdurch haben Sie die Möglichkeit, allen Rollen benutzerdefinierte Geschäftstelemetriedaten hinzuzufügen. Dies ermöglicht eine genauere Analyse, wie die Anwendung verwendet und ausgeführt wird.
+Mit dieser Option können Sie jeder Rolle benutzerdefinierte Geschäftstelemetriedaten hinzufügen. Die Option bietet eine genauere Analyse der Nutzung und Leistung Ihrer App.
 
 Konfigurieren Sie in Visual Studio das Application Insights SDK für jedes Cloud-App-Projekt.
 
-1. **Webrollen**: Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** oder **Hinzufügen &gt; Application Insights-Telemetrie**.
+1. Zum Konfigurieren von **Webrollen** klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **Application Insights konfigurieren** oder **Hinzufügen &gt; Application Insights-Telemetrie** aus.
 
-2. **Workerrollen**: 
- * Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
- * Fügen Sie [Application Insights für Windows-Dienste](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) hinzu.
+1. So konfigurieren Sie **Workerrollen**: 
+
+    a. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten** aus.
+
+    b. Fügen Sie [Application Insights für Windows-Dienste](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) hinzu.
 
     ![Suchen Sie nach "Application Insights".](./media/cloudservices/04-ai-nuget.png)
 
-3. Konfigurieren Sie das SDK zum Senden von Daten an die Application Insights-Ressource.
+1. So konfigurieren Sie das SDK zum Senden von Daten an die Application Insights-Ressource:
 
-    Legen Sie in einer geeigneten Startfunktion den Instrumentierungsschlüssel aus der Konfigurationseinstellung in der ``.cscfg file`` fest:
+    a. Legen Sie in einer geeigneten Startfunktion den Instrumentierungsschlüssel aus der Konfigurationseinstellung in der *CSCFG*-Datei fest:
  
     ```csharp
    
      TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
     ```
    
-    Tun Sie dies für jede Rolle in Ihrer Anwendung. Beispiele:
+    b. Wiederholen Sie „Schritt a“ für jede Rolle in Ihrer App. Beispiele:
    
-   * [Webrolle](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
-   * [Workerrolle](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-   * [Für Webseiten](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
-4. Legen Sie für die Datei "ApplicationInsights.config" fest, dass sie immer in das Ausgabeverzeichnis kopiert wird. 
-   
-    (In der Datei „.config“ erscheinen Nachrichten, in denen Sie dazu aufgefordert werden, den Instrumentationsschlüssel hier zu platzieren. Bei Cloudanwendungen ist es jedoch besser, ihn aus der ``.cscfg file`` festzulegen. Dadurch wird sichergestellt, dass die Rolle im Portal korrekt identifiziert wird.)
+    * [Webrolle](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
+    * [Workerrolle](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
+    * [Für Webseiten](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
+
+1. Legen Sie für die Datei *ApplicationInsights.config* fest, dass sie immer in das Ausgabeverzeichnis kopiert wird.  
+    Sie werden über eine Meldung in der *CONFIG*-Datei aufgefordert, den Instrumentationsschlüssel hier zu platzieren. Für Cloud-Apps ist es jedoch besser, ihn aus der *CSCFG* festzulegen. Dadurch wird sichergestellt, dass die Rolle im Portal korrekt identifiziert wird.
 
 #### <a name="run-and-publish-the-app"></a>Ausführen und Veröffentlichen der App
-Führen Sie Ihre App aus, und melden Sie sich bei Azure an. Öffnen Sie die von Ihnen erstellte Application Insights-Ressource. In der [Suche](../../azure-monitor/app/diagnostic-search.md) sehen Sie dann einzelne Datenpunkte und im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) aggregierte Daten. 
 
-Fügen Sie mehr Telemetrie hinzu (siehe folgende Abschnitte), und veröffentlichen Sie dann Ihre App, um Livediagnosen und Nutzungsfeedback zu erhalten. 
+1. Führen Sie Ihre App aus, und melden Sie sich bei Azure an. 
 
-#### <a name="no-data"></a>Sie sehen keine Daten?
-* Öffnen Sie die Kachel [Suche][diagnostic], um einzelne Ereignisse anzuzeigen.
-* Verwenden Sie die Anwendung, und öffnen Sie verschiedene Seiten, damit einige Telemetriedaten generiert werden.
-* Warten Sie einige Sekunden, und klicken Sie auf "Aktualisieren".
-* Informationen hierzu finden Sie unter [Problembehandlung][qna].
+1. Öffnen Sie die zuvor erstellten Application Insights-Ressourcen.  
+    Einzelne Datenpunkte werden in [Suche](../../azure-monitor/app/diagnostic-search.md) angezeigt, und aggregierte Daten werden im [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) angezeigt. 
 
-## <a name="view-azure-diagnostic-events"></a>Anzeigen von Azure-Diagnoseereignissen
-So finden Sie Informationen der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) in Application Insights:
+1. Fügen Sie weitere Telemetriedaten hinzu (siehe folgende Abschnitte), und veröffentlichen Sie dann Ihre App, um Livediagnosen und Nutzungsfeedback zu erhalten. 
+
+Wenn keine Daten vorhanden sind, gehen Sie folgendermaßen vor:
+1. Zum Anzeigen einzelner Ereignisse öffnen Sie die Kachel [Suche][diagnostic].
+1. Öffnen Sie in der App verschiedene Seiten, damit sie einige Telemetriedaten generiert.
+1. Warten Sie einige Sekunden, und klicken Sie dann auf **Aktualisieren**.  
+    Weitere Informationen finden Sie unter [Problembehandlung][qna].
+
+## <a name="view-azure-diagnostics-events"></a>Anzeigen von Azure-Diagnoseereignissen
+Sie finden Sie Informationen der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) in Application Insights an den folgenden Speicherorten:
 
 * Leistungsindikatoren werden als benutzerdefinierte Metriken angezeigt. 
 * Windows-Ereignisprotokolle werden als Ablaufverfolgungen und benutzerdefinierte Ereignisse angezeigt.
 * Anwendungsprotokolle, ETW-Protokolle und alle Diagnoseinfrastrukturprotokolle werden als Ablaufverfolgungen angezeigt.
 
-Um Leistungsindikatoren und Angaben zur Anzahl von Ereignissen anzuzeigen, öffnen Sie den [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) und fügen ein neues Diagramm hinzu:
+Zum Anzeigen von Leistungsindikatoren und Angaben zur Anzahl von Ereignissen öffnen Sie den [Metrik-Explorer](../../azure-monitor/app/metrics-explorer.md) und fügen das folgende Diagramm hinzu:
 
 ![Azure-Diagnosedaten](./media/cloudservices/23-wad.png)
 
-Verwenden Sie die [Suche](../../azure-monitor/app/diagnostic-search.md) oder eine [Analytics-Abfrage](../../azure-monitor/log-query/get-started-portal.md), um die verschiedenen Ablaufverfolgungsprotokolle zu durchsuchen, die von der Azure-Diagnose gesendet werden. Angenommen, es liegt eine nicht behandelte Ausnahme vor, die das Abstürzen und Wiederverwenden einer Rolle verursacht hat. Diese Informationen werden im Kanal „Anwendung“ des Windows-Ereignisprotokolls angezeigt. Sie können das Windows-Ereignisprotokoll mithilfe der Suchfunktion untersuchen und die vollständige Stapelüberwachung für die Ausnahme abrufen. So können Sie die Ursache des Problems ermitteln.
+Verwenden Sie zum Durchsuchen der verschiedenen Ablaufverfolgungsprotokolle, die von der Azure-Diagnose gesendet werden, die [Suche](../../azure-monitor/app/diagnostic-search.md) oder eine [Analytics-Abfrage](../../azure-monitor/log-query/get-started-portal.md). Angenommen, es liegt eine nicht behandelte Ausnahme vor, die das Abstürzen und erneute Aktivieren einer Rolle verursacht hat. Diese Informationen werden im Kanal „Anwendung“ des Windows-Ereignisprotokolls angezeigt. Sie können das Windows-Ereignisprotokoll mithilfe der Suchfunktion anzeigen und die vollständige Stapelüberwachung für die Ausnahme abrufen. So können Sie die Ursache des Problems ermitteln.
 
 ![Durchsuchen der Azure-Diagnosedaten](./media/cloudservices/25-wad.png)
 
 ## <a name="more-telemetry"></a>Mehr Telemetrie
-In den folgenden Abschnitten wird gezeigt, wie Sie weitere Telemetriedaten zu verschiedenen Aspekten Ihrer Anwendung gewinnen.
+In den folgenden Abschnitten wird erläutert, wie Sie weitere Telemetriedaten zu verschiedenen Aspekten Ihrer Anwendung abrufen.
 
 ## <a name="track-requests-from-worker-roles"></a>Nachverfolgen von Anforderungen bei Workerrollen
-In Webrollen sammelt das Modul für Anforderungen automatisch Daten zu HTTP-Anforderungen. Beispiele zum Überschreiben des Standardsammelverhaltens finden Sie im [MVCWebRole-Beispiel](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) . 
+In Webrollen sammelt das Modul für Anforderungen automatisch Daten zu HTTP-Anforderungen. Beispiele zum Überschreiben des Standardsammelverhaltens finden Sie im [MVCWebRole-Beispiel](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
 
-Sie können die Leistung der Aufrufe von Workerrollen erfassen, indem Sie diese auf die gleiche Weise wie HTTP-Anforderungen nachverfolgen. In Application Insights misst der Telemetrietyp „Anforderungen“ eine Arbeitseinheit auf dem benannten Server, die zeitlich bestimmt werden und unabhängig erfolgreich sein oder einen Fehler verursachen kann. Während HTTP-Anforderungen durch das SDK automatisch erfasst werden, können Sie Ihren eigenen Code zum Nachverfolgen von Anforderungen an Workerrollen einfügen.
+Sie können die Leistung der Aufrufe von Workerrollen erfassen, indem Sie diese auf die gleiche Weise wie HTTP-Anforderungen nachverfolgen. In Application Insights misst der Telemetrietyp „Anforderungen“ eine Arbeitseinheit auf dem benannten Server, die zeitlich bestimmt werden und unabhängig erfolgreich sein oder einen Fehler verursachen kann. HTTP-Anforderungen werden zwar durch das SDK automatisch erfasst, Sie können jedoch Ihren eigenen Code zum Nachverfolgen von Anforderungen an Workerrollen einfügen.
 
-Siehe dazu die zwei Beispielworkerrollen, die zum Melden von Anforderungen instrumentiert sind: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) und [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+Siehe dazu die zwei Beispielworkerrollen, die zum Melden von Anforderungen instrumentiert sind: 
+* [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
+* [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Ausnahmen
-Informationen zum Sammeln von Ausnahmefehlern von verschiedenen Webanwendungstypen finden Sie unter [Monitoring Exceptions in Application Insights](../../azure-monitor/app/asp-net-exceptions.md) (in englischer Sprache).
+Informationen zum Sammeln von Ausnahmefehlern aus verschiedenen Web-App-Typen finden Sie unter [Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
 
 Die Beispielwebrolle verfügt über MVC5- und Web-API 2-Controller. Die nicht behandelten Ausnahmen von beiden werden mit den folgenden Handlern erfasst:
 
-* [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) wird [hier](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) für MVC5-Controller eingerichtet
-* [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) wird [hier](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) für Web-API 2-Controller eingerichtet
+* [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs), [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) für MVC5-Controller eingerichtet 
+* [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs), [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) für Web-API 2-Controller eingerichtet 
 
 Für Workerrollen gibt es zwei Möglichkeiten zum Nachverfolgen von Ausnahmen:
 
-* TrackException(ex)
-* Wenn Sie das NuGet-Paket für Application Insights-Ablaufverfolgungslistener hinzugefügt haben, können Sie Ausnahmen mithilfe von **System.Diagnostics.Trace** protokollieren. [Codebeispiel](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
+* Verwenden Sie TrackException(ex).
+* Wenn Sie das NuGet-Paket für Application Insights-Ablaufverfolgungslistener hinzugefügt haben, können Sie Ausnahmen mithilfe von „System.Diagnostics.Trace“ [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107) protokollieren.
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
 Die folgenden Leistungsindikatoren werden standardmäßig erfasst:
@@ -193,27 +207,29 @@ Für Webrollen werden auch diese Leistungsindikatoren erfasst:
     * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
     * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-Sie können zusätzliche benutzerdefinierte oder andere Windows-Leistungsindikatoren angeben, indem Sie die Datei „ApplicationInsights.config“ bearbeiten. [Siehe dieses Beispiel](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+Sie können zusätzliche benutzerdefinierte oder andere Windows-Leistungsindikatoren angeben, indem Sie die Datei *ApplicationInsights.config* [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14) bearbeiten.
 
   ![Leistungsindikatoren](./media/cloudservices/002-servers.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>Korrelierte Telemetriedaten für Workerrollen
-Durch die umfassende Diagnose können Sie die Ursachen für Anforderungen mit Fehlern oder hoher Latenz sehen. Bei Webrollen richtet das SDK automatisch Korrelationen zwischen verknüpften Telemetriedaten ein. Für Workerrollen können Sie zu diesem Zweck mithilfe eines benutzerdefinierten Telemetrieinitialisierers ein allgemeines Operation.Id-Kontextattribut für alle Telemetriedaten festlegen. Dadurch können Sie auf einen Blick sehen, ob die Latenz oder der Fehler durch eine Abhängigkeit oder durch den Code verursacht wurde. 
+Für eine umfassende Diagnose können Sie die Ursachen für Anforderungen mit Fehlern oder hoher Latenz anzeigen. Bei Webrollen richtet das SDK automatisch eine Korrelation zwischen verknüpften Telemetriedaten ein. 
+
+Für Workerrollen können Sie zu diesem Zweck mithilfe eines benutzerdefinierten Telemetrieinitialisierers ein allgemeines Operation.Id-Kontextattribut für alle Telemetriedaten festlegen. Dadurch können Sie auf einen Blick sehen, ob die Latenz oder der Fehler durch eine Abhängigkeit oder durch Ihren Code verursacht wurde. 
 
 Das geht so:
 
-* Fügen Sie die Korrelations-ID wie [hier](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)gezeigt in einen CallContext ein. In diesem Fall wird die Anforderungs-ID als Korrelations-ID verwendet.
-* Fügen Sie eine benutzerdefinierte „TelemetryInitializer“-Implementierung hinzu, die das „Operation.Id“-Attribut auf die oben festgelegte „correlationId“ festgelegt. Hier sehen Sie ein Beispiel: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
-* Fügen Sie den benutzerdefinierten Telemetrieinitialisierer hinzu. Sie können dies in der Datei „ApplicationInsights.config“ oder im Code vornehmen, wie [hier](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) gezeigt.
+* Fügen Sie die Korrelations-ID [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36) in einen CallContext ein. In diesem Fall wird die Anforderungs-ID als correlationId-Element verwendet.
+* Fügen Sie eine benutzerdefinierte TelemetryInitializer-Implementierung hinzu, die das Attribut „Operation.Id“ auf das zuvor festgelegte correlationId-Element festlegt. Ein Beispiel finden Sie unter [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
+* Fügen Sie den benutzerdefinierten Telemetrieinitialisierer hinzu. Sie können dies in der Datei *ApplicationInsights.config* oder [wie in diesem Beispiel gezeigt](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) im Code vornehmen.
 
 ## <a name="client-telemetry"></a>Clienttelemetrie
-[Fügen Sie Ihren Webseiten das JavaScript SDK][client] hinzu, um browserbasierte Telemetriedaten wie Anzahl der Seitenaufrufe, Seitenladezeiten oder Skriptausnahmen zu erhalten und benutzerdefinierte Telemetrie in Ihre Seitenskripts schreiben zu können.
+Informationen zum Abrufen von browserbasierten Telemetriedaten wie Anzahl der Seitenaufrufe, Seitenladezeiten oder Skriptausnahmen sowie zum Schreiben von benutzerdefinierten Telemetriedaten in Ihre Seitenskripts finden Sie unter [Application Insights für Webseiten][client].
 
 ## <a name="availability-tests"></a>Verfügbarkeitstests
-[Richten Sie Webtests ein][availability], um sicherzustellen, dass die Anwendung online und reaktionsfähig bleibt.
+[Richten Sie Webtests ein][availability], um sicherzustellen, dass die App online und reaktionsfähig bleibt.
 
 ## <a name="display-everything-together"></a>Anzeigen aller Daten
-Um eine allgemeine Übersicht über Ihr System zu erhalten, können Sie die wichtigsten Überwachungsdiagramme in einem [Dashboard](../../azure-monitor/app/app-insights-dashboards.md) zusammenführen. Beispielsweise können Sie die Anforderungs- und Fehleranzahl der einzelnen Rollen anheften. 
+Für eine allgemeine Übersicht über Ihr System können Sie die wichtigsten Überwachungsdiagramme in einem [Dashboard](../../azure-monitor/app/app-insights-dashboards.md) anzeigen. Beispielsweise können Sie die Anforderungs- und Fehleranzahl der einzelnen Rollen anheften. 
 
 Wenn in Ihrem System andere Azure-Dienste, z.B. Stream Analytics, verwendet werden, können Sie die entsprechenden Überwachungsdiagramme auch einfügen. 
 
@@ -223,7 +239,7 @@ Wenn Sie über eine mobile Client-App verfügen, verwenden Sie [App Center](../.
 [In diesem Beispiel](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wird ein Dienst mit einer Webrolle und zwei Workerrollen überwacht.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Ausnahme „Methode nicht gefunden“ bei der Ausführung in Azure Cloud Services
-Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Services-Rollen unterstützt. [Installieren Sie 4.6 für jede Rolle](../../cloud-services/cloud-services-dotnet-install-dotnet.md) , bevor Sie Ihre App ausführen.
+Haben Sie für .NET 4.6 erstellt? .NET 4.6 wird in Azure Cloud Services-Rollen nicht automatisch unterstützt. [Installieren Sie .NET 4.6 für jede Rolle](../../cloud-services/cloud-services-dotnet-install-dotnet.md), bevor Sie Ihre App ausführen.
 
 ## <a name="video"></a>Video
 
@@ -231,7 +247,7 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurieren der Azure-Diagnose zum Protokollieren in Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Automatisierung der Erstellung von Application Insights-Ressourcen](../../azure-monitor/app/powershell.md)
+* [Automatisches Erstellen von Application Insights-Ressourcen](../../azure-monitor/app/powershell.md)
 * [Automatisierung von Azure-Diagnose](../../azure-monitor/app/powershell-azure-diagnostics.md)
 * [Azure-Funktionen](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 

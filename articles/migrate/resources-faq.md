@@ -4,14 +4,14 @@ description: Beantwortet häufig gestellte Fragen zu Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975473"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230763"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -53,6 +53,7 @@ Azure Migrate unterstützt derzeit „Europa“, „USA“ und „Azure Governme
 **Geografie** | **Speicherort der Metadaten**
 --- | ---
 Azure Government | US Government, Virginia
+Asien | Asien, Südosten
 Europa | „Europa, Norden“ oder „Europa, Westen“
 USA | „USA, Osten“ oder „USA, Westen-Mitte“
 
@@ -63,6 +64,17 @@ Die Verbindung kann über das Internet erfolgen oder ExpressRoute mit öffentlic
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Kann ich das VM-Setup mit der OVA-Vorlage absichern?
 
 Zusätzliche Komponenten (z.B. Antivirensoftware) können in der OVA-Vorlage hinzugefügt werden, solange die für die Funktion der Azure Migrate-Appliance erforderlichen Kommunikations- und Firewall-Regeln unverändert bleiben.   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>Welche Antivirus-Ausschlüsse (AV) werden zum Härten der Azure Migrate-Appliance empfohlen?
+
+Sie müssen die folgenden Ordner in der Appliance von Antivirusscans ausschließen:
+
+- Ordner mit den Binärdateien für den Azure Migrate-Dienst. Schließen Sie alle Unterordner aus.
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate-Webanwendung. Schließen Sie alle Unterordner aus.
+  %SystemDrive%\inetpub\wwwroot
+- Lokaler Cache für Datenbank- und Protokolldateien. Der Azure Migrate-Dienst benötigt Lese-/Schreibzugriff auf diesen Ordner.
+  %SystemDrive%\Profiler
 
 ## <a name="discovery"></a>Ermittlung
 
@@ -136,6 +148,7 @@ Wenn Sie bei einer von mehreren Mandanten gemeinsam genutzten Umgebung keine VMs
 
 In einem einzelnen Migrationsprojekt können 1500 virtuelle Computer ermittelt werden. Wenn Ihre lokale Umgebung mehr Computer enthält, finden Sie hier [weitere Informationen](how-to-scale-assessment.md) zur Ermittlung einer großen Umgebung in Azure Migrate.
 
+
 ## <a name="assessment"></a>Bewertung
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Unterstützt Azure Migrate EA-basierte (Enterprise Agreement) Kostenschätzungen?
@@ -144,6 +157,13 @@ Azure Migrate unterstützt derzeit keine Kostenschätzung für das [Enterprise A
 
   ![Discount](./media/resources-faq/discount.png)
 
+### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>Was ist der Unterschied zwischen den Größenanpassungen „Wie lokal“ und „Leistungsbasiert“?
+
+Wenn Sie als Größenkriterium „Wie lokal“ angeben, berücksichtigt Azure Migrate die Leistungsdaten der virtuellen Computer nicht und legt die Größe der virtuellen Computer basierend auf der lokalen Konfiguration fest. Wenn das Größenkriterium „Leistungsbasiert“ lautet, erfolgt die Größenanpassung basierend auf den Nutzungsdaten. Beispiel: Eine lokale VM mit 4 Kernen und 8 GB Arbeitsspeicher mit einer CPU- und Arbeitsspeicherauslastung von jeweils 50 %. Wenn das Größenkriterium „Wie lokal“ gilt, wird eine Azure-VM-SKU mit 4 Kernen und 8 GB Arbeitsspeicher empfohlen. Falls das Größenkriterium „Leistungsbasiert“ lautet, wird eine VM-SKU mit 2 Kernen und 4 GB Arbeitsspeicher empfohlen, da für die Größenempfehlung der Auslastungsprozentsatz berücksichtigt wird. Entsprechend hängt bei Datenträgern die Größenanpassung von zwei Bewertungseigenschaften ab: dem Größenkriterium und dem Speichertyp. Wenn das Größenkriterium „Leistungsbasiert“ ist und der Speichertyp „Automatisch“ lautet, werden die IOPS- und Durchsatzwerte des Datenträgers berücksichtigt, um den Typ des Zieldatenträgers zu ermitteln (Standard oder Premium). Wenn das Größenkriterium „Leistungsbasiert“ ist und der Speichertyp „Premium“ lautet, wird ein Premium-Datenträger empfohlen. Die Premium-Datenträger-SKU in Azure wird basierend auf der Größe des lokalen Datenträgers ausgewählt. Die gleiche Logik wird verwendet, um die Größenanpassung für Datenträger durchzuführen, wenn das Größenkriterium „Wie lokal“ verwendet wird und der Speichertyp „Standard“ oder „Premium“ lautet.
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>Welche Auswirkungen haben der Leistungsverlauf und der Quantilwert der Nutzung auf die Größenempfehlungen?
+
+Diese Eigenschaften gelten nur für die leistungsbasierte Größenanpassung. Azure Migrate sammelt den Leistungsverlauf von lokalen Computern und nutzt diese Daten, um die VM-Größe und den Datenträgertyp in Azure zu empfehlen. Die Collectorappliance erstellt für die lokale Umgebung kontinuierlich Profildaten, um alle 20 Sekunden Echtzeit-Verwendungsdaten erfassen zu können. Die Appliance führt für die 20-Sekunden-Stichproben einen Rollup aus und erstellt für jeweils 15 Minuten einen Datenpunkt. Zum Erstellen jedes Datenpunkts wählt die Appliance den Spitzenwert aus allen 20-Sekunden-Stichproben aus und sendet diesen an Azure. Beim Erstellen einer Bewertung in Azure berechnet Azure Migrate basierend auf der Leistungsdauer und dem Quantilwert des Leistungsverlaufs den geltenden Auslastungswert und verwendet ihn für die Größenanpassung. Wenn Sie die Leistungsdauer beispielsweise auf einen Tag und den Quantilwert auf 95 festgelegt haben, verwendet Azure Migrate die vom Collector gesendeten 15-Minuten-Stichprobenpunkte für den gesamten letzten Tag, sortiert sie in aufsteigender Reihenfolge und wählt den Wert des 95. Quantils als gültige Auslastung aus. Mit dem Wert des 95. Quantils wird sichergestellt, dass Ausreißer ignoriert werden. Diese können auftreten, wenn Sie das 99. Quantil wählen. Falls Sie die Spitzenauslastung für den Zeitraum wählen möchten und keine Ausreißer verpassen möchten, sollten Sie das 99. Quantil wählen.
 
 ## <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 

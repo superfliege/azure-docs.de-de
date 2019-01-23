@@ -1,6 +1,6 @@
 ---
 title: Benutzerflowtypen in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Ein Thema zum erweiterbaren Richtlinienframework von Azure Active Directory B2C und die Erstellung verschiedener Benutzerflowtypen.
+description: Erfahren Sie etwas über das erweiterbare Richtlinienframework von Azure Active Directory B2C und das Erstellen verschiedener Benutzerflows.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,30 +10,32 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d4a93b04b8ad86a6a6d36a5bdaf3209b49e7a9dc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bcbd26c8e78e29daa78a7e50f2f49b095103f696
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877081"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351780"
 ---
-# <a name="azure-active-directory-b2c-user-flows"></a>Azure Active Directory B2C: Benutzerabläufe
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Benutzerflows in Azure Active Directory B2C
 
+Das erweiterbare Richtlinienframework von Azure Active Directory (Azure AD) B2C ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als **Benutzerflows** bezeichnet werden. 
 
-Das erweiterbare Richtlinienframework von Azure Active Directory (Azure AD) B2C ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Kundenidentität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen bei der Einrichtung der gängigsten Identitätsaufgaben zu helfen, enthält das Azure AD B2C-Portal vordefinierte, konfigurierbare Richtlinien mit dem Namen **Benutzerflows**. Ein Registrierungsbenutzerflow ermöglicht beispielsweise das Steuern des Verhaltens durch Konfigurieren der folgenden Einstellungen:
+## <a name="what-are-user-flows"></a>Was sind Benutzerflows?
 
-* Kontotypen (Konten sozialer Netzwerke wie Facebook oder lokale Konten wie die E-Mail-Adressen), die Kunden zum Registrieren für die Anwendung verwenden können
-* Attribute (z.B. Vorname, Postleitzahl und Schuhgröße), die der Kunde während des Anmeldeprozesses angeben muss
-* Verwendung der Azure Multi-Factor Authentication
-* Das Aussehen und Verhalten aller Registrierungsseiten
-* Informationen (als Ansprüche in Token ausgedrückt), die die Anwendung nach Abschluss der Benutzerflowausführung erhält
+Ein Benutzerflow ermöglicht das Steuern des Verhaltens in Ihren Anwendungen durch Konfigurieren der folgenden Einstellungen:
 
-Sie können mehrere Benutzerflows verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Entwickler Benutzeroberflächen im Zusammenhang mit der Kundenidentität mit minimalen oder ganz ohne Änderungen an ihrem Code definieren und ändern.
+- Kontotypen für die Anmeldung, z.B. Konten für soziale Netzwerke wie Facebook oder lokale Konten
+- Attribute, die vom Kunden gesammelt werden, wie z.B. Vorname, Postleitzahl und Schuhgröße
+- Azure Multi-Factor Authentication
+- Anpassung der Benutzeroberfläche
+- Informationen, die die Anwendung in Form von Ansprüchen in einem Token erhält 
 
-Benutzerflows können über eine einfache Entwicklerschnittstelle verwendet werden. Ihre Anwendung löst einen Benutzerflow mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung aus (übergibt einen Benutzerflowparameter in der Anforderung) und empfängt ein benutzerdefiniertes Token als Antwort. Der einzige Unterschied zwischen Anforderungen, die einen Registrierungsbenutzerflow aufrufen, und Anforderungen, die einen Anmeldebenutzerflow aufrufen, ist beispielsweise der Benutzerflowname, der im Parameter „p“ der Abfragezeichenfolge verwendet wird:
+Sie können viele Benutzerflows verschiedener Typen in Ihrem Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Identität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Ihre Anwendung löst einen Benutzerflow mithilfe einer standardmäßigen HTTP-Authentifizierungsanforderung aus, die Parameter für einen Benutzerflow enthält. Als Antwort wird ein benutzerdefiniertes [Token](active-directory-b2c-reference-tokens.md) empfangen. 
+
+Die folgenden Beispiele zeigen den Parameter „p“ der Abfragezeichenfolge, der den zu verwendenden Benutzerflow angibt:
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -43,11 +45,9 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
 &p=b2c_1_siup                                       // Your sign-up user flow
-
 ```
 
 ```
-
 https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
 &redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
@@ -57,50 +57,34 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 &nonce=dummy
 &state=12345                                        // Any value provided by your application
 &p=b2c_1_siin                                       // Your sign-in user flow
-
 ```
 
-## <a name="create-a-sign-up-or-sign-in-user-flow"></a>Erstellen eines Registrierungs- oder Anmeldebenutzerflows
+## <a name="user-flow-versions"></a>Benutzerflowversionen
 
-Mit diesem Benutzerflow werden die Registrierung und Anmeldung von Kunden in ein und derselben Konfiguration verarbeitet. Die Kunden werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet (Registrierung oder Anmeldung). Außerdem wird mit der Richtlinie der Inhalt von Token beschrieben, die die Anwendung nach erfolgreichen Registrierungen oder Abmeldungen erhält.  Ein Codebeispiel für den Benutzerflow zur **Registrierung oder Anmeldung** ist [hier](active-directory-b2c-devquickstarts-web-dotnet-susi.md) verfügbar.  Sie sollten diesen Benutzerflow anstelle eines **Registrierungs-** oder **Anmeldebenutzerflows** verwenden.  
+Im Azure-Portal werden ständig neue [Versionen von Benutzerflows](user-flow-versions.md) hinzugefügt. Wenn Sie neu bei Azure AD B2C sind, sollten Sie getestete Benutzerflows verwenden. Wenn Sie einen neuen Benutzerflow erstellen, wählen Sie den benötigten Benutzerflow auf der Registerkarte **Empfohlen** aus.
 
-[!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
+Die folgenden Benutzerflows werden derzeit empfohlen:
 
-## <a name="create-a-sign-up-user-flow"></a>Erstellen eines Benutzerflows für die Registrierung
+- **Registrierung und Anmeldung:** verarbeitet die Benutzeroberfläche für Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet. Sie sollten diesen Benutzerflow anstelle eines **Registrierungs-** oder **Anmeldebenutzerflows** verwenden.
+- **Profilbearbeitung:** ermöglicht Benutzern, ihre Profilinformationen zu bearbeiten.
+- **Zurücksetzen des Kennworts:** ermöglicht Ihnen, festzulegen, ob und wie Benutzer ihr Kennwort zurücksetzen können.
 
-[!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
+## <a name="linking-user-flows"></a>Verknüpfen von Benutzerflows
 
-## <a name="create-a-sign-in-user-flow"></a>Erstellen eines Benutzerflows für die Anmeldung
+Ein Benutzerflow für **Registrierung oder Anmeldung** für lokale Konten zeigt auf der ersten Seite der Oberfläche den Link **Kennwort vergessen?** an. Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst. 
 
-[!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
+Stattdessen wird der Fehlercode `AADB2C90118` an Ihre Anwendung zurückgegeben. Die Anwendung muss diesen Fehlercode verarbeiten, indem sie einen bestimmten Benutzerflow zum Zurücksetzen des Kennworts ausführt. Sehen Sie sich ein [einfaches ASP.NET-Beispiel](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) an, das die Verknüpfung von Benutzerflows veranschaulicht.
 
-## <a name="create-a-profile-editing-user-flow"></a>Erstellen eines Benutzerflows für die Profilbearbeitung
+## <a name="email-address-storage"></a>Speicherung der E-Mail-Adresse
 
-[!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
-
-## <a name="create-a-password-reset-user-flow"></a>Erstellen eines Benutzerflows zur Kennwortrücksetzung
-
-[!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
-
-## <a name="preview-user-flows"></a>Vorschau für Benutzerflows
-
-Wenn wir neue Features herausgeben, sind einige davon vielleicht nicht mit vorhandenen Richtlinien oder Benutzerflows verfügbar.  Wir planen, ältere Versionen mit den neuesten desselben Typs zu ersetzen, sobald diese Richtlinien oder Benutzerflows allgemein verfügbar sind.  Die vorhandenen Richtlinien oder Benutzerflows werden nicht geändert, und um diese neuen Funktionen nutzen zu können, müssen Sie neue Benutzerflows erstellen.
-
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-### <a name="how-do-i-link-a-sign-up-or-sign-in-user-flow-with-a-password-reset-user-flow"></a>Wie wird ein Registrierungs- oder Anmeldebenutzerflow mit einem Benutzerflow zum Zurücksetzen von Kennwörtern verknüpft?
-Beim Erstellen einen **Registrierungs-** oder Anmeldebenutzerflow (für lokale Konten) wird auf der ersten Seite der Oberfläche der Link **Kennwort vergessen?** angezeigt. Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst. 
-
-Stattdessen wird der Fehlercode **`AADB2C90118`** an die App zurückgegeben. Ihre App muss mit diesen Fehlercode verarbeiten, indem sie einen bestimmten Benutzerflow zur Kennwortzurücksetzung aufruft. Weitere Informationen finden Sie in dem [Beispiel, das das Verknüpfen von Benutzerflows veranschaulicht](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
-
-### <a name="should-i-use-a-sign-up-or-sign-in-user-flow-or-a-sign-up-user-flow-and-a-sign-in-user-flow"></a>Sollte ich einen Registrierungs- oder einen Anmeldebenutzerflow oder einen Benutzerflow für die Registrierung und einen Benutzerflow für die Anmeldung verwenden?
-Wir empfehlen, einen **Registrierungs- oder einen Anmeldebenutzerflow** einem Benutzerflow für die **Registrierung** und einem Benutzerflow für die **Anmeldung** vorzuziehen.  
-
-Der **Registrierungs- oder Anmeldebenutzerflow** weist mehr Funktionen als der **Anmeldebenutzerflow** auf. Außerdem ermöglicht sie Ihnen, die Seite für die Benutzeroberflächenanpassung zu nutzen, und sie hat eine bessere Unterstützung für die Lokalisierung. 
-
-Der **Anmeldebenutzerflow** wird empfohlen, wenn Sie Ihren Benutzerflow nicht lokalisieren müssen, nur geringfügige Anpassungsfunktionen für das Branding benötigen und eine integrierte Kennwortzurücksetzung möchten.
+Eine E-Mail-Adresse kann als Teil eines Benutzerflows erforderlich sein. Wenn sich der Benutzer mit einem sozialen Netzwerk als Identitätsanbieter authentifiziert, wird die E-Mail-Adresse in der **otherMails**-Eigenschaft gespeichert. Wenn ein lokales Konto auf einem Benutzernamen basiert, wird die E-Mail-Adresse in einer speziellen Eigenschaft für die sichere Authentifizierung gespeichert. Wenn ein lokales Konto auf einer E-Mail-Adresse basiert, wird die E-Mail-Adresse in der **signInNames**-Eigenschaft gespeichert.
+ 
+Es ist in diesen Fällen nicht garantiert, dass die E-Mail-Adresse überprüft wird. Ein Mandantenadministrator kann die E-Mail-Überprüfung in den grundlegenden Richtlinien für lokale Konten deaktivieren. Selbst wenn die Überprüfung der E-Mail-Adresse aktiviert ist, werden die Adressen nicht überprüft, wenn sie von einem sozialen Netzwerk als Identitätsanbieter stammen und nicht geändert wurden.
+ 
+Nur die Eigenschaften **otherMails** und **signInNames** werden über die Active Directory Graph-API verfügbar gemacht. Die E-Mail-Adresse in der Eigenschaft für die sichere Authentifizierung ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md)
-* [Deaktivieren der E-Mail-Überprüfung während der Registrierung von Endbenutzern](active-directory-b2c-reference-disable-ev.md)
+
+Befolgen Sie zum Erstellen der empfohlenen Benutzerflows die Anweisungen im [Tutorial: Erstellen eines Benutzerflows](tutorial-create-tenant.md).
+
 

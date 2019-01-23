@@ -4,62 +4,100 @@ description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält De
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 1/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 50ea7a2446b5560bd208b2da128fa877068ce452
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 4899409b225298c521935f2eeaf5e8e59a6833b3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000290"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267452"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt.
 
-## <a name="aad-domain-services"></a>AAD Domain Services
+## <a name="microsoftaad"></a>Microsoft.AAD
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| domains | Nein  | 
+| DomainServices | JA | 
+| DomainServices/oucontainer | Nein  | 
 
-## <a name="ad-hybrid-health-service"></a>AD Hybrid Health Service
+## <a name="microsoftaadiam"></a>microsoft.aadiam
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| addsservices | Nein  |
+| diagnosticSettings | Nein  | 
+| diagnosticSettingsCategories | Nein  | 
+
+## <a name="microsoftaddons"></a>Microsoft.Addons
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| supportProviders | Nein  | 
+
+## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
 | aadsupportcases | Nein  | 
+| addsservices | Nein  | 
 | agents | Nein  | 
 | anonymousapiusers | Nein  | 
 | Konfiguration | Nein  | 
 | Protokolle | Nein  | 
 | reports | Nein  | 
 | services | Nein  | 
-| servicehealthmetrics | Nein  | 
 
-## <a name="aks"></a>AKS
+## <a name="microsoftadvisor"></a>Microsoft.Advisor
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| managedClusters | JA | 
+| Konfigurationen | Nein  | 
+| generateRecommendations | Nein  | 
+| empfehlungen | Nein  | 
+| suppressions | Nein  | 
 
-## <a name="analysis-services"></a>Analysis Services
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| actionRules | Nein  | 
+| alerts | Nein  | 
+| alertsList | Nein  | 
+| alertsSummary | Nein  | 
+| alertsSummaryList | Nein  | 
+| smartDetectorAlertRules | Nein  | 
+| smartDetectorRuntimeEnvironments | Nein  | 
+| smartGroups | Nein  | 
+
+## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | servers | JA | 
 
-## <a name="api-hubs"></a>API-Hubs
+## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| apiManagementAccounts | Nein  | 
-| apiManagementAccounts/apis | Nein  | 
-| apiManagementAccounts/connectionAcls | Nein  | 
-| apiManagementAccounts/connectionProviders | Nein  | 
-| apiManagementAccounts/connectionProviderAcls | Nein  | 
-| apiManagementAccounts/connections | Nein  | 
-
-## <a name="api-management"></a>API Management
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
+| reportFeedback | Nein  | 
 | service | JA | 
+| validateServiceName | Nein  | 
 
-## <a name="automation"></a>Automation
+## <a name="microsoftattestation"></a>Microsoft.Attestation
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| attestationProviders | Nein  | 
+
+## <a name="microsoftauthorization"></a>Microsoft.Authorization
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| classicAdministrators | Nein  | 
+| denyAssignments | Nein  | 
+| elevateAccess | Nein  | 
+| locks | Nein  | 
+| Berechtigungen | Nein  | 
+| policyAssignments | Nein  | 
+| policyDefinitions | Nein  | 
+| policySetDefinitions | Nein  | 
+| providerOperations | Nein  | 
+| roleAssignments | Nein  | 
+| roleDefinitions | Nein  | 
+
+## <a name="microsoftautomation"></a>Microsoft.Automation
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | automationAccounts | JA | 
@@ -69,64 +107,140 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | automationAccounts/softwareUpdateConfigurations | Nein  | 
 | automationAccounts/webhooks | Nein  | 
 
-## <a name="azure-database-for-mariadb"></a>Azure Database for MariaDB
+## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
-| servers/configurations | Nein  |
-| servers/databases | Nein  |
-| servers/firewallRules | Nein  |
-| servers/recoverableServers | Nein  | 
-| servers/securityAlertPolicies | Nein  |
-| servers/virtualNetworkRules | Nein  | 
+| environments | Nein  | 
+| environments/accounts | Nein  | 
+| environments/accounts/namespaces | Nein  | 
+| environments/accounts/namespaces/configurations | Nein  | 
 
-## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
-| servers/configurations | Nein  |
-| servers/databases | Nein  |
-| servers/firewallRules | Nein  |
-| servers/recoverableServers | Nein  | 
-| servers/securityAlertPolicies | Nein  |
-| servers/virtualNetworkRules | Nein  | 
+| b2cDirectories | JA | 
 
-## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
-| servers/advisors | Nein  | 
-| servers/configurations | Nein  |
-| servers/databases | Nein  |
-| servers/firewallRules | Nein  |
-| servers/queryTexts | Nein  | 
-| servers/recoverableServers | Nein  | 
-| servers/securityAlertPolicies | Nein  |
-| servers/topQueryStatistics | Nein  | 
-| servers/virtualNetworkRules | Nein  | 
-| servers/waitStatistics | Nein  | 
+| registrations | JA | 
+| registrations/customerSubscriptions | Nein  | 
+| registrations/products | Nein  | 
 
-## <a name="batch"></a>Batch
+## <a name="microsoftbatch"></a>Microsoft.Batch
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | batchAccounts | JA | 
 
-## <a name="bing-maps"></a>Bing Maps
+## <a name="microsoftbilling"></a>Microsoft.Billing
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| billingAccounts | Nein  | 
+| billingAccounts/billingProfiles | Nein  | 
+| billingAccounts/billingProfiles/billingSubscriptions | Nein  | 
+| billingAccounts/billingProfiles/invoices | Nein  | 
+| billingAccounts/billingProfiles/invoices/pricesheet | Nein  | 
+| billingAccounts/billingProfiles/operationStatus | Nein  | 
+| billingAccounts/billingProfiles/paymentMethods | Nein  | 
+| billingAccounts/billingProfiles/policies | Nein  | 
+| billingAccounts/billingProfiles/pricesheet | Nein  | 
+| billingAccounts/billingProfiles/products | Nein  | 
+| billingAccounts/billingProfiles/transactions | Nein  | 
+| billingAccounts/billingSubscriptions | Nein  | 
+| billingAccounts/departments | Nein  | 
+| billingAccounts/eligibleOffers | Nein  | 
+| billingAccounts/enrollmentAccounts | Nein  | 
+| billingAccounts/invoices | Nein  | 
+| billingAccounts/invoiceSections | Nein  | 
+| billingAccounts/invoiceSections/billingSubscriptions | Nein  | 
+| billingAccounts/invoiceSections/billingSubscriptions/transfer | Nein  | 
+| billingAccounts/invoiceSections/importRequests | Nein  | 
+| billingAccounts/invoiceSections/initiateImportRequest | Nein  | 
+| billingAccounts/invoiceSections/initiateTransfer | Nein  | 
+| billingAccounts/invoiceSections/operationStatus | Nein  | 
+| billingAccounts/invoiceSections/products | Nein  | 
+| billingAccounts/invoiceSections/transfers | Nein  | 
+| billingAccounts/products | Nein  | 
+| billingAccounts/projects | Nein  | 
+| billingAccounts/projects/billingSubscriptions | Nein  | 
+| billingAccounts/projects/importRequests | Nein  | 
+| billingAccounts/projects/initiateImportRequest | Nein  | 
+| billingAccounts/projects/operationStatus | Nein  | 
+| billingAccounts/projects/products | Nein  | 
+| billingAccounts/transactions | Nein  | 
+| billingPeriods | Nein  | 
+| BillingPermissions | Nein  | 
+| billingProperty | Nein  | 
+| BillingRoleAssignments | Nein  | 
+| BillingRoleDefinitions | Nein  | 
+| CreateBillingRoleAssignment | Nein  | 
+| departments | Nein  | 
+| enrollmentAccounts | Nein  | 
+| importRequests | Nein  | 
+| importRequests/acceptImportRequest | Nein  | 
+| importRequests/declineImportRequest | Nein  | 
+| invoices | Nein  | 
+| transfers | Nein  | 
+| transfers/acceptTransfer | Nein  | 
+| transfers/declineTransfer | Nein  | 
+| transfers/operationStatus | Nein  | 
+| usagePlans | Nein  | 
+
+## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | mapApis | JA | 
+| updateCommunicationPreference | Nein  | 
 
-## <a name="biztalk-services"></a>BizTalk Services
+## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | BizTalk | JA | 
 
-## <a name="cache"></a>Cache
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| blueprintAssignments | Nein  | 
+| blueprintAssignments/assignmentOperations | Nein  | 
+| blueprintAssignments/operations | Nein  | 
+| blueprints | Nein  | 
+| blueprints/artifacts | Nein  | 
+| blueprints/versions | Nein  | 
+| blueprints/versions/artifacts | Nein  | 
+
+## <a name="microsoftbotservice"></a>Microsoft.BotService
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| botServices | JA | 
+| botServices/channels | Nein  | 
+| botServices/connections | Nein  | 
+
+## <a name="microsoftcache"></a>Microsoft.Cache
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Redis | JA | 
+| RedisConfigDefinition | Nein  | 
 
-## <a name="cdn"></a>CDN
+## <a name="microsoftcapacity"></a>Microsoft.Capacity
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| appliedReservations | Nein  | 
+| calculatePrice | Nein  | 
+| catalogs | Nein  | 
+| commercialReservationOrders | Nein  | 
+| reservationOrders | Nein  | 
+| reservationOrders/calculateRefund | Nein  | 
+| reservationOrders/merge | Nein  | 
+| reservationOrders/reservations | Nein  | 
+| reservationOrders/reservations/revisions | Nein  | 
+| reservationOrders/return | Nein  | 
+| reservationOrders/split | Nein  | 
+| reservationOrders/swap | Nein  | 
+| reservations | Nein  | 
+| ressourcen | Nein  | 
+| validateReservationOrder | Nein  | 
+
+## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | edgenodes | Nein  | 
@@ -136,36 +250,79 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | profiles/endpoints/origins | Nein  | 
 | validateProbe | Nein  | 
 
-## <a name="classic-compute"></a>Klassische Computeressourcen
+## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| certificateOrders | JA | 
+| certificateOrders/certificates | Nein  | 
+| validateCertificateRegistrationInformation | Nein  | 
+
+## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| capabilities | Nein  | 
 | domainNames | Nein  | 
+| domainNames/capabilities | Nein  | 
+| domainNames/internalLoadBalancers | Nein  | 
+| domainNames/serviceCertificates | Nein  | 
 | domainNames/slots | Nein  | 
 | domainNames/slots/roles | Nein  | 
+| moveSubscriptionResources | Nein  | 
+| operatingSystemFamilies | Nein  | 
+| operatingSystems | Nein  | 
+| quotas | Nein  | 
+| resourceTypes | Nein  | 
+| validateSubscriptionMoveAvailability | Nein  | 
 | virtualMachines | Nein  | 
 | virtualMachines/diagnosticSettings | Nein  | 
-| virtualMachines/metricDefinitions | Nein  | 
-| virtualMachines/metrics | Nein  | 
 
-## <a name="classic-infrastructure-migrate"></a>Klassische Infrastrukturmigration
+## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | classicInfrastructureResources | Nein  | 
 
-## <a name="classic-network"></a>Klassisches Netzwerk
+## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| capabilities | Nein  | 
+| expressRouteCrossConnections | Nein  | 
+| expressRouteCrossConnections/peerings | Nein  | 
+| gatewaySupportedDevices | Nein  | 
+| networkSecurityGroups | Nein  | 
+| quotas | Nein  | 
+| reservedIps | Nein  | 
 | virtualNetworks | Nein  | 
 | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nein  | 
 | virtualNetworks/virtualNetworkPeerings | Nein  | 
 
-## <a name="classic-storage"></a>Klassischer Speicher
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| capabilities | Nein  | 
+| disks | Nein  | 
+| images | Nein  | 
+| osImages | Nein  | 
+| osPlatformImages | Nein  | 
+| publicImages | Nein  | 
+| quotas | Nein  | 
+| storageAccounts | Nein  | 
 | storageAccounts/services | Nein  | 
 | storageAccounts/services/diagnosticSettings | Nein  | 
+| storageAccounts/vmImages | Nein  | 
+| vmImages | Nein  | 
 
-## <a name="compute"></a>Compute
+## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+
+## <a name="microsoftcommerce"></a>Microsoft.Commerce
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| RateCard | Nein  | 
+| UsageAggregates | Nein  | 
+
+## <a name="microsoftcompute"></a>Microsoft.Compute
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | availabilitySets | JA | 
@@ -179,7 +336,6 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | virtualMachines | JA | 
 | virtualMachines/diagnosticSettings | Nein  | 
 | virtualMachines/extensions | JA | 
-| virtualMachines/metricDefinitions | Nein  | 
 | virtualMachineScaleSets | JA | 
 | virtualMachineScaleSets/extensions | Nein  | 
 | virtualMachineScaleSets/networkInterfaces | Nein  | 
@@ -187,119 +343,234 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | virtualMachineScaleSets/virtualMachines | Nein  | 
 | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nein  | 
 
-## <a name="container"></a>Container
+## <a name="microsoftconsumption"></a>Microsoft.Consumption
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| containerGroups | JA | 
+| AggregatedCost | Nein  | 
+| Bilanzen | Nein  | 
+| Budgets | Nein  | 
+| Charges | Nein  | 
+| CostTags | Nein  | 
+| credits | Nein  | 
+| events | Nein  | 
+| Vorhersagen | Nein  | 
+| lots | Nein  | 
+| Marketplaces | Nein  | 
+| Pricesheets | Nein  | 
+| products | Nein  | 
+| ReservationDetails | Nein  | 
+| ReservationRecommendations | Nein  | 
+| ReservationSummaries | Nein  | 
+| ReservationTransactions | Nein  | 
+| Tags | Nein  | 
+| Begriffe | Nein  | 
+| UsageDetails | Nein  | 
 
-## <a name="container-instance"></a>Containerinstanz
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | containerGroups | JA | 
 | serviceAssociationLinks | Nein  | 
 
-## <a name="container-registry"></a>Containerregistrierung
+## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | registries | JA | 
-| registries/replications | JA |
-| registries/tasks | JA |
-| registries/webhooks | JA |
+| registries/builds | Nein  | 
+| registries/builds/cancel | Nein  | 
+| registries/builds/getLogLink | Nein  | 
+| registries/buildTasks | JA | 
+| registries/buildTasks/steps | Nein  | 
+| registries/eventGridFilters | Nein  | 
+| registries/getBuildSourceUploadUrl | Nein  | 
+| registries/GetCredentials | Nein  | 
+| registries/importImage | Nein  | 
+| registries/queueBuild | Nein  | 
+| registries/regenerateCredential | Nein  | 
+| registries/regenerateCredentials | Nein  | 
+| registries/replications | JA | 
+| registries/runs | Nein  | 
+| registries/runs/cancel | Nein  | 
+| registries/scheduleRun | Nein  | 
+| registries/tasks | JA | 
+| registries/updatePolicies | Nein  | 
+| registries/webhooks | JA | 
+| registries/webhooks/getCallbackConfig | Nein  | 
+| registries/webhooks/ping | Nein  | 
 
-## <a name="container-service"></a>Container Service
+## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | containerServices | JA | 
+| managedClusters | JA | 
 
-## <a name="cortana-analytics"></a>Cortana Analytics Suite
+## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| Anwendungen | JA | 
+| updateCommunicationPreference | Nein  | 
+
+## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | accounts | JA | 
 
-## <a name="cosmos-db"></a>Cosmos DB
+## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| databaseAccounts | JA | 
-| databaseAccountNames | Nein  | 
-
-## <a name="cost-management"></a>Cost Management
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
+| Alerts | Nein  | 
+| BillingAccounts | Nein  | 
 | Connectors | JA | 
+| Departments | Nein  | 
+| Dimensionen | Nein  | 
+| EnrollmentAccounts | Nein  | 
+| Abfragen | Nein  | 
+| Registrieren | Nein  | 
+| Reportconfigs | Nein  | 
+| Berichte | Nein  | 
 
-## <a name="data-box"></a>Data Box
+## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| hubs | JA | 
+| hubs/authorizationPolicies | Nein  | 
+| hubs/connectors | Nein  | 
+| hubs/connectors/mappings | Nein  | 
+| hubs/interactions | Nein  | 
+| hubs/kpi | Nein  | 
+| hubs/links | Nein  | 
+| hubs/profiles | Nein  | 
+| hubs/roleAssignments | Nein  | 
+| hubs/roles | Nein  | 
+| hubs/suggestTypeSchema | Nein  | 
+| hubs/views | Nein  | 
+| hubs/widgetTypes | Nein  | 
+
+## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | jobs | JA | 
 
-## <a name="data-box-edge"></a>Data Box Edge
+## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | JA | 
 
-## <a name="data-catalog"></a>Data Catalog
+## <a name="microsoftdatabricks"></a>Microsoft.Databricks
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| workspaces | JA | 
+| workspaces/virtualNetworkPeerings | Nein  | 
+
+## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | catalogs | JA | 
 
-## <a name="data-connect"></a>Datenverbindungen
+## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | connectionManagers | JA | 
 
-## <a name="data-factory"></a>Data Factory
+## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | dataFactories | JA | 
 | dataFactories/diagnosticSettings | Nein  | 
-| dataFactories/metricDefinitions | Nein  | 
 | dataFactorySchema | Nein  | 
 | factories | JA | 
 | factories/integrationRuntimes | Nein  | 
 
-## <a name="devices"></a>Geräte
+## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+| accounts/dataLakeStoreAccounts | Nein  | 
+| accounts/storageAccounts | Nein  | 
+| accounts/storageAccounts/containers | Nein  | 
+
+## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+| accounts/eventGridFilters | Nein  | 
+| accounts/firewallRules | Nein  | 
+
+## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| services | JA | 
+| services/projects | JA | 
+
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| servers | JA | 
+| servers/recoverableServers | Nein  | 
+| servers/virtualNetworkRules | Nein  | 
+
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| servers | JA | 
+| servers/recoverableServers | Nein  | 
+| servers/virtualNetworkRules | Nein  | 
+
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| servers | JA | 
+| servers/advisors | Nein  | 
+| servers/queryTexts | Nein  | 
+| servers/recoverableServers | Nein  | 
+| servers/topQueryStatistics | Nein  | 
+| servers/virtualNetworkRules | Nein  | 
+| servers/waitStatistics | Nein  | 
+
+## <a name="microsoftdevices"></a>Microsoft.Devices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | IotHubs | JA | 
 | IotHubs/eventGridFilters | Nein  | 
 | ProvisioningServices | JA | 
+| usages | Nein  | 
 
-## <a name="devspaces"></a>Devspaces
+## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Controller | JA | 
 
-## <a name="devtest-lab"></a>DevTest Lab
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | labs | JA | 
-| labs/artifactsources | JA |
-| labs/costs | JA |
-| labs/customimages | JA |
-| labs/formulas | JA |
-| labs/notificationchannels | JA |
-| labs/policysets/policies | JA |
-| labs/schedules | JA |
 | labs/serviceRunners | JA | 
-| labs/users | JA |
-| labs/users/disks | JA |
-| labs/users/environments | JA |
-| labs/users/secrets | JA |
-| labs/users/servicefabrics | JA |
-| labs/users/servicefabrics/schedules | JA |
 | labs/virtualMachines | JA | 
-| labs/virtualmachines/schedules | JA |
-| labs/virtualnetworks | JA |
 | schedules | JA | 
 
-## <a name="dynamics-lcs"></a>Dynamics LCS
+## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| databaseAccountNames | Nein  | 
+| databaseAccounts | JA | 
+
+## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| domains | JA | 
+| domains/domainOwnershipIdentifiers | Nein  | 
+| generateSsoRequest | Nein  | 
+| topLevelDomains | Nein  | 
+| validateDomainRegistrationInformation | Nein  | 
+
+## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | lcsprojects | Nein  | 
-| lcsprojects/connectors | Nein  | 
 | lcsprojects/clouddeployments | Nein  | 
+| lcsprojects/connectors | Nein  | 
 
-## <a name="event-grid"></a>Event Grid
+## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | domains | JA | 
@@ -309,56 +580,118 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | topics | JA | 
 | topicTypes | Nein  | 
 
-## <a name="event-hub"></a>Event Hub
+## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | clusters | JA | 
 | namespaces | JA | 
-| namespaces/AuthorizationRules | Nein  |
-| namespaces/disasterRecoveryConfigs | Nein  |
-| namespaces/eventhubs | Nein  |
-| namespaces/eventhubs/authorizationRules | Nein  |
-| namespaces/eventhubs/consumergroups | Nein  |
+| namespaces/authorizationrules | Nein  | 
+| namespaces/disasterrecoveryconfigs | Nein  | 
+| namespaces/eventhubs | Nein  | 
+| namespaces/eventhubs/authorizationrules | Nein  | 
+| namespaces/eventhubs/consumergroups | Nein  | 
 
-## <a name="hana-on-azure"></a>Hana in Azure
+## <a name="microsoftfeatures"></a>Microsoft.Features
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| Features | Nein  | 
+| providers | Nein  | 
+
+## <a name="microsoftgallery"></a>Microsoft.Gallery
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| enroll | Nein  | 
+| galleryitems | Nein  | 
+| generateartifactaccessuri | Nein  | 
+| myareas | Nein  | 
+| myareas/areas | Nein  | 
+| myareas/areas/areas | Nein  | 
+| myareas/areas/areas/galleryitems | Nein  | 
+| myareas/areas/galleryitems | Nein  | 
+| myareas/galleryitems | Nein  | 
+| Registrieren | Nein  | 
+| ressourcen | Nein  | 
+| retrieveresourcesbyid | Nein  | 
+
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| guestConfigurationAssignments | Nein  | 
+| software | Nein  | 
+
+## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | hanaInstances | JA | 
 
-## <a name="hdinsight"></a>HDInsight
+## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | clusters | JA | 
 | clusters/applications | Nein  | 
 
-## <a name="import-export"></a>Import/Export
+## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | jobs | JA | 
 
-## <a name="insights"></a>Einblicke
+## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| actionGroups | JA |
-| activityLogAlerts | JA |
-| alertrules | JA |
+| labelGroups | Nein  | 
+| labelGroups/labels | Nein  | 
+| labelGroups/labels/conditions | Nein  | 
+| labelGroups/labels/subLabels | Nein  | 
+| labelGroups/labels/subLabels/conditions | Nein  | 
+
+## <a name="microsoftinsights"></a>microsoft.insights
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| actiongroups | JA | 
+| activityLogAlerts | JA | 
+| alertrules | JA | 
 | automatedExportSettings | Nein  | 
+| autoscalesettings | JA | 
+| baseline | Nein  | 
+| calculatebaseline | Nein  | 
 | components | JA | 
 | components/events | Nein  | 
-| components/metrics | Nein  | 
 | components/pricingPlans | Nein  | 
 | components/query | Nein  | 
+| diagnosticSettings | Nein  | 
+| diagnosticSettingsCategories | Nein  | 
+| eventCategories | Nein  | 
+| eventtypes | Nein  | 
+| extendedDiagnosticSettings | Nein  | 
+| logDefinitions | Nein  | 
+| logprofiles | Nein  | 
 | Protokolle | Nein  | 
-| metricAlerts | JA |
 | migrateToNewPricingModel | Nein  | 
 | myWorkbooks | Nein  | 
 | Abfragen | Nein  | 
 | rollbackToLegacyPricingModel | Nein  | 
 | scheduledqueryrules | JA | 
+| vmInsightsOnboardingStatuses | Nein  | 
 | webtests | JA | 
 | workbooks | JA | 
 
-## <a name="key-vault"></a>Key Vault
+## <a name="microsoftintune"></a>Microsoft.Intune
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| diagnosticSettings | Nein  | 
+| diagnosticSettingsCategories | Nein  | 
+
+## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| IoTApps | JA | 
+
+## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| Graph | JA | 
+
+## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | deletedVaults | Nein  | 
@@ -366,41 +699,117 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | vaults/accessPolicies | Nein  | 
 | vaults/secrets | Nein  | 
 
-## <a name="log-analytics"></a>Log Analytics
+## <a name="microsoftkusto"></a>Microsoft.Kusto
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| clusters | JA | 
+| clusters/databases | Nein  | 
+| clusters/databases/dataconnections | Nein  | 
+| clusters/databases/eventhubconnections | Nein  | 
+
+## <a name="microsoftlabservices"></a>Microsoft.LabServices
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| labaccounts | JA | 
+| users | Nein  | 
+
+## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+
+## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+
+## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Protokolle | Nein  | 
 
-## <a name="logic"></a>Logik
+## <a name="microsoftlogic"></a>Microsoft.Logic
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | integrationAccounts | JA | 
 | Workflows | JA | 
 
-## <a name="machine-learning-services"></a>Machine Learning Services
+## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| commitmentPlans | JA | 
+| webServices | JA | 
+| Arbeitsbereiche | JA | 
+
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+| accounts/workspaces | JA | 
+| accounts/workspaces/projects | JA | 
+| teamAccounts | JA | 
+| teamAccounts/workspaces | JA | 
+| teamAccounts/workspaces/projects | JA | 
+
+## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | workspaces | JA | 
 | workspaces/computes | Nein  | 
 
-## <a name="managed-identity"></a>Verwaltete Identität
+## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Identities | Nein  | 
 | userAssignedIdentities | JA | 
 
-## <a name="marketplace-apps"></a>Marketplace-App
+## <a name="microsoftmanagement"></a>Microsoft.Management
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| getEntities | Nein  | 
+| managementGroups | Nein  | 
+| ressourcen | Nein  | 
+| startTenantBackfill | Nein  | 
+| tenantBackfillStatus | Nein  | 
+
+## <a name="microsoftmaps"></a>Microsoft.Maps
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+| accounts/eventGridFilters | Nein  | 
+
+## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| offers | Nein  | 
+| offerTypes | Nein  | 
+| offerTypes/publishers | Nein  | 
+| offerTypes/publishers/offers | Nein  | 
+| offerTypes/publishers/offers/plans | Nein  | 
+| offerTypes/publishers/offers/plans/agreements | Nein  | 
+| offerTypes/publishers/offers/plans/configs | Nein  | 
+| offerTypes/publishers/offers/plans/configs/importImage | Nein  | 
+| privategalleryitems | Nein  | 
+| products | Nein  | 
+
+## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | classicDevServices | JA | 
+| updateCommunicationPreference | Nein  | 
 
-## <a name="marketplace-ordering"></a>Marketplace-Bestellungen
+## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | agreements | Nein  | 
 | offertypes | Nein  | 
 
-## <a name="media"></a>Medien
+## <a name="microsoftmedia"></a>Microsoft.Media
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | mediaservices | JA | 
@@ -413,27 +822,53 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | mediaservices/liveEvents | JA | 
 | mediaservices/liveEvents/liveOutputs | Nein  | 
 | mediaservices/liveOutputOperations | Nein  | 
-| mediaservices/streamingEndpoints | JA | 
 | mediaservices/streamingEndpointOperations | Nein  | 
+| mediaservices/streamingEndpoints | JA | 
 | mediaservices/streamingLocators | Nein  | 
 | mediaservices/streamingPolicies | Nein  | 
 | mediaservices/transforms | Nein  | 
 | mediaservices/transforms/jobs | Nein  | 
 
-## <a name="network"></a>Netzwerk
+## <a name="microsoftmigrate"></a>Microsoft.Migrate
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| projects | JA | 
+
+## <a name="microsoftnetwork"></a>Microsoft.Network
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | applicationGateways | JA | 
 | applicationSecurityGroups | JA | 
+| azureFirewallFqdnTags | Nein  | 
 | azureFirewalls | JA | 
+| bgpServiceCommunities | Nein  | 
 | connections | JA | 
+| ddosCustomPolicies | JA | 
 | ddosProtectionPlans | JA | 
+| dnsOperationStatuses | Nein  | 
+| dnszones | JA | 
+| dnszones/A | Nein  | 
+| dnszones/AAAA | Nein  | 
+| dnszones/all | Nein  | 
+| dnszones/CAA | Nein  | 
+| dnszones/CNAME | Nein  | 
+| dnszones/MX | Nein  | 
+| dnszones/NS | Nein  | 
+| dnszones/PTR | Nein  | 
+| dnszones/recordsets | Nein  | 
+| dnszones/SOA | Nein  | 
+| dnszones/SRV | Nein  | 
+| dnszones/TXT | Nein  | 
 | expressRouteCircuits | JA | 
+| expressRouteServiceProviders | Nein  | 
 | frontdoors | JA | 
 | frontdoorWebApplicationFirewallPolicies | JA | 
+| getDnsResourceReference | Nein  | 
 | interfaceEndpoints | JA | 
+| internalNotify | Nein  | 
 | loadBalancers | JA | 
 | localNetworkGateways | JA | 
+| natGateways | JA | 
 | networkIntentPolicies | JA | 
 | networkInterfaces | JA | 
 | networkProfiles | JA | 
@@ -448,184 +883,248 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | routeFilters | JA | 
 | routeTables | JA | 
 | serviceEndpointPolicies | JA | 
+| trafficManagerGeographicHierarchies | Nein  | 
+| trafficmanagerprofiles | JA | 
+| trafficmanagerprofiles/heatMaps | Nein  | 
 | virtualHubs | JA | 
-| virtualNetworks | JA | 
 | virtualNetworkGateways | JA | 
+| virtualNetworks | JA | 
 | virtualNetworkTaps | JA | 
 | virtualWans | JA | 
 | vpnGateways | JA | 
 | vpnSites | JA | 
 | webApplicationFirewallPolicies | JA | 
 
-## <a name="notification-hubs"></a>Notification Hubs
+## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | namespaces | JA | 
 | namespaces/notificationHubs | JA | 
 
-## <a name="operational-insights"></a>Operational Insights
+## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| workspaces | JA |
-| workspaces/dataSources | JA |
-| workspaces/linkedServices | JA |
-| workspaces/savedSearches | Nein  |
-| workspaces/storageInsightConfigs | JA |
+| devices | Nein  | 
+| linkTargets | Nein  | 
+| storageInsightConfigs | Nein  | 
+| workspaces | JA | 
+| workspaces/dataSources | Nein  | 
+| workspaces/linkedServices | Nein  | 
+| workspaces/query | Nein  | 
 
-## <a name="operations-management"></a>Operations Management
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| solutions | Nein  |
+| managementassociations | Nein  | 
+| managementconfigurations | JA | 
+| solutions | JA | 
+| Sichten | JA | 
 
-## <a name="portal"></a>Portal
+## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| policyEvents | Nein  | 
+| policyStates | Nein  | 
+| policyTrackedResources | Nein  | 
+| remediations | Nein  | 
+
+## <a name="microsoftportal"></a>Microsoft.Portal
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| consoles | Nein  | 
 | dashboards | JA | 
+| userSettings | Nein  | 
 
-## <a name="portal-sdk"></a>Portal SDK
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
-| rootResources | JA | 
-
-## <a name="power-bi"></a>Power BI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | workspaceCollections | JA | 
 
-## <a name="recovery-services"></a>Recovery Services
+## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| capacities | JA | 
+
+## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| accounts | JA | 
+
+## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | backupProtectedItems | Nein  | 
 | Tresore | JA | 
 
-## <a name="relay"></a>Relay
+## <a name="microsoftrelay"></a>Microsoft.Relay
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | namespaces | JA | 
+| namespaces/authorizationrules | Nein  | 
+| namespaces/hybridconnections | Nein  | 
+| namespaces/hybridconnections/authorizationrules | Nein  | 
+| namespaces/wcfrelays | Nein  | 
+| namespaces/wcfrelays/authorizationrules | Nein  | 
 
-## <a name="resources"></a>Ressourcen
+## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| resourceGroups | JA | 
-| subscriptions/resourceGroups | JA | 
+| ressourcen | Nein  | 
+| subscriptionsStatus | Nein  | 
 
-## <a name="scheduler"></a>Scheduler
+## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| jobcollections | JA | 
+| availabilityStatuses | Nein  | 
+| childAvailabilityStatuses | Nein  | 
+| childResources | Nein  | 
+| events | Nein  | 
+| impactedResources | Nein  | 
+| Benachrichtigungen | Nein  | 
+
+## <a name="microsoftresources"></a>Microsoft.Resources
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| deployments | Nein  | 
+| deployments/operations | Nein  | 
+| links | Nein  | 
+| notifyResourceJobs | Nein  | 
+| providers | Nein  | 
+| resourceGroups | Nein  | 
+| ressourcen | Nein  | 
+| subscriptions | Nein  | 
+| subscriptions/providers | Nein  | 
+| subscriptions/resourceGroups | Nein  | 
+| subscriptions/resourcegroups/resources | Nein  | 
+| subscriptions/resources | Nein  | 
+| subscriptions/tagnames | Nein  | 
+| subscriptions/tagNames/tagValues | Nein  | 
+| tenants | Nein  | 
+
+## <a name="microsoftsaas"></a>Microsoft.SaaS
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| Anwendungen | JA | 
+| saasresources | Nein  | 
+
+## <a name="microsoftscheduler"></a>Microsoft.Scheduler
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
 | flows | JA | 
+| jobcollections | JA | 
 
-## <a name="search"></a>Suchen,
+## <a name="microsoftsearch"></a>Microsoft.Search
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | resourceHealthMetadata | Nein  | 
 | searchServices | JA | 
 
-## <a name="security"></a>Sicherheit
+## <a name="microsoftsecurity"></a>Microsoft.Security
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| advancedThreatProtectionSettings | Nein  | 
+| alerts | Nein  | 
+| allowedConnections | Nein  | 
+| appliances | Nein  | 
+| applicationWhitelistings | Nein  | 
+| AutoProvisioningSettings | Nein  | 
+| Compliances | Nein  | 
 | dataCollectionAgents | Nein  | 
+| discoveredSecuritySolutions | Nein  | 
+| externalSecuritySolutions | Nein  | 
+| InformationProtectionPolicies | Nein  | 
+| jitNetworkAccessPolicies | Nein  | 
+| monitoring | Nein  | 
+| monitoring/antimalware | Nein  | 
+| monitoring/baseline | Nein  | 
+| monitoring/patch | Nein  | 
+| Richtlinien | Nein  | 
+| pricings | Nein  | 
+| securityContacts | Nein  | 
+| securitySolutions | Nein  | 
+| securitySolutionsReferenceData | Nein  | 
+| securityStatus | Nein  | 
+| securityStatus/endpoints | Nein  | 
+| securityStatus/subnets | Nein  | 
+| securityStatus/virtualMachines | Nein  | 
+| securityStatuses | Nein  | 
+| securityStatusesSummaries | Nein  | 
+| settings | Nein  | 
+| Tasks | Nein  | 
+| topologies | Nein  | 
+| workspaceSettings | Nein  | 
 
-## <a name="service-bus"></a>Service Bus
+## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| diagnosticSettings | Nein  | 
+| diagnosticSettingsCategories | Nein  | 
+
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | namespaces | JA | 
+| namespaces/authorizationrules | Nein  | 
+| namespaces/disasterrecoveryconfigs | Nein  | 
 | namespaces/eventgridfilters | Nein  | 
+| namespaces/queues | Nein  | 
+| namespaces/queues/authorizationrules | Nein  | 
+| namespaces/topics | Nein  | 
+| namespaces/topics/authorizationrules | Nein  | 
+| namespaces/topics/subscriptions | Nein  | 
+| namespaces/topics/subscriptions/rules | Nein  | 
+| premiumMessagingRegions | Nein  | 
 
-## <a name="service-fabric"></a>Service Fabric
+## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | clusters | JA | 
 | clusters/applications | Nein  | 
 
-## <a name="service-fabric-mesh"></a>Service Fabric Mesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Anwendungen | JA | 
+| gateways | JA | 
 | networks | JA | 
+| secrets | JA | 
 | volumes | JA | 
 
-## <a name="signalr-service"></a>SignalR Service
+## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | SignalR | JA | 
 
-## <a name="site-recovery"></a>Site Recovery
+## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| SiteRecoveryVault | JA | 
-
-## <a name="solutions"></a>Lösungen
-| Ressourcentyp | Tagunterstützung |
-| ------------- | ----------- |
-| Anwendungen | JA | 
+| applianceDefinitions | JA | 
+| appliances | JA | 
 | applicationDefinitions | JA | 
+| Anwendungen | JA | 
 | jitRequests | JA | 
 
-## <a name="sql"></a>SQL
+## <a name="microsoftsql"></a>Microsoft.SQL
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| locations/instanceFailoverGroups | Nein  |
-| managedInstances | JA |
-| managedInstances/databases | JA |
-| managedInstances/databases/backupShortTermRetentionPolicies | Nein  |
-| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nein  |
-| managedInstances/databases/vulnerabilityAssessments | Nein  |
-| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Nein  |
-| managedInstances/encryptionProtector | Nein  |
-| managedInstances/keys | Nein  |
-| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nein  |
-| managedInstances/vulnerabilityAssessments | Nein  |
-| servers | JA |
-| servers/administrators | Nein  |
-| servers/advisors | Nein  |
-| servers/auditingSettings | Nein  |
-| servers/backupLongTermRetentionVaults | Nein  |
-| servers/communicationLinks | Nein  |
-| servers/connectionPolicies | Nein  |
-| servers/databases | JA |
-| servers/databases/advisors | Nein  |
-| servers/databases/auditingSettings | Nein  |
-| servers/databases/backupLongTermRetentionPolicies | Nein  |
-| servers/databases/backupShortTermRetentionPolicies | Nein  |
-| servers/databases/connectionPolicies | Nein  |
-| servers/databases/dataMaskingPolicies | Nein  |
-| servers/databases/dataMaskingPolicies/rules | Nein  |
-| servers/databases/extendedAuditingSettings | Nein  |
-| servers/databases/extensions | Nein  |
-| servers/databases/geoBackupPolicies | Nein  |
-| servers/databases/schemas/tables/columns/sensitivityLabels | Nein  |
-| servers/databases/securityAlertPolicies | Nein  |
-| servers/databases/syncGroups | Nein  |
-| servers/databases/syncGroups/syncMembers | Nein  |
-| servers/databases/transparentDataEncryption | Nein  |
-| servers/databases/vulnerabilityAssessments | Nein  |
-| servers/databases/vulnerabilityAssessments/rules/baselines | Nein  |
-| servers/disasterRecoveryConfiguration | Nein  |
-| servers/dnsAliases | Nein  |
-| servers/elasticPools | JA |
-| servers/encryptionProtector | Nein  |
-| servers/extendedAuditingSettings | Nein  |
-| servers/failoverGroups | JA |
-| servers/firewallRules | Nein  |
-| servers/jobAgents | JA |
-| servers/jobAgents/credentials | Nein  |
-| servers/jobAgents/jobs | Nein  |
-| servers/jobAgents/jobs/executions | Nein  |
-| servers/jobAgents/jobs/steps | Nein  |
-| servers/jobAgents/targetGroups | Nein  |
-| servers/keys | Nein  |
-| servers/securityAlertPolicies | Nein  |
-| servers/syncAgents | Nein  |
-| servers/virtualNetworkRules | Nein  |
-| servers/vulnerabilityAssessments | Nein  |
+| servers | JA | 
+| servers/administrators | Nein  | 
+| servers/communicationLinks | Nein  | 
+| servers/databases | JA | 
+| servers/encryptionProtector | Nein  | 
+| servers/keys | Nein  | 
+| servers/restorableDroppedDatabases | Nein  | 
+| servers/serviceobjectives | Nein  | 
+| servers/tdeCertificates | Nein  | 
 
-## <a name="sql-virtual-machine"></a>Virtueller SQL-Computer
+## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| DWVM | JA | 
+| SqlVirtualMachineGroups | JA | 
+| SqlVirtualMachineGroups/AvailabilityGroupListeners | Nein  | 
+| SqlVirtualMachines | JA | 
 
-## <a name="storage"></a>Storage
+## <a name="microsoftstorage"></a>Microsoft.Storage
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | storageAccounts | JA | 
@@ -633,10 +1132,10 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | storageAccounts/fileServices | Nein  | 
 | storageAccounts/queueServices | Nein  | 
 | storageAccounts/services | Nein  | 
-| storageAccounts/services/metricDefinitions | Nein  | 
 | storageAccounts/tableServices | Nein  | 
+| usages | Nein  | 
 
-## <a name="storage-sync"></a>Speichersynchronisierung
+## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | storageSyncServices | JA | 
@@ -646,37 +1145,51 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | storageSyncServices/syncGroups/serverEndpoints | Nein  | 
 | storageSyncServices/workflows | Nein  | 
 
-## <a name="storsimple"></a>Storsimple
+## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | managers | JA | 
 
-## <a name="stream-analytics"></a>Stream Analytics
+## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | streamingjobs | JA | 
 | streamingjobs/diagnosticSettings | Nein  | 
-| streamingjobs/metricDefinitions | Nein  | 
 
-## <a name="subscription"></a>Abonnement
+## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| CreateSubscription | Nein  | 
 | SubscriptionDefinitions | Nein  | 
 | SubscriptionOperations | Nein  | 
 
-## <a name="support"></a>Support
+## <a name="microsoftsupport"></a>microsoft.support
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | supporttickets | Nein  | 
 
-## <a name="visual-studio"></a>Visual Studio
+## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| providerRegistrations | JA | 
+| ressourcen | JA | 
+
+## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| environments | JA | 
+| environments/accessPolicies | Nein  | 
+| environments/eventsources | JA | 
+| environments/referenceDataSets | JA | 
+
+## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Konto | JA | 
 | account/extension | JA | 
 | account/project | JA | 
 
-## <a name="web"></a>Web
+## <a name="microsoftweb"></a>Microsoft.Web
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | apiManagementAccounts | Nein  | 
@@ -697,10 +1210,14 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | deletedSites | Nein  | 
 | functions | Nein  | 
 | hostingEnvironments | JA | 
-| hostingEnvironments/metrics | Nein  | 
 | hostingEnvironments/multiRolePools | Nein  | 
+| hostingEnvironments/multiRolePools/instances | Nein  | 
 | hostingEnvironments/workerPools | Nein  | 
+| hostingEnvironments/workerPools/instances | Nein  | 
 | publishingUsers | Nein  | 
+| empfehlungen | Nein  | 
+| resourceHealthMetadata | Nein  | 
+| runtimes | Nein  | 
 | serverFarms | JA | 
 | serverFarms/workers | Nein  | 
 | sites | JA | 
@@ -708,21 +1225,37 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | sites/hostNameBindings | Nein  | 
 | sites/instances | Nein  | 
 | sites/instances/extensions | Nein  | 
-| sites/metrics | Nein  | 
 | sites/premieraddons | JA | 
+| sites/recommendations | Nein  | 
+| sites/resourceHealthMetadata | Nein  | 
 | sites/slots | JA | 
 | sites/slots/hostNameBindings | Nein  | 
 | sites/slots/instances | Nein  | 
 | sites/slots/instances/extensions | Nein  | 
-| sites/slots/metrics | Nein  | 
 | sourceControls | Nein  | 
 | validate | Nein  | 
 | verifyHostingEnvironmentVnet | Nein  | 
 
-## <a name="xrm"></a>XRM
+## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| organizations | Nein  | 
+| diagnosticSettings | Nein  | 
+| diagnosticSettingsCategories | Nein  | 
+
+## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| DeviceServices | JA | 
+
+## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
+| Ressourcentyp | Tagunterstützung |
+| ------------- | ----------- |
+| components | Nein  | 
+| componentsSummary | Nein  | 
+| monitorInstances | Nein  | 
+| monitorInstancesSummary | Nein  | 
+| monitors | Nein  | 
+| notificationSettings | Nein  | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Anwenden von Tags auf Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](resource-group-using-tags.md).

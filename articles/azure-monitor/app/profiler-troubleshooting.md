@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Problemen mit Azure Application Insights Profiler | Microsoft-Dokumentation
-description: Diese Seite enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung oder Verwendung von Application Insights Profiler zu unterstützen.
+description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung oder Verwendung von Application Insights Profiler zu unterstützen.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,41 +12,42 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d424316cb8287dcf2a9ff04cf8e6889d5bada2cd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 404fe07b5e3c1f4322ec683f37b08942abfd6fcc
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082141"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358846"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
 ## <a id="troubleshooting"></a>Allgemeine Problembehandlung
 
-### <a name="profiles-are-only-uploaded-if-there-are-requests-to-your-application-while-the-profiler-is-running"></a>Profile werden nur bei vorhandenen Anforderungen für die Anwendung während der Profiler-Ausführung hochgeladen
-Application Insights Profiler sammelt Profiler-Daten jede Stunde zwei Minuten lang oder beim Klicken auf die Schaltfläche [**Profil jetzt erstellen**](profiler-settings.md ?toc=/azure/azure-monitor/toc.json) auf der Seite **Konfigurieren von Application Insights Profiler**. Die Profilerstellungsdaten werden jedoch nur hochgeladen, wenn sie an eine Anforderung angefügt werden können, die während der Profiler-Ausführung aufgetreten ist. 
+### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profile werden nur bei vorhandenen Anforderungen für die Anwendung während der Profiler-Ausführung hochgeladen.
 
-Der Profiler schreibt Meldungen zur Ablaufverfolgung und benutzerdefinierten Ereignissen in Ihre Application Insights-Ressource. Sie können anhand dieser Ereignisse feststellen, wie der Profiler ausgeführt wird. Wenn der Profiler Ablaufverfolgungen ausführen und erfassen soll, aber nicht auf der Seite „Leistung“ angezeigt wird, können Sie überprüfen, wie der Profiler ausgeführt wird:
+Azure Application Insights Profiler sammelt Profiler-Daten jede Stunde zwei Minuten lang. Außerdem werden Daten gesammelt, wenn Sie im Bereich **Application Insights Profiler konfigurieren** die Schaltfläche **Jetzt Profil erstellen** auswählen. Die Profilerstellungsdaten werden jedoch nur hochgeladen, wenn sie an eine Anforderung angefügt werden können, die während der Profiler-Ausführung erfolgt ist. 
 
-1. Suchen Sie nach Meldungen zur Ablaufverfolgung, die vom Profiler an Ihre Application Insights-Ressource gesendet wurden. Anhand dieser Suchzeichenfolge können Sie die relevanten Daten suchen:
+Profiler schreibt Meldungen zur Ablaufverfolgung und benutzerdefinierten Ereignissen in Ihre Application Insights-Ressource. Anhand dieser Ereignisse können Sie feststellen, wie Profiler ausgeführt wird. Wenn Profiler ausgeführt werden und Ablaufverfolgungen erfassen soll, diese auf der Seite **Leistung** aber nicht angezeigt werden, können Sie überprüfen, wie Profiler ausgeführt wird:
+
+1. Suchen Sie nach Meldungen zur Ablaufverfolgung, die von Profiler an Ihre Application Insights-Ressource gesendet wurden. Anhand dieser Suchzeichenfolge können Sie die relevanten Daten suchen:
 
     ```
     stopprofiler OR startprofiler OR upload OR ServiceProfilerSample
     ```
-    Im folgenden Screenshot sehen Sie ein Beispiel von zwei Suchvorgängen aus zwei verschiedenen KI-Ressourcen. 
+    Die folgende Abbildung zeigt zwei Beispiele für Suchvorgänge aus zwei KI-Ressourcen: 
     
-    * Das Beispiel auf der linken Seite stammt von einer Anwendung, die keine Anforderungen abruft, während der Profiler ausgeführt wird. Sie können die Meldung sehen, die besagt, dass der Upload aufgrund von Inaktivität abgebrochen wurde. 
+    * Auf der linken Seite erhält die Anwendung keine Anforderungen, während Profiler ausgeführt wird. Die Meldung erläutert, dass der Upload aufgrund von Inaktivität abgebrochen wurde. 
 
-    * Im Beispiel auf der rechten Seite sehen Sie, dass der Profiler gestartet wurde und benutzerdefinierte Ereignisse gesendet hat, als Anforderungen während der Profiler-Ausführung erkannt wurden. Wenn das benutzerdefinierte ServiceProfilerSample-Ereignis angezeigt wird, bedeutet dies, dass der Profiler eine Ablaufverfolgung an eine Anforderung angefügt hat. Die Ablaufverfolgung können Sie auf der Seite zur Application Insights-Leistung anzeigen.
+    * Auf der rechten Seite wurde Profiler gestartet und hat benutzerdefinierte Ereignisse gesendet, wenn während der Profiler-Ausführung Anforderungen erkannt wurden. Wenn das benutzerdefinierte Ereignis „ServiceProfilerSample“ angezeigt wird, bedeutet dies, dass Profiler eine Ablaufverfolgung an eine Anforderung angefügt hat. Die Ablaufverfolgung können Sie auf der Seite zur **Application Insights-Leistung** anzeigen.
 
-    * Wenn überhaupt keine Telemetriedaten angezeigt werden, wird der Profiler nicht ausgeführt. Wir empfehlen Ihnen, die Abschnitte zur Problembehandlung für Ihren spezifischen App-Typ in diesem Dokument zu lesen.  
+    Wenn keine Telemetriedaten angezeigt werden, wird Profiler nicht ausgeführt. Informationen zur Problembehandlung finden Sie in den entsprechenden Abschnitten für Ihren spezifischen App-Typ weiter unten in diesem Artikel.  
 
      ![Suchen nach Profiler-Telemetriedaten][profiler-search-telemetry]
 
-1. Wenn während des Zeitraums, in dem der Profiler ausgeführt wurde, Anforderungen gesendet wurden, stellen Sie sicher, dass diese Anforderungen von der Komponente Ihrer Anwendung verarbeitet werden, die den Profiler aktiviert hat. Manchmal bestehen Anwendungen aus mehreren Komponenten, aber der Profiler ist nur für einige dieser Komponenten aktiviert. Die Seite „Application Insights-Profiler konfigurieren“ zeigt die Komponenten an, die Ablaufverfolgungen hochgeladen haben.
+1. Wenn während der Ausführung von Profiler Anforderungen gesendet wurden, stellen Sie sicher, dass diese Anforderungen von der Komponente Ihrer Anwendung verarbeitet werden, die Profiler aktiviert hat. Anwendungen bestehen zwar manchmal aus mehreren Komponenten, Profiler ist jedoch nur für einige dieser Komponenten aktiviert. Im Bereich **Application Insights-Profiler konfigurieren** werden die Komponenten angezeigt, die Ablaufverfolgungen hochgeladen haben.
 
-### <a name="other-things-to-check"></a>Überprüfen Sie Folgendes:
-* Ihre App wird unter .NET Framework 4.6 ausgeführt.
+### <a name="other-things-to-check"></a>Weitere erforderliche Überprüfungen
+* Vergewissern Sie sich, dass Ihre App unter .NET Framework 4.6 ausgeführt wird.
 * Wenn Ihre Web-App eine ASP.NET Core-Anwendung ist, muss sie mindestens ASP.NET Core 2.0 ausführen.
 * Falls die Daten, die Sie anzeigen möchten, bereits mehrere Wochen alt sind, schränken Sie Ihren Zeitfilter ein, und versuchen Sie es noch mal. Ablaufverfolgungen werden nach sieben Tagen gelöscht.
 * Stellen Sie sicher, dass der Zugriff auf https://gateway.azureserviceprofiler.net nicht durch Proxys oder durch eine Firewall blockiert wird.
@@ -55,44 +56,53 @@ Der Profiler schreibt Meldungen zur Ablaufverfolgung und benutzerdefinierten Ere
 
 Manchmal übersteigt die Gesamtzeitmetrik im Stapel-Viewer die Dauer der Anforderung.
 
-Diese Situation kann eintreten, wenn einer Anforderung mehrere Threads zugeordnet sind, die parallel ausgeführt werden. In diesem Fall übersteigt die Gesamtzeit der Threads die verstrichene Zeit. Ein Thread wartet möglicherweise auf den Abschluss eines anderen Threads. Der Viewer versucht, solche Fälle zu erkennen und die nicht relevanten Wartevorgänge zu ignorieren. Im Zweifelsfall werden jedoch eher zu viele Informationen angezeigt, um zu vermeiden, dass womöglich entscheidende Informationen ausgelassen werden.
+Diese Situation kann eintreten, wenn einer Anforderung mehrere Threads zugeordnet sind, die parallel ausgeführt werden. In diesem Fall übersteigt die Gesamtzeit der Threads die verstrichene Zeit. Ein Thread wartet möglicherweise auf den Abschluss eines anderen Threads. Der Viewer versucht, solche Fälle zu erkennen und die nicht relevante Wartezeit zu ignorieren. Im Zweifelsfall werden jedoch eher zu viele Informationen angezeigt, um zu vermeiden, dass womöglich entscheidende Informationen ausgelassen werden.
 
-Wenn Ihnen in Ihren Ablaufverfolgungen parallele Threads auffallen, bestimmen Sie die wartenden Threads, um den kritischen Pfad für die Anforderung ermitteln zu können. In den meisten Fällen wartet der Thread, der schnell in einen Wartezustand wechselt, einfach auf den Abschluss der anderen Threads. Konzentrieren Sie sich auf die anderen Threads, und ignorieren Sie die Zeit in den wartenden Threads.
+Wenn Ihnen in Ihren Ablaufverfolgungen parallele Threads auffallen, bestimmen Sie die wartenden Threads, um den kritischen Pfad für die Anforderung ermitteln zu können. In der Regel wartet der Thread, der schnell in einen Wartezustand wechselt, einfach auf den Abschluss der anderen Threads. Konzentrieren Sie sich auf die anderen Threads, und ignorieren Sie die Zeit in den wartenden Threads.
 
 ### <a name="error-report-in-the-profile-viewer"></a>Fehlerbericht im Profil-Viewer
 Senden Sie ein Supportticket über das Portal. Geben Sie dabei die Korrelations-ID aus der Fehlermeldung an.
 
-## <a name="troubleshooting-profiler-on-app-services"></a>Problembehandlung für den Profiler in App Services
-### <a name="for-the-profiler-to-work-properly"></a>Damit der Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzungen erfüllt sein:
+## <a name="troubleshoot-profiler-on-azure-app-service"></a>Problembehandlung für Profiler in Azure App Service
+Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzungen erfüllt sein:
 * Für die Web-App muss mindestens ein App Service-Plan mit Basic-Tarif verwendet werden.
 * Für Ihre Web-App muss Application Insights aktiviert sein.
 * Für Ihre Web-App muss die App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** mit dem gleichen Instrumentierungsschlüssel konfiguriert sein, der auch vom Application Insights SDK verwendet wird.
 * Für Ihre Web-App muss die App-Einstellung **APPINSIGHTS_PROFILERFEATURE_VERSION** definiert und auf „1.0.0“ festgelegt sein.
 * Für Ihre Web-App muss die App-Einstellung **DiagnosticServices_EXTENSION_VERSION** definiert und auf den Wert „~3“ festgelegt sein.
-* Der Webauftrag **ApplicationInsightsProfiler3** muss ausgeführt werden. Sie können den Webauftrag überprüfen, indem Sie zu [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/) wechseln und im Menü „Tools“ das **WebJobs-Dashboard** öffnen. Wie Sie in den Screenshots unten sehen können, können Sie durch Klicken auf den Link „ApplicationInsightsProfiler2“ die Details des Webauftrags einschließlich des Protokolls anzeigen.
+* Der Webauftrag **ApplicationInsightsProfiler3** muss ausgeführt werden. So überprüfen Sie den Webauftrag:
+   1. Wechseln Sie zu [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
+   1. Wählen Sie im Menü **Tools** das **WebJobs-Dashboard** aus.  
+      Der Bereich **WebJobs** wird geöffnet. 
+   
+      ![profiler-webjob]   
+   
+   1. Wählen Sie zum Anzeigen der Details des Webauftrags einschließlich des Protokolls den Link **ApplicationInsightsProfiler2**.  
+     Der Bereich **Continuous WebJob Details** (Details des fortlaufenden WebJobs) wird geöffnet.
 
-    Auf diesen Link müssen Sie klicken, um die Details zum Webauftrag anzuzeigen: 
+      ![profiler-webjob-log]
 
-    ![profiler-webjob]
-
-    Hier sehen Sie die Seite, auf der die Details angezeigt werden. Sie können das Protokoll herunterladen und an Ihr Team senden, wenn Sie selbst nicht herausfinden, warum der Profiler nicht funktioniert.
+Wenn Sie nicht feststellen können, warum Profiler nicht funktioniert, haben Sie die Möglichkeit, das Protokoll herunterzuladen und an unser Team zu senden, um Unterstützung zu erhalten. 
     
-    ![profiler-webjob-log]
-
 ### <a name="manual-installation"></a>Manuelle Installation
 
-Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktualisierungen vorgenommen. Sie können die Updates manuell anwenden, wenn dies für Ihre Umgebung erforderlich ist. Beispiel: Ihre Anwendung wird in einer Web-Apps-Umgebung für PowerApps ausgeführt.
+Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktualisierungen vorgenommen. Sie können die Updates manuell anwenden, wenn dies für Ihre Umgebung erforderlich ist. Beispiel: Ihre Anwendung wird in einer Web-Apps-Umgebung für PowerApps ausgeführt. Führen Sie die folgenden Schritte aus, um Updates manuell anzuwenden:
 
 1. Öffnen Sie im **Steuerungsbereich der Web-App** die Option **Einstellungen**.
+
 1. Legen Sie die **.NET Framework-Version** auf **v4.6** fest.
+
 1. Legen Sie **Immer bereit** auf **Ein** fest.
+
 1. Fügen Sie die App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** hinzu, und legen Sie den Wert auf den Instrumentierungsschlüssel des SDK fest.
+
 1. Fügen Sie die App-Einstellung **APPINSIGHTS_PROFILERFEATURE_VERSION** hinzu, und legen Sie den Wert auf „1.0.0“ fest.
+
 1. Fügen Sie die App-Einstellung **DiagnosticServices_EXTENSION_VERSION** hinzu, und legen Sie den Wert auf „~3“ fest.
 
 ### <a name="too-many-active-profiling-sessions"></a>Zu viele aktive Profilerstellungssitzungen
 
-Zurzeit können Sie Profiler für maximal vier Azure Web-Apps und Bereitstellungsslots aktivieren, die im selben Serviceplan ausgeführt werden. Wenn Sie über mehr Web-Apps verfügen, als in einem App Service-Plan ausgeführt werden, gibt der Profiler ggf. die Meldung „Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException“ aus. Der Profiler wird für jede Web-App separat ausgeführt und versucht, für jede App eine ETW-Sitzung zu starten. Es gibt jedoch eine begrenzte Anzahl von ETW-Sitzungen, die gleichzeitig aktiv sein können. Wenn der Profiler-Webauftrag zu viele aktive Profilerstellungssitzungen meldet, verschieben Sie einige Web-Apps in einen anderen Serviceplan.
+Zurzeit können Sie Profiler für maximal vier Azure Web-Apps und Bereitstellungsslots aktivieren, die im selben Serviceplan ausgeführt werden. Wenn Sie mehr als vier Web-Apps in einem App Service-Plan ausführen, gibt Profiler möglicherweise die Meldung *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException* aus. Profiler wird für jede Web-App separat ausgeführt und versucht, für jede App eine Sitzung der Ereignisablaufverfolgung für Windows (ETW) Sitzung zu starten. Die Anzahl von ETW-Sitzungen, die gleichzeitig aktiv sein können, ist jedoch begrenzt. Wenn der Profiler-Webauftrag zu viele aktive Profilerstellungssitzungen meldet, verschieben Sie einige Web-Apps in einen anderen Serviceplan.
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Bereitstellungsfehler: Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 
@@ -112,23 +122,38 @@ Diese Parameter löschen den Ordner, der von Application Insights Profiler verwe
 
 Profiler wird als fortlaufender Webauftrag in der Web-App ausgeführt. Sie können die Web-App-Ressource im [Azure-Portal](https://portal.azure.com) öffnen. Überprüfen Sie im Bereich **WebJobs** den Status von **ApplicationInsightsProfiler**. Wenn er nicht ausgeführt wird, öffnen Sie **Protokolle**, um weitere Informationen zu erhalten.
 
-## <a name="troubleshooting-problems-with-profiler-and-wad"></a>Behandeln von Problemen mit Profiler und WAD
+## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Behandeln von Problemen mit Profiler und der Azure-Diagnose
 
-Um zu ermitteln, ob der Profiler von WAD ordnungsgemäß konfiguriert wurde, müssen Sie drei Dinge überprüfen. Erstens müssen Sie überprüfen, ob die bereitgestellten Inhalte der WAD-Konfiguration Ihren Erwartungen entsprechen. Zweitens müssen Sie überprüfen, ob WAD in der Profiler-Befehlszeile den richtigen iKey übergibt. Drittens können Sie die Profiler-Protokolldatei überprüfen, um festzustellen, ob der Profiler ausgeführt wurde, aber einen Fehler erhält. 
+Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von der Azure-Diagnose richtig konfiguriert ist: 
+1. Erstens: Überprüfen Sie, ob die bereitgestellten Inhalte der Azure-Diagnosekonfiguration Ihren Erwartungen entsprechen. 
 
-Um die Einstellungen zu überprüfen, die zum Konfigurieren von WAD verwendet wurden, müssen Sie sich beim virtuellen Computer anmelden und die Protokoll in diesem Speicherort öffnen: 
-```
-c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
-```
-Suchen Sie in dieser Datei nach der Zeichenfolge „WadCfg“, um die Einstellungen zu finden, die zum Konfigurieren von WAD an den virtuellen Computer übergeben wurden. Sie können überprüfen, ob der von der Profiler-Senke verwendete iKey richtig ist.
+1. Zweitens: Vergewissern Sie sich, dass die Azure-Diagnose in der Profiler-Befehlszeile den richtigen iKey übergibt. 
 
-Sie können auch die Befehlszeile überprüfen, die zum Starten des Profilers verwendet wird. Die folgende Datei enthält die Argumente, die zum Starten des Profilers verwendet werden.
-```
-D:\ProgramData\ApplicationInsightsProfiler\config.json
-```
-Überprüfen Sie, ob der iKey in der Profiler-Befehlszeile richtig ist. 
+1. Drittens: Prüfen Sie in der Profiler-Protokolldatei, ob Profiler ausgeführt wurde, aber einen Fehler zurückgegeben hat. 
 
-Überprüfen Sie die Protokolldatei des Profilers, die Sie im Pfad in der oben genannten config.json-Datei finden. Die Datei zeigt Debuginformationen an, die die vom Profiler verwendeten Einstellungen sowie Status- und Fehlermeldungen aus dem Profiler angeben. Wenn der Profiler ausgeführt wird, während Ihre Anwendung Anforderungen empfängt, wird die Meldung „Aktivität aus iKey erkannt“ angezeigt. Wenn die Ablaufverfolgung hochgeladen wird, wird die Meldung angezeigt, dass mit dem Hochladen der Ablaufverfolgung begonnen wurde. 
+Überprüfen der Einstellungen, die zum Konfigurieren der Azure-Diagnose verwendet wurden:
+
+1. Melden Sie sich beim virtuellen Computer (VM) an, und öffnen Sie die Protokolldatei an diesem Speicherort: 
+
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
+    ```
+
+1. Suchen Sie in der Datei nach der Zeichenfolge **WadCfg**, um die Einstellungen zu finden, die zum Konfigurieren der Azure-Diagnose an den virtuellen Computer übergeben wurden. Sie können überprüfen, ob der von der Profiler-Senke verwendete iKey richtig ist.
+
+1. Überprüfen Sie die Befehlszeile, mit der Profiler gestartet wird. Die zum Starten von Profiler verwendeten Argumente befinden sich in der folgenden Datei:
+
+    ```
+    D:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+
+1. Stellen Sie sicher, dass der iKey in der Profiler-Befehlszeile richtig ist. 
+
+1. Überprüfen Sie die Profiler-Protokolldatei anhand des Pfads in der vorherigen Datei *config.json*. Darin werden die Debuginformationen angezeigt, welche die von Profiler verwendeten Einstellungen angeben. Außerdem werden Status- und Fehlermeldungen von Profiler angezeigt.  
+
+    Wenn Profiler ausgeführt wird, während Ihre Anwendung Anforderungen empfängt, wird die folgende Meldung angezeigt: *Aktivität aus iKey erkannt*. 
+
+    Wenn die Ablaufverfolgung hochgeladen wird, wird die folgende Meldung angezeigt: *Start to upload trace* (Upload der Ablaufverfolgung starten). 
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

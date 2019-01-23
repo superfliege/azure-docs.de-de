@@ -1,60 +1,52 @@
 ---
-title: Erstellen eine Klassifizierung – Custom Vision Service
+title: Erstellen einer Klassifizierung – Custom Vision Service
 titlesuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe des Custom Vision Service eine Klassifizierung erstellen können, die Objekte in Fotos unterscheiden kann.
+description: Erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 998900e72511a95336e4a94289c794e2a8e59feb
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f6ab2d8bcf1ae02df95b0cf36eacffa90964d43e
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364245"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243252"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Erstellen einer Klassifizierung mit Custom Vision
 
-Um den Custom Vision Service zu verwenden, müssen Sie zuerst eine Klassifizierung erstellen. In diesem Dokument erfahren Sie, wie Sie mithilfe Ihres Webbrowsers eine Klassifizierung erstellen.
+Zur Verwendung des Custom Vision Service müssen Sie zuerst ein Klassifizierungsmodell erstellen. In diesem Leitfaden erfahren Sie, wie eine Klassifizierung über die Custom Vision-Website erstellt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um eine Klassifizierung zu erstellen, müssen Sie über Folgendes verfügen:
-
-- Ein gültiges [Microsoft-Konto](https://account.microsoft.com/account) oder eine Azure Active Directory-OrgID („Geschäfts-, Schul- oder Unikonto“) für die Anmeldung bei „customvision.ai“ und den Einstieg.
+- Ein gültiges [Microsoft-Konto](https://account.microsoft.com/account) oder ein Azure Active Directory (AAD)-Konto („Geschäfts-, Schul- oder Unikonto“).
 
     > [!IMPORTANT] 
-    > Die OrgID-Anmeldung für Azure AD-Benutzer (Azure Active Directory) von [nationalen Clouds](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) wird derzeit nicht unterstützt.
-
-- Eine Reihe von Bildern zum Trainieren Ihrer Klassifizierung (mit mindestens 30 Bildern pro Kategorie).
-
-- Einige Bilder zum Testen Ihrer Klassifizierung nach dem Trainieren.
-
-- Optional: Ein Azure-Abonnement, das Ihrem Microsoft-Konto oder Ihrer OrgID zugeordnet ist. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-    > [!IMPORTANT]
-    > Ohne Azure-Abonnement können Sie lediglich __eingeschränkte Testprojekte__ erstellen. Wenn Sie über ein Azure-Abonnement verfügen, werden Sie während der Projekterstellung aufgefordert, Trainings- und Vorhersageressourcen für den Custom Vision Service im [Azure-Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) zu erstellen.   
+    > Die Anmeldung für AAD-Benutzer aus [nationalen Microsoft-Clouds](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) wird derzeit nicht unterstützt.
+- Eine Reihe von Bildern zum Trainieren Ihrer Klassifizierung. Tipps zum Auswählen von Bildern finden Sie unten.
+- Optional: Ein Azure-Abonnement, das Ihrem Microsoft- oder AAD-Konto zugeordnet ist. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. Ohne Azure-Abonnement können Sie nur zwei __eingeschränkte Testprojekte__ erstellen.
 
 ## <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
-Führen Sie die folgenden Schritte aus, um ein neues Projekt zu erstellen:
+Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.ai), und wählen Sie __Sign in__ (Anmelden).
 
-1. Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.ai). Wählen Sie __Anmelden__ aus, um mit der Verwendung des Diensts zu beginnen.
+![Abbildung der Anmeldeseite](./media/browser-home.png)
 
-    ![Abbildung der Anmeldeseite](./media/getting-started-build-a-classifier/custom-vision-web-ui.png)
+Wenn Sie über ein Azure-Konto verfügen, werden Sie während der Projekterstellung aufgefordert, Trainings- und Vorhersageressourcen für den Custom Vision Service im [Azure-Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) zu erstellen.
 
-    > [!NOTE]
-    > Nach der Anmeldung beim Custom Vision Service wird Ihnen eine Liste mit Projekten angezeigt. Abgesehen von zwei „eingeschränkten Testprojekten“ für Testzwecke sind Projekte mit einer Azure-Ressource verknüpft. Wenn Sie Azure-Benutzer sind, können Sie alle Projekte sehen, die [Azure-Ressourcen](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#grant-access-to-resources) zugeordnet sind, auf die Sie Zugriff haben. 
-
-2. Um Ihr erstes Projekt zu erstellen, wählen Sie **New Project** (Neues Projekt) aus. Bei Ihrem ersten Projekt werden Sie aufgefordert, den Nutzungsbedingungen zuzustimmen. Aktivieren Sie das Kontrollkästchen, und wählen Sie dann die Schaltfläche **I agree** (Ich stimme zu) aus. Das Dialogfeld **New Project**  (Neues Projekt) wird angezeigt.
+1. Um Ihr erstes Projekt zu erstellen, wählen Sie **New Project** (Neues Projekt) aus. Das Dialogfeld **Create new project** (Neues Projekt erstellen) wird angezeigt.
 
     ![Das Dialogfeld „New Project“ enthält Felder für den Namen, eine Beschreibung und Domänen.](./media/getting-started-build-a-classifier/new-project.png)
 
-3. Geben Sie einen Namen und eine Beschreibung für das Projekt ein. Wählen Sie dann eine der verfügbaren Domänen aus. Jede Domäne optimiert die Klassifizierung für bestimmte Bildtypen, wie in der folgenden Tabelle beschrieben:
+1. Geben Sie einen Namen und eine Beschreibung für das Projekt ein. Wählen Sie dann eine Ressourcengruppe aus. Wenn Ihr angemeldetes Konto einem Azure-Konto zugeordnet ist, zeigt die Dropdownliste „Ressourcengruppe“ alle Ihre Azure-Ressourcengruppen an, die eine Custom Vision Service-Ressource enthalten. In jedem Fall können Sie in dieser Dropdownliste auch __Eingeschränkte Testversion__ auswählen.
+
+1. Wählen Sie unter __Projekttypen__ die Option __Klassifizierung__ aus. Wählen Sie unter __Klassifizierungstypen__ je nach Ihrem Anwendungsfall entweder **Multilabel** (Mehrere Bezeichnungen) oder **Multiclass** (Mehrere Klassen) aus. Die Klassifizierung mit mehreren Bezeichnungen wendet eine beliebige Anzahl Ihrer Tags (null oder mehr) auf ein Bild an, während die Klassifizierung mit mehreren Klassen Bilder in einzelne Kategorien sortiert (jedes übermittelte Bild wird dem wahrscheinlichsten Tag zugeteilt). Sie können den Klassifizierungstyp später bei Bedarf ändern.
+
+1. Wählen Sie dann eine der verfügbaren Domänen aus. Jede Domäne optimiert die Klassifizierung für bestimmte Bildtypen, wie in der folgenden Tabelle beschrieben. Sie können die Domäne später bei Bedarf ändern.
 
     |Domäne|Zweck|
     |---|---|
@@ -64,70 +56,80 @@ Führen Sie die folgenden Schritte aus, um ein neues Projekt zu erstellen:
     |__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
     |__Adult (Erwachsen)__|Optimiert für die bessere Unterscheidung zwischen nicht jugendfreien Inhalten und jugendfreien Inhalten. Wenn Sie also beispielsweise Bilder von Personen in Badebekleidung blockieren möchten, können Sie mithilfe dieser Domäne eine entsprechende benutzerdefinierte Klassifizierung erstellen.|
     |__Kompaktdomänen__| Für die Bedingungen der Echtzeitklassifizierung auf Mobilgeräten optimiert. Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung exportiert werden.|
+    
+1. Wählen Sie schließlich __Create Project__ (Projekt erstellen) aus.
 
-    Sie können die Domäne bei Bedarf später ändern.
+## <a name="choose-training-images"></a>Auswählen von Trainingsbildern
 
-4. Wählen Sie eine Ressourcengruppe aus. Im Ressourcengruppen-Dropdownfeld werden alle Ihre Azure-Ressourcengruppen angezeigt, die eine Custom Vision Service-Ressource enthalten. Sie können sich darüber hinaus entscheiden, eine __eingeschränkte Testversion__ zu erstellen. Der Eintrag für die eingeschränkte Testversion ist die einzige Ressourcengruppe, die für einen Benutzer ohne Azure-Abonnement zur Wahl steht.
+Es wird empfohlen, im ersten Trainingssatz mindestens 30 Bilder pro Tag zu verwenden. Sie sollten auch einige zusätzliche Bilder sammeln, um Ihr Modell zu testen, nachdem es trainiert wurde.
 
-    Um das Projekt zu erstellen, wählen Sie __Projekt erstellen__ aus.
+Verwenden Sie zum effektiven Trainieren Ihres Modells Bilder mit optischer Vielfalt. Wählen Sie Bilder aus, die sich nach folgenden Aspekten unterscheiden:
+* Kamerawinkel
+* Belichtung
+* background
+* Visueller Stil
+* Einzelne/gruppierte Motive
+* size
+* type
+
+Stellen Sie außerdem sicher, dass alle Ihre Trainingsbilder die folgenden Kriterien erfüllen:
+* JPG-, PNG- oder BMP-Format
+* Höchstens 6 MB groß (4 MB für Vorhersagebilder)
+* Mindestens 256 Pixel an der kürzesten Seite; kürzere Bilder werden von Custom Vision Service automatisch hochskaliert.
 
 ## <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
 
-1. Verwenden Sie zum Hinzufügen von Bildern zur Klassifizierung die Schaltfläche __Bilder hinzufügen__, und wählen Sie dann __Lokale Dateien durchsuchen__ aus. Wählen Sie __Öffnen__ aus, um zur Kategorisierung zu gelangen.
+In diesem Abschnitt laden Sie Bilder hoch und kennzeichnen diese manuell, um die Klassifizierung zu trainieren. 
 
-    > [!TIP]
-    > Nach dem Auswählen von Bildern müssen Sie diese kategorisieren. Die Kategorie wird auf die Gruppe von Bildern angewendet, die Sie zum Hochladen ausgewählt haben, daher kann es einfacher sein, Bilder anhand der Kategorien auszuwählen, die Sie verwenden möchten. Sie können die Kategorie für ausgewählte Bilder auch nach dem Kategorisieren und Hochladen ändern.
-
-    > [!TIP]
-    > Laden Sie Bilder hoch, die sich in Kamerablickwinkeln, Beleuchtung, Hintergrund, Typen, Stilen, Gruppen, der Größe usw. unterscheiden. Verwenden Sie eine Vielzahl unterschiedlicher Typen von Fotos, um sicherzustellen, dass Ihre Klassifizierung nicht einseitig beeinflusst wird und gut generalisieren kann.
-
-    Der Custom Vision Service akzeptiert Trainingsbilder in den Formaten JPG, PNG und BMP mit bis zu 6 MB pro Bild. (Vorhersagebilder dürfen bis zu 4 MB pro Bild groß sein.) Wir empfehlen, dass Bilder an der kürzesten Seite mindestens 256 Pixel messen. Bilder, die an der kürzesten Seite kleiner als 256 Pixel sind, werden vom Custom Vision Service hochskaliert.
+1. Klicken Sie zum Hinzufügen von Bildern auf die Schaltfläche __Bilder hinzufügen__, und wählen Sie dann __Lokale Dateien durchsuchen__ aus. Wählen Sie __Öffnen__ aus, um zur Kategorisierung zu gelangen. Ihre Tag-Auswahl wird auf die gesamte Gruppe von Bildern angewendet, die Sie zum Hochladen ausgewählt. Daher ist es einfacher, Bildern entsprechend den gewünschten Tags in separaten Gruppen hochzuladen. Sie können die Kategorie für einzelne Bilder auch nach dem Hochladen ändern.
 
     ![Das Steuerelement zum Hinzufügen von Bildern wird oben links und als Schaltfläche unten in der Mitte angezeigt.](./media/getting-started-build-a-classifier/add-images01.png)
 
-    >[!NOTE] 
-    > Die REST-API kann zum Laden von Trainingsbildern über URLs verwendet werden.
 
-2. Zum Festlegen der Kategorie geben Sie Text im Feld __My Tags__ (Meine Kategorien) ein und verwenden dann die __+__-Schaltfläche. Um die Bilder hochzuladen und sie zu kategorisieren, verwenden Sie die Schaltfläche __Upload [number] files__ ([Anzahl] Dateien hochladen). Sie können den Bildern mehrere Kategorien hinzufügen. 
-
-    > [!NOTE]
-    > Die für das Hochladen erforderliche Zeit unterscheidet sich je nach Anzahl und Größe der ausgewählten Bilder.
+1. Zum Erstellen eines Tags geben Sie Text in das Feld __My Tags__ (Meine Tags) ein, und drücken Sie die EINGABETASTE. Wenn das Tag bereits vorhanden ist, wird es in einem Dropdownmenü angezeigt. In einem Projekt mit mehreren Bezeichnungen können Sie Ihren Bildern mehrere Tags hinzufügen. In einem Projekt mit mehreren Klassen können Sie jedoch nur eins hinzufügen. Verwenden Sie die Schaltfläche __Upload [number] files ([Anzahl] Dateien hochladen)__, um den Upload der Bilder abzuschließen. 
 
     ![Bild der Seite zum Hochladen und Kategorisieren](./media/getting-started-build-a-classifier/add-images03.png)
 
-3. Wählen Sie __Fertig__ aus, nachdem die Bilder hochgeladen wurden.
+1. Wählen Sie __Fertig__ aus, nachdem die Bilder hochgeladen wurden.
 
     ![Die Statusleiste zeigt alle Aufgaben als abgeschlossen an.](./media/getting-started-build-a-classifier/add-images04.png)
 
-4. Um einen weiteren Satz Bilder hochzuladen, kehren Sie zu Schritt 1 zurück. Wenn Sie beispielsweise zwischen Hunden und Ponys unterscheiden möchten, laden Sie Bilder von Ponys hoch, und kategorisieren Sie sie.
+Zum Hochladen eines weiteren Bildersatzes kehren Sie zum Anfang dieses Abschnitts zurück und wiederholen die Schritte. Möglicherweise müssen Sie in Ihrem Projekt irgendwann _Negativbeispiele_ hinzufügen, damit Ihre Klassifizierung genauer wird. Negativbeispiele sind jene, die mit keinen der anderen Tags übereinstimmen. Wenn Sie diese Bilder hochladen, wenden Sie die spezielle **Negativ**-Bezeichnung auf sie an.
 
-## <a name="train-and-evaluate-the-classifier"></a>Trainieren und Bewerten der Klassifizierung
+## <a name="train-the-classifier"></a>Trainieren des Klassifizierers
 
-Um die Klassifizierung zu trainieren, wählen Sie die Schaltfläche **Trainieren** aus.
+Um die Klassifizierung zu trainieren, wählen Sie die Schaltfläche **Trainieren** aus. Die Klassifizierung verwendet alle aktuellen Bilder zum Erstellen eines Modells, das die visuellen Merkmale der einzelnen Tags identifiziert.
 
-![Die Trainieren-Schaltfläche wird im rechten oberen Bereich des Browserfensters angezeigt.](./media/getting-started-build-a-classifier/train01.png)
+![Die Schaltfläche „Trainieren“ oben rechts auf der Header-Symbolleiste der Webseite](./media/getting-started-build-a-classifier/train01.png)
 
-Das Trainieren der Klassifizierung nimmt nur einige Minuten in Anspruch. Während dieser Zeit werden Informationen über den Trainingsvorgang angezeigt.
+Der Trainingsprozess sollte nur wenige Minuten dauern. Während dieser Zeit werden auf der Registerkarte **Leistung** Informationen über den Trainingsprozess angezeigt.
 
-![Die Trainieren-Schaltfläche wird im rechten oberen Bereich des Browserfensters angezeigt.](./media/getting-started-build-a-classifier/train02.png)
+![Das Browserfenster mit einem Trainingsdialogfeld im Hauptteil](./media/getting-started-build-a-classifier/train02.png)
 
-Nach dem Training wird die __Leistung__ angezeigt. Die Präzisions- und Erinnerungsanzeigen informieren Sie auf der Grundlage automatischer Tests darüber, wie gut Ihre Klassifizierung ist. Custom Vision Service verwendet die Bilder, die Sie zum Training gesendet haben, um diese Zahlen mithilfe eines Verfahrens namens [k-fache Kreuzvalidierung](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) zu berechnen.
+## <a name="evaluate-the-classifier"></a>Bewerten der Klassifizierung
+
+Nach Abschluss des Trainings wird die Leistung des Modells geschätzt und angezeigt. Custom Vision Service verwendet die Bilder, die Sie zum Training gesendet haben, um Genauigkeit und Trefferquote mithilfe eines Verfahrens namens [k-fache Kreuzvalidierung](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) zu berechnen. Genauigkeit und Trefferquote sind zwei unterschiedliche Messungen der Wirksamkeit einer Klassifizierung:
+
+- Die **Genauigkeit** gibt den Anteil der richtig identifizierten Klassifizierungen an. Beispiel: Wenn das Modell 100 Bilder als Hunde identifiziert hat und 99 davon tatsächlich Hunde zeigten, beträgt die Genauigkeit 99 %.
+- Die **Trefferquote** gibt den Anteil der tatsächlichen Klassifizierungen an, die richtig identifiziert wurden. Beispiel: Wenn tatsächlich 100 Bilder von Äpfeln vorhanden sind und das Modell 80 davon als Äpfel identifiziert, beträgt die Trefferquote 80 %.
 
 ![Die Trainingsergebnisse zeigen die Gesamtgenauigkeit und die Erinnerung für jede Kategorie der Klassifizierung an.](./media/getting-started-build-a-classifier/train03.png)
 
-> [!NOTE] 
-> Jedes Mal, wenn Sie die Schaltfläche **Train** (Trainieren) auswählen, erstellen Sie eine neue Iteration Ihrer Klassifizierung. Auf der Registerkarte **Performance** (Leistung) können Sie alle Ihre alten Iterationen anzeigen und eventuell veraltete Iterationen löschen. Beim Löschen einer Iteration werden auch alle Bilder gelöscht, die dieser eindeutig zugeordnet sind.
+### <a name="probability-threshold"></a>Wahrscheinlichkeitsschwellenwert
 
-Die Klassifizierung verwendet alle Bilder, um ein Modell zu erstellen, das jede Kategorie identifiziert. Um die Qualität des Modells zu testen, probiert die Klassifizierung jedes Bild mit dem Modell aus, um zu ermitteln, was das Modell findet.
+Beachten Sie den Schieberegler für den **Wahrscheinlichkeitsschwellenwert** im linken Bereich der Registerkarte **Leistung**. Dies ist der Schwellenwert für eine vorhergesagte Wahrscheinlichkeit, die bei der Berechnung von Genauigkeit und Trefferquote als richtig gelten soll.
 
-Die Qualität der Klassifizierungsergebnisse wird angezeigt.
+Das Interpretieren von Vorhersageaufrufen mit einem hohen Wahrscheinlichkeitsschwellenwert gibt tendenziell Ergebnisse mit hoher Genauigkeit zurück. Dies geht allerdings zu Lasten der Trefferquote (die gefunden Klassifizierungen sind richtig, viele wurden jedoch nicht gefunden). Ein niedriger Wahrscheinlichkeitsschwellenwert bewirkt das Gegenteil (die meisten der tatsächlichen Klassifizierungen wurden gefunden, aber der Satz enthält falsch positive Ergebnisse). In diesem Sinne empfiehlt es sich, den Wahrscheinlichkeitsschwellenwert gemäß den spezifischen Anforderungen Ihres Projekts festzulegen. Später sollten Sie auf Clients den gleichen Wahrscheinlichkeitsschwellenwert als Filter festlegen, wenn Vorhersageergebnisse vom Modell empfangen werden.
 
-|Begriff|Definition|
-|---|---|
-|__Genauigkeit__|Wenn Sie ein Bild klassifizieren, wie hoch ist die Wahrscheinlichkeit, dass Ihre Klassifizierung das Bild richtig klassifiziert? Von allen Bildern, die zum Trainieren der Klassifizierung verwendet wurden (Hunde und Ponys), welchen Prozentsatz hat das Modell richtig erkannt? 99 richtige Kategorien aus 100 Bildern ergeben eine Genauigkeit von 99 Prozent.|
-|__Recall (Trefferquote)__|Wie viele der Bilder, die korrekt klassifiziert werden sollten, wurden von Ihrer Klassifizierung korrekt identifiziert? Eine Trefferquote von 100 % bedeutet, dass in 38 Hundebildern, die zum Trainieren der Klassifizierung verwendet wurden, 38 Hunde gefunden wurden.|
+## <a name="manage-training-iterations"></a>Verwalten von Trainingsiterationen
+
+Bei jedem Trainingsvorgang für Ihre Klassifizierung erstellen Sie eine neue _Iteration_ mit eigenen aktualisierten Leistungsmetriken. Sie können alle Ihre Iterationen im linken Bereich der Registerkarte **Leistung** anzeigen. Wenn Sie eine auswählen, haben Sie die Möglichkeit, sie durch Klicken auf die Schaltfläche **Standard** oben als _Standarditeration_ festzulegen. Die _Standarditeration_ ist das Modell, das standardmäßig verwendet wird, wenn Sie es über die Vorhersage-API abfragen (z.B. in einer App). Wenn Sie die _Standarditeration_ nicht aktualisieren, können Sie Ihr Modell ohne Auswirkungen auf das aktuelle Verhalten Ihrer App weiter trainieren. Sobald Sie mit dem verbesserten Modell zufrieden sind, können Sie die Standarditeration aktualisieren.
+
+Im linken Bereich befindet sich auch die Schaltfläche **Löschen**, mit der Sie veraltete Iterationen löschen können. Beim Löschen einer Iteration werden auch alle Bilder gelöscht, die dieser eindeutig zugeordnet sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Testen und erneutes Trainieren des Modells](test-your-model.md)
+In diesem Handbuch haben Sie erfahren, wie ein Bildklassifizierungsmodell mithilfe der Custom Vision-Website erstellt und trainiert wird. Informieren Sie sich als Nächstes über den iterativen Prozess zur Verbesserung Ihres Modells.
+
+[Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
 

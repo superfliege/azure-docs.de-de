@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 01/12/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 463ab617051bf97bb3b1c38ed431c4b6936a9c90
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5abc13a39db3f1061e3df76857645d8075feade5
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118692"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245751"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -133,7 +133,7 @@ Wenn Sie in C#, Node.js oder Java entwickeln, ist für Ihr Modul die Verwendung 
 
 ### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>Einrichten des IoT Edge-Simulators für eine IoT Edge-Projektmappe
 
-Auf dem Entwicklungscomputer brauchen Sie zum Ausführen der IoT Edge-Projektmappe nicht den IoT Edge-Sicherheits-Daemon zu installieren, sondern können den IoT Edge-Simulator starten.
+Auf dem Entwicklungscomputer müssen Sie zum Ausführen der IoT Edge-Projektmappe nicht den IoT Edge-Sicherheits-Daemon installieren, sondern können den IoT Edge-Simulator starten.
 
 1. Klicken Sie im Geräte-Explorer auf der linken Seite mit der rechten Maustaste auf Ihre IoT Edge-Geräte-ID, und wählen Sie dann **IoT Edge Simulator einrichten** aus, um den Simulator ohne die Geräteverbindungszeichenfolge zu starten.
 1. Sie können sehen, dass der IoT Edge-Simulator erfolgreich eingerichtet wurde, indem Sie die Verlaufsdetails im integrierten Terminal lesen.
@@ -160,12 +160,12 @@ Um den Simulator einzurichten und zu starten, führen Sie den Befehl **Azure IoT
        dotnet build
        ```
 
-     - Öffnen Sie die Datei `program.cs`, und fügen Sie einen Haltepunkt hinzu.
+     - Öffnen Sie die Datei `Program.cs`, und fügen Sie einen Haltepunkt hinzu.
 
      - Navigieren Sie zur Visual Studio Code-Debugansicht, indem Sie **Ansicht > Debuggen** auswählen. Wählen Sie in der Dropdownliste die Debugkonfiguration ***&lt;Name Ihres Moduls&gt;* Local Debug (.NET Core)** aus.
 
         > [!NOTE]
-        > Wenn Ihr .Net Core-`TargetFramework` nicht mit Ihrem Programmpfad in `launch.json` übereinstimmt, müssen Sie den Programmpfad in `launch.json` manuell aktualisieren, damit er zum `TargetFramework` in Ihrer CSPROJ-Datei passt, so dass Visual Studio Code dieses Programm erfolgreich starten kann.
+        > Wenn Ihr .Net Core-`TargetFramework` nicht mit Ihrem Programmpfad in `launch.json` übereinstimmt, müssen Sie den Programpfad in `launch.json` manuell aktualisieren, damit er zum `TargetFramework` in Ihrer CSPROJ-Datei passt, so dass Visual Studio Code dieses Programm erfolgreich starten kann.
 
    - **Node.js**
      - Führen Sie im integrierten Terminal von Visual Studio Code einen Verzeichniswechsel zum Ordner ***&lt;Name Ihres Moduls&gt;*** durch, und führen Sie dann den folgenden Befehl aus, um Node-Pakete zu installieren.
@@ -222,7 +222,7 @@ Auf dem Entwicklungscomputer brauchen Sie zum Ausführen der IoT Edge-Projektmap
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Erstellen und Ausführen eines Containers zum Debuggen und Debuggen im Modus „Anfügen“
 
-1. Öffnen Sie Ihre Moduldatei (`program.cs`, `app.js`, `App.java` oder `<your module name>.cs`), und fügen Sie einen Haltepunkt hinzu.
+1. Öffnen Sie Ihre Moduldatei (`Program.cs`, `app.js`, `App.java` oder `<your module name>.cs`), und fügen Sie einen Haltepunkt hinzu.
 
 1. Klicken Sie in der Visual Studio Code-Exploreransicht mit der rechten Maustaste auf die `deployment.debug.template.json`-Datei für Ihre Projektmappe, und wählen Sie dann **IoT Edge-Projektmappe im Simulator erstellen und ausführen** aus. Im gleichen Fenster werden die Protokolle aller Modulcontainer angezeigt. Alternativ können Sie zur Docker-Ansicht navigieren, um den Containerstatus anzuzeigen.
 
@@ -241,17 +241,17 @@ Auf dem Entwicklungscomputer brauchen Sie zum Ausführen der IoT Edge-Projektmap
 >
 > Für Module, die in C# geschrieben wurden, einschließlich Azure Functions, basiert dieses Beispiel auf der Debugversion von `Dockerfile.amd64.debug`, die den .NET Core-Befehlszeilendebugger (VSDBG) beim Erstellen in Ihr Containerimage einbindet. Nach dem Debuggen Ihrer C#-Module sollten Sie direkt das Dockerfile ohne VSDBG für produktionsbereite IoT Edge-Module verwenden.
 
-## <a name="debug-a-module-with-iot-edge-runtime"></a>Debuggen eines Moduls mit IoT Edge-Runtime
+## <a name="debug-a-module-with-the-iot-edge-runtime"></a>Debuggen eines Moduls mit der IoT Edge-Runtime
 
 In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Containertypen. Verwenden Sie eine der Dateien mit der Erweiterung **.debug**, um Ihr Modul zum Testen zu erstellen.
 
-Beim Debuggen von Modulen mit IoT Edge-Runtime werden Ihre Module auf der obersten Ebene von IoT Edge-Runtime ausgeführt. Das IoT Edge-Gerät und Ihr Visual Studio Code können sich auf demselben Computer befinden. Öfter aber befinden sie sich auf verschiedenen Computern (Visual Studio Code ist auf dem Entwicklungscomputer installiert, und IoT Edge-Runtime und Module werden auf einem anderen physischen Computer ausgeführt). Die folgenden Schritte für Ihre Debugsitzung müssen in Visual Studio Code ausgeführt werden.
+Beim Debuggen von Modulen über diese Methode werden Ihre Module auf der obersten Ebene der IoT Edge-Runtime ausgeführt. Das IoT Edge-Gerät und Ihr Visual Studio Code können sich auf demselben Computer befinden. Meist befindet sich jedoch Visual Studio Code auf dem Entwicklungscomputer, und die IoT Edge-Runtime und die Module werden auf einem anderen physischen Computer ausgeführt. Für das Debuggen in Visual Studio Code müssen Sie folgende Aktionen ausführen:
 
-- Richten Sie Ihr IoT Edge-Gerät ein, erstellen Sie ein oder mehrere IoT Edge-Modul(e) mit der Dockerfile **.debug**, und stellen Sie sie auf dem IoT Edge-Gerät bereit. 
-- Machen Sie die IP-Adresse und den Port des Moduls für den anzufügenden Debugger verfügbar.
-- Aktualisieren Sie die Datei `launch.json`, damit Visual Studio Code an den Prozess im Container des Remotecomputers angefügt werden kann.
+- Richten Sie Ihr IoT Edge-Gerät ein, erstellen Sie IoT Edge-Module mit der Dockerfile **.debug**, und stellen Sie sie dann auf dem IoT Edge-Gerät bereit.
+- Machen Sie die IP-Adresse und den Port des Moduls verfügbar, damit der Debugger angefügt werden kann.
+- Aktualisieren Sie die Datei `launch.json`, damit Visual Studio Code an den Prozess im Container des Remotecomputers angefügt werden kann. Diese Datei befindet sich in Ihrem Arbeitsbereich im Ordner `.vscode` und wird bei jedem Hinzufügen ein neues Moduls, das Debuggen unterstützt, aktualisiert.
 
-### <a name="build-and-deploy-your-module-and-deploy-to-iot-edge-device"></a>Erstellen und Bereitstellen Ihres Moduls auf dem IoT Edge-Gerät
+### <a name="build-and-deploy-your-module-to-the-iot-edge-device"></a>Erstellen und Bereitstellen Ihres Moduls auf dem IoT Edge-Gerät
 
 1. Öffnen Sie in Visual Studio Code die `deployment.debug.template.json`-Datei, die die Debugversion Ihres Modulimages mit den korrekt festgelegten Werten für `createOptions` enthält.
 
@@ -292,36 +292,57 @@ Beim Debuggen von Modulen mit IoT Edge-Runtime werden Ihre Module auf der oberst
    1. Wählen Sie die `deployment.debug.template.json`-Datei für Ihre Projektmappe aus.
 
 1. Führen Sie im Abschnitt **Azure IoT Hub-Geräte** der Visual Studio Code-Exploreransicht Folgendes aus:
-   1. Klicken Sie mit der rechten Maustaste auf eine IoT Edge-Geräte-ID, und wählen Sie dann **Bereitstellung für einzelnes Gerät erstellen** aus.
+   1. Klicken Sie mit der rechten Maustaste auf eine IoT Edge-Geräte-ID, und wählen Sie dann **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen) aus.
+
+      > [!TIP]
+      > Vergewissern Sie sich, dass es sich bei dem ausgewählten Gerät um ein IoT Edge-Gerät handelt. Wählen Sie dazu das Gerät aus, um die Liste mit den Modulen zu erweitern, und vergewissern Sie sich, dass **$edgeHub** und **$edgeAgent** vorhanden sind. Jedes IoT Edge-Gerät verfügt über diese beiden Module.
 
    1. Navigieren Sie zum Ordner **config** Ihrer Projektmappe, wählen Sie die Datei `deployment.debug.amd64.json` und dann **Edge-Bereitstellungsmanifest auswählen** aus.
 
 Sie sehen nun, dass die Bereitstellung erfolgreich mit einer Bereitstellungs-ID im integrierten Terminal erstellt wurde.
 
-Sie können Ihren Containerstatus durch Ausführen des Befehls `docker ps` im Terminal überprüfen. Wenn Ihr Visual Studio Code und IoT Edge-Runtime auf demselben Computer ausgeführt werden, können Sie den Status auch in der Docker-Ansicht von Visual Studio Code überprüfen.
+Sie können Ihren Containerstatus durch Ausführen des Befehls `docker ps` im Terminal überprüfen. Wenn Visual Studio Code und Ihre IoT Edge-Runtime auf demselben Computer ausgeführt werden, können Sie den Status auch in der Docker-Ansicht von Visual Studio Code überprüfen.
 
-### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger-to-attach"></a>Verfügbarmachen der IP-Adresse und des Modulports für den anzufügenden Debugger
+### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>Verfügbarmachen der IP-Adresse und des Ports des Moduls für den Debugger
 
-Wenn Ihre Module auf demselben Computer wie Ihr Visual Studio Code ausgeführt werden. Sie verwenden „localhost“ zum Anfügen des Containers und haben in der Dockerfile **.debug**, im Modulcontainer „CreateOptions“ und in `launch.json` bereits die richtigen Porteinstellungen festgelegt. Sie können diesen Abschnitt überspringen. Wenn Ihre Module und Visual Studio Code auf separaten Computern ausgeführt werden, führen Sie die nachstehenden Schritte für jede Sprache aus.
+Sie können diesen Abschnitt überspringen, wenn Ihre Module auf demselben Computer wie Visual Studio Code ausgeführt werden, da Sie zum Anfügen an den Container localhost nutzen und in der Dockerfile **.debug**, den `createOptions`-Einstellungen für den Container des Moduls und der Datei `launch.json` bereits die richtigen Porteinstellungen vorliegen. Wenn Ihre Module und Visual Studio Code auf unterschiedlichen Computern ausgeführt werden, führen Sie die Schritte für Ihre Programmiersprache aus.
 
-  - **C#, C#-Funktion**: [Konfigurieren Sie den SSH-Kanal auf Ihrem Entwicklungscomputer und IoT Edge-Gerät](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes), und bearbeiten Sie die anzufügende `launch.json`-Datei.
-  - **Node.js**: Stellen Sie sicher, dass das Modul zum Anfügen von Debuggern bereit ist und dass auf den Port "9229" des Computers mit der zu debuggenden Komponente von außen zugegriffen werden kann. Sie können dies überprüfen, indem Sie [http://%3cdebuggee-machine-IP%3e:9229/json]http://<IP-Adresse des Computers mit der zu debuggenden Komponente>:9229/json auf dem Debuggercomputer öffnen. Diese URL sollte Informationen zu der Datei „Node.js“ zeigen, die debuggt werden soll. Öffnen Sie dann auf dem Debuggercomputer Visual Studio Code, und bearbeiten Sie die Datei `launch.json` so, dass der Adresswert des Profils „<Modulname> Remotedebug (Node.js)“ (oder des Profils „<Modulname> Remotedebug (Node.js in Windows Container)“, wenn das Modul als Windows-Container ausgeführt wird), die IP-Adresse des Computers mit der zu debuggenden Komponente ist.
-  - **Java**: Erstellen Sie einen SSH-Tunnel zum Edge-Gerät, indem Sie `ssh -f <username>@<edgedevicehost> -L 5005:127.0.0.1:5005 -N` ausführen und dann die anzufügende Datei `launch.json` bearbeiten. Weitere Informationen zu diesen Einstellungen finden Sie [hier](https://code.visualstudio.com/docs/java/java-debugging). 
-  - **Python**: Ändern Sie im Code `ptvsd.enable_attach(('0.0.0.0', 5678))` die Zeichenfolge" 0.0.0.0" in die IP-Adresse des IoT Edge-Geräts. Anschließend müssen Sie Ihre IoT Edge-Module erneut erstellen, pushen und bereitstellen. Aktualisieren Sie in `launch.json` auf Ihrem Entwicklungscomputer `"host"` `"localhost"`, und ändern Sie `"localhost"` in die öffentliche IP-Adresse Ihres IoT Edge-Remotegeräts.
+- **C#, einschließlich Azure Functions**
 
+  [Konfigurieren Sie den SSH-Kanal auf Ihrem Entwicklungscomputer und IoT Edge-Gerät](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes), und bearbeiten Sie dann die anzufügende Datei `launch.json`.
+
+- **Node.js**
+
+  - Stellen Sie sicher, dass das Modul auf dem zu debuggenden Computer ausgeführt wird und für die anzufügenden Debugger bereit ist und dass auf Port 9229 extern zugegriffen werden kann. Sie können dies überprüfen, indem Sie `http://<target-machine-IP>:9229/json` auf dem Debuggercomputer öffnen. Diese URL sollte Informationen zum Node.js-Modul zeigen, das debuggt werden soll.
+  
+  - Öffnen Sie auf dem Entwicklungscomputer Visual Studio Code, und bearbeiten Sie die Datei `launch.json` so, dass der Adresswert des Profils ***&lt;Modulname&gt;* Remotedebug (Node.js)** (oder des Profils ***&lt;Modulname&gt;* Remotedebug (Node.js in Windows-Container)**, wenn das Modul als Windows-Container ausgeführt wird) die IP-Adresse des zu debuggenden Computers ist.
+
+- **Java**
+
+  - Erstellen Sie einen SSH-Tunnel zu dem zu debuggenden Computer, indem Sie `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` ausführen.
+  
+  - Öffnen Sie auf dem Entwicklungscomputer Visual Studio Code, und bearbeiten Sie das Profil ***&lt;Modulname&gt;* Remotedebugging (Java)** in `launch.json`, damit Sie es an den Zielcomputer anfügen können. Weitere Informationen zum Bearbeiten von `launch.json` und zum Debuggen von Java mit Visual Studio Code finden Sie im Abschnitt zum [Konfigurieren des Debuggers](https://code.visualstudio.com/docs/java/java-debugging#_configuration).
+
+- **Python**
+
+  - Stellen Sie sicher, dass auf dem zu debuggenden Computer Port 5678 geöffnet und zugänglich ist.
+
+  - Ändern Sie im Code `ptvsd.enable_attach(('0.0.0.0', 5678))`, den Sie zuvor in `main.py` eingefügt haben, **0.0.0.0** in die IP-Adresse des zu debuggenden Computers. Erstellen Sie Ihre IoT Edge-Module erneut, pushen Sie sie, und stellen Sie sie bereit.
+
+  - Öffnen Sie auf dem Entwicklungscomputer Visual Studio Code, und bearbeiten Sie `launch.json` so, dass für den Wert `host` des Profils ***&lt;Modulname&gt;* Remotedebugging (Python)** die IP-Adresse des Zielcomputers anstelle von `localhost` verwendet wird.
 
 ### <a name="debug-your-module"></a>Debuggen Ihres Moduls
-
-Visual Studio Code speichert die Konfigurationsinformationen für das Debuggen in einer Datei `launch.json`, die sich in einem Ordner `.vscode` in Ihrem Arbeitsbereich befindet. Die Datei `launch.json` wurde beim Erstellen einer neuen IoT Edge-Lösung generiert. Sie wird jedes Mal aktualisiert, wenn Sie ein neues Modul hinzufügen, für das Debuggen unterstützt wird.
 
 1. Wählen Sie in der Visual Studio Code-Debugansicht die Debugkonfigurationsdatei für Ihr Modul aus. Der Name der Debugoption sollte ähnlich lauten wie ***&lt;Name Ihres Moduls&gt;*-Remotedebuggen**
 
 1. Öffnen Sie die Moduldatei für Ihre Entwicklungssprache, und fügen Sie einen Haltepunkt hinzu:
-   - **C#, C#-Funktion**: Öffnen Sie die Datei `Program.cs`, und fügen Sie einen Haltepunkt hinzu.
-   - **Node.js**: Öffnen Sie die Datei `app.js`, und fügen Sie einen Haltepunkt hinzu.
-   - **Java**: Öffnen Sie die Datei `App.java`, und fügen Sie einen Haltepunkt hinzu.
-   - **Python**: Öffnen Sie `main.py`, und fügen Sie einen Haltepunkt in der Rückrufmethode hinzu, der Sie die Zeile `ptvsd.break_into_debugger()` hinzugefügt hatten.
-   - **C**: Öffnen Sie die Datei `main.c`, und fügen Sie einen Haltepunkt hinzu.
+
+   - **Azure-Funktion (C#):** Fügen Sie der Datei `<your module name>.cs` Ihren Breakpoint hinzu.
+   - **C#**: Fügen Sie der Datei `Program.cs` Ihren Breakpoint hinzu.
+   - **Node.js**: Fügen Sie der Datei `app.js` Ihren Breakpoint hinzu.
+   - **Java**: Fügen Sie der Datei `App.java` Ihren Breakpoint hinzu.
+   - **Python**: Fügen Sie der Datei `main.py` Ihren Breakpoint in der Rückrufmethode hinzu, der Sie die Zeile `ptvsd.break_into_debugger()` hinzugefügt hatten.
+   - **C**: Fügen Sie der Datei `main.c` Ihren Breakpoint hinzu.
 
 1. Wählen Sie **Debuggen starten** oder **F5** aus. Wählen Sie den Prozess zum Anfügen aus.
 
