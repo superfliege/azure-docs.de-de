@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 480edbb508b875d53d972e9ac93fd4d119c7e54a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ca266df563cb7e50463548dd0e786cec8e886ec4
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119661"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359696"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -208,7 +208,7 @@ Die Warnungsregel „X von Y Standorten“ ist in der [neuen einheitlichen Warnu
 ![Erstellen einer Erfahrung](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
 > [!NOTE]
->  Mit den [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), müssen der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit **Aktionsgruppen** in der Warnungserfahrung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen.
+>  Mit den [neuen einheitlichen Warnungen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), **müssen** der Schweregrad der Warnungsregel sowie die Benachrichtigungseinstellungen mit [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) in der Warnungserfahrung konfiguriert werden. Ohne die folgenden Schritten erhalten Sie nur portalinterne Benachrichtigungen.
 
 1. Nach dem Speichern des Verfügbarkeitstests, klicken Sie auf der Registerkarte „Details“ auf die Auslassungspunkte neben dem Test, den Sie gerade erstellt haben. Klicken Sie auf „Warnung bearbeiten“.
 ![Nach dem Speichern bearbeiten](./media/monitor-web-app-availability/9editalert.png)
@@ -295,7 +295,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 * *Die Website sieht korrekt aus, aber ich sehe Testfehler. Warum warnt mich Application Insights?*
 
-    * Hat Ihr Test „Abhängige Anforderungen analysieren“ aktiviert? Dies führt zu einer strengen Überprüfung von Ressourcen wie Skripts, Bildern usw. Diese Typen von Fehlern machen sich in einem Browser möglicherweise nicht bemerkbar.  Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
+    * Hat Ihr Test „Abhängige Anforderungen analysieren“ aktiviert? Dies führt zu einer strengen Überprüfung von Ressourcen wie Skripts, Bildern usw. Diese Typen von Fehlern machen sich in einem Browser möglicherweise nicht bemerkbar. Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
 
     * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures" (Wiederholungen bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
 
@@ -325,7 +325,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 * *Kann ich Code aus meinem Webtest aufrufen?*
 
-     Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
+    Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
 
 * *Wird HTTPS unterstützt?*
 

@@ -12,29 +12,31 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2513511326ff5574e8dcf3eedfde977cf9877efd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: f816086293d663e141b2d6efe5791cc8e37eba36
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082345"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358591"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Erstellen von Profilen für Azure Service Fabric-Liveanwendungen mit Application Insights
 
 Application Insights Profiler kann auch für diese Dienste bereitgestellt werden:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric](profiler-cloudservice.md ?toc=/azure/azure-monitor/toc.json)
-* [Virtuelle Computer](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-
+* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Dokumentation zu virtuellen Computern](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="set-up-the-environment-deployment-definition"></a>Einrichten der Definition für die Umgebungsbereitstellung
 
-Application Insights Profiler ist in der Microsoft Azure-Diagnose enthalten. Die Erweiterung „Microsoft Azure-Diagnose“ kann mithilfe einer Azure RM-Vorlage für Ihren Service Fabric-Cluster installiert werden. Hier finden Sie eine Beispielvorlage: [**Vorlage zur Installation von Microsoft Azure-Diagnose auf einem Service Fabric-Cluster.**](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
+Application Insights Profiler ist in Azure-Diagnose enthalten. Sie können die Azure-Diagnoseerweiterung mithilfe einer Azure Resource Manager-Vorlage für Ihren Service Fabric-Cluster installieren. Rufen Sie eine [Vorlage zur Installation von Azure-Diagnose auf einem Service Fabric-Cluster](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json) ab.
 
 Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
+
 1. Zum Sicherstellen, dass [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird, ist es ausreichend, zu bestätigen, dass das bereitgestellte Betriebssystem `Windows Server 2012 R2` oder höher ist.
 
-1. Suchen Sie die Erweiterung für die [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) in der Bereitstellungsvorlagendatei, und fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu. Ersetzen Sie den `ApplicationInsightsProfiler`-Eigenschaftswert durch Ihren eigenen Application Insights-Instrumentierungsschlüssel:  
+1. Suchen Sie nach der [Azure-Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) in der Bereitstellungsvorlagendatei.
+
+1. Fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu. Ersetzen Sie den `ApplicationInsightsProfiler`-Eigenschaftswert durch Ihren eigenen Application Insights-Instrumentierungsschlüssel:  
 
       ```json
       "SinksConfig": {
@@ -48,14 +50,19 @@ Zum Einrichten Ihrer Umgebung führen Sie folgende Schritte aus:
       ```
 
       Informationen zum Hinzufügen der Diagnoseerweiterung zu Ihrer Bereitstellungsvorlage finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-1. Stellen Sie Ihren Service Fabric-Cluster über Ihre Azure Resource Manager-Vorlage bereit. Wenn Ihre Einstellungen richtig sind, wird Application Insights Profiler installiert und aktiviert, sobald die Erweiterung „Microsoft Azure-Diagnose“ installiert wird. 
-1. Fügen Sie Application Insights Ihrer Service Fabric-Anwendung hinzu. Ihre Anwendung muss Anforderungsdaten an Application Insights senden, damit der Profiler Profile für Ihre Anforderungen erfasst. Anweisungen hierzu finden Sie [hier.](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)
+
+1. Stellen Sie Ihren Service Fabric-Cluster über Ihre Azure Resource Manager-Vorlage bereit.  
+  Wenn Ihre Einstellungen richtig sind, wird Application Insights Profiler installiert und aktiviert, sobald die Azure-Diagnoseerweiterung installiert wird. 
+
+1. Fügen Sie Application Insights Ihrer Service Fabric-Anwendung hinzu.  
+  Damit Profiler Profile für Ihre Anforderungen erfasst, muss Ihre Anwendung Anforderungsdaten an Application Insights senden. Weitere Informationen finden Sie auf der Seite zum [Application Insights SDK für Service Fabric-Projekte](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
+
 1. Stellen Sie Ihre Anwendung erneut bereit.
 
-> [TIPP] Für Virtual Machines gibt es folgende Alternative zu den oben beschriebenen JSON-basierten Schritten: Navigieren Sie im Azure-Portal zu **Virtual Machines** > **Diagnoseeinstellungen** > **Senken**. **Aktivieren** Sie das Senden von Diagnosedaten an Application Insights, und wählen Sie entweder ein Application Insights-Konto oder einen bestimmten iKey aus.
+> [TIPP] Für virtuelle Computer gibt es folgende Alternative zu den zuvor genannten JSON-basierten Schritten: Navigieren Sie im Azure-Portal zu **Virtuelle Computer** > **Diagnoseeinstellungen** > **Senken**. **Aktivieren Sie das Senden von Diagnosedaten an Application Insights**, und wählen Sie dann entweder ein Application Insights-Konto oder einen bestimmten iKey aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Generieren Sie Datenverkehr zu Ihrer Anwendung (starten Sie z.B. einen [Verfügbarkeitstest](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)). Warten Sie dann 10 bis 15 Minuten, bis das Senden der Ablaufverfolgungen an die Application Insights-Instanz beginnt.
-- Weitere Informationen finden Sie unter [Profiler-Ablaufverfolgungen](https://docs.microsoft.com/azure/application-insights/app-insights-profiler-overview?toc=/azure/azure-monitor/toc.json) im Azure-Portal.
-- Hilfe bei der Problembehandlung von Profiler-Problemen finden Sie unter [Profiler-Problembehandlung](profiler-troubleshooting.md ?toc=/azure/azure-monitor/toc.json).
+* Generieren Sie Datenverkehr zu Ihrer Anwendung (starten Sie z.B. einen [Verfügbarkeitstest](https://docs.microsoft.com/azure/application-insights/monitor-web-app-availability)). Warten Sie dann 10 bis 15 Minuten, bis das Senden der Ablaufverfolgungen an die Application Insights-Instanz beginnt.
+* Weitere Informationen finden Sie unter [Profiler-Ablaufverfolgungen](https://docs.microsoft.com/azure/application-insights/profiler-overview?toc=/azure/azure-monitor/toc.json) im Azure-Portal.
+* Hilfe bei der Behandlung von Profiler-Problemen finden Sie unter [Problembehandlung für den Profiler](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
