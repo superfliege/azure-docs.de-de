@@ -1,10 +1,10 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit FreshDesk | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und FreshDesk konfigurieren.
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Freshdesk konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: Azure-Active-Directory
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: bdfe06c52a6fd4afa513821923581cd28713d872
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f8f47201149ce2384eb0adcef86936dc9d017c85
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063063"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit FreshDesk
 
-In diesem Tutorial erfahren Sie, wie Sie FreshDesk in Azure Active Directory (Azure AD) integrieren.
-Die Integration von FreshDesk in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Freshdesk in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Freshdesk in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf FreshDesk hat.
 * Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei FreshDesk angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit FreshDesk konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Freshdesk konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * FreshDesk-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -46,11 +46,11 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * FreshDesk unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-freshdesk-from-the-gallery"></a>Hinzufügen von FreshDesk aus dem Katalog
+## <a name="adding-freshdesk-from-the-gallery"></a>Hinzufügen von Freshdesk aus dem Katalog
 
-Zum Konfigurieren der Integration von FreshDesk in Azure AD müssen Sie FreshDesk aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Freshdesk in Azure AD müssen Sie Freshdesk aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um FreshDesk aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um Freshdesk aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -73,7 +73,7 @@ Zum Konfigurieren der Integration von FreshDesk in Azure AD müssen Sie FreshDes
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei FreshDesk basierend auf einer Testbenutzerin mit dem Namen **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in FreshDesk eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FreshDesk sind die folgenden Bausteine erforderlich:
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Freshdesk sind die folgenden Bausteine erforderlich:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für FreshDesk](#configure-freshdesk-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
@@ -164,7 +164,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in FreshDesk
 
 ### <a name="configure-freshdesk-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für FreshDesk
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der FreshDesk-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Freshdesk-Unternehmenswebsite als Administrator an.
 
 2. Wählen Sie das Symbol **Einstellungen** aus, und führen Sie im Abschnitt **Sicherheit** die folgenden Schritte aus:
 
@@ -235,12 +235,12 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-freshdesk-test-user"></a>Erstellen eines FreshDesk-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei FreshDesk anmelden können, müssen sie in FreshDesk bereitgestellt werden.  
-Im Fall von FreshDesk ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei Freshdesk anmelden können, müssen sie in Freshdesk bereitgestellt werden.  
+Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 **Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
-1. Melden Sie sich bei Ihrem **FreshDesk** -Mandanten an.
+1. Melden Sie sich bei Ihrem **Freshdesk** -Mandanten an.
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 

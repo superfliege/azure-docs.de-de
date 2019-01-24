@@ -3,19 +3,19 @@ title: Aktivieren der Altersbeschränkung in Azure Active Directory B2C | Micros
 description: Erfahren Sie, wie Sie Minderjährige identifizieren, die Ihre Anwendung verwenden.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a9220349249315d807a9dba675f6b074ddd385fa
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: ddc4b7b899385eb7388198973460386a4a0af10c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291095"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845773"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Aktivieren der Altersbeschränkung in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Azure AD B2C nutzt die vom Benutzer eingegebenen Informationen, um zu ermitteln,
 
 Die Altersbeschränkung umfasst zwei Alterswerte: das Alter, in dem eine Person nicht mehr als minderjährig angesehen wird, und das Alter, in dem eine minderjährige Person die Zustimmung durch die Erziehungsberechtigten benötigt. In der folgenden Tabelle sind die Altersregeln aufgeführt, die zum Definieren einer minderjährigen Person und des Alters für die Zustimmung durch die Erziehungsberechtigten verwendet werden.
 
-| Land | Name des Lands | Alter für Zustimmung für Minderjährige | Alter für Einstufung als minderjährig |
+| Country | Name des Lands | Alter für Zustimmung für Minderjährige | Alter für Einstufung als minderjährig |
 | ------- | ------------ | ----------------- | --------- |
 | Standard | Keine | Keine | 18 |
 | AE | Vereinigte Arabische Emirate | Keine | 21 |

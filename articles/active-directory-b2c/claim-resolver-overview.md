@@ -3,19 +3,19 @@ title: Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Ac
 description: Erfahren Sie, wie Anspruchskonfliktlöser in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dccb597cda1f5aba30d18b0f71371caa6ceee9b4
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852382"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845009"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -65,14 +65,14 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 | Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Der Abfragezeichenfolgen-Parameter `acr_values`. | N/V |
+| {OIDC:AuthenticationContextReferences} |Der Abfragezeichenfolgen-Parameter `acr_values`. | – |
 | {OIDC:ClientId} |Der Abfragezeichenfolgen-Parameter `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Der Abfragezeichenfolgen-Parameter `domain_hint`. | facebook.com |
 | {OIDC:LoginHint} |  Der Abfragezeichenfolgen-Parameter `login_hint`. | someone@contoso.com |
-| {OIDC:MaxAge} | Das `max_age`. | N/V |
+| {OIDC:MaxAge} | Das `max_age`. | – |
 | {OIDC:Nonce} |Der Abfragezeichenfolgen-Parameter `Nonce`. | defaultNonce |
 | {OIDC:Prompt} | Der Abfragezeichenfolgen-Parameter `prompt`. | Anmeldung |
-| {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | N/V |
+| {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | – |
 | {OIDC:scope} |Der Abfragezeichenfolgen-Parameter `scope`. | openid |
 
 ### <a name="context"></a>Kontext
@@ -95,7 +95,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 | {OAUTH-KV:campaignId} | Ein Abfragezeichenfolgen-Parameter. | hawaii |
 | {OAUTH-KV:app_session} | Ein Abfragezeichenfolgen-Parameter. | A3C5R |
 | {OAUTH-KV:loyalty_number} | Ein Abfragezeichenfolgen-Parameter. | 1234 |
-| {OAUTH-KV:beliebige benutzerdefinierte Abfragezeichenfolge} | Ein Abfragezeichenfolgen-Parameter. | N/V |
+| {OAUTH-KV:beliebige benutzerdefinierte Abfragezeichenfolge} | Ein Abfragezeichenfolgen-Parameter. | – |
 
 
 ## <a name="how-to-use-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern

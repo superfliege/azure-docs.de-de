@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2ab696436a8cf139eff92edc3b8ff2c27b40a7aa
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 15354cd7472e7cffb7a40ca431bc23eb65b9a9a9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018382"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845893"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI in Azure Stack
 
@@ -212,16 +212,13 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
       ```
     * AD FS-Umgebungen
 
-        * Melden Sie sich als Benutzer mit einem Webbrowser an:  
-              ```azurecli  
-              az login
-              ```
         * Melden Sie sich als Benutzer mit einem Webbrowser unter Verwendung eines Gerätecodes an:  
-              ```azurecli  
-              az login --use-device-code
-              ```
-        > [!Note]  
-        >Durch die Ausführung des Befehls erhalten Sie eine URL und einen Code für die Authentifizierung.
+           ```azurecli  
+           az login --use-device-code
+           ```
+
+           > [!NOTE]  
+           >Durch die Ausführung des Befehls erhalten Sie eine URL und einen Code für die Authentifizierung.
 
         * Melden Sie sich als Dienstprinzipal an:
         

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 05609f016988720360c51fe529de2f389206406f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d9e0848b7e4598d03e5d8d8b15ff4cde3316884d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978691"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850874"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>Hinzufügen des HTTP-Ports
 
-Sie können [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network_application_gateway_frontend_port_create) verwenden, um den HTTP-Port zum Anwendungsgateway hinzuzufügen.
+Sie können [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port) verwenden, um den HTTP-Port zum Anwendungsgateway hinzuzufügen.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Hinzufügen der Umleitungskonfiguration
 
-Fügen Sie dem Anwendungsgateway mit [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create) die Konfiguration für die Umleitung von HTTP zu HTTPS hinzu.
+Fügen Sie dem Anwendungsgateway mit [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) die Konfiguration für die Umleitung von HTTP zu HTTPS hinzu.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Hinzufügen der Routingregel
 
-Fügen Sie dem Anwendungsgateway mit [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network_application_gateway_rule_create) die Routingregel namens *rule2* mit der Umleitungskonfiguration hinzu.
+Fügen Sie dem Anwendungsgateway mit [az network application-gateway rule create](/cli/azure/network/application-gateway/rule) die Routingregel namens *rule2* mit der Umleitungskonfiguration hinzu.
 
 ```azurecli-interactive
 az network application-gateway rule create \

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 8dc64b22907fb4b65ddab044548ae63337b1f900
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a43f90a5218109b0592c2b52dfb450c19462a543
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977212"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843836"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -119,7 +119,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-backend-listener"></a>Hinzufügen eines Back-End-Listeners
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) den Back-End-Listener namens *backendListener* hinzu, der zum Weiterleiten von Datenverkehr erforderlich ist.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway) den Back-End-Listener namens *backendListener* hinzu, der zum Weiterleiten von Datenverkehr erforderlich ist.
 
 
 ```azurecli-interactive
@@ -220,7 +220,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm* oder *http://40.121.222.19:8080/video/test.htm*.
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm* oder *http://40.121.222.19:8080/video/test.htm*.
 
 ```azurepowershell-interactive
 az network public-ip show \

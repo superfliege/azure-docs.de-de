@@ -4,7 +4,7 @@ description: Dieses Dokument beschreibt, wie Sie DSGVO-Konformität mit Azure AD
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 337268db7365e417153ca3df3d545c135c5f2924
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2dedd85445a4c04ffee35260b33dedee277d3592
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309409"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477352"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Datenschutz und Azure AD Connect 
 
@@ -70,7 +70,7 @@ Verwenden Sie die folgenden Schritte, um die Ausführung des Skripts alle 48 Stu
     ![System](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  Klicken Sie unter der Überschrift „Verwaltung“ auf **Aufgaben planen**.
-    ![Task](./media/reference-connect-user-privacy/gdpr3.png)
+    ![Aufgabe](./media/reference-connect-user-privacy/gdpr3.png)
 3.  Klicken Sie im Taskplaner mit der rechten Maustaste auf **Aufgabenplanungsbibliothek**, und klicken Sie auf **Einfache Aufgabe erstellen**.
 4.  Geben Sie den Namen für die neue Aufgabe ein, und klicken Sie auf **Weiter**.
 5.  Wählen Sie als Aufgabenauslöser **Täglich** aus, und klicken Sie auf **Weiter**.

@@ -3,19 +3,19 @@ title: Einrichten der Anmeldung mit einem Twitter-Konto mithilfe benutzerdefinie
 description: Richten Sie die Anmeldung mit einem Twitter-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C ein.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 75d26387c8a9db1fa9acdc9d6b71bde63453c22d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e1b99b405bd11c01f986162ecbf499d9fa4cf110
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887348"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851027"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Twitter-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -121,17 +121,17 @@ Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem Twitt
 Der Identitätsanbieter wurde nun eingerichtet, aber er ist auf keinem der Registrierungs- oder Anmeldebildschirme vorhanden. Um ihn verfügbar zu machen, erstellen Sie ein Duplikat einer vorhandenen User Journey-Vorlage und ändern diese dann so, dass sie ebenfalls das Twitter-Konto als Identitätsanbieter aufweist.
 
 1. Öffnen Sie die Datei *TrustFrameworkBase.xml* aus dem Starter Pack.
-2. Suchen und kopieren Sie den gesamten Inhalt des Elements **UserJourney**, das `Id="SignUpOrSignIn"` enthält.
-3. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem Element **UserJourneys**. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
-4. Fügen Sie den gesamten Inhalt des kopierten Elements **UserJourney** als untergeordnetes Element des Elements **UserJourneys** ein.
+2. Suchen und kopieren Sie den gesamten Inhalt des **UserJourney**-Elements, das `Id="SignUpOrSignIn"` enthält.
+3. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem **UserJourneys**-Element. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
+4. Fügen Sie den gesamten Inhalt des kopierten **UserJourney**-Element als untergeordnetes Element des **UserJourneys**-Elements ein.
 5. Benennen Sie die ID der User Journey um. Beispiel: `SignUpSignInTwitter`.
 
 ### <a name="display-the-button"></a>Anzeigen der Schaltfläche
 
-Das Element **ClaimsProviderSelection** entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs- oder Anmeldebildschirm. Wenn Sie ein **ClaimsProviderSelection**-Element für ein Twitter-Konto hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
+Das **ClaimsProviderSelection**-Element entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs- oder Anmeldebildschirm. Wenn Sie ein **ClaimsProviderSelection**-Element für ein Twitter-Konto hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
 
 1. Suchen Sie nach dem Element **OrchestrationStep**, das `Order="1"` in der User Journey enthält, die Sie erstellt haben.
-2. Fügen Sie unter **ClaimsProviderSelects** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (z. B. auf `TwitterExchange`) fest:
+2. Fügen Sie unter **ClaimsProviderSelects** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (z.B. auf `TwitterExchange`) fest:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
@@ -160,7 +160,7 @@ Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihre
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
-5. Geben Sie einen Namen für die Anwendung ein, z. B. *testapp1*.
+5. Geben Sie einen Namen für die Anwendung ein, z.B. *testapp1*.
 6. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
 7. Klicken Sie auf **Create**.
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.component: autoscale
-ms.openlocfilehash: 85a93746f3d10c5b4dae4f50cd539d515960bd54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: ae1828210345eb35f9d22664285a0d348ea50d48
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584325"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478330"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -120,3 +120,4 @@ Weitere Informationen zur automatischen Skalierung können Sie den obigen exempl
 * [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+

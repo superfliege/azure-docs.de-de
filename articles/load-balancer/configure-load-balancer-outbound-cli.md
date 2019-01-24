@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a1fbe541d9cb2f9b5a839d90fcfa9c7b017efce9
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: bd40278015bf4580759c1b7b9522400b3dae31d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198507"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475661"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI
 
@@ -32,7 +32,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group#create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe namens *myresourcegroupoutbound* am Standort *eastus2* erstellt:
 
@@ -42,7 +42,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe namens *myresourcegroupoutbound
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
-Erstellen Sie ein virtuelles Netzwerk namens *myvnetoutbound* mit dem Subnetz *mysubnetoutbound* in *myresourcegroupoutbound*, indem Sie den Befehl [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) verwenden.
+Erstellen Sie ein virtuelles Netzwerk namens *myvnetoutbound* mit dem Subnetz *mysubnetoutbound* in *myresourcegroupoutbound*, indem Sie den Befehl [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) verwenden.
 
 ```azurecli-interactive
   az network vnet create \
@@ -55,7 +55,7 @@ Erstellen Sie ein virtuelles Netzwerk namens *myvnetoutbound* mit dem Subnetz *m
 
 ## <a name="create-inbound-public-ip-address"></a>Erstellen einer öffentlichen Eingangs-IP-Adresse 
 
-Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. Ein Load Balancer im Standard-Tarif unterstützt nur öffentliche Standard-IP-Adressen. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) zum Erstellen einer öffentlichen Standard-IP-Adresse namens *mypublicipinbound* in *myresourcegroupoutbound*.
+Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. Ein Load Balancer im Standard-Tarif unterstützt nur öffentliche Standard-IP-Adressen. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) zum Erstellen einer öffentlichen Standard-IP-Adresse namens *mypublicipinbound* in *myresourcegroupoutbound*.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipinbound --sku standard
@@ -63,7 +63,7 @@ Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine
 
 ## <a name="create-outbound-public-ip-address"></a>Erstellen einer öffentlichen Ausgangs-IP-Adresse 
 
-Erstellen Sie mit [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) eine Standard-IP-Adresse für die Ausgangskonfiguration des Load Balancer-Front-Ends.
+Erstellen Sie mit [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) eine Standard-IP-Adresse für die Ausgangskonfiguration des Load Balancer-Front-Ends.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +81,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 ### <a name="create-load-balancer"></a>Erstellen oder Aktualisieren eines Lastenausgleichs
 
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) eine Load Balancer-Instanz mit der Eingangs-IP-Adresse mit dem Namen *lb*, die eine IP-Adresskonfiguration des Eingangs-Front-Ends und einen Back-End-Pool enthält (mit Zuordnung zur öffentlichen IP-Adresse *mypublicipinbound*, die Sie im vorherigen Schritt erstellt haben).
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) eine Load Balancer-Instanz mit der Eingangs-IP-Adresse mit dem Namen *lb*, die eine IP-Adresskonfiguration des Eingangs-Front-Ends und einen Back-End-Pool enthält (mit Zuordnung zur öffentlichen IP-Adresse *mypublicipinbound*, die Sie im vorherigen Schritt erstellt haben).
 
 ```azurecli-interactive
   az network lb create \
@@ -95,7 +95,7 @@ Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/ne
   ```
 
 ### <a name="create-outbound-frontend-ip"></a>Erstellen einer IP-Adresse für das Ausgangs-Front-End
-Erstellen Sie mit [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) die IP-Konfiguration für das Ausgangs-Front-End der Load Balancer-Instanz. Diese IP-Konfiguration des Ausgangs-Front-Ends wird *myfrontendoutbound* genannt und der öffentlichen IP-Adresse *mypublicipoutbound* zugeordnet.
+Erstellen Sie mit [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) die IP-Konfiguration für das Ausgangs-Front-End der Load Balancer-Instanz. Diese IP-Konfiguration des Ausgangs-Front-Ends wird *myfrontendoutbound* genannt und der öffentlichen IP-Adresse *mypublicipoutbound* zugeordnet.
 
 ```azurecli-interactive
   az network lb frontend-ip create \
@@ -107,7 +107,7 @@ Erstellen Sie mit [az network lb frontend-ip create](https://docs.microsoft.com/
 
 ### <a name="create-health-probe"></a>Erstellen eines Integritätstests
 
-Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
+Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -121,7 +121,7 @@ Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass sie
 
 ### <a name="create-load-balancing-rule"></a>Erstellen einer Lastenausgleichsregel
 
-Mit einer Lastenausgleichsregel werden die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und der Back-End-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) eine Lastenausgleichsregel mit dem Namen *myinboundlbrule*, die an Port 80 des Front-End-Pools *myfrontendinbound* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *bepool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
+Mit einer Lastenausgleichsregel werden die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und der Back-End-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) eine Lastenausgleichsregel mit dem Namen *myinboundlbrule*, die an Port 80 des Front-End-Pools *myfrontendinbound* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *bepool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
 
 >[!NOTE]
 >Diese Lastenausgleichsregel deaktiviert die automatische Ausgangs-(S)NAT mit dem Parameter „--disable-outbound-snat“. Die Ausgangs-NAT wird nur von der Ausgangsregel bereitgestellt.

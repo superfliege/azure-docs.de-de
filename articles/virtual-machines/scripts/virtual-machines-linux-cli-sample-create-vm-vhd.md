@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918096"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478313"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Erstellen einer VM mit einer virtuellen Festplatte
 
@@ -56,12 +56,12 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Listet Speicherkonten auf |
 | [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Stellt sicher, dass ein Speicherkontoname gültig und nicht bereits vorhanden ist |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | Listet Schlüssel für die Speicherkonten auf |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | Listet Schlüssel für die Speicherkonten auf |
 | [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Überprüft, ob das Blob vorhanden ist |
 | [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Erstellt einen Container in einem Speicherkonto |
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Erstellt ein Blob im Container durch Hochladen der VHD |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Wird zusammen mit `--query` verwendet, um zu überprüfen, ob der Name der VM bereits verwendet wird | 
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Erstellt die virtuellen Computer |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Erstellt die virtuellen Computer |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Ruft die IP-Adresse des virtuellen Computers ab, der erstellt wurde |
 
 ## <a name="next-steps"></a>Nächste Schritte

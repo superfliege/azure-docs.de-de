@@ -3,19 +3,19 @@ title: 'Tutorial: Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Ac
 description: Erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals anpassen.
 services: B2C
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f8ebb282d3f6abbc37739891c0f7228bef110d82
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5d97a313c347aefbdda14b70e78aa09188da59ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842678"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855787"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C
 
@@ -159,20 +159,20 @@ Um Ihre Anpassungsdateien zu testen, erstellen Sie einen integrierten Benutzerfl
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** aus, und klicken Sie dann auf **Neuer Benutzerflow**.
 2. Klicken Sie auf der Registerkarte **Empfohlen** auf **Registrierung und Anmeldung**.
-3. Geben Sie einen Namen für den Benutzerflow ein. Beispiel: *signup_signin*. Bei Erstellung des Benutzerflows wird dem Namen automatisch das Präfix *B2C_1* hinzugefügt.
+3. Geben Sie einen Namen für den Benutzerflow ein. Z. B. *signup_signin*. Bei Erstellung des Benutzerflows wird dem Namen automatisch das Präfix *B2C_1* hinzugefügt.
 4. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
 5. Klicken Sie unter **Benutzerattribute und Ansprüche** auf **Mehr anzeigen**.
 6. Wählen Sie in der Spalte **Attribut sammeln** die Attribute aus, die Sie während der Registrierung vom Kunden erfassen möchten. Wählen Sie z.B. **Land/Region**, **Anzeigename** und **Postleitzahl** aus.
-7. Wählen Sie in der Spalte **Anspruch zurückgeben** die Ansprüche aus, die nach einer erfolgreichen Registrierung oder Anmeldung in den Autorisierungstoken an Ihre Anwendung zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename**, **Identitätsanbieter**, **Postleitzahl**, **Benutzer ist neu** und **Objekt-ID des Benutzers** aus.
+7. Wählen Sie in der Spalte **Anspruch zurückgeben** die Ansprüche aus, die nach einer erfolgreichen Registrierung oder Anmeldung in den Autorisierungstoken an Ihre Anwendung zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename**, **Identitätsanbieter**, **Postleitzahl**, **User is new** (Benutzer ist neu) und **User's Object ID** (Objekt-ID des Benutzers) aus.
 8. Klicken Sie auf **OK**.
-9. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Create**.
 10. Wählen Sie unter **Anpassen** die Option **Seitenlayouts** aus. Wählen Sie **Einheitliche Seite für Registrierung oder Anmeldung** aus, und klicken Sie dann für **Benutzerdefinierten Seiteninhalt verwenden** auf **Ja**.
 11. Geben Sie in **Benutzerdefinierter Seiten-URI** die URL für die Datei *custom-ui.html* ein, die Sie zuvor aufgezeichnet haben.
 12. Klicken Sie oben auf der Seite auf **Speichern**.
 
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** und dann den Benutzerflow aus, den Sie erstellt haben. Beispiel: *B2C_1_signup_signin*.
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** und dann den Benutzerflow aus, den Sie erstellt haben. Z. B. *B2C_1_signup_signin*.
 2. Klicken Sie im oberen Bereich der Seite auf **Benutzerflow ausführen**.
 3. Klicken Sie auf die Schaltfläche **Benutzerflow ausführen**.
 

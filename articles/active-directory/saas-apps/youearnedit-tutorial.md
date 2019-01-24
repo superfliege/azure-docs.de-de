@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3011d44d-dfcf-4061-888f-cff90fbc8150
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fd65d6a5d210b4b0549236ec39844e36480b10c9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5b3746a1e29f436c277fd238e13fd46010941824
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790257"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Tutorial: Azure Active Directory-Integration mit YouEarnedIt
 
@@ -78,8 +78,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei YouEarned
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für YouEarnedIt](#configure-youearnedit-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines YouEarnedIt-Testbenutzers](#create-youearnedit-test-user)**, um eine Entsprechung von Britta Simon in YouEarnedIt zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines YouEarnedIt-Testbenutzers](#create-youearnedit-test-user)**, um eine Entsprechung von Britta Simon in YouEarnedIt zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -104,22 +104,24 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei YouEarne
 
     ![SSO-Informationen zur Domäne und zu den URLs für YouEarnedIt](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: 
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+
     | Environment  | Muster  |
     |:--- |:--- |
     | Bereitstellung | `https://<company name>.youearnedit.com/users/sign_in` |
     | Sandbox  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
+
     | Environment  | Muster  |
     |:--- |:--- |
     | Bereitstellung | `<company name>.youearnedit.com` |
     | Sandbox  |`<company name>.sandbox.youearnedit.com` |
 
-    > [!NOTE] 
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an Ihren zuständigen YouEarnedIt-Kundenservicemanager, um diese Werte zu erhalten.
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -192,11 +194,10 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt erstellen Sie in YouEarnedIt einen Benutzer namens Britta Simon. Wenden Sie sich an Ihren zuständigen YouEarnedIt-Kundenservicemanager, um die Benutzer in der YouEarnedIt-Plattform hinzuzufügen.
 
->[!NOTE]
->YouEarnedIt erwartet vom Identitätsanbieter die Angabe einer E-Mail-Adresse (EmailAddress) oder eines Benutzernamens (UserName) im NameID-Attribut. Falls in der Datenbank keine exakte Entsprechung für den Benutzernamen oder die E-Mail-Adresse gefunden wird, ist die Authentifizierung nicht erfolgreich. Aus diesem Grund müssen vor der SSO-Integration Konten in das YouEarnedIt-System importiert werden (in der Regel entweder über die API oder per CSV-Import).
+> [!NOTE]
+> YouEarnedIt erwartet vom Identitätsanbieter die Angabe einer E-Mail-Adresse (EmailAddress) oder eines Benutzernamens (UserName) im NameID-Attribut. Falls in der Datenbank keine exakte Entsprechung für den Benutzernamen oder die E-Mail-Adresse gefunden wird, ist die Authentifizierung nicht erfolgreich. Aus diesem Grund müssen vor der SSO-Integration Konten in das YouEarnedIt-System importiert werden (in der Regel entweder über die API oder per CSV-Import).
 
-
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -209,4 +210,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „YouEarnedIt“ klicken, sollten Si
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

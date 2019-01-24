@@ -4,7 +4,7 @@ description: Aufbewahrungsrichtlinien für Berichtdaten in Azure Active Director
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 932290c3b42b0ea55725fbc17de6b81886fe1217
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214469"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822517"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
 
@@ -68,7 +68,7 @@ Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung
 | Bericht                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
 | Verzeichnisprüfbericht        | 7 Tage        |  7 Tage        | 30 Tage             | 30 Tage             |
-| Benutzeranmeldeaktivität       | N/V           |  N/V           | 30 Tage             | 30 Tage             |
+| Benutzeranmeldeaktivität       | –           |  –           | 30 Tage             | 30 Tage             |
 | Azure MFA-Nutzung        | 30 Tage       |  30 Tage       | 30 Tage             | 30 Tage             |
 
 Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den oben beschriebenen Standardaufbewahrungszeitraum speichern, indem Sie sie mit Azure Monitor an ein Azure Storage-Konto weiterleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](quickstart-azure-monitor-route-logs-to-storage-account.md).

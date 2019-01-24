@@ -1,10 +1,10 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit Palo Alto Networks – GlobalProtect | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Palo Alto Networks – GlobalProtect konfigurieren.
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Palo Alto Networks - GlobalProtect konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 03bef6f2-3ea2-4eaa-a828-79c5f1346ce5
 ms.service: Azure-Active-Directory
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 16bcd61d226fe97e9f3e4eb5c40f2fdf6c304a12
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: fb153317d90cf94781c5bb64dc8d5ce65021adcf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808280"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks – GlobalProtect
 
-In diesem Tutorial erfahren Sie, wie Sie Palo Alto Networks – GlobalProtect in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Palo Alto Networks – GlobalProtect in Azure AD bietet Ihnen folgende Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Palo Alto Networks - GlobalProtect in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Palo Alto Networks - GlobalProtect in Azure AD bietet Ihnen folgende Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Palo Alto Networks – GlobalProtect hat.
+* Sie können in Azure AD steuern, wer Zugriff auf Palo Alto Networks - GlobalProtect hat.
 * Sie können es Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Palo Alto Networks – GlobalProtect angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Palo Alto Networks – GlobalProtect konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Palo Alto Networks - GlobalProtect konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * Abonnement für Palo Alto Networks – GlobalProtect, für das einmaliges Anmelden aktiviert ist
@@ -47,11 +47,11 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Palo Alto Networks – GlobalProtect unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Palo Alto Networks – GlobalProtect unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
-## <a name="adding-palo-alto-networks---globalprotect-from-the-gallery"></a>Hinzufügen von Palo Alto Networks – GlobalProtect aus dem Katalog
+## <a name="adding-palo-alto-networks---globalprotect-from-the-gallery"></a>Hinzufügen von Palo Alto Networks - GlobalProtect aus dem Katalog
 
-Zum Konfigurieren der Integration von Palo Alto Networks – GlobalProtect in Azure AD müssen Sie Palo Alto Networks – GlobalProtect aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Palo Alto Networks - GlobalProtect in Azure AD müssen Sie Palo Alto Networks - GlobalProtect aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie zum Hinzufügen von Palo Alto Networks – GlobalProtect aus dem Katalog die folgenden Schritte aus:**
+**Führen Sie zum Hinzufügen von Palo Alto Networks - GlobalProtect aus dem Katalog die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -65,16 +65,16 @@ Zum Konfigurieren der Integration von Palo Alto Networks – GlobalProtect in Az
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Palo Alto Networks – GlobalProtect** ein, wählen Sie im Ergebnisbereich **Palo Alto Networks – GlobalProtect** aus, und klicken Sie auf **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Palo Alto Networks - GlobalProtect** ein, wählen Sie im Ergebnisbereich **Palo Alto Networks - GlobalProtect** aus, und klicken Sie auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Palo Alto Networks – GlobalProtect in der Ergebnisliste](common/search-new-app.png)
+     ![Palo Alto Networks - GlobalProtect in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Palo Alto Networks – GlobalProtect mithilfe einer Testbenutzerin namens **Britta Simon**.
 Für einmaliges Anmelden muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Palo Alto Networks – GlobalProtect eine Linkbeziehung eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Palo Alto Networks – GlobalProtect müssen die folgenden Schritte ausgeführt werden:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Palo Alto Networks - GlobalProtect müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für Palo Alto Networks – GlobalProtect](#configure-palo-alto-networks---globalprotect-single-sign-on)**, um die SSO-Einstellungen auf der Anwendungsseite zu konfigurieren.
@@ -103,16 +103,16 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Palo Alt
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks – GlobalProtect](common/sp-identifier.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks - GlobalProtect](common/sp-identifier.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<Customer Firewall URL>`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<Customer Firewall URL>/SAML20/SP`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Palo Alto Networks – GlobalProtect-Client](https://support.paloaltonetworks.com/support), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Palo Alto Networks - GlobalProtect-Client](https://support.paloaltonetworks.com/support), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Palo Alto Networks – GlobalProtect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+5. Die Palo Alto Networks - GlobalProtect-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](common/edit-attribute.png)
 
@@ -204,7 +204,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Palo Alto Networks – GlobalProtect gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Palo Alto Networks - GlobalProtect gewähren.
 
 1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Palo Alto Networks – GlobalProtect**.
 
@@ -212,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Geben Sie in der Anwendungsliste **Palo Alto Networks – GlobalProtect** ein, und wählen Sie den Eintrag aus.
 
-    ![Der Link für Palo Alto Networks – GlobalProtect in der Anwendungsliste](common/all-applications.png)
+    ![Der Link für Palo Alto Networks - GlobalProtect in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 

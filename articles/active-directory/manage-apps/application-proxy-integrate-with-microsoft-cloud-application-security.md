@@ -2,7 +2,7 @@
 title: Integrieren lokaler Apps mit Cloud App Security – Azure Active Directory | Microsoft-Dokumentation
 description: Konfigurieren Sie eine lokale Anwendung in Azure Active Directory für die Verwendung mit Microsoft Cloud App Security (MCAS). Verwenden Sie die App-Steuerung für bedingten Zugriff in MCAS zum Überwachen und Steuern von Sitzungen in Echtzeit mithilfe von Richtlinien für bedingten Zugriff. Sie können diese Richtlinien auf lokale Anwendungen anwenden, die den Anwendungsproxy in Azure Active Directory (Azure AD) verwenden.
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e5e83d928893c2937df8be55d72bb22869891492
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215098"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472482"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory
 Konfigurieren Sie eine lokale Anwendung in Azure Active Directory (Azure AD) für die Verwendung von Microsoft Cloud App Security (MCAS) für die Echtzeitüberwachung. MCAS nutzt die App-Steuerung für bedingten Zugriff zum Überwachen und Steuern von Sitzungen in Echtzeit mithilfe von Richtlinien für bedingten Zugriff. Sie können diese Richtlinien auf lokale Anwendungen anwenden, die den Anwendungsproxy in Azure Active Directory (Azure AD) verwenden.
@@ -64,7 +64,7 @@ Um die Anwendung mit der App-Steuerung für bedingten Zugriff zu konfigurieren, 
 
 ## <a name="test-conditional-access-app-control"></a>Testen der App-Steuerung für bedingten Zugriff
 
-Befolgen Sie zum Testen der Bereitstellung von Azure AD-Anwendungen mit der App-Steuerung für bedingten Zugriff die Anweisungen unter [Testen der Bereitstellung für Azure AD-Apps](/cloud-app-security/proxy-deployment-aad#test-the-deployment).
+Befolgen Sie zum Testen der Bereitstellung von Azure AD-Anwendungen mit der App-Steuerung für bedingten Zugriff die Anweisungen unter [Testen der Bereitstellung für Azure AD-Apps](/cloud-app-security/proxy-deployment-aad).
 
 
 

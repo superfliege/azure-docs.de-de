@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1ef0fc9037548a58d9b0a4f46c212a43796d529b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6a08a5a79a8a072bd4621a7e200e84c2c71c9cd4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231596"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475066"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 
@@ -46,7 +46,7 @@ Hierbei ist zu betonen, dass für Kerne von virtuellen Computern ein regionaler 
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-Eine detailliertere und aktuelle Liste der Kontingentgrenzen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits#subscription-limits-1) zu Azure-weiten Kontingenten.
+Eine detailliertere und aktuelle Liste der Kontingentgrenzen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits) zu Azure-weiten Kontingenten.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 In Azure Machine Learning Compute gibt es eine Standardkontingentgrenze für die Anzahl von Kernen und eindeutigen Computeressourcen, die pro Region in einem Abonnement zulässig sind. Dieses Kontingent gilt unabhängig von dem oben aufgeführten VM-Kernkontingent, und die Kerngrenzwerte gilt derzeit nicht für beide Ressourcentypen.

@@ -5,7 +5,7 @@ keywords: Beim erneuten Ausführen des Azure AD Connect-Installations-Assistente
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c5f5f59329e8f4e34a4c08a5819d0e4d96fe2f5c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 49c606d1f063eb4969bad88cd6bb7cd14eaa4349
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310639"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477667"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect Sync: Erneutes Ausführen des Installations-Assistenten
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect-Synchronisierung: Erneutes Ausführen des Installations-Assistenten
 Beim erstmaligen Ausführen des Azure AD Connect-Installations-Assistenten werden Sie durch die Konfiguration Ihrer Installation geführt. Beim erneuten Ausführen des Installations-Assistenten werden Ihnen Wartungsoptionen angeboten.
 
 Sie finden den Installations-Assistenten im Startmenü unter der Bezeichnung **Azure AD Connect**.

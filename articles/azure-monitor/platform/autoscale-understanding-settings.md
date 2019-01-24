@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: af7e280c7dcd82c18e91ded759756c3826342cd3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587350"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474828"
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
 Mithilfe der Einstellungen für die automatische Skalierung können Sie sicherstellen, dass Sie über die richtige Anzahl von ausgeführten Ressourcen verfügen, um die wechselnde Auslastung Ihrer Anwendung zu bewältigen. Sie können konfigurieren, dass Einstellungen für die automatische Skalierung basierend auf Metriken ausgelöst werden, mit denen die Auslastung oder die Leistung angezeigt werden, oder die Auslösung kann zu einem geplanten Datum bzw. einer geplanten Uhrzeit erfolgen. In diesem Artikel wird die Anatomie einer Einstellung für die automatische Skalierung ausführlich beschrieben. Der Artikel beginnt mit Erläuterungen zu dem Schema und den Eigenschaften einer Einstellung und führt Sie dann durch die verschiedenen Profiltypen, die konfiguriert werden können. Abschließend erfahren Sie in diesem Artikel, wie das Feature für die automatische Skalierung in Azure auswertet, welches Profil zu einem bestimmten Zeitpunkt ausgeführt wird.
@@ -310,3 +310,4 @@ Weitere Informationen zur automatischen Skalierung finden Sie in den folgenden R
 * [Best Practices für die automatische Skalierung in Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
+

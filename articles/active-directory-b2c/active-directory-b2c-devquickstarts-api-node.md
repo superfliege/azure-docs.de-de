@@ -3,19 +3,19 @@ title: Schützen einer Web-API mithilfe von Node.js in Azure Active Directory B2
 description: Hier erfahren Sie, wie Sie eine Node.js-Web-API erstellen, die Token von einem B2C-Mandanten akzeptiert.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5dbb932173bccea32d3463fe5e645df58b287990
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354415"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845947"
 ---
 # <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Schützen einer Web-API mithilfe von Node.js in Azure Active Directory B2C
 
@@ -687,7 +687,7 @@ var findById = function(id, fn) {
 var oidcStrategy = new OIDCBearerStrategy(options,
     function(token, done) {
         log.info('verifying the user');
-        log.info(token, 'was the token retreived');
+        log.info(token, 'was the token retrieved');
         findById(token.sub, function(err, user) {
             if (err) {
                 return done(err);

@@ -3,19 +3,19 @@ title: Einrichten der Anmeldung mit einem LinkedIn-Konto mithilfe benutzerdefini
 description: Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b5022e1475b9f15738dd015e16946b754fcd49c9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d6f1f312e9f23a2996cf0e7604df20d4eb3c4064
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887307"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845743"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem LinkedIn-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ In diesem Artikel wird erläutert, wie Sie die Anmeldung für Benutzer über ein
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
+- Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
 - Falls Sie noch kein LinkedIn-Konto besitzen, erstellen Sie eins auf der [LinkedIn-Anmeldeseite](https://www.linkedin.com/start/join).
 - Für eine LinkedIn-Anwendung muss ein Logobild mit 80 x 80 Pixeln bereitgestellt werden, das Ihre Anwendung darstellt.
 
@@ -48,16 +48,16 @@ Um LinkedIn als Identitätsanbieter in Azure AD B2C zu nutzen, müssen Sie eine 
 
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
-Sie müssen das Clientgeheimnis speichern, das Sie zuvor in Ihrem Azure AD B2C-Mandanten notiert haben.
+Sie müssen den geheimen Clientschlüssel speichern, den Sie zuvor in Ihrem Azure AD B2C-Mandanten notiert haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 6. Klicken Sie unter **Optionen** auf `Manual`.
 7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `LinkedInSecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-8. Geben Sie im Feld **Geheimnis** das Clientgeheimnis ein, das Sie zuvor notiert haben.
+8. Geben Sie im Feld **Geheimnis** den geheimen Clientschlüssel ein, den Sie zuvor notiert haben.
 9. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
 10. Klicken Sie auf **Create**.
 
@@ -121,7 +121,7 @@ Sie können ein LinkedIn-Konto als Anspruchsanbieter definieren, indem Sie es in
 
 ### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 
-Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem LinkedIn-Konto kommunizieren kann. Versuchen Sie, die Erweiterungsdatei Ihrer Richtlinie hochzuladen, um sich zu vergewissern, dass soweit keine Probleme vorliegen.
+Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem Twitter-Konto kommunizieren kann. Versuchen Sie, die Erweiterungsdatei Ihrer Richtlinie hochzuladen, um sich zu vergewissern, dass soweit keine Probleme vorliegen.
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten auf der Seite **Benutzerdefinierte Richtlinien** die Option **Richtlinie hochladen** aus.
 2. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, navigieren Sie dann zur Datei *TrustFrameworkExtensions.xml*, und wählen Sie die Datei aus.
@@ -132,17 +132,17 @@ Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem Linke
 Der Identitätsanbieter wurde nun eingerichtet, ist aber auf keinem der Registrierungs- oder Anmeldebildschirme vorhanden. Um ihn verfügbar zu machen, erstellen Sie ein Duplikat einer vorhandenen User Journey-Vorlage und ändern diese dann so, dass sie ebenfalls das LinkedIn-Konto als Identitätsanbieter aufweist.
 
 1. Öffnen Sie die Datei *TrustFrameworkBase.xml* aus dem Startpaket.
-2. Suchen und kopieren Sie den gesamten Inhalt des Elements **UserJourney**, das `Id="SignUpOrSignIn"` umfasst.
-3. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem Element **UserJourneys**. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
-4. Fügen Sie den gesamten Inhalt des kopierten Elements **UserJourney** als untergeordnetes Element des Elements **UserJourneys** ein.
+2. Suchen und kopieren Sie den gesamten Inhalt des **UserJourney**-Elements, das `Id="SignUpOrSignIn"` enthält.
+3. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem **UserJourneys**-Element. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
+4. Fügen Sie den gesamten Inhalt des kopierten **UserJourney**-Element als untergeordnetes Element des **UserJourneys**-Elements ein.
 5. Benennen Sie die ID der User Journey um. Beispiel: `SignUpSignInLinkedIn`.
 
 ### <a name="display-the-button"></a>Anzeigen der Schaltfläche
 
-Das Element **ClaimsProviderSelection** entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs- oder Anmeldebildschirm. Wenn Sie ein **ClaimsProviderSelection**-Element für ein LinkedIn-Konto hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
+Das **ClaimsProviderSelection**-Element entspricht einer Schaltfläche für einen Identitätsanbieter auf einem Registrierungs- oder Anmeldebildschirm. Wenn Sie ein **ClaimsProviderSelection**-Element für ein LinkedIn-Konto hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
 
 1. Suchen Sie nach dem Element **OrchestrationStep**, das `Order="1"` in der User Journey enthält, die Sie erstellt haben.
-2. Fügen Sie unter **ClaimsProviderSelects** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (etwa auf `LinkedInExchange`) fest:
+2. Fügen Sie unter **ClaimsProviderSelects** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (z.B. auf `LinkedInExchange`) fest:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
@@ -169,9 +169,9 @@ Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihre
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
-5. Geben Sie einen Namen für die Anwendung ein, etwa *testapp1*.
+5. Geben Sie einen Namen für die Anwendung ein, z.B. *testapp1*.
 6. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
 7. Klicken Sie auf **Create**.
 

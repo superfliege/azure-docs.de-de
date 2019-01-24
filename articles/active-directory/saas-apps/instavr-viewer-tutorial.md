@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c63e7d03c0fc17e9892617aaeca94803c671acea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b0548ec2bb580c2898f610f00fd5ba911b314114
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194924"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Tutorial: Azure Active Directory-Integration mit InstaVR Viewer
 
@@ -79,8 +79,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei InstaVR V
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für InstaVR Viewer](#configure-instavr-viewer-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines InstaVR Viewer-Testbenutzers](#create-instavr-viewer-test-user)**, um eine Entsprechung von Britta Simon in InstaVR Viewer zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-5. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines InstaVR Viewer-Testbenutzers](#create-instavr-viewer-test-user)**, um eine Entsprechung von Britta Simon in InstaVR Viewer zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -106,12 +106,12 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei InstaVR 
     ![SSO-Informationen zur Domäne und zu den URLs für InstaVR Viewer](common/sp-identifier.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`.
-    
+
     > [!NOTE]
     > Es gibt kein festes Muster für die Anmelde-URL. Sie wird bei der Webpaketerstellung durch den InstaVR Viewer-Kunden generiert. Sie ist für jeden Kunden und jedes Paket eindeutig. Um die exakte Anmelde-URL zu erhalten, müssen Sie sich bei Ihrer InstaVR Viewer-Instanz anmelden und die Webpaketerstellung durchführen.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL nach folgendem Muster ein: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`. 
-    
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`.
+
     > [!NOTE]
     > Der ID-Wert ist nicht der tatsächliche Wert. Ersetzen Sie den Wert durch den tatsächlichen Bezeichner. Dies wird später in diesem Tutorial beschrieben.
 

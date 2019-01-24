@@ -4,7 +4,7 @@ description: Häufig gestellte Fragen zu Azure Active Directory-Berichten
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 98a1dd3fb3fd733cc17ac9c6ccf9d0dfc77737e1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d6062720e3b747966c60426a5db76e6dd18109a7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868020"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813015"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -75,7 +75,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 | Bericht                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | Überwachungsprotokolle             | 7 Tage        | 30 Tage             | 30 Tage             |
-| Anmeldungen               | N/V           | 30 Tage             | 30 Tage             |
+| Anmeldungen               | –           | 30 Tage             | 30 Tage             |
 | Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
 
 --- 
@@ -134,7 +134,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Was ist neu an diesem Feature?**
 
-**A:** Kunden können nun im Bericht für alle Anmeldungen Probleme mit Richtlinien für bedingten Zugriff beheben. Kunden können den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
+**A:** Kunden können nun im Bericht für alle Anmeldungen Probleme mit Richtlinien für bedingten Zugriff beheben. Benutzer können den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
 
 **F: Wie fange ich an?**
 

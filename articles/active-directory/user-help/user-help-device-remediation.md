@@ -3,7 +3,7 @@ title: Mögliche Ursachen für die Fehlermeldung „Der Wechsel von hier nach do
 description: Hier finden Sie Informationen zum Behandeln der möglichen Ursachen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: c34b096766b6b7dda26c51559bf58e40d95715e7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: eb924a612188d905eb6c7127067fed2fd4b0f218
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651162"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825526"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Ursachen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“
 Beim Zugriff auf interne Web-Apps oder Dienste Ihrer Organisation wird unter Umständen die Fehlermeldung **Der Wechsel von hier nach dort ist nicht möglich.** angezeigt. Diese Meldung bedeutet, dass Ihre Organisation eine Richtlinie eingerichtet hat, die Ihr Gerät davon abhält, auf die Ressourcen Ihrer Organisation zuzugreifen. Es kann sein, dass Sie sich zur Behebung dieses Problems letztendlich an den Helpdesk wenden müssen, vorher gibt es aber noch ein paar Dinge, die Sie versuchen können.

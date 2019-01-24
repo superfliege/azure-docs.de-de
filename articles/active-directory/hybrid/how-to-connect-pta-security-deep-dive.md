@@ -5,7 +5,7 @@ services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 45f99ac99c54caab17ba7b74dc09a46c335c8fe4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185068"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476341"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -214,4 +214,4 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 - [Funktionsweise](how-to-connect-pta-how-it-works.md): Lernen Sie die grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD kennen.
 - [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Finden Sie Antworten auf häufig gestellte Fragen.
 - [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
-- [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Hier finden Sie Informationen zu dieser Ergänzungsfunktion.
+- [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.

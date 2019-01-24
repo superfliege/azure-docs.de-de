@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8ab5000f1f50e10195c02b6198fa0bcffd0408b5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603496"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844758"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
@@ -74,7 +74,7 @@ Im LUIS-Kontext ist eine **Domäne** ein Themenbereich. Die Domäne bezieht sich
 
 ## <a name="endpoint"></a>Endpunkt
 
-In der [LUIS-Endpunkt](https://aka.ms/luis-endpoint-apis)-URL übermitteln Sie LUIS Abfragen, nachdem die [LUIS-App](#luis-app) erstellt und veröffentlicht wurde. Die Endpunkt-URL enthält die Region der veröffentlichten App und die App-ID. Sie finden den Endpunkt auf der Seite **[Schlüssel und Endpunkte](luis-how-to-manage-keys.md)** Ihrer App, oder Sie können die Endpunkt-URL bei der [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37)-API abrufen.
+In der [LUIS-Endpunkt](https://aka.ms/luis-endpoint-apis)-URL übermitteln Sie LUIS Abfragen, nachdem die [LUIS-App](#luis-app) erstellt und veröffentlicht wurde. Die Endpunkt-URL enthält die Region der veröffentlichten App und die App-ID. Sie finden den Endpunkt auf der Seite **[Schlüssel und Endpunkte](luis-how-to-azure-subscription.md)** Ihrer App, oder Sie können die Endpunkt-URL bei der [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37)-API abrufen.
 
 Ein Beispiel für einen Endpunkt:
 
@@ -177,7 +177,7 @@ Identisch mit [Programmierschlüssel](#programmatic-key); umbenannt in Erstellun
 
 ## <a name="subscription-key"></a>Abonnementschlüssel
 
-Der Abonnementschlüssel ist der **Endpunktschlüssel**, der dem LUIS-Dienst zugewiesen ist, [den Sie in Azure erstellt haben](luis-how-to-azure-subscription.md). Dieser Schlüssel ist nicht der [Erstellungsschlüssel](#programmatic-key). Wenn Sie einen Endpunktschlüssel besitzen, sollte dieser anstelle des Erstellungsschlüssels für alle Endpunktanforderungen verwendet werden. Sie finden Ihren aktuellen Endpunktschlüssel in der Endpunkt-URL im unteren Bereich der Seite [**Schlüssel und Endpunkte**](luis-how-to-manage-keys.md) auf der [LUIS](luis-reference-regions.md)-Website. Es ist der Wert des Name-Wert-Paars **subscription-key**.
+Der Abonnementschlüssel ist der **Endpunktschlüssel**, der dem LUIS-Dienst zugewiesen ist, [den Sie in Azure erstellt haben](luis-how-to-azure-subscription.md). Dieser Schlüssel ist nicht der [Erstellungsschlüssel](#programmatic-key). Wenn Sie einen Endpunktschlüssel besitzen, sollte dieser anstelle des Erstellungsschlüssels für alle Endpunktanforderungen verwendet werden. Sie finden Ihren aktuellen Endpunktschlüssel in der Endpunkt-URL im unteren Bereich der Seite [**Schlüssel und Endpunkte**](luis-how-to-azure-subscription.md) auf der [LUIS](luis-reference-regions.md)-Website. Es ist der Wert des Name-Wert-Paars **subscription-key**.
 
 ## <a name="test"></a>Testen
 

@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für G Suite auto
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 6dbd50b5-589f-4132-b9eb-a53a318a64e5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 856fc4416bde6022693cf8250b84854f66a269fd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840349"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820341"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -168,7 +168,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 
 1. Ändern Sie in den **Einstellungen** den **Bereitstellungsstatus** in **Ein**, um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren.
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 Daraufhin wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die G Suite im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die während der Dienstausführung etwa alle 40 Minuten erfolgen. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zu Protokollen zur Bereitstellungsaktivität navigieren. In diesen Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre App ausgeführt werden.
 

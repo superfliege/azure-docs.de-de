@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076226"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852540"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -85,7 +85,7 @@ Die Berechtigung für Mitwirkende ermöglicht der verwalteten Dienstidentität a
 
 `. ~/tfEnv.sh`
 
-Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in), um die Authentifizierung bei Azure vorzunehmen und der verwalteten Identität des virtuellen Computers die Berechtigung „Mitwirkender“ für das gesamte Abonnement zuzuweisen. 
+Das vorherige Skript verwendet den Mechanismus zur [interaktiven Anmeldung mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), um die Authentifizierung bei Azure vorzunehmen und der verwalteten Identität des virtuellen Computers die Berechtigung „Mitwirkender“ für das gesamte Abonnement zuzuweisen. 
 
  Der virtuelle Computer verfügt über ein Terraform-Back-End mit Remotezustand. Um dieses Back-End in Ihrer Terraform-Bereitstellung zu aktivieren, kopieren Sie die Datei „remoteState.tf“ aus dem Verzeichnis „tfTemplate“ in das Stammverzeichnis der Terraform-Skripts.  
 

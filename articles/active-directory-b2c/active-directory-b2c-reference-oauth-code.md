@@ -3,37 +3,37 @@ title: Autorisierungscodeflow in Azure Active Directory B2C | Microsoft-Dokument
 description: Erfahren Sie, wie Sie Web-Apps mithilfe von Azure AD B2C und dem Authentifizierungsprotokoll OpenID Connect erstellen.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6d976869f2a068c393a643bb97cae2f7ac1a470
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 17409bc763c89ac7898ee4533ecec90613f48674
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843188"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846046"
 ---
-# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0-Autorisierungscodeflow
+# <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0-Autorisierungscodefluss
 Durch Gewähren des OAuth 2.0-Autorisierungcodes in Apps, die auf einem Gerät installiert sind, können Sie auf geschützte Ressourcen wie Web-APIs zugreifen. Mithilfe der Azure Active Directory B2C(Azure AD B2C)-Implementierung von OAuth 2.0 können Sie Ihre mobilen und Desktop-Apps Aufgaben zur Registrierung, Anmeldung und Identitätsverwaltung hinzufügen. Dieser Artikel ist sprachunabhängig. In dem Artikel wird beschrieben, wie HTTP-Nachrichten ohne Verwendung von Open Source-Bibliotheken gesendet und empfangen werden.
 
-Der OAuth 2.0-Autorisierungscodeflow wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Sie können ihn zum Ausführen der Authentifizierung und Autorisierung bei den meisten [Anwendungstypen](active-directory-b2c-apps.md) verwenden, einschließlich Webanwendungen und nativ installierten Anwendungen. Über den OAuth 2.0-Autorisierungscodeflow können Sie Zugriffstoken und Aktualisierungstoken für Ihre Anwendungen auf sichere Weise abrufen, die für den Zugriff auf mit einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md) geschützte Ressourcen verwendet werden können.  Mit dem Aktualisierungstoken kann der Client neue Zugriffstoken (und Aktualisierungstoken) beschaffen, nachdem das Zugriffstoken abgelaufen ist. Dies ist meist nach einer Stunde der Fall.
+Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)beschrieben. Sie können ihn zum Ausführen der Authentifizierung und Autorisierung bei den meisten [Anwendungstypen](active-directory-b2c-apps.md) verwenden, einschließlich Webanwendungen und nativ installierten Anwendungen. Über den OAuth 2.0-Autorisierungscodeflow können Sie Zugriffstoken und Aktualisierungstoken für Ihre Anwendungen auf sichere Weise abrufen, die für den Zugriff auf mit einem [Autorisierungsserver](active-directory-b2c-reference-protocols.md) geschützte Ressourcen verwendet werden können.  Mit dem Aktualisierungstoken kann der Client neue Zugriffstoken (und Aktualisierungstoken) beschaffen, nachdem das Zugriffstoken abgelaufen ist. Dies ist meist nach einer Stunde der Fall.
 
 Dieser Artikel behandelt den OAuth 2.0-Autorisierungscodeflow von **öffentlichen Clients**. Ein öffentlicher Client ist jede Clientanwendung, der nicht bei der sicheren Verwaltung der Integrität von geheimen Kennwörtern vertraut werden kann. Dazu gehören mobile Anwendungen, Desktopanwendungen und im Wesentlichen jede Anwendung, die auf einem Gerät ausgeführt wird und Zugriffstokens abrufen muss. 
 
 > [!NOTE]
 > Wenn Sie in einer Web-App mit Azure AD B2C eine Identitätsverwaltung hinzufügen möchten, verwenden Sie [OpenID Connect](active-directory-b2c-reference-oidc.md) anstelle von OAuth 2.0.
 
-Azure AD B2C erweitert den OAuth 2.0-Standardflow, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Dabei wird der [Benutzerflowparameter](active-directory-b2c-reference-policies.md) eingeführt. Mit Benutzerflows können Sie übe OAuth 2.0 Benutzeroberflächenfunktionen zu Ihrer Anwendung hinzufügen, z.B. für die Registrierung Anmeldung und Profilverwaltung. In diesem Artikel wird gezeigt, wie Sie mit OAuth 2.0 und Benutzerflows diese Benutzeroberflächenfunktionen in Ihren nativen Anwendungen implementieren. Wir zeigen Ihnen außerdem, wie Zugriffstokens für den Zugriff auf Web-APIs abgerufen werden.
+Azure AD B2C erweitert den OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Dabei wird der [Benutzerflowparameter](active-directory-b2c-reference-policies.md) eingeführt. Mit Benutzerflows können Sie übe OAuth 2.0 Benutzeroberflächenfunktionen zu Ihrer Anwendung hinzufügen, z.B. für die Registrierung Anmeldung und Profilverwaltung. In diesem Artikel wird gezeigt, wie Sie mit OAuth 2.0 und Benutzerflows diese Benutzeroberflächenfunktionen in Ihren nativen Anwendungen implementieren. Wir zeigen Ihnen außerdem, wie Zugriffstokens für den Zugriff auf Web-APIs abgerufen werden.
 
 In den HTTP-Beispielanforderungen in diesem Artikel wird das Azure AD B2C-Beispielverzeichnis **fabrikamb2c.onmicrosoft.com** verwendet. Darüber hinaus kommen unsere Beispielanwendung und beispielhafte Benutzerflows zum Einsatz. Sie können selbst Anforderungen mit diesen Werten testen oder eigene Werte verwenden.
 Erfahren Sie, wie Sie [ein eigenes Azure AD B2C-Verzeichnis, Anwendungen und Benutzerflows abrufen](#use-your-own-azure-ad-b2c-directory).
 
-## <a name="1-get-an-authorization-code"></a>1. Abrufen von Autorisierungscode
-Im Autorisierungscodeflow leitet der Client den Benutzer zunächst an den `/authorize`-Endpunkt um. Dies ist der interaktive Teil des Flows, bei dem der Benutzer tatsächlich Aktionen durchführt. In dieser Anforderung gibt der Client im Parameter `scope` die Berechtigungen an, die er vom Benutzer abrufen muss. Im Parameter `p` wird der auszuführende Benutzerflow angegeben. In den folgenden drei Beispielen (mit Zeilenumbrüchen für bessere Lesbarkeit) wird jeweils ein anderer Benutzerflow verwendet.
+## <a name="1-get-an-authorization-code"></a>1. Abrufen von Autorisierungscodes
+Der Autorisierungscodefluss beginnt damit, dass der Client den Benutzer auf den `/authorize` -Endpunkt leitet. Dies ist der interaktive Teil des Flows, bei dem der Benutzer tatsächlich Aktionen durchführt. In dieser Anforderung gibt der Client im Parameter `scope` die Berechtigungen an, die er vom Benutzer abrufen muss. Im Parameter `p` wird der auszuführende Benutzerflow angegeben. In den folgenden drei Beispielen (mit Zeilenumbrüchen für bessere Lesbarkeit) wird jeweils ein anderer Benutzerflow verwendet.
 
 ### <a name="use-a-sign-in-user-flow"></a>Verwenden eines Benutzerflows für die Anmeldung
 ```
@@ -71,10 +71,10 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| Parameter | Erforderlich | Beschreibung |
+| Parameter | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | client_id |Erforderlich |Die Anwendungs-ID, die Ihrer App im [Azure-Portal](https://portal.azure.com) zugewiesen wird. |
-| response_type |Erforderlich |Der Antworttyp, der `code` für den Autorisierungscodeflow enthalten muss. |
+| response_type |Erforderlich |Der Antworttyp, der `code` für den Autorisierungscodefluss enthalten muss. |
 | redirect_uri |Erforderlich |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
 | scope |Erforderlich |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure Active Directory (Azure AD) an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der Bereich `offline_access` gibt an, dass Ihre App ein Aktualisierungstoken für den langfristigen Zugriff auf Ressourcen benötigt. Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
 | response_mode |Empfohlen |Die Methode, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre App verwendet wird. Es kann sich um `query`, `form_post` oder `fragment` handeln. |
@@ -94,7 +94,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | code |Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für eine Zielressource verwenden. Autorisierungscodes sind von sehr kurzer Lebensdauer. In der Regel laufen sie nach etwa 10 Minuten ab. |
 | state |Die vollständige Beschreibung finden Sie im vorangehenden Abschnitt. Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die App sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
@@ -108,7 +108,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -126,11 +126,11 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| Parameter | Erforderlich | Beschreibung |
+| Parameter | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | p |Erforderlich |Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Sie müssen diesen Parameter in der *Abfragezeichenfolge*hinzufügen, nicht im POST-Text. |
 | client_id |Erforderlich |Die Anwendungs-ID, die Ihrer App im [Azure-Portal](https://portal.azure.com) zugewiesen wird. |
-| grant_type |Erforderlich |Der Gewährungstyp. Beim Autorisierungscodeflow muss der Gewährungstyp `authorization_code` sein. |
+| grant_type |Erforderlich |Der Gewährungstyp. Beim Autorisierungscodefluss muss der Gewährungstyp `authorization_code` sein. |
 | scope |Empfohlen |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure AD an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der Bereich `offline_access` gibt an, dass Ihre App ein Aktualisierungstoken für den langfristigen Zugriff auf Ressourcen benötigt.  Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
 | code |Erforderlich |Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
 | redirect_uri |Erforderlich |Der Umleitungs-URI der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |
@@ -147,7 +147,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | not_before |Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type |Der Wert des Tokentyps. Bearertoken ist der einzige Typ, den Azure AD unterstützt. |
@@ -165,7 +165,7 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -190,7 +190,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Erforderlich | Beschreibung |
+| Parameter | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
 | p |Erforderlich |Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. Sie müssen diesen Parameter in der *Abfragezeichenfolge*hinzufügen, nicht im POST-Text. |
 | client_id |Erforderlich |Die Anwendungs-ID, die Ihrer App im [Azure-Portal](https://portal.azure.com) zugewiesen wird. |
@@ -212,7 +212,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | not_before |Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type |Der Wert des Tokentyps. Bearertoken ist der einzige Typ, den Azure AD unterstützt. |
@@ -230,7 +230,7 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |

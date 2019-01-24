@@ -3,19 +3,20 @@ title: Dienstendpunkte und Regeln eines virtuellen Netzwerks für Azure Service 
 description: Fügen Sie einem virtuellen Netzwerk einen Microsoft.ServiceBus-Dienstendpunkt hinzu.
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: clemensv
-ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.author: aschhab
+ms.openlocfilehash: 3e55da5a6ebb0db26b32f51d67f013cb65438104
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651434"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854801"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Verwenden von VNET-Dienstendpunkten mit Azure Service Bus
 
@@ -72,7 +73,7 @@ Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Se
 Vorlagenparameter:
 
 * **namespaceName**: Der Service Bus-Namespace.
-* **virtualNetworkingSubnetId**: Vollqualifizierter Resource Manager-Pfad für das Subnetz des virtuellen Netzwerks, z.B. `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` für das Standardsubnetz eines virtuellen Netzwerks.
+* **virtualNetworkingSubnetId**: Vollqualifizierter Resource Manager-Pfad für das Subnetz des virtuellen Netzwerks, z. B. `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` für das Standardsubnetz eines virtuellen Netzwerks.
 
 > [!NOTE]
 > Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.

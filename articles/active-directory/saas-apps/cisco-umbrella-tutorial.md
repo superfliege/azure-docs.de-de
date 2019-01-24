@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie einmaliges Anmelden (Single Sign-On, SSO) zwi
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cbf58f7e5553f10087c854428a6a369cbb8c3bf9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f43c3072660ce4b9ca68c2bc58d1c752ce474e28
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194999"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Tutorial: Azure Active Directory-Integration in Cisco Umbrella
 
@@ -78,8 +78,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendun
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für Cisco Umbrella](#configure-cisco-umbrella-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines Cisco Umbrella-Testbenutzers](#create-cisco-umbrella-test-user)**, um eine Entsprechung von Britta Simon in Cisco Umbrella zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Cisco Umbrella-Testbenutzers](#create-cisco-umbrella-test-user)**, um eine Entsprechung von Britta Simon in Cisco Umbrella zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -110,7 +110,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     c. Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://login.umbrella.com/sso`.
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Metadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Metadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 1. Melden Sie sich in einem anderen Browserfenster bei der Cisco Umbrella-Unternehmenswebsite als Administrator an.
 
-2.  Klicken Sie auf der linken Seite des Menüs auf **Admin** (Administrator), navigieren Sie zu **Authentication** (Authentifizierung), und klicken Sie dann auf **SAML**.
+2. Klicken Sie auf der linken Seite des Menüs auf **Admin** (Administrator), navigieren Sie zu **Authentication** (Authentifizierung), und klicken Sie dann auf **SAML**.
 
     ![Administrator](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
@@ -144,7 +144,6 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![Schaltfläche „Next“ (Weiter)](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-
 6. Laden Sie unter **Option A: Upload XML file** (Option A: XML-Datei hochladen) die **Verbundmetadaten-XML**-Datei hoch, die Sie aus dem Azure-Portal heruntergeladen haben. Nach dem Hochladen der Metadaten werden die folgenden Werte automatisch aufgefüllt. Klicken Sie anschließend auf **Next** (Weiter).
 
     ![Dateiauswahl ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
@@ -155,7 +154,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 8. Klicken Sie auf **SPEICHERN**.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
@@ -215,7 +214,7 @@ Im Fall von Cisco Umbrella ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Melden Sie sich in einem anderen Browserfenster bei der Cisco Umbrella-Unternehmenswebsite als Administrator an.
 
-2.  Klicken Sie auf der linken Seite des Menüs auf **Admin** (Administrator), und navigieren Sie zu **Accounts** (Konten).
+2. Klicken Sie auf der linken Seite des Menüs auf **Admin** (Administrator), und navigieren Sie zu **Accounts** (Konten).
 
     ![Konto](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
@@ -237,7 +236,7 @@ Im Fall von Cisco Umbrella ist die Bereitstellung eine manuelle Aufgabe.
 
     g. Klicken Sie auf **ERSTELLEN**.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -250,4 +249,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Cisco Umbrella“ klicken, sollten
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

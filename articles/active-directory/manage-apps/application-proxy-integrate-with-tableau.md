@@ -3,7 +3,7 @@ title: Azure Active Directory-Anwendungsproxy und Tableau | Microsoft-Dokumentat
 description: In diesem Artikel erfahren Sie, wie mithilfe des Azure Active Directory-Anwendungsproxys (Azure AD) Remotezugriff für Ihre Tableau-Bereitstellung zur Verfügung gestellt werden kann.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 08/20/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0ad58d4759d8532ab947043c20cc1060782c6d78
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 8a4231e5d49dad790855293ac50d475e499e0993
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138669"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476154"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-Anwendungsproxy und Tableau 
 
@@ -69,7 +69,7 @@ Für:
 
 8. Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern. 
 
-9. (Optional) Wählen Sie auf der Seite „App-Verwaltung“ die Option **Einmaliges Anmelden** aus. Wählen Sie **Integrierte Windows-Authentifizierung** im Dropdownmenü aus, und füllen Sie die erforderlichen Felder auf der Grundlage Ihrer Tableau-Konfiguration aus. Wählen Sie **Speichern**aus. 
+9. (Optional) Wählen Sie auf der Seite „App-Verwaltung“ die Option **Einmaliges Anmelden** aus. Wählen Sie **Integrierte Windows-Authentifizierung** im Dropdownmenü aus, und füllen Sie die erforderlichen Felder auf der Grundlage Ihrer Tableau-Konfiguration aus. Wählen Sie **Speichern** aus. 
 
  
 

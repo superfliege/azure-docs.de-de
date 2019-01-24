@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023752"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474518"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -31,14 +31,14 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
 - Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
-- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.4.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.4.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 - Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden, unter [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen wurden.
 
 ## <a name="create-a-network-interface"></a>Erstellen einer Netzwerkschnittstelle
 
-Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine Netzwerkschnittstelle mit Standardeinstellungen. Wenn Sie lieber alle Netzwerkschnittstelleneinstellungen angeben möchten, können Sie eine Netzwerkschnittstelle mit benutzerdefinierten Einstellungen erstellen und beim Erstellen eines virtuellen Computers an diesen anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Sie können auch eine Netzwerkschnittstelle erstellen und an einen vorhandenen virtuellen Computer anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Weitere Informationen zum Erstellen eines virtuellen Computers mit einer vorhandenen Netzwerkschnittstelle oder zum Hinzufügen und Entfernen von Netzwerkschnittstellen bei vorhandenen virtuellen Computern finden Sie unter [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md). Vor dem Erstellen einer Netzwerkschnittstelle müssen Sie über ein [virtuelles Netzwerk](manage-virtual-network.md#create-a-virtual-network) am selben Standort und im selben Abonnement verfügen, in dem Sie eine Netzwerkschnittstelle erstellen.
+Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine Netzwerkschnittstelle mit Standardeinstellungen. Wenn Sie lieber alle Netzwerkschnittstelleneinstellungen angeben möchten, können Sie eine Netzwerkschnittstelle mit benutzerdefinierten Einstellungen erstellen und beim Erstellen eines virtuellen Computers an diesen anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Sie können auch eine Netzwerkschnittstelle erstellen und an einen vorhandenen virtuellen Computer anfügen (mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle). Weitere Informationen zum Erstellen eines virtuellen Computers mit einer vorhandenen Netzwerkschnittstelle oder zum Hinzufügen und Entfernen von Netzwerkschnittstellen bei vorhandenen virtuellen Computern finden Sie unter [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md). Vor dem Erstellen einer Netzwerkschnittstelle müssen Sie über ein [virtuelles Netzwerk](manage-virtual-network.md) am selben Standort und im selben Abonnement verfügen, in dem Sie eine Netzwerkschnittstelle erstellen.
 
 1. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, wählen Sie dies aus.
 2. Wählen Sie **+ Hinzufügen** unter **Netzwerkschnittstellen** aus.
@@ -69,7 +69,7 @@ Im Portal steht beim Erstellen von Netzwerkschnittstellen keine Option zum Zuwei
 |Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Anzeigen der Einstellungen von Netzwerkschnittstellen
 
@@ -112,7 +112,7 @@ Der DHCP-Server von Azure weist den DNS-Server der Netzwerkschnittstelle innerha
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Aktivieren oder Deaktivieren der IP-Weiterleitung
@@ -133,7 +133,7 @@ Die Einstellung muss für jede Netzwerkschnittstelle aktiviert werden, die an de
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Ändern der Subnetzzuweisung
@@ -158,7 +158,7 @@ Sie können das Subnetz, aber nicht das virtuelle Netzwerk ändern, dem eine Net
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus
 
-Sie können eine Netzwerkschnittstelle im Portal nur dann einer Anwendungssicherheitsgruppe zuweisen oder sie aus dieser entfernen, wenn die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist. Mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie eine Netzwerkschnittstelle einer Anwendungssicherheitsgruppe hinzufügen oder sie aus dieser entfernen, unabhängig davon, ob die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist oder nicht. Weitere Informationen über [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups) und das [Erstellen einer Anwendungssicherheitsgruppe](manage-network-security-group.md#create-an-application-security-group).
+Sie können eine Netzwerkschnittstelle im Portal nur dann einer Anwendungssicherheitsgruppe zuweisen oder sie aus dieser entfernen, wenn die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist. Mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie eine Netzwerkschnittstelle einer Anwendungssicherheitsgruppe hinzufügen oder sie aus dieser entfernen, unabhängig davon, ob die Netzwerkschnittstelle einem virtuellen Computer zugeordnet ist oder nicht. Weitere Informationen über [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups) und das [Erstellen einer Anwendungssicherheitsgruppe](manage-network-security-group.md).
 
 1. Beginnen Sie im Feld *Search resources, services, and docs* (Ressourcen, Dienste und Dokumente durchsuchen) oben im Portal mit der Eingabe des Namens eines virtuellen Computers, der über eine Netzwerkschnittstelle verfügt, die Sie einer Anwendungssicherheitsgruppe hinzufügen oder aus ihr entfernen möchten. Wenn der Name Ihrer VM in den Suchergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Wählen Sie unter **EINSTELLUNGEN** die Option **Netzwerk** aus.  Wählen Sie **Configure the application security groups** (Anwendungssicherheitsgruppen konfigurieren) aus, wählen Sie die Anwendungssicherheitsgruppen aus, denen Sie die Netzwerkschnittstelle hinzufügen möchten, bzw. heben Sie die Auswahl der Anwendungssicherheitsgruppen auf, aus denen Sie die Netzwerkschnittstelle entfernen möchten, und wählen Sie dann **Speichern** aus. Nur Netzwerkschnittstellen innerhalb des gleichen virtuellen Netzwerks können der gleichen Anwendungssicherheitsgruppe hinzugefügt werden. Die Anwendungssicherheitsgruppe muss am gleichen Ort wie die Netzwerkschnittstelle vorhanden sein.
@@ -167,7 +167,7 @@ Sie können eine Netzwerkschnittstelle im Portal nur dann einer Anwendungssicher
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Zuordnen oder Trennen einer Netzwerksicherheitsgruppe
@@ -199,7 +199,7 @@ Wenn Sie eine Netzwerkschnittstelle löschen, werden alle ihr zugewiesenen MAC- 
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Lösen von Konnektivitätsproblemen

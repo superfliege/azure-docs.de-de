@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344311"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828178"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analysieren von Video- und Audiodateien
 
@@ -148,7 +148,7 @@ Beispiel:
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
 |Beschreibung|Eine Beschreibung des Prominenten. |
-|thumbnalId|Die ID der Miniaturansicht dieses Gesichts.|
+|thumbnailId|Die ID der Miniaturansicht dieses Gesichts.|
 |knownPersonId|Bei einer bekannten Person die interne ID.|
 |referenceId|Bei einem Bing-Prominenten die Bing-ID.|
 |referenceType|Zurzeit nur Bing.|

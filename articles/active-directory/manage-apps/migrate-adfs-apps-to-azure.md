@@ -3,7 +3,7 @@ title: Verschieben von Apps aus AD FS in Azure AD | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Organisationen Anwendungen in Azure AD verschieben können. Der Schwerpunkt liegt hierbei auf SaaS-Anwendungen.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cf8ce4d39d0097c1ec1866a0aad071a2b5d8908f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141933"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474267"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
 
@@ -97,13 +97,13 @@ Die Migration beginnt damit, wie die Anwendung lokal konfiguriert wird, und mit 
 
 |App-Konfigurationselement|BESCHREIBUNG|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
 |-----|-----|-----|-----|-----|
-|Anmelde-URL der App|URL der Anmeldeseite dieser Anwendung. Hierüber meldet sich der Benutzer in einem SP-initiierten SAML-Datenfluss an der App an.|N/V|In Azure AD ist die Anmelde-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Anmelde-URL anzuzeigen.)|N/V|
+|Anmelde-URL der App|URL der Anmeldeseite dieser Anwendung. Hierüber meldet sich der Benutzer in einem SP-initiierten SAML-Datenfluss an der App an.|–|In Azure AD ist die Anmelde-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Anmelde-URL anzuzeigen.)|–|
 |Antwort-URL der App|Die URL der App aus Sicht des Identitätsanbieters (IdP). An diesen Ort werden der Benutzer und das Token gesendet, nachdem sich der Benutzer beim IdP angemeldet hat.</br></br> Dies wird auch als „Consumerendpunkt der SAML-Assertion“ bezeichnet.|Sie befindet sich in der Vertrauensstellung der vertrauenden Seite von AD FS für die App. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|In Azure AD ist die Antwort-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Antwort-URL anzuzeigen.)|Ist im SAML-Token dem **Destination**-Element zugeordnet.</br></br> Beispielwert: https://contoso.my.salesforce.com|
-|Abmelde-URL für App|URL, an die Anforderungen der Art „Abmeldebereinigung“ gesendet werden, wenn sich ein Benutzer von einer App abmeldet, um die Abmeldung von allen anderen Apps durchzuführen, an denen der Benutzer vom IdP angemeldet wurde.|Befindet sich in der AD FS-Verwaltung unter **Vertrauensstellungen der vertrauenden Seite**. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|N/V. Für Azure AD wird das „einmalige Abmelden“ (also das Abmelden von allen Apps) nicht unterstützt. Der Benutzer wird einfach nur von Azure AD abgemeldet.|N/V|
+|Abmelde-URL für App|URL, an die Anforderungen der Art „Abmeldebereinigung“ gesendet werden, wenn sich ein Benutzer von einer App abmeldet, um die Abmeldung von allen anderen Apps durchzuführen, an denen der Benutzer vom IdP angemeldet wurde.|Befindet sich in der AD FS-Verwaltung unter **Vertrauensstellungen der vertrauenden Seite**. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|N/V. Für Azure AD wird das „einmalige Abmelden“ (also das Abmelden von allen Apps) nicht unterstützt. Der Benutzer wird einfach nur von Azure AD abgemeldet.|–|
 |App-ID|Der Bezeichner der App aus IdP-Sicht. Der Wert für die Anmelde-URL wird häufig für den Bezeichner verwendet (aber nicht immer).</br></br> Wird in der App in einigen Fällen auch als „Entitäts-ID“ bezeichnet.|In AD FS ist dies die ID der vertrauenden Seite. Klicken Sie mit der rechten Maustaste auf die Vertrauensstellung der vertrauenden Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Bezeichner**.|In Azure AD ist der Bezeichner im Azure-Portal in den **SSO**-Eigenschaften der Anwendung als Bezeichner unter **Domäne und URLs** konfiguriert. (Es kann sein, dass Sie das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen** aktivieren müssen.)|Entspricht dem **Audience**-Element im SAML-Token.|
-|Verbundmetadaten der App|Speicherort der Verbundmetadaten einer App. Der IdP verwendet ihn zum automatischen Aktualisieren von bestimmten Konfigurationseinstellungen, z.B. Endpunkten oder Verschlüsselungszertifikaten.|Die Verbundmetadaten-URL der App befindet sich in der AD FS-Vertrauensstellung der vertrauenden Seite einer App. Klicken Sie mit der rechten Maustaste auf die Vertrauensstellung, wählen Sie **Eigenschaften**, und wählen Sie dann die Registerkarte **Überwachung**.|N/V. Für Azure AD wird die direkte Nutzung von Anwendungsverbundmetadaten nicht unterstützt.|N/V|
+|Verbundmetadaten der App|Speicherort der Verbundmetadaten einer App. Der IdP verwendet ihn zum automatischen Aktualisieren von bestimmten Konfigurationseinstellungen, z.B. Endpunkten oder Verschlüsselungszertifikaten.|Die Verbundmetadaten-URL der App befindet sich in der AD FS-Vertrauensstellung der vertrauenden Seite einer App. Klicken Sie mit der rechten Maustaste auf die Vertrauensstellung, wählen Sie **Eigenschaften**, und wählen Sie dann die Registerkarte **Überwachung**.|N/V. Für Azure AD wird die direkte Nutzung von Anwendungsverbundmetadaten nicht unterstützt.|–|
 |Benutzer-ID/**NameID**|Attribut zum eindeutigen Angeben der Benutzeridentität von Azure AD oder AD FS für Ihre App.</br></br> Dieses Attribut ist normalerweise entweder der UPN oder die E-Mail-Adresse des Benutzers.|In AD FS ist es als Anspruchsregel der vertrauenden Seite enthalten. In den meisten Fällen stellt die Anspruchsregel einen Anspruch mit einem Typ aus, der auf „nameidentifier“ endet.|In Azure AD finden Sie die Benutzer-ID im Azure-Portal in den **SSO**-Eigenschaften der Anwendung unter der Überschrift **Benutzerattribute**.</br></br>Standardmäßig wird der UPN verwendet.|Wird vom IdP im SAML-Token als **NameID**-Element an die App kommuniziert.|
-|Andere Ansprüche, die an die App gesendet werden|Zusätzlich zu Benutzer-ID/**NameID** werden auch andere Anspruchsinformationen häufig vom IdP an die App gesendet. Beispiele hierfür sind Vorname, Nachname, E-Mail-Adresse und Gruppen, in denen der Benutzer Mitglied ist.|In AD FS ist dies unter den anderen Anspruchsregeln der vertrauenden Seite enthalten.|In Azure AD finden Sie die Benutzer-ID im Azure-Portal in den **SSO**-Eigenschaften der Anwendung unter der Überschrift **Benutzerattribute**. Wählen Sie **Ansicht**, und bearbeiten Sie alle weiteren Benutzerattribute.|N/V|  
+|Andere Ansprüche, die an die App gesendet werden|Zusätzlich zu Benutzer-ID/**NameID** werden auch andere Anspruchsinformationen häufig vom IdP an die App gesendet. Beispiele hierfür sind Vorname, Nachname, E-Mail-Adresse und Gruppen, in denen der Benutzer Mitglied ist.|In AD FS ist dies unter den anderen Anspruchsregeln der vertrauenden Seite enthalten.|In Azure AD finden Sie die Benutzer-ID im Azure-Portal in den **SSO**-Eigenschaften der Anwendung unter der Überschrift **Benutzerattribute**. Wählen Sie **Ansicht**, und bearbeiten Sie alle weiteren Benutzerattribute.|–|  
 
 ### <a name="representing-azure-ad-as-an-identity-provider-in-an-saas-app"></a>Darstellen von Azure AD als Identitätsanbieter in einer SaaS-App
 Im Rahmen der Migration müssen Sie die App so konfigurieren, dass sie auf Azure AD verweist (nicht den lokalen Identitätsanbieter). In diesem Abschnitt geht es um SaaS-Apps, für die das SAML-Protokoll verwendet wird, und nicht um benutzerdefinierte Branchen-Apps. Die Konzepte gelten aber auch für benutzerdefinierte Branchen-Apps. 
