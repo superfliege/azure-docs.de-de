@@ -4,7 +4,7 @@ description: Grundlegende Informationen zur Registerkarte „Connectors“ in Sy
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 592fcd80b80ecbd101dd559aa8baf78a60aaa517
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5c3931fd75ea8e0780b8a7b4f613c865267074c1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306849"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466808"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
 
@@ -66,7 +66,7 @@ Die Aktion zum Durchsuchen des Connectorbereichs ist nützlich, um nach Objekten
 
 Wählen Sie zuerst einen **Bereich**aus. Sie können basierend auf Daten (RDN, DN, Anker, Teilstruktur) oder des Zustands des Objekts (alle anderen Optionen) suchen.  
 ![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Wenn Sie beispielsweise eine Unterstruktur durchsuchen, erhalten Sie alle Objekte in einer Organisationseinheit.  
+ Wenn Sie beispielsweise eine Unterstruktur durchsuchen, erhalten Sie alle Objekte in einer Organisationseinheit.  
 ![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 In dieser Tabelle können Sie ein Objekt auswählen, **Eigenschaften** auswählen und das Objekt aus dem Quellconnectorbereich durch das Metaverse bis zum Zielconnectorbereich [verfolgen](tshoot-connect-object-not-syncing.md).
 

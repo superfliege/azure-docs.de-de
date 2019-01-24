@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 2a93034500250ae3c7a74c01a8ccbb7661c5ff96
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcb2291059a6d6da2065f6f0987d173fd6509a31
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958763"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852370"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -208,7 +208,7 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein.
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, können Sie [az network public-ip show](/cli/azure/network/public-ip) verwenden. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein.
 
 ```azurepowershell-interactive
 az network public-ip show \

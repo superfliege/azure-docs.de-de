@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 98617b2823cb4b17bf65621f302a0ea63ebda5fa
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9eca348c6cc8ba9559c501f6fae266bee59b4cd0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468142"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844295"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI
 Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit einem Ubuntu-Betriebssystem und den dazugehörigen Netzwerkressourcen (einschließlich eines Lastenausgleichs). Nach dem Ausführen des Skripts können Sie über SSH auf die VM-Instanzen zugreifen.
@@ -45,8 +45,8 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/ad/group#az_ad_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az vmss create](/cli/azure/vmss#az_vmss_create) | Erstellt die VM-Skalierungsgruppe und verbindet sie mit dem virtuellen Netzwerk, dem Subnetz und der Netzwerksicherheitsgruppe. Des Weiteren wird ein Lastenausgleich erstellt, um Datenverkehr auf mehrere VM-Instanzen zu verteilen. Dieser Befehl gibt auch das zu verwendende VM-Image und die Administratoranmeldeinformationen an.  |
+| [az group create](/cli/azure/ad/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az vmss create](/cli/azure/vmss) | Erstellt die VM-Skalierungsgruppe und verbindet sie mit dem virtuellen Netzwerk, dem Subnetz und der Netzwerksicherheitsgruppe. Des Weiteren wird ein Lastenausgleich erstellt, um Datenverkehr auf mehrere VM-Instanzen zu verteilen. Dieser Befehl gibt auch das zu verwendende VM-Image und die Administratoranmeldeinformationen an.  |
 | [az group delete](/cli/azure/ad/group#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -3,9 +3,9 @@ title: Übersicht über Azure Service Bus Premium- und Standard-Tarife für Mess
 description: Service Bus Premium- und Standard-Tarif für Messaging
 services: service-bus-messaging
 documentationcenter: .net
-author: djrosanova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2018
-ms.author: spelluru
-ms.openlocfilehash: 33dda074bd1aeb6b6187ca01347f31219ac86e91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: aschhab
+ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250202"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855294"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -34,7 +34,7 @@ In der folgenden Tabelle sind einige allgemeine Unterschiede hervorgehoben:
 | Hoher Durchsatz |Variabler Durchsatz |
 | Vorhersagbare Leistung |Variable Latenzzeit |
 | Feste Preise |Variable Preisgestaltung (nutzungsbasierte Bezahlung) |
-| Möglichkeit zur Herauf- und Herunterskalierung der Workload |N/V |
+| Möglichkeit zur Herauf- und Herunterskalierung der Workload |– |
 | Nachrichtengröße bis 1 MB |Nachrichtengröße bis 256 KB |
 
 **Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2 oder 4 Messaging-Einheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messaging-Einheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Gebühren werden jedoch im 24-Stunden- bzw. Tagesrhythmus berechnet. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.

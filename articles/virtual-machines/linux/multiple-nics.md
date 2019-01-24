@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: 024cf099dd65db036ae0b68d7094a60427ffa69c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 300391d9a5079eefc90ba06ba819fc6d8a91ca05
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119883"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851690"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Erstellen und Konfigurieren mehrerer Netzwerkkarten
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) zwei Netzwerkkarten. Im folgenden Beispiel werden die beiden mit der Netzwerksicherheitsgruppe verknüpften Netzwerkkarten *myNic1* und *myNic2* erstellt. Jede dieser Netzwerkkarten ist mit allen Subnetzen verbunden:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic) zwei Netzwerkkarten. Im folgenden Beispiel werden die beiden mit der Netzwerksicherheitsgruppe verknüpften Netzwerkkarten *myNic1* und *myNic2* erstellt. Jede dieser Netzwerkkarten ist mit allen Subnetzen verbunden:
 
 ```azurecli
 az network nic create \
@@ -105,7 +105,7 @@ Fügen Sie dem Gastbetriebssystem Routingtabellen hinzu, indem Sie die Schritte 
 ## <a name="add-a-nic-to-a-vm"></a>Hinzufügen einer Netzwerkkarte zu einem virtuellen Computer
 In den vorangegangenen Schritten wurde ein virtueller Computer mit mehreren Netzwerkkarten erstellt. Sie können mit der Azure CLI auch einer vorhandenen VM Netzwerkkarten hinzufügen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](change-vm-size.md).
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) eine weitere Netzwerkkarte. Das folgende Beispiel erstellt die Netzwerkkarte *myNic3*, die mit dem Back-End-Subnetz und der Netzwerksicherheitsgruppe verbunden ist, die in den vorherigen Schritten erstellt wurden:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic) eine weitere Netzwerkkarte. Das folgende Beispiel erstellt die Netzwerkkarte *myNic3*, die mit dem Back-End-Subnetz und der Netzwerksicherheitsgruppe verbunden ist, die in den vorherigen Schritten erstellt wurden:
 
 ```azurecli
 az network nic create \
@@ -132,7 +132,7 @@ az vm nic add \
     --nics myNic3
 ```
 
-Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start):
+Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
@@ -156,7 +156,7 @@ az vm nic remove \
     --nics myNic3
 ```
 
-Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start):
+Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM

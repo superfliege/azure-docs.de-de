@@ -3,19 +3,19 @@ title: Häufig gestellte Fragen (FAQ) zu Azure Active Directory B2C | Microsoft-
 description: Häufig gestellte Fragen (FAQ) zu Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e5e688fe741fdc4a83ae1a3cf13a6c722064407
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842950"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856297"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Häufig gestellte Fragen (FAQ) 
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
@@ -80,7 +80,7 @@ Zurzeit besteht keine Möglichkeit, das Feld „Von:“ der E-Mail zu ändern.
 Sie können Ihr Migrationstool mithilfe der Azure AD Graph-API schreiben. Weitere Informationen finden Sie im [Handbuch für die Benutzermigration](active-directory-b2c-user-migration.md).
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welcher Kennwortbenutzerflow wird für lokale Konten in Azure AD B2C verwendet?
-Der Azure AD B2C-Kennwortbenutzerflow für lokale Konten basiert auf der Richtlinie für Azure AD. Die Azure AD B2C-Benutzerflows zur Registrierung, zur Registrierung oder Anmeldung und zur Kennwortrücksetzung verwenden sichere Kennwörter, die nicht ablaufen. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx). Informationen zu Kontosperren und Kennwörtern finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+Der Azure AD B2C-Kennwortbenutzerflow für lokale Konten basiert auf der Richtlinie für Azure AD. Die Azure AD B2C-Benutzerflows zur Registrierung, zur Registrierung oder Anmeldung und zur Kennwortrücksetzung verwenden sichere Kennwörter, die nicht ablaufen. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) . Informationen zu Kontosperren und Kennwörtern finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Kann ich Azure AD Connect zum Migrieren von Endkundenidentitäten, die in meinem lokalen Active Directory gespeichert sind, zu Azure AD B2C verwenden?
 Nein. Azure AD Connect ist nicht für die Verwendung mit Azure AD B2C ausgelegt. Sie können erwägen, die [Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) für die Benutzermigration zu verwenden.  Weitere Informationen finden Sie im [Handbuch für die Benutzermigration](active-directory-b2c-user-migration.md).

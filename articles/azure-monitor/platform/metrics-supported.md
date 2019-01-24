@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: 02678738c225742db1795a2e168b6eac1320aead
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: metrics
+ms.openlocfilehash: be2274b5d7a0e39733440379ce9678ab012d7d27
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232888"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473825"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
@@ -1573,3 +1573,4 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 * [Informationen zu Metriken in Azure Monitor](../../azure-monitor/platform/data-collection.md)
 * [Erstellen von Warnungen zu Metriken](../../azure-monitor/platform/alerts-overview.md)
 * [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553409"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841417"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -101,6 +101,10 @@ Kunden können eine Momentaufnahme ihrer verwalteten Datenträger erstellen und 
 
 Ja, es werden verwaltete und nicht verwaltete Datenträger unterstützt. Allerdings wird empfohlen, für neue Workloads verwaltete Datenträger zu verwenden und aktuelle Workloads zu verwalteten Datenträgern zu migrieren.
 
+**Kann ich verwaltete und nicht verwaltete Datenträger zusammen auf derselben VM platzieren?**
+
+ Nein.
+
 **Wenn ich einen 128-GB-Datenträger erstelle und dann die Größe auf 130 GiB erhöhe, wird mir dann die nächsthöhere Datenträgergröße (256 GiB) in Rechnung gestellt?**
 
 Ja.
@@ -124,10 +128,6 @@ Azure Managed Disks unterstützt momentan nur lokal redundanten Speicher (LRS).
 **Wo finde ich Beispielvorlagen von Azure Resource Manager, um virtuelle Computer mit verwalteten Datenträgern zu erstellen?**
 * [Liste der Vorlagen die Managed Disks verwenden](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
-
-**Kann ich verwaltete und nicht verwaltete Datenträger zusammen auf derselben VM platzieren?**
-
- Nein.
 
 **Gibt es beim Erstellen eines Datenträgers aus einem Blob eine ständig bestehende Beziehung mit diesem Quellblob?**
 

@@ -4,23 +4,23 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d66f36e737e100a0d8e60b85b51f6dcf632e6d3e
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736769"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404674"
 ---
 | Ressource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [App Service-Plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup>|
-| [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |1 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
+| [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |10 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
 | Serverinstanztyp |Shared |Shared |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |Dediziert<sup>3</sup>|
 | [Horizontal skalieren](../articles/app-service/web-sites-scale.md) (max. Instanzen) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> |20 dedizierte<sup>3</sup>|100 dedizierte<sup>4</sup>|
 | Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | CPU-Zeit (5 min)<sup>6</sup> |3 Minuten |3 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | CPU-Zeit (Tag)<sup>6</sup> |60 Minuten |240 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |
-| Arbeitsspeicher (1 Stunde) |1024 MB pro App Service-Plan |1024 MB pro App |N/V |N/V |N/V |N/V |
+| Arbeitsspeicher (1 Stunde) |1024 MB pro App Service-Plan |1024 MB pro App |– |– |– |– |
 | Bandbreite |165 MB |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |
 | Anwendungsarchitektur |32 Bit |32 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |
 | Websockets pro Instanz<sup>7</sup> |5 |35 |350 |Unbegrenzt |Unbegrenzt |Unbegrenzt |

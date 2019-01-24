@@ -8,14 +8,14 @@ ms.topic: reference
 ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 9f82deaa3ca048342c3501e111470eaea2ed9437
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 481fb929a8f937b1d822755e93fae09d9f585fad
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748407"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436823"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -55,7 +55,7 @@ Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastb
 B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofern ihnen nicht eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen wurde. Allerdings können B2B-Zusammenarbeitsbenutzer, denen eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen ist, auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
-Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
+ Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
 Um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.com) zu blockieren, verwenden Sie eine Richtlinie für bedingten Zugriff in der API für das klassische Microsoft Azure-Bereitstellungsmodell:
 1. Ändern Sie die Gruppe **Alle Benutzer**, sodass sie nur Mitglieder enthält.
   ![Screenshot zum Ändern der Gruppe](media/faq/modify-all-users-group.png)

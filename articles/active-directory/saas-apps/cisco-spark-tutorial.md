@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 493ba5853173c34fbd58236c1a2dd2b28dc59a90
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e5ed2abca6c9a8bab6ee0df7a8aa05e40b48de5e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064306"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>Tutorial: Azure Active Directory-Integration in Cisco Spark
 
@@ -169,7 +169,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Cisco Spa
 
 5. Wählen Sie **Test SSO Connection** (SSO-Verbindung testen) aus, und authentifizieren Sie sich, wenn eine neue Browserregisterkarte geöffnet wird, durch Ihre Anmeldung bei Azure AD.
 
-6. Wechseln Sie zurück zur Browserregisterkarte **Cisco Cloud Collaboration Management**. Wenn der Test erfolgreich war, wählen Sie **This test was successful. Enable Single Sign-On option** (Der Test war erfolgreich. Single Sign-On aktivieren), und klicken Sie auf **Weiter**.
+6. Wechseln Sie zurück zur Browserregisterkarte **Cisco Cloud Collaboration Management**. Wenn der Test erfolgreich war, wählen Sie **This test was successful. Enable Single Sign-On option (Der Test war erfolgreich. Single Sign-On aktivieren), und klicken Sie auf **Weiter**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

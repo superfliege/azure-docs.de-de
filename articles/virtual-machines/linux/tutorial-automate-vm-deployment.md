@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a023d9f600f63d1ead4cf7c7e2a3cceec794d28b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f4456ed81fba4648f5bc3efaa415b1e44e5e415
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972593"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852115"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
 
@@ -171,7 +171,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Vorbereiten des Zertifikats für die Verwendung mit der VM
-Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions) ab. Das Zertifikat muss in einem bestimmten Format vorliegen, um es beim Systemstart verwenden zu können. Wandeln Sie es daher mit [az vm secret format](/cli/azure/vm#az-vm-secret-format) um. Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
+Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions) ab. Das Zertifikat muss in einem bestimmten Format vorliegen, um es beim Systemstart verwenden zu können. Wandeln Sie es daher mit [az vm secret format](/cli/azure/vm) um. Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
 
 ```azurecli-interactive
 secret=$(az keyvault secret list-versions \

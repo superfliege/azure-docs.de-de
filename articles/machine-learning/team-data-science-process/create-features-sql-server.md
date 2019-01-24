@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf6f27b7720cf4a30aa08ca02f9150aebe564244
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f427ce2df8a83a3fb43291fcb375a1e01b32060d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135933"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447019"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Für diese Aufgabe können Sie SQL oder eine Programmiersprache wie Python verwenden. Beide Herangehensweisen werden hier vorgestellt.
@@ -114,7 +114,7 @@ Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um a
 Die [Pandas-Bibliothek](http://pandas.pydata.org/) in Python bietet eine Vielzahl an Datenstrukturen und Datenanalysetools für die Datenbearbeitung zur Python-Programmierung. Der folgende Code liest die aus einer SQL Server-Datenbank zurückgegebenen Ergebnisse in ein Pandas-DataFrame ein:
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Features für Azure Blob Storage-Daten mithilfe von Panda](create-features-blob.md) beschrieben.
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: cce2254ef54483e7d0c4d26fbc4b08de3b2366c3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001531"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825152"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -298,7 +298,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     
     Wenden Sie sich unter [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) an uns, falls Sie ein Feature für Dateimomentaufnahmen benötigen.
 
-* <a id="encypted-snapshots"></a>
+* <a id="encrypted-snapshots"></a>
 **Kann ich Freigabemomentaufnahmen von verschlüsselten Dateifreigaben erstellen?**  
     Sie können eine Freigabemomentaufnahme von Azure-Dateifreigaben erstellen, bei der die Verschlüsselung ruhender Daten aktiviert ist. Sie können Dateien von einer Freigabemomentaufnahme in einer verschlüsselten Dateifreigabe wiederherstellen. Wenn Ihre Freigabe verschlüsselt ist, wird Ihre Freigabemomentaufnahme ebenfalls verschlüsselt.
 

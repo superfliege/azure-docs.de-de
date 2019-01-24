@@ -5,7 +5,7 @@ services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cb36b9514d98fe32f20e740fbb578ac7daada79c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789091"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478398"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 

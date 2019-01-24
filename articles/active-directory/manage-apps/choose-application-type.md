@@ -4,7 +4,7 @@ description: Erhalten Sie Informationen zu den unterstützten Typen von Anwendun
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 99405f9ae3e86324aba7a6fdc583225c1f71f83a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ab68c8f73d4b53f441b8f46f466371cd1d03ad41
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845109"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846811"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Auswählen des Anwendungstyps beim Hinzufügen einer Anwendung in Azure Active Directory
 Erfahren Sie mehr über die vier Anwendungstypen, die Azure Active Directory (Azure AD) hinzugefügt werden können. Wenn Sie eine Anwendung in Azure Active Directory hinzufügen, werden Sie aufgefordert, einen der vier Anwendungstypen auszuwählen. 
@@ -68,11 +68,11 @@ Nachfolgend werden die unterstützten Modi für das **einmalige Anmelden** für 
 
 -   **Azure AD-SSO deaktiviert**: Wählen Sie diesen **Modus für das einmalige Anmelden** aus, wenn Sie noch nicht dazu bereit sind, diese Anwendung in das einmalige Anmelden über Azure AD zu integrieren, oder wenn Sie die Anwendung einfach nur testen möchten.
 
--   **Anmeldung über Link**: Wählen Sie [Anmeldung über Link](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) als **Modus für das einmalige Anmelden** aus, wenn Ihre Anwendung bereits mit einer Lösung für das einmalige Anmelden verknüpft ist oder wenn Sie einfach nur einen Link im [Anwendungszugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) oder im [Startprogramm für Office 365-Anwendungen](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none) für Ihre Benutzer veröffentlichen möchten.
+-   **Anmeldung über Link**: Wählen Sie [Anmeldung über Link](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) als **Modus für das einmalige Anmelden** aus, wenn Ihre Anwendung bereits mit einer Lösung für das einmalige Anmelden verknüpft ist oder wenn Sie einfach nur einen Link im [Anwendungszugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) oder im [Startprogramm für Office 365-Anwendungen](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none) für Ihre Benutzer veröffentlichen möchten.
 
--   **Kennwortbasierte Anmeldung**: Wählen Sie [Kennwortbasierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) als **Modus für das einmalige Anmelden** aus, wenn Ihre Anwendung HTML-basierte Felder für Benutzername und Kennwort generiert und Sie diese Informationen sicher speichern möchten, damit die Felder für Benutzername und Kennwort in der Anwendung später automatisch ausgefüllt werden können.
+-   **Kennwortbasierte Anmeldung**: Wählen Sie [Kennwortbasierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) als **Modus für das einmalige Anmelden** aus, wenn Ihre Anwendung HTML-basierte Felder für Benutzername und Kennwort generiert und Sie diese Informationen sicher speichern möchten, damit die Felder für Benutzername und Kennwort in der Anwendung später automatisch ausgefüllt werden können.
 
--   **SAML-basierte Anmeldung**: Wählen Sie [SAML-basierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) als Modus für das einmalige Anmelden aus, wenn Ihre Anwendung die Protokolle SAML oder OpenID Connect unterstützt oder wenn Sie Benutzer basierend auf Regeln, die Sie in Ihrem SAML-Ansprüchen definieren, zu bestimmten Anwendungsrollen zuordnen möchten.*
+-   **SAML-basierte Anmeldung**: Wählen Sie [SAML-basierte Anmeldung](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) als Modus für das einmalige Anmelden aus, wenn Ihre Anwendung die Protokolle SAML oder OpenID Connect unterstützt oder wenn Sie Benutzer basierend auf Regeln, die Sie in Ihrem SAML-Ansprüchen definieren, zu bestimmten Anwendungsrollen zuordnen möchten.*
 
    >[!NOTE]
    >Diese Option ist nicht verfügbar, wenn für eine Anwendung der Anwendungsproxy konfiguriert ist.

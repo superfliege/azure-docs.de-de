@@ -4,7 +4,7 @@ description: Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konf
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 50088dd00b0410ea32b6b61516021563c7ae061f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190628"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463370"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.

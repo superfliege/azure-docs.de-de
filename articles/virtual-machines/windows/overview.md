@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bc9907930283e07ef8df826d2e7653b96f116518
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720253"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852047"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
@@ -49,7 +49,7 @@ Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche 
 * Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
 
 ### <a name="naming"></a>Benennung
-Einem virtuellen Computer wird ein [Name](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
+Einem virtuellen Computer wird ein [Name](/azure/architecture/best-practices/naming-conventions) zugewiesen, und im Zusammenhang mit dem Betriebssystem wird ein Computername konfiguriert. Der Name eines virtuellen Computers kann bis zu 15 Zeichen lang sein.
 
 Wenn Sie den Betriebssystem-Datenträger mithilfe von Azure erstellen, sind der Computername und der Name des virtuellen Computers identisch. Wenn Sie [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md), das ein vorab konfiguriertes Betriebssystem enthält, und auf dessen Grundlage einen virtuellen Computer erstellen, können die Namen unterschiedlich sein. Beim Hochladen einer eigenen Imagedatei empfiehlt es sich, für den Computernamen im Betriebssystem und für den Namen des virtuellen Computers den gleichen Namen zu verwenden.
 
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
 | REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) (Standorte auflisten). |
-| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations). |
+| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="vm-size"></a>Größe des virtuellen Computers
 Die [Größe](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
