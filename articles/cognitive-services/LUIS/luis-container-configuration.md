@@ -32,10 +32,10 @@ Dieser Container hat die folgenden Konfigurationseinstellungen:
 |--|--|--|
 |JA|[ApiKey](#apikey-setting)|Wird zum Nachverfolgen von Abrechnungsinformationen verwendet.|
 |Nein |[ApplicationInsights](#applicationinsights-setting)|Ermöglicht das Hinzufügen von Unterstützung für [Azure Application Insights](https://docs.microsoft.com/azure/application-insights)-Telemetriedaten in Ihrem Container.|
-|JA|[Abrechnung](#billing-setting)|Gibt den Endpunkt-URI der Dienstressource in Azure an.|
+|JA|[Billing](#billing-setting)|Gibt den Endpunkt-URI der Dienstressource in Azure an.|
 |JA|[Eula](#eula-setting)| Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.|
 |Nein |[Fluentd](#fluentd-settings)|Schreibt Protokoll- und optional auch Metrikdaten auf einen Fluentd-Server.|
-|Nein |[Protokollierung](#logging-settings)|Bietet Unterstützung für die ASP.NET Core-Protokollierung für Ihren Container. |
+|Nein |[Logging](#logging-settings)|Bietet Unterstützung für die ASP.NET Core-Protokollierung für Ihren Container. |
 |JA|[Mounts](#mount-settings)|Liest und schreibt Daten vom Hostcomputer in den Container und umgekehrt.|
 
 > [!IMPORTANT]
