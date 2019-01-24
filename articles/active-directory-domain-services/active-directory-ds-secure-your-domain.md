@@ -4,7 +4,7 @@ description: Schützen Ihrer verwalteten Domäne
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1dea3def00423ecf092562aa47c76258316194a9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 1a9a8ee13145e6326c234a4eda053ed49faf33aa
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159059"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856671"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Schützen Ihrer verwalteten Azure AD Domain Services-Domäne
 Dieser Artikel unterstützt Sie beim Schützen Ihrer verwalteten Domäne. Sie können die Verwendung unsicherer Verschlüsselungssammlungen und die Synchronisierung von NTLM-Anmeldeinformationshashes deaktivieren.
@@ -31,7 +31,7 @@ Dieser Artikel unterstützt Sie beim Schützen Ihrer verwalteten Domäne. Sie k�
 Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure AD PowerShell-Moduls und Herstellen einer Verbindung mit Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 ### <a name="install-and-configure-azure-powershell"></a>Installieren und Konfigurieren von Azure PowerShell
-Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure PowerShell-Moduls und Herstellen einer Verbindung mit Ihrem Azure-Abonnement](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure PowerShell-Moduls und Herstellen einer Verbindung mit Ihrem Azure-Abonnement](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
 ## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>Deaktivieren von schwachen Verschlüsselungssammlungen und der Synchronisierung von NTLM-Anmeldeinformationshashes

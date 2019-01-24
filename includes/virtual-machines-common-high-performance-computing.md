@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 2a2d5f9c85a881dad8f53f81a39c84d4a34b632e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360189"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54440420"
 ---
 Organisationen haben hohen Computing-Bedarf. Zu diesen Big Compute-Workloads zählen unter anderem technische Entwicklungen und Analysen, die Berechnung finanzieller Risiken, das Rendern von Bildern, komplexe Modelle sowie Monte Carlo-Simulationen. 
 
@@ -95,7 +95,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 * [Installieren und Einrichten von CycleCloud mit einer Resource Manager-Vorlage](https://docs.microsoft.com/azure/cyclecloud/quickstart-install-cyclecloud)
 
-* [Manuelles Einrichten von CycleCloud](https://docs.microsoft.com/azure/cyclecloud/quickstart-installation)
+* [Manuelles Einrichten von CycleCloud](https://docs.microsoft.com/azure/cyclecloud/installation)
 
 ## <a name="azure-batch"></a>Azure Batch
 

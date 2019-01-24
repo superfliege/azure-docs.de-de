@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: caa877a265fb8665e062cc0069247bca0994c4bf
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041179"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857096"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Einbetten von Berichten in Power BI-Arbeitsbereichssammlungen
 
@@ -84,7 +84,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 Power BI-Arbeitsbereichssammlungen verwenden Einbettungstoken, bei denen es sich um HMAC-signierte JSON-Webtoken handelt. Die Token werden mit dem Zugriffsschlüssel aus Ihrer Power BI-Arbeitsbereichssammlung signiert. Einbettungstoken werden standardmäßig verwendet, um schreibgeschützten Zugriff auf einen Bericht zum Einbetten in eine Anwendung bereitzustellen. Einbettungstoken werden für einen bestimmten Bericht ausgegeben und sollten einer Einbettungs-URL zugeordnet werden.
 
-Zugriffstoken sollten auf dem Server erstellt werden, da die Zugriffsschlüssel zum Signieren/Verschlüsseln von Token verwendet werden. Informationen zum Erstellen eines Zugriffstoken finden Sie unter [Authenticating and authorizing with Power BI Workspace Collections (Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen)](app-token-flow.md). Sie können sich auch über die [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)-Methode informieren. Das folgende Beispiel zeigt Ihnen das Vorgehen mit dem .NET SDK für Power BI.
+Zugriffstoken sollten auf dem Server erstellt werden, da die Zugriffsschlüssel zum Signieren/Verschlüsseln von Token verwendet werden. Informationen zum Erstellen eines Zugriffstoken finden Sie unter [Authenticating and authorizing with Power BI Workspace Collections (Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen)](app-token-flow.md). Sie können sich auch über die [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)-Methode informieren. Das folgende Beispiel zeigt Ihnen das Vorgehen mit dem .NET SDK für Power BI.
 
 Sie verwenden die Berichts-ID, die Sie zuvor abgerufen haben. Sobald das Einbettungstoken erstellt ist, verwenden Sie den Zugriffsschlüssel zum Generieren des Tokens, das Sie aus der JavaScript-Perspektive verwenden können. Die *PowerBIToken-Klasse* erfordert die Installation des [Power BI Core-NuGut-Pakets](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
@@ -147,7 +147,7 @@ Der Bericht wird automatisch basierend auf der Größe seines Containers eingebe
 
 [Erste Schritte mit dem Beispiel](get-started-sample.md)  
 [Authenticating and authorizing in Power BI Workspace Collections (Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen)](app-token-flow.md)  
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 [Power BI API-NuGet-Paket](https://www.nuget.org/profiles/powerbi)
