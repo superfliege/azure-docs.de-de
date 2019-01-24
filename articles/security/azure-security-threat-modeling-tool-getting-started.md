@@ -3,9 +3,9 @@ title: Erste Schritte – Microsoft Threat Modeling Tool – Azure | Microsoft-D
 description: Dies ist eine detailliertere Übersicht über das Threat Modeling Tool in Aktion.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: jegeib
+ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096773"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359475"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
-Die Cloud and Enterprise Security Tools-Team hat in diesem Jahr die Vorschauversion des Threat Modeling Tools als kostenlose **[herunterladbare](https://aka.ms/tmtpreview)** Version veröffentlicht. Die Änderung am Übermittlungsmechanismus ermöglicht uns, die neuesten Verbesserungen und Fehlerkorrekturen per Push an Kunden zu übertragen, sobald sie das Tool öffnen, wodurch es einfacher zu warten und zu nutzen ist.
+Das Microsoft Threat Modeling Tool 2018 wurde im September 2018 als kostenlos **[per Mausklick](https://aka.ms/threatmodelingtool)** herunterladbare Version für die Allgemeinheit veröffentlicht. Die Änderung am Übermittlungsmechanismus ermöglicht uns, die neuesten Verbesserungen und Fehlerkorrekturen per Push an Kunden zu übertragen, sobald sie das Tool öffnen, wodurch es einfacher zu warten und zu nutzen ist.
 Dieser Artikel begleitet Sie durch die ersten Schritte mit dem Bedrohungsmodellierungsansatz des Microsoft Security Development Lifecycle (SDL) und veranschaulicht, wie Sie das Tool einsetzen, um überzeugende Bedrohungsmodelle als tragende Säule Ihres Sicherheitsprozesses zu entwickeln.
 
 Dieser Artikel setzt auf vorhandenen Kenntnissen zum SDL-Bedrohungsmodellierungsansatz auf. Eine Kurzübersicht finden Sie im Artikel zur **[Bedrohungsmodellierung für Webanwendungen](https://msdn.microsoft.com/library/ms978516.aspx)** und in einer archivierten Version des 2006 veröffentlichten MSDN-Artikels **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** (Aufdecken von Sicherheitslücken mit der STRIDE-Methode).
@@ -68,13 +68,13 @@ In diesem Abschnitt begleiten wir:
 Sie durchlaufen den Prozess der Entwicklung ihres ersten Bedrohungsmodells.
 
 > Ricardo: Hallo Cristina, ich habe am Bedrohungsmodelldiagramm gearbeitet und möchte sicherstellen, dass alle Details richtig sind. Kannst du mit mir einen Blick darauf werfen?
-> Cristina: Klar. Sehen wir uns das genauer an.
+> Cristina: Absolut. Sehen wir uns das genauer an.
 > Ricardo öffnet das Tool und gibt seinen Bildschirm für Cristina frei.
 
 ![Grundlegendes Bedrohungsmodell](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok, das sieht einleuchtend aus, doch kannst du es mit mir durchgehen?
-> Ricardo: Sicher! Dies ist die Gliederung:
+> Cristina: OK, das sieht unkompliziert aus, aber kannst du es mit mir durchgehen?
+> Ricardo: Ja, natürlich. Dies ist die Gliederung:
 > - Unsere menschlichen Benutzer werden als externe Entität gezeichnet (ein Quadrat).
 > - Sie senden Befehle an unseren Webserver (den Kreis).
 > - Der Webserver fragt eine Datenbank ab (zwei parallele Geraden)
@@ -82,7 +82,7 @@ Sie durchlaufen den Prozess der Entwicklung ihres ersten Bedrohungsmodells.
 Was Ricardo gerade eben Cristina gezeigt hat, ist ein **[Datenflussdiagramm](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Das Threat Modeling Tool ermöglicht Benutzern die Angabe von Vertrauensstellungsgrenzen, die durch die rot gepunkteten Linien angezeigt werden, um zu veranschaulichen, welche verschiedenen Entitäten die Kontrolle haben. IT-Administratoren benötigen z.B. zu Authentifizierungszwecken ein Active Directory-System, weshalb das Active Directory außerhalb ihrer Kontrolle ist.
 
 > Cristina: Das sieht stimmig aus. Was ist mit den Bedrohungen?
-> Ricardo: Das will ich dir zeigen.
+> Ricardo: Das zeige ich dir.
 
 ## <a name="analyzing-threats"></a>Analysieren von Bedrohungen
 
@@ -143,4 +143,4 @@ Der hier vorgestellte Ansatz zur Bedrohungsmodellierung ist wesentlich einfacher
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Senden Sie Ihre Fragen, Kommentare und Probleme an tmtextsupport@microsoft.com. **[Laden Sie das Threat Modeling Tool herunter](https://aka.ms/tmtpreview)**, um die ersten Schritte zu unternehmen.
+Senden Sie Ihre Fragen, Kommentare und Probleme an tmtextsupport@microsoft.com. **[Laden Sie das Threat Modeling Tool herunter](https://aka.ms/threatmodelingtool)**, um die ersten Schritte zu unternehmen.
