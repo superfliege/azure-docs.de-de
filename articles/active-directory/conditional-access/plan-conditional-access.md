@@ -3,7 +3,7 @@ title: Planen von Richtlinien für bedingten Zugriff in Azure Active Directory |
 description: In diesem Artikel erfahren Sie, wie Sie Richtlinien für bedingten Zugriff für Azure Active Directory planen.
 services: active-directory
 author: MarkusVi
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.component: conditional-access
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1c483b7f3fcb22aa617ff55699cb8f4d4da95912
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355079"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450506"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory
 
@@ -74,7 +74,7 @@ Nun ist eine gute Gelegenheit, um sich für einen Benennungsstandard für Ihre R
 
 - Eine laufende Nummer
 - Die Cloud-App, für die sie gilt
-- Die Reaktion
+- Die Antwort
 - Für wen sie gilt
 - Wann sie gilt 
  
@@ -99,7 +99,7 @@ Neben Ihren aktiven Richtlinien sollten Sie auch deaktivierte Richtlinien implem
 Überlegen Sie sich bei der Planung Ihrer Richtlinienlösung für bedingten Zugriff, ob Sie Richtlinien erstellen müssen, um die folgenden Ergebnisse zu erzielen: 
 
 
-### <a name="block-access"></a>Blockieren des Zugriffs
+### <a name="block-access"></a>Zugriff blockieren
 
 Die Option zum Blockieren des Zugriffs zeichnet sich durch Folgendes aus:
 
@@ -110,7 +110,7 @@ Die Option zum Blockieren des Zugriffs zeichnet sich durch Folgendes aus:
 Wenn Sie den Zugriff für alle Benutzer blockieren möchten, sollten Sie mindestens einen Benutzer (in der Regel Konten für den Notfallzugriff) von der Richtlinie ausnehmen. Weitere Informationen finden Sie unter [Auswählen von Benutzern und Cloud-Apps](block-legacy-authentication.md#select-users-and-cloud-apps).  
     
 
-### <a name="require-mfa"></a>Anfordern der MFA
+### <a name="require-mfa"></a>Anfordern von MFA
 
 Um den Anmeldevorgang für Ihre Benutzer einfacher zu gestalten, möchten Sie ihnen vielleicht die Anmeldung bei Cloud-Apps über Benutzername und Kennwort gestatten. Meist gibt es jedoch einige Szenarien, in denen eine sicherere Form der Kontoüberprüfung angebracht ist. Mit einer Richtlinie für bedingten Zugriff können Sie die MFA-Anforderung auf bestimmte Szenarien beschränken. 
 
@@ -159,11 +159,11 @@ Eine Richtlinie sollte vor dem Rollout in die Produktionsumgebung getestet werde
 
 3. Konfigurieren Sie die Richtlinie.
 
-4. Werten Sie eine simulierte Anmeldung aus.
+4. Auswerten einer simulierten Anmeldung
 
-5. Testen Sie Ihre Richtlinie.
+5. Testen Ihrer Richtlinie
 
-6. Führen Sie eine Bereinigung durch.
+6. Cleanup
 
 
 
@@ -217,7 +217,7 @@ Führen Sie Testfälle gemäß Ihrem Testplan aus. In diesem Schritt wird jede R
 Wichtig: Testen Sie unbedingt die Ausschlusskriterien einer Richtlinie. Sie können beispielsweise einen Benutzer oder eine Gruppe aus einer Richtlinie ausschließen, die die MFA erfordert. Daher empfiehlt es sich, zu testen, ob ausgeschlossene Benutzer zur Verwendung der MFA aufgefordert werden, weil die Kombination anderer Richtlinien möglicherweise die Verwendung der MFA für diese Benutzer vorschreibt.
 
 
-### <a name="cleanup"></a>Bereinigen
+### <a name="cleanup"></a>Cleanup
 
 Die Bereinigung umfasst folgende Schritte:
 

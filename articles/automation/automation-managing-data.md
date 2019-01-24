@@ -3,18 +3,18 @@ title: Verwalten von Azure Automation-Daten
 description: Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen "Datenaufbewahrung", "Sichern von Azure Automation" und "Notfallwiederherstellung in Azure Automation".
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05da900e9ddf4cbb99df5c6d62ddb569059e2c4b
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142073"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428476"
 ---
 # <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten
 Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.
@@ -76,4 +76,5 @@ In der folgenden Tabelle werden die verfügbaren Paare primärer und sekundärer
 | Japan, Osten |Japan, Westen |
 
 Microsoft versucht im unwahrscheinlichen Fall, dass Daten der primären Region verloren gehen, diese wiederherzustellen. Wenn die Daten der primären Region nicht wiederhergestellt werden können, erfolgt ein Geofailover, über das die betroffenen Kunden durch ihr Abonnement benachrichtigt werden.
+
 

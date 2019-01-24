@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091025"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402335"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -32,7 +32,7 @@ Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von 
 | --- |:---:|:---:|:---:|
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
 | Durchsatzeinheit (1 MB/s eingehend, 2 MB/s ausgehend) | Bezahlung pro Stunde | Enthalten |
-| Nachrichtengröße | 256 KB | 1 MB |
+| Nachrichtengröße | 1 MB | 1 MB |
 | Herausgeberrichtlinien | JA | JA |   
 | Verbrauchergruppen | 20 | 20 |
 | Nachrichtenwiederholung | JA | JA |
@@ -47,7 +47,6 @@ Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von 
 Die Verwendung der Event Hubs Dedicated-Kapazität bietet die folgenden Vorteile:
 
 * Hosting eines einzelnen Mandanten ohne Störungen durch andere Mandanten
-* Erweiterung der Nachrichtengröße auf 1 MB im Vergleich zu 256 KB für Standard
 * Jedes Mal wiederholbare Leistung
 * Garantierte Kapazität, die Ihre Burstanforderungen erfüllt
 * Enthält die [Capture](event-hubs-capture-overview.md)-Funktion von Event Hubs für die Bereitstellung der Integration mit Microbatch und langfristiger Aufbewahrung

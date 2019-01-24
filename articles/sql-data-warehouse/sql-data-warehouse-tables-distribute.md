@@ -10,17 +10,17 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 36db91cd7c4dad3c28c0c110ee837ca6d1284959
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b272dd1c5b12c9f171c7e8c7c346f4d6cd4b777
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575379"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413871"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Leitfaden für das Entwerfen verteilter Tabellen in Azure SQL Data Warehouse
 Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in Azure SQL Data Warehouse.
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie unter [Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)](massively-parallel-processing-mpp-architecture.md). 
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie unter [Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Was ist eine verteilte Tabelle?
 Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich sind die Zeilen jedoch in 60 Verteilungen gespeichert. Die Zeilen werden mit einem Hash- oder Roundrobinalgorithmus verteilt.  
@@ -29,11 +29,11 @@ Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich 
 
 Eine andere Tabellenspeicheroption besteht darin, eine kleine Tabelle auf allen Computeknoten zu replizieren. Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md). Eine praktische Entscheidungshilfe für die Wahl einer der drei Optionen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md) unter „Verteilte Tabellen“. 
 
-Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
+Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
 
-- Wie groß ist die Tabelle?   
-- Wie oft wird die Tabelle aktualisiert?   
-- Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
+- Wie groß ist die Tabelle?   
+- Wie oft wird die Tabelle aktualisiert?   
+- Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
 
 
 ### <a name="hash-distributed"></a>Hashverteilung
@@ -147,7 +147,7 @@ where two_part_name in
     from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
-    having min(row_count * 1.000)/max(row_count * 1.000) > .10
+    having (max(row_count * 1.000) - min(row_count * 1.000))/max(row_count * 1.000) >= .10
     )
 order by two_part_name, row_count
 ;

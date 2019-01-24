@@ -3,18 +3,18 @@ title: Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics
 description: In diesem Artikel wird erläutert, wie Auftragsstatus und Runbookauftrags-Datenströme an Azure Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269565"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432964"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics
 
@@ -183,3 +183,4 @@ Log Analytics bietet eine höhere operative Transparenz für Ihre Automation-Auf
 * Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
 * Weitere Informationen zu Log Analytics und Datenerfassungsquellen finden Sie unter [Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht](../azure-monitor/platform/collect-azure-metrics-logs.md).
+

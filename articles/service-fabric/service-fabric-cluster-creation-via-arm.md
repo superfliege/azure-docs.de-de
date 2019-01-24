@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06e0509f05352a023651d7121aa89e18e375ef32
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043786"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428324"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Die Vorlage, die verwendet wird, ist unter den [Azure Service Fabric-Vorlagenbei
 Mit dem folgenden Befehl können entweder Windows- oder Linux-Cluster erstellt werden. Geben Sie das Betriebssystem entsprechend an. Die PowerShell-/CLI-Befehle geben außerdem das Zertifikat im angegebenen *CertificateOutputFolder*-Ordner zurück. Stellen Sie daher sicher, dass der Zertifikatordner bereits erstellt ist. Der Befehl akzeptiert auch andere Parameter wie VM-SKU.
 
 > [!NOTE]
-> Der folgende PowerShell-Befehl funktioniert nur mit einer höheren Azure Resource Manager PowerShell-Version als 6.1. Um die aktuelle Version von Azure Resource Manager PowerShell zu überprüfen, führen Sie den PowerShell-Befehl „Get-Module AzureRM“-aus. Folgen Sie [diesem Link](/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0), um ein Upgrade für Ihre Azure Resource Manager PowerShell-Version durchzuführen. 
+> Der folgende PowerShell-Befehl funktioniert nur mit einer höheren Azure Resource Manager PowerShell-Version als 6.1. Um die aktuelle Version von Azure Resource Manager PowerShell zu überprüfen, führen Sie den PowerShell-Befehl „Get-Module AzureRM“-aus. Folgen Sie [diesem Link](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0), um ein Upgrade für Ihre Azure Resource Manager PowerShell-Version durchzuführen. 
 >
 >
 
@@ -292,7 +292,7 @@ Sie verfügen jetzt über einen sicheren Cluster, der in Azure ausgeführt wird.
 Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollen, finden Sie in der Vorlagenreferenz [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template

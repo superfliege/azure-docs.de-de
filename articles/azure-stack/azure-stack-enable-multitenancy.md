@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/6/2018
 ms.author: patricka
 ms.reviewer: bryanr
-ms.openlocfilehash: 28bd314e2dd179d83d2880e3acbf39805b54d333
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2861b0d1b7ac24a8e881ff052b865ca0384a55d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263965"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464785"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Mehrinstanzenfähigkeit in Azure Stack
 
@@ -158,3 +158,5 @@ Wenn Sie in Azure Stack nicht länger mehrere Mandanten benötigen, können Sie 
 
 - [Verwalten delegierter Anbieter](azure-stack-delegated-provider.md)
 - [Schlüsselkonzepte für Azure Stack](azure-stack-key-features.md)
+- [Verwalten von Nutzung und Abrechnung für Azure Stack als Cloud-Dienstanbieter](azure-stack-add-manage-billing-as-a-csp.md)
+- [Hinzufügen von Mandanten für Nutzung und Abrechnung zu Azure Stack](azure-stack-csp-howto-register-tenants.md)

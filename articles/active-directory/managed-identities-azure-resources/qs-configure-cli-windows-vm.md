@@ -4,7 +4,7 @@ description: Ausführliche Anweisungen zum Konfigurieren von system- und benutze
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: daveba
-ms.openlocfilehash: b6d4bcd609fd57349067a40584a86af14e7807af
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: ab90db371aa729ecc7fd34e0663828de7760f8c1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578602"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424045"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -159,7 +159,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem vorhandenen virtuellen Azure-Computer
 
-Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
+Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 1. Erstellen Sie mit [az identity create](/cli/azure/identity#az-identity-create) eine vom Benutzer zugewiesene Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene Identität erstellt wird, und der Parameter `-n` gibt den Namen an. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte:
 
@@ -194,7 +194,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuel
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Entfernen einer vom Benutzer zugewiesenen verwalteten Identität von einer Azure-VM
 
-Für das Entfernen einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisung [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor). 
+Für das Entfernen einer benutzerseitig zugewiesenen Identität von einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisung [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor). 
 
 Wenn dies die einzige vom Benutzer zugewiesene verwaltete Identität des virtuellen Computers ist, wird `UserAssigned` aus dem Wert des Identitätstyps entfernt.  Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY>` ist die `name`-Eigenschaft der vom Benutzer zugewiesen Identität. Diese Eigenschaft kann mit `az vm identity show` aus dem Identitätsabschnitt des virtuellen Computers abgerufen werden:
 

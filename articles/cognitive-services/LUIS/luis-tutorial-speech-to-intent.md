@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2d212ae8f5a12c06f40e025a7a8d786a44194a92
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714579"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438729"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integrieren des Speech-Diensts in Ihre Language Understanding-App
 Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen. In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das Spracherkennungspaket [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), das bereits als Referenz enthalten ist. 
@@ -24,7 +24,7 @@ Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Websitekonto, um die Anwendung zu importieren.
 
 ## <a name="create-luis-endpoint-key"></a>Erstellen eines LUIS-Endpunktschlüssels
-[Erstellen](luis-how-to-azure-subscription.md#create-luis-endpoint-key) Sie im Azure-Portal einen **Sprachverständnis**-Schlüssel (LUIS). 
+[Erstellen](luis-how-to-azure-subscription.md) Sie im Azure-Portal einen **Sprachverständnis**-Schlüssel (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Importieren der LUIS-App „Personalwesen“
 Die Absichten und Äußerungen für diesen Artikel stammen aus der LUIS-App für das Personalwesen, die im GitHub-Repository mit [Azure-Beispielen](https://github.com/Azure-Samples/cognitive-services-language-understanding) verfügbar ist. Laden Sie die Datei [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) herunter, speichern Sie sie mit der Erweiterung `.json`, und [importieren](luis-how-to-start-new-app.md#import-new-app) Sie sie in LUIS. 

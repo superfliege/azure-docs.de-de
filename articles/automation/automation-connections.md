@@ -3,18 +3,18 @@ title: Verbindungsobjekte in Azure Automation
 description: Verbindungsobjekte in Azure Automation enthalten die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dieser Artikel stellt eine ausführliche Beschreibung von Verbindungen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358829"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439016"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
@@ -164,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - Lesen Sie [Verknüpfungen bei der grafischen Erstellung](automation-graphical-authoring-intro.md#links-and-workflow), um zu verstehen, wie Sie den Ablauf der Logik in Ihren Runbooks steuern können.  
 
 - Weitere Informationen zur Verwendung von PowerShell-Modulen in Azure Automation und bewährte Methoden zum Erstellen eigener PowerShell-Module, die als Integrationsmodule in Azure Automation verwendet werden können, finden Sie unter [Integrationsmodule](automation-integration-modules.md).  
+

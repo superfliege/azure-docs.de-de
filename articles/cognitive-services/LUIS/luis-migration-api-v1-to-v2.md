@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9542fe14cc262731ca0f2ade65e6e4dfafbc34d7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138822"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427507"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
 Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
@@ -112,7 +112,7 @@ Die Abonnementendpunkt-Schlüssel-APIs sind veraltet und geben den Fehler „410
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{Abonnementschlüssel}|
 
-Azure-[Endpunktschlüssel](luis-how-to-azure-subscription.md) werden im Azure-Portal generiert. Sie Weisen den Schlüssel auf der Seite **[Veröffentlichen](luis-how-to-manage-keys.md)** einer LUIS-App zu. Sie müssen den tatsächlichen Schlüsselwert nicht kennen. LUIS verwendet für die Zuweisung den Namen des Abonnements. 
+Azure-[Endpunktschlüssel](luis-how-to-azure-subscription.md) werden im Azure-Portal generiert. Sie Weisen den Schlüssel auf der Seite **[Veröffentlichen](luis-how-to-azure-subscription.md)** einer LUIS-App zu. Sie müssen den tatsächlichen Schlüsselwert nicht kennen. LUIS verwendet für die Zuweisung den Namen des Abonnements. 
 
 ## <a name="new-versioning-route"></a>Neue Versionsverwaltungsroute
 Die v2-Modell ist nun in einer [Version](luis-how-to-manage-versions.md) enthalten. Ein Versionsname umfasst 10 Zeichen in der Route. Die Standardversion ist 0.1.

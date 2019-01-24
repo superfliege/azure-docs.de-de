@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: b5f1247c43dcbd836c684dbf41bafd0d319e5f7c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: cd458ba08f12e9553233a1dd3d7caf03acda56c6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230474"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463506"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -693,3 +693,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
  *Tree: Root – DiagnosticsConfiguration – IsEnabled*
 
  Boolesch. Verwenden Sie `true`, um die Diagnose zu aktivieren, oder `false`, um die Diagnose zu deaktivieren.
+

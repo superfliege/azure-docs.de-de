@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ee5712915e552168c0268a44af60ea58e069fc11
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184099"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429514"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -31,7 +31,7 @@ Azure Resource Health informiert Sie über den aktuellen und den vergangenen Int
 
 Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab einige Komponenten einrichten:
 
-1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`) installieren.
+1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`) installieren.
 2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/platform/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
 
 ## <a name="instructions"></a>Anleitung

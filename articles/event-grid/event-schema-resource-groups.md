@@ -2,21 +2,21 @@
 title: Ereignisschema der Azure Event Grid-Ressourcengruppe
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ressourcengruppenereignisse bereitgestellt werden.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 10/12/2018
-ms.author: tomfitz
-ms.openlocfilehash: ffc9eba251cbf4d9e2542791d90943ecdd1a972a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 01/12/2019
+ms.author: spelluru
+ms.openlocfilehash: 2b570fdb42c29c6ad68add32be660ef57f1eec1f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310571"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468300"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid-Ereignisschema für Ressourcengruppen
 
-In diesem Artikel werden die Eigenschaften und das Schema für Ressourcengruppenereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+In diesem Artikel werden die Eigenschaften und das Schema für Ressourcengruppenereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Die Ereignistypen beziehen sich auf Ressourcenänderungen oder -aktionen. Der Hauptunterschied besteht darin, dass Ressourcengruppen Ereignisse für Ressourcen innerhalb der Ressourcengruppe und Azure-Abonnements Ereignisse für Ressourcen im gesamten Abonnement ausgeben.
 

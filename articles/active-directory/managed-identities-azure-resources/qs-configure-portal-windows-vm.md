@@ -4,7 +4,7 @@ description: Ausführliche Anweisungen zum Konfigurieren von verwalteten Identit
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: daveba
-ms.openlocfilehash: f0d207bb5db8d27765c608f07a9d2ed9dc2f08dd
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d3f8fe41174e6c75a8546c0c987acd56fc5921c9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514994"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436190"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal
 
@@ -84,7 +84,7 @@ Bei einem virtuellen Computer, für den die vom System zugewiesene verwaltete Id
 
 ### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Zuweisen einer vom Benutzer zugewiesenen Identität beim Erstellen eines virtuellen Computers
 
-Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
+Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 Derzeit unterstützt das Azure-Portal nicht das Zuweisen einer vom System zugewiesenen verwalteten Identität während der Erstellung einer VM. Lesen Sie stattdessen die folgenden Schnellstartartikel, um zunächst einen virtuellen Computer zu erstellen, und fahren Sie dann mit dem nächsten Abschnitt mit Einzelheiten zum Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zum virtuellen Computer fort:
 
@@ -93,7 +93,7 @@ Derzeit unterstützt das Azure-Portal nicht das Zuweisen einer vom System zugewi
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem vorhandenen virtuellen Computer
 
-Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
+Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
 2. Navigieren Sie zur gewünschten VM, und klicken Sie auf **Identität**, **Vom Benutzer zugewiesen** und dann auf **\+Hinzufügen**.

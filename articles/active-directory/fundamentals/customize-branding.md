@@ -3,7 +3,7 @@ title: Hinzufügen von Branding zur Anmeldeseite Ihrer Organisation – Azure Ac
 description: Hier finden Sie Anweisungen dazu, wie Sie der Azure Active Directory-Anmeldeseite ein Branding Ihrer Organisation hinzufügen.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 0ce0d42e37bcc5c936798947bacf0232891c24ab
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7abfa0e52abb594668935d325835e3ef25818aa2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090311"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452420"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -100,7 +100,7 @@ Nachdem Sie Ihr benutzerdefiniertes Branding erstellt haben, können Sie zurück
 
 3. Auf der Seite **Unternehmensbranding konfigurieren** fügen Sie Informationen hinzu, entfernen oder ändern diese, basierend auf den Beschreibungen im Abschnitt [Anpassen Ihrer Azure AD-Anmeldeseite](#customize-your-azure-ad-sign-in-page) dieses Artikels.
 
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
   Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie am Branding der Anmeldeseite vorgenommen haben.
 
@@ -117,7 +117,7 @@ Sie können die Sprache Ihrer ursprünglichen Konfiguration nicht in eine andere
 
 3. Auf der Seite **Unternehmensbranding konfigurieren** wählen Sie Ihre Sprache aus (z. B. Deutsch), und fügen Sie dann Ihre übersetzten Informationen hinzu, basierend auf den Beschreibungen im Abschnitt [Anpassen Ihrer Azure AD-Anmeldeseite](#customize-your-azure-ad-sign-in-page) dieses Artikels.
 
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
     Die Seite **Contoso – Unternehmensbranding** wird mit Ihrer neuen deutschen Konfiguration aktualisiert.
 

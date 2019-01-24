@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 481340dbab6a2ae7247a53cb78b17f3353edcd00
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 85480a098dc5ef70938a5ec4cd7a31105496df6f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345160"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461399"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-Warnungsverhalten in Aktionsgruppen
 ## <a name="overview"></a>Übersicht ##
@@ -45,3 +45,4 @@ Ein SMS-Empfänger, der als Teil einer Aktionsgruppe konfiguriert ist, erhält e
 Verschaffen Sie sich einen [Überblick über Aktivitätsprotokollwarnungen](alerts-overview.md), und erfahren Sie, wie Sie gewarnt werden können.  
 Erfahren Sie mehr über die [SMS-Rateneinschränkung](alerts-rate-limiting.md).  
 Erfahren Sie mehr über [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+

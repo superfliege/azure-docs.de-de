@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789755"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470510"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).
@@ -85,3 +85,4 @@ Erste Schritte finden Sie unter [Überwachen einer Service Fabric-Anwendung](../
 ## <a name="general-articles"></a>Allgemeine Artikel
 * Hier erhalten Sie Informationen zur Verwendung von [Leistungsindikatoren in der Azure-Diagnose](../../cloud-services/diagnostics-performance-counters.md).
 * Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure-Speichertabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung mit Azure-Diagnose](diagnostics-extension-troubleshooting.md).
+

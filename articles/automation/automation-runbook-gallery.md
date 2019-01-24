@@ -3,18 +3,18 @@ title: Runbook und Modulkataloge für Azure Automation
 description: Ihnen stehen Runbooks und Module von Microsoft und der Community zur Verfügung, die Sie in Ihrer Azure Automation-Umgebung installieren und verwenden können.  Dieser Artikel beschreibt, wie Sie auf diese Ressourcen zugreifen und Ihre Runbooks im Katalog bereitstellen können.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7330d826cb196a664f06198a0e83f73bd7763ef9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634319"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428104"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook und Modulkataloge für Azure Automation
 Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie eine Vielzahl von Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden.  Sie können diese Szenarien ohne Anpassung verwenden oder als Ausgangspunkt nutzen und für Ihre spezifischen Anforderungen bearbeiten.
@@ -108,4 +108,5 @@ Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/2462
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Einstieg in die Arbeit mit Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md)
 * Informationen zu den Unterschieden zwischen PowerShell- und PowerShell-Workflow bei der Arbeit mit Runbooks finden Sie unter [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
+
 

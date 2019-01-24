@@ -5,7 +5,7 @@ services: active-directory
 keywords: Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0533f0609539645c462c9e6f5b514a82f1162a1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 6978419cf0471e697d1320482e0ad314d3916bc0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187568"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463863"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -62,12 +62,12 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 
 | Betriebssystem/Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja\*|Nein |JA|Ja\*\*\*|N/V
-|Windows 8.1|Ja\*|N/V|JA|Ja\*\*\*|N/V
-|Windows 8|Ja\*|N/V|JA|Ja\*\*\*|N/V
-|Windows 7|Ja\*|N/V|JA|Ja\*\*\*|N/V
-|Windows Server 2012 R2 oder höher|Ja\*\*|N/V|JA|Ja\*\*\*|N/V
-|Mac OS X|N/V|N/V|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
+|Windows 10|Ja\*|Nein |JA|Ja\*\*\*|–
+|Windows 8.1|Ja\*|–|JA|Ja\*\*\*|–
+|Windows 8|Ja\*|–|JA|Ja\*\*\*|–
+|Windows 7|Ja\*|–|JA|Ja\*\*\*|–
+|Windows Server 2012 R2 oder höher|Ja\*\*|–|JA|Ja\*\*\*|–
+|Mac OS X|–|–|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
 
 \*Internet Explorer 10 oder höher erforderlich

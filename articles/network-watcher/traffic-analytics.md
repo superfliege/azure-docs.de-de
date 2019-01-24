@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338582"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429088"
 ---
-# <a name="traffic-analytics"></a>Datenverkehrsanalyse
+# <a name="traffic-analytics"></a>Traffic Analytics
 
-Die Datenverkehrsanalyse (Englisch: Traffic Analytics) ist eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Cloudnetzwerken bietet. Mit der Datenverkehrsanalyse werden die Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs) analysiert, um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. Mit der Datenverkehrsanalyse können Sie folgende Aktionen durchführen:
+Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Cloudnetzwerken bietet. Mit der Datenverkehrsanalyse werden die Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs) analysiert, um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. Mit der Datenverkehrsanalyse können Sie folgende Aktionen durchführen:
 
 - Visualisieren der Netzwerkaktivität für Ihre Azure-Abonnements und Identifizieren von Hotspots
 - Erkennen von Sicherheitsrisiken für das Netzwerk und Schützen Ihres Netzwerks mithilfe von Informationen zu offenen Ports, Anwendungen, die versuchen, Zugriff auf das Internet zu erhalten, und virtuellen Computern (VM), die Verbindungen mit betrügerischen Netzwerken herstellen
@@ -99,9 +99,6 @@ Ihr Konto muss Mitglied in einer der folgenden [integrierten Azure-Rollen](../ro
 |                   | Mitwirkender            |
 |                   | Leser                 |
 |                   | Mitwirkender von virtuellem Netzwerk    |
-|Klassisch            | Kontoadministrator  |
-|                   | Dienstadministrator  |
-|                   | Co-Admin       |
 
 Wenn Ihr Konto nicht einer der integrierten Rollen zugewiesen ist, müssen Sie es einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) zuweisen, die einer der folgenden Aktionen auf Abonnementebene zugewiesen ist:
 
@@ -170,13 +167,13 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 5. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder wählen Sie **Neuen Arbeitsbereich erstellen**, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#traffic-analytics-supported-regions) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Der Log Analytics-Arbeitsbereich, der die Lösung für die Datenverkehrsanalyse hostet, und die Netzwerksicherheitsgruppen (NSGs) müssen sich nicht in derselben Region befinden. Sie können die Datenverkehrsanalyse beispielsweise in einem Arbeitsbereich in der Region „Europa, Westen“ mit Netzwerksicherheitsgruppen in den Regionen „USA, Osten“ und „USA, Westen“ verwenden. Es können mehrere NSGs im selben Arbeitsbereich konfiguriert werden.
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
 
     ![Auswählen von Speicherkonto, Log Analytics-Arbeitsbereich und Traffic Analytics-Aktivierung](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
 
 Wiederholen Sie die oben angegebenen Schritte für alle weiteren NSGs, für die Sie die Datenverkehrsanalyse aktivieren möchten. Die Daten aus den Flussprotokollen werden an den Arbeitsbereich gesendet, daher müssen Sie sicherstellen, dass die vor Ort geltenden Gesetze und Vorschriften in Ihrem Land eine Datenspeicherung in der Region, in der sich der Arbeitsbereich befindet, erlauben.
 
-Sie können Datenverkehrsanalysen auch mit dem Cmdlet [Set-AzureRmNetworkWatcherConfigFlowLog PowerShell](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) in AzureRm PowerShell-Modulversion 6.2.1 oder höher konfigurieren. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+Sie können Datenverkehrsanalysen auch mit dem Cmdlet [Set-AzureRmNetworkWatcherConfigFlowLog PowerShell](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) in AzureRm PowerShell-Modulversion 6.2.1 oder höher konfigurieren. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu.
 
 ## <a name="view-traffic-analytics"></a>Anzeigen der Datenverkehrsanalyse
 

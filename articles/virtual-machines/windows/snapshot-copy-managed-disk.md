@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0f223660f8dc99b590f8aa80a03d60fcbf3aa5d3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.component: disks
+ms.openlocfilehash: 9bc230846714264d514b7e15962a2c99c838c7de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232578"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465104"
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
@@ -43,7 +44,7 @@ Wenn Sie mit der Momentaufnahme einen neuen virtuellen Computer erstellen möcht
 
 In den folgenden Schritten wird das Kopieren des VHD-Datenträgers, das Erstellen der Momentaufnahmekonfiguration und das Erstellen einer Momentaufnahme des Datenträgers mithilfe des Cmdlets [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) beschrieben. 
 
-Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden (Version 5.7.0 oder höher). Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Bei lokaler Ausführung von PowerShell müssen Sie [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) ausführen, um eine Verbindung mit Azure herzustellen.
+Stellen Sie vor Beginn sicher, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden (Version 5.7.0 oder höher). Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Bei lokaler Ausführung von PowerShell müssen Sie [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) ausführen, um eine Verbindung mit Azure herzustellen.
 
 1. Legen Sie einige Parameter fest: 
 

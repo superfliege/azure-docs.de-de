@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: dd86b05e3e8178166624cf6478af920f67caadba
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 002520504bd611c6d786808ffe402eb1ba82636d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052496"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425858"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory mit PowerShell
 In diesem Tutorial werden die Schritte für die Bereitstellung einer Azure-SSIS Integration Runtime (Integration Runtime, IR) in Azure Data Factory beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen und Ausführen von SQL Server Integration Services-Paketen (SSIS) in dieser Runtime in Azure verwenden. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -41,7 +41,7 @@ In diesem Tutorial werden die Schritte für die Bereitstellung einer Azure-SSIS 
     - Fügen Sie der Client-IP-Adressenliste in den Firewalleinstellungen für den Datenbankserver die IP-Adresse des Clientcomputers oder einen IP-Adressbereich hinzu, der die IP-Adresse des Clientcomputers enthält. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md). 
     - Sie können eine Verbindung mit dem Datenbankserver herstellen, indem Sie die SQL-Authentifizierung mit Ihren Serveradministrator-Anmeldeinformationen oder die Azure Active Directory-Authentifizierung (AAD) mit der verwalteten Identität für Ihre Azure Data Factory-Instanz verwenden.  Für Letztere müssen Sie die verwaltete Identität für Ihre Azure Data Factory-Instanz einer AAD-Gruppe mit Zugriffsberechtigungen für den Datenbankserver hinzufügen. Weitere Informationen finden Sie unter [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
     - Vergewissern Sie sich, dass Ihr Azure SQL-Datenbankserver keinen SSIS-Katalog (SSISDB) aufweist. Für die Bereitstellung der Azure-SSIS IR wird die Verwendung eines vorhandenen SSIS-Katalogs nicht unterstützt. 
-- **Azure PowerShell**. Führen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets) aus. Sie verwenden PowerShell zum Ausführen eines Skripts, um eine Azure-SSIS Integration Runtime bereitzustellen, die SSIS-Pakete in der Cloud ausführt. 
+- **Azure PowerShell**. Führen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/azurerm/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets) aus. Sie verwenden PowerShell zum Ausführen eines Skripts, um eine Azure-SSIS Integration Runtime bereitzustellen, die SSIS-Pakete in der Cloud ausführt. 
 
 > [!NOTE]
 > - Eine Liste mit den Azure-Regionen, in denen Data Factory und Azure-SSIS Integration Runtime zurzeit verfügbar sind, finden Sie unter [ADF- und SSIS IR-Verfügbarkeit nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 

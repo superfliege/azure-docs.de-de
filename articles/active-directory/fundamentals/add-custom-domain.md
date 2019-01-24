@@ -3,7 +3,7 @@ title: Hinzufügen Ihrer benutzerdefinierten Domäne – Azure Active Directory 
 description: Erfahren Sie, wie Sie mit Azure Active Directory eine benutzerdefinierte Domäne hinzufügen.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 3fdbbd1d3cf27172ed9ba5c5087ffc331e01ccf9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: fa5649e0e4acb389768ad5038c3e26ee2f3465e1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076806"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451594"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch das Hinzufügen von benutzerdefinierten Domänennamen können Sie Benutzernamen erstellen, die Ihren Benutzern vertraut sind, beispielsweise *alain@contoso.com*.

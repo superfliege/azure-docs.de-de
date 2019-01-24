@@ -3,18 +3,18 @@ title: Ausführen von Runbooks für Hybrid Runbook Worker in Azure Automation
 description: Dieser Artikel enthält Informationen zur Ausführung von Runbooks auf Computern in Ihrem lokalen Datencenter oder bei Ihrem Cloudanbieter mit der Hybrid Runbook Worker-Rolle.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 89f8b4a842c9a632c661d9770d17c1ec01d4211e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582251"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425780"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -26,7 +26,7 @@ Wenn Sie Runbooks zur Ausführung auf einem Hybrid Runbook Worker erstellen, sol
 
 [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md) werden die verschiedenen Methoden zum Starten eines Runbooks beschrieben. Hybrid-Runbook-Worker fügt die Option **RunOn** hinzu, mit der Sie den Namen einer Hybrid-Runbook-Workergruppe angeben können. Beim Angeben einer Gruppe wird das Runbook von einem der Worker in dieser Gruppe abgerufen und ausgeführt. Wird diese Option nicht angegeben, erfolgt die Ausführung auf normale Weise in Azure Automation.
 
-Wenn Sie ein Runbook im Azure-Portal starten, wird die Option **Ausführen auf** angezeigt. Sie können entweder **Azure** oder **Hybrid Worker** auswählen. Bei Auswahl von **Hybrid Worker** können Sie anschließend aus einer Dropdownliste die gewünschte Gruppe auswählen.
+Wenn Sie ein Runbook im Azure-Portal starten, wird die Option **Ausführen auf** angezeigt. Sie können entweder **Azure** oder **Hybrid Worker** auswählen. Bei Auswahl von **Hybrid-Worker** können Sie anschließend aus einer Dropdownliste die gewünschte Gruppe auswählen.
 
 Verwenden Sie den Parameter **RunOn**. Mit dem folgenden Befehl wird mithilfe von Windows PowerShell ein Runbook namens „Test-Runbook“ auf einer Hybrid Runbook Worker-Gruppe mit dem Namen „MyHybridGroup“ gestartet.
 
@@ -255,3 +255,4 @@ Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembe
 
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 * Informationen dazu, wie Sie auf unterschiedliche Weise in einem Text-Editor mit PowerShell-Runbooks in Azure Automation arbeiten, finden Sie unter [Bearbeiten eines Runbooks in Azure Automation](automation-edit-textual-runbook.md).
+

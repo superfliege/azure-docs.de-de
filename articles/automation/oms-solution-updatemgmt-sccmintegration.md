@@ -3,18 +3,18 @@ title: Verwalten von Updates für Ziele mithilfe von SCCM-Sammlungen in Azure Au
 description: Dieser Artikel hilft Ihnen beim Konfigurieren von System Center Configuration Manager mit dieser Lösung, um Updates von über SCCM verwalteten Computern zu verwalten.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f3ab50c4fdc080b157212bcc662a2acf6629483d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c3b595e9c4d4b98814d1b68adede97204bf3eb96
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097963"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422727"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integrieren von System Center Configuration Manager in die Updateverwaltung
 
@@ -51,3 +51,4 @@ Um Updates für virtuelle Windows Server-Computer zu verwalten, die Configuratio
 Nachdem Sie diese Konfigurationsänderung vorgenommen haben, erstellen Sie anhand der unter [Erstellen einer Updatebereitstellung](automation-tutorial-update-management.md#schedule-an-update-deployment) beschriebenen Schritte eine neue Bereitstellung, und wählen Sie in der Dropdownliste **Typ** den Eintrag **Importierte Gruppen** aus, um die entsprechende Configuration Manager-Sammlung auszuwählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+

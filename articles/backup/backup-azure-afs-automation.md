@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bbeccd03fffb699c95d52d50ec5c45e38b43ef51
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051219"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430397"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Verwenden von PowerShell zum Sichern und Wiederherstellen von Azure-Dateifreigaben
 
@@ -34,7 +34,7 @@ Sehen Sie sich die [Azure Backup – Recovery Services-Cmdlets](https://docs.mic
 ## <a name="setup-and-registration"></a>Einrichtung und Registrierung
 
 > [!NOTE]
-> Wie in [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0) erwähnt, endet der Support für neue Features im AzureRM-Modul im November 2018. Support wird für die Sicherung von Azure-Dateifreigaben mit dem neuen Azure PowerShell-Modul geboten, das jetzt allgemein zur Verfügung steht.
+> Wie in [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0) erwähnt, endet der Support für neue Features im AzureRM-Modul im November 2018. Support wird für die Sicherung von Azure-Dateifreigaben mit dem neuen Azure PowerShell-Modul geboten, das jetzt allgemein zur Verfügung steht.
 
 Führen Sie zunächst die folgenden Schritte aus.
 

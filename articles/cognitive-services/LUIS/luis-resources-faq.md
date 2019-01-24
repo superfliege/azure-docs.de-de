@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: diberry
-ms.openlocfilehash: e75fa6560feb01ae912ad2040df7a8748ed0077b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3c0d7d3aed08c6dbbcac5f25e91edd8e27e64440
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246550"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429360"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -75,7 +75,7 @@ Weitere Tipps finden Sie in den [Best Practices](luis-concept-best-practices.md)
 LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Wie lässt sich ein LUIS-Endpunkt erstellen und zuweisen?
-Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md#create-luis-endpoint-key) in Azure. [Weisen Sie den Schlüssel](luis-how-to-manage-keys.md#assign-endpoint-key) auf der Seite **[Schlüssel und Endpunkte](luis-how-to-manage-keys.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
+Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Schlüssel und Endpunkte](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md#use-endpoint-key-in-query) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren?
 Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die [Bewertung](luis-concept-prediction-score.md) für die wahrscheinlichste Absicht verbessert werden.

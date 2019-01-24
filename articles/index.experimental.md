@@ -1,14 +1,8 @@
----
+--- 
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure-Dokumentation
-description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: c8ba57b9173fbbfa4e00472972921073f32cb2f7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017787"
+description: 'Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.'
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -3318,7 +3312,7 @@ ms.locfileid: "53017787"
                                                     <a href="/powershell/azure/get-started-azureps">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">Herunterladen von PowerShell</a>
+                                                    <a href="/powershell/azure/azurerm/install-azurerm-ps">Herunterladen von PowerShell</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">Referenz</a>

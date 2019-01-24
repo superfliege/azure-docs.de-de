@@ -3,19 +3,19 @@ title: Nachverfolgen von Änderungen mit Azure Automation
 description: Mit der Lösung für die Änderungsnachverfolgung können Sie Änderungen an Software und Windows-Diensten in Ihrer Umgebung besser erkennen.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213211"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433015"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -279,3 +279,4 @@ Besuchen Sie das Tutorial zur Änderungsnachverfolgung, um mehr über die Verwen
 > [Problembehandlung für Änderungen in Ihrer Umgebung](automation-tutorial-troubleshoot-changes.md)
 
 * Verwenden Sie die [Protokollsuche in Log Analytics](../log-analytics/log-analytics-log-searches.md) , um ausführliche Daten zur Änderungsnachverfolgung anzuzeigen.
+

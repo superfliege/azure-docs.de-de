@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dobett
-ms.openlocfilehash: f10f1da93df6a313525e102e4906cfe67a5f6ae3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b190390840a765953a2125348c3c9188f6bf7d37
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351881"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452028"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub
 
@@ -63,7 +63,7 @@ Diese Schritte veranschaulichen das Hinzufügen einer neuen Zertifizierungsstell
  
 9. Laden Sie die resultierende Signatur aus Schritt 8 in Ihren IoT Hub im Portal hoch. Navigieren Sie auf dem Blatt **Zertifikatdetails** im Azure-Portal zur **Verifizierungszertifikat-PEM- oder -CER-Datei**, und wählen Sie die vom Beispiel-PowerShell-Befehl erstellte Signatur, z.B. *VerifyCert4.cer*, mithilfe des nebenstehenden _Datei-Explorer_-Symbols aus.
 
-10. Sobald das Zertifikat erfolgreich hochgeladen wurde, klicken Sie auf **Überprüfen**. Der **STATUS** Ihres Zertifikats ändert sich zu **_Überprüft_** im Blatt **Zertifikate**. Klicken Sie auf **Aktualisieren**, wenn es nicht automatisch aktualisiert wird.
+10. Nachdem das Zertifikat hochgeladen wurde, klicken Sie auf **Überprüfen**. Der **STATUS** Ihres Zertifikats ändert sich zu **_Überprüft_** im Blatt **Zertifikate**. Klicken Sie auf **Aktualisieren**, wenn es nicht automatisch aktualisiert wird.
 
    ![Hochladen der Zertifikatprüfung](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 9714cb8ce1c3380ac74150148c8d84bd410e3fc4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715213"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461595"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
 In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](../../azure-monitor/platform/activity-logs-overview.md) über das Azure-Portal, mithilfe von PowerShell-Cmdlets oder mithilfe der plattformübergreifenden Befehlszeilenschnittstelle in einem Speicherkonto archivieren. Dies ist hilfreich, wenn Sie Ihr Aktivitätsprotokoll (bei vollständiger Kontrolle über die Aufbewahrungsrichtlinie) zur Überwachung, statischen Analyse oder als Sicherungskopie länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform auch ohne aktivierte Archivierung 90 Tage lang aufbewahrt werden.
@@ -184,4 +184,5 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 * [Herunterladen von Blobs für die Analyse](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Streamen des Aktivitätsprotokolls an Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 * [Weitere Informationen zum Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md)
+
 

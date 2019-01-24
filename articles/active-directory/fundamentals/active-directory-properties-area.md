@@ -3,7 +3,7 @@ title: Hinzufügen der Datenschutzinformationen Ihrer Organisation – Azure Act
 description: Dieser Artikel enthält Anleitungen, wie Sie Datenschutzinformationen Ihrer Organisation im Bereich „Eigenschaften“ von Azure Active Directory hinzufügen.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 50fcafbdef4fc09532d03ae145183dd45c381c73
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bfbb9a035c3f7a00de1610f1240448ff7b0b4abf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083834"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452597"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Hinzufügen der Datenschutzinformationen Ihrer Organisation mit Azure Active Directory
 In diesem Artikel wird erläutert, wie ein Mandantenadministrator über das Azure-Portal Informationen in Bezug auf den Datenschutz zum Azure Active Directory-Mandanten (Azure AD) einer Organisation hinzufügen kann.
@@ -51,7 +51,7 @@ Sie fügen die Datenschutzinformationen Ihrer Organisation im Bereich **Eigensch
 
         ![Feld „Berechtigungen überprüfen“ in der B2B-Zusammenarbeit mit Meldung](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  Wählen Sie **Speichern**aus.
+4.  Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](https://aka.ms/b2bredemption)

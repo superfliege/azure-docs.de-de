@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 27e946dfdbb71bec03d3e4001ec63bd2d889e1b9
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 0b033121890ea8c347642f64922113505f39efc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063504"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436534"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 
@@ -144,7 +144,7 @@ Nachdem Sie nun einen IoT Hub mithilfe einer Azure Resource Manager-Vorlage mit 
 
 * Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API][lnk-rest-api].
 * Weitere Informationen zu den Funktionen des Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager][lnk-azure-rm-overview].
-* Informationen zur JSON-Syntax und zu den Eigenschaften, die in Vorlagen verwendet werden sollen, finden Sie unter [Microsoft.Network-Ressourcentypen](/azure/templates/microsoft.devices/iothub-allversions).
+* Informationen zur JSON-Syntax und zu den Eigenschaften, die in Vorlagen verwendet werden sollen, finden Sie unter [Microsoft.Devices resource types](/azure/templates/microsoft.devices/iothub-allversions) (Microsoft.Devices-Ressourcentypen).
 
 Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 
@@ -159,7 +159,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: /powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/powershell-azure-resource-manager.md

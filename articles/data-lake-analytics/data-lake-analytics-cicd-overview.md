@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 76bfcd5e1b7e0215cfea7fbbfe1c51726d305fbc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 68691430621c0055b3465b9428a8206c6a544a97
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969838"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412528"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Gewusst wie: Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics  
 
@@ -246,7 +246,7 @@ Verwenden Sie den [Azure PowerShell-Task](https://docs.microsoft.com/azure/devop
 param(
     [Parameter(Mandatory=$true)][string]$ADLSName, # ADLS account name to upload U-SQL scripts
     [Parameter(Mandatory=$true)][string]$ArtifactsRoot, # Root folder of U-SQL project build output
-    [Parameter(Mandatory=$false)][string]$DesitinationFolder = "USQLScriptSource" # Desitination folder in ADLS
+    [Parameter(Mandatory=$false)][string]$DestinationFolder = "USQLScriptSource" # Destination folder in ADLS
 )
 
 Function UploadResources()
@@ -261,7 +261,7 @@ Function UploadResources()
     foreach($file in $files)
     {
         Write-Host "Uploading file: $($file.Name)"
-        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DesitinationFolder $file)" -Force
+        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DestinationFolder $file)" -Force
     }
 }
 
@@ -452,7 +452,7 @@ Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitst
 
 #### <a name="common-parameters"></a>Allgemeine Parameter
 
-| Parameter | Beschreibung | Standardwert | Erforderlich |
+| Parameter | BESCHREIBUNG | Standardwert | Erforderlich |
 |---------|-----------|-------------|--------|
 |Paket|Der Pfad des bereitzustellenden U-SQL-Datenbankbereitstellungspakets.|null|true|
 |Datenbank|Der Name der Datenbank, in der die Bereitstellung erfolgt oder die erstellt wird.|master|false|
@@ -461,13 +461,13 @@ Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitst
 
 #### <a name="parameter-for-local-deployment"></a>Parameter für die lokale Bereitstellung
 
-|Parameter|Beschreibung|Standardwert|Erforderlich|
+|Parameter|BESCHREIBUNG|Standardwert|Erforderlich|
 |---------|-----------|-------------|--------|
 |DataRoot|Der Pfad des lokalen Datenstammordners.|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parameter für die Bereitstellung von Azure Data Lake Analytics
 
-|Parameter|Beschreibung|Standardwert|Erforderlich|
+|Parameter|BESCHREIBUNG|Standardwert|Erforderlich|
 |---------|-----------|-------------|--------|
 |Konto|Gibt per Kontonamen an, in welchem Azure Data Lake Analytics-Konto die Einrichtung erfolgen soll.|null|true|
 |ResourceGroup|Der Name der Azure-Ressourcengruppe für das Azure Data Lake Analytics-Konto.|null|true|

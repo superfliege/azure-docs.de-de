@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benut
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/13/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 13ce1a7c9008a7893892e5d7e6b67a243c381c9f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bdec7c5aa4e6cd29dec870fd7d28d48a40bae57
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622005"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462979"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 In diesem Artikel wird beschrieben, wie das [Azure-Portal](https://portal.azure.com) zum Verwalten der automatischen Benutzerkontobereitstellung und zum Aufheben der Bereitstellung für Anwendungen, die dies unterstützen, verwendet wird. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).

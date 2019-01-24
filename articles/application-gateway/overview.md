@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 1/11/2019
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: 21aac318542f9d30cb44d940392d05367f1f7b9f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c574e3ab82f97f5fffc7c834a53d19df93fc426f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246465"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448941"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -102,7 +102,7 @@ Das Feature „Cookiebasierte Sitzungsaffinität“ ist hilfreich, wenn eine Ben
 
 ## <a name="websocket-and-http2-traffic"></a>WebSocket- und HTTP/2-Datenverkehr
 
-Application Gateway verfügt über native Unterstützung für das WebSocket- und das HTTP/2-Protokoll. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Die HTTP/2-Unterstützung kann mithilfe von Azure PowerShell aktiviert werden.
+Application Gateway verfügt über native Unterstützung für das WebSocket- und das HTTP/2-Protokoll. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden.
 
 Das WebSocket- und das HTTP/2-Protokoll ermöglichen die Vollduplexkommunikation zwischen einem Server und einem Client über eine TCP-Verbindung mit langer Laufzeit. Dies ermöglicht wiederum mehr Interaktivität bei der Kommunikation zwischen dem Webserver und dem Client, da die Kommunikation auch ohne die bei HTTP-basierten Implementierungen erforderlichen Abfragen bidirektional sein kann. Diese Protokolle zeichnen sich im Vergleich zu HTTP durch einen geringen Mehraufwand aus. Außerdem können sie die gleiche TCP-Verbindung für mehrere Anforderungen/Antworten verwenden, was eine effizientere Ressourcennutzung zur Folge hat. Diese Protokolle sind für die Nutzung der üblichen HTTP-Ports 80 und 443 konzipiert.
 
@@ -113,6 +113,22 @@ HTTP-Header ermöglichen dem Client und dem Server das Übergeben von zusätzlic
 Application Gateway unterstützt jetzt die Möglichkeit, die Header der eingehenden HTTP-Anforderungen sowie der ausgehenden HTTP-Antworten erneut zu generieren. Sie können HTTP-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können sowohl Standardheaderfelder (in [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) definiert) als auch andere Headerfelder erneut generieren.  
 
 Weitere Informationen zu diesem Public Preview-Feature finden Sie unter [Erneutes Generieren von HTTP-Headern](rewrite-http-headers.md).
+
+## <a name="sizing"></a>Festlegen der Größe
+
+Application Gateway wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
+
+Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede Anwendungsgatewayinstanz mit aktivierter SSL-Auslagerung:
+
+| Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Mittel | Groß |
+| --- | --- | --- | --- |
+| 6 KB |7,5 MBit/s |13 MBit/s |50 MBit/s |
+| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
+
+> [!NOTE]
+> Hierbei handelt es sich um ungefähre Werte für den Durchsatz des Anwendungsgateways. Der tatsächliche Durchsatz ist abhängig von verschiedenen Umgebungsdetails wie etwa durchschnittliche Seitengröße, Speicherort der Back-End-Instanzen und Verarbeitungszeit für die Seitenbereitstellung. Für genaue Leistungsangaben sollten Sie Ihre eigenen Tests ausführen. Diese Werte dienen nur als Leitfaden für die Kapazitätsplanung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

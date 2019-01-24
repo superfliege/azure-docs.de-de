@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 4483d71ba745cc5cbb49d22420d83c3b2ceae0ad
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bdbaa9154f12c8b66a4c1d801671e7b21756e0f7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157019"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412732"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI
 
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Hinzufügen eines Listeners und einer Routingregel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise weiterleiten kann. Erstellen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) den Listener, bei dem der Front-End-Port mit [az network application-gateway frontend-port create](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create) erstellt wurde. Für den Listener ist eine Regel erforderlich, damit bekannt ist, an welches Ziel eingehender Datenverkehr gesendet werden soll. Erstellen Sie mit [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) eine grundlegende Regel namens *redirectRule*.
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise weiterleiten kann. Erstellen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) den Listener, bei dem der Front-End-Port mit [az network application-gateway frontend-port create](/cli/azure/network/application-gateway) erstellt wurde. Für den Listener ist eine Regel erforderlich, damit bekannt ist, an welches Ziel eingehender Datenverkehr gesendet werden soll. Erstellen Sie mit [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) eine grundlegende Regel namens *redirectRule*.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

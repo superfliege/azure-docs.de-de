@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: 58ee6c7239e3a71fed9a9ab987b962abcc9c0508
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4a7b239010d57e3f352ee29afe267273391ffbcd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085197"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461823"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Löschen einer Azure Cache for Redis-Instanz
 
@@ -40,7 +40,7 @@ Dieses Skript verwendet die folgenden Befehle, um eine Azure Cache for Redis-Ins
 
 | Get-Help | Notizen |
 |---|---|
-| [az redis delete](https://docs.microsoft.com/cli/azure/redis#az_redis_delete) | Löscht eine Azure Cache for Redis-Instanz. |
+| [az redis delete](https://docs.microsoft.com/cli/azure/redis) | Löscht eine Azure Cache for Redis-Instanz. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

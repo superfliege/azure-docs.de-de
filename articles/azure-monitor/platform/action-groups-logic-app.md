@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 0ab496b884506b013c6a4abb2dff1e1feff4fc72
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 207d1f7f5eb4db4203f2595a06f943e8ae69881e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342985"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432029"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -298,3 +298,4 @@ Logic Apps verfügt über verschiedene Connectors, mit denen Sie Aktionen in ein
 * Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Azure Service Health-Benachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 * Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+

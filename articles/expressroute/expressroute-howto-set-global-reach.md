@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383271"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431675"
 ---
 # <a name="configure-expressroute-global-reach-preview"></a>Konfigurieren von ExpressRoute Global Reach (Vorschauversion)
 Dieser Artikel unterstützt Sie bei der Konfiguration von ExpressRoute Global Reach mit PowerShell. Weitere Informationen finden Sie unter [ExpressRoute Global Reach (Vorschau)](expressroute-global-reach.md).
@@ -26,7 +26,7 @@ Dieser Artikel unterstützt Sie bei der Konfiguration von ExpressRoute Global Re
 
 Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie mit der Konfiguration beginnen:
 
-* Die neueste Version von Azure PowerShell ist installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
+* Die neueste Version von Azure PowerShell ist installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 * Sie sind mit den [Workflows](expressroute-workflows.md) zur Bereitstellung von ExpressRoute-Leitungen vertraut.
 * Ihre ExpressRoute-Leitungen haben den Status „Bereitgestellt“.
 * Für Ihre ExpressRoute-Leitungen ist privates Azure-Peering konfiguriert.  

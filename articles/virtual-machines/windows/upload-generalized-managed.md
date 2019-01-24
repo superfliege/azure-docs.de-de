@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 93d5cbdb44d3014b547141d59ce96cf607276846
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a5b9f7abbb17aeefa3647e965c63c1f6dc4b0a7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234611"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429258"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
@@ -32,7 +32,7 @@ Ein Beispielskript finden Sie unter [Beispielskript zum Hochladen einer generali
 
 - Bevor Sie eine VHD in Azure hochladen, befolgen Sie die Anweisungen unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Lesen Sie [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) vor dem Starten der Migration zu [Managed Disks](managed-disks-overview.md).
-- Für die Ausführung der Schritte in diesem Artikel ist mindestens Version 5.6 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM.Compute` aus, um Ihre Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+- Für die Ausführung der Schritte in diesem Artikel ist mindestens Version 5.6 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM.Compute` aus, um Ihre Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu.
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalisieren des virtuellen Quellcomputers mithilfe von Sysprep

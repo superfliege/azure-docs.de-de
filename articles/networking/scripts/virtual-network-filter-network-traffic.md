@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.openlocfilehash: 07211d7b6dccd377f94308da5c572255ba5727c6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5c5175ab03e32c167a1cbbb618157ed98e13dcda
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29849979"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54409791"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Filtern ein- und ausgehenden VM-Netzwerkverkehrs
 
@@ -54,7 +54,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | Erstellt ein Back-End-Subnetz. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) | Ordnet NSGs Subnetzen zu. |
 | [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | Erstellt eine öffentliche IP-Adresse für den Zugriff auf den virtuellen Computer aus dem Internet. |
-| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | Erstellt virtuelle Netzwerkschnittstellen und fügt sie an das Front-End- und Back-End-Subnetz des virtuellen Netzwerks an. |
+| [az network nic create](/cli/azure/network/nic) | Erstellt virtuelle Netzwerkschnittstellen und fügt sie an das Front-End- und Back-End-Subnetz des virtuellen Netzwerks an. |
 | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | Erstellt Netzwerksicherheitsgruppen (NSG), die dem Front-End- und Back-End-Subnetz zugeordnet sind. |
 | [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |Erstellt NSG-Regeln, die bestimmte Ports bei bestimmten Subnetzen zulassen oder blockieren. |
 | [az vm create](/cli/azure/vm#az_vm_create) | Erstellt virtuelle Computer und fügt jedem virtuellen Computer eine NIC hinzu. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest. |

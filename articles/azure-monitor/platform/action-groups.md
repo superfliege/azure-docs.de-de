@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 2b427669fe692704343d5a3c2096df92cffb8d76
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583985"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432556"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -108,3 +108,4 @@ Um Updates über Änderungen an diesen IP-Adressen zu erhalten, empfehlen wir Ih
 * Weitere Informationen zu [Ratenlimits](../../azure-monitor/platform/alerts-rate-limiting.md) für Warnungen.
 * Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+

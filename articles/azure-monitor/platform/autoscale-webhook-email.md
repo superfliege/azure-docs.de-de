@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c655f117009c0c7c682ad92a951edc7e12255bc2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325665"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463309"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.  
@@ -107,7 +107,7 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | status |Ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
 | operation |Ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
 | context |Ja |Der Kontext des automatischen Skalierungsvorgangs |
-|  timestamp |Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
+| timestamp |Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
 | id |JA |Resource Manager-ID der Einstellung für die automatische Skalierung |
 | name |JA |Name der Einstellung für die automatische Skalierung |
 | details |JA |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
@@ -120,3 +120,4 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | oldCapacity |JA |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
 | newCapacity |JA |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
 | Eigenschaften |Nein  |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
+

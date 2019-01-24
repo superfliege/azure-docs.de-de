@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8acbb33b396aa617936eb0333bd68fea60532425
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c452341567055e0272c8e6a90c43d6b886d6a928
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404655"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425593"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Erstellen eines virtuellen Computers aus einem verwalteten Image
 
@@ -43,7 +43,7 @@ Bevor Sie einen neuen virtuellen Computer erstellen, müssen Sie ein [verwaltete
 
 Sie können PowerShell verwenden, um eine VM aus einem Image zu erstellen, indem Sie den vereinfachten Parametersatz für das Cmdlet [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) verwenden. Das Image muss sich in derselben Ressourcengruppe befinden, in der Sie die VM erstellen möchten.
 
-Für dieses Beispiel ist mindestens Version 5.6.0 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+Für dieses Beispiel ist mindestens Version 5.6.0 des AzureRM-Moduls erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu.
 
 Der vereinfachte Parametersatz für [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) erfordert nur die Angabe eines Namens, einer Ressourcengruppe und eines Imagenamens, um eine VM aus einem Image zu erstellen. „New-AzureRmVm“ verwendet den Wert des Parameters **-Name** als Namen für alle Ressourcen, die das Cmdlet automatisch erstellt. In diesem Beispiel geben wir ausführlichere Namen für die einzelnen Ressourcen an, lassen sie aber automatisch vom Cmdlet erstellen. Sie können Ressourcen, z.B. das virtuelle Netzwerk, auch im Voraus erstellen und den Ressourcennamen an das Cmdlet übergeben. „New-AzureRmVm“ verwendet die vorhandenen Ressourcen, wenn sie anhand des Namens gefunden werden können.
 

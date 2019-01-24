@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 1/16/2019
-ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/17/2019
+ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359849"
+ms.locfileid: "54390396"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL
 
@@ -173,7 +173,7 @@ In Azure Storage ist dasselbe Feature implementiert, mit dem Sie die Konnektivit
 PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL Data Warehouse zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Führen Sie die unten angegebenen Schritte aus, um PolyBase-Import- und -Exportszenarien zu ermöglichen, in denen Azure SQL Data Warehouse eine Verbindung mit Azure Storage (im VNET gesichert) herstellt:
 
 #### <a name="prerequisites"></a>Voraussetzungen
-1.  Installieren Sie Azure PowerShell anhand [dieses Leitfadens](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+1.  Installieren Sie Azure PowerShell anhand [dieses Leitfadens](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das Upgrade auf Version 2 des universellen Speicherkontos durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
 3.  Im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos muss die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein. Weitere Informationen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
  

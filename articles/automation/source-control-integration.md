@@ -3,18 +3,18 @@ title: Integration der Quellcodeverwaltung in Azure Automation
 description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit GitHub in Azure Automation erläutert.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 400cf53172fbd1ce5803cf3de298749afbf45cd4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330771"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430193"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -144,3 +144,4 @@ Wählen Sie die Quellcodeverwaltung aus, die Sie entfernen möchten. Klicken Sie
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
+

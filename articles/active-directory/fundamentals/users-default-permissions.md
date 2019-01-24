@@ -3,7 +3,7 @@ title: Standardbenutzerberechtigungen – Azure Active Directory | Microsoft-Dok
 description: Erfahren Sie, welche verschiedenen Benutzerberechtigungen in Azure Active Directory verfügbar sind.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 58354bf95b11e497f05fdf08ba4740b3f55c6d6e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e1ec57dd058caff076d3fe8877928efb293ee5fa
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022783"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451339"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den zugewiesenen [Rollenmitgliedschaften](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen.

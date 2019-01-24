@@ -2,22 +2,22 @@
 title: Container Registry-Ereignisschema in Azure Event Grid
 description: In diesem Artikel werden die Eigenschaften beschrieben, die mit Azure Event Grid für Container Registry-Ereignisse bereitgestellt werden.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 01/13/2019
+ms.author: spelluru
+ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140329"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462843"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-Ereignisschema für Container Registry
 
-In diesem Artikel werden die Eigenschaften und das Schema für Container Registry-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+In diesem Artikel werden die Eigenschaften und das Schema für Container Registry-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 ## <a name="available-event-types"></a>Verfügbare Ereignistypen
 

@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 38b7c478e3b90347086c2dd005630d239db7fd89
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/17/2019
+ms.openlocfilehash: 593388c143c31bb4736aa317522ed4c52a8a5296
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038210"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388335"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -107,7 +107,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | Nordeuropa | 191.235.193.75 | 40.113.93.91 |
 | USA Süd Mitte | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
-| Großbritannien, Norden | 13.87.97.210 | |
+| Vereinigtes Königreich, Norden | 13.87.97.210 | |
 | Vereinigtes Königreich, Süden 1 | 51.140.184.11 | |
 | Großbritannien, Süden 2 | 13.87.34.7 | |
 | UK, Westen | 51.141.8.11 | |
@@ -129,7 +129,7 @@ Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenb
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Skript zum Ändern der Verbindungseinstellungen über PowerShell
 
 > [!IMPORTANT]
-> Dieses Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-azurerm-ps).
+> Dieses Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
 
 Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie ändern können.
 

@@ -6,18 +6,18 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/20/2018
+ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: f7be7e5f5e51a47b95d39047af9bcf08e463ca34
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186110"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470615"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
-Dieser Artikel beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt weist Eigenschaften auf, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
+Dieser Artikel beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt weist Eigenschaften auf, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
 
 Ereignisquellen senden Ereignisse an Azure Event Grid in einem Array, das mehrere Ereignisobjekte aufweisen kann. Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis im Array ist auf 64 KB beschränkt. Wenn ein Ereignis oder das Array das zulässige Größenlimit überschreitet, erhalten Sie die Antwort **413 Nutzlast zu groß**.
 

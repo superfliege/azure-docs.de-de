@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 508614d2126d95323ce3550954b4b8a7d4d9d7d8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014734"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438810"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -169,7 +169,7 @@ Zusätzlich zum Erstellen, Verwalten und Löschen von Ressourcen mit dem Azure-P
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell umfasst eine Gruppe von Modulen, mit denen Cmdlets für die Verwaltung von Azure bereitgestellt werden. Sie können die Cmdlets zum Erstellen, Verwalten und Entfernen von Azure-Diensten verwenden. Mit den Cmdlets können Sie einheitliche und wiederholbare Bereitstellungen ohne Benutzereingriff erzielen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Azure PowerShell umfasst eine Gruppe von Modulen, mit denen Cmdlets für die Verwaltung von Azure bereitgestellt werden. Sie können die Cmdlets zum Erstellen, Verwalten und Entfernen von Azure-Diensten verwenden. Mit den Cmdlets können Sie einheitliche und wiederholbare Bereitstellungen ohne Benutzereingriff erzielen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 #### <a name="azure-command-line-interface"></a>Azure-Befehlszeilenschnittstelle
 
@@ -279,7 +279,7 @@ Eine Resource Manager-Vorlage besteht aus vier Abschnitten:
 
 - **Ressourcen:** In diesem Abschnitt der Vorlage werden die bereitzustellenden Ressourcen (virtuelle Computer, Speicherkonten, virtuelle Netzwerke und Ähnliches) definiert.
 
-- **Ausgabe:** Nach Abschluss einer Bereitstellung kann Resource Manager Daten zurückgeben (beispielsweise dynamisch generierte Verbindungszeichenfolgen).
+- **Ausgabe**: Nach Abschluss einer Bereitstellung kann Resource Manager Daten zurückgeben (beispielsweise dynamisch generierte Verbindungszeichenfolgen).
 
 Die folgenden Mechanismen sind für die Automatisierung der Bereitstellung verfügbar:
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d9f3ba642a5d00594aa6bdef597d5db43c2fc121
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 008fba2fd6052ac9043de6ec217cb71d17f3ecce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188979"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427099"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Vorschau: Überwachung, Berichterstellung und Problembehandlung beim Azure AD-Kennwortschutz
 

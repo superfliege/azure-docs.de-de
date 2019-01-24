@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f558c6fcfa864b142209712a536adf1be97122cf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720591"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389260"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -41,9 +41,12 @@ Darüber hinaus erfahren Sie in [diesem Tutorial](service-fabric-tutorial-monito
 Ein Benutzer hat die Kontrolle über die Telemetriedaten aus seiner Anwendung, da er den Code selbst schreibt. Aber wie verhält es sich mit den Diagnosen der Service Fabric-Plattform? Ein Ziel von Service Fabric besteht darin, für Anwendungen die Resilienz in Bezug auf Hardwarefehler sicherzustellen. Dies ist möglich, weil die Systemdienste der Plattform in der Lage sind, Infrastrukturprobleme zu erkennen und für Workloads schnell ein Failover auf andere Knoten im Cluster durchzuführen. In diesem speziellen Fall stellt sich aber die Frage, was geschieht, wenn die Systemdienste selbst Probleme haben? Oder was geschieht, wenn beim Bereitstellen oder Verschieben einer Workload Regeln für die Platzierung von Diensten verletzt werden? Service Fabric bietet Diagnosen für diese und viele andere Fälle, um sicherzustellen, dass Sie über die Aktivitäten in Ihrem Cluster informiert sind. Zu den Beispielszenarien für die Clusterüberwachung zählen unter anderem folgende:
 
 Service Fabric bietet einen umfassenden Satz von sofort einsatzfähigen Ereignissen. Der Zugriff auf diese [Service Fabric-Ereignisse](service-fabric-diagnostics-events.md) erfolgt entweder über EventStore oder den Betriebskanal (der von der Plattform bereitgestellte Ereigniskanal). 
-* EventStore: EventStore ist eine Funktion der Plattform, die Ereignisse der Service Fabric-Plattform bereitstellt, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).    
 
 * Service Fabric-Ereigniskanäle: Unter Windows stehen Service Fabric-Ereignisse von einem einzelnen ETW-Anbieter mit einem Satz relevanter `logLevelKeywordFilters` zur Verfügung, die für die Auswahl von Betriebs-, Daten- oder Messaging-Kanal verwendet werden. Auf diese Art und Weise werden ausgehende Service Fabric-Ereignisse separiert, und können nach Bedarf gefiltert werden. Unter Linux laufen alle Service Fabric-Ereignisse über LTTng und werden in eine Speicherabelle eingefügt, in der sie nach Bedarf gefiltert werden können. Diese Kanäle enthalten geordnete, strukturierte Ereignisse, mit deren Hilfe sich der Zustand des Clusters besser nachvollziehen lässt. Die Diagnose ist bei der Erstellung des Clusters standardmäßig aktiviert. Hierbei wird eine Azure Storage-Tabelle erstellt, an die die Ereignisse aus diesen Kanälen gesendet werden und aus der in Zukunft Ereignisse abgefragt werden können. 
+
+* EventStore: EventStore ist eine Funktion der Plattform, die Ereignisse der Service Fabric-Plattform bereitstellt, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).    
+
+![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Die Diagnosen stehen bereits standardmäßig als umfassender Satz von Ereignissen zur Verfügung. Diese [Service Fabric-Ereignisse](service-fabric-diagnostics-events.md) stellen Aktionen dar, die von der Plattform für unterschiedliche Entitäten wie Knoten, Anwendungen, Dienste, Partitionen usw. ausgeführt wurden. Wenn im letzten der obigen Szenarien ein Knoten ausfällt, gibt die Plattform ein Ereignis vom Typ `NodeDown` aus, und Sie werden umgehend von Ihrem bevorzugten Überwachungstool informiert. Andere gängige Beispiele wären etwa `ApplicationUpgradeRollbackStarted` oder `PartitionReconfigured` während eines Failovers. **In Windows- und Linux-Clustern stehen jeweils die gleichen Ereignisse zur Verfügung.**
 

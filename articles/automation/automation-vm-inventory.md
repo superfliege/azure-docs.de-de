@@ -3,19 +3,19 @@ title: Verwalten eines virtuellen Azure-Computers mit Bestandserfassung | Micros
 description: Verwalten eines virtuellen Computers mit Bestandserfassung
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 761bb1a6974afd5e7b851efb0c60101ab7d8958b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9fabaa2be850e5b15f10fc78adb14dfd5c112906
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403609"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426045"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
@@ -65,7 +65,7 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Windows Registry Key   | Der Pfad für die Überprüfung auf die Datei, z.B. „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup“      |
+|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei. Beispiel: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="windows-files"></a>Windows-Dateien
 
@@ -126,3 +126,4 @@ Gehen Sie wie folgt vor, um Ihren virtuellen Computer aus der Bestandsverwaltung
 
 * Informationen zur Verwaltung von Änderungen in Dateien und Registrierungseinstellungen auf Ihren virtuellen Computern finden Sie unter [Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung](../log-analytics/log-analytics-change-tracking.md).
 * Informationen zur Verwaltung von Windows- und Paketupdates auf Ihren virtuellen Computern finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
+

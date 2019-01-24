@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 47a957453bf5962f59518719895edc0f13fe7dc8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: 4ca5803ca410e3250e025eb60b5c1ff9fc7216b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584376"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465240"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -187,4 +187,5 @@ Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen und Azure Sto
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu RBAC und Berechtigungen in Resource Manager](../../role-based-access-control/overview.md)
 * [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md)
+
 

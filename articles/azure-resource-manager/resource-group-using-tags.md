@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: d9afc62b4ab5d5d83394dcaaacf85a7642a2ba22
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 27ba79e9168e098717e91e5a7179b5bc419ef86c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260595"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438405"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
 
@@ -31,7 +31,7 @@ Um Tags auf Ressourcen anwenden zu können, muss der Benutzer Schreibzugriff auf
 
 ## <a name="powershell"></a>PowerShell
 
-Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. [Aktualisieren Sie Ihre Version](/powershell/azure/install-azurerm-ps), wenn Sie nicht über Version 6.0 oder höher verfügen.
+Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. [Aktualisieren Sie Ihre Version](/powershell/azure/azurerm/install-azurerm-ps), wenn Sie nicht über Version 6.0 oder höher verfügen.
 
 Verwenden Sie Folgendes, um die vorhandenen Tags für eine *Ressourcengruppe* anzuzeigen:
 
@@ -272,6 +272,6 @@ Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Referen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Nicht alle Ressourcentypen unterstützen Tags. Um festzustellen, ob Sie ein Tag auf einen Ressourcentyp anwenden können, lesen Sie [Tag-Unterstützung für Azure-Ressourcen](tag-support.md).
+* Nicht alle Ressourcentypen unterstützen Tags. Um festzustellen, ob Sie ein Tag auf einen Ressourcentyp anwenden können, lesen Sie [Tagunterstützung für Azure-Ressourcen](tag-support.md).
 * Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Bei einer von Ihnen definierten Richtlinie kann es erforderlich sein, dass alle Ressourcen über einen Wert für ein bestimmtes Tag verfügen. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md)
 * Eine Einführung zum Verwenden des Portals finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](resource-group-portal.md).  

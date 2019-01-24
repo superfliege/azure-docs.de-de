@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 45b842f7ff136f2d53b7724c11141f6b9104ebd7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5bca079afb929afef20e3c2448d9a928195d7780
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140114"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452801"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Durchsuchen von Daten auf einer SQL Server-VM in Azure
 
@@ -62,7 +62,7 @@ Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um a
 Die [Pandas-Bibliothek](http://pandas.pydata.org/) in Python bietet eine Vielzahl an Datenstrukturen und Datenanalysetools für die Datenbearbeitung zur Python-Programmierung. Der folgende Code liest die aus einer SQL Server-Datenbank zurückgegebenen Ergebnisse in ein Pandas-DataFrame ein:
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 Sie können nun mit dem Pandas-DataFrame arbeiten. Die Vorgehensweise wird im Thema [Verarbeiten von Azure-Blobdaten mit erweiterter Analyse](data-blob.md) beschrieben.
 

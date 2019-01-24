@@ -3,24 +3,24 @@ title: Anzeigen von Dateiinhaltsänderungen mit Azure Automation
 description: Zeigen Sie geänderte Dateiinhalte mithilfe des Features „Änderungsnachverfolgung“ an.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870553"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438000"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Anzeigen des Inhalts einer Datei, die mit der Änderungsnachverfolgung überwacht wird
 
 Die Nachverfolgung von Dateiinhalten ermöglicht Ihnen, den Inhalt einer Datei vor und nach einer mit Änderungsnachverfolgung verfolgten Änderung einzusehen. Dazu wird der Dateiinhalt nach jeder Änderung in einem Speicherkonto gespeichert.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Für die Speicherung von Dateiinhalten ist ein Standardspeicherkonto unter Verwendung des Ressourcen-Manager-Bereitstellungsmodells erforderlich. Storage Premium-Konten und Konten mit klassischem Bereitstellungsmodell sollten nicht verwendet werden. Weitere Informationen zu Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
 
@@ -34,7 +34,7 @@ Die Nachverfolgung von Dateiinhalten ermöglicht Ihnen, den Inhalt einer Datei v
 2. Wählen Sie im oberen Menü **Einstellungen bearbeiten** aus.
 3. Wählen Sie **Dateiinhalt** aus, und klicken Sie auf **Link**. Der Bereich **Inhaltsspeicherort für Änderungsnachverfolgung hinzufügen** wird geöffnet.
 
-   ![aktivieren](./media/change-tracking-file-contents/enable.png)
+   ![enable](./media/change-tracking-file-contents/enable.png)
 
 4. Wählen Sie das Abonnement und das Speicherkonto aus, in dem der Dateiinhalt gespeichert werden soll. Wenn Sie die Nachverfolgung von Dateiinhalten für alle vorhandenen nachverfolgten Dateien aktivieren möchten, wählen Sie **Ein** für **Dateiinhalte für alle Einstellungen hochladen**. Sie können dies für jeden Dateipfad nachträglich ändern.
 
@@ -76,3 +76,4 @@ Besuchen Sie das Tutorial zur Änderungsnachverfolgung, um mehr über die Verwen
 > [Problembehandlung für Änderungen in Ihrer Umgebung](automation-tutorial-troubleshoot-changes.md)
 
 * Verwenden Sie die [Protokollsuche in Log Analytics](../log-analytics/log-analytics-log-searches.md) , um ausführliche Daten zur Änderungsnachverfolgung anzuzeigen.
+

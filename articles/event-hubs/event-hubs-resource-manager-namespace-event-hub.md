@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 992b27622328bab85fcfaf06ad5a941aceed446f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 39c92c870991ce2398b27efd189f1219777afdd7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051457"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425321"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Event Hubs mithilfe einer Azure Resource Manager-Vorlage
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung erstellen Sie einen Event Hub mithilfe einer Azu
 ## <a name="prerequisites"></a>Voraussetzungen
 Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-Wenn Sie die Resource Manager-Vorlage mithilfe von **Azure PowerShell** bereitstellen möchten, [installieren Sie Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+Wenn Sie die Resource Manager-Vorlage mithilfe von **Azure PowerShell** bereitstellen möchten, [installieren Sie Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
 
 Wenn Sie die Resource Manager-Vorlage über die **Azure-Befehlszeilenschnittstelle** bereitstellen möchten, [installieren Sie die Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli).
 

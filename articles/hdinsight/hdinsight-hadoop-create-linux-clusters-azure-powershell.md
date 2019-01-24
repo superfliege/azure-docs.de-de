@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 54dbeeede58116b01f21db784b3e34970ace029f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 82f54e31b76b2b2f7dbf0afb59fa706e916fe2d0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792146"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438523"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell
 
@@ -29,12 +29,12 @@ Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereit
 Sie benötigen Folgendes, bevor Sie mit diesem Verfahren beginnen können:
 
 * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
 
     > [!IMPORTANT]  
     > Die Azure PowerShell-Unterstützung zum Verwalten von HDInsight-Ressourcen mithilfe von Azure Service Manager ist **veraltet** und wurde zum 1. Januar 2017 eingestellt. Die Schritte in diesem Dokument zeigen die neuen HDInsight-Cmdlets, die mit Azure Resource Manager genutzt werden können.
     >
-    > Führen Sie zur Installation der neuesten Version von Azure PowerShell die unter [Installieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) beschriebenen Schritte aus. Wenn Sie über Skripts verfügen, die für die Verwendung der neuen Cmdlets für Azure Resource Manager geändert werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
+    > Führen Sie zur Installation der neuesten Version von Azure PowerShell die unter [Installieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) beschriebenen Schritte aus. Wenn Sie über Skripts verfügen, die für die Verwendung der neuen Cmdlets für Azure Resource Manager geändert werden müssen, finden Sie unter [Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster](hdinsight-hadoop-development-using-azure-resource-manager.md) weitere Informationen.
 
 ## <a name="create-cluster"></a>Cluster erstellen
 

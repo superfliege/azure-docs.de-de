@@ -7,18 +7,18 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578851"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437492"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
-Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. Dieser Artikel erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Azure-fremde Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
+Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Azure-fremde Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 
 In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich ein Computer befinden kann:
 
@@ -28,7 +28,7 @@ In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich 
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Klicken Sie für Azure-Computer im Portal unter der Spalte **Update-Agent-Bereitschaft** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#offline) erfahren Sie, wie Sie Probleme mit einem Azure-fremden Computer behandeln.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#offline) erfahren Sie, wie Sie Probleme mit einem Azure-fremden Computer behandeln.
 
 ![Seite „VM-Liste“](../media/update-agent-issues-linux/vm-list.png)
 
@@ -177,3 +177,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Behandlung weiterer Probleme mit Ihren Hybrid Runbook Workern finden Sie unter [Problembehandlung für Hybrid Runbook Worker](hybrid-runbook-worker.md).
+

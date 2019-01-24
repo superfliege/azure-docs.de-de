@@ -3,18 +3,18 @@ title: Grundlagen des PowerShell-Workflows für Azure Automation
 description: Dieser Artikel ist als kurze Lektion für Autoren gedacht, die mit PowerShell vertraut sind, um die Grundlagen der speziellen Unterschiede zwischen PowerShell und dem PowerShell-Workflow sowie Konzepte, die für Automation-Runbooks gelten, zu verdeutlichen.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b60e1639a1c32763c4759720fe61b0e571fc9dd1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7ab6b387a28df06758e5e0c1ce197781fc4be3c5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437094"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436806"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks
 
@@ -296,3 +296,4 @@ Weitere Informationen zu Prüfpunkten finden Sie unter [Hinzufügen von Prüfpun
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
+

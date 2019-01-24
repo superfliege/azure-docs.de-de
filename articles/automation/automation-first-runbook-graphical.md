@@ -4,18 +4,18 @@ description: Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentl
 keywords: Runbooks, Runbookvorlage, Runbookautomatisierung, Azure-Runbook
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a9e6bbf3bc507a4d45af03c791104c9490cd36f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195895"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426793"
 ---
 # <a name="my-first-graphical-runbook"></a>Mein erstes grafisches Runbook
 
@@ -229,4 +229,5 @@ In diesem Schritt passen Sie das Runbook so an, dass nur dann versucht wird, den
 * Weitere Informationen zur grafischen Inhaltserstellung finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md)
 * Erste Schritte mit PowerShell-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md)
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
+
 

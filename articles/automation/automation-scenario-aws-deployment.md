@@ -3,18 +3,18 @@ title: Automatisieren der Bereitstellung einer VM in Amazon Web Services
 description: In diesem Artikel wird gezeigt, wie Sie Azure Automation nutzen, um das Erstellen einer Amazon Web Service-VM zu automatisieren
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 348c28f6a2d72048e34f117e802abf243597b458
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290891"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425219"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation-Szenario – Bereitstellen eines virtuellen AWS-Computers
 In diesem Artikel erfahren Sie, wie Sie Azure Automation zur Bereitstellung eines virtuellen Computers in Ihrem AWS-Abonnement (Amazon Web Services) nutzen und für diesen virtuellen Computer einen bestimmten Namen festlegen können – ein Vorgang, der in AWS als „Tagging“ des virtuellen Computers bezeichnet wird.
@@ -105,4 +105,5 @@ Bevor Sie mit dem Testen des Runbooks fortfahren, müssen einige Dinge überprü
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
 * Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
 * Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+
 

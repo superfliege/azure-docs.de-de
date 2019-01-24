@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b69cc0bcff8f791e0740b30f5521a2a7b36af3b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329768"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437656"
 ---
 # <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Migrieren eines klassischen virtuellen Computers zu Managed Disks 
 
@@ -93,7 +93,7 @@ Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migra
 
 Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migration müssen Sie die gesamte Verarbeitung im aktuellen System beenden. Erst dann können Sie den konsistenten Zustand erreichen, den Sie auf die neue Plattform migrieren können. Die Dauer der Ausfallzeit hängt von der Datenmenge auf den zu migrierenden Datenträgern ab.
 
-Für diesen Teil benötigen Sie mindestens Version 6.0.0 des Azure PowerShell-Moduls. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Für diesen Teil benötigen Sie mindestens Version 6.0.0 des Azure PowerShell-Moduls. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 Erstellen Sie Variablen für gängige Parameter.

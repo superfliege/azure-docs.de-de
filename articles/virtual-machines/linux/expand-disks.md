@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 62057d3041aa83e0097b688b48386b80f5c4f87e
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.component: disks
+ms.openlocfilehash: 61c9ce5da02414f535aea42bea64b43298ba7823
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637288"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464390"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
@@ -42,7 +43,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen wie *myResou
     ```
 
     > [!NOTE]
-    > Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern. Durch Beenden der VM mit `az vm stop` werden die Computeressourcen nicht freigegeben. Verwenden Sie `az vm deallocate`, um Computeressourcen freizugeben.
+    > Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern. Durch Beenden der VM mit `az vm stop` werden die Computeressourcen nicht freigegeben. Verwenden Sie `az vm deallocate`, um Computerressourcen freizugeben.
 
 1. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#az-disk-list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bbc9ad4f15bdffa2c0f9b6f4b56f8b1701c83c47
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: d4b706a088769530e3994d8813b28f99d5a56df5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636610"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411967"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift in Azure
 
@@ -101,7 +101,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals 
 OpenShift kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort oder eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie OpenShift verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll. Es wird empfohlen, die Berechtigungen des Dienstprinzipals auf bestimmte Ressourcengruppen und nicht auf das gesamte Abonnement festzulegen.
 
-Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) einen Dienstprinzipal, und geben Sie die Anmeldeinformationen aus, die OpenShift benötigt.
+Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp) einen Dienstprinzipal, und geben Sie die Anmeldeinformationen aus, die OpenShift benötigt.
 
 Im folgenden Beispiel wird ein Dienstprinzipal erstellt und mit Berechtigungen vom Typ „Mitwirkender“ für eine Ressourcengruppe namens „openshiftrg“ ausgestattet.
 

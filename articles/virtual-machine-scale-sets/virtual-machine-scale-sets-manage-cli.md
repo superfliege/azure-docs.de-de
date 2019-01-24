@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 84e01c319ab058c9abb05cd9882f4c25bea5cffb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465658"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462030"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
@@ -37,7 +37,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Anzeigen von virtuellen Computern in einer Skalierungsgruppe
-Verwenden Sie [az vmss list-instances](/cli/azure/vmss#list-instances), um eine Liste mit den VM-Instanzen in einer Skalierungsgruppe anzuzeigen. Im folgenden Beispiel werden alle VM-Instanzen der Skalierungsgruppe *myScaleSet* in der Ressourcengruppe *myResourceGroup* aufgeführt. Geben Sie für diese Namen Ihre eigenen Werte an:
+Verwenden Sie [az vmss list-instances](/cli/azure/vmss), um eine Liste mit den VM-Instanzen in einer Skalierungsgruppe anzuzeigen. Im folgenden Beispiel werden alle VM-Instanzen der Skalierungsgruppe *myScaleSet* in der Ressourcengruppe *myResourceGroup* aufgeführt. Geben Sie für diese Namen Ihre eigenen Werte an:
 
 ```azurecli
 az vmss list-instances \
@@ -46,7 +46,7 @@ az vmss list-instances \
     --output table
 ```
 
-Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss#get-instance-view) den Parameter `--instance-id` hinzu, und geben Sie die gewünschte Instanz an. Im folgenden Beispiel werden Informationen zur VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* angezeigt. Geben Sie Ihre eigenen Namen wie folgt ein:
+Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss) den Parameter `--instance-id` hinzu, und geben Sie die gewünschte Instanz an. Im folgenden Beispiel werden Informationen zur VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* angezeigt. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
 az vmss get-instance-view \
@@ -108,7 +108,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>Starten von virtuellen Computern in einer Skalierungsgruppe
-Verwenden Sie [az vmss start](/cli/azure/vmss#az_vmss_start), um virtuelle Computer in einer Skalierungsgruppe zu starten. Mit dem Parameter `--instance-ids` können Sie die zu startenden virtuellen Computer angeben. Wenn Sie keine Instanz-ID angeben, werden alle virtuellen Computer in der Skalierungsgruppe gestartet. Wenn Sie mehrere virtuelle Computer starten möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
+Verwenden Sie [az vmss start](/cli/azure/vmss), um virtuelle Computer in einer Skalierungsgruppe zu starten. Mit dem Parameter `--instance-ids` können Sie die zu startenden virtuellen Computer angeben. Wenn Sie keine Instanz-ID angeben, werden alle virtuellen Computer in der Skalierungsgruppe gestartet. Wenn Sie mehrere virtuelle Computer starten möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
 
 Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* gestartet. Geben Sie Ihre eigenen Werte wie folgt an:
 

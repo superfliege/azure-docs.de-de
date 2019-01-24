@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.component: metrics
-ms.openlocfilehash: ac2987b6329d85c06d78d93341fe71f5c9120fcd
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: metrics
+ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105456"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433032"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) Metrikwarnungen in Azure konfigurieren können. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
@@ -405,3 +405,4 @@ Eine Warnung in einer Resource Manager-Vorlage ist sehr nützlich, wenn bei der 
 * [Weitere Informationen zu Warnungen](alerts-overview.md)
 * [Hinzufügen von Diagnoseeinstellungen](../../azure-monitor/platform/diagnostic-logs-stream-template.md) zu Ihrer Resource Manager-Vorlage
 * Informationen zur JSON-Syntax und zu den Eigenschaften finden Sie in der Vorlagenreferenz für [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules).
+

@@ -3,18 +3,18 @@ title: Verwalten von ausführenden Azure Automation-Konten
 description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder über das Portal Ihre ausführenden Konten verwalten.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726167"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431196"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -389,3 +389,4 @@ Sie können diese Probleme mit ausführenden Konten schnell beheben, indem Sie d
 
 * Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/develop/app-objects-and-service-principals.md).
 * Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+

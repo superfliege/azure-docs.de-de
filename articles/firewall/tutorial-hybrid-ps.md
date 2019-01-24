@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2018
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: fc02f754682046ead3f546fc1253e1c9ac0a63b9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 511fb425c6b31d204c88094ec5b1a49316495a0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261467"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431519"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
 
@@ -45,7 +45,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie PowerShell lokal ausführen. Sie müssen Version 6.12.0 oder höher des Azure PowerShell-Moduls installiert haben. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzureRmAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für dieses Tutorial müssen Sie PowerShell lokal ausführen. Sie müssen Version 6.12.0 oder höher des Azure PowerShell-Moduls installiert haben. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzureRmAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 Es gibt drei wichtige Anforderungen, die erfüllt sein müssen, damit dieses Szenario richtig funktioniert:
 

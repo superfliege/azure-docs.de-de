@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: a3dcb7a7c15c3bf8e5578371e05519e802355fdc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 85b9815718bcea47948fcd37eaba1ae1e4d46e80
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188162"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460803"
 ---
 # <a name="monitor-a-vm-with-log-analytics"></a>Überwachen einer VM mit Log Analytics
 
@@ -51,8 +51,8 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der NSG. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

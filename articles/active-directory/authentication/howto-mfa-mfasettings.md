@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 18f2ebc97a182f03483c4a4119f88774b4b0b9fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320657"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431876"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -83,7 +83,7 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
 2. Navigieren Sie zu **Azure Active Directory** > **MFA** > **Betrugswarnung**.
 3. Legen Sie die Einstellung **Benutzern die Ausgabe von Betrugswarnungen erlauben** auf **Ein** fest.
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
 ### <a name="configuration-options"></a>Konfigurationsoptionen
 
@@ -305,7 +305,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
       * Verwenden Sie für eine einzelne IP-Adresse die Notation **xxx.xxx.xxx.xxx/32**.
       * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
 
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Aktivieren des Features „Vertrauenswürdige IPs“ mit Diensteinstellungen
 
@@ -324,7 +324,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
       * Verwenden Sie für eine einzelne IP-Adresse die Notation **xxx.xxx.xxx.xxx/32**.
       * Sie können bis zu 50 IP-Adressbereiche eingeben. Benutzer, die sich über diese IP-Adressen anmelden, umgehen die zweistufige Überprüfung.
 
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
 
 ## <a name="verification-methods"></a>Überprüfungsmethoden
 
@@ -382,7 +382,7 @@ Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps,
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Multi-Factor Authentication speichern** die Option **Benutzern das Speichern der mehrstufigen Authentifizierung auf vertrauenswürdigen Geräten ermöglichen** aus.
 6. Legen Sie fest, für wie viele Tage die vertrauenswürdigen Geräte die zweistufige Überprüfung umgehen können. Der Standardwert ist 14 Tage.
-7. Wählen Sie **Speichern**aus.
+7. Wählen Sie **Speichern** aus.
 
 ### <a name="mark-a-device-as-trusted"></a>Markieren eines Geräts als vertrauenswürdig
 

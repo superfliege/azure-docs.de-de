@@ -13,16 +13,16 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2ee0834b0c6872d96bebe71231f1a9424ff261a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387079"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438149"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
-Die Sicherheit der meisten, wenn nicht aller Geschäftsressourcen in modernen Organisationen hängt von der Integrität der privilegierten Konten ab, die IT-Systeme verwalten. Böswillige Akteure einschließlich Cyberangreifern haben häufig Administratorkonten und andere Elemente des privilegierten Zugriffs im Visier, um zu versuchen, mit Angriffen, deren Ziel der Diebstahl von Anmeldeinformationen ist, schnell Zugriff auf sensible Daten und Systeme zu erhalten. Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. Weitere Informationen zu den neuesten Bedrohungen von Endpunkten und Cloud finden Sie unter [Informieren Sie sich über die aktuellen Angriffe auf Endpunkte und auf die Cloud ](https://www.microsoft.com/security/sir/default.aspx). Dieser Artikel kann Ihnen helfen, eine Roadmap zum Schließen der Lücken zwischen Ihren aktuellen Plänen und dem hier beschriebenen Leitfaden zu entwickeln.
+Die Sicherheit der meisten, wenn nicht aller Geschäftsressourcen in modernen Organisationen hängt von der Integrität der privilegierten Konten ab, die IT-Systeme verwalten. Böswillige Akteure einschließlich Cyberangreifern haben häufig Administratorkonten und andere Elemente des privilegierten Zugriffs im Visier, um zu versuchen, mit Angriffen, deren Ziel der Diebstahl von Anmeldeinformationen ist, schnell Zugriff auf sensible Daten und Systeme zu erhalten. Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. Weitere Informationen zu den neuesten Bedrohungen von Endpunkten und Cloud finden Sie unter [Informieren Sie sich über die aktuellen Angriffe auf Endpunkte und auf die Cloud ](https://www.microsoft.com/security/operations/security-intelligence-report). Dieser Artikel kann Ihnen helfen, eine Roadmap zum Schließen der Lücken zwischen Ihren aktuellen Plänen und dem hier beschriebenen Leitfaden zu entwickeln.
 
 > [!NOTE] 
 > Microsoft sieht sich in der Pflicht, den Ansprüchen von Vertrauen, Transparenz, Einhaltung von Standards und Einhaltung behördlicher Bestimmungen in höchstem Maße gerecht zu werden. Mehr darüber, wie das globale Incidentreaktionsteam von Microsoft die Auswirkungen von Angriffen auf Clouddienste abschwächt, und wie die Sicherheit in Businessprodukte und Clouddienste von Microsoft integriert ist, erfahren Sie unter [Sicherheit](https://www.microsoft.com/trustcenter/security), und mehr über Complianceziele von Microsoft unter [Compliance](https://www.microsoft.com/trustcenter/compliance).

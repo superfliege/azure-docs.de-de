@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 064c1b8100e165627d5227b9f24b87aefae2e769
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790757"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471649"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  
@@ -210,3 +210,4 @@ Wenn Sie für Ihr Projekt ein Upgrade von Azure SDK 2.4 auf Azure SDK 2.5 oder
 * **Diagnose für Clouddienstanwendungen kann nur auf Rollenebene, nicht auf der Instanzebene konfiguriert werden.**
 * **Jedes Mal, wenn Sie Ihre App bereitstellen, wird die Diagnosekonfiguration aktualisiert** – Dies kann Paritätsprobleme verursachen, wenn Sie die Diagnosekonfiguration im Server-Explorer ändern und anschließend die App erneut bereitstellen.
 * **In Azure SDK 2.5 und höher werden Absturzabbilder in der Diagnosekonfigurationsdatei und nicht im Code konfiguriert** – Wenn Sie Absturzabbilder im Code konfiguriert haben, müssen Sie die Konfiguration manuell vom Code in die Konfigurationsdatei übertragen, da die Absturzabbilder während der Migration zu Azure SDK 2.6 nicht übertragen werden.
+

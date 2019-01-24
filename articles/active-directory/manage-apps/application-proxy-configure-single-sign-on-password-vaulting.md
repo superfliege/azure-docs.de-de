@@ -4,7 +4,7 @@ description: Aktivieren Sie das einmalige Anmelden für Ihre veröffentlichten l
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 6ae7cff42a9b744409fa454199155796c8c06713
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 13dedf9d07b01befd4d5d6496a3e7427809e6dde
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138947"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464662"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy
 
@@ -42,7 +42,7 @@ Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und geteste
 
    ![Kennwortbasierte Anmeldung auswählen und URL eingeben](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-7. Wählen Sie **Speichern**aus.
+7. Wählen Sie **Speichern** aus.
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 

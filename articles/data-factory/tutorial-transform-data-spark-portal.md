@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: 34580687c047e842bfbfa12730c7c2d9868187b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: be9ed1d840eab5478dee4d212705211c0967bdbd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014147"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427966"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pipeline zu erstellen. In dieser Pipeline werden Daten transformiert, indem eine Spark-Aktivität und ein bedarfsabhängiger verknüpfter Azure HDInsight-Dienst verwendet wird. 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 > [!NOTE]
 > HdInsight unterstützt nur universelle Speicherkonten mit dem Standard-Tarif. Stellen Sie sicher, dass das Konto kein Premium- oder ausschließlich für Blobs vorgesehenes Speicherkonto ist.
 
-* **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
+* **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](/powershell/azure/azurerm/install-azurerm-ps) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
 
 ### <a name="upload-the-python-script-to-your-blob-storage-account"></a>Hochladen des Python-Skripts in Ihr BLOB-Speicherkonto

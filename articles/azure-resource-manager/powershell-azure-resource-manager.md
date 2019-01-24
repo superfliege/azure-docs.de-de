@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0ecb497e9b07119f6c32149a875f27ee7c338d74
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 933c7e5b73abf533250072680160d5a5caab6523
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344636"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435435"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Verwalten von Ressourcen mit Azure PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "51344636"
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, lesen Sie die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, lesen Sie die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="understand-scope"></a>Der Bereich
 

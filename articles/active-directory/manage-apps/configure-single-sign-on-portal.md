@@ -3,7 +3,7 @@ title: Konfigurieren des einmaligen Anmeldens – Azure Active Directory | Micro
 description: In diesem Tutorial wird das Azure-Portal verwendet, um SAML-basiertes einmaliges Anmelden (Single Sign-On, SSO) für eine Anwendung mit Azure Active Directory (Azure AD) zu konfigurieren.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barbkess
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 73e97a38913b3098ba2e14294ecf621add310428
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011976"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465716"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory
 

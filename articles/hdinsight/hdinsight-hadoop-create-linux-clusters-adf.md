@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 40bfa8317effd25cf3d9aa28b8f63e292213a83b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975456"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425981"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Tutorial: Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+- Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
 
 - Ein Azure Active Directory-Dienstprinzipal. Nachdem Sie den Dienstprinzipal erstellt haben, müssen Sie noch die **Anwendungs-ID** und den **Authentifizierungsschlüssel** mithilfe der Anweisungen im verknüpften Artikel abrufen. Sie benötigen sie später in diesem Tutorial. Dieser Dienstprinzipal muss außerdem Mitglied der Rolle *Mitwirkender* in dem Abonnement oder der Ressourcengruppe sein, in dem bzw. der der Cluster erstellt wird. Anweisungen zum Abrufen der erforderlichen Werte und zum Zuweisen der richtigen Rollen finden Sie unter [Erstellen eines Azure Active Directory-Dienstprinzipals](../active-directory/develop/howto-create-service-principal-portal.md).
 

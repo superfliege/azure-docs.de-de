@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 9fe9952c3885e0e6145141bac7db13694dcdbd11
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 36f1b39ca4cef33a8cfcdb295b5c4d59e1128a0c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259664"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426844"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
 Microsoft Azure Service Bus ist ein Nachrichtenbroker für die Unternehmensintegration, der sicheres Messaging und absolute Zuverlässigkeit bietet. Ein typisches Service Bus-Szenario umfasst normalerweise die Entkopplung von zwei oder mehr Anwendungen, Diensten oder Prozessen und die Übertragung von Zustands- oder Datenänderungen. Szenarien dieser Art können die Planung mehrerer Batchaufträge in einer anderen Anwendung oder einem Dienst oder die Auslösung der Auftragsabwicklung umfassen. Beispielsweise kann es sein, dass ein Einzelhandelsunternehmen seine Point-of-Sale-Daten an ein Backoffice oder regionales Verteilungszentrum sendet, um den Bestand auffüllen bzw. aktualisieren zu lassen. Bei diesem Szenario sendet die Client-App Nachrichten an eine Service Bus-Warteschlange und empfängt Nachrichten von dieser Warteschlange.
@@ -263,4 +263,4 @@ In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderlich
 > [Tutorial: Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Installieren und Konfigurieren von Azure PowerShell]: /powershell/azure/install-azurerm-ps
+[Installieren und Konfigurieren von Azure PowerShell]: /powershell/azure/azurerm/install-azurerm-ps

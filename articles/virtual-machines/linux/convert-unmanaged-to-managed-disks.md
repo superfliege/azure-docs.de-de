@@ -15,12 +15,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 62ac70134c1bdf9d178d59723ff73561049a4bbf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: ee3f24b7e7a0e4242337aabedc87515b7fabbb9a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993073"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467947"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
@@ -37,7 +38,7 @@ In diesem Artikel wird beschrieben, wie Sie VMs über die Azure-Befehlszeilensch
 ## <a name="convert-single-instance-vms"></a>Konvertieren von Einzelinstanz-VMs
 In diesem Abschnitt wird beschrieben, wie Sie für Einzelinstanz-VMs von Azure die Konvertierung von nicht verwalteten Datenträgern in verwaltete Datenträger durchführen. (Wenn Ihre VMs in einer Verfügbarkeitsgruppe enthalten sind, lesen Sie den nächsten Abschnitt.) Sie können diesen Prozess verwenden, um nicht verwaltete Premium-Datenträger (SSD) in verwaltete Premium-Datenträger oder nicht verwaltete Standard-Datenträger (HDD) in verwaltete Standard-Datenträger zu konvertieren.
 
-1. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#az_vm_deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
+1. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm) auf. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -71,7 +72,7 @@ Für alle VMs in der Verfügbarkeitsgruppe muss die Zuordnung aufgehoben werden,
         --output table
     ```
 
-2. Verwenden Sie [az vm deallocate](/cli/azure/vm#az_vm_deallocate), um die Zuordnung aller VMs aufzuheben. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
+2. Verwenden Sie [az vm deallocate](/cli/azure/vm), um die Zuordnung aller VMs aufzuheben. Im folgenden Beispiel wird die Zuordnung für die VM `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM

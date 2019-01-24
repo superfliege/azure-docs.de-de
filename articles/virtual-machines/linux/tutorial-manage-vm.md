@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613425"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466855"
 ---
-# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure CLI
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
 Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible Computerumgebung. In diesem Tutorial werden grundlegende Vorgänge bei der Bereitstellung von virtuellen Azure-Computern behandelt, z.B. Auswählen einer VM-Größe, Auswählen eines VM-Images und Bereitstellen eines virtuellen Computers. Folgendes wird vermittelt:
 
@@ -211,7 +211,7 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
 
-Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern. Mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) können Sie die aktuelle Größe einer VM anzeigen:
+Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern. Mit dem Befehl [az vm show](/cli/azure/vm) können Sie die aktuelle Größe einer VM anzeigen:
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
@@ -228,7 +228,7 @@ Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Com
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-Falls die gewünschte Größe im aktuellen Cluster nicht verfügbar ist, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm#az_vm_deallocate), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben. Wenn der virtuelle Computer wieder eingeschaltet wird, werden unter Umständen sämtliche Daten auf dem temporären Datenträger entfernt. Die öffentliche IP-Adresse ändert sich ebenfalls – es sei denn, es wird eine statische IP-Adresse verwendet. 
+Falls die gewünschte Größe im aktuellen Cluster nicht verfügbar ist, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben. Wenn der virtuelle Computer wieder eingeschaltet wird, werden unter Umständen sämtliche Daten auf dem temporären Datenträger entfernt. Die öffentliche IP-Adresse ändert sich ebenfalls – es sei denn, es wird eine statische IP-Adresse verwendet. 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM

@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5637d409233abc68983bd7cf1e55f406f15e3b59
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582557"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432987"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
@@ -201,3 +201,4 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Behandlung weiterer Probleme mit Ihren Hybrid Runbook Workern finden Sie unter [Problembehandlung für Hybrid Runbook Worker](hybrid-runbook-worker.md).
+

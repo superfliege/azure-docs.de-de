@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e2b17ef790f47a9352e3c2b744bdbb4960fe616b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 638aa3bf0e278ce00c124d8217a1bf9104e878fb
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579997"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413777"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Verwalten von Webdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -53,7 +53,7 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Erstellt die öffentliche IP-Adresse für das Anwendungsgateway. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Erstellen eines Anwendungsgateways |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | Erstellt eine VM-Skalierungsgruppe. |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network_public_ip_show) | Ruft die öffentliche IP-Adresse für das Anwendungsgateway ab. |
+| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | Ruft die öffentliche IP-Adresse für das Anwendungsgateway ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

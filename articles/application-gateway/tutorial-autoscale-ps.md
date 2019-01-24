@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 99fa5d6f0ba74b56a53f2d1af1b99c7e5c2896a7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: dd6cc65fca98bc435a8cfea575ba10e3cff376be
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323199"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424675"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Tutorial: Erstellen eines Anwendungsgateways, das den Zugriff auf die Webanwendung verbessert
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie Azure PowerShell lokal ausführen. Sie müssen das Azure PowerShell-Modul Version 6.9.0 oder höher installiert haben. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzureRmAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für dieses Tutorial müssen Sie Azure PowerShell lokal ausführen. Sie müssen das Azure PowerShell-Modul Version 6.9.0 oder höher installiert haben. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzureRmAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

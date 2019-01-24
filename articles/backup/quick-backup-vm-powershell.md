@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 2/14/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7971c1399cc905353e271e8774c0e7ad36ca79a9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 873c6f8b815b99425efb578e5129099493e8c657
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869252"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437877"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure PowerShell-Modul sichern. Sie können diese Schritte auch mit der [Azure CLI](quick-backup-vm-cli.md) oder mit dem [Azure-Portal](quick-backup-vm-portal.md) ausführen.
 
 In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtuellen Azure-Computer aktiviert. Wenn Sie eine VM erstellen müssen, können Sie die [Erstellung mit Azure PowerShell durchführen](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
 
-Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 4.4 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 4.4 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure

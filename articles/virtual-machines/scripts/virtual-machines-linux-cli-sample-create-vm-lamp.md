@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 1764fc15a888fbe15cc14b990721240d1baf3c40
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: cb8815db5e16603ca4578f6d3d943cbef62e49af
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29851665"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461144"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Bereitstellen des LAMP-Stapels in einer VM-Skalierungsgruppe mit Lastenausgleich
 
@@ -59,7 +59,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | Erstellt die Erweiterung, mit der das benutzerdefinierte Skript für die Bereitstellung auf einem virtuellen Computer ausgeführt wird. |
 | [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | Führt das benutzerdefinierte Skript auf den VM-Instanzen aus, die bereitgestellt wurden, bevor die Erweiterung auf die Skalierungsgruppe angewendet wurde. |
 | [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | Skaliert die Skalierungsgruppe durch Hinzufügen weiterer VM-Instanzen zentral hoch. Das benutzerdefinierte Skript wird auf diesen Instanzen ausgeführt, wenn sie bereitgestellt werden. |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | Ruft die IP-Adressen der Computer ab, die in diesem Beispiel erstellt wurden. |
+| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | Ruft die IP-Adressen der Computer ab, die in diesem Beispiel erstellt wurden. |
 | [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | Ruft die vom Load Balancer verwendeten Front-End- und Back-End-Ports ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte

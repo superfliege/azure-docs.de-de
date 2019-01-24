@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 072702b323a41e4c4c51edc7054ad41591dde4d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6d202ab9e2f6a8e96eb494d3d93caf66624f8364
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303530"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465193"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Anzeigen der Nutzung öffentlicher IP-Adressen in Azure Stack
 
@@ -36,6 +36,7 @@ Diese Kachel soll Azure Stack-Betreibern einen Eindruck von der Anzahl öffentli
 Das Menüelement **Öffentliche IP-Adressen** unter **Mandantenressourcen** listet nur die öffentlichen IP-Adressen auf, die *explizit von Mandanten erstellt wurden*. Sie finden das Menüelement im Bereich **Ressourcenanbieter** unter **Netzwerk**. Die Anzahl der **verwendeten** öffentlichen IP-Adressen auf der Kachel **Nutzung öffentlicher IP-Pools** unterscheidet sich immer von der Anzahl auf der Kachel **Öffentliche IP-Adressen** unter **Mandantenressourcen** (d.h. sie ist immer größer).
 
 ## <a name="view-the-public-ip-address-usage-information"></a>Anzeigen der Informationen zur Nutzung öffentlicher IP-Adressen
+
 So zeigen Sie die Gesamtanzahl der öffentlichen IP-Adressen an, die in der Region verwendet wurden:
 
 1. Wählen Sie im Azure Stack-Administratorportal **Alle Dienste** aus. Wählen Sie unter der Kategorie **VERWALTUNG** die Option **Netzwerk**.
@@ -46,6 +47,7 @@ So zeigen Sie die Gesamtanzahl der öffentlichen IP-Adressen an, die in der Regi
 Die Angabe unter **Verwendet** stellt die Anzahl der zugewiesenen öffentlichen IP-Adressen aus öffentlichen IP-Adresspools dar. Der Wert unter **Frei** gibt die Anzahl der öffentlichen IP-Adressen von öffentlichen IP-Adresspools an, die nicht zugewiesen wurden und weiterhin verfügbar sind. Der Wert von **% verwendet** gibt die Anzahl der verwendeten oder zugewiesenen Adressen als Prozentsatz der Gesamtzahl der öffentlichen IP-Adressen in öffentlichen IP-Adresspools an diesem Speicherort an.
 
 ## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>Anzeigen der öffentlichen IP-Adressen, die von Mandantenabonnements erstellt wurden
+
 Klicken Sie unter **Mandantenressourcen** auf **Öffentliche IP-Adressen**. Überprüfen Sie die Liste der öffentlichen IP-Adressen, die explizit von Mandantenabonnements in einer bestimmten Region erstellt wurden.
 
 ![Öffentliche IP-Adressen von Mandanten](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
@@ -55,6 +57,7 @@ Sie stellen möglicherweise fest, dass einige öffentliche IP-Adressen, die dyna
 Der Netzwerkcontroller weist dieser Ressource erst dann eine Adresse zu, wenn sie an eine Schnittstelle, einen Netzwerkadapter, ein Lastenausgleichsmodul oder ein Gateway für virtuelle Netzwerke gebunden ist. Wenn die öffentliche IP-Adresse an eine Schnittstelle gebunden ist, weist der Netzwerkcontroller ihr eine IP-Adresse zu. Die Adresse wird im Feld **Adresse** angezeigt.
 
 ## <a name="view-the-public-ip-address-information-summary-table"></a>Übersichtstabelle zum Anzeigen der Informationen zu öffentlichen IP-Adressen
+
 In verschiedenen Fällen werden öffentliche IP-Adressen zugewiesen, die bestimmen, ob die Adresse in der einen oder anderen Liste angezeigt wird.
 
 | **Zuweisungsfall der öffentlichen IP-Adresse** | **Wird in Nutzungsübersicht angezeigt** | **Wird in Liste öffentlicher IP-Adressen von Mandanten angezeigt** |
@@ -66,4 +69,5 @@ In verschiedenen Fällen werden öffentliche IP-Adressen zugewiesen, die bestimm
 | Öffentliche IP-Adresse, die implizit für IaaS-VM-Instanzen erstellt wird und für ausgehende NAT im virtuellen Netzwerk verwendet wird. Diese werden im Hintergrund erstellt, wenn ein Mandant eine VM-Instanz erstellt, sodass virtuelle Computer Informationen an das Internet senden können. |JA |Nein  |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Verwalten von Speicherkonten in Azure Stack](azure-stack-manage-storage-accounts.md)

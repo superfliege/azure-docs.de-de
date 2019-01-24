@@ -3,18 +3,18 @@ title: Zeitpläne in Azure Automation
 description: Automation-Zeitpläne werden verwendet, um die automatische Ausführung von Runbooks in Azure Automation zu planen. Beschreibt die Erstellung und Verwaltung eines Zeitplans, sodass ein Runbook automatisch zu einer bestimmten Uhrzeit oder nach einem sich wiederholenden Zeitplan gestartet wird.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c1c36736e9d023ab1bd2ed607638b600bc468f2c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294763"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437215"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planen eines Runbooks in Azure Automation
 
@@ -129,3 +129,4 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu den ersten Schritten mit Runbooks in Azure Automation finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
+

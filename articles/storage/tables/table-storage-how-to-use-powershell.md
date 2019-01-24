@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af76f67ba97b820d8571fd4f6bd3409396fb27ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634472"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433185"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,7 @@ In dieser Anleitung werden gängige Azure Table Storage-Vorgänge behandelt. Fol
 
 In dieser Anleitung erfahren Sie, wie Sie ein neues Azure Storage-Konto in einer neuen Ressourcengruppe erstellen, um es ganz einfach entfernen zu können, wenn Sie es nicht mehr benötigen. Sie können aber auch ein bereits vorhandenes Storage-Konto verwenden, wenn Ihnen das lieber ist.
 
-Für die Beispiele ist mindestens Version 4.4.0 des Azure PowerShell-Moduls `AzureRM` erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Sollte nichts angezeigt werden oder ein Upgrade erforderlich sein, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell).
+Für die Beispiele ist mindestens Version 4.4.0 des Azure PowerShell-Moduls `AzureRM` erforderlich. Führen Sie in einem PowerShell-Fenster `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Sollte nichts angezeigt werden oder ein Upgrade erforderlich sein, lesen Sie die Informationen unter [Install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell).
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

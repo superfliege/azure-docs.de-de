@@ -3,7 +3,7 @@ title: Einmaliges Anmelden bei Anwendungen – Azure Active Directory | Microsof
 description: Erfahren Sie, wie Sie beim Konfigurieren von Anwendungen in Azure Active Directory (Azure AD) eine Methode für einmaliges Anmelden auswählen. Verwenden Sie einmaliges Anmelden, damit Benutzer sich nicht die Kennwörter für jede Anwendung merken müssen, und um die Kontoverwaltung zu vereinfachen.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: b7e75753f8d7a9316dd1cc644dc22c42ef284736
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 452ec35f9a759bd09befb8c5a03a7fc5b3fb8ed2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190068"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463353"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
 Erfahren Sie, wie Sie beim Konfigurieren von Anwendungen in Azure Active Directory (Azure AD) die am besten geeignete Methode für einmaliges Anmelden auswählen. 

@@ -4,7 +4,7 @@ description: Ausführliche Anweisungen zum Konfigurieren von verwalteten Identit
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 78920bfe000287daef7b4efcaa8339d599d6f57e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 8d6c3e7ecfc51095d017876819492ca08180c129
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578500"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433593"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage
 
@@ -210,7 +210,7 @@ In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vor
 
  ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen verwalteten Identität zu einem virtuellen Azure-Computer
 
-Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
+Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM eine vom Benutzer zugewiesene verwaltete Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der vom Benutzer zugewiesenen verwalteten Identität ersetzen, die Sie erstellt haben.
 

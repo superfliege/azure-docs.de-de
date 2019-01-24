@@ -12,16 +12,16 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08571ac8b7e13bc0f414b481a481132793ba865d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021321"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452750"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
 
-Mit [elastischen Aufträgen](elastic-jobs-overview.md) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für mehrere Datenbanken gleichzeitig ausgeführt werden.
+Mit [elastischen Aufträgen](sql-database-job-automation-overview.md#elastic-database-jobs) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für mehrere Datenbanken gleichzeitig ausgeführt werden.
 
 In diesem Tutorial erfahren Sie, wie Sie eine datenbankübergreifende Abfrage ausführen:
 
@@ -65,7 +65,7 @@ Wenn Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto
 
 ## <a name="create-required-resources"></a>Erstellen der erforderlichen Ressourcen
 
-Um einen Agent für elastische Aufträge erstellen zu können, benötigen Sie eine [Auftragsdatenbank](elastic-jobs-overview.md#job-database) (S0 oder höher). 
+Um einen Agent für elastische Aufträge erstellen zu können, benötigen Sie eine [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) (S0 oder höher). 
 
 *Das folgende Skript erstellt eine neue Ressourcengruppe, einen neuen Server und eine neue Datenbank, die Sie als Auftragsdatenbank verwenden können. Außerdem erstellt das Skript einen zweiten Server mit zwei leeren Datenbanken, für die Aufträge ausgeführt werden können.*
 
@@ -210,7 +210,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>Definieren der Zieldatenbanken, für die der Auftrag ausgeführt werden soll
 
-Eine [Zielgruppe](elastic-jobs-overview.md#target-group) definiert mindestens eine Gruppe von Datenbanken, für die ein Auftragsschritt ausgeführt wird. 
+Eine [Zielgruppe](sql-database-job-automation-overview.md#target-group) definiert mindestens eine Gruppe von Datenbanken, für die ein Auftragsschritt ausgeführt wird. 
 
 Mit dem folgenden Codeausschnitt werden zwei Zielgruppen erstellt: *ServerGroup* und *ServerGroupExcludingDb2*. *ServerGroup* ist auf alle Datenbanken ausgerichtet, die zum Zeitpunkt der Ausführung auf dem Server vorhanden sind. *ServerGroupExcludingDb2* ist ebenfalls auf alle Datenbanken auf dem Server ausgerichtet, schließt allerdings *TargetDb2* aus:
 

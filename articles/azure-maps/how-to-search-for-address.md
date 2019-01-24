@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387428"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413548"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Maps
 
@@ -158,7 +158,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |-----|------------|
     | number | true |
 
-    Wenn der Abfrageparameter [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) mit der Anforderung gesendet wird, enthält die Antwort möglicherweise die Straßenseite (links/rechts) und auch eine versetzte Position für diese Hausnummer.
+    Wenn der Abfrageparameter [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) mit der Anforderung gesendet wird, enthält die Antwort möglicherweise die Straßenseite (links/rechts) und auch eine versetzte Position für diese Hausnummer.
   
 6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
@@ -166,7 +166,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |-----|------------|
     | returnSpeedLimit | true |
   
-    Wenn der Abfrageparameter [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, wird in der Antwort die angegebene Geschwindigkeitsbegrenzung zurückgegeben.
+    Wenn der Abfrageparameter [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) festgelegt wird, wird in der Antwort die angegebene Geschwindigkeitsbegrenzung zurückgegeben.
 
 7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
@@ -174,7 +174,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |-----|------------|
     | returnRoadUse | true |
 
-    Wenn der Abfrageparameter [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, wird in der Antwort die Straßennutzung für die inverse Geocodierung von Straßen zurückgegeben.
+    Wenn der Abfrageparameter [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) festgelegt wird, wird in der Antwort die Straßennutzung für die inverse Geocodierung von Straßen zurückgegeben.
 
 8. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
@@ -182,7 +182,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |-----|------------|
     | roadUse | true |
 
-    Mithilfe des Abfrageparameters [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) können Sie die Abfrage der inversen Geocodierung auf eine bestimmte Art der Straßennutzung beschränken.
+    Mithilfe des Abfrageparameters [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) können Sie die Abfrage der inversen Geocodierung auf eine bestimmte Art der Straßennutzung beschränken.
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Suchen nach der Querstraße mithilfe der inversen Adresssuche für Querstraßen
 

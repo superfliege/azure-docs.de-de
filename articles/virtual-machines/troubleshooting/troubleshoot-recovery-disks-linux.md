@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 2f10a231c4edc3e01d3f8c5f7f4db1854f83044d
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e6d6c47726b21a241b379366bd1fde6c6b90e223
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392401"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462011"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie die Azure CLI die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
@@ -35,7 +35,7 @@ Der Problembehebungsprozess sieht wie folgt aus:
 
 Für virtuelle Computer mit verwalteten Datenträgern finden Sie weitere Informationen unter [Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
 
-Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
+Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
 
@@ -69,7 +69,7 @@ Virtuelle Festplatten und VMs sind zwei unterschiedliche Ressourcen in Azure. Ei
 
 Der erste Schritt beim Wiederherstellen Ihrer VM ist das Löschen der VM-Ressource selbst. Das Löschen der VM belässt die virtuellen Festplatten in Ihrem Speicherkonto. Nachdem die VM gelöscht wird, fügen Sie die virtuelle Festplatte zu einer anderen VM hinzu, um die Fehler zu beheben.
 
-Löschen Sie mit [az vm delete](/cli/azure/vm#az_vm_delete) den virtuellen Computer. Im folgenden Beispiel wird die VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` gelöscht:
+Löschen Sie mit [az vm delete](/cli/azure/vm) den virtuellen Computer. Im folgenden Beispiel wird die VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` gelöscht:
 
 ```azurecli
 az vm delete --resource-group myResourceGroup --name myVM 

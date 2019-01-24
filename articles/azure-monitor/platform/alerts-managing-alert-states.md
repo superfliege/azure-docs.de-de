@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: 88601383df5015f9ea23184d65266974bb0f35e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 2aa521b0552b60e5a875a5f46ab9887c6e5b6e3e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345070"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472057"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Verwalten von Warnungen und Status intelligenter Gruppen
 Warnungen in Azure Monitor verfügen jetzt über einen [Warnungsstatus und eine Überwachungsbedingung](https://aka.ms/azure-alerts-overview), und ähnlich verfügen intelligente Gruppen über einen [Status für intelligente Gruppen](https://aka.ms/smart-groups). Statusänderungen werden jetzt im Verlauf erfasst, der der jeweiligen Warnung oder intelligenten Gruppe zugeordnet ist. Dieser Artikel führt Sie durch den Prozess der Statusänderung, sowohl für Warnungen als auch für intelligente Gruppen.
@@ -47,3 +47,4 @@ Warnungen in Azure Monitor verfügen jetzt über einen [Warnungsstatus und eine 
 
 1. Nach diesem Vorgang wird die Statusänderung im Verlauf der jeweiligen intelligenten Gruppe aufgezeichnet. Dies kann angezeigt werden, indem die entsprechende Detailseite geöffnet und der Verlaufsbereich überprüft wird.     
 ![Überwachung](./media/alerts-managing-alert-states/state-sg-history.jpg)
+

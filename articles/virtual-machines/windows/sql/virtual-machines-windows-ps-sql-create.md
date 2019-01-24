@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 321f6fc043147c0a1559c93fb5ada3d33d9e3dd9
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 60f04ac857079a1019ca744f3b26b0d05ae6ca6c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359968"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426929"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Bereitstellen von SQL Server-VMs mit Azure PowerShell
 
@@ -29,7 +29,7 @@ In diesem Leitfaden werden die Optionen zum Erstellen von Windows-SQL Server-VMs
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für diesen Artikel ist Version 3.6 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für diesen Artikel ist Version 3.6 oder höher des Azure PowerShell-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 ## <a name="configure-your-subscription"></a>Konfigurieren Ihres Abonnements
 

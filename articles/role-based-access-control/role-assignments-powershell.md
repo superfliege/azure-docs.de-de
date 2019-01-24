@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a22b35ff9455f0849dd407df163ac3f8895dd874
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 31fa2b670b6492b7496c147ef72688c3c0121fa5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304634"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429717"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>Verwalten des Zugriffs mit der RBAC und Azure PowerShell
 
@@ -30,7 +30,7 @@ Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffss
 Für die Zugriffsverwaltung benötigen Sie Folgendes:
 
 * [PowerShell in Azure Cloud Shell](/azure/cloud-shell/overview)
-* [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
 
 ## <a name="list-roles"></a>Auflisten der Rollen
 

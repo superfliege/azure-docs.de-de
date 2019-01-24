@@ -4,18 +4,18 @@ description: Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzi
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727901"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424318"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
@@ -428,3 +428,4 @@ Wenn Benutzer, denen im Runbookbereich die Rolle „Operator für Automation“ 
 * Weitere Informationen zu den verschiedenen Möglichkeiten, die rollenbasierte Zugriffsteuerung für Azure Automation zu konfigurieren, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 * Weitere Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
 * Weitere Informationen zu verschiedenen Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
+

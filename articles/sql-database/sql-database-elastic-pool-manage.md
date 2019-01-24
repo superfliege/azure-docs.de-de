@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/17/2019
+ms.openlocfilehash: 93b7fb0cd303f34d4afadf461f8886aaac52e4c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865878"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388574"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -39,7 +39,7 @@ Hier können Sie eine beliebige Kombination aus den folgenden Änderungen vorneh
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Verwalten von Pools für elastische Datenbanken und von in einem Pool zusammengefassten Datenbanken
 
-Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und in einem Pool zusammengefassten Datenbanken in SQL-Datenbank mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter. Weitere Informationen zum Erstellen und Verwalten logischer Server für Pools für elastische Datenbanken finden Sie unter [Erstellen und Verwalten logischer Server](sql-database-logical-servers.md). Weitere Informationen zum Erstellen und Verwalten von Firewallregeln finden Sie unter [Erstellen und Verwalten von Firewallregeln mit PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
+Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und in einem Pool zusammengefassten Datenbanken in SQL-Datenbank mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter. Weitere Informationen zum Erstellen und Verwalten logischer Server für Pools für elastische Datenbanken finden Sie unter [Erstellen und Verwalten logischer Server](sql-database-logical-servers.md). Weitere Informationen zum Erstellen und Verwalten von Firewallregeln finden Sie unter [Erstellen und Verwalten von Firewallregeln mit PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
 
 > [!TIP]
 > PowerShell-Beispielskripts finden Sie unter [Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool heraus mit PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) und [Verwenden von PowerShell zum Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken in der Azure SQL-Datenbank](scripts/sql-database-monitor-and-scale-pool-powershell.md).

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 0c819e4efb158baa2150b00368c618c5467a01e0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/17/2019
+ms.openlocfilehash: 60c7483e698a07fcf86438798f6bb5013a7417ce
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966772"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391135"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure SQL – Transparent Data Encryption: Bring Your Own Key-Unterstützung
 
@@ -116,7 +116,7 @@ Im folgenden Abschnitt werden die Schritte für Einrichtung und Konfiguration au
 
 ### <a name="azure-key-vault-configuration-steps"></a>Schritte der Azure Key Vault-Konfiguration
 
-- Installieren Sie [PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+- Installieren Sie [PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-5.6.0).
 - Erstellen Sie zwei Azure Key Vault-Instanzen in zwei verschiedenen Regionen mithilfe von [PowerShell, um die Eigenschaft „soft-delete“ für die Schlüsseltresore zu aktivieren](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) (diese Option ist im AKV-Portal nicht verfügbar, aber für SQL erforderlich).
 - Beide Azure Key Vault-Instanzen müssen sich in den beiden Regionen befinden, die im selben geografischen Azure-Raum verfügbar sind, damit Sichern und Wiederherstellen von Schlüsseln funktioniert.  Wenn sich die beiden Schlüsseltresore in unterschiedlichen geografischen Regionen befinden müssen, um die SQL-Anforderungen für die georedundante Notfallwiederherstellung zu erfüllen, können Sie den [BYOK-Prozess](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) befolgen, der das Importieren von Schlüsseln aus einem lokalen HSM zulässt.
 - Erstellen Sie einen neuen Schlüssel im ersten Schlüsseltresor:  

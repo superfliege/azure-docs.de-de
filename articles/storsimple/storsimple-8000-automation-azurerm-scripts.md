@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d9c428e3fa8d9fe964b83ae345bb70fd49a6ce1a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4184d3605c464b5da495de0698155dda1ae4e474
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215302"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438710"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts
 
@@ -62,7 +62,7 @@ Dieser Abschnitt beschreibt anhand eines Beispielskripts die verschiedenen Schri
 Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 *   Azure PowerShell ist installiert. So installieren Sie Azure PowerShell-Module
-    * Führen Sie in einer Windows-Umgebung die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) durch. Sie können Azure PowerShell auf Ihrem Windows Server-Host für Ihr StorSimple-Gerät installieren, sofern Sie eines verwenden.
+    * Führen Sie in einer Windows-Umgebung die Schritte unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) durch. Sie können Azure PowerShell auf Ihrem Windows Server-Host für Ihr StorSimple-Gerät installieren, sofern Sie eines verwenden.
     * Führen Sie in einer Linux- oder macOS-Umgebung die Schritte unter [Installieren und Konfigurieren von Azure PowerShell unter macOS oder Linux](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux?view=azurermps-4.4.0) durch.
 
 Weitere Informationen zur Verwendung von Azure PowerShell finden Sie im Artikel [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0).

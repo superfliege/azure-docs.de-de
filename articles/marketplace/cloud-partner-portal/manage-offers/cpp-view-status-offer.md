@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d7c2909e59643378e765fa51e2d261cbdc106822
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355074"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430380"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Anzeigen des Veröffentlichungsstatus von Azure Marketplace- und AppSource-Angeboten
 
@@ -46,7 +46,7 @@ Im nächsten Beispiel sehen Sie die Registerkarte **Status** für einen Beratung
 
 ![Registerkarte „Status“ für Beratungsdienst, die einen Fehler anzeigt](./media/consulting-service-error.png)
 
-Das letzte Statusbeispiel einer Azure-Anwendung zeigt ein kritisches Microsoft-Prüfungsproblem.  Es enthält einen Hotlink zum VSTS-Element mit detaillierten Informationen zu diesem Prüfungsproblem.  Informationen hierzu finden Sie unter [Veröffentlichen eines Azure-Anwendungsangebots]().
+Das letzte Statusbeispiel einer Azure-Anwendung zeigt ein kritisches Microsoft-Prüfungsproblem.  Es enthält einen Hotlink zum VSTS-Element mit detaillierten Informationen zu diesem Prüfungsproblem.  Informationen hierzu finden Sie unter [Veröffentlichen eines Azure-Anwendungsangebots](cpp-publish-offer.md).
 
 ![Registerkarte „Status“ für Azure-App mit Prüfungsproblem](../azure-applications/media/status-tab-ms-review.png)
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
-ms.component: logs
-ms.openlocfilehash: d5e57442a163c8a93adc39517285bd88affab2fe
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.subservice: logs
+ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353055"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438234"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./tutorial-dashboards.md) findet sich am Ende dieses Artikels.
@@ -795,3 +795,4 @@ Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder den Even
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../../azure-monitor/platform/activity-logs-overview.md)
 * [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

@@ -3,18 +3,18 @@ title: Lösung für die Updateverwaltung in Azure
 description: In diesem Artikel soll vermittelt werden, wie Sie die Lösung für die Azure-Updateverwaltung zum Verwalten von Updates für Ihre Windows- und Linux-Computer verwenden können.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8635d943120f0e79b8efcfe1f9be0b74d8bb4fac
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214996"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433899"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -615,3 +615,4 @@ Fahren Sie mit dem Tutorial fort, um zu erfahren, wie Updates für Ihre virtuell
 * [Erstellen Sie Warnungen](automation-tutorial-update-management.md#configure-alerts) für den Status der Updatebereitstellung.
 
 * Weitere Informationen zur Interaktion mit der Updateverwaltung über die REST-API finden Sie unter [Softwareupdatekonfigurationen](/rest/api/automation/softwareupdateconfigurations).
+

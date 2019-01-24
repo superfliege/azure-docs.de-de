@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
 ms.author: cynthn
-ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e283f21b65706860e198e2deca933f1986073cab
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932393"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413225"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Linux-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Linux-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Distributionen und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
@@ -201,7 +201,7 @@ Es dauert einige Minuten, bis Packer die VM erstellt, die Provisioner ausgeführ
 
 
 ## <a name="create-vm-from-azure-image"></a>Erstellen einer VM anhand des Azure-Images
-Sie können nun mit [az vm create](/cli/azure/vm#az_vm_create) eine VM anhand Ihres Images erstellen. Geben Sie mit dem Parameter `--image` das Image an, das Sie erstellt haben. Im folgenden Beispiel wird eine VM namens *myVM* anhand von *myPackerImage* erstellt, und es werden SSH-Schlüssel generiert, sofern noch nicht vorhanden:
+Sie können nun mit [az vm create](/cli/azure/vm) eine VM anhand Ihres Images erstellen. Geben Sie mit dem Parameter `--image` das Image an, das Sie erstellt haben. Im folgenden Beispiel wird eine VM namens *myVM* anhand von *myPackerImage* erstellt, und es werden SSH-Schlüssel generiert, sofern noch nicht vorhanden:
 
 ```azurecli
 az vm create \

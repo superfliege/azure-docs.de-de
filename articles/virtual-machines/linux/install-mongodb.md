@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: zarhoads
-ms.openlocfilehash: f1f8db985917b8eae6a5f301379af3c1bf09021f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 138435664222ff268069465aa98a53f0902a9f99
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465422"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412698"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
 
@@ -31,9 +31,9 @@ ms.locfileid: "49465422"
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Manuelles Installieren und Konfigurieren von MongoDB auf einem virtuellen Computer
-Für MongoDB stehen [Installationsanweisungen](https://docs.mongodb.com/manual/administration/install-on-linux/) für Linux-Distributionen zur Verfügung, u.a. für Red Hat/CentOS, SUSE, Ubuntu und Debian. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *CentOS* erstellt. Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
+Für MongoDB stehen [Installationsanweisungen](https://docs.mongodb.com/manual/administration/install-on-linux/) für Linux-Distributionen zur Verfügung, u.a. für Red Hat/CentOS, SUSE, Ubuntu und Debian. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *CentOS* erstellt. Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 
-Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -121,7 +121,7 @@ Sie können mithilfe der folgenden Azure-Schnellstartvorlage von GitHub eine ein
 
 * [Einfache MongoDB-Instanz unter CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -134,7 +134,7 @@ az group deployment create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-Melden Sie sich bei dem virtuellen Computer mit der öffentlichen DNS-Adresse des virtuellen Computers an. Sie können die öffentliche DNS-Adresse mit dem Befehl [az vm show](/cli/azure/vm#az_vm_show) anzeigen:
+Melden Sie sich bei dem virtuellen Computer mit der öffentlichen DNS-Adresse des virtuellen Computers an. Sie können die öffentliche DNS-Adresse mit dem Befehl [az vm show](/cli/azure/vm) anzeigen:
 
 ```azurecli
 az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
@@ -172,7 +172,7 @@ Sie können mithilfe der folgenden Azure-Schnellstartvorlage von GitHub einen ko
 > [!WARNING]
 > Für die Bereitstellung dieses komplexen MongoDB-Shardclusters sind mehr als 20 Kerne erforderlich. Dies ist in der Regel die Standardanzahl von Kernen pro Region für ein Abonnement. Stellen Sie eine Azure-Supportanfrage zum Erhöhen der Kernanzahl.
 
-Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: e3e333594b32cff018f02cd1d3b32eaf44c11a65
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903853"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413072"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Grundlegendes zu Einwilligungserfahrungen für Azure AD-Anwendungen
 
@@ -84,4 +84,4 @@ Hier finden Sie die Einwilligungserfahrungen, denen ein Benutzer in den gängigs
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Eine ausführliche Übersicht über die [Zustimmungsimplementierung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework)
-- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen
+- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen

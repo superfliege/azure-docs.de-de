@@ -12,18 +12,18 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606808"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449400"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
 Dieser Artikel enthält eine Vielzahl von Beispielszenarien für die ersten Schritte bei der Arbeit mit Aufträgen für die elastische Datenbank mit T-SQL.
 
-In den Beispielen werden die [gespeicherten Prozeduren](#job-stored-procedures) und [Ansichten](#job-views) verwendet, die in der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) verfügbar sind.
+In den Beispielen werden die [gespeicherten Prozeduren](#job-stored-procedures) und [Ansichten](#job-views) verwendet, die in der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) verfügbar sind.
 
 Transact-SQL (T-SQL) dient zum Erstellen, Konfigurieren, Ausführen und Verwalten von Aufträgen. Die Erstellung des Agents für Aufträge für die elastische Datenbank wird nicht in T-SQL unterstützt. Daher müssen Sie mithilfe des Portals oder mit [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) zuerst einen *Agent für Aufträge für die elastische Datenbank* erstellen.
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>Erstellen einer Zielgruppe (Server)
 
 Im folgenden Beispiel wird gezeigt, wie ein Auftrag für alle Datenbanken auf einem Server ausgeführt wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-a-single-database"></a>Ausschließen einer Einzeldatenbank
 
 Im folgenden Beispiel wird gezeigt, wie ein Auftrag für alle Datenbanken auf einem Server ausgeführt wird, ausgenommen für die Datenbank mit dem Namen *MappingDB*.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Erstellen einer Zielgruppe (Pools)
 
 Das folgende Beispiel zeigt, wie Zielgruppen für alle Datenbanken in einem oder in mehreren Pools für elastische Datenbanken erstellt werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Bereitstellen eines neuen Schemas für eine Vielzahl von Datenbanken
 
 Das folgende Beispiel zeigt, wie ein neues Schema für alle Datenbanken bereitgestellt wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 
 ```sql
@@ -195,7 +195,7 @@ Standardmäßig versucht der Auftrags-Agent, die Tabelle zum Speichern der zurü
 2. Zusätzliche Spalte für „internal_execution_id“ mit dem Datentyp „uniqueidentifier“.
 3. Ein nicht gruppierter Index mit dem Namen „IX_<TableName>_Internal_Execution_ID“ für die Spalte „internal_execution_id“.
 
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie die folgenden Befehle aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie die folgenden Befehle aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>Anzeigen von Auftragsdefinitionen
 
 Das folgende Beispiel zeigt, wie aktuelle Auftragsdefinitionen angezeigt werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>Starten der Ad-hoc-Ausführung eines Auftrags
 
 Im folgenden Beispiel wird gezeigt, wie sofort ein Auftrag gestartet wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>Planen der Auftragsausführung
 
 Im folgenden Beispiel wird gezeigt, wie Sie einen Auftrag für eine zukünftige Ausführung planen.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +325,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>Überwachen des Status einer Auftragsausführung
 
 Das folgende Beispiel veranschaulicht, wie Ausführungsstatusdetails für alle Aufträge angezeigt werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>Abbrechen eines Auftrags
 
 Das folgende Beispiel zeigt den Vorgang zum Abbrechen eines Auftrags.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>Löschen eines alten Auftragsverlaufs
 
 Das folgende Beispiel zeigt, wie der Auftragsverlauf bis zu einem bestimmten Datum gelöscht wird.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>Löschen eines Auftrags sowie des zugehörigen Auftragsverlaufs
 
 Das folgende Beispiel zeigt, wie ein Auftrag und alle zugehörigen Auftragsverläufe gelöscht werden.  
-Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
+Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,7 +402,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>In der Auftragsdatenbank gespeicherte Prozeduren
 
-Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](elastic-jobs-overview.md#job-database) enthalten.
+Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) enthalten.
 
 
 
@@ -1190,7 +1190,7 @@ GO
 
 ## <a name="job-views"></a>Auftragsansichten
 
-Die folgenden Ansichten sind in der [Auftragsdatenbank](elastic-jobs-overview.md#job-database) verfügbar.
+Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) verfügbar.
 
 
 |Sicht  |BESCHREIBUNG  |

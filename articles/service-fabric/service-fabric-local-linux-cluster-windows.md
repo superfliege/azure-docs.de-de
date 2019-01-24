@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: ad0d383888c173ece5a7fbd3b0de690ed13074f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 26acb3a2a0cefdca74d2c761ccddf89e18aa909a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206292"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388493"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Einrichten eines Linux-Service Fabric-Clusters auf Ihrem Windows-Entwicklungscomputer
 
@@ -39,13 +39,8 @@ Linux-basierte Service Fabric-Cluster werden nicht nativ unter Windows ausgefüh
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Erstellen eines lokalen Containers und Einrichten von Service Fabric
 Führen Sie die folgenden Schritte in PowerShell aus, um einen lokalen Docker-Container einzurichten und darin einen Service Fabric-Cluster auszuführen:
 
-1. Rufen Sie das Image per Pullvorgang aus dem Docker-Hub-Repository ab:
 
-    ```powershell
-    docker pull microsoft/service-fabric-onebox
-    ```
-
-2. Aktualisieren Sie wie folgt die Konfiguration des Docker-Daemons auf dem Host, und starten Sie den Docker-Daemon neu: 
+1. Aktualisieren Sie wie folgt die Konfiguration des Docker-Daemons auf dem Host, und starten Sie den Docker-Daemon neu: 
 
     ```json
     {
@@ -55,32 +50,75 @@ Führen Sie die folgenden Schritte in PowerShell aus, um einen lokalen Docker-Co
     ```
     Es wird empfohlen, zum Aktualisieren auf das Docker-Symbol und auf „Einstellungen“ > „Daemon“ > „Erweitert“ zu klicken und dann das Update auszuführen. Starten Sie dann den Docker-Daemon neu, damit die Änderungen wirksam werden. 
 
-3. Starten Sie eine Service Fabric-One-box-Containerinstanz mit dem Image:
+2. Erstellen Sie zur Erstellung Ihres Service Fabric-Images eine Datei namens `Dockerfile` in einem neuen Verzeichnis:
 
-    ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
+    ```dockerfile
+    FROM microsoft/service-fabric-onebox
+    WORKDIR /home/ClusterDeployer
+    RUN ./setup.sh
+    #Generate the local
+    RUN locale-gen en_US.UTF-8
+    #Set environment variables
+    ENV LANG=en_US.UTF-8
+    ENV LANGUAGE=en_US:en
+    ENV LC_ALL=en_US.UTF-8
+    EXPOSE 19080 19000 80 443
+    #Start SSH before running the cluster
+    CMD /etc/init.d/ssh start && ./run.sh
     ```
+
+    >[!NOTE]
+    >Sie können diese Datei anpassen, um in Ihrem Container weitere Programme oder Abhängigkeiten hinzuzufügen.
+    >Wenn Sie beispielsweise `RUN apt-get install nodejs -y` hinzufügen, können Anwendungen vom Typ `nodejs` als ausführbare Gastdateien unterstützt werden.
+    
     >[!TIP]
-    > * Indem Sie einen Namen für Ihre Containerinstanz angeben, verbessern Sie die Lesbarkeit. 
-    > * Wenn Ihre Anwendung an bestimmten Ports lauscht, müssen diese mit zusätzlichen Tags vom Typ „-p“ angegeben werden. Beispiel: Wenn Ihre Anwendung an Port 8080 lauscht, führen Sie „docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox“ aus.
+    > Standardmäßig wird dann das Image mit der aktuellen Version von Service Fabric per Pullvorgang bereitgestellt. Bestimmte Revisionen finden Sie auf der Seite [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-4. Melden Sie sich im interaktiven SSH-Modus am Docker-Container an:
+3. Öffnen Sie ein Terminal, wechseln Sie per `cd` zum Verzeichnis mit Ihrer Datei vom Typ `Dockerfile`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `Dockerfile` zu erstellen:
 
-    ```powershell
-    docker exec -it sfonebox bash
+    ```powershell 
+    docker build -t mysfcluster .
+    ```
+    
+    >[!NOTE]
+    >Dieser Vorgang dauert etwas, muss jedoch nur einmal ausgeführt werden.
+
+4. Nun können Sie bei Bedarf schnell eine lokale Kopie von Service Fabric starten, indem Sie Folgendes ausführen:
+
+    ```powershell 
+    docker run --name sftestcluster -d -v //var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
-5. Führen Sie das Setupskript aus, mit dem die erforderlichen Abhängigkeiten abgerufen werden, und starten Sie den Cluster anschließend im Container.
+    >[!TIP]
+    >Geben Sie einen Namen für Ihre Containerinstanz an, um die Lesbarkeit zu verbessern. 
+    >
+    >Wenn Ihre Anwendung an bestimmten Ports lauscht, müssen diese mit zusätzlichen Tags vom Typ `-p` angegeben werden. Beispiel: Wenn Ihre Anwendung an Port 8080 lauscht, fügen Sie das folgende `-p`-Tag hinzu:
+    >
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >
 
-    ```bash
-    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
-    ./run.sh       # Starts the local cluster
+5. Der Start des Clusters dauert einen Moment. Sie können mithilfe des folgenden Befehls Protokolle anzeigen oder zum Dashboard wechseln, um sich über die Integrität der Cluster zu informieren ([http://localhost:19080](http://localhost:19080)):
+
+    ```powershell 
+    docker logs sftestcluster
     ```
 
 6. Nachdem Schritt 5 erfolgreich abgeschlossen wurde, können Sie von Ihrem Windows-Computer aus auf ``http://localhost:19080`` zugreifen und den Service Fabric Explorer anzeigen. Jetzt können Sie mit beliebigen Tools von Ihrem Windows-Entwicklungscomputer aus eine Verbindung mit diesem Cluster herstellen und Anwendungen für Linux-Service Fabric-Cluster bereitstellen. 
 
     > [!NOTE]
     > Das Eclipse-Plug-In wird unter Windows aktuell nicht unterstützt. 
+
+7. Wenn Sie fertig sind, beenden und bereinigen Sie den Container mithilfe des folgenden Befehls:
+
+    ```powershell 
+    docker rm -f sftestcluster
+    ```
+
+### <a name="known-limitations"></a>Bekannte Einschränkungen 
+ 
+ Für den lokalen Cluster in einem Container auf einem Mac sind folgende Einschränkungen bekannt: 
+ 
+ * Der DNS-Dienst wird nicht ausgeführt und nicht unterstützt. ([Problem 132](https://github.com/Microsoft/service-fabric/issues/132))
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erste Schritte mit [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)

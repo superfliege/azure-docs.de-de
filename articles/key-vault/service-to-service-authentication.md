@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050114"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413752"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -55,7 +55,7 @@ Für .NET-Anwendungen ist die einfachste Methode zum Verwenden einer verwalteten
 
 Die `AzureServiceTokenProvider`-Klasse speichert das Token im Arbeitsspeicher zwischen und ruft es kurz vor dem Ablaufdatum von Azure AD ab. Folglich brauchen Sie vor dem Aufruf der `GetAccessTokenAsync`-Methode das Ablaufdatum nicht mehr zu überprüfen. Rufen Sie einfach die Methode auf, wenn Sie das Token verwenden möchten. 
 
-Die `GetAccessTokenAsync`-Methode erfordert einen Ressourcenbezeichner. Weitere Informationen finden Sie unter [Azure-Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity).
+Die `GetAccessTokenAsync`-Methode erfordert einen Ressourcenbezeichner. Weitere Informationen finden Sie unter [Azure-Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](https://docs.microsoft.com/azure/active-directory/msi-overview).
 
 
 <a name="samples"></a>

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 52caae38c21fe403735b8479ec2e721ef38f521e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 01/17/2019
+ms.openlocfilehash: f43c2cd5a3c155258cd698f6b55854bc0df9f861
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845789"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388590"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von logischen Servern und Einzeldatenbanken in Azure SQL-Datenbank
 
@@ -57,7 +57,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 
 ## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell: Verwalten von logischen Servern und Datenbanken
 
-Verwenden Sie zum Erstellen und Verwalten von logischen Azure SQL-Servern, einzelnen und in Pools organisierten Datenbanken und Firewalls für logische Server mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) weiter.
+Verwenden Sie zum Erstellen und Verwalten von logischen Azure SQL-Servern, einzelnen und in Pools organisierten Datenbanken und Firewalls für logische Server mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
 
 > [!TIP]
 > PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel für logische Server](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL-Datenbank mithilfe von PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).

@@ -3,18 +3,18 @@ title: Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 description: Es wird beschrieben, wie Sie bei Auslösung einer Azure-Warnung ein Runbook auslösen.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 88fe7740170638e9e0d7398a02dcf83ab81f6ffc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581642"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421682"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
@@ -232,3 +232,4 @@ Gehen Sie wie folgt vor, um eine klassische Warnung zu erstellen:
 * Weitere Informationen über die verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks](automation-starting-a-runbook.md).
 * Weitere Informationen zum Erstellen von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * Informationen zum Erstellen von Near Real-Time Alerts finden Sie unter [Erstellen einer Warnungsregel im Azure-Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+

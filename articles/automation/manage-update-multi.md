@@ -3,18 +3,18 @@ title: Verwalten von Updates für mehrere virtuelle Azure-Computer
 description: In diesem Artikel wird beschrieben, wie Sie Updates für virtuelle Azure-Computer verwalten.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214027"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427422"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -198,3 +198,4 @@ Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Be
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Updateverwaltung, einschließlich der Protokolle, Ausgabe und Fehler, finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
+

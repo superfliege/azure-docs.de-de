@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433479"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412188"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
 
@@ -35,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der REST-API einen virtuellen L
 Bevor Sie die Anforderung erstellen und übermitteln, benötigen Sie Folgendes:
 
 * Die `{subscription-id}` für Ihr Abonnement
-  * Wenn Sie mehrere Abonnements haben, lesen Sie [Arbeiten mit mehreren Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions).
+  * Wenn Sie mehrere Abonnements haben, lesen Sie [Arbeiten mit mehreren Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 * Einen `{resourceGroupName}`, die Sie vorher erstellt haben
 * Eine [virtuelle Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) in derselben Ressourcengruppe
 * Ein SSH-Schlüsselpaar (Sie können [ein neues generieren](mac-create-ssh-keys.md), wenn Sie noch keins haben)

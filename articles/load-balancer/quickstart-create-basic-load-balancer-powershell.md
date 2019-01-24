@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: dfb9db14f37efeb5ad83ef54fcc4613724d28a15
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229739"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452682"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs mit Azure PowerShell
 In dieser Schnellstartanleitung wird gezeigt, wie Sie einen Load Balancer im Tarif „Basic“ mit Azure PowerShell erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -277,7 +277,7 @@ Mit dem Parameter `-AsJob` wird die VM als Hintergrundaufgabe erstellt, sodass d
  
 Installieren Sie IIS mit einer benutzerdefinierten Webseite wie folgt auf beiden virtuellen Back-End-Computern:
 
-1. Rufen Sie die öffentliche IP-Adresse des Load Balancers ab. Verwenden Sie `Get-AzureRmPublicIPAdress`, um die öffentliche IP-Adresse des Load Balancers abzurufen.
+1. Rufen Sie die öffentliche IP-Adresse des Load Balancers ab. Verwenden Sie `Get-AzureRmPublicIPAddress`, um die öffentliche IP-Adresse des Load Balancers abzurufen.
 
   ```azurepowershell-interactive
     Get-AzureRmPublicIPAddress `

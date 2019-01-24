@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: ef3d26112c631ee0ed3c754394339092020add53
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c33952f893d5ef2cfb9020acbf813d30b6c105e7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332539"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469737"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -265,7 +265,7 @@ Für alle Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verw
 
 Um die Aufrufe zu unterstützen, die [von Microsoft verwalteten Connectors](../connectors/apis-list.md) ausführen, richten Sie Ihre Firewall mit *allen* [ausgehenden](#outbound) IP-Adressen ein, die von diesen Connectors verwendet werden, basierend auf den Regionen, in denen Ihre Logik-Apps vorhanden sind. Diese Adressen werden unter der Überschrift **Ausgehend** in diesem Abschnitt angezeigt, wobei sie nach Region sortiert sind. 
 
-Für [Azure Government](/azure-government/documentation-government-welcome) und [Azure China 21Vianet](/azure/china/china-welcome) stehen derzeit keine reservierten IP-Adressen für Connectors zur Verfügung.
+Für [Azure Government](../azure-government/documentation-government-overview.md) und [Azure China 21Vianet](/azure/china/china-welcome) stehen derzeit keine reservierten IP-Adressen für Connectors zur Verfügung.
 
 > [!IMPORTANT]
 > 

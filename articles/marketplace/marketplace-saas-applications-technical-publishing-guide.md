@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352018"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450744"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -140,7 +140,7 @@ Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnun
 | Anforderung | Details |  
 |:--- |:--- |  
 |Abrechnung und Messung | Ihr Angebot wird über eine monatliche Flatrate abgerechnet. Derzeit werden nutzungsbasierte Preise und nutzungsbasierte Anpassungsfunktionen nicht unterstützt. |  
-|Stornierung | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
+|Abbruch | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
 |Transaktionszielseite | Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können. |   
 | Abonnement-API | Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. |  
 

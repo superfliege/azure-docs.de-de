@@ -4,7 +4,7 @@ description: Veröffentlichen von Anwendungen mit PingAccess und App-Proxy zum U
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c5a69e0c15d6d75bb4f182c1d8f62863aae7c760
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52111d54031b2d458b0bfc727dcb310fbbcbd9ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140845"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468598"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -88,7 +88,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 7. Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann.
 8. Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern.
 9. Wählen Sie auf dem Blatt „App-Verwaltung“ **Einmaliges Anmelden** aus.
-10. Wählen Sie im Dropdownmenü **Headerbasierte Anmeldung** aus. Wählen Sie **Speichern**aus.
+10. Wählen Sie im Dropdownmenü **Headerbasierte Anmeldung** aus. Wählen Sie **Speichern** aus.
 
    >[!TIP]
    >Wenn Sie das headerbasierte einmalige Anmelden zum ersten Mal verwenden, müssen Sie PingAccess installieren. Verwenden Sie den Link auf dieser SSO-Seite zum Herunterladen von PingAccess, um sicherzustellen, dass Ihr Azure-Abonnement automatisch Ihrer PingAccess-Installation zugeordnet wird. Sie können die Download-Website jetzt öffnen oder später zu dieser Seite zurückkehren. 
@@ -128,7 +128,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
   ![Auswählen von „Schlüssel“](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
 
 4. Erstellen Sie einen Schlüssel, indem Sie eine Schlüsselbeschreibung eingeben und im Dropdownmenü ein Ablaufdatum wählen.
-5. Wählen Sie **Speichern**aus. Im Feld **Wert** wird eine GUID angezeigt.
+5. Wählen Sie **Speichern** aus. Im Feld **Wert** wird eine GUID angezeigt.
 
   Speichern Sie diesen Wert nun, da sie ihn nicht erneut anzeigen können, nachdem dieses Fenster geschlossen wurde.
 
@@ -157,7 +157,7 @@ In diesem Beispiel wird das [Azure-Portal](https://portal.azure.com) zum Aktuali
 3. Wählen Sie Ihre Anwendung und dann **Manifest** aus.
 4. Wählen Sie **Bearbeiten** aus, suchen Sie nach dem Feld *acceptedMappedClaims*, und ändern Sie den Wert in **true**.
 ![App-Manifest](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-ping-access-manifest.PNG)
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 >[!NOTE]
 >Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie.  Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.

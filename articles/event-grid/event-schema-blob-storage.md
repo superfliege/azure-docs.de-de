@@ -2,21 +2,21 @@
 title: Azure Event Grid-Ereignisschema für Blob Storage
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Blob Storage-Ereignisse bereitgestellt werden.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144119"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469731"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-Ereignisschema für Blob Storage
 
-In diesem Artikel werden die Eigenschaften und das Schema für Blob Storage-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+In diesem Artikel werden die Eigenschaften und das Schema für Blob Storage-Ereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 Eine Liste von Beispielskripts und Tutorials finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md#storage) im Abschnitt „Speicher“.
 
@@ -83,7 +83,7 @@ Das Schema für ein Blob-Löschungsereignis sieht ähnlich aus:
   "metadataVersion": "1"
 }]
 ```
- 
+ 
 ## <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:

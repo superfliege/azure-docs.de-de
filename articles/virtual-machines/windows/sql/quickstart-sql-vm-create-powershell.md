@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa4ea4e724ec383fc9f22bd56572d2fd0e844abc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e79b85a2dd47706ca83b6cbc2c59100b05574fab
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332437"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425559"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwendung von Azure PowerShell
 
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a id="powershell"></a> Abrufen von Azure PowerShell
 
-Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 ## <a name="configure-powershell"></a>Konfigurieren von PowerShell
 
@@ -48,7 +48,7 @@ Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder
    Connect-AzureRmAccount
    ```
 
-1. Es sollte ein Bildschirm zur Eingabe Ihrer Anmeldeinformationen angezeigt werden. Verwenden Sie die E-Mail-Adresse und das Kennwort für die Anmeldung beim Azure-Portal.
+1. Ein Bildschirm zur Eingabe Ihrer Anmeldeinformationen sollte angezeigt werden. Verwenden Sie die E-Mail-Adresse und das Kennwort für die Anmeldung beim Azure-Portal.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

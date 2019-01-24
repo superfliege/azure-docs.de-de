@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: bdc3646116dfd5f16c0c039c4fb95d11c6593adf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: alerts
+ms.openlocfilehash: dc8c1733f506870765523b17c1fc3e283ff9cbdb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120992"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423274"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
 Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
@@ -481,3 +481,4 @@ Hier werden die Wiederherstellungsschritte für die einzelnen Fehler aufgeführt
 
 * Erfahren Sie mehr über die neue [Benutzeroberfläche „Azure-Warnungen“](../../azure-monitor/platform/alerts-overview.md).
 * Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](alerts-unified-log.md).
+

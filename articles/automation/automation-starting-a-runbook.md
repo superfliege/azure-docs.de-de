@@ -3,18 +3,18 @@ title: Starten eines Runbooks in Azure Automation
 description: Bietet eine Übersicht über die verschiedenen Methoden, die zum Starten eines Runbooks in Azure Automation verwendet werden können, und stellt Informationen zur Verwendung des Azure-Portals sowie von Windows PowerShell bereit.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2aea370d7de063805eb584cd7d90395ca725b4c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 41ea6e6a8c09217c0bb34e07bb911329121f8b7b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275486"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424964"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Starten eines Runbooks in Azure Automation
 Die folgende Tabelle hilft Ihnen dabei herauszufinden, welche Methode zum Starten eines Runbooks in Azure Automation sich am besten für Ihr jeweiliges Szenario eignet. Dieser Artikel enthält Details zum Starten eines Runbooks über das Azure-Portal oder mit Windows PowerShell. Details zu den anderen Methoden werden in anderen Artikeln bereitgestellt, auf die Sie über unten stehende Links zugreifen können.
@@ -179,4 +179,5 @@ jsmith
 ## <a name="next-steps"></a>Nächste Schritte
 * Die Runbook-Architektur im aktuellen Artikel bietet einen allgemeinen Überblick über Runbooks, die zum Verwalten von Ressourcen in Azure und lokal mit dem Hybrid Runbook Worker eingesetzt werden. Weitere Informationen zum Ausführen von Automation-Runbooks in Ihrem Rechenzentrum finden Sie unter [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).
 * Weitere Informationen zum Erstellen von modularen Runbooks, die von anderen Runbooks für spezifische oder allgemeine Funktionen verwendet werden, finden Sie unter [Untergeordnete Runbooks](automation-child-runbooks.md).
+
 

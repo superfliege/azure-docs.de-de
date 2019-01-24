@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 5c0bfa3512215124a4e6169622c84c6cf3fb3cf7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.subservice: alerts
+ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345071"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421860"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Erstellen einer Aktionsgruppe mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Aktionsgruppen konfigurieren können. Mithilfe von Vorlagen können Sie automatisch Aktionsgruppen festlegen, die in bestimmten Warnungstypen wiederverwendet werden können. Diese Aktionsgruppen stellen sicher, dass alle relevanten Parteien benachrichtigt werden, wenn eine Warnung ausgelöst wird.
@@ -167,3 +167,4 @@ Um eine Aktionsgruppe mithilfe einer Resource Manager-Vorlage zu erstellen, müs
 * Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
 * Weitere Informationen zu [Warnungen](alerts-overview.md).
 * Weitere Informationen zum [Erstellen einer Aktivitätsprotokollwarnung mithilfe einer Resource Manager-Vorlage](../../azure-monitor/platform/alerts-activity-log.md).
+

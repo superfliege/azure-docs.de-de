@@ -3,7 +3,7 @@ title: Hinzufügen oder Aktualisieren von Benutzerprofilinformationen – Azure 
 description: Anweisungen zum Hinzufügen von Informationen zu einem Benutzerprofil in Azure Active Directory, z.B. ein Bild und Angaben zur Beschäftigung.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 0e03d882df61755faf283aa67427beeec17c8c05
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: df0f4fac471192c7e8745c07423857ea3c3d906b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094728"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450846"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -49,7 +49,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 
     - **Kontaktinformationen zur Authentifizierung:** Überprüfen Sie diese Informationen, um sicherzustellen, dass für den Benutzer eine aktive Telefonnummer und E-Mail-Adresse hinterlegt sind. Azure Active Directory verwendet diese Informationen, um den Benutzer beim Anmelden zu authentifizieren. Die Kontaktinformationen für die Authentifizierung können nur von einem globalen Administrator aktualisiert werden.
 
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
     Alle Ihre Änderungen werden für den Benutzer gespeichert.
 

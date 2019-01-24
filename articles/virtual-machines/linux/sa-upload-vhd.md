@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efb8887085ad1f6f47667b1305191e514de74330
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966502"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468181"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Hochladen und Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure CLI
 
@@ -41,7 +41,7 @@ Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) 
 az group create --name myResourceGroup --location westus
 ```
 
-Erstellen Sie mit [az storage account create](/cli/azure/storage/account#az_storage_account_create) ein Speicherkonto für Ihre virtuellen Festplatten. Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount`:
+Erstellen Sie mit [az storage account create](/cli/azure/storage/account) ein Speicherkonto für Ihre virtuellen Festplatten. Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount`:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Geben Sie den URI das Datenträgers (`--image`) mit [az vm create](/cli/azure/vm#az_vm_create) an. Das folgende Beispiel erstellt einen virtuellen Computer namens `myVM` und verwendet dabei den zuvor hochgeladenen Datenträger:
+Geben Sie den URI das Datenträgers (`--image`) mit [az vm create](/cli/azure/vm) an. Das folgende Beispiel erstellt einen virtuellen Computer namens `myVM` und verwendet dabei den zuvor hochgeladenen Datenträger:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -132,7 +132,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mithilfe von [az storage account create](/cli/azure/storage/account#az_storage_account_create) ein Speicherkonto für Ihren benutzerdefinierten Datenträger und die virtuellen Computer. Alle virtuellen Computer mit nicht verwalteten Datenträgern, die Sie aus Ihrem benutzerdefinierten Datenträger erstellen, müssen sich im gleichen Speicherkonto wie der Datenträger befinden. 
+Erstellen Sie mithilfe von [az storage account create](/cli/azure/storage/account) ein Speicherkonto für Ihren benutzerdefinierten Datenträger und die virtuellen Computer. Alle virtuellen Computer mit nicht verwalteten Datenträgern, die Sie aus Ihrem benutzerdefinierten Datenträger erstellen, müssen sich im gleichen Speicherkonto wie der Datenträger befinden. 
 
 Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount` in der zuvor erstellten Ressourcengruppe:
 
@@ -186,9 +186,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
-Um einen virtuellen Computer mit nicht verwalteten Datenträgern zu erstellen, geben Sie den URI des Datenträgers (`--image`) in [az vm create](/cli/azure/vm#az_vm_create) an. Das folgende Beispiel erstellt einen virtuellen Computer namens `myVM` und verwendet dabei den zuvor hochgeladenen Datenträger:
+Um einen virtuellen Computer mit nicht verwalteten Datenträgern zu erstellen, geben Sie den URI des Datenträgers (`--image`) in [az vm create](/cli/azure/vm) an. Das folgende Beispiel erstellt einen virtuellen Computer namens `myVM` und verwendet dabei den zuvor hochgeladenen Datenträger:
 
-Geben Sie den Parameter `--image` im Befehl [az vm create](/cli/azure/vm#az_vm_create) an, um auf Ihren benutzerdefinierten Datenträger zu verweisen. Stellen Sie sicher, dass `--storage-account` dem Speicherkonto entspricht, in dem Ihr benutzerdefinierter Datenträger gespeichert ist. Sie müssen nicht den gleichen Container verwenden wie der benutzerdefinierte Datenträger, um Ihre virtuellen Computer zu speichern. Stellen Sie sicher, dass Sie jegliche weiteren Container auf die gleiche Weise erstellen, wie in den vorherigen Schritten beschrieben, bevor Sie Ihren benutzerdefinierten Datenträger hochladen.
+Geben Sie den Parameter `--image` im Befehl [az vm create](/cli/azure/vm) an, um auf Ihren benutzerdefinierten Datenträger zu verweisen. Stellen Sie sicher, dass `--storage-account` dem Speicherkonto entspricht, in dem Ihr benutzerdefinierter Datenträger gespeichert ist. Sie müssen nicht den gleichen Container verwenden wie der benutzerdefinierte Datenträger, um Ihre virtuellen Computer zu speichern. Stellen Sie sicher, dass Sie jegliche weiteren Container auf die gleiche Weise erstellen, wie in den vorherigen Schritten beschrieben, bevor Sie Ihren benutzerdefinierten Datenträger hochladen.
 
 Das folgende Beispiel erstellt den virtuellen Computer `myVM` aus Ihrem benutzerdefinierten Datenträger:
 

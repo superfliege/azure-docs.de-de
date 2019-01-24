@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpas
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 48f001ab0634451b1e339b346e03f5d15cdbf9c6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035335"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463846"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 In diesem Artikel werden häufige gestellte Fragen im Zusammenhang mit den Zertifikaten behandelt, die Azure Active Directory (Azure AD) erstellt, um die einmalige Verbundanmeldung (Single Sign-On, SSO) für Ihre SaaS-Anwendungen einzurichten. Fügen Sie Anwendungen aus dem Azure AD-App-Katalog oder über Anwendungsvorlagen hinzu, die nicht aus dem Katalog stammen. Konfigurieren der Anwendung mit der Option für Verbund-SSO.
