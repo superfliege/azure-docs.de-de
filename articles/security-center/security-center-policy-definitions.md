@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1bf0ae8b0e9e0665f9b51935763d9f724b4bca4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011632"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261892"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>In Azure Security Center überwachte Azure-Sicherheitsrichtlinien
-Dieser Artikel enthält eine Liste der Azure Policy-Definitionen, die in Security Center überwacht werden können.
+Dieser Artikel enthält eine Liste der Azure Policy-Definitionen, die in Security Center überwacht werden können. Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
 
 ## <a name="available-security-policies"></a>Verfügbare Sicherheitsrichtlinien
 
