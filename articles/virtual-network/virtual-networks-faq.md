@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021032"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412868"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -52,7 +52,12 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 * Eine Netzwerkkonfigurationsdatei (NETCFG-Datei, nur für klassische VNets). Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
-Alle in [RFC 1918](http://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16.
+Alle in [RFC 1918](http://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16. Sie können die folgenden Adressbereiche nicht hinzufügen:
+* 224.0.0.0/4 (Multicast)
+* 255.255.255.255/32 (Übertragung)
+* 127.0.0.0/8 (Loopback)
+* 169.254.0.0/16 (verbindungslokal)
+* 168.63.129.16/32 (Internes DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Können öffentliche IP-Adressen in VNets verwendet werden?
 Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). Auf öffentliche IP-Adressen kann nicht direkt über das Internet zugegriffen werden.
