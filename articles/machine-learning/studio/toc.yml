@@ -18,7 +18,7 @@ items:
   - name: Neuerungen
     href: whats-new.md
   expanded: true
-- name: Lernprogramme
+- name: Erste Schritte
   items:
   - name: Erstellen Ihres ersten Experiments
     displayName: quickstart
@@ -41,16 +41,6 @@ items:
     - name: 6 – Zugreifen auf den Webdienst
       displayName: consume
       href: walkthrough-6-access-web-service.md
-  - name: Erste Schritte mit R
-    href: r-quickstart.md
-- name: Beispiele
-  items:
-  - name: Verfügbare Datasets
-    href: use-sample-datasets.md
-  - name: Azure AI-Katalog
-    href: gallery-how-to-use-contribute-publish.md
-- name: Konzepte
-  items:
   - name: Data Science für Einsteiger
     items:
     - name: 1 – Fünf Fragen
@@ -63,6 +53,19 @@ items:
       href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
     - name: 5 – Kopieren der Arbeit anderer Personen
       href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+  - name: R-Schnellstart
+    href: r-quickstart.md
+- name: Beispiele
+  items:
+  - name: Beispielexperimente
+    displayName: gallery
+    href: sample-experiments.md
+  - name: Beispieldatasets
+    href: use-sample-datasets.md
+  - name: Azure AI-Katalog
+    href: gallery-how-to-use-contribute-publish.md
+- name: Konzepte
+  items:
   - name: Modellverwaltung
     displayName: deploy, consume, web service
     href: deploy-consume-web-service-guide.md
@@ -100,9 +103,6 @@ items:
     - name: Verwenden von PowerShell zum Erstellen von Modellen
       displayName: endpoint, endpoints
       href: create-models-and-endpoints-with-powershell.md
-    - name: Ausprobieren von Experimenten in AI Gallery
-      displayName: gallery
-      href: sample-experiments.md
     - name: Auswählen von Algorithmen
       href: algorithm-choice.md
     - name: Spickzettel zu Algorithmen
@@ -208,6 +208,8 @@ items:
     href: web-service-error-codes.md
   - name: REST-Verwaltungs-APIs
     href: /rest/api/machinelearning
+  - name: Resource Manager-Vorlage
+    href: /azure/templates/microsoft.machinelearning/allversions
 - name: Ressourcen
   items:
   - name: Azure-Roadmap
@@ -222,9 +224,9 @@ items:
     href: support-aml-studio.md
   - name: Vergleichen unserer ML-Produkte
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 859ee01c65eaa7e02b5afc2740b6a7e6e6ca29e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 585310705bebbceb0aa4576977ef096704d87483
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810549"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424784"

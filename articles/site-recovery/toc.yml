@@ -160,8 +160,6 @@ items:
       items:
       - name: Aktualisieren des Mobilitätsdiensts für virtuelle Azure-Computer
         href: azure-to-azure-autoupdate.md
-      - name: Updates in Azure Site Recovery
-        href: service updates-how-to.md
   - name: 'Notfallwiederherstellung: VMware zu Azure'
     items:
     - name: Einrichten von Netzwerken
@@ -236,8 +234,6 @@ items:
         href: vmware-azure-manage-process-server.md
       - name: Verwalten von vCenter-Servern
         href: vmware-azure-manage-vcenter.md
-      - name: Updates in Azure Site Recovery
-        href: service updates-how-to.md
       - name: Entfernen von Servern und Deaktivieren des Schutzes
         href: site-recovery-manage-registration-and-protection.md
       - name: Löschen eines Tresors
@@ -278,8 +274,6 @@ items:
         href: vmware-azure-manage-process-server.md
       - name: Entfernen von Servern und Deaktivieren des Schutzes
         href: site-recovery-manage-registration-and-protection.md
-      - name: Updates in Azure Site Recovery
-        href: service updates-how-to.md
       - name: Löschen eines Tresors
         href: delete-vault.md
   - name: Notfallwiederherstellung von virtuellen Azure Stack-Computern
@@ -326,12 +320,8 @@ items:
         href: hyper-v-azure-failback.md
     - name: Verwalten
       items:
-      - name: Aktualisieren der mit Site Recovery konfigurierten Windows-Server
-        href: upgrade-2012R2-to-2016.md
       - name: Entfernen von Servern und Deaktivieren des Schutzes
         href: site-recovery-manage-registration-and-protection.md
-      - name: Updates in Azure Site Recovery
-        href: service updates-how-to.md
       - name: Löschen eines Tresors
         href: delete-vault.md
       - name: Aktualisieren der mit Site Recovery konfigurierten Windows-Server
@@ -452,9 +442,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: c81028216a6af1fac6b6da261395d4fded3d8500
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1029557aed09aba06f7fce63bc4681969a6b3733
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382486"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103493"
