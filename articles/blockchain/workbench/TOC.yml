@@ -6,6 +6,13 @@ items:
   - name: Info zu Azure Blockchain Workbench
     href: overview.md
   expanded: true
+- name: Lernprogramme
+  items:
+  - name: Erstellen einer Blockchain-App
+    href: create-app.md
+  - name: Verwenden einer Blockchain-App
+    href: use.md
+  expanded: true
 - name: Konzepte
   items:
   - name: Architecture
@@ -16,12 +23,8 @@ items:
   items:
   - name: Bereitstellen von Workbench
     href: deploy.md
-  - name: Erstellen einer Blockchain-App
-    href: create-app.md
   - name: Verwalten von Workbench-Benutzern
     href: manage-users.md
-  - name: Verwenden einer Blockchain-App
-    href: use.md
   - name: Versionsverwaltung für Apps
     href: version-app.md
   - name: Verwenden der Workbench-API
@@ -69,11 +72,13 @@ items:
     href: ../templates/ethereum-poa-deployment.md
   - name: Ethereum – Proof-of-Work-Konsortium
     href: ../templates/ethereum-deployment.md
-  - name: Hyperledger Fabric Consortium
+  - name: Hyperledger – Fabric-Konsortium
+    href: ../templates/hyperledger-fabric-consortium-blockchain.md
+  - name: Hyperledger Fabric-Einzelelement
     href: ../templates/hyperledger-fabric-single-member-blockchain.md
-ms.openlocfilehash: fe5d3879dea89824207e213c31992d5f130d9967
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5eb5ae905753fc69f1d1715040e6bccb1ad24f19
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107139"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813201"

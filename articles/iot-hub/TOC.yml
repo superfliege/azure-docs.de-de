@@ -9,30 +9,50 @@ items:
     href: about-iot-hub.md
 - name: Schnellstarts
   items:
-  - name: Senden von Telemetriedaten (C)
-    href: quickstart-send-telemetry-c.md
-  - name: Senden von Telemetriedaten (Node.js)
-    href: quickstart-send-telemetry-node.md
-  - name: Senden von Telemetriedaten (.NET)
-    href: quickstart-send-telemetry-dotnet.md
-  - name: Senden von Telemetriedaten (Java)
-    href: quickstart-send-telemetry-java.md
-  - name: Senden von Telemetriedaten (Python)
-    href: quickstart-send-telemetry-python.md
-  - name: Senden von Telemetriedaten (Android)
-    href: quickstart-send-telemetry-android.md
-  - name: Senden von Telemetriedaten (iOS)
-    href: quickstart-send-telemetry-ios.md
-  - name: Steuern eines Geräts (Node.js)
-    href: quickstart-control-device-node.md
-  - name: Steuern eines Geräts (.NET)
-    href: quickstart-control-device-dotnet.md
-  - name: Steuern eines Geräts (Java)
-    href: quickstart-control-device-java.md
-  - name: Steuern eines Geräts (Python)
-    href: quickstart-control-device-python.md
-  - name: Steuern eines Geräts (Android)
-    href: quickstart-control-device-android.md
+  - name: Senden von Telemetriedaten
+    items:
+    - name: C
+      href: quickstart-send-telemetry-c.md
+    - name: Node.js
+      href: quickstart-send-telemetry-node.md
+    - name: .NET
+      href: quickstart-send-telemetry-dotnet.md
+    - name: Java
+      href: quickstart-send-telemetry-java.md
+    - name: Python
+      href: quickstart-send-telemetry-python.md
+    - name: Android
+      href: quickstart-send-telemetry-android.md
+    - name: iOS
+      href: quickstart-send-telemetry-ios.md
+  - name: Steuern eines Geräts
+    items:
+    - name: Node.js
+      href: quickstart-control-device-node.md
+    - name: .NET
+      href: quickstart-control-device-dotnet.md
+    - name: Java
+      href: quickstart-control-device-java.md
+    - name: Python
+      href: quickstart-control-device-python.md
+    - name: Android
+      href: quickstart-control-device-android.md
+  - name: Kommunizieren mithilfe von Gerätestreams (Vorschau)
+    items:
+    - name: C#
+      href: quickstart-device-streams-echo-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-echo-nodejs.md
+    - name: C
+      href: quickstart-device-streams-echo-c.md
+  - name: Herstellen einer SSH-/RDP-Verbindung mithilfe von Gerätestreams (Vorschau)
+    items:
+    - name: C#
+      href: quickstart-device-streams-proxy-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-proxy-nodejs.md
+    - name: C
+      href: quickstart-device-streams-proxy-c.md
 - name: Lernprogramme
   items:
   - name: Weiterleiten von Nachrichten
@@ -65,6 +85,8 @@ items:
     href: iot-hub-configuration-best-practices.md
   - name: Azure IoT-SDKs – Plattformunterstützung
     href: iot-hub-device-sdk-platform-support.md
+  - name: Übersicht über IoT Hub-Gerätestreams (Vorschau)
+    href: iot-hub-device-streams-overview.md
   - name: Entwicklerhandbuch
     href: iot-hub-devguide.md
     items:
@@ -420,9 +442,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7ac517a2d2963993d40899183c020570b2934f80
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 84eae62600f5cb62bfd8941d90140c6150a983f0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247332"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809121"
