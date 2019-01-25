@@ -63,9 +63,9 @@
 ### [Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload](dbms_guide_sapase.md)
 ### [SAP MaxDB-, liveCache- und Content Server-Bereitstellung in Azure](dbms_guide_maxdb.md)
 ### Verfügbarkeit von SAP HANA in Azure Virtual Machines
-### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
-### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
-### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
+#### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
+#### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
+#### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
 ## [SAP Business One in Azure Virtual Machines](business-one-azure.md)
 ## [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP LaMa-Connector für Azure](lama-installation.md)
