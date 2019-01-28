@@ -74,9 +74,9 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
    | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
-   | NAME | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
-   | Typ | JA | <*Variablentyp*> | Der Datentyp für die Variable | 
-   | Wert | Nein  | <*Anfangswert*> | Der Anfangswert für die Variable <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den Anfangswert für Ihre Variable kennen. | 
+   | Name | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
+   | Type | JA | <*Variablentyp*> | Der Datentyp für die Variable | 
+   | Value | Nein  | <*Anfangswert*> | Der Anfangswert für die Variable <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den Anfangswert für Ihre Variable kennen. | 
    ||||| 
 
    ![Initialisieren einer Variablen](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -210,8 +210,8 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
    | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
-   | NAME | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
-   | Wert | Nein  | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. | 
+   | Name | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
+   | Value | Nein  | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. | 
    |||| 
 
    Beispiel:  
@@ -330,8 +330,8 @@ Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
-| NAME | JA | <*Variablenname*> | Der Name für die zu verringernde Variable | 
-| Wert | Nein  | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. | 
+| Name | JA | <*Variablenname*> | Der Name für die zu verringernde Variable | 
+| Value | Nein  | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. | 
 ||||| 
 
 Wenn Sie vom Designer in den Code-Editor wechseln, wird die Aktion **Variablenwert verringern** innerhalb Ihrer Logik-App-Definition im JSON-Format angezeigt:
@@ -365,8 +365,8 @@ Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
-| NAME | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
-| Wert | JA | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
+| Name | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
+| Value | JA | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
 ||||| 
 
 > [!NOTE]
@@ -423,8 +423,8 @@ Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
-| NAME | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
-| Wert | JA | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
+| Name | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
+| Value | JA | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
 |||||  
 
 Wenn Sie vom Designer in den Code-View-Editor wechseln, erscheint die Aktion **An Arrayvariable anfügen** innerhalb Ihrer Logik-App-Definition, die im JSON-Format vorliegt.
