@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 62bb4c70c2a5068c90196acc2a1898ceeaa6945c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 337c48d96a2ee679eda24500d9cb1a8d2581b2c7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787677"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912900"
 documentType: LandingData
-title: Visuelle Bing-Suche – Dokumentation
+title: API für die visuelle Bing-Suche – Dokumentation
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: 'Dokumentation zur visuellen Bing-Suche: Tutorials, API-Referenz'
-  description: Hier erfahren Sie, wie Sie mit der API für die visuelle Bing-Suche Informationen zu einem Bild abrufen. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.
+  title: 'Dokumentation zur API für die visuelle Bing-Suche: Tutorials, Schnellstarts, API-Referenzen | Microsoft-Dokumentation'
+  description: Hier erfahren Sie, wie Sie mit der API für die visuelle Bing-Suche Informationen zu einem Bild abrufen.
   services: cognitive-services
   author: swhite-msft
   manager: rosh
@@ -19,15 +19,36 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/24/2018
+  ms.date: 01/16/2019
   ms.author: scottwhi
 abstract:
-  description: Die API für die visuelle Bing-Suche ähnelt Bing.com/images darin, dass Informationen zu einem Bild zurückgegeben werden, etwa visuell ähnliche Bilder, Einkaufsquellen für abgebildete Elemente und verwandte Suchvorgänge.
+  description: Die API für die visuelle Bing-Suche bietet ähnliche Bilddetails wie auf „bing.com/images“. Durch Hochladen eines Bilds oder Angeben einer Bild-URL kann die API eine Vielzahl entsprechender Details ermitteln. Dazu gehören visuell ähnliche Bilder, Einkaufsquellen, Webseiten, die das Bild enthalten, und vieles mehr.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-visual-search/overview
+      html: <p>Informationen zur API für die visuelle Bing-Suche</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Was ist die API für die visuelle Bing-Suche?
+    - href: /azure/cognitive-services/bing-visual-search/concepts/sending-queries
+      html: <p>Hier erfahren Sie, wie Sie Suchanforderungen an die API für die visuelle Bing-Suche senden.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Senden von Suchabfragen
+    - href: /azure/cognitive-services/bing-visual-search/tutorial-visual-search-insights-token
+      html: <p>Verwenden eines Auswertungstokens der Bing-Bildersuche-API zum Hochladen eines Bilds in die API für die visuelle Bing-Suche</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Suchen nach Nachrichten
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: 'Erste Schritte mit der API für die visuelle Bing-Suche durch Senden eines Bilds an Bing und Erhalten von Informationen zum Bild:'
+    text: 'Erhalten Sie mit der API für die visuelle Bing-Suche Informationen zu einem Bild:'
   - type: table
     style: dataMatrix
     columns:
@@ -40,12 +61,12 @@ sections:
     - image:
         src: media/index/logo_python.svg
     rows:
-    - title: Ihre erste Abfrage
+    - title: ''
       values:
-      - href: quickstarts/csharp
-      - href: quickstarts/java
-      - href: quickstarts/nodejs
-      - href: quickstarts/python
+      - href: visual-search-sdk-c-sharp
+      - href: java
+      - href: visual-search-sdk-node
+      - href: visual-search-sdk-python
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
@@ -53,7 +74,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-visual-search-single-page-app">Einzelseiten-Web-App</a> | <a href="tutorial-bing-visual-search-single-page-app-source">Quellcode</a>
+    - html: <a href="tutorial-bing-visual-search-single-page-app">Einzelseiten-Web-App</a>
 - title: Verweis
   items:
   - type: list
