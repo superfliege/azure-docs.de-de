@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275549"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389232"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -33,34 +33,60 @@ Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Fir
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung 
 
-Gehen Sie wie folgt vor, um den ausgehenden Datenverkehr Ihrer App Service-Umgebung mit Azure Firewall zu sperren:
+Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Service-Umgebung (App Service Environment, ASE) mit Azure Firewall zu sperren:
 
-1. Erstellen Sie eine Azure Firewall-Instanz in dem VNET, in dem sich Ihre App Service-Umgebung befindet bzw. befinden wird. Weitere Informationen finden Sie in der [Azure Firewall-Dokumentation](https://docs.microsoft.com/azure/firewall/).
-2. Wählen Sie in der Azure Firewall-Benutzeroberfläche den FQDN-Tag der App Service-Umgebung aus.
-3. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden.
-4. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu.
-5. Fügen Sie Ihrer Routingtabelle eine Route für 0.0.0.0/0 hinzu, wobei als nächster Hop Azure Firewall festgelegt ist.
-6. Erstellen Sie Dienstendpunkte für das Subnetz Ihrer App Service-Umgebung für Azure SQL und Azure Storage.
-7. Weisen Sie die erstellte Routingtabelle dem Subnetz Ihrer App Service-Umgebung zu.
+1. Aktivieren Sie Dienstendpunkte für SQL, Storage und Event Hub in Ihrem ASE-Subnetz. Navigieren Sie dazu im Netzwerkportal zu „Subnetze“, und wählen Sie in der Dropdownliste „Dienstendpunkte“ die Optionen „Microsoft.EventHub“, „Microsoft.SQL“ und „Microsoft.Storage“ aus. Wenn Sie Dienstendpunkte für Azure SQL aktiviert haben, müssen alle Azure SQL-Abhängigkeiten Ihrer Apps ebenfalls mit Dienstendpunkten konfiguriert werden. 
+
+   ![Auswählen von Dienstendpunkten][2]
+  
+1. Erstellen Sie ein Subnetz namens „AzureFirewallSubnet“ in dem VNET, in dem sich die ASE befindet. Folgen Sie den Anweisungen in der [Azure Firewall-Dokumentation](https://docs.microsoft.com/azure/firewall/), um Ihre Azure Firewall-Instanz zu erstellen.
+1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Anwendungsregelsammlung“, und wählen Sie „Anwendungsregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „FQDN-Tags“ einen Namen an, legen Sie die Quelladressen auf „*“ fest, und wählen Sie die FQDN-Tags „AppServiceEnvironment“ und „WindowsUpdate“ aus. 
+   
+   ![Hinzufügen einer Anwendungsregel][1]
+   
+1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Netzwerkregelsammlung“, und wählen Sie „Netzwerkregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „Regeln“ einen Namen an, wählen Sie **Beliebig** aus, legen Sie die Quell- und Zieladressen auf „*“ und die Ports auf „123“ fest. Diese Regel ermöglicht es dem System, die Uhrsynchronisierung mit NTP durchzuführen. Erstellen Sie wie oben beschrieben eine weitere Regel für Port 12000, um die Selektierung von Systemproblemen zu erleichtern.
+
+   ![Hinzufügen einer NTP-Netzwerkregel][3]
+
+1. Erstellen Sie eine Routingtabelle mit den Verwaltungsadressen aus [Verwaltungsadressen der App Service-Umgebung]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) mit dem nächsten Hop zum Internet. Die Routingtabelleneinträge werden benötigt, um asymmetrische Routingprobleme zu vermeiden. Fügen Sie mit dem nächsten Hop zum Internet den IP-Adressabhängigkeiten (s. weiter unten „IP-Adressabhängigkeiten“) Routen hinzu. Fügen Sie Ihrer Routingtabelle eine Route für ein virtuelles Gerät für 0.0.0.0/0 hinzu, und legen Sie dabei Ihre private Azure Firewall-IP-Adresse als nächsten Hop fest. 
+
+   ![Erstellen einer Routingtabelle][4]
+   
+1. Weisen Sie die erstellte Routingtabelle dem Subnetz Ihrer App Service-Umgebung zu.
+
+#### <a name="deploying-your-ase-behind-a-firewall"></a>Bereitstellen Ihrer ASE hinter einer Firewall
+
+Die Schritte zum Bereitstellen Ihrer ASE hinter einer Firewall sind identisch mit der Konfiguration der bestehenden ASE mit einer Azure Firewall-Instanz. Der einzige Unterschied besteht darin, dass Sie Ihr ASE-Subnetz erstellen und anschließend die obigen Schritte ausführen müssen. Wenn Sie Ihre ASE in einem bereits vorhandenen Subnetz erstellen möchten, müssen Sie wie im Dokument [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/app-service/environment/create-from-template) beschrieben eine Resource Manager-Vorlage verwenden.
 
 ## <a name="application-traffic"></a>Anwendungsdatenverkehr 
 
 Mithilfe der oben genannten Schritte kann Ihre App Service-Umgebung problemlos ausgeführt werden. Sie müssen die Umgebung noch so konfigurieren, dass sie Ihren Anwendungsanforderungen entspricht. Es gibt zwei Probleme bei Anwendungen in einer App Service-Umgebung, die mit Azure Firewall konfiguriert wurde.  
 
-- FQDNs der Anwendungsabhängigkeit müssen der Azure Firewall-Instanz oder der Routingtabelle hinzugefügt werden.
-- Für die Adressen, von denen der Datenverkehr kommt, müssen Routen erstellt werden, um asymmetrische Routingprobleme zu vermeiden.
+- Anwendungsabhängigkeiten müssen der Azure Firewall-Instanz oder der Routingtabelle hinzugefügt werden. 
+- Für den Anwendungsdatenverkehr müssen Routen erstellt werden, um Probleme durch asymmetrisches Routing zu vermeiden.
 
 Wenn Ihre Anwendungen Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firewall-Instanz hinzugefügt werden. Erstellen Sie Anwendungsregeln, um HTTP/HTTPS-Datenverkehr und Netzwerkregeln zuzulassen. 
 
 Wenn Sie den Adressbereich kennen, aus dem der von Ihrer Anwendung angeforderte Datenverkehr kommt, können Sie ihn der Routingtabelle hinzufügen, die dem Subnetz Ihrer App Service-Umgebung zugeordnet ist. Wenn der Adressbereich groß oder nicht angegeben ist, können Sie ein Netzwerkgerät wie Application Gateway verwenden, um eine Adresse Ihrer Routingtabelle hinzufügen zu können. Weitere Informationen zum Konfigurieren einer Application Gateway-Instanz mit dem internen Lastenausgleichsmodul der App Service-Umgebung finden Sie unter [Integrieren eines internen Lastenausgleichs einer App Service-Umgebung in eine Application Gateway-Instanz](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
 
+![ASE mit Azure Firewall: Verbindungsfluss][5]
 
+Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ihr System konfigurieren können. Bei der obigen Konfiguration müssten Sie der Routingtabelle für das ASE-Subnetz eine Route hinzufügen, damit der an die Application Gateway-Instanz gesendete Antwortdatenverkehr direkt an diese weitergeleitet wird. 
+
+## <a name="logging"></a>Protokollierung 
+
+Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Log Analytics senden. Sie können ein beliebiges unterstütztes Ziel in Ihre App integrieren, indem Sie im Azure Firewall-Portal zu „Diagnoseprotokolle“ navigieren und die Protokolle für das gewünschte Ziel aktivieren. Wenn Sie sich für die Integration in Log Analytics entscheiden, können Sie Protokolle für sämtlichen Datenverkehr einsehen, der an Azure Firewall gesendet wird. Öffnen Sie zum Anzeigen des abgelehnten Datenverkehrs das Log Analytics-Portal, wählen Sie „Protokolle“ aus, und geben Sie eine Abfrage wie die Folgende ein: 
+
+    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+ 
+Die Integration Ihrer Azure Firewall-Instanz in Log Analytics ist sehr nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Log Analytics finden Sie unter [Analysieren von Log Analytics-Daten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+ 
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Azure App Service verfügt über eine Reihe von externen Abhängigkeiten. Diese können kategorisch in einige Hauptbereiche unterteilt werden:
+Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewallgerät als Azure Firewall konfigurieren möchten. 
 
-- Dienstendpunktfähige Dienste müssen mit Dienstendpunkten eingerichtet werden, wenn Sie den ausgehenden Netzwerkdatenverkehr sperren möchten.
-- IP-Adressendpunkte werden nicht mit einem Domänennamen adressiert. Dies kann problematisch für Firewallgeräte sein, die erwarten, dass der gesamte HTTPS-Datenverkehr Domänennamen verwendet. Die IP-Adressendpunkte müssen der Routingtabelle hinzugefügt werden, die im Subnetz der App Service-Umgebung eingerichtet ist.
+- Dienste, die Dienstendpunkte unterstützen, sollten mit Dienstendpunkten konfiguriert werden.
+- IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr.
 - FQDN-HTTP/HTTPS-Endpunkte können in Ihrem Firewallgerät bereitgestellt werden.
 - Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern. 
 - Linux-Abhängigkeiten sind nur relevant, wenn Sie in Ihrer App Service-Umgebung Linux-Apps bereitstellen. Wenn Sie in Ihrer App Service-Umgebung keine Linux-Apps bereitstellen, müssen diese Adressen Ihrer Firewall nicht hinzugefügt werden. 
@@ -72,21 +98,16 @@ Azure App Service verfügt über eine Reihe von externen Abhängigkeiten. Diese 
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Key Vault |
+| Azure Event Hub |
 
+#### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten
 
-#### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten 
+| Endpunkt | Details |
+|----------| ----- |
+| \*:123 | NTP-Uhrzeitüberprüfung. Datenverkehr wird an mehreren Endpunkten am Port 123 überprüft. |
+| \*:12000 | Dieser Port wird für einige Systemüberwachungsfunktionen verwendet. Wenn er blockiert wird, ist die Selektierung mancher Probleme schwieriger, die ASE wird jedoch weiterhin ausgeführt. |
 
-| Endpunkt |
-|----------|
-| 40.77.24.27:443 |
-| 13.82.184.151:443 |
-| 13.68.109.212:443 |
-| 13.90.249.229:443 |
-| 13.91.102.27:443 |
-| 104.45.230.69:443 |
-| 168.62.226.198:12000 |
-
+Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgeführten Abhängigkeiten (mit den FQDN-Tags konfiguriert). 
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN-HTTP/HTTPS-Abhängigkeiten 
 
@@ -116,6 +137,7 @@ Azure App Service verfügt über eine Reihe von externen Abhängigkeiten. Diese 
 |csc3-2009-2.crl.verisign.com:80 |
 |crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
+|cacerts.digicert.com:80 |
 |azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
 |global.metrics.nsatc.net:80   |
@@ -132,6 +154,7 @@ Azure App Service verfügt über eine Reihe von externen Abhängigkeiten. Diese 
 |schemas.microsoft.com:443 |
 |management.core.windows.net:443 |
 |management.core.windows.net:80 |
+|management.azure.com:443 |
 |www.msftconnecttest.com:80 |
 |shavamanifestcdnprod1.azureedge.net:443 |
 |validation-v2.sls.microsoft.com:443 |
@@ -173,3 +196,9 @@ Azure App Service verfügt über eine Reihe von externen Abhängigkeiten. Diese 
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
 
+<!--Image references-->
+[1]: ./media/firewall-integration/firewall-apprule.png
+[2]: ./media/firewall-integration/firewall-serviceendpoints.png
+[3]: ./media/firewall-integration/firewall-ntprule.png
+[4]: ./media/firewall-integration/firewall-routetable.png
+[5]: ./media/firewall-integration/firewall-topology.png
