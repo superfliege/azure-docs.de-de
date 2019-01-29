@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2d6926b9d6a9b5bc4f3744fbd6fe8864a925ff17
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253702"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819746"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -35,7 +35,7 @@ Weitere Informationen zu Azure Files finden Sie in der [Einführung in Azure Fil
 
 ## <a name="understanding-the-net-apis"></a>Grundlegendes zu den .NET-APIs
 
-Azure Files bietet zwei allgemeine Ansätze für Clientansätze: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze von den APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
+Azure Files bietet zwei allgemeine Ansätze für Clientanwendungen: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze von den APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
 
 API | Einsatzgebiete | Notizen
 ----|-------------|------
@@ -58,8 +58,8 @@ Sie können die Azure Storage-Clientbibliothek in jeder Art von .NET-Anwendung n
 ## <a name="use-nuget-to-install-the-required-packages"></a>Verwenden von NuGet zum Installieren der erforderlichen Pakete
 Es gibt zwei Pakete, auf die Sie in Ihrem Projekt für dieses Tutorial verweisen müssen:
 
-* [Microsoft Azure Storage Client Library für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Speicherkonto.
-* [Microsoft Azure Configuration Manager Library für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
+* [Microsoft Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/): Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Speicherkonto.
+* [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
 
 Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schritten:
 
@@ -324,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Auf gleiche Weise können Sie ein BLOB in eine Datei kopieren. Wenn das Quellobjekt ein BLOB ist, erstellen Sie eine SAS, um den Zugriff auf dieses BLOB während des Kopiervorgangs zu autorisieren.
 
-## <a name="share-snapshots-preview"></a>Freigabemomentaufnahmen (Vorschauversion)
-Ab Version 8.5 der Azure Storage-Clientbibliothek können Sie eine Freigabemomentaufnahme (Vorschauversion) erstellen. Außerdem können Sie Freigabemomentaufnahmen auflisten, durchsuchen und löschen. Freigabemomentaufnahmen sind schreibgeschützt. Es können also keine Schreibvorgänge für Freigabemomentaufnahmen ausgeführt werden.
+## <a name="share-snapshots"></a>Freigabemomentaufnahmen
+Ab Version 8.5 der Azure Storage-Clientbibliothek können Sie eine Freigabemomentaufnahme erstellen. Außerdem können Sie Freigabemomentaufnahmen auflisten, durchsuchen und löschen. Freigabemomentaufnahmen sind schreibgeschützt. Es können also keine Schreibvorgänge für Freigabemomentaufnahmen ausgeführt werden.
 
 **Erstellen von Freigabemomentaufnahmen**
 

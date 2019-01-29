@@ -3,7 +3,7 @@ title: Azure-Schnellstart – Konfigurieren einer VM per DSC | Microsoft-Dokumen
 description: Konfigurieren eines LAMP-Stapels auf einem virtuellen Linux-Computer per Desired State Configuration
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 keywords: DSC, Konfiguration, Automatisierung
 author: KrisBash
 ms.author: krbash
@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243691"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431587"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Linux-Computers per Desired State Configuration
 
@@ -108,7 +108,7 @@ Gehen Sie wie folgt vor, um die Konfiguration zu importieren:
 
 ## <a name="compile-a-configuration"></a>Kompilieren einer Konfiguration
 
-DSC-Konfigurationen müssen in eine Kontenkonfiguration (MOF-Dokument) kompiliert werden, bevor sie einem Knoten zugewiesen werden. Bei der Kompilierung wird die Konfiguration überprüft, und es können Parameterwerte eingegeben werden. Weitere Informationen zum Kompilieren einer Konfiguration finden Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
+DSC-Konfigurationen müssen in eine Kontenkonfiguration (MOF-Dokument) kompiliert werden, bevor sie einem Knoten zugewiesen werden. Bei der Kompilierung wird die Konfiguration überprüft, und es können Parameterwerte eingegeben werden. Weitere Informationen zum Kompilieren einer Konfiguration finden Sie im folgenden Artikel: [Kompilieren von Konfigurationen in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 
 Gehen Sie wie folgt vor, um die Konfiguration zu kompilieren:
 
@@ -145,3 +145,4 @@ In dieser Schnellstartanleitung haben Sie eine Linux-VM in DSC integriert, eine 
 * Weitere Informationen zu PowerShell Desired State Configuration finden Sie unter [Windows PowerShell DSC – Übersicht](https://docs.microsoft.com/powershell/dsc/overview).
 * Weitere Informationen zur Verwaltung von Automation DSC mit PowerShell finden Sie unter [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0).
 * Informationen zum Weiterleiten von DSC-Berichten an Log Analytics für Berichterstellungs- und Warnzwecke finden Sie unter [Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics). 
+

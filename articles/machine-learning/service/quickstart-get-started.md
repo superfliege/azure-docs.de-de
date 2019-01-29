@@ -9,25 +9,23 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 12/04/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14c500d77cc0e67aaade5e6be490f599f39bfad5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e3569f560224ab8c9a64ababb2fcea7e96e87367
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807719"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812453"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning
 
-In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um einen Azure Machine Learning-Arbeitsbereich zu erstellen. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Wie Sie stattdessen Ihren eigenen Jupyter Notebook-Server konfigurieren, erfahren Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).  
+Verwenden Sie das Azure-Portal zum Erstellen eines Azure Machine Learning-Arbeitsbereichs. Dieser Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Wie Sie stattdessen Ihren eigenen Jupyter Notebook-Server konfigurieren, erfahren Sie unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md).  
  
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
-
 Diese Schnellstartanleitung umfasst folgende Aktionen:
 
 * Erstellen eines Arbeitsbereichs in Ihrem Azure-Abonnement.
-* Testen mit Python in einem Azure-Notebook und Protokollieren der Werte in den unterschiedlichen Iterationen.
+* Testen mit Python in einem Jupyter Notebook und Protokollieren der Werte in den unterschiedlichen Iterationen
 * Anzeigen der protokollierten Werte in Ihrem Arbeitsbereich
 
 Folgende Azure-Ressourcen werden Ihrem Arbeitsbereich automatisch hinzugefügt, sofern sie regional verfügbar sind:
@@ -46,12 +44,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Klicken Sie auf der Seite des Arbeitsbereichs auf `Explore your Azure Machine Learning service Workspace`.
-
- ![Erkunden des Arbeitsbereichs](./media/quickstart-get-started/explore_aml.png)
-
 
 ## <a name="use-the-workspace"></a>Verwenden des Arbeitsbereichs
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+
+
 
 Sehen Sie sich nun an, wie ein Arbeitsbereich beim Verwalten Ihrer Machine Learning-Skripts hilft. In diesem Abschnitt führen Sie die folgenden Schritte aus:
 
@@ -63,46 +61,57 @@ Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in 
 
 ### <a name="open-a-notebook"></a>Öffnen eines Notebooks 
 
-Azure Notebooks bietet eine kostenlose Cloudplattform für Jupyter Notebooks, die mit allem vorkonfiguriert ist, was Sie für die Ausführung von Machine Learning benötigen.  
+[Azure Notebooks](https://notebooks.azure.com) bietet eine kostenlose Cloudplattform für Jupyter Notebooks, die mit allem vorkonfiguriert ist, was Sie für die Ausführung von Machine Learning benötigen. Über Ihren Arbeitsbereich können Sie diese Plattform starten, um mit der Verwendung des Azure Machine Learning Service-Arbeitsbereichs zu beginnen.
 
-Klicken Sie auf `Open Azure Notebooks`, um Ihr erstes Experiment durchzuführen.
+1. Wählen Sie auf der Seite des Arbeitsbereichs **Azure Machine Learning-Dienstarbeitsbereich erkunden**.
+
+ ![Erkunden des Arbeitsbereichs](./media/quickstart-get-started/explore_aml.png)
+
+1. Wählen Sie **Azure Notebooks öffnen**, um Ihr erstes Experiment in Azure Notebooks auszuprobieren.  Azure Notebooks ist ein separater Dienst, mit dem Sie Jupyter Notebooks kostenlos in der Cloud ausführen können.  Wenn Sie diesen Link zum Dienst verwenden, werden der von Ihnen in Azure Notebooks erstellten Bibliothek Informationen zum Herstellen einer Verbindung mit Ihrem Arbeitsbereich hinzugefügt.
 
  ![Öffnen von Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
-Unter Umständen müssen Sie in Ihrer Organisation zunächst die [Zustimmung des Administrators](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) einholen, um sich anmelden zu können.
+1. Melden Sie sich bei Azure Notebooks an.  Melden Sie sich unbedingt mit demselben Konto an, mit dem Sie sich auch beim Azure-Portal angemeldet haben. Unter Umständen müssen Sie in Ihrer Organisation zunächst die [Zustimmung des Administrators](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) einholen, um sich anmelden zu können.
 
-Sie melden sich bei Azure Notebooks mit demselben Konto an, mit dem Sie sich auch beim Azure-Portal angemeldet haben.  Nach Ihrer Anmeldung wird eine neue Registerkarte geöffnet und die Eingabeaufforderung `Clone Library` angezeigt. Wählen Sie `Clone` aus.
+1. Nach Ihrer Anmeldung wird eine neue Registerkarte geöffnet und die Eingabeaufforderung `Clone Library` angezeigt. Beim Klonen dieser Bibliothek werde verschiedene Notebooks und andere Dateien in Ihrem Azure Notebooks-Konto geladen.  Mithilfe dieser Dateien können Sie die Funktionen von Azure Machine Learning Studio erkunden.
 
+1. Deaktivieren Sie **Öffentlich**, damit Ihre Arbeitsbereichsinformationen nicht für andere Benutzer freigegeben werden.
+
+1. Wählen Sie **Klonen** aus.
+
+ ![Klonen einer Bibliothek](./media/quickstart-get-started/clone.png)
+
+1. Wenn der Projektstatus „Beendet“ lautet, klicken Sie auf **Run on Free Computer** (Auf kostenlosem Computer ausführen), um den kostenlosen Notebook-Server zu verwenden.
+
+    ![Ausführen eines Projekts auf kostenlosem Computer](./media/quickstart-get-started/run-project.png)
 
 ### <a name="run-the-notebook"></a>Ausführen des Notebooks
 
-Neben zwei Notebooks sehen Sie die Datei `config.json`. Diese Konfigurationsdatei enthält Informationen zu dem Arbeitsbereich, den Sie erstellt haben.  
+Die Liste der Dateien für dieses Projekt enthält eine Datei vom Typ `config.json`. Diese Konfigurationsdatei enthält Informationen zu dem Arbeitsbereich, den Sie im Azure-Portal erstellt haben.  Mithilfe dieser Datei kann Ihr Code eine Verbindung mit Ihrem Arbeitsbereich herstellen und ihm Informationen hinzufügen.
 
-Klicken Sie auf `01.run-experiment.ipynb`, um das Notebook zu öffnen.
+1. Wählen Sie **01.run-experiment.ipynb**, um das Notebook zu öffnen.
 
-Führen Sie die Zellen nacheinander aus (UMSCHALT+EINGABE). Sie können aber auch auf `Cells` > `Run All` klicken, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (__*__) angezeigt wird, wird sie gerade ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt. 
+1. Im Statusbereich werden Sie angewiesen, zu warten, bis der Kernel gestartet wurde.  Die Meldung wird nicht mehr angezeigt, wenn der Kernel bereit ist.
+
+    ![Warten, bis der Kernel gestartet wird](./media/quickstart-get-started/wait-for-kernel.png)
+
+1. Führen Sie die Zellen jeweils nacheinander mit **UMSCHALT+EINGABE** aus, nachdem der Kernel gestartet wurde. Sie können aber auch **Zellen** > **Alle ausführen** wählen, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (__*__) angezeigt wird, wird diese Zelle noch ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt. 
+
+1. Befolgen Sie die Anweisungen im Notebook, um Ihr Azure-Abonnement zu authentifizieren.
 
 Nachdem Sie die Ausführung aller Zellen im Notebook abgeschlossen haben, können Sie die protokollierten Werte in Ihrem Arbeitsbereich anzeigen.
 
 ## <a name="view-logged-values"></a>Anzeigen protokollierter Werte
 
-Kehren Sie nach der Ausführung aller Zellen des Notebooks zur Portalseite zurück.  
+1. Die Ausgabe der Zelle `run` enthält einen Link zum Azure-Portal, in dem Sie die Experimentergebnisse in Ihrem Arbeitsbereich anzeigen können. 
 
-Wählen Sie `View Experiments` aus.
+    ![Anzeigen von Experimenten](./media/quickstart-get-started/view_exp.png)
 
-![Anzeigen von Experimenten](./media/quickstart-get-started/view_exp.png)
+1. Klicken Sie auf den **Link zum Azure-Portal**, um Informationen zur Ausführung in Ihrem Arbeitsbereich anzuzeigen.  Über diesen Link wird Ihr Arbeitsbereich im Azure-Portal geöffnet.
 
-Schließen Sie das Popupelement `Reports`.
+1. Die angezeigten Plots protokollierter Werte wurden automatisch im Arbeitsbereich erstellt. Wenn Sie mehrere Werte mit dem gleichen Namensparameter protokollieren, wird für Sie automatisch ein Plot generiert.
 
-Wählen Sie `my-first-experiment` aus.
-
-Sehen Sie sich die Informationen zu der Ausführung, die Sie gerade durchgeführt haben, an. Scrollen Sie auf der Seite nach unten, um zur Tabelle mit den Ausführungen zu gelangen. Klicken Sie auf die als Link dargestellte Ausführungsnummer.
-
- ![Link für den Ausführungsverlauf](./media/quickstart-get-started/report.png)
-
-Daraufhin werden Plots angezeigt, die automatisch aus den protokollierten Werten erstellt wurden. Wenn Sie mehrere Werte mit dem gleichen Namensparameter protokollieren, wird für Sie automatisch ein Plot generiert.
-
-   ![Anzeigen des Verlaufs](./media/quickstart-get-started/plots.png)
+   ![Anzeigen des Verlaufs](./media/quickstart-get-started/web-results.png)
 
 Da der Code für die Pi-Annäherung willkürliche Werte verwendet, enthalten Ihre Plots andere Werte.  
 

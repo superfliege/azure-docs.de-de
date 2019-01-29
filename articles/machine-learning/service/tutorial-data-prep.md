@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321873"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817502"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
@@ -37,7 +37,7 @@ Sie können Ihre Daten in Python mit dem [Azure Machine Learning Data Prep SDK](
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) bereitgestellt. Führen Sie das Notebook **regression-part1-data-prep.ipynb** entweder in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
+Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) bereitgestellt. Führen Sie das Notebook **regression-part1-data-prep.ipynb** entweder in [Azure Notebooks](https://notebooks.azure.com/) oder auf Ihrem eigenen Jupyter Notebook-Server aus.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -1066,7 +1066,7 @@ package.save(file_path)
 
 Für den zweiten Teil des Tutorials benötigen Sie die Datei **dflows.dprep** im aktuellen Verzeichnis.
 
-Falls Sie nicht mit dem zweiten Teil fortfahren möchten, löschen Sie die Datei **dflows.dprep** in Ihrem aktuellen Verzeichnis. Löschen Sie die Datei unabhängig davon, ob Sie für die Ausführung Ihre lokale Umgebung oder Azure Notebooks verwenden.
+Falls Sie nicht mit dem zweiten Teil fortfahren möchten, löschen Sie die Datei **dflows.dprep** in Ihrem aktuellen Verzeichnis. Löschen Sie die Datei unabhängig davon, ob Sie für die Ausführung Ihre lokale Umgebung oder [Azure Notebooks](https://notebooks.azure.com/) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

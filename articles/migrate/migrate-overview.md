@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263202"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808356"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -57,7 +57,7 @@ Bewertungseinstellungen können je nach Bedarf angepasst werden. Die Bewertungse
 
 **Eigenschaft** | **Details**
 --- | ---
-**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 33 Regionen als Standort des Migrationsziels. [Hier](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen aufgeführt. Die Zielregion ist standardmäßig auf „USA, Westen 2“ festgelegt.
+**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 33 Regionen als Standort des Migrationsziels. [Hier](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen aufgeführt. Die Zielregion ist standardmäßig auf „USA, Osten“ festgelegt.
 **Speichertyp** | Der Typ der verwalteten Datenträger, den Sie für alle virtuellen Computer zuordnen möchten, die Teil der Bewertung sind. Lautet das Größenkriterium *Größenanpassung vom Typ „Wie lokal“*, können Sie als Zieldatenträger Premium-Datenträger (Standardeinstellung), Standard-SSD-Datenträger oder Standard-HDD-Datenträger angeben. Bei *leistungsbasierter Größenanpassung* sowie den oben genannten Optionen können Sie „Automatisch“ auswählen. Dadurch wird sichergestellt, dass für die Größenempfehlung automatisch die Leistungsdaten der virtuellen Computer herangezogen werden. Wenn Sie beispielsweise eine [SLA von 99,9% für Einzelinstanz-VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) erzielen möchten, können Sie den Speichertyp als „Managed Disks Premium“ angeben. So wird sichergestellt, dass alle Datenträger der Bewertung als Datenträger vom Typ „Managed Disks Premium“ empfohlen werden. Hinweis: Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 **Reservierte Instanzen** |  Mit dieser Eigenschaft wird angegeben, ob Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) in Azure besitzen. Dies wird dann von Azure Migrate bei der Kostenschätzung entsprechend berücksichtigt.
 **Größenkriterium** | Sie können die Größenanpassung auf der Grundlage des **Leistungsverlaufs** der lokalen virtuellen Computer vornehmen (Standardeinstellung) oder die Größe ohne Berücksichtigung des Leistungsverlauf **an die lokale Umgebung** anpassen.

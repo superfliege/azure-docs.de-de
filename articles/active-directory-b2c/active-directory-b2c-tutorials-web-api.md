@@ -3,19 +3,19 @@ title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API über eine Web
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Web-App aufrufen.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4051c0438cfb7c33f36cf49542e422e54e723cfc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726405"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856059"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API über eine Web-App unter Verwendung von Azure Active Directory B2C
 
@@ -116,13 +116,13 @@ Wenn Sie über eine App eine geschützte Web-API aufrufen möchten, müssen Sie 
 
 Nachdem die Web-API registriert ist und Bereiche definiert wurden, müssen Sie den Web-API-Code für die Verwendung Ihres Azure AD B2C-Mandanten konfigurieren. In diesem Tutorial konfigurieren Sie eine Beispiel-Web-API. 
 
-Die Beispiel-Web-API ist Teil des Projekts, das Sie im vorherigen Tutorial ([Verwenden von Azure Active Directory B2C für die Benutzerauthentifizierung in einer ASP.NET-Web-App](active-directory-b2c-tutorials-web-app.md)) heruntergeladen haben. Sollten Sie das vorherige Tutorial noch nicht absolviert haben, holen Sie dies nach, bevor Sie mit dem vorliegenden Tutorial fortfahren.
+Die Beispiel-Web-API ist in dem Projekt enthalten, das Sie im erforderlichen Tutorial heruntergeladen haben: [Tutorial: Aktivieren der Authentifizierung von Web-Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-web-app.md). Sollten Sie das vorherige Tutorial noch nicht absolviert haben, holen Sie dies nach, bevor Sie mit dem vorliegenden Tutorial fortfahren.
 
 Die Beispielprojektmappe enthält zwei Projekte:
 
 **Web-App-Beispiel-App (TaskWebApp):** Web-App zum Erstellen und Bearbeiten einer Aufgabenliste. Die Web-App verwendet den **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern mit einer E-Mail-Adresse.
 
-**Web-API-Beispiel-App (TaskService):** Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird durch Azure AD B2C geschützt und von der Web-App aufgerufen.
+**Web-API-Beispiel-App (TaskService):** Eine Web-API, die die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste unterstützt. Die Web-API wird durch Azure AD B2C geschützt und von der Web-App aufgerufen.
 
 Die Beispiel-Web-App und die Beispiel-Web-API definieren die Konfigurationswerte als App-Einstellungen in der Datei „Web.config“ des jeweiligen Projekts.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 6b36cdecb178a7189773abbfe963411e19764401
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311387"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438659"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Windows-Computern mit Azure PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "49311387"
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. Wenn Sie PowerShell lokal ausführen und nicht mindestens über Version 6.0 verfügen, [aktualisieren Sie Ihre Version](/powershell/azure/install-azurerm-ps). Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. Bei lokalen Installationen müssen Sie auch [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/), um eine neue Azure Active Directory-Gruppe zu erstellen.
+Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. Wenn Sie PowerShell lokal ausführen und nicht mindestens über Version 6.0 verfügen, [aktualisieren Sie Ihre Version](/powershell/azure/azurerm/install-azurerm-ps). Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. Bei lokalen Installationen müssen Sie auch [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/), um eine neue Azure Active Directory-Gruppe zu erstellen.
 
 ## <a name="understand-scope"></a>Der Bereich
 

@@ -11,36 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 149da2c186ae1e0c3fa5af14a630a0edef7deb25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302713"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470272"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
+
 Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
 
-## <a name="find"></a>Suchen eines Speicherkontos
+## <a name="find-a-storage-account"></a>Suchen eines Speicherkontos
 Die Liste der Speicherkonten in der Region kann in Azure Stack folgendermaßen angezeigt werden:
 
 1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
 
-2. Wählen Sie **Alle Dienste** > **Regionsverwaltung** unter **Verwaltung** aus.
+2. Wählen Sie **Alle Dienste** > **Speicherkonten**.
 
-3. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
-   
-   ![Speicherressourcenanbieter](media/azure-stack-manage-storage-accounts/image1.png)
-
-5. Wählen Sie **Speicherkonten** unter **Speicher** aus.
-   
-   ![](media/azure-stack-manage-storage-accounts/image2.png)
-   
-   Das Blatt zeigt die Liste der Speicherkonten in dieser Region an.
-   
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
 Standardmäßig werden die ersten 10 Konten angezeigt. Sie können weitere abrufen, indem Sie unten auf der Seite auf den Link **Weitere laden** klicken.
@@ -84,7 +75,7 @@ In Azure Stack gibt es hierfür eine einfache Möglichkeit:
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. Die Wiederherstellung wird jetzt *ausgeführt. Warten* Sie auf den Hinweis, dass sie erfolgreich war.
-   Sie können auch auf das Glockensymbol oben im Portal klicken, um eine Fortschrittsanzeige einzublenden.
+   Sie können auch das Glockensymbol oben im Portal wählen, um eine Fortschrittsanzeige einzublenden.
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    

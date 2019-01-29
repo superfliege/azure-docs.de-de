@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: e83d6e2f14f8665f8eb0c58a4dc41c7c2ecc792d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309858"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464254"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Tutorial: Verwalten von virtuellen Azure-Computern mit der Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Tutorial: Informationen zur Verwaltung von virtuellen Linux-Computern mit der Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -177,7 +177,7 @@ Durch Anwenden von [Tags](../../azure-resource-manager/resource-group-using-tags
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-Verwenden Sie zum Anwenden von Tags auf einen virtuellen Computer den Befehl [az resource tag](/cli/azure/resource#az_resource_tag). Eventuell bereits vorhandene Tags der Ressource werden nicht beibehalten.
+Verwenden Sie zum Anwenden von Tags auf einen virtuellen Computer den Befehl [az resource tag](/cli/azure/resource). Eventuell bereits vorhandene Tags der Ressource werden nicht beibehalten.
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -188,7 +188,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>Suchen von Ressourcen nach Tag
 
-Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [az resource list](/cli/azure/resource#az_resource_list):
+Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [az resource list](/cli/azure/resource):
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name

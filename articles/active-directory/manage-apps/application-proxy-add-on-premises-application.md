@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ed275638c1b217f18d5d1335b9d039879ae55004
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120732"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846308"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -93,7 +93,7 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure verwendet diese URLs, um Zertifikate zu überprüfen. |
 | login.windows.net<br>login.microsoftonline.com | Der Connector verwendet diese URLs während der Registrierung. |
 
-Wenn Ihre Firewall oder Ihr Proxy DNS-Whitelisting zulässt, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ per Whitelist beschränken. Falls nicht, müssen Sie den Zugriff auf die [IP-Bereiche für das Azure-Datencenter](https://www.microsoft.com/download/details.aspx?id=41653) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+Wenn Ihre Firewall oder Ihr Proxy DNS-Whitelisting zulässt, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ per Whitelist verwalten. Andernfalls müssen Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
 
 ## <a name="install-and-register-a-connector"></a>Installieren und Registrieren eines Connectors
 Um den Anwendungsproxy verwenden zu können, müssen Sie einen Connector auf jedem Windows-Server installieren, den Sie mit dem Anwendungsproxydienst verwenden. Der Connector ist ein Agent, der die aus dem lokalen Anwendungsserver ausgehende Verbindung mit dem Anwendungsproxy in Azure AD verwaltet. Sie können einen Connector auf Servern installieren, auf denen auch andere Authentifizierungs-Agents wie Azure AD Connect installiert sind.
@@ -181,6 +181,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
     | **Timeout der Back-End-Anwendung** | Legen Sie diesen Wert nur auf **Lang** fest, wenn Ihre Anwendung bei der Authentifizierung und dem Verbinden langsam ist. |
     | **Nur-HTTP-Cookie verwenden** | Legen Sie diesen Wert auf **Ja** fest, damit Anwendungsproxycookies das Flag HTTPOnly im HTTP-Antwortheader enthalten. Wenn Sie Remotedesktopdienste verwenden, sollten Sie diese Option auf **Nein** festlegen.|
     | **Sicheres Cookie verwenden**| Legen Sie diesen Wert auf **Ja** fest, um Cookies über einen sicheren Kanal zu übertragen, z.B. eine verschlüsselte HTTPS-Anforderung.
+    | **Beständiges Cookie verwenden**| Behalten Sie für diesen Wert die Einstellung **Nein** bei. Diese Einstellung sollte nur für Anwendungen verwendet werden, die keine Cookies zwischen Prozessen freigeben können. Weitere Informationen zu Cookieeinstellungen finden Sie unter [Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
     | **URLs in Headern übersetzen** | Behalten Sie für diesen Wert **Ja** bei, wenn Ihre Anwendung den ursprünglichen Hostheader nicht in der Authentifizierungsanforderung erfordert. |
     | **URLs im Hauptteil der Anwendung übersetzen** | Behalten Sie für diesen Wert **Nein** bei, wenn Sie nicht über hartcodierte HTML-Links zu anderen lokalen Anwendungen verfügen, und verwenden Sie keine benutzerdefinierten Domänen. Weitere Informationen finden Sie unter [Linkübersetzung mit dem Anwendungsproxy](application-proxy-configure-hard-coded-link-translation.md).<br><br>Legen Sie diesen Wert auf **Ja** fest, wenn Sie diese Anwendung mit Microsoft Cloud App Security (MCAS) überwachen möchten. Weitere Informationen finden Sie unter [Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
    

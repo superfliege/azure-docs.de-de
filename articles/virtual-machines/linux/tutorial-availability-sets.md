@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: f7bf5e233307703dca522974d52a86bc193186b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9391db9bf270511f734a31a621985f5b6ad31ec0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465830"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848732"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Bereitstellen hoch verfügbarer virtueller Computer mit Azure CLI
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Bereitstellen hochverfügbarer virtueller Computer mit der Azure CLI
 
 In diesem Tutorial erfahren Sie, wie Sie die Verfügbarkeit und Zuverlässigkeit Ihrer Lösungen für virtuelle Computer in Azure mithilfe von sogenannten Verfügbarkeitsgruppen erhöhen. Verfügbarkeitsgruppen sorgen dafür, dass die von Ihnen in Azure bereitgestellten virtuellen Computer auf mehrere isolierte Hardwarecluster verteilt werden. Hierdurch wird sichergestellt, dass sich Hardware- oder Softwarefehler in Azure nur auf einen Teil Ihrer VMs auswirken und die Lösung insgesamt verfügbar und betriebsbereit bleibt.
 
@@ -70,7 +70,7 @@ Mithilfe von Verfügbarkeitsgruppen können Sie Ressourcen in Fehlerdomänen und
 
 Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sicherzustellen, dass sie ordnungsgemäß auf die Hardwarekomponenten verteilt werden. Ein vorhandener virtueller Computer kann einer Verfügbarkeitsgruppe nach seiner Erstellung nicht mehr hinzugefügt werden.
 
-Wenn ein virtueller Computer mit [az vm create](/cli/azure/vm#az_vm_create) erstellt wird, können Sie den Parameter `--availability-set` verwenden, um den Namen der Verfügbarkeitsgruppe anzugeben.
+Wenn ein virtueller Computer mit [az vm create](/cli/azure/vm) erstellt wird, können Sie den Parameter `--availability-set` verwenden, um den Namen der Verfügbarkeitsgruppe anzugeben.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

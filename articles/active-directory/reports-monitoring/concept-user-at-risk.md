@@ -3,7 +3,7 @@ title: Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Di
 description: Hier erfahren Sie mehr über den Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal.
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
@@ -11,15 +11,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: de9cf73ba7ad68d84e43a7774617959f9c3789ee
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621070"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810753"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Bericht „Benutzer mit Risikomarkierung“ im Azure-Portal
 
@@ -55,19 +55,16 @@ Der Bericht „Benutzer mit Risikomarkierung“ in den Editionen „Free“ und 
 
 ![Riskante Anmeldungen](./media/concept-user-at-risk/03.png)
 
-Wenn Sie einen Benutzer auswählen, wird das entsprechende Blatt mit den Benutzerdaten geöffnet. Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen und bei Bedarf das Kennwort zurücksetzen.
-
-![Riskante Anmeldungen](./media/concept-user-at-risk/46.png)
-
+Durch die Auswahl eines Benutzers werden Anmeldeinformationen bereitgestellt. Sie können für gefährdete Benutzer den Anmeldeverlauf des Benutzers prüfen und bei Bedarf das Kennwort zurücksetzen.
 
 In diesem Dialogfenster steht Ihnen folgende Option zur Verfügung:
 
 - Herunterladen des Berichts
-
 - Suchen nach Benutzern
 
-![Riskante Anmeldungen](./media/concept-user-at-risk/16.png)
+    ![Riskante Anmeldungen](./media/concept-user-at-risk/16.png)
 
+Sie benötigen eine Premium-Lizenz, um ausführlichere Informationen zu erhalten.
 
 ## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Bericht „Gefährdete Benutzer“ für die Azure AD-Editionen vom Typ „Premium“
 
@@ -102,7 +99,7 @@ Um ein Risikoereignis zu untersuchen, wählen Sie es in der Liste aus, um das Bl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md)
-- [Konfigurieren der Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)
+- [Gewusst wie: Konfigurieren der Richtlinie zum Benutzerrisiko](../identity-protection/howto-user-risk-policy.md)
+- [Gewusst wie: Konfigurieren der Richtlinie zum Beheben des Benutzerrisikos](../identity-protection/howto-user-risk-policy.md)
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
 

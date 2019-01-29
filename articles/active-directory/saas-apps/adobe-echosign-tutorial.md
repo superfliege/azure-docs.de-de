@@ -4,125 +4,128 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/26/2018
+ms.topic: tutorial
+ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: d5cdc2ec0c6cfcf52f84629485d0dd879fbf6fa2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 117cd2a546128499c1f9bbc75be40034875fa76e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053997"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809362"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration in Adobe Sign
+# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration mit Adobe Sign
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in Adobe Sign integrieren.
-
 Die Integration von Azure AD in Adobe Sign bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Adobe Sign hat.
-- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Adobe Sign anzumelden (einmaliges Anmelden, SSO).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+* Sie können in Azure AD steuern, wer Zugriff auf Adobe Sign hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Adobe Sign anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in Adobe Sign konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Adobe Sign-Abonnement, für das einmaliges Anmelden aktiviert ist.
-
-Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Adobe Sign-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Adobe Sign aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-## <a name="add-adobe-sign-from-the-gallery"></a>Hinzufügen von Adobe Sign aus dem Katalog
+* Adobe Sign unterstützt **SP-initiiertes** einmaliges Anmelden.
+
+## <a name="adding-adobe-sign-from-the-gallery"></a>Hinzufügen von Adobe Sign aus dem Katalog
+
 Zum Konfigurieren der Integration von Azure AD in Adobe Sign müssen Sie Adobe Sign aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf das Symbol **Azure Active Directory**. 
+**Führen Sie die folgenden Schritte durch, um Adobe Sign aus dem Katalog hinzuzufügen:**
 
-    ![Screenshot vom Azure Active Directory-Symbol][1]
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-    ![Screenshot von Azure Active Directory-Menüs mit Hervorhebung von „Unternehmensanwendungen“ und „Alle Anwendungen“][2]
-    
-3. Wählen Sie oben im Dialogfeld **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Screenshot von Option „Neue Anwendung“ oben im Dialogfeld][3]
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-4. Geben Sie im Suchfeld als Suchbegriff **Adobe Sign** ein.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Screenshot vom Suchfeld](./media/adobe-echosign-tutorial/tutorial_adobesign_search.png)
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-5. Wählen Sie im Ergebnisbereich, **Adobe Sign** und dann **Hinzufügen** aus.
+4. Geben Sie im Suchfeld **Adobe Sign** ein, wählen Sie im Ergebnisbereich **Adobe Sign** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Screenshot vom Ergebnisbereich](./media/adobe-echosign-tutorial/tutorial_adobesign_addfromgallery.png)
+     ![Adobe Sign in der Ergebnisliste](common/search-new-app.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Adobe Sign anhand einer Testbenutzerin namens Britta Simon.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-Azure AD muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Adobe Sign erkennen, damit das einmalige Anmelden funktioniert.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Adobe Sign anhand eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Adobe Sign eingerichtet werden.
 
-Weisen Sie in Adobe Sign den **Benutzername**-Wert in Azure AD dem Feld **Username** (Benutzername) zu, um eine Linkbeziehung herzustellen.
+Zum Konfigurieren und Testen des einmaligen Anmeldens mit Azure AD bei Adobe Sign müssen die folgenden Schritte durchgeführt werden:
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Adobe Sign zu konfigurieren und zu testen:
-
-1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. [Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. [Erstellen eines Adobe Sign-Testbenutzers](#creating-an-adobe-sign-test-user), um eine Entsprechung für Britta Simon in Adobe Sign zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. [Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Testen der einmaligen Anmeldung](#testing-single-sign-on), um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Adobe Sign](#configure-adobe-sign-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Adobe Sign-Testbenutzers](#create-adobe-sign-test-user)**, um eine Entsprechung von Britta Simon in Adobe Sign zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Adobe Sign-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Adobe Sign** auf **Einmaliges Anmelden**.
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Adobe Sign die folgenden Schritte aus:
 
-    ![Screenshot von Adobe Sign-Anwendungsintegrationsseite mit Hervorhebung von „Einmaliges Anmelden“][4]
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Adobe Sign** auf **Einmaliges Anmelden**.
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-    ![Screenshot vom Dialogfeld „Einmaliges Anmelden“ mit Hervorhebung des Felds „Modus“](./media/adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Adobe Sign** die folgenden Schritte aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Screenshot vom Abschnitt „Domäne und URLs für Adobe Sign“](./media/adobe-echosign-tutorial/tutorial_adobesign_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Adobe Sign](common/sp-identifier.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.echosign.com/`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<companyname>.echosign.com`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<companyname>.echosign.com`.
 
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Adobe Sign](https://helpx.adobe.com/in/contact/support.html), um diese Werte zu erhalten.
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Adobe Sign](https://helpx.adobe.com/in/contact/support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-4. Wählen Sie im Bereich **SAML-Signaturzertifikat** **Zertifikat (Base64)** aus, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Screenshot vom Abschnitt „SAML-Signaturzertifikat“](./media/adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-5. Wählen Sie **Speichern**aus.
+6. Kopieren Sie im Abschnitt **Adobe Sign einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-    ![Screenshot von Schaltfläche „Speichern“](./media/adobe-echosign-tutorial/tutorial_general_400.png)
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-6. Wählen Sie im Abschnitt **Adobe Sign-Konfiguration** **Adobe Sign konfigurieren** aus, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Bereich **Kurzübersicht**.
+    a. Anmelde-URL
 
-    ![Screenshot vom Abschnitt „Adobe Sign-Konfiguration“ mit Hervorhebung von „Adobe Sign konfigurieren“](./media/adobe-echosign-tutorial/tutorial_adobesign_configure.png)
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-adobe-sign-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Adobe Sign
 
 7. Wenden Sie sich vor der Konfiguration an das [Adobe Sign-Supportteam](https://helpx.adobe.com/in/contact/support.html), um Ihre Domäne in Adobe Sign auf die Whitelist setzen zu lassen. So fügen Sie die Domäne hinzu:
 
@@ -147,58 +150,82 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 9. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  >  **SAML Settings** (SAML-Einstellungen) auf.
    
-    ![Screenshot von Adobe Sign-SAML-Einstellungsseite] (./media/adobe-echosign-tutorial/ic789520.png "Account") (Konto)
+    ![Screenshot von Adobe Sign-SAML-Einstellungsseite](./media/adobe-echosign-tutorial/ic789520.png "Account") (Konto)
 
 10. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
   
-    ![Screenshot von SAML-Einstellungen] (./media/adobe-echosign-tutorial/ic789521.png "SAML Settings")
+    ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789521.png "SAML Settings")
    
+    ![Screenshot von SAML-Einstellungen](./media/adobe-echosign-tutorial/ic789522.png "SAML Settings")
+
     a. Wählen Sie als **SAML Mode** (SAML-Modus) **SAML Mandatory** (SAML erforderlich) aus.
    
     b. Aktivieren Sie **Allow Echosign Account Administrators to log in using their Echosign Credentials** (EchoSign-Kontoadministratoren dürfen sich mit ihren EchoSign-Anmeldeinformationen anmelden).
    
     c. Wählen Sie unter **User Creation** (Benutzererstellung) **Automatically add users authenticated through SAML** (SAML-authentifizierte Benutzer automatisch hinzufügen) aus.
 
-    d. Fügen Sie den Wert der **SAML-Entitäts-ID**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Entity ID/Issuer URL** (Entitäts-ID/Aussteller-URL) ein.
+    d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Idp Entity ID** (IdP-Entitäts-ID) ein.
     
-    e. Fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Login URL/SSO Endpoint** (Anmelde-URL/SSO-Endpunkt) ein.
+    e. Fügen Sie in das Textfeld **Idp Login URL** (IdP-Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
    
-    f. Fügen Sie den Wert der **Abmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Logout URL/SLO Endpoint** (Abmelde-URL/SLO-Endpunkt) ein.
+    f. Fügen Sie in das Textfeld **Idp Logout URL** (IdP-Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     g. Öffnen Sie die heruntergeladene **Zertifikat (Base64)**-Datei im Editor. Kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn in das Textfeld **IdP Certificate** (IdP-Zertifikat) ein.
 
     h. Klicken Sie auf **Save changes** (Änderungen speichern).
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt wird im Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
-![Screenshot vom Testbenutzernamen im Azure-Portal][100]
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Klicken Sie im linken Bereich des **Azure-Portals** auf das Symbol **Azure Active Directory**.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-    ![Screenshot vom Azure AD-Symbol](./media/adobe-echosign-tutorial/create_aaduser_01.png) 
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-2. Navigieren Sie zum Anzeigen der Benutzerliste zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
-    
-    ![Screenshot von Azure AD-Menüs mit Hervorhebung von „Benutzer und Gruppen“ und „Alle Benutzer“](./media/adobe-echosign-tutorial/create_aaduser_02.png) 
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-3. Zum Öffnen des Dialogfelds **Benutzer** wählen Sie **Hinzufügen**.
- 
-    ![Screenshot vom Dialogfeld „Alle Benutzer“ mit Hervorhebung von „Option hinzufügen“](./media/adobe-echosign-tutorial/create_aaduser_03.png) 
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-4. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
- 
-    ![Screenshot vom Dialogfeld „Benutzer“](./media/adobe-echosign-tutorial/create_aaduser_04.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-    b. Geben Sie im Textfeld **Benutzername** die E-Mail-Adresse von Britta Simon ein.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich das **Kennwort**.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
- 
-### <a name="create-an-adobe-sign-test-user"></a>Erstellen eines Adobe Sign-Testbenutzer
+    d. Klicken Sie auf **Create**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens mit Azure, indem Sie ihr Zugriff auf Adobe Sign gewähren.
+
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Adobe Sign**.
+
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
+2. Geben Sie in der Anwendungsliste **Adobe Sign** ein, und wählen Sie den Eintrag aus.
+
+    ![Adobe Sign-Link in der Anwendungsliste](common/all-applications.png)
+
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-adobe-sign-test-user"></a>Erstellen eines Adobe Sign-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Adobe Sign anmelden können, müssen sie in Adobe Sign bereitgestellt werden. Diese Aufgabe muss manuell ausgeführt werden.
 
@@ -222,53 +249,17 @@ Damit sich Azure AD-Benutzer bei Adobe Sign anmelden können, müssen sie in Ado
 >[!NOTE]
 >Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Bestätigungslink für das Konto, bevor es aktiv wird. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Adobe Sign, damit sie das einmalige Anmelden von Azure verwenden kann.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-![Screenshot vom Azure-Portal mit einmaligem Anmelden][200] 
+Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Sign“ klicken, sollten Sie automatisch bei Ihrer Adobe Sign-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht. Gehen Sie zur Verzeichnisansicht, rufen Sie **Unternehmensanwendungen** auf, und wählen Sie **Alle Anwendungen** aus.
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-    ![Screenshot von Anwendungsansicht im Azure-Portal mit Hervorhebung von „Unternehmensanwendungen“ und „Alle Anwendungen“][201] 
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-2. Wählen Sie in der Anwendungsliste **Adobe Sign** aus.
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-    ![Screenshot von Anwendungsliste mit Hervorhebung von Adobe Sign](./media/adobe-echosign-tutorial/tutorial_adobesign_app.png) 
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
-
-    ![Screenshot vom Menü mit Hervorhebung von „Benutzer und Gruppen“][202] 
-
-4. Wählen Sie **Hinzufügen**. Wählen Sie im Bereich **Zuweisung hinzufügen** **Benutzer und Gruppen** aus.
-
-    ![Screenshot von Seite „Benutzer und Gruppen“ und Abschnitt „Zuweisung hinzufügen“][203]
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf **Auswählen**.
-
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
-
-Wenn Sie im Zugriffsbereich die Kachel „Adobe Sign“ auswählen, werden Sie automatisch bei Ihrer Adobe Sign-Anwendung angemeldet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
-
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/adobe-echosign-tutorial/tutorial_general_01.png
-[2]: ./media/adobe-echosign-tutorial/tutorial_general_02.png
-[3]: ./media/adobe-echosign-tutorial/tutorial_general_03.png
-[4]: ./media/adobe-echosign-tutorial/tutorial_general_04.png
-
-[100]: ./media/adobe-echosign-tutorial/tutorial_general_100.png
-
-[200]: ./media/adobe-echosign-tutorial/tutorial_general_200.png
-[201]: ./media/adobe-echosign-tutorial/tutorial_general_201.png
-[202]: ./media/adobe-echosign-tutorial/tutorial_general_202.png
-[203]: ./media/adobe-echosign-tutorial/tutorial_general_203.png

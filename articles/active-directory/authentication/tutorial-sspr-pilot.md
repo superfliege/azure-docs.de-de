@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a86547ad3eddb57328a2a0358ac453c979b84d37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 21f2081f5aae0bb93cb9066407140f5fd35dc06d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163364"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424031"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Tutorial: Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe
 
@@ -33,7 +33,7 @@ Alle Tests der Self-Service-Kennwortzurücksetzung müssen mit Konten ohne Admin
 
 ## <a name="enable-self-service-password-reset"></a>Aktivieren der Self-Service-Kennwortzurücksetzung
 
-1. Melden Sie sich mit dem Konto eines globalen Administrators beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit dem Konto eines globalen Administrators am [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu **Azure Active Directory**, und klicken Sie auf **Kennwortzurücksetzung**.
 1. Beginnen Sie mit einer Pilotgruppe, indem Sie das Self-Service-Kennwort für eine Teilmenge von Benutzern in Ihrer Organisation aktivieren.
    * Wählen Sie auf der Seite **Eigenschaften** unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Aktiviert**, und wählen Sie eine Pilotgruppe aus.
@@ -68,7 +68,7 @@ Testen Sie die Self-Service-Kennwortzurücksetzung mit einem Testbenutzer ohne A
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktion nicht mehr nutzen möchten, gehen Sie wie folgt vor:
+Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktionalität nicht mehr nutzen möchten, gehen Sie wie folgt vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu **Azure Active Directory**, und klicken Sie auf **Kennwortzurücksetzung**.

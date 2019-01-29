@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: d89c5a3f2545edd7c02b67fa9d2e2b78937a9791
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c8d1f659078a36bc57e92b01e6e32502be7a0ea9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779543"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434749"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal
 
@@ -36,8 +36,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zur Verwendung der VPN-Diagnose benötigen Sie ein aktives VPN-Gateway. Wenn Ihnen kein VPN-Gateway zur Diagnose zur Verfügung steht, können Sie mit einem [PowerShell-Skript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) eines bereitstellen. Sie können das PowerShell-Skript ausführen von:
-    - **Einer lokalen PowerShell-Installation**: Dieses Skript setzt mindestens Version 5.7.0 des AzureRM PowerShell-Moduls voraus. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
-    - **Die Azure Cloud Shell**: Die [Azure Cloud Shell](https://shell.azure.com/powershell), in der die neueste Version von PowerShell installiert und konfiguriert ist, meldet Sie bei Azure an.
+    - **Lokale PowerShell-Installation:** Für dieses Skript ist das AzureRM PowerShell-Modul Version 5.7.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+    - **Azure Cloud Shell:** Der Dienst [Azure Cloud Shell](https://shell.azure.com/powershell), in dem die neueste Version von PowerShell installiert und konfiguriert ist, meldet Sie bei Azure an.
 
 Das Skript benötigt ungefähr eine Stunde, um ein VPN-Gateway zu erstellen. Die restlichen Schritte setzen voraus, dass das Gateway, das Sie diagnostizieren, mit dem identisch ist, das von diesem Skript bereitgestellt wird. Wenn Sie stattdessen Ihr eigenes vorhandenes Gateway diagnostizieren, variieren Ihre Ergebnisse.
 
@@ -49,12 +49,12 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 Wenn Sie bereits eine Network Watcher-Instanz in der Region „USA, Osten“ aktiviert haben, fahren Sie mit [Diagnostizieren eines Gateways](#diagnose-a-gateway) fort.
 
-1. Wählen Sie im Portal die Option **Alle Dienste** aus. Geben Sie in das Feld **Filter** *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
-2. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann, wie in der folgenden Abbildung gezeigt, **...** rechts von **USA, Osten** aus:
+1. Wählen Sie im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
+2. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann **...** rechts von **USA, Osten** aus (siehe folgende Abbildung):
 
     ![Aktivieren von Network Watcher](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
 
-3. Wählen Sie **Aktivieren von Network Watcher** aus.
+3. Klicken Sie auf **Network Watcher aktivieren**.
 
 ## <a name="diagnose-a-gateway"></a>Diagnostizieren eines Gateways
 
@@ -76,7 +76,7 @@ Wenn Sie bereits eine Network Watcher-Instanz in der Region „USA, Osten“ akt
     Für den **PROBLEMBEHANDLUNGSSTATUS** wird **Fehlerhaft** angezeigt, außerdem sehen Sie eine **Zusammenfassung** des Problems und eine Beschreibung im **Detail** auf der Registerkarte **Status**.
 10. Bei Auswahl der Registerkarte **Aktion** bietet die VPN-Diagnose zusätzliche Informationen. In dem in der folgenden Abbildung gezeigten Beispiel teilt die VPN-Diagnose Ihnen mit, dass Sie die Integrität jeder Verbindung überprüfen sollten:
 
-  ![anzuzeigen.](./media/diagnose-communication-problem-between-networks/action.png)
+  ![Aktion](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnostizieren einer Gatewayverbindung
 

@@ -3,19 +3,19 @@ title: 'Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung mit A
 description: Führen Sie eine Beispiel-ASP.NET-Web-App aus, bei der die Kontoanmeldung über Azure Active Directory B2C erfolgt
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: edfd17763a7d555e773e7d271ed5cc22a0307996
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: af83b1dc3638425ff3d4dbe7777d81a83e98995a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726592"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843088"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung unter Verwendung von Azure Active Directory B2C
 

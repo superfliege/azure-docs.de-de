@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Storage Explorer, um einen Blob im Objektspeicher zu erstellen, in dem Azure Data Lake Storage Gen2 aktiviert ist'
+title: 'Schnellstart: Verwenden von Azure Storage-Explorer zum Verwalten von Daten in Azure Data Lake Storage Gen2 '
 description: In diesem Schnellstart erfahren Sie, wie Sie mit dem Azure Storage-Explorer ein Dateisystem in einem Azure Data Lake Storage Gen2-Konto sowie ein Verzeichnis und eine Datei erstellen. Als Nächstes erfahren Sie, wie Sie die Datei auf Ihren lokalen Computer herunterladen, und wie Sie die gesamte Datei in einem Verzeichnis anzeigen.
 services: storage
 author: tamram
@@ -9,14 +9,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: tamram
-ms.openlocfilehash: e556dbe377f5bba6cbd727ac69c3d4fb9127a2c9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 5b46d5644536123a9ef3dfc7be87e34d03ee4c4f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385617"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423595"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher
+# <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Verwalten von Daten in einem Azure Data Lake Storage Gen2-Konto
 
 In diesem Schnellstart erfahren Sie, wie Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um einen Verzeichnis und ein Blob zu erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Verzeichnis anzeigen. Außerdem erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, Zugriffsrichtlinien für ein Verzeichnis verwalten und eine SAS (Shared Access Signature) erstellen.
 

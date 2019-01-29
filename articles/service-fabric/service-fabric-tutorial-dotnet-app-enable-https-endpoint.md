@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
+ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 541d1473b21056e24c6b04b86414936a02b7d9d5
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077249"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382574"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -158,7 +158,9 @@ serviceContext =>
         }))
 ```
 
-Fügen Sie außerdem die folgende Methode hinzu, damit Kestrel das Zertifikat im Speicher `Cert:\LocalMachine\My` anhand des Antragstellers findet.  Ersetzen Sie „&lt;your_CN_value&gt;“ durch „mytestcert“, falls Sie mithilfe des vorherigen PowerShell-Befehls ein selbstsigniertes Zertifikat erstellt haben, oder verwenden Sie den allgemeinen Namen Ihres Zertifikats.
+Fügen Sie außerdem die folgende Methode hinzu, damit Kestrel das Zertifikat im Speicher `Cert:\LocalMachine\My` anhand des Antragstellers findet.  
+
+Ersetzen Sie „&lt;your_CN_value&gt;“ durch „mytestcert“, falls Sie mithilfe des vorherigen PowerShell-Befehls ein selbstsigniertes Zertifikat erstellt haben, oder verwenden Sie den allgemeinen Namen Ihres Zertifikats.
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -347,7 +349,7 @@ Speichern Sie alle Dateien, und drücken Sie F5, um die Anwendung lokal auszufü
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Installieren des Zertifikats auf Clusterknoten
 
-Installieren Sie das Zertifikat im Speicher `Cert:\LocalMachine\My` der Remoteclusterknoten, bevor Sie die Anwendung in Azure bereitstellen.  Wenn der Front-End-Webdienst auf einem Clusterknoten gestartet wird, sucht das Startskript das Zertifikat und konfiguriert Zugriffsberechtigungen.
+Installieren Sie das Zertifikat im Speicher `Cert:\LocalMachine\My` aller Remoteclusterknoten, bevor Sie die Anwendung in Azure bereitstellen.  Dienste können in verschiedene Knoten im Cluster verschoben werden.  Wenn der Front-End-Webdienst auf einem Clusterknoten gestartet wird, sucht das Startskript das Zertifikat und konfiguriert Zugriffsberechtigungen.
 
 Exportieren Sie zunächst das Zertifikat in eine PFX-Datei. Öffnen Sie die Anwendung „certlm.msc“, und navigieren Sie zu **Eigene Zertifikate**>**Zertifikate**.  Klicken Sie mit der rechten Maustaste auf das Zertifikat *mytestcert*, und klicken Sie anschließend auf **Alle Aufgaben**>**Exportieren**.
 

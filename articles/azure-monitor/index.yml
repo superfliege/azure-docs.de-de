@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5b8d5e639711b91d380b5f14de48be6a80fb0263
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fbabdae9b560a882bd4681eb9e681fd2a0398a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820766"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101769"
 documentType: LandingData
 title: Azure Monitor-Dokumentation
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: azure-monitor
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 01/22/2019
+  ms.date: 01/25/2019
   ms.author: bwren
 abstract:
   description: Azure Monitor umfasst jetzt Log Analytics sowie Application Insights und bietet anspruchsvolle Tools zum Sammeln und Analysieren von Telemetriedaten, mit denen Sie die Leistung und Verfügbarkeit Ihrer Ressourcen und Anwendungen maximieren können – lokal und in der Cloud. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen.
@@ -63,7 +63,7 @@ sections:
       text: Abonnements – Überprüfung und Warnungen
       href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
   - type: paragraph
-    text: Es wird beschrieben, wie Sie mit Azure Application Insights mit dem Überwachen Ihrer Anwendung beginnen.
+    text: Hier wird beschrieben, wie Sie mit Azure Monitor Application Insights mit dem Überwachen Ihrer Anwendung beginnen.
   - type: list
     style: icon48
     items:

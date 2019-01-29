@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599500"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448073"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren von Geräten, die mit der Überwachungslösung verbunden sind
 
 In diesem Tutorial verwenden Sie den Solution Accelerator für die Remoteüberwachung zum Konfigurieren und Verwalten Ihrer verbundenen IoT-Geräte. Sie fügen dem Solution Accelerator ein neues Gerät hinzu und konfigurieren das Gerät.
 
-Contoso hat neue Maschinen bestellt, um eine seiner Betriebsstätten zu erweitern. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu testen. Zum Ausführen der Simulation fügen Sie dem Solution Accelerator für die Remoteüberwachung ein neues simuliertes Engine-Gerät hinzu und testen, ob dieses simulierte Gerät richtig auf Konfigurationsupdates reagiert. In diesem Tutorial werden simulierte Geräte genutzt, aber ein Geräteentwickler kann direkte Methoden auch auf einem [physischen Gerät implementieren, das mit dem Solution Accelerator für die Remoteüberwachung verbunden ist](iot-accelerators-connecting-devices.md).
+Contoso hat neue Maschinen bestellt, um eine seiner Betriebsstätten zu erweitern. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu testen. Zum Ausführen der Simulation fügen Sie dem Solution Accelerator für die Remoteüberwachung ein neues simuliertes Engine-Gerät hinzu und testen, ob dieses simulierte Gerät richtig auf Konfigurationsupdates reagiert. In diesem Tutorial werden simulierte Geräte genutzt, aber ein Geräteentwickler kann direkte Methoden auch auf einem [echten Gerät implementieren, das mit dem Solution Accelerator für die Remoteüberwachung verbunden ist](iot-accelerators-connecting-devices.md).
 
 In diesem Tutorial führen Sie Folgendes durch:
 

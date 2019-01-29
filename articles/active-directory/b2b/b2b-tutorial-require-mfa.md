@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer in Azure AD'
+title: 'Tutorial: Erzwingen der mehrstufigen Authentifizierung für Azure AD B2B-Gastbenutzer'
 description: Erfahren Sie, wie Sie eine mehrstufige Authentifizierung (Multi-Factor Authentification, MFA) erzwingen, wenn Sie Azure AD zur B2B-Zusammenarbeit mit externen Benutzern und Partnerorganisationen verwenden.
 services: active-directory
 ms.service: active-directory
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 34ca5667b5bf47bec8c48a7e5836b7d51ad08724
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 88225ee7aeefd9030e754f2b1abc66e4c05e5c6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986816"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431174"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer
 
@@ -79,7 +79,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 7.  Wählen Sie auf der Seite **Benutzer und Gruppen** **Benutzer und Gruppen auswählen** und dann **Sämtliche Gastbenutzer (Vorschau)** aus.
 
     ![Wählen Sie „Azure Active Directory“.](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9.  Wählen Sie **Fertig** aus.
+9.  Wählen Sie **Fertig**aus.
 10. Wählen Sie auf der Seite **Neu** im Abschnitt **Zuweisungen** die Option **Cloud-Apps** aus.
 11. Wählen Sie auf der Seite **Cloud-Apps** **Apps auswählen** und dann **Auswählen** aus.
 

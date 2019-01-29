@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042137"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452954"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>SQL-Abfragebeispiele zum Abfragen von Daten aus Azure Cosmos DB
 
@@ -506,7 +506,7 @@ Sie können auch die Aufrufe vom Operator wie in der folgenden Abfrage verschach
 
 Wie bei anderen Abfrageoperatoren werden Elemente mit fehlenden referenzierten Eigenschaften im bedingten Ausdruck oder Elemente mit unterschiedlichen verglichenen Typen in den Abfrageergebnissen ausgeschlossen.
 
-Der koaleszierte (??) Operator kann zur effizienten Prüfung des Vorkommens einer Eigenschaft in einem Dokument verwendet werden. Damit wird also überprüft, ob die Eigenschaft definiert ist. Dieser Operator ist bei Abfragen für teilweise strukturiert oder gemischte Datentypen nützlich. Diese Abfrage gibt z. B. "LastName", falls vorhanden, oder "Surname", falls nicht vorhanden zurück.
+Der Operator zum Zusammenfügen (??) kann zur effizienten Prüfung des Vorkommens einer Eigenschaft in einem Dokument verwendet werden. Dieser Operator ist bei Abfragen für teilweise strukturiert oder gemischte Datentypen nützlich. Diese Abfrage gibt z. B. "LastName", falls vorhanden, oder "Surname", falls nicht vorhanden zurück.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
