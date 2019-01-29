@@ -4,7 +4,7 @@ description: Dies ist die Azure AD Connect Health-Seite, auf der Sie erfahren, w
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d93207e6a5f0acabcf348981e799e801c39f48b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3d74a78d60959dc404165d0ac8c4483b8bd36a29
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278836"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464084"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
@@ -44,7 +44,7 @@ In der Azure AD Connect Health-Nutzungsanalyse wird der Authentifizierungsdatenv
 
 Um zusätzliche Metriken auszuwählen, einen Zeitraum anzugeben oder die Gruppierung zu ändern, klicken Sie mit der rechten Maustaste auf das Diagramm zur Nutzungsanalyse und wählen „Diagramm bearbeiten“. Anschließend können Sie den Zeitraum angeben, eine andere Metrik auswählen und die Gruppierung ändern. Sie können die Verteilung des Authentifizierungsdatenverkehrs basierend auf verschiedenen Metriken anzeigen und jede Metrik über die relevanten Parameter gruppieren. Diese Parameter werden im folgenden Abschnitt beschrieben:
 
-**Metrik : Anforderungen insgesamt**: Gibt die Gesamtzahl von Anforderungen an, die von AD FS-Servern verarbeitet wurden.
+**Metrik: Anforderungen insgesamt**: Gibt die Gesamtzahl von Anforderungen an, die von AD FS-Servern verarbeitet wurden.
 
 |Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
 | --- | --- |
@@ -56,16 +56,16 @@ Um zusätzliche Metriken auszuwählen, einen Zeitraum anzugeben oder die Gruppie
 | Netzwerkadresse | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Netzwerkadresse des Benutzers. Dies kann entweder ein Intranet oder Extranet sein. Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des eingehenden Datenverkehrs für Intranet und Extranet anzeigen möchten. |
 
 
-**Metrik: Anforderungen mit Fehlern gesamt**: Die Gesamtzahl von Anforderungen mit Fehlern, die vom Verbunddienst verarbeitet wurden. (Diese Metrik steht nur in AD FS für Windows Server 2012 R2 zur Verfügung.)
+**Metrik: Anforderungen mit Fehlern gesamt**: Die Gesamtzahl von Anforderungen mit Fehlern, die vom Verbunddienst verarbeitet wurden.  (Diese Metrik steht nur in AD FS für Windows Server 2012 R2 zur Verfügung.)
 
 |Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
 | --- | --- |
-| Fehlertyp | Zeigt die Anzahl von Fehlern basierend auf den vordefinierten Fehlertypen an. Diese Gruppierung ist nützlich, um die allgemeinen Arten von Fehlern zu verstehen. <ul><li>Falscher Benutzername oder falsches Kennwort: Fehler, die durch einen falschen Benutzernamen oder ein falsches Kennwort ausgelöst werden.</li> <li>„Extranetsperrung“: Fehler durch Anforderungen von einem Benutzer, der für das Extranet gesperrt wurde. </li><li> „Kennwort abgelaufen“: Fehler durch Benutzer, die sich mit einem abgelaufenen Kennwort anmelden.</li><li>„Konto deaktiviert“: Fehler durch Benutzer, die sich mit einem deaktivierten Konto anmelden.</li><li>„Authentifizierung mit Gerät“: Fehler durch Benutzer, bei denen Probleme bei der Geräteauthentifizierung auftreten.</li><li>„Authentifizierung mit Benutzerzertifikat“: Fehler durch Benutzer, bei denen die Authentifizierung aufgrund eines ungültigen Zertifikats nicht möglich ist.</li><li>„MFA“: Fehler durch Benutzer, die sich nicht per Multi-Factor Authentication authentifizieren können.</li><li>„Andere Anmeldeinformationen“: „Ausstellungsautorisierung“: Fehler aufgrund von Autorisierungsproblemen.</li><li>„Ausstellungsdelegierung“: Fehler aufgrund von Problemen bei der Ausstellungsdelegierung.</li><li>„Tokenannahme“: Fehler durch das Ablehnen von externen Identitätsanbietern durch AD FS.</li><li>„Protokoll“: Fehler aufgrund von Protokollproblemen.</li><li>„Unbekannt“: Fängt alle weiteren Fehler ab. Alle anderen Fehler, die nicht in die definierten Kategorien fallen.</li> |
+| Fehlertyp | Zeigt die Anzahl von Fehlern basierend auf den vordefinierten Fehlertypen an. Diese Gruppierung ist nützlich, um die allgemeinen Arten von Fehlern zu verstehen. <ul><li>Falscher Benutzername oder falsches Kennwort: Fehler, die durch einen falschen Benutzernamen oder ein falsches Kennwort verursacht wurden</li> <li>„Extranetsperrung“: Fehler durch Anforderungen von einem Benutzer, der für das Extranet gesperrt wurde </li><li> „Kennwort abgelaufen“: Fehler durch Benutzer, die sich mit einem abgelaufenen Kennwort anmelden</li><li>„Konto deaktiviert“: Fehler durch Benutzer, die sich mit einem deaktivierten Konto anmelden</li><li>„Authentifizierung mit Gerät“: Fehler durch Benutzer, bei denen Probleme bei der Geräteauthentifizierung auftreten</li><li>„Authentifizierung mit Benutzerzertifikat“: Fehler durch Benutzer, bei denen die Authentifizierung aufgrund eines ungültigen Zertifikats nicht möglich ist</li><li>„MFA“: Fehler durch Benutzer, die sich nicht per Multi-Factor Authentication authentifizieren können</li><li>„Andere Anmeldeinformationen“ und „Ausstellungsautorisierung“: Fehler aufgrund von Autorisierungsproblemen</li><li>„Ausstellungsdelegierung“: Fehler aufgrund von Problemen bei der Ausstellungsdelegierung</li><li>„Tokenannahme“: Fehler durch das Ablehnen des Tokens von externen Identitätsanbietern durch AD FS</li><li>„Protokoll“: Fehler aufgrund von Protokollproblemen</li><li>„Unbekannt“: Fängt alle weiteren Fehler ab. Alle anderen Fehler, die nicht in die definierten Kategorien fallen.</li> |
 | Server | Gruppiert die Fehler basierend auf dem Server. Diese Gruppierung ist nützlich, um die Fehlerverteilung auf die Server anzuzeigen. Eine ungleichmäßige Verteilung könnte darauf hinweisen, dass sich ein Server in fehlerhaftem Zustand befindet. |
 | Netzwerkadresse | Gruppiert die Fehler basierend auf der Netzwerkadresse der Anforderungen (Intranet oder Extranet). Diese Gruppierung ist nützlich, um die Art der Anforderungen herauszufinden, für die Fehler auftreten. |
 |  Anwendung | Gruppiert die Fehler basierend auf der Zielanwendung (vertrauende Seite). Mithilfe dieser Gruppierung können Sie anzeigen, für welche Zielanwendung die meisten Fehler auftreten. |
 
-**Metrik: Benutzeranzahl**: Durchschnittliche Anzahl von eindeutigen Benutzern, die aktiv eine Authentifizierung mit AD FS durchführen.
+**Metrik: Benutzeranzahl**: Durchschnittliche Anzahl von eindeutigen Benutzern, die aktiv eine Authentifizierung mit AD FS durchführen
 
 |Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
 | --- | --- |
@@ -82,7 +82,7 @@ Wenn Sie die Filteroption oben im Blatt auswählen, können Sie eine Filterung n
 ## <a name="top-50-users-with-failed-usernamepassword-logins"></a>50 Benutzer mit den meisten fehlgeschlagenen Anmeldungen aufgrund eines falschen Benutzernamens/Kennworts
 Einer der häufigsten Gründe für das Fehlschlagen von Authentifizierungsanforderungen bei einem AD FS-Server ist die Verwendung ungültiger Anmeldeinformationen, d. h. eines falschen Benutzernamens oder Kennworts. Dies passiert Benutzern normalerweise aufgrund von komplexen Kennwörtern, vergessenen Kennwörtern oder Schreibfehlern.
 
-Aber es gibt noch weitere Gründe, die zu einer unerwartet hohen Anzahl von derartigen Anforderungen bei Ihren AD FS-Servern führen können, z.B. von einer Anwendung zwischengespeicherte abgelaufene Benutzeranmeldeinformationen oder ein böswilliger Benutzer, der versucht, sich mit einer Reihe von bekannten Kennwörtern bei einem Konto anzumelden. Diese beiden Beispiele sind plausible Gründe für einen Anstieg der Anforderungsanzahl.
+Es gibt jedoch weitere Gründe, die zu einer unerwartet hohen Anzahl von Anforderungen bei Ihren AD FS-Servern führen können, etwa von einer Anwendung zwischengespeicherte abgelaufene Benutzeranmeldeinformationen oder ein böswilliger Benutzer, der versucht, sich mit einer Reihe von bekannten Kennwörtern bei einem Konto anzumelden. Diese beiden Beispiele sind plausible Gründe für einen Anstieg der Anforderungsanzahl.
 
 Azure AD Connect Health für AD FS bietet einen Bericht über die 50 Benutzer, bei denen Anmeldeversuche am häufigsten aufgrund ungültiger Benutzernamen oder Kennwörter fehlschlagen. Zur Erstellung dieses Berichts werden die von allen AD FS-Servern in den Farmen generierten Überwachungsereignisse verarbeitet.
 
@@ -132,7 +132,7 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 > 
 
 ### <a name="what-is-in-the-report"></a>Inhalt des Berichts
-Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Folgende Informationen werden angegeben: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
+Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Er enthält die folgenden Informationen: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
 
 | Berichtselement | BESCHREIBUNG |
 | ------- | ----------- |
