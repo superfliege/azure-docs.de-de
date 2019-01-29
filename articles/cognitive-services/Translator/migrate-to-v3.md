@@ -47,7 +47,7 @@ Die folgende Liste der V2- und V3-Methoden enthält die V3-Methoden und -APIs, d
 | GetLanguagesForTranslate     | [Sprachen](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | Speak     | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Erkennen     | [Detect](reference/v3-0-detect.md)         |
+| Detect     | [Detect](reference/v3-0-detect.md)         |
 | DetectArray     | [Detect](reference/v3-0-detect.md)         |
 | AddTranslation     | [Microsoft Translator Hub-API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
 | AddTranslationArray    | [Microsoft Translator Hub-API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
@@ -75,12 +75,12 @@ Microsoft Translator V3 wird genau wie V2 berechnet: pro Zeichen, einschließlic
 
 | V3-Methode   | Abgerechnete Zeichen |
 |:----------- |:-------------|
-| Sprachen     | Wenn keine Zeichen übermittelt werden, werden keine Zeichen gezählt und abgerechnet.          |
+| Languages     | Wenn keine Zeichen übermittelt werden, werden keine Zeichen gezählt und abgerechnet.          |
 | Translate     | Der Betrag hängt davon ab, wie viele Zeichen für die Übersetzung übermittelt werden und in wie viele Sprachen diese übersetzt werden. Wenn 50 Zeichen in 5 Sprachen übersetzt werden, werden 50×5 Zeichen berechnet.           |
 | Transliterate     | Die Anzahl der Zeichen, die für die Transkription übermittelt werden, wird berechnet.         |
-| Dictionary/lookup und Dictionary/example     | Die Anzahl der Zeichen, die für die Wörterbuchsuche und Beispiele übermittelt werden, wird berechnet.         |
+| Dictionary lookup & example     | Die Anzahl der Zeichen, die für die Wörterbuchsuche und Beispiele übermittelt werden, wird berechnet.         |
 | BreakSentence     | Kostenlos.       |
-| Erkennen     | Kostenlos.      |
+| Detect     | Kostenlos.      |
 
 ## <a name="v3-end-points"></a>V3-Endpunkte
 
