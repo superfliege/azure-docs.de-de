@@ -118,7 +118,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Profile | JA | JA |
+| profiles | JA | JA |
 | profiles/endpoints | JA | JA |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -195,12 +195,12 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Anwendungen | JA | JA |
+| applications | JA | JA |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Connectors | JA | JA |
+| connectors | JA | JA |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -370,7 +370,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Tresore | JA | JA |
+| vaults | JA | JA |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -396,7 +396,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
 | integrationaccounts | JA | JA |
-| Workflows | JA | JA |
+| workflows | JA | JA |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -514,7 +514,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 | ------------- | -------------- | ------------ |
 | managementconfigurations | JA | JA |
 | solutions | JA | JA |
-| Sichten | JA | JA |
+| views | JA | JA |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -534,7 +534,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Tresore | JA | JA |
+| vaults | JA | JA |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -544,7 +544,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Anwendungen | JA | Nein  |
+| applications | JA | Nein  |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -570,7 +570,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Anwendungen | JA | JA |
+| applications | JA | JA |
 | networks | JA | JA |
 | volumes | JA | JA |
 
@@ -590,7 +590,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 | appliancedefinitions | Nein  | Nein  |
 | appliances | Nein  | Nein  |
 | applicationdefinitions | Nein  | Nein  |
-| Anwendungen | Nein  | Nein  |
+| applications | Nein  | Nein  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -632,7 +632,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| Konto | JA | JA |
+| account | JA | JA |
 | account/extension | JA | JA |
 | account/project | JA | JA |
 
