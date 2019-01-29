@@ -64,7 +64,7 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
      ![Hinzufügen einer Aktion](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
-   Wählen Sie das Pluszeichen, und wählen Sie dann Aktion hinzufügen aus.
+   Wählen Sie das Pluszeichen, und wählen Sie dann **Aktion hinzufügen** aus.
 
 3. Geben Sie im Suchfeld den Begriff „Variablen“ als Filter ein. Wählen Sie in der Liste die Aktion **Variablen – Variable initialisieren** aus.
 
@@ -72,7 +72,7 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
 4. Geben Sie diese Informationen für Ihre Variable an:
 
-   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | Name | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
    | Type | JA | <*Variablentyp*> | Der Datentyp für die Variable | 
@@ -200,7 +200,7 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
    ![Hinzufügen einer Aktion](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
-   Zum Hinzufügen einer Aktion zwischen vorhandenen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. Wählen Sie das Pluszeichen, und wählen Sie dann Aktion hinzufügen aus.
+   Zum Hinzufügen einer Aktion zwischen vorhandenen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. Wählen Sie das Pluszeichen, und wählen Sie dann **Aktion hinzufügen aus**.
 
 2. Geben Sie im Suchfeld den Begriff „Variable schrittweise erhöhen“ als Filter ein. Wählen Sie in der Liste die Aktion **Variablen – Variable schrittweise erhöhen** aus.
 
@@ -208,7 +208,7 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
 3. Geben Sie diese Informationen zum schrittweisen Erhöhen Ihrer Variable an:
 
-   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | Name | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
    | Value | Nein  | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. | 
@@ -328,7 +328,7 @@ Um eine Variable um einen konstanten Wert zu verringern oder zu *dekrementieren*
 
 Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | Name | JA | <*Variablenname*> | Der Name für die zu verringernde Variable | 
 | Value | Nein  | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. | 
@@ -363,7 +363,7 @@ Der Wert wird benötigt, da für diese Aktion kein Standardwert vorhanden ist.
 
 Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
 | Name | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
 | Value | JA | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
@@ -421,7 +421,7 @@ Bei Variablen, die Strings oder Arrays speichern, können Sie den Wert einer Var
 
 Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
 | Name | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
 | Value | JA | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
