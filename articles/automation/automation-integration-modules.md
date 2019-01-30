@@ -3,18 +3,18 @@ title: Erstellen eines Azure Automation-Integrationsmoduls
 description: Dieses Tutorial führt Sie durch die Erstellung, das Testen und eine Beispielverwendung der Integrationsmodule in Azure Automation.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7b7bd66d90ad01479965c928eb69bfb1dfccce5b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 609a841ed410832739041bbbbf7d33d3a01a4bfc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000208"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436483"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation-Integrationsmodule
 PowerShell ist die grundlegende Technologie hinter Azure Automation. Da Azure Automation auf PowerShell basiert, sind PowerShell-Module für die Erweiterbarkeit von Azure Automation von zentraler Bedeutung. In diesem Artikel beschreiben wir die Verwendung der PowerShell-Module („Integrationsmodule“) durch Azure Automation und erläutern, welche Methoden sich bewährt haben, um eigene PowerShell-Module zu erstellen und sicherzustellen, dass diese als Integrationsmodule in Azure Automation verwendet werden können. 
@@ -107,7 +107,7 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
     a. Es sollte eine Integrationsmodul-Metadatendatei enthalten, die die für die Verbindung mit dem Remotesystem benötigten Informationen enthält, d.h. den Verbindungstyp.  
     b. Jedes Cmdlet im Modul sollte ein Verbindungsobjekt (eine Instanz dieses Verbindungstyps) als Parameter laden können.  
 
-    Cmdlets im Modul können in Azure Automation einfacher verwendet werden, wenn das Übergeben eines Objekts mit den Feldern des Verbindungstyps als Parameter an das Cmdlet zugelassen ist. Im o.g. Runbook-Beispiel wird ein Twilio-Verbindungsobjekt namens „CorpTwilio“ für den Zugriff auf Twilio verwendet, und alle Telefonnummern im Konto werden zurückgegeben.  Sehen Sie, wie es die Felder der Verbindung den Parametern des Cmdlets zuordnet?<br>
+    Cmdlets im Modul können in Azure Automation einfacher verwendet werden, wenn das Übergeben eines Objekts mit den Feldern des Verbindungstyps als Parameter an das Cmdlet zugelassen ist. So müssen Benutzer die Parameter des Verbindungsobjekts nicht bei jedem Aufruf eines Cmdlets den entsprechenden Parametern des Cmdlets zuordnen. Runbook-Beispiel wird ein Twilio-Verbindungsobjekt namens „CorpTwilio“ für den Zugriff auf Twilio verwendet, und alle Telefonnummern im Konto werden zurückgegeben.  Sehen Sie, wie es die Felder der Verbindung den Parametern des Cmdlets zuordnet?<br>
    
     ```powershell
     workflow Get-CorpTwilioPhones
@@ -182,7 +182,7 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
     }
     ```
    <br>
-   Verbindungsobjekte in Runbooks sind Hashtabellen, die ein komplexer Typ sind. Dennoch können diese Hashtabellen problemlos und ohne Umwandlungsausnahme für den Parameter „–Connection“ übergeben werden. Technisch gesehen können einige PowerShell-Typen von der serialisierten Form in die deserialisierte Form umgewandelt und somit in Cmdlets für Parameter, die den nicht deserialisierten Typ akzeptieren, übergeben werden. Dazu zählen auch Hashtabellen. Es ist möglich, dass die vom Autor des Moduls definierten Typen ebenfalls so implementiert werden, dass eine korrekte Deserialisierung möglich ist. Allerdings müssen dabei einige Nachteile berücksichtigt werden. Der Typ benötigt einen Standardkonstruktor, all seine Eigenschaften müssen öffentlich sein, und er muss über einen PSTypeConverter verfügen. Bei bereits definierten Typen, die nicht im Besitz des Modulautors sind, besteht keine Möglichkeit, diese entsprechend anzupassen. Aus diesem Grund wird empfohlen, komplexe Typen für Parameter komplett zu vermeiden. Tipp für die Runbook-Erstellung: Wenn Ihre Cmdlets aus beliebigem Grund Parameter des komplexen Typs benötigen, oder wenn Sie ein Modul von jemand anderem verwenden, das Parameter des komplexen Typs erfordert, kann dies in PowerShell-Workflow-Runbooks und PowerShell-Workflows in der lokalen PowerShell umgangen werden, indem das Cmdlet, das den komplexen Typ erzeugt, sowie das Cmdlet, das den komplexen Typ nutzt, in der gleichen InlineScript-Aktivität eingebettet werden. Da der Inhalt von InlineScript als PowerShell und nicht als PowerShell-Workflow ausgeführt wird, erzeugt das Cmdlet, das den komplexen Typ erstellt, den korrekten Typ und nicht den deserialisierten komplexen Typ.
+   Verbindungsobjekte in Runbooks sind Hashtabellen, die ein komplexer Typ sind. Dennoch können diese Hashtabellen problemlos und ohne Umwandlungsausnahme für den Verbindungsparameter übergeben werden. Technisch gesehen können einige PowerShell-Typen von der serialisierten Form in die deserialisierte Form umgewandelt und somit in Cmdlets für Parameter, die den nicht deserialisierten Typ akzeptieren, übergeben werden. Dazu zählen auch Hashtabellen. Es ist möglich, dass die vom Autor des Moduls definierten Typen ebenfalls so implementiert werden, dass eine korrekte Deserialisierung möglich ist. Allerdings müssen dabei einige Nachteile berücksichtigt werden. Der Typ benötigt einen Standardkonstruktor, all seine Eigenschaften müssen öffentlich sein, und er muss über einen PSTypeConverter verfügen. Bei bereits definierten Typen, die nicht im Besitz des Modulautors sind, besteht keine Möglichkeit, diese entsprechend anzupassen. Aus diesem Grund wird empfohlen, komplexe Typen für Parameter komplett zu vermeiden. Tipp für die Runbook-Erstellung: Wenn Ihre Cmdlets aus irgendeinem Grund Parameter des komplexen Typs benötigen, oder wenn Sie ein Modul von jemand anderem verwenden, das Parameter des komplexen Typs erfordert, kann dies in PowerShell-Workflow-Runbooks und PowerShell-Workflows in der lokalen PowerShell umgangen werden, indem das Cmdlet, das den komplexen Typ erzeugt, sowie das Cmdlet, das den komplexen Typ nutzt, in der gleichen InlineScript-Aktivität eingebettet werden. Da der Inhalt von InlineScript als PowerShell und nicht als PowerShell-Workflow ausgeführt wird, erzeugt das Cmdlet, das den komplexen Typ erstellt, den korrekten Typ und nicht den deserialisierten komplexen Typ.
 1. Legen Sie alle Cmdlets im Modul als statusfrei fest. Der PowerShell-Workflow führt jedes im Workflow aufgerufene Cmdlet in einer anderen Sitzung auf. Das heißt, dass Cmdlets in PowerShell-Workflow-Runbooks nicht funktionieren, wenn sie von einem Sitzungsstatus abhängen, der von anderen Cmdlets im gleichen Modul erstellt/geändert wurde.  Hier sehen Sie ein Beispiel für eine falsche Vorgehensweise:
    
     ```powershell
@@ -201,10 +201,11 @@ Bei Integrationsmodulen handelt es sich zwar im Wesentlichen um PowerShell-Modul
     }
     ```
    <br>
-1. Das Modul sollte vollständig in einem Xcopy-fähigen Paket enthalten sein. Da Azure Automation-Module auf die Automation-Sandboxes verteilt werden, wenn die Ausführung von Runbooks erforderlich ist, müssen sie unabhängig vom Host funktionieren, auf dem sie ausgeführt werden. Das bedeutet, dass es möglich sein muss, das Modulpaket zu komprimieren, zu einem anderen Host mit der gleichen oder einer neueren PowerShell-Version zu verschieben, und es nach dem Import in die PowerShell-Umgebung des anderen Hosts normal auszuführen. Damit dies möglich ist, sollte das Modul weder von anderen Dateien außerhalb des Modulordners (des Ordners, der beim Import in Azure Automation komprimiert wird) noch von eindeutigen Registrierungseinstellungen auf einem Host (wie etwa den durch die Installation eines Produkts festgelegten Einstellungen) abhängen. Wenn diese bewährte Methode nicht eingehalten wird, kann das Modul in Azure Automation nicht verwendet werden.  
+1. Das Modul sollte vollständig in einem Xcopy-fähigen Paket enthalten sein. Da Azure Automation-Module auf die Automation-Sandboxes verteilt werden, wenn die Ausführung von Runbooks erforderlich ist, müssen sie unabhängig vom Host funktionieren, auf dem sie ausgeführt werden. Das bedeutet, dass es möglich sein muss, das Modulpaket zu komprimieren, zu einem anderen Host mit der gleichen oder einer neueren PowerShell-Version zu verschieben und es nach dem Import in die PowerShell-Umgebung des anderen Hosts normal auszuführen. Damit dies möglich ist, sollte das Modul weder von anderen Dateien außerhalb des Modulordners (des Ordners, der beim Import in Azure Automation komprimiert wird) noch von eindeutigen Registrierungseinstellungen auf einem Host (wie etwa den durch die Installation eines Produkts festgelegten Einstellungen) abhängen. Wenn diese bewährte Methode nicht eingehalten wird, kann das Modul in Azure Automation nicht verwendet werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
 * Weitere Informationen zum Erstellen von PowerShell-Modulen finden Sie unter [Writing a Windows PowerShell Module](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)
+
 
