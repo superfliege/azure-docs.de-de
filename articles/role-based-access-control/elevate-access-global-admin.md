@@ -1,6 +1,6 @@
 ---
-title: Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie mit dem Azure-Portal oder der REST-API die Zugriffsrechte für einen globalen Administrator in Azure Active Directory erhöhen.
+title: Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mit dem Azure-Portal oder der REST-API die Zugriffsrechte für einen globalen Administrator zum Verwalten aller Abonnements und Verwaltungsgruppen in Azure Active Directory erhöhen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321664"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437469"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
-Wenn Sie [globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) in Azure Active Directory (Azure AD) sind, möchten Sie unter Umständen folgende Aktionen ausführen:
-
-- Wiedererlangen des Zugriffs auf ein Azure-Abonnement, wenn ein Benutzer keinen Zugriff mehr hat
-- Gewähren des Zugriffs auf ein Azure-Abonnement für einen anderen Benutzer oder Sie selbst
-- Anzeigen aller Azure-Abonnements in einer Organisation
-- Zulassen des Zugriffs auf alle Azure-Abonnements für eine Automation-App (etwa eine App für die Rechnungsstellung oder Überwachung)
-
-In diesem Artikel werden die verschiedenen Möglichkeiten beschrieben, wie Sie Ihre Zugriffsrechte in Azure AD erhöhen können.
+Als globaler Administrator in Azure Active Directory (Azure AD) haben Sie möglicherweise keinen Zugriff auf alle Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis. In diesem Artikel erfahren Sie, wie Sie Ihren Zugriff auf alle Abonnements und Verwaltungsgruppen erhöhen.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="overview"></a>Übersicht
+## <a name="why-would-you-need-to-elevate-your-access"></a>In welchen Fällen müssen Sie Ihren Zugriff erhöhen?
 
-Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch globaler Administrator in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
+Wenn Sie globaler Administrator sind, müssen Sie unter Umständen folgende Aktionen ausführen:
+
+- Wiedererlangen des Zugriffs auf ein Azure-Abonnement oder eine Verwaltungsgruppe, wenn ein Benutzer keinen Zugriff mehr hat
+- Gewähren des Zugriffs auf ein Azure-Abonnement oder eine Verwaltungsgruppe für einen anderen Benutzer oder Sie selbst
+- Anzeigen aller Azure-Abonnements oder Verwaltungsgruppen in einer Organisation
+- Zulassen des Zugriffs auf alle Azure-Abonnements oder Verwaltungsgruppen für eine Automation-App (etwa eine App für die Rechnungsstellung oder Überwachung)
+
+## <a name="how-does-elevate-access-work"></a>Wie erhöhe ich den Zugriff?
+
+Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch [globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
 
 Wenn Sie Ihre Zugriffsrechte erhöhen, wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) in Azure für den Stammbereich (`/`) zugewiesen. Auf diese Weise können Sie alle Ressourcen anzeigen und den Zugriff in jeder Abonnement- oder Verwaltungsgruppe im Verzeichnis zuweisen. Die Rollenzuweisung „Benutzerzugriffsadministrator“ kann mit PowerShell entfernt werden.
 
@@ -55,19 +57,29 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
    ![Azure AD-Eigenschaften: Screenshot](./media/elevate-access-global-admin/aad-properties.png)
 
-1. Legen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** den Schalter auf **Ja** fest.
+1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja**.
 
    ![Zugriffsverwaltung für Azure-Ressourcen – Screenshot](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Wenn Sie den Schalter auf **Ja** festlegen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Dieser Schalter ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
+   Wenn Sie **Ja** wählen, wird Ihnen in Azure RBAC im Stammbereich (/) die Rolle „Benutzerzugriffsadministrator“ zugewiesen. Dadurch erhalten Sie die Berechtigung, Rollen in allen Azure-Abonnements und Verwaltungsgruppen zuzuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Diese Option ist nur für Benutzer verfügbar, denen in Azure AD die Rolle des globalen Administrators zugewiesen wurde.
 
-   Wenn Sie den Schalter auf **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
+   Wenn Sie **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
 1. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
-   Diese Einstellung ist keine globale Eigenschaft und gilt nur für den aktuell angemeldeten Benutzer.
+   Diese Einstellung ist keine globale Eigenschaft und gilt nur für den aktuell angemeldeten Benutzer. Sie können den Zugriff nicht für alle Mitglieder der globalen Administratorrolle erhöhen.
 
-1. Führen Sie die Aufgaben aus, die Sie mit erhöhten Zugriffsrechten vornehmen müssen. Wenn Sie fertig sind, legen Sie wieder **Nein** fest.
+1. Melden Sie sich ab und wieder an, um den Zugriff zu aktualisieren.
+
+    Sie sollten jetzt auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zugreifen können. Sie werden feststellen, dass Ihnen die Rolle „Benutzerzugriffsadministrator“ im Stammbereich zugewiesen wurden.
+
+   ![Screenshot: Zuweisen von Abonnementrollen im Stammbereich](./media/elevate-access-global-admin/iam-root.png)
+
+1. Führen Sie die erforderlichen Änderungen für erhöhte Zugriffsrechte durch.
+
+    Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md). Wenn Sie Azure AD Privileged Identity Management (PIM) verwenden, lesen Sie [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) oder [Zuweisen von Azure-Ressourcenrollen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+
+1. Wenn Sie fertig sind, ändern Sie die Option **Zugriffsverwaltung für Azure-Ressourcen** wieder in **Nein**. Da es sich um eine benutzerspezifische Einstellung handelt, müssen Sie als der Benutzer angemeldet sein, der den Zugriff erhöht hat.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -89,16 +101,22 @@ RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
 ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
+CanDelegate        : False
 ```
 
 ### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Entfernen einer Rollenzuweisung im Stammbereich (/)
 
-Verwenden Sie den Befehl [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) zu entfernen.
+Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) zu entfernen.
 
-```azurepowershell
-Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
-  -RoleDefinitionName "User Access Administrator" -Scope "/"
-```
+1. Melden Sie sich als Benutzer an, der erhöhte Zugriffsrechte entfernen kann. Hierbei kann es sich um den Benutzer, der den Zugriff erhöht hat, oder einen anderen globalen Administrator, der über erhöhte Zugriffsrechte im Stammbereich verfügt, handeln.
+
+
+1. Verwenden Sie den Befehl [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
+
+    ```azurepowershell
+    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+      -RoleDefinitionName "User Access Administrator" -Scope "/"
+    ```
 
 ## <a name="rest-api"></a>REST-API
 
