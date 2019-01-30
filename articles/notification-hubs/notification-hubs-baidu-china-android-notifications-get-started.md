@@ -3,8 +3,8 @@ title: Erste Schritte mit Azure Notification Hubs mit Baidu | Microsoft Docs
 description: In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs mit Baidu Pushbenachrichtigungen an Android-Geräte senden.
 services: notification-hubs
 documentationcenter: android
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
@@ -12,67 +12,69 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 3ff0d0db554fe514fdd6be6383b6d1a19f1c39ec
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246768"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451458"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Erste Schritte mit Notification Hubs mit Baidu
+
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Baidu Cloud Push ist ein chinesischer Clouddienst, mit dem Sie Pushbenachrichtigungen an mobile Geräte senden können. 
+Baidu Cloud Push ist ein chinesischer Clouddienst, mit dem Sie Pushbenachrichtigungen an mobile Geräte senden können.
 
 Da Google Play und FCM (Firebase Cloud Messaging) in China nicht verfügbar sind, müssen andere App-Stores und Pushdienste verwendet werden. Baidu ist einer davon. Er wird momentan von Notification Hub verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für dieses Tutorial ist Folgendes erforderlich:
 
-* Android SDK (wir gehen davon aus, dass Sie Android Studio verwenden), das Sie von der <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android-Website</a> herunterladen können
+* Android SDK (wir gehen davon aus, dass Sie Android Studio verwenden), das Sie von der [Android-Website](https://go.microsoft.com/fwlink/?LinkId=389797) herunterladen können
 * [Baidu Push Android SDK]
 
 > [!NOTE]
 > Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
-> 
-> 
 
 ## <a name="create-a-baidu-account"></a>Erstellen eines Baidu-Kontos
+
 Zum Verwenden von Baidu müssen Sie über ein Baidu-Konto verfügen. Wenn Sie bereits ein Konto haben, melden Sie sich beim [Baidu-Portal] an, und fahren Sie mit dem nächsten Schritt fort. Andernfalls finden Sie nachfolgend die entsprechenden Anweisungen zum Erstellen eines Baidu-Kontos.  
 
 1. Wechseln Sie zum [Baidu-Portal], und klicken Sie auf den Link **登录** (**Anmeldung**). Klicken Sie auf **立即注册** (**Jetzt registrieren**), um den Kontoregistrierungsprozess zu starten.
-   
+
     ![Baidu: Registrierung](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
 
 2. Geben Sie die erforderlichen Details (Telefon, E-Mail-Adresse, Kennwort und Überprüfungscode) ein, und klicken Sie auf die Anmeldeschaltfläche „注册“ (**Anmeldung**).
-   
+
     ![Baidu: Registrierungseingabe](./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png)
 
 3. Sie erhalten unter der eingegebenen E-Mail-Adresse eine E-Mail mit einem Link zur Aktivierung Ihres Baidu-Kontos.
-   
+
     ![Baidu: Registrierungsbestätigung](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
 
 4. Melden Sie sich bei Ihrem E-Mail-Konto an, öffnen Sie die Baidu-Aktivierungsmail, und klicken Sie auf den Aktivierungslink, um Ihr Baidu-Konto zu aktivieren.
-   
+
     ![Baidu: Aktivierungs-E-Mail](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
 
 Nachdem Sie Ihr Baidu-Konto aktiviert haben, melden Sie sich beim [Baidu-Portal]an.
 
 ## <a name="create-a-baidu-cloud-push-project"></a>Erstellen eines Baidu-Cloud-Push-Projekts
+
 Wenn Sie ein Baidu-Cloud-Push-Projekt erstellen, erhalten Sie Ihre App-ID, einen API-Schlüssel und einen geheimen Schlüssel.
 
 1. Sobald Sie sich im [Baidu-Portal] angemeldet haben, klicken Sie auf **更多>>** (**Mehr**).
-   
+
     ![Registrierung: Mehr](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
 2. Scrollen Sie nach unten zum Abschnitt **站长与开发者服务** (**Webmaster- und Entwicklerdienste**), und klicken Sie auf **百度云推送** (**Baidu Cloud Push**).
-   
+
     ![Baidu Open Cloud-Plattform](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
 
 3. Klicken Sie auf der nächsten Seite in der rechten oberen Ecke auf **登录** (**Anmeldung**).
-   
+
     ![Baidu: Anmeldung](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
 
 4. Klicken Sie anschließend auf dieser Seite auf **创建应用** (**Anwendung erstellen**)
@@ -80,55 +82,54 @@ Wenn Sie ein Baidu-Cloud-Push-Projekt erstellen, erhalten Sie Ihre App-ID, einen
     ![Baidu: Anwendung erstellen](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
 
 5. Klicken Sie auf der nächsten Seite auf „创建新应用“ (**Neue Anwendung erstellen**).
-   
+
     ![Baidu: Neue Anwendung erstellen](./media/notification-hubs-baidu-get-started/BaiduCreateNewApplication.png)
 
 6. Geben Sie einen Anwendungsnamen ein, und klicken Sie auf „创建“ (**Erstellen**).
-   
+
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateApplicationDoCreate.png)
 
 7. Nach erfolgreicher Erstellung eines Baidu Cloud Push-Projekts wird eine Seite mit **App-ID**, **API-Schlüssel** und **Geheimer Schlüssel** angezeigt. Notieren Sie sich den API-Schlüssel und den geheimen Schlüssel für später.
-   
+
     ![Baidu: Pushgeheimnisse](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
 
 8. Konfigurieren Sie für das Projekt Pushbenachrichtigungen, indem Sie im linken Bereich auf „创建通知“ (**Benachrichtigung erstellen**) klicken.
-   
+
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
 
-
 ## <a name="configure-a-new-notification-hub"></a>Konfigurieren eines neuen Notification Hubs
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
+[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 &emsp;&emsp;6. Klicken Sie in Ihrem Notification Hub auf **Notification Services** und anschließend auf **Baidu (Android China)**.
 
-&emsp;&emsp;![Azure Notification Hubs – Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+&emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs – Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
 &emsp;&emsp;7. Scrollen Sie nach unten zum Abschnitt mit den Baidu-Benachrichtigungseinstellungen. Geben Sie den API-Schlüssel und den geheimen Schlüssel aus der Baidu-Konsole in das Baidu Cloud Push-Projekt ein. Klicken Sie anschließend auf „Speichern“.
 
-&emsp;&emsp;![Azure Notification Hubs – Baidu: Geheimnisse](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
+&emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs – Baidu: Geheimnisse](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
 Ihr Notification Hub ist jetzt für die Zusammenarbeit mit Baidu konfiguriert. Außerdem verfügen Sie über die **Verbindungszeichenfolgen**, um Ihre App für das Senden und Empfangen von Pushbenachrichtigungen zu registrieren.
 
 Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `DefaultFullSharedAccessSignature` aus dem Fenster „Verbindungsinformationen aufrufen“.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Verbinden Ihrer App mit dem Notification Hub
+
 1. Erstellen Sie in Android Studio ein neues Android-Projekt („Datei“ > „Neu“ > „Neues Projekt“).
 
     ![Azure Notification Hubs – Baidu: Neues Projekt](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2.  Geben Sie einen Anwendungsnamen ein, und vergewissern Sie sich, dass die erforderliche SDK-Mindestversion auf „API 16: Android 4.1“ festgelegt ist. **Stellen Sie zudem sicher, dass Ihr Paketname (应用包名) derselbe wie im Baidu Cloud Push-Portal ist.**
+2. Geben Sie einen Anwendungsnamen ein, und vergewissern Sie sich, dass die erforderliche SDK-Mindestversion auf „API 16: Android 4.1“ festgelegt ist. **Stellen Sie zudem sicher, dass Ihr Paketname (应用包名) derselbe wie im Baidu Cloud Push-Portal ist.**
 
-    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png)
-    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu: SDK-Mindestversion 2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
-3.  Klicken Sie auf „Weiter“, und befolgen Sie die Anweisungen des Assistenten, bis das Fenster „Aktivität erstellen“ angezeigt wird. Vergewissern Sie sich, dass „Blank Activity“ (Leere Aktivität) ausgewählt ist, und klicken Sie abschließend auf „Fertig stellen“, um eine neue Android-Anwendung zu erstellen.
+3. Klicken Sie auf „Weiter“, und befolgen Sie die Anweisungen des Assistenten, bis das Fenster „Aktivität erstellen“ angezeigt wird. Vergewissern Sie sich, dass „Blank Activity“ (Leere Aktivität) ausgewählt ist, und klicken Sie abschließend auf „Fertig stellen“, um eine neue Android-Anwendung zu erstellen.
 
     ![Azure Notification Hubs – Baidu: Aktivität hinzufügen](./media/notification-hubs-baidu-get-started/AndroidAddActivity.png)
 
-4.  Vergewissern Sie sich, dass das Buildziel des Projekts korrekt festgelegt ist.
+4. Vergewissern Sie sich, dass das Buildziel des Projekts korrekt festgelegt ist.
 
-5.  Fügen Sie anschließend Azure Notification Hubs-Bibliotheken hinzu. Fügen Sie in der Datei `Build.Gradle` für die App im Abschnitt „dependencies“ die folgenden Zeilen hinzu:
+5. Fügen Sie anschließend Azure Notification Hubs-Bibliotheken hinzu. Fügen Sie in der Datei `Build.Gradle` für die App im Abschnitt „dependencies“ die folgenden Zeilen hinzu:
 
     ```javascript
     compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
@@ -145,7 +146,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
     }
     ```
 
-    Zu Vermeidung des Listenkonflikts müssen wir in **Manifest.xml** den folgenden Code hinzufügen:
+    Fügen Sie zu Vermeidung des Listenkonflikts in der Datei `Manifest.xml` des Projekts den folgenden Code hinzu:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -160,15 +161,15 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6.  Laden Sie das [Baidu Push Android SDK] herunter, und entzippen Sie es. Kopieren Sie die Datei `pushservice-x.y.z jar` in den Ordner „libs“. Kopieren Sie anschließend die Dateien mit der Dateinamenerweiterung `.so` in die Ordner vom Typ `src/main/jniLibs` Ihrer Android-Anwendung. (Erstellen Sie hierzu einen neuen Ordner.)
+6. Laden Sie das [Baidu Push Android SDK](http://push.baidu.com/doc/android/api) herunter, und entzippen Sie es. Kopieren Sie die Datei `pushservice-x.y.z jar` in den Ordner „libs“. Kopieren Sie anschließend die Dateien mit der Dateinamenerweiterung `.so` in die Ordner vom Typ `src/main/jniLibs` Ihrer Android-Anwendung. (Erstellen Sie hierzu einen neuen Ordner.)
 
     ![Azure Notification Hubs – Baidu: SDK-Bibliotheken](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. Klicken Sie mit der rechten Maustaste im Ordner „libs“ auf die Datei „pushervice-x.y.z.jar“, und klicken Sie auf „Add as Library“ (Als Bibliothek hinzufügen), um diese Bibliothek in das Projekt einzuschließen.
+7. Klicken Sie im Ordner `libs` des Projekts mit der rechten Maustaste auf die Datei `pushervice-x.y.z.jar`, und wählen Sie **Add as Library** (Als Bibliothek hinzufügen) aus, um die Bibliothek in das Projekt einzuschließen.
 
     ![Azure Notification Hubs – Baidu: Als Bibliothek hinzufügen](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Öffnen Sie die Datei **AndroidManifest.xml** Ihres Android-Projekts, und fügen Sie die Berechtigungen hinzu, die für das Baidu SDK erforderlich sind. **Ersetzen Sie `YOURPACKAGENAME` durch Ihren Paketnamen.**
+8. Öffnen Sie die Datei `AndroidManifest.xml` des Android-Projekts, und fügen Sie die für das Baidu SDK erforderlichen Berechtigungen hinzu. **Ersetzen Sie `YOURPACKAGENAME` durch Ihren Paketnamen.**
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -201,7 +202,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
         android:configChanges="orientation|keyboardHidden"
         android:label="MediaListActivity"
         android:launchMode="singleTask" />
- 
+
     <!-- Push application definition message -->
     <receiver android:name=".MyPushMessageReceiver">
         <intent-filter>
@@ -280,9 +281,9 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
         public static String NotificationHubConnectionString = "...";
     }
     ```
-    
+
     Legen Sie den Wert der `API_KEY`-Zeichenfolge auf den API-Schlüssel aus dem Baidu-Cloudprojekt fest.
-    
+
     Legen Sie den Wert der `NotificationHubName`-Zeichenfolge auf Ihren Notification Hub-Namen aus dem [Azure-Portal] und anschließend `NotificationHubConnectionString` auf `DefaultListenSharedAccessSignature` aus dem [Azure-Portal] fest.
 
 11. Öffnen Sie „MainActivity.java“, und fügen Sie der onCreate-Methode Folgendes hinzu:
@@ -475,35 +476,39 @@ Pushbenachrichtigungen werden normalerweise in einem Back-End-Dienst wie z. B. 
 Der Einfachheit halber wird in diesem Tutorial das Senden einer Benachrichtigung mit dem .NET SDK über eine Konsolen-App gezeigt. Es empfiehlt sich jedoch, als Nächstes das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) zum Senden von Benachrichtigungen über ein ASP.NET-Back-End zu absolvieren. 
 
 Benachrichtigungen können auf unterschiedliche Weise gesendet werden:
-* **REST-Schnittstelle**: Sie können die Benachrichtigung auf allen Back-End-Plattformen unterstützen, indem Sie die [REST-Schnittstelle](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) verwenden.
-* **Microsoft Azure Notification Hubs .NET SDK**: Führen Sie im Nuget-Paket-Manager für Visual Studio die Option [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)aus.
-* **Node.js**: [Verwenden von Notification Hubs mit Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
-* **Mobile Apps**: Ein Beispiel für das Senden von Benachrichtigungen von einem Back-End für Azure Mobile App Service-Apps, das in Notification Hubs integriert ist, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
-* **Java/PHP**: Ein Beispiel zum Senden von Benachrichtigungen über die REST-APIs finden Sie unter „Verwenden von Notification Hubs von Java/PHP“ ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
+
+* **REST-Schnittstelle:**  Sie können die Benachrichtigung auf allen Back-End-Plattformen unterstützen, indem Sie die [REST-Schnittstelle](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) verwenden.
+* **Microsoft Azure Notification Hubs .NET SDK:** Führen Sie im NuGet-Paket-Manager für Visual Studio [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) aus.
+* **Node.js:** [Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
+* **Mobile Apps:** Ein Beispiel für das Senden von Benachrichtigungen von einem Back-End für Azure Mobile App Service-Apps, das in Notification Hubs integriert ist, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
+* **Java/PHP:** Ein Beispiel zum Senden von Benachrichtigungen über die REST-APIs finden Sie unter „Verwenden von Notification Hubs von Java/PHP“ ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(Optional) Senden von Benachrichtigungen aus einer .NET-Konsolenanwendung
+
 In diesem Abschnitt zeigen wir das Senden einer Benachrichtigung über eine .NET-Konsolen-App.
 
 1. Erstellen einer neuen Visual C#-Konsolenanwendung:
-   
+
     ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. Legen Sie im Fenster der Paket-Manager-Konsole als **Standardprojekt** das neue Konsolenanwendungsprojekt fest, und führen Sie dann im Konsolenfenster den folgenden Befehl aus:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
-   
-    Diese Anweisung fügt mithilfe des <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.NotificationHubs-NuGet-Pakets</a> einen Verweis auf das Azure Notification Hubs-SDK hinzu.
-   
+
+    ```shell
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
+
+    Diese Anweisung fügt mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) einen Verweis auf das Azure Notification Hubs-SDK hinzu.
+
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. Öffnen Sie die Datei `Program.cs`, und fügen Sie die folgende using-Anweisung hinzu:
-   
+
     ```csharp
     using Microsoft.Azure.NotificationHubs;
     ```
 
 4. Fügen Sie in Ihrer `Program`-Klasse die folgende Methode hinzu, und ersetzen Sie `DefaultFullSharedAccessSignatureSASConnectionString` und `NotificationHubName` durch Ihre Werte.
-   
+
     ```csharp
     private static async void SendNotificationAsync()
     {
