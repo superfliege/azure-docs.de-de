@@ -78,7 +78,7 @@ Microsoft Translator V3 wird genau wie V2 berechnet: pro Zeichen, einschließlic
 | Languages     | Wenn keine Zeichen übermittelt werden, werden keine Zeichen gezählt und abgerechnet.          |
 | Translate     | Der Betrag hängt davon ab, wie viele Zeichen für die Übersetzung übermittelt werden und in wie viele Sprachen diese übersetzt werden. Wenn 50 Zeichen in 5 Sprachen übersetzt werden, werden 50×5 Zeichen berechnet.           |
 | Transliterate     | Die Anzahl der Zeichen, die für die Transkription übermittelt werden, wird berechnet.         |
-| Dictionary lookup & example     | Die Anzahl der Zeichen, die für die Wörterbuchsuche und Beispiele übermittelt werden, wird berechnet.         |
+| Dictionary lookup &amp; example     | Die Anzahl der Zeichen, die für die Wörterbuchsuche und Beispiele übermittelt werden, wird berechnet.         |
 | BreakSentence     | Kostenlos.       |
 | Detect     | Kostenlos.      |
 
