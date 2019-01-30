@@ -4,7 +4,7 @@ description: In diesem Artikel sind alle Versionen von Azure AD Connect und Azur
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e5d98b1d10051fee6ee5299fcdd8376434109603
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608442"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469762"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -692,7 +692,7 @@ CBool(
     * Gruppe: OnPremisesSamAccountName
     * Gruppe: NetBiosName
     * Gruppe: DnsDomainName
-    * Benutzer: OnPremisesDistinguishedName
+    * User: OnPremisesDistinguishedName
 
 * Das Cmdlet-Skript „ADSyncDomainJoinedComputerSync“ besitzt jetzt den neuen optionalen Parameter „AzureEnvironment“. Der Parameter wird verwendet, um anzugeben, in welcher Region der entsprechende Azure Active Directory-Mandant gehostet wird. Folgende Werte sind gültig:
   * AzureCloud (Standard)
@@ -739,7 +739,7 @@ Azure AD Connect-Synchronisierung
 * Um die OE-Filterung zu konfigurieren, können Sie entweder den Azure AD Connect-Assistenten oder den Synchronization Service Manager verwenden. Wenn Sie vorher die OE-Filterung mithilfe des Azure AD Connect-Assistenten konfiguriert haben, wurden neue erstellte Organisationseinheiten (OEs) zur Verzeichnissynchronisierung im Anschluss eingeschlossen. Wenn neue Organisationseinheiten nicht eingeschlossen werden sollten, musste die OE-Filterung mithilfe des Synchronization Service Manager konfiguriert werden. Nun können Sie dasselbe Verhalten mit dem Azure AD Connect-Assistenten erzielen.
 * Das Problem, dass gespeicherte, von Azure AD Connect erforderliche Verfahren anstelle des dbo-Schemas unter dem Schema des Administrators, der die Installation durchführt, erstellt werden, wurde behoben.
 * Das Problem, dass das von Azure AD zurückgegebene Attribut „TrackingId“ in den AAD Connect-Serverereignisprotokollen ausgelassen wird, wurde behoben. Das Problem tritt auf, wenn Azure AD Connect eine Umleitungsmeldung von Azure AD erhält und keine Verbindung zum bereitgestellten Endpunkt herstellen kann. Das Attribut „TrackingId“ wird von Supporttechnikern zur Korrelation mit serverseitigen Protokollen bei der Problembehandlung verwendet.
-* Wenn von Azure AD der Fehler „LargeObject“ an Azure AD Connect ausgegeben wird, generiert Azure AD Connect ein Ereignis mit der EventID 6941 und der Meldung *„Das bereitgestellte Objekt ist zu groß. Verringern Sie die Anzahl der Attributwerte für dieses Objekt.“*. Gleichzeitig generiert Azure AD Connect auch ein irreführendes Ereignis mit der EventID 6900 und der Meldung *„Microsoft.Online.Coexistence.ProvisionRetryException: Kommunikation mit dem Microsoft Azure Active Directory-Dienst nicht möglich.“* Um Verwirrungen zu vermeiden, generiert Azure AD Connect nicht mehr das letztere Ereignis, wenn die Fehlermeldung „LargeObject“ empfangen wird.
+* Wenn von Azure AD der Fehler „LargeObject“ an Azure AD Connect ausgegeben wird, generiert Azure AD Connect ein Ereignis mit der EventID 6941 und der Meldung *„Das bereitgestellte Objekt ist zu groß. Verringern Sie die Anzahl der Attributwerte für dieses Objekt.“*. Gleichzeitig generiert Azure AD Connect auch ein irreführendes Ereignis mit der Ereignis-ID 6900 und der Meldung *„Microsoft.Online.Coexistence.ProvisionRetryException: Kommunikation mit dem Microsoft Azure Active Directory-Dienst nicht möglich.“* Um Verwirrungen zu vermeiden, generiert Azure AD Connect nicht mehr das letztere Ereignis, wenn die Fehlermeldung „LargeObject“ empfangen wird.
 * Das Problem, dass der Synchronization Service Manager bei dem Versuch, die Konfiguration des generischen LDAP-Connectors zu aktualisieren, nicht mehr reagiert, wurde behoben.
 
 **Neue Features/Verbesserungen:**
@@ -752,7 +752,7 @@ Azure AD Connect-Synchronisierung
   * Das Attribut **preferredDataLocation** wurde zum Metaverse- und AAD-Connectorschema hinzugefügt. Kunden, die beide Attribute in Azure AD aktualisieren möchten, können hierfür benutzerdefinierte Synchronisierungsregeln implementieren. 
   * Das Attribut **userType** wurde zum Metaverse- und AAD-Connectorschema hinzugefügt. Kunden, die beide Attribute in Azure AD aktualisieren möchten, können hierfür benutzerdefinierte Synchronisierungsregeln implementieren.
 
-* Azure AD Connect ermöglicht jetzt automatisch die Verwendung des Attributs „ConsistencyGuid“ als Quellankerattribut für lokale AD-Objekte. Weiterhin füllt Azure AD Connect das Attribut „ConsistencyGuid“ mit dem Wert des Attributs „objectGuid“ auf, wenn es leer ist. Diese Funktion gilt nur für neue Bereitstellungen. Weitere Informationen zu dieser Funktion finden Sie im Abschnitt [Azure AD Connect: Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ in „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) des Artikels.
+* Azure AD Connect ermöglicht jetzt automatisch die Verwendung des Attributs „ConsistencyGuid“ als Quellankerattribut für lokale AD-Objekte. Weiterhin füllt Azure AD Connect das Attribut „ConsistencyGuid“ mit dem Wert des Attributs „objectGuid“ auf, wenn es leer ist. Diese Funktion gilt nur für neue Bereitstellungen. Weitere Informationen zu dieser Funktion finden Sie im Artikelabschnitt [Azure AD Connect: Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
 * Um Probleme in Bezug auf die Kennworthashsynchronisierung zu diagnostizieren, wurde das neue Problembehandlungs-Cmdlet „Invoke-ADSyncDiagnostics“ hinzugefügt. Informationen zur Verwendung des Cmdlets finden Sie im Artikel [Troubleshoot password hash synchronization with Azure AD Connect sync](tshoot-connect-password-hash-synchronization.md) (Problembehandlung: Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung).
 * Azure AD Connect unterstützt nun die Synchronisierung von Objekten von E-Mail-aktivierten öffentlichen Ordnern aus dem lokalen AD mit Azure AD. Die Funktion kann mit dem Azure AD Connect-Assistenten unter „Optionale Funktionen“ aktiviert werden. Weitere Informationen zu diesem Feature finden Sie im Artikel [Office 365 Directory Based Edge Blocking support for on-premises Mail Enabled Public Folders (Unterstützung für verzeichnisbasierte Edge-Blockierung in Office 365 für lokale, E-Mail-aktivierte öffentliche Ordner)](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Azure AD Connect erfordert ein AD DS-Konto, um lokal von AD zu synchronisieren. Zuvor konnten Sie bei der Installation von Azure AD Connect im Express-Modus die Anmeldeinformationen eines Unternehmensadministratorkontos angeben, mit denen Azure AD Connect dann das erforderliche AD DS-Konto erstellt hat. Allerdings mussten Sie für eine benutzerdefinierte Installationen und beim Hinzufügen von Gesamtstrukturen zu einer vorhandenen Bereitstellung stattdessen das AD DS-Konto bereitstellen. Nun haben Sie die Möglichkeit, die Anmeldeinformationen für das Konto eines Unternehmensadministrators auch während einer benutzerdefinierten Installation bereitzustellen und Azure AD Connect die Erstellung des erforderlichen AD DS-Kontos zu überlassen.

@@ -1,5 +1,5 @@
 ---
-title: Analysieren von Kundenabwanderung
+title: Analysieren der Kundenabwanderung
 titleSuffix: Azure Machine Learning Studio
 description: Fallstudie zur Entwicklung eines integrierten Modells für die Analyse und Bewertung der Kundenbindung unter Verwendung von Azure Machine Learning Studio.
 services: machine-learning
@@ -10,14 +10,14 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dbe853172c0f0e49408bd4a2dd630a69659421d3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 153ddcc1ba0da6171963ec91511fafe84023ecf8
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260600"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401966"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Microsoft Azure Machine Learning Studio
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio
 ## <a name="overview"></a>Übersicht
 Dieser Artikel bietet eine Referenzimplementierung eines Projekts zur Analyse der Kundenabwanderung, das in Azure Machine Learning erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
 

@@ -4,7 +4,7 @@ description: Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497732"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470323"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -60,7 +60,7 @@ Beispiel:
 | 4 | 76 | 1 AD FS-Server, 1 AD FS-Proxy und 2 Domänencontroller |
 | 5 | 101 | 1 Azure AD Connect-Server, 1 AD FS-Server, 1 AD FS-Proxy und 2 Domänencontroller |
 
-**F: Unterstützt Azure AD Connect Health die Azure Deutschland Cloud?**
+**F: Unterstützt Azure AD Connect Health die Cloud „Azure Deutschland“?**
 
 Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchronisierungsfehlern](how-to-connect-health-sync.md#object-level-synchronization-error-report) nicht in der Microsoft Cloud Deutschland unterstützt. 
 
@@ -75,14 +75,14 @@ Um die Agent-Konnektivität von Connect Health für Synchronisierung sicherzuste
 
 ## <a name="installation-questions"></a>Fragen zur Installation
 
-**F: Wie wirkt sich die Installation des Azure AD Connect Health-Agents auf die einzelnen Server aus?**
+**F: Wie wirkt sich die Installation des Azure AD Connect Health-Agents auf die einzelnen Server aus?**
 
 Die Installation des Microsoft Azure AD Connect Health-Agents auf AD FS-Servern, Webanwendungs-Proxyservern, Azure AD Connect-(Synchronisierungs-)Servern oder Domänencontrollern wirkt sich nur minimal auf CPU, Arbeitsspeichernutzung, Netzwerkbandbreite und Speicher aus.
 
 Die folgenden Zahlen stellen eine Schätzung dar:
 
 * CPU-Auslastung: ~1–5 % Zunahme
-* Arbeitsspeichernutzung: bis zu 10 % des insgesamt verfügbaren Systemarbeitsspeichers
+* Arbeitsspeichernutzung: Bis zu 10 % des insgesamt verfügbaren Systemarbeitsspeichers
 
 > [!NOTE]
 > Wenn der Agent nicht mit Azure kommunizieren kann, speichert der Agent die Daten bis zu einem definierten Höchstwert lokal. Dabei werden die zwischengespeicherten Daten zuerst überschrieben, deren Verwendung am längsten zurückliegt.
@@ -92,7 +92,7 @@ Die folgenden Zahlen stellen eine Schätzung dar:
 * Lokaler Pufferspeicher für Azure AD Connect Health-Agents: ~20 MB
 * Für AD FS-Server wird empfohlen, 1.024 MB (1 GB) Festplattenspeicher für den AD FS-Überwachungskanal für Azure AD Connect Health-Agents bereitzustellen, um sämtliche Überwachungsdaten zu verarbeiten, bevor sie überschrieben werden.
 
-**F: Muss ich meine Server während der Installation der Azure AD Connect Health-Agents neu starten?**
+**F: Muss ich meine Server während der Installation der Azure AD Connect Health-Agents neu starten?**
 
  Nein. Die Installation der Agents erfordert keinen Serverneustart. Während der Installation einiger vorbereitender Schritte muss der Server jedoch möglicherweise neu gestartet werden.
 
@@ -113,11 +113,11 @@ Wenn Sie während der Agent-Registrierung einen Proxy konfigurieren müssen, mü
 
  Nein. Ein Mechanismus zum Angeben eines frei wählbaren Benutzernamens und Kennworts für die Standardauthentifizierung wird derzeit nicht unterstützt.
 
-**F: Welche Firewallports muss ich öffnen, damit der Azure AD Connect Health-Agent funktioniert?**
+**F: Welche Firewallports muss ich öffnen, damit der Azure AD Connect Health-Agent funktioniert?**
 
 Im Abschnitt [Anforderungen](how-to-connect-health-agent-install.md#requirements) finden Sie die Liste der Firewallports und andere Anforderungen an die Konnektivität.
 
-**F: Warum sehe ich zwei Server mit dem gleichen Namen im Azure AD Connect Health-Portal?**
+**F: Warum werden zwei Server mit dem gleichen Namen im Azure AD Connect Health-Portal angezeigt?**
 
 Wenn Sie einen Agent von einem Server entfernen, wird der Server nicht automatisch aus dem Azure AD Connect Health-Portal entfernt. Wenn Sie manuell einen Agent von einem Server oder den Server selbst entfernt haben, müssen Sie den Servereintrag manuell aus dem Azure AD Connect Health-Portal löschen.
 
@@ -135,26 +135,26 @@ Bei der Registrierung des Health-Agents kann aus folgenden Gründen ein Fehler a
 * Die ausgehende Kommunikation wird durch die Netzwerkebene einer SSL-Überprüfung unterzogen. Dies bewirkt, dass das vom Agent verwendete Zertifikat durch den Überprüfungsserver/die Überprüfungsentität ersetzt wird und nicht die Schritte zum Abschluss der Agent-Registrierung ausführt.
 * Der Benutzer verfügt nicht über die Zugriffsrechte, um die Registrierung des Agents auszuführen. Globale Administratoren haben standardmäßig Zugriff. Sie können den Zugriff mit der [Rollenbasierten Zugriffssteuerung](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) an andere Benutzer delegieren.
 
-**F: Ich erhalte die Warnmeldung: „Die Daten des Integritätsdiensts sind nicht aktuell“. Wie kann ich das Problem beheben?**
+**F: Ich erhalte die Warnmeldung „Die Daten des Integritätsdiensts sind nicht aktuell“. Wie kann ich das Problem beheben?**
 
 Diese Warnung wird von Azure AD Connect Health generiert, wenn er nicht in den letzten zwei Stunden alle Datenpunkte vom Server erhalten hat. [Weitere Informationen](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Fragen zum Betrieb
-**F: Muss ich die Überwachung auf den Webanwendungs-Proxyservern aktivieren?**
+**F: Muss ich die Überwachung auf den Webanwendungsproxy-Servern aktivieren?**
 
 Nein, die Überwachung muss auf den Webanwendungs-Proxyservern nicht aktiviert werden.
 
-**F: Wie werden Azure AD Connect Health-Warnungen aufgelöst?**
+**F: Wie werden Azure AD Connect Health-Warnungen aufgelöst?**
 
 Azure AD Connect Health-Warnungen-Warnungen werden basierend auf einer Erfolgsbedingung aufgelöst. Azure AD Connect Health-Agents erkennen und melden die Erfolgsbedingungen in regelmäßigen Abständen an den Dienst. Bei einigen Warnungen gilt eine zeitbasierte Unterdrückung. Dies bedeutet: Wenn die gleiche Fehlerbedingung nicht innerhalb von 72 Stunden nach Generieren der Warnung erneut festgestellt wird, wird die Warnung automatisch aufgelöst.
 
-**F:Ich habe die Meldung „Fehler der Testauthentifizierungsanforderungen (synthetischen Transaktionen) beim Abrufen eines Tokens“ erhalten. Wie kann ich das Problem beheben?**
+**F: Ich habe die Meldung „Fehler der Testauthentifizierungsanforderungen (synthetischen Transaktionen) beim Abrufen eines Tokens“ erhalten. Wie kann ich das Problem beheben?**
 
 Azure AD Connect Health für Active Directory-Verbunddienste (AD FS) generiert diese Warnung, wenn der auf einem AD FS-Server installierte Integritäts-Agent ein Token im Rahmen einer synthetischen Transaktion nicht abrufen kann, die vom Integritäts-Agent ausgelöst wurde. Der Integritäts-Agent verwendet den Kontext des lokalen Systems und versucht, ein Token für eine sich selbst vertrauende Seite abzurufen. Dies ist ein „catch-all“-Test, mit dem sichergestellt wird, dass AD FS Token ausstellt.
 
 Dieser Test schlägt meistens fehl, weil der Integritäts-Agent den Namen der AD FS-Farm nicht auflösen kann. Dies kann geschehen, wenn die AD FS-Server hinter einem Netzwerk-Load Balancer sind und die Anforderung von einem Knoten initiiert wird, der sich hinter dem Load Balancer befindet (im Gegensatz zu einem regulären Client, der vor einem Load Balancer ist). Dies kann durch Aktualisieren der „Hosts“-Datei unter "C:\Windows\System32\drivers\etc" behoben werden. Nach dem Update muss die IP-Adresse des AD FS-Servers oder einer IP-Loopbackadresse (127.0.0.1) für den AD FS-Farmnamen (z.B. sts.contoso.com) enthalten sein. Das Hinzufügen der Hostdatei verursacht einen Kurzschluss im Netzwerksaufruf, sodass der Integritäts-Agent das Token abrufen darf.
 
-**F: Ich habe eine E-Mail mit der Meldung erhalten, dass meine Computer nicht für die aktuelle Ransomeware-Angriffe gepatcht wurden. Warum habe ich diese E-Mail erhalten?**
+**F: Ich habe eine E-Mail mit dem Hinweis erhalten, dass meine Computer NICHT für die aktuellen Ransomewareangriffe gepatcht wurden. Warum habe ich diese E-Mail erhalten?**
 
 Azure AD Connect Health scannt alle Computer, die es überwacht, und stellt sicher, dass die erforderlichen Patches installiert wurden. Die E-Mail wurde an die Mandantenadministratoren gesendet, wenn auf mindestens einem Computer nicht kritische Patches vorhanden waren. Die folgende Logik wurde verwendet, um diese Entscheidung zu treffen.
 1. Suchen Sie alle auf dem Computer installierten Hotfixes.

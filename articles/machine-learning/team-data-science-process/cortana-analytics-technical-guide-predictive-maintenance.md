@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca29526ab8abbfffcf5e58939acbd1c9b4798a51
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140182"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451722"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage für Predictive Maintenance in der Luft- und Raumfahrt
 
@@ -174,7 +174,7 @@ In den folgenden Schritten wird erklärt, wie Sie die PBIX-Datei mit der SQL-Dat
    * Sobald **Azure SQL-Datenbank** in Ihrem Lösungsvorlagendiagramm grün dargestellt wird, klicken Sie auf diese Option und anschließend auf **Öffnen**.
    * Es wird eine neue Registerkarte im Browser oder ein neues Browserfenster mit der Azure-Portalseite angezeigt. Klicken Sie im linken Bereich auf **Ressourcengruppen** .
    * Wählen Sie das Abonnement aus, das Sie zum Bereitstellen der Lösung verwenden, und wählen Sie dann **IhrLösungsname\_Ressourcengruppe** aus.
-   * Klicken Sie im daraufhin angezeigten Popupbereich auf das Symbol ![SQL-Symbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png), um auf Ihre Datenbank zuzugreifen. Neben diesem Symbol wird der Name Ihrer Datenbank angezeigt (z. B. **pmaintenancedb**), und der **Name des Datenbankservers** wird unter der Eigenschaft „Servername“ aufgelistet. Er sollte etwa wie folgender Name aussehen: **IhrLösungsname.database.windows.net**.
+   * Klicken Sie im daraufhin angezeigten Popupbereich auf das Symbol ![SQL-Symbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png), um auf Ihre Datenbank zuzugreifen. Neben diesem Symbol wird der Name Ihrer Datenbank angezeigt (z.B. **pmaintenancedb**), und der **Name des Datenbankservers** wird unter der Eigenschaft „Servername“ aufgelistet. Er sollte etwa wie folgender Name aussehen: **IhrLösungsname.database.windows.net**.
    * Der **Benutzername** und das **Kennwort** für Ihre Datenbank sind identisch mit dem Benutzernamen und dem Kennwort, die Sie sich zuvor bei der Bereitstellung der Lösung notiert haben.
 2. Aktualisieren Sie die Datenquelle der Berichtsdatei für kalte Daten mit Power BI Desktop.
    

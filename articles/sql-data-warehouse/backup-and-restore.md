@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e060075fbcf6a5083e51b753e119cb5471129a79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308472"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465172"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Momentaufnahmen, um Ihr Data Warehouse mithilfe eines vorherigen Wiederherstellungspunkts in der primären Region wiederherzustellen oder zu kopieren. Mithilfe von georedundanten Data Warehouse-Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
@@ -86,7 +86,7 @@ Jede Momentaufnahme erstellt einen Wiederherstellungspunkt, der den Zeitpunkt zu
 
 Sie können entweder das wiederhergestellte Data Warehouse und das aktuelle beibehalten oder eines davon löschen. Wenn Sie die aktuelle Data Warehouse-Instanz durch die wiederhergestellte Data Warehouse-Instanz ersetzen möchten, können Sie sie über [ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) mit der Option MODIFY NAME umbenennen. 
 
-Informationen zur Wiederherstellung einer Data Warehouse-Instanz finden Sie unter [Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)](sql-data-warehouse-restore-database-portal.md), [Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)](sql-data-warehouse-restore-database-powershell.md) oder [Wiederherstellen einer Azure SQL Data Warehouse-Instanz (REST-API)](sql-data-warehouse-restore-database-rest-api.md).
+Informationen zur Wiederherstellung einer Data Warehouse-Instanz finden Sie unter [Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)](sql-data-warehouse-restore-database-portal.md), [Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)](sql-data-warehouse-restore-database-powershell.md) oder [Wiederherstellen einer Azure SQL Data Warehouse-Instanz mit REST-APIs](sql-data-warehouse-restore-database-rest-api.md).
 
 Zum Wiederherstellen einer gelöschten oder angehaltenen Data Warehouse-Instanz können Sie [ein Supportticket erstellen](sql-data-warehouse-get-started-create-support-ticket.md). 
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c2bca45a7927689992cf44fb70199e246641760
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635526"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445421"
 ---
 # <a name="understand-the-device-model-schema"></a>Grundlegendes zum Gerätemodellschema
 
@@ -22,7 +22,7 @@ Sie können simulierte Geräte in der Remoteüberwachungslösung verwenden, um i
 Dieser Artikel beschreibt das Gerätemodellschema, das die Funktionen und das Verhalten eines simulierten Geräts bestimmt. Das Gerätemodell ist in einer JSON-Datei gespeichert.
 
 > [!NOTE]
-> Dieses Gerätemodellschema gilt nur für simulierte Geräte, die im Gerätesimulationsdienst gehostet werden. Wenn Sie ein physisches Gerät erstellen möchten, lesen Sie [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)](iot-accelerators-connecting-devices.md).
+> Dieses Gerätemodellschema gilt nur für simulierte Geräte, die im Gerätesimulationsdienst gehostet werden. Wenn Sie ein echtes Gerät erstellen möchten, finden Sie weitere Informationen unter [Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für Remoteüberwachung](iot-accelerators-connecting-devices.md).
 
 Die folgenden Artikel beziehen sich auf den aktuellen Artikel:
 

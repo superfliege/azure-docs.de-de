@@ -1,23 +1,18 @@
 ---
-title: Integrieren von Azure DNS in Ihre Azure-Ressourcen | Microsoft-Dokumentation
+title: Integrieren von Azure DNS in Azure-Ressourcen
 description: Erfahren Sie, wie Sie mit Azure DNS für Ihre Azure-Ressourcen DNS bereitstellen.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 1/19/2018
+ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727147"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401417"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
@@ -33,7 +28,7 @@ Sie können eine Vanity oder eine benutzerdefinierte Domäne für [Azure-Funktio
 
 Um eine benutzerdefinierte Domäne für Azure-Funktionen-Apps zu konfigurieren, wird ein CNAME-Datensatz sowie die Konfiguration für die Funktionen-App selbst erstellt.
  
-Navigieren Sie zu **Andere** > **Funktionen-App**, und wählen Sie Ihre Funktionen-App aus. Klicken Sie auf **Plattformfeatures** und unter **NETZWERK** auf **Benutzerdefinierte Domänen**.
+Navigieren Sie zu **Funktionen-App**, und wählen Sie Ihre Funktionen-App aus. Klicken Sie auf **Plattformfeatures** und unter **Netzwerk** auf **Benutzerdefinierte Domänen**.
 
 ![Blatt „Funktionen-App“](./media/dns-custom-domain/functionapp.png)
 
@@ -51,9 +46,9 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | adatumfunction.azurewebsites.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für die Funktionen-App bereitgestellte DNS-Name „adatumfunction.azurewebsites.net“.        |
 
-Navigieren Sie wieder zu Ihrer Funktionen-App, klicken Sie auf **Plattformfeatures**, und klicken Sie unter **NETZWERK** auf **Benutzerdefinierte Domänen**. Klicken Sie anschließend unter **Hostnamen** auf **+ Hostnamen hinzufügen**.
+Navigieren Sie wieder zu Ihrer Funktionen-App, klicken Sie auf **Plattformfeatures**, und klicken Sie unter **Netzwerk** auf **Benutzerdefinierte Domänen**. Klicken Sie anschließend unter **Benutzerdefinierte Hostnamen** auf **+ Hostnamen hinzufügen**.
 
-Geben Sie auf dem Blatt **Hostnamen hinzufügen** den CNAME-Datensatz in das Textfeld **Hostname** ein, und klicken Sie auf **Überprüfen**. Wenn der Datensatz gefunden werden konnte, wird die Schaltfläche **Hostnamen hinzufügen** angezeigt. Klicken Sie auf **Hostnamen hinzufügen**, um den Alias hinzuzufügen.
+Geben Sie auf dem Blatt **Hostnamen hinzufügen** den CNAME-Datensatz in das Textfeld **Hostname** ein, und klicken Sie auf **Überprüfen**. Wenn der Datensatz gefunden wird, wird die Schaltfläche **Hostnamen hinzufügen** angezeigt. Klicken Sie auf **Hostnamen hinzufügen**, um den Alias hinzuzufügen.
 
 ![Blatt „Hostnamen hinzufügen“ von Funktionen-Apps](./media/dns-custom-domain/functionaddhostname.png)
 
@@ -86,7 +81,7 @@ Nachdem der A-Datensatz erstellt wurde, führen Sie `nslookup` aus, um den Daten
 
 Die folgenden Schritte führen Sie durch die Konfiguration einer benutzerdefinierten Domäne für eine App Service-Web-App.
 
-Navigieren Sie zu **Web und mobil** > **App Service**, und wählen Sie die Ressource aus, für die Sie einen benutzerdefinierten Domänennamen konfigurieren. Klicken Sie dann auf **Benutzerdefinierte Domänen**.
+Navigieren Sie zu **App Service**, und wählen Sie die Ressource aus, für die Sie einen benutzerdefinierten Domänennamen konfigurieren. Klicken Sie dann auf **Benutzerdefinierte Domänen**.
 
 Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Diese Adresse wird als Alias für den erstellten DNS-Datensatz verwendet.
 
@@ -149,7 +144,7 @@ Weitere Informationen zum Zuordnen einer benutzerdefinierten Domäne zu einem Bl
 
 Die folgenden Schritte führen Sie durch die Konfiguration eines CNAME-Datensatzes für einen CDN-Endpunkt mit der cdnverify-Methode. Durch diese Methode wird sichergestellt, dass keine Ausfallzeiten auftreten.
 
-Navigieren Sie zu **Netzwerk** > **CDN-Profil**, wählen Sie Ihr CDN-Profil aus, und klicken Sie unter **Allgemein** auf **Endpunkte**.
+Navigieren Sie zu **Netzwerk** > **CDN-Profile**, und wählen Sie Ihr CDN-Profil aus.
 
 Wählen Sie den Endpunkt aus, mit dem Sie arbeiten, und klicken Sie auf **+ Benutzerdefinierte Domäne**. Beachten Sie den **Endpunkthostnamen**, da dieser Wert der Datensatz ist, auf den der CNAME-Datensatz zeigt.
 

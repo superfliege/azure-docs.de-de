@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 8429618a945ec70c52b925887790aa469e23ef89
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cb3af5dc8368dc7e598bd0b05653b8ae921a5097
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730063"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452308"
 ---
 # <a name="rewrite-http-headers-in-an-existing-application-gateway"></a>Erneutes Generieren von HTTP-Headern in einem vorhandenen Application Gateway
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie Azure PowerShell lokal ausführen. Sie müssen Version 1.0.0 oder höher des Az-Moduls installiert haben. Führen Sie `Import-Module Az` und dann `Get-Module Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für dieses Tutorial müssen Sie Azure PowerShell lokal ausführen. Sie müssen Version 1.0.0 oder höher des Az-Moduls installiert haben. Führen Sie `Import-Module Az` und dann `Get-Module Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -46,10 +46,10 @@ Select-AzSubscription -Subscription "<sub name>"
 
 Konfigurieren Sie die neuen Objekte, die benötigt werden, um die HTTP-Header neu zu generieren:
 
-- **RequestHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Anforderungsheaderfelder, die Sie neu generieren möchten, und den Wert zu bestimmen, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
-- **ResponseHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Antwortheaderfelder, die Sie neu generieren möchten, und den Wert zu bestimmen, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
+- **RequestHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Anforderungsheaderfelder zu bestimmen, die Sie neu generieren möchten, sowie den neuen Wert, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
+- **ResponseHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Antwortheaderfelder, die Sie neu generieren möchten, und den neuen Wert zu bestimmen, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
 - **ActionSet:** Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die oben bestimmt wurden. 
-- **RewriteRule:** Dieses Objekt beinhaltet alle*ActionSets*, die oben bestimmt wurden. 
+- **RewriteRule:** Dieses Objekt beinhaltet alle *actionSets*, die oben bestimmt wurden. 
 - **RewriteRuleSet:** Dieses Objekt beinhaltet alle *RewriteRules* und muss an die Routingregel einer Anforderung angefügt werden („Basic“ oder „pfadbasiert“).
 
 ```azurepowershell
@@ -63,7 +63,7 @@ $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -
 ## <a name="retrieve-configuration-of-your-existing-application-gateway"></a>Abrufen der Konfiguration Ihres vorhandenen Application Gateway
 
 ```azurepowershell
-$appgw1 = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
+$appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
 ```
 
 ## <a name="retrieve-configuration-of-your-existing-request-routing-rule"></a>Abrufen der Konfiguration Ihrer vorhandenen Routingregel für Anforderungen
@@ -75,9 +75,19 @@ $reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name Rule1 -Applic
 ## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Aktualisieren des Application Gateway mit der Konfiguration zum erneuten Generieren von HTTP-Headern
 
 ```azurepowershell
-$appgw1 = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name rewriteRuleSet1 -RewriteRule $rewriteRuleSet.RewriteRules
-$appgw2 = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule1 -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
-$appgw3 =  Set-AzApplicationGateway -ApplicationGateway $appgw2
+Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name rewriteRuleSet1 -RewriteRule $rewriteRuleSet.RewriteRules
+Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule1 -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
+Set-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+## <a name="delete-a-rewrite-rule"></a>Löschen einer Rewriteregel
+
+```azurepowershell
+$appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
+Remove-AzApplicationGatewayRewriteRuleSet -Name "rewriteRuleSet1" -ApplicationGateway $appgw 
+$requestroutingrule= Get-AzApplicationGatewayRequestRoutingRule -Name "rule1" -ApplicationGateway $appgw
+$requestroutingrule.RewriteRuleSet= $null
+set-AzApplicationGateway -ApplicationGateway $appgw 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

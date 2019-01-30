@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4fc17daf640e95ab028150cec029471a0c7bc565
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6ec59108652fa928dbbc2a3cbb04c51ae0440dde
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062994"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402394"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Regionale Ausfälle sind keine Seltenheit. Deswegen stellt Azure Cosmos DB siche
 
 - Konten mit mehreren Regionen, die mit mehreren Schreibregionen konfiguriert sind, sind sowohl für Schreib- als auch für Lesevorgänge hoch verfügbar. Regionale Failover werden sofort ausgeführt und erfordern keine Änderungen von der Anwendung.
 
-- Konten mit mehreren Regionen mit einer einzelnen Schreibregion: Diese Konten bleiben bei Ausfall einer Schreibregion hochverfügbar für Lesevorgänge. Für Schreibvorgänge müssen Sie jedoch in Ihrem Cosmos-Konto die Option „Automatisches Failover aktivieren“ auswählen, damit ein Failover für die betreffende Region in eine andere zugeordnete Region ausgeführt werden kann. Das Failover erfolgt in der Reihenfolge der von Ihnen angegebenen Priorisierung der Regionen. Schließlich, wenn die betreffende Region wieder online ist, werden die nicht replizierten Daten, die bei Ausfall in der betreffenden Schreibregion waren, über den Konfliktfeed bereitgestellt. Anwendungen können den Konfliktfeed lesen, die Konflikte auf Grundlage anwendungsspezifischer Logik lösen und aktualisierte Daten nach Bedarf in den Cosmos-Container zurückschreiben. Wenn die vom Ausfall betroffene Schreibregion wiederhergestellt ist, steht sie automatisch als Leseregion zur Verfügung. Sie können ein manuelles Failover aufrufen und die betreffende Region als Schreibregion konfigurieren. Sie können mithilfe der [Azure-Befehlszeilenschnittstelle oder des Azure-Portals](how-to-manage-database-account.md#manual-failover) ein manuelles Failover ausführen.  
+- Konten mit mehreren Regionen mit einer einzelnen Schreibregion: Diese Konten bleiben bei Ausfall einer Schreibregion hochverfügbar für Lesevorgänge. Für Schreibvorgänge müssen Sie jedoch in Ihrem Cosmos-Konto die Option „Automatisches Failover aktivieren“ auswählen, damit ein Failover für die betreffende Region in eine andere zugeordnete Region ausgeführt werden kann. Das Failover erfolgt in der Reihenfolge der von Ihnen angegebenen Priorisierung der Regionen. Schließlich, wenn die betreffende Region wieder online ist, werden die nicht replizierten Daten, die bei Ausfall in der betreffenden Schreibregion waren, über den Konfliktfeed bereitgestellt. Anwendungen können den Konfliktfeed lesen, die Konflikte auf Grundlage anwendungsspezifischer Logik lösen und aktualisierte Daten nach Bedarf in den Cosmos-Container zurückschreiben. Wenn die vom Ausfall betroffene Schreibregion wiederhergestellt ist, steht sie automatisch als Leseregion zur Verfügung. Sie können ein manuelles Failover aufrufen und die betreffende Region als Schreibregion konfigurieren. Sie können mithilfe der [Azure-Befehlszeilenschnittstelle oder des Azure-Portals](how-to-manage-database-account.md#manual-failover) ein manuelles Failover ausführen. Es gibt **keinerlei Daten- oder Verfügbarkeitsverluste** – weder vor oder nach dem manuellen Failover noch währenddessen. Ihre Anwendung ist weiterhin hochverfügbar. 
 
 - Konten mit mehreren Regionen mit einer einzelnen Schreibregion: Diese Konten bleiben bei Ausfall einer Leseregion hochverfügbar für Lese- und Schreibvorgänge. Die betreffende Region wird automatisch von der Schreibregion getrennt und als offline gekennzeichnet. Die Cosmos DB SDKs leiten Leseaufrufe an die nächste verfügbare Region in der Liste der bevorzugten Regionen weiter. Wenn keine der Regionen in der Liste verfügbar ist, wird für die Aufrufe automatisch ein Fallback zur aktuellen Schreibregion durchgeführt. Zur Verarbeitung des Ausfalls einer Leseregion sind keine Änderungen an Ihrem Anwendungscode erforderlich. Wenn die betreffende Region wieder online ist, wird die vom Ausfall betroffene Leseregion automatisch mit der aktuellen Schreibregion synchronisiert. Sie steht dann wieder für die Verarbeitung von Leseanforderungen zur Verfügung. Nachfolgende Lesevorgänge werden an die wiederhergestellte Region weitergeleitet, ohne dass Änderungen an Ihrem Anwendungscode erforderlich sind. Sowohl beim Failover als auch beim erneuten Verknüpfen einer zuvor ausgefallene Region gelten weiterhin die Lesekonsistenzgarantien von Cosmos DB.
 

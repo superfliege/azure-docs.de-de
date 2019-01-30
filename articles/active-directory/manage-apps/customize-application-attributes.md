@@ -4,7 +4,7 @@ description: Erfahren Sie, was Attributzuordnungen für SaaS-Apps in Azure Activ
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c54df9c4a01dbdb7713d03ff81108f28a60ec727
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ead99afaf0399c060424d310d8f4011b2a50aad2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356219"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473723"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktiviert haben, steuert das Azure-Portal deren Attributwerte mithilfe von Attributzuordnungen.
@@ -64,8 +64,8 @@ Zusätzlich zu diesen vier Basistypen unterstützen benutzerdefinierte Attributz
 Im vorherigen Abschnitt wurde bereits die Attributzuordnungstyp-Eigenschaft eingeführt.
 Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die folgenden Attribute:
 
-- **Quellattribut**: Das Benutzerattribut aus dem Quellsystem (beispielsweise Azure Active Directory).
-- **Zielattribut**: Das Benutzerattribut im Zielsystem (beispielsweise ServiceNow).
+- **Quellattribut:** Das Benutzerattribut aus dem Quellsystem (Beispiel: Azure Active Directory).
+- **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
 - **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Dies wird in der Regel mit dem userPrincipalName- oder mail-Attribut in Azure AD festgelegt, das in der Regel einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
 - **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 - **Diese Zuordnung anwenden**

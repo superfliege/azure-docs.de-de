@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788394"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382744"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
 In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers (oder Windows-Clients) mithilfe von Azure Backup und des Resource Manager-Bereitstellungsmodells in Azure sichern.
@@ -48,9 +48,9 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 
 6. Gehen Sie im Abschnitt **Ressourcengruppe** wie folgt vor:
 
-    * Wählen Sie **Neu erstellen** aus, wenn Sie eine neue Ressourcengruppe erstellen möchten.
+    * Klicken Sie auf das Dropdownmenü **Vorhandenes Element auswählen**,  um die Liste der verfügbaren Ressourcengruppen anzuzeigen.
     oder
-    * Wählen Sie **Use existing** (Vorhandene verwenden) aus, und klicken Sie auf das Dropdownmenü, um eine Liste mit verfügbaren Ressourcengruppen anzuzeigen.
+    * Wählen Sie **Neu erstellen** aus, wenn Sie eine neue Ressourcengruppe erstellen möchten.
 
   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -70,21 +70,21 @@ Bei der erstmaligen Erstellung eines Recovery Services-Tresors bestimmen Sie, wi
 
 1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor.
 
-    ![Auswählen des neuen Tresors in der Liste mit Recovery Services-Tresoren](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![Auswählen des neuen Tresors in der Liste mit Recovery Services-Tresoren](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    Wenn Sie den Tresor auswählen, wird das Blatt **Recovery Services-Tresor** schmaler, und das Blatt mit den Einstellungen (*auf dem oben der Name des Tresors angegeben ist*) sowie das Blatt mit den Tresordetails werden geöffnet.
+    Wenn Sie den Tresor auswählen, wird das Blatt „Recovery Services-Tresor“ schmaler, und das Blatt **Übersicht** (*auf dem oben der Name des Tresors angegeben ist*) sowie das Blatt mit den Tresordetails werden geöffnet.
 
-    ![Anzeigen der Speicherkonfiguration für den neuen Tresor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+    ![Anzeigen der Speicherkonfiguration für den neuen Tresor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 
-2. Scrollen Sie auf dem Blatt mit den Einstellungen des neuen Tresors mithilfe des vertikalen Schiebereglers nach unten zum Verwaltungsabschnitt, und klicken Sie auf **Sicherungsinfrastruktur**.
+2. Wählen Sie im neuen Tresor unter dem Abschnitt **Einstellungen** die Option **Eigenschaften** aus.
 
-  Das Blatt der Sicherungsinfrastruktur wird geöffnet.
+  Das Blatt **Eigenschaften** wird geöffnet.
 
-3. Klicken Sie auf dem Blatt der Sicherungsinfrastruktur auf **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen.
+3. Klicken Sie auf dem Blatt **Eigenschaften** unter dem Blatt **Sicherungskonfiguration** auf **Update**. Das Blatt **Sicherungskonfiguration** wird geöffnet.
 
-  ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+  ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. Wählen Sie die passende Speicherreplikationsoption für Ihren Tresor aus.
+4. Wählen Sie die passende Speicherreplikationsoption für Ihren Tresor aus, und klicken Sie auf **Speichern**.
 
   ![Speicherkonfigurationsoptionen](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
@@ -183,7 +183,7 @@ Die Sicherungsrichtlinie besteht aus dem Zeitplan für die Erfassung von Wiederh
 
 ### <a name="to-create-a-backup-schedule"></a>So erstellen Sie einen Sicherungszeitplan
 
-Legen Sie den Sicherungszeitplan auf dem Computer fest, den Sie sichern möchten. Beachten Sie, dass der für die Sicherung festgelegte Zeitraum von der lokalen Computerzeit abweichen kann, da bei Azure Backup die Sommerzeit nicht berücksichtigt wird. 
+Legen Sie den Sicherungszeitplan auf dem Computer fest, den Sie sichern möchten. Beachten Sie, dass der für die Sicherung festgelegte Zeitraum von der lokalen Computerzeit abweichen kann, da bei Azure Backup die Sommerzeit nicht berücksichtigt wird.
 1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
 
     ![Starten des Azure Backup-Agents](./media/backup-configure-vault/snap-in-search.png)

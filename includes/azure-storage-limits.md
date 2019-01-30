@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249631"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54392747"
 ---
 In der folgenden Tabelle werden die für die Azure Storage geltenden Standardgrenzwerte beschrieben. Der Grenzwert für *Eingang* bezieht sich auf alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden. Der Grenzwert für *Ausgang* bezieht sich auf alle Daten (Antworten), die von einem Speicherkonto empfangen werden.
 
@@ -29,7 +29,7 @@ In der folgenden Tabelle werden die für die Azure Storage geltenden Standardgre
 | Max. Ausgang für universelle v1-Speicherkonten (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS, 30 GBit/s für LRS/ZRS <sup>2</sup> |
 | Max. Ausgang für universelle v1-Speicherkonten (Nicht-US-Regionen) | 10 GBit/s bei aktiviertem RA-GRS/GRS, 15 GBit/s für LRS/ZRS <sup>2</sup> |
 
-<sup>1</sup> Azure-Speicherkonten unterstützen höhere Grenzwerte für Eingang und IOPS auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte anzufordern.
+<sup>1</sup> Azure Storage Standard-Konten unterstützen höhere Grenzwerte für Eingang auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte für Eingang anzufordern.
 
 <sup>2</sup> Für die [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy) sind folgende Replikationsoptionen verfügbar:
 * **RA-GRS**: Georedundanter Speicher mit Lesezugriff. Wenn RA-GRS aktiviert ist, sind die Ausgangsziele für den sekundären Standort mit denen für den primären Standort identisch.

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163231"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402301"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "53163231"
 >
 >
 
-In diesem Artikel erfahren Sie, wie Sie Dateisystemvorgänge in Data Lake Storage Gen1 per .NET SDK durchführen. Zu den Dateisystemvorgängen gehören das Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto, das Hochladen von Dateien, das Herunterladen von Dateien usw.
+In diesem Artikel erfahren Sie, wie Sie Dateisystemvorgänge in Data Lake Storage Gen1 mithilfe des .NET SDK durchführen. Zu den Dateisystemvorgängen gehören das Erstellen von Ordnern in einem Data Lake Storage Gen1-Konto, das Hochladen von Dateien, das Herunterladen von Dateien usw.
 
 Eine Anleitung zum Durchführen von Kontoverwaltungsvorgängen in Data Lake Storage Gen1 mit dem .NET SDK finden Sie unter [Erste Schritte mit Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md).
 

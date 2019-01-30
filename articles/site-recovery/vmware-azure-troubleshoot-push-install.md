@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 12/12/2018
-ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/18/2019
+ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789906"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411746"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -141,6 +141,14 @@ In der [Dokumentation zur Unterstützungsmatrix](vmware-physical-azure-support-m
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Start- und Systempartitionen/Volumes sind nicht derselbe Datenträger (Fehler-ID: 95309)
 
 Vor Version 9.20 wurden Start- und Systempartitionen/Volumes auf verschiedenen Datenträgern als Konfiguration nicht unterstützt. Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) wird diese Konfiguration unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
+
+## <a name="boot-disk-not-found-errorid-95310"></a>Startdiskette nicht gefunden (Fehler-ID: 95310)
+
+Eine VM ohne Startdiskette kann nicht geschützt werden. Dadurch wird die reibungslose Wiederherstellung der VM während eines Failovervorgangs sichergestellt. Das Fehlen der Startdiskette führt zu einem Fehler beim Starten des Computers nach dem Failover. Stellen Sie sicher, dass die VM eine Startdiskette enthält, und versuchen Sie es dann noch einmal. Beachten Sie auch, dass die Verwendung mehrerer Startdisketten auf dem gleichen Computer nicht unterstützt wird.
+
+## <a name="multiple-boot-disks-found-errorid-95311"></a>Mehrere Startdisketten gefunden (Fehler-ID: 95311)
+
+Eine VM mit mehreren Startdisketten ist keine [unterstützte Konfiguration](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systempartition auf mehreren Datenträgern (Fehler-ID: 95313)
 

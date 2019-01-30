@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: 3172ba12fbbd0135d1a5a3684145787c83aad040
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7d8c0a837f5618580c5e76e5ca97e19844b95698
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242414"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427167"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -43,7 +43,7 @@ Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss 
 - Ihr Clientgerät benötigt Zugriff auf mindestens eine Zertifizierungsstelle, die Clientzertifikate ausstellt.
 - Ein Clientzertifikat für die Clientauthentifizierung muss für Ihren Client ausgestellt sein.
 
-## <a name="step-1-select-your-device-platform"></a>Schritt 1: Wählen Sie Ihre Geräteplattform
+## <a name="step-1-select-your-device-platform"></a>Schritt 1: Auswählen Ihrer Geräteplattform
 
 Als ersten Schritt müssen Sie für Ihre Geräteplattform Folgendes überprüfen:
 
@@ -55,7 +55,7 @@ Die entsprechenden Informationen sind für die folgenden Geräteplattformen vorh
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Schritt 2: Konfigurieren Sie die Zertifizierungsstellen
+## <a name="step-2-configure-the-certificate-authorities"></a>Schritt 2: Konfigurieren der Zertifizierungsstellen
 
 Laden Sie zum Konfigurieren Ihrer Zertifizierungsstellen in Azure Active Directory für jede Zertifizierungsstelle Folgendes hoch:
 

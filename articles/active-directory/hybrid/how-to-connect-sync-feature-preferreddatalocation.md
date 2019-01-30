@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Ihre Office 365-Benutzerressourcen mit der Az
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1dfc01d0f2f0f5f3eae58fd6c889fee3ad306135
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623026"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470697"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -93,7 +93,7 @@ Um zu vermeiden, dass unbeabsichtigte Änderungen nach Azure AD exportiert werde
 
 ![Screenshot des Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Schritt 2: Hinzufügen des Quellattributs zum lokalen Active Directory Connector-Schema
+## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Schritt 2: Hinzufügen des Quellattributs zum lokalen Active Directory-Connectorschema
 Nicht alle Azure AD-Attribute werden in den lokalen Active Directory Connector-Bereich importiert. Wenn Sie ein Attribut ausgewählt haben, das in der Standardeinstellung nicht synchronisiert wird, müssen Sie es importieren. So fügen Sie das Quellattribut zur Liste der importierten Attribute hinzu:
 
 1. Wählen Sie in Synchronization Service Manager die Registerkarte **Connectors** aus.
@@ -104,7 +104,7 @@ Nicht alle Azure AD-Attribute werden in den lokalen Active Directory Connector-B
 
 ![Screenshot von Synchronization Service Manager und Dialogfeld „Eigenschaften“](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Schritt 3: Hinzufügen von **preferredDataLocation** zum Azure AD Connector-Schema
+## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Schritt 3: Hinzufügen von **preferredDataLocation** zum Azure AD-Connectorschema
 Standardmäßig wird das **preferredDataLocation**-Attribut nicht in den Azure AD Connector-Bereich importiert. So fügen Sie es der Liste der importierten Attribute hinzu:
 
 1. Wählen Sie in Synchronization Service Manager die Registerkarte **Connectors** aus.

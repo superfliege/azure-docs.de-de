@@ -4,7 +4,7 @@ description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungspr
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6476793bc0c7398bb407a8ad2b245f48613717b7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230062"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461551"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -33,7 +33,7 @@ Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können
 
 **Option 1: Verwenden von Managed Browser:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
 
-**Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung verarbeitet jedoch alle veröffentlichten URLs und kann in den meisten gängigen Browsern verwendet werden. 
+**Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung kann aber alle veröffentlichten URLs verarbeiten und in den meisten gängigen Browsern verwendet werden. 
 
 **Option 3: Verwenden der Einstellung für die Linkübersetzung:** Diese Einstellung wird vom Administrator festgelegt und ist für Benutzer nicht sichtbar. Allerdings werden nur URLs in HTML und CSS verarbeitet. Hartcodierte interne URLs, die (beispielsweise) über JavaScript generiert werden, werden nicht ausgeführt.  
 

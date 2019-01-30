@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050794"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435973"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -58,6 +58,16 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
 
 Dieser Fehler tritt auf, wenn der Dienst beim Installieren des Mobilitäts-Agents und seiner Registrierung beim Konfigurationsserver keine Daten aus der Transportverbindung lesen kann. Stellen Sie zur Behebung des Problems sicher, dass TLS 1.0 auf Ihrem Quellcomputer aktiviert ist.
 
+## <a name="vcenter-discovery-failures"></a>vCenter-Ermittlungsfehler
+
+Zum Beheben von vCenter-Ermittlungsfehlern müssen Sie sicherstellen, dass der vCenter-Server den Proxyeinstellungen für die Umgehungsliste hinzugefügt wurde. Gehen Sie dazu wie folgt vor:
+
+- Laden Sie das Tool PsExec [hier](https://aka.ms/PsExec) herunter, um auf Systembenutzerinhalte zuzugreifen.
+- Öffnen Sie Internet Explorer im Systembenutzerinhalt, indem Sie die folgende Befehlszeile ausführen: psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Fügen Sie Proxyeinstellungen in Internet Explorer hinzu, und starten Sie den Dienst „tmanssvc“ neu.
+- Führen Sie zum Konfigurieren der DRA-Proxyeinstellungen „cd C:\Program Files\Microsoft Azure Site Recovery Provider“ aus.
+- Führen Sie anschließend „DRCONFIGURATOR.EXE /configure /AddBypassUrls“ aus [Hinzufügen der IP-Adresse/des FQDN von vCenter Server, die bzw. der im Schritt **Konfigurieren von vCenter Server/des vSphere ESXi-Servers** unter [Bereitstellen eines Konfigurationsservers](vmware-azure-deploy-configuration-server.md#configure-settings) angegeben wurde].
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Ändern der IP-Adresse des Konfigurationsservers
 
 Wir empfehlen dringend, dass Sie die IP-Adresse eines Konfigurationsservers nicht ändern. Stellen Sie sicher, dass alle IP-Adressen, die dem Konfigurationsserver zugewiesen sind, statische IP-Adressen sind. Verwenden Sie keine DHCP-IP-Adressen.
@@ -70,7 +80,7 @@ Um diesen Fehler zu vermeiden, vergewissern Sie sich, dass die Uhrzeit Ihrer Sys
 
 Ein für die Authentifizierung von Site Recovery erforderliches Zertifikat kann nicht erstellt werden. Führen Sie Setup erneut aus, nachdem Sie sichergestellt haben, dass Sie Setup als lokaler Administrator ausführen.
 
-## <a name="register-the-source-machine-with-the-configuration-server"></a>Registrieren des Quellcomputers beim Konfigurationsserver
+## <a name="register-source-machine-with-configuration-server"></a>Registrieren des Quellcomputers beim Konfigurationsserver
 
 ### <a name="if-the-source-machine-runs-windows"></a>Wenn der Quellcomputer Windows ausführt
 

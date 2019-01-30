@@ -1,17 +1,17 @@
 ---
-Titel: Neuronale Net#-Netze titleSuffix: Azure Machine Learning Studio-Beschreibung: Enthält die Syntax für die Net#-Spezifikationssprache für neuronale Netzwerke und Beispiele zum Erstellen eines benutzerdefinierten neuronalen Netzwerkmodells unter Verwendung von Net# mit Azure Machine Learning Studio.
+Titel: Erstellen von benutzerdefinierten neuronalen Netzen mit Net# titleSuffix: Azure Machine Learning Studio-Beschreibung: Syntaxhandbuch zur Spezifikationssprache Net# für neuronale Netze. Erfahren Sie, wie Sie benutzerdefinierte Modelle für neuronale Netze in Azure Machine Learning Studio erstellen.
 Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Referenz
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01.03.2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
 
-Net# ist eine Programmiersprache, die von Microsoft zur Definition von Architekturen mit neuronalen Netzwerken entwickelt wurde. Die Verwendung von Net# zum Definieren der Struktur eines neuronalen Netzwerks macht es möglich, komplexe Strukturen wie Deep Neural Networks oder Konvolutionen beliebiger Dimensionen zu definieren, die bekanntermaßen das Lernen aus Daten wie Bildern, Audio und Video verbessern.
+Net# ist eine von Microsoft entwickelte Sprache, mit der komplexe Architekturen neuronaler Netze wie Deep Neural Networks oder Faltungen beliebiger Dimensionen definiert werden. Sie können komplexe Strukturen verwenden, um das Lernen aus Bild-, Video- oder Audiodaten zu verbessern.
 
 Sie können eine Net#-Architekturspezifikation in den folgenden Kontexten verwenden:
 
 + Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio: [Mehrklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funktionen neuronaler Netzwerke in MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
++ Funktionen neuronaler Netze in Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
 
 
 In diesem Artikel werden die grundlegenden Konzepte und die Syntax beschrieben, die zum Entwickeln eines benutzerdefinierten neuronalen Netzwerks mit Net# benötigt werden: 
@@ -34,9 +34,9 @@ Das Standardbündel ist ein **vollständiges Bündel**, bei dem jeder Knoten in 
 
 Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindungsbündel:
 
-+ **Gefilterte Bündel**. Der Benutzer kann unter Verwendung der Positionen des Quell- und des Zielschichtknotens ein Prädikat definieren. Wenn das Prädikat "True" ist, sind die Knoten verbunden.
++ **Gefilterte Bündel**. Sie können unter Verwendung der Positionen des Quell- und des Zielschichtknotens ein Prädikat definieren. Wenn das Prädikat "True" ist, sind die Knoten verbunden.
 
-+ **Konvolutionsbündel**. Der Benutzer kann kleine Knotenumgebungen in der Quellschicht definieren. Jeder Knoten in der Zielschicht ist mit einer Knotenumgebung in der Quellschicht verbunden.
++ **Konvolutionsbündel**. Sie können kleine Knotenumgebungen in der Quellschicht definieren. Jeder Knoten in der Zielschicht ist mit einer Knotenumgebung in der Quellschicht verbunden.
 
 + **Poolingbündel** und **Antwortnormalisierungsbündel**. Diese ähneln insofern den Konvolutionsbündeln, als der Benutzer kleine Knotenumgebungen in der Quellschicht definiert. Der Unterschied besteht darin, dass die Gewichtungen der Kanten in diesen Paketen nicht trainierbar sind. Stattdessen wird eine vordefinierte Funktion auf die Werte des Quellknotens angewendet, um den Wert des Zielknotens zu ermitteln.
 
@@ -245,7 +245,7 @@ Weitere Informationen zu Poolingschichten finden Sie in den folgenden Artikeln (
 
 ## <a name="response-normalization-bundles"></a>Antwortnormalisierungsbündel
 
-**Antwortnormalisierung** ist ein lokales Normalisierungsschema, das von Geoffrey Hinton, et al, in diesem Dokument [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (ImageNet-Klassifizierung mit umfassenden neuronalen Konvolutionsnetzwerken) eingeführt wurde. 
+**Antwortnormalisierung** ist ein lokales Normalisierungsschema, das von Geoffrey Hinton, et al, in diesem Dokument [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (ImageNet-Klassifizierung mit umfassenden neuronalen Faltungsnetzen) eingeführt wurde. 
 
 Die Antwortnormalisierung unterstützt die Generalisierung in neuronalen Netzwerken. Wenn ein Neuron auf einem sehr hohen Aktivierungsniveau auslöst, unterdrückt eine lokale Antwortnormalisierungsschicht das Aktivierungsniveau der umgebenden Neuronen. Hierfür werden drei Parameter (`α`, `β` und `k`) und eine Konvolutionsstruktur (oder „Nachbarschaftsform“) verwendet. Jedes Neuron in der Zielschicht **y** entspricht einem Neuron **x** in der Quellschicht. Das Aktivierungsniveau **y** wird durch die folgende Formel angegeben, wobei `f` das Aktivierungsniveau eines Neurons und `Nx` der Kernel (bzw. der Satz mit den Neuronen in der Umgebung von **x**) ist. Dies wird durch die folgende Konvolutionsstruktur definiert:  
 

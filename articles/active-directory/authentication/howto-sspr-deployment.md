@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9c728ba4c77cd22782adc9916da62cc309a8150b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622319"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431655"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -41,12 +41,12 @@ Um einen reibungslosen Rollout der Funktion für die Self-Service-Kennwortzurüc
 
 Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisungen der einfachste Weg ist, um Benutzer über die Nutzung von SSPR zu informieren. [Wir haben einfache E-Mails und sonstige Begleitmaterialien erstellt, die Sie beim Rollout als Vorlagen verwenden können](https://www.microsoft.com/download/details.aspx?id=56768):
 
-* **Coming Soon** (In Kürze verfügbar): Diese E-Mail-Vorlage kann in den Wochen bzw. Tagen vor dem Rollout verwendet werden, um Benutzer darüber zu informieren, dass sie in Kürze aktiv werden müssen.
-* **Available Now** (Jetzt verfügbar): Diese E-Mail-Vorlage kann am Tag der Programmeinführung verwendet werden, um Benutzer zum Registrieren und Bestätigen ihrer Authentifizierungsdaten zu bewegen. Wenn Benutzer sich jetzt registrieren, ist SSPR bei Bedarf für sie verfügbar.
-* **Sign up Reminder** (Erinnerung an Registrierung): Diese E-Mail-Vorlage kann einige Tage bzw. Wochen nach der Bereitstellung verwendet werden, um Benutzer an das Registrieren und Bestätigen ihrer Authentifizierungsdaten zu erinnern.
-* **SSPR-Poster**: Poster, die Sie anpassen und in Ihrer Organisation in den Tagen und Wochen vor und nach Ihrem Rollout aufhängen können.
-* **SSPR-Tischkarten**: Tischkarten, die Sie in der Kantine, in Konferenzräumen oder auf Schreibtischen aufstellen können, um Ihre Benutzer zu animieren, die Registrierung abzuschließen.
-* **SSPR-Aufkleber**: Aufklebervorlagen, die Sie anpassen, drucken und auf Laptops, Monitore, Tastaturen oder Mobiltelefone kleben können, um den Zugriff auf SSPR zu beschreiben.
+* **In Kürze verfügbar:** Diese E-Mail-Vorlage kann in den Wochen bzw. Tagen vor dem Rollout verwendet werden, um Benutzer darüber zu informieren, dass sie in Kürze aktiv werden müssen.
+* **Jetzt verfügbar:** Diese E-Mail-Vorlage kann am Tag der Programmeinführung verwendet werden, um Benutzer zum Registrieren und Bestätigen ihrer Authentifizierungsdaten zu bewegen. Wenn Benutzer sich jetzt registrieren, ist SSPR bei Bedarf für sie verfügbar.
+* **Erinnerung an Registrierung:** Diese E-Mail-Vorlage kann einige Tage bzw. Wochen nach der Bereitstellung verwendet werden, um Benutzer an das Registrieren und Bestätigen ihrer Authentifizierungsdaten zu erinnern.
+* **SSPR-Poster:** Poster, die Sie anpassen und in Ihrer Organisation in den Tagen und Wochen vor und nach Ihrem Rollout aufhängen können.
+* **SSPR-Tischkarten:** Tischkarten, die Sie in der Kantine, in Konferenzräumen oder auf Schreibtischen aufstellen können, um Ihre Benutzer zu animieren, die Registrierung abzuschließen.
+* **SSPR-Aufkleber:** Aufklebervorlagen, die Sie anpassen, drucken und auf Laptops, Monitore, Tastaturen oder Mobiltelefone kleben können, um den Zugriff auf SSPR zu beschreiben.
 
 ![SSPR-E-Mail-Beispiele][Email]
 
@@ -81,7 +81,7 @@ Wenn Ihre Organisation entscheidet, die Self-Service-Kennwortzurücksetzung zu d
 
 * [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
-* [Aktivieren der zusammengeführten Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD](concept-registration-mfa-sspr-converged.md)
+* Lesen Sie außerdem, wie Sie die [zusammengeführte Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD aktivieren](concept-registration-mfa-sspr-converged.md).
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)

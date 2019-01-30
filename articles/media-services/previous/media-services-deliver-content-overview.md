@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3e968c71b87f7227dc4bd2e3f4ee486719b65e40
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240136"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388154"
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
 Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden möchten Sie qualitativ hochwertige Videos unter verschiedenen Netzwerkbedingungen an unterschiedliche Geräte senden.
@@ -61,7 +61,7 @@ Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts an
 * OnDemandOrigin-Locator. Diese werden zum Streamen von Medien (z.B. MPEG-DASH, HLS oder Smooth Streaming) und zum progressiven Download von Dateien verwendet.
 * Shared Access Signature-Locators (SAS). Diese werden zum Herunterladen von Mediendateien auf den lokalen Computer verwendet werden.
 
-Anhand einer *Zugriffsrichtlinie* werden die Berechtigungen eines Clients (z.B. Lesen, Schreiben und Auflisten) und die Dauer definiert, für die der Client auf eine bestimmte Ressource zugreifen kann. Beachten Sie, dass die Berechtigung zum Auflisten (AccessPermissions.List) beim Erstellen eines OrDemandOrigin-Locators nicht verwendet werden sollte.
+Anhand einer *Zugriffsrichtlinie* werden die Berechtigungen eines Clients (z.B. Lesen, Schreiben und Auflisten) und die Dauer definiert, für die der Client auf eine bestimmte Ressource zugreifen kann. Beachten Sie, dass die Berechtigung zum Auflisten (AccessPermissions.List) beim Erstellen eines OnDemandOrigin-Locators nicht verwendet werden sollte.
 
 Locator verfügen über ein Ablaufdatum. Im Azure-Portal wird ein Ablaufdatum von 100 Jahren in der Zukunft für Locator festgelegt.
 
@@ -77,7 +77,7 @@ Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzip
 Beim Erstellen eines Locators tritt möglicherweise eine Verzögerung von 30 Sekunden auf, die durch die erforderlichen Speicher- und Weitergabeprozesse in Azure Storage verursacht wird.
 
 ## <a name="adaptive-streaming"></a>Adaptives Streaming
-Bei adaptiven Bitratentechnologien können Videoplayeranwendungen die Netzwerkbedingungen ermitteln und eine Auswahl aus mehreren Bitraten treffen. Wenn die Netzwerkleistung absinkt, kann der Client eine niedrigere Bitrate auswählen, sodass die Wiedergabe des Videos mit einer geringeren Videoqualität fortgesetzt werden kann. Verbessert sich die Netzwerkleistung, kann der Client auf eine höhere Bitrate umschalten und eine verbesserte Videoqualität anbieten. Von Azure Media Services werden die folgenden Technologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
+Bei adaptiven Bitratentechnologien können Videoplayeranwendungen die Netzwerkbedingungen ermitteln und eine Auswahl aus mehreren Bitraten treffen. Wenn die Netzwerkleistung absinkt, kann der Client eine niedrigere Bitrate auswählen, sodass die Wiedergabe des Videos mit einer geringeren Videoqualität fortgesetzt werden kann. Verbessert sich die Netzwerkleistung, kann der Client auf eine höhere Bitrate umschalten und eine verbesserte Videoqualität anbieten. Azure Media Services unterstützt die folgenden Technologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
 
 Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt mit den Inhalten, die Sie streamen möchten. Um diese Inhalte streamen zu können, müssen Sie diesen Pfad jedoch ändern. Zum Erstellen einer vollständigen URL für die Streaming-Manifestdatei müssen Sie den Pfadwert des Locators mit dem Dateinamen des Manifests (dateiname.ism) verketten. Fügen Sie dem Locatorpfad anschließend **/Manifest** und (ggf.) ein geeignetes Format hinzu.
 

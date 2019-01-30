@@ -5,7 +5,7 @@ services: active-directory
 keywords: Enterprise State Roaming-Einstellungen, Windows-Cloud, Häufig gestellte Fragen zu Enterprise State Roaming
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 417b909e4a5272b993a4696c1ef8d6718e055738
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248420"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452937"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
 
@@ -61,7 +61,7 @@ Dieser Abschnitt enthält Vorschläge zum Beheben und Diagnostizieren von Proble
   * Durch Sperren und Entsperren des Bildschirms (Windows-Taste+L) kann eine Synchronisierung ausgelöst werden.
   * Sie müssen auf beiden Computern dasselbe Anmeldekonto für die Synchronisierung verwenden, da das Enterprise State Roaming an das Benutzerkonto und nicht das Computerkonto gebunden ist.
 
-**Mögliches Problem**: Die Steuerelemente sind auf der Seite **Einstellungen** nicht verfügbar, und die Nachricht „Einige Windows-Funktionen sind nur verfügbar, wenn Sie ein Microsoft-Konto oder -Geschäftskonto verwenden“ wird angezeigt. Dieses Problem kann bei Geräten auftreten, die einer Domäne zugeordnet wurden und in Azure AD registriert sind, aber nicht erfolgreich bei Azure AD authentifiziert wurden. Eine mögliche Ursache ist, dass die Geräterichtlinie angewendet werden muss, aber diese Anwendung asynchron erfolgt und sich um einige Stunden verzögert. 
+**Mögliches Problem**: Die Steuerelemente sind auf der Seite **Einstellungen** nicht verfügbar, und die Meldung „Einige Windows-Funktionen sind nur verfügbar, wenn Sie ein Microsoft-Konto oder -Geschäftskonto verwenden“ wird angezeigt. Dieses Problem kann bei Geräten auftreten, die einer Domäne zugeordnet wurden und in Azure AD registriert sind, aber nicht erfolgreich bei Azure AD authentifiziert wurden. Eine mögliche Ursache ist, dass die Geräterichtlinie angewendet werden muss, aber diese Anwendung asynchron erfolgt und sich um einige Stunden verzögert. 
 
 ### <a name="verify-the-device-registration-status"></a>Überprüfen des Geräteregistrierungsstatus
 
@@ -74,13 +74,13 @@ Für Enterprise State Roaming muss das Gerät bei Azure AD registriert sein. Zwa
 **Mögliches Problem**: **WamDefaultSet** und **AzureAdJoined** weisen „NO“ als Wert auf, das Gerät gehört der Domäne an und wurde bei Azure AD registriert, und das Gerät wird nicht synchronisiert. In diesem Fall muss das Gerät möglicherweise warten, bis die Richtlinie angewendet wird, oder die Authentifizierung für das Gerät schlägt beim Verbinden mit Azure AD fehl. Der Benutzer muss möglicherweise einige Stunden warten, bis die Richtlinie angewendet wird. Weitere mögliche Schritte zur Problembehandlung sind, erneut eine automatische Registrierung durch eine Abmeldung und erneute Anmeldung zu versuchen oder die Aufgabe in der Aufgabenplanung zu starten. In einigen Fällen kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart durchgeführt wird und die Registrierung erneut ausgeführt wird.
 
 
-**Mögliches Problem:** Das Feld für **SettingsUrl** ist leer, und das Gerät wird nicht synchronisiert. Möglicherweise hat sich der Benutzer zuletzt am Gerät angemeldet, bevor Enterprise State Roaming im Azure Active Directory-Portal aktiviert wurde. Starten Sie das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Optional kann der IT-Administrator im Portal zu **Azure Active Directory** > **Geräte** > **Enterprise State Roaming** navigieren und die Option **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren** deaktiviert und dann erneut aktivieren. Starten Sie dann das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Wenn dadurch das Problem nicht behoben wird, ist **SettingsUrl** im Fall eines fehlerhaften Gerätezertifikats ggf. leer. In diesem Fall kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart erfolgt und die Registrierung erneut versucht wird.
+**Mögliches Problem**: Das Feld für **SettingsUrl** ist leer, und das Gerät wird nicht synchronisiert. Möglicherweise hat sich der Benutzer zuletzt am Gerät angemeldet, bevor Enterprise State Roaming im Azure Active Directory-Portal aktiviert wurde. Starten Sie das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Optional kann der IT-Administrator im Portal zu **Azure Active Directory** > **Geräte** > **Enterprise State Roaming** navigieren und die Option **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren** deaktiviert und dann erneut aktivieren. Starten Sie dann das Gerät neu, und fordern Sie den Benutzer auf, sich anzumelden. Wenn dadurch das Problem nicht behoben wird, ist **SettingsUrl** im Fall eines fehlerhaften Gerätezertifikats ggf. leer. In diesem Fall kann das Problem behoben werden, indem *dsregcmd.exe /leave* in einem Eingabeaufforderungsfenster mit erhöhten Rechten ausgeführt wird, ein Neustart erfolgt und die Registrierung erneut versucht wird.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming und Multi-Factor Authentication 
 
 In bestimmten Fällen werden Daten von Enterprise State Roaming nicht synchronisiert, wenn die Multi-Factor Authentication (MFA) konfiguriert ist. Weitere Informationen zu diesen Symptomen finden Sie im Supportartikel [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Mögliches Problem**: Wenn Ihr Windows 10-Gerät so konfiguriert ist, dass für die Anmeldung beim Azure Active Directory-Portal die Multi-Factor Authentication erforderlich ist, werden die Einstellungen möglicherweise nicht synchronisiert, wenn Sie sich mit einem Kennwort bei dem Gerät anmelden. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung möglicherweise trotzdem durchführen, indem sie sich mit ihrer Microsoft Passport for Work-PIN bei ihrem Windows 10-Gerät anmelden oder indem sie die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Office 365 zugreifen.
+**Mögliches Problem**: Wenn Ihr Gerät im Azure Active Directory-Portal so konfiguriert ist, dass Multi-Factor Authentication (MFA) erforderlich ist, werden die Einstellungen möglicherweise nicht synchronisiert, wenn Sie sich mit einem Kennwort bei einem Windows 10-Gerät anmelden. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung möglicherweise trotzdem durchführen, indem sie sich mit ihrer Microsoft Passport for Work-PIN bei ihrem Windows 10-Gerät anmelden oder indem sie die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Office 365 zugreifen.
 
 **Mögliches Problem**: Bei der Synchronisierung kann ein Fehler auftreten, wenn der Administrator die Richtlinie für bedingten Zugriff mit Multi-Factor Authentication über die Azure Active Directory-Verbunddienste konfiguriert hat und das Zugriffstoken auf dem Gerät abläuft. Stellen Sie sicher, dass Sie die Microsoft Passport for Work-PIN zum An- und Abmelden verwenden, oder führen Sie die Multi-Factor Authentication durch, während Sie auf andere Azure-Dienste wie Office 365 zugreifen.
 
@@ -166,7 +166,7 @@ Bereinigen Sie im Bereinigungsschritt die folgenden Dateien:
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Ereignis-ID 6065: 80070533: Der Benutzer kann sich nicht anmelden, da das Konto momentan deaktiviert ist  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Ereignis-ID 6065: 80070533. Der Benutzer kann sich nicht anmelden, da das Konto momentan deaktiviert ist  
 
 In der Ereignisanzeige kann dieser Fehler unter den Protokollen „SettingSync/Debug“ vorhanden sein, wenn die Anmeldeinformationen des Benutzers abgelaufen sind. Darüber hinaus kann er auftreten, wenn der Mandant AzureRMS nicht automatisch bereitgestellt hat. 
 
@@ -175,9 +175,9 @@ Veranlassen Sie im ersten Fall, dass der Benutzer seine Anmeldeinformationen akt
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Ereignis-ID 1098: Fehler: 0xCAA5001C: Fehler beim Tokenmaklervorgang  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Ereignis-ID 1098: Fehler 0xCAA5001C. Fehler beim Tokenmaklervorgang  
 
-In der Ereignisanzeige unter „AAD/Betriebsprotokolle“ kann dieser Fehler angezeigt werden (Ereignis 1104: Aufruf des AAD-Cloud-AP-Plug-Ins – Fehler beim Abrufen des Tokens: 0xC000005F). Dieses Problem tritt auf, wenn Berechtigungen oder Besitzattribute fehlen.  
+In der Ereignisanzeige unter „AAD/Betriebsprotokolle“ kann dieser Fehler wie folgt angezeigt werden: Ereignis 1104: Aufruf des AAD-Cloud-AP-Plug-Ins – Fehler beim Abrufen des Tokens: 0xC000005F. Dieses Problem tritt auf, wenn Berechtigungen oder Besitzattribute fehlen.  
 
 **Empfohlene Maßnahme**  
 Führen Sie die Schritte unter [KB3196528](https://support.microsoft.com/kb/3196528) aus.  

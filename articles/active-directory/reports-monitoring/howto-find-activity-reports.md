@@ -4,7 +4,7 @@ description: Erfahren Sie, wo sich die Azure Active Directory-Benutzeraktivität
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fab94088d1d54012a955b0663b078d03b13d6299
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7d55c80b9d6ad76a456744efd624bf7134b8f03b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624911"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810107"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
@@ -112,6 +112,89 @@ Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Ac
 - [Riskante Anmeldungen](concept-risky-sign-ins.md)
 
     ![Sicherheitsberichte](./media/howto-find-activity-reports/04.png "Sicherheitsberichte")
+
+## <a name="troubleshoot-issues-with-activity-reports"></a>Behandeln von Problemen mit Aktivitätsberichten
+
+### <a name="missing-data-in-the-downloaded-activity-logs"></a>Fehlende Daten in den heruntergeladenen Aktivitätsprotokollen
+
+#### <a name="symptoms"></a>Symptome 
+
+Ich habe die Aktivitätsprotokolle (Überwachung oder Anmeldungen) heruntergeladen, und für den ausgewählten Zeitraum werden nicht alle Datensätze angezeigt. Warum? 
+
+ ![Berichterstellung](./media/troubleshoot-missing-data-download/01.png)
+ 
+#### <a name="cause"></a>Ursache
+
+Beim Herunterladen von Aktivitätsprotokollen im Azure-Portal gilt eine Obergrenze von 5.000 Datensätzen, die nach Aktualität sortiert werden. 
+
+#### <a name="resolution"></a>Lösung
+
+Mithilfe von [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) können jederzeit bis zu einer Millionen Datensätze abgerufen werden. Unsere empfohlene Vorgehensweise ist das [Ausführen eines Skripts auf Basis eines Zeitplans](tutorial-signin-logs-download-script.md), der die Berichterstellungs-APIs zum inkrementellen Abrufen von Datensätzen über einen bestimmten Zeitraum (z.B. täglich oder wöchentlich) aufruft. 
+
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Fehlende Überwachungsdaten für die zuletzt durchgeführten Aktionen im Azure-Portal
+
+#### <a name="symptoms"></a>Symptome
+
+Ich habe einige Aktionen im Azure-Portal ausgeführt und erwartet, die Überwachungsprotokolle für diese Aktionen auf dem Blatt `Activity logs > Audit Logs` zu finden. Ich kann sie jedoch nicht finden.
+
+ ![Berichterstellung](./media/troubleshoot-missing-audit-data/01.png)
+ 
+#### <a name="cause"></a>Ursache
+
+Aktionen werden nicht sofort in den Aktivitätsprotokollen angezeigt. In der folgenden Tabelle sind unsere Latenzzahlen für Aktivitätsprotokolle aufgezählt. 
+
+| Bericht | &nbsp; | Wartezeit (P95) | Wartezeit (P99) |
+|--------|--------|---------------|---------------|
+| Verzeichnisüberwachung | &nbsp; | 2 Min. | 5 Min. |
+| Anmeldeaktivität | &nbsp; | 2 Min. | 5 Min. | 
+
+#### <a name="resolution"></a>Lösung
+
+Warten Sie 15 Minuten bis zwei Stunden, und überprüfen Sie dann, ob die Aktionen im Protokoll angezeigt werden. Wenn die Protokolle auch nach zwei Stunden nicht angezeigt werden, [erstellen Sie ein Supportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), und wir nehmen uns der Sache an.
+
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Fehlende Protokolle für die zuletzt durchgeführten Benutzeranmeldungen im Aktivitätsprotokoll zu den Azure AD-Anmeldungen
+
+#### <a name="symptoms"></a>Symptome
+
+Ich habe mich kürzlich beim Azure-Portal angemeldet und erwartet, die Anmeldeprotokolle für diese Aktionen auf dem Blatt `Activity logs > Sign-ins` zu finden. Ich kann sie jedoch nicht finden.
+
+ ![Berichterstellung](./media/troubleshoot-missing-audit-data/02.png)
+ 
+#### <a name="cause"></a>Ursache
+
+Aktionen werden nicht sofort in den Aktivitätsprotokollen angezeigt. In der folgenden Tabelle sind unsere Latenzzahlen für Aktivitätsprotokolle aufgezählt. 
+
+| Bericht | &nbsp; | Wartezeit (P95) | Wartezeit (P99) |
+|--------|--------|---------------|---------------|
+| Verzeichnisüberwachung | &nbsp; | 2 Min. | 5 Min. |
+| Anmeldeaktivität | &nbsp; | 2 Min. | 5 Min. | 
+
+#### <a name="resolution"></a>Lösung
+
+Warten Sie 15 Minuten bis zwei Stunden, und überprüfen Sie dann, ob die Aktionen im Protokoll angezeigt werden. Wenn die Protokolle auch nach zwei Stunden nicht angezeigt werden, [erstellen Sie ein Supportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), und wir nehmen uns der Sache an.
+
+### <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>Ich kann für die Berichtsdaten nicht mehr als 30 Tage im Azure-Portal anzeigen.
+
+#### <a name="symptoms"></a>Symptome
+
+Ich kann nur die Anmelde- und Überwachungsdaten der letzten 30 Tage aus dem Azure-Portal anzeigen. Warum? 
+
+ ![Berichterstellung](./media/troubleshoot-missing-audit-data/03.png)
+
+#### <a name="cause"></a>Ursache
+
+Je nach Lizenz gelten für die Speicherung von Aktivitätsberichten durch Azure Active Directory-Aktionen die folgenden Dauern:
+
+| Bericht           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ----   |  ---           | ---                 | ---                 |
+| Verzeichnisprüfbericht  | &nbsp; |   7 Tage     | 30 Tage             | 30 Tage             |
+| Benutzeranmeldeaktivität | &nbsp; | Nicht verfügbar. Auf dem jeweiligen Benutzerprofilblatt können Sie auf Ihre eigenen Anmeldungen der letzten 7 Tage zugreifen. | 30 Tage | 30 Tage             |
+
+Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md).  
+
+#### <a name="resolution"></a>Lösung
+
+Sie haben zwei Möglichkeiten, um die Daten länger als 30 Tage beibehalten. Mithilfe der [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) können Sie die Daten programmgesteuert abrufen und in einer Datenbank speichern. Alternativ können Sie Überwachungsprotokolle in das SIEM-System eines Drittanbieters wie z.B. Splunk oder SumoLogic integrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

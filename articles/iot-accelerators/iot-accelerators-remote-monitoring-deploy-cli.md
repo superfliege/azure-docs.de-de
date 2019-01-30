@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248009"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463217"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -149,6 +149,6 @@ In dieser Schrittanleitung wurde Folgendes vermittelt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./quickstart-remote-monitoring-deploy.md).
+Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./quickstart-remote-monitoring-deploy.md).
 
 <!-- Next how-to guides in the sequence -->

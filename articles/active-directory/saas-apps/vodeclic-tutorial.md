@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8f53082a2f6a33e934c2e3138d08725ffdf4fa2b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444622"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Tutorial: Azure Active Directory-Integration mit Vodeclic
 
@@ -127,7 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Downloadlink für das Zertifikat](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/vodeclic-tutorial/tutorial_general_400.png)
     
@@ -170,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-vodeclic-test-user"></a>Erstellen eines Vodeclic-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Vodeclic einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Vodeclic-Plattform ggf. vom [Vodeclic-Supportteam](mailto:hotline@vodeclic.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Vodeclic einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Vodeclic-Plattform vom [Vodeclic-Supportteam](mailto:hotline@vodeclic.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 > [!NOTE]
 > Wenn die Anwendung dies erfordert, müssen Sie Ihren Computer der Whitelist hinzufügen. Dazu müssen Sie dem [Vodeclic-Supportteam](mailto:hotline@vodeclic.com) Ihre öffentliche IP-Adresse mitteilen.

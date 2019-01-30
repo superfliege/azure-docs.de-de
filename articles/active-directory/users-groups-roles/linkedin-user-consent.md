@@ -1,6 +1,6 @@
 ---
-title: LinkedIn-Integration der Datenfreigabe in Azure Active Directory | Microsoft-Dokumentation
-description: Erläutert, wie LinkedIn-Kontoverbindungen Daten über Microsoft-Apps in Azure Active Directory teilen.
+title: LinkedIn-Integration der Datenfreigabe und Einwilligung in Azure Active Directory | Microsoft-Dokumentation
+description: Es wird beschrieben, wie bei der LinkedIn-Integration Daten über Microsoft-Apps in Azure Active Directory freigegeben werden.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 25060f41528c59d252adbc854704c6060becd907
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 776c793fb797e9388f0852773315f27cd42dde25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319120"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471717"
 ---
-# <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Benutzereinwilligung und Teilen von Daten über LinkedIn-Kontoverbindungen
+# <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn-Integration: Datenfreigabe und Einwilligung
 
 Als Azure Active Directory-Administrator (Azure AD) können Sie Benutzern in Ihrer Organisation die Einwilligung ermöglichen, ihr Microsoft-Geschäfts-, -Schul- oder -Unikonto mit ihrem LinkedIn-Konto zu verbinden. Wenn Benutzer ihre Konten verbinden, sind die Informationen und Highlights von LinkedIn in einigen Microsoft-Apps und Diensten verfügbar. Benutzer können ebenfalls damit rechnen, dass ihre Netzwerkerfahrung bei LinkedIn verbessert und mit Informationen von Microsoft angereichert wird.
 
@@ -31,13 +31,13 @@ Um LinkedIn-Informationen in Microsoft-Apps und -Diensten anzuzeigen, müssen Be
 
 Zugriff auf LinkedIn-Informationen in Microsoft-Apps und -Diensten erleichtert es Ihren Benutzern, sich zu vernetzen, zu engagieren und professionelle Beziehungen mit Kollegen, Kunden und Partnern innerhalb und außerhalb Ihrer Organisation aufzubauen. Neue Benutzer gewöhnen sich schneller ein, indem sie sich mit Kollegen verbinden, mehr über sie erfahren und einfacher auf weitere Informationen zugreifen können. Hier ist ein Beispiel dafür, wie LinkedIn-Informationen auf der Profilkarte in Microsoft-Apps angezeigt werden:
 
-![Aktivieren von LinkedIn-Kontoverbindungen](./media/linkedin-user-consent/display-example.png)
+![Aktivieren der LinkedIn-Integration](./media/linkedin-user-consent/display-example.png)
 
-## <a name="enable-and-announce-linkedin-account-connections"></a>Aktivieren und Ankündigen von LinkedIn-Kontoverbindungen
+## <a name="enable-and-announce-linkedin-integration"></a>Aktivieren und das Ankündigen der LinkedIn-Integration
 
 Sie müssen Azure Active Directory-Administrator sein, um die Einstellung für Ihre Organisation zu verwalten. Sie können sie für alle Benutzer oder nur für eine bestimmte Gruppe von Benutzern aktivieren.
 
-1. Um die Kontoverbindungsintegration zu aktivieren oder deaktivieren, befolgen Sie die Schritte in [LinkedIn-Kontoverbindungen](linkedin-integration.md).
+1. Führen Sie die Schritte unter [LinkedIn-Integration](linkedin-integration.md) aus, um die Integration zu aktivieren bzw. zu deaktivieren.
 2. Wenn Sie die LinkedIn-Integration in Ihrer Organisation ankündigen, verweisen Sie Ihre Benutzer auf die häufig gestellten Fragen (FAQ) zu [LinkedIn-Informationen in Microsoft-Apps und -Diensten](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Der Artikel enthält Informationen dazu, wo LinkedIn-Informationen angezeigt werden, wie man Konten verbindet und mehr.
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Benutzereinwilligung zum Datenzugriff in Microsoft und LinkedIn

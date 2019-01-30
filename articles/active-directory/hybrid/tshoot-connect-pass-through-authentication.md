@@ -1,11 +1,11 @@
 ---
-title: 'Azure AD Connect: Behandlung von Passthrough-Authentifizierungsproblemen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Behandeln von Passthrough-Authentifizierungsproblemen | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Probleme bei der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) behandelt werden.
 services: active-directory
 keywords: Probleme bei der Passthrough-Authentifizierung mit Azure AD Connect behandeln, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: db3dfc10d6936b063a225e48fd043b6208f10475
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686193"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472771"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -66,7 +66,7 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 | 80002 | Zeitüberschreitung für die Anforderung zur Kennwortüberprüfung des Authentifizierungs-Agents. | Überprüfen Sie, ob Ihr Active Directory über den Authentifizierungs-Agent erreichbar ist.
 | 80003 | Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten. | If the problem is consistently reproducible across multiple users, check your Active Directory configuration. (Wenn das Problem bei mehreren Benutzer genauso reproduziert werden kann, überprüfen Sie die Active Directory-Konfiguration.)
 | 80004 | In der Anmeldeanforderung wurde ein falscher Benutzerprinzipalname (UPN) verwendet. | Ask the user to sign in with the correct username. (Fordern Sie den Benutzer dazu auf, sich mit dem richtigen Benutzernamen anzumelden.)
-| 80005 | Authentifizierungs-Agent: Fehler aufgetreten. | Transient error. (Vorübergehender Fehler.) Versuchen Sie es später erneut.
+| 80005 | Authentifizierungs-Agent: Fehler. | Transient error. (Vorübergehender Fehler.) Versuchen Sie es später erneut.
 | 80007 | Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen. | Überprüfen Sie, ob Ihr Active Directory über den Authentifizierungs-Agent erreichbar ist.
 | 80010 | Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.) 
 | 80011 | Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.)
@@ -95,7 +95,7 @@ Stellen Sie sicher, dass Sie ein ausschließlich für die Cloud geltendes global
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Warnmeldung bei der Deinstallation von Azure AD Connect
 
-Wenn Sie die Passthrough-Authentifizierung für Ihren Mandanten aktiviert haben und Sie versuchen, Azure AD Connect zu deinstallieren, wird folgende Warnmeldung angezeigt: „Users will not be able to sign-in to Azure AD unless you have other Pass-through Authentication agents installed on other servers“ (Benutzern ist es nur gestattet, sich bei Azure AD anzumelden, wenn Sie andere Passthrough-Authentifizierung-Agents auf anderen Servern installiert haben).
+Wenn Sie die Passthrough-Authentifizierung für Ihren Mandanten aktiviert haben und versuchen, Azure AD Connect zu deinstallieren, wird die folgende Warnmeldung angezeigt: „Users will not be able to sign-in to Azure AD unless you have other Pass-through Authentication agents installed on other servers“ (Benutzer können sich nur dann bei Azure AD anmelden, wenn Sie andere Passthrough-Authentifizierungs-Agents auf anderen Servern installiert haben).
 
 Stellen Sie sicher, dass das Setup [hoch verfügbar](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) ist, bevor Sie Azure AD Connect deinstallieren, um eine Unterbrechung von Benutzeranmeldungen zu vermeiden.
 
@@ -137,7 +137,7 @@ Um Benutzeranmeldefehler zu beheben, suchen Sie unter **%ProgramData%\Microsoft\
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-Sie können aussagekräftige Details zum Fehler (im obigen Beispiel „1328“) abrufen, indem Sie die Eingabeaufforderung öffnen und den folgenden Befehl ausführen. Hinweis: Ersetzen Sie 1328 durch die aktuelle Fehlernummer in Ihren Protokollen:
+Sie können erklärende Details zum Fehler (im obigen Beispiel „1328“) abrufen, indem Sie die Eingabeaufforderung öffnen und den folgenden Befehl ausführen (Hinweis: Ersetzen Sie „1328“ durch die tatsächliche Fehlernummer, die in Ihren Protokollen angezeigt wird):
 
 `Net helpmsg 1328`
 

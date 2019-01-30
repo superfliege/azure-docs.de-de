@@ -4,7 +4,7 @@ description: Leitfaden zu den Fehlern beim Anmelden bei einer Anwendung, die fü
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8d910ffcf966e98def33a42a6452baea9f4b3998
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8a21f1ac0839a37455fe06537242edc6e43731a4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356189"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477299"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer Kataloganwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -228,7 +228,7 @@ Sollte Option 1 nicht funktionieren, entfernen Sie die Anwendung aus dem Verzeic
 
 ## <a name="certificate-or-key-not-configured"></a>Zertifikat oder Schlüssel nicht konfiguriert
 
-*Fehler AADSTS50003: kein Signaturschlüssel konfiguriert.*
+*Fehler AADSTS50003: Kein Signaturschlüssel konfiguriert.*
 
 **Mögliche Ursache**
 
@@ -261,6 +261,19 @@ Um das Zertifikat zu löschen und ein neues zu erstellen, führen Sie die folgen
 10. Aktivieren Sie **Neues Zertifikat aktivieren**, um das aktive Zertifikat außer Kraft zu setzen. Klicken Sie oben im Bereich auf **Speichern**, und akzeptieren Sie die Aktivierung des Rolloverzertifikats.
 
 11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Entfernen**, um das **nicht verwendete** Zertifikat zu entfernen.
+
+## <a name="saml-request-not-present-in-the-request"></a>SAML-Anforderung nicht in der Anforderung vorhanden
+
+*Fehler AADSTS750054: „SAMLRequest“ oder „SAMLResponse“ muss als Abfragezeichenfolgenparameter in der HTTP-Anforderung für die SAML-Umleitungsbindung vorhanden sein.*
+
+**Mögliche Ursache**
+
+Azure AD konnte die SAML-Anforderung in den URL-Parametern in der HTTP-Anforderung nicht identifizieren. Dies kann vorkommen, wenn die Anwendung keine HTTP-Umleitungsbindung zum Senden der SAML-Anforderung an Azure AD verwendet.
+
+**Lösung**
+
+Die Anwendung muss die SAML-Anforderung codiert im Adressheader unter Verwendung der HTTP-Umleitungsbindung senden. Weitere Informationen zur Implementierung finden Sie im Abschnitt zur HTTP-Umleitungsbindung in den [SAML-Protokollspezifikationen](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problem beim Anpassen der SAML-Ansprüche, die an eine Anwendung gesendet werden
 

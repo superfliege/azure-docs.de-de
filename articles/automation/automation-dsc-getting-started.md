@@ -3,24 +3,24 @@ title: Erste Schritte mit Azure Automation State Configuration
 description: Erläuterung und Beispiele für die gängigsten Aufgaben in Azure Automation State Configuration (DSC, Desired State Configuration)
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634358"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432444"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
 In diesem Artikel wird erläutert, wie die gängigsten Aufgaben mit Azure Automation State Configuration ausgeführt werden, z.B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation State Configuration finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md). Die DSC-Dokumentation (Desired State Configuration, Konfiguration des gewünschten Zustands) finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview).
 
-Dieser Artikel enthält eine detaillierte Anleitung zur Verwendung von Azure Automation State Configuration. Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die folgende Resource Manager-Vorlage verwenden: [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Mit dieser Vorlage wird eine vollständige Umgebung für Azure Automation State Configuration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von Azure Automation State Configuration verwaltet wird.
+Dieser Artikel enthält eine detaillierte Anleitung zur Verwendung von Azure Automation State Configuration. Wenn Sie eine Beispielumgebung wünschen, die bereits eingerichtet ist, ohne die in diesem Artikel beschriebenen Schritte zu befolgen, können Sie die folgende Resource Manager-Vorlage verwenden: [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Mit dieser Vorlage wird eine vollständige Umgebung für Azure Automation State Configuration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von Azure Automation State Configuration verwaltet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

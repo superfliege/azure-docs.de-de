@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 695d5f1507f766cf0a2ad96d7dcd25f45f98c20e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 56dd13f5c2c0db4af65d8bc5d4ee5c072a161964
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994716"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429633"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnose des Routingproblems einer VM
 
@@ -49,12 +49,12 @@ Die folgenden Schritte setzen voraus, dass Sie über einen virtuellen Computer v
     In dem in der vorherigen Abbildung gezeigten Beispiel sind die aufgelisteten Routen Standardrouten, die Azure für jedes Subnetz erstellt. Ihre Liste verfügt mindestens über diese Routen, aber möglicherweise über zusätzliche Routen, je nach den Funktionen, die Sie für Ihr virtuelles Netzwerk aktiviert haben, z.B. seine Verbindung im Peering mit einem anderen virtuellen Netzwerk oder seine Verbindung mit dem lokalen Netzwerk über ein Azure-VPN-Gateway. Weitere Informationen zu den einzelnen Routen und anderen Routen, die möglicherweise für die Netzwerkschnittstelle angezeigt werden, finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md). Wenn die Liste eine große Anzahl von Routen aufweist, ist es einfacher, wenn Sie **Herunterladen** auswählen, um eine CSV-Datei mit der Liste der Routen herunterzuladen.
 
 Effektive Routen können nicht nur, wie in den vorherigen Schritten, über die VM angezeigt werden, sondern auch folgendermaßen:
-- **Individuelle Netzwerkschnittstelle**: Erfahren Sie, wie [eine Netzwerkschnittstelle angezeigt wird](virtual-network-network-interface.md#view-network-interface-settings).
-- **Individuelle Routingtabelle**: Erfahren Sie, wie [eine Routingtabelle angezeigt wird](manage-route-table.md#view-details-of-a-route-table).
+- **Individuelle Netzwerkschnittstelle:** Erfahren Sie, wie Sie [eine Netzwerkschnittstelle anzeigen](virtual-network-network-interface.md#view-network-interface-settings).
+- **Individuelle Routingtabelle:** Erfahren Sie, wie Sie [eine Routingtabelle anzeigen](manage-route-table.md#view-details-of-a-route-table).
 
 ## <a name="diagnose-using-powershell"></a>Diagnose mit PowerShell
 
-Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie das PowerShell-Modul *AzureRM* Version 6.0.1 oder höher ausführen. Führen Sie `Get-Module -ListAvailable AzureRM` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
+Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie das PowerShell-Modul *AzureRM* Version 6.0.1 oder höher ausführen. Führen Sie `Get-Module -ListAvailable AzureRM` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
 Rufen Sie die effektiven Routen für eine Netzwerkschnittstelle mit [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) auf. Im folgenden Beispiel werden die effektiven Routen für eine Netzwerkschnittstelle mit dem Namen *myVMVMNic* abgerufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet:
 

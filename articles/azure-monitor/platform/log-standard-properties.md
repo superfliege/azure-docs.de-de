@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321890"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381952"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardeigenschaften in Log Analytics-Datensätzen
 Daten in [Log Analytics](../log-query/log-query-overview.md) werden als eine Menge von Datensätzen gespeichert, von denen jeder einen bestimmten Datentyp aufweist, der über eine eindeutige Menge von Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
@@ -92,7 +92,7 @@ Die **\_IsBillable**-Eigenschaft gibt an, ob erfasste Daten gebührenpflichtig s
 Um eine Liste von Computern abzurufen, die kostenpflichtige Datentypen senden, führen Sie die folgende Abfrage aus:
 
 > [!NOTE]
-> Verwenden Sie Abfragen mit `union withsource = tt *` mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind. 
+> Verwenden Sie Abfragen mit `union withsource = tt *` mit Bedacht, da Scans über verschiedene Datentypen kostenintensiv sind. 
 
 ```Kusto
 union withsource = tt * 

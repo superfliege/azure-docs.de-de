@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: ff3aa86fee7fc30cfc18edc3b413a4378df69662
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306971"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402046"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -28,18 +28,17 @@ Video Indexer ist ein KI-Dienst, der Teil von Microsoft Azure Media Services ist
 
 ### <a name="what-can-i-do-with-video-indexer"></a>Welche Möglichkeiten bietet Video Indexer?
 
-Video Indexer kann folgende Vorgänge auf Mediendateien anwenden:
+Einige der Vorgänge, die Video Indexer mit Mediendateien ausführen kann:
 
 * Identifizieren und Extrahieren von Sprache und Identifizieren von Sprechern
 * Identifizieren und Extrahieren von Text auf dem Bildschirm in Videos
-* Identifizieren und Bezeichnen von Objekten in Videodateien
-* Identifizieren von Marken, wie etwa Microsoft, in Audiospuren und Text auf dem Bildschirm in Videos
+* Erkennen von Objekten in Videodateien
+* Identifizieren von Marken (z.B. Microsoft) in Audiospuren und Text auf dem Bildschirm in Videos
 * Erfassen und Erkennen von Gesichtern aus einer Prominentendatenbank und einer benutzerdefinierten Datenbank mit Gesichtern
-* Extrahieren von Schlüsselwörtern in Video- und Audioinhalten basierend auf gesprochenem und sichtbarem Text
-* Extrahieren von Themen, die in Audio- und Videoinhalten diskutiert, aber nicht unbedingt explizit erwähnt werden, basierend auf gesprochenem und sichtbarem Text
+* Extrahieren von Themen, die in Audio- und Videoinhalten behandelt, aber nicht unbedingt erwähnt werden
 * Erstellen von Untertiteln aus Audiospuren
 
-Weitere Informationen finden Sie in der [Übersicht](video-indexer-overview.md).
+Weitere Informationen und weitere Video Indexer-Funktionen finden Sie in der [Übersicht](video-indexer-overview.md).
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Wie mache ich mich mit der Nutzung von Video Indexer vertraut?
 

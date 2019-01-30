@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a856dbc3bdf72ad03601618a9d48bb54665f7b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262096"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812062"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Verwenden mehrerer Eingabedateien und Komponenteneigenschaften mit Premium-Encoder
 ## <a name="overview"></a>Übersicht
@@ -430,7 +430,7 @@ Sie können den Beispielworkflow von [GitHub](https://github.com/Azure/azure-med
 
 ## <a name="example-2--multiple-audio-language-encoding"></a>Beispiel 2: Codierung mit mehreren Audiosprachen
 
-Ein Beispiel für einen Workflow zur mit mehreren Audiosprachen ist in [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding) verfügbar.
+Ein Beispiel für einen Workflow zur Codierung mit mehreren Audiosprachen ist auf [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding) verfügbar.
 
 Dieser Ordner enthält einen Beispielworkflow, der zum Codieren einer MXF-Datei als Objekt mit mehreren MP4-Dateien mit mehreren Audiospuren verwendet werden kann.
 

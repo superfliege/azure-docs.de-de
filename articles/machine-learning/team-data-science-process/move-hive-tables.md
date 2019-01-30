@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134946"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390935"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -137,11 +137,11 @@ Mit dieser Hive-Abfrage erstellen Sie eine Hive-Tabelle.
 
 Im Folgenden werden die Felder beschrieben, mit denen Sie die Implementierung und andere Konfigurationen vornehmen:
 
-* **<database name>**: Der Name der zu erstellenden Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann die Abfrage *create database...* ausgelassen werden.
-* **<table name>**: Der Name der Tabelle, die in der angegebenen Datenbank erstellt werden soll. Wenn Sie die Standarddatenbank verwenden möchten, kann auf die Tabelle direkt mit *<table name>* ohne <database name> verwiesen werden.
-* **<field separator>**: Das Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
-* **<line separator>**: Das Trennzeichen für die Zeilen in der Datendatei.
-* **<storage location>**: Der Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION <storage location>* nicht angeben, werden die Datenbank und die Tabellen standardmäßig im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///<Verzeichnis 1>/'* oder *'wasb:///<Verzeichnis 1>/<Verzeichnis 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
+* **\<Datenbankname:\>** Name der zu erstellenden Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann die Abfrage *create database...* ausgelassen werden.
+* **\<Tabellenname:\>** Name der in der angegebenen Datenbank zu erstellenden Tabelle. Wenn Sie die Standarddatenbank verwenden möchten, kann auf die Tabelle direkt mit *\<Tabellenname\>* ohne \<Datenbankname\> verwiesen werden.
+* **\<Feldtrennzeichen:\>** Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
+* **\<Zeilentrennzeichen:\>** Trennzeichen für die Zeilen in der Datendatei.
+* **\<Speicherort:\>** Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION \<Speicherort\>* nicht angeben, werden die Datenbank und die Tabellen im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///<Verzeichnis 1>/'* oder *'wasb:///<Verzeichnis 1>/<Verzeichnis 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
 * **TBLPROPERTIES("skip.header.line.count"="1")**: Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table*-Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
 
 ## <a name="load-data"></a>Laden von Daten in Hive-Tabellen
@@ -149,7 +149,7 @@ Mit dieser Hive-Abfrage laden Sie Daten eine Hive-Tabelle.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**: Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, muss der *<path to blob data>* das Format *'wasb:///<directory in this container>/<blob file name>'* aufweisen. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *<path to blob data>* das Format *'wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>'* aufweisen.
+* **\<Pfad zu Blobdaten:\>** Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, muss der *\<Pfad zu Blobdaten\>* das Format *wasb:///<directory in this container>/<blob file name>* aufweisen. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *\<Pfad zu Blobdaten\>* das Format *wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>* aufweisen.
 
   > [!NOTE]
   > Die Blobdaten, die in die Hive-Tabelle hochgeladen werden sollen, müssen sich im Standard- oder einem zusätzlichen Container des Speicherkontos für den Hadoop-Cluster befinden. Andernfalls misslingt die Abfrage *LOAD DATA* , weil sie keinen Zugriff auf die Daten hat.
@@ -216,7 +216,7 @@ Wählen Sie Daten aus der in Schritt 1 erstellten externen Tabelle aus, und fü
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Wenn die TEXTFILE-Tabelle *<database name>.<external textfile table name>* Partitionen aufweist, wird mit dem Befehl `SELECT * FROM <database name>.<external textfile table name>` in Schritt 3 die Partitionsvariable als Feld im zurückgegebenen Dataset ausgewählt. Das Einfügen in die *<database name>.<ORC table name>* schlägt fehl, weil *<database name>.<ORC table name>* die Partitionsvariable nicht als Feld im Tabellenschema enthält. In diesem Fall müssen Sie die in *<database name>.<ORC table name>* einzufügenden Felder explizit wie folgt auswählen:
+> Wenn die TEXTFILE-Tabelle *\<Datenbankname\>.\<Name der externen TEXTFILE-Tabelle\>* Partitionen aufweist, fügt der `SELECT * FROM <database name>.<external textfile table name>`-Befehl in Schritt 3 die Partitionsvariable als ein Feld in das zurückgegebene Dataset ein. Das Einfügen in *\<Datenbankname\>.\<ORC-Tabellenname\>* misslingt, da *\<Datenbankname\>.\<ORC-Tabellenname\>* nicht die Partitionsvariable als Feld im Tabellenschema enthält. In diesem Fall müssen Sie die in *\<Datenbankname\>.\<ORC-Tabellenname\>* einzufügenden Felder explizit wie folgt auswählen:
 >
 >
 
@@ -225,7 +225,7 @@ Wählen Sie Daten aus der in Schritt 1 erstellten externen Tabelle aus, und fü
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Sie können den *<external textfile table name>* ohne Bedenken weglassen, wenn Sie die folgende Abfrage verwenden, nachdem alle Daten in *<database name>.<ORC table name>* eingefügt wurden:
+Sie können *\<Name der externen TEXTFILE-Tabelle\>* gefahrlos mithilfe der folgenden Abfrage löschen, nachdem alle Daten in *\<Datenbankname\>.\<ORC-Tabellenname\>* eingefügt wurden:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

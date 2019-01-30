@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310238"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451747"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -235,8 +235,8 @@ Der Dedicated HSM-Dienst stellt SafeNet Network HSM 7-Appliances bereit. Sie unt
   * CAST
   * Hash/Message Digest/HMAC: SHA-1, SHA-2, SM3
   * Schlüsselableitung: SP800-108 Counter Mode
-  * Key-Wrapping:  SP800-38F
-  * Zufallszahlengenerierung:  FIPS 140-2 genehmigter DRBG (SP 800-90, CTR-Modus) unter Einhaltung von BSI DRG.4
+  * Key-Wrapping: SP800-38F
+  * Zufallszahlengenerierung: FIPS 140-2 genehmigter DRBG (SP 800-90, CTR-Modus) unter Einhaltung von BSI DRG.4
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>F: Ist Dedicated HSM FIPS 140-2 Level 3 validiert?
 

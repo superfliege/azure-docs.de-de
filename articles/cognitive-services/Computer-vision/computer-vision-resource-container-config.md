@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97de65acf724d12afd131ede25713e8f29d30bad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579786"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477633"
 ---
 # <a name="configure-recognize-text-containers"></a>Konfigurieren von Texterkennungscontainern
 
@@ -32,6 +32,7 @@ Die Konfigurationseinstellungen in Containern für Maschinelles Sehen sind hiera
 * [Abrechnung](#billing-configuration-setting)
 * [Eula](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Anmeldeinformationseinstellungen für HTTP-Proxy](#http-proxy-credentials-settings)
 * [Protokollierung](#logging-configuration-settings)
 * [Mounts](#mounts-configuration-settings)
 
@@ -116,6 +117,11 @@ In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die
 | `TlsConnectionEstablishmentTimeoutMs` | Ganze Zahl  | Das Timeout (in Millisekunden) für die Herstellung einer SSL/TLS-Verbindung mit dem Fluentd-Server. Der Standardwert beträgt 10.000 Millisekunden (zehn Sekunden).<br/> Wenn `UseTLS` auf FALSE festgelegt ist, wird dieser Wert ignoriert. |
 | `UseTLS` | Boolescher Wert | Gibt an, ob der Container für die Kommunikation mit dem Fluentd-Server SSL/TLS verwenden soll. Der Standardwert ist „false“. |
 
+
+## <a name="http-proxy-credentials-settings"></a>Anmeldeinformationseinstellungen für HTTP-Proxy
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Konfigurationseinstellungen für die Protokollierung
 
 Die `Logging`-Konfigurationseinstellungen dienen zur Verwaltung der ASP.NET Core-Protokollierungsunterstützung für Ihren Container. Sie können für Ihren Container die gleichen Konfigurationseinstellungen und Werte verwenden wie für eine ASP.NET Core-Anwendung. Von Maschinelles Sehen-Containern werden folgende Protokollanbieter unterstützt:
@@ -164,3 +170,7 @@ Der folgende Befehl definiert beispielsweise eine Docker-Bindungseinbindung für
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
   ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

@@ -1,38 +1,30 @@
 ---
-title: Hosten mehrerer Websites mit Azure Application Gateway | Microsoft-Dokumentation
-description: Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrere Websites.
-documentationcenter: na
+title: Hosten mehrerer Websites mit Azure Application Gateway
+description: Dieser Artikel bietet eine Übersicht über die Azure Application Gateway-Unterstützung für mehrere Websites.
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: ''
-ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 1/17/2019
 ms.author: amsriva
-ms.openlocfilehash: df98559a9476190d683812bf9f63d8ad9c4d3f0e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5c3fd92b3aa21b749a0c8ff435a1e5c12da4f57d
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160510"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381981"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung auf derselben Anwendungsgatewayinstanz zu konfigurieren. Mit diesem Feature können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu 20 Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Im folgenden Beispiel verarbeitet Application Gateway den Datenverkehr für „contoso.com“ und „fabrikam.com“ mit zwei Back-End-Serverpools: ContosoServerPool und FabrikamServerPool.
+Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung auf derselben Anwendungsgatewayinstanz zu konfigurieren. Mit diesem Feature können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu 100 Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Im folgenden Beispiel verarbeitet Application Gateway den Datenverkehr für „contoso.com“ und „fabrikam.com“ mit zwei Back-End-Serverpools: ContosoServerPool und FabrikamServerPool.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.
 
-Anforderungen für http://contoso.com werden an „ContosoServerPool“ und Anforderungen für http://fabrikam.com an „FabrikamServerPool“ geroutet.
+Anforderungen für http://contoso.com werden an „ContosoServerPool“ und Anforderungen für http://fabrikam.com an „FabrikamServerPool“ weitergeleitet.
 
-Dementsprechend können zwei Unterdomänen derselben übergeordneten Domäne in der gleichen Anwendungsgatewaybereitstellung gehostet werden. Beispiele: http://blog.contoso.com und http://app.contoso.com, gehostet in einer einzigen Anwendungsgatewaybereitstellung
+Dementsprechend können zwei Unterdomänen derselben übergeordneten Domäne in der gleichen Anwendungsgatewaybereitstellung gehostet werden. Beispiele für die Verwendung von untergeordneten Domänen sind http://blog.contoso.com und http://app.contoso.com, die unter nur einer Anwendungsgatewaybereitstellung gehostet werden.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hostheader und Servernamensanzeige
 

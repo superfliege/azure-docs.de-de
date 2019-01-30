@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: db7591c98147a5728486843efb0c807b6094557a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 853f8a499bfed461f75a79ff18f878f37d109e81
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601473"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425355"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -71,10 +71,10 @@ In diesem Abschnitt werden die erforderlichen Voraussetzungen zur Integration vo
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Remotedesktopdienste-Infrastruktur (Remote Desktop Services, RDS)
 
-Eine funktionsfähige Remotedesktopdienste-Infrastruktur (RDS) muss vorhanden sein. Wenn dies nicht der Fall ist, können Sie diese Infrastruktur schnell in Azure mithilfe der folgenden Schnellstartvorlage erstellen: [Erstellen der Bereitstellung einer Remotedesktopsitzungs-Sammlung](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
+Eine funktionsfähige Remotedesktopdienste-Infrastruktur (RDS) muss vorhanden sein. Ist dies nicht der Fall, können Sie diese Infrastruktur schnell in Azure mithilfe der folgenden Schnellstartvorlage erstellen: [Erstellen der Bereitstellung einer Remotedesktopsitzungs-Sammlung](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
 
 Wenn Sie eine lokale RDS-Infrastruktur schnell manuell zu Testzwecken erstellen möchten, führen Sie die Schritte zu deren Bereitstellung aus. 
-**Erfahren Sie mehr** über die [Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) und das [Bereitstellen Ihrer Remotedesktopumgebung](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
+**Weitere Informationen:** [Seamlessly deploy RDS with ARM and Azure Marketplace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) (Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace) und [Deploy your Remote Desktop environment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure) (Bereitstellen Ihrer Remotedesktopumgebung). 
 
 ### <a name="azure-mfa-license"></a>Azure MFA-Lizenz
 
@@ -86,7 +86,7 @@ Die NPS-Erweiterung erfordert Windows Server 2008 R2 SP1 oder höher mit install
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Netzwerkrichtlinien- und Zugriffsdienste-Rolle (Network Policy and Access Services, NPS)
 
-Der NPS-Rollendienst bietet sowohl die RADIUS-Server- und -Clientfunktionalität als auch den Netzwerkzugriffsrichtlinien-Integritätsdienst. Diese Rolle muss auf mindestens zwei Computern in Ihrer Infrastruktur installiert werden: auf dem Remotedesktopgateway und einem anderen Mitgliedsserver oder Domänencontroller. Standardmäßig ist die Rolle bereits auf dem Computer vorhanden, der als Remotedesktopgateway konfiguriert ist.  Sie müssen auch die NPS-Rolle auf mindestens einem anderen Computer installieren, z.B. einen Domänencontroller oder Mitgliedsserver.
+Der NPS-Rollendienst bietet sowohl die RADIUS-Server- und -Clientfunktionalität als auch den Netzwerkzugriffsrichtlinien-Integritätsdienst. Diese Rolle muss auf mindestens zwei Computern in Ihrer Infrastruktur installiert werden: Das Remotedesktopgateway und ein weiterer Mitgliedsserver oder Domänencontroller. Standardmäßig ist die Rolle bereits auf dem Computer vorhanden, der als Remotedesktopgateway konfiguriert ist.  Sie müssen auch die NPS-Rolle auf mindestens einem anderen Computer installieren, z.B. einen Domänencontroller oder Mitgliedsserver.
 
 Informationen zum Installieren des NPS-Rollendiensts für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx) (Installieren eines NAP-Integritätsrichtlinienservers). Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](https://technet.microsoft.com/library/cc771746) (Bewährte Methoden für NPS).
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: d3e6a17ba9d0712d921d8e0a1d0bcbcd68ce5cfb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360481"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812558"
 ---
 # <a name="azure-backup-architecture"></a>Azure Backup-Architektur
 
@@ -96,10 +96,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der Features für die verschi
 
 **Feature** | **Lokale Windows-Computer (direkt)** | **Virtuelle Azure-Computer** | **Computer/Apps mit DPM/MABS**
 --- | --- | --- | ---
-Sicherung in einem Tresor | ![Ja][green] | ![Ja][green] | ![Ja][green] 
-Sicherung auf DPM-/MABS-Datenträger und anschließend in Azure | | | ![Ja][green] 
-Komprimierung der gesendeten Daten für die Sicherung | ![Ja][green] | Daten werden unkomprimiert übertragen. Etwas höherer Speicherbedarf, aber schnellere Wiederherstellung.  | ![Ja][green] 
-Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] 
+Sicherung in einem Tresor | ![JA][green] | ![Ja][green] | ![JA][green] 
+Sicherung auf DPM-/MABS-Datenträger und anschließend in Azure | | | ![JA][green] 
+Komprimierung der gesendeten Daten für die Sicherung | ![JA][green] | Daten werden unkomprimiert übertragen. Etwas höherer Speicherbedarf, aber schnellere Wiederherstellung.  | ![JA][green] 
+Inkrementelle Sicherung |![JA][green] |![Ja][green] |![JA][green] 
 Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur für lokal bereitgestellte DPM-/MABS-Server 
 
 ![Tabellenschlüssel](./media/backup-architecture/table-key.png)

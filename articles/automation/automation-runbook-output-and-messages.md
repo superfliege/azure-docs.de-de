@@ -3,18 +3,18 @@ title: Runbookausgabe und -meldungen in Azure Automation
 description: Beschreibt, wie Ausgaben und Fehlermeldungen von Runbooks in Azure Automation erstellt und abgerufen werden.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969123"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431213"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 Die meisten Azure Automation-Runbooks besitzen eine Form von Ausgabe. Diese Ausgabe ist möglicherweise eine Fehlermeldung für den Benutzer oder ein komplexes Objekt, das Sie mit einem anderen Runbook verwenden möchten. Windows PowerShell bietet [mehrere Datenströme](/powershell/module/microsoft.powershell.core/about/about_redirection) zum Senden der Ausgabe eines Skripts oder Workflows. Azure Automation verwendet jeden dieser Datenströme anders. Sie sollten beim Erstellen eines Runbooks die bewährten Methoden für die Verwendung der einzelnen Datenströme befolgen.
@@ -204,7 +204,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 ``` 
 
 ### <a name="graphical-authoring"></a>Grafische Inhaltserstellung
-Für grafische Runbooks steht eine zusätzliche Protokollierung in Form einer Ablaufverfolgung auf Aktivitätsebene zur Verfügung. Es gibt zwei Stufen der Ablaufverfolgung:  „Standard“ und „Ausführlich“. Bei einer Ablaufverfolgung der Stufe „Standard“ können sie die Start- und Endzeit jeder Aktivität im Runbook sowie Informationen zu Aktivitätswiederholungen sehen.  Beispiele dafür sind die Anzahl von Versuchen sowie die Startzeit der Aktivität. Bei einer Ablaufverfolgung der Stufe „Ausführlich“ erhalten Sie alle Informationen der Stufe „Standard“ plus Ein- und Ausgabedaten für jede Aktivität. Zurzeit werden die Ablaufverfolgungsdatensätze mithilfe des ausführlichen Datenstroms geschrieben. Daher müssen Sie beim Aktivieren der Ablaufverfolgung die ausführliche Protokollierung aktivieren. Bei grafischen Runbooks mit aktivierter Ablaufverfolgung ist es nicht erforderlich, Statusdatensätze zu protokollieren. Einfache Ablaufverfolgung dient demselben Zweck und ist informativer.
+Für grafische Runbooks steht eine zusätzliche Protokollierung in Form einer Ablaufverfolgung auf Aktivitätsebene zur Verfügung. Es gibt zwei Stufen der Ablaufverfolgung: „Standard“ und „Ausführlich“. Bei einer Ablaufverfolgung der Stufe „Standard“ können Sie die Start- und Endzeit jeder Aktivität im Runbook sowie Informationen zu Aktivitätswiederholungen sehen. Beispiele sind die Anzahl von Versuchen und die Startzeit der Aktivität. Bei einer Ablaufverfolgung der Stufe „Ausführlich“ erhalten Sie alle Informationen der Stufe „Standard“ plus Ein- und Ausgabedaten für jede Aktivität. Zurzeit werden die Ablaufverfolgungsdatensätze mithilfe des ausführlichen Datenstroms geschrieben. Daher müssen Sie beim Aktivieren der Ablaufverfolgung die ausführliche Protokollierung aktivieren. Bei grafischen Runbooks mit aktivierter Ablaufverfolgung ist es nicht erforderlich, Statusdatensätze zu protokollieren. Einfache Ablaufverfolgung dient demselben Zweck und ist informativer.
 
 ![Ansicht der Auftragsdatenströme bei der grafischen Inhaltserstellung](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
@@ -234,4 +234,5 @@ Weitere Informationen zum Konfigurieren der Integration in Log Analytics, um Auf
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md)
 * Informationen zum Entwerfen und Verwenden von untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md)
+
 

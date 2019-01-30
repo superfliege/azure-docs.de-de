@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7b321ab04df405c56cab0952942b0d6e142da6d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 579856ab87aaf8d051f2e3c161bb2d0e2f693ed5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806232"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446577"
 ---
 # <a name="data-entities"></a>Datenentitäten
 
@@ -29,7 +29,7 @@ In diesem Artikel finden Sie die Definitionen der Datenentitäten und eine Über
 
 Eine Datenentität ist eine Abstraktion der physischen Implementierung von Datenbanktabellen. In normalisierten Tabellen könnte beispielsweise ein Großteil der Daten zu jedem Kunden in einer Kundentabelle gespeichert werden, während die übrigen Daten auf verknüpfte Tabellen verteilt sind. In diesem Fall wird die Datenentität für das Kundenkonzept als eine denormalisierte Ansicht angezeigt, in der jede Zeile alle Daten aus der Kundentabelle und den zugehörigen Tabellen enthält. Eine Datenentität kapselt ein Geschäftskonzept in ein Format, das die Entwicklung und Integration vereinfacht. Durch die Abstraktion können Datenentitäten die Anwendungsentwicklung und -anpassung vereinfachen. Zu einem späteren Zeitpunkt umfasst diese Abstraktion auch Anwendungscode aus unvermeidlichen Änderungen an den physischen Tabellen für die einzelnen Versionen.
 
-Zusammenfassend gilt: Datenentitäten bieten eine konzeptionelle Abstraktion und Kapselung (denormalisierte Ansicht) der zugrunde liegenden Tabellenschemas zur Darstellung von Schlüsseldatenkonzepten und Funktionen.
+Zusammenfassung: Datenentitäten bieten eine konzeptionelle Abstraktion und Kapselung (denormalisierte Ansicht) der zugrunde liegenden Tabellenschemas zur Darstellung von Schlüsseldatenkonzepten und Funktionen.
 
 ## <a name="capabilities"></a>Funktionen
 

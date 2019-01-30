@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 75d8503e6179b8ef3578a4a8c62ef1b288657a7b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 73b76561829e6d50918881427894ea310920fce6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576815"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465198"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
@@ -134,7 +134,7 @@ Um automatische Antworten zu implementieren, bietet Ihnen Azure Active Directory
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Channel 9: Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)
 
 - [Aktivieren von Azure Active Directory Identity Protection](enable.md)
 

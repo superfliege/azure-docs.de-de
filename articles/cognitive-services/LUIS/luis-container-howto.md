@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055046"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463284"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -113,7 +113,8 @@ Das Eingabebereitstellungsverzeichnis kann gleichzeitig die App-Versionen **Bere
 |Staging|Get, Post|Azure und Container|`{APPLICATION_ID}_STAGING.gz`|
 |Bereitstellung|Get, Post|Azure und Container|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**Wichtig:** Sie dürfen die LUIS-Paketdateien nicht umbenennen, ändern oder dekomprimieren.
+> [!IMPORTANT]
+> Sie dürfen die LUIS-Paketdateien nicht umbenennen, ändern oder dekomprimieren.
 
 ### <a name="packaging-prerequisites"></a>Voraussetzungen für das Packen
 
@@ -377,9 +378,10 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
 
 > [!IMPORTANT]
-> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (z.B. das analysierte Bild oder den analysierten Text) an Microsoft.
+> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (etwa das analysierte Bild oder den analysierten Text) an Microsoft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](luis-container-configuration.md).
 * Unter [Häufig gestellte Fragen (FAQ)](luis-resources-faq.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit LUIS-Funktionen.
+* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

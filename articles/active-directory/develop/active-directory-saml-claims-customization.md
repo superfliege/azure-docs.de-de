@@ -17,14 +17,14 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: afcdb7c64f4431e920f1f1fbce1e1e6d3e4db79c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 11132426bb8adb6ede564e706e18f3eddd649bef
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424951"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401876"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
 Derzeit unterstützt Azure Active Directory (Azure AD) einmaliges Anmelden für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierter Anwendungen sowie benutzerdefinierter Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als „Ansprüche“ bezeichnet werden.
 
@@ -81,7 +81,7 @@ Sie können auch die speziellen Funktionen für Anspruchstransformationen verwen
 
 ## <a name="adding-claims"></a>Hinzufügen von Ansprüchen
 
-Wenn Sie einen Anspruch hinzufügen, können Sie den Attributnamen angeben (der nicht unbedingt wie bei der SAML-Spezifikation einem URI-Muster entsprechen muss). Legen Sie den Wert auf ein beliebiges Benutzerattribut fest, das im Verzeichnis gespeichert ist.
+Wenn Sie einen Anspruch hinzufügen, können Sie den Attributnamen angeben (der nicht unbedingt wie bei der SAML-Spezifikation einem URI-Muster entsprechen muss). Legen Sie den Wert auf ein beliebiges Benutzerattribut fest, das im Verzeichnis gespeichert ist, oder verwenden Sie einen konstanten Wert als statischen Einstiegspunkt für alle Benutzer in Ihrer Organisation.
 
 ![Benutzerattribut hinzufügen][7]
 

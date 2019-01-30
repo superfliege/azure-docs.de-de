@@ -10,18 +10,18 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 181797cd8ba193d7200e5ece8b599ffa40f7185b
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867579"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413701"
 ---
 # <a name="creating-custom-voice-fonts"></a>Erstellen benutzerdefinierter Voicefonts
 
-Mit der Text-to-Speech-API (TTS) erstellen Sie für Ihre Marke eine unverwechselbare Stimme, die als *Voicefont* bezeichnet wird. 
+Mit der Text-to-Speech-API (TTS) erstellen Sie für Ihre Marke eine unverwechselbare Stimme, die als *Voicefont* bezeichnet wird.
 
-Zur Erstellung Ihres Voicefonts laden Sie eine Tonstudioaufnahme und die zugehörigen Skripts als Trainingsdaten hoch. Der Dienst erstellt daraufhin ein individuelles Stimmenmodell, das auf Ihre Aufnahme abgestimmt ist. Diesen Voicefont können Sie zum Synthetisieren von Sprache verwenden. 
+Zur Erstellung Ihres Voicefonts laden Sie eine Tonstudioaufnahme und die zugehörigen Skripts als Trainingsdaten hoch. Der Dienst erstellt daraufhin ein individuelles Stimmenmodell, das auf Ihre Aufnahme abgestimmt ist. Diesen Voicefont können Sie zum Synthetisieren von Sprache verwenden.
 
 Zu Beginn sind für einen Proof of Concept nur wenige Daten erforderlich. Je mehr Daten Sie anschließend bereitstellen, desto natürlicher und professioneller klingt die Stimme.
 
@@ -49,7 +49,7 @@ Ein Stimmentrainingsdataset umfasst mehrere Audiodateien und eine Textdatei, die
 
 Sie können diese Dateien auf zweierlei Weise vorbereiten. Entweder erstellen Sie zunächst das Skript, das dann von einem Sprecher eingesprochen wird, oder Sie nutzen eine öffentlich zugängliche Audiodatei und transkribieren diese in Text. Wenn Sie sich für Letzteres entscheiden, müssen Füllwörter wie „ähm“ sowie gestotterte, undeutlich gesprochene und falsch ausgesprochene Wörter entfernt werden.
 
-Die Erstellung eines guten Voicefonts setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem qualitativ hochwertigen Mikrofon erfolgen. Eine gleichmäßige Lautstärke, Geschwindigkeit und Tonhöhe sowie eine ausdrucksstarke Prosodie sind bei der Erstellung einer angenehmen digitalen Stimme entscheidend. 
+Die Erstellung eines guten Voicefonts setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem qualitativ hochwertigen Mikrofon erfolgen. Eine gleichmäßige Lautstärke, Geschwindigkeit und Tonhöhe sowie eine ausdrucksstarke Prosodie sind bei der Erstellung einer angenehmen digitalen Stimme entscheidend.
 
 Wenn Sie eine Stimme für eine Produktionsumgebung erstellen möchten, werden ein professioneller Sprecher und ein professionelles Tonstudio empfohlen. Weitere Informationen finden Sie unter [Aufzeichnen von Sprachbeispielen für eine benutzerdefinierte Stimme](record-custom-voice-samples.md).
 
@@ -102,30 +102,30 @@ Nach der Vorbereitung des Audiodateiarchivs und der Transkripte können Sie dies
 
     Die Tabelle **Meine Stimmdaten** wird angezeigt. Wenn Sie noch keine Datasets für Ihre Stimme hochgeladen haben, ist die Tabelle leer.
 
-3. Klicken Sie auf **Daten importieren**, um die Seite zum Hochladen eines neuen Datasets zu öffnen. 
+3. Klicken Sie auf **Daten importieren**, um die Seite zum Hochladen eines neuen Datasets zu öffnen.
 
     ![Stimmdaten importieren](media/custom-voice/import-voice-data.png)
 
-4. Geben Sie einen Namen und eine Beschreibung in die angezeigten Felder ein. 
+4. Geben Sie einen Namen und eine Beschreibung in die angezeigten Felder ein.
 
-5. Wählen Sie das Gebietsschema für Ihre Voicefonts aus. Stellen Sie sicher, dass die Informationen für das Gebietsschema mit der Sprache übereinstimmen, die für die Aufnahmedaten und die Skripte verwendet wurde. 
+5. Wählen Sie das Gebietsschema für Ihre Voicefonts aus. Stellen Sie sicher, dass die Informationen für das Gebietsschema mit der Sprache übereinstimmen, die für die Aufnahmedaten und die Skripte verwendet wurde.
 
 6. Wählen Sie das Geschlecht des Sprechers aus, dessen Stimme Sie verwenden.
 
-7. Wählen Sie das Skript und die Audiodateien aus, die Sie hochladen möchten. 
+7. Wählen Sie das Skript und die Audiodateien aus, die Sie hochladen möchten.
 
 8. Wählen Sie **Importieren** aus, um die Daten hochzuladen. Bei größeren Datasets kann der Importvorgang mehrere Minuten dauern.
 
 > [!NOTE]
 > Benutzer des kostenlosen Abonnements können zwei Datasets gleichzeitig hochladen. Bei Benutzern des Standardabonnements sind es fünf. Wenn Sie das Limit erreicht wurde, warten Sie, bis der Importvorgang mindestens eines Datasets beendet wurde. Versuchen Sie es anschließend noch mal.
 
-Nach dem Upload wird die Datentabelle **Meine Stimmdaten** erneut angezeigt. In dieser sollte sich ein Eintrag befinden, der dem soeben hochgeladenen Dataset entspricht. 
+Nach dem Upload wird die Datentabelle **Meine Stimmdaten** erneut angezeigt. In dieser sollte sich ein Eintrag befinden, der dem soeben hochgeladenen Dataset entspricht.
 
 Datasets werden nach dem Hochladen automatisch überprüft. Bei der Datenüberprüfung wird darauf geachtet, dass die Audiodateien im richtigen Format und in der richtigen Größe vorliegen und die korrekte Samplingfrequenz verwendet wird. Bei der Überprüfung der Transkriptionsdateien wird sichergestellt, dass diese im richtigen Dateiformat vorliegen. Außerdem wird eine Textnormalisierung ausgeführt. Die Äußerungen werden unter Verwendung der Spracherkennung transkribiert. Dann wird der sich ergebende Text mit dem von Ihnen bereitgestellten Transkript verglichen.
 
 ![Meine Stimmdaten](media/custom-voice/my-voice-data.png)
 
-In der folgenden Tabelle werden die Verarbeitungsstatus der importierten Datasets angezeigt: 
+In der folgenden Tabelle werden die Verarbeitungsstatus der importierten Datasets angezeigt:
 
 | Zustand | Bedeutung
 | ----- | -------
@@ -143,19 +143,19 @@ Bei einer niedrigen Aussprachebewertung oder einem geringen SNR-Wert sollten Sie
 
 ## <a name="build-your-voice-font"></a>Erstellen des Voicefonts
 
-Nachdem das Dataset überprüft wurde, können Sie mit diesem Ihren eigenen Voicefont erstellen. 
+Nachdem das Dataset überprüft wurde, können Sie mit diesem Ihren eigenen Voicefont erstellen.
 
 1.  Wählen Sie im Dropdownmenü **Custom Voice** die Option **Modelle** aus.
- 
+
     Die Tabelle **Meine Voicefonts** wird angezeigt. In dieser werden alle Voicefonts aufgeführt, die Sie bereits erstellt haben.
 
-1. Wählen Sie unter der Tabellenüberschrift die Option **Stimmen erstellen** aus. 
+1. Wählen Sie unter der Tabellenüberschrift die Option **Stimmen erstellen** aus.
 
     Die Seite zum Erstellen eines Voicefonts wird angezeigt. Das aktuelle Gebietsschema wird in der ersten Zeile der Tabelle angezeigt. Wenn Sie eine Stimme in einer anderen Sprache erstellen möchten, können Sie das Gebietsschema ändern. Das Gebietsschema muss mit dem Gebietsschema der Datasets übereinstimmen, die zum Erstellen der Stimme verwendet wurden.
 
-1. Geben Sie wie bereits beim Upload des Datasets einen Namen und eine Beschreibung ein, damit Sie dieses Modell von anderen Modellen unterscheiden können. 
+1. Geben Sie wie bereits beim Upload des Datasets einen Namen und eine Beschreibung ein, damit Sie dieses Modell von anderen Modellen unterscheiden können.
 
-    Wählen Sie den Namen sorgfältig aus. Der hier eingegebene Name ist der Name, der zur Festlegung der Stimme in der Sprachsyntheseanforderung als Teil der SSML-Eingabe verwendet wird. Zulässig sind nur Buchstaben, Zahlen und einige wenige Satzzeichen wie „-“, „_“ und „(“, „)“.
+    Wählen Sie den Namen sorgfältig aus. Der hier eingegebene Name ist der Name, der zur Festlegung der Stimme in der Sprachsyntheseanforderung als Teil der SSML-Eingabe verwendet wird. Zulässig sind nur Buchstaben, Zahlen und einige wenige Satzzeichen wie `-`, `_` und `(', ')`.
 
     Im Feld **Beschreibung** werden in der Regel die Namen der Datasets erfasst, die zur Erstellung des Modells verwendet wurden.
 
@@ -167,7 +167,7 @@ Nachdem das Dataset überprüft wurde, können Sie mit diesem Ihren eigenen Voic
 
     ![Modell erstellen](media/custom-voice/create-model.png)
 
-Das neue Modell wird in der Tabelle **Meine Voicefonts** angezeigt. 
+Das neue Modell wird in der Tabelle **Meine Voicefonts** angezeigt.
 
 ![Meine Voicefonts](media/custom-voice/my-voice-fonts.png)
 
@@ -212,7 +212,7 @@ Wenn als Bereitstellungsstatus **Erfolgreich** angezeigt wird, wird der Endpunkt
 
 Die Onlineüberprüfung des Endpunkts kann auch über das Custom Voice-Portal erfolgen. Wählen Sie zum Testen des Endpunkts **Endpunkte testen** aus dem Dropdownmenü **Custom Voice** aus. Die Seite zum Testen des Endpunkts wird angezeigt. Wählen Sie eine bereitgestellte benutzerdefinierte Stimme aus, und geben Sie im Textfeld den Text ein, der vorgelesen werden soll. Als Eingabe kann entweder das Nur-Text- oder SSML-Format verwendet werden.
 
-> [!NOTE] 
+> [!NOTE]
 > Wenn Sie das SSML-Format verwenden, muss mit dem `<voice>`-Tag der Namen angegeben werden, den Sie bei der Erstellung Ihrer benutzerdefinierten Stimme verwendet haben. Wenn Sie Nur-Text senden, wird immer die benutzerdefinierte Stimme verwendet.
 
 Wählen Sie **Wiedergabe** aus, damit der Text in Ihrem benutzerdefinierten Voicefont gesprochen wird.
@@ -223,10 +223,18 @@ Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Stan
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Chinesisch (zh-CN) und Italienisch (it-IT) verfügbar.
+Die Stimmenanpassung steht in folgenden Sprachen zur Verfügung:
+
+| Sprache | Gebietsschema |
+|----------|--------|
+| Chinesisch (Festland) | zh-CN |
+| Englisch (USA) | en-US |
+| Französisch | fr-FR |
+| Deutsch | de-DE |
+| Italienisch | it-IT |
 
 > [!NOTE]
-> Für das italienische Stimmtraining steht zunächst ein DataSet von über 2.000 Äußerungen zur Verfügung. Außerdem werden zweisprachige Chinesisch-Englisch-Modelle mit einem DataSet von über 2.000 Äußerungen unterstützt.
+> Für das französische, deutsche und italienische Stimmtraining steht ein Dataset mit über 2.000 Äußerungen zur Verfügung. Außerdem werden zweisprachige Chinesisch-Englisch-Modelle mit einem DataSet von über 2.000 Äußerungen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

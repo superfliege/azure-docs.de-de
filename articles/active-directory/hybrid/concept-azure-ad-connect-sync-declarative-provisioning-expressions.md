@@ -4,7 +4,7 @@ description: Erläutert die Ausdrücke für die deklarative Bereitstellung.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26c835e6c2f658f7ad852fdd02dc8974db33e47b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 488309d9d78834896a939c66ccdc7515310103de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306049"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460492"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung
 Die Azure AD Connect-Synchronisierung basiert auf der deklarativen Bereitstellung, die erstmals in Forefront Identity Manager 2010 eingeführt wurde. Sie ermöglicht Ihnen die Implementierung Ihrer gesamten Geschäftslogik zur Identitätsintegration, ohne kompilierten Code schreiben zu müssen.
@@ -32,13 +32,13 @@ Weitere Informationen finden Sie unter [Willkommen bei der VBA-Sprachreferenz f�
 Die Attribute sind stark typisiert. Eine Funktion akzeptiert nur Attribute des richtigen Typs. Zudem muss die Groß-/Kleinschreibung beachtet werden. Sowohl bei Funktions- als auch Attributnamen muss die Groß-/Kleinschreibung korrekt sein. Andernfalls wird ein Fehler ausgegeben.
 
 ## <a name="language-definitions-and-identifiers"></a>Sprachdefinitionen und Bezeichner
-* Funktionen verfügen über einen Namen, gefolgt von Argumenten in Klammern: FunctionName(argument 1,argument N).
+* Bei Funktionen folgen auf den Namen Argumente in Klammern: FunctionName(argument 1, argument N).
 * Attribute werden durch eckige Klammern gekennzeichnet: [attributeName].
 * Parameter werden durch Prozentzeichen gekennzeichnet: %ParameterName%.
-* Zeichenfolgenkonstanten werden in Anführungszeichen eingeschlossen, beispielsweise "Contoso". Hierbei müssen gerade Anführungszeichen ("") verwendet werden, typografische Anführungszeichen („”) sind nicht zulässig.
+* Zeichenfolgenkonstanten werden in Anführungszeichen gesetzt: Beispiel: "Contoso" (Hinweis: Es muss sich um gerade Anführungszeichen ("") handeln. Typografische Anführungszeichen (“”) sind nicht zulässig.)
 * Numerische Werte werden ohne Anführungszeichen ausgedrückt und im Dezimalformat vorliegen. Hexadezimalwerten weisen das Präfix "&H" auf. Beispiel: 98052, &HFF.
 * Boolesche Werte werden mit Konstanten ausgedrückt: True, False.
-* Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow.
+* Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Functions
 Bei der deklarativen Bereitstellung werden viele Funktionen verwendet, um das Transformieren von Attributwerten zu ermöglichen. Diese Funktionen können geschachtelt werden, sodass das Ergebnis einer Funktion an eine andere Funktion übergeben wird.
@@ -73,7 +73,8 @@ Folgende Operatoren können verwendet werden:
 * **Vergleich**: &lt;, &lt;=, &lt;&gt;, =, &gt;, &gt;=
 * **Mathematik**: +, -, \*, -
 * **Zeichenfolge**: &amp; (Verkettung)
-* **Logischer Ausdruck**: &amp;&amp; (und), || (oder)
+* 
+  **Logischer Ausdruck**: &&amp;amp; (und), || (oder)
 * **Auswertungsreihenfolge**: ( )
 
 Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
@@ -98,5 +99,5 @@ Beispiel:
 
 **Referenzthemen**
 
-* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
 

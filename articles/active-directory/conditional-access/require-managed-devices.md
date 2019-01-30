@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie gerätebasierte bedingte Zugriffsrichtli
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b59e4898f85de7ad93d9172cdb3c551a17799194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2df2d716516cb8e451c054fce3e184e1b4bf3f9b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630482"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447597"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
 In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory (Azure AD) das einmalige Anmelden bei Apps und Diensten an jedem Ort. Autorisierte Benutzer können über ein breites Spektrum von Geräten (darunter mobile und persönliche Geräte) auf Ihre Cloud-Apps zugreifen. Allerdings gibt es in vielen Umgebungen mindestens einige wenige Apps, auf die der Zugriff nur über Geräte möglich sein sollte, die Ihre Sicherheits- und Compliancestandards erfüllen. Diese Geräte werden auch als verwaltete Geräte bezeichnet. 
 

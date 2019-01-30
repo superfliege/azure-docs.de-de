@@ -7,44 +7,69 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 727747d84d0db32c73fc1a200bcea7e5c149d24b
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554910"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412388"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Einrichten von Warnungen für Azure Stream Analytics-Aufträge
-Sie können Warnungen einrichten, die eine Warnung auslösen, wenn eine Metrik eine von Ihnen angegebene Bedingung erreicht. Beispielsweise können Sie eine Warnung für eine Bedingung wie die folgende einrichten:
 
-`If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
+Es ist wichtig, einen Azure Stream Analytics-Auftrag zu überwachen, um sicherzustellen, dass der Auftrag fortlaufend und problemlos ausgeführt wird. In diesem Artikel wird beschrieben, wie Sie Warnungen für gängige Szenarien einrichten, die überwacht werden sollen. 
 
-Regeln können für Metriken über das Portal eingerichtet oder [programmgesteuert](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) über Vorgangsprotokolldaten konfiguriert werden.
+Regeln können für Metriken über das Portal eingerichtet und [programmgesteuert](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) über Vorgangsprotokolldaten konfiguriert werden.
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Einrichten von Warnungen im Azure-Portal
-1. Öffnen Sie im Azure-Portal den Stream Analytics-Auftrag, für den Sie eine Warnung erstellen möchten. 
 
-2. Klicken Sie auf dem Blatt **Auftrag** auf den Abschnitt **Überwachung**.  
+Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingerichtet werden, dass ein Auftrag in den fehlerhaften Zustand übergeht. Die Einrichtung dieser Warnung wird für alle Aufträge empfohlen.
 
-3. Klicken Sie auf dem Blatt **Metrik** auf den Befehl **Warnung hinzufügen**.
+1. Öffnen Sie im Azure-Portal den Stream Analytics-Auftrag, für den Sie eine Warnung erstellen möchten.
 
-      ![Konfigurieren von Stream Analytics-Warnungen im Azure-Portal](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+2. Navigieren Sie auf der Seite **Auftrag** zum Abschnitt **Überwachung**.  
 
-4. Geben Sie einen Namen und eine Beschreibung ein.
+3. Wählen Sie **Metriken** aus, und klicken Sie dann auf **Neue Warnungsregel**.
 
-5. Verwenden Sie die Selektoren, um die Bedingung zu definieren, unter der die Warnung gesendet wird.
+   ![Konfigurieren von Stream Analytics-Warnungen im Azure-Portal](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-6. Geben Sie an, wohin die Warnung gesendet werden soll.
+4. Der Name des Stream Analytics-Auftrags sollte automatisch unter **RESSOURCE** angezeigt werden. Klicken Sie auf **Bedingung hinzufügen**, und wählen Sie **All Administrative operations** (Alle Verwaltungsvorgänge) unter **Signallogik konfigurieren** aus.
 
-      ![Einrichten einer Warnung für einen Azure Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+   ![Auswählen eines Signalnamens für die Stream Analytics-Warnung](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
+
+5. Ändern Sie unter **Signallogik konfigurieren** den Wert für **Ereignisstufe** in **Alle** und den Wert für **Status** in **Fehler**. Lassen Sie **Ereignis initiiert von** leer, und klicken Sie auf **Fertig**.
+
+   ![Konfigurieren der Signallogik für die Stream Analytics-Warnung](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
+
+6. Wählen Sie eine vorhandene Aktionsgruppe aus, oder erstellen Sie eine neue Gruppe. In diesem Beispiel wurde die neue Aktionsgruppe **TIDashboardGroupActions** mit der Aktion **E-Mails** erstellt, die eine E-Mail an Benutzer mit der Azure Resource Manager-Rolle **Besitzer** sendet.
+
+   ![Einrichten einer Warnung für einen Azure Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
+
+7. Unter **RESSOURCE**, **BEDINGUNG** und **AKTIONSGRUPPEN** sollte jeweils ein Eintrag angezeigt werden.
+
+   ![Erstellen einer Regel für den Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+
+   Fügen Sie unter **WARNUNGSDETAILS** den **Namen der Warnungsregel**, eine **Beschreibung** und Ihre **Ressourcengruppe** hinzu, und klicken Sie auf **Warnungsregel erstellen**, um die Regel für den Stream Analytics-Auftrag zu erstellen.
+
+   ![Erstellen einer Regel für den Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+
+## <a name="scenarios-to-monitor"></a>Szenarien für die Überwachung
+
+Zur Überwachung der Leistung des Stream Analytics-Auftrags werden die folgenden Warnungen empfohlen. Diese Metriken sollten in den letzten 5 Minuten einmal pro Minute ausgewertet werden. Wenn in einem Auftrag Leistungsprobleme auftreten, können Sie die Parallelisierung von Abfragen nutzen und die Anzahl der Streamingeinheiten erhöhen, um den Auftrag zu optimieren.
+
+|Metrik|Bedingung|Zeitaggregation|Schwellenwert|Korrekturmaßnahmen|
+|-|-|-|-|-|
+|Nutzung der Speichereinheit in %|Größer als|Maximum|80|Die SU-Nutzung in Prozent lässt sich durch mehrere Faktoren erhöhen. Sie können eine Skalierung mit Abfrageparallelisierung durchführen oder die Anzahl der Streamingeinheiten erhöhen. Weitere Informationen finden Sie unter [Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Laufzeitfehler|Größer als|Gesamt|0|Überprüfen Sie die Aktivitäts- oder Diagnoseprotokolle, und nehmen Sie entsprechende Änderungen an den Eingaben, der Abfrage oder den Ausgaben vor.|
+|Wasserzeichenverzögerung|Größer als|Maximum|Wenn der durchschnittliche Wert dieser Metrik innerhalb der letzten 15 Minuten größer ist als die Toleranz für Eingangsverzögerung (in Sekunden). Wenn Sie die Toleranz für Eingangsverzögerung nicht geändert haben, ist der Standardwert auf 5 Sekunden festgelegt.|Versuchen Sie, die Anzahl der Streamingeinheiten zu erhöhen oder die Abfrage zu parallelisieren. Weitere Informationen zu Streamingeinheiten finden Sie unter [Übersicht über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Weitere Informationen zur Parallelisierung der Abfrage finden Sie unter [Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Eingabefehler bei Deserialisierung|Größer als|Gesamt|0|Überprüfen Sie die Aktivitäts- oder Diagnoseprotokolle, und nehmen Sie entsprechende Änderungen an der Eingabe vor. Weitere Informationen zu Diagnoseprotokollen finden Sie unter [Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen](stream-analytics-job-diagnostic-logs.md)|
+
+## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
 Weitere Informationen zum Konfigurieren von Warnungen im Azure-Portal finden Sie unter [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
-
-## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

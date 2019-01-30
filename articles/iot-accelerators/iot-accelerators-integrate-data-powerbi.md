@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9daf0f0d1c7ca94308bfb0d894366b457a045770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970399"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470646"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
 
@@ -28,7 +28,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Daten Ihrer Re
 
 ## <a name="information-needed-from-azure-portal"></a>Erforderliche Informationen aus dem Azure-Portal
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich bei Bedarf an.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an (falls erforderlich).
 
 2. Klicken Sie im linken Bereich auf „Ressourcengruppen“.
 
@@ -88,7 +88,7 @@ Nach der Verbindungsherstellung mit dem Datenstrom können Sie Ihre personalisie
 
 * Gerätestandort auf einer Karte (rechts)
 * Geräte mit Status und Schweregrad (links oben)
-* Geräte mit Regeln und Alarmstatus (links unten)
+* Geräte mit Regeln und Warnungsstatus (links unten)
 
 ![Power BI-Visualisierung](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 

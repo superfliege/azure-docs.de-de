@@ -4,7 +4,7 @@ description: Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen M
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ab0face3c211a8ea1477f40167f80330f0423498
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2a13df5fc609fe7cfddff91841e082c123d758f5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379263"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468746"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
@@ -38,7 +38,7 @@ Um Ihr Problem zu beheben, beginnen Sie mit [Allgemeine zu berücksichtigende Pr
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Allgemeine zu berücksichtigende Problembereiche beim Anwendungszugriff
 
-Im Folgenden finden Sie eine Liste der allgemeinen Problembereiche, die Sie untersuchen können, wenn Sie eine Vorstellung haben, wo Sie anfangen sollten. Es wird jedoch empfohlen, für einen schnellen Einstieg die [Exemplarische Vorgehensweise: Schritte zur Behandlung von Problemen beim Zugriff auf Microsoft-Anwendungen](#walkthrough-steps-to-troubleshoot-microsoft-application-access) zu lesen.
+Im Anschluss finden Sie eine Liste der allgemeinen Problembereiche, die Sie untersuchen können, wenn Sie eine Vorstellung davon haben, wo Sie ansetzen können. Für einen schnellen Einstieg empfehlen wir jedoch den Artikel [Probleme beim Anmelden bei Microsoft-Anwendungen](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
 
 -   [Probleme mit dem Konto des Benutzers](#problems-with-the-users-account)
 
@@ -204,7 +204,7 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
 
 9.  Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
 
-  * **Hinweis:** Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status in **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
+  * **Hinweis**: Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status zu **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
 
 ### <a name="check-a-users-authentication-contact-info"></a>Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
 

@@ -4,7 +4,7 @@ description: Dieser Artikel wendet sich an IT-Fachpersonal und erläutert Richtl
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: barbkess
 ms.custom: seohack1
-ms.openlocfilehash: 844f569b7c425f6a67acabe491508aa8d5fb00f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d717b9a89b2c22712821d96014e2f60ee4c0e4d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669717"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463642"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Entwickeln von Branchen-Apps für Azure Active Directory
 Dieser Leitfaden bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich primär an globale Administratoren von Active Directory/Office 365.
@@ -41,8 +41,8 @@ Durch das Registrieren einer Anwendung können alle Benutzer folgende Aktionen a
   * Azure Active Directory als oAuth-Autorisierungsserver (Absichern einer von der Anwendung offengelegten API)
 * Legen Sie die erforderlichen Berechtigungen für das ordnungsgemäße Funktionieren der Anwendung fest, einschließlich:
 
-     - App-Berechtigungen (nur für globale Administratoren). Zum Beispiel: Rollenmitgliedschaft in einer anderen Azure AD-Anwendung oder Rollenmitgliedschaft in Bezug auf eine Azure-Ressource, eine Azure-Ressourcengruppe oder ein Azure-Abonnement
-     - Delegierte Berechtigungen (jeder Benutzer) Zum Beispiel: Azure AD, Anmelden und Profil lesen
+     - App-Berechtigungen (nur für globale Administratoren). Beispiel:  Rollenmitgliedschaft in einer anderen Azure AD-Anwendung oder Rollenmitgliedschaft in Bezug auf eine Azure-Ressource, eine Azure-Ressourcengruppe oder ein Azure-Abonnement
+     - Delegierte Berechtigungen (jeder Benutzer) Beispiel:  Azure AD, Anmelden und Profil lesen
 
 > [!NOTE]
 > Standardmäßig kann jedes Mitglied eine Anwendung registrieren. Informationen zum Einschränken von Berechtigungen für die Registrierung von Anwendungen für bestimmte Mitglieder finden Sie unter [Wie werden Anwendungen zu Azure AD hinzugefügt?](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)

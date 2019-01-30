@@ -4,7 +4,7 @@ description: In diesem Dokument werden die in Azure AD Connect verfügbaren Ger�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: c0ff679c-7ed5-4d6e-ac6c-b2b6392e7892
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c21b4b8996d7dae62c2aa1937c2876a66f6f82bd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 95c631c38b975c71d5e026d33391792ee811bbc6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320559"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477072"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect: Geräteoptionen
 
 Die folgende Dokumentation enthält Informationen zu den verschiedenen Geräteoptionen, die in Azure AD Connect verfügbar sind. Mit Azure AD Connect lassen sich die beiden folgenden Vorgänge konfigurieren: 
-* **Azure AD Hybrid Join**: Wenn Ihre Umgebung lokalen AD-Speicherbedarf aufweist und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD Hybrid eingebundene Geräte implementieren. Diese Geräte sind sowohl in Ihr lokales Active Directory als auch in Ihr Azure Active Directory eingebunden.
-* **Geräterückschreiben:** Geräterückschreiben ermöglicht bedingten gerätebasierten Zugriff auf geschützte Geräte mit AD FS (ab 2012 R2).
+* **Azure AD-Hybrideinbindung**: Wenn Ihre Umgebung lokalen AD-Speicherbedarf aufweist und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD Hybrid eingebundene Geräte implementieren. Diese Geräte sind sowohl in Ihr lokales Active Directory als auch in Ihr Azure Active Directory eingebunden.
+* **Geräterückschreiben**: Das Geräterückschreiben ermöglicht den bedingten gerätebasierten Zugriff auf mit AD FS (2012 R2 oder höher) geschützte Geräte.
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>Konfigurieren von Geräteoptionen in Azure AD Connect
 

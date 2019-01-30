@@ -11,33 +11,86 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 01/16/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7fb39886b19a2229188821eb39d4fb8a5928bb43
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 39ab31cd06707dbd488914da248941ab6d174c29
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276678"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388758"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service-Umgebung Management-Adressen
 
 Die App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service in einem Subnetz in Ihrem Azure Virtual Network (VNet).  Die ASE muss von der von Azure App Service verwendeten Verwaltungsebene aus zugänglich sein.  Dieser ASE-Verwaltungsdatenverkehr durchläuft das benutzergesteuerte Netzwerk. Wenn dieser Datenverkehr blockiert oder falsch weitergeleitet wird, wird die ASE angehalten. Weitere Informationen zu den Netzwerkabhängigkeiten der App Service-Umgebung finden Sie unter [Überlegungen zum Netzwerkbetrieb in der App Service-Umgebung][networking]. Allgemeine Informationen zur ASE finden Sie unter [Einführung in die App Service-Umgebung][intro].
 
-Dieses Dokument listet die App Service-Quelladressen für den Verwaltungsdatenverkehr zur ASE auf und erfüllt zwei wichtige Funktionen.  
+Alle ASEs besitzen eine öffentliche VIP, an der Verwaltungsdatenverkehr eingeht. Der eingehende Verwaltungsdatenverkehr von diesen Adressen geht an den Ports 454 und 455 der öffentlichen VIP Ihrer ASE ein. Dieses Dokument listet die App Service-Quelladressen für den Verwaltungsdatenverkehr zur ASE auf. Diese Adressen befinden sich im Diensttag AppServiceManagement.
 
-1. Diese Adressen können zum Erstellen von Netzwerksicherheitsgruppen zum Sperren des eingehenden Datenverkehrs verwendet werden.  
-2. Sie können Routen anhand dieser Adressen erstellen, um die Bereitstellung von Tunnelerzwingung zu unterstützen. Ausführliche Informationen zum Konfigurieren Ihrer ASE für den Betrieb in einer Umgebung, in der ausgehender Datenverkehr lokal gesendet wird, finden Sie unter [Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling][forcedtunnel]
+Sie können das Diensttag AppServiceManagement in Ihren Netzwerksicherheitsgruppen verwenden, um eingehenden Datenverkehr zu Ihrer ASE zu sperren.  
 
-Alle ASEs besitzen eine öffentliche VIP, an der Verwaltungsdatenverkehr eingeht. Der eingehende Verwaltungsdatenverkehr von diesen Adressen geht an den Ports 454 und 455 der öffentlichen VIP Ihrer ASE ein.  
+Die unten angegebenen Adressen können in einer Routingtabelle konfiguriert werden. Dies ist wichtig, wenn Ihre ASE in einem VNET mit Tunnelerzwingung ausgeführt wird, wo andernfalls ein Problem mit asymmetrischem Routing auftreten könnte. Ausführliche Informationen zum Konfigurieren Ihrer ASE für den Betrieb in einer Umgebung, in der ausgehender Datenverkehr lokal gesendet wird, finden Sie unter [Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling][forcedtunnel]
 
 ## <a name="list-of-management-addresses"></a>Liste der Verwaltungsadressen ##
 
 | Region | Adressen |
 |--------|-----------|
-| Alle öffentlichen Regionen | 70.37.57.58, 157.55.208.185, 52.174.22.21, 13.94.149.179, 13.94.143.126, 13.94.141.115, 52.178.195.197, 52.178.190.65, 52.178.184.149, 52.178.177.147, 13.75.127.117, 40.83.125.161, 40.83.121.56, 40.83.120.64, 52.187.56.50, 52.187.63.37, 52.187.59.251, 52.187.63.19, 52.165.158.140, 52.165.152.214, 52.165.154.193, 52.165.153.122, 104.44.129.255, 104.44.134.255, 104.44.129.243, 104.44.129.141, 23.102.188.65, 191.236.154.88, 13.64.115.203, 65.52.193.203, 70.37.89.222, 52.224.105.172, 23.102.135.246 |
-| Microsoft Azure Government (Fairfax oder MAG) | 23.97.29.209, 13.72.53.37, 13.72.180.105, 23.97.0.17, 23.97.16.184 |
+| Alle öffentlichen Regionen | 70.37.57.58, 157.55.208.185, 52.174.22.21, 13.94.149.179, 13.94.143.126, 13.94.141.115, 52.178.195.197, 52.178.190.65, 52.178.184.149, 52.178.177.147, 13.75.127.117, 40.83.125.161, 40.83.121.56, 40.83.120.64, 52.187.56.50, 52.187.63.37, 52.187.59.251, 52.187.63.19, 52.165.158.140, 52.165.152.214, 52.165.154.193, 52.165.153.122, 104.44.129.255, 104.44.134.255, 104.44.129.243, 104.44.129.141, 23.102.188.65, 191.236.154.88, 13.64.115.203, 65.52.193.203, 70.37.89.222, 52.224.105.172, 23.102.135.246, 52.225.177.153, 65.52.172.237, 52.151.25.45, 40.124.47.188 |
+| Microsoft Azure Government | 23.97.29.209, 13.72.53.37, 13.72.180.105, 23.97.0.17, 23.97.16.184 |
+
+## <a name="configuring-a-network-security-group"></a>Konfigurieren einer Netzwerksicherheitsgruppe
+
+Mit Netzwerksicherheitsgruppen müssen Sie sich nicht um die einzelnen Adressen kümmern oder Ihre eigene Konfiguration verwalten. Das IP-Diensttag AppServiceManagement wird stets auf dem neuesten Stand bei allen Adressen gehalten. Um dieses IP-Diensttag in Ihrer NSG zu verwenden, wechseln Sie zum Portal, öffnen Sie die Netzwerksicherheitsgruppen-Benutzeroberfläche, und wählen Sie „Eingangssicherheitsregeln“ aus. Wenn bereits eine Regel für den eingehenden Verwaltungsdatenverkehr vorhanden ist, bearbeiten Sie sie. Wenn diese NSG nicht mit Ihrer ASE erstellt wurde oder neu ist, wählen Sie **Hinzufügen** aus. Wählen Sie in der Dropdownliste „Quelle“ die Option **Diensttag** aus.  Wählen Sie für das Diensttag „Quelle“ die Option **AppServiceManagement** aus. Legen Sie die Quellportbereiche auf \*, das Ziel auf **Alle**, die Zielportbereiche auf **454–455**, das Protokoll auf **TCP** und die Aktion auf **Zulassen** fest. Wenn Sie die Regel erstellen, müssen Sie die Priorität festlegen. 
+
+![Erstellen einer NSG mit dem Diensttag][1]
+
+## <a name="configuring-a-route-table"></a>Erstellen einer Routingtabelle
+
+Die Verwaltungsadressen können in einer Routingtabelle mit dem nächsten Hop „Internet“ platziert werden, um sicherzustellen, dass sämtlicher eingehender Verwaltungsdatenverkehr über denselben Pfad zurückgeleitet werden kann. Diese Routen sind beim Konfigurieren der Tunnelerzwingung erforderlich. Zum Erstellen der Routingtabelle können Sie das Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden.  Die Befehle zum Erstellen einer Routingtabelle mithilfe der Azure-Befehlszeilenschnittstelle über eine PowerShell-Eingabeaufforderung sind unten aufgeführt. 
+
+    $rg = "resource group name"
+    $rt = "route table name"
+    $location = "azure location"
+    az network route-table create --name $rt --resource-group $rg --location $location
+    az network route-table route create -g $rg --route-table-name $rt -n 70.37.57.58 --next-hop-type Internet --address-prefix 70.37.57.58/32 
+    az network route-table route create -g $rg --route-table-name $rt -n 157.55.208.185 --next-hop-type Internet --address-prefix 157.55.208.185/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.174.22.21 --next-hop-type Internet --address-prefix 52.174.22.21/32 
+    az network route-table route create -g $rg --route-table-name $rt -n 13.94.149.179 --next-hop-type Internet --address-prefix 13.94.149.179/32
+    az network route-table route create -g $rg --route-table-name $rt -n 13.94.143.126 --next-hop-type Internet --address-prefix 13.94.143.126/32
+    az network route-table route create -g $rg --route-table-name $rt -n 13.94.141.115 --next-hop-type Internet --address-prefix 13.94.141.115/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.178.195.197 --next-hop-type Internet --address-prefix 52.178.195.197/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.178.190.65 --next-hop-type Internet --address-prefix 52.178.190.65/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.178.184.149 --next-hop-type Internet --address-prefix 52.178.184.149/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.178.177.147 --next-hop-type Internet --address-prefix 52.178.177.147/32
+    az network route-table route create -g $rg --route-table-name $rt -n 13.75.127.117 --next-hop-type Internet --address-prefix 13.75.127.117/32
+    az network route-table route create -g $rg --route-table-name $rt -n 40.83.125.161 --next-hop-type Internet --address-prefix 40.83.125.161/32
+    az network route-table route create -g $rg --route-table-name $rt -n 40.83.121.56 --next-hop-type Internet --address-prefix 40.83.121.56/32
+    az network route-table route create -g $rg --route-table-name $rt -n 40.83.120.64 --next-hop-type Internet --address-prefix 40.83.120.64/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.187.56.50 --next-hop-type Internet --address-prefix 52.187.56.50/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.187.63.37 --next-hop-type Internet --address-prefix 52.187.63.37/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.187.59.251 --next-hop-type Internet --address-prefix 52.187.59.251/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.187.63.19 --next-hop-type Internet --address-prefix 52.187.63.19/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.165.158.140 --next-hop-type Internet --address-prefix 52.165.158.140/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.165.152.214 --next-hop-type Internet --address-prefix 52.165.152.214/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.165.154.193 --next-hop-type Internet --address-prefix 52.165.154.193/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.165.153.122 --next-hop-type Internet --address-prefix 52.165.153.122/32
+    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.255 --next-hop-type Internet --address-prefix 104.44.129.255/32
+    az network route-table route create -g $rg --route-table-name $rt -n 104.44.134.255 --next-hop-type Internet --address-prefix 104.44.134.255/32
+    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.243 --next-hop-type Internet --address-prefix 104.44.129.243/32
+    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.141 --next-hop-type Internet --address-prefix 104.44.129.141/32
+    az network route-table route create -g $rg --route-table-name $rt -n 23.102.188.65 --next-hop-type Internet --address-prefix 23.102.188.65/32
+    az network route-table route create -g $rg --route-table-name $rt -n 191.236.154.88 --next-hop-type Internet --address-prefix 191.236.154.88/32
+    az network route-table route create -g $rg --route-table-name $rt -n 13.64.115.203 --next-hop-type Internet --address-prefix 13.64.115.203/32
+    az network route-table route create -g $rg --route-table-name $rt -n 65.52.193.203 --next-hop-type Internet --address-prefix 65.52.193.203/32
+    az network route-table route create -g $rg --route-table-name $rt -n 70.37.89.222 --next-hop-type Internet --address-prefix 70.37.89.222/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.224.105.172 --next-hop-type Internet --address-prefix 52.224.105.172/32
+    az network route-table route create -g $rg --route-table-name $rt -n 23.102.135.246 --next-hop-type Internet --address-prefix 23.102.135.246/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.225.177.153 --next-hop-type Internet --address-prefix 52.225.177.153/32
+    az network route-table route create -g $rg --route-table-name $rt -n 65.52.172.237 --next-hop-type Internet --address-prefix 65.52.172.237/32
+    az network route-table route create -g $rg --route-table-name $rt -n 52.151.25.45 --next-hop-type Internet --address-prefix 52.151.25.45/32
+    az network route-table route create -g $rg --route-table-name $rt -n 40.124.47.188 --next-hop-type Internet --address-prefix 40.124.47.188/32
+
+Nach dem Erstellen Ihrer Routingtabelle müssen Sie sie in Ihrem ASE-Subnetz festlegen.  
 
 ## <a name="get-your-management-addresses-from-api"></a>Abrufen der Verwaltungsadressen über eine API ##
 
@@ -52,6 +105,9 @@ Verwenden Sie die folgenden Befehle zum Aufrufen der API mit [armclient](https:/
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
 
+
+<!--IMAGES-->
+[1]: ./media/management-addresses/managementaddr-nsg.png
 
 <!-- LINKS -->
 [networking]: ./network-info.md

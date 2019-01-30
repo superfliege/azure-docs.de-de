@@ -2,18 +2,18 @@
 title: Überwachen der Azure Event Grid-Nachrichtenübermittlung
 description: Beschreibt, wie die Übermittlung von Azure Event Grid-Nachrichten überwacht wird.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: tomfitz
-ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 01/22/2019
+ms.author: spelluru
+ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626988"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464806"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
 
@@ -29,14 +29,14 @@ Das Portal zeigt Metriken für den Status der Übermittlung von Ereignisnachrich
 
 Für Themen gibt es diese Metriken:
 
-* **Veröffentlichen erfolgreich**: Das Ereignis wurde erfolgreich an das Thema gesendet und mit einer Antwort des Typs 2xx verarbeitet.
+* **Veröffentlichung erfolgreich**: Das Ereignis wurde erfolgreich an das Thema gesendet und mit einer Antwort des Typs 2xx verarbeitet.
 * **Fehler beim Veröffentlichen**: Das Ereignis wurde an das Thema gesendet, aber mit einem Fehlercode abgelehnt.
-* **Nicht übereinstimmende**: Das Ereignis wurde erfolgreich im Thema veröffentlicht, stimmt aber mit keinem Ereignisabonnement überein. Das Ereignis wurde gelöscht.
+* **Ohne Übereinstimmung**: Das Ereignis wurde erfolgreich im Thema veröffentlicht, stimmt aber mit keinem Ereignisabonnement überein. Das Ereignis wurde gelöscht.
 
 Für Abonnements gibt es diese Metriken:
 
-* **Übermittlung erfolgreich**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt und erhielt eine Antwort des Typs 2xx.
-* **Übermittlungsfehler**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt, erhielt aber eine Antwort des Typs 4xx oder 5xx.
+* **Übermittlung erfolgreich**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt und hat eine Antwort des Typs 2xx erhalten.
+* **Übermittlungsfehler**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt, hat aber eine Antwort des Typs 4xx oder 5xx erhalten.
 * **Abgelaufene Ereignisse**: Das Ereignis wurde nicht übermittelt, und alle Wiederholungsversuche wurden gesendet. Das Ereignis wurde gelöscht.
 * **Übereinstimmende Ereignisse**: Das Ereignis im Thema stimmt mit dem Ereignisabonnement überein.
 

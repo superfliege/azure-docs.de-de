@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 01/22/2019
+ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584495"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450880"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -39,7 +39,8 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle eNVM-SSD, virtueller Kern =1 LP (Hyperthread) |
 | Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
 | Arbeitsspeicher | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
-| Max. Speicherkapazität (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
+| Maximaler Speicher (universell) |  8 TB | 1 TB |
+| Max. Speicherkapazität (unternehmenskritisch) | 8 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
@@ -53,8 +54,7 @@ Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und �
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
-| Daten-/Protokoll-IOPS (ungefähr) | 500 – 7500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 – 110 K (1375 pro virtuellem Kern) |
-| Instanzprotokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
+| Daten-/Protokoll-IOPS (ungefähr) | 500 – 7500 pro Datei<br/>\*[abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines) Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
 | Datendurchsatz (ungefähr) | 100 – 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 – 48 MB/Sek. pro virtuellem Kern |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | Max. TempDB-Größe | 192 – 1920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
@@ -117,10 +117,10 @@ Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht 
 
 |Anzahl von Subnetzen|Subnetz 1|Subnetz 2|Subnetz 3|
 |:---|:---|:---|:---|
-|1|1 universelle und bis zu 8 unternehmenskritische<br>2 universelle und bis zu 4 unternehmenskritische|N/V| N/V|
-|2|0 universelle, bis zu 4 unternehmenskritische|1 universelle, bis zu 4 unternehmenskritische<br>2 universelle, 0 unternehmenskritische|N/V|
-|2|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 8 unternehmenskritische<br>1 universelle, bis zu 4 unternehmenskritische|N/V|
-|2|2 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|N/V|
+|1|1 universelle und bis zu 8 unternehmenskritische<br>2 universelle und bis zu 4 unternehmenskritische|–| –|
+|2|0 universelle, bis zu 4 unternehmenskritische|1 universelle, bis zu 4 unternehmenskritische<br>2 universelle, 0 unternehmenskritische|–|
+|2|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 8 unternehmenskritische<br>1 universelle, bis zu 4 unternehmenskritische|–|
+|2|2 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|–|
 |3|1 universelle, 0 unternehmenskritische|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|
 |3|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|
 

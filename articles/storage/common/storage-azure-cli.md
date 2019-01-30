@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 977d40ba6fdb00f47f4ff32e60642ee3ab102da2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984379"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413633"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -30,8 +30,8 @@ In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter 
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und den Storage-Dienst angegeben sind.
 
 ### <a name="accounts"></a>Konten
-* **Azure-Konto**: Falls Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
-* **Storage-Konto**: Weitere Informationen finden Sie unter Informationen zu [Azure Storage-Konten](storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+* **Azure-Konto:** Falls Sie noch nicht über ein Azure-Abonnement verfügen, [erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free/).
+* **Speicherkonto**: Siehe [Erstellen eines Speicherkontos](storage-quickstart-create-account.md) unter [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Installieren der Azure CLI
 
@@ -183,9 +183,9 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location` [Erforderlich]: Standort. Beispiel: USA, Westen
+* `--location` [Erforderlich]: Der Standort. Beispiel: USA, Westen
 * `--name` [Erforderlich]: Der Name des Speicherkontos. Der Name muss 3 bis 24 Zeichen lang sein und darf nur aus Kleinbuchstaben und Ziffern bestehen.
-* `--resource-group` [Erforderlich]: Name der Ressourcengruppe.
+* `--resource-group` [Erforderlich]: Name der Ressourcengruppe
 * `--sku` [Erforderlich]: Der Name der SKU des Speicherkontos. Zulässige Werte:
   * `Premium_LRS`
   * `Standard_GRS`
@@ -197,7 +197,7 @@ az storage account create \
 
 Sie können mehrere Speicherkonten in Ihrem Azure-Abonnement verwenden. Um eines für alle nachfolgenden Speicherbefehle auszuwählen, können Sie diese Umgebungsvariablen festlegen:
 
-Zeigen Sie zunächst mithilfe des Befehls [az storage account keys list](/cli/azure/storage/account/keys#list) Ihre Speicherkontoschlüssel an:
+Zeigen Sie zunächst mithilfe des Befehls [az storage account keys list](/cli/azure/storage/account/keys) Ihre Speicherkontoschlüssel an:
 
 ```azurecli-interactive
 az storage account keys list \

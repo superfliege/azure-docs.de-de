@@ -2,8 +2,8 @@
 title: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte Benutzer senden.
 documentationcenter: ios
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 services: notification-hubs
 ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 04/13/2018
-ms.author: dimazaid
-ms.openlocfilehash: 270311af94d0c0551626fc2906cade84e0c60664
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 4ecac47de08b458eac375f8f5e774c396aeb2f5d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918963"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448107"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -52,21 +52,21 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
    > [!NOTE]
    > In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, müssen Sie allen Klassennamen Ihren Organisationsnamen voranstellen.
 
-2. Fügen Sie die im Screenshot abgebildeten Komponenten aus der Objektbibliothek dem Ordner **Main.storyboard** hinzu.
+2. Fügen Sie in der Datei `Main.storyboard` die im folgenden Screenshot abgebildeten Komponenten aus der Objektbibliothek hinzu.
 
     ![Storybard in Xcode Interface Builder bearbeiten][1]
 
-   * **Username**: Ein UITextField mit dem Platzhaltertext *Enter Username*, direkt unter "sendResult Label" und durch den linken und rechten Rand und die Anordnung unter "sendResult Label" beschränkt.
-   * **Password**: Ein UITextField mit dem Platzhaltertext *Enter Password*, direkt unter dem Textfeld "Username" und durch den linken und rechten Rand und die Anordnung unter dem Textfeld "Username" beschränkt. Aktivieren Sie die Option **Secure Text Entry** im Attribute Inspector unter *Return Key*.
-   * **Log in**: Ein bezeichneter UIButton direkt unter dem Kennwortfeld. Deaktivieren Sie die Option **Enabled** im Attributes Inspector unter *Control-Content*.
+   * **Benutzername**: Ein UITextField mit dem Platzhaltertext *Enter Username*, direkt unter der Bezeichnung zum Senden der Ergebnisse und durch den linken und rechten Rand und die Anordnung unter der Bezeichnung zum Senden der Ergebnisse beschränkt.
+   * **Kennwort**: Ein UITextField mit dem Platzhaltertext *Enter Password*, direkt unter dem Textfeld „Username“ und durch den linken und rechten Rand und die Anordnung unter dem Textfeld „Username“ beschränkt. Aktivieren Sie die Option **Secure Text Entry** im Attribute Inspector unter *Return Key*.
+   * **Log in:** Ein bezeichneter UIButton direkt unter dem Kennwortfeld. Deaktivieren Sie die Option **Enabled** im Attributes Inspector unter *Control-Content*.
    * **WNS:** Bezeichnung und Switch, um das Senden der Benachrichtigung an den Windows-Benachrichtigungsdienst zu aktivieren, wenn er auf dem Hub eingerichtet wurde. Siehe dazu das Tutorial [Erste Schritte für Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-   * **GCM:** Bezeichnung und Switch, um das Senden der Benachrichtigung an Google Cloud Messaging zu aktivieren, wenn es auf dem Hub eingerichtet wurde. Siehe dazu das Lernprogramm [Erste Schritte für Android](notification-hubs-android-push-notification-google-gcm-get-started.md) .
-   * **APNS**: Bezeichnung und Switch, um das Senden der Benachrichtigung an den Apple Platform Notification Service zu aktivieren.
+   * **GCM**: Bezeichnung und Switch, um das Senden der Benachrichtigung an Google Cloud Messaging zu aktivieren, wenn es auf dem Hub eingerichtet wurde. Siehe dazu das Lernprogramm [Erste Schritte für Android](notification-hubs-android-push-notification-google-gcm-get-started.md) .
+   * **APNS:** Bezeichnung und Switch, um das Senden der Benachrichtigung an den Apple Platform Notification Service zu aktivieren.
    * **Recipient Username:** ein UITextField mit dem Platzhaltertext *Recipient username tag*, direkt unter der GCM-Bezeichnung und durch den linken und rechten Rand und die Anordnung unter der GCM-Bezeichnung beschränkt.
 
     Im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) wurden einige Komponenten hinzugefügt.
 
-3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu **ViewController.h**, und fügen Sie diese neuen Outlets hinzu.
+3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu.
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. Fügen Sie in **ViewController.h** folgende `#define`-Anweisung direkt hinter den import-Anweisungen hinzu. Ersetzen Sie den Platzhalter *<Enter Your Backend Endpoint\>* durch die Ziel-URL, die Sie zum Bereitstellen Ihres App-Back-Ends im vorherigen Abschnitt verwendet haben. Beispiel: *http://you_backend.azurewebsites.net*
+4. Fügen Sie in `ViewController.h` folgende `#define`-Zeile direkt hinter den import-Anweisungen hinzu. Ersetzen Sie den Platzhalter `<Enter Your Backend Endpoint>` durch die Ziel-URL, die Sie im vorherigen Abschnitt zum Bereitstellen Ihres App-Back-Ends verwendet haben. Beispiel: *http://your_backend.azurewebsites.net*
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
     ```
 
-5. Erstellen Sie in Ihrem Projekt eine neue **Cocoa Touch**-Klasse mit dem Namen **RegisterClient** für die Schnittstelle mit dem erstellten ASP.NET-Back-End. Erstellen Sie die Klasse, die von `NSObject`erbt. Fügen Sie dann in "RegisterClient.h" folgenden Code hinzu.
+5. Erstellen Sie in Ihrem Projekt eine neue „Cocoa Touch“-Klasse mit dem Namen `RegisterClient` als Schnittstelle mit dem erstellten ASP.NET-Back-End. Erstellen Sie die Klasse, die von `NSObject`erbt. Fügen Sie anschließend in `RegisterClient.h` den folgenden Code hinzu.
 
     ```objc
     @interface RegisterClient : NSObject
@@ -288,9 +288,9 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 
     Dieser Code implementiert die im Artikel [Registrieren über ein App-Back-End](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) erläuterte Logik unter Verwendung von NSURLSession zum Durchführen von REST-Aufrufen an das App-Back-End und von NSUserDefaults zum lokalen Speichern der vom Notification Hub zurückgegebenen registrationId.
 
-    Die Eigenschaft **authorizationHeader** dieser Klasse muss festgelegt werden, damit die Klasse ordnungsgemäß funktioniert. Diese Eigenschaft wird von der **ViewController**-Klasse nach der Anmeldung festgelegt.
+    Die `authorizationHeader`-Eigenschaft dieser Klasse muss festgelegt werden, damit die Klasse ordnungsgemäß funktioniert. Diese Eigenschaft wird von der `ViewController`-Klasse nach der Anmeldung festgelegt.
 
-8. Fügen Sie in "ViewController.h" eine `#import` -Anweisung für "RegisterClient.h" ein. Fügen Sie dann eine Deklaration für das Gerätetoken und einen Verweis auf eine `RegisterClient`-Instanz im `@interface`-Abschnitt hinzu:
+8. Fügen Sie in `ViewController.h` eine `#import`-Anweisung für `RegisterClient.h` hinzu. Fügen Sie dann eine Deklaration für das Gerätetoken und einen Verweis auf eine `RegisterClient`-Instanz im `@interface`-Abschnitt hinzu:
 
     ```objc
     #import "RegisterClient.h"
@@ -312,7 +312,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     ```
 
     > [!NOTE]
-    > Der folgende Codeausschnitt ist kein sicheres Authentifizierungsschema. Sie sollten die Implementierung von **createAndSetAuthenticationHeaderWithUsername:AndPassword:** durch Ihren spezifischen Authentifizierungsmechanismus ersetzen, der ein von der RegisterClient-Klasse verwendetes Authentifizierungstoken generiert, z.B. OAuth, Active Directory.
+    > Der folgende Codeausschnitt ist kein sicheres Authentifizierungsschema. Sie sollten die Implementierung von `createAndSetAuthenticationHeaderWithUsername:AndPassword:` durch Ihren spezifischen Authentifizierungsmechanismus ersetzen, der ein von der RegisterClient-Klasse verwendetes Authentifizierungstoken generiert, z.B. OAuth, Active Directory.
 
 10. Fügen Sie dann im `@implementation`-Abschnitt von `ViewController.m` den folgenden Code ein, der die Implementierung zum Festlegen des Gerätetokens und Authentifizierungsheaders hinzugefügt.
 
@@ -444,7 +444,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     }
     ```
 
-13. Fügen Sie in der Funktion **ViewDidLoad**Folgendes hinzu, um die RegisterClient-Instanz zu instanziieren und den Delegat für Ihre Textfelder festzulegen.
+13. Fügen Sie in der Funktion `ViewDidLoad` Folgendes hinzu, um die `RegisterClient`-Instanz zu instanziieren und den Delegat für Ihre Textfelder festzulegen.
 
     ```objc
     self.UsernameField.delegate = self;
@@ -453,7 +453,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
 
-14. Entfernen Sie jetzt in **AppDelegate.m** den gesamten Inhalt der `application:didRegisterForPushNotificationWithDeviceToken:`-Methode, und ersetzen Sie ihn durch Folgendes, um sicherzustellen, dass der Ansichtscontroller das neueste Gerätetoken aus APNs abgerufen hat:
+14. Entfernen Sie jetzt in `AppDelegate.m` den gesamten Inhalt der `application:didRegisterForPushNotificationWithDeviceToken:`-Methode, und ersetzen Sie ihn durch Folgendes, um sicherzustellen, dass der Ansichtscontroller das neueste Gerätetoken aus APNs abgerufen hat:
 
     ```objc
     // Add import to the top of the file
@@ -467,7 +467,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     }
     ```
 
-15. Stellen Sie schließlich sicher, dass **AppDelegate.m**die folgende Methode enthält:
+15. Stellen Sie schließlich sicher, dass `AppDelegate.m` die folgende Methode enthält:
 
     ```objc
     - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -497,8 +497,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 In diesem Tutorial haben Sie gelernt, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, deren Registrierungen Tags zugeordnet sind. Um zu erfahren, wie Sie standortbasierte Pushbenachrichtigungen senden, fahren Sie mit dem folgenden Tutorial fort: 
 
 > [!div class="nextstepaction"]
->[Senden standortbasierter Pushbenachrichtigungen](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
-
+>[Senden standortbasierter Pushbenachrichtigungen](notification-hubs-push-bing-spatial-data-geofencing-notification.md)
 
 [1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-interface.png
 [2]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-user-pwd.png

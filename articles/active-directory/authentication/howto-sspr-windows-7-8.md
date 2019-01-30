@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 1b488e938cf314eef18117ffd33f582319260162
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427728"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438778"
 ---
-# <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Aktivieren der Kennwortzurücksetzung unter Windows 7, 8 und 8.1
+# <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Gewusst wie: Aktivieren der Kennwortzurücksetzung unter Windows 7, 8 und 8.1
 
 Als Administrator ist die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) für Sie aktiviert. Benutzer die ihr Kennwort zurücksetzen möchten, rufen jedoch beim Helpdesk an, da sie kein Browserfenster für den Zugriff auf das [SSPR-Portal](https://aka.ms/sspr) öffnen können. Für Windows 10-Computer können Sie den Link „Kennwort zurücksetzen“ auf dem Anmeldebildschirm anhand des Tutorials [Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm](tutorial-sspr-windows.md) aktivieren. Mithilfe des folgenden Leitfadens können Sie Windows 7-, 8- und 8.1-Benutzern das Zurücksetzen ihres Kennworts mithilfe von SSPR auf dem Windows-Anmeldebildschirm ermöglichen.
 

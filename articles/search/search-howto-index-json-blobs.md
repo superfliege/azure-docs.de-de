@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6df8d9a5c1ca1e587834ea08f73b3dd9498f8537
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cafb48f28e38794ce0757d50a5d87432b237e17c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753148"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467161"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indizieren von JSON-Blobs mit dem Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Blobindexer konfigurieren, um strukturierten Inhalt aus JSON-Blobs in Azure Blob Storage zu extrahieren.
@@ -23,6 +23,9 @@ In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Blobindexer konfi
 Sie können das [Portal](#json-indexer-portal), [REST-APIs](#json-indexer-rest) oder das [.NET SDK](#json-indexer-dotnet) verwenden, um JSON-Inhalt zu indizieren. JSON-Dokumente befinden sich grundsätzlich in einem Blobcontainer in einem Azure-Speicherkonto, egal für welche Option Sie sich entscheiden. Anleitungen zum Übertragen von JSON-Dokumenten mithilfe von Push von anderen Nicht-Azure-Plattformen finden Sie unter [Indizieren externer Daten für Abfragen in Azure Search](search-what-is-data-import.md).
 
 JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument oder einem JSON-Array. Mit dem Blobindexer in Azure Search können beide Fälle analysiert werden. Dies richtet sich danach, wie Sie den Parameter **parsingMode** in der Anforderung festlegen.
+
+> [!IMPORTANT]
+> Die JSON-Blobindizierung ist allgemein verfügbar. Die JsonArray-Analyse befindet sich allerdings noch in der Public Preview-Phase und darf nicht in Produktionsumgebungen verwendet werden. Weitere Informationen finden Sie unter [REST api-version=2017-11-11-Preview](search-api-2017-11-11-preview.md). 
 
 <a name="json-indexer-portal"></a>
 

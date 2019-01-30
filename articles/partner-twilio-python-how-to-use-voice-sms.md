@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 63eb894c64919826922fa60f4e12894542a97c69
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994164"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447359"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Python
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -88,7 +88,7 @@ Richten Sie [zuerst eine neue Azure-Linux-VM][azure_vm_setup] ein, die als Host 
   3. Hinzufügen einer **ausgehenden Regel** für **port 80**. Achten Sie darauf, dass Sie Eingehende von einer beliebigen Adresse zulassen.
 
 ### <a name="set-the-dns-name-label"></a>DNS-Namensbezeichnung eingeben
-  1. Navigieren Sie zur Seite [Die öffentliche IP-Adresse][azure_ips].
+  1. Navigieren Sie zur Seite [Die öffentlichen IP-Adressen][azure_ips].
   2. Wählen Sie die öffentliche IP-Adresse aus, die Ihrem virtuellen Computer entspricht.
   3. Legen Sie den **DNS-Namensbezeichnung** im Abschnitt **Konfiguration** fest. Bei diesem Beispiel sieht es etwa wie folgt *ihr Domänenname*.centralus.cloudapp.azure.com
 

@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 30dff14f322bcd66ea56b4b12843a6293cd95326
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6a1e3d2362ab711ee50f9ca94737883893e2ffd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423795"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450336"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 
@@ -49,7 +49,7 @@ Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter [Anmelden von
 
 Eine *Anwendung mit einem Mandanten* ist eine Anwendung, die nur Anmeldungen von Benutzern einer definierten Azure Active Directory-Instanz akzeptiert. Externe Benutzer (einschließlich Geschäfts- oder Schulkonten aus anderen Organisationen oder persönliche Konten) können sich bei Anwendungen mit einem Mandanten anmelden, nachdem jeder Benutzer als Gastkonto der Azure AD-Instanz hinzugefügt worden ist, bei der die Anwendung registriert ist. 
 
-Sie können Benutzer über die [Azure AD B2B-Zusammenarbeit](../b2b/what-is-b2b.md) als Gastkonten zu Azure AD hinzufügen – und zwar [programmgesteuert](../../active-directory-b2c/code-samples.md). Wenn Sie B2B verwenden, können Benutzer ein Self-Service-Portal erstellen, das keine Einladung für die Anmeldung erfordert. Weitere Informationen finden Sie unter [Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+Sie können Benutzer [programmgesteuert](../../active-directory-b2c/code-samples.md) über die [Azure AD B2B-Zusammenarbeit](../b2b/what-is-b2b.md) als Gastkonten zu Azure AD hinzufügen. Wenn Sie B2B verwenden, können Benutzer ein Self-Service-Portal erstellen, das keine Einladung für die Anmeldung erfordert. Weitere Informationen finden Sie unter [Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
 
 Anwendungen mit einem Mandanten können die *Kontaktformular*-Oberfläche aktivieren, aber wenn Sie die kostenlose Testbenutzeroberfläche per Einfachklick, die AppSource empfiehlt, aktivieren möchten, ermöglichen Sie stattdessen die Mehrinstanzenfähigkeit Ihrer Anwendung.
 

@@ -4,7 +4,7 @@ description: Problembehandlung für häufige Probleme beim Konfigurieren der Ben
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: fe96ecc0ba6904819f0262a2f470e37203a7952e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 4d8e5cb577eb7b3eecc800e7a74b1ddcbbc2c76c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354970"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813371"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog 
 
@@ -30,7 +30,7 @@ Beim Konfigurieren der [automatischen Benutzerbereitstellung](user-provisioning.
 
 Wenn für die Anwendung auch das SAML-basierte einmalige Anmelden konfiguriert ist, ist der Fehler höchstwahrscheinlich darauf zurückzuführen, dass das Azure AD-interne, anwendungsspezifische Speicherlimit für Zertifikate und Anmeldeinformationen überschritten wurde.
 
-Azure AD bietet derzeit eine maximale Speicherkapazität von einem KB für alle Zertifikate, geheimen Token, Anmeldeinformationen und die dazugehörigen Konfigurationsdaten für eine einzelne Instanz einer Anwendung (auch Dienstprinzipaldatensatz in Azure AD genannt).
+Azure AD bietet derzeit eine maximale Speicherkapazität von 1.024 Byte für alle Zertifikate, geheimen Token, Anmeldeinformationen und die dazugehörigen Konfigurationsdaten für eine einzelne Instanz einer Anwendung (in Azure AD auch als Dienstprinzipaldatensatz bezeichnet).
 
 Wenn das SAML-basierte einmalige Anmelden konfiguriert ist, wird das zum Signieren der SAML-Token verwendete Zertifikat hier gespeichert – und beansprucht häufig bereits mehr als die Hälfte des verfügbaren Speicherplatzes.
 

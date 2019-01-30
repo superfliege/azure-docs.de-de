@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 830052341c4f0e3488c8e63da59cbef1f72e158a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42146222"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819636"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Verbinden von IoT-Geräten mit Azure: IoT Hub und Event Hubs
 
@@ -30,13 +30,14 @@ Die folgende Tabelle enthält Details zum Vergleich der beiden Tarife von IoT Hu
 | IoT-Funktion | IoT Hub-Standard-Tarif | IoT Hub-Basic-Tarif | Event Hubs |
 | --- | --- | --- | --- |
 | Nachrichten, die von Geräten an die Cloud gesendet werden | ![Prüfen][checkmark] | ![Prüfen][checkmark] | ![Prüfen][checkmark] |
-| Protokolle: HTTPS, AMQP, AMQP über webSockets | ![Prüfen][checkmark] | ![Prüfen][checkmark] | ![Prüfen][checkmark] |
-| Protokolle: MQTT, MQTT über webSockets | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
+| Protocols: HTTPS, AMQP, AMQP über webSockets | ![Prüfen][checkmark] | ![Prüfen][checkmark] | ![Prüfen][checkmark] |
+| Protocols: MQTT, MQTT über webSockets | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
 | Gerätebasierte Identität | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
 | Dateiupload von Geräten | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
 | Device Provisioning-Dienst | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
 | Senden von Nachrichten aus der Cloud an Geräte | ![Prüfen][checkmark] |  |  |
 | Gerätezwillinge und Geräteverwaltung | ![Prüfen][checkmark] |  |  |
+| Gerätestreams (Vorschau) | ![Prüfen][checkmark] |  |  |
 | IoT Edge | ![Prüfen][checkmark] |  |  |
 
 Auch wenn die D2C-Clouddatenerfassung der einzige Anwendungsfall ist, sollten Sie unbedingt IoT Hub verwenden, da IoT Hub einen Dienst bietet, der für die Verbindung von IoT-Geräten ausgelegt ist. 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 622cdd36a1ecf582c4cdb883b12753ee2a75d50e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52854292"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382446"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Ein AKS-Cluster wird in einer einzelnen Region bereitgestellt. Um für Schutz be
 * [Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * Wählen Sie zwei Regionen in Ihrem geografischen Bereich aus, die miteinander gekoppelt sind. Diese Regionen koordinieren Plattformupdates und priorisieren bei Bedarf Wiederherstellungsvorgänge.
 * Ebenen der Dienstverfügbarkeit (heiß/heiß, heiß/warm, heiß/kalt)
-  * Entscheiden Sie, ob Sie beide Regionen gleichzeitig betreiben möchten, sodass eine Region sofort zur Weiterleitung des Datenverkehrs *bereit* ist, oder ob eine Region eine gewisse Vorlaufzeit zur Verarbeitung von Datenverkehr benötigen darf.
+  * Entscheiden Sie, ob Sie beide Regionen gleichzeitig betreiben möchten, sodass eine Region sofort zur Weiterleitung des Datenverkehrs *bereit* ist, oder ob eine Region eine gewisse Vorlaufzeit zur Verarbeitung von Datenverkehr benötigt.
 
 AKS-Regionsverfügbarkeit und Regionspaare sollten zusammen geplant werden. Stellen Sie Ihre AKS-Cluster in Regionspaaren bereit, die für die gemeinsame Verwaltung der Notfallwiederherstellung konzipiert sind. Ein Beispiel: AKS ist in den Regionen *USA, Osten* und *USA, Westen* verfügbar. Diese Regionen sind auch gekoppelt. Daher empfiehlt sich die Nutzung dieser beiden Regionen, wenn Sie Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung von AKS entwickeln.
 

@@ -11,28 +11,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 30c033b487fe58d017080b02c257502f82338164
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710039"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388302"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurieren von Nutzungseinstellungen und Richtlinien
-In diesem Artikel wird beschrieben, wie Sie die Anzahl der Benutzer für das Lab konfigurieren, die Benutzer beim Lab registrieren, die Anzahl der Stunden steuern, in denen sie den virtuellen Computer verwenden können, und vieles mehr. 
+In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
 
 
-## <a name="specify-the-number-of-users-allowed-into-the-lab"></a>Angeben der Anzahl der im Lab zulässigen Benutzer
+## <a name="add-users-to-the-lab"></a>Hinzufügen von Benutzern zum Lab
+Wenn Sie **Zugriff beschränken** aktiviert haben, fügen Sie der Liste Benutzer (E-Mail-Adressen) hinzu.
 
-1. Wählen Sie **Nutzungsrichtlinie** aus. 
-2. Geben Sie unter **Nutzungsrichtlinie** in „Einstellungen“ die **Anzahl der Benutzer** ein, die das Lab verwenden dürfen.
-3. Wählen Sie **Speichern**aus. 
+1. Klicken Sie im linken Menü auf **Benutzer**.
+2. Klicken Sie auf der Symbolleiste auf **Benutzer hinzufügen**. 
+3. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
 
-    ![Nutzungsrichtlinie](../media/how-to-manage-classroom-labs/usage-policy-settings.png)
+    ![Hinzufügen der E-Mail-Adressen von Benutzern](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Wählen Sie **Speichern** aus. In der Liste werden die E-Mail-Adressen und der Status (registriert oder nicht registriert) von Benutzern angezeigt. 
+
+    ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="send-registration-link-to-students"></a>Senden eines Registrierungslinks an Teilnehmer
+Das folgende Verfahren enthält Schritte zum Senden eines Registrierungslinks an Benutzer. Wenn die **Zugriffsbeschränkung** für das Lab aktiviert ist, können sich nur Benutzer in der Liste der Benutzer über den Registrierungslink beim Lab registrieren. 
 
 1. Wählen Sie im linken Menü die Option **Benutzer** aus, um zur Ansicht **Benutzer** zu wechseln. 
 2. Wählen Sie die Kachel **Get registration link** (Registrierungslink abrufen) aus.
@@ -52,9 +57,10 @@ In diesem Artikel wird beschrieben, wie Sie die Anzahl der Benutzer für das Lab
 
 Wählen Sie **Benutzer** im linken Menü, um die Liste der Benutzer anzuzeigen, die beim Lab registriert sind. 
 
-![Liste der beim Lab registrierten Benutzer](../media/how-to-configure-student-usage/users-list.png)
+![Liste der beim Lab registrierten Benutzer](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="set-quotas-per-user"></a>Festlegen von Kontingenten pro Benutzer
+Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen: 
 
 1. Klicken Sie im linken Menü auf **Benutzer**.
 2. Wählen Sie auf der Symbolleiste die Option **Quota per user: unlimited** (Kontingent pro Benutzer: unbegrenzt) aus. 
@@ -62,21 +68,9 @@ Wählen Sie **Benutzer** im linken Menü, um die Liste der Benutzer anzuzeigen, 
 4. Geben Sie unter **Wie viele Stunden möchten Sie den einzelnen Benutzern erlauben?** die gewünschte Stundenanzahl ein, und wählen Sie **Speichern** aus. 
 
     ![Anzahl von Stunden pro Benutzer](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Die Stundenanzahl wird nun auf der Symbolleiste angezeigt: **Quota per user: &lt;number of hours&gt;** (Kontingent pro Benutzer: <Stundenanzahl>). 
+5. Jetzt sehen Sie die Anzahl der Stunden auf der Symbolleiste: **Kontingent pro Benutzer: &lt;Anzahl Stunden&gt;**. 
 
     ![Kontingent pro Benutzer](../media/how-to-configure-student-usage/quota-per-user.png)
-
-## <a name="add-users-to-the-lab"></a>Hinzufügen von Benutzern zum Lab
-Wenn Sie **Zugriff beschränken** aktiviert haben, fügen Sie der Liste Benutzer (E-Mail-Adressen) hinzu.
-
-1. Klicken Sie im linken Menü auf **Benutzer**.
-2. Klicken Sie auf der Symbolleiste auf **Benutzer hinzufügen**. 
-3. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
-
-    ![Hinzufügen der E-Mail-Adressen von Benutzern](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Wählen Sie **Speichern**aus. In der Liste werden die E-Mail-Adressen und der Status (registriert oder nicht registriert) von Benutzern angezeigt. 
-
-    ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Hinzufügen von Benutzern durch Hochladen einer CSV-Datei
 Sie können auch eine CSV-Datei mit E-Mail-Adressen von Benutzern hochladen, um Benutzer hinzuzufügen.
@@ -96,6 +90,16 @@ Sie können folgende Aufgaben auf einer Studenten-VM ausführen:
 - Stellen Sie eine Verbindung zur VM her. 
 - Löschen Sie den virtuellen Computer. 
 - Zeigen Sie die Anzahl der Stunden an, für die Benutzer den virtuellen Computer verwendet haben. 
+
+## <a name="update-number-of-virtual-machines-in-lab"></a>Aktualisieren der Anzahl von virtuellen Computern im Lab
+Um die Anzahl der virtuellen Computer im Lab zu aktualisieren, gehen Sie auf der Seite **Virtuelle Computer** folgendermaßen vor:
+
+1. Wählen Sie im linken Menü **Virtuelle Computer** aus. 
+2. Wählen Sie auf der Symbolleiste **Lab capacity (Labkapazität): &lt;Anzahl&gt; Computer** aus. 
+3. Geben Sie die **Anzahl** von virtuellen Computern ein.
+4. Wählen Sie **Speichern** aus.
+
+    ![Virtuelle Computer im Lab](../media/how-to-configure-student-usage/number-virtual-machines.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260463"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449553"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Replikation
 
@@ -101,8 +101,8 @@ Der folgende Screenshot veranschaulicht dieses Beispiel. Im Screenshot:
 ### <a name="how-far-back-can-i-recover"></a>Wie weit kann ich bei der Wiederherstellung zurückgehen?
 Der älteste Wiederherstellungspunkt, den Sie verwenden können, ist 72 Stunden alt.
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>Was passiert, wenn ich über eine Replikationsrichtlinie von 24 Stunden verfüge und Site Recovery aufgrund eines Problems für mehr als 24 Stunden keinen Wiederherstellungspunkt generiert hat? Werden dann meine vorherigen Wiederherstellungspunkte gelöscht?
-Nein, in diesem Fall bewahrt Site Recovery all Ihre vorherigen Wiederherstellungspunkte auf. 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Was passiert, wenn ich über eine Replikationsrichtlinie von 24 Stunden verfüge und Site Recovery aufgrund eines Problems für mehr als 24 Stunden keinen Wiederherstellungspunkt generiert hat? Gehen meine vorherigen Wiederherstellungspunkte verloren?
+Nein. Site Recovery bewahrt alle Ihre vorherigen Wiederherstellungspunkte auf. Abhängig vom Aufbewahrungszeitfenster für Wiederherstellungspunkte (in diesem Fall: 24 Stunden) ersetzt Site Recovery den ältesten Punkt nur, wenn neue Punkte generiert werden. Da in diesem Fall aufgrund eines Problems kein neuer Wiederherstellungspunkt generiert wird, bleiben bei Erreichen des Aufbewahrungszeitfensters alle alten Punkte intakt.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde? 
 Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet. 

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894128"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391224"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
 
-Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. 
+Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind.
 
 Für jede bewährte Methode wird Folgendes beschrieben:
 
@@ -70,7 +70,7 @@ In diesem Szenario können in Azure ausgeführte Cluster oder eigenständige unt
 -   Rollenbasierte Zugriffssteuerung (RBAC): In diesem Szenario werden separate Identitäten (Zertifikate, Azure AD usw.) für alle Administrator- und Clientrollen verwendet, die auf den Cluster zugreifen. Sie geben die Rollenidentitäten bei der Erstellung des Clusters an.
 
 >[!NOTE]
->**Sicherheitsempfehlung für Azure-Cluster:** Verwenden Sie die Azure AD-Sicherheit, um Clients und Zertifikate für die Knoten-zu-Knoten-Sicherheit zu authentifizieren.
+>**Sicherheitsempfehlung für Azure-Cluster:** Verwenden Sie Azure AD-Sicherheit, um Clients und Zertifikate für die Knoten-zu-Knoten-Sicherheit zu authentifizieren.
 
 Informationen zum Konfigurieren eines eigenständigen Windows-Clusters finden Sie unter [Konfigurationseinstellungen für eigenständige Windows-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
 
@@ -104,9 +104,9 @@ Weitere Informationen zur Verwendung von X.509-Zertifikaten finden Sie unter [Hi
 ## <a name="configure-security-policies"></a>Konfigurieren von Sicherheitsrichtlinien
 Service Fabric schützt auch Ressourcen, die von Anwendungen verwendet werden. Ressourcen wie Dateien, Verzeichnisse und Zertifikate werden in den Benutzerkonten gespeichert, wenn die Anwendung bereitgestellt wird. Mit diesem Feature wird erreicht, dass ausgeführte Anwendungen auch in einer gemeinsamen gehosteten Umgebung sicher voneinander abgegrenzt sind.
 
--   Verwenden Sie eine Active Directory-Domänengruppe oder einen Active Directory-Benutzer: Führen Sie den Dienst mit den Anmeldeinformationen für einen Active Directory-Benutzer oder ein Active Directory-Gruppenkonto aus. Verwenden Sie unbedingt eine lokale Active Directory-Instanz in Ihrer Domäne, nicht Azure Active Directory. Auf andere Ressourcen in der Domäne greifen Sie über einen Domänenbenutzer oder eine Domänengruppe zu, für den bzw. die Berechtigungen gewährt wurden. Zu solchen Ressourcen gehören z.B. Dateifreigaben.
+-   Verwenden einer Active Directory-Domänengruppe oder eines Active Directory-Benutzers: Führen Sie den Dienst mit den Anmeldeinformationen für einen Active Directory-Benutzer oder ein Active Directory-Gruppenkonto aus. Verwenden Sie unbedingt eine lokale Active Directory-Instanz in Ihrer Domäne, nicht Azure Active Directory. Auf andere Ressourcen in der Domäne greifen Sie über einen Domänenbenutzer oder eine Domänengruppe zu, für den bzw. die Berechtigungen gewährt wurden. Zu solchen Ressourcen gehören z.B. Dateifreigaben.
 
--   Weisen Sie eine Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte zu: Geben Sie die **SecurityAccessPolicy**-Eigenschaft an, um eine **RunAs**-Richtlinie auf einen Dienst anzuwenden, wenn das Dienstmanifest Endpunktressourcen mit HTTP deklariert. Ports, die den HTTP-Endpunkten zugeordnet sind, werden ordnungsgemäß über Zugriffssteuerungslisten für das RunAs-Benutzerkonto, unter dem der Dienst ausgeführt wird, gesteuert. Wurde die Richtlinie nicht festgelegt, hat „http.sys“ keinen Zugriff auf den Dienst, sodass bei Aufrufen vom Client Fehler auftreten können.
+-   Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte: Geben Sie die **SecurityAccessPolicy**-Eigenschaft an, um eine **RunAs**-Richtlinie auf einen Dienst anzuwenden, wenn das Dienstmanifest Endpunktressourcen mit HTTP deklariert. Ports, die den HTTP-Endpunkten zugeordnet sind, werden ordnungsgemäß über Zugriffssteuerungslisten für das RunAs-Benutzerkonto, unter dem der Dienst ausgeführt wird, gesteuert. Wurde die Richtlinie nicht festgelegt, hat „http.sys“ keinen Zugriff auf den Dienst, sodass bei Aufrufen vom Client Fehler auftreten können.
 
 Weitere Informationen zum Verwenden von Sicherheitsrichtlinien in Service Fabric-Clustern finden Sie unter [Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-runas-security).
 
@@ -143,7 +143,7 @@ Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure er
 
     >[!NOTE]
     >Für die Domäne __cloudapp__**.net** können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen.
-    
+
 -   Das Zertifikat muss mindestens eine 2.048-Bit-Verschlüsselung aufweisen.
 
 Das HTTP-Protokoll ist unsicher und anfällig für Lauschangriffe. Daten, die über HTTP übertragen werden, werden als Klartext vom Webbrowser an den Webserver oder zwischen anderen Endpunkten übertragen. Dies bedeutet, dass Angreifer sensible Daten, z.B. Kreditkartendaten und Anmeldedaten für Konten, die über HTTP übermittelt werden, abfangen und anzeigen können. Wenn die Daten mithilfe von HTTPS über einen Browser gesendet oder bereitgestellt werden, wird mit SSL sichergestellt, dass vertrauliche Informationen verschlüsselt sind und nicht abgefangen werden können.
@@ -184,5 +184,7 @@ Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benu
 Azure Service Fabric unterstützt zwei Zugriffssteuerungstypen für Clients, die mit einem [Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) verbunden sind: Administrator und Benutzer. Mit der Zugriffssteuerung können Clusteradministratoren den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einschränken. Diese Zugriffssteuerung macht den Cluster sicherer.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+- [Checkliste für die Service Fabric-Sicherheit](azure-service-fabric-security-checklist.md)
 - Richten Sie Ihre Service Fabric-[Entwicklungsumgebung](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) ein.
 - Informieren Sie sich über [Service Fabric-Supportoptionen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).

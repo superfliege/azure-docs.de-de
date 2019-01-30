@@ -1,10 +1,10 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Salesforce Sandbox konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 33d39e617bd55b88d8f04785d937faf176463ee5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114495"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox
 
 In diesem Tutorial erfahren Sie, wie Sie Salesforce Sandbox in Azure Active Directory (Azure AD) integrieren.
 
 Sandboxes bieten Ihnen die Möglichkeit, mehrere Kopien Ihres Unternehmens in separaten Umgebungen für eine Vielzahl von Zwecken, wie z. B. Entwicklung, Tests und Schulungen, ohne eine Beeinträchtigung der Daten und Anwendungen in Ihrer Vertriebsproduktions-Organisation zu erstellen.
-Weitere Informationen finden Sie in der [Übersicht zu Sandbox](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5).
+Weitere Informationen finden Sie in der [Übersicht zu Sandbox](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5).
 
 Die Integration von Salesforce Sandbox in Azure AD bietet die folgenden Vorteile:
 
@@ -219,7 +219,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-25. Auf der Seite **SAML-Einstellungen für einmaliges Anmelden** werden Felder automatisch aufgefüllt. Geben Sie den Namen der Konfiguration (z. B.: *SPSSOWAAD_Test*) in das Textfeld **Name** ein, und klicken Sie auf „Speichern“.
+25. Auf der Seite **SAML-Einstellungen für einmaliges Anmelden** werden Felder automatisch aufgefüllt. Geben Sie den Namen der Konfiguration (z.B. *SPSSOWAAD_Test*) in das Textfeld **Name** ein, und klicken Sie auf „Speichern“.
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706856"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391196"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Erstellen und Verwalten einer Classroom-Vorlage in Azure Lab Services
 Eine Vorlage in einem Lab ist ein VM-Basisimage und dient zur Erstellung der virtuellen Computer aller Benutzer. Richten Sie den virtuellen Computer der Vorlage so ein, dass er genau das enthält, was Sie den Lab-Benutzern zur Verfügung stellen möchten. Sie können einen Namen und eine Beschreibung der Vorlage angeben, die den Lab-Benutzern angezeigt werden. Anschließend veröffentlichen Sie die Vorlage, um Instanzen der Vorlagen-VM für Ihre Lab-Benutzer zur Verfügung zu stellen. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer entspricht der maximalen Anzahl von Benutzern im Lab, die Sie in der Nutzungsrichtlinie des Labs festlegen können. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage.
@@ -33,7 +33,7 @@ Als Erstes können Sie beim Erstellen eines Classroom-Labs eine Vorlage einricht
 3. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
     1. Geben Sie unter **Name** einen Namen für Ihr Lab an. 
     2. Geben Sie die maximale **Anzahl von Benutzern** an, die für das Lab zulässig sind. 
-    6. Wählen Sie **Speichern**aus.
+    6. Wählen Sie **Speichern** aus.
 
         ![Erstellen eines Classroom-Labs](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Führen Sie auf der Seite **Select virtual machine specifications** (Spezifikationen für virtuellen Computer auswählen) die folgenden Schritte aus:
@@ -85,14 +85,14 @@ Als Erstes können Sie beim Erstellen eines Classroom-Labs eine Vorlage einricht
     
     ![Dashboard für Classroom-Lab](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 
-## <a name="set-up-a-template-after-creating-a-lab"></a>Einrichten einer Vorlage nach dem Erstellen eines Labs 
-Sie können auch nach dem Erstellen des Labs eine Vorlage einrichten.   
-
+ 
 ## <a name="set-or-update-template-title-and-description"></a>Festlegen oder Aktualisieren von Vorlagentitel und -beschreibung
 Gehen Sie wie folgt vor, um Titel und Beschreibung erstmals festzulegen und später zu aktualisieren. 
 
 1. Wählen Sie im Abschnitt **Vorlage** die Option **Name** oder **Beschreibung** der Vorlage aus. 
 2. Geben Sie den **neuen Namen** bzw. die **neue Beschreibung** für die Vorlage ein, und drücken Sie die**EINGABETASTE**.
+
+    ![Vorlagenname und Beschreibung](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="set-up-or-update-a-template-vm"></a>Einrichten oder Aktualisieren einer Vorlage für virtuelle Computer
  Sie können eine Verbindung mit der Vorlage für virtuelle Computer herstellen und darauf die erforderliche Software installieren, bevor Sie ihn für Ihre Teilnehmer bereitstellen. Gehen Sie wie folgt vor, um erstmals eine Vorlage für virtuelle Computer einzurichten oder den virtuellen Computer zu aktualisieren. 
@@ -100,30 +100,28 @@ Gehen Sie wie folgt vor, um Titel und Beschreibung erstmals festzulegen und spä
 1. Warten Sie, bis die Vorlage für virtuelle Computer bereit ist. Wenn dies der Fall ist, wird die Schaltfläche **Starten** aktiviert. Wählen Sie die Option **Starten**, um den virtuellen Computer zu starten.
 
     ![Starten der Vorlage für virtuelle Computer](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. Wählen Sie die Option **Verbinden**, und befolgen Sie die Anleitung, um eine Verbindung mit dem virtuellen Computer herzustellen. 
+1. Überprüfen Sie die Warnung, und wählen Sie **Starten** aus. 
 
-    ![Herstellen einer Verbindung mit der Vorlage für virtuelle Computer](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+    ![Startvorlage – Warnung](../media/how-to-create-manage-template/start-template-warning.png)
+1. Wählen Sie nach dem Start die Option **Verbinden** aus, und befolgen Sie die Anweisungen, um eine Verbindung mit dem virtuellen Computer herzustellen. 
 1. Installieren Sie die Software, die die Teilnehmer für das Lab benötigen (z.B. Visual Studio, Azure Storage-Explorer usw.). 
 2. Trennen Sie die Verbindung mit der Vorlage für virtuelle Computer (indem Sie die Remotedesktopsitzung schließen). 
 3. **Beenden** Sie die Vorlage für virtuelle Computer, indem Sie **Beenden** wählen. 
 
-    ![Beenden der Vorlage für virtuelle Computer](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
-
-
-## <a name="publish-the-template-vm"></a>Veröffentlichen der Vorlage für virtuelle Computer
+## <a name="publish-the-template-vm"></a>Veröffentlichen der Vorlage für virtuelle Computer  
 Wenn Sie die Vorlage nicht beim Erstellen des Labs veröffentlichen, können Sie dies später nachholen. Vor der Veröffentlichung empfiehlt es sich, eine Verbindung mit der Vorlagen-VM herzustellen und sie ggf. mit Software zu aktualisieren. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer entspricht der maximalen Anzahl von Benutzern im Lab, die Sie in der Nutzungsrichtlinie des Labs festlegen können. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage. 
 
 1. Wählen Sie im Abschnitt **Vorlage** die Option **Veröffentlichen**. 
 
     ![Veröffentlichen der Vorlage für virtuelle Computer](../media/tutorial-setup-classroom-lab/public-access.png)
-1. Prüfen Sie die Meldung im Meldungsfeld **Vorlage veröffentlichen**, und wählen Sie **Veröffentlichen**. Je nach Anzahl von zu erstellenden virtuellen Computern kann dieser Vorgang relativ lange dauern. Diese Anzahl entspricht der Anzahl von Benutzern, die für das Lab zulässig sind.
+1. Prüfen Sie die Meldung im Meldungsfeld **Vorlage veröffentlichen**, und wählen Sie **Veröffentlichen**. Dieser Vorgang kann einige Zeit dauern, je nachdem, wie viele virtuelle Computer erstellt werden.
     
     > [!IMPORTANT]
     > Sobald eine Vorlage veröffentlicht wurde, kann dies nicht mehr rückgängig gemacht werden. Sie können die Vorlage jedoch erneut veröffentlichen. 
-4. Wechseln Sie zur Seite **Virtuelle Computer**, und vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. 
+4. Warten Sie, bis der Status der Vorlage in **Veröffentlicht** geändert wird. 
 
-    ![Virtuelle Computer](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Warten Sie, bis die virtuellen Computer erstellt wurden. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Kursteilnehmern starten lassen. 
+    ![Veröffentlichungsstatus](../media/how-to-create-manage-template/publish-status.png)
+1. Wechseln Sie zur Seite **Virtuelle Computer**, und vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. Warten Sie, bis die virtuellen Computer erstellt wurden. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Kursteilnehmern starten lassen. 
 
     ![Virtuelle Computer im Status „Beendet“](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1a5a5dc04f9ac663fe2e29fd81df5201435c1bc1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167527"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430161"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 
@@ -74,14 +74,14 @@ Bevor Sie die Azure Multi-Factor Authentication aktivieren, muss Ihre Organisati
 1. Geben Sie einen aussagekräftigen Namen für Ihre Richtlinie an.
 1. Unter **Benutzer und Gruppen**:
    * Wählen Sie auf der Registerkarte **Einschließen** das Optionsfeld **Alle Benutzer**.
-   * EMPFOHLEN: Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen für **Benutzer und Gruppen** und wählen Sie eine Gruppe, die für Ausschlüsse verwendet werden soll, wenn Benutzer keinen Zugriff auf ihre Authentifizierungsmethoden haben.
+   * EMPFOHLEN: Aktivieren Sie auf der Registerkarte **Ausschließen** das Kontrollkästchen für **Benutzer und Gruppen**, und wählen Sie eine Gruppe, die für Ausschlüsse verwendet werden soll, wenn Benutzer keinen Zugriff auf ihre Authentifizierungsmethoden haben.
    * Klicken Sie auf **Fertig**.
 1. Aktivieren Sie unter **Cloud-Apps** das Optionsfeld **Alle Cloud-Apps**.
-   * OPTIONAL:  Wählen Sie auf der Registerkarte **Ausschließen** Cloud-Apps, für die Ihre Organisation keine MFA benötigt.
+   * OPTIONAL: Wählen Sie auf der Registerkarte **Ausschließen** die Cloud-Apps aus, für die Ihre Organisation keine MFA benötigt.
    * Klicken Sie auf **Fertig**.
 1. Im Abschnitt **Bedingungen**:
-   * OPTIONAL: Wenn Sie die Azure Identity Protection aktiviert haben, können Sie entscheiden, ob das Anmelderisiko als Teil der Richtlinie ausgewertet werden soll.
-   * Optional: Wenn Sie vertrauenswürdige Speicherorte oder benannte Orte konfiguriert haben, können Sie angeben, ob diese in die Richtlinie ein- oder von dieser ausgeschlossen werden.
+   * OPTIONAL: Wenn Sie Azure Identity Protection aktiviert haben, können Sie entscheiden, ob das Anmelderisiko im Rahmen der Richtlinie ausgewertet werden soll.
+   * OPTIONAL: Wenn Sie vertrauenswürdige Speicherorte oder benannte Orte konfiguriert haben, können Sie angeben, ob diese in die Richtlinie ein- oder davon ausgeschlossen werden.
 1. Stellen Sie unter **Gewähren** sicher, dass das Optionsfeld **Zugriff gewähren** aktiviert ist.
     * Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication erforderlich**.
     * Klicken Sie auf **Auswählen**.

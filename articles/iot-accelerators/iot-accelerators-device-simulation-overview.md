@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 69e3708ef4c31e2dd91b5f50baecc46ea129cf33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345788"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452223"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Übersicht über den Solution Accelerator für die Gerätesimulation
 
@@ -28,7 +28,7 @@ Beim Entwickeln einer IoT-Lösung sind Experimente und Tests wesentliche Teile d
 
 ![Beispiel: Drohnensimulation](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Mit der Gerätesimulation können Sie Gerätemodelle definieren, um Ihre physischen Geräte zu definieren. Dieses Modell umfasst Nachrichtenformate, Zwillingseigenschaften und Methoden. Außerdem können Sie auch mit JavaScript komplexes Geräteverhalten simulieren.
+Mit der Gerätesimulation können Sie Gerätemodelle definieren, um Ihre echten Geräte zu definieren. Dieses Modell umfasst Nachrichtenformate, Zwillingseigenschaften und Methoden. Außerdem können Sie auch mit JavaScript komplexes Geräteverhalten simulieren.
 
 Sie können Simulationen für einzelne oder mehrere Tausend Geräte ausführen, bei denen eine Verbindung mit beliebigen IoT-Hubs hergestellt wird. Zur Unterstützung des Testens können Sie optional einen IoT-Hub zusammen mit der Gerätesimulation für eine eigenständige Umgebung bereitstellen.
 

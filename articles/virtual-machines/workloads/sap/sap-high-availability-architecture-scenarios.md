@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6612e3fb5368d8d5a4f59c0e5eefc8ef24c04aec
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: de009d1dbc979a534b0fed8cee2afc867c5b79d4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656923"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426912"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
 
@@ -231,9 +231,9 @@ ms.locfileid: "34656923"
 
 ## <a name="terminology-definitions"></a>Terminologiedefinitionen
 
-**Hochverfügbarkeit:** bezieht sich auf eine Reihe von Technologien, die IT-Störungen minimieren, indem sie die Geschäftskontinuität von IT-Diensten durch redundante, fehlertolerante oder durch Failover geschützte Komponenten innerhalb *desselben* Rechenzentrums bereitstellen. In unserem Fall befindet sich das Rechenzentrum in einer Azure-Region.
+**Hochverfügbarkeit**: Bezieht sich auf eine Reihe von Technologien, die IT-Störungen minimieren, indem sie die Geschäftskontinuität von IT-Diensten durch redundante, fehlertolerante oder durch Failover geschützte Komponenten innerhalb *desselben* Rechenzentrums bereitstellen. In unserem Fall befindet sich das Rechenzentrum in einer Azure-Region.
 
-**Notfallwiederherstellung:** bezieht sich ebenfalls auf die Minimierung der Unterbrechung und Wiederherstellung von IT-Diensten, jedoch über *verschiedene* Rechenzentren, die möglicherweise Hunderte Kilometer voneinander entfernt liegen. In unserem Fall können die Rechenzentren in verschiedenen Azure-Regionen innerhalb derselben geopolitischen Region oder an Standorten liegen, die von Ihnen als Kunde eingerichtet wurden.
+**Notfallwiederherstellung**: Bezieht sich ebenfalls auf die Minimierung der Unterbrechung und Wiederherstellung von IT-Diensten, jedoch über *verschiedene* Rechenzentren, die möglicherweise Hunderte Kilometer voneinander entfernt liegen. In unserem Fall können die Rechenzentren in verschiedenen Azure-Regionen innerhalb derselben geopolitischen Region oder an Standorten liegen, die von Ihnen als Kunde eingerichtet wurden.
 
 
 ## <a name="overview-of-high-availability"></a>Übersicht über Hochverfügbarkeit
@@ -287,6 +287,19 @@ Verfügbarkeitsgruppen werden zum Erreichen der Hochverfügbarkeit von Folgendem
 * Redundante SAP-Anwendungsserver  
 * Cluster mit mehreren Knoten (z.B. virtuelle Computer), die SPOFs wie eine SAP ASCS/SCS-Instanz oder ein DBMS schützen
 
+
+### <a name="azure-availability-zones"></a>Azure-Verfügbarkeitszonen
+Bei Azure wird derzeit das Konzept von [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) in verschiedenen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) umgesetzt. In Azure-Regionen, in denen Verfügbarkeitszonen angeboten werden, umfassen die Azure-Regionen mehrere Rechenzentren, die von der Stromversorgung, der Kühlung und dem Netzwerk unabhängig sind. Es werden unterschiedliche Zonen in einer einzelnen Azure-Region angeboten, um Ihnen die Bereitstellung von Anwendungen über zwei oder drei Verfügbarkeitszonen hinweg zu ermöglichen. Unter der Annahme, dass sich Probleme an Stromversorgungsquellen und/oder Netzwerken nur auf die Infrastruktur einer Verfügbarkeitszone auswirkt, ist Ihre Anwendungsbereitstellung innerhalb einer Azure-Region weiterhin voll funktionsfähig. Dies kann schließlich zu einer reduzierten Kapazität führen, da einige VMs in einer Zone verloren gehen könnten. VMs in den anderen beiden Zonen werden jedoch weiterhin ausgeführt. Die Azure-Regionen, die Zonen anbieten, sind unter [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) aufgelistet.
+
+Für Verfügbarkeitszonen müssen einige Punkte beachtet werden. Darunter befinden sich Überlegungen wie die folgenden:
+
+- Sie können Azure-Verfügbarkeitsgruppen nicht in einer Verfügbarkeitszone bereitstellen. Sie müssen sich für eine Verfügbarkeitszone oder eine Verfügbarkeitsgruppe als Bereitstellungsrahmen für einen virtuellen Computer entscheiden.
+- Sie können den [Basic-Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows-Failoverclusterdiensten oder Linux Pacemaker verwenden. Stattdessen müssen Sie die [Standard-SKU von Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden.
+- Azure-Verfügbarkeitszonen bieten keine Garantie für eine bestimmte Entfernung zwischen den verschiedenen Zonen innerhalb einer Region.
+- Die Netzwerklatenz zwischen unterschiedlichen Azure-Verfügbarkeitszonen in den verschiedenen Azure-Regionen kann sich zwischen Azure-Regionen unterscheiden. In einigen Fällen können Sie als Kunde die in verschiedenen Zonen bereitgestellte SAP-Anwendungsebene sinnvoll ausführen, da die Netzwerklatenz von einer Zone zur aktiven DBMS-VM bezüglich der Beeinträchtigung von Geschäftsprozessen akzeptabel ist. Es gibt jedoch auch Kundenszenarien, in denen die Latenz zwischen der aktiven DBMS-VM in einer Zone und einer SAP-Anwendungsinstanz auf einer VM in einer anderen Zone zu starke Beeinträchtigungen verursacht und für die SAP-Geschäftsprozesse nicht akzeptabel ist. Daher müssen sich die Bereitstellungsarchitekturen für eine Aktiv/Aktiv-Architektur für die Anwendung und eine Aktiv/Passiv-Architektur unterscheiden, wenn die Leselatenz zu hoch ist.
+- Die Verwendung von [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) ist für die Bereitstellung in Azure-Verfügbarkeitszonen zwingend erforderlich. 
+
+
 ### <a name="planned-and-unplanned-maintenance-of-virtual-machines"></a>Geplante und ungeplante Wartung von virtuellen Computern
 
 Zwei Typen von Azure-Plattformereignissen können die Verfügbarkeit Ihrer virtuellen Computer beeinflussen:
@@ -305,13 +318,13 @@ Da Azure Storage standardmäßig drei Images der Daten beibehält, ist die Verwe
 Weitere Informationen finden Sie unter [Azure Storage-Replikation][azure-storage-redundancy].
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
-Bei Managed Disks handelt es sich um einen neuen Ressourcentyp in Azure Resource Manager, der anstelle von in Azure Storage-Konten gespeicherten virtuellen Festplatten (VHDs) verwendet werden kann. Managed Disks richten sich automatisch an der Verfügbarkeitsgruppe des virtuellen Computers aus, mit dem sie verbunden sind. Sie erhöhen die Verfügbarkeit Ihres virtuellen Computers und der Dienste, die auf ihm ausgeführt werden.
+Bei Managed Disks handelt es sich um einen Ressourcentyp in Azure Resource Manager, dessen Verwendung anstelle von in Azure Storage-Konten gespeicherten virtuellen Festplatten (VHDs) empfohlen wird. Verwaltete Datenträger richten sich automatisch an der Azure-Verfügbarkeitsgruppe des virtuellen Computers aus, mit dem sie verbunden sind. Sie erhöhen die Verfügbarkeit Ihres virtuellen Computers und der Dienste, die auf ihm ausgeführt werden.
 
 Weitere Informationen finden Sie unter [Azure Managed Disks – Übersicht][azure-storage-managed-disks-overview].
 
 Es wird empfohlen, verwaltete Datenträger zu verwenden, da diese die Bereitstellung und Verwaltung virtueller Computer vereinfachen.
 
-SAP unterstützt derzeit nur Managed Disks Premium. Weitere Informationen finden Sie in SAP-Hinweis [1928533].
+
 
 ## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>Verwenden der Hochverfügbarkeit des virtuellen Computers der Azure-Infrastruktur für eine *höhere Verfügbarkeit* von SAP-Anwendungen
 
@@ -361,7 +374,7 @@ Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller 
 
 Weitere Informationen finden Sie im Abschnitt [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] des Dokuments zur Planung und Implementierung von virtuellen Azure-Computern für SAP NetWeaver.
 
-**Nur bei nicht verwalteten Datenträgern:** Da das Azure Storage-Konto ein potenzieller Single Point of Failure sein kann, benötigen Sie mindestens zwei Azure Storage-Konten, auf die mindestens zwei virtuelle Computer verteilt sind. In einer idealen Konfiguration würden die Datenträger jedes virtuellen Computers, auf dem eine SAP-Dialoginstanz ausgeführt wird, in einem anderen Speicherkonto bereitgestellt werden.
+**Nur nicht verwaltete Datenträger:** Da das Azure-Speicherkonto ein potenzieller Single Point of Failure sein kann, benötigen Sie unbedingt mindestens zwei Azure-Speicherkonten, auf die mindestens zwei virtuelle Computer verteilt sind. In einer idealen Konfiguration würden die Datenträger jedes virtuellen Computers, auf dem eine SAP-Dialoginstanz ausgeführt wird, in einem anderen Speicherkonto bereitgestellt werden.
 
 > [!IMPORTANT]
 > Es wird dringend empfohlen, Azure Managed Disks für Ihre SAP-Hochverfügbarkeitsinstallationen zu verwenden. Da sich verwaltete Datenträger automatisch an der Verfügbarkeitsgruppe des virtuellen Computers ausrichten, mit der sie verbunden sind, erhöhen sie die Verfügbarkeit Ihres virtuellen Computers und der auf dem virtuellen Computer ausgeführten Dienste.  
@@ -374,15 +387,18 @@ Weitere Informationen finden Sie im Abschnitt [Azure-Verfügbarkeitsgruppen][pla
 
 Sie können eine WSFC-Lösung zum Schützen der SAP ASCS/SCS-Instanz verwenden. Die Lösung weist zwei Varianten auf:
 
-* **Gruppieren der SAP ASCS/SCS-Instanz durch freigegebene Clusterdatenträger:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster durch freigegebene Clusterdatenträger][sap-high-availability-guide-wsfc-shared-disk].   
+* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe freigegebener Datenträger für Cluster:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe freigegebener Datenträger für Cluster][sap-high-availability-guide-wsfc-shared-disk].   
 
-* **Gruppieren der SAP ASCS/SCS-Instanz durch Datenträgerfreigaben:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster durch Datenträgerfreigaben][sap-high-availability-guide-wsfc-file-share].
+* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe einer Dateifreigabe:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe von Dateifreigaben][sap-high-availability-guide-wsfc-file-share].
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Hochverfügbarkeitsarchitektur für eine SAP ASCS/SCS-Instanz unter Linux
 
 > ![Linux][Logo_Linux] Linux
 >
 Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des SLES-Clusterframeworks finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server for SAP Applications][sap-suse-ascs-ha].
+
+Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des Red Hat-Clusterframeworks finden Sie unter [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).
+
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>SAP NetWeaver-Multi-SID-Konfiguration für SAP ASCS/SCS-Clusterinstanzen
 
@@ -400,9 +416,9 @@ Weitere Informationen zur Multi-SID-Hochverfügbarkeitsarchitektur finden Sie un
 
 Das DBMS ist auch eine zentrale Kontaktstelle in einem SAP-System. Sie sollten es mit einer Lösung mit hoher Verfügbarkeit schützen. Die folgende Abbildung zeigt eine SQL Server Always On-Lösung mit Hochverfügbarkeit in Azure unter Verwendung von Windows Server-Failoverclustering und des internen Azure-Lastenausgleichs. SQL Server Always On repliziert DBMS-Daten- und -Protokolldateien mithilfe einer eigenen DBMS-Replikation. In diesem Fall benötigen Sie keinen freigegebenen Clusterdatenträger, sodass die gesamte Einrichtung vereinfacht wird.
 
-![Abbildung 3: Beispiel für ein hochverfügbares SAP-DBMS mit SQL Server Always On][sap-ha-guide-figure-2003]
+![Abbildung 3: Beispiel für ein hoch verfügbares SAP-DBMS mit SQL Server Always On][sap-ha-guide-figure-2003]
 
-_**Abbildung 3:** Beispiel für ein hochverfügbares SAP-DBMS mit SQL Server Always On_
+_**Abbildung 3:** Beispiel für ein hoch verfügbares SAP-DBMS mit SQL Server Always On_
 
 Weitere Informationen zum Clustering des SQL Server-DBMS in Azure mithilfe des Azure Resource Manager-Bereitstellungsmodells finden Sie in den folgenden Artikeln:
 

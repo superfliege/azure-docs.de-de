@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 513067f09d8cac64ca747ff217c84667c5469d82
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 19ac1819c3b098597819ec75adcedeca929e802d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248213"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464543"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Sprachenerkennungscontainers in Azure Kubernetes Service
 
@@ -38,7 +38,7 @@ Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt we
 
 Im Rahmen dieses Verfahrens wird das Cognitive Services-Containerbeispiel für die Sprachenerkennung geladen und ausgeführt. Das Beispiel enthält zwei Container: einen für die Clientanwendung und einen für den Cognitive Services-Container. Beide Images müssen per Push in Ihre eigene Azure Container Registry übertragen werden. Nachdem sie sich in Ihrer eigenen Registrierung befinden, erstellen Sie eine Azure Kubernetes Service-Instanz, um auf diese Images zuzugreifen und die Container auszuführen. Wenn die Container ausgeführt werden, verwenden Sie die Befehlszeilenschnittstelle **kubectl**, um die Leistung der Container zu überwachen. Greifen Sie über eine HTTP-Anforderung auf die Clientanwendung zu, und sehen Sie sich die Ergebnisse an. 
 
-
+![Konzeptidee zum Ausführen von Beispielcontainern](../media/how-tos/container-instance-sample/containers.png)
 
 ## <a name="the-sample-containers"></a>Die Beispielcontainer
 
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-> [!div class="nextstepaction"]
-> [Verwenden des verbundenen Textanalysediensts](../vs-text-connected-service.md)
+* Verwenden weiterer [Cognitive Services-Container](../../cognitive-services-container-support.md)
+* Verwenden des verbundenen Textanalysediensts](../vs-text-connected-service.md)
 
 
 <!--

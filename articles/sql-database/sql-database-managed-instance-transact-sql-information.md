@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843205"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463744"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -143,7 +143,7 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können Kryptogr
 - `CREATE CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
-### <a name="collation"></a>Sortierung
+### <a name="collation"></a>Collation
 
 Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie kann als Erstellungsparameter angegeben werden. Siehe [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
@@ -235,7 +235,7 @@ Weder MSDTC noch [elastische Transaktionen](https://docs.microsoft.com/azure/sql
 Einige Windows-spezifische Ziele für XEvents werden nicht unterstützt:
 
 - `etw_classic_sync target` wird nicht unterstützt. Speichern Sie Dateien mit der Endung `.xel` in Azure Blob Storage. Siehe [etw_classic_sync-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
-- `event_file target` wird nicht unterstützt. Speichern Sie Dateien mit der Endung `.xel` in Azure Blob Storage. Siehe [event_file-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target).
+- `event_file target` wird nicht unterstützt. Speichern Sie Dateien mit der Endung `.xel` in Azure Blob Storage. Siehe [event_file-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externe Bibliotheken
 
@@ -405,7 +405,7 @@ Folgende Tabellen werden nicht unterstützt:
 
 Weitere Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
-## <a name="Changes"></a> Änderungen im Verhalten
+## <a name="Changes"></a> Behavior Changes
 
 Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:
 
@@ -428,7 +428,7 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 Jede verwaltete Instanz verfügt über bis zu 35 TB Speicher für Azure Premium-Datenträger, und jede Datenbankdatei wird auf einem separaten physischen Datenträger abgelegt. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
 
-Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2 TB verfügen, die auf einem 4-TB-Datenträger gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1 GB, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel gilt Folgendes:
+Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2 TB verfügen, die auf einem 4-TB-Datenträger gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1 GB, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel:
 
 - Die Gesamtgröße des zugewiesenen Datenträgerspeichers beträgt 1 x 4 TB + 248 x 128 GB = 35 TB.
 - Der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz beträgt 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -503,6 +503,12 @@ Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erfordert
 CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindungsserver/verteilte Abfragen, die auf die aktuelle Instanz verweisen, können manchmal nicht die IP-Adresse der lokalen Instanz auflösen. Dieser Fehler ist ein vorübergehendes Problem.
 
 **Problemumgehung**: Verwenden Sie Kontextverbindungen nach Möglichkeit im CLR-Modul.
+
+### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>Für Datenbanken mit TDE-Verschlüsselung werden keine vom Benutzer initiierten Sicherungen unterstützt.
+
+Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht für eine Datenbank ausführen, die per Transparent Data Encryption (TDE) verschlüsselt ist. Bei TDE wird erzwungen, dass Sicherungen mit internen TDE-Schlüsseln verschlüsselt werden. Da der Schlüssel nicht exportiert werden kann, können Sie die Sicherung nicht wiederherstellen.
+
+**Problemumgehung**: Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder deaktivieren Sie die Verschlüsselung für die Datenbank.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

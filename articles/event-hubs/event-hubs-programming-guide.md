@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138074"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401400"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Programmierhandbuch für Azure Event Hubs
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -92,7 +92,7 @@ Weitere Informationen und eine Erläuterung zu den Vor-und Nachteilen zwischen V
 
 Das Senden von Ereignissen in Batches kann den Durchsatz erhöhen. Mithilfe der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API können Sie einen Batch erstellen, dem später Datenobjekte für einen [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)-Aufruf hinzugefügt werden können.
 
-Ein einzelner Batch darf den Grenzwert von 256 KB für ein Ereignis nicht überschreiten. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) sicherstellen, dass der Batch 256 KB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd), um Ereignisse hinzuzufügen und den Batch zu erstellen. 
+Ein einzelner Batch darf den Grenzwert von 1 MB für ein Ereignis nicht überschreiten. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) sicherstellen, dass der Batch 1 MB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd), um Ereignisse hinzuzufügen und den Batch zu erstellen. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchrones Senden und Senden mit Skalierung
 

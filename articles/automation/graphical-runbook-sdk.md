@@ -3,18 +3,18 @@ title: Übersicht über das SDK für grafische Azure Automation-Runbooks
 description: Dieser Artikel beschreibt, wie Sie das SDK für grafische Azure Automation-Runbooks verwenden.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 702af8311887afc94e7127704d3377e944503324
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39240461"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434256"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Verwenden des SDK für grafische Azure Automation-Runbooks
 
@@ -146,3 +146,4 @@ Das serialisierte Format kann sich in künftigen Versionen von `Orchestrator.Gra
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu grafischen Runbooks in Azure Automation finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
+

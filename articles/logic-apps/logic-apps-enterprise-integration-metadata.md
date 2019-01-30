@@ -9,57 +9,101 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 02/23/2018
-ms.openlocfilehash: 537014c2780fe94cfb35806759f8bcbd974c4c95
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 01/17/2019
+ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128802"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446781"
 ---
-# <a name="manage-artifact-metadata-from-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Verwalten von Artefaktmetadaten aus Integrationskonten in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Hinzufügen oder Abrufen von Artefaktmetadaten in Integrationskonten in Azure Logic Apps und Enterprise Integration Pack
 
-Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten definieren und diese Metadaten während der Laufzeit der Logik-App abrufen. Beispielsweise können Sie Metadaten für Artefakte wie Partner, Vereinbarungen, Schemas und Zuordnungen angeben – alle speichern Metadaten mit Schlüssel-Wert-Paaren. 
+Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten definieren und diese Metadaten während der Laufzeit der Logik-App abrufen. Beispielsweise können Sie Metadaten für Artefakte wie Partner, Vereinbarungen, Schemas und Zuordnungen angeben. Alle davon speichern Metadaten mit Schlüssel-Wert-Paaren. 
 
-## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Hinzufügen von Metadaten zu Artefakten in Integrationskonten
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Erstellen Sie im Azure-Portal ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md).
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
-2. Fügen Sie Ihrem Integrationskonto ein Artefakt hinzu, z. B. [Partner](logic-apps-enterprise-integration-partners.md), [Vereinbarung](logic-apps-enterprise-integration-agreements.md) oder [Schema](logic-apps-enterprise-integration-schemas.md).
+* Ein grundlegendes [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) mit den Artefakten, denen Sie Metadaten hinzufügen möchten. Beispiel: 
 
-3. Wählen Sie das Artefakt und dann **Bearbeiten** aus, und geben Sie Metadatendetails ein.
+  * [Partner](logic-apps-enterprise-integration-partners.md)
+  * [Vereinbarung](logic-apps-enterprise-integration-agreements.md)
+  * [Schema](logic-apps-enterprise-integration-schemas.md)
+  * [Map](logic-apps-enterprise-integration-maps.md)
 
-   ![Eingeben von Metadaten](media/logic-apps-enterprise-integration-metadata/image1.png)
+* Eine Logik-App, die mit dem Integrationskonto und den Artefaktmetadaten verknüpft ist, die Sie verwenden möchten. Wenn Ihre Logik-App noch nicht verknüpft ist, lesen Sie den Abschnitt zum [Verknüpfen von Logik-Apps mit Integrationskonten](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
 
-## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>Abrufen von Metadaten aus Artefakten für Logik-Apps
+  Wenn Sie noch nicht über eine Logik-App verfügen, lesen Sie den Artikel zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  Fügen Sie die Auslöser und Aktionen hinzu, mit denen Sie Artefaktmetadaten verwalten möchten. Oder fügen Sie Ihrer Logik-App testweise einen Auslöser wie **Request** oder **HTTP** hinzu.
 
-1. Erstellen Sie im Azure-Portal eine [Logik-App](quickstart-create-first-logic-app-workflow.md).
+## <a name="add-metadata-to-artifacts"></a>Hinzufügen von Metadaten zu Artefakten
 
-2. Erstellen Sie eine [Verknüpfung Ihrer Logik-App mit Ihrem Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an. Suchen und öffnen Sie Ihr Integrationskonto.
 
-3. Fügen Sie Ihrer Logik-App im Logik-App-Designer einen Trigger wie **Anforderung** oder **HTTP** hinzu.
+1. Wählen Sie das Artefakt, dem Sie die Metadaten hinzufügen möchten, und wählen Sie **Bearbeiten**. Geben Sie Metadatendetails für das Artefakt ein. Beispiel:
 
-4. Wählen Sie unter dem Trigger **Neuer Schritt** > **Aktion hinzufügen** aus. Suchen Sie nach „Integrationskonto“, und wählen Sie dann die Aktion **Integrationskonto – Artefaktsuche für Integrationskonto** aus.
+   ![Eingeben von Metadaten](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
 
-   ![Auswählen der Artefaktsuche für Integrationskonto](media/logic-apps-enterprise-integration-metadata/image2.png)
+1. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-5. Wählen Sie den **Artefakttyp** aus, und geben Sie den **Artefaktnamen** ein. Beispiel: 
+1. Wenn Sie diese Metadaten in der JSON-Definition (JavaScript Object Notation) für das Integrationskonto anzeigen möchten, wählen Sie **Als JSON bearbeiten**, um den JSON-Editor zu öffnen: 
 
-   ![Auswählen des Artefakttyps und Eingeben des Namens des Artefakts](media/logic-apps-enterprise-integration-metadata/image3.png)
+   ![JSON für Partnermetadaten](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
 
-## <a name="example-retrieve-partner-metadata"></a>Beispiel: Abrufen von Metadaten für Partner
+## <a name="get-artifact-metadata"></a>Abrufen von Artefaktmetadaten
 
-Angenommen, dieser Partner enthält Metadaten mit Informationen zur `routingUrl`:
+1. Öffnen Sie im Azure-Portal die Logik-App, die mit dem gewünschten Integrationskonto verknüpft ist. 
 
-![Suchen von „RoutingURL“-Metadaten für Partner](media/logic-apps-enterprise-integration-metadata/image6.png)
+1. Wenn Sie im Logik-App-Designer den Schritt zum Abrufen von Metadaten unter dem Auslöser oder die letzte Aktion im Workflow hinzufügen, wählen Sie **Neuer Schritt** > **Aktion hinzufügen**. 
 
-1. Fügen Sie Ihrer Logik-App Ihren Trigger, die Aktion **Integrationskonto – Artefaktsuche für Integrationskonto** für Ihren Partner und eine **HTTP**-Aktion hinzu. Beispiel:
+1. Geben Sie im Suchfeld „Integrationskonto“ ein. Wählen Sie unter dem Suchfeld **Alle** aus. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Artefaktsuche für Integrationskonto – Integrationskonto**
 
-   ![Hinzufügen von Trigger-, Artefaktsuche- und HTTP-Aktionen zur Logik-App](media/logic-apps-enterprise-integration-metadata/image4.png)
+   ![Auswählen von „Artefaktsuche für Integrationskonto“](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
-2. Wählen Sie zum Abrufen des URI auf der Symbolleiste des Logik-App-Designers die **Codeansicht** für Ihre Logik-App aus. Die Definition der Logik-App sollte wie im folgenden Beispiel aussehen:
+1. Geben Sie diese Informationen für das gesuchte Artefakt ein:
 
-   ![Suchen Sie „lookup“ (Suchen).](media/logic-apps-enterprise-integration-metadata/image5.png)
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+   |----------|---------|-------|-------------| 
+   | **Artefakttyp** | JA | **Schema**, **Zuordnung**, **Partner**, **Vereinbarung** oder ein benutzerdefinierter Typ | Der Typ des gewünschten Artefakts | 
+   | **Artefaktname** | JA | <*artifact-name*> | Der Name des gewünschten Artefakts | 
+   ||| 
+
+   So rufen Sie beispielsweise die Metadaten für ein Handelspartnerartefakt ab:
+
+   ![Auswählen des Artefakttyps und Eingeben des Namens des Artefakts](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
+
+1. Fügen Sie die gewünschte Aktion für die Bearbeitung der Metadaten hinzu. Beispiel:
+
+   1. Wählen Sie unter der Aktion **Artefaktsuche für Integrationskonto** die Option **Nächster Schritt**, und wählen Sie **Aktion hinzufügen**. 
+
+   1. Geben Sie im Suchfeld „http“ ein. Wählen Sie im Suchfeld **Integrierte Funktionen**, und wählen Sie diese Aktion: **HTTP – HTTP**
+
+      ![Hinzufügen einer HTTP-Aktion](media/logic-apps-enterprise-integration-metadata/http-action.png)
+
+   1. Geben Sie die Informationen für die Artefaktmetadaten ein, die Sie verwalten möchten. 
+
+      Beispiel: Sie möchten die `routingUrl`-Metadaten abrufen, die Sie zuvor hinzugefügt haben. Diese Eigenschaftswerte könnten Sie angeben: 
+
+      | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+      |----------|----------|-------|-------------| 
+      | **Methode** | JA | <*operation-to-run*> | Der HTTP-Vorgang, der auf das Artefakt ausgeführt werden soll. Diese HTTP-Aktion verwendet z.B. die **GET**-Methode. | 
+      | **URI** | JA | <*metadata-location*> | Um auf den `routingUrl`-Metadatenwert des abgerufenen Artefakts zuzugreifen, können Sie einen Ausdruck verwenden. Beispiel: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Header** | Nein  | <*header-values*> | Alle Headerausgaben des Auslösers, die Sie in die HTTP-Aktion übergeben möchten. Um den `headers`-Eigenschaftswert des Auslöser zu übergeben, können Sie beispielsweise einen Ausdruck verwenden. Beispiel: <p>`@triggeroutputs()['headers']` | 
+      | **Text** | Nein  | <*body-content*> | Alle anderen Inhalte, die Sie über die `body`-Eigenschaft der HTTP-Aktion übergeben möchten. In diesem Beispiel werden die `properties`-Werte in die HTTP-Aktion übergeben: <p>1. Klicken Sie in die Eigenschaft **Body**, damit die dynamische Inhaltsliste angezeigt wird. Wenn keine Eigenschaften angezeigt werden, wählen Sie **Mehr anzeigen**. <br>2. Wählen Sie aus der dynamischen Inhaltsliste unter **Artefaktsuche für Integrationskonto** die Option **Eigenschaften**. | 
+      |||| 
+
+      Beispiel: 
+
+      ![Festlegen von Werten und Ausdrücken für HTTP-Aktion](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
+
+   1. Zeigen Sie zum Prüfen der Informationen, die Sie für die HTTP-Aktion angeben haben, die JSON-Definition Ihrer Logik-App an. Wählen Sie in der Symbolleiste des Logik-App-Designers die **Codeansicht**, damit die JSON-Definition der App angezeigt wird. Beispiel:
+
+      ![JSON-Definition der Logik-App](media/logic-apps-enterprise-integration-metadata/finished-logic-app-definition.png)
+
+      Wenn Sie wieder zum Logik-App-Designer wechseln, werden alle bisher verwendeten Ausdrücke als aufgelöst angezeigt. Beispiel:
+
+      ![Aufgelöste Ausdrücke im Logik-App-Designer](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

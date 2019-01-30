@@ -3,18 +3,18 @@ title: Fehlerbehandlung in grafischen Azure Automation-Runbooks
 description: In diesem Artikel wird beschrieben, wie Sie die Fehlerbehandlungslogik in grafischen Azure Automation-Runbooks implementieren.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 14112a9a9f64f20540a8f7e1d37cd31017238e59
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192709"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436687"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Fehlerbehandlung in grafischen Azure Automation-Runbooks
 
@@ -30,7 +30,7 @@ Die PowerShell-Fehler, die während der Ausführung auftreten können, können m
 
 * **Fehler ohne Abbruch**: Ein nicht schwerwiegender Fehler, bei dem die Ausführung fortgesetzt werden kann. Beispiele hierfür sind Ablauffehler wie „Datei nicht gefunden“, Berechtigungsprobleme usw.
 
-Grafische Azure Automation-Runbooks wurden verbessert und um die Fehlerbehandlung erweitert. Sie können Ausnahmen jetzt in Fehler ohne Abbruch ändern und Fehlerlinks zwischen Aktivitäten erstellen. So können Autoren von Runbooks Fehler abfangen und erkannte bzw. unerwartete Bedingungen verwalten.  
+Grafische Azure Automation-Runbooks wurden verbessert und um die Fehlerbehandlung erweitert. Sie können Ausnahmen jetzt in Fehler ohne Abbruch ändern und Fehlerlinks zwischen Aktivitäten erstellen. So können Autoren von Runbooks Fehler abfangen und erkannte bzw. unerwartete Bedingungen verwalten.  
 
 ## <a name="when-to-use-error-handling"></a>Einsatzgebiete der Fehlerbehandlung
 
@@ -69,3 +69,4 @@ Fehlerlinks zeigen von diesen Aktivitäten auf eine Aktivität zur **Fehlerverwa
 * Weitere Informationen zu Links und Linktypen in grafischen Runbooks finden Sie unter [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
+

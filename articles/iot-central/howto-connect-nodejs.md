@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198081"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410488"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
-In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine generische Node.js-Anwendung, die ein physisches Gerät darstellt, mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden.
+In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine generische Node.js-Anwendung, die ein echtes Gerät darstellt, mit Ihrer Microsoft Azure IoT Central-Anwendung verbinden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -97,7 +97,7 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät über die Ger�
 
 ### <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 
-In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementierung des echten Geräts, das Sie der Anwendung hinzugefügt haben, erstellt wird. Die Node.js-Anwendung stellt hier das echte physische Gerät dar. 
+In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementierung des echten Geräts, das Sie der Anwendung hinzugefügt haben, erstellt wird. Die Node.js-Anwendung stellt hier das echte Gerät dar. 
 
 1. Erstellen Sie auf Ihrem Computer den Ordner `connected-air-conditioner-adv`. Navigieren Sie in der Befehlszeilenumgebung zu diesem Ordner.
 

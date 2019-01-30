@@ -4,7 +4,7 @@ description: Erläutert das Konfigurieren der Filterung bei der Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 886ac908d2e294f4627f95b35d93ea49a9e1607a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306359"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472329"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -77,10 +77,10 @@ Nachdem Sie alle Änderungen an der Filterung vorgenommen haben, sollten Sie nic
 ## <a name="filtering-options"></a>Filteroptionen
 Sie können die folgenden Filterkonfigurationstypen auf das Tool für die Verzeichnissynchronisierung anwenden:
 
-* [**Gruppenbasiert:**](#group-based-filtering) Die auf einer einzelnen Gruppe basierende Filterung kann nur bei der Erstinstallation mit dem Installations-Assistenten konfiguriert werden.
-* [**Domänenbasiert:**](#domain-based-filtering) Bei dieser Option können Sie auswählen, welche Domänen mit Azure AD synchronisiert werden. Außerdem können Sie Domänen zur Konfiguration des Synchronisierungsmoduls hinzufügen und daraus entfernen, wenn Sie Änderungen an Ihrer lokalen Infrastruktur vornehmen, nachdem Sie die Azure AD Connect-Synchronisierung installiert haben.
-* [**Organisationseinheitenbasiert:**](#organizational-unitbased-filtering) Bei dieser Option können Sie auswählen, welche Organisationseinheiten mit Azure AD synchronisiert werden. Diese Option ist für alle Objekttypen in den ausgewählten Organisationseinheiten vorhanden.
-* [**Attributbasiert:**](#attribute-based-filtering) Bei dieser Option können Sie Objekte basierend auf den Attributwerten der Objekte filtern. Sie können auch unterschiedliche Filter für unterschiedliche Objekttypen verwenden.
+* [**Gruppenbasiert**](#group-based-filtering): Die auf einer einzelnen Gruppe basierende Filterung kann nur bei der Erstinstallation mit dem Installations-Assistenten konfiguriert werden.
+* [**Domänenbasiert**](#domain-based-filtering): Bei dieser Option können Sie auswählen, welche Domänen mit Azure AD synchronisiert werden. Außerdem können Sie Domänen zur Konfiguration des Synchronisierungsmoduls hinzufügen und daraus entfernen, wenn Sie Änderungen an Ihrer lokalen Infrastruktur vornehmen, nachdem Sie die Azure AD Connect-Synchronisierung installiert haben.
+* [**Organisationseinheitenbasiert**](#organizational-unitbased-filtering): Bei dieser Option können Sie auswählen, welche Organisationseinheiten mit Azure AD synchronisiert werden. Diese Option ist für alle Objekttypen in den ausgewählten Organisationseinheiten vorhanden.
+* [**Attributbasiert**](#attribute-based-filtering): Bei dieser Option können Sie Objekte basierend auf den Attributwerten der Objekte filtern. Sie können auch unterschiedliche Filter für unterschiedliche Objekttypen verwenden.
 
 Sie können gleichzeitig mehrere Filteroptionen verwenden. Beispielsweise können Sie die organisationseinheitenbasierte Filterung verwenden, um ausschließlich Objekte in einer Organisationseinheit einzuschließen. Gleichzeitig können Sie die attributbasierte Filterung verwenden, um die Objekte noch weiter zu filtern. Wenn Sie mehrere Filtermethoden verwenden, wird für die Filter zwischen den Filtern ein logisches „Und“ genutzt.
 
@@ -185,6 +185,9 @@ Bei dieser Konfiguration wird eine neue Organisationseinheit, die unter ManagedO
 
 ## <a name="attribute-based-filtering"></a>Attributbasierte Filterung
 Stellen Sie sicher, dass Sie den Build vom November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) oder höher verwenden, damit diese Schritte funktionieren.
+
+> [!IMPORTANT]
+>Microsoft empfiehlt, die von **Azure AD Connect** erstellten Standardregeln nicht zu ändern. Falls Sie die Regel ändern möchten, können Sie sie klonen und dann die ursprüngliche Regel deaktivieren. Nehmen Sie die gewünschten Änderungen an der geklonten Regel vor. Beachten Sie, dass Sie dadurch (das Deaktivieren der ursprünglichen Regel) keine der Fehlerbehebungen oder Features erhalten, die durch diese Regel aktiviert werden.
 
 Die attributbasierte Filterung ist die flexibelste Möglichkeit zum Filtern von Objekten. Sie können die hohe Leistungsfähigkeit der [deklarativen Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning.md) nutzen, um nahezu jeden Aspekt der Synchronisierung von Objekten mit Azure AD zu steuern.
 

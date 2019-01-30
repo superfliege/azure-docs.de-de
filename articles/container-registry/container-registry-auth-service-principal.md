@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3aa986efd4986eb1d96c0f013d997486e6e8ae2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754202"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390926"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -47,9 +47,7 @@ Die obigen Beispielskripts für die Azure CLI auf GitHub sowie Versionen für Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald ein Dienstprinzipal erstellt wurde, dem Sie Zugriff auf Ihre Containerregistrierung gewährt haben, können Sie seine Anmeldeinformationen in Ihren Anwendungen und Diensten für die Interaktion mit der Registrierung verwenden.
-
-Das Thema der Konfiguration einzelner Anwendungen zur Verwendung von Anmeldeinformationen des Dienstprinzipals ist für diesen Artikel zu umfangreich. Daher finden Sie hier Anweisungen für einige spezifische Dienste und Plattformen:
+Sobald Sie einem Dienstprinzipal Zugriff auf Ihre Containerregistrierung gewährt haben, können Sie seine Anmeldeinformationen in Ihren Anwendungen und Diensten für die monitorlose Interaktion mit der Registrierung verwenden. Sie können die Anmeldeinformationen des Dienstprinzipals in jedem Azure-Dienst verwenden, der mit einer Azure-Containerregistrierung authentifiziert werden kann. Beispiele:
 
 * [Authentifizieren per Azure Container Registry über Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 * [Authentifizieren per Azure Container Registry über Azure Container Instances (ACI)](container-registry-auth-aci.md)

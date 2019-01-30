@@ -9,18 +9,18 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9ff75cbd0a4915cdf7045be9a45d11075dda15bd
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045295"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402318"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
 U-SQL ist eine für Big Data-Workloads konzipierte Abfragesprache. Eines der einzigartigen Features von U-SQL ist die Kombination der SQL-ähnlichen deklarativen Sprache mit dem Erweiterungs- und Programmierbarkeitspotenzial von C#. In diesem Handbuch konzentrieren wir uns auf die durch C# ermöglichte Erweiterbarkeit und Programmierbarkeit der U-SQL-Sprache.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Laden Sie [Azure Data Lake Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) herunter, und installieren Sie es.
 
@@ -135,7 +135,7 @@ Jede hochgeladene Assembly-DLL und Ressourcendatei (beispielsweise eine andere L
 
 Beachten Sie außerdem, dass jede U-SQL-Datenbank nur eine einzelne Version einer bestimmten angegebenen Assembly enthalten kann. Wenn Sie also beispielsweise sowohl Version 7 als auch Version 8 der Bibliothek „Newtonsoft Json.NET“ benötigen, müssen diese in zwei verschiedenen Datenbanken registriert werden. Darüber hinaus kann jedes Skript nur auf eine einzelne Version einer bestimmten Assembly-DLL verweisen. Hierbei folgt U-SQL der C#-Semantik für die Assembly- und Versionsverwaltung.
 
-## <a name="use-user-defined-functions-udf"></a>Verwenden benutzerdefinierter Funktionen (User Defined Functions, UDFs)
+## <a name="use-user-defined-functions-udf"></a>Verwenden benutzerdefinierter Funktionen: UDF
 Benutzerdefinierte Funktionen (User Defined Functions, UDFs) von U-SQL sind Programmierroutinen, die Parameter akzeptieren, eine Aktion (beispielsweise eine komplexe Berechnung) ausführen und das Ergebnis dieser Aktion als Wert zurückgeben. Der Rückgabewert der benutzerdefinierten Funktion kann nur ein einzelner Skalarwert sein. Eine U-SQL-UDF kann im U-SQL-Basisskript wie jede andere skalare Funktion in C# aufgerufen werden.
 
 Es empfiehlt sich, benutzerdefinierte U-SQL-Funktionen als **öffentlich** und **statisch** zu initialisieren.
@@ -426,7 +426,7 @@ Die Ausgabedatei sieht wie folgt aus:
 
 Dieses Beispiel zeigt ein etwas komplizierteres Szenario, in dem wir eine globale Variable im CodeBehind-Abschnitt verwenden und auf das gesamte Arbeitsspeicherrowset anwenden.
 
-## <a name="use-user-defined-types-udt"></a>Verwenden benutzerdefinierter Typen (User-Defined Types, UDTs)
+## <a name="use-user-defined-types-udt"></a>Verwenden benutzerdefinierter Typen: UDT
 Benutzerdefinierte Typen (User-Defined Types, UDTs) sind ein weiteres Programmierbarkeitsfeature von U-SQL. Ein U-SQL-UDT verhält sich wie ein regulärer benutzerdefinierter C#-Typ. C# ist eine stark typisierte Sprache, die die Verwendung integrierter und benutzerdefinierter Typen ermöglicht.
 
 Beliebige UDTs können von U-SQL nicht implizit serialisiert oder deserialisiert werden, wenn die UDT zwischen Scheitelpunkten in Rowsets übergeben wird. Der Benutzer muss daher die IFormatter-Schnittstelle verwenden, um einen expliziten Formatierer bereitzustellen. Dadurch erhält U-SQL die Serialisierungs- und Deserialisierungsmethoden für die UDT.
@@ -504,7 +504,7 @@ Der Konstruktor der Klasse:
 
 * SqlUserDefinedTypeAttribute (Typformatierung)
 
-* Typformatierung: Erforderlicher Parameter zum Definieren einer UDT-Formatierung. Genauer gesagt muss hier die Art der `IFormatter`-Schnittstelle übergeben werden.
+* Typformatierer: Erforderlicher Parameter zum Definieren eines UDT-Formatierers. Insbesondere muss hier der Typ der `IFormatter`-Schnittstelle übergeben werden.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -534,8 +534,8 @@ Die `IFormatter`-Schnittstelle serialisiert und deserialisiert ein Objektdiagram
 * **Serialize:** Serialisiert ein Objekt oder Objektdiagramm mit dem angegebenen Stamm in den angegebenen Datenstrom.
 
 `MyType`-Instanz: Die Instanz des Typs.  
-`IColumnWriter`-Writer/`IColumnReader`-Reader: Der zugrunde liegende Spaltendatenstrom.  
-`ISerializationContext`-Kontext: Enumeration, die eine Gruppe von Flags definiert, die den Quell- oder Zielkontext für den Datenstrom während der Serialisierung angibt.
+Writer `IColumnWriter`; Reader `IColumnReader`: Der zugrunde liegende Spaltendatenstrom.  
+Kontext `ISerializationContext`: Enumeration, die eine Gruppe von Flags definiert, die den Quell- oder Zielkontext für den Datenstrom während der Serialisierung angibt.
 
 * **Intermediate:** Gibt an, dass der Quell- oder Zielkontext kein permanenter Speicher ist.
 
@@ -895,7 +895,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>Verwenden benutzerdefinierter Aggregate (User-Defined Aggregates, UDAGGs)
+## <a name="use-user-defined-aggregates-udagg"></a>Benutzerdefinierte Aggregate: UDAGG
 Benutzerdefinierte Aggregate sind alle aggregationsbezogenen Funktionen, die nicht standardmäßig in U-SQL verfügbar sind. Ein Beispiel wäre etwa ein Aggregat zur Durchführung benutzerdefinierter mathematischer Berechnungen, Zeichenfolgenverkettungen oder Bearbeitungen mit Zeichenfolgen.
 
 Die Basisklassendefinition eines benutzerdefinierten Aggregats sieht wie folgt aus:
@@ -946,8 +946,8 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1: Erster Parameter für „accumulate“
-* T2: Zweiter Parameter für „accumulate“
-* TResult: Rückgabetyp von „Terminate“
+* T2: Erster Parameter für „accumulate“
+* TResult: Rückgabetyp von „terminate“
 
 Beispiel: 
 
@@ -1025,7 +1025,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 In diesem Szenario verketten wir Klassen-GUIDs für bestimmte Benutzer.
 
-## <a name="use-user-defined-objects-udo"></a>Verwenden benutzerdefinierter Objekte (User-Defined Objects, UDOs)
+## <a name="use-user-defined-objects-udo"></a>Verwenden benutzerdefinierter Objekte: UDO
 Mit U-SQL können Sie angepasste Programmierbarkeitsobjekte – so genannte benutzerdefinierte Objekte (User-Defined Objects ,UDOs) – definieren.
 
 Im Anschluss finden Sie eine Liste mit UDOs in U-SQL:
@@ -1067,11 +1067,11 @@ UDOs werden im U-SQL-Skript in der Regel explizit als Teil der folgenden U-SQL-A
 ## <a name="use-user-defined-extractors"></a>Verwenden benutzerdefinierter Extraktoren
 In U-SQL können Sie externe Daten mithilfe einer EXTRACT-Anweisung importieren. Eine EXTRACT-Anweisung kann integrierte UDO-Extraktoren verwenden:  
 
-* *Extractors.Text()*: Extraktion aus durch Trennzeichen getrennten Textdateien mit verschiedenen Codierungen.
+* *Extractors.Text()*: Ermöglicht das Extrahieren aus durch Trennzeichen getrennten Textdateien mit verschiedenen Codierungen.
 
-* *Extractors.Csv()*: Extraktion aus durch Trennzeichen getrennten Dateien (CSV) mit verschiedenen Codierungen.
+* *Extractors.Csv():* Ermöglicht das Extrahieren aus durch Trennzeichen getrennten Dateien (CSV) mit verschiedenen Codierungen.
 
-* *Extractors.Tsv()*: Extraktion aus durch Tabstopp getrennten Dateien (TSV) mit verschiedenen Codierungen.
+* *Extractors.Tsv():* Ermöglicht das Extrahieren aus durch Tabstopp getrennten Dateien (TSV) mit verschiedenen Codierungen.
 
 Es empfiehlt sich unter Umständen, einen benutzerdefinierten Extraktor zu entwickeln. Dies kann hilfreich sein, wenn wir während des Datenimports eine der folgenden Aufgaben ausführen möchten:
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Verwenden benutzerdefinierter Outputter
 Der benutzerdefinierte Outputter ist ein weiteres U-SQL-UDO, das die Erweiterung der integrierten U-SQL-Funktionen ermöglicht. Ähnlich wie beim Extraktor gibt es verschiedene integrierte Outputter.
 
-* *Outputters.Text()*: schreibt Daten in durch Trennzeichen getrennte Textdateien mit verschiedenen Codierungen.
-* *Outputters.Csv()*: schreibt Daten in durch Trennzeichen getrennte Textdateien (CSV) mit verschiedenen Codierungen.
-* *Outputters.Tsv()*: schreibt Daten in durch Tabstopp getrennte Textdateien (TSV) mit verschiedenen Codierungen.
+* *Outputters.Text()*: Schreibt Daten in durch Trennzeichen getrennte Textdateien mit verschiedenen Codierungen.
+* *Outputters.Csv():* Schreibt Daten in durch Trennzeichen getrennte Textdateien (CSV) mit verschiedenen Codierungen.
+* *Outputters.Tsv():* Schreibt Daten in durch Tabstopp getrennte Textdateien (TSV) mit verschiedenen Codierungen.
 
 Benutzerdefinierte Outputter ermöglichen Ihnen, Daten in einem benutzerdefinierten Format zu schreiben. Dies kann bei folgenden Aufgaben hilfreich sein:
 
@@ -1300,7 +1300,7 @@ string val = row.Get<string>(col.Name)
 
 Dieser Ansatz ermöglicht die Erstellung eines flexiblen Outputters für alle Metadatenschemas.
 
-Die Ausgabedaten werden mithilfe von `System.IO.StreamWriter` in eine Datei geschrieben. Der Streamparameter wird im Rahmen von `IUnstructuredWriter output` auf `output.BaseStrea` festgelegt.
+Die Ausgabedaten werden mithilfe von `System.IO.StreamWriter` in eine Datei geschrieben. Der Streamparameter wird im Rahmen von `IUnstructuredWriter output` auf `output.BaseStream` festgelegt.
 
 Wichtig: Der Datenpuffer muss nach jeder Zeileniteration in die Datei geleert werden. Darüber hinaus muss das `StreamWriter`-Objekt mit aktiviertem Disposable-Attribut (Standardeinstellung) und mit dem Schlüsselwort **using** verwendet werden:
 
@@ -1775,7 +1775,7 @@ In diesem Szenario fungiert der benutzerdefinierte Applier als Parser mit Werttr
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 

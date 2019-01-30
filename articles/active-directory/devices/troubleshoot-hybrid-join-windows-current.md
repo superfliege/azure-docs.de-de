@@ -4,7 +4,7 @@ description: Beheben von Problemen mit Geräten unter Windows 10 und Windows Ser
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1d96c1e8adee55127a50b2d7c374418c22bfec4c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f9a32058bb9d9cb2f1fa2d04c8002f06fa80edeb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050564"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446101"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory 
 
@@ -77,7 +77,7 @@ Für Windows 10 und Windows Server 2016 unterstützt ein Azure Active Directory-
 
 Überprüfen Sie die folgenden Felder, und stellen Sie sicher, dass sie die erwarteten Werte aufweisen:
 
-### <a name="azureadjoined--yes"></a>AzureAdJoined : YES  
+### <a name="azureadjoined--yes"></a>AzureAdJoined: YES  
 
 Dieses Feld gibt an, ob das Gerät in Azure AD eingebunden ist. Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen. 
 
@@ -103,19 +103,19 @@ Dieses Feld gibt an, ob das Gerät in Azure AD eingebunden ist. Wenn der Wert **
 
 ---
 
-### <a name="domainjoined--yes"></a>DomainJoined : YES  
+### <a name="domainjoined--yes"></a>DomainJoined: YES  
 
 Dieses Feld gibt an, ob das Gerät in ein lokales Active Directory eingebunden ist. Wenn der Wert **NO** lautet, kann das Gerät keinen Azure AD-Hybridbeitritt durchführen.  
 
 ---
 
-### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
+### <a name="workplacejoined--no"></a>WorkplaceJoined: NO  
 
 Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert ist (markiert als *Workplace Join*). Dieser Wert sollte für in eine Domäne eingebundene Computer mit Hybrideinbindung in Azure AD **NO** lauten. Wenn der Wert **YES** lautet, wurde vor Abschluss der Hybrideinbindung in Azure AD ein Geschäfts-, Schul- oder Unikonto hinzugefügt. In diesem Fall wird das Konto ignoriert, wenn eine Version von Windows 10 (1607) mit Anniversary Update verwendet wird.
 
 ---
 
-### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet : YES and AzureADPrt : YES
+### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: YES und AzureADPrt: YES
   
 Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat. Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
 

@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ae798ecf2ba5f53cdfdef45b74677615d2e0a06d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969025"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447002"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines Node.js-Back-Ends und eines Node.js-Geräts
 
@@ -126,7 +126,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App auf Ihrem simulierten Gerät,
     > Der NPM-Installationsbefehl kann längere Zeit in Anspruch nehmen. Sie müssen etwas Geduld haben, da sehr viel Code aus dem Paketrepository übertragen wird.
 
     > [!NOTE]
-    > Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, können Sie diese ignorieren. Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, können Sie diese ignorieren.
+    > Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren. Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren.
 
 3. Erstellen Sie eine Datei namens „twin.js“. Kopieren Sie die Modulidentitätszeichenfolge, und fügen Sie sie ein.
 

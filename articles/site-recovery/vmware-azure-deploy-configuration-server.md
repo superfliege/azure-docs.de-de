@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/22/2018
+ms.author: ramamill
+ms.openlocfilehash: 712f8fb2cb951460ad2be36b2899f52d4966fc82
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794353"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468402"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -67,13 +67,16 @@ Bei der mit der OVA-Vorlage bereitgestellten Lizenz handelt es sich um eine Eval
 3. Geben Sie unter **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage ein.
 4. Klicken Sie unter **Bewertungsdetails** auf **Weiter**.
 5. Übernehmen Sie in **Name und Ordner auswählen** und **Konfiguration auswählen** die Standardeinstellungen.
-6. Wählen Sie in **Speicher auswählen** unter **Select virtual disk format** (Format für virtuellen Datenträger auswählen) für eine optimale Leistung **Thick Provision Eager Zeroed** (Breite Bereitstellung gegen null) aus.
+6. Wählen Sie in **Speicher auswählen** unter **Select virtual disk format** (Format für virtuellen Datenträger auswählen) für eine optimale Leistung **Thick Provision Eager Zeroed** (Breite Bereitstellung gegen null) aus. Die Verwendung der schlanken Speicherzuweisung kann die Leistung des Konfigurationsservers beeinträchtigen.
 7. Übernehmen Sie auf den übrigen Seiten des Assistenten die Standardeinstellungen.
 8. Unter **Bereit für den Abschluss**:
 
     * Wählen Sie zum Einrichten des virtuellen Computers mit den Standardeinstellungen **Power on after deployment** (Nach Bereitstellung einschalten) > **Fertig stellen** aus.
 
     * Wenn Sie eine weitere Netzwerkschnittstelle hinzufügen möchten, deaktivieren Sie **Power on after deployment** (Nach Bereitstellung einschalten), und wählen Sie dann **Fertig stellen** aus. Standardmäßig wird die Konfigurationsservervorlage mit einer einzelnen NIC bereitgestellt. Weitere NICs können nach der Bereitstellung hinzugefügt werden.
+
+> [!IMPORTANT]
+> Ändern Sie nach der Bereitstellung keine Ressourcenkonfigurationen (Arbeitsspeicher/Kerne/CPU-Einschränkung), und ändern/löschen Sie keine installierten Dienste oder Dateien auf dem Konfigurationsserver. Dadurch würden die Registrierung des Konfigurationsservers bei Azure-Diensten und die Leistung des Konfigurationsservers beeinträchtigt.
 
 ## <a name="add-an-additional-adapter"></a>Hinzufügen zusätzlicher Adapter
 
@@ -119,7 +122,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 ## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
 
-Um den Konfigurationsserver auf die neueste Version zu aktualisieren, befolgen Sie [diese Schritte](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Um den Konfigurationsserver auf die neueste Version zu aktualisieren, befolgen Sie [diese Schritte](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Klicken Sie [hier](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to), um ausführliche Anweisungen zum Upgrade aller Site Recovery-Komponenten zu erhalten.
 
 ## <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
 
@@ -141,20 +144,28 @@ Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie siche
     Weitere Informationen zu Konfigurationsservern und deren Funktionen finden Sie unter [Architektur der Replikation von VMware zu Azure](vmware-azure-architecture.md).
 5. Wo erhalte ich die neueste Version des Konfigurationsservers?
 
-    Schritte für ein Upgrade des Konfigurationsservers über das Portal finden Sie unter [Aktualisieren des Konfigurationsservers](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Sie können das Tool auch direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
+    Schritte für ein Upgrade des Konfigurationsservers über das Portal finden Sie unter [Aktualisieren des Konfigurationsservers](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Ausführliche Anweisungen zum Upgrade aller Site Recovery-Komponenten finden Sie [hier](https://aka.ms/asr_how_to_upgrade).
 6. Wo kann ich die Passphrase für den Konfigurationsserver herunterladen?
 
     Informationen zum Herunterladen der Passphrase finden Sie in [diesem Artikel](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
-7. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
+7. Kann ich die Passphrase ändern?
+
+    **Nein**, es wird **dringend empfohlen, die Passphrase des Konfigurationsservers nicht zu ändern**. Eine Änderung der Passphrase unterbricht die Replikation geschützter Computer und führt zu einem kritischen Integritätszustand.
+8. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
 
     Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
-8. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
+9. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
 
     **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt.
 
-9. Kann ich die IP eines Konfigurationsservers ändern?
+10. Kann ich die IP eines Konfigurationsservers ändern?
 
     **Nein**, es wird dringend empfohlen, die IP-Adresse eines Konfigurationsservers nicht zu ändern. Stellen Sie sicher, dass es sich bei allen dem Konfigurationsserver zugewiesenen IPs um STATISCHE IPs, nicht um DHCP-IPs handelt.
+11. Kann ich den Konfigurationsserver in Azure einrichten?
+
+    Es wird empfohlen, den Konfigurationsserver in der lokalen Umgebung mit direkter Sichtverbindung mit vCenter einzurichten, um Wartezeiten bei der Datenübertragung zu minimieren. Sie können geplante Sicherungen des Konfigurationsservers für [Failbackzwecke](vmware-azure-manage-configuration-server.md#failback-requirements) erstellen.
+
+Weitere häufig gestellte Fragen zum Konfigurationsserver finden Sie in unserer [Dokumentation zu häufig gestellten Fragen zum Konfigurationsserver](vmware-azure-common-questions.md#configuration-server).
 
 ## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
 

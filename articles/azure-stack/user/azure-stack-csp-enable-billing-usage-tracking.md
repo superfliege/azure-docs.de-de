@@ -11,47 +11,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: fca08ef1d803c3bd47b0ae925c4dd12255175f2c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 37da5d3f0443335a910929c097dff01450b24f4f
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630714"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411916"
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Wie Sie einem Cloud-Dienstanbieter ermöglichen, Ihr Azure Stack-Abonnement zu verwalten
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
-Wenn Sie Azure Stack mit einem Cloud Service Provider (CSP) verwenden, können Sie Ihr eigenes Abonnement für den Zugriff auf Ressourcen in Azure und in Azure Stack verwalten. Sie können Ihr Abonnement auch vom Anbieter verwalten lassen. In diesem Artikel erfahren Sie Folgendes:
+Wenn Sie Azure Stack mit einem Cloud-Dienstanbieter (Cloud Service Provider, CSP) verwenden, können Sie Ihr eigenes Abonnement für den Zugriff auf Ressourcen in Azure und in Azure Stack verwalten. Sie können Ihr Abonnement auch vom Anbieter verwalten lassen. In diesem Artikel erfahren Sie Folgendes:
 
- * Gewähren Sie Ihrem Dienstanbieter Zugriff auf Ihr Abonnement.
- * Stellen Sie sicher, dass der Dienstanbieter, den Dienst verwalten kann.
+* Gewähren Sie Ihrem Dienstanbieter Zugriff auf Ihr Abonnement.
+* Stellen Sie sicher, dass der Dienstanbieter, den Dienst verwalten kann.
 
-> [!Note]
->  Wenn der CSP Ihr Konto nicht verwaltet und Sie die folgenden Schritte überspringen, kann der CSP Ihr Azure Stack-Abonnement nicht für Sie verwalten.
+> [!NOTE]
+> Wenn der Cloud-Dienstanbieter Ihr Konto nicht verwaltet und Sie die folgenden Schritte überspringen, kann der Cloud-Dienstanbieter Ihr Azure Stack-Abonnement nicht für Sie verwalten.
 
 ## <a name="manage-your-subscription-with-a-cloud-service-provider"></a>Verwalten Ihres Abonnements mit einem Cloud-Dienstanbieter
 
 Fügen Sie den CSP Ihrem Abonnement als **Benutzer** hinzu.
 
-1. Fügen Sie Ihren CSP als Gastbenutzer mit der Benutzerrolle Ihrem Mandantenverzeichnis hinzu.  Schritte zum Hinzufügen eines Benutzers finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
-2. Der CSP erstellt das lokale Azure Stack-Abonnement für Sie.
-3. Sie können mit der Verwendung von Azure Stack beginnen.
-4. Ihr CSP sollte eine Ressource in Ihrem Abonnement erstellen, um sicherzustellen, dass er auch Ihre Ressourcen verwalten kann. Zum Beispiel müsste das [Erstellen eines virtuellen Windows-Computers mit dem Azure Stack-Portal](azure-stack-quick-windows-portal.md) möglich sein.
+1. Fügen Sie Ihren CSP als Gastbenutzer mit der Benutzerrolle Ihrem Mandantenverzeichnis hinzu. Die Schritte zum Hinzufügen eines Benutzers finden Sie unter [Hinzufügen neuer Benutzer in Azure Active Directory](../../active-directory/add-users-azure-active-directory.md).
+2. Der CSP erstellt das lokale Azure Stack-Abonnement für Sie. Sie können mit der Verwendung von Azure Stack beginnen.
+3. Ihr CSP sollte eine Ressource in Ihrem Abonnement erstellen, um sicherzustellen, dass er auch Ihre Ressourcen verwalten kann. Zum Beispiel müsste das [Erstellen eines virtuellen Windows-Computers mit dem Azure Stack-Portal](azure-stack-quick-windows-portal.md) möglich sein.
 
 ## <a name="enable-the-cloud-service-provider-to-manage-your-subscription-using-rbac-rights"></a>Wie Sie dem Cloud-Dienstanbieter ermöglichen, Ihr Abonnement mithilfe von RBAC-Rechten zu verwalten
 
 Fügen Sie den CSP Ihrem Abonnement als **Besitzer** hinzu.
 
-1. Fügen Sie Ihren CSP Ihrem Mandantenverzeichnis als Gastbenutzer hinzu.  Schritte zum Hinzufügen eines Benutzers finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
-2. Fügen Sie die Besitzerrolle dem CSP-Gastbenutzer hinzu. Schritte zum Hinzufügen des CSP-Benutzers zu Ihrem Abonnement finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
-3. Der CSP erstellt das lokale Azure Stack-Abonnement für Sie.
-4. Sie können mit der Verwendung von Azure Stack beginnen.
-5. Ihr CSP sollte eine Ressource in Ihrem Abonnement erstellen, um sicherzustellen, dass er Ihre Ressourcen verwalten kann.
+1. Fügen Sie Ihren CSP Ihrem Mandantenverzeichnis als Gastbenutzer hinzu. Die Schritte zum Hinzufügen eines Benutzers finden Sie unter [Hinzufügen neuer Benutzer in Azure Active Directory](../../active-directory/add-users-azure-active-directory.md).
+2. Fügen Sie dem CSP-Gastbenutzer die Rolle **Besitzer** hinzu. Die Schritte zum Hinzufügen des CSP-Benutzers zu Ihrem Abonnement finden Sie unter [Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen mithilfe der rollenbasierten Zugriffssteuerung](../../role-based-access-control/role-assignments-portal.md). Der CSP erstellt das lokale Azure Stack-Abonnement für Sie. Sie können mit der Verwendung von Azure Stack beginnen.
+3. Ihr CSP sollte eine Ressource in Ihrem Abonnement erstellen, um sicherzustellen, dass er Ihre Ressourcen verwalten kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](../azure-stack-billing-and-chargeback.md).
+* Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](../azure-stack-billing-and-chargeback.md).

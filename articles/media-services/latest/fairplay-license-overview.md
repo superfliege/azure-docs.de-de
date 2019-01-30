@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 66d816795ec06891aafce73036d7aea9bb52b2c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e861d8fe22d4e7acb970990b27998caf923ed6c2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140529"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449641"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Anforderungen und Konfiguration der Apple FairPlay-Lizenz 
 
@@ -35,7 +35,7 @@ Die folgenden Angaben sind erforderlich, wenn Sie Ihre HLS-Inhalte mit **Apple F
 * Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/)verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Media Services implementiert haben, und dass Sie das endgültige FPS-Paket anfordern. Das endgültige FPS-Paket enthält Anweisungen zum Generieren des Zertifikats und zum Abrufen des geheimen Anwendungsschlüssels (ASK). Sie verwenden ASK, um FairPlay zu konfigurieren.
 * Folgendes muss seitens der Media Services-Schlüssel-/Lizenzbereitstellung festgelegt werden:
 
-    * **App Cert (AC)**: Dies ist eine PFX-Datei, die den privaten Schlüssel enthält. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort. Die .pfx-Datei muss im Base64-Format vorliegen.
+    * **App Cert (AC)**: Dies ist eine PFX-Datei, die den privaten Schlüssel enthält. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort. Die PFX-Datei muss im Base64-Format vorliegen.
 
         Die folgenden Schritte beschreiben, wie eine PFX-Zertifikatdatei für FairPlay generiert wird:
 

@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a23d8c1e72ec453724514e4d1638c5a223d1644
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727884"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389226"
 ---
 # <a name="eventstore-service-overview"></a>Übersicht über den EventStore-Dienst
 
@@ -34,6 +34,7 @@ Der EventStore-Dienst wurde in Version 6.2 eingeführt und ist eine Überwachung
 * Sicherstellen, dass am Cluster vorgenommene Verwaltungsaktionen ordnungsgemäß verarbeitet werden.
 * Abrufen einer „Momentaufnahme“ der Interaktion von Service Fabric mit der betreffenden Entität.
 
+![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Unter [Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md) finden Sie eine vollständige Auflistung der in EventStore verfügbaren Ereignisse.
 
@@ -53,7 +54,7 @@ Der EventStore-Dienst kann nach Ereignissen abgefragt werden, die in Ihrem Clust
 * Partitionsreplikate: Ereignisse von allen Replikaten/Instanzen in einer bestimmten, durch `partitionId` identifizierten Partition.
 * Partitionsreplikat: Ereignisse von einem bestimmten Replikat/einer bestimmten Instanz, das bzw. die durch `replicaId` und `partitionId` identifiziert wird.
 
-Um mehr über die API zu erfahren, lesen Sie die [API-Referenz zu EventStore] (https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)).
+Um mehr über die API zu erfahren, lesen Sie die [API-Referenz zu EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
 Der EventStore-Dienst hat auch die Möglichkeit, Ereignisse in Ihrem Cluster zu korrelieren. Durch den Blick auf Ereignisse, die gleichzeitig von unterschiedlichen Entitäten geschrieben wurden und sich möglicherweise gegenseitig beeinträchtigt haben, kann der EventStore-Dienst diese Ereignisse verknüpfen und beim Identifizieren von Ursachen für Aktivitäten in Ihrem Cluster helfen. Wenn beispielsweise eine Anwendung ohne veranlasste Änderung fehlerhaft wird, sucht EventStore auch nach anderen Ereignissen, die von der Plattform bereitgestellt werden, und kann diese mit einem `Error`- oder `Warning`-Ereignis korrelieren. Das beschleunigt die Fehlererkennung und Analyse der Hauptursachen.
 

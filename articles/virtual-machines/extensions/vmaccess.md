@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452053"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413837"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Verwalten von Administratoren, SSH und Überprüfen oder Reparieren von Datenträgern auf Linux-VMs mit der VMAccess-Erweiterung und der Azure CLI
 ## <a name="overview"></a>Übersicht
@@ -53,7 +53,7 @@ Es gibt zwei Möglichkeiten, die VMAccess-Erweiterung auf Ihren virtuellen Linux
 * Verwenden Sie die Azure-Befehlszeilenschnittstelle und die erforderlichen Parameter.
 * [Verwenden Sie JSON-Rohdatendateien, die von der VMAccess-Erweiterung verarbeitet](#use-json-files-and-the-vmaccess-extension) und dann verwendet werden können.
 
-In den folgenden Beispielen werden Befehle vom Typ [az vm user](/cli/azure/vm/user) verwendet. Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
+In den folgenden Beispielen werden Befehle vom Typ [az vm user](/cli/azure/vm/user) verwendet. Zum Ausführen dieser Schritte muss die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="update-ssh-key"></a>Aktualisieren eines SSH-Schlüssels
 Das folgende Beispiel aktualisiert den SSH-Schlüssel für den Benutzer `azureuser` auf dem virtuellen Computer `myVM`:
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **HINWEIS:** Der `az vm user update`-Befehl fügt den Text des neuen öffentlichen Schlüssels der `~/.ssh/authorized_keys`-Datei für den Administratorbenutzer auf dem virtuellen Computer an. Vorhandene SSH-Schlüssel werden dadurch weder ersetzt noch entfernt. Vorherige, zur Bereitstellungszeit festgelegte Schlüssel oder nachfolgende Updates über die VMAccess-Erweiterung werden dadurch nicht entfernt.
+> **HINWEIS:** Der Befehl `az vm user update` fügt den Text des neuen öffentlichen Schlüssels an die Datei `~/.ssh/authorized_keys` für den Administratorbenutzer auf dem virtuellen Computer an. Vorhandene SSH-Schlüssel werden dadurch weder ersetzt noch entfernt. Vorherige, zur Bereitstellungszeit festgelegte Schlüssel oder nachfolgende Updates über die VMAccess-Erweiterung werden dadurch nicht entfernt.
 
 ## <a name="reset-password"></a>Kennwort zurücksetzen
 Das folgende Beispiel setzt das Kennwort für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:

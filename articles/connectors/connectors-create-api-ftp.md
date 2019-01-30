@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: a14f045193c01b8c26019314ddde4c2116d8bad6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d57a80ec2a1ebfca173d7eaa165de4d344af2ccf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232816"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391107"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Erstellen, Überwachen und Verwalten von FTP-Dateien mithilfe von Azure Logic Apps
 
@@ -26,7 +26,7 @@ Mit Azure Logic Apps und dem FTP-Connector können Sie automatisierte Aufgaben u
 * Sie können Dateiinhalte und Metadaten abrufen.
 * Sie können Archive in Ordner extrahieren.
 
-Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen in Ihren Logik-Apps verwenden, um Aufgaben mit Dateien auf Ihrem FTP-Server auszuführen. Sie können die Ausgaben von FTP-Aktionen auch in anderen Aktionen verwenden. Wenn Sie z. B. regelmäßig Dateien von Ihrem FTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder mithilfe des Outlook.com-Connectors E-Mails zu diesen Dateien und ihren Inhalten senden. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und die Ausgabe für andere Aktionen verfügbar machen. Sie können Ausführungsaktionen in Ihren Logik-Apps verwenden, um Dateien auf Ihrem FTP-Server zu verwalten. Sie können die Ausgaben von FTP-Aktionen auch in anderen Aktionen verwenden. Wenn Sie z.B. regelmäßig Dateien von Ihrem FTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder mithilfe des Outlook.com-Connectors E-Mails zu diesen Dateien und ihren Inhalten senden. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 > [!NOTE]
 > Der FTP-Connector unterstützt nur Dateien, die 50 MB oder kleiner sind, es sei denn, Sie verwenden die [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). 
@@ -39,7 +39,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und d
 
 * Die Adresse Ihres FTP-Hostservers und die zugehörigen Anmeldeinformationen.
 
-  Der FTP-Connector erfordert, dass Ihr FTP-Server über das Internet erreichbar ist und für den Betrieb im Modus *Passiv* eingerichtet ist. Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Ihrem FTP-Konto sowie zum Zugriff auf das Konto.
+  Der FTP-Connector erfordert, dass Ihr FTP-Server über das Internet erreichbar ist und für den Betrieb im Modus *Passiv* eingerichtet ist. Über Ihre Anmeldeinformationen kann mit Ihrer Logik-App eine Verbindung mit Ihrem FTP-Konto hergestellt sowie auf das Konto zugegriffen werden.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -68,23 +68,26 @@ Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und d
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-Trigger: Wenn eine Datei hinzugefügt oder geändert wird
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-Trigger: When a file is added or modified (Wenn eine Datei hinzugefügt oder geändert wird)
 
 Dieser Trigger startet einen Logik-App-Workflow, wenn er erkennt, dass eine Datei auf einem FTP-Server hinzugefügt oder geändert wurde. Sie können z.B. eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und entscheidet, ob dieser Inhalt abgerufen wird. Die Entscheidung basiert darauf, ob der Inhalt eine bestimmte Bedingung erfüllt oder nicht. Zum Schluss können Sie eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt. 
 
-**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen FTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Dann können Sie eine FTP-Aktion wie **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank abzurufen.
+**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen FTP-Ordner auf neue Dateien überwachen, in denen Kundenbestellungen beschrieben werden. Dann können Sie eine FTP-Aktion wie **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank abzurufen.
 
 Eine gültige und funktionale Logik-App erfordert einen Trigger und mindestens eine Aktion. Stellen Sie also sicher, dass Sie eine Aktion hinzufügen, nachdem Sie einen Trigger hinzugefügt haben.
 
-Das folgende Beispiel zeigt diesen Trigger: **Wenn eine Datei hinzugefügt oder geändert wird**.
+Das folgende Beispiel zeigt diesen Trigger: **Wenn eine Datei hinzugefügt oder geändert wird**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-1. Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „ftp“ als Filter ein. Wählen Sie unter der Liste der Trigger diesen Trigger aus: **Wenn eine Datei hinzugefügt oder geändert wird – FTP**
+1. Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „ftp“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wenn eine Datei hinzugefügt oder geändert wird – FTP**
 
    ![Suchen und Auswählen des FTP-Triggers](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
 1. Geben Sie die erforderlichen Informationen zu Ihrer Verbindung ein, und wählen Sie dann **Erstellen** aus.
+
+   Standardmäßig werden mit diesem Connector Dateien im Textformat übertragen. 
+   Um Dateien im Binärformat zu übertragen, z.B. für Fälle mit Codierung, wählen Sie **Binäre Übertragung** aus.
 
    ![Erstellen einer FTP-Serververbindung](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -98,13 +101,13 @@ Das folgende Beispiel zeigt diesen Trigger: **Wenn eine Datei hinzugefügt oder 
 
 Nachdem Ihre Logik-App jetzt über einen Trigger verfügt, fügen Sie die Aktionen hinzu, die Sie ausführen möchten, wenn Ihre Logik-App eine neue oder bearbeitete Datei findet. In diesem Beispiel können Sie eine FTP-Aktion hinzufügen, die den neuen oder aktualisierten Inhalt abruft.
 
-### <a name="ftp-action-get-content"></a>FTP-Aktion: Inhalt abrufen
+### <a name="ftp-action-get-content"></a>FTP-Aktion: Inhalte abrufen
 
 Diese Aktion ruft den Inhalt einer Datei auf einem FTP-Server ab, wenn diese Datei hinzugefügt oder aktualisiert wird. So können Sie z. B. den Trigger aus dem vorherigen Beispiel und eine Aktion hinzufügen, die den Inhalt der Datei abruft, nachdem diese Datei hinzugefügt oder bearbeitet wurde. 
 
 1. Wählen Sie unter dem Trigger oder anderen Aktionen **Neuer Schritt** aus. 
 
-1. Geben Sie im Suchfeld den Begriff „ftp“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Dateiinhalt abrufen – FTP**.
+1. Geben Sie im Suchfeld den Begriff „ftp“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Dateiinhalte abrufen - FTP**
 
    ![Auswählen einer FTP-Aktion](./media/connectors-create-api-ftp/select-ftp-action.png)  
 

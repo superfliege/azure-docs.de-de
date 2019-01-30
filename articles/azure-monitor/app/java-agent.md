@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262131"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412400"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, abgefangene Ausnahmen und Methodenausführungszeiten in Java-Web-Apps
 
@@ -96,6 +96,23 @@ Sie müssen für einzelne Methoden die Berichtausnahmen und Methodenzeiten aktiv
 
 > [!NOTE]
 > „AI-Agent.xml“ und die Agent-JAR-Datei sollten sich im selben Ordner befinden. Sie werden häufig zusammen im `/resources`-Ordner des Projekts platziert. 
+
+### <a name="spring-rest-template"></a>Spring-REST-Vorlage
+
+Damit Application Insights HTTP-Aufrufe über die Spring-REST-Vorlage erfolgreich instrumentieren kann, muss der Apache-HTTP-Client verwendet werden. Standardmäßig ist die REST-Vorlage von Spring nicht für die Verwendung des Apache-HTTP-Clients konfiguriert. Durch Angabe von [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) im Konstruktor einer Spring-REST-Vorlage wird Apache-HTTP verwendet.
+
+Hier ist ein Beispiel dazu mit Spring-Beans. Dies ist ein sehr einfaches Beispiel, in dem die Standardeinstellungen der Factoryklasse verwendet werden.
+
+```java
+@bean
+public ClientHttpRequestFactory httpRequestFactory() {
+return new HttpComponentsClientHttpRequestFactory()
+}
+@Bean(name = 'myRestTemplate')
+public RestTemplate dcrAccessRestTemplate() {
+    return new RestTemplate(httpRequestFactory())
+}
+```
 
 #### <a name="enable-w3c-distributed-tracing"></a>Aktivieren der verteilten W3C-Ablaufverfolgung
 

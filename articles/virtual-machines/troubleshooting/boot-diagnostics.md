@@ -10,20 +10,18 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 9341458336e4c95b84590eadbc86073e7dbf09a0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419553"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425576"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 
-Zwei Debuggingfunktionen werden ab sofort in Azure unterstützt: die Konsolenausgabe und die Screenshotunterstützung für das Bereitstellungsmodell des Ressourcen-Managers von Azure Virtual Machines. 
+Es gibt viele mögliche Gründe dafür, dass ein virtueller Computer in einen nicht startfähigen Zustand wechselt. Um Probleme mit virtuellen Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden, zu behandeln, können Sie die folgenden Debugfunktionen verwenden: Konsolenausgaben- und Screenshotunterstützung für virtuelle Azure-Computer. 
 
-Wenn Sie Ihr eigenes Image in Azure verwenden oder sogar eines der Plattformimages starten, kann ein virtueller Computer aus zahlreichen Gründen in einen nicht startbaren Zustand geraten. Diese Funktionen ermöglichen Ihnen ein einfaches Diagnostizieren und Wiederherstellten Ihrer virtuellen Computer nach Startfehlern.
-
-Für virtuelle Linux-Computer können Sie die Ausgabe des Konsolenprotokolls problemlos über das Portal anzeigen. Azure ermöglicht Ihnen sowohl für virtuelle Windows- als auch Linux-Computer auch das Anzeigen eines Screenshots des virtuellen Computers im Hypervisor. Beide Funktionen werden für virtuelle Azure-Computer in allen Regionen unterstützt. Hinweis: Es kann bis zu 10 Minuten dauern, bis Screenshots und Ausgaben in Ihrem Speicherkonto angezeigt werden.
+Für virtuelle Linux-Computer können Sie die Ausgabe des Konsolenprotokolls über das Portal anzeigen. Azure ermöglicht Ihnen für virtuelle Windows- und Linux-Computer das Anzeigen eines Screenshots des virtuellen Computers im Hypervisor. Beide Funktionen werden für virtuelle Azure-Computer in allen Regionen unterstützt. Hinweis: Es kann bis zu 10 Minuten dauern, bis Screenshots und Ausgaben in Ihrem Speicherkonto angezeigt werden.
 
 Sie können die Option **Startdiagnose** aktivieren, um das Protokoll und den Screenshot anzuzeigen.
 
@@ -45,54 +43,58 @@ Sie können die Option **Startdiagnose** aktivieren, um das Protokoll und den Sc
 - [Betriebssystem nicht gefunden](https://support.microsoft.com/help/4010142)
 - [Startfehler oder INACCESSIBLE_BOOT_DEVICE](https://support.microsoft.com/help/4010143)
 
-## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Aktivieren der Diagnose auf einem virtuellen Computer
-1. Wählen Sie beim Erstellen eines neuen virtuellen Computers über das Azure-Portal in der Dropdownliste „Bereitstellungsmodell“ die Option **Azure Resource Manager** aus:
+## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Aktivieren der Diagnose auf einem virtuellen Computer, der über das Azure-Portal erstellt wurde
+
+Das folgende Verfahren gilt für mit dem Resource Manager-Bereitstellungsmodell erstellte virtuelle Computer.
+
+Stellen Sie auf der Registerkarte **Verwaltung** im Bereich **Überwachung** sicher, dass **Startdiagnose** aktiviert ist. Wählen Sie in der Dropdownliste **Diagnosespeicherkonto** ein Speicherkonto aus, in dem die Diagnosedateien gespeichert werden sollen.
  
-    ![Ressourcen-Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
+![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
-2. Aktivieren Sie unter **Einstellungen** die **Startdiagnose**, und wählen Sie dann ein Speicherkonto aus, in dem Sie diese Diagnosedateien ablegen möchten.
- 
-    ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
+> [!NOTE]
+> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
+>
 
-    > [!NOTE]
-    > Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
-    >
-    > 
+### <a name="deploying-from-an-azure-resource-manager-template"></a>Bereitstellen aus einer Azure Resource Manager-Vorlage
 
-3. Beim Bereitstellen aus einer Azure Resource Manager-Vorlage navigieren Sie zur VM-Ressource und fügen den Diagnoseprofilabschnitt an. Denken Sie daran, den API-Versionsheader „2015-06-15“ zu verwenden.
+Beim Bereitstellen aus einer Azure Resource Manager-Vorlage navigieren Sie zur VM-Ressource und fügen den Diagnoseprofilabschnitt an. Legen Sie den API-Versionsheader mindestens auf „2015-06-15“ fest. Die neueste Version ist „2018-10-01“.
 
-    ```json
-    {
-          "apiVersion": "2015-06-15",
-          "type": "Microsoft.Compute/virtualMachines",
-          … 
-    ```
+```json
+{
+  "apiVersion": "2018-10-01",
+  "type": "Microsoft.Compute/virtualMachines",
+  … 
+```
 
-4. Das Diagnoseprofil ermöglicht Ihnen die Auswahl des Speicherkontos, in dem diese Protokolle abgelegt werden sollen.
+Das Diagnoseprofil ermöglicht Ihnen die Auswahl des Speicherkontos, in dem diese Protokolle abgelegt werden sollen.
 
-    ```json
-            "diagnosticsProfile": {
-                "bootDiagnostics": {
-                "enabled": true,
-                "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
-                }
-            }
-            }
-        }
-    ```
+```json
+    "diagnosticsProfile": {
+    "bootDiagnostics": {
+    "enabled": true,
+    "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
+    }
+    }
+    }
+}
+```
 
-Informationen zum Bereitstellen eines virtuellen Beispielcomputers mit aktivierter Startdiagnose finden Sie in unserem Repository.
+Weitere Informationen zum Bereitstellen von Ressourcen mithilfe von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Aktivieren der Startdiagnose auf vorhandenen virtuellen Computern 
 
 Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Computern führen Sie diese Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann den virtuellen Computer aus.
-2. Wählen Sie unter **Support + Problembehandlung** die Option **Startdiagnose** > **Einstellungen** aus, ändern Sie den Status in **Ein**, und wählen Sie dann ein Speicherkonto aus. 
-4. Stellen Sie sicher, dass die Option „Startdiagnose“ ausgewählt ist, und speichern Sie dann die Änderung.
+2. Wählen Sie im Abschnitt **Support + Problembehandlung** die Option **Startdiagnose** und dann die Registerkarte **Einstellungen** aus.
+3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein**, und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
+4. Speichern Sie die Änderungen.
 
     ![Aktualisieren eines vorhandenen virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 
-3. Starten Sie den virtuellen Computer neu, damit die Einstellungen übernommen werden.
+Sie müssen den virtuellen Computer neu starten, damit die Änderung wirksam wird.
 
+### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Aktivieren der Startdiagnose über die Azure-Befehlszeilenschnittstelle
 
+Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Startdiagnose auf einem virtuellen Azure-Computer zu aktivieren. Weitere Informationen finden Sie unter [az vm boot-diagnostics](
+https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).

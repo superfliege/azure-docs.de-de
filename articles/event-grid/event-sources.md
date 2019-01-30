@@ -2,17 +2,17 @@
 title: Azure Event Grid-Ereignisquellen
 description: Dieser Artikel beschreibt unterstützte Ereignisquellen für Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 44bd92568db3a762453e1d76a620e6c792cd8913
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498299"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476035"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Ereignisquellen in Azure Event Grid
 
@@ -117,7 +117,7 @@ Abonnieren Sie Service Bus-Ereignisse, um ohne aktiven Listener auf Nachrichten 
 | [Übersicht: Integration von Azure Service Bus in Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Übersicht über die Integration von Service Bus in Event Grid. |
 | [Ereignisschema](event-schema-service-bus.md) | Zeigt Felder in Service Bus-Ereignissen an. |
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 
 Abonnieren Sie Blob Storage-Ereignisse, um auf Ereignisse der Bloberstellung und -löschung zu reagieren.
 

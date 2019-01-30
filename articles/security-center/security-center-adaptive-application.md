@@ -3,7 +3,7 @@ title: Adaptive Anwendungssteuerungen in Azure Security Center | Microsoft-Dokum
 description: In diesem Dokument erfahren Sie, wie Sie Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2018
-ms.author: rkarlin
-ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 01/21/2019
+ms.author: monhaber
+ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262896"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427133"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Was sind adaptive Anwendungssteuerungen in Security Center?
-Adaptive Anwendungssteuerungen sind eine intelligente, automatisierte End-to-End-Lösung für das Anwendungswhitelisting von Azure Security Center. Hiermit lässt sich steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können, wodurch Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen können. Security Center nutzt Machine Learning, um die auf Ihren virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden der jeweiligen Whitelistregeln, die auf diesen Daten basieren. Dadurch können Sie Richtlinien für das Anwendungswhitelisting deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
+Adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung für das Anwendungswhitelisting über Azure Security Center. Hiermit lässt sich steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können, sodass Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen können. Security Center nutzt Machine Learning, um die auf Ihren virtuellen Computern ausgeführten Anwendungen zu analysieren, und unterstützt Sie beim Anwenden der jeweiligen Whitelistregeln, die auf diesen Daten basieren. Dadurch können Sie Richtlinien für das Anwendungswhitelisting deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
 
 - Blockierung der Ausführung schädlicher Anwendungen oder Ausgabe einer Warnung beim Versuch, eine schädliche Anwendung auszuführen (auch bei Anwendungen, die möglicherweise von Antischadsoftwarelösungen nicht erfasst werden)
 - Einhaltung der Sicherheitsrichtlinie Ihrer Organisation, die die ausschließliche Verwendung von lizenzierter Software vorschreibt
@@ -73,7 +73,7 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
   ![Anwendungssteuerungsregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
-3. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie eine Richtlinie für das Anwendungswhitelisting nicht anwenden möchten. Als Nächstes sehen Sie zwei Listen:
+3. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie keine Richtlinie für das Anwendungswhitelisting anwenden möchten. Als Nächstes sehen Sie zwei Listen:
 
   - **Empfohlene Anwendungen**: Eine Liste mit Anwendungen, die häufig auf den virtuellen Computern in dieser Gruppe vorhanden sind und für die ein Zulassen der Ausführung empfohlen wird.
   - **Weitere Anwendungen**: Eine Liste mit Anwendungen, die weniger häufig auf den virtuellen Computern in dieser Gruppe vorhanden oder als Sicherheitslücken bekannt sind (siehe weiter unten) und überprüft werden sollten.
@@ -87,7 +87,6 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
 5. Klicken Sie nach Abschluss Ihrer Auswahl auf **Erstellen**. <br>
 Nachdem Sie „Erstellen“ ausgewählt haben, erstellt Azure Security Center automatisch die entsprechenden Regeln basierend auf der integrierten Lösung für Anwendungswhitelisting auf Windows-Servern (AppLocker).
-
 
 > [!NOTE]
 > - Security Center zieht zur Erstellung einer Baseline sowie für die individuellen Empfehlungen pro VM-Gruppe die Daten eines Zeitraums von mindestens zwei Wochen heran. Bei neuen Kunden mit dem Standardtarif von Security Center werden VM-Gruppen zunächst auf der Registerkarte *Keine Empfehlung* angezeigt.
@@ -122,7 +121,7 @@ Nachdem Sie „Erstellen“ ausgewählt haben, erstellt Azure Security Center au
    > - Wie bereits erwähnt, werden neue Anwendungssteuerungsrichtlinien standardmäßig immer im *Überwachungsmodus* konfiguriert. 
    >
 
-4. Unter **Richtlinienerweiterung** können Sie beliebige Anwendungspfade hinzufügen, die Sie zulassen möchten. Nachdem Sie diese Pfade hinzugefügt haben, aktualisiert Security Center die Richtlinie für das Anwendungswhitelisting auf den virtuellen Computern innerhalb der ausgewählten Gruppe und erstellt die entsprechenden Regeln für diese Anwendungen zusätzlich zu den bereits vorhandenen Regeln.
+4. Fügen Sie unter **Richtlinienerweiterung** beliebige Anwendungspfade hinzu, die Sie zulassen möchten. Nachdem Sie diese Pfade hinzugefügt haben, aktualisiert Security Center die Richtlinie für das Anwendungswhitelisting auf den virtuellen Computern innerhalb der ausgewählten Gruppe und erstellt die entsprechenden Regeln für diese Anwendungen zusätzlich zu den bereits vorhandenen Regeln.
 
 5. Überprüfen Sie die aktuellen Verstöße, die im Abschnitt **Letzte Warnungen** aufgeführt sind. Klicken Sie auf die einzelnen Zeilen, um zur Seite **Warnungen** in Azure Security Center umgeleitet zu werden, und zeigen Sie alle Warnungen an, die von Azure Security Center auf den zugeordneten virtuellen Computern erkannt wurden.
   - **Warnungen**: Alle protokollierten Verstöße.

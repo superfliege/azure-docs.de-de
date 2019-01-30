@@ -6,14 +6,14 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604770"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382250"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio
 
@@ -48,16 +48,9 @@ Um die lokale Bereitstellung abzuschließen, müssen die folgenden Tools auf dem
 
 In diesem Abschnitt führen Sie die Microservices für die Remoteüberwachung aus. Sie führen die Webbenutzeroberfläche nativ, den Gerätesimulationsdienst in Docker und die Microservices in Visual Studio aus.
 
-### <a name="run-the-web-ui"></a>Ausführen der Webbenutzeroberfläche
-
-In diesem Schritt starten Sie die Webbenutzeroberfläche. Navigieren Sie in der lokalen Kopie des Repositorys zum Ordner **webui**, und führen Sie die folgenden Befehle aus:
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>Ausführen des Gerätesimulationsdiensts
+
+Öffnen Sie eine neues Eingabeaufforderungsfenster, um sicherzustellen, dass Sie Zugriff auf die Umgebungsvariablen haben, die in der vorherigen Sitzung mit dem Skript **start.cmd** festgelegt wurden.
 
 Führen Sie den folgenden Befehl aus, um den Docker-Container für den Gerätesimulationsdienst zu starten. Der Dienst simuliert Geräte für die Lösung für die Remoteüberwachung.
 
@@ -94,11 +87,22 @@ Führen Sie folgende Schritte aus, um den Stream Analytics-Auftrag zu starten:
 1. Klicken Sie in der Liste der Ressourcen auf den **Stream Analytics-Auftrag**.
 1. Klicken Sie auf der Seite **Übersicht** des Stream Analytics-Auftrags auf die Schaltfläche **Starten**. Klicken Sie dann auf **Starten**, um den Auftrag direkt zu starten.
 
+### <a name="run-the-web-ui"></a>Ausführen der Webbenutzeroberfläche
+
+In diesem Schritt starten Sie die Webbenutzeroberfläche. Öffnen Sie eine neues Eingabeaufforderungsfenster, um sicherzustellen, dass Sie Zugriff auf die Umgebungsvariablen haben, die mit dem Skript **start.cmd** festgelegt wurden. Navigieren Sie in der lokalen Kopie des Repositorys zum Ordner **webui**, und führen Sie die folgenden Befehle aus:
+
+```cmd
+npm install
+npm start
+```
+
+Nach Abschluss des Starts wird im Browser die Seite **http://localhost:3000/dashboard** angezeigt. Die Fehler auf dieser Seite sind zu erwarten. Um die Anwendung ohne Fehler anzuzeigen, führen Sie den folgenden Schritt aus.
+
 ### <a name="configure-and-run-nginx"></a>Konfigurieren und Ausführen von NGINX
 
 Richten Sie einen Reverseproxyserver ein, um die Webanwendung und die Microservices zu verknüpfen, die auf dem lokalen Computer ausgeführt werden:
 
-* Kopieren Sie die Datei **nginx.conf** aus dem Ordner **webui\scripts\localhost** in das Installationsverzeichnis **nginx\conf**.
+* Kopieren Sie die Datei **nginx.conf** aus dem Ordner **webui\scripts\localhost** in Ihrer lokalen Kopie des Repositorys in das Installationsverzeichnis **nginx\conf**.
 * Führen Sie **NGINX** aus.
 
 Weitere Informationen zum Ausführen von **NGINX** finden Sie unter [nginx for Windows](https://nginx.org/en/docs/windows.html) (nginx für Windows).

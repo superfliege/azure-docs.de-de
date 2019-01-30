@@ -25,7 +25,7 @@ Hier sind einige Aufgaben angegeben, die Sie mit diesem PowerShell-Modul durchf�
 * Ausführen eines Experiments ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
 * Erstellen eines Webdiensts aus einem Vorhersageexperiment ([neu AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
 * Erstellen eines Endpunkts in einem veröffentlichten Webdiensts ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
-* Aufrufen eines RRS- bzw. BES-Webdienst-Endpunkts ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) und [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
+* Aufrufen eines RRS- bzw. BES-Webdienst-Endpunkts ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) und [Invoke-AmlWebServiceBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
 
 Hier ist ein kurzes Beispiel für die Verwendung von PowerShell zum Ausführen eines vorhandenen Experiments angegeben:
 

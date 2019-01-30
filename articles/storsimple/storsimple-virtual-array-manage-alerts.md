@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27786406"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447223"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Warnungen für StorSimple Virtual Array
 
@@ -38,7 +38,6 @@ Sie können auswählen, ob Sie per E-Mail über die Warnungsbedingungen für die
 
 > [!NOTE]
 > Sie können maximal 20 E-Mail-Adressen pro virtuellem Array eingeben.
-
 
 Nachdem Sie die E-Mail-Benachrichtigung für ein virtuelles Array aktiviert haben, erhalten die Mitglieder der Benachrichtigungsliste jedes Mal eine E-Mail-Nachricht, wenn eine kritische Warnung vorliegt. Die Nachrichten werden von der Adresse *storsimple-alerts-noreply@mail.windowsazure.com* gesendet und enthalten eine Beschreibung der Warnungsbedingung. Empfänger können auf **Abonnement kündigen** klicken, um das Entfernen aus der E-Mail-Benachrichtigungsliste durchzuführen.
 
@@ -63,8 +62,8 @@ Nachdem Sie die E-Mail-Benachrichtigung für ein virtuelles Array aktiviert habe
       
       > [!NOTE]
       > Wenn die Testbenachrichtigung nicht gesendet werden kann, zeigt der StorSimple-Geräte-Manager-Dienst eine entsprechende Meldung an. Klicken Sie auf **OK**, warten Sie einige Minuten, und versuchen Sie dann, die Testnachricht erneut zu senden.
-      > 
-      > 
+      >
+      >
    5. Klicken Sie unten auf der Seite auf **Speichern** , um Ihre Konfiguration zu speichern. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
       
       ![E-Mail zum Testen der Warnungsbenachrichtigung](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
@@ -102,11 +101,11 @@ Wenn Sie in der Liste auf eine Warnung klicken, werden weitere Details zur Warnu
 
 Sie können die Details der Warnung in eine Textdatei kopieren, wenn Sie die Informationen an den Microsoft Support senden möchten. Nachdem Sie die Empfehlung befolgt und die Warnungsbedingung lokal behoben haben, sollten Sie die Warnung aus der Liste löschen. Wählen Sie die Warnung aus der Liste aus, und klicken Sie auf **Löschen**. Zum Löschen mehrerer Warnungen wählen Sie die einzelnen Warnungen aus und klicken auf eine beliebige Spalte (außer der Spalte **Warnung**). Klicken Sie dann auf **Löschen**, nachdem Sie alle zu löschenden Warnungen ausgewählt haben.
 
-Wenn Sie auf **Löschen**klicken, können Sie Kommentare zur Warnung und die Schritte zur Behebung des Problems angeben. 
+Wenn Sie auf **Löschen**klicken, können Sie Kommentare zur Warnung und die Schritte zur Behebung des Problems angeben.
 
 ![Warnungskommentare](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
-Einige Ereignisse werden gelöscht, falls ein anderes Ereignis mit neuen Informationen ausgelöst wird. 
+Einige Ereignisse werden gelöscht, falls ein anderes Ereignis mit neuen Informationen ausgelöst wird.
 
 ## <a name="sort-and-review-alerts"></a>Sortieren und Überprüfen von Warnungen
 
@@ -131,21 +130,21 @@ In den folgenden Tabellen sind einige StorSimple-Warnungen aufgeführt, die unte
 
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
-| Für das Gerät *<device name>* besteht keine Verbindung mit der Cloud. |Für das benannte Gerät kann keine Verbindung mit der Cloud hergestellt werden. |Es konnte keine Verbindung mit der Cloud hergestellt werden. Dies kann einen der folgenden Gründe haben:<ul><li>Möglicherweise liegt ein Problem mit den Netzwerkeinstellungen auf Ihrem Gerät vor.</li><li>Möglicherweise liegt ein Problem mit den Anmeldeinformationen des Speicherkontos vor.</li></ul>Weitere Informationen zur Behandlung von Verbindungsproblemen finden Sie auf der [lokalen Webbenutzeroberfläche](storsimple-ova-web-ui-admin.md) des Geräts. |
+| Für das Gerät <*Name des Geräts*> besteht keine Verbindung mit der Cloud. |Für das benannte Gerät kann keine Verbindung mit der Cloud hergestellt werden. |Es konnte keine Verbindung mit der Cloud hergestellt werden. Dies kann einen der folgenden Gründe haben:<ul><li>Möglicherweise liegt ein Problem mit den Netzwerkeinstellungen auf Ihrem Gerät vor.</li><li>Möglicherweise liegt ein Problem mit den Anmeldeinformationen des Speicherkontos vor.</li></ul>Weitere Informationen zur Behandlung von Verbindungsproblemen finden Sie auf der [lokalen Webbenutzeroberfläche](storsimple-ova-web-ui-admin.md) des Geräts. |
 
 ### <a name="configuration-alerts"></a>Konfigurationswarnungen
 
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
 | Die Konfiguration für lokale virtuelle Geräte wird nicht unterstützt. |Die Leistung ist langsam. |Die aktuelle Konfiguration kann zu Leistungseinbußen führen. Stellen Sie sicher, dass Ihr Server die Mindestanforderungen an die Konfiguration erfüllt. Weitere Informationen finden Sie unter [StorSimple Virtual Array-Anforderungen](storsimple-ova-system-requirements.md). |
-| Der bereitgestellte Festplattenspeicher auf <*Name des Geräts*> ist in Kürze erschöpft. |Warnung zum Festplattenspeicher. |Der bereitgestellte Festplattenspeicher ist in Kürze erschöpft. Erwägen Sie die Verschiebung von Workloads auf andere Volumes oder Freigaben oder das Löschen von Daten, um mehr Speicherplatz bereitzustellen. |
+| Der bereitgestellte Festplattenspeicher auf <*Name des Geräts*\> ist in Kürze erschöpft. |Warnung zum Festplattenspeicher. |Der bereitgestellte Festplattenspeicher ist in Kürze erschöpft. Erwägen Sie die Verschiebung von Workloads auf andere Volumes oder Freigaben oder das Löschen von Daten, um mehr Speicherplatz bereitzustellen. |
 
 ### <a name="job-failure-alerts"></a>Warnungen zu Auftragsfehlern
 
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
-| Die Sicherung von <*Name des Geräts*> konnte nicht abgeschlossen werden. |Fehler beim Sicherungsauftrag. |Eine Sicherung konnte nicht erstellt werden. Erwägen Sie eine der folgenden Maßnahmen:<ul><li>Der Sicherungsvorgang kann aufgrund möglicher Konnektivitätsprobleme nicht erfolgreich abgeschlossen werden. Stellen Sie sicher, dass keine Konnektivitätsprobleme vorliegen. Weitere Informationen zur Behandlung von Verbindungsproblemen finden Sie auf der [lokalen Webbenutzeroberfläche](storsimple-ova-web-ui-admin.md) des virtuellen Geräts.</li><li>Sie haben das verfügbare Speicherlimit erreicht. Erwägen Sie, nicht mehr benötigte Sicherungen zu löschen, um mehr Speicherplatz bereitzustellen.</li></ul> Beheben Sie die Probleme, löschen Sie die Warnung, und versuchen Sie, den Vorgang zu wiederholen. |
-| Das Klonen von <*Name des Geräts*> konnte nicht abgeschlossen werden. |Fehler beim Klonauftrag. |Ein Klon konnte nicht erstellt werden. Erwägen Sie eine der folgenden Maßnahmen:<ul><li>Unter Umständen ist Ihre Sicherungsliste nicht gültig. Aktualisieren Sie die Liste, um ihre Gültigkeit sicherzustellen.</li><li>Unter Umständen verhindern Verbindungsprobleme, dass der Klonvorgang erfolgreich abgeschlossen wird. Stellen Sie sicher, dass keine Konnektivitätsprobleme vorliegen.</li><li>Sie haben das verfügbare Speicherlimit erreicht. Erwägen Sie, nicht mehr benötigte Sicherungen zu löschen, um mehr Speicherplatz bereitzustellen.</li></ul>Beheben Sie die Probleme, löschen Sie die Warnung, und versuchen Sie, den Vorgang zu wiederholen. |
+| Die Sicherung von <*Name des Geräts*\> konnte nicht abgeschlossen werden. |Fehler beim Sicherungsauftrag. |Eine Sicherung konnte nicht erstellt werden. Erwägen Sie eine der folgenden Maßnahmen:<ul><li>Der Sicherungsvorgang kann aufgrund möglicher Konnektivitätsprobleme nicht erfolgreich abgeschlossen werden. Stellen Sie sicher, dass keine Konnektivitätsprobleme vorliegen. Weitere Informationen zur Behandlung von Verbindungsproblemen finden Sie auf der [lokalen Webbenutzeroberfläche](storsimple-ova-web-ui-admin.md) des virtuellen Geräts.</li><li>Sie haben das verfügbare Speicherlimit erreicht. Erwägen Sie, nicht mehr benötigte Sicherungen zu löschen, um mehr Speicherplatz bereitzustellen.</li></ul>  Beheben Sie die Probleme, löschen Sie die Warnung, und versuchen Sie, den Vorgang zu wiederholen. |
+| Das Klonen von <*Name des Geräts*\> konnte nicht abgeschlossen werden. |Fehler beim Klonauftrag. |Ein Klon konnte nicht erstellt werden. Erwägen Sie eine der folgenden Maßnahmen:<ul><li>Unter Umständen ist Ihre Sicherungsliste nicht gültig. Aktualisieren Sie die Liste, um ihre Gültigkeit sicherzustellen.</li><li>Unter Umständen verhindern Verbindungsprobleme, dass der Klonvorgang erfolgreich abgeschlossen wird. Stellen Sie sicher, dass keine Konnektivitätsprobleme vorliegen.</li><li>Sie haben das verfügbare Speicherlimit erreicht. Erwägen Sie, nicht mehr benötigte Sicherungen zu löschen, um mehr Speicherplatz bereitzustellen.</li></ul> Beheben Sie die Probleme, löschen Sie die Warnung, und versuchen Sie, den Vorgang zu wiederholen. |
 
 ### <a name="networking-alerts"></a>Netzwerkwarnungen
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
@@ -157,15 +156,14 @@ In den folgenden Tabellen sind einige StorSimple-Warnungen aufgeführt, die unte
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
 | Bei der Datenübertragung kommt es zu unerwarteten Verzögerungen. |Langsame Datenübertragung. |Drosselungsfehler treten auf, wenn Sie die Skalierbarkeitsziele eines Speicherdiensts überschreiten. Der Speicherdienst tut dies, um sicherzustellen, dass kein Einzelclient oder Mandant diesen Dienst auf Kosten anderer verwenden kann. Weitere Informationen zur Problembehandlung für Ihr Azure-Speicherkonto finden Sie unter [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| Der lokale reservierte Festplattenspeicher auf <*Name des Geräts*> ist in Kürze erschöpft. |Langsame Reaktion. |10 % des insgesamt bereitgestellten Speicherplatzes für <*Name des Geräts*> ist auf dem lokalen Gerät reserviert, und dieser reservierte Speicherplatz ist in Kürze erschöpft. Die Workload auf <*Name des Geräts*> generiert eine höhere Änderungsrate, oder Sie haben kürzlich eine große Menge von Daten migriert. Dies kann zu Leistungseinbußen führen. Wählen Sie eine der folgenden Vorgehensweisen, um dieses Problem zu lösen:<ul><li>Erhöhen Sie die Cloudbandbreite für dieses Gerät.</li><li>Verringern Sie die Workloads, oder verschieben Sie Workloads auf ein anderes Volume oder eine andere Freigabe.</li></ul> |
+| Der lokale reservierte Festplattenspeicher auf <*Name des Geräts*\> ist in Kürze erschöpft. |Langsame Reaktion. |10% des insgesamt bereitgestellten Speicherplatzes für <*Name des Geräts*\> ist auf dem lokalen Gerät reserviert, und dieser reservierte Speicherplatz ist in Kürze erschöpft. Die Workload auf <*Name des Geräts*\> generiert eine höhere Änderungsrate, oder Sie haben kürzlich eine große Menge von Daten migriert. Dies kann zu Leistungseinbußen führen. Wählen Sie eine der folgenden Vorgehensweisen, um dieses Problem zu lösen:<ul><li>Erhöhen Sie die Cloudbandbreite für dieses Gerät.</li><li>Verringern Sie die Workloads, oder verschieben Sie Workloads auf ein anderes Volume oder eine andere Freigabe.</li></ul> |
 
 ### <a name="security-alerts"></a>Sicherheitswarnungen
 
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
-| Das Kennwort für <*Name des Geräts*> läuft in <*Anzahl*> Tagen ab. |Kennwortwarnung. |Ihr Kennwort läuft in <Anzahl> Tagen ab. Sie sollten Ihr Kennwort ändern. Weitere Informationen finden Sie unter [Ändern des StorSimple Virtual Array-Geräteadministratorkennworts](storsimple-virtual-array-change-device-admin-password.md). |
+| Das Kennwort für <*Name des Geräts*\> läuft in <*Anzahl*\> Tagen ab. |Kennwortwarnung. |Ihr Kennwort läuft in <*Anzahl*\> Tagen ab. Sie sollten Ihr Kennwort ändern. Weitere Informationen finden Sie unter [Ändern des StorSimple Virtual Array-Geräteadministratorkennworts](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie mehr über das StorSimple Virtual Array](storsimple-ova-overview.md).
-

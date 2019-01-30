@@ -3,19 +3,19 @@ title: Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung 
 description: Dieses Dokument enthält Anleitungen zu Strategien, die eine Organisation übernehmen sollte, um das Risiko der Sperrung während unvorhergesehener Störungen zu reduzieren.
 services: active-directory
 author: martincoetzer
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101920"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452546"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -119,30 +119,48 @@ Eine Notfallplanrichtlinie für den bedingten Zugriff ist eine **deaktivierte Ri
 * Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel: 
   * Konfigurieren Sie eine Sicherungsrichtlinie, die den eingeschränkten Sitzungsanspruch auf Exchange und SharePoint sendet.
   * Wenn Ihre Organisation Microsoft Cloud App Security verwendet, ziehen Sie ein Fallback auf eine Richtlinie in Betracht, die MCAS aktiviert, und dann erlaubt MCAS schreibgeschützten Zugriff, jedoch kein Hochladen.
+* Benennen Sie Ihre Richtlinien so, dass Sie sie bei einer Unterbrechung problemlos wiederfinden. Der Richtlinienname muss die folgenden Elemente enthalten:
+  * Eine *Bezeichnungsnummer* für die Richtlinie.
+  * Anzuzeigender Text, diese Richtlinie dient nur für Notfälle. Beispiel:  **IM NOTFALL AKTIVIEREN** 
+  * Die *Unterbrechung*, für die sie gilt. Beispiel:  **Bei MFA-Unterbrechung**
+  * Eine *Sequenznummer*, die angibt, in welcher Reihenfolge die Richtlinien aktiviert werden müssen.
+  * Die *Apps*, für die sie gilt.
+  * Die *Steuerelemente*, für die sie gilt.
+  * Die *Bedingungen*, die sie erfordert.
+  
+Dieser Benennungsstandard für Notfallplanrichtlinien ist wie folgt: 
 
-Das folgende Beispiel: **Beispiel A: Notfallplan-CA-Richtlinie, um den Zugriff auf unternehmenskritische Zusammenarbeits-Apps wiederherzustellen**, ist ein typischer Unternehmensnotfallplan. In diesem Szenario erfordert die Organisation in der Regel MFA für den gesamten Exchange Online- und SharePoint Online-Zugriff, und die Unterbrechung ist in diesem Fall ein Ausfall des MFA-Anbieters des Kunden (Azure-MFA, lokaler MFA-Anbieter oder Drittanbieter-MFA). Diese Richtlinie entschärft diesen Ausfall, indem bestimmten Benutzern der Zugriff auf diese Apps über vertrauenswürdige Windows-Geräte nur dann ermöglicht wird, wenn sie über ihr vertrauenswürdiges Unternehmensnetzwerk auf die App zugreifen. Sie schließt auch Notfallkonten und Core-Administratoren von diesen Einschränkungen aus. Dieses Beispiel setzt einen benannten Netzwerkstandort **CorpNetwork** und eine Sicherheitsgruppe **ContingencyAccess** mit den Zielbenutzern, eine Gruppe mit dem Namen **CoreAdmins**, die die Core-Administratoren enthält, und eine Gruppe namens **EmergencyAccess** mit den Notfallzugriffs-Konten voraus. Der Notfallplan erfordert, dass vier Richtlinien den gewünschten Zugriff bieten.
+`
+EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
+`
+
+Das folgende Beispiel: **Beispiel A: Notfallplan-CA-Richtlinie, um den Zugriff auf unternehmenskritische Zusammenarbeits-Apps wiederherzustellen**, ist ein typischer Unternehmensnotfallplan. In diesem Szenario erfordert die Organisation in der Regel MFA für den gesamten Exchange Online- und SharePoint Online-Zugriff, und die Unterbrechung ist in diesem Fall ein Ausfall des MFA-Anbieters des Kunden (Azure-MFA, lokaler MFA-Anbieter oder Drittanbieter-MFA). Diese Richtlinie entschärft diesen Ausfall, indem bestimmten Benutzern der Zugriff auf diese Apps über vertrauenswürdige Windows-Geräte nur dann ermöglicht wird, wenn sie über ihr vertrauenswürdiges Unternehmensnetzwerk auf die App zugreifen. Sie schließt auch Notfallkonten und Core-Administratoren von diesen Einschränkungen aus. Die Zielbenutzer erhalten dann Zugriff auf Exchange Online und SharePoint Online, während andere Benutzer aufgrund des Ausfalls weiterhin keinen Zugriff auf die Apps haben. Dieses Beispiel setzt einen benannten Netzwerkstandort **CorpNetwork** und eine Sicherheitsgruppe **ContingencyAccess** mit den Zielbenutzern, eine Gruppe mit dem Namen **CoreAdmins**, die die Core-Administratoren enthält, und eine Gruppe namens **EmergencyAccess** mit den Notfallzugriffs-Konten voraus. Der Notfallplan erfordert, dass vier Richtlinien den gewünschten Zugriff bieten. 
 
 **Beispiel A: Notfallplan-CA-Richtlinien, um den Zugriff auf unternehmenskritische Zusammenarbeits-Apps wiederherzustellen:**
 
 * Richtlinie 1: In die Domäne eingebundene Geräte für Exchange und SharePoint voraussetzen.
+  * Name: EM001 – IM NOTFALL AKTIVIEREN: MFA-Unterbrechung[1/4] – Exchange SharePoint – Azure AD Hybrid Join erforderlich
   * Benutzer und Gruppen: ContingencyAccess einbeziehen. CoreAdmins und EmergencyAccess ausschließen.
   * Cloud-Apps: Exchange Online und SharePoint Online
   * Bedingungen: Beliebig
   * Steuerelement zur Rechteerteilung: Einbindung in Domäne voraussetzen.
   * Status: Deaktiviert
 * Richtlinie 2: Andere Plattformen als Windows blockieren.
+  * Name: EM002 – IM NOTFALL AKTIVIEREN: MFA-Unterbrechung[2/4] – Exchange SharePoint – Zugriff blockieren außer Windows
   * Benutzer und Gruppen: Alle Benutzer einbeziehen. CoreAdmins und EmergencyAccess ausschließen.
   * Cloud-Apps: Exchange Online und SharePoint Online
   * Bedingungen: Als Geräteplattform alle Plattformen einbeziehen, Windows ausschließen.
   * Steuerelement zur Rechteerteilung: Block
   * Status: Deaktiviert
 * Richtlinie 3: Andere Netzwerke als CorpNetwork blockieren.
+  * Name: EM003 – IM NOTFALL AKTIVIEREN: MFA-Unterbrechung[3/4] – Exchange SharePoint – Zugriff blockieren außer Unternehmensnetzwerk
   * Benutzer und Gruppen: Alle Benutzer einbeziehen. CoreAdmins und EmergencyAccess ausschließen.
   * Cloud-Apps: Exchange Online und SharePoint Online
   * Bedingungen: Als Standorte alle Standorte einbeziehen, CorpNetwork ausschließen.
   * Steuerelement zur Rechteerteilung: Block
   * Status: Deaktiviert
 * Richtlinie 4: EAS explizit blockieren.
+  * Name: EM004 – IM NOTFALL AKTIVIEREN: MFA-Unterbrechung [4/4] – Exchange – EAS für alle Benutzer blockieren
   * Benutzer und Gruppen: Alle Benutzer einbeziehen.
   * Cloud-Apps: Exchange Online einbeziehen.
   * Bedingungen: Client-Apps: Exchange Active Sync
@@ -163,12 +181,14 @@ Im nächsten Beispiel, **Beispiel B: Notfallplan-CA-Richtlinien, um den mobilen 
 **Beispiel B: Notfallplan-CA-Richtlinien:**
 
 * Richtlinie 1: Alle blockieren, die nicht zum SalesContingency-Team gehören.
+  * Name: EM001 – IM NOTFALL AKTIVIEREN: Unterbrechung der Gerätecompliance[1/2] – Salesforce – Alle Benutzer außer SalesforceContingency blockieren
   * Benutzer und Gruppen: Alle Benutzer einbeziehen. SalesAdmins und SalesforceContingency ausschließen.
   * Cloud-Apps: Salesforce.
   * Bedingungen: Keine
   * Steuerelement zur Rechteerteilung: Block
   * Status: Deaktiviert
 * Richtlinie 2: Blockieren Sie das Vertriebsteam von jeder beliebigen anderen Plattform als mobilen Geräten aus (zur Reduzierung der Angriffsfläche).
+  * Name: EM002 – IM NOTFALL AKTIVIEREN: Unterbrechung der Gerätecompliance[2/2] – Salesforce – Alle Plattformen außer iOS und Android blockieren
   * Benutzer und Gruppen: SalesforceContingency einbeziehen. SalesAdmins ausschließen.
   * Cloud-Apps: Salesforce
   * Bedingungen: Als Geräteplattform alle Plattformen einbeziehen, iOS und Android ausschließen.
@@ -179,7 +199,7 @@ Reihenfolge der Aktivierung:
 
 1. Schließen Sie SalesAdmins und SalesforceContingency aus der bereits vorhandenen Gerätekonformitätsrichtlinie für Salesforce aus. Stellen Sie sicher, dass ein Benutzer in der Gruppe SalesforceContingency auf Salesforce zugreifen kann.
 2. Richtlinie 1 aktivieren: Stellen Sie sicher, dass Benutzer außerhalb von SalesContingency nicht auf Salesforce zugreifen können. Stellen Sie sicher, dass Benutzer in SalesAdmins und SalesforceContingency auf Salesforce zugreifen können.
-3. Richtlinie 2 aktivieren: Stellen Sie sicher, dass Benutzer in der Gruppe SalesContigency nicht mit ihren Windows-/Mac-Laptops auf Salesforce zugreifen können, aber weiterhin mit ihren mobilen Geräten zugreifen können. Stellen Sie sicher, dass SalesAdmin immer noch von einem beliebigen Gerät aus auf Salesforce zugreifen kann.
+3. Richtlinie 2 aktivieren: Stellen Sie sicher, dass Benutzer in der Gruppe SalesContingency nicht mit ihren Windows-/Mac-Laptops auf Salesforce zugreifen können, aber weiterhin über ihre mobilen Geräte Zugriff haben. Stellen Sie sicher, dass SalesAdmin immer noch von einem beliebigen Gerät aus auf Salesforce zugreifen kann.
 4. Deaktivieren Sie die vorhandene Gerätekonformitätsrichtlinie für Salesforce.
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Stellen Sie die Kennworthash-Synchronisierung auch dann bereit, wenn Sie zu einem Verbund gehören oder Pass-Through-Authentifizierung verwenden.
@@ -215,14 +235,14 @@ Je nachdem, welche Entschärfungen oder Notfallpläne bei einer Unterbrechung ve
 
 ## <a name="after-a-disruption"></a>Nach einer Unterbrechung
 
-Sie müssen die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgenommen haben, rückgängig machen, sobald der Dienst wiederhergestellt ist, der die Unterbrechung verursacht hat. 
+Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgenommen haben, rückgängig, sobald der Dienst wiederhergestellt ist, der die Unterbrechung verursacht hat. 
 
 1. Aktivieren der normalen Richtlinien
 2. Deaktivieren Sie die Notfallplanrichtlinien. 
 3. Setzen Sie alle anderen Änderungen zurück, die Sie während der Unterbrechung vorgenommen und dokumentiert haben.
 4. Wenn Sie ein Konto für den Notfallzugriff verwendet haben, müssen Sie die Anmeldeinformationen neu generieren und die Details der neuen Anmeldeinformationen physisch als Teil Ihrer Notfallzugriffskonto-Verfahren sichern.
 5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoereignisse](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) nach verdächtigen Aktivitäten fort.
-6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist insbesondere wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
+6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
 
 ## <a name="emergency-options"></a>Notfalloptionen
 

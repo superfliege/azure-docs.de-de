@@ -5,19 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.openlocfilehash: 1c05203de694cde882277bf269f3ff87438f9f26
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 1/22/2019
+ms.openlocfilehash: 6ebbaece66d9055fd2bff68eee873b012b4a6d50
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547727"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462419"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
 Mit dem Feature der Lesereplikate (öffentliche Vorschau) können Sie Daten von einem Azure Database for MySQL-Server (Masterserver) auf bis zu fünf schreibgeschützte Server (Replikate) in derselben Azure-Region replizieren. Schreibgeschützte Replikate werden mit der nativen, auf der Position der Binärprotokolldatei (binlog) basierenden Replikationstechnologie der MySQL-Engine asynchron aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
-Bei Replikaten, die im Azure Database for MySQL-Dienst erstellt werden, handelt es sich um neue Server, die genauso verwaltet werden können wie normale, eigenständige MySQL-Server. Diese Server werden mit dem gleichen Gebührensatz berechnet wie eigenständige Server.
+Bei Replikaten, die im Azure Database for MySQL-Dienst erstellt werden, handelt es sich um neue Server, die genauso verwaltet werden können wie normale, eigenständige MySQL-Server. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen und der bereitgestellte Speicher in GB/Monat in Rechnung gestellt. 
+
 
 Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie in der [Dokumentation zur MySQL-Replikation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 

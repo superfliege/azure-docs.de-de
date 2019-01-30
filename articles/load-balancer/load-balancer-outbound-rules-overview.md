@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185017"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439101"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -208,6 +208,7 @@ Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für aus
 - Das konfigurierbare Leerlauftimeout für ausgehenden Datenverkehr beträgt zwischen 4 und 66 Minuten (240 bis 4.000 Sekunden).
 - Load Balancer unterstützt kein ICMP für die NAT ausgehenden Datenverkehrs.
 - Sie können Ausgangsregeln im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.
+- Ausgangsregeln können nur auf die primäre NIC und die primäre IP-Konfiguration angewendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,7 +4,7 @@ description: In diesem Artikel erfahren Sie, wie Sie den Status von Aufträgen z
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: af5d7174a2726a6ff8a62477149606ec5d43e94e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: def3c6aea7b915e8665367d4da27c1314374000c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355067"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463064"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Meldung zur automatischen Benutzerkontobereitstellung
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 
 
 Azure Active Directory beinhaltet einen [Dienst zur Benutzerkontobereitstellung](user-provisioning.md), mit dem die Bereitstellung bzw. die Aufhebung der Bereitstellung von Benutzerkonten in SaaS-Apps und anderen Systemen zur nahtlosen Verwaltung des Identitätslebenszyklus automatisiert werden kann. Azure AD unterstützt vorab integrierte Benutzerbereitstellungsconnectors für alle Anwendungen und Systeme im Abschnitt „Ausgewählt“ des [Azure AD-Anwendungskatalogs](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
@@ -40,9 +40,9 @@ Bereitstellungsconnectors werden über das [Azure-Portal](https://portal.azure.c
 
 In diesem Artikel werden die folgenden Bezeichnungen verwendet, die wie folgt definiert sind:
 
-* **Quellsystem** – Das Repository von Benutzern, von dem aus der Azure AD-Bereitstellungsdienst synchronisiert. Azure Active Directory ist das Quellsystem für die meisten vorab integrierten Bereitstellungsconnectors, es gibt jedoch einige Ausnahmen (z.B. Workday Inbound Synchronization).
+* **Quellsystem** – Das Repository von Benutzern, von dem aus der Azure AD-Bereitstellungsdienst synchronisiert. Azure Active Directory ist das Quellsystem für die meisten vorab integrierten Bereitstellungsconnectors, es gibt jedoch einige Ausnahmen (z. B. Workday Inbound Synchronization).
 
-* **Zielsystem** – Das Repository von Benutzern, in dem der Azure AD-Bereitstellungsdienst synchronisiert. Dabei handelt es sich in der Regel um eine SaaS-Anwendung (z.B. Salesforce, ServiceNow, Google Apps, Dropbox for Business), kann in einigen Fällen jedoch ein lokales System wie Active Directory sein (z.B. Workday Inbound Synchronization in Active Directory).
+* **Zielsystem** – Das Repository von Benutzern, in dem der Azure AD-Bereitstellungsdienst synchronisiert. Dies ist in der Regel eine SaaS-Anwendung (z. B. Salesforce, ServiceNow, Google Apps, Dropbox für Unternehmen), in manchen Fällen kann es sich jedoch um ein lokales System wie Active Directory handeln (z. B. Workday Inbound Synchronization in Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Abrufen von Bereitstellungsberichten aus dem Azure-Verwaltungsportal
@@ -68,7 +68,7 @@ Der Zusammenfassungsbericht für die Bereitstellung wird auf der Registerkarte *
 
 Um die Betriebsintegrität des Zusammenfassungsberichts für die Bereitstellung zu überprüfen, sollten Administratoren zuerst im Zusammenfassungsbericht für die Bereitstellung nachsehen.
 
- ![Zusammenfassungsbericht](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![Zusammenfassungsbericht](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>Bereitstellung von Überwachungsprotokollen
 Alle Aktivitäten, die vom Bereitstellungsdienst ausgeführt werden, werden in den Azure AD-Überwachungsprotokollen erfasst. Diese können über die Registerkarte **Überwachungsprotokolle** in der Kategorie **Kontobereitstellung** angezeigt werden. Zu den protokollierten Aktivitätsereignistypen zählen Folgende:

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2017
+ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: d0826d60d766874ddd186bcf406ea987134dab16
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 49c043853cede0a20e3d61011ded40e57d7a0303
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385865"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389422"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Checkliste für die Azure Service Fabric-Sicherheit
 Dieser Artikel enthält eine einfach zu verwendende Checkliste, die Sie zum Sichern Ihrer Azure Service Fabric-Umgebung nutzen können.
@@ -48,6 +48,8 @@ Verwenden Sie die folgende Checkliste, um sicherzustellen, dass Sie keine wichti
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+- [Bewährte Methoden für die Service Fabric-Sicherheit](azure-service-fabric-security-best-practices.md)
 - [Service Fabric-Cluster-Upgradeprozess und Erwartungen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)
 - [Verwalten von Service Fabric-Anwendungen in Visual Studio](https://docs.microsoft.com/azure/service-fabric/service-fabric-manage-application-in-visual-studio)
 - [Einführung in das Service Fabric-Integritätsmodell](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 861dfacb556b646a288ce7cf7c749cec858f8bd5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634225"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432658"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -41,8 +41,8 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | Fehlercode | Fehlermeldung | Schritte zur Problembehandlung |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fehler: userObjectSid lookup failed (Fehler bei der userObjectSid-Suche) | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Fehler: Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fehler Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fehler Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
 
 ## <a name="errors-your-users-may-encounter"></a>Fehler, die bei Ihren Benutzern auftreten können
 

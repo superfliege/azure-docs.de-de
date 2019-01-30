@@ -5,7 +5,7 @@ services: active-directory
 keywords: AD-Papierkorb, versehentliches Löschen, Quellanker
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: afec4207-74f7-4cdd-b13a-574af5223a90
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d1a09c077adbc3c9176740bce69bf051a912bc22
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 4836ffc8c6ab013ef5ad7a661db0df3254b6d4e1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555573"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468748"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect-Synchronisierung: Aktivieren des AD-Papierkorbs
 Es wird empfohlen, den Active Directory-Papierkorb für Ihre lokalen Active Directory-Instanzen, die mit Azure AD synchronisiert werden, zu aktivieren. 
@@ -33,7 +33,7 @@ Dieses Feature unterstützt Sie folgendermaßen beim Wiederherstellen von Azure 
 
 * Wenn Sie versehentlich ein lokales AD-Benutzerobjekt löschen, wird das entsprechende Azure AD-Benutzerobjekt im nächsten Synchronisierungszyklus gelöscht. Standardmäßig bewahrt Azure AD das gelöschte Azure AD-Benutzerobjekt für 30 Tage als „vorläufig gelöscht“ auf.
 
-* Wenn Sie den lokalen AD-Papierkorb aktiviert haben, können Sie das gelöschte lokale AD-Benutzerobjekt wiederherstellen, ohne den Quellanker-Wert ändern zu müssen. Wenn das wiederhergestellte lokale AD-Benutzerobjekt mit Azure AD synchronisiert wird, stellt Azure AD das zugehörige, vorläufig gelöschte Azure AD-Benutzerobjekt wieder her. Informationen zum Quellanker-Attribut finden Sie im Artikel [Azure AD Connect: Designkonzepte](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Wenn Sie den lokalen AD-Papierkorb aktiviert haben, können Sie das gelöschte lokale AD-Benutzerobjekt wiederherstellen, ohne den Quellanker-Wert ändern zu müssen. Wenn das wiederhergestellte lokale AD-Benutzerobjekt mit Azure AD synchronisiert wird, stellt Azure AD das zugehörige, vorläufig gelöschte Azure AD-Benutzerobjekt wieder her. Informationen zum Quellankerattribut finden Sie im Artikel [Azure AD Connect: Designkonzepte](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
 
 * Wenn Sie das Feature für den lokalen AD-Papierkorb nicht aktiviert haben, müssen Sie möglicherweise ein AD-Benutzerobjekt erstellen, um das gelöschte Objekt zu ersetzen. Wenn der Azure AD Connect-Synchronisierungsdienst für die Verwendung von vom System generierten AD-Attributen (z.B. „ObjectGuid“) für das Quellanker-Attribut konfiguriert wurde, hat das neu erstellte AD-Benutzerobjekt nicht denselben Quellanker-Wert wie das gelöschte AD-Benutzerobjekt. Wenn das neu erstellte AD-Benutzerobjekt mit Azure AD synchronisiert wurde, erstellt Azure AD ein neues Azure AD-Benutzerobjekt, anstatt das vorläufig gelöschte Azure AD-Benutzerobjekt wiederherzustellen.
 

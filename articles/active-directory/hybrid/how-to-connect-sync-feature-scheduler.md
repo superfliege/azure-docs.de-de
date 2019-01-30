@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect Sync: Scheduler | Microsoft Docs'
+title: 'Azure AD Connect-Synchronisierung: Scheduler | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt das integrierte Schedulerfeature in Azure AD Connect Sync.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d8deb03d03446c1452d73a7c08df4cf14ffcd5b5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8099194feed3761e32686ab15e8738b10ffd4e8b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304559"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462316"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect Sync: Scheduler
+# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
 Dieses Thema beschreibt den integrierten Scheduler in Azure AD Connect Sync (auch bekannt als Synchronisierungsmodul).
 
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
@@ -71,7 +71,7 @@ Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über e
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Syntax: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
-T - Tage, HH - Stunden, mm - Minuten, ss - Sekunden
+ T - Tage, HH - Stunden, mm - Minuten, ss - Sekunden
 
 Beispiel: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 Ändert den Scheduler so, dass er alle drei Stunden ausgeführt wird.
@@ -123,7 +123,7 @@ Wenn der Scheduler gerade einen Synchronisierungszyklus ausführt, müssen Sie d
 Während ein Synchronisierungszyklus ausgeführt wird, sind Änderungen an der Konfiguration nicht möglich. Sie können warten, bis der Scheduler den Prozess beendet hat. Sie können den Prozess aber auch beenden, um Ihre Änderungen sofort vorzunehmen. Das Beenden des aktuellen Zyklus ist ungefährlich, und ausstehende Änderungen werden bei der nächsten Ausführung verarbeitet.
 
 1. Weisen Sie den Scheduler zunächst mit dem PowerShell-Cmdlet `Stop-ADSyncSyncCycle` an, den aktuellen Zyklus zu beenden.
-2. Wenn Sie einen älteren Build als 1.1.281 verwenden, wird der aktuelle Task des aktuellen Connectors durch das Beenden des Schedulers nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png).
+2. Wenn Sie einen älteren Build als 1.1.281 verwenden, wird der aktuelle Task des aktuellen Connectors durch das Beenden des Schedulers nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus:  ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Starten Sie den **Synchronisierungsdienst** über das Startmenü. Wechseln Sie zu **Connectors**, markieren Sie den Connector mit dem Status **Wird ausgeführt**, und wählen Sie unter „Aktionen“ die Option **Beenden** aus.
 
 Der Scheduler ist noch immer aktiv und wird bei der nächsten Gelegenheit wieder gestartet.

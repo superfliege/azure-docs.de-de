@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3afe60e7a00cb4fc4aca5046da8e26aaf3c77a29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198812"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815227"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption für virtuelle IaaS-Computer – FAQ
 
@@ -137,7 +137,7 @@ Ist dieser Workflow nicht möglich, stellt die [Storage Service Encryption](../s
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Welche Verschlüsselungsmethode verwendet Azure Disk Encryption?
 
-Unter Windows verwendet ADE das Bitlocker-AES256-Verschlüsselungsverfahren (AES256WithDiffuser für Versionen vor Windows Server 2012). Unter Linux verwendet ADE den dmcrypt-Standard von aes-xts-plain64 mit einem 256-Bit-Volumehauptschlüssel.
+Unter Windows verwendet ADE das BitLocker-AES256-Verschlüsselungsverfahren (AES256WithDiffuser für Versionen vor Windows Server 2012). Unter Linux verwendet ADE den dmcrypt-Standard von aes-xts-plain64 mit einem 256-Bit-Volumehauptschlüssel.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Werden die Daten auf den bereits verschlüsselten Datenlaufwerken gelöscht, wenn ich EncryptFormatAll verwende und alle Volumetypen angebe?
 Nein, Daten werden nicht von Datenträgern für Daten gelöscht, die bereits mit Azure Disk Encryption verschlüsselt wurden. Ebenso wie EncryptFormatAll das Betriebssystemlaufwerk nicht erneut verschlüsselte, werden auch bereits verschlüsselte Laufwerke für Daten nicht erneut verschlüsselt. Weitere Informationen finden Sie unter den [Kriterien für EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

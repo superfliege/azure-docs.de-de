@@ -3,18 +3,18 @@ title: Grafische Erstellung in Azure Automation
 description: Die grafische Erstellung ermöglicht Ihnen das Erstellen von Runbooks für Azure Automation, ohne mit Code zu arbeiten. Dieser Artikel bietet eine Einführung in die grafische Erstellung und alle Informationen, die Sie für die Erstellung eines grafischen Runbooks benötigen.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233676"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427235"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische Erstellung in Azure Automation
 
@@ -111,7 +111,7 @@ Wenn Sie einen Wert für einen Parameter angeben, wählen Sie eine Datenquelle a
 
 | Data source | BESCHREIBUNG |
 |:--- |:--- |
-| Konstanter Wert |Geben Sie einen Wert für den Parameter ein. Dies ist nur für die folgenden Datentypen möglich: Int32, Int64, String, Boolean, DateTime, Switch. |
+| Konstanter Wert |Geben Sie einen Wert für den Parameter ein. Dies ist nur für die folgenden Datentypen verfügbar: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Aktivitätsausgabe |Ausgabe einer Aktivität, die der aktuellen Aktivität im Workflow vorausgeht. Alle gültigen Aktivitäten werden aufgelistet. Wählen Sie einfach die Aktivität, um ihre Ausgabe für den Parameterwert zu verwenden. Wenn es sich bei der Aktivitätsausgabe um ein Objekt mit mehreren Eigenschaften handelt, können Sie nach Auswahl der Aktivität den Namen der Eigenschaft eingeben. |
 | Runbookeingabe |Wählen Sie einen Runbook-Eingabeparameter als Eingabe für den Aktivitätsparameter aus. |
 | Variablenobjekt |Wählen Sie eine Automation-Variable als Eingabe aus. |

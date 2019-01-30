@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: b7a43135ef0aa0ecfe80000d2d0d73c57e138102
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8be8fa68b48257a8d94d3ba6364d47c522bbf3de
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976353"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401995"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Storage Gen2 Spark
 
@@ -43,7 +43,7 @@ Hier finden Sie die wichtigsten Einstellungen, die optimiert werden können, um 
 
 **Executor-cores**: Dieser Parameter legt fest, wie viele Kerne pro Executor verwendet werden. Dadurch wird die Anzahl von parallelen Threads festgelegt, die pro Executor ausgeführt werden können.  Wenn der Wert für „executor-cores“ 2 beträgt, kann jeder Executor 2 parallele Tasks ausführen.  Die erforderliche Menge an Executorkernen richtet sich nach dem Auftrag.  E/A-intensive Aufträge erfordern keine große Menge an Arbeitsspeicher pro Task, daher kann jeder Executor mehr parallele Tasks verarbeiten.
 
-Standardmäßig sind bei der Ausführung von Spark in HDInsight für jeden physischen Kern zwei virtuelle YARN-Kerne definiert.  Diese Zahl ermöglicht ein gutes Gleichgewicht zwischen Parallelität und der Menge an Kontextwechseln bei mehreren Threads.  
+Standardmäßig sind bei der Ausführung von Spark in HDInsight für jeden physischen Kern zwei virtuelle YARN-Kerne definiert.  Diese Zahl ermöglicht eine gute Balance zwischen Parallelität und der Menge an Kontextwechseln bei mehreren Threads.  
 
 ## <a name="guidance"></a>Anleitungen
 

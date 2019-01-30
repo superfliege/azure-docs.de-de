@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: ''
+ms.openlocfilehash: 418d334133e1c223f2349ce79a51b229072c31e9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332318"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475321"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Verwalten von Nutzung und Kosten für Log Analytics
 
@@ -335,4 +335,5 @@ Wenn Sie eine Warnung erhalten, können Sie die Schritte im folgenden Abschnitt 
 * Ändern Sie die [Leistungsindikatorenkonfiguration](data-sources-performance-counters.md).
 * Informationen zum Ändern der Einstellungen für die Ereigniserfassung finden Sie unter [Datenquellen für Windows-Ereignisprotokolle in Log Analytics](data-sources-windows-events.md).
 * Informationen zum Ändern der Einstellungen für die Syslog-Sammlung finden Sie unter [Syslog-Datenquellen in Log Analytics](data-sources-syslog.md).
+
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: b09bb65cdb571c9df95d1922f4132abe5b77907c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0179f87787c91a90edb54a1956a6f10d1dffc4b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963946"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434188"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Telefonanmeldung ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
 
@@ -37,16 +37,21 @@ Bei der Public Preview-Version muss ein Administrator zunächst mithilfe von Pow
 
 ### <a name="steps-to-enable"></a>Schritte zum Aktivieren
 
-Stellen Sie sicher, dass bei Ihnen die neueste Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls installiert ist. Dazu empfiehlt es sich unter Umständen, das Modul zu deinstallieren und anschließend erneut zu installieren. Führen Sie hierzu die folgenden Befehle aus:
+1. Stellen Sie sicher, dass bei Ihnen die neueste Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls installiert ist. Dazu empfiehlt es sich unter Umständen, das Modul zu deinstallieren und anschließend erneut zu installieren. Führen Sie hierzu die folgenden Befehle aus:
+    ```powershell
+    Uninstall-Module -Name AzureADPreview
+    Install-Module -Name AzureADPreview
+    ```
 
-1. `Uninstall-Module -Name AzureADPreview`
-2. `Install-Module -Name AzureADPreview`
+2. Führen Sie die Authentifizierung für den Azure AD-Mandanten durch, um das Azure AD V2 PowerShell-Modul zu verwenden. Beim verwendeten Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.
+    ```powershell
+    Connect-AzureAD
+    ```
 
-In der Vorschauversion können Sie mithilfe der folgenden PowerShell-Befehle die kennwortlose Anmeldung per Telefon aktivieren:
-
-1. `Connect-AzureAD`
-   1. Melden Sie sich im Authentifizierungsdialogfeld mit einem Konto im Mandanten an. Bei dem Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.
-1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+3. Erstellen Sie die Richtlinie für die Authenticator-Anmeldung:
+    ```powershell
+    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
+    ```
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Wie aktivieren Endbenutzer die Anmeldung per Smartphone?
 

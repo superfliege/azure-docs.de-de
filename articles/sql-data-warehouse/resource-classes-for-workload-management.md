@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9ed3ab89387afc78bd631416a683e11f4dc7054a
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287471"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402250"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Workloadverwaltung mit Ressourcenklassen in Azure SQL Data Warehouse
 Enthält eine Anleitung für die Verwendung von Ressourcenklassen zum Verwalten des Speichers und der Parallelität für Abfragen in Ihrer Azure SQL Data Warehouse-Instanz.  
@@ -90,7 +90,7 @@ Bei näherer Betrachtung der Details dynamischer Gen1-Ressourcenklassen fallen e
 ### <a name="default-resource-class"></a>Standardressourcenklasse
 Standardmäßig ist jeder Benutzer Mitglied der dynamischen Ressourcenklasse **smallrc**. 
 
-Die Ressourcenklasse des Dienstadministrators ist festgelegt und kann nicht geändert werden.  Der Dienstadministrator ist der Benutzer, der während des Bereitstellungsprozesses erstellt wird.
+Die Ressourcenklasse des Dienstadministrators ist unter smallrc festgelegt und kann nicht geändert werden.  Der Dienstadministrator ist der Benutzer, der während des Bereitstellungsprozesses erstellt wird.  In diesem Kontext entspricht der Dienstadministrator dem Anmeldenamen, der beim Erstellen einer neuen SQL Data Warehouse-Instanz unter „Serveradministratoranmeldung“ angegeben wurde.
 
 > [!NOTE]
 > Als „Active Directory-Administrator“ definierte Benutzer oder Gruppen sind auch Dienstadministratoren.

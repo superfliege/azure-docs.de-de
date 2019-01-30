@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579230"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448719"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planen von U-SQL-Aufträgen mit SQL Server Integration Services (SSIS)
 
@@ -40,7 +40,7 @@ Sie können das U-SQL-Skript aus verschiedenen Quellen mithilfe der in SSIS inte
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Szenario 1: Verwenden des Inlineskripts zum Aufrufen von Tabellenwertfunktionen und gespeicherten Prozeduren
 
-Konfigurieren Sie im Editor für den Task „Azure Data Lake Analytics“ **SourceType** als **DirectInput**, und fügen Sie in **USQLStatement** die U-SQL-Anweisungen ein.
+Konfigurieren Sie im Editor für den Azure Data Lake Analytics-Task **SourceType** als **DirectInput**, und fügen Sie in **USQLStatement** die U-SQL-Anweisungen ein.
 
 Zur Vereinfachung der Wartung und Codeverwaltung sollten Sie nur kurze U-SQL-Skripts als Inline-Skripts verwenden. Sie können z.B. vorhandene Tabellenwertfunktionen und gespeicherte Prozeduren in Ihren U-SQL-Datenbanken aufrufen. 
 
@@ -119,7 +119,7 @@ Fügen Sie in der SSIS-Paketentwurfsansicht den **Task „Azure Data Lake Store 
 
 Sie können U-SQL-Dateien in Azure Blob Storage verwenden, indem Sie den **Task „Azure Blob Download“** im Azure Feature Pack nutzen. Dieser Ansatz ermöglicht Ihnen die Verwendung der Skripts in der Cloud.
 
-Die Schritte sind vergleichbar mit [Szenario 2: Verwenden von U-SQL-Dateien in Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Ändern Sie den Task „Azure Data Lake Store File System“ in den Task „Azure Blob Download“. [Erfahren Sie mehr über den Task „Azure Blob Download“](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Die Schritte ähneln [Szenario 2: Verwenden von U-SQL-Dateien in Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Ändern Sie den Task „Azure Data Lake Store File System“ in den Task „Azure Blob Download“. [Erfahren Sie mehr über den Task „Azure Blob Download“](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Die Ablaufsteuerung ist ähnlich wie unten.
 

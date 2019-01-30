@@ -3,18 +3,18 @@ title: 'Integration der Quellcodeverwaltung in Azure Automation: Legacy'
 description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit GitHub in Azure Automation erläutert.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a6ae91ba768f9aa002c2814133b26dd152c7ef25
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784809"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434868"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -79,7 +79,7 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
 
     ![Variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **Automation-Quellcodeverwaltung** wird Ihrem GitHub-Konto als autorisierte Anwendung hinzugefügt. So zeigen Sie die Anwendung an: Navigieren Sie auf Ihrer GitHub-Startseite zu **Profil** > **Einstellungen** > **Anwendungen**. Diese Anwendung ermöglicht Azure-Automation die Synchronisierung Ihres GitHub-Repositorys mit einem Automation-Konto.  
+    * **Automation-Quellcodeverwaltung** wird Ihrem GitHub-Konto als autorisierte Anwendung hinzugefügt. So zeigen Sie die Anwendung an Navigieren Sie auf Ihrer GitHub-Homepage zu **Profile** > **Settings** > **Applications** (Profil > Einstellungen > Anwendungen). Diese Anwendung ermöglicht Azure-Automation die Synchronisierung Ihres GitHub-Repositorys mit einem Automation-Konto.  
 
     ![Git-Anwendung](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
@@ -99,7 +99,7 @@ Durch Einchecken des Runbooks können Sie die Änderungen, die Sie an einem Runb
 1. Wenn Sie auf **Einchecken** klicken, wird eine Bestätigungsmeldung angezeigt. Klicken Sie zum Fortfahren auf **Ja**.  
    
     ![Meldung beim Einchecken](media/automation-source-control-integration-legacy/automation_07_CheckinMessage.png)
-2. Beim Einchecken wird das Quellcodeverwaltungs-Runbook gestartet: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Dieses Runbook stellt eine Verbindung zu GitHub her und überträgt Änderungen in Azure Automation in Ihr Repository. Wenn Sie den Verlauf eingecheckter Aufträge anzeigen möchten, wechseln Sie zurück zur Registerkarte **Integration der Quellcodeverwaltung**, und klicken Sie, um die Seite „Repositorysynchronisierung“ zu öffnen. Diese Seite enthält alle Quellcodeverwaltungsaufträge.  Wählen Sie den Auftrag, den Sie anzeigen möchten, und klicken Sie, um die Details anzuzeigen.  
+2. Der Check-In startet das Quellcodeverwaltungs-Runbook **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Dieses Runbook stellt eine Verbindung zu GitHub her und überträgt Änderungen in Azure Automation in Ihr Repository. Wenn Sie den Verlauf eingecheckter Aufträge anzeigen möchten, wechseln Sie zurück zur Registerkarte **Integration der Quellcodeverwaltung**, und klicken Sie, um die Seite „Repositorysynchronisierung“ zu öffnen. Diese Seite enthält alle Quellcodeverwaltungsaufträge.  Wählen Sie den Auftrag, den Sie anzeigen möchten, und klicken Sie, um die Details anzuzeigen.  
    
     ![Runbook zum Einchecken](media/automation-source-control-integration-legacy/automation_08_CheckinRunbook.png)
    
@@ -139,7 +139,8 @@ Wenn beim Einchecken oder Synchronisieren Fehler auftreten, sollte der Auftragss
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Integration einer Quellcodeverwaltung finden Sie unter den folgenden Ressourcen:  
 
-* [Azure Automation: Source Control Integration in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Automation: Integration der Quellcodeverwaltung in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
 * [Stimmen Sie für Ihr bevorzugtes Quellcodeverwaltungssystem ab.](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
 * [Azure Automation: Integrating Runbook Source Control using Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/) (Azure Automation: Integrieren der Runbook-Quellcodeverwaltung mithilfe von Visual Studio Online)  
+
 

@@ -1,10 +1,10 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in BenefitHub | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit BenefitHub | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und BenefitHub konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4069fe32-a452-463f-973e-7aa0baa4c2fa
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 0a838e003fa4fde6c4a1d458cc6dadf6c6672842
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ee0e91cfc106cd065c233e3bba09ca2ceba04bb1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426869"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815751"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Tutorial: Azure Active Directory-Integration in BenefitHub
+# <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Tutorial: Azure Active Directory-Integration mit BenefitHub
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in BenefitHub integrieren.
 
@@ -155,7 +155,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **BenefitHub** müssen Sie die heruntergeladene **XML-Metadaten**-Datei an das [BenefitHub-Supportteam](https://www.benefithub.com/Home/ContactUs) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -190,7 +190,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-benefithub-test-user"></a>Erstellen eines BenefitHub-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in BenefitHub einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer in der BenefitHub-Plattform ggf. vom [BenefitHub-Supportteam](https://www.benefithub.com/Home/ContactUs) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in BenefitHub einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der BenefitHub-Plattform ggf. vom  [BenefitHub-Supportteam](https://www.benefithub.com/Home/ContactUs) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

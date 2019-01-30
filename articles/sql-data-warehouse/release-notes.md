@@ -10,19 +10,20 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a02a7fb8043c63ce47f7f0c7dccf025ab5ab402
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118437"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421452"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
-Azure SQL Data Warehouse ist ein cloudbasiertes Enterprise Data Warehouse (EDW) mit Massively Parallel Processing (MPP) zur schnellen Ausführung komplexer Abfragen für mehrere Petabyte an Daten. Verwenden Sie SQL Data Warehouse als Schlüsselkomponente einer Big Data-Lösung. Importieren Sie große Datenmengen mit einfachen PolyBase-T-SQL-Abfragen in SQL Data Warehouse, und nutzen Sie dann die Vorteile von MPP für aufwendige Analysen. Im Zuge von Integrationen und Analysen wird das Data Warehouse zur Single Version of Truth, auf die sich Ihr Unternehmen bei der Gewinnung von Erkenntnissen verlassen kann.
+Azure SQL Data Warehouse (SQL DW) ist ein cloudbasiertes Enterprise Data Warehouse mit MPP (Massively Parallel Processing) zur schnellen Ausführung komplexer Abfragen für mehrere Petabytes an Daten. Verwenden Sie SQL Data Warehouse als Schlüsselkomponente einer Big Data-Lösung. Importieren Sie große Datenmengen mit einfachen PolyBase-T-SQL-Abfragen in SQL Data Warehouse, und nutzen Sie dann die Vorteile von MPP für aufwendige Analysen. Im Zuge von Integrationen und Analysen wird das Data Warehouse zur Single Version of Truth, auf die sich Ihr Unternehmen bei der Gewinnung von Erkenntnissen verlassen kann.
 
 Klicken Sie unten auf die Links, um weitere Informationen zu den neuen Features und Verbesserungen zu erhalten, die Sie in der aktuellen Version von Azure SQL Data Warehouse erwarten können. Sie können davon ausgehen, dass Sie diese Dienstupdates während Ihres identifizierten Wartungszeitplans erhalten.
 
+- [SQL DW-Version 10.0.10106.0](./release-notes-10-0-10106-0.md)
 - [Dezember 2018](./release-notes-december-2018.md)
 - [Oktober 2018](./release-notes-october-2018.md)
 - [September 2018](./release-notes-september-2018.md)
@@ -39,9 +40,9 @@ Hiermit wird bestätigt, welches Release auf Ihre Data Warehouse-Instanz angewen
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Beispielausgabe: ![SQL Data Warehouse-Version](./media/release-notes/sql_data_warehouse_version.png)
+Beispielausgabe: ![SQL Data Warehouse-Version](./media/release-notes/dw-version.png)
 
-Verwenden Sie das identifizierte Datum, um zu bestätigen, welches Release auf Ihre Azure SQL Data Warehouse-Instanz angewendet wurde. 
+Ermitteln Sie anhand der angegebenen Version, welches Release auf Ihre Azure SQL Data Warehouse-Instanz angewendet wurde. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

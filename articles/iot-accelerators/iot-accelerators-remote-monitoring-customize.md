@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 53361ed460917fff42008283429967eff2e80ab2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 0609a653327640c542457822e41143b9b39dd6d4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345095"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462198"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für Remoteüberwachung
 
@@ -77,7 +77,7 @@ Die folgenden Schritte beschreiben den Prozess zum Einrichten einer lokalen Umge
 
 ## <a name="customize-the-layout"></a>Anpassen des Layouts
 
-Jede Seite in der Remoteüberwachungslösung besteht aus einem Satz von Steuerelementen, den sogenannten *Bereichen* im Quellcode. Die **Dashboard**-Seite besteht aus fünf Bereichen: Übersicht, Zuordnung, Alarme, Telemetrie und Analysen. Sie finden den Quellcode, der jede Seite und ihre Bereiche definiert, im [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui)-GitHub-Repository. Beispielsweise befindet sich der Code, der die **Dashboard**-Seite, ihr Layout und die Bereiche auf der Seite definiert, im [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard)-Ordner.
+Jede Seite in der Remoteüberwachungslösung besteht aus einem Satz von Steuerelementen, den sogenannten *Bereichen* im Quellcode. Die **Dashboard**-Seite enthält fünf Bereiche: Übersicht, Zuordnung, Warnungen, Telemetrie und Analysen. Sie finden den Quellcode, der jede Seite und ihre Bereiche definiert, im [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui)-GitHub-Repository. Beispielsweise befindet sich der Code, der die **Dashboard**-Seite, ihr Layout und die Bereiche auf der Seite definiert, im [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard)-Ordner.
 
 Da die Bereiche ihr Layout und ihre Größe selbst verwalten, können Sie einfach das Layout einer Seite ändern. Nehmen Sie die folgenden Änderungen am Element **PageContent** Element in der `src/components/pages/dashboard/dashboard.js`-Datei vor:
 
@@ -335,7 +335,7 @@ Das Telemetriediagramm zeigt jetzt die Telemetriedaten von fünf Minuten an:
 
 ## <a name="add-a-new-kpi"></a>Hinzufügen eines neuen KPI
 
-Auf der **Dashboard**-Seite werden KPIs im Bereich **Analysen** angezeigt. Diese KPIs werden in der `src/components/pages/dashboard/dashboard.js`-Datei berechnet. Die KPIs werden durch die `src/components/pages/dashboard/panels/analytics/analyticsPanel.js`-Datei gerendert. Die folgenden Schritte beschreiben das Berechnen und Rendern eines neuen KPI-Werts auf der **Dashboard**-Seite. Im Beispiel wird eine neue prozentuale Änderung im Alarme-KPI hinzugefügt:
+Auf der **Dashboard**-Seite werden KPIs im Bereich **Analysen** angezeigt. Diese KPIs werden in der `src/components/pages/dashboard/dashboard.js`-Datei berechnet. Die KPIs werden durch die `src/components/pages/dashboard/panels/analytics/analyticsPanel.js`-Datei gerendert. Die folgenden Schritte beschreiben das Berechnen und Rendern eines neuen KPI-Werts auf der **Dashboard**-Seite. Im Beispiel wird eine neue prozentuale Änderung im KPI für Warnungen hinzugefügt:
 
 1. Öffnen Sie die Datei `src/components/pages/dashboard/dashboard.js` . Ändern Sie das **initialState**-Objekt, sodass eine **warningAlertsChange**-Eigenschaft wie folgt einbezogen wird:
 
@@ -365,7 +365,7 @@ Auf der **Dashboard**-Seite werden KPIs im Bereich **Analysen** angezeigt. Diese
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
       totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
       totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
-      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+      alertsPerDeviceId: updatedAlertsPerDeviceId
     };
     ```
 

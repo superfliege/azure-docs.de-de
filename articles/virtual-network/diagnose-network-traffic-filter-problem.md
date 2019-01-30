@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984227"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424641"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -45,7 +45,7 @@ Die folgenden Schritte setzen voraus, dass Sie über eine VM verfügen, deren ef
    Die Regeln, die in der vorherigen Abbildung aufgeführt sind, beziehen sich auf eine Netzwerkschnittstelle mit dem Namen **myVMVMNic**. Sie können **REGELN FÜR EINGEHENDE PORTS** für die Netzwerkschnittstelle aus zwei verschiedenen Netzwerksicherheitsgruppen sehen:
    
    - **mySubnetNSG**: Ist dem Subnetz zugeordnet, in dem sich die Netzwerkschnittstelle befindet.
-   - **myVMNSG**: Ist der Netzwerkschnittstelle in der VM mit dem Namen **myVMVMNic** zugeordnet.
+   - **myVMNSG**: Ist der Netzwerkschnittstelle auf der VM mit dem Namen **myVMVMNic** zugeordnet.
 
    Die Regel mit dem Namen **DenyAllInBound** verhindert eingehende Kommunikation mit der VM über Port 80 über das Internet, wie im [Szenario](#scenario) beschrieben wird. Die Regel gibt *0.0.0.0/0* für **QUELLE** an, die das Internet einschließt. Keine andere Regel mit einer höheren Priorität (niedrigere Zahl) lässt den Port 80 als eingehenden Port zu. Um den Port 80 als eingehenden Port für die VM über das Internet zuzulassen, lesen Sie den Artikel [Beheben eines Problems](#resolve-a-problem). Weitere Informationen zu Sicherheitsregeln und zu ihrer Anwendung in Azure finden Sie unter [Netzwerksicherheitsgruppen](security-overview.md).
 
@@ -72,12 +72,12 @@ Die folgenden Schritte setzen voraus, dass Sie über eine VM verfügen, deren ef
    Im Gegensatz zur Netzwerkschnittstelle **myVMVMNic** ist die Netzwerkschnittstelle **myVMVMNic2** nicht einer Netzwerksicherheitsgruppe zugeordnet. Jede Netzwerkschnittstelle und jedes Subnetz können optional einer NSG zugeordnet werden. Den einzelnen Netzwerkschnittstellen oder Subnetzen kann die gleiche oder eine andere NSG zugeordnet werden. Sie können dieselbe Netzwerksicherheitsgruppe beliebig vielen Netzwerkschnittstellen und Subnetzen zuordnen.
 
 Effektive Sicherheitsregeln können nicht nur über die VM angezeigt werden, sondern auch jeweils über Folgendes:
-- **Netzwerkschnittstelle**: Erfahren Sie, wie [eine Netzwerkschnittstelle angezeigt wird](virtual-network-network-interface.md#view-network-interface-settings).
-- **NSG**: Erfahren Sie, wie [eine NSG angezeigt wird](manage-network-security-group.md#view-details-of-a-network-security-group).
+- **Netzwerkschnittstelle:** Erfahren Sie, wie Sie [eine Netzwerkschnittstelle anzeigen](virtual-network-network-interface.md#view-network-interface-settings).
+- **NSG**: Erfahren Sie, wie Sie [eine NSG anzeigen](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnose mit PowerShell
 
-Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie das PowerShell-Modul *AzureRM* Version 6.0.1 oder höher ausführen. Führen Sie `Get-Module -ListAvailable AzureRM` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
+Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie das PowerShell-Modul *AzureRM* Version 6.0.1 oder höher ausführen. Führen Sie `Get-Module -ListAvailable AzureRM` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
 Rufen Sie mit [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle ab. Im folgenden Beispiel werden die effektiven Sicherheitsregeln für eine Netzwerkschnittstelle mit dem Namen *myVMVMNic* abgerufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet:
 
@@ -155,7 +155,7 @@ In der vorangehenden Ausgabe lautet der Netzwerkschnittstellenname *myVMVMNic in
 Unabhängig davon, ob Sie [PowerShell](#diagnose-using-powershell) oder die [Azure CLI](#diagnose-using-azure-cli) zum Diagnostizieren eines Problems verwendet haben, erhalten Sie eine Ausgabe mit den folgenden Informationen:
 
 - **NetworkSecurityGroup**: Die ID der Netzwerksicherheitsgruppe.
-- **Zuordnung**: Gibt an, ob die Netzwerksicherheitsgruppe *NetworkInterface* oder *Subnet* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup**, **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
+- **Zuordnung:** Gibt an, ob die Netzwerksicherheitsgruppe einer *Netzwerkschnittstelle* oder einem *Subnetz* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup**, **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
 - **EffectiveSecurityRules**: Eine Erläuterung der einzelnen Eigenschaften finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Regelnamen mit vorangestellten *defaultSecurityRules/* sind Standardsicherheitsregeln, die in jede NSG vorhanden sind. Regelnamen mit vorangestellten *securityRules/* sind Regeln, die Sie erstellt haben. Regeln, die ein [Diensttag](security-overview.md#service-tags) angeben (z.B. **Internet**, **VirtualNetwork** und **AzureLoadBalancer** für die Eigenschaften **destinationAddressPrefix** oder **sourceAddressPrefix**), weisen auch Werte für die Eigenschaft **expandedDestinationAddressPrefix** auf. Die Eigenschaft **expandedDestinationAddressPrefix** listet alle Adresspräfixe auf, die von dem Diensttag dargestellt werden.
 
 Wenn doppelte Regeln in der Ausgabe aufgeführt werden, so ist dies darauf zurückzuführen, dass eine NSG sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet ist. Beide NSGs weisen die gleichen Standardregeln und möglicherweise weitere doppelte Regeln auf, wenn Sie eigene Regeln erstellt haben, die in beiden NSGs identisch sind.

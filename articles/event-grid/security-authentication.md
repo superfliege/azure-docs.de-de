@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413478"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382920"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -29,9 +29,9 @@ Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Gr
 
 Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei Event Grid nachweisen, das Sie im Besitz Ihres Webhookendpunkts sind. Vorher wird mit dem Bereitstellen von Ereignissen für diesen Endpunkt nicht begonnen. Diese Anforderung verhindert, dass ein böswilliger Benutzer Ihren Endpunkt mit Ereignissen überschwemmt. Wenn Sie einen der drei unten angegebenen Azure-Dienste verwenden, wird diese Überprüfung automatisch von der Azure-Infrastruktur durchgeführt:
 
-* Azure Logic Apps
-* Azure Automation
-* Azure Functions für Event Grid-Trigger
+* Azure Logic Apps mit [Event Grid-Connector](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)
+* Azure Automation über [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
+* Azure Functions mit [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md)
 
 Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigger basierende Azure-Funktion, muss Ihr Endpunktcode an einem Überprüfungshandshake mit Event Grid beteiligt sein. Event Grid unterstützt zwei Methoden zur Überprüfung des Abonnements.
 

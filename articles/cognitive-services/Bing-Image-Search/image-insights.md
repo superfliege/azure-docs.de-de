@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 280c646a3265ff7ab9a3d32412a2be2e3989e22e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bb17916fb4d9b9b3ae1481ead7508214f5956c70
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297468"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464271"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Abrufen von Bildauswertungen mit der Bing-Bildersuche-API
 
@@ -216,10 +216,10 @@ Das `region`-Feld identifiziert den Bereich des Bilds, in dem Bing die Entität 
 
 Die Werte des Rechtecks sind relativ zur Breite und Höhe des ursprünglichen Bilds und liegen im Bereich von 0,0 bis 1,0. Wenn das Bild beispielsweise 300 x 200 groß ist und die obere linke Ecke des Bereichs an Punkt (10, 20) und die untere rechte Ecke an Punkt (290, 150) liegt, ergibt sich das folgende normalisierte Rechteck:  
 
--   Links: 10 / 300 = 0,03333...  
--   Oben: 20 / 200 = 0,1  
--   Rechts: 290 / 300 = 0,9667...  
--   Unten: 150 / 200 = 0,75  
+-   Links: 10 : 300 = 0,03333...  
+-   Oben:  20 : 200 = 0,1  
+-   Rechts: 290 : 300 = 0,9667...  
+-   Unten: 150 : 200 = 0,75  
 
 Sie können den Bereich, den Bing zurückgibt, in nachfolgenden Auswertungsaufrufen verwenden. Beispielsweise zum Abrufen visuell ähnlicher Bilder für die erkannte Entität. Weitere Informationen finden Sie unter [Zuschneiden von Bildern zur Verwendung mit Modulen für visuelle Ähnlichkeit und Entitätserkennung](#croppingimages). Das folgende Beispiel zeigt die Zuordnung zwischen den Bereichsfeldern und den Abfrageparametern, die Sie zum Zuschneiden von Bildern verwenden.  
 
@@ -408,7 +408,7 @@ Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Die Antwo
 }
 ```
 
-Um eine Liste der Anbietern abzurufen, die das Produkt online anbieten (siehe [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount)-Feld), rufen Sie die API erneut auf, und legen Sie `modules` auf „ShoppingSources“ fest. Legen Sie dann den `insightsToken`-Abfrageparameter auf das Token fest, das im Produktzusammenfassungsbild gefunden wurde.  
+Um eine Liste der Anbietern abzurufen, die das Produkt online anbieten (siehe [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)-Feld), rufen Sie die API erneut auf, und legen Sie `modules` auf „ShoppingSources“ fest. Legen Sie dann den `insightsToken`-Abfrageparameter auf das Token fest, das im Produktzusammenfassungsbild gefunden wurde.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

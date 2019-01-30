@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bb197b820b9f4262eb5c93665c46c14f9497d0f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092885"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822653"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Tutorial: Azure Active Directory-Integration mit direct
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_url1.png)
 
-     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://direct4b.com/sso` 
+     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://direct4b.com/sso` 
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -164,7 +164,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="creating-a-direct-test-user"></a>Erstellen eines direct-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in direct eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur direct-Plattform vom [Direct-Supportteam](https://direct4b.com/ja/support.html#inquiry) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in direct eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur direct-Plattform vom [direct-Supportteam](https://direct4b.com/ja/support.html#inquiry) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -210,7 +210,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
     b. Geben Sie Ihre `subdomain` in das angezeigte Textfeld ein, und drücken Sie „次へ“ (Weiter). Sie werden automatisch bei Ihrer **direct**-Anwendung angemeldet.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffspanel finden Sie unter [Einführung in das Zugriffspanel](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

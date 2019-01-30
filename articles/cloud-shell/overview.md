@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869362"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447206"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
@@ -57,11 +57,16 @@ Cloud Shell bietet einen integrierten grafischen Text-Editor, der auf dem Open-S
 
 [Erfahren Sie mehr über den Cloud Shell-Editor](using-cloud-shell-editor.md).
 
+### <a name="integrated-with-docsmicrosoftcom"></a>In „docs.microsoft.com“ integriert
+
+Sie können Cloud Shell direkt über die Dokumentation nutzen, die auf [docs.microsoft.com](https://docs.microsoft.com) gehostet wird. Das Tool ist in die Dokumentation zu [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) und [Azure CLI](https://docs.microsoft.com/cli/azure) integriert. Klicken Sie in einem Codeausschnitt auf die Schaltfläche „Ausprobieren“, um die immersive Shell-Benutzeroberfläche zu öffnen. 
+
 ### <a name="multiple-access-points"></a>Mehrere Zugriffspunkte
 Cloud Shell ist ein flexibles Tool mit verschiedenen Zugriffsmöglichkeiten:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Dokumentation zur Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure)
+* [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Azure-Kontoerweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

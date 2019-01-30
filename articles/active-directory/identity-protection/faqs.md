@@ -4,7 +4,7 @@ description: Häufig gestellte Fragen zu Azure AD Identity Protection
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.component: conditional-access
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f3123ed9a6d4898889b36e29c34c6c6a7496ea0d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 70bab69fecbe3f8aab1858aaddfa9004278c0f03
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005449"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470680"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – FAQ
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 ---
 
 ## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>Muss ich ein globaler Administrator sein, um Identity Protection im Azure-Portal verwenden zu können?
-**A:** Nein. Sie können entweder ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen, ein Sicherheitsadministrator oder ein globaler Administrator sein, um Identity Protection verwenden zu können.
+**A:**  Nein. Sie können entweder ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen, ein Sicherheitsadministrator oder ein globaler Administrator sein, um Identity Protection verwenden zu können.
 
 ---
 
@@ -46,6 +46,6 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Wie kann ich Benutzer in „Benutzer mit Risikokennzeichnung“ sortieren?
 
-**A:** Laden Sie den Bericht zu Benutzern mit Risikokennzeichnung herunter, indem Sie auf der Seite **Benutzer mit Risikokennzeichnung** auf **Download** klicken. Sie können dann die heruntergeladenen Daten basierend auf den verfügbaren Feldern sortieren, einschließlich der letzten Aktualisierung (UTC).
+**A:** Laden Sie den Bericht zu Benutzern mit Risikokennzeichnung herunter, indem Sie auf der Seite **Benutzer mit Risikokennzeichnung** auf **Download** klicken. Sie können dann die heruntergeladenen Daten basierend auf den verfügbaren Feldern sortieren, z.B. anhand des Zeitpunkts der letzten Aktualisierung (UTC).
 
 ---

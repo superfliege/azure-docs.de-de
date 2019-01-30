@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a533bd6ee447479f08add23833bf5acdde5c4d40
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155098"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411284"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
 
@@ -61,7 +61,7 @@ Als Erstes erstellen wir einen Stream Analytics-Auftrag. Nachdem Sie den Auftrag
 
    **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
 
-   **Speicherort**: Verwenden Sie denselben Speicherort wie für Ihre Ressourcengruppe.
+   **Standort**: Verwenden Sie denselben Speicherort wie für Ihre Ressourcengruppe.
 
    **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf Ihren IoT Hub über das Dashboard.
 
@@ -75,11 +75,13 @@ Als Erstes erstellen wir einen Stream Analytics-Auftrag. Nachdem Sie den Auftrag
 
 2. Klicken Sie unter **Auftragstopologie** auf **Eingaben**.
 
-3. Klicken Sie im Bereich **Eingaben** auf **Hinzufügen**, und geben Sie die folgenden Informationen ein:
+3. Klicken Sie im Bereich **Eingaben** auf **Datenstromeingabe hinzufügen**, und geben Sie die folgenden Informationen ein:
 
-   **Eingabealias**: Der eindeutige Alias für die Eingabe.
+   **Eingabealias**: Der eindeutige Alias für die Eingabe. Wählen Sie unten **IoT Hub-Einstellungen manuell angeben** aus.
 
-   **Quelle**: Wählen Sie **IoT Hub** aus.
+   **Quelle**: Wählen Sie **IoT-Hub** aus.
+   
+   **Endpunkt**: Klicken Sie auf **Messaging**.
 
    **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie zuvor erstellt haben.
 
@@ -91,15 +93,9 @@ Als Erstes erstellen wir einen Stream Analytics-Auftrag. Nachdem Sie den Auftrag
 
 1. Klicken Sie unter **Auftragstopologie** auf **Ausgaben**.
 
-2. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen**, und geben Sie die folgenden Informationen ein:
+2. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen** und **Power BI**, und geben Sie die folgenden Informationen ein:
 
    **Ausgabealias**: Der eindeutige Alias für die Ausgabe.
-
-   **Senke**: Wählen Sie **Power BI** aus.
-
-3. Klicken Sie auf **Autorisieren**, und melden Sie sich dann bei Ihrem Power BI-Konto an.
-
-4. Geben Sie nach der Autorisierung Folgendes ein:
 
    **Gruppenarbeitsbereich**: Wählen Sie den Arbeitsbereich der Zielgruppe aus.
 
@@ -107,7 +103,9 @@ Als Erstes erstellen wir einen Stream Analytics-Auftrag. Nachdem Sie den Auftrag
 
    **Tabellenname**: Geben Sie einen Tabellennamen ein.
 
-5. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Autorisieren**, und melden Sie sich dann bei Ihrem Power BI-Konto an.
+
+4. Klicken Sie auf **Create**.
 
    ![Hinzufügen einer Ausgabe zum Stream Analytics-Auftrag in Azure](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -135,13 +133,13 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten** > **Jetzt** > **Starten*
 
 2. Melden Sie sich bei Ihrem [Power BI](https://powerbi.microsoft.com/en-us/)-Konto an.
 
-3. Wechseln Sie zum Gruppenarbeitsbereich, den Sie festgelegt haben, als Sie die Ausgabe für den Stream Analytics-Auftrag erstellt haben.
+3. Klicken Sie auf den Arbeitsbereich, den Sie verwendet haben, **Mein Arbeitsbereich**.
 
-4. Klicken Sie auf **Streamingdatasets**.
+4. Klicken Sie auf **Datasets**.
 
-   Es sollte das Dataset aufgelistet sein, das Sie beim Erstellen der Ausgabe für den Stream Analytics-Auftrag angegeben haben.
+   Das Dataset, das Sie beim Erstellen der Ausgabe für den Stream Analytics-Auftrag angegeben haben, sollte angezeigt werden.
 
-5. Klicken Sie unter **AKTIONEN** auf das erste Symbol, um einen Bericht zu erstellen.
+5. Klicken Sie für das Dataset, das Sie erstellt haben, auf **Bericht hinzufügen** (das erste Symbol rechts neben dem Namen des Datasets).
 
    ![Erstellen eines Microsoft Power BI-Berichts](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
 
@@ -165,9 +163,11 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten** > **Jetzt** > **Starten*
 
 8. Klicken Sie auf **Speichern**, um den Bericht zu speichern.
 
-9. Klicken Sie auf **Datei** > **Im Web veröffentlichen**.
+9. Klicken Sie im linken Bereich auf **Berichte**, und klicken Sie dann auf den soeben erstellten Bericht.
 
-10. Klicken Sie auf **Einbindungscode erstellen** und dann auf **Veröffentlichen**.
+10. Klicken Sie auf **Datei** > **Im Web veröffentlichen**.
+
+11. Klicken Sie auf **Einbindungscode erstellen** und dann auf **Veröffentlichen**.
 
 Sie erhalten einen Berichtslink, den Sie für den Zugriff auf den Bericht freigeben können, und einen Codeausschnitt, um den Bericht in Ihren Blog oder Ihre Website zu integrieren.
 

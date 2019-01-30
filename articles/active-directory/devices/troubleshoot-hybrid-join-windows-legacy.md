@@ -4,7 +4,7 @@ description: Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Ac
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 546f9054978f0b9fbe6bb9063905c982de627442
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800858"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445285"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -73,7 +73,7 @@ Dieser Befehl zeigt ein Dialogfeld an, das Ihnen ausführliche Informationen zum
 ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Schritt 2: Bewerten des Status des Azure AD-Hybridbeitritts 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Schritt 2: Bewerten des Status der Azure AD-Hybrideinbindung 
 
 Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen, es in den Dienst einzubinden, indem Sie auf die Schaltfläche „Verknüpfen“ klicken. Falls der Versuch fehlschlägt, werden die Fehlerdetails angezeigt.
 
@@ -116,7 +116,7 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
 
     ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokoll\Microsoft-Workplace Join**.
+Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft-Workplace Join**.
   
 **Die häufigsten Ursachen für Fehler bei der Azure AD-Hybrideinbindung sind:** 
 

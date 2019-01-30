@@ -3,7 +3,7 @@ title: Zurücksetzen von Kennwörtern mit Sicherheitsinformationen – Azure Act
 description: Hier erfahren Sie, wie Sie mithilfe Ihrer Sicherheitsinformationen und der zweistufigen Überprüfung Ihr Kennwort zurücksetzen, falls Sie es vergessen haben.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: a95d5adb4ee0eb8aa71f7759e3f2b5520bda5ff4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6bf8c548d81b3cade487f3188cdafae82b5776d9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347845"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815938"
 ---
 # <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
 
@@ -159,7 +159,7 @@ Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 |Beim Versuch, mein Kennwort zu ändern, tritt ein Fehler auf. |Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten.| Verwenden Sie ein sichereres Kennwort, und versuchen Sie es noch mal.|
 |Nachdem ich meine Benutzer-ID eingegeben habe, gelange ich auf eine Seite, die mich auffordert, mich an den Administrator zu wenden.|Microsoft hat festgestellt, dass das Kennwort Ihres Benutzerkontos von Ihrem Administrator in einer lokalen Umgebung verwaltet wird. Sie können Ihr Kennwort daher nicht über den Link „Zugriff auf Ihr Konto nicht möglich“ zurücksetzen. |Wenden Sie sich an den Administrator, um Hilfe zu erhalten.|
 |Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“.|Ihr Administrator hat Ihr Konto nicht so eingerichtet, dass Sie Ihr Kennwort selbst zurücksetzen können.|Ihr Administrator hat die Kennwortzurücksetzung über den Link „Zugriff auf Ihr Konto nicht möglich“ für Ihre Organisation nicht aktiviert oder Ihnen die Nutzung dieser Funktion nicht gestattet.<br><br> Öffnen Sie zum Zurücksetzen Ihres Kennworts den Link zur Kontaktaufnahme mit einem Administrator, und teilen Sie dem Administrator Ihres Unternehmens in einer E-Mail mit, dass Sie Ihr Kennwort zurücksetzen möchten.|
-|Nachdem ich meine Benutzer-ID eingegeben habe, erhalte ich eine Fehlermeldung, dass mein Konto nicht überprüft werden konnte.|Während des Anmeldevorgangs konnten Ihre Kontoinformationen nicht überprüft werden.|Es gibt zwei Gründe dafür, dass diese Meldung angezeigt wird.<br><br>1. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation aktiviert, Sie haben sich jedoch noch nicht für die Nutzung des Diensts registriert. Je nachdem, welche Überprüfungsmethode Sie verwenden, finden Sie in einem der folgenden Artikel Informationen zum Registrieren für die Kennwortzurücksetzung: [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](security-info-setup-auth-app.md), [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md), [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md), [Einrichten der Sicherheitsinformationen zur Verwendung einer E-Mail-Adresse (Vorschau)](security-info-setup-email.md) oder [Einrichten der Sicherheitsinformationen zur Verwendung von Sicherheitsfragen (Vorschau)](security-info-setup-questions.md).<br><br>2. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation nicht aktiviert. In diesem Fall müssen Sie den Link zur Kontaktaufnahme mit einem Administrator öffnen, um eine E-Mail an Ihren Administrator zu senden und darum zu bitten, dass Ihr Kennwort zurückgesetzt wird.|
+|Nachdem ich meine Benutzer-ID eingegeben habe, erhalte ich eine Fehlermeldung, dass mein Konto nicht überprüft werden konnte.|Während des Anmeldevorgangs konnten Ihre Kontoinformationen nicht überprüft werden.|Es gibt zwei Gründe dafür, dass diese Meldung angezeigt wird.<br><br>1. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation aktiviert, Sie haben sich jedoch noch nicht für die Nutzung des Diensts registriert. In einem der folgenden Artikel finden Sie die für Sie geeigneten Informationen zum Registrieren für die Kennwortzurücksetzung (je nach verwendeter Überprüfungsmethode): [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](security-info-setup-auth-app.md), [Einrichten der Sicherheitsinformationen zur Verwendung eines Telefonanrufs (Vorschau)](security-info-setup-phone-number.md), [Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md), [Einrichten der Sicherheitsinformationen zur Verwendung einer E-Mail-Adresse (Vorschau)](security-info-setup-email.md) oder [Einrichten der Sicherheitsinformationen zur Verwendung von Sicherheitsfragen (Vorschau)](security-info-setup-questions.md).<br><br>2. Ihr Administrator hat die Kennwortzurücksetzung für Ihre Organisation nicht aktiviert. In diesem Fall müssen Sie den Link zur Kontaktaufnahme mit einem Administrator öffnen, um eine E-Mail an Ihren Administrator zu senden und darum zu bitten, dass Ihr Kennwort zurückgesetzt wird.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

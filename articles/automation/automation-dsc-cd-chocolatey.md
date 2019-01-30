@@ -3,20 +3,20 @@ title: Continuous Deployment mit Azure Automation State Configuration und Chocol
 description: DevOps-Continuous Deployment mit Azure Automation State Configuration, DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-Resource Manager-Vorlage und PowerShell-Quelle.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 53ecff7df849d19ff7fe1d4c1c8dbd472326b06e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284794"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424454"
 ---
-# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Azure Automation State Configuration und Chocolatey
+# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Automation State Configuration und Chocolatey
 
 In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen. Azure Automation State Configuration ist eine willkommene neue Option für DevOps-Teams. In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht. Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.
 
@@ -58,9 +58,9 @@ Eigentlich wird sie zweimal gespeichert: einmal in reiner Textform und einmal ko
 
 Wahrscheinlich erledigen Sie dies bzw. den größten Teil davon bereits im oberen Bereich. Das Erstellen von Nuspec und das Kompilieren und Speichern auf einem NuGet-Server bedeutet keinen großen Aufwand. Und Sie verwalten bereits virtuelle Computer. Der nächste Schritte der fortlaufenden Bereitstellung erfordert das Einrichten des Pullservers (einmalig), das Registrieren Ihrer Knoten dafür (einmalig) und das Erstellen und Speichern der Konfiguration darunter (am Anfang). Wenn die Pakete dann aktualisiert und im Repository bereitgestellt werden, aktualisieren Sie die Konfiguration und Knotenkonfiguration auf dem Pullserver (nach Bedarf wiederholen).
 
-Falls Sie nicht mit einer Resource Manager-Vorlage beginnen, ist dies auch in Ordnung. Es sind PowerShell-Cmdlets vorhanden, mit denen Sie Ihre virtuellen Computer für den Pullserver und den anderen Komponenten registrieren können. Weitere Informationen finden Sie im Artikel [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
+Falls Sie nicht mit einer Resource Manager-Vorlage beginnen, ist dies auch in Ordnung. Es sind PowerShell-Cmdlets vorhanden, mit denen Sie Ihre virtuellen Computer für den Pullserver und den anderen Komponenten registrieren können. Weitere Informationen finden Sie in diesem Artikel: [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
 
-## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Schritt 1: Einrichten des Pullservers und des Automatisierungskontos
+## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Schritt 1: Einrichten des Pullservers und des Automatisierungskontos
 
 An einer authentifizierten (`Connect-AzureRmAccount`) PowerShell-Befehlszeile. (Die Einrichtung des Pullservers kann einige Minuten dauern.)
 
@@ -69,14 +69,14 @@ New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-
 New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
 ```
 
-Sie können Ihr Automatisierungskonto in einer der folgenden Regionen einrichten: USA, Osten 2; USA, Süden-Mitte; US Gov Virginia; Europa, Westen; Asien, Südosten; Japan, Osten; Indien, Mitte; Australien, Südosten; Kanada, Mitte und Europa, Norden.
+Sie können Ihr Automation-Konto in einer der folgenden Regionen (auch als Standort bezeichnet) einrichten: „USA, Osten 2“, „USA, Süden-Mitte“, „US Gov Virginia“, „Europa, Westen“, „Asien, Südosten“, „Japan, Osten“, „Indien, Mitte“, „Australien, Südosten“, „Kanada, Mitte“, „Europa, Norden“.
 
-## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>Schritt 2: Optimierungen der VM-Erweiterung für die Resource Manager-Vorlage
+## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>Schritt 2: Optimieren der VM-Erweiterung für die Resource Manager-Vorlage
 
 Details zur VM-Registrierung (mit der PowerShell DSC-VM-Erweiterung) finden Sie in dieser [Azure-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).
 In diesem Schritt wird Ihr neuer virtueller Computer beim Pullserver in der Liste der Zustandskonfigurationsknoten registriert. Ein Teil dieser Registrierung ist das Angeben der Knotenkonfiguration, die auf den Knoten angewendet wird. Diese Knotenkonfiguration muss auf dem Pullserver noch nicht vorhanden sein. Es ist also in Ordnung, dass dies in Schritt 4 zum ersten Mal durchgeführt wird. Hier in Schritt 2 müssen Sie sich aber für den Namen des Knotens und den Namen der Konfiguration entschieden haben. In diesem Anwendungsbeispiel lautet der Knoten „isvbox“, und die Konfiguration lautet „ISVBoxConfig“. Der Name für die Knotenkonfiguration (zum Angeben in „DeploymentTemplate.json“) lautet also „ISVBoxConfig.isvbox“.
 
-## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>Schritt 3: Hinzufügen von erforderlichen DSC-Ressourcen zum Pullserver
+## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>Schritt 3: Hinzufügen von erforderlichen DSC-Ressourcen zum Pullserver
 
 Der PowerShell-Katalog wird genutzt, um DSC-Ressourcen in Ihrem Azure Automation-Konto zu installieren.
 Navigieren Sie zur gewünschten Ressource, und klicken Sie auf die Schaltfläche „In Azure Automation bereitstellen“.
@@ -105,7 +105,7 @@ Hierfür ist es erforderlich, dass Sie eine kleine Optimierung vornehmen. Dies i
 
 Im beigefügten Beispiel werden diese Schritte für cChoco und xNetworking ausgeführt. Informationen finden Sie in den [Hinweisen](#notes) zum besonderen Umgang mit cChoco.
 
-## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>Schritt 4: Hinzufügen der Knotenkonfiguration zum Pullserver
+## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>Schritt 4: Hinzufügen der Knotenkonfiguration zum Pullserver
 
 Es ist nichts Besonderes zu beachten, wenn Sie Ihre Konfiguration zum ersten Mal in den Pullserver importieren und die Kompilierung durchführen. Alle nachfolgenden Import- und Kompiliervorgänge einer Konfiguration sehen dann genau gleich aus. Bei jeder Aktualisierung des Pakets und der Umstellung auf die Produktion führen Sie diesen Schritt aus, nachdem Sie sichergestellt haben, dass die Konfigurationsdatei korrekt ist – einschließlich der neuen Version Ihres Pakets. Hier sind die Konfigurationsdatei und die PowerShell-Daten angegeben:
 
@@ -176,12 +176,12 @@ Get-AzureRmAutomationDscCompilationJob `
 
 Diese Schritte führen zu einer neuen Knotenkonfiguration mit dem Namen „ISVBoxConfig.isvbox“, die auf dem Pullserver angeordnet wird. Für die Erstellung des Namens einer Knotenkonfiguration wird das Muster „configurationName.nodeName“ verwendet.
 
-## <a name="step-5-creating-and-maintaining-package-metadata"></a>Schritt 5: Erstellen und Verwalten von Paketmetadaten
+## <a name="step-5-creating-and-maintaining-package-metadata"></a>Schritt 5: Erstellen und Verwalten von Paketmetadaten
 
 Für jedes Paket, das Sie im Paketrepository ablegen, benötigen Sie ein Nuspec-Element, mit dem das Paket beschrieben wird.
 Dieses Nuspec-Element muss auf Ihrem NuGet-Server kompiliert und gespeichert werden. Dieser Prozess ist [hier](https://docs.nuget.org/create/creating-and-publishing-a-package)beschrieben. Sie können „MyGet.org“ als NuGet-Server verwenden. Dieser Dienst wird von dem Unternehmen zum Kauf angeboten, aber es ist auch eine kostenlose Start-SKU vorhanden. Unter „NuGet.org“ finden Sie eine Anleitung zum Installieren Ihres eigenen NuGet-Servers für Ihre privaten Pakete.
 
-## <a name="step-6-tying-it-all-together"></a>Schritt 6: Zusammenfügen des Gesamtbilds
+## <a name="step-6-tying-it-all-together"></a>Schritt 6: Zusammenfügen des Gesamtbilds
 
 Jedes Mal, wenn eine Version den Qualitätssicherungstest besteht und für die Bereitstellung genehmigt wird, wird das Pakt erstellt, und nuspec und nupkg werden aktualisiert und auf dem NuGet-Server bereitgestellt. Darüber hinaus muss die Konfiguration (Schritt 4 oben) aktualisiert werden, damit sie mit der neuen Versionsnummer übereinstimmt. Sie muss an den Pullserver gesendet und kompiliert werden.
 Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfiguration abhängig sind, das Update abzurufen und zu installieren. Diese Updates sind einfach und umfassen nur ein oder zwei PowerShell-Codezeilen. Im Fall von Azure DevOps sind einige davon in Buildaufgaben gekapselt, die in einem Build miteinander verkettet werden können. Dieser [Artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) enthält hierzu weitere Details. In diesem [GitHub-Repository](https://github.com/Microsoft/vso-agent-tasks) finden Sie Details zu den verschiedenen verfügbaren Buildaufgaben.

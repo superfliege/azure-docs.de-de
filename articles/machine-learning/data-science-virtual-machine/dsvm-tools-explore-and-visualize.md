@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dfe6184779d3c26273e8e7cabef4890360cf7e76
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567382"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446259"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Auf der Data Science-VM verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
@@ -32,7 +32,7 @@ Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen
 | Was ist das?   | Open Source-SQL-Abfrage-Engine für Big Data    |
 | Unterstützte DSVM-Versionen      | Windows, Linux  |
 | Konfiguration/Installation auf der DSVM      |  Installiert unter `/dsvm/tools/drill*` (nur im eingebetteten Modus)   |
-| Typische Verwendung      |  Lokales Durchsuchen von Daten ohne ETL. Abfragen verschiedener Datenquellen und Formate – einschließlich CSV, JSON, relationale Tabellen und Hadoop.     |
+| Typische Verwendung      |  Lokales Durchsuchen von Daten ohne ETL. Abfragen verschiedener Datenquellen und Formate, einschließlich CSV, JSON, relationale Tabellen und Hadoop.     |
 | Verwendung/Ausführung      | Desktopverknüpfung  <br/> [Drill in 10 Minutes](https://drill.apache.org/docs/drill-in-10-minutes/) (Drill in zehn Minuten)  |
 | Verwandte Tools auf der DSVM      |   Rattle, Weka, SQL Server Management Studio      |
 
@@ -60,7 +60,7 @@ Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen
 |    |           |
 | ------------- | ------------- |
 | Was ist das?   | Interaktives Tool für Datenvisualisierung und BI    |
-| Unterstützte DSVM-Versionen      |  Windows  |
+| Unterstützte DSVM-Versionen      | Windows  |
 | Typische Verwendung      |  Datenvisualisierung und Dashboarderstellung   |
 | Verwendung/Ausführung      | Desktopverknüpfung (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | Verwandte Tools auf der DSVM      |   Visual Studio 2017, Visual Studio Code, Juno      |

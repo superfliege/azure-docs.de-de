@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49164432"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388424"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Für Azure Data Box Gateway geltende Einschränkungen (Vorschauversion)
 
@@ -35,8 +35,8 @@ In der folgenden Tabelle werden die für das Data Box Gateway-Gerät geltenden E
 
 | BESCHREIBUNG | Wert |
 |---|---|
-|Nein. der Dateien pro Gerät |100 Mio. <br> Der Grenzwert liegt bei ca. 25 Mio. Dateien pro 2 TB Datenträgerkapazität mit einer Obergrenze von 100 Mio. |
-|Nein. der Freigaben pro Gerät |24 |
+| Nein. der Dateien pro Gerät |100 Mio. <br> Der Grenzwert liegt bei ca. 25 Mio. Dateien pro 2 TB Datenträgerkapazität mit einer Obergrenze von 100 Mio. |
+| Nein. der Freigaben pro Gerät |24 |
 |Maximale in eine Freigabe geschriebene Dateigröße|Für ein virtuelles Gerät mit 2 TB beträgt die maximale Dateigröße 500 GB. <br> Die maximale Dateigröße steigt mit der Größe des Datenträgers im vorhergehenden Verhältnis an, bis ein Maximum von 5 TB erreicht wird. |
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
@@ -57,9 +57,9 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 Die folgenden Einschränkungen gelten für Daten, die in Azure verschoben werden.
 
 - Es wird empfohlen, dass nicht mehr als ein Gerät in den gleichen Container schreibt.
-- Wenn Sie bereits über ein Azure-Objekt (z.B. Blob oder Datei) in der Cloud verfügen, das den gleichen Namen hat wie das Objekt, das kopiert wird, überschreibt das Gerät die Datei in der Cloud. 
+- Wenn Sie bereits über ein Azure-Objekt (z.B. Blob oder Datei) in der Cloud verfügen, das den gleichen Namen hat wie das Objekt, das kopiert wird, überschreibt das Gerät die Datei in der Cloud.
 - Eine unter Freigabeordnern erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht in die Blobcontainer hochgeladen.
-
+- Wenn Sie Dateien kopieren, die größer als das Gerät sind, sollten Sie *Robocopy* oder *rsync* verwenden, um sicherzustellen, dass keine Fehler enthalten sind.
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Größenbeschränkungen für das Azure-Speicherkonto und Objekte
 

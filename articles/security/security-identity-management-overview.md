@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d1933e58cae522b03ced29183440e226d47dfdf9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255880"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435055"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
@@ -101,10 +101,10 @@ Sicherheitsüberwachung, Warnungen und Berichte auf Machine Learning-Basis, die 
 
 Im Azure-Portal fallen Berichte in die folgenden Kategorien:
 
-* **Anomalieberichte**: Enthalten Anmeldeereignisse, die wir als anomal eingestuft haben. Unser Ziel ist, Sie auf solche Aktivitäten aufmerksam zu machen und Ihnen die Möglichkeit zu geben, zu bestimmen, ob ein Ereignis verdächtig ist.
-* **Integrierte Anwendungsberichte**: Bieten Einblicke, wie Cloudanwendungen in Ihrer Organisation verwendet werden. Azure AD ermöglicht die Integration in Tausende von Cloudanwendungen.
-* **Fehlerberichte**: Enthalten Hinweise auf Fehler, die bei der Bereitstellung von Konten für externe Anwendungen auftreten können.
-* **Benutzerspezifische Berichte**: Enthalten Geräte-/Anmeldeaktivitätsdaten für einen bestimmten Benutzer.
+* **Anomalieberichte:** Enthalten Anmeldeereignisse, die wir als anomal eingestuft haben. Unser Ziel ist, Sie auf solche Aktivitäten aufmerksam zu machen und Ihnen die Möglichkeit zu geben, zu bestimmen, ob ein Ereignis verdächtig ist.
+* **Integrierte Anwendungsberichte:** Bieten Einblicke, wie Cloudanwendungen in Ihrer Organisation verwendet werden. Azure AD ermöglicht die Integration in Tausende von Cloudanwendungen.
+* **Fehlerberichte:** Enthalten Hinweise auf Fehler, die bei der Bereitstellung von Konten für externe Anwendungen auftreten können.
+* **Benutzerspezifische Berichte:** Enthalten Geräte- und Anmeldeaktivitätsdaten für einen bestimmten Benutzer.
 * **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
 
 Weitere Informationen:
@@ -124,8 +124,8 @@ Wenn Sie Azure AD B2C verwenden, können sich Ihre Kunden mit vorhandenen Konten
 Weitere Informationen:
 
 * [Was ist Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C-Vorschau: Registrieren und Anmelden von Kunden in den Anwendungen](../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C-Vorschau: Anwendungstypen](../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C – Vorschauversion: Registrieren und Anmelden von Kunden bei Ihren Anwendungen](../active-directory-b2c/active-directory-b2c-overview.md)
+* [Azure Active Directory B2C – Vorschauversion: Anwendungsarten](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>Geräteregistrierung
 
@@ -154,9 +154,8 @@ Azure AD Privileged Identity Management gibt Ihnen diese Möglichkeiten:
 
 Weitere Informationen:
 
-* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
-* [Rollen in Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-roles.md)
-* [Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Was ist Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
+* [Zuweisen von Azure AD-Verzeichnisrollen in PIM](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Schutz der Identität (Identity Protection)
 
@@ -165,7 +164,7 @@ Azure AD Identity Protection ist ein Sicherheitsdienst, der eine umfassende Übe
 Weitere Informationen:
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9: Show zu Azure AD und Identität: Schutz der Identität – Vorschauversion](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybrididentitätsverwaltung/Azure AD Connect
 

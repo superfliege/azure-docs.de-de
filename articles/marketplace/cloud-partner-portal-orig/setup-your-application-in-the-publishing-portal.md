@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806092"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448482"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Einrichten Ihrer Anwendung im Veröffentlichungsportal
 
@@ -84,7 +84,7 @@ Hier folgt eine Erläuterung zu diesen Feldern:
 
 * Dateiname Ihres Pakets: Der Dateiname, den Sie im obigen Schritt beim Erstellen der ZIP-Datei erstellt haben, die Ihr CRM AppSource-Paket darstellt. Im obigen Beispiel ist es „Microsoft\_SamplePackage.zip“.
 * URL Ihres Paketspeicherorts: Dies ist die URL zum Azure Storage-Konto, das den oben angegebenen Paketdateinamen enthält. Es ist die in Schritt 9 des obigen Abschnitts erstellte URL.
-* Gibt es mehr als ein CRM-Paket in Ihrer Paketdatei: Wählen Sie **NUR** dann „Ja“ aus, wenn Sie mehrere Versionen von CRM mit verschiedenen Paketen unterstützen. Für die meisten Partner lautet die Antwort „Nein“. Wenn Sie „Ja“ auswählen, müssen Sie AppSource-Pakete für jede Version Ihrer Lösung erstellen. _Hinweis: Dies ist KEINE Frage, wenn Sie über mehrere **ZIP**-Dateien verfügen. Wenn Sie über mehrere solution.zip-Dateien verfügen, aber nur eine Version besitzen, sollten Sie trotzdem „Nein“ auswählen. Das Verpackungstool führt diese automatisch zusammen._
+* Enthält Ihre Paketdatei mehrere CRM-Pakete: Wählen Sie **NUR** dann „Ja“ aus, wenn mehrere Versionen von CRM mit verschiedenen Paketen unterstützt werden. Für die meisten Partner lautet die Antwort „Nein“. Wenn Sie „Ja“ auswählen, müssen Sie AppSource-Pakete für jede Version Ihrer Lösung erstellen. _Hinweis: Dies ist KEINE Frage, wenn Sie über mehrere **ZIP**-Dateien verfügen. Wenn Sie über mehrere solution.zip-Dateien verfügen, aber nur eine Version besitzen, sollten Sie trotzdem „Nein“ auswählen. Das Verpackungstool führt diese automatisch zusammen._
 
 ### <a name="crm-package-availability"></a>Verfügbarkeit von CRM-Paketen
 
@@ -96,7 +96,7 @@ Hinweis: Die Bereitstellung von „Sovereign and US Gov Cloud“ in Deutschland 
 
 ### <a name="offer-summary"></a>Angebotszusammenfassung
 
-Dies ist eine Zusammenfassung des Nutzenversprechens Ihres Angebots. Die Zusammenfassung wird auf der Suchseite Ihres Angebots angezeigt. Sie darf aus höchstens 100 Zeichen bestehen.
+Dies ist eine Zusammenfassung des Nutzenversprechens Ihres Angebots. Die Zusammenfassung wird auf der Suchseite Ihres Angebots angezeigt. Sie darf maximal 100 Zeichen lang sein.
 
 ### <a name="offer-description"></a>Beschreibung des Angebots
 
@@ -184,7 +184,7 @@ Geben Sie die Support-URL für Ihre App ein.
 
 ### <a name="lead-destination"></a>Leadzielgruppe
 
-Wählen Sie ein CRM-System aus, in dem Ihr Lead gespeichert wird. Wählen Sie hier „Azure-Tabelle“ aus, wenn Sie eines der folgenden CRM-Systeme verwenden: Salesforce, Marketo, Microsoft Dynamics CRM. Das hier von Ihnen ausgewählte CRM-System ist der Ort, an den wir Details zu den Endbenutzern schreiben, die Ihre App in AppSource testen (Leads). In Abhängigkeit von dem von Ihnen ausgewählten CRM-System klicken Sie unten auf die entsprechende URL, um Informationen darüber zu erhalten, wie Sie den nächsten Satz von Feldern ausfüllen können.
+Wählen Sie ein CRM-System aus, in dem Ihr Lead gespeichert wird. Wählen Sie hier „Azure-Tabelle“ aus, wenn Sie eines der folgenden CRM-Systeme haben: Salesforce, Marketo, Microsoft Dynamics CRM. Das hier von Ihnen ausgewählte CRM-System ist der Ort, an den wir Details zu den Endbenutzern schreiben, die Ihre App in AppSource testen (Leads). In Abhängigkeit von dem von Ihnen ausgewählten CRM-System klicken Sie unten auf die entsprechende URL, um Informationen darüber zu erhalten, wie Sie den nächsten Satz von Feldern ausfüllen können.
 
 * [Azure-Tabelle](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)

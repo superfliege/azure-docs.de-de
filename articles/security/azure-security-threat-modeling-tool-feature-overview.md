@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 8bbc13aa77c50c6ae02ecc67869035e7ec85effa
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359339"
+ms.locfileid: "54389323"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
@@ -139,15 +139,15 @@ Beim Öffnen oder Erstellen eines neuen Modells wird die **Entwurfsansicht** ge�
 
 Sie können dem Raster Elemente auf zwei Arten hinzufügen:
 
-- **Drag &amp; Drop**:  Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
-- **Klicken mit der rechten Maustaste**:  Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Kontextmenü. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
+- **Drag & Drop**: Ziehen Sie das gewünschte Element in das Raster. Verwenden Sie dann die Elementeigenschaften, um zusätzliche Informationen anzugeben.
+- **Klicken mit der rechten Maustaste**: Klicken Sie mit der rechten Maustaste auf das Raster, und wählen Sie Optionen im Dropdownmenü aus. Auf dem Bildschirm wird eine generische Darstellung des ausgewählten Elements angezeigt.
 
 ### <a name="connect-elements"></a>Verbinden von Elementen
 
 Sie können Elemente auf zwei Arten verbinden:
 
-- **Drag &amp; Drop**:  Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
-- **Klicken bei gedrückter UMSCHALTTASTE**:  Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
+- **Drag & Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
+- **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
 
 ### <a name="properties"></a>Eigenschaften
 
@@ -207,5 +207,5 @@ Nachdem Sie das Ändern von Prioritäten und Aktualisieren des Status der einzel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen dazu, wie Sie eine Vorlage zur Community beitragen können, finden Sie auf unserer [GitHub](https://github.com/Microsoft/threat-modeling-templates)-Seite. 
-* Besuchen Sie die [Downloadseite](https://aka.ms/tmtpreview), um mit der Verwendung des Tools zu beginnen.
+- Senden Sie Ihre Fragen, Kommentare und Probleme an tmtextsupport@microsoft.com. **[Laden Sie das Threat Modeling Tool herunter](https://aka.ms/threatmodelingtool)**, um die ersten Schritte zu unternehmen.
+- Informationen dazu, wie Sie eine Vorlage zur Community beitragen können, finden Sie auf unserer [GitHub](https://github.com/Microsoft/threat-modeling-templates)-Seite.

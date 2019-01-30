@@ -4,7 +4,7 @@ description: In diesem Artikel wird für Office 365-Benutzer erläutert, wie Pro
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 543b7dc1-ccc9-407f-85a1-a9944c0ba1be
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512efb45ee5c56cd0a10286d4156ae2d81f2f99
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237094"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464951"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -113,7 +113,7 @@ Sie müssen keine manuellen Schritte ausführen, wenn die beiden folgenden Bedin
 
 **1. Die AD FS-Eigenschaft „AutoCertificateRollover“ muss auf „True“ festgelegt sein.** Damit wird angegeben, dass AD FS automatisch neue Tokensignatur- und Tokenentschlüsselungszertifikate generiert, bevor die alten ablaufen.
 
-**2. Die AD FS-Verbundmetadaten sind öffentlich zugänglich.** Überprüfen Sie, ob die Verbundmetadaten öffentlich zugänglich sind, indem Sie von einem Computer im öffentlichen Internet (außerhalb des Unternehmensnetzwerks) zur folgenden URL navigieren:
+**2. Die AD FS-Verbundmetadaten sind öffentlich zugänglich.**  Überprüfen Sie, ob die Verbundmetadaten öffentlich zugänglich sind, indem Sie von einem Computer im öffentlichen Internet (außerhalb des Unternehmensnetzwerks) zur folgenden URL navigieren:
 
 https://(Ihr_FS_Name)/federationmetadata/2007-06/federationmetadata.xml
 
@@ -149,7 +149,7 @@ Wenn **AutoCertificateRollover** auf **True** festgelegt ist, aber Ihre Verbundm
 3. Sehen Sie sich in der Ausgabe des Befehls die aufgeführten Zertifikate an. Wenn AD FS ein neues Zertifikat generiert hat, sollten Sie zwei Zertifikate in der Ausgabe sehen: Bei einem ist der **IsPrimary**-Wert **True** und das **NotAfter**-Datum liegt innerhalb von 5 Tagen, und beim anderen ist der **IsPrimary**-Wert **False** und das **NotAfter**-Datum liegt etwa ein Jahr in der Zukunft.
 4. Wenn nur ein Zertifikat angezeigt wird und das **NotAfter** -Datum innerhalb von 5 Tagen liegt, müssen Sie ein neues Zertifikat generieren.
 5. Um ein neues Zertifikat zu generieren, führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. Überprüfen Sie das Update, indem Sie den folgenden Befehl erneut ausführen: PS C:\>Get-ADFSCertificate –CertificateType token-signing.
+6. Überprüfen Sie das Update, indem Sie den folgenden Befehl erneut ausführen: PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
 Nun sollten zwei Zertifikate aufgeführt werden, bei denen das **NotAfter**-Datum in etwa ein Jahr in der Zukunft liegt und bei dem der **IsPrimary**-Wert **False** lautet.
 

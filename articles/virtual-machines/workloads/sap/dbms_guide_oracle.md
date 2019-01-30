@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 65c685936fabab65698a077f22c2dfde17469055
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435683"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436415"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – Oracle-DBMS-Bereitstellung für SAP-Workload
 
@@ -235,7 +235,7 @@ ms.locfileid: "53435683"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -321,13 +321,13 @@ Die nachstehenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem 
 
 | Hinweisnummer | Titel |
 | --- | --- |
-| [1928533] |SAP Applications on Azure: Supported Products and Azure VM types (SAP-Anwendungen in Azure:  Unterstützte Produkte und Azure-VM-Typen) |
-| [2015553] |SAP on Microsoft Azure: Support Prerequisites (SAP in Microsoft Azure:  Voraussetzungen für die Unterstützung) |
+| [1928533] |SAP-Anwendungen auf Azure: Unterstützte Produkte und Azure VM-Typen |
+| [2015553] |SAP auf Microsoft Azure: Voraussetzungen für die Unterstützung |
 | [1999351] |Problembehandlung für die erweiterte Azure-Überwachung für SAP |
 | [2178632] |Wichtige Überwachungsmetriken für SAP in Microsoft Azure |
-| [2191498] |SAP unter Linux mit Azure:  erweiterte Überwachung |
-| [2039619] |SAP Applications on Microsoft Azure using the Oracle Database: Supported Products and Versions (SAP-Anwendungen in Microsoft Azure mit der Oracle-Datenbank:  Unterstützte Produkte und Versionen) |
-| [2243692] |Linux auf Microsoft Azure-VMs (IaaS):  SAP-Lizenzprobleme |
+| [2191498] |SAP unter Linux mit Azure: Erweiterte Überwachung |
+| [2039619] |SAP-Anwendungen auf Microsoft Azure mit der Oracle-Datenbank: Unterstützte Produkte und Versionen |
+| [2243692] |Microsoft Azure (IaaS)-VM: SAP-Lizenzprobleme |
 | [2069760] |Oracle Linux 7.x SAP: Installation und Upgrade |
 | [1597355] |Empfehlung zu Auslagerungsbereichen für Linux |
 | [2171857] |Oracle Database 12c – Dateisystemunterstützung unter Linux |
@@ -456,7 +456,7 @@ Mindestkonfiguration:
 | /oracle/<SID>/oraarch | Standard | Keine | Nicht erforderlich |
 | Oracle Home, saptrace, ... | Betriebssystem-Datenträger | | Nicht erforderlich |
 
-*Striping:  LVM-Stripe oder MDADM mit RAID 0
+*Striping: LVM-Stripe oder MDADM mit RAID 0
 
 Die Datenträgerauswahl für das Hosten von Onlinewiederholungsprotokollen von Oracle sollte durch IOPs-Anforderungen gesteuert werden. Alle sapdata1...n (Tabellenbereiche) können auf einem einzelnen eingebundenen Datenträger gespeichert werden, solange Volumen, IOPS und Durchsatz die Anforderungen erfüllen. 
 
@@ -472,7 +472,7 @@ Leistungskonfiguration:
 | /oracle/<SID>/oraarch* | Premium | Keine | Nicht erforderlich |
 | Oracle Home, saptrace, ... | Betriebssystem-Datenträger | Nicht erforderlich |
 
-*Striping:  LVM-Stripe oder MDADM mit RAID 0*(n+1) – Hosting der Tabellenbereiche SYSTEM, TEMP und UNDO. Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
+*Striping: LVM-Stripe oder MDADM mit RAID 0*(n+1) – Hosting der Tabellenbereiche SYSTEM, TEMP und UNDO. Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
 *oraarch – Ein Speicherpool ist aus Leistungsperspektive nicht erforderlich. Er kann verwendet werden, um mehr Speicherplatz zu erhalten.
 
 

@@ -4,7 +4,7 @@ description: Leitfaden zu den möglichen Problemen beim Anmelden bei einer Anwen
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 17114818105935d8d6a7ac647f1d98c097e78efd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8f545aad7256764780a68f4b43ee30bf68749187
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354794"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469711"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -66,7 +66,7 @@ Nachdem Sie den ID-Wert in Azure AD aktualisiert haben und er mit dem von der An
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Die Antwortadresse stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein. 
 
-*Fehler AADSTS50011: Die Antwortadresse „https://contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein.* 
+*Fehler AADSTS50011: Die Antwortadresse „https://contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein*. 
 
 **Mögliche Ursache** 
 
@@ -100,7 +100,7 @@ Nachdem Sie den Wert der Antwort-URL in Azure AD aktualisiert haben und er mit d
 
 ## <a name="user-not-assigned-a-role"></a>Benutzer wurde keine Rolle zugewiesen
 
-*Fehler AADSTS50105: Der angemeldete Benutzer „brian@contoso.com“ ist keiner Rolle für die Anwendung zugewiesen.*
+*Fehler AADSTS50105: Der angemeldete Benutzer „brian@contoso.com“ ist keiner Rolle für die Anwendung zugewiesen*.
 
 **Mögliche Ursache**
 
@@ -146,7 +146,7 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mit den Ve
 
 ## <a name="not-a-valid-saml-request"></a>Keine gültige SAML-Anforderung
 
-*Fehler AADSTS75005: Die Anforderung ist keine gültige Nachricht im SAML2-Protokoll.*
+*Fehler AADSTS75005: Die Anforderung ist keine gültige Nachricht im SAML2-Protokoll*.
 
 **Mögliche Ursache**
 
@@ -202,7 +202,7 @@ Nach dem erneuten Konfigurieren der Anwendung sollten Sie in der Lage sein, sich
 
 ## <a name="certificate-or-key-not-configured"></a>Zertifikat oder Schlüssel nicht konfiguriert
 
-Fehler AADSTS50003: kein Signaturschlüssel konfiguriert.
+Fehler AADSTS50003: Kein Signaturschlüssel konfiguriert.
 
 **Mögliche Ursache**
 

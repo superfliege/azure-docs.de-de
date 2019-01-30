@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359441"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476919"
 ---
 # <a name="configure-containers"></a>Konfigurieren von Containern
 
@@ -33,6 +33,7 @@ Die Konfigurationseinstellungen im Container für die Gesichtserkennung sind hie
 * [CloudAI](#cloudai-configuration-settings)
 * [Eula](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Anmeldeinformationseinstellungen für HTTP-Proxy](#http-proxy-credentials-settings)
 * [Protokollierung](#logging-configuration-settings)
 * [Mounts](#mounts-configuration-settings)
 
@@ -162,6 +163,11 @@ In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die
 | `TlsConnectionEstablishmentTimeoutMs` | Ganze Zahl  | Das Timeout (in Millisekunden) für die Herstellung einer SSL/TLS-Verbindung mit dem Fluentd-Server. Der Standardwert beträgt 10.000 Millisekunden (zehn Sekunden).<br/> Wenn `UseTLS` auf FALSE festgelegt ist, wird dieser Wert ignoriert. |
 | `UseTLS` | Boolescher Wert | Gibt an, ob der Container für die Kommunikation mit dem Fluentd-Server SSL/TLS verwenden soll. Der Standardwert ist „false“. |
 
+
+## <a name="http-proxy-credentials-settings"></a>Anmeldeinformationseinstellungen für HTTP-Proxy
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Konfigurationseinstellungen für die Protokollierung
 
 Die `Logging`-Konfigurationseinstellungen dienen zur Verwaltung der ASP.NET Core-Protokollierungsunterstützung für Ihren Container. Sie können für Ihren Container die gleichen Konfigurationseinstellungen und Werte verwenden wie für eine ASP.NET Core-Anwendung. Der Container für die Gesichtserkennung unterstützt folgende Protokollanbieter:
@@ -212,3 +218,7 @@ Der folgende Befehl definiert beispielsweise eine Docker-Bindungseinbindung für
   ```
 
 Der Container für die Gesichtserkennung verwendet die Eingabe- oder Ausgabeeinbindungen nicht zum Speichern von Trainings- oder Datenbankdaten. Stattdessen stellt der Container für die Gesichtserkennung Speicherszenarien für die Verwaltung von Trainings-und Datenbankdaten bereit. Weitere Informationen zur Verwendung von Speicherszenarien finden Sie unter [Einstellungen für Speicherszenarien](#storage-scenario-settings).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

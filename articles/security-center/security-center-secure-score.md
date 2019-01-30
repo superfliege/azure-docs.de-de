@@ -3,7 +3,7 @@ title: Secure Score in Azure Security Center | Microsoft-Dokumentation
 description: " Priorisieren Sie Sicherheitsempfehlungen mithilfe von Secure Score in Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: monhaber
+ms.openlocfilehash: 4c7f272cbf98fefbf70e917634fb623c9e1b6a3b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261297"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425892"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbessern des Secure Score in Azure Security Center
 
@@ -45,7 +45,7 @@ So zeigen Sie den Secure Score-Gesamtwert an:
 2. Oben sehen Sie Hervorhebungen der Sicherheitsbewertung:
    - **Gesamte Sicherheitsbewertung** stellt die Bewertung nach Richtlinien und ausgewähltem Abonnement dar.
    - **Sicherheitsbewertung nach Kategorie** zeigt Ihnen, welche Ressourcen, die meiste Aufmerksamkeit benötigen.
-   - **Beste Empfehlungen gemäß Auswirkung auf die Sicherheitsbewertung** bietet Ihnen eine Liste von Empfehlungen, die Ihre Sicherheitsbewertung am meisten verbessern, wenn Sie sie befolgen.
+   - **Beste Empfehlungen gemäß Auswirkung auf die Sicherheitsbewertung** enthält eine Liste mit Empfehlungen, deren Umsetzung Ihre Sicherheitsbewertung am stärksten verbessert.
  
    ![Secure Score](./media/security-center-secure-score/secure-score-dashboard.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 33a9cc0a7b3d18004e19d73a0d9b91bf33cdb055
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 8a546845adb32823e89b814377bcf3e469562445
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408828"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413667"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
@@ -56,7 +56,7 @@ Beispiele zu einigen Methoden, mit denen Azure Identity Protection dabei helfen 
 -   Bereitstellen grundlegender Workflows zum Nachverfolgen von Untersuchungen
 -   Bereitstellen des einfachen Zugriffs auf Korrekturaktionen, z.B. Kennwortzurücksetzung
 
-[Risikobasierte Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#risky-sign-ins)
+[Risikobasierte Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 -   Durchführen von Abwehrmaßnahmen bei risikobehafteten Anmeldungen, indem Anmeldungen blockiert oder die Multi-Factor Authentication erzwungen wird
 -   Blockieren oder Schützen von risikobehafteten Benutzerkonten
 -   Erzwingen, dass sich Benutzer für die mehrstufige Authentifizierung registrieren
@@ -91,13 +91,13 @@ Log Analytics hilft Ihnen dabei, den Gesamtsicherheitsstatus einer beliebigen Um
 
 Das Log Analytics-Dashboard „Sicherheit und Überwachung“ ist in vier Hauptkategorien unterteilt:
 
--   **Sicherheitsdomänen:** Ermöglichen es Ihnen, die Sicherheitsdatensätze in Abhängigkeit der Zeit näher zu untersuchen. Außerdem können Sie die Bereiche Bewertung von Schadsoftware, Updatebewertung, Anzeige der Netzwerksicherheit, Informationen zu Identität und Zugriff und Anzeige von Computern mit Sicherheitsereignissen nutzen und schnell auf das Azure Security Center-Dashboard zugreifen.
+-   **Sicherheitsdomänen:** Ermöglichen es Ihnen, die Sicherheitsdatensätze in Abhängigkeit der Zeit näher zu untersuchen. Außerdem können Sie auf Schadsoftwarebewertungen zugreifen, Bewertungen aktualisieren, Informationen zu Netzwerksicherheit, Identität und Zugriff anzeigen, Computer mit Sicherheitsereignissen anzeigen und schnell auf das Azure Security Center-Dashboard zugreifen.
 
 -   **Relevante Probleme:** Mit dieser Option können Sie schnell die Anzahl von aktiven Problemen und den jeweiligen Schweregrad ermitteln.
 
--   **Erkennungen (Vorschauversion)**: Ermöglicht Ihnen die Identifizierung von Angriffsmustern, indem Sicherheitswarnungen angezeigt werden, wenn diese für Ihre Ressourcen auftreten.
+-   **Erkennungen (Vorschau):** Ermöglicht Ihnen, Angriffsmuster zu identifizieren, indem Sicherheitswarnungen für Ihre Ressourcen beim Auftreten angezeigt werden.
 
--   **Informationen zu Bedrohungen:** Ermöglicht Ihnen die Identifizierung von Angriffsmustern, indem Sie die Gesamtzahl von Servern mit ausgehendem schädlichem IP-Datenverkehr, den Bedrohungstyp und eine Karte mit den Standorten der IP-Adressen anzeigen.
+-   **Informationen zu Bedrohungen:** Ermöglicht Ihnen, Angriffsmuster zu identifizieren, indem die Gesamtanzahl von Servern mit ausgehendem schädlichem IP-Datenverkehr, die Art der Bedrohung und eine Karte mit den Standorten der IP-Adressen angezeigt werden.
 
 -   **Allgemeine Sicherheitsabfragen:** Diese Option liefert eine Liste mit den gängigsten Sicherheitsabfragen, die Sie zum Überwachen der Umgebung verwenden können. Wenn Sie eine Abfrage auswählen, wird der Suchbereich geöffnet, und die Ergebnisse der Abfrage werden angezeigt.
 
@@ -160,15 +160,15 @@ Die Telemetriedaten stammen aus mehreren Quellen, z. B. Azure, Office 365, Micr
 
 Sicherheitsexperten erhalten außerdem Informationen zu Bedrohungen, die zwischen großen Cloudanbietern ausgetauscht werden, und haben Threat Intelligence-Feeds von Drittanbietern abonniert. Azure Security Center kann diese Informationen verwenden, um Sie vor Bedrohungen durch bekannte Angreifer zu warnen. Beispiele hierfür sind:
 
--   **Nutzen des Machine Learning-Potenzials**: Azure Security Center hat Zugriff auf eine riesige Menge an Daten zur Cloudnetzwerkaktivität, die verwendet werden können, um Bedrohungen zu erkennen, die auf Ihre Azure-Bereitstellungen abzielen.
+-   **Nutzen des Potenzials von maschinellem Lernen:** Azure Security Center hat Zugriff auf eine riesige Menge an Daten zur Cloudnetzwerkaktivität, mit denen Bedrohungen erkannt werden können, die auf Ihre Azure-Bereitstellungen abzielen.
 
--   **Brute-Force-Erkennung**: Machine Learning wird verwendet, um ein Verlaufsmuster für Remotezugriffsversuche zu erstellen, mit denen Brute-Force-Angriffe auf SSH- (Secure Shell), RDP- (Remotedesktopprotokoll) und SQL-Ports erkannt werden können.
+-   **Brute-Force-Erkennung:** Mithilfe von maschinellem Lernen wird ein Verlaufsmuster für Remotezugriffsversuche erstellt, mit dem Brute-Force-Angriffe auf SSH- (Secure Shell), RDP- (Remotedesktopprotokoll) und SQL-Ports erkannt werden können.
 
--   **Ausgehende DDoS- und Botnet-Erkennung**: Ein häufiges Ziel bei Angriffen auf Cloudressourcen besteht darin, die Verarbeitungsleistung dieser Ressourcen zum Durchführen von anderen Angriffen zu nutzen.
+-   **Ausgehende DDoS- und Botnet-Erkennung:** Ein häufiges Ziel bei Angriffen auf Cloudressourcen besteht darin, die Verarbeitungsleistung dieser Ressourcen zum Durchführen von anderen Angriffen zu nutzen.
 
--   **Neue Server und virtuelle Computer für Verhaltensanalysen**: Nachdem ein Server oder virtueller Computer kompromittiert wurde, verwenden Angreifer eine Vielzahl von Techniken, um schädlichen Code auf diesem System auszuführen. Hierbei soll die Erkennung vermieden und Persistenz sichergestellt werden, und Sicherheitskontrollen sollen umgangen werden.
+-   **Neue Server und virtuelle Computer für Verhaltensanalysen:** Nachdem ein Server oder virtueller Computer kompromittiert wurde, verwenden Angreifer eine Vielzahl von Techniken, um schädlichen Code auf diesem System auszuführen. Hierbei soll die Erkennung vermieden und Persistenz sichergestellt werden, und Sicherheitskontrollen sollen umgangen werden.
 
--   **Bedrohungserkennung von Azure SQL-Datenbank**: Die Bedrohungserkennung für Azure SQL-Datenbank, mit der anomale Datenbankaktivitäten identifiziert werden, indem ungewöhnliche und potenziell schädliche Zugriffsversuche auf Datenbanken (Exploit) angezeigt werden.
+-   **Bedrohungserkennung von Azure SQL-Datenbank:** Bedrohungserkennung für Azure SQL-Datenbank, mit der anomale Datenbankaktivitäten identifiziert werden, indem ungewöhnliche und potenziell schädliche Zugriffsversuche auf Datenbanken (Exploits) angezeigt werden.
 
 ### <a name="behavioral-analytics"></a>Verhaltensanalyse
 
@@ -183,11 +183,11 @@ Außerdem werden Muster mit anderen Signalen korreliert, damit weitere Beweise f
 Beispiele hierfür sind:
 -   **Ausführung von verdächtigen Prozessen**: Angreifer nutzen verschiedene Verfahren, um unbemerkt Schadsoftware auszuführen. Beispielsweise können Angreifer Schadsoftware mit dem Namen regulärer Systemdateien versehen, diese dann aber an einem anderen Speicherort ablegen. Alternativ können sie einen Namen verwenden, der dem Namen einer unbedenklichen Datei ähnelt, oder die tatsächliche Dateinamenerweiterung verschleiern. Security Center modelliert Prozessverhalten und überwacht die Prozessausführung, um Ausreißer dieser Art zu erkennen.
 
--   **Versteckte Schadsoftware und versuchte Ausnutzung von Schwachstellen**: Professionelle Schadsoftware kann herkömmliche Antischadsoftware-Produkte umgehen, indem sie entweder nie auf den Datenträger schreibt oder auf dem Datenträger gespeicherte Softwarekomponenten verschlüsselt. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können. Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Azure Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer ohne Auswirkung auf die Leistung des Computers.
+-   **Versteckte Schadsoftware und versuchte Ausnutzung von Schwachstellen**: Ausgereifte Schadsoftware kann herkömmliche Antischadsoftware-Produkte umgehen, indem sie entweder nie auf den Datenträger schreibt oder auf dem Datenträger gespeicherte Softwarekomponenten verschlüsselt. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können. Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Azure Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer ohne Auswirkung auf die Leistung des Computers.
 
--   **Seitwärtsbewegung und interne Aufklärung**: Um sich längere Zeit in einem kompromittierten Netzwerk aufhalten und wertvolle Daten ausfindig machen und abschöpfen zu können, versuchen Angreifer häufig, vom kompromittierten Computer aus auf andere Computer im gleichen Netzwerk zuzugreifen. Security Center überwacht die Verarbeitungs- und Anmeldeaktivitäten, um versuchte Aktionen aufzudecken, mit denen Angreifer ihre Basis im Netzwerk ausbauen möchten, z. B. Ausführung von Remotebefehlen im Netzwerk und Kontoauflistung.
+-   **Seitwärtsbewegung und interne Aufklärung**: Um wertvolle Daten in einem kompromittierten Netzwerk ausfindig machen und abschöpfen zu können, versuchen Angreifer häufig, vom kompromittierten Computer aus auf andere Computer im selben Netzwerk zuzugreifen. Security Center überwacht die Verarbeitungs- und Anmeldeaktivitäten, um versuchte Aktionen aufzudecken, mit denen Angreifer ihre Basis im Netzwerk ausbauen möchten, z. B. Ausführung von Remotebefehlen im Netzwerk und Kontoauflistung.
 
--   **Schädliche PowerShell-Skripts**: PowerShell wird von Angreifern verwendet, um zu unterschiedlichen Zwecken Schadcode auf virtuellen Zielcomputern auszuführen. Security Center untersucht die PowerShell-Aktivitäten auf Beweise für verdächtige Vorgänge.
+-   **Schädliche PowerShell-Skripts:** PowerShell wird von Angreifern verwendet, um zu unterschiedlichen Zwecken Schadcode auf virtuellen Zielcomputern auszuführen. Security Center untersucht die PowerShell-Aktivitäten auf Beweise für verdächtige Vorgänge.
 
 -   **Ausgehende Angriffe**: Angreifer nehmen häufig Cloudressourcen ins Visier, um diese zur Durchführung weiterer Angriffe zu nutzen. Kompromittierte virtuelle Computer können beispielsweise verwendet werden, um Brute-Force-Angriffe auf andere virtuelle Computer zu starten, Spam zu senden oder nach offenen Ports und anderen Geräten im Internet zu suchen. Indem Machine Learning-Verfahren auf den Netzwerkdatenverkehr angewendet werden, kann Security Center erkennen, wenn ausgehende Netzwerkkommunikation außerhalb der Norm liegt. Bei der Erkennung von Spam korreliert Security Center außerdem ungewöhnlichen E-Mail-Datenverkehr mit Informationen aus Office 365, um zu ermitteln, ob die E-Mail vermutlich schädlich oder das Ergebnis einer legitimen E-Mail-Kampagne ist.
 
@@ -207,11 +207,11 @@ Azure Security Center arbeitet mit Sicherheitsforschungs- und Data Science-Teams
 
 -   **Microsoft-Sicherheitsexperten**: Ständiger Austausch mit Teams von Microsoft, die sich mit speziellen Sicherheitsfeldern beschäftigen, z.B. Forensik und Erkennung von Webangriffen.
 
--   **Erkennungsoptimierung**: Algorithmen werden für echte Kundendatasets ausgeführt, und Sicherheitsexperten arbeiten mit Kunden zusammen, um die Ergebnisse auszuwerten. Richtige und falsche Positivmeldungen werden verwendet, um Machine Learning-Algorithmen zu verfeinern.
+-   **Erkennungsoptimierung**: Algorithmen werden für echte Kundendatasets ausgeführt, und Sicherheitsexperten werten die Ergebnisse zusammen mit den Kunden aus. Richtige und falsche Positivmeldungen werden verwendet, um Machine Learning-Algorithmen zu verfeinern.
 
 Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebnissen, von denen Sie sofort profitieren können. Sie müssen hierfür nichts unternehmen.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Features zur erweiterten Bedrohungserkennung – Andere Azure-Dienste
+## <a name="advanced-threat-detection-features-other-azure-services"></a>Features für die erweiterte Bedrohungserkennung: Weitere Azure-Dienste
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuelle Computer: Microsoft Antimalware
 
@@ -221,25 +221,25 @@ Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebni
 
 Hier sind die Features von Azure zum Bereitstellen und Aktivieren von Microsoft Antimalware für Ihre Anwendungen aufgeführt:
 
--   **Echtzeitschutz**: Überwacht die Aktivitäten in Clouddiensten und auf virtuellen Computern, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
+-   **Echtzeitschutz**: Überwacht die Aktivitäten in Cloud Services und auf virtuellen Computern, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
 
 -   **Geplantes Scannen**: Führt regelmäßig gezielte Scans aus, um Schadsoftware, einschließlich aktiv ausgeführter Programme, zu erkennen.
 
--   **Schadsoftwarebehandlung**: Führt automatisch Aktionen für erkannte Schadsoftware aus, z.B. das Löschen schädlicher Dateien, das Unter-Quarantäne-Stellen schädlicher Dateien und das Bereinigen schädlicher Registrierungseinträge.
+-   **Schadsoftwarebehandlung**: Führt automatisch Aktionen für erkannte Schadsoftware aus, z.B. Löschen schädlicher Dateien, Unter-Quarantäne-Stellen schädlicher Dateien und Bereinigen schädlicher Registrierungseinträge.
 
 -   **Signaturaktualisierungen**: Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
 
--   **Aktualisierungen des Antimalware-Moduls**: Führt eine automatische Aktualisierung des Microsoft Antimalware-Moduls durch.
+-   **Aktualisierungen des Antischadsoftware-Moduls:** Führt eine automatische Aktualisierung des Microsoft Antimalware-Moduls durch.
 
--   **Aktualisierungen der Antimalware-Plattform**: Aktualisiert automatisch die Microsoft Antimalware-Plattform.
+-   **Aktualisierungen der Antimalware-Plattform**: Führt eine automatische Aktualisierung der Microsoft Antimalware-Plattform durch.
 
--   **Aktiver Schutz**: Übermittelt Telemetriemetadaten über erkannte Bedrohungen und verdächtige Ressourcen an Microsoft Azure, um eine schnelle Reaktion auf die zunehmenden Bedrohungen sicherzustellen. Auf diese Weise wird eine synchrone Echtzeitübermittlung von Signaturen über das aktive Schutzsystem von Microsoft ermöglicht.
+-   **Aktiver Schutz**: Übermittelt Telemetriemetadaten über erkannte Bedrohungen und verdächtige Ressourcen an Microsoft Azure, um eine schnelle Reaktion auf die ständig zunehmenden Bedrohungen sicherzustellen. Auf diese Weise wird eine synchrone Echtzeitübermittlung von Signaturen über das aktive Schutzsystem von Microsoft ermöglicht.
 
--   **Übermittlung von Stichproben**: Übermittelt und meldet Stichproben an den Microsoft Antimalware-Dienst, um den Dienst zu optimieren und die Problembehandlung zu ermöglichen.
+-   **Übermittlung von Stichproben**: Übermittelt Stichproben an den Microsoft Antimalware-Dienst, um den Dienst zu optimieren und eine Problembehandlung zu ermöglichen.
 
--   **Ausschlüsse**: Ermöglicht es Anwendungs- und Dienstadministratoren, aus Leistungs- und anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
+-   **Ausschlüsse**: Ermöglicht es Anwendungs- und Dienstadministratoren, aus Gründen der Leistung oder anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
 
--   **Antimalware-Ereigniserfassung**: Zeichnet die Integrität des Antimalware-Diensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie im Azure-Speicherkonto des Kunden.
+-   **Antischadsoftware-Ereigniserfassung**: Zeichnet die Integrität des Antimalware-Diensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie im Azure Storage-Konto des Kunden.
 
 ### <a name="azure-sql-database-threat-detection"></a>Bedrohungserkennung von Azure SQL-Datenbank
 
@@ -261,9 +261,9 @@ Wenn Benutzer eine E-Mail-Benachrichtigung zu einer Bedrohungserkennung erhalten
 
 Erkennungsmodule für SQL-Datenbank-Bedrohungen verwenden eine der folgenden Methoden für die Erkennung:
 
--   **Deterministische Erkennung**: Erkennt verdächtige Muster (regelbasiert) in den SQL-Clientabfragen, die bekannten Angriffen entsprechen. Diese Methode weist eine hohe Erkennungsrate und wenig falsch positive Ergebnisse auf, aber die Abdeckung ist begrenzt, da sie in die Kategorie „atomare Erkennungen“ fällt.
+-   **Deterministische Erkennung:** Erkennt verdächtige Muster (regelbasiert) in den SQL-Clientabfragen, die bekannten Angriffen entsprechen. Diese Methode weist eine hohe Erkennungsrate und wenig falsch positive Ergebnisse auf, aber die Abdeckung ist begrenzt, da sie in die Kategorie „atomare Erkennungen“ fällt.
 
--   **Verhaltensbedingte Erkennung**: Erkennt anomale Aktivitäten, bei denen es sich um anomales Verhalten in der Datenbank handelt, das während der letzten 30 Tage nicht aufgetreten ist. Beispiele für anomale Aktivitäten eines SQL-Clients können Steigerungen bei den fehlerhaften Anmeldungen oder Abfragen, große Menge extrahierter Daten, ungewöhnliche kanonische Abfragen oder unbekannte IP-Adressen für den Datenbankzugriff sein.
+-   **Verhaltensbedingte Erkennung:** Erkennt anomale Aktivitäten, also anomales Verhalten in der Datenbank, das während der letzten 30 Tage nicht aufgetreten ist. Beispiele für anomale Aktivitäten eines SQL-Clients können Steigerungen bei den fehlerhaften Anmeldungen oder Abfragen, große Menge extrahierter Daten, ungewöhnliche kanonische Abfragen oder unbekannte IP-Adressen für den Datenbankzugriff sein.
 
 ### <a name="application-gateway-web-application-firewall"></a>Web Application Firewall für Application Gateway
 
@@ -297,25 +297,25 @@ Die Konfiguration einer WAF auf Ihrem Anwendungsgateway bietet die folgenden Vor
 
 -   Unterstützt die Einhaltung von Konformitätsanforderungen. Für bestimmte Konformitätssteuerelemente ist es erforderlich, dass alle über das Internet zugänglichen Endpunkte durch eine WAF-Lösung geschützt werden.
 
-### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Anomalieerkennungs-API: Erstellung per Azure Machine Learning
+### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Anomalieerkennungs-API: Mit Azure Machine Learning erstellt
 
 Die Anomalieerkennungs-API ist eine API, die hilfreich zum Erkennen von vielen verschiedenen anomalen Mustern in Ihren Zeitreihendaten ist. Die API weist jedem Datenpunkt in der Zeitreihe einen Anomaliewert zu, der zum Generieren von Warnungen, zum Durchführen der Überwachung per Dashboard oder zum Verbinden mit Ihren Ticketausstellungssystemen verwendet werden kann.
 
 Die [API zur Anomalieerkennung](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api) kann die folgenden Arten von Anomalien in Zeitreihendaten erkennen:
 
--   **Spitzen und Abfälle**: Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen einer E-Commerce-Website können ungewöhnliche Spitzen oder Abfälle auf Sicherheitsangriffe oder Dienstunterbrechungen hinweisen.
+-   **Spitzen und Abfälle:** Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen einer E-Commerce-Website können ungewöhnliche Spitzen oder Abfälle auf Sicherheitsangriffe oder Dienstunterbrechungen hinweisen.
 
 -   **Positive und negative Trends**: Beim Überwachen der Computing-Speicherauslastung deutet eine stärkere Verringerung des freien Speichers auf einen potenziellen Arbeitsspeicherverlust hin. In Bezug auf die Überwachung der Dienstwarteschlangenlänge kann ein beständiger Aufwärtstrend auf ein zugrunde liegendes Softwareproblem hinweisen.
 
--   **Niveauänderungen und Änderungen am dynamischen Bereich von Werten**: Niveauänderungen bei den Latenzzeiten eines Diensts nach einem Dienstupgrade oder ein geringerer Grad an Ausnahmen nach dem Upgrade können für die Überwachung interessant sein.
+-   **Niveauänderungen und Änderungen am dynamischen Bereich von Werten:** Niveauänderungen bei den Latenzzeiten eines Diensts nach einem Dienstupgrade oder ein geringerer Grad an Ausnahmen nach dem Upgrade können für die Überwachung interessant sein.
 
 Die Machine Learning-basierte API ermöglicht Folgendes:
 
--   **Flexible und robuste Erkennung**: Die Modelle zur Erkennung von Anomalien ermöglichen Benutzern die Konfiguration von Empfindlichkeitseinstellungen und die Erkennung von Anomalien über saisonale und nicht saisonale Datasets. Benutzer können das Modell zur Anomalieerkennung anpassen, um die API für die Erkennung entsprechend ihren Anforderungen mehr oder weniger empfindlich einzustellen. Das würde die Erkennung von mehr oder weniger sichtbaren Anomalien in Daten mit und ohne saisonalen Mustern bedeuten.
+-   **Flexible und robuste Erkennung:** Die Modelle zur Erkennung von Anomalien ermöglichen Benutzern die Konfiguration von Empfindlichkeitseinstellungen und die Erkennung von Anomalien über saisonale und nicht saisonale Datasets. Benutzer können das Modell zur Anomalieerkennung anpassen, um die API für die Erkennung entsprechend ihren Anforderungen mehr oder weniger empfindlich einzustellen. Das würde die Erkennung von mehr oder weniger sichtbaren Anomalien in Daten mit und ohne saisonalen Mustern bedeuten.
 
--   **Skalierbare und rechtzeitige Erkennung**: Die traditionelle Methode zur Überwachung mit vorhandenen Schwellenwerten, die von Experten mit Domänenkenntnissen festgelegt werden, sind teuer und können nicht für Millionen von sich dynamisch ändernden Datasets skaliert werden. Die Modelle zur Anomalieerkennung in dieser API sind angelernt und werden mithilfe von Verlaufsdaten und Echtzeitdaten automatisch optimiert.
+-   **Skalierbare und rechtzeitige Erkennung:** Die traditionelle Methode zur Überwachung mit von Fachexperten festgelegten Schwellenwerten ist teuer und kann nicht für Millionen von sich dynamisch ändernden Datasets skaliert werden. Die Modelle zur Anomalieerkennung in dieser API sind angelernt und werden mithilfe von Verlaufsdaten und Echtzeitdaten automatisch optimiert.
 
--   **Proaktive und handlungsrelevante Erkennung**: Für die frühe Erkennung von Anomalien kann die Erkennung langsamer Trends und von Niveauänderungen angewendet werden. Die früh erkannten anomalen Signale können verwendet werden, um Benutzer anzuweisen, Untersuchungen durchzuführen und auf Problembereiche zu reagieren. Darüber hinaus können zusätzlich zu diesem API-Dienst zur Anomalieerkennung entsprechende Analysemodelle für Hauptursachen und Benachrichtigungstools entwickelt werden.
+-   **Proaktive und handlungsrelevante Erkennung:** Für die frühe Erkennung von Anomalien kann die Erkennung langsamer Trends und von Niveauänderungen angewandt werden. Die früh erkannten anomalen Signale können verwendet werden, um Benutzer anzuweisen, Untersuchungen durchzuführen und auf Problembereiche zu reagieren. Darüber hinaus können zusätzlich zu diesem API-Dienst zur Anomalieerkennung entsprechende Analysemodelle für Hauptursachen und Benachrichtigungstools entwickelt werden.
 
 Die API zur Erkennung von Anomalien ist eine effektive und effiziente Lösung für eine Vielzahl von Szenarien, z.B. Dienstintegrität und KPI-Überwachung, IoT, Leistungsüberwachung und Überwachung des Netzwerkdatenverkehrs. Es folgen einige verbreitete Szenarien, in denen diese API hilfreich sein kann:
 
@@ -383,6 +383,6 @@ Beispiele für Web Application Firewalls, die im Azure Marketplace verfügbar si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Security Center-Erkennungsfunktionen](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities): Dienen zum Identifizieren von aktiven Bedrohungen, die auf Ihre Azure-Ressourcen abzielen. Sie erhalten hiermit die Erkenntnisse, die Sie für eine schnelle Antwort benötigen.
+- [Azure Security Center-Erkennungsfunktionen:](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities) Dienen zum Identifizieren von aktiven Bedrohungen, die auf Ihre Azure-Ressourcen abzielen. Sie erhalten hiermit die Erkenntnisse, die Sie für eine schnelle Reaktion benötigen.
 
-- [Azure SQL Database Threat Detection](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) (Azure SQL-Datenbank – Bedrohungserkennung): Enthält eine Beschreibung der potenziellen Bedrohungen für Ihre Datenbanken.
+- [Bedrohungserkennung von Azure SQL-Datenbank:](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) Bietet Hinweise zu den potenziellen Bedrohungen für Ihre Datenbanken.

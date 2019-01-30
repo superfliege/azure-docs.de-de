@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cbd09f141128f9103af88b695baf717eaa3c99d5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038835"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389098"
 ---
 # <a name="database-transactions-and-optimistic-concurrency-control"></a>Datenbanktransaktionen und Steuerung für optimistische Nebenläufigkeit
 
@@ -49,7 +49,7 @@ Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb der Datenbank
 
 ## <a name="optimistic-concurrency-control"></a>Steuerung für optimistische Parallelität 
 
-Mit der Steuerung für optimistische Nebenläufigkeit können Sie den Verlust von Aktualisierungen und Löschvorgängen vermeiden. Gleichzeitige, konfliktverursachende Vorgänge unterliegen der regulären pessimistischen Sperrung der Datenbank-Engine, die in der logischen Partition gehostet wird, die das Element besitzt. Wenn in zwei gleichzeitigen Vorgängen versucht wird, die neueste Version eines Elements in einer logischen Partition zu aktualisieren, wird ein Vorgang erfolgreich durchgeführt, beim anderen treten dagegen Fehler auf. Wenn jedoch in einem oder beiden Vorgängen, mit denen versucht wird, gleichzeitig dasselbe Element zu aktualisieren, zuvor bereits ein älterer Wert des Elements gelesen wurde, kann in der Datenbank nicht ermittelt werden, ob der zuvor mit den konfliktverursachenden Vorgängen gelesene Wert tatsächlich der neueste Wert des Elements war. Dies kann zum Glück mit der Steuerung für optimistische Nebenläufigkeit (Optimistic Concurrency Control, OCC) erkannt werden, bevor die beiden Vorgänge die Transaktionsgrenze innerhalb der Datenbank-Engine überschreiten. Mit der Steuerung für optimistische Nebenläufigkeit werden Ihre Daten davor geschützt, dass Änderungen, die von anderen Benutzern vorgenommen wurden, versehentlich überschrieben werden. Ebenso wird verhindert, dass andere Benutzer versehentlich die von Ihnen vorgenommenen Änderungen überschreiben.
+Mit der Steuerung für optimistische Nebenläufigkeit können Sie den Verlust von Aktualisierungen und Löschvorgängen vermeiden. Gleichzeitige, konfliktverursachende Vorgänge unterliegen der regulären pessimistischen Sperrung der Datenbank-Engine, die in der logischen Partition gehostet wird, die das Element besitzt. Wenn in zwei parallelen Vorgängen versucht wird, die neueste Version eines Elements in einer logischen Partition zu aktualisieren, ist nur einer der beiden Vorgänge erfolgreich. Wenn jedoch in einem oder beiden Vorgängen, mit denen versucht wird, gleichzeitig dasselbe Element zu aktualisieren, zuvor bereits ein älterer Wert des Elements gelesen wurde, kann in der Datenbank nicht ermittelt werden, ob der zuvor mit den konfliktverursachenden Vorgängen gelesene Wert tatsächlich der neueste Wert des Elements war. Dies kann zum Glück mit der Steuerung für optimistische Nebenläufigkeit (Optimistic Concurrency Control, OCC) erkannt werden, bevor die beiden Vorgänge die Transaktionsgrenze innerhalb der Datenbank-Engine überschreiten. Mit der Steuerung für optimistische Nebenläufigkeit werden Ihre Daten davor geschützt, dass Änderungen, die von anderen Benutzern vorgenommen wurden, versehentlich überschrieben werden. Ebenso wird verhindert, dass andere Benutzer versehentlich die von Ihnen vorgenommenen Änderungen überschreiben.
 
 Die gleichzeitigen Aktualisierungen eines Elements unterliegen über die Kommunikationsprotokollebene von Azure Cosmos DB der Steuerung für optimistische Nebenläufigkeit. In der Azure Cosmos-Datenbank wird sichergestellt, dass die clientseitige Version des Elements, das Sie aktualisieren (oder löschen), der Version des Elements im Azure Cosmos-Container entspricht. Dadurch wird sichergestellt, dass Ihre Schreibvorgänge geschützt sind und nicht versehentlich durch Schreibvorgänge von anderen Benutzern überschrieben werden und umgekehrt. In einer Umgebung mit mehreren Benutzern verhindert die Steuerung für optimistische Nebenläufigkeit, dass Sie versehentlich die falsche Version eines Elements löschen oder aktualisieren. Elemente werden so vor den berüchtigten Problemen mit verloren gegangenen Aktualisierungen oder Löschvorgängen geschützt.
 

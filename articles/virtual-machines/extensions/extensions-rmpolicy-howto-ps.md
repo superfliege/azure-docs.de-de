@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 15a6a7f4753d51118d23d2e3c021010218d2d2d7
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451832"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434988"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Windows-Computern einzuschränken
 
 Wenn Sie die Verwendung oder Installation von bestimmten Erweiterungen auf Ihren virtuellen Windows-Computern verhindern möchten, können Sie mit PowerShell eine Azure-Richtlinie zum Einschränken von Erweiterungen für virtuelle Computer innerhalb einer Ressourcengruppe erstellen. 
 
-Dieses Tutorial verwendet Azure PowerShell innerhalb der Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. 
+Dieses Tutorial verwendet Azure PowerShell innerhalb der Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. 
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
@@ -139,7 +139,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testen der Richtlinie
 
-Versuchen Sie, die VM Access-Erweiterung zu verwenden, um die Richtlinie zu testen. Bei Folgendem sollte ein Fehler mit der Meldung „Set-AzureRmVMAccessExtension: Die Ressource 'myVMAccess' wurde durch eine Richtlinie abgelehnt.“ auftreten.
+Versuchen Sie, die VM Access-Erweiterung zu verwenden, um die Richtlinie zu testen. Bei Folgendem sollte ein Fehler mit der Meldung „Set-AzureRmVMAccessExtension: Die Ressource ‚myVMAccess‘ wurde durch eine Richtlinie abgelehnt“ auftreten.
 
 ```azurepowershell-interactive
 Set-AzureRmVMAccessExtension `

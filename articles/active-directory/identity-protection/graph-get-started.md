@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Risikoereignis, Sicherheitsrisiko, Sicherheitsrichtlinie, Microsoft Graph
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
 ms.component: conditional-access
@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: a415258b8127bb78d8a8d1b5ef228234b34b3e26
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: d1703df524976bac4880975585e9d2e4f8af72fd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287507"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475270"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph
 Microsoft Graph ist der einheitliche API-Endpunkt von Microsoft und stellt die [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)-APIs zur Verfügung. Mit der ersten API, **identityRiskEvents**, können Sie in Microsoft Graph eine Liste von [Risikoereignissen](../reports-monitoring/concept-risk-events.md) und zugehörige Informationen abfragen. In diesem Artikel erhalten Sie eine kurze Einführung in das Abfragen dieser API. Eine ausführliche Einführung, die vollständige Dokumentation und Informationen zum Zugriff auf den Graph-Tester finden Sie auf der Website zu [Microsoft Graph](https://developer.microsoft.com/graph/).
@@ -77,7 +77,7 @@ Bevor Sie beginnen, benötigen Sie Folgendes:
    
     ![Erstellen einer Anwendung](./media/graph-get-started/44.png)
 
-    a. Geben Sie im Textfeld **Name** einen Namen für Ihre Anwendung ein (z.B. „AADIP-Risikoereignis-API-Anwendung“).
+    a. Geben Sie im Textfeld **Name** einen Namen für Ihre Anwendung ein (etwa „AADIP-Risikoereignis-API-Anwendung“).
    
     b. Wählen Sie als **Anwendungstyp** **Webanwendung und/oder Web-API** aus.
    

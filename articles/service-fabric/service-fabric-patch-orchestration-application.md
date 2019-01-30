@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754032"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427932"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -141,7 +141,10 @@ Automatische Windows-Updates können zu einer Verringerung der Verfügbarkeit f�
 
 Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](https://go.microsoft.com/fwlink/?linkid=869566) heruntergeladen werden.
 
-Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA_v1.2.2.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
+Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
+
+> [!IMPORTANT]
+> V1.3.0 (die neueste Version) der Patchorchestrierungsanwendung weist ein bekanntes Problem auf, wenn es unter Windows Server 2012 ausgeführt wird. Wenn Sie Windows Server 2012 ausführen, laden Sie v1.2.2 der Anwendung [hier](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip) herunter. [SFPKG-Link](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
 
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
@@ -153,11 +156,11 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)<br> Entscheiden Sie mithilfe des Abschnitts [Häufig gestellte Fragen](#frequently-asked-questions), welche Richtlinie für Ihren Cluster am besten geeignet ist.
 |LogsDiskQuotaInMB   |Long  <br> (Standard: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
 | WUQuery               | Zeichenfolge<br>(Standard: „IsInstalled=0“)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
-| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standard: TRUE)                 | Dieses Flag ermöglicht die Installation von Windows-Betriebssystemupdates.            |
+| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standardwert: TRUE)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
 | WUOperationTimeOutInMinutes | int <br>(Standard: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | int <br> (Standard: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
 | WURescheduleTimeInMinutes | int <br>(Standard: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
-| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32. <br> – Wöchentlich, TAG, HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
+| WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32.<br>Zulässige Werte für das Feld „TT“ (Tag) sind Zahlen im Bereich 1–28 und „last“. <br> – Wöchentlich, TAG, HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
 | AcceptWindowsUpdateEula | Boolescher Wert <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
 
 > [!TIP]
@@ -397,8 +400,14 @@ Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anw
 
 - Fehlerbehebung im Workflow zum Herunterskalieren eines Clusters. Logik der automatischen Speicherbereinigung für POA-Reparaturaufgaben eingeführt, die nicht vorhandenen Knoten angehören.
 
-### <a name="version-122-latest"></a>Version 1.2.2 (aktuelle Version)
+### <a name="version-122"></a>Version 1.2.2
 
 - Verschiedene Fehlerbehebungen
 - Binärdateien werden jetzt signiert.
-- Sfpkg-Download-Link verweist jetzt auf eine bestimmte Version.
+- SFPKG-Link für die Anwendung wurde hinzugefügt.
+
+### <a name="version-130"></a>Version 1.3.0
+
+- Nach dem Festlegen von InstallWindowsOSOnlyUpdates auf FALSE werden jetzt alle verfügbaren Updates installiert.
+- Die Logik für das Deaktivieren automatischer Updates wurde geändert. Dies behebt einen Fehler, durch den automatische Updates auf Server 2016 und höher nicht deaktiviert wurden.
+- Einschränkungen der parametrisierten Platzierung für beide Microservices von POA für erweiterte Anwendungsfälle.

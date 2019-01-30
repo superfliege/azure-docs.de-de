@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034334"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806996"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 
@@ -24,15 +24,48 @@ In den folgenden Abschnitten wird die Zuordnung der von einem OSS-Clienttreiber 
 
 ## <a id="cassandra-mapping"></a>Zuordnung zwischen Apache Cassandra- und Azure Cosmos DB-Konsistenzebenen
 
-In dieser Tabelle ist die Zuordnung für die Lesekonsistenz zwischen dem Apache Cassandra 4.x-Client und der Standardkonsistenzebene in Azure Cosmos DB aufgeführt. Es sind Bereitstellungen in mehreren Regionen sowie in einer einzelnen Region aufgeführt.
+In dieser Tabelle ist die Konsistenzzuordnung zwischen Apache Cassandra und Konsistenzebenen in Azure Cosmos DB aufgeführt. Für jede der Lese- und Schreibkonsistenzebenen von Cassandra bietet die entsprechende Cosmos DB-Konsistenzebene sicherere, d. h. strengere Garantien.
 
-| **Apache Cassandra 4.x** | **Azure Cosmos DB (mehrere Regionen)** | **Azure Cosmos DB (einzelne Region)** |
+Die folgende Tabelle zeigt die **Schreibkonsistenzzuordnung** zwischen Azure Cosmos DB und Cassandra:
+
+| Cassandra | Azure Cosmos DB | Garantie |
 | - | - | - |
-| ONE, TWO, THREE | Konsistentes Präfix | Konsistentes Präfix |
-| LOCAL_ONE | Konsistentes Präfix | Konsistentes Präfix |
-| QUORUM, ALL, SERIAL | Begrenzte Veraltung (Bounded staleness) ist die Standardeinstellung. Stark (Strong) befindet sich in der privaten Vorschau. | STARK (Strong) |
-| LOCAL_QUORUM | Bounded staleness | STARK (Strong) |
-| LOCAL_SERIAL | Bounded staleness | STARK (Strong) |
+|ALL|STARK (Strong)  | Linearisierbarkeit |
+| EACH_QUORUM   | STARK (Strong)    | Linearisierbarkeit | 
+| QUORUM, SERIAL |  STARK (Strong) |    Linearisierbarkeit |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Präfixkonsistenz |Globale Präfixkonsistenz |
+| EACH_QUORUM   | STARK (Strong)    | Linearisierbarkeit |
+| QUORUM, SERIAL |  STARK (Strong) |    Linearisierbarkeit |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Präfixkonsistenz | Globale Präfixkonsistenz |
+| QUORUM, SERIAL | STARK (Strong)   | Linearisierbarkeit |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | Präfixkonsistenz | Globale Präfixkonsistenz |
+| LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | Begrenzte Veraltung (Bounded staleness) | <ul><li>Begrenzte Veraltung</li><li>Um maximal K Versionen oder die Zeit t verzögert</li><li>Lesen des neuesten Werts in der Region, der committet wurde</li></ul> |
+| ONE, LOCAL_ONE, ANY   | Präfixkonsistenz | Präfixkonsistenz pro Region |
+
+Die folgende Tabelle zeigt die **Lesekonsistenzzuordnung** zwischen Azure Cosmos DB und Cassandra:
+
+| Cassandra | Azure Cosmos DB | Garantie |
+| - | - | - |
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO, ONE, LOCAL_ONE | STARK (Strong)  | Linearisierbarkeit|
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |STARK (Strong) |   Linearisierbarkeit |
+|LOCAL_ONE, ONE | Präfixkonsistenz | Globale Präfixkonsistenz |
+| ALL, QUORUM, SERIAL   | STARK (Strong)    | Linearisierbarkeit |
+| LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Präfixkonsistenz   | Globale Präfixkonsistenz |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM |    Präfixkonsistenz   | Globale Präfixkonsistenz |
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |STARK (Strong) |   Linearisierbarkeit |
+| LOCAL_ONE, ONE    | Präfixkonsistenz | Globale Präfixkonsistenz|
+| ALL, QUORUM, SERIAL – STARK (Strong) Linearisierbarkeit
+LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |Präfixkonsistenz  | Globale Präfixkonsistenz |
+|ALL    |STARK (Strong) |Linearisierbarkeit |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  |Präfixkonsistenz  |Globale Präfixkonsistenz|
+|ALL, QUORUM, SERIAL – STARK (Strong) Linearisierbarkeit
+LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |Präfixkonsistenz  |Globale Präfixkonsistenz |
+|ALL    |STARK (Strong) | Linearisierbarkeit |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | Präfixkonsistenz | Globale Präfixkonsistenz |
+| QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Begrenzte Veraltung (Bounded staleness)   | <ul><li>Begrenzte Veraltung</li><li>Um maximal K Versionen oder die Zeit t verzögert </li><li>Lesen des neuesten Werts in der Region, der committet wurde</li></ul>
+| LOCAL_ONE, ONE |Präfixkonsistenz | Präfixkonsistenz pro Region |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | Präfixkonsistenz | Präfixkonsistenz pro Region |
+
 
 ## <a id="mongo-mapping"></a>Zuordnung zwischen MongoDB 3.4- und Azure Cosmos DB-Konsistenzebenen
 

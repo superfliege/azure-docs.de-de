@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352681"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388469"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Hinzufügen von Kubernetes zum Azure Stack-Marketplace
 
@@ -60,7 +60,7 @@ Erstellen Sie einen Plan, ein Angebot und ein Abonnement für das Marketplace-El
 
     e. Wählen Sie **Angebot** aus. Wählen Sie den Namen des Angebots aus, das Sie erstellt haben. Notieren Sie sich die Abonnement-ID.
 
-## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>Erstellen eines Dienstprinzipals und von Anmeldeinformationen in AD FS
+## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>Erstellen eines Dienstprinzipals und von Anmeldeinformationen in AD FS
 
 Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltungsdienst verwenden, müssen Sie einen Dienstprinzipal für Benutzer erstellen, die einen Kubernetes-Cluster bereitstellen.
 
@@ -75,7 +75,7 @@ Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltung
        | Zertifikatsname | Der Name des Zertifikats. |
        | Zertifikatspeicherort |  Zum Beispiel, `Cert:\LocalMachine\My` |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den auf Ihre Werte aktualisierten Parametern aus:
+    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
         ```PowerShell  
         # Creates a new self signed certificate 
@@ -104,20 +104,20 @@ Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltung
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. Erstellen Sie einen Dienstprinzipal mithilfe des Zertifikats.
+2. Erstellen Sie mithilfe des Zertifikats einen Dienstprinzipal.
 
     - Sie benötigen die folgenden Informationen:
 
        | Wert | BESCHREIBUNG                     |
        | ---   | ---                             |
        | ERCS IP | Im ASDK ist der privilegierte Endpunkt normalerweise `AzS-ERCS01`. |
-       | Anwendungsname | Ein einfacher Name für den Anwendungsdienstprinzipal. |
+       | Anwendungsname | Ein einfacher Name für den Anwendungsdienstprinzipal |
        | Zertifikatspeicherort | Der Pfad auf Ihrem Computer, in dem Sie das Zertifikat gespeichert haben. Beispiel: `Cert:\LocalMachine\My\<someuid>` |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den auf Ihre Werte aktualisierten Parametern aus:
+    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
         ```PowerShell  
-        #Create service principle using the certificate
+        #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
         #certificate store location. Eg. Cert:\LocalMachine\My
@@ -132,7 +132,7 @@ Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltung
         # Creating a PSSession to the ERCS PrivilegedEndpoint
         $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-        # Get Service Principle Information
+        # Get Service principal Information
         $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
 
         # Get Stamp information

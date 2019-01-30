@@ -10,18 +10,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f4d63d4ad0841244cf2548b0842eea880e27a152
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158855"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463030"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
-In diesem Artikel wird erklärt, wie Sie Azure-Ressourcen entweder in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben.
+In diesem Artikel wird erklärt, wie Sie Azure-Ressourcen entweder in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben. Ein entsprechendes Tutorial finden Sie unter [Tutorial: Verschieben von Azure-Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement](./resource-manager-tutorial-move-resources.md).
 
 Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank.
 
@@ -56,6 +56,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure-Daten-Explorer
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps – Azure DevOps-Unternehmen mit erworbenen Erweiterungen, die nicht von Microsoft stammen, müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
@@ -98,7 +99,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
-* Recovery Services-Tresor – Sie müssen für eine [eingeschränkte öffentliche Vorschauversion](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) registriert sein.
+* Recovery Services-Tresor – Registrieren Sie Ihr Abonnement für die [eingeschränkte öffentliche Vorschau](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
@@ -166,6 +167,7 @@ Ab dem 24. September 2018 können Sie verwaltete Datenträger verschieben. Das b
 Folgende Szenarios werden noch nicht unterstützt:
 
 * Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
+* Verwaltete Datenträger in Verfügbarkeitszonen können nicht in ein anderes Abonnement verschoben werden.
 * Eine Virtual Machine Scale Sets-Instanz mit Load Balancer der Standard-SKU oder einer öffentlichen IP-Adresse der Standard-SKU kann nicht verschoben werden.
 * Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
 
@@ -305,7 +307,7 @@ Dieser Vorgang kann einige Minuten dauern.
 
 ### <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
 
-Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine [eingeschränkte öffentliche Vorschauversion](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) registrieren.
+ Registrieren Sie Ihr Abonnement für die [eingeschränkte öffentliche Vorschau](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault), um einen Recovery Services-Tresor zu verschieben.
 
 Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden.
 

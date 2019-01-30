@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f5d48a074f8069e243af5644f86ad3c3d8f559b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634862"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412307"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals
 
@@ -155,7 +155,7 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Führen
 
 1. Klicken Sie auf **Entfernen**.
 
-   ![Meldung zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment.png)
+   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment.png)
 
 1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
 
@@ -167,5 +167,5 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Führen
 
 * [Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure-Portal](quickstart-assign-role-user-portal.md)
 * [Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md)
-* [Integrierte Rollen](built-in-roles.md)
+* [Beheben von RBAC-Fehlern in Azure](troubleshooting.md)
 * [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md)

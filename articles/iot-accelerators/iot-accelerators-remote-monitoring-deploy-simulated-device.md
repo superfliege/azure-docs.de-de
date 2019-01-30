@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: f073637810e9ed1acdf37b0e541ca3f1d518de2a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8491acfd28524ee3bbbd06c788afb668c40c98b9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346470"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450567"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Bereitstellen eines neuen simulierten Geräts
 
@@ -41,7 +41,7 @@ Zum Ausführen dieser Anleitung benötigen Sie Folgendes:
 
 - Eine bereitgestellte Instanz des [Solution Accelerators für Remoteüberwachung](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
 - Eine lokale **Bash**-Shell zum Ausführen der Befehle `ssh` und `scp`. Unter Windows können Sie **Bash** auf einfache Weise installieren, indem Sie [Git](https://git-scm.com/download/win) installieren.
-- Ihre benutzerdefinierten Gerätemodelldateien, z. B. die in [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md) beschriebenen.
+- Ihre benutzerdefinierten Gerätemodelldateien, z.B. die in [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md) beschriebenen.
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
 
@@ -147,4 +147,4 @@ Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf de
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Anleitung wurde gezeigt, wie Sie benutzerdefinierte Gerätemodelle für den Solution Accelerator für Gerätesimulation bereitstellen. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [ein physisches Gerät mit Ihrer Lösung für die Remoteüberwachung verbinden](iot-accelerators-connecting-devices-node.md).
+In dieser Anleitung wurde gezeigt, wie Sie benutzerdefinierte Gerätemodelle für den Solution Accelerator für Gerätesimulation bereitstellen. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [ein echtes Gerät mit Ihrer Lösung für die Remoteüberwachung verbinden](iot-accelerators-connecting-devices-node.md).

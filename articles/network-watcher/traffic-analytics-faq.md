@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582495"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383002"
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
+# <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
 In diesem Artikel werden an zentraler Stelle viele der am häufigsten gestellten Fragen zu Traffic Analytics in Azure Network Watcher beantwortet.
 
@@ -35,7 +35,6 @@ Für Traffic Analytics gelten folgende Voraussetzungen:
 
 Ihr Konto muss eine der folgenden Voraussetzungen erfüllen, um Traffic Analytics aktivieren zu können:
 
-- Ihrem Konto muss eine der folgenden Rollen auf Abonnementebene zugeordnet sein: Kontoadministrator, Dienstadministrator oder Co-Administrator.
 - Ihr Konto muss eine der folgenden Rollen für die rollenbasierte Zugriffssteuerung (RBAC) im Abonnementumfang haben: Besitzer, Mitwirkender, Leser oder Netzwerkmitwirkender.
 - Wenn Ihr Konto nicht einer der zuvor genannten Rollen zugewiesen ist, müssen Sie es einer benutzerdefinierten Rolle zuweisen, der auf Abonnementebene die folgenden Aktionen zugewiesen sind.
             
@@ -61,7 +60,7 @@ So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
-## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
 
 Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
 - Kanada, Mitte
@@ -133,7 +132,7 @@ Der Anbieter „Microsoft.Insights“ muss registriert sein, damit die Datenflus
 
 Es kann bis zu 30 Minuten dauern, bis es zum ersten Mal angezeigt wird. Die Lösung muss zunächst genügend Daten aggregieren, um aussagekräftige Erkenntnisse zu gewinnen. Erst dann werden Berichte generiert. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Was ist, wenn ich die folgende Meldung erhalte: „Es wurden für den ausgewählten Zeitraum keine Daten in diesem Arbeitsbereich gefunden. Ändern Sie das Zeitintervall, oder wählen Sie einen anderen Arbeitsbereich aus.“?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Was ist zu tun, wenn diese Meldung angezeigt wird: „Für den ausgewählten Zeitraum wurden in diesem Arbeitsbereich keine Daten gefunden. Ändern Sie das Zeitintervall, oder wählen Sie einen anderen Arbeitsbereich aus.“?
 
 Versuchen Sie Folgendes:
 - Ändern Sie auf der oberen Leiste den Zeitraum.
@@ -142,7 +141,7 @@ Versuchen Sie Folgendes:
     
 Wenn das Problem bestehen bleibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Was ist, wenn ich die folgende Meldung erhalte: „Ihre NSG-Datenflussprotokolle werden zum ersten Mal analysiert. Dieser Vorgang kann 20 bis 30 Minuten in Anspruch nehmen. Schauen Sie später wieder vorbei. 2) Wenn der oben genannte Schritt nicht funktioniert und sich Ihr Arbeitsbereich unter der SKU „Free“ befindet, überprüfen Sie hier die Nutzung Ihres Arbeitsbereichs, um das Kontingent zu prüfen, oder suchen Sie in den häufig gestellten Fragen nach weiteren Informationen.“?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Was ist zu tun, wenn diese Meldung angezeigt wird: „Ihre NSG-Datenflussprotokolle werden zum ersten Mal analysiert. Dieser Vorgang kann 20 bis 30 Minuten in Anspruch nehmen. Schauen Sie später wieder vorbei. 2) Wenn der oben genannte Schritt nicht funktioniert und sich Ihr Arbeitsbereich unter der SKU „Free“ befindet, überprüfen Sie hier die Nutzung Ihres Arbeitsbereichs, um das Kontingent zu prüfen, oder suchen Sie in den häufig gestellten Fragen nach weiteren Informationen.“?
 
 Ggf. wird diese Meldung auf folgenden Gründen angezeigt:
 - Traffic Analytics wurde vor Kurzem aktiviert, und es wurde ggf. noch keine ausreichende Datenmenge aggregiert, um aussagekräftige Erkenntnisse zu gewinnen.
@@ -150,7 +149,7 @@ Ggf. wird diese Meldung auf folgenden Gründen angezeigt:
     
 Wenn das Problem bestehen bleibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Was ist, wenn ich die folgende Meldung erhalte: „Es sieht so aus, als wären Ressourcendaten (Topologie), aber keine Datenflussinformationen verfügbar. Klicken Sie in der Zwischenzeit hier, um Ressourcendaten anzuzeigen, und lesen Sie die häufig gestellten Fragen, um weitere Informationen zu erhalten.“?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Was ist zu tun, wenn diese Meldung angezeigt wird: „Es sieht so aus, als wären Ressourcendaten (Topologie), aber keine Datenflussinformationen verfügbar. Klicken Sie in der Zwischenzeit hier, um Ressourcendaten anzuzeigen, und lesen Sie die häufig gestellten Fragen, um weitere Informationen zu erhalten.“?
 
 Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflussbezogenen Statistiken. Es sind ggf. keine Daten vorhanden, da keine Kommunikation zwischen den Ressourcen erfolgt. Warten Sie 60 Minuten, und überprüfen Sie dann den Status erneut. Wenn das Problem bestehen bleibt und Sie sicher sind, dass es Kommunikationsdatenflüsse zwischen Ressourcen gibt, wenden Sie sich an das [User Voice-Forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
@@ -223,18 +222,18 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 
 
-## <a name="how-is-traffic-analytics-priced"></a>Was kosten Datenverkehrsanalysen?
+## <a name="how-is-traffic-analytics-priced"></a>Was kostet Traffic Analytics?
 
 Traffic Analytics ist getaktet. Die Taktung basiert auf der Verarbeitung von Flussprotokolldaten durch den Dienst und der Speicherung der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. 
 
-Beispiel, gemäß dem [Tarif](https://azure.microsoft.com/pricing/details/network-watcher/) und der Region „USA, Westen-Mitte“: Wenn in einem von Traffic Analytics verarbeiteten Speicherkonto gespeicherte Flowprotokolldaten 10 GB und im Log Analytics-Arbeitsbereich erfasste erweiterte Protokolle 1 GB umfassen, fallen als Gebühren an: 10 x 2,3 $ + 1 x 2,76 $ = 25,76 $
+Beispiel für den [Tarif](https://azure.microsoft.com/pricing/details/network-watcher/) und die Region „USA, Westen-Mitte“: Wenn in einem von Traffic Analytics verarbeiteten Speicherkonto gespeicherte Datenfluss-Protokolldaten 10 GB und im Log Analytics-Arbeitsbereich erfasste erweiterte Protokolle 1 GB umfassen, fallen als Gebühren an: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Wie kann ich mit der Tastatur in der geografischen Kartenansicht navigieren?
 
 Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
     
-- **Banner**: Das Banner am oberen Rand der geografischen Karte enthält Schaltflächen zur Auswahl von Verteilungsfiltern für Datenverkehr (z.B. Bereitstellung, Datenverkehr aus Ländern und schädliche Daten). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Karte angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden die aktiven Rechenzentren in Ihrer Bereitstellung auf der Karte hervorgehoben.
-- **Karte**: Im Kartenbereich unter dem Banner wird die Verteilung des Datenverkehrs für Azure-Rechenzentren und Länder gezeigt.
+- **Banner:** Das Banner am oberen Rand der geografischen Karte enthält Schaltflächen zur Auswahl von Verteilungsfiltern für Datenverkehr (z.B. Bereitstellung, Datenverkehr aus Ländern und schädliche Daten). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Karte angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden die aktiven Rechenzentren in Ihrer Bereitstellung auf der Karte hervorgehoben.
+- **Karte:** Im Kartenbereich unter dem Banner wird die Verteilung des Datenverkehrs für Azure-Rechenzentren und Länder gezeigt.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
     
@@ -263,8 +262,8 @@ Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
 
 Die Seite mit der Topologie der virtuellen Netzwerke hat zwei Hauptabschnitte:
     
-- **Banner**: Das Banner in der Topologie der virtuellen Netzwerke bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z.B. Verbundene virtuelle Netzwerke, Getrennte virtuelle Netzwerke und Öffentliche IP-Adressen). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven virtuellen Netzwerke in Ihrer Bereitstellung hervorgehoben.
-- **Topologie**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter virtuellen Netzwerken gezeigt.
+- **Banner:** Das Banner in der Topologie der virtuellen Netzwerke bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z.B. verbundene virtuelle Netzwerke, getrennte virtuelle Netzwerke und öffentliche IP-Adressen). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven virtuellen Netzwerke in Ihrer Bereitstellung hervorgehoben.
+- **Topology**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter den virtuellen Netzwerken gezeigt.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
     
@@ -285,8 +284,8 @@ Die Seite mit der Topologie der virtuellen Netzwerke hat zwei Hauptabschnitte:
 
 Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
     
-- **Banner**: Das Banner in der Topologie der Subnetze bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z. B. Aktiv, Mittel und Gatewaysubnetze). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven Subnetze in Ihrer Bereitstellung hervorgehoben.
-- **Topologie**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter virtuellen Subnetzen gezeigt.
+- **Banner:** Das Banner in der Topologie der Subnetze bietet Schaltflächen zum Auswählen von Filtern für die Datenverkehrsverteilung (z.B. „Aktiv“, „Mittel“ und „Gatewaysubnetze“). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Topologie angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden in der Topologie die aktiven Subnetze in Ihrer Bereitstellung hervorgehoben.
+- **Topology**: Im Topologiebereich unter dem Banner wird die Verteilung des Datenverkehrs unter den virtuellen Subnetzen gezeigt.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
     

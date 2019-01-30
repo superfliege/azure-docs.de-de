@@ -9,12 +9,12 @@ ms.component: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: d3c42c13e58156013167b8570a8845ce9de08b3b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2aa513617f24201dfb341f9ab72ab9e3a221450d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884886"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819355"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL Data Warehouse Gen2-Unterstützung für niedrigere Computetarife
 
@@ -29,7 +29,7 @@ Die Bereitstellung von oder die Skalierung auf die Gen 2-Instanzen des niedriger
 Kunden können wählen, ob sie eine neue Gen2-Instanz bereitstellen oder eine vorhandene Gen1-Data Warehouse-Instanz aktualisieren möchten, um von der Flexibilität und Leistung des Data Warehousing der nächsten Generation zu profitieren. 
 
 Probieren Sie den [für Compute optimierten Azure SQL Data Warehouse Gen2-Tarif](https://azure.microsoft.com/services/sql-data-warehouse/?v=17.44) aus.
-Führen Sie ein Upgrade des [für Compute optimierten Azure SQL Warehouse Gen1-Tarifs auf Gen2](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation) durch. Sehen Sie sich Azure SQL Data Warehouse Gen2 in diesem [Video zu Microsoft Mechanics](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be) in Aktion an.
+Führen Sie ein Upgrade des [für Compute optimierten Azure SQL Data Warehouse Gen1-Tarifs auf Gen2](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation) durch. Sehen Sie sich Azure SQL Data Warehouse Gen2 in diesem [Video zu Microsoft Mechanics](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be) in Aktion an.
 
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>Unterstützte Regionen für niedrigere Computetarife
@@ -52,4 +52,4 @@ Führen Sie ein Upgrade des [für Compute optimierten Azure SQL Warehouse Gen1-T
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen](upgrade-to-latest-generation.md) zum Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse 
+- [Weitere Informationen](upgrade-to-latest-generation.md) zur für Compute optimierten Leistung durch ein Upgrade von SQL Data Warehouse 

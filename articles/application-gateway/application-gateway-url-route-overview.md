@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95d443eeebf2fe5a8fad185210f88576a5f21f6a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188758"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435294"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -23,7 +23,7 @@ Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für contoso.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Anforderungen für http://contoso.com/video/* werden an „VideoServerPool“ und Anforderungen für http://contoso.com/images/* an „ImageServerPool“ weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
+Anforderungen für http\://contoso.com/video/* werden an VideoServerPool und Anforderungen für http\://contoso.com/images/* an ImageServerPool weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 > [!IMPORTANT]
 > Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.

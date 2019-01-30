@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 60bd7cc2084ce64477cf89a5fd28d9a505fbfbfb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 22ccc11d1eb74fd868fd740f02311baeb5ac5987
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852638"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433610"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Schnellstart: Erstellen und Abfragen eines Azure SQL Data Warehouse mit Azure PowerShell
 
@@ -23,7 +23,7 @@ Erstellen Sie schnell ein Azure SQL Data Warehouse mit Azure PowerShell.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.1.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um zu ermitteln, welche Version Sie verwenden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. 
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.1.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um zu ermitteln, welche Version Sie verwenden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. 
 
 
 > [!NOTE]
@@ -122,11 +122,11 @@ New-AzureRmSqlDatabase `
 
 Erforderliche Parameter:
 
-* **RequestedServiceObjectiveName**: die Menge der angeforderten [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md). Durch das Erhöhen dieses Werts steigen die Computekosten. Eine Liste der unterstützten Werte finden Sie unter [Grenzwerte für Arbeitsspeicher und Parallelität](memory-and-concurrency-limits.md).
-* **DatabaseName**: der Name des SQL Data Warehouse, das Sie erstellen.
-* **ServerName**: der Name des Servers, den Sie für die Erstellung verwenden.
-* **ResourceGroupName**: die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet „Get-AzureResource“.
-* **Edition**: Muss für die Erstellung einer SQL Data Warehouse-Instanz auf „Data Warehouse“ festgelegt werden.
+* **RequestedServiceObjectiveName**: Die Menge an [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md), die Sie anfordern. Durch das Erhöhen dieses Werts steigen die Computekosten. Eine Liste der unterstützten Werte finden Sie unter [Grenzwerte für Arbeitsspeicher und Parallelität](memory-and-concurrency-limits.md).
+* **DatabaseName**: Der Name des SQL Data Warehouse, das Sie erstellen.
+* **ServerName**: Der Name des Servers, den Sie für die Erstellung verwenden.
+* **ResourceGroupName**: Die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet „Get-AzureResource“.
+* **Edition**: Muss für die Erstellung einer SQL Data Warehouse-Instanz auf „DataWarehouse“ festgelegt werden.
 
 Optionale Parameter:
 

@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d201669bf627cf9b591958f3372760c0c990db9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a5a5b306341780ead737def90306fe6cb6a47db1
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808093"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401971"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
@@ -28,7 +28,7 @@ Für den Workflow werden in der Regel diese Schritte ausgeführt:
 
 1. Entwickeln von Machine Learning-Trainingsskripts in **Python**
 1. Erstellen und Konfigurieren eines **Computeziels**
-1. **Übermitteln der Skripts** an das konfigurierte Computeziel zur Ausführung in dieser Umgebung. Während des Trainings speichert das Computeziel Ausführungsaufzeichnungen in einem **Datenspeicher**. Darin werden die Aufzeichnungen in einem **Experiment** gespeichert.
+1. **Übermitteln der Skripts** an das konfigurierte Computeziel zur Ausführung in dieser Umgebung. Während des Trainings können die Skripts **Datenspeicher** lesen oder beschreiben. Die Datensätze zur Ausführung werden zudem als **Ausführungen** im **Arbeitsbereich** gespeichert und unter **Experimente** gruppiert.
 1. **Abfragen des Experiments** auf protokollierte Metriken aus den aktuellen und bereits erfolgten Ausführungen. Wenn die Metriken kein gewünschtes Ergebnis anzeigen, können Sie zu Schritt 1 zurückkehren und Ihre Skripts erneut durchlaufen.
 1. Nachdem eine zufriedenstellende Ausführung gefunden wurde, können Sie das dauerhafte Modell in der **Modellregistrierung** registrieren.
 1. Entwickeln eines Bewertungsskripts

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 535c65f58ac9a3f39faa347ca853bfa410b7f182
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61b64b63a53318e0a703678d5525399fe13efa83
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185329"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432761"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Serielle Konsole für virtuelle Computer für Windows
 
@@ -53,6 +53,9 @@ Auf die serielle Konsole für virtuelle Computer kann nur über das Azure-Portal
   1. Scrollen Sie nach unten zum Abschnitt **Support + Problembehandlung**, und wählen Sie **Serielle Konsole** aus. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
 ## <a name="enable-serial-console-functionality"></a>Aktivieren der Funktionalität der seriellen Konsole
+
+> [!NOTE]
+> Wenn in der seriellen Konsole nichts angezeigt wird, überprüfen Sie, ob die Startdiagnose auf Ihrer VM aktiviert ist.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images
 Für neuere Windows Server-Images in Azure ist [Spezielle Verwaltungskonsole](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (Special Administrative Console, SAC) standardmäßig aktiviert. Die SAC wird unter Serverversionen von Windows unterstützt, ist aber unter Clientversionen (wie Windows 10, Windows 8 oder Windows 7) nicht verfügbar.
@@ -210,7 +213,7 @@ Szenario          | Aktionen in der seriellen Konsole
 Falsche Firewallregeln | Greifen Sie auf die serielle Konsole zu, und korrigieren Sie die Windows-Firewallregeln.
 Dateisystembeschädigung/-überprüfung | Greifen Sie auf die serielle Konsole zu, und stellen Sie das Dateisystem wieder her.
 RDP-Konfigurationsprobleme | Greifen Sie auf die serielle Konsole zu, und ändern Sie die Einstellungen. Weitere Informationen finden Sie in der [Dokumentation zum RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Netzwerksperrsystem | Greifen Sie aus dem Azure-Portal auf die serielle Konsole zu, um das System zu verwalten. Einige Netzwerkbefehle sind unter [Windows-Befehle: CMD und PowerShell](serial-console-cmd-ps-commands.md) aufgeführt.
+Netzwerksperrsystem | Greifen Sie aus dem Azure-Portal auf die serielle Konsole zu, um das System zu verwalten. Einige Netzwerkbefehle finden Sie unter [Windows-Befehle: CMD und PowerShell](serial-console-cmd-ps-commands.md).
 Interaktion mit Bootloader | Greifen Sie über die serielle Konsole auf das BCD zu. Weitere Informationen finden Sie unter [Aktivieren des Windows-Startmenüs in der seriellen Konsole](#enable-the-windows-boot-menu-in-the-serial-console).
 
 
@@ -237,6 +240,7 @@ Bei aktiviertem Kerneldebugging ist an der SAC-Eingabeaufforderung keine Eingabe
 Das Einfügen in PowerShell in der SAC führt zu einem dritten Zeichen, wenn der ursprüngliche Inhalt ein sich wiederholendes Zeichen enthielt. | Eine Problemumgehung besteht darin, `Remove-Module PSReadLine` zum Entladen des PSReadLine-Moduls aus der aktuellen Sitzung auszuführen. Durch diese Aktion wird das Modul nicht gelöscht oder deinstalliert.
 Einige Tastatureingaben erzeugen seltsame SAC-Ausgaben (z.B. **[A**, **[3~**). | [VT100](https://aka.ms/vtsequences)-Escapesequenzen werden von der SAC-Eingabeaufforderung nicht unterstützt.
 Das Einfügen von langen Zeichenfolgen funktioniert nicht. | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen, um die Bandbreite am seriellen Port nicht zu überlasten.
+Die serielle Konsole funktioniert nicht mit einer Speicherkontofirewall. | Die serielle Konsole kann programmbedingt nicht verwendet werden, wenn für das Speicherkonto mit Startdiagnose Speicherkontofirewalls aktiviert sind.
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
@@ -266,6 +270,6 @@ A. Ihr Image ist wahrscheinlich nicht richtig für den Zugriff auf die serielle 
 A. Derzeit wird der Zugriff auf die serielle Konsole für Instanzen von VM-Skalierungsgruppen nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine ausführliche Anleitung zu CMD- und PowerShell-Befehlen, die Sie in der Windows-SAC verwenden können, finden Sie unter [Windows-Befehle: CMD und PowerShell](serial-console-cmd-ps-commands.md).
+* Eine ausführliche Anleitung zu CMD- und PowerShell-Befehlen, die Sie im Windows SAC verwenden können, finden Sie unter [Windows-Befehle: CMD und PowerShell](serial-console-cmd-ps-commands.md).
 * Die serielle Konsole ist auch für [virtuelle Linux-Computer](serial-console-linux.md) verfügbar.
 * Erfahren Sie mehr zur [Startdiagnose](boot-diagnostics.md).

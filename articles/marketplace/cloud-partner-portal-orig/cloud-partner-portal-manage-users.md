@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d24cf56a898a4f4f8317246cbc2317e926256a77
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 56c646c2ab1f733c37a20cf6e6a5945b223beec4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806280"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447274"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>Verwalten von Benutzern im Cloudpartnerportal
 ======================================
@@ -43,13 +43,13 @@ Führen Sie zum **Hinzufügen von Benutzern und Zuweisen von Rollen** für die V
 
 Sie können den neuen Benutzer als „Besitzer“ oder „Mitwirkender“ hinzufügen.
 
-**E-Mail:** Fügen Sie die E-Mail-Adressen der Teamkollegen ein, die an der Angebotsveröffentlichung mitarbeiten. Es werden Microsoft-Konten (Outlook, Hotmail und Live) und Organisations-IDs unterstützt.
+**E-Mail**: Fügen Sie die E-Mail-Adressen der Teamkollegen ein, die an der Angebotsveröffentlichung mitarbeiten. Es werden Microsoft-Konten (Outlook, Hotmail und Live) und Organisations-IDs unterstützt.
 
 o Fügen Sie einen Alias oder eine Sicherheitsgruppe für die Team- oder Gruppen-E-Mail für den Fall hinzu, dass die Person, die an dem Angebot arbeitet, das Unternehmen verlässt.
 
 o Stellen Sie sicher, dass die im Cloud-Partnerportal angegebenen E-Mail-IDs für jegliche Kommunikation von Microsoft überwacht werden.
 
-**Rolle:** In der folgenden Tabelle finden Sie den entsprechenden Rollentyp für Benutzer.
+**Rolle**: In der folgenden Tabelle finden Sie den entsprechenden Rollentyp für Benutzer.
 
 ![Rolle zuweisen](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
 ![Rollenebene](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
@@ -59,7 +59,8 @@ Derzeit können nur Besitzer auf die Registerkarten „Azure Payouts“ (Azure-A
 <a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Schritt 4: Wählen Sie den Namen des Herausgebers aus, für den Sie den neuen Benutzer hinzufügen möchten. Klicken Sie dann auf „Hinzufügen“, um das Hinzufügen des Benutzers abzuschließen.
 ----------------------------------------------------------------------------------------------------------------------------
 
-> `NOTE: The ‘publisher names’ for which your email is added as an owner or contributor will show up in the drop-down list of Publisher for selection.`
+> [!NOTE]
+> Die Namen der Herausgeber, für die Ihre E-Mail als Besitzer oder Mitwirkender hinzugefügt wird, werden in der Dropdownliste für Herausgeber zur Auswahl angezeigt.
 
 ![Zuweisen der Rolle – Auswählen des Herausgebers](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

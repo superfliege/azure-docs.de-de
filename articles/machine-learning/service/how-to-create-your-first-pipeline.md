@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62be7412c93b846980ffab00b9964585e3644140
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 5d0fe5d010fc53db3ca280620d224d405d0ccf42
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319199"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478194"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Erstellen und Ausführen einer Machine Learning-Pipeline mit dem Azure Machine Learning SDK
 
@@ -286,7 +286,7 @@ Wenn Sie die Pipeline übermitteln, prüft Azure Machine Learning Service die Ab
 ```python
 # Submit the pipeline to be run
 pipeline_run1 = Experiment(ws, 'Compare_Models_Exp').submit(pipeline1)
-pipeline_run.wait_for_completion()
+pipeline_run1.wait_for_completion()
 ```
 
 Wenn Sie eine Pipeline erstmals ausführen, geht Azure Machine Learning folgendermaßen vor:

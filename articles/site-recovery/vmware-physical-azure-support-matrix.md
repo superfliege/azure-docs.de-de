@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/18/2019
 ms.author: raynew
-ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7c01c8ec8c4957900688fed7ca09830f792a7886
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107497"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413412"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -33,7 +33,7 @@ Physische Server | Die Replikation lokaler physischer Windows-/Linux-Server in A
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
 VMware | vCenter Server 6.7, 6.5, 6.0 oder 5.5 bzw. vSphere 6.7, 6.5, 6.0 oder 5.5 | Es wird die Verwendung eines vCenter-Servers empfohlen.<br/><br/> Ihre vSphere-Hosts und vCenter-Server sollten sich im gleichen Netzwerk befinden wie der Prozessserver. Die Prozessserverkomponenten werden standardmäßig auf dem Konfigurationsserver ausgeführt. Daher wird der Konfigurationsserver in diesem Netzwerk eingerichtet – es sei denn, Sie richten einen dedizierten Prozessserver ein.
-Physisch | N/V
+Physisch | –
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery-Konfigurationsserver
 
@@ -112,7 +112,8 @@ Paravirtualisierte Speichergeräte | Von paravirtualisierten Treibern exportiert
 E/A-Geräte mit Blöcken mit mehreren Warteschlangen | Nicht unterstützt.
 Physische Server mit HP CCISS-Speichercontroller | Nicht unterstützt.
 Benennungskonvention für Gerät/Bereitstellungspunkt | Der Gerätename oder Bereitstellungspunktname sollte eindeutig sein. Stellen Sie sicher, dass keine zwei Geräte/Bereitstellungspunkte Namen aufweisen, für die zwischen Groß-/Kleinschreibung unterschieden wird. </br> Beispiel: Es ist nicht zulässig, zwei Geräte desselben virtuellen Computers als *device1* und *Device1* zu benennen.
-Verzeichnisse | Vor [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. Die folgenden Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich alle auf demselben Betriebssystem-Datenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br>2. /boot muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/> Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) sind die oben genannten Einschränkungen nicht mehr gültig.
+Verzeichnisse | Vor [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. Die folgenden Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) müssen sich alle auf demselben Betriebssystem-Datenträger auf dem Quellserver befinden: /(root), /boot, /usr, /usr/local, /var, /etc.</br>2. /boot muss sich auf einer Datenträgerpartition und nicht auf einem LVM-Volume befinden.<br/><br/> Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) sind die oben genannten Einschränkungen nicht mehr gültig. „/boot“ auf LVM-Volumes über mehrere Datenträger wird nicht unterstützt.
+Startverzeichnis | Mehrere Startdatenträger auf einem virtuellen Computer werden nicht unterstützt. <br/><br/> Ein Computer ohne Startdatenträger kann nicht geschützt werden.
 
 Anforderungen an freien Speicherplatz | 2 GB auf der /root-Partition <br/><br/> 250 MB im Installationsordner XFSv5 | XFSv5-Features auf XFS-Dateisystemen wie Metadatenprüfsummen werden ab Mobility Service-Version 9.10 unterstützt. Verwenden Sie das Hilfsprogramm „xfs_info“, um den XFS-Superblock für die Partition zu überprüfen. Wenn „ftype“ auf 1 festgelegt ist, werden XFSv5-Features verwendet.
 
@@ -157,6 +158,7 @@ Beschleunigter Netzwerkbetrieb | Nein
 ## <a name="storage"></a>Storage
 **Komponente** | **Unterstützt**
 --- | ---
+Dynamischer Datenträger | Der Betriebssystem-Datenträger muss ein Basisdatenträger sein. <br/><br/>Datenträger für Daten können dynamische Datenträger sein.
 Host-NFS | Ja für VMware<br/><br/> Nein für physische Server
 Host-SAN (iSCSI/FC) | JA
 Host-vSAN | Ja für VMware<br/><br/> Nicht verfügbar für physische Server

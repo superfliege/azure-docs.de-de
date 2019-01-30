@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 792a1fc2403e672c973577efd7a05c9c81d45ad4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 47c742e486c01d2861889419a56c252e74f1e316
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054080"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469830"
 ---
-# <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Gewusst wie: Konfigurieren der Registrierungsrichtlinie für die mehrstufige Authentifizierung
+# <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Anleitung: Konfigurieren der Multi-Factor Authentication-Registrierungsrichtlinie
 
 Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Registrierung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), indem eine Richtlinie konfiguriert wird. In diesem Artikel wird beschrieben, wofür die Richtlinie verwendet werden kann und wie sie konfiguriert wird.
 

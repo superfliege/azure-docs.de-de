@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 281c426170985d43401a13988218126ea3951634
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17a2d1ac747b46ed9a55ceffeea3ba9f4b2f0bc7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405613"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412047"
 ---
 # <a name="custom-roles-in-azure"></a>Benutzerdefinierte Rollen in Azure
 
@@ -84,7 +84,7 @@ Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal 
 
     Sobald Sie über Ihre benutzerdefinierte Rolle verfügen, müssen Sie sie testen, um sicherzustellen, dass sie wie erwartet funktioniert. Wenn Sie später Anpassungen vornehmen müssen, können Sie die benutzerdefinierte Rolle aktualisieren.
 
-Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md) oder [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe der Azure-Befehlszeilenschnittstelle](tutorial-custom-role-cli.md).
+Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md) oder [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe der Azure CLI](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Eigenschaften der benutzerdefinierten Rolle
 
@@ -116,3 +116,4 @@ Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest
 - [Erstellen benutzerdefinierter Rollen mit Azure PowerShell](custom-roles-powershell.md)
 - [Erstellen benutzerdefinierter Rollen mithilfe der Azure CLI](custom-roles-cli.md)
 - [Grundlegendes zu Rollendefinitionen](role-definitions.md)
+- [Beheben von RBAC-Fehlern in Azure](troubleshooting.md)

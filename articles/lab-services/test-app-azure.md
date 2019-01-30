@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 099bdc25c27e264c3c7732243068307856840409
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030466"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437791"
 ---
 # <a name="test-your-app-in-azure"></a>Testen Ihrer App in Azure 
 Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von DevTest Labs. Zunächst richten Sie eine Dateifreigabe in einem Lab ein und binden sie als Laufwerk auf Ihrem lokalen Entwicklungscomputer und einem virtuellen Computer in einem Lab ein. Anschließend stellen Sie die App in Visual Studio 2017 in der Dateifreigabe bereit, damit Sie die App auf dem virtuellen Computer im Lab ausführen können.  
@@ -30,7 +30,7 @@ Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Einbinden der Dateifreigabe auf dem lokalen Computer
 1. Verwenden Sie auf dem lokalen Computer das Skript aus dem Abschnitt [Beibehalten von Anmeldeinformationen für eine Azure-Dateifreigabe in Windows](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows) des Artikels [Verwenden einer Azure-Dateifreigabe mit Windows](../storage/files/storage-how-to-use-files-windows.md). 
-2. Verwenden Sie dann den Befehl `net use`, um die Dateifreigabe auf dem Computer einzubinden. Nachfolgend ist ein Beispielbefehl aufgeführt. Geben Sie den Namen des Azure-Speichers und der Dateifreigabe an, bevor Sie den Befehl ausführen. 
+2. Verwenden Sie dann den Befehl `net use`, um die Dateifreigabe auf dem Computer einzubinden. Beispielbefehl: Geben Sie den Namen Ihres Azure-Speichers und der Dateifreigabe an, bevor Sie den Befehl ausführen. 
 
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
 
@@ -56,7 +56,7 @@ Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von 
 
     ![Auswählen der Lab-VM](media/test-app-in-azure/select-lab-vm.png)
 2. Wählen Sie auf der Symbolleiste **Verbinden** aus, um eine Verbindung mit dem virtuellen Computer herzustellen. 
-3. [Installieren Sie Azure PowerShell](https://azure.microsoft.com/downloads/) über den Link **Windows-Installation** im Abschnitt **Befehlszeilentools**. Andere Möglichkeiten zum Installieren von Azure PowerShell finden Sie in [diesem Artikel](/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1).
+3. [Installieren Sie Azure PowerShell](https://azure.microsoft.com/downloads/) über den Link **Windows-Installation** im Abschnitt **Befehlszeilentools**. Andere Möglichkeiten zum Installieren von Azure PowerShell finden Sie in [diesem Artikel](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
 4. Befolgen Sie die Anweisungen im Abschnitt [Einbinden der Dateifreigabe](#mount-the-file-share). 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Veröffentlichen der App über Visual Studio

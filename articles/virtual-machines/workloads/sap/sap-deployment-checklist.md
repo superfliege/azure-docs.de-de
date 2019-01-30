@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201328"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439152"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure 
 
@@ -36,6 +36,7 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
 
 1. Allgemeines Entwurfsdokument – dieses Dokument sollte Folgendes enthalten:
     1. Den aktuellen Bestand an SAP-Komponenten und -Anwendungen und den Zielanwendungsbestand in Azure
+    2. Das Erstellen und Durcharbeiten einer RACI-Matrix, welche die Zuständigkeiten und Zuweisungen der verschiedenen Beteiligten definiert. Beginnen Sie auf der allgemeinen Ebene, und fahren Sie bei der Planung und den ersten Bereitstellungen nach und nach mit spezifischeren Ebenen fort.
     2. Eine allgemeine Lösungsarchitektur
     3. Entscheidung zu den Azure-Regionen, in denen die Bereitstellung erfolgen soll. Eine Liste der Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/). Informationen zu den Diensten, die in den einzelnen Azure-Regionen verfügbar sind, finden Sie im Artikel [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
     4. Netzwerkarchitektur für Verbindungen vom lokalen Standort zu Azure. Beginnen Sie damit, sich mit der [Blaupause virtueller Rechenzentren für Azure](https://docs.microsoft.com/azure/architecture/vdc/) vertraut zu machen.
@@ -44,9 +45,9 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
     1.  Blockdiagramm der Lösung 
     2.  Größen von Compute-, Speicher- und Netzwerkkomponenten in Azure. Informationen zu den Größen von Azure-VMs für SAP finden Sie im SAP-Supporthinweis [#1928533](https://launchpad.support.sap.com/#/notes/1928533). 
     3.  BCDR-Architektur (Business Continuity & Disaster Recovery)
-    4.  Ausführliche Informationen zu den Supportpaketversionen für Betriebssystem, Datenbank, Kernel und SAP. Es kann nicht unbedingt davon ausgegangen werden, dass jedes Betriebssystemrelease, das von SAP NetWeaver oder S/4HANA unterstützt wird, auch von Azure-VMs unterstützt wird. Das gilt auch für DBMS-Releases. Es ist zwingend erforderlich, die folgenden Quellen zu überprüfen, um die SAP-, DBMS- oder Betriebssystemreleases anzupassen und ggf. zu aktualisieren, damit sie von SAP und Azure unterstützt werden. Es ist zwingend erforderlich, die von SAP und Azure unterstützten Releasekombinationen einzuhalten, um vollen Support von SAP und Microsoft zu erhalten. Sie müssen ggf. Upgrades einiger Softwarekomponenten einplanen. Weitere Einzelheiten zur unterstützten SAP-, Betriebssystem- und DBMS-Software finden Sie an den folgenden Stellen:
+    4.  Ausführliche Informationen zu den Supportpaketversionen für Betriebssystem, Datenbank, Kernel und SAP. Es kann nicht unbedingt davon ausgegangen werden, dass jedes Betriebssystemrelease, das von SAP NetWeaver oder S/4HANA unterstützt wird, auch von virtuellen Azure-Computern unterstützt wird. Das gilt auch für DBMS-Releases. Es ist zwingend erforderlich, die folgenden Quellen zu überprüfen, um die SAP-, DBMS- oder Betriebssystemreleases anzupassen und ggf. zu aktualisieren, damit sie von SAP und Azure unterstützt werden. Es ist zwingend erforderlich, die von SAP und Azure unterstützten Releasekombinationen einzuhalten, um vollen Support von SAP und Microsoft zu erhalten. Sie müssen ggf. Upgrades einiger Softwarekomponenten einplanen. Weitere Einzelheiten zur unterstützten SAP-, Betriebssystem- und DBMS-Software finden Sie an den folgenden Stellen:
         1.  SAP-Supporthinweis [#1928533](https://launchpad.support.sap.com/#/notes/1928533). In diesem Hinweis wird das minimale Betriebssystemrelease, das für Azure-VMs unterstützt wird, definiert. Außerdem werden die Mindestanforderungen für die Datenbankreleases, die für die meisten Nicht-HANA-Datenbanken erforderlich sind, definiert. Der Hinweis enthält auch Angaben zu den Größen der von SAP unterstützten Azure-VM-Typen.
-        2.  SAP-Supporthinweis [#2039619](https://launchpad.support.sap.com/#/notes/2039619). In diesem Hinweis wird die Oracle-Supportmatrix in Azure definiert. Beachten Sie, dass Oracle nur Windows und Oracle Linux als Gastbetriebssysteme für SAP-Workloads in Azure unterstützt. Dieser Supporthinweis gilt auch für die SAP-Anwendungsschicht, auf der die SAP-Instanzen ausgeführt werden. Oracle unterstützt jedoch keine Hochverfügbarkeit für SAP Central Services. Daher benötigen Sie möglicherweise ein anderes Betriebssystem nur für SAP Central Services, die keine Verbindung mit dem Oracle-DBMS herstellen.
+        2.  SAP-Supporthinweis [#2039619](https://launchpad.support.sap.com/#/notes/2039619). In diesem Hinweis wird die Oracle-Supportmatrix in Azure definiert. Beachten Sie, dass Oracle nur Windows und Oracle Linux als Gastbetriebssysteme für SAP-Workloads in Azure unterstützt. Dieser Supporthinweis gilt auch für die SAP-Anwendungsschicht, auf der die SAP-Instanzen ausgeführt werden. Oracle unterstützt jedoch keine Hochverfügbarkeit für SAP Central Services in Oracle Linux. Für Windows wird die von SAP unterstützte Windows-Failoverclusterlösung für SAP Central Services in Verbindung mit Oracle als DBMS-Ebene unterstützt. 
         3.  SAP-Supporthinweis [#2235581](https://launchpad.support.sap.com/#/notes/2235581) zum Abrufen der Supportmatrix für SAP HANA unter den verschiedenen Betriebssystemreleases
         4.  Von SAP HANA unterstützte Azure-VMs und [Hana (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) werden [hier](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) aufgeführt
         5.  [SAP-Produktverfügbarkeitsmatrix](https://support.sap.com/en/)
@@ -56,14 +57,18 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
         2.  [Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     6.  Hochverfügbarkeits- und Notfallwiederherstellungs-Architektur
         1.  Definieren Sie basierend auf RTO und RPO, wie die Architektur für Hochverfügbarkeit und Notfallwiederherstellung aussehen muss.
-        2.  Überprüfen Sie für Hochverfügbarkeit innerhalb derselben Zone, welche Funktionen das gewünschte DBMS in Azure bietet. Die meisten DBMS bieten synchrone Methoden eines synchronen unmittelbar betriebsbereiten Standbyservers, die für Produktionssysteme empfohlen werden.
+        2.  Überprüfen Sie für Hochverfügbarkeit innerhalb derselben Zone, welche Funktionen das gewünschte DBMS in Azure bietet. Die meisten DBMS bieten synchrone Methoden eines synchronen unmittelbar betriebsbereiten Standbyservers, die für Produktionssysteme empfohlen werden. Lesen Sie auch die SAP-bezogene Dokumentation zu den verschiedenen Datenbanken, angefangen mit [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) und zugehörigen Dokumenten.
+            1.  Die Verwendung des Windows-Failoverclusterdiensts mit freigegebenen Datenträgern als DBMS-Ebene, wie z.B. [hier](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) für SQL Server beschrieben, wird **NICHT** unterstützt. Verwenden Sie stattdessen Lösungen wie
+                1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                3.  [HANA-Systemreplikation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Überprüfen Sie für die Notfallwiederherstellung in verschiedenen Azure-Regionen, welche Möglichkeiten durch die verschiedene DBMS-Anbieter angeboten werden. Die meisten unterstützen die asynchrone Replikation oder den Protokollversand.
         4.  Definieren Sie für die SAP-Anwendungsschicht, ob Sie die Regressionstestsysteme für Ihr Unternehmen, die idealerweise Replikate Ihrer Produktionsbereitstellungen sind, in derselben Azure-Region oder in Ihrer Region für die Notfallwiederherstellung ausführen möchten. Im letzteren Fall können Sie dieses Geschäftsregressionssystem als Ziel für die Notfallwiederherstellung für Ihre Produktionssysteme festlegen.
-        5.  Wenn Sie am Notfallwiederherstellungsstandort keine Produktionssysteme verwenden möchten, informieren Sie sich über Azure Site Recovery als mögliche Methode für die Replikation der SAP-Anwendungsschicht in die Azure-Region für die Notfallwiederherstellung. Lesen Sie auch [Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap). 
+        5.  Wenn Sie die Produktionssysteme nicht am Notfallwiederherstellungsstandort platzieren möchten, informieren Sie sich über Azure Site Recovery als mögliche Methode für die Replikation der SAP-Anwendungsschicht in die Azure-Region für die Notfallwiederherstellung. Lesen Sie auch [Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap). 
         6.  Wenn Sie eine kombinierte Konfiguration für Hochverfügbarkeit und Notfallwiederherstellung mithilfe von [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) nutzen möchten, machen Sie sich mit den Azure-Regionen vertraut, in denen Verfügbarkeitszonen verfügbar sind, sowie mit den Einschränkungen, die durch höhere Netzwerklatenzen zwischen zwei Verfügbarkeitszonen entstehen können.  
 3.  Kunden und Partner sollten einen Bestand aller SAP-Schnittstellen (SAP und nicht SAP) erstellen. 
 4.  Entwurf der Foundation Services – dieser Entwurf enthält beispielsweise
-    1.  Active Directory- und DSN-Entwurf
+    1.  Active Directory und DNS-Entwurf
     2.  Netzwerktopologie in Azure und Zuweisung der unterschiedlichen SAP-Systeme
     3.  Struktur für den [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) für die einzelnen Teams, die die Infrastruktur und die SAP-Anwendungen in Azure verwalten
     3.  Topologie der Ressourcengruppe 
@@ -78,7 +83,7 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
 9.  Festlegen einer regelmäßigen Überprüfung von Entwurf und Bereitstellung zwischen Ihnen als Kunde, dem Systemintegrator, Microsoft und anderen beteiligten Parteien
 
  
-## <a name="pilot-phase-optional"></a>Pilotphase (optional)
+## <a name="pilot-phase-strongly-recommended"></a>Pilotphase (dringend empfohlen)
  
 Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung ausgeführt werden. Während dieser Phase können auch verschiedene Ansätze und Entwürfe aus der Planungs- und Vorbereitungsphase getestet werden. Die Pilotphase kann auf ein echtes Proof of Concept erweitert werden. Es wird empfohlen, für die Pilotbereitstellung eine vollständige Lösung für Hochverfügbarkeit und Notfallwiederherstellung sowie den Sicherheitsentwurf einzurichten und zu überprüfen. In einigen Kundenfällen können in dieser Phase auch Skalierbarkeitstests durchgeführt werden. Andere Kunden nutzen die Bereitstellung von SAP-Sandboxsystemen als Pilotphase. Es wird also davon ausgegangen, dass Sie ein System ermittelt haben, das Sie zu Azure migrieren möchten, um ein Pilotsystem auszuführen.
 
@@ -100,6 +105,8 @@ Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung aus
         3.  Verwenden Sie Azure-Schreibbeschleunigung für die DBMS-Protokolllaufwerke mit M-Serie. Beachten Sie die Grenzwerte für die Schreibbeschleunigung und die Nutzung. Eine Beschreibung finden Sie unter [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
         4.  Überprüfen Sie für die verschiedenen DBMS-Typen die [allgemeine SAP-bezogene DBMS-Dokumentation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) und die DBMS-spezifische Dokumentation, auf die das allgemeine Dokument verweist.
         5.  Weitere Details zu SAP HANA finden Sie unter [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+        6.  Binden Sie Azure-Datenträger niemals mithilfe der Geräte-ID auf einem virtuellen Azure-Linux-Computer ein. Verwenden Sie stattdessen den Universally Unique Identifier (UUID). Seien Sie vorsichtig, wenn Sie grafische Tools z. B. für das Einbinden von Azure-Datenträgern verwenden. Überprüfen Sie die Einträge in „/etc/fstab“ erneut, um sicherzustellen, dass die Datenträger mithilfe des UUID bereitgestellt sind.
+            1.  Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)
     3.  Netzwerk
         1.  Testen und evaluieren Sie Ihre VNET-Infrastruktur und die Verteilung Ihrer SAP-Anwendungen auf die unterschiedlichen virtuellen Azure-Netzwerke.
             1.  Bewerten Sie den Ansatz einer Hub-Spoke-Architektur für Ihr virtuelles Netzwerk oder einer Mikrosegmentierung innerhalb eines einzelnen virtuellen Azure-Netzwerks basierend auf
@@ -121,7 +128,7 @@ Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung aus
         1.   Wenn Sie die SAP-Anwendungsschicht bereitstellen, ohne eine bestimmte Azure-Verfügbarkeitszone zu definieren, stellen Sie sicher, dass alle virtuellen Computer, auf denen SAP-Dialoginstanzen oder Middlewareinstanzen eines einzelnen SAP-System ausgeführt werden, in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) bereitgestellt werden. 
             1.   Für den Fall, dass Sie für die SAP Central Services und das DBMS keine Hochverfügbarkeit benötigen, können diese virtuellen Computer in derselben Verfügbarkeitsgruppe wie die SAP-Anwendungsschicht bereitgestellt werden.
         2.   Wenn Sie die SAP Central Services- und die DBMS-Schicht für Hochverfügbarkeit durch passive Replikate schützen, müssen sich die beiden Knoten für SAP Central Services in einer separaten Verfügbarkeitsgruppe und die beiden DBMS-Knoten in einer anderen Verfügbarkeitsgruppe befinden.
-        3.   Sie können keine Verfügbarkeitsgruppen nutzen, wenn die Bereitstellung in Azure-Verfügbarkeitszonen erfolgt. Sie müssten jedoch sicherstellen, dass Sie die aktiven und passiven Central Services-Knoten in zwei verschiedenen Verfügbarkeitszonen mit der kleinsten Latenz zwischen Zonen bereitstellen.
+        3.   Wenn die Bereitstellung in Azure-Verfügbarkeitszonen erfolgt, können Sie keine Verfügbarkeitsgruppen nutzen. Sie müssten jedoch sicherstellen, dass Sie die aktiven und passiven Central Services-Knoten in zwei verschiedenen Verfügbarkeitszonen mit der kleinsten Latenz zwischen Zonen bereitstellen.
             1.   Denken Sie daran, dass Sie den [Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden müssen, falls Sie Windows- oder Pacemaker-Failovercluster für die DBMS- und SAP Central Services-Schicht über Verfügbarkeitszonen hinweg erstellen. [Load Balancer Basic](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) kann nicht für zonale Bereitstellungen verwendet werden. 
     5.   Timeouteinstellungen
         1.   Überprüfen Sie die SAP NetWeaver-Entwicklernachverfolgung von unterschiedlichen SAP-Instanzen, und stellen Sie sicher, dass keine Verbindungsunterbrechungen zwischen dem Warteschlangenserver und den SAP-Arbeitsprozessen gemeldet wurden. Diese Verbindungsunterbrechungen können vermieden werden, indem Sie diese beiden Registrierungsparameter festlegen:
@@ -134,11 +141,11 @@ Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung aus
             1.   SameSubNetDelay = 2
             2.   SameSubNetThreshold = 15
 4.   Testen Ihrer Verfahren für Hochverfügbarkeit und Notfallwiederherstellung
-    1.   Simulieren Sie Failoversituationen, indem Sie virtuelle Computer herunterfahren oder Betriebssysteme in den Panikmodus versetzen, um herauszufinden, ob die Failoverkonfigurationen erwartungsgemäß funktionieren. 
+    1.   Simulieren Sie Failoversituationen, indem Sie virtuelle Computer (Windows-Gastbetriebssystem) herunterfahren oder Betriebssysteme in den Panikmodus (Linux-Gastbetriebssystem) versetzen, um herauszufinden, ob die Failoverkonfigurationen erwartungsgemäß funktionieren. 
     2.   Messen Sie die benötigten Zeiten zum Ausführen eines Failovers. Wenn Sie die Zeiten zu lang sind, erwägen Sie Folgendes:
         1.   Verwenden Sie für SUSE Linux SBD-Geräte anstelle des Azure Fencing-Agents zur Beschleunigung des Failovers.
         2.   Wenn bei SAP HANA das erneute Laden von Daten zu lange dauert, erwägen Sie die Bereitstellung zusätzlicher Speicherbandbreite.
-    3.   Testen Sie die Sicherungs- und Wiederherstellungssequenz, und optimieren Sie sie bei Bedarf.
+    3.   Testen Sie die Sicherungs-/Wiederherstellungssequenz sowie die zeitliche Steuerung, und optimieren Sie sie bei Bedarf. Stellen Sie sicher, dass nicht nur Sicherungszeiten ausreichend sind. Testen Sie auch die Wiederherstellung, und messen Sie die Zeit für Wiederherstellungsaktivitäten. Stellen Sie sicher, dass die Wiederherstellungszeiten innerhalb Ihrer RTO-SLAs liegen, wenn Ihre RTO auf dem Wiederherstellungsprozess für einen virtuellen Computer oder eine Datenbank basiert.
     4.   Testen Sie die Funktion und Architektur der regionsübergreifenden Notfallwiederherstellung.
 5.  Sicherheitsüberprüfungen
     1.  Testen Sie die Gültigkeit der Azure-Architektur für den rollenbasierten Zugriff (RBAC), die Sie implementiert haben. Ziel ist es, den Zugriff und die Berechtigungen der verschiedenen Teams zu trennen und zu beschränken. Beispiel: SAP-Basisteammitglieder sollten in der Lage sein, virtuelle Computer bereitzustellen und Datenträger aus Azure Storage in einem angegebenen virtuellen Azure-Netzwerk zuzuweisen. Jedoch sollte das SAP-Basisteam keine eigenen virtuellen Netzwerke erstellen oder die Einstellungen vorhandener virtueller Netzwerke ändern können. Andererseits sollten Mitglieder des Netzwerkteams nicht berechtigt sein, virtuelle Computer in virtuellen Netzwerken bereitzustellen, in denen VMs für die SAP-Anwendung und das DBMS ausgeführt werden. Auch sollten Mitglieder des Netzwerkteams nicht berechtigt sein, Attribute von virtuellen Computern zu ändern oder VMs oder Datenträger zu löschen.  
@@ -160,7 +167,8 @@ In dieser Phase wird davon ausgegangen, dass Sie nach einem erfolgreichen Pilotp
 3.  Testen und definieren Sie, ob Sie eigene Betriebssystemimages für Ihre VMs in Azure erstellen oder ein Image aus dem Azure-Imagekatalog verwenden möchten. Wenn Sie ein Image aus dem Azure-Katalog verwenden, stellen Sie sicher, dass Sie ein Image auswählen, das dem Supportvertrag mit Ihrem Betriebssystemanbieter entspricht. Für einige Betriebssystemanbieter bietet der Azure-Katalog die Möglichkeit, eigene Lizenzimages zu nutzen. Für andere Betriebssystemimages ist die Unterstützung bereits im Preis für Azure enthalten. Wenn Sie eigene Betriebssystemimages erstellen möchten, lesen Sie die Dokumentation in den folgenden Artikeln:
     1.  Sie können [diese Dokumentation](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) nutzen, um ein generalisiertes Image einer Windows-VM, die in Azure bereitgestellt wurde, zu erstellen.
     2.  Sie können [diese Dokumentation](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image) nutzen, um ein generalisiertes Image einer Linux-VM, die in Azure bereitgestellt wurde, zu erstellen.
-3.  Stellen Sie sicher, dass Sie die Supportanforderungen von SAP in Bezug auf Microsoft-Supportverträge erfüllen. Informationen finden Sie im SAP-Supporthinweis [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Für HANA (große Instanzen) lesen Sie das Dokument [Onboardinganforderungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements).
+3.  Wenn Sie SUSE- und Red Hat Linux-Images aus dem Azure-VM-Katalog verwenden, müssen Sie die von den Linux-Anbietern für SAP bereitgestellten Images im Azure-VM-Katalog verwenden.
+4.  Stellen Sie sicher, dass Sie die Supportanforderungen von SAP in Bezug auf Microsoft-Supportverträge erfüllen. Informationen finden Sie im SAP-Supporthinweis [#2015553](https://launchpad.support.sap.com/#/notes/2015553). Für HANA (große Instanzen) lesen Sie das Dokument [Onboardinganforderungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements).
 4.  Stellen Sie sicher, dass die richtigen Personen [Benachrichtigungen zu geplanten Wartungen](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/) erhalten, sodass Sie die Ausfallzeit auswählen und einen rechtzeitigen Neustart der virtuellen Computer festlegen können.
 5.  Überprüfen Sie regelmäßig die Azure-Dokumentation auf Microsoft-Präsentationen über Kanäle wie [Channel9](https://channel9.msdn.com/) zu neuen Funktionen, die möglicherweise für Ihre Bereitstellungen anwendbar sind.
 6.  Lesen Sie die SAP-Hinweise im Zusammenhang mit Azure, z.B. den Supporthinweis [#1928533](https://launchpad.support.sap.com/#/notes/1928533) zu neuen VM-SKUs und neuen unterstützten Betriebssystem- und DBMS-Releases. Vergleichen Sie die Preise für neue VM-Typen mit denen für ältere, damit Sie virtuelle Computer mit dem besten Preis-Leistungs-Verhältnis bereitstellen können.
@@ -190,7 +198,6 @@ In dieser Phase sammeln Sie alle Erfahrungen und Erkenntnisse Ihrer Nichtprodukt
     4.  Verwenden Sie den [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)-Prozess, wenn Sie gleichzeitig eine Aktualisierung der SAP-Release durchführen müssen. Bedenken Sie, dass nicht alle Kombinationen von Quell- und Ziel-DBMS unterstützt werden. Weitere Informationen finden Sie in den SAP-Supporthinweisen zu den verschiedenen DMO-Releases, z.B. [Database Migration Option (DMO) für SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
     5.  Testen Sie, ob die Datenübertragung über das Internet oder über ExpressRoute einen besseren Durchsatz bietet, falls Sie Sicherungen oder SAP-Exportdateien verschieben müssen. Beachten Sie, dass Sie für das Verschieben von Daten über das Internet möglicherweise einige Ihrer NSG/ASG-Sicherheitsregeln, die Sie für zukünftige Produktionssysteme benötigen, ändern müssen.
 3.  Sammeln Sie vor dem Verschieben von Systemen von der alten Plattform zu Azure Ressourcenverbrauchsdaten wie CPU-Auslastung und Speicherdurchsatz sowie IOPS-Daten. Dies gilt insbesondere für Einheiten der DBMS-Schicht, aber auch für Einheiten der Anwendungsschicht. Messen Sie außerdem die Latenz von Netzwerk und Speicher.
-4.  Speicher.
 4.  Überprüfen Sie die Informationen in den SAP-Supporthinweisen, die Ressourcen im SAP HANA-Hardwareverzeichnis und SAP-PAM erneut, um sicherzustellen, dass keine Änderungen an den unterstützten virtuellen Computern für Azure, den unterstützten Betriebssystemreleases für diese VMs und den unterstützten SAP- und DBMS-Releases vorgenommen wurden. 
 4.  Passen Sie Bereitstellungsskripts an die neuesten Änderungen bei den VM-Typen und den Azure-Funktionen an.
 5.  Führen Sie nach der Bereitstellung von Infrastruktur und Anwendung eine Reihe von Überprüfungen durch:
@@ -202,6 +209,8 @@ In dieser Phase sammeln Sie alle Erfahrungen und Erkenntnisse Ihrer Nichtprodukt
     6.  Azure Storage Premium wurde für Datenträger mit spezifischen Anforderungen an die Latenz oder mit einer [SLA für Einzelinstanzcomputer von 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) verwendet.
     7.  Die Azure-Schreibbeschleunigung wurde richtig bereitgestellt.
         1.  Die Speicherplätze in den VMs oder die Stripesets für Datenträger, die Unterstützung für die Azure-Schreibbeschleunigung benötigen, wurden korrekt erstellt.
+            1.  Lesen Sie [Konfigurieren von Software-RAID unter Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid).
+            2.  Lesen Sie [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm).
     8.  Es wurde ausschließlich [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwendet.
     9.  Die VMs wurden in den richtigen Verfügbarkeitsgruppen und -zonen bereitgestellt.
     10. Auf den virtuellen Computern, die in der SAP-Anwendungsschicht und der SAP-DBMS-Schicht verwendet werden, wurde der [beschleunigte Azure-Netzwerkbetrieb](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) aktiviert.

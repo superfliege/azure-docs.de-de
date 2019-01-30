@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e2d65c107d57d50bc15d5a1cd1698491bb607e25
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b0a047c4bf2c0c95896699e50e943277a138ecca
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262232"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809027"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
 
@@ -35,12 +35,12 @@ In Azure Media Services stellt ein *Kanal* eine Pipeline zum Verarbeiten von Liv
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
 
 
-* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Videodatenstrom (adaptiv) mit Mehrfachbitrate durchgeführt. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
+* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen der Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Videodatenstrom (adaptiv) mit Mehrfachbitrate durchgeführt. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
 
 Ab Version Media Services 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Sie können auch angeben, ob der Kanal den Live Encoding-Prozess für Ihren Datenstrom durchführen soll. Sie haben zwei Möglichkeiten:
 
-* **Pass-Through:** Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, der einen Mehrfachbitraten-Datenstrom (Pass-Through-Datenstrom) ausgibt. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Dies ist das Verhalten eines Kanals für ältere Versionen als Version 2.10. Dieser Artikel enthält Details zum Arbeiten mit Kanälen dieses Typs.
-* **Live Encoding:** Wählen Sie diesen Wert aus, wenn Sie Media Services verwenden möchten, um einen Einzelbitraten-Livedatenstrom in einen Mehrfachbitraten-Datenstrom zu codieren. Beim Belassen eines Liveencodingkanals im Status **Wird ausgeführt** fallen Gebühren an. Wir empfehlen Ihnen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
+* **Pass-Through**: Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, der einen Mehrfachbitraten-Datenstrom (Pass-Through-Datenstrom) ausgibt. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Dies ist das Verhalten eines Kanals für ältere Versionen als Version 2.10. Dieser Artikel enthält Details zum Arbeiten mit Kanälen dieses Typs.
+* **Live Encoding**: Wählen Sie diesen Wert, wenn Sie Media Services verwenden möchten, um einen Single-Bitrate-Livedatenstrom in einen Mehrfachbitrate-Datenstrom zu codieren. Beim Belassen eines Liveencodingkanals im Status **Wird ausgeführt** fallen Gebühren an. Wir empfehlen Ihnen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
 
 > [!NOTE]
 > In diesem Artikel werden die Attribute der Kanäle erläutert, die nicht zum Ausführen der Livecodierung aktiviert sind. Informationen zum Arbeiten mit Kanälen, die zum Ausführen der Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
@@ -115,7 +115,7 @@ Sie können die Erfassungs-URLs beim Erstellen des Kanals erhalten. Der Kanal mu
 Sie können Livestreams vom Typ „Fragmentiertes MP4“ (Smooth Streaming) über eine SSL-Verbindung erfassen. Zur Erfassung über SSL stellen Sie sicher, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. Derzeit kann RTMP nicht über SSL erfasst werden.
 
 #### <a id="keyframe_interval"></a>Keyframe-Intervall
-Wenn Sie einen lokalen Liveencoder zum Erzeugen eines Datenstroms mit Mehrfachbitrate nutzen, gibt das Keyframe-Intervall die GOP-Dauer (Group of Pictures) wie von diesem externen Encoder verwendet an. Nachdem der Kanal diesen eingehenden Datenstrom erhalten hat, können Sie Ihren Livedatenstrom in einem der folgenden Formate für Clientwiedergabeanwendungen bereitstellen: Smooth Streaming, Dynamic Adaptive Streaming over HTTP (DASH) und HTTP Live Streaming (HLS). Beim Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS-Segment-Paketerstellungsverhältnis (Fragmente pro Segment) basierend auf dem Keyframe-Intervall, das vom Liveencoder empfangen wird.
+Wenn Sie einen lokalen Liveencoder zum Erzeugen eines Datenstroms mit Mehrfachbitrate nutzen, gibt das Keyframe-Intervall die GOP-Dauer (Group of Pictures) wie von diesem externen Encoder verwendet an. Nachdem der Kanal diesen eingehenden Datenstrom empfangen hat, können Sie Ihren Livedatenstrom in einem der folgenden Formate für Wiedergabe-Clientanwendungen bereitstellen: Smooth Streaming, Dynamisches adaptives Streaming über HTTP (DASH) und HTTP Live Streaming (HLS). Beim Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS-Segment-Paketerstellungsverhältnis (Fragmente pro Segment) basierend auf dem Keyframe-Intervall, das vom Liveencoder empfangen wird.
 
 Die folgende Tabelle zeigt, wie die Segmentdauer berechnet wird:
 
@@ -176,9 +176,9 @@ Auch nach dem Beenden und Löschen des Programms ist es für Benutzer möglich, 
 ## <a id="states"></a>Kanalstatus und Abrechnung
 Mögliche Werte für den aktuellen Status eines Kanals sind:
 
-* **Beendet**: Dies ist der Ausgangsstatus des Kanals nach der Erstellung. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist aber nicht zulässig.
+* **Beendet**: Dies ist der anfängliche Status eines Kanals nach der Erstellung. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist aber nicht zulässig.
 * **Wird gestartet**: Der Kanal wird gestartet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, erhält der Kanal wieder den Status **Beendet**.
-* **Wird ausgeführt**: Der Kanal kann Livestreams verarbeiten.
+* **Running**: Der Kanal kann Livestreams verarbeiten.
 * **Wird beendet**: Der Kanal wird beendet. In diesem Status sind weder Updates noch Streaming zulässig.
 * **Wird gelöscht**: Der Kanal wird gelöscht. In diesem Status sind weder Updates noch Streaming zulässig.
 

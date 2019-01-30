@@ -11,20 +11,44 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223295"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411236"
 ---
 # <a name="troubleshoot-rbac-in-azure"></a>Beheben von RBAC-Fehlern in Azure
 
 In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können.
+
+## <a name="problems-with-rbac-role-assignments"></a>Probleme mit RBAC-Rollenzuweisungen
+
+- Falls Sie keine Rollenzuweisung hinzufügen können, da die Option **Rollenzuweisung hinzufügen** deaktiviert ist oder ein Berechtigungsfehler auftritt, vergewissern Sie sich, dass Sie eine Rolle mit der Berechtigung `Microsoft.Authorization/roleAssignments/*` für den Bereich verwenden, dem Sie die Rolle zuweisen möchten. Sollten Sie nicht über diese Berechtigung verfügen, wenden Sie sich an den zuständigen Abonnementadministrator.
+- Falls beim Erstellen einer Ressource ein Berechtigungsfehler auftritt, vergewissern Sie sich, dass Sie eine Rolle verwenden, die über die Berechtigung zum Erstellen von Ressourcen im ausgewählten Bereich verfügt. Beispielsweise müssen Sie unter Umständen Mitwirkender sein. Sollten Sie nicht über die Berechtigung verfügen, wenden Sie sich an den zuständigen Abonnementadministrator.
+- Falls beim Erstellen oder Aktualisieren eines Supporttickets ein Berechtigungsfehler auftritt, vergewissern Sie sich, dass Sie eine Rolle verwenden, die über die Berechtigung `Microsoft.Support/*` verfügt (beispielsweise [Mitwirkender bei Supportanfragen](built-in-roles.md#support-request-contributor)).
+- Tritt beim Zuweisen einer Rolle ein Fehler mit dem Hinweis auf, dass die Anzahl von Rollenzuweisungen überschritten wurde, weisen Sie Rollen stattdessen Gruppen zu, um die Anzahl von Rollenzuweisungen zu verringern. Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen.
+
+## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
+
+- Falls Sie eine vorhandene benutzerdefinierte Rollen nicht aktualisieren können, vergewissern Sie sich, dass Sie über die Berechtigung `Microsoft.Authorization/roleDefinition/write` verfügen.
+- Sollten Sie eine vorhandene benutzerdefinierte Rolle nicht aktualisieren können, überprüfen Sie, ob im Mandanten zuweisbare Bereiche gelöscht wurden. Die Eigenschaft `AssignableScopes` für eine benutzerdefinierte Rolle steuert, [wer zum Erstellen, Löschen, Aktualisieren oder Anzeigen der benutzerdefinierten Rolle berechtigt ist](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
+- Sollte beim Erstellen einer neuen Rolle ein Fehler mit dem Hinweis auftreten, dass das Limit für Rollendefinitionen überschritten wurde, löschen Sie alle benutzerdefinierten Rollen, die nicht verwendet werden. Sie können auch versuchen, vorhandene benutzerdefinierte Rollen zu konsolidieren oder wiederzuverwenden. Azure unterstützt bis zu **2.000** benutzerdefinierte Rollen in einem Mandanten.
+- Falls Sie eine benutzerdefinierte Rolle nicht löschen können, überprüfen Sie, ob die benutzerdefinierte Rolle noch von mindestens einer Rollenzuweisung verwendet wird.
+
+## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Wiederherstellen von RBAC beim übergreifenden Verschieben von Abonnements auf Mandanten
+
+- Schritte zum Übertragen eines Abonnements auf einen anderen Mandanten finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
+- Wenn Sie ein Abonnement auf einen anderen Mandanten übertragen, werden alle Rollenzuweisungen dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert. Sie müssen Ihre Rollenzuweisungen auf dem Zielmandanten neu erstellen.
+- Globale Administratoren ohne Zugriff auf ein Abonnement können mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um wieder Zugriff auf das Abonnement zu erlangen.
+
+## <a name="rbac-changes-are-not-being-detected"></a>Keine Erkennung von RBAC-Änderungen
+
+Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Erstellen oder Löschen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
 
 ## <a name="web-app-features-that-require-write-access"></a>Web-App-Features, für die Schreibzugriff erforderlich ist
 
@@ -93,10 +117,6 @@ Einige Funktionen von [Azure Functions](../azure-functions/functions-overview.md
 ![Funktions-Apps ohne Zugriff](./media/troubleshooting/functionapps-noaccess.png)
 
 Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle Einstellungen** klicken, um einige Einstellungen im Zusammenhang mit einer Funktions-App (ähnlich wie bei einer Web-App) anzuzeigen, kann diese Einstellungen jedoch nicht ändern.
-
-## <a name="rbac-changes-are-not-being-detected"></a>Keine Erkennung von RBAC-Änderungen
-
-Azure Resource Manager speichert Konfigurationen und Daten manchmal zwischen, um die Leistung zu verbessern. Beim Erstellen oder Löschen von Rollenzuweisungen kann es bis zu 30 Minuten dauern, bis Änderungen wirksam werden. Wenn Sie das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden, können Sie eine Aktualisierung der Rollenzuweisungsänderungen erzwingen, indem Sie sich abmelden und wieder anmelden. Wenn Sie Rollenzuweisungsänderungen mit REST-API-Aufrufen vornehmen, können Sie eine Aktualisierung erzwingen, indem Sie das Zugriffstoken aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md)

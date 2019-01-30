@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb01aec04af10d3e413213dc9821a27b42a0a9d2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835385"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Tutorial: Azure Active Directory-Integration von ScaleX Enterprise
 
@@ -168,22 +168,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Wählen Sie **Create any user who can authenticate with SSO** aus.
 
-    b. **Service Provider saml**: Fügen Sie den Wert ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** ein.
+    b. **Service Provider saml** (Dienstanbieter-SAML): Fügen Sie den Wert ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** ein.
 
-    c. **Name of Identity Provider email field in ACS response**: Fügen Sie den Wert `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
+    c. **Name of Identity Provider email field in ACS response** (E-Mail-Feld für den Namen des Identitätsanbieters in der ACS-Antwort): Fügen Sie den Wert `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
-    d. **Identity Provider EntityDescriptor Entity ID**: Fügen Sie den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    d. **Identity Provider EntityDescriptor Entity ID** (EntityDescriptor-Entitäts-ID des Identitätsanbieters): Fügen Sie die aus dem Azure-Portal kopierte **SAML-Entitäts-ID** ein.
 
-    e. **Identity Provider SingleSignOnService URL**: Fügen Sie den Wert der **URL für den SAML-SSO-Dienst** aus dem Azure-Portal ein.
+    e. **Identity Provider SingleSignOnService URL** (SingleSignOnService-URL des Identitätsanbieters): Fügen Sie die **URL für den SAML-SSO-Dienst** aus dem Azure-Portal ein.
 
-    f. **Identity Provider public X509 certificate:** Öffnen Sie das X509-Zertifikat, das Sie aus Azure heruntergeladen haben, in Editor, und fügen Sie den Inhalt in dieses Feld ein. Stellen Sie sicher, dass das Zertifikat keine Zeilenumbrüche enthält.
+    f. **Identity Provider public X509 certificate** (Öffentliches X.509-Zertifikat des Identitätsanbieters): Öffnen Sie das aus Azure heruntergeladene X.509-Zertifikat im Editor, und fügen Sie den Inhalt in dieses Feld ein. Stellen Sie sicher, dass das Zertifikat keine Zeilenumbrüche enthält.
     
     g. Aktivieren Sie die folgenden Kontrollkästchen: **Enabled**, „Encrypt NameID“ und „Sign AuthnRequests“.
 
     h. Klicken Sie auf **Update SSO Settings**, um die Einstellungen zu speichern.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers

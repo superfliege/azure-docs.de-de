@@ -5,7 +5,7 @@ services: active-directory
 keywords: Identitätsschutz, bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7cf427ed7be91db2b243c28bb66513b25045ffc0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822127"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468487"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Schnellstart – Blockieren des Zugriffs mit Azure Active Directory Identity Protection, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Schnellstart: Blockieren des Zugriffs mit Azure Active Directory Identity Protection, wenn ein Sitzungsrisiko erkannt wird  
 
 Zum Schutz Ihrer Umgebung sollten Sie verhindern, dass sich verdächtige Benutzer anmelden können. Azure Active Directory (Azure AD) Identity Protection analysiert alle Anmeldungen und berechnet die Wahrscheinlichkeit dafür, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Die Wahrscheinlichkeit (gering, mittel, hoch) wird in Form eines berechneten Wertes mit der Bezeichnung „Risikostufen für die Anmeldung“ angegeben. Durch Festlegen der Bedingung zum Anmelderisiko können Sie eine Richtlinie für bedingten Zugriff bei Anmelderisiko konfigurieren, um auf bestimmte Risikostufen für die Anmeldung zu reagieren. 
 
