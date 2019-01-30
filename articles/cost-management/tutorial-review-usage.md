@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e96119abd4fc77c576fb65281c3f48b8263e020d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093606"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849973"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -93,15 +93,23 @@ In Azure Cost Management werden auch Empfehlungen zur Kosteneinsparung für Azur
 
 ## <a name="create-alerts-for-unusual-spending"></a>Erstellen von Warnungen für ungewöhnliche Ausgaben
 
-Sie können Beteiligte automatisch über Anomalien bei den Ausgaben und Risiken der Budgetüberschreitung benachrichtigen. Sie können schnell und einfach Warnungen auf der Grundlage von Berichten erstellen, die Warnungen anhand von Budget- und Kostenschwellenwerten ausgeben.
+Durch Warnungen können Beteiligte automatisch über Anomalien bei den Ausgaben und das Risiko einer Budgetüberschreitung benachrichtigt werden. Sie können Warnungen auf der Grundlage von Berichten erstellen, die auf Budget- und Kostenschwellenwerten basierende Warnungen unterstützen.
 
-Für Ausgaben erstellen Sie eine Warnung anhand eines Kostenberichts. In diesem Beispiel wird mithilfe des Berichts über die tatsächlichen Kosten im Zeitverlauf eine Benachrichtigung an Sie ausgegeben, wenn sich die Azure VM-Ausgaben Ihrem Gesamtbudget nähern. Zum Erstellen der Warnung sind folgende Schritte erforderlich: Klicken Sie im Menü oben im Portal auf **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Tatsächliche Kosten im Zeitverlauf). Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. Klicken Sie in der oberen rechten Ecke des Berichts auf **Actions** (Aktionen), und wählen Sie anschließend **Schedule report** (Bericht planen) aus.
+In diesem Beispiel wird der **Bericht für Ist-Kosten im Zeitverlauf** verwendet, um eine Benachrichtigung zu senden, wenn sich die Ausgaben für einen virtuellen Azure-Computer Ihrem Gesamtbudget annähern. In diesem Szenario beträgt das Gesamtbudget 20.000 USD, und Sie möchten eine Benachrichtigung erhalten, wenn die Kosten sich der Hälfte Ihres Budgets (9.000 USD) annähern, und eine Warnung, wenn die Kosten 10.000 USD erreichen.
 
-Verwenden Sie im Feld „Save or Schedule this report“ (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung), um sich den Bericht in den gewünschten Intervallen per E-Mail zusenden zu lassen. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter sind in dem per E-Mail versendeten Bericht enthalten. Klicken Sie auf die Registerkarte **Threshold** (Schwellenwert), und wählen Sie **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. Wenn Sie über ein Gesamtbudget von 20.000 USD verfügen und eine Benachrichtigung wünschen, wenn sich die Kosten der Hälfte des Budgetbetrags nähern, sollten Sie eine **rote Warnung** bei 10.000 USD und eine **gelbe Warnung** bei 9.000 USD erstellen. Verwenden Sie keine Kommas in eingegebenen Werten. Wählen Sie anschließend die Anzahl der aufeinanderfolgenden Warnungen aus. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. Speichern Sie den geplanten Bericht.
+1. Wählen Sie oben im Menü des Cloudyn-Portals Folgendes aus: **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Ist-Kosten im Zeitverlauf). 
+2. Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. 
+3. Wählen Sie in der rechten oberen Ecke des Berichts **Actions** (Aktionen) und anschließend **Schedule report** (Bericht planen) aus.
+4. Wählen Sie im Dialogfeld **Save or Schedule this report** (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung) aus, um sich im gewünschten Intervall eine E-Mail mit dem Bericht zu senden. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter werden in den per E-Mail gesendeten Bericht eingeschlossen. 
+5. Wählen Sie die Registerkarte **Threshold** (Schwellenwert) und anschließend **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. 
+   1. Geben Sie im Schwellenwertfeld für die **rote Warnung**den Wert „10000“ ein. 
+   2. Geben Sie im Schwellenwertfeld für die **gelbe Warnung**den Wert „9000“ ein. 
+   3. Geben Sie im Feld **Anzahl der aufeinanderfolgenden Warnungen** ein, wie viele aufeinanderfolgende Warnungen sie erhalten möchten. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr gesendet. 
+6. Wählen Sie **Speichern** aus.
 
 ![Beispiel für rote und gelbe Warnungen auf der Grundlage von Ausgabeschwellenwerten](./media/tutorial-review-usage/schedule-alert01.png)
 
-Sie können auch die Schwellenwertmetrik „Cost Percentage vs. Budget“ (Prozentuale Kosten im Vergleich zu Budget) verwenden, um Warnungen zu erstellen. Mit dieser Metrik können Sie Budgetprozentsätze anstelle von Geldbeträgen verwenden.
+Sie können auch die Schwellenwertmetrik **Cost Percentage vs. Budget** (Prozentuale Kosten im Vergleich zu Budget) verwenden, um Warnungen zu erstellen. In diesem Fall können Sie die Schwellenwerte als Prozentsatz Ihres Budgets (anstelle von Geldbeträgen) angeben.
 
 ## <a name="export-data"></a>Exportieren von Daten
 

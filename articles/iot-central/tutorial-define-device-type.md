@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199968"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412902"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -75,7 +75,7 @@ Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie d
 
 ## <a name="create-a-new-custom-device-template"></a>Erstellen einer neuen benutzerdefinierten Gerätevorlage
 
-Als Ersteller können Sie die Gerätevorlagen in Ihrer Anwendung erstellen und bearbeiten. Wenn Sie eine Gerätevorlage erstellen, generiert Azure IoT Central auf der Grundlage der Vorlage ein simuliertes Gerät. Das simulierte Gerät generiert Telemetriedaten, mit denen Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem physischen Gerät herstellen.
+Als Ersteller können Sie die Gerätevorlagen in Ihrer Anwendung erstellen und bearbeiten. Wenn Sie eine Gerätevorlage erstellen, generiert Azure IoT Central auf der Grundlage der Vorlage ein simuliertes Gerät. Das simulierte Gerät generiert Telemetriedaten, mit denen Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem echten Gerät herstellen.
 
 Wenn Sie Ihrer Anwendung eine neue Gerätevorlage hinzufügen möchten, navigieren Sie zur Seite **Application Builder** (Anwendungs-Generator). Klicken Sie hierzu im linken Navigationsmenü auf **Application Builder** (Anwendungs-Generator).
 
@@ -155,7 +155,7 @@ In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie für Geräte, die
 
 ## <a name="define-event-measurement"></a>Definieren der Ereignismessung
 
-Mithilfe der Ereignisoption können Sie Zeitpunktdaten definieren, die vom Gerät gesendet werden, um ein bedeutsames Ereignis wie etwa einen Fehler oder den Ausfall einer Komponente anzugeben. Geräteereignisse können ähnlich wie Telemetriemessungen von Azure IoT Central simuliert werden, sodass Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem physischen Gerät herstellen. Ereignismessungen für den Gerätetyp werden in der Ansicht **Measurements** (Messungen) definiert.
+Mithilfe der Ereignisoption können Sie Zeitpunktdaten definieren, die vom Gerät gesendet werden, um ein bedeutsames Ereignis wie etwa einen Fehler oder den Ausfall einer Komponente anzugeben. Geräteereignisse können ähnlich wie Telemetriemessungen von Azure IoT Central simuliert werden, sodass Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem echten Gerät herstellen. Ereignismessungen für den Gerätetyp werden in der Ansicht **Measurements** (Messungen) definiert.
 
 1. Klicken Sie auf **New Measurement** (Neue Messung), um die Ereignismessung **Fan Motor Error** (Lüftermotorfehler) hinzuzufügen. Wählen Sie dann **Ereignis** als Messungstyp aus:
 
@@ -191,7 +191,7 @@ Mithilfe der Ereignisoption können Sie Zeitpunktdaten definieren, die vom Gerä
 
 ## <a name="define-state-measurement"></a>Definieren der Zustandsmessung
 
-Mithilfe der Zustandsoption können Sie den Zustand des Geräts oder der dazugehörigen Komponenten über einen Zeitraum definieren und visualisieren. Der Gerätezustand kann ähnlich wie Telemetriemessungen von Azure IoT Central simuliert werden, sodass Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem physischen Gerät herstellen. Zustandsmessungen für den Gerätetyp werden in der Ansicht **Measurements** (Messungen) definiert.
+Mithilfe der Zustandsoption können Sie den Zustand des Geräts oder der dazugehörigen Komponenten über einen Zeitraum definieren und visualisieren. Der Gerätezustand kann ähnlich wie Telemetriemessungen von Azure IoT Central simuliert werden, sodass Sie das Verhalten Ihrer Anwendung testen können, bevor Sie eine Verbindung mit einem echten Gerät herstellen. Zustandsmessungen für den Gerätetyp werden in der Ansicht **Measurements** (Messungen) definiert.
 
 1. Klicken Sie auf **New Measurement** (Neue Messung), um die Messung **Fan Mode** (Lüftermodus) hinzuzufügen. Wählen Sie dann **Zustand** als Messungstyp aus:
 

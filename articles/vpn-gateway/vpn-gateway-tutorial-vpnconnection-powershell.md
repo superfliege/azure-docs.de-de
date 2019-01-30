@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336575"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432216"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>Erstellen und Verwalten von S2S-VPN-Verbindungen mit dem Azure PowerShell-Modul
 
@@ -39,11 +39,11 @@ In der folgenden Abbildung wird die Topologie für dieses Tutorial veranschaulic
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
-Führen Sie das erste Tutorial [Erstellen eines VPN-Gateways mit Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) durch, um die folgenden Ressourcen zu erstellen:
+Absolvieren Sie das erste Tutorial [Erstellen eines VPN-Gateways mit Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md), um die folgenden Ressourcen zu erstellen:
 
 1. Ressourcengruppe (TestRG1), virtuelles Netzwerk (VNet1) und GatewaySubnet
 2. VPN-Gateway (VNet1GW)
@@ -140,7 +140,7 @@ Das Azure-VPN-Gateway unterstützt das dynamische BGP-Routingprotokoll. Sie kön
 * ASN des Gateways des lokalen Netzwerks
 * BGP-Peer-IP-Adresse des Gateways des lokalen Netzwerks
 
-Wenn Sie nicht die BGP-Eigenschaften konfiguriert haben, fügen Sie diese Eigenschaften mit den folgenden Befehlen zu Ihrem VPN-Gateway und dem Gateway des lokalen Netzwerks hinzu: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) und [ Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
+Falls Sie die BGP-Eigenschaften nicht konfiguriert haben, fügen Sie Ihrem VPN-Gateway und dem Gateway des lokalen Netzwerks diese Eigenschaften mithilfe folgender Befehle hinzu: [Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) und [ Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1).
 
 ```azurepowershell-interactive
 $vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
@@ -168,7 +168,7 @@ Deaktivieren Sie BGP, indem Sie den Eigenschaftswert „-EnableBGP“ in **$Fals
 Sie können eine optionale IPsec-/IKE-Richtlinie anwenden, um die exakte Kombination aus kryptografischen IPsec-/IKE-Algorithmen und Schlüssellängen für die Verbindung anzugeben, statt die [Standardvorschläge](vpn-gateway-about-vpn-devices.md#ipsec) zu verwenden. Im folgenden Beispielskript wird eine andere IPsec/IKE-Richtlinie mit den folgenden Algorithmen und Parametern erstellt:
 
 * IKEv2: AES256, SHA256, DHGroup14
-* IPsec: AES128, SHA1, PFS14, Lebensdauer der Sicherheitszuordnung 14.400 Sekunden und 102.400.000 KB
+* IPsec: AES128, SHA1, PFS14, Lebensdauer der Sicherheitszuordnung: 14.400 Sekunden und 102.400.000 KB
 
 ```azurepowershell-interactive
 $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 `

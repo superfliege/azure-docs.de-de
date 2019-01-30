@@ -3,19 +3,19 @@ title: Was ist Azure Active Directory B2C? | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie die Anwendungsanmeldung mithilfe von Azure Active Directory B2C erstellen und verwalten.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b667934fefe0b9afb5aeca786839f5e105be2c4d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724025"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844992"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
@@ -104,15 +104,15 @@ Verknüpfen Sie Ihren Azure AD B2C-Mandanten mit Ihrem Azure-Abonnement, um säm
 
 Damit Sie Ihre Anwendung zur Verwendung von Azure AD B2C konfigurieren können, müssen Sie zunächst einen Azure AD B2C-Mandanten erstellen und die Anwendung registrieren. Führen Sie zum Registrieren der Anwendung die Schritte unter [Tutorial: Registrieren einer Anwendung zum Aktivieren der Registrierung und Anmeldung mit Azure AD B2C](tutorial-register-applications.md) aus.
   
-Als Entwickler von ASP.NET-Webanwendungen richten Sie Ihre Anwendung zum Authentifizieren von Konten entsprechend den Schritten unter [Tutorial: Authentifizieren von Benutzern mit Azure Active Directory B2C in einer ASP.NET-Web-App](active-directory-b2c-tutorials-web-app.md) ein.
+Wenn Sie ASP.NET-Webanwendungen entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung von Web-Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-web-app.md) ein.
 
-Als Entwickler von Desktopanwendungen richten Sie Ihre Anwendung zum Authentifizieren von Konten entsprechend den Schritten unter [Tutorial: Authentifizieren von Benutzern mit Azure Active Directory B2C in einer Desktopanwendung](active-directory-b2c-tutorials-desktop-app.md) ein.
+Wenn Sie Desktopanwendungen entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung von Desktop-Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app.md) ein.
 
-Als Entwickler von Single-Page-Webanwendungen richten Sie Ihre Anwendung zum Authentifizieren von Konten entsprechend den Schritten unter [Tutorial: Authentifizieren von Benutzern mit Azure Active Directory B2C in einer Single-Page-Webanwendung](active-directory-b2c-tutorials-spa.md) ein.
+Wenn Sie Single-Page-Webanwendung mit Node.js entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung einseitiger Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md) ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Fahren Sie mit dem Tutorial fort, und beginnen Sie mit der Konfiguration Ihrer Anwendung für die Registrierung und Anmeldung.
 
 > [!div class="nextstepaction"]
-> [Tutorial zum Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md)
+> [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md)

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470862"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422897"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein Lab in Azure DevTest Labs
-In diesem Tutorial verwenden Sie das Lab, das im Tutorial [Erstellen eines benutzerdefinierten Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
+In diesem Tutorial verwenden Sie das Lab, das in [Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
 
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
@@ -68,10 +68,12 @@ Wenn Sie den virtuellen Computer nicht benötigen, führen Sie folgende Schritte
 1. Wählen Sie auf der Seite des virtuellen Computers auf der Symbolleiste die Option **Anspruch aufheben** aus. 
 
     ![Aufheben des Anspruchs auf den virtuellen Computer](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. Der virtuelle Computer wird heruntergefahren, bevor der Anspruch aufgehoben wird. 
+1. Der virtuelle Computer wird heruntergefahren, bevor der Anspruch aufgehoben wird. Der Status dieses Vorgangs wird in den Benachrichtigungen angezeigt.  
+3. Navigieren Sie wieder zur DevTest Lab-Seite, indem Sie im Breadcrumb-Menü im oberen Bereich auf den Namen Ihres Labs klicken. 
+    
+    ![Navigieren zum Lab](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Vergewissern Sie sich im unteren Bereich, dass der virtuelle Computer in der Liste **Abrufbare virtuelle Computer** enthalten ist.
 
-    ![Status der Anspruchsaufhebung](./media/tutorial-use-custom-lab/unclaim-status.png) 
-1. Nachdem der Anspruch aufgehoben wurde, wird der virtuelle Computer unten in der Liste **Abrufbare virtuelle Computer** angezeigt. 
     
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial wurde gezeigt, wie Sie auf ein Lab zugreifen, das unter Verwendung von Azure DevTest Labs erstellt wurde, und wie Sie dieses Lab verwenden. Weitere Informationen zum Zugriff auf virtuelle Computer in einem Lab sowie zu deren Verwendung finden Sie hier: 

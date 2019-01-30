@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 01/18/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 426e4fe05890f1669859545db3d731943a12428a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260174"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412222"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -36,7 +36,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Azure IoT Edge-Gerät:
 
-* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind. 
+* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
+
+  > [!NOTE]
+  > SQL Server unterstützt nur Linux-Container. Wenn Sie dieses Tutorial mit einem Windows-Gerät als Edge-Gerät testen möchten, müssen Sie es für die Verwendung von Linux-Containern konfigurieren. Informationen zu den Voraussetzungen und Installationsschritten, die erforderlich sind, um die IoT Edge-Runtime für Linux-Container unter Windows zu konfigurieren, finden Sie unter [Installieren der Azure IoT Edge-Runtime unter Windows](how-to-install-iot-edge-windows-with-linux.md).
 
 Cloudressourcen:
 
@@ -227,15 +230,9 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
 
 1. Öffnen Sie im Visual Studio Code-Explorer die Datei **deployment.template.json**. 
 
-2. Suchen Sie nach dem Abschnitt **modules**. Zwei Module sollten aufgeführt sein: das Modul **tempSensor**, das simulierte Daten generiert, und das Modul **sqlFunction**.
+1. Suchen Sie nach dem Abschnitt **modules**. Zwei Module sollten aufgeführt sein: das Modul **tempSensor**, das simulierte Daten generiert, und das Modul **sqlFunction**.
 
-3. Ändern Sie bei Verwendung von Windows-Containern den Abschnitt **sqlFunction.settings.image**.
-
-   ```json
-   "image": "${MODULES.sqlFunction.windows-amd64}"
-   ```
-
-4. Fügen Sie den folgenden Code hinzu, um ein drittes Modul zu deklarieren. Fügen Sie nach dem Abschnitt „sqlFunction“ ein Komma und dann Folgendes ein:
+1. Fügen Sie den folgenden Code hinzu, um ein drittes Modul zu deklarieren. Fügen Sie nach dem Abschnitt „sqlFunction“ ein Komma und dann Folgendes ein:
 
    ```json
    "sql": {
@@ -253,29 +250,7 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
 
    ![Fügen Sie das SQL-Server-Modul dem Manifest inzu](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. Aktualisieren Sie abhängig vom Typ des Docker-Containers auf Ihrem IoT Edge-Gerät die **sql**-Modulparameter mit dem folgenden Code:
-   * Windows-Container:
-
-      ```json
-      "env": {
-        "ACCEPT_EULA": {"value": "Y"},
-        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-      },
-      "settings": {
-        "image": "microsoft/mssql-server-windows-developer",
-        "createOptions": {
-          "HostConfig": {
-            "Mounts": [{"Target": "C:\\mssql","Source": "sqlVolume","Type": "volume"}],
-            "PortBindings": {
-              "1433/tcp": [{"HostPort": "1401"}]
-            }
-          }
-        }
-      }
-      ```
-
-   * Linux-Container:
-
+1. Aktualisieren Sie die **sql**-Modulparameter mit dem folgenden Code:
       ```json
       "env": {
         "ACCEPT_EULA": {"value": "Y"},
@@ -295,9 +270,9 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
       ```
 
    >[!Tip]
-   >Bei jedem Erstellen eines SQL Server-Containers in einer Produktionsumgebung sollten Sie [das Standardkennwort für den Systemadministrator ändern](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
+   >Bei jedem Erstellen eines SQL Server-Containers in einer Produktionsumgebung sollten Sie [das Standardkennwort für den Systemadministrator ändern](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker).
 
-6. Speichern Sie die Datei **deployment.template.json**.
+1. Speichern Sie die Datei **deployment.template.json**.
 
 ## <a name="build-your-iot-edge-solution"></a>Erstellen Ihrer IoT Edge-Projektmappe
 
@@ -353,42 +328,16 @@ Wenn Sie das Bereitstellungsmanifest auf Ihr Gerät anwenden, werden drei Module
 Führen Sie auf Ihrem IoT Edge-Gerät die folgenden Befehle aus. Diese Befehle stellen eine Verbindung mit dem **sql**-Modul her, das auf Ihrem Gerät ausgeführt wird, und erstellt eine Datenbank und eine Tabelle zum Speichern der gesendeten Temperaturdaten. 
 
 1. Stellen Sie in einem Befehlszeilentool auf Ihrem IoT Edge-Gerät eine Verbindung mit Ihrer Datenbank her. 
-   * Windows-Container:
-   
-      ```cmd
-      docker exec -it sql cmd
-      ```
-    
-   * Linux-Container: 
-
       ```bash
       sudo docker exec -it sql bash
       ```
 
 2. Öffnen Sie das SQL-Befehlstool.
-   * Windows-Container:
-
-      ```cmd
-      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
-      ```
-
-   * Linux-Container: 
-
       ```bash
       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. Erstellen Sie die Datenbank: 
-
-   * Windows-Container
-      ```sql
-      CREATE DATABASE MeasurementsDB
-      ON
-      (NAME = MeasurementsDB, FILENAME = 'C:\mssql\measurementsdb.mdf')
-      GO
-      ```
-
-   * Linux-Container
       ```sql
       CREATE DATABASE MeasurementsDB
       ON

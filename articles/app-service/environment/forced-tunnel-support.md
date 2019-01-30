@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272730"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389288"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
-Die App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service im Azure Virtual Network des Kunden. Viele Kunden konfigurieren ihre virtuellen Azure-Netzwerke als Erweiterungen ihrer lokalen Netzwerke mit VPNs oder Azure ExpressRoute-Verbindungen. Bei der Tunnelerzwingung leiten Sie für das Internet bestimmten Datenverkehr stattdessen an Ihr VPN oder ein virtuelles Gerät um. Dies erfolgt häufig im Rahmen von Sicherheitsanforderungen, bei denen der gesamte ausgehende Datenverkehr überprüft und überwacht wird. 
+Die App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service im Azure Virtual Network des Kunden. Viele Kunden konfigurieren ihre virtuellen Azure-Netzwerke als Erweiterungen ihrer lokalen Netzwerke mit VPNs oder Azure ExpressRoute-Verbindungen. Bei der Tunnelerzwingung leiten Sie für das Internet bestimmten Datenverkehr stattdessen an Ihr VPN oder ein virtuelles Gerät um. Virtuelle Geräte werden häufig zur Überprüfung und Überwachung von ausgehendem Netzwerkdatenverkehr verwendet. 
 
 Die ASE weist eine Reihe von externen Abhängigkeiten auf, die im Dokument zur [Netzwerkarchitektur für App Service-Umgebungen][network] beschrieben werden. Normalerweise muss der gesamte ausgehende Abhängigkeitsdatenverkehr der ASE über die VIP verlaufen, die für die ASE bereitgestellt wurde. Wenn Sie das Routing für den Datenverkehr zur bzw. aus der ASE ändern, ohne die unten angegebenen Informationen zu beachten, funktioniert Ihre ASE nicht mehr.
 
@@ -62,24 +62,21 @@ Falls das Netzwerk bereits Datenverkehr lokal weiterleitet, müssen Sie das Subn
 
 ## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>Konfigurieren des ASE-Subnetzes zum Ignorieren von BGP-Routen ## 
 
-Sie können das ASE-Subnetz so konfigurieren, dass alle BGP-Routen ignoriert werden.  Wenn dies konfiguriert ist, kann die ASE problemlos auf ihre Abhängigkeiten zugreifen.  Jedoch müssen Sie benutzerdefinierte Routen (UDR) erstellen, um Ihren Apps den Zugriff auf lokale Ressourcen zu ermöglichen.
+Sie können das ASE-Subnetz so konfigurieren, dass alle BGP-Routen ignoriert werden.  Bei Verwendung dieser Konfiguration kann die ASE problemlos auf ihre Abhängigkeiten zugreifen.  Jedoch müssen Sie benutzerdefinierte Routen (UDR) erstellen, um Ihren Apps den Zugriff auf lokale Ressourcen zu ermöglichen.
 
 So konfigurieren Sie Ihr ASE-Subnetz zum Ignorieren von BGP-Routen:
 
 * Erstellen Sie eine UDR, und weisen Sie diese Ihrem ASE-Subnetz zu, falls Sie noch keine haben.
 * Öffnen Sie im Azure-Portal die Benutzeroberfläche für die Routingtabelle, die Ihrem ASE-Subnetz zugeordnet ist.  Klicken Sie auf „Konfiguration“.  Legen Sie „deaktiviert“ für die BGP-Routenverteilung fest.  Klicken Sie auf Speichern. Die Dokumentation zum Deaktivieren der BGP-Routenverteilung finden Sie unter [Erstellen einer Routentabelle][routetable].
 
-Danach verfügen Ihre Apps nicht mehr über den lokalen Zugriff. Bearbeiten Sie die UDR, die Ihrem ASE-Subnetz zugewiesen ist, und fügen Sie Routen für Ihre lokalen Adressbereiche hinzu, um dieses Problem zu beheben. Der Typ des nächsten Hops sollte auf „Gateway des virtuellen Netzwerks“ festgelegt sein. 
+Nachdem Sie das ASE-Subnetz so konfiguriert haben, dass alle BGP-Routen ignoriert werden, können Ihre Apps nicht mehr auf die lokale Umgebung zugreifen. Damit Ihre Apps auf lokale Ressourcen zugreifen können, müssen Sie die UDR bearbeiten, die Ihrem ASE-Subnetz zugewiesen ist, und Routen für Ihre lokalen Adressbereiche hinzufügen. Der Typ des nächsten Hops sollte auf „Gateway des virtuellen Netzwerks“ festgelegt sein. 
 
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurieren Ihrer ASE mit Dienstendpunkten ##
 
- > [!NOTE]
-   > Dienstendpunkte mit SQL funktionieren nicht mit einer ASE in einer US Government-Region.  Die folgenden Informationen gelten nur für öffentliche Azure-Regionen.  
-
 Führen Sie die folgenden Schritte aus, um das Routing für den gesamten ausgehenden Datenverkehr Ihrer ASE einzurichten, mit Ausnahme des Datenverkehrs für Azure SQL und Azure Storage:
 
-1. Erstellen Sie eine Routingtabelle, und weisen Sie sie Ihrem ASE-Subnetz zu. Die Adressen für Ihre Region finden Sie unter [App Service-Umgebung Management-Adressen][management]. Erstellen Sie Routen für diese Adressen mit „Internet“ als nächstem Hop. Dies ist erforderlich, weil für eingehenden Verwaltungsdatenverkehr der App Service-Umgebung von derselben Adresse geantwortet werden muss, an die er gesendet wurde.   
+1. Erstellen Sie eine Routingtabelle, und weisen Sie sie Ihrem ASE-Subnetz zu. Die Adressen für Ihre Region finden Sie unter [App Service-Umgebung Management-Adressen][management]. Erstellen Sie Routen für diese Adressen mit „Internet“ als nächstem Hop. Diese Routen sind erforderlich, da die Antwort des eingehenden Verwaltungsdatenverkehrs der App Service-Umgebung von der gleichen Adresse stammen muss, an die er gesendet wurde.   
 
 2. Aktivieren Sie Dienstendpunkte mit Azure SQL und Azure Storage mit Ihrem ASE-Subnetz.  Nach diesem Schritt können Sie Ihr VNet mit erzwungenem Tunneling konfigurieren.
 
@@ -91,7 +88,7 @@ Wenn Sie die Dienstendpunkte auf einer Ressource aktivieren, werden Routen erste
 
 Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werden, müssen für alle Azure SQL-Instanzen, mit denen aus diesem Subnetz Verbindungen hergestellt werden, Dienstendpunkte aktiviert sein. Falls Sie aus demselben Subnetz auf mehrere Azure SQL-Instanzen zugreifen möchten, ist es nicht möglich, dass Sie Dienstendpunkte nur auf einer Azure SQL-Instanz aktivieren, aber nicht auf einer anderen Instanz.  Azure Storage weist ein anderes Verhalten als Azure SQL auf.  Wenn Sie Dienstendpunkte mit Azure Storage aktivieren, sperren Sie den Zugriff auf diese Ressource aus Ihrem Subnetz. Der Zugriff auf andere Azure Storage-Konten ist aber auch dann möglich,wenn dafür keine Dienstendpunkte aktiviert wurden.  
 
-Bedenken Sie beim Konfigurieren von erzwungenem Tunneling mit einer Netzwerkfilter-Appliance, dass die ASE neben Azure SQL und Azure Storage noch über andere Abhängigkeiten verfügt. Lassen Sie Datenverkehr für diese Abhängigkeiten zu. Andernfalls funktioniert die ASE nicht ordnungsgemäß.
+Bedenken Sie beim Konfigurieren von erzwungenem Tunneling mit einer Netzwerkfilter-Appliance, dass die ASE neben Azure SQL und Azure Storage noch über andere Abhängigkeiten verfügt. Sollte Datenverkehr für diese Abhängigkeiten blockiert werden, funktioniert die ASE nicht ordnungsgemäß.
 
 ![Tunnelerzwingung mit Dienstendpunkten][2]
 
@@ -99,7 +96,7 @@ Bedenken Sie beim Konfigurieren von erzwungenem Tunneling mit einer Netzwerkfilt
 
 Führen Sie die folgenden Schritte aus, um das Tunneling für den gesamten ausgehenden Datenverkehr Ihrer ASE einzurichten, mit Ausnahme des Datenverkehrs für Azure Storage:
 
-1. Erstellen Sie eine Routingtabelle, und weisen Sie sie Ihrem ASE-Subnetz zu. Die Adressen für Ihre Region finden Sie unter [App Service-Umgebung Management-Adressen][management]. Erstellen Sie Routen für diese Adressen mit „Internet“ als nächstem Hop. Dies ist erforderlich, weil für eingehenden Verwaltungsdatenverkehr der App Service-Umgebung von derselben Adresse geantwortet werden muss, an die er gesendet wurde. 
+1. Erstellen Sie eine Routingtabelle, und weisen Sie sie Ihrem ASE-Subnetz zu. Die Adressen für Ihre Region finden Sie unter [App Service-Umgebung Management-Adressen][management]. Erstellen Sie Routen für diese Adressen mit „Internet“ als nächstem Hop. Diese Routen sind erforderlich, da die Antwort des eingehenden Verwaltungsdatenverkehrs der App Service-Umgebung von der gleichen Adresse stammen muss, an die er gesendet wurde. 
 
 2. Aktivieren von Dienstendpunkten mit Azure Storage über Ihr ASE-Subnetz
 

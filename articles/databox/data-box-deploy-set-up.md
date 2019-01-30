@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/17/2019
 ms.author: alkohli
-ms.openlocfilehash: fb2ec4802ad2ecf25a8fca031553c8209dc4267d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791318"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391162"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box
 
@@ -40,7 +40,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
 6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
 7. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
-    - Zwei SFP+-Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2)
+    - Zwei SFP+-Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Die Data Box verfügt über die Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“, sodass mit dieser Schnittstelle kompatible Kabel verwendet werden können. Bei internen Tests wurde beispielsweise ein Kabel vom Typ „CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M“ verwendet.
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
 

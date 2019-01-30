@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a89768a5cf02cc8d4cdce670bdfb5b90f504bdf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977243"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447461"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Schnellstart: Aktualisieren einer Anwendung in Azure Active Directory
 
@@ -44,15 +44,15 @@ Damit eine Webanwendung oder vertrauliche Clientanwendung an einem Flow zur Auto
 
 Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwendung (z.B. die Microsoft Graph-API) bereitgestellt wird, stellt das Zustimmungsframework außerdem sicher, dass dem Client die erforderlichen Berechtigungen basierend auf den angeforderten Berechtigungen erteilt werden. Standardmäßig können alle Anwendungen Berechtigungen aus **Azure Active Directory** (Graph-API) und dem klassischen Azure-Bereitstellungsmodell auswählen. Die [Graph-API-Berechtigung „Anmelden und Benutzerprofil lesen“](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) ist standardmäßig ebenfalls ausgewählt. Wenn Ihr Client unter einem Mandanten registriert wird, der über Konten mit Abonnements von Office 365 verfügt, können auch Web-APIs und Berechtigungen für SharePoint und Exchange Online ausgewählt werden. Sie können für jede gewünschte Web-API zwischen zwei Arten von Berechtigungen wählen:
 
-- Anwendungsberechtigungen: Ihre Clientanwendung benötigt direkten Zugriff auf die Web-API als sie selbst (kein Benutzerkontext). Für diese Art von Berechtigung ist die Zustimmung des Administrators erforderlich, sie steht nicht für systemeigene Clientanwendungen zur Verfügung.
-- Delegierte Berechtigungen: Ihre Clientanwendung benötigt als angemeldeter Benutzer Zugriff auf die Web-API. Der Zugriff ist jedoch durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden, sofern für die Berechtigung nicht die Zustimmung durch einen Administrator erforderlich ist.
+- Anwendungsberechtigungen: Ihre Clientanwendung muss direkt als sie selbst (also ohne Benutzerkontext) auf die Web-API zugreifen. Für diese Art von Berechtigung ist die Zustimmung des Administrators erforderlich, sie steht nicht für systemeigene Clientanwendungen zur Verfügung.
+- Delegierte Berechtigungen: Ihre Clientanwendung muss als angemeldeter Benutzer auf die Web-API zugreifen. Der Zugriff ist aber durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden, sofern für die Berechtigung nicht die Zustimmung durch einen Administrator erforderlich ist.
 
   > [!NOTE]
   > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung. Benutzer müssen den zusätzlichen delegierten Berechtigungen weiterhin zur Laufzeit manuell zustimmen, sofern der Administrator nicht im Namen aller Benutzer die Zustimmung erteilt hat.
 
 ### <a name="add-application-credentials-or-permissions-to-access-web-apis"></a>Hinzufügen von Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Ihr Konto Zugriff auf mehrere Mandanten ermöglicht, wählen Sie oben rechts Ihr Konto aus und legen Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
 3. Wählen Sie im linken Navigationsbereich den **Azure Active Directory**-Dienst und dann **App-Registrierungen** aus. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und wählen Sie diese aus.
 
@@ -66,7 +66,7 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
   - So fügen Sie ein Kennwort hinzu:
     - Fügen Sie eine Beschreibung für Ihren Schlüssel hinzu.
     - Wählen Sie eine Dauer aus.
-    - Wählen Sie **Speichern**aus. Die Spalte ganz rechts enthält nach dem Speichern der Konfigurationsänderungen den Schlüsselwert. **Kopieren Sie den Schlüssel** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
+    - Wählen Sie **Speichern** aus. Die Spalte ganz rechts enthält nach dem Speichern der Konfigurationsänderungen den Schlüsselwert. **Kopieren Sie den Schlüssel** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
 
 5. So fügen Sie Berechtigungen für den Zugriff auf Ressourcen-APIs von Ihrem Client hinzu
   1. Wählen Sie auf der Seite **Einstellungen** zunächst den Abschnitt **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.
@@ -111,7 +111,7 @@ Im folgenden Abschnitt erfahren Sie, wie Sie Zugriffsbereiche verfügbar machen,
   ```
 
   > [!NOTE]
-  > Der Wert `id` muss programmgesteuert oder mit einem Tool zum Generieren von GUIDs wie [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) erstellt werden. Die `id` stellt einen eindeutigen Bezeichner für den Bereich dar, der von der Web-API bereitgestellt wird. Nachdem ein Client richtig mit Berechtigungen zum Zugreifen auf Ihre Web-API konfiguriert wurde, wird dafür von Azure AD ein OAuth 2.0-Zugriffstoken ausgestellt. Wenn der Client die Web-API aufruft, wird das Zugriffstoken präsentiert, für das der Bereichsanspruch (scp) auf die Berechtigungen festgelegt ist, die in der dazugehörigen Anwendungsregistrierung angefordert werden.
+  > Der Wert `id` muss programmgesteuert oder mit einem Tool zum Generieren von GUIDs (beispielsweise [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)) generiert werden. Die `id` stellt einen eindeutigen Bezeichner für den Bereich dar, der von der Web-API bereitgestellt wird. Nachdem ein Client richtig mit Berechtigungen zum Zugreifen auf Ihre Web-API konfiguriert wurde, wird dafür von Azure AD ein OAuth 2.0-Zugriffstoken ausgestellt. Wenn der Client die Web-API aufruft, wird das Zugriffstoken präsentiert, für das der Bereichsanspruch (scp) auf die Berechtigungen festgelegt ist, die in der dazugehörigen Anwendungsregistrierung angefordert werden.
   >
   > Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen verfügbar machen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Ihre Ressource kann den Zugriff auf die Web-API zur Laufzeit steuern, indem die Bereichsansprüche (`scp`) im erhaltenen OAuth 2.0-Zugriffstoken ausgewertet werden.
 

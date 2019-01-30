@@ -10,58 +10,79 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: pim
 ms.topic: overview
-ms.date: 03/07/2018
+ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 6720294fe9a3e166d0d6ef8f141e53212ef4b194
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: b5848b16624f3b8c307a022b9f79c61910736b83
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496797"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433729"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
-Mit Azure Active Directory Privileged Identity Management können Sie den Zugriff innerhalb Ihrer Organisation verwalten, steuern und überwachen. Dazu zählt der Zugriff auf Ressourcen in Azure AD, in Azure-Ressourcen und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) ist ein Dienst, mit dem Sie den Zugriff auf wichtige Ressourcen innerhalb Ihrer Organisation verwalten, steuern und überwachen können. Dazu zählt der Zugriff auf Ressourcen in Azure AD, in Azure-Ressourcen und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune.
 
-> [!NOTE]
-> Wenn Sie Privileged Identity Management für Ihren Mandanten aktivieren, ist für jeden Benutzer, der mit dem Dienst interagiert oder einen Nutzen daraus zieht, eine gültige Lizenz vom Typ Azure AD Premium P2 oder Enterprise Mobility + Security E5 (kostenpflichtig oder Testversion) erforderlich. Beispiele sind Benutzer bzw. Benutzer in einer Gruppe, für die Folgendes gilt:
->
->- Zuweisung der Rolle „Administrator für privilegierte Rollen“ 
->- Zuweisung als für andere Verzeichnisrollen verfügbar, die per PIM verwaltet werden können 
->- Möglichkeit zum Genehmigen/Ablehnen von Anforderungen in PIM 
->- Zuweisung einer Azure-Ressourcenrolle mit Just-in-Time- oder direkten (zeitbasierten) Zuweisungen  
->- Zuweisung zu einer Zugriffsüberprüfung
->
->Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fundamentals/active-directory-whatis.md).
+## <a name="why-should-i-use-pim"></a>Gründe für die Verwendung von PIM
 
-Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering halten, da sich dadurch das Risiko verringert, dass ein böswilliger Benutzer Zugriff darauf erhält oder dass ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert.  Benutzer müssen jedoch in Azure AD, Azure, Office 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Organisationen können Benutzern privilegierten Zugriff auf Azure-Ressourcen wie Abonnements und Azure AD gewähren. Dabei muss jedoch überwacht werden, wofür diese Benutzer ihre Administratorrechte nutzen. Azure AD Privileged Identity Management trägt dazu bei, das Risiko durch unverhältnismäßige oder unnötige Zugriffsrechte bzw. durch deren Missbrauch zu verringern.
+Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informationen oder Ressourcen möglichst gering halten, da sich dadurch das Risiko verringert, dass ein böswilliger Akteur Zugriff darauf erhält oder dass ein autorisierter Benutzer versehentlich eine sensible Ressource kompromittiert. Benutzer müssen jedoch in Azure AD, Azure, Office 365 oder SaaS-Apps weiterhin privilegierte Vorgänge ausführen. Organisationen können Benutzern privilegierten JIT-Zugriff (Just-In-Time) auf Azure-Ressourcen und Azure AD gewähren. Dabei muss jedoch überwacht werden, wofür diese Benutzer ihre Administratorrechte nutzen. PIM trägt dazu bei, das Risiko durch unverhältnismäßige oder unnötige Zugriffsrechte bzw. durch deren Missbrauch zu verringern.
 
-Azure AD Privileged Identity Management ermöglicht Ihrer Organisation Folgendes:
+## <a name="what-can-i-do-with-pim"></a>Welche Möglichkeiten bietet PIM?
 
-- Ermitteln, welchen Benutzern privilegierte Rollen für die Verwaltung von Azure-Ressourcen und welchen Benutzern Administratorrollen in Azure AD zugewiesen sind
-- Aktivieren von bedarfsgesteuertem Just-In-Time-Administratorzugriff auf Microsoft-Onlinedienste wie Office 365 und Intune sowie auf Azure-Ressourcen von Abonnements, Ressourcengruppen und Einzelressourcen wie virtuellen Computern 
-- Anzeigen eines Administratoraktivierungsverlaufs, der unter anderem Aufschluss über die von Administratoren vorgenommenen Änderungen an Azure-Ressourcen gibt
-- Erhalten von Benachrichtigungen bei geänderten Administratorzuweisungen
-- Erzwingen einer Genehmigung für die Aktivierung privilegierter Azure AD-Administratorrollen
-- Überprüfen der Mitgliedschaft von Administratorrollen und Erzwingen der Angabe einer Begründung bei längerer Mitgliedschaft
+PIM unterstützt Sie im Grunde dabei, das „Wer?“, „Was?“, „Wann?“, „Wo?“ und „Warum?“ für Ressourcen zu verwalten, die Ihnen wichtig sind. Im Anschluss sind einige der wichtigsten Features von PIM aufgeführt:
 
-In Azure AD kann Azure AD Privileged Identity Management die Benutzer verwalten, die den integrierten Azure AD-Organisationsrollen zugewiesen sind (beispielsweise „Globaler Administrator“). In Azure kann Azure AD Privileged Identity Management die Benutzer und Gruppen verwalten, die über Azure RBAC-Rollen zugewiesen werden (einschließlich „Besitzer“ oder „Mitwirkender“).
+- Gewähren von privilegiertem **Just-In-Time**-Zugriff auf Azure AD- und Azure-Ressourcen
+- Zuweisen von **zeitgebundenem** Zugriff auf Ressourcen (mit Start- und Enddatum)
+- Anfordern einer **Genehmigung** bei der Aktivierung privilegierter Rollen
+- Erzwingen der **mehrstufigen Authentifizierung** für alle Rollenaktivierungen
+- Anfordern einer **Begründung**, um nachvollziehen zu können, warum Benutzer eine Aktivierung vornehmen
+- Erhalten von **Benachrichtigungen**, wenn privilegierte Rollen aktiviert werden
+- Durchführen von **Zugriffsüberprüfungen**, um zu prüfen, ob Benutzer die Rollen weiterhin benötigen
+- Herunterladen eines **Überwachungsverlaufs** zur internen oder externen Überwachung
 
-## <a name="just-in-time-administrator-access"></a>Bedarfsabhängiger Administratorzugriff
+## <a name="prerequisites"></a>Voraussetzungen
 
-In der Vergangenheit konnten Sie einen Benutzer über das Azure-Portal, über andere Portale von Microsoft-Onlinediensten oder über die Azure AD-Cmdlets in Windows PowerShell einer Administratorrolle zuweisen. Dadurch wird der Benutzer zum **permanenten Administrator**, der in seiner zugewiesenen Rolle stets aktiv bleibt. Mit Azure AD Privileged Identity Management wird das Konzept **berechtigter Administratoren** eingeführt. Berechtigte Administratoren sollten Benutzer sein, die von Zeit zu Zeit (aber nicht ständig und jeden Tag) Zugriff mit erhöhten Rechten benötigen. Die Rolle ist inaktiv, bis der Benutzer Zugriff benötigt. Dann wird eine Aktivierung ausgeführt, und der Benutzer wird für einen zuvor festgelegten Zeitraum zu einem aktiven Administrator. Immer mehr Unternehmen entscheiden sich für diesen Ansatz, um den ständigen Administratorzugriff auf privilegierte Rollen zu verringern oder ganz zu beseitigen.
+Um PIM verwenden zu können, müssen Sie über eine der folgenden kostenpflichtigen Lizenzen oder Testlizenzen verfügen. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../fundamentals/active-directory-whatis.md).
 
+- Azure AD Premium P2
+- Enterprise Mobility + Security (EMS) E5
+
+Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [License requirements to use PIM](subscription-requirements.md) (Lizenzanforderungen für die Verwendung von PIM).
 
 ## <a name="terminology"></a>Begriff
 
-*Benutzer mit berechtigter Rolle:* Ein Benutzer mit berechtigter Rolle ist ein Benutzer in Ihrer Organisation, der einer Rolle in Azure AD als berechtigt zugewiesen ist (Rolle erfordert Aktivierung).
+Machen Sie sich zum besseren Verständnis von PIM und der dazugehörigen Dokumentation mit den folgenden Begriffen vertraut:
 
-*Delegierte genehmigende Person:* Einzelne oder mehrere Personen oder Gruppen in Ihrem Azure AD, die für die Genehmigung von Anforderungen der Rollenaktivierung verantwortlich sind, sind genehmigende Personen.
+| Begriff oder Konzept | Rollenzuweisungskategorie | Beschreibung |
+| --- | --- | --- |
+| Berechtigt | Typ | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
+| aktiv | Typ | Eine Rollenzuweisung, bei der ein Benutzer keine Aktion ausführen muss, um die Rolle nutzen zu können. Bei als aktiv zugewiesenen Benutzern sind die Berechtigungen der Rolle zugewiesen. |
+| aktivieren |  | Das Ausführen mindestens einer Aktion, um die Rolle nutzen zu können, zu der ein Benutzer berechtigt ist. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. |
+| zugewiesen | Zustand | Ein Benutzer mit einer Rollenzuweisung vom Typ „aktiv“. |
+| aktiviert | Zustand | Ein Benutzer mit einer Rollenzuweisung vom Typ „berechtigt“, der die Aktionen zum Aktivieren der Rolle ausgeführt hat und nun aktiv ist. |
+| dauerhaft berechtigt | Dauer | Eine Rollenzuweisung, bei der ein Benutzer immer zum Aktivieren der Rolle berechtigt ist. |
+| dauerhaft aktiv | Dauer | Eine Rollenzuweisung, bei der ein Benutzer die Rolle jederzeit ohne vorherige Aktion verwenden kann. |
+| Ablauf (berechtigt) | Dauer | Eine Rollenzuweisung, bei der ein Benutzer innerhalb eines angegebenen Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
+| Ablauf (aktiv) | Dauer | Eine Rollenzuweisung, bei der ein Benutzer die Rolle innerhalb eines angegebenen Zeitraums (Start- und Enddatum) ohne vorherige Aktion verwenden kann. |
+
+## <a name="what-does-pim-look-like"></a>Wie sieht PIM aus?
+
+Nachdem Sie PIM eingerichtet haben, werden im linken Navigationsmenü die Optionen **Aufgaben**, **Verwalten**, und **Aktivität** angezeigt. Als Administrator können Sie zwischen der Verwaltung von **Azure AD-Rollen** und **Azure-Ressourcenrollen** wählen. Wenn Sie die Art der zu verwaltenden Rollen auswählen, werden ähnliche Optionen für diesen Rollentyp angezeigt.
+
+![Screenshot von PIM im Azure-Portal](./media/pim-configure/pim-overview.png)
+
+## <a name="who-can-do-what-in-pim"></a>Wer kann in PIM welche Aktionen ausführen?
+
+Wenn Sie die erste Person sind, die PIM verwendet, werden Ihnen automatisch die Rollen [Sicherheitsadministrator](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) und [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) im Verzeichnis zugewiesen.
+
+Für Azure AD-Rollen gilt: Nur ein Benutzer mit der Rolle eines Administrators für privilegierte Rollen kann Zuweisungen für andere Administratoren in PIM verwalten. Sie können [Zugriff für andere Administratoren zum Verwalten von PIM gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können Azure AD-Rollenzuweisungen in PIM anzeigen.
+
+Bei Azure-Ressourcenrollen können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren in PIM verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren oder Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben nicht standardmäßig Zugriff auf Zuweisungen zu Azure-Ressourcenrollen in PIM.
 
 ## <a name="scenarios"></a>Szenarien
 
-Privileged Identity Management unterstützt folgende Szenarien:
+PIM unterstützt folgende Szenarien:
 
 **Als Administrator für privilegierte Rollen haben Sie folgende Möglichkeiten:**
 
@@ -69,7 +90,7 @@ Privileged Identity Management unterstützt folgende Szenarien:
 - Festlegen von Benutzern und/oder Gruppen als genehmigende Personen für die Genehmigung von Anforderungen
 - Anzeigen des Anforderungs- und Genehmigungsverlaufs für alle privilegierten Rollen
 
-**Als festgelegte genehmigende Person können Sie:**
+**Als genehmigende Person haben Sie folgende Möglichkeiten:**
 
 - Anzeigen ausstehender Genehmigungen (Anforderungen)
 - Genehmigen oder Ablehnen von Anforderungen von Rechteerweiterungen für Rollen (einzeln und/oder mehrere)
@@ -81,102 +102,8 @@ Privileged Identity Management unterstützt folgende Szenarien:
 - Anzeigen des Status Ihrer Aktivierungsanforderung
 - Fertigstellen Ihrer Aufgabe in Azure AD, wenn die Aktivierung genehmigt wurde
 
-## <a name="who-can-do-what-in-pim"></a>Berechtigungen und Rollen
-
-Wenn Sie die erste Person sind, die PIM verwendet, werden Ihnen automatisch die Rollen [Sicherheitsadministrator](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) und [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) im Verzeichnis zugewiesen.
-
-Für Azure AD-Rollen gilt: Nur ein Benutzer mit der Rolle eines Administrators für privilegierte Rollen kann Zuweisungen für andere Administratoren in PIM verwalten. Sie können [Zugriff für andere Administratoren zum Verwalten von PIM gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können Zuweisungen zu Azure AD-Rollen in PIM anzeigen.
-
-Bei Azure-Ressourcenrollen können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren in PIM verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren oder Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben nicht standardmäßig Zugriff auf Zuweisungen zu Azure-Ressourcenrollen in PIM.
-
-## <a name="privileged-identity-management-overview-entry-point"></a>Übersicht über Privileged Identity Management (Einstiegspunkt)
-
-Azure AD Privileged Identity Management unterstützt die Verwaltung von Azure AD-Verzeichnisrollen sowie von Rollen für Azure-Ressourcen. Die Funktion von Rollen für Azure-Ressourcen unterscheidet sich von Administratorrollen in Azure AD. Azure-Ressourcenrollen bieten präzise Berechtigungen für die Ressource, für die sie zugewiesen sind, sowie für alle untergeordneten Ressourcen in der Ressourcenhierarchie (Vererbung). Weitere Informationen zu RBAC, Ressourcenhierarchie und Vererbung finden Sie [hier](../../role-based-access-control/role-assignments-portal.md). PIM für Azure AD-Verzeichnisrollen und Azure-Ressourcen kann über den entsprechenden Link im Abschnitt „Verwalten“ verwaltet werden. Zu diesem Abschnitt gelangen Sie über das linke Navigationsmenü in der PIM-Übersicht.
-
-Mit PIM können Sie über den Aufgabenabschnitt des linken Navigationsmenüs komfortabel Rollen aktivieren sowie ausstehende Aktivierungen/Anforderungen, ausstehende Genehmigungen (für Azure AD-Verzeichnisrollen) und Überprüfungen mit ausstehender Antwort anzeigen.
-
-Wenn Sie von der Übersicht aus auf eines der Elemente im Aufgabenmenü zugreifen, enthält die daraufhin angezeigte Ansicht Ergebnisse sowohl für Azure AD-Verzeichnisrollen als auch für Azure-Ressourcenrollen.
-
-![Schnellstart](./media/pim-configure/quick-start.png)
-
-Unter „My roles“ (Meine Rollen) befindet sich eine Liste mit aktiven und berechtigten Rollenzuweisungen für Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen. Weitere Informationen zum Aktivieren berechtigter Rollenzuweisungen finden Sie [hier](pim-how-to-activate-role.md).
-
-Zur Aktivierung von Rollen für Azure-Ressourcen wird eine neue Umgebung eingeführt, in der berechtigte Mitglieder einer Rolle die Aktivierung für einen späteren Zeitpunkt planen und eine bestimmte Aktivierungsdauer auswählen können, die innerhalb des von Administratoren festgelegten Maximalbereichs liegt.
-
-![](./media/pim-configure/activations.png)
-
-Falls eine geplante Aktivierung nicht mehr benötigt wird, können Benutzer die ausstehende Anforderung abbrechen, indem sie über das linke Navigationsmenü zu den ausstehenden Anforderungen navigieren und für die entsprechende Anforderung auf die Schaltfläche „Abbrechen“ klicken.
-
-![Ausstehende Anforderungen](./media/pim-configure/pending-requests.png)
-
-## <a name="privileged-identity-management-admin-dashboard"></a>Privileged Identity Management-Administator-Dashboard
-
-Azure AD Privileged Identity Manager bietet ein Administratoren-Dashboard, das wichtige Informationen enthält, wie etwa:
-
-* Warnungen, die auf Möglichkeiten zur Erhöhung der Sicherheit hinweisen
-* Anzahl der Benutzer, die jeder privilegierten Rolle zugewiesen sind  
-* Anzahl berechtigter und permanenter Administratoren
-* Ein Diagramm der Aktivierungen privilegierter Rollen in Ihrem Verzeichnis
-* Die Anzahl von Just-In-Time-Zuweisungen, zeitgebundenen Zuweisungen und permanenten Zuweisungen für Azure-Ressourcenrollen
-* Benutzer und Gruppen mit neuen Rollenzuweisungen in den letzten 30 Tagen (Azure-Ressourcenrollen)
-
-
-![PIM-Dashboard – Screenshot](./media/pim-configure/PIM_Admin_Overview.png)
-
-## <a name="privileged-role-management"></a>Verwaltung privilegierter Rollen
-
-Mit Azure AD Privileged Identity Management können Sie die Administratoren verwalten, indem Sie den einzelnen Rollen permanente oder berechtigte Administratoren für Azure AD-Verzeichnisrollen hinzufügen oder selbige entfernen. Mit PIM für Azure-Ressourcen können Besitzer, Benutzerzugriffsadministratoren und globale Administratoren, die die Verwaltung von Abonnements in ihrem Mandanten ermöglichen, Azure-Ressourcenrollen Benutzer oder Gruppen als berechtigt (Just-In-Time-Zugriff) oder zeitgebunden (keine Aktivierung erforderlich) zuweisen – entweder mit einem Start- und Endzeitpunkt (Datum und Uhrzeit) oder permanent (sofern in den Rolleneinstellungen aktiviert).
-
-![Hinzufügen/Entfernen von PIM-Administratoren – Screenshot](./media/pim-configure/PIM_AddRemove.png)
-
-## <a name="configure-the-role-activation-settings"></a>Konfigurieren der Rollenaktivierungseinstellungen
-
-Mithilfe der [Rolleneinstellungen](pim-how-to-change-default-settings.md) können Sie die Eigenschaften der Aktivierung der berechtigten Rolle für Azure AD-Verzeichnisrollen konfigurieren:
-
-* Dauer des Rollenaktivierungszeitraums
-* Benachrichtigung zur Rollenaktivierung
-* Informationen, die ein Benutzers während des Rollenaktivierungsprozesses bereitstellen muss
-* Dienstticket oder Vorfallnummer
-* [Anforderungen an den Genehmigungsworkflow](./azure-ad-pim-approval-workflow.md)
-
-![PIM-Einstellungen – Administratoraktivierung – Screenshot](./media/pim-configure/PIM_Settings_w_Approval_Disabled.png)
-
-Beachten Sie, dass in der Abbildung die Schaltflächen für **Multi-Factor Authentication** deaktiviert sind. Für bestimmte, sehr privilegierte Rollen ist MFA für erhöhten Schutz erforderlich.
-
-Mit Rolleneinstellungen für Azure-Ressourcenrollen können Administratoren Einstellungen für Just-In-Time- und Direktzuweisungen konfigurieren:
-
-- Die Möglichkeit, Benutzer oder Gruppen Rollen ohne Enddatum/-uhrzeit zuzuweisen (permanente Zuweisung)
-- Die Standarddauer einer Zuweisung (sofern nicht permanent)
-- Die maximale Aktivierungsdauer (Aktivierung eines berechtigten Rollenmitglieds)
-- Die Informationen, die ein Benutzer im Rahmen der Rollenaktivierung (Just-In-Time-Zuweisungen) oder im Rahmen des Zuweisungsprozesses (Direktzuweisungen) angeben muss
-
-![](./media/pim-configure/role-settings-details.png)
-
-## <a name="role-activation"></a>Rollenaktivierung
-
-Um eine [Rolle zu aktivieren](pim-how-to-activate-role.md), fordert ein berechtigter Administrator eine zeitgebundene „Aktivierung“ für die Rolle an. Die Aktivierung kann über die Option **Meine Rolle aktivieren** in Azure AD Privileged Identity Management angefordert werden.
-
-Ein Administrator, der eine Rolle aktivieren möchte, muss Azure AD Privileged Identity Management im Azure-Portal initialisieren.
-
-Die Rollenaktivierung ist anpassbar. In den PIM-Einstellungen können Sie die Dauer der Aktivierung sowie die Informationen festlegen, die der Administrator angeben muss, um die Rolle zu aktivieren.
-
-![Anforderung der Rollenaktivierung durch PIM-Administrator – Screenshot](./media/pim-configure/PIM_RequestActivation.png)
-
-## <a name="review-role-activity"></a>Überprüfen der Rollenaktivität
-
-Ihnen stehen zwei Möglichkeiten zur Verfügung, um nachzuverfolgen, wie Ihre Mitarbeiter und Administratoren privilegierte Rollen nutzen. Die erste Option verwendet den [Verlauf der Verzeichnisrollenüberwachung](pim-how-to-use-audit-log.md). Im Überwachungsverlauf werden Änderungen an privilegierten Rollenzuweisungen, der Rollenaktivierungsverlauf sowie Änderungen an Einstellungen für Azure-Ressourcenrollen nachverfolgt. 
-
-![PIM-Aktivierungsverlauf – Screenshot](./media/pim-configure/PIM_ActivationHistory.png)
-
-Die zweite Option besteht darin, regelmäßige [Zugriffsüberprüfungen](pim-how-to-start-security-review.md)einzurichten. Diese Zugriffsüberprüfungen können von einem zugewiesenen Prüfer (wie etwa einem Teamleiter) durchgeführt werden, oder die Mitarbeiter führen die Überprüfung selbst durch. Dies ist die beste Möglichkeit, um zu prüfen, wer noch Zugriff benötigt und wer nicht mehr.
-
-## <a name="azure-ad-pim-at-subscription-expiration"></a>Azure AD PIM bei Abonnementablauf
-
-Zur Verwendung von Azure AD PIM muss ein Mandant in seinem Mandanten über ein Testabonnement oder kostenpflichtiges Abonnement vom Typ „Azure AD Premium P2“ (oder EMS E5) verfügen.  Darüber hinaus müssen den Administratoren des Mandanten Lizenzen zugewiesen werden.  Das gilt insbesondere für Administratoren in Azure AD-Rollen, die über Azure AD PIM verwaltet werden, für Administratoren in Azure RBAC-Rollen, die über Azure AD PIM verwaltet werden, und für Benutzer ohne Administratorrechte, die Zugriffsüberprüfungen durchführen.
-Wenn Ihre Organisation Azure AD Premium P2 nicht verlängert oder der Testzeitraum abläuft, stehen die Azure AD PIM-Features in Ihrem Mandanten nicht mehr zur Verfügung, berechtigte Rollenzuweisungen werden entfernt, und Benutzer können keine Rollen mehr aktivieren. Weitere Informationen finden Sie in den [Abonnementanforderungen von Azure AD PIM](./subscription-requirements.md).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Einstieg in die Verwendung von PIM](pim-getting-started.md)
-- [Abonnementanforderungen für die Verwendung von PIM](subscription-requirements.md)
+- [License requirements to use PIM](subscription-requirements.md) (Lizenzanforderungen für die Verwendung von PIM)
 - [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9670d67fa1eb79e9e5e8c81726c10cc78767fb74
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165316"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435463"
 ---
 # <a name="what-is-azure-data-box-gateway-preview"></a>Was ist Azure Data Box Gateway (Vorschauversion)? 
 
@@ -39,7 +39,10 @@ Data Box Gateway hat die folgenden Vorteile:
 
 - **Einfache Datenübertragung**: Macht das Verschieben von Daten in und aus Azure Storage so einfach wie das Arbeiten mit einer lokalen Netzwerkfreigabe.  
 - **Hohe Leistung**: Erleichtert mit leistungsstarken Übertragungsfunktionen den Transport von Netzwerkdaten aus und in Azure. 
-- **Schneller Zugriff**: Speichert die zuletzt verwendeten Dateien für einen schnellen Zugriff auf lokale Dateien im Cache zwischen.  
+- **Schneller Zugriff und hohe Datenerfassungsrate während der Geschäftszeiten**: Data Box Gateway verfügt über einen lokalen Cache, den Sie bei der Bereitstellung des virtuellen Geräts als lokale Kapazitätsgröße definieren. Die Datenträgergröße muss unter Berücksichtigung der [Mindestanforderungen des virtuellen Geräts](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device) angegeben werden. Der lokale Cache hat folgende Vorteile:
+    - Der lokale Cache ermöglicht eine hohe Datenerfassungsrate. Wenn zu Spitzenzeiten große Datenmengen erfasst werden, kann der Cache die Daten aufnehmen und in die Cloud hochladen.
+    - Der lokale Cache ermöglicht schnellen Lesezugriff bis zu einem bestimmten Schwellenwert. Bis das Gerät zu 50–60 Prozent voll ist, werden alle Lesevorgänge für das Gerät über den Cache abgewickelt, um sie zu beschleunigen. Übersteigt die Speicherplatznutzung auf dem Gerät diesen Schwellenwert, werden lokale Dateien auf dem Gerät entfernt. 
+ 
 - **Eingeschränkte Bandbreitenauslastung**: Daten können in Azure geschrieben werden, auch wenn das Netzwerk gedrosselt ist, um die Nutzung während der Hauptgeschäftszeiten einzuschränken.  
 
 ## <a name="key-capabilities"></a>Wichtige Funktionen
@@ -67,7 +70,7 @@ Das virtuelle Data Box Gateway-Gerät weist die folgenden Merkmale auf:
 | Virtuelle Prozessoren (Kerne)   | Mindestens 4 |            
 | Arbeitsspeicher  | Mindestens 8 GB|
 | Verfügbarkeit|Einzelner Knoten|
-| Datenträger| Betriebssystem-Datenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
+| Datenträger| Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
 | Netzwerkschnittstellen|Mindestens eine virtuelle Netzwerkschnittstelle|
 | Native Dateifreigabeprotokolle|SMB und NFS  |
 | Sicherheit| Authentifizierung, um den Zugriff auf Gerät und Daten zu entsperren <br> Verschlüsselung der Daten während der Übertragung mithilfe von AES-256-BitLocker-Verschlüsselung|

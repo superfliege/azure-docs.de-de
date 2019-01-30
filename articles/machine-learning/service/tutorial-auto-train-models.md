@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580517"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823011"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
@@ -44,11 +44,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > * [Tutorial zur Datenvorbereitung](tutorial-data-prep.md) ausgeführt
-> * Eine konfigurierte Umgebung für automatisiertes maschinelles Lernen. Beispiele sind Azure Notebooks, eine lokale Python-Umgebung oder eine Data Science Virtual Machine-Umgebung. Siehe [Einrichten des automatisierten maschinellen Lernens](samples-notebooks.md).
+> * Eine konfigurierte Umgebung für automatisiertes maschinelles Lernen. Beispiele wären etwa [Azure Notebooks](https://notebooks.azure.com/), eine lokale Python-Umgebung oder eine Data Science Virtual Machine-Instanz. Siehe [Einrichten des automatisierten maschinellen Lernens](samples-notebooks.md).
 
 ## <a name="get-the-notebook"></a>Abrufen des Notebooks
 
-Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) bereitgestellt. Führen Sie das Notebook `regression-part2-automated-ml.ipynb` in Azure Notebooks oder auf Ihrem eigenen Jupyter Notebook-Server aus.
+Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) bereitgestellt. Führen Sie das Notebook `regression-part2-automated-ml.ipynb` in [Azure Notebooks](https://notebooks.azure.com/) oder auf Ihrem eigenen Jupyter Notebook-Server aus.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -66,9 +66,15 @@ import logging
 import os
 ```
 
+Wenn Sie das Tutorial in Ihrer eigenen Python-Umgebung durchführen, verwenden Sie den folgenden Befehl, um die erforderlichen Pakete zu installieren:
+
+```shell
+pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
+```
+
 ## <a name="configure-workspace"></a>Konfigurieren des Arbeitsbereichs
 
-Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein `Workspace` ist eine Klasse, die Ihre Azure-Abonnement- und -Ressourceninformationen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen. 
+Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein `Workspace` ist eine Klasse, die Ihre Azure-Abonnement- und -Ressourceninformationen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen.
 
 `Workspace.from_config()` liest die Datei **aml_config/config.json** und lädt die Details in ein Objekt namens `ws`.  `ws` wird im restlichen Code in diesem Tutorial verwendet.
 
@@ -95,7 +101,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>Erkunden von Daten
 
-Verwenden Sie das im vorherigen Tutorial erstellte Datenflussobjekt. Öffnen Sie den Datenfluss, führen Sie ihn aus, und überprüfen Sie die Ergebnisse:
+Verwenden Sie das im vorherigen Tutorial erstellte Datenflussobjekt. Im ersten Teil dieses Tutorials wurden die New Yorker Taxidaten bereinigt, um sie in einem Machine Learning-Modell verwenden zu können. Nun verwenden Sie verschiedene Features aus dem Dataset und ermöglichen es einem automatisierten Modell, Beziehungen zwischen den Features und dem Preis einer Taxifahrt herzustellen. Öffnen Sie den Datenfluss, führen Sie ihn aus, und überprüfen Sie die Ergebnisse:
 
 
 ```python
@@ -605,27 +611,27 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 y_train.values.flatten()
 ```
 
-Sie haben nun die notwendigen Pakete und Daten, um Ihr Modell automatisch zu trainieren.
+Der Zweck dieses Schritts besteht darin, Datenpunkte zum Testen des fertigen Modells zu erhalten, mit denen das Modell nicht trainiert wurde. Anhand dieser Datenpunkte kann dann die tatsächliche Genauigkeit beurteilt werden. Anders ausgedrückt: Ein gut trainiertes Modell muss zutreffende Vorhersagen auf der Grundlage von Daten generieren können, die dem Modell noch nicht bekannt waren. Sie haben nun die notwendigen Pakete und Daten, um Ihr Modell automatisch zu trainieren.
 
 ## <a name="automatically-train-a-model"></a>Automatisches Trainieren eines Modells
 
 Führen Sie die folgenden Schritte aus, um ein Modell automatisch zu trainieren:
-1. Definieren Sie Einstellungen für die Experimentausführung.
-1. Übermitteln Sie das Experiment zur Modelloptimierung.
+1. Definieren Sie Einstellungen für die Experimentausführung. Fügen Sie Ihre Trainingsdaten an die Konfiguration an, und ändern Sie Einstellungen, die den Trainingsprozess steuern.
+1. Übermitteln Sie das Experiment zur Modelloptimierung. Nach Übermittlung des Experiments durchläuft der Prozess verschiedene Machine Learning-Algorithmen und Hyperparametereinstellungen unter Berücksichtigung der von Ihnen definierten Einschränkungen. Er optimiert eine Genauigkeitsmetrik, um das am besten geeignete Modell auszuwählen.
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>Definieren von Einstellungen für die automatische Generierung und Optimierung
 
-Definieren Sie die Experimentparameter und Modelleinstellungen für die automatische Generierung und Optimierung. Die vollständige Liste mit den Einstellungen finden Sie [hier](how-to-configure-auto-train.md).
+Definieren Sie die Experimentparameter und Modelleinstellungen für die automatische Generierung und Optimierung. Die vollständige Liste mit den Einstellungen finden Sie [hier](how-to-configure-auto-train.md). Mit diesen Standardeinstellungen dauert die Übermittlung des Experiments etwa zehn bis 15 Minuten. Durch Verringern von `iterations` oder `iteration_timeout_minutes` können Sie die Laufzeit jedoch verkürzen.
 
 
-|Eigenschaft| Wert in diesem Tutorial |BESCHREIBUNG|
+|Eigenschaft| Wert in diesem Tutorial |Beschreibung|
 |----|----|---|
-|**iteration_timeout_minutes**|10|Zeitlimit in Minuten für jede Iteration.|
-|**iterations**|30|Anzahl von Iterationen. In jeder Iteration wird das Modell mit den Daten mit einer bestimmten Pipeline trainiert.|
-|**primary_metric**| spearman_correlation | Metrik, die Sie optimieren möchten.|
-|**preprocess**| True | Bei der Verwendung von **True** kann das Experiment die Eingabe vorverarbeiten.|
+|**iteration_timeout_minutes**|10|Zeitlimit in Minuten für jede Iteration. Verringern Sie diesen Wert, um die Gesamtlaufzeit zu verringern.|
+|**iterations**|30|Anzahl von Iterationen. In jeder Iteration wird ein neues Machine Learning-Modell mit Ihren Daten trainiert. Hierbei handelt es sich um den primären Wert, der sich auf die Gesamtlaufzeit auswirkt.|
+|**primary_metric**| spearman_correlation | Metrik, die Sie optimieren möchten. Das am besten geeignete Modell wird basierend auf dieser Metrik ausgewählt.|
+|**preprocess**| True | Bei Verwendung von **True** kann das Experiment die Eingabedaten vorverarbeiten und beispielsweise fehlende Daten behandeln, Text in numerische Daten umwandeln und Ähnliches.|
 |**verbosity**| logging.INFO | Steuert den Protokollierungsgrad.|
-|**n_cross_validationss**|5|Anzahl von Kreuzvalidierungen.|
+|**n_cross_validations**|5|Anzahl von Kreuzvalidierungsaufteilungen, die ausgeführt werden sollen, wenn keine Überprüfungsdaten angegeben sind.|
 
 
 
@@ -640,6 +646,7 @@ automl_settings = {
 }
 ```
 
+Verwenden Sie Ihre definierten Trainingseinstellungen als Parameter für ein Objekt vom Typ `AutoMLConfig`. Geben Sie außerdem Ihre Trainingsdaten und die Art des Modells (in diesem Fall: `regression`) an.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -664,6 +671,8 @@ experiment=Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
+Aktualisierungen werden während der Experimentausführung live in der Ausgabe angezeigt. Für die einzelnen Iterationen werden jeweils die Art des Modells, die Ausführungsdauer und die Trainingsgenauigkeit angezeigt. Im Feld `BEST` wird die beste Trainingsbewertung auf der Grundlage Ihres Metriktyps nachverfolgt.
+
     Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
     *******************************************************************************************
     ITERATION: The iteration being evaluated.
@@ -672,7 +681,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     *******************************************************************************************
-    
+
      ITERATION   PIPELINE                                       DURATION      METRIC      BEST
              0   MaxAbsScaler ExtremeRandomTrees                0:00:08       0.9447    0.9447
              1   StandardScalerWrapper GradientBoosting         0:00:09       0.9536    0.9536
@@ -724,7 +733,7 @@ RunDetails(local_run).show()
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Option 2: Abrufen und Untersuchen aller Ausführungsiterationen in Python
 
-Sie können auch den Verlauf jedes Experiments abrufen und die einzelnen Metriken für jede Iterationsausführung untersuchen:
+Sie können auch den Verlauf der einzelnen Experimente abrufen und die individuellen Metriken für die einzelnen Iterationsausführungen untersuchen. Wenn Sie RMSE (root_mean_squared_error) für die einzelnen Modellausführungen betrachten, sehen Sie, dass die vorhergesagten Preise für Taxifahrten bei den meisten Iterationen innerhalb eines angemessenen Bereichs (3–4 USD) liegen.
 
 ```python
 children = list(local_run.get_children())
@@ -1081,28 +1090,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-## <a name="register-the-model"></a>Registrieren des Modells
-
-Registrieren Sie das Modell in Ihrem Azure Machine Learning Service-Arbeitsbereich:
-
-
-```python
-description = 'Automated Machine Learning Model'
-tags = None
-local_run.register_model(description=description, tags=tags)
-local_run.model_id # Use this id to deploy the model as a web service in Azure
-```
-
 ## <a name="test-the-best-model-accuracy"></a>Testen der Genauigkeit des besten Modells
 
-Verwenden Sie das beste Modell, um Vorhersagen für das Testdataset auszuführen. Die Funktion `predict` verwendet das beste Modell und sagt die Werte von y (**Fahrtkosten**) aus dem Dataset `x_test` voraus. Geben Sie die ersten zehn vorhergesagten Kostenwerte aus `y_predict` aus:
+Verwenden Sie das beste Modell, um Vorhersagen für das Testdataset auszuführen und Preise für Taxifahrten vorauszusagen. Die Funktion `predict` verwendet das beste Modell und sagt die Werte von y (**Fahrtkosten**) aus dem Dataset `x_test` voraus. Geben Sie die ersten zehn vorhergesagten Kostenwerte aus `y_predict` aus:
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Erstellen Sie ein Punktdiagramm, um den Vergleich der vorhergesagten Kostenwerte mit den tatsächlichen Kostenwerten zu visualisieren. Im folgenden Code wird das Merkmal `distance` als X-Achse verwendet und die Fahrtkosten `cost` als Y-Achse. Um die Varianz der vorhergesagten Kosten bei jedem Fahrtstreckenwert zu vergleichen, werden die ersten 100 vorhergesagten und tatsächlichen Kostenwerte als separate Reihen erstellt. Die Untersuchung des Diagramms zeigt, dass die Beziehung zwischen Strecke und Kosten nahezu linear ist. Zudem liegen die vorhergesagten Kostenwerte in den meisten Fällen sehr nahe bei den tatsächlichen Kostenwerten für die gleiche Fahrtstrecke.
+Erstellen Sie ein Punktdiagramm, um den Vergleich der vorhergesagten Kostenwerte mit den tatsächlichen Kostenwerten zu visualisieren. Im folgenden Code wird das Merkmal `distance` als X-Achse verwendet und die Fahrtkosten `cost` als Y-Achse. Um die Varianz der vorhergesagten Kosten bei jedem Fahrtstreckenwert zu vergleichen, werden die ersten 100 vorhergesagten und tatsächlichen Kostenwerte als separate Reihen erstellt. Die Untersuchung des Diagramms zeigt, dass die Beziehung Entfernung/Kosten nahezu linear ist und die vorhergesagten Kostenwerte in den meisten Fällen sehr nahe bei den tatsächlichen Kostenwerten für die gleiche Entfernung liegen.
 
 ```python
 import matplotlib.pyplot as plt
@@ -1127,7 +1124,7 @@ plt.show()
 
 ![Vorhersagepunktdiagramm](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-Berechnen Sie den `root mean squared error` der Ergebnisse. Verwenden Sie den Datenrahmen `y_test`. Konvertieren Sie ihn in eine Liste, die Sie mit den vorhergesagten Werten vergleichen. Die Funktion `mean_squared_error` akzeptiert zwei Wertarrays und berechnet den durchschnittlichen quadratischen Fehler zwischen den Arrays. Die Quadratwurzel des Ergebnisses ergibt einen Fehler in der gleichen Maßeinheit wie die y-Variable (**Kosten**). Dieser Fehler gibt Aufschluss darüber, wie weit Ihre Vorhersagen ungefähr vom tatsächlichen Wert abweichen:
+Berechnen Sie den `root mean squared error` der Ergebnisse. Verwenden Sie den Datenrahmen `y_test`. Konvertieren Sie ihn in eine Liste, die Sie mit den vorhergesagten Werten vergleichen. Die Funktion `mean_squared_error` akzeptiert zwei Wertarrays und berechnet den durchschnittlichen quadratischen Fehler zwischen den Arrays. Die Quadratwurzel des Ergebnisses ergibt einen Fehler in der gleichen Maßeinheit wie die y-Variable (**Kosten**). Dieser Fehler gibt Aufschluss darüber, wie weit die Vorhersagen des Preises für Taxifahrten ungefähr vom tatsächlichen Preis entfernt sind:
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1165,6 +1162,8 @@ print(1 - mean_abs_percent_error)
 
     Model Accuracy:
     0.8945484613043041
+
+Anhand der endgültigen Metriken für die Vorhersagegenauigkeit sehen Sie, dass das Modell die Preise von Taxifahrten auf der Grundlage der Features des Datasets ziemlich gut vorhersagen kann (in der Regel mit einer Genauigkeit von +/-3,00 USD). Der traditionelle Modellentwicklungsprozess für das maschinelle Lernen ist sehr ressourcenintensiv und erfordert erhebliches Fachwissen und großen Zeitaufwand, um die Ergebnisse von Dutzenden von Modellen auszuführen und zu vergleichen. Mit automatisiertem maschinellem Lernen können Sie schnell zahlreiche verschiedene Modelle für Ihr Szenario testen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -3,7 +3,7 @@ title: 'Installationsübersicht: Azure AD Connect und Azure AD Connect Health | 
 description: Dieses Dokument bietet eine Übersicht über die Installationsoptionen und -pfade, die für Azure AD Connect und Connect Health verfügbar sind.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 149c6436101750811af9ba3051ab715dd9eac021
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253192"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462334"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -55,7 +55,7 @@ Sie sollten sich auch auf [betriebliche](how-to-connect-sync-operations.md) Prob
 |Unterstützte Topologien | [Topologien für Azure AD Connect](plan-connect-topologies.md)|
 |Entwurfskonzepte | [Entwurfskonzepte für Azure AD Connect](plan-connect-design-concepts.md)|
 |Für die Installation verwendete Konten | [Weitere Informationen zu den Anmeldeinformationen und Berechtigungen von Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Operative Planung | [Azure AD Connect Sync: Operative Aufgaben und Überlegungen](how-to-connect-sync-operations.md)|
+|Operative Planung | [Azure AD Connect-Synchronisierung: Operative Aufgaben und Überlegungen](how-to-connect-sync-operations.md)|
 |Optionen für die Benutzeranmeldung | [Azure AD Connect-Optionen für die Benutzeranmeldung](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurieren der Synchronisierungsfunktionen
@@ -158,13 +158,13 @@ Das Azure AD Connect Health-Portal zeigt Warnungen, Leistungsüberwachungsdaten 
     
 ![Azure AD Connect Health-Portal](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **Schnellstart**: Bei Auswahl dieser Option wird das Blatt **Schnellstart** geöffnet. Sie können Sie den Azure AD Connect Health-Agent herunterladen, indem Sie **Tools abrufen** auswählen. Sie können auch auf die Dokumentation zugreifen und Feedback geben.
-* **Azure Active Directory Connect (Sync)**: Diese Option zeigt Ihre Azure AD Connect-Server, die von Azure AD Connect Health derzeit überwacht werden. Der Eintrag **Synchronisierungsfehler** zeigt allgemeine Synchronisierungsfehler des ersten integrierten Synchronisierungsdiensts nach Kategorien. Wenn Sie den Eintrag **Synchronisierungsdienste** auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md).
-* **Active Directory-Verbunddienste**: Diese Option zeigt alle AD FS-Dienste, die aktuell von Azure AD Connect Health überwacht werden. Wenn Sie eine Instanz auswählen, wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet, darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md).
-* **Active Directory Domain Services**: Diese Option zeigt alle AD DS-Gesamtstrukturen, die von Azure AD Connect Health derzeit überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
+* **Schnellstart**: Wenn Sie diese Option auswählen, wird das Blatt **Schnellstart** geöffnet. Sie können Sie den Azure AD Connect Health-Agent herunterladen, indem Sie **Tools abrufen** auswählen. Sie können auch auf die Dokumentation zugreifen und Feedback geben.
+* **Azure Active Directory Connect (Sync)**: Diese Option zeigt Ihre Azure AD Connect-Server an, die derzeit von Azure AD Connect Health überwacht werden. Der Eintrag **Synchronisierungsfehler** zeigt allgemeine Synchronisierungsfehler des ersten integrierten Synchronisierungsdiensts nach Kategorien. Wenn Sie den Eintrag **Synchronisierungsdienste** auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md).
+* **Active Directory-Verbunddienste**: Diese Option zeigt alle AD FS-Dienste an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Instanz auswählen, wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet, darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md).
+* **Active Directory Domain Services**: Diese Option zeigt alle AD DS-Gesamtstrukturen an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
 * **Konfigurieren**: In diesem Abschnitt können Sie folgende Optionen aktivieren oder deaktivieren:
 
-  - Der Eintrag **Einstellungen** umfasst grundlegende Konfigurationen der Agents. Die Einstellung für automatische Upgrades ermöglicht die automatische Aktualisierung des Azure AD Connect Health-Agents auf die aktuelle Version: Eine automatische Aktualisierung auf die aktuelle Version des Azure AD Connect Health-Agents wird durchgeführt, sobald diese verfügbar ist. Diese Einstellung ist standardmäßig aktiviert. Microsoft zu Zwecken der Problembehandlung den Zugriff auf die Integritätsdaten für Azure AD-Verzeichnis erlauben: Wenn Sie diese Einstellung aktivieren, kann Microsoft dieselben Daten anzeigen wie Sie. Diese Informationen können bei der Problembehandlung und zur Unterstützung bei der Fehlerbeseitigung von Nutzen sein. Diese Einstellung ist standardmäßig deaktiviert.
+  - Der Eintrag **Einstellungen** umfasst grundlegende Konfigurationen der Agents. Die Einstellung für automatische Upgrades ermöglicht die automatische Aktualisierung des Azure AD Connect Health-Agents auf die aktuelle Version: Eine automatische Aktualisierung auf die aktuelle Version des Azure AD Connect Health-Agents wird durchgeführt, sobald diese verfügbar ist. Diese Einstellung ist standardmäßig aktiviert. Microsoft zu Zwecken der Problembehandlung den Zugriff auf die Integritätsdaten für Azure AD-Verzeichnis erlauben: Wenn Sie diese Einstellung aktivieren, stehen Microsoft die gleichen Daten zur Verfügung wie Ihnen. Diese Informationen können bei der Problembehandlung und zur Unterstützung bei der Fehlerbeseitigung von Nutzen sein. Diese Einstellung ist standardmäßig deaktiviert.
 * Im Abschnitt **Rollenbasierte Zugriffssteuerung (IAM)** wird der Zugriff auf Connect Health-Daten auf Rollenbasis verwaltet. 
 
 ## <a name="next-steps"></a>Nächste Schritte

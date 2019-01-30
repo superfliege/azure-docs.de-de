@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ffceeeeb5a55b0fab1dd1cf91aebfcd4cfd852ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246210"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848596"
 ---
 # <a name="overview-of-azure-notebooks"></a>Übersicht über Azure Notebooks
 
 Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation. [Jupyter](https://jupyter.org/) (vormals IPython) ist ein Open Source-Projekt, mit dem Sie Markdowntext, ausführbaren Code, beständige Daten, Grafiken und Visualisierungen einfach in einer einzelnen, gemeinsam nutzbaren Canvas – einem so genannten *Notebook* – zusammenführen können (Bild von „jupyter.org“):
 
-[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter-Notebooks")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Beispiele für Jupyter Notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Aufgrund dieser leistungsstarken Kombination aus Code, Grafiken und beschreibendem Text ist Jupyter zu einer beliebten Lösung für viele Anwendungsfälle geworden, z.B. Data Science-Anleitung, Datenbereinigung und -transformation, numerische Simulation, statistische Modellierung und Entwicklung von Machine Learning-Modellen.
 
@@ -55,9 +55,9 @@ Kurz zusammengefasst: Mit Azure Notebooks können Sie Ihre Arbeit effizienter er
 
 ## <a name="pricing-and-quotas"></a>Preise und Kontingente
 
-Azure Notebooks ist ein kostenloser Dienst, aber jedes Projekt ist auf 4 GB Speicher und 1 GB an Daten beschränkt, um Missbrauch zu vermeiden. Für berechtigte Benutzer, die diese Grenzwerte überschreiten, wird eine Captcha-Eingabe abgefragt, bevor die Notebooks weiter ausgeführt werden können.
+Azure Notebooks ist ein kostenloser Dienst, aber jedes Projekt ist auf 4 GB Speicher und 1 GB Daten beschränkt, um Missbrauch zu vermeiden. Für berechtigte Benutzer, die diese Grenzwerte überschreiten, wird eine Captcha-Eingabe abgefragt, bevor die Notebooks weiter ausgeführt werden können.
 
-Melden Sie sich mit einem Konto, das Azure Active Directory nutzt (etwa einem Unternehmenskonto), bei Azure Notebooks an, um alle Beschränkungen aufzuheben. Ist dieses Konto mit einem Azure-Abonnement verknüpft, können Sie Azure Data Science Virtual Machine-Computetarife verwenden.
+Melden Sie sich mit einem Konto, das Azure Active Directory nutzt (etwa einem Unternehmenskonto), bei Azure Notebooks an, um alle Beschränkungen aufzuheben. Ist dieses Konto mit einem Azure-Abonnement verknüpft, können Sie eine Verbindung mit beliebigen Data Science Virtual Machine-Instanzen in diesem Abonnement herstellen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](configure-manage-azure-notebooks-projects.md#compute-tier) im Abschnitt zum Compute-Tarif.
 
 ## <a name="available-kernels-and-environments"></a>Verfügbare Kernel und Umgebungen
 

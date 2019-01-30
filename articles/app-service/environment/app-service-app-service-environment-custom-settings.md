@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2016
+ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: de68c59987a7ec1198c344cc22978ebed09c75e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271352"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390817"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
-Da App Service-Umgebungen isoliert für einen einzelnen Kunden eingerichtet werden, gibt es bestimmte Konfigurationseinstellungen, die exklusiv auf eine App Service-Umgebung angewendet werden können. In diesem Artikel werden die verschiedenen Anpassungen dokumentiert, die für App Service-Umgebungen verfügbar sind.
+Da App Service-Umgebungen (App Service Environments, ASEs) isoliert für einen einzelnen Kunden eingerichtet werden, gibt es bestimmte Konfigurationseinstellungen, die exklusiv auf eine App Service-Umgebung angewendet werden können. In diesem Artikel werden die verschiedenen Anpassungen dokumentiert, die für App Service-Umgebungen verfügbar sind.
 
 Informationen zum Erstellen einer App Service-Umgebung finden Sie [hier](app-service-web-how-to-create-an-app-service-environment.md).
 
@@ -65,10 +65,11 @@ Alternativ dazu können Sie die App Service-Umgebung mit dem [Azure-Ressourcen-E
 Unabhängig davon, wie Sie die Änderung übermitteln, dauert es ungefähr 30 Minuten, multipliziert mit der Anzahl der Front-Ends in der App Service-Umgebung, bis die Änderung wirksam wird.
 Wenn eine App Service-Umgebung beispielsweise über vier Front-Ends verfügt, dauert es etwa zwei Stunden, bis die Konfigurationsaktualisierung abgeschlossen ist. Während die Konfigurationsänderung angewendet wird, können keine weiteren Skalierungsvorgänge oder Konfigurationsänderungen in der App Service-Umgebung ausgeführt werden.
 
-## <a name="disable-tls-10"></a>Deaktivieren von TLS 1.0
-Eine Frage, die häufig von Kunden gestellt wird – insbesondere dann, wenn die Kunden PCI-Compliance-Audits durchführen – ist, wie TLS 1.0 für ihre Apps explizit deaktiviert werden kann.
+## <a name="disable-tls-10-and-tls-11"></a>Deaktivieren von TLS 1.0 und TLS 1.1
 
-TLS 1.0 kann mit dem folgenden **clusterSettings** -Eintrag deaktiviert werden:
+Wenn Sie TLS-Einstellungen auf App-Basis verwalten möchten, können Sie die Anleitung aus der Dokumentation [Erzwingen von TLS-Versionen](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) verwenden. 
+
+Wenn Sie sämtlichen eingehenden TLS 1.0- und TLS 1.1-Datenverkehr für alle Apps in einer ASE deaktivieren möchten, legen Sie den folgenden **clusterSettings**-Eintrag fest:
 
         "clusterSettings": [
             {
@@ -76,6 +77,8 @@ TLS 1.0 kann mit dem folgenden **clusterSettings** -Eintrag deaktiviert werden:
                 "value": "1"
             }
         ],
+
+Im Namen der Einstellung ist zwar 1.0 angegeben, sie deaktiviert jedoch sowohl TLS 1.0 als auch TLS 1.1, nachdem sie konfiguriert wurde.
 
 ## <a name="change-tls-cipher-suite-order"></a>Ändern der Reihenfolge der TLS-Verschlüsselungssammlung
 Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx) abgerufen werden.

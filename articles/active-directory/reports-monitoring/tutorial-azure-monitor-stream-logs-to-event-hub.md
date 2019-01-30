@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie die Azure-Diagnose einrichten, um Azur
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 941e914e6ce99082abdd920bd7171644f3575a38
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0560f4a4a815373f86592126b30edcc4ca10ba24
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849393"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825322"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub (Vorschauversion)
 
@@ -75,11 +75,11 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 Nachdem die Daten im Event Hub angezeigt werden, stehen Ihnen zwei Möglichkeiten zur Verfügung, um auf die Daten zuzugreifen und sie zu lesen:
 
 * **Konfigurieren eines unterstützten SIEM-Tools**. Zum Lesen von Daten aus dem Event Hub benötigen die meisten Tools die Event Hub-Verbindungszeichenfolge und bestimmte Berechtigungen für Ihr Azure-Abonnement. Drittanbietertools mit Azure Monitor-Integration sind unter anderem:
-    * **Splunk**: Weitere Informationen zur Integration von Azure AD-Protokollen in Splunk finden Sie unter [Integrate Azure AD logs with Splunk by using Azure Monitor](tutorial-integrate-activity-logs-with-splunk.md) (Integrieren von Azure AD-Protokollen in Splunk mit Azure Monitor).
+    * **Splunk:** Weitere Informationen zur Integration von Azure AD-Protokollen in Splunk finden Sie unter [Integrieren von Azure AD-Protokollen in Splunk mit Azure Monitor (Vorschauversion)](tutorial-integrate-activity-logs-with-splunk.md).
     
-    * **IBM QRadar**: Das DSM und das Azure Event Hub-Protokoll stehen zum Download auf der [Supportseite von IBM](https://www.ibm.com/support) zur Verfügung. Weitere Informationen zur Integration in Azure finden Sie auf der Website zur [IBM QRadar Security Intelligence-Plattform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+    * **IBM QRadar:** Das DSM und das Azure Event Hub-Protokoll stehen auf der [Supportseite von IBM](https://www.ibm.com/support) zum Download zur Verfügung. Weitere Informationen zur Integration in Azure finden Sie auf der Website zur [IBM QRadar Security Intelligence-Plattform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
     
-    * **Sumo Logic**: Wenn Sie Sumo Logic zur Verwendung von Daten aus einem Event Hub einrichten möchten, lesen Sie die Informationen unter [Install the Azure AD app and view the dashboards](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) (Installieren der Azure AD-App und Anzeigen der Dashboards). 
+    * **Sumo Logic:** Wenn Sie Sumo Logic für die Verwendung von Daten aus einem Event Hub einrichten möchten, lesen Sie die Informationen unter [Install the Azure Active Directory App and View the Dashboards](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) (Installieren der Azure Active Directory-App und Anzeigen der Dashboards). 
 
 * **Einrichten benutzerdefinierter Tools**. Wenn Ihr aktuelles SIEM-Tool in der Azure Monitor-Diagnose noch nicht unterstützt wird, können Sie mit der Event Hub-API benutzerdefinierte Tools einrichten. Weitere Informationen finden Sie unter [Erste Schritte zum Empfangen von Nachrichten von einem Event Hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph).
 

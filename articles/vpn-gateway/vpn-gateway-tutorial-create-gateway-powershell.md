@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: b1435773f8d05f9cc730e5745c1a916d9b74321f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8e3cdd99c99a300d7f1198826ae881373e179414
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340592"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433695"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>Erstellen und Verwalten des VPN-Gateways mit dem Azure PowerShell-Modul
 
@@ -40,7 +40,7 @@ Im folgenden Diagramm sind das virtuelle Netzwerk und das VPN-Gateway dargestell
 
 [!INCLUDE [working with cloudshell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="common-network-parameter-values"></a>Allgemeine Netzwerkparameterwerte
 
@@ -74,7 +74,7 @@ New-AzureRmResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Das Azure VPN-Gateway ermöglicht standortübergreifende Konnektivität und P2S-VPN-Serverfunktionalität für Ihr virtuelles Netzwerk. Fügen Sie das VPN-Gateway einem vorhandenen virtuellen Netzwerk hinzu, oder erstellen Sie ein neues virtuelles Netzwerk und das Gateway. In diesem Beispiel wird ein neues virtuelles Netzwerk mit drei Subnetzen erstellt: Frontend, Backend und GatewaySubnet unter Verwendung von [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) und [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork):
+Das Azure VPN-Gateway ermöglicht standortübergreifende Konnektivität und P2S-VPN-Serverfunktionalität für Ihr virtuelles Netzwerk. Fügen Sie das VPN-Gateway einem vorhandenen virtuellen Netzwerk hinzu, oder erstellen Sie ein neues virtuelles Netzwerk und das Gateway. In diesem Beispiel wird ein neues virtuelles Netzwerk mit drei Subnetzen erstellt: Front-End, Back-End und Gatewaysubnetz (unter Verwendung von [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) und [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork)):
 
 ```azurepowershell-interactive
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -115,9 +115,9 @@ New-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 ```
 
 Wichtige Parameterwerte:
-* GatewayType: Verwenden Sie **Vpn** für Site-to-Site- und VNet-zu-VNet-Verbindungen.
+* GatewayType: Verwenden Sie **Vpn** für Site-to-Site- und VNET-zu-VNET-Verbindungen.
 * VpnType: Verwenden Sie **RouteBased**, um mit einem größeren Bereich von VPN-Geräten und mehr Routingfeatures zu interagieren.
-* GatewaySku: **VpnGw1** ist die Standardeinstellung. Ändern Sie diese in „VpnGw2“ oder „VpnGw3“, wenn Sie höhere Durchsätze oder mehr Verbindungen benötigen. Weitere Informationen finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* GatewaySku: **VpnGw1** ist die Standardeinstellung. Ändern Sie diese in „VpnGw2“ oder „VpnGw3“, wenn Sie einen höheren Durchsatz oder mehr Verbindungen benötigen. Weitere Informationen finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 Nachdem die Erstellung des Gateways abgeschlossen ist, können Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und einem anderen VNet oder eine Verbindung zwischen Ihrem virtuellen Netzwerk und einem lokalen Speicherort herstellen. Außerdem können Sie von einem Clientcomputer aus eine P2S-Verbindung mit Ihrem VNet konfigurieren.
 

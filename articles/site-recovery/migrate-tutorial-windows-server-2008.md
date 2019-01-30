@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 2497793ce5d24ed2516636e76b8b947417dd9f74
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: afcf64b79b08ae76f56f57569905945489c2933e
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039944"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382881"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrieren von Servern mit Windows Server 2008 zu Azure
 
@@ -119,7 +119,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** > **+Replikationsrichtlinie**.
 2. Geben Sie unter **Replikationsrichtlinie erstellen** einen Richtliniennamen an.
 3. Geben Sie in **RPO-Schwellenwert** den RPO-Grenzwert (Recovery Point Objective) an. Wenn der RPO-Wert bei der Replikation überschritten wird, wird eine Warnung generiert.
-4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden. Für nach Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt (72 Stunden für Standardspeicher).
+4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte Server können für jeden Punkt dieses Zeitfensters wiederhergestellt werden. Für nach Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt (72 Stunden für Standardspeicher).
 5. Geben Sie unter **Häufigkeit der Momentaufnahmen für App-Konsistenz** die Option **Aus** an. Klicken Sie auf **OK**, um die Richtlinie zu erstellen.
 
 Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet.
@@ -154,13 +154,13 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Wählen Sie den letzten Wiederherstellungspunkt aus.
 3. Wählen Sie **Computer vor Beginn des Failovers herunterfahren** aus. Site Recovery fährt den Server herunter, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
 4. Überprüfen Sie, ob die Azure-VM wie erwartet in Azure angezeigt wird.
-5. Klicken Sie in **Replizierte Elemente** mit der rechten Maustaste auf die VM > **Migration abschließen**. Die folgenden Schritte werden ausgeführt:
+5. Klicken Sie unter **Replizierte Elemente** mit der rechten Maustaste auf den Server, und klicken Sie anschließend auf **Migration abschließen**. Die folgenden Schritte werden ausgeführt:
 
-    - Der Migrationsvorgang wird abgeschlossen, die Replikation für den virtuellen AWS-Computer wird beendet, und die Site Recovery-Abrechnung für den virtuellen Computer wird eingestellt.
+    - Der Migrationsvorgang wird abgeschlossen, und die Replikation sowie die Site Recovery-Abrechnung für den Server werden beendet.
     - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht.
 
    ![Abschließen der Migration](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Die VM-Replikation wird beendet, bevor das Failover gestartet wird. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Die Serverreplikation wird beendet, bevor das Failover gestartet wird. Wenn Sie ein laufendes Failover abbrechen, wird das Failover beendet, die Replikation des Servers wird jedoch nicht fortgesetzt.
