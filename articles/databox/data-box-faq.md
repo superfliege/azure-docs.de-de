@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ad52427263c4bbd2effb373b00ef8ff37b8f5b67
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359407"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449570"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -192,7 +192,9 @@ Weitere Informationen finden Sie unter [Sicherheitsmerkmale von Azure Data Box](
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>F: Ich habe den Schritt „Für den Versand vorbereiten“ abgeschlossen und das Gerät heruntergefahren. Kann ich der Data Box noch weitere Daten hinzufügen?
 A. Ja. Sie können das Gerät einschalten und weitere Daten hinzufügen. Sie müssen den Schritt **Für den Versand vorbereiten** erneut ausführen, nachdem Sie den Kopiervorgang abgeschlossen haben.
-  
+
+### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>F: Ich habe mein Gerät erhalten, und es startet nicht. Wie kann ich das Gerät zurücksenden?
+A. Sollte Ihr Gerät nicht starten, navigieren Sie im Azure-Portal zu Ihrer Bestellung. Laden Sie ein Adressetikett herunter, und bringen Sie es an dem Gerät an. Weitere Informationen finden Sie unter [Herunterladen von Adressetiketten](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Überprüfen und Hochladen
 
