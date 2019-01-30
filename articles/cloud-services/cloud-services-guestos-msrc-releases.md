@@ -11,17 +11,68 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/22/2019
 ms.author: raiye
-ms.openlocfilehash: 154b925cc173a1a8fac697e347759764807a3052
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0a9b811f3781cd181c17b9ed92b9ca653ee91af0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107904"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828450"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+>[!NOTE]
+>Das Gastbetriebssystem für Januar wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Januar enthalten. Änderungen der Liste vorbehalten.
+
+## <a name="january-2019-guest-os"></a>Gastbetriebssystem für Januar 2019
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480961] | Sicherheitsupdates für Windows 10 | 5.27 | 8. Januar 2019 |
+| Rel 19-01 | [4480964] | Windows-Sicherheit | 4.62 | 8. Januar 2019 |
+| Rel 19-01 | [4480972] | Windows-Sicherheit | 3.69 | 8. Januar 2019 |
+| Rel 19-01 | [4480960] | Windows-Sicherheit | 2.82 | 8. Januar 2019 |
+| Rel 19-01 | [4480074] | .NET 4.x Security | 4.62 | 8. Januar 2019 |
+| Rel 19-01 | [4480075] | .NET 4.x Security | 3.69 | 8. Januar 2019 |
+| Rel 19-01 | [4480076] | .NET 4.x Security | 2.82 | 8. Januar 2019 |
+| Rel 19-01 | [4480086] | .NET 3.x Security | 4.62 | 8. Januar 2019 |
+| Rel 19-01 | [4480083] | .NET 3.x Security | 3.69 | 8. Januar 2019 |
+| Rel 19-01 | [4480085] | .NET 3.x Security | 2.82 | 8. Januar 2019 |
+| Rel 19-01 | [4480979] | Blinken | 3.69, 4.62, 5.27 | 8. Januar 2019 |
+| Rel 19-01 | [4480965] | Internet Explorer | 2.82, 3.69, 4.62 | 8. Januar 2019 |
+| – | [4471318] | Nicht sicherheitsrelevanter Rollup für Dezember | 2.82 | 11. Dezember 2018 |
+| – | [4470641] | Nicht sicherheitsrelevanter Rollup für Dezember .NET 3.x | 2.82 | 11. Dezember 2018 |
+| – | [4470637] | Nicht sicherheitsrelevanter Rollup für Dezember .NET 4.x | 2.82 | 11. Dezember 2018 |
+| – | [4471330] | Nicht sicherheitsrelevanter Rollup für Dezember | 3.69 | 11. Dezember 2018 |
+| – | [4470629] | Nicht sicherheitsrelevanter Rollup für Dezember .NET 3.x | 3.69 | 11. Dezember 2018 |
+| – | [4470623] | Nicht sicherheitsrelevanter Rollup für Dezember .NET 4.x | 3.69 | 11. Dezember 2018 |
+| – | [4471320] | Nicht sicherheitsrelevanter Rollup für Dezember | 4.62 | 11. Dezember 2018 |
+| – | [4470630] | Nicht sicherheitsrelevanter Rollup für Dezember .NET 3.x | 4.62 | 11. Dezember 2018 |
+| – | [4470622] | Nicht sicherheitsrelevanter Rollup für Dezember .NET 4.x | 4.62 | 11. Dezember 2018 |
+
+[4480961]: http://support.microsoft.com/kb/4480961
+[4480964]: http://support.microsoft.com/kb/4480964
+[4480972]: http://support.microsoft.com/kb/4480972
+[4480960]: http://support.microsoft.com/kb/4480960
+[4480074]: http://support.microsoft.com/kb/4480074
+[4480075]: http://support.microsoft.com/kb/4480075
+[4480076]: http://support.microsoft.com/kb/4480076
+[4480086]: http://support.microsoft.com/kb/4480086
+[4480083]: http://support.microsoft.com/kb/4480083
+[4480085]: http://support.microsoft.com/kb/4480085
+[4480979]: http://support.microsoft.com/kb/4480979
+[4480965]: http://support.microsoft.com/kb/4480965
+[4471318]: http://support.microsoft.com/kb/4471318
+[4470641]: http://support.microsoft.com/kb/4470641
+[4470637]: http://support.microsoft.com/kb/4470637
+[4471330]: http://support.microsoft.com/kb/4471330
+[4470629]: http://support.microsoft.com/kb/4470629
+[4470623]: http://support.microsoft.com/kb/4470623
+[4471320]: http://support.microsoft.com/kb/4471320
+[4470630]: http://support.microsoft.com/kb/4470630
+[4470622]: http://support.microsoft.com/kb/4470622
 
 ## <a name="december-2018-guest-os"></a>Gastbetriebssystem für Dezember 2018
 
@@ -39,10 +90,10 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-12 | [4470491] | .NET 4.x Security  | 4.61| 11. Dezember 2018 |
 | Rel 18-12 | [4471331] | Blinken  | 3.68, 4.61, 5.26 | 5. Dezember 2018  |
 | Rel 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11. Dezember 2018 |
-| N/V | [4468323] | Zeitzonenupdate    | 2.81, 3.68, 4.61 | 13. Dezember 2018 |
-| N/V | [4467107] | Nicht sicherheitsrelevanter Rollup für November   | 2.81 | 13. November 2018 |
-| N/V | [4467701] | Nicht sicherheitsrelevanter Rollup für November     | 3.68 | 13. November 2018 |
-| N/V | [4467697] | Nicht sicherheitsrelevanter Rollup für November     | 4.61 | 13. November 2018 |
+| – | [4468323] | Zeitzonenupdate    | 2.81, 3.68, 4.61 | 13. Dezember 2018 |
+| – | [4467107] | Nicht sicherheitsrelevanter Rollup für November   | 2.81 | 13. November 2018 |
+| – | [4467701] | Nicht sicherheitsrelevanter Rollup für November     | 3.68 | 13. November 2018 |
+| – | [4467697] | Nicht sicherheitsrelevanter Rollup für November     | 4.61 | 13. November 2018 |
 
 [4471321]: http://support.microsoft.com/kb/4471321
 [4471328]: http://support.microsoft.com/kb/4471328
@@ -71,13 +122,13 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-11 | [4467678] | Windows-Sicherheit | 3.67 | 13. November 2018 |
 | Rel 18-11 | [4467703] | Windows-Sicherheit | 4.60 | 13. November 2018 |
 | Rel 18-11 | [4467691] | Sicherheitsupdates für Windows 10 | 5.25 | 13. November 2018 |
-| N/V | [3173426] | Wartungsstapelaktualisierung | 3.67 | 12. Juli 2016 |
-| N/V | [4465659] | Wartungsstapelaktualisierung | 5.25 | 13. November 2018 |
-| N/V | [4462923] | Nicht sicherheitsrelevanter Rollup für Oktober | 2.80 | 9. Oktober 2018 |
-| N/V | [4462929] | Nicht sicherheitsrelevanter Rollup für Oktober | 3.67 | 9. Oktober 2018 |
-| N/V | [4462926] | Nicht sicherheitsrelevanter Rollup für Oktober | 4.60 | 9. Oktober 2018 |
-| N/V | [3109976] | Anwendungskompatibilitätsshims | 4.60 | 12. April 2016 |
-| N/V | [4457037] | Anwendungskompatibilitätsshims | 4.60| 12. Juni 2018 |
+| – | [3173426] | Wartungsstapelaktualisierung | 3.67 | 12. Juli 2016 |
+| – | [4465659] | Wartungsstapelaktualisierung | 5.25 | 13. November 2018 |
+| – | [4462923] | Nicht sicherheitsrelevanter Rollup für Oktober | 2.80 | 9. Oktober 2018 |
+| – | [4462929] | Nicht sicherheitsrelevanter Rollup für Oktober | 3.67 | 9. Oktober 2018 |
+| – | [4462926] | Nicht sicherheitsrelevanter Rollup für Oktober | 4.60 | 9. Oktober 2018 |
+| – | [3109976] | Anwendungskompatibilitätsshims | 4.60 | 12. April 2016 |
+| – | [4457037] | Anwendungskompatibilitätsshims | 4.60| 12. Juni 2018 |
 
 [4466536]: http://support.microsoft.com/kb/4466536
 [4467694]: http://support.microsoft.com/kb/4467694
@@ -103,16 +154,16 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-10 | [4462941] | Windows-Sicherheit | 4.59 | 9. Oktober 2018 |
 | Rel 18-10 | [4462930] | Blinken | 3.66, 4.59, 5.24 | 9. Oktober 2018 |
 | Rel 18-10 | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 9. Oktober 2018 |
-| N/V | [4339284] | Zeitzonenupdate | 2.79, 3.66, 4.59 | 24. Juli 2018 |
-| N/V | [4457144] | Nicht sicherheitsrelevanter Rollup für September | 2.79 | 11. September 2018 |
-| N/V | [4457044] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 2.79 | 11. September 2018 |
-| N/V | [4457038] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 2.79 | 11. September 2018 |
-| N/V | [4457135] | Nicht sicherheitsrelevanter Rollup für September | 3.66 | 11. September 2018 |
-| N/V | [4457042] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 3.66 | 11. September 2018 |
-| N/V | [4457037] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 3.66 | 11. September 2018 |
-| N/V | [4457129] | Nicht sicherheitsrelevanter Rollup für September | 4.59 | 11. September 2018 |
-| N/V | [4457045] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 4.59 | 11. September 2018 |
-| N/V | [4457036] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 4.59 | 11. September 2018 |
+| – | [4339284] | Zeitzonenupdate | 2.79, 3.66, 4.59 | 24. Juli 2018 |
+| – | [4457144] | Nicht sicherheitsrelevanter Rollup für September | 2.79 | 11. September 2018 |
+| – | [4457044] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 2.79 | 11. September 2018 |
+| – | [4457038] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 2.79 | 11. September 2018 |
+| – | [4457135] | Nicht sicherheitsrelevanter Rollup für September | 3.66 | 11. September 2018 |
+| – | [4457042] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 3.66 | 11. September 2018 |
+| – | [4457037] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 3.66 | 11. September 2018 |
+| – | [4457129] | Nicht sicherheitsrelevanter Rollup für September | 4.59 | 11. September 2018 |
+| – | [4457045] | Nicht sicherheitsrelevanter .NET 3.5-Rollup für September | 4.59 | 11. September 2018 |
+| – | [4457036] | Nicht sicherheitsrelevanter .NET 4.5.2-Rollup für September | 4.59 | 11. September 2018 |
 
 [4462917]: http://support.microsoft.com/kb/4462917
 [4462915]: http://support.microsoft.com/kb/4462915
@@ -143,15 +194,15 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-09 | [4457056], [4457028] | .NET 3.5, 4.x Security | 4.58 | 11. September 2018 |
 | Rel 18-09 | [4457146] | Blinken | 3.65, 4.58, 5.23 | 11. September 2018 |
 | Rel 18-09 | [4457426] | Internet Explorer | 2.78, 3.65, 4.58 | 11. September 2018 |
-| N/V | [4343900] | Nicht sicherheitsrelevanter Rollup für August | 2.78 | 14. August 2018 |
-| N/V | [4344152] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 2.78 | 14. August 2018 |
-| N/V | [4344149] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 2.78 | 14. August 2018 |
-| N/V | [4343901] | Nicht sicherheitsrelevanter Rollup für August | 3.65 | 14. August 2018 |
-| N/V | [4344150] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 3.65 | 14. August 2018 |
-| N/V | [4344148] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 3.65 | 14. August 2018 |
-| N/V | [4343898] | Nicht sicherheitsrelevanter Rollup für August | 4.58 | 14. August 2018 |
-| N/V | [4344153] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 4.58 | 14. August 2018 |
-| N/V | [4344147] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 4.58 | 14. August 2018 |
+| – | [4343900] | Nicht sicherheitsrelevanter Rollup für August | 2.78 | 14. August 2018 |
+| – | [4344152] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 2.78 | 14. August 2018 |
+| – | [4344149] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 2.78 | 14. August 2018 |
+| – | [4343901] | Nicht sicherheitsrelevanter Rollup für August | 3.65 | 14. August 2018 |
+| – | [4344150] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 3.65 | 14. August 2018 |
+| – | [4344148] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 3.65 | 14. August 2018 |
+| – | [4343898] | Nicht sicherheitsrelevanter Rollup für August | 4.58 | 14. August 2018 |
+| – | [4344153] | Nicht sicherheitsrelevanter Rollup für .NET 3.5 für August | 4.58 | 14. August 2018 |
+| – | [4344147] | Nicht sicherheitsrelevanter Rollup für .NET 4x für August | 4.58 | 14. August 2018 |
 
 ## <a name="august-2018-guest-os"></a>Gastbetriebssystem für August 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -167,14 +218,14 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-08 | [4346745], [4346408] | .NET 3.5, 4.x OOB-Version | 4.57 | 30. Juli 2018 |
 | Rel 18-08 | [4343902] | Blinken | 3.64, 4.57, 5.22 | 14. August 2018 |
 | Rel 18-08 | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 14. August 2018 |
-| N/V | [4338818] |Nicht sicherheitsrelevanter Rollup für Juli |2.77 | 10. Juli 2018 |
-| N/V | [4019990] |D3D Compiler-Update für .NET |2.77 | 10. Juli 2018 |
-| N/V | [4338830] |Nicht sicherheitsrelevanter Rollup für Juli |3.64 | 10. Juli 2018 |
-| N/V | [4338421] |Nicht sicherheitsrelevanter Rollup für .NET 3.5 für Juli |3.64 | 10. Juli 2018 |
-| N/V | [4338416] |Nicht sicherheitsrelevanter Rollup für .NET 4x für Juli |3.64 | 10. Juli 2018 |
-| N/V | [4338815] |Nicht sicherheitsrelevanter Rollup für Juli |4.57 | 10. Juli 2018 |
-| N/V | [4338424] |Nicht sicherheitsrelevanter Rollup für .NET 3.5 für Juli |3.64 | 10. Juli 2018 |
-| N/V | [4338415] |Nicht sicherheitsrelevanter Rollup für .NET 4x für Juli |3.64 | 10. Juli 2018 |
+| – | [4338818] |Nicht sicherheitsrelevanter Rollup für Juli |2.77 | 10. Juli 2018 |
+| – | [4019990] |D3D Compiler-Update für .NET |2.77 | 10. Juli 2018 |
+| – | [4338830] |Nicht sicherheitsrelevanter Rollup für Juli |3.64 | 10. Juli 2018 |
+| – | [4338421] |Nicht sicherheitsrelevanter Rollup für .NET 3.5 für Juli |3.64 | 10. Juli 2018 |
+| – | [4338416] |Nicht sicherheitsrelevanter Rollup für .NET 4x für Juli |3.64 | 10. Juli 2018 |
+| – | [4338815] |Nicht sicherheitsrelevanter Rollup für Juli |4.57 | 10. Juli 2018 |
+| – | [4338424] |Nicht sicherheitsrelevanter Rollup für .NET 3.5 für Juli |3.64 | 10. Juli 2018 |
+| – | [4338415] |Nicht sicherheitsrelevanter Rollup für .NET 4x für Juli |3.64 | 10. Juli 2018 |
 
 ## <a name="july-2018-guest-os"></a>Gastbetriebssystem für Juli 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -192,9 +243,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-07 | [4338613], [4338600], [4338605] |.NET 3.5, 4.x, 4.5x Security |4.56|10. Juli 2018 |
 | Rel 18-07 | [4338832] |Blinken |3.63, 4.76, 5.21 |10. Juli 2018 |
 | Rel 18-07 | [4339093] |Internet Explorer |2.76, 3.63, 4.76 |10. Juli 2018 |
-| N/V | [4284826] |Nicht sicherheitsrelevanter Rollup für Juni |2.76 |12. Juni 2018 |
-| N/V | [4284855] |Nicht sicherheitsrelevanter Rollup für Juni |3.63 |12. Juni 2018 |
-| N/V | [4284815] |Nicht sicherheitsrelevanter Rollup für Juni |4.56 |12. Juni 2018 |
+| – | [4284826] |Nicht sicherheitsrelevanter Rollup für Juni |2.76 |12. Juni 2018 |
+| – | [4284855] |Nicht sicherheitsrelevanter Rollup für Juni |3.63 |12. Juni 2018 |
+| – | [4284815] |Nicht sicherheitsrelevanter Rollup für Juni |4.56 |12. Juni 2018 |
 
 ## <a name="june-2018-guest-os"></a>Gastbetriebssystem für Juni 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -205,21 +256,21 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-06 | [4284878] |Nur Windows-Sicherheit |4.55 |12. Juni 2018 |
 | Rel 18-06 | [4230450] |Internet Explorer |2.75, 3.62, 4.75 |12. Juni 2018 |
 | Rel 18-06 | [4287903] |Blinken |3.62, 4.75, 5.20 |12. Juni 2018 |
-| N/V | [4103718] |Sicherheitsrelevanter Rollup für Mai |2.75 |8. Mai 2018 |
-| N/V | [4103730] |Sicherheitsrelevanter Rollup für Mai |3.62 |8. Mai 2018 |
-| N/V | [4103725] |Sicherheitsrelevanter Rollup für Mai |4.55 |8. Mai 2018 |
-| N/V | [4040980], [4040977] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |2.75 |14. November 2017 |
-| N/V | [4095874] |Nicht sicherheitsrelevante .NET 3.5-Release für Mai |2.75 |8. Mai 2018 |
-| N/V | [4096495] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |2.75 |8. Mai 2018 |
-| N/V | [4040975] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |3.62 |14. November 2017 |
-| N/V | [4095872] |Nicht sicherheitsrelevante .NET 3.5-Release für Mai |3.62 |8. Mai 2018 |
-| N/V | [4096494] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |3.62 |8. Mai 2018 |
-| N/V | [4096416] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |3.62 |8. Mai 2018 |
-| N/V | [4040974], [4040972] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |4.55 |14. November 2017 |
-| N/V | [4043763] |Nicht sicherheitsrelevanter .NET-Rollup für Oktober 2017 |4.55 |12. September 2017 |
-| N/V | [4095876] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |4.55 |8. Mai 2018 |
-| N/V | [4096417] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |4.55 |8. Mai 2018 |
-| N/V | [4132216] |SSU für Mai |5.20 |8. Mai 2018 |
+| – | [4103718] |Sicherheitsrelevanter Rollup für Mai |2.75 |8. Mai 2018 |
+| – | [4103730] |Sicherheitsrelevanter Rollup für Mai |3.62 |8. Mai 2018 |
+| – | [4103725] |Sicherheitsrelevanter Rollup für Mai |4.55 |8. Mai 2018 |
+| – | [4040980], [4040977] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |2.75 |14. November 2017 |
+| – | [4095874] |Nicht sicherheitsrelevante .NET 3.5-Release für Mai |2.75 |8. Mai 2018 |
+| – | [4096495] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |2.75 |8. Mai 2018 |
+| – | [4040975] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |3.62 |14. November 2017 |
+| – | [4095872] |Nicht sicherheitsrelevante .NET 3.5-Release für Mai |3.62 |8. Mai 2018 |
+| – | [4096494] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |3.62 |8. Mai 2018 |
+| – | [4096416] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |3.62 |8. Mai 2018 |
+| – | [4040974], [4040972] |Nicht sicherheitsrelevanter .NET-Rollup für September 2017 |4.55 |14. November 2017 |
+| – | [4043763] |Nicht sicherheitsrelevanter .NET-Rollup für Oktober 2017 |4.55 |12. September 2017 |
+| – | [4095876] |Nicht sicherheitsrelevante .NET 4.x-Release für Mai |4.55 |8. Mai 2018 |
+| – | [4096417] |Nicht sicherheitsrelevante .NET 4.5x-Release für Mai |4.55 |8. Mai 2018 |
+| – | [4132216] |SSU für Mai |5.20 |8. Mai 2018 |
 
 ## <a name="may-2018-guest-os"></a>Gastbetriebssystem für Mai 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -234,11 +285,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-05 | [4054856] |.NET 4.7x Security |5.19 |8. Mai 2018 |
 | Rel 18-05 | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |8. Mai 2018 |
 | Rel 18-05 | [4103729] |Blinken |3.61, 4.74, 5.19 |8. Mai 2018 |
-| N/V | [4093118] |Nicht sicherheitsrelevanter Rollup für April |2.73 |10. April 2018 |
-| N/V | [4093123] |Nicht sicherheitsrelevanter Rollup für April |3.61 |10. April 2018 |
-| N/V | [4093114] |Nicht sicherheitsrelevanter Rollup für April |4.74 |10. April 2018 |
-| N/V | [4093137] |Wartungsstapelaktualisierung für April |5.19 |10. April 2018 |
-| N/V | [4093753] |Zeitzonenupdate |2.74, 3.61, 4.74 |10. April 2018 |
+| – | [4093118] |Nicht sicherheitsrelevanter Rollup für April |2.73 |10. April 2018 |
+| – | [4093123] |Nicht sicherheitsrelevanter Rollup für April |3.61 |10. April 2018 |
+| – | [4093114] |Nicht sicherheitsrelevanter Rollup für April |4.74 |10. April 2018 |
+| – | [4093137] |Wartungsstapelaktualisierung für April |5.19 |10. April 2018 |
+| – | [4093753] |Zeitzonenupdate |2.74, 3.61, 4.74 |10. April 2018 |
 
 
 ## <a name="april-2018-guest-os"></a>Gastbetriebssystem für April 2018
@@ -250,10 +301,10 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 18-04 | [4093115] |Nur Windows-Sicherheit |4.53 |10. April 2018 |
 | Rel 18-04 | [4092946] |Internet Explorer |2.73, 3.60, 4.53 |10. April 2018 |
 | Rel 18-04 | [4093110] |Blinken |3.60, 4.53, 5.18 |10. April 2018 |
-| N/V | [4088875] |Nicht sicherheitsrelevanter Rollup für März |2.73 |13. März 2018 |
-| N/V | [4099950] |Voraussetzung für nicht sicherheitsrelevanten Rollup für März|2.73 |13. März 2018 |
-| N/V | [4088877] |Nicht sicherheitsrelevanter Rollup für März |3.60 |13. März 2018 |
-| N/V | [4088876] |Nicht sicherheitsrelevanter Rollup für März |4.53 |13. März 2018 |
+| – | [4088875] |Nicht sicherheitsrelevanter Rollup für März |2.73 |13. März 2018 |
+| – | [4099950] |Voraussetzung für nicht sicherheitsrelevanten Rollup für März|2.73 |13. März 2018 |
+| – | [4088877] |Nicht sicherheitsrelevanter Rollup für März |3.60 |13. März 2018 |
+| – | [4088876] |Nicht sicherheitsrelevanter Rollup für März |4.53 |13. März 2018 |
 
 ## <a name="march-2018-guest-os"></a>Gastbetriebssystem für März 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -262,10 +313,10 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel. 18-03 | [4088878], [4088880], [4088879] |Nur Windows-Sicherheit |2.72, 3.59, 4.52 |13. März 2018 |
 | Rel. 18-03 | [4089187] |Internet Explorer |2.72, 3.59, 4.52 |13. März 2018 |
 | Rel. 18-03 | [4074595] |Blinken |3.59, 4.52, 5.17 |13. März 2018 |
-| N/V | [4074598] |Nicht sicherheitsrelevanter Rollup für Februar |2.72 |13. Februar 2018 |
-| N/V | [4074593] |Nicht sicherheitsrelevanter Rollup für Februar |3.59 |13. Februar 2018 |
-| N/V | [4074594] |Nicht sicherheitsrelevanter Rollup für Februar |4.52 |13. Februar 2018 |
-| N/V | [4074837] |Zeitzonenupdate |2.72, 3.59, 4.52 |13. Februar 2018 |
+| – | [4074598] |Nicht sicherheitsrelevanter Rollup für Februar |2.72 |13. Februar 2018 |
+| – | [4074593] |Nicht sicherheitsrelevanter Rollup für Februar |3.59 |13. Februar 2018 |
+| – | [4074594] |Nicht sicherheitsrelevanter Rollup für Februar |4.52 |13. Februar 2018 |
+| – | [4074837] |Zeitzonenupdate |2.72, 3.59, 4.52 |13. Februar 2018 |
 
 
 ## <a name="february-2018-guest-os"></a>Gastbetriebssystem für Februar 2018
@@ -275,22 +326,22 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel. 18-02 | [4074587], [4074589], [4074597] |Nur Windows-Sicherheit |2.71, 3.58, 4.51 |13. Februar 2018 |
 | Rel. 18-02 | [4074736] |Internet Explorer |2.71, 3.58, 4.51 |13. Februar 2018 |
 | Rel. 18-02 | [4074595] |Blinken |3.58, 4.51, 5.16 |13. Februar 2018 |
-| N/V | [4056894] |Sicherheitsrelevanter Rollup für Januar |2.71 |4. Januar 2018 |
-| N/V | [4056896] |Sicherheitsrelevanter Rollup für Januar |3.58 |4. Januar 2018 |
-| N/V | [4056895] |Sicherheitsrelevanter Rollup für Januar |4.51 |4. Januar 2018 |
-| N/V | [4054176], [4054172] |.NET-Rollup für Januar |2.71 |4. Januar 2018 |
-| N/V | [4054175], [4054171] |.NET-Rollup für Januar |3.58 |4. Januar 2018 |
-| N/V | [4054177], [4054170] |.NET-Rollup für Januar |4.51 |4. Januar 2018 |
+| – | [4056894] |Sicherheitsrelevanter Rollup für Januar |2.71 |4. Januar 2018 |
+| – | [4056896] |Sicherheitsrelevanter Rollup für Januar |3.58 |4. Januar 2018 |
+| – | [4056895] |Sicherheitsrelevanter Rollup für Januar |4.51 |4. Januar 2018 |
+| – | [4054176], [4054172] |.NET-Rollup für Januar |2.71 |4. Januar 2018 |
+| – | [4054175], [4054171] |.NET-Rollup für Januar |3.58 |4. Januar 2018 |
+| – | [4054177], [4054170] |.NET-Rollup für Januar |4.51 |4. Januar 2018 |
 
 ## <a name="january-2018-guest-os"></a>Gastbetriebssystem für Januar 2018
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Nur Windows-Sicherheit |2.70, 3.57, 4.50 |3. Januar 2018 |
 | Rel 18-01 | [4056890], [4056892] |Nur Windows-Sicherheit |5.15 |3. Januar 2018 |
-| N/V | [4054518] |Nicht sicherheitsrelevanter Rollup für Dezember |2.70 |12. Dezember 2017 |
-| N/V | [4054520] |Nicht sicherheitsrelevanter Rollup für Dezember |3.57 |12. Dezember 2017 |
-| N/V | [4054519] |Nicht sicherheitsrelevanter Rollup für Dezember |4.50 |12. Dezember 2017 |
-| N/V | [4051956] |Zeitzonenupdate vom Januar |2.70, 3.57, 4.50 |12. Dezember 2017 |
+| – | [4054518] |Nicht sicherheitsrelevanter Rollup für Dezember |2.70 |12. Dezember 2017 |
+| – | [4054520] |Nicht sicherheitsrelevanter Rollup für Dezember |3.57 |12. Dezember 2017 |
+| – | [4054519] |Nicht sicherheitsrelevanter Rollup für Dezember |4.50 |12. Dezember 2017 |
+| – | [4051956] |Zeitzonenupdate vom Januar |2.70, 3.57, 4.50 |12. Dezember 2017 |
 
 
 
@@ -301,10 +352,10 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-12 | [4054521], [4054522], [4054523] |Nur Windows-Sicherheit |2.69, 3.56, 4.49 |12. Dezember 2017 |
 | Rel 17-12 | [4052978] |Internet Explorer |2.69, 3.56, 4.49 |12. Dezember 2017 |
 | Rel 17-12 | [4052978] |Blinken |3.56, 4.49, 5.14 |12. Dezember 2017 |
-| N/V | [4048957] |Nicht sicherheitsrelevanter Rollup für November |2.69 |14. November 2017 |
-| N/V | [4048959] |Nicht sicherheitsrelevanter Rollup für November |3.56 |14. November 2017 |
-| N/V | [4048958] |Nicht sicherheitsrelevanter Rollup für November |4.49 |14. November 2017 |
-| N/V | [4049068] |Zeitzonenupdate Dezember |2.69, 3.56, 4.49 |12. Dezember 2017 |
+| – | [4048957] |Nicht sicherheitsrelevanter Rollup für November |2.69 |14. November 2017 |
+| – | [4048959] |Nicht sicherheitsrelevanter Rollup für November |3.56 |14. November 2017 |
+| – | [4048958] |Nicht sicherheitsrelevanter Rollup für November |4.49 |14. November 2017 |
+| – | [4049068] |Zeitzonenupdate Dezember |2.69, 3.56, 4.49 |12. Dezember 2017 |
 
 ## <a name="november-2017-guest-os"></a>Gastbetriebssystem für November 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -313,12 +364,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-11 | [4048960], [4048962], [4048961] |Nur Windows-Sicherheit |2.68, 3.55, 4.48 |14. November 2017 |
 | Rel 17-11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |14. November 2017 |
 | Rel 17-11 | [4048951] |Blinken |3.55, 4.48, 5.13 |14. November 2017 |
-| N/V | [4041681] |Nicht sicherheitsrelevanter Rollup für Oktober |2.68 |10. Oktober 2017 |
-| N/V | [4041690] |Nicht sicherheitsrelevanter Rollup für Oktober |3.55 |10. Oktober 2017 |
-| N/V | [4041693] |Nicht sicherheitsrelevanter Rollup für Oktober |4.48 |10. Oktober 2017 |
-| N/V | [3191566] |Update für Windows Management Framework 5.1  |2.68 |14. November 2017 |
-| N/V | [3191565] |Update für Windows Management Framework 5.1  |3.55 |14. November 2017 |
-| N/V | [3191564] |Update für Windows Management Framework 5.1  |4.48 |14. November 2017 |
+| – | [4041681] |Nicht sicherheitsrelevanter Rollup für Oktober |2.68 |10. Oktober 2017 |
+| – | [4041690] |Nicht sicherheitsrelevanter Rollup für Oktober |3.55 |10. Oktober 2017 |
+| – | [4041693] |Nicht sicherheitsrelevanter Rollup für Oktober |4.48 |10. Oktober 2017 |
+| – | [3191566] |Update für Windows Management Framework 5.1  |2.68 |14. November 2017 |
+| – | [3191565] |Update für Windows Management Framework 5.1  |3.55 |14. November 2017 |
+| – | [3191564] |Update für Windows Management Framework 5.1  |4.48 |14. November 2017 |
 
 ## <a name="october-2017-guest-os"></a>Gastbetriebssystem für Oktober 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -327,12 +378,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-10 | [4041678], [4041679], [4041687] |Nur Windows-Sicherheit |2.67, 3.54, 4.47 |10. Oktober 2017 |
 | Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |10. Oktober 2017 |
 | Rel 17-10 | [4041681], [4041690], [4041693] |Monatliche Windows-Rollups |2.67, 3.54, 4.47 |10. Oktober 2017 |
-| N/V | [4038777] |Nicht sicherheitsrelevanter Rollup für September |2.67 |12. September 2017 |
-| N/V | [4038799] |Nicht sicherheitsrelevanter Rollup für September |3.54 |12. September 2017 |
-| N/V | [4038792] |Nicht sicherheitsrelevanter Rollup für September |4.47 |12. September 2017 |
-| N/V | [4040980] |Nicht sicherheitsrelevanter .NET-Rollup für September |2.67 |12. September 2017 |
-| N/V | [4040979] |Nicht sicherheitsrelevanter .NET-Rollup für September |3.54 |12. September 2017 |
-| N/V | [4040981] |Nicht sicherheitsrelevanter .NET-Rollup für September |4.47 |12. September 2017 |
+| – | [4038777] |Nicht sicherheitsrelevanter Rollup für September |2.67 |12. September 2017 |
+| – | [4038799] |Nicht sicherheitsrelevanter Rollup für September |3.54 |12. September 2017 |
+| – | [4038792] |Nicht sicherheitsrelevanter Rollup für September |4.47 |12. September 2017 |
+| – | [4040980] |Nicht sicherheitsrelevanter .NET-Rollup für September |2.67 |12. September 2017 |
+| – | [4040979] |Nicht sicherheitsrelevanter .NET-Rollup für September |3.54 |12. September 2017 |
+| – | [4040981] |Nicht sicherheitsrelevanter .NET-Rollup für September |4.47 |12. September 2017 |
 
 ## <a name="september-2017-guest-os"></a>Gastbetriebssystem für September 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -342,9 +393,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|.NET-Update von September |2.66, 3.53, 4.46 |12. September 2017 |
 | Rel 17-09 | [4036586] |Internet Explorer |2.66, 3.53, 4.46 |12. September 2017 |
 | CVE-2017-8704 | [4038782] |Denial of Service |5.11 |12. September 2017 |
-| N/V | [4034664] |Nicht sicherheitsrelevanter Rollup für August  |2.66 |8. August 2017 |
-| N/V | [4034665] |Nicht sicherheitsrelevanter Rollup für August |5.11 |8. August 2017 |
-| N/V | [4034681] |Nicht sicherheitsrelevanter Rollup für August |4.46 |8. August 2017 |
+| – | [4034664] |Nicht sicherheitsrelevanter Rollup für August  |2.66 |8. August 2017 |
+| – | [4034665] |Nicht sicherheitsrelevanter Rollup für August |5.11 |8. August 2017 |
+| – | [4034681] |Nicht sicherheitsrelevanter Rollup für August |4.46 |8. August 2017 |
 
 ## <a name="august-2017-guest-os"></a>Gastbetriebssystem für August 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -369,10 +420,10 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-07 | [4025343] |Nur Windows-Sicherheit |3.51 |11. Juli 2017 |
 | Rel 17-07 | [4025376] |Blinken |3.51, 4.44, 5.9 |11. Juli 2017 |
 | Rel 17-07 | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |11. Juli 2017 |
-| N/V | [4020322] |Zeitzonenupdate |2.64, 3.51, 4.44 |11. Juli 2017 |
-| N/V | [4022719] |Nicht sicherheitsrelevanter Rollup für Juni |2.64 |13. Juni 2017 |
-| N/V | [4022724] |Nicht sicherheitsrelevanter Rollup für Juni |3.51 |13. Juni 2017 |
-| N/V | [4022726] |Nicht sicherheitsrelevanter Rollup für Juni |4.44 |13. Juni 2017 |
+| – | [4020322] |Zeitzonenupdate |2.64, 3.51, 4.44 |11. Juli 2017 |
+| – | [4022719] |Nicht sicherheitsrelevanter Rollup für Juni |2.64 |13. Juni 2017 |
+| – | [4022724] |Nicht sicherheitsrelevanter Rollup für Juni |3.51 |13. Juni 2017 |
+| – | [4022726] |Nicht sicherheitsrelevanter Rollup für Juni |4.44 |13. Juni 2017 |
 
 ## <a name="june-2017-guest-os"></a>Gastbetriebssystem für Juni 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -385,22 +436,22 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel. 17-06 | [4022719], [4022724], [4022726] |Monatliche Windows-Rollups |2.63, 3.50, 4.43 |13. Juni 2017 |
 | Rel. 17-06 | [4022730] |Sicherheitsupdate für Adobe Flash Player |3.50, 4.43, 5.8 |13. Juni 2017 |
 | Rel. 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Neuveröffentlichung von CVE-2017-0167 |4.43, 5.8 |11. April 2017 |
-| N/V | [4023136] |Zeitzonenupdate  |2.63, 3.50, 4.43 |13. Juni 2017 |
-| N/V | [4019264] |Sicherheitsrelevanter Rollup für Mai |2.63 |13. Juni 2017 |
-| N/V | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |11. April 2017 |
-| N/V | [4014508] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
-| N/V | [4014511] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
-| N/V | [4014514] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
-| N/V | [4019216] |Sicherheitsrelevanter Rollup für Mai |3.50 |9. Mai 2017 |
-| N/V | [4014503] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
-| N/V | [4014506] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
-| N/V | [4014509] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
-| N/V | [4014513] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
-| N/V | [4019215] |Sicherheitsrelevanter Rollup für Mai |4.43 |9. Mai 2017 |
-| N/V | [4014505] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
-| N/V | [4014507] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
-| N/V | [4014510] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
-| N/V | [4014512] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| – | [4023136] |Zeitzonenupdate  |2.63, 3.50, 4.43 |13. Juni 2017 |
+| – | [4019264] |Sicherheitsrelevanter Rollup für Mai |2.63 |13. Juni 2017 |
+| – | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |11. April 2017 |
+| – | [4014508] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
+| – | [4014511] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
+| – | [4014514] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |2.63 |9. Mai 2017 |
+| – | [4019216] |Sicherheitsrelevanter Rollup für Mai |3.50 |9. Mai 2017 |
+| – | [4014503] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| – | [4014506] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| – | [4014509] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| – | [4014513] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |3.50 |9. Mai 2017 |
+| – | [4019215] |Sicherheitsrelevanter Rollup für Mai |4.43 |9. Mai 2017 |
+| – | [4014505] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| – | [4014507] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| – | [4014510] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
+| – | [4014512] |Nicht sicherheitsrelevanter .NET-Rollup für Mai |4.43 |9. Mai 2017 |
 
 ## <a name="may-2017-guest-os"></a>Gastbetriebssystem für Mai 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -414,21 +465,21 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-05 | [4022344] |Microsoft-Sicherheitsempfehlung |5.7 | 9. Mai 2017 |
 | Rel 17-05 | [4022345] |Microsoft-Sicherheitsempfehlung |5.7 | 9. Mai 2017 |
 | Rel 17-05 | [4021279] |.NET/ASP.NET Core – Empfehlung |2.62, 3.49, 4.42, 5.7 | 9. Mai 2017 |
-| N/V | [4012864] |Zeitzonenupdate |2.62, 3.49, 4.42 | 9. Mai 2017 |
-| N/V | [4014565] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 11. April 2017 |
-| N/V | [4014559] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 11. April 2017 |
-| N/V | [4015549] |Nicht sicherheitsrelevanter Rollup für April |2.62 | 11. April 2017 |
-| N/V | [4019990] |D3DCompiler-Update – Anforderung für .NET 4.7 |3.49 | 9. Mai 2017 |
-| N/V | [4014563] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
-| N/V | [4014557] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
-| N/V | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
-| N/V | [4014548] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
-| N/V | [4015551] |Nicht sicherheitsrelevanter Rollup für April |3.49 | 11. April 2017 |
-| N/V | [3173424] |Wartungsstapelaktualisierung  |4.42 | 12. Juli 2016 |
-| N/V | [4014555] |Nicht sicherheitsrelevanter .NET-Rollup für April  |4.42 | 11. April 2017 |
-| N/V | [4014567] |Nicht sicherheitsrelevanter .NET-Rollup für April |4.42 | 11. April 2017 |
-| N/V | [4015550] |Nicht sicherheitsrelevanter Rollup für April |4.42 | 11. April 2017 |
-| N/V | [4013418] |Wartungsstapelaktualisierung |5.7 | 14. März 2017 |
+| – | [4012864] |Zeitzonenupdate |2.62, 3.49, 4.42 | 9. Mai 2017 |
+| – | [4014565] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 11. April 2017 |
+| – | [4014559] |Nicht sicherheitsrelevanter .NET-Rollup für April |2.62 | 11. April 2017 |
+| – | [4015549] |Nicht sicherheitsrelevanter Rollup für April |2.62 | 11. April 2017 |
+| – | [4019990] |D3DCompiler-Update – Anforderung für .NET 4.7 |3.49 | 9. Mai 2017 |
+| – | [4014563] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| – | [4014557] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| – | [4014545] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| – | [4014548] |Nicht sicherheitsrelevanter .NET-Rollup für April |3.49 | 11. April 2017 |
+| – | [4015551] |Nicht sicherheitsrelevanter Rollup für April |3.49 | 11. April 2017 |
+| – | [3173424] |Wartungsstapelaktualisierung  |4.42 | 12. Juli 2016 |
+| – | [4014555] |Nicht sicherheitsrelevanter .NET-Rollup für April  |4.42 | 11. April 2017 |
+| – | [4014567] |Nicht sicherheitsrelevanter .NET-Rollup für April |4.42 | 11. April 2017 |
+| – | [4015550] |Nicht sicherheitsrelevanter Rollup für April |4.42 | 11. April 2017 |
+| – | [4013418] |Wartungsstapelaktualisierung |5.7 | 14. März 2017 |
 
 ## <a name="april-2017-guest-os"></a>Gastbetriebssystem für April 2017
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -458,11 +509,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | Rel 17-03 |  [4012213] |März 2017: Qualitätsupdate zu Sicherheitszwecken für Windows 8.1 und Windows Server 2012 R2 |4.40 |14. März 2017 |
 | Rel 17-03 |  [4012214] |März 2017: Qualitätsupdate zu Sicherheitszwecken für Windows Server 2012|3.47 |14. März 2017 |
 | Rel 17-03 |  [4012204] |Sicherheitsupdate für Internet Explorer |2.60, 3.47, 4.40, 5.5 |14. März 2017 |
-| N/V |  [4012864] |Sommerzeitumstellung in Windows für Nordzypern, Mongolei und Saratow-Region (Russland) |2.60, 3.47, 4.40 |14. März 2017 |
-| N/V |  [3212646] |Januar 2017: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.60 |14. März 2017 |
-| N/V |  [3205409] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3.47 |14. März 2017 |
-| N/V |  [3205401] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.40 |14. März 2017 |
-| N/V |  [3211320] |Wartungsstapelupdate für Windows 10 (Version 1607) und Windows Server 2016: 24. Januar 2017 |5.5 |14. März 2017 |
+| – |  [4012864] |Sommerzeitumstellung in Windows für Nordzypern, Mongolei und Saratow-Region (Russland) |2.60, 3.47, 4.40 |14. März 2017 |
+| – |  [3212646] |Januar 2017: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.60 |14. März 2017 |
+| – |  [3205409] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3.47 |14. März 2017 |
+| – |  [3205401] |Dezember 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.40 |14. März 2017 |
+| – |  [3211320] |Wartungsstapelupdate für Windows 10 (Version 1607) und Windows Server 2016: 24. Januar 2017 |5.5 |14. März 2017 |
 
 ## <a name="january-2017-guest-os"></a>Gastbetriebssystem für Januar 2017
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -482,9 +533,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-152 |[3199709]   |Sicherheitsupdate für Windows Kernel |5.4 |13. Dezember 2016 |
 | MS16-153 |[3207328] |Sicherheitsupdate für den Treiber für das gemeinsame Protokolldateisystem|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
 | MS16-155 |[3205640]   |Sicherheitsupdate für .NET Framework |5.4 |13. Dezember 2016 |
-| N/V |[3197868] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.58 |13. Dezember 2016 |
-| N/V |[3197877] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3,46 |13. Dezember 2016 |
-| N/V |[3197874] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.39 |13. Dezember 2016 |
+| – |[3197868] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.58 |13. Dezember 2016 |
+| – |[3197877] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3,46 |13. Dezember 2016 |
+| – |[3197874] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.39 |13. Dezember 2016 |
 
 ## <a name="november-2016-guest-os"></a>Gastbetriebssystem für November 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -500,16 +551,16 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-139 |[3199720] |Sicherheitsupdate für Windows Kernel |2.57 |8. November 2016 |
 | MS16-140 |[3193479] |Sicherheitsupdate für Start-Manager |5.3, 4.38, 3.45 |8. November 2016 |
 | MS16-142 |[3198467] |Kumulatives Sicherheitsupdate für Internet Explorer |2.57, 4.38, 5.3 |8. November 2016 |
-| N/V |[3192321] |Türkei beendet Sommerzeitverwendung |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
-| N/V |[3185330] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.57 |8. November 2016 |
-| N/V |[3192403] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.57 |8. November 2016 |
-| N/V |[3177467] |Wartungsstapelupdate für Windows 7 SP1 und Windows Server 2008 R2 SP1: 20. September 2016 |2.57 |8. November 2016 |
-| N/V |[3185332] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows Server 2012 |3.45 |8. November 2016 |
-| N/V |[3192406] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows Server 2012 |3.45 |8. November 2016 |
-| N/V |[3185331] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.38 |8. November 2016 |
-| N/V |[3192404] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows 8.1 und Windows Server 2012 R2 |4.38 |8. November 2016 |
-| N/V |[3199986] |Wartungsstapelupdate für Windows 10 (Version 1607): 27. Oktober 2016 |5.3 |8. November 2016 |
-| N/V |[3197954] |Kumulatives Update für Windows 10 (Version 1607) und Windows Server 2016: 27. Oktober 2016 |5.3 |8. November 2016 |
+| – |[3192321] |Türkei beendet Sommerzeitverwendung |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| – |[3185330] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.57 |8. November 2016 |
+| – |[3192403] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.57 |8. November 2016 |
+| – |[3177467] |Wartungsstapelupdate für Windows 7 SP1 und Windows Server 2008 R2 SP1: 20. September 2016 |2.57 |8. November 2016 |
+| – |[3185332] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows Server 2012 |3.45 |8. November 2016 |
+| – |[3192406] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows Server 2012 |3.45 |8. November 2016 |
+| – |[3185331] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.38 |8. November 2016 |
+| – |[3192404] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows 8.1 und Windows Server 2012 R2 |4.38 |8. November 2016 |
+| – |[3199986] |Wartungsstapelupdate für Windows 10 (Version 1607): 27. Oktober 2016 |5.3 |8. November 2016 |
+| – |[3197954] |Kumulatives Update für Windows 10 (Version 1607) und Windows Server 2016: 27. Oktober 2016 |5.3 |8. November 2016 |
 
 ## <a name="october-2016-guest-os"></a>Gastbetriebssystem für Oktober 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -520,11 +571,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-124 |[3193227] |Sicherheitsupdate für die Windows-Registrierung |4.37, 3.44, 2.56 |11. Oktober 2016 |
 | MS16-126 |[3196067] |Sicherheitsupdate für die Microsoft Internet Messaging-API |2.56 |11. Oktober 2016 |
 | MS16-101 |[3178465] |Sicherheitsupdate für Windows-Authentifizierungsmethoden |4.37, 3.44, 2.56 |11. Oktober 2016 |
-| N/V |[3182203] |September 2016: Zeitzonenänderung für Nowosibirsk |4.37, 3.44, 2.56 |11. Oktober 2016 |
-| N/V |[3185278] |September 2016: Updaterollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.56 |11. Oktober 2016 |
-| N/V |[3185280] |September 2016: Updaterollup für Windows Server 2012 |3.44 |11. Oktober 2016 |
-| N/V |[3185279] |September 2016: Updaterollup für Windows 8.1 und Windows Server 2012 R2 |4.37 |11. Oktober 2016 |
-| N/V |[3194798] |Kumulatives Update für Windows 10 Version 1607 und Windows Server 2016 |5,2 |11. Oktober 2016 |
+| – |[3182203] |September 2016: Zeitzonenänderung für Nowosibirsk |4.37, 3.44, 2.56 |11. Oktober 2016 |
+| – |[3185278] |September 2016: Updaterollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.56 |11. Oktober 2016 |
+| – |[3185280] |September 2016: Updaterollup für Windows Server 2012 |3.44 |11. Oktober 2016 |
+| – |[3185279] |September 2016: Updaterollup für Windows 8.1 und Windows Server 2012 R2 |4.37 |11. Oktober 2016 |
+| – |[3194798] |Kumulatives Update für Windows 10 Version 1607 und Windows Server 2016 |5,2 |11. Oktober 2016 |
 
 ## <a name="september-2016-guest-os"></a>Gastbetriebssystem für September 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -537,11 +588,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-114 |[3185879] |Sicherheitsupdate für Windows-SMB-Server |4.36, 3.43, 2.55 |13. September 2016 |
 | MS16-115 |[3188733] |Sicherheitsupdate für PDF |4.35, 3.43 |13. September 2016 |
 | MS16-116 |[3188724] |Sicherheitsupdate in OLE Automation für die Skript-Engine VBScript |4.36, 3.43, 2.55 |13. September 2016 |
-| N/V |[3174644] |Aktualisierte Unterstützung für Diffie-Hellman-Schlüsselaustausch |4.36, 3.43, 2.55 |13. September 2016 |
-| N/V |[3177723] |Zeitzonenupdate – Ägypten schafft Sommerzeit ab. |4.36, 3.43, 2.55 |13. September 2016 |
-| N/V |[3179573] |Updaterollup vom August 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.55 |13. September 2016 |
-| N/V |[3179575] |Updaterollup vom August 2016 für Windows Server 2012 |3.43 |13. September 2016 |
-| N/V |[3179574] |Updaterollup vom August 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.36 |13. September 2016 |
+| – |[3174644] |Aktualisierte Unterstützung für Diffie-Hellman-Schlüsselaustausch |4.36, 3.43, 2.55 |13. September 2016 |
+| – |[3177723] |Zeitzonenupdate – Ägypten schafft Sommerzeit ab. |4.36, 3.43, 2.55 |13. September 2016 |
+| – |[3179573] |Updaterollup vom August 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.55 |13. September 2016 |
+| – |[3179575] |Updaterollup vom August 2016 für Windows Server 2012 |3.43 |13. September 2016 |
+| – |[3179574] |Updaterollup vom August 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.36 |13. September 2016 |
 
 ## <a name="august-2016-guest-os"></a>Gastbetriebssystem für August 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -553,9 +604,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-101 |[3178465] |Sicherheitsupdate für Windows-Authentifizierungsmethoden |4.35, 3.42, 2.54 |9. August 2016 |
 | MS16-102 |[3182248] |Sicherheitsupdate für Microsoft Windows-PDF-Bibliothek |4.35, 3.42 |9. August 2016 |
 | MS16-077 – Neuveröffentlichung |[3165191] |Sicherheitsupdate für Webproxy-AutoErmittlung (Web Proxy Autodiscovery, WPAD) |4.35, 3.42, 2.54 |9. August 2016 |
-| N/V |[3172605] |Updaterollup vom Juli 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.54 |9. August 2016 |
-| N/V |[3172615] |Updaterollup vom Juli 2016 für Windows Server 2012 |3.42 |9. August 2016 |
-| N/V |[3172614] |Updaterollup vom Juli 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.35 |9. August 2016 |
+| – |[3172605] |Updaterollup vom Juli 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.54 |9. August 2016 |
+| – |[3172615] |Updaterollup vom Juli 2016 für Windows Server 2012 |3.42 |9. August 2016 |
+| – |[3172614] |Updaterollup vom Juli 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.35 |9. August 2016 |
 
 ## <a name="july-2016-guest-os"></a>Gastbetriebssystem für Juli 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -566,12 +617,12 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-091 |[3170048] |Sicherheitsupdate für .NET Framework |4.34, 3.41, 2.53 |12. Juli 2016 |
 | MS16-092 |[3171910] |Sicherheitsupdate für Windows Kernel |4.34, 3.41 |12. Juli 2016 |
 | MS16-094 |[3177404] |Sicherheitsupdate für sicheren Start |4.34, 3.41 |12. Juli 2016 |
-| N/V |[3162835] |DST- und Zeitzonenupdate vom Juni 2016 für Windows |4.34, 3.41, 2.53 |12. Juli 2016 |
-| N/V |[3156417] |Updaterollup vom Mai 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.53 |12. Juli 2016 |
-| N/V |[3161608] |Updaterollup vom Juni 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.53 |12. Juli 2016 |
-| N/V |[3161609] |Updaterollup vom Juni 2016 für Windows Server 2012 |3.41 |12. Juli 2016 |
-| N/V |[3161606] |Updaterollup vom Juni 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.34 |12. Juli 2016 |
-| N/V |[3139923] |Windows Installer-Reparatur (MSI) nicht möglich, wenn das MSI-Paket auf einer HTTP-Freigabe in Windows installiert wird |4.34 |12. Juli 2016 |
+| – |[3162835] |DST- und Zeitzonenupdate vom Juni 2016 für Windows |4.34, 3.41, 2.53 |12. Juli 2016 |
+| – |[3156417] |Updaterollup vom Mai 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.53 |12. Juli 2016 |
+| – |[3161608] |Updaterollup vom Juni 2016 für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.53 |12. Juli 2016 |
+| – |[3161609] |Updaterollup vom Juni 2016 für Windows Server 2012 |3.41 |12. Juli 2016 |
+| – |[3161606] |Updaterollup vom Juni 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.34 |12. Juli 2016 |
+| – |[3139923] |Windows Installer-Reparatur (MSI) nicht möglich, wenn das MSI-Paket auf einer HTTP-Freigabe in Windows installiert wird |4.34 |12. Juli 2016 |
 
 ## <a name="june-2016-guest-os"></a>Gastbetriebssystem für Juni 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -589,16 +640,16 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-077 |[3165191] |Sicherheitsupdate für WPAD |4.33, 3.40, 2.52 |14. Juni 2016 |
 | MS16-080 |[3164302] |Sicherheitsupdate für Microsoft Windows-PDF |4.33, 3.40 |14. Juni 2016 |
 | MS16-081 |[3160352] |Sicherheitsupdate für Active Directory |4.33, 3.40, 2.52 |14. Juni 2016 |
-| N/V |[2922223] |Sie können die Systemzeit nicht ändern, wenn der Registrierungseintrag „RealTimeIsUniversal“ in Windows aktiviert ist. |2.52 |14. Juni 2016 |
-| N/V |[3121255] |Abbruchfehler „0x00000024“ in „FsRtlNotifyFilterReportChange“ und mögliche Fehler beim Kopieren von Dateien unter Windows |2.52 |14. Juni 2016 |
-| N/V |[3125424] |LSASS-Deadlocks führen dazu, dass Windows Server 2012 R2 oder Windows Server 2012 nicht reagiert |4.33, 3.40 |14. Juni 2016 |
-| N/V |[3125574] |Praktisches Rollup-Update für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.52 |14. Juni 2016 |
-| N/V |[3140245] |Update zur Aktivierung von TLS 1.1 und TLS 1.2 als sichere Standardprotokolle in WinHTTP unter Windows |3.40, 2.52 |14. Juni 2016 |
-| N/V |[3146604] |Der WMI-Dienst stürzt in Windows Server 2012 R2 oder Windows Server 2012 ohne erkennbaren Grund ab. |4.33, 3.40 |14. Juni 2016 |
-| N/V |[3149157] |Verbesserungen der Zuverlässigkeit und Skalierbarkeit in TCP/IP für Windows 8.1 und Windows Server 2012 R2 |4.33 |14. Juni 2016 |
-| N/V |[3156416] |Updaterollup vom Mai 2016 für Windows Server 2012 |3.40 |14. Juni 2016 |
-| N/V |[3156418] |Updaterollup vom Mai 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.33 |14. Juni 2016 |
-| N/V |[3153731] |DST-Update vom Mai 2016 für Aserbaidschan, Chile, Haiti und Marokko in Windows |4.33, 3.40, 2.52 |14. Juni 2016 |
+| – |[2922223] |Sie können die Systemzeit nicht ändern, wenn der Registrierungseintrag „RealTimeIsUniversal“ in Windows aktiviert ist. |2.52 |14. Juni 2016 |
+| – |[3121255] |Abbruchfehler „0x00000024“ in „FsRtlNotifyFilterReportChange“ und mögliche Fehler beim Kopieren von Dateien unter Windows |2.52 |14. Juni 2016 |
+| – |[3125424] |LSASS-Deadlocks führen dazu, dass Windows Server 2012 R2 oder Windows Server 2012 nicht reagiert |4.33, 3.40 |14. Juni 2016 |
+| – |[3125574] |Praktisches Rollup-Update für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.52 |14. Juni 2016 |
+| – |[3140245] |Update zur Aktivierung von TLS 1.1 und TLS 1.2 als sichere Standardprotokolle in WinHTTP unter Windows |3.40, 2.52 |14. Juni 2016 |
+| – |[3146604] |Der WMI-Dienst stürzt in Windows Server 2012 R2 oder Windows Server 2012 ohne erkennbaren Grund ab. |4.33, 3.40 |14. Juni 2016 |
+| – |[3149157] |Verbesserungen der Zuverlässigkeit und Skalierbarkeit in TCP/IP für Windows 8.1 und Windows Server 2012 R2 |4.33 |14. Juni 2016 |
+| – |[3156416] |Updaterollup vom Mai 2016 für Windows Server 2012 |3.40 |14. Juni 2016 |
+| – |[3156418] |Updaterollup vom Mai 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 |4.33 |14. Juni 2016 |
+| – |[3153731] |DST-Update vom Mai 2016 für Aserbaidschan, Chile, Haiti und Marokko in Windows |4.33, 3.40, 2.52 |14. Juni 2016 |
 
 ## <a name="may-2016-guest-os"></a>Gastbetriebssystem für Mai 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -612,11 +663,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS16-062 |[3158222] |Sicherheitsupdate für Kernelmodustreiber |4.32, 3.39, 2.51 |10. Mai 2016 |
 | MS16-065 |[3156757] |Sicherheitsupdate für .NET Framework |4.32, 3.39, 2.51 |10. Mai 2016 |
 | MS16-067 |[3155784] |Sicherheitsupdate für Volume-Manager-Treiber |4.32, 3.39 |10. Mai 2016 |
-| N/V |[3148851] |Zeitzonenänderungen für Russland in Windows  |4.32, 3.39, 2.51 |10. Mai 2016 |
-| N/V |[3133977] |Aufgrund von Dienstabstürzen im svchost.exe-Prozess unter Windows 7 oder Windows Server 2008 R2 kann BitLocker keine Laufwerke verschlüsseln.  |2.51 |10. Mai 2016 |
-| N/V |[3133681] |Virtuelle Computer reagieren nicht auf Ihren Vorgang in SCVMM in Windows Server 2012 R2.  |4.32 |10. Mai 2016 |
-| N/V |[3123245] |Update verbessert die Identifikation der Portauslastung in Windows Server 2012 R2.  |4.32 |10. Mai 2016 |
-| N/V |[Disable RC4] | Microsoft-Sicherheitsempfehlung: Update zum Deaktivieren von RC4  |4.32, 3.39, 2.51 |10. Mai 2016 |
+| – |[3148851] |Zeitzonenänderungen für Russland in Windows  |4.32, 3.39, 2.51 |10. Mai 2016 |
+| – |[3133977] |Aufgrund von Dienstabstürzen im svchost.exe-Prozess unter Windows 7 oder Windows Server 2008 R2 kann BitLocker keine Laufwerke verschlüsseln.  |2.51 |10. Mai 2016 |
+| – |[3133681] |Virtuelle Computer reagieren nicht auf Ihren Vorgang in SCVMM in Windows Server 2012 R2.  |4.32 |10. Mai 2016 |
+| – |[3123245] |Update verbessert die Identifikation der Portauslastung in Windows Server 2012 R2.  |4.32 |10. Mai 2016 |
+| – |[Disable RC4] | Microsoft-Sicherheitsempfehlung: Update zum Deaktivieren von RC4  |4.32, 3.39, 2.51 |10. Mai 2016 |
 
 ## <a name="april-2016-guest-os"></a>Gastbetriebssystem für April 2016
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -787,17 +838,17 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 ## <a name="march-2015-guest-os"></a>Gastbetriebssystem für März 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-| MS15-018 |[3032359] |Kumulatives Sicherheitsupdate für Internet Explorer |4.18, 3.25, 2.37 |N/V |
-| MS15-019 |[3040297] |Sicherheitsanfälligkeit in Skript-Engine VBScript kann Remotecodeausführung ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-020 |[3041836] |Sicherheitsanfälligkeiten in Windows können Remotecodeausführung ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-021 |[3032323] |Sicherheitsanfälligkeiten in Adobe-Schriftartentreiber können Remotecodeausführung ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-023 |[3034344] |Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Erhöhung von Berechtigungen ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-024 |[3035132] |Sicherheitsanfälligkeit bei PNG-Verarbeitung kann Offenlegung von Information ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-025 |[3038680] |Sicherheitsanfälligkeiten im Windows-Kernel können Erhöhung von Berechtigungen ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-027 |[3002657] |Sicherheitsanfälligkeit in NETLOGON kann Spoofing ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-028 |[3030377] |Sicherheitsanfälligkeit im Windows-Taskplaner kann Umgehung von Sicherheitsfunktionen ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-029 |[3035126] |Sicherheitsanfälligkeit in Windows Photo Decoder-Komponente kann Offenlegung von Informationen ermöglichen |4.18, 3.25, 2.37 |N/V |
-| MS15-030 |[3039976] |Sicherheitsanfälligkeit in Remote Desktop Protocol kann Denial-of-Service-Angriffe ermöglichen |4.18, 3.25, 2.37 |N/V |
+| MS15-018 |[3032359] |Kumulatives Sicherheitsupdate für Internet Explorer |4.18, 3.25, 2.37 |– |
+| MS15-019 |[3040297] |Sicherheitsanfälligkeit in Skript-Engine VBScript kann Remotecodeausführung ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-020 |[3041836] |Sicherheitsanfälligkeiten in Windows können Remotecodeausführung ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-021 |[3032323] |Sicherheitsanfälligkeiten in Adobe-Schriftartentreiber können Remotecodeausführung ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-023 |[3034344] |Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Erhöhung von Berechtigungen ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-024 |[3035132] |Sicherheitsanfälligkeit bei PNG-Verarbeitung kann Offenlegung von Information ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-025 |[3038680] |Sicherheitsanfälligkeiten im Windows-Kernel können Erhöhung von Berechtigungen ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-027 |[3002657] |Sicherheitsanfälligkeit in NETLOGON kann Spoofing ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-028 |[3030377] |Sicherheitsanfälligkeit im Windows-Taskplaner kann Umgehung von Sicherheitsfunktionen ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-029 |[3035126] |Sicherheitsanfälligkeit in Windows Photo Decoder-Komponente kann Offenlegung von Informationen ermöglichen |4.18, 3.25, 2.37 |– |
+| MS15-030 |[3039976] |Sicherheitsanfälligkeit in Remote Desktop Protocol kann Denial-of-Service-Angriffe ermöglichen |4.18, 3.25, 2.37 |– |
 
 > [!NOTE]
 > Bulletin MS15-031 wird möglicherweise als deinstalliert angezeigt. Es gilt jedoch nicht für dieses Gastbetriebssystemrelease.
@@ -807,13 +858,13 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 ## <a name="february-2015-guest-os"></a>Gastbetriebssystem für Februar 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-| MS15-009 |[3034682] |Sicherheitsupdate für Internet Explorer |4.17, 3.24, 2.36 |N/V |
-| MS15-010 |[3036220] |Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Remotecodeausführung ermöglichen |4.17, 3.24, 2.36 |N/V |
-| MS15-011 |[3000483] |Sicherheitsanfälligkeit in Gruppenrichtlinien kann Remotecodeausführung ermöglichen |4.17, 3.24, 2.36 |N/V |
-| MS15-014 |[3004361] |Sicherheitsanfälligkeit in SMB kann Umgehung der Sicherheitsfunktion ermöglichen |4.17, 3.24, 2.36 |N/V |
-| MS15-015 |[3031432] |Sicherheitsanfälligkeit in Microsoft Windows kann Erhöhung von Berechtigungen ermöglichen |4.17, 3.24, 2.36 |N/V |
-| MS15-016 |[3029944] |Sicherheitsanfälligkeit in Microsoft-Grafikkomponente kann Offenlegung von Informationen ermöglichen |4.17, 3.24, 2.36 |N/V |
-| N/V |[3004375] |Update zur Verbesserung der Windows-Befehlszeilenüberwachung<p/>**Hinweis**: Dies wird installiert, aber der Registrierungsschlüssel zum Aktivieren ist deaktiviert. |4.17, 3.24, 2.36 |N/V |
+| MS15-009 |[3034682] |Sicherheitsupdate für Internet Explorer |4.17, 3.24, 2.36 |– |
+| MS15-010 |[3036220] |Sicherheitsanfälligkeiten in Windows-Kernelmodustreibern können Remotecodeausführung ermöglichen |4.17, 3.24, 2.36 |– |
+| MS15-011 |[3000483] |Sicherheitsanfälligkeit in Gruppenrichtlinien kann Remotecodeausführung ermöglichen |4.17, 3.24, 2.36 |– |
+| MS15-014 |[3004361] |Sicherheitsanfälligkeit in SMB kann Umgehung der Sicherheitsfunktion ermöglichen |4.17, 3.24, 2.36 |– |
+| MS15-015 |[3031432] |Sicherheitsanfälligkeit in Microsoft Windows kann Erhöhung von Berechtigungen ermöglichen |4.17, 3.24, 2.36 |– |
+| MS15-016 |[3029944] |Sicherheitsanfälligkeit in Microsoft-Grafikkomponente kann Offenlegung von Informationen ermöglichen |4.17, 3.24, 2.36 |– |
+| – |[3004375] |Update zur Verbesserung der Windows-Befehlszeilenüberwachung<p/>**Hinweis**: Dies wird installiert, aber der Registrierungsschlüssel zum Aktivieren ist deaktiviert. |4.17, 3.24, 2.36 |– |
 
 ## <a name="january-2015-guest-os"></a>Gastbetriebssystem für Januar 2015
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -834,17 +885,17 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 ## <a name="december-2014-guest-os"></a>Gastbetriebssystem für Dezember 2014
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-| N/V |[3013776] |System stürzt ab, wenn Sie ein Domänenkonto zum Starten einer Anwendung verwenden |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[3013043] |Dateisystemdaten sind auf einem Windows-basierten Computer mit mehr als einem NUMA-Knoten beschädigt |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[3012712] |Neue Datenblöcke werden nicht ordnungsgemäß initialisiert, wenn eine differenzierende VHD erweitert wird |4.15, 3.22, 2.34 |13. Januar 201 |
-| N/V |[3004905] |Windows Hyper-V-Verbesserung für virtuelle Linux-Computer mit Dateisystemen, die größer als 2 TB sind |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[3004394] |Update für Windows-Programm für Stammzertifikate in Windows – Dezember 2014 |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[2999323] |Der Text für Ereignis-ID 17 wurde geändert |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[3013488] |Lange Wartezeit beim Zurücksetzen eines WSUS-Servers während des Imports von CSA-Dateien in Windows Server 2012 R2 oder Windows Server 2012 |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[3012325] |Update der Windows APN-Datenbankeinträge für die Netzbetreiber DIGI, Vodafone und Telekom in Windows 8.1 und Windows 8 |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
-| N/V |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3013776] |System stürzt ab, wenn Sie ein Domänenkonto zum Starten einer Anwendung verwenden |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3013043] |Dateisystemdaten sind auf einem Windows-basierten Computer mit mehr als einem NUMA-Knoten beschädigt |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3012712] |Neue Datenblöcke werden nicht ordnungsgemäß initialisiert, wenn eine differenzierende VHD erweitert wird |4.15, 3.22, 2.34 |13. Januar 201 |
+| – |[3004905] |Windows Hyper-V-Verbesserung für virtuelle Linux-Computer mit Dateisystemen, die größer als 2 TB sind |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3004394] |Update für Windows-Programm für Stammzertifikate in Windows – Dezember 2014 |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[2999323] |Der Text für Ereignis-ID 17 wurde geändert |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3013488] |Lange Wartezeit beim Zurücksetzen eines WSUS-Servers während des Imports von CSA-Dateien in Windows Server 2012 R2 oder Windows Server 2012 |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3012325] |Update der Windows APN-Datenbankeinträge für die Netzbetreiber DIGI, Vodafone und Telekom in Windows 8.1 und Windows 8 |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
+| – |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
 
 [4457131]: http://support.microsoft.com/kb/4457131
 [4457145]: http://support.microsoft.com/kb/4457145

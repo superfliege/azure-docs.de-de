@@ -13,18 +13,28 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce16ab3b723b9a6c87c7b980e3cc76c389609da6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319647"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847900"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Versionshinweise zu Validation-as-a-Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Dieser Artikel enthält die Versionshinweise zu Validation-as-a-Service in Azure Stack.
+
+## <a name="version-405"></a>Version 4.0.5
+17. Januar 2019
+
+-  Festplattenidentifikationstest aktualisiert, um Inkonsistenzen im Speicherpool zu beheben. Version: 5.1.14.0 -> 5.1.15.0
+-  Monatliche Aktualisierungsüberprüfung für Azure Stack aktualisiert, um Inkonsistenzen bei der Software- und Inhaltsvalidierung zu beheben. Version: 5.1.14.0 -> 5.1.15.0
+-  Überprüfung für OEM-Erweiterungspaket aktualisiert, um die notwendigen Prüfungen *vor* dem Aktualisierungsschritt von Azure Stack durchzuführen. Version: 5.1.14.0 -> 5.1.15.0
+-  Interne Fehlerkorrekturen
+
+
 
 ## <a name="version-402"></a>Version 4.0.2
 

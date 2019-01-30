@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4bf18a44255903df09aae3382c0eb35a2a55eea5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/22/2019
+ms.openlocfilehash: 197281a4666179037cd689e7e8d488e73039174b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541811"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810294"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB
 Azure Database for MariaDB unterstützt die Verbindung Ihres Servers mit Azure Database for MariaDB mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -30,6 +30,8 @@ Eine weitere Möglichkeit zum Binden des SSL-Zertifikats besteht im Verwenden de
 ```bash
 mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+> [!NOTE]
+> Wenn Sie neuere Versionen der MySQL-Befehlszeilenschnittstelle für Windows verwenden, erhalten Sie möglicherweise eine Fehlermeldung `SSL connection error: Certificate signature check failed`. Ersetzen Sie in diesem Fall den `--ssl-ca={filepath}`-Parameter mit `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Erzwingen von SSL-Verbindungen in Azure 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals

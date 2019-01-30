@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie die Log Analytics-Ansichten für Azure Active
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fbe5515f05c66fb0763943c20ed8aaa4374e3d87
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624640"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825203"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory
 
@@ -50,8 +50,8 @@ Um die Log Analytics-Ansichten zu verwenden, benötigen Sie Folgendes:
 
 2. Sobald Sie sich in Ihrem Arbeitsbereich befinden, wählen Sie **Zusammenfassung des Arbeitsbereichs** aus. Die folgenden drei Ansichten sollten angezeigt werden:
 
-    * **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z. B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
-    * **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z. B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
+    * **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z.B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
+    * **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z.B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
 
 3. Wählen Sie eine der beiden Ansichten aus, um zu den einzelnen Berichten zu wechseln. Sie können auch Benachrichtigungen für jeden der Berichtsparameter festlegen. Lassen Sie uns zum Beispiel eine Benachrichtigung bei jedem Mal festlegen, wenn es zu einem Anmeldefehler kommt. Zu diesem Zweck wählen Sie zuerst die Ansicht **Anmeldeereignisse** aus, dann den Bericht **Anmeldefehler im Laufe der Zeit**, und wählen Sie dann **Analytics** aus, um die Seite mit den Details zu öffnen, in denen sich die eigentliche Abfrage befindet, die dem Bericht zugrunde liegt. 
 

@@ -4,7 +4,7 @@ description: So stellen Sie das Internet Explorer-Add-On für das Portal "Meine 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7ccaf272a79268ecd781821593a6041d5653a39b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715039"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471887"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer
 Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
@@ -28,7 +28,7 @@ Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
 * Während der Verwendung von Internet Explorer ist nicht möglich, über das Portal "Meine Apps" auf Ihre Apps zuzugreifen.
 * Die Meldung „Software installieren“ wird angezeigt, obwohl Sie die Software bereits installiert haben.
 
-Als Administrator finden Sie weitere Informationen unter: [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](deploy-access-panel-browser-extension.md)
+Wenn Sie Administrator sind, lesen Sie auch: [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>Ausführen des Diagnoseprogramms
 Sie können Probleme bei der Installation mithilfe der Zugriffsbereichserweiterung diagnostizieren, indem Sie das Diagnoseprogramm "Zugriffsbereich" herunterladen und ausführen:

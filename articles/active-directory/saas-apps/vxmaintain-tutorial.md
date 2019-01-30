@@ -1,10 +1,10 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit vxMaintain | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit vxMaintain | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und vxMaintain konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433993"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Tutorial: Azure Active Directory-Integration mit vxMaintain
 
@@ -117,7 +117,7 @@ In diesem Abschnitt können Sie folgendermaßen das einmalige Anmelden von Azure
 
     ![Der Abschnitt „SAML-Signaturzertifikat“](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
     ![Die Schaltfläche „Speichern“](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
@@ -161,7 +161,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer m
  
 ### <a name="create-a-vxmaintain-test-user"></a>Erstellen eines vxMaintain-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in vxMaintain eine Testbenutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der vxMaintain-Plattform vom [vxMaintain-Supportteam](https://www.hubspot.com/company/contact) unterstützen. Bevor Sie SSO verwenden, erstellen und aktivieren Sie die Benutzer.
+In diesem Abschnitt erstellen Sie in vxMaintain eine Testbenutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der vxMaintain-Plattform vom  [vxMaintain-Supportteam](https://www.hubspot.com/company/contact) unterstützen. Bevor Sie SSO verwenden, erstellen und aktivieren Sie die Benutzer.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -195,7 +195,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Bei Auswahl der Kachel **vxMaintain** im Zugriffsbereich sollten Sie automatisch bei Ihrer vxMaintain-Anwendung angemeldet werden.
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffspanel finden Sie unter [Einführung in das Zugriffspanel](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

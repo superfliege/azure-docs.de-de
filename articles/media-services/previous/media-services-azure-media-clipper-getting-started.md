@@ -9,12 +9,12 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: ac64d97aeeef6147aa62658c9ee440bf058f4db1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 27a330fa4d4f242a58d15ab3f08b70cef8b66d11
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783289"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810736"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Erstellen von Clips mit Azure Media Clipper
 Dieser Abschnitt zeigt Ihnen die grundlegenden Schritte für den Einstieg in Azure Media Clipper. In den darauffolgenden Abschnitten wird die Konfiguration von Azure Media Clipper erläutert.
@@ -88,17 +88,17 @@ var subclipper = new subclipper({
 ```
 
 Folgende Parameter sind im Aufruf der Initialisierungsmethode erforderlich:
-- `selector` {REQUIRED, string}: CSS-Selektor des passenden HTML-Elements, in dem das Widget gerendert werden soll.
-- `restVersion` {REQUIRED, string}: Die Zielversion der Azure Media Services-REST-API. Die REST-Version definiert das Format der vom Widget generierten Ausgabe. Derzeit wird nur 2.0 unterstützt.
+- `selector` {ERFORDERLICH, Zeichenfolge}: CSS-Selektor des passenden HTML-Elements, in dem das Widget gerendert werden soll.
+- `restVersion` {ERFORDERLICH, Zeichenfolge}: Die Zielversion der Azure Media Services-REST-API. Die REST-Version definiert das Format der vom Widget generierten Ausgabe. Derzeit wird nur 2.0 unterstützt.
 - `submitSubclipCallback` {REQUIRED, promise}: Die aufgerufene Rückruffunktion, wenn auf die Schaltfläche „Senden“ des Widgets geklickt wird. Die Rückruffunktion sollte die vom Widget generierte Ausgabe erwarten (eine Renderauftragskonfiguration oder eine Filterdefinition). Weitere Informationen finden Sie in der Rückruffunktion zum Senden des Subclips.
-- `logLevel` {OPTIONAL, {'info', 'warn', 'error'}}: Die Protokollierungsebene, die in der Browserkonsole angezeigt werden soll. Standardwert: Fehler
-- `minimumMarkerGap` {OPTIONAL, int}: Die Mindestlänge eines Subclips (in Sekunden). Hinweis: Der Wert sollte mindestens 6 betragen; dies ist außerdem der Standardwert.
+- `logLevel` {OPTIONAL, {'info', 'warn', 'error'}}: Legt die Protokollierungsebene fest, die in der Browserkonsole angezeigt werden soll. Standardwert: Fehler
+- `minimumMarkerGap` {OPTIONAL, Int}: Die Mindestlänge eines Subclips (in Sekunden). Hinweis: Der Wert sollte mindestens 6 betragen; dies ist außerdem der Standardwert.
 - `singleBitrateMp4Profile` {OPTIONAL, JSON object}: Das MP4-Profil mit Einzelbitrate, das für die vom Widget generierte Renderauftragskonfiguration verwendet werden soll. Wenn kein Profil angegeben ist, wird das [MP4-Standardprofil mit Einzelbitrate](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p) verwendet.
 - `multiBitrateMp4Profile` {OPTIONAL, JSON object}: Das MP4-Profil mit Mehrfachbitrate, das für die vom Widget generierte Renderauftragskonfiguration verwendet werden soll. Wenn kein Profil angegeben ist, wird das [MP4-Standardprofil mit Mehrfachbitrate](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p) verwendet.
 - `keymap` {OPTIONAL, json object}: Ermöglicht die Anpassung der Tastenkombinationen des Widgets. Weitere Informationen finden Sie unter [Konfigurieren von Azure Media Clipper-Tastenkombinationen](media-services-azure-media-clipper-keyboard-shortcuts.md).
 - `assetsPanelLoaderCallback` {OPTIONAL, promise}: Die Rückruffunktion, die aufgerufen wird, um jedes Mal, wenn ein Benutzer zum Ende des Medienobjektbereichs scrollt, (asynchron) eine neue Seite mit Medienobjekten in den Bereich zu laden. Weitere Informationen finden Sie in der Rückruffunktion zum Laden des Medienobjektbereichs.
 - `height` {OPTIONAL, number}: Die Gesamthöhe des Widgets. Die Mindesthöhe beträgt 600 px ohne Medienobjektbereich und 850 px mit Medienobjektbereich.
-- `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'}): Die zulässigen Modi für die Subcliperstellung. Der Standardwert lautet „Alle“.
+- `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'}): Die zulässigen Subclipmodi. Der Standardwert lautet „Alle“.
 - `filterAssetsTypes` (OPTIONAL, bool): filterAssetsTypes ermöglicht Ihnen, die Filterdropdownliste im Medienobjektbereich ein- und auszublenden. Der Standardwert lautet „true“.
 - `speedLevels` (OPTIONAL, array): speedLevels ermöglicht das Festlegen verschiedener Geschwindigkeiten für die Videowiedergabe. Weitere Informationen finden Sie in der [Dokumentation zu Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions).
 - `resetOnJobDone` (OPTIONAL, bool): resetOnJobDone ermöglicht Clipper, die Subcliperstellung auf den ursprünglichen Zustand zurückzusetzen, wenn ein Auftrag erfolgreich übermittelt wurde.

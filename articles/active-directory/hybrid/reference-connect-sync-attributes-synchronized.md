@@ -4,7 +4,7 @@ description: Listet die mit Azure Active Directory synchronisierten Attribute au
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 08633b52e6b7cfef28635925ad9fcf34e065e9bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251797"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468608"
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
+# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
 Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
 
@@ -427,11 +427,11 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 | Attributname (Connect-Benutzeroberfläche) |Attributname (lokales AD) | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016 und Windows Server 2016 AD. |
-| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online-Archiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Onlinearchiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |
 | msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
-| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Online-Voicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Onlinevoicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
 | msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Beweissicherungsverfahren: Ermöglicht Clouddiensten, zu bestimmen, welche Benutzer einem Beweissicherungsverfahren unterliegen. |
 | proxyAddresses| proxyAddresses |X |X |X |Nur die x500-Adresse von Exchange Online wird eingefügt. |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |Ermöglicht einem Exchange Online-Postfach, dass Benutzern mit lokalem Exchange-Postfach SendOnBehalfTo-Rechte erteilt werden. Erfordert Azure AD Connect Build 1.1.552.0 oder höher |

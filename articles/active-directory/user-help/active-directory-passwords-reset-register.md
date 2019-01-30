@@ -3,7 +3,7 @@ title: Registrieren für die Self-Service-Kennwortzurücksetzung – Azure Activ
 description: Registrieren von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung von Azure AD
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2a9e65e36e31f4b2b382fac2bd9898580be18900
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106715"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821667"
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrieren für die Self-Service-Kennwortzurücksetzung
 
@@ -31,10 +31,10 @@ Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzun
 1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auf.
 2. Geben Sie Ihren vom Administrator bereitgestellten Benutzernamen und das dazugehörige Kennwort ein.
 3. Abhängig von der Konfiguration durch Ihr IT-Team können einige der folgenden Optionen konfiguriert und überprüft werden. Wenn der Administrator von Ihnen zur Verwendung Ihrer Informationen autorisiert wurde, kann er einige der Informationen für Sie auffüllen.
-    * **Bürotelefon:** Diese Option kann nur vom Administrator festgelegt werden.
-    * **Authentifizierungstelefon:** Legen Sie diese Option auf eine andere Telefonnummer fest, unter der Sie erreichbar sind. Ein Beispiel wäre ein Mobiltelefon, das Textnachrichten oder Anrufe empfangen kann.
-    * **E-Mail für Authentifizierung:** Legen Sie diese Option auf eine alternative E-Mail-Adresse fest, auf die Sie zugreifen können, ohne das zurückzusetzende Kennwort zu verwenden.
-    * **Sicherheitsfragen:** Diese Liste mit Fragen wurde vom Administrator zur Beantwortung freigegeben. Fragen und Antworten dürfen nicht mehrmals verwendet werden.
+    * **Bürotelefon**: Diese Option kann nur vom Administrator festgelegt werden.
+    * **Authentifizierungstelefon**: Legen Sie diese Option auf eine andere Telefonnummer fest, unter der Sie erreichbar sind. Ein Beispiel wäre ein Mobiltelefon, das Textnachrichten oder Anrufe empfangen kann.
+    * **E-Mail für Authentifizierung**: Legen Sie diese Option auf eine alternative E-Mail-Adresse fest, auf die Sie zugreifen können, ohne das zurückzusetzende Kennwort zu verwenden.
+    * **Sicherheitsfragen**: Diese Liste mit Fragen wurde vom Administrator zur Beantwortung freigegeben. Fragen und Antworten dürfen nicht mehrmals verwendet werden.
 4. Geben Sie die vom Administrator angeforderten Informationen an, und überprüfen Sie sie. Sollten mehrere Optionen verfügbar sein, empfiehlt es sich, mehrere Methoden zu registrieren. Dadurch sind Sie flexibel, falls eine der Methoden nicht verfügbar ist – beispielsweise, wenn Sie unterwegs und nicht über Ihr Bürotelefon erreichbar sind.
 
     ![Registrieren von Authentifizierungsmethoden und Klicken auf „Fertig stellen“][Register]

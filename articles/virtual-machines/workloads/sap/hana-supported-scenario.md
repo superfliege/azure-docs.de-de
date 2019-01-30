@@ -1,5 +1,5 @@
 ---
-title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft Docs
+title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
 description: Unterstützte Szenarien und ihre Architekturdetails für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576492"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855454"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieses Dokument beschreibt die unterstützten Szenarien sowie deren Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -32,11 +32,11 @@ Bevor Sie mit der Bereitstellung der HLI-Einheit fortfahren, überprüfen Sie de
 Machen Sie sich mit den Begriffen und Definitionen vertraut, die in diesem Dokument verwendet werden.
 
 - SID: Der Systembezeichner für das HANA-System.
-- HLI: Große Hana-Instanzen (Hana Large Instances).
-- DR: Ein Notfallwiederherstellungs-Standort (Disaster Recovery).
+- HLI: Große HANA-Instanzen.
+- DR: Ein Standort für die Notfallwiederherstellung (Disaster Recovery).
 - Normale DR: Ein Systemsetup mit einer dedizierten Ressource, die nur für DR-Zwecke verwendet wird.
-- Mehrzweck-DR: Ein System am DR-Standort, das für die Verwendung einer Nichtproduktionsumgebung zusammen mit einer Produktionsinstanz konfiguriert ist, die für die Verwendung des DR-Ereignisses konfiguriert ist. 
-- Einzelne SID: Ein System mit einer installierten Instanz.
+- Mehrzweck-DR: Ein System am DR-Standort, das für die Verwendung einer Nicht-Produktionsumgebung zusammen mit einer Produktionsinstanz konfiguriert ist, die für die Verwendung des DR-Ereignisses konfiguriert ist. 
+- Einzelne SID:  Ein System mit einer installierten Instanz.
 - Mehrfach-SID: Ein System mit mehreren konfigurierten Instanzen. Wird auch als MCOS-Umgebung bezeichnet.
 
 
@@ -50,17 +50,17 @@ Der abgeleiteten Architekturentwurf ist ausschließlich aus der Infrastrukturper
 Dieses Dokument beschreibt die Details der beiden Komponenten in jeder unterstützten Architektur:
 
 - Ethernet
-- Speicher
+- Storage
 
 ### <a name="ethernet"></a>Ethernet
 
 Jeder bereitgestellte Server ist mit den Gruppen von Ethernet-Schnittstellen vorkonfiguriert. Im Folgenden finden Sie die Details zu den Ethernet-Schnittstellen, die für die einzelnen HLI-Einheiten konfiguriert sind.
 
-- **A**: Diese Schnittstelle wird für/durch Clientzugriff verwendet.
+- **A:** Diese Schnittstelle wird für/durch einen Clientzugriff verwendet.
 - **B**: Diese Schnittstelle wird für die Kommunikation zwischen den Knoten verwendet. Diese Schnittstelle ist auf allen Servern (unabhängig von der angeforderten Topologie) konfiguriert, wird aber nur für 
 - Szenarien mit horizontaler Skalierung verwendet.
-- **C**: Diese Schnittstelle wird für die Konnektivität zwischen dem Knoten und dem Speicher verwendet.
-- **D**: Diese Schnittstelle wird für die Konnektivität zwischen dem Knoten und der iSCSI-Geräteverbindung für das STONITH-Setup verwendet. Diese Schnittstelle ist nur konfiguriert, wenn das HSR-Setup angefordert wird.  
+- **C**: Diese Schnittstelle wird für die Konnektivität zwischen Knoten und Speicher verwendet.
+- **D**: Diese Schnittstelle wird für die Konnektivität zwischen Knoten und iSCSI-Geräteverbindung für das STONITH-Setup verwendet. Diese Schnittstelle ist nur konfiguriert, wenn das HSR-Setup angefordert wird.  
 
 | LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
 | --- | --- | --- | --- | --- |
@@ -97,7 +97,7 @@ Für Bereitstellungsfälle von HANA-Systemreplikation oder horizontal skaliertem
 - Ethernet „D“ sollte ausschließlich für den Zugriff auf das STONITH-Gerät für den Schrittmacher verwendet werden. Diese Schnittstelle ist erforderlich, wenn Sie HANA-Systemreplikation (HSR) konfigurieren und automatisches Failover im Betriebssystem mit einem SBD-basierten Gerät erzielen möchten.
 
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Der Speicher ist je nach angeforderter Topologie vorkonfiguriert. Die Volumegrößen und der Bereitstellungspunkt variieren basierend auf der Anzahl der Server, den SKUs und der konfigurierten Topologie. Überprüfen Sie Ihre erforderlichen Szenarien (weiter unten in diesem Dokument), um weitere Informationen zu erhalten. Wenn mehr Speicher erforderlich ist, können Sie diesen in Inkrementen von einem TB erwerben.
 
 >[!NOTE]
@@ -147,7 +147,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -182,7 +182,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -222,7 +222,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -237,7 +237,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure).
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 
@@ -263,7 +263,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -286,7 +286,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
@@ -317,7 +317,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -365,7 +365,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Verwendet für STONITH |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -395,7 +395,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 - Am DR-Standort: **Zwei Sätze von Speichervolumes** sind für die Replikation des primären und sekundären Knotens erforderlich.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
@@ -424,7 +424,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -465,7 +465,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -501,7 +501,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -540,7 +540,7 @@ Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
 | C | TYP II | vlan<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
 | D | TYP II | vlan<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
 
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
 Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 | Bereitstellungspunkt | Anwendungsfall | 
@@ -559,7 +559,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 -  Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 

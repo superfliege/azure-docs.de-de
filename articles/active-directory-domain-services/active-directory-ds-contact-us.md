@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: So erreichen Sie uns | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Wenden Sie sich an uns | Microsoft-Dokumentation'
 description: Wenden Sie sich an das Produktteam der Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: ergreenl
-ms.openlocfilehash: cedf09cd9dae23b3ea00d08b4a19ceb496e4958d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: feb3f17268443feddcbecd751c9da4bf16051ee5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155965"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849157"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD Domain Services – so erreichen Sie uns
 ## <a name="contact-the-product-team"></a>Wenden Sie sich an das Produktteam
 Falls Probleme mit Ihrer verwalteten Domäne auftreten, überprüfen Sie, ob diese sich mit den Schritten in diesem [Leitfaden zur Problembehandlung](active-directory-ds-troubleshooting.md) beheben lassen. Falls sich die Probleme nicht beseitigen lassen, können Sie uns gern kontaktieren.
 
-Sie können uns eine E-Mail an [Azure AD Domain Services– Feedback](mailto:aaddsfb@microsoft.com)senden.
+Sie können uns eine E-Mail senden an: [Azure AD Domain Services – Feedback](mailto:aaddsfb@microsoft.com).
 
 Stellen Sie folgende Informationen bereit, damit wir das Problem untersuchen können:
 

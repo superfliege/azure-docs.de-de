@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von Datumsansprüchen für das Schema d
 description: Beispiele für die Transformation von Datumsansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a49e940c988d25da1e6f6a3c6f372e15fd2136f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405819"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850058"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 
@@ -111,9 +111,9 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `dateOfBir
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim**: 2019-06-01
+    - **inputClaim:** 2019-06-01
 - Ausgabeansprüche:
-    - **outputClaim**: 1559347200 (June 1, 2019 12:00:00 AM)
+    - **outputClaim:** 1559347200 (June 1, 2019 12:00:00 AM)
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -174,7 +174,7 @@ Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Da
     - **secondDateTime**: 2018-04-01T00:00:00.100000Z
 - Eingabeparameter:
     - **operator:** später als
-    - **timeSpanInSeconds**: 7776000 (90 days)
+    - **timeSpanInSeconds**: 7776000 (90 Tage)
 - Ausgabeansprüche: 
     - **result**: true
 

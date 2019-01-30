@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0c7d0980c928ecefebeabff555378230453c742f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261229"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827940"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -286,7 +286,7 @@ Führen Sie folgende Schritte aus, um die Ereignisablaufverfolgung für Windows 
 | 751       | UnableToConnectToServer        | Fehler bei der Verbindungsherstellung mit vCenter Server-Instanz „%Name;“. Fehler: %ErrorMessage;     | Weitere Informationen finden Sie in der Fehlermeldung.                                                             | Beheben Sie das Problem, und wiederholen Sie den Vorgang.                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | Der Server „%Name;“ ist keine vCenter Server-Instanz.                                  | Geben Sie vCenter Server-Details an.                                                                       | Wiederholen Sie den Vorgang mit den richtigen vCenter Server-Details.                                                                                   |
 | 753       | InvalidLoginCredentials        | Fehler bei der Verbindungsherstellung mit vCenter Server-Instanz „%Name;“. Fehler: %ErrorMessage; | Fehler bei der Verbindung mit der vCenter Server-Instanz aufgrund von ungültigen Anmeldeinformationen.                             | Stellen Sie sicher, dass die angegebenen Anmeldeinformationen richtig sind.                                                                                    |
-| 754       | NoPerfDataAvaialable           | Keine Leistungsdaten verfügbar.                                               | Überprüfen Sie die Statistikstufe in vCenter Server. Sie muss auf „3“ gesetzt sein, damit Leistungsdaten verfügbar sind. | Ändern Sie die Statistikstufe auf „3“ (für eine Dauer von 5 Minuten, 30 Minuten und 2 Stunden), und versuchen Sie es erneut, nachdem Sie mindestens einen Tag gewartet haben.                   |
+| 754       | NoPerfDataAvailable           | Keine Leistungsdaten verfügbar.                                               | Überprüfen Sie die Statistikstufe in vCenter Server. Sie muss auf „3“ gesetzt sein, damit Leistungsdaten verfügbar sind. | Ändern Sie die Statistikstufe auf „3“ (für eine Dauer von 5 Minuten, 30 Minuten und 2 Stunden), und versuchen Sie es erneut, nachdem Sie mindestens einen Tag gewartet haben.                   |
 | 756       | NullInstanceUUID               | Einen Computer mit InstanceUUID „NULL“ gefunden.                                  | Ein Objekt in der vCenter Server-Instanz ist möglicherweise nicht geeignet.                                                      | Beheben Sie das Problem, und wiederholen Sie den Vorgang.                                                                                                           |
 | 757       | VMNotFound                     | Virtueller Computer wurde nicht gefunden.                                                  | Virtueller Computer wurde möglicherweise gelöscht: %VMID;                                                                | Stellen Sie sicher, dass die virtuellen Computer, die beim Scannen des vCenter-Bestands ausgewählt wurden, während der Ermittlung vorhanden sind.                                      |
 | 758       | GetPerfDataTimeout             | Timeout bei vCenter-Anforderung. Meldung: %Message;                                  | Die vCenter Server-Anmeldeinformationen sind falsch.                                                              | Überprüfen Sie die vCenter Server-Anmeldeinformationen, und stellen Sie sicher, dass vCenter Server erreichbar ist. Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. |

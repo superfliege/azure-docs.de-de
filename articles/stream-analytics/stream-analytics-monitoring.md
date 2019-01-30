@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 600651b6c9140aba178bf073675c49957987d10d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096592"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844737"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Grundlegendes zur Stream Analytics-Auftragsüberwachung und zum Überwachen von Abfragen
 
@@ -30,17 +30,17 @@ Das Fenster wird wie folgt angezeigt:
 ## <a name="metrics-available-for-stream-analytics"></a>Verfügbare Metriken für Stream Analytics
 | Metrik                 | Definition                               |
 | ---------------------- | ---------------------------------------- |
-| Eingabeereignisse im Rückstand       | Anzahl der Eingabeereignisse, die im Rückstand sind. |
-| Konvertierungsfehler | Anzahl der Ausgabeereignisse, die nicht in das erwartete Ausgabeschema konvertiert werden konnten. |
-| Frühe Eingabeereignisse       | Anzahl der früh empfangenen Ereignisse. |
+| Eingabeereignisse im Rückstand       | Anzahl der Eingabeereignisse, die im Rückstand sind. Ein Wert ungleich Null für diese Metrik bedeutet, dass Ihr Auftrag nicht in der Lage ist, mit der Anzahl der eingehenden Ereignisse Schritt zu halten. Wenn dieser Wert langsam ansteigt oder konstant ungleich Null ist, sollten Sie Ihren Auftrag erweitern. Weitere Informationen finden Sie unter [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md). |
+| Konvertierungsfehler | Anzahl der Ausgabeereignisse, die nicht in das erwartete Ausgabeschema konvertiert werden konnten. Die Fehlerrichtlinie kann auf „Drop“ geändert werden, um Ereignisse zu löschen, bei denen dieses Szenario auftritt. |
+| Frühe Eingabeereignisse       | Ereignisse, deren Anwendungszeitstempel mehr als fünf Minuten vor dem Zeitpunkt ihres Eintreffens liegt. |
 | Fehlerhafte Funktionsanforderungen | Anzahl der fehlerhaften Aufrufe an die Azure Machine Learning-Funktion (falls vorhanden) |
 | Funktionsereignisse        | Anzahl der an die Azure Machine Learning-Funktion gesendeten Ereignisse (falls vorhanden) |
 | Funktionsanforderungen      | Anzahl der Aufrufe an die Azure Machine Learning-Funktion (falls vorhanden) |
-| Eingabefehler bei Deserialisierung       | Anzahl der Ereignisse, die nicht deserialisiert werden konnten.  |
+| Eingabefehler bei Deserialisierung       | Anzahl der Eingabeereignisse, die nicht deserialisiert werden konnten.  |
 | Eingabeereignisbytes      | Vom Stream Analytics-Auftrag erhaltene Datenmenge, in Byte. Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden. |
-| Eingabeereignisse           | Vom Stream Analytics-Auftrag erhaltene Datenmenge, ausgedrückt in der Anzahl von Ereignissen. Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden. |
-| Empfangene Eingabequellen       | Anzahl der Ereignisse, die aus einer Eingabequelle stammen. |
-| Ereignisse bei verspäteter Eingabe      | Anzahl von Ereignissen, die spät von der Quelle eintreffen und entweder verworfen wurden oder über eine Anpassung des Zeitstempels verfügen (basierend auf der Konfiguration der Richtlinie für die Ereignissortierung unter der Einstellung „Toleranzfenster für Eingangsverzögerung“). |
+| Eingabeereignisse           | Anzahl der Datensätze, die aus den Eingabeereignissen deserialisiert wurden. |
+| Empfangene Eingabequellen       | Die Anzahl der vom Auftrag empfangenen Ereignisse. Kann verwendet werden, um sicherzustellen, dass Ereignisse an die Eingabequelle gesendet werden. |
+| Ereignisse bei verspäteter Eingabe      | Ereignisse, die später als das konfigurierte Toleranzfenster für Eingangsverzögerung eingetroffen sind. Weitere Informationen finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md). |
 | Ereignisse für falsche Reihenfolge    | Anzahl der Ereignisse, die in falscher Reihenfolge empfangen und anhand der Richtlinie für die Ereignissortierung entweder verworfen oder mit einem angepassten Zeitstempel versehen wurden. Dies kann von der Konfiguration der Einstellung „Toleranzfenster für Fehlordnung“ beeinflusst werden. |
 | Ausgabeereignisse          | Vom Stream Analytics-Auftrag an das Ausgabeziel gesendete Datenmenge, ausgedrückt in der Anzahl von Ereignissen. |
 | Laufzeitfehler         | Gesamtanzahl von Fehlern im Zusammenhang mit der Abfrageverarbeitung (mit Ausnahme von Fehlern, die beim Untersuchen von Ereignissen oder beim Ausgeben von Ergebnissen ermittelt werden) |

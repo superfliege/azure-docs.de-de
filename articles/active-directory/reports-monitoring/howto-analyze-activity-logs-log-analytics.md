@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie von Azure Active Directory-Aktivitätsprotoko
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624198"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810773"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analysieren von Azure AD-Aktivitätsprotokollen mit Log Analytics (Vorschauversion)
 
@@ -93,9 +93,9 @@ Sie können auch Benachrichtigungen für Ihre Abfrage einrichten. So konfigurier
 
 Sie können auch die vorgefertigten Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle herunterladen. Die Ansichten bieten mehrere Berichte, die im Zusammenhang mit allgemeinen Szenarien mit Überwachungs- und Anmeldeereignissen stehen. Sie können auch aufgrund jeglicher Daten benachrichtigen, die in den Berichten bereitgestellt werden, indem Sie die im vorherigen Abschnitt beschriebenen Schritte verwenden.
 
-* **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z. B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
-* **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z. B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
-* **Ihre Einwilligung gebende Benutzer**: In dieser Ansicht werden Berichte im Zusammenhang mit der Benutzereinwilligung angezeigt, z. B. die Einwilligungen nach Benutzern, die Anmeldungen nach Benutzern, die ihre Einwilligung erteilt haben, sowie die Anmeldungen nach Anwendungen für alle einwilligungsabhängigen Anwendungen. 
+* **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z.B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
+* **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z.B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
+* **Ihre Einwilligung gebende Benutzer**: In dieser Ansicht werden Berichte im Zusammenhang mit der Benutzereinwilligung angezeigt, z.B. die Einwilligungen nach Benutzern, die Anmeldungen nach Benutzern, die ihre Einwilligung erteilt haben, sowie die Anmeldungen nach Anwendungen für alle einwilligungsabhängigen Anwendungen. 
 
 Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle finden Sie [hier](howto-install-use-log-analytics-views.md). 
 

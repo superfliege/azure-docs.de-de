@@ -3,19 +3,19 @@ title: JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C | 
 description: Hier finden Sie Informationen zur Verwendung von JavaScript in Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4a8d036ff2f36b75df17029c8f00edce25c49e65
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 55d4633bceabb68c6d67c56b0902ce845f24c34c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994316"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856620"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Wählen Sie einen [Seitenvertrag](page-contract.md) für die Benutzeroberfläche
 
 Sie aktivieren die Skriptausführung, indem Sie dem [RelyingParty](relyingparty.md)-Element das **ScriptExecution**-Element hinzufügen.
 
-1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei, z. B. *SignUpOrSignin.xml*.
+1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: *SignUpOrSignin.xml*.
 2. Fügen Sie das **ScriptExecution**-Element zum **UserJourneyBehaviors**-Element von **RelyingParty** hinzu:
 
     ```XML

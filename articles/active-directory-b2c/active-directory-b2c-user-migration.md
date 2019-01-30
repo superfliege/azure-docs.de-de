@@ -3,19 +3,19 @@ title: Ansätze für die Benutzermigration in Azure Active Directory B2C | Micro
 description: Hier werden grundlegende und erweiterte Konzepte der Benutzermigration mithilfe der Graph-API (und optional mithilfe benutzerdefinierter Azure AD B2C-Richtlinien) erläutert.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4bb1542df9001463b245405c40293b6867d4b401
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 4d4affa0ff950aa353e11c01f3d5d5b5f2b2ccb1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365076"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849446"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
 Beim Migrieren Ihres Identitätsanbieters zu Azure Active Directory B2C (Azure AD B2C) müssen Sie unter Umständen auch das Benutzerkonto migrieren. In diesem Artikel wird erläutert, wie vorhandene Benutzerkonten von einem beliebigen Identitätsanbieter zu Azure AD B2C migriert werden. Der Artikel enthält keine verbindliche Anleitung, sondern beschreibt lediglich einige mögliche Szenarien. Der Entwickler ist jeweils dafür verantwortlich, dass ein Ansatz geeignet ist.
@@ -247,7 +247,7 @@ In diesem Abschnitt ändern Sie die Richtlinie, um den Benutzermigrationsstatus 
 
 Verwenden Sie eine Azure-Tabelle, um die Kennwortänderung nachzuverfolgen. Wenn Sie den Prozess für die Prämigration mit dem Befehlszeilenparameter `2` ausführen, erstellen Sie eine Benutzerentität in einer Azure-Tabelle. Ihr Dienst führt Folgendes durch:
 
-- Bei der Anmeldung ruft die Azure AD B2C-Richtlinie den RESTful-Migrationsdienst auf und sendet eine E-Mail als Eingabeanspruch. Der Dienst sucht in der Azure-Tabelle nach der E-Mail-Adresse. Wenn die Adresse vorhanden ist, löst der Dienst eine Fehlermeldung aus: *You must change password* (Ihr Kennwort muss geändert werden).
+- Bei der Anmeldung ruft die Azure AD B2C-Richtlinie den RESTful-Migrationsdienst auf und sendet eine E-Mail als Eingabeanspruch. Der Dienst sucht in der Azure-Tabelle nach der E-Mail-Adresse. Wenn die Adresse vorhanden ist, löst der Dienst eine Fehlermeldung aus: *Ihr Kennwort muss geändert werden*.
 
 - Nachdem der Benutzer das Kennwort geändert hat, wird die Entität aus der Azure-Tabelle entfernt.
 
@@ -329,7 +329,7 @@ Definieren Sie das technische Profil für die RESTful-API, und konfigurieren Sie
 1. Laden Sie die Datei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
 
 ### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Schritt 4.5: Testen der benutzerdefinierten Richtlinie mit „Jetzt ausführen“
-1. Wählen Sie die Option **Azure AD-B2C-Einstellungen**, und navigieren Sie zu **Framework für die Identitätsfunktion**.
+1. Wählen Sie **Azure AD B2C-Einstellungen** aus, und navigieren Sie dann zu **Framework für die Identitätsfunktion**.
 
 1. Öffnen Sie **B2C_1A_signup_signin**. Dies ist die benutzerdefinierte Richtlinie der vertrauenden Seite (Relying Party, RP), die Sie hochgeladen haben. Wählen Sie anschließend **Jetzt ausführen**.
 

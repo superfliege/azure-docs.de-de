@@ -4,7 +4,7 @@ description: Binden Sie einen virtuellen Windows Server-Computer mithilfe von Az
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157257"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856637"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Einbinden eines virtuellen Windows Server-Computers mithilfe einer Resource Manager-Vorlage in eine verwaltete Domäne
 Dieser Artikel veranschaulicht, wie Sie einen virtuellen Windows Server-Computer mithilfe von Resource Manager-Vorlagen in eine durch Azure AD Domain Services verwaltete Domäne einbinden.
@@ -38,11 +38,11 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 
 ## <a name="install-and-configure-required-tools"></a>Installieren und Konfigurieren der erforderlichen Tools
 Sie können eine der folgenden Optionen verwenden, um die in diesem Dokument beschriebenen Schritte auszuführen:
-* **Azure PowerShell**: [Installieren und Konfigurieren](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure-CLI**: [Installieren und konfigurieren](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure PowerShell:** [Installieren und konfigurieren](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Azure CLI**: [Installieren und konfigurieren](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Option 1: Bereitstellen eines neuen virtuellen Windows Server-Computers und Einbinden in eine verwaltete Domäne
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Option 1: Bereitstellen einer neuen Windows Server-VM und Einbinden der VM in eine verwaltete Domäne
 **Name der Schnellstartvorlage**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
 Führen Sie die folgenden Schritte aus, um einen virtuellen Windows Server-Computer bereitzustellen und in eine verwaltete Domäne einzubinden:
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Windows Server-Compu
 11. Geben Sie in **Domain To Join** (Einzubindende Domäne) den DNS-Domänennamen Ihrer verwalteten Domäne an.
 12. Geben Sie in **Domain Username** (Domänenbenutzername) den Benutzerkontonamen für Ihre verwaltete Domäne an, der zum Einbinden des virtuellen Computers in der verwalteten Domäne verwendet werden soll.
 13. Geben Sie in **Domain Password** (Domänenkennwort) das Kennwort des Domänenbenutzerkontos an, auf das der Parameter „domainUsername“ verweist.
-14. Optional: Sie können einen **Pfad der Organisationseinheit** zu einer benutzerdefinierten Organisationseinheit angeben, in der der virtuelle Computer hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird der virtuelle Computer zur Standardorganisationseinheit **AAD DC-Computer** in der verwalteten Domäne hinzugefügt.
+14. Optional: Sie können einen **Pfad der Organisationseinheit** zu einer benutzerdefinierten Organisationseinheit angeben, zu der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird der virtuelle Computer zur Standardorganisationseinheit **AAD DC-Computer** in der verwalteten Domäne hinzugefügt.
 15. Geben Sie im Feld **VM Admin Username** (Benutzername des VM-Administrators) den Namen für ein lokales Administratorkonto für den virtuellen Computer an.
 16. Geben Sie im Feld **VM Admin Password** (Kennwort des VM-Administrators) das Kennwort eines lokalen Administrators für den virtuellen Computer an. Stellen Sie ein sicheres Kennwort für den lokalen Administrator bereit, um den virtuellen Computer vor Brute-Force-Kennwortangriffen zu schützen.
 17. Klicken Sie auf **Ich stimme den oben genannten Geschäftsbedingungen zu**.
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Windows Server-Compu
 Nachdem die Bereitstellung erfolgreich abgeschlossen wurde, wird Ihr frisch bereitgestellter virtueller Windows-Computer zur verwalteten Domäne hinzugefügt.
 
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Option 2: Einbinden eines vorhandenen virtuellen Windows Server-Computers in eine verwaltete Domäne
+## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>Option 2: Einbinden einer vorhandenen Windows Server-VM in eine verwaltete Domäne
 **Schnellstartvorlage**: [201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
 Führen Sie die folgenden Schritte aus, um einen vorhandenen virtuellen Windows Server-Computer in eine verwaltete Domäne einzubinden:
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um einen vorhandenen virtuellen Windows 
 8. Geben Sie in **Domain Join User Name** (Benutzername für Domänenbeitritt) den Benutzerkontonamen für Ihre verwaltete Domäne an, der zum Einbinden des virtuellen Computers in der verwalteten Domäne verwendet werden soll.
 9. Geben Sie in **Domain Join User Password** (Benutzerkennwort für Domänenbeitritt) das Kennwort des Domänenbenutzerkontos an, auf das der Parameter „domainUsername“ verweist.
 10. Geben Sie in **Domain FQDN** (Domänen-FQDN) den DNS-Domänennamen Ihrer verwalteten Domäne an.
-11. Optional: Sie können einen **Pfad der Organisationseinheit** zu einer benutzerdefinierten Organisationseinheit angeben, in der der virtuelle Computer hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird der virtuelle Computer zur Standardorganisationseinheit **AAD DC-Computer** in der verwalteten Domäne hinzugefügt.
+11. Optional: Sie können einen **Pfad der Organisationseinheit** zu einer benutzerdefinierten Organisationseinheit angeben, zu der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird der virtuelle Computer zur Standardorganisationseinheit **AAD DC-Computer** in der verwalteten Domäne hinzugefügt.
 12. Klicken Sie auf **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 13. Klicken Sie auf **Kaufen**, um den virtuellen Computer bereitzustellen.
 

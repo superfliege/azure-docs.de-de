@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3be7ad84cf0d45276c136465d7247ec43621aceb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354177"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810957"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -34,23 +34,32 @@ Dieser Artikel bietet einen detaillierten Überblick und umfasst einen Leitfaden
 
 Nachfolgend werden die Schritte in einem Workflow für das Livestreaming aufgeführt:
 
-1. Erstellen Sie ein **Liveereignis**.
-2. Erstellen Sie ein neues **Medienobjekt**.
-3. Erstellen Sie eine **Liveausgabe**, und verwenden Sie den Namen des erstellten Medienobjekts.
-4. Erstellen Sie eine **Streamingrichtlinie** und einen **Inhaltsschlüssel**, wenn Sie Ihren Inhalt mit DRM verschlüsseln möchten.
-5. Falls Sie kein DRM verwenden, erstellen Sie einen **Streaminglocator** mit den integrierten Typen von **Streamingrichtlinien**.
-6. Listen Sie die Pfade für die **Streamingrichtlinie** auf, um die zu verwendenden URLs zurückzugeben (diese sind deterministisch).
-7. Rufen Sie den Hostnamen für den **Streamingendpunkt** ab, von dem aus Sie streamen möchten. (Stellen Sie sicher, dass der Streamingendpunkt ausgeführt wird.) 
-8. Kombinieren Sie die URL aus Schritt 6 mit dem Hostnamen aus Schritt 7, um die vollständige URL zu erhalten.
-9. Wenn Ihr **Liveereignis** nicht mehr sichtbar sein soll, müssen Sie das Streaming des Ereignisses durch Löschen des **Streaminglocators** beenden.
+1. Stellen Sie sicher, dass **StreamingEndpoint** ausgeführt wird. 
+2. Erstellen Sie ein **LiveEvent**. 
+  
+    Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. Starten Sie alternativ das Ereignis, wenn Sie zum Starten des Streamings bereit sind.<br/> Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis direkt nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis stattfindet. Sie müssen für die LiveEvent-Ressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
+3. Rufen Sie die Erfassungs-URLs ab, und konfigurieren Sie Ihren lokalen Encoder vor Ort, um die URL zum Senden des Beitragsfeeds zu verwenden.<br/>Siehe [Empfohlene Livestreaming-Encoder](recommended-on-premises-live-encoders.md).
+4. Rufen Sie die Vorschau-URL ab und verwenden Sie sie, um sich zu vergewissern, dass die Eingabe des Encoders auch tatsächlich empfangen wird.
+5. Erstellen Sie ein neues **Medienobjekt**.
+6. Erstellen Sie einen **LiveOutput**, und verwenden Sie den Namen des erstellten Medienobjekts.
 
-Weitere Informationen finden Sie in diesem [Tutorial zum Livestreaming](stream-live-tutorial-with-api.md), das auf dem [.NET Core-Beispiel für Liveereignisse](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) basiert.
+     Der **LiveOutput** archiviert den Datenstrom, der in das **Medienobjekt** eingeht.
+7. Erstellen Sie einen **StreamingLocator** mit den integrierten **StreamingPolicy**-Typen.
+
+    Wenn Sie beabsichtigen, den Inhalt zu verschlüsseln, lesen Sie [Übersicht über den Inhaltsschutz](content-protection-overview.md).
+8. Listen Sie die Pfade auf dem **StreamingLocator** auf, um die zu verwendenden URLs zurückzugeben (diese sind deterministisch).
+9. Rufen Sie den Hostnamen für den **Streamingendpunkt** ab, von dem aus Sie streamen möchten.
+10. Kombinieren Sie die URL aus Schritt 8 mit dem Hostnamen aus Schritt 9, um die vollständige URL zu erhalten.
+11. Wenn Ihr **LiveEvent** nicht mehr sichtbar sein soll, müssen Sie das Streaming des Ereignisses beenden und den **StreamingLocator** löschen.
+
+Weitere Informationen finden Sie im [Tutorial: Livestreaming mit Media Services v3 unter Verwendung von APIs](stream-live-tutorial-with-api.md).
 
 ## <a name="overview-of-main-components"></a>Übersicht über die wichtigsten Komponenten
 
 Um On-Demand- oder Livestreams mit Media Services bereitstellen zu können, benötigen Sie mindestens einen [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard-StreamingEndpoint** im Zustand **Beendet** hinzugefügt. Sie müssen den StreamingEndpoint starten, von dem aus Sie Inhalt an Ihre Zuschauer streamen möchten. Sie können den standardmäßigen **StreamingEndpoint** verwenden oder einen weiteren angepassten **StreamingEndpoint** mit den gewünschten Konfigurations- und CDN-Einstellungen erstellen. Sie können mehrere StreamingEndpoint-Objekte aktivieren, die jeweils auf ein anderes CDN ausgerichtet sind und einen eindeutigen Hostnamen für die Inhaltsbereitstellung angeben. 
 
-In Media Services sorgen [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für das Erfassen und Verarbeiten von Livevideofeeds. Wenn Sie ein LiveEvent erstellen, wird ein Eingangsendpunkt erstellt, mit dem Sie ein Livesignal von einem Remoteencoder senden können. Der Remoteliveencoder sendet den Datenfeed an diesen Eingangsendpunkt, entweder über [RTMP](https://www.adobe.com/devnet/rtmp.html) oder über das [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx)-Protokoll (fragmentiertes MP4). Für das Smooth Streaming-Erfassungsprotokoll werden die URL-Schemas `http://` und `https://` unterstützt. Für das RTMP-Erfassungsprotokoll werden die URL-Schemas `rtmp://` und `rtmps://` unterstützt. Weitere Informationen finden Sie unter [Empfohlene Livestreaming-Encoder](recommended-on-premises-live-encoders.md).
+In Media Services sorgen [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für das Erfassen und Verarbeiten von Livevideofeeds. Wenn Sie ein LiveEvent erstellen, wird ein Eingangsendpunkt erstellt, mit dem Sie ein Livesignal von einem Remoteencoder senden können. Der Remoteliveencoder sendet den Datenfeed an diesen Eingangsendpunkt, entweder über [RTMP](https://www.adobe.com/devnet/rtmp.html) oder über das [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx)-Protokoll (fragmentiertes MP4). Für das Smooth Streaming-Erfassungsprotokoll werden die URL-Schemas `http://` und `https://` unterstützt. Für das RTMP-Erfassungsprotokoll werden die URL-Schemas `rtmp://` und `rtmps://` unterstützt. Weitere Informationen finden Sie unter [Empfohlene Livestreaming-Encoder](recommended-on-premises-live-encoders.md).<br/>
+Beim Erstellen eines **LiveEvents** können Sie die zulässigen IP-Adressen in einem der folgenden Formate angeben: IPv4-Adresse mit 4 Ziffern, CIDR-Adressbereich.
 
 Sobald das **LiveEvent** Daten aus dem Feed empfängt, können Sie über den zugehörigen Vorschauendpunkt (die Vorschau-URL) eine Vorschau anzeigen und den Empfang des Livestreams bestätigen, bevor Sie mit der Veröffentlichung fortfahren. Nachdem Sie sich von der Qualität des Vorschaustreams überzeugt haben, können Sie das LiveEvent verwenden, um den Livestream über einen oder mehrere (vorab erstellte) **StreamingEndpoints** zur Übertragung verfügbar zu machen. Hierzu erstellen Sie ein neues [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs)-Objekt für das **LiveEvent**. 
 
@@ -62,14 +71,7 @@ Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch (mithil
 
 Auf Wunsch können Sie auch die dynamische Filterung anwenden, mit der Sie die Anzahl von Spuren, Formaten und Bitraten sowie die Präsentationszeitfenster steuern können, die an die Player gesendet werden. Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
 
-### <a name="new-capabilities-for-live-streaming-in-v3"></a>Neue Funktionen für das Livestreaming in v3
-
-Mit den Media Services v3-APIs profitieren Sie von den folgenden neuen Features:
-
-- Neue Modus für geringe Latenz. Weitere Informationen finden Sie unter [Latenz](live-event-latency.md).
-- Verbesserte RTMP-Unterstützung (höhere Stabilität und bessere Unterstützung für Quellcodierer).
-- Sichere RTMPS-Erfassung.<br/>Bei der Erstellung eines Liveereignisses erhalten Sie vier Erfassungs-URLs. Die vier Erfassungs-URLs sind nahezu identisch und verfügen über das gleiche Streamingtoken (AppId). Nur der Portnummernteil unterscheidet sich. Zwei der URLs dienen als primäre URL und Backup-URL für RTMPS.   
-- Wenn Media Services zum Transcodieren eines Beitragsfeeds mit Einzelbitrate in einen Ausgabestream mit mehreren Bitraten verwendet wird, können Sie Liveereignisse streamen, die bis zu 24 Stunden lang sind. 
+Weitere Informationen zu neuen Funktionen für Livestreaming in v3 finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md).
 
 ## <a name="liveevent-types"></a>LiveEvent-Typen
 
@@ -108,7 +110,7 @@ Der folgende Artikel enthält eine Tabelle zum Vergleich der Features der zwei L
 > [!NOTE]
 > **LiveOutput** wird bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie den **LiveOutput** löschen, werden das zugrunde liegende **Medienobjekt** und sein Inhalt nicht gelöscht. 
 >
-> Wenn Sie **Streaminglocators** im Medienobjekt für den **LiveOutput** veröffentlicht haben, bleibt das Ereignis (bis zu der DVR-Fensterlänge) weiterhin sichtbar bis zum Endzeitpunkt des **Streaminglocators** oder bis Sie den Locator löschen, je nachdem, welcher Fall zuerst eintritt.   
+> Wenn Sie das **LiveOutput**-Medienobjekt mit einem **StreamingLocator** veröffentlicht haben, ist das **LiveEvent** (bis zur DVR-Fensterlänge) weiterhin bis zu Ablauf oder Löschung des **StreamingLocators** sichtbar, je nachdem, was zuerst eintritt.
 
 Weitere Informationen finden Sie unter [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md).
 

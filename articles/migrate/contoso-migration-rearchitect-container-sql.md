@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6f894310157432a6e03e6ec4753f5efc2d8ac66d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267418"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817230"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso-Migration: Umstrukturieren einer lokalen App zu einem Azure-Container und einer Azure SQL-Datenbank-Instanz
 
@@ -282,7 +282,7 @@ Contoso benötigt Clusterzertifikate, um Azure DevOps Services den Zugriff auf d
 
 8. Für die Azure DevOps Services-Bereitstellung muss der Base64-Wert des Zertifikats ermittelt werden. Diesen Schritt führen sie mithilfe von PowerShell auf der lokalen Entwicklerarbeitsstation aus. Die Ausgabe fügen sie für später in eine Textdatei ein.
 
-    ```
+    ```powershell
         [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("C:\path\to\certificate.pfx")) 
     ```
 
@@ -530,7 +530,7 @@ Im ersten Schritt erstellen die Administratoren von Contoso eine Azure-Cosmos-Da
 5. Im Portal öffnet Contoso die neue Datenbank > **Sammlung** > **Dokumente** und klickt auf **Neues Dokument**.
 6. Der folgende JSON-Code wird in das Dokumentfenster eingefügt. Dies sind Beispieldaten in Form eines einzelnen Tweets.
 
-    ```
+    ```json
     {
             "id": "2ed5e734-8034-bf3a-ac85-705b7713d911",
             "tweetId": 927750234331580911,
@@ -565,11 +565,11 @@ Nach der Bereitstellung der Cosmos DB-Instanz können die Administratoren von Co
 
 2. Die folgenden beiden Parameter werden angegeben:
 
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBEndpoint" Value="[URI]" />
    ```
    
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBAuthKey" Value="[Key]" />
    ```
 

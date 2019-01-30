@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620760"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457062"
 ---
 > [!div class="op_single_selector"]
 > * [C unter Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -41,7 +41,7 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn 
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Bevor Sie Code für Ihr Gerät schreiben, stellen Sie Ihren Solution Accelerator für Remoteüberwachung bereit und fügen der Lösung ein neues physisches Gerät hinzu.
+Bevor Sie Code für Ihr Gerät schreiben, stellen Sie Ihren Solution Accelerator für Remoteüberwachung bereit und fügen der Lösung ein neues reales Gerät hinzu.
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Bereitstellen des Solution Accelerators für Remoteüberwachung
 
@@ -62,7 +62,7 @@ Um Ihrer Lösung für Remoteüberwachung ein Gerät hinzuzufügen, führen Sie i
 
 1. Wählen Sie **+ Neues Gerät** und dann **Physisch** als **Gerätetyp** aus:
 
-    ![Hinzufügen eines physischen Geräts](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![Hinzufügen eines echten Geräts](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. Geben Sie als Geräte-ID **Physical-chiller** ein. Wählen Sie die Optionen **Symmetrischer Schlüssel** und **Schlüssel automatisch generieren**:
 
@@ -72,7 +72,7 @@ Um Ihrer Lösung für Remoteüberwachung ein Gerät hinzuzufügen, führen Sie i
 
     ![Abrufen der Anmeldeinformationen](media/iot-suite-selector-connecting/credentials.png)
 
-Sie haben nun dem Solution Accelerator für Remoteüberwachung ein physisches Gerät hinzugefügt und dessen Verbindungszeichenfolge notiert. In den folgenden Abschnitten implementieren Sie die Clientanwendung, die mithilfe der Verbindungszeichenfolge des Geräts eine Verbindung mit Ihrer Lösung herstellt.
+Sie haben nun dem Solution Accelerator für Remoteüberwachung ein reales Gerät hinzugefügt und dessen Verbindungszeichenfolge notiert. In den folgenden Abschnitten implementieren Sie die Clientanwendung, die mithilfe der Verbindungszeichenfolge des Geräts eine Verbindung mit Ihrer Lösung herstellt.
 
 Die Clientanwendung implementiert das integrierte Gerätemodell des **Kühlers**. Das Gerätemodell eines Solution Accelerators gibt folgende Informationen im Zusammenhang mit einem Gerät an:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6e829d617aa978f94b99cc9d018b5ca863eaaef0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945568"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807319"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET
 
@@ -80,7 +80,7 @@ Zum Herstellen einer Verbindung zur Azure Media Services-API mit der Option der 
 
 Die Werte für diese Parameter finden Sie in **AzureEnvironments.AzureCloudEnvironment**. Die Konstante **AzureEnvironments.AzureCloudEnvironment** ist ein Hilfsprogramm im .NET-SDK, um die richtigen Einstellungen der Umgebungsvariablen für ein öffentliches Azure-Rechenzentrum abzurufen. 
 
-Es enthält vordefinierte Umgebungseinstellungen für den Zugriff auf Media Services ausschließlich in den öffentlichen Rechenzentren. Für unabhängige Cloudregionen oder Cloudregionen von Behörden können Sie **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvrionment** bzw. **AzureGermanCloudEnvironment** verwenden.
+Es enthält vordefinierte Umgebungseinstellungen für den Zugriff auf Media Services ausschließlich in den öffentlichen Rechenzentren. Für unabhängige Cloudregionen oder Cloudregionen von Behörden können Sie **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment** bzw. **AzureGermanCloudEnvironment** verwenden.
 
 Im folgenden Codebeispiel wird ein Token erstellt:
     
@@ -122,7 +122,7 @@ Das folgende Beispiel zeigt, wie das Azure AD-Token und der Kontext erstellt wer
     }
 
 >[!NOTE]
->Wenn die Ausnahme „Der Remoteserver hat einen Fehler zurückgegeben: (401) Nicht autorisiert“ angezeigt wird, finden Sie dazu Informationen unter „Accessing Azure Media Services API with Azure AD authentication overview (Übersicht über den Zugriff auf die Azure Media Services-API mit Azure AD-Authentifizierung)“ im Abschnitt [Access control (Zugriffssteuerung)](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+>Wenn eine Ausnahme mit dem Text „Der Remoteserver hat einen Fehler zurückgegeben: 401 – Nicht autorisiert“ zurückgegeben wird, finden Sie weitere Informationen im Abschnitt [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control) von „Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung – Übersicht“.
 
 ## <a name="use-service-principal-authentication"></a>Verwenden der Dienstprinzipalauthentifizierung
     

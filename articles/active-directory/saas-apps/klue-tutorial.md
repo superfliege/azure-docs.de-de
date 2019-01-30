@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9312006af84e74aa039d762abdfc6edba79a47fb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123055"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Tutorial: Azure Active Directory-Integration in Klue
 
@@ -206,7 +206,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Klue. Klue unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Klue ein neuer Benutzer erstellt.
 
 > [!Note]
-> Setzen Sie sich mit dem [Klue-Supportteam](mailto:support@klue.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> Setzen Sie sich mit dem  [Supportteam von Klue](mailto:support@klue.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

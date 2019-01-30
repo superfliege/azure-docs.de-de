@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Administratorhandbuch | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Leitfaden zur Verwaltung | Microsoft-Dokumentation'
 description: Erstellen einer Organisationseinheit (OE) in durch Azure AD Domain Services verwalteten Domänen
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: cd4964939aa9b9ebd96a2fb29e1a6f7bf422d477
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 49b915242ca0a4775236da3314eed816fde7ea6b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154827"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856263"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 Zu den durch Azure AD Domain Services verwalteten Domänen gehören zwei integrierte Container mit den Bezeichnungen „AADDC Computers“ und „AADDC Users“. Der Container „AADDC Computers“ enthält Computerobjekte für alle Computer, die in die verwaltete Domäne eingebunden sind. Der Container „AADDC Users“ enthält die Benutzer und Gruppen im Azure AD-Mandanten. Gelegentlich kann es notwendig werden, Dienstkonten für die verwaltete Domäne zu erstellen, um Workloads bereitzustellen. Zu diesem Zweck können Sie eine benutzerdefinierte Organisationseinheit (OE) in der verwalteten Domäne erstellen und innerhalb dieser Organisationseinheit Dienstkonten erstellen. In diesem Artikel wird gezeigt, wie Sie in der verwalteten Domäne eine Organisationseinheit erstellen.
@@ -84,4 +84,4 @@ Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in
 * [Verwalten einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Konfigurieren von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory-Verwaltungscenter: Erste Schritte](https://technet.microsoft.com/library/dd560651.aspx)
-* [Schrittweise Anleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)
+* [Schrittanleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c74c208e77539833c2bc5e1323713191e29aec64
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249029"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820239"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 
@@ -216,9 +216,9 @@ Das Ziel der Verschlüsselung ruhender Daten ist die Verschlüsselung aller Date
 
 Für jeden verwendeten Speicher können Sie die vorhandene Unterstützung zur Verschlüsselung ruhender Daten nutzen.
 
-- Azure Storage: Siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption).
+- Azure Storage: Siehe [Azure-Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption),
 
-- SQL Azure: Siehe [Always Encrypted (Datenbankmodul)](https://msdn.microsoft.com/library/mt163865.aspx)
+- SQL Azure: Siehe [Immer verschlüsselt (Datenbank-Engine)](https://msdn.microsoft.com/library/mt163865.aspx)
 
 - VM- und lokaler Datenträgerspeicher ([Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption))
 
@@ -370,7 +370,7 @@ Microsoft Antimalware for Azure Cloud Services and Virtual Machines ist eine Ech
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) unterstützt die Orchestrierung von Replikation, Failover und Wiederherstellung von Workloads und Apps, damit diese Komponenten über einen sekundären Standort zur Verfügung stehen, wenn der primäre Standort ausfällt.
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>Sicherstellen der Konformität: Checkliste zur Kaufprüfung von Clouddiensten (Schutz)
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>Konformität sicherstellen: Checkliste zur Kaufprüfung von Clouddiensten (schützen)
 
 Microsoft hat eine [Cloud Services Due Diligence Checklist](https://aka.ms/cloudchecklist.download) (Checkliste zur Kaufprüfung von Clouddiensten) entwickelt, damit Organisationen eine etwaige Umstellung auf die Cloud genau prüfen können. Die Checkliste enthält eine Struktur für Organisationen jeder Größe und jedes Typs – Privatunternehmen und Organisationen des öffentlichen Sektors, z.B. auch Behörden und Non-Profit-Organisationen –, mit deren Hilfe die Ziele und Anforderungen in Bezug auf Leistung, Service, Datenverwaltung und Governance ermittelt werden können. Dies ermöglicht einen Vergleich der Angebote unterschiedlicher Clouddienstanbieter, die letztendlich die Basis für einen Clouddienstvertrag bilden.
 

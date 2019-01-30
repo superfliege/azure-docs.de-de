@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
+ms.date: 01/23/2019
 ms.author: cwatson
-ms.openlocfilehash: b9b1496c71e61fce815d225310c8beb57e8f9b19
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e1d9c348f83600b48f4b202c8660d9387dfc5484
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584569"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856368"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Informationen zu Ihrer Rechnung für Microsoft Azure
 Um Ihre Azure-Rechnung besser zu verstehen, können Sie Ihre Rechnung mit der Datei mit den ausführlichen Daten zur täglichen Nutzung und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
 
 Dieser Artikel gilt nicht für Azure-Kunden mit einem Enterprise Agreement (EA-Kunden). Wenn Sie ein EA-Kunde sind, finden Sie weitere Informationen unter [Erläuterungen zur Rechnung für Azure-Kunden mit Enterprise Agreement](billing-understand-your-bill-ea.md).  
+
+Eine Erläuterung der Abrechnung im Azure Cloud Solution Provider-Programm (Azure CSP) einschließlich Abrechnungszyklus, Preisgestaltung und Nutzung finden Sie unter [Übersicht zur Azure CSP-Abrechnung](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
 ## <a name="charges"></a>Überprüfen Ihrer Gebühren
 

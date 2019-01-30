@@ -3,19 +3,19 @@ title: 'Verwendungsberichts-API: Beispiele und Definitionen in Azure Active Dire
 description: Leitfaden und Beispiele zum Abrufen von Berichten zu Azure AD B2C-Mandantenbenutzern, Authentifizierungen und mehrstufigen Authentifizierungen.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce6d71864d1c3e957937e374e90ee95a99e9f3c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445533"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844356"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Zugriff auf Verwendungsberichte in Azure AD B2C über die Berichterstattungs-API
 
@@ -97,16 +97,16 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>Definitionen von Verwendungsberichten
-* **TenantUserCount**: Die Anzahl der Benutzer im Mandanten nach Typ des Identitätsanbieters pro Tag in den letzten 30 Tagen. (Optional liefert ein `TimeStamp`-Filter Benutzerzahlen ab einem angegebenen Datum bis zum aktuellen Datum.) Der Bericht enthält:
-  * **TotalUserCount**: die Anzahl aller Benutzerobjekte.
-  * **OtherUserCount**: die Anzahl von Azure Active Directory-Benutzern (nicht Azure AD B2C-Benutzer).
-  * **LocalUserCount**: die Anzahl von Azure AD B2C-Benutzerkonten, die mit Anmeldeinformationen lokal auf dem Azure AD B2C-Mandanten erstellt wurden.
+* **tenantUserCount**: Die Anzahl der Benutzer im Mandanten nach Typ des Identitätsanbieters pro Tag in den letzten 30 Tagen. (Optional liefert ein `TimeStamp`-Filter Benutzerzahlen ab einem angegebenen Datum bis zum aktuellen Datum.) Der Bericht enthält:
+  * **TotalUserCount**: Die Anzahl aller Benutzerobjekte.
+  * **OtherUserCount**: Die Anzahl von Azure Active Directory-Benutzern (nicht Azure AD B2C-Benutzer).
+  * **LocalUserCount**: Die Anzahl von Azure AD B2C-Benutzerkonten, die mit Anmeldeinformationen lokal auf dem Azure AD B2C-Mandanten erstellt wurden.
 
-* **AlternateIdUserCount**: die Anzahl von Azure AD B2C-Benutzern, die über externe Identitätsanbieter registriert sind (z.B. Facebook, ein Microsoft-Konto oder einen anderen Azure Active Directory-Mandanten, auch bezeichnet als `OrgId`).
+* **AlternateIdUserCount**: Die Anzahl von Azure AD B2C-Benutzern, die über externe Identitätsanbieter registriert sind (z.B. Facebook, ein Microsoft-Konto oder einen anderen Azure Active Directory-Mandanten, auch bezeichnet als `OrgId`).
 
 * **b2cAuthenticationCountSummary**: Zusammenfassung der täglichen Anzahl abrechenbarer Authentifizierungen in den letzten 30 Tagen nach Tag und nach Typ der Authentifizierung
 
-* **b2cAuthenticationCount**: die Anzahl von Authentifizierungen innerhalb eines Zeitraums. Der Standardwert sind die letzten 30 Tage.  (Optional: Die `TimeStamp`-Parameter am Anfang und am Ende legen einen bestimmten Zeitraum fest.) Die Ausgabe umfasst `StartTimeStamp` (frühestes Datum der Aktivität für diesen Mandanten) und `EndTimeStamp` (neuestes Update).
+* **b2cAuthenticationCount**: Die Anzahl von Authentifizierungen innerhalb eines Zeitraums. Der Standardwert sind die letzten 30 Tage.  (Optional: Die `TimeStamp`-Parameter am Anfang und am Ende legen einen bestimmten Zeitraum fest.) Die Ausgabe umfasst `StartTimeStamp` (frühestes Datum der Aktivität für diesen Mandanten) und `EndTimeStamp` (neuestes Update).
 
 * **b2cMfaRequestCountSummary**: Zusammenfassung der täglichen Anzahl von mehrstufigen Authentifizierungen nach Tag und nach Typ (SMS oder Spracheingabe)
 

@@ -3,7 +3,7 @@ title: Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal | Mic
 description: Enthält Informationen zum Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal.
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 402aae15ae4fe8e6961fbc76a4ddaa470b8c797a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244714"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807761"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
@@ -61,9 +61,9 @@ In allen Editionen von Azure AD stehen Sicherheitsberichte zu riskanten Anmeldun
 
 In den Azure AD-Editionen „Free“ und „Basic“ wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Jeder Datensatz enthält die folgenden Attribute:
 
-- **Benutzer**: Der Name des Benutzers, der während des Anmeldevorgangs verwendet wurde
-- **IP**: Die IP-Adresse des Geräts, die für die Verbindung mit Azure Active Directory verwendet wurde
-- **Speicherort**: Der für die Verbindung mit Azure Active Directory verwendete Speicherort
+- **Benutzer**: Der Name des Benutzers, der während des Anmeldevorgangs verwendet wurde.
+- **IP**: Die IP-Adresse des Geräts, die für die Verbindung mit Azure Active Directory verwendet wurde.
+- **Speicherort**: Der für das Herstellen der Verbindung mit Azure Active Directory verwendete Speicherort. Dies ist eine auf Ablaufverfolgungen, Registrierungsdaten, Reverse-Lookups und anderen Informationen basierende „Beste Leistung“-Näherung.
 - **Zeitpunkt der Anmeldung**: Die Uhrzeit, zu der die Anmeldung erfolgte
 - **Status**: Der Status der Anmeldung
 
@@ -106,6 +106,9 @@ Wenn Sie ein Risikoereignis auswählen, erhalten Sie eine ausführliche Berichts
 - Schließen Sie die Risikoereignisse manuell. 
 
 ![Riskante Anmeldungen](./media/concept-risky-sign-ins/457.png)
+
+> [!IMPORTANT]
+> In einigen Fällen finden Sie möglicherweise ein Risikoereignis ohne entsprechenden Anmeldungseintrag im [Bericht zu Anmeldeaktivitäten](concept-sign-ins.md). Dies liegt daran, dass Identity Protection das Risiko sowohl für **interaktive** als auch **nicht interaktive** Anmeldungen beurteilt, während der Bericht zu Anmeldeaktivitäten nur die interaktiven Anmeldungen anzeigt.
 
 Wenn Sie einen Benutzer auswählen, erhalten Sie eine ausführliche Berichtsansicht für diesen Benutzer mit folgenden Optionen:
 

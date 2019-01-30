@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Ubuntu-Computers in eine verwaltete Domäne | Microsoft-Dokumentation'
+title: 'Azure Active Directory Domain Services: Einbinden einer Ubuntu-VM in eine verwaltete Domäne | Microsoft-Dokumentation'
 description: Einbinden eines virtuellen Ubuntu Linux-Computers in die Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 709c227c955aba6b31ce415767470fa18ff3684f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 35b37a5c50346dc116b2f36394feecb82a0d88fd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155268"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845750"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Einbinden eines virtuellen Ubuntu-Computers in Azure in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -124,7 +124,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     ```
 
    > [!NOTE]
-   > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *Realm discover* (Bereich ermitteln) nicht gefunden werden kann:
+   > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *realm discover* (Bereich ermitteln) nicht gefunden werden kann:
      * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
      * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
      * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.

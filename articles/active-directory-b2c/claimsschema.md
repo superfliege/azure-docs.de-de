@@ -3,19 +3,19 @@ title: ClaimsSchema – Azure Active Directory B2C | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie das ClaimsSchema-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568641"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849089"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -71,7 +71,7 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| NAME | JA | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte sind: OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed oder WsTrust. |
+| NAME | JA | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed oder WsTrust. |
 | PartnerClaimType | JA | Der zu verwendende Anspruchstypname. |
 
 Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Identity Experience Frameworks mit einem SAML2-Identitätsanbieter oder einer Anwendung der vertrauenden Seite `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` zugeordnet. Unter Verwendung der Werte „OpenIdConnect“ und „OAuth2“ wird der Anspruch `family_name` zugeordnet.
@@ -163,7 +163,7 @@ Das **Enumeration**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | Text | JA | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
 |Wert | JA | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
-| SelectByDefault | Nein  | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: TRUE oder FALSE. |
+| SelectByDefault | Nein  | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
 Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardwert `New York` konfiguriert:
 

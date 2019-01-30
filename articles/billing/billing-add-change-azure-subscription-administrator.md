@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: 94d574d16b1b9951ab91a09023f9193723f850a7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4490db0c479abdda19957be98335edeefc08bb59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583357"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808747"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 
@@ -67,14 +67,14 @@ Nur ein [Besitzer](../role-based-access-control/built-in-roles.md#owner) kann al
 
 ### <a name="adding-a-guest-user-as-a-co-administrator"></a>Hinzufügen eines Gastbenutzers als Co-Administrator
 
-Bei Gastbenutzern mit der Co-Administratorrolle gibt es im Vergleich zu Mitgliedsbenutzern mit der Co-Administratorrolle unter Umständen gewisse Unterschiede. Stellen Sie sich folgendes Szenario vor:
+Bei [Gastbenutzern](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) mit der Co-Administratorrolle gibt es im Vergleich zu Mitgliedsbenutzern mit der Co-Administratorrolle unter Umständen gewisse Unterschiede. Stellen Sie sich folgendes Szenario vor:
 
 - Benutzer A verfügt über ein Geschäfts-, Schul- oder Unikonto für Azure AD und ist Dienstadministrator für ein Azure-Abonnement.
 - Benutzer B verfügt über ein Microsoft-Konto.
 - Benutzer A weist Benutzer B die Co-Administratorrolle zu.
 - Benutzer B kann fast alle Aktionen ausführen, aber keine Anwendungen registrieren oder Benutzer im Azure AD-Verzeichnis suchen.
 
-Man würde erwarten, dass Benutzer B alles verwalten kann. Der Grund für den Unterschied ist, dass das Microsoft-Konto dem Abonnement nicht als Mitgliedsbenutzer, sondern als Gastbenutzer hinzugefügt wird. Gastbenutzer haben im Vergleich zu Mitgliedsbenutzern andere Standardberechtigungen in Azure AD. So können Mitgliedsbenutzer im Gegensatz zu Gastbenutzern beispielsweise andere Benutzer in Azure AD lesen. Mitgliedsbenutzer können neue Dienstprinzipale in Azure AD registrieren, Gastbenutzer nicht. Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Administratorrollen zugewiesen werden, die der Gastbenutzer benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+Man würde erwarten, dass Benutzer B alles verwalten kann. Der Grund für den Unterschied ist, dass das Microsoft-Konto dem Abonnement nicht als Mitgliedsbenutzer, sondern als Gastbenutzer hinzugefügt wird. Gastbenutzer haben im Vergleich zu Mitgliedsbenutzern andere Standardberechtigungen in Azure AD. So können Mitgliedsbenutzer im Gegensatz zu Gastbenutzern beispielsweise andere Benutzer in Azure AD lesen. Mitgliedsbenutzer können neue Dienstprinzipale in Azure AD registrieren, Gastbenutzer nicht. Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Administratorrollen zugewiesen werden, die der Gastbenutzer benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). 
 
 Beachten Sie, dass sich die [integrierten Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md) von den [Azure AD-Administratorrollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) unterscheiden. Die integrierten Rollen ermöglichen keinerlei Azure AD-Zugriff. Weitere Informationen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/rbac-and-directory-admin-roles.md).
 

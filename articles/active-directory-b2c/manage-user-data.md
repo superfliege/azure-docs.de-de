@@ -3,19 +3,19 @@ title: Verwalten von Benutzerdaten in Azure Active Directory B2C | Microsoft-Dok
 description: Es wird beschrieben, wie Sie Benutzerdaten in Azure AD B2C löschen und exportieren.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: fc49191fe6141470ddd5304bdd12cec1d40bd1ee
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144481"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854019"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Verwalten von Benutzerdaten in Azure Active Directory B2C
 
@@ -46,8 +46,8 @@ Der Prozess zum Exportieren von Kundendaten aus Azure AD B2C ähnelt dem Löschv
 
 Azure AD B2C-Benutzerdaten sind auf folgende Daten beschränkt:
 
-- **In Azure Active Directory gespeicherte Daten:** Sie können Daten über die User Journey einer Azure AD B2C-Authentifizierung abrufen, indem Sie die Objekt-ID oder einen beliebigen Anmeldenamen wie die E-Mail-Adresse oder den Benutzernamen verwenden. 
-- **Bericht zu benutzerspezifischen Überwachungsereignissen:** Sie können Daten anhand der Objekt-ID indizieren.
+- **In Azure Active Directory gespeicherte Daten**: Sie können Daten über die User Journey einer Azure AD B2C-Authentifizierung abrufen, indem Sie die Objekt-ID oder einen beliebigen Anmeldenamen wie beispielsweise die E-Mail-Adresse oder den Benutzernamen verwenden. 
+- **Benutzerspezifischer Bericht der Überwachungsereignisse**: Sie können Daten durch Verwendung der Objekt-ID indizieren.
 
 Im folgenden Beispiel für einen Exportdatenfluss lassen sich die Schritte, die für die Anwendung beschrieben werden, entweder per Back-End-Prozess oder von einem Benutzer mit einer Administratorrolle im Verzeichnis ausführen:
 

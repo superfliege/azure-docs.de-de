@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844650"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824625"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -107,7 +107,7 @@ ms.locfileid: "52844650"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA512“ als Algorithmusname.)</li><li>SHA384Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA384“ als Algorithmusnamen.)</li><li>SHA256Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA256“ als Algorithmusname.)</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
+| **Schritte** | <p>Für die Produkte muss die SHA-2-Familie der Hashalgorithmen (SHA256, SHA384 und SHA512) verwendet werden. Wenn ein kürzerer Hash erforderlich ist, z.B. eine Ausgabelänge von 128 Bit für eine Datenstruktur mit dem kürzeren MD5-Hash, ist es für Produktteams zulässig, einen der SHA2-Hashes (normalerweise SHA256) zu kürzen. Beachten Sie, dass SHA384 eine gekürzte Version von SHA512 ist. Das Kürzen von kryptografischen Hashes auf weniger als 128 Bit aus Sicherheitsgründen ist nicht zulässig. Für neuen Code dürfen die Hashalgorithmen MD2, MD4, MD5, SHA-0, SHA-1 oder RIPEMD nicht verwendet werden. Aus computertechnischer Sicht kann es für diese Algorithmen zu Hashkonflikten und somit zu Fehlern kommen.</p><p>Zulässige .NET-Hashalgorithmen für verwaltete kryptografische Flexibilität (sortiert nach Präferenz):</p><ul><li>SHA512Cng (FIPS-konform)</li><li>SHA384Cng (FIPS-konform)</li><li>SHA256Cng (FIPS-konform)</li><li>SHA512Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA512“ als Algorithmusname.)</li><li>SHA384Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA384“ als Algorithmusname.)</li><li>SHA256Managed (nicht FIPS-konform) (Verwenden Sie in Aufrufen von HashAlgorithm.Create oder CryptoConfig.CreateFromName „SHA256“ als Algorithmusname.)</li><li>SHA512CryptoServiceProvider (FIPS-konform)</li><li>SHA256CryptoServiceProvider (FIPS-konform)</li><li>SHA384CryptoServiceProvider (FIPS-konform)</li></ul>| 
 
 ## <a id="strong-db"></a>Verwenden von sicheren Verschlüsselungsalgorithmen zum Verschlüsseln von Daten in der Datenbank
 

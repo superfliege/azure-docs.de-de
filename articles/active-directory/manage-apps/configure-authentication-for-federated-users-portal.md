@@ -4,7 +4,7 @@ description: Dieser Artikel erläutert, was ein Azure AD-Mandant ist und wie Azu
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: infrastructure-services
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: f9cd761080bc5098d0500841e7327ac8ce9f9a2d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7b16e3ff5be21c52f354f0dcbb5dd91b4509e65e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957935"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461194"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -63,9 +63,9 @@ Die Syntax der Domänenhinweise variiert je nach verwendetem Protokoll und wird 
 
 **WS-Verbund**: „whr=contoso.com“ in der Abfragezeichenfolge.
 
-**SAML**: Eine SAML-Authentifizierungsanforderung, die einen Domänenhinweis enthält, oder eine Abfragezeichenfolge „whr=contoso.com“.
+**SAML**:  Eine SAML-Authentifizierungsanforderung, die einen Domänenhinweis enthält, oder eine Abfragezeichenfolge „whr=contoso.com“.
 
-**Open ID Connect**: Eine Abfragezeichenfolge „domain_hint=contoso.com“. 
+**OpenID Connect**: Eine Abfragezeichenfolge „domain_hint=contoso.com“. 
 
 Wenn ein Domänenhinweis in der Authentifizierungsanforderung der Anwendung enthalten und der Mandant mit dieser Domäne verbunden ist, versucht Azure AD, die Anmeldung an den für diese Domäne konfigurierten Identitätsanbieter umzuleiten. 
 
@@ -245,7 +245,7 @@ Notieren Sie sich die **ObjectID** der Richtlinie, für die Sie Zuordnungen aufl
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Beispiel: Entfernen der Richtlinie zur Startbereichsermittlung für eine Anwendung
+### <a name="example-remove-an-hrd-policy-for-an-application"></a>Beispiel: Entfernen einer Richtlinie zur Startbereichsermittlung für eine Anwendung
 #### <a name="step-1-get-the-objectid"></a>Schritt 1: Abrufen der ObjectID
 Verwenden Sie das vorherige Beispiel, um die **ObjectID** der Richtlinie und die ObjectID des Anwendungsdienstprinzipals abzurufen, von dem Sie sie entfernen möchten. 
 

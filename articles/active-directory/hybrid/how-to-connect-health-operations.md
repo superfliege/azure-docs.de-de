@@ -4,7 +4,7 @@ description: In diesem Artikel werden zusätzliche Vorgänge beschrieben, die na
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 35bbc44a8a54071530806576294163cb7ba627ea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280514"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478296"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health-Vorgänge
 In diesem Thema werden die verschiedenen Vorgänge beschrieben, die Sie mit Azure Active Directory (Azure AD) Connect Health durchführen können.
@@ -64,6 +64,7 @@ Azure AD Connect Health für Active Directory-Verbunddienste (AD FS) und Azure A
 
 1. Öffnen Sie das Blatt **Server**, indem Sie auf dem Blatt **Serverliste** den Namen des Servers auswählen, den Sie entfernen möchten.
 2. Klicken Sie auf dem Blatt **Server** in der Aktionsleiste auf **Löschen**.
+![Screenshot: Löschen des Servers mit Azure AD Connect Health](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Bestätigen Sie den Vorgang, indem Sie den Servernamen im Bestätigungsfeld eingeben.
 4. Klicken Sie auf **Löschen**.
 
@@ -86,8 +87,9 @@ Beim Löschen einer Dienstinstanz sind folgende Punkte zu beachten:
 * Wenn Sie nach dem Durchführen dieser Aktion mit der Überwachung des Diensts beginnen möchten, müssen Sie den Health-Agent auf allen Servern deinstallieren und dann neu installieren. Wenn Sie nach dem Durchführen dieser Aktion die Überwachung des gleichen Servers erneut starten möchten, müssen Sie den Health-Agent auf diesem Server deinstallieren und erneut installieren und ihn dann registrieren.
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>So löschen Sie eine Dienstinstanz aus dem Azure AD Connect Health-Dienst
-1. Öffnen Sie das Blatt **Dienst**, indem Sie auf dem Blatt **Dienstliste** die ID des Diensts (Name der Farm) auswählen, den Sie entfernen möchten.
-2. Klicken Sie auf dem Blatt **Server** in der Aktionsleiste auf **Löschen**.
+1. Öffnen Sie das Blatt **Dienst**, indem Sie auf dem Blatt **Dienstliste** die ID des Diensts (Name der Farm) auswählen, den Sie entfernen möchten. 
+2. Klicken Sie auf dem Blatt **Dienst** in der Aktionsleiste auf **Löschen**. 
+![Screenshot: Löschen des Diensts mit Azure AD Connect Health](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Bestätigen Sie den Vorgang, indem Sie den Dienstnamen in das Bestätigungsfeld eingeben (z.B. „sts.contoso.com“).
 4. Klicken Sie auf **Löschen**.
    <br><br>
@@ -140,7 +142,7 @@ Jetzt haben die aufgeführten Benutzer und Gruppen gemäß ihren zugewiesenen Ro
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Schritt 3: Freigeben des Blattspeicherorts für Benutzer oder Gruppen
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Schritt 3: Freigeben des Blattspeicherorts für Benutzer oder Gruppen
 1. Nachdem Sie Berechtigungen zugewiesen haben, können Benutzer [hier](https://aka.ms/aadconnecthealth) auf Azure AD Connect Health zugreifen.
 2. Auf dem Blatt können Benutzer das Blatt oder einzelne Teile davon im Dashboard anheften. Hierfür wird einfach das Symbol **An Dashboard anheften** verwendet.<br>
    ![Screenshot: Rollenbasierte Zugriffssteuerung von Azure AD Connect Health – Blatt zum Anheften mit Hervorhebung des entsprechenden Symbols](./media/how-to-connect-health-operations/RBAC_pin_blade.png)

@@ -2,20 +2,20 @@
 title: 'Azure AD Connect: PowerShell-Referenz zu ADSyncConfig | Microsoft-Dokumentation'
 description: Dieses Dokument enthält Referenzinformationen für das PowerShell-Modul „ADSyncConfig.psm1“.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84be07eeb112711de35853162b798b5f6ed0b2aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422761"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813577"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: PowerShell-Referenz zu ADSyncConfig
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADSyncConfig
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADSyncConfig.psm1“, das in Azure AD Connect enthalten ist.
 
 
@@ -1129,7 +1129,7 @@ Accept wildcard characters: False
 
 #### <a name="-credential"></a>-Credential
 Anmeldeinformationen des Administrators, der über die erforderlichen Berechtigungen zum Einschränken der Berechtigungen des Kontos „ADConnectorAccountDN“ verfügt. Dies ist meist der Unternehmens- oder Domänenadministrator. Verwenden Sie den vollqualifizierten Domänennamen des Administratorkontos, um Fehler bei der Kontosuche zu vermeiden.
-Beispiel: CONTOSO\admin.
+Beispiel: CONTOSO\admin
 
 ```yaml
 Type: PSCredential

@@ -1,10 +1,10 @@
 ---
-title: Azure AD Connect-Konten und -Berechtigungen | Microsoft-Dokumentation
+title: 'Azure AD Connect: Konten und Berechtigungen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt die verwendeten und erstellten Konten sowie die erforderlichen Berechtigungen.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308782"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478602"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -74,7 +74,7 @@ Das [AD DS Connector-Konto](#active-directory-account) wird zum Erstellen von Le
 
 | Berechtigung | Verwendung |
 | --- | --- |
-| <li>Verzeichnisänderungen replizieren</li><li> Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
+| <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
 | Alle Eigenschaften lesen/schreiben: Benutzer |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: iNetOrgPerson |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: Gruppe |Importieren und Exchange-Hybridbereitstellung |
@@ -89,7 +89,7 @@ Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die
 
 | Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- | --- |
-| N/V |Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |<li>Erstellt das [ADSync-Dienstkonto](#azure-ad-connect-sync-service-account), das zum Ausführen des Synchronisierungsdiensts verwendet wird. |
+| – |Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |<li>Erstellt das [ADSync-Dienstkonto](#azure-ad-connect-sync-service-account), das zum Ausführen des Synchronisierungsdiensts verwendet wird. |
 | Stellen Sie eine Verbindung mit Azure AD her. |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD Connector-Kontos](#azure-ad-service-account), das für fortlaufende Synchronisierungsvorgänge in Azure AD verwendet wird.</li> |
 | Herstellen einer Verbindung mit AD DS |Lokale Active Directory-Anmeldeinformationen |Mitglied der  Gruppe „Unternehmensadministratoren“ in Active Directory |<li>Erstellt ein [AD DS Connector-Konto](#active-directory-account) in Active Directory und gewährt Zugriff darauf. Dieses erstellte Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung.</li> |
 
@@ -106,7 +106,7 @@ Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die
 
 | Seite des Assistenten | Erfasste Anmeldeinformationen | Erforderliche Berechtigungen | Verwendung |
 | --- | --- | --- | --- |
-| N/V |Benutzer, der den Installations-Assistenten ausführt |<li>Administrator des lokalen Servers</li><li>Bei Verwendung einer vollständigen SQL Server-Instanz muss der Benutzer Systemadministrator (SA) in SQL sein.</li> |Erstellt standardmäßig das lokale Konto, das als [Dienstkonto für das Synchronisierungsmodul](#azure-ad-connect-sync-service-account)verwendet wird. Das Konto wird nur erstellt, wenn der Administrator kein bestimmtes Konto angibt. |
+| – |Benutzer, der den Installations-Assistenten ausführt |<li>Administrator des lokalen Servers</li><li>Bei Verwendung einer vollständigen SQL Server-Instanz muss der Benutzer Systemadministrator (SA) in SQL sein.</li> |Erstellt standardmäßig das lokale Konto, das als [Dienstkonto für das Synchronisierungsmodul](#azure-ad-connect-sync-service-account)verwendet wird. Das Konto wird nur erstellt, wenn der Administrator kein bestimmtes Konto angibt. |
 | „Synchronisierungsdienste installieren“, Option „Dienstkonto“ |Anmeldeinformationen für Active Directory- oder lokale Konten |Benutzerberechtigungen werden vom Installations-Assistenten gewährt |Wenn der Administrator ein Konto angibt, wird dieses Konto als Dienstkonto für den Synchronisierungsdienst verwendet. |
 | Stellen Sie eine Verbindung mit Azure AD her. |Azure AD-Verzeichnisanmeldeinformationen |Globale Administratorrolle in Azure AD |<li>Aktivieren der Synchronisierung im Azure AD-Verzeichnis</li>  <li>Erstellen des [Azure AD Connector-Kontos](#azure-ad-service-account), das für fortlaufende Synchronisierungsvorgänge in Azure AD verwendet wird.</li> |
 | Verzeichnisse verbinden |Lokale Active Directory-Anmeldeinformationen für jede Gesamtstruktur, die mit Azure AD verbunden wird |Die Berechtigungen hängen davon ab, welche Funktionen Sie aktivieren. Sie finden diese unter [Erstellen des AD DS-Kontos](#create-the-ad-dso-connector-account). |Dieses Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung. |
@@ -120,7 +120,7 @@ Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die
 >[!IMPORTANT]
 >Mit Build **1.1.880.0** (August 2018 veröffentlicht) wurde ein neues PowerShell-Modul namens „ADSyncConfig.psm1“ eingeführt, das eine Sammlung von Cmdlets enthält, die Ihnen bei der Konfiguration der richtigen Active Directory-Berechtigungen für Ihr Azure AD DS-Connector-Konto helfen sollen.
 >
->Weitere Informationen finden Sie unter [Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen](how-to-connect-configure-ad-ds-connector-account.md).
+>Weitere Informationen hierzu finden Sie unter [Azure AD Connect: Konfigurieren der Azure AD DS-Connector-Kontoberechtigung](how-to-connect-configure-ad-ds-connector-account.md)
 
 Das Konto, das Sie auf der Seite **Verzeichnisse verbinden** angeben, muss vor der Installation bereits in Active Directory vorhanden sein.  In Azure AD Connect Version 1.1.524.0 und höher kann der Azure AD Connect-Assistent das **AD DS Connector-Konto** erstellen, das zum Herstellen der Verbindung mit Active Directory verwendet wird.  
 
@@ -131,7 +131,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Feature | Berechtigungen |
 | --- | --- |
 | ms-DS-ConsistencyGuid |Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
-| Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li> Verzeichnisänderungen replizieren: Alle |
+| Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
 | Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |
@@ -149,7 +149,7 @@ Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie
 | --- | --- | --- |
 | Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |Aktualisieren von Binärdateien. |
 | Benutzer, der den Installations-Assistenten ausführt |Mitglied von ADSyncAdmins |Vornehmen von Änderungen an den Synchronisierungsregeln und anderen Konfigurationen. |
-| Benutzer, der den Installations-Assistenten ausführt |Bei Verwendung einer SQL Server-Instanz mit vollem Funktionsumfang: DBO (oder ähnlich) der Datenbank für das Synchronisierungsmodul |Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
+| Benutzer, der den Installations-Assistenten ausführt |Wenn Sie einen vollständigen SQL-Server verwenden: DBO (oder ähnliches) der Datenbank für das Synchronisierungsmodul |Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
 
 ## <a name="more-about-the-created-accounts"></a>Weitere Informationen zu den erstellten Konten
 ### <a name="ad-ds-connector-account"></a>AD DS Connector-Konto

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200517"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826478"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
 
@@ -64,9 +64,9 @@ Azure DNS bietet die folgenden Funktionen:
 Für Azure DNS gelten die folgenden Einschränkungen:
 
 * Für jede private Zone ist nur ein virtuelles Netzwerk für die Registrierung zulässig.
-* Für jede private Zone sind bis zu 10 virtuelle Netzwerke für die Auflösung zulässig.
+* Für jede private Zone sind bis zu 10 virtuelle Netzwerke für die Auflösung zulässig. Dieser Grenzwert wird entfernt, wenn dieses Feature allgemein verfügbar ist.
 * Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten Zone als ein virtuelles Netzwerk für die Registrierung verknüpft werden.
-* Ein bestimmtes virtuelles Netzwerk kann mit bis zu 10 privaten Zonen als virtuelles Netzwerk für die Auflösung verknüpft werden.
+* Ein bestimmtes virtuelles Netzwerk kann mit bis zu 10 privaten Zonen als virtuelles Netzwerk für die Auflösung verknüpft werden. Dieser Grenzwert wird entfernt, wenn dieses Feature allgemein verfügbar ist.
 * Wenn Sie ein virtuelles Netzwerk für die Registrierung angeben, können die DNS-Einträge für die VMs aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Azure PowerShell und Azure CLI-APIs angezeigt oder abgerufen werden. Die VM-Einträge werden tatsächlich jedoch registriert und erfolgreich aufgelöst.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im virtuellen Netzwerk für die Registrierung.
 * Ein Reverse-DNS-Lookup für eine private IP-Adresse, die nicht in der privaten Zone registriert ist (z.B. eine private IP-Adresse für eine VM in einem virtuellen Netzwerk, das als virtuelles Netzwerk für die Auflösung mit einer privaten Zone verknüpft ist), gibt *internal.cloudapp.net* als DNS-Suffix zurück. Dieses Suffix kann jedoch nicht aufgelöst werden.

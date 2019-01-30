@@ -4,21 +4,23 @@ description: Diese Anweisungen führen Sie schrittweise durch den Korrekturproze
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 093b49bea167efb12b941f8f0baff6fbdae5be25
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 054ce3d3483c3515e89c36eafc5d9a771e8e608d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312645"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844142"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
 Ressourcen, die mit der Richtlinie **deployIfNotExists** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung von Azure Policy, den **deployIfNotExists**-Effekt der zugewiesenen Richtlinie auf Ihren vorhandenen Ressourcen auszuführen. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Sicherheit durch Wiederherstellung
 
@@ -51,7 +53,7 @@ az role definition list --name 'Contributor'
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Contributor'
+Get-AzRoleDefinition -Name 'Contributor'
 ```
 
 ## <a name="manually-configure-the-managed-identity"></a>Manuelles Konfigurieren der verwalteten Identität
@@ -70,23 +72,23 @@ Bei der Erstellung einer Zuweisung über das Portal generiert die Azure Policy-I
 Zum Erstellen einer verwalteten Identität während der Zuweisung der Richtlinie muss **Speicherort** definiert sein und **AssignIdentity** verwendet werden. Im folgenden Beispiel wird die Definition der integrierten Richtlinie **Transparente SQL DB-Datenbankverschlüsselung bereitstellen** abgerufen, die Zielressourcengruppe festgelegt und anschließend die Zuweisung erstellt.
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+# Login first with Connect-Azccount if not using Cloud Shell
 
 # Get the built-in "Deploy SQL DB transparent data encryption" policy definition
-$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+$policyDef = Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
 
 # Get the reference to the resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+$resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 
 # Create the assignment using the -Location and -AssignIdentity properties
-$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+$assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
 Die Variable `$assignment` enthält nun die Prinzipal-ID der verwalteten Identität und die Standardwerte, die bei der Erstellung einer Richtlinienzuweisung zurückgegeben werden. Ein Zugriff darauf ist über `$assignment.Identity.PrincipalId` möglich.
 
 ### <a name="grant-defined-roles-with-powershell"></a>Zuweisen definierter Rollen mit PowerShell
 
-Die neue verwaltete Identität muss die Replikation über Azure Active Directory ausführen, bevor ihr die erforderlichen Rollen zugewiesen werden können. Nach Abschluss der Replikation wird im folgenden Beispiel die Richtliniendefinition in `$policyDef` für die **roleDefinitionIds** wiederholt und [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) zum Zuweisen der Rollen zur neuen verwalteten Identität verwendet.
+Die neue verwaltete Identität muss die Replikation über Azure Active Directory ausführen, bevor ihr die erforderlichen Rollen zugewiesen werden können. Nach Abschluss der Replikation wird im folgenden Beispiel die Richtliniendefinition in `$policyDef` für die **roleDefinitionIds** wiederholt und [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) zum Zuweisen der Rollen zur neuen verwalteten Identität verwendet.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -96,7 +98,7 @@ if ($roleDefinitionIds.Count -gt 0)
 {
     $roleDefinitionIds | ForEach-Object {
         $roleDefId = $_.Split("/") | Select-Object -Last 1
-        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+        New-AzRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
     }
 }
 ```

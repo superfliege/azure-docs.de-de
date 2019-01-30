@@ -1,5 +1,5 @@
 ---
-title: Vermeiden unerwarteter Kosten, Verwalten der Abrechnung in Azure | Microsoft Docs
+title: Vermeiden unerwarteter Kosten, Verwalten der Abrechnung in Azure | Microsoft-Dokumentation
 description: Hier erwarten Sie, wie Sie unerwartete Gebühren in Ihrer Azure-Abrechnung vermeiden. Verwenden Sie Kostenüberwachungs- und Kostenverwaltungsfunktionen für ein Microsoft Azure-Abonnement.
 services: ''
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5aca80a4ebeadc9e54cf99fb4a220c6ee7c37cae
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582423"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857011"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -64,6 +64,24 @@ Um zu ermitteln, ob ein Ausgabenlimit aktiviert ist, [navigieren Sie im Kontocen
 
 Klicken Sie auf das Banner, und folgen Sie den Anweisungen, um das Ausgabenlimit zu entfernen. Falls Sie bei der Registrierung keine Kreditkarteninformationen eingegeben haben, müssen Sie dies nun nachholen, um das Ausgabenlimit entfernen zu können. Weitere Informationen finden Sie unter [Azure-Ausgabenlimit – Funktionsweise und Aktivierung/Deaktivierung](https://azure.microsoft.com/pricing/spending-limits/).
 
+Sie können über den Dienst [Cloudyn](https://www.cloudyn.com/) Warnungsmeldungen erstellen, um die Projektbeteiligten automatisch über Ausgabenanomalien und Risiken zu hoher Ausgaben zu informieren. Sie können Warnungen auf der Grundlage von Berichten erstellen, die auf Budget- und Kostenschwellenwerten basierende Warnungen unterstützen. Weitere Informationen zur Verwendung von Cloudyn finden Sie hier: [Tutorial: Überprüfen der Nutzung und der Kosten](../cost-management/tutorial-review-usage.md).
+
+In diesem Beispiel wird der Bericht **Actual Cost Over Time** (Ist-Kosten im Zeitverlauf) verwendet, um eine Benachrichtigung zu senden, wenn sich die Ausgaben für einen virtuellen Azure-Computer Ihrem Gesamtbudget annähern. In diesem Szenario beträgt das Gesamtbudget 20.000 USD, und Sie möchten eine Benachrichtigung erhalten, wenn die Kosten sich der Hälfte Ihres Budgets (9.000 USD) annähern, und eine Warnung, wenn die Kosten 10.000 USD erreichen.
+
+1. Wählen Sie oben im Menü des Cloudyn-Portals Folgendes aus: **Costs** > **Cost Analysis** > **Actual Cost Over Time** („Kosten“ > „Kostenanalyse“ > „Ist-Kosten im Zeitverlauf“). 
+2. Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. 
+3. Wählen Sie in der rechten oberen Ecke des Berichts **Actions** (Aktionen) und anschließend **Schedule report** (Bericht planen) aus.
+4. Wählen Sie im Dialogfeld **Save or Schedule this report** (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung) aus, um im gewünschten Intervall eine E-Mail mit dem Bericht zu erhalten. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Alle verwendeten Tags, Gruppierungen und Filter werden in den per E-Mail gesendeten Bericht eingeschlossen. 
+5. Wählen Sie die Registerkarte **Threshold** (Schwellenwert) und anschließend **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. 
+   1. Geben Sie im Schwellenwertfeld für die **rote Warnung** den Wert „10000“ ein. 
+   2. Geben Sie im Schwellenwertfeld für die **gelbe Warnung** den Wert „9000“ ein. 
+   3. Geben Sie im Feld **Number of consecutive alerts** (Anzahl der aufeinanderfolgenden Warnungen) ein, wie viele aufeinanderfolgende Warnungen sie erhalten möchten. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr gesendet. 
+6. Wählen Sie **Save** (Speichern) aus.
+
+    ![Beispiel für rote und gelbe Warnungen auf der Grundlage von Ausgabeschwellenwerten](./media/billing-getting-started/schedule-alert01.png)
+
+Sie können auch die Schwellenwertmetrik **Cost Percentage vs. Budget** (Prozentuale Kosten im Vergleich zu Budget) verwenden, um Warnungen zu erstellen. In diesem Fall können Sie die Schwellenwerte als Prozentsatz Ihres Budgets (anstelle von Geldbeträgen) angeben.
+
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Möglichkeiten, Ihre Kosten bei Verwendung von Azure-Diensten zu überwachen
 
 ### <a name="tags"></a> Gruppieren von Abrechnungsdaten durch Hinzufügen von Tags zu Ressourcen
@@ -90,7 +108,7 @@ Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von 
 
     ![Screenshot der Kostenanalyseansicht im Azure-Portal](./media/billing-getting-started/cost-analysis.PNG)
 
-4. Sie können nach verschiedenen Eigenschaften wie [Tags](#tags), Ressourcengruppe und Zeitraum filtern. Klicken Sie auf **Übernehmen**, um die Filter zu bestätigen, und auf **Herunterladen**, um die Ansicht in eine CSV-Datei zu exportieren.
+4. Sie können nach verschiedenen Eigenschaften wie [Tags](#tags), Ressourcentyp, Ressourcengruppe und Zeitraum filtern. Klicken Sie auf **Übernehmen**, um die Filter zu bestätigen, und auf **Herunterladen**, um die Ansicht in eine CSV-Datei zu exportieren.
 
 5. Darüber hinaus können Sie auf eine Ressource klicken, um Ihren täglichen Ausgabenverlauf und die täglichen Kosten der Ressource anzuzeigen.
 

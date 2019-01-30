@@ -3,25 +3,25 @@ title: Definieren eines technischen Azure Active Directory-Profils in einer benu
 description: Erfahren Sie, wie Sie ein technisches Azure Active Directory-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cf7b051703e01493f365c1850ab815747321230b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: dc9cda92ef725bbfc1a12756912656f0c39474cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382635"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846743"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für die Benutzerverwaltung von Azure Active Directory. Dieser Artikel beschreibt die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter, der dieses standardisierte Protokoll unterstützt.
+Azure Active Directory (Azure AD) B2C bietet Unterstützung für die Benutzerverwaltung von Azure Active Directory. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt.
 
 ## <a name="protocol"></a>Protokoll
 

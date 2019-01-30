@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: de2a164d-2115-43e7-a9ed-e54f483f4aeb
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 590d8fe0e974587effc7d8a3c59546b5684b146c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cb5c847ea6c4186001f789de8c7ce04842af38
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446230"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Tutorial: Azure Active Directory-Integration mit Communifire
 
@@ -138,7 +138,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **Communifire** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Communifire-Supportteam](https://my.axerosolutions.com/spaces/77/communifire-support/help/welcome) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -177,7 +177,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in Communifire. Communifire unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Nach dem Speichern der Profildetails wird bei dem Versuch, auf Communifire zuzugreifen, ein neuer Benutzer erstellt, sofern noch keiner vorhanden ist.
 
 >[!Note]
->Setzen Sie sich mit dem [Communifire-Supportteam](https://my.axerosolutions.com/spaces/77/communifire-support/help/welcome) in Verbindung, wenn Sie einen Benutzer manuell erstellen möchten.
+>Setzen Sie sich mit dem  [Supportteam von Communifire](https://my.axerosolutions.com/spaces/77/communifire-support/help/welcome) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

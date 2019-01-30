@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2c8c8233e8d471b0f1934df9ff7e0f2b4b3e3860
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199384"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819134"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentieren von Web-Apps zur Laufzeit mit dem Application Insights-Statusmonitor
 
@@ -32,11 +32,13 @@ Der Statusmonitor wird zum Instrumentieren einer in IIS lokal oder auf einem vir
 
 ![Screenshot von App Insights-Übersichtsdiagrammen mit Informationen zu Anforderungsfehlern, Serverantwortzeit und Serveranforderungen](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-Bei der Anwendung von Application Insights auf die .NET-Webanwendungen können Sie zwischen drei Möglichkeiten wählen:
+Bei der Anwendung von Application Insights auf die .NET-Webanwendungen können Sie zwischen zwei Möglichkeiten wählen:
 
 * **Buildzeit:** [Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
 * **Laufzeit:** Instrumentieren Sie Ihre Web-App auf dem Server wie unten beschrieben, ohne den Code neu zu erstellen und bereitzustellen.
-* **Beides:** Erstellen Sie das SDK in Ihrem Web-App-Code, und wenden Sie auch die Laufzeiterweiterungen an. So können Sie die Vorteile beider Optionen nutzen.
+
+> [!NOTE]
+> Wenn Sie die Instrumentierung zur Buildzeit verwenden, funktioniert die Runtimeinstrumentierung auch dann nicht, wenn sie aktiviert ist.
 
 Hier ist zusammengefasst, was Sie jeweils erhalten:
 

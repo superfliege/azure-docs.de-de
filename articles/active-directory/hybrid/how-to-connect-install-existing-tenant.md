@@ -4,7 +4,7 @@ description: Dieses Thema beschreibt die Verwendung von Connect, wenn ein Azure 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6425c2cd77cc32e296c75504d3fd01a5b5e583e9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f0c16a86d4e3dbe582f1471d2b94e1ec85b70b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305789"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475918"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect mit vorhandenem Mandanten
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen vorhandenen Mandanten verfügen
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
 
 ## <a name="the-basics"></a>Grundlagen

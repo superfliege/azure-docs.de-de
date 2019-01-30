@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267316"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853237"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack-Update 1811
 
@@ -191,6 +191,8 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ## <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess
 
+- Wenn Sie das PowerShell-Cmdlet **Get-AzureStackLog** nach Ausführung von **Test-AzureStack** in derselben Sitzung für den privilegierten Endpunkt (PEP) ausführen, kommt es für **Get-AzureStackLog** zu einem Fehler. Um dieses Problem zu umgehen, schließen Sie die PEP-Sitzung, in der Sie **Test-AzureStack** ausgeführt haben, und öffnen Sie anschließend eine neue Sitzung zur Ausführung von **Get-AzureStackLog**.
+
 - Stellen Sie sicher, dass während der Installation des Updates 1811 alle Instanzen des Administratorportals geschlossen sind. Das Benutzerportal kann geöffnet bleiben, aber das Administratorportal muss geschlossen sein.
 
 - Wenn während der Ausführung von [Test-AzureStack](azure-stack-diagnostic-test.md) entweder der Test **AzsInfraRoleSummary** oder der Test **AzsPortalApiSummary** fehlschlägt, werden Sie aufgefordert, **Test-AzureStack** mit dem Parameter `-Repair` auszuführen.  Wenn Sie diesen Befehl ausführen, schlägt er mit folgender Fehlermeldung fehl:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.` Dieses Problem wird in einem zukünftigen Release behoben.
@@ -312,7 +314,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
    - Wenn das Abonnement vor dem Update 1808 erstellt wurde, schlägt die Bereitstellung eines virtuellen Computers mit Managed Disks möglicherweise mit einer internen Fehlermeldung fehl. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
       1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Wählen Sie **Ressourcenanbieter** und dann **Microsoft.Compute** aus, und klicken Sie dann auf **Erneut registrieren**.
-      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
+      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob die Rolle **AzureStack-DiskRP-Client** aufgeführt wird.
    - Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, schlägt die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, möglicherweise mit einer internen Fehlermeldung fehl. Zum Beheben des Fehlers führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
 
 - Ein virtueller Ubuntu 18.04-Computer, der mit aktivierter SSH-Autorisierung erstellt wurde, lässt nicht zu, dass Sie die SSH-Schlüssel für die Anmeldung verwenden. Um dieses Problem zu umgehen, verwenden Sie VM-Zugriff für die Linux-Erweiterung, um SSH-Schlüssel nach der Bereitstellung zu implementieren, oder verwenden Sie kennwortbasierte Authentifizierung.

@@ -7,42 +7,42 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2bb32ccaeb5960fa69dcdc356523abc199fd5f4f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633792"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808198"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
-Bei Cognitive Search werden durchsuchbare Informationen aus nicht durchsuchbaren Inhalten erstellt, indem KI-Algorithmen an eine Indizierungspipeline angefügt werden. Die KI-Integration erfolgt über *kognitive Fähigkeiten*, indem Quelldokumente auf dem Web zu einem Suchindex „angereichert“ werden. 
+Kognitive Suche ist eine KI-Funktion in Azure Search zum Extrahieren von Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen – so wird der Inhalt erweitert und kann noch ergiebiger in einem Azure Search-Index durchsucht werden. Extrahierung und Erweiterung werden über *kognitive Fähigkeiten* implementiert, die einer Indizierungspipeline angefügt sind. KI-Erweiterungen werden auf folgende Weise unterstützt: 
 
-Zu den Fähigkeiten in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-named-entity-recognition.md), Spracherkennung, [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), Textbearbeitung und Stimmungserkennung. Mithilfe dieser Fähigkeiten wird unstrukturierter Text zu strukturiertem Text, der durchsuchbaren und filterbaren Feldern in einem Index zugeordnet ist.
++ Zu den Fähigkeiten in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition.md), Spracherkennung, [Schlüsselbegriffserkennung](cognitive-search-skill-language-detection.md), [Textbearbeitung](cognitive-search-skill-keyphrases.md) und [Stimmungserkennung](cognitive-search-skill-sentiment.md). Mithilfe dieser Fähigkeiten kann unstrukturierter Text neue Formen annehmen, die als durchsuchbare und filterbare Felder in einem Index zugeordnet sind.
 
-Die **Bildverarbeitung** umfasst [OCR](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Farben oder Bildausrichtung. Sie können Textdarstellungen von Bildinhalt erstellen, indem Sie alle Abfragefunktionen von Azure Search verwenden.
++ Die **Bildverarbeitungsfähigkeiten** umfassen [Optical Character Recognition (OCR)](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Farben oder Bildausrichtung. Sie können Textdarstellungen von Bildinhalt erstellen, indem Sie alle Abfragefunktionen von Azure Search verwenden.
 
 ![Diagramm der Cognitive Search-Pipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die Cognitive Search-Pipeline")
 
-Die kognitiven Fähigkeiten in Azure Search basieren auf denselben KI-Algorithmen, die auch in Cognitive Services-APIs verwendet werden: [API für die Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md), [API für die Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md) und [OCR-API](cognitive-search-skill-ocr.md) sind nur einige dieser APIs. 
+Die kognitiven Fähigkeiten in Azure Search basieren auf Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) und [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
 
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden. Die Architektur ist erweiterbar. Falls die integrierten Fähigkeiten also nicht ausreichen, können Sie [benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) erstellen und anfügen, um die benutzerdefinierte Verarbeitung zu integrieren. Beispiele hierfür sind ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Seit dem 21. Dezember 2018 können Sie Cognitive Services-Ressourcen einer Azure Search-Qualifikationsgruppe zuordnen. Somit können wir mit der Gebührenberechnung für die Ausführung von Qualifikationsgruppen beginnen. Außerdem wird seit diesem Datum die Bildextraktion als Teil der Aufschlüsselung von Dokumenten in Rechnung gestellt. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+> Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine [Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) anfügen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
 >
-> Die Ausführung interner Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen. Sie werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
+> Die Ausführung interner Qualifikationen ist eine Nutzung von Cognitive Services, die gemäß dem bestehenden [nutzungsbasierten Preis](https://azure.microsoft.com/pricing/details/cognitive-services/) in Rechnung gestellt wird. Die Preise für die Bildextraktion entsprechen einer Azure Search-Gebühr. Sie werden gemäß der Vorschaupreise wie auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben in Rechnung gestellt.
 
 ## <a name="components-of-cognitive-search"></a>Komponenten von Cognitive Search
 
-Cognitive Search ist ein Vorschaufeature von [Azure Search](search-what-is-azure-search.md), das in allen Tarifen in „USA, Süden-Mitte“ und „Europa, Westen“ verfügbar ist. 
+Die kognitive Suche ist eine Previewfunktion von [Azure Search](search-what-is-azure-search.md), die in [diesen Regionen](#where-do-i-start) unterstützt wird. 
 
 Die Cognitive Search-Pipeline basiert auf [Azure Search-*Indexern*](search-indexer-overview.md), die Datenquellen durchforsten und End-to-End-Indexverarbeitung bieten. Die Fähigkeitengruppen werden jetzt an Indexer angefügt. Dabei werden Dokumente gemäß der von Ihnen definierten Fähigkeiten abgefangen und angereichert. Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.  Wenn Sie mit Indexern noch nicht vertraut sind, werden Ihnen in diesem Abschnitt die erforderlichen Schritte erläutert.
 
-### <a name="source-data-and-document-cracking-phase"></a>Phase der Entschlüsselung von Quelldaten und Dokumenten
+### <a name="step-1-connection-and-document-cracking-phase"></a>Schritt 1: Phase der Entschlüsselung von Verbindung und Dokument
 
 Am Anfang der Pipeline befindet sich unstrukturierter Text oder Nicht-Text-Inhalt (z.B. Bilder und gescannte Dokumente als JPEG-Dateien). Die Daten müssen in einem Azure-Datenspeicherdienst enthalten sein, auf den ein Indexer Zugriff hat. Indexer können Quelldokumente entschlüsseln, um Text aus Quelldaten zu extrahieren.
 
@@ -50,7 +50,7 @@ Am Anfang der Pipeline befindet sich unstrukturierter Text oder Nicht-Text-Inhal
 
  Zu den unterstützten Quellen zählen Azure Blob Storage, Azure Table Storage, Azure SQL-Datenbank und Azure Cosmos DB. Textbasierte Inhalte können aus den folgenden Dateitypen extrahiert werden: PDF-, Word-, PowerPoint- und CSV-Dateien. Eine vollständige Liste finden Sie unter [Unterstützte Formate](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
-### <a name="cognitive-skills-and-enrichment-phase"></a>Phase der kognitiven Fähigkeiten und Anreicherung
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Schritt 2: Phase der kognitiven Fähigkeiten und Anreicherung
 
 Die Anreicherung erfolgt durch *kognitive Fähigkeiten*, die atomische Vorgänge durchführen. Sobald Sie über Textinhalte aus einer PDF-Datei verfügen, können Sie beispielsweise die Entitätserkennung, die Sprachenerkennung oder die Schlüsselbegriffserkennung anwenden, um neue Felder in Ihrem Index zu erstellen, die nativ in der Quelle nicht verfügbar sind. Die Auflistung der in Ihrer Pipeline verwendeten Fähigkeiten wird als *Fähigkeitengruppe* bezeichnet.  
 
@@ -60,7 +60,7 @@ Eine Fähigkeitengruppe basiert auf [vordefinierten kognitiven Fähigkeiten](cog
 
 Die Pipeline generiert intern eine Sammlung angereicherter Dokumente. Sie können entscheiden, welche Teile der angereicherten Dokumente indizierbaren Feldern in Ihrem Suchindex zugeordnet werden sollen. Wenn Sie beispielsweise die Fähigkeiten der Schlüsselbegriffserkennung und der Entitätserkennung angewendet haben, werden diese neuen Felder Bestandteil des angereicherten Dokuments und können Feldern in Ihrem Index zugeordnet werden. Weitere Informationen zu Eingabe-/Ausgabeformationen finden Sie unter [Anmerkungen](cognitive-search-concept-annotations-syntax.md).
 
-### <a name="search-index-and-query-based-access"></a>Suchindex und abfragebasierter Zugriff
+### <a name="step-3-search-index-and-query-based-access"></a>Schritt 3: Suchindex und abfragebasierter Zugriff
 
 Nach Abschluss der Verarbeitung verfügen Sie über einen Suchkorpus mit angereicherten Dokumenten, die mit Azure Search im Volltext durchsucht werden können. Entwickler und Benutzer greifen über das [Abfragen des Indexes](search-query-overview.md) auf den von der Pipeline generierten angereicherten Inhalt zu. 
 
@@ -88,21 +88,24 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 | Data source  | Ein von einem Indexer verwendetes Objekt zum Verbinden mit einer externen Datenquelle von unterstützten Typen in Azure. | Weitere Informationen finden Sie unter [Indexer](search-indexer-overview.md). |
 | Index | Ein persistenter Suchkorpus in Azure Search, der aus einem Indexschema erstellt wurde, das die Feldstruktur und -verwendung definiert. | [Indizes in Azure Search](search-what-is-an-index.md) | 
 
+<a name="where-do-i-start"></a>
 
 ## <a name="where-do-i-start"></a>Wo beginne ich?
 
-**Schritt 1: Erstellen eines Suchdiensts in einer Region, in der die APIs bereitgestellt werden** 
+**Schritt 1: [Erstellen einer Azure Search-Ressource](search-create-service-portal.md) in einer Region, in der die APIs bereitgestellt werden** 
 
 + USA, Westen-Mitte
 + USA Süd Mitte
 + USA (Ost)
 + USA (Ost) 2
++ USA (Westen)
 + USA, Westen 2
 + Kanada, Mitte
 + Europa, Westen
 + UK, Süden
 + Nordeuropa
 + Brasilien Süd
++ Asien, Osten
 + Asien, Südosten
 + Indien, Mitte
 + Australien (Osten)

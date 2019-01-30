@@ -8,17 +8,17 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
-ms.date: 10/05/2018
-ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/22/2019
+ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725147"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807268"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
 
-Zum Zugreifen auf Ressourcen in anderen Azure AD-Mandanten (Azure Active Directory) und Authentifizieren Ihrer Identität ohne Anmeldung kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) erstellen, die anstelle von Anmeldeinformationen oder Geheimnissen verwendet wird. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. In diesem Artikel wird veranschaulicht, wie Sie für Ihre Logik-App eine vom System zugewiesene verwaltete Identität erstellen und verwenden können. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
+Zum Zugreifen auf Ressourcen in anderen Azure AD-Mandanten (Azure Active Directory) und Authentifizieren Ihrer Identität ohne Anmeldung kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) erstellen, die anstelle von Anmeldeinformationen oder Geheimnissen verwendet wird. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. In diesem Artikel wird veranschaulicht, wie Sie für Ihre Logik-App eine vom System zugewiesene verwaltete Identität einrichten und verwenden können. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!NOTE]
 > Sie können derzeit bis zu 10 Logik-App-Workflows mit vom System zugewiesenen verwalteten Identitäten in jedem Azure-Abonnement haben.
@@ -29,40 +29,42 @@ Zum Zugreifen auf Ressourcen in anderen Azure AD-Mandanten (Azure Active Directo
 
 * Die Logik-App, für die Sie die vom System zugewiesene verwaltete Identität verwenden möchten. Wenn Sie keine Logik-App haben, helfen Ihnen die Informationen unter [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) weiter.
 
-<a name="create-identity"></a>
+<a name="enable-identity"></a>
 
-## <a name="create-managed-identity"></a>Erstellen einer verwalteten Identität
+## <a name="enable-managed-identity"></a>Aktivieren einer verwalteten Identität
 
-Sie können eine vom System zugewiesene verwaltete Identität für Ihre Logik-App erstellen oder aktivieren, indem Sie das Azure-Portal, Azure Resource Manager-Vorlagen oder Azure PowerShell verwenden. 
+Für vom System zugewiesene verwaltete Identitäten müssen Sie diese Identität nicht manuell erstellen. Um eine vom System zugewiesene verwaltete Identität für Ihre Logik-App einzurichten, können Sie diese Möglichkeiten nutzen: 
+
+* [Azure-Portal](#azure-portal) 
+* [Azure-Ressourcen-Manager-Vorlagen](#template) 
+* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
+
+<a name="azure-portal"></a>
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Aktivieren Sie die Einstellung **Registrierung bei Azure Active Directory** in den Workfloweinstellungen Ihrer Logik-App, um über das Azure-Portal eine vom System zugewiesene verwaltete Identität für die Logik-App zu aktivieren.
+Aktivieren Sie die Einstellung **Vom System zugewiesen** in den Identitätseinstellungen Ihrer Logik-App, um über das Azure-Portal eine vom System zugewiesene verwaltete Identität für die Logik-App zu aktivieren.
 
 1. Öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
-1. Folgen Sie diesen Schritten: 
+1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Identität** aus. 
 
-   1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Workfloweinstellungen**. 
+1. Wählen Sie unter **Vom System zugewiesen** > **Status** die Option **Ein** aus. Wählen Sie anschließend **Speichern** > **Ja** aus.
 
-   1. Wählen Sie unter **Verwaltete Dienstidentität** > 
-   **Registrierung bei Azure Active Directory** die Option **Ein**.
+   ![Aktivieren der Einstellung für die verwaltete Identität](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
-   1. Wählen Sie in der Symbolleiste **Speichern**, wenn Sie fertig sind.
+   Ihre Logik-App verfügt jetzt über eine in Azure Active Directory registrierte, vom System zugewiesene verwaltete Identität:
 
-      ![Aktivieren der Einstellung für die verwaltete Identität](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
+   ![GUIDs für Objekt-ID](./media/create-managed-service-identity/object-id.png)
 
-      Ihre Logik-App verfügt jetzt über eine in Azure Active Directory registrierte, vom System zugewiesene verwaltete Identität mit diesen Eigenschaften und Werten:
+   | Eigenschaft | Wert | BESCHREIBUNG | 
+   |----------|-------|-------------| 
+   | **Objekt-ID** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die vom System zugewiesene verwaltete Identität für Ihre Logik-App in einem Azure AD-Mandanten darstellt. | 
+   ||| 
 
-      ![GUIDs für Prinzipal-ID und Mandanten-ID](./media/create-managed-service-identity/principal-tenant-id.png)
+<a name="template"></a>
 
-      | Eigenschaft | Wert | BESCHREIBUNG | 
-      |----------|-------|-------------| 
-      | **Prinzipal-ID** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), mit der die Logik-App in einem Azure AD-Mandanten identifiziert wird. | 
-      | **Tenant ID** | <*Azure-AD-tenant-ID*> | Eine GUID (Globally Unique Identifier), die für den Azure AD-Mandanten steht, auf dem die Logik-App jetzt Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die Logik-App-Instanz. | 
-      ||| 
-
-### <a name="deployment-template"></a>Bereitstellungsvorlage
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 
 Sie können [Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) verwenden, wenn Sie das Erstellen und Bereitstellen von Azure-Ressourcen, z.B. Logik-Apps, automatisieren möchten. Um für Ihre Logik-App mit einer Vorlage eine vom System zugewiesene verwaltete Identität zu erstellen, fügen Sie das `"identity"`-Element und die `"type"`-Eigenschaft der Workflowdefinition Ihrer Logik-App in Ihrer Bereitstellungsvorlage hinzu: 
 
@@ -109,7 +111,7 @@ Wenn Azure Ihre Logik-App erstellt, enthält die Workflowdefinition der Logik-Ap
 
 | Eigenschaft | Wert | BESCHREIBUNG | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), mit der die Logik-App im Azure AD-Mandanten identifiziert wird. | 
+| **principalId** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), die die Logik-App im Azure AD-Mandanten darstellt und manchmal als „Objekt-ID“ oder `objectID` angezeigt wird. | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | Eine GUID (Globally Unique Identifier), die für den Azure AD-Mandanten steht, auf dem die Logik-App jetzt Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die Logik-App-Instanz. | 
 ||| 
 
@@ -150,11 +152,23 @@ Nach dem Einrichten Ihrer Logik-App mit einer vom System zugewiesenen verwaltete
 
 1. Geben Sie die erforderlichen Details für diese Aktion an, z.B. die **Methode** für die Anforderung und den **URI**-Speicherort für die aufzurufende Ressource.
 
+   Nehmen wir beispielsweise an, Sie verwenden Azure Active Directory-Authentifizierung (Azure AD) mit [einem der Azure-Dienste, die Azure AD unterstützen](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   Geben Sie im Feld **URI** die Endpunkt-URL für den Azure-Dienst ein. 
+   Wenn Sie Azure Resource Manager verwenden, geben Sie diesen Wert für die Eigenschaft **URI** ein:
+
+   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
+
 1. Wählen Sie in der HTTP-Aktion die Option **Erweiterte Optionen anzeigen**. 
 
-1. Wählen Sie in der Liste **Authentifizierung** die Option **Verwaltete Dienstidentität**, um die Eigenschaft **Audience** (Zielgruppe) anzuzeigen, die Sie festlegen können:
+1. Wählen Sie in der Liste **Authentifizierung** den Eintrag **Verwaltete Identität** aus. Nachdem Sie diese Authentifizierung ausgewählt haben, wird die Eigenschaft **Zielgruppe** mit dem Standardwert der Ressourcen-ID angezeigt:
 
-   ![Auswählen von „Verwaltete Dienstidentität“](./media/create-managed-service-identity/select-managed-service-identity.png)
+   ![Auswählen von „Verwaltete Identität“](./media/create-managed-service-identity/select-managed-service-identity.png)
+
+   > [!IMPORTANT]
+   > 
+   > In der Eigenschaft **Zielgruppe** muss der Ressourcen-ID-Wert genau dem entsprechen, was Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche. 
+   > Sie finden diese Ressourcen-ID-Werte in dieser [Tabelle mit Beschreibungen von Azure-Diensten, die Azure AD unterstützen](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   > Wenn Sie z.B. die Azure Resource Manager-Ressourcen-ID verwenden, stellen Sie sicher, dass der URI einen nachgestellten Schrägstrich hat.
 
 1. Fahren Sie damit fort, die Logik-App wie gewünscht zu erstellen.
 
@@ -162,23 +176,21 @@ Nach dem Einrichten Ihrer Logik-App mit einer vom System zugewiesenen verwaltete
 
 ## <a name="remove-managed-identity"></a>Entfernen der verwalteten Identität
 
-Zum Deaktivieren einer vom System zugewiesenen verwalteten Identität in Ihrer Logik-App können Sie ähnliche Schritte wie beim Erstellen der Identität über das Azure-Portal, mit Azure Resource Manager-Bereitstellungsvorlagen oder mit Azure PowerShell ausführen. 
+Zum Deaktivieren einer vom System zugewiesenen verwalteten Identität in Ihrer Logik-App können Sie ähnliche Schritte wie beim Einrichten der Identität über das Azure-Portal, mit Azure Resource Manager-Bereitstellungsvorlagen oder mit Azure PowerShell ausführen. 
 
 Wenn Sie Ihre Logik-App löschen, entfernt Azure die vom System zugewiesene Identität Ihrer Logik-App automatisch aus Azure AD.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Öffnen Sie Ihre Logik-App im Logik-App-Designer.
+Deaktivieren Sie die Einstellung **Vom System zugewiesen** in den Identitätseinstellungen Ihrer Logik-App, um über das Azure-Portal eine vom System zugewiesene verwaltete Identität für die Logik-App zu entfernen.
 
-1. Folgen Sie diesen Schritten: 
+1. Öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
-   1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Workfloweinstellungen**. 
-   
-   1. Wählen Sie unter **Verwaltete Dienstidentität** für die Eigenschaft **Registrierung bei Azure Active Directory** die Option **Aus**.
+1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Identität** aus. 
 
-   1. Wählen Sie in der Symbolleiste **Speichern**, wenn Sie fertig sind.
+1. Wählen Sie unter **Vom System zugewiesen** > **Status** die Option **Aus** aus. Wählen Sie anschließend **Speichern** > **Ja** aus.
 
-      ![Deaktivieren der Einstellung für die verwaltete Identität](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
+   ![Deaktivieren der Einstellung für die verwaltete Identität](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 
 ### <a name="deployment-template"></a>Bereitstellungsvorlage
 
@@ -194,4 +206,3 @@ Wenn Sie die vom System zugewiesene verwaltete Identität der Logik-App mit eine
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
-

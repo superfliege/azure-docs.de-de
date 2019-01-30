@@ -4,29 +4,27 @@ description: Verwenden Sie die Aktivitätsprotokolle zur Überprüfung von Benut
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: fcdb3125-13ce-4c3b-9087-f514c5e41e73
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 636e4d5216f87440463fbaecd7f6c7a5a25c7502
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b702b6de5c9f33058e9b486547530d071969bd97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359390"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855383"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen
 
 Mithilfe von Aktivitätsprotokollen können Sie Folgendes ermitteln:
 
 * Welche Vorgänge in den Ressourcen in Ihrem Abonnement ausgeführt wurden
-* Wer den Vorgang initiiert hat (auch wenn die von einem Back-End-Dienst initiierten Vorgänge keinen Benutzer als Aufrufer zurückgeben)
+* Den Benutzer oder das System, von dem der Vorgang initiiert wurde
 * Wann der Vorgang abgeschlossen wurde
 * Den Status des Vorgangs
 * Die Werte anderer Eigenschaften, mit denen Sie den Vorgang eventuell untersuchen können
@@ -41,36 +39,39 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
 
 1. Wählen Sie zum Anzeigen der Aktivitätsprotokolle über das Portal die Option **Überwachen** aus.
 
-    ![Aktivitätsprotokolle auswählen](./media/resource-group-audit/select-monitor.png)
+    ![Option „Überwachen“ auswählen](./media/resource-group-audit/select-monitor.png)
 
-   Sie können auch automatisch nach dem Aktivitätsprotokoll für eine bestimmte Ressource oder Ressourcengruppe filtern, indem Sie die Option **Aktivitätsprotokoll** auswählen. Beachten Sie, dass das Aktivitätsprotokoll automatisch nach der ausgewählten Ressource gefiltert wird.
+1. Wählen Sie **Aktivitätsprotokoll** aus.
 
-    ![Nach Ressourcen filtern](./media/resource-group-audit/filtered-by-resource.png)
-2. Im **Aktivitätsprotokoll** finden Sie eine Zusammenfassung der aktuellen Vorgänge.
+    ![Aktivitätsprotokoll auswählen](./media/resource-group-audit/select-activity-log.png)
 
-    ![Aktionen anzeigen](./media/resource-group-audit/audit-summary.png)
-3. Um die Anzahl der angezeigten Vorgänge zu einzuschränken, wählen Sie verschiedene Bedingungen aus. Die folgende Abbildung zeigt beispielsweise die Felder **Zeitraum** und **Ereignis initiiert von**, die geändert wurden, um die Aktionen anzuzeigen, die von einem bestimmten Benutzer oder einer bestimmten Anwendung im letzten Monat durchgeführt wurden. Wählen Sie **Übernehmen** aus, um die Ergebnisse Ihrer Abfrage anzuzeigen.
+1. Es wird eine Zusammenfassung der aktuellen Vorgänge angezeigt. Auf die Vorgänge wird ein Standardsatz von Filtern angewendet.
+
+    ![Anzeige einer Zusammenfassung der aktuellen Vorgänge](./media/resource-group-audit/audit-summary.png)
+
+1. Um schnell einen vordefinierten Satz von Filtern anzuwenden, klicken Sie auf **Quick Insights** und wählen eine der verfügbaren Optionen aus.
+
+    ![Auswählen der Abfrage](./media/resource-group-audit/quick-insights.png)
+
+1. Um sich auf bestimmte Vorgänge zu konzentrieren, ändern Sie die Filter oder wenden neue Filter an. In der folgenden Abbildung wurde beispielsweise ein neuer Wert für den **Zeitraum** festgelegt, und als **Ressourcentyp** wurden Speicherkonten ausgewählt. 
 
     ![Filteroptionen festlegen](./media/resource-group-audit/set-filter.png)
 
-4. Wenn Sie die Abfrage später erneut ausführen möchten, wählen Sie **Aktuelle Filter anheften** aus, und geben Sie der Abfrage einen Namen.
+1. Wenn Sie die Abfrage später erneut ausführen möchten, wählen Sie **Aktuelle Filter anheften** aus.
 
-    ![Abfrage speichern](./media/resource-group-audit/save-query.png)
-5. Zum schnellen Ausführen einer Abfrage können Sie eine der integrierten Abfragen auswählen, z.B. Bereitstellungsfehler.
+    ![Filter anheften](./media/resource-group-audit/pin-filters.png)
 
-    ![Auswählen der Abfrage](./media/resource-group-audit/select-quick-query.png)
+1. Geben Sie dem Filter einen Namen.
 
-   Die ausgewählte Abfrage legt automatisch die erforderlichen Filterwerte fest.
+    ![Filter benennen](./media/resource-group-audit/name-filters.png)
 
-    ![Anzeigen von Bereitstellungsfehlern](./media/resource-group-audit/view-failed-deployment.png)
+1. Der Filter ist im Dashboard verfügbar.
 
-6. Wählen Sie einen der Vorgänge aus, um eine Zusammenfassung des Ereignisses anzuzeigen.
-
-    ![Anzeigen von Vorgängen](./media/resource-group-audit/view-operation.png)  
+    ![Filter im Dashboard anzeigen](./media/resource-group-audit/show-dashboard.png)
 
 ## <a name="powershell"></a>PowerShell
 
-1. Um Protokolleinträge abzurufen, führen Sie den Befehl **Get-AzureRmLog** aus. Wenn Sie die Liste der Einträge filtern möchten, können Sie dem Befehl Parameter hinzufügen. Wenn Sie keine Start- und Endzeit angeben, werden die Einträge der letzten Stunde zurückgegeben. Führen Sie beispielsweise folgenden Befehl aus, um die Vorgänge für eine Ressourcengruppe während der letzten Stunde abzurufen:
+* Um Protokolleinträge abzurufen, führen Sie den Befehl **Get-AzureRmLog** aus. Wenn Sie die Liste der Einträge filtern möchten, können Sie dem Befehl Parameter hinzufügen. Wenn Sie keinen Start- und Endzeitpunkt angeben, werden die Einträge der letzten sieben Tage zurückgegeben.
 
   ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup
@@ -79,7 +80,7 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
     Das folgende Beispiel zeigt, wie Sie mithilfe des Aktivitätsprotokolls nach Vorgängen suchen können, die während eines bestimmten Zeitraums durchgeführt wurden. Die Start- und Enddaten werden in einem Datumsformat angegeben.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
+  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
   ```
 
     Alternativ können Sie mithilfe von Datumsfunktionen den Datumsbereich angeben, beispielsweise die letzten 14 Tage.
@@ -88,62 +89,78 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
-2. Je nachdem, welche Startzeit Sie angeben, können die oben stehenden Befehle eine sehr lange Liste mit Vorgängen für diese Ressourcengruppe zurückgeben. Sie können die Ergebnisse filtern, indem Sie Suchkriterien eingeben. Wenn Sie beispielsweise herausfinden möchten, wie eine Web-App angehalten wurde, können Sie folgenden Befehl ausführen:
-
-  ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
-  ```
-
-    In diesem Beispiel wird damit gezeigt, dass die Aktion durch someone@contoso.com durchgeführt wurde.
-
-  ```powershell
-  Authorization     :
-  Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
-  Action    : Microsoft.Web/sites/stop/action
-  Role      : Subscription Admin
-  Condition :
-  Caller            : someone@contoso.com
-  CorrelationId     : 84beae59-92aa-4662-a6fc-b6fecc0ff8da
-  EventSource       : Administrative
-  EventTimestamp    : 8/28/2015 4:08:18 PM
-  OperationName     : Microsoft.Web/sites/stop/action
-  ResourceGroupName : ExampleGroup
-  ResourceId        : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
-  Status            : Succeeded
-  SubscriptionId    : xxxxx
-  SubStatus         : OK
-  ```
-
-3. Sie können die Aktionen anzeigen, die von einem bestimmten Benutzer durchgeführt wurden, selbst für eine Ressourcengruppe, die nicht mehr vorhanden ist.
+* Sie können die Aktionen anzeigen, die von einem bestimmten Benutzer durchgeführt wurden, selbst für eine Ressourcengruppe, die nicht mehr vorhanden ist.
 
   ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
   ```
 
-4. Sie können nach Vorgängen mit Fehlern filtern.
+* Sie können nach Vorgängen mit Fehlern filtern.
 
   ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
-5. Sie können sich auf einen Fehler konzentrieren, indem Sie die Statusmeldung für diesen Eintrag betrachten.
+* Sie können sich auf einen Fehler konzentrieren, indem Sie die Statusmeldung für diesen Eintrag betrachten.
 
   ```azurepowershell-interactive
-  ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
+  ((Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
   ```
 
-    Ausgabe des Befehls:
+* Sie können bestimmte Werte auswählen, um die zurückgegebenen Daten einzuschränken.
 
-        code           message
-        ----           -------
-        DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP.
+  ```azurepowershell-interactive
+  Get-AzureRmLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
+  ```
+
+* Je nachdem, welche Startzeit Sie angeben, können die oben stehenden Befehle eine sehr lange Liste mit Vorgängen für diese Ressourcengruppe zurückgeben. Sie können die Ergebnisse filtern, indem Sie Suchkriterien eingeben. Beispielsweise können Sie nach dem Typ des Vorgangs filtern.
+
+  ```azurepowershell-interactive
+  Get-AzureRmLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
+  ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Um Protokolleinträge abzurufen, führen Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) aus.
+* Um Protokolleinträge abzurufen, führen Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) mit einem Offset zum Angeben des Zeitraums aus.
 
-  ```azurecli
-  az monitor activity-log list --resource-group <group name>
+  ```azurecli-interactive
+  az monitor activity-log list --resource-group ExampleGroup --offset 7d
+  ```
+
+  Das folgende Beispiel zeigt, wie Sie mithilfe des Aktivitätsprotokolls nach Vorgängen suchen können, die während eines bestimmten Zeitraums durchgeführt wurden. Die Start- und Enddaten werden in einem Datumsformat angegeben.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --start-time 2019-01-01 --end-time 2019-01-15
+  ```
+
+* Sie können die Aktionen anzeigen, die von einem bestimmten Benutzer durchgeführt wurden, selbst für eine Ressourcengruppe, die nicht mehr vorhanden ist.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
+  ```
+
+* Sie können nach Vorgängen mit Fehlern filtern.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g demoRG --status Failed --offset 1d
+  ```
+
+* Sie können sich auf einen Fehler konzentrieren, indem Sie die Statusmeldung für diesen Eintrag betrachten.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
+  ```
+
+* Sie können bestimmte Werte auswählen, um die zurückgegebenen Daten einzuschränken.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
+  ```
+
+* Je nachdem, welche Startzeit Sie angeben, können die oben stehenden Befehle eine sehr lange Liste mit Vorgängen für diese Ressourcengruppe zurückgeben. Sie können die Ergebnisse filtern, indem Sie Suchkriterien eingeben. Beispielsweise können Sie nach dem Typ des Vorgangs filtern.
+
+  ```azurecli-interactive
+  az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
   ```
 
 ## <a name="rest-api"></a>REST-API

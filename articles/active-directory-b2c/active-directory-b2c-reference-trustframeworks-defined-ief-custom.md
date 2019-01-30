@@ -3,19 +3,19 @@ title: 'Referenz: Vertrauensframeworks in Azure Active Directory B2C | Microsoft
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zum Identity Experience Framework
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 694d463c158f8c8beb0396edf22ac749c03e9e97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185778"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845689"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 
@@ -52,10 +52,10 @@ Vertrauensframeworks (TFs) sind der Dreh- und Angelpunkt des OIX-Vertrauensframe
 - **Die Beschreibung der Informationen zur digitalen Identität, die von Teilnehmern angeboten bzw. benötigt werden**.
 
 - **Die technischen Richtlinien für die Erzeugung und Nutzung von Informationen zur digitalen Identität und somit zum Messen von LOA und LOP. Diese schriftlichen Richtlinien umfassen normalerweise die folgenden Kategorien von Richtlinien:**
-    - Richtlinien zur Identitätsüberprüfung: *Wie streng werden die Identitätsinformationen einer Person überprüft?*
-    - Sicherheitsrichtlinien: *Wie gut ist die Integrität und Vertraulichkeit der Informationen geschützt?*
-    - Datenschutzrichtlinien: *Welches Maß an Kontrolle hat ein Benutzer über seine personenbezogenen Informationen (Personally Identifiable Information, PII)*?
-    - Richtlinien zur Überlebensfähigkeit, z.B.: *Wenn ein Anbieter sein Geschäft einstellt, wie wird die Kontinuität und der Schutz von PII gewährleistet?*
+    - Richtlinien zur Identitätsüberprüfung, z.B.: *Wie streng werden die Identitätsinformationen einer Person überprüft?*
+    - Sicherheitsrichtlinien, z.B.: *Wie gut ist die Integrität und Vertraulichkeit der Informationen geschützt?*
+    - Datenschutzrichtlinien, z.B.: *Welches Maß an Kontrolle hat ein Benutzer über seine personenbezogenen Informationen (Personally Identifiable Information, PII)*?
+    - Richtlinien zur „Überlebensfähigkeit“ (Survivability), z.B.: *Kontinuität und Schutz von personenbezogenen Informationen, wenn ein Anbieter den Betrieb einstellt.*
 
 - **Die technischen Profile für die Erzeugung und Nutzung von Informationen zur digitalen Identität. Die Profile enthalten:**
     - Festlegen des Umfangs von Schnittstellen, für die Informationen zur digitalen Identität auf der angegebenen Zusicherungsebene (LOA) verfügbar sind.

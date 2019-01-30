@@ -15,24 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
-ms.openlocfilehash: 958f661585b38b156cf523fe00986e7594474917
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.component: disks
+ms.openlocfilehash: 4f9e3468cc8ec94eeb3ba936b828e9adfd9a3e6d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093815"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478517"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualisieren des Speichertyps eines verwalteten Datenträgers
 
 Azure Managed Disks bietet drei Speichertypoptionen: [SSD Premium](../windows/premium-storage.md), [SSD Standard](../windows/disks-standard-ssd.md) und [HDD Standard](../windows/standard-storage.md). Basierend auf Ihren Leistungsanforderungen können Sie bei minimaler Downtime zwischen Speichertypen eines verwalteten Datenträgers wechseln. Bei nicht verwalteten Datenträgern wird das Wechseln zwischen Speichertypen nicht unterstützt. Sie können jedoch problemlos [einen nicht verwalteten Datenträger in einen verwalteten Datenträger konvertieren](convert-unmanaged-to-managed-disks.md).
 
-In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell den Speichertyp eines verwalteten Datenträgers von Standard in Premium konvertieren. Wenn Sie PowerShell installieren oder aktualisieren müssen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1).
+In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell den Speichertyp eines verwalteten Datenträgers von Standard in Premium konvertieren. Wenn Sie PowerShell installieren oder aktualisieren müssen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Weil für die Konvertierung ein Neustart des virtuellen Computers (Virtual Machine, VM) erforderlich ist, sollten Sie die Migration Ihres Datenträgerspeichers während eines bereits vorhandenen Wartungsfensters durchführen. 
 * Wenn Sie einen nicht verwalteten Datenträger verwenden, müssen Sie [ihn zuerst in einen verwalteten Datenträger konvertieren](convert-unmanaged-to-managed-disks.md), um zwischen den Speichertypen wechseln zu können. 
-* Für die Beispiele in diesem Artikel muss Version 6.0.0 oder höher des Azure PowerShell-Moduls verwendet werden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Führen Sie [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) aus, um eine Verbindung mit Azure herzustellen.
+* Für die Beispiele in diesem Artikel muss Version 6.0.0 oder höher des Azure PowerShell-Moduls verwendet werden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Führen Sie [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) aus, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>Konvertieren aller verwalteten Datenträger eines virtuellen Computers von Storage Standard in Storage Premium

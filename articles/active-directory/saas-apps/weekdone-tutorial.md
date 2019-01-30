@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 34921f9a-5637-4420-ab4c-9beb34421909
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 7f7946ece91013696969dafda17b02c972f4b780
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 869deb1b68d30041b6780151a5712099982bd9b7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230402"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Tutorial: Azure Active Directory-Integration mit Weekdone
 
@@ -100,15 +100,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Weekdone** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_weekdone_samlbase.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Weekdone** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_weekdone_url1.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_url1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://weekdone.com/a/<tenant>/metadata`
 
@@ -119,7 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_weekdone_url2.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://weekdone.com/a/<tenantname>`.
      
@@ -128,15 +128,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_weekdone_certificate.png) 
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_general_400.png)
     
 7. Klicken Sie im Abschnitt **Weekdone-Konfiguration** auf **Weekdone konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_weekdone_configure.png) 
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_configure.png) 
 
 8. Zum Konfigurieren des einmaligen Anmeldens bei **Weekdone** müssen Sie die heruntergeladene **XML-Metadatendatei, Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Weekdone-Supportteam](mailto:hello@weekdone.com) senden.
 
@@ -194,7 +194,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Weekdone**aus.
 
-    ![Configure Single Sign-On](./media/weekdone-tutorial/tutorial_weekdone_app.png) 
+    ![Configure single sign-on](./media/weekdone-tutorial/tutorial_weekdone_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

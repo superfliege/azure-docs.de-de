@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354551"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471819"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
 In Azure Search erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif oder einer SKU, der/die für die Lebensdauer des Diensts fest ist. Die Tarife lauten **Free**, **Basic** und **Standard**, wobei **Standard** in verschiedenen Konfigurationen und mit verschiedenen Kapazitäten verfügbar ist. Die meisten Kunden beginnen mit dem Tarif **Free** zu Evaluierungszwecken und steigen dann für Entwicklung-s und Produktionsumgebungen auf **Standard** um. Sie können alle Schnellstartanleitungen und Tutorials im Tarif **Free** absolvieren, einschließlich jener für ressourcenintensive kognitive Suchen. 
 
-Tarife bestimmen die Kapazität, nicht die Features, und werden wie folgt differenziert:
+Tarife geben die Merkmale der Hardware wieder, die den Dienst hostet (anstelle von Funktionen), und unterscheiden sich durch:
 
 + Anzahl der Indizes, die Sie erstellen können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
@@ -63,7 +63,7 @@ Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halte
 
 ### <a name="billing-for-image-extraction-in-cognitive-search"></a>Abrechnung für das Extrahieren von Bildern bei der kognitiven Suche
 
-Wenn Sie Bilder aus Dateien in einer Indizierungspipeline für die kognitive Suche extrahieren, wird Ihnen in Ihrer Azure Search-Rechnung dieser Vorgang in Rechnung gestellt. In einer [Indexerkonfiguration](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters) ist **imageAction** der Parameter, der die Bildextraktion auslöst. Wenn **imageAction** auf „None“ festgelegt ist (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an.
+Wenn Sie Bilder aus Dateien in einer Indizierungspipeline für die kognitive Suche extrahieren, wird Ihnen in Ihrer Azure Search-Rechnung dieser Vorgang in Rechnung gestellt. In einer [Indexerkonfiguration](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) ist **imageAction** der Parameter, der die Bildextraktion auslöst. Wenn **imageAction** auf „None“ festgelegt ist (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an.
 
 Die Preise können sich ändern, dies wird jedoch immer auf der [Seite „Azure Search – Preise“](https://azure.microsoft.com/pricing/details/search/) dokumentiert. 
 

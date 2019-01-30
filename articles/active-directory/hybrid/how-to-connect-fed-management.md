@@ -5,7 +5,7 @@ keywords: AD FS, ADFS, AD FS Verwaltung, AAD Connect, Connect, anmelden, AD FS A
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 02256c3e45d198fe35c0b3686bf4c1bc6f64c51a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244456"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463897"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -76,8 +76,8 @@ Es wird empfohlen, lokal und in der Cloud identische Benutzerprinzipalnamen (UPN
 ![Auswahl des AlternateID-Attributs](./media/how-to-connect-fed-management/attributeselection.png)
 
 Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Hauptschritten:
-1. **Konfigurieren der richtigen Gruppe von Ausstellungsansprüchen:** Die Ausstellungsanspruchsregeln auf der vertrauenden Seite bei Azure AD werden geändert, um das ausgewählte UserPrincipalName-Attribut als alternative ID des Benutzers zu verwenden.
-2. **Aktivieren der alternativen Anmelde-ID in der AD FS-Konfiguration:** Die AD FS-Konfiguration wird aktualisiert, damit AD FS Benutzer in den entsprechenden Gesamtstrukturen mithilfe der alternativen ID suchen kann. Diese Konfiguration wird für AD FS unter Windows Server 2012 R2 (mit KB2919355) oder höher unterstützt. Wenn die AD FS-Server unter 2012 R2 ausgeführt werden, überprüft Azure AD Connect das Vorhandensein des erforderlichen KB-Updates. Wenn das KB-Update nicht installiert ist, wird nach Abschluss der Konfiguration eine Warnung angezeigt, wie unten dargestellt:
+1. **Konfigurieren der richtigen Gruppe von Ausstellungsansprüchen**: Die Ausstellungsanspruchsregeln auf der vertrauenden Seite bei Azure AD werden geändert, um das ausgewählte UserPrincipalName-Attribut als alternative ID des Benutzers zu verwenden.
+2. **Aktivieren der alternativen Anmelde-ID in der AD FS-Konfiguration**: Die AD FS-Konfiguration wird aktualisiert, damit AD FS Benutzer in den entsprechenden Gesamtstrukturen mithilfe der alternativen ID suchen können. Diese Konfiguration wird für AD FS unter Windows Server 2012 R2 (mit KB2919355) oder höher unterstützt. Wenn die AD FS-Server unter 2012 R2 ausgeführt werden, überprüft Azure AD Connect das Vorhandensein des erforderlichen KB-Updates. Wenn das KB-Update nicht installiert ist, wird nach Abschluss der Konfiguration eine Warnung angezeigt, wie unten dargestellt:
 
     ![Warnung zu fehlendem KB-Update unter 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)
 
@@ -234,7 +234,7 @@ Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festge
 
 Dies ist eine implizite **Exist** -Überprüfung. Wenn der Wert für den Anspruch vorhanden ist, geben Sie ihn als unveränderliche ID aus. Im vorherigen Beispiel wird der Anspruch **nameidentifier** verwendet. Sie müssen diesen in den entsprechenden Anspruchstyp für die unveränderliche ID in Ihrer Umgebung ändern.
 
-**Regel 4: Ausgeben von „objectGuid“ als unveränderliche ID, wenn „ms-ds-consistencyGuid“ nicht vorhanden ist**
+**Regel 4: Ausgeben von objectGuid als unveränderliche ID, wenn ms-ds-consistencyGuid nicht vorhanden ist**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]

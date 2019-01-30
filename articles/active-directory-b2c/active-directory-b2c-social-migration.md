@@ -3,22 +3,22 @@ title: Migrieren von Benutzern mit Identitäten sozialer Netzwerke in Azure Acti
 description: Hier werden grundlegende Konzepte für die Migration von Benutzern mit Identitäten sozialer Netzwerke zu Azure AD B2C mithilfe der Graph-API erläutert.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9378face28b4d053dcd5f01b8f87126457cf339
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ca73b8bfaca481d3e0404d068a74e1a6b0e4dcb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445142"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846556"
 ---
-# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrieren von Benutzern mit Identitäten sozialer Netzwerke
-Wenn Sie Ihren Identitätsanbieter zu Azure AD B2C migrieren möchten, müssen Sie unter Umständen auch Benutzer mit Identitäten sozialer Netzwerke migrieren. In diesem Artikel wird erläutert, wie vorhandene Konten von Identitäten sozialer Netzwerke (z.B. Facebook-, LinkedIn-, Microsoft- und Google-Konten) zu Azure AD B2C migriert werden. Dieser Artikel gilt auch für Verbundidentitäten, jedoch sind diese Migrationen weniger gängig.
+# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrieren von Benutzern mit Identitäten in sozialen Netzwerken
+Wenn Sie Ihren Identitätsanbieter zu Azure AD B2C migrieren möchten, müssen Sie unter Umständen auch Benutzer mit Identitäten sozialer Netzwerke migrieren. Dieser Artikel erklärt, wie man bestehende Konten für soziale Identitäten migriert, wie z.B.: Facebook-, LinkedIn-, Microsoft- und Google-Konten zu Azure AD B2C. Dieser Artikel gilt auch für Verbundidentitäten, jedoch sind diese Migrationen weniger gängig.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Dieser Artikel ist eine Fortsetzung des Artikels „Azure Active Directory B2C: Benutzermigration“ und konzentriert sich auf die Migration von Identitäten sozialer Netzwerke. Bevor Sie beginnen, lesen Sie [Azure Active Directory B2C: Benutzermigration](active-directory-b2c-user-migration.md).
@@ -63,7 +63,7 @@ Die folgende Liste enthält die Eigenschaften, die beim Erstellen eines Benutzer
 * **userIdentities**: Ein oder mehrere UserIdentity-Datensätze, die den Kontotyp des sozialen Netzwerks und die eindeutige Benutzer-ID vom Identitätsanbieter des sozialen Netzwerks angeben.
 * [optional] **otherMails**: Die E-Mail-Adressen des Benutzers (nur bei Konten sozialer Netzwerke) 
 
-Weitere Informationen finden Sie in der [Graph-API-Referenz](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser).
+Weitere Informationen finden Sie unter [Referenz zur Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Migrieren von ausschließlich Konten sozialer Netzwerke
 Um ausschließlich Konten sozialer Netzwerke ohne die Anmeldeinformationen eines lokalen Kontos zu erstellen, senden Sie eine HTTPS-POST-Anforderung an die Graph-API. Der Anforderungstext enthält die Eigenschaften des zu erstellenden Kontobenutzers eines sozialen Netzwerks. Sie müssen mindestens die erforderlichen Eigenschaften angeben. 
@@ -236,4 +236,4 @@ Ja. Sie können mehrere Identitäten sozialer Netzwerke für ein einzelnes Azure
 > [!NOTE]
 > Wenn Sie die Datei „UsersData.json“ im Beispiel nicht mit Ihren Daten aktualisieren, können Sie sich mit den Beispielanmeldeinformationen für lokale Konten anmelden, jedoch nicht mit den Beispielen für Konten sozialer Netzwerke. Geben Sie für die Migration Ihrer Konten sozialer Netzwerke echte Daten ein.
 
-Weitere Informationen zum Verwenden der Beispiel-App finden Sie unter [Azure Active Directory B2C: Benutzermigration](active-directory-b2c-user-migration.md).
+Weitere Informationen zum Verwenden der Beispiel-App finden Sie unter [Azure Active Directory B2C: Benutzermigration](active-directory-b2c-user-migration.md)

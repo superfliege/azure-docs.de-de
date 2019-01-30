@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54242361"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404673"
 ---
 Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -60,13 +60,11 @@ Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
 - Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../articles/azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 - Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
-- Sie können Diagnoseprotokolle mit [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) analysieren.
+- Analysieren Sie sie mit [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-- Die [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/) bietet Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Sie können eine Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-oms.md) oder einer [Windows-VM](../articles/virtual-machines/windows/extensions-oms.md) installieren, mit der der OMS-Agent installiert wird und die VM in einem vorhandenen OMS-Arbeitsbereich registriert wird.
-
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) ist ein Dienst in OMS, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen.
+- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) ist ein Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. Sie können eine Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-oms.md) oder einer [Windows-VM](../articles/virtual-machines/windows/extensions-oms.md) installieren, mit der der Log Analytics-Agent installiert und die VM in einem vorhandenen Log Analytics-Arbeitsbereich registriert wird.
 
     Die empfohlene Methode zum Erfassen von Protokollen und Metriken für Windows- und Linux-VMs ist die Installation des Log Analytics-Agents. Die einfachste Möglichkeit zum Installieren des Log Analytics-Agents auf einer VM ist die [Log Analytics-VM-Erweiterung](../articles/log-analytics/log-analytics-azure-vm-extension.md). Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 859e75819f96edd527fceb143faf8357738ce80e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5aab8a5d48b7a7d17aa44b74d65ee70cb9322944
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784459"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817553"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -42,7 +42,7 @@ Der MP **Azure Media Face Detector** befindet sich derzeit in der Vorschauphase.
 Dieser Artikel enthält Details zu **Azure Media Face Detector** und zeigt die Verwendung mit dem Media Services SDK für .NET.
 
 ## <a name="face-detector-input-files"></a>Face Detector-Eingabedateien
-Videodateien. Derzeit werden folgende Formate unterstützt: MP4, MOV und WMV.
+Videodateien. Die folgenden Formate werden derzeit unterstützt: MP4, MOV und WMV.
 
 ## <a name="face-detector-output-files"></a>Face Detector-Ausgabedateien
 Die API zur Gesichtserkennung und -nachverfolgung ermöglicht Gesichtspositionserkennung und -nachverfolgung mit hoher Genauigkeit, sodass bis zu 64 menschliche Gesichter in einem Video erkannt werden können. Frontalansichten von Gesichtern bieten die besten Ergebnisse, während Seitenansichten und kleine Gesichter (höchstens 24 x 24 Pixel) möglicherweise nicht so genau erkannt werden.
@@ -152,7 +152,7 @@ Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie ei
 #### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
 | Attributname | BESCHREIBUNG |
 | --- | --- |
-| Mode |Faces: nur Gesichtserkennung.<br/>PerFaceEmotion: unabhängige Rückgabe der Emotionen für jede Gesichtserkennung.<br/>AggregateEmotion: Rückgabe der durchschnittlichen Emotionswerte für alle Gesichter im Frame. |
+| Mode |Gesichtserkennung: nur Gesichtserkennung.<br/>PerFaceEmotion: unabhängige Rückgabe der Emotionen für jede Gesichtserkennung.<br/>AggregateEmotion: Rückgabe der durchschnittlichen Emotionswerte für alle Gesichter im Frame. |
 | AggregateEmotionWindowMs |Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt die Länge des Videos, das jeweils zum Produzieren eines Aggregierergebnisses verwendet wird, in Millisekunden an. |
 | AggregateEmotionIntervalMs |Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt an, mit welcher Häufigkeit Aggregierergebnisse erzeugt werden. |
 
@@ -418,7 +418,7 @@ namespace FaceDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Face Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);

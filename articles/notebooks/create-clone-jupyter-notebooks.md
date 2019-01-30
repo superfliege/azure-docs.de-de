@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164414"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844057"
 ---
 # <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
 
@@ -30,11 +30,11 @@ Ein Projekt verwaltet außerdem Metadaten und andere Konfigurationseinstellungen
 
 Ihr Dashboard **Meine Projekte** unter `https://notebooks.azure.com/<userID>/projects` ist der Ort, an dem Sie Projekte anzeigen, verwalten und erstellen:
 
-[![](media/my-projects-dashboard.png "Dashboard „Meine Projekte“ in Azure Notebooks")](media/my-projects-dashboard.png#lightbox)
+[![Dashboard „Meine Projekte“ in Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Die für Sie auf dem Dashboard möglichen Aktionen hängen davon ab, ob Sie mit dem Konto angemeldet sind, das die Benutzer-ID besitzt:
 
-| Befehl | Verfügbar für | Beschreibung |
+| Get-Help | Verfügbar für | BESCHREIBUNG |
 | --- | --- | --- |
 | **Run** | Owner (Besitzer) | Startet den Projektserver und öffnet den Projektordner in Jupyter. (Sie werden wohl häufiger zuerst in den Projektordner navigieren und dann dort ein Notebook starten.) |
 | **Download** | Beliebiger Benutzer | Lädt eine Kopie des ausgewählten Projekts als ZIP-Datei herunter. |
@@ -65,7 +65,7 @@ Wenn Sie nicht über ein Azure Notebooks-Projekt verfügen, können Sie einen Li
 
 Wenn Sie den Befehl **+ Neues Projekt** verwenden, zeigt Azure Notebooks ein Popupfenster **Neues Projekt erstellen** an. Geben Sie in diesem Popupfenster die folgenden Informationen ein, und wählen Sie dann **Erstellen** aus:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | Projektname | Ein Anzeigename für Ihr Projekt, den Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise „NY Notebook-Projekt“. |
 | Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird. Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen und ist auf 30 Zeichen beschränkt. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, wie etwa in „mein-notebook-projekt“ (ggf. gekürzt, um die Längenbeschränkung einzuhalten). |
@@ -76,7 +76,7 @@ Wenn Sie den Befehl **+ Neues Projekt** verwenden, zeigt Azure Notebooks ein Pop
 
 Sie können problemlos ein vollständiges öffentliches GitHub-Repository als Projekt importieren, einschließlich aller Daten und *README.md*-Dateien. Verwenden Sie den Befehl **GitHub-Repository hochladen**, geben Sie die folgenden Details im Popupfenster ein, und wählen Sie dann **Importieren** aus:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | GitHub-Repository | Der Name des Quellrepositorys auf github.com. Um beispielsweise die Jupyter-Notebooks für Azure Cognitive Services unter [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) zu klonen, geben Sie „Microsoft/cognitive-services-notebooks“ ein.  |
 | Clone recursively (Rekursiv klonen) | GitHub-Repositorys können mehrere untergeordnete Repositorys enthalten. Legen Sie diese Option fest, wenn Sie das übergeordnete Repository und alle seine untergeordneten Repositorys klonen möchten. Da ein Repository über viele untergeordnete Repositorys verfügen kann, lassen Sie diese Option im Normalfall deaktiviert, es sei denn, Sie wissen, dass Sie sie brauchen. |

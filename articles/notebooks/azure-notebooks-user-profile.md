@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b1010b5376a26a4d33c026be27ce363959954ca2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078870"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854164"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks
 
 Innerhalb des leistungsstarken, auf Zusammenarbeit ausgelegten Bereichs von Azure Notebooks stellt Ihr Benutzerprofil Ihr öffentliches Bild für andere dar:
 
-[![](media/accounts/profile-page.png "Eine Azure Notebooks-Profilseite")](media/accounts/profile-page.png#lightbox)
+[![Eine Azure Notebooks-Profilseite](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Ihre Benutzer-ID ist Teil der URLs, die Sie zum Teilen von Projekten und Notebooks verwenden. In der folgenden Liste sind die verschiedenen URL-Muster beschrieben:
 
@@ -57,7 +57,7 @@ Ihr Profil setzt sich aus öffentlich sichtbaren Informationen unter der URL `ht
 
 Zum Bearbeiten Ihres Profils verwenden Sie den Befehl **Edit Profile Information** (Profilinformationen bearbeiten) auf Ihrer Profilseite. Dies sind die Abschnitte Ihres Profils:
 
-| Abschnitt | Inhalt |
+| Abschnitt | Inhalt: |
 | --- | --- |
 | Profilfoto | Ein Bild, das auf Ihrer Profilseite angezeigt wird. |
 | Azure-Kontoinformationen | Ihr Anzeigename, Ihre Benutzer-ID und Ihr öffentliches E-Mail-Konto. Das E-Mail-Konto stellt ein Mittel für andere Benutzer dar, mit Ihnen in Kontakt zu treten, und kann sich von dem [Konto](azure-notebooks-user-account.md) unterscheiden, das Sie für die Anmeldung bei Azure Notebooks selbst verwenden. |

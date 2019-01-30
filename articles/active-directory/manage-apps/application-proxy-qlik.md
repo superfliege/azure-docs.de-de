@@ -4,7 +4,7 @@ description: Aktivieren Sie den Anwendungsproxy über das Azure-Portal, und inst
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d370f9fb7fc67c9df5e08a06de38db8e97c6fb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132753"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471904"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Anwendungsproxy und Qlik Sense 
 Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll sicherstellen, dass Sie mit dem Anwendungsproxy problemlos Remotezugriff für Ihre Qlik Sense-Bereitstellung bereitstellen können.  
@@ -46,7 +46,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 1.       Klicken Sie unten auf dem Blatt auf **Hinzufügen**. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 2.       Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann. 
 3.       Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern. 
-4.       (Optional) Wählen Sie auf dem Blatt „App-Verwaltung“ die Option „Einmaliges Anmelden“ aus. Wählen Sie **Eingeschränkte Kerberos-Delegierung** im Dropdownmenü aus, und füllen Sie die erforderlichen Felder auf der Grundlage Ihrer Qlik-Konfiguration aus. Wählen Sie **Speichern**aus. 
+4.       (Optional) Wählen Sie auf dem Blatt „App-Verwaltung“ die Option „Einmaliges Anmelden“ aus. Wählen Sie **Eingeschränkte Kerberos-Delegierung** im Dropdownmenü aus, und füllen Sie die erforderlichen Felder auf der Grundlage Ihrer Qlik-Konfiguration aus. Wählen Sie **Speichern** aus. 
 
 ### <a name="application-2"></a>Anwendung 2: 
 Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Ausnahmen: 
@@ -59,7 +59,7 @@ Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Aus
 Ihre Anwendung kann jetzt getestet werden. Greifen Sie auf die externe URL zu, die Sie zum Veröffentlichen von Qlik Sense in Anwendung 1 verwendet haben, und melden Sie sich als Benutzer an, der beiden Anwendungen zugewiesen ist.  
 
 ## <a name="additional-references"></a>Zusätzliche Verweise
-Weitere Informationen zum Veröffentlichen von Qlik Sense mit dem Anwendungsproxy finden Sie in der Qlik-Community im Artikel [Azure AD mit integrierter Windows-Authentifizierung unter Verwendung einer eingeschränkten Kerberos-Delegierung mit Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+Weitere Informationen zum Veröffentlichen von Qlik Sense mit dem Anwendungsproxy finden Sie im Artikel der Qlik-Community: [Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense (Azure AD mit integrierter Windows-Authentifizierung unter Verwendung einer eingeschränkten Kerberos-Delegierung mit Qlik Sense)](https://community.qlik.com/docs/DOC-20183).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

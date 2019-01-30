@@ -3,19 +3,19 @@ title: Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthent
 description: Schützen Ihres benutzerdefinierten REST-API-Anspruchsaustauschs in Azure AD B2C unter Verwendung der HTTP-Standardauthentifizierung.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dcabcbbce78b83c0d4328e0f5b1088c172bcfedb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409302"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850677"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung
 
@@ -30,7 +30,7 @@ Weitere Informationen finden Sie unter [Standardauthentifizierung in der ASP.NET
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die Schritte im Artikel [Integrieren von Anspruchsaustauschvorgängen der REST-API in Ihre Azure AD B2C-User Journey](active-directory-b2c-custom-rest-api-netfw.md) durch.
 
-## <a name="step-1-add-authentication-support"></a>1: Hinzufügen von Authentifizierungssupport
+## <a name="step-1-add-authentication-support"></a>Schritt 1: Hinzufügen von Authentifizierungssupport
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Schritt 1.1: Hinzufügen von Anwendungseinstellungen zur Datei „web.config“ des Projekts
 1. Öffnen Sie das zuvor erstellte Visual Studio-Projekt. 
@@ -216,7 +216,7 @@ Fügen Sie der API eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Gehen
 
 ![Hinzufügen des Autorisierungstags zum Controller](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>2: Veröffentlichen in Azure
+## <a name="step-2-publish-to-azure"></a>Schritt 2: Veröffentlichen in Azure
 Um das Projekt zu veröffentlichen, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **Contoso.AADB2C.API**, und wählen Sie **Veröffentlichen** aus.
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Schritt 3: Hinzufügen von App-ID und App-Geheimnis für RESTful-Dienste in Azure AD B2C
@@ -237,7 +237,7 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 6. Geben Sie im Feld **Geheimnis** die zuvor definierte App-ID ein.
 
-7. Wählen Sie für **Schlüsselverwendung** **Signatur** aus.
+7. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 
 8. Klicken Sie auf **Erstellen**.
 
@@ -257,7 +257,7 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 6. Geben Sie im Feld **Geheimnis** das zuvor definierte App-Geheimnis ein.
 
-7. Wählen Sie für **Schlüsselverwendung** **Signatur** aus.
+7. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 
 8. Klicken Sie auf **Erstellen**.
 

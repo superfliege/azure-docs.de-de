@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026006"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820820"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
 ## <a name="introduction"></a>Einführung
-Microsoft Azure bietet mehrere globale und regionale Dienste an, mit denen Sie die Verteilung und den Lastenausgleich für Ihren Netzwerkdatenverkehr verwalten können: Traffic Manager, Azure Front Door Service, Application Gateway und Load Balancer.  In Verbindung mit den vielen Regionen und der zonenbasierten Architektur von Azure ermöglicht Ihnen die kombinierte Verwendung dieser Dienste die Erstellung stabiler, skalierbarer Hochleistungsanwendungen.
+Microsoft Azure bietet zahlreiche globale und regionale Dienste für das Verwalten der Verteilung von Netzwerkdatenverkehr und Lastenausgleich: Traffic Manager, Front Door Service, Application Gateway und Load Balancer.  In Verbindung mit den vielen Regionen und der zonenbasierten Architektur von Azure ermöglicht Ihnen die kombinierte Verwendung dieser Dienste die Erstellung stabiler, skalierbarer Hochleistungsanwendungen.
 
 ![Suite für die Anwendungsbereitstellung ][1]
  
@@ -52,15 +52,15 @@ Load Balancer ist ein integraler Bestandteil des Azure SDN-Stapels und bietet le
 ## <a name="choosing-a-global-load-balancer"></a>Auswahl eines globalen Lastenausgleichs
 Für den globalen Lastenausgleich und das globale Routing stehen Ihnen Traffic Manager und Azure Front Door Service zur Auswahl. Beachten Sie bei Ihrer Entscheidung die Ähnlichkeiten und Unterschiede zwischen den beiden Diensten.   Beide Dienste bieten:
 - **Multi-Georedundanz:** Datenverkehr wird beim Ausfall einer Region nahtlos zur nächsten passenden Region weitergeleitet. Es ist kein Eingreifen durch den Anwendungsbesitzer notwendig.
-- **Routing zur nächstgelegenen Region:** Datenverkehr wird automatisch zur nächstgelegenen Region weitergeleitet.
+- **Routing zur nächstgelegenen Region**: Datenverkehr wird automatisch zur nächstgelegenen Region weitergeleitet.
 
 </br>In der folgenden Tabelle werden die Unterschiede zwischen Traffic Manager und Azure Front Door Service beschrieben:</br>
 
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
-|**Alle Protokolle:** Da Traffic Manager auf der DNS-Ebene arbeitet, können Sie jede Art von Netzwerkdatenverkehr weiterleiten (TTP, TCP, UDP, usw.). | **HTTP-Beschleunigung:** Mit Azure Front Door Service wird Datenverkehr im Edgebereich des Microsoft-Netzwerks über einen Proxy übermittelt.  Da die Wartezeit für die SSL-Aushandlung reduziert wird und „heiße“ Verbindungen zwischen Azure Front Door Service und Ihrer Anwendung verwendet werden, führt dies zu einer Verbesserung der Wartezeit und des Durchsatzes für HTTP(S)-Anforderungen.|
-|**Lokales Routing:** Beim Routing auf einer DNS-Ebene wird Datenverkehr immer von Punkt zu Punkt übermittelt.  Für das Routing von Ihrer Filiale zu Ihrem lokalen Rechenzentrum kann ein direkter Pfad verwendet werden. Mit Traffic Manager ist dies selbst in Ihrem eigenen Netzwerk möglich. | **Unabhängige Skalierbarkeit:** Da Azure Front Door Service HTTP-Anforderungen verarbeitet, können Anforderungen an unterschiedliche URL-Pfade basierend auf Regeln und der Integrität der einzelnen Anwendungsmicroservices zu verschiedenen Back-End-/regionalen Dienstpools (Microservices) geleitet werden.|
-|**Abrechnungsformat:** Die DNS-basierte Abrechnung passt sich Ihren Benutzern an und bleibt bei Diensten mit mehr Benutzern preislich konstant, um die Kosten bei höherer Nutzung zu senken. |**Inlinesicherheit:** Azure Front Door Service ermöglicht die Verwendung von Regeln (z. B. Ratenbegrenzung und Hinzufügen von IP-Adressen zu Zugriffssteuerungslisten), mit denen Sie Ihre Back-Ends schützen können, bevor Datenverkehr Ihre Anwendung erreicht. 
+|**Alle Protokolle**: Da Traffic Manager auf der DNS-Ebene arbeitet, können Sie jede Art von Netzwerkdatenverkehr weiterleiten (TTP, TCP, UDP, usw.). | **HTTP-Beschleunigung**: Mit Azure Front Door Service wird Datenverkehr am Rand des Microsoft-Netzwerks über einen Proxy übermittelt.  Da die Wartezeit für die SSL-Aushandlung reduziert wird und „heiße“ Verbindungen zwischen Azure Front Door Service und Ihrer Anwendung verwendet werden, führt dies zu einer Verbesserung der Wartezeit und des Durchsatzes für HTTP(S)-Anforderungen.|
+|**Lokales Routing**: Beim Routing auf einer DNS-Ebene wird Datenverkehr immer von Punkt zu Punkt übermittelt.  Für das Routing von Ihrer Filiale zu Ihrem lokalen Rechenzentrum kann ein direkter Pfad verwendet werden. Mit Traffic Manager ist dies selbst in Ihrem eigenen Netzwerk möglich. | **Unabhängige Skalierbarkeit**: Da Azure Front Door Service HTTP-Anforderungen verarbeitet, können Anforderungen an unterschiedliche URL-Pfade basierend auf Regeln und der Integrität der einzelnen Anwendungsmicroservices zu verschiedenen Back-End-/regionalen Dienstpools (Microservices) geleitet werden.|
+|**Abrechnungsformat:** Die DNS-basierte Abrechnung passt sich Ihren Benutzern an und bleibt bei Diensten mit mehr Benutzern preislich konstant, um die Kosten bei höherer Nutzung zu senken. |**Inlinesicherheit**: Azure Front Door Service ermöglicht die Verwendung von Regeln (z.B. Ratenbegrenzung und Hinzufügen von IP-Adressen zu Zugriffssteuerungslisten), mit denen Sie Ihre Back-Ends schützen können, bevor Datenverkehr Ihre Anwendung erreicht. 
 
 </br>Aufgrund der Vorteile, die Azure Front Door Service in Bezug auf die Leistung, Funktionsfähigkeit und Sicherheit für HTTP-Workloads bietet, empfehlen wir Kunden die Verwendung von Azure Front Door Service für ihre HTTP-Workloads.    Traffic Manager und Azure Front Door Service können parallel verwendet werden, um den gesamten Datenverkehr für Ihre Anwendung zu verarbeiten. 
 

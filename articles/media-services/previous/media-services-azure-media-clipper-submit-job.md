@@ -9,17 +9,17 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783179"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821446"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper
 Azure Media Clipper erfordert die Implementierung einer **SubmitSubclipCallback**-Methode zur Übermittlung von Beschneidungsaufträgen. Diese Funktion dient zum Implementieren einer HTTP POST-Methode für die Clipper-Ausgabe an einen Webdienst. Dies ist der Webdienst, an den Sie den Codierungsauftrag übermitteln können. Die Ausgabe von Clipper ist entweder eine Media Encoder Standard-Codierungsvoreinstellung für gerenderte Aufträge oder die REST-API-Nutzlast für Aufrufe der Filter für dynamische Manifeste. Dieses Pass-Through-Modell ist notwendig, da Anmeldeinformationen für Media Services-Konten im Browser des Clients nicht sicher sind.
 
-Das folgende Sequenzdiagramm veranschaulicht den Workflow zwischen dem Browserclient, Ihrem Webdienst und Azure Media Services: ![Azure Media Clipper-Sequenzdiagramm](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG).
+Das folgende Sequenzdiagramm veranschaulicht den Workflow zwischen dem Browserclient, Ihrem Webdienst und Azure Media Services: ![Azure Media Clipper-Sequenzdiagramm](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
 
 Das vorangehende Diagramm enthält die folgenden vier Entitäten: Browser des Endbenutzers, Ihr Webdienst, der CDN-Endpunkt, der die Clipper-Ressourcen hostet, und Azure Media Services. Wenn der Endbenutzer zu Ihrer Webseite navigiert, erhält die Seite die Clipper JavaScript- und CSS-Ressourcen vom hostenden CDN-Endpunkt. Der Endbenutzer konfiguriert den Clipping-Auftrag oder den Aufruf zur Erstellung eines dynamischen Manifestfilters über seinen Browser. Wenn der Endbenutzer den Aufruf zur Auftrags- oder Filtererstellung sendet, überträgt der Browser die Nutzlast des Auftrags an einen Webdienst, den Sie bereitstellen müssen. Dieser Webdienst übermittelt den Clipping-Auftrag oder den Aufruf zur Erstellung von Filtern schließlich an Azure Media Services, indem er die Zugangsdaten für Ihr Media Services-Konto verwendet.
 
@@ -31,7 +31,7 @@ Das folgenden Codebeispiel zeigt eine **SubmitSubclipCallback**-Beispielmethode.
 // Parameter:
 // - subclip: object that represents the subclip (output contract).
 //
-// Returns: a Promise object that, when resolved, retuns true if the operation was accept in the back-end; otherwise, returns false.
+// Returns: a Promise object that, when resolved, returns true if the operation was accept in the back-end; otherwise, returns false.
 var onSubmitSubclip = function (subclip) {
     var promise = new Promise(function (resolve, reject) {
         // TODO: perform the back-end AJAX request to submit the subclip job.
@@ -99,7 +99,7 @@ Die Auftragsausgabe für gerenderte Beschneidung ist ein JSON-Objekt mit den fol
     "type": "job",
 
     /* Required if "type" === "job" */
-    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to sumit the subclip job.
+    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to submit the subclip job.
     The encoding profile ("Codecs" property) depends on the "singleBitrateMp4Profile" and "multiBitrateMp4Profile" option parameters
     specified when creating the widget instance. */
     /* REFERENCE: https://docs.microsoft.com/azure/media-services/media-services-advanced-encoding-with-mes */

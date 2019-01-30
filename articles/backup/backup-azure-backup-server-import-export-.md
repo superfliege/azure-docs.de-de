@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 1a0e196f4d96494aca1c19a7527ac7d81837fb5c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34606476"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818556"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.
@@ -75,11 +75,11 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
     Die Beschreibung der Eingaben lautet wie folgt:
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
-    * **Name des Azure-Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
-    * **Azure-Veröffentlichungseinstellungen:** Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
-    * **Azure-Abonnement-ID:** Azure-Abonnement-ID für das Abonnement, aus dem Sie die Datei mit den Azure-Veröffentlichungseinstellungen heruntergeladen haben 
-    * **Azure Storage-Konto:** Name des Speicherkontos im Azure-Abonnement, das der Datei mit den Azure-Veröffentlichungseinstellungen zugeordnet ist
-    * **Azure Storage-Container:** Name des Zielspeicherblobs im Azure Storage-Konto, in das die Sicherungsdaten importiert werden
+    * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
+    * **Azure-Veröffentlichungseinstellungen**: Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
+    * **Azure-Abonnement-ID**: Azure-Abonnement-ID für das Abonnement, aus dem Sie die Datei mit den Azure-Veröffentlichungseinstellungen heruntergeladen haben. 
+    * **Azure Storage-Konto**: Name des Speicherkontos im Azure-Abonnement, das der Datei mit den Azure-Veröffentlichungseinstellungen zugeordnet ist.
+    * **Azure Storage-Container**: Name des Zielspeicherblobs im Azure Storage-Konto, in das die Sicherungsdaten importiert werden.
 
      Speichern Sie den *Stagingspeicherort* und den angegebenen *Namen des Azure-Importauftrags*, da Sie diese Informationen für die Vorbereitung der Datenträger benötigen.  
      

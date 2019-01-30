@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: b1f4d278079b81b4a224dc4712426d1f078de110
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020403"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853594"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -154,6 +154,17 @@ Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsr
 | Möglicher Speicherverluste erkannt (Vorschau) | extension_memoryleakextension |
 | Mögliches Sicherheitsproblem erkannt (Vorschau) | extension_securityextensionspackage |
 | Ressourcenverwendungsproblem erkannt (Vorschau) | extension_resourceutilizationextensionspackage |
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
+
+Dieser Abschnitt gilt nur für klassische Warnungen der intelligenten Erkennung und unterstützt Sie dabei, Ihre Warnungsbenachrichtigungen zu optimieren, damit nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md und der neuen Benutzeroberfläche für Warnungen zu erfahren, lesen Sie den Artikel [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md). Aktuell unterstützen Warnungen der intelligenten Erkennung nur die klassische Warnungsbenutzeroberfläche. Die einzige Ausnahme hierbei bilden [Warnungen der intelligenten Erkennung zu Azure Cloud Services](./proactive-cloud-services.md). Um die Warnungsbenachrichtigung für Warnungen der intelligenten Erkennung zu Azure Cloud Services zu steuern, verwenden Sie [Aktionsgruppen](../platform/action-groups.md).
+
+* Wir empfehlen die Verwendung bestimmter Empfänger für intelligente Erkennung/klassische Warnungsbenachrichtigungen.
+
+* Für Warnungen der intelligenten Erkennung werden bei aktivierter Option **Massenversand/Gruppe** Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement gesendet. Tatsächlich sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen. 
+
+> [!NOTE]
+> Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

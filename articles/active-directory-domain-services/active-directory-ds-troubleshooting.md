@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Leitfaden zur Problembehandlung | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Handbuch zur Problembehandlung | Microsoft-Dokumentation'
 description: Leitfaden zur Problembehandlung für die Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8b752585fc72b7f4be8e7b9320290f8ad56f53c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156085"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844652"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
 Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
@@ -128,7 +128,7 @@ Um diesen Fehler zu beheben, aktivieren Sie diese Anwendung, und versuchen Sie d
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Benutzer können sich nicht bei der verwalteten Domäne der Azure AD Domain Services anmelden
 Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei der neu erstellten verwalteten Domäne anmelden kann, führen Sie die folgenden Problembehandlungsschritte aus:
 
-* **Anmeldung unter Verwendung des UPN-Formats:** Versuchen Sie, sich unter Verwendung des UPN-Formats (z.B. „joeuser@contoso.com“) statt mit dem SAMAccountName-Format (CONTOSO\joeuser) anzumelden. Der SAMAccountName wird möglicherweise automatisch für Benutzer generiert, deren UPN-Präfix übermäßig lang ist oder deren Präfix mit dem eines anderen Benutzers in der verwalteten Domäne übereinstimmt. Das UPN-Format ist innerhalb eines Azure AD-Mandanten garantiert eindeutig.
+* **Mit UPN-Format anmelden:** Versuchen Sie, sich unter Verwendung des UPN-Formats (z.B. „joeuser@contoso.com“) statt mit dem SAMAccountName-Format („CONTOSO\joeuser“) anzumelden. Der SAMAccountName wird möglicherweise automatisch für Benutzer generiert, deren UPN-Präfix übermäßig lang ist oder deren Präfix mit dem eines anderen Benutzers in der verwalteten Domäne übereinstimmt. Das UPN-Format ist innerhalb eines Azure AD-Mandanten garantiert eindeutig.
 
 > [!NOTE]
 > Es wird empfohlen, das UPN-Format zu verwenden, um sich bei der verwalteten Azure AD Domain Services-Domäne anzumelden.
@@ -136,8 +136,8 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
 >
 
 * Stellen Sie sicher, dass Sie die [Aktivierung der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md) in Übereinstimmung mit den Schritten durchgeführt haben, die im Leitfaden zu den ersten Schritten angegeben sind.
-* **Externe Konten:** Stellen Sie sicher, dass das betroffene Benutzerkonto kein externes Konto im Azure AD-Mandanten ist. Beispiele für externe Konten sind Microsoft-Konten (z.B. „joe@live.com“) oder Benutzerkonten aus einem externen Azure AD-Verzeichnis. Da die Azure AD Domain Services nicht über Anmeldeinformationen für diese Benutzerkonten verfügen, können sich diese Benutzer nicht an der verwalteten Domäne anmelden.
-* **Synchronisierte Konten** : Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, prüfen Sie Folgendes:
+* **Externe Konten:** Vergewissern Sie sich, dass das betroffene Benutzerkonto kein externes Konto im Azure AD-Mandanten ist. Beispiele für externe Konten sind Microsoft-Konten (z.B. „joe@live.com“) oder Benutzerkonten aus einem externen Azure AD-Verzeichnis. Da die Azure AD Domain Services nicht über Anmeldeinformationen für diese Benutzerkonten verfügen, können sich diese Benutzer nicht an der verwalteten Domäne anmelden.
+* **Synchronisierte Konten:** Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, prüfen Sie Folgendes:
 
   * Sie haben die [neueste empfohlene Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
   * Sie haben Azure AD Connect so konfiguriert, dass [eine vollständige Synchronisierung ausgeführt wird](active-directory-ds-getting-started-password-sync.md).
@@ -146,7 +146,7 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
 
     1. net stop 'Microsoft Azure AD Sync'
     2. net start 'Microsoft Azure AD Sync'
-* **Nur-Cloudkonten**: Wenn das betroffene Benutzerkonto nur für die Cloud gilt, müssen Sie sicherstellen, dass der Benutzer sein Kennwort geändert hat, nachdem Sie die Azure AD Domain Services aktiviert haben. Dieser Schritt führt dazu, dass die Anmeldeinformationshashes für die Azure AD Domain Services generiert werden.
+* **Reine Cloudkonten**: Falls es sich bei dem betroffenen Benutzerkonto um ein reines Cloudbenutzerkonto handelt, vergewissern Sie sich, dass der Benutzer sein Kennwort geändert hat, nachdem Sie Azure AD Domain Services aktiviert haben. Dieser Schritt führt dazu, dass die Anmeldeinformationshashes für die Azure AD Domain Services generiert werden.
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Es gibt mindestens eine Warnung zu Ihrer verwalteten Domäne
 

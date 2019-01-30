@@ -1,10 +1,10 @@
 ---
-title: 'Vorschau der Azure Active Directory Domain Services: Features | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Features | Microsoft-Dokumentation'
 description: Features der Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8d1c3eb3-1022-4add-a919-c98cc6584af1
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: cd4fdb1e59f5b85fdfd8eb7ca17b77d02dcdac05
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 82bca4f150adfb940609dd1642e74e7b42340c22
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157036"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849038"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Features
@@ -37,8 +37,8 @@ Die folgenden Features sind in Domänen verfügbar, die in Azure AD Domain Servi
 * **Sicheres LDAP (LDAPS):** Sie können den Zugriff auf das Verzeichnis über sicheres LDAP (LDAPS) aktivieren. Sicherer LDAP-Zugriff ist innerhalb des virtuellen Netzwerks standardmäßig verfügbar. Allerdings können Sie optional auch sicheren LDAP-Zugriff über das Internet aktivieren.
 * **Gruppenrichtlinie:** Sie können ein einzelnes integriertes GPO sowohl für die Benutzer- als auch für die Computercontainer verwenden, um Compliance mit den erforderlichen Sicherheitsrichtlinien für Benutzerkonten und in die Domäne eingebundene Computer durchzusetzen. Sie können auch eigene benutzerdefinierte Gruppenrichtlinienobjekte erstellen und benutzerdefinierten Organisationseinheiten zuweisen, um die [Gruppenrichtlinie zu verwalten](active-directory-ds-admin-guide-administer-group-policy.md).
 * **DNS verwalten:** Mitglieder der Gruppe der AAD-DC-Administratoren können DNS für Ihre verwaltete Domäne mit vertrauten DNS-Verwaltungstools wie dem MMC-Snap-In verwalten.
-* **Benutzerdefinierte Organisationseinheiten (OUs) erstellen:** Mitglieder der Gruppe der AAD-DC-Administratoren können benutzerdefinierte Organisationseinheiten in der verwalteten Domäne erstellen. Diesen Benutzern werden vollständige Administratorrechte für benutzerdefinierte Organisationseinheiten erteilt, sodass sie Dienstkonten, Computer, Gruppen usw. in diesen benutzerdefinierten Organisationseinheiten hinzufügen/entfernen können.
-* **Verfügbar in vielen Azure-Regionen auf der ganzen Welt:** Informationen zu den Azure-Regionen, in denen die Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
+* **Benutzerdefinierte Organisationseinheiten (OUs) erstellen:** Mitglieder der Gruppe der AAD DC-Administratoren können benutzerdefinierte OEs in der verwalteten Domäne erstellen. Diesen Benutzern werden vollständige Administratorrechte für benutzerdefinierte Organisationseinheiten erteilt, sodass sie Dienstkonten, Computer, Gruppen usw. in diesen benutzerdefinierten Organisationseinheiten hinzufügen/entfernen können.
+* **Verfügbar in vielen globalen Azure-Regionen:** Informationen zu den Azure-Regionen, in denen die Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
 * **Hochverfügbarkeit:** Azure AD Domain Services bieten Hochverfügbarkeit für Ihre Domäne. Durch dieses Feature wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
-* **Schutz durch Sperrung von AD-Konten:** Benutzerkonten werden für 30 Minuten gesperrt, wenn innerhalb von zwei Minuten fünf ungültige Kennwörter verwendet werden. Nach 30 Minuten werden die Konten automatisch wieder entsperrt.
+* **Schutz vor AD-Kontosperrung:** Benutzerkonten werden für 30 Minuten gesperrt, wenn innerhalb von zwei Minuten fünf ungültige Kennwörter verwendet werden. Nach 30 Minuten werden die Konten automatisch wieder entsperrt.
 * **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, um Domänen zu verwalten.

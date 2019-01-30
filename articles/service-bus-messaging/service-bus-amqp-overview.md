@@ -3,23 +3,23 @@ title: Übersicht über AMQP 1.0 in Azure Service Bus | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Verwendung von AMQP (Advanced Message Queuing Protocol) 1.0 in Azure.
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 0e8d19cc-de36-478e-84ae-e089bbc2d515
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: b43cdfa0b5f9e5bf6a94f4f59034e07f59ddb163
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 70a0463094f98612169e78e4bcdd4eac9c8ebf24
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393331"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844703"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Unterstützung für AMQP 1.0 in Service Bus
 Sowohl der Azure Service Bus-Clouddienst als auch der lokale [Service Bus für Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) unterstützen das Advanced Message Queueing Protocol (AMQP) 1.0. AMQP gibt Ihnen die Möglichkeit, plattformübergreifende Hybridanwendungen mit einem offenen Standard zu erstellen. Sie können Anwendungen erstellen, deren Komponenten unter Verwendung unterschiedlicher Sprachen und Frameworks erstellt wurden und unter unterschiedlichen Betriebssystemen ausgeführt werden. Alle diese Komponenten können über Service Bus eine Verbindung herstellen und strukturierte Geschäftsnachrichten effizient und sicher nahtlos austauschen.
@@ -36,10 +36,10 @@ All diese Probleme waren der Grund für die Entwicklung von AMQP (Advanced Messa
 ## <a name="amqp-10-technical-features"></a>Technische Merkmale von AMQP 1.0
 AMQP 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können. Das Protokoll hat einen eindeutigen Zweck: die Mechanismen der sicheren, zuverlässigen und effizienten Nachrichtenübertragung zwischen zwei Parteien zu definieren. Die Nachrichten selbst werden mithilfe einer portierbaren Datendarstellung codiert, die den Austausch strukturierter Geschäftsnachrichten zwischen heterogenen Sendern und Empfängern bei voller Vertraulichkeit ermöglicht. Die folgende Zusammenfassung listet die wichtigsten Merkmale auf:
 
-* **Effizient:** AMQP 1.0 ist ein verbindungsorientiertes Protokoll, das eine binäre Codierung für die Protokollanweisungen und die darüber übertragenen Geschäftsnachrichten nutzt. Es beinhaltetet ausgereifte Schemata zur Flusssteuerung, um die Auslastung von Netzwerk und angeschlossenen Komponenten zu maximieren. Vor diesem Hintergrund verfolgt das Protokoll das Ziel, ein Gleichgewicht zwischen Effizienz, Flexibilität und Interoperabilität zu gewährleisten.
-* **Zuverlässig:** Mit dem AMQP 1.0-Protokoll können Nachrichten mit Verlässlichkeitsgarantien unterschiedlicher Niveaus gesendet werden: von „Fire-and-Forget“ bis hin zu zuverlässiger, genau einmal bestätigter Lieferung.
-* **Flexibel:** AMQP 1.0 ist ein flexibles Protokoll, das zur Unterstützung unterschiedlicher Topologien genutzt werden kann. Ein und dasselbe Protokoll kann für die Kommunikation von Client zu Client, von Client zu Broker und von Broker zu Broker dienen.
-* **Unabhängig vom Brokermodell:** Die AMQP 1.0-Spezifikation stellt keine Anforderungen an das von einem Broker verwendete Messagingmodell. Vorhandene Messagingbroker können also ganz einfach um die Unterstützung von AMQP 1.0 erweitert werden.
+* **Effizient**: AMQP 1.0 ist ein verbindungsorientiertes Protokoll, das eine binäre Codierung für die Protokollanweisungen und die darüber übertragenen Geschäftsnachrichten nutzt. Es beinhaltetet ausgereifte Schemata zur Flusssteuerung, um die Auslastung von Netzwerk und angeschlossenen Komponenten zu maximieren. Vor diesem Hintergrund verfolgt das Protokoll das Ziel, ein Gleichgewicht zwischen Effizienz, Flexibilität und Interoperabilität zu gewährleisten.
+* **Zuverlässig**: Mit dem AMQP 1.0-Protokoll können Nachrichten mit Verlässlichkeitsgarantien unterschiedlicher Niveaus gesendet werden: von „Fire-and-Forget“ bis hin zu zuverlässiger, genau einmal bestätigter Lieferung.
+* **Flexibel**: AMQP 1.0 ist ein flexibles Protokoll, das zur Unterstützung unterschiedlicher Topologien genutzt werden kann. Ein und dasselbe Protokoll kann für die Kommunikation von Client zu Client, von Client zu Broker und von Broker zu Broker dienen.
+* **Unabhängig vom Brokermodell**: Die AMQP 1.0-Spezifikation stellt keine Anforderungen an das von einem Broker verwendete Messagingmodell. Vorhandene Messagingbroker können also ganz einfach um die Unterstützung von AMQP 1.0 erweitert werden.
 
 ## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>AMQP 1.0 ist ein Standard (im wahrsten Sinne des Wortes)
 AMQP 1.0 ist ein internationaler Standard, der von ISO und IEC gemäß ISO/IEC 19464:2014 genehmigt wurde.
@@ -48,8 +48,8 @@ Die Entwicklung von AMQP 1.0 wird seit 2008 von einer Kerngruppe aus über 20 Un
 
 Im Oktober 2011 ging die Entwicklungsarbeit an einen technischen Ausschuss der Organization for the Advancement of Structured Information Standards (OASIS) über; der OASIS AMQP 1.0-Standard wurde im Oktober 2012 veröffentlicht. Während der Entwicklung des Standards waren die folgenden Unternehmen im technischen Ausschuss vertreten:
 
-* **Technologieanbieter:** Axway Software, Huawei Technologies, IIT Software, INETCO Systems, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, Progress Software, Red Hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
-* **Abnehmerfirmen:** Bank of America, Credit Suisse, Deutsche Börse, Goldman Sachs, JPMorgan Chase.
+* **Technologieanbieter**: Axway Software, Huawei Technologies, IIT Software, INETCO Systems, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, Progress Software, Red Hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
+* **Abnehmerfirmen**: Bank of America, Credit Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
 Zu den am häufigsten genannten Vorteilen offener Standards gehören:
 
@@ -79,7 +79,7 @@ Aktuell sind die folgenden Clientbibliotheken bekannt, die mit Service Bus arbei
 | Python |Apache Qpid Proton-Python |
 | C# |AMQP .Net LiteAMQP |
 
-**Abbildung 2: Tabelle der AMQP 1.0-Clientbibliotheken**
+**Abbildung 2: Tabelle der AMQP 1.0 Clientbibliotheken**
 
 ## <a name="summary"></a>Zusammenfassung
 * AMQP 1.0 ist ein offenes, zuverlässiges Messagingprotokoll, mit dem Sie plattformübergreifende Hybridanwendungen erstellen können. AMQP 1.0 ist ein OASIS-Standard.

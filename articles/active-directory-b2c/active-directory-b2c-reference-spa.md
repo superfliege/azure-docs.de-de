@@ -3,21 +3,21 @@ title: Einseitige Apps mit implizitem Fluss in Azure Active Directory B2C | Micr
 description: In diesem Artikel wird erläutert, wie einseitige Apps direkt mithilfe des impliziten OAuth 2.0-Flusses mit Azure Active Directory B2C erstellt werden.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9e72eafc49167848996328774f7d18198667aa3d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3df6795eb470f123be294f942560c9fb6d817d8d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845245"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856144"
 ---
-# <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Anmeldung über einseitige Apps mithilfe des impliziten OAuth 2.0-Flusses
+# <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Anmeldung über einseitige Apps mit dem impliziten OAuth 2.0-Fluss
 
 Viele moderne Apps besitzen ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Häufig wird die App mithilfe eines Frameworks wie AngularJS, Ember.js oder Durandal geschrieben. Bei einseitigen Apps und anderen JavaScript-Apps, die hauptsächlich in einem Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige zusätzliche Herausforderungen:
 

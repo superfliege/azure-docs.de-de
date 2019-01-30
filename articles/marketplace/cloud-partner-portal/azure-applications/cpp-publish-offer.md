@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329989"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828093"
 ---
 # <a name="publish-azure-application-offer"></a>Veröffentlichen eines Azure-Anwendungsangebots
 
@@ -36,7 +36,7 @@ In der folgenden Tabelle sind die einzelnen Veröffentlichungsschritte sowie der
 |  **Veröffentlichungsschritt**           | **Time**    | **Beschreibung**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | Überprüfen der Voraussetzungen         | < 15 Minuten    | Die Angebotsinformationen und -einstellungen werden überprüft.                        |
-| Überprüfen der beeinflussten Umsatzeinstellungen | < 15 Minuten  |      |
+| Überprüfen der beeinflussten Umsatzeinstellungen | < 15 Minuten  | Die Zuordnung der Azure-Ressourcennutzung wird für das Angebot überprüft.             |
 | Zertifizierung                  | < 1 Tag     | Das Angebot wird vom Azure-Zertifizierungsteam analysiert. Das Angebot wird auf Viren, Schadsoftware, Sicherheitskonformität und Sicherheitsprobleme untersucht. Das Angebot wird überprüft, um festzustellen, ob es die Eignungskriterien erfüllt. Weitere Informationen finden Sie unter [Voraussetzungen](./cpp-prerequisites.md). Sollte ein Problem gefunden werden, erhalten Sie entsprechendes Feedback. |
 | Überprüfung der Testversion          | < 2 Stunden   | (Optional) Wenn ein Testlaufwerk vorhanden ist, überprüft Microsoft, ob dieses bereitgestellt und repliziert werden kann.  |
 | Paketerstellung und Registrierung von generierten Leads | < 1 Stunde  | Die technischen Ressourcen des Angebots werden für die Verwendung durch die Kunden gepackt, und die Leadsysteme werden konfiguriert und bereitgestellt. |

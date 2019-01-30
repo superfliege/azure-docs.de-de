@@ -8,15 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0f8d6290e779872d73b0cf7a9d0d820d2ea5e007
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741588"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848154"
 ---
 # <a name="os-patching-for-hdinsight"></a>Patchen des Betriebssystems für HDInsight 
-Als verwalteter Apache Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die zugrundeliegenden virtuellen Computer, die von HDInsight-Clustern verwendet werden. Mit Wirkung ab dem 1. August 2016 haben wir die Richtlinie für das Patchen von Gastbetriebssystemen für Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters. Patches werden wirksam, sobald die virtuellen Computer neu gestartet werden.
+
+> [!IMPORTANT]
+> Ubuntu-Images stehen für die Erstellung neuer HDInsight-Cluster innerhalb von 3 Monaten nach der Veröffentlichung zur Verfügung. Seit Januar 2019 werden laufende Cluster **nicht** automatisch gepatcht. Kunden müssen Skriptaktionen oder andere Mechanismen verwenden, um einen laufenden Cluster zu patchen.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster
 Die virtuellen Computer in einem HDInsight-Cluster müssen gelegentlich neu gestartet werden, damit wichtige Sicherheitspatches installiert werden können. Seit dem 1. August 2016 werden neue Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) gemäß dem folgenden Zeitplan neu gestartet:

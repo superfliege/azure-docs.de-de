@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a6e217194508feae3b227b5ef65b02d0305a22a7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997470"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852897"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
 
@@ -44,7 +44,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
 
 1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an.
 
-2. Erstellen Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse für den virtuellen Computer. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+2. Erstellen Sie mit dem Befehl [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse für den virtuellen Computer. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
 
     > [!NOTE]
     > Möglicherweise benötigen Sie andere Werte für Ihre Argumente in diesem und den nachfolgenden Schritten. Dies ist von Ihrer Umgebung abhängig.
@@ -72,7 +72,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     ```
 
    * `--resource-group`: Name der Ressourcengruppe, in der die öffentliche IP-Adresse erstellt werden soll.
-   * `--name`: Name der öffentlichen IP-Adresse.
+   * `--name`: Der Name der öffentlichen IP-Adresse.
    * `--location`: Azure-Region, in der die öffentliche IP-Adresse erstellt werden soll.
 
 3. Führen Sie den Befehl [az network nic create](/cli/azure/network/nic#az_network_nic_create) aus, um eine NIC mit statischer privater IP-Adresse zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. 
@@ -124,8 +124,8 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     Parameter:
 
     * `--private-ip-address`: Statische private IP-Adresse für die Netzwerkkarte.
-    * `--vnet-name`: Der Name des VNet, in dem die Netzwerkkarte erstellt werden soll.
-    * `--subnet`: Der Name des Subnetzes, in dem die Netzwerkkarte erstellt werden soll.
+    * `--vnet-name`: Der Name des VNET, in dem die NIC erstellt werden soll.
+    * `--subnet`: Der Name des Subnetzes, in dem die NIC erstellt werden soll.
 
 4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic#az_vm_nic_create) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
@@ -157,7 +157,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
    
    Andere Parameter als die grundlegenden Parameter von [az vm create](/cli/azure/vm#az_vm_create).
 
-   * `--nics`: Name der NIC, mit der der virtuelle Computer verknüpft wird.
+   * `--nics`: Der Name der NIC, mit der die VM verknüpft wird.
    
 Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist (z.B. beim [Zuweisen mehrerer IP-Adressen zu einer Windows-VM](virtual-network-multiple-ip-addresses-cli.md)). Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](virtual-network-network-interface-addresses.md#private).
 

@@ -2,18 +2,19 @@
 title: Erstellen von Azure Service Bus-Warteschlangen und -Themen | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Service Bus-Warteschlangen und -Themen mit mehreren Nachrichtenbrokern partitioniert werden.
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 049b6969b33290edf6ef8a2ea437808d914057a9
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.author: aschhab
+ms.openlocfilehash: 48b7d7450503b27b5515e655be3f048f57c2238d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285066"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856586"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
@@ -72,7 +73,7 @@ Je nach Szenario werden verschiedene Nachrichteneigenschaften als Partitionsschl
 
 **PartitionKey**: Wenn für eine Nachricht die [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)-Eigenschaft festgelegt ist, aber nicht die [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)-Eigenschaft, verwendet Service Bus den [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)-Eigenschaftswert als Partitionsschlüssel. Wenn für die Nachricht sowohl die [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)- als auch die [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)-Eigenschaft festgelegt ist, müssen beide Eigenschaften identisch sein. Falls die [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)-Eigenschaft auf einen anderen Wert als die [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)-Eigenschaft festgelegt ist, gibt Service Bus eine Ausnahme für einen ungültigen Vorgang zurück. Die [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)-Eigenschaft sollte verwendet werden, wenn ein Absender nicht sitzungsorientierte Transaktionsnachrichten sendet. Mit dem Partitionsschlüssel wird sichergestellt, dass alle Nachrichten, die innerhalb einer Transaktion gesendet werden, von demselben Nachrichtenbroker verarbeitet werden.
 
-**MessageId**: Wenn für die Warteschlange bzw. das Thema die [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection)-Eigenschaft auf **TRUE** festgelegt ist und die Eigenschaften [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) oder die [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) nicht festgelegt sind, dient der [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)-Eigenschaftswert als Partitionsschlüssel. (Die Microsoft .NET- und AMQP-Bibliotheken weisen automatisch eine Nachrichten-ID zu, wenn dies von der sendenden Anwendung nicht übernommen wird.) In diesem Fall werden alle Kopien einer Nachricht von demselben Nachrichtenbroker verarbeitet. Mit dieser ID kann Service Bus doppelte Nachrichten erkennen und verwerfen. Wenn die [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection)-Eigenschaft nicht auf **TRUE** festgelegt ist, sieht Service Bus die [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)-Eigenschaft nicht als Partitionsschlüssel an.
+**MessageId**: Wenn für die Warteschlange bzw. das Thema die [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection)-Eigenschaft auf **TRUE** festgelegt ist und die Eigenschaften [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) oder [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) nicht festgelegt sind, dient der [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)-Eigenschaftswert als Partitionsschlüssel. (Die Microsoft .NET- und AMQP-Bibliotheken weisen automatisch eine Nachrichten-ID zu, wenn dies von der sendenden Anwendung nicht übernommen wird.) In diesem Fall werden alle Kopien einer Nachricht von demselben Nachrichtenbroker verarbeitet. Mit dieser ID kann Service Bus doppelte Nachrichten erkennen und verwerfen. Wenn die [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection)-Eigenschaft nicht auf **TRUE** festgelegt ist, sieht Service Bus die [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)-Eigenschaft nicht als Partitionsschlüssel an.
 
 ### <a name="not-using-a-partition-key"></a>Keine Verwendung eines Partitionsschlüssels
 
@@ -86,7 +87,7 @@ Ein Partitionsschlüssel „heftet“ eine Nachricht an ein bestimmtes Fragment 
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Weiterführende Themen: Verwenden von Transaktionen mit partitionierten Entitäten
 
-Nachrichten, die als Teil einer Transaktion gesendet werden, müssen einen Partitionsschlüssel angeben. Beim Schlüssel kann es sich um eine der folgenden Eigenschaften handeln: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) oder [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid). Für alle Nachrichten, die als Teil derselben Transaktion gesendet werden, muss derselbe Partitionsschlüssel angegeben werden. Wenn Sie versuchen, eine Nachricht innerhalb einer Transaktion ohne Partitionsschlüssel zu senden, wird von Service Bus eine Ausnahme für einen ungültigen Vorgang zurückgegeben. Wenn Sie versuchen, mehrere Nachrichten mit verschiedenen Partitionsschlüsseln innerhalb derselben Transaktion zu senden, gibt Service Bus eine Ausnahme für einen ungültigen Vorgang zurück. Beispiel: 
+Nachrichten, die als Teil einer Transaktion gesendet werden, müssen einen Partitionsschlüssel angeben. Folgende Eigenschaften können als Schlüssel verwendet werden: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) oder [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid). Für alle Nachrichten, die als Teil derselben Transaktion gesendet werden, muss derselbe Partitionsschlüssel angegeben werden. Wenn Sie versuchen, eine Nachricht innerhalb einer Transaktion ohne Partitionsschlüssel zu senden, wird von Service Bus eine Ausnahme für einen ungültigen Vorgang zurückgegeben. Wenn Sie versuchen, mehrere Nachrichten mit verschiedenen Partitionsschlüsseln innerhalb derselben Transaktion zu senden, gibt Service Bus eine Ausnahme für einen ungültigen Vorgang zurück. Beispiel: 
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -134,7 +135,7 @@ Service Bus unterstützt die automatische Nachrichtenweiterleitung von und zwisc
 
 * Das Hinzufügen und Entfernen von Regeln wird jetzt für partitionierte Entitäten unterstützt. Diese Vorgänge werden nicht unter Transaktionen unterstützt, was einen Unterschied zu nicht partitionierten Entitäten darstellt. 
 * Für AMQP wird jetzt das Senden und Empfangen von Nachrichten an bzw. von einer partitionierten Entität unterstützt.
-* AMQP wird jetzt für die folgenden Vorgänge unterstützt: [Batchsendevorgang](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch), [Batchempfangsvorgang](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch), [Nach Sequenznummer empfangen](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive), [Einsehen](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek), [Sperre erneuern](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock), [Nachricht planen](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync), [Geplante Nachricht abbrechen](/dotnet/api/microsoft.azure.servicebus.queueclient.cancelscheduledmessageasync), [Regel hinzufügen](/dotnet/api/microsoft.azure.servicebus.ruledescription), [Regel entfernen](/dotnet/api/microsoft.azure.servicebus.ruledescription), [Sitzungssperre erneuern](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock), [Sitzungsstatus festlegen](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate), [Sitzungsstatus](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate) abrufen und [Sitzungen aufzählen](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions).
+* AMQP wird jetzt für die folgenden Vorgänge unterstützt: [Batchsendevorgang](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch), [Batchempfangsvorgang](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch), [Nach Sequenznummer empfangen](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive), [Einsehen](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek), [Sperre erneuern](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock), [Nachricht planen](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync), [Geplante Nachricht abbrechen](/dotnet/api/microsoft.azure.servicebus.queueclient.cancelscheduledmessageasync), [Regel hinzufügen](/dotnet/api/microsoft.azure.servicebus.ruledescription), [Regel entfernen](/dotnet/api/microsoft.azure.servicebus.ruledescription), [Sitzungssperre erneuern](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock), [Sitzungsstatus festlegen](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate), [Sitzungsstatus abrufen](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate) und [Sitzungen aufzählen](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions).
 
 ## <a name="partitioned-entities-limitations"></a>Einschränkungen partitionierter Entitäten
 

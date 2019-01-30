@@ -3,24 +3,24 @@ title: Definieren eines technischen Validierungsprofils in einer benutzerdefinie
 description: Erfahren Sie, wie Sie ein technisches Azure Active Directory-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ab2361eae7dac58adb2739437d0616bcd05f870f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568675"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850381"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
- 
+
 Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure Active Directory](active-directory-technical-profile.md) oder einer [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder eine Fehlermeldung „HTTP 409“ (Konfliktantwort-Statuscode) mit den folgenden Daten zurück:
 
 ```JSON
@@ -33,12 +33,11 @@ Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus
 
 Ansprüche, die von einem technischen Validierungsprofil zurückgegeben werden, werden wieder dem Anspruchsbehälter hinzugefügt. Sie können solche Ansprüche in den nächsten technischen Validierungsprofilen verwenden.
 
-Technische Validierungsprofile werden in der Reihenfolge ausgeführt, in der sie im **ValidationTechnicalProfiles**-Element angezeigt werden. Sie können in einem technischen Validierungsprofil konfigurieren, ob die Ausführung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst oder erfolgreich ist.  
+Technische Validierungsprofile werden in der Reihenfolge ausgeführt, in der sie im **ValidationTechnicalProfiles**-Element angezeigt werden. Sie können in einem technischen Validierungsprofil konfigurieren, ob die Ausführung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst oder erfolgreich ist.
 
 Technische Validierungsprofile können bedingt ausgeführt werden, basierend auf Vorbedingungen, die im **ValidationTechnicalProfiles**-Element definiert sind. Beispielsweise können Sie überprüfen, ob ein bestimmter Anspruch vorhanden ist, oder ob ein Anspruch gleich oder ungleich dem angegebenen Wert ist.
 
 Ein selbstbestätigtes technisches Profil kann definieren, dass ein technisches Validierungsprofil verwendet wird, um einige oder alle seiner Ausgabeansprüche zu validieren. Alle Eingabeansprüche des technischen Profils, auf das verwiesen wird, müssen in den Ausgabeansprüchen des verweisenden technischen Validierungsprofils enthalten sein.
-
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -53,7 +52,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | JA | Ein Bezeichner eines technischen Profils, das bereits in der Richtlinie oder der übergeordneten Richtlinie definiert ist. |
-|ContinueOnError|Nein | Zeigt an, ob die Validierung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst. Mögliche Werte: `true` oder `false` (Standard, die Verarbeitung weiterer Validierungsprofile wird beendet und ein Fehler zurückgegeben). 
+|ContinueOnError|Nein | Zeigt an, ob die Validierung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst. Mögliche Werte: `true` oder `false` (Standard, die Verarbeitung weiterer Validierungsprofile wird beendet und ein Fehler zurückgegeben). |
 |ContinueOnSuccess | Nein  | Zeigt an, ob die Validierung jeglicher nachfolgender Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil erfolgreich ist. Mögliche Werte: `true` oder `false`. Der Standardwert ist `true`, was bedeutet, dass die Verarbeitung weiterer Validierungsprofile fortgesetzt wird. |
 
 Das **ValidationTechnicalProfile**-Element enthält das folgende Element:
@@ -67,67 +66,51 @@ Das **Precondition**-Element enthält das folgende Attribut:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Typ | JA | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
-| ExecuteActionsIf | JA | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. | 
+| ExecuteActionsIf | JA | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |
 
 Das **Precondition**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Wert | 1:n | Die Daten, die von der Überprüfung verwendet werden. Wenn der Typ dieser Überprüfung `ClaimsExist` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Wenn der Typ der Überprüfung `ClaimEquals` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Während ein anderes Wertelement den zu überprüfenden Wert enthält.|
-| Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Vorbedingung innerhalb eines Orchestrierungsschritts „true“ ist. Der Wert der **Aktion** wird auf `SkipThisValidationTechnicalProfile` festgelegt. Gibt an, dass das zugeordnete technische Validierungsprofil nicht ausgeführt werden soll. | 
+| Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Vorbedingung innerhalb eines Orchestrierungsschritts „true“ ist. Der Wert der **Aktion** wird auf `SkipThisValidationTechnicalProfile` festgelegt. Gibt an, dass das zugeordnete technische Validierungsprofil nicht ausgeführt werden soll. |
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel werden diese technischen Validierungsprofile verwendet: 
+Im folgenden Beispiel werden diese technischen Validierungsprofile verwendet:
 
-1. Das erste technische Validierungsprofil überprüft Benutzeranmeldeinformationen und wird nicht fortgesetzt, wenn ein Fehler auftritt, z. B. ein ungültiger Benutzername oder ein ungültiges Kennwort. 
+1. Das erste technische Validierungsprofil überprüft Benutzeranmeldeinformationen und wird nicht fortgesetzt, wenn ein Fehler auftritt, z. B. ein ungültiger Benutzername oder ein ungültiges Kennwort.
 2. Das nächste technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden ist oder wenn der Wert von „usertype“ `Partner` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Kundendatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z.B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
 3. Das letzte technische Validierungsprofil wird nicht ausgeführt, wenn der „userType“-Anspruch nicht vorhanden war oder wenn der Wert von „usertype“ `Customer` ist. Das technische Validierungsprofil versucht, das Benutzerprofil aus der internen Partnerdatenbank zu lesen, und wird fortgesetzt, wenn ein Fehler auftritt, z.B. ein nicht verfügbarer REST-API-Dienst oder ein beliebiger interner Fehler.
 
 ```XML
 <ValidationTechnicalProfiles>
-  <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false"  />
-    
+  <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >
     <Preconditions>
-       <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
-          <Value>userType</Value>
-          <Action>SkipThisValidationTechnicalProfile</Action>
-       </Precondition>
-       <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-         <Value>userType</Value>
-         <Value>Partner</Value>
-         <Action>SkipThisValidationTechnicalProfile</Action>
-       </Precondition>
-    </Preconditions>          
+      <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+        <Value>userType</Value>
+        <Action>SkipThisValidationTechnicalProfile</Action>
+      </Precondition>
+      <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+        <Value>userType</Value>
+        <Value>Partner</Value>
+        <Action>SkipThisValidationTechnicalProfile</Action>
+      </Precondition>
+    </Preconditions>
   </ValidationTechnicalProfile>
-
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromPartnersDatabase" ContinueOnError="true" >
     <Preconditions>
-       <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
-          <Value>userType</Value>
-          <Action>SkipThisValidationTechnicalProfile</Action>
-       </Precondition>
-       <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-         <Value>userType</Value>
-         <Value>Customer</Value>
-         <Action>SkipThisValidationTechnicalProfile</Action>
-       </Precondition>
-    </Preconditions>          
+      <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+        <Value>userType</Value>
+        <Action>SkipThisValidationTechnicalProfile</Action>
+      </Precondition>
+      <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+        <Value>userType</Value>
+        <Value>Customer</Value>
+        <Action>SkipThisValidationTechnicalProfile</Action>
+      </Precondition>
+    </Preconditions>
   </ValidationTechnicalProfile>
 </ValidationTechnicalProfiles>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-

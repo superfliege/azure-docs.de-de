@@ -1,10 +1,10 @@
 ---
-title: Erste Schritte mit Azure Active Directory Domain Services | Microsoft-Dokumentation
+title: 'Azure Active Directory Domain Services: Erste Schritte | Microsoft-Dokumentation'
 description: Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: a795691959c744f5358966d62449882e514eb8eb
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 07dbc96e94c736b4e4c80dd212f0674bfeffce45
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155081"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850415"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 Dieser Artikel zeigt, wie Azure Active Directory Domain Services (Azure AD DS) mithilfe des Azure-Portals aktiviert werden kann.
@@ -62,10 +62,10 @@ Auf der Seite **Grundlagen** des Assistenten geben Sie den DNS-Domänennamen fü
    > [!NOTE]
    > **Richtlinien für das Auswählen eines DNS-Domänennamens**
    > * **Integrierter Domänenname:** Standardmäßig legt der Assistent den standardmäßigen/integrierten Domänennamen des Verzeichnisses für Sie fest (mit einem **.onmicrosoft.com**-Suffix). Wenn Sie den sicheren LDAP-Zugriff auf die verwaltete Domäne über das Internet aktivieren, können Sie davon ausgehen, dass beim Erstellen eines öffentlichen DNS-Eintrags oder Abrufen eines sicheren LDAP-Zertifikats von einer öffentlichen Zertifizierungsstelle für diesen Domänennamen Probleme auftreten. Microsoft besitzt die *. onmicrosoft.com*-Domäne, und CAs werden keine Zertifikate ausstellen, die für diese Domäne bürgen.
-   * **Benutzerdefinierte Domänennamen**: Sie können auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel lautet der benutzerdefinierte Domänenname *contoso100.com*.
-   * **Nicht routingfähige Domänensuffixe**: Nicht routingfähige Domänensuffixe sollten Sie im Allgemeinen vermeiden. Beispielsweise ist es besser, das Erstellen einer Domäne mit dem DNS-Domänennamen „contoso.local“ zu vermeiden. Das DNS-Suffix „.local“ ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
-   * **Einschränkungen des Domänenpräfixes**: Das Präfix des angegebenen Domänennamens (beispielsweise *contoso100* im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine verwaltete Domäne mit einem Präfix, das länger als 15 Zeichen ist, erstellen.
-   * **Netzwerknamenskonflikte**: Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Überprüfen Sie insbesondere, ob Folgendes zutrifft:
+   * **Benutzerdefinierte Domänennamen:** Sie können auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel lautet der benutzerdefinierte Domänenname *contoso100.com*.
+   * **Nicht routingfähige Domänensuffixe:** Nicht routingfähige Domänensuffixe sollten Sie im Allgemeinen vermeiden. Beispielsweise ist es besser, das Erstellen einer Domäne mit dem DNS-Domänennamen „contoso.local“ zu vermeiden. Das DNS-Suffix „.local“ ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
+   * **Einschränkungen für Domänenpräfixe:** Das Präfix des angegebenen Domänennamens (beispielsweise *contoso100* im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine verwaltete Domäne mit einem Präfix, das länger als 15 Zeichen ist, erstellen.
+   * **Netzwerknamenskonflikte:** Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Überprüfen Sie insbesondere, ob Folgendes zutrifft:
        * Im virtuellen Netzwerk ist bereits eine Active Directory-Domäne mit dem gleichen DNS-Domänennamen vorhanden.
        * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, hat eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
        * Im virtuellen Netzwerk ist bereits ein Clouddienst mit diesem Namen vorhanden.

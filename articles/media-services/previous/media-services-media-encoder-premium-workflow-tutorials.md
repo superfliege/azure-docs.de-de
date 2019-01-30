@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257376"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811963"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Erweiterte Media Encoder Premium Workflow-Tutorials
 ## <a name="overview"></a>Übersicht
@@ -692,8 +692,8 @@ Bevor wir die Cliplisten-XML-Datei, die beim Starten des Workflows generiert wir
 
 Zuerst müssen wir bestimmen können, ab welchem Punkt und bis zu welchem Punkt wir das Video kürzen möchten. Um dies auch für Workflowbenutzer mit geringeren technischen Kenntnissen einfach zu halten, veröffentlichen wir zwei Eigenschaften im Stamm des Graphen. Klicken Sie hierzu mit der rechten Maustaste auf die Designeroberfläche, und wählen Sie „Eigenschaft hinzufügen“:
 
-* Erste Eigenschaft: „ClippingTimeStart“, Typ: „TIMECODE“
-* Zweite Eigenschaft: „ClippingTimeEnd“, Typ: „TIMECODE“
+* Erste Eigenschaft: „ClippingTimeStart“ des Typs: „TIMECODE“
+* Zweite Eigenschaft: „ClippingTimeEnd“ des Typs: „TIMECODE“
 
 ![Dialogfeld „Add Property“ für Clipping-Startzeit](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 

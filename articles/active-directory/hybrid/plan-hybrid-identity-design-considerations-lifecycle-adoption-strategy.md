@@ -4,7 +4,7 @@ description: Hilft, die Aufgaben der Verwaltung der Hybrididentität gemäß der
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5590f1fc3716582da090b8429f8bcf4fc7911dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512cb71cc8ca973a778b7e172afcd9e056421ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251762"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478381"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
 In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)definiert haben.
@@ -43,8 +43,8 @@ Konten in anspruchsvollen IT-Unternehmen umfassen Hunderte von Parametern, die d
 Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) setzt Rollen- und Bereitstellungsrichtlinien zum Auswerten, Testen und Erzwingen Ihrer Geschäftsprozesse und Regeln für das Gewähren von Zugriffsrechten für Benutzer ein. Hauptadministratoren erstellen Bereitstellungsrichtlinien, weisen Benutzern Rollen zu und definieren für diese Rollen Sätze von Berechtigungen für Ressourcen. RBAC erweitert die Identitätsverwaltungslösung auf die Verwendung softwarebasierter Prozesse und Reduzierung der manuellen Benutzerinteraktion im Bereitstellungsprozess.
 Azure AD RBAC ermöglicht es Unternehmen, die Anzahl von Vorgängen zu beschränken, die eine einzelne Person im Azure-Portal ausführen kann. Durch Einsatz von RBAC zur Steuerung des Zugriffs auf das Portal können IT-Administratoren mithilfe folgender Ansätze zur Zugriffsverwaltung den Zugriff delegieren:
 
-* **Gruppenbasierte Rollenzuweisung**: Sie können Azure AD-Gruppen den Zugriff zuweisen, die von Ihrem lokalen Active Directory aus synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation in Tools und Prozesse zum Verwalten von Gruppen vorgenommen hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
-* **Nutzen Sie integrierte Rollen in Azure**: Sie können diese drei Rollen verwenden – Besitzer, Mitwirkender und Leser, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
+* **Gruppenbasierte Rollenzuweisung**: Sie können Azure AD-Gruppen den Zugriff zuweisen, die über das lokale Active Directory synchronisiert werden können. So können Sie die vorhandenen Investitionen nutzen, die Ihre Organisation in Tools und Prozesse zum Verwalten von Gruppen vorgenommen hat. Sie können auch das Feature zur delegierten Gruppenverwaltung von Azure AD Premium nutzen.
+* **Nutzen integrierter Rollen in Azure**: Sie können drei Rollen verwenden – Besitzer, Mitwirkender und Leser –, um sicherzustellen, dass Benutzer und Gruppen berechtigt sind, nur die Aufgaben auszuführen, die sie für ihre Arbeit benötigen.
 * **Präziser Zugriff auf Ressourcen**: Sie können Benutzern und Gruppen Rollen für bestimmte Abonnements, Ressourcengruppen oder für eine einzelne Azure-Ressource (beispielsweise eine Website oder Datenbank) zuweisen. Auf diese Weise können Sie sicherstellen, dass Benutzer Zugriff auf alle Ressourcen haben, die sie benötigen, und keinen Zugriff auf Ressourcen, die sie nicht verwalten müssen.
 
 ## <a name="provisioning-and-other-customization-options"></a>Bereitstellung und andere Optionen für die Anpassung
@@ -93,7 +93,7 @@ Vergleichen Sie die Synchronisierungsoptionen anhand folgender Tabelle:
 
 | Synchronisierungsverwaltungsoption | Vorteile | Nachteile |
 | --- | --- | --- |
-| Synchronisierungsbasiert (über DirSync oder AADConnect) |Benutzer und Gruppen aus der lokalen Umgebung und aus der Cloud werden synchronisiert. <br>  **Richtliniensteuerung:** Kontorichtlinien können über Active Directory festgelegt werden. Dies ermöglicht es dem Administrator, Richtlinien für Kennwörter, Workstations, Einschränkungen, Sperrsteuerungen und mehr zu verwalten, ohne zusätzliche Aufgaben in der Cloud ausführen zu müssen.  <br>  **Zugriffssteuerung:** Kann den Zugriff auf den Clouddienst einschränken, sodass der Zugriff auf die Dienste über die Unternehmensumgebung, über Onlineserver oder beides erfolgen kann. <br>  Weniger Supportanrufe: Wenn Benutzer sich weniger Kennwörter merken müssen, ist die Wahrscheinlichkeit geringer, dass sie sie vergessen. <br>  Sicherheit: Benutzeridentitäten und -informationen sind geschützt, da alle Server und Dienste mit einmaligem Anmelden verwendet und lokal verwaltet und gesteuert werden. <br>  Unterstützung für strenge Authentifizierung: Sie können strenge Authentifizierung (auch als zweistufige Authentifizierung bezeichnet) mit dem Clouddienst nutzen. Wenn Sie jedoch strenge Authentifizierung verwenden, müssen Sie einmaliges Anmelden verwenden. | |
+| Synchronisierungsbasiert (über DirSync oder AADConnect) |Benutzer und Gruppen aus der lokalen Umgebung und aus der Cloud werden synchronisiert. <br>  **Richtliniensteuerung**: Kontorichtlinien können über Active Directory festgelegt werden. Dies ermöglicht dem Administrator, Richtlinien für Kennwörter, Workstations, Einschränkungen, Sperrsteuerungen und mehr zu verwalten, ohne zusätzliche Aufgaben in der Cloud ausführen zu müssen.  <br>  **Zugriffssteuerung**: Kann den Zugriff auf den Clouddienst einschränken, sodass der Zugriff auf die Dienste über die Unternehmensumgebung, über Onlineserver oder beides erfolgen kann. <br>  Weniger Supportanrufe: Wenn Benutzer sich weniger Kennwörter merken müssen, ist die Wahrscheinlichkeit geringer, dass sie sie vergessen. <br>  Sicherheit: Benutzeridentitäten und -informationen sind geschützt, da alle Server und Dienste mit einmaligem Anmelden verwendet und lokal verwaltet und gesteuert werden. <br>  Unterstützung für strenge Authentifizierung: Sie können strenge Authentifizierung (auch als zweistufige Authentifizierung bezeichnet) mit dem Clouddienst nutzen. Wenn Sie jedoch strenge Authentifizierung verwenden, müssen Sie einmaliges Anmelden verwenden. | |
 | Verbundbasiert (über AD FS) |Aktiviert durch Sicherheitstokendienst (Security Token Service, STS). Wenn Sie einen STS konfigurieren, um Zugriff mit einmaligem Anmelden mit einem Microsoft-Clouddienst zu bieten, erstellen Sie eine Verbundvertrauensstellung zwischen Ihrem lokalen STS und der Verbunddomäne, die Sie in Ihrem Azure AD-Mandanten angegeben haben. <br> Ermöglicht Endbenutzern, mit den gleichen Anmeldeinformationen auf mehrere Ressourcen zuzugreifen. <br>Endbenutzer müssen nicht mehrere Sätze von Anmeldeinformationen verwalten. Dennoch müssen die Benutzer ihre Anmeldeinformationen jeder der beteiligten Ressourcen bereitstellen. B2B- und B2C-Szenarien werden unterstützt. |Setzt spezialisierte Mitarbeiter für die Bereitstellung und Wartung von dedizierten lokalen AD FS-Servern voraus. Es gibt Einschränkungen für die Verwendung der starken Authentifizierung, wenn Sie AD FS für Ihren STS verwenden möchten. Weitere Informationen finden Sie unter [Konfigurieren erweiterter Optionen für AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]

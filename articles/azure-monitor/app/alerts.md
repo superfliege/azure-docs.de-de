@@ -11,14 +11,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: fe63813220d526536a31efb48b6ec29b6ae383e8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 233ce5623195a9a661f67b5c3ded40e68c8eb33a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121140"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843513"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
@@ -89,7 +89,20 @@ Zu den gängigen Warnungen zählen Folgende:
 * **Serverantwortzeit** für die Serverseite von Webanwendungen. Achten Sie neben der Einrichtung von Warnungen auf diese Metrik, um festzustellen, ob sie bei hohen Anforderungsraten unverhältnismäßig stark variiert: Dies kann darauf hindeuten, dass für Ihre App nicht genügend Systemressourcen vorhanden sind. 
 * **Serverausnahmen** erfordern ein [zusätzliches Setup](../../azure-monitor/app/asp-net-exceptions.md), damit sie angezeigt werden.
 
-Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert. 
+Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnbenachrichtigungen?
+
+Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md) und den neuen Benachrichtigungen zu erfahren, lesen Sie bitte den Übersichtsartikel [Benachrichtigungen](../platform/alerts-overview.md). Um die Warnungsbenachrichtigung in den neuen Benachrichtigungen zu steuern, verwenden Sie [ Aktionsgruppen](../platform/action-groups.md).
+
+* Wir empfehlen die Verwendung von bestimmten Empfängern für klassische Warnbenachrichtigungen.
+
+* Für Warnungen zu allen Application Insights-Metriken (einschließlich Verfügbarkeitsmetriken) sendet die Option **Masse/Gruppe**, falls aktiviert, Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement. Tatsächliche sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen. 
+
+> [!NOTE]
+> Wenn Sie derzeit die Option **Masse/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
+
+Verwenden Sie die neuen Benachrichtigungen/Benachrichtigungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit einer der „Mitwirkender/Besitzer/Leser“ konfigurieren (nicht zusammen als eine einzige Option).
 
 ## <a name="automation"></a>Automation
 * [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)

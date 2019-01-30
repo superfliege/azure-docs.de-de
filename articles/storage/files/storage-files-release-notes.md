@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/14/2019
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 006a8172faae529ce9943773552da325bfae3f4b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 245314f0b7460cce270c97307e0719beebee472a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321533"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478636"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -32,7 +32,7 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 | Updaterollup von September 2018 | 3.3.0.0 | 24. September 2018 | Unterstützt |
 | Updaterollup von August 2018 | 3.2.0.0 | 15. August 2018 | Unterstützt |
 | Allgemeine Verfügbarkeit | 3.1.0.0 | 19. Juli 2018 | Unterstützt |
-| Abgelaufene Agents | 1.1.0.0 – 3.0.13.0 | N/V | Nicht unterstützt – Agent-Versionen sind am 1. Oktober 2018 abgelaufen. |
+| Abgelaufene Agents | 1.1.0.0 – 3.0.13.0 | – | Nicht unterstützt – Agent-Versionen sind am 1. Oktober 2018 abgelaufen. |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -72,7 +72,7 @@ Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Age
 
 - Das Agent-Installationspaket muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
 - Der Agent wird für die Bereitstellungsoptionen „Windows Server Core“ oder „Nano Server“ nicht unterstützt.
-- Der Agent wird nur unter Windows Server 2016 und Windows Server 2012 R2 unterstützt.
+- Der Agent wird nur unter Windows Server 2019, Windows Server 2016 und Windows Server 2012 R2 unterstützt.
 - Der Agent benötigt mindestens 2 GiB Arbeitsspeicher. Wenn der Server auf einem virtuellen Computer ausgeführt wird, für den dynamischer Arbeitsspeicher aktiviert ist, muss der virtuelle Computer mit mindestens 2.048 MiB Arbeitsspeicher konfiguriert werden.
 - Der Dienst „Storage-Synchronisierungs-Agent“ (FileSyncSvc) unterstützt keine Serverendpunkte, die sich auf einem Volume befinden, für das das Verzeichnis „System Volume Information“ (SVI) komprimiert ist. Diese Konfiguration führt zu unerwarteten Ergebnissen.
 - Ein Abbruchfehler vom Typ „0x3B“ oder „0x1E“ kann auftreten, wenn eine VSS-Momentaufnahme erstellt wird.

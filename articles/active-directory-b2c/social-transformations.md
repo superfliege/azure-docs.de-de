@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von Social Media-Kontoansprüchen für 
 description: Hier finden Sie Beispiele für die Transformation von Social Media-Kontoansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d9b592e7f61b87860e4f6fa2aa4d46e253b6257e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d9ef8f9c68a09e998c393584ceb6e3be53f91a9c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382680"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848800"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
 
@@ -63,10 +63,10 @@ Verwenden Sie diese Anspruchstransformation zum Generieren des Anspruchstyps `al
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **key:** 12334
-    - **identityProvider:** Facebook.com
+    - **key**: 12334
+    - **identityProvider**: Facebook.com
 - Ausgabeansprüche:
-    - **alternativeSecurityId:** { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }
+    - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
@@ -100,10 +100,10 @@ Das folgende Beispiel verknüpft eine neue Social Media-Identität mit einem vor
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **item:** { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" }
-    - **collection:** [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **item**: { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" }
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
 - Ausgabeansprüche:
-    - **collection:** [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
@@ -128,7 +128,7 @@ Die folgende Anspruchstransformation liest den **alternativeSecurityIds**-Anspru
 ```
 
 - Eingabeansprüche:
-    - **alternativeSecurityIdCollection:** [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 - Ausgabeansprüche:
     - **identityProvidersCollection:** [ "facebook.com", "google.com" ]
 
@@ -165,6 +165,6 @@ Das folgende Beispiel hebt die Verknüpfung der Social Media-Identität mit eine
 
 - Eingabeansprüche:
     - **identityProvider:** facebook.com
-    - **collection:** [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 - Ausgabeansprüche:
-    - **collection:** [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]

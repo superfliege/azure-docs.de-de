@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Microsoft Docs
+title: Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites | Microsoft-Dokumentation
 description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
 services: application-insights
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ca266df563cb7e50463548dd0e786cec8e886ec4
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359696"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857147"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -171,7 +171,7 @@ Wählen Sie auf der Registerkarte „Details“ für einen bestimmten Test die A
 
 Wählen Sie für einen bestimmten Test **Testdetails anzeigen** aus, um sein Punktdiagramm und spezifische Teststandortdetails anzuzeigen.
 
-![Anzeigen von Testdetails, Bearbeiten oder Deaktivieren eines Webtests](./media/monitor-web-app-availability/5viewdetails.png)
+![Testdetails anzeigen, Webtest bearbeiten und deaktivieren](./media/monitor-web-app-availability/5viewdetails.png)
 
 Eventuell möchten Sie Verfügbarkeitstests oder die damit verknüpften Warnungsregeln deaktivieren, während Sie Ihren Dienst warten.
 
@@ -186,13 +186,13 @@ Klicken Sie auf einen roten Punkt.
 Aus einem Verfügbarkeitstestergebnis können Sie die Transaktionsdetails für alle Komponenten ablesen. Mögliche nächste Schritte:
 
 * Untersuchen Sie die vom Server erhaltene Antwort.
-* Diagnostizieren Sie den Fehler mit korrelierten, serverseitigen Telemetriedaten, die während der Verarbeitung des fehlgeschlagenen Verfügbarkeitstests gesammelt wurden.
+* Diagnostizieren Sie den Fehler mit korrelierten serverseitigen Telemetriedaten, die während der Verarbeitung des fehlerhaften Verfügbarkeitstests gesammelt wurden.
 * Protokollieren Sie in Git oder Azure Boards ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
 Weitere Informationen zur End-to-End-Transaktionsdiagnoseerfahrung finden Sie [hier](../../azure-monitor/app/transaction-diagnostics.md).
 
-Klicken Sie auf die Zeile „Ausnahme“, um die Details der serverseitigen Ausnahme anzuzeigen, die zum Fehlschlagen des synthetischen Verfügbarkeitstest geführt hat. Sie können auch die [Debugmomentaufnahme](../../azure-monitor/app/snapshot-debugger.md) abrufen, um eine umfangreichere Diagnose auf Codeebene durchzuführen.
+Klicken Sie auf die Ausnahmezeile, um die Details der serverseitigen Ausnahme anzuzeigen, die zum Fehlschlagen des synthetischen Verfügbarkeitstest geführt hat. Sie können auch die [Debugmomentaufnahme](../../azure-monitor/app/snapshot-debugger.md) abrufen, um eine umfangreichere Diagnose auf Codeebene durchzuführen.
 
 ![Serverseitige Diagnose](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -299,7 +299,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
     * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures" (Wiederholungen bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
 
-    * Klicken Sie auf einen der roten Punkte in der Verfügbarkeitserfahrung oder auf einen Verfügbarkeitsfehler im Such-Explorer, um die Details anzuzeigen, warum wir den Fehler gemeldet haben. Das Testergebnis, zusammen mit der korrelierten, serverseitigen Telemetrie (sofern aktiviert), sollte ihnen zu einem besseren Verständnis verhelfen, warum der Test fehlgeschlagen ist. Häufige Ursachen für vorübergehende Probleme sind Netzwerk- oder Verbindungsprobleme. 
+    * Klicken Sie auf einen der roten Punkte in der Verfügbarkeitserfahrung oder auf einen Verfügbarkeitsfehler im Such-Explorer, um die Details anzuzeigen, warum wir den Fehler gemeldet haben. Das Testergebnis sollte, zusammen mit der korrelierten serverseitigen Telemetrie (sofern aktiviert), Aufschluss darüber geben, warum der Test nicht erfolgreich war. Häufige Ursachen für vorübergehende Probleme sind Netzwerk- oder Verbindungsprobleme. 
 
     * Kam es beim Test zum Timeout? Wir brechen Tests nach 2 Minuten ab. Wenn Ihr Ping- oder mehrstufiger Test länger als zwei Minuten dauert, melden wir ihn als Fehler. Erwägen Sie, den Test in mehrere aufzuteilen, die sich schneller abschließen lassen.
 
@@ -356,6 +356,22 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 * *Wie kann ich einen Test mit Clientzertifikaten durchführen?*
 
     Dies wird leider nicht unterstützt.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
+
+Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md) und der neuen Benutzeroberfläche für Warnungen zu erfahren, lesen Sie den Artikel [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md). Um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern, verwenden Sie [Aktionsgruppen](../platform/action-groups.md).
+
+* Wir empfehlen die Verwendung bestimmter Empfänger für klassische Warnungsbenachrichtigungen.
+
+* Für Warnungen zu Fehlern bei X von Y Standorten werden bei aktivierter Option **Massenversand/Gruppe** Benutzer mit Administrator-/Co-Administratorrolle benachrichtigt.  Im Wesentlichen erhalten _alle_ Administratoren des _Abonnements_ Benachrichtigungen.
+
+* Für Warnungen zu Verfügbarkeitsmetriken (oder beliebigen Application Insights-Metriken zu diesem Zweck) werden bei aktivierter Option **Massenversand/Gruppe** Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement gesendet. Tatsächlich sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen. 
+
+> [!NOTE]
+> Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
+
+Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit den Rollen „Mitwirkender“, „Besitzer“, „Leser“ konfigurieren (nicht kombiniert als eine einzige Option).
+
 
 
 ## <a name="next"></a>Nächste Schritte

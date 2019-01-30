@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: 1b12e17bb8dd666bd48e937b7fed40e40f22ecf0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c9524396376f3de7d9468d94e3236929aadd374c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200767"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463914"
 ---
-# <a name="tutorial-improve-website-response-using-traffic-manager"></a>Tutorial: Verbesserung der Websitereaktion mit Traffic Manager 
+# <a name="tutorial-improve-website-response-using-traffic-manager"></a>Tutorial: Verbesserung der Websitereaktion mit Traffic Manager
 
 In diesem Tutorial wird beschrieben, wie Sie Traffic Manager verwenden, um durch Weiterleiten von Datenverkehr zu der Website mit der geringsten Wartezeit eine sehr reaktionsfreudige Website zu erstellen. Normalerweise liegt das Rechenzentrum mit der geringsten Wartezeit geografisch am nächsten.
 
@@ -39,7 +39,7 @@ Um den Traffic Manager in Aktion sehen zu können, müssen Sie in diesem Tutoria
 - zwei Instanzen von Standardwebsites, die in verschiedenen Azure-Regionen ausgeführt werden – **USA, Osten** und **Europa, Westen**.
 - zwei Test-VMs zum Testen des Traffic Managers – ein virtueller Computer in **USA, Osten** und der zweite virtuelle Computer in **Europa, Westen**. Die Test-VMs veranschaulichen, wie Traffic Manager den Datenverkehr der Benutzer an die Website weiterleitet, die in der gleichen Region ausgeführt wird, da bei ihr die Wartezeit am geringsten ist.
 
-### <a name="sign-in-to-azure"></a>Anmelden bei Azure 
+### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
@@ -89,24 +89,24 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Installieren von IIS und Anpassen der Standardwebseite
 
-In diesem Abschnitt Installieren Sie den IIS-Server auf den beiden virtuellen Computern – *myIISVMEastUS*  & *myIISVMWEurope* – und aktualisieren dann die Standardwebsiteseite. Die benutzerdefinierte Websiteseite zeigt den Namen des virtuellen Computers an, mit dem Sie eine Verbindung herstellen, wenn Sie die Website über einen Webbrowser besuchen.
+In diesem Abschnitt Installieren Sie den IIS-Server auf den beiden virtuellen Computern – *myIISVMEastUS* & *myIISVMWEurope* – und aktualisieren dann die Standardwebsiteseite. Die benutzerdefinierte Websiteseite zeigt den Namen des virtuellen Computers an, mit dem Sie eine Verbindung herstellen, wenn Sie die Website über einen Webbrowser besuchen.
 
 1. Wählen Sie im linken Menü **Alle Ressourcen** aus, und klicken Sie anschließend in der Ressourcenliste auf *myIISVMEastUS* in der Ressourcengruppe *myResourceGroupTM1*.
-2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, und wählen Sie dann in **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus. 
-3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben. 
+2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, und wählen Sie dann in **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus.
+3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 4. Klicken Sie auf **OK**.
 5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
 6. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Server-Manager**.
 7. Starten Sie Windows PowerShell auf VM1, und verwenden Sie die folgenden Befehle, um den IIS-Server zu installieren und die HTM-Standarddatei zu aktualisieren.
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
      ![Installieren von IIS und Anpassen der Webseite](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
@@ -115,7 +115,7 @@ In diesem Abschnitt Installieren Sie den IIS-Server auf den beiden virtuellen Co
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>Konfigurieren von DNS-Namen für die virtuellen Computer, die IIS ausführen
 
-Basierend auf DNS-Namen der Dienstendpunkte leitet Traffic Manager den Benutzerdatenverkehr weiter. In diesem Abschnitt konfigurieren Sie die DNS-Namen für die IIS-Server – *myIISVMEastUS* und *myIISVMWEurope*.
+Basierend auf DNS-Namen der Dienstendpunkte leitet Traffic Manager den Benutzerdatenverkehr weiter. In diesem Abschnitt konfigurieren Sie die DNS-Namen für die IIS-Server: *myIISVMEastUS* und *myIISVMWEurope*.
 
 1. Klicken Sie im linken Menü auf **Alle Ressourcen**, und wählen Sie dann in der Ressourcenliste *myIISVMEastUS* in der Ressourcengruppe *myResourceGroupTM1* aus.
 2. Wählen Sie auf der Seite **Übersicht** unter **DNS-Name** die Option **Konfigurieren** aus.
@@ -170,14 +170,14 @@ Erstellen Sie ein Traffic Manager-Profil, das den Benutzerdatenverkehr weiterlei
     | Routingmethode          | Wählen Sie die Routingmethode für **Leistungsdatenverkehr** aus.                                       |
     | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
     | Ressourcengruppe          | Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroupTM1* ein. |
-    | Standort                | Wählen Sie **USA, Osten** aus.  Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkungen auf das Traffic Manager-Profil, das global bereitgestellt wird.                              |
+    | Standort                | Wählen Sie **USA, Osten** aus. Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkungen auf das Traffic Manager-Profil, das global bereitgestellt wird.                              |
     |
-  
+
     ![Erstellen eines Traffic Manager-Profils](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Hinzufügen von Traffic Manager-Endpunkten
 
-Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server ausgeführt werden – *myIISVMEastUS*  & *myIISVMWEurope* – um Benutzerdatenverkehr an den für den Benutzer nächstgelegenen Endpunkt zu leiten.
+Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server ausgeführt werden – *myIISVMEastUS* & *myIISVMWEurope* – um Benutzerdatenverkehr an den für den Benutzer nächstgelegenen Endpunkt zu leiten.
 
 1. Suchen Sie in der Suchleiste des Portals nach dem Namen des Traffic Manager-Profils, das Sie im vorhergehenden Abschnitt erstellt haben, und wählen Sie in den angezeigten Ergebnissen das Profil aus.
 2. Klicken Sie unter **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte** und dann auf **Hinzufügen**.
@@ -192,10 +192,9 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server ausgef
     |        |           |
 
 4. Wiederholen Sie die Schritte 2 und 3, um einen anderen Endpunkt mit dem Namen *myWestEuropeEndpoint* für die öffentliche IP-Adresse *myIISVMWEurope-ip* hinzuzufügen, die der IIS-Server-VM mit dem Namen *myIISVMWEurope* zugeordnet ist.
-5.  Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese unter **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
+5. Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese unter **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
     ![Hinzufügen eines Traffic Manager-Endpunkts](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
-  
 
 ## <a name="test-traffic-manager-profile"></a>Testen des Traffic Manager-Profils
 In diesem Abschnitt testen Sie, wie der Traffic Manager den Benutzerdatenverkehr an die nächsten virtuellen Computer weiterleitet, die die Website ausführen, um die Wartezeit zu minimieren. Um den Traffic Manager in Aktion anzuzeigen, führen Sie die folgenden Schritte aus:
@@ -205,32 +204,32 @@ In diesem Abschnitt testen Sie, wie der Traffic Manager den Benutzerdatenverkehr
     - Browsen Sie von der Test-VM (*myVMWestEurope*) aus, die sich in der Region **Europa, Westen** befindet, in einem Webbrowser zu dem DNS-Namen des Traffic Manager-Profils.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Bestimmen des DNS-Namens des Traffic Manager-Profils
-In diesem Tutorial verwenden Sie der Einfachheit halber den DNS-Namen des Traffic Manager-Profils, um die Websites zu besuchen. 
+In diesem Tutorial verwenden Sie der Einfachheit halber den DNS-Namen des Traffic Manager-Profils, um die Websites zu besuchen.
 
 Sie können den DNS-Namen des Traffic Manager-Profils folgendermaßen bestimmen:
 
-1.  Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
+1. Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben. Klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 1. Klicken Sie auf **Overview**.
 2. Unter **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt. In Produktionsbereitstellungen konfigurieren Sie mithilfe eines DNS-CNAME-Eintrags einen benutzerdefinierten Domänennamen für den Verweis auf den Traffic Manager-Domänennamen.
 
    ![Traffic Manager-DNS-Name](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Anzeigen von Traffic Manager in Aktion
-In diesem Abschnitt sehen Sie den Traffic Manager in Aktion. 
+In diesem Abschnitt sehen Sie den Traffic Manager in Aktion.
 
 1. Wählen Sie im linken Menü **Alle Ressourcen** aus, und klicken Sie anschließend in der Ressourcenliste auf *myVMEastUS* in der Ressourcengruppe *myResourceGroupTM1*.
-2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, und wählen Sie dann in **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus. 
-3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben. 
+2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, und wählen Sie dann in **Herstellen einer Verbindung mit dem virtuellen Computer** die Option **RDP-Datei herunterladen** aus.
+3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 4. Klicken Sie auf **OK**.
-5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren. 
+5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
 1. Geben Sie in einem Webbrowser auf der VM *myVMEastUS* den DNS-Namen Ihres Traffic Manager-Profils an, um Ihre Website anzuzeigen. Da sich die VM in **USA, Osten** befindet, werden Sie zur nächsten Website weitergeleitet, die auf dem nächstgelegenen IIS-Server *myIISVMEastUS* gehostet wird, der sich in **USA, Osten** befindet.
 
    ![Testen des Traffic Manager-Profils](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. Stellen Sie dann mit den Schritten 1 bis 5 eine Verbindung mit dem virtuellen Computer *myVMWestEurope* her, der sich in **Europa, Westen** befindet, und browsen Sie von diesem virtuellen Computer aus zu dem Domänennamen des Traffic Manager-Profils.  Da sich die VM in **Europa, Westen** befindet, werden Sie zur nächsten Website weitergeleitet, die auf dem nächstgelegenen IIS-Server *myIISVMWEurope* gehostet wird, der sich in **Europa, Westen** befindet. 
+2. Stellen Sie dann mit den Schritten 1 bis 5 eine Verbindung mit dem virtuellen Computer *myVMWestEurope* her, der sich in **Europa, Westen** befindet, und browsen Sie von diesem virtuellen Computer aus zu dem Domänennamen des Traffic Manager-Profils. Da sich die VM in **Europa, Westen** befindet, werden Sie zur nächsten Website weitergeleitet, die auf dem nächstgelegenen IIS-Server *myIISVMWEurope* gehostet wird, der sich in **Europa, Westen** befindet.
 
    ![Testen des Traffic Manager-Profils](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
-   
+
 ## <a name="delete-the-traffic-manager-profile"></a>Löschen des Traffic Manager-Profils
 Wenn Sie die Ressourcengruppen (**ResourceGroupTM1** und **ResourceGroupTM2**) nicht mehr benötigen, löschen Sie sie. Wählen Sie hierzu die Ressourcengruppe aus (**ResourceGroupTM1** oder **ResourceGroupTM2**), und wählen Sie dann **Löschen**.
 
@@ -238,5 +237,3 @@ Wenn Sie die Ressourcengruppen (**ResourceGroupTM1** und **ResourceGroupTM2**) n
 
 > [!div class="nextstepaction"]
 > [Verteilen von Datenverkehr an verschiedene Endpunkte](traffic-manager-configure-weighted-routing-method.md)
-
-

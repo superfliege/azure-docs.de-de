@@ -1,10 +1,10 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit SensoScientific Wireless Temperature Monitoring System | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory integration with SensoScientific Wireless Temperature Monitoring System | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SensoScientific Wireless Temperature Monitoring System konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ee9a924d-ccde-45b0-ab40-877f82f5dfa2
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 139a40f339c2f403999f1c3b7fe65192d45c84fd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 131d430217ca299698be6fb7e45a0c8270184864
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426920"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Tutorial: Azure Active Directory-Integration mit SensoScientific Wireless Temperature Monitoring System
 
@@ -145,7 +145,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     f. Klicken Sie auf **Speichern**.
   
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation](https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD](https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -180,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>Erstellen eines SensoScientific Wireless Temperature Monitoring System-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei SensoScientific Wireless Temperature Monitoring System anmelden können, müssen sie in SensoScientific Wireless Temperature Monitoring System bereitgestellt werden. Arbeiten Sie mit dem [Supportteam von SensoScientific Wireless Temperature Monitoring System](https://www.sensoscientific.com/contact-us/) zusammen, um die Benutzer zur SensoScientific Wireless Temperature Monitoring System-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+Damit sich Azure AD-Benutzer bei SensoScientific Wireless Temperature Monitoring System anmelden können, müssen sie in SensoScientific Wireless Temperature Monitoring System bereitgestellt werden. Arbeiten Sie mit dem  [Supportteam von SensoScientific Wireless Temperature Monitoring System](https://www.sensoscientific.com/contact-us/) zusammen, um die Benutzer zur SensoScientific Wireless Temperature Monitoring System-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

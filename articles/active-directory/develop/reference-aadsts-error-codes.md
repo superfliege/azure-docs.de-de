@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-Authentifizierungs- und -Autorisierungsfehlercodes | Microsoft-Dokumentation
+title: Azure Active Directory-Authentifizierungs- und -Autorisierungsfehlercodes | Microsoft Docs
 description: Erfahren Sie mehr über die AADSTS-Fehlercodes, die vom Azure AD-Sicherheitstokendienst (STS) zurückgegeben werden.
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/30/2018
+ms.date: 01/23/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 97f884a45a0a07e2b4c48f39483c70248e7a492e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: e550eeba9b154e271cdad9df5cdfe9a308efbbe9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620384"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820307"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -32,7 +32,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
-| Fehler | Beschreibung |
+| Error | BESCHREIBUNG |
 |---|---|
 | AADSTS16000 | SelectUserAccount: Dies ist ein Interrupt, der von Azure AD ausgelöst wird. Er führt zu einer Benutzeroberfläche, die es dem Benutzer ermöglicht, aus mehreren gültigen SSO-Sitzungen auszuwählen. Dieser Fehler tritt recht häufig auf und kann an die Anwendung zurückgegeben werden, wenn `prompt=none` angegeben wird. |
 | AADSTS16001 | UserAccountSelectionInvalid: Dieser Fehler wird angezeigt, wenn der Benutzer auf eine Kachel klickt, die die Logik für die Auswahl der Sitzung abgelehnt hat. Wenn dieser Fehler ausgelöst wird, ermöglicht er dem Benutzer die Wiederherstellung, indem er aus einer aktualisierten Liste von Kacheln/Sitzungen auswählt oder ein anderes Konto auswählt. Dieser Fehler kann aufgrund eines Codedefekts oder einer Racebedingung auftreten. |
@@ -79,7 +79,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS50058 | UserInformationNotProvided: Dies bedeutet, dass ein Benutzer nicht angemeldet ist. Dieser Fehler kommt häufig vor und wird erwartet, wenn ein Benutzer nicht authentifiziert wurde und sich noch nicht angemeldet hat.</br>Wenn dieser Fehler in einem SSO-Kontext gemeldet wird, in dem sich der Benutzer zuvor angemeldet hat, bedeutet dies, dass die SSO-Sitzung nicht gefunden wurde oder ungültig war.</br>Dieser Fehler kann an die Anwendung zurückgegeben werden, wenn prompt=none angegeben wird. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. Der Benutzer kann sich an den Mandantenadministrator wenden, um das Problem zu lösen. |
 | AADSTS50061 | SignoutInvalidRequest: Die Anforderung zur Abmeldung ist ungültig. |
-| AADSTS50064 | CredentialAuthenticationError: Fehler beim Überprüfen der Anmeldeinformationen. |
+| AADSTS50064 | CredentialAuthenticationError: Fehler beim Überprüfen der Anmeldeinformationen bezüglich Benutzername und Kennwort. |
 | AADSTS50068 | SignoutInitiatorNotParticipant: Fehler beim Abmelden. Die App, die den Anmeldevorgang eingeleitet hat, ist kein Teilnehmer der aktuellen Sitzung. |
 | AADSTS50070 | SignoutUnknownSessionIdentifier: Fehler beim Abmelden. In der Abmeldeanforderung wurde ein Namensbezeichner angegeben, der nicht mit den vorhandenen Sitzungen übereinstimmt. |
 | AADSTS50071 | SignoutMessageExpired: Die Abmeldeanforderung ist abgelaufen. |
@@ -87,7 +87,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt: Starke Authentifizierung ist erforderlich, und der Benutzer hat die MFA-Überprüfung nicht bestanden. |
 | AADSTS50076 | UserStrongAuthClientAuthNRequired: Aufgrund einer Konfigurationsänderung durch den Administrator oder aufgrund einer Verschiebung an einen neuen Standort muss der Benutzer für den Zugriff auf die Ressource eine mehrstufige Authentifizierung verwenden. Wiederholen Sie den Vorgang mit einer neuen Autorisierungsanforderung für die Ressource. |
 | AADSTS50079 | UserStrongAuthEnrollmentRequired: Aufgrund einer Konfigurationsänderung durch den Administrator oder eines neuen Standorts des Benutzers muss der Benutzer mehrstufige Authentifizierung verwenden. |
-| AADSTS50085 | Für Aktualisierungstoken ist eine IdP-Anmeldung per sozialem Netzwerk erforderlich. Bitten Sie den Benutzer, sich mit Benutzername und Kennwort erneut anzumelden. |
+| AADSTS50085 | Für Aktualisierungstoken ist eine IdP-Anmeldung per sozialem Netzwerk erforderlich. Bitten Sie Benutzer, sich per Benutzername und Kennwort erneut anzumelden. |
 | AADSTS50086 | SasNonRetryableError |
 | AADSTS50087 | SasRetryableError: Der Dienst ist vorübergehend nicht verfügbar. Versuchen Sie es erneut. |
 | AADSTS50089 | Flow-Token abgelaufen: Fehler bei der Authentifizierung. Bitten Sie den Benutzer, sich mit Benutzername und Kennwort erneut anzumelden. |
@@ -254,6 +254,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource: Die Ressource ist nicht dafür konfiguriert, Nur-Gerätetoken zu akzeptieren. |
 | AADSTS240001 | BulkAADJTokenUnauthorized: Der Benutzer ist nicht zum Registrieren von Geräten in Azure AD autorisiert. |
 | AADSTS240002 | RequiredClaimIsMissing: Das id_token kann nicht zur Gewährung von `urn:ietf:params:oauth:grant-type:jwt-bearer` verwendet werden.|
+| AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest: Die Anwendung wurde nicht im Verzeichnis/Mandanten gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie den Bezeichnerwert für die Anwendung falsch konfiguriert oder die Authentifizierungsanforderung an den falschen Mandanten gesendet. |
 | AADSTS700020 | InteractionRequired: Die Zugriffsgewährung erfordert eine Interaktion. |
 | AADSTS700022 | InvalidMultipleResourcesScope: Der angegebene Wert für den Eingabeparameterbereich ist nicht gültig, weil er mehr als eine Ressource enthält. |
 | AADSTS700023 | InvalidResourcelessScope: Der angegebene Wert für den Eingabeparameterbereich ist beim Anfordern eines Zugriffstokens nicht gültig. |

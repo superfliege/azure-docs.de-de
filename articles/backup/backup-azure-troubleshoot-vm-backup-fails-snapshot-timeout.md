@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353960"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816754"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -113,6 +113,26 @@ Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Dat
 **Fehlermeldung**: Azure Backup unterstützt zurzeit keine SSD Standard-Datenträger. <br>
 
 Azure Backup unterstützt derzeit nur SSD Standard-Datenträger für Tresore, für die ein Upgrade auf die [sofortige Wiederherstellung](backup-instant-restore-capability.md) durchgeführt wurde.
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.
+
+**Fehlercode**: UserErrorBackupOperationInProgress <br>
+**Fehlermeldung**: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.<br>
+
+Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, weil gerade ein vorhandener Sicherungsauftrag ausgeführt wird. Es ist nicht möglich, einen neuen Sicherungsauftrag zu starten, bevor der aktuelle Auftrag abgeschlossen ist. Stellen Sie sicher, dass der derzeit ausgeführte Sicherungsvorgang abgeschlossen wurde, bevor Sie weitere Sicherungsvorgänge auslösen oder planen. Um den Status von Sicherungsaufträgen zu überprüfen, führen Sie die folgenden Schritte aus:
+
+1. Melden Sie sich am Azure-Portal an, und klicken Sie auf **Alle Dienste**. Geben Sie „Recovery Services“ ein, und klicken Sie auf **Recovery Services-Tresore**. Die Liste mit den Recovery Services-Tresoren wird angezeigt.
+2. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, für den die Sicherung konfiguriert ist.
+3. Klicken Sie im Tresordashboard-Menü auf **Sicherungsaufträge**, um alle Sicherungsaufträge anzuzeigen.
+
+    * Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
+        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+    * Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
+        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+4. Führen Sie den Sicherungsvorgang erneut durch.
+
+Wenn der geplante Sicherungsvorgang länger mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#restore-considerations).
+
 
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen

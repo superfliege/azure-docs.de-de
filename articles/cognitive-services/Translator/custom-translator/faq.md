@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 38ebde9179d79c091edb269c1be4c9c956f34006
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 415866bc4ef396a1b9397c4996d65cf10d78400b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626929"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854784"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -46,7 +46,7 @@ Auf bereitgestellte Systeme kann über die Microsoft-Textübersetzungs-API (V3) 
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Wie kann ich Abstimmung und Satzaufteilung überspringen, wenn die Sätze in meinen Daten bereits abgestimmt sind?
 
-Satzabstimmung und -aufteilung werden von Custom Translator für TMX-Dateien sowie für Textdateien mit der Erweiterung `.align` übersprungen. Dateien mit der Erweiterung `.align` bieten Benutzern eine Option für den Satzaufteilungs- und Abstimmungsprozess von Custom Translator für jene Dateien, die optimal abgestimmt sind und nicht weiter verarbeitet werden müssen. Es empfiehlt sich, die Erweiterung `.align` nur für optimal abgestimmte Dateien zu verwenden.
+Satzabstimmung und -aufteilung werden von Custom Translator für TMX-Dateien sowie für Textdateien mit der Erweiterung `.align` übersprungen. Dateien mit der Erweiterung `.align` bieten Benutzern eine Option zum Überspringen des Satzaufteilungs- und Abstimmungsprozesses von „Benutzerdefinierter Translator“ für Dateien, die optimal abgestimmt sind und nicht weiter verarbeitet werden müssen. Es empfiehlt sich, die Erweiterung `.align` nur für optimal abgestimmte Dateien zu verwenden.
 
 Sollte die Anzahl extrahierter Sätze in den beiden Dateien mit dem gleichen Basisnamen nicht übereinstimmen, führt Custom Translator die Satzabstimmung für Dateien mit der Erweiterung `.align` trotzdem aus.
 

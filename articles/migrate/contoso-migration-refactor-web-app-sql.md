@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608016"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808458"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso-Migration: Umgestalten einer lokalen App zu einer Azure-Web-App und einer Azure SQL-Datenbank-Instanz
 
@@ -128,7 +128,7 @@ Für die Ausführung dieses Szenarios benötigt Contoso Folgendes:
 Contoso geht bei der Ausführung der Migration wie folgt vor:
 
 > [!div class="checklist"]
-> * **Schritt 1: Bereitstellen einer SQL-Datenbankinstanz in Azure:** Contoso stellt eine SQL-Instanz in Azure bereit. Nachdem die App-Website zu Azure migriert wurde, verweist die Web-App für den WCF-Dienst auf diese Instanz.
+> * **Schritt 1: Bereitstellen einer SQL-Datenbankinstanz in Azure:** Contoso stellt eine SQL-Instanz in Azure bereit. Nachdem die App-Website zu Azure migriert wurde, verweist die Web-App für den WCF-Dienst auf diese Instanz.
 > * **Schritt 2: Migrieren der Datenbank mit dem DMA:** Contoso migriert die App-Datenbank mit dem Datenmigrations-Assistenten.
 > * **Schritt 3: Bereitstellen von Web-Apps:** Contoso stellt die beiden Web-Apps bereit.
 > * **Schritt 4: Einrichten von Azure DevOps:** Contoso erstellt ein neues Azure DevOps-Projekt und importiert das Git-Repository.

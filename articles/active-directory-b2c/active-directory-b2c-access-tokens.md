@@ -3,21 +3,21 @@ title: Anfordern von Zugriffstoken in Azure Active Directory B2C | Microsoft-Dok
 description: In diesem Artikel wird erläutert, wie eine Clientanwendung eingerichtet und ein Zugriffstoken abgerufen wird.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015348"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845145"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Anfordern von Zugriffstokens
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Anfordern von Zugriffstoken
 
 Ein Zugriffstoken (in den Antworten von Azure AD B2C als **access\_token** bezeichnet) ist eine Form von Sicherheitstoken, mit dem ein Client auf Ressourcen zugreifen kann, die mit einem  [Autorisierungsserver](active-directory-b2c-reference-protocols.md) wie etwa einer Web-API geschützt sind. Zugriffstokens werden als [JWTs](active-directory-b2c-reference-tokens.md) dargestellt und enthalten Informationen zu dem gewünschten Ressourcenserver und den für den Server erteilten Berechtigungen. Beim Aufrufen des Ressourcenservers muss das Zugriffstoken in der HTTP-Anforderung vorhanden sein.
 

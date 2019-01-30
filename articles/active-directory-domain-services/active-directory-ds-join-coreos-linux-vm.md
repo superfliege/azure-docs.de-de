@@ -4,7 +4,7 @@ description: Einbinden einer CoreOS Linux-VM in Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0552085eb5ee5e5b3d1379482e9463a7ae802388
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a2b8c3c0c38349b4c68f85a32bddb2c9b3e60c6f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158447"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850683"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Einbinden einer CoreOS Linux-VM in eine verwaltete Domäne
 In diesem Artikel wird beschrieben, wie Sie eine CoreOS Linux-VM in eine durch Azure AD Domain Services verwaltete Domäne einbinden.
@@ -112,7 +112,7 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 
 > [!NOTE]
-> **Problembehandlung**: Gehen Sie folgendermaßen vor, wenn Ihre verwaltete Domäne über *adcli* nicht gefunden werden kann:
+> **Problembehandlung:** Gehen Sie folgendermaßen vor, wenn Ihre verwaltete Domäne über *adcli* nicht gefunden werden kann:
   * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
   * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
   * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.

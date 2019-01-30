@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d2912c687d4968a239d5af747df4115ffd71bbeb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2df899e6cb0078cdf949c3f8257719b00554e85b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345759"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815718"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ThousandEyes für die automatische Benutzerbereitstellung
 
@@ -74,7 +74,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Th
 
     ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte **geheime Token** ein. (Sie finden das Token in Ihrem ThousandEyes-Konto: **Sicherheit und Authentifizierung**). 
+5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem ThousandEyes-Konto generierte **OAuth Bearer Token** ein. (Sie finden das Token in Ihrem ThousandEyes-Konto im Abschnitt **Profile** (Profil) oder können es dort generieren).
 
     ![ThousandEyes-Bereitstellung](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

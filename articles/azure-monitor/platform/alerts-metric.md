@@ -6,17 +6,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.component: alerts
-ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584306"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807387"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
-Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Die Metrikwarnungen funktionieren mit einer Reihe von mehrdimensionalen Plattformmetriken, benutzerdefinierten Metriken sowie Standard- und benutzerdefinierten Metriken von Application Insights. In diesem Artikel wird beschrieben, wie Sie Metrikwarnungsregeln über das Azure-Portal und die Azure CLI erstellen, anzeigen und verwalten können. Sie können Metrikwarnungsregeln auch mithilfe von Azure Resource Manager-Vorlagen erstellen, die in [einem separaten Artikel](../../azure-monitor/platform/alerts-enable-template.md) beschrieben sind.
+Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Die Metrikwarnungen funktionieren mit einer Reihe von mehrdimensionalen Plattformmetriken, benutzerdefinierten Metriken sowie Standard- und benutzerdefinierten Metriken von Application Insights. In diesem Artikel wird beschrieben, wie Sie Metrikwarnungsregeln über das Azure-Portal und die Azure CLI erstellen, anzeigen und verwalten können. Sie können Metrikwarnungsregeln auch mithilfe von Azure Resource Manager-Vorlagen erstellen, die in [einem separaten Artikel](alerts-metric-create-templates.md) beschrieben sind.
 
 Sie können weitere Informationen zur Funktionsweise von Metrikwarnungen in der [Übersicht zu Metrikwarnungen](alerts-metric-overview.md) erhalten.
 
@@ -31,23 +31,23 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
     > [!TIP]
     > Die meisten Ressourcenblätter verfügen auch über **Warnungen** in ihrem Ressourcenmenü (unter **Überwachung**). Sie können auch von dort aus Benachrichtigungen erstellen.
 
-3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, die Sie ändern möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
+3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
 
 4. Wenn die ausgewählte Ressource über Metriken verfügt, für die Sie Warnungen erstellen können, enthält die Option **Verfügbare Signale** unten rechts entsprechende Metriken. Sie können die vollständige Liste der für Metrikwarnungen unterstützten Ressourcentypen in diesem [Artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) einsehen.
 
-5. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Kriterien hinzufügen**.
+5. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
 
 6. Es wird eine Liste der für die Ressource unterstützten Signale angezeigt. Wählen Sie die Metrik aus, für die Sie eine Warnung erstellen möchten.
 
-7. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie **Zeitraum**, **Häufigkeit**, **Operator** und **Schwellenwert**. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll.
+7. Optimieren Sie die Metrik optional durch Anpassen von **Zeitraum** und **Aggregation**. Wenn die Metrik über Dimensionen verfügt, wird die Tabelle **Dimensionen** angezeigt. Wählen Sie mindestens einen Wert pro Dimension aus. Der Metrikwarnung wird ausgeführt, um die Bedingung für alle ausgewählten Wertekombinationen auszuwerten. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](alerts-metric-overview.md). Sie können für jede der Dimensionen auch **\* auswählen** verwenden. Mithilfe von **\* auswählen** wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
 
-8. Anhand des metrischen Diagramms können Sie einen angemessenen Schwellenwert ermitteln.
+8. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie die Warnungsparameter: **Bedingungstyp**, **Häufigkeit**, **Operator** und **Schwellenwert** oder **Empfindlichkeit**. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll. [Erfahren Sie mehr über den Bedingungstyp „Dynamische Schwellenwerte“ und Empfindlichkeitsoptionen](alerts-dynamic-thresholds.md).
 
-9. Wenn die Metrik über Dimensionen verfügt, wird optional die Tabelle „Dimensionen“ angezeigt. Wählen Sie mindestens einen Wert pro Dimension aus. Der Metrikwarnung wird ausgeführt, um die Bedingung für alle ausgewählten Wertekombinationen auszuwerten. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](alerts-metric-overview.md). Sie können für jede der Dimensionen auch **\* auswählen** verwenden. Mithilfe von **\* auswählen** wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
+9. Wenn Sie einen statischen Schwellenwert verwenden, kann das Metrikdiagramm Ihnen das Bestimmen eines sinnvollen Schwellenwerts erleichtern. Wenn Sie dynamische Schwellenwerte verwenden, zeigt das Metrikdiagramm die berechneten Schwellenwerte basierend auf aktuellen Daten an.
 
 10. Klicken Sie auf **Fertig**.
 
-11. Optional können Sie weitere Kriterien hinzufügen, wenn Sie eine komplexe Warnungsregel überwachen möchten.
+11. Optional können Sie weitere Kriterien hinzufügen, wenn Sie eine komplexe Warnungsregel überwachen möchten. Derzeit stehen Benutzern Warnungsregeln mit dynamischen Schwellenwertkriterien als einzigem Kriterium zur Verfügung.
 
 12. Geben Sie **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
 
@@ -73,7 +73,7 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 
 4. Klicken Sie auf den Namen der Metrikwarnungsregel, die Sie bearbeiten möchten.
 
-5. Klicken Sie unter „Regel bearbeiten“ auf die **Warnungskriterien**, die Sie bearbeiten möchten. Sie können die Felder für Metrik, Schwellenwert und auch andere Felder bei Bedarf ändern.
+5. Klicken Sie unter „Regel bearbeiten“ auf die **Warnungskriterien**, die Sie bearbeiten möchten. Sie können die Felder für Metrik, Schwellenwertbedingung und auch andere Felder bei Bedarf ändern.
 
     > [!NOTE]
     > Sie können **Zielressource** und **Warnungsregelname** nicht bearbeiten, nachdem die Metrikwarnung erstellt wurde.
@@ -92,10 +92,10 @@ In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Po
     az monitor metrics alert --help
     ```
 
-3. Sie können eine einfache Metrikwarnungsregel erstellen, die überwacht, ob der durchschnittliche Wert für „CPU in Prozent“ auf einer VM größer als 70 % ist.
+3. Sie können eine einfache Metrikwarnungsregel erstellen, die überwacht, ob der durchschnittliche Wert für „CPU in Prozent“ auf einer VM größer als 90% ist.
 
     ```azurecli
-    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90"
+    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
     ```
 
 4. Sie können alle Metrikwarnungsmeldungen in einer Ressourcengruppe mit dem folgenden Befehl anzeigen.
@@ -117,17 +117,19 @@ In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Po
 6. Sie können eine Metrikwarnungsregel mit dem folgenden Befehl deaktivieren.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
     ```
 
 7. Sie können eine Metrikwarnungsregel mit dem folgenden Befehl löschen.
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen von Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-enable-template.md)
 - [Informationen zur Funktionsweise von Metrikwarnungen](alerts-metric-overview.md)
+- [Informationen zur Funktionsweise von Metrikwarnungen mit Bedingung „Dynamische Schwellenwerte“ ](alerts-dynamic-thresholds.md).
 - [Informationen zum Webhook-Schema für Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+

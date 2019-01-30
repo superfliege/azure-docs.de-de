@@ -1,10 +1,10 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Clarizen konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8c66d8eec6d3967026c17db9ce8d616b97d25931
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158670"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807727"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Lernprogramm: Azure Active Directory-Integration mit Clarizen
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Tutorial: Azure Active Directory-Integration mit Clarizen
 
 In diesem Tutorial erfahren Sie, wie Sie Clarizen in Azure Active Directory (Azure AD) integrieren. Diese Integration bietet Ihnen die folgenden Vorteile:
 
@@ -98,7 +98,7 @@ Aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal, u
 
     ![Felder für Bezeichner und Antwort-URL](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** den Wert **Clarizen** ein.
+    a. Geben Sie im Feld **Bezeichner** folgenden Wert ein: **Clarizen**
 
     b. Geben Sie in das Feld **Antwort-URL** eine URL mit dem folgenden Muster ein: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
 

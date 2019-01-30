@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8278b26f023ada109a8e6fa3965476e3dc4526c7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420273"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Tutorial: Azure Active Directory-Integration mit QPrism
 
@@ -112,11 +112,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von QPrism](mailto:qsupport-ce@quatrro.com), um diese Werte zu erhalten. 
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+1. Klicken Sie im Abschnitt  **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
      ![Downloadlink für das Zertifikat](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
     ![Einmaliges Anmelden konfigurieren: Schaltfläche „Speichern“](./media/qprism-tutorial/tutorial_general_400.png)
     
@@ -156,7 +156,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-qprism-test-user"></a>Erstellen eines QPrism-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in QPrism einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [QPrism-Supportteam](mailto:qsupport-ce@quatrro.com) zusammen, um Benutzer auf der QPrism-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in QPrism einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [QPrism-Supportteam](mailto:qsupport-ce@quatrro.com) zusammen, um Benutzer auf der QPrism-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

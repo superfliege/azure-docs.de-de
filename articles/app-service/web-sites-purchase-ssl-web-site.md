@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714299"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820783"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
@@ -50,7 +50,7 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 | Einstellung | BESCHREIBUNG |
 |-|-|
 | NAME | Ein Anzeigename für Ihr App Service-Zertifikat. |
-| Reiner Domänenhostname | Dieser Schritt ist einer der wichtigsten Teile des Einkaufsvorgangs. Verwenden Sie den Namen der Stammdomäne, den Sie Ihrer App zugeordnet haben. Stellen Sie dem Domänennamen _nicht_ `www` voran. |
+| Reiner Domänenhostname | Wenn Sie die Stammdomäne angeben, erhalten Sie ein Zertifikat, das *sowohl* die Stammdomäne als auch die `www`-Unterdomäne sichert. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`). |
 | Abonnement | Das Rechenzentrum, in dem die Web-App gehostet wird. |
 | Ressourcengruppe | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
 | Zertifikat-SKU | Bestimmt den Typ des zu erstellenden Zertifikats, ganz gleich, ob es sich um ein Standardzertifikat oder ein [Platzhalterzertifikat](https://wikipedia.org/wiki/Wildcard_certificate) handelt. |
@@ -125,7 +125,7 @@ Rufen Sie Ihre App über `HTTPS://<domain_name>` auf (anstelle von `HTTP://<doma
 
 Wenn Sie einen Schlüssel für das Zertifikat neu erstellen müssen, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Neuen Schlüssel erstellen und synchronisieren**.
 
-Klicken Sie auf die Schaltfläche **Erneute Schlüsselerstellung**, um den Prozess zu initiieren. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen.
+Klicken Sie auf die Schaltfläche **Erneute Schlüsselerstellung**, um den Prozess zu starten. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen.
 
 ![Bild von erneuter Schlüsselerstellung für SSL einfügen](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 

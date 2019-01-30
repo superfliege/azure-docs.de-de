@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34666008"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453119"
 ---
 ## <a name="view-device-telemetry"></a>Anzeigen der Gerätetelemetrie
 
@@ -39,7 +39,7 @@ Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Remoteüberwachu
 
 1. Wählen Sie auf der Seite **Geräte** in der Liste der Geräte das von Ihnen bereitgestellte Gerät aus:
 
-    ![Auswählen des physischen Geräts](media/iot-suite-visualize-connecting/devicesselect.png)
+    ![Auswählen Ihres realen Geräts](media/iot-suite-visualize-connecting/devicesselect.png)
 
 1. Um eine Liste der Methoden anzuzeigen, die Sie auf Ihrem Gerät aufrufen können, wählen Sie **Aufträge** und dann **Run method** (Methode ausführen) aus. Um einen Auftrag für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auswählen. Im Bereich **Aufträge** werden die für alle ausgewählten Geräte gemeinsamen Methodentypen angezeigt.
 

@@ -1,10 +1,10 @@
 ---
-title: 'Azure Active Directory Domain Services: Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Einbinden einer RHEL-VM in eine verwaltete Domäne | Microsoft-Dokumentation'
 description: Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in Azure AD-Domänendienste
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: bfad3b8c8347b885fd713d30c620d6c86377fab3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 44d6614c7e0f4f7a53a2f0579f8fe03c9d7847b7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155234"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850908"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Red Hat Enterprise Linux 7-Computer (RHEL) einer durch Azure AD-Domänendienste verwalteten Domäne beitritt.
@@ -87,7 +87,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     ```
 
      > [!NOTE]
-     > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *Realm discover* (Bereich ermitteln) nicht gefunden werden kann:
+     > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *realm discover* (Bereich ermitteln) nicht gefunden werden kann:
      * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
      * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
      * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.

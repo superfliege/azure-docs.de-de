@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 01/21/2019
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f3a67c2eddba2b7bd734237466243da8f43a862a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634268"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848647"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -197,7 +197,7 @@ Ja. Wenn eine zeitbasierte Aufbewahrungsrichtlinie erstellt wird, befindet sie s
 
 **Ist die Funktion auch für nationale und behördliche Cloudumgebungen verfügbar?**
 
-Unveränderlicher Speicher ist derzeit nur in öffentlichen Azure-Regionen verfügbar. Wenn Sie sich für eine bestimmte nationale Cloud interessieren, senden Sie eine E-Mail an azurestoragefeedback@microsoft.com.
+Unveränderliche Speicher sind in den Regionen Azure Public, China und Behörden verfügbar. Wenn unveränderliche Speicher in Ihrer Region nicht verfügbar sind, senden Sie eine E-Mail an azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-powershell-code"></a>PowerShell-Beispielcode
 

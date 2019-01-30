@@ -3,29 +3,29 @@ title: Azure Storage- und Service Bus-Warteschlangen – Vergleich und Gegenübe
 description: Analysiert die Unterschiede und Gemeinsamkeiten zwischen den beiden zurzeit von Azure angebotenen Warteschlangentypen.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261059"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852795"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
-In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen analysiert, die zurzeit von Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
+In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die derzeit in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
 
 ## <a name="introduction"></a>Einführung
-Azure unterstützt zwei Typen von Warteschlangen: **Storage-Warteschlangen** und **Service Bus-Warteschlangen**.
+Azure unterstützt zwei Arten von Warteschlangenmechanismen: **Storage-Warteschlangen** und **Service Bus-Warteschlangen**.
 
 **Storage-Warteschlangen** gehören zur Infrastruktur von [Azure Storage](https://azure.microsoft.com/services/storage/). Sie verfügen über eine einfache REST-basierte GET/PUT/PEEK-Oberfläche, die ein zuverlässiges und konsequentes Messaging innerhalb von Diensten und zwischen diesen gewährleistet.
 
@@ -131,7 +131,7 @@ In diesem Abschnitt werden Storage-Warteschlangen und Service Bus-Warteschlangen
 | Vergleichskriterien | Storage-Warteschlangen | Service Bus-Warteschlangen |
 | --- | --- | --- |
 | Maximale Warteschlangengröße |**500 TB**<br/><br/>(beschränkt auf die Kapazität eines [einzelnen Speicherkontos](../storage/common/storage-introduction.md#queue-storage)) |**1 GB bis 80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt „Zusätzliche Informationen“) |
-| Maximale Nachrichtengröße |**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64** Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden. |**256 KB** oder **1 MB**<br/><br/>(Einschließlich Header und Text. Die maximale Headergröße beträgt 64 KB).<br/><br/>Hängt von der [Dienstebene](service-bus-premium-messaging.md) ab. |
+| Maximale Nachrichtengröße |**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64** Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden. |**256 KB** oder **1 MB**<br/><br/>(Einschließlich Header und Text, maximale Headergröße: 64 KB.)<br/><br/>Hängt von der [Dienstebene](service-bus-premium-messaging.md) ab. |
 | Maximaler TTL-Wert der Nachricht |**Unbegrenzt** (ab API-Version 2017-07-27) |**TimeSpan.Max** |
 | Maximale Anzahl von Warteschlangen |**Unbegrenzt** |**10.000**<br/><br/>(pro Dienstnamespace) |
 | Maximale Anzahl gleichzeitiger Clients |**Unbegrenzt** |**Unbegrenzt**<br/><br/>(Die Beschränkung auf 100 gleichzeitige Verbindungen gilt nur für die Kommunikation über das TCP-Protokoll.) |

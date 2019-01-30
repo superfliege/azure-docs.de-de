@@ -1,11 +1,11 @@
 ---
-title: Service Bus – Preise und Abrechnung | Microsoft Docs
+title: Service Bus – Preise und Abrechnung | Microsoft-Dokumentation
 description: Übersicht über die Service Bus-Preisstruktur.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: db5f4bc7cc62c61f13258b919226efbf63165371
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406838"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852931"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus – Preise und Abrechnung
 
@@ -33,7 +33,7 @@ Azure Service Bus wird in den Tarifen „Standard“ und [Premium](service-bus-p
 Service Bus verwendet die zwei folgenden Verbrauchseinheiten für Warteschlangen und Themen/Abonnements:
 
 1. **Messagingvorgänge**: Definiert als API-Aufrufe für Warteschlangen- oder Themen-/Abonnementdienstendpunkte. Diese Verbrauchseinheit ersetzt gesendete oder empfangene Nachrichten als primäre Einheit der abrechenbaren Nutzung für Warteschlangen und Themen/Abonnements.
-2. **Brokerverbindungen**: Definiert als die Höchstanzahl dauerhafter Verbindungen, die für Warteschlangen, Themen oder Abonnements während eines angegebenen einstündigen Stichprobenzeitraums geöffnet sind. Diese Verbrauchseinheit gilt nur im Tarif Standard, in dem Sie zusätzliche Verbindungen für eine nominale Gebühr pro Verbindung öffnen können (zuvor waren Verbindungen auf 100 Verbindungen pro Warteschlange/Thema/Abonnement begrenzt).
+2. **Vermittelte Verbindungen**: Definiert als die Höchstanzahl dauerhafter Verbindungen, die für Warteschlangen, Themen oder Abonnements während eines angegebenen einstündigen Stichprobenzeitraums geöffnet sind. Diese Verbrauchseinheit gilt nur im Tarif Standard, in dem Sie zusätzliche Verbindungen für eine nominale Gebühr pro Verbindung öffnen können (zuvor waren Verbindungen auf 100 Verbindungen pro Warteschlange/Thema/Abonnement begrenzt).
 
 Mit dem Tarif **Standard** werden gestaffelte Preise für Vorgänge eingeführt, die mit Warteschlangen und Themen/Abonnements ausgeführt werden. Dies führt zu volumenbasierten Rabatten von bis zu 80 Prozent in den höchsten Nutzungsebenen. Außerdem wird eine Basisgebühr von 10 US-Dollar pro Monat für den Tarif „Standard“ erhoben, die es Ihnen ermöglicht, bis zu 12,5 Millionen Vorgänge pro Monat ohne zusätzliche Kosten auszuführen.
 
@@ -95,8 +95,8 @@ Für Service Bus wird die höchste Anzahl gleichzeitiger Brokerverbindungen in R
 
 Beispiel: 
 
-1. Alle 10.000 Geräte stellen eine Verbindung über eine einzelne AMQP-Verbindung her und empfangen Befehle von einem Service Bus-Thema. Die Geräte senden Telemetrieereignisse an einen Event Hub. Wenn alle Geräte jeden Tag 12 Stunden verbunden sind, entstehen die folgenden Verbindungsgebühren (zusätzlich zu eventuellen weiteren Gebühren für das Service Bus-Thema): 10.000 Verbindungen * 12 Stunden * 31 Tage / 744 = 5.000 Brokerverbindungen. Nach Abzug der monatlich zulässigen Menge von 1.000 Brokerverbindungen werden Ihnen 4.000 Brokerverbindungen zu einem Tarif von 0,03 US-Dollar pro Brokerverbindung berechnet. Dies ergibt eine Summe von 120 US-Dollar.
-2. 10.000 Geräte empfangen Nachrichten von einer Service Bus-Warteschlange über HTTP mit einem festgelegten Timeout ungleich null. Wenn alle Geräte 12 Stunden täglich verbunden sind, entstehen die folgenden Verbindungsgebühren (zusätzlich zu eventuellen weiteren Service Bus-Gebühren): 10.000 HTTP Empfangsverbindungen * 12 Stunden pro Tag * 31 Tage/744 Stunden = 5.000 Brokerverbindungen.
+1. Alle 10.000 Geräte stellen eine Verbindung über eine einzelne AMQP-Verbindung her und empfangen Befehle von einem Service Bus-Thema. Die Geräte senden Telemetrieereignisse an einen Event Hub. Wenn alle Geräte jeden Tag 12 Stunden verbunden sind, entstehen die folgenden Verbindungsgebühren (zusätzlich zu eventuellen weiteren Gebühren für das Service Bus-Thema): 10.000 Verbindungen * 12 Stunden * 31 Tage / 744 = 5.000 vermittelte Verbindungen Nach Abzug der monatlich zulässigen Menge von 1.000 Brokerverbindungen werden Ihnen 4.000 Brokerverbindungen zu einem Tarif von 0,03 US-Dollar pro Brokerverbindung berechnet. Dies ergibt eine Summe von 120 US-Dollar.
+2. 10.000 Geräte empfangen Nachrichten von einer Service Bus-Warteschlange über HTTP mit einem festgelegten Timeout ungleich null. Wenn alle Geräte jeden Tag 12 Stunden verbunden sind, entstehen die folgenden Verbindungsgebühren (zusätzlich zu eventuellen weiteren Service Bus-Gebühren): 10.000 HTTP-Empfangsverbindungen * 12 Stunden * 31 Tage / 744 = 5.000 vermittelte Verbindungen
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>Gelten für Warteschlangen und Themen/Abonnements Gebühren für Brokerverbindungen?
 

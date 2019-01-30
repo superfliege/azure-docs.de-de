@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605533"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468028"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Solution Accelerator für die Remoteüberwachung: Übersicht
 
@@ -47,11 +47,11 @@ Die Cloudarchitektur wurde ständig weiterentwickelt, seit Microsoft die ersten 
 
 Die Lösung enthält die folgenden Komponenten im Teil zur Gerätekonnektivität der logischen Architektur:
 
-### <a name="physical-devices"></a>Physische Geräte
+### <a name="real-devices"></a>Verwenden realer Geräte
 
-Sie können für physische Geräte eine Verbindung mit der Lösung herstellen. Sie können das Verhalten Ihrer simulierten Geräte implementieren, indem Sie die Azure IoT-Geräte-SDKs verwenden.
+Sie können für reale Geräte eine Verbindung mit der Lösung herstellen. Sie können das Verhalten Ihrer simulierten Geräte implementieren, indem Sie die Azure IoT-Geräte-SDKs verwenden.
 
-Sie können physische Geräte über das Dashboard im Lösungsportal bereitstellen.
+Sie können reale Geräte über das Dashboard im Lösungsportal bereitstellen.
 
 ### <a name="device-simulation-microservice"></a>Microservice „Gerätesimulation“
 
@@ -66,7 +66,7 @@ Sie können simulierte Geräte über das Dashboard im Lösungsportal bereitstell
 
 ### <a name="iot-hub"></a>IoT Hub
 
-Der [IoT Hub](../iot-hub/index.yml) erfasst Telemetriedaten, die von den physischen und simulierten Geräten in die Cloud gesendet wurden. Der IoT Hub stellt die Telemetriedaten den Diensten im IoT-Lösungs-Back-End für die Verarbeitung zur Verfügung.
+Der [IoT Hub](../iot-hub/index.yml) erfasst Telemetriedaten, die von den realen und simulierten Geräten in die Cloud gesendet wurden. Der IoT Hub stellt die Telemetriedaten den Diensten im IoT-Lösungs-Back-End für die Verarbeitung zur Verfügung.
 
 Zu den Aufgaben des IoT Hub in der Lösung zählen auch:
 
@@ -106,7 +106,7 @@ Der Dienst stellt einen RESTful-Endpunkt für CRUD-Vorgänge bei Schlüssel-Wert
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Solution Accelerator-Bereitstellungen verwenden [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) zum Speichern von Regeln, Alarmen, Konfigurationseinstellungen und allem anderen Cold Storage.
+Solution Accelerator-Bereitstellungen verwenden [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) zum Speichern von Regeln, Warnungen, Konfigurationseinstellungen und allem anderen Cold Storage.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Microservice „Azure Stream Analytics-Manager“
 

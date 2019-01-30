@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 01/22/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 848d6ffbccc809df1ab5c012c38174e13eacc391
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187976"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828255"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -39,9 +39,9 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
 
 1. Azure Media Services-Code
   
-  * Lizenzvorlagen für PlayReady, Widevine und/oder FairPlay. Mit den Vorlagen können Sie die Rechte und Berechtigungen für die einzelnen verwendeten DRMs konfigurieren.
-  * Autorisierung zur Lizenzbereitstellung, die die Logik der Autorisierungsprüfung basierend auf Ansprüchen in JWT angibt
-  * Inhaltsschlüssel, Streamingprotokolle und entsprechende angewandte DRMs, die die DRM-Verschlüsselung definieren
+  * Konfigurieren Sie Lizenzvorlagen für PlayReady, Widevine und/oder FairPlay. Mit den Vorlagen können Sie die Rechte und Berechtigungen für die einzelnen verwendeten DRMs konfigurieren.
+  * Definieren Sie die Autorisierung zur Lizenzbereitstellung, die die Logik der Autorisierungsprüfung basierend auf Ansprüchen in JWT angibt.
+  * Konfigurieren Sie die DRM-Verschlüsselung durch Angabe der Inhaltsschlüssel und Streamingprotokolle, die verwendet werden sollen.
 
   > [!NOTE]
   > Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).

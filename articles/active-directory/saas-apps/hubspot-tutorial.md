@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 76a19668453b35b39359bef442f7f34a06623cbe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2806288378e5fa080164155b97a47a7046ecbba1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432879"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814901"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration mit HubSpot
+# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
 
 In diesem Tutorial erfahren Sie, wie Sie HubSpot in Azure Active Directory (Azure AD) integrieren.
 
@@ -86,10 +86,10 @@ Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer i
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei HubSpot müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines HubSpot-Testbenutzers](#creating-a-hubspot-saml-test-user)**, um eine Entsprechung von Britta Simon in HubSpot zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -99,19 +99,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **HubSpot** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure single sign-on][4]
 
 2. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/tutorial_general_301.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/tutorial_general_301.png)
 
 3. Wenn Sie aus einem anderen Modus in den **SAML**-Modus wechseln müssen, können Sie am oberen Bildschirmrand auf **Modus für einmaliges Anmelden ändern** klicken.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/tutorial_general_300.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/tutorial_general_300.png)
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/tutorial_general_302.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/tutorial_general_302.png)
 
 5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
@@ -132,29 +132,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Klicken Sie auf der Seite **SAML-Signaturzertifikat** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Base64)** herunterzuladen. Speichern Sie die Zertifikatsdatei anschließend auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/tutorial_hubspot_certificate.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/tutorial_hubspot_certificate.png)
 
 7. Klicken Sie im Abschnitt **HubSpot einrichten** auf die Kopierschaltfläche, um die Werte für **Anmelde-URL** und **Azure AD-Bezeichner** zu kopieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/tutorial_hubspot_configure.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/tutorial_hubspot_configure.png)
 
 8. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich an Ihrem HubSpot-Administratorkonto an.
 
 9. Klicken Sie in der oberen rechten Ecke der Seite auf das Symbol **Einstellungen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/config1.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/config1.png)
 
 10. Klicken Sie auf **Account Defaults** (Kontostandardwerte).
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/config2.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/config2.png)
 
 11. Scrollen Sie nach unten zum Abschnitt **Security** (Sicherheit), und klicken Sie auf **Set up** (Einrichten).
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/config3.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/config3.png)
 
 12. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/config4.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/config4.png)
 
     a. Klicken Sie auf die Schaltfläche **Kopieren**, um den Wert von **Audience URl (Service Provider Entity ID)** (Zielgruppen-URl (Dienstanbieterentitäts-ID)) zu kopieren, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein.
 
@@ -164,7 +164,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **URL für einmaliges Anmelden des Identitätsanbieters** ein.
 
-    e. Öffnen Sie die heruntergeladene **Zertifikat (Base64)**-Datei im Editor. Kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn in das Feld **X.509-Zertifikat** ein.
+    e. Öffnen Sie die heruntergeladene  **Zertifikat (Base64)** -Datei im Editor. Kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn in das Feld  **X.509-Zertifikat** ein.
 
     f. Klicken Sie auf **Überprüfen**.
 
@@ -204,27 +204,27 @@ Im Fall von HubSpot ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie in der oberen rechten Ecke der Seite auf das Symbol **Einstellungen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/config1.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/config1.png)
 
 3. Klicken Sie auf **Users & Teams** (Benutzer und Teams).
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/user1.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/user1.png)
 
 4. Klicken Sie auf **Benutzer erstellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/user2.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/user2.png)
 
 5. Geben Sie die E-Mail-Adresse des Benutzers im Format **brittasimon@contoso.com** in das Textfeld **Add email address(es)** (E-Mail-Adresse(n) hinzufügen) ein, und klicken Sie auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/user3.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/user3.png)
 
 6. Gehen Sie im Abschnitt **Create users** (Benutzer erstellen) die Registerkarten einzeln durch, und wählen Sie die passenden Optionen und Berechtigungen für den Benutzer aus. Klicken Sie anschließend auf **Weiter**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/user4.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/user4.png)
 
 7. Klicken Sie auf **Senden**, um die Einladung an den Benutzer zu senden.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/user5.png)
+    ![Configure single sign-on](./media/hubspot-tutorial/user5.png)
 
     > [!NOTE]
     > Benutzer werden aktiviert, nachdem sie die Einladung angenommen haben.
@@ -239,7 +239,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **HubSpot** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/hubspot-tutorial/tutorial_hubspot_app.png) 
+    ![Configure single sign-on](./media/hubspot-tutorial/tutorial_hubspot_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

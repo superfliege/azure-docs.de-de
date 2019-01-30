@@ -11,34 +11,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104083"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847542"
 ---
 # <a name="manage-and-configure-projects"></a>Verwalten und Konfigurieren von Projekten
 
 Ein Projekt in Azure Notebooks stellt im Wesentlichen eine Konfiguration des zugrunde liegenden virtuellen Linux-Computers, auf dem Jupyter-Notebooks ausgeführt werden, in Kombination mit einem Dateiordner und beschreibenden Metadaten dar. Das Projektdashboard in Azure Notebooks ermöglicht Ihnen das Verwalten von Dateien und das Konfigurieren der sonstigen Projektmerkmale:
 
+- Die Computeebene, auf der das Projekt ausgeführt wird – dies kann die freie Ebene oder ein virtueller Azure-Computer sein.
 - Zu den Projektmetadaten gehören der Name, die Beschreibung, ein Bezeichner, der beim Freigeben des Projekts verwendet wird, und die Angabe, ob das Projekt öffentlich oder privat ist.
 - Die Verwaltung des Notebooks, der Daten und der sonstigen Dateien eines Projekts erfolgt genau so wie bei jedem anderen Dateisystem.
 - Die Projektumgebung kann wahlweise durch Startupskripts oder direkt über das Terminal erfolgen.
-- Über das Terminal haben Sie Zugriff auf Protokolle.
+- Protokolle, auf die Sie über das Terminal zugreifen.
 
 > [!Note]
-> Projekte, die Sie nicht besitzen, können Sie nicht verwalten, es sei denn, der Projektbesitzer hat Sie zum Projektmitarbeiter ernannt. Andernfalls sind die hier beschriebenen Verwaltungs- und Konfigurationsfeatures nicht für Sie zugänglich.
+> Die hier beschriebenen Verwaltungs- und Konfigurationsfeatures stehen nur dem Projektbesitzer zur Verfügung, der das Projekt ursprünglich angelegt hat. Sie können das Projekt jedoch in Ihr eigenes Konto klonen. In diesem Fall werden Sie Besitzer und können das Projekt wie gewünscht konfigurieren.
 
 Azure Notebooks startet den zugrunde liegenden virtuellen Computer, wann immer Sie ein Notebook oder eine andere Datei ausführen. Der Server speichert Dateien automatisch und wird nach 60 Minuten der Inaktivität heruntergefahren. Darüber hinaus können Sie den Server jederzeit mithilfe des Befehls **Herunterfahren** (Tastenkombination: h) beenden.
+
+## <a name="compute-tier"></a>Computeebene
+
+In der Dropdownliste **Ausführung** im Projektdashboard wählen Sie die Computeebene aus, auf der das Projekt ausgeführt wird. Standardmäßig werden Projekte auf der Ebene **Freies Compute** ausgeführt, die auf 4 GB Speicher und 1 GB Daten beschränkt ist, um Missbrauch zu verhindern:
+
+![Dropdownliste „Computeebene“ im Projektdashboard](media/project-compute-tier-list.png)
+
+Sie können diese Einschränkungen umgehen, indem Sie eine anderen virtuellen Computer verwenden, den Sie in einem Azure-Abonnement bereitgestellt haben. Sie müssen auch auf diesem virtuellen Computer Jupyter installieren. Die Data Science Virtual Machine-Images sind eine gute Wahl, da diese Jupyter standardmäßig enthalten.
+
+Sie können sich mit einem entsprechend konfigurierten virtuellen Azure-Computer über die Option **Direktes Computing** in der Dropdownliste verbinden. Wenn Sie diese Option auswählen, werden Sie nach einem Namen (der in der Liste angezeigt werden soll), der IP-Adresse und dem Port der VM (typischerweise 8000, dem Standardport, der JupyterHub lauscht) und den VM-Anmeldeinformationen gefragt:
+
+![Aufforderung zum Sammeln von Serverinformationen für die Option „Direktes Computing“](media/project-compute-tier-direct.png)
+
+Wenn Sie die folgenden Bedingungen erfüllt sind, zeigt die Dropdownliste auch [Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine)-Instanzen an. (Wenn eine dieser Bedingungen nicht erfüllt ist, können Sie sich trotzdem mit dem DSVM verbinden, indem Sie die Option für direktes Computing verwenden und die vom Azure-Portal erhaltenen Werte eingeben.)
+
+- Sie sind bei Azure Notebooks mit einem Konto angemeldet, das Azure Active Directory (AAD) verwendet, wie beispielsweise ein Firmenkonto.
+- Ihr Konto ist mit einem Azure-Abonnement verbunden.
+- Sie haben einen oder mehrere virtuelle Computer in diesem Abonnement, mit mindestens Leserzugriff, die das Image „Data Science Virtual Machine for Linux“ (Ubuntu) verwenden.
+
+![Data Science Virtual Machine-Instanzen in der Dropdownliste im Projektdashboard](media/project-compute-tier-dsvm.png)
+
+Wenn Sie eine DSVM-Instanz auswählen, werden Sie möglicherweise von Azure Notebooks zur Eingabe der spezifischen Computer-Anmeldeinformationen aufgefordert, die beim Erstellen der VM verwendet wurden.
+
+Um eine neue DSVM-Instanz zu erstellen, befolgen Sie die Anweisungen in [Erstellen einer Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Sie *müssen* das Image **Data Science Virtual Machine for Linux (Ubuntu)** verwenden, da Azure Notebooks keine DSVMs anzeigt, die Windows- oder CentOS-Images verwenden.
 
 ## <a name="edit-project-metadata"></a>Bearbeiten von Projektmetadaten
 
 Wählen Sie im Projektdashboard **Projekteinstellungen** und dann die Registerkarte **Informationen** aus, die die in der folgenden Tabelle beschriebenen Projektmetadaten enthält. Sie können die Projektmetadaten jederzeit ändern.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Projektname | Ein Anzeigename für Ihr Projekt, das Azure Notebooks zu Anzeigezwecken verwendet. Beispielsweise "Hallo Welt in Python". |
 | Projekt-ID | Ein benutzerdefinierter Bezeichner, der Teil der URL wird, die zum Freigeben eines Projekts verwendet wird (das Format lautet `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Diese ID darf nur aus Buchstaben, Ziffern und Bindestrichen bestehen und ist auf 30 Zeichen beschränkt. Falls Sie nicht wissen, was Sie verwenden sollen, können Sie sich nach einer gängigen Konvention richten. Dazu legen Sie den Projektnamen in Kleinbuchstaben zugrunde und wandeln Leerzeichen in Bindestriche um, also wird etwa "Mein Projekt" zu "mein-projekt". |
@@ -57,7 +82,7 @@ Das Projektdashboard zeigt den Inhalt des Ordnersystems des Projekts. Sie könne
 
 Mit dem Befehl **+ Neu** (Tastenkombination: n) werden neue Dateien oder Ordner erstellt. Wählen Sie bei der Verwendung des Befehls zunächst den Typ des zu erstellenden Elements aus:
 
-| Elementtyp | Beschreibung | Verhalten des Befehls |
+| Elementtyp | BESCHREIBUNG | Verhalten des Befehls |
 | --- | --- | --- |
 | **Notebook** | Ein Jupyter-Notebook | Zeigt ein Popup an, in dem Sie den Dateinamen und die Sprache des Notebooks angeben. |
 | **Ordner** | Ein Unterordner | Erstellt ein Bearbeitungsfeld in der Dateiliste des Projekts, in dem Sie den Ordnernamen eingeben. |
@@ -74,7 +99,7 @@ Der Befehl **Hochladen** bietet zwei Optionen zum Importieren von Daten aus ande
 
 ![Befehle im Kontextmenü einer Datei](media/project-file-commands.png)
 
-| Befehl | Tastenkombinationen | Aktion |
+| Get-Help | Tastenkombinationen | Aktion |
 | --- | --- | --- |
 | Ausführen | r (oder Klicken) | Führt eine Notebook-Datei aus. Andere Dateitypen werden zur Ansicht geöffnet.  |
 | Link kopieren | y | Kopiert einen Link zur Datei in die Zwischenablage. |
@@ -84,7 +109,7 @@ Der Befehl **Hochladen** bietet zwei Optionen zum Importieren von Daten aus ande
 | Download | d | Lädt eine Zip-Datei herunter, die die Datei oder den Inhalt eines Ordners enthält. |
 | Umbenennen | a | Fordert zur Eingabe eines neuen Namens für die Datei oder den Ordner auf. |
 | Löschen | x | Fordert eine Bestätigung an und entfernt die Datei dann endgültig aus dem Projekt. Löschungen können nicht rückgängig gemacht werden. |
-| Verschieben | m | Verschiebt eine Datei in einen anderen Ordner im selben Projekt. |
+| Move | m | Verschiebt eine Datei in einen anderen Ordner im selben Projekt. |
 
 #### <a name="preview"></a>Vorschau
 
@@ -92,7 +117,7 @@ Eine Vorschau einer Datei oder eines Notebooks ist eine schreibgeschützte Darst
 
 Die Seite „Vorschau“ unterstützt eine Reihe von Symbolleisten mit Tastenkombinationen:
 
-| Befehl | Tastenkombinationen | Aktion |
+| Get-Help | Tastenkombinationen | Aktion |
 | --- | --- | --- |
 | Freigabe | s | Zeigt das Freigabepopup an, aus dem Sie einen Link abrufen, in sozialen Medien teilen, eine HTML zur Einbettung abrufen oder eine E-Mail senden können. |
 | Klonen | c  | Klont das Notebook in Ihr Konto. |

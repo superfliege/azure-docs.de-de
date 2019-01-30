@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: b60c955e-8fa3-4872-a897-c4e81fd7beac
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: cc6b1036d98aca62360ed8a935d2d1719c7f4069
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 91c485d17b12a973f08660687a4135ff140a84b9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230351"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Tutorial: Azure Active Directory-Integration mit 10,000ft Plans
 
@@ -102,15 +102,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **10,000ft Plans** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für 10,000ft Plans** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://app.10000ft.com`
 
@@ -121,20 +121,20 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Rohdaten)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/10000ftplans-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **10,000ft Plans-Konfiguration** auf **10,000ft Plans konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
 
 7. Zum Konfigurieren des einmaligen Anmeldens bei **10,000ft Plans** müssen Sie das heruntergeladene **Zertifikat (Rohdaten), Abmelde-URL, SAML-Entitäts-ID und URL** für den SAML-SSO-Dienst an das [10,000ft Plans-Supportteam](https://www.10000ft.com/plans/support) senden.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -188,7 +188,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **10,000ft Plans**aus.
 
-    ![Configure Single Sign-On](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

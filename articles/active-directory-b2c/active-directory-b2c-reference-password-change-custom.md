@@ -3,19 +3,19 @@ title: Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlin
 description: Erfahren Sie, wie Sie Benutzern das Ändern ihres Kennworts mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C ermöglichen.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b39c330b555be6b74760c5966e770284fa9da437
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aa5be1df1737c56689786f5255203b771b15d179
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579191"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843684"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -152,8 +152,8 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 
 4. Speichern Sie die Richtliniendatei *TrustFrameworkExtensions.xml*.
 5. Kopieren Sie die Datei *ProfileEdit.xml*, die Sie mit dem Starter Pack heruntergeladen haben, und weisen Sie ihr den Namen *ProfileEditPasswordChange.xml* zu.
-6. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** mit einem eindeutigen Wert. Dieser Wert ist der Name Ihrer Richtlinie, z. B. *B2C_1A_profile_edit_password_change*.
-7. Ändern Sie das Attribut **ReferenceId** in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht, z. B. *PasswordChange*.
+6. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** mit einem eindeutigen Wert. Dieser Wert ist der Name Ihrer Richtlinie. Beispiel: *B2C_1A_profile_edit_password_change*.
+7. Ändern Sie das Attribut **ReferenceId** in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht. Beispiel: *PasswordChange*.
 8. Speichern Sie die Änderungen.
 
 Die Beispielrichtlinie finden Sie [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 

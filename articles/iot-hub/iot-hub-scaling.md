@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 8ff99b8c5cf839afb8c8e73c18c2c413998ba64a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261717"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810906"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -43,6 +43,7 @@ Pro IoT Hub-Instanz kann nur ein [Editionstyp](https://azure.microsoft.com/prici
 | [Überwachung und Diagnose](iot-hub-monitor-resource-health.md) | JA | JA |
 | [Cloud-zu-Gerät-Messaging](iot-hub-devguide-c2d-guidance.md) |   | JA |
 | [Gerätezwillinge](iot-hub-devguide-device-twins.md), [Modulzwillinge](iot-hub-devguide-module-twins.md) und [Geräteverwaltung](iot-hub-device-management-overview.md) |   | JA |
+| [Gerätestreams (Vorschau)](iot-hub-device-streams-overview.md) |   | JA |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | JA |
 
 Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich. 

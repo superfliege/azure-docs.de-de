@@ -4,7 +4,7 @@ description: Verwalten von durch die Azure Active Directory-Domänendienste verw
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: ergreenl
-ms.openlocfilehash: 06cac28f80fd576f5aaefcb56d88c53e230e18c2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e477bd310f2d5ea2e216ba2e7630a375ea81c48c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157818"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856739"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Erstellen eines gruppenverwalteten Dienstkontos (group managed service account, gMSA) in einer verwalteten Azure AD Domain Services-Domäne
 In diesem Artikel erfahren Sie, wie Sie verwaltete Dienstkonten in einer verwalteten Azure AD Domain Services-Domäne erstellen.
@@ -31,8 +31,8 @@ Ein eigenständiges verwaltetes Dienstkonto (standalone-Managed Service Account,
 Das gruppenverwaltete Dienstkonto (group-Managed Service Account, gMSA) bietet die gleichen Vorteile für viele Server in der Domäne. Alle Instanzen eines in einer Serverfarm gehosteten Diensts müssen den gleichen Dienstprinzipal verwenden, damit Protokolle für die gegenseitige Authentifizierung funktionieren. Wenn ein gSMA als Dienstprinzipal verwendet wird, wird das Kontokennwort nicht vom Administrator, sondern vom Windows-Betriebssystem verwaltet.
 
 **Weitere Informationen:**
-- [Group Managed Service Accounts Overview](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (Übersicht über gruppenverwaltete Dienstkonten)
-- [Getting Started with Group Managed Service Accounts](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts) (Erste Schritte mit gruppenverwalteten Dienstkonten)
+- [Übersicht über gruppenverwaltete Dienstkonten](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
+- [Erste Schritte mit gruppenverwalteten Dienstkonten](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 
 ## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Verwenden von Dienstkonten in Azure AD Domain Services
@@ -69,5 +69,5 @@ http/WebFarmSvc/contoso100.com, http/WebFarmSvc/contoso100  `
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Organisationseinheit für eine verwaltete Domäne](active-directory-ds-admin-guide-create-ou.md)
-- [Group Managed Service Accounts Overview](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (Übersicht über gruppenverwaltete Dienstkonten)
-- [Getting Started with Group Managed Service Accounts](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts) (Erste Schritte mit gruppenverwalteten Dienstkonten)
+- [Erste Schritte mit gruppenverwalteten Dienstkonten](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
+- [Erste Schritte mit gruppenverwalteten Dienstkonten](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)

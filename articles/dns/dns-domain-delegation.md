@@ -1,24 +1,17 @@
 ---
-title: Übersicht über die Azure DNS-Delegierung | Microsoft-Dokumentation
+title: Übersicht über die Azure DNS-Delegierung
 description: Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden von DNS-Namenserver zum Hosten von Domänen.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170503"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461025"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegieren von DNS-Zonen mit Azure DNS
 
@@ -58,13 +51,16 @@ Die folgende Abbildung zeigt eine DNS-Beispielabfrage. „contoso.net“ und „
 ![Dns-nameserver](./media/dns-domain-delegation/image1.png)
 
 1. Der Client fordert `www.partners.contoso.net` von seinem lokalen DNS-Server an.
-1. Da der lokale DNS-Server nicht über den Eintrag verfügt, sendet er eine Anforderung an seinen Stammnamenserver.
-1. Der Stammnamenserver verfügt zwar nicht über den Eintrag, kennt aber die Adresse des Namenservers für `.net` und gibt sie an den DNS-Server weiter.
-1. Der DNS-Server sendet die Anforderung an den Namenserver für `.net`. Dieser verfügt zwar nicht über den Eintrag, kennt jedoch die Adresse des Namenservers für „contoso.net“. In diesem Fall handelt es sich um eine in Azure DNS gehostete DNS-Zone.
-1. Die Zone `contoso.net` verfügt nicht über den Eintrag, kennt aber den Namenserver für `partners.contoso.net` und gibt diesen zurück. In diesem Fall handelt es sich um eine in Azure DNS gehostete DNS-Zone.
-1. Der DNS-Server fordert die IP-Adresse von `partners.contoso.net` aus der Zone `partners.contoso.net` an. Sie enthält den A-Eintrag und antwortet mit der IP-Adresse.
-1. Der DNS-Server gibt die IP-Adresse an den Client weiter.
-1. Der Client stellt eine Verbindung mit der Website `www.partners.contoso.net` her.
+2. Da der lokale DNS-Server nicht über den Eintrag verfügt, sendet er eine Anforderung an seinen Stammnamenserver.
+3. Der Stammnamenserver verfügt zwar nicht über den Eintrag, kennt aber die Adresse des Namenservers für `.net` und gibt sie an den DNS-Server weiter.
+4. Der lokale DNS-Server sendet die Anforderung an den `.net`-Namenserver.
+5. Der `.net`-Namenserver verfügt zwar nicht über den Eintrag, kennt jedoch die Adresse des `contoso.net`-Namenservers. In diesem Fall antwortet er mit der Adresse des Namenservers für die in Azure DNS gehostete DNS-Zone.
+6. Der lokale DNS-Server sendet die Anforderung an den Namenserver für die in Azure DNS gehostete `contoso.net`-Zone.
+7. Die Zone `contoso.net` verfügt nicht über den Eintrag, kennt aber den Namenserver für `partners.contoso.net` und antwortet mit der Adresse. In diesem Fall handelt es sich um eine in Azure DNS gehostete DNS-Zone.
+8. Der lokale DNS-Server sendet die Anforderung an den Namenserver für die `partners.contoso.net`-Zone.
+9. Die `partners.contoso.net`-Zone hat den A-Eintrag und antwortet mit der IP-Adresse.
+10. Der lokale DNS-Server gibt die IP-Adresse an den Client weiter.
+11. Der Client stellt eine Verbindung mit der Website `www.partners.contoso.net` her.
 
 Jede Delegierung umfasst eigentlich zwei Kopien der NS-Einträge: eine in der übergeordneten Zone, die auf die untergeordnete Zone verweist, und eine in der untergeordneten Zone selbst. Die Zone „contoso.net“ enthält die NS-Einträge für „contoso.net“ (neben den NS-Einträgen in „net“). Diese Einträge werden als autoritative NS-Einträge bezeichnet und befinden sich an der Spitze der untergeordneten Zone.
 

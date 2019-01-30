@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554655"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810702"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
 
@@ -166,7 +166,7 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |audioEffects|Die Dimension [audioEffects](#audioEffects).|
 |sentiments|Die Dimension [sentiments](#sentiments).|
 |visualContentModeration|Die Dimension [visualContentModeration](#visualcontentmoderation).|
-|textualConentModeration|Die Dimension [textualConentModeration](#textualconentmoderation).|
+|textualContentModeration|Die Dimension [textualConentModeration](#textualcontentmoderation).|
 |emotions| Die Dimension [emotions](#emotions).|
 |topics|Die Dimension [topics](#topics).|
 
@@ -187,7 +187,7 @@ Beispiel:
   "audioEffects": ...,
   "sentiments": ...,
   "visualContentModeration": ...,
-  "textualConentModeration": ...
+  "textualContentModeration": ...
 }
 ```
 
@@ -334,7 +334,7 @@ Beispiel:
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
 |Beschreibung|Eine Beschreibung des Prominenten. |
-|thumbnalId|Die ID der Miniaturansicht dieses Gesichts.|
+|thumbnailId|Die ID der Miniaturansicht dieses Gesichts.|
 |knownPersonId|Bei einer bekannten Person die interne ID.|
 |referenceId|Bei einem Bing-Prominenten die Bing-ID.|
 |referenceType|Zurzeit nur Bing.|
@@ -662,7 +662,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 ] 
 ```
 
-#### <a name="textualconentmoderation"></a>textualConentModeration 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
 |NAME|BESCHREIBUNG|
 |---|---|

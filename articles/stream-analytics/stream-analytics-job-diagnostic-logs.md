@@ -7,61 +7,85 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: db3c9874676e3240f6896c1e1ff8f873360c20d5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090821"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818930"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
-In einigen Fällen beendet ein Azure Stream Analytics-Auftrag unerwartet die Verarbeitung. Es ist wichtig, diese Art von Ereignissen behandeln zu können. Das Ereignis wird möglicherweise durch ein unerwartetes Abfrageergebnis, die Verbindung zu Geräten oder einen unerwarteten Dienstausfall verursacht. Durch die Diagnoseprotokolle in Stream Analytics können Sie die Ursache der Probleme bei ihrem Auftreten feststellen und die Wiederherstellungszeit verkürzen.
+In einigen Fällen beendet ein Azure Stream Analytics-Auftrag unerwartet die Verarbeitung. Es ist wichtig, diese Art von Ereignissen behandeln zu können. Fehler können durch ein unerwartetes Abfrageergebnis, die Verbindung zu Geräten oder einen unerwarteten Dienstausfall verursacht werden. Durch die Diagnoseprotokolle in Stream Analytics können Sie die Ursache der Probleme bei ihrem Auftreten feststellen und die Wiederherstellungszeit verkürzen.
 
 ## <a name="log-types"></a>Protokolltypen
 
-Stream Analytics bietet zwei Typen von Protokollen: 
-* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (Always On). Aktivitätsprotokolle bieten Einblicke in die Vorgänge. die bei Aufträgen durchgeführt werden.
-* [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurierbar). Diagnoseprotokolle bieten umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags. Diagnoseprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
+Stream Analytics bietet zwei Typen von Protokollen:
+
+* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) (immer aktiviert) bieten Einblicke in die Vorgänge, die bei Aufträgen durchgeführt werden.
+
+* [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurierbar), die umfangreichere Einblicke in sämtliche Vorgänge eines Auftrags bieten. Diagnoseprotokolle starten, wenn der Auftrag erstellt wurde, und enden, wenn der Auftrag gelöscht wird. Sie behandeln Ereignisse bei der Aktualisierung des Auftrags und während der Ausführung.
 
 > [!NOTE]
 > Sie können Dienste wie Azure Storage, Azure Event Hubs und Azure Log Analytics verwenden, um nicht konforme Daten zu analysieren. Gebühren werden basierend auf dem Preismodell für diese Dienste in Rechnung gestellt.
->
 
-## <a name="turn-on-diagnostics-logs"></a>Aktivieren von Diagnoseprotokollen
+## <a name="debugging-using-activity-logs"></a>Debuggen mithilfe von Aktivitätsprotokollen
 
-Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokolle zu aktivieren, führen Sie folgende Schritte aus:
+Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einblicke in Vorgänge, die von Ihrem Stream Analytics-Auftrag ausgeführt werden. In Aktivitätsprotokollen enthaltene Informationen können helfen, die Grundursache von Problemen zu finden, die Auswirkungen auf den Auftrag haben. Führen Sie die folgenden Schritte aus, um Aktivitätsprotokolle in Stream Analytics zu verwenden:
 
-1.  Melden Sie sich beim Azure-Portal an, und wechseln Sie zum Blatt „Streamingauftrag“. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus.
+1. Melden Sie sich beim Azure-Portal an, und wählen Sie **Aktivitätsprotokoll** unter **Übersicht** aus.
+
+   ![Stream Analytics-Aktivitätsprotokoll](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
+
+2. Sie sehen eine Liste der Vorgänge, die ausgeführt wurden. Jeder Vorgang, der bei Ihrem Auftrag einen Fehler verursacht hat, ist mit einer roten Infoblase versehen.
+
+3. Klicken Sie auf einen Vorgang, um dessen Zusammenfassung anzuzeigen. Die Informationen sind hier häufig beschränkt. Weitere Informationen zum Vorgang finden Sie unter **JSON**.
+
+   ![Vorgangszusammenfassung im Stream Analytics-Aktivitätsprotokoll](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
+
+4. Scrollen Sie nach unten zum JSON-Abschnitt **Eigenschaften**, der Details zum Fehler bereitstellt, der den fehlerhaften Vorgang verursacht hat. In diesem Beispiel war der Fehler auf einen Runtimefehler aufgrund außerhalb des zulässigen Bereichs liegender Breitengradwerte zurückzuführen.
+
+   ![JSON-Fehlerdetails](./media/stream-analytics-job-diagnostic-logs/error-details.png)
+
+5. Sie können basierend auf der Fehlermeldung im JSON-Format Korrekturmaßnahmen vornehmen. In diesem Beispiel müssen Prüfungen, ob der Breitengradwert zwischen -90 Grad und 90 Grad liegt, der Abfrage hinzugefügt werden.
+
+6. Wenn die Fehlermeldung in den Aktivitätsprotokollen bei der Identifizierung der Grundursache nicht hilfreich ist, aktivieren Sie Diagnoseprotokolle, und verwenden Sie Log Analytics.
+
+## <a name="send-diagnostics-to-log-analytics"></a>Senden von Diagnosedaten an Log Analytics
+
+Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Log Analytics senden. Diagnoseprotokolle sind standardmäßig **deaktiviert**. Um die Diagnoseprotokolle zu aktivieren, führen Sie folgende Schritte aus:
+
+1.  Melden Sie sich im Azure-Portal an, und navigieren Sie zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus. Wählen Sie dann **Diagnose aktivieren** aus.
 
     ![Blattnavigation zu Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Wählen Sie **Diagnose aktivieren**.
+2.  Erstellen Sie einen **Namen** in **Diagnoseeinstellungen**, und aktivieren Sie das Kontrollkästchen neben **An Log Analytics senden**. Fügen Sie dann einen bereits vorhandenen **Log Analytics-Arbeitsbereich** hinzu, oder erstellen Sie einen neuen. Aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **LOG** und **AllMetrics** unter **METRIK**. Klicken Sie auf **Speichern**.
 
-    ![Aktivieren von Stream Analytics-Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/turn-on-diagnostic-logs.png)
+    ![Einstellungen für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3.  Setzen Sie auf der Seite **Diagnoseeinstellungen** die Option **Status** auf **Ein**.
+3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Diagnoseprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Navigieren Sie zum Log Analytics-Arbeitsbereich, und wählen Sie **Protokolle** unter dem Abschnitt **Allgemein** aus.
 
-    ![Ändern des Status für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/save-diagnostic-log-settings.png)
+   ![Log Analytics-Protokolle unter dem Abschnitt „Allgemein“](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
-4.  Richten Sie das gewünschte Archivierungsziel (Storage-Konto, Event Hub, Log Analytics) ein. Wählen Sie dann die Kategorien von Protokollen aus, die erfasst werden sollen (Ausführung, Erstellung). 
+4. Sie können [Ihre eigene Abfrage schreiben](../azure-monitor/log-query/get-started-portal.md), um nach Begriffen zu suchen, Trends zu identifizieren, Muster zu analysieren und basierend auf Ihren Daten Informationen zu gewinnen. Beispielsweise können Sie eine Abfrage schreiben, um nur die Diagnoseprotokolle mit der Nachricht „Fehler beim Streamingauftrag“ herauszufiltern. Diagnoseprotokolle von Azure Stream Analytics sind in der **AzureDiagnostics**-Tabelle gespeichert.
 
-5.  Speichern Sie die neue Diagnosekonfiguration.
+   ![Diagnoseabfrage und Ergebnisse](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
 
-Es dauert etwa 10 Minuten, bis die Diagnosekonfiguration angewendet wird. Anschließend werden die Protokolle nach und nach im konfigurierten Archivierungsziel (auf dem Blatt **Diagnoseprotokolle** zu sehen) angezeigt:
+5. Speichern Sie eine Abfrage, die nach den richtigen Protokollen sucht, indem Sie **Speichern** auswählen und einen Namen und eine Kategorie angeben. Anschließend können Sie eine Warnung erstellen, indem Sie **Neue Warnungsregel** auswählen. Geben Sie als Nächstes die Warnungsbedingung an. Wählen Sie **Bedingung** aus, und geben Sie Schwellenwert und Häufigkeit für die Auswertung dieser benutzerdefinierten Protokollsuche an.  
 
-![Blattnavigation zu Diagnoseprotokollen – Archivierungsziele](./media/stream-analytics-job-diagnostic-logs/view-diagnostic-logs-page.png)
+   ![Diagnoseprotokoll-Suchabfrage](./media/stream-analytics-job-diagnostic-logs/search-query.png)
 
-Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Verwenden von Diagnosedaten Ihrer Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+6. Wählen Sie die Aktionsgruppe aus, und geben Sie Warnungsdetails wie Name und Beschreibung an, bevor Sie die Warnungsregel erstellen können. Sie können die Diagnoseprotokolle der verschiedenen Aufträge an den gleichen Log Analytics-Arbeitsbereich weiterleiten. So können Sie einmal Warnungen einrichten, die für alle Aufträge gelten.  
 
 ## <a name="diagnostics-log-categories"></a>Kategorien der Diagnoseprotokolle
 
 Derzeit werden zwei Kategorien von Diagnoseprotokollen erfasst:
 
-* **Erstellung**. Erfasst Protokollereignisse zu Auftragserstellungsvorgängen: Erstellen von Aufträgen, Hinzufügen und Löschen von Eingaben und Ausgaben, Hinzufügen und Aktualisieren der Abfrage, Starten und Beenden des Auftrags.
-* **Ausführung**. Erfasst Ereignisse, die während der Ausführung eines Auftrags auftreten:
+* **Erstellung**: Erfasst Protokollereignisse zu Auftragserstellungsvorgängen wie Erstellen von Aufträgen, Hinzufügen und Löschen von Eingaben und Ausgaben, Hinzufügen und Aktualisieren der Abfrage sowie Starten und Beenden des Auftrags.
+
+* **Ausführung**: Erfasst Ereignisse, die während der Ausführung eines Auftrags auftreten.
     * Verbindungsfehler
     * Datenverarbeitungsfehler wie Folgende:
         * Ereignisse, die nicht mit der Abfragedefinition übereinstimmen (nicht übereinstimmende Feldtypen und Werte, fehlende Felder usw.)
@@ -80,7 +104,7 @@ category | Protokollkategorie: **Ausführung** oder **Erstellung**.
 operationName | Der Name des protokollierten Vorgangs. Beispielsweise **Ereignisse senden: Fehler beim Schreiben der SQL-Ausgabe nach mysqloutput**.
 status | Der Status des Vorgangs. Beispiele: **Fehlgeschlagen** oder **Erfolgreich**.
 level | Protokollebene. Beispiele: **Fehler**, **Warnung** oder **Information**.
-Eigenschaften | Spezifisches Detail des Protokolleintrags; als JSON-Zeichenfolge serialisiert. Weitere Informationen finden Sie in den folgenden Abschnitten.
+Eigenschaften | Spezifisches Detail des Protokolleintrags; als JSON-Zeichenfolge serialisiert. Weitere Informationen finden Sie in den folgenden Abschnitten dieses Artikels.
 
 ### <a name="execution-log-properties-schema"></a>Eigenschaftsschema der Ausführungsprotokolle
 

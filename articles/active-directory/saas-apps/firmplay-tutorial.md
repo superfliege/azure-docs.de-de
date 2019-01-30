@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 929494d5d802dbc545c750386a286029c4bf962d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114527"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Tutorial: Azure Active Directory-Integration in FirmPlay – Employee Advocacy for Recruiting
 
@@ -95,7 +95,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FirmPlay �
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines FirmPlay – Employee Advocacy for Recruiting-Testbenutzers](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** als Entsprechung von Britta Simon in FirmPlay – Employee Advocacy for Recruiting, der mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Erstellen eines FirmPlay – Employee Advocacy for Recruiting-Testbenutzers](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**, um eine Entsprechung von Britta Simon in FirmPlay: Employee Advocacy for Recruiting zu haben, die mit ihrer Azure AD-Darstellung verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 

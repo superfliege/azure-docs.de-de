@@ -9,20 +9,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dedf5de1ac2c88a9a00fd5f62e0663b840c0fd9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823435"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurieren von automatisierten Machine Learning-Experimenten
 
 Das automatisierte Machine Learning wählt einen Algorithmus und Hyperparameter für Sie aus und generiert ein Modell, das bereitgestellt werden kann. Es gibt verschiedene Optionen, mit denen Sie automatisierte Machine Learning-Experimente konfigurieren können. In diesem Leitfaden erfahren Sie, wie Sie verschiedene Konfigurationseinstellungen definieren.
 
-Beispiele für automatisierte Machine Learning-Experimente finden Sie in den folgenden Dokumenten: [Tutorial: Train a classification model with automated machine learning (Trainieren eines Klassifizierungsmodells mit automatisiertem Machine Learning)](tutorial-auto-train-models.md) oder [Train models with automated machine learning in the cloud (Trainieren von Modellen mit automatisiertem Machine Learning in der Cloud)](how-to-auto-train-remote.md).
+Beispiele automatisierter Machine Learning-Experimente finden Sie in den Tutorials zum [ Trainieren eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen](tutorial-auto-train-models.md) und zum [Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud](how-to-auto-train-remote.md).
 
 Für das automatisierte maschinelle Lernen sind folgende Konfigurationsoptionen verfügbar:
 
@@ -219,7 +219,8 @@ Eigenschaft |  BESCHREIBUNG | Standardwert
 `iteration_timeout_minutes` |   Begrenzt die Zeit (in Minuten), die eine bestimmte Iteration dauert. Wenn eine Iteration den angegebenen Wert überschreitet, wird sie abgebrochen. Wenn dieser Wert nicht festgelegt wird, wird die Iteration weiter ausgeführt, bis sie beendet ist. |   Keine
 `n_cross_validations`   |Anzahl von Kreuzvalidierungen| Keine
 `validation_size`   |Größe des Validierungssets als Prozentsatz aller Trainingsstichproben.|  Keine
-`preprocess` | True/False <br/>TRUE ermöglicht dem Experiment, eine Vorverarbeitung der Eingabe auszuführen. Es folgt eine Teilmenge der Vorverarbeitung.<li>Fehlende Daten: Imputiert die fehlenden Daten – numerisch mit Durchschnitt, Text mit häufigstem Vorkommen </li><li>Kategoriewerte: Wenn der Datentyp numerisch und die Anzahl von eindeutigen Werten niedriger als 5 Prozent ist, erfolgt eine Konvertierung in den 1-aus-n-Code. </li><li>Weitere Informationen finden Sie im [GitHub-Repository](https://aka.ms/aml-notebooks).</li><br/>Hinweis: Bei einer geringen Datendichte ist eine Vorverarbeitung nicht möglich = TRUE. |  False | 
+`preprocess` | True/False <br/>TRUE ermöglicht dem Experiment, eine Vorverarbeitung der Eingabe auszuführen. Es folgt eine Teilmenge der Vorverarbeitung.<li>Fehlende Daten: Imputiert die fehlenden Daten – numerisch mit Durchschnitt, Text mit häufigstem Vorkommen </li><li>Kategoriewerte: Wenn der Datentyp numerisch und die Anzahl von eindeutigen Werten niedriger als 5 Prozent ist, erfolgt eine Konvertierung in den 1-aus-n-Code. </li><li>Weitere Informationen finden Sie im [GitHub-Repository](https://aka.ms/aml-notebooks).</li><br/>Hinweis: Bei einer geringen Datendichte ist eine Vorverarbeitung nicht möglich = TRUE. |  False |
+`enable_cache`  | True/False <br/>Die Einstellung dieser Option auf „true“ ermöglicht die einmalige Durchführung der Vorverarbeitung und die Wiederverwendung derselben vorverarbeiteten Daten für alle Iterationen. | True |
 `blacklist_models`  | Das automatisierte Machine Learning-Experiment verfügt über viele verschiedene Algorithmen, die es ausprobiert. Konfigurieren Sie das Experiment, um bestimmte Algorithmen vom Experiment auszuschließen. Dies ist nützlich, wenn Sie wissen, dass bestimmte Algorithmen für Ihr Dataset nicht geeignet sind. Mit dem Ausschließen von Algorithmen können Sie Computeressourcen und Trainingszeit sparen.<br/>Zulässige Werte für die Klassifizierung sind:<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Zulässige Werte für die Regression sind:<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Zulässige Werte für die Vorhersage sind:<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Keine
 `whitelist_models`  | Das automatisierte Machine Learning-Experiment verfügt über viele verschiedene Algorithmen, die es ausprobiert. Konfigurieren Sie das Experiment, um bestimmte Algorithmen für das Experiment auszuschließen. Dies ist nützlich, wenn Sie wissen, dass bestimmte Algorithmen für Ihr Dataset gut geeignet sind. <br/>Zulässige Werte für die Klassifizierung sind:<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Zulässige Werte für die Regression sind:<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Zulässige Werte für die Vorhersage sind:<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Keine
 `verbosity` |Steuert den Protokolliergrad, wobei „INFO“ am ausführlichsten und „CRITICAL“ am wenigsten ausführlich ist. Der Ausführlichkeitsgrad nimmt die im Python-Protokollierungspaket definierten Werte an. Zulässige Werte sind:<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
@@ -272,7 +273,7 @@ Sie können die Ergebnisse in einem Widget oder in der Inlineansicht anzeigen, w
 In jeder Iteration wird die folgende Metrik für eine Klassifizierungsaufgabe gespeichert:
 
 |Primäre Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
---|--|--|--|--|
+--|--|--|--|
 AUC_Macro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Macro ist das arithmetische Mittel der AUC für jede Klasse.  | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Micro wird global durch die Kombination der echt positiven und der falsch positiven Ergebnisse aus jeder Klasse berechnet.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
 AUC_Weighted  | AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Der gewichtete Wert ist das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
@@ -298,7 +299,7 @@ weighted_accuracy|Gewichtete Genauigkeit ist die Genauigkeit, bei der die Gewich
 In jeder Iteration wird die folgende Metrik für eine Regressions- oder Vorhersageaufgabe gespeichert:
 
 |Primäre Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
---|--|--|--|--|
+--|--|--|--|
 explained_variance|Die erläuterte Varianz ist der Anteil, mit dem ein mathematisches Modell für die Variation eines bestimmten Datasets verantwortlich ist. Hierbei handelt es sich um den prozentualen Rückgang der Varianz der ursprünglichen Daten im Vergleich zur Varianz der Fehler. Wenn der Mittelwert der Fehler 0 beträgt, entspricht er der erläuterten Varianz.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Keine|
 r2_score|R2 ist der Ermittlungskoeffizient bzw. die prozentuale Reduzierung der quadratischen Fehler im Vergleich zu einem Baseline-Modell, das den Mittelwert ausgibt. Wenn der Mittelwert der Fehler 0 beträgt, entspricht er der erläuterten Varianz.|[Berechnung](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Keine|
 spearman_correlation|Die Spearman-Korrelation ist ein nicht parametrisches Maß für die Monotonie der Beziehung zwischen zwei Datasets. Im Gegensatz zur Pearson-Korrelation geht die Spearman-Korrelation nicht davon aus, dass beide Datasets normal verteilt sind. Wie bei anderen Korrelationskoeffizienten variiert dieser Wert zwischen -1 und +1, wobei 0 für keine Korrelation steht. Korrelationen von -1 oder +1 implizieren eine exakt monotone Beziehung. Positive Korrelationen implizieren, dass sich x ebenso wie y erhöht. Negative Korrelationen implizieren, dass sich x erhöht und y niedriger wird.|[Berechnung](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Keine|
@@ -309,7 +310,7 @@ normalized_median_absolute_error|Der normalisierte mittlere absolute Fehler ist 
 root_mean_squared_error|Die Wurzel aus dem mittleren quadratischen Fehler ist die Quadratwurzel der erwarteten quadratischen Differenz zwischen dem Ziel und der Vorhersage.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Keine|
 normalized_root_mean_squared_error|Die normalisierte Wurzel aus dem mittleren quadratischen Fehler ist die Wurzel aus dem mittleren quadratischen Fehler, dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Division durch den Datenbereich|
 root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Keine|
-normalized_root_mean_squared_log_error|Die normalisierte Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Wurzel aus dem mittleren quadratischen logarithmischen Fehler, dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Division durch den Datenbereich|
+normalized_root_mean_squared_log_error|Die normalisierte Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Wurzel aus dem mittleren quadratischen logarithmischen Fehler dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Division durch den Datenbereich|
 
 ## <a name="explain-the-model"></a>Erläutern des Modells
 
@@ -321,7 +322,7 @@ Es gibt zwei Möglichkeiten, eine Featurewichtigkeit zu generieren.
 
 *   Nachdem ein Experiment abgeschlossen ist, können Sie die `explain_model`-Methode für eine beliebige Iteration verwenden.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import explain_model
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
@@ -338,7 +339,7 @@ Es gibt zwei Möglichkeiten, eine Featurewichtigkeit zu generieren.
 
 *   Um die Featurewichtigkeit für alle Iterationen anzuzeigen, legen Sie das Flag `model_explainability` in AutoMLConfig auf `True` fest.  
 
-    ```
+    ```python
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  primary_metric = 'AUC_weighted',
@@ -355,7 +356,7 @@ Es gibt zwei Möglichkeiten, eine Featurewichtigkeit zu generieren.
 
     Danach können Sie die retrieve_model_explanation-Methode verwenden, um die Featurewichtigkeit für eine bestimmte Iteration abzurufen.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \

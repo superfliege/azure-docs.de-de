@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7fc40945588c272ae0ae80ba17b7b3752cab4306
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4d62885743a4e50ece1c032c7b3405d8766d95cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353310"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850585"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -245,7 +245,7 @@ Verwenden Sie die folgenden Schritte für Bereitstellungen in Azure Container In
     **Geschätzter Zeitaufwand**: Ca. 3 Minuten.
 
     > [!TIP]
-    > Wenn während der Bereitstellung Fehler auftreten, können Sie die AKS-Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
+    > Wenn während der Bereitstellung Fehler auftreten, können Sie die Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
 
 Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py).
 
@@ -300,7 +300,7 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attatch the cluster to your workgroup
+# Attach the cluster to your workgroup
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
@@ -335,7 +335,7 @@ print(service.state)
 **Geschätzter Zeitaufwand**: Ca. 3 Minuten.
 
 > [!TIP]
-> Wenn während der Bereitstellung Fehler auftreten, können Sie die AKS-Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
+> Wenn während der Bereitstellung Fehler auftreten, können Sie die Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
 
 Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py).
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 8488b968fe2ab823479d70a98ba86be97b28f67d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783619"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820970"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -31,7 +31,7 @@ Der MP **Azure Media Motion Detector** befindet sich derzeit in der Vorschauphas
 Dieser Artikel enthält Details zu **Azure Media Motion Detector** und zeigt die Verwendung mit dem Media Services SDK für .NET.
 
 ## <a name="motion-detector-input-files"></a>Motion Detector-Eingabedateien
-Videodateien. Derzeit werden folgende Formate unterstützt: MP4, MOV und WMV.
+Videodateien. Die folgenden Formate werden derzeit unterstützt: MP4, MOV und WMV.
 
 ## <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Motion Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. 
@@ -280,7 +280,7 @@ namespace VideoMotionDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Video Motion Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Video Motion Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);

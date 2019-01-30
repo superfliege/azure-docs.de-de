@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306453"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819338"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Sicherheitsstatus der Azure Stack-Infrastruktur
 
@@ -41,7 +41,7 @@ Da die Infrastruktur auf klar definierter Hardware und Software ausgeführt wird
 Da Azure Stack als integriertes System geliefert wird, wird der Sicherheitsstatus der Azure Stack-Infrastruktur von Microsoft definiert. Genau wie in Azure sind Mandanten dafür verantwortlich, den Sicherheitsstatus ihrer Mandantenworkloads zu definieren. Dieses Dokument vermittelt grundlegende Kenntnisse über den Sicherheitsstatus der Azure Stack-Infrastruktur.
 
 ## <a name="data-at-rest-encryption"></a>Verschlüsselung für ruhende Daten
-Alle Azure Stack-Infrastruktur- und Mandantendaten sind im Ruhezustand mit Bitlocker verschlüsselt. Diese Verschlüsselung bietet Schutz vor physischem Verlust bzw. Diebstahl von Azure Stack-Speicherkomponenten. Weitere Informationen finden Sie unter [Verschlüsselung für ruhende Daten in Azure Stack](azure-stack-security-bitlocker.md).
+Alle Azure Stack-Infrastruktur- und Mandantendaten sind im Ruhezustand mit BitLocker verschlüsselt. Diese Verschlüsselung bietet Schutz vor physischem Verlust bzw. Diebstahl von Azure Stack-Speicherkomponenten. Weitere Informationen finden Sie unter [Verschlüsselung für ruhende Daten in Azure Stack](azure-stack-security-bitlocker.md).
 
 ## <a name="data-in-transit-encryption"></a>Verschlüsselung von Daten während der Übertragung
 Die Azure Stack-Infrastrukturkomponenten kommunizieren mithilfe von Kanälen, die mit TLS 1.2 verschlüsselt sind. Verschlüsselungszertifikate werden von der Infrastruktur selbst verwaltet. 

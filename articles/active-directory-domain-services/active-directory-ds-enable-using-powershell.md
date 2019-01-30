@@ -4,7 +4,7 @@ description: Aktivieren von Azure Active Directory Domain Services mithilfe von 
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: ergreenl
-ms.openlocfilehash: b58df5ebf5332688424ac6ed2eeb9679487bcdc4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5ebb9f706d2e59b9c1227cec6fcc0e0619374069
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240255"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855005"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 In diesem Artikel wird gezeigt, wie Sie Azure Active Directory (AD) Domain Services mithilfe von PowerShell aktivieren.
@@ -31,7 +31,7 @@ In diesem Artikel wird gezeigt, wie Sie Azure Active Directory (AD) Domain Servi
 Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure AD PowerShell-Moduls und Herstellen einer Verbindung mit Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 ### <a name="install-and-configure-azure-powershell"></a>Installieren und Konfigurieren von Azure PowerShell
-Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure PowerShell-Moduls und Herstellen einer Verbindung mit Ihrem Azure-Abonnement](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+Folgen Sie den Anweisungen im Artikel zum [Installieren des Azure PowerShell-Moduls und Herstellen einer Verbindung mit Ihrem Azure-Abonnement](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
 ## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>Aufgabe 2: Erstellen des erforderlichen Dienstprinzipals in Ihrem Azure AD-Verzeichnis
@@ -41,7 +41,7 @@ Geben Sie den folgenden PowerShell-Befehl ein, um den für Azure AD Domain Servi
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>Aufgabe 3: Erstellen und Konfigurieren der Administratorengruppe für Azure AD-Domänencontroller
+## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>Aufgabe 3: Erstellen und Konfigurieren der Gruppe „AAD DC-Administratoren“
 Die nächste Aufgabe besteht darin, die Administratorengruppe zu erstellen, die zum Delegieren von Verwaltungsaufgaben für die verwaltete Domäne verwendet wird.
 ```powershell
 # Create the delegated administration group for AAD Domain Services.

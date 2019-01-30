@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: f2492e3d49f9b7e965c33ed4419f566e81dd62ed
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 469faeee4706c33b09f89bfbed1bb229a6aea20e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043463"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848370"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>.NET-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -36,6 +36,9 @@ ms.locfileid: "54043463"
 >
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Fehlerbehebungen
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * Unterstützung für Schreibvorgänge in mehreren Regionen hinzugefügt.
@@ -72,6 +75,8 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |22. Januar 2019|--- |
+| [2.0.0](#2.0.0) |26. September 2018|--- |
 | [1.1.3](#1.1.3) |17. Juli 2018|--- |
 | [1.1.1](#1.1.1) |26. März 2018|--- |
 | [1.1.0](#1.1.0) |21. Februar 2018|--- |

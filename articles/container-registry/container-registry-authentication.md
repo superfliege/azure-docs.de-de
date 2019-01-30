@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a68e4f70dac7aace9d49a41ecf282525ce6b1fd6
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 665ceabe062fce454db377a384b1d12ba6868c40
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752876"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851724"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 
@@ -33,6 +33,8 @@ az acr login --name <acrName>
 ```
 
 Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie [az login](/cli/azure/reference-index#az-login) ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle benötigen weder einen Benutzernamen noch das Kennwort. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md).
+
+In einigen Szenarien können Sie sich bei einer Registry mit Ihrer eigenen individuellen Identität in Azure AD anmelden. Für dienstübergreifende Szenarien oder um die Anforderungen einer Arbeitsgruppe zu erfüllen, in der Sie keinen individuellen Zugriff verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen](container-registry-authentication-managed-identity.md) anmelden.
 
 ## <a name="service-principal"></a>Dienstprinzipal
 

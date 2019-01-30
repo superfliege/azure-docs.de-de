@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 57d52412648cbe8a0791aa306075018a2092bf51
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265412"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827328"
 ---
 # <a name="about-azure-vm-backup"></a>Informationen zur Sicherung von Azure-VMs
 
@@ -69,11 +69,11 @@ Um Momentaufnahmen zu erstellen, während Apps ausgeführt werden, erstellt Azur
 
 In der folgenden Tabelle werden die verschiedenen Konsistenztypen erläutert.
 
-**Momentaufnahme** | **VSS-basiert** | **Details** | **Wiederherstellung**:
+**Momentaufnahme** | **Details** | **Wiederherstellung**: | **Aspekt**
 --- | --- | --- | ---
-**Anwendungskonsistent** | Ja (nur Windows) | Anwendungskonsistente Sicherungen erfassen Speicherinhalte und ausstehende E/A-Vorgänge. Anwendungskonsistente Momentaufnahmen verwenden VSS Writer (oder Pre-/Post-Skript für Linux), der die Konsistenz der Anwendungsdaten gewährleistet, ehe eine Sicherung erfolgt. | Wenn Sie die Wiederherstellung mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Die Apps starten in einem konsistenten Zustand.
-**Dateisystemkonsistent** | Ja (nur Windows) |  Dateikonsistente Sicherungen bieten konsistente Sicherungen von Datenträgerdateien, indem eine Momentaufnahme aller Dateien gleichzeitig erstellt wird.<br/><br/> Azure Backup-Wiederherstellungspunkte sind für Folgendes dateikonsistent:<br/><br/> – Linux-VM-Sicherungen, die keine Pre-/Post-Skripts haben oder bei denen das Skript nicht erfolgreich war.<br/><br/> – Windows VM-Sicherungen, bei denen VSS fehlerhaft war. | Wenn Sie die Wiederherstellung mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Apps müssen einen eigenen Reparaturmechanismus implementieren, um sicherzustellen, dass wiederhergestellte Daten konsistent sind.
-**Absturzkonsistent** | Nein  | Absturzkonsistenz liegt oftmals vor, wenn eine Azure-VM zum Zeitpunkt der Sicherung heruntergefahren wird.  Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert.<br/><br/> Ein absturzkonsistenter Wiederherstellungspunkt garantiert keine Datenkonsistenz für das Betriebssystem oder die App. | Es gibt keine Garantien, aber normalerweise wird die VM hochgefahren. Anschließend erfolgt eine Datenträgerprüfung, um Beschädigungen zu beheben. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Apps implementieren ihre eigene Datenüberprüfung. Falls bei einer Datenbank-App ein Transaktionsprotokoll beispielsweise Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Rollback durch, bis die Daten konsistent sind.
+**Anwendungskonsistent** | Anwendungskonsistente Sicherungen erfassen Speicherinhalte und ausstehende E/A-Vorgänge. Anwendungskonsistente Momentaufnahmen verwenden VSS Writer (oder Pre-/Post-Skript für Linux), der die Konsistenz der Anwendungsdaten gewährleistet, ehe eine Sicherung erfolgt. | Wenn Sie die Wiederherstellung mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Die Apps starten in einem konsistenten Zustand. | Windows: Alle VSS-Writer wurden erfolgreich abgeschlossen.<br/><br/> Linux: Pre-/Post-Skripts sind konfiguriert und erfolgreich abgeschlossen.
+**Dateisystemkonsistent** | Dateikonsistente Sicherungen bieten konsistente Sicherungen von Datenträgerdateien, indem eine Momentaufnahme aller Dateien gleichzeitig erstellt wird.<br/><br/> | Wenn Sie die Wiederherstellung mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Apps müssen einen eigenen Reparaturmechanismus implementieren, um sicherzustellen, dass wiederhergestellte Daten konsistent sind. | Windows: Fehler bei einigen VSS-Writern <br/><br/> Linux: Standardmäßig (wenn Pre-/Post-Skripts nicht konfiguriert oder bei ihnen Fehler aufgetreten sind)
+**Absturzkonsistent** | Absturzkonsistenz liegt oftmals vor, wenn eine Azure-VM zum Zeitpunkt der Sicherung heruntergefahren wird.  Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert.<br/><br/> Ein absturzkonsistenter Wiederherstellungspunkt garantiert keine Datenkonsistenz für das Betriebssystem oder die App. | Es gibt keine Garantien, aber normalerweise wird die VM hochgefahren. Anschließend erfolgt eine Datenträgerprüfung, um Beschädigungen zu beheben. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Apps implementieren ihre eigene Datenüberprüfung. Falls bei einer Datenbank-App ein Transaktionsprotokoll beispielsweise Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Rollback durch, bis die Daten konsistent sind. | VM wird heruntergefahren.
 
 
 ## <a name="service-and-subscription-limits"></a>Grenzwerte für Dienste und Abonnements

@@ -1,7 +1,7 @@
 ---
-title: Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines virtuellen Netzwerks
+title: Ausführen von Experimenten und Ziehen von Rückschlüssen in einem virtuellen Netzwerk
 titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie innerhalb eines virtuellen Azure-Netzwerks auf sichere Weise Experimente für maschinelles Lernen ausführen und Rückschlüsse ziehen. In diesem Artikel wird gezeigt, wie Sie die Computeziele zum Trainieren von Modellen erstellen und Rückschlüsse innerhalb eines virtuellen Azure-Netzwerks ziehen. Darüber hinaus finden Sie hier Informationen zu den Anforderungen für geschützte virtuelle Netzwerke (etwa die Anforderung eingehender und ausgehender Ports).
+description: Erfahren Sie, wie Sie innerhalb eines virtuellen Azure-Netzwerks auf sichere Weise Machine Learning-Experimente ausführen und Rückschlüsse ziehen. Erfahren Sie, wie Sie in einem virtuellen Azure-Netzwerk Computeziele für das Modelltraining erstellen und Rückschlüsse ziehen. Darüber hinaus finden Sie hier Informationen zu den Anforderungen für geschützte virtuelle Netzwerke (etwa die Anforderung eingehender und ausgehender Ports).
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 1890f830f9b2a4b108328de056636335fd3746e3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 21c4a9042a64a58f67f1f94c300b6438895eea5d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248602"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856280"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines virtuellen Azure-Netzwerks
 

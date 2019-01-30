@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 88ea3a5daa1a740ab545201bc48b612ea6a56a44
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584348"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810328"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Kündigen Ihres Abonnements für Azure
 
@@ -37,10 +37,11 @@ Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die G
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Kündigen eines Abonnements unter Verwendung des Azure-Portals
 
 1. Wählen Sie auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal Ihr Abonnement aus.
-1. Wählen Sie das zu kündigende Abonnement aus, und klicken Sie auf **Abonnement kündigen**.
+2. Wählen Sie das Abonnement aus, das Sie kündigen möchten.
+3. Wählen Sie **Übersicht** und dann **Abonnement kündigen** aus.
 
     ![Screenshot mit der Schaltfläche zum Kündigen](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-1. Befolgen Sie die Anweisungen, und schließen Sie die Kündigung ab.
+3. Befolgen Sie die Anweisungen, und schließen Sie die Kündigung ab.
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Was geschieht, nachdem ich mein Abonnement gekündigt habe?
 

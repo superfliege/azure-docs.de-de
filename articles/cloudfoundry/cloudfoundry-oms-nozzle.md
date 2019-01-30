@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
-ms.service: virtual-machines-linux
+ms.service: azure-monitor
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 198d6e596faf47528c508a9323ab22de563dfc62
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404901"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819032"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 
@@ -63,11 +63,11 @@ Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erst
 1. Suchen Sie im Azure-Portal in der Marketplace-Dienstliste nach „Log Analytics“, und wählen Sie den Eintrag aus.
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
 
-   * **Log Analytics-Arbeitsbereich**: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
+   * **Log Analytics-Arbeitsbereich**: Geben Sie einen Namen für den Arbeitsbereich ein.
    * **Abonnement**: Wählen Sie das Abonnement aus, das Ihrer CF-Bereitstellung entspricht, falls Sie über mehrere Abonnements verfügen.
    * **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder die gleiche wie für Ihre CF-Bereitstellung verwenden.
    * **Standort**: Geben Sie den Standort ein.
-   * **Tarif**: Wählen Sie **OK**, um den Vorgang abzuschließen.
+   * **Tarif:** Wählen Sie **OK** aus, um den Vorgang abzuschließen.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
@@ -80,11 +80,11 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](https:
 5. Geben Sie die erforderlichen Parameter ein:
     * **Abonnement**: Wählen Sie ein Azure-Abonnement für den Log Analytics-Arbeitsbereich aus, in der Regel identisch mit der Cloud Foundry-Bereitstellung.
     * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe für den Log Analytics-Arbeitsbereich.
-    * **Resource Group Location**: Wählen Sie den Speicherort der Ressourcengruppe aus.
+    * **Ressourcengruppenstandort**: Wählen Sie den Standort der Ressourcengruppe aus.
     * **OMS_Workspace_Name**: Geben Sie einen Arbeitsbereichnamen ein. Wenn der Arbeitsbereich noch nicht vorhanden ist, wird die Vorlage einen neuen erstellen.
-    * **OMS_Workspace_Region**: Wählen Sie den Speicherort des Arbeitsbereichs ein.
-    * **OMS_Workspace_Pricing_Tier**: Wählen Sie die Log Analytics-Arbeitsbereich-SKU aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
-    * **Legal terms**: Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
+    * **OMS_Workspace_Region**: Wählen Sie den Speicherort für den Arbeitsbereich aus.
+    * **OMS_Workspace_Pricing_Tier**: Wählen Sie das SKU für den Log Analytics-Arbeitsbereich aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
+    * **Rechtliche Bedingungen**: Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
 - Wenn Sie alle Parameter angegeben haben, klicken Sie auf „Erstellen“, um die Vorlage bereitzustellen. Wenn die Bereitstellung abgeschlossen ist, wird der Status auf der Registerkarte „Benachrichtigung“ angezeigt.
 
 

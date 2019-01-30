@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 467af0f04708c9c6758531fb1cd71d79e9ddd6d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 44f61d7b90018b76b1903a04d219dcf0226f95e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302968"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852319"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
@@ -39,7 +39,7 @@ Jeder Schritt kann alleine oder als Teil eines einzelnen Bereitstellungsbefehls 
 
 Die Modellregistrierung ermöglicht es Ihnen, Ihre Modelle in der Azure-Cloud in Ihrem Arbeitsbereich zu speichern und zu versionieren. Die Modellregistrierung erleichtert das Organisieren und Verwalten von trainierten Modellen.
  
-Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Der Azure Machine Learning-Dienst unterstützt Modelle, die mit jedem Modell gespeichert sind, das mit Python 3 geladen werden kann. 
+Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Der Azure Machine Learning Service unterstützt Modelle, die mit Python 3 geladen werden können. 
 
 Sie können keine Modelle löschen, die von einem Image verwendet werden.
 
@@ -63,7 +63,7 @@ Das Image kann auch SDK-Komponenten zum Protokollieren und Überwachen beinhalte
 Azure Machine Learning unterstützt die gängigsten Frameworks – generell wird jedes Framework unterstützt, das mit „pip“ installiert werden kann.
 
 Wenn Ihr Arbeitsbereich erstellt wurde, wurden auch andere Azure-Ressourcen erstellt, die von diesem Arbeitsbereich verwendet werden.
-Alle Objekte, die zum Erstellen des Images verwendet werden, werden im Azure-Speicherkonto in Ihrem Arbeitsbereich gespeichert. Das Image wird erstellt und in Azure Container Registry gespeichert. Sie können beim Erstellen des Images zusätzliche Metadatentags bereitstellen, die ebenfalls in der Bildregistrierung gespeichert werden. Diese können später abgefragt werden, um das Image wiederzufinden.
+Alle Objekte, die zum Erstellen des Images verwendet werden, werden im Azure-Speicherkonto in Ihrem Arbeitsbereich gespeichert. Beim Erstellen des Images können Sie weitere Metadatentags bereitstellen. Metadatentags werden auch von der Imageregistrierung gespeichert und können abgefragt werden, um nach Ihrem Image zu suchen.
 
 Weitere Informationen finden Sie im Abschnitt „Konfigurieren und Registrieren eines Image“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#configureimage).
 

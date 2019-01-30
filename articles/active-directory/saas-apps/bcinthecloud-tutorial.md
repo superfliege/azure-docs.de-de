@@ -4,7 +4,7 @@ description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwis
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d9d2bb0dc44eab0a419efce0c26a8f30135285e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 33670ce210b7ca7bca276f463d029354dc3282fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431656"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817485"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Tutorial: Azure Active Directory-Integration in BC in der Cloud
 
@@ -130,7 +130,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **BC in der Cloud** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [BC in der Cloud-Supportteam](https://www.bcinthecloud.com/supportcenter/) senden.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -166,7 +166,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-bc-in-the-cloud-test-user"></a>Erstellen eines BC in der Cloud-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in BC in der Cloud einen Benutzer namens Britta Simon. Arbeiten mit dem [Supportteam für den BC in der Cloud-Client](https://www.bcinthecloud.com/supportcenter/), um die Benutzer in der BC in der Cloud-Anwendung hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in BC in der Cloud einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Supportteam für den BC in der Cloud-Client](https://www.bcinthecloud.com/supportcenter/) zusammen, um die Benutzer in der BC in der Cloud-Anwendung hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -202,7 +202,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
- Wenn Sie im Zugriffsbereich auf die Kachel „BC in der Cloud“ klicken, sollten Sie automatisch bei Ihrer BC in der Cloud-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+ Wenn Sie im Zugriffsbereich auf die Kachel „BC in der Cloud“ klicken, sollten Sie automatisch bei Ihrer BC in der Cloud-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter  [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

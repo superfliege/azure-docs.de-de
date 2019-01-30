@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 99b3a65feb232526cffecac4fec68d56fcd16ccb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189471"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846284"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Nachverfolgen von Experimenten und Trainingsmetriken in Azure Machine Learning
 
@@ -128,10 +128,10 @@ Das Skript endet mit ```run.complete()```, wodurch angegeben wird, dass die Ausf
 
 Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es führt eine einfache Parametersuche durch, um Alphawerte des Modells zu überfliegen, um Metriken und trainierte Modelle in Ausführungen im Rahmen des Experiments zu erfassen. Das Beispiel wird lokal in einer von Benutzer verwalteten Umgebung ausgeführt. 
 
-1. Erstellen Sie ein Trainingsskript. Dieser Code verwendet ```%%writefile%%```, um den Trainingscode als ```train.py``` in den Skriptordner zu schreiben.
+1. Erstellen Sie ein Trainingsskript`train.py`.
 
   ```python
-  %%writefile $project_folder/train.py
+  # train.py
 
   import os
   from sklearn.datasets import load_diabetes
@@ -182,10 +182,11 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
   
   ```
 
-2. Das ```train.py```-Skript referenziert ```mylib.py```. Über diese Datei erhalten Sie eine Liste der Alphawerte, die im Ridge-Modell verwendet werden sollen.
+2. Über diese `train.py`-Skriptreferenz`mylib.py` erhalten Sie eine Liste der Alphawerte, die im Ridge-Modell verwendet werden sollen.
 
   ```python
-  %%writefile $script_folder/mylib.py
+  # mylib.py
+  
   import numpy as np
 
   def get_alphas():
@@ -216,7 +217,31 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
+
+## <a name="cancel-a-run"></a>Abbrechen einer Ausführung
+Nachdem eine Ausführung übermittelt wurde, können Sie sie abbrechen, auch wenn Sie die Objektreferenz verloren haben, sofern Sie den Experimentnamen und die Ausführungs-ID kennen. 
+
+```python
+from azureml.core import Experiment
+exp = Experiment(ws, "my-experiment-name")
+
+# if you don't know the run id, you can list all runs under an experiment
+for r in exp.get_runs():  
+    print(r.id, r.get_status())
+
+# if you know the run id, you can "rehydrate" the run
+from azureml.core import get_run
+r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
   
+# check the returned run type and status
+print(type(r), r.get_status())
+
+# you can only cancel a run if the status is Running
+if r.get_status() == 'Running':
+    r.cancel()
+```
+Bitte beachten Sie, dass derzeit nur die Typen „ScriptRun“ und „PipelineRun“ den Abbruchvorgang unterstützen.
+
 ## <a name="view-run-details"></a>Anzeigen von Ausführungsdetails
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Überwachen der Ausführung mit Jupyter-Notebook-Widgets

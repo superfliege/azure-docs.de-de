@@ -4,7 +4,7 @@ description: Informationen zu Kennwortrichtlinien in verwalteten Domänen
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: dcc1de5fa0ac1f394d0fe12fd24a1d6e745df83e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0bb3ccb3841b60f6c94ac1d6126bd2b0d44af092
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284607"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852693"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 Dieser Artikel beschreibt die Standardkennwortrichtlinien in einer verwalteten Domäne. Sie erfahren auch, wie Sie diese Richtlinien konfigurieren können.
@@ -59,8 +59,8 @@ In einer verwalteten Domäne werden die folgenden Kennwortrichtlinien standardm�
 ### <a name="account-lockout-settings"></a>Einstellungen für die Kontosperrung
 In einer verwalteten Domäne werden die folgenden Kontosperrungsrichtlinien standardmäßig konfiguriert:
 * Kontosperrungsdauer: 30
-* Zulässige Anzahl fehlgeschlagener Anmeldeversuche: 5
-* Anzahl fehlgeschlagener Anmeldeversuche zurücksetzen nach: 30 Minuten
+* Zulässige Anzahl fehlerhafter Anmeldeversuche: 5
+* Anzahl fehlerhafter Anmeldeversuche zurücksetzen nach: 30 Minuten
 
 Dies bedeutet: Benutzerkonten werden für 30 Minuten gesperrt, wenn innerhalb von zwei Minuten fünf ungültige Kennwörter verwendet werden. Nach 30 Minuten werden die Konten automatisch wieder entsperrt.
 
@@ -113,7 +113,7 @@ So erstellen Sie eine benutzerdefinierte FGPP in Ihrer verwalteten Domäne
   ![FGPP angewendet](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
-> **Anwenden benutzerdefinierter Kennwortrichtlinien auf Benutzerkonten in einer benutzerdefinierten Organisationseinheit:** Differenzierte Kennwortrichtlinien können nur auf Gruppen angewendet werden. Erstellen Sie eine Gruppe, die die Benutzer in dieser Organisationseinheit enthält, um eine benutzerdefinierte Kennwortrichtlinie nur für Benutzer aus einer benutzerdefinierten Organisationseinheit zu konfigurieren.
+> **Anwendung benutzerdefinierter Kennwortrichtlinien für Benutzerkonten in einer benutzerdefinierten Organisationseinheit**: Differenzierte Kennwortrichtlinien (FGPP) können nur auf Gruppen angewendet werden. Erstellen Sie eine Gruppe, die die Benutzer in dieser Organisationseinheit enthält, um eine benutzerdefinierte Kennwortrichtlinie nur für Benutzer aus einer benutzerdefinierten Organisationseinheit zu konfigurieren.
 >
 >
 

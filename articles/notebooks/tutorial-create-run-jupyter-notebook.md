@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244583"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849654"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -128,7 +128,7 @@ Da die Datendatei nun bereit ist und die Projektumgebung festgelegt ist, können
 1. Da Sie in den Umgebungseinstellungen über eine *requirements.txt*-Datei verfügen, wird die folgende Meldung angezeigt: „Waiting for your container to finish being prepared“ (Auf die Vorbereitung Ihres Containers wird gewartet). Sie können auf **OK** klicken, um die Meldung zu schließen und mit der Arbeit im Notebook fortzufahren. Allerdings können Sie keine Codezellen ausführen, bis die Umgebung vollständig eingerichtet ist.
 1. Das Notebook wird standardmäßig mit einer einzelnen leeren Codezelle in der Jupyter-Schnittstelle geöffnet.
 
-    [![](media/tutorial/tutorial-new-notebook.png "Anfängliche Ansicht eines neuen Notebooks in Azure Notebooks")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Anfängliche Ansicht eines neuen Notebooks in Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Einführung in die Notebook-Schnittstelle
 
@@ -144,7 +144,7 @@ Am oberen Rand des Fensters finden Sie folgende Elemente:
 (F) Ein Indikator, der angibt, ob das Notebook vertrauenswürdig ist (der Standardwert ist **Not Trusted** (Nicht vertrauenswürdig)).
 (G) Der Kernel, der zum Ausführen des Notebooks verwendet wird, mit einem Indikator für die Aktivität.
 
-[![](media/tutorial/tutorial-notebook-ui.png "Hauptbereiche der Benutzeroberfläche der Jupyter-Schnittstelle")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Hauptbereiche der Benutzeroberfläche der Jupyter-Schnittstelle](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter stellt eine integrierte Einführung für die primären Benutzeroberflächenelemente bereit. Diese Einführung können Sie starten, indem Sie auf **Help** > **User Interface Tour** (Hilfe > Einführung in die Benutzeroberfläche) klicken. Dann können Sie sich durch die angezeigten Popupfenster klicken.
 

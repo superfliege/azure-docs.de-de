@@ -3,23 +3,23 @@ title: Asynchrones Messaging mit Service Bus | Microsoft Docs
 description: Beschreibung des asynchronen Messaging mit Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 9bacce96e65a7aef611bec3ddae8b1872d5f9fae
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0ecc277e1b9bd94558c54b1c808fdc24f47c402e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391462"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845077"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchrone Nachrichtenmuster und Hochverfügbarkeit
 
@@ -110,7 +110,7 @@ public SendAvailabilityPairedNamespaceOptions(
 Diese Parameter haben folgende Bedeutung:
 
 * *secondaryNamespaceManager*: Eine initialisierte [NamespaceManager][NamespaceManager]-Instanz für den sekundären Namespace, die die [PairNamespaceAsync][PairNamespaceAsync]-Methode zum Einrichten von sekundären Namespaces verwenden kann. Der Namespace-Manager wird verwendet, um die Liste der Warteschlangen im Namespace abzurufen und sicherzustellen, dass die erforderlichen Backlogwarteschlangen vorhanden sind. Wenn diese Warteschlangen nicht vorhanden sind, werden sie erstellt. [NamespaceManager][NamespaceManager] muss in der Lage sein, ein Token mit dem Anspruch **Verwalten** zu erstellen.
-* *messagingFactory:* Die [MessagingFactory][MessagingFactory]-Instanz für den sekundären Namespace. Das [MessagingFactory][MessagingFactory]-Objekt dient zum Senden und, falls die [EnableSyphon][EnableSyphon]-Eigenschaft auf **TRUE** festgelegt ist, zum Empfangen von Nachrichten aus den Backlogwarteschlangen.
+* *messagingFactory*: Die [MessagingFactory][MessagingFactory]-Instanz für den sekundären Namespace. Das [MessagingFactory][MessagingFactory]-Objekt dient zum Senden und, falls die [EnableSyphon][EnableSyphon]-Eigenschaft auf **TRUE** festgelegt ist, zum Empfangen von Nachrichten aus den Backlogwarteschlangen.
 * *backlogQueueCount*: Die Anzahl der zu erstellenden Backlogwarteschlangen. Dieser Wert muss mindestens 1 sein. Beim Senden von Nachrichten an den Backlog wird eine dieser Warteschlangen zufällig ausgewählt. Wenn Sie den Wert auf 1 festlegen, kann immer nur eine einzige Warteschlange verwendet werden. Wenn dies geschieht und die einzige Backlogwarteschlange einen Fehler generiert, kann der Client keine andere Backlogwarteschlange verwenden und Ihre Nachricht möglicherweise nicht senden. Es wird empfohlen, diesen Wert auf einen größeren Wert und standardmäßig auf 10 festzulegen. Sie können diesen Wert in einen höheren oder niedrigeren Wert ändern, abhängig von der Datenmenge, die Ihre Anwendung pro Tag sendet. Jede Backlogwarteschlange kann bis zu 5 GB an Nachrichten enthalten.
 * *failoverInterval*: Die Zeitspanne, während der Sie Fehler im primären Namespace akzeptieren, bevor eine einzelne Entität zum sekundären Namespace wechselt. Failover treten pro Entität auf. Entitäten in einem einzelnen Namespace befinden sich häufig auf verschiedenen Knoten in Service Bus. Ein Fehler in einer Entität impliziert keinen Fehler in einer anderen. Legen Sie diesen Wert auf [System.TimeSpan.Zero][System.TimeSpan.Zero] fest, damit ein Failover auf den sekundären Namespace unmittelbar nach dem ersten dauerhaften Fehler erfolgt. Fehler, die den Failovertimer auslösen, sind alle [MessagingException][MessagingException]-Elemente, bei denen die [IsTransient][IsTransient]-Eigenschaft FALSE ist, oder [System.TimeoutException][System.TimeoutException]. Andere Ausnahmen wie [UnauthorizedAccessException][UnauthorizedAccessException] verursachen kein Failover, da sie angeben, dass der Client nicht ordnungsgemäß konfiguriert ist. [ServerBusyException][ServerBusyException] verursacht kein Failover, da das richtige Muster ist, 10 Sekunden zu warten und die Nachricht dann erneut zu senden.
 * *enableSyphon*: Gibt an, dass diese bestimmte Kopplung auch Nachrichten vom sekundären Namespace zurück an den primären Namespace übertragen soll. In der Regel sollte für Anwendungen, die Nachrichten senden, dieser Wert auf **FALSE** festgelegt werden. Für Anwendungen, die Nachrichten empfangen, sollte dieser Wert auf **TRUE** festgelegt werden. Der Grund dafür ist, dass häufig weniger Nachrichtenempfänger als Nachrichtenabsender vorhanden sind. Abhängig von der Anzahl der Empfänger können Sie eine einzelne Anwendungsinstanz für die Übertragung verwenden. Die Verwendung vieler Empfänger hat Auswirkungen auf die Abrechnung für jede Backlogwarteschlange.

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726541"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827413"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Fragen zum Azure Backup-Agent
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten des Azure Backup-Agents vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -34,7 +34,7 @@ Folgende Laufwerke/Volumes können nicht gesichert werden:
 * Offlinevolumes: Das Volume muss online sein, damit der VSS funktioniert.
 * Netzwerkfreigabe: Das Volume muss sich lokal auf dem Server befinden, damit es mit der Onlinesicherung gesichert werden kann.
 * Mit BitLocker geschützte Volumes: Das Volume muss entsperrt werden, damit die Sicherung erfolgen kann.
-* Dateisystemidentifikation: Als Dateisystem wird ausschließlich NTFS unterstützt.
+* Dateisystemidentifikation: NTFS ist das einzige unterstützte Dateisystem.
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Welche Datei- und Ordnertypen können von meinem Server gesichert werden?<br/>
 Die folgenden Typen werden unterstützt:
@@ -43,11 +43,11 @@ Die folgenden Typen werden unterstützt:
 * Komprimiert
 * Platzsparend
 * Komprimiert und geringe Dichte
-* Feste Links: Nicht unterstützt, werden übersprungen
+* Feste Links: Nicht unterstützt, wird übersprungen
 * Analysepunkt: Nicht unterstützt, wird übersprungen
 * Verschlüsselt und geringe Dichte: Nicht unterstützt, wird übersprungen
-* Komprimierter Stream: Nicht unterstützt, wird übersprungen
-* Stream mit geringer Dichte: Nicht unterstützt, wird übersprungen
+* Komprimierter Datenstrom: Nicht unterstützt, wird übersprungen
+* Platzsparender Datenstrom: Nicht unterstützt, wird übersprungen
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, die mithilfe der VM-Erweiterung bereits vom Azure Backup-Dienst gesichert wurde? <br/>
 Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung. Installieren Sie den Azure Backup-Agent unter dem Windows-Gastbetriebssystem, um Dateien und Ordner unter dem Gastbetriebssystem zu schützen.

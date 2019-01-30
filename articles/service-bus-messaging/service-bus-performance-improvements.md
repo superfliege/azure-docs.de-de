@@ -3,18 +3,19 @@ title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus | 
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392634"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848571"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -36,7 +37,7 @@ AMQP und SBMP sind effizienter, da sie die Verbindung mit Service Bus aufrechter
 
 ## <a name="reusing-factories-and-clients"></a>Wiederverwenden von Factorys und Clients
 
-Service Bus-Clientobjekte wie [QueueClient][QueueClient] oder [MessageSender][MessageSender] werden durch ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können das [QueueClient][QueueClient]-Objekt auf sichere Weise zum Senden von Nachrichten von gleichzeitigen asynchronen Vorgängen und mehreren Threads verwenden. 
+Service Bus-Clientobjekte wie [QueueClient][QueueClient] oder [MessageSender][MessageSender] werden durch ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden. 
 
 ## <a name="concurrent-operations"></a>Parallele Vorgänge
 
@@ -127,42 +128,13 @@ Die Eigenschaft für die Gültigkeitsdauer (Time-to-Live, TTL) einer Nachricht w
 
 Der Vorabruf wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll verfügbar. Das HTTP-Protokoll unterstützt keinen Vorabruf. Vorabrufe sind für synchrone und asynchrone Empfangsvorgänge verfügbar.
 
-## <a name="express-queues-and-topics"></a>Express-Warteschlangen und -Themen
-
-Expressentitäten ermöglichen Szenarien mit einem hohen Durchsatz und reduzierter Latenz und werden nur im Standard-Messaging-Tarif unterstützt. Entitäten, die in [Premium-Namespaces](service-bus-premium-messaging.md) erstellt wurden, unterstützen die Expressoption nicht. Wenn bei Express-Entitäten eine Nachricht an eine Warteschlange oder an ein Thema gesendet wird, wird sie nicht sofort im Messagingspeicher gespeichert. Stattdessen wird sie im Arbeitsspeicher zwischengespeichert. Wenn eine Nachricht mehr als ein paar Sekunden in der Warteschlange bleibt, wird sie automatisch in einen stabilen Speicher geschrieben und so vor Datenverlusten aufgrund eines Ausfalls geschützt. Das Schreiben der Nachricht in einen Speichercache erhöht den Durchsatz und verringert die Latenz, da zu dem Zeitpunkt, zu dem die Nachricht gesendet wird, kein Zugriff auf den stabilen Speicher erfolgt. Nachrichten, die innerhalb weniger Sekunden genutzt werden, werden nicht in den Messagingspeicher geschrieben. Das folgende Beispiel erstellt ein Express-Thema.
-
-```csharp
-TopicDescription td = new TopicDescription(TopicName);
-td.EnableExpress = true;
-namespaceManager.CreateTopic(td);
-```
-
-Wenn eine Nachricht, die wichtige Informationen enthält, die nicht verloren gehen dürfen, an eine Express-Entität gesendet wird, kann der Absender in Service Bus erzwingen, dass die Nachricht sofort in den stabilen Speicher übertragen wird, indem die Eigenschaft [ForcePersistence][ForcePersistence] auf **TRUE** festgelegt wird.
-
-> [!NOTE]
-> Expressentitäten unterstützen keine Transaktionen.
-
-## <a name="partitioned-queues-or-topics"></a>Partitionierte Warteschlangen oder Themen
-
-Intern verwendet Service Bus den gleichen Knoten und den gleichen Messagingspeicher, um sämtliche Nachrichten für eine Messagingentität (Warteschlange oder Thema) zu verarbeiten und zu speichern. [Partitionierte Warteschlangen oder Themen](service-bus-partitioning.md) sind hingegen auf mehrere Knoten und Messagingspeicher verteilt. Sie bieten einen höheren Durchsatz als reguläre Warteschlangen und Themen und zeichnen sich zudem durch eine höhere Verfügbarkeit aus. Um eine partitionierte Entität zu erstellen, legen Sie die [EnablePartitioning][EnablePartitioning]-Eigenschaft auf **TRUE** fest, wie im folgenden Beispiel gezeigt. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Messagingentitäten][Partitioned messaging entities].
-
-> [!NOTE]
-> Partitionierte Entitäten werden in der [Premium-SKU](service-bus-premium-messaging.md) nicht unterstützt. 
-
-```csharp
-// Create partitioned queue.
-QueueDescription qd = new QueueDescription(QueueName);
-qd.EnablePartitioning = true;
-namespaceManager.CreateQueue(qd);
-```
-
 ## <a name="multiple-queues"></a>Mehrere Warteschlangen
 
-Falls keine partitionierten Warteschlangen oder Themen verwendet werden können oder die erwartete Last nicht von einer partitionierten Warteschlange oder von einem partitionierten Thema bewältigt werden kann, müssen mehrere Messagingentitäten verwendet werden. Wenn Sie mehrere Entitäten verwenden, erstellen Sie einen dedizierten Client für jede Entität, statt den gleichen Client für alle Entitäten zu nutzen.
+Wenn die erwartete Last nicht von einer partitionierten Warteschlange oder von einem partitionierten Thema bewältigt werden kann, müssen mehrere Messagingentitäten verwendet werden. Wenn Sie mehrere Entitäten verwenden, erstellen Sie einen dedizierten Client für jede Entität, statt den gleichen Client für alle Entitäten zu nutzen.
 
 ## <a name="development-and-testing-features"></a>Entwicklungs- und Testfunktionen
 
-Service Bus verfügt über eine Funktion, die speziell für die Entwicklung verwendet wird und **nie in Produktionskonfigurationen eingesetzt werden sollte**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
+Service Bus verfügt über ein Feature, das speziell für die Entwicklung verwendet wird und **nie in Produktionskonfigurationen eingesetzt werden sollte**. [TopicDescription.EnableFilteringMessagesBeforePublishing][].
 
 Wenn dem Thema neue Regeln oder Filter hinzugefügt werden, kann mit [TopicDescription.EnableFilteringMessagesBeforePublishing][] überprüft werden, ob der neue Filterausdruck wie erwartet funktioniert.
 
@@ -172,7 +144,7 @@ In den folgenden Abschnitten werden normale Messagingszenarien und die bevorzugt
 
 ### <a name="high-throughput-queue"></a>Warteschlange mit hohem Durchsatz
 
-Ziel: Maximieren des Durchsatzes einer einzelnen Warteschlange. Die Anzahl der Absender und Empfänger ist klein.
+Zielsetzung: Maximieren des Durchsatzes einer einzelnen Warteschlange. Die Anzahl der Absender und Empfänger ist klein.
 
 * Verwenden Sie zum Erhöhen der Gesamtsenderate an die Warteschlange mehrere Messagingfactorys, um Absender zu erstellen. Verwenden Sie für jeden Absender asynchrone Vorgänge oder mehrere Threads.
 * Verwenden Sie zum Erhöhen der Gesamtempfangsrate von der Warteschlange mehrere Messagingfactorys, um Empfänger zu erstellen.
@@ -184,13 +156,13 @@ Ziel: Maximieren des Durchsatzes einer einzelnen Warteschlange. Die Anzahl der A
 
 ### <a name="multiple-high-throughput-queues"></a>Mehrere Warteschlangen mit hohem Durchsatz
 
-Ziel: Maximieren des Gesamtdurchsatzes mehrerer Warteschlangen. Der Durchsatz einer einzelnen Warteschlange ist mittel oder hoch.
+Zielsetzung: Maximieren des Gesamtdurchsatzes mehrerer Warteschlangen. Der Durchsatz einer einzelnen Warteschlange ist mittel oder hoch.
 
 Um den maximalen Durchsatz für mehrere Warteschlangen zu erhalten, verwenden Sie die beschriebenen Einstellungen, um den Durchsatz einer einzelnen Warteschlange zu maximieren. Verwenden Sie außerdem unterschiedliche Factorys zum Erstellen von Clients, die an verschiedene Warteschlangen senden bzw. von ihnen empfangen.
 
 ### <a name="low-latency-queue"></a>Warteschlange mit niedriger Latenz
 
-Ziel: Minimieren der End-to-End-Latenz einer Warteschlange oder eines Themas. Die Anzahl der Absender und Empfänger ist klein. Der Durchsatz der Warteschlange ist klein oder mittel.
+Zielsetzung: Minimieren der End-to-End-Latenz einer Warteschlange oder eines Themas. Die Anzahl der Absender und Empfänger ist klein. Der Durchsatz der Warteschlange ist klein oder mittel.
 
 * Deaktivieren Sie die clientseitige Batchverarbeitung. Der Client sendet eine Nachricht sofort.
 * Deaktivieren Sie den Speicherzugriff als Batch. Der Dienst schreibt die Nachricht sofort in den Speicher.
@@ -200,7 +172,7 @@ Ziel: Minimieren der End-to-End-Latenz einer Warteschlange oder eines Themas. Di
 
 ### <a name="queue-with-a-large-number-of-senders"></a>Warteschlange mit einer großen Anzahl von Absendern
 
-Ziel: Maximieren des Durchsatzes einer Warteschlange oder eines Themas mit einer großen Anzahl von Absendern. Jeder Absender sendet Nachrichten mit einer mittleren Rate. Die Anzahl der Empfänger ist klein.
+Zielsetzung: Maximieren des Durchsatzes einer Warteschlange oder eines Themas mit einer großen Anzahl von Absendern. Jeder Absender sendet Nachrichten mit einer mittleren Rate. Die Anzahl der Empfänger ist klein.
 
 Service Bus ermöglicht bis zu 1000 gleichzeitige Verbindungen mit einer Messagingentität (oder 5000 mithilfe von AMQP). Dieser Grenzwert wird auf Namespace-Ebene erzwungen, und Warteschlangen/Themen/Abonnements werden durch den Grenzwert für gleichzeitige Verbindungen pro Namespace begrenzt. Bei Warteschlangen wird diese Anzahl zwischen Absendern und Empfängern aufgeteilt. Wenn alle 1000 Verbindungen für Absender benötigt werden, ersetzen Sie die Warteschlange durch ein Thema und ein einzelnes Abonnement. Ein Thema akzeptiert bis zu 1000 gleichzeitige Verbindungen von Absendern, während das Abonnement zusätzlich 1000 gleichzeitige Verbindungen von Empfängern akzeptiert. Wenn mehr als 1000 gleichzeitige Absender erforderlich sind, sollten die Absender über HTTP Nachrichten an das Service Bus-Protokoll senden.
 
@@ -215,7 +187,7 @@ Führen Sie die folgenden Schritte aus, um den Durchsatz zu maximieren:
 
 ### <a name="queue-with-a-large-number-of-receivers"></a>Warteschlange mit einer großen Anzahl von Empfängern
 
-Ziel: Maximieren der Empfangsrate einer Warteschlange oder eines Abonnements mit einer großen Anzahl von Empfängern. Jeder Empfänger empfängt Nachrichten mit einer mittleren Rate. Die Anzahl der Absender ist klein.
+Zielsetzung: Maximieren der Empfangsrate einer Warteschlange oder eines Abonnements mit einer großen Anzahl von Empfängern. Jeder Empfänger empfängt Nachrichten mit einer mittleren Rate. Die Anzahl der Absender ist klein.
 
 Service Bus ermöglicht bis zu 1000 gleichzeitige Verbindungen mit einer Messagingentität. Wenn für eine Warteschlange mehr als 1000 Empfänger erforderlich sind, ersetzen Sie die Warteschlange durch ein Thema und mehrere Abonnements. Jedes Abonnement kann bis zu 1000 gleichzeitige Verbindungen unterstützen. Alternativ können Empfänger über das HTTP-Protokoll auf die Warteschlange zugreifen.
 
@@ -229,7 +201,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>Thema mit einer geringen Anzahl von Abonnements
 
-Ziel: Maximieren des Durchsatzes eines Themas mit einer geringen Anzahl von Abonnements. Eine Nachricht wird von zahlreichen Abonnements empfangen, was bedeutet, dass die kombinierte Empfangsrate aller Abonnements größer als die Senderate ist. Die Anzahl der Absender ist klein. Die Empfängeranzahl pro Abonnement ist gering.
+Zielsetzung: Maximieren des Durchsatzes eines Themas mit einer geringen Anzahl von Abonnements. Eine Nachricht wird von zahlreichen Abonnements empfangen, was bedeutet, dass die kombinierte Empfangsrate aller Abonnements größer als die Senderate ist. Die Anzahl der Absender ist klein. Die Empfängeranzahl pro Abonnement ist gering.
 
 Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
@@ -243,7 +215,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
 ### <a name="topic-with-a-large-number-of-subscriptions"></a>Thema mit einer großen Anzahl von Abonnements
 
-Ziel: Maximieren des Durchsatzes eines Themas mit einer großen Anzahl von Abonnements. Eine Nachricht wird von zahlreichen Abonnements empfangen, was bedeutet, dass die kombinierte Empfangsrate aller Abonnements viel größer als die Senderate ist. Die Anzahl der Absender ist klein. Die Empfängeranzahl pro Abonnement ist gering.
+Zielsetzung: Maximieren des Durchsatzes eines Themas mit einer großen Anzahl von Abonnements. Eine Nachricht wird von zahlreichen Abonnements empfangen, was bedeutet, dass die kombinierte Empfangsrate aller Abonnements viel größer als die Senderate ist. Die Anzahl der Absender ist klein. Die Empfängeranzahl pro Abonnement ist gering.
 
 Themen mit einer großen Anzahl von Abonnements weisen normalerweise einen geringen Gesamtdurchsatz auf, wenn alle Nachrichten an alle Abonnements weitergeleitet werden. Der Grund für diesen geringen Durchsatz: Jede Nachricht wird mehrmals empfangen, und alle in einem Thema enthaltenen Nachrichten sowie dessen Abonnements werden im gleichen Speicher gespeichert. Es wird von einer geringen Anzahl von Absendern und Empfängern pro Abonnement ausgegangen. Service Bus unterstützt bis zu 2000 Abonnements pro Thema.
 
