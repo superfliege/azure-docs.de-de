@@ -3,23 +3,23 @@ title: AMQP 1.0 in anforderungs-/antwortbasierten Azure Service Bus-Vorgängen |
 description: Liste der anforderungs-/antwortbasierten Vorgänge in Microsoft Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 113ed80910e396361396a9c1298fc04a55ac4800
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159093"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852474"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
@@ -195,7 +195,7 @@ Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
+| Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
   
 Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
@@ -220,7 +220,7 @@ Der Nachrichtentext der Anforderung muss aus einem **amqp-value**-Abschnitt best
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
+| Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
   
 Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
@@ -351,7 +351,7 @@ Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
+| Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt.|  
   
  Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   
@@ -662,7 +662,7 @@ Der Nachrichtentext der Antwort muss aus einem **amqp-value**-Abschnitt bestehen
   
 |Schlüssel|Werttyp|Erforderlich|Wertinhalt|  
 |---------|----------------|--------------|--------------------|  
-|Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt|  
+| Cloud an das Gerät|Liste der Zuordnungen|JA|Liste der Nachrichten, in denen jede Zuordnung eine Nachricht darstellt|  
   
 Die Zuordnung, die eine Nachricht darstellt, muss die folgenden Einträge enthalten:  
   

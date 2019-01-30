@@ -4,7 +4,7 @@ description: Administratorhandbuch für die Verwendung von Atlassian Jira und Co
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77aba012d4e8d333d6f57f8f6a7a12927e6a35ec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426875"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820545"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira und Confluence – Administratorhandbuch für Azure Active Directory
 
@@ -123,7 +123,7 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 *   **Abmelde-URL**: Die Abmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
-*   **X. 509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
+*   **X.509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
 *   **Anmeldeschaltflächen-Name**: Der Name der Anmeldeschaltfläche, die Ihre Organisation Benutzern auf der Anmeldeseite anzeigen möchte.
 
@@ -135,13 +135,13 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 *   **Domänenname**: Der Domänenname bei AD FS-basiertem Anmelden.
 
-*   **Einmaliges Abmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
+*   **Einmaliges Anmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-* **Sie erhalten Fehlermeldungen, dass mehrere Zertifikate vorhanden sind**: Melden Sie sich bei Azure AD an, und entfernen Sie überzählige Zertifikate, die für die App verfügbar sind. Stellen Sie sicher, dass nur ein Zertifikat vorhanden ist.
+* **Fehlermeldung, dass mehrere Zertifikate vorliegen**: Melden Sie sich bei Azure AD an, und entfernen Sie mehrere Zertifikate, die für die App verfügbar sind. Stellen Sie sicher, dass nur ein Zertifikat vorhanden ist.
 
-* **Ein Zertifikat läuft in Azure AD ab**: Add-Ons kümmern sich um das automatische Rollover des Zertifikats. Wenn ein Zertifikat in Kürze abläuft, sollte das neue Zertifikat als aktiv gekennzeichnet werden, und nicht verwendete Zertifikate sollten gelöscht werden. Wenn ein Benutzer versucht, sich in diesem Szenario bei JIRA anzumelden, ruft das Plug-In das neue Zertifikat ab und speichert es.
+* **Ein Zertifikat läuft bald in Azure AD ab**: Add-Ons tragen Sorge für den automatischen Rollover des Zertifikats. Wenn ein Zertifikat in Kürze abläuft, sollte das neue Zertifikat als aktiv gekennzeichnet werden, und nicht verwendete Zertifikate sollten gelöscht werden. Wenn ein Benutzer versucht, sich in diesem Szenario bei JIRA anzumelden, ruft das Plug-In das neue Zertifikat ab und speichert es.
 
 * **Sie möchten WebSudo (die sichere Administratorsitzung) deaktivieren**:
 
@@ -159,9 +159,9 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **Wenn der Fehler „Benutzer-ID wurde nicht gefunden“ auftritt, wenn der Benutzer versucht, sich anzumelden**: Erstellen Sie die Benutzer-ID in JIRA oder Confluence.
 
-* **Der Fehler „App nicht gefunden“ tritt in Azure AD auf**: Stellen Sie fest, ob die entsprechende URL der App in Azure AD zugeordnet ist.
+* **„App nicht gefunden“-Fehlermeldung in Azure AD**: Stellen Sie fest, ob die entsprechende URL in Azure AD der App zugeordnet ist.
 
-* **Sie benötigen Support**: Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
+* **Benötigen Sie Support?**: Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
 
   Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen.
 

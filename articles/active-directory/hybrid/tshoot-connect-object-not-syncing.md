@@ -4,7 +4,7 @@ description: 'Problembehandlung: Warum wird ein Objekt nicht mit Azure AD synchr
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b66aeb0832058c56e63c56c0420c7793eb2a632a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306559"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478653"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert
 
@@ -65,7 +65,7 @@ Sie können im Feld **Call Stack Information** (Aufruflisteninformationen) mit d
 
 * Wenn der Fehler aus **SyncRulesEngine**stammt, beginnen die Aufruflisteninformationen mit einer Liste aller Attribute für das Objekt. Scrollen Sie nach unten, bis Sie die Überschrift **InnerException = >** sehen.  
   ![Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)  
-  Die Zeile danach gibt Aufschluss über den Fehler. Der Fehler in der obigen Abbildung stammt aus einer benutzerdefinierten Synchronisierungsregel, die von Fabrikam erstellt wurde.
+   Die Zeile danach gibt Aufschluss über den Fehler. Der Fehler in der obigen Abbildung stammt aus einer benutzerdefinierten Synchronisierungsregel, die von Fabrikam erstellt wurde.
 
 Wenn der Fehler selbst nicht genügend Informationen liefert, ist es an der Zeit, sich die Daten selbst anzusehen. Sie können auf den Link mit der Objekt-ID klicken und mit der Problembehandlung der [importierten Objekte des Connectorbereichs](#cs-import) fortfahren.
 
@@ -86,7 +86,7 @@ Eine andere nützliche Suche besteht darin, den Azure AD-Connector auszuwählen.
 Diese Objekte wurden von einem anderen Synchronisierungsmodul oder einem Synchronisierungsmodul mit einer anderen Filterkonfiguration erstellt. In dieser Ansicht wird eine Liste der **verwaisten** Objekte angezeigt, die nicht mehr verwaltet werden. Sie sollten diese Liste überprüfen, und diese Objekte mit den [Azure AD PowerShell](https://aka.ms/aadposh)-Cmdlets entfernen.
 
 ### <a name="cs-import"></a>CS Import
-Beim Öffnen eines Connectorbereichsobjekts befinden sich oben mehrere Registerkarten. Auf der Registerkarte **Importieren** werden die Daten angezeigt, die nach einem Import bereitgestellt werden.  
+ Beim Öffnen eines Connectorbereichsobjekts befinden sich oben mehrere Registerkarten. Auf der Registerkarte **Importieren** werden die Daten angezeigt, die nach einem Import bereitgestellt werden.  
 ![CS-Objekt](./media/tshoot-connect-object-not-syncing/csobject.png)    
 Unter **Alter Wert** wird dargestellt, was derzeit im System gespeichert ist, und unter **Neuer Wert** wird angezeigt, was aus dem Quellsystem empfangen, aber noch nicht angewendet wurde. Wenn ein Fehler auf dem Objekt vorhanden ist, werden die Änderungen nicht verarbeitet.
 
@@ -95,7 +95,7 @@ Unter **Alter Wert** wird dargestellt, was derzeit im System gespeichert ist, un
 Die Registerkarte **Synchronisierungsfehler** wird nur angezeigt, wenn ein Problem mit dem Objekt besteht. Weitere Informationen finden Sie unter [Problembehandlung bei Synchronisierungsfehlern](#troubleshoot-errors-in-operations-tab).
 
 ### <a name="cs-lineage"></a>CS-Herkunft
-Auf der Registerkarte für die Herkunft wird gezeigt, wie das Objekt des Connectorbereichs mit dem Metaverseobjekt verknüpft ist. Sie sehen, wann der Connector zuletzt eine Änderung aus dem verbundenen System importiert hat und welche Regeln zum Auffüllen der Daten im Metaverse angewendet wurden.  
+ Auf der Registerkarte für die Herkunft wird gezeigt, wie das Objekt des Connectorbereichs mit dem Metaverseobjekt verknüpft ist. Sie sehen, wann der Connector zuletzt eine Änderung aus dem verbundenen System importiert hat und welche Regeln zum Auffüllen der Daten im Metaverse angewendet wurden.  
 ![CS-Herkunft](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 In der Spalte **Aktion** sehen Sie eine einzelne Synchronisierungsregel vom Typ **Eingehend** mit der Aktion **Bereitstellen**. Damit wird angegeben, dass das Metaverse-Objekt erhalten bleibt, solange dieses Objekt des Connectorbereichs vorhanden ist. Wenn die Liste mit den Synchronisierungsregeln hingegen eine Synchronisierungsregel mit der Richtung **Outbound** (Ausgehend) und der Aktion **Provision** (Bereitstellen) enthält, wird beim Löschen des Metaverseobjekts auch dieses Objekt gelöscht.  
 ![Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
@@ -103,10 +103,10 @@ Darüber hinaus sehen Sie in der Spalte für die Kennwortsynchronisierung (**Pas
 
 Auf der Registerkarte für die Herkunft gelangen Sie zum Metaverse, indem Sie auf [Metaverse Object Properties](#mv-attributes)(Metaverse-Objekteigenschaften) klicken.
 
-Unterhalb der Registerkarten befinden sich zwei Schaltflächen: **Preview** (Vorschau) und **Log** (Protokoll).
+Unterhalb der Registerkarten befinden sich zwei Schaltflächen: **Vorschau** und **Protokoll**.
 
 ### <a name="preview"></a>Vorschau
-Die Vorschauseite wird verwendet, um ein einzelnes Objekt zu synchronisieren. Sie ist nützlich, wenn Sie Probleme mit einigen benutzerdefinierten Synchronisierungsregeln behandeln und die Auswirkungen einer Änderung auf ein einzelnes Objekt sehen möchten. Sie können zwischen **Vollständige Synchronisierung** und **Deltasynchronisierung** auswählen. Außerdem haben Sie die Wahl zwischen **Generate Preview** (Vorschau generieren), um die Änderung nur im Arbeitsspeicher beizubehalten, und **Commit Preview** (Commitvorschau), um die Metaverse zu aktualisieren und alle Änderungen im Zielconnectorbereich bereitzustellen.  
+ Die Vorschauseite wird verwendet, um ein einzelnes Objekt zu synchronisieren. Sie ist nützlich, wenn Sie Probleme mit einigen benutzerdefinierten Synchronisierungsregeln behandeln und die Auswirkungen einer Änderung auf ein einzelnes Objekt sehen möchten. Sie können zwischen **Vollständige Synchronisierung** und **Deltasynchronisierung** auswählen. Außerdem haben Sie die Wahl zwischen **Generate Preview** (Vorschau generieren), um die Änderung nur im Arbeitsspeicher beizubehalten, und **Commit Preview** (Commitvorschau), um die Metaverse zu aktualisieren und alle Änderungen im Zielconnectorbereich bereitzustellen.  
 ![Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/preview.png)  
 Sie können das Objekt und die für einen bestimmten Attributfluss angewendete Regel prüfen.  
 ![Synchronization Service Manager](./media/tshoot-connect-object-not-syncing/previewresult.png)

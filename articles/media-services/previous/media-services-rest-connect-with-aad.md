@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945076"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818029"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST
 
@@ -50,7 +50,7 @@ In diesem Tutorial lernen Sie Folgendes:
 - Lesen Sie den Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung – Übersicht](media-services-use-aad-auth-to-access-ams-api.md).
 - Installieren Sie den [Postman](https://www.getpostman.com/)-REST-Client, um die in diesem Artikel gezeigten REST-APIs auszuführen. 
 
-    In diesem Tutorial wird **Postman** verwendet, grundsätzlich ist aber jedes REST-Tool geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
+    In diesem Tutorial wird **Postman** verwendet, grundsätzlich ist aber jedes REST-Tool geeignet. Weitere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Abrufen der Authentifizierungsinformationen aus dem Azure-Portal
 
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
 5. Wählen Sie eine vorhandene **Azure AD-Anwendung** aus, oder erstellen Sie eine neue Anwendung (nachfolgend gezeigt).
 
     > [!NOTE]
-    > Damit die Azure Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle **Mitwirkender** oder **Besitzer** für das Media Services-Konto verfügen, auf das zugegriffen werden soll. Wenn eine Ausnahme mit dem Text „Der Remoteserver hat einen Fehler zurückgegeben: 401 – Nicht autorisiert“ zurückgegeben wird, finden Sie weitere Informationen unter [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Damit die Azure Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle **Mitwirkender** oder **Besitzer** für das Media Services-Konto verfügen, auf das zugegriffen werden soll. Wenn eine Ausnahme mit dem Text „Der Remoteserver hat einen Fehler zurückgegeben: (401) nicht autorisiert“ zurückgegeben wird, lesen Sie den Abschnitt [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
     
@@ -118,7 +118,7 @@ Sie können Werte für AD-Verbindungsparameter für Ihre Datei „web.config“ 
 
 ## <a name="get-the-access-token-using-postman"></a>Abrufen des Zugriffstokens mithilfe von Postman
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API ausführen, die ein JWT-Bearertoken (Zugriffstoken) zurückgibt. Um eine beliebige Media Services-REST-API aufzurufen, müssen Sie Ihren Aufrufen den Autorisierungsheader und den Wert „Bearer *Ihr_Zugriffstoken*“ hinzufügen (wie im nächsten Abschnitt dieses Tutorials gezeigt). 
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API ausführen, die ein JWT-Bearertoken (Zugriffstoken) zurückgibt. Um eine beliebige Media Services-REST-API aufzurufen, müssen Sie Ihren Aufrufen den Autorisierungsheader und den Wert „Bearer *Ihr_Zugriffstoken*“ hinzufügen (wie im nächsten Abschnitt dieses Tutorials gezeigt). 
 
 1. Öffnen Sie **Postman**.
 2. Wählen Sie **POST**aus.

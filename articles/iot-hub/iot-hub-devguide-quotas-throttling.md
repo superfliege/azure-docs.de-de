@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 23dbc8d935e46fc4fb12257f360371d4cc61235a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395155"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827379"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -47,9 +47,12 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 | Auftragsvorgänge<sup>1,3</sup> <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
 | Aufträgegerätevorgänge<sup>1</sup> <br/> (Gerätezwilling aktualisieren, direkte Methode aufrufen) | 10/Sekunde | 10/Sekunde oder 1/Sekunde/Einheit – je nachdem, was höher ist | 50/Sekunde/Einheit |
 | Konfigurationen und Edgebereitstellungen<sup>1</sup> <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 0,33/Sek./Einheit (20/Min./Einheit) | 0,33/Sek./Einheit (20/Min./Einheit) | 0,33/Sek./Einheit (20/Min./Einheit) |
+| Initiierungsrate für Gerätedatenstrom<sup>4</sup> | 5 neue Streams/Sekunde | 5 neue Streams/Sekunde | 5 neue Streams/Sekunde |
+| Maximale Anzahl der gleichzeitig verbundenen Gerätedatenströme<sup>4</sup> | 50 | 50 | 50 |
+| Maximale Gerätedatenstrom-Datenübertragung<sup>4</sup> (aggregiertes Volumen pro Tag) | 300MB | 300MB | 300MB |
 
 
-<sup>1</sup>Dieses Feature ist im Tarif „Basic“ von IoT Hub nicht verfügbar. Weitere Informationen finden Sie unter [Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md). <br/><sup>2</sup> Die Größe der Verbrauchseinheit für die Drosselung beträgt 8KB. <br/><sup>3</sup>Es kann jederzeit nur ein aktiver Geräteimport-/-exportauftrag vorhanden sein.
+<sup>1</sup>Dieses Feature ist im Tarif „Basic“ von IoT Hub nicht verfügbar. Weitere Informationen finden Sie unter [Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md). <br/><sup>2</sup> Die Größe der Verbrauchseinheit für die Drosselung beträgt 8KB. <br/><sup>3</sup>Es kann jederzeit nur ein aktiver Geräteimport-/-exportauftrag vorhanden sein. <br/><sup>4</sup>IoT Hub-Gerätedatenströme sind nur für S1-, S2-, S3- und F1-SKUs verfügbar.
 
 Die Drosselung der *Geräteverbindungen* bestimmt die Rate, mit der neue Geräteverbindungen mit einem IoT Hub hergestellt werden können. Die Drosselung der *Geräteverbindungen* steuert nicht die maximale Anzahl gleichzeitig verbundener Geräte. Die Drosselung der *Geräteverbindungsrate* ist abhängig von der Anzahl der Einheiten, die für den IoT-Hub bereitgestellt werden.
 
@@ -68,7 +71,7 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 
 | Vorgang | Begrenzung |
 | --------- | ----- |
-| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/>  10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 | Aufträge<sup>1</sup> | Der Auftragsverlauf wird bis zu 30 Tage lang gespeichert. <br/> Maximale Anzahl gleichzeitiger Aufträge: 1 (für Free und S1), 5 (für S2), 10 (für S3) |
 | Zusätzliche Endpunkte | Kostenpflichtige SKU-Hubs haben möglicherweise 10 zusätzliche Endpunkte. Kostenfreie SKU-Hubs haben möglicherweise einen zusätzlichen Endpunkt. |
 | Regeln für die Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs haben möglicherweise 100 Weiterleitungsregeln. Kostenfreie SKU-Hubs haben möglicherweise fünf Weiterleitungsregeln. |

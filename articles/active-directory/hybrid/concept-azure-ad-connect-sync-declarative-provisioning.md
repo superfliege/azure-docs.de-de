@@ -4,7 +4,7 @@ description: Erklärt das Konfigurationsmodell für die deklarative Bereitstellu
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 45b145d9a8922bc3da50cef7d9fa7aacf260417d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310289"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471771"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung
 In diesem Thema wird das Konfigurationsmodell in Azure AD Connect beschrieben. Dieses Modell, die „deklarative Bereitstellung“, ermöglicht es Ihnen, Konfigurationsänderungen einfach vorzunehmen. In diesem Thema sind auch viele Punkte für fortgeschrittene Benutzer beschrieben, die für die meisten Benutzerszenarien nicht erforderlich sind.
@@ -48,7 +48,7 @@ Das Bereichsmodul wertet ein Objekt aus und bestimmt die Regeln, die sich innerh
 Der Bereich wird als Gruppen und Klauseln definiert. Die Klauseln liegen innerhalb einer Gruppe. Ein logisches AND wird zwischen allen Klauseln in einer Gruppe verwendet. Zum Beispiel (department =IT AND country = Denmark). Ein logisches OR wird zwischen Gruppen verwendet.
 
 ![Bereich](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
-Der Bereich in der folgenden Abbildung wird gelesen als (department = IT AND country = Denmark) OR (country=Sweden). Wenn entweder Gruppe 1 oder Gruppe 2 wahr ist, befindet sich die Regel im Geltungsbereich.
+ Der Bereich in der folgenden Abbildung wird gelesen als (department = IT AND country = Denmark) OR (country=Sweden). Wenn entweder Gruppe 1 oder Gruppe 2 wahr ist, befindet sich die Regel im Geltungsbereich.
 
 Das Bereichsmodul unterstützt die folgenden Vorgänge.
 
@@ -74,7 +74,7 @@ Verbindungen werden meistens für eingehende Regeln verwendet, um die Objekte de
 
 Verbindungen werden als eine oder mehrere Gruppen definiert. Innerhalb einer Gruppe haben Sie Klauseln. Ein logisches AND wird zwischen allen Klauseln in einer Gruppe verwendet. Ein logisches OR wird zwischen Gruppen verwendet. Die Gruppen werden in der Reihenfolge von oben nach unten verarbeitet. Wenn eine Gruppe genau eine Übereinstimmung mit einem Objekt im Ziel gefunden hat, werden keine anderen Verbindungsregeln ausgewertet. Wenn keine oder mehrere Objekte gefunden werden, wird die Verarbeitung bis zur nächsten Regelgruppe fortgesetzt. Aus diesem Grund müssen die Regeln so erstellt werden, dass die expliziten Regel zuerst und die ungenauen Regeln zuletzt kommen.  
 ![Verbindungsdefinition](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
-Die Verbindungen in diesem Bild werden von oben nach unten verarbeitet. Zuerst prüft die Synchronisierungspipeline, ob eine Übereinstimmung für eine EmployeeID vorliegt. Andernfalls prüft die zweite Regel, ob die Objekte mithilfe des Kontonamens verbunden werden können. Liegt hier ebenfalls keine Übereinstimmung vor, prüft die dritte und letzte Regel eine etwas ungenauere Übereinstimmung unter Verwendung des Benutzernamens.
+ Die Verbindungen in diesem Bild werden von oben nach unten verarbeitet. Zuerst prüft die Synchronisierungspipeline, ob eine Übereinstimmung für eine EmployeeID vorliegt. Andernfalls prüft die zweite Regel, ob die Objekte mithilfe des Kontonamens verbunden werden können. Liegt hier ebenfalls keine Übereinstimmung vor, prüft die dritte und letzte Regel eine etwas ungenauere Übereinstimmung unter Verwendung des Benutzernamens.
 
 Wenn alle Verbindungsregeln ausgewertet wurden und keine Übereinstimmung vorliegt, wird der **Verknüpfungstyp** auf der Seite **Beschreibung** verwendet. Wenn für diese Einstellung **Bereitstellen**festgelegt ist, wird im Ziel ein neues Objekt erstellt.  
 ![Bereitstellen oder verbinden](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
@@ -91,7 +91,7 @@ Ein Metaverse-Objekt besteht, solange sich eine Synchronisierungsregel im Bereic
 Wenn ein Metaverse-Objekt gelöscht wird, werden alle Objekte, die einer ausgehenden, für **Bereitstellen** markierten Synchronisierungsregel zugeordnet sind, zum Löschen markiert.
 
 ## <a name="transformations"></a>Transformationen
-Transformationen werden verwendet, um festzulegen, wie der Datenfluss von Attributen von der Quelle zum Ziel erfolgen soll. Für die Datenflüsse gibt es die folgenden **FlowTypes**(Durchflusstypen): Direkt, Konstant oder Expression (Ausdruck). Bei einem direkten Durchfluss wird der Attributwert im vorliegenden Zustand ohne weitere Änderungen übertragen. Ein konstanter Wert legt den angegebenen Wert fest. Ein Ausdruck verwendet die deklarative Bereitstellungsausdruckssprache, um auszudrücken, wie die Transformation aussehen soll. Weitere Informationen zur Ausdruckssprache finden Sie im Thema [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
+Transformationen werden verwendet, um festzulegen, wie der Datenfluss von Attributen von der Quelle zum Ziel erfolgen soll. Für die Datenflüsse sind folgende **Flowtypen** möglich: direkt, Konstante oder Ausdruck. Bei einem direkten Durchfluss wird der Attributwert im vorliegenden Zustand ohne weitere Änderungen übertragen. Ein konstanter Wert legt den angegebenen Wert fest. Ein Ausdruck verwendet die deklarative Bereitstellungsausdruckssprache, um auszudrücken, wie die Transformation aussehen soll. Weitere Informationen zur Ausdruckssprache finden Sie im Thema [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
 
 ![Bereitstellen oder verbinden](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -123,11 +123,11 @@ Beispiel:
 
 In *Out to AD - User Exchange hybrid* (Ausgehend nach AD – Benutzer Exchange Hybrid) finden Sie folgenden Fluss:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
-Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in Azure AD befindet, fließt das Attribut von Azure AD nach AD. Andernfalls fließt nichts zurück nach Active Directory. In diesem Fall wird der vorhandene Wert in AD beibehalten.
+ Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in Azure AD befindet, fließt das Attribut von Azure AD nach AD. Andernfalls fließt nichts zurück nach Active Directory. In diesem Fall wird der vorhandene Wert in AD beibehalten.
 
 ### <a name="importedvalue"></a>ImportedValue
 Die Funktion „ImportedValue“ unterscheidet sich von allen anderen Funktionen, da der Attributname in Anführungszeichen statt in eckige Klammern eingeschlossen werden muss:   
-`ImportedValue("proxyAddresses")`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+`ImportedValue("proxyAddresses")`.
 
 Üblicherweise verwendet ein Attribut während der Synchronisierung den erwarteten Wert, selbst wenn er noch nicht exportiert wurde oder während des Exports ein Fehler empfangen wurde („top of the tower“). Bei einer eingehenden Synchronisierung wird vorausgesetzt, dass ein Attribut, das ein verbundenes Verzeichnis noch nicht erreicht hat, dieses schließlich erreicht. In einigen Fällen ist es wichtig, nur Werte zu synchronisieren, die vom verbundenen Verzeichnis bestätigt wurden („hologram and delta import tower“).
 
@@ -163,4 +163,4 @@ In diesem Szenario müssen Sie den Bereich der Synchronisierungsregeln ändern, 
 
 **Referenzthemen**
 
-* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)

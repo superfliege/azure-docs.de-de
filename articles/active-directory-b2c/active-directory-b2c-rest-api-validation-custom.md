@@ -3,19 +3,19 @@ title: REST-API-Anspruchsaustauschvorgänge zur Validierung in Azure Active Dire
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8af8e4b7844feb785600ef683891642ea89bccaf
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7463316607377bce1b99923258e36323c9abba68
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556899"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851537"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 
@@ -30,7 +30,7 @@ Das IEF sendet Daten in Ansprüchen und erhält Daten in Ansprüchen zurück. Di
 - Kann als Austausch von REST-API-Ansprüchen oder als Validierungsprofil entworfen werden, der bzw. das innerhalb eines Orchestrierungsschritts erfolgt.
 - Normalerweise wird die Eingabe des Benutzers validiert. Wenn der Wert des Benutzers abgelehnt wird, kann er erneut versuchen, einen gültigen Wert einzugeben, wodurch eventuell eine Fehlermeldung zurückgegeben werden kann.
 
-Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md).
+Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt
 
 Für das Beispiel für das Validierungsprofil verwenden wir die User Journey der Profilbearbeitung in der Starter Pack-Datei „ProfileEdit.xml“.
 

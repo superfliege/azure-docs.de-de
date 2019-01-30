@@ -4,7 +4,7 @@ description: Einführung in die Verwendung von Azure AD für die automatisierte 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: edd8e08ee20e7e6331701b55b3d58ebad3848408
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311452"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478483"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
@@ -103,7 +103,7 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 
 * Für den Azure AD-Bereitstellungsdienst müssen **Administratoranmeldeinformationen** angegeben werden, die die Verbindungsherstellung mit der von der Anwendung bereitgestellten Benutzerverwaltungs-API ermöglichen. In diesem Abschnitt können Sie auch E-Mail-Benachrichtigungen aktivieren, wenn für die Anmeldeinformationen ein Fehler auftritt oder der Bereitstellungsauftrag in [Quarantäne](#quarantine) versetzt wird.
 
-* Konfigurierbare **Attributzuordnungen** geben an, welche Felder im Quellsystem (beispielsweise Azure AD) mit welchen Feldern im Zielsystem (beispielsweise ServiceNow) synchronisiert werden sollen. Sofern dies vom Zielsystem unterstützt wird, können Sie in diesem Abschnitt neben Benutzerkonten auch die Bereitstellung von Gruppen konfigurieren. Dies ist jedoch optional. Mithilfe des Eigenschaftenabgleichs können Sie auswählen, welche Felder für den Kontenabgleich zwischen den Systemen herangezogen werden sollen. Mithilfe von [Ausdrücken](functions-for-customizing-application-data.md) können Sie die aus dem Quellsystem abgerufenen Werte vor dem Schreiben in das Zielsystem ändern und transformieren. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
+* Es können **Attributzuordnungen** konfiguriert werden, die angeben, die Inhalte welche Felder im Quellsystem (Beispiel: Azure AD) mit den Inhalten welcher Felder im Zielsystem (Beispiel: ServiceNow) synchronisiert werden. Sofern dies vom Zielsystem unterstützt wird, können Sie in diesem Abschnitt neben Benutzerkonten auch die Bereitstellung von Gruppen konfigurieren. Dies ist jedoch optional. Mithilfe des Eigenschaftenabgleichs können Sie auswählen, welche Felder für den Kontenabgleich zwischen den Systemen herangezogen werden sollen. Mithilfe von [Ausdrücken](functions-for-customizing-application-data.md) können Sie die aus dem Quellsystem abgerufenen Werte vor dem Schreiben in das Zielsystem ändern und transformieren. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
 
 ![Einstellungen](./media/user-provisioning/provisioning_settings1.PNG)
 

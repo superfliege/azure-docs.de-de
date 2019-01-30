@@ -4,7 +4,7 @@ description: Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245088"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808628"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -161,7 +161,7 @@ Falls eine höhere Flexibilität erforderlich ist, können Sie die Skriptoption 
 
 Wenn Sie das Skript auf einem **Windows 10**-Computer ausführen möchten, müssen Sie zuerst einige zusätzliche Schritte ausführen. 
 
-1. Installieren Sie das [AzureRM-Modul](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l).
+1. Installieren Sie das [AzureRM-Modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l).
 2. Importieren Sie das Modul, indem Sie eine PowerShell-Eingabeaufforderung öffnen und den Befehl **Import-Module AzureRM** ausführen.
 3. Führen Sie **Set-ExecutionPolicy unrestricted**aus, und wählen Sie **Ja, alle** aus. 
 4. Nun können Sie das heruntergeladene PowerShell-Skript im Administratormodus ausführen, um die CSV-Datei zu generieren.
@@ -203,7 +203,10 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Datum
 - MFA erforderlich
 - Anmeldestatus
- 
+
+> [!NOTE]
+> IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Das Zuordnen von IP-Adressen wird außerdem durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die oft sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Derzeit erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, umgekehrten Suchvorgängen und anderen Informationen.
+
 Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevorgänge** klicken, wird eine umfassenden Übersicht über alle Benutzeranmeldungen angezeigt.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/08.png "Anmeldeaktivität")

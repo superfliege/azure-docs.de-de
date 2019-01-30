@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect Sync: Verzeichniserweiterungen | Microsoft Docs'
+title: 'Azure AD Connect-Synchronisierung: Verzeichniserweiterungen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt das Verzeichniserweiterungsfeature in Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b6c5f55a575605eef3a280de4f973d9b2d0a4ace
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288304"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476902"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect-Synchronisierung: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Azure AD Graph-API-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://developer.microsoft.com/graph/) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) bzw. des [Microsoft Graph-Testers](https://developer.microsoft.com/graph/graph-explorer) anzeigen.
 
 Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
@@ -34,7 +34,7 @@ Sie konfigurieren im Installations-Assistenten im Pfad der benutzerdefinierten E
 
 ![Schemaerweiterungs-Assistent](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
-Bei der Installation werden folgenden Attribute als zulässige Kandidaten angezeigt:
+ Bei der Installation werden folgenden Attribute als zulässige Kandidaten angezeigt:
 
 * Benutzer- und Gruppenobjekttypen
 * Einwertige Attribute: Zeichenfolge, Boolescher Wert, ganze Zahl, Binärwert

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: cfbe1ce39d7f68dd6ea2510b5c6cbddf4eb71710
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e97ac849fa0e590dd2462d8e64b761da23576833
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331995"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845953"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Bereitstellen von Azure Monitor für VMs (Vorschauversion)
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs einrichten. Der Dienst überwacht die Integrität des Betriebssystems für Ihre virtuellen Azure-Computer (VMs) und VM-Skalierungsgruppen sowie der virtuellen Computer in Ihrer Umgebung. Diese Überwachung umfasst die Erkennung und Zuordnung von Anwendungsabhängigkeiten, die möglicherweise auf ihnen gehostet werden. 
@@ -303,113 +303,128 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
 1. Speichern Sie diese Datei als *installsolutionsforvminsights.json* in einem lokalen Ordner.
 
-1. Bearbeiten Sie die Werte für *WorkspaceName*, *ResourceGroupName* und *WorkspaceLocation*. Der Wert für *WorkspaceName* ist die vollständige Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs, die den Namen des Arbeitsbereichs umfasst. Der Wert für *WorkspaceLocation* ist die Region, in der der Arbeitsbereich definiert ist.
+1. Erfassen Sie die Werte für *WorkspaceName*, *ResourceGroupName* und *WorkspaceLocation*. Der Wert für *WorkspaceName* ist der Name des Log Analytics-Arbeitsbereichs. Der Wert für *WorkspaceLocation* ist die Region, in der der Arbeitsbereich definiert ist.
 
-1. Sie können diese Vorlage mithilfe des folgenden PowerShell-Befehls bereitstellen:
+1. Die Vorlage kann nun bereitgestellt werden.
+ 
+    * Verwenden Sie die folgenden PowerShell-Befehle in dem Ordner mit der Vorlage:
 
-    ```powershell
-    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
-    ```
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+        ```
 
-    Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
+        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-    ```powershell
-    provisioningState       : Succeeded
-    ```
+        ```powershell
+        provisioningState       : Succeeded
+        ```
 
-### <a name="enable-by-using-azure-policy"></a>Aktivieren mithilfe von Azure Policy
-Um Azure Monitor für VMs bedarfsorientiert zu aktivieren, damit eine konsistente Konformität und die automatische Aktivierung der neu bereitgestellten VMs sichergestellt ist, wird [Azure Policy](../../azure-policy/azure-policy-introduction.md) empfohlen. Diese Richtlinien:
+    * Führen Sie den folgenden Befehl mithilfe der Azure CLI aus:
+    
+        ```azurecli
+        az login
+        az account set --subscription "Subscription Name"
+        az group deployment create --name DeploySolutions --resource-group <ResourceGroupName> --template-file InstallSolutionsForVMInsights.json --parameters WorkspaceName=<workspaceName> WorkspaceLocation=<WorkspaceLocation - example: eastus>
 
-* Stellen den Log Analytics-Agent und Dependency-Agent bereit
-* Melden Konformitätsergebnisse
-* Beheben nicht konforme VMs
+        The configuration change can take a few minutes to complete. When it's completed, a message is displayed that's similar to the following and includes the result:
 
-So aktivieren Sie Azure Monitor für VMs mithilfe von Azure Policy in Ihrem Mandanten
+        ```azurecli
+        provisioningState       : Succeeded
 
-- Zuweisen der Initiative zu einem Bereich: Verwaltungsgruppe, Abonnement oder Ressourcengruppe
-- Überprüfen und Beheben der Konformitätsergebnisse
+### Enable by using Azure Policy
+To enable Azure Monitor for VMs at scale in a way that helps ensure consistent compliance and the automatic enabling of the newly provisioned VMs, we recommend [Azure Policy](../../azure-policy/azure-policy-introduction.md). These policies:
 
-Weitere Informationen zur Zuweisung von Azure Policy finden Sie unter [Azure Policy – Übersicht](../../governance/policy/overview.md#policy-assignment), und arbeiten Sie die [Übersicht zu Verwaltungsgruppen](../../governance/management-groups/index.md) durch, bevor Sie fortfahren.
+* Deploy the Log Analytics agent and the Dependency agent.
+* Report on compliance results.
+* Remediate for non-compliant VMs.
 
-Die Richtliniendefinitionen sind in der folgenden Tabelle aufgeführt:
+To enable Azure Monitor for VMs by using Azure Policy in your tenant:
 
-|NAME |BESCHREIBUNG |Typ |
+- Assign the initiative to a scope: management group, subscription, or resource group
+- Review and remediate compliance results
+
+For more information about assigning Azure Policy, see [Azure Policy overview](../../governance/policy/overview.md#policy-assignment) and review the [overview of management groups](../../governance/management-groups/index.md) before you continue.
+
+The policy definitions are listed in the following table:
+
+|Name |Description |Type |
 |-----|------------|-----|
-|[Vorschau]: Aktivieren von Azure Monitor für VMs |Hiermit aktivieren Sie Azure Monitor für die virtuellen Computer (VMs) in dem angegebenen Bereich (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. |Initiative |
-|[Vorschau]: Überwachen der Bereitstellung des Dependency-Agent – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|[Vorschau]: Überwachen der Bereitstellung des Log Analytics-Agents – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|[Vorschau]: Bereitstellen des Dependency-Agent für Linux-VMs |Stellen Sie den Dependency-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|[Vorschau]: Bereitstellen des Dependency-Agent für Windows-VMs |Stellen Sie den Dependency-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|[Vorschau]: Bereitstellen des Log Analytics-Agents für Linux-VMs |Stellen Sie den Log Analytics-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|[Vorschau]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Stellen Sie den Log Analytics-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|[Preview]: Enable Azure Monitor for VMs |Enable Azure Monitor for the Virtual Machines (VMs) in the specified scope (management group, subscription, or resource group). Takes Log Analytics workspace as a parameter. |Initiative |
+|[Preview]: Audit Dependency Agent Deployment – VM Image (OS) unlisted |Reports VMs as non-compliant if the VM Image (OS) isn't defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Audit Log Analytics Agent Deployment – VM Image (OS) unlisted |Reports VMs as non-compliant if the VM Image (OS) isn't defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Dependency Agent for Linux VMs |Deploy Dependency Agent for Linux VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Dependency Agent for Windows VMs |Deploy Dependency Agent for Windows VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Log Analytics Agent for Linux VMs |Deploy Log Analytics Agent for Linux VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
+|[Preview]: Deploy Log Analytics Agent for Windows VMs |Deploy Log Analytics Agent for Windows VMs if the VM Image (OS) is defined in the list and the agent isn't installed. |Policy |
 
-Die eigenständige Richtlinie (nicht in der Initiative enthalten) wird hier beschrieben:
+Standalone policy (not included with the initiative) is described here:
 
-|NAME |BESCHREIBUNG |Typ |
+|Name |Description |Type |
 |-----|------------|-----|
-|[Vorschau]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt |Meldet VMs als nicht konform, wenn sie keine Protokolle an den in der Richtlinien-/Initiativenzuweisung angegebenen Log Analytics-Arbeitsbereich senden. |Richtlinie |
+|[Preview]: Audit Log Analytics Workspace for VM - Report Mismatch |Report VMs as non-compliant if they aren't logging to the Log Analytics workspace specified in the policy/initiative assignment. |Policy |
 
-#### <a name="assign-the-azure-monitor-initiative"></a>Zuweisen der Azure Monitor-Initiative
-In dieser ursprünglichen Version können Sie die Richtlinienzuweisung nur im Azure-Portal erstellen. Informationen zum Ausführen dieser Schritte finden Sie unter  [Erstellen einer Richtlinienzuweisung im Azure-Portal](../../governance/policy/assign-policy-portal.md).
+#### Assign the Azure Monitor initiative
+With this initial release, you can create the policy assignment only in the Azure portal. To understand how to complete these steps, see [Create a policy assignment from the Azure portal](../../governance/policy/assign-policy-portal.md).
 
-1. Wählen Sie zum Starten des Azure Policy-Diensts im Azure-Portal die Option **Alle Dienste** aus, und suchen Sie dann **Richtlinie**, um diese Option auszuwählen.
+1. To launch the Azure Policy service in the Azure portal, select **All services**, and then search for and select **Policy**.
 
-1. Wählen Sie im linken Bereich der Seite „Azure Policy“ die Option **Zuweisungen** aus.  
-    Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
+1. In the left pane of the Azure Policy page, select **Assignments**.  
+    An assignment is a policy that has been assigned to take place within a specific scope.
     
-1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Initiative zuweisen** aus.
+1. At the top of the **Policy - Assignments** page, select **Assign Initiative**.
 
-1. Wählen Sie auf der Seite **Initiative zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte (...) klicken und eine Verwaltungsgruppe oder ein Abonnement auswählen.  
-    In unserem Beispiel schränkt ein Bereich die Richtlinienzuweisung zur Durchsetzung auf eine Gruppierung virtueller Computer ein.
+1. On the **Assign Initiative** page, select the **Scope** by clicking the ellipsis (...), and select a management group or subscription.  
+    In our example, a scope limits the policy assignment to a grouping of virtual machines for enforcement.
     
-1. Speichern Sie unten auf der Seite **Bereich** Ihre Änderungen, indem Sie **Auswählen** auswählen.
+1. At the bottom of the **Scope** page, save your changes by selecting **Select**.
 
-1. (Optional) Um eine oder mehrere Ressourcen aus dem Bereich zu entfernen, wählen Sie **Ausschlüsse** aus.
+1. (Optional) To remove one or more resources from the scope, select **Exclusions**.
 
-1. Wählen Sie die Auslassungspunkte (...) **Initiativendefinition** aus, um die Liste der verfügbaren Definitionen anzuzeigen, und wählen Sie dann **[Vorschau] Azure Monitor für VMs aktivieren** und anschließend **Auswählen** aus.  
-    Das Feld **Zuweisungsname** wird automatisch mit dem Namen der von Ihnen ausgewählten Initiative aufgefüllt, Sie können ihn aber ändern. Geben Sie ggf. auch eine Beschreibung ein. Das Feld **Zugewiesen von** wird automatisch mit dem angemeldeten Benutzer aufgefüllt und dieser Wert ist optional.
+1. Select the **Initiative definition** ellipsis (...) to display the list of available definitions, select **[Preview] Enable Azure Monitor for VMs**, and then select **Select**.  
+    The **Assignment name** box is automatically populated with the initiative name you selected, but you can change it. You can also add an optional description. The **Assigned by** box is automatically populated based on who is logged in, and this value is optional.
     
-1. Wählen Sie in der Dropdownliste **Log Analytics-Arbeitsbereich** für die unterstützte Region einen Arbeitsbereich aus.
+1. In the **Log Analytics workspace** drop-down list for the supported region, select a workspace.
 
     >[!NOTE]
-    >Wenn der Arbeitsbereich außerhalb des Bereichs der Zuweisung liegt, erteilen Sie der Prinzipal-ID der Richtlinienzuweisung *Log Analytics-Mitwirkender*-Berechtigungen. Andernfalls wird möglicherweise ein Bereitstellungsfehler wie der Folgende angezeigt: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` Lesen Sie zum Erteilen des Zugriffs, [wie Sie die verwaltete Identität manuell konfigurieren](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+    >If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `
+    >To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
     >  
-    Das Kontrollkästchen **Verwaltete Identität** ist aktiviert, da die zugewiesene Initiative eine Richtlinie mit dem Effekt *deployIfNotExists* umfasst.
+    The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
     
-1. Wählen Sie in der Dropdownliste **Manage Identity location** (Speicherort der Identität verwalten) die passende Region aus.
+1. In the **Manage Identity location** drop-down list, select the appropriate region.
 
-1. Wählen Sie **Zuweisen** aus.
+1. Select **Assign**.
 
-#### <a name="review-and-remediate-the-compliance-results"></a>Überprüfen und Warten der Compliance-Ergebnisse
+#### Review and remediate the compliance results
 
-Informationen zum Überprüfen von Compliance-Ergebnissen finden Sie unter [identify non-compliance results](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources) (Erkennen von Nichtkompatibilitätsergebnissen). Wählen Sie im linken Bereich **Konformität** aus, und suchen Sie dann nach der Initiative **[Vorschau] Azure Monitor für VMs aktivieren** für VMs, die gemäß der von Ihnen erstellten Zuweisung nicht konform sind.
+You can learn how to review compliance results by reading [identify non-compliance results](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). In the left pane, select **Compliance**, and then locate the **[Preview] Enable Azure Monitor for VMs** initiative for VMs that aren't compliant according to the assignment you created.
 
-![Richtlinienkonformität für Azure-VMs](./media/vminsights-onboard/policy-view-compliance-01.png)
+![Policy compliance for Azure VMs](./media/vminsights-onboard/policy-view-compliance-01.png)
 
-Auf der Grundlage der in der Initiative enthaltenen Richtlinien werden VMs in den folgenden Szenarien als nicht konform gemeldet:
+Based on the results of the policies included with the initiative, VMs are reported as non-compliant in the following scenarios:
 
-* Log Analytics oder der Dependency-Agent wurde nicht bereitgestellt.  
-    Dieses Szenario ist typisch für einen Bereich mit vorhandenen virtuellen Computern. Um das Problem abzumildern, [erstellen Sie Wartungstasks](../../governance/policy/how-to/remediate-resources.md) für eine nicht konforme Richtlinie, um die erforderlichen Agents bereitzustellen.  
-    - [Vorschau]: Deploy Dependency Agent for Linux VMs
-    - [Vorschau]: Deploy Dependency Agent for Windows VMs
-    - [Vorschau]: Deploy Log Analytics Agent for Linux VMs
-    - [Vorschau]: Deploy Log Analytics Agent for Windows VMs
+* Log Analytics or the Dependency agent isn't deployed.  
+    This scenario is typical for a scope with existing VMs. To mitigate it, deploy the required agents by [creating remediation tasks](../../governance/policy/how-to/remediate-resources.md) on a non-compliant policy.  
+    - [Preview]: Deploy Dependency Agent for Linux VMs
+    - [Preview]: Deploy Dependency Agent for Windows VMs
+    - [Preview]: Deploy Log Analytics Agent for Linux VMs
+    - [Preview]: Deploy Log Analytics Agent for Windows VMs
 
-* Das VM-Image (Betriebssystem) wird in der Richtliniendefinition nicht identifiziert.  
-    Die Kriterien der Bereitstellungsrichtlinie schließen nur VMs ein, die aus bekannten Azure VM-Images bereitgestellt werden. Überprüfen Sie anhand der Dokumentation, ob das Betriebssystem der VM unterstützt wird. Ist das nicht der Fall, müssen Sie die Bereitstellungsrichtlinie duplizieren und sie aktualisieren oder ändern, damit das Image konform wird.  
-    - [Vorschau]: Überwachen der Bereitstellung des Dependency-Agent – VM-Image (Betriebssystem) nicht aufgelistet
-    - [Vorschau]: Überwachen der Bereitstellung des Log Analytics-Agents – VM-Image (Betriebssystem) nicht aufgelistet
+* VM Image (OS) isn't identified in the policy definition.  
+    The criteria of the deployment policy include only VMs that are deployed from well-known Azure VM images. Check the documentation to see whether the VM OS is supported. If it isn't supported, duplicate the deployment policy and update or modify it to make the image compliant.  
+    - [Preview]: Audit Dependency Agent Deployment – VM Image (OS) unlisted
+    - [Preview]: Audit Log Analytics Agent Deployment – VM Image (OS) unlisted
 
-* VMs melden sich nicht am angegebenen Log Analytics-Arbeitsbereich an.  
-    Es ist möglich, dass sich einige VMs im Bereich der Initiative bei einem anderen Log Analytics-Arbeitsbereich anmelden, als dem, der in der Richtlinienzuweisung angegeben ist. Diese Richtlinie ist ein Tool, um zu bestimmen, welche VMs an einen nicht kompatiblen Arbeitsbereich berichten.  
-    - [Vorschau]: Audit Log Analytics Workspace for VM - Report Mismatch
+* VMs aren't logging in to the specified Log Analytics workspace.  
+    It's possible that some VMs in the initiative scope are logging in to a Log Analytics workspace other than the one that's specified in the policy assignment. This policy is a tool to identify which VMs are reporting to a non-compliant workspace.  
+    - [Preview]: Audit Log Analytics Workspace for VM - Report Mismatch
 
-### <a name="enable-with-powershell"></a>Aktivieren mithilfe von PowerShell
-Um Azure Monitor für VMs für mehrere VMs oder VM-Skalierungsgruppen zu aktivieren, können Sie das PowerShell-Skript [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) verwenden, das im Azure PowerShell-Katalog verfügbar ist. Dieses Skript durchläuft alle virtuellen Computer und VM-Skalierungsgruppen in Ihrem Abonnement in der bereichsbezogenen Ressourcengruppe gemäß der Angabe in *ResourceGroup* oder eine einzelne VM oder VM-Skalierungsgruppe, die in *Name* angegeben ist. Für jede VM oder VM-Skalierungsgruppe überprüft das Skript, ob die VM-Erweiterung bereits installiert ist. Wenn die VM-Erweiterung nicht installiert ist, versucht das Skript, sie neu zu installieren. Wenn die VM-Erweiterung installiert ist, installiert das Skript die Log Analytics- und Dependency-Agent-VM-Erweiterungen.
+### Enable with PowerShell
+To enable Azure Monitor for VMs for multiple VMs or virtual machine scale sets, you can use the PowerShell script [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), available from the Azure PowerShell Gallery. This script iterates through every virtual machine and virtual machine scale set in your subscription, in the scoped resource group that's specified by *ResourceGroup*, or to a single VM or virtual machine scale set that's specified by *Name*. For each VM or virtual machine scale set, the script verifies whether the VM extension is already installed. If the VM extension is not installed, the script tries to reinstall it. If the VM extension is installed, the script installs the Log Analytics and Dependency agent VM extensions.
 
-Das Skript benötigt mindestens die Azure PowerShell-Modulversion 5.7.0. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+This script requires Azure PowerShell module version 5.7.0 or later. Run `Get-Module -ListAvailable AzureRM` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). If you're running PowerShell locally, you also need to run `Connect-AzureRmAccount` to create a connection with Azure.
 
-Führen Sie `Get-Help` aus, um eine Liste der Argumentendetails des Skripts und der Beispielverwendung zu erhalten.
+To get a list of the script's argument details and example usage, run `Get-Help`.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
