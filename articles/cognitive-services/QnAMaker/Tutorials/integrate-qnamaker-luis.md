@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1d7130e841ce48ead4fca1d76bf5e3e051263efd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163310"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216794"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Verwenden des Bots mit QnA Maker und LUIS zum Verteilen Ihrer Wissensdatenbank
 Wenn Ihre QnA Maker-Wissensdatenbank eine bestimmte Größe erreicht, wird es schwierig, sie als einzelnen monolithischen Satz zu warten, und es zeigt sich die Notwendigkeit, die Wissensdatenbank in kleinere logische Abschnitte aufzuteilen.

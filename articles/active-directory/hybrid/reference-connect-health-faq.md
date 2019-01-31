@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 67523641ff9650a5b35a142147a2f69adcfb3b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470323"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077300"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -62,7 +62,7 @@ Beispiel:
 
 **F: Unterstützt Azure AD Connect Health die Cloud „Azure Deutschland“?**
 
-Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchronisierungsfehlern](how-to-connect-health-sync.md#object-level-synchronization-error-report) nicht in der Microsoft Cloud Deutschland unterstützt. 
+Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchronisierungsfehlern](how-to-connect-health-sync.md#object-level-synchronization-error-report) nicht in der Microsoft Cloud Deutschland unterstützt.
 
 | Rollen | Features | In der Microsoft Cloud Deutschland unterstützt |
 | ------ | --------------- | --- |
@@ -71,7 +71,7 @@ Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchroni
 | Connect Health für AD FS | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
 | Connect Health für AD DS | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
 
-Um die Agent-Konnektivität von Connect Health für Synchronisierung sicherzustellen, erfüllen Sie die [Installationsanforderungen](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) entsprechend.   
+Um die Agent-Konnektivität von Connect Health für Synchronisierung sicherzustellen, erfüllen Sie die [Installationsanforderungen](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) entsprechend.
 
 ## <a name="installation-questions"></a>Fragen zur Installation
 
@@ -163,7 +163,7 @@ Azure AD Connect Health scannt alle Computer, die es überwacht, und stellt sich
 
 Sie können diese Überprüfung mithilfe des folgenden PowerShell-Skripts manuell durchführen. Es implementiert die oben genannten Logik.
 
-```
+```powershell
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
@@ -190,7 +190,7 @@ CheckForMS17-010
 
 **F: Warum werden meine AD FS-Überwachungen nicht generiert?**
 
-Vergewissern Sie sich mithilfe des PowerShell-Cmdlets <i>Get-AdfsProperties -AuditLevel</i>, dass Überwachungsprotokolle nicht deaktiviert sind. Weitere Informationen zu AD FS-Überwachungsprotokollen finden Sie [hier](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Hinweis: Wenn erweiterte Überwachungseinstellungen mithilfe von Push an den ADFS-Server übertragen werden, werden alle mit „auditpol.exe“ vorgenommenen Änderungen überschrieben. (Das gilt auch, wenn „Anwendung wurde generiert“ nicht konfiguriert ist.) Konfigurieren Sie die lokale Sicherheitsrichtlinie in diesem Fall so, dass Fehler- und Erfolgsereignisse im Zusammenhang mit „Anwendung wurde generiert“ protokolliert werden. 
+Vergewissern Sie sich mithilfe des PowerShell-Cmdlets <i>Get-AdfsProperties -AuditLevel</i>, dass Überwachungsprotokolle nicht deaktiviert sind. Weitere Informationen zu AD FS-Überwachungsprotokollen finden Sie [hier](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Hinweis: Wenn erweiterte Überwachungseinstellungen mithilfe von Push an den ADFS-Server übertragen werden, werden alle mit „auditpol.exe“ vorgenommenen Änderungen überschrieben. (Das gilt auch, wenn „Anwendung wurde generiert“ nicht konfiguriert ist.) Konfigurieren Sie die lokale Sicherheitsrichtlinie in diesem Fall so, dass Fehler- und Erfolgsereignisse im Zusammenhang mit „Anwendung wurde generiert“ protokolliert werden.
 
 
 ## <a name="related-links"></a>Verwandte Links

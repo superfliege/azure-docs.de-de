@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74efc23cd5f0f840e5b2c1e597059295765f45ea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6154262d7b412a0a4049c2d9456d7ae53ef01ca8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468657"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183321"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Content Management-Anforderungen für Ihre Hybrid-Identitätslösung
 Wenn Sie die Content Management-Anforderungen Ihres Unternehmens genau kennen, kann sich dies direkt auf die Entscheidung auswirken, welche Hybrid-Identitätslösung verwendet werden soll. Aufgrund der Nutzung mehrerer Geräte und der Mitnahme eigener Geräte durch Benutzer ([BYOD](https://aka.ms/byodcg)) muss das Unternehmen seine Daten schützen und gleichzeitig dafür sorgen, dass der Datenschutz für Benutzer gewahrt bleibt. Wenn Benutzer ein eigenes Gerät verwenden, verfügen sie möglicherweise auch über verschiedene anwendungsspezifische Anmeldeinformationen. Es ist wichtig zu unterscheiden, welche Inhalte mit persönlichen Anmeldeinformationen und welche Inhalte mit den Anmeldeinformationen des Unternehmens erstellt wurden. Ihre Identitätslösung sollte in der Lage sein, mit Clouddiensten zu interagieren, um für Endbenutzer eine nahtlose Erfahrung zu schaffen, und dabei den Datenschutz sicherzustellen und den Schutz vor Datenlecks zu erhöhen. 

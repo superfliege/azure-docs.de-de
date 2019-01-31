@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470697"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167086"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -31,7 +31,7 @@ Standardmäßig befinden sich die Office 365-Ressourcen für Ihre Benutzer im gl
 Durch Festlegen des **preferredDataLocation**-Attributs können Sie den geografischen Raum des Benutzers definieren. Sie können die Office 365-Ressourcen eines Benutzers, z.B. das Postfach und OneDrive, im selben geografischen Raum wie den Benutzer platzieren und verfügen immer noch über einen Mandanten für Ihre gesamte Organisation.
 
 > [!IMPORTANT]
-> Multi-Geo ist derzeit für Kunden mit mindestens 5000 Abonnements für Office 365-Dienste verfügbar. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
+> Multi-Geo ist derzeit für Kunden mit mindestens 2.500 Abonnements für Office 365-Dienste verfügbar. Ausführliche Informationen erhalten Sie von Ihrem Microsoft-Vertreter.
 >
 >
 
@@ -53,7 +53,7 @@ Folgende geografische Räume stehen in Office 365 für Multi-Geo Capabilities zu
 | USA | NAM |
 
 * Wenn ein geografischer Raum nicht in dieser Tabelle aufgeführt wird (z.B. Südamerika), kann er nicht für Multi-Geo Capabilities verwendet werden.
-* Der geografische Raum Indien ist nur für Kunden mit Rechnungsadressen und erworbenen Lizenzen in diesem geografischen Raum verfügbar.
+
 * Nicht alle Office 365-Workloads unterstützen die Festlegung des geografischen Raums eines Benutzers.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect-Unterstützung für die Synchronisierung

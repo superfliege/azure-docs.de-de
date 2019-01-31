@@ -2,7 +2,7 @@
 title: 'Azure Batch: Taskfehlerereignis | Microsoft-Dokumentation'
 description: Referenz zum Batch-Taskfehlerereignis.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: c4636ebbfb6737be07d01a3861ec6b9da66ff966
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30313095"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458991"
 ---
 # <a name="task-fail-event"></a>Taskfehlerereignis
 
@@ -52,7 +52,7 @@ ms.locfileid: "30313095"
 }
 ```
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |jobId|Zeichenfolge|Die ID des Auftrags, der den Task enthält.|
 |id|Zeichenfolge|Die ID des Tasks.|
@@ -65,30 +65,30 @@ ms.locfileid: "30313095"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |poolId|Zeichenfolge|Die ID des Pools, auf den der Task angewendet wurde.|
 |nodeId|Zeichenfolge|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|Die Anzahl der Computeknoten, die vom Task benötigt werden.|
 
 ###  <a name="constraints"></a> Einschränkungen
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|Gibt an, wie oft der Task maximal wiederholt werden kann. Der Batch-Dienst wiederholt einen Task, wenn sein Exitcode ungleich null ist.<br /><br /> Beachten Sie, dass dieser Wert die Anzahl der Wiederholungen ausdrücklich steuert. Der Batch-Dienst wiederholt den Task einmal und kann ihn anschließend bis zu diesem Grenzwert wiederholen. Wenn beispielsweise die maximale Anzahl von Wiederholungsversuchen 3 ist, versucht der Batch-Dienst einen Task bis zu viermal (ein erster Versuch und drei Wiederholungsversuche).<br /><br /> Wenn die maximale Anzahl von Wiederholungsversuchen 0 ist, wiederholt der Batch-Dienst Tasks nicht.<br /><br /> Wenn die maximale Anzahl von Wiederholungsversuchen -1 ist, wiederholt der Batch-Dienst Tasks unbegrenzt.<br /><br /> Der Standardwert ist 0 (keine Wiederholungsversuche).|
 
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
-|startTime|Datetime|Der Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde. „Running“ entspricht dem Status **Wird ausgeführt**. Wenn also der Task Ressourcendateien oder Anwendungspakete angibt, reflektiert die Startzeit den Zeitpunkt, an dem der Task mit dem Herunterladen oder Bereitstellen dieser Elemente begonnen hat.  Wenn der Task neu gestartet oder wiederholt wurde, ist dies der letzte Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde.|
-|endTime|Datetime|Der Zeitpunkt, an dem die Ausführung des Tasks beendet wurde.|
+|startTime|DateTime|Der Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde. „Running“ entspricht dem Status **Wird ausgeführt**. Wenn also der Task Ressourcendateien oder Anwendungspakete angibt, reflektiert die Startzeit den Zeitpunkt, an dem der Task mit dem Herunterladen oder Bereitstellen dieser Elemente begonnen hat.  Wenn der Task neu gestartet oder wiederholt wurde, ist dies der letzte Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde.|
+|endTime|DateTime|Der Zeitpunkt, an dem die Ausführung des Tasks beendet wurde.|
 |exitCode|Int32|Der Exitcode des Tasks.|
 |retryCount|Int32|Die Häufigkeit, mit der der Task vom Batch-Dienst wiederholt wurde. Der Vorgang wird wiederholt, wenn der Exitcode ungleich null ist, und zwar bis zum angegebenen Wert von „MaxTaskRetryCount“.|
 |requeueCount|Int32|Die Häufigkeit, mit der der Tasks vom Batch-Dienst als Ergebnis einer Benutzeranforderung erneut in die Warteschlange gestellt wurde.<br /><br /> Wenn der Benutzer Knoten aus einem Pool entfernt (durch Vergrößern oder Verkleinern des Pools) oder der Auftrag deaktiviert wird, kann der Benutzer angeben, dass auf den Knoten ausgeführte Tasks zur Ausführung erneut in die Warteschlange gestellt werden. Dieser Zähler überwacht, wie oft der Task aus diesen Gründen in die Warteschlange gestellt wurde.|

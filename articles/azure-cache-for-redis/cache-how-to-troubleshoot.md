@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 154f5200872dbc06550f396717cb215f3db4f7dd
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199577"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096958"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Problembehandlung für Azure Cache for Redis
 Dieser Artikel enthält Hinweise zur Behandlung der folgenden Kategorien von Azure Cache for Redis-Problemen.
@@ -212,7 +212,7 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
             return lazyConnection.Value;
         }
     }
-    ````
+    ```
 
     Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Cache mithilfe von StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 

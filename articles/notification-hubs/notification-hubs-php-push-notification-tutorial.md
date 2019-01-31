@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: dd153558e8cf3dbe64bc2693a72d16934dfb23cb
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 7062404da6b999d42dc523ba72be486df1fc0057
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446695"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093609"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Verwenden von Notification Hubs von PHP aus
 
@@ -209,7 +209,7 @@ Mit dieser Klasse können wir jetzt die Methoden zum Senden von Benachrichtigung
         $info = curl_getinfo($ch);
 
         if ($info['http_code'] <> 201) {
-            throw new Exception('Error sending notificaiton: '. $info['http_code'] . ' msg: ' . $response);
+            throw new Exception('Error sending notification: '. $info['http_code'] . ' msg: ' . $response);
         }
     } 
     ```

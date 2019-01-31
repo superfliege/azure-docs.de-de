@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 8111d80d0888455fbdf3ccf37e723fe348a62bee
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: common
+ms.openlocfilehash: 6220bdaa40dc2c70bcb330681180a1d082d0132a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435003"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454538"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-Dienst: Häufig gestellte Fragen 
 Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten. Die Fragen und Antworten sind in folgende Kategorien unterteilt:

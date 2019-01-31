@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ab2361eae7dac58adb2739437d0616bcd05f870f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850381"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175092"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -65,7 +65,7 @@ Das **Precondition**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Typ | JA | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
+| Type | JA | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
 | ExecuteActionsIf | JA | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |
 
 Das **Precondition**-Element enthält die folgenden Elemente:

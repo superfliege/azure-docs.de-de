@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384716"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883397"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -111,7 +111,7 @@ Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und
 Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](../../azure-monitor/platform/alerts-metric.md) verwaltet. Weitere Informationen zur Konfiguration und Verwendung von Warnungen im Azure-Portal finden Sie unter [Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure](../../azure-monitor/platform/alerts-extend-tool.md).
 
 ## <a name="how-do-i-access-my-dashboards"></a>Wie kann ich auf meine Dashboards zugreifen?
-Das Feature [Mein Dashboard](dashboards.md) in Log Analytics ist veraltet. Mit diesem Feature konnten Sie eine private Sammlung von Ansicht-Designer-Komponenten erstellen. Es wurde durch die integrierte Azure-Dashboard-Funktion ersetzt. Sie können weiterhin Daten in Log Analytics mit dem [Ansicht-Designer](view-designer.md) für freigegebene Ansichten visualisieren. Sie können auch Visualisierungen aus diesen Ansichten oder für [einzelne Abfragen](../learn/tutorial-logs-dashboards.md) an Azure-Dashboards anheften.
+Das Feature **Mein Dashboard** in Log Analytics ist veraltet. Mit diesem Feature konnten Sie eine private Sammlung von Ansicht-Designer-Komponenten erstellen. Es wurde durch die integrierte Azure-Dashboard-Funktion ersetzt. Sie können weiterhin Daten in Log Analytics mit dem [Ansicht-Designer](view-designer.md) für freigegebene Ansichten visualisieren. Sie können auch Visualisierungen aus diesen Ansichten oder für [einzelne Abfragen](../learn/tutorial-logs-dashboards.md) an Azure-Dashboards anheften.
 
 ## <a name="how-do-i-check-my-usage"></a>Wie überprüfe ich meine Nutzung?
 Die Nutzung und Kosten von Log Analytics können Sie nun einfach einsehen und verwalten, indem Sie in Ihrem Arbeitsbereich **Nutzung und geschätzte Kosten** auswählen.

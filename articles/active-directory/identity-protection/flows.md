@@ -8,20 +8,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a0c351df535a1f2463c14a4719eac0e4c4896c2b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 42a32562eccc86d2516af14a529967a08108c94c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464203"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155288"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Anmeldeverfahren von Azure AD Identity Protection
 Azure Active Directory Identity Protection bietet folgende Möglichkeiten:
@@ -57,18 +57,13 @@ Administratoren können eine Richtlinie festlegen, die es für Benutzer erforder
 
 1. Im ersten Schritt wird der Benutzer davon in Kenntnis gesetzt, dass das Konto für die mehrstufige Authentifizierung eingerichtet werden muss. 
    
-    ![Wiederherstellung](./media/flows/301.png "Wiederherstellung")
-
+    ![Wiederherstellung](./media/flows/140.png "Wiederherstellung")
 2. Zur Einrichtung der mehrstufigen Authentifizierung müssen Sie dem System mitteilen, wie Sie kontaktiert werden möchten.
    
-    ![Wiederherstellung](./media/flows/302.png "Wiederherstellung")
-
-3. Geben Sie im System Ihre Telefonnummer und wie Sie kontaktiert werden möchten an.
-
-    ![Wiederherstellung](./media/flows/303.png "Wiederherstellung")
-
-Um die Registrierung abschließen zu können, müssen Sie entweder auf einen Anruf antworten oder einen Code eingeben. 
-
+    ![Wiederherstellung](./media/flows/141.png "Wiederherstellung")
+3. Das System sendet Ihnen eine Abfrage, auf die Sie reagieren müssen.
+   
+    ![Wiederherstellung](./media/flows/142.png "Wiederherstellung")
 
 ## <a name="risky-sign-in-recovery"></a>Wiederherstellung riskanter Anmeldungen
 Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, werden die betroffenen Benutzer benachrichtigt, wenn sie versuchen, sich anzumelden. 

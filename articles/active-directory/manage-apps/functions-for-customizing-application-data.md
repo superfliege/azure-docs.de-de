@@ -6,19 +6,19 @@ documentationcenter: ''
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 05be48817334dacac803eeccf2dc08e5a4bbd407
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7b69929b210f0f30db28b18073893505d2977051
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823675"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179037"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -47,7 +47,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **Suffix** |Erforderlich |Zeichenfolge |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
@@ -60,7 +60,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
@@ -76,7 +76,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
 | **source1 … sourceN** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
@@ -89,7 +89,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs. |
 | **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
@@ -103,7 +103,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
 
@@ -115,7 +115,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind "True" oder "False". |
 
@@ -142,7 +142,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **AlterWert** |Optional |Zeichenfolge |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
@@ -165,7 +165,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
@@ -178,7 +178,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]**-Objekt |
 
@@ -190,7 +190,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
 
@@ -202,7 +202,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |**Source** , der aktualisiert werden soll. |
 | **defaultValue** |Optional |Zeichenfolge |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
@@ -217,7 +217,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
@@ -230,7 +230,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|

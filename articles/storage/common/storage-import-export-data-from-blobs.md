@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: 0480a8d4079a39c8e365dde893a9a1af2d7341aa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315178"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453109"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
