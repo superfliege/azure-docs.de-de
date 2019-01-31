@@ -166,28 +166,28 @@ Beim Kopieren von Daten aus SAP BW werden die folgenden Zuordnungen von SAP BW-D
 
 | SAP BW-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| ACCP | int |
-| CHAR | Zeichenfolge |
-| CLNT | Zeichenfolge |
+| ACCP | Int |
+| CHAR | String |
+| CLNT | String |
 | CURR | Decimal |
-| CUKY | Zeichenfolge |
-| DEC | DECIMAL |
+| CUKY | String |
+| DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
-| INT4 | int |
-| LANG | Zeichenfolge |
-| LCHR | Zeichenfolge |
+| INT4 | Int |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | DECIMAL |
+| QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | Zeichenfolge |
-| EINHEIT | Zeichenfolge |
-| DATS | Zeichenfolge |
-| NUMC | Zeichenfolge |
-| TIMS | Zeichenfolge |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
