@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: bc00bd3b61398355c663d133c0c9a66c2a52aa8d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046321"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807455"
 ---
 # <a name="r-developers-guide-to-azure"></a>R-Entwicklerleitfaden für Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -40,7 +40,7 @@ Dieser Artikel behandelt die folgenden Azure-Dienste, die die R-Sprache unterst�
 |[Azure Databricks](#azure-databricks)                            |Spark-Umgebung zur Zusammenarbeit, die R und andere Sprachen unterstützt               |
 |[Azure Machine Learning Studio](#azure-machine-learning-studio)  |Ausführung benutzerdefinierter R-Skripts in Azure Machine Learning-Experimenten                      |
 |[Azure Batch](#azure-batch)                                      |Angebot einer Vielzahl von Optionen zur wirtschaftlichen Ausführung von R-Code auf vielen Knoten in einem Cluster|
-|[Azure Notebooks](#azure-notebooks)                              |Eine kostenfreie (aber eingeschränkte) cloudbasierte Version von Jupyter Notebook                  |
+|[Azure Notebooks](#azure-notebooks)                              |Eine kostenfreie cloudbasierte Version von Jupyter-Notebooks                  |
 |[Azure SQL-Datenbank](#azure-sql-database)                        |Ausführung von R-Skripts innerhalb der SQL Server-Datenbank-Engine                            |
 
 ## <a name="data-science-virtual-machine"></a>Virtueller Computer für Data Science
@@ -104,16 +104,17 @@ Durch dieses Paket wird die Verwendung von Azure ML als skalierbare Plattform f�
 ## <a name="azure-batch"></a>Azure Batch
 Für umfangreiche R-Aufträge können Sie [Azure Batch](https://azure.microsoft.com/services/batch/) verwenden.  Dieser Dienst bietet Auftragsplanung und Computeverwaltung im Maßstab der Cloud, sodass Sie Ihre R-Workload auf Dutzende, Hunderte oder Tausende virtueller Computer skalieren können.  Da es sich um eine generalisierte Computeplattform handelt, gibt es einige wenige Optionen für die Ausführung von R-Aufträgen in Azure Batch.
 
-Eine Option besteht in der Verwendung des Microsoft-Pakets <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code>.  Dieses R-Paket ist ein paralleles Back-End für das Paket `foreach`.  Es ermöglicht die parallele Ausführung jeder Iteration der `foreach`-Schleife auf einem Knoten innerhalb des Azure Batch-Clusters.  Eine Einführung in das Paket finden Sie im Blogbeitrag [doAzureParallel: Take advantage of Azure’s flexible compute directly from your R session](https://azure.microsoft.com/blog/doazureparallel/) (doAzureParallel: Direktes Nutzen der flexiblen Azure-Computefunktion in Ihrer R-Sitzung).
+Eine Option besteht in der Verwendung des Microsoft-Pakets <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code>.  Dieses R-Paket ist ein paralleles Back-End für das Paket `foreach`.  Es ermöglicht die parallele Ausführung jeder Iteration der `foreach`-Schleife auf einem Knoten innerhalb des Azure Batch-Clusters.  Eine Einführung in das Paket finden Sie in dem Blogbeitrag [doAzureParallel: Take advantage of Azure’s flexible compute directly from your R session (doAzureParallel: Nutzen Sie die flexiblen Computeressourcen von Azure direkt von Ihrer R-Sitzung aus)](https://azure.microsoft.com/blog/doazureparallel/).
 
 Eine weitere Option für die Ausführung eines R-Skripts in Azure Batch besteht darin, Ihren Code mit „RScript.exe“ als Batch-Apps im Azure-Portal zu bündeln.  Eine ausführliche exemplarische Vorgehensweise finden Sie unter [R Workloads on Azure Batch](https://azure.microsoft.com/blog/r-workloads-on-azure-batch/) (R-Workloads in Azure Batch).
 
 Als dritte Möglichkeit können Sie das [Azure Distributed Data Engineering Toolkit](https://github.com/Azure/aztk) (AZTK) verwenden. Dieses ermöglicht die Bereitstellung bedarfsgesteuerter Spark-Cluster mithilfe von Docker-Containern in Azure Batch.  Dadurch bietet sich eine preisgünstige Möglichkeit zum Ausführen von Spark-Aufträgen in Azure.  Indem Sie [SparklyR mit AZTK](https://github.com/Azure/aztk/wiki/SparklyR-on-Azure-with-AZTK) verwenden, können Ihre R-Skripts in der Cloud einfach und kostengünstig horizontal hochskaliert werden.
 
 ## <a name="azure-notebooks"></a>Azure-Notebooks
+
 [Azure Notebooks](https://notebooks.azure.com) ist eine kostengünstige, unkomplizierte Methode für R-Entwickler, die lieber mit Notebooks arbeiten, um ihren Code in Azure zu integrieren.  Dies ist ein kostenloser Dienst für jeden, der Code mit [Jupyter](https://jupyter.org/) im Browser entwickeln und ausführen möchte. Dabei handelt es sich um ein Open Source-Projekt, das das Kombinieren von Markdowntext, ausführbarem Code und Grafiken in einer einzigen Canvas ermöglicht.
 
-Während Azure Notebooks für kleine Projekte eine echte Option darstellt, ist es aufgrund einiger Einschränkungen für umfangreiche Data Science-Projekte nicht geeignet.  Zurzeit gilt für den Dienst pro Notebook ein Limit von 4 GB Arbeitsspeicher, und Datasets dürfen maximal 1 GB umfassen.  Zur Veröffentlichung kleinerer Analysen stellt dies jedoch eine einfache und kostenlose Option dar.
+Der kostenlose Diensttarif von Azure Notebooks ist eine ideale Option für kleine Projekte, da er den Prozess jedes Notebooks auf 4GB Arbeitsspeicher und 1GB für Datasets beschränkt. Wenn Sie über diese Einschränkungen hinausgehende Rechen- und Datenleistung benötigen, können Sie Notebooks in einer Data Science Virtual Machine-Instanz ausführen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="azure-sql-database"></a>Azure SQL-Datenbank
 [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) ist ein intelligenter und vollständig verwalteter Microsoft-Dienst für relationale Clouddatenbanken.  Damit können Sie das volle Potenzial von SQL Server nutzen, ohne die Infrastruktur einrichten zu müssen.  Darin enthalten ist [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017), einer der Neuzugänge des SQL-Diensts.
