@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702373"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097970"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate (Vorschau)
  
@@ -28,7 +28,7 @@ Ein benutzerdefiniertes Aggregat wird im Rahmen einer Zeitfensterspezifikation v
 
 AccumulateOnly Aggregate können nur neue Ereignisse für den Zustand akkumulieren, eine Dekumulation von Werten lässt der Algorithmus nicht zu. Wählen Sie diesen Aggregattyp aus, wenn eine Dekumulation der Informationen zu einem Ereignis aus dem Zustandswert nicht implementiert werden kann. Im Folgenden finden Sie die JavaScript-Vorlage für AccumulateOnly-Aggregate:
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can only be accumulated.
 function main() {
     this.init = function () {
@@ -43,13 +43,13 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate-Aggregate
 
 AccumulateDeaccumulate Aggregate ermöglichen die Dekumulation eines zuvor akkumulierten Werts aus dem Zustand, z.B. das Entfernen eines Schlüssel-Wert-Paars aus einer Liste von Ereigniswerte oder das Subtrahieren eines Werts von einem Zustand der aggregierten Summe. Im Folgenden finden Sie die JavaScript-Vorlage für AccumulateDeaccumulate-Aggregate:
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
 function main() {
     this.init = function () {
@@ -72,7 +72,7 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ## <a name="uda---javascript-function-declaration"></a>UDA – JavaScript-Funktionsdeklaration
 
@@ -129,7 +129,7 @@ Nun erstellen wir ein JavaScript-UDA unter einem vorhandenen ASA-Auftrag über d
 1. Wählen Sie in der Ansicht „Neue Funktion“ den Funktionstyp **JavaScript-UDA** aus. Daraufhin wird im Editor eine UDA-Standardvorlage angezeigt.
 1. Geben Sie „TWA“ als UDA-Alias ein, und ändern Sie die Funktionsimplementierung wie im Folgenden angegeben:
 
-    ````JavaScript
+    ```JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
     function main() {
         this.init = function () {
@@ -167,7 +167,7 @@ Nun erstellen wir ein JavaScript-UDA unter einem vorhandenen ASA-Auftrag über d
             return result;
         }
     }
-    ````
+    ```
 
 1. Sobald Sie auf die Schaltfläche „Speichern“ klicken, wird das UDA in der Liste der Funktionen angezeigt.
 
@@ -177,7 +177,7 @@ Nun erstellen wir ein JavaScript-UDA unter einem vorhandenen ASA-Auftrag über d
 
 Öffnen Sie Ihren Auftrag im Azure-Portal, bearbeiten Sie die Abfrage, und rufen Sie die TWA()-Funktion mit dem obligatorischen Präfix „uda.“ auf. Beispiel: 
 
-````SQL
+```SQL
 WITH value AS
 (
     SELECT
@@ -191,13 +191,13 @@ SELECT
     uda.TWA(value) as NoseDoseTWA
 FROM value
 GROUP BY TumblingWindow(minute, 5)
-````
+```
 
 ## <a name="testing-query-with-uda"></a>Testen einer Abfrage mit einem UDA
 
 Erstellen Sie eine lokale JSON-Datei mit dem nachstehenden Inhalt, laden Sie die Datei in einen Stream Analytics-Auftrag hoch, und testen Sie die vorstehende Abfrage.
 
-````JSON
+```JSON
 [
   {"EntryTime": "2017-06-10T05:01:00-07:00", "NoiseLevelDB": 80, "DurationSecond": 22.0},
   {"EntryTime": "2017-06-10T05:02:00-07:00", "NoiseLevelDB": 81, "DurationSecond": 37.8},
@@ -223,7 +223,7 @@ Erstellen Sie eine lokale JSON-Datei mit dem nachstehenden Inhalt, laden Sie die
   {"EntryTime": "2017-06-10T05:20:00-07:00", "NoiseLevelDB": 113, "DurationSecond": 25.1},
   {"EntryTime": "2017-06-10T05:22:00-07:00", "NoiseLevelDB": 110, "DurationSecond": 5.3}
 ]
-````
+```
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

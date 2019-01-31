@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260132"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208073"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Anhang zu Azure Disk Encryption 
 
@@ -325,7 +325,7 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
 
 1. Erstellen Sie unter „/usr/local/sbin/azure_crypt_key.sh“ eine Datei mit dem Inhalt des folgenden Skripts. Achten Sie auf KeyFileName, da dies der von Azure verwendete Dateiname für die Passphrase ist.
 
-    ```
+    ```bash
     #!/bin/sh
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -405,7 +405,7 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 2. Kommentieren Sie diese Zeilen am Ende der Datei „/usr/lib/dracut/modules.d/90crypt/module-setup.sh“ aus:
- ```
+ ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -418,20 +418,20 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
  ```
 
 3. Fügen Sie die folgende Zeile am Anfang der Datei „/usr/lib/dracut/modules.d/90crypt/parse-crypt.sh“ an:
- ```
+ ```bash
     DRACUT_SYSTEMD=0
  ```
 Und ändern Sie alle Vorkommen von:
- ```
+ ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
  ```
 in:
-```
+```bash
     if [ 1 ]; then
 ```
 4. Bearbeiten Sie die Datei „/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh“, und fügen Sie sie an „# Open LUKS device“ an:
 
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2
@@ -485,7 +485,7 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
     ```
 
 2. Kommentieren Sie diese Zeilen am Ende der Datei „/usr/lib/dracut/modules.d/90crypt/module-setup.sh“ aus:
-```
+```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -498,19 +498,19 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
 ```
 
 3. Fügen Sie die folgende Zeile am Anfang der Datei „/usr/lib/dracut/modules.d/90crypt/parse-crypt.sh“ an:
-```
+```bash
     DRACUT_SYSTEMD=0
 ```
 Und ändern Sie alle Vorkommen von:
-```
+```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
 ```
 zu
-```
+```bash
     if [ 1 ]; then
 ```
 4. Bearbeiten Sie die Datei „/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh“, und fügen Sie sie nach „# Open LUKS device“ Folgendes an:
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2

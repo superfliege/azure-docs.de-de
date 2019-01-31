@@ -3,7 +3,7 @@ title: Grundlegendes über Ihre Azure-Rechnung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und verstehen.
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: jureid
 editor: ''
 tags: billing
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: cwatson
-ms.openlocfilehash: 50909a51786bf6118c4fb867f2482c93bf59c28e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 506910ffa46cb3fbd4be9dcecf9df0f9fdd291e5
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581552"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901019"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
 
@@ -100,7 +100,7 @@ In der folgenden Tabelle werden die Spaltenüberschriften des Abschnitts „Nutz
 | Begriff |BESCHREIBUNG |
 | --- | --- |
 | NAME |Gibt den Dienst der obersten Ebene für die Nutzung an |
-| Typ |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
+| Type |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
 | Ressource |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
 | Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
 | Consumed |Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde |

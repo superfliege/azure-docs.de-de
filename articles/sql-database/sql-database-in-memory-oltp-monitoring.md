@@ -11,20 +11,22 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606536"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470262"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Überwachen des In-Memory-OLTP-Speichers
+
 Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder „Premium“- und „Unternehmenskritisch“-Diensttarif verfügt über eine maximale In-Memory-OLTP-Speichergröße. Siehe [DTU-basierte Ressourceneinschränkungen – Einzeldatenbank](sql-database-dtu-resource-limits-single-databases.md), [DTU-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md), [V-Kern-basierte Ressourceneinschränkungen – Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Wenn dieses Limit überschritten wird, tritt bei Einfüge- und Aktualisierungsvorgängen möglicherweise der Fehler 41823 (Einzeldatenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder den Diensttarif bzw. die Computegröße für Ihre Datenbank upgraden.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Bestimmen, ob genügend In-Memory-OLTP-Speicherplatz für die Daten zur Verfügung steht
+
 Bestimmen Sie die Speicherkapazitäten der verschiedenen Dienstebenen. Siehe [DTU-basierte Ressourceneinschränkungen – Einzeldatenbank](sql-database-dtu-resource-limits-single-databases.md), [DTU-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md), [V-Kern-basierte Ressourceneinschränkungen – Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funktioniert für SQL Server genauso wie in Azure SQL-Datenbank. Lesen Sie sich dazu kurz den Artikel auf [MSDN](https://msdn.microsoft.com/library/dn282389.aspx) durch.
@@ -40,10 +42,12 @@ Sie können die Nutzung von In-Memory-Speicher als Prozentsatz der Speicherkapaz
 
 Oder verwenden Sie folgende Abfrage, um die In-Memory-Speicherverwendung anzuzeigen:
 
+```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
-
+```
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Behandeln von Situationen mit zu wenig In-Memory-OLTP-Speicher: Fehler 41823 und 41840
+
 Bei Erreichen der Obergrenze des In-Memory-OLTP-Speichers in Ihrer Datenbank tritt bei INSERT-, UPDATE-, ALTER- und CREATE-Vorgängen der Fehler 41823 (Einzeldatenbanken) bzw. der Fehler 41840 (Pools für elastische Datenbanken) auf. Beide Fehler führen zum Abbruch der aktiven Transaktion.
 
 Die Fehlermeldungen 41823 und 41840 geben an, dass die speicheroptimierten Tabellen und Tabellenvariablen in der Datenbank oder im Pool die maximale In-Memory-OLTP-Speichergröße erreicht haben.

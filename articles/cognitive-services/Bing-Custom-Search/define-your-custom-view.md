@@ -6,20 +6,20 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: ac5ba80740c47dd71a30bb20aab4a54829eac822
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 58830e3391cb6f794cfd8911e97b0c6dbb3cd2c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597799"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193640"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
-Mit einer Instanz für die benutzerdefinierte Suche können Sie die Benutzeroberfläche für die Suche so anpassen, dass nur Inhalte von Websites einbezogen werden, die Ihre Benutzer interessieren. Anstatt eine webweite Suche durchzuführen, durchsucht Bing nur die Segmente des Webs, die für Sie interessant sind. Um Ihre benutzerdefinierte Ansicht des Webs zu erstellen, verwenden Sie das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche.
+Mit einer benutzerdefinierten Suchinstanz können Sie die Benutzeroberfläche für die Suche so anpassen, dass nur Inhalte von Websites einbezogen werden, die Ihre Benutzer interessieren. Anstatt eine webweite Suche durchzuführen, durchsucht Bing nur die Segmente des Webs, die für Sie interessant sind. Um Ihre benutzerdefinierte Ansicht des Webs zu erstellen, verwenden Sie das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche.
 
 Im Portal können Sie eine Suchinstanz erstellen, die die Websegmente angibt: Domänen, Unterseiten und Webseiten, die Bing durchsuchen soll, sowie diejenigen, die nicht durchsucht werden sollen. Das Portal kann auch Inhalt vorschlagen, der ggf. eingebunden werden soll.
 
@@ -40,7 +40,7 @@ Beim Erstellen Ihrer Instanz für die benutzerdefinierte Suche können Sie die W
 
 Wenn Sie die Segmente kennen, die in Ihrer Instanz für die benutzerdefinierte Suche enthalten sein sollen, können Sie diese der Liste **Aktiv** Ihrer Instanz hinzufügen. 
 
-Wenn Sie nicht sicher sind, welche Segmente einbezogen werden sollen, können Sie im Bereich **Vorschau** Suchabfragen an Bing senden und die gewünschten Segmente auswählen. Gehen Sie hierbei wie folgt vor: 
+Wenn Sie nicht sicher sind, welche Segmente einbezogen werden sollen, können Sie im Bereich **Vorschau** Suchabfragen an Bing senden und die gewünschten Segmente auswählen. Gehen Sie dazu folgendermaßen vor: 
 
 1. Wählen Sie im Bereich „Vorschau“ in der Dropdownliste die Option „Bing“ aus, und geben Sie eine Suchabfrage ein.
 
@@ -133,7 +133,7 @@ Standardmäßig werden Webseiten nur dann oben in den Suchergebnissen angeheftet
 |---------------|----------------------------------------------------------------------------------|
 | Beginnt mit | Zum Anheften muss die Abfragezeichenfolge des Benutzers mit der Abfragezeichenfolge der Anheftung beginnen. |
 | Endet mit   | Zum Anheften muss die Abfragezeichenfolge des Benutzers auf die Abfragezeichenfolge der Anheftung enden.  |
-| Enthält    | Zum Anheften muss die Abfragezeichenfolge des Benutzers die Abfragezeichenfolge der Anheftung enthalten.   |
+| Contains    | Zum Anheften muss die Abfragezeichenfolge des Benutzers die Abfragezeichenfolge der Anheftung enthalten.   |
 
 
 Klicken Sie auf das Symbol „Bearbeiten“, um die Übereinstimmungsbedingung der Anheftung zu ändern. Klicken Sie in der Spalte **Query match condition** (Übereinstimmungsbedingung für Abfrage) auf die Dropdownliste, und wählen Sie die neue Bedingung aus. Klicken Sie dann auf das Symbol zum Speichern, um die Änderung zu speichern.
@@ -150,10 +150,10 @@ Wenn Sie die benutzerdefinierte Suche auf der entsprechenden Ebene abonniert hab
 
 ## <a name="usage-guidelines"></a>Verwendungsrichtlinien
 
-- Für jede Instanz für die benutzerdefinierte Suche ist die maximale Anzahl von Rangfolgeanpassungen, die Sie an den Segmenten **Aktiv** und **Blockiert** vornehmen können, auf 400 beschränkt.
+- Für jede benutzerdefinierte Suchinstanz ist die maximale Anzahl von Rangfolgeanpassungen, die Sie an den Segmenten **Aktiv** und **Blockiert** vornehmen können, auf 400 beschränkt.
 - Das Hinzufügen eines Segments zu den Registerkarten „Aktiv“ oder „Blockiert“ wird als eine Rangfolgeanpassung gezählt.
 - Die Verstärkung und Tieferstufung wird als zwei Rangfolgeanpassungen gezählt.
-- Für jede Instanz für die benutzerdefinierte Suche ist die maximale Anzahl von Anheftungen, die Sie vornehmen können, auf 200 beschränkt.
+- Für jede benutzerdefinierte Suchinstanz ist die maximale Anzahl von Anheftungen, die Sie vornehmen können, auf 200 beschränkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

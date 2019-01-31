@@ -5,21 +5,21 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135163"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454129"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Aufgaben des Projektleiters im Team Data Science-Prozess
 
-Dieses Tutorial beschreibt die Aufgaben, die ein Projektleiter für sein/ihr Projektteam abschließen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science-Prozess (TDSP)](overview.md) vereinheitlicht ist. TDSP ist ein von Microsoft entwickeltes Framework, das eine strukturierte Abfolge von Aktivitäten bereitstellt, die cloudbasierte, prädiktive Analyselösungen effizient ausführt. Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
+Dieses Tutorial beschreibt die Aufgaben, die ein Projektleiter für sein/ihr Projektteam abschließen muss. Ziel ist es, eine auf Zusammenarbeit ausgelegte Teamumgebung einzurichten, die gemäß dem [Team Data Science-Prozess (TDSP)](overview.md) vereinheitlicht ist. TDSP ist ein von Microsoft entwickeltes Framework, das eine strukturierte Abfolge von Aktivitäten bereitstellt, die cloudbasierte, prädiktive Analyselösungen effizient ausführt. Unter [Team Data Science Process: Roles and tasks](roles-tasks.md) (Team Data Science-Prozess: Rollen und Aufgaben) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
 Ein **Projektleiter** verwaltet die täglichen Aktivitäten der einzelnen Datenanalysten auf einem bestimmten Data Science-Projekt. Der Workflow für die Aufgaben, die von Projektleitern zum Einrichten dieser Umgebung ausgeführt werden, sind in der folgenden Abbildung dargestellt:
 
@@ -43,7 +43,7 @@ In diesem Tutorial werden abgekürzte Namen für Repositorys und Verzeichnisse v
 
 ## <a name="0-prerequisites"></a>0. Voraussetzungen
 
-Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter und dem Teamleiter zugewiesenen Aufgaben ausgeführt werden. Siehe dazu [Aufgaben des Gruppenleiters  im Team Data Science-Prozess](group-manager-tasks.md) und [Aufgaben des Teamleiters im Team Data Science-Prozess](team-lead-tasks.md). 
+Zum Erfüllen der Voraussetzungen müssen die dem Gruppenleiter und dem Teamleiter zugewiesenen Aufgaben ausgeführt werden. Siehe dazu [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md) und [Team lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md). 
 
 Kurz zusammengefasst müssen die folgenden Anforderungen erfüllt sein, ehe Sie mit den Aufgaben des Teamleiters beginnen: 
 
@@ -209,14 +209,14 @@ Jetzt müssen Sie Inhalte in **_DSProject1_** in das Repository _R5_ im Projekt 
 
 ## <a name="6-create-and-mount-azure-file-storage-as-project-resources-optional"></a>6. Erstellen Sie den Azure-Dateispeicher und stellen Sie ihn als Projektressourcen bereit (Optional)
 
-Wenn Sie einen Azure-Dateispeicher zur Datenfreigabe von z.B. Projektrohdaten oder für Ihr Projekt erstellte Funktionen erstellen möchten, sodass alle Projektmitglieder über Zugang zu den gleichen Datasets aus mehreren DSVMs verfügen, dann befolgen Sie die Anweisungen in den Abschnitten 3 und 4 von [Aufgaben des Teamleiters im Team Data Science-Prozess](team-lead-tasks.md). 
+Wenn Sie einen Azure-Dateispeicher zur Datenfreigabe von z.B. Projektrohdaten oder für Ihr Projekt erstellte Funktionen erstellen möchten, sodass alle Projektmitglieder über Zugang zu den gleichen Datasets aus mehreren DSVMs verfügen, dann befolgen Sie die Anweisungen in den Abschnitten 3 und 4 der [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Es folgen Links zu den ausführlicheren Beschreibungen der Rollen und Aufgaben, die vom Team Data Science-Prozess definiert werden:
 
-- [Aufgaben des Gruppenleiters im Team Data Science-Prozess](group-manager-tasks.md)
-- [Aufgaben des Teamleiters im Team Data Science-Prozess](team-lead-tasks.md)
-- [Aufgaben des Projektleiters im Team Data Science-Prozess](project-lead-tasks.md)
-- [Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess](project-ic-tasks.md)
+- [Group Manager tasks for a data science team (Aufgaben des Gruppenleiters eines Data Science-Teams)](group-manager-tasks.md)
+- [Team Lead tasks for a data science team (Aufgaben des Teamleiters eines Data Science-Teams)](team-lead-tasks.md)
+- [Project Lead tasks for a data science team (Aufgaben des Projektleiters eines Data Science-Teams)](project-lead-tasks.md)
+- [Project Individual Contributors for a data science team (Einzelne Mitwirkende zu einem Projekt eines Data Science-Teams)](project-ic-tasks.md)

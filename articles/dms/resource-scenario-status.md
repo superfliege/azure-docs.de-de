@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: e9f1b1a3df92c08b913a56aadc8eb8a9e80c7fdf
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: edc6e651c3ec352115e360e50f98a3e36cd287c0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320054"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904079"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden
 Azure Database Migration Service wurde zur Unterstützung einer Vielzahl von Migrationsszenarios (Quelle/Ziel-Paare) und sowohl für die Offline- (einmalig) als auch die Onlinemigration (fortlaufende Synchronisierung) konzipiert. Der von Azure Database Migration Service bereitgestellte Szenarioumfang wird im Laufe der Zeit erweitert. In regelmäßigen Abständen werden neue Szenarios hinzugefügt. Dieser Artikel beschreibt die Migrationsszenarien, die derzeit von Azure Database Migration Service unterstützt werden, sowie die Status der einzelnen Szenarien (private [eingeschränkte] Vorschau, öffentliche Vorschau oder allgemein verfügbar).
@@ -47,7 +47,7 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 |   | Oracle  | ✔  |
 | **Virtueller Azure SQL-Computer**  | SQL Server | ✔ |
 |   | Oracle  |   |
-| **Cosmos DB**  | MongoDB | ✔ |
+| **Azure Cosmos DB**  | MongoDB | ✔ |
 | **Azure-Datenbank für MySQL**  | MySQL |  |
 |   | RDS MySQL  |  |
 | **Azure-Datenbank für PostgreSQL**  | PostgreSQL |  |
@@ -66,7 +66,7 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 |   | Oracle  | ✔  |
 | **Virtueller Azure SQL-Computer**  | SQL Server  |   |
 |   | Oracle  | ✔  |
-| **Cosmos DB**  | MongoDB  | ✔ |
+| **Azure Cosmos DB**  | MongoDB  | ✔ |
 | **Azure-Datenbank für MySQL**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
 | **Azure-Datenbank für PostgreSQL**  | PostgreSQL | ✔ |

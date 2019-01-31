@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7b419be7327403d3ee0f6fad38da58fab72ddc10
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063284"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156393"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM
 
@@ -30,7 +30,7 @@ Azure AD Privileged Identity Management (PIM) generiert bei verdächtigen oder n
 
 Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowie Informationen zur Behebung und Vermeidung. Der Schweregrad hat folgende Bedeutung:
 
-* **Hoch:** Aufgrund einer Richtlinienverletzung ist eine sofortige Aktion erforderlich.
+* **Hoch**: Aufgrund einer Richtlinienverletzung ist eine sofortige Aktion erforderlich.
 * **Mittel:** Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
 * **Niedrig**: Es ist keine sofortige Aktion erforderlich, aber es wird eine Richtlinienänderung vorgeschlagen.
 
@@ -106,7 +106,7 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowi
 | **Warum erhalte ich diese Warnung?** | Mehrere Aktivierungen für dieselbe privilegierte Rolle durch denselben Benutzer sind ein Zeichen für einen Angriff. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und stellen Sie sicher, dass die [Aktivierungsdauer](pim-how-to-change-default-settings.md) für die privilegierte Rolle lang genug gewählt ist, damit diese Aufgaben durchgeführt werden können. |
 | **Prävention** | Stellen Sie sicher, dass die [Aktivierungsdauer](pim-how-to-change-default-settings.md) für privilegierte Rollen lang genug gewählt ist, damit Benutzer diese Aufgaben durchführen können.</br>[Erzwingen Sie MFA](pim-how-to-change-default-settings.md) für privilegierte Rollen, deren Konten von mehreren Administratoren gemeinsam verwendet werden. |
-| **Aktionen zur Risikominderung im Portal** | N/V |
+| **Aktionen zur Risikominderung im Portal** | – |
 | **Trigger** | Wird ausgelöst, wenn ein Benutzer mehrmals innerhalb eines bestimmten Zeitraums dieselbe privilegierte Rolle aktiviert. Sie können den Zeitraum und die Anzahl der Aktivierungen konfigurieren. |
 | **Zeitrahmen für Aktivierungsverlängerung** | Diese Einstellung gibt den Zeitraum in Tagen, Stunden, Minuten und Sekunden an, den Sie verwenden möchten, um verdächtige Verlängerungen nachzuverfolgen. |
 | **Anzahl von Aktivierungsverlängerungen** | Diese Einstellung gibt im gewählten Zeitraum die Anzahl von Aktivierungen zwischen 2 und 100 an, für die Sie eine Warnung ausgeben möchten. Sie können diese Einstellung mithilfe des Schiebereglers oder durch Eingabe einer Zahl in das Textfeld ändern. |

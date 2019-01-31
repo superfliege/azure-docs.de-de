@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 36496dd80111689b510bbbd27edc35a454d230a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.lastreviewed: 01/19/2019
+ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448291"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243888"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Go in Azure Stack
 
@@ -33,9 +34,9 @@ Ein Profil ist eine Kombination aus verschiedenen Ressourcentypen mit unterschie
 
 Im Go SDK sind Profile unter dem Pfad „profiles“ verfügbar. Ihre Version ist im Format **JJJJ-MM-TT** angegeben. Derzeit ist die neueste Profilversion der Azure Stack-API **2017-03-09**. Zum Importieren eines bestimmten Diensts aus einem Profil importieren Sie sein entsprechendes Moduls aus dem Profil. Beispielsweise importieren Sie den Dienst **Compute** aus dem Profil **2017-03-09** mithilfe des folgenden Codes:
 
-````go
+```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute"
-````
+```
 
 ## <a name="install-azure-sdk-for-go"></a>Installieren des Azure SDK für Go
 
@@ -51,7 +52,7 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compu
 
 Weitere Informationen zum Azure Go SDK finden Sie unter den folgenden Links:
 
-- [Installieren des Azure SDK für Go](/azure/azure-sdk-go-install)
+- [Installieren des Azure SDK für Go](/go/azure/azure-sdk-go-install)
 - Das Azure Go SDK ist öffentlich auf GitHub im Repository [azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) verfügbar.
 
 ### <a name="go-autorest-dependencies"></a>Go-AutoRest-Abhängigkeiten

@@ -7,13 +7,13 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
-ms.openlocfilehash: 0f726769b9e4266e310f9f50b1a7ef768c0c1d55
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.subservice: blobs
+ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735883"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247747"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -28,7 +28,7 @@ Ein kurzes Beispiel finden Sie unter [Weiterleiten von Blob Storage-Ereignissen 
 ![Event Grid-Modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Blob-Speicherkonten
-Blob Storage-Ereignisse stehen in Speicherkonten des Typs „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste, z.B. Blob Storage, Files, Queue Storage und Table Storage. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Blob Storage-Ereignisse stehen in Speicherkonten vom Typ „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste, z.B. Blob Storage, Files, Queue Storage und Table Storage. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 ## <a name="available-blob-storage-events"></a>Verfügbare Blob Storage-Ereignisse
 Event Grid verwendet [Ereignisabonnements](../../event-grid/concepts.md#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten.  Blob Storage-Ereignisabonnements können zwei Arten von Ereignissen enthalten:  

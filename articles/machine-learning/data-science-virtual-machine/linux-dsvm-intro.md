@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 253934d450619ca67e429fbf396a5fed5b71a267
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b5f2bee7ab0277b94da699be486594a602b94a29
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081862"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241694"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Linux CentOS Data Science-VM in Azure
 
@@ -154,7 +154,7 @@ Python 3.5 wird unter */anaconda/envs/py35/bin*installiert.
 
 Geben Sie zum Aufrufen einer interaktiven Python-Sitzung in der Shell einfach **python** ein. Wenn Sie sich in einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten.
 
-Um weitere Python-Bibliotheken zu installieren, müssen Sie den Befehl ```conda``` oder ````pip```` unter sudo ausführen und den vollständigen Pfad des Python-Paket-Managers (conda oder pip) bereitstellen, um die richtige Python-Umgebung zu installieren. Beispiel: 
+Um weitere Python-Bibliotheken zu installieren, müssen Sie den Befehl ```conda``` oder ```pip``` unter sudo ausführen und den vollständigen Pfad des Python-Paket-Managers (conda oder pip) bereitstellen, um die richtige Python-Umgebung zu installieren. Beispiel: 
 
     sudo /anaconda/bin/pip install <package> #pip for Python 2.7
     sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
@@ -198,7 +198,7 @@ Vor dem Ausführen im Spark-Kontext in Microsoft R Server müssen Sie einen einm
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht benötigen. Führen Sie dazu ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` aus. Ein Beispiel, in dem gezeigt wird, wie MRS im Remote-Spark-Kontext (dies ist die eigenständige Spark-Instanz auf der DSVM) entwickelt und getestet wird, ist im Verzeichnis `/dsvm/samples/MRS` bereitgestellt und verfügbar. 
+Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht benötigen. Führen Sie dazu ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` aus. Ein Beispiel, in dem gezeigt wird, wie MRS im Remote-Spark-Kontext (dies ist die eigenständige Spark-Instanz auf der DSVM) entwickelt und getestet wird, ist im Verzeichnis `/dsvm/samples/MRS` bereitgestellt und verfügbar. 
 
 ### <a name="ides-and-editors"></a>IDEs und Editoren
 Sie können zwischen mehreren Code-Editoren wählen. Hierzu gehören vi/VIM, Emacs, gEdit, PyCharm, RStudio,Eclipse und IntelliJ. gEdit, Eclipse, IntelliJ, RStudio und PyCharm sind grafische Editoren, und Sie müssen bei einem grafischen Desktop angemeldet sein, um sie verwenden zu können. Diese Editoren verfügen über Verknüpfungen auf dem Desktop und im Anwendungsmenü, mit denen sie gestartet werden können.
@@ -285,7 +285,7 @@ Die VM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompilier
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
 * **xgboost**: Ein Tool, das optimierte Boosted Tree-Algorithmen bereitstellt.
 * **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install` -Befehl verwenden.
-* **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Einige Bibliotheken sind vorinstalliert, z.B. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie Folgendes ausführen:
+* **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Einige Bibliotheken sind vorinstalliert, z. B. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie Folgendes ausführen:
   
         install.packages(<lib name>)
 

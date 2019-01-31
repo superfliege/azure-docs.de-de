@@ -3,19 +3,19 @@ title: Zusammengeführte Registrierung für Azure AD SSPR und MFA (öffentliche 
 description: Registrierung für die Azure AD Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 192b88623d2f85efd619e26d51f35b4797706761
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4080fe07f6624c96f6385492268042f6401f3694
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433746"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472676"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (öffentliche Vorschauversion)
 
@@ -74,8 +74,6 @@ Auf dieser Seite sehen Benutzer bereits registrierte Authentifizierungsmethoden 
 Überwachungsprotokolle für diese neue Oberfläche finden Sie in der Kategorie „Authentifizierungsmethode“ des Überwachungsprotokolls.  
 
 ## <a name="known-issues"></a>Bekannte Probleme
-
-Wir haben einen Fehler bei der zusammengeführten Registrierung ermittelt. Dabei können sich B2B-Gastbenutzer, die für die zusammengeführte Registrierung aktiviert sind, nicht für MFA registrieren. Wenn sie auf die Registrierungsseite weitergeleitet werden, funktioniert die Seite nicht mehr. Unsere Entwickler kennen dieses Problem und arbeiten an einer Lösung. Vorerst wird empfohlen, eine Gruppe zu erstellen und alle B2B-Benutzer aus dieser Gruppe auszuschließen.
 
 **Standardmäßige MFA-Methode wird auf „Telefonanruf“ festgelegt, wenn der Benutzer „Telefon“ per SMS registriert**
 

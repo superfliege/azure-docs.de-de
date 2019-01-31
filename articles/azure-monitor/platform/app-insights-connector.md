@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 3013d8997660df95fb12c8b18c1120f726eead04
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199649"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216019"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-Connector-Verwaltungslösung (Vorschau)
 
@@ -55,7 +55,7 @@ Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten fü
 
 ## <a name="configuration"></a>Konfiguration
 
-1. Aktivieren Sie die Lösung Azure-Web-Apps-Analyse in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) oder mit den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Schritten.
+1. Aktivieren Sie die Lösung Azure-Web-Apps-Analyse in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) oder mit den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Schritten.
 2. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Alle Dienste**, um Application Insights zu öffnen. Suchen Sie dann nach „Application Insights“. 
 3. Wählen Sie unter **Abonnements** ein Abonnement aus, das über Application Insights-Ressourcen verfügt, und wählen Sie dann unter **Name** mindestens eine Anwendung aus.
 4. Klicken Sie auf **Speichern**.
@@ -174,7 +174,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| Typ | ApplicationInsights |
+| Type | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | Uhrzeit des Datensatzes |
 | ApplicationId | Instrumentationsschlüssel der Application Insights-App |
@@ -223,7 +223,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="exception-specific-fields"></a>Ausnahmenfelder
 
-| Typ | ApplicationInsights |
+| Type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Ausnahme |
 | ExceptionType | Typ der Ausnahme |
@@ -242,7 +242,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| Typ | ApplicationInsights |
+| Type | ApplicationInsights |
 | TelemetryType | Anforderung |
 | ResponseCode | HTTP-Antwort, die an den Client gesendet wird. |
 | RequestSuccess | Gibt den Erfolg oder Fehler an. „true“ oder „false“. |
