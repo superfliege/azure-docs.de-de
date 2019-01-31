@@ -16,12 +16,13 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d2e849b4a6101cd10ce17e52056efdfe2f903381
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 9cfa06dfd0b38aa288502afbee30fb48ee7dd4e1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267112"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247662"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Was ist das Azure Stack Development Kit?
 [Integrierte Microsoft Azure Stack-Systeme](../azure-stack-poc.md) haben eine Größe von 4 bis 16 Knoten, und der Support wird von einem Hardwarepartner und von Microsoft gemeinsam bereitgestellt. Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads. Wenn Sie ein Azure Stack-Betreiber sind, der die Infrastruktur integrierter Systeme verwaltet und Dienste anbietet, hilft Ihnen die [Dokumentation für Betreiber](https://docs.microsoft.com/azure/azure-stack) weiter.

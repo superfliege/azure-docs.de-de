@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 0eed7943d782bda134c2df2de6cf9eeeb58bfa3b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 1545fa3c1c94edc98e53b3579e5617a6bf16461c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243864"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238856"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack-Überprüfungsbericht
 Verwenden Sie das Azure Stack Readiness Checker-Tool, um Überprüfungen auszuführen, die die Bereitstellung und Wartung einer Azure Stack-Umgebung unterstützen. Das Tool schreibt die Ergebnisse in eine JSON-Berichtsdatei. Der Bericht zeigt detaillierte und zusammengefasste Daten über den Stand der Voraussetzungen für die Bereitstellung von Azure Stack. Darüber hinaus enthält er Informationen zur Geheimnisrotation für bestehende Azure Stack-Bereitstellungen.  
@@ -44,7 +45,7 @@ Um den Bericht beispielsweise von einer PowerShell-Eingabeaufforderung aus anzuz
 
 Die Ausgabe sieht ungefähr so aus:
 
-````PowerShell
+```PowerShell
 Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
 
 ############### Certificate Validation Summary ###############
@@ -84,7 +85,7 @@ StartTime         : 2018/10/22 14:24:16
 EndTime           : 2018/10/22 14:24:19
 Duration          : 3
 PSBoundParameters : 
-````
+```
 
 ## <a name="view-the-report-summary"></a>Anzeigen der Berichtzusammenfassung
 Um eine Zusammenfassung des Berichts anzuzeigen, können Sie **-Summary** am Ende der PowerShell-Befehlszeile hinzufügen. Beispiel:  
@@ -92,7 +93,7 @@ Um eine Zusammenfassung des Berichts anzuzeigen, können Sie **-Summary** am End
 
 Die Zusammenfassung zeigt Überprüfungen, für die keine Ergebnisse vorhanden sind, und gibt an, ob die abgeschlossenen Überprüfungen bestanden oder nicht bestanden wurden. Die Ausgabe sieht ungefähr so aus:
 
-````PowerShell
+```PowerShell
 Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
 
 ############### Certificate Validation Summary ###############
@@ -114,7 +115,7 @@ Azure Stack Graph Validation results not available.
 ############### Azure Stack ADFS Validation Summary ###############
 
 Azure Stack ADFS Validation results not available.
-````
+```
 
 
 ## <a name="view-a-filtered-report"></a>Anzeigen eines gefilterten Berichts

@@ -3,7 +3,7 @@ title: 'Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell 
 description: Es wird beschrieben, wie Sie mit Azure CLI 2.0 schnell eine VM-Skalierungsgruppe erstellen können.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/18
-ms.author: zarhoads
-ms.openlocfilehash: b704a7bb4849b387be516dc32d1bf9ef321453b6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: cynthn
+ms.openlocfilehash: 6e59c6ead364c77e3659b9c2a92106cb55abf744
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430957"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885964"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit Azure PowerShell bereit.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 48d23f9d6d79e89e24c808a59b73854952c93240
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6ff49b3a08977b28ae6fa0971e5c7d72af158a46
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425440"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081210"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App und SQL-Datenbank bereit.  
@@ -144,7 +144,7 @@ Sie können das Projekt jetzt bereitstellen. Wenn Sie ein Azure-Ressourcengruppe
 5. Wählen Sie die Schaltfläche **Bereitstellen** aus, um das Projekt in Azure bereitzustellen. Eine PowerShell-Konsole wird außerhalb der Visual Studio-Instanz geöffnet. Geben Sie das SQL Server-Administratorkennwort in der PowerShell-Konsole ein, wenn Sie dazu aufgefordert werden. **Unter Umständen ist die PowerShell-Konsole hinter anderen Elementen angeordnet oder in der Taskleiste minimiert.**  Suchen Sie nach der Konsole, und wählen Sie sie aus, um das Kennwort anzugeben.
    
    > [!NOTE]
-   > Visual Studio fordert Sie unter Umständen zur Installation der die Azure PowerShell-Cmdlets auf. Die Azure PowerShell-Cmdlets werden zur erfolgreichen Bereitstellung von Ressourcengruppen benötigt. Führen Sie die Installation durch, wenn Sie dazu aufgefordert werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+   > Visual Studio fordert Sie unter Umständen zur Installation der die Azure PowerShell-Cmdlets auf. Die Azure PowerShell-Cmdlets werden zur erfolgreichen Bereitstellung von Ressourcengruppen benötigt. Führen Sie die Installation durch, wenn Sie dazu aufgefordert werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
    > 
    > 
 6. Die Bereitstellung kann mehrere Minuten dauern. Im Fenster **Ausgabe** wird der Status der Bereitstellung angezeigt. Nachdem die Bereitstellung abgeschlossen ist, wird die letzte Meldung mit dem Hinweis angezeigt, dass die Bereitstellung erfolgreich war. Sie sieht in etwa wie folgt aus:

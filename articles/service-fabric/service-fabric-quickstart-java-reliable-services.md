@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/23/2017
+ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 43a059e13945be3e39f65995e18ccd552727b874
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ad14e552bd685c42289e7007002f5ddf039f8925
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312573"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297955"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer Java Reliable Services-Anwendung in Service Fabric
 
@@ -34,7 +34,6 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 * Verwenden von Eclipse als Tool für Ihre Service Fabric-Java-Anwendungen
 * Bereitstellen der Anwendung im Cluster
-* Bereitstellen der Anwendung in einem Cluster in Azure
 * Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -82,99 +81,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 Sie können jetzt einen Satz mit Abstimmungsoptionen hinzufügen und die Abstimmung freigeben. Die Anwendung führt alle Daten in Ihrem Service Fabric-Cluster aus und speichert sie dort, ohne dass eine separate Datenbank verwendet werden muss.
 
-## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
-
-### <a name="set-up-your-azure-service-fabric-cluster"></a>Einrichten des Azure Service Fabric-Clusters
-
-Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen eigenen Cluster.
-
-Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team betrieben werden. Mithilfe von Partyclustern können Sie Anwendungen bereitstellen und sich mit der Plattform vertraut machen. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
-
-Melden Sie sich an, und treten Sie einem [Linux-Cluster](https://aka.ms/tryservicefabric) bei. Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Unter dem Link **ReadMe** finden Sie das Zertifikatkennwort sowie Anweisungen zum Konfigurieren verschiedener Umgebungen für die Verwendung des Zertifikats. Lassen Sie sowohl die**Willkommensseite** als auch die Seite mit der**Infodatei** geöffnet, da Sie einige der Anweisungen in den folgenden Schritten benötigen.
-
-> [!Note]
-> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte unter [Tutorial: Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md) ausführen, um einen Cluster in Ihrem Abonnement zu erstellen.
->
-> Der Spring Boot-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 8080 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie den Partycluster verwenden, ist dieser Port geöffnet.
->
-
-Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugehörigen Anwendungen verwalten können:
-
-* Service Fabric Explorer: Ein browserbasiertes Tool.
-* Service Fabric-Befehlszeilenschnittstelle (CLI): Basiert auf der Azure CLI.
-* PowerShell-Befehle
-
-In dieser Schnellstartanleitung verwenden Sie die Service Fabric-Befehlszeilenschnittstelle sowie Service Fabric Explorer.
-
-Um die Befehlszeilenschnittstelle verwenden zu können, müssen Sie auf der Grundlage der heruntergeladenen PFX-Datei eine PEM-Datei erstellen. Verwenden Sie den folgenden Befehl, um die Datei zu konvertieren. (Für Partycluster können Sie einen spezifischen Befehl für Ihre PFX-Datei aus den Anweisungen auf der Seite mit der**Infodatei**kopieren.)
-
-    ```bash
-    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-    ```
-
-Zur Verwendung von Service Fabric Explorer müssen Sie die von der Partycluster-Website heruntergeladene PFX-Zertifikatdatei in Ihren Zertifikatspeicher (Windows oder Mac) oder in den Browser selbst (Ubuntu) importieren. Sie benötigen das PFX-Kennwort für den privaten Schlüssel von der Seite mit der**Infodatei**.
-
-Importieren Sie das Zertifikat mit der von Ihnen bevorzugten Methode in Ihr System. Beispiel: 
-
-* Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den in der**Infodatei** angegebenen PowerShell-Befehl ausführen.
-* Auf einem Macintosh: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
-* Unter Ubuntu: Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
-
-   ![Installieren des Zertifikats in Firefox](./media/service-fabric-quickstart-java/install-cert-firefox.png)
-
-### <a name="add-certificate-information-to-your-application"></a>Hinzufügen von Zertifikatinformationen zu Ihrer Anwendung
-
-Der Zertifikatfingerabdruck muss Ihrer Anwendung hinzugefügt werden, da Service Fabric-Programmiermodelle verwendet werden.
-
-1. Sie benötigen den Fingerabdruck Ihres Zertifikats in der Datei `Voting/VotingApplication/ApplicationManifest.xml` bei der Ausführung in einem sicheren Cluster. Führen Sie den folgenden Befehl aus, um den Fingerabdruck des Zertifikats zu extrahieren:
-
-    ```bash
-    openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
-    ```
-
-2. Fügen Sie in der Datei `Voting/VotingApplication/ApplicationManifest.xml` unter dem Tag **ApplicationManifest** den folgenden Codeausschnitt hinzu. **X509FindValue** sollte der Fingerabdruck aus dem vorherigen Schritt sein (keine Semikolons).
-
-    ```xml
-    <Certificates>
-        <SecretsCertificate X509FindType="FindByThumbprint" X509FindValue="0A00AA0AAAA0AAA00A000000A0AA00A0AAAA00" />
-    </Certificates>
-    ```
-
-### <a name="deploy-the-application-using-eclipse"></a>Bereitstellen der Anwendung mithilfe von Eclipse
-
-Nachdem die Anwendung und Ihr Cluster nun bereitstehen, können Sie sie über Eclipse direkt in einem Cluster bereitstellen.
-
-1. Öffnen Sie im Verzeichnis **PublishProfiles** die Datei **Cloud.json**, und füllen Sie die Felder `ConnectionIPOrURL` und `ConnectionPort` ordnungsgemäß aus. Beispiel:
-
-    ```bash
-    {
-         "ClusterConnectionParameters":
-         {
-            "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
-            "ConnectionPort": "19080",
-            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
-            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
-         }
-    }
-    ```
-
-2. Klicken Sie mit der rechten Maustaste auf das Projekt und anschließend in der Dropdownliste **Service Fabric** auf **Publish Application...** (Anwendung veröffentlichen…). Wählen Sie **PublishProfiles/Cloud.json** als Zielprofil („Target Profile“) aus, und klicken Sie auf „Publish“ (Veröffentlichen).
-
-    ![Clouddialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-java/cloudjson.png)
-
-3. Öffnen Sie Ihren Browser, und greifen Sie über **http://\<IP-Adresse oder URL der Verbindung>:8080** auf die Anwendung zu.
-
-    ![Cloud-Front-End der Anwendung](./media/service-fabric-quickstart-java/runningcloud.png)
-
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
 
 Dienste können clusterweit skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Dienste können auf unterschiedliche Weise skaliert werden – beispielsweise mithilfe von Skripts oder Befehlen der Service Fabric-Befehlszeilenschnittstelle (sfctl). In den folgenden Schritten wird Service Fabric Explorer verwendet.
 
-Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und kann in einem Browser geöffnet werden. Navigieren Sie hierzu zum HTTP-Verwaltungsport des Clusters (19.080). Beispiel: `http://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`.
+Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und kann in einem Browser geöffnet werden. Navigieren Sie hierzu zum HTTP-Verwaltungsport des Clusters (19.080). Beispiel: `http://localhost:19080`.
 
 Gehen Sie zum Skalieren des Web-Front-End-Diensts wie folgt vor:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`.
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `https://localhost:19080`.
 2. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
 
     ![Service Fabric Explorer – Dienst skalieren](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
@@ -196,7 +111,6 @@ In diesem Schnellstart haben Sie Folgendes gelernt:
 
 * Verwenden von Eclipse als Tool für Ihre Service Fabric-Java-Anwendungen
 * Bereitstellen von Java-Anwendungen im lokalen Cluster
-* Bereitstellen von Java-Anwendungen in einem Azure-Cluster
 * Horizontales Hochskalieren der Anwendung über mehrere Knoten hinweg
 
 Weitere Informationen zur Verwendung von Java-Apps in Service Fabric finden Sie im Tutorial für Java-Apps.

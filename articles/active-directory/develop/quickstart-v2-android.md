@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 3e9c46e1315257d619f1624c06441adc08daddb2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 808ee8bb34aa4bb81ce1bcdd50193efa05f5692d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427011"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103763"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -39,7 +39,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwen
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Registrieren und herunterladen
 > ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrieren und Konfigurieren Ihrer Anwendung und des Codebeispiels
-> #### <a name="step-1-register-your-application"></a>Schritt 1: Registrieren Ihrer Anwendung
+> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
 > 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
 > 1. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein.

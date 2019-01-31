@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cjgronlund
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 20d2ed28291c8d8adfed4779b48f93c657438e0d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 292bcf5974f8c51f99a676786c66316e9cde0748
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134970"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215903"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Tutorial: Der LUIS-Bot in Node.js wird mit Bot Framework 4.x und dem Azure Web-App-Bot erstellt.
 Mithilfe von Node.js können Sie einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot erstellen. Diesen Bot verwendet die HomeAutomation-App, um eine Bot-Lösung zu implementieren. Der Bot wird im Azure [Web-App-Bot](https://docs.microsoft.com/azure/bot-service/) mit [Bot Framework, Version](https://github.com/Microsoft/botbuilder-js) v4, erstellt.

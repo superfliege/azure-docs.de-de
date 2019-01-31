@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0dd08fa85ea443a11f14769b63502978eaa8a378
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971408"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221146"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 
@@ -67,7 +67,7 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
 
     |Beispiele für Äußerungen|
     |--|
-    |Versetzen Sie John W. Smith in die Buchhaltungsabteilung|
+    |„move John W. Smith to the accounting department“ (John W. Smith in die Buchhaltungsabteilung versetzen)|
     |Übertragen Sie Jill Jones an F&E|
     |Abteilung 1234 hat ein neues Mitglied namens Bill Bradstreet|
     |Setzen Sie John Jackson in der technischen Abteilung ein |
@@ -120,15 +120,15 @@ Der primäre, _kanonische_ Name für jedes Element ist der Abteilungsname. Dies 
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren Sie die App, um die Absichtsänderungen testen zu können 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen Sie die App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Veröffentlichen der App, damit das trainierte Modell über den Endpunkt abgefragt werden kann
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Rufen Sie Absicht und Entitätsvorhersage vom Endpunkt ab
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 

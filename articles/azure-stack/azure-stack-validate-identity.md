@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 4fb636a91389309b44f2308efec1a6c257c41078
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267333"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242585"
 ---
 # <a name="validate-azure-identity"></a>Überprüfen der Azure-Identität 
 Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um zu überprüfen, ob Ihre Azure Active Directory-Instanz (Azure AD) mit Azure Stack verwendet werden kann. Überprüfen Sie Ihre Azure-Identitätslösung, bevor Sie mit einer Azure Stack-Bereitstellung beginnen.  
@@ -65,7 +66,7 @@ Die folgenden Voraussetzungen müssen erfüllt werden:
    > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. Wenn das Tool ausgeführt wird, überprüfen Sie die Ausgabe. Vergewissern Sie sich, dass der Status für die Installationsanforderungen **OK** lautet. Eine erfolgreiche Überprüfung wie etwa in der folgenden Abbildung wird angezeigt: 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -76,7 +77,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 
 ## <a name="report-and-log-file"></a>Berichts- und Protokolldatei
@@ -97,7 +98,7 @@ Die folgenden Beispiele veranschaulichen, wie häufige Fehler bei der Überprüf
 
 ### <a name="expired-or-temporary-password"></a>Abgelaufenes oder temporäres Kennwort 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -111,7 +112,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 **Ursache**: Das Konto kann sich nicht anmelden, da das Kennwort entweder abgelaufen oder temporär ist.     
 
 **Lösung**: Führen Sie in PowerShell Folgendes aus, und befolgen Sie die Eingabeaufforderungen zum Zurücksetzen des Kennworts.  
@@ -120,7 +121,7 @@ Invoke-AzsAzureIdentityValidation Completed
 Melden Sie sich alternativ unter https://portal.azure.com mit dem Konto an. Der Benutzer wird dann zur Änderung des Kennworts aufgefordert.
 ### <a name="unknown-user-type"></a>Unbekannter Benutzertyp 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -134,13 +135,13 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 **Ursache**: Das Konto kann sich nicht bei der angegebenen Azure Active Directory-Umgebung (AADDirectoryTenantName) anmelden. In diesem Beispiel ist *AzureChinaCloud* für *AzureEnvironment* angegeben.
 
 **Lösung**: Vergewissern Sie sich, dass das Konto für die angegebene Azure-Umgebung gültig ist. Führen Sie in PowerShell Folgendes aus, um zu überprüfen, ob das Konto für eine bestimmte Umgebung gültig ist:   Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>Konto ohne Administratorrolle 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -154,7 +155,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 **Ursache**: Auch wenn sich das Konto erfolgreich anmelden kann, gehört das Konto nicht einem Administrator von Azure Active Directory (AADDirectoryTenantName).  
 

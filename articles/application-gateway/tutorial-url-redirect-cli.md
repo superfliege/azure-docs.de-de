@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: eae26868e2684f6c95fb2860506c18d17096f98c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 892d142839fac67e2cfacbe70c8474cf730c90d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465750"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161493"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -53,7 +53,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \

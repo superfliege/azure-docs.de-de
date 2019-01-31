@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: 1782aa2a29bc2cf2593aa5bb1c356d4176196055
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 795fe2b54c806947df2f4c078722e9acae3df96f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854410"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148577"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe der Azure CLI 
 In diesem Tutorial verwenden Sie die Azure CLI (Befehlszeilenschnittstelle) und andere Hilfsprogramme, um zu lernen, wie Sie Folgendes ausführen:
@@ -44,7 +44,7 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Erstellen einer Azure-Datenbank für PostgreSQL-Server
-Erstellen Sie mit dem Befehl [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) eine [Azure-Datenbank für PostgreSQL-Server](overview.md). Ein Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden. 
+Erstellen Sie mit dem Befehl [az postgres server create](/cli/azure/postgres/server) eine [Azure-Datenbank für PostgreSQL-Server](overview.md). Ein Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden. 
 
 Im folgenden Beispiel wird ein Server mit dem Namen `mydemoserver` in der Ressourcengruppe `myresourcegroup` mit dem Serveradministrator-Anmeldenamen `myadmin` erstellt. Der Name eines Servers wird dem DNS-Namen zugeordnet und muss deshalb in Azure global eindeutig sein. Ersetzen Sie das `<server_admin_password>` durch einen eigenen Wert. Es ist ein Gen 4-Server vom Typ „Allgemein“ mit zwei virtuellen Kernen.
 ```azurecli-interactive

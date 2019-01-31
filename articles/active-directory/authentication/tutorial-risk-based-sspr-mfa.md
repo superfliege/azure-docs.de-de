@@ -3,19 +3,19 @@ title: Risikobasierte MFA und Self-Service-Kennwortzurücksetzung mit Azure Iden
 description: In diesem Tutorial aktivieren Sie Azure Identity Protection-Integrationen für die Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung, um riskantes Verhalten zu reduzieren.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: fea87a711bf43ea73d3e09efeb42f5133d8f4e9f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 504e314151409732cba23af97224683eb35a7c81
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434919"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075481"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Tutorial: Verwenden von Risikoereignissen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen
 

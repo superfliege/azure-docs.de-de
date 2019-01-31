@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/18/2019
 ms.author: mabrigg
-ms.openlocfilehash: c3b1c0e6ed0850e6346d385dc3e86afdcb78fe39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 1/18/2019
+ms.openlocfilehash: 4123d4cec25bab116c642f1b89cd8eff4779af42
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478534"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252148"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Speicherkonten in Azure Stack
 Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Namespace für Ihre Speicherdatenobjekte. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Speicherkontobesitzer verfügbar.

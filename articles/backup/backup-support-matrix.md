@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b1fa723863e6485e977e075986c3779efed1e689
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: cb3a60995a4edfe5eb00f1a5e88812146816806a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360628"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883703"
 ---
 # <a name="azure-backup-support-matrix"></a>Matrix zur Azure Backup-Unterstützung
 
@@ -30,17 +30,17 @@ Anzahl der Tresore | Bis zu 500 Recovery Services-Tresore pro Abonnement.
 Computer in einem Tresor | Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 lokale Computer, auf denen der Azure Backup-Agent (Microsoft Azure Recovery Services-Agent, MABS) ausgeführt wird, können pro Tresor registriert werden.
 Datenquelle im Tresorspeicher | Maximal 54.400 GB. Für Azure-VM-Sicherungen gilt kein Grenzwert.
 Sicherungen im Tresor | Azure-VMs: einmal pro Tag; Per DPM/MABS geschützte Computer: zweimal pro Tag; Computer mit direkter Sicherung per MARS-Agent: dreimal pro Tag.  
-Tresor verschieben | Sie können für Sicherungen verwendete Recovery Services-Tresore über Abonnements und Ressourcengruppen hinweg verschieben. [Weitere Informationen](backup-azure-move-recovery-services-vault.md)
+Tresor verschieben | Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine private Vorschauversion registrieren. Schreiben Sie an AskAzureBackupTeam@microsoft.com, um die Vorschauversion zu testen.
 Daten zwischen Tresoren verschieben | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 Speicherreplikationstyp | Sie können den Speicherreplikationstyp (GRS/LRS) für einen Tresor ändern, bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
 
 
 
-## <a name="on-premises-backup-support"></a>Unterstützung von lokalen Sicherungen 
+## <a name="on-premises-backup-support"></a>Unterstützung von lokalen Sicherungen
 
 Hier sind die Informationen zur Unterstützung beim Sichern von lokalen Computern angegeben.
 
-**Computer** | **Ort** | **Sicherung** | **Funktionen**
+**Computer** | **Location** | **Sichern** | **Funktionen**
 --- | --- | --- | ---
 **Windows: physisch/virtuell (kein Sicherungsserver)** | Dateien, Ordner, Systemstatus | Sicherung im Recovery Services-Tresor | Drei Sicherungen pro Tag.<br/><br/> Keine App-fähige Sicherung.<br/><br/> Wiederherstellungsdatei, -ordner, -volume.
 **Linux: physisch/virtuell (kein Sicherungsserver)** | Sicherung wird nicht unterstützt.
@@ -62,7 +62,7 @@ Größe des Azure-VM-Datenträgers | Pro Datenträger bis zu 4.095 GB.
 
 Hier ist die Unterstützung für den Fall angegeben, dass Sie Azure-VMs sichern möchten.
 
-**Computer** | **Ort** | **Sicherung** | **Funktionen**
+**Computer** | **Location** | **Sichern** | **Funktionen**
 --- | --- | --- | ---
 **Azure-VMs (kein Sicherungsserver)** | Dateien, Ordner, Systemstatus | Sicherung im Tresor. | Eine Sicherung pro Tag.<br/><br/> App-fähige Sicherung für Windows-VMs, dateikonsistente Sicherung für Linux-VMs. Sie können die App-Konsistenz für Linux-Computer mit benutzerdefinierten Skripts konfigurieren.<br/><br/> VM/Datenträger für Wiederherstellung.<br/><br/> Sicherung einer Azure-VM an einem lokalen Standort ist nicht möglich.
 **Azure-VM mit DPM** | Dateien, Ordner, Volumes, Systemstatus, App-Daten. | Sicherung per DPM unter Azure (auf einem Datenträger, der lokal an den DPM-Server angefügt ist). Bandsicherung wird nicht unterstützt.<br/><br/> Der DPM führt dann die Sicherung in einem Tresor durch. | App-fähige Momentaufnahmen<br/><br/> Vollständige Granularität für Sicherung und Wiederherstellung.<br/><br/> Linux-Unterstützung für VMs (Hyper-V/VMware).<br/><br/>. Oracle wird nicht unterstützt.
@@ -77,8 +77,8 @@ Hier ist die Unterstützung für den Fall angegeben, dass Sie Azure-VMs sichern 
 Hier ist die Unterstützung für den Fall angegeben, dass Sie Linux-Computer sichern möchten.
 
 **Sicherung** | **Linux (von Azure unterstützt)**
---- | --- 
-**Lokaler Linux-Computer (ohne DPM oder MABS)**. | Nein. Der MARS-Agent kann nur auf Windows-Computern installiert werden. 
+--- | ---
+**Lokaler Linux-Computer (ohne DPM oder MABS)**. |  Nein. Der MARS-Agent kann nur auf Windows-Computern installiert werden.
 **Azure-VM (ohne DPM oder MABS)** | App-konsistente Sicherung mit [benutzerdefinierten Skripts](backup-azure-linux-app-consistent.md).<br/><br/> Wiederherstellung auf Dateiebene.<br/><br/> Wiederherstellung, indem über einen Wiederherstellungspunkt oder Datenträger eine VM erstellt wird.
 **Lokaler Computer/Azure-VM mit DPM** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
 **Lokaler Computer/Azure-VM mit MABS** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.
@@ -110,7 +110,7 @@ Datensicherheit:
 **Computer** | **Während der Übertragung** | **Ruhende Daten**
 --- | --- | ---
 Lokale Windows-Computer ohne DPM/MABS | ![JA][green] | ![JA][green]
-Virtuelle Azure-Computer | ![JA][green] | ![JA][green] 
+Virtuelle Azure-Computer | ![JA][green] | ![JA][green]
 Lokal/Azure-VMs mit DPM | ![JA][green] | ![JA][green]
 Lokal/Azure-VMs mit MABS | ![JA][green] | ![JA][green]
 
@@ -121,7 +121,7 @@ Lokal/Azure-VMs mit MABS | ![JA][green] | ![JA][green]
 Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs, wie in der folgenden Tabelle zusammengefasst. Beachten Sie Folgendes:
 
 - Für Azure-VMs liest die VM-Erweiterung die Daten über das Speichernetzwerk direkt aus dem Azure-Speicherkonto, sodass es nicht erforderlich ist, diesen Datenverkehr zu komprimieren.
-- Bei Verwendung von DPM oder MABS können Sie die Daten komprimieren, bevor sie per DPM/MABS gesichert werden, um Bandbreite zu sparen. 
+- Bei Verwendung von DPM oder MABS können Sie die Daten komprimieren, bevor sie per DPM/MABS gesichert werden, um Bandbreite zu sparen.
 
 **Computer** | **Komprimierung für MABS/DPM (TCP)** | **Komprimierung (HTTPS) für Tresor**
 --- | --- | ---
@@ -134,12 +134,12 @@ Lokal/Azure-VMs mit MABS | ![JA][green] | ![JA][green]
 
 ## <a name="retention-limits"></a>Grenzwerte für die Aufbewahrung
 
-**Einstellung** | **Einschränkungen** 
---- | --- 
+**Einstellung** | **Einschränkungen**
+--- | ---
 Maximale Wiederherstellungspunkte pro geschützter Instanz (Computer/Workload) | 9999
 Maximale Ablaufzeit für einen Wiederherstellungspunkt | Keine Begrenzung
 Maximale Sicherungshäufigkeit für DPM/MABS | Alle 15 Minuten für SQL Server<br/><br/> Stündlich für andere Workloads.
-Maximale Sicherungshäufigkeit für Tresor | Lokale Windows-Computer/Azure-VMs mit MARS: dreimal pro Tag<br/><br/> DPM/MABS: Zweimal pro Tag<br/><br/> Azure-VM-Sicherung: Einmal pro Tag
+Maximale Sicherungshäufigkeit für Tresor | Lokale Windows-Computer/Azure-VMs mit MARS: dreimal pro Tag<br/><br/> DPM/MABS: Zweimal pro Tag<br/><br/> Azure-VM-Sicherung: einmal täglich
 Aufbewahrung des Wiederherstellungspunkts | Täglich, wöchentlich, monatlich, jährlich.
 Maximale Aufbewahrungsdauer | Abhängig von der Sicherungshäufigkeit.
 Wiederherstellungspunkte auf DPM-/MABS-Datenträger | 64 für Dateiserver, 448 für App-Server.<br/><br/> Für Bandwiederherstellungspunkte für lokalen DPM gelten keine Grenzwerte.

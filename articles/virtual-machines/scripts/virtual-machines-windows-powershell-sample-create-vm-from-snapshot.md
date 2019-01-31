@@ -3,7 +3,7 @@ title: Azure PowerShell-Skriptbeispiel – Erstellen eines virtuellen Computers 
 description: Azure PowerShell-Skriptbeispiel – Erstellen eines virtuellen Computers aus einer Momentaufnahme
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: ramankum
+author: ramankumarlive
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 63d108bbfd0f58f8a40bf1c7c8649e3a1f7ed288
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a3edf282c20d2aec49a0ffb324ee0f9c62421c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23116718"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244435"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Erstellen eines virtuellen Computers aus einer Momentaufnahme mit PowerShell
 
@@ -47,7 +47,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Dieses Skript verwendet die folgenden Befehle, um die Eigenschaften einer Momentaufnahme abzurufen, einen verwalteten Datenträger aus einer Momentaufnahme zu erstellen und einen virtuellen Computer zu erstellen. Jedes Element in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [Get-AzureRmSnapshot](/powershell/module/azurerm.compute/get-azurermsnapshot) | Ruft eine Momentaufnahme unter Verwendung ihres Namens ab. |
 | [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) | Erstellt eine Datenträgerkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des Datenträgers verwendet. |

@@ -7,23 +7,23 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 1d21a5ad906299ff05110d676490fc587e85cac4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 95ce737e46a23086d336b1972988a2581a869f38
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826682"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165743"
 ---
 # <a name="reset-password-overview"></a>Übersicht über die Kennwortzurücksetzung
 
+Wenn Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformationen und Ihr mobiles Gerät verwenden, um Ihr Kennwort zurückzusetzen.
+
 >[!Important]
 >Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
-
-Wenn Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformationen und Ihr mobiles Gerät verwenden, um Ihr Kennwort zurückzusetzen.
 
 |Artikel |BESCHREIBUNG |
 |------|------------|

@@ -3,7 +3,7 @@ title: Tutorial – Erstellen einer VM-Skalierungsgruppe für Windows in Azure |
 description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Bereitstellen einer hoch verfügbaren Anwendung auf virtuellen Windows-Computern mithilfe einer VM-Skalierungsgruppe verwenden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: tutorial
 ms.date: 11/07/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4d7d1ad57feab0c73b0f2e77b815bad746040b00
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f4641125d15f159c6f50d2889e13b06ba954401b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426589"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886813"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Tutorial: Erstellen einer VM-Skalierungsgruppe und Bereitstellen einer hochverfügbaren App unter Windows mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren. Sie können auch basierend auf der Ressourcennutzung wie CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr Regeln für die automatische Skalierung definieren. In diesem Tutorial stellen Sie eine VM-Skalierungsgruppe in Azure bereit und lernen Folgendes:

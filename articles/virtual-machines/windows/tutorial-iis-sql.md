@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen virtueller Computer mit ausgeführtem SQL-/IIS-/.NET
 description: In diesem Tutorial erfahren Sie, wie Sie den Azure SQL-/IIS-/.NET-Stapel auf einem virtuellen Windows-Computer in Azure installieren.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ff8fe3c3c61777902269364df88a9fff4e8d1385
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c5fa818a7f0d25a91ea6d272c30384de4c1765b3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425151"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887103"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: cd4346c738e1c1c52ee181f764f827b1b1060650
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: eb6f1624a3fefbad829600d2280d4eaeedd188bc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547200"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179973"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Aktivieren und Herunterladen der Serverprotokolle zu langsamen Abfragen von einem Azure Database for PostgreSQL-Server mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses Beispielskript für die Befehlszeilenschnittstelle aktiviert die Serverprotokolle zu langsamen Abfragen auf einem Azure Database for PostgreSQL-Server und lädt sie herunter.
@@ -37,7 +37,7 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az postgres server create](/cli/azure/postgres/server#az_msql_server_create) | Erstellt einen PostgreSQL-Server, der die Datenbanken hostet. |
-| [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) | Listet die Konfigurationswerte für einen Server auf |
+| [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Listet die Konfigurationswerte für einen Server auf |
 | [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | Aktualisiert die Konfiguration eines Servers |
 | [az postgres server-logs list](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) | Listet die Protokolldateien für einen Server auf. |
 | [az postgres server-logs download](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) | Lädt Protokolldateien herunter |

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 2a6378406272f502af107a151e69fe33954f7780
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187858"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079357"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Erstellen einer statischen HTML-Web-App in Azure
 
@@ -39,7 +39,7 @@ Erstellen Sie in Cloud Shell ein Schnellstartverzeichnis, und wechseln Sie dorth
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Führen Sie als Nächstes den folgenden Befehl aus, um das Beispiel-App-Repository in Ihrem Schnellstartverzeichnis zu klonen.

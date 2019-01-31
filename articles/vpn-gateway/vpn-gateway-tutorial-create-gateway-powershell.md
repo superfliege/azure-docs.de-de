@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 8e3cdd99c99a300d7f1198826ae881373e179414
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 17c8a55c27a276fa1e2e04ebb9f748fa6d59a9dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433695"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204064"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>Erstellen und Verwalten des VPN-Gateways mit dem Azure PowerShell-Modul
 
@@ -126,7 +126,7 @@ Nachdem die Erstellung des Gateways abgeschlossen ist, können Sie eine Verbindu
 Sie können die VPN-Gateway-SKU ändern, nachdem das Gateway erstellt wurde. Unterschiedliche Gateway-SKUs unterstützen verschiedene Spezifikationen, z.B. Durchsätze, Verbindungsanzahl usw. Im folgenden Beispiel wird [Resize-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Resize-AzureRmVirtualNetworkGateway) verwendet, um die Größe für Ihr Gateway von VpnGw1 in VpnGw2 zu ändern. Weitere Informationen finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ```azurepowershell-interactive
-$gw = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
+$gateway = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Resize-AzureRmVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
 ```
 
@@ -137,7 +137,7 @@ Eine Änderung der VPN-Gatewaygröße dauert ca. 30 bis 45 Minuten, aber bei die
 Im Rahmen der Schritte für die Problembehandlung können Sie Ihr Azure VPN-Gateway zurücksetzen, um für das VPN-Gateway die IPsec-/IKE-Tunnelkonfigurationen neu zu starten. Verwenden Sie [Reset-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Reset-AzureRmVirtualNetworkGateway), um Ihr Gateway zurückzusetzen.
 
 ```azurepowershell-interactive
-$gw = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
+$gateway = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 

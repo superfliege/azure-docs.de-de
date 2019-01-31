@@ -6,22 +6,22 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aab17f8a0213c213920ebdfc2b2fe31248657a91
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 61a851b0efbcc4fdb55308e47447d218014ef9e0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742846"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154353"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 
 Die API für die visuelle Bing-Suche bietet ähnliche Bilddetails wie auf „bing.com/images“. Durch Hochladen oder Angabe einer URL für ein Bild kann diese API eine Vielzahl entsprechender Details ermitteln. Dazu gehören visuell ähnliche Bilder, Einkaufsquellen, Webseiten, die das Bild enthalten, und vieles mehr. Bei Verwendung der [Bing-Bildersuche-API](../bing-image-search/overview.md) können Sie Erkenntnistoken verwenden, die den Suchergebnissen der API angefügt sind, statt ein Bild hochzuladen.
 
-## <a name="insights"></a>Erkenntnisse
+## <a name="insights"></a>Einblicke
 
 Mit der visuellen Suche erhalten Sie die folgenden Informationen:
 

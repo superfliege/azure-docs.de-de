@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b3fe6e0249143b27cb763401a8d328922ed1fe99
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958541"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173920"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von PHP
 
@@ -27,8 +27,6 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von [PHP](http://php.net/manual
 Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass die folgenden erforderlichen Komponenten vorhanden sind:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers, den Sie verwenden
 
 - PHP-Software für Ihr Betriebssystem:
 

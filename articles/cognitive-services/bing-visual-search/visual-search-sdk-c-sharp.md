@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: c589cc14fd429385dd47aad489e827804916d406
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 5884c7df37ef4bd67f85ec614bdefe87522b6bc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741217"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171999"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit dem SDK für die visuelle Bing-Suche für C#
 
@@ -96,4 +96,4 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Single-Page-Web-App für die visuelle Suche](tutorial-bing-visual-search-single-page-app.md)
+> [Erstellen einer Einzelseiten-Web-App](tutorial-bing-visual-search-single-page-app.md)

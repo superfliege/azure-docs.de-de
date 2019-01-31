@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe | Mic
 description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine VM-Skalierungsgruppe erstellen und einige allgemeine Verwaltungsaufgaben ausführen, um beispielsweise eine Instanz zu starten und zu beenden oder die Kapazität der Skalierungsgruppe zu ändern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cc82b6e540eb46bf855a84a2e23f4999fbadc41d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0aa4b8fd606c45f2dea702140c34fc93bcd4c5a4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428255"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885370"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:
@@ -201,7 +201,7 @@ Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU
 ### <a name="vm-instance-sizes"></a>VM-Instanzgrößen
 In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategorisiert:
 
-| Typ                     | Gängige Größen           |    BESCHREIBUNG       |
+| Type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b1f1bb268223eb55270ff5dab5dbb346f6299d09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f9b09982e5552a85ce5800059b114f30b5f4bfad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856246"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178578"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet#az-net). Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +106,7 @@ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem d
 
 ### <a name="add-the-backend-pools"></a>Hinzufügen der Back-End-Pools
 
-Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address_pool_create) die Back-End-Pools hinzu, die für die Back-End-Server benötigt werden.
+Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/network/application-gatewaywork_application_gateway_address_pool_create) die Back-End-Pools hinzu, die für die Back-End-Server benötigt werden.
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -223,7 +223,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ipwork_public_ip_show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
 
 ```azurecli-interactive
 az network public-ip show \

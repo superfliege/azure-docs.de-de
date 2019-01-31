@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: 2b3adf07a8522322434a6596475fa06c0df978e8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 98d624b51835f88d34ec7ffd9658e40985482498
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813599"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181825"
 ---
 # <a name="what-is-bing-entity-search"></a>Was ist die Bing-Entitätssuche?
 
@@ -48,7 +48,7 @@ Die Antwort enthält ein [SearchResponse](https://docs.microsoft.com/rest/api/co
 > [!NOTE]
 > Antworten für Entitäten unterstützen verschiedene Märkte, aber die Antworten für Orte unterstützen nur Standorte von US-Unternehmen. 
 
-Das `entities`-Feld ist ein [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer)-Objekt, das eine Liste von [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity)-Objekten enthält (siehe `value`-Feld). Die Liste kann eine einzelne dominante Entität, mehrere Entitäten zur genaueren Bestimmung oder beides enthalten. 
+Das `entities`-Feld ist ein [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)-Objekt, das eine Liste von [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity)-Objekten enthält (siehe `value`-Feld). Die Liste kann eine einzelne dominante Entität, mehrere Entitäten zur genaueren Bestimmung oder beides enthalten. 
 
 Eine dominante Entität ist eine Entität, die Bing für die einzige Entität hält, die die Anforderung erfüllt (es gibt keine Mehrdeutigkeit dahingehend, welche Entität die Anforderung erfüllt). Wenn mehrere Entitäten die Anforderung erfüllen könnten, enthält die Liste mehrere Entitäten zur genaueren Bestimmung. Wenn die Anforderung z.B. den generischen Titel eines Franchiseangebots für einen Kinofilm verwendet, enthält die Liste wahrscheinlich Entitäten zur genaueren Bestimmung. Wenn die Anforderung jedoch einen spezifischen Titel aus dem Franchiseangebot angibt, enthält die Liste wahrscheinlich eine einzelne dominante Entität.
 

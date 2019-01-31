@@ -6,18 +6,18 @@ author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.topic: overview
 ms.service: active-directory
 ms.workload: identity
 services: active-directory
-ms.custom: it-pro
-ms.openlocfilehash: 2689ec400b7d29c9f086481056e5f554d7fde95a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 2e8fc0cd0321fb59a641e5527b1609c85802dc63
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321958"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295184"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Benutzer, Gruppen, Lizenzierung und Rollen für große Organisationen
 
@@ -58,7 +58,7 @@ Neue Azure AD-Administratorrollen werden derzeit hinzugefügt. Im Azure-Portal o
 
 ## <a name="assign-app-access"></a>Zuweisen des App-Zugriffs
 
-Sie können Azure AD nutzen, um Gruppenzugriff auf die [Unternehmens-Apps zuzuweisen, die in Ihrem Azure AD-Mandanten bereitgestellt werden](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context). Wenn Sie dynamische Gruppen mit der Gruppenzuweisung zu Apps kombinieren, können Sie Ihre Zuweisungen des Benutzerzugriffs auf Apps automatisieren, wenn Ihre Organisation wächst. Sie benötigen eine Lizenz vom Typ Azure Active Directory Premium P1 oder Premium P2, um den Zugriff auf Unternehmens-Apps zuweisen zu können.
+Sie können Azure AD nutzen, um Gruppenzugriff auf die [Unternehmens-Apps zuzuweisen, die in Ihrem Azure AD-Mandanten bereitgestellt werden](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context). Wenn Sie dynamische Gruppen mit der Gruppenzuweisung zu Apps kombinieren, können Sie Ihre Zuweisungen des Benutzerzugriffs auf Apps automatisieren, wenn Ihre Organisation wächst. Sie benötigen eine Lizenz vom Typ Azure Active Directory Premium P1 oder Premium P2, um den Zugriff auf Unternehmens-Apps zuweisen zu können.
 
 Mit Azure AD können Sie auch die Daten präzise steuern, die zwischen der App und den Gruppen ausgetauscht werden, denen Sie die Zugriffsberechtigung zuweisen. Öffnen Sie in [Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) eine App, und wählen Sie **Bereitstellung**, um Folgendes durchzuführen:
 
@@ -72,4 +72,4 @@ Mit Azure AD können Sie auch die Daten präzise steuern, die zwischen der App u
 
 Wenn Sie noch nicht lange als Azure AD-Administrator arbeiten, hilft Ihnen die [Dokumentation mit grundlegenden Informationen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index) weiter.
 
-Sie können auch mit dem [Erstellen von Gruppen](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen von Lizenzen](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen des App-Zugriffs](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context) oder [Zuweisen von Administratorrollen](directory-assign-admin-roles.md) beginnen.
+Sie können auch mit dem [Erstellen von Gruppen](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen von Lizenzen](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen des App-Zugriffs](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context) oder [Zuweisen von Administratorrollen](directory-assign-admin-roles.md) beginnen.

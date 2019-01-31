@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b3b90950ea0ade8064680e813958b0575d11aab6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5be80334491afdb7e65a1a5e663258d68ec83d4f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467994"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158926"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Erste Schritte mit Azure AD Connect mit Expresseinstellungen
 Die **Expresseinstellungen** von Azure AD Connect werden verwendet, wenn Sie eine Topologie mit einer einzelnen Gesamtstruktur und die [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) für die Authentifizierung verwenden. **Expresseinstellungen** sind die Standardoption und werden für die häufigsten Bereitstellungsszenarien verwendet. Mit nur wenigen Klicks können Sie Ihr lokales Verzeichnis auf die Cloud erweitern.

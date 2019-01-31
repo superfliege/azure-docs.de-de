@@ -3,7 +3,7 @@ title: 'Beispiele für die Azure CLI: Installieren von Apps | Microsoft-Dokument
 description: Azure CLI-Beispiele
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2469eef981246da9bfd9132ea0164395078fd164
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9c1b0d4ea794e5b3ed4f899addef18da2465562a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468453"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882190"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>Installieren von Anwendungen in einer VM-Skalierungsgruppe mit der Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu und installiert eine einfache Webanwendung unter Verwendung der benutzerdefinierten Skripterweiterung. Nach dem Ausführen des Skripts können Sie über einen Webbrowser auf die Web-App zugreifen.

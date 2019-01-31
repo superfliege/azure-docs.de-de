@@ -14,12 +14,13 @@ ms.topic: get-started-article
 ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: bac0b2933d4b6d4a88ebbb0402bba0ffd508b395
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 06/08/2018
+ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474369"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249060"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Verfügbarmachen eines VM-Images in Azure Stack
 
@@ -82,14 +83,14 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
 
 3. Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und führen Sie Folgendes aus:
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
       -version "<#.#.#>” `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
-  ````
+  ```
 
   Mit dem **Add-AzsPlatformimage**-Cmdlet werden Werte angegeben, die von den Azure Resource Manager-Vorlagen zum Verweisen auf das VM-Image verwendet werden. Hierzu gehören folgende Werte:
   - **publisher**  
@@ -157,24 +158,24 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
 
 5. Bereiten Sie ein Windows- oder Linux-Betriebssystemimage im VHD-Format (nicht VHDX) vor, laden Sie das Image in Ihr Speicherkonto hoch, und rufen Sie den URI ab, über den das VM-Image per PowerShell abgerufen werden kann.  
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ````
+  ```
 
 6. (Optional) Sie können als Teil des VM-Images ein Array mit Datenträgern für Daten hochladen. Erstellen Sie Ihre Datenträger für Daten mit dem New-DataDiskObject-Cmdlet. Öffnen Sie PowerShell über eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie Folgendes aus:
 
-  ````PowerShell  
+  ```PowerShell  
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
-  ````
+  ```
 
 7. Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und führen Sie Folgendes aus:
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
-  ````
+  ```
 
     Weitere Informationen zum Add-AzsPlatformimage- und New-DataDiskObject-Cmdlet finden Sie in der [Dokumentation zum Azure Stack-Bedienermodul](https://docs.microsoft.com/powershell/module/) für Microsoft PowerShell.
 
@@ -188,13 +189,13 @@ Wenn Sie das hochgeladene VM-Image nicht mehr benötigen, können Sie es im Mark
 
 3. Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und führen Sie Folgendes aus:
 
-  ````PowerShell  
+  ```PowerShell  
   Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
     -sku "<sku>" `
     -version "<version>" `
-  ````
+  ```
   Mit dem **Remove-AzsPlatformImage**-Cmdlet werden Werte angegeben, die von den Azure Resource Manager-Vorlagen zum Verweisen auf das VM-Image verwendet werden. Hierzu gehören folgende Werte:
   - **publisher**  
     Beispiel: `Canonical`  

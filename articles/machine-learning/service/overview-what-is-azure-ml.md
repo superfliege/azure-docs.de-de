@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: 'Übersicht über den Azure Machine Learning-Dienst: eine integrierte End-to-End-Lösung, mit der professionelle Data Scientists erweiterte Analyseanwendungen für die Cloud entwickeln und bereitstellen und Experimente durchführen können.'
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 14ba6438fe5b797d0070dde773855b9b84322a2c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1c369a75bbaa0853386e0139b94c119e5bb3675a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263579"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251536"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Was ist der Azure Machine Learning-Dienst?
 

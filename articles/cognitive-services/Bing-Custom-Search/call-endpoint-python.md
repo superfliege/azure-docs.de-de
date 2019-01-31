@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: 9534a60e66f194bf653e1bfd28d6d6f2a96ba90a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 30f7fd2a2169e798997b424ea16715940f810ccb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558718"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155186"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit Python
 
@@ -60,4 +60,4 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer benutzerdefinierten Suchwebseite](./tutorials/custom-search-web-page.md)
+> [Erstellen einer Web-App für die benutzerdefinierte Suche](./tutorials/custom-search-web-page.md)

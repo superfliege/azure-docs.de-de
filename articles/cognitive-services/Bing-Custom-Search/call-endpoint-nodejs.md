@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: 3af35a9aea9115971d1fbd251da3fbaddb011c5f
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a4a0140e8dcb8fccf7ac6699132a7dc44eacb175
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555794"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163261"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit Node.js
 
@@ -77,4 +77,4 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer benutzerdefinierten Suchwebseite](./tutorials/custom-search-web-page.md)
+> [Erstellen einer Web-App für die benutzerdefinierte Suche](./tutorials/custom-search-web-page.md)

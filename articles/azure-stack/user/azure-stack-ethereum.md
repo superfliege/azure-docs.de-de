@@ -11,12 +11,13 @@ ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.openlocfilehash: 1d0e04e4fbc964400e8b5c1544344864f7e757a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.lastreviewed: 11/02/2018
+ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019682"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239229"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Bereitstellen eines Ethereum-Blockchainnetzwerks in Azure Stack
 
@@ -62,7 +63,7 @@ Die Konsortium-Leadervorlage konfiguriert den Speicherbedarf für das erste Memb
     
     ![Bearbeiten der Leadervorlage](./media/azure-stack-ethereum/edit-leader-template.png)
 
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 6. Klicken Sie auf **Parameter bearbeiten**, um die Vorlagenparameter für Ihre Bereitstellung einzugeben.
     
     ![Bearbeiten der Leadervorlagenparameter](./media/azure-stack-ethereum/edit-leader-parameters.png)
@@ -72,7 +73,7 @@ Die Konsortium-Leadervorlage konfiguriert den Speicherbedarf für das erste Memb
     NAMEPREFIX | Zeichenfolge, die als Grundlage für die Benennung der bereitgestellten Ressourcen verwendet wird. | Alphanumerische Zeichen (1 bis 6) | eth
     AUTHTYPE | Die Methode zur Authentifizierung des virtuellen Computers. | Kennwort oder öffentlicher SSH-Schlüssel | Kennwort
     ADMINUSERNAME | Benutzername des Administrators der einzelnen bereitgestellten virtuellen Computer | 1–64 Zeichen | gethadmin
-    ADMINPASSWORD (Authentifizierungstyp = Kennwort)| Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss 3 der folgenden Zeichen umfassen: 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Ziffer und 1 Sonderzeichen. <br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|
+    ADMINPASSWORD (Authentifizierungstyp = Kennwort)| Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss drei der folgenden Elemente enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen. <br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|
     ADMINSSHKEY (Authentifizierungstyp = sshPublicKey) | Der Secure Shell-Schlüssel für die Remoteanmeldung. | |
     GENESISBLOCK | Die JSON-Zeichenfolge, die den benutzerdefinierten Genesis-Block darstellt.  Die Angabe eines Werts für diesen Parameter ist optional. | |
     ETHEREUMACCOUNTPSSWD | Das zum Schutz des Ethereum-Kontos verwendete Administratorkennwort. | |
@@ -114,7 +115,7 @@ Navigieren Sie zum Überprüfen der Leaderbereitstellung zur Leader-Adminsite. S
 2. Wählen Sie im Azure Stack-Mandantenportal **+ Ressource erstellen > Vorlagenbereitstellung**, um die Bereitstellung über eine benutzerdefinierte Vorlage durchzuführen.
 3. Klicken Sie auf **Vorlage bearbeiten**, um die neue benutzerdefinierte Vorlage zu bearbeiten.
 4. Wenn Sie sich im rechten Bearbeitungsbereich befinden, kopieren Sie die zuvor heruntergeladene Leader-JSON-Vorlagendatei, und fügen Sie sie ein.
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 6. Klicken Sie auf **Parameter bearbeiten**, um die Vorlagenparameter für Ihre Bereitstellung einzugeben.
 
     Parametername | BESCHREIBUNG | Zulässige Werte | Beispielwert
@@ -122,7 +123,7 @@ Navigieren Sie zum Überprüfen der Leaderbereitstellung zur Leader-Adminsite. S
     NAMEPREFIX | Zeichenfolge, die als Grundlage für die Benennung der bereitgestellten Ressourcen verwendet wird. | Alphanumerische Zeichen (1 bis 6) | eth
     AUTHTYPE | Die Methode zur Authentifizierung des virtuellen Computers. | Kennwort oder öffentlicher SSH-Schlüssel | Kennwort
     ADMINUSERNAME | Benutzername des Administrators der einzelnen bereitgestellten virtuellen Computer | 1–64 Zeichen | gethadmin
-    ADMINPASSWORD (Authentifizierungstyp = Kennwort)| Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss 3 der folgenden Zeichen umfassen: 1 Großbuchstabe, 1 Kleinbuchstabe, 1 Ziffer und 1 Sonderzeichen. <br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|
+    ADMINPASSWORD (Authentifizierungstyp = Kennwort)| Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss drei der folgenden Elemente enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen. <br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|
     ADMINSSHKEY (Authentifizierungstyp = sshPublicKey) | Der Secure Shell-Schlüssel für die Remoteanmeldung. | |
     CONSORTIUMMEMBERID | Die ID jedes Members des Konsortiumnetzwerks.   | Diese ID muss im Netzwerk eindeutig sein. | 0
     NUMMININGNODES | Anzahl von Miningknoten. | Zwischen 2 und 15. | 2
@@ -169,7 +170,7 @@ Mit dieser Vorlage erstellen Sie eine Verbindung vom Leader zu einem Remotemembe
     
     ![Bearbeiten der Verbindungsvorlage](./media/azure-stack-ethereum/edit-connect-template.png)
 
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 6. Klicken Sie auf **Parameter bearbeiten**, um die Vorlagenparameter für Ihre Bereitstellung einzugeben.
     
     ![Bearbeiten der Vorlagenparameterdatei](./media/azure-stack-ethereum/edit-connect-parameters.png)

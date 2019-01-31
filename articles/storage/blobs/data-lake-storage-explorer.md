@@ -3,18 +3,18 @@ title: 'Schnellstart: Verwenden von Azure Storage-Explorer zum Verwalten von Dat
 description: In diesem Schnellstart erfahren Sie, wie Sie mit dem Azure Storage-Explorer ein Dateisystem in einem Azure Data Lake Storage Gen2-Konto sowie ein Verzeichnis und eine Datei erstellen. Als Nächstes erfahren Sie, wie Sie die Datei auf Ihren lokalen Computer herunterladen, und wie Sie die gesamte Datei in einem Verzeichnis anzeigen.
 services: storage
 author: tamram
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: tamram
-ms.openlocfilehash: 5b46d5644536123a9ef3dfc7be87e34d03ee4c4f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6f3aa81f0fa2497db02d069e93e007b43c37beb9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423595"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250451"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Verwalten von Daten in einem Azure Data Lake Storage Gen2-Konto
 

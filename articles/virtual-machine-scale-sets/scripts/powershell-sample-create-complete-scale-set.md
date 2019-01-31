@@ -3,7 +3,7 @@ title: 'Azure PowerShell-Beispiele: Erstellen einer vollständigen VM-Skalierung
 description: Azure PowerShell-Beispiele
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7466bebddd186bfe4e78d25cd8c4ccba84a1c390
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a0800a434fdfef0002993fdae797af982391321f
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465303"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883278"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Erstellen einer vollständigen VM-Skalierungsgruppe mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Windows Server 2016. Statt die [hier in „New-AzureRmVmss“ verfügbaren integrierten Optionen zur Ressourcenerstellung](powershell-sample-create-simple-scale-set.md) zu verwenden, werden einzelne Ressourcen konfiguriert und erstellt. Nach dem Ausführen des Skripts können Sie per RDP auf die VM-Instanzen zugreifen.

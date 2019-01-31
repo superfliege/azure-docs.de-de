@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a8b45850ef609f908450fbcf35aad6b5c87540b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c2e67adb93c34cc4421145964ee809e4423b4843
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818505"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101721"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Tutorial: Azure Active Directory-Integration mit Signagelive
 
@@ -104,7 +104,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![SSO-Informationen zur Domäne und zu den URLs für Signagelive](common/sp-signonurl.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://login.signagelive.com/sso/<ORGANISATIONALUNITNAME>`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Signagelive-Client](mailto:support@signagelive.com), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

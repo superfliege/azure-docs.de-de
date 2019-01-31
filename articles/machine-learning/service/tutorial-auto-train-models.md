@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie ein Machine Learning-Modell mithilfe des automatisierten maschinellen Lernens erstellen. Azure Machine Learning kann die Datenvorverarbeitung, Algorithmusauswahl und Hyperparameterauswahl automatisiert für Sie ausführen. Das endgültige Modell wird dann mit Azure Machine Learning Service bereitgestellt.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e2746ef55f5c50ce9452b7a9d1ab060c69830db
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823011"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244268"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
@@ -118,7 +118,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Typ</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -624,7 +624,7 @@ Führen Sie die folgenden Schritte aus, um ein Modell automatisch zu trainieren:
 Definieren Sie die Experimentparameter und Modelleinstellungen für die automatische Generierung und Optimierung. Die vollständige Liste mit den Einstellungen finden Sie [hier](how-to-configure-auto-train.md). Mit diesen Standardeinstellungen dauert die Übermittlung des Experiments etwa zehn bis 15 Minuten. Durch Verringern von `iterations` oder `iteration_timeout_minutes` können Sie die Laufzeit jedoch verkürzen.
 
 
-|Eigenschaft| Wert in diesem Tutorial |Beschreibung|
+|Eigenschaft| Wert in diesem Tutorial |BESCHREIBUNG|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Zeitlimit in Minuten für jede Iteration. Verringern Sie diesen Wert, um die Gesamtlaufzeit zu verringern.|
 |**iterations**|30|Anzahl von Iterationen. In jeder Iteration wird ein neues Machine Learning-Modell mit Ihren Daten trainiert. Hierbei handelt es sich um den primären Wert, der sich auf die Gesamtlaufzeit auswirkt.|

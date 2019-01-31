@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: 764a6a060a3ce2c7af9e4051b02ad45d14d27900
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ae50d8ea1556d7956f96b13a6ccbb84c28e8aae9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557817"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149802"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit C# 
 
@@ -102,7 +102,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-## <a name="process-and-view-the-results"></a>Verarbeiten und Anzeigen der Ergebnisse
+## <a name="process-and-view-the-results"></a>Lassen Sie die Ergebnisse verarbeiten und anzeigen.
 
 1. Durchlaufen Sie das Antwortobjekt, um Informationen zu den einzelnen Suchergebnissen anzuzeigen, z.B. Name, URL und das Datum des letzten Crawl-Vorgangs der Webseite.
 
@@ -124,4 +124,4 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer benutzerdefinierten Suchwebseite](./tutorials/custom-search-web-page.md)
+> [Erstellen einer Web-App für die benutzerdefinierte Suche](./tutorials/custom-search-web-page.md)

@@ -7,25 +7,25 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 047c2af2626c9efca05dc3d3e554d57b4d559add
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3a52610365c4e18333084e81a0f69e302fb5c191
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809104"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192042"
 ---
 # <a name="two-step-verification-overview"></a>Übersicht über die zweistufige Überprüfung
-
->[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 
 Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen mitgeteilt, dass Ihr Unternehmen Ihrem Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt hat. Was bedeutet das? Das bedeutet, dass Ihre Organisation zusätzliche Maßnahmen ergreifen, um Ihre Identität bei der Anmeldung sicherzustellen. Diese zusätzlichen Überprüfung, die auch als zweistufige Überprüfung bekannt ist, erfolgt über eine Kombination aus Ihrem Benutzernamen, Ihrem Kennwort und einem Mobilgerät oder Telefon.
 
 Die zweistufige Überprüfung ist sicherer als nur ein Kennwort, da sie auf zwei Formen der Authentifizierung basiert: etwas, das Sie wissen, und etwas, das Sie bei sich tragen. Was Sie wissen, ist Ihr Kennwort. Was Sie bei sich tragen, ist ein Smartphone oder ein anderes Gerät, das Sie häufig mit sich führen. Die zweistufige Überprüfung trägt dazu bei, Angriffe durch Hacker zu verhindern, die sich für Sie ausgeben, denn auch wenn ein Hacker Ihr Kennwort weiß, ist die Wahrscheinlichkeit gering, dass er auch über Ihr Gerät verfügt.
+
+>[!Important]
+>Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 
 |Artikel |BESCHREIBUNG |
 |------|------------|

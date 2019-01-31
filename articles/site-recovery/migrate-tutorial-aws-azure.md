@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042052"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226382"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -169,7 +169,7 @@ Wenn Sie alle fünf Abschnitte unter **Infrastruktur vorbereiten** abgeschlossen
 
 Aktivieren Sie die Replikation für jede VM, die migriert werden soll. Wenn die Replikation aktiviert ist, wird der Mobilitätsdienst von Site Recovery automatisch installiert.
 
-1. Öffnen Sie das [Azure-Portal](htts://portal.azure.com).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie auf der Seite für Ihren Tresor unter **Erste Schritte** die Option **Site Recovery**.
 2. Wählen Sie unter **Für lokale Computer und Azure-VMs** die Option **Schritt 1: Replizieren der Anwendung** aus. Geben Sie auf den Seiten des Assistenten die folgenden Informationen an. Wählen Sie auf einer Seite jeweils **OK**, wenn Sie fertig sind:
     - 1: Konfigurieren der Quelle

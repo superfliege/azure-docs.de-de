@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 22c783574897076b697b4b2bb3e8fc1da284dcae
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6e518f644e8fc43db58ef481312f44b2071a0dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724671"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194303"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Node.js
 
@@ -27,8 +27,6 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von [Node.js](https://nodejs.or
 Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass die folgenden erforderlichen Komponenten vorhanden sind:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers, den Sie verwenden
 
 - Node.js-Software für Ihr Betriebssystem:
 

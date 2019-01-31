@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4cca3db778347e9bd8c8b881d85f0882f6b90f72
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581707"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216250"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
 
@@ -150,7 +150,7 @@ Hier sehen Sie ein Beispiel:
     }
   }
 ```
-Feld   | Typ  | Inhalt
+Feld   | Type  | Inhalt
 ------|------|------|
 Tags    | object    | Objekt der obersten Ebene für das Array von Tags
 tags[].Name | Zeichenfolge    | Schlüsselwort von Tags-Klassifizierung
@@ -210,7 +210,7 @@ Bei domänenspezifischen Modellen mit Option 2 (Erweiterte Analyse) wird der Rü
 
 Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien](../Category-Taxonomy.md) in der ursprünglichen Taxonomie. Beachten Sie auch, dass Kategorien, die mit einem Unterstrich enden, mit dieser Kategorie und ihren untergeordneten Kategorien übereinstimmen (z.B. „people_“ sowie „people_group“, für Prominentenmodell).
 
-Feld   | Typ  | Inhalt
+Feld   | Type  | Inhalt
 ------|------|------|
 categories | object | Objekt der obersten Ebene
 categories[].name    | Zeichenfolge   | Name aus der 86-Kategorie-Taxonomie

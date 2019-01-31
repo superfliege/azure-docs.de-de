@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: a27f6c017d9d648414637f900e0cf7c4be147bfe
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996346"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100120"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(VERALTET) Verwenden von ACR mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung
 
@@ -131,7 +131,7 @@ Erfassen Sie dann den Container in einem neuen Image. Der Imagename muss den `lo
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
-````
+```
 
 Melden Sie sich bei Azure Container Registry an. Ersetzen Sie den Namen durch den loginServer-Namen, „--username“ durch den Namen der Containerregistrierung und „--password“ durch eines der bereitgestellten Kennwörter.
 

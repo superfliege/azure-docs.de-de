@@ -3,7 +3,7 @@ title: 'Azure CLI-Skriptbeispiel: Erstellen eines virtuellen Computers durch Anf
 description: 'Azure CLI-Skriptbeispiel: Erstellen eines virtuellen Computers durch Anfügen eines verwalteten Datenträgers als Betriebssystemdatenträger'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: ramankum
+author: ramankumarlive
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 5d86710fd9173cd0bc3416fedec226f97f12d9d2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 319803a8b6c07de6efafa80789248c60a9cdad06
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847674"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241440"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Erstellen eines virtuellen Computers mit einem vorhandenen verwalteten Betriebssystemdatenträger über die Befehlszeilenschnittstelle
 

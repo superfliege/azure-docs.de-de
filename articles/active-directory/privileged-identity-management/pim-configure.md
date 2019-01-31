@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5848b16624f3b8c307a022b9f79c61910736b83
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433729"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167137"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -54,17 +54,17 @@ Weitere Informationen zu Lizenzen für Benutzer finden Sie unter [License requir
 
 Machen Sie sich zum besseren Verständnis von PIM und der dazugehörigen Dokumentation mit den folgenden Begriffen vertraut:
 
-| Begriff oder Konzept | Rollenzuweisungskategorie | Beschreibung |
+| Begriff oder Konzept | Rollenzuweisungskategorie | BESCHREIBUNG |
 | --- | --- | --- |
-| Berechtigt | Typ | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
-| aktiv | Typ | Eine Rollenzuweisung, bei der ein Benutzer keine Aktion ausführen muss, um die Rolle nutzen zu können. Bei als aktiv zugewiesenen Benutzern sind die Berechtigungen der Rolle zugewiesen. |
+| Berechtigt | Type | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
+| aktiv | Type | Eine Rollenzuweisung, bei der ein Benutzer keine Aktion ausführen muss, um die Rolle nutzen zu können. Bei als aktiv zugewiesenen Benutzern sind die Berechtigungen der Rolle zugewiesen. |
 | aktivieren |  | Das Ausführen mindestens einer Aktion, um die Rolle nutzen zu können, zu der ein Benutzer berechtigt ist. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. |
 | zugewiesen | Zustand | Ein Benutzer mit einer Rollenzuweisung vom Typ „aktiv“. |
 | aktiviert | Zustand | Ein Benutzer mit einer Rollenzuweisung vom Typ „berechtigt“, der die Aktionen zum Aktivieren der Rolle ausgeführt hat und nun aktiv ist. |
-| dauerhaft berechtigt | Dauer | Eine Rollenzuweisung, bei der ein Benutzer immer zum Aktivieren der Rolle berechtigt ist. |
-| dauerhaft aktiv | Dauer | Eine Rollenzuweisung, bei der ein Benutzer die Rolle jederzeit ohne vorherige Aktion verwenden kann. |
-| Ablauf (berechtigt) | Dauer | Eine Rollenzuweisung, bei der ein Benutzer innerhalb eines angegebenen Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
-| Ablauf (aktiv) | Dauer | Eine Rollenzuweisung, bei der ein Benutzer die Rolle innerhalb eines angegebenen Zeitraums (Start- und Enddatum) ohne vorherige Aktion verwenden kann. |
+| dauerhaft berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer immer zum Aktivieren der Rolle berechtigt ist. |
+| dauerhaft aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle jederzeit ohne vorherige Aktion verwenden kann. |
+| Ablauf (berechtigt) | Duration | Eine Rollenzuweisung, bei der ein Benutzer innerhalb eines angegebenen Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
+| Ablauf (aktiv) | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle innerhalb eines angegebenen Zeitraums (Start- und Enddatum) ohne vorherige Aktion verwenden kann. |
 
 ## <a name="what-does-pim-look-like"></a>Wie sieht PIM aus?
 

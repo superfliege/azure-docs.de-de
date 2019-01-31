@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 21794d0a728e7baed7ec392fa448c98eb519576c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bc46fbda191ba13d5fb770ac4128ee2b56eb81c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000409"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218358"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-go"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit Go
 
@@ -88,7 +88,7 @@ func translate(subscriptionKey string) {
 }
 ```
 
-Als Nächstes erstellen wir die URL. Die URL wird mit der `Parse()`- und `Query()`-Methode erstellt. Sie werden feststellen, dass mit der `Add()`-Methode Parameter hinzugefügt werden. In diesem Beispiel übersetzen Sie aus dem Englischen ins Italienische und Deutsche: `de` und `it`.
+Als Nächstes erstellen wir die URL. Die URL wird mit den Methoden `Parse()` und `Query()` erstellt. Sie werden feststellen, dass mit der `Add()`-Methode Parameter hinzugefügt werden. In diesem Beispiel übersetzen Sie aus dem Englischen ins Italienische und Deutsche: `de` und `it`.
 
 Kopieren Sie diesen Code in die `translate`-Funktion.
 
@@ -106,7 +106,7 @@ u.RawQuery = q.Encode()
 
 ## <a name="create-a-struct-for-your-request-body"></a>Erstellen einer Struktur für Ihren Anforderungstext
 
-Als Nächstes erstellen Sie eine anonyme Struktur für den Anforderungstext und codieren sie als JSON mit `json.Marshal()`. Fügen Sie diesen Code der `translate`-Funktion hinzu.
+Erstellen Sie als Nächstes eine anonyme Struktur für den Anforderungstext, und codieren Sie sie im JSON-Format mit `json.Marshal()`. Fügen Sie diesen Code der Funktion `translate` hinzu.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -120,7 +120,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Erstellen der Anforderung
 
-Da Sie nun den Text der Anforderung im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und die Textübersetzungs-API aufrufen.
+Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und die Textübersetzungs-API aufrufen.
 
 ```go
 // Build the HTTP POST request
@@ -139,9 +139,9 @@ if err != nil {
 }
 ```
 
-## <a name="handle-and-print-the-response"></a>Verarbeiten und Drucken der Antwort
+## <a name="handle-and-print-the-response"></a>Verarbeiten und Ausgeben der Antwort
 
-Fügen Sie diesen Code der `translate`-Funktion zum Decodieren der JSON-Antwort hinzu, und formatieren und drucken Sie dann das Ergebnis.
+Fügen Sie diesen Code der Funktion `translate` hinzu, um die JSON-Antwort zu decodieren, zu formatieren und das Ergebnis auszugeben.
 
 ```go
 // Decode the JSON response
@@ -198,7 +198,7 @@ Sehen Sie sich Go-Pakete für Cognitive Services-APIs aus dem [Azure SDK für Go
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Erfahren Sie, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
+Informieren Sie sich, wie Sie die Textübersetzungs-API für folgende Zwecke verwenden:
 
 * [Transliteration von Text](quickstart-go-transliterate.md)
 * [Identifizieren der Sprache anhand der Eingabe](quickstart-go-detect.md)

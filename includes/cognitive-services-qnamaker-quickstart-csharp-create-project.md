@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
-ms.openlocfilehash: 420757c5b7f6d19bb0abe87232e75497b7b97322
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6bda00a20dd83e005a57b50b0183b2b9f49667b4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019095"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55290992"
 ---
 1. Öffnen Sie Visual Studio 2017 Community Edition.
 1. Erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Core)**, und nennen Sie es `QnaMakerQuickstart`. Übernehmen Sie für die übrigen Einstellungen die Standardwerte.

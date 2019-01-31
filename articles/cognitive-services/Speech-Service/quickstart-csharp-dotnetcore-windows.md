@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a5a04fdede498d404a00d666e4042337b4dc675b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4ff005c3d3955c0df7090fa70f0e116bd216eb91
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727835"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220585"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für .NET Core
 
@@ -34,7 +34,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier können Sie den Schlüssel kostenlos erhalten](get-started.md).
+* Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
