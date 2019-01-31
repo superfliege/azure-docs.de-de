@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: da6c9fa416d19916243860178d15619306aaf3c0
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 7c7279f1895764c2a3ed73e824d44c2eed68240c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305314"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244573"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack
 
@@ -122,7 +123,7 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Erstellen der Web-App-Bereitstellung in beiden Clouds
 
-1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier**, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
+1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie Runtimeidentifier, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
