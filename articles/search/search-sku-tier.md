@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471819"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467440"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -108,7 +108,7 @@ Betrachten wir nun die gebräuchlicheren Standardtarife: **S1-S3** bilden eine S
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| Partitionsgröße|  25 GB | 100 GB | 250 GB |  |  |  |  |
+| Partitionsgröße|  25 GB | 100 GB | 200 GB |  |  |  |  |
 | Index und Indexergrenzwerte| 50 | 200 | 200 |  |  |  |  |
 
 **S1** ist eine gebräuchliche Wahl, wenn dedizierte Ressourcen und mehrere Partitionen zur Notwendigkeit werden. Mit Partitionen von 25 GB für bis zu 12 Partitionen liegt der Pro-Dienst-Grenzwert für **S1** bei 300 GB insgesamt, wenn Sie Partitionen über Replikate maximieren (Informationen über ausgewogenere Kompositionen finden Sie unter [Standard-Tarife: Partitions- und Replikatskombinationen](search-capacity-planning.md#chart).)

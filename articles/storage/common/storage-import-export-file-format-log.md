@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316579"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454843"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  
@@ -101,7 +101,7 @@ properties-status ::=
 
 Die folgende Tabelle beschreibt die Elemente der Protokolldatei.  
   
-|XML-Element|Typ|BESCHREIBUNG|  
+|XML-Element|Type|BESCHREIBUNG|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML-Element|Stellt ein Laufwerkprotokoll dar.|  
 |`Version`|Attribut, String|Die Version des Protokollformats.|  
@@ -110,9 +110,9 @@ Die folgende Tabelle beschreibt die Elemente der Protokolldatei.
 |`Blob`|Geschachteltes XML-Element|Stellt ein Blob dar.|  
 |`Blob/BlobPath`|Zeichenfolge|Der URI des Blobs.|  
 |`Blob/FilePath`|Zeichenfolge|Der relative Pfad zur Datei auf dem Laufwerk.|  
-|`Blob/Snapshot`|Datetime|Die Momentaufnahmeversion des Blobs (nur für einen Exportauftrag).|  
+|`Blob/Snapshot`|DateTime|Die Momentaufnahmeversion des Blobs (nur für einen Exportauftrag).|  
 |`Blob/Length`|Ganze Zahl |Die Gesamtlänge des Blobs in Bytes.|  
-|`Blob/LastModified`|Datetime|Datum/Uhrzeit der letzten Änderung des Blobs (nur für einen Exportauftrag).|  
+|`Blob/LastModified`|DateTime|Datum/Uhrzeit der letzten Änderung des Blobs (nur für einen Exportauftrag).|  
 |`Blob/ImportDisposition`|Zeichenfolge|Die Importdisposition des Blobs (nur für einen Importauftrag).|  
 |`Blob/ImportDisposition/@Status`|Attribut, String|Der Status der Importdisposition.|  
 |`PageRangeList`|Geschachteltes XML-Element|Stellt eine Liste von Seitenbereichen für ein Seitenblob dar.|  

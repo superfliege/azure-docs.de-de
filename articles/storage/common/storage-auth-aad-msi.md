@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: 15c37be3f3b1b3f72c32865e095091fa10ee9750
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427415"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251689"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit verwalteten Identitäten für Azure-Ressourcen (Vorschau)
 
@@ -43,7 +43,7 @@ Damit Sie eine verwaltete Identität aus Ihrer Azure Storage-Anwendung authentif
 
 Für die Authentifizierung mit einer verwalteten Identität muss in der Anwendung oder dem Skript das Sicherheitstoken der verwalteten Identität abgerufen werden. Informationen zum Abrufen eines Sicherheitstokens finden Sie unter [Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET Codebeispiel: Erstellen eines Blockblobs
+## <a name="net-code-example-create-a-block-blob"></a>Codebeispiel für .NET: Erstellen eines Blockblobs
 
 Im Codebeispiel wird davon ausgegangen, dass Sie über ein Zugriffstoken der verwalteten Identität verfügen. Das Zugriffstoken wird verwendet, um die verwaltete Identität für das Erstellen eines Blockblobs zu autorisieren.
 

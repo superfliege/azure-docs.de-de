@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: e01eebe41010135d0dc0a2cb4170e6b6687ff546
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 646ebc79e3615b289b60e47c0a38595e7892d8cc
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292684"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55084867"
 ---
 | Ressource | Begrenzung |
 | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "52292684"
 | Maximale Größe zwischengespeicherter Antworten | 2 MB |
 | Maximale Größe eines Richtliniendokuments | 256 KB<sup>5</sup> | 
 | Maximale Anzahl benutzerdefinierter Gatewaydomänen pro Dienstinstanz<sup>6</sup> | 20 | 
-| Maximale Anzahl von Instanzen pro Abonnement<sup>7</sup> | 5 | 
+| Maximale Anzahl von Instanzen pro Abonnement<sup>7</sup> | 20 | 
 | Maximale Anzahl von Abonnements pro Dienstinstanz<sup>7</sup> | 500 |
 | Maximale Anzahl von Clientzertifikaten pro Dienstinstanz<sup>7</sup> | 50 | 
 | Maximale Anzahl von APIs pro Dienstinstanz<sup>7</sup> | 50 | 

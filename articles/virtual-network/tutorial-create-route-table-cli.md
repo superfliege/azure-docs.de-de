@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849208"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157464"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Weiterleiten von Netzwerkdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 Eine NVA ist eine VM, die eine Netzwerkfunktion wie Routing, Firewall oder WAN-Optimierung ausführt.
 
-Erstellen Sie eine NVA im *DMZ*-Subnetz mit [az vm create](/cli/azure/vm#az_vm_create). Beim Erstellen einer VM erstellt Azure standardmäßig eine öffentliche IP-Adresse und weist diese der VM zu. Der Parameter `--public-ip-address ""` weist Azure an, keine öffentliche IP-Adresse zu erstellen und der VM zuzuweisen, da keine Verbindungen mit der VM über das Internet hergestellt werden müssen. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.
+Erstellen Sie eine NVA im *DMZ*-Subnetz mit [az vm create](/cli/azure/vm). Beim Erstellen einer VM erstellt Azure standardmäßig eine öffentliche IP-Adresse und weist diese der VM zu. Der Parameter `--public-ip-address ""` weist Azure an, keine öffentliche IP-Adresse zu erstellen und der VM zuzuweisen, da keine Verbindungen mit der VM über das Internet hergestellt werden müssen. Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.
 
 ```azure-cli-interactive
 az vm create \
@@ -161,7 +161,7 @@ Die Ausführung des Befehls kann bis zu einer Minute dauern.
 
 Erstellen Sie zwei VMs im virtuellen Netzwerk, damit Sie in einem späteren Schritt diesen Datenverkehr aus dem Subnetz *Public* über die NVA an das Subnetz *Private* weiterleiten können. 
 
-Erstellen Sie mit *az vm create* eine VM im Subnetz [Public](/cli/azure/vm#az_vm_create). Der Parameter `--no-wait` ermöglicht Azure die Ausführung des Befehls im Hintergrund, sodass Sie mit dem nächsten Befehl fortfahren können. Zur Vereinfachung dieses Artikels wird ein Kennwort verwendet. Schlüssel werden in der Regel in Produktionsbereitstellungen verwendet. Bei der Verwendung von Schlüsseln müssen Sie außerdem die SSH-Agent-Weiterleitung konfigurieren. Weitere Informationen finden Sie in der Dokumentation Ihres SSH-Clients. Ersetzen Sie `<replace-with-your-password>` im folgenden Befehl durch ein Kennwort Ihrer Wahl.
+Erstellen Sie mit *az vm create* eine VM im Subnetz [Public](/cli/azure/vm). Der Parameter `--no-wait` ermöglicht Azure die Ausführung des Befehls im Hintergrund, sodass Sie mit dem nächsten Befehl fortfahren können. Zur Vereinfachung dieses Artikels wird ein Kennwort verwendet. Schlüssel werden in der Regel in Produktionsbereitstellungen verwendet. Bei der Verwendung von Schlüsseln müssen Sie außerdem die SSH-Agent-Weiterleitung konfigurieren. Weitere Informationen finden Sie in der Dokumentation Ihres SSH-Clients. Ersetzen Sie `<replace-with-your-password>` im folgenden Befehl durch ein Kennwort Ihrer Wahl.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"

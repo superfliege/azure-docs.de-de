@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
-ms.openlocfilehash: 554fd9c32c9831d45a40c62a871e3a8d5f8d7cb9
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191750"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249490"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Azure Stack-Rechenzentrumsintegration
 
@@ -30,9 +31,9 @@ Als Azure Stack-Kunde sollten Sie folgende Phasen der Datencenterintegration erw
 
 |     |Planungsphase|Auftragsprozess|Vor der Bereitstellung|Factoryprozess|Hardwarelieferung|Lokale Bereitstellung|
 |-----|-----|-----|-----|-----|-----|-----|
-|**Microsoft**|Interagieren Sie mit dem Partner, um Presales-Support bereitzustellen.|Bereiten Sie Softwarelizenzierung und Verträge nach Bedarf vor.|Stellen Sie dem Kunden die erforderlichen Tools zum Sammeln von Anforderungen an die Datencenterintegration und Dokumentation bereit.|Stellen Sie die neuesten Baselinebuilds und Toolkettenaktualisierungen in einem monatlichen Rhythmus bereit.|N/V|Die Supporttechniker von Microsoft unterstützen Sie bei eventuellen Bereitstellungsproblemen.|
+|**Microsoft**|Interagieren Sie mit dem Partner, um Presales-Support bereitzustellen.|Bereiten Sie Softwarelizenzierung und Verträge nach Bedarf vor.|Stellen Sie dem Kunden die erforderlichen Tools zum Sammeln von Anforderungen an die Datencenterintegration und Dokumentation bereit.|Stellen Sie die neuesten Baselinebuilds und Toolkettenaktualisierungen in einem monatlichen Rhythmus bereit.|–|Die Supporttechniker von Microsoft unterstützen Sie bei eventuellen Bereitstellungsproblemen.|
 |**Partner**|Empfehlen Sie Lösungsoptionen anhand von Kundenanforderungen.<br><br>Schlagen Sie bei Bedarf Proof of Concept (POC) vor.<br><br>Richten Sie eine Geschäftsbeziehung ein.<br><br>Entscheiden Sie über die Supportebene.|Bereiten Sie erforderliche Verträge mit dem Kunden vor.<br><br>Erstellen Sie eine Kundenbestellung.<br><br>Legen Sie die Übermittlungszeitachse fest.<br><br>Stellen Sie bei Bedarf eine Verbindung zwischen dem Kunden und Microsoft her.|Bieten Sie dem Kunden die erforderliche Schulung, um sicherzustellen, dass er sämtliche Bereitstellungsvoraussetzungen und Optionen für die Datencenterintegration versteht.<br><br>Helfen Sie dem Kunden bei der Prüfung der gesammelten Daten, um deren Vollständigkeit und Genauigkeit sicherzustellen.|Wenden Sie den zuletzt überprüften Baselinebuild an.<br><br>Wenden Sie das erforderliche Microsoft Deployment Toolkit an.|Versenden Sie Hardware an den Kundenstandort.|Die Bereitstellung wird durch einen Vor-Ort-Techniker erledigt.<br><br>Rack und Stack.<br><br>HLH-Bereitstellung (Hardware Lifecycle Host, Hardwarelebenszyklus-Host).<br><br>Azure Stack-Bereitstellung.<br><br>Übergabe an den Kunden.|
-|**Kunde**|Beschreiben Sie vorgesehene Anwendungsfälle, und geben Sie die Anforderungen an.|Bestimmen Sie das zu verwendende Abrechnungsmodell; überprüfen und genehmigen Sie Verträge.|Füllen Sie das Arbeitsblatt für die Bereitstellung aus, und stellen Sie sicher, dass alle Bereitstellungsvoraussetzungen erfüllt und fertig für die Bereitstellung sind.|N/V|Bereiten Sie das Datencenter vor, indem Sie sicherstellen, dass die gesamte erforderliche Stromversorgung und Kühlung, die Grenzkonnektivität und andere Anforderungen an die Datencenterintegration vorhanden sind.|Stehen Sie während der Bereitstellung zur Verfügung, um Anmeldeinformationen und Support zum Abonnement zu bieten, sofern es Fragen zu den bereitgestellten Daten gibt.|
+|**Kunde**|Beschreiben Sie vorgesehene Anwendungsfälle, und geben Sie die Anforderungen an.|Bestimmen Sie das zu verwendende Abrechnungsmodell; überprüfen und genehmigen Sie Verträge.|Füllen Sie das Arbeitsblatt für die Bereitstellung aus, und stellen Sie sicher, dass alle Bereitstellungsvoraussetzungen erfüllt und fertig für die Bereitstellung sind.|–|Bereiten Sie das Datencenter vor, indem Sie sicherstellen, dass die gesamte erforderliche Stromversorgung und Kühlung, die Grenzkonnektivität und andere Anforderungen an die Datencenterintegration vorhanden sind.|Stehen Sie während der Bereitstellung zur Verfügung, um Anmeldeinformationen und Support zum Abonnement zu bieten, sofern es Fragen zu den bereitgestellten Daten gibt.|
 | | | | | | | |
 
 

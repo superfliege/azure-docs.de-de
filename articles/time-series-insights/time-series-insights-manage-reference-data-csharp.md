@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0ed7d868f0e46e16224e15caaefd2d819c923f29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200750"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295728"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Verwalten von Verweisdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#
 
 Dieser Artikel beschreibt ein C#-Beispielprojekt, das Sie kompilieren können, um Verweisdaten für eine Azure Time Series Insights-Umgebung zu verwalten.
 
-## <a name="prerequistes"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden Schritte aus:
 1. [Erstellen Sie ein Verweisdataset](time-series-insights-add-reference-data-set.md).
 

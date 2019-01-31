@@ -3,23 +3,23 @@ title: Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem vi
 description: Schrittweise Anweisungen und Beispiele zur Verwendung verwalteter Identitäten für Azure-Ressourcen auf einem virtuellen Computer zum Abrufen eines OAuth-Zugriffstokens.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422406"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166576"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -33,7 +33,7 @@ Dieser Artikel enthält verschiedene Code- und Skriptbeispiele für den Tokenabr
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Wenn Sie die Azure PowerShell-Beispiele in diesem Artikel verwenden möchten, müssen Sie die neueste Version von [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) installieren.
+Wenn Sie die Azure PowerShell-Beispiele in diesem Artikel verwenden möchten, müssen Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) installieren.
 
 
 > [!IMPORTANT]

@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c198dfc19a350188f500af86c531be9a9ac424ce
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224172"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Hinzufügen vortrainierter Entitäten
 In diesem Tutorial erfahren Sie, wie Sie Ihrem Conversation Learner-Modell vortrainierte Entitäten hinzufügen.
@@ -24,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihrem Conversation Learner-Modell vortr
 
 [![Vortrainierte Entitäten: Tutorial (Vorschauversion)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -41,7 +41,7 @@ Vortrainierte Entitäten erkennen häufig verwendete Entitätstypen wie Nummern,
 2. Geben Sie im Feld „Name“ die Zeichenfolge „PretrainedEntities“ ein, und drücken Sie die EINGABETASTE.
 3. Klicken Sie auf die Schaltfläche „Erstellen“.
 
-### <a name="entity-creation"></a>Entitätserstellung
+### <a name="entity-creation"></a>Erstellung von Entitäten
 
 1. Klicken Sie im linken Bereich auf „Entitäten“ und dann auf die Schaltfläche „Neue Entität“.
 2. Wählen Sie als Entitätstyp die Option „Pre-Trained/datetimeV2“ aus.

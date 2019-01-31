@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727714"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095769"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Services und Reliable Actors
 Azure Service Fabric ist eine Plattform mit Hochverfügbarkeit, bei der der Status über mehrere Knoten repliziert wird, um diese Hochverfügbarkeit zu gewährleisten.  Auch wenn ein Knoten im Cluster ausfällt, bleiben die Dienste somit verfügbar. Diese von der Plattform bereitgestellte integrierte Redundanz reicht in manchen Fällen aus. In bestimmten Fällen wäre es jedoch wünschenswert, dass der Dienst Daten (auf einem externen Speicher) sichert.
@@ -227,7 +227,7 @@ Nachdem die inkrementelle Sicherung aktiviert wurde, kann beim Erstellen einer i
   - Für das Replikat wurde nie eine vollständige Sicherung durchgeführt, seit es als primäres Replikat festgelegt wurde.
   - Einige Protokolldatensätze wurden seit der Erstellung der letzten Sicherung abgeschnitten.
 
-Wenn die inkrementelle Sicherung aktiviert ist, verwendet `KvsActorStateProvider` keinen zirkulären Puffer zum Verwalten der Protokolleinträge und schneidet das Protokoll in regelmäßigen Abständen ab. Wenn für einen Zeitraum von 45 Minuten keine Sicherung von einem Benutzer erstellt wird, schneidet das System die Protokolldatensätze automatisch ab. Dieses Intervall kann konfiguriert werden, indem Sie `logTrunctationIntervalInMinutes` im `KvsActorStateProvider`-Konstruktor angeben (ähnlich wie beim Aktivieren der inkrementellen Sicherung). Die Protokolldatensätze werden möglicherweise auch abgeschnitten, wenn das primäre Replikat durch Senden sämtlicher Daten ein weiteres Replikat erstellen muss.
+Wenn die inkrementelle Sicherung aktiviert ist, verwendet `KvsActorStateProvider` keinen zirkulären Puffer zum Verwalten der Protokolleinträge und schneidet das Protokoll in regelmäßigen Abständen ab. Wenn für einen Zeitraum von 45 Minuten keine Sicherung von einem Benutzer erstellt wird, schneidet das System die Protokolldatensätze automatisch ab. Dieses Intervall kann konfiguriert werden, indem Sie `logTruncationIntervalInMinutes` im `KvsActorStateProvider`-Konstruktor angeben (ähnlich wie beim Aktivieren der inkrementellen Sicherung). Die Protokolldatensätze werden möglicherweise auch abgeschnitten, wenn das primäre Replikat durch Senden sämtlicher Daten ein weiteres Replikat erstellen muss.
 
 Bei der Wiederherstellung aus einer Sicherungskette wie bei Reliable Services muss der BackupFolderPath Unterverzeichnisse enthalten, wobei ein Unterverzeichnis die vollständige Sicherung enthält und weitere Unterverzeichnissen die inkrementellen Sicherungen enthalten. Die Wiederherstellungs-API löst eine FabricException mit der entsprechenden Fehlermeldung aus, wenn die Überprüfung der Sicherungskette einen Fehler hervorruft. 
 

@@ -2,7 +2,7 @@
 title: 'Azure Batch: Ereignis zum Abschluss der Größenänderung von Pools | Microsoft-Dokumentation'
 description: Referenz zum Batch-Ereignis zum Abschluss der Größenänderung von Pools.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: e91ba664a69d28cae1f82710d427bd2a391305a2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: 87c98b89a49adbad88841dccbd4ba47d370b2be7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315660"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474308"
 ---
 # <a name="pool-resize-complete-event"></a>Ereignis zum Abschluss der Größenänderung von Pools
 
@@ -48,7 +48,7 @@ ms.locfileid: "30315660"
 |targetDedicated|Int32|Die Anzahl der Computeknoten, die für den Pool angefordert werden.|
 |enableAutoScale|Bool|Gibt an, ob die Poolgröße mit der Zeit automatisch angepasst wird.|
 |isAutoPool|Bool|Gibt an, ob der Pool über den AutoPool-Mechanismus eines Auftrags erstellt wurde.|
-|startTime|Datetime|Die Startzeit der Größenänderung des Pools.|
-|endTime|Datetime|Die Uhrzeit des Abschlusses der Größenänderung des Pools.|
+|startTime|DateTime|Die Startzeit der Größenänderung des Pools.|
+|endTime|DateTime|Die Uhrzeit des Abschlusses der Größenänderung des Pools.|
 |resultCode|Zeichenfolge|Das Ergebnis der Größenänderung.|
 |resultMessage|Zeichenfolge|Der Größenänderungsfehler enthält die Details des Ergebnisses.<br /><br /> Wenn die Größenänderung erfolgreich abgeschlossen wurde, wird angegeben, dass der Vorgang erfolgreich war.|

@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 99491fdc9758c5ec930db5f584f009eb6705f789
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 6f3b4632674217133f4af4c95143d2df51ecde6a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231247"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247458"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>In Azure Stack unterstützte VM-Größen
 
@@ -134,14 +135,14 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 ### <a name="fsv2-series"></a>Fsv2-Serie
 *Erfordert Azure Stack Version 1804 oder höher* 
 
-|Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
-|---------------------|----|----|-----|-----|-------|--------------|---------|
-|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4/4x2300    |Moderat |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8.000   |8/8x2300    |Moderat |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16/16x2300  |Hoch     |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32/32x2300  |Hoch     |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32/32x2300  |Hoch  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32/32x2300  |Äußerst hoch  |
+|Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) |
+|---------------------|----|----|-----|-----|-------|--------------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4/4x2300    |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8.000   |8/8x2300    |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16/16x2300  |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32/32x2300  |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32/32x2300  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32/32x2300  |
 
 
 ## <a name="memory-optimized"></a>Arbeitsspeicheroptimiert

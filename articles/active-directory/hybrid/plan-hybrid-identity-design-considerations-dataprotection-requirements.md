@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 34c284f3fdd78d8b2f56ec7c36e139f9ac9d78bf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c31f104b3a7ae37d768a2a483a70385852dc47ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473502"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156818"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Planen einer Verbesserung der Datensicherheit mit einer starken Identitätslösung
 Um Daten zu schützen, müssen Sie zuerst in Erfahrung bringen, wer auf diese Daten zugreifen kann. Außerdem benötigen Sie eine Identitätslösung, die in Ihr System integrierbar ist, um Authentifizierung und Autorisierung bereitstellen zu können. Authentifizierung und Autorisierung werden häufig miteinander verwechselt, und ihre jeweilige Rolle wird falsch verstanden. Dabei handelt es sich um unterschiedliche Funktionen, wie in der folgenden Abbildung dargestellt:

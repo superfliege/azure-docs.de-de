@@ -7,7 +7,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f9a32058bb9d9cb2f1fa2d04c8002f06fa80edeb
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d918983b07fe04d221eea56f037e82d6c3349f51
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446101"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097009"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory 
 
@@ -69,7 +69,7 @@ Für Windows 10 und Windows Server 2016 unterstützt ein Azure Active Directory-
                NgcKeyId: {C7A9AEDC-780E-4FDA-B200-1AE15561A46B}
         WorkplaceJoined: NO
           WamDefaultSet: YES
-    WamDefaultAuthority: organizations         WamDefaultId: https://login.microsoft.com       WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} (AzureAd)           AzureAdPrt: YES
+    WamDefaultAuthority: organizations         WamDefaultId: https://login.microsoft.com       WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} (AzureAd)           AzureAdPrt: JA
 
 
 
@@ -77,7 +77,7 @@ Für Windows 10 und Windows Server 2016 unterstützt ein Azure Active Directory-
 
 Überprüfen Sie die folgenden Felder, und stellen Sie sicher, dass sie die erwarteten Werte aufweisen:
 
-### <a name="azureadjoined--yes"></a>AzureAdJoined: YES  
+### <a name="azureadjoined--yes"></a>AzureAdJoined: JA  
 
 Dieses Feld gibt an, ob das Gerät in Azure AD eingebunden ist. Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen. 
 
@@ -103,7 +103,7 @@ Dieses Feld gibt an, ob das Gerät in Azure AD eingebunden ist. Wenn der Wert **
 
 ---
 
-### <a name="domainjoined--yes"></a>DomainJoined: YES  
+### <a name="domainjoined--yes"></a>DomainJoined: JA  
 
 Dieses Feld gibt an, ob das Gerät in ein lokales Active Directory eingebunden ist. Wenn der Wert **NO** lautet, kann das Gerät keinen Azure AD-Hybridbeitritt durchführen.  
 
@@ -115,7 +115,7 @@ Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert 
 
 ---
 
-### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: YES und AzureADPrt: YES
+### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: YES und AzureADPrt: JA
   
 Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat. Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: c69bab9d2956568473dd6def86ecbd9bbb6577cf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cca81bf3f5a46b32cc901a0ac6024eb7888685f7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359219"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081601"
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>Exportieren von Azure Resource Manager-Vorlagen mit PowerShell
 
@@ -36,18 +36,18 @@ In diesem Artikel werden beide Ansätze beschrieben.
 Zur Veranschaulichung beider Ansätze zum Exportieren einer Vorlage stellen wir zuerst eine Lösung für Ihr Abonnement bereit. Wenn Ihr Abonnement bereits eine Ressourcengruppe enthält, die Sie exportieren möchten, müssen Sie diese Lösung nicht bereitstellen. Im weiteren Verlauf dieses Artikels wird jedoch Bezug auf die Vorlage für diese Lösung genommen. Mit dem Beispielskript wird ein Speicherkonto bereitgestellt.
 
 ```powershell
-New-AzureRmResourceGroup -Name ExampleGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
+New-AzResourceGroup -Name ExampleGroup -Location "South Central US"
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup `
   -DeploymentName NewStorage
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```  
 
 ## <a name="save-template-from-deployment-history"></a>Speichern einer Vorlage aus dem Bereitstellungsverlauf
 
-Mit dem Befehl [Save-AzureRmResourceGroupDeploymentTemplate](/powershell/module/azurerm.resources/save-azurermresourcegroupdeploymenttemplate) können Sie eine Vorlage aus dem Bereitstellungsverlauf abrufen. Im folgenden Beispiel wird die zuvor bereitgestellte Vorlage gespeichert:
+Mit dem Befehl [Save-AzureRmResourceGroupDeploymentTemplate](/powershell/module/az.resources/save-azresourcegroupdeploymenttemplate) können Sie eine Vorlage aus dem Bereitstellungsverlauf abrufen. Im folgenden Beispiel wird die zuvor bereitgestellte Vorlage gespeichert:
 
 ```powershell
-Save-AzureRmResourceGroupDeploymentTemplate -ResourceGroupName ExampleGroup -DeploymentName NewStorage
+Save-AzResourceGroupDeploymentTemplate -ResourceGroupName ExampleGroup -DeploymentName NewStorage
 ```
 
 Damit wird der Speicherort der Vorlage zurückgegeben.
@@ -62,10 +62,10 @@ C:\Users\exampleuser\NewStorage.json
 
 ## <a name="export-resource-group-as-template"></a>Exportieren einer Ressourcengruppe als Vorlage
 
-Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
+Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [Export-AzureRmResourceGroup](/powershell/module/az.resources/export-azresourcegroup) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
 
 ```powershell
-Export-AzureRmResourceGroup -ResourceGroupName ExampleGroup
+Export-AzResourceGroup -ResourceGroupName ExampleGroup
 ```
 
 Damit wird der Speicherort der Vorlage zurückgegeben.
@@ -111,7 +111,7 @@ C:\Users\exampleuser\ExampleGroup.json
 Sie können diese Vorlage erneut bereitstellen. Für das Speicherkonto muss jedoch ein eindeutiger Name erraten werden. Der Name Ihres Parameters ist etwas anders.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup `
   -TemplateFile C:\Users\exampleuser\ExampleGroup.json `
   -storageAccounts_nf3mvst4nqb36standardsa_name tfnewstorage0501
 ```

@@ -4,14 +4,14 @@ description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält De
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/11/2019
+ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4899409b225298c521935f2eeaf5e8e59a6833b3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267452"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884944"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt.
@@ -244,7 +244,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | edgenodes | Nein  | 
-| Profile | JA | 
+| profiles | JA | 
 | profiles/endpoints | JA | 
 | profiles/endpoints/customdomains | Nein  | 
 | profiles/endpoints/origins | Nein  | 
@@ -407,7 +407,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Anwendungen | JA | 
+| applications | JA | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
@@ -695,7 +695,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | deletedVaults | Nein  | 
-| Tresore | JA | 
+| vaults | JA | 
 | vaults/accessPolicies | Nein  | 
 | vaults/secrets | Nein  | 
 
@@ -732,7 +732,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | integrationAccounts | JA | 
-| Workflows | JA | 
+| workflows | JA | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Ressourcentyp | Tagunterstützung |
@@ -918,7 +918,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | managementassociations | Nein  | 
 | managementconfigurations | JA | 
 | solutions | JA | 
-| Sichten | JA | 
+| views | JA | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Ressourcentyp | Tagunterstützung |
@@ -954,7 +954,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | backupProtectedItems | Nein  | 
-| Tresore | JA | 
+| vaults | JA | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Ressourcentyp | Tagunterstützung |
@@ -1004,7 +1004,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Anwendungen | JA | 
+| applications | JA | 
 | saasresources | Nein  | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
@@ -1084,7 +1084,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Anwendungen | JA | 
+| applications | JA | 
 | gateways | JA | 
 | networks | JA | 
 | secrets | JA | 
@@ -1101,12 +1101,22 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | applianceDefinitions | JA | 
 | appliances | JA | 
 | applicationDefinitions | JA | 
-| Anwendungen | JA | 
+| applications | JA | 
 | jitRequests | JA | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
+| managedInstances | JA |
+| managedInstances/databases | JA |
+| managedInstances/databases/backupShortTermRetentionPolicies | Nein  |
+| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nein  |
+| managedInstances/databases/vulnerabilityAssessments | Nein  |
+| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Nein  |
+| managedInstances/encryptionProtector | Nein  |
+| managedInstances/keys | Nein  |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nein  |
+| managedInstances/vulnerabilityAssessments | Nein  |
 | servers | JA | 
 | servers/administrators | Nein  | 
 | servers/communicationLinks | Nein  | 
@@ -1185,7 +1195,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Konto | JA | 
+| account | JA | 
 | account/extension | JA | 
 | account/project | JA | 
 

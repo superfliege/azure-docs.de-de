@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a49ce4e997a21e0db707c851f5ea46817bcb642e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84a51f65ef46c390f84308ab17cf83859a16c3b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960174"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55428517"
 ---
 In der folgenden Tabelle sind die Kontingente und Grenzwerte aufgelistet, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -24,7 +24,7 @@ In der folgenden Tabelle sind die Kontingente und Grenzwerte aufgelistet, die f�
 | Anzahl von Partitionen pro Event Hub |Entität |- |32 |
 | Anzahl von Consumergruppen pro Event Hub |Entität |- |20 |
 | Anzahl von AMQP-Verbindungen pro Namespace |Namespace |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |5.000 |
-| Maximale Größe des Event Hubs-Ereignisses|Entität |- |256 KB |
+| Maximale Größe des Event Hubs-Ereignisses|Entität |- |1 MB |
 | Maximale Größe eines Event Hub-Namens |Entität |- |50 Zeichen |
 | Anzahl nicht epochenbezogener Empfänger pro Consumergruppe |Entität |- |5 |
 | Maximale Aufbewahrungsdauer von Ereignisdaten |Entität |- |1–7 Tage |

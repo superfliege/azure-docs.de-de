@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a15d055505ca0f28ad28b477e90e6fe859cc9ac7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 516d8e9116bbdcd421897b5a5c2d9755e7e636c8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094286"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903552"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -77,7 +77,7 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
 1. Wählen Sie in der Dropdownliste **Rolle** **Abrechnungsleser** aus.
 1. Geben Sie im Textfeld **Auswählen** den Namen oder die E-Mail-Adresse des Benutzers ein, den Sie hinzufügen möchten.
 1. Wählen Sie den Benutzer aus.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 1. Nach einigen Augenblicken wird dem Benutzer im Abonnementbereich die Rolle „Abrechnungsleser“ zugewiesen.
 1. Der Abrechnungsleser erhält eine E-Mail mit einem Link zum Anmelden.
 

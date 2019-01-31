@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7ad9f16e2b153adcdba076a07207d1ab16f9c09e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e45cf028740a05fa35bcf933f727053ab82bdcfa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266467"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195069"
 ---
 # <a name="new-offer-menu"></a>Menü „Neues Angebot“
 
@@ -27,14 +27,14 @@ Im Menü **Neues Angebot** können Partner Instanzen der im [Cloud-Partnerportal
 
 |    **Menüelement „Neues Angebot“**     |     **Entsprechende Dokumentation**                       |
 |    -----------------------     |     -----------------------------                       |
-| ![Menüelement „Azure-Anwendungen“](./media/new-offer-menu1.png) |  [Azure-Anwendungsangebot](./../../cloud-partner-portal-orig/cpp-azure-app-offer.md) |
+| ![Menüelement „Azure-Anwendungen“](./media/new-offer-menu1.png) |  [Azure-Anwendungsangebot](../azure-applications/cpp-azure-app-offer.md) |
 | ![Menüelement „Beratungsdienste“](./media/new-offer-menu2.png) | [Beratungsdienstangebot](./../../cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md) |
 | ![Menüelement „Container“](./media/new-offer-menu3.png) | [Containerangebot](./../containers/cpp-containers-offer.md) |
 | ![Menüelement „Dynamics 365 Business Central“](./media/new-offer-menu4.png) | [Dynamics 365 Business Central-Angebot](./../../cloud-partner-portal-orig/cpp-business-central-offer.md) |
 | ![Menüelement „Dynamics 365 for Customer Engagement“](./media/new-offer-menu5.png) | [Angebot „Dynamics 365 for Customer Engagement“](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
 | ![Menüelement „Dynamics 365 for Operations“](./media/new-offer-menu6.png) | [Angebot „Dynamics 365 for Operations“](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
 | ![Menüelement „IoT Edge-Module“](./media/new-offer-menu7.png) | [IoT Edge-Modulangebot](./../iot-edge-module/cpp-offer-process-parts.md) |
-| ![ Menüelement „SasS-Anwendungen“](./media/new-offer-menu8.png) | [SasS-Anwendungsangebot](./../../cloud-partner-portal-orig/cpp-saas-app-offer.md) |
+| ![ Menüelement „SasS-Anwendungen“](./media/new-offer-menu8.png) | [SasS-Anwendungsangebot](../saas-app/cpp-saas-offer.md) |
 | ![ Menüelement „Virtuelle Computer“](./media/new-offer-menu9.png) | [VM-Angebot](./../virtual-machine/cpp-virtual-machine-offer.md) |
 |  |  |
 

@@ -2,7 +2,7 @@
 title: 'Azure Batch: Taskstartereignis | Microsoft-Dokumentation'
 description: Referenz zum Batch-Taskstartereignis.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 0ad0f87df9db39088769579d538b919b42634c4b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: d50a0a7082e409084fd966370934a638ca9bb013
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311854"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474427"
 ---
 # <a name="task-start-event"></a>Taskstartereignis
 
@@ -48,7 +48,7 @@ ms.locfileid: "30311854"
 }
 ```
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |jobId|Zeichenfolge|Die ID des Auftrags, der den Task enthält.|
 |id|Zeichenfolge|Die ID des Tasks.|
@@ -61,25 +61,25 @@ ms.locfileid: "30311854"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |poolId|Zeichenfolge|Die ID des Pools, auf den der Task angewendet wurde.|
 |nodeId|Zeichenfolge|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |numberOfInstances|int|Die Anzahl der Computeknoten, die vom Task benötigt werden.|
 
 ###  <a name="constraints"></a> Einschränkungen
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|Gibt an, wie oft der Task maximal wiederholt werden kann. Der Batch-Dienst wiederholt einen Task, wenn sein Exitcode ungleich null ist.<br /><br /> Beachten Sie, dass dieser Wert die Anzahl der Wiederholungen ausdrücklich steuert. Der Batch-Dienst wiederholt den Task einmal und kann ihn anschließend bis zu diesem Grenzwert wiederholen. Wenn beispielsweise die maximale Anzahl von Wiederholungsversuchen 3 ist, versucht der Batch-Dienst einen Task bis zu viermal (ein erster Versuch und drei Wiederholungsversuche).<br /><br /> Wenn die maximale Anzahl von Wiederholungsversuchen 0 ist, wiederholt der Batch-Dienst Tasks nicht.<br /><br /> Wenn die maximale Anzahl von Wiederholungsversuchen -1 ist, wiederholt der Batch-Dienst Tasks unbegrenzt.<br /><br /> Der Standardwert ist 0 (keine Wiederholungsversuche).|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |retryCount|Int32|Die Häufigkeit, mit der der Task vom Batch-Dienst wiederholt wurde. Der Vorgang wird wiederholt, wenn der Exitcode ungleich null ist, und zwar bis zum angegebenen Wert von „MaxTaskRetryCount“.|

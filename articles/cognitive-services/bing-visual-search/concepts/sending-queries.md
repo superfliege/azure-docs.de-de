@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: aahi
-ms.openlocfilehash: 4f1f52c7954b4985d0da24f51eb199e2cbeac3a6
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c569c44d358049605aa8bbe1cbc96d0028f7aea1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063589"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189674"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
 
@@ -76,7 +76,7 @@ Anforderungen müssen als HTTP-POST-Anforderungen gesendet werden.
 
 Die folgenden Abfrageparameter sollten in der Anforderung angegeben werden. Fügen Sie auf jeden Fall zumindest den `mkt`-Abfrageparameter ein.
 
-| NAME                              | Wert                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Typ   | Erforderlich |
+| NAME                              | Wert                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Type   | Erforderlich |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|
 | <a name="cc" />cc                 | Ein zweistelliger Ländercode des Landes, aus dem die Ergebnisse stammen.<br /><br /> Wenn Sie diesen Parameter festlegen, müssen Sie auch den Header [Accept-Language](#acceptlanguage) angeben. Bing verwendet die erste unterstützte Sprache aus der Liste der Sprachen und kombiniert sie mit dem Ländercode, den Sie für den Markt angeben, aus dem Ergebnisse zurückgegeben werden sollen. Enthält die Liste der Sprachen keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die die Anforderung unterstützen. Alternativ dazu wird anstatt des angegebenen Marktes ein aggregierter oder Standardmarkt für die Ergebnisse verwendet.<br /><br /> Verwenden Sie diesen und den `Accept-Language`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Andernfalls sollten Sie die Abfrageparameter `mkt` und `setLang` verwenden.<br /><br /> Dieser Parameter und der Abfrageparameter [mkt](#mkt) schließen sich gegenseitig aus. Geben Sie daher nicht beide an. | Zeichenfolge | Nein        |
 | <a name="mkt" />mkt               | Der Markt, aus dem die Ergebnisse stammen. <br /><br /> **HINWEIS:** Es empfiehlt sich, nach Möglichkeit immer den Markt anzugeben. Die Angabe des Marktes ermöglicht Bing, die Anforderung weiterzuleiten und eine geeignete und optimale Antwort zurückzugeben.<br /><br /> Dieser Parameter und der Abfrageparameter [cc](#cc) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Zeichenfolge | JA      |

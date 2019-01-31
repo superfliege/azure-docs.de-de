@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b9ad1157469303f4065a3c27ccf6514aaa35155
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402199"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901189"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -180,7 +180,7 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Typ | JA | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
+| Type | JA | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
 | NAME | JA | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
 | BESCHREIBUNG | Nein  | Eine optionale Beschreibung der Warnung |
 | Schweregrad | JA | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
@@ -447,6 +447,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter]( solutions-sol
 ```
 
 Die folgende Parameterdatei stellt Beispielwerte für diese Lösung bereit:
+
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",

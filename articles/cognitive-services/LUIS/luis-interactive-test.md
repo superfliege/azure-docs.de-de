@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ed4bed77267790b10b44486f0e9c8242fe952cd8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601966"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207410"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testen Ihrer LUIS-App im LUIS-Portal
 Das <a name="train-your-app"></a>
@@ -26,6 +26,7 @@ Das <a name="train-your-app"></a>
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
+
 ## <a name="test-an-utterance"></a>Testen einer Äußerung
 
 1. Greifen Sie auf Ihre App zu, indem Sie ihren Namen auf der Seite **Meine Apps** auswählen. 
@@ -40,13 +41,8 @@ Das <a name="train-your-app"></a>
 
     ![Erkennen einer falschen Absicht in interaktiven Tests](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>Leeren des Testbereichs
-Um alle eingegebenen Testäußerungen und ihre Ergebnisse aus der Testkonsole zu entfernen, wählen Sie in der linken oberen Ecke des Bereichs **Test** die Option **Start Over** (Neu beginnen) aus. 
-
-## <a name="close-test-panel"></a>Schließen des Testbereichs
-Um den Bereich **Test** zu schließen, wählen Sie erneut die Schaltfläche **Test** aus.
-
 ## <a name="inspect-score"></a>Überprüfen der Bewertung
+
 Sie überprüfen die Details des Testergebnisses im Bereich **Überprüfen**. 
  
 1. Wählen Sie bei geöffnetem Einblendbereich **Test** die Option **Überprüfen** für eine Äußerung aus, die verglichen werden soll. 
@@ -72,9 +68,11 @@ Wenn die **Standpunktanalyse** auf der Seite **[Publish](luis-how-to-publish-app
 ![Abbildung des Testbereichs mit Standpunktanalyse](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Korrigieren der Absicht des übereinstimmenden Musters
+
 Wenn Sie [Muster](luis-concept-patterns.md) verwenden und die Äußerung mit einem Muster übereinstimmte, jedoch die falsche Absicht vorhergesagt wurde, wählen Sie den Link **Bearbeiten** für das Muster und dann die richtige Absicht aus.
 
 ## <a name="compare-with-published-version"></a>Vergleichen mit der veröffentlichten Version
+
 Sie können die aktive Version Ihrer App mit der veröffentlichten [Endpunktversion](luis-glossary.md#endpoint) testen. Wählen Sie im Bereich **Überprüfen** die Option **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Tests mit dem veröffentlichten Modell werden mit dem Kontingent Ihres Azure-Abonnements verrechnet. 
 
 ![Compare with published (Mit veröffentlichtem Element vergleichen)](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
@@ -88,12 +86,14 @@ Sie können den für den Vergleich zurückgegebenen JSON-Code des Endpunkts anze
 ## <a name="additional-settings-in-test-panel"></a>Zusätzliche Einstellungen im Testbereich
 
 ### <a name="luis-endpoint"></a>LUIS-Endpunkt
+
 Wenn Sie mehrere LUIS-Endpunkte haben, können Sie den für Tests verwendeten Endpunkt über den Link **Zusätzliche Einstellungen** im Bereich „Veröffentlicht“ des Tests ändern. Wenn Sie nicht sicher sind, welchen Endpunkt Sie verwenden sollten, wählen Sie den Standard **Starter_Key** aus. 
 
 ![Testbereich mit hervorgehobenem Link „Zusätzliche Einstellungen“](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Anzeigen von Korrekturen der Bing-Rechtschreibprüfung im Testbereich
+
 Anforderungen zum Anzeigen der Rechtschreibkorrekturen: 
 
 * Veröffentlichte App
@@ -124,6 +124,7 @@ Verwenden Sie das folgende Verfahren, um den Dienst [Bing-Rechtschreibprüfung v
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="batch-testing"></a>Testen in Batches
 Weitere Informationen finden Sie in den [Konzepten](luis-concept-batch-test.md) zu Batchtests und im Artikel zum [Testen eines Batches von Äußerungen](luis-how-to-batch-test.md).
 

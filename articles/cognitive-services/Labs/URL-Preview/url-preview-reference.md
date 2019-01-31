@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 12e91a07d09929ba59873d0d56f4e19b20077f53
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999748"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222914"
 ---
 # <a name="project-url-preview-v7-reference"></a>Referenz zu Project URL Preview v7
 
@@ -31,10 +31,10 @@ Sie dürfen nur die Daten aus URL Preview verwenden, um Vorschaucodeausschnitte 
 Um URL Preview-Ergebnisse anzufordern, senden Sie eine Anforderung an den folgenden Endpunkt. Verwenden Sie die Header und die URL-Parameter, um Spezifikationen genauer zu definieren.
 
 Endpunkt GET:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
-````
+```
 
 Die Anforderung muss das HTTPS-Protokoll verwenden und den folgenden Abfrageparameter enthalten:
 
@@ -73,7 +73,7 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 ## <a name="query-parameters"></a>Abfrageparameter
 Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderlichen Parameter Finden Sie in der Spalte „Erforderlich“. Sie müssen die Abfrageparameter URL-codieren. Die Abfrage muss eine absolute URL mit einem HTTP- oder HTTPS-Schema sein. Relative URLs oder anderen Schemas wie ftp:// werden nicht unterstützt.
 
-|NAME|Wert|Typ|Erforderlich|
+|NAME|Wert|Type|Erforderlich|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter [Marktcodes](#market-codes).<br /><br /> **HINWEIS:** Die URL-Vorschau-API unterstützt zurzeit nur die geografische Region „USA“ und die Sprache „Englisch“.<br /><br />|Zeichenfolge|JA|
 |<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|Zeichenfolge|JA|
@@ -90,7 +90,7 @@ Das Antwortschema ist entweder eine [WebPage] oder ErrorResponse (wie in der Web
 ### <a name="error"></a>Error
 Definiert den aufgetretenen Fehler.
 
-|Element|BESCHREIBUNG|Typ|
+|Element|BESCHREIBUNG|Type|
 |-------------|-----------------|----------|
 |<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|
 |<a name="error-message" />message|Eine Beschreibung des Fehlers.|Zeichenfolge|
@@ -102,7 +102,7 @@ Definiert den aufgetretenen Fehler.
 ### <a name="errorresponse"></a>ErrorResponse
 Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fehlschlägt.
 
-|NAME|Wert|Typ|
+|NAME|Wert|Type|
 |----------|-----------|----------|
 |_type|Der Typhinweis.|Zeichenfolge|
 |<a name="errors" />errors|Eine Liste von Fehlern, die die Gründe beschreiben, warum die Anforderung fehlgeschlagen ist.|[Error](#error)[]|
@@ -110,7 +110,7 @@ Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fe
 ### <a name="webpage"></a>WebPage
 Definiert Informationen zu einer Webseite in der Vorschau.
 
-|NAME|Wert|Typ|
+|NAME|Wert|Type|
 |----------|-----------|----------|
 |name|Der Seitentitel, nicht notwendigerweise der HTML-Titel.|Zeichenfolge|
 |URL|Die URL, die tatsächlich durchforstet wurde (die Anforderung wurde möglicherweise weitergeleitet).|Zeichenfolge|
@@ -119,7 +119,7 @@ Definiert Informationen zu einer Webseite in der Vorschau.
 |primaryImageOfPage/contentUrl|Die URL zu einem repräsentativen Bild, das in die Vorschau eingeschlossen werden soll.|Zeichenfolge|
 
 ### <a name="identifiable"></a>Identifiable
-|NAME|Wert|Typ|
+|NAME|Wert|Type|
 |-------------|-----------------|----------|
 |id|Ein Ressourcenbezeichner.|Zeichenfolge|
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6a6782c5e1cd7b5f42b619cd52470b640813a905
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146483"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913613"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Nachweis des Besitzes für X.509-Zertifizierungsstellenzertifikate mit Ihrem Device Provisioning-Dienst
 
@@ -54,7 +54,7 @@ Nun müssen Sie den *Prüfcode* mit dem privaten Schlüssel signieren, der Ihrem
 Microsoft bietet Tools und Beispiele, die Ihnen dabei helfen können, ein signiertes Verifizierungszertifikat zu erstellen: 
 
 - Das **Azure IoT Hub C SDK** bietet PowerShell- (Windows) und Bash-Skripts (Linux), mit denen Sie Zertifizierungsstellen- und untergeordnete Zertifikate für die Entwicklung und zum Nachweis des Besitzes mit einem Prüfcode erstellen können. Sie können die entsprechenden [Dateien](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) für Ihr System in einen Arbeitsordner herunterladen und die Anweisungen in der [Infodatei zum Verwalten von ZS-Zertifikaten](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) befolgen, um einen Besitznachweis für ein Zertifizierungsstellenzertifikat auszuführen. 
-- Das **Azure IoT Hub C# SDK** enthält ein [Beispiel zum Überprüfen des Gruppenzertifikats](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), mit dem Sie einen Besitznachweis ausführen können.
+- Das **Azure IoT Hub C# SDK** enthält ein [Beispiel zum Überprüfen des Gruppenzertifikats](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), mit dem Sie einen Besitznachweis ausführen können.
  
 > [!IMPORTANT]
 > Zusätzlich zum Ausführen des Besitznachweises ermöglichen die zuvor genannten PowerShell- und Bash-Skripts auch, Stammzertifikate, Zwischenzertifikate und untergeordnete Zertifikate zu erstellen, um Geräte zu authentifizieren und bereitzustellen. Diese Zertifikate sollten nur für die Entwicklung verwendet werden. Sie sollten nie in einer Produktionsumgebung verwendet werden. 
