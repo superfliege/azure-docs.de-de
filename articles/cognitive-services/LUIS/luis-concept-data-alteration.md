@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: a075e266a9b7b1537876237438743462ab85f3da
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9e0d5970ff07c5fd2ef35033a9ccb52feccf3ecb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260941"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219344"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Ändern von Äußerungsdaten vor oder während der Vorhersage
 LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine Korrektur der Rechtschreibung und das Beheben von Zeitzonenproblemen für Prebuild-datetimeV2. 

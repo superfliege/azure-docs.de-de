@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198524"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103427"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)
 
@@ -94,8 +94,6 @@ Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der 
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Gibt die Liste mit den Verschlüsselungen zurück, die vom Client unterstützt werden.          |
 | ciphers_used               | Gibt die Verschlüsselungszeichenfolge zurück, die für eine eingerichtete SLL-Verbindung verwendet wird. |
-| client_latitude            | Bestimmt das Land, die Region und die Stadt auf Grundlage der IP-Adresse des Clients. |
-| client_longitude           | Bestimmt das Land, die Region und die Stadt auf Grundlage der IP-Adresse des Clients. |
 | client_port                | Port des Clients                                                  |
 | client_tcp_rtt             | Informationen über die TCP-Verbindung des Clients. Verfügbar auf Systemen, die die Socketoption „TCP_INFO“ unterstützen. |
 | client_user                | Wenn HTTP-Authentifizierung verwendet wird: der Benutzername, der bei der Authentifizierung angegeben wurde. |

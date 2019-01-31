@@ -7,7 +7,7 @@ author: barbkess
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8a21f1ac0839a37455fe06537242edc6e43731a4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8d19c2815eb6d7c6ad8cac002716913c329903de
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477299"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177796"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer Kataloganwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -66,7 +66,7 @@ Nachdem Sie den ID-Wert in Azure AD aktualisiert haben und er mit dem von der An
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Die Antwortadresse stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein.
 
-*Fehler AADSTS50011: Die Antwortadresse „https://contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein.*
+*Fehler AADSTS50011: Die Antwortadresse „https://contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein*.
 
 **Mögliche Ursache**
 
@@ -145,7 +145,7 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mit den Ve
 
 ## <a name="not-a-valid-saml-request"></a>Keine gültige SAML-Anforderung
 
-*Fehler AADSTS75005: Die Anforderung ist keine gültige Nachricht im SAML2-Protokoll.*
+*Fehler AADSTS75005: Die Anforderung ist keine gültige Nachricht im SAML2-Protokoll*.
 
 **Mögliche Ursache**
 

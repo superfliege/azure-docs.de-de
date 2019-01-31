@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 34806803c50308a288007bf3bad129075ca8bc6d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: fea950e2c13d9b5ce0c3619990961e611edd6626
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796654"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207376"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Verwenden von negierbaren Entitäten in einem Conversation Learner-Modell
 
@@ -75,7 +75,7 @@ Jetzt sind zwei Aktionen vorhanden.
 ### <a name="train-the-model"></a>Trainieren des Modells
 
 1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge) und anschließend auf die Schaltfläche „New Train Dialog“ (Neuer Trainingsdialog).
-2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „hello“ ein.
+2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „hello“ (Hallo) ein.
 3. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
 4. Wählen Sie die Antwort „I don't know your name.“ (Ich kenne Ihren Namen nicht.) aus.
     - Das Perzentil beträgt 100 Prozent (als einzige gültige Aktion auf der Grundlage der Einschränkungen).

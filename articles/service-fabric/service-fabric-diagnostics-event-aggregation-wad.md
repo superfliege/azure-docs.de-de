@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002398"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187435"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ Nachdem Sie die Datei „template.json“ wie beschrieben geändert haben, verö
 
 ### <a name="update-storage-quota"></a>Aktualisieren des Speicherkontingents
 
-Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Kontingent erreicht ist, empfiehlt es sich unter Umständen, die Kontingentgröße zu verringern. Der Wert ist standardmäßig auf 50 GB festgelegt und kann in der Vorlage unter dem Feld `overallQuotainMB` (unter `DiagnosticMonitorConfiguration`) konfiguriert werden.
+Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Kontingent erreicht ist, empfiehlt es sich unter Umständen, die Kontingentgröße zu verringern. Der Wert ist standardmäßig auf 50 GB festgelegt und kann in der Vorlage unter dem Feld `overallQuotaInMB` (unter `DiagnosticMonitorConfiguration`) konfiguriert werden.
 
 ```json
 "overallQuotaInMB": "50000",

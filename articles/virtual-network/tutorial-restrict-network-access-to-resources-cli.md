@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: ce4ff3fe2917d4dc34718fccc740223df0c52e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970939"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150547"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe der Azure CLI
 
@@ -186,7 +186,7 @@ echo $saConnectionString
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Erstellen einer Dateifreigabe im Speicherkonto
 
-Erstellen Sie mit [az storage share create](/cli/azure/storage/share#az_storage_share_create) eine Dateifreigabe im Speicherkonto. In einem späteren Schritt wird diese Dateifreigabe bereitgestellt, um den Netzwerkzugriff darauf zu bestätigen.
+Erstellen Sie mit [az storage share create](/cli/azure/storage/share) eine Dateifreigabe im Speicherkonto. In einem späteren Schritt wird diese Dateifreigabe bereitgestellt, um den Netzwerkzugriff darauf zu bestätigen.
 
 ```azurecli-interactive
 az storage share create \

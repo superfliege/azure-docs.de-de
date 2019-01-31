@@ -9,16 +9,16 @@ ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: a5cb5a879687bdbea043d582526f4dd357a2a620
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d53221a8bed6995231385cae21a8994fce132a30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809920"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175909"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die zweistufige Überprüfung
 Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.

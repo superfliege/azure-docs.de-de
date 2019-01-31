@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 96cdbca1b0a5a75c24b9d0e75eaf1fc861bf764a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: a0dff528f57d19dbc28c4851dc1b596216c77713
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843122"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190121"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Erstellen einer Windows-Desktop-App
 Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Desktop-Apps in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel erfahren Sie, wie eine .NET Windows Presentation Foundation-App (WPF) für eine Aufgabenliste erstellt wird, die Benutzerregistrierung, -anmeldung und die Verwaltung von Profilen umfasst. Die App verfügt über Unterstützung für die Registrierung und Anmeldung mit einem Benutzernamen oder einer E-Mail-Adresse. Sie bietet auch Unterstützung für die Registrierung und Anmeldung über Konten für soziale Netzwerke wie Facebook und Google.

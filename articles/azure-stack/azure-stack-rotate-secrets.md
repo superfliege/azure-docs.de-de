@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: e4131bc8f038957e52b914937b2d45e670be8f5f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157274"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251349"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Rotieren von Geheimnissen in Azure Stack
 
@@ -297,7 +298,7 @@ Das Cmdlet **Start-SecretRotation** rotiert die Infrastrukturgeheimnisse eines A
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Typ | Erforderlich | Position | Standard | BESCHREIBUNG |
+| Parameter | Type | Erforderlich | Position | Standard | BESCHREIBUNG |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Zeichenfolge  | False  | benannt  | Keine  | Der Dateifreigabepfad des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer Geheimnisse erforderlich. Das Endverzeichnis muss **\Certificates** sein. |
 | CertificatePassword | SecureString | False  | benannt  | Keine  | Das Kennwort für alle Zertifikate in „-PfXFilesPath“. Erforderlich, wenn „PfxFilesPath“ beim Rotieren externer Geheimnisse angegeben wird. |

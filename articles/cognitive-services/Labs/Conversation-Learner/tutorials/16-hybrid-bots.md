@@ -6,16 +6,16 @@ services: cognitive-services
 author: mattm
 manager: larsliden
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0e2a9918108012e0d0ef1defbff044d7ab9bd83d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796616"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219361"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>So verwenden Sie ein Unterhaltungslernmodul mit anderen Botentwicklungstechnologien.
 
@@ -25,7 +25,7 @@ In diesem Tutorial erfahren Sie, wie Sie Conversation Learner mit anderen Botent
 
 [![Hybrid-Bots: Tutorial (Vorschauversion)](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications_Preview)](https://aka.ms/cl_Tutorial_v3_Hybrid_Applications)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial ist die Verwendung des Botemulators zum Erstellen von Protokolldialogen erforderlich, nicht die Protokolldialog-Webbenutzeroberfläche. Weitere Informationen zum Einrichten von Bot Framework Emulator finden Sie [hier](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
 
 Für dieses Tutorial muss der Hybrid-Tutorialbot ausgeführt werden.

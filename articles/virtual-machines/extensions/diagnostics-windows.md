@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 2a4f55ea15c933094befb8855185c4b7e353dee3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 26e902cb31a77ffb1516f084bb71b5a99a89fba9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038289"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188642"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Aktivieren der Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell
 
-Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Mithilfe der Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle oder Leistungsindikatoren von einer virtuellen Azure-Maschine (VM) unter Windows sammeln. In diesem Artikel wird beschrieben, wie Sie die Diagnoseerweiterung für eine VM mithilfe von Windows PowerShell aktivieren. Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Mithilfe der Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle oder Leistungsindikatoren von einer virtuellen Azure-Maschine (VM) unter Windows sammeln. In diesem Artikel wird beschrieben, wie Sie die Diagnoseerweiterung für eine VM mithilfe von Windows PowerShell aktivieren. Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Aktivieren der Diagnoseerweiterung bei Verwendung des Ressourcen-Manager-Bereitstellungsmodells
 Die Diagnoseerweiterung kann im Zuge der Erstellung einer Windows-VM mit dem Azure-Ressourcen-Manager-Bereitstellungsmodell durch Hinzufügen der Erweiterungskonfiguration zur Ressourcen-Manager-Vorlage aktiviert werden. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen](diagnostics-template.md).
@@ -84,13 +84,13 @@ Die Konfiguration muss mit Folgendem aktualisiert werden:
   * Die Ressourcen-ID kann nach folgendem Muster erstellt werden: „/subscriptions/{*Abonnement-ID für das Abonnement mit der VM*}/resourceGroups/{*Ressourcengruppenname für die VM*}/providers/Microsoft.Compute/virtualMachines/{*VM-Name*}“.
   * Wenn die Abonnement-ID für das Abonnement mit der VM also beispielsweise **11111111-1111-1111-1111-111111111111**, der Ressourcengruppenname **MyResourceGroup** und der VM-Name **MyWindowsVM** lautet, hat *resourceID* folgenden Wert:
     
-      ```
+      ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
   * Weitere Informationen zur Generierung von Metriken auf der Grundlage der Konfiguration von Leistungsindikatoren und Metriken finden Sie in der [Metriktabelle für Azure-Diagnose im Speicher](diagnostics-template.md#wadmetrics-tables-in-storage).
 * Das Element **StorageAccount** muss mit dem Namen des Diagnosespeicherkontos aktualisiert werden.
   
-    ```
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
         <WadCfg>

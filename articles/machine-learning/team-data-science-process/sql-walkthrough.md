@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2e71cf90c6e894946a2f3a1c8bfce2179f214a29
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141406"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453650"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.

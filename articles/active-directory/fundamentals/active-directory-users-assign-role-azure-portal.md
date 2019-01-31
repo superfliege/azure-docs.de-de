@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: ea5fd592dfbebd59df0cbd72c49093ffe383feeb
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 067362796ec64e7060a055144729e2b0f7e53c99
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448753"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097874"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory
 Wenn für einen Benutzer in Ihrer Organisation die Berechtigung zum Verwalten von Azure AD-Ressourcen (Azure Active Directory) erforderlich ist, müssen Sie dem Benutzer eine geeignete Rolle in Azure AD zuweisen – basierend auf den Aktionen, für deren Durchführung der Benutzer die Berechtigung benötigt.

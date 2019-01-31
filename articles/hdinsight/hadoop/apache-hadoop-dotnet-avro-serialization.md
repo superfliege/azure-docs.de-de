@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d729d840bb055452eb8bb87cc978f1e38dcea48e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259986"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227946"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Serialisieren von Daten in Apache Hadoop mit der Microsoft Avro-Bibliothek
 
@@ -1351,7 +1351,7 @@ Das sechste Beispiel veranschaulicht verschiedene Programmierungstechniken im Zu
 Das Beispiel führt die folgenden Aufgaben aus:
 
 * Herstellen einer Verbindung mit einem vorhandenen HDInsight-Dienstcluster.
-* Serialisieren mehrerer CSV-Dateien und Hochladen des Ergebnisses in Azure Blob Storage. (Die CSV-Dateien werden zusammen mit dem Beispiel verteilt und stellen AMEX Stock-Verlaufsdaten dar, die von [Infochimps](https://www.infochimps.com/) für den Zeitraum 1970-2010 verteilt wurden. Das Beispiel liest CSV-Dateidaten, konvertiert die Datensätze in Instanzen der **Stock** -Klasse und serialisiert sie anschließend mithilfe von Reflexion. Die Definition des Typs "Stock" wird anhand eines JSON-Schemas mithilfe des Hilfsprogramms für die Codegenerierung in der Microsoft Avro-Bibliothek erstellt.
+* Serialisieren mehrerer CSV-Dateien und Hochladen des Ergebnisses in Azure Blob Storage. (Die CSV-Dateien werden zusammen mit dem Beispiel verteilt und stellen AMEX Stock-Verlaufsdaten dar, die von [Infochimps](https://www.infochimps.org/) für den Zeitraum 1970-2010 verteilt wurden. Das Beispiel liest CSV-Dateidaten, konvertiert die Datensätze in Instanzen der **Stock** -Klasse und serialisiert sie anschließend mithilfe von Reflexion. Die Definition des Typs "Stock" wird anhand eines JSON-Schemas mithilfe des Hilfsprogramms für die Codegenerierung in der Microsoft Avro-Bibliothek erstellt.
 * Erstellen einer neuen externen Tabelle mit dem Namen **Stocks** in Hive, die anschließend mit den im vorherigen Schritt hochgeladenen Daten verknüpft wird.
 * Ausführen einer Abfrage mithilfe von Hive der Tabelle **Stocks** .
 

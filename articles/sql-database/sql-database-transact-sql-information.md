@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4d9618bbceacf4167aac843e3d5fd818f225d297
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997682"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467814"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank
 
@@ -39,7 +39,7 @@ Die zentralen DDL-Anweisungen sind verfügbar, aber einige DDL-Anweisungen haben
 
 - CREATE- und ALTER DATABASE-Anweisungen haben mehr als drei Dutzend Optionen. Die Anweisungen enthalten Ablage von Dateien, FILESTREAM und Service Broker-Optionen, die nur für SQL Server gelten. Dies ist möglicherweise unwichtig, wenn Sie Datenbanken erstellen, bevor Sie migrieren, aber wenn Sie T-SQL-Code migrieren, der Datenbanken erstellt, sollten Sie [CREATE DATABASE (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn268335.aspx) mit der SQL Server-Syntax in [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) vergleichen, um sicherzustellen, dass alle Optionen, die Sie verwenden, unterstützt werden. CREATE DATABASE für Azure SQL-Datenbank verfügt auch über Optionen für Dienstziel und elastische Skalierung, die nur für SQL-Datenbank gelten.
 - Die CREATE- und ALTER TABLE-Anweisungen verfügen über FileTable-Optionen, die nicht auf der SQL-Datenbank verwendet werden können, weil FILESTREAM nicht unterstützt wird.
-- CREATE- und ALTER LOGIN-Anweisungen werden unterstützt, aber die SQL-Datenbank bietet nicht alle Optionen. Um die Portabilität der Datenbank zu verbessern, unterstützt die SQL-Datenbank nach Möglichkeit die Verwendung von eigenständigen Datenbankbenutzern anstelle von Anmeldungen. Weitere Informationen finden Sie unter [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) und [Steuern und Gewähren von Datenbankzugriff](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+- CREATE- und ALTER LOGIN-Anweisungen werden unterstützt, aber die SQL-Datenbank bietet nicht alle Optionen. Um die Portabilität der Datenbank zu verbessern, unterstützt die SQL-Datenbank nach Möglichkeit die Verwendung von eigenständigen Datenbankbenutzern anstelle von Anmeldungen. Weitere Informationen finden Sie unter [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) und [Steuern und Gewähren von Datenbankzugriff](sql-database-manage-logins.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Transact-SQL-Syntax, die nicht in Azure SQL-Datenbank unterstützt wird
 

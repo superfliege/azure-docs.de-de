@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ad14e443f7176a0acb2da3529348fba452f76dee
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 44d33e687d64c7e226a20edf3fdcbbf7bcf859b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477956"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169262"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Ermitteln der Anforderungen an die Verzeichnissynchronisierung
 Bei der Synchronisierung geht es um das Bereitstellen einer Identität für Benutzer in der Cloud, und zwar basierend auf ihrer lokalen Identität. Benutzer müssen unabhängig davon, ob sie das synchronisierte Konto für die Authentifizierung oder die Verbundauthentifizierung verwenden, über eine Identität in der Cloud verfügen.  Diese Identität muss regelmäßig verwaltet und aktualisiert werden.  Die Updates können viele Formen annehmen – von der Änderung des Titels bis zur Änderung des Kennworts.  

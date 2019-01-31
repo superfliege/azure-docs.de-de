@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: fd3d1c464c6f2d4cbecd715db0689581ca141769
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654069"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468834"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -66,28 +66,3 @@ Stellen Sie sicher, dass die Standard-NSG (Netzwerksicherheitsgruppe) nicht geä
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>Ich möchte ein Upgrade oder eine Skalierung ausführen und erhalte die folgende Fehlermeldung: „Das Ändern der Eigenschaft ‚imageReference‘ ist nicht zulässig.“  Wie kann ich dieses Problem beheben?
 
 Möglicherweise erhalten Sie diese Fehlermeldung, da Sie die Tags in den Agent-Knoten innerhalb des AKS-Clusters geändert haben. Das Ändern und Löschen von Tags und anderen Eigenschaften von Ressourcen in der Ressourcengruppe MC_* kann zu unerwarteten Ergebnissen führen. Durch das Ändern der Ressourcen unter der Gruppe „MC_*“ im AKS-Cluster wird das Servicelevelziel (SLO) unterbrochen.
-
-## <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Wie verlängere ich den geheimen Dienstprinzipalschlüssel in meinem AKS-Cluster?
-
-Standardmäßig werden AKS-Cluster mit einem Dienstprinzipal mit einer Ablaufzeit von einem Jahr erstellt. Wenn Sie sich dem Ablaufdatum nähern, können Sie die Anmeldeinformationen zurücksetzen, um den Dienstprinzipal um einen zusätzlichen Zeitraum zu verlängern.
-
-Im folgenden Beispiel werden diese Schritte ausgeführt:
-
-1. Abrufen der Dienstprinzipal-ID des Clusters mit dem Befehl [az aks show](/cli/azure/aks#az-aks-show).
-1. Auflisten des geheimen Clientschlüssels des Dienstprinzipals mit dem Befehl [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list)
-1. Verlängern des Dienstprinzipals um ein weiteres Jahr mit dem Befehl [az ad sp credential-reset](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset). Der geheime Clientschlüssel des Dienstprinzipals muss gleich bleiben, damit der AKS-Cluster ordnungsgemäß ausgeführt werden kann.
-
-```azurecli
-# Get the service principal ID of your AKS cluster.
-sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
-    --query servicePrincipalProfile.clientId -o tsv)
-
-# Get the existing service principal client secret.
-key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
-
-# Reset the credentials for your AKS service principal and extend for one year.
-az ad sp credential reset \
-    --name $sp_id \
-    --password $key_secret \
-    --years 1
-```

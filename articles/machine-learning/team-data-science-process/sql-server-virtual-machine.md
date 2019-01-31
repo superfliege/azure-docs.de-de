@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6b2890e90fd0a4d66ff8f62c6645584509eb0b29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 7b0ae144cce1213b5476ba1cccc94d994ebeda60
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464125"
 ---
 # <a name="heading"></a>Verarbeiten von Daten auf einer SQL Server-VM in Azure
 In diesem Dokument werden das Durchsuchen von Daten und das Generieren von Funktionen aus Daten auf einer SQL Server-VM in Azure beschrieben. Dies kann über eine Datenanalyse mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden.

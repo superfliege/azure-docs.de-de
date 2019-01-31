@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 44950a467e99fb7968d838345d80c8e28aee62b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467467"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885846"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -31,7 +31,7 @@ Diese Protokolle unterscheiden sich vom [Aktivitätsprotokoll](activity-logs-ove
 
 Diese Protokolle unterscheiden sich auch von Diagnoseprotokollen auf Gastbetriebssystemebene. Diagnoseprotokolle auf Gastbetriebssystemebene werden von einem Agent erfasst, der auf einem virtuellen Computer oder einem anderen Ressourcentyp ausgeführt wird. Für Diagnoseprotokolle auf Ressourcenebene ist kein Agent erforderlich, und ressourcenspezifische Daten werden von der Azure-Plattform selbst erfasst. Für Diagnoseprotokolle auf Gastbetriebssystemebene werden Daten dagegen aus dem Betriebssystem und den Anwendungen erfasst, die auf einem virtuellen Computer ausgeführt werden.
 
-Nicht alle Dienste unterstützen die hier beschriebenen Diagnoseprotokolle. [Dieser Artikel bietet eine Übersicht über Dienste, die Diagnoseprotokolle unterstützen.](./../../azure-monitor/platform/tutorial-dashboards.md)
+Nicht alle Dienste unterstützen die hier beschriebenen Diagnoseprotokolle. [Dieser Artikel bietet eine Übersicht über Dienste, die Diagnoseprotokolle unterstützen.](./../../azure-monitor/platform/diagnostic-logs-schema.md)
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Verwenden von Diagnoseprotokollen
 Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle:
@@ -229,7 +229,7 @@ Wenn Sie eine Diagnoseeinstellung hinzufügen, wird das Blatt „Diagnoseeinstel
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Unterstützte Dienste, Kategorien und Schemas für Diagnoseprotokolle
 
-[In diesem Artikel](../../azure-monitor/platform/tutorial-dashboards.md) finden Sie eine vollständige Liste der unterstützten Dienste, Protokollkategorien und Schemas, die von diesen Diensten verwendet werden.
+[In diesem Artikel](../../azure-monitor/platform/diagnostic-logs-schema.md) finden Sie eine vollständige Liste der unterstützten Dienste, Protokollkategorien und Schemas, die von diesen Diensten verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

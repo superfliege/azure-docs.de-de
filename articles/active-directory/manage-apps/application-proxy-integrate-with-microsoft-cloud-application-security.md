@@ -4,18 +4,18 @@ description: Konfigurieren Sie eine lokale Anwendung in Azure Active Directory f
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e5e83d928893c2937df8be55d72bb22869891492
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fbe3ce83cebe556f4248b1d62bb87c000823a31d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472482"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182063"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory
 Konfigurieren Sie eine lokale Anwendung in Azure Active Directory (Azure AD) für die Verwendung von Microsoft Cloud App Security (MCAS) für die Echtzeitüberwachung. MCAS nutzt die App-Steuerung für bedingten Zugriff zum Überwachen und Steuern von Sitzungen in Echtzeit mithilfe von Richtlinien für bedingten Zugriff. Sie können diese Richtlinien auf lokale Anwendungen anwenden, die den Anwendungsproxy in Azure Active Directory (Azure AD) verwenden.

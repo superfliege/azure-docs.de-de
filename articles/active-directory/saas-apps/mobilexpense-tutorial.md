@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: d51ced3f264a486288c951def7c23a0d95609ac0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6cc342cce40bcadf1ed899fd2ac3c40ab672cd9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850676"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Tutorial: Azure Active Directory-Integration mit Mobile Xpense
 
@@ -127,14 +127,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Downloadlink für das Zertifikat](./media/mobilexpense-tutorial/tutorial_mobilexpense_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Speichern**.
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/mobilexpense-tutorial/tutorial_general_400.png)
 
 1. Zum Konfigurieren des einmaligen Anmeldens bei **MobileXpense** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [MobileXpense-Supportteam](https://www.mobilexpense.net/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Azure AD: eingebettete Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -166,7 +166,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-mobile-xpense-test-user"></a>Erstellen eines Testbenutzers in Mobile Xpense
 

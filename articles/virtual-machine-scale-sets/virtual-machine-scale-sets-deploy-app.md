@@ -3,7 +3,7 @@ title: Bereitstellen einer Anwendung in einer Azure-VM-Skalierungsgruppe | Micro
 description: Es wird beschrieben, wie Sie Anwendungen auf Instanzen von virtuellen Linux- und Windows-Computern in einer Skalierungsgruppe bereitstellen.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
-ms.openlocfilehash: 22e035be27f16e7b73e545d75eb9cd108a919114
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 2448d941db7f27a87fbb5e2267847165f84ede3d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471202"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881697"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.

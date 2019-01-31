@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9149cef7ba7fa2d0a3d853c3b8e26d364f22d954
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6dba36eadde9bc9bb1e6ca778a3bce07b561e54
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999984"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207291"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
@@ -86,7 +86,7 @@ Entitäten können mit maschinellem Lernen extrahiert werden. So kann LUIS weite
 
 Nachdem die Entität extrahiert wurde, können die Entitätsdaten als einzelne Informationseinheit dargestellt oder mit anderen Entitäten kombiniert werden, damit sie eine Informationseinheit bilden, die von der Clientanwendung verwendet werden kann.
 
-|Durch maschinelles Lernen erworben|Kennzeichnung möglich|Tutorial|Beispiel-<br>antwort|Entitätstyp|Zweck|
+|Durch maschinelles Lernen erworben|Kennzeichnung möglich|Tutorial|Beispiel<br>response|Entitätstyp|Zweck|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Zusammengesetzt**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
 |✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchisch**](#hierarchical-entity)|Gruppierung von einfachen Entitäten.|
@@ -102,7 +102,7 @@ Pattern.any-Entitäten müssen in [Pattern](luis-how-to-model-intent-pattern.md)
 
 Für gemischte Entitäten wird eine Kombination aus Methoden für die Entitätserkennung verwendet.
 
-## <a name="composite-entity"></a>Entität vom Typ „Composite“ (Zusammengesetzt)
+## <a name="composite-entity"></a>Entität vom Typ „Composite“
 
 Eine zusammengesetzte Entität besteht aus anderen Entitäten, z.B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck, Liste oder Hierarchisch. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
 
@@ -114,12 +114,12 @@ Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt:
 * Müssen gruppiert und von der Clientanwendung als eine Informationseinheit verarbeitet werden.
 * Verfügen über viele verschiedene Benutzeräußerungen, für die maschinelles Lernen erforderlich ist.
 
-![Entität vom Typ „Composite“ (Zusammengesetzt)](./media/luis-concept-entities/composite-entity.png)
+![Entität vom Typ „Composite“](./media/luis-concept-entities/composite-entity.png)
 
 [Tutorial](luis-tutorial-composite-entity.md)<br>
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)<br>
 
-## <a name="hierarchical-entity"></a>Entität vom Typ „Hierarchical“ (Hierarchisch)
+## <a name="hierarchical-entity"></a>Entität vom Typ „Hierarchical“
 
 Eine hierarchische Entität ist eine Kategorie von kontextbezogen erlernten einfachen Entitäten, die als untergeordnete Elemente bezeichnet werden.
 
@@ -136,7 +136,7 @@ Sie sollte in folgenden Fällen nicht verwendet werden:
 * Sie benötigen eine Entität, die unabhängig vom Kontext Übereinstimmungen für untergeordnete Elemente enthält. Verwenden Sie stattdessen eine [Entität vom Typ „Liste“](#list-entity). 
 * Sie benötigen eine Entität für die Beziehung „Übergeordnetes/Untergeordnetes Element“ mit anderen Entitätstypen. Verwenden Sie die [Entität vom Typ „Zusammengesetzt“](#composite-entity).
 
-![Entität vom Typ „Hierarchical“ (Hierarchisch)](./media/luis-concept-entities/hierarchical-entity.png)
+![Entität vom Typ „Hierarchical“](./media/luis-concept-entities/hierarchical-entity.png)
 
 [Tutorial](luis-quickstart-intent-and-hier-entity.md)<br>
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
@@ -145,7 +145,7 @@ Sie sollte in folgenden Fällen nicht verwendet werden:
 
 Mit den [Rollen](luis-concept-roles.md#roles-versus-hierarchical-entities) eines Musters wird das gleiche Problem wie mit hierarchischen Entitäten gelöst, aber der Vorgang gilt für alle Entitätstypen. Rollen sind derzeit nur in Mustern verfügbar. In Beispieläußerungen von Absichten sind Rollen nicht verfügbar.  
 
-## <a name="list-entity"></a>Entität vom Typ „List“ (Liste)
+## <a name="list-entity"></a>Entität vom Typ „List“
 
 Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
 
@@ -155,7 +155,7 @@ Diese Entität ist gut geeignet, wenn für die Textdaten Folgendes gilt:
 * Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
 * Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Wortstammerkennung, Pluralformen und andere Varianten lassen sich mit einer Listenentität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
 
-![Entität vom Typ „List“ (Liste)](./media/luis-concept-entities/list-entity.png)
+![Entität vom Typ „List“](./media/luis-concept-entities/list-entity.png)
 
 [Tutorial](luis-quickstart-intent-and-list-entity.md)<br>
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#list-entity-data)
@@ -213,7 +213,7 @@ Diese Entität ist gut geeignet, wenn Folgendes gilt:
 [Tutorial](luis-quickstart-intents-regex-entity.md)<br>
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
 
-## <a name="simple-entity"></a>Entität vom Typ „Simple“ (Einfach) 
+## <a name="simple-entity"></a>Entität vom Typ „Simple“ 
 
 Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken. 
 
@@ -221,7 +221,7 @@ Diese Entität ist gut geeignet, wenn Folgendes gilt:
 
 * Die Daten sind nicht einheitlich formatiert, aber weisen auf denselben Sachverhalt hin. 
 
-![Entität vom Typ „Simple“ (Einfach)](./media/luis-concept-entities/simple-entity.png)
+![Entität vom Typ „Simple“](./media/luis-concept-entities/simple-entity.png)
 
 [Tutorial](luis-quickstart-primary-and-secondary-data.md)<br/>
 [Beispielantwort für Entität](luis-concept-data-extraction.md#simple-entity-data)<br/>
@@ -234,7 +234,7 @@ Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries)
 
 Zusammengesetzte Entitäten und hierarchische Entitäten verfügen jeweils über eine Über- und Unterordnungsbeziehung, und sie wurden durch maschinelles Lernen erworben. Durch maschinelles Lernen kann LUIS die Entitäten basierend auf unterschiedlichen Kontexten (Anordnung von Wörtern) verstehen. Zusammengesetzte Entitäten sind flexibler, da sie unterschiedliche Entitätstypen als untergeordnete Elemente zulassen. Bei einer hierarchischen Entität sind die untergeordneten Entitäten immer einfache Entitäten. 
 
-|Typ|Zweck|Beispiel|
+|Type|Zweck|Beispiel|
 |--|--|--|
 |Hierarchical|Über-/untergeordnete Entität einfacher Entitäten|Location.Origin=New York<br>Location.Destination=London|
 |Composite|Über-/untergeordnete Entitäten: vordefinierte, Listen-, einfache, hierarchische Entitäten| number=3<br>list=first class<br>prebuilt.datetimeV2=March 5|

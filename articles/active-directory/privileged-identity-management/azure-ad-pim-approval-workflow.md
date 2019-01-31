@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1c4b3819494ecb4c0897edeb08e2ce45d867b626
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665841"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179071"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM
 
@@ -52,7 +52,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
     ![„Ausgewählte Anforderungen genehmigen“ in PIM](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Klicken Sie auf **Genehmigen**.
+1. Klicken Sie auf **Approve**.
 
     Das Statussymbol wird mit Ihrer Genehmigung aktualisiert.
 

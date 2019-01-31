@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2363dde7dc2462adde730fa9a4883ffb6c558f3f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8544d63f38f88a0e623dff343bf8b5133931b70b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796475"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228303"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Verwenden von mehrwertigen Entitäten in einem Unterhaltungslernmodell
 In diesem Tutorial wird die mehrwertige Eigenschaft von Entitäten behandelt.
@@ -24,7 +24,7 @@ In diesem Tutorial wird die mehrwertige Eigenschaft von Entitäten behandelt.
 
 [![Mehrwertige Entitäten: Tutorial (Vorschauversion)](https://aka.ms/cl_Tutorial_v3_MultiValued_Preview)](https://aka.ms/cl_Tutorial_v3_MultiValued)
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -42,7 +42,7 @@ Bei als mehrwertig markierten Entitäten werden die einzelnen erkannten Instanze
 2. Geben Sie im Feld „Name“ die Zeichenfolge „MultiValueEntities“ ein, und drücken Sie die EINGABETASTE.
 3. Klicken Sie auf die Schaltfläche „Erstellen“.
 
-### <a name="entity-creation"></a>Entitätserstellung
+### <a name="entity-creation"></a>Erstellung von Entitäten
 
 1. Klicken Sie im linken Bereich auf „Entitäten“ und dann auf die Schaltfläche „Neue Entität“.
 2. Wählen Sie unter „Entitätstyp“ die Option „Custom Trained“ (Benutzerdefiniert trainiert) aus.

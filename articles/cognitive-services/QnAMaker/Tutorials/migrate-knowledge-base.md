@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 261d42a6c21681ee8015edfe73ad78b4458eb0ee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 08373449b2e61da503ab785eda7d6df80d6d1c16
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078809"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227929"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
 Auf der \\\Build\-Konferenz am 7. Mai 2018 wurde die allgemeine Verfügbarkeit von QnA Maker angekündigt. Für die allgemein verfügbare Version von QnA Maker wurde eine neue Architektur in Azure erstellt. Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im Januar 2019 eingestellt. Weitere Informationen zu den Änderungen in der allgemein verfügbaren Version von QnA Maker finden Sie im [Blogbeitrag](https://aka.ms/qnamakerga-blog) zur Ankündigung der allgemeinen Verfügbarkeit von QnA Maker.

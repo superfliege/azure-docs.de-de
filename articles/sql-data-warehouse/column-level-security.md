@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 06/15/2018
 ms.author: kavithaj
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: 1765c92ad10fa35af98e7c7314eb44c3a119f422
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 323879fff90fa478797f85415faae9ae02ea5bcd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301054"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461507"
 ---
 # <a name="column-level-security"></a>Sicherheit auf Spaltenebene 
 Mit der Sicherheit auf Spaltenebene (CLS) können Kunden den Zugriff auf Datentabellenspalten basierend auf dem Ausführungskontext oder der Gruppenmitgliedschaft des Benutzers steuern.  

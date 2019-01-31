@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/26/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2f1a3c46c9d343c305292a217fff5750f442fa
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 173846e4828228bdc51fc42858e0c6c9b00cafd6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682553"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242789"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse
 Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.

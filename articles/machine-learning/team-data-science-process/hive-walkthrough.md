@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 57f20a6b3a8d2845b0459f05e7b9d9ccd8d44424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139621"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463292"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 

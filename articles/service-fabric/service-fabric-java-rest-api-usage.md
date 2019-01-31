@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 987959742335940dca8eb57c54d593aea90dec15
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111183"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182029"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Java-Client-APIs für Azure Service Fabric
 
@@ -71,7 +71,7 @@ Führen Sie die unten stehenden Schritte aus, um mithilfe des AutoRest-Tools Ser
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Der folgende Befehl akzeptiert die Spezifikationsdatei ``servicefabric.json`` als Eingabe, generiert Java-Clientcode im Ordner ``java-rest-api-     code`` und umschließt den Code im Namespace ``servicefabricrest``. Nach diesem Schritt sehen Sie, dass die beiden Ordner ``models`` und ``implemenation`` sowie die beiden Dateien ``ServiceFabricClientAPIs.java`` und ``package-info.java`` im Ordner ``java-rest-api-code`` generiert wurden.
+   Der folgende Befehl akzeptiert die Spezifikationsdatei ``servicefabric.json`` als Eingabe, generiert Java-Clientcode im Ordner ``java-rest-api-     code`` und umschließt den Code im Namespace ``servicefabricrest``. Nach diesem Schritt sehen Sie, dass die beiden Ordner ``models`` und ``implementation`` sowie die beiden Dateien ``ServiceFabricClientAPIs.java`` und ``package-info.java`` im Ordner ``java-rest-api-code`` generiert wurden.
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>Einschließen und Verwenden des generierten Clients in Ihrem Projekt

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 277c570079e8c3f051916452492ff62758688e03
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159165"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454860"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.

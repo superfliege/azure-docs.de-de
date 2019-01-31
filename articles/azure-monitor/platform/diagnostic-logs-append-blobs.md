@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 186b0c693b077b4fa0b1287301b52de5d09c3fe6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478500"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882378"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden
 
@@ -31,7 +31,7 @@ Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten 
 * Wenn zwischen dem heutigen Datum und dem 1. November eine Diagnoseeinstellung festgelegt wird, werden die Daten bis zum 1. November weiterhin im derzeitigen Format ausgegeben.
 * Diese Änderung tritt für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für die Clouds Azure China, Azure Deutschland und Azure Government durchgeführt.
 * Diese Änderung wirkt sich auf die folgenden Datentypen aus:
-  * [Azure-Ressourcendiagnoseprotokolle](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([Liste mit Ressourcen](./../../azure-monitor/platform/tutorial-dashboards.md))
+  * [Azure-Ressourcendiagnoseprotokolle](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([Liste mit Ressourcen](./../../azure-monitor/platform/diagnostic-logs-schema.md))
   * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
   * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](./../../azure-monitor/platform/archive-activity-log.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:

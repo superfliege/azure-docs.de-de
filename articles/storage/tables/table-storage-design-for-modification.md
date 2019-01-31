@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 5f67a8ffde24d3c3e39065806b07bdd5cba2857a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 5e9ade0f6076a34a5662330bab64e9dd71275ba8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522042"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470534"
 ---
 # <a name="design-for-data-modification"></a>Entwurf für die Datenänderung
 Dieser Artikel konzentriert sich auf Entwurfsansätze zum Optimieren von Einfügungen, Aktualisierungen und Löschungen. In einigen Fällen müssen Sie einen Kompromiss finden zwischen Entwürfen, die nach Abfragen optimiert sind und Entwürfen, die nach Datenänderung optimiert sind, so wie sie dies auch bei Entwürfen für relationale Datenbanken vornehmen (obwohl die Techniken für die Verwaltung von Entwurfskompromissen für eine relationale Datenbank unterschiedlich sind). Der Abschnitt [Entwurfsmuster für die Tabelle](#table-design-patterns) beschreibt einige detaillierte Entwurfsmuster für den Tabellenspeicherdienst und stellt einige dieser Kompromisse heraus. In der Praxis werden Sie feststellen, dass viele für Abfragen von Entitäten optimierte Entwürfe sich auch zum Ändern von Entitäten eignen.  

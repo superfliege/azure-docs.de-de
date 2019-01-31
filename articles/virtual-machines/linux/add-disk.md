@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.component: disks
-ms.openlocfilehash: c39079b2624e8b77ac43e2d37a14ef71d173f6c7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: aa38fe3da118515b20d9b743a9a22b54e338051a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461296"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463706"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an Ihren virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. 

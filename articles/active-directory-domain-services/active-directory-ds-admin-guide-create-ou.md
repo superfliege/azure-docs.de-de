@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 49b915242ca0a4775236da3314eed816fde7ea6b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 33c4264d9aeffb721cd2d44df6d551126782f0e1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856263"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165709"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 Zu den durch Azure AD Domain Services verwalteten Domänen gehören zwei integrierte Container mit den Bezeichnungen „AADDC Computers“ und „AADDC Users“. Der Container „AADDC Computers“ enthält Computerobjekte für alle Computer, die in die verwaltete Domäne eingebunden sind. Der Container „AADDC Users“ enthält die Benutzer und Gruppen im Azure AD-Mandanten. Gelegentlich kann es notwendig werden, Dienstkonten für die verwaltete Domäne zu erstellen, um Workloads bereitzustellen. Zu diesem Zweck können Sie eine benutzerdefinierte Organisationseinheit (OE) in der verwalteten Domäne erstellen und innerhalb dieser Organisationseinheit Dienstkonten erstellen. In diesem Artikel wird gezeigt, wie Sie in der verwalteten Domäne eine Organisationseinheit erstellen.
@@ -84,4 +84,4 @@ Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in
 * [Verwalten einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Konfigurieren von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory-Verwaltungscenter: Erste Schritte](https://technet.microsoft.com/library/dd560651.aspx)
-* [Schrittanleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)
+* [Schrittweise Anleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 205ba822b1221de34f3ee1ae25974a406f2013cb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7897c677df38bb9b71222730a8b6a9ea11fb40bc
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438097"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912662"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -138,3 +138,4 @@ Sobald Daten am ausgewählten Speicherort vorhanden sind, müssen Sie sie berein
 
 * [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
 * [Verwenden von Apache Hive als ETL-Tool](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

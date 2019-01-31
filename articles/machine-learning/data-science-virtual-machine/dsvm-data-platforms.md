@@ -1,7 +1,7 @@
 ---
-title: Datenplattformen für Data Science Virtual Machine – Azure | Microsoft-Dokumentation
+title: Datenplattformen für die Data Science-VM – Azure | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Datenplattformen und Tools, die für Data Science Virtual Machine unterstützt werden.
-keywords: Data Science-Tools, Data Science Virtual Machine, Tools für Data Science, Linux Data Science
+keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -9,23 +9,23 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f73f90b76900a3a5213297f8a28ff13204852039
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 744c8d6488b9b0688126d305426f90647a89d4be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105546"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478082"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
-Mit Data Science Virtual Machine (DSVM) können Sie Analysen für ein breites Spektrum von Datenplattformen erstellen. Neben Schnittstellen für Remotedatenplattformen bietet die DSVM eine lokale Instanz für eine schnelle Entwicklung und Prototypenerstellung. 
+Mit der Data Science-VM (DSVM) können Sie Analysen für ein breites Spektrum von Datenplattformen erstellen. Neben Schnittstellen für Remotedatenplattformen bietet die DSVM eine lokale Instanz für eine schnelle Entwicklung und Prototypenerstellung. 
 
 Folgende Datenplattformen werden von der DSVM unterstützt: 
 
@@ -95,7 +95,7 @@ Vor dem Ausführen im Spark-Kontext in Microsoft R Server unter der Ubuntu Linux
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht benötigen. Führen Sie dazu ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` aus. Ein Beispiel, das zeigt, wie MRS im Remote-Spark-Kontext (eigenständige Spark-Instanz auf der DSVM) entwickelt und getestet wird, finden Sie im Verzeichnis `/dsvm/samples/MRS`. 
+Sie können die Hadoop-bezogenen Dienste beenden, wenn Sie sie nicht benötigen. Führen Sie dazu ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` aus. Ein Beispiel, das zeigt, wie MRS im Remote-Spark-Kontext (eigenständige Spark-Instanz auf der DSVM) entwickelt und getestet wird, finden Sie im Verzeichnis `/dsvm/samples/MRS`. 
 
 
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Konfiguration/Installation auf der DSVM 

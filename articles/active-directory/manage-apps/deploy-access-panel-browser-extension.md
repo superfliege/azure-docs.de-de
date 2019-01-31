@@ -6,7 +6,7 @@ documentationcenter: ''
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a48b2ce4689490b3a38917edfb776a6ea28c478
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 02f06d24aa501d4544cbc2d3803e543bdff7936d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463438"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192910"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache)
 In diesem Tutorial wird erläutert, wie Sie mithilfe von Gruppenrichtlinien die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer installieren. Diese Erweiterung ist für Benutzer von Internet Explorer erforderlich, die sich bei Apps anmelden müssen, die mit der [kennwortbasierten einmaligen Anmeldung](what-is-single-sign-on.md#password-based-sso)konfiguriert wurden.

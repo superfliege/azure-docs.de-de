@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e92c153158bc53a143bbc4c4c90c6007937fcc8f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: deaa6a9ff49fea2093c94a039aab0d7de0c95359
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848171"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177116"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure Active Directory Domain Services verwalteten Domäne
 Azure Active Directory Domain Services umfassen integrierte Gruppenrichtlinienobjekte (Group Policy Objects, GPOs) für die Container „AADDC Users“ und „AADDC Computers“. Sie können diese integrierten GPOs anpassen, um eine Gruppenrichtlinie in der verwalteten Domäne zu konfigurieren. Darüber hinaus können Mitglieder der Administratorengruppe für Azure AD-Domänencontroller benutzerdefinierte Organisationseinheiten (OEs) in der verwalteten Domäne erstellen. Sie können auch benutzerdefinierte GPOs erstellen und mit diesen benutzerdefinierten OEs verknüpfen. Benutzern, die zur Administratorengruppe für Azure AD-Domänencontroller gehören, werden Administratorrechte für Gruppenrichtlinien in der verwalteten Domäne gewährt.
