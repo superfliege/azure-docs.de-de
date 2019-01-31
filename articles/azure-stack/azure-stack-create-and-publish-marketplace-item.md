@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104096"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243639"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Erstellen und Veröffentlichen eines Marketplace-Elements
 
@@ -128,7 +129,7 @@ ms.locfileid: "54104096"
 
 ### <a name="identity-information"></a>Identitätsinformationen
 
-| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
+| NAME | Erforderlich | Type | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
 | NAME |X |Zeichenfolge |[A-Za-z0-9]+ | |
 | Herausgeber |X |Zeichenfolge |[A-Za-z0-9]+ | |
@@ -136,7 +137,7 @@ ms.locfileid: "54104096"
 
 ### <a name="metadata"></a>Metadaten
 
-| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
+| NAME | Erforderlich | Type | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Zeichenfolge |Empfehlung: 80 Zeichen |Im Portal wird der Elementname unter Umständen nicht richtig angezeigt, wenn er länger als 80 Zeichen ist. |
 | PublisherDisplayName |X |Zeichenfolge |Empfehlung: 30 Zeichen |Im Portal wird der Herausgebername unter Umständen nicht richtig angezeigt, wenn er länger als 30 Zeichen ist. |
@@ -165,7 +166,7 @@ Jedes Marketplace-Element muss mit einer Kategorie gekennzeichnet werden, die di
 
 Jedes Marketplace-Element kann verschiedene Links zu zusätzlichen Inhalten enthalten. Die Links werden als Liste der Namen und URIs angegeben:
 
-| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
+| NAME | Erforderlich | Type | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Zeichenfolge |Maximal 64 Zeichen | |
 | Uri |X |URI | | |
@@ -174,7 +175,7 @@ Jedes Marketplace-Element kann verschiedene Links zu zusätzlichen Inhalten enth
 
 Zusätzlich zu den oben genannten Metadaten können Marketplace-Autoren benutzerdefinierte Schlüssel-Wert-Paare mit Daten in der folgenden Form angeben.
 
-| NAME | Erforderlich | Typ | Einschränkungen | BESCHREIBUNG |
+| NAME | Erforderlich | Type | Einschränkungen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Zeichenfolge |Maximal 25 Zeichen | |
 | Wert |X |Zeichenfolge |Maximal 30 Zeichen | |

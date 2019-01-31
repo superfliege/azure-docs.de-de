@@ -2,19 +2,18 @@
 title: Log Analytics-Datenmodell für Azure Backup
 description: In diesem Artikel werden die Details des Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5921ca696076a16e39252a6cb3bfae98854b5a85
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877580"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299571"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 Verwenden Sie das Log Analytics-Datenmodell zum Erstellen von Berichten. Mit dem Datenmodell können Sie nach Wunsch benutzerdefinierte Abfragen und Dashboards erstellen oder Azure Backup-Daten anpassen.
@@ -281,4 +280,4 @@ Diese Tabelle enthält Details zu tresorbezogenen Feldern.
 | ResourceType |Text |Ressourcentyp, für den Daten gesammelt werden. Beispiel: Tresore |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, können Sie mit dem [Erstellen von Dashboards](../azure-monitor/platform/dashboards.md) in Log Analytics beginnen.
+Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, können Sie mit dem [Erstellen von Dashboards](../azure-monitor/learn/tutorial-logs-dashboards.md) in Log Analytics beginnen.

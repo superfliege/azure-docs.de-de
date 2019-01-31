@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie mit dem TensorFlow-Estimator TensorFlow-Modelle auf einem Knoten oder verteilt trainieren.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c76a94695114888ca8946106528fe179ff81c811
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094106"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244724"
 ---
 # <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Trainieren von TensorFlow-Modellen mit Azure Machine Learning Service
 
@@ -49,7 +49,7 @@ Parameter | BESCHREIBUNG
 --|--
 `source_directory` | Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
 `script_params` | Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Wertpaaren der Form <Befehlszeilenargument, Wert> festgelegt sind
-`compute_target` | Remotecomputeziel, für das Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)).
+`compute_target` | Remotecomputeziel, auf dem Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)).
 `entry_script` | Dateipfad des Trainingsskripts (relativ zu `source_directory`), das auf dem Remotecomputeziel ausgeführt werden soll. Diese Datei und alle von ihr abhängigen Dateien sollten sich in diesem Ordner befinden.
 `conda_packages` | Liste der Python-Pakete, die über conda installiert werden und für Ihr Trainingsskript erforderlich sind. In diesem Fall greift das Trainingsskript zum Laden der Daten auf `sklearn` zurück. Legen Sie daher fest, dass dieses Paket installiert wird.  Im Konstruktor kann zusätzlich der Parameter `pip_packages` für alle erforderlichen pip-Pakete angegeben werden.
 `use_gpu` | : Legen Sie dieses Flag auf `True` fest, um die GPU für das Training zu nutzen. Der Standardwert lautet `False`.
@@ -173,7 +173,7 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Beispiele
 
-Notebooks für verteiltes Deep Learning finden Sie unter:
+Informationen zu Notebooks für verteiltes Deep Learning finden Sie unter:
 * [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

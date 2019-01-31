@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: f765e99a4186e0790bfcad22dd2d1a17a98050c9
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 887f376eafadfb556ce69611195301b25b24bbd5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450948"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104251"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory
 Azure AD-Gruppen (Azure Active Directory) befinden sich im Besitz von Gruppenbesitzern und werden von diesen verwaltet. Gruppenbesitzer werden von einem Ressourcenbesitzer (Administrator) zugewiesen, um eine Gruppe und deren Mitglieder zu verwalten. Die Gruppenbesitzer müssen der Gruppe nicht angehören. Nachdem ein Gruppenbesitzer zugewiesen wurde, können Besitzer nur durch einen Ressourcenbesitzer hinzugefügt oder entfernt werden.

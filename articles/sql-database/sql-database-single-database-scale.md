@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: a3a4e2c109541effdac01e0c9c03ee91cfdb30bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.date: 01/25/2019
+ms.openlocfilehash: b3ee256072e5c0b5b92daac07eae5b41b194ae8a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812249"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475957"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -35,7 +35,7 @@ In diesem Artikel wird beschrieben, wie die für eine Einzeldatenbank in Azure S
 
 ## <a name="vcore-based-purchasing-model-change-compute-resources"></a>Auf virtuellen Kernen basierendes Erwerbsmodell: Ändern der Computeressourcen
 
-Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen können Sie eine Einzeldatenbank je nach tatsächlichem Bedarf im [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), in der [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch zentral hoch- oder herunterskalieren.
+Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen können Sie eine Einzeldatenbank je nach tatsächlichem Bedarf im [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), in der [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch zentral hoch- oder herunterskalieren.
 
 Wenn Sie den Diensttarif und/oder die Computegröße einer Datenbank ändern, wird ein Replikat der ursprünglichen Datenbank mit der neuen Computegröße erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Die Dauer der Umstellung kann variieren, aber sie liegt im Allgemeinen in 99 Prozent der Fälle unter 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, kann die Umstellung unter Umständen auch länger dauern.
 

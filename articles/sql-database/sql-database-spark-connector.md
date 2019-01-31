@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/23/2018
-ms.openlocfilehash: 09035b19ee48602fde70736ab918fccae71108a5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 864cf49634e4f9452829a30ce4b260179bdeb8db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166247"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476212"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure SQL-Datenbank und SQL Server
 
@@ -161,7 +161,7 @@ collection.show()
 #### <a name="setup-requirement"></a>Anforderungen für die Einrichtung
 Wenn Sie den auf einem Zugriffstoken basierenden Authentifizierungsmodus verwenden, müssen Sie [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) und zugehörige Abhängigkeiten herunterladen und in den Java-Buildpfad einschließen.
 
-Unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) finden Sie Informationen dazu, wie Sie ein Zugriffstoken für Ihre Azure SQL-Datenbank-Instanz abrufen.
+Unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank](sql-database-aad-authentication.md) finden Sie Informationen dazu, wie Sie ein Zugriffstoken für Ihre Azure SQL-Datenbank-Instanz abrufen.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config

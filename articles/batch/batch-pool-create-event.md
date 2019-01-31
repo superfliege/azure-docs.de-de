@@ -2,7 +2,7 @@
 title: 'Azure Batch: Poolerstellungsereignis | Microsoft-Dokumentation'
 description: Referenz zum Batch-Poolerstellungsereignis.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 794b3c83ff58967ef8169bed98f7b369335029ae
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: lahugh
+ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259839"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470591"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 
@@ -65,14 +65,14 @@ ms.locfileid: "54259839"
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |osFamily|Zeichenfolge|Die Azure-Gastbetriebssystemfamilie, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Mögliche Werte:<br /><br /> **2**: Betriebssystemfamilie 2, gleichbedeutend mit Windows Server 2008 R2 SP1.<br /><br /> **3**: Betriebssystemfamilie 3, gleichbedeutend mit Windows Server 2012.<br /><br /> **4**: Betriebssystemfamilie 4, gleichbedeutend mit Windows Server 2012 R2.<br /><br /> Weitere Informationen finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 |targetOSVersion|Zeichenfolge|Die Azure-Gastbetriebssystemversion, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Der Standardwert ist **\***, der die aktuelle Betriebssystemversion für die angegebene Familie angibt.<br /><br /> Andere zulässige Werte finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|Komplexer Typ|Gibt Informationen zur Plattform oder das zu verwendende Marketplace-Image an.|
 |nodeAgentSKUId|Zeichenfolge|Die SKU des Batch-Knoten-Agents, die auf dem Computeknoten bereitgestellt ist.|
@@ -80,7 +80,7 @@ ms.locfileid: "54259839"
 
 ###  <a name="bk_imgref"></a> imageReference
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |Herausgeber|Zeichenfolge|Gibt den Herausgeber des Images an.|
 |offer|Zeichenfolge|Das Angebot des Images.|
@@ -89,12 +89,12 @@ ms.locfileid: "54259839"
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|----------|-----------|
 |enableAutomaticUpdates|Boolescher Wert|Gibt an, ob der virtuelle Computer für automatische Updates aktiviert ist. Wenn diese Eigenschaft nicht angegeben wird, ist der Standardwert TRUE.|
 
 ###  <a name="bk_netconf"></a> networkConfiguration
 
-|Elementname|Typ|Notizen|
+|Elementname|Type|Notizen|
 |------------------|--------------|----------|
 |subnetId|Zeichenfolge|Gibt den Ressourcenbezeichner des Subnetzes an, in dem die Computeknoten des Pools erstellt werden.|

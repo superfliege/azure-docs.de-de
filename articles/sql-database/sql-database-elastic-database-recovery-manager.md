@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: d5bb914de1cded7c70516bfb4bfdaa93c83fe0e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c4eeb73e3b0abfe2558fc387953023254952a515
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188673"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296867"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shard-Zuordnung
 
@@ -52,7 +52,7 @@ Weitere Informationen zu den Azure SQL-Datenbanktools für elastische Datenbanke
 Der erste Schritt ist die Erstellung eine RecoveryManager-Instanz. Die [GetRecoveryManager-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) gibt den Recovery Manager für die aktuelle [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)-Instanz zurück. Zur Behebung von Inkonsistenzen in der Shardzuordnung müssen Sie zuerst den RecoveryManager für die jeweilige Shardzuordnung abrufen.
 
    ```java
-    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
+    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
              ShardMapManagerLoadPolicy.Lazy);
              RecoveryManager rm = smm.GetRecoveryManager();
    ```

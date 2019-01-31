@@ -6,18 +6,18 @@ services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f53b3cec843ca8016c61a360025b5e731b96f55
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 02d0afd18ad966baf8954ae5add180c970fe302e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815870"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247407"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -64,7 +64,7 @@ Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegend
 
 Informationen zum Einstieg in die Entwicklung mit Azure Notebooks finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-get-started.md).
 
-Standardmäßig verwendet Azure Notebooks einen kostenlosen Diensttarif, der auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Standardmäßig verwendet Azure Notebooks einen kostenlosen Diensttarif, der auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
