@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853709"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093384"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -81,7 +81,7 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
 
 1. Ändern Sie den Parameter des Subnetzes in den Namen des vorhandenen Subnetzes, und fügen Sie zwei weitere Parameter hinzu, um auf das vorhandene virtuelle Netzwerk zu verweisen:
 
-    ```
+    ```json
         "subnet0Name": {
                 "type": "string",
                 "defaultValue": "default"
@@ -108,26 +108,26 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
 
 2. Kommentieren Sie das Attribut `nicPrefixOverride` von `Microsoft.Compute/virtualMachineScaleSets` aus, da Sie das vorhandene Subnetz verwenden und diese Variable in Schritt 1 deaktiviert haben.
 
-    ```
+    ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
 3. Ändern Sie die Variable `vnetID` so, dass sie auf das vorhandene virtuelle Netzwerk zeigt:
 
-    ```
+    ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
 4. Entfernen Sie `Microsoft.Network/virtualNetworks` aus Ihren Ressourcen, sodass Azure kein neues virtuelles Netzwerk erstellt:
 
-    ```
+    ```json
     /*{
     "apiVersion": "[variables('vNetApiVersion')]",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
     "location": "[parameters('computeLocation')]",
-    "properities": {
+    "properties": {
         "addressSpace": {
             "addressPrefixes": [
                 "[parameters('addressPrefix')]"
@@ -151,7 +151,7 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
 
 5. Kommentieren Sie das virtuelle Netzwerk aus dem `dependsOn`-Attribut von `Microsoft.Compute/virtualMachineScaleSets` aus, sodass Sie nicht vom Erstellen eines neuen virtuellen Netzwerks abhängig sind:
 
-    ```
+    ```json
     "apiVersion": "[variables('vmssApiVersion')]",
     "type": "Microsoft.Computer/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType0Name')]",
@@ -185,7 +185,7 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 
 1. Fügen Sie Parameter für den Namen der vorhandenen Ressourcengruppe der statischen IP-Adresse, den Namen und den vollqualifizierten Domänennamen (FQDN) hinzu:
 
-    ```
+    ```json
     "existingStaticIPResourceGroup": {
                 "type": "string"
             },
@@ -199,7 +199,7 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 
 2. Entfernen Sie den `dnsName`-Parameter. (Die statische IP-Adresse hat bereits einen.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -209,13 +209,13 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 
 3. Fügen Sie eine Variable hinzu, um auf die vorhandene statische IP-Adresse zu verweisen:
 
-    ```
+    ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
 4. Entfernen Sie `Microsoft.Network/publicIPAddresses` aus Ihren Ressourcen, sodass Azure keine neue IP-Adresse erstellt:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -237,7 +237,7 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 
 5. Kommentieren Sie die IP-Adresse aus dem `dependsOn`-Attribut von `Microsoft.Network/loadBalancers` aus, sodass Sie nicht vom Erstellen einer neuen IP-Adresse abhängig sind:
 
-    ```
+    ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
     "type": "Microsoft.Network/loadBalancers",
     "name": "[concat('LB', '-', parameters('clusterName'), '-', parameters('vmNodeType0Name'))]",
@@ -251,7 +251,7 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 
 6. Ändern Sie in der `Microsoft.Network/loadBalancers`-Ressource das `publicIPAddress`-Element von `frontendIPConfigurations` so, dass auf die vorhandene statische IP-Adresse statt auf eine neu erstellte verwiesen wird:
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -267,7 +267,7 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 
 7. Ändern Sie in der `Microsoft.ServiceFabric/clusters`-Ressource `managementEndpoint` in den DNS-FQDN der statischen IP-Adresse. Wenn Sie einen sicheren Cluster verwenden, stellen Sie sicher, dass Sie *http://* in *https://* ändern. (Beachten Sie, dass dieser Schritt nur für Service Fabric-Cluster gilt. Wenn Sie eine VM-Skalierungsgruppe verwenden, überspringen Sie diesen Schritt.)
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -294,7 +294,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 
 1. Entfernen Sie den `dnsName`-Parameter. (Er ist nicht erforderlich.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -304,7 +304,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 
 2. Optional können Sie einen statischen IP-Adressparameter hinzufügen, wenn Sie eine statische Zuordnungsmethode verwenden. Wenn Sie eine dynamische Zuordnungsmethode verwenden, müssen Sie diesen Schritt nicht ausführen.
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -313,7 +313,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 
 3. Entfernen Sie `Microsoft.Network/publicIPAddresses` aus Ihren Ressourcen, sodass Azure keine neue IP-Adresse erstellt:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -335,7 +335,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 
 4. Entfernen Sie das IP-Adressen-`dependsOn`-Attribut von `Microsoft.Network/loadBalancers`, sodass Sie nicht vom Erstellen einer neuen IP-Adresse abhängig sind. Fügen Sie das Attribut `dependsOn` des virtuellen Netzwerks hinzu, da der Lastenausgleich jetzt vom Subnetz aus dem virtuellen Netzwerk abhängig ist:
 
-    ```
+    ```json
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'))]",
@@ -348,7 +348,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 
 5. Ändern Sie die Einstellung `frontendIPConfigurations` des Lastenausgleichs von der Verwendung einer `publicIPAddress` in die Verwendung eines Subnetzes und einer `privateIPAddress`. `privateIPAddress` verwendet eine vordefinierte statische interne IP-Adresse. Um eine dynamische IP-Adresse zu verwenden, entfernen Sie das `privateIPAddress`-Element, und ändern Sie dann `privateIPAllocationMethod` in **Dynamisch**.
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -369,7 +369,7 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 
 6. Ändern Sie in der `Microsoft.ServiceFabric/clusters`-Ressource `managementEndpoint` so, dass auf die interne Adresse des Lastenausgleichs verwiesen wird. Wenn Sie einen sicheren Cluster verwenden, stellen Sie sicher, dass Sie *http://* in *https://* ändern. (Beachten Sie, dass dieser Schritt nur für Service Fabric-Cluster gilt. Wenn Sie eine VM-Skalierungsgruppe verwenden, überspringen Sie diesen Schritt.)
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -394,7 +394,7 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
 
 1. Fügen Sie den statischen IP-Adressparameter für den internen Lastenausgleich hinzu. (Hinweise zur Verwendung einer dynamischen IP-Adresse finden Sie in vorherigen Abschnitten dieses Artikels.)
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -405,7 +405,7 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
 
 3. Um interne Versionen der vorhandenen Netzwerkvariablen hinzuzufügen, kopieren Sie sie, fügen Sie sie ein, und fügen Sie ihrem Namen das Suffix „-Int“ an:
 
-    ```
+    ```json
     /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -418,7 +418,7 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
 
 4. Wenn Sie mit der vom Portal generierten Vorlage mit Anwendungsport 80 beginnen, fügt die Standardportalvorlage dem externen Lastenausgleich AppPort1 (Port 80) hinzu. Entfernen Sie in diesem Fall AppPort1 vom externen Lastenausgleich `loadBalancingRules` und von Tests, damit Sie ihn später dem internen Lastenausgleich hinzufügen können:
 
-    ```
+    ```json
     "loadBalancingRules": [
         {
             "name": "LBHttpRule",
@@ -495,7 +495,7 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
 
 5. Fügen Sie eine zweite `Microsoft.Network/loadBalancers`-Ressource hinzu. Sie ähnelt dem im Abschnitt [Rein interner Lastenausgleich](#internallb) erstellten internen Lastenausgleich, verwendet jedoch die „-Int“-Lastenausgleichsvariablen und implementiert nur den Anwendungsport 80. Dies entfernt auch `inboundNatPools`, um die RDP-Endpunkte auf dem öffentlichen Lastenausgleich beizubehalten. Wenn Sie die RDP-Endpunkte auf dem internen Lastenausgleich wünschen, verschieben Sie `inboundNatPools` vom externen Lastenausgleich auf diesen internen Lastenausgleich:
 
-    ```
+    ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -580,7 +580,7 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
 
 6. Fügen Sie in `networkProfile` für die `Microsoft.Compute/virtualMachineScaleSets`-Ressource den internen Back-End-Adresspool hinzu:
 
-    ```
+    ```json
     "loadBalancerBackendAddressPools": [
                                                         {
                                                             "id": "[variables('lbPoolID0')]"

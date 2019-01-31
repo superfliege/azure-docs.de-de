@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.subservice: common
+ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584671"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467746"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Anzeigen des Status von Azure Import/Export-Aufträgen
 
@@ -63,7 +63,7 @@ Die folgende Tabelle beschreibt die Laufwerkfehlerstatus und die Aktionen, die f
 | Laufwerkstatus | Ereignis | Lösung / Nächster Schritt |
 |:--- |:--- |:--- |
 | NeverReceived | Ein Laufwerk mit der Kennzeichnung **NeverReceived** (da es im Rahmen des Versands des Auftrags nicht eingegangen ist) geht in einer anderen Sendung ein. | Das Betriebsteam verschiebt das Laufwerk nach **Empfangen**. |
-| N/V | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet und nach Abschluss des Auftrags, der dem Originalpaket zugeordnet ist, an Sie zurückgegeben. |
+| – | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet und nach Abschluss des Auftrags, der dem Originalpaket zugeordnet ist, an Sie zurückgegeben. |
 
 ## <a name="time-to-process-job"></a>Verarbeitungsdauer des Auftrags
 Der Zeitaufwand zum Verarbeiten eines Import/Export-Auftrags variiert basierend auf einer Reihe von Faktoren wie z.B.:

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853594"
+ms.locfileid: "54881595"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -157,7 +157,7 @@ Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsr
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
 
-Dieser Abschnitt gilt nur für klassische Warnungen der intelligenten Erkennung und unterstützt Sie dabei, Ihre Warnungsbenachrichtigungen zu optimieren, damit nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md und der neuen Benutzeroberfläche für Warnungen zu erfahren, lesen Sie den Artikel [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md). Aktuell unterstützen Warnungen der intelligenten Erkennung nur die klassische Warnungsbenutzeroberfläche. Die einzige Ausnahme hierbei bilden [Warnungen der intelligenten Erkennung zu Azure Cloud Services](./proactive-cloud-services.md). Um die Warnungsbenachrichtigung für Warnungen der intelligenten Erkennung zu Azure Cloud Services zu steuern, verwenden Sie [Aktionsgruppen](../platform/action-groups.md).
+Dieser Abschnitt gilt nur für klassische Warnungen der intelligenten Erkennung und unterstützt Sie dabei, Ihre Warnungsbenachrichtigungen zu optimieren, damit nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md) und den neuen Benachrichtigungen zu erfahren, lesen Sie bitte den Übersichtsartikel [Benachrichtigungen](../platform/alerts-overview.md). Aktuell unterstützen Warnungen der intelligenten Erkennung nur die klassische Warnungsbenutzeroberfläche. Die einzige Ausnahme hierbei bilden [Warnungen der intelligenten Erkennung zu Azure Cloud Services](./proactive-cloud-services.md). Um die Warnungsbenachrichtigung für Warnungen der intelligenten Erkennung zu Azure Cloud Services zu steuern, verwenden Sie [Aktionsgruppen](../platform/action-groups.md).
 
 * Wir empfehlen die Verwendung bestimmter Empfänger für intelligente Erkennung/klassische Warnungsbenachrichtigungen.
 

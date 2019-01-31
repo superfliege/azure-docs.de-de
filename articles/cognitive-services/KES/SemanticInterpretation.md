@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5fcc7b760b5445e57b41787d8818ef11ed926e6c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129351"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217270"
 ---
 # <a name="semantic-interpretation"></a>Semantische Interpretation
 
@@ -33,7 +33,7 @@ Eine Variable mit einem Namensbezeichner, der mit einem Buchstaben beginnt und n
 
 Es folgt eine Liste der zurzeit unterstützten Datentypen:
 
-|Typ|BESCHREIBUNG|Beispiele|
+|Type|BESCHREIBUNG|Beispiele|
 |----|----|----|
 |Zeichenfolge|Abfolge von 0 oder mehr Zeichen|„Hallo Welt!“<br/>""|
 |Bool|Boolescher Wert|true<br/>false|
@@ -139,7 +139,7 @@ Bereichsvariablen für Anforderungen werden in allen Interpretationen innerhalb 
 
 Systemvariablen werden vom Dienst vordefiniert und können zum Abrufen verschiedener Statistiken über den aktuellen Status des Systems verwendet werden.  Im Folgenden werden die derzeit unterstützten Systemvariablen aufgeführt:
 
-|NAME|Typ|BESCHREIBUNG|
+|NAME|Type|BESCHREIBUNG|
 |----|----|----|
 |IsAtEndOfQuery|Bool|„true“, wenn die aktuelle Interpretation mit dem gesamten Text der Eingabeabfrage übereingestimmt hat|
 |IsBeyondEndOfQuery|Bool|„true“, wenn die aktuelle Interpretation Vervollständigungen hinter dem Text der Eingabeabfrage vorgeschlagen hat|

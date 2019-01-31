@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d1ff154c42709f0c672b30f7ec51a436fb44ce13
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/21/2018
+ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724741"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240343"
 ---
 # <a name="asdk-release-notes"></a>Versionshinweise zum ASDK 
  
@@ -117,7 +118,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 <!-- 3507629 - IS, ASDK --> 
 - Managed Disks erstellt zwei neue [Computekontingenttypen](../azure-stack-quota-types.md#compute-quota-types) zur Begrenzung der maximalen Kapazität von verwalteten Datenträgern, die bereitgestellt werden können. Standardmäßig werden für jeden Kontingenttyp von verwalteten Datenträgern 2.048 GiB zugeordnet. Allerdings können die folgenden Probleme auftreten:
 
-   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das "Managed Disks"-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
+   - Bei Kontingenten, die vor dem Update 1808 erstellt wurden, werden im Administratorportal für das „Managed Disks“-Kontingent 0 Werte angezeigt, obwohl 2.048 GiB zugeordnet wurden. Sie können den Wert auf der Grundlage Ihrer tatsächlichen Anforderungen erhöhen oder verringern. Dann setzt der neu festgelegte Kontingentwert den Standardwert 2.048 GiB außer Kraft.
    - Wenn Sie den Kontingentwert auf „0“ aktualisieren, entspricht dies dem Standardwert 2.048 GiB. Als Problemumgehung können Sie den Kontingentwert auf „1“ festlegen.
 
 <!-- TBD - IS ASDK --> 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 4f9225f319eb4a2bbcbb5a79379fc46675ff4c04
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: files
+ms.openlocfilehash: e3b0773da49499e2eaa8c9b9f59ced4ed26276ba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854734"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465162"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -99,8 +99,8 @@ $storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupN
 # cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
 # Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
 # clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
+Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
+    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
 ```
 
 Mithilfe des Auflistungsparameters können Sie überprüfen, ob das Cmdkey-Hilfsprogramm die Anmeldeinformationen für das Speicherkonto gespeichert hat:
