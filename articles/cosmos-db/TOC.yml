@@ -254,14 +254,6 @@ items:
       items:
       - name: Optimieren der Abfrageleistung
         href: sql-api-query-metrics.md
-      - name: Serverseitige Programmierung
-        items:
-        - name: Schreiben von gespeicherten Prozeduren, Triggern und UDFs
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API
-          href: how-to-write-javascript-query-api.md
-        - name: Verwenden von gespeicherten Prozeduren, Triggern und UDFs
-          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Datentypen
         items:
         - name: DateTime
@@ -337,7 +329,7 @@ items:
         - name: Node.js- und React-App
           href: tutorial-develop-mongodb-react.md
       - name: 2. Migrieren von Daten
-        href: mongodb-migrate.md
+        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3. Abfragen von Daten
         href: tutorial-query-mongodb.md
       - name: 4. Globale Verteilung von Daten
@@ -497,6 +489,14 @@ items:
       items:
       - name: Verwalten der Indizierung
         href: how-to-manage-indexing-policy.md
+  - name: Serverseitige Programmierung
+    items:
+    - name: Schreiben von gespeicherten Prozeduren, Triggern und UDFs
+      href: how-to-write-stored-procedures-triggers-udfs.md
+    - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API
+      href: how-to-write-javascript-query-api.md
+    - name: Verwenden von gespeicherten Prozeduren, Triggern und UDFs
+      href: how-to-use-stored-procedures-triggers-udfs.md
   - name: Sicherheit
     items:
     - name: Konfigurieren der IP-Firewall
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464873"
+ms.locfileid: "55511920"

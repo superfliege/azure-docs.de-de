@@ -15,8 +15,6 @@ items:
   - name: Häufig gestellte Fragen
     displayName: FAQ
     href: faq.md
-  - name: Neuerungen
-    href: whats-new.md
   expanded: true
 - name: Lernprogramme
   items:
@@ -41,8 +39,6 @@ items:
     - name: 6 – Zugreifen auf den Webdienst
       displayName: consume
       href: walkthrough-6-access-web-service.md
-  - name: Erste Schritte mit R
-    href: r-quickstart.md
 - name: Beispiele
   items:
   - name: Verfügbare Datasets
@@ -120,6 +116,8 @@ items:
         href: debug-models.md
     - name: Verwenden von R und Python
       items:
+      - name: Erste Schritte mit R
+        href: r-quickstart.md
       - name: Ausführen von R-Skripts
         href: extend-your-experiment-with-r.md
       - name: Erstellen benutzerdefinierter R-Module
@@ -208,21 +206,25 @@ items:
     href: /rest/api/machinelearning
 - name: Ressourcen
   items:
+  - name: Dienstupdates
+    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
+  - name: Support
+    href: support-aml-studio.md
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Entwicklerhandbuch für R
     href: ../r-developers-guide.md
-  - name: Benutzerdefinierte neuronale Netze mit Net#
+  - name: Benutzerdefinierte neuronale Netze (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: Support
-    href: support-aml-studio.md
   - name: Vergleichen unserer ML-Produkte
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 12fa71315c1cb43570505d2428804f4a5348a266
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 27cd57a52b80006482f50f96120e8eaf8a8cb00e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156087"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512192"
