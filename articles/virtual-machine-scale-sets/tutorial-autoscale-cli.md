@@ -3,7 +3,7 @@ title: 'Tutorial: Automatisches Skalieren einer Skalierungsgruppe mit der Azure 
 description: Hier wird beschrieben, wie Sie eine VM-Skalierungsgruppe mit der Azure CLI automatisch skalieren, wenn sich die CPU-Anforderungen erhöhen oder verringern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b30c3a2e9f06cf02f27636592634884a7c3fdfc8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471304"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170707"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit der Azure CLI
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure CLI
 
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren. In diesem Tutorial lernen Sie Folgendes:
 
@@ -41,13 +41,13 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
 
-Erstellen Sie mit [az group create](/cli/azure/group#create) wie folgt eine Ressourcengruppe:
+Erstellen Sie mit [az group create](/cli/azure/group) wie folgt eine Ressourcengruppe:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#create) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit der Instanzanzahl *2* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind:
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit der Instanzanzahl *2* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind:
 
 ```azurecli-interactive
 az vmss create \
@@ -137,7 +137,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wenn für **stress** eine Ausgabe der Art *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE* drücken, um zur Eingabeaufforderung zurückzukehren.
+Wenn für **stress** eine Ausgabe wie *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die EINGABETASTE** drücken, um zur Eingabeaufforderung zurückzukehren.
 
 Um zu bestätigen, dass **stress** CPU-Last generiert, können Sie die aktive Systemauslastung mit dem Hilfsprogramm **top** untersuchen:
 
@@ -165,7 +165,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wenn für **stress** eine Ausgabe der Art *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie wieder die *EINGABETASTE* drücken, um zur Eingabeaufforderung zurückzukehren.
+Auch hier gilt wieder: Wenn für **stress** eine Ausgabe wie *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die EINGABETASTE** drücken, um zur Eingabeaufforderung zurückzukehren.
 
 Schließen Sie die Verbindung mit der zweiten VM-Instanz. **stress** wird auf der VM-Instanz weiterhin ausgeführt.
 
