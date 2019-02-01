@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: Auswählen der richtigen Konsistenzebene
       href: consistency-levels-choosing.md
-    - name: Konsistenzebenen und Cosmos DB-APIs
+    - name: Konsistenzebenen und Azure Cosmos DB-APIs
       href: consistency-levels-across-apis.md
     - name: Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung
       href: consistency-levels-tradeoffs.md
@@ -98,7 +98,7 @@ items:
     items:
     - name: Übersicht
       href: partitioning-overview.md
-    - name: Logische Partitionen
+    - name: Partitionierung und horizontale Skalierung
       href: partition-data.md
     - name: Erstellen eines synthetischen Partitionsschlüssels
       href: synthetic-partition-keys.md
@@ -122,7 +122,7 @@ items:
       items:
       - name: Übersicht
         href: index-overview.md
-      - name: Indizierungsrichtlinie
+      - name: Indexrichtlinie
         href: index-policy.md
       - name: Indextypen
         href: index-types.md
@@ -136,13 +136,13 @@ items:
         href: read-change-feed.md
       - name: Change Feed Processor
         href: change-feed-processor.md
-      - name: Änderungsfeed mit Azure Functions
+      - name: Auslösen von Azure Functions
         href: change-feed-functions.md
     - name: Gültigkeitsdauer
       href: time-to-live.md
     - name: Einschränkungen für eindeutige Schlüssel
       href: unique-keys.md
-    - name: Transaktionen und optimistische Nebenläufigkeit
+    - name: Transaktionen und Steuerung für optimistische Nebenläufigkeit
       href: database-transactions-optimistic-concurrency.md
   - name: Serverseitige Programmierung
     items:
@@ -168,9 +168,9 @@ items:
       href: optimize-cost-reads-writes.md
     - name: Optimieren von Kosten für mehrere Regionen
       href: optimize-cost-regions.md
-    - name: Optimieren der Entwicklungs-/Testworkloads
+    - name: Optimieren der Kosten für Entwicklung/Tests
       href: optimize-dev-test.md
-    - name: Optimieren mit Reservekapazität
+    - name: Optimieren der Kosten mit Reservekapazität
       href: cosmos-db-reserved-capacity.md
   - name: Sicherheit
     items:
@@ -186,7 +186,7 @@ items:
       href: vnet-service-endpoint.md
   - name: Unternehmensfähigkeit
     items:
-    - name: Onlinesicherung und -wiederherstellung
+    - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
       href: online-backup-and-restore.md
     - name: Compliance
       href: compliance.md
@@ -264,7 +264,7 @@ items:
           href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Datentypen
         items:
-        - name: Datetime
+        - name: DateTime
           href: working-with-dates.md
         - name: Geodaten
           href: geospatial.md
@@ -467,19 +467,19 @@ items:
   expanded: true
 - name: Anleitungen
   items:
-  - name: Verwalten von Datenbankkonten
+  - name: Verwalten eines Azure Cosmos-Kontos
     href: how-to-manage-database-account.md
   - name: Globale Verteilung
     items:
-    - name: Verwalten der Konsistenz
+    - name: Verwalten von Konsistenzebenen
       href: how-to-manage-consistency.md
-    - name: Verwalten von Konflikten
+    - name: Konfigurieren von Richtlinien für die Konfliktlösung
       href: how-to-manage-conflicts.md
   - name: Bereitgestellter Durchsatz
     items:
-    - name: Bereitstellen des Containerdurchsatzes
+    - name: Bereitstellen von Durchsatz für einen Container
       href: how-to-provision-container-throughput.md
-    - name: Bereitstellen des Datenbankdurchsatzes
+    - name: Bereitstellen von Durchsatz für eine Datenbank
       href: how-to-provision-database-throughput.md
   - name: Arbeiten mit Containern und Elementen
     items:
@@ -489,9 +489,13 @@ items:
       href: how-to-query-container.md
     - name: Konfigurieren der Gültigkeitsdauer (TTL)
       href: how-to-time-to-live.md
+    - name: Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
+      href: storage-explorer.md
+    - name: Arbeiten mit Daten unter Verwendung von Azure Cosmos-Explorer
+      href: data-explorer.md
     - name: Indizierung
       items:
-      - name: Konfigurieren der Indizierung
+      - name: Verwalten der Indizierung
         href: how-to-manage-indexing-policy.md
   - name: Sicherheit
     items:
@@ -501,22 +505,18 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
       href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Schützen mit Key Vault
+    - name: Sichern von Azure Cosmos-Schlüsseln mit Key Vault
       href: access-secrets-from-keyvault.md
   - name: Unternehmensfähigkeit
     items:
     - name: Wiederherstellen von Daten aus einer Sicherung
       href: how-to-backup-and-restore.md
-  - name: Verwalten
+  - name: Verwalten von Azure Cosmos DB-Ressourcen
     items:
     - name: Verwalten mit PowerShell
       href: manage-account-with-powershell.md
     - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
       href: manage-with-cli.md
-    - name: Verwalten mithilfe des Storage-Explorers
-      href: storage-explorer.md
-    - name: Verwalten mithilfe des Daten-Explorers
-      href: data-explorer.md
   - name: Protokollierung
     items:
     - name: Diagnoseprotokollierung
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094477"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464873"

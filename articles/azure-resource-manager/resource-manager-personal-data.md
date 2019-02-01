@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 71928be07080ed14fdcb93f33ea64d2572955b53
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 01e2b1608d55d7852db947181482d34d6d8010d2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466023"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215044"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Verwalten von mit Azure Resource Manager verknüpften persönlichen Daten
 
@@ -33,13 +33,13 @@ Für Bereitstellungen werden von Resource Manager Parameterwerte und Statusmeldu
 Verwenden Sie diese Referenzen als Hilfe, um **Bereitstellungen** im Verlauf aufzulisten:
 
 * [List By Resource Group](/rest/api/resources/deployments/listbyresourcegroup) (Nach Ressourcengruppe gruppieren)
-* [Get-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Get-AzureRmResourceGroupDeployment)
+* [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
 * [az group deployment list](/cli/azure/group/deployment#az-group-deployment-list)
 
 Verwenden Sie diese Referenzen als Hilfe, um **Bereitstellungen** aus dem Verlauf zu löschen:
 
 * [Löschen](/rest/api/resources/deployments/delete)
-* [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroupDeployment)
+* [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>Löschen von persönlichen Daten in Ressourcengruppennamen
@@ -49,13 +49,13 @@ Der Name der Ressourcengruppe wird gespeichert, bis Sie die Ressourcengruppe lö
 Verwenden Sie diese Referenzen als Hilfe, um **Ressourcengruppen** aufzulisten:
 
 * [Liste](/rest/api/resources/resourcegroups/list)
-* [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/Get-AzureRmResourceGroup)
+* [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az group list](/cli/azure/group#az-group-list)
 
 Verwenden Sie diese Referenzen als Hilfe, um **Ressourcengruppen** zu löschen:
 
 * [Löschen](/rest/api/resources/resourcegroups/delete)
-* [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup)
+* [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
 ## <a name="delete-personal-data-in-tags"></a>Löschen von persönlichen Daten in Tags
@@ -65,13 +65,13 @@ Tagnamen und -werte werden gespeichert, bis Sie das Tag löschen oder ändern. U
 Verwenden Sie diese Referenzen als Hilfe, um **Tags** aufzulisten:
 
 * [Liste](/rest/api/resources/tags/list)
-* [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag)
+* [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [az tag list](/cli/azure/tag#az-tag-list)
 
 Verwenden Sie diese Referenzen als Hilfe, um **Tags** zu löschen:
 
 * [Löschen](/rest/api/resources/tags/delete)
-* [Remove-AzureRmTag](/powershell/module/azurerm.tags/remove-azurermtag)
+* [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [az tag delete](/cli/azure/tag#az-tag-delete)
 
 ## <a name="next-steps"></a>Nächste Schritte

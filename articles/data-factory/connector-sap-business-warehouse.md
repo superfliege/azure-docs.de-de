@@ -184,7 +184,7 @@ Beim Kopieren von Daten aus SAP BW werden die folgenden Zuordnungen von SAP BW-D
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| UNIT | String |
+| EINHEIT | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |

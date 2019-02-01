@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ab2c0f671eaf6147baad24b426c4a527f07e136f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 74f071d91003c63fd8db590572a7c9dea1b8915b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422404"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092750"
 ---
 # <a name="id-tokens"></a>ID-Token
 
@@ -56,7 +56,7 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 |Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 |`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
-|`alg` | Zeichenfolge | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: „RS256“ |
+|`alg` | Zeichenfolge | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |
 |`kid` | Zeichenfolge | Der Fingerabdruck des öffentlichen Schlüssels, der verwendet wird, um dieses Token zu signieren. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
 |`x5t` | Zeichenfolge | Identisch (in Verwendung und Wert) mit `kid`. Dies ist jedoch ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-`id_tokens` ausgegeben wird. |
 
