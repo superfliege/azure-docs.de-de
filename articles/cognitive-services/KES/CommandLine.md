@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 52d001e32e1bdb0d0046853f18649bafa49b1f14
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127146"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228524"
 ---
 # <a name="command-line-interface"></a>Befehlszeilenschnittstelle
 
@@ -80,7 +80,7 @@ Der Befehl **host_service** hostet eine Instanz des KES-Dienstes auf dem lokalen
 |-----------------|----------------------------|
 | `<grammarFile>` | Eingabepfad der Binärgrammatik         |
 | `<indexFile>`   | Eingabepfad des Binärindex           |
-| `--port <port>` | Lokale Portnummer.  Standard: 8000. |
+| `--port <port>` | Lokale Portnummer.  Standardwert: 8.000 |
 
 Diese Dateien können durch lokale Datei- oder URL-Pfade zu Azure-Blobs angegeben werden.  Ein Webdienst wird unter http://localhost:&lt;port&gt;/ gehostet.  Eine Liste der unterstützten Vorgänge finden Sie unter [Web-APIs](WebAPI.md).
 

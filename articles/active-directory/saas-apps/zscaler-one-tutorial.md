@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f352e00d-68d3-4a77-bb92-717d055da56f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: dfe9ad20844eeae30327cf1eb3e9289d094900b2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c3160f86619a6eb7e8bec7bf6e1663fc9b139852
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794106"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Tutorial: Azure Active Directory-Integration von Zscaler One
 
@@ -168,9 +168,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Klicken Sie auf **Configure SAML**.
 
-11. Führen Sie im Fenster **SAML bearbeiten** die folgenden Schritte aus, und klicken Sie dann auf „Speichern“.  
+11. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
             
-    ![Benutzer &amp; Authentifizierung verwalten](./media/zscaler-one-tutorial/ic800208.png "Benutzer &amp; Authentifizierung verwalten")
+    
+  ![Benutzer & Authentifizierung verwalten](./media/zscaler-one-tutorial/ic800208.png "Benutzer &amp;amp; Authentifizierung verwalten")
     
     a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -278,11 +279,11 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste den Benutzer **Britta Simon** aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste die Benutzerin **Britta Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 
     ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_users.png)
 
-6. Wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Benutzerrolle aus, und klicken Sie dann im unteren Bereich des Bildschirms auf die Schaltfläche **Auswählen**.
+6. Wählen Sie im Dialogfeld **Rolle auswählen** die geeignete Rolle in der Liste aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 
     ![image](./media/zscaler-one-tutorial/tutorial_zscalerone_roles.png)
 

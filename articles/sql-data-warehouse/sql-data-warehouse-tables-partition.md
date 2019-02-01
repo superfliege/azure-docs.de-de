@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 04e489e6b6841f1038830d0b160e88111be8d838
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 60f475afd8e9d599d3771b875f15a29e8a082fb7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301959"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245887"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitionieren von Tabellen in SQL Data Warehouse
 Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in Azure SQL Data Warehouse
@@ -70,7 +70,7 @@ WITH
 ## <a name="migrating-partitioning-from-sql-server"></a>Migrieren der Partitionierung von SQL Server
 Gehen Sie einfach wie folgt vor, um SQL Server-Partitionsdefinitionen zu SQL Data Warehouse zu migrieren:
 
-- Entfernen Sie das SQL Server-[Partitionsschema](/sql/t-sql/statements/create-partition-scheme-transact-sql).
+- Entfernen Sie das SQL Server- [Partitionsschema](/sql/t-sql/statements/create-partition-scheme-transact-sql).
 - Fügen Sie die Definition der [Partitionsfunktion](/sql/t-sql/statements/create-partition-function-transact-sql) zu CREATE TABLE hinzu.
 
 Wenn Sie eine partitionierte Tabelle von einer SQL Server-Instanz migrieren, können Sie mit dem unten angegebenen SQL-Code die Anzahl von Zeilen in jeder Partition ermitteln. Beachten Sie Folgendes: Wenn für SQL Data Warehouse die gleiche Partitionierungsgranularität verwendet wird, verringert sich die Anzahl von Zeilen pro Partition um den Faktor 60.  

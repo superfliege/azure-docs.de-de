@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/27/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9be8ddb6869a4872ff3eae9b589584f850c7dc96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 57ba89de9eeb69ee9c78ba2d3adef758134283b7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463606"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203605"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Identitätsanforderungen für Ihre Hybrid-Identitätslösung
 Der erste Schritt beim Entwickeln einer Hybrid-Identitätslösung ist, die Anforderungen für das Unternehmen zu bestimmen, das diese Lösung nutzen wird.  Die Hybrid-Identität beginnt als unterstützende Rolle (unterstützt alle anderen Cloud-Lösungen durch Authentifizierung) und bietet dann neue und interessante Funktionen, die Benutzern neue Workloads ermöglichen.  Diese Workloads oder Dienste, die Sie für Ihre Benutzer integrieren möchten, bestimmen die Anforderungen an die Gestaltung der Hybrid-Identität.  Diese Dienste und Workloads müssen Hybrid-Identität sowohl lokal aus auch in der Cloud nutzen.  

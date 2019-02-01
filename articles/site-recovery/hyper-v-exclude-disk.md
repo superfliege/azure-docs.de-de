@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: 9b26c80b59a57b4a9b2423e1a9028cf723f40fb1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321227"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216964"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden.
@@ -59,7 +59,7 @@ Betrachten wir zwei Szenarien, damit Sie sich besser mit der Funktion zum Aussch
 - tempdb-Datenträger von SQL Server
 - Datenträger für Auslagerungsdatei (pagefile.sys)
 
-## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>Beispiel 1: Ausschließen des tempdb-Datenträgers von SQL Server
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Beispiel 1: Ausschließen des tempdb-Datenträgers von SQL Server
 Angenommen, Sie verwenden einen virtuellen SQL Server-Computer mit einer tempdb, der ausgeschlossen werden kann.
 
 Der Name des virtuellen Datenträgers lautet „SalesDB“.

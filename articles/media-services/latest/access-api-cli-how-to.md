@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 54a92e56df21b59430ed12f191a9cf7a918e14c9
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 43f9443e4b5cd700500bd9803f2737ed9e0aa633
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612898"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223161"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Zugriff auf Azure Media Services API mit Azure CLI
  
@@ -32,13 +32,11 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure CLI eine Azure AD-Anw
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-- Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+[Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
 
-    Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
-
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
-
-    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+ 
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

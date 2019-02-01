@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie innerhalb eines virtuellen Azure-Netzwerks auf sichere Weise Machine Learning-Experimente ausführen und Rückschlüsse ziehen. Erfahren Sie, wie Sie in einem virtuellen Azure-Netzwerk Computeziele für das Modelltraining erstellen und Rückschlüsse ziehen. Darüber hinaus finden Sie hier Informationen zu den Anforderungen für geschützte virtuelle Netzwerke (etwa die Anforderung eingehender und ausgehender Ports).
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 21c4a9042a64a58f67f1f94c300b6438895eea5d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fb67821d883317901617bda101ae91a9a92018c2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856280"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246397"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines virtuellen Azure-Netzwerks
 

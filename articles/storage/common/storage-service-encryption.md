@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: a19cdac54fff641f72d0628c7b0d47060baba9b4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: common
+ms.openlocfilehash: 059091315c378ab6e2bb857e580c02df968b5092
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384121"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457172"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure-Speicherdienstverschlüsselung für ruhende Daten
 Azure-Speicherdienstverschlüsselung für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. Mit dieser Funktion werden Ihre Daten auf der Azure Storage-Plattform automatisch vor dem Ablegen in Azure Managed Disks, Azure Blob Storage, Azure Queue Storage, Azure Table Storage oder Azure Files verschlüsselt und vor dem Abrufen entschlüsselt. Die Verarbeitung der Ver- und Entschlüsselung, der Verschlüsselung ruhender Daten und der Schlüsselverwaltung in Storage Service Encryption ist für Benutzer transparent. Sämtliche in die Azure-Speicherplattform geschriebene Daten werden mittels 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) verschlüsselt, einem der sichersten verfügbaren Blockchiffreverfahren.

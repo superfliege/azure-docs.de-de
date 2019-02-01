@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf4e65b95211fc03ea4a319fd4e503396b893522
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135146"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470313"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
 Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:

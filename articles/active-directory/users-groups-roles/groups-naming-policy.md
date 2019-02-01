@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 1118be1c335d8f88171b359c9cd273cdd2923021
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 08009324ea44b9c31602ebddd19e50588a0dbc65
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321720"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296850"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
 
@@ -81,14 +81,14 @@ Achten Sie darauf, dass Sie alle älteren Versionen von Azure Active Directory-P
 1. Führen Sie die Windows PowerShell-App als Administrator aus.
 2. Deinstallieren Sie alle vorherigen Versionen von AzureADPreview.
   
-  ````
+  ```
   Uninstall-Module AzureADPreview
-  ````
+  ```
 3. Installieren Sie die neueste Version von AzureADPreview.
   
-  ````
+  ```
   Install-Module AzureADPreview
-  ````
+  ```
 Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informiert werden, geben Sie **Y** ein. Es dauert möglicherweise einige Minuten, bis das neue Modul installiert wird.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurieren der Benennungsrichtlinien für Gruppen für einen Mandanten mit Azure AD PowerShell
@@ -97,10 +97,10 @@ Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informie
 
 2. Führen Sie die folgenden Befehle aus, um die Ausführung der Cmdlets vorzubereiten.
   
-  ````
+  ```
   Import-Module AzureADPreview
   Connect-AzureAD
-  ````
+  ```
   Geben Sie auf dem angezeigten Bildschirm **Bei Ihrem Konto anmelden** Ihr Administratorkonto und das zugehörige Kennwort ein, um eine Verbindung mit dem Dienst herzustellen, und wählen Sie **Anmelden** aus.
 
 3. Um Gruppeneinstellungen für diesen Mandanten zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](groups-settings-cmdlets.md) aus.
@@ -109,35 +109,35 @@ Wenn Sie über den Zugriff auf ein nicht vertrauenswürdiges Repository informie
 
 1. Rufen Sie die aktuelle Benennungsrichtlinie ab, um die derzeitigen Einstellungen anzuzeigen.
   
-  ````
+  ```
   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-  ````
+  ```
   
 2. Zeigen Sie die aktuellen Gruppeneinstellungen an.
   
-  ````
+  ```
   $Setting.Values
-  ````
+  ```
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Festlegen von Benennungsrichtlinie und benutzerdefinierten blockierten Wörtern
 
 1. Legen Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell fest. Für die ordnungsgemäße Funktion des Features muss [GroupName] in der Einstellung enthalten sein.
   
-  ````
+  ```
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-  ````
+  ```
   
 2. Legen Sie benutzerdefinierte blockierte Wörter fest, deren Verwendung Sie einschränken möchten. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre eigenen benutzerdefinierten Wörter hinzufügen können.
   
-  ````
+  ```
   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-  ````
+  ```
   
 3. Speichern Sie die Einstellungen wie im folgenden Beispiel, damit die neue Richtlinie angewendet wird.
   
-  ````
+  ```
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ````
+  ```
   
 Das ist alles. Sie haben Ihre Benennungsrichtlinie festgelegt und eigene blockierte Wörter hinzugefügt.
 
@@ -147,14 +147,14 @@ Weitere Informationen finden Sie im Artikel [Azure Active Directory-Cmdlets zum 
 
 Hier ist ein PowerShell-Beispielskript zum Exportieren mehrerer blockierter Wörter:
 
-````
+```
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
 Add-Content "c:\work\currentblockedwordslist.txt" -Value $words.value.Split(",").Replace("`"","")  
-````
+```
 
 Hier ist ein PowerShell-Beispielskript zum Importieren mehrerer blockierter Wörter:
 
-````
+```
 $BadWords = Get-Content "C:\work\currentblockedwordslist.txt"
 $BadWords = [string]::join(",", $BadWords)
 $Settings = Get-AzureADDirectorySetting | Where-Object {$_.DisplayName -eq "Group.Unified"}
@@ -166,27 +166,27 @@ if ($Settings.Count -eq 0)
 $Settings["CustomBlockedWordsList"] = $BadWords
 $Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
-````
+```
 
 ## <a name="remove-the-naming-policy"></a>Entfernen der Benennungsrichtlinie
 
 1. Leeren Sie die Präfixe und Suffixe für Gruppennamen in Azure AD PowerShell.
   
-  ````
+  ```
   $Setting["PrefixSuffixNamingRequirement"] =""
-  ````
+  ```
   
 2. Leeren Sie die benutzerdefinierten blockierten Wörter. 
   
-  ````
+  ```
   $Setting["CustomBlockedWordsList"]=""
-  ````
+  ```
   
 3. Speichern Sie die Einstellungen.
   
-  ````
+  ```
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ````
+  ```
 
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Benennungsrichtlinien in Office 365-Apps

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521539"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470738"
 ---
 # <a name="design-for-querying"></a>Entwurf für Abfragen
 Anwendungen für einen Tabellenspeicherdienst können intensiv lesen, intensiv schreiben oder beides. Dieser Artikel konzentriert sich auf die Dinge, die Sie beim Entwurf Ihres Tabellenspeicherdienstes beachten sollten, um Lesevorgänge effizient zu unterstützen. In der Regel ist ein Entwurf, der Lesevorgänge effizient unterstützt, auch für Schreibvorgänge effizient. Es gibt jedoch weitere Überlegungen, die beim Entwerfen der Unterstützung von Schreibvorgängen zu beachten sind und im Artikel [Entwurf für die Datenänderung](table-storage-design-for-modification.md) erläutert werden.

@@ -12,16 +12,16 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d430a9f1ddec785d236f2501178bd3c7d493f716
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470592"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 
-In diesem Tutorial wird ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung beschrieben, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Sie verwenden die [Geowiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups), um den Katalog und die Mandantendatenbanken aus automatisch verwalteten georedundanten Sicherungen in einer anderen Wiederherstellungsregion wiederherzustellen. Nach Behebung des Ausfalls verwenden Sie die [Georeplikation](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), um geänderte Datenbanken in ihre ursprüngliche Region zurückzuführen.
+In diesem Tutorial wird ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung beschrieben, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Sie verwenden die [Geowiederherstellung](sql-database-recovery-using-backups.md), um den Katalog und die Mandantendatenbanken aus automatisch verwalteten georedundanten Sicherungen in einer anderen Wiederherstellungsregion wiederherzustellen. Nach Behebung des Ausfalls verwenden Sie die [Georeplikation](sql-database-geo-replication-overview.md), um geänderte Datenbanken in ihre ursprüngliche Region zurückzuführen.
 
 ![Architektur der Geowiederherstellung](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
@@ -63,12 +63,12 @@ Notfallwiederherstellung (NW) ist ein wichtiger Aspekt für viele Anwendungen, s
 In diesem Tutorial werden Features von Azure SQL-Datenbank und der Azure-Plattform zur Bewältigung der folgenden Herausforderungen verwendet:
 
 * [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), um jegliche erforderliche Kapazität so schnell wie möglich zu reservieren. Azure Resource Manager-Vorlagen werden verwendet, um ein Spiegelimage der ursprünglichen Server und der Pools für elastische Datenbanken in der Wiederherstellungsregion bereitzustellen. Außerdem werden ein separater Server und Pool für die Bereitstellung neuer Mandanten erstellt.
-* [Clientbibliothek für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (CBED), um einen Mandantendatenbankkatalog zu erstellen und zu verwalten. Der erweiterte Katalog enthält regelmäßig aktualisierte Pool- und Datenbankkonfigurationsinformationen.
-* [Shardverwaltungs-Wiederherstellungsfunktionen](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager) der CBED, um Datenbankspeicherorteinträge im Katalog während einer Wiederherstellung und Rückführung zu verwalten.  
-* [Geowiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery), um den Katalog und die Mandantendatenbanken aus automatisch verwalteten georedundanten Sicherungen wiederherzustellen. 
+* [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) (CBED), um einen Mandantendatenbankkatalog zu erstellen und zu verwalten. Der erweiterte Katalog enthält regelmäßig aktualisierte Pool- und Datenbankkonfigurationsinformationen.
+* [Shardverwaltungs-Wiederherstellungsfunktionen](sql-database-elastic-database-recovery-manager.md) der CBED, um Datenbankspeicherorteinträge im Katalog während einer Wiederherstellung und Rückführung zu verwalten.  
+* [Geowiederherstellung](sql-database-disaster-recovery.md), um den Katalog und die Mandantendatenbanken aus automatisch verwalteten georedundanten Sicherungen wiederherzustellen. 
 * [Asynchrone Wiederherstellungsvorgänge](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), die in der Mandantenprioritätsreihenfolge gesendet, vom System für jeden Pool in die Warteschlange eingereiht und in Batches verarbeitet werden, damit der Pool nicht überlastet wird. Diese Vorgänge können bei Bedarf vor oder während der Ausführung abgebrochen werden.   
-* [Georeplikation](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), um Datenbanken nach einem Ausfall in die ursprüngliche Region zurückzuführen. Bei Verwendung der Georeplikation gibt es keinen Datenverlust und nur minimale Auswirkungen auf den Mandanten.
-* [DNS-Aliase für SQL Server](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), damit der Katalogsynchronisierungsprozess eine Verbindung mit dem aktiven Katalog unabhängig von dessen Speicherort herstellen kann.  
+* [Georeplikation](sql-database-geo-replication-overview.md), um Datenbanken nach einem Ausfall in die ursprüngliche Region zurückzuführen. Bei Verwendung der Georeplikation gibt es keinen Datenverlust und nur minimale Auswirkungen auf den Mandanten.
+* [DNS-Aliase für SQL Server](dns-alias-overview.md), damit der Katalogsynchronisierungsprozess eine Verbindung mit dem aktiven Katalog unabhängig von dessen Speicherort herstellen kann.  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Abrufen der Notfallwiederherstellungsskripts
 
@@ -378,4 +378,4 @@ Führen Sie jetzt das Tutorial [Notfallwiederherstellung für eine mehrinstanzen
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-[Zusätzliche Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[Zusätzliche Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

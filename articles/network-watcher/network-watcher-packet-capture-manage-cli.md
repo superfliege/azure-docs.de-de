@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 70ec0f1acc54aae7de5f815d62a876ce3d033193
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6288a976547cc405c804eaeca9b83e9dccc72240
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966895"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092221"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
 > - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [Azure-CLI](network-watcher-packet-capture-manage-cli.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-packet-capture-manage-cli.md)
 > - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
 
 Mithilfe der Paketerfassung von Network Watcher können Sie Sitzungen erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr. Durch die Möglichkeit zur Remoteauslösung von Paketerfassungen erleichtert diese Funktion die manuelle Ausführung einer Paketerfassung auf dem gewünschten Computer. So sparen Sie wertvolle Zeit.
@@ -66,7 +66,7 @@ Für virtuelle Linux-Computer:
 
 ```azurecli
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
-````
+```
 
 ### <a name="step-2"></a>Schritt 2
 
@@ -194,13 +194,13 @@ Das folgende Beispiel zeigt die Ausgabe des Cmdlets `az network watcher packet-c
   "additionalProperties": {
     "status": "Succeeded"
   },
-  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
 cketCaptures/packetCaptureName",
-  "name": "packetCaptureName",
+  "name": "packetCaptureName",
   "packetCaptureError": [],
-  "packetCaptureStatus": "Stopped",
-  "stopReason": "TimeExceeded"
+  "packetCaptureStatus": "Stopped",
+  "stopReason": "TimeExceeded"
 }
 ```
 

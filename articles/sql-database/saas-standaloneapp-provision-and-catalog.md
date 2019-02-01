@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 01/31/2018
-ms.openlocfilehash: 92a1745f8da9783a22c7cbf417acb0709759f41c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 12beb167c5225f669529dd2db375468fc881c8eb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054307"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468562"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Bereitstellen und Katalogisieren neuer Mandanten mithilfe des SaaS-Musters für eine Anwendung pro Mandant
 
@@ -28,6 +28,7 @@ Dieser Artikel setzt sich aus zwei Hauptteilen zusammen:
     * Im Tutorial wird die SaaS-Beispielanwendung Wingtip Tickets verwendet, die an das Muster für eine eigenständige Anwendung pro Mandant angepasst ist.
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Muster für eine eigenständige Anwendung pro Mandant
+
 Das Muster für eine eigenständige Anwendung pro Mandant ist eines von mehreren Mustern für mehrinstanzenfähige SaaS-Anwendungen.  Bei diesem Muster wird für jeden Mandanten eine eigenständige Anwendung bereitgestellt. Die Anwendung besteht aus Komponenten auf Anwendungsebene und einer SQL-Datenbank.  Jede Mandantenanwendung kann im Abonnement des Anbieters bereitgestellt werden.  Alternativ bietet Azure ein [Programm für verwaltete Anwendungen](https://docs.microsoft.com/azure/managed-applications/overview), in dem eine Anwendung im Abonnement eines Mandanten bereitgestellt und vom Anbieter im Auftrag des Mandanten verwaltet werden kann. 
 
    ![Muster für eine Anwendung pro Mandant](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
@@ -35,6 +36,7 @@ Das Muster für eine eigenständige Anwendung pro Mandant ist eines von mehreren
 Beim Bereitstellen einer Anwendung für einen Mandanten werden die Anwendung und die Datenbank in einer neuen Ressourcengruppe bereitgestellt, die für den Mandanten erstellt wurde.  Durch Verwendung separater Ressourcengruppen werden die Anwendungsressourcen der einzelnen Mandanten isoliert und können dadurch unabhängig verwaltet werden. Innerhalb jeder Ressourcengruppe sind die jeweiligen Anwendungsinstanzen so konfiguriert, dass direkt auf die entsprechende Datenbank zugegriffen wird.  Dieses Verbindungsmodell steht im Gegensatz zu anderen Mustern, bei denen Katalog-zu-Broker-Verbindungen zwischen der Anwendung und der Datenbank verwendet werden.  Da keine Ressourcenfreigabe erfolgt, muss jede Mandantendatenbank mit genügend Ressourcen für die jeweilige Spitzenlast bereitgestellt werden. Dieses Muster wird zumeist für SaaS-Anwendungen mit weniger Mandanten verwendet, bei denen der Schwerpunkt auf der Isolation von Mandanten und weniger auf den Ressourcenkosten liegt.  
 
 ## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>Verwenden eines Mandantenkatalogs mit dem Muster für eine Anwendung pro Mandant
+
 Obwohl die Anwendung und die Datenbank jedes Mandanten vollständig isoliert sind, können verschiedene Verwaltungs- und Analyseszenarien mandantenübergreifend operieren.  Beispielsweise sind zum Anwenden einer Schemaänderung für eine neue Anwendungsversion Änderungen am Schema jeder Mandantendatenbank erforderlich. Berichterstellungs- und Analyseszenarien können auch den Zugriff auf alle Mandantendatenbanken erfordern und zwar unabhängig davon, wo diese bereitgestellt werden.
 
    ![Muster für eine Anwendung pro Mandant](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
@@ -42,19 +44,22 @@ Obwohl die Anwendung und die Datenbank jedes Mandanten vollständig isoliert sin
 Der Mandantenkatalog enthält eine Zuordnung zwischen einer Mandanten-ID und einer Mandantendatenbank, sodass eine ID in einen Server- und Datenbanknamen aufgelöst werden kann.  In der Wingtip-SaaS-App wird die Mandanten-ID als Hash des Mandantennamens berechnet, doch können auch andere Schemas verwendet werden.  Zwar benötigen eigenständige Anwendungen den Katalog nicht zum Verwalten von Verbindungen, doch kann er verwendet werden, um andere Aktionen auf eine Gruppe von Mandantendatenbanken zu begrenzen. Beispielsweise kann eine elastische Abfrage den Katalog verwenden, um die Gruppe von Datenbanken zu bestimmen, auf die Abfragen für mandantenübergreifende Berichte verteilt werden.
 
 ## <a name="elastic-database-client-library"></a>Clientbibliothek für elastische Datenbanken
-In der Wingtip-Beispielanwendung wird der Katalog durch die Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) implementiert.  Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer Shardzuordnung, die in einer Datenbank gespeichert wird. Im Wingtip Tickets-Beispiel wird der Katalog in der Datenbank *Mandantenkatalog* gespeichert.  Der Shard ordnet einen Mandantenschlüssel dem Shard (Datenbank) zu, in dem die Daten dieses Mandanten gespeichert werden.  EDCL-Funktionen verwalten eine *globale Shardzuordnung*, die in Tabellen in der Datenbank *Mandantenkatalog* gespeichert ist, und eine *lokale Shardzuordnung*, die in jedem Shard gespeichert ist.
+
+In der Wingtip-Beispielanwendung wird der Katalog durch die Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](sql-database-elastic-database-client-library.md) implementiert.  Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer Shardzuordnung, die in einer Datenbank gespeichert wird. Im Wingtip Tickets-Beispiel wird der Katalog in der Datenbank *Mandantenkatalog* gespeichert.  Der Shard ordnet einen Mandantenschlüssel dem Shard (Datenbank) zu, in dem die Daten dieses Mandanten gespeichert werden.  EDCL-Funktionen verwalten eine *globale Shardzuordnung*, die in Tabellen in der Datenbank *Mandantenkatalog* gespeichert ist, und eine *lokale Shardzuordnung*, die in jedem Shard gespeichert ist.
 
 EDCL-Funktionen können aus Anwendungen oder PowerShell-Skripts aufgerufen werden, um Einträge in der Shardzuordnung zu erstellen und zu verwalten. Andere EDCL-Funktionen können zum Abrufen der Gruppe von Shards oder zum Herstellen einer Verbindung mit der richtigen Datenbank für den angegebenen Mandantenschlüssel verwendet werden. 
-    
-> [!IMPORTANT] 
+
+> [!IMPORTANT]
 > Bearbeiten Sie die Daten in der Katalogdatenbank oder die lokale Shardzuordnung in den Mandantendatenbanken nicht direkt. Direkte Updates werden aufgrund des hohen Risikos einer Datenbeschädigung nicht unterstützt. Bearbeiten Sie die Zuordnungsdaten stattdessen ausschließlich über EDCL-APIs.
 
 ## <a name="tenant-provisioning"></a>Bereitstellen von Mandanten 
+
 Jeder Mandant erfordert eine neue Azure-Ressourcengruppe, die erstellt werden muss, bevor Ressourcen darin bereitgestellt werden können. Sobald die Ressourcengruppe vorhanden ist, kann eine Azure Resource Manager-Vorlage zum Bereitstellen der Anwendungskomponenten und der Datenbank verwendet und dann die Datenbankverbindung konfiguriert werden. Zum Initialisieren des Datenbankschemas kann die Vorlage eine BACPAC-Datei importieren.  Alternativ kann die Datenbank als eine Kopie einer Vorlagendatenbank erstellt werden.  Die Datenbank wird dann mit anfänglichen Daten zu Veranstaltungsorten weiter aktualisiert und im Katalog registriert.
 
 ## <a name="tutorial"></a>Tutorial
 
 In diesem Tutorial lernen Sie Folgendes:
+
 * Bereitstellen eines Katalogs
 * Registrieren der Beispielmandantendatenbanken, die Sie zuvor im Katalog bereitgestellt haben
 * Bereitstellen eines zusätzlichen Mandanten und Registrieren im Katalog
@@ -64,12 +69,16 @@ Es wird eine Azure Resource Manager-Vorlage verwendet, um die Anwendung bereitzu
 Am Ende dieses Tutorials verfügen Sie über eine Reihe eigenständiger Mandantenanwendungen, wobei jede Datenbank im Katalog registriert ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind: 
+
 * Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Die drei Beispielmandantenanwendungen sind bereitgestellt. Informationen zum Bereitstellen dieser Anwendungen in weniger als fünf Minuten finden Sie unter [Bereitstellen und Untersuchen des Musters der eigenständigen SaaS-Anwendung Wingtip Tickets](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy).
+* Die drei Beispielmandantenanwendungen sind bereitgestellt. Informationen zum Bereitstellen dieser Anwendungen in weniger als fünf Minuten finden Sie unter [Bereitstellen und Untersuchen des Musters der eigenständigen SaaS-Anwendung Wingtip Tickets](saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>Bereitstellen des Katalogs
+
 In dieser Aufgabe erfahren Sie, wie Sie den Katalog bereitstellen, der zum Registrieren aller Mandantendatenbanken verwendet wird. In diesem Tutorial führen Sie folgende Schritte aus: 
+
 * **Bereitstellen der Katalogdatenbank** mithilfe einer Azure Resource Manager-Vorlage. Die Datenbank wird durch Importieren einer BACPAC-Datei initialisiert.  
 * **Registrieren der Beispielmandantenanwendungen**, die Sie zuvor bereitgestellt haben.  Jeder Mandant wird mithilfe eines Schlüssels registriert, der aus einem Hash des Mandantennamens erstellt wird.  Der Mandantenname wird auch in einer Erweiterungstabelle im Katalog gespeichert.
 
@@ -108,6 +117,7 @@ Sehen Sie sich nun die von Ihnen erstellten Ressourcen an.
 ## <a name="provision-a-new-tenant-application"></a>Bereitstellen einer neuen Mandantenanwendung
 
 In dieser Aufgabe erfahren Sie, wie Sie eine einzelne Mandantenanwendung bereitstellen. In diesem Tutorial führen Sie folgende Schritte aus:  
+
 * **Erstellen einer neuen Ressourcengruppe** für den Mandanten. 
 * **Bereitstellen der Anwendung und der Datenbank** in der neuen Ressourcengruppe mithilfe einer Azure Resource Manager-Vorlage.  Diese Aktion umfasst das Initialisieren der Datenbank mit einem gemeinsamen Schema und das Verweisen auf Daten durch Importieren einer BACPAC-Datei. 
 * **Initialisieren der Datenbank mit grundlegenden Mandanteninformationen**. Diese Aktion umfasst das Angeben des Veranstaltungsorttyps, durch den bestimmt wird, welches Foto als Hintergrund auf der Website mit den jeweiligen Veranstaltungen verwendet wird. 
@@ -129,7 +139,7 @@ Anschließend können Sie die neuen Ressourcen überprüfen, die im Azure-Portal
    ![Red Maple Racing-Ressourcen](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
 
 
-## <a name="to-stop-billing-delete-resource-groups"></a>Löschen von Ressourcengruppen zum Beenden der Abrechnung ##
+## <a name="to-stop-billing-delete-resource-groups"></a>Löschen von Ressourcengruppen zum Beenden der Abrechnung
 
 Nachdem Sie das Beispiel untersucht haben, löschen Sie alle von Ihnen erstellten Ressourcengruppen, um die zugehörige Abrechnung zu beenden.
 
@@ -146,4 +156,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 > * Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
 
-Sie können untersuchen, wie der Katalog verwendet wird, um verschiedene mandantenübergreifende Szenarien mithilfe der Version für eine Datenbank pro Mandant der [Wingtip Tickets SaaS-Anwendung](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview) zu unterstützen.  
+Sie können untersuchen, wie der Katalog verwendet wird, um verschiedene mandantenübergreifende Szenarien mithilfe der Version für eine Datenbank pro Mandant der [Wingtip Tickets SaaS-Anwendung](saas-dbpertenant-wingtip-app-overview.md) zu unterstützen.  

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 140c542b71ff87f6b7a846888da06e58fa03ce10
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: da20c4b30e2708bf7754d025cfbd2c269c3b5c7c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855328"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164188"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Verwenden von cloud-init zum Festlegen eines Hostnamens für eine Linux-VM in Azure
 In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Festlegen eines Hostnamens für einen virtuellen Computer (VM) oder eine VM-Skalierungsgruppe (VMSS) während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
@@ -34,7 +34,7 @@ Um den Upgradevorgang in Aktion zu sehen, erstellen Sie in Ihrer aktuellen Shell
 hostname: myhostname
 ```
 
-Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe erstellen. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

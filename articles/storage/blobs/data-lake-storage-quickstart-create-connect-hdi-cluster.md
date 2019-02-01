@@ -3,17 +3,17 @@ title: Einrichten von Clustern für Hadoop, Spark, Kafka, HBase oder R Server �
 description: Richten Sie Hadoop-, Kafka-, Spark-, HBase-, R Server- oder Storm-Cluster für HDInsight über einen Browser, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder ein SDK ein.
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a3c6474c6b1c27c3b413d98d86cdadbcb61e2040
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353854"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247288"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Schnellstart: Einrichten von Clustern in HDInsight
 
@@ -142,7 +142,7 @@ Die Verwendung der Knoten wird so lange abgerechnet, wie der Cluster vorhanden i
 
 Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten, Terminologie für Knoten und eine VM-Standardgröße. In der folgenden Tabelle ist die Anzahl von Knoten für jeden Knotentyp jeweils in Klammern angegeben.
 
-| Typ | Nodes | Diagramm |
+| Type | Nodes | Diagramm |
 | --- | --- | --- |
 | Hadoop |Hauptknoten (2), Datenknoten (1+) |![HDInsight-Hadoop-Clusterknoten](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-hadoop-cluster-type-nodes.png) |
 | hbase |Hauptserver (2), Regionsserver (1+), Master-/Zookeeper-Knoten (3) |![HDInsight-HBase-Clusterknoten](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-hbase-cluster-type-setup.png) |

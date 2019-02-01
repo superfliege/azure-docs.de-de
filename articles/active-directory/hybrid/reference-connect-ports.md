@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 38a344fb6e67beae6310480646d84a1fe7730f84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b5c7a1c56d9df28b8132f240dc3872314f029f78
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461035"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155322"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Erforderliche Ports und Protokolle für die Hybrid-Identität
 Das folgende Dokument ist eine technische Referenz zu den erforderlichen Ports und Protokollen für die Implementierung einer Hybrid-Identitätslösung. Sehen Sie sich die folgende Abbildung und die entsprechende Tabelle an.
@@ -36,7 +36,7 @@ In dieser Tabelle werden die Ports und Protokolle beschrieben, die für die Komm
 | Kerberos |88 (TCP/UDP) |Kerberos-Authentifizierung für die AD-Gesamtstruktur |
 | MS-RPC |135 (TCP/UDP) |Wird bei der anfänglichen Konfiguration des Azure AD Connect-Assistenten beim Binden an die AD-Gesamtstruktur sowie bei der Kennwortsynchronisierung verwendet |
 | LDAP |389 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Daten werden per Kerberos Sign & Seal verschlüsselt. |
-| RPC | 445 (TCP/UDP) |Wird bei nahtlosem SSO zum Erstellen eines Computerkontos in der Active Directory-Gesamtstruktur verwendet. |
+| SMB | 445 (TCP/UDP) |Wird bei nahtlosem SSO zum Erstellen eines Computerkontos in der Active Directory-Gesamtstruktur verwendet. |
 | LDAP/SSL |636 (TCP/UDP) |Wird zum Importieren von Daten aus AD verwendet. Die Datenübertragung ist signiert und verschlüsselt. Gilt nur bei Verwendung von SSL. |
 | RPC |49152- 65535 (Random High RPC-Port) (TCP/UDP) |Wird bei der anfänglichen Konfiguration von Azure AD Connect beim Binden an die AD-Gesamtstrukturen und bei der Kennwortsynchronisierung verwendet. Weitere Informationen finden Sie unter [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017) und [KB224196](https://support.microsoft.com/kb/224196). |
 

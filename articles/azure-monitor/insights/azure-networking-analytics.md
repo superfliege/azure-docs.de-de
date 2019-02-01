@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 4363d7a319eb31dbf020121bf2fa5c5630296c5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 66bac977d05276833a357521a3a040c59b2f28fa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191705"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900288"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Azure-Netzwerküberwachungslösungen in Log Analytics
 
 Log Analytics bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
 * Netzwerkleistungsmonitor (NPM) zum
- * Überwachen der Integrität Ihres Netzwerks
+    * Überwachen der Integrität Ihres Netzwerks
 * Azure Application Gateway-Analyse zur Überprüfung
- * Azure Application Gateway-Protokolle
- * Azure Application Gateway-Metriken
+    * Azure Application Gateway-Protokolle
+    * Azure Application Gateway-Metriken
 * Lösungen zum Überwachen und Überprüfen der Netzwerkaktivität in Ihrem Cloudnetzwerk
-* [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Azure-Netzwerksicherheitsgruppen-Analyse
+    * [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * Azure-Netzwerksicherheitsgruppen-Analyse
 
 ## <a name="network-performance-monitor-npm"></a>Netzwerkleistungsmonitor (NPM)
 

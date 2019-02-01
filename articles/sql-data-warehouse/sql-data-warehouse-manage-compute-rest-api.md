@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8db4d5cb69b65e60cd77d85d743798168bc6d813
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b1763bf08b15a5b40619522ee212eefe3a72ee76
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300832"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455670"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-APIs für Azure SQL Data Warehouse
 REST-APIs für die Verwaltung von Computeressourcen in Azure SQL Data Warehouse.
@@ -36,7 +36,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>Anhalten von Computeressourcen
 
-Zum Anhalten einer Datenbank verwenden Sie die REST-API zum [Anhalten der Datenbank](/rest/api/sql/databases/pause). Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ angehalten. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
+Zum Anhalten einer Datenbank verwenden Sie die REST-API zum [Anhalten der Datenbank](/rest/api/sql/databases/pause) . Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ angehalten. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -44,7 +44,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 
 ## <a name="resume-compute"></a>Fortsetzen von Computeressourcen
 
-Zum Starten einer Datenbank verwenden Sie die REST-API zum [Fortsetzen der Datenbank](/rest/api/sql/databases/resume). Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ gestartet. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“. 
+Verwenden Sie die REST-API zum [Fortsetzen der Datenbank](/rest/api/sql/databases/resume) , um eine Datenbank zu starten. Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ gestartet. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“. 
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1

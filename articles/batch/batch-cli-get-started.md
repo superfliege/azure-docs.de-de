@@ -3,7 +3,7 @@ title: Erste Schritte mit der Azure CLI für Batch | Microsoft-Dokumentation
 description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der Azure-Befehlszeilenschnittstelle zum Verwalten von Ressourcen des Azure Batch-Diensts.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -13,14 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b5c1df8776b63fc8ceecfa0377e74c757ba503c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d51052f4e04a1497ccf2e91427e3465bdc5bf2f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950147"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476824"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -62,7 +62,7 @@ Um die Azure CLI mit Batch zu verwenden, müssen Sie sich anmelden und authentif
 
 Es gibt verschiedenen Möglichkeiten, sich bei Azure anzumelden. Diese werden unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli) ausführlich beschrieben:
 
-1. [Interaktiv anmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-interactive-log-in). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
+1. [Interaktiv anmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
 2. [Anmelden mit einem Dienstprinzipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
 
 Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) an der Befehlszeile ein:

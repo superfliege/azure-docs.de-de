@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 51cf04509608435117e0368b25952a58f7fc3557
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a394c0dff74ec5f926356a3d700c5bbba4c0e4f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609558"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478286"
 ---
 # <a name="in-memory-sample"></a>In-Memory-Beispiel
 
@@ -55,7 +55,7 @@ Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLT
 4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist die `MEMORY_OPTIMIZED = ON`-Klausel in den CREATE TABLE-Anweisungen. Beispiel: 
 
 
-```
+```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
     [SalesOrderID] int IDENTITY NOT NULL PRIMARY KEY NONCLUSTERED ...,
     ...
@@ -69,7 +69,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 Wenn bei Ausführen des T-SQL-Skripts der Fehler 40536 angezeigt wird, führen Sie das folgende T-SQL-Skript aus, um zu prüfen, ob die Datenbank In-Memory unterstützt:
 
 
-```
+```sql
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
@@ -94,7 +94,7 @@ Sie können im **Objekt-Explorer** in SSMS speicheroptimierte Tabellen untersuch
 Oder Sie können die Katalogsichten abfragen wie z. B.:
 
 
-```
+```sql
 SELECT is_memory_optimized, name, type_desc, durability_desc
     FROM sys.tables
     WHERE is_memory_optimized = 1;
@@ -104,7 +104,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 **Nativ kompilierte gespeicherte Prozedur**: Sie können „SalesLT.usp_InsertSalesOrder_inmem“ über eine Katalogsichtabfrage untersuchen:
 
 
-```
+```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
     FROM sys.sql_modules
     WHERE uses_native_compilation = 1;
@@ -145,7 +145,7 @@ Das folgende Skript fügt einen Beispielauftrag mit fünf Positionen in die folg
 - SalesLT.SalesOrderDetail_inmem
 
 
-```
+```sql
 DECLARE
     @i int = 0,
     @od SalesLT.SalesOrderDetailType_inmem,
@@ -244,7 +244,7 @@ Sobald Sie über das Ergebnis der Ausführung von *_inmem* verfügen, führen Si
 
 
 1. Setzen Sie die Datenbank durch Ausführen des folgenden Befehls in SSMS zurück, um alle Daten zu löschen, die bei der vorherigen Ausführung eingefügt wurden:
-```
+```sql
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -315,7 +315,7 @@ Für die Tabelle „FactResellerSalesXL\_CCI“ ist ein gruppierter Columnstore-
 Der folgende T-SQL-Skriptauszug gibt Statistiken für E/A und Dauer der Abfrage der einzelnen Tabellen zurück.
 
 
-```
+```sql
 /*********************************************************************
 Step 2 -- Overview
 -- Page Compressed BTree table v/s Columnstore table performance differences

@@ -3,19 +3,19 @@ title: Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten
 description: In diesem Artikel wird beschrieben, wie ein Administrator über das Azure-Portal oder mithilfe von PowerShell eine Zugriffs- oder Verweigerungsliste zum Zulassen oder Blockieren von B2B-Benutzern von bestimmten Domänen festlegen kann.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: d0458fa9c40c5a6681a3f691cbb3d6a02f01ce66
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d5a39efd932225eb2f71acdba742c88095df8ec9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429065"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098781"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen
 
@@ -86,71 +86,71 @@ So überprüfen Sie die Version des Moduls (und ob es installiert ist)
 1. Öffnen Sie Windows PowerShell als Benutzer mit erhöhten Rechten („Als Administrator ausführen“). 
 2. Führen Sie den folgenden Befehl aus, um festzustellen, ob auf Ihrem Computer Versionen des Azure Active Directory-Moduls für Windows PowerShell installiert sind:
 
-   ````powershell  
+   ```powershell  
    Get-Module -ListAvailable AzureAD*
-   ````
+   ```
 
 Wenn das Modul nicht installiert oder nicht die erforderliche Version installiert ist, gehen Sie folgendermaßen vor:
 
 - Wenn keine Ergebnisse zurückgegeben werden, führen Sie den folgenden Befehl aus, um die neueste Version des AzureADPreview-Moduls zu installieren:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Wenn nur das AzureAD-Modul in den Ergebnissen angezeigt wird, führen Sie die folgenden Befehle aus, um das AzureADPreview-Modul zu installieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, es sich jedoch um eine frühere Version als 2.0.0.98 handelt, führen Sie die folgenden Befehle aus, um die Version zu aktualisieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-   ````
+   ```
 
 - Wenn das AzureAD- und das AzureADPreview-Modul in den Ergebnissen angezeigt werden, es sich jedoch um eine frühere Version des AzureADPreview-Moduls als 2.0.0.98 handelt, führen Sie die folgenden Befehle aus, um die Version zu aktualisieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-    ````
+    ```
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Konfigurieren der Richtlinie mithilfe der AzureADPolicy-Cmdlets
 
 Verwenden Sie zum Erstellen einer Zulassungs- oder Verweigerungsliste das Cmdlet [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview). Im folgenden Beispiel wird gezeigt, wie Sie eine Verweigerungsliste festlegen, mit der die Domäne live.com blockiert wird.
 
-````powershell 
+```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
 
 New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
-````
+```
 
 Nachstehend sehen Sie das gleiche Beispiel, jedoch mit einer Inline-Richtliniendefinition.
 
-````powershell  
+```powershell  
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
-````
+```
 
 Verwenden Sie zum Festlegen der Richtlinie für die Zulassungs- oder Verweigerungsliste das Cmdlet [Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview). Beispiel: 
 
-````powershell   
+```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
-````
+```
 
 Verwenden Sie zum Abrufen der Richtlinie das Cmdlet [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview). Beispiel: 
 
-````powershell
+```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
-````
+```
 
 Verwenden Sie zum Entfernen der Richtlinie das Cmdlet [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview). Beispiel: 
 
-````powershell
+```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
-````
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

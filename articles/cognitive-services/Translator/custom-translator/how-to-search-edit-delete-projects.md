@@ -5,16 +5,16 @@ description: Custom Translator bietet verschiedene Möglichkeiten, Ihre Projekte
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 185febd18d773a07601fce4dfa8c4575855f84b0
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626965"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226603"
 ---
 # <a name="search-edit-and-delete-projects"></a>Suchen, Bearbeiten und Löschen von Projekten
 

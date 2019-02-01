@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c59065b21935336a77e3fb88c30f12cded341808
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 351231fb50b60be1163c787913ef7ab944ba01b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473927"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172169"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
 Es gibt verschiedene Gründe, weshalb Sie möglicherweise über mehrere Active Directory-Gesamtstrukturen verfügen, und es gibt eine Reihe unterschiedlicher Bereitstellungstopologien. Häufige Modelle umfassen eine Kontoressourcenbereitstellung und per GAL synchronisierte Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme. Es gibt zwar reine Modelle, Hybridmodelle sind jedoch ebenfalls häufig vorhanden. Die Standardkonfiguration der Azure AD Connect-Synchronisierung geht von keinem bestimmten Modell aus. Es können jedoch auf Basis des im Installationshandbuch ausgewählten Benutzerabgleichs unterschiedliche Verhaltensweisen beobachtet werden.

@@ -3,7 +3,7 @@ title: Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgrup
 description: Es werden unterschiedliche Möglichkeiten beschrieben, wie Sie eine Azure-VM-Skalierungsgruppe basierend auf der Leistung oder nach einem festen Zeitplan automatisch skalieren können.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117434"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883295"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 Mit einer Azure-VM-Skalierungsgruppe kann die Anzahl von VM-Instanzen, von denen Ihre Anwendung ausgeführt wird, automatisch erhöht oder verringert werden. Mit diesem automatisierten und elastischen Verhalten wird der Verwaltungsaufwand reduziert, der für das Überwachen und Optimieren der Leistung Ihrer Anwendung anfällt. Sie erstellen Regeln, mit denen die angemessene Leistung definiert wird, die für eine positive Kundenerfahrung erforderlich ist. Wenn diese definierten Schwellenwerte erfüllt sind, werden von der automatischen Skalierung die Aktionen zum Anpassen der Kapazität Ihrer Skalierungsgruppe durchgeführt. Außerdem können Sie Ereignisse planen, um die Kapazität Ihrer Skalierungsgruppe zu festen Zeiten automatisch zu erhöhen oder zu verringern. Dieser Artikel enthält eine Übersicht darüber, welche Leistungsmetriken verfügbar sind und welche Aktionen von der automatischen Skalierung durchgeführt werden können.

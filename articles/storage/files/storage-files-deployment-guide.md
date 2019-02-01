@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: files
+ms.openlocfilehash: d17389af1129c63d2c0eadfac04c034669200620
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242453"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462731"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.

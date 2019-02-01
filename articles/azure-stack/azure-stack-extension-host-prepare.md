@@ -5,17 +5,18 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 01/22/2018
+ms.date: 01/25/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: daf524e6802fbb0548ff2d30d32dc6fbd4bc68cb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 840c230ae3b2fc167c0d59a4a9a0155fe5deb661
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476392"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238237"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Vorbereiten auf den Erweiterungshost für Azure Stack
 
@@ -127,7 +128,7 @@ Verwenden Sie für die folgenden Schritte einen Computer, der eine Verbindung mi
 > Dieser Schritt ist nicht erforderlich, wenn Sie die DNS-Zonendelegierung für die DNS-Integration verwenden.
 Wenn einzelne A-Datensätze des Hosts zum Veröffentlichen von Azure Stack-Endpunkten konfiguriert wurden, müssen Sie zwei zusätzliche A-Datensätze für den Host erstellen:
 
-| IP | Hostname | Typ |
+| IP | Hostname | Type |
 |----|------------------------------|------|
 | \<IP> | *.Adminhosting.\<Region>.\<FQDN> | Eine Datei |
 | \<IP> | *.Hosting.\<Region>.\<FQDN> | Eine Datei |

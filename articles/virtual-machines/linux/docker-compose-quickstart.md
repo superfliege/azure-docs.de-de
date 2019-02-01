@@ -3,7 +3,7 @@ title: Verwenden von Docker Compose für einen virtuellen Linux-Computer in Azur
 description: Verwenden von Docker und Compose für virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 5cf9047a2115e2d486a433542928afbe295b5962
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.author: cynthn
+ms.openlocfilehash: aa573b17e8b590f416c4857186cb8989decc4aff
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844618"
+ms.locfileid: "54888633"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern in Azure
 Bei [Compose](http://github.com/docker/compose) verwenden Sie eine einfache Textdatei zum Definieren einer Anwendung, die aus mehreren Docker-Containern besteht. Sie starten Ihre Anwendung dann mit einem einzelnen Befehl, mit dem alle Schritte zur Bereitstellung Ihrer definierten Umgebung ausgeführt werden. In diesem Artikel wird beispielsweise veranschaulicht, wie Sie schnell einen WordPress-Blog mit einer MariaDB SQL-Back-End-Datenbank auf einem virtuellen Ubuntu-Computer einrichten. Sie können aber auch Compose verwenden, um komplexere Anwendungen einzurichten.

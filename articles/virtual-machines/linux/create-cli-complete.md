@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467484"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180363"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer vollständigen Linux-VM mit der Azure CLI
 Um schnell einen virtuellen Computer (VM) in Azure zu erstellen, können Sie einen einzelnen Azure CLI-Befehl mit Standardwerten verwenden, um alle erforderlichen unterstützenden Ressourcen zu erstellen. Ressourcen wie ein virtuelles Netzwerk, eine öffentliche IP-Adresse und Regeln für Netzwerksicherheitsgruppen werden automatisch erstellt. Um mehr Kontrolle über Ihre Umgebung in der Produktionsumgebung zu erhalten, können Sie diese Ressourcen im Voraus erstellen und Ihre virtuellen Computer ihnen dann hinzufügen. Dieser Artikel führt Sie schrittweise durch das Erstellen eines virtuellen Computers und der einzelnen unterstützenden Ressourcen.
@@ -30,13 +30,13 @@ Achten Sie darauf, dass Sie die neueste Version der [Azure CLI](/cli/azure/insta
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVnet* und *myVM*.
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Eine Ressourcengruppe muss vor einem virtuellen Computer und unterstützenden virtuellen Netzwerkressourcen erstellt werden. Erstellen Sie die Ressourcengruppe mithilfe von [az group create](/cli/azure/group#az_group_create). Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Eine Ressourcengruppe muss vor einem virtuellen Computer und unterstützenden virtuellen Netzwerkressourcen erstellt werden. Erstellen Sie die Ressourcengruppe mithilfe von [az group create](/cli/azure/group). Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Standardmäßig erfolgt die Ausgabe von Azure CLI-Befehlen in JSON (JavaScript Object Notation). Um beispielsweise die Standardausgabe in eine Liste oder Tabelle zu ändern, verwenden Sie [az configure --output](/cli/azure/reference-index#az_configure). Ferner können Sie `--output` an beliebige Befehle anfügen, um eine einmalige Änderung des Ausgabeformats zu erreichen. Das folgende Beispiel zeigt die JSON-Ausgabe des Befehls `az group create`:
+Standardmäßig erfolgt die Ausgabe von Azure CLI-Befehlen in JSON (JavaScript Object Notation). Um beispielsweise die Standardausgabe in eine Liste oder Tabelle zu ändern, verwenden Sie [az configure --output](/cli/azure/reference-index). Ferner können Sie `--output` an beliebige Befehle anfügen, um eine einmalige Änderung des Ausgabeformats zu erreichen. Das folgende Beispiel zeigt die JSON-Ausgabe des Befehls `az group create`:
 
 ```json                       
 {
@@ -559,7 +559,7 @@ Um die standardmäßige NGINX-Website in Aktion zu sehen, öffnen Sie Ihren Webb
 ![NGINX-Standardwebsite für Ihren virtuellen Computer](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportieren als Vorlage
-Was ist, wenn Sie nun eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen möchten? Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können [JSON-Vorlagen manuell erstellen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen. Verwenden Sie [az group export](/cli/azure/group#az_group_export) wie folgt, um Ihre Ressourcengruppe zu exportieren:
+Was ist, wenn Sie nun eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen möchten? Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Sie erstellen ganze Umgebungen durch Verweisen auf diese JSON-Vorlage. Sie können [JSON-Vorlagen manuell erstellen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen. Verwenden Sie [az group export](/cli/azure/group) wie folgt, um Ihre Ressourcengruppe zu exportieren:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json

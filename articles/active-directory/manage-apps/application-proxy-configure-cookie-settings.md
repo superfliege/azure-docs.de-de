@@ -5,18 +5,18 @@ services: active-directory
 author: barbkess
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: concept
 ms.date: 01/16/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 9c5979357532bb29f8e3545db57aa32603763dc1
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d8255d8d002660c9d7a5e6e030197a71a32dae65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855600"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190206"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) umfasst Zugriffs- und Sitzungscookies für den
 
 Der [Anwendungsproxy](application-proxy.md) verwendet die folgenden Einstellungen für Zugriffs- und Sitzungscookies.
 
-| Cookieeinstellung | Standard | Beschreibung | Empfehlungen |
+| Cookieeinstellung | Standard | BESCHREIBUNG | Empfehlungen |
 | -------------- | ------- | ----------- | --------------- |
 | Nur-HTTP-Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das HTTPOnly-Flag in HTTP-Antwortheadern einschließen. Dieses Flag bietet zusätzliche Sicherheitsvorteile, z.B. wird das Kopieren oder Ändern von Cookies über ein clientseitiges Scripting (CSS) verhindert.<br></br><br></br>Vor der Unterstützung der HTTP-Only-Einstellung verschlüsselte der Anwendungsproxy Cookies und übermittelte sie über einen sicheren SSL-Kanal, um Schutz vor Änderungen bereitzustellen. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.<br></br><br></br>Verwenden Sie **Nein** für Clients oder Benutzer-Agents, die keinen Zugriff auf das Sitzungscookie benötigen. Verwenden Sie beispielsweise **Nein** für einen RDP- oder MTSC-Client, der über den Anwendungsproxy eine Verbindung mit einem Remotedesktop-Gatewayserver herstellt.|
 | Sicheres Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das Flag „Secure“ in HTTP-Antwortheadern einschließen. Sichere Cookies erhöhen die Sicherheit, weil sie über einen TLS-gesicherten Kanal wie z.B. HTTPS übertragen werden. Dadurch wird verhindert, dass Cookies aufgrund der Übertragung in Klartext durch Unbefugte eingesehen werden können. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.|

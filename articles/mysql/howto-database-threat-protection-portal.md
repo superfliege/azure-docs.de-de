@@ -5,13 +5,13 @@ author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/20/2018
-ms.openlocfilehash: 12497f6a5173e2e4ea9c919fb6500c34f85749fa
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534739"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912747"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection für Azure Database for MySQL
 
@@ -22,6 +22,9 @@ Advanced Threat Protection ist Teil des Angebots „Advanced Data Security“ (E
 > [!NOTE]
 > Das Advanced Threat Protection-Feature ist in den folgenden Azure Government- und Sovereign Cloud-Regionen **nicht** verfügbar: „US Gov Texas“, „US Gov Arizona“, „US Gov Iowa“, „US Gov Virginia“, „US DoD, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „Deutschland, Norden“, „China, Osten“, „China, Osten 2“. Informationen zur allgemeinen Produktverfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
 >
+
+> [!NOTE]
+> Dieses Feature steht in allen Regionen von Azure zur Verfügung, in denen Azure Database for MySQL für General Purpose- and Memory Optimized-Server bereitgestellt wird.
 
 ## <a name="set-up-threat-detection"></a>Einrichten der Bedrohungserkennung
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).

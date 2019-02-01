@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/13/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fe2ff3697d362119db2df682aacd89ebcf073059
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 61a613d6f92e1a6d4b89b6f61c85b004af1f40f1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465631"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152772"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -123,7 +123,7 @@ In diesem Abschnitt werden die Bereitstellungsaspekte und Details zur Verwendung
 
 Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität durchführen, sollten Sie sich genau ansehen, wie Sie AD FS derzeit für Azure AD, Office 365 und andere Anwendungen (Vertrauensstellungen der vertrauenden Seite) nutzen. Sehen Sie sich vor allem die Szenarien an, die in der folgenden Tabelle beschrieben sind:
 
-| Stand | Aktion |
+| Wenn | Dann |
 |-|-|
 | Sie planen, AD FS für andere Anwendungen (als Azure AD und Office 365) weiterzuverwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen erhält, z.B. Office 365) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|

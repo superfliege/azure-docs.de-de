@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.component: disks
-ms.openlocfilehash: 11ffba34fff10d488cb3c9d81b7853f99b2ed138
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: cc8813b0ac90ded1c777f9b1200f4e26737168b9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475151"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459694"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern
 Beim Löschen eines virtuellen Computers (VM) in Azure werden standardmäßig Datenträger, die an den virtuellen Computer angefügt sind, nicht gelöscht. Dieses Feature verhindert Datenverluste aufgrund der versehentlich Löschung von virtuellen Computern. Nach dem Löschen eines virtuellen Computers bezahlen Sie nicht angefügte Datenträger weiterhin. In diesem Artikel erfahren Sie, wie Sie nicht angefügte Datenträger suchen und löschen, um unnötige Kosten zu verringern. 

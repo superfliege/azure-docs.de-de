@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 14aac6103f1a560a50bc9dd80e18d5e2fbaae3c4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 450f62cd3605656ff8907c0020775f634dba0b4a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264264"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148006"
 ---
 <!--author=alkohli last changed: 08/21/17-->
 
@@ -55,7 +55,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     >[!NOTE] 
     > Es wird empfohlen, zuerst _HcsSoftwareUpdate.exe_ zu installieren. Installieren Sie anschließend _CisMdsAgentUpdate.exe_.
    
-        ````
+        ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
         \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
@@ -66,7 +66,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
         be disrupted. Are you sure you want to continue?
         [Y] Yes [N] No [?] Help (default is "Y"): Y
    
-        ````
+        ```
 5. Geben Sie **Y** ein, um die Hotfixinstallation zu bestätigen.
 6. Überwachen Sie das Update mithilfe des `Get-HcsUpdateStatus` -Cmdlets. Das Update wird zunächst auf dem passiven Controller abgeschlossen. Nachdem der passive Controller aktualisiert wurde, findet ein Failover statt, und das Update wird dann auf dem anderen Controller angewendet. Die Aktualisierung ist abgeschlossen, wenn beide Controller aktualisiert wurden.
    

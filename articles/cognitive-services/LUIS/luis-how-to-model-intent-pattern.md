@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 46b7e7757c2bf1b01bebeff059f0028b9e9d189c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134997"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220755"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit
 Nachdem eine LUIS-App Endpunktäußerungen empfängt, verbessern Sie mithilfe des [Konzepts](luis-concept-patterns.md) von Mustern die Vorhersagegenauigkeit für Äußerungen, die ein Muster in der Wortreihenfolge und Wortwahl zeigen. Muster verwenden [Entitäten](luis-concept-entity-types.md) und deren Rollen zum Extrahieren von Daten mithilfe einer spezifischen Mustersyntax. 

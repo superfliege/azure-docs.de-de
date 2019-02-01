@@ -1,19 +1,19 @@
 ---
-title: Bereitstellen von Durchsatz für Azure Cosmos DB
+title: Bereitstellen des Durchsatzes für Azure Cosmos-Container und -Datenbanken
 description: Erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre Azure Cosmos DB-Container und -Datenbanken festlegen.
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 3e992dd8ab24e4e60b81c6565ea4ec3971a9336b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbcfaab7dc1b716b3978f1b19870d945e0eabf89
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036420"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459077"
 ---
-# <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Bereitstellen des Durchsatzes für Azure Cosmos-Container und -Datenbanken
+# <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
 Eine Azure Cosmos-Datenbank ist eine Verwaltungseinheit für eine Gruppe von Containern. Eine Datenbank besteht aus einem Satz von schemaunabhängigen Containern. Ein Azure Cosmos-Container ist die Skalierungseinheit für Durchsatz und Speicher. Ein Container wird horizontal über eine Gruppe von Computern innerhalb einer Azure-Region partitioniert und auf alle Azure-Regionen, die Ihrem Azure Cosmos-Konto zugeordnet sind, verteilt.
 

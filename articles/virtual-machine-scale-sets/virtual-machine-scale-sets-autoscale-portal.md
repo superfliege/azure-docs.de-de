@@ -3,7 +3,7 @@ title: Automatisches Skalieren von VM-Skalierungsgruppen im Azure-Portal | Micro
 description: Erfahren Sie, wie Sie Regeln für die automatische Skalierung für VM-Skalierungsgruppen im Azure-Portal erstellen.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
-ms.openlocfilehash: ceb3f1da742c79d80398b87b9c4880781175690c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.author: cynthn
+ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321510"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888532"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisches Skalieren einer VM-Skalierungsgruppe im Azure-Portal
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.

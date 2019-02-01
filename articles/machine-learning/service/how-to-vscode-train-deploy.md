@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie mehr über Azure Machine Learning für Visual Studio Code und wie Sie mit dem Training und der Bereitstellung von Machine Learning und Deep Learning-Modellen in Azure Machine Learning Service mit Visual Studio Code beginnen können.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e7df9086fa5ffc6273a6cb063bdee3cfdfa73e34
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013314"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240113"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Verwenden von Visual Studio Code zum Trainieren und Bereitstellen von Machine Learning-Modellen
 
@@ -45,15 +45,15 @@ Diese Erweiterung unterstützt mehrere verschiedene Remotecomputeziele für Azur
 
 1. Klicken Sie auf der Aktivitätsleiste von Visual Studio Code auf das Azure-Symbol. Die Seitenleiste für Azure Machine Learning wird angezeigt.
 
-2. Erweitern Sie in der Strukturansicht Ihr Azure-Abonnement und den Arbeitsbereich des Azure Machine Learning-Diensts. Im animierten Bild ist der Name des Abonnements „Free Trial“, und der Arbeitsbereich lautet „TeamWorkspace“. 
+2. Erweitern Sie in der Strukturansicht Ihr Azure-Abonnement und den Arbeitsbereich des Azure Machine Learning-Diensts. Im animierten Bild ist der Name des Abonnements „Free Trial“, und der Arbeitsbereich lautet „TeamWorkspace“.
 
 3. Klicken Sie unter dem Arbeitsbereichsknoten mit der rechten Maustaste auf den Knoten **Compute**, und wählen Sie **Create Compute** (Compute erstellen) aus.
 
-4. Wählen Sie den Computezieltyp in der Liste aus. 
+4. Wählen Sie den Computezieltyp in der Liste aus.
 
 5. Wählen Sie in der Befehlspalette eine VM-Größe aus.
 
-6. Geben Sie in der Befehlspalette einen Namen für das Computeziel in das Feld ein. 
+6. Geben Sie in der Befehlspalette einen Namen für das Computeziel in das Feld ein.
 
 7. Geben Sie alle erweiterten Eigenschaften in der JSON-Konfigurationsdatei an, die in einer neuen Registerkarte geöffnet wird. Sie können Eigenschaften wie etwa die maximale Knotenanzahl angeben.
 
@@ -63,12 +63,12 @@ Hier sehen Sie ein Beispiel für die Erstellung von Azure Machine Learning Compu
 
 #### <a name="the-run-configuration-file"></a>Die Laufzeitkonfigurationsdatei
 
-Die VS Code-Erweiterung erstellt automatisch ein lokales Computeziel und Laufzeitkonfigurationen für Ihre **lokalen** und **Docker-basierten** Umgebungen auf Ihrem lokalen Computer. Die Laufzeitkonfigurationsdateien befinden sich unter dem zugeordneten Computeziel. 
+Die VS Code-Erweiterung erstellt automatisch ein lokales Computeziel und Laufzeitkonfigurationen für Ihre **lokalen** und **Docker-basierten** Umgebungen auf Ihrem lokalen Computer. Die Laufzeitkonfigurationsdateien befinden sich unter dem zugeordneten Computeziel.
 
 Hier sehen Sie einen Codeausschnitt aus der lokalen Standard-Laufzeitkonfigurationsdatei. Standardmäßig gilt: `userManagedDependencies: True`. Daher müssen Sie alle Ihre Bibliotheken/Abhängigkeiten selbst installieren. Anschließend verwenden Ihre lokalen Experimentausführungen Ihre Python-Standardumgebung, wie von der VS Code Python-Erweiterung angegeben.
 
 ```yaml
-# user_managed_dependencies = True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
+# user_managed_dependencies = True indicates that the environment will be user managed. False indicates that Azure Machine Learning service will manage the user environment.
     userManagedDependencies: True
 # The python interpreter path
     interpreterPath: python
@@ -84,19 +84,19 @@ Hier sehen Sie einen Codeausschnitt aus der lokalen Standard-Laufzeitkonfigurati
 
 ## <a name="train-and-tune-models"></a>Trainieren und Optimieren von Modellen
 
-Verwenden Sie Azure Machine Learning für VS Code (Vorschau), um Ihren Code schnell zu durchlaufen, ihn schrittweise auszuführen und zu debuggen, und Ihre bevorzugte Quellcodeverwaltung zu verwenden. 
+Verwenden Sie Azure Machine Learning für VS Code (Vorschau), um Ihren Code schnell zu durchlaufen, ihn schrittweise auszuführen und zu debuggen, und Ihre bevorzugte Quellcodeverwaltung zu verwenden.
 
 **So führen Sie Ihr Experiment lokal mit Azure Machine Learning aus:**
 
 1. Klicken Sie auf der Aktivitätsleiste von Visual Studio Code auf das Azure-Symbol. Die Seitenleiste für Azure Machine Learning wird angezeigt.
 
-1. Erweitern Sie in der Strukturansicht Ihr Azure-Abonnement und den Arbeitsbereich des Azure Machine Learning-Diensts. 
+1. Erweitern Sie in der Strukturansicht Ihr Azure-Abonnement und den Arbeitsbereich des Azure Machine Learning-Diensts.
 
-1. Erweitern Sie unter dem Arbeitsbereichknoten den Knoten **Compute**, und klicken Sie mit der rechten Maustaste auf die **Ausführungskonfiguration** der Computeressource, die Sie verwenden möchten. 
+1. Erweitern Sie unter dem Arbeitsbereichknoten den Knoten **Compute**, und klicken Sie mit der rechten Maustaste auf die **Ausführungskonfiguration** der Computeressource, die Sie verwenden möchten.
 
 1. Wählen Sie **Run Experiment** (Experiment ausführen) aus.
 
-1. Wählen Sie im Datei-Explorer das auszuführende Skript aus. 
+1. Wählen Sie im Datei-Explorer das auszuführende Skript aus.
 
 1. Klicken Sie auf **View Experiment Run** (Experimentausführung anzeigen), um das integrierte Azure Machine Learning-Portal anzuzeigen, in dem Sie Ihre Ausführungen überwachen und Ihre trainierten Modelle anzeigen können.
 
@@ -120,13 +120,13 @@ name: project_environment
 dependencies:
   # The python interpreter version.
 
-  # Currently Azure ML only supports 3.5.2 and later.
+  # Currently Azure Machine Learning service only supports 3.5.2 and later.
 
 - python=3.6.2
 - tensorflow
 
 - pip:
-    # Required packages for AzureML execution, history, and data preparation.
+    # Required packages for Azure Machine Learning service execution, history, and data preparation.
 
   - --index-url https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
   - --extra-index-url https://pypi.python.org/simple
@@ -138,15 +138,15 @@ dependencies:
 
 1. Klicken Sie auf der Aktivitätsleiste von Visual Studio Code auf das Azure-Symbol. Die Seitenleiste für Azure Machine Learning wird angezeigt.
 
-1. Erweitern Sie in der Strukturansicht Ihr Azure-Abonnement und den Arbeitsbereich des Azure Machine Learning-Diensts. 
+1. Erweitern Sie in der Strukturansicht Ihr Azure-Abonnement und den Arbeitsbereich des Azure Machine Learning-Diensts.
 
-1. Klicken Sie mit der rechten Maustaste im Editor-Fenster auf das Python-Skript, und wählen Sie **AML: Run as Experiment in Azure** (AML: als Experiment in Azure ausführen) aus. 
+1. Klicken Sie mit der rechten Maustaste im Editor-Fenster auf das Python-Skript, und wählen Sie **AML: Run as Experiment in Azure** (AML: als Experiment in Azure ausführen) aus.
 
-1. Wählen Sie in der Befehlspalette das Computeziel aus. 
+1. Wählen Sie in der Befehlspalette das Computeziel aus.
 
-1. Geben Sie in der Befehlspalette den Namen der Laufzeitkonfiguration in das Feld ein. 
+1. Geben Sie in der Befehlspalette den Namen der Laufzeitkonfiguration in das Feld ein.
 
-1. Bearbeiten Sie die Datei „conda_dependencies.yml“, um die Laufzeitabhängigkeiten des Experiments anzugeben, und klicken Sie anschließend in der rechten unteren Bildschirmecke auf **Übermitteln**. 
+1. Bearbeiten Sie die Datei „conda_dependencies.yml“, um die Laufzeitabhängigkeiten des Experiments anzugeben, und klicken Sie anschließend in der rechten unteren Bildschirmecke auf **Übermitteln**.
 
 1. Klicken Sie auf **View Experiment Run** (Experimentausführung anzeigen), um das integrierte Azure Machine Learning-Portal anzuzeigen, in dem Sie Ihre Ausführungen überwachen und Ihre trainierten Modelle anzeigen können.
 
@@ -154,7 +154,7 @@ Hier sehen Sie ein Beispiel für das Ausführen eines Experiments auf einem Remo
 
 
 ## <a name="deploy-and-manage-models"></a>Erstellen und Verwalten von Modellen
-Azure Machine Learning ermöglicht das Bereitstellen und Verwalten Ihrer Machine Learning-Modelle in der Cloud und auf dem Edge. 
+Azure Machine Learning ermöglicht das Bereitstellen und Verwalten Ihrer Machine Learning-Modelle in der Cloud und auf dem Edge.
 
 ### <a name="register-your-model-to-azure-machine-learning-from-vs-code"></a>Registrieren Ihres Modells bei Azure Machine Learning aus VS Code
 
@@ -169,13 +169,13 @@ Registrierte Modelle können nachverfolgt und bereitgestellt werden.
 
 1. Klicken Sie unter dem Knoten „Arbeitsbereich“ mit der rechten Maustaste auf **Modelle**, und wählen Sie **Register Model** (Modell registrieren) aus.
 
-1. Geben Sie in der Befehlspalette einen Modellnamen in das Feld ein. 
+1. Geben Sie in der Befehlspalette einen Modellnamen in das Feld ein.
 
-1. Wählen Sie in der Liste aus, ob Sie eine **Modelldatei** (für einzelne Modelle) oder einen **Modellordner** (für Modelle mit mehreren Dateien, wie etwa Tensorflow) hochladen möchten. 
+1. Wählen Sie in der Liste aus, ob Sie eine **Modelldatei** (für einzelne Modelle) oder einen **Modellordner** (für Modelle mit mehreren Dateien, wie etwa Tensorflow) hochladen möchten.
 
 1. Wählen Sie Ihren Ordner oder die Datei aus.
 
-1. Wenn Sie die Modelleigenschaften konfiguriert haben, klicken Sie in der rechten unteren Bildschirmecke auf **Übermitteln**. 
+1. Wenn Sie die Modelleigenschaften konfiguriert haben, klicken Sie in der rechten unteren Bildschirmecke auf **Übermitteln**.
 
 Hier sehen Sie ein Beispiel für die Registrierung Ihres Modells bei AML: [![Registrieren eines Modells bei AML](./media/vscode-tools-for-ai/RegisteringAModel.gif)](./media/vscode-tools-for-ai/RegisteringAModel.gif#lightbox)
 
@@ -184,9 +184,9 @@ Hier sehen Sie ein Beispiel für die Registrierung Ihres Modells bei AML: [![Reg
 
 Mithilfe von VS Code können Sie Ihren Webdienst an diesen Orten bereitstellen:
 + Azure Container Instance (ACI): zum Testen
-+ Azure Kubernetes Service (AKS): zur Produktion 
++ Azure Kubernetes Service (AKS): zur Produktion
 
-Sie brauchen für das Testen nicht vorab einen ACI-Container zu erstellen, da sie dynamisch erstellt werden. Allerdings müssen AKS-Cluster im Voraus konfiguriert werden. 
+Sie brauchen für das Testen nicht vorab einen ACI-Container zu erstellen, da sie dynamisch erstellt werden. Allerdings müssen AKS-Cluster im Voraus konfiguriert werden.
 
 Erfahren Sie mehr über [Bereitstellung mit Azure Machine Learning](how-to-deploy-and-where.md) im Allgemeinen.
 
@@ -200,9 +200,9 @@ Erfahren Sie mehr über [Bereitstellung mit Azure Machine Learning](how-to-deplo
 
 1. Klicken Sie mit der rechten Maustaste auf das Modell, das Sie bereitstellen möchten, und wählen Sie im Kontextmenü den Befehl **Deploy Service from Registered Model** (Dienst aus registriertem Modell bereitstellen) aus.
 
-1. Wählen Sie in der Befehlspalette in der Liste das Computeziel aus, auf dem die Bereitstellung erfolgen soll. 
+1. Wählen Sie in der Befehlspalette in der Liste das Computeziel aus, auf dem die Bereitstellung erfolgen soll.
 
-1. Geben Sie in der Befehlspalette einen Namen für diesen Dienst in das Feld ein.  
+1. Geben Sie in der Befehlspalette einen Namen für diesen Dienst in das Feld ein.
 
 1. Drücken Sie in der Befehlspalette die EINGABETASTE auf Ihrer Tastatur, um die Optionen zu durchsuchen und die Skriptdatei auszuwählen.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187329"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299124"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Verwaltungslösungen in Azure Monitor
 Verwaltungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Verwaltungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -60,7 +60,7 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 ## <a name="install-a-management-solution"></a>Installieren einer Verwaltungslösung
 Verwaltungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
 
-1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen**. 
+1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-management-solutions) auf **Hinzufügen**. 
 1. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). 
 1. Suchen Sie die gewünschte Verwaltungslösung, und lesen Sie ihre Beschreibung.
 1. Klicken Sie auf **Erstellen**, um den Installationsprozess zu starten.

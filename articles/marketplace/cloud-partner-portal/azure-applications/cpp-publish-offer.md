@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828093"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177031"
 ---
 # <a name="publish-azure-application-offer"></a>Veröffentlichen eines Azure-Anwendungsangebots
 
@@ -28,6 +28,7 @@ Nachdem Sie die Informationen auf der Seite **Neues Angebot** angegeben haben, u
 Das folgende Diagramm zeigt die wichtigsten Schritte des Veröffentlichungsprozesses, die ausgeführt werden müssen, um ein Angebot live zu schalten.
 
 ![Angebotsveröffentlichungsschritte](./media/offer-publishing-steps.png)
+
 
 ## <a name="detailed-description-of-publishing-steps"></a>Ausführliche Beschreibung der Veröffentlichungsschritte
 
@@ -44,12 +45,14 @@ In der folgenden Tabelle sind die einzelnen Veröffentlichungsschritte sowie der
 | Prüfung durch Microsoft                | 7-14 Tage | Microsoft überprüft Ihre Azure-Anwendung ganzheitlich und sendet Ihnen E-Mails, wenn Probleme entdeckt werden.  Die Dauer dieses Schrittes hängt von der Komplexität der Anwendung, den aufgedeckten Problemen ab und davon, wie schnell Sie darauf reagieren.  |
 | Live                           | < 1 Tag | Das Angebot wird veröffentlicht, in den angegebenen Regionen repliziert und für die Öffentlichkeit verfügbar gemacht. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+
  
 Sie können den Veröffentlichungsvorgang auf der Registerkarte **Status** für Ihr Angebot im Cloud-Partnerportal überwachen.
 
 ![Registerkarte „Status“ für ein Azure-App-Angebot](./media/offer-status-tab.png)
 
 Nach Abschluss des Veröffentlichungsvorgangs wird Ihr Angebot in der [Microsoft Azure Marketplace-Anwendungskategorie](https://azuremarketplace.microsoft.com/marketplace/apps/) aufgelistet.
+
 
 
 ## <a name="errors-and-review-feedback"></a>Fehler und Prüfungsfeedback

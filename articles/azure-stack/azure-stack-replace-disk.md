@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: d0b455261649fad95a92f7ad75f7af26d633cf5a
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.lastreviewed: 01/22/2019s
+ms.openlocfilehash: 091ede57dbbc069f20b5ece2fc5b39b6d49a9009
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476885"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247781"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Ersetzen eines physischen Datenträgers in Azure Stack
 
@@ -54,27 +55,27 @@ Nachdem Sie den Datenträger ersetzt haben, ermittelt Azure Stack automatisch de
  Nachdem Sie den Datenträger ersetzt haben, können Sie den Integritätsstatus des virtuellen Datenträgers und den Verlauf des Reparaturauftrags mithilfe des privilegierten Endpunkts überwachen. Führen Sie diese Schritte auf einem beliebigen Computer aus, der über Netzwerkkonnektivität mit dem privilegierten Endpunkt verfügt.
 
 1. Öffnen Sie eine Windows PowerShell-Sitzung, und stellen Sie eine Verbindung mit dem privilegierten Endpunkt her.
-    ````PowerShell
+    ```PowerShell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-    ```` 
+    ``` 
   
 2. Führen Sie den folgenden Befehl zum Anzeigen der Integrität des virtuellen Datenträgers aus:
-    ````PowerShell
+    ```PowerShell
         Get-VirtualDisk -CimSession s-cluster
-    ````
+    ```
    ![PowerShell-Ausgabe des Get-VirtualDisk-Befehls](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
 3. Führen Sie den folgenden Befehl zum Anzeigen des aktuellen Speicherauftragsstatus aus:
     ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
-    ````
+    ```
       ![PowerShell-Ausgabe des Get-StorageJob-Befehls](media/azure-stack-replace-disk/GetStorageJobOutput.png)
 
 ## <a name="troubleshoot-virtual-disk-repair"></a>Problembehandlung bei der Reparatur des virtuellen Datenträgers
 
 Wenn der Auftrag zur Reparatur des virtuellen Datenträgers hängen bleibt, führen Sie den folgenden Befehl aus, um den Auftrag neu zu starten:
-  ````PowerShell
+  ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
-  ```` 
+  ``` 

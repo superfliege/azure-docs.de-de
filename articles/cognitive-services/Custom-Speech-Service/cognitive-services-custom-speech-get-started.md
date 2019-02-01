@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7392459f0b80558aac22bd585c0d30bf4105d76f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339932"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224444"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Erste Schritte mit Custom Speech Service
 
@@ -36,7 +36,7 @@ Sie können über das [SDK](https://www.microsoft.com/cognitive-services/en-us/S
 ## <a name="creating-a-custom-acoustic-model"></a>Erstellen eines benutzerdefinierten Akustikmodells
 Für die Anpassung des Akustikmodells an eine bestimmte Domäne ist eine Sammlung von Sprachdaten erforderlich. Diese Sammlung besteht aus einer Reihe von Audiodateien mit Sprachdaten sowie einer Textdatei mit Transkriptionen von jeder Audiodatei. Die Audiodaten sollten repräsentativ für das Szenario sein, in dem Sie das Erkennungsfeature einsetzen möchten.
 
-Beispiel: Wenn Sie die Spracherkennung in einer lauten Werksumgebung verbessern möchten, sollten in den Audiodateien Personen zu hören sein, die in einer lauten Werksumgebung sprechen.
+Beispiel:  Wenn Sie die Spracherkennung in einer lauten Werksumgebung verbessern möchten, sollten in den Audiodateien Personen zu hören sein, die in einer lauten Werksumgebung sprechen.
 Wenn Sie dagegen die Leistung eines einzelnen Lautsprechers optimieren möchten, um z.B. alle informellen Gespräche zu transkribieren, sollten die Audiodateien dementsprechend viele Beispiele nur für diesen Lautsprecher enthalten.
 
 Eine ausführliche Beschreibung zur Erstellung eines benutzerdefinierten Akustikmodells finden Sie [hier](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).

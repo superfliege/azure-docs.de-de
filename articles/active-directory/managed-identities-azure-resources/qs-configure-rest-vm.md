@@ -3,23 +3,23 @@ title: Konfigurieren von system- und benutzerseitig zugewiesenen verwalteten Ide
 description: Schrittweise Anweisungen für ein Konfigurieren von system- und benutzerzugewiesenen verwalteten Identitäten auf einem virtuellen Azure-Computer mithilfe von CURL zum Durchführen von REST-API-Aufrufen.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
-ms.author: daveba
-ms.openlocfilehash: 5240d46c1d754ec09f9d83a86424fdbd3cfaadb7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 7b44d58f14da06bdcbd7e9d9ada4976049969c81
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433304"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158977"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von REST-API-Aufrufen
 

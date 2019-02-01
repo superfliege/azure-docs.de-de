@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 77a1756aba0d8473051cdf335f33ed9ca5a8fb24
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c2fb387026f077ac2b111f2d482cc6c5226642aa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558327"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198179"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Aufrufen Ihrer Instanz der benutzerdefinierten Bing-Suche über das Portal
 
@@ -31,16 +31,16 @@ Geben Sie zum Erstellen einer Suchabfrage die Parameterwerte für Ihren Endpunkt
 Im Anschluss finden Sie einige wichtige Parameter:
 
 
-|Parameter  |Beschreibung  |
+|Parameter  |BESCHREIBUNG  |
 |---------|---------|
-|Abfrage     | Der gewünschte Suchbegriff. Nur für Endpunkte für die Web-, Bilder-, Video- und Vorschlagssuche verfügbar. |
+|Abfragen     | Der gewünschte Suchbegriff. Nur für Endpunkte für die Web-, Bilder-, Video- und Vorschlagssuche verfügbar. |
 |Benutzerdefinierte Konfigurations-ID | Die Konfigurations-ID der ausgewählten benutzerdefinierten Suchinstanz. Dieses Feld ist schreibgeschützt. |
 |Markt     | Der Markt, aus dem die Ergebnisse stammen sollen. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar.        |
 |Abonnementschlüssel | Der Abonnementschlüssel für den Test. Sie können einen Schlüssel in der Dropdownliste auswählen oder manuell einen Schlüssel eingeben.          |
 
 Wenn Sie auf **Zusätzliche Parameter** klicken, werden die folgenden Parameter angezeigt:  
 
-|Parameter  |Beschreibung  |
+|Parameter  |BESCHREIBUNG  |
 |---------|---------|
 |Sichere Suche     | Ein Filter, der Webseiten nach jugendgefährdenden Inhalten durchsucht. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar.        |
 |Benutzeroberflächensprache    | Die Sprache für Zeichenfolgen auf der Benutzeroberfläche. Wenn Sie beispielsweise Bilder und Videos in der gehosteten Benutzeroberfläche aktivieren, wird auf den Registerkarten **Bild** und **Video** die angegebene Sprache verwendet.        |

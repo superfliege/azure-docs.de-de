@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: abc01239a2bf61c39f99fe880bf17d7958a1597c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fbd00a79ba02a8907d8f8ccfb222787877e2ee9c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477925"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183882"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
@@ -168,7 +168,7 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Azure AD Connect installiert haben, können Sie [die Installation überprüfen und Lizenzen zuweisen](how-to-connect-post-installation.md).
 
-Hier finden Sie weitere Informationen zu diesen Features, die mit der Installation aktiviert wurden: [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md), [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](how-to-connect-sync-feature-prevent-accidental-deletes.md) und [Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health](how-to-connect-health-sync.md).
+Hier finden Sie weitere Informationen zu diesen Features, die bei der Installation aktiviert wurden: [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md), [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](how-to-connect-sync-feature-prevent-accidental-deletes.md) und [Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Weitere Informationen zu folgenden allgemeinen Themen: [Scheduler und Auslösen der Synchronisierung](how-to-connect-sync-feature-scheduler.md).
 

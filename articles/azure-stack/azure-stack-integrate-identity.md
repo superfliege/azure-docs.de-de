@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
+ms.lastreviewed: 01/23/19
 keywords: ''
-ms.openlocfilehash: 4f599379de07a9628ee81425ddac2374411bdf97
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f05d27effecee6a18a1395520b29d8cf1db1eaaa
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852761"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246246"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -118,7 +119,7 @@ Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports fü
 
 Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports für die Kommunikation mit dem Ziel-Active Directory:
 
-|Typ|Port|Protokoll|
+|Type|Port|Protokoll|
 |---------|---------|---------|
 |LDAP|389|TCP und UDP|
 |LDAP SSL|636|TCP|

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 53ab1e28c5864b403d52bf5e73f0c5c41b8f18a8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520570"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454741"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag
 Bevor Sie einen Exportauftrag erstellen, müssen Sie eine Gruppe von Blobs auswählen, die Sie exportieren möchten. Der Microsoft Azure Import/Export-Dienst bietet Ihnen die Möglichkeit, die ausgewählten Blobs mithilfe einer Liste von Blobpfaden oder Blobpräfixen darzustellen.  
@@ -30,7 +30,7 @@ Bei der Verwendung des Befehls `PreviewExport` des Import/Export-Tools können S
 |**/sn:**&lt;Speicherkontoname\>|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
 |**/sk:**&lt;Speicherkontoschlüssel\>|Nur erforderlich, wenn keine Container-SAS (Shared Access Signature) angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|  
 |**/csas:**&lt;Container-SAS\>|Nur erforderlich, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS zum Auflisten der Blobs, die im Exportauftrag exportiert werden sollen.|  
-|**/ExportBlobListFile:**&lt;Datei mit der Blobliste für den Export\>|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|  
+|**/ExportBlobListFile:**&lt;Datei mit der Blobliste für den Export\>|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|  
 |**/DriveSize:**&lt;Laufwerkgröße\>|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Befehlszeilenbeispiel

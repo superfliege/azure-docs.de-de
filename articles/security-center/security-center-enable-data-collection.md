@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5150f782d13e198c59e8d79f09ba0ffead5426d3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082447"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100537"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
@@ -54,7 +54,7 @@ So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent
 
 3. Klicken Sie unter **Sicherheitsrichtlinie** auf **Datensammlung**.
 4. Wählen Sie unter **Automatische Bereitstellung** die Option **Ein** aus, um die automatische Bereitstellung zu aktivieren.
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 
   ![Aktivieren der automatischen Bereitstellung][1]
 
@@ -116,7 +116,7 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
   >
   >
 
-3. Wählen Sie **Speichern**aus.
+3. Wählen Sie **Speichern** aus.
 4. Nach der Auswahl von **Speichern** werden Sie gefragt, ob Sie überwachte virtuelle Computer, die zuvor mit einem Standardarbeitsbereich verbunden waren, erneut konfigurieren möchten.
 
    - Klicken Sie auf **Nein**, wenn die neuen Arbeitsbereichseinstellungen nur auf neue virtuelle Computer angewendet werden sollen. Die neuen Arbeitsbereichseinstellungen gelten nur für neue Agent-Installationen (neu ermittelte virtuelle Computer, auf denen Microsoft Monitoring Agent nicht installiert ist).
@@ -194,7 +194,7 @@ Im Anschluss finden Sie eine vollständige Aufschlüsselung der Sicherheits- und
 
 So wählen Sie Ihre Filterrichtlinie:
 1. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Datensammlung** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
 
    ![Auswählen der Filterrichtlinie][5]
 
@@ -222,7 +222,7 @@ Sie können die automatische Bereitstellung in Ressourcen jederzeit deaktivieren
 1. Kehren Sie zum Hauptmenü von Security Center zurück, und klicken Sie auf die Sicherheitsrichtlinie.
 2. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
 3. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Datensammlung** unter **Automatische Bereitstellung** die Option **Aus** aus.
-4. Wählen Sie **Speichern**aus.
+4. Wählen Sie **Speichern** aus.
 
   ![Deaktivieren der automatischen Bereitstellung][6]
 
@@ -279,7 +279,7 @@ Damit Security Center Sicherheitsdaten auf Ihren virtuellen Computern erfassen u
      
             $PublicConf = '{
                 "workspaceId": "WorkspaceID value",
-                "MultipleConnectistopOnons": true
+                "MultipleConnections": true
             }' 
  
             $PrivateConf = '{

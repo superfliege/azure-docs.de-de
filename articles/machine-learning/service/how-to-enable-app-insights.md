@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Verwenden Sie Application Insights, um Webdienste zu überwachen, die über Azure Machine Learning Service bereitgestellt werden.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
 ms.custom: seodec18
-ms.openlocfilehash: 385f829002d65335c8039e478c148b6140148ad8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d4ffd3d2383973c6e4b318d580e442a2a53cc629
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117247"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239620"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights
 

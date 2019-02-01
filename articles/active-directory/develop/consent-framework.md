@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 11/30/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 2f9cefa31b007cae715ff2ea98bccb3112babbef
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: d31c54da82a8580fee9ad3d681c449aff74b14c4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619791"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097832"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-Zustimmungsframework
 
@@ -53,7 +53,7 @@ Die folgenden Schritte zeigen, wie das Zustimmungsframework auf der Benutzerober
 
 1. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Ablauf finden Sie unter [Web API](web-api.md) (Web-API).
 
-1. Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Durch die Administratorzustimmung wird verhindert, dass das Zustimmungsdialogfeld für jeden Benutzer im Mandanten angezeigt wird. Dies kann im [Azure-Portal](https://portal.azure.com) von Benutzern durchgeführt werden, die über die Administratorrolle verfügen. Um zu erfahren, welche Administratorrollen mit delegierten Berechtigungen übereinstimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+1. Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Durch die Administratorzustimmung wird verhindert, dass das Zustimmungsdialogfeld für jeden Benutzer im Mandanten angezeigt wird. Dies kann im [Azure-Portal](https://portal.azure.com) von Benutzern durchgeführt werden, die über die Administratorrolle verfügen. Um zu erfahren, welche Administratorrollen delegierten Berechtigungen zustimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
     **So gewähren Sie delegierte App-Berechtigungen**
 

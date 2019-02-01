@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: a77406fd6a466ed92f6eb3ed3401e987831e3da0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e34d45d2d7c81ec5f15a5441ce2bb0f082c65155
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267290"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884111"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Verwalten von Log Analytics mit PowerShell
 Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) können Sie verschiedene Funktionen in Log Analytics von der Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
@@ -228,7 +228,7 @@ Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Az
 
 Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../../azure-monitor/platform/metrics-supported.md) (Von Azure Monitor unterstützte Metriken).
 
-Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../../azure-monitor/platform/tutorial-dashboards.md) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
+Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../../azure-monitor/platform/diagnostic-logs-schema.md) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

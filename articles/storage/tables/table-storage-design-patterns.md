@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469191"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -197,7 +197,7 @@ Um die Suche nach dem Nachnamen mit der oben dargestellten Entitätsstruktur zu 
 * Erstellen von Index-Entitäten in der gleichen Partition wie für die Mitarbeiterentitäten.  
 * Erstellen von Index-Entitäten in einer separaten Partition oder Tabelle.  
 
-<u>Option 1: Verwenden von Blob-Speicher</u>  
+<u>Option 1: Verwenden von Blobspeicher</u>  
 
 Für die erste Option erstellen Sie ein Blob für jeden eindeutigen Nachnamen und speichern in jedem Blob eine Liste mit den Werten **PartitionKey** (Abteilung) und **RowKey** (Mitarbeiter-ID) für die Mitarbeiter mit diesem Nachnamen. Beim Hinzufügen oder Löschen eines Mitarbeiters sollten Sie sicherstellen, dass der Inhalt des relevanten Blob mit den Mitarbeiterentitäten Eventually Consistent ist.  
 
@@ -401,7 +401,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 Speichern Sie vollständige Datenreihen in einer einzelnen Entität, um die Anzahl der von Ihnen vorgenommenen Anforderungen zu minimieren.  
 
 ### <a name="context-and-problem"></a>Kontext und Problem
-Ein häufiges Szenario für eine Anwendung ist, eine Datenreihe zu speichern, die in der Regel auf einmal abgerufen werden muss. Beispiel: Ihre Anwendung erfasst, wie viele Chatnachrichten jeder Mitarbeiter pro Stunde sendet. Diese Informationen verwenden Sie dann, um zu zeichnen, wie viele Meldungen jeder Benutzer in den vergangenen 24 Stunden gesendet hat. Ein Entwurf könnte sein, für jeden Mitarbeiter 24 Entitäten zu speichern:  
+Ein häufiges Szenario für eine Anwendung ist, eine Datenreihe zu speichern, die in der Regel auf einmal abgerufen werden muss. Beispiel: Ihre Anwendung erfasst, wie viele IM-Meldungen jeder Mitarbeiter pro Stunde sendet. Diese Informationen verwenden Sie dann, um zu zeichnen, wie viele Meldungen jeder Benutzer in den vergangenen 24 Stunden gesendet hat. Ein Entwurf könnte sein, für jeden Mitarbeiter 24 Entitäten zu speichern:  
 
 ![Speichern von 24 Entitäten für jeden Mitarbeiter](media/storage-table-design-guide/storage-table-design-IMAGE22.png)
 
@@ -916,7 +916,7 @@ Im restlichen Teil dieses Abschnitts werden einige Funktionen der Storage Client
 ### <a name="retrieving-heterogeneous-entity-types"></a>Abrufen von heterogenen Entitätstypen
 Bei Verwendung der Storage Client Library stehen Ihnen drei Optionen für die Arbeit mit mehreren Entitätstypen zur Verfügung.  
 
-Wenn Sie den Entitätstyp kennen, der mit bestimmten **RowKey**- und **PartitionKey**-Werten gespeichert ist, können Sie den Entitätstyp angeben, wenn Sie die Entität wie in den vorherigen beiden Beispielen dargestellt abrufen. Die folgenden Beispiele rufen die Entitäten vom Typ **EmployeeEntity** ab: [Ausführen einer Punktabfrage mithilfe der Speicherclientbibliothek](#executing-a-point-query-using-the-storage-client-library) und [Abrufen von mehreren Entitäten mithilfe von LINQ](#retrieving-multiple-entities-using-linq).  
+Wenn Sie den Entitätstyp kennen, der mit einem bestimmten **RowKey**- und **PartitionKey**-Wert gespeichert ist, können Sie beim Abrufen der Entität den Entitätstyp angeben, wie in den beiden vorherigen Beispielen zum Abrufen von Entitäten des Typs **EmployeeEntity** dargestellt: [Ausführen einer Punktabfrage mithilfe der Speicherclientbibliothek](#executing-a-point-query-using-the-storage-client-library) und [Abrufen von mehreren Entitäten mithilfe von LINQ](#retrieving-multiple-entities-using-linq).  
 
 Die zweite Option ist die Verwendung des **DynamicTableEntity** -Typs (ein Eigenschaftenbehälter) anstelle eines konkreten POCO-Entitätstyps (diese Option kann auch die Leistung verbessern, da keine Notwendigkeit zum Serialisieren und Deserialisieren der Entität in .NET-Typen besteht). Der folgende C#-Code ruft möglicherweise mehrere Entitäten mit unterschiedlichen Typen aus der Tabelle ab, gibt jedoch alle Entitäten als **DynamicTableEntity** -Instanzen zurück. Anschließend bestimmt er mithilfe der **EventType** -Eigenschaft den Typ von jeder Entität:  
 
