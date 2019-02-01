@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 8ee57bf101b432049d895b65a1dc7641653c7f21
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3d2f831da0106bce2c83ee8b0ff3588f721f3ffe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105450"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207801"
 ---
 # <a name="expressroute-global-reach-preview"></a>ExpressRoute Global Reach (Vorschau)
 ExpressRoute ist eine private und zuverlässige Möglichkeit, Ihre lokalen Netzwerke mit der Microsoft Cloud zu verbinden. Sie können aus Ihrem privaten Rechenzentrum oder Ihrem Unternehmensnetzwerk auf viele Microsoft-Clouddienste wie beispielsweise Azure, Office 365 und Dynamics 365 zugreifen. Angenommen, Sie haben eine Niederlassung in San Francisco mit einer ExpressRoute-Leitung im Silicon Valley und eine weitere Niederlassung in London mit einer ExpressRoute-Leitung in derselben Stadt. Beide Niederlassungen erhalten Highspeedkonnektivität mit Azure-Ressourcen in den Regionen „USA, Westen“ und „Vereinigtes Königreich, Süden“. Allerdings können die Niederlassungen nicht direkt Daten miteinander austauschen. Anders ausgedrückt: 10.0.1.0/24 kann Daten an 10.0.3.0/24 und 10.0.4.0/24 senden, jedoch NICHT an 10.0.2.0/24.
@@ -33,10 +33,12 @@ ExpressRoute Global Reach dient zur Ergänzung der WAN-Implementierung des Diens
 ExpressRoute Global Reach wird derzeit in den folgenden Ländern unterstützt:
 
 * Australien
+* Kanada
 * Frankreich
 * Hongkong
 * Irland
 * Japan
+* Korea
 * Niederlande
 * Vereinigtes Königreich
 * USA
