@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 762ebf50999a88251dcd05824f2ed450cec97f04
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8bf13bffe763b88e95da94f885e30d271e36da42
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237396"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221682"
 ---
 # <a name="analyzers-method"></a>analyzers-Methode
 
@@ -32,7 +32,7 @@ Keine
 <br>
 
 ## <a name="response-parameters"></a>Antwortparameter
-NAME | Typ | BESCHREIBUNG
+NAME | Type | BESCHREIBUNG
 -----|------|--------------
 languages | Liste von Zeichenfolgen | Liste von aus zwei Buchstaben bestehenden ISO-Sprachcodes, für die das Analysetool verwendet werden können
 id   | Zeichenfolge | eindeutige ID für dieses Analysetool

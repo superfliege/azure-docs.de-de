@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie mit dem PyTorch-Estimator PyTorch-Modelle auf einem Knoten oder verteilt trainieren.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6401c6059d8f72f344021879828b01c9ce77169
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100548"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250026"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trainieren von PyTorch-Modellen mit Azure Machine Learning Service
 
@@ -42,11 +42,11 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 Hier geben Sie für den PyTorch-Konstruktor die folgenden Parameter an:
-Parameter | Beschreibung
+Parameter | BESCHREIBUNG
 --|--
 `source_directory` |  Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
 `script_params` |  Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Wertpaaren der Form <Befehlszeilenargument, Wert> festgelegt sind
-`compute_target` |  Remotecomputeziel, für das Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)).
+`compute_target` |  Remotecomputeziel, auf dem Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)).
 `entry_script` |  Dateipfad des Trainingsskripts (relativ zu `source_directory`), das auf dem Remotecomputeziel ausgeführt werden soll. Diese Datei und alle von ihr abhängigen Dateien sollten sich in diesem Ordner befinden.
 `conda_packages` |  Liste der Python-Pakete, die über conda installiert werden und für Ihr Trainingsskript erforderlich sind. Im Konstruktor kann zusätzlich der Parameter `pip_packages` für alle erforderlichen pip-Pakete angegeben werden.
 `use_gpu` |  : Legen Sie dieses Flag auf `True` fest, um die GPU für das Training zu nutzen. Der Standardwert lautet `False`.
@@ -82,7 +82,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 In diesem Code werden im PyTorch-Konstruktor die folgenden neuen Parameter angegeben:
-Parameter | Beschreibung | Standard
+Parameter | BESCHREIBUNG | Standard
 --|--|--
 `node_count` |  Die Anzahl der Knoten, die für Ihren Trainingsauftrag verwendet werden sollen. | `1`
 `process_count_per_node` |  Die Anzahl der Prozesse (oder „Worker“), die auf jedem Knoten ausgeführt werden sollen. | `1`

@@ -1,7 +1,20 @@
 ---
-Titel: Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure mit Azure Site Recovery | Beschreibung in der Microsoft-Dokumentation: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs in System Center VMM-Clouds nach Azure mit dem Azure Site Recovery-Dienst einrichten.
-services: site-recovery author: rayne-wiselman ms.service: site-recovery ms.topic: conceptual ms.date: 12/27/2018 ms.author: raynew ms.custom: MVC
-
+title: Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure mit Azure Site Recovery | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs in System Center VMM-Clouds nach Azure mit dem Azure Site Recovery-Dienst einrichten.
+services: site-recovery
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: conceptual
+ms.date: 12/27/2018
+ms.author: raynew
+ms.custom: MVC
+ms.openlocfilehash: 5dfa5bba41785532db07c7b8569f2e1e1d3e0004
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300454"
+---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategie zur Notfallwiederherstellung, indem Replikation, Failover und Failback von lokalen Computern und virtuellen Azure-Computern (Virtual Machines, VMs) verwaltet und orchestriert werden.
