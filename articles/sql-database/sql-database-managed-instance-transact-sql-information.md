@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463744"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472780"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -228,7 +228,7 @@ Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden i
 
 ### <a name="distributed-transactions"></a>Verteilte Transaktionen
 
-Weder MSDTC noch [elastische Transaktionen](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) werden derzeit in einer verwalteten Instanz unterstützt.
+Weder MSDTC noch [elastische Transaktionen](sql-database-elastic-transactions-overview.md) werden derzeit in einer verwalteten Instanz unterstützt.
 
 ### <a name="extended-events"></a>Erweiterte Ereignisse
 
@@ -279,8 +279,8 @@ Vorgänge
 - Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Azure Active Directory-Anmeldungen, die mit der [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)-Syntax oder der [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)-Syntax erstellt wurden, werden unterstützt (**öffentliche Vorschau**).
 - Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
-- Der Azure Active Directory-Benutzer (Azure AD), der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
-- Azure Active Directory-Benutzer (Azure AD) auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users).
+- Der Azure Active Directory-Benutzer (Azure AD), der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Azure Active Directory-Benutzer (Azure AD) auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users).
 
 ### <a name="polybase"></a>PolyBase
 

@@ -7,19 +7,19 @@ documentationcenter: na
 manager: daveba
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
-ms.openlocfilehash: 913304884867751e3e4c929ce6f4cf8819c15ef2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d4a47130dadb782f41579bd20c4b5e1d1e9978bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825543"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188591"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -151,8 +151,8 @@ In diesem Szenario haben Sie einen Workday-Mandanten und möchten die Benutzer f
 
 |   |   |
 | - | - |
-| Anzahl der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
-| Anzahl der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | 1 |
+|  Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
+|  Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | 1 |
 
   ![Szenario 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -162,8 +162,8 @@ Dieses Szenario beinhaltet die Bereitstellung von Benutzern aus Workday für meh
 
 |   |   |
 | - | - |
-| Anzahl der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
-| Anzahl der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
+|  Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
+|  Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
 
   ![Szenario 2:](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -173,8 +173,8 @@ Dieses Szenario beinhaltet die Bereitstellung von Benutzern aus Workday für Dom
 
 |   |   |
 | - | - |
-| Anzahl der lokal bereitzustellenden Bereitstellungs-Agents | 3 pro nicht zusammenhängender AD-Gesamtstruktur |
-| Anzahl der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
+|  Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 pro nicht zusammenhängender AD-Gesamtstruktur |
+|  Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
 
   ![Szenario 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 

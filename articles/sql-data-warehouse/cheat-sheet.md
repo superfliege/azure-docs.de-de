@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ef64b9d4e4e5c7f5a628359a8512dcb61b9c941
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: cede105f0bff9a65f88e06467e4d13419d389f04
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245892"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461558"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Spickzettel für Azure SQL Data Warehouse
 Dieser Spickzettel bietet nützliche Tipps und bewährte Methoden zum Erstellen von Azure SQL Data Warehouse-Lösungen. Bevor Sie beginnen, können Sie mehr über jeden Schritt erfahren, indem Sie [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) lesen. In diesem Artikel wird erläutert, was SQL Data Warehouse ist, und was es nicht ist.
@@ -50,7 +50,7 @@ Weitere Informationen hierzu finden Sie unter [Datenmigration], [Laden von Daten
 
 Abhängig von den Tabelleneigenschaften sollten Sie folgende Strategien verwenden:
 
-| Typ | Für folgende Fälle empfohlen| In folgenden Fälle mit Vorsicht zu behandeln|
+| Type | Für folgende Fälle empfohlen| In folgenden Fälle mit Vorsicht zu behandeln|
 |:--- |:--- |:--- |
 | Repliziert | • Kleine Dimensionstabellen in einem Sternschema mit max. 2 GB Speicher nach Komprimierung (ca. 5-facher Komprimierung) |• Viele Schreibtransaktionen für Tabellen (z.B. „insert“, „upsert“, „delete“, „update“)<br></br>• Häufige Änderungen an der Bereitstellung von DWUs (Data Warehouse Einheiten)<br></br>• Nutzung von lediglich 2 bis 3 Spalten, aber die Tabelle hat viele Spalten<br></br>• Indizierung einer replizierten Tabelle |
 | Roundrobin (Standard) | • Temporäre/Stagingtabellen<br></br> • Fehlen eines eindeutigen Verknüpfungsschlüssels oder einer geeigneten Spalte |• Schwache Leistung aufgrund von Datenverschiebungen |
@@ -70,7 +70,7 @@ Weitere Informationen finden Sie in den Artikeln zu [replizierte Tabellen] und [
 
 Indizierung ist für schnelles Lesen von Tabellen nützlich. Es steht Ihnen eine einzigartige Gruppe von Technologien zur Verfügung, die Sie entsprechend Ihren Anforderungen nutzen können:
 
-| Typ | Für folgende Fälle empfohlen | In folgenden Fälle mit Vorsicht zu behandeln|
+| Type | Für folgende Fälle empfohlen | In folgenden Fälle mit Vorsicht zu behandeln|
 |:--- |:--- |:--- |
 | Heap | • Staging-/temporäre Tabelle<br></br>• Kleine Tabellen mit geringfügigen Suchvorgängen |• Beliebige Suchvorgänge zum Durchsuchen einer gesamten Tabelle |
 | Gruppierter Index | • Tabellen mit bis zu 100 Millionen Zeilen<br></br>• Große Tabellen (mehr als 100 Millionen Zeilen) mit häufiger Nutzung von lediglich 1 bis 2 Spalten |• Verwendung für eine replizierte Tabelle<br></br>• Komplexe Abfragen mit mehreren Join- und Group By-Vorgängen<br></br>• Durchführen von Updates in indizierten Spalten: Arbeitsspeicher wird benötigt |

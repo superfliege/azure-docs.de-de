@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 07dbc96e94c736b4e4c80dd212f0674bfeffce45
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4c533921b0c88a4f61cd96896b72306adb9a23cf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850415"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175705"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 Dieser Artikel zeigt, wie Azure Active Directory Domain Services (Azure AD DS) mithilfe des Azure-Portals aktiviert werden kann.
@@ -64,7 +64,7 @@ Auf der Seite **Grundlagen** des Assistenten geben Sie den DNS-Domänennamen fü
    > * **Integrierter Domänenname:** Standardmäßig legt der Assistent den standardmäßigen/integrierten Domänennamen des Verzeichnisses für Sie fest (mit einem **.onmicrosoft.com**-Suffix). Wenn Sie den sicheren LDAP-Zugriff auf die verwaltete Domäne über das Internet aktivieren, können Sie davon ausgehen, dass beim Erstellen eines öffentlichen DNS-Eintrags oder Abrufen eines sicheren LDAP-Zertifikats von einer öffentlichen Zertifizierungsstelle für diesen Domänennamen Probleme auftreten. Microsoft besitzt die *. onmicrosoft.com*-Domäne, und CAs werden keine Zertifikate ausstellen, die für diese Domäne bürgen.
    * **Benutzerdefinierte Domänennamen:** Sie können auch einen benutzerdefinierten Domänennamen eingeben. In diesem Beispiel lautet der benutzerdefinierte Domänenname *contoso100.com*.
    * **Nicht routingfähige Domänensuffixe:** Nicht routingfähige Domänensuffixe sollten Sie im Allgemeinen vermeiden. Beispielsweise ist es besser, das Erstellen einer Domäne mit dem DNS-Domänennamen „contoso.local“ zu vermeiden. Das DNS-Suffix „.local“ ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
-   * **Einschränkungen für Domänenpräfixe:** Das Präfix des angegebenen Domänennamens (beispielsweise *contoso100* im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine verwaltete Domäne mit einem Präfix, das länger als 15 Zeichen ist, erstellen.
+   * **Einschränkungen für Domänenpräfixe:** Das Präfix des angegebenen Domänennamens (beispielsweise contoso100 im Domänennamen *contoso100.com*) darf maximal 15 Zeichen lang sein. Sie können keine verwaltete Domäne mit einem Präfix, das länger als 15 Zeichen ist, erstellen.
    * **Netzwerknamenskonflikte:** Stellen Sie sicher, dass der DNS-Domänenname, den Sie für die verwaltete Domäne ausgewählt haben, nicht bereits im virtuellen Netzwerk vorhanden ist. Überprüfen Sie insbesondere, ob Folgendes zutrifft:
        * Im virtuellen Netzwerk ist bereits eine Active Directory-Domäne mit dem gleichen DNS-Domänennamen vorhanden.
        * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, hat eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
