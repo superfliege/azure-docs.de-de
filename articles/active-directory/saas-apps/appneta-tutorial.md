@@ -4,251 +4,238 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 643a45fb-d6fc-4b32-b721-68899f8c7d44
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ccedc0288e313df2639862a14078d8cad9951286
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3ec438132bc5e3dd035e199d0beca40dce9ff55f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054548"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Tutorial: Azure Active Directory-Integration mit AppNeta Performance Monitor
 
 In diesem Tutorial erfahren Sie, wie Sie AppNeta Performance Monitor in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von AppNeta Performance Monitor in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf AppNeta Performance Monitor hat.
-- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei AppNeta Performance Monitor anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf AppNeta Performance Monitor hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei AppNeta Performance Monitor anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit AppNeta Performance Monitor konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein AppNeta Performance Monitor-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein SSO-fähiges AppNeta Performance Monitor-Abonnement
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von AppNeta Performance Monitor aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* AppNeta Performance Monitor unterstützt **SP**-initiiertes SSO.
+* AppNeta Performance Monitor unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-appneta-performance-monitor-from-the-gallery"></a>Hinzufügen von AppNeta Performance Monitor aus dem Katalog
+
 Um die Integration von AppNeta Performance Monitor in Azure AD zu konfigurieren, müssen Sie AppNeta Performance Monitor aus dem Katalog zu Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um AppNeta Performance Monitor aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
 4. Geben Sie in das Suchfeld **AppNeta Performance Monitor** ein, wählen Sie **AppNeta Performance Monitor** im Ergebnisbereich aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![AppNeta Performance Monitor in der Ergebnisliste](./media/appneta-tutorial/tutorial_appneta_addfromgallery.png)
+     ![AppNeta Performance Monitor in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei AppNeta Performance Monitor mithilfe einer Testbenutzerin namens Britta Simon.
-
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in AppNeta Performance Monitor als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in AppNeta Performance Monitor muss eine Linkbeziehung eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit AppNeta Performance Monitor anhand eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in AppNeta Performance Monitor eine Linkbeziehung eingerichtet werden.
 
 Um einmaliges Anmelden von Azure AD mit AppNeta Performance Monitor zu konfigurieren und zu testen, müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines AppNeta Performance Monitor-Testbenutzers](#create-an-appneta-performance-monitor-test-user)**, um in AppNeta Performance Monitor ein Pendant zu Britta Simon zu erhalten, das mit der Azure AD-Darstellung des Benutzers verknüpft ist.
+2. **[Konfigurieren des einmaligen Anmeldens für AppNeta Performance Monitor](#configure-appneta-performance-monitor-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Erstellen eines AppNeta Performance Monitor-Testbenutzers](#create-appneta-performance-monitor-test-user)**, um in AppNeta Performance Monitor ein Pendant zu Britta Simon zu erhalten, das mit der Azure AD-Darstellung des Benutzers verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigurieren Sie das einmalige Anmelden in Ihrer AppNeta Performance Monitor-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Um einmaliges Anmelden von Azure AD mit AppNeta Performance Monitor zu konfigurieren, führen Sie die folgenden Schritte aus:**
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit AppNeta Performance Monitor zu konfigurieren:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **AppNeta Performance Monitor** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **AppNeta Performance Monitor** die Option **Einmaliges Anmelden** aus.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/appneta-tutorial/tutorial_appneta_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-3. Führen Sie im Abschnitt **Domäne und URLs für AppNeta Performance Monitor** die folgenden Schritte aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![SSO-Informationen zur Domäne und zu den URLs für AppNeta Performance Monitor](./media/appneta-tutorial/tutorial_appneta_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für AppNeta Performance Monitor](common/sp-identifier.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.pm.appneta.com`.
 
-    b. Geben Sie im Textfeld **Bezeichner** den Wert `PingConnect` ein.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `PingConnect`.
 
-    > [!NOTE] 
-    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von AppNeta Performance Monitor](mailto:support@appneta.com), um diesen Wert zu erhalten. 
+    > [!NOTE]
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von AppNeta Performance Monitor](mailto:support@appneta.com), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die AppNeta Performance Monitor-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten.
+5. Die AppNeta Performance Monitor-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    ![Configure single sign-on](./media/appneta-tutorial/attribute.png)
+    ![image](common/edit-attribute.png)
 
-6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
-           
-    | Attributname | Attributwert |
-    | ---------------| ----------------|
+6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
+
+    | NAME | Quellattribut|
+    | --------| ----------------|
     | firstName| user.givenname|
     | lastName| user.surname|
     | E-Mail| user.userprincipalname|
     | name| user.userprincipalname|
-    | groups   | user.assignedroles |
+    | groups  | user.assignedroles |
     | phone| user.telephonenumber |
     | title| user.jobtitle|
+    | | |
 
     > [!NOTE]
-    > „groups“ bezieht sich auf die Sicherheitsgruppe in AppNeta, die einer „Rolle“ in Azure AD zugeordnet wird. Lesen Sie [dieses](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) Dokument, in dem erläutert wird, wie benutzerdefinierte Rollen in Azure AD erstellt werden.
-        
-    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+    > **groups** bezieht sich auf die Sicherheitsgruppe in AppNeta, die einer **Rolle** in Azure AD zugeordnet wird. Lesen Sie [dieses](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) Dokument, in dem erläutert wird, wie benutzerdefinierte Rollen in Azure AD erstellt werden.
 
-    ![Configure single sign-on](./media/appneta-tutorial/tutorial_attribute_04.png)
-    
-    ![Configure single sign-on](./media/appneta-tutorial/tutorial_attribute_05.png)
+    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    c. Lassen Sie den **Namespace** leer.
 
-    d. Lassen Sie das Feld für den Namespace leer.
-    
-    e. Klicken Sie auf **OK**.  
+    d. Wählen Sie „Source“ als **Attribut** aus.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
 
-    ![Downloadlink für das Zertifikat](./media/appneta-tutorial/tutorial_appneta_certificate.png) 
+    f. Klicken Sie auf **OK**.
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+    g. Klicken Sie auf **Speichern**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/appneta-tutorial/tutorial_general_400.png)
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-6. Um einmaliges Anmelden auf **AppNeta Performance Monitor**-Seite zu konfigurieren, müssen Sie die heruntergeladene **Metadata XML**-Datei an das [Supportteam von AppNeta Performance Monitor](mailto:support@appneta.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+8. Kopieren Sie im Abschnitt **AppNeta Performance Monitor einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-appneta-performance-monitor-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für AppNeta Performance Monitor
+
+Um das einmalige Anmelden aufseiten von **AppNeta Performance Monitor** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von AppNeta Performance Monitor](mailto:support@appneta.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/appneta-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/appneta-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/appneta-tutorial/create_aaduser_03.png)
-
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/appneta-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-an-appneta-performance-monitor-test-user"></a>Erstellen eines AppNeta Performance Monitor-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in AppNeta Performance Monitor. AppNeta Performance Monitor unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer bei dem Versuch, auf AppNeta Performance Monitor zuzugreifen, nicht vorhanden, wird ein neuer Benutzer erstellt.
->[!Note]
->Setzen Sie sich mit dem [Supportteam von AppNeta Performance Monitor](mailto:support@appneta.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf AppNeta Performance Monitor gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **AppNeta Performance Monitor** aus.
 
-**Um Britta Simon zu AppNeta Performance Monitor zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 2. Wählen Sie in der Liste der Anwendungen die Anwendung **AppNeta Performance Monitor** aus.
 
-    ![Der Link für Systemmonitor AppNeta Link in der Liste der Anwendungen](./media/appneta-tutorial/tutorial_appneta_app.png)  
+    ![Der Link für Systemmonitor AppNeta Link in der Liste der Anwendungen](common/all-applications.png)
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-appneta-performance-monitor-test-user"></a>Erstellen eines AppNeta Performance Monitor-Testbenutzers
+
+In diesem Abschnitt wird in AppNeta Performance Monitor ein Benutzer namens Britta Simon erstellt. AppNeta Performance Monitor unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in AppNeta Performance Monitor vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+> [!Note]
+> Setzen Sie sich mit dem  [Supportteam von AppNeta Performance Monitor](mailto:support@appneta.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „AppNeta Performance Monitor“ klicken, sollten Sie automatisch bei Ihrer AppNeta Performance Monitor-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „AppNeta Performance Monitor“ klicken, sollten Sie automatisch bei der AppNeta Performance Monitor-Instanz angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/appneta-tutorial/tutorial_general_01.png
-[2]: ./media/appneta-tutorial/tutorial_general_02.png
-[3]: ./media/appneta-tutorial/tutorial_general_03.png
-[4]: ./media/appneta-tutorial/tutorial_general_04.png
-
-[100]: ./media/appneta-tutorial/tutorial_general_100.png
-
-[200]: ./media/appneta-tutorial/tutorial_general_200.png
-[201]: ./media/appneta-tutorial/tutorial_general_201.png
-[202]: ./media/appneta-tutorial/tutorial_general_202.png
-[203]: ./media/appneta-tutorial/tutorial_general_203.png
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
