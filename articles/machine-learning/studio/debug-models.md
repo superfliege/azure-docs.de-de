@@ -1,6 +1,6 @@
 ---
-Titel: Debuggen Ihres Modells titleSuffix: Azure Machine Learning Studio – Beschreibung: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio generiert wurden.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Debuggen Ihres Modells titleSuffix: Azure Machine Learning Studio – Beschreibung: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio generiert wurden.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 14.03.2017
 ---

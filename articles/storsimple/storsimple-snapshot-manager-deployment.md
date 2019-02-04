@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: cde355381b0d726a1ab340bc4230b2dc8f6e2c56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee17e4b69d1e6c9de465e4241ee2237361e320b7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110668"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168004"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Bereitstellen des StorSimple Snapshot Manager-MMC-Snap-Ins
 
@@ -66,7 +66,7 @@ Die folgenden Schritte bieten einen allgemeinen Überblick über die Konfigurati
    * Gespiegelte dynamische Volumes (RAID 1)
    * Freigegebene Clustervolumes
      
-     Informationen zum Erstellen von Volumes auf dem StorSimple-Gerät oder dem virtuellen StorSimple-Gerät finden Sie unter [Schritt 6: Erstellen eines Volumes](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) in [Bereitstellen lokaler StorSimple-Geräte](storsimple-8000-deployment-walkthrough-u2.md).
+     Informationen zum Erstellen von Volumes auf dem StorSimple-Gerät oder dem virtuellen StorSimple-Gerät finden Sie unter [Schritt 6:  Erstellen eines Volumes](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) in [Bereitstellen lokaler StorSimple-Geräte](storsimple-8000-deployment-walkthrough-u2.md).
 
 ## <a name="install-a-new-storsimple-snapshot-manager"></a>Installieren eines neuen StorSimple Snapshot Managers
 Stellen Sie vor der Installation von StorSimple Snapshot Manager sicher, dass die auf dem StorSimple-Gerät oder dem virtuellen StorSimple-Gerät erstellten Volumes wie in [Konfigurieren der Voraussetzungen](#configure-prerequisites)beschrieben bereitgestellt, initialisiert und formatiert sind.
@@ -79,7 +79,7 @@ Stellen Sie vor der Installation von StorSimple Snapshot Manager sicher, dass di
 Gehen Sie folgendermaßen vor, um eine Neuinstallation des StorSimple Snapshot Managers durchzuführen. Wenn Sie ein Upgrade installieren, wechseln Sie zu [Upgrade oder Neuinstallation des StorSimple Snapshot Managers](#upgrade-or-reinstall-storsimple-snapshot-manager).
 
 * Schritt 1: Installieren des StorSimple Snapshot Managers 
-* Schritt 2: Verbinden eines Geräts mit dem StorSimple Snapshot Manager 
+* Schritt 2: Verbinden des StorSimple Snapshot Managers mit einem Gerät 
 * Schritt 3: Überprüfen der Verbindung mit dem Gerät 
 
 ### <a name="step-1-install-storsimple-snapshot-manager"></a>Schritt 1: Installieren des StorSimple Snapshot Managers
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um den StorSimple Snapshot Manager zu in
    
     ![Desktopsymbol](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
-### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>Schritt 2: Verbinden eines Geräts mit dem StorSimple Snapshot Manager
+### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>Schritt 2: Verbinden des StorSimple Snapshot Managers mit einem Gerät
 Führen Sie die folgenden Schritte aus, um den StorSimple Snapshot Manager mit einem StorSimple-Gerät zu verbinden.
 
 #### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>So verbinden Sie den StorSimple Snapshot Manager mit einem Gerät
@@ -143,11 +143,11 @@ Sichern Sie vor der Neuinstallation des StorSimple Snapshot Managers die vorhand
 
 Gehen Sie folgendermaßen vor, wenn Sie den StorSimple Snapshot Manager aktualisieren oder erneut installieren:
 
-* Schritt 1: Deinstallieren von StorSimple Snapshot Manager 
+* Schritt 1: Deinstallieren des StorSimple Snapshot Managers 
 * Schritt 2: Sichern der StorSimple Snapshot Manager-Datenbank 
 * Schritt 3: Erneutes Installieren von StorSimple Snapshot Manager und Wiederherstellen der Datenbank 
 
-### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>Schritt 1: Deinstallieren von StorSimple Snapshot Manager
+### <a name="step-1-uninstall-storsimple-snapshot-manager"></a>Schritt 1: Deinstallieren des StorSimple Snapshot Managers
 Führen Sie die folgenden Schritte aus, um den StorSimple Snapshot Manager zu deinstallieren.
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>So deinstallieren Sie StorSimple Snapshot Manager
@@ -201,7 +201,7 @@ Um den StorSimple Snapshot Manager erneut zu installieren, führen Sie die Schri
 2. Navigieren Sie zu „C:\ProgramData\Microsoft\StorSimple\BACatalog“.
    
    > [!NOTE]
-   > ProgramData ist ein versteckter Ordner.
+   > „ProgramData“ ist ein versteckter Ordner.
    > 
    > 
 3. Löschen Sie die XML-Katalogdatei, und ersetzen Sie sie durch die Version, die Sie zuvor gespeichert haben.

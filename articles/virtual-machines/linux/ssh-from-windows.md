@@ -1,9 +1,9 @@
 ---
-title: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer | Microsoft-Dokumentation
+title: Verwenden von SSH-Schlüsseln mit Windows für virtuelle Linux-Computer | Microsoft Docs
 description: Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer erstellen und verwenden, um Verbindungen mit virtuellen Linux-Computern in Azure herzustellen.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: danlep
-ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407415"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298652"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -84,7 +84,7 @@ So erstellen Sie ein SSH-RSA-Schlüsselpaar mit PuTTYgen:
 
     Wenn Sie den privaten Schlüssel im OpenSSH-Format speichern möchten, klicken Sie auf das von vielen SSH-Clients verwendete Format für private Schlüssel, und klicken Sie auf **Konvertierungen** > **OpenSSH-Schlüssel exportieren**.
 
-## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Angeben des öffentlichen SSH-Schlüssels beim Bereitstellen eines virtuellen Computers
+## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Angeben eines öffentlichen SSH-Schlüssels beim Bereitstellen eines virtuellen Computers
 
 Um eine Linux-VM zu erstellen, die SSH-Schlüssel zur Authentifizierung verwendet, geben Sie Ihren öffentlichen SSH-Schlüssel beim Erstellen des virtuellen Computers im Azure-Portal oder mit anderen Methoden ein.
 
@@ -105,6 +105,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Falls Sie beim Erstellen des Schlüsselpaars eine Passphrase konfiguriert haben, müssen Sie die Passphrase eingeben, wenn Sie während des Anmeldeprozesses dazu aufgefordert werden.
+
+Wenn der virtuelle Computer die JIT-Zugriffsrichtlinie (Just-In-Time) verwendet, müssen Sie den Zugriff anfordern, bevor Sie eine Verbindung mit dem virtuellen Computer herstellen können. Weitere Informationen zur Just-In-Time-Richtlinie finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe der Just-In-Time-Richtlinie](../../security-center/security-center-just-in-time.md).
 
 ### <a name="connect-with-putty"></a>Herstellen der Verbindung mit PuTTY
 

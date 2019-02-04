@@ -1,6 +1,6 @@
 ---
-Titel: Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie ein Modell programmgesteuert mit C# und dem Machine Learning Batch Execution-Dienst erneut trainieren können.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Programmgesteuertes erneutes Trainieren von Machine Learning Studio-Modellen titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie ein Modell programmgesteuert mit C# und dem Machine Learning Batch Execution-Dienst erneut trainieren können.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 19.04.2017
 ---

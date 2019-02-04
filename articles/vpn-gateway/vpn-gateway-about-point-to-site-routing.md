@@ -2,25 +2,17 @@
 title: Informationen zu Azure Point-to-Site-Routing | Microsoft Docs
 description: Anhand dieses Artikels können Sie das Verhalten von Point-to-Site-VPN-Routing nachvollziehen.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 01/28/2019
 ms.author: anzaman
-ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031713"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189645"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 
@@ -48,9 +40,9 @@ Die Point-to-Site-VPN-Gatewayverbindung in diesem Beispiel gilt für ein VNet, d
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
-* Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
@@ -78,9 +70,9 @@ Clients, die Windows verwenden, können auf VNets mit direktem Peering zugreifen
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-* Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
+* Zu Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 
@@ -106,7 +98,7 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
@@ -134,7 +126,7 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Windows-Clients hinzugefügte Routen: 10.1.0.0/16
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
@@ -160,7 +152,7 @@ Windows-Clients und Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
@@ -186,7 +178,7 @@ Windows-Clients können auf das VNet und die Filiale (Site1) zugreifen, die Rout
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
@@ -217,7 +209,7 @@ Alle Clients können nur auf VNet1 zugreifen.
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
@@ -247,7 +239,7 @@ Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Si
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 

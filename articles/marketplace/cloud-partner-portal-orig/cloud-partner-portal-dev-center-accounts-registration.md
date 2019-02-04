@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254467"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168242"
 ---
 <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 ====================================
@@ -181,7 +181,8 @@ Wenn Sie kommerzielle Angebote veröffentlichen möchten, müssen Sie Auszahlung
     - Klicken Sie auf **Weiter**.
 4.  Geben Sie Ihre Steuerdaten ein, und wählen Sie **Weiter**.
 
->[WARNING!] Sie können Ihre kommerziellen Angebote nicht für die Veröffentlichung freischalten, wenn Sie keine Bankkonto- und Steuerinformationen in Ihrem Microsoft Developer Center-Konto bereitgestellt haben.
+>[!WARNING]
+>Sie können Ihre kommerziellen Angebote nicht für die Veröffentlichung freischalten, wenn Sie keine Bankkonto- und Steuerinformationen in Ihrem Microsoft Developer Center-Konto bereitgestellt haben.
 
 ### <a name="developer-center-registration-issues"></a>Probleme bei der Developer Center-Registrierung
 

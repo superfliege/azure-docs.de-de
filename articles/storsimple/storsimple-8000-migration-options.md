@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/30/2018
+ms.date: 01/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bbf1eb623232332ed025fa0806e942e638c39974
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242958"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456050"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Optionen zum Migrieren von Daten aus StorSimple Serie 5000/7000 
 
@@ -45,6 +45,8 @@ Für Kunden, die die StorSimple-Serie 5000/7000 verwenden, sind die folgenden Op
 
     - **Migrieren zu Panzura Freedom NAS**: Kunden von StorSimple 5000-7000 können zu Panzura Freedom NAS migrieren, um ihre Daten in Azure zu speichern. Die Panzura Freedom-Lösung stellt eine NAS-Lösung bereit, die Datencenter, Unternehmen sowie öffentliche und private Clouds umfasst. Die Lösung ermöglicht lokale, Hybrid- und In-Cloud-Datenworkflows für NFS, SMB und mobile Clients. Diese Migration wird von Panzura unterstützt, und können Kunden als ersten Schritt Migrationsunterstützung auf der [Panzura-Website](https://panzura.com/storsimple-migration/) anfordern.
 
+    - **Migrieren zu Cohesity** – Cohesity ermöglicht es Ihnen, Daten von Ihrer aktuellen StorSimple 5000–7000-Plattform zu Cohesity DataPlatform in Azure zu migrieren. Cohesity DataPlatform ist eine softwaredefinierte, für das Web skalierte Lösung, die Dateien, Sicherungen, Objekte und VMs in einer einzigen nativen Cloudlösung konsolidiert. Nach der Migration zu DataPlatform können Sie Daten und Apps von der Cloud bis zum Kern mithilfe eines einzelnen Transparenzbereichs verwalten, schützen und bereitstellen. Beginnen Sie mit Cohesity mit höchstens drei Knoten. Erfahren Sie mehr zur [Migration zu Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+
 ## <a name="migration---frequently-asked-questions"></a>Häufig gestellte Fragen zur Migration
 
 ### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>F: Wenn ist das Dienstende der StorSimple-Geräte der Serie 5000/7000 erreicht? 
@@ -68,8 +70,8 @@ A. Die Dienste könnten zwar weiterhin funktionieren, aber Microsoft wird nicht 
 
 A. Abhängig von ihren Szenarios können Benutzer der StorSimple-Serie 5000/7000 die folgenden Migrationsoptionen nutzen. 
 
- - **Upgrade auf Serie 8000**: Verwenden Sie diese Option, wenn Sie die StorSimple-Plattform weiterhin nutzen möchten. 
- - **Migrieren zur Azure-Dateisynchronisierung**: Verwenden Sie diese Option, wenn Sie zum nativen Azure-Format wechseln möchten. Sie können die Azure-Dateisynchronisierung zur zentralen Verwaltung von Dateifreigaben verwenden. 
+ - **Upgrade auf Serie 8000**:  Verwenden Sie diese Option, wenn Sie die StorSimple-Plattform weiterhin nutzen möchten. 
+ - **Migrieren zur Azure-Dateisynchronisierung**:  Verwenden Sie diese Option, wenn Sie zum nativen Azure-Format wechseln möchten. Sie können die Azure-Dateisynchronisierung zur zentralen Verwaltung von Dateifreigaben verwenden. 
 
 Um hier nicht aufgeführte Migrationsoptionen zu erörtern, kontaktieren Sie den Microsoft-Support.
 

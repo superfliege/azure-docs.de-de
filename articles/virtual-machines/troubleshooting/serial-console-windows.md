@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 61b64b63a53318e0a703678d5525399fe13efa83
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b280c86b15f7af01b04d41b4c2d625ea4ec4a398
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432761"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104361"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Serielle Konsole für virtuelle Computer für Windows
 
@@ -136,6 +136,13 @@ Funktionstasten sind für die Verwendung in der seriellen Konsole auf virtuellen
 
 ### <a name="use-wsl-in-serial-console"></a>Verwenden von WSL in der seriellen Konsole
 Das Windows-Subsystem für Linux (WSL) wurde für Windows Server 2019 oder höher aktiviert. Daher ist es auch möglich, WSL für die Verwendung in der seriellen Konsole zu aktivieren, wenn Sie Windows Server 2019 oder höher ausführen. Dies kann für Benutzer vorteilhaft sein, die auch mit Linux-Befehlen vertraut sind. Anweisungen zur Aktivierung von WSL für Windows Server finden Sie in der [Installationsanleitung](https://docs.microsoft.com/windows/wsl/install-on-server).
+
+### <a name="restart-your-windows-vm-within-serial-console"></a>Neustarten Ihrer Windows-VM in der seriellen Konsole
+Sie können Ihre VM in der seriellen Konsole neu starten, indem Sie zum Netzschalter navigieren und auf „VM neu starten“ klicken. Hierdurch wird ein Neustart der VM initiiert, und es wird eine Benachrichtigung hinsichtlich des Neustarts im Azure-Portal angezeigt.
+
+Dies ist hilfreich in Situationen, in denen Sie auf das Startmenü Ihres virtuellen Computers zugreifen möchten, ohne die Benutzeroberfläche der seriellen Konsole zu verlassen.
+
+![Neustart der seriellen Konsole für Windows](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
 ## <a name="disable-serial-console"></a>Deaktivieren der seriellen Konsole
 Standardmäßig haben alle Abonnements Zugriff auf die serielle Konsole, die für alle virtuellen Computer aktiviert ist. Sie können die serielle Konsole auf Abonnement- oder VM-Ebene deaktivieren.

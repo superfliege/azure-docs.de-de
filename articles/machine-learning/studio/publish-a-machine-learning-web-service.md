@@ -1,6 +1,6 @@
 ---
-Titel: Bereitstellen eines Machine Learning Studio-Webdiensts titleSuffix: Azure Machine Learning Studio – Beschreibung: So konvertieren Sie ein Trainingsexperiment in ein Vorhersageexperiment, bereiten es auf die Bereitstellung vor und stellen es dann als Azure Machine Learning Studio-Webdienst bereit.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Bereitstellen eines Machine Learning Studio-Webdiensts titleSuffix: Azure Machine Learning Studio – Beschreibung: So konvertieren Sie ein Trainingsexperiment in ein Vorhersageexperiment, bereiten es auf die Bereitstellung vor und stellen es dann als Azure Machine Learning Studio-Webdienst bereit.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 06.01.2017
 ---

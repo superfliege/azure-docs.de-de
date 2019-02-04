@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035470"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55235976"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Was ist ExpressRoute Global Reach?
 
@@ -33,16 +33,7 @@ ExpressRoute ermöglicht die Konnektivität zwischen Ihrem lokalen Netzwerk und 
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>Wo wird ExpressRoute Global Reach unterstützt?
 
-ExpressRoute Global Reach wird in den folgenden Ländern unterstützt. Die ExpressRoute-Leitungen müssen an den Peeringstandorten in diesen Ländern eingerichtet werden.
-
-* Australien
-* Frankreich
-* Hongkong
-* Irland
-* Japan
-* Niederlande
-* Vereinigtes Königreich
-* USA
+ExpressRoute Global Reach wird in/an [ausgewählten Ländern/Orten unterstützt](../articles/expressroute/expressroute-global-reach.md). Die ExpressRoute-Leitungen müssen an den Peeringstandorten in diesen Ländern/an diesen Orten eingerichtet werden.
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Ich habe mehr als zwei lokale Netzwerke, die jeweils mit einer ExpressRoute-Leitungen verbunden sind. Kann ich ExpressRoute Global Reach aktivieren, um alle meine lokalen Netzwerke miteinander zu verbinden?
 
@@ -50,11 +41,11 @@ Ja, das ist möglich, sofern sich die Leitungen in den unterstützten Länder be
 
 ### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Kann ich ExpressRoute Global Reach zwischen zwei ExpressRoute-Leitungen am gleichen Peeringstandort aktivieren?
 
-Nein. Die zwei Leitungen müssen sich an verschiedenen Peeringstandorten befinden. Verfügt eine Metro in einem unterstützten Land über mehr als einen Peeringstandort, können Sie die an verschiedenen Peeringstandorten in dieser Metro erstellten ExpressRoute-Leitungen miteinander verbinden. 
+ Nein. Die zwei Leitungen müssen sich an verschiedenen Peeringstandorten befinden. Verfügt eine Metro in einem unterstützten Land über mehr als einen Peeringstandort, können Sie die an verschiedenen Peeringstandorten in dieser Metro erstellten ExpressRoute-Leitungen miteinander verbinden. 
 
 ### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Wenn ExpressRoute Global Reach zwischen Leitung X und Leitung Y sowie zwischen Leitung Y und Leitung Z aktiviert ist, können dann meine lokalen Netzwerke, die mit Leitung X und Leitung Z verbunden sind, über das Microsoft-Netzwerk miteinander kommunizieren?
 
-Nein. Um die Konnektivität zwischen zwei beliebigen Ihrer lokalen Netzwerke zu aktivieren, müssen Sie die entsprechenden ExpressRoute-Leitungen explizit verbinden. Im obigen Beispiel müssen Sie Leitung X und Leitung Z verbinden. 
+ Nein. Um die Konnektivität zwischen zwei beliebigen Ihrer lokalen Netzwerke zu aktivieren, müssen Sie die entsprechenden ExpressRoute-Leitungen explizit verbinden. Im obigen Beispiel müssen Sie Leitung X und Leitung Z verbinden. 
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Welchen Netzwerkdurchsatz zwischen meinen lokalen Netzwerken kann ich nach dem Aktivieren von ExpressRoute Global Reach erwarteten?
 

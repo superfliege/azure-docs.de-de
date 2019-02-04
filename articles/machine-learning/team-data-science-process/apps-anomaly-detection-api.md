@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134793"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469820"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 ## <a name="overview"></a>Übersicht
@@ -36,25 +36,25 @@ Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Sc
 
 > [!NOTE]
 > Probieren Sie die **IT Anomaly Insights-Lösung**, die von [dieser API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
-> 
+>
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
---> 
+-->
 
 ## <a name="api-deployment"></a>API-Bereitstellung
-Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies aus dem [Azure AI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei AzureML-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs von der [AzureML-Webdienste](https://services.azureml.net/webservices/) Seite aus verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies aus dem [Azure AI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei Azure Machine Learning Studio-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs von der Seite [Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) aus verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalieren der API
 Standardmäßig enthält der kostenlose Dev/Test-Abrechnungsplan Ihrer Bereitstellung 1.000 Transaktionen/Monat und 2 Computestunden/Monat.  Sie können nach Ihren Bedürfnissen auf einen anderen Plan aktualisieren.  Informationen zu den Preisen verschiedener Pläne finden Sie [hier](https://azure.microsoft.com/pricing/details/machine-learning/) unter „Produktions-Web-API-Preise“.
 
-## <a name="managing-aml-plans"></a>Verwalten von AML-Plänen 
+## <a name="managing-aml-plans"></a>Verwalten von AML-Plänen
 Sie können Ihren Abrechnungsplan [hier](https://services.azureml.net/plans/) verwalten.  Der Name des Plans basiert auf dem Namen der Ressourcengruppe, die Sie bei Bereitstellung der API ausgewählt haben, plus einer Zeichenfolge, die für Ihr Abonnement eindeutig ist.  Anweisungen zum Aktualisieren Ihres Plans stehen [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) im Abschnitt „Managing billing plans“ (Verwalten von Abrechnungsplänen) zur Verfügung.
 
 ## <a name="api-definition"></a>API-Definition
 Der Webdienst stellt eine REST-basierte API über HTTPS bereit, die auf unterschiedliche Weise genutzt werden kann, beispielsweise durch eine Web- oder mobile Anwendung, R, Python, Excel usw.  Sie senden Zeitreihendaten über einen REST-API-Aufruf an diesen Dienst, und dann wird eine Kombination der unten beschriebenen drei Anomaliearten ausgeführt.
 
 ## <a name="calling-the-api"></a>Aufrufen der API
-Um die API aufrufen zu können, müssen Sie die Endpunktposition und den API-Schlüssel kennen.  Beides ist zusammen mit dem Beispielcode für das Aufrufen der API auf der Seite der [AzureML-Webdienste](https://services.azureml.net/webservices/) verfügbar.  Navigieren Sie zu der gewünschten API, und klicken Sie dann auf die Registerkarte „Nutzen“, um sie zu finden.  Beachten Sie, dass Sie die API als Swagger-API (d.h. mit dem URL-Parameter `format=swagger`) oder als Nicht-Swagger-API (d.h. ohne `format`-URL-Parameter) aufrufen können.  Im Beispielcode wird das Swagger-Format verwendet.  Im Folgenden finden Sie ein Beispiel für eine Anforderung und Antwort im Nicht-Swagger-Format.  Diese Beispiele gelten für den Saisonabhängigkeits-Endpunkt.  Der Nicht-Saisonabhängigkeits-Endpunkt ist ähnlich.
+Um die API aufrufen zu können, müssen Sie die Endpunktposition und den API-Schlüssel kennen.  Beides ist zusammen mit dem Beispielcode für das Aufrufen der API auf der Seite der [Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) verfügbar.  Navigieren Sie zu der gewünschten API, und klicken Sie dann auf die Registerkarte „Nutzen“, um sie zu finden.  Beachten Sie, dass Sie die API als Swagger-API (d.h. mit dem URL-Parameter `format=swagger`) oder als Nicht-Swagger-API (d.h. ohne `format`-URL-Parameter) aufrufen können.  Im Beispielcode wird das Swagger-Format verwendet.  Im Folgenden finden Sie ein Beispiel für eine Anforderung und Antwort im Nicht-Swagger-Format.  Diese Beispiele gelten für den Saisonabhängigkeits-Endpunkt.  Der Nicht-Saisonabhängigkeits-Endpunkt ist ähnlich.
 
 ### <a name="sample-request-body"></a>Inhalt der Beispielanforderung
 Die Anforderung enthält zwei Objekte: `Inputs` und `GlobalParameters`.  In der folgenden Beispielanforderung werden einige Parameter explizit gesendet, andere hingegen nicht (scrollen Sie nach unten, um eine vollständige Liste von Parametern für jeden Endpunkt anzuzeigen).  Parameter, die nicht explizit in der Anforderung gesendet werden, verwenden die unten angegebenen Standardwerte.
@@ -100,7 +100,8 @@ Beachten Sie: Um das `ColumnNames`-Feld zu sehen, müssen Sie `details=true` als
 
 
 ## <a name="score-api"></a>Score-API
-Die Score-API wird zum Ausführen der Anomaly Detection (Anomalieerkennung) für nicht saisonabhängige Zeitreihendaten verwendet. Die API führt mehrere Anomalieerkennungsmodule für die Daten aus und gibt jeweils die Anomaliebewertungen zurück. Die folgende Abbildung enthält ein Beispiel für Anomalien, die von der Score-API erkannt werden können. Diese Zeitreihe weist zwei unterschiedliche Pegeländerungen und drei Spitzen auf. Die roten Punkte zeigen die Zeit an, zu der die Pegeländerung erkannt wird, während die schwarzen Punkte die erkannten Spitzen anzeigen.
+Die Score-API wird zum Ausführen der Anomaly Detection (Anomalieerkennung) für nicht saisonabhängige Zeitreihendaten verwendet. Die API führt mehrere Anomalieerkennungsmodule für die Daten aus und gibt jeweils die Anomaliebewertungen zurück.
+Die folgende Abbildung enthält ein Beispiel für Anomalien, die von der Score-API erkannt werden können. Diese Zeitreihe weist zwei unterschiedliche Pegeländerungen und drei Spitzen auf. Die roten Punkte zeigen die Zeit an, zu der die Pegeländerung erkannt wird, während die schwarzen Punkte die erkannten Spitzen anzeigen.
 ![Score-API][1]
 
 ### <a name="detectors"></a>Erkennungsmodule
@@ -116,7 +117,7 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beides |enumerated |Both, Spikes, Dips |Beides |
@@ -124,10 +125,10 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | trenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |N/V |
+| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |– |
 
 ### <a name="output"></a>Output
-Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt. 
+Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
 
 | Ausgaben | BESCHREIBUNG |
 | --- | --- |
@@ -141,7 +142,7 @@ Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für
 | talert |1/0-Wert, der basierend auf der Eingabeempfindlichkeit angibt, dass eine positive Trendanomalie vorhanden ist |
 
 ## <a name="scorewithseasonality-api"></a>ScoreWithSeasonality-API
-Die ScoreWithSeasonality-API wird zum Durchführen der Anomalieerkennung für Zeitreihen verwendet, die über saisonale Muster verfügen. Diese API ist nützlich, um Abweichungen in saisonalen Mustern zu erkennen.  
+Die ScoreWithSeasonality-API wird zum Durchführen der Anomalieerkennung für Zeitreihen verwendet, die über saisonale Muster verfügen. Diese API ist nützlich, um Abweichungen in saisonalen Mustern zu erkennen.
 Die folgende Abbildung enthält ein Beispiel für Anomalien, die in einer saisonalen Zeitreihe erkannt wurden. Die Zeitreihe weist eine Spitze (erster schwarzer Punkt), zwei Abfälle (zweiter schwarzer Punkt und ein Punkt am Ende) und eine Pegeländerung (roter Punkt) auf. Beachten Sie, dass sowohl der Abfall in der Mitte der Zeitreihe als auch die Pegeländerung erst erkennbar sind, nachdem die saisonalen Komponenten aus der Zeitreihe entfernt wurden.
 ![Saisonabhängigkeits-API][2]
 
@@ -152,11 +153,11 @@ Die Detektoren im Saisonabhängigkeits-Endpunkt ähneln denen im Nicht-Saisonabh
 
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
-| preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |N/V |
-| preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |N/V |
+| preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |– |
+| preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |– |
 | detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beides |enumerated |Both, Spikes, Dips |Beides |
 | bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
@@ -166,11 +167,11 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | seasonality.enable |Gibt an, ob eine saisonabhängige Analyse durchgeführt wird. |true |boolean |true, false |Von Zeitreihe abhängig |
 | seasonality.numSeasonality |Maximale Anzahl von zu erkennenden periodischen Zyklen |1 |integer |1, 2 |1 - 2 |
-| seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |N/V |
-| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |N/V |
+| seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |– |
+| postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |– |
 
 ### <a name="output"></a>Output
-Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt. 
+Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
 
 | Ausgaben | BESCHREIBUNG |
 | --- | --- |

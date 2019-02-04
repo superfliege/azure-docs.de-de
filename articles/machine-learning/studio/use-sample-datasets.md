@@ -1,6 +1,6 @@
 ---
-Titel: Verwenden der Beispieldatasets titleSuffix: Azure Machine Learning Studio Beschreibung: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Verwenden der Beispieldatasets titleSuffix: Azure Machine Learning Studio Beschreibung: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 19.01.2018
 ---

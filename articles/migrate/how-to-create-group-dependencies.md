@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 007f7fe95be77a2b1661cd6c82118eb875401f24
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255260"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472574"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -37,7 +37,7 @@ Sie müssen jedem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analyti
 
 - Beim Zuordnen eines Arbeitsbereichs erhalten Sie die Möglichkeit, einen neuen Arbeitsbereich zu erstellen oder einen vorhandenen anzufügen:
     - Wenn Sie einen neuen Arbeitsbereich erstellen, müssen Sie für diesen einen Namen angeben. Der Arbeitsbereich wird dann in einer Region in derselben [Azure-Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) erstellt, in der auch das Migrationsprojekt erstellt wurde.
-    - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Leserzugriff auf den Arbeitsbereich haben.
+    - Wenn Sie einen vorhandenen Arbeitsbereich anfügen, können Sie zwischen allen verfügbaren Arbeitsbereichen im selben Abonnement wie das Migrationsprojekt auswählen. Beachten Sie, dass nur die Arbeitsbereiche aufgeführt sind, die in einer Region erstellt wurden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Um einen Arbeitsbereich anzufügen, stellen Sie sicher, dass Sie Lesezugriff auf den Arbeitsbereich besitzen.
 
 > [!NOTE]
 > Den einem Migrationsprojekt zugeordneten Arbeitsbereich können Sie nicht ändern.
@@ -52,6 +52,8 @@ Um Abhängigkeiten einer Gruppe anzuzeigen, müssen Sie auf allen lokalen Comput
 
 ### <a name="install-the-mma"></a>Installieren des MMA
 
+#### <a name="install-the-agent-on-a-windows-machine"></a>Installieren des Agent auf einem Windows-Computer
+
 Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren:
 
 1. Doppelklicken Sie auf den heruntergeladenen Agent.
@@ -60,6 +62,9 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**.
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
+Sie können den Agent über die Befehlszeile oder mit einer automatisierten Methode wie Azure Automation DSC, System Center Configuration Manager oder mit einer Azure Resource Manager-Vorlage installieren, wenn Sie Microsoft Azure Stack in Ihrem Rechenzentrum bereitgestellt haben. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
+
+#### <a name="install-the-agent-on-a-linux-machine"></a>Installieren des Agent auf einem Linux-Computer
 
 Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren:
 
@@ -68,6 +73,10 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-system-center-operations-manager"></a>Installieren des Agent auf einem Computer, der von System Center Operations Manager überwacht wird
+
+Bei Computern, die von Operations Manager 2012 R2 oder höher überwacht werden, besteht keine Notwendigkeit den MMA-Agent zu installieren. Die Dienstzuordnung verfügt über eine Integration mit Operations Manager, die den Operations Manager MMA zum Sammeln der erforderlichen Abhängigkeitsdaten nutzt. Sie können die Integration mithilfe der [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) verfügbaren Anleitungen aktivieren. Beachten Sie aber, dass der Abhängigkeits-Agent auf diesen Computern installiert sein muss.
+
 ### <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
 1. Doppelklicken Sie zum Installieren des Abhängigkeits-Agents auf einem Windows-Computer auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.
 2. Installieren Sie den Abhängigkeits-Agent auf einem Linux-Computer als „root“, indem Sie den folgenden Befehl verwenden:
@@ -75,6 +84,8 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
     ```sh InstallDependencyAgent-Linux64.bin```
 
 Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssysteme [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) und [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).
+
+[Erfahren Sie mehr](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Verfeinern der Gruppe anhand der Visualisierung der Abhängigkeiten
 Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können Sie die Abhängigkeiten der Gruppe visualisieren und diese anhand der unten aufgeführten Schritte verfeinern.
@@ -91,6 +102,10 @@ Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können
      ![Anzeigen der Gruppenabhängigkeiten](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Klicken Sie auf den Zeitraum, und ändern Sie ihn, um ausführlichere Informationen zu den Abhängigkeiten zu erhalten. Standardmäßig ist ein Bereich von einer Stunde ausgewählt. Sie können den Zeitraum ändern oder das Start- und Enddatum und die Dauer angeben.
+
+    > [!NOTE]
+      Aktuell unterstützt die Benutzeroberfläche der Abhängigkeitsvisualisierung keine Auswahl eines Zeitraums von mehr als einer Stunde. Verwenden Sie Log Analytics zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics) über einen längeren Zeitraum.
+
 4. Überprüfen Sie die abhängigen Computer und die auf jedem Computer ausgeführten Prozesse, und identifizieren Sie die Computer, die der Gruppe hinzugefügt oder aus dieser entfernt werden sollen.
 5. Klicken Sie bei gedrückter STRG-Taste, um Computer in der Übersicht auszuwählen, die der Gruppe hinzugefügt oder daraus entfernt werden sollen.
     - Sie können nur Computer hinzufügen, die ermittelt wurden.
@@ -101,6 +116,20 @@ Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können
     ![Hinzufügen oder Entfernen von Computern](./media/how-to-create-group-dependencies/add-remove.png)
 
 Wenn Sie die Abhängigkeiten eines bestimmten Computers überprüfen möchten, der in der Übersicht mit den Gruppenabhängigkeiten angezeigt wird, können Sie eine [Übersicht mit den Computerabhängigkeiten einrichten](how-to-create-group-machine-dependencies.md).
+
+## <a name="query-dependency-data-from-log-analytics"></a>Abfragen von Abhängigkeitsdaten aus Log Analytics
+
+Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) zu den Dienstzuordnungs-Datentabellen zum Abfragen in Log Analytics. 
+
+So führen Sie die Log Analytics-Abfragen aus
+
+1. Navigieren Sie nach der Installation des Agents zum Portal, und klicken Sie auf **Übersicht**.
+2. Wechseln Sie in der 0**Übersicht** zum Abschnitt **Essentials** des Projekts, und klicken Sie auf den Arbeitsbereichsnamen, der neben dem **OMS-Arbeitsbereich** steht.
+3. Klicken Sie auf der Log Analytics-Arbeitsbereichsseite auf **Allgemein** > **Protokolle**.
+4. Schreiben Sie Ihre Abfrage, um mit Log Analytics Abhängigkeitsdaten zu sammeln. Beispielabfragen zum Sammeln von Abhängigkeitsdaten finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+5. Führen Sie Ihre Abfrage aus, indem Sie auf „Ausführen“ klicken. 
+
+[Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) zum Schreiben von Log Analytics-Abfragen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

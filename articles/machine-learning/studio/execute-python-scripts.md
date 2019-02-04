@@ -1,6 +1,6 @@
 ---
-Titel: Ausführen von Python-Machine Learning-Skripts titleSuffix: Azure Machine Learning Studio Beschreibung: Beschreibt die Entwurfsprinzipien, die der Unterstützung für Python-Skripts in Azure Machine Learning Studio zugrunde liegen, sowie die grundlegenden Verwendungsszenarien, Funktionen und Einschränkungen.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Ausführen von Python-Machine Learning-Skripts titleSuffix: Azure Machine Learning Studio Beschreibung: Beschreibt die Entwurfsprinzipien, die der Unterstützung für Python-Skripts in Azure Machine Learning Studio zugrunde liegen, sowie die grundlegenden Verwendungsszenarien, Funktionen und Einschränkungen.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 29.11.2017
 ---

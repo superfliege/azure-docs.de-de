@@ -4,35 +4,62 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie mehr über die neuesten Updates des Azure Machine Learning Service und Python SDKs für maschinelles Lernen und Datenaufbereitung.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304095"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473101"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
-Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts. 
+Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Eine vollständige Beschreibung jedes SDKs finden Sie in der jeweiligen Referenzdokumentation für:
++ Das [**Haupt-SDK für Python**](https://aka.ms/aml-sdk) von Azure Machine Learning
++ Das [**Datenaufbereitungs-SDK**](https://aka.ms/data-prep-sdk) von Azure Machine Learning
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Azure Machine Learning SDK für Python v1.0.10
+
++ **Änderungen**: 
+  + Das Azure ML SDK besitzt keine „azure-cli“-Pakete mehr als Abhängigkeit. Insbesondere wurden die Abhängigkeiten „azure-cli-core“ und „azure-cli-profile“ aus „azureml-core“ entfernt. Dies sind die Änderungen mit Auswirkungen auf Benutzer:
+    + Wenn Sie eine „az login“ ausführen und dann „azureml-sdk“ verwenden, führt das SDK die Browser- oder Geräteanmeldung ein weiteres Mal aus. Es verwendet keinen von „az login“ erstellten Anmeldeinformationsstatus.
+    + Verwenden Sie für die Azure CLI-Authentifizierung, z. B. wie bei der Verwendung von "az login", die _azureml.core.authentication.AzureCliAuthentication_-Klasse. Führen Sie für die Azure CLI-Authentifizierung _pip install azure-cli_ in der Python-Umgebung durch, in der Sie „azureml-sdk“ installiert haben.
+    + Wenn Sie „az login“ unter Verwendung eines Dienstprinzipals für die Automatisierung durchführen, empfehlen wir, dass Sie die _azureml.core.authentication.ServicePrincipalAuthentication_-Klasse verwenden, weil „azureml-sdk“ keinen von der Azure CLI erstellen Anmeldeinformationszustand verwendet. 
+
++ **Programmfehlerbehebungen**: Dieses Release enthält hauptsächlich kleinere Programmfehlerbehebungen.
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure Machine Learning Data Prep SDK v1.0.8
+
++ **Fehlerbehebungen**
+  + Deutliche Verbesserung der Leistung beim Abrufen von Datenprofilen.
+  + Kleinere Fehler im Zusammenhang mit der Fehlerberichterstattung wurden behoben.
+  
+### <a name="azure-portal-new-features"></a>Azure-Portal: Neue Features
++ Neue Drag & Drop-Diagrammerstellungserfahrung für Berichte. Benutzer können eine Spalte oder ein Attribut aus dem Bereich in den Diagrammbereich ziehen, wo das System automatisch einen geeigneten Diagrammtyp für den Benutzer auswählt, basierend auf dem Typ der Daten. Benutzer können den Diagrammtyp in andere anwendbare Typen zu ändern oder zusätzliche Attribute hinzufügen.
+
+    Unterstützte Diagrammtypen:
+    - Liniendiagramm
+    - Histogramm
+    - Gestapeltes Balkendiagramm
+    - Boxplot
+    - Punktdiagramm
+    - Blasendiagramm
 
 ## <a name="2019-01-14"></a>2019-01-14
 
 ### <a name="azure-machine-learning-sdk-for-python-v108"></a>Azure Machine Learning SDK für Python v1.0.8
 
-+ **SDK-Referenzdokumente**: https://aka.ms/aml-sdk
-
 + **Programmfehlerbehebungen**: Dieses Release enthält hauptsächlich kleinere Programmfehlerbehebungen.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning Data Prep SDK v1.0.7
-
-+ **SDK-Referenzdokumente**: https://aka.ms/data-prep-sdk
 
 + **Neue Features**
   + Datenspeicherverbesserungen (dokumentiert in der [Datenspeicher-Anleitung](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
@@ -44,22 +71,15 @@ Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learni
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure Machine Learning Data Prep SDK v1.0.6
 
-+ **SDK-Referenzdokumente**: https://aka.ms/data-prep-sdk
-
 + **Fehlerbehebungen**
   + Korrektur eines Fehlers beim Lesen von öffentlichen lesbaren Azure-Blobcontainern in Spark
 
 ## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>Azure Machine Learning SDK für Python v1.0.6
-
-+ **SDK-Referenzdokumente**: https://aka.ms/aml-sdk
-
 + **Programmfehlerbehebungen**: Dieses Release enthält hauptsächlich kleinere Programmfehlerbehebungen.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Azure Machine Learning Data Prep SDK v1.0.4
-
-+ **SDK-Referenzdokumente**: https://aka.ms/data-prep-sdk
 
 + **Neue Features**
   + Die `to_bool`-Funktion ermöglicht nun die Konvertierung nicht übereinstimmender Werte in Fehlerwerte. Dies ist das neue Standardverhalten bei Nichtübereinstimmung für `to_bool` und `set_column_types`, während das bisherige Standardverhalten darin bestand, nicht übereinstimmende Werte in FALSE zu konvertieren.

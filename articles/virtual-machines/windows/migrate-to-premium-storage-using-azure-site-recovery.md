@@ -9,13 +9,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.component: disks
-ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.subservice: disks
+ms.openlocfilehash: 6db263dcfc3195c9b2ab3afe7587845a4632fd1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404136"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456526"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
@@ -85,7 +85,7 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 ### <a name="step-2-choose-your-protection-goals"></a>Schritt 2: Auswählen der Schutzziele 
 
 1. Öffnen Sie auf der VM, auf der Sie den Konfigurationsserver installieren möchten, das [Azure-Portal](https://portal.azure.com).
-2. Navigieren Sie zu **Recovery Services-Tresore** > **Einstellungen** > **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Schutzziel**.
+2. Navigieren Sie zu **Recovery Services-Tresore** > **Einstellungen** > **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
 
    ![Navigieren zum Bereich „Schutzziel“][2]
 
@@ -162,7 +162,7 @@ Führen Sie die Schritte unter [Einrichten der Replikationseinstellungen](../../
    3. Geben Sie in Schritt 2 das Bereitstellungsmodell für die Zeit nach dem Failover, ein Storage Premium-Konto als Migrationsziel, ein Standardspeicherkonto zum Speichern von Protokollen und ein virtuelles Netzwerk als Failoverziel an.
    4. Fügen Sie in Schritt 3 geschützte virtuelle Computer nach IP-Adresse hinzu. (Unter Umständen benötigen Sie eine interne IP-Adresse, um sie zu finden.)
    5. Konfigurieren Sie in Schritt 4 die Eigenschaften, indem Sie die Konten auswählen, die Sie zuvor auf dem Prozessserver eingerichtet haben.
-   6. Wählen Sie in Schritt 5 die Replikationsrichtlinie aus, die Sie zuvor in „Schritt 5: Einrichten der Replikationseinstellungen“ erstellt haben.
+   6. Wählen Sie in Schritt 5 die Replikationsrichtlinie aus, die Sie zuvor in „Schritt 5:  Einrichten der Replikationseinstellungen“ erstellt haben.
    7. Klicken Sie auf **OK**.
 
    > [!NOTE]
@@ -176,7 +176,7 @@ Falls sich Ihre virtuellen Computer in einer Verfügbarkeitsgruppe befinden, emp
  
 Sie können je nach Ihren Anforderungen ein Bereitstellungsmodell für die Zeit nach dem Failover wählen. Wenn Sie Azure Resource Manager als Bereitstellungsmodell für die Zeit nach dem Failover auswählen, können Sie ein Failover für einen virtuellen Computer (Resource Manager) auf einen virtuellen Computer (Resource Manager) oder ein Failover eines virtuellen Computers (klassisch) auf einen virtuellen Computer (Resource Manager) ausführen.
 
-### <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
+### <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
 
 Prüfen Sie, ob die Replikation abgeschlossen ist. Wählen Sie hierzu Ihre Site Recovery-Instanz und anschließend **Einstellungen** > **Replizierte Elemente** aus. Der Status und der Prozentsatz Ihres Replikationsprozesses werden angezeigt. 
 
@@ -198,8 +198,8 @@ Site Recovery erstellt eine VM-Instanz, deren Typ einem Storage Premium-fähigen
 ## <a name="post-migration-steps"></a>Schritte nach der Migration
 
 1. **Konfigurieren Sie replizierte VMs in der Verfügbarkeitsgruppe (falls zutreffend)**. Für Site Recovery wird das Migrieren von VMs zusammen mit der Verfügbarkeitsgruppe nicht unterstützt. Wählen Sie je nach Bereitstellungstyp Ihrer replizierten VM eine der folgenden Vorgehensweisen:
-   * Mit dem klassischen Bereitstellungsmodell erstellter virtueller Computer: Fügen Sie den virtuellen Computer im Azure-Portal der Verfügbarkeitsgruppe hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../linux/classic/configure-availability-classic.md).
-   * Mit dem Resource Manager-Bereitstellungsmodell erstellter virtueller Computer: Speichern Sie Ihre Konfiguration des virtuellen Computers, löschen Sie die virtuellen Computer in der Verfügbarkeitsgruppe, und erstellen Sie sie neu. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Machen Sie sich vor dem Ausführen dieses Skripts mit dessen Einschränkungen vertraut, und planen Sie Ihre Ausfallzeit.
+   * Für einen virtuellen Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde: Fügen Sie die VM zu der Verfügbarkeitsgruppe im Azure-Portal hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../linux/classic/configure-availability-classic.md).
+   * Für einen virtuellen Computer, der mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde: Speichern Sie Ihre Konfiguration der VM, und führen Sie anschließend das Löschen und Neuerstellen der VMs in der Verfügbarkeitsgruppe durch. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Machen Sie sich vor dem Ausführen dieses Skripts mit dessen Einschränkungen vertraut, und planen Sie Ihre Ausfallzeit.
 
 2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen virtuellen Computer die gleiche Funktion erfüllen wie die virtuellen Quellcomputer. Löschen Sie den virtuellen Computer, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Falls der Datenträger aufgrund eines Problems nicht gelöscht wird, obwohl Sie den virtuellen Computer gelöscht haben, lesen Sie [Problembehandlung bei Speicherressourcen-Löschfehlern](storage-resource-deletion-errors.md).
 
@@ -222,7 +222,7 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Az
 
 * [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/documentation/services/storage/)
 * [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](premium-storage.md)
+* [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

@@ -1,6 +1,6 @@
 ---
-Titel: Importieren von Daten aus Datei titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie eine Trainingsdatendatei von der Festplatte in Azure Machine Learning Studio hochladen. So wird ein Datasetmodul im Arbeitsbereich erstellt.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Importieren von Daten aus Datei titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie eine Trainingsdatendatei von der Festplatte in Azure Machine Learning Studio hochladen. So wird ein Datasetmodul im Arbeitsbereich erstellt.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 20.03.2017
 ---

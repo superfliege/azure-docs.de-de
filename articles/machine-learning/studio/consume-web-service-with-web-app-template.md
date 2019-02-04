@@ -1,14 +1,27 @@
 ---
-Titel: Nutzen eines Studio-Webdiensts mit einer Web-App-Vorlage titleSuffix: Azure Machine Learning Studio Beschreibung: Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 20.03.2017
+title: Nutzen eines Studio-Webdiensts mit einer Web-App-Vorlage
+titleSuffix: Azure Machine Learning Studio
+description: Verwenden Sie eine Web-App-Vorlage in Azure Marketplace, um einen Vorhersagewebdienst in Azure Machine Learning zu nutzen.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: 164aae7c6a4df18b8a28e1ff152e9c61c60f06b9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299060"
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Verwenden eines Azure Machine Learning Studio-Webdiensts mit einer Web-App-Vorlage
 
 Sie können ein Vorhersagemodell entwickeln und als Azure-Webdienst bereitstellen, indem Sie Folgendes verwenden:
 - Azure Machine Learning Studio
-- Tools wie R oder Python 
+- Tools wie R oder Python
 
 Anschließend haben Sie die Möglichkeit, auf das operationalisierte Modell über eine REST-API zuzugreifen.
 
@@ -23,10 +36,10 @@ Die Web-App-Vorlagen, die auf dem Azure Marketplace verfügbar sind, können ein
 
 Zwei Vorlagen sind verfügbar:
 
-* [Azure ML-Web-App-Vorlage für den Anfrage-/Antwort-Dienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
-* [Azure ML-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
+* [Azure Machine Learning Studio-Web-App-Vorlage für den Anfrage-/Antwort-Dienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
+* [Azure Machine Learning Studio-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Jede Vorlage erstellt mit dem API-URI und dem Schlüssel für den Webdienst eine ASP.NET-Beispielanwendung. Danach wird die Anwendung mithilfe der Vorlage als eine Website in Azure bereitgestellt. 
+Jede Vorlage erstellt mit dem API-URI und dem Schlüssel für den Webdienst eine ASP.NET-Beispielanwendung. Danach wird die Anwendung mithilfe der Vorlage als eine Website in Azure bereitgestellt.
 
 Die Vorlage für den Anforderung-/Antwort-Dienst (Request-Response Service, RRS) erstellt eine Web-App, mit der Sie eine einzelne Zeile mit Daten an den Webdienst senden können, um ein einzelnes Ergebnis zu erhalten. Die Vorlage für den Batchausführungsdienst (Batch Execution Service, BES) erstellt eine Web-App, mit der Sie viele Zeilen mit Daten senden können, um mehrere Ergebnisse zu erhalten.
 
@@ -51,33 +64,33 @@ Führen Sie die folgenden Schritte aus, um die RRS-Web-App-Vorlage zu verwenden 
 <!--    ![API Key][image3] -->
 
 <!-- This value will look like this:
-   
+
         https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
-   
+
     ![Request URI][image4] -->
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **Neu**, navigieren Sie zu **Azure ML-Anforderung-/Antwort-Dienst-Web-App**, und wählen Sie dann **Erstellen** aus. 
+2. Klicken Sie auf **Neu**, navigieren Sie zu **Azure ML-Anforderung-/Antwort-Dienst-Web-App**, und wählen Sie dann **Erstellen** aus.
 3. Im Bereich **Erstellen**:
-   
+
    * Geben Sie Ihrer Web-App einen eindeutigen Namen. Die URL der Web-App besteht aus diesem Namen gefolgt von **.azurewebsites.net**. Beispiel: **http://carprediction.azurewebsites.net**.
    * Wählen Sie das Azure-Abonnement und die Dienste aus, mit denen der Webdienst ausgeführt wird.
    * Klicken Sie auf **Erstellen**.
-     
+
    ![Web-App erstellen][image5]
 
 4. Wenn Azure das Bereitstellen der Web-App beendet hat, wählen Sie die **URL** auf der Seite mit den Web-App-Einstellungen in Azure aus, oder geben Sie die URL in einem Webbrowser ein. Geben Sie z.B. **http://carprediction.azurewebsites.net** ein.
 5. Bei der ersten Ausführung der Web-App werden Sie aufgefordert, die **Post-URL der API** und den **API-Schlüssel** anzugeben. Geben Sie die Werte ein, die Sie zuvor gespeichert haben (Anforderungs-URI bzw. API-Schlüssel). Klicken Sie auf **Submit** (Senden).
-     
+
    ![Post-URI und API-Schlüssel eingeben][image6]
 
 6. Die Web-App zeigt die Seite **Web-App-Konfiguration** mit den aktuellen Einstellungen für den Webdienst an. Hier können Sie die von der Web-App verwendeten Einstellungen ändern.
-   
+
    > [!NOTE]
    > Wenn Sie hier Einstellungen ändern, werden sie nur für diese Web-App geändert. Die Standardeinstellungen des Webdiensts werden nicht geändert. Angenommen, Sie ändern hier den Text in **Beschreibung**. In diesem Fall wird die im Webdienstdashboard in Machine Learning Studio angezeigte Beschreibung nicht geändert.
-   > 
-   > 
-   
+   >
+   >
+
     Wenn Sie fertig sind, klicken Sie auf **Änderungen speichern** und dann auf **Zur Startseite wechseln**.
 
 7. Auf der Startseite können Sie Werte eingeben, die an den Webdienst gesendet werden. Klicken Sie abschließend auf **Senden**. Das Ergebnis wird dann zurückgegeben.
@@ -93,11 +106,11 @@ Die Eingabewerte für einen Webdienst mit Batchausführung können aus Azure Sto
 
 ![Prozess zur Verwendung einer BES-Webvorlage][image2]
 
-1. Führen Sie das gleiche Verfahren zum Erstellen der BES-Web-App wie für die RRS-Vorlage aus. Wechseln Sie in diesem Fall jedoch zur [Azure ML-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/), um die BES-Vorlage im Azure Marketplace zu öffnen. Klicken Sie auf **Web-App erstellen**.
+1. Führen Sie das gleiche Verfahren zum Erstellen der BES-Web-App wie für die RRS-Vorlage aus. Wechseln Sie in diesem Fall jedoch zur [Azure Machine Learning Studio-Web-App-Vorlage für den Batchausführungsdienst](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/), um die BES-Vorlage im Azure Marketplace zu öffnen. Klicken Sie auf **Web-App erstellen**.
 
 2. Um anzugeben, wo die Ergebnisse gespeichert werden sollen, geben Sie die Informationen zum Zielcontainer auf der Startseite der Web-App an. Geben Sie zudem an, woher die Web-App die Eingabewerte erhält: aus einer lokalen Datei oder einem Azure Storage-Container.
    Klicken Sie auf **Submit** (Senden).
-   
+
    ![Speicherinformationen][image7]
 
 Die Web-App zeigt eine Seite mit dem Auftragsstatus an. Nach Abschluss des Auftrags werden Sie über den Speicherort der Ergebnisse im Azure Blob-Speicher informiert. Sie haben auch die Möglichkeit, die Ergebnisse in eine lokale Datei herunterzuladen.

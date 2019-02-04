@@ -1,6 +1,6 @@
 ---
-Titel: 'Schritt 4: Trainieren von Predictive Analytics-Modellen' titleSuffix: Azure Machine Learning Studio-Beschreibung: 'Schritt 4 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Trainieren, Bewerten und Auswerten mehrerer Modelle in Azure Machine Learning Studio.'
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: 'Schritt 4: Trainieren von Predictive Analytics-Modellen' titleSuffix: Azure Machine Learning Studio-Beschreibung: 'Schritt 4 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Trainieren, Bewerten und Auswerten mehrerer Modelle in Azure Machine Learning Studio.'
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 23.03.2017
 ---

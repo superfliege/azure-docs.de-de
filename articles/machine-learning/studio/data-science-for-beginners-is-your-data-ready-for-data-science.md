@@ -1,6 +1,6 @@
 ---
-Titel: Datenauswertung titleSuffix: Azure Machine Learning Studio – Beschreibung: Vier Kriterien, die Ihre Daten erfüllen müssen, um für Data Science bereit zu sein. Dieses Video stellt konkrete Beispiele für die grundlegende Bewertung von Daten bereit.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Datenauswertung titleSuffix: Azure Machine Learning Studio – Beschreibung: Vier Kriterien, die Ihre Daten erfüllen müssen, um für Data Science bereit zu sein. Dieses Video stellt konkrete Beispiele für die grundlegende Bewertung von Daten bereit.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03.01.2018
 ---

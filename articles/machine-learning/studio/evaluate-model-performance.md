@@ -1,6 +1,6 @@
 ---
-Titel: Auswerten der Modellleistung titleSuffix: Azure Machine Learning Studio Beschreibung: Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Auswerten der Modellleistung titleSuffix: Azure Machine Learning Studio Beschreibung: Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 20.03.2017
 ---

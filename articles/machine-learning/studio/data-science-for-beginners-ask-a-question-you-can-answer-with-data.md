@@ -1,6 +1,6 @@
 ---
-Titel: Stellen von Fragen, die durch Daten beantwortet werden können titleSuffix: Azure Machine Learning Studio-Beschreibung: Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Stellen von Fragen, die durch Daten beantwortet werden können titleSuffix: Azure Machine Learning Studio-Beschreibung: Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03.01.2018
 ---

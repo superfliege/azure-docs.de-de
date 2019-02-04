@@ -3,7 +3,7 @@ title: Verwenden der Azure Docker-VM-Erweiterung | Microsoft Docs
 description: Erfahren Sie, wie die Docker-VM-Erweiterung verwendet wird, um schnell und sicher eine Docker-Umgebung in Azure mit Resource Manager-Vorlagen und der Azure CLI bereitzustellen.
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: f30305374b1fcaabfb36533195a098073d33b6c3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465932"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197601"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Erstellen einer Docker-Umgebung in Azure mit der Docker-VM-Erweiterung
 
@@ -39,7 +39,7 @@ Weitere Informationen zu den verschiedenen Bereitstellungsmethoden, z.B. der Ver
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Bereitstellen einer Vorlage mit der Azure Docker-VM-Erweiterung
-Wir verwenden eine vorhandene Schnellstartvorlage zum Erstellen einer Ubuntu-VM, bei der die Azure Docker-VM-Erweiterung zum Installieren und Konfigurieren des Docker-Hosts verwendet wird. Die Vorlage finden Sie hier: [Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)(Einfache Bereitstellung eines virtuellen Ubuntu-Computers mit Docker). Die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
+Wir verwenden eine vorhandene Schnellstartvorlage zum Erstellen einer Ubuntu-VM, bei der die Azure Docker-VM-Erweiterung zum Installieren und Konfigurieren des Docker-Hosts verwendet wird. Die Vorlage finden Sie hier: [Einfache Bereitstellung eines virtuellen Ubuntu-Computers mit Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
 
 Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
@@ -58,7 +58,7 @@ Es dauert einige Minuten, bis die Bereitstellung abgeschlossen ist.
 
 
 ## <a name="deploy-your-first-nginx-container"></a>Bereitstellen des ersten NGINX-Containers
-Verwenden Sie [az vm show](/cli/azure/vm#az_vm_show), um die Details Ihrer VM anzuzeigen, einschließlich DNS-Name.
+Verwenden Sie [az vm show](/cli/azure/vm), um die Details Ihrer VM anzuzeigen, einschließlich DNS-Name.
 
 ```azurecli
 az vm show \
