@@ -67,7 +67,7 @@
 
 ### [Verwalten von Angeboten](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [Erstellen eines Angebots](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
-<!-- #### [Publish offer](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)   -->
+#### [Veröffentlichen eines Angebots](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [Anzeigen des Angebotsstatus](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [Aktualisieren eines Angebots](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [Löschen eines Angebots](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
@@ -140,6 +140,17 @@
 #### [Erstellen von technischen Ressourcen für das IoT Edge-Modul](./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md)
 #### [Veröffentlichen eines IoT Edge-Modulangebots](./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md)
 #### [Aktualisieren eines vorhandenen Angebots](./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md)
+
+### [Power BI-App-Angebot](./cloud-partner-portal/power-bi/cpp-power-bi-offer.md)
+#### [Voraussetzungen](./cloud-partner-portal/power-bi/cpp-prerequisites.md)
+#### [Erstellen eines Power BI-App-Angebots](./cloud-partner-portal/power-bi/cpp-create-offer.md)
+##### [Registerkarte „Angebotseinstellungen“](./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md)
+##### [Registerkarte „Technische Informationen“](./cloud-partner-portal/power-bi/cpp-technical-info-tab.md)
+##### [Registerkarte „Storefront Details“ (Storefrontdetails)](./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md)
+##### [Registerkarte „Kontakte“](./cloud-partner-portal/power-bi/cpp-contacts-tab.md)
+#### [Erstellen technischer Ressourcen für eine Power BI-App](./cloud-partner-portal/power-bi/cpp-create-technical-assets.md)
+#### [Veröffentlichen eines Power BI-App-Angebots](./cloud-partner-portal/power-bi/cpp-publish-offer.md)
+#### [Aktualisieren eines vorhandenen Angebots](./cloud-partner-portal/power-bi/cpp-update-existing-offer.md)
 
 ### [SaaS-Anwendungsangebot](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 #### [Voraussetzungen](./cloud-partner-portal/saas-app/cpp-prerequisites.md)

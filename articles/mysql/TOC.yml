@@ -44,12 +44,10 @@ items:
       href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
   - name: '2: Erstellen einer Web-App'
     items:
-    - name: WordPress – Portal
-      href: https://portal.azure.com/#create/WordPress.WordPress
+    - name: WordPress in Containern mit MySQL
+      href: ../app-service/containers/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json
     - name: PHP mit MySQL
       href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-    - name: Java mit MySQL
-      href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
 - name: Beispiele
   items:
   - name: Azure-Befehlszeilenschnittstelle
@@ -102,6 +100,12 @@ items:
       href: concepts-connectivity.md
     - name: Entwickeln mit Azure Kubernetes Service (AKS)
       href: concepts-aks.md
+    - name: Java
+      items:
+      - name: Konfigurieren von Spring Data-JDBC
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
+      - name: Konfigurieren von Spring Data-JPA
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
   - name: Replikation
     items:
     - name: Replikation eingehender Daten
@@ -238,9 +242,9 @@ items:
     href: partners-migration-mysql.md
   - name: Leitfaden zur Datenbankmigration
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 096d72d2580b7f71b434079b0f98797861e871bb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 1a4816724407eaa78fd8ab3984a21da00f0e1f04
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913392"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568327"

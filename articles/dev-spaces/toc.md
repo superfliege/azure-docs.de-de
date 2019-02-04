@@ -9,17 +9,21 @@
 
 ## Lernprogramme
 ### Java (VS Code und CLI)
-#### [1 – Erste Schritte](get-started-java.md)
-#### [2 – Teamentwicklung](team-development-java.md)
+#### [1: Erste Schritte](get-started-java.md)
+#### [2: Entwicklung mit mehreren Diensten](multi-service-java.md)
+#### [3: Teamentwicklung](team-development-java.md)
 ### .NET Core (VS Code und CLI)
-#### [1 – Erste Schritte](get-started-netcore.md)
-#### [2 – Teamentwicklung](team-development-netcore.md)
+#### [1: Erste Schritte](get-started-netcore.md)
+#### [2: Entwicklung mit mehreren Diensten](multi-service-netcore.md)
+#### [3: Teamentwicklung](team-development-netcore.md)
 ### .NET Core (Visual Studio 2017)
-#### [1 – Erste Schritte](get-started-netcore-visualstudio.md)
-#### [2 – Teamentwicklung](team-development-netcore-visualstudio.md)
+#### [1: Erste Schritte](get-started-netcore-visualstudio.md)
+#### [2: Entwicklung mit mehreren Diensten](multi-service-netcore-visualstudio.md)
+#### [3: Teamentwicklung](team-development-netcore-visualstudio.md)
 ### Node.js (VS Code und CLI)
-#### [1 – Erste Schritte](get-started-nodejs.md)
-#### [2 – Teamentwicklung](team-development-nodejs.md)
+#### [1: Erste Schritte](get-started-nodejs.md)
+#### [2: Entwicklung mit mehreren Diensten](multi-service-nodejs.md)
+#### [3: Teamentwicklung](team-development-nodejs.md)
 
 ## Anleitung
 ### [Erstellen eines Kubernetes-Clusters mit Azure Cloud Shell](how-to/create-cluster-cloud-shell.md)
@@ -28,9 +32,7 @@
 ### [Verwenden eines benutzerdefinierten NuGet-Feeds](how-to/use-custom-nuget-feed.md)
 ### [Verwenden von kubectl mit Azure Dev Spaces](how-to/use-kubectl-with-azure-dev-spaces.md)
 ### [Upgrade von Azure Dev Spaces-Tools](how-to/upgrade-tools.md)
+### [Verwenden von CI/CD mit Azure Dev Spaces](how-to/setup-cicd.md)
 ### [Business Continuity & Disaster Recovery für Azure Dev Spaces](how-to/dev-spaces-business-continuity.md)
 
 ## [Problembehandlung](troubleshooting.md)
-
-
-
