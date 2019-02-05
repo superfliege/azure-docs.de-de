@@ -3,7 +3,7 @@ title: 'CLI-Beispiel: Erstellen einer Azure SQL-Datenbank | Microsoft-Dokumentat
 description: Verwenden Sie dieses Azure CLI-Beispielskript zum Erstellen einer SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,13 +11,13 @@ author: CarlRabeler
 manager: craigg
 ms.author: carlrab
 ms.reviewer: ''
-ms.date: 09/20/2018
-ms.openlocfilehash: d239236e9e6f7133aa57eb617c3cc9e8626fc178
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: 24f45ea22a50e471a2947b926b817f06aefa9aa8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055474"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451783"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Verwenden der CLI zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel
 
@@ -48,9 +48,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen logischen Server, der die SQL-Datenbank hostet. |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle SQL-Datenbanken auf dem Server ermöglicht. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Erstellt die SQL-Datenbank auf dem logischen Server. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbankserver, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Erstellt eine Firewallregel, die den Zugriff auf alle Einzeldatenbanken und Pools für elastische Datenbanken auf dem SQL-Datenbankserver über den eingegebenen IP-Adressbereich zulässt. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Erstellt eine Einzeldatenbank oder einen Pool für elastische Datenbanken. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

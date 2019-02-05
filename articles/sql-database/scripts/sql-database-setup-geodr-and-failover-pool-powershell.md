@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell-Beispiel: Aktive Georeplikation für in Pool zusammengefasste Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine zu einem Pool gehörende Azure SQL-Datenbank und zum Ausführen eines Failovers
+description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine in einem Pool zusammengefasste Datenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: c108cf57f5db87a7dc6144e5b202a5c6215164a6
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 15949ce7263ee3817c9ff0265b21c6b8d6578230
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388260"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478303"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool zusammengefasste Datenbank in Azure SQL-Datenbank
 
-In diesem PowerShell-Beispielskript wird die aktive Georeplikation für eine in einem Pool für elastische Datenbanken zusammengefasste Azure SQL-Datenbank konfiguriert und ein Failover für das sekundäre Replikat der Azure SQL-Datenbank ausgeführt.
+Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine in einem Pool zusammengefasste Datenbank in Azure SQL-Datenbank und führt ein Failover zum sekundären Replikat der Datenbank aus.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,9 +48,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken auf einem logischen Server. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Erstellt eine Datenbank auf einem logischen Server als einzelne oder zu einem Pool gehörende Datenbank. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen SQL-Datenbankserver, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Erstellt eine Einzeldatenbank oder in einem Pool zusammengefasste Datenbank. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Aktualisiert Datenbankeigenschaften oder verschiebt eine Datenbank in Pools für elastische Datenbanken, daraus hinaus oder zwischen ihnen. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| Ruft mindestens eine Datenbank ab. |

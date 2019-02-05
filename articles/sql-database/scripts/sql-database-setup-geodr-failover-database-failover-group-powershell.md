@@ -1,6 +1,6 @@
 ---
-title: PowerShell-Beispiel – Failovergruppe bei der Georeplikation – einzelne Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Azure PowerShell-Beispielskript zum Einrichten einer Failovergruppe bei der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank und zum Ausführen eines Failovers
+title: 'PowerShell-Beispiel: Failovergruppe für die Georeplikation – eigenständige Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: Azure PowerShell-Beispielskript zum Einrichten einer Failovergruppe für die aktive Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: d8ec80f417883874796d25c2c1a427d03073080b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 31027e266f29ae0308ed70abfea5dbec3736f824
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390766"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469293"
 ---
-# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren einer Failovergruppe bei der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank
+# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren einer Failovergruppe für die aktive Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank
 
-In diesem PowerShell-Beispielskript wird eine Failovergruppe bei der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank konfiguriert und ein Failover für ein sekundäres Replikat von Azure SQL-Datenbank ausgeführt.
+Dieses PowerShell-Beispielskript konfiguriert eine Failovergruppe für die aktive Georeplikation für eine Einzeldatenbank und führt ein Failover zu einem sekundären Replikat der Datenbank aus.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,8 +48,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken auf einem logischen Server. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen SQL-Datenbankserver, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Aktualisiert Datenbankeigenschaften oder verschiebt eine Datenbank in Pools für elastische Datenbanken, daraus hinaus oder zwischen ihnen. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| Ruft mindestens eine Datenbank ab. |

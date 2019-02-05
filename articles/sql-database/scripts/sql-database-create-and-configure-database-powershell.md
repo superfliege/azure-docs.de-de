@@ -1,9 +1,9 @@
 ---
-title: 'PowerShell-Beispiel: Erstellen einer Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispielskript zum Erstellen einer Azure SQL-Datenbank
+title: 'PowerShell-Beispiel: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: Azure PowerShell-Beispielskript zum Erstellen einer Einzeldatenbank in Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 3f6e2429bd0d67e9e6abd27d4a60ee8ef1d20f66
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 09a0e40bb935dd5f3e4955af0b45cef93ed1612b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388088"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458517"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und zum Konfigurieren einer Firewallregel
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel für einen SQL-Datenbankserver
 
 Dieses PowerShell-Beispielskript erstellt eine einzelne Azure SQL-Datenbank und konfiguriert eine Firewallregel auf Serverebene. Nach erfolgreicher Ausführung des Skripts können alle Azure-Dienste und die konfigurierte IP-Adresse auf die SQL-Datenbank zugreifen.
 
@@ -47,9 +47,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen SQL-Datenbankserver, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | Erstellt eine Firewallregel, die vom eingegebenen IP-Adressbereich aus den Zugriff auf alle SQL-Datenbanken auf dem Server ermöglicht. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Erstellt eine Datenbank auf einem logischen Server als einzelne oder zu einem Pool gehörende Datenbank. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Erstellt eine Einzeldatenbank oder einen Pool für elastische Datenbanken. |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 

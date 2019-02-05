@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Erstellen eines Akustikmodells mit dem Speech-Dienst'
+title: 'Tutorial: Erstellen eines Akustikmodells mit dem Speech Service'
 titlesuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech-Dienst in Azure Cognitive Services ein Akustikmodell erstellen.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215241"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217627"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Tutorial: Erstellen eines benutzerdefinierten Akustikmodells
 
@@ -46,7 +46,7 @@ Beispiel:
 * Wenn Sie die Spracherkennung in einer lauten Produktionsumgebung verbessern möchten, sollten in den Audiodateien Personen zu hören sein, die in einer lauten Produktionsumgebung sprechen.
 * Wenn Sie dagegen die Leistung für einen einzelnen Sprecher optimieren möchten, um beispielsweise alle informellen Gespräche eines Flugdatenschreibers zu transkribieren, sollten die Audiodateien viele Beispiele dieses einen Sprechers enthalten.
 
-Ein Akustikdataset zur Anpassung des Akustikmodells besteht aus zwei Teilen: einer Reihe von Audiodateien mit den Sprachdaten und einer Datei mit den Transkriptionen sämtlicher Audiodateien.
+Ein Akustikdataset zur Anpassung des Akustikmodells besteht aus zwei Teilen: (1) einer Reihe von Audiodateien mit den Sprachdaten und (2) einer Datei mit den Transkriptionen sämtlicher Audiodateien.
 
 ### <a name="audio-data-recommendations"></a>Empfehlungen für Audiodaten
 
@@ -112,7 +112,7 @@ Geben Sie in den Feldern **Name** und **Beschreibung** die entsprechenden Inform
 
 Klicken Sie in den Feldern **Transcriptions file (.txt)** (Transkriptionsdatei (.txt)) und **Audiodateien (.zip)** auf **Durchsuchen**, und wählen Sie Ihre Transkriptionsdatei im Nur-Text-Format bzw. das ZIP-Archiv mit den WAV-Dateien aus. Klicken Sie nach Abschluss der Vorbereitungen auf **Importieren**, um Ihre Daten hochzuladen. Daraufhin werden Ihre Daten hochgeladen. Bei umfangreicheren Datasets kann der Importvorgang mehrere Minuten dauern.
 
-Kehren Sie nach Abschluss des Uploadvorgangs zur Tabelle mit den **Akustikdatasets zurück**. Ein Eintrag wird angezeigt, der Ihrem Akustikdataset entspricht. Wie Sie sehen, wurde ihm eine eindeutige ID (GUID) zugewiesen. Außerdem wird der aktuelle Status der Daten angezeigt: *NotStarted* (Nicht gestartet) bedeutet, dass sich die Daten in einer Verarbeitungswarteschlange befinden. *Running* (Wird ausgeführt) bedeutet, dass die Daten gerade überprüft werden. *Complete* (Abgeschlossen) bedeutet, dass die Daten verwendungsbereit sind.
+Kehren Sie nach Abschluss des Uploadvorgangs zur Tabelle mit den **Akustikdatasets zurück**. Ein Eintrag wird angezeigt, der Ihrem Akustikdataset entspricht. Wie Sie sehen, wurde ihm eine eindeutige ID (GUID) zugewiesen. Die Daten zeigt den aktuellen Status an: *NotStarted* (Nicht gestartet) bedeutet, dass sich die Daten in einer Verarbeitungswarteschlange befinden. *Running* (Wird ausgeführt) bedeutet, dass die Daten gerade überprüft werden. *Complete* (Abgeschlossen) bedeutet, dass die Daten verwendungsbereit sind.
 
 Die Datenüberprüfung beinhaltet einige Überprüfungen in den Audiodateien in Bezug auf das Dateiformat, die Länge und die Samplingrate und in den Transkriptionsdateien in Bezug auf das Dateiformat und die Textnormalisierung.
 
@@ -147,7 +147,7 @@ Wählen Sie abschließend das Akustikdataset aus, das zur Überprüfung des benu
 
 Klicken Sie auf **Erstellen**, um den Anpassungsprozess zu starten.
 
-In der Tabelle mit den Akustikmodellen wird ein neuer Eintrag angezeigt, der diesem neuen Modell entspricht. Darüber hinaus wird in der Tabelle auch der Status des Prozesses angezeigt: *Warten*, *Wird verarbeitet...* oder *Abgeschlossen*.
+In der Tabelle mit den Akustikmodellen wird ein neuer Eintrag angezeigt, der diesem neuen Modell entspricht. Darüber hinaus wird in der Tabelle der Status des Prozesses angezeigt: *Warten*, *Wird verarbeitet* oder *Abgeschlossen*.
 
 ![Die Seite mit den Akustikmodellen](media/stt/speech-acoustic-models-creating.png)
 

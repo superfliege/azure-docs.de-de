@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a71635abd036bb89546dd3421af97cd9b88f4327
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9d271642a432d8a149fbe468087a0598c91e7c36
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439945"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902378"
 ---
 # <a name="tutorial-use-data-copy-service-to-directly-ingest-data-into-azure-data-box-preview"></a>Tutorial: Direktes Erfassen von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -24,11 +24,12 @@ Der Datenkopierdienst eignet sich für Folgendes:
 - NAS-Umgebungen (Network Attached Storage), in denen die Zwischenhosts unter Umständen nicht verfügbar sind.
 - Kleine Dateien, bei denen das Erfassen und Hochladen von Daten mehrere Wochen dauert. Dieser Dienst verkürzt die Erfassungs- und Uploadzeit erheblich.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
+> * Voraussetzungen
 > * Kopieren von Daten auf die Data Box
-> * Vorbereiten der Data Box für den Versand
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,13 +61,13 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
     |-------------------------------|---------|
     |Auftragsname                       |Eindeutiger Name für den Auftrag (weniger als 230 Zeichen). Auftragsnamen dürfen keines der folgenden Zeichen enthalten: \<, \>, \|, \?, \*, \\, \:, \/ und \\\.         |
     |Quellspeicherort                |Geben Sie den SMB-Pfad der Datenquelle im Format `\\<ServerIPAddress>\<ShareName>` oder `\\<ServerName>\<ShareName>` an.        |
-    |Benutzername                       |Benutzername für den Zugriff auf die Datenquelle.        |
+    |Username                       |Benutzername im Format `\\<DomainName><UserName>` für den Zugriff auf die Datenquelle.        |
     |Kennwort                       |Kennwort für den Zugriff auf die Datenquelle.           |
     |Zielspeicherkonto    |Wählen Sie in der Dropdownliste das Zielspeicherkonto aus, in das die Daten hochgeladen werden sollen.         |
     |Zieltyp       |Wählen Sie den Zielspeichertyp aus: Blockblob, Seitenblob oder Azure Files.        |
     |Zielcontainer/-freigabe    |Geben Sie den Namen des Containers oder der Freigabe für das Hochladen der Daten in Ihr Zielspeicherkonto an. Hierbei kann es sich um einen Freigabenamen oder um einen Containernamen handeln. Beispiel: `myshare` oder `mycontainer`. Die Eingabe kann auch das Format `sharename\directory_name` oder `containername\virtual_directory_name` (in der Cloud) haben.        |
     |Mit Muster übereinstimmende Dateien kopieren    | Geben Sie das gewünschte Dateinamenmuster ein. Dabei haben Sie zwei Optionen:<ul><li>**Verwenden von Platzhalterausdrücken:** In Platzhalterausdrücken werden nur `*` und `?` unterstützt. Beispiel: Der Ausdruck `*.vhd` entspricht allen Dateien mit der Erweiterung „.vhd“. Analog dazu entspricht `*.dl?` allen Dateien, die entweder die Erweiterung `.dl` oder die Erweiterung `.dll` besitzen. `*foo` entspricht allen Dateien, deren Name mit `foo` endet.<br>Platzhalterausdrücke können direkt in das Feld eingegeben werden. Der in das Feld eingegebene Wert wird standardmäßig als Platzhalterausdruck behandelt.</li><li>**Verwenden von regulären Ausdrücken:** POSIX-basierte reguläre Ausdrücke werden unterstützt. Der reguläre Ausdruck `.*\.vhd` entspricht beispielsweise allen Dateien mit der Erweiterung `.vhd`. Wenn Sie einen regulären Ausdruck verwenden möchten, geben Sie das Muster (`<pattern>`) direkt als `regex(<pattern>)` an. <li>Weitere Informationen zu regulären Ausdrücken finden Sie unter [Sprachelemente für reguläre Ausdrücke – Kurzübersicht](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |Dateioptimierung              |Ist diese Option aktiviert, werden die Dateien bei der Erfassung gepackt. Das beschleunigt das Kopieren kleiner Dateien.        |
+    |Dateioptimierung              |Wenn diese Option aktiviert ist, werden Dateien, die kleiner als 1 MB sind, bei der Erfassung gepackt. Das beschleunigt das Kopieren kleiner Dateien. Erhebliche Zeiteinsparungen werden erzielt, wenn die Anzahl von Dateien deutlich über der Anzahl von Verzeichnissen liegt.        |
  
 4. Klicken Sie auf **Start**. Die Eingaben werden überprüft. Ist die Überprüfung erfolgreich, wird ein Auftrag gestartet. Es dauert möglicherweise ein paar Minuten, bis der Auftrag gestartet wird.
 
@@ -106,9 +107,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
     - In diesem Release können Sie keine Aufträge löschen.
     
     - Sie können eine unbegrenzte Anzahl von Aufträgen erstellen. Es können jedoch immer nur maximal zehn Aufträge parallel ausgeführt werden.
-    - Bei aktivierter Dateioptimierung werden die kleinen Dateien im Rahmen der Erfassung gepackt, um die Kopierleistung zu verbessern. In diesen Fällen sehen Sie eine gepackte Datei (mit einem GUID als Namen), wie auf dem folgenden Screenshot gezeigt:
-
-        ![Beispiel einer gepackten Datei](media/data-box-deploy-copy-data-via-copy-service/packed-file-on-ingest.png)
+    - Bei aktivierter Dateioptimierung werden die kleinen Dateien im Rahmen der Erfassung gepackt, um die Kopierleistung zu verbessern. In diesen Fällen sehen Sie eine gepackte Datei (mit einer GUID als Namen). Löschen Sie diese Datei nicht. Sie wird während des Uploads entpackt.
 
 6. Während der Auftragsausführung gilt für die Seite **Daten kopieren** Folgendes:
 
@@ -119,7 +118,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
         - **Wird angehalten**
         - **Angehalten**
         - **Wird abgebrochen**
-        - **Abgebrochen**
+        - **Canceled**
         - **Mit Fehlern abgeschlossen**
     - In der Spalte **Dateien** werden Gesamtanzahl und -größe der kopierten Dateien angezeigt.
     - In der Spalte **Verarbeitet** werden Anzahl und Größe der verarbeiteten Dateien angezeigt.
@@ -139,18 +138,14 @@ Nach Abschluss des Kopierauftrags können Sie zu **Für Versand vorbereiten** we
 >[!NOTE]
 > „Für Versand vorbereiten“ kann nicht ausgeführt werden, solange noch Kopieraufträge ausgeführt werden.
 
-## <a name="prepare-to-ship"></a>Vorbereiten des Versands
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Informationen zu Azure Data Box-Themen erhalten, darunter die folgenden:
 
 > [!div class="checklist"]
+> * Voraussetzungen
 > * Kopieren von Daten auf die Data Box
-> * Vorbereiten der Data Box für den Versand
+
 
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Data Box zurück an Microsoft senden.
 

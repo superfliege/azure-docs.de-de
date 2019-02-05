@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Entwurf Ihrer ersten Azure SQL-Datenbank mithilfe von SSMS | Microsoft-Dokumentation'
+title: 'Tutorial: Entwerfen Ihrer ersten Einzeldatenbank in Azure SQL-Datenbank mit SSMS | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Ihre erste Azure SQL-Datenbank mit SQL Server Management Studio entwerfen.
 services: sql-database
 ms.service: sql-database
@@ -9,13 +9,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 9fa36b9b87a8e9591b0c863826cd2278a29ba28e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956056"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459535"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Tutorial: Entwurf Ihrer ersten Azure SQL-Datenbank mithilfe von SSMS
 
@@ -47,7 +47,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-database"></a>Leere Datenbank erstellen
 
-Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt.
+Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [Azure SQL-Datenbankserver](sql-database-features.md) erstellt.
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen:
 
@@ -113,11 +113,11 @@ Der SQL-Datenbank-Dienst erstellt eine Firewall auf Serverebene. Die Firewall ve
 
    1. Klicken Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
-   1. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
+   1. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbankserver wird Port 1433 geöffnet.
 
    1. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
 
-Die IP-Adresse kann nun die Firewall passieren. Nun können Sie die Verbindung mit dem SQL-Datenbankserver und den zugehörigen Datenbanken herstellen, indem Sie SQL Server Management Studio oder ein anderes Tool Ihrer Wahl verwenden. Verwenden Sie das Serveradministratorkonto, das Sie zuvor erstellt haben.
+Die IP-Adresse kann nun die Firewall passieren. Nun können Sie eine Verbindung mit dem SQL-Datenbankserver und den zugehörigen Datenbanken herstellen, indem Sie SQL Server Management Studio oder ein anderes Tool Ihrer Wahl verwenden. Verwenden Sie das Serveradministratorkonto, das Sie zuvor erstellt haben.
 
 > [!IMPORTANT]
 > Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS**, um dies für alle Azure-Dienste zu deaktivieren.

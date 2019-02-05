@@ -6,16 +6,16 @@ services: cognitive-services
 author: alekh
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: overview
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 273f2965a0fcaaa729175c5232da1aba69589eec
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 1792e279283608c81c0d4a08b77f9822816ed76d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364209"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221350"
 ---
 # <a name="what-is-custom-decision-service"></a>Worum handelt es sich bei Custom Decision Service?
 
@@ -44,10 +44,10 @@ Custom Decision Service kann auf Webseiten und in mobilen Apps angewandt werden.
 
 In dieser Dokumentation treten mehrere Begriffe häufig auf:
 
-* **Aktionssatz:** Satz von Inhaltselementen, denen durch Custom Decision Service ein Rang zugewiesen werden soll. Dieser Satz kann als *RSS*- oder *Atom*-Endpunkt angegeben werden.
-* **Rangfolge:** In jeder Anforderung an Custom Decision Service wird mindestens ein Aktionssatz angegeben. Das System reagiert durch Auswahl aller Inhaltsoptionen aus diesen Sätzen und Rückgabe in der priorisierten Reihenfolge.
-* **Rückruffunktion:** Diese Funktion, die von Ihnen angegeben wird, rendert den Inhalt auf der Benutzeroberfläche. Der Inhalt ist nach der Rangfolge sortiert, die von Custom Decision Service zurückgegeben wurde.
-* **Belohnung:** Dieser Wert gibt an, wie der Benutzer auf den gerenderten Inhalt reagiert hat. Custom Decision Service misst die Benutzerreaktion anhand von Klicks. Die Klicks werden an das System gemeldet, indem benutzerdefinierter Code in Ihre Anwendung eingefügt wird.
+* **Aktionssatz**: Der Satz von Inhaltselementen, denen von Custom Decision Service ein Rang zugewiesen werden soll. Dieser Satz kann als *RSS*- oder *Atom*-Endpunkt angegeben werden.
+* **Rangfolge**: In jeder Anforderung an Custom Decision Service wird mindestens ein Aktionssatz angegeben. Das System reagiert durch Auswahl aller Inhaltsoptionen aus diesen Sätzen und Rückgabe in der priorisierten Reihenfolge.
+* **Rückruffunktion**: Diese von Ihnen angegebene Funktion rendert den Inhalt auf der Benutzeroberfläche. Der Inhalt ist nach der Rangfolge sortiert, die von Custom Decision Service zurückgegeben wurde.
+* **Relevanz**: Dieser Wert gibt an, wie der Benutzer auf den gerenderten Inhalt reagiert hat. Custom Decision Service misst die Benutzerreaktion anhand von Klicks. Die Klicks werden an das System gemeldet, indem benutzerdefinierter Code in Ihre Anwendung eingefügt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

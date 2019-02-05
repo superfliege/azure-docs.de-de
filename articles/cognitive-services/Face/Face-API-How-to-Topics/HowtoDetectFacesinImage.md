@@ -6,18 +6,18 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124047"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214210"
 ---
-# <a name="example-how-to-detect-faces-in-image"></a>Beispiel: Erkennen von Gesichtern in Bildern
+# <a name="example-how-to-detect-faces-in-image"></a>Beispiel: Gewusst wie: Gesichtserkennung in Bildern
 
 In diesem Leitfaden wird gezeigt, wie die Gesichtserkennung in einem Bild durch extrahierte Gesichtsattribute wie Geschlecht, Alter oder Körperhaltung erfolgt. Die Beispiele sind in C# geschrieben und verwenden die Clientbibliothek für die Gesichtserkennungs-API. 
 
@@ -49,7 +49,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription Key>
 ```
 
-Alternativ dazu können Sie den Abonnementschlüssel auch im HTTP-Anforderungsheader angeben: **ocp-apim-subscription-key: &lt;Abonnementschlüssel&gt;**. Bei Verwendung einer Clientbibliothek wird der Abonnementschlüssel vom Konstruktor der Klasse „FaceServiceClient“ übergeben. Beispiel: 
+Alternativ können Sie den Abonnementschlüssel auch im HTTP-Anforderungsheader angeben: **ocp-apim-subscription-key: &lt;Abonnementschlüssel&gt;**. Wenn Sie eine Clientbibliothek verwenden, wird der Abonnementschlüssel durch den Konstruktor der FaceServiceClient-Klasse übergeben. Beispiel: 
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
@@ -90,7 +90,7 @@ foreach (var face in faces)
 
 Die FaceRectangle-Eigenschaft, die mit den erkannten Gesichtern zurückgegeben wird, enthält im Wesentlichen die Positionen auf dem Gesicht in Pixel. In der Regel umfasst dieses Rechteck die Augen, Augenbrauen, die Nase und den Mund – die Stirn, die Ohren und das Kinn sind nicht enthalten. Wenn Sie ein Bild auf den gesamten Kopf oder einen Bereich in der Halbtotalen im Hochformat (ein Bild vom Foto-ID-Typ) zuschneiden, sollten Sie den Bereich des rechteckigen Gesichtsrahmens vergrößern, da der Gesichtsbereich für einige Anwendungen möglicherweise zu klein ist. Um ein Gesicht präziser zu lokalisieren, ist die im nächsten Abschnitt beschriebene Verwendung von Gesichtszügen (Lokalisierung von Gesichtsmerkmalen oder der Gesichtsausrichtung) besonders hilfreich.
 
-## <a name="step-3-understanding-and-using-face-landmarks"></a>Schritt 3: Grundlegende Informationen zu Gesichtszügen und ihre Verwendung
+## <a name="step-3-understanding-and-using-face-landmarks"></a>Schritt 3: Grundlegendes zu Gesichtszügen und ihrer Verwendung
 
 Gesichtsmerkmale stellen eine Reihe von einzelnen Punkten auf einem Gesicht dar, in der Regel Punkte in Gesichtskomponenten wie u.a. Pupillen, Augenwinkel oder Nase. Gesichtszüge sind optionale Attribute, die bei der Gesichtserkennung analysiert werden können. Sie können „true“ beim Aufrufen von [Gesicht – Erkennen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) entweder als booleschen Wert an den Abfrageparameter „returnFaceLandmarks“ übergeben oder den optionalen Parameter „returnFaceLandmarks“ für die DetectAsync-Methode der FaceServiceClient-Klasse verwenden, um die Gesichtszüge in den Erkennungsergebnissen einzuschließen.
 

@@ -6,18 +6,18 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a26f7d6057f92fd3ab92405ecca6965dbd6e37ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c61852763353189321b8f98711928e0e8b3a389d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129070"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208090"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>Beispiel: Identifizieren von Gesichtern in Bildern
+# <a name="example-how-to-identify-faces-in-images"></a>Beispiel: Gesichtsidentifikation in Bildern
 
 In diesem Leitfaden wird veranschaulicht, wie Sie mithilfe von PersonGroups, die im Voraus aus bekannten Personen erstellt werden, unbekannte Gesichter identifizieren. Die Beispiele sind in C# geschrieben und verwenden die Clientbibliothek für die Gesichtserkennungs-API.
 
@@ -43,13 +43,13 @@ Damit Sie die Demonstration dieses Beispiels durchführen können, müssen Sie e
 
 ## <a name="step-1-authorize-the-api-call"></a>Schritt 1: Autorisieren des API-Aufrufs
 
-Für jeden Aufruf der Gesichtserkennungs-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel kann entweder über einen Abfragezeichenfolge-Parameter übergeben oder im Anforderungsheader angegeben werden. Wenn Sie den Abonnementschlüssel über eine Abfragezeichenfolge übergeben möchten, sehen Sie sich die Anforderungs-URL für [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) als Beispiel an:
+Für jeden Aufruf der Gesichtserkennungs-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel kann entweder über einen Abfragezeichenfolge-Parameter übergeben oder im Anforderungsheader angegeben werden. Wenn Sie den Abonnementschlüssel über eine Abfragezeichenfolge übergeben möchten, sehen Sie sich die Anforderungs-URL für [Gesicht – Erkennen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) als Beispiel an:
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription key>
 ```
 
-Alternativ dazu können Sie den Abonnementschlüssel auch im HTTP-Anforderungsheader angeben: **ocp-apim-subscription-key: &lt;Abonnementschlüssel&gt;**. Bei Verwendung einer Clientbibliothek wird der Abonnementschlüssel vom Konstruktor der Klasse „FaceServiceClient“ übergeben. Beispiel: 
+Alternativ können Sie den Abonnementschlüssel auch im HTTP-Anforderungsheader angeben: **ocp-apim-subscription-key: &lt;Abonnementschlüssel&gt;**. Wenn Sie eine Clientbibliothek verwenden, wird der Abonnementschlüssel durch den Konstruktor der FaceServiceClient-Klasse übergeben. Beispiel: 
  
 ```CSharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
@@ -57,9 +57,9 @@ faceServiceClient = new FaceServiceClient("<Subscription Key>");
  
 Sie können den Abonnementschlüssel auf der Seite „Marketplace“ des Azure-Portals abrufen. Weitere Informationen finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="step-2-create-the-persongroup"></a>Schritt 2: Erstellen von PersonGroup
+## <a name="step-2-create-the-persongroup"></a>Schritt 2: Erstellen von „PersonGroup“
 
-In diesem Schritt wird eine PersonGroup mit dem Namen „MyFriends“ erstellt, die drei Personen enthält: Anna, Bill und Clare. Für jede Person werden mehrere Gesichtsabbildungen registriert. Die Gesichter müssen auf den Bildern erkannt werden. Nachdem Sie alle Schritte ausgeführt haben, sieht Ihre PersonGroup etwa folgendermaßen aus:
+In diesem Schritt erstellen Sie eine „PersonGroup“ mit dem Namen „MyFriends“, die drei Personen enthält: Anna, Bill und Clare. Für jede Person werden mehrere Gesichtsabbildungen registriert. Die Gesichter müssen auf den Bildern erkannt werden. Nachdem Sie alle Schritte ausgeführt haben, sieht Ihre PersonGroup etwa folgendermaßen aus:
 
 ![Identifizieren1](../Images/group.image.1.jpg)
 
@@ -106,7 +106,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 ``` 
 Beachten Sie, dass bei mehreren Gesichtern auf einem Bild nur das größte hinzugefügt wird. Sie können der Person weitere Gesichter hinzufügen, indem Sie eine Zeichenfolge im Format „targetFace = links, oben, Breite, Höhe“ an den Abfrageparameter „targetFace“ der API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) übergeben. Alternativ dazu können Sie auch den optionalen Parameter „targetFace“ für die Methode „AddPersonFaceAsync“ verwenden. Jedem hinzugefügten Gesicht wird eine eindeutige permanente Gesichts-ID zugeteilt, die Sie für [PersonGroup Person – Delete Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) und [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) verwenden können.
 
-## <a name="step-3-train-the-persongroup"></a>Schritt 3: Trainieren von PersonGroup
+## <a name="step-3-train-the-persongroup"></a>Schritt 3: Trainieren der „PersonGroup“
 
 Eine PersonGroup muss vor ihrer Verwendung trainiert werden. Außerdem muss sie nach jedem Hinzufügen oder Entfernen einer Person oder nach der Bearbeitung eines registrierten Gesichts neu trainiert werden. Das Training erfolgt über die API [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Bei Verwendung der Clientbibliothek müssen Sie hierzu nur die Methode „TrainPersonGroupAsync“ aufrufen:
  
@@ -131,7 +131,7 @@ while(true)
 } 
 ``` 
 
-## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Schritt 4: Identifizieren eines Gesichts über eine definierte PersonGroup
+## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Schritt 4: Identifizieren eines Gesichts anhand einer definierten „PersonGroup“
 
 Bei der Identifizierung kann die Gesichtserkennungs-API die Ähnlichkeit eines Testgesichts unter allen Gesichtern einer Gruppe berechnen und die Person(en) mit der größten Ähnlichkeit zurückgeben. Dies erfolgt über die API [Face – Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) oder die Methode „IdentifyAsync“ der Clientbibliothek.
 

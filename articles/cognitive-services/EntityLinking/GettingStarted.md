@@ -1,23 +1,23 @@
 ---
-title: 'Tutorial: Erstellen einer Entitätsverknüpfung-App – C#'
+title: 'Tutorial: Erstellen einer Entitätsverknüpfungs-App – C#'
 titlesuffix: Azure Cognitive Services
 description: Analysieren Sie benannte Entitäten für Text und Verknüpfungen auf relevante Einträge in einer Wissensdatenbank mithilfe der Entitätsverknüpfungs-API.
 services: cognitive-services
 author: DavidLiCIG
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: entity-linking-intelligence
+ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 883d566fd3a6089eb9e72498089f995697a318f1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365637"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216811"
 ---
-# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Tutorial: Erstellen einer Entitätsverknüpfung-App mit C#
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Tutorial: Erstellen einer Entitätsverknüpfungs-App mit C#
 
 Der Entity Linking-Analysedienst von Microsoft ist ein Tool zur Verarbeitung natürlicher Sprache, um nach Text und Verknüpfungen benannte Entitäten auf relevante Einträge in einer Wissensdatenbank zu analysieren. 
 
@@ -32,16 +32,16 @@ In diesem Tutorial wird die Entitätsverknüpfung mit der Clientbibliothek des E
 
 Sie können die Clientbibliothek der API für den Entity Linking-Analysedienst über das [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows) herunterladen. Die heruntergeladene ZIP-Datei muss in einen Ordner Ihrer Wahl extrahiert werden. Viele Benutzer wählen hierfür den Visual Studio 2015-Ordner.
 
-### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">Schritt 1: Abonnieren Sie den Entity Linking-Analysedienst, und rufen Sie Ihren Schlüssel ab.</a>
+### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">Schritt 1: Abonnieren des Entity Linking-Analysediensts und Abrufen Ihres Schlüssels</a>
 Bevor Sie den Entity Linking-Analysedienst verwenden, müssen Sie sich für einen API-Schlüssel registrieren. Weitere Informationen finden Sie unter [Cognitive Services](https://www.microsoft.com/cognitive-services/en-us/sign-up). In diesem Tutorial können sowohl der Primär- als auch der Sekundärschlüssel verwendet werden.
 
-### <a name="step-2-create-a-new-project-in-visual-studio">Schritt 2: Erstellen Sie ein neues Projekt in Visual Studio.</a>
+### <a name="step-2-create-a-new-project-in-visual-studio"> Schritt 2: Erstellen eines neuen Projekts in Visual Studio</a>
 
 Beginnen wir zunächst mit der Erstellung eines neuen Projekts in Visual Studio. Starten Sie zuerst Visual Studio 2015 über das Startmenü. Erstellen Sie dann ein neues Projekt, indem Sie für Ihre Projektvorlage zu **Installiert > Vorlagen > Visual C# > Windows > Universell > Leere App** navigieren:
 
  ![Erstellen einer neuen universellen App](./Images/CreateUWP.png)
 
-### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">Schritt 3: Fügen Sie das NuGet-Paket des Entity Linking-Analysedienst zu Ihrem Projekt hinzu.</a>
+### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">Schritt 3: Hinzufügen des NuGet-Pakets für den Entity Linking-Analysedienst zu Ihrem Projekt</a>
 
 Der Entity Linking-Analysedienst von Cognitive Services wird als Paket von „NuGet.org“ veröffentlicht und muss installiert werden, bevor Sie ihn verwenden können.
 Um ihn zu Ihrem Projekt hinzuzufügen, navigieren Sie zur Registerkarte **Projektmappen-Explorer**, klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
@@ -54,7 +54,7 @@ Der Entity Linking-Analysedienst wird nun als Teil Ihrer Anwendung installiert. 
 
  ![In das Projekt einbezogene NuGet-Bibliothek](./Images/NugetLibraryInProject.png)
  
-### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Schritt 4: Fügen Sie einen Eingabe- und einen Ausgabetextblock zur XAML-Datei Ihrer App hinzu.</a>
+### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Schritt 4: Hinzufügen eines Eingabe- und Ausgabetextblocks zur XAML-Datei Ihrer App</a>
 Navigieren Sie im **Projektmappen-Explorer** zu „MainPage.xaml“, und doppelklicken Sie dann auf die Datei, die daraufhin in einem neuen Fenster geöffnet wird. Der Einfachheit halber können Sie auf der Registerkarte **Designer** auf die Schaltfläche **XAML** doppelklicken. Hierdurch wird der **Visual Designer** ausgeblendet, und der gesamte Speicherplatz wird für die Codeansicht reserviert.
 
  ![In das Projekt einbezogene NuGet-Bibliothek](./Images/UWPMainPage.png)
@@ -74,7 +74,7 @@ Als Textdienst besteht die beste Möglichkeit zur Visualisierung der Funktionali
 </Grid>
  ```
  
-### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">Schritt 5: Fahren Sie mit dem Hinzufügen der API für den Entity Linking-Analysedienst fort.</a>
+### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">Schritt 5: Hinzufügen des Entity Linking-Analysediensts</a>
  
 Die Benutzeroberfläche wird nun erstellt. Bevor der Entity Linking-Dienst verwendet werden kann, muss der button_Click-Handler hinzugefügt werden. Öffne Sie über den **Projektmappen-Explorer** die Datei **MainPage.xaml**. Fügen Sie am Ende der Schaltfläche einen button_Click-Handler hinzu.
  

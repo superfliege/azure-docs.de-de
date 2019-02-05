@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e8bbf78da84ddb77ce956e37f91be46e96144991
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9289f7178a6e285b447041937f191d283fc2f2f0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123078"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222897"
 ---
 # <a name="example-how-to-use-the-large-scale-feature"></a>Beispiel: Verwenden der Funktion für die Verarbeitung in großem Umfang
 
@@ -41,9 +41,9 @@ Wenn Sie mit den folgenden Konzepten in diesem Handbuch nicht vertraut sind, fin
 
 - LargePersonGroup: Eine Sammlung von Personen mit einer Kapazität bis zu 1.000.000.
 - LargeFaceList: Eine Sammlung von Gesichtern mit einer Kapazität bis zu 1.000.000.
-- Train: Eine Vorabverarbeitung, um die Leistung von Identification/FindSimilar sicherzustellen.
-- Identification: Identifizieren eines oder mehrerer Gesichter in einer PersonGroup oder LargePersonGroup.
-- FindSimilar: Suchen ähnlicher Gesichter in einer FaceList oder LargeFaceList.
+- Trainieren: Eine Vorabverarbeitung, um die Leistung von „Identification“ bzw. „FindSimilar“ sicherzustellen.
+- Identification: Identifizieren eines oder mehrerer Gesichter in einer „PersonGroup“ oder „LargePersonGroup“.
+- FindSimilar: Suchen ähnlicher Gesichter in einer „FaceList“ oder „LargeFaceList“.
 
 ## <a name="step-1-authorize-the-api-call"></a>Schritt 1: Autorisieren des API-Aufrufs
 
@@ -66,7 +66,7 @@ Obwohl LargePersonGroup/LargeFaceList sich in Entwurf und interner Implementieru
 
 Migration von Daten wird nicht unterstützt – Sie müssen stattdessen LargePersonGroup/LargeFaceList neu erstellen.
 
-## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>Schritt 2.1: Migrieren von PersonGroup zu LargePersonGroup
+## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>Schritt 2.1: Migrieren von „PersonGroup“ zu „LargePersonGroup“
 
 Die Migration von PersonGroup zu LargePersonGroup ist reibungslos, weil ihre Vorgänge auf Gruppenebene identisch sind.
 
@@ -74,7 +74,7 @@ Bei der auf PersonGroup/Person bezogenen Implementierung ist nur zu beachten, di
 
 Eine Referenz zur Datenmigration finden Sie unter [Hinzufügen von Gesichtern](how-to-add-faces.md).
 
-## <a name="step-22-migrate-facelist-to-largefacelist"></a>Schritt 2.2: Migrieren von FaceList zu LargeFaceList
+## <a name="step-22-migrate-facelist-to-largefacelist"></a>Schritt 2.2: Migrieren von „FaceList“ zu „LargeFaceList“
 
 | FaceList-APIs | LargeFaceList-APIs |
 |:---:|:---:|
@@ -258,8 +258,8 @@ Stattdessen kann das Training von der Hauptlogik getrennt und regelmäßig ausge
 Diese Strategie eignet sich für dynamische Szenarien mit akzeptabler Latenz und kann auf statische Szenarien angewendet werden, um die Häufigkeit des Trainings weiter zu verringern.
 
 Angenommen, eine `TrainLargePersonGroup`-Funktion ähnelt `TrainLargeFaceList`.
-Eine typische Implementierung des eigenständigen Trainings für LargePersonGroup durch Aufrufen der [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx)
--Klasse in `System.Timers` wäre:
+Eine typische Implementierung des eigenständigen Trainings für „LargePersonGroup“ durch Aufrufen der [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx)-Klasse
+in `System.Timers` wäre:
 
 ```CSharp
 private static void Main()

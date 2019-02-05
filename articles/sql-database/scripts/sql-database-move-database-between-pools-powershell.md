@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-Beispiel: Verschieben von Azure SQL-Datenbank – Pool für elastische SQL-Datenbanken | Microsoft-Dokumentation'
+title: 'PowerShell-Beispiel: Verschieben einer Azure SQL-Datenbank zwischen Pools für elastische Datenbanken | Microsoft-Dokumentation'
 description: Azure PowerShell-Skriptbeispiel zum Verschieben von SQL-Datenbank zwischen Pools für elastische Datenbanken mit PowerShell
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.reviewer: ''
 ms.author: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: ccef419caae2ca8ccdd340445a6e84b57ada1579
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: d4c71aafb947622e54f6d9fda2f539c304e528f3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388787"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458192"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools für elastische Datenbanken mit PowerShell
 
@@ -47,9 +47,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken auf einem logischen Server. |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Erstellt eine Datenbank auf einem logischen Server als einzelne oder zu einem Pool gehörende Datenbank. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen SQL-Datenbankserver, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken. |
+| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Erstellt eine Datenbank auf einem SQL-Datenbankserver als eigenständige oder in einem Pool zusammengefasste Datenbank. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Aktualisiert Datenbankeigenschaften oder verschiebt eine Datenbank in Pools für elastische Datenbanken, daraus hinaus oder zwischen ihnen. |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

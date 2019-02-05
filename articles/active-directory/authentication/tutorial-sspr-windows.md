@@ -3,19 +3,19 @@ title: Azure AD-SSPR über den Windows 10-Anmeldebildschirm
 description: In diesem Tutorial aktivieren Sie die Kennwortzurücksetzung auf dem Windows 10-Anmeldebildschirm, um Helpdesk-Anrufe zu reduzieren.
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430670"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474869"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -28,11 +28,11 @@ In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Client mit Windows 10 April 2018 Update oder einer höheren Version und entweder:
-   * [In Azure AD eingebundener Computer](../device-management-azure-portal.md) oder
-   * [in Azure AD Hybrid eingebundener Computer](../device-management-hybrid-azuread-joined-devices-setup.md) mit Netzwerkkonnektivität zu einem Domänencontroller.
-* Die Azure AD-Self-Service-Kennwortzurücksetzung muss aktiviert sein.
-* Wenn sich Ihre Windows 10-Computer hinter einem Proxyserver oder einer Firewall befinden, sollte HTTPS-Datenverkehr (443) zu `passwordreset.microsoftonline.com` und `ajax.aspnetcdn.com` zugelassen werden.
+* Sie müssen mindestens Windows 10 mit dem Update vom April 2018 ausführen und die Geräte müssen entweder:
+   * [in Azure AD eingebunden](../device-management-azure-portal.md) sein oder
+   * [in Azure AD Hybrid eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) sein, mit Netzwerkkonnektivität zu einem Domänencontroller.
+* Sie müssen die Azure AD-Self-Service-Kennwortzurücksetzung aktivieren.
+* Wenn sich Ihre Windows 10-Geräte hinter einem Proxyserver oder einer Firewall befinden, müssen Sie die URLs `passwordreset.microsoftonline.com` und `ajax.aspnetcdn.com` zu Ihrer Liste zulässiger URLs für HTTPS-Datenverkehr (Port 443) hinzufügen.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
 

@@ -4,223 +4,196 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: d26034b8-f0d5-4f65-aa56-0fc168ceec8c
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/05/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d55aa873d0ad410b91dc678d1fe4784e00ed5487
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4c2d07ba33e26b1b85225f0577754cd375e887db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812470"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Tutorial: Azure Active Directory-Integration mit Alcumus Info Exchange
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in Alcumus Info Exchange integrieren.
-
 Die Integration von Alcumus Info Exchange in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf Alcumus Info Exchange Zugriff hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Alcumus Info Exchange anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+* Sie können in Azure AD steuern, wer auf Alcumus Info Exchange Zugriff hat.
+* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Alcumus Info Exchange anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Alcumus Info Exchange konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Alcumus Info Exchange-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Alcumus Info Exchange-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Alcumus Info Exchange aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Alcumus Info Exchange unterstützt **IDP**-initiiertes einmaliges Anmelden.
 
 ## <a name="adding-alcumus-info-exchange-from-the-gallery"></a>Hinzufügen von Alcumus Info Exchange aus dem Katalog
+
 Zum Konfigurieren der Integration von Alcumus Info Exchange in Azure AD müssen Sie Alcumus Info Exchange aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Alcumus Info Exchange aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![ANWENDUNGEN][2]
-    
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld als Suchbegriff **Alcumus Info Exchange**ein.
+4. Geben Sie **Alcumus Info Exchange** in das Suchfeld ein, wählen Sie im Ergebnisbereich **Alcumus Info Exchange** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_search.png)
+     ![Alcumus Info Exchange in der Ergebnisliste](common/search-new-app.png)
 
-5. Wählen Sie im Ergebnisbereich **Alcumus Info Exchange** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Alcumus Info Exchange basierend auf einem Testbenutzer mit dem Namen „Britta Simon“.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer das entsprechende Pendant in Alcumus Info Exchange zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Alcumus Info Exchange muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in Alcumus Info Exchange den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Alcumus Info Exchange basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Alcumus Info Exchange eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Alcumus Info Exchange müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Alcumus Info Exchange-Testbenutzers](#creating-an-alcumus-info-exchange-test-user)**, um eine Entsprechung von Britta Simon in Alcumus Info Exchange zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Alcumus Info Exchange](#configure-alcumus-info-exchange-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Alcumus Info Exchange-Testbenutzers](#create-alcumus-info-exchange-test-user)**, um eine Entsprechung von Britta Simon in Alcumus Info Exchange zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Alcumus Info Exchange-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Alcumus Info Exchange die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Alcumus Info Exchange die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Alcumus Info Exchange** auf **Einmaliges Anmelden**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Alcumus Info Exchange** auf **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Alcumus Info Exchange** durch:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.info-exchange.com`
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<subdomain>.info-exchange.com/Auth/`
+4. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus:
 
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Alcumus Info Exchange-Supportteam](mailto:helpdesk@alcumusgroup.com), um diese Werte zu erhalten.
- 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    ![SSO-Informationen zur Domäne und zu den URLs für Alcumus Info Exchange](common/idp-intiated.png)
 
-    ![Configure single sign-on](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_certificate.png) 
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<subdomain>.info-exchange.com`
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<subdomain>.info-exchange.com/Auth/`
 
-    ![Configure single sign-on](./media/alcumus-info-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Alcumus Info Exchange](mailto:helpdesk@alcumusgroup.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Zum Konfigurieren des einmaligen Anmeldens bei **Alcumus Info Exchange** müssen Sie die heruntergeladene **XML-Metadaten**-Datei an das [Alcumus Info Exchange-Supportteam](mailto:helpdesk@alcumusgroup.com) senden.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+6. Kopieren Sie im Abschnitt **Alcumus Info Exchange einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-alcumus-info-exchange-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Alcumus Info Exchange
+
+Um einmaliges Anmelden aufseiten von **Alcumus Info Exchange** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML**-Datei und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Alcumus Info Exchange](mailto:helpdesk@alcumusgroup.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/alcumus-info-tutorial/create_aaduser_01.png) 
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/alcumus-info-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/alcumus-info-tutorial/create_aaduser_03.png) 
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/alcumus-info-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+    d. Klicken Sie auf **Create**.
 
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Erstellen**.
- 
-### <a name="creating-an-alcumus-info-exchange-test-user"></a>Erstellen eines Alcumus Info Exchange-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Alcumus Info Exchange.
-
-Um einen Benutzer namens „Britta Simon“ in Alcumus Info Exchange zu erstellen, wenden Sie sich an das [Alcumus Info Exchange-Supportteam](mailto:helpdesk@alcumusgroup.com).
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Alcumus Info Exchange gewähren.
 
-![Benutzer zuweisen][200] 
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**, **Alle Anwendungen** und dann **Alcumus Info Exchange** aus.
 
-**Um Britta Simon Alcumus Info Exchange zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 2. Wählen Sie in der Anwendungsliste **Alcumus Info Exchange**aus.
 
-    ![Configure single sign-on](./media/alcumus-info-tutorial/tutorial_alcumusinfoexchange_app.png) 
+    ![Alcumus Info Exchange-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][202] 
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][203]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.  
-Wenn Sie im Zugriffsbereich auf die Kachel "Alcumus Info Exchange" klicken, sollten Sie automatisch in Ihrer Alcumus Info Exchange-Anwendung angemeldet werden.
+### <a name="create-alcumus-info-exchange-test-user"></a>Erstellen eines Alcumus Info Exchange-Testbenutzers
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+In diesem Abschnitt erstellen Sie in Alcumus Info Exchange einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Supportteam von Alcumus Info Exchange](mailto:helpdesk@alcumusgroup.com), um die Benutzer in der Alcumus Info Exchange-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-<!--Image references-->
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-[1]: ./media/alcumus-info-tutorial/tutorial_general_01.png
-[2]: ./media/alcumus-info-tutorial/tutorial_general_02.png
-[3]: ./media/alcumus-info-tutorial/tutorial_general_03.png
-[4]: ./media/alcumus-info-tutorial/tutorial_general_04.png
+Wenn Sie im Zugriffsbereich auf die Kachel „Alcumus Info Exchange“ klicken, sollten Sie automatisch bei der Alcumus Info Exchange-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-[100]: ./media/alcumus-info-tutorial/tutorial_general_100.png
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-[200]: ./media/alcumus-info-tutorial/tutorial_general_200.png
-[201]: ./media/alcumus-info-tutorial/tutorial_general_201.png
-[202]: ./media/alcumus-info-tutorial/tutorial_general_202.png
-[203]: ./media/alcumus-info-tutorial/tutorial_general_203.png
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

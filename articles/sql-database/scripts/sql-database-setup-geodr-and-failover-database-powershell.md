@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-Beispiel: Aktive Georeplikation für eine einzelne Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank und zum Ausführen eines Failovers
+title: 'PowerShell-Beispiel: Aktive Georeplikation für eine eigenständige Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: fd699c622c44cec3a0077314e5d2b43016c13d87
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 0fa689c91ed6844c2314b3b9d3bea2619540bc50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389718"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463785"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank
 
-In diesem PowerShell-Beispielskript wird die aktive Georeplikation für eine einzelne Azure SQL-Datenbank konfiguriert und ein Failover zum sekundären Replikat der Azure SQL-Datenbank ausgeführt.
+Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine Einzeldatenbank und führt ein Failover zu einem sekundären Replikat der Datenbank aus.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
@@ -48,8 +48,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen logischen Server, der eine Datenbank oder einen Pool für elastische Datenbanken hostet. |
-| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken auf einem logischen Server. |
+| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Erstellt einen SQL-Datenbankserver, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken. |
 | [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | Aktualisiert Datenbankeigenschaften oder verschiebt eine Datenbank in Pools für elastische Datenbanken, daraus hinaus oder zwischen ihnen. |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary)| Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)| Ruft mindestens eine Datenbank ab. |

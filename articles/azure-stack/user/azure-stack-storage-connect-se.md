@@ -10,15 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2018
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: d1bddc8331fc1a9ded37949a8065636947074852
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386773"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246729"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement oder -Speicherkonto
 
@@ -37,7 +38,10 @@ Nachdem Sie die Verbindung mit Ihrem Azure Stack-Abonnement oder -Speicherkonto 
 
 Damit der Storage-Explorer auf das Azure Stack-Abonnement direkt zugreifen kann, benötigen Sie Zugriff auf Azure Stack oder eine VPN-Verbindung. Weitere Informationen zur Einrichtung einer VPN-Verbindung mit Azure Stack finden Sie unter [Connect with VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) (Herstellen einer VPN-Verbindung).
 
-Für das Azure Stack Development Kit müssen Sie das Stammzertifikat der Azure Stack-Zertifizierungsstelle exportieren.
+Für das Azure Stack Development Kit (ASDK) müssen Sie das Stammzertifikat der Azure Stack-Zertifizierungsstelle exportieren.
+
+> [!Note]  
+> Verwenden Sie für das ASDK nicht das Stammzertifikat (CA.cer), das während des Setupprozesses erstellt wurde, wenn Sie über ein VPN eine Verbindung mit dem ASDK herstellen.  Dies ist ein DER-codiertes (Distinguished Encoding Rules) Zertifikat, das es dem Storage-Explorer nicht erlaubt, Ihre Azure Stack-Abonnements abzurufen. Gehen Sie wie folgt vor, um ein Base64-codiertes Zertifikat zur Verwendung mit dem Storage-Explorer zu exportieren.
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Exportieren und anschließendes Importieren des Azure Stack-Zertifikats
 

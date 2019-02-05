@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/11/2019
+ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: baf78fc0bc0941c9466f77a77ef922f3fe3d62b3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a12a0b383db63cc80aea045ca5afe6c75b0b83a9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823028"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Tutorial: Azure Active Directory-Integration mit iDiD Manager
 
@@ -70,10 +70,10 @@ Zum Konfigurieren der Integration von iDiD Manager in Azure AD müssen Sie iDiD 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei [Anwendungsname] mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in [Anwendungsname] eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei iDiD Manager mithilfe einer Testbenutzerin namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in iDiD Manager eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendungsname] müssen Sie die folgenden Schritte ausgeführt werden:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD bei iDiD Manager zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für iDiD Manager](#configure-idid-manager-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
@@ -86,7 +86,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendun
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit [Anwendungsname] zu konfigurieren:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD bei iDiD Manager zu konfigurieren:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **iDiD Manager** auf **Einmaliges Anmelden**.
 
@@ -100,18 +100,20 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
+4. Im Abschnitt **Grundlegende SAML-Konfiguration** muss der Benutzer keine Schritte ausführen, weil die App bereits in Azure integriert ist.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für iDiD Manager](common/both-preintegrated-signon.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für iDiD Manager](common/preintegrated.png)
 
-    a. Klicken Sie auf **Zusätzliche URLs festlegen**.
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://idid2.fi/saml/login/<domain>`
+    ![SSO-Informationen zur Domäne und zu den URLs für iDiD Manager](common/metadata-upload-additional-signon.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://idid2.fi/saml/login/<domain>`
 
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den iDiD Manager-Client](mailto:support@idid.fi), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
@@ -187,3 +189,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „iDiD Manager“ klicken, sollten S
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

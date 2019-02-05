@@ -6,16 +6,16 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1295d071fa3ad99aabd2649f7b7e0b7fe1f86584
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212215"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226858"
 ---
 # <a name="what-is-qna-maker"></a>Was ist QnA Maker?
 
@@ -31,9 +31,9 @@ Mit QnA Maker können Sie eine Wissensdatenbank (Knowledge Base, KB) für Ihre t
 
 QnA Maker stellt zwei zentrale Dienste für Ihre Daten bereit:
 
-* **Extraktion:** Strukturierte Frage-Antwort-Daten werden aus strukturierten und teilweise strukturierten [Datenquellen](../Concepts/data-sources-supported.md) extrahiert, z.B. FAQs und Produkthandbüchern. Diese Extraktion kann bei der [Erstellung](https://aka.ms/qnamaker-docs-createkb) der Wissensdatenbank oder im Rahmen des Bearbeitungsprozesses durchgeführt werden.
+* **Extraktion**: Strukturierte Frage-Antwort-Daten werden aus strukturierten und teilweise strukturierten [Datenquellen](../Concepts/data-sources-supported.md) extrahiert, z. B. aus häufig gestellten Fragen und Produkthandbüchern. Diese Extraktion kann bei der [Erstellung](https://aka.ms/qnamaker-docs-createkb) der Wissensdatenbank oder im Rahmen des Bearbeitungsprozesses durchgeführt werden.
 
-* **Abgleich:** Nach dem [Trainieren und Testen](https://aka.ms/qnamaker-docs-trainkb) Ihrer Wissensdatenbank können Sie sie [veröffentlichen](https://aka.ms/qnamaker-docs-publishkb). Hierdurch kann Ihre QnA Maker-Wissensdatenbank von einem Endpunkt genutzt werden, der wiederum in Ihrem Bot oder in Ihrer Client-App verwendet werden kann. Dieser Endpunkt nimmt eine Benutzerfrage entgegen und antwortet mit der besten Antwort aus der Wissensdatenbank sowie mit einer Zuverlässigkeitsbewertung für den Treffer.
+* **Abgleich**: Nach dem [Trainieren und Testen](https://aka.ms/qnamaker-docs-trainkb) Ihrer Wissensdatenbank können Sie sie [veröffentlichen](https://aka.ms/qnamaker-docs-publishkb). Hierdurch kann Ihre QnA Maker-Wissensdatenbank von einem Endpunkt genutzt werden, der wiederum in Ihrem Bot oder in Ihrer Client-App verwendet werden kann. Dieser Endpunkt nimmt eine Benutzerfrage entgegen und antwortet mit der besten Antwort aus der Wissensdatenbank sowie mit einer Zuverlässigkeitsbewertung für den Treffer.
 
 ```JSON
 {
@@ -57,9 +57,9 @@ QnA Maker stellt zwei zentrale Dienste für Ihre Daten bereit:
 
 Die QnA Maker-Architektur umfasst die beiden folgenden Komponenten:
 
-1. **QnA Maker-Verwaltungsdienste:** Die Verwaltungsumgebung für eine QnA Maker-Wissensdatenbank mit Ersterstellung, Aktualisierung, Training und Veröffentlichung. Diese Aktivitäten können über das [Portal](https://qnamaker.ai) oder über [Verwaltungs-APIs](https://aka.ms/qnamaker-v4-apis) ausgeführt werden. 
+1. **QnA Maker-Verwaltungsdienste**: Die Verwaltungsumgebung für eine QnA Maker-Wissensdatenbank mit Ersterstellung, Aktualisierung, Training und Veröffentlichung. Diese Aktivitäten können über das [Portal](https://qnamaker.ai) oder über [Verwaltungs-APIs](https://aka.ms/qnamaker-v4-apis) ausgeführt werden. 
 
-2. **QnA Maker-Daten und -Runtime:** Wird unter Ihrem Azure-Abonnement in Ihrer angegebenen Region bereitgestellt. Ihre Wissensdatenbank-Inhalte werden in [Azure Search](https://azure.microsoft.com/services/search/) gespeichert, und der Endpunkt wird als [App Service](https://azure.microsoft.com/services/app-service/) bereitgestellt. Sie können auch eine [Application Insights](https://azure.microsoft.com/services/application-insights/)-Ressource für Analysen bereitstellen.
+2. **QnA Maker-Daten und -Runtime**: Werden unter Ihrem Azure-Abonnement in Ihrer angegebenen Region bereitgestellt. Ihre Wissensdatenbank-Inhalte werden in [Azure Search](https://azure.microsoft.com/services/search/) gespeichert, und der Endpunkt wird als [App Service](https://azure.microsoft.com/services/app-service/) bereitgestellt. Sie können auch eine [Application Insights](https://azure.microsoft.com/services/application-insights/)-Ressource für Analysen bereitstellen.
 
 ![Architecture](../media/qnamaker-overview-learnabout/architecture.png)
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b2ea63ec13e1e0b79a87b7bfa5bae4a6cf409331
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0118c17045b86c88d8d92048787a20bd7d309c0b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253237"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298346"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -38,7 +38,7 @@ Konfigurieren Sie [ACR Tasks](#azure-container-registry-build), um Anwendungsima
 
 * **Registrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine oder mehrere Containerregistrierungen. Registrierungen sind in drei SKUs verfügbar: [Basic, Standard und Premium](container-registry-skus.md). Diese unterstützen jeweils die Webhook-Integration, die Registrierungsauthentifizierung mit Azure Active Directory sowie Löschfunktionen. Nutzen Sie den lokalen Speicher in räumlicher Nähe zu Ihren Containerimages, indem Sie eine Registrierung an demselben Azure-Standort wie Ihre Bereitstellungen erstellen. Verwenden der [Georeplikation](container-registry-geo-replication.md) von Premium-Registrierungen für erweiterte Replikations- und Containerimageverteilung-Szenarien. Ein vollständig qualifizierter Registrierungsname hat folgendes Format: `myregistry.azurecr.io`.
 
-  Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) oder einem bereitgestellten Administratorkonto. Führen Sie den Standardbefehl `docker login` aus, um die Authentifizierung für eine Registrierung durchzuführen.
+  Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einer Azure-Identität, einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) oder einem bereitgestellten Administratorkonto. Melden Sie sich mithilfe der Azure-Befehlszeilenschnittstelle oder mit dem Standardbefehl `docker login` bei der Registrierung an.
 
 * **Repository**: Eine Registrierung enthält mindestens ein Repository, das Gruppen von Containerimages speichert. Die Azure-Containerregistrierung unterstützt Repositorynamespaces mit mehreren Ebenen. Mit Namespaces mit mehreren Ebenen können Sie Sammlungen mit Images für eine bestimmte App oder eine Sammlung von Apps für bestimmte Entwicklungs- oder Betriebsteams gruppieren. Beispiel: 
 

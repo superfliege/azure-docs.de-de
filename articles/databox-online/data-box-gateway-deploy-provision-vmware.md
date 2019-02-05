@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167153"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099157"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware (Vorschauversion)
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial wird beschrieben, wie Sie ein Data Box Gateway auf einem Hostsystem mit VMware ESXi 6.0 oder 6.5 bereitstellen. 
+In diesem Tutorial wird beschrieben, wie Sie Data Box Gateway auf einem Hostsystem mit VMware ESXi 6.0, 6.5 oder 6.7 bereitstellen. 
 
 Sie benötigen Administratorrechte, um ein virtuelles Gerät bereitzustellen und zu verbinden. Die Bereitstellung und die anfängliche Einrichtung dauern ca. 10 Minuten.
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Bereitstellung eines virtuellen Geräts auf einem Hostsystem mit VMware ESXi 6.0 oder 6.5 gelten die folgenden Voraussetzungen.
+Für die Bereitstellung eines virtuellen Geräts auf einem Hostsystem mit VMware ESXi 6.0, 6.5 oder 6.7 gelten die folgenden Voraussetzungen.
 
 ### <a name="for-the-data-box-gateway-resource"></a>Für die Data Box Gateway-Ressource
 
@@ -53,7 +53,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Gerät bereitstellen:
 
-* Sie haben Zugriff auf ein Hostsystem mit VMware (ESXi 6.0 oder 6.5), das zum Bereitstellen eines Geräts verwendet werden kann.
+* Sie haben Zugriff auf ein Hostsystem mit VMware (ESXi 6.0, 6.5 oder 6.7), das zum Bereitstellen eines Geräts verwendet werden kann.
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Geräts über die folgenden Ressourcen:
 
   * Mindestens 4 Kerne
@@ -73,7 +73,7 @@ Vorbereitungen
 
 Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 
-* Zugriff auf ein Hostsystem mit VMware ESXi Server 6.0 oder 6.5. Das Hostsystem muss die folgenden Ressourcen für Ihr virtuelles Gerät reservieren können:
+* Zugriff auf ein Hostsystem mit VMware ESXi Server 6.0, 6.5 oder 6.7. Das Hostsystem muss die folgenden Ressourcen für Ihr virtuelles Gerät reservieren können:
  
   * Mindestens 4 Kerne
   * Mindestens 8 GB RAM 
@@ -192,7 +192,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, überspringen Sie diese Schritte, und fahren Sie mit Schritt 8 fort. Falls Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt. **Verwenden Sie das Set-HcsIPAddress-Cmdlet zum Konfigurieren des Netzwerks**. 
+6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, überspringen Sie diese Schritte, und fahren Sie mit Schritt 8 fort. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt: **Verwenden Sie das Cmdlet „Set-HcsIPAddress“, um das Netzwerk zu konfigurieren**. 
    
 7. Führen Sie zum Konfigurieren des Netzwerks an der Eingabeaufforderung den Befehl `Get-HcsIpAddress` aus, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `Ethernet`zugewiesen.
 
