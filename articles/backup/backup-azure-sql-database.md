@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790173"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224240"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -483,7 +483,14 @@ Hier erfahren Sie, wie Sie Daten an einem alternativen Speicherort wiederherstel
 > Sie können die Datenbank auf einer SQL Server-Instanz in derselben Azure-Region wiederherstellen. Der Zielserver muss beim Recovery Services-Tresor registriert werden.
 >
 
-Im Menü **Wiederherstellungskonfiguration** zeigt das Dropdown-Listenfeld **Server** nur die SQL Server-Instanzen an, die beim Recovery Services-Tresor registriert sind. Wenn sich der gewünschte Server nicht in der Liste befindet, lesen Sie in Abschnitt [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases), wie Sie den Server finden. Beim Ermittlungsprozess werden neue Server beim Recovery Services-Tresor registriert.
+Im Menü **Wiederherstellungskonfiguration** zeigt das Dropdown-Listenfeld **Server** nur die SQL Server-Instanzen an, die beim Recovery Services-Tresor registriert sind. Wenn sich der gewünschte Server nicht in der Liste befindet, lesen Sie in Abschnitt [Ermitteln von SQL Server-Datenbanken](backup-azure-sql-database.md#discover-sql-server-databases), wie Sie den Server finden. Beim Ermittlungsprozess werden neue Server beim Recovery Services-Tresor registriert.<br>
+Zum Wiederherstellen einer SQL-Datenbank benötigen Sie die folgenden Berechtigungen:
+
+* Berechtigungen vom Typ **Sicherungsoperator** für den Recovery Services-**Tresor**, in dem Sie die Wiederherstellung durchführen
+* Zugriff vom Typ **Contributor(write)** (Mitwirkender (Schreiben)) auf den **virtuellen SQL-Quellcomputer** (der gesicherte virtuelle Computer, den Sie wiederherstellen möchten)
+* Zugriff vom Typ **Contributor (write)** (Mitwirkender (Schreiben)) auf den virtuellen SQL-Zielcomputer (der virtuelle Computer für die Wiederherstellung. Bei der Wiederherstellung am ursprünglichen Speicherort ist dies der gleiche virtuelle Computer wie der virtuelle Quellcomputer.)
+
+So führen Sie die Wiederherstellung an einem alternativen Speicherort aus:
 
 1. Das Menü **Konfiguration wiederherstellen** gehen Sie wie folgt vor:
 

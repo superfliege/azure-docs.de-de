@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 140fc870500054d0652b48bc602706398371fa8e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 631fc4e613311df9386084408ead625f6d018151
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039057"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911889"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>Erstellen Ihrer ersten Python-Funktion in Azure (Vorschauversion)
 
@@ -32,7 +32,7 @@ Für das lokale Erstellen und Testen müssen Sie Folgendes durchführen:
 
 + Installieren von [Python 3.6](https://www.python.org/downloads/)
 
-+ Installieren von [Azure Functions Core Tools](functions-run-local.md#v2), Version 2.2.70 oder höher
++ Installieren von [Azure Functions Core Tools](functions-run-local.md#v2), Version 2.2.70 oder höher (.NET Core 2.x SDK erforderlich)
 
 Gehen Sie wie folgt vor, um die Veröffentlichung und Ausführung in Azure durchzuführen:
 

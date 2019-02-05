@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/16/2019
+ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ad52427263c4bbd2effb373b00ef8ff37b8f5b67
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449570"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077453"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -58,6 +58,9 @@ A. Data Box wird in allen Regionen in den USA, Europa, Norden, Europa, Westen, F
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>F: An wen sollte ich mich wenden, falls Probleme mit Data Box auftreten?
 A. Falls Probleme mit Data Box auftreten, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md).
 
+### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>F: Ich habe meine Data Box verloren. Fallen für ein verlorenes Gerät Gebühren an?
+A. Ja. Für ein verloren gegangenes oder beschädigtes Gerät fällt eine Gebühr an. Informationen zu dieser Gebühr finden Sie auf der Seite mit den [Preisen](https://azure.microsoft.com/pricing/details/storage/databox/) sowie in den [Nutzungsbedingungen für das Produkt](https://www.microsoft.com/licensing/product-licensing/products).
+
 
 ## <a name="order-device"></a>Bestellen des Geräts
 
@@ -72,16 +75,16 @@ A. Wenn Sie keinen Data Box-Auftrag erstellen konnten, liegt entweder mit Ihrem 
 Wenn Sie eine für das Abonnement unterstützte Angebotsart haben, überprüfen Sie Ihre Zugriffsebene im Abonnement. Sie müssen Mitwirkender oder Besitzer in Ihrem Abonnement sein, um einen Auftrag erstellen zu können.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>F: Ich habe mehrere Data Box-Geräte bestellt. Ich kann keine zusätzlichen Aufträge erteilen. Was könnte der Grund sein?
-A. Wir erlauben maximal 5 aktive Aufträge pro Abonnement pro Handelsgrenze (Kombination aus dem ausgewählten Land und der ausgewählten Region). Wenn Sie ein zusätzliches Gerät bestellen müssen, wenden Sie sich an den Microsoft-Support, um den Grenzwert für Ihr Abonnement zu erhöhen.
+A. Wir erlauben maximal fünf aktive Aufträge pro Abonnement pro Handelsgrenze (Kombination aus dem ausgewählten Land und der ausgewählten Region). Wenn Sie ein zusätzliches Gerät bestellen müssen, wenden Sie sich an den Microsoft-Support, um den Grenzwert für Ihr Abonnement zu erhöhen.
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>F: Wenn ich versuche, einen Auftrag zu erstellen, erhalte ich die Meldung, dass der Data Box-Dienst nicht verfügbar ist. Was bedeutet dies?
 A. Dies bedeutet, dass der Data Box-Dienst für die von Ihnen gewählte Kombination aus Land und Region nicht verfügbar ist. Wenn Sie diese Kombination ändern, können Sie den Data Box-Dienst wahrscheinlich nutzen. Eine Liste der Regionen, in denen der Dienst verfügbar ist, finden Sie unter [Regionale Verfügbarkeit von Data Box](data-box-overview.md#region-availability).
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>F: Ich habe meinen Data Box-Auftrag vor einigen Tagen erteilt. Wann erhalte ich meine Data Box?
-A. Wenn Sie einen Auftrag erteilen, prüfen wir, ob ein Gerät zur Verfügung steht. Wenn ein Gerät verfügbar ist, versenden wir es binnen 10 Tagen. Es ist denkbar, dass es Zeiten mit hoher Nachfrage gibt. In diesem Fall wird Ihr Auftrag in eine Warteschlange gestellt, und Sie können die Statusänderung im Azure-Portal verfolgen. Wenn Ihr Auftrag innerhalb von 90 Tagen nicht erfüllt wird, wird der Auftrag automatisch storniert. 
+A. Wenn Sie einen Auftrag erteilen, prüfen wir, ob ein Gerät zur Verfügung steht. Wenn ein Gerät verfügbar ist, versenden wir es binnen 10 Tagen. Es ist denkbar, dass es Zeiten mit hoher Nachfrage gibt. In diesem Fall wird Ihr Auftrag in eine Warteschlange gestellt, und Sie können die Statusänderung im Azure-Portal verfolgen. Wenn Ihr Auftrag innerhalb von 90 Tagen nicht erfüllt wird, wird der Auftrag automatisch storniert.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>F: Ich habe meine Data Box mit Daten gefüllt und muss eine weitere bestellen. Gibt es eine Möglichkeit, die Bestellung ohne viel Zeitaufwand aufzugeben?
-A. Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftrag noch einmal erstellt, und Sie müssen nur noch die Auftragsdetails angeben, ohne Adresse, Kontaktinformationen und Benachrichtigungsdetails erneut eingeben zu müssen. 
+A. Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftrag noch einmal erstellt, und Sie müssen nur noch die Auftragsdetails angeben, ohne Adresse, Kontaktinformationen und Benachrichtigungsdetails erneut eingeben zu müssen.
 
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
 
@@ -96,6 +99,9 @@ A.  Sie können den Auftrag nur stornieren, wenn die Data Box bestellt, aber der
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>F: Kann ich eine Data Box gleichzeitig an mehrere Hostcomputer anschließen, um Daten zu übertragen?
 A. Ja. Mehrere Hostcomputer können sich mit der Data Box verbinden, um Daten zu übertragen, und mehrere Kopieraufträge können parallel erfolgen. Weitere Informationen finden Sie unter [Tutorial: Kopieren von Daten auf Azure Data Box](data-box-deploy-copy-data.md).
+
+### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>F: Kann ich eine Verbindung mit beiden 10-GbE-Schnittstellen auf der Data Box herstellen, um Daten zu übertragen?
+A. Ja. Sie können mit beiden 10-GbE-Schnittstellen auf der Data Box eine Verbindung herstellen, um gleichzeitig Daten zu kopieren. Weitere Informationen zum Kopieren von Daten finden Sie unter [Tutorial: Kopieren von Daten auf Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -202,19 +208,19 @@ A. Sollte Ihr Gerät nicht starten, navigieren Sie im Azure-Portal zu Ihrer Best
 A.  Sobald der Auftragsstatus für **Datenkopiervorgang** als **Abgeschlossen** angezeigt wird, sollten Sie sofort auf Ihre Daten zugreifen können.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>F: Wo befinden sich meine Daten nach dem Upload in Azure?
-A.  Wenn Sie die Daten in die Data Box kopieren, werden die Daten in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen – je nachdem, ob es sich dabei um Blockblob-, Seitenblob- oder Azure-Dateien handelt.
+A.  Wenn Sie die Daten in die Data Box kopieren, werden die Daten in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen – je nachdem, ob es sich dabei um Blockblob-, Seitenblob- oder Azure-Dateien handelt:
  - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
  -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
  Alternativ hierzu können Sie auch im Azure-Portal auf Ihr Azure-Speicherkonto zugreifen und von dort aus entsprechend navigieren.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>F: Ich habe gerade festgestellt, dass ich mich für meine Container nicht an die Azure-Anforderungen für die Benennung gehalten habe. Können meine Daten deshalb nicht in Azure hochgeladen werden?
-A.  Falls die Containernamen Großbuchstaben enthalten, werden sie automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf sonstige Weise nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf. Weitere Informationen zu bewährten Methoden für die Benennung von Freigaben, Containern und Dateien finden Sie hier: 
+A.  Falls die Containernamen Großbuchstaben enthalten, werden diese Namen automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf sonstige Weise nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf. Weitere Informationen zu bewährten Methoden für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
 - [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>F: Wie kann ich die Daten überprüfen, die in Data Box kopiert wurden?
-A.  Nachdem der Datenkopiervorgang abgeschlossen ist, werden Ihre Daten überprüft, wenn Sie **Für den Versand vorbereiten** ausführen. Data Box generiert während des Validierungsprozesses eine Liste von Dateien und Prüfsummen für die Daten. Sie können die Liste der Dateien herunterladen und diese mit den Dateien in den Quelldaten vergleichen. Weitere Informationen finden Sie unter [Für den Versand vorbereiten](data-box-deploy-copy-data.md#prepare-to-ship).
+A.  Nachdem der Datenkopiervorgang abgeschlossen ist, werden Ihre Daten überprüft, wenn Sie **Für den Versand vorbereiten** ausführen. Data Box generiert während des Validierungsprozesses eine Liste von Dateien und Prüfsummen für die Daten. Sie können die Liste der Dateien herunterladen und diese mit den Dateien in den Quelldaten vergleichen. Weitere Informationen finden Sie unter [Für den Versand vorbereiten](data-box-deploy-picked-up.md#prepare-to-ship).
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>F: Was passiert mit meinen Daten, nachdem ich die Data Box zurückgesendet habe?
 A.  Nach Abschluss des Kopierens der Daten in Azure werden die Daten gemäß den NIST-Richtlinien (SP 800-88 Revision 1) auf sichere Weise von den Datenträgern der Data Box gelöscht. Weitere Informationen finden Sie unter [Löschen von Daten von Data Box](data-box-deploy-picked-up.md#erasure-of-data-from-data-box).

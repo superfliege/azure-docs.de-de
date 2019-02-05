@@ -102,7 +102,7 @@ Im Folgenden sind bewährte Methoden zum Erstellen von Anwendungen in Azure aufg
 Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil genug ist, um mit einem Denial-of-Service-Angriff fertig zu werden. Sicherheit und Datenschutz sind direkt in der Azure-Plattform integriert, beginnend mit [Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/sdl). Die SDL spricht Sicherheit in jeder Entwicklungsphase an und sorgt dafür, dass Azure kontinuierlich aktualisiert wird, um noch sicherer zu sein.
 
 **Bewährte Methode**: Entwerfen der Anwendungen für eine [horizontale Skalierung](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out), um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.  
-**Detail**: Wählen Sie für Azure App Service einen [App Service-Plan](../app-service/overview-hosting-plans.md) aus, der mehrere Instanzen bietet.
+**Detail**: Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-is.md) einen [App Service-Plan](../app-service/overview-hosting-plans.md) aus, der mehrere Instanzen bietet.
 
 Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden.
 
