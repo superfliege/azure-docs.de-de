@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#'
-titleSuffix: Microsoft Cognitive Services
-description: >
-  In diesem Tutorial lernen Sie, wie Sie mit dem Speech SDK für C# Absichten aus gesprochener Sprache erkennen können.
+titleSuffix: Azure Cognitive Services
+description: In diesem Tutorial lernen Sie, wie Sie mit dem Speech SDK für C# Absichten aus gesprochener Sprache erkennen können.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: Speech
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 16424c44003be14e3ba04f6b5cce0ce518a0d7e8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e810450a8934a8df921c5d952a55ab0deaf853ec
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227969"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#
 
@@ -111,7 +111,7 @@ Ersetzen Sie die Platzhalter in dieser Methode wie folgt durch Ihren LUIS-Abonne
 |-----------|------------|
 |`YourLanguageUnderstandingSubscriptionKey`|Ihren LUIS-Endpunktschlüssel. Wie bereits erwähnt, muss es sich um einen Schlüssel aus Ihrem Azure-Dashboard handeln, nicht um einen „Startschlüssel“. Sie finden ihn auf der Seite „Schlüssel und Endpunkte“ Ihrer App (unter „Verwalten“) im [LUIS-Portal](https://www.luis.ai/home).|
 |`YourLanguageUnderstandingServiceRegion`|Der kurze Bezeichner für die Region Ihres LUIS-Abonnements, z.B. `westus` für „USA, Westen“. Siehe [Regionen](regions.md).|
-|`YourLanguageUnderstandingAppId`|Die LUIS-App-ID. Sie finden sie auf der Seite „Einstellungen“ Ihrer App im [LUIS Portal](https://www.luis.ai/home).|
+|`YourLanguageUnderstandingAppId`|die LUIS-App-ID Sie finden sie auf der Seite „Einstellungen“ Ihrer App im [LUIS Portal](https://www.luis.ai/home).|
 
 Nachdem Sie diese Änderungen vorgenommen haben, können Sie die Tutorialanwendung erstellen (STRG+UMSCHALT+B) und ausführen (F5). Wenn Sie dazu aufgefordert werden, sprechen Sie „Turn off the lights“ (Licht ausschalten) in das Mikrofon Ihres PCs. Das Ergebnis wird im Konsolenfenster angezeigt.
 
@@ -123,7 +123,7 @@ Die folgenden Abschnitte enthalten eine Erläuterung des Codes.
 Der erste Schritt beim Erkennen von Absichten in Sprache besteht darin, eine Sprachkonfiguration aus Ihrem LUIS-Endpunktschlüssel und der -Region zu erstellen. Sprachkonfigurationen können verwendet werden, um Erkennungen für die verschiedenen Funktionen des Speech SDK zu erstellen. Die Sprachkonfiguration bietet mehrere Möglichkeiten, das Abonnement anzugeben, das Sie verwenden möchten. Hier verwenden wir `FromSubscription`. Diese Angabe nimmt den Abonnementschlüssel und die Region an.
 
 > [!NOTE]
-> Verwenden Sie den Schlüssel und die Region Ihres LUIS-Abonnements, nicht Ihr Speech-Abonnement.
+> Verwenden Sie den Schlüssel und die Region Ihres LUIS-Abonnements, nicht die eines Speech-Abonnements.
 
 Als nächstes erstellen Sie eine Absichtserkennung mit `new IntentRecognizer(config)`. Da die Konfiguration bereits weiß, welches Abonnement verwendet werden soll, entfällt die erneute Angabe von Abonnementschlüssel und Endpunkt beim Erstellen der Erkennung.
 
@@ -166,7 +166,7 @@ Die Tutorialanwendung analysiert das JSON-Ergebnis nicht und zeigt es nur im Kon
 
 ## <a name="specify-recognition-language"></a>Angeben der Erkennungssprache
 
-Standardmäßig erkennt LUIS Absichten in amerikanischem Englisch (`en-us`). Durch das Zuweisen eines Gebietsschemacodes zur `SpeechRecognitionLanguage`-Eigenschaft der Sprachkonfiguration können Sie Absichten in anderen Sprachen erkennen. Fügen Sie z.B. `config.SpeechRecognitionLanguage = "de-de";` in unserer Tutorialanwendung hinzu, bevor Sie die Erkennung erstellen, um Absichten in Deutsch zu erkennen. Siehe [Unterstützte Sprachen](supported-languages.md#speech-to-text).
+Standardmäßig erkennt LUIS Absichten in amerikanischem Englisch (`en-us`). Durch das Zuweisen eines Gebietsschemacodes zur `SpeechRecognitionLanguage`-Eigenschaft der Sprachkonfiguration können Sie Absichten in anderen Sprachen erkennen. Fügen Sie z.B. `config.SpeechRecognitionLanguage = "de-de";` in unserer Tutorialanwendung hinzu, bevor Sie die Erkennung erstellen, um Absichten in Deutsch zu erkennen. Siehe [Unterstützte Sprachen](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Kontinuierliche Erkennung aus einer Datei
 

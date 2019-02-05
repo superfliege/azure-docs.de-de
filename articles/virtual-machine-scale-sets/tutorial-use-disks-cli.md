@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen und Verwenden von Datenträgern für Skalierungsgrup
 description: Hier wird beschrieben, wie Sie die Azure CLI zum Erstellen und Verwenden von Managed Disks mit einer VM-Skalierungsgruppe verwenden, z.B. das Hinzufügen, Vorbereiten, Auflisten und Trennen von Datenträgern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35256a22265ca544975b2fead40b1a2be0d73ff1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469383"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163057"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mithilfe der Azure CLI
 Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten von VM-Instanzen verwendet. Beim Erstellen und Verwalten einer Skalierungsgruppe muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. In diesem Tutorial wird beschrieben, wie Sie VM-Datenträger erstellen und verwalten. In diesem Tutorial lernen Sie Folgendes:
@@ -48,7 +48,7 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 **Temporärer Datenträger**: Für temporäre Datenträger wird ein Solid State Drive verwendet, das sich auf demselben Azure-Host wie die VM-Instanz befindet. Dies sind äußerst leistungsfähige Datenträger, die für Vorgänge wie die temporäre Datenverarbeitung verwendet werden können. Wenn die VM-Instanz aber auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der Größe der VM-Instanz. Temporäre Datenträger werden mit bezeichnet */dev/sdb* und haben den Bereitstellungspunkt */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Größe von temporären Datenträgern
-| Typ | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
+| Type | Gängige Größen | Max. Größe des temporären Datenträgers (GiB) |
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/linux/sizes-general.md) | A-, B- und D-Serie | 1600 |
 | [Computeoptimiert](../virtual-machines/linux/sizes-compute.md) | F-Serie | 576 |
@@ -62,7 +62,7 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen installieren und Daten speichern müssen. Datenträger sollten in allen Fällen verwendet werden, in denen eine dauerhafte und dynamische Datenspeicherung erwünscht ist. Jeder Datenträger weist eine maximale Kapazität von 4 TB auf. Die Größe der VM-Instanz bestimmt, wie viele Datenträger angefügt werden können. Für jede vCPU eines virtuellen Computers können zwei Datenträger angefügt werden.
 
 ### <a name="max-data-disks-per-vm"></a>Max. Anzahl der Datenträger pro virtuellem Computer
-| Typ | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
+| Type | Gängige Größen | Max. Anzahl der Datenträger pro virtuellem Computer |
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/linux/sizes-general.md) | A-, B- und D-Serie | 64 |
 | [Computeoptimiert](../virtual-machines/linux/sizes-compute.md) | F-Serie | 64 |
@@ -132,7 +132,7 @@ Bei den Datenträgern, die erstellt und an die VM-Instanzen Ihrer Skalierungsgru
 
 Sie können die benutzerdefinierte Skripterweiterung von Azure verwenden, um den Prozess für mehrere VM-Instanzen einer Skalierungsgruppe zu automatisieren. Mit dieser Erweiterung können Skripts lokal auf jeder VM-Instanz ausgeführt werden, z.B. um angefügte Datenträger vorzubereiten. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/linux/extensions-customscript.md).
 
-Im folgenden Beispiel wird mit [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) ein Skript aus einem GitHub-Beispielrepository auf jeder VM-Instanz ausgeführt, um alle angefügten unformatierten Datenträger vorzubereiten:
+Im folgenden Beispiel wird mit [az vmss extension set](/cli/azure/vmss/extension) ein Skript aus einem GitHub-Beispielrepository auf jeder VM-Instanz ausgeführt, um alle angefügten unformatierten Datenträger vorzubereiten:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -279,7 +279,7 @@ Es werden Informationen zur Datenträgergröße, Speicherebene und logischen Ger
 
 
 ## <a name="detach-a-disk"></a>Trennen eines Datenträgers
-Wenn Sie einen bestimmten Datenträger nicht mehr benötigen, können Sie ihn von der Skalierungsgruppe trennen. Der Datenträger wird aus allen VM-Instanzen in der Skalierungsgruppe entfernt. Verwenden Sie zum Trennen eines Datenträgers von einer Skalierungsgruppe den Befehl [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach), und geben Sie die LUN des Datenträgers an. Die LUNs sind in der Ausgabe von [az vmss show](/cli/azure/vmss#az_vmss_show) im vorherigen Abschnitt enthalten. Im folgenden Beispiel wird LUN *2* von der Skalierungsgruppe getrennt:
+Wenn Sie einen bestimmten Datenträger nicht mehr benötigen, können Sie ihn von der Skalierungsgruppe trennen. Der Datenträger wird aus allen VM-Instanzen in der Skalierungsgruppe entfernt. Verwenden Sie zum Trennen eines Datenträgers von einer Skalierungsgruppe den Befehl [az vmss disk detach](/cli/azure/vmss/disk), und geben Sie die LUN des Datenträgers an. Die LUNs sind in der Ausgabe von [az vmss show](/cli/azure/vmss#az_vmss_show) im vorherigen Abschnitt enthalten. Im folgenden Beispiel wird LUN *2* von der Skalierungsgruppe getrennt:
 
 ```azurecli-interactive
 az vmss disk detach \

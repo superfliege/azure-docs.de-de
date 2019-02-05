@@ -6,18 +6,18 @@ services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: a3eafe1c2ad6bb7a141b6c40c85f804d0f9b7395
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6fdb72b92a444b889ddfafd0ceecbb4fab6570c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345622"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171251"
 ---
-# <a name="tutorial-single-page-web-app"></a>Tutorial: Single-Page-Web-App
+# <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
 Hier finden Sie den vollständigen Quellcode aus dem [Tutorial für Single-Page-Apps](autosuggest.md) für die Bing-Vorschlagssuche-API. Um die App auszuführen, kopieren Sie den Quellcode in einen Text-Editor, und speichern Sie die Datei als `autosuggest.html`. Öffnen Sie dann die gespeicherte Datei in Ihrem Webbrowser.
 

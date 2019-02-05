@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a43db3eba5bec9bef0aacc51d246414d54d222bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: dc36e66e9dae62fdfede3a82146cd218ca5eb489
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813440"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Tutorial: Azure Active Directory-Integration mit Acadia
 
@@ -71,10 +71,10 @@ Zum Konfigurieren der Integration von Acadia in Azure AD müssen Sie Acadia aus 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei [Anwendungsname] mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in [Anwendungsname] eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Acadia basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Acadia eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendungsname] müssen Sie die folgenden Schritte ausgeführt werden:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Acadia müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für Acadia](#configure-acadia-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
@@ -87,7 +87,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei [Anwendun
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit [Anwendungsname] zu konfigurieren:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Acadia die folgenden Schritte aus:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Acadia** die Option **Einmaliges Anmelden** aus.
 
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den Acadia-Client](https://www.systemsalliance.com/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Die Werte für die Schritte 4 und 5 werden vom Acadia-Team in einer Metadatendatei bereitgestellt. Sie können diese Datei hochladen, indem Sie im Abschnitt **Grundlegende SAML-Konfiguration** auf **Metadatendatei hochladen** klicken. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen, um die Richtigkeit der Metadatenwerte zu überprüfen. Wenden Sie sich an das [Supportteam für den Acadia-Client](mailto:support@systemsalliance.com), wenn die angegebenen Werte falsch sind.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -134,7 +134,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 ### <a name="configure-acadia-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Acadia
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Acadia** müssen Sie die heruntergeladene **Metadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Acadia](https://www.systemsalliance.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Acadia** müssen Sie die heruntergeladene **Metadaten-XML**, die **App-Verbundmetadaten-URL** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Acadia](mailto:support@systemsalliance.com) senden. Das Team konfiguriert diese Einstellung, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

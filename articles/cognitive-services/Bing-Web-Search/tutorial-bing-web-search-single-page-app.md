@@ -1,23 +1,23 @@
 ---
-title: 'Tutorial: Erstellen einer einseitigen Web-App – Bing-Websuche-API'
+title: 'Tutorial: Erstellen einer Single-Page-Webanwendung – Bing-Websuche-API'
 titleSuffix: Azure Cognitive Services
 description: Dieses Tutorial zum Erstellen einer einseitigen App zeigt, wie Sie mit der Bing-Websuche-API relevante Suchergebnisse in einer einseitigen App abrufen, analysieren und anzeigen können.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
-ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 13040cf7f75b8bf2c0bf898dc4f3b16c99a80560
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161921"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172475"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Websuche-API
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
 Diese einseitige App zeigt, wie Sie Suchergebnisse aus der Bing-Websuche-API abrufen, analysieren und anzeigen. Das Tutorial verwendet Standard-HTML und -CSS und konzentriert sich auf den JavaScript-Code. HTML-, CSS- und JS-Dateien sind in [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) mit Schnellstartanweisungen verfügbar.
 

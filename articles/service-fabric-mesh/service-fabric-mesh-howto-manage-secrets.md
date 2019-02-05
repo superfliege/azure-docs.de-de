@@ -2,19 +2,19 @@
 title: Verwalten von Azure Service Fabric Mesh-Anwendungsgeheimnissen | Microsoft-Dokumentation
 description: Verwalten Sie Anwendungsgeheimnisse, damit Sie auf sichere Weise eine Service Fabric Mesh-Anwendung erstellen und bereitstellen können.
 services: service-fabric-mesh
-keywords: Geheimnisse
-author: aljo
+keywords: secrets
+author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: d92726ebc2cd4c6c44afdb2d2a9f53ab5441ac32
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891919"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236750"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Verwalten von Service Fabric Mesh-Anwendungsgeheimnissen
 Service Fabric Mesh unterstützt Geheimnisse als Azure-Ressourcen. Bei einem Service Fabric Mesh-Geheimnis kann es sich um beliebige sensible Informationen in Textform handeln, z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die sicher gespeichert und übertragen werden sollten. In diesem Artikel wird beschrieben, wie Sie den Secure Store Service von Service Fabric verwenden, um Geheimnisse bereitzustellen und zu verwalten.
@@ -183,7 +183,7 @@ Hier ist ein Beispiel dafür angegeben, wie Sie Ressourcen vom Typ „Mesh-Gehei
 
 ## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Ändern Sie die Mesh-Anwendung so, dass auf die Mesh-Geheimniswerte verwiesen wird.
 Service Fabric Mesh-Anwendungen müssen über die folgenden beiden Zeichenfolgen verfügen, um Secure Store Service-Geheimniswerte nutzen zu können:
-1. „Micrsoft.ServiceFabricMesh/Secrets.name“ enthält den Namen der Datei sowie den Geheimniswert in Klartext.
+1. „Microsoft.ServiceFabricMesh/Secrets.name“ enthält den Namen der Datei sowie den Geheimniswert in Klartext.
 2. Die Windows- oder Linux-Umgebungsvariable „Fabric_SettingPath“ enthält den Verzeichnispfad, unter dem die Dateien mit den Secure Store Service-Geheimniswerten verfügbar sind. Dies ist „C:\Settings“ für unter Windows gehostete Mesh-Anwendungen und „/var/settings“ für unter Linux gehostete Mesh-Anwendungen.
 
 ## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Stellen Sie die Mesh-Anwendung bereit, oder verwenden Sie dafür ein paralleles Upgrade, um Geheimniswerte zu nutzen.

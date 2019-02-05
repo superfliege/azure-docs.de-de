@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: d0d02f491f14cc6e0664d79bcfd2cda44d433b5b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389947"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095752"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -32,7 +32,9 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Senden eines Registrierungslinks an Teilnehmer
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Das zum Erstellen eines Lab-Kontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Ein Besitzer des Labs kann der Rolle „Ersteller des Labs“ weitere Benutzer hinzufügen, indem er die Schritte im folgenden Artikel ausführt: [Hinzufügen eines Benutzers zur Rolle „Ersteller des Labs“](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied einer der folgenden Rollen für das Labkonto sein: „Besitzer“, „Ersteller des Labs“ oder „Mitwirkender“. Das zum Erstellen eines Labkontos verwendete Konto wird automatisch der Rolle „Besitzer“ hinzugefügt.
+
+Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufügen. Beispielsweise fügt ein Labbesitzer Lehrkräfte zur Rolle „Ersteller des Labs“ hinzu. Anschließend erstellen die Lehrkräfte Labs mit virtuellen Computern für ihre Klassen. Schüler/Studenten verwenden zum Registrieren für das Lab den Registrierungslink, den sie von Lehrkräften erhalten. Nach der Registrierung können sie virtuelle Computer in den Labs für Unterrichtsarbeit und Hausaufgaben nutzen. Ausführliche Schritte zum Hinzufügen von Benutzern zur Rolle „Ersteller des Labs“ finden Sie unter [Tutorial: Einrichten eines Lab-Kontos mit Azure Lab Services](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs

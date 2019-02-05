@@ -3,7 +3,7 @@ title: Tutorial – Erstellen einer Entwicklungspipeline in Azure mit Jenkins | 
 description: Tutorial – In diesem Tutorial erfahren Sie, wie Sie in Azure einen virtuellen Computer von Jenkins erstellen, der bei jedem Codecommit Pullvorgänge aus GitHub durchführt und einen neuen Docker-Container zum Ausführen Ihrer Anwendung erstellt.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470845"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189866"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Tutorial: Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker
 
@@ -75,7 +75,7 @@ Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az grou
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-Jetzt können Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen. Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad von *cloud-init-jenkins.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben.
+Jetzt können Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer erstellen. Verwenden Sie den `--custom-data`-Parameter, um Ihre cloud-init-Konfigurationsdatei zu übergeben. Geben Sie den vollständigen Pfad von *cloud-init-jenkins.txt* an, wenn Sie die Datei außerhalb Ihres vorhandenen Arbeitsverzeichnisses gespeichert haben.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \

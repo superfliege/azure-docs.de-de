@@ -6,18 +6,18 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: 774c61f3a089b2ee54f60d654bb1ef7c251cbdb7
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 6165bca1eff248f15cfce4638a6f9817db550c04
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165032"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156257"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>Tutorial: Single-Page-Webanwendung – Code
+# <a name="tutorial-single-page-web-app-source"></a>Tutorial: Single-Page-Webanwendung – Quellcode
 
 Hier finden Sie den vollständigen Quellcode, der im [Tutorial zu Single-Page-Webanwendungen](tutorial-bing-entities-search-single-page-app.md) für die Bing-Entitätssuche vorgestellt wird. Kopieren Sie zum Ausführen der App den Quellcode in Editor oder einen anderen Text-Editor, und speichern Sie die Datei als `bing.html`. Öffnen Sie dann die gespeicherte Datei in Microsoft Edge oder einem anderen gängigen Browser.
 

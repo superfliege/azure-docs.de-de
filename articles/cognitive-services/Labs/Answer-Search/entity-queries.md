@@ -6,18 +6,18 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2ec11412b5b0e713742029f05c91a6ecbe78c344
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467411"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210691"
 ---
-# <a name="quickstart-query-for-entities"></a>Schnellstart: Abfragen von Entitäten
+# <a name="quickstart-query-for-entities"></a>Schnellstart: Abfragen für Entitäten
 
 Wenn die Abfrage Informationen zu einer Person, einem Ort oder einer Sache anfordert, kann die Antwort eine `entities`-Antwort enthalten.  Abfragen geben immer Webseiten zurück, und [Fakten](fact-queries.md) und/oder [Entitäten](entity-queries.md) hängen von der Abfrage ab.
 
@@ -33,7 +33,7 @@ Verwenden Sie zum Ermitteln des Abfrageszenarios das Feld `queryScenario` des Ob
 -   Sehenswürdigkeit 
  
 Um den Entitätstyp zu bestimmen, den die Antwort enthält, verwenden Sie das Feld `entityTypeHints` wie in der Abfrage für „Bill Gates“ gezeigt.
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ Um den Entitätstyp zu bestimmen, den die Antwort enthält, verwenden Sie das Fe
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 Im Folgenden finden Sie eine Abfrage für „Space Needle“:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 Die Antwort enthält die `entities`-Antwort. Beachten Sie die Felder `entityScenario` und `entityTypeHints`. 
-````
+```
   "entities": {
     "value": [
       {
@@ -108,19 +108,19 @@ Die Antwort enthält die `entities`-Antwort. Beachten Sie die Felder `entityScen
       }
     ]
   },
-````
+```
 
 Eine Abfrage kann eine Liste zurückgeben, wenn sie relevant ist.
 
-**Abfrage:** Die folgende Abfrage sucht nach einer Liste der gefährdeten Arten:
+**Abfrage:** Die folgende Abfrage sucht nach einer Liste gefährdeter Arten:
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
 **Antwort:** Die Antwort enthält eine Liste, die für die Anzeige von tabellarischen Werten formatiert ist:
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,7 +217,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
 ## <a name="next-steps"></a>Nächste Schritte

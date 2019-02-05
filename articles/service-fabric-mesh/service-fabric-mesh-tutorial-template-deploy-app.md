@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246363"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158841"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -109,7 +109,7 @@ Wenn die Registrierung erstellt wird, sieht die Ausgabe etwa wie folgt aus:
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Übertragen der Images an Azure Container Registry per Push
 
-In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Die Containerimages für die Dienste [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) befinden sich in Docker Hub. Informationen zum Erstellen der Anwendung in Visual Studio finden Sie unter [Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh](service-fabric-mesh-tutorial-create-dotnetcore.md). In Service Fabric Mesh können Windows-oder Linux-Docker-Container ausgeführt werden.  Wählen Sie bei der Verwendung von Linux-Containern in Docker die Option **Switch to Linux containers** (Zu Linux-Containern wechseln) aus.  Wählen Sie bei der Verwendung von Windows-Containern in Docker die Option **Switch to Windows containers** (Zu Windows-Containern wechseln) aus.
+In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Die Containerimages für die Dienste [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) befinden sich in Docker Hub. Informationen zum Erstellen der Anwendung in Visual Studio finden Sie unter [Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten](service-fabric-mesh-tutorial-create-dotnetcore.md). In Service Fabric Mesh können Windows-oder Linux-Docker-Container ausgeführt werden.  Wählen Sie bei der Verwendung von Linux-Containern in Docker die Option **Switch to Linux containers** (Zu Linux-Containern wechseln) aus.  Wählen Sie bei der Verwendung von Windows-Containern in Docker die Option **Switch to Windows containers** (Zu Windows-Containern wechseln) aus.
 
 Um ein Image per Push an eine ACR-Instanz übertragen zu können, benötigen Sie zunächst ein Containerimage. Falls Sie noch keine lokalen Containerimages besitzen, rufen Sie mithilfe des Befehls [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) die Images [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) per Pull aus Docker Hub ab.
 

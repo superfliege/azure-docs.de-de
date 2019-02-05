@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 589ad189a3a157d0116e3991f8df3d6b43afc167
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988707"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095693"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs (Vorschauversion)
 
@@ -33,18 +33,18 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung so konfigur
 
 Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Informieren Sie sich über die Unterstützung von [Berechtigungen und der Zustimmung](v2-permissions-and-consent.md). Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
+* Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
 * Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
   * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
 * Aktivieren Sie die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden am Azure-Portal und Auswählen der App
+## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
 Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren können:
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, indem Sie entweder ein Geschäfts-, Schul- oder Unikonto oder ein persönliches Microsoft-Konto verwenden.
-1. Wenn Ihr Konto Zugriff auf mehr als einen Mandanten ermöglicht, wählen Sie oben rechts Ihr Konto aus und legen Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und dann **App-Registrierungen (Vorschau)**.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** aus.
 1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
 1. Wählen Sie aus, welche Methode Sie verwenden möchten (Benutzeroberfläche oder Anwendungsmanifest), um einen neuen Bereich verfügbar zu machen:
     * [Verfügbarmachen eines neuen Bereichs über die Benutzeroberfläche](#expose-a-new-scope-through-the-ui)
@@ -69,14 +69,14 @@ Machen Sie einen neuen Bereich wie folgt über die Benutzeroberfläche verfügba
     | **Bereichsname** | Geben Sie einen aussagekräftigen Namen für Ihren Bereich ein.<br><br>Beispiel: `Employees.Read.All`. |
     | **Zum Einwilligen berechtigte Personen** | Wählen Sie aus, ob für diesen Bereich die Einwilligung von Benutzern ausreicht oder ob die Einwilligung eines Administrators erforderlich ist. Wählen Sie für umfassendere Berechtigungen die Option **Nur Administratoren**. |
     | **Anzeigename der Administratoreinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die für Administratoren angezeigt wird.<br><br>Zum Beispiel, `Read-only access to Employee records` |
-    | **Beschreibung der Administratoreinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die für Administratoren angezeigt wird.<br><br>Beispiel: `Allow the application to have read-only access to all Employee data.` |
+    | **Beschreibung der Administratoreinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die für Administratoren angezeigt wird.<br><br>Zum Beispiel, `Allow the application to have read-only access to all Employee data.` |
 
     Geben Sie auch Werte für die folgenden Felder ein, wenn auch Benutzer die Einwilligung für Ihren Bereich erteilen können:
 
     | Feld | BESCHREIBUNG |
     |-------|-------------|
-    | **Anzeigename der Benutzereinwilligung** | Geben Sie einen aussagekräftigen Namen für Ihren Bereich ein, der Benutzern angezeigt wird.<br><br>Beispiel: `Read-only access to your Employee records` |
-    | **Beschreibung der Benutzereinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die Benutzern angezeigt wird.<br><br>Beispiel: `Allow the application to have read-only access to your Employee data.` |
+    | **Anzeigename der Benutzereinwilligung** | Geben Sie einen aussagekräftigen Namen für Ihren Bereich ein, der Benutzern angezeigt wird.<br><br>Zum Beispiel, `Read-only access to your Employee records` |
+    | **Beschreibung der Benutzereinwilligung** | Geben Sie eine aussagekräftige Beschreibung für Ihren Bereich ein, die Benutzern angezeigt wird.<br><br>Zum Beispiel, `Allow the application to have read-only access to your Employee data.` |
 
 1. Legen Sie den **Zustand** fest, und wählen Sie **Bereich hinzufügen**, wenn Sie fertig sind.
 
@@ -130,7 +130,7 @@ Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung für Apps an:
+Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung an:
 
 * [Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md)
 * [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)

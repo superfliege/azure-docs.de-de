@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 71c8b9cc05d15a4c4eadb6321de580ed9768a438
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2d10dcde0a0e35a3e717cde34048437b6119fbf6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988704"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101227"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten (Vorschauversion)
+# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten (Vorschau)
 
 Wenn Sie eine Anwendung bei der Microsoft Identity Platform registrieren, können Sie beispielsweise festlegen, dass nur Benutzer aus Ihrer Organisation auf Ihre Anwendung zugreifen dürfen. Alternativ können Sie auch festlegen, dass Ihre App für Benutzer aus externen Organisationen (oder für Benutzer aus externen Organisationen und für Benutzer mit persönlichen Konten, die möglicherweise keiner Organisation angehören) zugänglich sein soll.
 
@@ -62,22 +62,22 @@ Wenn Sie eine Anwendung schreiben, die Sie Ihren Kunden oder Partnern außerhalb
     * Wählen Sie **Nur Konten in diesem Verzeichnis** aus, wenn Sie eine Branchenanwendung erstellen. Wenn die Anwendung nicht in einem Verzeichnis registriert ist, ist diese Option nicht verfügbar.
     * Wählen Sie **Konten in einem beliebigen Organisationsverzeichnis** aus, wenn Sie alle Kunden aus dem Unternehmens- und Bildungsbereich ansprechen möchten.
     * Wählen Sie **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus, um die breiteste Kundengruppe anzusprechen.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Aktivieren der impliziten OAuth 2.0-Genehmigung für Single-Page-Webanwendungen
 
-Single-Page-Webanwendungen (SPAs) basieren in der Regel auf einem JavaScript-intensiven Front-End, das im Browser ausgeführt wird. Hierüber wird das Web-API-Back-End der Anwendung zum Ausführen der Geschäftslogik aufgerufen. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Genehmigung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an die dazugehörige Back-End-Web-API schützen können.
+Single-Page-Webanwendungen (SPAs) basieren in der Regel auf einem JavaScript-intensiven Front-End, das im Browser ausgeführt wird. Hierüber wird das Web-API-Back-End der Anwendung zum Ausführen der Geschäftslogik aufgerufen. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an die dazugehörige Back-End-Web-API schützen können.
 
 Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Informieren Sie sich über den Ablauf der impliziten OAuth 2.0-Genehmigung in Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) und [v2.0](v2-oauth2-implicit-grant-flow.md), um weitere Informationen zur impliziten Autorisierungsgenehmigung zu erhalten und entscheiden zu können, ob sie für Ihr Anwendungsszenario geeignet ist.
 
 Die implizite OAuth 2.0-Genehmigung ist für Anwendungen standardmäßig deaktiviert. Sie können die implizite OAuth 2.0-Genehmigung für Ihre Anwendung mithilfe der unten aufgeführten Schritte aktivieren.
 
-### <a name="to-enable-oauth-20-implicit-grant"></a>So aktivieren Sie die implizite OAuth 2.0-Genehmigung
+### <a name="to-enable-oauth-20-implicit-grant"></a>So aktivieren Sie die implizite OAuth 2.0-Gewährung
 
 1. Navigieren Sie auf der Seite **Übersicht** der App zum Abschnitt **Authentifizierung**.
 1. Suchen Sie unter **Erweiterte Einstellungen** nach dem Abschnitt **Implizite Genehmigung**.
 1. Wählen Sie **ID-Token**, **Zugriffstoken** oder beides aus.
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

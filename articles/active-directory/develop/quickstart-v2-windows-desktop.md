@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 11/15/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 847300fffb2dd67cae4b51b4baf7d978c569a664
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 24586e6e684b825054bf9ed0c14ac237fbc949ae
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284249"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093377"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-Anwendung aus
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -45,7 +45,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels
 >
-> #### <a name="step-1-register-your-application"></a>Schritt 1: Registrieren Ihrer Anwendung
+> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
 > 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
@@ -57,7 +57,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Windows Desktop .NET-
 >      - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 > 1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
 > 1. Navigieren Sie im Abschnitt **Umleitungs-URIs** zum Abschnitt **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)**, und wählen Sie **"urn:ietf:wg:oauth:2.0:oob** aus.
-> 1. Wählen Sie **Speichern**aus.
+> 1. Wählen Sie **Speichern** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal

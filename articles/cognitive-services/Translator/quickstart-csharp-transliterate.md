@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 7beddd7f7f21466ee404303b2727370d0cfc86f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889139"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220152"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API für die Transliteration von Text mit C#
 
@@ -39,7 +39,7 @@ dotnet new console -o transliterate-sample
 cd transliterate-sample
 ```
 
-Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Er erstellt eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `transliterate-sample`. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
+Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Es werden eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `transliterate-sample` erstellt. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
 
 Als Nächstes müssen Sie Json.Net installieren. Führen Sie im Verzeichnis Ihres Projekts den folgenden Befehl aus:
 

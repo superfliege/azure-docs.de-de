@@ -6,18 +6,18 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 54896e96658286297d90f488bd02f11da505ec50
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: e638375c9c8316c00ee8da000ca5223330072985
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889088"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215570"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste mit unterstützten Sprachen per C#
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste unterstützter Sprachen mit C#
 
 In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen ab.
 
@@ -39,7 +39,7 @@ dotnet new console -o languages-sample
 cd languages-sample
 ```
 
-Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Er erstellt eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `languages-sample`. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
+Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Es werden eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `languages-sample` erstellt. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
 
 Als Nächstes müssen Sie Json.Net installieren. Führen Sie im Verzeichnis Ihres Projekts den folgenden Befehl aus:
 

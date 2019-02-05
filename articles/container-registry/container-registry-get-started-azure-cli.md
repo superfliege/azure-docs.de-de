@@ -5,23 +5,25 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
+ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 37b1c8516268611a1174edfe20fef36dfb6b36c2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255923"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295830"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Schnellstart: Erstellen einer privaten Containerregistrierung mit der Azure CLI
 
-Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. Diese Anleitung enthält ausführliche Informationen zum Erstellen einer Azure Container Registry-Instanz mit der Azure CLI, Übertragen eines Containerimages per Pushvorgang in die Registrierung und Bereitstellen des Containers aus Ihrer Registrierung in Azure Container Instances (ACI).
+Azure Container Registry ist ein verwalteter Docker-Containerregistrierungsdienst zum Speichern privater Docker-Containerimages. In diesem Leitfaden erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine Azure Container Registry-Instanz erstellen. Übertragen Sie anschließend mithilfe von Docker-Befehlen ein Containerimage per Push in die Registrierung. Rufen Sie abschließend das Image per Pull aus der Registrierung ab, und führen Sie es aus.
 
-Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.27 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+Für diese Schnellstartanleitung müssen Sie die Azure-Befehlszeilenschnittstelle (Version 2.0.55 empfohlen) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
 
 Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [macOS-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
+
+Da Azure Cloud Shell nicht alle erforderlichen Docker-Komponenten (z.B. den `dockerd`-Daemon) enthält, können Sie Cloud Shell für diesem Schnellstart nicht verwenden.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -35,9 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-In dieser Schnellstartanleitung erstellen Sie eine *Basic*-Registrierung. Azure Container Registry steht in mehreren unterschiedlichen SKUs zur Verfügung, die in der folgenden Tabelle kurz beschrieben werden. Ausführliche Details zu den einzelnen Einträgen finden Sie unter [Containerregistrierungs-SKUs][container-registry-skus].
-
-[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
+In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Diensttarifen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
 
 Erstellen Sie mithilfe des Befehls [az acr create][az-acr-create] eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im folgenden Beispiel wird der Name *myContainerRegistry007* verwendet. Ersetzen Sie diesen Namen durch einen eindeutigen Wert.
 
@@ -50,10 +50,10 @@ Wenn die Registrierung erstellt wird, sieht die Ausgabe etwa wie folgt aus:
 ```json
 {
   "adminUserEnabled": false,
-  "creationDate": "2017-09-08T22:32:13.175925+00:00",
+  "creationDate": "2019-01-08T22:32:13.175925+00:00",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry007",
   "location": "eastus",
-  "loginServer": "myContainerRegistry007.azurecr.io",
+  "loginServer": "mycontainerregistry007.azurecr.io",
   "name": "myContainerRegistry007",
   "provisioningState": "Succeeded",
   "resourceGroup": "myResourceGroup",
@@ -68,11 +68,11 @@ Wenn die Registrierung erstellt wird, sieht die Ausgabe etwa wie folgt aus:
 }
 ```
 
-Für den restlichen Teil dieser Schnellstartanleitung wird `<acrName>` als Platzhalter für den Namen der Containerregistrierung verwendet.
+Beachten Sie `loginServer` in der Ausgabe. Dabei handelt es sich um den vollqualifizierten Registrierungsnamen (nur Kleinbuchstaben). Für den restlichen Teil dieser Schnellstartanleitung wird `<acrName>` als Platzhalter für den Namen der Containerregistrierung verwendet.
 
-## <a name="log-in-to-acr"></a>Anmelden bei ACR
+## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
-Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Verwenden Sie hierzu den Befehl [az acr login][az-acr-login].
+Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der Registrierung anmelden. Verwenden Sie hierzu den Befehl [az acr login][az-acr-login].
 
 ```azurecli
 az acr login --name <acrName>
@@ -80,35 +80,11 @@ az acr login --name <acrName>
 
 Der Befehl gibt nach Abschluss die Meldung `Login Succeeded` zurück.
 
-## <a name="push-image-to-acr"></a>Übertragen eines Images an ACR mithilfe von Push
-
-Um ein Image mithilfe von Push an Ihre Azure Container Registry-Instanz übertragen zu können, benötigen Sie zunächst ein Image. Wenn Sie über keine lokalen Containerimages verfügen, führen Sie den folgenden Befehl aus, um ein vorhandenes Image aus dem Docker-Hub abzurufen.
-
-```bash
-docker pull microsoft/aci-helloworld
-```
-
-Bevor Sie ein Image mithilfe von Push in Ihre Registrierung übertragen können, müssen Sie es mit dem vollqualifizierten Namen Ihres ACR-Anmeldeservers markieren. Führen Sie den folgenden Befehl aus, um den vollständigen Anmeldeservernamen der ACR-Instanz abzurufen.
-
-```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-Markieren Sie das Image mithilfe des Befehls [docker tag][docker-tag]. Ersetzen Sie `<acrLoginServer>` durch den Anmeldeservernamen Ihrer ACR-Instanz.
-
-```bash
-docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
-```
-
-Nun können Sie das Image mit [docker push][docker-push] mithilfe von Push an die ACR-Instanz übertragen. Ersetzen Sie `<acrLoginServer>` durch den Anmeldeservernamen Ihrer ACR-Instanz.
-
-```bash
-docker push <acrLoginServer>/aci-helloworld:v1
-```
+[!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
 ## <a name="list-container-images"></a>Auflisten von Containerimages
 
-Das folgende Beispiel listet die Repositorys in einer Registrierung auf:
+Im folgenden Beispiel werden die Repositorys in Ihrer Registrierung aufgelistet:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -116,69 +92,31 @@ az acr repository list --name <acrName> --output table
 
 Ausgabe:
 
-```bash
+```
 Result
 ----------------
-aci-helloworld
+busybox
 ```
 
-Das folgende Beispiel listet die Tags des Repositorys **aci-helloworld** auf:
+Das folgende Beispiel listet die Tags des Repositorys **busybox** auf:
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository aci-helloworld --output table
+az acr repository show-tags --name <acrName> --repository busybox --output table
 ```
 
 Ausgabe:
 
-```bash
+```
 Result
 --------
 v1
 ```
 
-## <a name="deploy-image-to-aci"></a>Bereitstellen eines Images für ACI
-
-Um eine Containerinstanz aus der von Ihnen erstellten Registrierung bereitzustellen, müssen Sie bei der Bereitstellung die Anmeldeinformationen für die Registrierung angeben. In Produktionsszenarien sollten Sie einen [Dienstprinzipal][container-registry-auth-aci] für den Zugriff auf die Containerregistrierung verwenden. Aktivieren Sie der Einfachheit halber in dieser Schnellstartanleitung den Administratorbenutzer in Ihrer Registrierung aber mit dem folgenden Befehl:
-
-```azurecli
-az acr update --name <acrName> --admin-enabled true
-```
-
-Nachdem der Administrator aktiviert wurde, ist der Benutzername mit Ihrem Registrierungsnamen identisch, und Sie können das Kennwort mit dem folgenden Befehl abrufen:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
-Führen Sie den folgenden Befehl aus, um Ihr Containerimage mit einem CPU-Kern und 1 GB Arbeitsspeicher bereitzustellen. Ersetzen Sie `<acrName>`, `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den obigen Befehlen abgerufen haben.
-
-```azurecli
-az container create --resource-group myResourceGroup --name acr-quickstart --image <acrLoginServer>/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
-```
-
-Sie sollten von Azure Resource Manager eine erste Antwort mit Details zu Ihrem Container erhalten. Wiederholen Sie den Befehl [az container show][az-container-show], um den Status Ihres Containers zu überwachen und seine Ausführung zu verfolgen. Dieser Vorgang dauert normalerweise weniger als eine Minute.
-
-```azurecli
-az container show --resource-group myResourceGroup --name acr-quickstart --query instanceView.state
-```
-
-## <a name="view-the-application"></a>Anzeigen der Anwendung
-
-Nachdem die Bereitstellung für ACI erfolgreich abgeschlossen wurde, können Sie den FQDN des Containers mit dem Befehl [az container show][az-container-show] abrufen:
-
-```azurecli
-az container show --resource-group myResourceGroup --name acr-quickstart --query ipAddress.fqdn
-```
-
-Beispielausgabe: `"aci-demo.eastus.azurecontainer.io"`
-
-Zum Anzeigen der ausgeführten Anwendung navigieren Sie in Ihrem bevorzugten Browser zur öffentlichen IP-Adresse.
-
-![„Hello World“-Anwendung im Browser][aci-app-browser]
+[!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe, die ACR-Instanz und alle Containerimages nicht mehr benötigen, können Sie sie mit dem Befehl [az group delete][az-group-delete] entfernen.
+Wenn Sie die Ressourcengruppe, die Containerregistrierung und die darin gespeicherten Containerimages nicht mehr benötigen, können Sie sie mit dem Befehl [az group delete][az-group-delete] entfernen.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -186,20 +124,18 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz mit der Azure CLI erstellt, ein Containerimage per Pushvorgang in die Registrierung übertragen und eine Instanz davon über Azure Container Instances gestartet. Fahren Sie mit dem Azure Container Instances-Tutorial fort, um eingehendere Informationen zu ACI zu erhalten.
+In dieser Schnellstartanleitung haben Sie mit der Azure CLI eine Azure Container Registry-Instanz erstellt, ein Containerimage per Push an die Registrierung übertragen und das Image per Pull aus der Registrierung abgerufen und ausgeführt. Fahren Sie mit den Azure Container Registry-Tutorials fort, um eingehendere Informationen zu ACR zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Azure Container Instances-Tutorial][container-instances-tutorial-prepare-app]
-
-<!-- IMAGES> -->
-[aci-app-browser]: ../container-instances/media/container-instances-quickstart/aci-app-browser.png
-
+> [Tutorials zu Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
 [docker-mac]: https://docs.docker.com/docker-for-mac/
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-pull]: https://docs.docker.com/engine/reference/commandline/pull/
+[docker-rmi]: https://docs.docker.com/engine/reference/commandline/rmi/
+[docker-run]: https://docs.docker.com/engine/reference/commandline/run/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
@@ -209,7 +145,5 @@ In dieser Schnellstartanleitung haben Sie eine Azure Container Registry-Instanz 
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
-[az-container-show]: /cli/azure/container#az-container-show
-[container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
+[container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
-[container-registry-auth-aci]: container-registry-auth-aci.md

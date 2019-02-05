@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie lokale virtuelle VMware-Com
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/11/2019
+ms.date: 01/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e922e9e7741eb3338503e02cd0ca78387e32b1f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 58a4f60a5ef01f8f2757aeb04c2dd7165d68179a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824098"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298720"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **VMware:** Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen.
+- **VMware:** Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit Version 5.5 oder höher, um die Collector-VM bereitzustellen.
 - **vCenter Server-Konto:** Sie benötigen ein schreibgeschütztes Konto, um auf vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
 - **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
 
@@ -102,6 +102,14 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
 3. Der generierte Hash muss folgenden Einstellungen entsprechen.
 
 #### <a name="continuous-discovery"></a>Kontinuierliche Ermittlung
+
+  Für OVA-Version 1.0.10.11
+
+  **Algorithmus** | **Hashwert**
+    --- | ---
+    MD5 | 5f6b199d8272428ccfa23543b0b5f600
+    SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
+    SHA256 | 85da50a21a7a6ca684418a87ccc1dd4f8aab30152c438a17b216ec401ebb3a21
 
   Für OVA-Version 1.0.10.9
 

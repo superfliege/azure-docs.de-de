@@ -14,16 +14,17 @@ ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: a2dea792db39c753d0ea720c8e610a399401315f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: fd7dd06692e20eb0e7cc02af8d2f36c4dad8b597
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840570"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251927"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Schnellstart: Erstellen eines virtuellen Linux-Servercomputers mithilfe von PowerShell in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können einen virtuellen Computer mit Ubuntu Server 16.04 LTS mit Azure Stack PowerShell erstellen. Befolgen Sie die Schritte in diesem Artikel zum Erstellen und Verwenden eines virtuellen Computers.  In diesem Artikel führen Sie auch die folgenden Schritte aus:
 

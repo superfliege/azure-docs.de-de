@@ -7,13 +7,13 @@ ms.service: storage
 ms.author: jamesbak
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0bb2e9a91890f88466b27439b55d516848fd2270
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 4d0ff4941405f09c2231b9cde16f4e75e2b88b4b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438827"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251672"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -42,6 +42,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 > * Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](../../sql-data-warehouse/create-data-warehouse-portal.md).
 > * Erstellen Sie einen Datenbank-Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 > * Erstellen Sie ein Azure Data Lake Storage Gen2-Konto. Informationen hierzu finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](data-lake-storage-quickstart-create-account.md).
+> * Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Blob Storage-Kontos](storage-quickstart-blobs-portal.md).
 > * Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
@@ -145,17 +146,17 @@ In diesem Abschnitt erstellen Sie ein Notebook im Azure Databricks-Arbeitsbereic
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
-   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
-   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    ```
 
-5. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte im Abschnitt [Bereithalten der Speicherkontokonfiguration](#config) notiert haben. Ersetzen Sie den Platzhalterwert `storage-account-name` durch den Namen Ihres Speicherkontos.
+6. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte im Abschnitt [Bereithalten der Speicherkontokonfiguration](#config) notiert haben. Ersetzen Sie den Platzhalterwert `storage-account-name` durch den Namen Ihres Speicherkontos.
 
-6. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
+7. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
-7. Nun können Sie die JSON-Beispieldatei als Datenrahmen in Azure Databricks laden. Fügen Sie den folgenden Code in eine neue Zelle ein. Ersetzen Sie die in Klammern angegebenen Platzhalter durch Ihre Werte.
+8. Nun können Sie die JSON-Beispieldatei als Datenrahmen in Azure Databricks laden. Fügen Sie den folgenden Code in eine neue Zelle ein. Ersetzen Sie die in Klammern angegebenen Platzhalter durch Ihre Werte.
 
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
@@ -165,9 +166,9 @@ In diesem Abschnitt erstellen Sie ein Notebook im Azure Databricks-Arbeitsbereic
 
    * Ersetzen Sie den Platzhalter `storage-account-name` durch den Namen Ihres Speicherkontos.
 
-8. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
+9. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
-9. Führen Sie den folgenden Code aus, um den Inhalt des Datenrahmens anzuzeigen:
+10. Führen Sie den folgenden Code aus, um den Inhalt des Datenrahmens anzuzeigen:
 
     ```scala
     df.show()
@@ -267,37 +268,37 @@ Die unformatierten Beispieldaten aus der Datei **small_radio_json.json** dienen 
 
 In diesem Abschnitt laden Sie die transformierten Daten in Azure SQL Data Warehouse hoch. Sie verwenden den Azure SQL Data Warehouse-Connector für Azure Databricks, um einen Datenrahmen direkt als Tabelle in eine SQL Data Warehouse-Instanz hochzuladen.
 
-Der SQL Date Warehouse-Connector verwendet Azure Blob Storage als temporären Speicher, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
+Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicher, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
 
 1. Geben Sie die Konfiguration für den Zugriff auf das Azure Storage-Konto über Azure Databricks an.
 
    ```scala
-   val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-   val fileSystemName = "<FILE_SYSTEM_NAME>"
-   val accessKey =  "<ACCESS_KEY>"
+   val blobStorage = "<blob-storage-account-name>.blob.core.windows.net"
+   val blobContainer = "<blob-container-name>"
+   val authenticationKey =  "<authentication-key>"
    ```
 
 2. Geben Sie einen temporären Ordner für die Verschiebung von Daten zwischen Azure Databricks und Azure SQL Data Warehouse an.
 
    ```scala
-   val tempDir = "abfss://" + fileSystemName + "@" + storageURI +"/tempDirs"
+   val tempDir = "wasbs://" + blob-container-name + "@" + blobStorage +"/tempDirs"
    ```
 
 3. Führen Sie den folgenden Codeausschnitt aus, um Azure Blob-Speicherzugriffsschlüssel in der Konfiguration zu speichern. Dadurch wird sichergestellt, dass Sie den Zugriffsschlüssel im Notebook nicht als Klartext speichern müssen.
 
    ```scala
-   val acntInfo = "fs.azure.account.key."+ storageURI
-   sc.hadoopConfiguration.set(acntInfo, accessKey)
+   val acntInfo = "fs.azure.account.key."+ blobStorage
+   sc.hadoopConfiguration.set(acntInfo, authenticationKey)
    ```
 
 4. Geben Sie die Werte für die Verbindungsherstellung mit der Azure SQL Data Warehouse-Instanz an. Im Rahmen der Vorbereitung muss bereits eine SQL Data Warehouse-Instanz erstellt worden sein.
 
    ```scala
    //SQL Data Warehouse related settings
-   val dwDatabase = "<DATABASE NAME>"
-   val dwServer = "<DATABASE SERVER NAME>" 
-   val dwUser = "<USER NAME>"
-   val dwPass = "<PASSWORD>"
+   val dwDatabase = "<database-name>"
+   val dwServer = "<database-server-name>"
+   val dwUser = "<user-name>"
+   val dwPass = "<password>"
    val dwJdbcPort =  "1433"
    val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
    val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"

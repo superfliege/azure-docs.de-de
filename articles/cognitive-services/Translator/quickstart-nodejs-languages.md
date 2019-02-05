@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 2d87173384a171d6b96ffa52c1d0bf80069a34c2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 71af575273b7299979679fa149c4960143b2b221
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250664"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208345"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste mit unterstützten Sprachen per Node.js
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 Mit der über das Anforderungsmodul zur Verfügung gestellten `request()`-Methode können Sie die HTTP-Methode, die URL, Anforderungsparameter und den JSON-Text als `options`-Objekt übergeben. In diesem Codeausschnitt wird die Anforderung konfiguriert:
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```javascript
 let options = {
@@ -213,7 +213,7 @@ Wenn Sie den Abonnementschlüssel in Ihrem Programm hartcodiert haben, entfernen
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Sie können die Textübersetzungs-API nicht nur für die Spracherkennung, sondern auch für folgende Zwecke verwenden:
+Sie können die Textübersetzungs-API nicht nur für die Spracherkennung, sondern auch für Folgendes verwenden:
 
 * [Übersetzen von Text](quickstart-nodejs-translate.md)
 * [Transliteration von Text](quickstart-nodejs-transliterate.md)

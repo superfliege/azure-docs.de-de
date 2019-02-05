@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: fa75666c63d666f1358c1d6bf2f4b18b9eb7a813
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298720"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103325"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform (Vorschauversion)
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform (Vorschauversion)
 
 Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerzielle Clouddienste oder Branchenanwendungen entwickeln, die in die Microsoft Identity Platform integriert werden können, um eine sichere Anmeldung und Autorisierung für ihre Dienste bereitzustellen.
 

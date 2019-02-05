@@ -8,20 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/28/2018
+ms.date: 1/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3e5e364e9c3327e9d666a9a3096573267d0e1983
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0aa15c34e6fd6c7952a457d36e072bc91d4d5dab
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727607"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102171"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App
 
@@ -107,7 +107,7 @@ Für diese Schnellstartanleitung ist [.NET Core 2.1](https://www.microsoft.com/n
     
 #### <a name="step-4-admin-consent"></a>Schritt 4: Administratorzustimmung
 
-Für jede *nur für eine App gültige Berechtigung* ist eine Administratoreinwilligung erforderlich. Dies bedeutet, dass ein globaler Administrator Ihres Verzeichnisses die Einwilligung zu Ihrer Anwendung erteilen muss. Wählen Sie je nach Rolle eine der unten angegebenen Optionen aus:
+Wenn Sie zu diesem Zeitpunkt versuchen, die Anwendung auszuführen, wird der Fehler *HTTP 403 – Verboten* angezeigt: `Insufficient privileges to complete the operation`. Der Grund dafür ist, dass für eine *nur für die App geltende Berechtigung* eine Administratoreinwilligung erforderlich ist. Dies bedeutet, dass ein globaler Administrator Ihres Verzeichnisses die Einwilligung zu Ihrer Anwendung erteilen muss. Wählen Sie je nach Rolle eine der unten angegebenen Optionen aus:
 
 ##### <a name="global-tenant-administrator"></a>Globaler Mandantenadministrator
 
@@ -149,6 +149,9 @@ dotnet run
 
 Es sollte eine Liste mit Benutzern in Ihrem Azure AD-Verzeichnis angezeigt werden.
 
+> [!IMPORTANT]
+> Für die Anwendung in dieser Schnellstartanleitung wird ein Clientgeheimnis verwendet, um sich selbst als vertraulicher Client zu identifizieren. Da das Clientgeheimnis Ihren Projektdateien als Nur-Text hinzugefügt wird, wird aus Sicherheitsgründen empfohlen, ein Zertifikat anstelle eines Clientgeheimnisses zu verwenden, bevor die Anwendung als Produktionsanwendung eingestuft wird. Weitere Informationen zur Verwendung eines Zertifikats finden Sie im GitHub-Repository für dieses Beispiel in [diesen Anweisungen](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates).
+
 ## <a name="more-information"></a>Weitere Informationen
 
 ### <a name="msalnet"></a>MSAL.NET
@@ -158,7 +161,13 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
  Sie können MSAL.NET installieren, indem Sie den folgenden Befehl in der **Paket-Manager-Konsole** von Visual Studio ausführen:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
+```
+
+Wenn Sie nicht Visual Studio verwenden, können Sie alternativ den folgenden Befehl ausführen, um Ihrem Projekt MSAL hinzuzufügen:
+
+```console
+dotnet add package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>MSAL-Initialisierung

@@ -1,6 +1,6 @@
 ---
-title: Sichern einer Einzeldatenbank in einer Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Methoden und Funktionen zum Sichern einer Einzeldatenbank in Ihrer Azure SQL-Datenbank.
+title: Sichern einer eigenständigen oder in einem Pool zusammengefassten Datenbank in einer Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Hier erfahren Sie mehr über die Methoden und Funktionen zum Sichern einer eigenständigen oder in einem Pool zusammengefassten Datenbank in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/18/2018
-ms.openlocfilehash: e0311174303fc91767d3f99e6db05927b25aea05
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/30/2019
+ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051661"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461201"
 ---
-# <a name="tutorial-secure-a-single-database"></a>Tutorial: Schützen einer Einzeldatenbank
+# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Tutorial: Sichern einer eigenständigen oder in einem Pool zusammengefassten Datenbank
 
-Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer einzelnen SQL-Datenbank zu schützen:
+Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer eigenständigen oder in einem Pool zusammengefassten Datenbank zu schützen:
 
 - Beschränken des Zugriffs mithilfe von Firewallregeln
 - Verwenden von Authentifizierungsmechanismen mit Identitätsnachweis
@@ -35,7 +35,7 @@ Die Datenbanksicherheit lässt sich mit wenigen einfachen Schritten verbessern. 
 > - Erstellen von Firewallregeln auf Server- und Datenbankebene
 > - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
 > - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
-> - Aktivieren von Sicherheitsfeatures (beispielsweise Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung)
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
 
 Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](sql-database-security-overview.md).
 
@@ -45,11 +45,11 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL-Server und -Datenbank
-    - Erstellen Sie sie über das [Azure-Portal](sql-database-get-started-portal.md), mithilfe der [Befehlszeilenschnittstelle](sql-database-cli-samples.md) oder mithilfe von [PowerShell](sql-database-powershell-samples.md).
+  - Erstellen Sie sie über das [Azure-Portal](sql-database-get-started-portal.md), mithilfe der [Befehlszeilenschnittstelle](sql-database-cli-samples.md) oder mithilfe von [PowerShell](sql-database-powershell-samples.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Für alle Schritte in diesem Tutorial ist eine Anmeldung beim [Azure-Portal](https://portal.azure.com/) erforderlich.
 
@@ -62,9 +62,9 @@ Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste 
 > [!NOTE]
 > SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihr Administrator den Port 1433 öffnet.
 
-### <a name="set-up-server-level-firewall-rules"></a>Einrichten von Firewallregeln auf Serverebene
+### <a name="set-up-sql-database-server-firewall-rules"></a>Einrichten von Firewallregeln für SQL-Datenbankserver
 
-Firewallregeln auf Serverebene wirken sich auf alle Datenbanken auf dem gleichen logischen Server aus.
+Firewallregeln auf Serverebene gelten für alle Datenbanken auf dem gleichen SQL-Datenbankserver.
 
 So richten Sie eine Firewallregel auf Serverebene ein:
 
@@ -88,7 +88,7 @@ Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit
 > [!IMPORTANT]
 > Standardmäßig ist der Zugriff durch die SQL-Datenbankfirewall für alle Azure-Dienste aktiviert (unter **Zugriff auf Azure-Dienste erlauben**). Wählen Sie **AUS** aus, um den Zugriff für alle Azure-Dienste zu deaktivieren.
 
-### <a name="setup-database-level-firewall-rules"></a>Einrichten von Firewallregeln auf Datenbankebene
+### <a name="setup-database-firewall-rules"></a>Einrichten von Firewallregeln für eine Datenbank
 
 Firewallregeln auf Datenbankebene gelten nur für einzelne Datenbanken. Diese Regeln sind portabel und bleiben bei einem Serverfailover für die Datenbank erhalten. Firewallregeln auf Datenbankebene können nur mithilfe von T-SQL-Anweisungen (Transact-SQL) konfiguriert werden, und es muss bereits eine Firewallregel auf Serverebene konfiguriert worden sein.
 
@@ -233,28 +233,28 @@ So kopieren Sie eine sichere Verbindungszeichenfolge:
 
 Azure SQL-Datenbank bietet Sicherheitsfeatures, die über das Azure-Portal zur Verfügung stehen. Diese Features sind sowohl für die Datenbank als auch für den Server verfügbar (mit Ausnahme der Datenmaskierung, die nur für die Datenbank zur Verfügung steht). Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure SQL-Datenbank](sql-advanced-threat-protection.md), [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md), [Dynamische Datenmaskierung für SQL-Datenbank](sql-database-dynamic-data-masking-get-started.md) und [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](transparent-data-encryption-azure-sql.md).
 
-### <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
+### <a name="advanced-data-security"></a>Advanced Data Security
 
-Das Advanced Threat Protection-Feature erkennt potenzielle Bedrohungen in Echtzeit und stellt Sicherheitswarnungen zu anomalen Aktivitäten bereit. Benutzer können diese verdächtigen Ereignisse mithilfe des Überwachungsfeatures untersuchen und so ermitteln, ob es sich bei dem Ereignis um einen Zugriffsversuch, um eine Verletzung der Datensicherheit oder um einen Missbrauch von Daten in der Datenbank handelt. Benutzern stehen zudem eine Sicherheitsübersicht mit Sicherheitsrisikobewertung sowie das Tool zur Datenermittlung und -klassifizierung zur Verfügung.
+Das Advanced Data Security-Feature erkennt potenzielle Bedrohungen in Echtzeit und stellt Sicherheitswarnungen zu anomalen Aktivitäten bereit. Benutzer können diese verdächtigen Ereignisse mithilfe des Überwachungsfeatures untersuchen und so ermitteln, ob es sich bei dem Ereignis um einen Zugriffsversuch, um eine Verletzung der Datensicherheit oder um einen Missbrauch von Daten in der Datenbank handelt. Benutzern stehen zudem eine Sicherheitsübersicht mit Sicherheitsrisikobewertung sowie das Tool zur Datenermittlung und -klassifizierung zur Verfügung.
 
 > [!NOTE]
 > Ein Bespiel für eine Bedrohung ist die Einschleusung von SQL-Befehlen. Dabei schleusen Angreifer schädliche SQL-Befehle in Eingaben von Anwendungen ein. Dies kann dazu führen, dass die Anwendung unwissentlich die schädlichen SQL-Befehle ausführt und Angreifern Zugriff auf die Datenbank gewährt, die dann die darin enthaltenen Daten entwenden oder manipulieren können.
 
-So aktivieren Sie den Bedrohungsschutz:
+So aktivieren Sie Advanced Data Security:
 
 1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **SQL-Datenbanken** und anschließend auf der Seite **SQL-Datenbanken** Ihre Datenbank aus.
 
 1. Wählen Sie auf der Seite **Übersicht** den Link **Servername** aus. Die Datenbankserverseite wird geöffnet.
 
-1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Advanced Threat Protection** aus.
+1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Advanced Data Security** aus.
 
-    1. Wählen Sie unter **Advanced Threat Protection** die Option **EIN** aus, um das Feature zu aktivieren. Klicken Sie dann auf **Speichern**.
+    1. Wählen Sie unter **Advanced Data Security** die Option **EIN** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
 
     ![Navigationsbereich](./media/sql-database-security-tutorial/threat-settings.png)
 
     Sie können auch E-Mail-Adressen für den Empfang von Sicherheitswarnungen sowie Speicherdetails und Bedrohungserkennungstypen konfigurieren.
 
-1. Kehren Sie zur Seite **SQL-Datenbanken** Ihrer Datenbank zurück, und wählen Sie im Abschnitt **Sicherheit** die Option **Advanced Threat Protection** aus. Hier finden Sie verschiedene Sicherheitsindikatoren für die Datenbank.
+1. Kehren Sie zur Seite **SQL-Datenbanken** Ihrer Datenbank zurück, und wählen Sie im Abschnitt **Sicherheit** die Option **Advanced Data Security** aus. Hier finden Sie verschiedene Sicherheitsindikatoren für die Datenbank.
 
     ![Bedrohungsstatus](./media/sql-database-security-tutorial/threat-status.png)
 
@@ -344,7 +344,7 @@ In diesem Tutorial haben Sie gelernt, wie Sie mit wenigen einfachen Schritten di
 > - Erstellen von Firewallregeln auf Server- und Datenbankebene
 > - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
 > - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
-> - Aktivieren von Sicherheitsfeatures (beispielsweise Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung)
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine geografische Verteilung implementieren.
 

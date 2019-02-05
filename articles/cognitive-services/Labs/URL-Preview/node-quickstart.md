@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: „Projekt: URL-Vorschau“, Node.js'
+title: 'Schnellstart: Projekt: URL-Vorschau, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Hier erhalten Sie Informationen zu den ersten Schritten mit URL Preview in Microsoft Cognitive Services in Azure.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 3367b39333c9d7334bc56b3acdf00453cc9705c0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 33bc6cd74dc0dd61f727a7ebcbbfc1d0bb85506f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465048"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209076"
 ---
 # <a name="quickstart-url-preview-with-nodejs"></a>Schnellstart: URL-Vorschau mit Node.js 
 
@@ -37,7 +37,7 @@ Er wird in den folgenden Schritten implementiert:
 
 Der vollständige Code für diese Demo sieht wie folgt aus:
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -83,7 +83,7 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [C#-Beispielcode](csharp.md)

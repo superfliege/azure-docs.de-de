@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716411"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297088"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -293,7 +293,7 @@ Speichern Sie Ihre Einstellungen, indem Sie auf **PUT** klicken.
 
 Ihre Apps sind nun konfiguriert. Das Front-End kann jetzt mit einem geeigneten Zugriffstoken auf das Back-End zugreifen.
 
-Informationen dazu, wie Sie dies für andere Anbieter konfigurieren, finden Sie unter [Refresh access tokens](app-service-authentication-how-to.md#refresh-access-tokens) (Aktualisieren von Zugriffstoken).
+Informationen dazu, wie Sie dies für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>Sicheres Aufrufen der API aus Servercode
 
@@ -417,7 +417,7 @@ Glückwunsch! Ihr Clientcode greift jetzt im Namen des authentifizierten Benutze
 
 ## <a name="when-access-tokens-expire"></a>Ablauf von Zugriffstoken
 
-Das Zugriffstoken läuft nach einiger Zeit ab. Informationen dazu, wie Sie Zugriffstoken aktualisieren, ohne dass sich Benutzer erneut bei Ihrer App authentifizieren müssen, finden Sie unter [Anpassen der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-access-tokens).
+Das Zugriffstoken läuft nach einiger Zeit ab. Informationen dazu, wie Sie Zugriffstoken aktualisieren, ohne dass sich Benutzer erneut bei Ihrer App authentifizieren müssen, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

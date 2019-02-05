@@ -6,20 +6,20 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: f233efc93fa07cc7fc7c904336f01348f4da3f82
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 488b97074d74650ecf5602d25e2a90a1998e5585
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554519"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883873"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen in den Azure Digital Twins-Gebäudebereichen mit Time Series Insights
 
-Nachdem Sie Ihre Azure Digital Twins-Instanz sowie Ihre Gebäudebereiche bereitgestellt und die benutzerdefinierte Funktion zum Überwachen bestimmter Bedingungen implementiert haben, können Sie die Ereignisse und Daten aus den Gebäudebereichen analysieren, um Trends und Abweichungen zu erkennen. 
+Nachdem Sie Ihre Azure Digital Twins-Instanz sowie Ihre Gebäudebereiche bereitgestellt und die benutzerdefinierte Funktion zum Überwachen bestimmter Bedingungen implementiert haben, können Sie die Ereignisse und Daten aus den Gebäudebereichen analysieren, um Trends und Abweichungen zu erkennen.
 
-Im [ersten Tutorial](tutorial-facilities-setup.md) haben Sie den Raumgraphen eines imaginären Gebäudes mit einem Raum mit Bewegungs-, Kohlendioxid- und Temperatursensoren konfiguriert. Im [zweiten Tutorial](tutorial-facilities-udf.md) haben Sie Ihren Graphen und eine benutzerdefinierte Funktion bereitgestellt. Die Funktion überwacht die Sensorwerte und löst Benachrichtigungen aus, wenn die richtigen Bedingungen erfüllt sind, d.h. wenn der Raum leer ist und die Temperatur- und Kohlendioxidwerte normal sind. 
+Im [ersten Tutorial](tutorial-facilities-setup.md) haben Sie den Raumgraphen eines imaginären Gebäudes mit einem Raum mit Bewegungs-, Kohlendioxid- und Temperatursensoren konfiguriert. Im [zweiten Tutorial](tutorial-facilities-udf.md) haben Sie Ihren Graphen und eine benutzerdefinierte Funktion bereitgestellt. Die Funktion überwacht die Sensorwerte und löst Benachrichtigungen aus, wenn die richtigen Bedingungen erfüllt sind, d.h. wenn der Raum leer ist und die Temperatur- und Kohlendioxidwerte normal sind.
 
 In diesem Tutorial erfahren Sie, wie Sie die Benachrichtigungen und Daten aus Ihrem Azure Digital Twins-Setup in Azure Time Series Insights integrieren. Sie können die Sensorwerte dann im Zeitverlauf visualisieren. Sie können nach Trends suchen, beispielsweise welcher Raum am häufigsten genutzt wird und zu welcher Tageszeit der Raum am häufigsten belegt ist. Sie können auch Abweichungen erkennen, beispielsweise in welchen Räumen es wärmer und die Luftqualität schlecht ist oder ob ein Bereich im Gebäude durchgängig hohe Temperaturwerte meldet, die auf eine defekte Klimaanlage hinweisen.
 
@@ -32,43 +32,44 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Tutorial wird vorausgesetzt, dass Sie das Azure Digital Twins-Setup [konfiguriert](tutorial-facilities-setup.md) and [bereitgestellt](tutorial-facilities-udf.md) haben. Stellen Sie sicher, dass Sie über Folgendes verfügen, bevor Sie fortfahren:
+
 - Ein [Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine aktive Instanz von Azure Digital Twins.
 - Die [C#-Beispiele für Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp) (auf den Arbeitscomputer heruntergeladen und extrahiert).
-- [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer zum Ausführen des Beispiels. Führen Sie `dotnet --version` aus, um zu überprüfen, ob die richtige Version installiert ist. 
-
+- [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer zum Ausführen des Beispiels. Führen Sie `dotnet --version` aus, um zu überprüfen, ob die richtige Version installiert ist.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Streamen von Daten mithilfe von Event Hubs
+
 Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine Pipeline zum Streamen Ihrer Daten erstellen. In diesem Abschnitt wird erläutert, wie Sie den Event Hub als Konnektor zwischen Ihren Azure Digital Twins- und Time Series Insights-Instanzen erstellen.
 
 ### <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie im linken Bereich **Ressource erstellen**. 
+1. Wählen Sie im linken Bereich **Ressource erstellen**.
 
 1. Suchen Sie nach der Option **Event Hubs**, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
 
-1. Geben Sie einen **Namen** für den Event Hubs-Namespace ein. Wählen Sie unter **Tarif** die Option **Standard** sowie Ihr **Abonnement**, die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, sowie den **Standort** aus. Klicken Sie auf **Erstellen**. 
+1. Geben Sie einen **Namen** für den Event Hubs-Namespace ein. Wählen Sie unter **Tarif** die Option **Standard** sowie Ihr **Abonnement**, die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, sowie den **Standort** aus. Klicken Sie auf **Erstellen**.
 
 1. Wählen Sie in der Event Hubs-Namespacebereitstellung unter **RESSOURCE** den Namespace aus.
 
     ![Event Hubs-Namespace nach der Bereitstellung](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
-
-1. Wählen Sie oben im Bereich **Übersicht** des Event Hubs-Namespace die Schaltfläche **Event Hub** aus. 
+1. Wählen Sie oben im Bereich **Übersicht** des Event Hubs-Namespace die Schaltfläche **Event Hub** aus.
     ![Schaltfläche „Event Hub“](./media/tutorial-facilities-analyze/create-event-hub.png)
 
-1. Geben Sie einen **Namen** für den Event Hub ein, und wählen Sie **Erstellen** aus. 
+1. Geben Sie einen **Namen** für den Event Hub ein, und wählen Sie **Erstellen** aus.
 
    Nach der Bereitstellung wird der Event Hub im Bereich **Event Hubs** des Event Hubs-Namespace mit dem Status **Aktiv** angezeigt. Wählen Sie diesen Event Hub aus, um den Bereich **Übersicht** zu öffnen.
 
 1. Wählen Sie im oberen Bereich die Schaltfläche **Consumergruppe**, und geben Sie einen Namen für die Consumergruppe ein, beispielsweise **tsievents**. Klicken Sie auf **Erstellen**.
+
     ![Event Hub-Consumergruppe](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
 
-   Nach der Erstellung wird die Consumergruppe in der Liste unten im Bereich **Übersicht** des Event Hubs angezeigt. 
+   Nach der Erstellung wird die Consumergruppe in der Liste unten im Bereich **Übersicht** des Event Hubs angezeigt.
 
-1. Öffnen Sie den Bereich **Freigegebene Zugriffsrichtlinien** für Ihren Event Hub, und wählen Sie die Schaltfläche **Hinzufügen** aus. Geben Sie als Richtlinienname **ManageSend** ein, vergewissern Sie sich, dass alle Kontrollkästchen aktiviert sind, und wählen Sie **Erstellen** aus. 
+1. Öffnen Sie den Bereich **Freigegebene Zugriffsrichtlinien** für Ihren Event Hub, und wählen Sie die Schaltfläche **Hinzufügen** aus. Geben Sie als Richtlinienname **ManageSend** ein, vergewissern Sie sich, dass alle Kontrollkästchen aktiviert sind, und wählen Sie **Erstellen** aus.
 
     ![Event Hub-Verbindungszeichenfolgen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
 
@@ -100,13 +101,13 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Ersetzen Sie die Platzhalter `Primary_connection_string_for_your_event_hub` durch den Wert von **Verbindungszeichenfolge – Primärschlüssel** für den Event Hub. Stellen Sie sicher, dass die Verbindungszeichenfolge das folgende Format aufweist:
 
-   ```
+   ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. Ersetzen Sie die Platzhalter `Secondary_connection_string_for_your_event_hub` durch den Wert von **Verbindungszeichenfolge – Sekundärschlüssel** für den Event Hub. Stellen Sie sicher, dass die Verbindungszeichenfolge das folgende Format aufweist: 
 
-   ```
+   ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
@@ -115,13 +116,12 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
     > [!IMPORTANT]
     > Geben Sie alle Werte ohne Anführungszeichen ein. Stellen Sie sicher, dass nach den Doppelpunkten in der YAML-Datei mindestens ein Leerzeichen vorhanden ist. Sie können den Inhalt der YAML-Datei auch mit einer beliebigen YAML-Onlinevalidierung überprüfen, beispielsweise mit [diesem Tool](https://onlineyamltools.com/validate-yaml).
 
-
 1. Speichern und schließen Sie die Datei. Führen Sie im Befehlsfenster den folgenden Befehl aus, und melden Sie sich mit Ihrem Azure-Konto an, wenn Sie dazu aufgefordert werden.
 
     ```cmd/sh
     dotnet run CreateEndpoints
     ```
-   
+
    Dieser Befehl erstellt zwei Endpunkte für Ihren Event Hub.
 
    ![Endpunkte für Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
@@ -165,12 +165,11 @@ Falls Sie sich nicht weiter mit Azure Digital Twins befassen möchten, können S
     > [!TIP]
     > Für den Fall, dass bei Ihnen Probleme beim Löschen der Digital Twins-Instanz aufgetreten sind, wurde ein Dienstupdate mit einer entsprechenden Korrektur bereitgestellt. Versuchen Sie erneut, die Instanz zu löschen.
 
-2. Löschen Sie ggf. die Beispielanwendungen auf Ihrem Arbeitscomputer. 
-
+2. Löschen Sie ggf. die Beispielanwendungen auf Ihrem Arbeitscomputer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel erfahren Sie mehr über Raumintelligenzgraphen und Objektmodelle in Azure Digital Twins. 
+Im nächsten Artikel erfahren Sie mehr über Raumintelligenzgraphen und Objektmodelle in Azure Digital Twins.
+
 > [!div class="nextstepaction"]
 > [Understanding Digital Twins object models and spatial intelligence graph](concepts-objectmodel-spatialgraph.md) (Grundlegendes zum Digital Twins-Objektmodell und zum Raumintelligenzgraphen)
-

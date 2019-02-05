@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: f86a86fd9858fcc6f0b78256da1e96effbcbe68c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.subservice: files
+ms.openlocfilehash: 931098d688e39490aa0aadaa8ade8405e5ba8a12
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944217"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452242"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit dem Azure Storage-Explorer beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -33,9 +33,9 @@ Sie können Storage-Explorer nicht verwenden, um neue Ressourcen zu erstellen. E
 ## <a name="connect-storage-explorer-to-azure-resources"></a>Herstellen einer Verbindung von Storage-Explorer mit Azure-Ressourcen
 Nach dem erstmaligen Starten von Storage-Explorer wird das Fenster **Microsoft Azure Storage-Explorer – Verbinden** angezeigt. Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Speicherkonten verbinden können: 
 
-- **Anmelden mit Ihrem Azure-Konto**: Sie können sich anmelden, indem Sie die Benutzeranmeldeinformationen für Ihre Organisation oder Ihr Microsoft-Konto verwenden. 
-- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto per Verbindungszeichenfolge oder SAS-Token**: Eine Verbindungszeichenfolge ist eine spezielle Zeichenfolge, die einen Speicherkontonamen und -schlüssel bzw. ein SAS-Token enthält. Mit dem Token greift Storage-Explorer direkt auf das Speicherkonto zu (anstelle der Anzeige aller Speicherkonten eines Azure-Kontos). Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto über einen Speicherkontonamen und -schlüssel**: Verwenden Sie den Speicherkontonamen und -schlüssel, um für Ihr Speicherkonto eine Verbindung mit Azure-Speicher herzustellen.
+- **Anmelden mit Ihrem Azure-Konto:** Sie können sich anmelden, indem Sie die Benutzeranmeldeinformationen für Ihre Organisation oder Ihr Microsoft-Konto verwenden. 
+- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto unter Verwendung einer Verbindungszeichenfolge oder eines SAS-Tokens:** Eine Verbindungszeichenfolge ist eine spezielle Zeichenfolge, die einen Speicherkontonamen und einen Speicherkontoschlüssel/ein SAS-Token enthält. Mit dem Token greift Storage-Explorer direkt auf das Speicherkonto zu (anstelle der Anzeige aller Speicherkonten eines Azure-Kontos). Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Herstellen einer Verbindung mit einem bestimmten Speicherkonto unter Verwendung eines Speicherkontonamens und -schlüssels:** Verwenden Sie den Speicherkontonamen und -schlüssel für Ihr Speicherkonto, um eine Verbindung mit Azure Storage herzustellen.
 
 Melden Sie sich für diese Schnellstartanleitung mit Ihrem Azure-Konto an. Wählen Sie **Azure-Konto hinzufügen** und dann **Anmelden**. Folgen Sie den Aufforderungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
 

@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen und Verwalten einer Azure-VM-Skalierungsgruppe | Mic
 description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine VM-Skalierungsgruppe erstellen und einige allgemeine Verwaltungsaufgaben ausführen, um beispielsweise eine Instanz zu starten und zu beenden oder die Kapazität der Skalierungsgruppe zu ändern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 263a2ddd1cf42348678488a02ed0b97a7ed1304c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466136"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179479"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:
@@ -51,7 +51,7 @@ Der Ressourcengruppenname wird im gesamten Tutorial beim Erstellen oder Ändern 
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Verwenden Sie zum Erstellen einer VM-Skalierungsgruppe den Befehl [az vmss create](/cli/azure/vmss#az_vmss_create). Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind:
+Verwenden Sie zum Erstellen einer VM-Skalierungsgruppe den Befehl [az vmss create](/cli/azure/vmss). Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind:
 
 ```azurecli-interactive
 az vmss create \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>Auflisten von Verbindungsinformationen
 Dem Lastenausgleich, der Datenverkehr an die einzelnen VM-Instanzen weiterleitet, wird eine öffentliche IP-Adresse zugewiesen. Standardmäßig werden dem Azure-Lastenausgleich, der den Datenverkehr von Remoteverbindungen über einen bestimmten Port an die einzelnen virtuellen Computer weiterleitet, Regeln für die Netzwerkadressübersetzung (Network Address Translation, NAT) hinzugefügt. Wenn Sie eine Verbindung mit den VM-Instanzen in einer Skalierungsgruppe herstellen möchten, erstellen Sie eine Remoteverbindung mit einer zugewiesenen öffentlichen IP-Adresse und Portnummer.
 
-Verwenden Sie [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info), um die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe aufzulisten:
+Verwenden Sie [az vmss list-instance-connection-info](/cli/azure/vmss), um die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe aufzulisten:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -192,7 +192,7 @@ Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU
 ### <a name="vm-instance-sizes"></a>VM-Instanzgrößen
 In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategorisiert:
 
-| Typ                     | Gängige Größen           |    BESCHREIBUNG       |
+| Type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
@@ -202,7 +202,7 @@ In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategoris
 | [Hohe Leistung](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. 
 
 ### <a name="find-available-vm-instance-sizes"></a>Suchen nach verfügbaren VM-Instanzgrößen
-Eine Liste mit verfügbaren VM-Instanzgrößen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes).
+Eine Liste mit verfügbaren VM-Instanzgrößen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ Die Ausgabe ähnelt dem folgenden verkürzten Beispiel, das die Ressourcen zeigt
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>Erstellen einer Skalierungsgruppe mit einer bestimmten VM-Instanzgröße
-Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurde für die VM-Instanzen die VM-Standard-SKU *Standard_D1_v2* angegeben. Auf der Grundlage der Ausgabe von [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) können Sie eine andere VM-Instanzgröße angeben. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Parameter `--vm-sku` erstellt, um die VM-Instanzgröße *Standard_F1* anzugeben. Da die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe einige Minuten dauert, müssen Sie die folgende Skalierungsgruppe nicht bereitstellen:
+Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurde für die VM-Instanzen die VM-Standard-SKU *Standard_D1_v2* angegeben. Auf der Grundlage der Ausgabe von [az vm list-sizes](/cli/azure/vm) können Sie eine andere VM-Instanzgröße angeben. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Parameter `--vm-sku` erstellt, um die VM-Instanzgröße *Standard_F1* anzugeben. Da die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe einige Minuten dauert, müssen Sie die folgende Skalierungsgruppe nicht bereitstellen:
 
 ```azurecli-interactive
 az vmss create \
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
-Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können [az vmss create](/cli/azure/vmss#az_vmss_create) zusammen mit dem Parameter `--instance-count` angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
+Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können [az vmss create](/cli/azure/vmss) zusammen mit dem Parameter `--instance-count` angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
 
 Die Anzahl von VM-Instanzen in der Skalierungsgruppe kann mit [az vmss scale](/cli/azure/vmss#az_vmss_scale) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
 

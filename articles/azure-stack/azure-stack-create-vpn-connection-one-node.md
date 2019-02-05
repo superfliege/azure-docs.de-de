@@ -15,13 +15,14 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: scottnap
+ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 65bf3d7eb84f4a4e6fe6d74bd08c41ba4d9dd637
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078901"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247220"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in unterschiedlichen Azure Stack Development Kit-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -35,7 +36,7 @@ Das folgende Diagramm zeigt die fertige Verbindungskonfiguration:
 ### <a name="before-you-begin"></a>Voraussetzungen
 Vergewissern Sie sich zum Durchführen der Verbindungskonfiguration zunächst, dass Sie über folgende Elemente verfügen:
 
-* Zwei Server und andere erforderliche Komponenten, welche die in [Schnellstart: Evaluieren des Azure Stack Development Kit](azure-stack-deploy-overview.md) beschriebenen Hardware-Anforderungen des Azure Stack Development Kits erfüllen. 
+* Zwei Server und andere erforderliche Komponenten, welche die in [Schnellstart: Evaluieren des Azure Stack Development Kit](azure-stack-deploy-overview.md). 
 * Das [Bereitstellungspaket für das Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/).
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Bereitstellen der Azure Stack Development Kit-Umgebungen
@@ -115,7 +116,7 @@ Ein Dienstadministrator kann sich als Mandant anmelden, um die Pläne, Angebote 
 6. Wählen Sie **OK**, um das Gatewaysubnetz zu erstellen.
 
 ### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
-1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**. 
+1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**. 
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Netzwerk** aus.
 3. Wählen Sie in der Liste mit den Netzwerkressourcen den Eintrag **Gateway des virtuellen Netzwerks** aus.
 4. Geben Sie **GW1** als **Name** ein.
@@ -160,7 +161,7 @@ Etwas allgemeiner betrachtet wird mit der Ressource des lokalen Netzwerkgateways
 ### <a name="create-a-vm"></a>Erstellen einer VM
 Zum Überprüfen der durch die VPN-Verbindung geleiteten Daten benötigen Sie die virtuellen Computer zum Senden und Empfangen von Daten in den einzelnen Azure Stack Development Kits. Erstellen Sie jetzt einen virtuellen Computer in POC1, und platzieren Sie ihn dann im VM-Subnetz Ihres virtuellen Netzwerks.
 
-1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**.
+1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**.
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Compute** aus.
 3. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2016 Datacenter Eval** aus.
 4. Geben Sie auf dem Blatt **Grundlagen** **VM01** als **Name** ein.
@@ -202,7 +203,7 @@ Ein Dienstadministrator kann sich als Mandant anmelden, um die Pläne, Angebote 
 6. Wählen Sie **OK**, um das Gatewaysubnetz zu erstellen.
 
 ### <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
-1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**.  
+1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**.  
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Netzwerk** aus.
 3. Wählen Sie in der Liste mit den Netzwerkressourcen den Eintrag **Gateway des virtuellen Netzwerks** aus.
 4. Geben Sie **GW2** als **Name** ein.
@@ -238,7 +239,7 @@ Ein Dienstadministrator kann sich als Mandant anmelden, um die Pläne, Angebote 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 Erstellen Sie jetzt einen virtuellen Computer in POC2, und platzieren Sie ihn dann im VM-Subnetz Ihres virtuellen Netzwerks.
 
-1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**.
+1. Wählen Sie im Azure-Portal die Option **+ Ressource erstellen**.
 2. Wechseln Sie zu **Marketplace**, und wählen Sie dann **Compute** aus.
 3. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2016 Datacenter Eval** aus.
 4. Geben Sie auf dem Blatt **Grundlagen** **VM02** als **Name** ein.

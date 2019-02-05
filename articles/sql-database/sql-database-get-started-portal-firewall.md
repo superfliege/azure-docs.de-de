@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/01/2018
-ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/25/2019
+ms.openlocfilehash: 589d3fa8c0ee8c8f374cd4f34f17401caa46d265
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462255"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer SQL-Datenbank-Firewallregel auf Serverebene mithilfe des Azure-Portals
 
@@ -57,7 +57,7 @@ Führen Sie die hier angegebenen Schritte zum Erstellen einer Firewallregel auf 
    > Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Wählen Sie auf dieser Seite die Option **AUS**, um dies für alle Azure-Dienste zu deaktivieren.
    >
 
-5. Wählen Sie **Speichern**aus. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
+5. Wählen Sie **Speichern** aus. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbankserver wird der Port 1433 geöffnet.
 
 6. Schließen Sie die Seite **Firewalleinstellungen**.
 
@@ -66,7 +66,6 @@ Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbank-Se
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Speichern Sie diese Ressourcen, um unter [Nächste Schritte](#next-steps) zu erfahren, wie Sie eine Verbindung herstellen und Ihre Datenbank mit verschiedenen Methoden abfragen. Sie können die Ressourcen, die Sie im Rahmen dieser Schnellstartanleitung erstellt haben, aber auch wieder löschen. Gehen Sie hierzu wie folgt vor:
-
 
 1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Ressourcengruppen** und dann **myResourceGroup**.
 2. Wählen Sie auf der Seite mit Ihrer Ressourcengruppe die Option **Löschen**, geben Sie im Textfeld **myResourceGroup** ein, und wählen Sie anschließend **Löschen**.

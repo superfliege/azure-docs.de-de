@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: Horizontales Hochskalieren von Computeressourcen in Azure SQL Data Warehouse – Azure-Portal | Microsoft-Dokumentation'
+title: 'Schnellstart: Erweitern von Computeressourcen in Azure SQL Data Warehouse – Azure-Portal | Microsoft-Dokumentation'
 description: Skalieren Sie Computeressourcen in Azure SQL Data Warehouse im Azure-Portal. Skalieren Sie Computeressourcen zentral hoch, um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1abafb011a445847757af3efb9e0ea4e6170408d
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 31ec1537a0075f486130a3bcf1017d35b47e499d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285532"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463649"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse im Azure-Portal
 

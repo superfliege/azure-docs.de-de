@@ -1,5 +1,5 @@
 ---
-title: Livestreaming mit Azure Media Services v3 | Microsoft-Dokumentation
+title: Livestreaming mit Azure Media Services v3 unter Verwendung von .NET | Microsoft-Dokumentation
 description: In diesem Tutorial wird Schritt für Schritt das Livestreaming mit Media Services v3 unter Verwendung von .NET Core erläutert.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 49598eb8579e20dd20ca63d11529ba106a510102
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811212"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170520"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Tutorial: Livestreaming mit Media Services v3 unter Verwendung von APIs
+# <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Tutorial: Livestreaming mit Media Services v3 unter Verwendung von .NET
 
-In Azure Media Services sind [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Live-Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) (StreamingEndpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET Core ein Liveereignis vom Typ **Pass-Through** erstellen. 
+In Azure Media Services sind [Liveereignisse](https://docs.microsoft.com/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Live-Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von .NET Core ein Liveereignis vom Typ **Pass-Through** erstellen. 
 
 > [!NOTE]
 > Lesen Sie [Live streaming with Azure Media Services v3](live-streaming-overview.md) (Livestreaming mit Azure Media Services v3), bevor Sie mit diesem Tutorial fortfahren. 
@@ -31,8 +31,7 @@ In Azure Media Services sind [LiveEvents](https://docs.microsoft.com/rest/api/me
 Das Tutorial veranschaulicht folgende Vorgehensweisen:    
 
 > [!div class="checklist"]
-> * Zugreifen auf die Media Services-API
-> * Konfigurieren der Beispiel-App
+> * Herunterladen der in diesem Thema beschriebenen Beispiel-App
 > * Untersuchen des Codes für Livestreaming
 > * Ansehen des Ereignisses mit [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) unter http://ampdemo.azureedge.net
 > * Bereinigen von Ressourcen
@@ -44,18 +43,12 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
 - Installieren Sie Visual Studio Code oder Visual Studio.
-- Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
-
-    Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
-
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
-
-    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+- Führen Sie die Schritte unter [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 - Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen einer Veranstaltung
 - Ein lokaler Liveencoder, der Signale von der Kamera in Datenströme konvertiert, die an den Media Services-Livestreamingdienst gesendet werden. Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.
 
-## <a name="download-the-sample"></a>Herunterladen des Beispiels
+## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
 Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeispiel enthält, indem Sie den folgenden Befehl verwenden:  
 
@@ -65,11 +58,10 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
 
 Das Livestreamingbeispiel befindet sich im Ordner [Live](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live/MediaV3LiveApp).
 
-> [!IMPORTANT]
-> In diesem Beispiel wird für alle Ressourcen jeweils ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. <br/>
-> Die aktiven Liveereignisse müssen unbedingt beendet werden. Andernfalls werden sie Ihnen **in Rechnung gestellt**.
+Öffnen Sie [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) im heruntergeladenen Projekt. Ersetzen Sie die Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](access-api-cli-how-to.md) abgerufen haben.
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+> [!IMPORTANT]
+> In diesem Beispiel wird für alle Ressourcen jeweils ein eindeutiges Suffix verwendet. Wenn Sie das Debuggen abbrechen oder die App beenden, ohne das Beispiel vollständig zu durchlaufen, werden in Ihrem Konto mehrere Liveereignisse generiert. <br/>Die aktiven Liveereignisse müssen unbedingt beendet werden. Andernfalls werden sie Ihnen **in Rechnung gestellt**.
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Untersuchen des Codes für Livestreaming
 
@@ -94,18 +86,9 @@ In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Throug
 Beim Erstellen des Liveereignisses können Sie unter anderem auch folgende Punkte angeben:
 
 * Media Services-Speicherort 
-* Streamingprotokoll für das Liveereignis (momentan unterstützte Protokolle: RTMP und Smooth Streaming)
-       
-    Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die dazugehörigen Liveausgaben (LiveOutputs) aktiv sind. Sollten Sie verschiedene Protokolle benötigen, können Sie für jedes Streamingprotokoll ein separates Liveereignis erstellen.  
-* IP-Einschränkungen für Erfassung und Vorschau. Sie können die IP-Adressen definieren, die zum Erfassen eines Videos für dieses Liveereignis zulässig sind. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.
-    
-    Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.
-    
-    Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern, CIDR-Adressbereich.
-
-* Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. 
-
-    Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Das bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis stattfindet. Sie müssen für die LiveEvent-Ressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
+* Streamingprotokoll für das Liveereignis (momentan unterstützte Protokolle: RTMP und Smooth Streaming).<br/>Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die dazugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, können Sie für jedes Streamingprotokoll ein separates Liveereignis erstellen.  
+* IP-Einschränkungen für Erfassung und Vorschau. Sie können die IP-Adressen definieren, die zum Erfassen eines Videos für dieses Liveereignis zulässig sind. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.<br/>Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.<br/>Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern, CIDR-Adressbereich.
+* Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. <br/>Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Das bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 
@@ -124,24 +107,28 @@ Verwenden Sie den Vorschauendpunkt (previewEndpoint), um eine Vorschau anzuzeige
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetPreviewURLs)]
 
-### <a name="create-and-manage-liveevents-and-liveoutputs"></a>Erstellen und Verwalten von Liveereignissen und Liveausgaben
+### <a name="create-and-manage-live-events-and-live-outputs"></a>Erstellen und Verwalten von Liveereignissen und Liveausgaben
 
-Wenn der Datenstrom an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, eine Liveausgabe und einen Streaminglocator (StreamingLocator) erstellen. Dadurch wird der Datenstrom archiviert und über den Streamingendpunkt für die Zuschauer verfügbar gemacht. 
+Wenn der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, eine Liveausgabe und einen Streaminglocator erstellen. Dadurch wird der Datenstrom archiviert und über den Streamingendpunkt für die Zuschauer verfügbar gemacht. 
 
 #### <a name="create-an-asset"></a>Erstellen eines Medienobjekts
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
-
 Erstellen Sie ein Medienobjekt, das von der Liveausgabe verwendet werden kann.
 
-#### <a name="create-a-liveoutput"></a>Erstellen einer Liveausgabe
+[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
+
+#### <a name="create-a-live-output"></a>Erstellen einer Liveausgabe
+
+Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie die Liveausgabe löschen, werden das zugrunde liegende Medienobjekt und sein Inhalt nicht gelöscht.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveOutput)]
 
-#### <a name="create-a-streaminglocator"></a>Erstellen eines Streaminglocators
+#### <a name="create-a-streaming-locator"></a>Erstellen eines Streaminglocators
 
 > [!NOTE]
 > Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+
+Wenn Sie das Liveausgabe-Medienobjekt mit einem Streaminglocator veröffentlicht haben, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zu Ablauf oder Löschung des Streaminglocators sichtbar, je nachdem, was zuerst eintritt.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateStreamingLocator)]
 
@@ -167,11 +154,13 @@ Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Res
 
 * Beenden Sie die Datenstromeingabe vom Encoder.
 * Beenden Sie das Liveereignis. Nach Beendigung des Liveereignisses fallen dafür keine Kosten mehr an. Wenn Sie den Kanal erneut starten, weist er die gleiche Erfassungs-URL auf, damit Sie den Encoder nicht erneut konfigurieren müssen.
-* Sie können Ihren Streamingendpunkt beenden, sofern Sie das Archiv Ihres Liveereignisses nicht als bedarfsgesteuerten Datenstrom bereitstellen möchten. Nach Beendigung des Liveereignisses fallen dafür keine Kosten mehr an.
+* Sie können Ihren Streamingendpunkt beenden, sofern Sie das Archiv Ihres Liveereignisses nicht als bedarfsgesteuerten Datenstrom bereitstellen möchten. Hat das Liveereignis den Status „Beendet“, fallen dafür keine Kosten an.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLiveEventAndOutput)]
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
+
+Der folgende Code zeigt, wie Sie alle Liveereignisse aus Ihrem Konto löschen:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupAccount)]   
 
@@ -197,4 +186,4 @@ az group delete --name amsResourceGroup
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Streamen von Dateien](stream-files-tutorial-with-api.md)
-
+ 

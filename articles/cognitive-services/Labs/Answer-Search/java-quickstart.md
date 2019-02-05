@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: „Projekt: Suche nach Antworten“, Java'
+title: 'Schnellstart: Projekt: Suche nach Antworten, Java'
 titlesuffix: Azure Cognitive Services
 description: Steigen Sie in Project Answer Search in Java ein.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0353736b3b66c58288dbd3d351b3b3dd53f467d6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469094"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226875"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Schnellstart: Abfrage „Projekt: Suche nach Antworten“ in Java
+# <a name="quickstart-project-answer-search-query-in-java"></a>Schnellstart: Project Answer Search-Abfrage in Java
 In diesem Artikel wird Java verwendet, um die Bing-Antwortsuche-API zu veranschaulichen, die einen Teil der Microsoft Cognitive Services in Azure darstellt. Die API ist ein REST-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen senden und JSON analysieren kann.
  
 Der Beispielcode verwendet Java und weist nur minimale externe Abhängigkeiten auf.  Sie können auch unter Linux oder Mac OS X mit Mono ausführen.
@@ -30,7 +30,7 @@ Rufen Sie einen Zugriffsschlüssel für die kostenlose Testversion von [Cognitiv
 
 Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader fest, und fügt eine Abfragezeichenfolge für „Gibraltar“ hinzu.  Dann übermittelt er die Anforderung und weist die Antwort einer Zeichenfolge zu, die den JSON-Text enthält.
 
-````
+```
     static String host = "https://api.labs.cognitive.microsoft.com";
     static String path = "/answerSearch/v7.0/search";
 
@@ -46,7 +46,7 @@ Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader 
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Vollständiger Code
 
@@ -57,7 +57,7 @@ Die API der Bing-Antwortsuche gibt Ergebnisse der Bing-Suchmaschine zurück.
 4. Ersetzen Sie den Wert von „subscriptionKey“ durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 5. Führen Sie das Programm aus.
 
-````
+```
 package knowledgeAPI;
 import java.io.InputStream;
 import java.net.*;
@@ -148,7 +148,7 @@ public class KnowledgeSrch {
         }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [C#-Schnellstart](c-sharp-quickstart.md)

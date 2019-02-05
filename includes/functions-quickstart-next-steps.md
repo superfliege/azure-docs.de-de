@@ -2,16 +2,16 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
+ms.date: 01/23/2019
 ms.author: glenga
-ms.openlocfilehash: 7057f6a9652244f84754e29af738b7e0c5f1da4f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e330f5ecbfc240b048d887289224c164a91215bd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133095"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904708"
 ---
-Erfahren Sie, wie Sie Funktionen mit anderen Arten von Auslösern erstellen oder Funktionen in andere Azure-Dienste integrieren.
+Sie haben Ihre erste Funktion erstellt. Fügen Sie ihr nun eine Ausgabebindung hinzu, die eine Meldung in eine Warteschlange schreibt.
 
-+ [Erstellen einer Funktion in Azure, die nach einem Zeitplan ausgeführt wird](../articles/azure-functions/functions-create-scheduled-function.md) 
-+ [Hinzufügen von Meldungen in eine Azure Storage-Warteschlange mithilfe von Functions](../articles/azure-functions/functions-integrate-storage-queue-output-binding.md)
+> [!div class="nextstepaction"]
+> [Hinzufügen von Meldungen in eine Azure Storage-Warteschlange mithilfe von Functions](../articles/azure-functions/functions-integrate-storage-queue-output-binding.md)

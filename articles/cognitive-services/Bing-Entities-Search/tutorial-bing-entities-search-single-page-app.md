@@ -1,23 +1,23 @@
 ---
-title: 'Tutorial: Einzelseiten-Web-App für die Bing-Entitätssuche'
+title: 'Tutorial: Single-Page-Webanwendung für die Bing-Entitätssuche'
 titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: aahi
-ms.openlocfilehash: 6bf3944017075ee04fe6ed3472a0cbe12d7f8ba0
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f8aa6733748bbdf9ffff069126f6481c8b6788c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162006"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197431"
 ---
-# <a name="tutorial-single-page-web-app"></a>Tutorial: Single-Page-Web-App
+# <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 

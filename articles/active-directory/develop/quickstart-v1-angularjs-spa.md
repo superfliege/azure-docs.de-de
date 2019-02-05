@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 23912f9d004d051c422f93e8b10f1aa6cb8b2626
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a39fc2d0e1a57322f3cce63fa298657c1f938e55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959494"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100732"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Schnellstart: Erstellen einer AngularJS-Single-Page-App für das An- und Abmelden mit Azure Active Directory
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Schnellstart: Erstellen einer AngularJS-Single-Page-Webanwendung für das An- und Abmelden mit Azure Active Directory
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -75,7 +75,7 @@ Sie müssen die App zuerst in Ihrem Azure AD-Mandanten registrieren, um damit Be
 1. Erteilen Sie in Ihrem gesamten Mandanten Berechtigungen für Ihre Anwendung. Wechseln Sie zu **Einstellungen > Erforderliche Berechtigungen**, und klicken Sie auf der oberen Leiste auf die Schaltfläche **Berechtigungen erteilen**.
 1. Klicken Sie auf **Ja**, um zu bestätigen.
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Schritt 2: Installieren von ADAL und Konfigurieren der einseitigen Anwendung
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Schritt 2: Installieren von ADAL und Konfigurieren der Single-Page-Webanwendung
 
 Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie „adal.js“ installieren und Ihren identitätsbezogenen Code schreiben.
 
@@ -101,7 +101,7 @@ Damit die Back-End-Aufgabenlisten-API der einseitigen Anwendung Token aus dem Br
    * `ida:Tenant` ist die Domäne Ihres Azure AD-Mandanten, z. B. „contoso.onmicrosoft.com“.
    * `ida:Audience` ist die Client-ID der Anwendung, die Sie aus dem Portal kopiert haben.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Schritt 3: Verwenden von ADAL zum Schützen von Seiten in der einseitigen Anwendung
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Schritt 3: Verwenden von ADAL zum Schützen von Seiten in der Single-Page-Webanwendung
 
 „adal.js“ wurde für die Integration in die AngularJS-Route und in HTTP-Anbieter erstellt, damit Sie einzelne Ansichten in Ihrer einseitigen Anwendung schützen können.
 

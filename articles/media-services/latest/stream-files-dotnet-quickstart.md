@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: fc8fc1af51332df032e864c84791791a38bc8601
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 50c17e6ce953b601cc4ac0a406f443a54b9db3e7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612219"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162717"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Schnellstart: Streamen von Videodateien: .NET
 
@@ -34,13 +34,10 @@ Am Ende des Schnellstarts sind Sie in der Lage, ein Video zu streamen.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
-- Installieren und verwenden Sie die Befehlszeilenschnittelle lokal. Dieser Artikel erfordert mindestens die Azure CLI-Version 2.0. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
-    Derzeit funktionieren nicht alle Befehle der [Befehlszeilenschnittstelle von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die Befehlszeilenschnittstelle lokal zu verwenden.
-
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
-
-## <a name="download-the-sample"></a>Herunterladen des Beispiels
+## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
 Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeispiel enthält, indem Sie den folgenden Befehl verwenden:  
 
@@ -50,19 +47,19 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
 
 Das Beispiel befindet sich im Ordner [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
 
+Öffnen Sie [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) im heruntergeladenen Projekt. Ersetzen Sie die Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](access-api-cli-how-to.md) abgerufen haben.
+
 Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
-1. Erstellen einer Transformation (nach vorheriger Überprüfung, ob die angegebene Transformation vorhanden ist) 
-2. Erstellen eines Ausgabemedienobjekts, das als Ausgabe des Codierungsauftrags verwendet wird
-3. Erstellen der auf einer HTTPS-URL basierenden Auftragseingabe
-4. Übermitteln des Codierungsauftrags mit der zuvor erstellten Ein- und Ausgabe
+1. Erstellen einer **Transformation** (nach vorheriger Überprüfung, ob die angegebene Transformation vorhanden ist) 
+2. Erstellen eines **Ausgabemedienobjekts**, das als Ausgabe des **Codierungsauftrags** verwendet wird
+3. Erstellen der auf einer HTTPS-URL basierenden **Auftragseingabe**
+4. Übermitteln des **Codierungsauftrags** mit der zuvor erstellten Ein- und Ausgabe
 5. Überprüfen des Auftragsstatus
-6. Erstellen eines Streaminglocators
+6. Erstellen eines **Streaminglocators**
 7. Erstellen von Streaming-URLs
 
 Um eine Erläuterung dazu zu erhalten, was jede Funktion im Beispiel bewirkt, untersuchen Sie den Code, und sehen Sie sich die Kommentare in [dieser Quelldatei](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) an.
-
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
 ## <a name="run-the-sample-app"></a>Ausführen der Beispiel-App
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e96119abd4fc77c576fb65281c3f48b8263e020d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849973"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098645"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -97,14 +97,14 @@ Durch Warnungen können Beteiligte automatisch über Anomalien bei den Ausgaben 
 
 In diesem Beispiel wird der **Bericht für Ist-Kosten im Zeitverlauf** verwendet, um eine Benachrichtigung zu senden, wenn sich die Ausgaben für einen virtuellen Azure-Computer Ihrem Gesamtbudget annähern. In diesem Szenario beträgt das Gesamtbudget 20.000 USD, und Sie möchten eine Benachrichtigung erhalten, wenn die Kosten sich der Hälfte Ihres Budgets (9.000 USD) annähern, und eine Warnung, wenn die Kosten 10.000 USD erreichen.
 
-1. Wählen Sie oben im Menü des Cloudyn-Portals Folgendes aus: **Cost** (Kosten) > **Cost Analysis** (Kostenanalyse) > **Actual Cost Over Time** (Ist-Kosten im Zeitverlauf). 
+1. Wählen Sie oben im Menü des Cloudyn-Portals Folgendes aus: **Costs** > **Cost Analysis** > **Actual Cost Over Time** („Kosten“ > „Kostenanalyse“ > „Ist-Kosten im Zeitverlauf“). 
 2. Legen Sie **Groups** (Gruppen) auf **Service** (Dienst) und **Filter on the service** (Filtern nach Dienst) auf **Azure/VM** fest. 
 3. Wählen Sie in der rechten oberen Ecke des Berichts **Actions** (Aktionen) und anschließend **Schedule report** (Bericht planen) aus.
-4. Wählen Sie im Dialogfeld **Save or Schedule this report** (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung) aus, um sich im gewünschten Intervall eine E-Mail mit dem Bericht zu senden. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Sämtliche verwendeten Tags, Gruppierungen und Filter werden in den per E-Mail gesendeten Bericht eingeschlossen. 
+4. Wählen Sie im Dialogfeld **Save or Schedule this report** (Diesen Bericht speichern oder planen) die Registerkarte **Scheduling** (Planung) aus, um im gewünschten Intervall eine E-Mail mit dem Bericht zu erhalten. Achten Sie darauf, dass Sie **Send via email** (Per E-Mail senden) auswählen. Alle verwendeten Tags, Gruppierungen und Filter werden in den per E-Mail gesendeten Bericht eingeschlossen. 
 5. Wählen Sie die Registerkarte **Threshold** (Schwellenwert) und anschließend **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. 
-   1. Geben Sie im Schwellenwertfeld für die **rote Warnung**den Wert „10000“ ein. 
-   2. Geben Sie im Schwellenwertfeld für die **gelbe Warnung**den Wert „9000“ ein. 
-   3. Geben Sie im Feld **Anzahl der aufeinanderfolgenden Warnungen** ein, wie viele aufeinanderfolgende Warnungen sie erhalten möchten. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr gesendet. 
+   1. Geben Sie im Schwellenwertfeld für die **rote Warnung** den Wert „10000“ ein. 
+   2. Geben Sie im Schwellenwertfeld für die **gelbe Warnung** den Wert „9000“ ein. 
+   3. Geben Sie im Feld **Number of consecutive alerts** (Anzahl der aufeinanderfolgenden Warnungen) ein, wie viele aufeinanderfolgende Warnungen sie erhalten möchten. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. 
 6. Wählen Sie **Speichern** aus.
 
 ![Beispiel für rote und gelbe Warnungen auf der Grundlage von Ausgabeschwellenwerten](./media/tutorial-review-usage/schedule-alert01.png)

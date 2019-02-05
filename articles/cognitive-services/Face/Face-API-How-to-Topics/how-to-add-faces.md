@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f443eb13650483bc3ee63dad59cc40b8042bc35b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125101"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222813"
 ---
 # <a name="example-how-to-add-faces"></a>Beispiel: Hinzufügen von Gesichtern
 
@@ -23,7 +23,7 @@ Dieser Leitfaden veranschaulicht die bewährte Methode, um einer PersonGroup ein
 Die gleiche Strategie gilt auch für FaceList und LargePersonGroup.
 Die Beispiele sind in C# geschrieben und verwenden die Clientbibliothek für die Gesichtserkennungs-API.
 
-## <a name="step-1-initialization"></a>Schritt 1: Initialisieren
+## <a name="step-1-initialization"></a>Schritt 1: Initialisierung
 
 Es sind mehrere Variablen deklariert und eine Hilfsfunktion wird implementiert, um die Anforderungen zu planen.
 
@@ -70,7 +70,7 @@ FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>"
 
 Sie können den Abonnementschlüssel auf der Seite „Marketplace“ des Azure-Portals abrufen. Weitere Informationen finden Sie unter [Abonnements](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step-3-create-the-persongroup"></a>Schritt 3: Erstellen von PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Schritt 3: Erstellen von „PersonGroup“
 
 Eine PersonGroup mit dem Namen „MyPersonGroup“ wird erstellt, um Personen zu speichern.
 Die Anforderungszeit wird in `_timeStampQueue` in die Warteschlange eingereiht, um die gesamte Validierung sicherzustellen.
@@ -82,7 +82,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-to-the-persongroup"></a>Schritt 4: Erstellen von Personen für PersonGroup
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>Schritt 4: Erstellen von Personen für „PersonGroup“
 
 Personen werden gleichzeitig erstellt und `await WaitCallLimitPerSecondAsync()` wird ebenfalls angewendet, um zu vermeiden, dass die Aufrufbeschränkung überschritten wird.
 

@@ -1,24 +1,24 @@
 ---
-title: Worum handelt es sich beim Projekt „Individualisierter Chat“?
+title: 'Was ist „Projekt: Chat mit Profil“?'
 titlesuffix: Azure Cognitive Services
 description: Dieser Artikel bietet einen Überblick über das Azure-Projekt „Individualisierter Chat“, eine cloudbasierte API zur Erweiterung der Konversationsmöglichkeiten Ihres Bots.
 services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: personality-chat
+ms.subservice: personality-chat
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 865815862be4a2250347f782985e0bce87780197
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 053d43d0f17df2008106bda38318615e60778935
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220533"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207512"
 ---
-# <a name="what-is-project-personality-chat"></a>Worum handelt es sich beim Projekt „Individualisierter Chat“?
+# <a name="what-is-project-personality-chat"></a>Was ist „Projekt: Chat mit Profil“?
 
 Das Projekt „Individualisierter Chat“ verbessert die Konversationsfähigkeiten Ihres Bots durch den Umgang mit Smalltalk im Einklang mit einer ausgeprägten, ausgewählten Persönlichkeit. Der individualisierte Chat verwendet Absichtsklassifizierer, um häufige Smalltalkabsichten zu identifizieren, und generiert Antworten, die zu einer Persönlichkeit passen. Basierend auf der Absicht und den Zuverlässigkeitswerten wählt der Bot entweder die beste Antwort aus einer bereitgestellten redaktionellen Basis aus oder generiert sie in Echtzeit mithilfe von Deep Neural Networks (DNNs). Sie können unter drei Standardpersonas wählen. Das Personamodell gibt Antworten zurück, die der ausgewählten Persönlichkeit am ähnlichsten sind.
 
@@ -28,7 +28,7 @@ Ein anpassbares Redaktionssystem für gängige Smalltalkabfragen ist verfügbar.
 
 Sie können die Labseite zum Projekt „Individualisierter Chat“ besuchen und mit der verfügbaren Demo chatten sowie frühzeitigen Zugriff beantragen, wenn der Dienst verfügbar ist.
 Schon heute können Sie die anpassbare nur redaktionelle Bibliothek auch über das Microsoft Bot Framework SDK in Ihre Bots integrieren. <br>
-[Beispiele: Integrieren des individualisierten Chats in einem Bot](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
+[Beispiele: Integrieren des individualisierten Chats in einen Bot](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
 [Testen der Bibliothek für individualisierten Chat](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp)
 
 ## <a name="generating-responses-using-neural-networks"></a>Generieren von Antworten mithilfe neuronaler Netzwerke

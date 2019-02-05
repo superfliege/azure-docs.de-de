@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5eee55846bd6f5821be1e40b969a35f5e50bd205
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 119a53949b6184389c0e36e56732f0486c24ca5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967369"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193487"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -44,7 +44,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 >[!NOTE]
 > In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein generalisiertes VM-Image erstellen und verwenden. Auf der Grundlage eines spezialisierten VM-Images kann keine Skalierungsgruppe erstellt werden.
 
-Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe und dann mit [az vm create](/cli/azure/vm#az_vm_create) eine VM. Diese VM wird dann als Quelle für ein benutzerdefiniertes VM-Image verwendet. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* erstellt:
+Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe und dann mit [az vm create](/cli/azure/vm) eine VM. Diese VM wird dann als Quelle für ein benutzerdefiniertes VM-Image verwendet. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* erstellt:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -57,7 +57,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Die öffentliche IP-Adresse Ihrer VM wird in der Ausgabe des Befehls [az vm create](/cli/azure/vm#az_vm_create) angezeigt. Stellen Sie wie folgt eine SSH-Verbindung mit der öffentlichen IP-Adresse Ihrer VM her:
+Die öffentliche IP-Adresse Ihrer VM wird in der Ausgabe des Befehls [az vm create](/cli/azure/vm) angezeigt. Stellen Sie wie folgt eine SSH-Verbindung mit der öffentlichen IP-Adresse Ihrer VM her:
 
 ```azurecli-interactive
 ssh azureuser@<publicIpAddress>
@@ -96,7 +96,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 Es kann einige Minuten dauern, die Zuordnung der VM aufzuheben und sie zu generalisieren.
 
-Erstellen Sie jetzt mit [az image create](/cli//azure/image#az_image_create) ein Image aus der VM. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* aus Ihrer VM erstellt:
+Erstellen Sie jetzt mit [az image create](/cli//azure/image) ein Image aus der VM. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* aus Ihrer VM erstellt:
 
 ```azurecli-interactive
 az image create \

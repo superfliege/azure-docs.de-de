@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/06/2018
+ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868547"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092769"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -153,7 +153,7 @@ Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Ausla
 5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
 6. Klicken Sie auf die Schaltfläche **OK**.
 
-## <a name="manage-package-updates"></a>Verwalten von Paketupdates
+## <a name="manage-software-updates"></a>Verwalten von Softwareupdates
 
 Mithilfe der Updateverwaltung können Sie Updates und Patches für Ihre Linux-basierten Azure-VMs verwalten.
 Direkt von Ihrem virtuellen Computer aus können Sie schnell den Status der verfügbaren Updates bewerten, die Installation der erforderlichen Updates planen und Bereitstellungsergebnisse überprüfen, um sicherzustellen, dass Updates erfolgreich auf den virtuellen Computer angewendet wurden.
@@ -175,15 +175,14 @@ Mit einem [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeits
 Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 Um weitere Aktionen auf virtuellen Computern auszuführen, die Updates erfordern, können Sie mit Azure Automation Runbooks für virtuelle Computer ausführen, z.B. um Updates herunterzuladen und anzuwenden.
 
-Der Überprüfungsprozess prüft auch, ob der virtuelle Computer mit dem Microsoft Monitoring Agent (MMA) und Automation Hybrid Runbook Worker bereitgestellt wird.
-Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zum Updatestatus abzurufen.
+Beim Überprüfungsprozess wird auch geprüft, ob der virtuelle Computer mit dem Log Analytics-Agent und Automation Hybrid Runbook Worker bereitgestellt wird. Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zum Updatestatus abzurufen.
 
 Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
 
 Wenn beim Onboarding festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich
-* [Automatisierung](../../automation/automation-offering-get-started.md)
+* [Automation-Konto](../../automation/automation-offering-get-started.md)
 * Ein [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) ist auf dem virtuellen Computer aktiviert.
 
 Der Bildschirm **Updateverwaltung** wird geöffnet. Konfigurieren Sie den Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
@@ -291,22 +290,9 @@ Im Diagramm werden Änderungen angezeigt, die im Laufe der Zeit durchgeführt wu
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-Sie können die erweiterte Überwachung Ihres virtuellen Computers mit Lösungen von [Azure Automation](../../automation/automation-intro.md) wie Updateverwaltung sowie Änderungs- und Bestandsverwaltung durchführen.
+Mit einer Lösung wie [Azure Monitor für VMs](../../azure-monitor/insights/vminsights-overview.md) stehen Ihnen erweiterte Optionen für die Überwachung Ihrer virtuellen Computer zur Verfügung. Die Lösung überwacht Ihre Azure-VMs bedarfsorientiert durch Analysieren der Leistung und Integrität der Windows- und Linux-VMs, einschließlich ihrer verschiedenen Prozesse und miteinander verbundenen Abhängigkeiten von anderen Ressourcen und externen Prozessen. Die Konfigurationsverwaltung Ihrer Azure-VMs wird mit der [Azure Automation](../../automation/automation-intro.md)-Lösung für die Änderungsnachverfolgung und den Bestand bereitgestellt, mit der Änderungen in Ihrer Umgebung einfach ermittelt werden können. Die Verwaltung der Updatekonformität erfolgt mit der Azure Automation-Updateverwaltungslösung.   
 
-Wenn Sie Zugriff auf den Log Analytics-Arbeitsbereich haben, finden Sie den Arbeitsbereichsschlüssel und die Arbeitsbereich-ID, indem Sie unter **EINSTELLUNGEN** auf **Erweiterte Einstellungen** klicken. Ersetzen Sie \<workspace-key\> und \<workspace-id\> durch die Werte aus Ihrem Log Analytics-Arbeitsbereich, und verwenden Sie dann **az vm extension set**, um dem virtuellen Computer die Erweiterung hinzuzufügen:
-
-```azurecli-interactive
-az vm extension set \
-  --resource-group myResourceGroupMonitor \
-  --vm-name myVM \
-  --name OmsAgentForLinux \
-  --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.3 \
-  --protected-settings '{"workspaceKey": "<workspace-key>"}' \
-  --settings '{"workspaceId": "<workspace-id>"}'
-```
-
-Nach wenigen Minuten sollte der neue virtuelle Computer im Log Analytics-Arbeitsbereich angezeigt werden.
+Über den Log Analytics-Arbeitsbereich, mit dem die VM verbunden ist, können Sie darüber hinaus gesammelte Daten mit der [umfassenden Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) abrufen, konsolidieren und analysieren. 
 
 ![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 

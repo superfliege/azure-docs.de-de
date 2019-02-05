@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/19/2018
+ms.date: 01/23/2019
 ms.author: juliako
-ms.openlocfilehash: fcce16ed3cf7009c596f30ebc33f58de02f018a0
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0bd882ffd5048d0b33afc9ecf00c0ed6356b6e98
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811637"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883516"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 
@@ -101,10 +101,10 @@ In diesem Abschnitt senden wir relevante Anforderungen für die Codierung und Er
 
 1. Abrufen des Azure AD-Tokens für die Dienstprinzipalauthentifizierung
 2. Erstellen eines Ausgabemedienobjekts
-3. Erstellen einer Transformation
-4. Erstellen eines Auftrags 
-5. Erstellen Sie eines Streaminglocators
-6. Auflisten der Pfade des streaminglocators
+3. Erstellen einer **Transformation**
+4. Erstellen eines **Auftrags**
+5. Erstellen eines **Streaminglocators**
+6. Auflisten der Pfade des **Streaminglocators**
 
 > [!Note]
 >  In diesem Tutorial wird davon ausgegangen, dass Sie alle Ressourcen mit eindeutigen Namen erstellen.  
@@ -232,16 +232,16 @@ Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, *
 
 ### <a name="create-a-streaming-locator"></a>Erstellen Sie eines Streaminglocators
 
-Nach Abschluss des Codierungsauftrags muss das Video im Ausgabemedienobjekt für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
+Nach Abschluss des Codierungsauftrags muss das Video im **Ausgabemedienobjekt** für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
 
-Der Vorgang des Erstellens eines **StreamingLocator** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **StreamingLocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
+Der Vorgang zum Erstellen eines **Streaminglocators** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **Streaminglocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
-Beim Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie klare (oder unverschlüsselte) Inhalte, daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (**PredefinedStreamingPolicy.ClearStreamingOnly**) verwendet.
+Beim Erstellen eines [Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten Wert für **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie klare (oder unverschlüsselte) Inhalte, daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (**PredefinedStreamingPolicy.ClearStreamingOnly**) verwendet.
 
 > [!IMPORTANT]
 > Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. 
 
-Ihr Media Services-Konto weist ein Kontingent für die Anzahl von StreamingPolicy-Einträgen auf. Sie sollten nicht für jeden StreamingLocator eine neue StreamingPolicy erstellen.
+Ihr Media Services-Konto weist ein Kontingent für die Anzahl von **Streamingrichtlinieneinträgen** auf. Sie sollten nicht für jeden **Streaminglocator** eine neue **Streamingrichtlinie** erstellen.
 
 1. Klicken Sie im linken Fenster von Postman auf „Streaming Policies“ (Streamingrichtlinien).
 2. Klicken Sie anschließend auf „Create a Streaming Locator“ (Streaminglocator erstellen).
@@ -267,7 +267,7 @@ Ihr Media Services-Konto weist ein Kontingent für die Anzahl von StreamingPolic
 
 #### <a name="list-paths"></a>Auflisten der Pfade
 
-Nachdem der [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen.
+Nachdem der [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen.
 
 1. Klicken Sie im linken Fenster von Postman auf „Streaming Policies“ (Streamingrichtlinien).
 2. Klicken Sie anschließend auf „List Paths“ (Pfade auflisten).
@@ -338,7 +338,7 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Stellen Sie sicher, dass der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, ausgeführt wird.
+> Stellen Sie sicher, dass der **Streamingendpunkt**, von dem aus Sie die Inhalte streamen möchten, ausgeführt wird.
 
 Um den Stream zu testen, wird in diesem Artikel Azure Media Player verwendet. 
 
@@ -350,7 +350,7 @@ Azure Media Player kann zum Testen verwendet werden, sollte jedoch nicht in eine
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Bereinigen von Ressourcen in Ihrem Media Services-Konto
 
-Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten (in der Regel werden Sie Transformationen wiederverwenden, und Sie werden StreamingLocators usw. persistent speichern). Wenn Sie Ihr Konto nach dem Experimentieren bereinigen möchten, sollten Sie die Ressourcen löschen, bei denen Sie nicht beabsichtigen, sie wiederzuverwenden.  
+Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten. (In der Regel werden Sie **Transformationen** wiederverwenden und **Streaminglocators** usw. dauerhaft speichern). Wenn Sie Ihr Konto nach dem Experimentieren bereinigen möchten, sollten Sie die Ressourcen löschen, bei denen Sie nicht beabsichtigen, sie wiederzuverwenden.  
 
 Wählen Sie zum Löschen einer Ressource den Löschvorgang unter der zu löschenden Ressource aus.
 

@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/25/2019
+ms.openlocfilehash: 2b510accb2a30250a2855cfa22dbf45546a77569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745073"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461745"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage
 
@@ -32,7 +32,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine konfigurierte Firewallregel auf Serverebene. Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md).
 
-#### <a name="install-the-latest-ssms"></a>Installieren der neuesten Version von SSMS
+## <a name="install-the-latest-ssms"></a>Installieren der neuesten Version von SSMS
 
 Bevor Sie beginnen, stellen Sie sicher, dass Sie die neueste Version von [SSMS][ssms-install-latest-84g] installiert haben. 
 
@@ -45,7 +45,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie die neueste Version von [SSMS][
 Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz her. 
 
 > [!IMPORTANT]
-> Ein logischer Azure SQL-Datenbankserver lauscht auf Port 1433. Um von hinter einer Unternehmensfirewall eine Verbindung mit einem logischen Server herzustellen, muss dieser Port der Firewall geöffnet sein.
+> Ein Azure SQL-Datenbankserver lauscht am Port 1433. Um hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbankserver herzustellen, muss dieser Port in der Firewall geöffnet sein.
 >
 
 1. Öffnen Sie SSMS. Das Dialogfeld **Mit Server verbinden** wird angezeigt.

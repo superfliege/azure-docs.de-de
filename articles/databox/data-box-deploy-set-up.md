@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391162"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902159"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um das Gerät zu verkabeln.
 
 1. Überprüfen Sie das Gerät auf Anzeichen einer Manipulation oder andere erkennbare Schäden. Fahren Sie nicht mit den nächsten Schritten fort, wenn das Gerät manipuliert wurde oder stark beschädigt ist. Wenden Sie sich umgehend an den Microsoft-Support. Er wird gemeinsam mit Ihnen ermitteln, ob das Gerät in einwandfreiem Zustand ist und verwendet werden kann oder ein Ersatzgerät geliefert werden muss.
 2. Transportieren Sie das Gerät an den Ort, an dem Sie es einschalten möchten. Stellen Sie das Gerät auf eine ebene Fläche. Das Gerät kann auch in einem standardmäßigen Rackregal aufgestellt werden.
-3. Schließen Sie die Netz- und Netzwerkkabel an. Die folgende Abbildung zeigt die Rückwandplatine eines verbundenen Geräts für eine allgemeine Konfiguration. 
+3. Schließen Sie die Netz- und Netzwerkkabel an. Die folgende Abbildung zeigt die Rückwandplatine eines verbundenen Geräts für eine allgemeine Konfiguration. Abhängig von Ihrer Umgebung können Sie auch eine andere [Verkabelungsoption](data-box-cable-options.md) wählen.
     
     ![Verkabelte Rückwandplatine der Data Box](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 

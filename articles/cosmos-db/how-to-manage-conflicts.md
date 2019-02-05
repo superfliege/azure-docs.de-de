@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 52bcedace5d8a039be4a72dcfcc3cdeb653b3e0c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a9883edc712b1524561f3bac3efd1608da695313
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354364"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477283"
 ---
-# <a name="manage-conflicts-between-regions"></a>Behandeln von Konflikten zwischen Regionen
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Verwalten von Konfliktauflösungsrichtlinien in Azure Cosmos DB
 
 Wenn es bei Verwendung von Schreibvorgängen in mehreren Regionen zu einem Datenkonflikt kommt, können Sie diesen mithilfe verschiedener Konfliktlösungsrichtlinien beheben. In diesem Artikel erfahren Sie, wie Sie Konfliktlösungsrichtlinien über verschiedene Sprachplattformen verwalten.
 

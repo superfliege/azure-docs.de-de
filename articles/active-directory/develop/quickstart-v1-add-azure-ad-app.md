@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1411d9b4a199685315587cb642842286da575c63
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50911863"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098526"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt
 
@@ -55,8 +55,8 @@ Stellen Sie zunächst sicher, dass Sie über einen Azure AD-Mandanten verfügen,
     - **Anwendungstyp:**
       - Wählen Sie für [Clientanwendungen](developer-glossary.md#client-application), die lokal auf dem Gerät installiert sind, die Option **Nativ** aus. Diese Einstellung wird für öffentliche [native OAuth-Clients](developer-glossary.md#native-client) verwendet.
       - Wählen Sie die Option **Web-App/API** für [Clientanwendungen](developer-glossary.md#client-application) und [Ressourcen-/API-Anwendungen](developer-glossary.md#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](developer-glossary.md#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](developer-glossary.md#user-agent-based-client) verwendet. Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.
-    - **Anmelde-URL:** Geben Sie für Anwendungen vom Typ „Web-App/API“ die Basis-URL Ihrer App an. `http://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. 
-    - **Umleitungs-URI:** Geben Sie für Anwendungen vom Typ „Nativ“ den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.
+    - **Anmelde-URL**: Geben Sie für Anwendungen von Typ „Web-App/API“ die Basis-URL Ihrer App an. `http://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. 
+    - **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.
 
       ![Registrieren einer neuen Anwendung – Erstellen](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 

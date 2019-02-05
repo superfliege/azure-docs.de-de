@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: Abrufen von Satzlängen, C#: Textübersetzungs-API'
+title: 'Schnellstart: Abrufen von Satzlängen, C# – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit .NET Core und der Textübersetzungs-API die Satzlänge bestimmen.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 868c19f8c9e42bcd4a03aa2c766dff185f6319a7
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: daa1afd2caf5d5bfa2452858501f550e4c7e387b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888340"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212017"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Satzlänge mit C#
 
@@ -39,7 +39,7 @@ dotnet new console -o sentences-sample
 cd sentences-sample
 ```
 
-Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Er erstellt eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `sentences-sample`. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
+Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Es werden eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `sentences-sample` erstellt. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
 
 Als Nächstes müssen Sie Json.Net installieren. Führen Sie im Verzeichnis Ihres Projekts den folgenden Befehl aus:
 

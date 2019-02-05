@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: a0082be25ec4ad326e4473cbe69f9ff029898f5b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a2f0d97d6b7040f874fc03ffe19f247cdc742c77
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988723"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103648"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs (Vorschauversion)
 
@@ -45,18 +45,18 @@ In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Ihre App für folg
 
 Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Informieren Sie sich über die Unterstützung von [Berechtigungen und der Zustimmung](v2-permissions-and-consent.md). Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
+* Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
 * Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
   * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
 * Aktivieren Sie die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden am Azure-Portal und Auswählen der App
+## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
 Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren können:
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, indem Sie entweder ein Geschäfts-, Schul- oder Unikonto oder ein persönliches Microsoft-Konto verwenden.
-1. Wenn Ihr Konto Zugriff auf mehr als einen Mandanten ermöglicht, wählen Sie oben rechts Ihr Konto aus und legen Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und dann **App-Registrierungen (Vorschau)**.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** aus.
 1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
 1. Führen Sie die Schritte zum Konfigurieren Ihrer Anwendung für den Zugriff auf Web-APIs aus: 
     * [Hinzufügen von Umleitungs-URIs zur Anwendung](#add-redirect-uris-to-your-application)
@@ -125,7 +125,7 @@ Fügen Sie Berechtigungen für den Zugriff auf Ressourcen-APIs von Ihrem Client 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung für Apps an:
+Sehen Sie sich die anderen Schnellstartanleitungen zur App-Verwaltung an:
 
 * [Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md)
 * [Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md)

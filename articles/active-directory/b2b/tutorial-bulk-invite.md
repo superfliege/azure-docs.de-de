@@ -3,18 +3,18 @@ title: 'Tutorial: Masseneinladen von Benutzern für die B2B-Zusammenarbeit – A
 description: In diesem Tutorial erfahren Sie, wie Sie mit PowerShell und einer CSV-Datei Masseneinladungen an externe Benutzer für die Azure AD B2B-Zusammenarbeit senden.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: c24a82d5765fef01eab9ae24f637c215c62e822d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: e40eb5c1727317b375d45da83cd712cf0b7f963c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986901"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099729"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit
 
@@ -34,29 +34,29 @@ Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls (
 
 Überprüfen Sie zunächst, welche Module Sie installiert haben. Öffnen Sie dafür Windows PowerShell als Benutzer mit erhöhten Rechten („Als Administrator ausführen“), und führen Sie den folgenden Befehl aus:
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 Führen Sie je nach Ausgabe einen der folgenden Schritte aus:
 
 - Wenn keine Ergebnisse zurückgegeben werden, führen Sie den folgenden Befehl aus, um das AzureADPreview-Modul zu installieren:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, führen Sie die folgenden Befehle aus, um das AzureADPreview-Modul zu installieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, eine Meldung Sie jedoch darauf hinweist, dass eine neuere Version verfügbar ist, führen Sie die folgenden Befehle aus, um das Modul zu aktualisieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 Möglicherweise erscheint ein Hinweis, dass Sie das Modul aus einem nicht vertrauenswürdigen Repository installieren. Das passiert, wenn Sie das PSGallery-Repository nicht zuvor als vertrauenswürdiges Repository festgelegt haben. Drücken Sie **Y**, um das Modul zu installieren.
 

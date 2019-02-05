@@ -3,7 +3,7 @@ title: Tutorial – Erstellen eines MEAN-Stacks auf einem virtuellen Linux-Compu
 description: In diesem Tutorial erfahren Sie, wie Sie einen MEAN-Stack (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a223cb9be7c381c2f64648b32ef9bca69ebeddb5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 223b32d3947ca0f663565a90b15e9c24e5ddeb96
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465680"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883210"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
 

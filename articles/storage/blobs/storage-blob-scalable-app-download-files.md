@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: 2966683c086cfcd122c364dd6808f841a85bbee9
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.subservice: blobs
+ms.openlocfilehash: 180e38146911b15e95828bf033cbcaefae22d094
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704714"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241388"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Herunterladen großer Mengen von Zufallsdaten von Azure Storage
 
@@ -30,7 +30,7 @@ Im dritten Teil der Serie lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Tutorial abschließen zu können, müssen Sie das vorherige Storage-Tutorial [Paralleles Hochladen großer Mengen von Zufallsdaten in Azure Storage][previous-tutorial] abgeschlossen haben.
+Damit Sie dieses Tutorial abschließen können, müssen Sie das vorherige Storage-Tutorial abgeschlossen haben: [Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Herstellen einer Remoteverbindung mit dem virtuellen Computer
 

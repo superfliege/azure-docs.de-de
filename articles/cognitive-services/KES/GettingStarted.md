@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124013"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208141"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Erste Schritte mit dem Knowledge Exploration Service
 
@@ -110,7 +110,7 @@ Die Grammatik gibt den Satz von Abfragen in natürlicher Sprache an, die der Die
 <grammar root="GetPapers">
 
   <!-- Import academic data schema-->
-  <import schema="Academic.schema" name="academic"/>
+  <import schema="Academic.schema" name="academic"/>
 
   <!-- Define root rule-->
   <rule id="GetPapers">

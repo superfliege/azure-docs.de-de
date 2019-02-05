@@ -1,6 +1,6 @@
 ---
-title: Hochladen, Codieren und Streamen mit Azure Media Services | Microsoft Docs
-description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Azure Media Services zu streamen.
+title: Hochladen, Codieren und Streamen mit Azure Media Services v3 unter Verwendung von .NET | Microsoft-Dokumentation
+description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Media Services v3 unter Verwendung von .NET zu streamen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: a8d2cf577a6b637e910c283ba8c70d9ea4eedfbb
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c3671df61eea5c826227706106cbb48dc70ad55f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334124"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157754"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit APIs
+# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET
 
 Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie im [Codierungskonzept](encoding-concept.md). In diesem Tutorial wird eine lokale Videodatei hochgeladen und die hochgeladene Datei codiert. Sie können auch Inhalt codieren, den Sie über eine HTTPS-URL zugänglich machen. Weitere Informationen finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTP(S)-URL](job-input-from-http-how-to.md).
 
@@ -28,8 +28,7 @@ Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, di
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:    
 
 > [!div class="checklist"]
-> * Zugreifen auf die Media Services-API
-> * Konfigurieren der Beispiel-App
+> * Herunterladen der in diesem Thema beschriebenen Beispiel-App
 > * Überprüfen des Codes, mit dem hochgeladen, codiert und gestreamt wird
 > * Ausführen der App
 > * Testen der Streaming-URL
@@ -40,15 +39,10 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
-- Installieren und verwenden Sie die CLI lokal. Dieser Artikel erfordert mindestens Version 2.0 der Azure CLI. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
+- Führen Sie die Schritte unter [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
-    Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](https://aka.ms/ams-v3-cli-ref) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
-
-- [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
-
-    Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-
-## <a name="download-the-sample"></a>Herunterladen des Beispiels
+## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
 Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeispiel enthält, indem Sie den folgenden Befehl verwenden:  
 
@@ -58,7 +52,7 @@ Klonen Sie ein GitHub-Repository auf Ihren Computer, das das .NET-Streamingbeisp
 
 Das Beispiel befindet sich im Ordner [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles).
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+Öffnen Sie [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) im heruntergeladenen Projekt. Ersetzen Sie die Werte durch Anmeldeinformationen, die Sie durch den [Zugriff auf APIs](access-api-cli-how-to.md) abgerufen haben.
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>Überprüfen des Codes, mit dem hochgeladen, codiert und gestreamt wird
 
@@ -66,12 +60,12 @@ In diesem Abschnitt werden die Funktionen untersucht, die in der Datei „[Progr
 
 Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
-1. Erstellen einer neuen Transformation (nach vorheriger Überprüfung, ob die angegebene Transformation vorhanden ist) 
-2. Erstellen eines Ausgabemedienobjekts, das als Ausgabe des Codierungsauftrags verwendet wird
-3. Erstellen eines Eingabemedienobjekts und Hochladen der angegebenen lokalen Videodatei in das Objekt. Das Medienobjekt wird als Eingabe des Auftrags verwendet. 
+1. Erstellen einer neuen **Transformation** (nach vorheriger Überprüfung, ob die angegebene Transformation vorhanden ist) 
+2. Erstellen eines **Ausgabemedienobjekts**, das als Ausgabe des **Codierungsauftrags** verwendet wird
+3. Erstellen eines **Eingabemedienobjekts** und Hochladen der angegebenen lokalen Videodatei in das Objekt. Das Medienobjekt wird als Eingabe für den Auftrag verwendet. 
 4. Übermittlung des Codierungsauftrag mit der erstellten Ein- und Ausgabe
-5. Überprüfung des Auftragsstatus
-6. Erstellen eines Streaminglocators
+5. Überprüfen des Auftragsstatus
+6. Erstellen eines **Streaminglocators**
 7. Erstellen von Streaming-URLs
 
 ### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />Starten der Verwendung von Media Services-APIs mit dem .NET SDK
@@ -82,15 +76,15 @@ Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie e
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Erstellen eines Eingabeobjekts und Hochladen einer lokalen Datei in dieses 
 
-Die **CreateInputAsset**-Funktion erstellt ein neues [Eingabeobjekt](https://docs.microsoft.com/rest/api/media/assets) und lädt die angegebene lokale Videodatei in dieses hoch. Dieses Objekt wird als Eingabe für Ihren Codierungsauftrag verwendet. In Media Services v3 kann die Eingabe in einen Auftrag ein Objekt sein, oder es kann sich um Inhalte handeln, die Sie für Ihr Media Services-Konto über HTTPS-URLs zur Verfügung stellen. Wenn Sie erfahren möchten, wie die Codierung aus einer HTTPS-URL erfolgt, lesen Sie [diesen](job-input-from-http-how-to.md) Artikel.  
+Die **CreateInputAsset**-Funktion erstellt ein neues [Eingabeobjekt](https://docs.microsoft.com/rest/api/media/assets) und lädt die angegebene lokale Videodatei in dieses hoch. Dieses **Objekt** wird als Eingabe für Ihren Codierungsauftrag verwendet. In Media Services v3 kann die Eingabe in einen **Auftrag** ein **Objekt** sein, oder es kann sich um Inhalte handeln, die Sie für Ihr Media Services-Konto über HTTPS-URLs zur Verfügung stellen. Wenn Sie erfahren möchten, wie die Codierung aus einer HTTPS-URL erfolgt, lesen Sie [diesen](job-input-from-http-how-to.md) Artikel.  
 
 In Media Services v3 verwenden Sie Azure Storage-APIs zum Hochladen von Dateien. Im folgenden Codeausschnitt wird gezeigt, wie dies funktioniert.
 
 Die folgende Funktion führt diese Aktionen aus:
 
-* Erstellen eines Objekts 
+* Erstellen eines **Objekts** 
 * Abrufen einer nicht schreibgeschützten [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) für den [Container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container) des Objekts im Speicher
-* Hochladen der Datei in den Container im Speicher mithilfe der SAS-URL
+* Die Datei in den Container im Speicher mithilfe der SAS-URL hochladen
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
@@ -101,6 +95,7 @@ Das [Ausgabeobjekt](https://docs.microsoft.com/rest/api/media/assets) speichert 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Erstellen einer Transformation und eines Auftrags, der die hochgeladene Datei codiert
+
 Bei der Codierung oder Verarbeitung von Inhalten in Media Services besteht ein allgemeines Muster darin, die Codierungseinstellungen als eine Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine Anleitung wird in Media Services als eine **Transformation** aufgerufen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md). Das in diesem Tutorial beschriebene Beispiel definiert eine Anleitung, die das Video codiert, damit es auf eine Vielzahl von iOS- und Android-Geräte gestreamt werden kann. 
 
 #### <a name="transform"></a>Transformieren
@@ -127,33 +122,33 @@ Der Abschluss des Auftrags nimmt einige Zeit in Anspruch. Wenn er erfolgt ist, m
 
 Event Grid ist für hohe Verfügbarkeit, konsistente Leistung und dynamische Skalierung ausgelegt. Mit Event Grid können Ihre Apps Ereignisse aus praktisch allen Azure-Diensten sowie aus benutzerdefinierten Quellen überwachen und darauf reagieren. Eine einfache, HTTP-basierte, reaktive Ereignisverarbeitung hilft Ihnen mit intelligentem Filtern und Routing von Ereignissen dabei, effiziente Lösungen zu erstellen.  Weitere Informationen finden Sie unter [Routing von Ereignissen an einen benutzerdefinierten Webendpunkt](job-state-events-cli-how-to.md).
 
-Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, **In der Warteschlange**, **Verarbeitung** und **Abgeschlossen** (der letzte Zustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
+Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, **In Warteschlange**, **Wird verarbeitet**, **Abgeschlossen** (Endzustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
 
-### <a name="get-a-streaminglocator"></a>Abrufen eines StreamingLocator
+### <a name="get-a-streaming-locator"></a>Abrufen eines Streaminglocators
 
-Nachdem die Codierung abgeschlossen ist, besteht der nächste Schritt darin, das Video im Ausgabeobjekt Clients für die Wiedergabe zur Verfügung zu stellen. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
+Nachdem die Codierung abgeschlossen ist, besteht der nächste Schritt darin, das Video im Ausgabeobjekt Clients für die Wiedergabe zur Verfügung zu stellen. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
 
-Der Vorgang des Erstellens eines **StreamingLocator** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **StreamingLocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
+Der Vorgang zum Erstellen eines **Streaminglocators** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **Streaminglocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
 Beim Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie klare (oder unverschlüsselte) Inhalte, daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (**PredefinedStreamingPolicy.ClearStreamingOnly**) verwendet.
 
 > [!IMPORTANT]
-> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von StreamingPolicy-Einträgen auf. Sie sollten nicht für jeden StreamingLocator eine neue StreamingPolicy erstellen.
+> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von Streamingrichtlinieneinträgen auf. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
 
 Im folgende Code wird davon ausgegangen, dass Sie die Funktion mit einem eindeutigen locatorName aufrufen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
-Das Beispiel in diesem Thema beschäftigt sich mit Streaming. Sie können den gleichen Aufruf jedoch auch verwenden, um einen StreamingLocator für die Übermittlung von Video über progressiven Download zu erstellen.
+Das Beispiel in diesem Thema beschäftigt sich mit Streaming. Sie können den gleichen Aufruf jedoch auch verwenden, um einen Streaminglocator für die Übermittlung von Video über progressiven Download zu erstellen.
 
 ### <a name="get-streaming-urls"></a>Abrufen von Streaming-URLs
 
-Nachdem der **StreamingLocator** erstellt wurde, können Sie die Streaming-URLs wie unter [GetStreamingURLs](https://docs.microsoft.com/rest/api/media/streaminglocators) gezeigt abrufen. Um eine URL zu erstellen, müssen Sie den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)-Hostnamen und den **StreamingLocator**-Pfad miteinander verketten. In diesem Beispiel wird der *standardmäßige* **StreamingEndpoint** verwendet. Bei der erstmaligen Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **StreamingEndpoint** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
+Nachdem der **Streaminglocator** erstellt wurde, können Sie die Streaming-URLs wie unter [GetStreamingURLs](https://docs.microsoft.com/rest/api/media/streaminglocators) gezeigt abrufen. Zum Erstellen einer URL müssen Sie den Hostnamen des [Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints) und den Pfad des **Streaminglocators** miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Bei der ersten Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **Streamingendpunkt** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
 
 > [!NOTE]
-> In dieser Methode benötigen Sie den LocatorName, der beim Erstellen des **StreamingLocator** für das Ausgabeobjekt verwendet wurde.
+> In dieser Methode benötigen Sie den LocatorName, der beim Erstellen des **Streaminglocators** für das Ausgabeobjekt verwendet wurde.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 

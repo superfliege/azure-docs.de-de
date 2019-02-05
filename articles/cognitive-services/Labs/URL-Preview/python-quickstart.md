@@ -1,21 +1,21 @@
 ---
-title: 'Schnellstart: „Projekt: URL-Vorschau“, Python'
+title: 'Schnellstart: Projekt: URL-Vorschau, Python'
 titlesuffix: Azure Cognitive Services
 description: 'Skriptbeispiel für den schnellen Einstieg in die Verwendung des „Projekts: URL-Vorschau“ mit Python.'
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: ecf98803e5313812a074442b70bb376ab67e7366
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fc684e4c17c437a6f2713628f35e3a2ab7aba241
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469995"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213650"
 ---
 # <a name="quickstart-url-preview-with-python"></a>Schnellstart: URL-Vorschau mit Python
 
@@ -41,7 +41,7 @@ Er wird in den folgenden Schritten implementiert:
 
 Der vollständige Code für diese Demo sieht wie folgt aus:
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -64,7 +64,7 @@ def get_preview ():
 
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
-````
+```
 ## <a name="next-steps"></a>Nächste Schritte
 - [C#-Schnellstart](csharp.md)
 - [Java-Schnellstart](java-quickstart.md)

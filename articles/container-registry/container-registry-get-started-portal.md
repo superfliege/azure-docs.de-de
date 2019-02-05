@@ -5,21 +5,23 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 865c53fdda60f6a0384157ec68042b4b8b243a7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 93c22475a4043d1cbf5cb0ad7f9b134e8ac717cc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255362"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298414"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal
 
-Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie Ihre privaten Docker-Containerimages speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung mit dem Azure-Portal, übertragen ein Containerimage per Pushvorgang in die Registrierung und stellen den Container abschließend aus Ihrer Registrierung in Azure Container Instances (ACI) bereit.
+Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie Ihre privaten Docker-Containerimages speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung über das Azure-Portal. Übertragen Sie anschließend mithilfe von Docker-Befehlen ein Containerimage per Push in die Registrierung. Rufen Sie abschließend das Image per Pull aus der Registrierung ab, und führen Sie es aus.
 
-Diese Schnellstartanleitung setzt eine lokale Docker-Installation voraus. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
+Für diese Schnellstartanleitung müssen Sie die Azure CLI (mindestens Version 2.0.55 empfohlen) ausführen, um sich bei der Registrierung anmelden und Containerimages verwenden zu können. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+
+Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -33,143 +35,71 @@ Klicken Sie auf **Ressource erstellen** > **Container** > **Container Registry**
 
 Geben Sie Werte für **Registrierungsname** und **Ressourcengruppe** ein. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Erstellen Sie im Rahmen dieser Schnellstartanleitung eine neue Ressourcengruppe namens `myResourceGroup` am Standort `West US`, und wählen Sie für **SKU** die Option „Basic“ aus. Klicken Sie auf **Erstellen**, um die ACR-Instanz bereitzustellen.
 
-![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-03]
+![Erstellen einer Containerregistrierung im Azure-Portal][qs-portal-03]
 
-In dieser Schnellstartanleitung erstellen wir eine *Basic*-Registrierung. Azure Container Registry steht in mehreren unterschiedlichen SKUs zur Verfügung, die in der folgenden Tabelle kurz beschrieben werden. Ausführliche Details zu den einzelnen Einträgen finden Sie unter [Containerregistrierungs-SKUs][container-registry-skus].
+In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Diensttarifen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
 
-[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
+Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Containerregistrierung im Portal aus. 
 
-Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Containerregistrierung im Portal aus, und klicken Sie anschließend auf **Zugriffsschlüssel**.
+![Containerregistrierungsübersicht im Azure-Portal][qs-portal-05]
 
-![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-05]
+Notieren Sie sich den Wert unter **Anmeldeserver**. Diesen Wert benötigen Sie in den folgenden Schritten, wenn Sie über die Azure CLI und Docker Aktionen für Ihre Registrierung ausführen.
 
-Klicken Sie unter **Administratorbenutzer** auf **Aktivieren**. Notieren Sie sich die folgenden Werte:
+## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
-* Anmeldeserver
-* Username
-* password
+Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Öffnen Sie in Ihrem Betriebssystem eine Befehlsshell, und verwenden Sie den Befehl [az acr login][az-acr-login] in der Azure CLI.
 
-Diese Werte benötigen Sie in den folgenden Schritten, wenn Sie über die Docker-Befehlszeilenschnittstelle Aktionen für Ihre Registrierung ausführen.
-
-![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-06]
-
-## <a name="log-in-to-acr"></a>Anmelden bei ACR
-
-Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Verwenden Sie hierzu den Befehl [docker login][docker-login]. Ersetzen Sie *username* (Benutzername), *password* (Kennwort) und *login server* (Anmeldeserver) durch die Werte, die Sie sich im vorherigen Schritt notiert haben.
-
-```bash
-docker login --username <username> --password <password> <login server>
+```azurecli
+az acr login --name <acrName>
 ```
 
-Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück. Möglicherweise wird auch eine Sicherheitswarnung angezeigt, in der die Verwendung des `--password-stdin`-Parameters empfohlen wird. Obwohl in diesem Artikel nicht auf dessen Verwendung eingegangen werden kann, wird empfohlen, diese bewährte Methode anzuwenden. Weitere Informationen zum Befehl [docker login][docker-login] finden Sie in der entsprechenden Referenzdokumentation.
+Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück. 
 
-## <a name="push-image-to-acr"></a>Übertragen eines Images an ACR mithilfe von Push
-
-Um ein Image mithilfe von Push an Ihre Azure Container Registry-Instanz übertragen zu können, benötigen Sie zunächst ein Image. Führen Sie bei Bedarf den folgenden Befehl aus, um ein vorhandenes Image von Docker Hub abzurufen:
-
-```bash
-docker pull microsoft/aci-helloworld
-```
-
-Vor dem Übertragen an die Registrierung muss das Image mit dem ARC-Anmeldeservernamen markiert werden. Markieren Sie das Image mithilfe des Befehls [docker tag][docker-tag]. Ersetzen Sie *login server* durch den Anmeldeservernamen, den Sie sich zuvor notiert haben. Ersetzen Sie *repository name* durch einen Repositorynamen (beispielsweise **`myrepo`**), um Ihr Image in einem Repository zu platzieren.
-
-```bash
-docker tag microsoft/aci-helloworld <login server>/<repository name>/aci-helloworld:v1
-```
-
-Nun können Sie das Image mit [docker push][docker-push] per Pushvorgang an die ACR-Instanz übertragen. Ersetzen Sie *login server* durch den Anmeldeservernamen Ihrer ACR-Instanz, und ersetzen Sie *repository name* durch den Namen des Repositorys aus dem vorherigen Befehl.
-
-```bash
-docker push <login server>/<repository name>/aci-helloworld:v1
-```
-
-Beispielausgabe nach erfolgreicher Ausführung des Befehls `docker push`:
-
-```
-The push refers to repository [specificregistryname.azurecr.io/myrepo/aci-helloworld]
-31ba1ebd9cf5: Pushed
-cd07853fe8be: Pushed
-73f25249687f: Pushed
-d8fbd47558a8: Pushed
-44ab46125c35: Pushed
-5bef08742407: Pushed
-v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
-```
+[!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
 ## <a name="list-container-images"></a>Auflisten von Containerimages
 
-Navigieren Sie zum Auflisten der Images Ihrer ACR-Instanz im Portal zu Ihrer Registrierung, klicken Sie auf **Repositorys**, und wählen Sie das Repository aus, das Sie mit `docker push` erstellt haben.
+Navigieren Sie zum Auflisten der Images in Ihrer Registrierung im Portal zu Ihrer Registrierung, klicken Sie auf **Repositorys**, und wählen Sie das Repository aus, das Sie mit `docker push` erstellt haben.
 
-In diesem Beispiel wählen wir das Repository **aci-helloworld** aus. Das mit `v1` markierte Image wird unter **TAGS** angezeigt.
+In diesem Beispiel wählen wir das Repository **busybox** aus. Das mit `v1` markierte Image wird unter **TAGS** angezeigt.
 
-![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-09]
+![Auflisten von Containerimages im Azure-Portal][qs-portal-09]
 
-## <a name="deploy-image-to-aci"></a>Bereitstellen eines Images für ACI
-
-Um die Bereitstellung auf einer Instanz aus der Registrierung durchzuführen, müssen wir zum Repository (aci-helloworld) navigieren und dann auf die Auslassungszeichen neben „v1“ klicken.
-
-![Starten von Azure Container Instances über das Portal][qs-portal-10]
-
-Wählen Sie im angezeigten Kontextmenü die Option **Instanz ausführen**:
-
-![Starten des ACI-Kontextmenüs][qs-portal-11]
-
-Geben Sie unter **Containername** den Containernamen ein, vergewissern Sie sich, dass das korrekte Abonnement ausgewählt ist, und wählen Sie die vorhandene **Ressourcengruppe** „myResourceGroup“ aus. Vergewissern Sie sich, dass die Option „Öffentliche IP-Adresse“ auf **Ja** festgelegt ist, und klicken Sie anschließend auf **OK**, um die Azure-Containerinstanz zu starten.
-
-![Starten von ACI-Bereitstellungsoptionen][qs-portal-12]
-
-Wenn die Bereitstellung gestartet wurde, wird eine Kachel auf dem Portaldashboard hinzugefügt, die den Fortschritt der Bereitstellung angibt. Nachdem die Bereitstellung abgeschlossen wurde, wird die Kachel aktualisiert und zeigt die neue Containergruppe **mycontainer** an.
-
-![ACI-Bereitstellungsstatus][qs-portal-13]
-
-Wählen Sie die Containergruppe „mycontainer“ aus, um die Eigenschaften der Containergruppe anzuzeigen. Notieren Sie die **IP-Adresse** der Containergruppe und den **STATUS** des Containers.
-
-![ACI-Containerdetails][qs-portal-14]
-
-## <a name="view-the-application"></a>Anzeigen der Anwendung
-
-Sobald der Container den Status **Wird ausgeführt** aufweist, navigieren Sie mit Ihrem bevorzugten Browser zu der IP-Adresse, die Sie im vorherigen Schritt notiert haben, um die Anwendung anzuzeigen.
-
-![„Hello World“-Anwendung im Browser][qs-portal-15]
+[!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Navigieren Sie zum Bereinigen von Ressourcen im Portal zur Ressourcengruppe **myResourceGroup**. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe die Azure Container Registry und alle Azure Container Instances zu entfernen.
+Navigieren Sie zum Bereinigen von Ressourcen im Portal zur Ressourcengruppe **myResourceGroup**. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe, die Containerregistrierung und die dort gespeicherten Containerimages zu entfernen.
 
 ![Löschen der Ressourcengruppe im Azure-Portal][qs-portal-08]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Azure Container Registry mit der Azure CLI erstellt und eine Instanz davon über Azure Container Instances gestartet. Fahren Sie mit dem Azure Container Instances-Tutorial fort, um eingehendere Informationen zu ACI zu erhalten.
+In dieser Schnellstartanleitung haben Sie im Azure-Portal eine Azure Container Registry-Instanz erstellt, ein Containerimage per Push übertragen und das Image per Pull aus der Registrierung abgerufen und ausgeführt. Fahren Sie mit den Azure Container Registry-Tutorials fort, um eingehendere Informationen zu ACR zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Azure Container Instances-Tutorial][container-instances-tutorial-prepare-app]
+> [Tutorials zu Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- IMAGES -->
 [qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png
 [qs-portal-02]: ./media/container-registry-get-started-portal/qs-portal-02.png
 [qs-portal-03]: ./media/container-registry-get-started-portal/qs-portal-03.png
-[qs-portal-04]: ./media/container-registry-get-started-portal/qs-portal-04.png
 [qs-portal-05]: ./media/container-registry-get-started-portal/qs-portal-05.png
-[qs-portal-06]: ./media/container-registry-get-started-portal/qs-portal-06.png
-[qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
 [qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
 [qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png
-[qs-portal-10]: ./media/container-registry-get-started-portal/qs-portal-10.png
-[qs-portal-11]: ./media/container-registry-get-started-portal/qs-portal-11.png
-[qs-portal-12]: ./media/container-registry-get-started-portal/qs-portal-12.png
-[qs-portal-13]: ./media/container-registry-get-started-portal/qs-portal-13.png
-[qs-portal-14]: ./media/container-registry-get-started-portal/qs-portal-14.png
-[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
 [docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-pull]: https://docs.docker.com/engine/reference/commandline/pull/
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-rmi]: https://docs.docker.com/engine/reference/commandline/rmi/
+[docker-run]: https://docs.docker.com/engine/reference/commandline/run/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
+[container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[azure-cli]: /cli/azure/install-azure-cli
+[az-acr-login]: /cli/azure/acr#az-acr-login

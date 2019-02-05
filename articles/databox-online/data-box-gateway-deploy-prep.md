@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db713984b62ce3db48b2e72a4b117696bdd6add
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452971"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091545"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Data Box Gateway (Vorschauversion)
 
@@ -42,7 +42,7 @@ Führen Sie zum Bereitstellen Ihres Data Box Gateway die folgenden Tutorials in 
 | **#** | **Schritt** | **Dokumente** |
 | --- | --- | --- | 
 | 1. |**[Vorbereiten des Azure-Portals für Data Box Gateway](data-box-gateway-deploy-prep.md)** |Erstellen und konfigurieren Sie die Data Box Gateway-Ressource, bevor Sie ein virtuelles Data Box Gateway-Gerät bereitstellen. |
-| 2. |**[Bereitstellen des Data Box Gateway in Hyper-V](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[Bereitstellen des Data Box Gateway in VMware](data-box-gateway-deploy-provision-vmware.md)**|Stellen Sie für Hyper-V ein virtuelles Data Box Gateway-Gerät auf einem Hostsystem mit Hyper-V unter Windows Server 2016 oder Windows Server 2012 R2 bereit, und stellen Sie eine Verbindung mit dem Gerät her. <br><br><br> Stellen Sie für VMware ein virtuelles Data Box Gateway-Gerät auf einem Hostsystem mit VMware ESXi 6.0 oder 6.5 bereit, und stellen Sie eine Verbindung mit dem Gerät her.<br></br> |
+| 2. |**[Bereitstellen des Data Box Gateway in Hyper-V](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[Bereitstellen des Data Box Gateway in VMware](data-box-gateway-deploy-provision-vmware.md)**|Stellen Sie für Hyper-V ein virtuelles Data Box Gateway-Gerät auf einem Hostsystem mit Hyper-V unter Windows Server 2016 oder Windows Server 2012 R2 bereit, und stellen Sie eine Verbindung mit dem Gerät her. <br><br><br> Stellen Sie für VMware ein virtuelles Data Box Gateway-Gerät auf einem Hostsystem mit VMware ESXi 6.0, 6.5 oder 6.7 bereit, und stellen Sie eine Verbindung mit dem Gerät her.<br></br> |
 | 3. |**[Verbinden, Einrichten und Aktivieren des Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md)** |Stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her, führen Sie die Einrichtung durch, und aktivieren Sie das Gerät. Anschließend können Sie die SMB-Freigaben bereitstellen.  |
 | 4. |**[Übertragen von Daten mit Data Box Gateway](data-box-gateway-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
 
@@ -63,7 +63,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Gerät bereitstellen:
 
-* Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2012 R2 oder höher oder VMware (ESXi 6.0 oder 6.5), das zum Bereitstellen eines Geräts verwendet werden kann.
+* Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2012 R2 oder höher oder VMware (ESXi 6.0, 6.5 oder 6.7), das zum Bereitstellen eines Geräts verwendet werden kann.
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Data Box-Geräts über die folgenden Ressourcen:
   
   * Mindestens 4 Kerne
@@ -126,7 +126,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
 4. Klicken Sie in der Schnellstartanleitung auf der rechten Seite auf den Link für das Image, das Sie herunterladen möchten. Die Imagedateien sind ca. 4,8 GB groß.
    
    * [VHDX für Hyper-V unter Windows Server 2012 R2 und höher](https://aka.ms/dbe-vhdx-2012).
-   * [VMDK für VMWare ESXi 6.0 oder 6.5](https://aka.ms/dbe-vmdk).
+   * [VMDK für VMWare ESXi 6.0, 6.5 oder 6.7](https://aka.ms/dbe-vmdk).
 
 5. Laden Sie die Datei auf einen lokalen Datenträger herunter, und entzippen Sie sie. Notieren Sie den Speicherort der entzippten Datei.
 

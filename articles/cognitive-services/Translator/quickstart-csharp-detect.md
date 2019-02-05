@@ -6,18 +6,18 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: de5088a012a7f5fd210a5aa66805fe865cc09bbe
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 33c192009088aff3313bb970a319fa49bfca6e0e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889258"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220296"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Textsprache mit C#
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zur Erkennung der Textsprache mit C#
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mithilfe von .NET Core und der Textübersetzungs-REST-API ermitteln.
 
@@ -39,7 +39,7 @@ dotnet new console -o detect-sample
 cd detect-sample
 ```
 
-Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Er erstellt eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `detect-sample`. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
+Mit dem ersten Befehl werden zwei Aufgaben ausgeführt. Es werden eine neue .NET-Konsolenanwendung und ein Verzeichnis mit dem Namen `detect-sample` erstellt. Mit dem zweiten Befehl wird in das Verzeichnis für Ihr Projekt gewechselt.
 
 Als Nächstes müssen Sie Json.Net installieren. Führen Sie im Verzeichnis Ihres Projekts den folgenden Befehl aus:
 

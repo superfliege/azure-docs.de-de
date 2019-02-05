@@ -3,20 +3,20 @@ title: 'Schnellstart: Hinzufügen eines Gastbenutzers mit PowerShell für die Az
 description: In diesem Schnellstart erfahren Sie, wie Sie mit PowerShell eine Einladung an einen externen Benutzer für die Azure AD B2B-Zusammenarbeit senden.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: f0dc63d84ec7583e721b116b450c890d46524622
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 28a2177089fb3c93670d61da62815ff67bfd544d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986561"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094800"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen eines Gastbenutzers mit PowerShell
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen von Gastbenutzern mit PowerShell
 
 Es gibt viele Möglichkeiten, externe Partner zu Ihren Apps und Diensten für die Azure Active Directory B2B-Zusammenarbeit einzuladen. Im vorherigen Schnellstart haben Sie erfahren, wie Sie Gastbenutzer direkt im Azure Active Directory-Verwaltungsportal hinzufügen. Sie können auch PowerShell verwenden, um Gastbenutzer einzeln oder gruppenweise hinzuzufügen. In diesem Schnellstart fügen Sie mit dem Befehl „New-AzureADMSInvitation“ Ihrem Azure-Mandanten einen Gastbenutzer hinzu.
 
@@ -29,29 +29,29 @@ Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls (
 
 Überprüfen Sie zunächst, welche Module Sie installiert haben. Öffnen Sie dafür Windows PowerShell als Benutzer mit erhöhten Rechten („Als Administrator ausführen“), und führen Sie den folgenden Befehl aus:
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 Wenn das AzureADPreview-Modul keine Meldung anzeigt, dass eine neuere Version verfügbar ist, können Sie loslegen. Andernfalls müssen Sie je nach Ausgabe einen der folgenden Schritte ausführen:
 
 - Wenn keine Ergebnisse zurückgegeben werden, führen Sie den folgenden Befehl aus, um das AzureADPreview-Modul zu installieren:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, führen Sie die folgenden Befehle aus, um das AzureADPreview-Modul zu installieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, eine Meldung Sie jedoch darauf hinweist, dass eine neuere Version verfügbar ist, führen Sie die folgenden Befehle aus, um das Modul zu aktualisieren: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 Möglicherweise erscheint ein Hinweis, dass Sie das Modul aus einem nicht vertrauenswürdigen Repository installieren. Das passiert, wenn Sie das PSGallery-Repository nicht zuvor als vertrauenswürdiges Repository festgelegt haben. Drücken Sie **Y**, um das Modul zu installieren.
 

@@ -6,18 +6,18 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7e8a793362e51a05a73c0b42346e2e8fafb3f44d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469400"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210946"
 ---
-# <a name="quickstart-query-for-facts"></a>Schnellstart: Abfragen von Fakten
+# <a name="quickstart-query-for-facts"></a>Schnellstart: Abfragen für Fakten
 
 Wenn die Abfrage für einen Fakt wie ein Datum oder identifizierbares Wissen ist, kann die Antwort `facts`-Antworten enthalten. Faktantworten enthalten relevante Ergebnisse, die aus Absätzen in Webdokumenten extrahiert wurden.  Diese Abfragen geben immer Webseiten zurück, und [Fakten](fact-queries.md) und/oder [Entitäten](entity-queries.md) hängen von der Abfrage ab.
 
@@ -26,14 +26,14 @@ Abfragen wie „Valentin+2016“ und „wann+ist+Ramadan“ werden als datumsbez
 Das folgende Beispiel stellt eine datumsbezogene `facts`-Antwort dar. 
 
 **Abfrage:**
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
-````
+```
 
 **Antwort:** Das Feld `subjectName` enthält eine Anzeigeversion der Abfrage des Benutzers, die Sie beim Anzeigen des Fakts als Bezeichnung verwenden können. Wenn die Abfragezeichenfolge „Valentin+2016“ lautet, wird sie von Bing möglicherweise in „Valentinstag 2016“ geändert. Das Feld „Beschreibung“ enthält den Fakt.
 
-````
+```
 {   
     "_type" : "SearchResponse",   
     "queryContext" : {   
@@ -57,20 +57,20 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
     }   
 }   
 
-````
+```
 
 Die Abfrage „Warum ist der Himmel blau?“ gibt ein Beispiel für eine wissensbezogene Antwort zurück.
 
 **Abfrage:**
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+sky+blue
 
-````
+```
 
 **Antwort:** Das Feld `value/description` enthält das von der Abfrage angeforderte Wissen oder die Information.
 
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -112,17 +112,17 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
     ]
   },
 
-````
+```
 
 ## <a name="tabular-data"></a>Tabellarische Daten
 In einigen Fällen können Fakten als `_type: StructuredValue/TabularData` zurückgegeben werden. Die folgende Abfrage ruft Tabellendaten mit gegensätzlichen Informationen über Kaffee und Tee ab.
 
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
-````
+```
 Die `facts`-Ergebnisse enthalten die folgenden Zeilen und Zellen:
-````
+```
     "value": [
       {
         "subjectName": "Coffee vs. Tea",
@@ -196,7 +196,7 @@ Die `facts`-Ergebnisse enthalten die folgenden Zeilen und Zellen:
     ]
   },
 
-````
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [C#-Schnellstart](c-sharp-quickstart.md)

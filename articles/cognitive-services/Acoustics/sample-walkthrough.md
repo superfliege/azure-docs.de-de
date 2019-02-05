@@ -1,21 +1,21 @@
 ---
-title: 'Beispiel: „Projekt: Akustik“'
+title: 'Beispiel: Projekt: Akustik'
 titlesuffix: Azure Cognitive Services
 description: In dieser exemplarischen Vorgehensweise wird die Unity-Beispielszene für Project Acoustics mit der Bereitstellung auf dem Desktop und in einer VR beschrieben.
 services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901157"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174260"
 ---
 # <a name="unity-sample-walkthrough"></a>Exemplarische Vorgehensweise zu Unity
 Dies ist eine exemplarische Vorgehensweise zum Project Acoustics-Beispiel. Weitere Informationen dazu, was Project Acoustics ist, finden Sie unter [Introduction to Project Acoustics (Einführung in Project Acoustics)](what-is-acoustics.md). Unterstützung beim Hinzufügen des Project Acoustics-Pakets zu einem bereits vorhandenen Unity-Projekt finden Sie im [Leitfaden für erste Schritte](getting-started.md).
@@ -36,7 +36,7 @@ Das Beispiel enthält die Demoszene **Assets/AcousticsDemo/ProjectAcousticsDemo.
 
 Die Szene wurde bereits erstellt und enthält eine ACE-Datei, die dem Prefab **MicrosoftAcoustics** in der **Hierarchie** zugeordnet ist. 
 
-Hören Sie sich an, wie die Szene klingt, indem Sie im Unity-Editor auf die Wiedergabeschaltfläche klicken. Navigieren Sie auf dem Desktop mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, drücken Sie so lange die Taste **R**, bis der Überlagerungstext rot wird und besagt "Akustik: Deaktiviert". Um Tastenkombinationen für weitere Steuerelemente anzuzeigen, drücken Sie **F1**. Alle Steuerelemente können auch verwendet werden, indem Sie mit der rechten Maustaste klicken, um die auszuführende Aktion auszuwählen, und dann durch Klicken mit der linken Maustaste die Aktion ausführen.
+Hören Sie sich an, wie die Szene klingt, indem Sie im Unity-Editor auf die Wiedergabeschaltfläche klicken. Navigieren Sie auf dem Desktop mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, drücken Sie so lange die Taste **R**, bis der Überlagerungstext rot wird und „Akustik: Deaktiviert“ lautet. Um Tastenkombinationen für weitere Steuerelemente anzuzeigen, drücken Sie **F1**. Alle Steuerelemente können auch verwendet werden, indem Sie mit der rechten Maustaste klicken, um die auszuführende Aktion auszuwählen, und dann durch Klicken mit der linken Maustaste die Aktion ausführen.
 
 ## <a name="targeting-other-platforms"></a>Verwenden von anderen Plattformen als Ziel
 Das Beispiel enthält Einstellungen zum Ausführen unter Windows Desktop, UWP, Windows Mixed Reality, Android und Oculus Go. Standardmäßig ist das Projekt für Windows Desktop konfiguriert. Wenn Sie eine VR-Plattform als Ziel verwenden möchten, wechseln Sie zu den Playereinstellungen (**Edit > Project Settings > Player** (Bearbeiten > Projekteinstellungen > Player)), suchen Sie die **XR Settings** (VR-Einstellungen), und aktivieren Sie das Kontrollkästchen **Virtual Reality Supported** (Virtuelle Realität unterstützen).

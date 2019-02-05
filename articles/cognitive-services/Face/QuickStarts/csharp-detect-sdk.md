@@ -6,18 +6,18 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: pafarley
-ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: caaef0f7fdbfc3ad639deddb328c98334ad3e99d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578150"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213309"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit dem Face .NET SDK
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit dem Azure Face .NET SDK
 
 In dieser Schnellstartanleitung verwenden Sie das Face Service SDK mit C#, um menschliche Gesichter in einem Bild zu erkennen. Ein praktisches Beispiel des Codes aus dieser Schnellstartanleitung finden Sie im Gesichtserkennungsprojekt im Repository [Cognitive Services Vision csharp quickstarts](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) (Csharp-Schnellstartanleitungen für maschinelles Sehen mit Cognitive Services) auf GitHub.
 
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Abonnementschlüssel für die Gesichtserkennungs-API Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
