@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f5d48559592fa98df5e4f10fc89e137d06e3e166
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3e11c58dcc5f5c68e9fe081cc47cf2fa18e9e57
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079204"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697892"
 documentType: LandingData
 title: Dokumentation zum bedingten Zugriff mit Azure AD
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: 'Dokumentation zum bedingten Zugriff mit Azure Active Directory: Tutorials, Schnellstartanleitungen, Konzepte, Referenzen | Microsoft-Dokumentation'
   description: Hier erfahren Sie, wie Sie den bedingten Zugriff für Azure Active Directory konfigurieren und testen.
   services: active-directory
-  ms.subservice: authentication
+  ms.subservice: conditional-access
   author: MarkusVi
   manager: daveba
   ms.service: active-directory
