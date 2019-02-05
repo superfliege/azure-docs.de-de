@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80d9d447a86b58c8d6db5a62d3b0df997e42f673
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172373"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric-Hostingmodell
 Dieser Artikel bietet einen Überblick über von Azure Service Fabric bereitgestellte Anwendungshostingmodelle und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er veranschaulicht grafisch die Bereitstellung einer Anwendung auf einem Service Fabric-Knoten beschreibt und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem Dienst-Host-Prozess.
@@ -150,7 +150,7 @@ In bestimmten Fällen erlaubt Service Fabric auch mehrere *ServiceTypes* pro *Se
 
 Das Hostingmodell mit einem exklusiven Prozess ist nicht kohärent mit einem Anwendungsmodell, das über mehrere *ServiceTypes* pro *ServicePackage* verfügt. Grund hierfür ist, dass mehrere *ServiceTypes* pro *ServicePackage* dafür ausgelegt sind, eine höhere gemeinsame Ressourcennutzung von Replikaten zu erreichen. Zudem ermöglichen sie eine höhere Replikatdichte pro Prozess. Das Modell mit einem exklusiven Prozess ist für andere Ergebnisse konzipiert.
 
-Betrachten Sie den Fall mehrerer *ServiceTypes* pro *ServicePackage*, wobei jeder *ServiceType* von einem anderen *CodePackage* registriert wird. Angenommen, Sie haben ein *ServicePackage* „MultiTypeServicePackge“ mit zwei *CodePackages*:
+Betrachten Sie den Fall mehrerer *ServiceTypes* pro *ServicePackage*, wobei jeder *ServiceType* von einem anderen *CodePackage* registriert wird. Angenommen, Sie haben ein *ServicePackage* „MultiTypeServicePackage“ mit zwei *CodePackages*:
 
 - „MyCodePackageA“ registriert *ServiceType* „MyServiceTypeA“.
 - „MyCodePackageB“ registriert *ServiceType* „MyServiceTypeB“.
@@ -160,15 +160,15 @@ Jetzt erstellen Sie die Anwendung **fabric:/SpecialApp**. In **fabric:/SpecialAp
 - Den Dienst **fabric:/SpecialApp/ServiceA** vom Typ „MyServiceTypeA“ mit zwei Partitionen (**P1** und **P2**) und drei Replikaten pro Partition.
 - Den Dienst **fabric:/SpecialApp/ServiceB** vom Typ „MyServiceTypeB“ mit zwei Partitionen (**P3** und **P4**) und drei Replikaten pro Partition.
 
-Beide Dienste verfügen auf jedem Knoten über je zwei Replikate. Da Sie das Modell mit einem exklusiven Prozess zum Erstellen der Dienste verwendet haben, aktiviert Service Fabric eine neue Kopie von „MyServicePackage“ für jedes Replikat. Jede Aktivierung von „MultiTypeServicePackge“ startet eine Kopie von „MyCodePackageA“ und „MyCodePackageB“. Allerdings wird das Replikat, für das „MultiTypeServicePackge“ aktiviert wurde, nur entweder von „MyCodePackageA“ oder „MyCodePackageB“ gehostet. Das folgende Diagramm zeigt die Knotenansicht:
+Beide Dienste verfügen auf jedem Knoten über je zwei Replikate. Da Sie das Modell mit einem exklusiven Prozess zum Erstellen der Dienste verwendet haben, aktiviert Service Fabric eine neue Kopie von „MyServicePackage“ für jedes Replikat. Jede Aktivierung von „MultiTypeServicePackage“ startet eine Kopie von „MyCodePackageA“ und „MyCodePackageB“. Allerdings wird das Replikat, für das „MultiTypeServicePackage“ aktiviert wurde, nur entweder von „MyCodePackageA“ oder „MyCodePackageB“ gehostet. Das folgende Diagramm zeigt die Knotenansicht:
 
 
 ![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-five]
 
 
-In der Aktivierung von „MultiTypeServicePackge“ für das Replikat der Partition **P1** des Diensts **fabric:/SpecialApp/ServiceA** hostet „MyCodePackageA“ das Replikat. „MyCodePackageB“ wird ausgeführt. Gleiches gilt für die Aktivierung von „MultiTypeServicePackge“ für das Replikat der Partition **P3** des Diensts **fabric:/SpecialApp/ServiceB**: „MyCodePackageB“ hostet das Replikat, „MyCodePackageA“ wird ausgeführt. Daher gilt: Je höher die Anzahl von *CodePackages* (die verschiedene *ServiceTypes* registrieren) pro *ServicePackage* ist, desto höher wird die redundante Ressourcenverwendung. 
+In der Aktivierung von „MultiTypeServicePackage“ für das Replikat der Partition **P1** des Diensts **fabric:/SpecialApp/ServiceA** hostet „MyCodePackageA“ das Replikat. „MyCodePackageB“ wird ausgeführt. Gleiches gilt für die Aktivierung von „MultiTypeServicePackage“ für das Replikat der Partition **P3** des Diensts **fabric:/SpecialApp/ServiceB**: „MyCodePackageB“ hostet das Replikat. „MyCodePackageA“ wird ausgeführt. Daher gilt: Je höher die Anzahl von *CodePackages* (die verschiedene *ServiceTypes* registrieren) pro *ServicePackage* ist, desto höher wird die redundante Ressourcenverwendung. 
  
- Wenn Sie jedoch die Dienste **fabric:/SpecialApp/ServiceA** und **fabric:/SpecialApp/ServiceB** mit dem Modell mit einem gemeinsam genutzten Prozess erstellen, aktiviert Service Fabric nur eine Kopie von „MultiTypeServicePackge“ für die Anwendung **fabric:/SpecialApp**. „MyCodePackageA“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceA**. „MyCodePackageB“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceB**. Das folgende Diagramm zeigt die Knotensicht in dieser Einstellung: 
+ Wenn Sie jedoch die Dienste **fabric:/SpecialApp/ServiceA** und **fabric:/SpecialApp/ServiceB** mit dem Modell mit einem gemeinsam genutzten Prozess erstellen, aktiviert Service Fabric nur eine Kopie von „MultiTypeServicePackage“ für die Anwendung **fabric:/SpecialApp**. „MyCodePackageA“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceA**. „MyCodePackageB“ hostet alle Replikate für den Dienst **fabric:/SpecialApp/ServiceB**. Das folgende Diagramm zeigt die Knotensicht in dieser Einstellung: 
 
 
 ![Diagramm der Knotenansicht der bereitgestellten Anwendung][node-view-six]

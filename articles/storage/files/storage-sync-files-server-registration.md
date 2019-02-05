@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: files
+ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002551"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478065"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -191,5 +191,6 @@ Wenn die Azure-Dateisynchronisierung auf einem virtuellen Computer auf einem Win
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
-- [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md) 
+- [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md)
+- [Überwachen der Azure-Dateisynchronisierung](storage-sync-files-monitoring.md)
 - [Problembehandlung für die Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md)

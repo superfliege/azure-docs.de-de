@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258730"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168412"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
 Beim Packen einer vorhandenen ausführbaren Datei als [ausführbare Gastanwendungsdatei](service-fabric-guest-executables-introduction.md) können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
@@ -143,7 +143,7 @@ Das Element „CodePackage“ gibt den Speicherort (und die Version) des Dienstc
 
 Das Element `Name` wird verwendet, um den Namen des Verzeichnisses im Anwendungspaket anzugeben, das den Dienstcode enthält. `CodePackage` weist auch das `version`-Attribut auf. Es kann verwendet werden, um die Version des Codes anzugeben. Außerdem kann es dazu genutzt werden, den Dienstcode mithilfe der Infrastruktur für die Anwendungslebenszyklusverwaltung in Service Fabric zu aktualisieren.
 
-#### <a name="optional-update-setupentrypoint"></a>Optional: Aktualisieren von SetupEntryPoint
+#### <a name="optional-update-setupentrypoint"></a>Optional: Aktualisieren von SetupEntrypoint
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -302,4 +302,4 @@ In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowi
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), einschließlich eines Links zur Vorabversion des Packtools
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
 * [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
-* [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
+* [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-tutorial-create-dotnet-app.md)

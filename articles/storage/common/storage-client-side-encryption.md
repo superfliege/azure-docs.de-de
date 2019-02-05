@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: common
+ms.openlocfilehash: 2f646df3cab0320b574023cd543015921c640cab
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140518"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478320"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -241,7 +241,7 @@ Wenn die Entität "TableEntity" implementiert, können die Eigenschaften, wie be
 Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Leistungsaufwand verursacht. Der Inhaltsschlüssel und der IV müssen generiert, der Inhalt selbst muss verschlüsselt, und zusätzliche Metadaten müssen formatiert und hochgeladen werden. Dieser Aufwand variiert abhängig von der Menge der zu verschlüsselnden Daten. Es empfiehlt sich, dass Kunden ihre Anwendungen während der Entwicklung immer hinsichtlich der Leistung testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure-Schlüsseltresor](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage mit Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Laden Sie die [Azure Storage-Clientbibliothek für das .NET NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Storage)
 * Laden Sie die Azure Key Vault-NuGet-Pakete [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) und [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) herunter.  
 * Anzeigen der [Azure Key Vault-Dokumentation](../../key-vault/key-vault-whatis.md)

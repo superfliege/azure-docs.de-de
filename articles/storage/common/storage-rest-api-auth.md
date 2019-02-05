@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 08a86e1b2808a0778734edecc9385f4d61779b25
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529310"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476195"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -64,7 +64,7 @@ Sehen Sie sich in der REST-API-Referenz die Seite zum [ListContainers](/rest/api
 
 **Anforderungsmethode**: GET. Dieses Verb ist die HTTP-Methode, die Sie als Eigenschaft des Anforderungsobjekts angeben. Andere Werte für dieses Verb sind HEAD, PUT und DELETE – je nach aufgerufener API.
 
-**Anforderungs-URI:** https://myaccount.blob.core.windows.net/?comp=list Dieser URI wird aus dem Blob Storage-Kontoendpunkt `http://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
+**Anforderungs-URI**: https://myaccount.blob.core.windows.net/?comp=list. Dieser URI wird aus dem Blob Storage-Kontoendpunkt `http://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
 
 [URI-Parameter](/rest/api/storageservices/List-Containers2#uri-parameters): Es sind zusätzliche Abfrageparameter vorhanden, die Sie beim Aufrufen von ListContainers verwenden können. Zwei dieser Parameter sind *timeout* für den Aufruf (in Sekunden) und *prefix* für die Filterung.
 
@@ -76,7 +76,7 @@ Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ress
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Anforderungsheader](/rest/api/storageservices/List-Containers2#request-headers)**:** In diesem Abschnitt sind die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
+[Anforderungsheader](/rest/api/storageservices/List-Containers2#request-headers)**:** In diesem Abschnitt werden die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
 
 [Anforderungstext](/rest/api/storageservices/List-Containers2#request-body)**:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) beschrieben.
 
@@ -204,7 +204,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Antworttext (XML):** Für ListContainers wird hier die Liste mit den Containern und den dazugehörigen Eigenschaften angezeigt.
+**Antworttext (XML):** Für ListContainers wird hier die Liste der Container mit den zugehörigen Eigenschaften angezeigt.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -283,24 +283,24 @@ In diesem Codeausschnitt wird das Format der Signaturzeichenfolge für den gemei
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 Die meisten dieser Felder werden nur selten verwendet. Für Blobspeicher geben Sie „VERB“, „md5“, „content length“, „Canonicalized Headers“ und „Canonicalized Resource“ an. Sie können die anderen Felder leer lassen (mit Angabe von `\n`, damit klar ist, dass sie leer sind).
 
-Was sind CanonicalizedHeaders und CanonicalizedResource? Gute Frage. Was bedeutet „canonicalized“ eigentlich? In Microsoft Word wird dieser Begriff gar nicht als Wort erkannt. Bei [Wikipedia ist die folgende Definition von „Canonicalization“ zu finden](http://en.wikipedia.org/wiki/Canonicalization): *In computer science, canonicalization (sometimes standardization or normalization) is a process for converting data that has more than one possible representation into a "standard", "normal", or canonical form.* (In der Computerwissenschaft ist „Canonicalization“ (Deutsch: Vereinheitlichung; auch als Standardisierung oder Normalisierung bezeichnet) ein Prozess zum Konvertieren von Daten, für die mehr als eine Art der Darstellung möglich ist, in eine „Standardform“, „Normalform“ oder „kanonische Form“.) Vereinfacht ausgedrückt heißt dies, dass die Elemente einer Liste (bei vereinheitlichten Headern also beispielsweise Header) in ein erforderliches Format standardisiert werden. Microsoft hat sich quasi für ein Format entschieden, und Sie müssen es einhalten.
+Was sind CanonicalizedHeaders und CanonicalizedResource? Gute Frage. Was bedeutet „canonicalized“ eigentlich? In Microsoft Word wird dieser Begriff gar nicht als Wort erkannt. [Wikipedia sagt über Kanonisierung](http://en.wikipedia.org/wiki/Canonicalization) Folgendes: *In computer science, canonicalization (sometimes standardization or normalization) is a process for converting data that has more than one possible representation into a "standard", "normal", or canonical form.* (In der Computerwissenschaft ist „Canonicalization“ (Deutsch: Vereinheitlichung, auch als Standardisierung oder Normalisierung bezeichnet) ein Prozess zum Konvertieren von Daten, für die mehr als eine Art der Darstellung möglich ist, in eine „Standardform“, „Normalform“ oder „kanonische Form“.) Vereinfacht ausgedrückt heißt dies, dass die Elemente einer Liste (bei vereinheitlichten Headern also beispielsweise Header) in ein erforderliches Format standardisiert werden. Microsoft hat sich quasi für ein Format entschieden, und Sie müssen es einhalten.
 
 Wir beginnen mit diesen beiden vereinheitlichten Feldern, da sie erforderlich sind, um den Autorisierungsheader zu erstellen.
 
@@ -512,7 +512,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Antworttext (XML):** In dieser XML-Antwort wird die Liste mit Blobs und den dazugehörigen Eigenschaften angezeigt. 
+**Antworttext (XML):** In dieser XML-Antwort wird die Liste der Blobs und der zugehörigen Eigenschaften angezeigt. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

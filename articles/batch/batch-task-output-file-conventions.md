@@ -3,7 +3,7 @@ title: Beibehalten von Auftrags- und Taskausgaben in Azure Storage mit der Datei
 description: Erfahren Sie, wie Sie die Azure Batch-Dateikonventionenbibliothek für .NET verwenden, um Auftrags- und Taskausgaben von Batch in Azure Storage dauerhaft zu speichern und die persistente Ausgabe im Azure-Portal anzuzeigen.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f6ac523d7944f80da1b75993bfd05d617eb8f85
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706601"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472982"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -115,7 +115,7 @@ Der `kind`-Parameter der [TaskOutputStorage](https://msdn.microsoft.com/library/
 Mit diesen Ausgabetypen können Sie angeben, welche Typen von Ausgaben aufgelistet werden, wenn Sie die beibehaltenen Ausgaben eines bestimmten Tasks später in Batch abfragen. Beim Auflisten der Ausgaben für einen Task können Sie die Liste also nach einem der Ausgabetypen filtern. Beispiel: „*preview*-Ausgabe für Task *109* abrufen.“ Weitere Informationen zum Auflisten und Abrufen von Ausgaben finden Sie unter [Abrufen der Ausgabe](#retrieve-output) weiter unten in diesem Artikel.
 
 > [!TIP]
-> Die Art der Ausgabe bestimmt auch, wo eine bestimmte Datei im Azure-Portal angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden unter **Taskausgabedateien** angezeigt, als *TaskLog* kategorisierte Dateien unter **Taskprotokolle**.
+> Die Art der Ausgabe bestimmt auch, wo im Azure-Portal eine bestimmte Datei angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden unter **Aufgabenausgabedateien** und *TaskLog*-Dateien unter **Aufgabenprotokolle** angezeigt.
 
 ### <a name="store-job-outputs"></a>Speichern von Auftragsausgaben
 

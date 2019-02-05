@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4c5243ec14a4494222168bb33b3e840b96f8465e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3d7bbdb25815027625b6f56b25e64c4a07b3728f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345253"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222489"
 ---
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -117,7 +117,7 @@ void initializeRecoClient()
 Die Clientbibliothek bietet vorab implementierte Erkennungsclientklassen für typische Spracherkennungsszenarien:
 
 * `DataRecognitionClient`: Spracherkennung mit PCM-Daten (etwa aus einer Datei oder Audiodatenquelle). Die Daten werden in Puffer aufgeteilt, und die einzelnen Puffer werden an den Speech-Dienst gesendet. Die Puffer bleiben unverändert. Der Benutzer kann also auf Wunsch seine eigene Stille-Erkennung anwenden. Wenn die Daten aus WAV-Dateien stammen, können Daten aus der Datei direkt an den Speech-Dienst gesendet werden. Im Falle von unformatierten Daten (etwa Bluetooth-Audio) müssen Sie zunächst einen Formatheader an den Speech-Dienst senden und anschließend die Daten.
-* `MicrophoneRecognitionClient`: Spracherkennung mit Audio vom Mikrofon. Vergewissern Sie sich, dass das Mikrofon eingeschaltet ist und die Daten vom Mikrofon an den Spracherkennungsdienst gesendet werden. Auf die Mikrofondaten wird eine integrierte Stille-Erkennung angewendet, bevor sie an den Erkennungsdienst gesendet werden.
+* `MicrophoneRecognitionClient`: Spracherkennung mit Audiodaten vom Mikrofon. Vergewissern Sie sich, dass das Mikrofon eingeschaltet ist und die Daten vom Mikrofon an den Spracherkennungsdienst gesendet werden. Auf die Mikrofondaten wird eine integrierte Stille-Erkennung angewendet, bevor sie an den Erkennungsdienst gesendet werden.
 * `DataRecognitionClientWithIntent` und `MicrophoneRecognitionClientWithIntent`: Diese Clients geben neben dem erkannten Text auch strukturierte Informationen zur Absicht des Sprechers zurück, die als Grundlage für weitere Anwendungsaktionen verwendet werden können. Zur Verwendung von Absichten müssen Sie zunächst mithilfe von [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) ein Modell trainieren.
 
 ### <a name="recognition-language"></a>Erkennungssprache
@@ -135,9 +135,9 @@ Bei der Clienterstellung mit `SpeechRecognitionServiceFactory` muss außerdem `S
 
 An den erstellten Client können verschiedene Ereignishandler angefügt werden:
 
-* **Ereignisse für Teilergebnisse:** Diese Ereignisse werden jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorauszusagen.
-* **Fehlerereignisse:** Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
-* **Absichtsereignisse:** Werden für Clients vom Typ „WithIntent“ (nur im Modus `ShortPhrase`) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
+* **Ereignisse für Teilergebnisse**: Dieses Ereignis wird jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorauszusagen.
+* **Fehlerereignisse**: Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
+* **Absichtsereignisse**: Werden für Clients vom Typ „WithIntent“ (nur im Modus `ShortPhrase`) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
 * **Ergebnisereignisse:**
   * Im Modus `ShortPhrase` wird dieses Ereignis aufgerufen und gibt die n besten Ergebnisse zurück, wenn Sie mit dem Sprechen fertig sind.
   * Im Modus `LongDictation` kann der Ereignishandler mehrmals aufgerufen werden (abhängig davon, wo der Dienst Pausen zwischen Sätzen erkennt).

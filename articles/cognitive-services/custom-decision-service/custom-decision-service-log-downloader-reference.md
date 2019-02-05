@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 8c5ab0e297690f1fbdb41a2627dd63c3ea522d1b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 227caaa1b726210fd498596d716aa41365a63c7a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366811"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228116"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -24,9 +24,9 @@ Herunterladen von Protokolldateien, die von Azure Custom Decision Service generi
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Python 3: Installiert und in Ihrem Pfad vorhanden. Es wird empfohlen, die 64-Bit-Version zum Verarbeiten großer Dateien zu verwenden.
-- Das Repository *Microsoft/mwt-ds*: [Klonen des Repositorys](https://github.com/Microsoft/mwt-ds).
+- Das *Microsoft/mwt-ds*-Repository: [Klonen Sie das Repository](https://github.com/Microsoft/mwt-ds).
 - Das *azure-storage-blob*-Paket: Ausführliche Informationen zur Installation finden Sie unter [Microsoft Azure Storage-Bibliothek für Python](https://github.com/Azure/azure-storage-python#option-1-via-pypi).
-- Geben Sie Ihre Azure-Speicherverbindungszeichenfolge in *mwt-ds/DataScience/ds.config* ein: Verwenden Sie die Vorlage *my_app_id: Eigene_Verbindungszeichenfolge*. Sie können mehrere `app_id` angeben. Wenn Sie `LogDownloader.py` ausführen und die Eingabe `app_id` in `ds.config` nicht gefunden wird, verwendet `LogDownloader.py` die `$Default`-Verbindungszeichenfolge.
+- Geben Sie Ihre Azure Storage-Verbindungszeichenfolge in *mwt-ds/DataScience/ds.config* ein: Verwenden Sie die *my_app_id: my_connectionString*-Vorlage. Sie können mehrere `app_id` angeben. Wenn Sie `LogDownloader.py` ausführen und die Eingabe `app_id` in `ds.config` nicht gefunden wird, verwendet `LogDownloader.py` die `$Default`-Verbindungszeichenfolge.
 
 ## <a name="usage"></a>Verwendung
 

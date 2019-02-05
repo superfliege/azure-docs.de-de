@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 9ad0579ff9c25753b1e4816b80948b4d8d1232f7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082342"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185809"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Unterstützte Features in Application Insights für Azure Functions
 
@@ -40,6 +40,7 @@ Azure Functions bietet [von Haus aus Integration](https://docs.microsoft.com/azu
 | | | | 
 | **Unterstützte Features**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | JA             | JA               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Sicherer Steuerkanal|                 | JA               | 
 | &bull; Stichprobenentnahme                     | JA             | JA               | 
 | &bull; Heartbeats                   |                 | JA               | 
 | | | | 
@@ -50,6 +51,10 @@ Azure Functions bietet [von Haus aus Integration](https://docs.microsoft.com/azu
 | **Konfigurierbar**                      |                   |                   |           
 | &bull;Vollständig konfigurierbar.<br/>Anweisungen finden Sie unter [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852).<br/>Alle Optionen finden Sie unter [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration).               |                   | JA                   | 
 
+
+## <a name="live-metrics--secure-control-channel"></a>Livemetriken und sicherer Steuerkanal
+
+Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Sie können den Kanal mit einem geheimen API-Schlüssel sicher machen. Anleitungen dazu finden Sie unter [Sichern des Steuerkanals](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel).
 
 ## <a name="sampling"></a>Stichproben
 

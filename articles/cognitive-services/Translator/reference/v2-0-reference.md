@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 57058e9a86a338738315a08f218978e20fae95e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127855"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463224"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -84,7 +84,7 @@ Anforderungsinhaltstyp: application/xml
 |zu|(leer) |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
 |contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind text/plain (Standard) und text/html. Jede HTML muss ein wohlgeformtes vollständiges Element sein.|query|Zeichenfolge|
 |category|(leer)   |Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.|query|Zeichenfolge|
-|Autorisierung|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken: „Bearer“ + „ „ (Leerzeichen) + „access_token“.|Header|Zeichenfolge|
+|Autorisierung|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 
@@ -134,7 +134,7 @@ Elemente innerhalb des `TranslateArrayRequest` sind:
 * `options`: Optional. Ein `Options`-Objekt, das die unten aufgeführten Werte enthält. Diese sind alle optional und sind Standardwerte für die häufigsten Einstellungen. Angegebene Element müssen in alphabetischer Reihenfolge aufgelistet werden.
     - `Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.
     - `ContentType`: Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind `text/plain` (Standard), `text/xml` und `text/html`. Jede HTML muss ein wohlgeformtes vollständiges Element sein.
-    - `ProfanityAction`: Gibt an, wie Obszönitäten behandelt werden (so wie oben beschrieben). Akzeptierte Werte von `ProfanityAction` sind `NoAction` (Standard), `Marked` und `Deleted`.
+    - `ProfanityAction`: Gibt an, wie Obszönitäten behandelt werden (wie oben beschrieben). Akzeptierte Werte von `ProfanityAction` sind `NoAction` (Standard), `Marked` und `Deleted`.
     - `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
     - `Uri`: Filterergebnisse von diesem URI. Standard: `all`
     - `User`: Filterergebnisse von diesem Benutzer. Standard: `all`
@@ -145,12 +145,12 @@ Optionale Elemente können ausgelassen werden. Elemente, die direkte untergeordn
 
 Die TranslateArray-Methode akzeptiert `application/xml` oder `text/xml` für `Content-Type`.
 
-**Rückgabewert:** ein `TranslateArrayResponse`-Array. Jede `TranslateArrayResponse` verfügt über folgende Elemente:
+**Rückgabewert:** Ein `TranslateArrayResponse`-Array. Jede `TranslateArrayResponse` verfügt über folgende Elemente:
 
-* `Error`: gibt einen Fehler an, falls einer aufgetreten ist. Andernfalls ist das Element auf NULL festgelegt.
-* `OriginalSentenceLengths`: Ein Array von Integern, das die Länge jedes Satzes im Quelltext angibt. Die Länge des Arrays gibt die Anzahl der Sätze an.
-* `TranslatedText`: Übersetzter Text
-* `TranslatedSentenceLengths`: Ein Array von Integern, das die Länge jedes Satzes im übersetzten Text angibt. Die Länge des Arrays gibt die Anzahl der Sätze an.
+* `Error`: Gibt einen Fehler an, wenn ein Fehler aufgetreten ist. Andernfalls ist das Element auf NULL festgelegt.
+* `OriginalSentenceLengths`: Ein Array von Integerwerten, das die Länge jedes Satzes im ursprünglichen Ausgangstext angibt. Die Länge des Arrays gibt die Anzahl der Sätze an.
+* `TranslatedText`: Der übersetzte Text.
+* `TranslatedSentenceLengths`: Ein Array von Integerwerten, das die Länge jedes Satzes im übersetzten Text angibt. Die Länge des Arrays gibt die Anzahl der Sätze an.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Gibt den gleichen Inhalt wie in der Anforderung zurück.
 
 Das Format des Antworttexts sieht wie folgt aus.
@@ -183,7 +183,7 @@ Anforderungsinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|Autorisierung|(leer) |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken: „Bearer“ + „ „ (Leerzeichen) + „access_token“.|Header|Zeichenfolge|
+|Autorisierung|(leer) |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -311,7 +311,7 @@ Gibt einen Wave- oder MP3-Stream des übergebenen Texts zurück, der in der gew�
 
 Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/Speak`.
 
-**Rückgabewert:** Gibt einen Wave- oder MP3-Stream des übergebenen Texts zurück, der in der gewünschten Sprache gesprochen wird.
+**Rückgabewert:** Eine Wave- oder MP3-Stream des übergebenen Texts, der in der gewünschten Sprache gesprochen wird.
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 
@@ -347,7 +347,7 @@ Verwenden Sie die `Detect`-Methode, um die Sprache einer ausgewählten Textpassa
 
 Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/Detect`.
 
-**Rückgabewert:** Eine Zeichenfolge, die den Sprachcode mit zwei Zeichen für den angegebenen Text enthält. .
+**Rückgabewert:** Eine Zeichenfolge, die einen aus zwei Zeichen bestehenden Sprachcode für den angegebenen Text enthält. .
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 
@@ -392,7 +392,7 @@ Das Format des Anforderungstexts sollte wie Folgt aussehen.
 
 Die Textgröße darf 10.000 Zeichen nicht überschreiten.
 
-**Rückgabewert:** Ein Zeichenfolgenarray, das Sprachcodes mit zwei Zeichen für jede Zeile des Eingabearrays enthält.
+**Rückgabewert:** Ein Zeichenfolgenarray, das aus zwei Zeichen bestehende Sprachcodes für jede Zeile des Eingabearrays enthält.
 
 Das Format des Antworttexts sieht wie folgt aus.
 
@@ -525,7 +525,7 @@ Anforderungsinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken: „Bearer“ + „ „ (Leerzeichen) + „access_token“.|Header|Zeichenfolge|
+|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -545,7 +545,7 @@ Unterteilt eine Textpassage in einzelne Sätze und gibt ein Array zurück, das d
 
 Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/BreakSentences`.
 
-**Rückgabewert:** Ein Integerarray, das die Längenwerte der Sätze darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte die Länge jedes Satzes.
+**Rückgabewert:** Ein Integerarray stellt die Länge der Sätze dar. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 Ein Integerarray stellt die Länge der Sätze dar. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
@@ -561,7 +561,7 @@ Anforderungsinhaltstyp: application/xml
 |appid|(leer)  |Erforderlich. Wenn der Header „Authorization“ oder „Ocp-Apim-Subscription-Key“ verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die „Bearer“ + „ „ (Leerzeichen) + „access_token“ enthält.|query| Zeichenfolge|
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die den Text darstellt, der in Sätze aufgeteilt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|query|Zeichenfolge|
 |Language   |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Eingabetexts darstellt.|query|Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken: „Bearer“ + „ „ (Leerzeichen) + „access_token“.    |Header|Zeichenfolge|
+|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.    |Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -596,18 +596,18 @@ Der Anforderungstext enthält das optional TranslationOptions-Objekt, das folgen
 Das `TranslateOptions`-Objekt enthält die unten aufgeführten Werte. Diese sind alle optional und sind Standardwerte für die häufigsten Einstellungen. Angegebene Element müssen in alphabetischer Reihenfolge aufgelistet werden.
 
 * `Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.
-* `ContentType`: „text/plain“ ist die einzige unterstützte bzw. Standardversion.
+* `ContentType`: „text/plain“ ist die einzige unterstützte bzw. die Standardversion.
 * `IncludeMultipleMTAlternatives`: boolesches Flag zur Bestimmung, ob mehr als eine Alternative von der MT-Engine zurückgegeben werden soll. Gültige Werte sind „true“ und „false“ (mit Berücksichtigung der Groß- und Kleinschreibung). Der Standardwert ist „false“ und enthält nur eine Alternative. Wenn Sie das Flag auf „true“ festlegen, ist die Erstellung künstlicher Alternativen in der Übersetzung möglich, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature lässt zu, dass Alternativen für Sätze zurückgegeben werden dürfen, die keine Alternativen im CTF besitzen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der N-besten Liste des Decoders.
-    - Bewertungen: Die Bewertungen werden wie folgt angewendet: 1) Die beste automatische Übersetzung hat die Bewertung von 5. 2) Die Alternativen von CTF spiegeln die Autorität des Reviewers von –10 bis +10 wieder. 3) Die automatisch generierten (N-beste) Übersetzungsalternativen verfügen über eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
+    - Bewertungen: Die Bewertungen werden wie folgt angewendet: 1) Die beste automatische Übersetzung hat eine Bewertung von 5. 2) Die Alternativen von CTF spiegeln die Autorität des Reviewers von –10 bis +10 wieder. 3) Die automatisch generierten (N-beste) Übersetzungsalternativen verfügen über eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
     - Anzahl der Alternativen: Die Anzahl zurückgegebener Alternativen geht bis zu „maxTranslations“, es kann aber auch weniger sein.
-    - Sprachpaare: Diese Funktion ist für Übersetzungen zwischen einfachem und traditionellem Chinesisch in beiden Richtungen nicht verfügbar. Sie ist für alle anderen von Microsoft Translator unterstützten Sprachpaare verfügbar.
+    - Sprachpaare: Diese Funktion ist für Übersetzungen zwischen einfachem und traditionellem Chinesisch in beiden Richtungen nicht verfügbar. Sie ist für alle anderen von Microsoft Translator unterstützten Sprachenpaare verfügbar.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
 * `Uri`: Filterergebnisse von diesem URI. Wenn kein Wert festgelegt ist, lautet der Standardwert „alle“.
 * `User`: Filterergebnisse von diesem Benutzer. Wenn kein Wert festgelegt ist, lautet der Standardwert „alle“.
 
 Anforderung `Content-Type` sollte `text/xml` sein.
 
-**Rückgabewert:** Das Format der Antwort lautet wie folgt.
+**Rückgabewert:** Das Format der Antwort sieht folgendermaßen aus.
 
 ```
 <GetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
@@ -628,18 +628,18 @@ Anforderung `Content-Type` sollte `text/xml` sein.
 
 Dies schließt ein `GetTranslationsResponse`-Element ein, das folgende Werte enthält:
 
-* `Translations`: Ein Array gefundener Übereinstimmungen, gespeichert in TranslationMatch-Objekten (siehe unten). Die Übersetzungen können leichte Abweichungen des Originaltexts enthalten (Fuzzyübereinstimmung). Die Übersetzungen werden sortiert: 100 %-Übereinstimmungen zuerst, Fuzzyübereinstimmungen darunter.
+* `Translations`: Ein Array gefundener Übereinstimmungen, gespeichert in TranslationMatch-Objekten (siehe unten). Die Übersetzungen können leichte Abweichungen des Originaltexts enthalten (Fuzzyübereinstimmung). Die Übersetzungen werden folgendermaßen sortiert: 100 %-Übereinstimmungen zuerst, darunter Fuzzyübereinstimmungen.
 * `From`: Wenn die Methode keine Ausgangssprache angegeben hat, ist dies das Ergebnis der automatischen Spracherkennung. Andernfalls wird die Ausgangssprache angegebenen.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Enthält den gleichen Wert, der auch im TranslateOptions-Parameter angegeben ist.
 
 Das TranslationMatch-Objekt enthält Folgendes:
 
 * `Error`: Wenn ein Fehler für eine bestimmte Eingabezeichenfolge aufgetreten ist, wird der Fehlercode gespeichert. Andernfalls bleibt das Feld leer.
-* `MatchDegree`: Das System gleicht eingegebene Sätze, einschließlich ungenauer Übereinstimmungen, mit dem Speicher ab.  MatchDegree gibt an, wie eng der Eingabetext mit dem Originaltext, der im Speicher gefunden wurde, übereinstimmt. Der Wert gibt eine Spanne von 0 bis 100 zurück, wobei 0 keine Ähnlichkeit aufweist und 100 eine Übereinstimmung mit der Schreibweise ist.
-MatchedOriginalText: Originaltext, der für dieses Ergebnis abgestimmt wurde. Er wird nur zurückgegeben, wenn der übereinstimmende Originaltext sich vom Eingabetext unterschieden hat. Wird verwendet, um den Quelltext einer Fuzzyübereinstimmung zurückzugeben. Wir nicht für Microsoft Translator-Ergebnisse zurückgegeben.
+* `MatchDegree`: Das System gleicht eingegebene Sätze (einschließlich ungenauer Übereinstimmungen) mit dem Speicher ab.  MatchDegree gibt an, wie eng der Eingabetext mit dem Originaltext, der im Speicher gefunden wurde, übereinstimmt. Der Wert gibt eine Spanne von 0 bis 100 zurück, wobei 0 keine Ähnlichkeit aufweist und 100 eine Übereinstimmung mit der Schreibweise ist.
+MatchedOriginalText: Originaltext, der für dieses Ergebnis übereinstimmte. Er wird nur zurückgegeben, wenn der übereinstimmende Originaltext sich vom Eingabetext unterschieden hat. Wird verwendet, um den Quelltext einer Fuzzyübereinstimmung zurückzugeben. Wir nicht für Microsoft Translator-Ergebnisse zurückgegeben.
 * `Rating`: Gibt die Autorität der Person an, die die Entscheidung über die Qualität trifft. Ergebnisse der maschinellen Übersetzung haben eine Bewertung von 5. Anonym bereitgestellte Übersetzungen haben generelle einen Bewertungsrahmen von 1 bis 4, während autoritativ bereitgestellte Übersetzungen einen Bewertungsrahmen von 6 bis 10 besitzen.
-* `Count`: Die Anzahl, wie oft diese Übersetzung mit dieser Bewertung ausgewählt wurde. Für die automatisch übersetzte Antwort ist der Wert 0.
-* `TranslatedText`: Übersetzter Text
+* `Count`: Die Häufigkeit, mit der diese Übersetzung mit dieser Bewertung ausgewählt wurde. Für die automatisch übersetzte Antwort ist der Wert 0.
+* `TranslatedText`: Der übersetzte Text.
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 Ein `GetTranslationsResponse`-Objekt im oben beschriebenen Format.
@@ -704,12 +704,12 @@ Das Format des Anforderungstexts sieht wie folgt aus.
 * `From`: Erforderlich. Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt.
 * `MaxTranslations`: Erforderlich. Ein Integer, der die Höchstanzahl der Übersetzungen darstellt, die zurückgegeben werden sollen.
 * `Options`: Optional. Ein Options-Objekt, das die unten aufgeführten Werte enthält. Diese sind alle optional und sind Standardwerte für die häufigsten Einstellungen. Angegebene Element müssen in alphabetischer Reihenfolge aufgelistet werden.
-    - Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.
-    - `ContentType`: text/plain ist die einzige unterstützte bzw. Standardversion.
+    - Category` (Kategorie): Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.
+    - `ContentType`: „text/plain“ ist die einzige unterstützte bzw. die Standardversion.
     - `IncludeMultipleMTAlternatives`: boolesches Flag zur Bestimmung, ob mehr als eine Alternative von der MT-Engine zurückgegeben werden soll. Gültige Werte sind „true“ und „false“ (mit Berücksichtigung der Groß- und Kleinschreibung). Der Standardwert ist „false“ und enthält nur eine Alternative. Wenn Sie das Flag auf „true“ festlegen, ist die Erstellung künstlicher Alternativen in der Übersetzung möglich, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature lässt zu, dass Alternativen für Sätze zurückgegeben werden dürfen, die keine Alternativen im CTF besitzen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der N-besten Liste des Decoders.
-        - Bewertungen: Die Bewertungen werden wie folgt angewendet: 1) Die beste automatische Übersetzung hat die Bewertung von 5. 2) Die Alternativen von CTF spiegeln die Autorität des Reviewers von –10 bis +10 wieder. 3) Die automatisch generierten (N-beste) Übersetzungsalternativen verfügen über eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
+        - Bewertungen: Die Bewertungen werden wie folgt angewendet: 1) Die beste automatische Übersetzung hat eine Bewertung von 5. 2) Die Alternativen von CTF spiegeln die Autorität des Reviewers von –10 bis +10 wieder. 3) Die automatisch generierten (N-beste) Übersetzungsalternativen verfügen über eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
         - Anzahl der Alternativen: Die Anzahl zurückgegebener Alternativen geht bis zu „maxTranslations“, es kann aber auch weniger sein.
-        - Sprachpaare: Diese Funktion ist für Übersetzungen zwischen einfachem und traditionellem Chinesisch in beiden Richtungen nicht verfügbar. Sie ist für alle anderen von Microsoft Translator unterstützten Sprachpaare verfügbar.
+        - Sprachpaare: Diese Funktion ist für Übersetzungen zwischen einfachem und traditionellem Chinesisch in beiden Richtungen nicht verfügbar. Sie ist für alle anderen von Microsoft Translator unterstützten Sprachenpaare verfügbar.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
 * `Uri`: Filterergebnisse von diesem URI. Wenn kein Wert festgelegt ist, lautet der Standardwert „alle“.
 * `User`: Filterergebnisse von diesem Benutzer. Wenn kein Wert festgelegt ist, lautet der Standardwert „alle“.
@@ -720,7 +720,7 @@ Optionale Elemente können ausgelassen werden. Elemente, die direkte untergeordn
 
 Anforderung `Content-Type` sollte `text/xml` sein.
 
-**Rückgabewert:** Das Format der Antwort lautet wie folgt.
+**Rückgabewert:** Das Format der Antwort sieht folgendermaßen aus.
 
 ```
 <ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
@@ -749,17 +749,17 @@ Anforderung `Content-Type` sollte `text/xml` sein.
 
 Jedes `GetTranslationsResponse`-Element enthält die folgenden Werte:
 
-* `Translations`: Ein Array gefundener Übereinstimmungen, gespeichert in `TranslationMatch`-Objekten (siehe unten). Die Übersetzungen können leichte Abweichungen des Originaltexts enthalten (Fuzzyübereinstimmung). Die Übersetzungen werden sortiert: 100 %-Übereinstimmungen zuerst, Fuzzyübereinstimmungen darunter.
+* `Translations`: Ein Array gefundener Übereinstimmungen, gespeichert in `TranslationMatch`-Objekten (siehe unten). Die Übersetzungen können leichte Abweichungen des Originaltexts enthalten (Fuzzyübereinstimmung). Die Übersetzungen werden folgendermaßen sortiert: 100 %-Übereinstimmungen zuerst, darunter Fuzzyübereinstimmungen.
 * `From`: Wenn die Methode keine `From`-Sprache angegeben hat, ist dies das Ergebnis der automatischen Spracherkennung. Andernfalls wird die Ausgangssprache angegebenen.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Enthält den gleichen Wert, der auch im `TranslateOptions`-Parameter angegeben ist.
 
 `TranslationMatch`-Objekte bestehen aus Folgendem:
 * `Error`: Wenn ein Fehler für eine bestimmte Eingabezeichenfolge aufgetreten ist, wird der Fehlercode gespeichert. Andernfalls bleibt das Feld leer.
-* `MatchDegree`: Das System gleicht eingegebene Sätze, einschließlich ungenauer Übereinstimmungen, mit dem Speicher ab.  `MatchDegree` gibt an, wie nah der eingegebene Text mit dem Originaltext übereinstimmt, der im Speicher gefunden wurde. Der Wert gibt eine Spanne von 0 bis 100 zurück, wobei 0 keine Ähnlichkeit aufweist und 100 eine Übereinstimmung mit der Schreibweise ist.
-* `MatchedOriginalText`: Originaltext, der für dieses Ergebnis abgestimmt wurde. Er wird nur zurückgegeben, wenn der übereinstimmende Originaltext sich vom Eingabetext unterschieden hat. Wird verwendet, um den Quelltext einer Fuzzyübereinstimmung zurückzugeben. Wir nicht für Microsoft Translator-Ergebnisse zurückgegeben.
+* `MatchDegree`: Das System gleicht eingegebene Sätze (einschließlich ungenauer Übereinstimmungen) mit dem Speicher ab.  `MatchDegree` gibt an, wie nah der eingegebene Text mit dem Originaltext übereinstimmt, der im Speicher gefunden wurde. Der Wert gibt eine Spanne von 0 bis 100 zurück, wobei 0 keine Ähnlichkeit aufweist und 100 eine Übereinstimmung mit der Schreibweise ist.
+* `MatchedOriginalText`: Originaltext, der für dieses Ergebnis übereinstimmte. Er wird nur zurückgegeben, wenn der übereinstimmende Originaltext sich vom Eingabetext unterschieden hat. Wird verwendet, um den Quelltext einer Fuzzyübereinstimmung zurückzugeben. Wir nicht für Microsoft Translator-Ergebnisse zurückgegeben.
 * `Rating`: Gibt die Autorität der Person an, die die Entscheidung über die Qualität trifft. Ergebnisse der maschinellen Übersetzung haben eine Bewertung von 5. Anonym bereitgestellte Übersetzungen haben generelle einen Bewertungsrahmen von 1 bis 4, während autoritativ bereitgestellte Übersetzungen einen Bewertungsrahmen von 6 bis 10 besitzen.
-* `Count`: Die Anzahl, wie oft diese Übersetzung mit dieser Bewertung ausgewählt wurde. Für die automatisch übersetzte Antwort ist der Wert 0.
-* `TranslatedText`: Übersetzter Text
+* `Count`: Die Häufigkeit, mit der diese Übersetzung mit dieser Bewertung ausgewählt wurde. Für die automatisch übersetzte Antwort ist der Wert 0.
+* `TranslatedText`: Der übersetzte Text.
 
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)

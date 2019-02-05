@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a910b0537234d1653be93eb406fe3b2261305ee5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3c1896dc756675b838b97d978cec40b4650760fe
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461976"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298962"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
@@ -36,9 +36,9 @@ Die neue einheitliche Überwachung und Benachrichtigung für Application Insight
 - **Application Insights benutzerdefinierte Metriken**: Sie können eigene Metriken für Überwachung und Benachrichtigung definieren und ausgeben. Weitere Informationen finden Sie in diesem Artikel über [Custom Metric for Application Insights on new Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) (Benutzerdefinierte Metriken für Application Insights im neuen Azure Monitor).
 - **Application Insights Fehleranomalien (Teil der intelligenten Erkennung)**: Benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme von Fehlern bei HTTP-Anforderungen oder Abhängigkeitsaufrufen kommt. Application Insights Fehleranomalien (Teil der intelligenten Erkennung) wird als Bestandteil des neuen Azure Monitors in Kürze verfügbar sein, und wir aktualisieren dieses Dokument mit Links zum nächsten Entwicklungsschritt, sobald er in den kommenden Monaten vertrieben wird.
 
-## <a name="unified-metrics--alerts-for-other-azure-resources"></a>Einheitliche Metriken und Benachrichtigungen für andere Azure-Ressourcen
+## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Einheitliche Metriken und Benachrichtigungen für andere Azure-Ressourcen
 
-Die nächste Generation von Benachrichtigung und mehrdimensionaler Überwachung für Azure-Ressourcen ist seit März 2018 verfügbar. Die neuere Metrikplattform und die Benachrichtigungsfunktionalität ist jetzt schneller und bietet nahezu Echtzeitfähigkeit. Noch wichtiger ist, dass die Benachrichtigungen der neueren Metrikplattform mehr Granularität bieten, da die neue Plattform optional Dimensionen aufweist, die es Ihnen erlauben, mit Datenschnitten und Filtern bestimmte Wertkombinationen, Bedingungen oder Betriebsumstände zu suchen. Wie alle Benachrichtigungen im neuen Azure Monitor lassen sich die neuen Metrikwarnungen jetzt mithilfe von Aktionsgruppen besser erweitern: Benachrichtigungen können jenseits von E-Mail oder Webhook auch SMS, Sprache, Azure Functions, Automation-Runbooks und mehr verwenden.
+Die nächste Generation von Benachrichtigung und mehrdimensionaler Überwachung für Azure-Ressourcen ist seit März 2018 verfügbar. Die neuere Metrikplattform und die Benachrichtigungsfunktionalität ist jetzt schneller und bietet nahezu Echtzeitfähigkeit. Noch wichtiger ist, dass die Benachrichtigungen der neueren Metrikplattform mehr Granularität bieten, da die neue Plattform optional Dimensionen aufweist, die es Ihnen erlauben, mit Datenschnitten und Filtern bestimmte Wertkombinationen, Bedingungen oder Betriebsumstände zu suchen. Wie alle Benachrichtigungen im neuen Azure Monitor lassen sich die neuen Metrikwarnungen jetzt mithilfe von Aktionsgruppen besser erweitern: Benachrichtigungen können jenseits von E-Mail oder Webhook auch SMS, Sprache, Azure Functions, Automation-Runbooks und mehr verwenden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
 Die neueren Metriken für Azure-Ressourcen sind in diesen Formen verfügbar:
 
 - **Azure Monitor-Standard-Plattformmetriken**: beliebte, vorkonfigurierte Metriken aus verschiedenen Azure-Diensten und Produkten. Weitere Informationen finden Sie in diesen Artikeln über [Unterstützte Metriken in Azure Monitor](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) und [Unterstützte Metrikwarnungen in Azure Monitor](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts).
@@ -60,6 +60,10 @@ Ab Ende Juni 2019 gilt Folgendes für Azure Monitor:
 - Klassische Überwachungs- und Warnungsdienste werden außer Betrieb genommen und sind für die Erstellung neuer Warnungsregeln nicht mehr verfügbar.
 - Alle Warnungsregeln, die in „Warnungen (klassisch)“ nach Juni 2019 noch vorhanden sind, werden auch weiterhin Benachrichtigungen ausführen und auslösen. Sie können jedoch nicht geändert werden.
 - Ab Juli 2019 werden alle Warnungsregeln des klassischen Überwachungs- und Warnungsdiensts von Microsoft automatisch auf ihr Äquivalent in der neuen Azure-Überwachungsplattform migriert. Dabei handelt es sich um einen nahtlosen Prozess ohne Ausfallzeiten, bei dem für Kunden keine Überwachungslücken auftreten.
+- Warnungsregeln, die auf die neue Warnungsplattform migriert werden, bieten die Überwachungsabdeckung wie bisher, lösen aber die Benachrichtigung mit neuen Nutzlasten aus. Alle E-Mail-Adressen, Webhookendpunkte oder Logik-App-Links, die mit einer klassischen Warnungsregel verbunden sind, werden bei der Migration übernommen, verhalten sich aber möglicherweise nicht richtig, da die Warnungsnutzlast auf der neuen Plattform eine andere ist.
+
+> [!IMPORTANT]
+> Microsoft Azure Monitor wird Kunden in Kürze ein Tool zur Verfügung stellen, mit dem sie ihre klassischen Warnungsregeln automatisch zur neuen Plattform migrieren können. Und ab Juli 2019 wird die Ausführung des Tools für alle noch vorhandenen klassischen Warnungsregeln erzwungen. Kunden müssen sicherstellen, dass die Automatisierung der Nutzung der Nutzlast klassischer Warnungsregeln für die Verarbeitung der neuen Nutzlast aus [Einheitlichen Metriken und Warnungen in Application Insights](#unified-metrics-and-alerts-in-application-insights) oder [Einheitlichen Metriken und Warnungen für andere Azure-Ressourcen](#unified-metrics-and-alerts-for-other-azure-resources) nach der Migration der klassischen Warnungsregeln angepasst wird. 
 
 Wir stellen in Kürze Tools zur Verfügung, die Ihnen die freiwillige Migration Ihrer Benachrichtigungen aus dem Bereich [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) des Azure-Portals zu den neuen Azure-Benachrichtigungen erlauben. Alle Regeln, die in Warnungen (klassisch) konfiguriert sind und zum neuen Azure Monitor migriert werden, bleiben kostenlos und ohne Berechnung. Ebenso fallen für migrierte klassische Warnungsregeln keine Kosten für das Pushen von Benachrichtigungen per E-Mail, Webhook oder Logik-App an. Die Verwendung der neueren Benachrichtigungs- oder Aktionstypen (wie etwa SMS, Sprachanruf, ITSM-Integration usw.) wird jedoch in Rechnung gestellt, unabhängig davon, ob sie zu migrierten oder zu neuen Benachrichtigungen hinzugefügt werden. Weitere Informationen finden Sie unter [Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/).
 
@@ -70,7 +74,7 @@ Darüber hinaus werden die Folgenden im Geltungsbereich der [Azure Monitor-Preis
 - Alle mehrfachen Web-Tests, die von Application Insights ausgeführt werden
 - Alle benutzerdefinierten Metriken, die über die inbegriffenen kostenlosen Einheiten hinaus in Azure Monitor gespeichert werden
 
-Dieser Artikel wird fortlaufend mit Links und Details zur neuen Überwachungs- und Benachrichtigungsfunktionalität von Azure sowie zur Verfügbarkeit von Tools, die Benutzer bei der Umstellung auf die neue Azure Monitor-Plattform unterstützen, aktualisiert.
+Dieser Artikel wird fortlaufend mit Links und Details zur neuen Überwachungs- und Benachrichtigungsfunktionalität von Azure sowie zur Verfügbarkeit von Tools aktualisiert, die Benutzer bei der Umstellung auf die neue Azure Monitor-Plattform unterstützen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: df919e23fd608cdf41e93844f13342ca00657adb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72640a4d917ddb2485199f0df1fead8b0bdcd1c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205143"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192965"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuelles Rollover für ein Service Fabric-Clusterzertifikat
-Wenn ein Service Fabric-Clusterzertifikat in Kürze abläuft, müssen Sie das Zertifikat aktualisieren.  Ein Zertifikatrollover ist einfach, wenn der Cluster [für die Verwendung von Zertifikaten auf Basis des allgemeinen Namens konfiguriert wurde](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (anstelle eines Fingerabdrucks).  Fordern Sie ein neues Zertifikat von einer Zertifizierungsstelle mit einem neuen Ablaufdatum an.  Selbstsignierte Zertifikate, einschließlich der beim Bereitstellen eines Service Fabric-Clusters im Azure-Portal generierten Zertifikate, werden nicht unterstützt.  Das neue Zertifikat muss den gleichen allgemeinen Name wie das ältere Zertifikat haben. 
+Wenn ein Service Fabric-Clusterzertifikat in Kürze abläuft, müssen Sie das Zertifikat aktualisieren.  Ein Zertifikatrollover ist einfach, wenn der Cluster [für die Verwendung von Zertifikaten auf Basis des allgemeinen Namens konfiguriert wurde](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (anstelle eines Fingerabdrucks).  Fordern Sie ein neues Zertifikat von einer Zertifizierungsstelle mit einem neuen Ablaufdatum an.  Selbstsignierte Zertifikate werden für Service Fabric-Produktionscluster nicht unterstützt, damit Zertifikate berücksichtigt werden, die während des Clustererstellungsworkflows im Azure-Portal generiert werden. Das neue Zertifikat muss den gleichen allgemeinen Name wie das ältere Zertifikat haben. 
 
-Mit dem folgenden Skript wird ein neues Zertifikat in einen Schlüsseltresor hochgeladen und anschließend in der VM-Skalierungsgruppe installiert.  Der Service Fabric-Cluster verwendet automatisch das Zertifikat mit dem Ablaufdatum, das am weitesten in der Zukunft liegt.
+Der Service Fabric-Cluster verwendet das deklarierte Zertifikat automatisch mit einem weiter in der Zukunft liegenden Ablaufdatum, wenn mehrere Überprüfungszertifikate auf dem Host installiert sind. Eine bewährte Methode ist die Verwendung einer Resource Manager-Vorlage zum Bereitstellen von Azure-Ressourcen. Für eine Nicht-Produktionsumgebung kann das folgende Skript verwendet werden, um ein neues Zertifikat in einen Schlüsseltresor hochzuladen und das Zertifikat dann für die VM-Skalierungsgruppe zu installieren: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -78,6 +78,9 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 # Update the VM scale set 
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
 ```
+
+>[!NOTE]
+> Computegeheimnisse von VM-Skalierungsgruppen unterstützen nicht die gleiche Ressourcen-ID für zwei separate Geheimnisse, da jedes Geheimnis eine eindeutige Ressource mit Versionsverwaltung ist. 
 
 Weitere Informationen finden Sie in folgenden Artikeln:
 * Erfahren Sie mehr über [Clustersicherheit](service-fabric-cluster-security.md).

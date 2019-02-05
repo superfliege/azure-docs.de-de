@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 920f350ab5ba1e9e1703ffcc32dc8c7153624c0b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525153"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463241"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Format der Manifestdateien des Azure Import/Export-Diensts
 Die Laufwerksmanifestdatei beschreibt die Zuordnung zwischen Blobs in Azure Blob Storage und Dateien auf dem Laufwerk, aus denen ein Import- oder Exportauftrag besteht. Für einen Importvorgang wird die Manifestdatei im Rahmen des Prozesses der Laufwerksvorbereitung erstellt und auf dem Laufwerk gespeichert, bevor dieses an das Azure-Rechenzentrum gesendet wird. Während eines Exportvorgangs wird das Manifest vom Azure-Import-/Exportdienst erstellt und auf dem Laufwerk gespeichert.  
@@ -37,9 +37,9 @@ Im Folgenden wird das allgemeine Format einer Laufwerksmanifestdatei beschrieben
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
   
       <!-- First Blob -->  
-      <Blob>  
-        <BlobPath>blob-path-relative-to-account</BlobPath>  
-        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
+      <Blob>  
+        <BlobPath>blob-path-relative-to-account</BlobPath>  
+        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
         [<ClientData>client-data</ClientData>]  
         [<Snapshot>snapshot</Snapshot>]  
         <Length>content-length</Length>  
@@ -47,7 +47,7 @@ Im Folgenden wird das allgemeine Format einer Laufwerksmanifestdatei beschrieben
         page-range-list-or-block-list          
         [<MetadataPath Hash="md5-hash">metadata-file-path</MetadataPath>]  
         [<PropertiesPath Hash="md5-hash">properties-file-path</PropertiesPath>]  
-      </Blob>  
+      </Blob>  
   
       <!-- Second Blob -->  
       <Blob>  
@@ -72,7 +72,7 @@ page-range-list ::=
     <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
     </PageRangeList>  
   
@@ -80,7 +80,7 @@ block-list ::=
     <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        Hash="md5-hash"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
 
@@ -90,7 +90,7 @@ block-list ::=
 
 Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in der folgenden Tabelle aufgeführt.  
   
-|XML-Element|Typ|BESCHREIBUNG|  
+|XML-Element|Type|BESCHREIBUNG|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|Stammelement|Das Stammelement der Manifestdatei. Alle anderen Elemente in der Datei sind diesem Element untergeordnet.|  
 |`Version`|Attribut, String|Die Version der Manifestdatei.|  
@@ -108,7 +108,7 @@ Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in d
 |`Blob/BlobPath`|Zeichenfolge|Der relative URI zum Blob, beginnend mit dem Containernamen. Wenn sich das Blob im Stammcontainer befindet, muss es mit `$root` beginnen.|  
 |`Blob/FilePath`|Zeichenfolge|Gibt den relativen Pfad zu der Datei auf dem Laufwerk an. Bei Exportaufträgen wird nach Möglichkeit der Blobpfad als Dateipfad verwendet, *z.B.* wird `pictures/bob/wild/desert.jpg` nach `\pictures\bob\wild\desert.jpg` exportiert. Aufgrund der Beschränkungen von NTFS-Namen kann ein Blob jedoch mit einem Pfad in eine Datei exportiert werden, der nicht dem Blobpfad entspricht.|  
 |`Blob/ClientData`|Zeichenfolge|Optional. Enthält Kommentare vom Kunden. Dieser Wert wird vom Import-/Exportdienst nicht interpretiert.|  
-|`Blob/Snapshot`|Datetime|Optional für Exportaufträge. Gibt den Momentaufnahmebezeichner für eine exportierte Blobmomentaufnahme an.|  
+|`Blob/Snapshot`|DateTime|Optional für Exportaufträge. Gibt den Momentaufnahmebezeichner für eine exportierte Blobmomentaufnahme an.|  
 |`Blob/Length`|Ganze Zahl |Gibt die Gesamtlänge des Blobs in Bytes an. Der Wert kann bis zu 200 GB für ein Blockblob und bis zu 1 TB für ein Seitenblob betragen. Bei einem Seitenblob muss dieser Wert ein Vielfaches von 512 sein.|  
 |`Blob/ImportDisposition`|Zeichenfolge|Optional für Importaufträge, ausgelassen für Exportaufträge. Dieser Wert gibt an, wie der Import-/Exportdienst bei einem Importauftrag vorgehen soll, in dem bereits ein Blob mit dem gleichen Namen vorhanden ist. Wenn dieser Wert für das Importmanifest ausgelassen wird, lautet der Standardwert `rename`.<br /><br /> Die Werte für dieses Element umfassen Folgendes:<br /><br /> -   `no-overwrite`: Wenn bereits ein Zielblob mit dem gleichen Namen vorhanden ist, überspringt der Importvorgang den Import dieser Datei.<br />-   `overwrite`: Alle vorhandenen Zielblobs werden durch die neu importierte Datei vollständig überschrieben.<br />-   `rename`: Das neue Blob wird mit geändertem Namen hochgeladen.<br /><br /> Die Umbenennungsregel lautet wie folgt:<br /><br /> – Wenn der Blobname keinen Punkt enthält, wird ein durch Anfügen von `(2)` an den ursprünglichen Blobnamen ein neuer Name generiert. Wenn dieser neue Name ebenfalls einen Konflikt mit einem vorhandenen Blobnamen verursacht, wird `(3)` statt `(2)` angefügt usw.<br />– Wenn der Blobname einen Punkt enthält, wird der Teil des Namens nach dem letzten Punkt als Name der Erweiterung betrachtet. Ähnlich wie beim Vorgehen oben wird `(2)` vor den letzten Punkt eingefügt, um einen neuen Namen zu generieren. Wenn der neue Name weiterhin einen Konflikt mit einem vorhandenen Blobnamen verursacht, versucht der Dienst `(3)`, `(4)` usw., bis ein Name gefunden wird, der keinen Konflikt verursacht.<br /><br /> Hier einige Beispiele:<br /><br /> Das Blob `BlobNameWithoutDot` wird umbenannt in:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Das Blob `Seattle.jpg` wird umbenannt in:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
 |`PageRangeList`|Geschachteltes XML-Element|Für ein Seitenblob erforderlich.<br /><br /> Gibt bei einem Importvorgang eine Liste der Bytebereiche einer zu importierenden Datei an. Jeder Seitenbereich wird in der Quelldatei durch einen Offset und eine Länge sowie durch einen MD5-Hash der Region beschrieben. Das `Hash`-Attribut eines Seitenbereichs ist erforderlich. Der Dienst überprüft, ob der Hash der Daten im Blob mit dem berechneten MD5-Hash aus dem Seitenbereich übereinstimmt. Zum Beschreiben einer Datei für einen Import kann eine beliebige Anzahl von Seitenbereichen mit einer Gesamtgröße von bis zu 1 TB verwendet werden. Alle Seitenbereiche müssen nach Offset sortiert sein, Überschneidungen sind nicht zulässig.<br /><br /> Für einen Exportvorgang gibt dieses Element einen Satz von Bytebereichen eines Blobs an, das auf das Laufwerk exportiert wurde.<br /><br /> Alle Seitenbereiche zusammen decken möglicherweise nur Teilbereiche eines Blobs oder einer Datei ab.  Der verbleibende, durch keinen Seitenbereich abgedeckte Teil der Datei wird erwartet, und der Inhalte kann undefiniert sein.|  

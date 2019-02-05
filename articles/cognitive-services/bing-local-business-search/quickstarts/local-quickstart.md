@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 3513ada8a911c36a31c5796214cfe35d088320b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 37cb122503dba31ba57dd6445317f3c54db08084
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316037"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181451"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Schnellstart: Senden einer Abfrage an die API für die Bing-Suche nach ortsansässigen Unternehmen mit C#
 
@@ -34,7 +34,7 @@ Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/
 
 Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader fest und fügt eine Abfragezeichenfolge für „Restaurant in Bellevue“ hinzu.  Dann übermittelt er die Anforderung und weist die Antwort einer Zeichenfolge zu, die den JSON-Text enthält.
 
-````
+```
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -50,7 +50,7 @@ Der folgende Code erstellt eine `WebRequest`, legt den Zugriffsschlüsselheader 
 
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-````
+```
 
 ## <a name="run-the-complete-application"></a>Ausführen der vollständigen Anwendung
 
@@ -60,7 +60,7 @@ Die API für die Bing-Suche nach ortsansässigen Unternehmen gibt lokalisierte S
 3. Ersetzen Sie den „accessKey“-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
-````
+```
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -206,7 +206,7 @@ namespace localSearch
     }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Schnellstart: Suche nach ortsansässigen Unternehmen mit Java](local-search-java-quickstart.md)

@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 0755f9d60bee8a57f9259a51cf54e8cda566175e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416230"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247008"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Überprüfen der Graph-Integration für Azure Stack
 
@@ -106,8 +107,8 @@ Standardmäßig werden beide Dateien in `C:\Users\<username>\AppData\Local\Temp\
 
 Verwendung:
 
-* **-OutputPath:** *path*-Parameter am Ende der Befehlsausführung zum Angeben eines anderen Berichtsspeicherorts.
-* **-CleanReport:** Parameter am Ende der Befehlszeilenausführung zum Löschen von *AzsReadinessCheckerReport.json* nach früheren Ausführungen des Tools. Weitere Informationen finden Sie unter [Azure Stack-Überprüfungsbericht](azure-stack-validation-report.md).
+* **-OutputPath**: Der *path*-Parameter am Ende der Befehlsausführung zum Angeben eines anderen Berichtsspeicherorts.
+* **-CleanReport**: Der Parameter am Ende der Befehlszeilenausführung zum Löschen der Datei *AzsReadinessCheckerReport.json* mit früheren Berichtsinformationen. Weitere Informationen finden Sie unter [Azure Stack-Überprüfungsbericht](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Fehler bei der Überprüfung
 

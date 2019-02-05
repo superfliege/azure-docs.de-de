@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bf714e5bd47e244a410d1062488af623253bbee6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086418"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217780"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Gewusst wie: Verwalten von Erstellern und Mitwirkenden 
 
@@ -67,7 +67,12 @@ Wenn der Mandantenadministrator sich nicht bei LUIS anmelden möchte, kann er au
 
 ![Azure Active Directory-Website mit Berechtigungen nach Anwendung](./media/luis-how-to-collaborate/tenant-permissions.png)
 
-Wenn der Mandantenadministrator möchte, dass nur bestimmte Benutzer LUIS verwenden, stehen ihm in diesem [Identitätsblog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/) entsprechende Informationen zur Verfügung.
+Wenn der Mandantenadministrator nur bestimmten Benutzern die Verwendung von LUIS gestatten möchte, gibt es mehrere mögliche Lösungen:
+* Erteilen der „Administratoreinwilligung“ (Einwilligung für alle Benutzer von Azure AD) und anschließendes Festlegen von „Benutzerzuweisung erforderlich“ unter den Eigenschaften der Unternehmensanwendung auf „Ja“ und Zuweisen/Hinzufügen nur der gewünschten Benutzer zur Anwendung. Mit dieser Methode erteilt der Administrator immer noch „Administratoreinwilligung“ für die App, es ist jedoch möglich, die Benutzer zu steuern, die darauf zugreifen können.
+* Eine zweite Lösung ist die Verwendung der [Azure AD Graph-API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) zum Bereitstellen der Einwilligung für jeden einzelnen Benutzer. 
+
+Weitere Informationen zu Azure Active Directory-Benutzern und Einwilligung: 
+* [Einschränken Ihrer App](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) auf eine Gruppe von Benutzern
 
 ### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>Benutzerkonten mit mehreren E-Mail-Adressen für Projektmitarbeiter
 

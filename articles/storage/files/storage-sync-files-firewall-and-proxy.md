@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
-ms.component: files
-ms.openlocfilehash: aa01ffc196ba6ece41fac9a95db04b58ad962060
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: files
+ms.openlocfilehash: 6c8a0a0db419546a49670b1f34e58ead7cebeaa1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259817"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459501"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -144,3 +144,4 @@ Ein Einrichten von domäneneinschränkenden Firewallregeln kann eine Maßnahme s
 ## <a name="next-steps"></a>Nächste Schritte
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
 - [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md)
+- [Überwachen der Azure-Dateisynchronisierung](storage-sync-files-monitoring.md)

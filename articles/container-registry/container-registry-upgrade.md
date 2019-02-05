@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: danlep
-ms.openlocfilehash: 73e207dae61dfc8912fd79a151adf982753701f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 077ca3c876a3078e7e627dbfefdff38e09ec57b9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969106"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228354"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade einer klassischen Containerregistrierung
 
@@ -52,7 +52,7 @@ Während des Konvertierungsprozesses sind alle `docker push`-Vorgänge blockiert
 
 Löschen oder ändern Sie während des Konvertierungsprozesses keine Inhalte des Speicherkontos, das Ihre klassische Registrierung sichert. Dadurch können Ihre Containerimages beschädigt werden.
 
-Sobald die Migration abgeschlossen ist, wird das Speicherkonto in Ihrem Abonnement, das ursprünglich Ihre klassische Registrierung gesichert hat, von ACR nicht mehr benötigt. Nachdem Sie überprüft haben, ob die Migration erfolgreich war, sollten Sie das Speicherkonto möglicherweise löschen, um Kosten zu sparen.
+Sobald die Migration abgeschlossen ist, wird das Speicherkonto in Ihrem Abonnement, das ursprünglich Ihre klassische Registrierung gesichert hat, von ACR nicht mehr verwendet. Nachdem Sie überprüft haben, ob die Migration erfolgreich war, sollten Sie das Speicherkonto möglicherweise löschen, um Kosten zu sparen.
 
 >[!IMPORTANT]
 > Das Upgrade von der klassischen zu einer der verwalteten SKUs ist ein **nicht umkehrbarer Prozess**. Nachdem Sie eine klassische Registrierung in eine Basic-, Standard- oder Premium-SKU konvertiert haben, können Sie die klassische Registrierung nicht wiederherstellen. Sie können jedoch frei zwischen den verwalteten SKUs wechseln, um ausreichend Kapazität für Ihre Registrierung zur Verfügung zu haben.

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 41cbb657a4fc83b498c5cc9a6a16397a619aa075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 93cd93b40c142d504c52f08f9005d082fb5a2a20
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034045"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469480"
 ---
-# <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds in Azure Functions
+# <a name="trigger-azure-functions-from-azure-cosmos-db"></a>Auslösen von Azure Functions aus Azure Cosmos DB
 
 Wenn Sie Azure Functions verwenden, ist die einfachste Möglichkeit zum Herstellen einer Verbindung mit einem Änderungsfeed das Hinzufügen eines [Azure Cosmos DB-Triggers](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) zu Ihrer Azure Functions-App. Wenn Sie einen Cosmos DB-Trigger in einer Azure Functions-App erstellen, wählen Sie den Cosmos-Container aus, mit dem eine Verbindung hergestellt werden soll. Anschließend wird die Funktion immer dann ausgelöst, wenn eine Änderung im Container erfolgt.
 

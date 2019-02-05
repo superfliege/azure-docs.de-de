@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853237"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246533"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack-Update 1811
 
@@ -186,8 +187,7 @@ Dieses Update installiert die folgenden Sicherheitsupdates:
 - [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
 - [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
-
-Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken auf die vorhergehenden Links oder im Microsoft Knowledge Base-Artikel [4467684](https://support.microsoft.com/help/4467684).
+Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken auf die vorhergehenden Links oder im Microsoft Knowledge Base-Artikel [4478877](https://support.microsoft.com/help/4478877).
 
 ## <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess
 
@@ -353,6 +353,8 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
     Die anderen Optionen werden nicht als Quelltags in Azure Stack unterstützt. Auf ähnliche Weise wird, wenn Sie eine ausgehende Sicherheitsregel hinzufügen und als Ziel **Diensttag** auswählen, dieselbe Liste von Optionen für **Quelltag** angezeigt. Die einzigen gültigen Optionen sind dieselben wie für **Quelltag**, wie in der vorherigen Liste beschrieben.
 
 - Das PowerShell-Cmdlet **New-AzureRmIpSecPolicy** unterstützt keine Einstellung **DHGroup24** für den Parameter `DHGroup`.
+
+- Netzwerksicherheitsgruppen (NSGs) funktionieren in Azure Stack nicht auf die gleiche Weise wie in Azure weltweit. In Azure können Sie mehrere Ports für eine NSG-Regel festlegen (mit dem Portal, PowerShell und Resource Manager). In Azure Stack können Sie nicht mehrere Ports für eine NSG-Regel über das Portal festlegen. Um dieses Problem zu umgehen, verwenden Sie eine Resource Manager-Vorlage, um diese zusätzlichen Regeln festzulegen.
 
 ### <a name="infrastructure-backup"></a>Infrastructure Backup
 

@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft-Dokumentation
+title: Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Docs
 description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 64af946c3f8f58808f1bca06f1ef21d92da8cda8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330384"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223560"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -39,7 +39,7 @@ In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben
 | Konflikt: | Sie fordern einen Vorgang an, der im aktuellen Zustand der Ressource nicht zulässig ist. Eine Größenänderung für den Datenträger ist beispielsweise nur zulässig, wenn ein virtueller Computer erstellt wird oder die Zuweisung des virtuellen Computers aufgehoben wurde. | |
 | DeploymentActive | Warten Sie, bis die gleichzeitige Bereitstellung für diese Ressourcengruppe abgeschlossen ist. | |
 | DeploymentFailed | „DeploymentFailed“ ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Suchen Sie in den Fehlerdetails nach einem Fehlercode, der weitere Informationen bereitstellt. | [Ermitteln des Fehlercodes](#find-error-code) |
-| DeploymentQuotaExceeded | Wenn der Grenzwert von 800 Bereitstellungen pro Ressourcengruppe erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. Bei Verwendung der Azure CLI können Sie mit [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) Einträge aus dem Verlauf löschen, in PowerShell verwenden Sie [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment). Das Löschen eines Eintrags aus dem Bereitstellungsverlaufs wirkt sich nicht auf die bereitgestellten Ressourcen aus. | |
+| DeploymentQuotaExceeded | Wenn der Grenzwert von 800 Bereitstellungen pro Ressourcengruppe erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. Bei Verwendung der Azure CLI können Sie mit [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) Einträge aus dem Verlauf löschen, in PowerShell verwenden Sie [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment). Das Löschen eines Eintrags aus dem Bereitstellungsverlaufs wirkt sich nicht auf die bereitgestellten Ressourcen aus. | |
 | DnsRecordInUse | Der Name des DNS-Eintrags muss eindeutig sein. Geben Sie entweder einen anderen Namen an, oder ändern Sie den vorhandenen Datensatz. | |
 | ImageNotFound | Überprüfen Sie die Einstellungen für das VM-Image. |  |
 | InUseSubnetCannotBeDeleted | Dieser Fehler kann ggf. bei dem Versuch auftreten, eine Ressource zu aktualisieren, aber die Anforderung wird verarbeitet, indem die Ressource gelöscht und erstellt wird. Stellen Sie sicher, dass Sie alle unveränderten Werte angeben. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -71,7 +71,7 @@ In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben
 | RequestDisallowedByPolicy | Ihr Abonnement enthält eine Ressourcenrichtlinie, durch die eine Aktion verhindert wird, die Sie während der Bereitstellung ausführen möchten. Suchen Sie nach der Richtlinie, die die Aktion blockiert. Ändern Sie Ihre Bereitstellung nach Möglichkeit so, dass die Einschränkungen der Richtlinie beachtet werden. | [Beheben von Fehlern für Richtlinien](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Geben Sie einen Ressourcennamen an, der keinen reservierten Name enthält. | [Resolve reserved resource name errors](resource-manager-reserved-resource-name.md) (Beheben von Fehlern mit reservierten Ressourcennamen) |
 | ResourceGroupBeingDeleted | Warten Sie, bis der Löschvorgang abgeschlossen ist. | |
-| ResourceGroupNotFound | Überprüfen Sie den Namen der Zielressourcengruppe für die Bereitstellung. Er muss in Ihrem Abonnement bereits vorhanden sein. Überprüfen Sie Ihren Abonnementkontext. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Überprüfen Sie den Namen der Zielressourcengruppe für die Bereitstellung. Er muss in Ihrem Abonnement bereits vorhanden sein. Überprüfen Sie Ihren Abonnementkontext. | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
 | ResourceNotFound | Ihre Bereitstellung verweist auf eine Ressource, die nicht aufgelöst werden kann. Überprüfen Sie, ob Ihre Verwendung der Funktion **reference** die für Ihr Szenario erforderlichen Parameter enthält. | [Beheben von Fehlern für Verweise](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Bei der Bereitstellung wird versucht, Ressourcen zu erstellen, für die das Kontingent für das Abonnement, die Ressourcengruppe oder die Region überschritten wird. Ändern Sie Ihre Infrastruktur nach Möglichkeit so, dass die Kontingentvorgaben eingehalten werden. Erwägen Sie andernfalls, eine Änderung der Kontingente anzufordern. | [Beheben von Fehlern für Kontingente](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Wählen Sie die SKU (z.B. die VM-Größe) aus, die für den ausgewählten Speicherort verfügbar ist. | [Beheben von SKU-Fehlern](resource-manager-sku-not-available-errors.md) |
@@ -110,7 +110,7 @@ Wenn der Vorgang die Überprüfung besteht, aber ein Fehler während der Bereits
 Verwenden Sie Folgendes, um Fehlercodes und -meldungen bei der Bereitstellung mit PowerShell anzuzeigen:
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+(Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
 Verwenden Sie Folgendes, um Fehlercodes und -meldungen bei der Bereitstellung mit Azure CLI anzuzeigen:
@@ -140,7 +140,7 @@ Manchmal benötigen Sie weitere Informationen zur Anforderung und zur Antwort, u
 Legen Sie in PowerShell den Parameter **DeploymentDebugLogLevel** auf „All“, „ResponseContent“ oder „RequestContent“ fest.
 
 ```powershell
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName examplegroup `
   -TemplateFile c:\Azure\Templates\storage.json `
@@ -150,7 +150,7 @@ New-AzureRmResourceGroupDeployment `
 Überprüfen Sie den Anforderungsinhalt mit folgendem Cmdlet:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.request `
 | ConvertTo-Json
@@ -159,7 +159,7 @@ New-AzureRmResourceGroupDeployment `
 Oder überprüfen Sie den Antwortinhalt mit:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.response `
 | ConvertTo-Json

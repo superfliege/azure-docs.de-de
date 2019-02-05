@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340357"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217644"
 ---
 # <a name="what-is-bing-speech"></a>Was ist die Bing-Spracheingabe?
 
@@ -28,10 +28,10 @@ Mit der cloudbasierten Bing-Spracheingabe-API von Microsoft können Entwickler k
 
 ## <a name="speech-to-text-speech-recognition"></a>Spracherkennung (Umwandlung von Sprache in Text)
 
-Die Spracherkennungs-API von Microsoft *überträgt* Audiodatenströme in Text, den Ihre Anwendung dem Benutzer anzeigen oder als Befehlseingabe nutzen kann. Entwickler können ihren Apps auf zwei Arten Spracherkennungsfeatures hinzufügen: mithilfe von REST-APIs **oder** mithilfe Websocket-basierter Clientbibliotheken.
+Die Spracherkennungs-API von Microsoft *überträgt* Audiodatenströme in Text, den Ihre Anwendung dem Benutzer anzeigen oder als Befehlseingabe nutzen kann. Er bietet Entwicklern zwei Möglichkeiten, ihre Apps mit Sprachfunktionen zu erweitern: REST-APIs **oder** websocketbasierte Clientbibliotheken.
 
-- [REST-APIs:](GetStarted/GetStartedREST.md) Entwickler können in ihren Apps HTTP-Aufrufe an den Spracherkennungsdienst richten.
-- [Clientbibliotheken:](GetStarted/GetStartedClientLibraries.md) Entwickler, die erweiterte Features nutzen möchten, können Microsoft Speech-Clientbibliotheken herunterladen und in ihre Apps einbinden.  Die Clientbibliotheken sind für verschiedene Plattformen (Windows, Android, iOS) mit verschiedenen Sprachen (C#, Java, JavaScript, Objective-C) verfügbar. Im Gegensatz zu den REST-APIs nutzen die Clientbibliotheken ein auf Websockets basierendes Protokoll.
+- [REST-APIs](GetStarted/GetStartedREST.md): Entwickler können in ihren Apps HTTP-Aufrufe an den Spracherkennungsdienst richten.
+- [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md): Entwickler, die erweiterte Features nutzen möchten, können Microsoft Speech-Clientbibliotheken herunterladen und in ihre Apps einbinden.  Die Clientbibliotheken sind für verschiedene Plattformen (Windows, Android, iOS) mit verschiedenen Sprachen (C#, Java, JavaScript, Objective-C) verfügbar. Im Gegensatz zu den REST-APIs nutzen die Clientbibliotheken ein auf Websockets basierendes Protokoll.
 
 | Anwendungsfälle | [REST-APIs](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
@@ -60,4 +60,4 @@ Unabhängig vom gewählten Ansatz (REST-APIs oder Clientbibliotheken) unterstüt
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- Beginnen Sie mit der Verwendung des Sprachsynthesediensts von Microsoft: [Referenz für die Text-to-Speech-API](api-reference-rest/bingvoiceoutput.md). Eine vollständige Liste mit den unterstützten Sprachen und Stimmen der Sprachsynthese finden Sie unter [Supported locales and voice fonts](api-reference-rest/bingvoiceoutput.md#SupLocales) (Unterstützt Gebietsschemas und Voicefonts).
+- Beginnen Sie mit der Verwendung des Sprachsynthesediensts von Microsoft: [Referenz zur Text-to-Speech-API](api-reference-rest/bingvoiceoutput.md). Eine vollständige Liste mit den unterstützten Sprachen und Stimmen der Sprachsynthese finden Sie unter [Supported locales and voice fonts](api-reference-rest/bingvoiceoutput.md#SupLocales) (Unterstützt Gebietsschemas und Voicefonts).

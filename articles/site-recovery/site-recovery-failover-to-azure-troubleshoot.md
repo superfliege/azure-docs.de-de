@@ -1,26 +1,22 @@
 ---
 title: Beheben von Problemen bei einem Failover nach Azure | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Möglichkeiten zum Beheben allgemeiner Probleme beim Failover nach Azure.
-services: site-recovery
-documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/11/2018
+ms.date: 1/29/2019
 ms.author: mayg
-ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255090"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207495"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Beheben von Problemen beim Ausführen eines Failovers eines virtuellen Computers nach Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
 
 Bei einem Failover eines virtuellen Computers nach Azure tritt eventuell einer der folgenden Fehler auf. Gehen Sie für die Problembehandlung gemäß den für den jeweiligen Fehlerzustand beschriebenen Schritten vor.
 
@@ -48,7 +44,9 @@ Site Recovery konnte einen klassischen virtuellen Computer, für den ein Failove
 
 Site Recovery konnte einen virtuellen Computer, für den ein Failover ausgeführt wurde, nicht in Azure erstellen. Dies kann passieren, wenn bei einer internen Hydration für den lokalen virtuellen Computer ein Fehler auftritt.
 
-Um einen Computer in Azure aufzurufen, erfordert die Azure-Umgebung, dass sich einige der Treiber im Boot-Startzustand befinden und Dienste wie DHCP im Autostartzustand sind. Durch die Hydration zum Zeitpunkt des Failover wird der Startuptyp von **atapi-, intelide-, storflt-, vmbus- und storvsc-Treibern** in Bootstart umgewandelt. Außerdem wird der Starttyp einiger Dienste wie DHCP in Autostart konvertiert. Aufgrund umgebungsspezifischer Probleme können bei dieser Aktivität Fehler auftreten. Um den Starttyp der Treiber manuell zu ändern, führen Sie die folgenden Schritte aus:
+Um einen Computer in Azure aufzurufen, erfordert die Azure-Umgebung, dass sich einige der Treiber im Boot-Startzustand befinden und Dienste wie DHCP im Autostartzustand sind. Durch die Hydration zum Zeitpunkt des Failover wird der Startuptyp von **atapi-, intelide-, storflt-, vmbus- und storvsc-Treibern** in Bootstart umgewandelt. Außerdem wird der Starttyp einiger Dienste wie DHCP in Autostart konvertiert. Aufgrund umgebungsspezifischer Probleme können bei dieser Aktivität Fehler auftreten. 
+
+Um den Starttyp der Treiber für das **Windows-Gastbetriebssystem** manuell zu ändern, führen Sie die folgenden Schritte aus:
 
 1. Laden Sie das „no-hydration“- Skript [herunter](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1), und führen Sie es folgendermaßen aus: Dieses Skript überprüft, ob für die VM eine Hydration erforderlich ist.
 

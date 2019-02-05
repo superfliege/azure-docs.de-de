@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794004"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206746"
 ---
 # <a name="azure-data-box-system-requirements"></a>Systemanforderungen für Azure Data Box
 
@@ -48,13 +48,18 @@ Im Folgenden finden Sie eine Liste der unterstützten Betriebssysteme für Daten
 
 ### <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten
 
-Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für das Data Box-Gerät.
+Im Folgenden finden Sie eine Liste der unterstützten Speicherkonten und Speichertypen für das Data Box-Gerät. Eine vollständige Liste aller verschiedenen Typen von Speicherkonten und ihren vollständigen Funktionen finden Sie unter [Speicherkontotypen](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
-| **Speicherkonto** | **Hinweise** |
-| --- | --- |
-| Klassisch | Standard |
-| Allgemeiner Zweck  |Standard: sowohl V1 als auch V2 werden unterstützt. |
-| Blob |Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. |
+| **Speicherkonto/unterstützte Speichertypen** | **Blockblob** |**Seitenblob*** |**Azure Files** |**Hinweise**|
+| --- | --- | -- | -- | -- |
+| Klassisch Standard | J | J | J |
+| Universell V1 Standard  | J | J | J | Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt.|
+| Universell V1 Premium  |  | J| | |
+| Universell V2 Standard  | J | J | J | Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt.|
+| Universell V2 Premium  |  |J | | |
+| Blobspeicher Standard |J | | |Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. |
+
+\* *: In Seitenblobs hochgeladene Daten müssen einem ganzzahligen Vielfachen von 512 Bytes entsprechen, z.B. VHDs.*
 
 >[!NOTE]
 > Azure Data Lake Storage Gen 2-Konten werden nicht unterstützt.

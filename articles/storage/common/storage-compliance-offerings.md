@@ -7,19 +7,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 293067b2d76f7ef88b6946aee9d39d4c6da97230
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 49ea6a3c6be2325acdcdf61188ced777bd36f0da
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229543"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478133"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage-Complianceangebote
 
 Um Organisationen bei der Einhaltung nationaler und branchenspezifischer Anforderungen hinsichtlich der Erfassung und Nutzung personenbezogener Daten zu helfen, bieten Microsoft und Azure Storage das umfassendste Angebot an Zertifizierungen und Nachweisen aller Cloud-Dienstanbieter.
 
-Nachfolgend finden Sie Complianceangebote für Azure Storage, um sicherzustellen, dass Ihr Dienst bei der Nutzung des Azure Storage-Diensts die Vorschriften einhält. Die Complianceangebote gelten für die folgenden Azure Storage-Varianten: Blobs, Dateien, Warteschlangen, Tabellen, Datenträger, Kalte Speicherebene und Storage Premium.
+Nachfolgend finden Sie Complianceangebote für Azure Storage, um sicherzustellen, dass Ihr Dienst bei der Nutzung des Azure Storage-Diensts die Vorschriften einhält. Sie gelten für die folgenden Azure Storage-Angebote: Blobs, Dateien, Warteschlangen, Tabellen, Datenträger, kalte Speicherebene und Storage Premium.
 
 ## <a name="global"></a>Global
 

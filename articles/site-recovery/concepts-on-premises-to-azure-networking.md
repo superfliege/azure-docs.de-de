@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e682850d331770766a9b97c2b4b9102af143f2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836269"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211354"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Einrichten von IP-Adressen für Verbindungen mit virtuellen Azure-Computern nach einem Failover
 
@@ -73,7 +73,7 @@ Da Woodgrove in der Lage sein muss, seine virtuellen Computer zu Azure zu repliz
 #### <a name="site-to-site-connection"></a>Standort-zu-Standort-Verbindung
 
 Nach einem Failover kann Woodgrove zusätzlich zu einer VNet-zu-VNet-Verbindung eine Standort-zu-Standort-VPN-Konnektivität einrichten:
-- Beim Einrichten einer Standort-zu-Standort-Verbindung im Azure-Netzwerk können Sie nur dann Datenverkehr an den lokalen Standort (local-ntwork) weiterleiten, wenn sich der IP-Adressbereich vom lokalen IP-Adressbereich unterscheidet. Der Grund dafür ist, dass Azure Stretchingsubnetze nicht unterstützt. Sie können also im Azure-Netzwerk das lokale Netzwerk 192.168.1.0/24 nicht hinzufügen, wenn Sie über das lokale Subnetz 192.168.1.0/24 verfügen. Dies ist zu erwarten, da Azure nicht weiß, dass keine aktiven Computer im Subnetz vorhanden sind und dass das Subnetz nur für die Notfallwiederherstellung erstellt wird.
+- Beim Einrichten einer Standort-zu-Standort-Verbindung im Azure-Netzwerk können Sie nur dann Datenverkehr an den lokalen Standort (local-network) weiterleiten, wenn sich der IP-Adressbereich vom lokalen IP-Adressbereich unterscheidet. Der Grund dafür ist, dass Azure Stretchingsubnetze nicht unterstützt. Sie können also im Azure-Netzwerk das lokale Netzwerk 192.168.1.0/24 nicht hinzufügen, wenn Sie über das lokale Subnetz 192.168.1.0/24 verfügen. Dies ist zu erwarten, da Azure nicht weiß, dass keine aktiven Computer im Subnetz vorhanden sind und dass das Subnetz nur für die Notfallwiederherstellung erstellt wird.
 - Es dürfen keine Konflikte zwischen den Subnetzen im Netzwerk und dem lokalen Netzwerk vorliegen, damit ein korrekten Netzwerkdatenverkehr aus einem Azure-Netzwerk gewährleistet wird.
 
 

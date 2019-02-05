@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 6548e0bb05b117cf79405b9516da815a7e81b6a3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 6ec09627fb80925fef72c491936a1dd83106874b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471219"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211694"
 ---
 # <a name="project-answer-search-v7-reference"></a>Referenz zu Project Answer Search v7
 
@@ -29,10 +29,10 @@ Die JSON-Antwort kann analysiert werden, um Fakten und Entitäten zu ermitteln, 
 Um Answer Search-Ergebnisse anzufordern, senden Sie eine Anforderung an den folgenden Endpunkt. Verwenden Sie die Header und die URL-Parameter, um Spezifikationen genauer zu definieren.
 
 Endpunkt GET: 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>&subscription-key=0123456789ABCDEF&mkt=en-us
 
-````
+```
 
 Die Anforderung muss das HTTPS-Protokoll verwenden und den folgenden Abfrageparameter enthalten:
 -  q=<URL>: Die Abfrage, die das Objekt der Suche identifiziert.
@@ -83,7 +83,7 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderlichen Parameter Finden Sie in der Spalte „Erforderlich“. Sie müssen die Abfrageparameter URL-codieren.  
   
   
-|NAME|Wert|Typ|Erforderlich|  
+|NAME|Wert|Type|Erforderlich|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter [Marktcodes](#market-codes).<br /><br /> **HINWEIS:** Die URL-Vorschau-API unterstützt zurzeit nur den Markt und die Sprache „en-us“.<br /><br />|Zeichenfolge|JA|  
 |<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|Zeichenfolge|JA|  
@@ -106,7 +106,7 @@ Das Antwortschema ist entweder eine [WebPage] oder ErrorResponse (wie in der Web
 ### <a name="error"></a>Error  
 Definiert den aufgetretenen Fehler.  
   
-|Element|BESCHREIBUNG|Typ|  
+|Element|BESCHREIBUNG|Type|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|  
 |<a name="error-message" />message|Eine Beschreibung des Fehlers.|Zeichenfolge|  
@@ -119,7 +119,7 @@ Definiert den aufgetretenen Fehler.
 ### <a name="errorresponse"></a>ErrorResponse  
 Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fehlschlägt.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis.|Zeichenfolge|  
 |<a name="errors" />errors|Eine Liste von Fehlern, die die Gründe beschreiben, warum die Anforderung fehlgeschlagen ist.|[Fehler](#error)|  
@@ -129,7 +129,7 @@ Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fe
 ### <a name="license"></a>Lizenz  
 Definiert die Lizenz, unter der der Text oder das Foto verwendet werden kann.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |name|Der Name der Lizenz.|Zeichenfolge|  
 |URL|Die URL zu einer Website, auf der der Benutzer weitere Informationen zur Lizenz erhalten kann.<br /><br /> Verwenden Sie den Namen und die URL, um einen Link zu erstellen.|Zeichenfolge|  
@@ -138,7 +138,7 @@ Definiert die Lizenz, unter der der Text oder das Foto verwendet werden kann.
 ### <a name="licenseattribution"></a>LicenseAttribution  
 Definiert eine vertragliche Regel für die Lizenzzuordnung.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Ein Typhinweis, der auf LicenseAttribution festgelegt wird.|Zeichenfolge|  
 |license|Die Lizenz, unter der der Inhalt verwendet werden kann.|[Lizenz](#license)|  
@@ -150,7 +150,7 @@ Definiert eine vertragliche Regel für die Lizenzzuordnung.
 ### <a name="link"></a>Link  
 Definiert die Komponenten eines Links.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis.|Zeichenfolge|  
 |text|Der Anzeigetext.|Zeichenfolge|  
@@ -160,7 +160,7 @@ Definiert die Komponenten eines Links.
 ### <a name="linkattribution"></a>LinkAttribution  
 Definiert eine vertragliche Regel für die Linkzuordnung.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Ein Typhinweis, der auf LinkAttribution festgelegt wird.|Zeichenfolge|  
 |mustBeCloseToContent|Ein boolescher Wert, der bestimmt, ob der Inhalt der Regel in großer Nähe zu dem Feld platziert werden muss, für das die Regel gilt. Wenn **TRUE**, muss der Inhalt in großer Nähe platziert werden. Wenn der Wert **FALSE** oder dieses Feld nicht vorhanden ist, kann der Inhalt nach dem Ermessen des Aufrufers platziert werden.|Boolescher Wert|  
@@ -172,7 +172,7 @@ Definiert eine vertragliche Regel für die Linkzuordnung.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definiert eine vertragliche Regel für die Medienzuordnung.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Ein Typhinweis, der auf MediaAttribution festgelegt wird.|Zeichenfolge|  
 |mustBeCloseToContent|Ein boolescher Wert, der bestimmt, ob der Inhalt der Regel in großer Nähe zu dem Feld platziert werden muss, für das die Regel gilt. Wenn **TRUE**, muss der Inhalt in großer Nähe platziert werden. Wenn der Wert **FALSE** oder dieses Feld nicht vorhanden ist, kann der Inhalt nach dem Ermessen des Aufrufers platziert werden.|Boolescher Wert|  
@@ -186,7 +186,7 @@ Definiert einen Herausgeber.
   
 Beachten Sie, dass ein Herausgeber möglicherweise seinen Namen oder seine Website oder beide Angaben bereitstellt.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |name|Der Name des Herausgebers.|Zeichenfolge|  
 |URL|Die URL zur Website des Herausgebers.<br /><br /> Beachten Sie, dass der Herausgeber möglicherweise keine Website bereitstellt.|Zeichenfolge|  
@@ -196,7 +196,7 @@ Beachten Sie, dass ein Herausgeber möglicherweise seinen Namen oder seine Websi
 ### <a name="webpage"></a>WebPage  
 Definiert Informationen zu einer Webseite in der Vorschau.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|
 |name|Der Seitentitel, nicht notwendigerweise der HTML-Titel.|Zeichenfolge|
 |URL|Die URL, die tatsächlich durchforstet wurde (die Anforderung wurde möglicherweise weitergeleitet).|Zeichenfolge|  
@@ -208,7 +208,7 @@ Definiert Informationen zu einer Webseite in der Vorschau.
 ### <a name="querycontext"></a>QueryContext  
 Definiert den Abfragekontext, den Bing für die Anforderung verwendet hat.  
   
-|Element|BESCHREIBUNG|Typ|  
+|Element|BESCHREIBUNG|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|Ein boolescher Wert, der angibt, ob die angegebene Abfrage nicht jugendfreie Inhalte aufweist. Der Wert ist **TRUE**, wenn die Abfrage nicht jugendfreie Inhalte aufweist, andernfalls ist er **FALSE**.|Boolescher Wert|  
 |alterationOverrideQuery|Die zu verwendende Abfragezeichenfolge, um Bing zu zwingen, die ursprüngliche Zeichenfolge zu verwenden. Wenn die Abfragezeichenfolge z.B. *saling downwind* lautet, lautet die Abfragezeichenfolge zum Überschreiben *+saling downwind*. Denken Sie daran, die Abfragezeichenfolge mit den Ergebnissen in *%2Bsaling+downwind* zu codieren.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|Zeichenfolge|  
@@ -217,19 +217,19 @@ Definiert den Abfragekontext, den Bing für die Anforderung verwendet hat.
 |originalQuery|Die Abfragezeichenfolge wie in der Anforderung angegeben.|Zeichenfolge|  
 
 ### <a name="identifiable"></a>Identifiable
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |-------------|-----------------|----------|
 |id|Ein Ressourcenbezeichner.|Zeichenfolge|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiert eine Suchergebnisgruppe, z.B. „mainline“.
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |-------------|-----------------|----------|
 |items|Eine Liste der Suchergebnisse, die in der Gruppe angezeigt werden sollen.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiert ein anzuzeigendes Suchergebniselement.
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Ein nullbasierter Index des Elements in der Antwort, das angezeigt werden soll. Wenn das Element dieses Feld nicht enthält, werden alle Elemente in der Antwort angezeigt. Beispielsweise werden alle Artikel in der News-Antwort angezeigt.|Ganze Zahl |
 |answerType|Die Antwort, die das anzuzeigende Element enthält. Beispiel: News.<br /><br />Verwenden Sie den Typ, um nach der Antwort im SearchResponse-Objekt zu suchen. Der Typ ist der Name eines SearchResponse-Felds.<br /><br /> Verwenden Sie diesen Antworttyp jedoch nur, wenn dieses Objekt das value-Feld enthält. Ignorieren Sie ihn andernfalls.|Zeichenfolge|
@@ -251,7 +251,7 @@ Definiert das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anfo
   
 Beachten Sie Folgendes: Wenn der Dienst einen Denial-of-Service-Angriff vermutet, ist die Anforderung erfolgreich (HTTP-Statuscode: 200 OK). Der Antworttext ist jedoch leer.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis, der auf SearchResponse festgelegt wird.|Zeichenfolge|  
 |WebPage|Ein JSON-Objekt, das die Vorschau definiert.|Zeichenfolge|  
@@ -260,7 +260,7 @@ Beachten Sie Folgendes: Wenn der Dienst einen Denial-of-Service-Angriff vermutet
 ### <a name="textattribution"></a>TextAttribution  
 Definiert eine vertragliche Regel für die Nur-Text-Zuordnung.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Ein Typhinweis, der auf TextAttribution festgelegt wird.|Zeichenfolge|  
 |text|Der Zuordnungstext.<br /><br /> Die Textzuordnung gilt für die Entität als Ganzes und sollte unmittelbar nach der Entitätspräsentation angezeigt werden. Wenn es mehrere Text- oder Linkzuordnungsregeln gibt, die kein Ziel angeben, sollten Sie diese verketten und mithilfe einer „Data from:“-Bezeichnung anzeigen.|Zeichenfolge| 

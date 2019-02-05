@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 38da370e8e3cd81e209d0fd592d6b2afa8c82e44
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: queues
+ms.openlocfilehash: 295ca353530fb438d0bd77a9144813543102b997
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138512"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472710"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Verwenden des Warteschlangenspeichers mit Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -64,7 +64,7 @@ var azure = require('azure-storage');
 ## <a name="setup-an-azure-storage-connection"></a>Einrichten einer Azure-Speicherverbindung
 Das Azure-Modul liest die Umgebungsvariablen AZURE\_STORAGE\_ACCOUNT und AZURE\_STORAGE\_ACCESS\_KEY oder AZURE\_STORAGE\_CONNECTION\_STRING nach Informationen aus, die erforderlich sind, um eine Verbindung mit dem Azure-Speicherkonto herzustellen. Falls diese Umgebungsvariablen nicht gesetzt sind, müssen Sie die Kontoinformationen beim Aufruf von **createQueueService**angeben.
 
-## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
+## <a name="how-to-create-a-queue"></a>Anleitung: Erstellen einer Warteschlange
 Durch folgenden Code wird ein **QueueService** -Objekt erstellt, das Ihnen das Arbeiten mit Warteschlangen ermöglicht.
 
 ```javascript
@@ -105,7 +105,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
+## <a name="how-to-insert-a-message-into-a-queue"></a>Anleitung: Einfügen einer Nachricht in eine Warteschlange
 Zum Einfügen einer Nachricht in eine Warteschlange verwenden Sie die **createMessage**-Methode, um eine neue Nachricht zu erstellen. Fügen Sie sie dann der Warteschlange hinzu.
 
 ```javascript
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Einsehen der nächsten Nachricht
+## <a name="how-to-peek-at-the-next-message"></a>Anleitung: Einsehen der nächsten Nachricht
 Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode **peekMessages** aufrufen. Standardmäßig wird von **peekMessages** jeweils nur eine Nachricht angeschaut.
 
 ```javascript
@@ -134,7 +134,7 @@ Das `result` enthält die Nachricht.
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Entfernen der nächsten Nachricht aus der Warteschlange
+## <a name="how-to-dequeue-the-next-message"></a>Anleitung: Entfernen der nächsten Nachricht aus der Warteschlange
 Das Verarbeiten einer Nachricht besteht aus zwei Stufen:
 
 1. Entfernen der Nachricht aus der Warteschlange.
@@ -164,7 +164,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Ändern des Inhalts von Nachrichten in der Warteschlange
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Anleitung: Ändern des Inhalts von Nachrichten in der Warteschlange
 Sie können die Inhalte einer Nachricht direkt in der Warteschlange mithilfe von **updateMessage**ändern. Im folgenden Beispiel wird der Text einer Nachricht aktualisiert:
 
 ```javascript
@@ -181,7 +181,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Zusätzliche Optionen für das Entfernen von Nachrichten aus der Warteschlange
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Anleitung: Zusätzliche Optionen für das Entfernen von Nachrichten aus der Warteschlange
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können:
 
 * `options.numOfMessages` : Abrufen eines Stapels an Nachrichten (bis zu 32).
@@ -206,7 +206,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Abrufen der Warteschlangenlänge
+## <a name="how-to-get-the-queue-length"></a>Anleitung: Abrufen der Warteschlangenlänge
 **getQueueMetadata** gibt Metadaten über die Warteschlange zurück, einschließlich der geschätzten Anzahl der in der Warteschlange wartenden Nachrichten.
 
 ```javascript
@@ -217,7 +217,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Auflisten von Warteschlangen
+## <a name="how-to-list-queues"></a>Anleitung: Auflisten von Warteschlangen
 Verwenden Sie zum Aufrufen einer Liste an Warteschlangen **listQueuesSegmented**. Verwenden Sie **listQueuesSegmentedWithPrefix**, um eine Liste abzurufen, die nach einem bestimmten Präfix gefiltert ist.
 
 ```javascript
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 Wenn nicht alle Warteschlangen zurückgegeben werden können, kann `result.continuationToken` als erster Parameter von **listQueuesSegmented** oder als zweiter Parameter von **listQueuesSegmentedWithPrefix** verwendet werden, um weitere Ergebnisse abzurufen.
 
-## <a name="how-to-delete-a-queue"></a>Löschen von Warteschlangen
+## <a name="how-to-delete-a-queue"></a>Anleitung: Löschen einer Warteschlange
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **deleteQueue** für das Warteschlangenobjekt auf.
 
 ```javascript
@@ -243,7 +243,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 Verwenden Sie **clearMessages**, um alle Nachrichten aus einer Warteschlange zu entfernen, ohne sie zu löschen.
 
-## <a name="how-to-work-with-shared-access-signatures"></a>Arbeiten mit Shared Access Signatures
+## <a name="how-to-work-with-shared-access-signatures"></a>Gewusst wie: Arbeiten mit Shared Access Signatures
 Shared Access Signature (SAS) ist eine sichere Möglichkeit zum Bereitstellen einen granularen Zugriffs auf Warteschlangen, ohne dass dabei Ihr Speicherkontoname oder -schlüssel angegeben werden müssen. SAS wird oftmals zum Bereitstellen des beschränkten Zugriffs auf Ihre Warteschlangen verwendet, dazu zählt beispielsweise auch, einer mobilen App das Senden von Nachrichten zu erlauben.
 
 Eine vertrauenswürdige Anwendung wie ein cloudbasierter Dienst generiert mittels **generateSharedAccessSignature** von **QueueService** ein SAS und stellt sie einer nicht vertrauenswürdigen oder teilweise vertrauenswürdigen Anwendung bereit. Zum Beispiel für eine mobile App. Die SAS wird mithilfe einer Richtlinie generiert, die das Anfangs- und das Enddatum der Gültigkeit der SAS sowie die Zugriffsstufe definiert, die dem Inhaber der SAS gewährt wird.

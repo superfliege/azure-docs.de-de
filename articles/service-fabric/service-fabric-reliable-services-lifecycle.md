@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 391fc493d642c260a10b74aa42b805ad055dd8b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044576"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164553"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Übersicht über den Lebenszyklus von Reliable Services
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Wie bei zustandslosen Diensten stimmen die Lebenszyklusereignisse während des H
 3. Nach Abschluss von `StatefulServiceBase.OnCloseAsync()` wird das Dienstobjekt zerstört.
 
 ## <a name="stateful-service-primary-swaps"></a>Tausch des primären Replikats bei zustandsbehafteten Diensten
-Während ein zustandsbehafteter Dienst ausgeführt wird, werden nur für die primären Replikate dieser zustandsbehafteten Dienste die Kommunikationslistener geöffnet und die Methode **RunAsync** aufgerufen. Die sekundären Replikate werden erstellt, erhalten jedoch keine weiteren Aufrufe. Während ein zustandsbehafteter Dienst ausgeführt wird, kann sich das Replikat ändern, das derzeit das primäre ist. Was bedeutet dies im Hinblick auf die für ein Replikat sichtbaren Lebenszyklusereignisse? Das für das zustandsbehaftete Replikat sichtbare Verhalten hängt davon ab, ob das Replikat während des Tauschs höher oder tiefer gestuft wird.
+Während ein zustandsbehafteter Dienst ausgeführt wird, werden nur für die primären Replikate dieser zustandsbehafteten Dienste die Kommunikationslistener geöffnet und die Methode **RunAsync** aufgerufen. Die sekundären Replikate werden erstellt, erhalten jedoch keine weiteren Aufrufe. Während ein zustandsbehafteter Dienst ausgeführt wird, kann sich das Replikat, das zurzeit das primäre Replikat ist, als Ergebnis eines Fehlers oder einer Clusterausgleichsoptimierung ändern. Was bedeutet dies im Hinblick auf die für ein Replikat sichtbaren Lebenszyklusereignisse? Das für das zustandsbehaftete Replikat sichtbare Verhalten hängt davon ab, ob das Replikat während des Tauschs höher oder tiefer gestuft wird.
 
 ### <a name="for-the-primary-thats-demoted"></a>Für das tiefer gestufte primäre Replikat
 Für das tiefer gestufte primäre Replikat muss Service Fabric die Verarbeitung von Nachrichten und jegliche Hintergrundverarbeitung beenden. Folglich ähnelt dieser Schritt dem Herunterfahren des Diensts. Ein Unterschied besteht darin, dass der Dienst nicht zerstört oder geschlossen wird, weil er als sekundäres Replikat erhalten bleibt. Die folgenden APIs werden aufgerufen:

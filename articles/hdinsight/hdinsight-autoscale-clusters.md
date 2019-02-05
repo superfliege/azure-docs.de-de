@@ -1,5 +1,5 @@
 ---
-title: Automatisches Skalieren von Azure HDInsight-Clustern
+title: Automatisches Skalieren von Azure HDInsight-Clustern (Vorschau)
 description: Verwenden des HDInsight-Features „Autoskalierung“ für die automatische Skalierung von Clustern
 services: hdinsight
 author: hrasheed-msft
@@ -9,33 +9,35 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bd1ffcfd915fe9ece683ec88d27f54b3a9214621
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811161"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475675"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatisches Skalieren von Azure HDInsight-Clustern (Vorschau)
 
 Das Azure HDInsight-Feature „Autoskalierung“ skaliert die Anzahl der Workerknoten in einem Cluster basierend auf der Last innerhalb eines vordefinierten Bereichs automatisch zentral hoch oder herunter. Während der Erstellung eines neuen HDInsight-Clusters kann eine minimale und maximale Anzahl von Workerknoten festgelegt werden. Die automatische Skalierung überwacht dann die Ressourcenanforderungen der Analyselast und skaliert die Anzahl von Workerknoten dann entsprechend zentral hoch oder herunter. Für dieses Feature fallen keine zusätzlichen Gebühren an.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-### <a name="create-cluster-with-azure-portal"></a>Erstellen des Clusters mit dem Azure-Portal
+### <a name="create-a-cluster-with-the-azure-portal"></a>Erstellen eines Clusters mit dem Azure-Portal
 
 > [!Note]
 > Die automatische Skalierung wird derzeit nur für Azure HDInsight Hive, MapReduce und Spark-Cluster ab Version 3.6 unterstützt.
 
-Führen Sie die Schritte in [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md) aus, und wenn Sie Schritt 5, **Clustergröße**, erreichen, wählen Sie die Option **Autoskalierung von Workerknoten (Vorschau)** wie unten dargestellt aus. 
+Um das Feature für die automatische Skalierung zu aktivieren, gehen Sie als Teil des normalen Clustererstellungsvorgangs folgendermaßen vor:
 
-![Aktivieren der Option für die automatische Skalierung des Workerknotens](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+1. Wählen Sie **Benutzerdefiniert (Größe, Einstellungen, Apps)** anstatt **Schnellerfassung** aus.
+2. Aktivieren Sie unter **Benutzerdefiniert** in Schritt 5 (**Clustergröße**) das Kontrollkästchen **Autoskalierung von Workerknoten**.
+3. Geben Sie die gewünschten Werte für die folgenden Angaben ein:  
 
-Durch Aktivieren dieser Option können Sie Folgendes angeben:
+    * Anfängliche **Anzahl von Workerknoten**.  
+    * **Mindestzahl** von Workerknoten.  
+    * **Maximale** Anzahl von Workerknoten.  
 
-* Die anfängliche Anzahl der Workerknoten
-* Die Mindestzahl der Workerknoten
-* Die Höchstzahl der Workerknoten
+![Aktivieren der Option für die automatische Skalierung des Workerknotens](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 Die anfängliche Anzahl der Workerknoten kann vom Mindest- bis zum Höchstwert reichen. Dieser Wert definiert die Anfangsgröße des Clusters bei der Erstellung. Die Mindestzahl der Workerknoten muss größer als 0 (null) sein.
 
@@ -43,12 +45,14 @@ Nachdem Sie den VM-Typ für jeden Knotentyp ausgewählt haben, können Sie den B
 
 Ihr Abonnement verfügt für jede Region über ein Kapazitätskontingent. Die Gesamtzahl der Kerne Ihrer Hauptknoten darf in Kombination mit der maximalen Anzahl von Workerknoten das Kapazitätskontingent nicht überschreiten. Dieses Kontingent ist jedoch eine weiche Grenze. Sie können immer ein Supportticket erstellen, um es problemlos erhöhen zu lassen.
 
-> [!Note]
+> [!Note]  
 > Wenn Sie die gesamte Kernkontingentgrenze überschreiten, informiert Sie eine Fehlermeldung darüber, dass die maximale Knotenzahl die Zahl der verfügbaren Kerne in dieser Region überschritten hat, und Sie werden aufgefordert, eine andere Region auszuwählen oder den Support um Erhöhung des Kontingents zu bitten.
 
-### <a name="create-cluster-with-an-resource-manager-template"></a>Erstellen von Clustern mithilfe einer Resource Manager-Vorlage
+Weitere Informationen zum Erstellen von HDInsight-Clustern mit dem Azure-Portal finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md).  
 
-Wenn Sie einen HDInsight-Cluster mit einer Resource Manager-Vorlage erstellen, müssen Sie die folgenden Einstellungen im Abschnitt „workerknoten“ von „ComputeProfile“ hinzufügen:
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Erstellen eines Clusters mithilfe einer Resource Manager-Vorlage
+
+Um einen HDInsight-Cluster mit einer Azure Resource Manager-Vorlage zu erstellen, fügen Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzu, wie im folgenden JSON-Codeausschnitt gezeigt.
 
 ```json
 {                            
@@ -72,7 +76,9 @@ Wenn Sie einen HDInsight-Cluster mit einer Resource Manager-Vorlage erstellen, m
 }
 ```
 
-### <a name="enable-and-disabling-autoscale-for-a-running-cluster"></a>Aktivieren und Deaktivieren der automatischen Skalierung für einen ausgeführten Cluster
+Weitere Informationen zum Erstellen von Clustern mit Resource Manager-Vorlagen finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight mithilfe von Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  
+
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Aktivieren und Deaktivieren der Autoskalierung für einen aktuell ausgeführten Cluster
 
 Aktivieren der automatischen Skalierung für einen ausgeführten Cluster wird in der privaten Vorschau nicht unterstützt. Sie muss während der Clustererstellung aktiviert werden.
 
@@ -80,7 +86,7 @@ Deaktivieren der automatischen Skalierung oder Änderung der Einstellungen der a
 
 ## <a name="monitoring"></a>Überwachung
 
-Sie können den Verlauf des zentralen Hoch- und Herunterskalierens des Clusters als Teil der Clustermetriken anzeigen. Sie können alle Skalierungsaktionen des letzten Tags, der letzten Woche oder eines längeren Zeitraums auflisten.
+Sie können den Verlauf des zentralen Hoch- und Herunterskalierens des Clusters als Teil der Clustermetriken anzeigen. Sie können auch alle Skalierungsaktionen des letzten Tags, der letzten Woche oder eines längeren Zeitraums auflisten.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -104,7 +110,7 @@ Wenn die folgenden Bedingungen erkannt werden, fordert die automatische Skalieru
 * „CPU insgesamt für ausstehende“ ist länger als eine Minute größer als die Anzahl der insgesamt freien CPUs.
 * „Arbeitsspeicher insgesamt für ausstehende“ ist länger als 1 Minute größer als der insgesamt freie Arbeitsspeicher.
 
-Wir berechnen, dass N neue Workerknoten erforderlich sind, um die aktuellen CPU- und Arbeitsspeicheranforderungen zu erfüllen und dann durch Anfordern von N neuen Workerknoten eine Anforderung zum zentralen Hochskalieren auszugeben.
+Wir berechnen, dass eine bestimmte Anzahl neuer Workerknoten benötigt wird, um die aktuellen CPU- und Speicheranforderungen zu erfüllen, und geben dann eine zentrale Hochskalierungsanforderung aus, die diese Anzahl neuer Workerknoten hinzufügt.
 
 ### <a name="cluster-scale-down"></a>Cluster zentral herunterskalieren
 
@@ -113,7 +119,7 @@ Wenn die folgenden Bedingungen erkannt werden, fordert die automatische Skalieru
 * „CPU insgesamt für ausstehende“ ist länger als 10 Minuten kleiner als die Anzahl der insgesamt freien CPUs.
 * „Arbeitsspeicher insgesamt für ausstehende“ ist länger als 10 Minuten kleiner als der insgesamt freie Arbeitsspeicher.
 
-Basierend auf der Anzahl der AM-Container pro Knoten als auch der aktuellen CPU- und Arbeitsspeicheranforderungen gibt die automatische Skalierung eine Anforderung zum Entfernen von N Knoten aus, wobei angegeben wird, welche Knoten potenzielle Kandidaten zum Entfernen sind. Standardmäßig werden zwei Knoten in einem Zyklus entfernt.
+Basierend auf der Anzahl der AM-Container pro Knoten und der aktuellen CPU- und Arbeitsspeicheranforderungen gibt die Autoskalierung eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus, wobei angegeben wird, welche Knoten potenzielle Kandidaten zum Entfernen sind. Standardmäßig werden zwei Knoten in einem Zyklus entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

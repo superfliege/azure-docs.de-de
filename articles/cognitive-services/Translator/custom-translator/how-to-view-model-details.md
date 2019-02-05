@@ -5,16 +5,16 @@ description: Die Registerkarte „Modelle“ zeigt unter jedem Projekt Details z
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 80ee99fc4490f1fdc591093f357c8db55a97abb9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d82d41a254164c635f4488db63766b39d922f002
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626995"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219108"
 ---
 # <a name="view-model-details"></a>Anzeigen der Modelldetails
 
@@ -22,45 +22,45 @@ Die Registerkarte „Modelle“ unter „Projekt“ zeigt alle Modelle in diesem
 
 Für jedes Modell im Projekt werden folgende Modelldetails angezeigt.
 
-1.  Modellname: Der Modellname eines bestimmten Modells.
+1.  Model Name (Modellname): Der Modellname eines bestimmten Modells.
 
-2.  Status: Status eines bestimmten Modells. Ihr neues Training hat den Status „Übermittelt“, bis die Daten angenommen werden. Der Status ändert sich in „Datenverarbeitung“, wenn der Dienst den Inhalt Ihrer Dokumente auswertet. Wenn die Auswertung Ihrer Dokumente abgeschlossen ist, wechselt der Status zu „Wird ausgeführt“. Nun können Sie die Anzahl von Sätzen in Ihrem Training sehen, einschließlich der Optimierungs- und Testsets, die automatisch für Sie erstellt werden. Die folgende Liste beschreibt die unterschiedlichen Modellstatus.
+2.  Status: Der Status eines bestimmten Modells. Ihr neues Training hat den Status „Übermittelt“, bis die Daten angenommen werden. Der Status ändert sich in „Datenverarbeitung“, wenn der Dienst den Inhalt Ihrer Dokumente auswertet. Wenn die Auswertung Ihrer Dokumente abgeschlossen ist, wechselt der Status zu „Wird ausgeführt“. Nun können Sie die Anzahl von Sätzen in Ihrem Training sehen, einschließlich der Optimierungs- und Testsets, die automatisch für Sie erstellt werden. Die folgende Liste beschreibt die unterschiedlichen Modellstatus.
 
-    -  Submitted: Das Back-End verarbeitet die Dokumente für das Modell.
+    -  Submitted (Übermittelt): Das Back-End verarbeitet die Dokumente für das Modell.
 
     -  TrainingQueued: Das Training für dieses Modell wurde der Warteschlange des MT-Systems hinzugefügt.
 
-    -  Running: Das Training wird im MT-System für dieses Modell ausgeführt.
+    -  Running (Wird ausgeführt): Das Training wird im MT-System für dieses Modell ausgeführt.
 
-    -  Succeeded: Das Training war im MT-System erfolgreich, und ein Modell ist verfügbar. Bei diesem Status wird ein BLEU-Score (Bilingual Evaluation Understudy) für dieses Modell angezeigt.
+    -  Succeeded (Erfolgreich): Das Training war im MT-System erfolgreich, und ein Modell ist verfügbar. Bei diesem Status wird ein BLEU-Score (Bilingual Evaluation Understudy) für dieses Modell angezeigt.
 
-    -  Deployed: Das erfolgreich trainierte Modell wird an das MT-System zum Bereitstellen übermittelt.
+    -  Deployed (Bereitgestellt): Das erfolgreich trainierte Modell wird an das MT-System zum Bereitstellen übermittelt.
 
-    -  Undeploying: Die Bereitstellung des Modells wird zurückgenommen.
+    -  Undeploying (Bereitstellung wird aufgehoben): Die Bereitstellung des Modells wird aufgehoben.
 
-    -  Undeployed: Die Bereitstellung eines Modells wurde erfolgreich zurückgenommen.
+    -  Undeployed (Bereitstellung wurde aufgehoben): Die Bereitstellung eines Modells wurde erfolgreich aufgehoben.
 
-    -  Training Failed: Beim Trainieren ist ein Fehler aufgetreten. Wenn ein Trainingsfehler auftritt, versuchen Sie den Trainingsauftrag erneut. Wenden Sie sich an uns, wenn der Fehler weiterhin auftritt. Löschen Sie nicht das fehlerhafte Modell.
+    -  Training Failed (Trainingsfehler): Beim Training ist ein Fehler aufgetreten. Wenn ein Trainingsfehler auftritt, versuchen Sie den Trainingsauftrag erneut. Wenden Sie sich an uns, wenn der Fehler weiterhin auftritt. Löschen Sie nicht das fehlerhafte Modell.
 
-    - DataProcessingFailed: Die Datenverarbeitung ist für mindestens ein Dokument des Modells fehlgeschlagen.
+    - DataProcessingFailed: Bei der Datenverarbeitung ist für mindestens ein Dokument des Modells ein Fehler aufgetreten.
 
-    - DeploymentFailed: Die Modellimplementierung ist fehlgeschlagen.
+    - DeploymentFailed: Fehler bei der Modellbereitstellung.
 
     - MigratedDraft: Das Modell befindet sich nach der Migration von Hub zu Custom Translator im Entwurfsstatus.
 
 4.  BLEU Score: BLEU-Score des Modells, der die Qualität Ihres Übersetzungssystems anzeigt. Er gibt Auskunft darüber, wie exakt die vom Übersetzungssystem anhand dieses Trainings angefertigten Übersetzungen mit den Referenzsätzen im Testdataset übereinstimmen. Der BLEU-Score wird angezeigt, wenn das Training erfolgreich abgeschlossen wurde. Wenn das Training nicht abgeschlossen wurde bzw. ein Fehler aufgetreten ist, wird kein BLEU-Score angezeigt.
 
-5.  Anzahl von Trainingssätzen: Gesamtanzahl von Sätzen, die als Trainingsset verwendet werden.
+5.  Training Sentence count (Anzahl Trainingssätze): Die Gesamtanzahl von Sätzen, die als Trainingsset verwendet werden.
 
-6.  Anzahl von Optimierungssätzen: Gesamtanzahl von Sätzen, die als Optimierungsset verwendet werden.
+6.  Tuning Sentence count (Anzahl Tuningsätze): Die Gesamtanzahl von Sätzen, die als Tuningset verwendet werden.
 
-7.  Anzahl von Testsätzen: Gesamtanzahl von Sätzen, die als Testset verwendet werden.
+7.  Training Sentence count (Anzahl Trainingssätze): Die Gesamtanzahl von Sätzen, die als Testset verwendet werden.
 
-8.  Anzahl von Monosätzen: Gesamtanzahl von Sätzen, die als Monoset verwendet werden.
+8.  Mono Sentence count (Anzahl Monosätze): Die Gesamtanzahl von Sätzen, die als Monoset verwendet werden.
 
-9.  Interaktive Schaltfläche „Bereitstellen“: Für erfolgreich trainierte Modelle, die noch nicht bereitgestellt wurden, wird die Schaltfläche „Bereitstellen“ angezeigt. Wenn ein Modell bereitgestellt wurde, wird die Schaltfläche „Bereitstellung zurücknehmen“ angezeigt.
+9.  Aktionsschaltfläche „Deploy“ (Bereitstellen): Für erfolgreich trainierte Modelle, die noch nicht bereitgestellt wurden, wird die Schaltfläche „Bereitstellen“ angezeigt. Wenn ein Modell bereitgestellt wurde, wird die Schaltfläche „Bereitstellung zurücknehmen“ angezeigt.
 
-10. Löschen: Mit dieser Schaltfläche können Sie das Modell löschen. Wenn Sie ein Modell löschen, werden nicht die Dokumente entfernt, die zum Erstellen dieses Modells verwendet wurden.
+10. Delete (Löschen): Mit dieser Schaltfläche können Sie das Modell löschen. Wenn Sie ein Modell löschen, werden nicht die Dokumente entfernt, die zum Erstellen dieses Modells verwendet wurden.
 
     ![Anzeigen der Modelldetails](media/how-to/how-to-view-model-details.png)
 
@@ -71,25 +71,25 @@ Für jedes Modell im Projekt werden folgende Modelldetails angezeigt.
 
 Wenn Ihr Training abgeschlossen ist, werden auf der Detailseite die genauen Trainingsinformationen angezeigt. Wählen Sie ein Projekt aus, gehen Sie zur Registerkarte „Modelle“, und wählen Sie diese sowie ein Modell aus.
 
-Die Modellseite hat zwei Registerkarten: „Trainingsdetails“ und „Test“.
+Die Modellseite verfügt über zwei Registerkarten: Trainingsdetails und Testen.
 
-1.  **Trainingsdetails**: Hier wird die Liste der Dokumente angezeigt, die zum Trainieren verwendet wurden:
+1.  **Training Details (Trainingsdetails):** Hier wird die Liste der Dokumente angezeigt, die für das Training verwendet wurden:
 
-    -  Dokumentname: Dieses Feld zeigt den Namen des Dokuments an.
+    -  Documents Name (Dokumentname): Dieses Feld zeigt den Namen des Dokuments an.
 
-    -  Dokumenttyp: Dieses Feld zeigt, ob dieses Dokument parallel/mono ist.
+    -  Document Type (Dokumenttyp): Dieses Feld zeigt an, ob dieses Dokument parallel/mono ist.
 
-    -  Anzahl von Sätzen in der Ausgangssprache: Dieses Feld gibt die Anzahl von Sätzen in der Ausgangssprache an.
+    -  Sentence count in source language (Satzanzahl in Ausgangssprache): Dieses Feld gibt die Anzahl von Sätzen in der Ausgangssprache an.
 
-    -  Anzahl von Sätzen in der Zielsprache: Dieses Feld gibt die Anzahl von Sätzen in der Zielsprache an.
+    -  Sentence count in target language (Satzanzahl in Zielsprache): Dieses Feld gibt die Anzahl von Sätzen in der Zielsprache an.
 
-    -  Zugeordnete Sätze: Dieses Feld zeigt an, wie viele Sätze beim Alignment von Custom Translator zugeordnet wurden.
+    -  Aligned Sentences (Zugeordnete Sätze): Dieses Feld zeigt an, wie viele Sätze bei der Zuordnung durch Custom Translator zugeordnet wurden.
 
-    -  Verwendete Sätze: Dieses Feld zeigt an, wie viele Sätze beim Trainieren von Custom Translator verwendet wurden.
+    -  Used Sentences (Verwendete Sätze): Dieses Feld zeigt an, wie viele Sätze beim Trainieren von Custom Translator verwendet wurden.
 
     ![Modelltrainingsdetails](media/how-to/how-to-model-training-details.png)
 
-2.  **Test**: Hier werden die Testdetails für ein erfolgreiches Training angezeigt.
+2.  **Test (Testen):** Diese Registerkarte zeigt die Testdetails für ein erfolgreiches Training an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

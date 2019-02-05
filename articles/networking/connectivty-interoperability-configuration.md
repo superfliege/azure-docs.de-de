@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: a460a8f4c652182a7916cba5aef0520834432909
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4aa594769a3665908f0adce498a4a2bf3a4f4f83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614814"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189067"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Details zur Testkonfiguration
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Konfigurationsdetails zur Testeinrichtung
 
 In diesem Artikel werden die Konfigurationsdetails der [Testeinrichtung][Setup] beschrieben. Die Testeinrichtung hilft Ihnen bei der Analyse, wie Azure-Netzwerkdienste auf der Steuerungs- und Datenebene zusammen arbeiten.
 
@@ -166,17 +166,17 @@ ExpressRoute 1 stellt eine Verbindung zwischen dem Hub-VNET sowie dem lokalen Ne
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-Site-VPN über ExpressRoute
 
-Sie können ein Site-to-Site-VPN mithilfe von Microsoft ExpressRoute-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per Microsoft ExpressRoute-Peering finden Sie unter [Konfigurieren eines Site-to-Site-VPN über Microsoft ExpressRoute-Peering][S2S-Over-ExR]. 
+Sie können ein Site-to-Site-VPN mithilfe von ExpressRoute-Microsoft-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per ExpressRoute-Microsoft-Peering finden Sie unter [Site-to-Site-VPN über ExpressRoute-Microsoft-Peering][S2S-Over-ExR]. 
 
-Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit Microsoft-Peering ist der Durchsatz. Der Durchsatz des IPsec-Tunnels wird durch die Kapazität des VPN-Gateways eingeschränkt. Der Durchsatz des VPN-Gateways ist niedriger als der ExpressRoute-Durchsatz. In diesem Szenario stellt die Verwendung des IPsec-Tunnels für äußerst sicheren Datenverkehr und des privaten Peerings für sämtlichen anderen Datenverkehr einen Beitrag zur Optimierung der ExpressRoute-Bandbreitenauslastung dar.
+Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit Microsoft-Peering ist der Durchsatz. Der Durchsatz des IPsec-Tunnels wird durch die Kapazität des VPN-Gateways eingeschränkt. Der Durchsatz des VPN-Gateways ist niedriger als der ExpressRoute-Durchsatz. In diesem Szenario stellt die Verwendung des IPsec-Tunnels für hoch sicheren Datenverkehr und des privaten Peerings für sämtlichen anderen Datenverkehr einen Beitrag zur Optimierung der ExpressRoute-Bandbreitenauslastung dar.
 
 ### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-to-Site-VPN als sicherer Failoverpfad für ExpressRoute
 
-ExpressRoute dient als redundantes Verbindungspaar, um Hochverfügbarkeit sicherzustellen. Sie können die georedundante ExpressRoute-Konnektivität in unterschiedlichen Azure-Regionen konfigurieren. Sie können außerdem wie in unserer Testeinrichtung demonstriert in einer Azure-Region mithilfe eines Site-to-Site-VPN einen Failoverpfad für Ihre ExpressRoute-Konnektivität einrichten. Wenn über ExpressRoute und das Site-to-Site-VPN die gleichen Präfixe angekündigt werden, bevorzugt Azure ExpressRoute. Zur Vermeidung von asymmetrischem Routing zwischen ExpressRoute und dem Site-to-Site-VPN sollte in der lokalen Netzwerkkonfiguration die ExpressRoute-Konnektivität ebenfalls den Vorzug vor Site-to-Site-VPN-Konnektivität erhalten.
+ExpressRoute dient als redundantes Verbindungspaar, um Hochverfügbarkeit sicherzustellen. Sie können die georedundante ExpressRoute-Konnektivität in unterschiedlichen Azure-Regionen konfigurieren. Sie können außerdem wie in unserer Testeinrichtung demonstriert in einer Azure-Region mithilfe eines Site-to-Site-VPN einen Failoverpfad für Ihre ExpressRoute-Verbindung einrichten. Wenn über ExpressRoute und das Site-to-Site-VPN die gleichen Präfixe angekündigt werden, priorisiert Azure ExpressRoute. Zur Vermeidung von asymmetrischem Routing zwischen ExpressRoute und dem Site-to-Site-VPN sollte in der lokalen Netzwerkkonfiguration die ExpressRoute-Verbindung ebenfalls den Vorzug vor Site-to-Site-VPN-Verbindungen erhalten.
 
-Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Konfigurieren von parallelen ExpressRoute- und Site-to-Site-Verbindungen mit PowerShell][ExR-S2S-CoEx].
+Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Parallele ExpressRoute- und Site-to-Site-Verbindungen][ExR-S2S-CoEx].
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Erweitern der Back-End-Konnektivität auf Spoke-VNETs und Zweigniederlassungen
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Erweitern der Back-End-Konnektivität auf Spoke-VNETs und Branchstandorte
 
 ### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Spoke-VNET-Konnektivität per VNET-Peering
 
@@ -186,9 +186,9 @@ Beim VNET-Peering in einer Region können Spoke-VNETs Hub-VNET-Gateways verwende
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Konnektivität mit dem VNET der Zweigniederlassung über das Site-to-Site-VPN
 
-VNETs von Zweigniederlassungen in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung einer virtuellen Netzwerkappliance (NVA) für das Routing im Hub.
+VNETs in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung eines virtuellen Netzwerkgeräts (NVA) für das Routing im Hub.
 
-Weitere Informationen finden Sie unter [Was ist VPN Gateway?][VPN] und [Bereitstellen von hochverfügbaren virtuellen Netzwerkappliances][Deploy-NVA].
+Weitere Informationen finden Sie unter [Was ist VPN-Gateway?][VPN] und [Bereitstellen eines hoch verfügbaren virtuellen Netzwerkgeräts][Deploy-NVA].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -197,7 +197,7 @@ Erfahren Sie mehr über die [Analyse auf Steuerungsebene][Control-Analysis] der 
 Die Analyse der Testeinrichtung auf Datenebene und die Ansichten der Überwachungsfeatures für Azure-Netzwerke können Sie unter [Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse auf Datenebene][Data-Analysis] einsehen.
 
 Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
--   Anzahl der ExpressRoute-Verbindungen, die Sie mit einem ExpressRoute-Gateway verbinden können
+-   Erfahren Sie, wie viele ExpressRoute-Verbindungen Sie mit einem ExpressRoute-Gateway verbinden können.
 -   Anzahl der ExpressRoute-Gateways, die Sie per ExpressRoute verbinden können
 -   Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 

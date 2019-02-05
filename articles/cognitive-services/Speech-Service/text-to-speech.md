@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343206"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251553"
 ---
 # <a name="about-the-text-to-speech-api"></a>Informationen zur Text-to-Speech-API
 
@@ -37,6 +37,9 @@ Zu Szenarios, in denen die Sprachsynthese übernommen wird, zählen die folgende
 ## <a name="voice-support"></a>Sprachunterstützung
 
 Der **Text-to-Speech**-Dienst von Microsoft bietet mehr als 75 Stimmen in mehr als 45 Sprachen und Gebietsschemas. Wenn Sie diese standardmäßigen „Voicefonts“ verwenden möchten, müssen Sie beim Aufrufen der REST-API nur den Namen der Stimme mit einigen anderen Parametern angeben. Weitere Informationen zu unterstützten Sprachen, Gebietsschemas und Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+
+> [!IMPORTANT]
+> Die Kosten sind für Standardstimmen, benutzerdefinierte und neuronale Stimmen unterschiedlich. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="neural-voices"></a>Neuronale Stimmen
 

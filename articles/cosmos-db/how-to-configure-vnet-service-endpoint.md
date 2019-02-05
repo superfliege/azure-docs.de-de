@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: ac5dd4d43ec6e0248a5a9939015a344bad421280
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4511ef81ccfa7008cd21a22b09459fb122d46327
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438982"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452939"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke
+# <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs über virtuelle Netzwerke (VNET)
 
 Sie können Azure Cosmos DB-Konten so konfigurieren, dass der Zugriff nur aus einem bestimmten Subnetz eines virtuellen Azure-Netzwerks (VNET) zugelassen wird. Um den Zugriff auf ein Azure Cosmos DB-Konto mit Verbindungen aus einem Subnetz in einem virtuellen Netzwerk einzuschränken, sind diese Schritte erforderlich:
  

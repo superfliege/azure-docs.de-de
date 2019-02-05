@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 772153040ac76f4b7bbee55c48527a841fc69037
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 443ecdeab057c863763501e5da7d36e9fb6a4eea
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084784"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223135"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 Umfassende Liste der für QnA Maker geltenden Grenzwerte.
@@ -27,7 +27,9 @@ Umfassende Liste der für QnA Maker geltenden Grenzwerte.
 
 |**Azure Search-Tarif** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Maximal zulässige Anzahl der veröffentlichten Knowledge Bases (max. Indizes – 1, für Tests reserviert)|2|14|49|199|199|2.999|
+|Maximal zulässige Anzahl der veröffentlichten Wissensdatenbanken|2|14|49|199|199|2.999|
+
+ Wenn Ihr Tarif beispielsweise 15 zulässige Indizes aufweist, können Sie 14 Wissensdatenbanken veröffentlichen (1 Index pro veröffentlichter Wissensdatenbank). Der fünfzehnte Index (`testkb`) wird für alle Wissensdatenbanken zum Erstellen und Testen verwendet. 
 
 ## <a name="extraction-limits"></a>Grenzwerte für die Extraktion
 * Maximale Anzahl der Dateien, die extrahiert werden können, und maximale Dateigröße: Siehe [QnA Maker – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
@@ -64,3 +66,11 @@ Dabei handelt es sich um die Grenzwerte für die einzelnen Aktualisierungsaktion
 * Maximale Anzahl hinzugefügter oder gelöschter alternativer Fragen: 100
 * Maximale Anzahl hinzugefügter oder gelöschter Metadatenfelder: 10
 * Maximale Anzahl der URLs, die aktualisiert werden können: 5
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie, wann und wie Diensttarife geändert werden:
+
+* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Wenn Sie in Ihrer Wissensdatenbank weitere Fragen und Antworten benötigen, die über Ihren aktuellen Tarif hinausgehen, upgraden Sie den Tarif Ihres QnA Maker-Diensts.
+* [Search](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Wenn Ihre Wissensdatenbank mehr Anforderungen von Ihrer Client-App verarbeiten muss, upgraden Sie den Tarif Ihres App-Diensts.
+* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Search-Diensts.

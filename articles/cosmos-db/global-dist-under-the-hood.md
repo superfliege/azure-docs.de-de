@@ -1,5 +1,5 @@
 ---
-title: 'Globale Verteilung von Azure Cosmos DB: Hintergrundinformationen'
+title: 'Globale Verteilung mit Azure Cosmos DB: Hintergrundinformationen'
 description: Dieser Artikel enthält technische Details in Bezug auf die globale Verteilung von Azure Cosmos DB.
 author: dharmas-cosmos
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e1c84bb28747cf1799b39c70b6df3dc0cb9f8d78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038941"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475379"
 ---
-# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Globale Verteilung von Azure Cosmos DB: Hintergrundinformationen
+# <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 
 Azure Cosmos DB ist einer der Basisdienste von Azure und wird daher in sämtlichen Azure-Regionen weltweit (einschließlich der öffentlichen, Sovereign-, DoD- (Department of Defense) und Government-Clouds) bereitgestellt. Innerhalb eines Rechenzentrums wird Azure Cosmos DB auf umfangreichen „Stamps“ von Computern, die jeweils über dedizierten lokalen Speicher verfügen, bereitgestellt und verwaltet. Innerhalb eines Datencenters wird Azure Cosmos DB in vielen Clustern bereitgestellt, die jeweils in der Lage sind, mehrere Generationen von Hardware auszuführen. Die Computer in einem Cluster werden in der Regel auf 10–20 Fehlerdomänen aufgeteilt. Die folgende Abbildung zeigt die Systemtopologie von Cosmos DB für die globale Verteilung:
 

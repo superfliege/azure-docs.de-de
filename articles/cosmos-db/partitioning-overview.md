@@ -6,14 +6,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 20e869d30f9e7b8102b723870f0102e041e064d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d9bd1bec6d1df6fab634c5d929cb778abbd3d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042273"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478405"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db---overview"></a>Partitionierung in Azure Cosmos DB: Übersicht
 
 Die Partitionierung ist das Verfahren, mit dem Cosmos DB einzelne Container in einer Datenbank entsprechend den Leistungsanforderungen Ihrer Anwendung skaliert. Mithilfe der Partitionierung werden die Elemente in einem Container in verschiedene Teilmengen unterteilt, die als logische Partitionen bezeichnet werden. Die logischen Partitionen werden basierend auf dem Wert einer Eigenschaft des Partitionsschlüssels erstellt, die jedem Element zugeordnet ist.
 

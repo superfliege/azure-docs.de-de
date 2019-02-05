@@ -4,26 +4,26 @@ description: Übersicht über das Bereitstellen von Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: aa5737d67ea2c9cb8cc7c7098764ae67fc91137d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669817"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298533"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT für Azure – Übersicht über die Bereitstellung
 
 Dieser Artikel bietet eine Übersicht über die Schritte, die erforderlich sind, um einen Avere vFXT für Azure-Cluster in Betrieb zu nehmen.
 
-Wenn Sie zum ersten Mal ein Avere vFXT-System bereitstellen, werden Sie feststellen, dass mehr Schritte erforderlich sind als bei der Bereitstellung der meisten anderen Azure-Tools. Ein sicheres Gespür für den gesamten Prozess hilft Ihnen, den erforderlichen Aufwand zu minimieren. Nach der Inbetriebnahme des Systems wird seine Leistungsfähigkeit bei der Beschleunigung von cloudbasierten Computeaufgaben den Aufwand wert sein.
+Vor und nach dem Erstellen des vFXT-Clusters aus Azure Marketplace sind mehrere Aufgaben erforderlich. Ein sicheres Gespür für den gesamten Prozess hilft Ihnen, den erforderlichen Aufwand zu minimieren. 
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 
 Nach der [Planung Ihres Systems](avere-vfxt-deploy-plan.md) können Sie mit der Erstellung des Avere vFXT-Clusters beginnen. 
 
-Beginnen Sie mit der Erstellung einer Clustercontroller-VM, mit der der vFXT-Cluster erstellt wird.
+Eine Azure Resource Manager-Vorlage in Azure Marketplace erfasst die erforderlichen Informationen und stellt automatisch den gesamten Cluster bereit. 
 
 Nachdem der vFXT-Cluster in Betrieb genommen wurde, möchten Sie sicherlich wissen, wie Sie Clients damit verbinden und, falls erforderlich, Ihre Daten in den neuen Blob-Speichercontainer verschieben können.  
 
@@ -33,25 +33,30 @@ Hier folgt eine Übersicht über alle Schritte.
 
    Bevor Sie einen virtuellen Computer erstellen, müssen Sie ein neues Abonnement für das Avere vFXT-Projekt erstellen, den Abonnementbesitz konfigurieren, Kontingente prüfen und bei Bedarf eine Erhöhung anfordern sowie Bedingungen für die Nutzung der Avere vFXT-Software akzeptieren. Ausführliche Anweisungen finden Sie unter [Vorbereiten der Avere vFXT-Erstellung](avere-vfxt-prereqs.md).
 
-1. Erstellen des Clustercontrollers
+1. Erstellen einer Zugriffsrolle für die Clusterknoten
 
-   Der *Clustercontroller* ist ein einfacher virtueller Computer, der sich im gleichen virtuellen Netzwerk wie der Avere vFXT-Cluster befindet. Der Controller erstellt die vFXT-Knoten und bildet den Cluster, und er stellt auch eine Befehlszeilenschnittstelle zur Verfügung, um den Cluster während seiner Lebensdauer zu verwalten.
+   Azure verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (RBAC), um die virtuellen Clusterknotencomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Die Clusterknoten müssen z. B. in der Lage sein, anderen Clusterknoten IP-Adressen zuzuordnen oder neu zuzuordnen. Bevor Sie den Cluster erstellen, müssen Sie eine Rolle definieren, die ihm ausreichende Berechtigungen zuweist.
 
-   Wenn Sie Ihren Controller mit einer öffentlichen IP-Adresse konfigurieren, kann er auch als Jump-Host für die Verbindung mit dem Cluster von außerhalb des VNets dienen.
+   Anweisungen finden Sie unter [Erstellen der Zugriffsrolle für Clusterknoten](avere-vfxt-prereqs.md#create-the-cluster-node-access-role).
 
-   Sämtliche Software, die zur Erstellung des vFXT-Clusters und zur Verwaltung seiner Knoten erforderlich ist, ist auf dem Clustercontroller vorinstalliert.
-
-   Weitere Informationen finden Sie unter [Erstellen der Clustercontroller-VM](avere-vfxt-deploy.md#create-the-cluster-controller-vm).
-
-1. Erstellen einer Runtimerolle für die Clusterknoten 
-
-   Azure verwendet die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC), um die virtuellen Clusterknotencomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Die Clusterknoten müssen z. B. in der Lage sein, anderen Clusterknoten IP-Adressen zuzuordnen oder neu zuzuordnen. Bevor Sie den Cluster erstellen, müssen Sie eine Rolle definieren, die ihm ausreichende Berechtigungen zuweist.
-
-   Die vorinstallierte Software des Clustercontrollers umfasst eine Prototyprolle, die Sie anpassen können. Anweisungen finden Sie unter [Erstellen der Zugriffsrolle für Clusterknoten](avere-vfxt-deploy.md#create-the-cluster-node-access-role).
+   Der Cluster-Controller verwendet auch eine Zugriffsrolle, aber Sie können die Standardrolle „Besitzer“ übernehmen, anstatt eine eigene Rolle zu erstellen. Wenn Sie eine benutzerdefinierte Rolle für den Clustercontroller erstellen möchten, lesen Sie [Angepasste Controllerzugriffsrolle](avere-vfxt-controller-role.md). 
 
 1. Erstellen des Avere vFXT-Clusters 
 
-   Bearbeiten Sie auf dem Controller das entsprechende Skript zur Clustererstellung und führen Sie es aus, um den Cluster zu erstellen. Das [Bearbeiten des Bereitstellungsskripts](avere-vfxt-deploy.md#edit-the-deployment-script) umfasst ausführliche Anweisungen. 
+   Verwenden Sie Azure Marketplace, um den Avere vFXT-Cluster für Azure zu erstellen. Eine Vorlage erfasst die erforderlichen Informationen und führt Skripts aus, um das endgültige Produkt zu erstellen.
+
+   Die Erstellung des Clusters umfasst die folgenden Schritte, die alle von der Marketplace-Vorlage ausgeführt werden: 
+
+   * Erstellen einer neuen Netzwerkinfrastruktur und von Ressourcengruppen, wenn erforderlich
+   * Erstellen eines *Clustercontrollers*  
+
+     Der Clustercontroller ist eine einfache VM, die sich im gleichen virtuellen Netzwerk wie der Avere vFXT-Cluster befindet und über die für die Erstellung und Verwaltung des Clusters erforderliche benutzerdefinierte Software verfügt. Der Controller erstellt die vFXT-Knoten und bildet den Cluster, und er stellt auch eine Befehlszeilenschnittstelle zur Verfügung, um den Cluster während seiner Lebensdauer zu verwalten.
+
+     Wenn Sie Ihren Controller mit einer öffentlichen IP-Adresse konfigurieren, kann er auch als Jump-Host für die Verbindung mit dem Cluster von außerhalb des VNets dienen.
+
+   * Erstellen der Clusterknoten-VMs
+   * Konfigurieren der Clusterknoten-VMs als Cluster
+   * Optional Erstellen eines neuen Blobcontainers und Konfigurieren des Containers als Back-End-Speicher für den Cluster
 
 1. Konfigurieren des Clusters 
 

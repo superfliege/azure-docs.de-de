@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 9a9129d376c0a39c54f297fcae883f8d90016970
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 4d4ddcdd025a040c84be66b1a36803645c839121
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320564"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206220"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für VMware in Azure
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -78,7 +78,7 @@ Das Tool verfügt über zwei Hauptphasen: die Profilerstellung und die Berichter
 | Serveranforderung | BESCHREIBUNG|
 |---|---|
 |Profilerstellung und Messung des Durchsatzes| <ul><li>Betriebssystem: Windows Server 2016 oder Windows Server 2012 R2<br>(idealerweise mindestens basierend auf [Empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, HDD mit 300 GB</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die Einstellungen für die VMware vCenter-Statistikebene können auf 1 oder eine höhere Stufe festgelegt werden.</li><li>vCenterPort zulassen (standardmäßig 443): Der Site Recovery-Bereitstellungsplaner verwendet diesen Port zur Verbindungsherstellung mit dem vCenter Server/ESXi-Host.</ul></ul>|
-| Berichterstellung | Windows-PC oder Windows-Server mit Excel 2013 oder höher.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) ist nur erforderlich, wenn Sie die Option „-User“ im Berichtsgenerierungsbefehl zum Abrufen der neuesten VM-Konfigurationsinformationen der virtuellen Computer übergeben. Der Planer für die Bereitstellung stellt eine Verbindung mit dem vCenter-Server her. Lassen Sie zu, dass der vCenter-Port (Standard 443) die Verbindung mit dem vCenter-Server herstellt.</li>|
+| Berichterstellung | Windows-PC oder Windows-Server mit Excel 2013 oder höher.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) ist nur erforderlich, wenn Sie die Option „-User“ im Berichtsgenerierungsbefehl zum Abrufen der neuesten VM-Konfigurationsinformationen der virtuellen Computer übergeben. Der Bereitstellungsplaner stellt eine Verbindung mit dem vCenter-Server her. Lassen Sie zu, dass der vCenter-Port (Standard 443) die Verbindung mit dem vCenter-Server herstellt.</li>|
 | Benutzerberechtigungen | Leseberechtigung für das Benutzerkonto, das zum Zugreifen auf den VMware vCenter-Server/VMware vSphere ESXi-Host während der Profilerstellung verwendet wird |
 
 > [!NOTE]

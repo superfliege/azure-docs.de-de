@@ -1,5 +1,5 @@
 ---
-title: 'App Service in Azure Stack: Update für Fehlerdomänen | Microsoft-Dokumentation'
+title: 'App Service in Azure Stack: Fehlerdomänenupdate | Microsoft-Dokumentation'
 description: Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
 services: azure-stack
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 249e4b466e9be567111aaa22b40ca3e5dadb6cac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267214"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246380"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Mit dem Update 1802 unterstützt Azure Stack ab sofort die Verteilung von Arbeitsauslastungen an Fehlerdomänen, ein Feature, das für die Bereitstellung von Hochverfügbarkeit von entscheidender Bedeutung ist.
 

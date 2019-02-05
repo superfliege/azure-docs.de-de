@@ -5,16 +5,16 @@ description: Mithilfe des Dokumentuploadfeatures können Sie parallele Dokumente
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633247"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217219"
 ---
 # <a name="upload-a-document"></a>Hochladen eines Dokuments
 
@@ -40,8 +40,8 @@ Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.
     -  Training: Diese Dokumente werden für den Trainingssatz verwendet.
     -  Optimierung: Diese Dokumente werden für den Optimierungssatz verwendet.
     -  Test: Diese Dokumente werden für den Testsatz verwendet.
-    -  Phrase Dictionary (Ausdruckswörterbuch): Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
-    -  Sentence Dictionary (Satzwörterbuch): Diese Dokumente werden für das Satzwörterbuch verwendet.
+    -  Ausdruckswörterbuch: Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
+    -  Satzwörterbuch: Diese Dokumente werden für das Satzwörterbuch verwendet.
 
     b.  Language pair (Sprachpaar)
 
@@ -55,7 +55,7 @@ Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.
         -  Dokumentname: Nur beim Hochladen paralleler Dateien relevant.
 
     - Kombinationsdaten:
-        -  Combo File (Kombinationsdatei): Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
+        -  Kombinationsdatei: Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
 
     e.  Klicken Sie auf „Hochladen“.
 

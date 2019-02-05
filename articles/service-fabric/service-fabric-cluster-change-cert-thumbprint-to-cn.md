@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0501ccbf2b5d9124a82cb1758e09236e8ad8455a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972803"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197975"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht. In diesem Artikel wird beschrieben, wie Sie einen aktuell ausgeführten Service Fabric-Cluster für die Verwendung des allgemeinen Namens (anstelle des Zertifikatfingerabdrucks) aktualisieren.
@@ -94,6 +94,9 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     -Name $VmssName -VirtualMachineScaleSet $vmss 
 ```
+
+>[!NOTE]
+> Computegeheimnisse von VM-Skalierungsgruppen unterstützen nicht die gleiche Ressourcen-ID für zwei separate Geheimnisse, da jedes Geheimnis eine eindeutige Ressource mit Versionsverwaltung ist. 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>Herunterladen der Vorlage aus dem Portal und Aktualisieren der Vorlage
 Das Zertifikat wurde zwar in der zugrundeliegenden Skalierungsgruppe installiert, Sie müssen aber auch den Service Fabric-Cluster aktualisieren, damit er dieses Zertifikat und den entsprechenden allgemeinen Namen verwendet.  Laden Sie nun die Vorlage für die Clusterbereitstellung herunter.  Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu der Ressourcengruppe, die den Cluster hostet.  Wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus.  Wählen Sie die neueste Bereitstellung aus, und klicken Sie auf **Vorlage anzeigen**.

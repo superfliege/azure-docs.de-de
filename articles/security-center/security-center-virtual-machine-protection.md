@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321589"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181468"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -217,7 +217,7 @@ Die Liste enthält drei Arten von Symbolen:
 |Computer|15|Web Application Firewall hinzufügen| Stellen Sie eine Web Application Firewall (WAF) bereit, um Ihre Webanwendungen zu schützen. |
 |Computer|30|Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung beseitigen|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
 |Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
-|Computer|1|Virtuelle Computer zu neuen Azure Resource Manager-Ressourcen migrieren|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung. |
+|Computer|1|Virtuelle Computer zu neuen Azure Resource Manager-Ressourcen migrieren|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresor für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung. |
 |Computer|30|Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung beseitigen|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
 
  

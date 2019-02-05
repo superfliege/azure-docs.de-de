@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002755"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210381"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -317,7 +317,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DeploymentMaxFailureCount|Ganze Zahl, Standardwert 20| Dynamisch|Die Anwendungsbereitstellung wird DeploymentMaxFailureCount Mal wiederholt, bevor ein Fehler für die Bereitstellung der betreffenden Anwendung auf dem Knoten auftritt.| 
 |DeploymentMaxRetryInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das maximale Wiederholungsintervall für die Bereitstellung. Bei jedem andauernden Fehler wird das Wiederholungsintervall wie folgt berechnet: Min( DeploymentMaxRetryInterval; Anzahl andauernder Fehler * DeploymentRetryBackoffInterval). |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
-|DisableContainers|Boolesch, Standardwert FALSE|statischen|Konfiguration für das Deaktivieren von Containern – wird anstelle von „DisableContainerServiceStartOnContainerActivatorOpen“ verwendet, der veralteten Konfigurationsoption |
+|DisableContainers|Boolesch, Standardwert FALSE|statischen|Konfiguration für das Deaktivieren von Containern – wird anstelle von „DisableContainerServiceStartOnContainerActivatorOpen“ verwendet, der veralteten Konfigurationsoption. |
 |DisableDockerRequestRetry|Boolesch, Standardwert FALSE |Dynamisch| Standardmäßig kommuniziert SF mit dem DD (Docker-Daemon) mit dem Timeout „DockerRequestTimeout“ für jede an ihn gesendete HTTP-Anforderung. Reagiert der DD nicht innerhalb dieses Zeitraums, sendet SF die Anforderung erneut, sofern für den übergeordneten Vorgang noch Zeit bleibt.  Bei Hyper-V-Containern benötigt der DD manchmal erheblich mehr Zeit zum Aufrufen oder Deaktivieren des Containers. In diesem Fall fordert der DD aus Sicht von SF ein Timeout an, und SF wiederholt den Vorgang. Manchmal scheint dies den Druck auf den DD zu erhöhen. Diese Konfiguration ermöglicht es, die Wiederholung zu deaktivieren und auf eine Reaktion des DD zu warten. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableContainerServiceDebugMode|Boolesch, Standardwert TRUE|statischen|Aktivieren/Deaktivieren der Protokollierung für Docker-Container.  Nur Windows|

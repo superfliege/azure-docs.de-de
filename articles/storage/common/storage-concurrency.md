@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.component: common
-ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242975"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478235"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -45,7 +45,7 @@ Dieser Prozess ist folgendermaßen gegliedert:
 4. Wenn der aktuelle ETag-Wert des Blob eine andere Version hat als das ETag im bedingten **If-Match** -Header in der Anforderung, gibt der Dienst einen 412-Fehler an den Client zurück. Dadurch wird dem Client mitgeteilt, dass das Blob von einem anderen Prozess aktualisiert wurde, seitdem es vom Client abgerufen wurde.
 5. Wenn der aktuelle ETag-Wert des Blob dieselbe Version hat wie der des ETag im bedingten **If-Match** -Header in der Anforderung, führt der Dienst die angeforderte Operation aus und aktualisiert den aktuellen ETag-Wert des Blobs, um anzuzeigen, dass eine neue Version erstellt wurde.  
 
-Der folgende C#-Codeausschnitt (der Client Storage Library 4.2.0 verwendet) zeigt ein einfaches Beispiel zur Konstruktion eines **If-Match AccessCondition** -Objekts, das auf dem ETag-Wert beruht, auf den über die Eigenschaften eines Blob zugegriffen wird, das zuvor abgerufen oder eingefügt wurde. Beim Aktualisieren des Blobs wird dann das **AccessCondition**-Objekt verwendet: Das **AccessCondition**-Objekt fügt der Anforderung den **If-Match**-Header hinzu. Falls das Blob von einem anderen Prozess aktualisiert wurde, gibt der Blob-Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück. Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).  
+Der folgende C#-Codeausschnitt (der Client Storage Library 4.2.0 verwendet) zeigt ein einfaches Beispiel zur Konstruktion eines **If-Match AccessCondition** -Objekts, das auf dem ETag-Wert beruht, auf den über die Eigenschaften eines Blob zugegriffen wird, das zuvor abgerufen oder eingefügt wurde. Beim Aktualisieren des Blobs wird dann das **AccessCondition**-Objekt verwendet: Das **AccessCondition**-Objekt fügt der Anforderung den **If-Match**-Header hinzu. Falls das Blob von einem anderen Prozess aktualisiert wurde, gibt der Blob-Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück. Sie können das vollständige Beispiel hier herunterladen: [Managing concurrency using Azure Storage (Verwalten von Parallelität mit Azure Storage)](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -126,7 +126,7 @@ Um ein Blob für die exklusive Verwendung zu sperren, können Sie dafür eine [L
 
 Leases ermöglichen die Unterstützung verschiedener Synchronisierungsstrategien, einschließlich exklusiver Schreib-/gemeinsamer Lesezugriff, exklusiver Schreib-/exklusiver Lesezugriff und gemeinsamer Schreib-/exklusiver Lesezugriff. Ist eine Lease vorhanden, erzwingt der Speicherdienst exklusive Schreibzugriffe (put-, set- und delete-Vorgänge). Um Exklusivität von Lesevorgängen sicherzustellen, muss der Entwickler jedoch dafür sorgen, dass alle Clientanwendungen eine Lease-ID verwenden und dass jeweils nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.  
 
-Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Lease für das Blob bereits eine Lease wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP (409) Conflict“ zurück. Im folgenden Codeausschnitt wird ein **AccessCondition**-Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Lease für das Blob bereits eine Lease wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP (409) Conflict“ zurück. Im folgenden Codeausschnitt wird ein **AccessCondition**-Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing concurrency using Azure Storage (Verwalten von Parallelität mit Azure Storage)](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -208,7 +208,7 @@ Um die optimistische Nebenläufigkeit zu verwenden und zu prüfen, ob eine Entit
 
 Im Unterschied zum Blob-Dienst verlangt der Tabellendienst vom Client, in Aktualisierungsanforderungen einen **If-Match** -Header hinzuzufügen. Es ist jedoch möglich, eine unbedingte Aktualisierung zu erzwingen (Strategie "Letzter Schreiber gewinnt") und Nebenläufigkeitsprüfungen zu umgehen, wenn der Client den **If-Match** -Header in der Anforderung auf das Platzhalterzeichen (*) festlegt.  
 
-Der folgende C#-Codeausschnitt zeigt, wie für eine Kundenentität, die zuvor erstellt oder abgerufen wurde, die E-Mail-Adresse aktualisiert wird. Mit dem anfänglichen Einfüge- oder Abrufvorgang wird der ETag-Wert im Kundenobjekt gespeichert. Da im Beispiel beim Ausführen des Ersetzenvorgangs dieselbe Objektinstanz verwendet wird, wird der ETag-Wert automatisch an den Tabellendienst zurückgesendet, sodass der Dienst auf Verletzungen der Nebenläufigkeit prüfen kann. Falls die Entität im Tabellenspeicher von einem anderen Prozess aktualisiert wurde, gibt der Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt zeigt, wie für eine Kundenentität, die zuvor erstellt oder abgerufen wurde, die E-Mail-Adresse aktualisiert wird. Mit dem anfänglichen Einfüge- oder Abrufvorgang wird der ETag-Wert im Kundenobjekt gespeichert. Da im Beispiel beim Ausführen des Ersetzenvorgangs dieselbe Objektinstanz verwendet wird, wird der ETag-Wert automatisch an den Tabellendienst zurückgesendet, sodass der Dienst auf Verletzungen der Nebenläufigkeit prüfen kann. Falls die Entität im Tabellenspeicher von einem anderen Prozess aktualisiert wurde, gibt der Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück.  Sie können das vollständige Beispiel hier herunterladen: [Managing concurrency using Azure Storage (Verwalten von Parallelität mit Azure Storage)](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -284,5 +284,5 @@ Weitere Informationen zu Azure Storage finden Sie unter:
 * [Microsoft Azure Storage-Startseite](https://azure.microsoft.com/services/storage/)
 * [Einführung in Azure Storage](storage-introduction.md)
 * Storage – erste Schritte mit [Blobs](../blobs/storage-dotnet-how-to-use-blobs.md), [Tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Warteschlangen](../storage-dotnet-how-to-use-queues.md) und [Dateien](../storage-dotnet-how-to-use-files.md)
-* Speicherarchitektur – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Azure Storage: Ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)
+* Storage Architecture – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) (Hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)
 

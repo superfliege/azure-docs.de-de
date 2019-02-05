@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844990"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228201"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -125,19 +125,19 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 1. Überprüfen Sie die Ereignisprotokolle auf VSS-Fehler und Empfehlungen:
     - Öffnen Sie auf dem Hyper-V-Hostserver das Hyper-V-Admin-Ereignisprotokoll unter **Ereignisanzeige** > **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Hyper-V** > **Admin**.
     - Überprüfen Sie, ob Ereignisse vorhanden sind, die auf Fehler bei App-konsistenten Momentaufnahmen hinweisen.
-    - Eine typische Fehlermeldung lautet: Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM „XYZ“ generieren. Beim Writer ist ein dauerhafter Fehler aufgetreten. Möglicherweise können die Probleme durch einen Neustart des VSS-Diensts behoben werden, wenn der Dienst nicht reagiert.
+    - Eine typische Fehlermeldung lautet: Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM „XYZ“ generieren. Beim Writer ist ein dauerhafter Fehler aufgetreten. Restarting the VSS service might resolve issues if the service is unresponsive.“ (Hyper-V konnte keinen VSS-Momentaufnahmesatz für den virtuellen Computer „XYZ“ generieren: Beim Writer ist ein dauerhafter Fehler aufgetreten. Möglicherweise können die Probleme durch einen Neustart des VSS-Diensts behoben werden, wenn der Dienst nicht reagiert.)
 
 2. Um VSS-Momentaufnahmen für den virtuellen Computer zu generieren, überprüfen Sie, ob Hyper-V Integration Services auf dem virtuellen Computer installiert sind und ob der Backup-Integrationsdienst (VSS) aktiviert ist.
     - Stellen Sie sicher, dass der Integration Services-VSS-Dienst bzw. die Daemons auf dem Gastcomputer ausgeführt werden und den Status **OK** aufweisen.
-    - Dies können Sie in einer PowerShell-Sitzung mit erhöhten Rechten auf dem Hyper-V-Host mit dem Befehl **et-VMIntegrationService -VMName<VMName>-Name VSS** überprüfen. Zudem können Sie diese Informationen über die Anmeldung bei dem virtuellen Gastcomputer abrufen. [Weitere Informationen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Dies können Sie in einer PowerShell-Sitzung mit erhöhten Rechten auf dem Hyper-V-Host mit dem Befehl **et-VMIntegrationService -VMName<VMName>-Name VSS** überprüfen. Zudem können Sie diese Informationen über die Anmeldung bei dem virtuellen Gastcomputer abrufen. [Weitere Informationen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)
     - Stellen Sie sicher, dass die Backup/VSS-Integrationsdienste auf dem virtuellen Computer ausgeführt werden und fehlerfrei sind. Starten Sie andernfalls diese Dienste und den Hyper-V-Volumeschattenkopie-Anfordererdienst auf dem Hyper-V-Hostserver neu.
 
 ### <a name="common-errors"></a>Häufige Fehler
 
 **Fehlercode** | **Meldung** | **Details**
 --- | --- | ---
-**0x800700EA** | Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM generieren: Weitere Daten sind verfügbar. (0x800700EA). Beim Generieren von VSS-Momentaufnahmen kann ein Fehler auftreten, wenn derzeit eine Sicherung durchgeführt wird.<br/><br/> Beim Replikationsvorgang für den virtuellen Computer ist ein Fehler aufgetreten: Weitere Daten sind verfügbar. | Überprüfen Sie, ob auf dem virtuellen Computer ein dynamischer Datenträger aktiviert ist. Dies wird nicht unterstützt.
-**0x80070032** | Der Hyper-V-Volumeschattenkopie-Anforderer konnte keine Verbindung mit dem virtuellen Computer <./VMname> herstellen, da die Version nicht der von Hyper-V erwarteten Version entspricht. | Überprüfen Sie, ob die neuesten Windows-Updates installiert sind.<br/><br/> Führen Sie ein [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) auf die neueste Version von Integration Services durch.
+**0x800700EA** | Hyper-V konnte keinen VSS-Momentaufnahmesatz für die VM generieren: Weitere Daten sind verfügbar. (0x800700EA). VSS snapshot set generation can fail if backup operation is in progress.<br/><br/> Beim Replikationsvorgang für den virtuellen Computer ist ein Fehler aufgetreten: Weitere Daten sind verfügbar. | Überprüfen Sie, ob auf dem virtuellen Computer ein dynamischer Datenträger aktiviert ist. Dies wird nicht unterstützt.
+**0x80070032** | Hyper-V Volume Shadow Copy Requestor failed to connect to virtual machine <./VMname> because the version does not match the version expected by Hyper-V. (Der Hyper-V-Volumeschattenkopie-Anforderer konnte keine Verbindung mit dem virtuellen Computer <./VMname> herstellen, da die Version nicht der von Hyper-V erwarteten Version entspricht.) | Überprüfen Sie, ob die neuesten Windows-Updates installiert sind.<br/><br/> Führen Sie ein [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) auf die neueste Version von Integration Services durch.
 
 
 

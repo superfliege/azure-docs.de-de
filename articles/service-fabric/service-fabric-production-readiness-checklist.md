@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: 4e6d5cb3191be7188c1a7c4753200cf049800f04
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 02ad880f3c4a4f5812b60887090c29a0a39f6742
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436006"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206968"
 ---
 # <a name="production-readiness-checklist"></a>Prüfliste für die Produktionsbereitschaft
 
@@ -27,15 +27,15 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Das
 
 
 ## <a name="pre-requisites-for-production"></a>Voraussetzungen für die Produktion
-1. [Bewährte Methoden für Service Fabric](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices): 
+1. Die folgenden [bewährten Methoden für die Azure Service Fabric-Sicherheit](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) gelten: 
 * Verwenden von X.509-Zertifikaten
 * Konfigurieren von Sicherheitsrichtlinien
 * Konfigurieren von SSL für Azure Service Fabric
 * Verwenden von Netzwerkisolation und -sicherheit mit Azure Service Fabric
 * Einrichten einer Azure Key Vault-Instanz für die Sicherheit
-* Zuweisen von Benutzern zu Rollen
+* Microsoft.Network/loadBalancersAssign Benutzer zu Rollen
 * Implementieren der Reliable Actors-Sicherheitskonfiguration, wenn das Actors-Programmiermodell verwendet wird
-2. Erstellen Sie für Cluster mit mehr als 20 Kernen oder 10 Knoten einen dedizierten primären Knotentyp für Systemdienste. Fügen Sie [Platzierungseinschränkungen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) hinzu, um den primären Knotentyp für Systemdienste zu reservieren. 
+2. Erstellen Sie für Cluster mit mehr als 20 Kernen oder 10 Knoten einen dedizierten primären Knotentyp für Systemdienste. Fügen Sie [Platzierungseinschränkungen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) hinzu, um den primären Knotentyp für Systemdienste zu reservieren.
 3. Verwenden Sie für den primären Knotentyp eine SKU des Typs D2v2 oder höher. Es wird empfohlen, eine SKU mit einer Festplattenkapazität von mindestens 50 GB auszuwählen.
 4. Produktionscluster müssen [sicher](service-fabric-cluster-security.md) sein. Ein Beispiel für das Einrichten eines sicheren Clusters finden Sie in dieser [Clustervorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Verwenden Sie allgemeine Namen für die Zertifikate, und vermeiden Sie selbstsignierte Zertifikate.
 5. Fügen Sie [Ressourceneinschränkungen für Container und Dienste](service-fabric-resource-governance.md) hinzu, damit diese nicht mehr als 75 % der Knotenressourcen belegen. 
@@ -61,8 +61,8 @@ Wenn Sie das Programmiermodell Service Fabric Reliable Services oder Reliable Ac
 22. Aktualisieren Sie Anwendungen während der lokalen Entwicklung, um zu überprüfen, ob Ihr Dienstcode das Annullierungstoken in der `RunAsync`-Methode beachtet und benutzerdefinierte Kommunikationslistener schließt.
 23. Vermeiden Sie [häufige Fehlerquellen](service-fabric-work-with-reliable-collections.md) bei Verwendung zuverlässiger Sammlungen.
 24. Überwachen Sie die .NET CLR-Speicherleistungszähler, wenn Sie Lasttests durchführen, und prüfen Sie auf hohe Raten von Garbage Collection oder Ausreißer bei der Zunahme der Heapgröße.
-25. Halten Sie Offlinesicherungen von [Reliable Services und Reliable Actors](service-fabric-reliable-services-backup-restore.md) vor, und testen Sie den Wiederherstellungsprozess. 
-
+25. Halten Sie Offlinesicherungen von [Reliable Services und Reliable Actors](service-fabric-reliable-services-backup-restore.md) vor, und testen Sie den Wiederherstellungsprozess.
+26. Die Anzahl der Instanzen Ihrer primären virtuellen NodeType-Computer sollte idealerweise gleich der Mindestzahl für Ihre Clusterzuverlässigkeitsebene sein. Unter den folgenden Bedingungen ist es zulässig, das Ebenenminimum zu überschreiten: vorübergehend bei vertikaler Skalierung Ihrer SKU für Ihre VM-Skalierungsgruppe des primären virtuellen NodeTypes-Computers.
 
 ## <a name="optional-best-practices"></a>Optionale bewährte Methoden
 

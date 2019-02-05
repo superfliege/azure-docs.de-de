@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
+ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: 8dcc64350e25be0c8131dc75d96f2a8938944eaf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e756b48003ebfaff98271d93a3d8f0231571b5f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962180"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242432"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Planen der Azure Stack-Computekapazität
 Die [für Azure Stack unterstützten VM-Größen](./user/azure-stack-vm-sizes.md) sind eine Teilmenge der in Azure unterstützten VM-Größen. Azure erzwingt Ressourcengrenzwerte auf verschiedene Arten, um einen übermäßigen Ressourcenverbrauch (auf dem lokalen Server und auf der Dienstebene) zu vermeiden. Wenn keine Einschränkungen für die Nutzung durch Mandanten gelten würden, würde die Mandantenerfahrung beeinträchtigt, wenn andere Mandanten Ressourcen übermäßig nutzen. Für ausgehenden Netzwerkdatenverkehr des virtuellen Computers gelten Bandbreitenobergrenzen für Azure Stack, die mit den Azure-Einschränkungen übereinstimmen. Für Speicherressourcen wurden für Azure Stack Speicher-IOPs-Grenzwerte implementiert, um den allgemeinen übermäßigen Ressourcenverbrauch durch Mandanten für Speicherzugriff zu vermeiden.  
@@ -29,10 +30,7 @@ Die [für Azure Stack unterstützten VM-Größen](./user/azure-stack-vm-sizes.md
 ## <a name="vm-placement-and-virtual-to-physical-core-overprovisioning"></a>VM-Platzierung und Überbereitstellung von physischen im Vergleich zu virtuellen Kernen
 In Azure Stack gibt es keine Möglichkeit für einen Mandanten, einen bestimmten Server anzugeben, der für die VM-Platzierung verwendet wird. Die einzige Überlegung bei der Platzierung von virtuellen Computern bezieht sich darauf, ob genügend Arbeitsspeicher auf dem Host für diesen VM-Typ vorhanden ist. Azure Stack führt keine Mehrfachvergabe von Speicher aus, jedoch ist die Mehrfachvergabe der Anzahl der Kerne zulässig. Da Platzierungsalgorithmen das vorhandene Verhältnis der Überbereitstellung von virtuellen im Vergleich zu physischen Kernen nicht als Faktor berücksichtigen, kann jeder Host ein anderes Verhältnis aufweisen. 
 
-Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren virtuellen Computern in Azure werden die virtuellen Computer in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen zu verteilen. Dies bedeutet, dass in Verfügbarkeitsgruppen bereitgestellte virtuelle Computer in separaten Serverracks physisch voneinander isoliert werden, um Ausfallresilienz zu ermöglichen. Dies wird in der folgenden Abbildung dargestellt:
-
-![Fehler- und Updatedomänen](media/azure-stack-capacity-planning/domains.png)
-
+Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren virtuellen Computern in Azure werden die virtuellen Computer in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen zu verteilen. In Azure Stack ist eine Fehlerdomäne in einer Verfügbarkeitsgruppe als einzelner Knoten in der Skalierungseinheit definiert.
 
 Die Infrastruktur von Azure Stack verfügt zwar über Resilienz gegenüber Fehlern, aber bei einem Hardwarefehler kommt es bei der zugrunde liegenden Technologie (Failoverclustering) für virtuelle Computer auf einem betroffenen physischen Server trotzdem noch zu Ausfallzeiten. Azure Stack unterstützt zurzeit die Verwendung einer Verfügbarkeitsgruppe mit maximal drei Fehlerdomänen, um Konsistenz mit Azure zu erzielen. In einer Verfügbarkeitsgruppe angeordnete VMs werden physisch voneinander isoliert, indem sie so gleichmäßig wie möglich auf mehrere Fehlerdomänen (Azure Stack-Knoten) verteilt werden. Bei einem Hardwarefehler werden virtuelle Computer aus der betroffenen Fehlerdomäne in anderen Knoten neu gestartet. Dies sind nach Möglichkeit aber Fehlerdomänen, die von den anderen virtuellen Computern in derselben Verfügbarkeitsgruppe getrennt sind. Nachdem die Hardware wieder in den Onlinezustand versetzt wurde, wird für die VMs ein neuer Ausgleichsvorgang durchgeführt, um die Hochverfügbarkeit sicherzustellen.
 

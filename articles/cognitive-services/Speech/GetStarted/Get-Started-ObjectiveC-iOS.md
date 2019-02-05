@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7c4a5029208854528afdfdbfcdc63434a2a94e24
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f8bc13aa2adad5c27b1754303ea30304c491f7ca
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338697"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211796"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Schnellstart: Verwenden der Bing-Spracheingabe-API in Objective-C unter iOS
 
@@ -132,9 +132,9 @@ Bei der Clienterstellung mit `SpeechRecognitionServiceFactory` muss außerdem `S
 
 An den erstellten Client können verschiedene Ereignishandler angefügt werden:
 
-* **Ereignisse für Teilergebnisse:** Diese Ereignisse werden jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorherzusagen.
-* **Fehlerereignisse:** Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
-* **Absichtsereignisse:** Werden für Clients vom Typ „WithIntent“ (nur im ShortPhrase-Modus) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
+* **Ereignis für Teilergebnisse**: Dieses Ereignis wird jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorherzusagen.
+* **Fehlerereignisse**: Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
+* **Absichtsereignisse**: Werden für Clients vom Typ „WithIntent“ (nur im ShortPhrase-Modus) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
 * **Ergebnisereignisse:**
   * Im Modus `SpeechRecognitionMode_ShortPhrase` wird dieses Ereignis aufgerufen und gibt die n besten Ergebnisse zurück, wenn Sie mit dem Sprechen fertig sind.
   * Im Modus `SpeechRecognitionMode_LongDictation` kann der Ereignishandler mehrmals aufgerufen werden (abhängig davon, wo der Dienst Pausen zwischen Sätzen erkennt).

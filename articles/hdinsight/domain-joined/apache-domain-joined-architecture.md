@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3e58c22048c9b71b00cffb0657fc924277304662
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437587"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462427"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Verwendung des Enterprise-Sicherheitspakets in HDInsight
 
@@ -55,9 +55,41 @@ Weitere Informationen finden Sie unter [Konfigurieren eines HDInsight-Clusters m
 
 Wenn Sie eine lokale Active Directory-Instanz oder komplexere Active Directory-Setups für Ihre Domäne haben, können Sie diese Identitäten anhand von Azure AD Connect mit Azure synchronisieren. Anschließend können Sie Azure AD DS auf diesem Active Directory-Mandanten aktivieren. 
 
-Da Kerberos auf Kennworthashes angewiesen ist, müssen Sie [die Kennworthashsynchronisierung auf Azure AD DS aktivieren](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Wenn Sie die Option „Verbund mit Active Directory Federation Services (AD FS)“ auswählen, können Sie optional die Kennworthashsynchronisierung als zusätzliche Sicherheit für den Fall aktivieren, dass Ihre AD FS-Infrastruktur ausfällt. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+Da Kerberos auf Kennworthashes angewiesen ist, müssen Sie [die Kennworthashsynchronisierung für Azure AD DS aktivieren](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
+
+Wenn Sie einen Verbund mit den Active Directory-Verbunddiensten (AD FS) verwenden, müssen Sie die Kennworthashsynchronisierung aktivieren (eine empfohlene Konfiguration, siehe [hier](https://youtu.be/qQruArbu2Ew)), die auch bei der Notfallwiederherstellung hilft, falls Ihre AD FS-Infrastruktur ausfällt und der Schutz vor der Offenlegung von Anmeldeinformationen nicht gegeben ist. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
 Die alleinige Verwendung des lokalen Active Directory oder Active Directory auf IaaS-VMs ohne Azure AD und die Azure AD DS wird für HDInsight-Cluster mit dem ESP nicht unterstützt.
+
+Wenn ein Verbund verwendet wird und Kennworthashes richtig synchronisiert werden, Sie aber Authentifizierungsfehler erhalten, überprüfen Sie, ob Cloudkennwortauthentifizierung des PowerShell-Dienstprinzipals aktiviert ist. Wenn dies nicht der Fall ist, müssen Sie eine [HRD-Richtlinie (Home Realm Discovery, Startbereichsermittlung)](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) für Ihren AAD-Mandanten festlegen. So überprüfen Sie die HRD-Richtlinie und legen sie fest:
+
+ 1. Installieren Sie das Azure PowerShell-Modul
+
+ ```
+  Install-Module AzureAD
+ ```
+
+ 2. ```Connect-AzureAD``` mit den Anmeldeinformationen eines globalen Administrators (Mandantenadministrator).
+
+ 3. Überprüfen Sie, ob der Dienstprinzipal „Microsoft Azure PowerShell“ bereits erstellt wurde.
+
+```
+ $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+```
+
+ 4. Wenn er nicht vorhanden ist (also ($powershellSPN -q $null) ist), erstellen Sie den Dienstprinzipal.
+
+```
+ $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+```
+
+ 5. Erstellen Sie die Richtlinie, und fügen Sie sie an diesen Dienstprinzipal an: 
+
+```
+ $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+ Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

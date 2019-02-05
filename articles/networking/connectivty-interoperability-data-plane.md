@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Datenebenenanalyse | Microsoft-Dokumentation'
+title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Datenebene | Microsoft-Dokumentation'
 description: Dieser Artikel bietet eine Datenebenenanalyse der Testeinrichtung, mit der Sie die Interoperabilität zwischen ExpressRoute, einem Site-to-Site-VPN und Peering zwischen virtuellen Netzwerken in Azure analysieren können.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8b9e5b2b073309f177fa0ce4bb2a2d08009a06ff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5e648c1f1b051d7b65d9b007a69aece2d99d9df4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176181"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Datenebenenanalyse
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Datenebene
 
 In diesem Artikel wird die Datenebenenanalyse der [Testeinrichtung][Setup] beschrieben. Sie können auch die [Testeinrichtungskonfiguration][Configuration] und die [Steuerebenenanalyse][Control-Analysis] der Testeinrichtung überprüfen.
 
@@ -490,11 +490,11 @@ Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to
 
 ### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Spoke-VNET-Konnektivität per VNET-Peering
 
-Die Hub-and-Spoke-VNET-Architektur wird häufig genutzt. Bei einem Hub handelt es sich um ein VNET in Azure, das als zentraler Konnektivitätspunkt zwischen Ihren Spoke-VNETs und Ihrem lokalen Netzwerk fungiert. Die Spokes sind VNETs, die eine Peeringverbindung mit dem Hub herstellen und zur Isolierung von Workloads verwendet werden können. Der Datenverkehr wird über eine ExpressRoute- oder VPN-Verbindung zwischen dem lokalen Rechenzentrum und dem Hub weitergeleitet. Weitere Informationen zu dieser Architektur finden Sie unter [Implementieren einer Hub-Spoke-Netzwerktopologie in Azure][Hub-n-Spoke].
+Die Hub-Spoke-VNET-Architektur wird häufig genutzt. Bei einem Hub handelt es sich um ein VNET in Azure, das als zentraler Konnektivitätspunkt zwischen Ihren Spoke-VNETs und Ihrem lokalen Netzwerk fungiert. Die Spokes sind VNETs, die eine Peeringverbindung mit dem Hub herstellen und zur Isolierung von Workloads verwendet werden können. Der Datenverkehr wird über eine ExpressRoute- oder VPN-Verbindung zwischen dem lokalen Rechenzentrum und dem Hub weitergeleitet. Weitere Informationen zu dieser Architektur finden Sie unter [Implementieren einer Hub-Spoke-Netzwerktopologie in Azure][Hub-n-Spoke].
 
 Beim VNET-Peering in einer Region können Spoke-VNETs Hub-VNET-Gateways verwenden (sowohl VPN- als auch ExpressRoute-Gateways), um mit Remotenetzwerken zu kommunizieren.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Branch-VNET-Konnektivität über Site-to-Site-VPN
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Konnektivität mit dem VNET der Zweigniederlassung über das Site-to-Site-VPN
 
 VNETs in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung eines virtuellen Netzwerkgeräts (NVA) für das Routing im Hub.
 
@@ -505,7 +505,7 @@ Weitere Informationen finden Sie unter [Was ist VPN-Gateway?][VPN] und [Bereitst
 
 Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
 -   Erfahren Sie, wie viele ExpressRoute-Verbindungen Sie mit einem ExpressRoute-Gateway verbinden können.
--   Erfahren Sie, wie viele ExpressRoute-Gateways Sie mit einer ExpressRoute-Leitung verbinden können.
+-   Anzahl der ExpressRoute-Gateways, die Sie per ExpressRoute verbinden können
 -   Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 
 

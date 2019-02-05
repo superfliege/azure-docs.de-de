@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.lastreviewed: 09/28/2018
+ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886823"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246363"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Java in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Das Java-SDK für Azure Stack Resource Manager umfasst Tools zum Erstellen und Verwalten Ihrer Infrastruktur. Zu den Ressourcenanbietern im SDK zählen Compute, Netzwerk, Speicher, App-Dienste und [KeyVault](../../key-vault/key-vault-whatis.md). Das Java-SDK bindet API-Profile durch Einschließen von Abhängigkeiten in der Datei „Pom.xml“ ein, welche die richtigen Module in der JAVA-Datei lädt. Sie können jedoch mehrere Profile als Abhängigkeiten hinzufügen, z.B. **2018-03-01-hybrid** oder **Neueste** als Azure-Profil. Bei Verwendung dieser Abhängigkeiten wird das richtige Modul geladen, sodass Sie beim Erstellen Ihres Ressourcentyps auswählen können, welche API-Version aus diesen Profilen Sie verwenden möchten. Dadurch können Sie beim Entwickeln für die aktuellen API-Versionen für Azure Stack die neuesten Versionen in Azure verwenden. Das Java-SDK ermöglicht eine echte Hybrid Cloud-Entwicklungsumgebung. API-Profile im Java-SDK ermöglichen die Entwicklung einer Hybrid Cloud, indem es Ihnen ermöglicht wird, zwischen globalen Azure-Ressourcen und Ressourcen unter Azure Stack zu wechseln.
 
@@ -149,9 +150,9 @@ JSON-Beispieldatei:
 
 ## <a name="existing-api-profiles"></a>Vorhandene API-Profile
 
-1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Aktuelles, für Azure Stack erstelltes Profil. Verwenden Sie dieses Profil für Dienste für die höchste Kompatibilität mit Azure Stack, sofern Sie bei Stempel 1808 oder weiter sind.
+1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Für Azure Stack erstelltes neuestes Profil. Verwenden Sie dieses Profil für Dienste für die höchste Kompatibilität mit Azure Stack, sofern Sie bei Stempel 1808 oder weiter sind.
 
-2.  **com.microsoft.azure**: Profil, das aus den aktuellen Versionen aller Dienste besteht. Verwenden Sie die neuesten Versionen aller Dienste.
+2.  **com.microsoft.azure**: Profil, das aus den neuesten Versionen aller Dienste besteht. Verwenden Sie die neuesten Versionen aller Dienste.
 
 Weitere Informationen zu Azure Stack und API-Profilen finden Sie in der [Zusammenfassung zu API-Profilen](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 

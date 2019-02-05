@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875398"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228286"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -146,7 +146,7 @@ Nach dem Failover von Azure-VMS in die Azure-Zielregion mittels Site Recovery k�
 
 #### <a name="two-circuits-with-two-peering-locations"></a>Zwei Leitungen mit zwei Peeringstandorten
 
-Diese Konfiguration hilft beim Schutz von ExpressRoute-Leitungen vor regionalen Notfällen. Wenn Ihr primärer Peeringstandort ausfällt, können die Verbindungen von dem anderen Standort aus weiter betrieben werden.
+Diese Konfiguration hilft beim Schutz von ExpressRoute-Leitungen vor regionalen Notfällen. Wenn Ihr primärer Peeringstandort ausfällt, können die Verbindungen vom anderen Standort aus weiterhin betrieben werden.
 
 - Die mit der Produktionsumgebung verbundene Leitung ist normalerweise die primäre. Die sekundäre Leitung besitzt normalerweise eine niedrigere Bandbreite, die im Notfall erhöht werden kann.
 - Nach einem Failover können Sie Verbindungen von der sekundären ExpressRoute-Leitung mit dem Ziel-vNet herstellen. Alternativ können Sie für den Eintritt eines Notfalls Verbindungen eingerichtet und bereit halten, um die Gesamtwiederherstellungszeit zu verringern.

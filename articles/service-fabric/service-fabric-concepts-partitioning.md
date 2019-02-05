@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261569"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198213"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -129,11 +129,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
 1. Öffnen Sie **Visual Studio** > **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie im Dialogfeld **Neues Projekt** die Service Fabric-Anwendung aus.
 3. Geben Sie dem Projekt den Namen „AlphabetPartitions“.
-4. Wählen Sie im Dialogfeld **Dienst erstellen** für den Dienst **Zustandsbehaftet** aus, und geben Sie dem Dienst den Namen „Alphabet.Processing“. Dies ist unten in der Abbildung dargestellt.
-       ![Dialogfeld „Neuer Dienst“ in Visual Studio][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. Wählen Sie im Dialogfeld **Dienst erstellen** für den Dienst **Zustandsbehaftet** aus, und geben Sie dem Dienst den Namen „Alphabet.Processing“.
 5. Legen Sie die Anzahl der Partitionen fest. Öffnen Sie im Projekt „AlphabetPartitions“ im Ordner „ApplicationPackageRoot“ die Datei „ApplicationManifest.xml“, und ändern Sie den Parameter „Processing_PartitionCount“ wie unten gezeigt in 26.
    
     ```xml
