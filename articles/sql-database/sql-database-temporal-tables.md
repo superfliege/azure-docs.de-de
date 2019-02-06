@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/21/2018
-ms.openlocfilehash: d18630f9b4cea28bd19b2ac24e7b8c3d1822e17c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166417"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196649"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
 Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.
@@ -50,7 +50,7 @@ Wählen Sie in SSDT beim Hinzufügen von neuen Elementen zum Datenbankprojekt di
 
 Sie können eine temporale Tabelle auch durch Angeben von Transact-SQL-Anweisungen direkt erstellen, wie im folgenden Beispiel gezeigt. Beachten Sie, dass die obligatorischen Elemente aller temporalen Tabellen die Definition von PERIOD und die SYSTEM_VERSIONING-Klausel mit einem Verweis auf eine andere Benutzertabelle sind, die Verlaufszeilenversionen speichert:
 
-````
+```
 CREATE TABLE WebsiteUserInfo 
 (  
     [UserID] int NOT NULL PRIMARY KEY CLUSTERED 
@@ -61,7 +61,7 @@ CREATE TABLE WebsiteUserInfo
   , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
  )  
  WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.WebsiteUserInfoHistory));
-````
+```
 
 Wenn Sie eine temporale Tabelle mit Systemversionsverwaltung erstellen, wird die zugehörige Verlaufstabelle mit der Standardkonfiguration automatisch erstellt. Die Standardverlaufstabelle enthält einen gruppierten B-Strukturindex für die Periodenspalten (Anfang, Ende) mit aktivierter Seitenkomprimierung. Diese Konfiguration ist optimal für die Mehrzahl der Szenarien, in denen temporale Tabellen insbesondere für die [Datenüberwachung](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0)verwendet werden. 
 
@@ -73,11 +73,11 @@ In diesem Fall soll über einen längeren Datenverlauf hinweg und mit größeren
 
 Das folgende Skript zeigt, wie der Standardindex für die Verlaufstabelle in den gruppierten Columnstore geändert werden kann:
 
-````
+```
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory
 ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
-````
+```
 
 Temporale Tabellen werden im Objekt-Explorer zur leichteren Erkennung mit einem bestimmten Symbol dargestellt, während die zugehörige Verlaufstabelle als untergeordneter Knoten angezeigt wird.
 
@@ -86,7 +86,7 @@ Temporale Tabellen werden im Objekt-Explorer zur leichteren Erkennung mit einem 
 ### <a name="alter-existing-table-to-temporal"></a>Ändern einer vorhandenen Tabelle in temporal
 Wir behandeln nun das alternative Szenario, in dem die WebsiteUserInfo-Tabelle bereits vorhanden ist, jedoch nicht zum Speichern eines Änderungsverlaufs konzipiert wurde. In diesem Fall können Sie die vorhandene Tabelle, wie im folgenden Beispiel gezeigt, einfach zu einer temporalen erweitern:
 
-````
+```
 ALTER TABLE WebsiteUserInfo 
 ADD 
     ValidFrom datetime2 (0) GENERATED ALWAYS AS ROW START HIDDEN  
@@ -102,17 +102,17 @@ GO
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory
 ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
-````
+```
 
-## <a name="step-2-run-your-workload-regularly"></a>Schritt 2: Reguläres Ausführen Ihrer Workload
+## <a name="step-2-run-your-workload-regularly"></a>Schritt 2: Reguläres Ausführen Ihrer Workload
 Der Hauptvorteil von temporalen Tabellen ist, dass Sie Ihre Website zum Nachverfolgen von Änderungen in keiner Weise ändern oder anpassen müssen. Nach der Erstellung behalten temporale Tabellen jedes Mal transparent vorherige Zeilenversionen bei, wenn Sie Änderungen an Ihren Daten ausführen. 
 
 Um die automatische Änderungsnachverfolgung für dieses spezielle Szenario nutzen zu können, richten wir es ein, dass die Spalte **PagesVisited** jedes Mal aktualisiert wird, wenn der Benutzer seine Sitzung auf der Website beendet:
 
-````
+```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
 WHERE [UserID] = 1;
-````
+```
 
 Es ist wichtig, zu beachten, dass die Aktualisierungsabfrage nicht die genaue Zeit kennen muss, zu der der eigentliche Vorgang aufgetreten ist, noch wie die Verlaufsdaten zur späteren Analyse beibehalten werden. Beide Aspekte werden automatisch von der Azure SQL-Datenbank behandelt. Das folgende Diagramm veranschaulicht, wie Verlaufsdaten bei jedem Update generiert werden.
 
@@ -123,17 +123,17 @@ Da nun die temporale Systemversionsverwaltung aktiviert ist, ist die Analyse der
 
 Um die Top 10-Benutzer geordnet nach der Anzahl der besuchten Webseiten mit Stand vor einer Stunde anzuzeigen, führen Sie diese Abfrage aus:
 
-````
+```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
 SELECT TOP 10 * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME AS OF @hourAgo
 ORDER BY PagesVisited DESC
-````
+```
 
 Sie können diese Abfrage problemlos ändern, um die Websitebesuche vor einem Tag, einem Monat oder zu einem beliebigen Zeitpunkt in der Vergangenheit zu analysieren.
 
 Um eine grundlegende statistische Analyse für den vorherigen Tag auszuführen, verwenden Sie das folgende Beispiel:
 
-````
+```
 DECLARE @twoDaysAgo datetime2 = DATEADD(DAY, -2, SYSUTCDATETIME());
 DECLARE @aDayAgo datetime2 = DATEADD(DAY, -1, SYSUTCDATETIME());
 
@@ -143,17 +143,17 @@ STDEV (PagesVisited) as StDevViistedPages
 FROM dbo.WebsiteUserInfo 
 FOR SYSTEM_TIME BETWEEN @twoDaysAgo AND @aDayAgo
 GROUP BY UserId
-````
+```
 
 Um nach Aktivitäten eines bestimmten Benutzers in einer Zeitspanne zu suchen, verwenden Sie die CONTAINED IN-Klausel:
 
-````
+```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
 DECLARE @twoHoursAgo datetime2 = DATEADD(HOUR, -2, SYSUTCDATETIME());
 SELECT * FROM dbo.WebsiteUserInfo 
 FOR SYSTEM_TIME CONTAINED IN (@twoHoursAgo, @hourAgo)
 WHERE [UserID] = 1;
-````
+```
 
 Grafische Visualisierung ist besonders geeignet für temporale Abfragen, da Sie Trends und Verwendungsmuster unkompliziert in intuitiver Weise anzeigen können:
 
@@ -162,27 +162,27 @@ Grafische Visualisierung ist besonders geeignet für temporale Abfragen, da Sie 
 ## <a name="evolving-table-schema"></a>Entwicklung des Tabellenschemas
 In der Regel müssen Sie das Schema der temporalen Tabelle während der App-Entwicklung ändern. Führen Sie dafür einfach die regulären ALTER TABLE-Anweisungen aus, und die Azure SQL-Datenbank leitet Änderungen entsprechend an die Verlaufstabelle weiter. Das folgende Skript zeigt, wie Sie ein zusätzliches Attribut für die Nachverfolgung hinzufügen können:
 
-````
+```
 /*Add new column for tracking source IP address*/
 ALTER TABLE dbo.WebsiteUserInfo 
 ADD  [IPAddress] varchar(128) NOT NULL CONSTRAINT DF_Address DEFAULT 'N/A';
-````
+```
 
 Auf ähnliche Weise können Sie die Spaltendefinition ändern, während Ihre Workload aktiv ist:
 
-````
+```
 /*Increase the length of name column*/
 ALTER TABLE dbo.WebsiteUserInfo 
     ALTER COLUMN  UserName nvarchar(256) NOT NULL;
-````
+```
 
 Schließlich können Sie eine Spalte entfernen, die Sie nicht mehr benötigen.
 
-````
+```
 /*Drop unnecessary column */
 ALTER TABLE dbo.WebsiteUserInfo 
     DROP COLUMN TemporaryColumn; 
-````
+```
 
 Alternativ verwenden Sie die aktuellen [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) , um das Schema der temporalen Tabelle zu ändern, während Sie mit der Datenbank verbunden sind (Onlinemodus), oder als Teil des Datenbankprojekts (Offlinemodus).
 
@@ -194,5 +194,5 @@ Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle di
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn935015.aspx).
-Auf Channel 9 können Sie einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) hören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) sehen.
+Auf Channel 9 können Sie sich einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) anhören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) ansehen.
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329703"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466352"
 documentType: LandingData
 title: Verwaltete Azure SQL-Datenbank-Instanz
 metadata:
@@ -55,7 +55,7 @@ sections:
       html: <p>Migrieren Sie eine Gruppe von Datenbanken mit nur minimaler Ausfallzeit, indem Sie den Database Migration Service verwenden.</p>
     - title: Preise
       href: https://azure.microsoft.com/pricing/hybrid-benefit/
-      html: <p>Sparen Sie für Ihre vorhandenen lokalen Lizenzen mit dem Azure-Hybridvorteil (AHB) bis zu 40%.</p>
+      html: <p>Sparen Sie für Ihre vorhandenen lokalen Lizenzen mit dem Azure-Hybridvorteil (AHB) bis zu 40 %.</p>
     - title: PaaS-Funktionen
       href: /azure/sql-database/sql-database-paas
       html: <p>Bei Azure PaaS können Sie eine Instanz mit einer Verfügbarkeit von 99,99% mit minimalem Verwaltungsaufwand nutzen.</p>
@@ -78,7 +78,7 @@ sections:
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurieren der Sicherungsaufbewahrung für einen Zeitraum von bis zu 35 Tagen</a> für die Point-in-Time-Wiederherstellung. Beachten Sie, dass die langfristige Sicherungsaufbewahrung (bis zu zehn Jahre) noch nicht aktiviert ist, sodass Sie als Alternative <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">ausschließlich kopierbare Sicherungen</a> nutzen können.
     - html: (Vorschauversion) Verwenden Sie <a href="https://aka.ms/managed-instance-failover-groups">geografisch verteilte Failovergruppen</a>, um eine Kopie der Instanz in einer anderen Region vorzuhalten und sicherzustellen, dass Ihre Daten auch bei einer regionalen Katastrophe verfügbar sind.
     - html: (Vorschauversion) <a href="https://aka.ms/managed-instance-tde-byok">Stellen Sie Ihre eigenen Verschlüsselungsschlüssel bereit</a>, während Sie lokale Datenbanken migrieren, für die Transparent Data Encryption (TDE) bereits aktiviert ist.
-    - html: Verwaltete Instanzen sind durch eine <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">integrierte Firewall</a> geschützt.
+    - html: Verwaltete Instanzen sind durch eine <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrierte Firewall</a> geschützt.
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph

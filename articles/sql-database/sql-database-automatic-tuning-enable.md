@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/25/2019
+ms.openlocfilehash: 5b3a77a28945b597fe4fdd57aadfc3e05196a353
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382786"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478252"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung zum Überwachen von Abfragen und Verbessern der Workloadleistung
 
@@ -26,9 +26,11 @@ Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierl
 Die automatische Optimierung kann über das [Azure-Portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST-API](sql-database-automatic-tuning-enable.md#rest-api)-Aufrufe und [T-SQL](sql-database-automatic-tuning-enable.md#t-sql)-Befehle auf Server- oder Datenbankebene aktiviert werden.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Aktivieren der automatischen Optimierung für den Server
+
 Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten sind FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
 
 ### <a name="azure-portal"></a>Azure-Portal
+
 Wenn Sie die automatische Optimierung für den logischen Azure SQL-Datenbank-**Server** aktivieren möchten, navigieren Sie im Azure-Portal zum entsprechenden Server, und aktivieren Sie im Menü die Option **Automatische Optimierung**.
 
 ![Server](./media/sql-database-automatic-tuning-enable/server.png)
@@ -44,7 +46,6 @@ Die Optionen für die automatische Optimierung auf einem Server werden auf alle 
 ### <a name="rest-api"></a>REST-API
 
 Weitere Informationen darüber, wie die automatische Optimierung mithilfe der REST-API auf einem Server aktiviert werden kann, finden Sie unter [Automatische Serveroptimierung](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
-
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Aktivieren der automatischen Optimierung für eine einzelne Datenbank
 
@@ -74,27 +75,28 @@ Weitere Informationen darüber, wie die automatische Optimierung mithilfe der RE
 
 Wenn Sie die automatische Optimierung für eine einzelne Datenbank mithilfe von T-SQL aktivieren möchten, stellen Sie eine Verbindung mit der Datenbank her, und führen Sie die folgende Abfrage aus:
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING = AUTO | INHERIT | CUSTOM
+```
+
 Wenn Sie die automatische Optimierung auf „AUTO“ festlegen, werden die Azure-Standardwerte verwendet. Bei Verwendung von „INHERIT“ wird die Konfiguration der automatischen Optimierung vom übergeordneten Server geerbt. Bei Verwendung von „CUSTOM“ muss die automatische Optimierung manuell konfiguriert werden.
 
 Wenn Sie über T-SQL einzelne Optionen der automatischen Optimierung konfigurieren möchten, stellen Sie eine Verbindung mit der Datenbank her, und führen Sie eine Abfrage wie die folgende aus:
 
-   ```T-SQL
-   ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
-   ```
-   
+```SQL
+ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_INDEX = DEFAULT, DROP_INDEX = OFF)
+```
+
 Wenn Sie eine Optimierungsoption auf „ON“ festlegen, werden ggf. geerbte Einstellungen der Datenbank überschrieben, und die entsprechende Optimierungsoption wird aktiviert. Gleiches gilt für „OFF“: Auch hier werden ggf. geerbte Einstellungen der Datenbank überschrieben, und die entsprechende Optimierungsoption wird deaktiviert. Bei Verwendung der automatischen Optimierungsoption „DEFAULT“ wird die Konfiguration aus der Einstellung für die automatische Optimierung auf Datenbankebene geerbt.  
 
 > [!IMPORTANT]
 > Im Fall einer [aktiven Georeplikation](sql-database-auto-failover-group.md) muss die automatische Optimierung nur für die primäre Datenbank konfiguriert werden. Automatisch angewandte Aktionen zur Optimierung (z.B. das Erstellen oder Löschen des Index) werden automatisch in die schreibgeschützte sekundäre Datenbank repliziert. Der Versuch, die automatischen Optimierung in der sekundären schreibgeschützten Datenbank über T-SQL zu aktivieren, führt zu einem Fehler, da für die schreibgeschützte sekundäre Datenbank keine abweichende Optimierungskonfiguration unterstützt wird.
 >
 
-Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
+Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL) für SQL-Datenbankserver](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ## <a name="disabled-by-the-system"></a>Vom System deaktiviert
+
 Die automatische Optimierung überwacht alle Aktionen, die sie für die Datenbank ausführt, und stellt manchmal unter Umständen fest, dass die automatische Optimierung für die Datenbank nicht ordnungsgemäß funktioniert. In diesem Fall wird die Optimierungsoption vom System deaktiviert. Das liegt meistens daran, dass der Abfragespeicher nicht aktiviert oder für eine bestimmte Datenbank schreibgeschützt ist.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurieren der automatischen Optimierung von E-Mail-Benachrichtigungen
@@ -102,6 +104,7 @@ Die automatische Optimierung überwacht alle Aktionen, die sie für die Datenban
 Weitere Informationen hierzu finden Sie im Leitfaden [E-Mail-Benachrichtigungen zur automatischen Optimierung](sql-database-automatic-tuning-email-notifications.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Weitere Informationen zur automatischen Optimierung sowie zu ihrer Rolle bei der Verbesserung der Leistung finden Sie in [diesem Artikel](sql-database-automatic-tuning.md).
 * Eine Übersicht über die Leistungsempfehlungen von Azure SQL-Datenbank finden Sie [hier](sql-database-advisor.md).
 * Unter [Query Performance Insight](sql-database-query-performance.md) erfahren Sie, wie Sie die Auswirkungen Ihrer wichtigsten Abfragen auf die Leistung untersuchen können.

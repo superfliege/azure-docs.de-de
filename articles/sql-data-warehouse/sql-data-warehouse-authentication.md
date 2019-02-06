@@ -2,20 +2,20 @@
 title: Authentifizierung für Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/12/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f26ded5fae1bde5b2e6485ae2a2f99eebb17563
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43311033"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463327"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Authentifizierung für Azure SQL Data Warehouse
 Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
@@ -30,7 +30,7 @@ Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie die folgenden
 * Vollqualifizierter Servername
 * SQL-Authentifizierung
 * Username
-* Password
+* Kennwort
 * Standarddatenbank (optional)
 
 Standardmäßig wird die Verbindung mit der *Masterdatenbank* hergestellt, nicht mit Ihrer Benutzerdatenbank. Sie haben zwei Möglichkeiten, um eine Verbindung mit Ihrer Benutzerdatenbank herzustellen:
@@ -67,7 +67,7 @@ Azure Active Directory bietet folgende Vorteile:
 Befolgen Sie diese Schritte zum Konfigurieren der Azure Active Directory-Authentifizierung.
 
 1. Erstellen und Auffüllen eines Azure Active Directory-Verzeichnisses
-2. Optional: Zuordnen oder Ändern des aktiven Verzeichnisses für Ihr Azure-Abonnement
+2. Optional: Zuordnen oder Ändern des aktiven Verzeichnisses, das mit Ihrem Azure-Abonnement derzeit verknüpft ist
 3. Erstellen eines Azure Active Directory-Administrators für Azure SQL Data Warehouse
 4. Konfigurieren der Clientcomputer
 5. Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind

@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/29/2019
+ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232986"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466591"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL-Datenbank – Datenermittlung und -klassifizierung
 
@@ -28,7 +28,7 @@ Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Fi
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
 
-Datenermittlung und -klassifizierung ist Teil des Angebote [SQL Advanced Threat Protection (ATP)](sql-advanced-threat-protection.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL-ATP-Portal möglich.
+Datenermittlung und -klassifizierung ist Teil des Angebots [SQL Advanced Data Security (ADS)](sql-advanced-threat-protection.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL-ADS-Portal möglich.
 
 > [!NOTE]
 > Dieses Dokument bezieht sich nur auf Azure SQL-Datenbank. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -77,7 +77,7 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Advanced Threat Protection**. Klicken Sie zum Aktivieren von Advanced Threat Protection, und klicken Sie dann auf die Karte **Datenermittlung und -klassifizierung (Vorschauversion)**.
+2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Advanced Data Security**. Klicken Sie zum Aktivieren von Advanced Data Security und dann auf die Karte **Datenermittlung und -klassifizierung (Vorschauversion)**.
 
    ![Überprüfen einer Datenbank](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -123,7 +123,7 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
 ## <a id="subheading-3"></a>Überwachen des Zugriffs auf sensible Daten
 
-Ein wichtiger Aspekt des Paradigmas für den Schutz von Informationen ist die Möglichkeit, den Zugriff auf sensible Daten zu überwachen. Die [Azure SQL-Datenbank-Überwachung](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) wurde erweitert, um das Überwachungsprotokoll um das neue Feld *data_sensitivity_information* zu ergänzen. In diesem werden die Vertraulichkeitsklassifizierungen (Bezeichnungen) der eigentlichen Daten erfasst, die bei der Abfrage zurückgegeben wurden.
+Ein wichtiger Aspekt des Paradigmas für den Schutz von Informationen ist die Möglichkeit, den Zugriff auf sensible Daten zu überwachen. Die [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) wurde erweitert, um das Überwachungsprotokoll um das neue Feld *data_sensitivity_information* zu ergänzen. In diesem werden die Vertraulichkeitsklassifizierungen (Bezeichnungen) der eigentlichen Daten erfasst, die bei der Abfrage zurückgegeben wurden.
 
 ![Überwachungsprotokoll](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -135,7 +135,7 @@ Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle 
 > Bei der Verwendung von T-SQL zur Verwaltung von Bezeichnungen gibt es keine Validierung, dass zu einer Spalte hinzugefügte Bezeichnungen in der Richtlinie zum Schutz von Organisationsinformationen (die in den Portalempfehlungen erscheinen) vorhanden sind. Aus diesem Grund müssen Sie dies überprüfen.
 
 - Hinzufügen/Aktualisieren der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG HINZUFÜGEN](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Entfernen der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG VERWERFEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Entfernen der Klassifizierung aus einer oder mehreren Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG LÖSCHEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu verwalten. Die veröffentlichten REST-APIs unterstützen die folgenden Vorgänge:
@@ -147,8 +147,8 @@ Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu
 
 ## <a id="subheading-5"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [SQL Advanced Threat Protection](sql-advanced-threat-protection.md).
-- Sie sollten in Betracht ziehen, die [Azure SQL-Datenbank-Überwachung](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten sensiblen Daten zu konfigurieren.
+- Erfahren Sie mehr über [SQL Advanced Data Security](sql-advanced-threat-protection.md).
+- Sie sollten in Betracht ziehen, die [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten sensiblen Daten zu konfigurieren.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

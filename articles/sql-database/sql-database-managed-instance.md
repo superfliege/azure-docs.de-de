@@ -1,6 +1,6 @@
 ---
 title: Verwaltete Azure SQL-Datenbank-Instanz – Übersicht| Microsoft-Dokumentation
-description: In diesem Thema wird eine verwaltete Azure SQL-Datenbank-Instanz und deren Verwendung beschrieben sowie erläutert, wie sie sich von einer einzelnen Datenbank in Azure SQL-Datenbank unterscheidet.
+description: In diesem Thema wird eine verwaltete Azure SQL-Datenbank-Instanz und deren Verwendung beschrieben sowie erläutert, wie sie sich von einer Einzeldatenbank oder einer in einem Pool zusammengefassten in Azure SQL-Datenbank unterscheidet.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/25/2019
+ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994758"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465706"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Verwenden einer verwalteten SQL-Datenbank-Instanz mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
 
@@ -34,7 +34,7 @@ Die verwaltete Azure SQL-Datenbank-Instanz ist für Kunden konzipiert, die eine 
 
 Bis zur allgemeinen Verfügbarkeit wird für verwaltete Instanzen durch einen gestaffelten Releaseplan eine nahezu 100%ige Oberflächenkompatibilität mit dem neuesten lokalen SQL Server-Release angestrebt.
 
-Anhaltspunkte für die Entscheidung zwischen einer Azure SQL-Einzeldatenbank, einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server-IaaS auf einem virtuellen Computer finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](sql-database-paas-vs-sql-server-iaas.md).
+Anhaltspunkte für die Entscheidung zwischen einer Azure SQL-Datenbank-Einzeldatenbank, einer im Pool zusammengefassten Datenbank, einer verwalteten Instanz und SQL Server auf einem virtuellen Computer finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](sql-database-paas-vs-sql-server-iaas.md).
 
 ## <a name="key-features-and-capabilities"></a>Wichtige Features und Funktionen
 
@@ -185,7 +185,7 @@ Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In A
 - Weitere Informationen zur Wiederherstellung über eine URL finden Sie unter [Native RESTORE FROM URL-Option](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
-> Sicherungen von einer verwalteten Instanz können nur in einer anderen verwalteten Instanz wiederhergestellt werden. Sie können nicht in einer lokalen SQL Server-Instanz oder einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank eines logischen Azure SQL-Datenbank-Servers wiederhergestellt werden.
+> Sicherungen von einer verwalteten Instanz können nur in einer anderen verwalteten Instanz wiederhergestellt werden. Sie können nicht auf einem lokalen SQL Server oder in einer Einzeldatenbank/einem Pool für elastische Datenbanken wiederhergestellt werden.
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
@@ -210,7 +210,7 @@ Die verwaltete Instanz ist in der Cloud immer auf dem neuesten Stand, d.h., eini
 - In einer verwalteten Instanz können keine vollständigen physischen Pfade angegeben werden. Daher müssen alle entsprechenden Szenarien unterschiedlich unterstützt werden: RESTORE DB unterstützt WITH MOVE nicht; CREATE DB lässt keine physischen Pfade zu; BULK INSERT kann nur mit Azure-Blobs ausgeführt werden usw.
 - Eine verwaltete Instanz unterstützt die [Azure AD-Authentifizierung](sql-database-aad-authentication.md) als Cloudalternative zur Windows-Authentifizierung.
 - Eine verwaltete Instanz verwaltet automatisch XTP-Dateigruppen und -Dateien für Datenbanken mit In-Memory-OLTP-Objekten.
-- Eine verwaltete Instanz unterstützt SQL Server Integration Services (SSIS) und kann den SSIS-Katalog (SSISDB) hosten, in dem SSIS-Pakete gespeichert werden, sie wird jedoch in einer verwalteten Azure SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ausgeführt. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Informationen zum Vergleich der SSIS-Features in SQL-Datenbank und einer verwalteten Instanz finden Sie unter [Vergleich zwischen einem logischen SQL-Datenbank-Server und einer verwalteten SQL-Datenbank-Instanz](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
+- Eine verwaltete Instanz unterstützt SQL Server Integration Services (SSIS) und kann den SSIS-Katalog (SSISDB) hosten, in dem SSIS-Pakete gespeichert werden, sie wird jedoch in einer verwalteten Azure SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ausgeführt. Siehe dazu [Erstellen der Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Informationen zum Vergleich der SSIS-Features in SQL-Datenbank und einer verwalteten Instanz finden Sie unter [Vergleich zwischen Azure SQL-Datenbank-Einzeldatenbanken/Pools für elastische Datenbanken und einer verwalteten Instanz](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Features zur Verwaltung einer verwalteten Instanz
 

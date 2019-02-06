@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell | Microsoft-Dokumentation
+title: Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell | Microsoft Docs
 description: PowerShell, verwendet zum Verwalten von Pools für Azure SQL-Datenbanken
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278456"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472643"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
 
@@ -189,7 +189,7 @@ In der folgenden Tabelle sind alle Objekttypen von **Aufträgen für die elastis
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>Von den Aufträgen für die elastische Datenbank unterstützte Gruppentypen
-Der Auftrag führt Transact-SQL (T-SQL)-Skripts aus und ermöglicht die Anwendung von DACPACs für eine gesamte Gruppe von Datenbanken. Wenn ein Auftrag zur übergreifenden Ausführung für eine Gruppe von Datenbanken gesendet wird, wird der Auftrag in untergeordnete Aufträge aufgeteilt, die jeweils die angeforderte Ausführung für eine Einzeldatenbank der Gruppe übernehmen. 
+Der Auftrag führt Transact-SQL (T-SQL)-Skripts aus und ermöglicht die Anwendung von DACPACs für eine gesamte Gruppe von Datenbanken. Wenn ein Auftrag zur übergreifenden Ausführung für eine Gruppe von Datenbanken gesendet wird, wird der Auftrag in untergeordnete Aufträge aufgeteilt, die jeweils die angeforderte Ausführung für eine einzelne Datenbank in der Gruppe übernehmen. 
 
 Zwei Arten von Gruppen können erstellt werden: 
 

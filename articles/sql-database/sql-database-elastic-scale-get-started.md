@@ -11,24 +11,28 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
-ms.date: 08/27/2018
-ms.openlocfilehash: b3bdcc81776067f279c1f95458a0a79a8824f51c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603048"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462969"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
+
 Dieses Dokument enthält eine Einführung in die Entwickleroberfläche für die [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md), die anhand einer Beispiel-App vorgestellt wird. Mit der Beispiel-App wird eine einfache Shardinganwendung erstellt, und es werden die wichtigsten Funktionen des Features „Tools für elastische Datenbanken“ von Azure SQL-Datenbank erläutert. Dabei stehen die Anwendungsfälle für [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md), [datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md) und [Abfragen mehrerer Shards](sql-database-elastic-scale-multishard-querying.md) im Mittelpunkt. Die Clientbibliothek ist sowohl für .NET als auch für Java verfügbar. 
 
 ## <a name="elastic-database-tools-for-java"></a>Tools für elastische Datenbanken für Java
+
 ### <a name="prerequisites"></a>Voraussetzungen
+
 * Ein Java Developer Kit (JDK), Version 1.8 oder höher
 * [Maven](http://maven.apache.org/download.cgi)
-* Ein logischer Server in Azure oder eine lokale SQL Server-Instanz
+* Ein SQL-Datenbank-Server in Azure oder eine lokale SQL Server-Instanz
 
 ### <a name="download-and-run-the-sample-app"></a>Herunterladen und Ausführen der Beispiel-App
+
 Verfahren Sie wie folgt, um die JAR-Dateien zu erstellen und erste Schritte mit dem Beispielprojekt auszuführen: 
 1. Klonen Sie das [GitHub-Repository](https://github.com/Microsoft/elastic-db-tools-for-java), das die Clientbibliothek zusammen mit der Beispiel-App enthält. 
 
@@ -65,12 +69,15 @@ Um die Clientbibliothek Ihrem eigenen Maven-Projekt hinzuzufügen, fügen Sie di
 </dependency> 
 ```
 
-## <a name="elastic-database-tools-for-net"></a>Tools für elastische Datenbanken für .NET 
+## <a name="elastic-database-tools-for-net"></a>Tools für elastische Datenbanken für .NET
+
 ### <a name="prerequisites"></a>Voraussetzungen
+
 * Visual Studio 2012 oder eine neuere Version mit C#. Laden Sie eine kostenlose Version unter [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)herunter.
 * NuGet 2.7 oder eine neuere Version. Die aktuelle Version finden Sie unter [Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) (Installieren von NuGet).
 
 ### <a name="download-and-run-the-sample-app"></a>Herunterladen und Ausführen der Beispiel-App
+
 Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Die Bibliothek wird mit der im nachfolgenden Abschnitt beschriebenen Beispiel-App installiert.
 
 Gehen Sie folgendermaßen vor, um das Beispiel herunterzuladen und auszuführen: 
@@ -91,10 +98,9 @@ Glückwunsch! Sie haben mit den Tools für elastische Datenbanken in SQL-Datenba
 
 > [!IMPORTANT]
 > Wir empfehlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
-> 
-> 
 
 ## <a name="key-pieces-of-the-code-sample"></a>Zentrale Elemente des Codebeispiels
+
 * **Verwalten von Shards und Shardzuordnungen**: Der Code in der Datei *ShardManagementUtils.cs* veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).  
 
 * **Datenabhängiges Routing**: Das Routing von Transaktionen zum richtigen Shard wird in der Datei *DataDependentRoutingSample.cs* dargestellt. Weitere Informationen finden Sie unter [Datenabhängiges Routing](https://go.microsoft.com/?linkid=9862596). 
@@ -104,11 +110,13 @@ Glückwunsch! Sie haben mit den Tools für elastische Datenbanken in SQL-Datenba
 * **Hinzufügen leerer Shards**: Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei *CreateShardSample.cs* durchgeführt. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Weitere Elastic Scale-Operationen
+
 * **Aufteilen eines vorhandenen Shards**: Die Möglichkeit zum Aufteilen von Shards wird durch das Split-Merge-Tool bereitgestellt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).
 
 * **Zusammenführen vorhandener Shards**: Shardzusammenführungen werden ebenfalls mit dem Split-Merge-Tool durchgeführt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).   
 
 ## <a name="cost"></a>Kosten
+
 Die Bibliothek für Tools für elastische Datenbanken ist kostenlos. Bei der Verwendung der Tools für elastische Datenbanken entstehen neben den Gebühren für die Nutzung von Azure keine zusätzlichen Kosten. 
 
 Die Beispielanwendung erstellt z. B. neue Datenbanken. Die Kosten dieser Funktion richten sich nach der ausgewählten Edition von SQL-Datenbank und nach der Azure-Nutzung Ihrer Anwendung.
@@ -116,6 +124,7 @@ Die Beispielanwendung erstellt z. B. neue Datenbanken. Die Kosten dieser Funkti
 Preisinformationen finden Sie unter [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu den Tools für elastische Datenbanken finden Sie in den folgenden Artikeln:
 
 * Codebeispiele: 

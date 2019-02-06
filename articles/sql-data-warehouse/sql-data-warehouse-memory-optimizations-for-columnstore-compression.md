@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: e30320631a7fd9b4ee27096556af01f2ad77a746
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306831"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463360"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximieren der Zeilengruppenqualität für Columnstore
 
@@ -69,7 +69,7 @@ from cte;
 trim_reason_desc enthält Informationen darüber, ob die Zeilengruppe gekürzt wurde (trim_reason_desc = NO_TRIM bedeutet, dass keine Kürzung erfolgt ist und die Qualität der Zeilengruppe optimal ist). Die folgenden Begründungen für eine Kürzung geben eine vorzeitige Kürzung der Zeilengruppe an:
 - BULKLOAD: Dieser Grund für eine Kürzung wird verwendet, wenn der eingehende Zeilenbatch für den Ladevorgang weniger als 1 Million Zeilen umfasst hat. Die Datenbank-Engine erstellt komprimierte Zeilengruppen, wenn mehr als 100.000 Zeilen eingefügt werden (statt sie im Deltaspeicher einzufügen), der Grund für die Kürzung wird jedoch auf BULKLOAD festgelegt. In diesem Szenario soll das Batchladefenster so erhöht werden, dass mehr Zeilen angesammelt werden. Außerdem wird das Partitionsschema überprüft, um sicherzustellen, dass es nicht zu kleinteilig ist, da Zeilengruppen nicht über Partitionsgrenzen hinausgehen können.
 - MEMORY_LIMITATION: Zum Erstellen von Zeilengruppen mit 1 Million Zeilen ist für die Datenbank-Engine eine bestimmte Arbeitsspeichergröße erforderlich. Wenn der verfügbare Speicher für die Ladesitzung kleiner als der erforderliche Arbeitsspeicher ist, werden Zeilengruppen vorzeitig gekürzt. In den folgenden Abschnitten wird erläutert, wie Sie den erforderlichen Speicher schätzen und mehr Speicher zuweisen.
-- DICTIONARY_SIZE: Dieser Grund für eine Kürzung gibt an, dass die Zeilengruppenkürzung aufgetreten ist, weil mindestens eine Zeichenfolgenspalte mit breiten Zeichenfolgen oder Zeichenfolgen mit hoher Statusanzahl vorhanden war. Die Wörterbuchgröße ist auf 16 MB Arbeitsspeicher beschränkt. Sobald diese Beschränkung erreicht ist, wird die Zeilengruppe komprimiert. In diesem Fall sollten Sie die problematische Spalte in einer separaten Tabelle isolieren.
+- DICTIONARY_SIZE: Dieser Grund für eine Kürzung gibt an, dass die Zeilengruppenkürzung aufgetreten ist, weil mindestens eine Zeichenfolgenspalte mit breiten Zeichenfolgen und/oder Zeichenfolgen mit hoher Statusanzahl vorhanden war. Die Wörterbuchgröße ist auf 16 MB Arbeitsspeicher beschränkt. Sobald diese Beschränkung erreicht ist, wird die Zeilengruppe komprimiert. In diesem Fall sollten Sie die problematische Spalte in einer separaten Tabelle isolieren.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Einschätzen der Arbeitsspeicheranforderungen
 
@@ -88,7 +88,7 @@ wo kurze Zeichenfolgenspalten Zeichenfolgendatentypen mit <= 32 Bytes und lange 
 
 Lange Zeichenfolgen werden mit einer Komprimierungsmethode komprimiert, die für das Komprimieren von Texten entwickelt wurde. Diese Komprimierungsmethode verwendet ein *Wörterbuch* zum Speichern von Textmustern. Die maximale Größe eines Wörterbuchs beträgt 16 MB. Es gibt nur ein Wörterbuch für jede lange Zeichenfolgenspalte in der Zeilengruppe.
 
-Eine ausführliche Diskussion der Columnstore-Arbeitsspeicheranforderungen, finden Sie im Video [Azure SQL Data Warehouse scaling: configuration and guidance (Skalieren von Azure SQL Data Warehouse: Konfiguration und Anleitungen, in englischer Sprache)](https://myignite.microsoft.com/videos/14822).
+Eine ausführliche Diskussion der Columnstore-Arbeitsspeicheranforderungen, finden Sie im Video [Azure SQL Data Warehouse scaling: configuration and guidance (Skalieren von Azure SQL Data Warehouse: Konfiguration und Anleitungen, in englischer Sprache)](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Verfahren zum Verringern der Arbeitsspeicheranforderungen
 
@@ -124,10 +124,10 @@ Jede Verteilung komprimiert Zeilengruppen parallel in den Columnstore, sobald ei
 
 Sie können den Tipp für MAXDOP-Anfrage anwenden, damit der Ladevorgang gezwungen wird, innerhalb jeder Verteilung im Serienmodus zu arbeiten, um Arbeitsspeicherauslastung zu verringern.
 
-```
+```sql
 CREATE TABLE MyFactSalesQuota
 WITH (DISTRIBUTION = ROUND_ROBIN)
-AS SELECT * FROM FactSalesQUota
+AS SELECT * FROM FactSalesQuota
 OPTION (MAXDOP 1);
 ```
 

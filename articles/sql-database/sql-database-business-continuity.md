@@ -1,5 +1,5 @@
 ---
-title: Geschäftskontinuität in der Cloud – Datenbankwiederherstellung – SQL-Datenbank | Microsoft-Dokumentation
+title: Geschäftskontinuität in der Cloud – Datenbankwiederherstellung – SQL-Datenbank | Microsoft Docs
 description: Erfahren Sie, wie Azure SQL-Datenbank die Geschäftskontinuität in der Cloud sowie die Datenbankwiederherstellung unterstützt und dafür sorgt, dass geschäftskritische Cloudanwendungen in Betrieb gehalten werden.
 keywords: Geschäftskontinuität,Geschäftskontinuität in der Cloud,Notfallwiederherstellung von Datenbanken,Datenbankwiederherstellung
 services: sql-database
@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: aecfecda08a6008b931738802bb89054f9d3963c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473424"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -46,7 +46,7 @@ Anschließend erfahren Sie mehr über die zusätzlichen Mechanismen zur Wiederhe
 
 - [Temporäre Tabellen](sql-database-temporal-tables.md) ermöglichen es Ihnen, Zeilenversionen eines beliebigen Zeitpunkts wiederherzustellen.
 - [Integrierte, automatisierte Sicherungen](sql-database-automated-backups.md) und die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) ermöglichen es Ihnen, die vollständige Datenbank zu einem Zeitpunkt innerhalb der letzten 35 Tage wiederherzustellen.
-- Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](sql-database-recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **logische Server noch vorhanden ist**.
+- Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](sql-database-recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **SQL-Datenbankserver noch vorhanden ist**.
 - [Langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md) ermöglicht es Ihnen, die Sicherungen bis zu 10 Jahre aufzubewahren.
 - [Aktive Georeplikation](sql-database-active-geo-replication.md) ermöglicht es Ihnen, lesbare Replikate zu erstellen und bei Ausfall eines Rechenzentrums oder einem Anwendungsupgrade ein manuelles Failover auf ein beliebiges Replikat durchzuführen.
 - [Autofailover-Gruppe](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) ermöglicht der Anwendung im Falle eines Rechenzentrumsausfalls eine automatische Wiederherstellung.
@@ -63,7 +63,7 @@ Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Wiederherstellen einer Datenbank auf dem vorhandenen Server
 
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, differenziellen Datenbanksicherungen alle 12 Stunden sowie Transaktionsprotokollsicherungen im Abstand von 5-10 Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Die Sicherungen werden für alle Dienstebenen 35 Tage lang in RA-GRS-Speicher gespeichert, mit Ausnahme der Dienstebene „Basic DTU“, bei der die Sicherungen 7 Tage lang gespeichert werden. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md). Sie können eine vorhandene Datenbank mit dem Azure-Portal, PowerShell oder der REST-API aus den automatischen Sicherungen zu einem früheren Zeitpunkt als eine neue Datenbank auf dem gleichen logischen Server wiederherstellen. Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
+SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, differenziellen Datenbanksicherungen alle 12 Stunden sowie Transaktionsprotokollsicherungen im Abstand von 5-10 Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Die Sicherungen werden für alle Dienstebenen 35 Tage lang in RA-GRS-Speicher gespeichert, mit Ausnahme der Dienstebene „Basic DTU“, bei der die Sicherungen 7 Tage lang gespeichert werden. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md). Sie können eine vorhandene Datenbank mit dem Azure-Portal, PowerShell oder der REST-API aus den automatischen Sicherungen zu einem früheren Zeitpunkt als eine neue Datenbank auf demselben SQL-Datenbankserver wiederherstellen. Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Wenn die maximal unterstützte PITR-Aufbewahrungsdauer (Point-in-Time-Wiederherstellung) für Ihre Anwendung nicht ausreicht, können Sie sie verlängern, indem Sie eine Richtlinie für die langfristige Aufbewahrung (LTR) für die Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 

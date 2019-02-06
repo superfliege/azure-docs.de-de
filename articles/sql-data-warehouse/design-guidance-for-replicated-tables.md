@@ -1,21 +1,21 @@
 ---
 title: Entwurfsleitfaden für replizierte Tabellen – Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: Empfehlungen für das Entwerfen von replizierten Tabellen im Azure SQL Data Warehouse-Schema.
+description: Empfehlungen für das Entwerfen von replizierten Tabellen im Azure SQL Data Warehouse-Schema. 
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: dfbfc61b9088535d6b50a9897b908572d88d6676
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5c791dc8216a4c905b4147f59a42d52091f14aae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302761"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465978"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Entwurfsleitfaden für die Verwendung von replizierten Tabellen in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabellen im SQL Data Warehouse-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
@@ -23,13 +23,13 @@ Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabelle
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md). 
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md). 
 
-Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
+Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
 
-- Wie groß ist die Tabelle?   
-- Wie oft wird die Tabelle aktualisiert?   
-- Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
+- Wie groß ist die Tabelle?   
+- Wie oft wird die Tabelle aktualisiert?   
+- Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
 
 ## <a name="what-is-a-replicated-table"></a>Was ist eine replizierte Tabelle?
 Eine replizierte Tabelle verfügt über eine vollständige Kopie der Tabelle, auf die auf jedem Computeknoten zugegriffen werden kann. Durch das Replizieren einer Tabelle müssen Daten vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Da die Tabelle über mehrere Kopien verfügt, lässt sich mit replizierten Tabellen am besten arbeiten, wenn die komprimierte Tabelle kleiner als 2 GB ist.
@@ -44,10 +44,9 @@ Die Verwendung einer replizierten Tabelle kann sinnvoll sein, wenn folgende Bedi
 
 - Die Tabellengröße auf dem Datenträger ist geringer als 2 GB, unabhängig von der Anzahl der Zeilen. Sie können die Größe der Tabelle mit dem [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)-Befehl ermitteln: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
 - Die Tabelle wird in Joins verwendet, die andernfalls Datenverschiebung erfordern. Beim Verknüpfen von Tabellen, die nicht in derselben Spalte verteilt sind, z.B. einer Tabelle mit Hashverteilung mit einer Roundrobintabelle, ist die Datenverschiebung erforderlich, um die Abfrage abzuschließen.  Wenn eine der Tabellen klein ist, empfiehlt sich möglicherweise eine replizierte Tabelle. In den meisten Fällen wird empfohlen, replizierte Tabellen statt Roundrobintabellen zu verwenden. Verwenden Sie [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql), um Datenverschiebungen in Abfrageplänen anzuzeigen.  BroadcastMoveOperation ist der typische Datenverschiebungsvorgang, der mithilfe einer replizierten Tabelle gelöscht werden kann.  
- 
-Replizierte Tabellen liefern möglicherweise nicht die optimale Abfrageleistung, wenn folgende Bedingungen zutreffen:
+ Replizierte Tabellen liefern möglicherweise nicht die optimale Abfrageleistung, wenn folgende Bedingungen zutreffen:
 
-- In der Tabelle erfolgen häufig Einfüge-, Aktualisierungs- und Löschvorgänge. Vorgänge der Datenbearbeitungssprache (Data Manipulation Language, DML) erfordern das erneute Erstellen der replizierten Tabelle. Ein häufiges Neuerstellen kann zu Leistungseinbußen führen.
+- In der Tabelle erfolgen häufig Einfüge-, Aktualisierungs- und Löschvorgänge. Vorgänge der Datenbearbeitungssprache (Data Manipulation Language, DML) erfordern das erneute Erstellen der replizierten Tabelle. Ein häufiges Neuerstellen kann zu Leistungseinbußen führen.
 - Das Data Warehouse wird häufig skaliert. Durch das Skalieren des Data Warehouse ändert sich die Anzahl der Computeknoten, was eine Neuerstellung nach sich zieht.
 - Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Verteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage Datenverschiebung erfordert, verschiebt SQL Data Warehouse nur Daten für die angeforderten Spalten. 
 
@@ -70,7 +69,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Konvertieren Sie vorhandene Roundrobintabellen in replizierte Tabellen
-Wenn Sie bereits über Roundrobintabellen verfügen, sollten Sie sie in replizierte Tabellen konvertieren, sofern sie die in diesem Artikel beschriebenen Kriterien erfüllen. Replizierte Tabellen bieten eine bessere Leistung als Roundrobintabellen, da sie nicht das Verschieben von Daten erfordern.  Eine Roundrobintabelle erfordert für Joins immer Datenverschiebung. 
+Wenn Sie bereits über Roundrobintabellen verfügen, sollten Sie sie in replizierte Tabellen konvertieren, sofern sie die in diesem Artikel beschriebenen Kriterien erfüllen. Replizierte Tabellen bieten eine bessere Leistung als Roundrobintabellen, da sie nicht das Verschieben von Daten erfordern.  Eine Roundrobintabelle erfordert für Joins immer Datenverschiebung. 
 
 In diesem Beispiel wird mithilfe von [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) die Tabelle „DimSalesTerritory“ in eine replizierte Tabelle geändert. Dieses Beispiel ist unabhängig davon gültig, ob „DimSalesTerritory“ eine Tabelle mit Hashverteilung oder eine Roundrobintabelle ist.
 
@@ -103,7 +102,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 Eine replizierte Tabelle erfordert für Joins keine Datenverschiebung, da die gesamte Tabelle bereits auf jedem Computeknoten vorhanden ist. Wenn die Dimensionstabellen nach dem Roundrobinprinzip verteilt sind, wird für einen Join die Dimensionstabelle vollständig auf jeden Computeknoten kopiert. Zum Verschieben der Daten enthält der Abfrageplan einen Vorgang mit dem Namen „BroadcastMoveOperation“. Dieser Typ von Datenverschiebungsvorgang verringert die Abfrageleistung und lässt sich durch die Verwendung replizierter Tabellen vermeiden. Verwenden Sie zum Anzeigen der Schritte von Abfrageplänen die Systemkatalogsicht [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql). 
 
 Beispielsweise ist in der folgenden Abfrage des AdventureWorks-Schemas die Tabelle ` FactInternetSales` eine Tabelle mit Hashverteilung. Die Tabellen `DimDate` und `DimSalesTerritory` sind kleinere Dimensionstabellen. Diese Abfrage gibt den Gesamtumsatz in Nordamerika für das Geschäftsjahr 2004 zurück:
- 
+ 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
 FROM dbo.FactInternetSales s
@@ -139,7 +138,7 @@ Die Neuerstellung erfolgt nicht unmittelbar nach dem Ändern der Daten. Stattdes
 
 ### <a name="use-indexes-conservatively"></a>Verwenden Sie Indizes zurückhaltend
 Für replizierte Tabellen gelten Standardindizierungsverfahren. SQL Data Warehouse erstellt während der Neuerstellung jeden replizierten Tabellenindex neu. Verwenden Sie Indizes nur, wenn der Leistungsgewinn die Kosten für die Neuerstellung der Indizes überwiegt.  
- 
+ 
 ### <a name="batch-data-loads"></a>Fassen Sie Ladevorgänge in Batches zusammen
 Versuchen Sie beim Laden von Daten in replizierte Tabellen Neuerstellungen zu minimieren, indem Sie die Ladevorgänge in Batches zusammenfassen. Führen Sie alle in Batches zusammengefassten Ladevorgänge aus, bevor die SELECT-Anweisungen ausgeführt werden.
 
@@ -168,23 +167,23 @@ Um einheitliche Abfrageausführungszeiten sicherzustellen, erwägen Sie, nach je
 
 In dieser Abfrage wird die dynamische Verwaltungssicht [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) verwendet, um die replizierten Tabellen aufzulisten, die geändert, jedoch nicht neu erstellt wurden.
 
-```sql 
+```sql 
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
-    ON c.object_id = t.object_id 
-  JOIN sys.pdw_table_distribution_properties p 
-    ON p.object_id = t.object_id 
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
+    ON c.object_id = t.object_id 
+  JOIN sys.pdw_table_distribution_properties p 
+    ON p.object_id = t.object_id 
   WHERE c.[state] = 'NotReady'
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
- 
+ 
 Um eine Neuerstellung auszulösen, führen Sie für jede Tabelle in der obigen Ausgabe die folgende Anweisung aus. 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
- 
+ 
 ## <a name="next-steps"></a>Nächste Schritte 
 Verwenden Sie zum Erstellen einer replizierten Tabelle eine dieser Anweisungen:
 

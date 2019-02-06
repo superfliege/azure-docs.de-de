@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465172"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462340"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Momentaufnahmen, um Ihr Data Warehouse mithilfe eines vorherigen Wiederherstellungspunkts in der primären Region wiederherzustellen oder zu kopieren. Mithilfe von georedundanten Data Warehouse-Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
@@ -73,7 +73,7 @@ Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse Gen1 ist,
 
 
 ## <a name="backup-and-restore-costs"></a>Kosten für Sicherung und Wiederherstellung
-Beachten Sie, dass die Azure-Rechnung einen Eintrag für Storage und einen Eintrag für den Speicher für die Notfallwiederherstellung aufweist. Die Storage-Gebühren sind die Gesamtkosten für das Speichern Ihrer Daten in der primären Region und die von Momentaufnahmen erfassten inkrementellen Änderungen. Eine ausführlichere Erläuterung zur Erstellung von Momentaufnahmen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Die Gebühr für georedundanten Speicher umfasst die Kosten für das Speichern von Geosicherungen.  
+Beachten Sie, dass die Azure-Rechnung einen Eintrag für Storage und einen Eintrag für den Speicher für die Notfallwiederherstellung aufweist. Die Storage-Gebühren sind die Gesamtkosten für das Speichern Ihrer Daten in der primären Region und die von Momentaufnahmen erfassten inkrementellen Änderungen. Eine detailliertere Erläuterung, wie Momentaufnahmen in Rechnung gestellt werden, finden Sie unter [Grundlegendes zur Ermittlung der Gebühren für Momentaufnahmen](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Die Gebühr für georedundanten Speicher umfasst die Kosten für das Speichern von Geosicherungen.  
 
 Die Gesamtkosten für Ihr primäres Data Warehouse und die Speicherung von Momentaufnahmenänderungen für sieben Tage werden auf die nächsten TB aufgerundet. Wenn Ihr Data Warehouse beispielsweise 1,5 TB umfasst und die Momentaufnahmen 100 GB erfassen, werden Ihnen 2 TB Daten zum Azure Storage Premium-Tarif in Rechnung gestellt. 
 

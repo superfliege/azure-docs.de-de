@@ -11,20 +11,22 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 7bf1a3af7705858432b9ff8caf5064b0794568df
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: e7ba8057cd22c5cc1080b4a6d95f17bf76d4acb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602459"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459433"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg (Vorschau)
+
 ![Abfrage über Tabellen in unterschiedlichen Datenbanken hinweg][1]
 
 Vertikal partitionierte Datenbanken verwenden verschiedene Sätze von Tabellen in verschiedenen Datenbanken. Das bedeutet, dass das Schema bei verschiedenen Datenbanken unterschiedlich ist. Beispielsweise befinden sich alle bestandsbezogenen Tabellen in einer Datenbank, während alle Buchhaltungstabellen in einer zweiten Datenbank enthalten sind. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Der Benutzer muss über die Berechtigung ALTER ANY EXTERNAL DATA SOURCE verfügen. Diese Berechtigung ist in der Berechtigung ALTER DATABASE enthalten.
 * ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, um auf die zu Grunde liegende Datenquelle zu verweisen.
 
@@ -40,6 +42,7 @@ Vertikal partitionierte Datenbanken verwenden verschiedene Sätze von Tabellen i
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>Erstellen des Datenbankhauptschlüssels und der Anmeldeinformationen
+
 Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung mit Ihren Remotedatenbanken verwendet.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
@@ -52,6 +55,7 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
 >
 
 ## <a name="create-external-data-sources"></a>Erstellen externer Datenquellen
+
 Syntax:
 
     <External_Data_Source> ::=
@@ -67,6 +71,7 @@ Syntax:
 >
 
 ### <a name="example"></a>Beispiel
+
 Das folgende Beispiel veranschaulicht die Verwendung der CREATE-Anweisung für externe Datenquellen. 
 
     CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
@@ -83,6 +88,7 @@ So rufen Sie die Liste der aktuellen externen Datenquellen ab
     select * from sys.external_data_sources; 
 
 ### <a name="external-tables"></a>Externe Tabellen
+
 Syntax:
 
     CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
@@ -96,6 +102,8 @@ Syntax:
       [ OBJECT_NAME = N'nonescaped_object_name',] 
 
 ### <a name="example"></a>Beispiel
+
+```sql
     CREATE EXTERNAL TABLE [dbo].[customer]( 
         [c_id] int NOT NULL, 
         [c_firstname] nvarchar(256) NULL, 
@@ -109,16 +117,18 @@ Syntax:
     ( 
            DATA_SOURCE = RemoteReferenceData 
     ); 
+```
 
 Das folgende Beispiel zeigt, wie Sie die Liste der externen Tabellen aus der aktuellen Datenbank abrufen: 
 
     select * from sys.external_tables; 
 
 ### <a name="remarks"></a>Anmerkungen
+
 Die Abfrage für elastische Datenbanken erweitert die vorhandene externe Tabellensyntax zum Definieren von externen Tabellen, die externe Datenquellen vom Typ RDBMS verwenden. Eine externe Tabellendefinition für die vertikale Partitionierung behandelt die folgenden Aspekte: 
 
 * **Schema:** In der DDL für externe Tabellen ist ein Schema definiert, das Ihre Abfragen verwenden können. Das in Ihrer Definition für externe Tabellen angegebene Schema muss mit dem Schema der Tabellen in der Remotedatenbank übereinstimmen, in der die eigentlichen Daten gespeichert werden. 
-* **Remotedatenbankverweis:** Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt den logischen Servernamen und Datenbanknamen der Remotedatenbank an, in der die eigentlichen Tabellendaten gespeichert sind. 
+* **Remotedatenbankverweis:** Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt den Namen des SQL-Datenbankservers und den Datenbanknamen der Remotedatenbank an, in der die eigentlichen Tabellendaten gespeichert sind. 
 
 Wenn Sie eine externe Datenquelle gemäß der Beschreibung im vorherigen Abschnitt verwenden, lautet die Syntax zum Erstellen externer Tabellen wie folgt: 
 
@@ -133,11 +143,14 @@ Die folgende DDL-Anweisung löscht eine vorhandene Definition für eine externe 
 **Berechtigungen für CREATE/DROP EXTERNAL TABLE:** Berechtigungen vom Typ ALTER ANY EXTERNAL DATA SOURCE sind für die DDL für externe Tabellen erforderlich, die auch für den Verweis auf die zugrunde liegende Datenquelle benötigt wird.  
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
+
 Benutzer mit Zugriff auf die externe Tabelle erhalten automatisch Zugriff auf die zugrunde liegenden Remotetabellen gemäß den Anmeldeinformationen, die in der externen Datenquellendefinition angegeben sind. Sie müssen den Zugriff auf die externe Tabelle sorgfältig verwalten, um eine unerwünschte Erhöhung von Berechtigungen über die Anmeldeinformationen für die externe Datenquelle zu vermeiden. Herkömmliche SQL-Berechtigungen können zum Gewähren (GRANT) oder Widerrufen (REVOKE) des Zugriffs auf eine externe Tabelle wie bei einer normalen Tabelle verwendet werden.  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>Beispiel: Abfragen von vertikal partitionierten Datenbanken
+
 Die folgende Abfrage führt eine Dreiwegeverknüpfung zwischen den zwei lokalen Tabellen für Aufträge und Auftragspositionen und der Remotetabelle für Kunden aus. Hier sehen Sie ein Beispiel für den Verweisdatenanwendungsfall für die Abfrage elastischer Datenbanken: 
 
+```sql
     SELECT      
      c_id as customer,
      c_lastname as customer_name,
@@ -151,9 +164,10 @@ Die folgende Abfrage führt eine Dreiwegeverknüpfung zwischen den zwei lokalen 
     JOIN  order_line 
     ON o_id = ol_o_id and o_c_id = ol_c_id
     WHERE c_id = 100
-
+```
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute_remote
+
 Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Remotedatenbank bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in der Remotedatenbank auszuführen. Hierfür werden die folgenden Parameter verwendet: 
 
 * Datenquellenname (nvarchar): Name der externen Datenquelle vom Typ RDBMS. 
@@ -165,16 +179,18 @@ Die Prozedur „sp\_execute\_remote“ verwendet die externe Datenquelle, die in
 
 Beispiel: 
 
+```sql
     EXEC sp_execute_remote
         N'MyExtSrc',
         N'select count(w_id) as foo from warehouse' 
-
-
+```
 
 ## <a name="connectivity-for-tools"></a>Konnektivität für Tools
+
 Sie können herkömmliche SQL Server-Verbindungszeichenfolgen verwenden, um Ihre BI- und Datenintegrationstools mit Datenbanken auf dem SQL-Datenbankserver zu verbinden, für die die Abfrage für elastische Datenbanken aktiviert ist und für die externe Tabellen definiert sind. Stellen Sie sicher, dass SQL Server als Datenquelle für das Tool unterstützt wird. Verweisen Sie dann auf die elastische Abfragedatenbank und die externen Tabellen wie auf jede andere SQL Server-Datenbank, zu der Sie mit dem Tool eine Verbindung herstellen würden. 
 
 ## <a name="best-practices"></a>Bewährte Methoden
+
 * Stellen Sie sicher, dass die Endpunktdatenbank für elastische Abfragen Zugriff auf die Remotedatenbank hat, indem Sie den Zugriff für Azure-Dienste in der Firewallkonfiguration für SQL-Datenbanken aktivieren. Stellen Sie darüber hinaus sicher, dass mit den in der externen Datenquellendefinition angegebenen Anmeldeinformationen die Anmeldung bei der Remotedatenbank möglich ist und für die Anmeldeinformationen Berechtigungen zum Zugriff auf die Remotetabelle festgelegt wurden.  
 * Eine Abfrage für elastische Datenbanken funktioniert am besten für Abfragen, in denen der größte Teil der Berechnung in den Remotedatenbanken erfolgt. In der Regel erhalten Sie optimale Abfrageleistung mit benutzerdefinierten Filterprädikaten, die in den Remotedatenbanken oder Verknüpfungen ausgewertet werden können, die vollständig in der Remotedatenbank ausgeführt werden können. Für andere Abfragemuster müssen möglicherweise große Mengen von Daten aus der Remotedatenbank geladen werden, wodurch Leistungseinbußen auftreten. 
 

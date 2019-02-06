@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: d26ae755b658ce39df04788b7edeee6da7e20a47
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288091"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463394"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Neuerungen in Azure SQL Data Warehouse Mai 2018 
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im Mai 2018 eingeführt wurden. 
@@ -26,7 +26,7 @@ Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informie
 Sehen Sie sich hierzu auch die Ankündigung im Blog [Turbocharge cloud analytics with Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) (in englischer Sprache) von Rohan Kumar an, Corporate Vice President, Azure Data.
 
 ## <a name="auto-statistics"></a>Automatische Statistik
-Statistiken sind ein entscheidender Faktor bei der Optimierung der Abfrageplangenerierung in modernen kostenbasierten Optimierern wie z.B. der Engine in SQL Data Warehouse. Wenn alle Abfragen im Voraus bekannt sind, ist das Bestimmen der zu erstellenden Statistikobjekte eine leicht zu bewältigende Aufgabe. Wenn das System aber Ad-hoc-Abfragen und zufällige Abfragen verarbeiten muss – dies ist für Data Warehousing-Workloads typisch –, können Systemadministratoren möglicherweise nur schwer vorhersagen, welche Statistiken erstellt werden müssen. Dies führt dann zu suboptimalen Abfrageausführungsplänen und längeren Antwortzeiten für Abfragen. Eine Möglichkeit zur Abmilderung dieses Problems besteht darin, im Voraus Statistikobjekte für alle Tabellenspalten zu erstellen. Diese Vorgehensweise ist jedoch mit Einbußen verbunden, weil Statistikobjekte während des Ladevorgangs der Tabellen beibehalten werden müssen und zu längeren Ladezeiten führen.
+Statistiken sind ein entscheidender Faktor bei der Optimierung der Abfrageplangenerierung in modernen kostenbasierten Optimierern wie z. B. der Engine in SQL Data Warehouse. Wenn alle Abfragen im Voraus bekannt sind, ist das Bestimmen der zu erstellenden Statistikobjekte eine leicht zu bewältigende Aufgabe. Wenn das System aber Ad-hoc-Abfragen und zufällige Abfragen verarbeiten muss – dies ist für Data Warehousing-Workloads typisch –, können Systemadministratoren möglicherweise nur schwer vorhersagen, welche Statistiken erstellt werden müssen. Dies führt dann zu suboptimalen Abfrageausführungsplänen und längeren Antwortzeiten für Abfragen. Eine Möglichkeit zur Abmilderung dieses Problems besteht darin, im Voraus Statistikobjekte für alle Tabellenspalten zu erstellen. Diese Vorgehensweise ist jedoch mit Einbußen verbunden, weil Statistikobjekte während des Ladevorgangs der Tabellen beibehalten werden müssen und zu längeren Ladezeiten führen.
 
 SQL Data Warehouse unterstützt ab sofort die automatische Erstellung von Statistikobjekten und bietet dadurch eine höhere Flexibilität, Produktivität und Benutzerfreundlichkeit für Systemadministratoren und Entwickler. Gleichzeitig wird sichergestellt, dass das System weiterhin qualitativ hochwertige Ausführungspläne und beste Antwortzeiten liefert.
 

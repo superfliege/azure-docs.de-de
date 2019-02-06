@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 492bdd30a656a37196cf4d27a2510dbc3a79807d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320360"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463564"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Neuerungen in Azure SQL Data Warehouse August 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im August 2018 eingeführt wurden.
@@ -32,7 +32,7 @@ Sie können jede Kategorie genauer untersuchen, um die Empfehlungen für die jew
 
 | Titel | BESCHREIBUNG |
 |:---|:---|
-| **Potential Query failures when the split count exceeds max limit** (Potenzielle Abfragefehler, wenn die Anzahl der Teilungen das maximale Limit überschreitet) |Wenn die Obergrenze von 1 Million für Dateiteilungen überschritten wird, führte ein Ausnahmefehler dazu, dass die SQL-Engine gesichert wurde und bei allen Abfragen Fehler auftraten. Durch diese Fehlerbehebung wird das Problem behoben, indem der Ausnahmefehler richtig verarbeitet und eine Fehlermeldung zurückgegeben wird, ohne dass bei den Abfragen Fehler auftreten. |
+| **Potential Query failures when the split count exceeds max limit** (Potenzielle Abfragefehler, wenn die Anzahl der Teilungen das maximale Limit überschreitet) |Wenn die Obergrenze von 1 Million für Dateiteilungen überschritten wird, führte ein Ausnahmefehler dazu, dass die SQL-Engine gesichert wurde und bei allen Abfragen Fehler auftraten. Durch diese Fehlerbehebung wurde das Problem behoben, indem der Ausnahmefehler richtig verarbeitet und eine Fehlermeldung zurückgegeben wird, ohne dass bei den Abfragen Fehler auftreten. |
 | **Increased ExternalMoveReadersPerNode default value to improve load perfomance** (Erhöhter ExternalMoveReadersPerNode-Standardwert zur Verbesserung der Ladeleistung) |Dieses Problem wurde dadurch verursacht, dass die Einstellung der ExternalMoveReadersPerNode-Eigenschaft nicht mit der Service Fabric-Einstellung synchronisiert wurde. Diese Regression führte zu einer beeinträchtigten Gen2-Ladeleistung. Durch die Fehlerbehebung liegt die Gen2-Ladeleistung innerhalb der optimierten Entwurfsparameter.|
 
 

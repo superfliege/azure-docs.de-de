@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044568"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462799"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
 Azure SQL-Datenbank, Pools für elastische Datenbanken, die verwaltete Instanz und Datenbanken in der verwalteten Instanz können Metriken und Diagnoseprotokolle zur einfacheren Leistungsüberwachung streamen. Sie können eine Datenbank dazu konfigurieren, Informationen zum Ressourcenverbrauch, zu Workern und Sitzungen sowie zur Konnektivität in eine der folgenden Azure-Ressourcen zu übertragen:
 
-- **Azure SQL-Analyse**: Ermöglicht die intelligente Überwachung Ihrer Azure-Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung.
+- **Azure SQL-Analyse**: Ermöglicht die intelligente Überwachung Ihrer Azure SQL-Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung.
 - **Azure Event Hubs**: Ermöglicht die Integration von SQL-Datenbank-Telemetrie in Ihre benutzerdefinierten Überwachungslösungen oder Hotpipelines.
 - **Azure Storage**: Ermöglicht zu äußerst kostengünstigen Preisen die Archivierung großer Mengen von Telemetriedaten.
 
@@ -68,7 +68,7 @@ Sie können Azure SQL-Datenbanken und Datenbanken in der verwalteten Instanz zur
 | [AllMetrics](sql-database-metrics-diag-logging.md#all-metrics): Enthält DTU-/CPU-Prozentsatz, DTU/CPU-Limit, gelesene physische Daten in Prozent, Protokollschreibvorgänge in Prozent, Verbindungen mit dem Status „Erfolgreich“, „Fehler“ und „Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent. | JA | Nein  |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zur Laufzeitstatistik der Abfrage, z. B. CPU-Nutzung und Abfragedauer. | JA | JA |
 | [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zur Wartestatistik der Abfrage (worauf Ihre Abfragen gewartet haben), z. B. CPU, PROTOKOLL und SPERRUNG. | JA | JA |
-| [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu SQL-Fehlern in der Datenbank. | JA | Nein  |
+| [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu SQL-Fehlern in der Datenbank. | JA | JA |
 | [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Enthält Informationen zur Wartezeit der Datenbank für die verschiedenen Wartezeittypen. | JA | Nein  |
 | [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): Enthält Informationen zu Zeitlimits für die Datenbank. | JA | Nein  |
 | [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen für die Datenbank. | JA | Nein  |
@@ -337,7 +337,7 @@ Nachdem die ausgewählten Daten an Event Hubs gestreamt wurden, sind Sie der Ein
 
 Sie können gestreamte Metriken in Event Hubs für folgende Zwecke verwenden:
 
-- **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe.
+- **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und Power BI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von Power BI als Ausgabe.
 
 - **Streamen von Protokollen in Protokollierungs- und Telemetriedatenströme von Drittanbietern**. Mithilfe des Event Hubs-Streamings können Sie Ihre Metriken und Diagnoseprotokolle in verschiedene Überwachungs- und Protokollanalyselösungen von Drittanbietern übertragen.
 
@@ -414,7 +414,7 @@ In der folgenden Tabelle finden Sie Details zu den Protokollen für die verwalte
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure|
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: ResourceUsageStats |
 |Ressource|Name der Ressource |
@@ -443,7 +443,7 @@ In den folgenden Tabellen finden Sie Details zu Protokollen für Azure SQL-Daten
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics |
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent |
@@ -494,7 +494,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: QueryStoreWaitStatistics |
 |NameVorgang|Name des Vorgangs. Immer: QueryStoreWaitStatisticsEvent |
@@ -532,7 +532,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQ |
 |Category (Kategorie)|Name der Kategorie Immer: Errors |
 |NameVorgang|Name des Vorgangs. Immer: ErrorEvent |
@@ -561,7 +561,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: DatabaseWaitStatistics |
 |NameVorgang|Name des Vorgangs. Immer: DatabaseWaitStatisticsEvent |
@@ -590,7 +590,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: Zeitlimits |
 |NameVorgang|Name des Vorgangs. Immer: TimeoutEvent |
@@ -613,7 +613,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: Blöcke |
 |NameVorgang|Name des Vorgangs. Immer: BlockEvent |
@@ -637,7 +637,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC] |Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: Deadlocks |
 |NameVorgang|Name des Vorgangs. Immer: DeadlockEvent |
@@ -658,7 +658,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Typ|Immer: AzureDiagnostics |
+|Type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: AutomaticTuning |
 |Ressource|Name der Ressource |

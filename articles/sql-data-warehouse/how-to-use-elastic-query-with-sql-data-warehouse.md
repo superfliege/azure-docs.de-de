@@ -6,16 +6,16 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a45d00559a84c178ab760acf8616f97ce7bb57c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718297"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466284"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Bewährte Methoden zur Verwendung von elastischen Abfragen in Azure SQL-Datenbank zum Zugreifen auf Daten in Azure SQL Data Warehouse
 Hier werden die bewährten Methoden zur Verwendung von elastischen Abfragen zum Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank beschrieben. 
@@ -131,7 +131,7 @@ A: Ja. SQL-Datenbanken in einem Pool für elastische Datenbanken können elastis
 
 F: Gibt es eine Obergrenze für die Anzahl der Datenbanken, die ich für elastische Abfragen verwenden kann?
 
-A: Es gibt keine feste Obergrenze für die Anzahl der Datenbanken, die für elastische Abfragen verwendet werden können? Allerdings zählt jede elastische Abfrage (Abfragen, die SQL Data Warehouse treffen) zu den normalen Parallelitätsgrenzwerten.
+A: Es gibt keine feste Obergrenze für die Anzahl der Datenbanken, die für elastische Abfragen verwendet werden können. Allerdings zählt jede elastische Abfrage (Abfragen, die SQL Data Warehouse treffen) zu den normalen Parallelitätsgrenzwerten.
 
 F: Gibt es DTU-Grenzwerte für elastische Abfragen?
 
@@ -139,7 +139,7 @@ A: DTU-Grenzwerte werden für elastische Abfragen nicht anders vorgegeben. Die S
 
 F: Kann ich bei elastischen Abfragen die Sicherheit auf Zeilenebene bzw. dynamische Datenmaskierung (DDM) anwenden?
 
-A: Ja, Kunden, die erweiterte Sicherheitsfunktionen bei der SQL-Datenbank verwenden möchten, müssen hierfür die Daten lediglich zuerst in die SQL-Datenbank verschieben und in dieser speichern. Die Sicherheit auf Zeilenebene und DDM können derzeit nicht auf über externe Tabellen abgefragte Daten angewendet werden. 
+A: Ja. Kunden, die erweiterte Sicherheitsfunktionen bei der SQL-Datenbank verwenden möchten, müssen hierfür die Daten lediglich zuerst in die SQL-Datenbank verschieben und darin speichern. Die Sicherheit auf Zeilenebene und DDM können derzeit nicht auf über externe Tabellen abgefragte Daten angewendet werden. 
 
 F: Kann ich Daten von meiner SQL-Datenbankinstanz in die Data Warehouse-Instanz schreiben?
 

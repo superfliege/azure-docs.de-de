@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 593388c143c31bb4736aa317522ed4c52a8a5296
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388335"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469111"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -34,7 +34,7 @@ In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQ
 >
 > In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein:
 > - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden.
-> - Die automatisierte Bereitstellungslogik erstellt einen logischen Server unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist.
+> - Die automatisierte Bereitstellungslogik erstellt einen SQL-Datenbankserver unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist.
 >
 > Wenn Dienstendpunktverbindungen mit Azure SQL-Server nicht hergestellt werden konnten und Sie vermuten, dass Sie von dieser Änderung betroffen sind, stellen Sie sicher, dass der Verbindungstyp explizit auf `Redirect` festgelegt ist. In diesem Fall müssen Sie VM-Firewallregeln und Netzwerksicherheitsgruppen (NSG) für alle Azure-IP-Adressen in der Region öffnen, die zum SQL-[Diensttag](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 12000 gehören. Wenn dies für Sie keine eine Option ist, schalten Sie den Server explizit auf `Proxy` um.
 > [!NOTE]

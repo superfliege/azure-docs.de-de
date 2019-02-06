@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: e63dd0a6feaedf95bb4845a3c5eded89e6585e36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318842"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463496"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Neuerungen in Azure SQL Data Warehouse Juli 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im Juli 2018 eingeführt wurden.
@@ -23,12 +23,12 @@ Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informie
 ## <a name="lightning-fast-query-performance"></a>Blitzschnelle Abfragen
 [Azure SQL Data Warehouse](https://aka.ms/sqldw) erreicht mit der Einführung des unmittelbaren Datenzugriffs, durch den Vorgänge mit unsortierten Daten verbessert werden, neue Leistungsbenchmarks. Der unmittelbare Datenzugriff verringert den Aufwand für Datenverschiebungsvorgänge, indem direkte native Datenvorgänge von SQL Server zu SQL Server durchgeführt werden. Durch die direkte Integration mit dem SQL Server-Modul für Datenverschiebungen ist SQL Data Warehouse nun **um 67 % schneller als Amazon Redshift**. Zugrunde liegt diesem Wert eine Workload nach dem anerkannten Industriestandard [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/).
 
-![Azure SQL Data Warehouse ist schneller und preisgünstiger als Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
-<sub>Quelle: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) (Benchmark für Data Warehouse in der Cloud)</sub>
+![Azure SQL Data Warehouse ist schneller und kostengünstiger als Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
+<sub>Quelle: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 Neben der Laufzeitleistung wurde im Bericht von [Gigaom Research](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) auch das Preis-Leistungs-Verhältnis gemessen, indem die Kosten bestimmter Workloads in US-Dollar quantifiziert wurden. SQL Data Warehouse war für Workloads von 30 TB **um mindestens 23 % kostengünstiger** als Redshift. Mit der Möglichkeit von SQL Data Warehouse zum elastischen Skalieren der Computeleistung und zum Anhalten und Fortsetzen von Workloads bezahlen Kunden nur, wenn der Dienst verwendet wird, und senken ihre Kosten somit weiterhin.
-![Azure SQL Data Warehouse ist schneller und preisgünstiger als Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
-<sub>Quelle: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) (Benchmark für Data Warehouse in der Cloud)</sub>
+![Azure SQL Data Warehouse ist schneller und kostengünstiger als Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
+<sub>Quelle: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 ### <a name="query-concurrency"></a>Abfrageparallelität
 SQL Data Warehouse stellt auch sicher, dass die Daten in der gesamten Organisation zugänglich sind. Microsoft hat den Dienst verbessert, sodass 128 Abfragen gleichzeitig unterstützt werden. Dadurch können mehr Benutzer dieselbe Datenbank abfragen, ohne von anderen Anforderungen blockiert zu werden. Im Vergleich dazu ist bei Amazon Redshift die maximale Anzahl gleichzeitiger Abfragen auf 50 beschränkt und dadurch der Datenzugriff innerhalb der Organisation begrenzt.

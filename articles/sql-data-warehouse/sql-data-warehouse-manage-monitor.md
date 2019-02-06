@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe989a1693d73dbbea7ed0e3e91ed7aaf6fc37c4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301081"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466981"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
 In diesem Artikel wird beschrieben, wie Sie dynamische Verwaltungssichten (DMVs) verwenden, um Ihre Workload zu überwachen. Dazu gehört auch die Untersuchung der Abfrageausführung in Azure SQL Data Warehouse.
@@ -45,7 +45,7 @@ Alle in SQL Data Warehouse ausgeführten Abfragen werden in [sys.dm_pdw_exec_req
 
 Führen Sie folgende Schritte aus, um Abfrageausführungspläne und -zeiten für eine bestimmte Abfrage zu untersuchen.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Schritt 1: Ermitteln der Abfrage, die Sie untersuchen möchten
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>SCHRITT 1: Ermitteln der Abfrage, die Sie untersuchen möchten
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -80,7 +80,7 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>Schritt 2: Untersuchen des Abfrageplans
+### <a name="step-2-investigate-the-query-plan"></a>SCHRITT 2: Untersuchen des Abfrageplans
 Rufen Sie mit der Anforderungs-ID den DSQL-Plan (Distributed SQL, verteiltes SQL) der Abfrage aus [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps] ab.
 
 ```sql
@@ -96,10 +96,10 @@ Wenn ein DSQL-Plan mehr Zeit in Anspruch nimmt als erwartet, kann die Ursache ei
 
 Um weitere Informationen zu einem Einzelschritt zu erhalten, beachten Sie die Spalte *operation_type* des Abfrageschritts mit langer Laufzeit, und beachten Sie den **Schrittindex**:
 
-* Fahren Sie für **SQL-Vorgänge**mit Schritt 3a fort: OnOperation, RemoteOperation, ReturnOperation.
-* Fahren Sie für **Datenverschiebungsvorgänge**mit Schritt 3b fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Fahren Sie für **SQL-Vorgänge** mit Schritt 3a fort: OnOperation, RemoteOperation, ReturnOperation.
+* Fahren Sie für **Datenverschiebungsvorgänge** mit Schritt 3b fort: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Schritt 3a: Untersuchen von SQL auf verteilten Datenbanken
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>SCHRITT 3a: Untersuchen von SQL auf den verteilten Datenbanken
 Verwenden Sie die Anforderungs-ID und den Schrittindex, um Informationen aus [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] abzurufen. Das Ergebnis enthält Informationen zur Ausführung des Abfrageschritts in allen verteilten Datenbanken.
 
 ```sql
@@ -119,7 +119,7 @@ Wenn der Abfrageschritt ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIO
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Schritt 3 b: Untersuchen der Datenverschiebung auf den verteilten Datenbanken
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>SCHRITT 3 b: Untersuchen der Datenverschiebung auf den verteilten Datenbanken
 Verwenden Sie die Anforderungs-ID und den Schrittindex, um Informationen zu einem Datenverschiebungsschritt, der für jede Verteilung ausgeführt wird, aus [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] abzurufen.
 
 ```sql

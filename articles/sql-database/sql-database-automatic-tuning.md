@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a0b7d3f059001aec28dd52c9666ea7b5af3c6f95
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b13becf8530f478a5e58b46a1b422593051c95cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603792"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478167"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
@@ -65,6 +65,7 @@ Im folgenden Video können Sie sich einen Überblick über die Funktionsweise de
 ## <a name="automatic-tuning-options"></a>Optionen für die automatische Optimierung
 
 In Azure SQL-Datenbank stehen folgende Optionen für die automatische Optimierung zur Verfügung:
+
  1. **CREATE INDEX:** identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde.
  2. **DROP INDEX**: identifiziert jeden Tag redundante und doppelte Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass die Option zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden.
  3. **FORCE LAST GOOD PLAN:** identifiziert SQL-Abfragen mit einem Ausführungsplan, der langsamer als der vorherige gute Plan ist, und Abfragen, die den letzten bekannten guten Plan anstelle des zurückgestellten Plans verwenden.
@@ -73,7 +74,7 @@ Die automatische Optimierung identifiziert Empfehlungen von **CREATE INDEX**, **
 
 Sie können die Optimierungsempfehlungen entweder manuell über das Portal anwenden oder es der automatischen Optimierung überlassen, diese Empfehlungen autonom für Sie anzuwenden. Wenn Sie es dem System überlassen, Optimierungsempfehlungen autonom anzuwenden, profitieren Sie davon, dass das System automatisch überprüft, ob eine Empfehlung die Workloadleistung tatsächlich positiv beeinflusst. Sollte keine erhebliche Leistungsverbesserung erkannt werden, macht das System die Optimierungsempfehlung automatisch rückgängig. Beachten Sie, dass bei Abfragen, auf die sich Optimierungsempfehlungen auswirken und die nicht häufig ausgeführt werden, die Überprüfungsphase bis zu 72 Stunden dauern kann. Wenn Sie Optimierungsempfehlungen manuell anwenden, sind die Mechanismen für die automatische Leistungsüberprüfung und Umkehrung nicht verfügbar.
 
-Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf einem logischen Server konfiguriert und auf jede Datenbank angewandt werden, die Einstellungen von diesem Server erbt. Logische Server können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. In den Azure-Standardwerten sind derzeit FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
+Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf SQL-Datenbankservern konfiguriert und auf jede Datenbank angewandt werden, die Einstellungen von diesem Server erbt. SQL-Datenbankserver können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. In den Azure-Standardwerten sind derzeit FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
 
 Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem übergeordneten Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
 

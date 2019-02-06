@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.date: 01/25/2019
+ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259136"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459484"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -189,9 +189,9 @@ Navigieren Sie (auf dem Server *tenants1-dpt-\<Benutzer\>*) zu **Pool2**, um den
 
 Es sollte nun angezeigt werden, dass der Ressourcenverbrauch in *Pool1* gesunken ist und dass in *Pool2* nun eine ähnliche Auslastung vorliegt.
 
-## <a name="manage-performance-of-a-single-database"></a>Verwalten der Leistung einer einzelnen Datenbank
+## <a name="manage-performance-of-an-individual-database"></a>Verwalten der Leistung einer einzelnen Datenbank
 
-Wenn in einer Einzeldatenbank in einem Pool eine anhaltend hohe Auslastung vorliegt, kann dies, je nach der Konfiguration des Ressourcenpools, die Ressourcen im Pool dominieren und Auswirkungen auf andere Datenbanken haben. Wenn die Aktivität voraussichtlich für einige Zeit fortgesetzt wird, kann die Datenbank vorübergehend aus dem Pool verschoben werden. Dadurch kann die Datenbank zusätzlich benötigte Ressourcen aufnehmen und diese von anderen Datenbanken isolieren.
+Wenn in einer einzelnen Datenbank in einem Pool eine anhaltend hohe Auslastung vorliegt, kann dies – je nach der Konfiguration des Pools – die Ressourcen darin dominieren und Auswirkungen auf andere Datenbanken haben. Wenn die Aktivität voraussichtlich für einige Zeit fortgesetzt wird, kann die Datenbank vorübergehend aus dem Pool verschoben werden. Dadurch kann die Datenbank zusätzlich benötigte Ressourcen aufnehmen und diese von anderen Datenbanken isolieren.
 
 In dieser Übung werden die Auswirkungen simuliert, wenn der Ticketverkauf für ein beliebtes Konzert in der Contoso Concert Hall zu einer hohen Auslastung führt.
 

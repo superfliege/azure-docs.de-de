@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240987"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476246"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Mandantenübergreifende Berichte mithilfe verteilter Abfragen
 
@@ -93,7 +93,7 @@ So können Sie die Definition der Ansicht *Venues* untersuchen:
 
 1. Erweitern Sie im **Objekt-Explorer** die Option **contosoconcerthall** > **Sichten**:
 
-   ![Sichten](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![views](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Klicken Sie mit der rechten Maustaste auf **dbo.Venues**.
 3. Wählen Sie **Skript für Sicht als** > **CREATE in** > **Neues Abfrage-Editor-Fenster**.
@@ -128,7 +128,7 @@ In dieser Übung wird ein Schema (die externe Datenquelle und die externen Tabel
 
     ![erstellen einer externen datenquelle](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   Die externen Tabellen, die auf die globalen Sichten aus dem vorherigen Abschnitt verweisen, und die mit **DISTRIBUTION = SHARDED(VenueId)** definiert werden. Da jede *VenueId* auf eine einzelne Datenbank verweist, wird so die Leistung in vielen Szenarios verbessert, wie im nächsten Abschnitt gezeigt.
+   Die externen Tabellen, die auf die globalen Sichten aus dem vorherigen Abschnitt verweisen, und die mit **DISTRIBUTION = SHARDED(VenueId)** definiert werden. Da jeder *VenueId*-Wert auf eine einzelne Datenbank verweist, wird so die Leistung in vielen Szenarios verbessert, wie im nächsten Abschnitt gezeigt.
 
     ![erstellen externer tabellen](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 

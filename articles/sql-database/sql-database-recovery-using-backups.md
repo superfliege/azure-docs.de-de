@@ -11,24 +11,24 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 301b0179c8222bfdff3b07f7962a74a4cc83b8f6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.date: 01/25/2019
+ms.openlocfilehash: 8d2cac7635b9d97561b3cebf517c95855407cbe3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432284"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462782"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
 Standardmäßig werden Sicherungen von SQL-Datenbank im georeplizierten Blobspeicher (RA-GRS) gespeichert. Die folgenden Optionen stehen für die Datenbankwiederherstellung mithilfe [automatisierter Datenbanksicherungen](sql-database-automated-backups.md) zur Verfügung:
 
-- Erstellen einer neuen Datenbank auf dem gleichen logischen Server, die auf den Zustand zu einem angegebenen Zeitpunkt innerhalb der Aufbewahrungsdauer wiederhergestellt wird.
-- Erstellen einer Datenbank auf dem gleichen logischen Server, die auf den Zustand zum Zeitpunkt des Löschens einer gelöschten Datenbank wiederhergestellt wird.
-- Erstellen einer neuen Datenbank auf einem beliebigen logischen Server in der gleichen Region, die auf den Zustand zum Zeitpunkt der neuesten Sicherung wiederhergestellt wird.
-- Erstellen einer neuen Datenbank auf einem beliebigen logischen Server in einer beliebigen anderen Region, die auf den Zustand zum Zeitpunkt der neuesten replizierten Sicherung wiederhergestellt wird.
+- Erstellen einer neuen Datenbank auf demselben SQL-Datenbankserver, die auf den Zustand zu einem angegebenen Zeitpunkt innerhalb der Aufbewahrungsdauer wiederhergestellt wird.
+- Erstellen einer Datenbank auf demselben SQL-Datenbankserver, die auf den Zustand zum Zeitpunkt des Löschens einer gelöschten Datenbank wiederhergestellt wird.
+- Erstellen einer neuen Datenbank auf einem beliebigen SQL-Datenbankserver in derselben Region, die auf den Zustand zum Zeitpunkt der neuesten Sicherung wiederhergestellt wird.
+- Erstellen einer neuen Datenbank auf einem beliebigen SQL-Datenbankserver in einer beliebigen anderen Region, die auf den Zustand zum Zeitpunkt der neuesten replizierten Sicherung wiederhergestellt wird.
 
-Wenn Sie die [langfristige Aufbewahrung von Sicherungen](sql-database-long-term-retention.md) konfiguriert haben, können Sie auch eine neue Datenbank aus jeder LTR-Sicherung auf einem beliebigen logischen Server in einer beliebigen Region erstellen.
+Wenn Sie die [langfristige Aufbewahrung von Sicherungen](sql-database-long-term-retention.md) konfiguriert haben, können Sie auch eine neue Datenbank aus jeder LTR-Sicherung auf einem beliebigen SQL-Datenbankserver in einer beliebigen Region erstellen.
 
 > [!IMPORTANT]
 > Sie können eine vorhandene Datenbank während der Wiederherstellung nicht überschreiben.
@@ -71,7 +71,7 @@ Es gibt keine integrierte Funktion für Massenwiederherstellungen. Das Skript [A
 
 ## <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 
-Sie können eine einzelne Datenbank, in einem Pool zusammengefasste Datenbanken und Datenbanken verwalteter Instanzen mit dem Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/databases) zu einem früheren Zeitpunkt als eine neue Datenbank auf dem gleichen Server wiederherstellen. Eine Datenbank kann auf jeder Dienstebene oder Computegröße wiederhergestellt werden. Stellen Sie sicher, dass Sie auf dem Server, auf dem Sie die Datenbank wiederherstellen, über ausreichend Ressourcen verfügen. Sobald der Vorgang abgeschlossen ist, ist die wiederhergestellte Datenbank eine normale, vollständig erreichbare Onlinedatenbank. Die wiederhergestellte Datenbank wird mit normalen Tarifen basierend auf dem Diensttarif und der Computegröße in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
+Sie können eine eigenständige Datenbank, in einem Pool zusammengefasste Datenbank oder Instanzdatenbank mit dem Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/databases) zu einem früheren Zeitpunkt als eine neue Datenbank auf demselben Server wiederherstellen. Eine Datenbank kann auf jeder Dienstebene oder Computegröße wiederhergestellt werden. Stellen Sie sicher, dass Sie auf dem Server, auf dem Sie die Datenbank wiederherstellen, über ausreichend Ressourcen verfügen. Sobald der Vorgang abgeschlossen ist, ist die wiederhergestellte Datenbank eine normale, vollständig erreichbare Onlinedatenbank. Die wiederhergestellte Datenbank wird mit normalen Tarifen basierend auf dem Diensttarif und der Computegröße in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
 
 Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank entweder als Ersatz für die ursprüngliche Datenbank verwenden oder Daten daraus abrufen und die ursprüngliche Datenbank damit aktualisieren.
 
@@ -83,7 +83,7 @@ Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem fr�
 
   Wenn Sie Daten aus der wiederhergestellten Datenbank abrufen möchten, um einen Benutzer- oder Anwendungsfehler zu korrigieren, müssen Sie die erforderlichen Datenwiederherstellungsskripts schreiben und ausführen, um die Daten aus der wiederhergestellten Datenbank zu extrahieren und sie in der ursprünglichen Datenbank wiederherzustellen. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während des Wiederherstellungsvorgangs in der Datenbankliste angezeigt. Wenn Sie diese Datenbank während der Wiederherstellung löschen, wird der Wiederherstellungsvorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, für die die Wiederherstellung nicht abgeschlossen wurde.
 
-Um eine einzelne Datenbank, in einem Pool zusammengefasste Datenbanken und Datenbanken verwalteter Instanzen zu einem bestimmten Zeitpunkt über das Azure-Portal wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie in der Symbolleiste auf **Wiederherstellen**.
+Um eine eigenständige Datenbank, in einem Pool zusammengefasste Datenbank oder Instanzdatenbank zu einem bestimmten Zeitpunkt über das Azure-Portal wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**.
 
 ![Point-in-Time-Wiederherstellung](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -92,7 +92,7 @@ Um eine einzelne Datenbank, in einem Pool zusammengefasste Datenbanken und Daten
 
 ## <a name="deleted-database-restore"></a>Wiederherstellen einer gelöschten Datenbank
 
-Sie können eine gelöschte Datenbank mit dem Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) oder [REST](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) (createMode=Restore) in dem Zustand wiederherstellen, den sie zum Zeitpunkt des Löschens hatte. Die Wiederherstellung erfolgt dabei auf dem gleichen logischen Server. Sie können [mithilfe von PowerShell eine gelöschte Datenbank in einer verwalteten Instanz wiederherstellen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance). Sie können eine gelöschte Datenbank während der Aufbewahrung für einen früheren Zeitpunkt wiederherstellen, indem Sie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) verwenden.
+Sie können eine gelöschte Datenbank mit dem Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) oder [REST](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) (createMode=Restore) in dem Zustand wiederherstellen, den sie zum Zeitpunkt des Löschens hatte. Die Wiederherstellung erfolgt dabei auf demselben SQL-Datenbankserver. Sie können [mithilfe von PowerShell eine gelöschte Datenbank in einer verwalteten Instanz wiederherstellen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance). Sie können eine gelöschte Datenbank während der Aufbewahrung für einen früheren Zeitpunkt wiederherstellen, indem Sie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) verwenden.
 
 > [!TIP]
 > Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschten Datenbank wiederhergestellt wird, finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](scripts/sql-database-restore-database-powershell.md).
@@ -139,7 +139,7 @@ Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über das Az
 
 ### <a name="powershell"></a>PowerShell
 
-- Wie Sie eine einzelne Datenbank oder in einem Pool zusammengefasste Datenbanken wiederherstellen, erfahren Sie unter [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
+- Wie Sie eine eigenständige Datenbank oder in einem Pool zusammengefasste Datenbank wiederherstellen, erfahren Sie unter [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
   | Cmdlet | BESCHREIBUNG |
   | --- | --- |
@@ -155,7 +155,7 @@ Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über das Az
 
 ### <a name="rest-api"></a>REST-API
 
-So stellen Sie eine einzelne Datenbank oder in einem Pool zusammengefasste Datenbanken mithilfe der REST-API wieder her
+So stellen Sie eine eigenständige Datenbank oder in einem Pool zusammengefasste Datenbank mithilfe der REST-API wieder her:
 
 | API | BESCHREIBUNG |
 | --- | --- |
@@ -164,7 +164,7 @@ So stellen Sie eine einzelne Datenbank oder in einem Pool zusammengefasste Daten
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Wie Sie eine einzelne oder in einem Pool zusammengefasste Datenbank mithilfe der Azure CLI wiederherstellen, erfahren Sie unter [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
+Wie Sie eine eigenständige oder in einem Pool zusammengefasste Datenbank mithilfe der Azure CLI wiederherstellen, erfahren Sie unter [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
 
 ## <a name="summary"></a>Zusammenfassung
 

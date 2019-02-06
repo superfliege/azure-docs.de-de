@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 25936fa1156dea4beff6e593646d0468a4687f36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872882"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476178"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Diensttarif „Hyperscale“ (Vorschau) für bis zu 100 TB
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden drei Architekturmodelle verwendet:
+
 - Universell/Standard 
 - Unternehmenskritisch/Premium
 - Hyperscale
@@ -40,7 +41,7 @@ Der Diensttarif „Hyperscale“ in Azure SQL-Datenbank ist der neueste Dienstta
 Der Diensttarif „Hyperscale“ in Azure SQL-Datenbank bietet folgende zusätzliche Funktionen:
 
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
-- Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Compute
+- Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Compute   
 - Schnelle Datenbankwiederherstellungen (basierend auf Dateimomentaufnahmen) in Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
 - Höhere Gesamtleistung aufgrund eines höheren Protokolldurchsatzes und schnellere Transaktionscommits unabhängig von Datenmengen
 - Schnelle horizontale Hochskalierung: Sie können einen oder mehrere schreibgeschützte Knoten zur Abladung Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
@@ -133,9 +134,6 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-> [!IMPORTANT]
-> [Transparent Database Encryption (TDE)](transparent-data-encryption-azure-sql.md) sollte vor dem Ändern einer Nicht-Hyperscale-Datenbank in eine Hyperscale-Datenbank deaktiviert werden.
-
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Herstellen einer Verbindung mit einem schreibgeschützten Replikat einer Hyperscale-Datenbank
 
 Bei Hyperscale-Datenbanken bestimmt das Argument `ApplicationIntent` in der vom Client bereitgestellten Verbindungszeichenfolge, ob eine Verbindung an das Replikat mit Schreibzugriff oder an ein schreibgeschütztes sekundäres Replikat weitergeleitet wird. Wenn `ApplicationIntent` auf `READONLY` festgelegt ist und die Datenbank kein sekundäres Replikat aufweist, wird die Verbindung an das primäre Replikat weitergeleitet und weist standardmäßig das `ReadWrite`-Verhalten auf.
@@ -153,17 +151,18 @@ Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vors
 
 | Problem | BESCHREIBUNG |
 | :---- | :--------- |
-| Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert->  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
+| Im Bereich „Sicherungen verwalten“ für einen SQL-Datenbankserver werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert->  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zum Diensttarif „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
 | Wenn eine Datenbankdatei während der Migration aufgrund einer aktiven Workload anwächst und den Grenzwert von 1 TB pro Datei überschreitet, kann die Migration nicht ausgeführt werden | Gegenmaßnahmen: <br> – Migrieren Sie die Datenbank möglichst zu einem Zeitpunkt, wenn keine Aktualisierungsworkload ausgeführt wird.<br> – Versuchen Sie erneut, die Migration auszuführen. Dies ist erfolgreich, solange der Grenzwert von 1 TB während der Migration nicht überschritten wird.|
 | Verwaltete Instanz wird derzeit nicht unterstützt | Derzeit nicht unterstützt |
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einem anderen Diensttarif migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank von „Hyperscale“ zu einem anderen Diensttarif im Exportieren/Importieren mithilfe einer BACPAC-Datei.|
-| Migration von Datenbanken mit In-Memory-Objekten wird derzeit nicht unterstützt | In-Memory-Objekte müssen gelöscht und als Nicht-In-Memory-Objekte neu erstellt werden, bevor eine Datenbank zum Diensttarif „Hyperscale“ migriert wird.
+| Migration von Datenbanken mit In-Memory-Objekten wird derzeit nicht unterstützt | In-Memory-Objekte müssen gelöscht und als Nicht-In-Memory-Objekte neu erstellt werden, bevor eine Datenbank zum Diensttarif „Hyperscale“ migriert wird.|
+| Datenänderungsverfolgung (Change Data Tracking) wird derzeit nicht unterstützt. | Sie können Datenänderungsverfolgung bei Hyperscale-Datenbanken nicht verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Häufig gestellte Fragen zu diesem Thema finden Sie unter [Häufig gestellte Fragen zu Hyperscale](sql-database-service-tier-hyperscale-faq.md).
 - Informationen zu Diensttarifen finden Sie unter [Diensttarife](sql-database-service-tiers.md).
-- Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
+- Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbankserver](sql-database-resource-limits-database-server.md).
 - Informationen zu Einschränkungen des Kaufmodells für eine Einzeldatenbank finden Sie unter [Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](sql-database-vcore-resource-limits-single-databases.md).
 - Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).

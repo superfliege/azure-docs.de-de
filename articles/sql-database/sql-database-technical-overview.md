@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270007"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469548"
 ---
 # <a name="the-azure-sql-database-service"></a>Der Azure SQL-Datenbank-Dienst
 
@@ -26,8 +26,8 @@ SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azur
 
 Azure SQL-Datenbank bietet die folgenden Bereitstellungsoptionen für eine Azure SQL-Datenbank:
 
-- Als einzelne Datenbank mit ihrem eigenen Ressourcensatz, der über einen logischen Server verwaltet wird
-- Als gruppierte Datenbank in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mit einem gemeinsamen Ressourcensatz, der über einen logischen Server verwaltet wird.
+- Als Einzeldatenbank mit ihrem eigenen Ressourcensatz, der über einen SQL-Datenbankserver verwaltet wird
+- Als gruppierte Datenbank in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mit einem gemeinsamen Ressourcensatz, der über einen SQL-Datenbankserver verwaltet wird
 - Als Teil einer Sammlung von Datenbanken, die als [verwaltete Instanz](sql-database-managed-instance.md) bezeichnet wird, die System- und Benutzerdatenbanken enthält und einen Ressourcensatz teilt
 
 Die folgende Abbildung stellt diese Bereitstellungsoptionen dar:
@@ -68,7 +68,7 @@ Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleine
 > [!IMPORTANT]
 > Der [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md) befindet sich derzeit in der öffentlichen Vorschauphase. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Zu Testzwecken empfiehlt es sich, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
 
-Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Eine einzelne Azure SQL-Datenbank unterstützt die manuelle dynamische Skalierbarkeit, aber keine automatischen Skalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen. Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine einzelne Azure SQL-Datenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Eine Einzeldatenbank unterstützt die manuelle dynamische Skalierbarkeit, aber keine automatische Skalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen. Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine Einzeldatenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer Einzeldatenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 
@@ -148,7 +148,7 @@ SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitäts
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
-SQL Advanced Threat Protection ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktion zur Ermittlung und Klassifizierung sensibler Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Es bietet einen einzelnen Anlaufpunkt zum Aktivieren und Verwalten dieser Funktionen.
+SQL Advanced Data Security ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktion zur Ermittlung und Klassifizierung sensibler Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Es bietet einen einzelnen Anlaufpunkt zum Aktivieren und Verwalten dieser Funktionen.
 
 - [Datenermittlung und -klassifizierung:](sql-database-data-discovery-and-classification.md)
 

@@ -3,7 +3,7 @@ title: Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells in Azu
 description: Diese Seite beschreibt einige allgemeine Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,24 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/09/2019
-ms.openlocfilehash: 894922a80ab874e5304ef441571e03ef559a34b0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: e38f90acf1ffb0b63379727287f7451f99b6dd0d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215421"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460164"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank, die das auf virtuellen Kernen basierende Kaufmodell verwenden.
 
-Das DTU-basierte Kaufmodell weist Ressourcenlimits für Einzeldatenbanken auf einem logischen Server auf. Informationen dazu finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
+Das DTU-basierte Kaufmodell weist Ressourcenlimits für Einzeldatenbanken auf einem SQL-Datenbankserver auf. Informationen dazu finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbankserver](sql-database-resource-limits-database-server.md).
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
+Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Universelle Dienstebene: Speicher- und Computegrößen
 
@@ -40,7 +40,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |V-Kerne|1|2|3|4|5|6|
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
 |Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|
 |Maximale Protokollgröße (GB)|307|307|307|461|461|461|
 |tempdb-Größe (GB)|32|64|96|128|160|192|
@@ -50,8 +50,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|000
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|
+|Multi-AZ|–|–|–|–|–|–|000
+|Horizontale Leseskalierung|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 4. Generation (Teil 2)
@@ -62,7 +62,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|168|
 |Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1536|3072|3072|3072|4096|4096|
 |Maximale Protokollgröße (GB)|461|922|922|922|1229|1229|
 |tempdb-Größe (GB)|224|256|288|320|384|384|
@@ -72,8 +72,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|
+|Multi-AZ|–|–|–|–|–|–|
+|Horizontale Leseskalierung|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 1)
@@ -82,9 +82,9 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
-|Arbeitsspeicher (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
+|Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
 |Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maximale Protokollgröße (GB)|307|307|307|461|461|461|461|
 |tempdb-Größe (GB)|64|128|192|256|320|384|384|
@@ -94,8 +94,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Multi-AZ|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Universelle Dienstebene: Computeplattform der 5. Generation (Teil 2)
@@ -104,9 +104,9 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
-|Arbeitsspeicher (GB)|81.6|91.8|102|122.4|163.2|204|408|
+|Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
 |Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
 |tempdb-Größe (GB)|384|384|384|384|384|384|384|
@@ -116,8 +116,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Multi-AZ|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Unternehmenskritisch“: Speicher- und Computegrößen
@@ -129,7 +129,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|3|4|5|6|
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
-|Columnstore-Unterstützung|N/V|N/V|N/V|N/V|N/V|N/V|
+|Columnstore-Unterstützung|–|–|–|–|–|–|
 |In-Memory-OLTP-Speicher (GB)|1|2|3|4|5|6|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
@@ -151,8 +151,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|168|
-|Columnstore-Unterstützung|N/V|N/V|N/V|N/V|N/V|N/V|
-|In-Memory-OLTP-Speicher (GB)|7|8|9.5|11|20|36|
+|Columnstore-Unterstützung|–|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|7|8|9,5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
 |Maximale Protokollgröße (GB)|307|307|307|307|307|307|
@@ -185,7 +185,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
 |Multi-AZ|JA|Ja|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 2)
@@ -207,7 +207,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|4|4|4|4|4|4|
 |Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ## <a name="hyperscale-service-tier-preview"></a>Diensttarif „Hyperscale“ (Vorschau)
@@ -220,7 +220,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |V-Kerne|1|2|4|8|16|24|
 |Arbeitsspeicher (GB)|7|14|28|56|112|168|
 |Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
 |tempdb-Größe (GB)|32|64|128|256|384|384|
@@ -230,7 +230,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|2|2|2|2|2|2|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
+|Multi-AZ|–|–|–|–|–|–|
 |Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
 |Enthaltener Sicherungsspeicher|7|7|7|7|7|7|
 |||
@@ -241,9 +241,9 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
 |V-Kerne|2|4|8|16|24|32|40|80|
-|Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|
+|Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163,2|204|408|
 |Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
@@ -253,7 +253,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-por
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|2|2|2|2|2|2|2|2|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Multi-AZ|–|–|–|–|–|–|–|–|
 |Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
 |Enthaltener Sicherungsspeicher (Grenzwert der Vorschau)|7|7|7|7|7|7|7|7|
 |||

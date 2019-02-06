@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: 9e79aa2315118bcd9ce4328e74d51d7a22ea6247
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/25/2019
+ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744561"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478218"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Schnellstart: Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ In diesem Abschnitt wird gezeigt, wie Sie im [Azure-Portal](https://portal.azure
 > [!NOTE]
 > Die [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) unterstützt Importe aus einer BACPAC-Datei mithilfe der anderen in diesem Artikel beschriebenen Methoden, sie unterstützt derzeit aber keine Migration im Azure-Portal.
 
-Zum Importieren einer Datenbank im Azure-Portal öffnen Sie die Seite für den logischen Server, auf dem der Import gehostet werden soll, und wählen Sie auf der Symbolleiste die Option **Datenbank importieren** aus.  
+Zum Importieren einer Datenbank im Azure-Portal öffnen Sie die Seite für den SQL-Datenbankserver, auf dem der Import gehostet werden soll, und wählen Sie auf der Symbolleiste die Option **Datenbank importieren** aus.  
 
    ![Datenbankimport](./media/sql-database-import/import.png)
 
@@ -41,7 +41,7 @@ Wählen Sie das Speicherkonto, den Container und die zu importierende BACPAC-Dat
 
 ### <a name="monitor-imports-progress"></a>Überwachen des Fortschritts eines Importvorgangs
 
-Um den Fortschritt eines Importvorgangs zu überwachen, öffnen Sie die Seite für den logischen Server der importierten Datenbank, und wählen Sie unter **Einstellungen** die Option **Import-/Exportverlauf** aus. Bei erfolgreicher Ausführung weist der Import den Status **Abgeschlossen** auf.
+Um den Fortschritt eines Importvorgangs zu überwachen, öffnen Sie die Seite für den Server der importierten Datenbank, und wählen Sie unter **Einstellungen** die Option **Import-/Exportverlauf** aus. Bei erfolgreicher Ausführung weist der Import den Status **Abgeschlossen** auf.
 
 Zum Überprüfen, ob die Datenbank auf dem Server aktiv ist, wählen Sie **SQL-Datenbanken** aus, und prüfen Sie, ob der Status der neuen Datenbank **Online** ist.
 
@@ -51,14 +51,14 @@ Informationen zum Importieren einer SQL-Datenbank mit dem Befehlszeilenprogramm 
 
 Aus Gründen der Skalierbarkeit und Leistung wird die Verwendung von SqlPackage für die meisten Produktionsumgebungen empfohlen. Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von BACPAC-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
 
-Mit dem folgenden SqlPackage-Befehl wird die Datenbank **AdventureWorks2008R2** aus dem lokalen Speicher in einen logischen Azure SQL-Datenbankserver mit dem Namen **mynewserver20170403** importiert. Er erstellt eine neue Datenbank namens **myMigratedDatabase** mit der **Premium**-Dienstebene und dem Dienstziel **P6**. Ändern Sie diese Werte entsprechend Ihrer Umgebung.
+Mit dem folgenden SqlPackage-Befehl wird die Datenbank **AdventureWorks2008R2** aus dem lokalen Speicher in einen Azure SQL-Datenbankserver mit dem Namen **mynewserver20170403** importiert. Er erstellt eine neue Datenbank namens **myMigratedDatabase** mit der **Premium**-Dienstebene und dem Dienstziel **P6**. Ändern Sie diese Werte entsprechend Ihrer Umgebung.
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
 
 > [!IMPORTANT]
-> Ein logischer Azure SQL-Datenbankserver lauscht auf Port 1433. Um von hinter einer Unternehmensfirewall eine Verbindung mit einem logischen Server herzustellen, muss dieser Port der Firewall geöffnet sein.
+> Ein SQL-Datenbankserver lauscht auf Port 1433. Um von hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbankserver herzustellen, muss dieser Port der Firewall geöffnet sein.
 >
 
 In diesem Beispiel wird gezeigt, wie eine Datenbank mithilfe von SqlPackage mit universeller Active Directory-Authentifizierung importiert wird.
@@ -107,7 +107,7 @@ Ein weiteres Skriptbeispiel finden Sie unter [Importieren einer Datenbank aus ei
 
 ## <a name="limitations"></a>Einschränkungen
 
-Das Importieren in eine Datenbank in einen Pool für elastische Datenbanken wird nicht unterstützt. Sie können jedoch Daten in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool verschieben.
+Das Importieren in eine Datenbank in einen Pool für elastische Datenbanken wird nicht unterstützt. Sie können jedoch Daten in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool für elastische Datenbanken verschieben.
 
 ## <a name="import-using-wizards"></a>Importieren mithilfe von Assistenten
 

@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: c25dd911b5648cdf4b64053ef26a7b70c9156074
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 18b024efdc4300daca2c5cee933b136dbc99d433
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599755"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468902"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
-In diesem Artikel erfahren Sie, wie Sie [die aktive Georeplikation für eine einzelne Datenbank oder in einem Pool zusammengefasste Datenbanken] auf einem logischen Server (sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in SQL-Datenbank über das [Azure-Portal](http://portal.azure.com) konfigurieren und ein Failover initiieren.
+In diesem Artikel erfahren Sie, wie Sie die [aktive Georeplikation für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in Azure SQL-Datenbank mithilfe des [Azure-Portals](http://portal.azure.com) konfigurieren und ein Failover initiieren.
 
 Weitere Informationen zu Autofailover-Gruppen mit einer einzelnen Datenbank oder in einem Pool zusammengefassten Datenbanken finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Weitere Informationen zu Autofailover-Gruppen mit verwalteten Instanzen (Vorschau) finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
@@ -40,7 +40,7 @@ Mit den folgenden Schritten wird eine neue sekundäre Datenbank in einer Partner
 
 Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer oder Mitbesitzer des Abonnements sein.
 
-Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Diensttarif und die gleiche Computegröße. Die sekundäre Datenbank kann eine Einzeldatenbank oder eine Datenbank in einem Pool für elastische Datenbanken sein. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Einkaufsmodell](sql-database-service-tiers-vcore.md).
+Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Diensttarif und die gleiche Computegröße. Die sekundäre Datenbank kann eine Einzeldatenbank oder eine in einem Pool zusammengefasste Datenbank sein. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Einkaufsmodell](sql-database-service-tiers-vcore.md).
 Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
 > [!NOTE]
