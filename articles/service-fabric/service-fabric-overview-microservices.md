@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 48df598ab12c509952b7712bb8cc9fe21355325f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613680"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102815"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 
@@ -33,11 +33,11 @@ Veränderte geschäftliche Anforderungen sind:
 
 Diese geschäftlichen Anforderungen beeinflussen, *wie* wir Anwendungen erstellen.
 
-Weitere Informationen zum Azure-Ansatz in Bezug auf Microservices finden Sie unter [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)(Microservices: Eine cloudbasierte Revolution für Anwendungen).
+Weitere Informationen zum Azure-Ansatz in Bezug auf Microservices finden Sie unter [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution).
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>Vergleich des monolithischen Entwurfs und Microservice-Entwurfs
 
-Anwendungen entwickeln sich im Laufe der Zeit weiter. Erfolgreiche Anwendungen entwickeln sich weiter, indem Sie für die Benutzer nützlich sind. Nicht erfolgreiche Anwendungen werden nicht weiterentwickelt und schließlich ausgesondert. Es stellt sich nun folgende Frage: Wie viel wissen Sie über Ihre heutigen Anforderungen und deren zukünftige Entwicklung? Angenommen, Sie erstellen eine Berichterstellungsanwendung für eine Abteilung. Sie sind sicher, dass die Anwendung nur innerhalb Ihres Unternehmens verwendet wird und die Berichte nur eine kurze Lebensdauer haben. In diesem Fall wählen Sie einen anderen Ansatz als beispielsweise bei der Erstellung eines Diensts zur Bereitstellung von Videoinhalten für Millionen von Kunden.
+Anwendungen entwickeln sich im Laufe der Zeit weiter. Erfolgreiche Anwendungen entwickeln sich weiter, indem Sie für die Benutzer nützlich sind. Nicht erfolgreiche Anwendungen werden nicht weiterentwickelt und schließlich ausgesondert. Die Frage ist: Wie viel wissen Sie über Ihre heutigen Anforderungen und deren zukünftige Entwicklung? Angenommen, Sie erstellen eine Berichterstellungsanwendung für eine Abteilung. Sie sind sicher, dass die Anwendung nur innerhalb Ihres Unternehmens verwendet wird und die Berichte nur eine kurze Lebensdauer haben. In diesem Fall wählen Sie einen anderen Ansatz als beispielsweise bei der Erstellung eines Diensts zur Bereitstellung von Videoinhalten für Millionen von Kunden.
 
 In einigen Fällen ist der treibende Faktor, dass ein Projekt als Machbarkeitsstudie in dem Wissen erstellt werden kann, dass der Entwurf der Anwendung später geändert werden kann. Es ist nicht sehr sinnvoll, zu viel Engineeringaufwand für etwas zu betreiben, was niemals verwendet wird. Dies ist der übliche Kompromiss, der beim Engineering häufig eingegangen wird. Wenn Unternehmen von der Erstellung für die Cloud sprechen, werden aber auch Wachstum und gute Auslastung erwartet. Das Problem hierbei ist, dass Wachstums- und Skalierungsanforderungen nicht vorhersagbar sind. Am liebsten würden wir schnell Prototypen erstellen können und gleichzeitig die Sicherheit haben, dass wir uns auf einem Weg zu zukünftigem Erfolg befinden. Dies entspricht dem schlanken Startup-Ansatz: Erstellen, Messen, Lernen und Wiederholen.
 
@@ -181,7 +181,7 @@ Viele Organisationen fahren hier nicht fort. Sie können bereits von Containern 
 Bei der Aktualisierung werden neue Dienste gemeinsam mit vorhandenem Code in Containern hinzugefügt. Wenn Sie neuen Code schreiben möchten, empfiehlt es sich, kleine Schritte auf dem Weg zu Microservices zu machen. Dies kann das Hinzufügen eines neuen REST-API-Endpunkts oder neue Geschäftslogik sein. Auf diese Weise haben Sie die ersten Schritte auf dem Weg zu Microservices gemacht und können sich gleichzeitig das Entwickeln und Bereitstellen dieser vertraut machen.
 
 **Innovation**  
-Ein Microservices-Ansatz berücksichtigt sich ändernde Geschäftsanforderungen. In dieser Phase müssen Sie sich entscheiden, ob Sie die monolithische App in Dienste aufteilen müssen oder ob Sie sich um Innovationen bemühen sollten. Ein Beispiel ist, wenn eine Datenbank, die als Workflowwarteschlange verwendet wird, zu einem Verarbeitungsengpass wird. Mit zunehmender Anzahl an Workflowanfragen muss die Arbeit zur Skalierung verteilt werden. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt.
+Ein Microservices-Ansatz ist auf Veränderungen der geschäftlichen Anforderungen vorbereitet. In dieser Phase müssen Sie sich entscheiden, ob Sie die monolithische App in Dienste aufteilen müssen oder ob Sie sich um Innovationen bemühen sollten. Ein Beispiel ist, wenn eine Datenbank, die als Workflowwarteschlange verwendet wird, zu einem Verarbeitungsengpass wird. Mit zunehmender Anzahl an Workflowanfragen muss die Arbeit zur Skalierung verteilt werden. Für diesen bestimmten Bereich der Anwendung, der nicht die Skalierung ist, oder den Sie häufiger aktualisieren müssen, teilen Sie dies in einen Microservice auf. Schon haben Sie eine Innovation durchgeführt.
 
 **Umwandlung in Microservices**  
 Wenn Ihre Anwendung komplett aus Microservices besteht oder in Microservices unterteilt wird. Wenn Sie diesen Punkt erreicht haben, haben Sie den Weg zu Microservices abgeschlossen. Sie können hier starten. Wenn Sie dies jedoch ohne eine unterstützende Microservicesplattform machen, ist dies eine erhebliche Investition. 
@@ -197,7 +197,7 @@ Das Ziel von Service Fabric ist die Reduzierung der Komplexitäten bei der Erste
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md)
-* [Microservices: Eine cloudbasierte Anwendungsrevolution](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

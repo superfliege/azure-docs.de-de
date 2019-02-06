@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986541"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097060"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -359,7 +359,7 @@ Grundlegende Informationen zum Token, das über `AcquireTokenAsync` oder `Acquir
 |---------|---------|---------|
 |**Name** |Vollständiger Name des Benutzers|Vor- und Nachname des Benutzers|
 |**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
-|**Ablaufdatum des Tokens** |Datetime |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
+|**Ablaufdatum des Tokens** |DateTime |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
 |**Zugriffstoken** |Zeichenfolge |Die Tokenzeichenfolge, die bei HTTP-Anforderungen gesendet wird, die einen *Autorisierungsheader* erfordern|
 
 #### <a name="see-whats-in-the-access-token-optional"></a>Überprüfen Sie, was im Zugriffstoken ist (optional)
@@ -382,15 +382,15 @@ Wenn Sie sich in einer Azure Active Directory-Verbunddomäne bei Ihrer Anwendung
  - Im Zertifikatspeicher des Benutzers wurden keine gültigen Zertifikate gefunden.
  - Versuchen Sie erneut, und wählen Sie eine andere Authentifizierungsmethode aus.
 
-**Ursache**: Unternehmens- und Zertifikatsfunktionen sind nicht aktiviert.
+**Ursache:** Unternehmens- und Zertifikatsfunktionen sind nicht aktiviert.
 
-**Lösung**: Führen Sie die Schritte unter [Integrierte Authentifizierung für Verbunddomänen](#enable-integrated-authentication-on-federated-domains-optional) aus.
+**Lösung:** Führen Sie die Schritte unter [Integrierte Authentifizierung für Verbunddomänen](#enable-integrated-authentication-on-federated-domains-optional) aus.
 
 ### <a name="issue-2"></a>Problem 2:
 Nach der Aktivierung von [Integrierte Authentifizierung für Verbunddomänen](#enable-integrated-authentication-on-federated-domains-optional) und dem Versuch, sich über Windows Hello auf einem Windows 10-Computer bei einer Umgebung mit konfigurierter mehrstufiger Authentifizierung anzumelden, wird die Liste mit den Zertifikaten angezeigt. Wenn Sie Ihre PIN verwenden möchten, wird das Fenster „PIN“ jedoch nie angezeigt.
 
-**Ursache**: Bekannte Einschränkung des Webauthentifizierungsbrokers in UWP-Anwendungen, die unter Windows 10 Desktop ausgeführt werden (funktioniert unter Windows 10 Mobile).
+**Ursache:** Bekannte Einschränkung des Webauthentifizierungsbrokers in UWP-Anwendungen, die unter Windows 10 Desktop ausgeführt werden (funktioniert unter Windows 10 Mobile).
 
-**Problemumgehung**: Wählen Sie **Mit anderen Optionen anmelden** aus. Wählen Sie dann **Mit Benutzernamen und Kennwort anmelden** und **Kennwort angeben** aus, und durchlaufen Sie anschließend die Telefonauthentifizierung.
+**Problemumgehung:** Wählen Sie **Mit anderen Optionen anmelden** aus. Wählen Sie dann **Mit Benutzernamen und Kennwort anmelden** und **Kennwort angeben** aus, und durchlaufen Sie anschließend die Telefonauthentifizierung.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

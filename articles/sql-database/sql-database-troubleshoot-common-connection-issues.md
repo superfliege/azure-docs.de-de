@@ -11,21 +11,23 @@ author: dalechen
 ms.author: daleche
 ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 5610679756e91637ac4713059a510bebb882ca7a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600555"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464890"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank
+
 Wenn keine Verbindung zur Azure SQL-Datenbank hergestellt werden kann, erhalten Sie [Fehlermeldungen](sql-database-develop-error-messages.md). Bei diesem Artikel handelt es sich um eine zentrale Informationsquelle, die Sie bei der Behebung von Problemen mit der Verbindung mit Azure SQL-Datenbank unterstützt. In dem Artikel werden [die häufigsten Ursachen](#cause) von Verbindungsproblemen dargestellt, [ein Tool zur Problembehandlung](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) empfohlen, das Sie bei der Ermittlung des Problems unterstützt, sowie Problembehandlungsschritte zur Behebung von [vorübergehenden Fehlern](#troubleshoot-transient-errors) und [dauerhaften oder nicht vorübergehenden Fehlern](#troubleshoot-persistent-errors) bereitgestellt. 
 
 Führen Sie bei Verbindungsproblemen die in diesem Artikel beschriebenen Schritte zur Problembehandlung aus.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="cause"></a>Ursache
+
 Verbindungsprobleme können folgende Ursachen haben:
 
 * Fehler beim Anwenden von bewährten Methoden und Designrichtlinien während des Anwendungsdesignprozesses.  Hilfreiche Informationen für den Einstieg finden Sie in der [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md) .
@@ -41,6 +43,7 @@ Im Allgemeinen können Verbindungsprobleme mit der Azure SQL-Datenbank wie folgt
 * [Dauerhafte oder nicht vorübergehende Fehler (Fehler, die sich regelmäßig wiederholen)](#troubleshoot-persistent-errors)
 
 ## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Verwenden der Problembehandlung für Verbindungsprobleme mit der Azure SQL-Datenbank
+
 Wenn Sie einen bestimmten Verbindungsfehler erkennen, können Sie das Problem mit [diesem Tool](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database)schnell ermitteln und beheben.
 
 ## <a name="troubleshoot-transient-errors"></a>Problembehandlung bei vorübergehenden Fehlern
@@ -56,13 +59,13 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 > 
 > 
 
-Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguriert) wird und Ihre Anwendung die Verbindung zur SQL-Datenbank verliert. Ereignisse bei der Neukonfiguration von SQL-Datenbanken werden durch geplante Ereignisse (z.B. Softwareupgrades) oder ungeplante Ereignisse (z.B. einen Prozessabsturz oder einen Lastenausgleich) hervorgerufen. Die meisten bei einer Neukonfiguration auftretenden Ereignisse sind normalerweise kurzlebig und sollten innerhalb von höchstens 60 Sekunden beendet werden. Trotzdem kann das Beenden dieser Ereignisse beizeiten länger dauern, so z.B., wenn eine große Transaktion eine lang andauernde Wiederherstellung auslöst.
+Dieser Fehler tritt auf, wenn die Datenbank verschoben (oder neu konfiguriert) wird und Ihre Anwendung die Verbindung zur Datenbank verliert. Ereignisse bei der Neukonfiguration von Datenbanken werden durch geplante Ereignisse (z.B. Softwareupgrades) oder ungeplante Ereignisse (z.B. einen Prozessabsturz oder einen Lastenausgleich) hervorgerufen. Die meisten bei einer Neukonfiguration auftretenden Ereignisse sind normalerweise kurzlebig und sollten innerhalb von höchstens 60 Sekunden beendet werden. Trotzdem kann das Beenden dieser Ereignisse beizeiten länger dauern, so z.B., wenn eine große Transaktion eine lang andauernde Wiederherstellung auslöst.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Schritte zum Beheben vorübergehender Verbindungsprobleme
 
 1. Ziehen Sie das [Microsoft Azure Service-Dashboard](https://azure.microsoft.com/status) für alle bekannten Ausfälle zu Rat, die während der Fehlermeldung durch die Anwendung aufgetreten sind.
 2. Für Anwendungen, die Verbindungen zu einem Clouddienst wie Azure SQL-Datenbank herstellen, sollten Sie regelmäßige Rekonfigurationsereignisse erwarten. Daher sollten Sie eine Wiederholungslogik zur Fehlerbehandlung implementieren, anstatt Benutzern diese Anwendungsfehler anzuzeigen. Weitere Informationen und allgemeine Wiederholungsstrategien finden Sie im Abschnitt [Vorübergehende Fehler](sql-database-connectivity-issues.md) sowie in den bewährten Methoden und Designrichtlinien der [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md). Tiefer gehende Informationen finden Sie anschließend in den Codebeispielen in den [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
-3. Wenn sich eine Datenbank ihren Ressourcenbegrenzungen nähert, kann dies wie ein vorübergehendes Verbindungsproblem aussehen. Sie [Ressourceneinschränkungen](sql-database-resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached).
+3. Wenn sich eine Datenbank ihren Ressourcenbegrenzungen nähert, kann dies wie ein vorübergehendes Verbindungsproblem aussehen. Sie [Ressourceneinschränkungen](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
 4. Wenn Verbindungsprobleme weiterhin bestehen, die Fehlerdauer 60 Sekunden überschreitet oder der Fehler an einem Tag mehrfach auftritt, schicken Sie eine Azure-Supportanfrage, indem Sie auf der **Azure-Support** -Website [Support erhalten](https://azure.microsoft.com/support/options) auswählen.
 
 ## <a name="troubleshoot-persistent-errors"></a>Problembehandlung bei dauerhaften Fehlern

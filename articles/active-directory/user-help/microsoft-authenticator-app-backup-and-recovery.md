@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie Ihre Kontoanmeldeinformationen mithilfe 
 services: active-directory
 author: eross-msft
 manager: daveba
-ms.component: user-help
+ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 49cc5114106336f41d119b00db1bfa472f09d2d5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 56ea48accea135f79e4c8984238002f2eec5167b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821701"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167409"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
@@ -39,11 +39,11 @@ Bevor Sie Ihre Anmeldeinformationen sichern können, benötigen Sie Folgendes:
 Durch die erforderliche Anmeldung bei beiden Konten erhöht sich die Sicherheit Ihrer Sicherungsinformationen.
 
 **So aktivieren Sie die Cloudsicherung**
--   Wählen Sie auf Ihrem iOS-Gerät **Settings** (Einstellungen) und **Backup** (Sicherung), und aktivieren Sie dann **Auto backup** (Automatische Sicherung).
+-   Wählen Sie auf Ihrem iOS-Gerät **Settings** (Einstellungen) und **Backup** (Sicherung), und aktivieren Sie dann **iCloud backup** (iCloud-Sicherung).
 
     Die Anmeldeinformationen für Ihr Konto werden in Ihrem iCloud-Konto gesichert.
 
-    ![Bildschirm mit den iOS-Einstellungen und den Einstellungen für die automatische Sicherung](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
+    ![Bildschirm mit den iOS-Einstellungen und den Einstellungen für die iCloud-Sicherung](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
 
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>Wiederherstellen Ihrer Kontoanmeldeinformationen auf einem neuen Gerät
 Sie können die Kontoanmeldeinformationen in Ihrem iCloud-Konto mit dem gleichen Microsoft-Wiederherstellungskonto wiederherstellen, das Sie beim Sichern Ihrer Informationen eingerichtet haben.
@@ -101,7 +101,6 @@ Sie haben Ihre Kontoinformationen gesichert und auf dem neuen Gerät wiederherge
 
 ## <a name="related-topics"></a>Verwandte Themen
 - [Erste Schritte mit der Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md)  
-
 - [Microsoft Authenticator-App – häufig gestellte Fragen](microsoft-authenticator-app-faq.md)
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

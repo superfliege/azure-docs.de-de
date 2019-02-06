@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214741"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301253"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -49,9 +49,9 @@ A: Das Extrahieren benutzerdefinierter Felder wird derzeit auf der klassischen P
 
 A: Auf der neuen Oberfläche für Protokolle ist keine Listenansicht verfügbar. Links neben jedem Datensatz in der Ergebnistabelle befindet sich ein Pfeil. Klicken Sie auf diesen Pfeil, um die Details für einen bestimmten Datensatz zu öffnen. 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>F: Nach dem Ausführen einer Abfrage wird eine Liste mit vorgeschlagenen Filtern angezeigt, in der aber nicht alle Filter enthalten sind. Wie kann ich die restlichen anzeigen? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>F: Nach dem Ausführen einer Abfrage wird eine Liste der vorgeschlagenen Filter angezeigt. Wie kann ich Filter anzeigen? 
 
-A: Was Sie aktuell sehen, ist eine Vorschau der neuen Implementierung der Filter. Diese basiert jetzt auf der vollständigen Ergebnismenge, statt durch den Grenzwert der Benutzeroberfläche von 10.000 Datensätzen eingeschränkt zu sein. Zurzeit wird eine Liste der zehn beliebtesten Filter und der zehn gebräuchlichsten Werte für jeden Filter verwendet. 
+A: Klicken Sie auf „Filtern“ im linken Bereich, um eine Vorschau der neu implementierten Filter anzuzeigen. Diese basiert jetzt auf der vollständigen Ergebnismenge, statt durch den Grenzwert der Benutzeroberfläche von 10.000 Datensätzen eingeschränkt zu sein. Zurzeit wird eine Liste der zehn beliebtesten Filter und der zehn gebräuchlichsten Werte für jeden Filter verwendet. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>F: Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss? 
 

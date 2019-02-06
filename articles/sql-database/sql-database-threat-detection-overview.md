@@ -1,5 +1,5 @@
 ---
-title: Bedrohungserkennung – Azure SQL-Datenbank | Microsoft Docs
+title: Bedrohungserkennung – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Azure SQL-Datenbank hindeuten.
 services: sql-database
 ms.service: sql-database
@@ -11,24 +11,22 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 587c0718e333f121d0ff8b32d8c2a7dad6b8f774
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/29/2019
+ms.openlocfilehash: 4c9700344ca5b973b8dad9fd1505d15f58c06126
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037139"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451715"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Bedrohungserkennung von Azure SQL-Datenbank
 
 Die Azure SQL-Bedrohungserkennung für [Azure SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identifiziert anomale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen.
 
-Die Bedrohungserkennung ist Teil des Angebots [SQL Advanced Threat Protection (ATP)](sql-advanced-threat-protection.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ATP-Portal möglich.
+Die Bedrohungserkennung ist Bestandteil des [SQL Advanced Data Security](sql-advanced-threat-protection.md)-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich.
 
 > [!NOTE]
 > Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
-
-Für den Bedrohungserkennungsdienst werden für alle Datenbanken pro logischem Server oder verwalteter Instanz 15 USD/Monat berechnet, wobei die ersten 30 Tage kostenlos sind.
 
 ## <a name="what-is-threat-detection"></a>Was ist Bedrohungserkennung?
 
@@ -69,9 +67,9 @@ Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachric
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Auswerten von Bedrohungserkennungswarnungen für Ihre Datenbank im Azure-Portal
 
-Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) eingebunden. Auf Livekacheln der SQL-Bedrohungserkennung auf den Blättern der Datenbank und von SQL ATP im Azure-Portal werden die Status von aktiven Bedrohungen nachverfolgt.
+Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) eingebunden. Auf Livekacheln der SQL-Bedrohungserkennung auf den Blättern der Datenbank und von SQL ADS im Azure-Portal wird der Status von aktiven Bedrohungen nachverfolgt.
 
-Klicken Sie auf **Threat detection alert** (Warnung der Bedrohungserkennung), um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank oder im Data Warehouse erkannt wurden.
+Klicken Sie auf **Warnung der Bedrohungserkennung**, um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank oder im Data Warehouse erkannt wurden.
 
    ![Warnung der Bedrohungserkennung](./media/sql-database-threat-detection/threat_detection_alert.png)
 
@@ -79,9 +77,9 @@ Klicken Sie auf **Threat detection alert** (Warnung der Bedrohungserkennung), um
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Bedrohungserkennung für eine Einzeldatenbank](sql-database-threat-detection.md).
+- Erfahren Sie mehr über die [Bedrohungserkennung für eigenständige Datenbanken und Pooldatenbanken](sql-database-threat-detection.md).
 - Erfahren Sie mehr über die [Bedrohungserkennung bei der verwalteten Instanz](sql-database-managed-instance-threat-detection.md).
-- Erfahren Sie mehr über [SQL Advanced Threat Protection](sql-advanced-threat-protection.md).
+- Erfahren Sie mehr über [SQL Advanced Data Security](sql-advanced-threat-protection.md).
 - Weitere Informationen zu [Überwachung von Azure SQL-Datenbank](sql-database-auditing.md)
 - Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - Weitere Informationen zu den Preisen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).  

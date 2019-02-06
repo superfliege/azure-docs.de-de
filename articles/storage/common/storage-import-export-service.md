@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528555"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453381"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -27,18 +27,18 @@ Wenn Sie Daten mit den von Microsoft bereitgestellten Datenträgern übermitteln
 
 Sie können den Import/Export-Dienst von Azure nutzen, wenn das Hoch- bzw. Herunterladen von Daten über das Netzwerk zu langsam oder das Hinzufügen weiterer Bandbreite aus Kostengründen nicht möglich ist. Verwenden Sie diesen Dienst in folgenden Szenarien:
 
-* **Datenmigration zur Cloud:** Verschieben Sie große Datenmengen schnell und kostengünstig nach Azure.
-* **Inhaltsverteilung:** Schicken Sie Daten schnell an Ihre Kundenstandorte.
-* **Sicherung:** Erstellen Sie Sicherungen Ihrer lokalen Daten für die Speicherung in Azure Storage.
-* **Datenwiederherstellung:** Stellen Sie große Datenmengen wieder her, die im Speicher gespeichert sind, und lassen Sie sie an Ihren lokalen Standort schicken.
+* **Datenmigration zur Cloud**: Verschieben Sie große Datenmengen schnell und kostengünstig nach Azure.
+* **Inhaltsverteilung**: Senden Sie Daten schnell an Ihre Kundenstandorte.
+* **Sicherung**: Erstellen Sie Sicherungen Ihrer lokalen Daten für die Speicherung in Azure Storage.
+* **Datenwiederherstellung**: Stellen Sie große Datenmengen wieder her, die im Speicher gespeichert sind, und lassen Sie sie an Ihren lokalen Standort schicken.
 
 ## <a name="importexport-components"></a>Komponenten von Import/Export
 
 Der Import/Export-Dienst verwendet die folgenden Komponenten:
 
-- **Import/Export**-Dienst: Dieser Dienst ist im Azure-Portal verfügbar und hilft Benutzern beim Erstellen und Nachverfolgen von Import- (Upload) und Exportaufträgen (Download) für Daten.  
+- **Import/Export-Dienst**: Dieser Dienst ist im Azure-Portal verfügbar und unterstützt Benutzer beim Erstellen und Nachverfolgen von Import- (Upload) und Exportaufträgen (Download) für Daten.  
 
-- **WAImportExport-Tool:** Dies ist ein Befehlszeilentool für Folgendes: 
+- **WAImportExport-Tool**: Hierbei handelt es sich um ein Befehlszeilentool zur Ausführung der folgenden Aufgaben: 
     - Vorbereiten der Laufwerke, die für den Import versendet werden
     - Kopieren der Daten auf das Laufwerk
     - Verschlüsseln der Daten auf dem Laufwerk mit BitLocker
@@ -52,7 +52,7 @@ Der Import/Export-Dienst verwendet die folgenden Komponenten:
 >
 > Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Informationen zu den unterstützten Betriebssystemversionen finden Sie unter [Azure Import/Export – Anforderungen](storage-import-export-requirements.md#supported-operating-systems).
 
-- **Datenträger:** Sie können Solid State Drives (SSDs) oder Festplattenlaufwerke (HDDs) an das Azure-Rechenzentrum senden. Beim Erstellen eines Importauftrags senden Sie die Laufwerke, die Ihre Daten enthalten. Wenn Sie einen Exportauftrag erstellen, senden Sie leere Laufwerke an das Azure-Rechenzentrum. Informationen zu den Datenträgertypen finden Sie unter [Unterstützte Datenträgertypen](storage-import-export-requirements.md#supported-hardware).
+- **Datenträger**: Sie können Solid State Drives (SSDs) oder Festplattenlaufwerke (HDDs) an das Azure-Rechenzentrum senden. Beim Erstellen eines Importauftrags senden Sie die Laufwerke, die Ihre Daten enthalten. Wenn Sie einen Exportauftrag erstellen, senden Sie leere Laufwerke an das Azure-Rechenzentrum. Informationen zu den Datenträgertypen finden Sie unter [Unterstützte Datenträgertypen](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Funktionsweise von Import/Export
 

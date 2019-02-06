@@ -13,16 +13,17 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 09d3d996e4c939d6691162d66f303536a3f2038d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037214"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239263"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Überwachen von Änderungen in Azure Stack mithilfe des privilegierten Endpunkts
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme*
 
 Sie können mit dem [privilegierten Endpunkt](azure-stack-privileged-endpoint.md) den Status eines Azure Stack-Updatevorgangs überwachen und ein fehlerhaftes Update vom letzten erfolgreichen Schritt aus fortsetzen, falls das Azure Stack-Portal nicht verfügbar sein sollte.  Das Azure Stack-Portal ist die empfohlene Methode zum Verwalten von Updates in Azure Stack.
 
@@ -35,7 +36,7 @@ Die folgenden neuen PowerShell-Cmdlets für die Updateverwaltung sind im Update 
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>Überprüfen der Verfügbarkeit von Cmdlets
-Da die Cmdlets im Updatepaket 1710 für Azure Stack neu sind, muss der Updatevorgang für 1710 einen bestimmten Punkt erreichen, bevor die Überwachungsfunktionen zur Verfügung steht. In der Regel sind die Cmdlets verfügbar, wenn der Status im Administratorportal angibt, dass sich das Update 1710 beim Schritt **Speicherhosts neu starten** befindet. Genauer gesagt, tritt das Cmdlet-Update während **Schritt 2.6: Aktualisieren der PrivilegedEndpoint-Whitelist** auf.
+Da die Cmdlets im Updatepaket 1710 für Azure Stack neu sind, muss der Updatevorgang für 1710 einen bestimmten Punkt erreichen, bevor die Überwachungsfunktionen zur Verfügung steht. In der Regel sind die Cmdlets verfügbar, wenn der Status im Administratorportal angibt, dass sich das Update 1710 beim Schritt **Speicherhosts neu starten** befindet. Insbesondere kommt das Cmdletupdate vor in **Schritt: Ausführen von Schritt 2.6: Aktualisieren der PrivilegedEndpoint-Whitelist**.
 
 Sie können auch programmgesteuert ermitteln, ob die Cmdlets verfügbar sind, indem Sie die Befehlsliste vom privilegierten Endpunkt aus abfragen. Führen Sie dazu die folgenden Befehle über den Hardwarelebenszyklushost oder über eine Arbeitsstation für privilegierten Zugriff aus. Stellen Sie außerdem sicher, dass es sich bei dem privilegierten Endpunkt um einen vertrauenswürdigen Host handelt. Weitere Informationen finden Sie in Schritt 1 von [Zugreifen auf den privilegierten Endpunkt](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
 

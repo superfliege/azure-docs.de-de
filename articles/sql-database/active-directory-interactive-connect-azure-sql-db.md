@@ -10,23 +10,20 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 04/06/2018
+ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a05c6b4fac031482d77827a817ef56920a0c314
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958816"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464550"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Verwenden Sie den ActiveDirectoryInteractive Modus zum Herstellen der Verbindung mit Azure SQL-Datenbank
 
 Dieser Artikel enthält ein ausführbares C#-Codebeispiel, das die Verbindung mit Ihrer Microsoft Azure SQL-Datenbank herstellt. Das C#-Programm verwendet den interaktiven Modus der Authentifizierung, der die mehrstufige Authentifizierung in Azure AD (Multi-Factor Authentication, MFA) unterstützt. Ein Verbindungsversuch kann z.B. einen Prüfcode enthalten, der an Ihr Mobiltelefon gesendet wird.
 
 Weitere Informationen zur MFA-Unterstützung für SQL-Tools finden Sie unter [Azure Active Directory-Unterstützung in SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
-
-
-
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod. ActiveDirectoryInteractive-Enumerationswert
 
@@ -54,11 +51,9 @@ Screenshots zu diesen Dialogen finden Sie unter [Konfigurieren der mehrstufigen 
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
-
 ## <a name="preparations-for-c-by-using-the-azure-portal"></a>Vorbereitungen für C# mithilfe des Azure-Portals
 
 Es wird davon ausgegangen, dass Sie bereits eine [Azure SQL-Datenbankserver-Instanz erstellt](sql-database-get-started-portal.md) haben und diese verfügbar ist.
-
 
 ### <a name="a-create-an-app-registration"></a>A. Erstellen einer App-Registrierung
 
@@ -87,7 +82,7 @@ Um Azure AD-Authentifizierung verwenden zu können, muss Ihr C#-Clientprogramm e
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B: Festlegen des Azure AD-Administrators auf dem SQL-Datenbankserver
 
-Jede Azure SQL-Datenbank-Serverinstanz verfügt über einen eigenen logischen SQL-Server von Azure AD. Für unser C#-Szenario müssen Sie einen Azure AD-Administrator für Ihren Azure SQL-Server festlegen.
+Jede Azure SQL-Einzeldatenbank und jeder Pool für elastische Datenbanken umfasst einen eigenen SQL-Datenbank-Server für Azure AD. Für unser C#-Szenario müssen Sie einen Azure AD-Administrator für Ihren Azure SQL-Server festlegen.
 
 1. **SQL Server** &gt; **Active Directory-Administrator** &gt; **Administrator festlegen**
 

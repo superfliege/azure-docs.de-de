@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 27b31b6dec480fee417bf9ccb241199204f28f96
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 4133d78ccff1fa4eb712d8928cefa604ca2f52ca
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582648"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902056"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -36,9 +36,9 @@ Wenn Sie über virtuelle Computer, Azure Cosmos DB- oder SQL-Datenbank-Instanzen
 
 ## <a name="what-charges-does-a-reservation-cover"></a>Welche Gebühren werden von einer Reservierung abgedeckt?
 
-- Reservierte VM-Instanz: Eine Reservierung deckt nur die Computekosten virtueller Computer ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Netzwerke oder Speicher ab.
-- Reservierte virtuelle Kerne für SQL-Datenbank: In einer Reservierung sind nur die Computekosten enthalten. Die Lizenz wird separat abgerechnet.
-- Die reservierte Azure Cosmos DB-Kapazität: Eine Reservierung deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab, nicht die Speicher- und Netzwerkkosten. 
+- Reservierte VM-Instanz: Eine Reservierung deckt nur die VM-Computekosten ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Netzwerke oder Speicher ab.
+- Für SQL-Datenbank reservierter virtueller Kern: In einer Reservierung sind nur die Computekosten enthalten. Die Lizenz wird separat abgerechnet.
+- Reservierte Azure Cosmos DB-Kapazität: Eine Reservierung deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab, nicht die Speicher- und Netzwerkkosten. 
 
 Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungskosten mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) decken.
 
@@ -77,8 +77,8 @@ Am Ende der Laufzeit der Reservierung läuft der Abrechnungsrabatt ab, und die I
 
 Wenn Sie eine Reservierung erwerben, kann der Rabatt auf andere Instanzen mit Attributen angewendet werden, die sich in der gleichen Größengruppe befinden. Die Flexibilität der Rabattabdeckung hängt vom Reservierungstyp und den Attributen ab, die Sie beim Erwerb der Reservierung auswählen.
 
-- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben, und Sie unter **Optimiert für** die **Instanzgrößenflexibilität** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- SUSE Linux Enterprise-Softwareplan: Die Rabattabdeckung hängt von den virtuellen CPUs der VMs ab, auf denen Sie die SUSE-Software ausführen. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den SUSE Linux Enterprise-Softwareplan](billing-understand-suse-reservation-charges.md).
+- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben und unter **Optimiert für** die Option für **Instanzgrößenflexibilität** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- SUSE Linux Enterprise-Softwareplan: Die Rabattabdeckung hängt von den vCPUs der VMs ab, auf denen Sie die SUSE-Software ausführen. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung des Rabatts für den SUSE Linux Enterprise-Softwareplan](billing-understand-suse-reservation-charges.md).
 - Reservierte SQL-Datenbank-Kapazität: Die Rabattabdeckung hängt von der ausgewählten Leistungsstufe ab. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen](billing-understand-reservation-charges.md).
 - Reservierte Azure Cosmos DB-Kapazität: Die Rabattabdeckung hängt vom bereitgestellten Durchsatz ab. Weitere Informationen finden Sie unter [Understand how an Azure Cosmos DB reservation discount is applied (Grundlegendes zur Anwendung eines Rabatts für Azure Cosmos DB-Reservierungen)](billing-understand-cosmosdb-reservation-charges.md).
 

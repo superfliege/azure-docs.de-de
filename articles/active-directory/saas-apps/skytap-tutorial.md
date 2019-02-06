@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 754697682470ac3c1f982e6cb1fc5f6043f3b92c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6466e40fca954d41a32424c55b8ee465fb7ad7ec
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438129"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skytap"></a>Tutorial: Azure Active Directory-Integration in Skytap
 
@@ -167,7 +167,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-skytap-test-user"></a>Erstellen eines Skytap-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Skytap eine Benutzerin namens Britta Simon. Das [Skytap-Supportteam](mailto:support@skytap.com) kann Sie dabei unterstützen, Benutzer der Skytap-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Skytap eine Benutzerin namens Britta Simon. Das  [Skytap-Supportteam](mailto:support@skytap.com) kann Sie dabei unterstützen, Benutzer der Skytap-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

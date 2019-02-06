@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Reviewsnap | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Reviewsnap | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Reviewsnap konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b00fb373-2b31-4dcf-84ce-abc29e4c639c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8c66985c7a1d9084ab2a264b1ba799b1fdfa3b0f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 421031713a8c0677670a13d8190aec7c0113043a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448413"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195759"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Tutorial: Azure Active Directory-Integration in Reviewsnap
+# <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Tutorial: Azure Active Directory-Integration mit Reviewsnap
 
 In diesem Tutorial erfahren Sie, wie Sie Reviewsnap in Azure Active Directory (Azure AD) integrieren.
 
@@ -170,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-reviewsnap-test-user"></a>Erstellen eines Reviewsnap-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Reviewsnap eine Benutzerin namens Britta Simon. Das [Reviewsnap-Supportteam](mailto:support@reviewsnap.com) kann Sie dabei unterstützen, Benutzer der Reviewsnap-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Reviewsnap eine Benutzerin namens Britta Simon. Das  [Reviewsnap-Supportteam](mailto:support@reviewsnap.com) kann Sie dabei unterstützen, Benutzer der Reviewsnap-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b985521fdcfc5ca67b6410719ad72c0962004df6
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 22d83eb617c544a374f1f6b502803d4ead214492
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499601"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182233"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenz für die API für die Bing-Suche nach ortsansässigen Unternehmen v7
 
@@ -71,7 +71,7 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderlichen Parameter Finden Sie in der Spalte „Erforderlich“. Sie müssen die Abfrageparameter URL-codieren.  
   
   
-|NAME|Wert|Typ|Erforderlich|  
+|NAME|Wert|Type|Erforderlich|  
 |----------|-----------|----------|--------------|
 |<a name="count" />count|Die Anzahl der zurückzugebenden Ergebnisse, beginnend mit dem durch den Parameter `offset` angegebenen Index.|Zeichenfolge|Nein |   
 |<a name="localCategories" />localCategories|Liste der Optionen, die die Suche nach Unternehmenskategorie definieren.  Weitere Informationen finden Sie unter [Kategorien für die Suche nach ortsansässigen Unternehmen](local-categories.md).|Zeichenfolge|Nein |  
@@ -95,7 +95,7 @@ Im Folgenden finden Sie die JSON-Antwortobjekte, die die Antwort enthalten könn
 ### <a name="error"></a>Error  
 Definiert den aufgetretenen Fehler.  
   
-|Element|BESCHREIBUNG|Typ|  
+|Element|BESCHREIBUNG|Type|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|  
 |<a name="error-message" />message|Eine Beschreibung des Fehlers.|Zeichenfolge|  
@@ -108,7 +108,7 @@ Definiert den aufgetretenen Fehler.
 ### <a name="errorresponse"></a>ErrorResponse  
 Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fehlschlägt.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis.|Zeichenfolge|  
 |<a name="errors" />errors|Eine Liste von Fehlern, die die Gründe beschreiben, warum die Anforderung fehlgeschlagen ist.|[Error](#error)[]|  
@@ -118,7 +118,7 @@ Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fe
 ### <a name="license"></a>Lizenz  
 Definiert die Lizenz, unter der der Text oder das Foto verwendet werden kann.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |name|Der Name der Lizenz.|Zeichenfolge|  
 |URL|Die URL zu einer Website, auf der der Benutzer weitere Informationen zur Lizenz erhalten kann.<br /><br /> Verwenden Sie den Namen und die URL, um einen Link zu erstellen.|Zeichenfolge|  
@@ -127,7 +127,7 @@ Definiert die Lizenz, unter der der Text oder das Foto verwendet werden kann.
 ### <a name="link"></a>Link  
 Definiert die Komponenten eines Links.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis.|Zeichenfolge|  
 |text|Der Anzeigetext.|Zeichenfolge|  
@@ -141,7 +141,7 @@ Definiert einen Herausgeber.
   
 Beachten Sie, dass ein Herausgeber möglicherweise seinen Namen oder seine Website oder beide Angaben bereitstellt.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |name|Der Name des Herausgebers.|Zeichenfolge|  
 |URL|Die URL zur Website des Herausgebers.<br /><br /> Beachten Sie, dass der Herausgeber möglicherweise keine Website bereitstellt.|Zeichenfolge|  
@@ -151,7 +151,7 @@ Beachten Sie, dass ein Herausgeber möglicherweise seinen Namen oder seine Websi
 ### <a name="place"></a>Ort  
 Definiert Informationen zu einem ortsansässigen Unternehmen, z.B. ein Restaurant oder Hotel.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis, die auf einen der folgenden Werte festgelegt werden kann:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurant</ul><li>|Zeichenfolge|  
 |address|Die Postadresse, an der sich die Entität befindet.|[PostalAddress](#postaladdress)|  
@@ -165,7 +165,7 @@ Definiert Informationen zu einem ortsansässigen Unternehmen, z.B. ein Restauran
 ### <a name="querycontext"></a>QueryContext  
 Definiert den Abfragekontext, den Bing für die Anforderung verwendet hat.  
   
-|Element|BESCHREIBUNG|Typ|  
+|Element|BESCHREIBUNG|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|Ein boolescher Wert, der angibt, ob die angegebene Abfrage nicht jugendfreie Inhalte aufweist. Der Wert ist **TRUE**, wenn die Abfrage nicht jugendfreie Inhalte aufweist, andernfalls ist er **FALSE**.|Boolescher Wert|  
 |alterationOverrideQuery|Die zu verwendende Abfragezeichenfolge, um Bing zu zwingen, die ursprüngliche Zeichenfolge zu verwenden. Wenn die Abfragezeichenfolge z.B. *saling downwind* lautet, lautet die Abfragezeichenfolge zum Überschreiben *+saling downwind*. Denken Sie daran, die Abfragezeichenfolge mit den Ergebnissen in *%2Bsaling+downwind* zu codieren.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|Zeichenfolge|  
@@ -174,19 +174,19 @@ Definiert den Abfragekontext, den Bing für die Anforderung verwendet hat.
 |originalQuery|Die Abfragezeichenfolge wie in der Anforderung angegeben.|Zeichenfolge|  
 
 ### <a name="identifiable"></a>Identifiable
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |-------------|-----------------|----------|
 |id|Ein Ressourcenbezeichner.|Zeichenfolge|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiert eine Suchergebnisgruppe, z.B. „mainline“.
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |-------------|-----------------|----------|
 |items|Eine Liste der Suchergebnisse, die in der Gruppe angezeigt werden sollen.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiert ein anzuzeigendes Suchergebniselement.
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Ein nullbasierter Index des Elements in der Antwort, das angezeigt werden soll. Wenn das Element dieses Feld nicht enthält, werden alle Elemente in der Antwort angezeigt. Beispielsweise werden alle Artikel in der News-Antwort angezeigt.|Ganze Zahl |
 |answerType|Die Antwort, die das anzuzeigende Element enthält. Beispiel: News.<br /><br />Verwenden Sie den Typ, um nach der Antwort im SearchResponse-Objekt zu suchen. Der Typ ist der Name eines SearchResponse-Felds.<br /><br /> Verwenden Sie diesen Antworttyp jedoch nur, wenn dieses Objekt das value-Feld enthält. Ignorieren Sie ihn andernfalls.|Zeichenfolge|
@@ -207,7 +207,7 @@ Definiert das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anfo
   
 Beachten Sie Folgendes: Wenn der Dienst einen Denial-of-Service-Angriff vermutet, ist die Anforderung erfolgreich (HTTP-Statuscode: 200 OK). Der Antworttext ist jedoch leer.  
   
-|NAME|Wert|Typ|  
+|NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis, der auf SearchResponse festgelegt wird.|Zeichenfolge|  
 |places|Eine Liste der Entitäten, die für die Suchabfrage relevant sind.|JSON-Objekt|  

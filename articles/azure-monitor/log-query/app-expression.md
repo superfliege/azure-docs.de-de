@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: e83ba321a98e40f07ff82e68c7961c2a6a49076d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191834"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104659"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>app()-Ausdruck in Log Analytics-Abfragen
 
@@ -48,6 +48,7 @@ Der Ausdruck `app` wird in Log Analytics-Abfragen verwendet, um Daten aus einer 
 * Sie benötigen Lesezugriff auf die Anwendung.
 * Bei der Identifizierung einer Anwendung über ihren Namen wird vorausgesetzt, dass er in allen zugänglichen Abonnements eindeutig ist. Sollten mehrere Anwendungen mit dem angegebenen Namen vorhanden sein, ist die Abfrage aufgrund der Mehrdeutigkeit nicht erfolgreich. In diesem Fall muss einer der anderen Bezeichner verwendet werden.
 * Verwenden Sie den verwandten Ausdruck [workspace](workspace-expression.md) für übergreifende Abfragen über Log Analytics-Arbeitsbereiche.
+* Der app()-Ausdruck wird derzeit bei Verwendung des Azure-Portals nur dann zum Erstellen einer [benutzerdefinierten Warnungsregel für die Protokollsuche](../platform/alerts-log.md) in der Suchabfrage unterstützt, wenn als Ressource für die Warnungsregel eine Application Insights-Anwendung verwendet wird.
 
 ## <a name="examples"></a>Beispiele
 

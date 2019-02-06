@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66f850225faba8d45eaa07493a0817c9ed0ed52b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077741"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075583"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -32,11 +32,17 @@ Als Microsoft-Partner können Sie die Azure-Nutzung allen Azure-Ressourcen zuord
 - Azure Resource Manager-Vorlagen: Resource Manager-Vorlagen oder Lösungsvorlagen dienen zum Bereitstellen der Azure-Dienste zum Ausführen der Software des Partners. Partner können Resource Manager-Vorlagen erstellen, um die Infrastruktur und Konfiguration ihrer Azure-Lösung zu definieren. Mit einer Resource Manager-Vorlage können Sie und Ihre Kunden die Lösung während des gesamten Lebenszyklus bereitstellen. Sie können sicher sein, dass Ihre Ressourcen in einem konsistenten Zustand bereitgestellt werden. 
 - Azure Resource Manager-APIs: Partner können die Resource Manager-APIs direkt aufrufen, um eine Resource Manager-Vorlage bereitzustellen oder um API-Aufrufe für die direkte Bereitstellung von Azure-Diensten zu generieren. 
 
-Die Zuordnung der Nutzung durch Kunden ist für alle [Lösungsvorlagen](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) erforderlich, die über den Azure Marketplace veröffentlicht werden. 
+Die Zuordnung des Verbrauchs zu Kunden ist für [Azure-Anwendungsangebote](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) erforderlich, die über den Azure Marketplace veröffentlicht werden.
 
 ## <a name="use-resource-manager-templates"></a>Verwenden von Resource Manager-Vorlagen
 
-Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonnement eines Kunden bereitgestellt. Wenn Sie eine Resource Manager-Vorlage haben, die im Azure Marketplace, auf GitHub oder als Schnellstart verfügbar ist, sollte das Ändern der Vorlage für diese neue Nachverfolgungsmethode unkompliziert sein. Weitere Informationen finden Sie unter [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonnement eines Kunden bereitgestellt. Wenn Sie eine Resource Manager-Vorlage haben, die im Azure Marketplace, auf GitHub oder als Schnellstart verfügbar ist, sollte das Ändern der Vorlage für diese neue Nachverfolgungsmethode unkompliziert sein.
+
+Weitere Informationen zum Erstellen und Veröffentlichen von Lösungsvorlagen finden Sie unter:
+
+* [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
+* [Azure-Anwendungsangebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)
+* Video: [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
 
 ## <a name="add-a-guid-to-your-template"></a>Hinzufügen einer GUID zu Ihrer Vorlage

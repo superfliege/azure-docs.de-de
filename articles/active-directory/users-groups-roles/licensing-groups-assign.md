@@ -10,16 +10,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 423842d3e2485334a916423e997c12669a126adb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215003"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155067"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Zuweisen von Lizenzen zu Benutzer nach Gruppenmitgliedschaft in Azure Active Directory
 
@@ -77,9 +77,9 @@ Wir haben nun eine Lizenzvorlage für die Gruppe „HR Department“ angegeben. 
 
 3. Ausführlichere Informationen zur Lizenzverarbeitung finden Sie unter **Azure Active Directory** > **Benutzer und Gruppen** > *Gruppenname* > **Überwachungsprotokolle**. Beachten Sie folgende Aktivitäten:
 
-   - Aktivität: **Starten der gruppenbasierten Lizenzzuweisung zu Benutzern**. Dies wird protokolliert, wenn das System die Änderung der Lizenzzuweisung für die Gruppe verarbeitet und beginnt, diese für alle Benutzer zu übernehmen. Das Protokoll enthält Informationen über die erfolgte Änderung.
+   - Aktivität: **Start applying group based license to users** (Starten der gruppenbasierten Lizenzzuweisung zu Benutzern). Dies wird protokolliert, wenn das System die Änderung der Lizenzzuweisung für die Gruppe verarbeitet und beginnt, diese für alle Benutzer zu übernehmen. Das Protokoll enthält Informationen über die erfolgte Änderung.
 
-   - Aktivität: **Beenden der gruppenbasierten Lizenzzuweisung zu Benutzern**. Wird protokolliert, wenn das System alle Benutzer in der Gruppe verarbeitet hat. Das Protokoll enthält eine Übersicht über die Anzahl erfolgreich verarbeiteter Benutzer und über die Anzahl von Benutzern, denen keine Gruppenlizenzen zugewiesen werden konnten.
+   - Aktivität: **Finish applying group based license to users** (Gruppenbasierte Lizenzzuweisung zu Benutzern fertig stellen). Wird protokolliert, wenn das System alle Benutzer in der Gruppe verarbeitet hat. Das Protokoll enthält eine Übersicht über die Anzahl erfolgreich verarbeiteter Benutzer und über die Anzahl von Benutzern, denen keine Gruppenlizenzen zugewiesen werden konnten.
 
    [Lesen Sie diesen Abschnitt](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity), um mehr darüber zu erfahren, wie Überwachungsprotokolle dazu verwendet werden können, um durch die gruppenbasierte Lizenzierung vorgenommene Änderungen zu analysieren.
 

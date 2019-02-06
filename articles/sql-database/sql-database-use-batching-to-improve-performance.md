@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 01/25/2019
+ms.openlocfilehash: f347543bbea11329cf4bb7c03dac6ccf7f04ac77
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160807"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455387"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
+
 Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels zunächst beispielhaft einige Testergebnisse behandelt, die sequenzielle und batchbasierte SQL-Datenbankanforderungen miteinander vergleichen. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
 
-## <a name="why-is-batching-important-for-sql-database"></a>Warum ist die Batchverarbeitung für die SQL-Datenbank wichtig?
+## <a name="why-is-batching-important-for-sql-database"></a>Warum ist die Batchverarbeitung für SQL-Datenbank wichtig?
+
 Die Batchverarbeitung von Aufrufen an einen Remotedienst ist eine bewährte Strategie zur Verbesserung von Leistung und Skalierbarkeit. Für jede Interaktion mit einem Remotedienst (also etwa für Serialisierung, Netzwerkübertragung und Deserialisierung) fallen feste Verarbeitungskosten an. Durch das Zusammenfassen vieler einzelner Transaktionen in einem einzigen Batch werden diese Kosten minimiert.
 
 In diesem Artikel gehen wir auf verschiedene Batchverarbeitungsstrategien und -szenarien für SQL-Datenbank ein. Diese Strategien sind zwar auch für lokale Anwendungen wichtig, die SQL Server verwenden, es gibt jedoch einige Gründe, die Verwendung der Batchverarbeitung speziell für SQL-Datenbank hervorzuheben:
@@ -36,13 +38,14 @@ Die Verwendung von SQL-Datenbank hat unter anderem den Vorteil, dass Sie die Ser
 Im ersten Teil dieses Artikels werden verschiedene Batchverarbeitungstechniken für .NET-Anwendungen untersucht, die SQL-Datenbank verwenden. In den letzten beiden Abschnitten werden Batchverarbeitungsrichtlinien und -szenarien behandelt.
 
 ## <a name="batching-strategies"></a>Batchverarbeitungsstrategien
+
 ### <a name="note-about-timing-results-in-this-article"></a>Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels
+
 > [!NOTE]
 > Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [DTU-Dienstebenen](sql-database-service-tiers-dtu.md) oder [Dienstebenen virtueller Kerne](sql-database-service-tiers-vcore.md) erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
-> 
-> 
 
 ### <a name="transactions"></a>Transaktionen
+
 Es kommt Ihnen vielleicht etwas merkwürdig vor, die Erläuterung der Batchverarbeitung mit Informationen zu Transaktionen zu beginnen. Die Verwendung clientseitiger Transaktionen hat jedoch dezente Auswirkungen auf die serverseitige Batchverarbeitung, die zu einer Verbesserung der Leistung beitragen. Transaktionen können außerdem mit nur wenigen Codezeilen hinzugefügt werden. Dadurch lässt sich ohne großen Aufwand die Leistung sequenzieller Vorgänge optimieren.
 
 Der folgende C#-Code enthält eine Sequenz von Einfüge- und Aktualisierungsvorgängen für eine einfache Tabelle:
@@ -118,6 +121,7 @@ Das vorherige Beispiel zeigt, dass Sie jedem ADO.NET-Code mit nur zwei Zeilen ei
 Weitere Informationen zu Transaktionen in ADO.NET finden Sie unter [Lokale Transaktionen in ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
 ### <a name="table-valued-parameters"></a>Tabellenwertparameter
+
 Tabellenwertparameter unterstützen benutzerdefinierte Tabellentypen als Parameter in Transact-SQL-Anweisungen, gespeicherten Prozeduren und Funktionen. Mithilfe dieser clientseitigen Batchverarbeitungstechnik können Sie innerhalb des Tabellenwertparameters mehrere Datenzeilen senden. Zur Verwendung von Tabellenwertparametern müssen Sie zunächst einen Tabellentyp definieren. Die folgende Transact-SQL-Anweisung erstellt einen Tabellentyp namens **MyTableType**:
 
     CREATE TYPE MyTableType AS TABLE 
@@ -196,6 +200,7 @@ Der durch die Batchverarbeitung bedingte Leistungsgewinn ist sofort ersichtlich.
 Weitere Informationen zu Tabellenwertparametern finden Sie unter [Tabellenwertparameter](https://msdn.microsoft.com/library/bb510489.aspx).
 
 ### <a name="sql-bulk-copy"></a>SQL-Massenkopieren
+
 SQL-Massenkopieren ist eine weitere Möglichkeit, um große Datenmengen in eine Zieldatenbank einzufügen. .NET-Anwendungen können für Masseneinfügevorgänge die Klasse **SqlBulkCopy** verwenden. **SqlBulkCopy** funktioniert ähnlich wie das Befehlszeilentool **Bcp.exe** oder die Transact-SQL-Anweisung **BULK INSERT**. Das folgende Codebeispiel zeigt das Massenkopieren der Zeilen aus der Quelltabelle **DataTable**in die Zieltabelle „MyTable“ in SQL Server:
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -233,6 +238,7 @@ Bei kleineren Batches wurde mit Tabellenwertparametern eine bessere Leistung erz
 Weitere Informationen zum Massenkopieren in ADO.NET finden Sie unter [Massenkopiervorgänge in SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
 ### <a name="multiple-row-parameterized-insert-statements"></a>Mehrzeilige parametrisierte INSERT-Anweisungen
+
 Eine Alternative für kleine Batches ist die Erstellung einer großen parametrisierten INSERT-Anweisung, die mehrere Zeilen eingefügt. Diese Technik wird im folgenden Codebeispiel veranschaulicht.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -272,12 +278,15 @@ Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von insert-An
 Für Batches mit weniger als 100 Zeilen kann dieser Ansatz etwas schneller sein. Auch wenn die Verbesserung eher überschaubar ausfällt, ist diese Technik dennoch eine weitere Option für Ihr individuelles Anwendungsszenario.
 
 ### <a name="dataadapter"></a>DataAdapter
+
 Mithilfe der Klasse **DataAdapter** können Sie ein Objekt vom Typ **DataSet** ändern und die Änderungen anschließend als INSERT-, UPDATE- und DELETE-Vorgang übermitteln. Beachten Sie bei einer solchen Verwendung des Objekts **DataAdapter** , dass für jeden einzelnen Vorgang separate Aufrufe ausgeführt werden. Verwenden Sie zur Verbesserung der Leistung die Eigenschaft **UpdateBatchSize** mit der Anzahl von Vorgängen, für die eine gleichzeitige Batchverarbeitung durchgeführt werden soll. Weitere Informationen finden Sie unter [Ausführen von Batchoperationen mit DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Entity Framework
+
 Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Problemumgehungen wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: Sie können diese Diskussion unter [Design Meeting Notes – August 2, 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012) (Anmerkungen zum Design-Meeting vom 2. August 2012) nachlesen.
 
 ### <a name="xml"></a>XML
+
 Der Vollständigkeit halber sollten wir auch auf XML als Batchverarbeitungsstrategie eingehen. Allerdings bietet die Verwendung von XML gegenüber anderen Methoden keinerlei Vorteile und sogar einige Nachteile. Der Ansatz ist vergleichbar mit Tabellenwertparametern, eine XML-Datei oder eine Zeichenfolge wird jedoch nicht an eine benutzerdefinierte Tabelle, sondern an eine gespeicherte Prozedur übergeben. Die gespeicherte Prozedur analysiert die Befehle in der gespeicherten Prozedur.
 
 Dieser Ansatz bringt einige Nachteile mit sich:
@@ -289,14 +298,17 @@ Dieser Ansatz bringt einige Nachteile mit sich:
 Aus diesen Gründen wird die Verwendung von XML für Batchabfragen nicht empfohlen.
 
 ## <a name="batching-considerations"></a>Überlegungen zur Batchverarbeitung
+
 Die folgenden Abschnitte enthalten weitere Hinweise zur Verwendung der Batchverarbeitung in SQL-Datenbankanwendungen.
 
 ### <a name="tradeoffs"></a>Kompromisse
+
 Je nach Architektur muss bei der Batchverarbeitung unter Umständen zwischen Leistung und Stabilität abgewogen werden. Nehmen wir als Beispiel einen unerwarteten Ausfall Ihrer Rolle: Wenn Sie eine einzelne Zeile mit Daten verlieren, sind die Auswirkungen natürlich geringer als beim Verlust eines großen Batches nicht übermittelter Zeilen. Wenn Sie Zeilen puffern und erst innerhalb eines bestimmten Zeitfensters an die Datenbank senden, besteht ein höheres Risiko.
 
 Überlegen Sie sich aufgrund dieses Umstands, welche Vorgänge Sie zu einem Batch zusammenfassen. Bei weniger wichtigen Daten kann eine offensivere Batchverarbeitung (größere Batches und großzügigere Zeitfenster) gewählt werden.
 
 ### <a name="batch-size"></a>Batchgröße
+
 In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in der Regel keinerlei Vorteile. Tatsächlich wurde durch diese Aufspaltung häufig sogar ein schlechteres Ergebnis erzielt als bei der Übermittlung eines einzelnen großen Batches. Nehmen wir beispielsweise an, Sie möchten 1000 Zeilen einfügen. Die folgende Tabelle zeigt, wie lange es dauert, mithilfe von Tabellenwertparametern 1000 in kleinere Batches aufgeteilte Zeilen einzufügen:
 
 | Batchgröße | Iterationen | Tabellenwertparameter (ms) |
@@ -318,6 +330,7 @@ Darüber hinaus ist Folgendes zu berücksichtigen: Wenn der Batch insgesamt zu g
 Wägen Sie schließlich die Batchgröße gegen die mit der Batchverarbeitung verbundenen Risiken ab. Überlegen Sie, welche Auswirkungen eine Wiederholung des Vorgangs oder der Verlust der Daten im Batch bei vorübergehenden Fehlern oder einem Ausfall der Rolle hat.
 
 ### <a name="parallel-processing"></a>Parallele Verarbeitung
+
 Was, wenn Sie die Batchgröße verringern, aber mehrere Threads verwenden, um die Vorgänge auszuführen? Auch hier ergaben unsere Tests, dass bei Verwendung mehrerer kleinerer Multithread-Batches in der Regel schlechtere Ergebnisse erzielt werden als mit einem einzelnen größeren Batch. Im folgenden Test wurden 1000 Zeilen in einem bzw. in mehreren parallelen Batches eingefügt. Dieser Test zeigt, dass die gleichzeitige Verwendung mehrerer Batches die Leistung beeinträchtigt.
 
 | Batchgröße [Iterationen] | Zwei Threads (ms) | Vier Threads (ms) | Sechs Threads (ms) |
@@ -346,14 +359,17 @@ Bei einigen Designs kann die parallele Ausführung von kleineren Batches den Anf
 Bei Verwendung der parallelen Ausführung empfiehlt es sich, die maximale Anzahl von Arbeitsthreads festzulegen. Eine geringere Anzahl sorgt möglicherweise für weniger Konflikte und eine schnelleren Ausführung. Berücksichtigen Sie auch die dadurch bedingte zusätzliche Last für die Zieldatenbank (sowohl bei Verbindungen als auch bei Transaktionen).
 
 ### <a name="related-performance-factors"></a>Verwandte Leistungsfaktoren
+
 Die Hinweise zur Datenbankleistung wirken sich üblicherweise auch auf die Batchverarbeitung aus. So verschlechtert sich etwa bei Tabellen mit einem großen Primärschlüssel oder vielen nicht gruppierten Indizes die Einfügeleistung.
 
 Wenn Tabellenwertparameter eine gespeicherte Prozedur verwenden, können Sie am Anfang der Prozedur den Befehl **SET NOCOUNT ON** verwenden. Mit dieser Anweisung wird die Rückgabe der Anzahl betroffener Zeilen in der Prozedur unterdrückt. In unseren Tests hatte die Verwendung von **SET NOCOUNT ON** allerdings keinerlei Auswirkung oder führte sogar zu Leistungseinbußen. Im Test wurde eine einfache gespeicherte Prozedur mit einem einzelnen Befehl vom Typ **INSERT** aus dem Tabellenwertparameter verwendet. Es mag sein, dass komplexere gespeicherte Prozeduren von dieser Anweisung profitieren. Erwarten Sie jedoch nicht, dass das Hinzufügen von **SET NOCOUNT ON** zu Ihrer gespeicherten Prozedur automatisch zu einer Leistungsverbesserung führt. Testen Sie Ihre gespeicherte Prozedur mit und ohne die Anweisung **SET NOCOUNT ON** , um die Wirkung zu ermitteln.
 
 ## <a name="batching-scenarios"></a>Batchverarbeitungsszenarien
+
 In den folgenden Abschnitten wird das Verwenden von Tabellenwertparametern in drei Anwendungsszenarien beschrieben. Das erste Szenario zeigt, wie Pufferung und Batchverarbeitung kombiniert werden können. Das zweite Szenario verbessert die Leistung durch Ausführen von Master/Detail-Vorgängen in einem einzelnen gespeicherten Prozeduraufruf. Das letzte Szenario veranschaulicht die Verwendung von Tabellenwertparametern in einem UPSERT-Vorgang.
 
 ### <a name="buffering"></a>Pufferung
+
 Einige Szenarien bieten sich zwar ganz offensichtlich für die Batchverarbeitung an, es gibt aber auch Szenarien, die von einer verzögerten Verarbeitung durch die Batchverarbeitung profitieren können. Im Falle eines unerwarteten Fehlers birgt eine verzögerte Verarbeitung allerdings ein höheres Datenverlustrisiko. Über dieses Risiko müssen Sie sich im Klaren sein und die Konsequenzen abwägen.
 
 Nehmen wir zum Beispiel eine Anwendung, die den Navigationsverlauf der einzelnen Benutzer nachverfolgt. Die Anwendung könnte nun bei jeder Seitenanforderung die Datenbank aufrufen und den Seitenaufruf des Benutzers dokumentieren. Eine bessere Leistung und Skalierbarkeit wird jedoch erzielt, wenn die Navigationsaktivitäten des Benutzers gepuffert und dann in Batches an die Datenbank übermittelt werden. Die Aktualisierung der Datenbank kann auf der Grundlage der verstrichenen Zeit und/oder der Puffergröße ausgelöst werden. So können Sie beispielsweise mithilfe einer Regel festlegen, dass der Batch nach 20 Sekunden oder bei Erreichen eines Pufferinhalts von 1000 Elementen verarbeitet werden soll.
@@ -362,6 +378,7 @@ Im folgenden Codebeispiel werden gepufferte Ereignisse, die von einer Überwachu
 
 Die folgende NavHistoryData-Klasse modelliert die Benutzernavigationsdetails. Sie enthält grundlegende Informationen wie Benutzer-ID, aufgerufene URL und Zugriffszeit.
 
+```c#
     public class NavHistoryData
     {
         public NavHistoryData(int userId, string url, DateTime accessTime)
@@ -370,9 +387,11 @@ Die folgende NavHistoryData-Klasse modelliert die Benutzernavigationsdetails. Si
         public string URL { get; set; }
         public DateTime AccessTime { get; set; }
     }
+```
 
 Die NavHistoryDataMonitor-Klasse ist zuständig für die Pufferung der Benutzernavigationsdaten in der Datenbank. Die enthaltene RecordUserNavigationEntry-Methode dient zum Auslösen eines Ereignisses vom Typ **OnAdded** . Der folgende Code zeigt die Konstruktorlogik, die mithilfe von „Rx“ ein auf dem Ereignis basierendes ObservableCollection-Objekt erstellt. Anschließend wird das ObservableCollection-Objekt mit der Buffer-Methode abonniert. Die Überladung gibt an, dass der Puffer alle 20 Sekunden oder jeweils bei Erreichen von 1.000 Einträgen gesendet werden soll.
 
+```c#
     public NavHistoryDataMonitor()
     {
         var observableData =
@@ -380,9 +399,11 @@ Die NavHistoryDataMonitor-Klasse ist zuständig für die Pufferung der Benutzern
 
         observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
     }
+```
 
 Der Handler konvertiert alle gepufferten Elemente in einen Tabellenwerttyp und übergibt diesen dann an eine gespeicherte Prozedur, die den Batch verarbeitet. Der folgende Code zeigt die vollständige Definition für die NavHistoryDataEventArgs- und die NavHistoryDataMonitor-Klasse:
 
+```c#
     public class NavHistoryDataEventArgs : System.EventArgs
     {
         public NavHistoryDataEventArgs(NavHistoryData data) { Data = data; }
@@ -439,12 +460,15 @@ Der Handler konvertiert alle gepufferten Elemente in einen Tabellenwerttyp und �
             }
         }
     }
+```
 
 Zur Verwendung dieser Pufferungsklasse erstellt die Anwendung ein statisches NavHistoryDataMonitor-Objekt. Bei jedem Seitenaufruf eines Benutzers ruft die Anwendung die NavHistoryDataMonitor.RecordUserNavigationEntry-Methode auf. Die Pufferungslogik sendet die Einträge in Batches an die Datenbank.
 
 ### <a name="master-detail"></a>Master/Detail
-Tabellenwertparameter eignen sich für einfache INSERT-Szenarien. Bei Einfügevorgängen mit mehreren Tabellen kann sich die Batchverarbeitung jedoch als etwas schwieriger erweisen. Ein gutes Beispiel ist das Master/Detail-Szenario. Die Mastertabelle gibt die primäre Entität an. In mindestens einer Detailtabelle werden Daten zur Entität gespeichert. Im vorliegenden Szenario erzwingen Fremdschlüsselbeziehungen die Beziehung zwischen Details und einer eindeutigen Masterentität. Stellen Sie sich eine vereinfachte Version einer PurchaseOrder-Tabelle und die dazugehörige OrderDetail-Tabelle vor. Die folgende Transact-SQL-Anweisung erstellt eine PurchaseOrder-Tabelle mit vier Spalten („OrderID“, „OrderDate“, „CustomerID“ und „Status“):
 
+Tabellenwertparameter eignen sich für einfache INSERT-Szenarien. Bei Einfügevorgängen mit mehreren Tabellen kann sich die Batchverarbeitung jedoch als etwas schwieriger erweisen. Ein gutes Beispiel ist das Master/Detail-Szenario. Die Mastertabelle gibt die primäre Entität an. In mindestens einer Detailtabelle werden Daten zur Entität gespeichert. Im vorliegenden Szenario erzwingen Fremdschlüsselbeziehungen die Beziehung zwischen Details und einer eindeutigen Masterentität. Stellen Sie sich eine vereinfachte Version einer PurchaseOrder-Tabelle und die dazugehörige OrderDetail-Tabelle vor. Die folgende Transact-SQL-Anweisung erstellt die PurchaseOrder-Tabelle mit vier Spalten: „OrderID“, „OrderDate“, „CustomerID“ und „Status“.
+
+```sql
     CREATE TABLE [dbo].[PurchaseOrder](
     [OrderID] [int] IDENTITY(1,1) NOT NULL,
     [OrderDate] [datetime] NOT NULL,
@@ -452,9 +476,11 @@ Tabellenwertparameter eignen sich für einfache INSERT-Szenarien. Bei Einfügevo
     [Status] [nvarchar](50) NOT NULL,
      CONSTRAINT [PrimaryKey_PurchaseOrder] 
     PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
+```
 
-Jeder Auftrag enthält mindestens einen Produktkauf. Die entsprechenden Informationen werden in der PurchaseOrderDetail-Tabelle erfasst. Die folgende Transact-SQL-Anweisung erstellt eine PurchaseOrderDetail-Tabelle mit fünf Spalten („OrderID“, „OrderDetailID“, „ProductID“, „UnitPrice“ und „OrderQty“):
+Jeder Auftrag enthält mindestens einen Produktkauf. Die entsprechenden Informationen werden in der PurchaseOrderDetail-Tabelle erfasst. Die folgende Transact-SQL-Anweisung erstellt die PurchaseOrderDetail-Tabelle mit fünf Spalten: „OrderID“, „OrderDetailID“, „ProductID“, „UnitPrice“ und „OrderQty“.
 
+```sql
     CREATE TABLE [dbo].[PurchaseOrderDetail](
     [OrderID] [int] NOT NULL,
     [OrderDetailID] [int] IDENTITY(1,1) NOT NULL,
@@ -463,15 +489,19 @@ Jeder Auftrag enthält mindestens einen Produktkauf. Die entsprechenden Informat
     [OrderQty] [smallint] NULL,
      CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
     ( [OrderID] ASC, [OrderDetailID] ASC ))
+```
 
 Die OrderID-Spalte in der PurchaseOrderDetail-Tabelle muss auf einen Auftrag aus der PurchaseOrder-Tabelle verweisen. Diese Einschränkung wird durch die folgende Definition eines Fremdschlüssels erzwungen:
 
+```sql
     ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
     CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
     REFERENCES [dbo].[PurchaseOrder] ([OrderID])
+```
 
 Zur Verwendung von Tabellenwertparametern muss für jede Zieltabelle ein benutzerdefinierter Tabellentyp vorhanden sein:
 
+```sql
     CREATE TYPE PurchaseOrderTableType AS TABLE 
     ( OrderID INT,
       OrderDate DATETIME,
@@ -485,9 +515,11 @@ Zur Verwendung von Tabellenwertparametern muss für jede Zieltabelle ein benutze
       UnitPrice MONEY,
       OrderQty SMALLINT );
     GO
+```
 
 Definieren Sie anschließend eine gespeicherte Prozedur, die Tabellen dieser Art akzeptiert. Mit der Prozedur kann eine Anwendung einen Satz von Aufträgen und Auftragsdetails lokal in einem einzigen Aufruf als Batch verarbeiten. Der folgende Transact-SQL-Code stellt die vollständige Deklaration der gespeicherten Prozedur für dieses Beispiel bereit:
 
+```sql
     CREATE PROCEDURE sp_InsertOrdersBatch (
     @orders as PurchaseOrderTableType READONLY,
     @details as PurchaseOrderDetailTableType READONLY )
@@ -528,11 +560,13 @@ Definieren Sie anschließend eine gespeicherte Prozedur, die Tabellen dieser Art
     FROM @details D
     JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
     GO
+```
 
 In diesem Beispiel werden die tatsächlichen OrderID-Werte aus den neu eingefügten Zeilen in der lokal definierten @IdentityLink-Tabelle gespeichert. Diese Auftrags-IDs unterscheiden sich von den temporären OrderID-Werten in den Tabellenwertparametern @orders und @details. Aus diesem Grund verbindet die @IdentityLink-Tabelle anschließend die OrderID-Werte aus dem @orders-Parameter mit den tatsächlichen OrderID-Werten für die neuen Zeilen in der PurchaseOrder-Tabelle. Nach diesem Schritt kann die @IdentityLink-Tabelle das Einfügen der Auftragsdetails mit der tatsächlichen Auftrags-ID vereinfachen, die die Fremdschlüsseleinschränkung erfüllt.
 
 Diese gespeicherte Prozedur kann vom Code oder von anderen Transact-SQL-Aufrufen verwendet werden. Ein entsprechendes Codebeispiel finden Sie in diesem Artikel im Abschnitt „Tabellenwertparameter“. Der folgende Transact-SQL-Code zeigt, wie „Sp_InsertOrdersBatch“ aufgerufen wird:
 
+```sql
     declare @orders as PurchaseOrderTableType
     declare @details as PurchaseOrderDetailTableType
 
@@ -550,16 +584,19 @@ Diese gespeicherte Prozedur kann vom Code oder von anderen Transact-SQL-Aufrufen
     (3, 4, $10.00, 1)
 
     exec sp_InsertOrdersBatch @orders, @details
+```
 
 Bei dieser Lösung kann jeder Batch eine Gruppe von OrderID-Werten verwenden, die bei 1 beginnen. Diese temporären OrderID-Werte beschreiben die Beziehungen im Batch. Die tatsächlichen OrderID-Werte werden zum Zeitpunkt des Einfügevorgangs bestimmt. Sie können die Anweisungen aus dem vorherigen Beispiel wiederholt ausführen und eindeutige Aufträge in der Datenbank generieren. Fügen Sie daher ggf. weiteren Code oder weitere Datenbanklogik hinzu, um die Generierung doppelter Aufträge zu verhindern, wenn Sie diese Batchverarbeitungstechnik verwenden.
 
 Dieses Beispiel zeigt, dass mithilfe von Tabellenwertparametern auch komplexere Datenbankvorgänge (wie etwa Master/Detail-Vorgänge) als Batch verarbeitet werden können.
 
 ### <a name="upsert"></a>UPSERT
+
 In einem anderen Batchverarbeitungsszenario werden gleichzeitig vorhandene Zeilen aktualisiert und neue Zeilen eingefügt. Dieser Vorgang wird auch als „UPSERT“ („Update + Insert“; „Aktualisieren und Einfügen“) bezeichnet. Dabei werden aber nicht etwa INSERT und UPDATE separat aufgerufen. Stattdessen kommt die MERGE-Anweisung zum Einsatz. Die MERGE-Anweisung kann in einem einzelnen Aufruf sowohl Einfüge- als auch Aktualisierungsvorgänge ausführen.
 
 Tabellenwertparameter können mit der MERGE-Anweisung verwendet werden, um Aktualisierungen und Einfügevorgänge durchzuführen. Nehmen wir beispielsweise eine vereinfachte Mitarbeitertabelle mit den Spalten „EmployeeID“, „FirstName“, „LastName“ und „SocialSecurityNumber“:
 
+```sql
     CREATE TABLE [dbo].[Employee](
     [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
     [FirstName] [nvarchar](50) NOT NULL,
@@ -567,18 +604,22 @@ Tabellenwertparameter können mit der MERGE-Anweisung verwendet werden, um Aktua
     [SocialSecurityNumber] [nvarchar](50) NOT NULL,
      CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
     ([EmployeeID] ASC ))
+```
 
 In diesem Beispiel können Sie den Umstand, dass es sich bei „SocialSecurityNumber“ um einen eindeutigen Wert handelt, zum Ausführen eines MERGE-Vorgangs für mehrere Mitarbeiter nutzen. Erstellen Sie zunächst den benutzerdefinierten Tabellentyp:
 
+```sql
     CREATE TYPE EmployeeTableType AS TABLE 
     ( Employee_ID INT,
       FirstName NVARCHAR(50),
       LastName NVARCHAR(50),
       SocialSecurityNumber NVARCHAR(50) );
     GO
+```
 
 Erstellen Sie als Nächstes eine gespeicherte Prozedur, die mithilfe der MERGE-Anweisung die Aktualisierung und Einfügung vornimmt, oder schreiben Sie entsprechenden Code. Im folgenden Beispiel wird die MERGE-Anweisung für den Tabellenwertparameter @employees vom Typ „EmployeeTableType“ verwendet. Der Inhalt der @employees-Tabelle wird hier nicht angezeigt.
 
+```sql
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
     AS source ([FirstName], [LastName], [SocialSecurityNumber])
@@ -590,10 +631,12 @@ Erstellen Sie als Nächstes eine gespeicherte Prozedur, die mithilfe der MERGE-A
     WHEN NOT MATCHED THEN
        INSERT ([FirstName], [LastName], [SocialSecurityNumber])
        VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
+```
 
 Weitere Informationen finden Sie in der Dokumentation und in den Beispielen für die MERGE-Anweisung. Die gleiche Aufgabe könnte zwar auch durch Aufrufen einer mehrstufigen gespeicherten Prozedur mit separaten INSERT- und UPDATE-Vorgängen durchgeführt werden, die MERGE-Anweisung ist jedoch effizienter. Datenbankcode kann auch Transact-SQL-Aufrufe erstellen, die die MERGE-Anweisung direkt (also ohne zwei Datenbankaufrufe für INSERT und UPDATE) verwenden.
 
 ## <a name="recommendation-summary"></a>Zusammenfassung
+
 Die folgende Liste enthält eine Zusammenfassung der in diesem Artikel behandelten Empfehlungen für die Batchverarbeitung:
 
 * Verwenden Sie Pufferung und Batchverarbeitung, um die Leistung und Skalierbarkeit von SQL-Datenbankanwendungen zu erhöhen.
@@ -614,5 +657,6 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Artikel behandelt
 * Erwägen Sie für weitere Szenarien eine größen- und zeitabhängige Pufferung als Implementierungsoption für die Batchverarbeitung.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md).
 

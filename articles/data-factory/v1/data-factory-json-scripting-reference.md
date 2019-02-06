@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32e0be682d5d216df6741fa38bb0a16e4b323ef6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9f8ffe71743f4832d8ce633f050206d21f411276
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354194"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082196"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -103,10 +103,10 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann,
 | Parallelität |Ganze Zahl  <br/><br/>Maximalwert: 10 |1 |Anzahl von gleichzeitigen Ausführungen der Aktivität.<br/><br/>Legt die Anzahl der parallelen Ausführungen einer Aktivität fest, die für verschiedene Slices stattfinden können. Wenn eine Aktivität beispielsweise eine große Menge verfügbarer Daten durchlaufen muss, kann die Datenverarbeitung durch einen höheren Parallelitätswert beschleunigt werden. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Bestimmt die Reihenfolge der Datenslices, die verarbeitet werden.<br/><br/>Nehmen Sie beispielsweise an, Sie haben zwei Slices (einen um 16:00 Uhr und einen weiteren um 17:00 Uhr), und beide warten auf ihre Ausführung. Wenn Sie „executionPriorityOrder“ auf „NewestFirst“ setzen, wird der Slice von 17 Uhr zuerst verarbeitet. Wenn Sie „executionPriorityOrder“ auf „OldestFirst“ festlegen, wird der Slice von 16 Uhr verarbeitet. |
 | retry |Ganze Zahl <br/><br/>Höchstwert ist 10. |0 |Anzahl der Wiederholungsversuche, bevor die Datenverarbeitung für den Slice als Fehler markiert wird. Die Ausführung der Aktivitäten für einen Datenslice wird bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt. Die Wiederholung erfolgt so bald wie möglich nach dem Fehler. |
-| timeout |Zeitraum |00:00:00 |Timeout für die Aktivität. Beispiel: 00:10:00 (Timeout nach 10 Minuten)<br/><br/>Wenn kein Wert oder 0 angegeben wird, ist das Zeitlimit unendlich.<br/><br/>Wenn die Datenverarbeitungszeit für einen Slice den Timeoutwert überschreitet, wird der Vorgang abgebrochen, und das System versucht, die Verarbeitung zu wiederholen. Die Anzahl der Wiederholungsversuche hängt von der Eigenschaft "retry" ab. Wenn ein Timeout auftritt, lautet der Status „TimedOut“. |
-| delay |Zeitraum |00:00:00 |Geben Sie die Verzögerung an, mit der die Datenverarbeitung des Slice beginnt.<br/><br/>Die Ausführung der Aktivität für einen Datenslice wird gestartet, nachdem die Verzögerung die erwartete Ausführungszeit überschreitet.<br/><br/>Beispiel: 00:10:00 (Verzögerung von 10 Minuten) |
+| timeout |TimeSpan |00:00:00 |Timeout für die Aktivität. Beispiel: 00:10:00 (Timeout nach 10 Minuten)<br/><br/>Wenn kein Wert oder 0 angegeben wird, ist das Zeitlimit unendlich.<br/><br/>Wenn die Datenverarbeitungszeit für einen Slice den Timeoutwert überschreitet, wird der Vorgang abgebrochen, und das System versucht, die Verarbeitung zu wiederholen. Die Anzahl der Wiederholungsversuche hängt von der Eigenschaft "retry" ab. Wenn ein Timeout auftritt, lautet der Status „TimedOut“. |
+| delay |TimeSpan |00:00:00 |Geben Sie die Verzögerung an, mit der die Datenverarbeitung des Slice beginnt.<br/><br/>Die Ausführung der Aktivität für einen Datenslice wird gestartet, nachdem die Verzögerung die erwartete Ausführungszeit überschreitet.<br/><br/>Beispiel: 00:10:00 (Verzögerung von 10 Minuten) |
 | longRetry |Ganze Zahl <br/><br/>Maximalwert: 10 |1 |Die Anzahl von langen Wiederholungsversuchen, bevor die Sliceausführung einen Fehler verursacht.<br/><br/>longRetry-Versuche werden durch longRetryInterval über einen Zeitraum verteilt. Wenn Sie eine Zeit zwischen den Wiederholungsversuchen angeben müssen, verwenden Sie "longRetry". Wenn sowohl „retry“ als auch „longRetry“ angegeben werden, umfasst jeder „longRetry“-Versuch „retry“-Versuche, und die maximale Anzahl von Versuchen errechnet sich aus „retry \* longRetry“.<br/><br/>Beispiel: Die Richtlinie für die Aktivität enthält folgende Einstellungen:<br/>Wiederholung: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Wir nehmen an, dass nur ein Slice auszuführen ist (Status lautet „Waiting“) und dass die Ausführung der Aktivität jedes Mal einen Fehler verursacht. Zunächst würden drei aufeinander folgende Ausführungsversuche durchgeführt. Nach jedem Versuch wäre der Slicestatus „Retry“. Nachdem die ersten drei Versuche durchgeführt wurden, lautet der Slicestatus „LongRetry“.<br/><br/>Nach einer Stunde (Wert von „longRetryInterval“) würden drei weitere aufeinander folgende Ausführungsversuche unternommen werden. Danach würde der Slicestatus "Failed" lauten, und es fänden keine weiteren Versuche statt. Somit wurden insgesamt sechs Versuche unternommen.<br/><br/>Bei einer erfolgreichen Ausführung lautet der Slicestatus „Ready“, und es werden keine weiteren Versuche durchgeführt.<br/><br/>„longRetry“ kann in Situationen verwendet werden, in denen abhängige Daten zu nicht festgelegten Zeiten eingehen oder die gesamte Umgebung, in der die Datenverarbeitung erfolgt, unzuverlässig ist. In solchen Fällen ist die Durchführung von aufeinander folgenden Wiederholungen möglicherweise nicht hilfreich, und die Wiederholung nach einem bestimmten Zeitraum führt vielleicht zur gewünschten Ausgabe.<br/><br/>Vorsicht: Legen Sie für „longRetry“ und „longRetryInterval“ keine hohen Werte fest. In der Regel weisen höhere Werte auf andere Systemprobleme hin. |
-| longRetryInterval |Zeitraum |00:00:00 |Die Verzögerung zwischen langen Wiederholungsversuchen |
+| longRetryInterval |TimeSpan |00:00:00 |Die Verzögerung zwischen langen Wiederholungsversuchen |
 
 ### <a name="typeproperties-section"></a>typeProperties-Abschnitt
 Der Abschnitt „typeProperties“ ist für jede Aktivität unterschiedlich. Transformationsaktivitäten verfügen nur über die Typeigenschaften. Der Abschnitt [DATENTRANSFORMATIONSAKTIVITÄTEN](#data-transformation-activities) in diesem Artikel enthält JSON-Beispiele, in denen Transformationsaktivitäten in einer Pipeline definiert werden.
@@ -4937,7 +4937,7 @@ Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ |Legen Sie die type-Eigenschaft auf **AzureML** fest. |JA |
+| Type |Legen Sie die type-Eigenschaft auf **AzureML** fest. |JA |
 | mlEndpoint |Die Batchbewertungs-URL. |JA |
 | apiKey |Die veröffentlichte API des Arbeitsbereichsmodells. |JA |
 
@@ -4965,7 +4965,7 @@ Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der JSON-
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Typ |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |JA |
+| Type |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |JA |
 | accountName |Name des Azure Data Lake Analytics-Kontos. |JA |
 | dataLakeAnalyticsUri |URI des Azure Data Lake Analytics-Kontos. |Nein  |
 | Autorisierung |Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. |JA |
@@ -5387,7 +5387,7 @@ Beachten Sie folgende Punkte:
 - Die **type**-Eigenschaft ist auf **HDInsightSpark** festgelegt.
 - **rootPath** ist auf **adfspark\\pyFiles** festgelegt, wobei „adfspark“ den Azure-Blobcontainer und „pyFiles“ einen Dateiordner in diesem Container darstellt. In diesem Beispiel ist Azure Blob Storage der dem Spark-Cluster zugeordnete Speicher. Sie können die Datei auf einen anderen Azure-Speicher hochladen. Erstellen Sie in diesem Fall einen verknüpften Azure Storage-Dienst, der das Speicherkonto mit der Data Factory verknüpft. Geben Sie dann den Namen des verknüpften Diensts als Wert für die Eigenschaft **sparkJobLinkedService** an. Details zu dieser und anderen von der Spark-Aktivität unterstützten Eigenschaften finden Sie unter [Eigenschaften von Spark-Aktivitäten](#spark-activity-properties).
 - **entryFilePath** ist auf **test.py** festgelegt. Dies ist die Python-Datei.
-- Die Eigenschaft **getDebugInfo** ist auf **Always** festgelegt. Dies bedeutet, dass Protokolldateien in jedem Fall (Erfolg oder Fehler) erstellt werden.  
+- Die Eigenschaft **getDebugInfo** ist auf **Always** festgelegt. Dies bedeutet, dass Protokolldateien in jedem Fall (Erfolg oder Fehler) erstellt werden.
 
     > [!IMPORTANT]
     > Es wird empfohlen, diese Eigenschaft in einer Produktionsumgebung nicht auf „Always“ festzulegen, sofern Sie kein Problem behandeln möchten.
@@ -5396,13 +5396,13 @@ Beachten Sie folgende Punkte:
 Weitere Informationen zur Aktivität finden Sie im Artikel zur [Spark-Aktivität](data-factory-spark.md).
 
 ## <a name="machine-learning-batch-execution-activity"></a>Machine Learning-Batchausführungsaktivität
-In der JSON-Definition einer Azure ML-Batchausführungsaktivität können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLBatchExecution**. Es ist erforderlich, zuerst einen verknüpften Azure Machine Learning-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLBatchExecution festlegen:
+In der JSON-Definition einer Azure Machine Learning Studio-Batchausführungsaktivität können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLBatchExecution**. Es ist erforderlich, zuerst einen verknüpften Azure Machine Learning-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLBatchExecution festlegen:
 
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
-webServiceInput | Das Dataset, das als Eingabe für den Azure ML-Webdienst übergeben wird. Dieses Dataset muss auch in die Eingaben für die Aktivität eingebunden werden. |Verwenden Sie entweder webServiceInput oder webServiceInputs. |
-webServiceInputs | Geben Sie Datasets an, die als Eingaben für den Azure ML-Webdienst übergeben werden sollen. Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie anstelle der webServiceInput-Eigenschaft die webServiceInputs-Eigenschaft. Datasets, auf die **webServiceInputs** verweist, müssen auch in der Aktivität **inputs** enthalten sein. | Verwenden Sie entweder webServiceInput oder webServiceInputs. |
-webServiceOutputs | Die Datasets, die als Ausgaben für den Azure ML-Webdienst zugewiesen werden. Der Webdienst gibt die Ausgabedaten in diesem Dataset zurück. | JA |
+webServiceInput | Das Dataset, das als Eingabe für den Azure Machine Learning Studio-Webdienst übergeben wird. Dieses Dataset muss auch in die Eingaben für die Aktivität eingebunden werden. |Verwenden Sie entweder webServiceInput oder webServiceInputs. |
+webServiceInputs | Geben Sie die Datasets an, die als Eingaben für den Azure Machine Learning Studio-Webdienst übergeben werden sollen. Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie anstelle der webServiceInput-Eigenschaft die webServiceInputs-Eigenschaft. Datasets, auf die **webServiceInputs** verweist, müssen auch in der Aktivität **inputs** enthalten sein. | Verwenden Sie entweder webServiceInput oder webServiceInputs. |
+webServiceOutputs | Die Datasets, die als Ausgaben für den Azure Machine Learning Studio-Webdienst zugewiesen werden. Der Webdienst gibt die Ausgabedaten in diesem Dataset zurück. | JA |
 globalParameters | Geben Sie Werte für die Webdienstparameter in diesem Abschnitt ein. | Nein  |
 
 ### <a name="json-example"></a>JSON-Beispiel
@@ -5452,7 +5452,7 @@ Im JSON-Beispiel verwendet der bereitgestellte Azure Machine Learning-Webdienst 
 > Nur Eingaben und Ausgaben der AzureMLBatchExecution-Aktivität können als Parameter an den Webdienst übergeben werden. Im JSON-Codeausschnitt oben ist „MLSqlInput“ beispielsweise eine Eingabe für die AzureMLBatchExecution-Aktivität, die über den webServiceInput-Parameter als Eingabe an den Webdienst übergeben wird.
 
 ## <a name="machine-learning-update-resource-activity"></a>Machine Learning-Ressourcenaktualisierungsaktivität
-In der JSON-Definition einer Azure ML-Ressourcenaktualisierungsaktivität können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLUpdateResource**. Es ist erforderlich, zuerst einen verknüpften Azure Machine Learning-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLUpdateResource festlegen:
+In der JSON-Definition einer Azure Machine Learning Studio-Ressourcenaktualisierungsaktivität können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLUpdateResource**. Es ist erforderlich, zuerst einen verknüpften Azure Machine Learning-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLUpdateResource festlegen:
 
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
@@ -5460,7 +5460,7 @@ trainedModelName | Name des erneut trainierten Modells. | JA |
 trainedModelDatasetName | Dataset, das auf die iLearner-Datei verweist, die vom Vorgang für das erneute Trainieren zurückgegeben wird. | JA |
 
 ### <a name="json-example"></a>JSON-Beispiel
-Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Azure ML-Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
+Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Azure Machine Learning Studio-Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine iLearner-Datei als Ausgabe. Die Aktivität ruft den Trainingswebdienst (das als Webdienst bereitgestellte Trainingsexperiment) mit den Trainingseingabedaten auf und empfängt die iLearner-Datei vom Webdienst. „placeholderBlob“ ist nur ein Platzhalter für ein Ausgabedataset, das für den Azure Data Factory-Dienst zum Ausführen der Pipeline erforderlich ist.
 
 
 ```json

@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: trinadhk
-ms.openlocfilehash: a0cbb8650a818c3ae6c839d69bbc9b94f8d080ca
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a5afdd0dca55a5df075acb99e488c932196d95c5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351395"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092294"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
 > [!NOTE]
-> Basierend auf Benutzerfeedback, dass **VM-Sicherungsstapel V2** leicht mit Azure Stack zu verwechseln ist, haben wir die Funktion in **sofortige Wiederherstellung** umbenannt, um eine aktualisierte und bessere Erfahrung bereitzustellen.
+> Aufgrund des Feedbacks von Benutzern wird **VM-Sicherungsstapel V2** in **Sofortige Wiederherstellung** umbenannt, um Verwechslungen mit Azure Stack-Funktionen zu vermeiden.
 
 Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featureverbesserungen:
 

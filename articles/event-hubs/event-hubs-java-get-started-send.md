@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c413c874ca3e1bf46bfa4e5becb184223c5eeb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4da89e0f99832c429091e0a028fafd8943df811a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091283"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300114"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von Java
 
@@ -41,13 +41,13 @@ Fahren Sie nun mit den folgenden Schritten in diesem Tutorial fort:
 
 ## <a name="add-reference-to-azure-event-hubs-library"></a>Hinzufügen von Verweisen auf die Azure Event Hubs-Bibliothek
 
-Die Java-Clientbibliothek für Event Hubs steht für die Verwendung in Maven-Projekten über das [zentrale Maven-Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) bereit. Sie können über die folgende Abhängigkeitsdeklaration in Ihrer Maven-Projektdatei auf diese Bibliothek verweisen: Die aktuelle Version ist 1.0.2:    
+Die Java-Clientbibliothek für Event Hubs steht für die Verwendung in Maven-Projekten über das [zentrale Maven-Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) bereit. Sie können über die folgende Abhängigkeitsdeklaration in Ihrer Maven-Projektdatei auf diese Bibliothek verweisen:
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
@@ -57,11 +57,9 @@ Um einen einfachen Ereignisherausgeber zu erhalten, importieren Sie das Paket *c
 
 ## <a name="write-code-to-send-messages-to-the-event-hub"></a>Schreiben von Code zum Senden von Nachrichten an den Event Hub
 
-Erstellen Sie für das folgende Beispiel zuerst ein neues Maven-Projekt für eine Konsolen-/Shellanwendung in Ihrer bevorzugten Java-Entwicklungsumgebung. Geben Sie der Klassen den Namen `SimpleSend`:     
+Erstellen Sie für das folgende Beispiel zuerst ein neues Maven-Projekt für eine Konsolen-/Shellanwendung in Ihrer bevorzugten Java-Entwicklungsumgebung. Fügen Sie eine Klasse namens `SimpleSend` sowie den folgenden Code zur Klasse hinzu:
 
 ```java
-package com.microsoft.azure.eventhubs.samples.send;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.microsoft.azure.eventhubs.ConnectionStringBuilder;
@@ -74,7 +72,7 @@ import java.nio.charset.Charset;
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class SimpleSend {
 
@@ -91,11 +89,11 @@ public class SimpleSend {
 Verwenden Sie die ConnectionStringBuilder-Klasse, um einen Verbindungszeichenfolgenwert an die Event Hubs-Clientinstanz zu übergeben. Ersetzen Sie die Platzhalter in Klammern durch die Werte, die beim Erstellen des Namespace und von Event Hub abgerufen wurden:
 
 ```java
-final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-        .setNamespaceName("Your Event Hubs namespace name")
-        .setEventHubName("Your event hub")
-        .setSasKeyName("Your policy name")
-        .setSasKey("Your primary SAS key");
+        final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
+                .setNamespaceName("speventhubns") 
+                .setEventHubName("speventhub")
+                .setSasKeyName("RootManageSharedAccessKey")
+                .setSasKey("2+WMsyyy1XmUtEnRsfOmTTyGasfJgsVjGAOIN20J1Y8=");
 ```
 
 ### <a name="send-events"></a>Senden von Ereignisse
@@ -103,15 +101,40 @@ final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
 Erstellen Sie ein einzelnes Ereignis, indem Sie eine Zeichenfolge in die entsprechende UTF-8-Bytecodierung umwandeln. Erstellen Sie dann auf der Grundlage der Verbindungszeichenfolge eine neue Event Hubs-Clientinstanz, und senden Sie die Nachricht:   
 
 ```java 
-String payload = "Message " + Integer.toString(i);
-byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
-EventData sendEvent = EventData.create(payloadBytes);
+        final Gson gson = new GsonBuilder().create();
 
-final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-ehClient.sendSync(sendEvent);
-    
-// close the client at the end of your program
-ehClient.closeSync();
+        // The Executor handles all asynchronous tasks and this is passed to the EventHubClient instance.
+        // This enables the user to segregate their thread pool based on the work load.
+        // This pool can then be shared across multiple EventHubClient instances.
+        // The following sample uses a single thread executor, as there is only one EventHubClient instance,
+        // handling different flavors of ingestion to Event Hubs here.
+        final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
+
+        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // It is always a best practice to reuse these instances. The following sample shows this.
+        final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
+
+
+        try {
+            for (int i = 0; i < 10; i++) {
+
+                String payload = "Message " + Integer.toString(i);
+                byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
+                EventData sendEvent = EventData.create(payloadBytes);
+
+                // Send - not tied to any partition
+                // Event Hubs service will round-robin the events across all Event Hubs partitions.
+                // This is the recommended & most reliable way to send to Event Hubs.
+                ehClient.sendSync(sendEvent);
+            }
+
+            System.out.println(Instant.now() + ": Send Complete...");
+            System.out.println("Press Enter to stop.");
+            System.in.read();
+        } finally {
+            ehClient.closeSync();
+            executorService.shutdown();
+        }
 
 ``` 
 

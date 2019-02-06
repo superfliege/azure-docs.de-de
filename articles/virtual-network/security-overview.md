@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bbfb070a66bdae415d357542459ee88fd8b1865f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159059"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104402"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -58,7 +58,7 @@ Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle N
  Die folgenden Diensttags können zum Definieren von Sicherheitsregeln verwendet werden. Ihre Namen unterscheiden sich je nach [Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) leicht.
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für das klassische Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume und [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbunden sind.
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für das klassische Bereitstellungsmodell): Dieses Tag gibt den Lastenausgleich der Azure-Infrastruktur an. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md##azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für das klassische Bereitstellungsmodell): Dieses Tag gibt den Lastenausgleich der Azure-Infrastruktur an. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
 * **Internet** (Resource Manager) (**INTERNET** für das klassische Bereitstellungsmodell): Dieses Tag gibt den IP-Adressraum an, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
 * **AzureCloud** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für Azure an, einschließlich aller [öffentlichen IP-Adressen für das Datencenter](https://www.microsoft.com/download/details.aspx?id=41653). Wenn Sie *AzureCloud* als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *AzureCloud.EastUS* als Diensttag angeben. 
 * **AzureTrafficManager** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für die Test-IP-Adressen des Azure Traffic Manager an. Weitere Informationen zu Test-IP-Adressen von Traffic Manager finden Sie unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). 

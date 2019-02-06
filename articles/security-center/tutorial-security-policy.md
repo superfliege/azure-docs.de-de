@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259963"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095518"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -212,7 +212,7 @@ In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
 |Sicherheitskonfigurationen |Betriebssystem-Sicherheitsrisiken in Azure Security Center überwachen |systemConfigurationsMonitoringEffect| 
 |Endpoint Protection |Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen |endpointProtectionMonitoringEffect |
 |Datenträgerverschlüsselung |Nicht verschlüsselte VM-Datenträger in Azure Security Center überwachen |diskEncryptionMonitoringEffect|
-|Sicherheitsrisikobewertung |VM-Sicherheitsrisiken in Azure Security Center überwachen |vulnerabilityAssesmentMonitoringEffect|
+|Sicherheitsrisikobewertung |VM-Sicherheitsrisiken in Azure Security Center überwachen |vulnerabilityAssessmentMonitoringEffect|
 |Web Application Firewall |Nicht geschützte Webanwendung in Azure Security Center überwachen |webApplicationFirewallMonitoringEffect |
 |Firewall der nächsten Generation |Nicht geschützte Netzwerkendpunkte in Azure Security Center überwachen| |
 

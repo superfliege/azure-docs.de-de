@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: b21c378d58590e33c7b6aeffe627ce5602074fa2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: de2cfbf2b4119daf965c95d8973b8528799c9502
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524619"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454625"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag
 
@@ -23,7 +23,7 @@ Dieser Artikel führt Sie durch den vollständigen Prozess zur Vorbereitung von 
 
 In diesem Beispiel werden die folgenden Daten in ein Azure-Speicherkonto namens `mystorageaccount` importiert:
 
-|Standort|BESCHREIBUNG|Datengröße|
+|Standort|Beschreibung|Datengröße|
 |--------------|-----------------|-----|
 |H:\Video\ |Eine Sammlung von Videos|12TB|
 |H:\Photo\ |Eine Sammlung von Fotos|30 GB|
@@ -72,7 +72,7 @@ Darüber hinaus können Sie die folgenden Metadaten für alle Dateien festlegen:
 
 * **UploadMethod:** Microsoft Azure Import/Export-Dienst
 * **DataSetName:** SampleData
-* **CreationDate:** 1.10.2013
+* **CreationDate:** 10.01.2013
 
 Um Metadaten für die importierten Dateien festzulegen, erstellen Sie die Textdatei `c:\WAImportExport\SampleMetadata.txt` mit folgendem Inhalt:
 
@@ -88,7 +88,7 @@ Um Metadaten für die importierten Dateien festzulegen, erstellen Sie die Textda
 Sie können auch bestimmte Eigenschaften für das Blob `FavoriteMovie.ISO` festlegen:
 
 * **Content-Type:** application/octet-stream
-* **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==
+* **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ==
 * **Cache-Control:** no-cache
 
 Um diese Eigenschaften festzulegen, erstellen Sie die Textdatei `c:\WAImportExport\SampleProperties.txt`:

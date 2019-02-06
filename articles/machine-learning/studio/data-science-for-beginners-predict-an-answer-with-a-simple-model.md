@@ -1,6 +1,6 @@
 ---
-Titel: Vorhersagen von Antworten mit Regressionsmodellen TitleSuffix: Azure Machine Learning Studio Beschreibung: Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines Regressionsmodells zum Vorhersagen eines Preises. Enthält eine lineare Regression mit Zieldaten.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Vorhersagen von Antworten mit Regressionsmodellen TitleSuffix: Azure Machine Learning Studio Beschreibung: Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines Regressionsmodells zum Vorhersagen eines Preises. Enthält eine lineare Regression mit Zieldaten.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03.01.2018
 ---

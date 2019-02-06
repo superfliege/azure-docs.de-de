@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f8565fcecab2c17794f94f5a051cc2f269a9d1c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451035"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095735"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning-Integration in Stream Analytics
 Stream Analytics unterstützt benutzerdefinierte Funktionen, die Azure Machine Learning-Endpunkte kontaktieren. Die REST-API-Unterstützung für dieses Feature ist in der [Stream Analytics-REST-API-Bibliothek](https://msdn.microsoft.com/library/azure/dn835031.aspx)ausführlich beschrieben. Dieser Artikel enthält zusätzliche Informationen, die für die erfolgreiche Implementierung dieser Funktion in Stream Analytics erforderlich sind. Es wurde ein Tutorial bereitgestellt, das [hier](stream-analytics-machine-learning-integration-tutorial.md)verfügbar ist.
@@ -26,7 +26,7 @@ Microsoft Azure Machine Learning ist ein Drag & Drop-Tool für die Zusammenarb
 * **Endpunkt**: Bei *Endpunkten* handelt es sich um das Azure Machine Learning-Objekt, das zum Verwenden von Features als Eingabe, Anwenden eines angegebenen Machine Learning-Modells und Zurückgeben der erzielten Ausgabe eingesetzt wird.
 * **Bewertungswebdienst**: Ein *Bewertungswebdienst* ist eine Sammlung von Endpunkten (wie oben beschrieben).
 
-Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in AzureML Studio als [Anforderung/Antwort-Dienst](../machine-learning/studio/consume-web-services.md) bezeichnet.
+Jeder Endpunkt verfügt über APIs für die Batchausführung und synchrone Ausführung. Für Stream Analytics wird die synchrone Ausführung verwendet. Der entsprechende Dienst wird in Azure Machine Learning Studio als [Anforderung/Antwort-Dienst](../machine-learning/studio/consume-web-services.md) bezeichnet.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Für Stream Analytics-Aufträge erforderliche Machine Learning-Ressourcen
 Bei der Verarbeitung von Stream Analytics-Aufträgen sind für eine erfolgreiche Ausführung ein Anforderung/Antwort-Endpunkt, ein [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)und eine Swagger-Definition erforderlich. Stream Analytics verfügt über einen zusätzlichen Endpunkt, der die URL für den Swagger-Endpunkt erstellt, nach der Schnittstelle sucht und eine UDF-Standarddefinition für den Benutzer zurückgibt.
@@ -44,11 +44,11 @@ Mit REST-APIs können Sie Ihren Auftrag so konfigurieren, dass er Azure Machine 
 ## <a name="creating-a-udf-with-basic-properties"></a>Erstellen einer UDF mit grundlegenden Eigenschaften
 Beispielsweise wird im folgenden Beispielcode eine Skalar-UDF mit dem Namen *newudf* erstellt, die an einen Azure Machine Learning-Endpunkt gebunden ist. Beachten Sie, dass sich der *Endpunkt* (Dienst-URI) auf der API-Hilfeseite für den gewählten Dienst und der *apiKey* auf der Hauptseite der Dienste befindet.
 
-````
-    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
-````
+```
+    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+```
 
-Beispiel für Anforderungstext:  
+Beispiel für Anforderungstext:
 
 ```json
     {
@@ -71,11 +71,11 @@ Beispiel für Anforderungstext:
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Aufrufen des RetrieveDefaultDefinition-Endpunkts für standardmäßige UDF
 Nachdem das UDF-Gerüst erstellt wurde, wird die vollständige Definition der UDF benötigt. Über den RetrieveDefaultDefinition-Endpunkt können Sie die Standarddefinition für eine Skalarfunktion erhalten, die an einen Azure Machine Learning-Endpunkt gebunden ist. Für die unten angegebene Nutzlast ist es erforderlich, dass Sie die UDF-Standarddefinition für eine Skalarfunktion abrufen, die an einen Azure Machine Learning-Endpunkt gebunden ist. Hierbei wird der eigentliche Endpunkt nicht angegeben, da er bereits während der PUT-Anforderung bereitgestellt wurde. Stream Analytics ruft den in der Anforderung angegebenen Endpunkt auf, falls er explizit bereitgestellt wird. Andernfalls wird der ursprünglich angegebene Endpunkt verwendet. Hier verwendet die UDF einen einzelnen Zeichenfolgenparameter (einen Satz) und gibt eine Einzelausgabe einer Typzeichenfolge zurück, mit der die Bezeichnung „sentiment“ (Stimmung) für diesen Satz angegeben wird.
 
-````
+```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
-````
+```
 
-Beispiel für Anforderungstext:  
+Beispiel für Anforderungstext:
 
 ```json
     {
@@ -87,7 +87,7 @@ Beispiel für Anforderungstext:
     }
 ```
 
-Eine Beispielausgabe sieht hierfür ungefähr wie folgt aus:  
+Eine Beispielausgabe sieht hierfür ungefähr wie folgt aus:
 
 ```json
     {
@@ -130,9 +130,9 @@ Eine Beispielausgabe sieht hierfür ungefähr wie folgt aus:
 ## <a name="patch-udf-with-the-response"></a>Patchen der UDF mit der Antwort
 Jetzt muss die UDF mit der vorherigen Antwort wie unten gezeigt gepatcht werden.
 
-````
+```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
-````
+```
 
 Anforderungstext (Ausgabe von „RetrieveDefaultDefinition“):
 
@@ -175,7 +175,7 @@ Anforderungstext (Ausgabe von „RetrieveDefaultDefinition“):
 ```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Implementieren der Stream Analytics-Transformation für den Aufruf der UDF
-Fragen Sie die UDF (hier: scoreTweet) jetzt in Bezug auf alle Eingabeereignisse ab, und schreiben Sie eine Antwort für das Ereignis in eine Ausgabe.  
+Fragen Sie die UDF (hier: scoreTweet) jetzt in Bezug auf alle Eingabeereignisse ab, und schreiben Sie eine Antwort für das Ereignis in eine Ausgabe.
 
 ```json
     {

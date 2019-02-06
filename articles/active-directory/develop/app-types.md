@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b4b49cd679ee5d770696b4fa5cc29ebdd908cecf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816343"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093120"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
 
@@ -33,11 +33,11 @@ Das folgende Diagramm veranschaulicht die Szenarien und Anwendungstypen sowie da
 
 Azure AD unterstützt die folgenden fünf Hauptanwendungsszenarien:
 
-- **[Single-Page-Webanwendung (SPA)](single-page-application.md)**: Ein Benutzer muss sich bei einer durch Azure AD geschützten Single-Page-Webanwendung anmelden.
-- **[Webbrowser zu Webanwendung](web-app.md)**: Ein Benutzer muss sich bei einer durch Azure AD geschützten Webanwendung anmelden.
-- **[Native Anwendung zu Web-API](native-app.md)**: Eine native Anwendung auf einem Smartphone, Tablet oder PC muss einen Benutzer authentifizieren, um Ressourcen von einer durch Azure AD geschützten Web-API abzurufen.
-- **[Webanwendung zu Web-API](web-api.md)**: Eine Webanwendung muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
-- **[Daemon- oder Serveranwendung zu Web-API](service-to-service.md)**: Eine Daemon- oder Serveranwendung ohne Webbenutzeroberfläche muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
+- **[Single-Page-Webanwendung (SPA):](single-page-application.md)** Ein Benutzer muss sich bei einer durch Azure AD geschützten Single-Page-Webanwendung anmelden.
+- **[Webbrowser zu Webanwendung:](web-app.md)** Ein Benutzer muss sich bei einer durch Azure AD geschützten Webanwendung anmelden.
+- **[Native Anwendung zu Web-API:](native-app.md)** Eine native Anwendung auf einem Smartphone, Tablet oder PC muss einen Benutzer authentifizieren, um Ressourcen von einer durch Azure AD geschützten Web-API abzurufen.
+- **[Webanwendung zu Web-API:](web-api.md)** Eine Webanwendung muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
+- **[Daemon- oder Serveranwendung zu Web-API:](service-to-service.md)** Eine Daemon- oder Serveranwendung ohne Webbenutzeroberfläche muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
 
 Folgen Sie den Links, um mehr über die einzelnen App-Typen und allgemeinen Szenarien zu erfahren, bevor Sie mit dem Code arbeiten. Dort finden Sie auch Information zu den Unterschieden, die Sie beim Schreiben einer bestimmten App, die vom v1.0- oder v2.0-Endpunkt unterstützt wird, beachten müssen.
 

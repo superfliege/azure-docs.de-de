@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d5b759fcde66a2a9be86cc15cba1ead1765ba248
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ceba377f72ced7d39f0a7e9b18e4fd563dbb39f1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413395"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239915"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure Security and Compliance Blueprint: Dreischichtige IaaS-Webanwendungen für UK OFFICIAL
 
@@ -204,7 +204,7 @@ Kunden können sich außerdem für die Verwendung eines [Verwaltungsmodells mit 
 
 **Trennung von Zuständigkeiten:** Diese Referenzarchitektur trennt die VNETs für Verwaltungsvorgänge und Geschäftsvorgänge. Separate VNets und Subnetze ermöglichen die Verwaltung des Datenverkehrs zwischen Netzwerksegmenten, einschließlich Einschränkungen für eingehenden und ausgehenden Datenverkehr, mithilfe von NSGs und berücksichtigen die bewährten Methoden für [Microsoft-Clouddienste und Netzwerksicherheit](https://docs.microsoft.com/azure/best-practices-network-security).
 
-**Ressourcenverwaltung:** Azure-Ressourcen, wie etwa VMs, VNETs und Lastenausgleichsmodule, werden verwaltet, indem sie in [Azure-Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource) zusammengefasst werden. Rollen für die ressourcenbasierte Zugriffssteuerung können anschließend den einzelnen Ressourcengruppen zugewiesen werden, um den Zugriff exklusiv auf autorisierte Benutzer zu beschränken.
+**Ressourcenverwaltung:** Azure-Ressourcen, wie etwa VMs, VNETs und Lastenausgleichsmodule, werden verwaltet, indem sie in [Azure-Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) zusammengefasst werden. Rollen für die ressourcenbasierte Zugriffssteuerung können anschließend den einzelnen Ressourcengruppen zugewiesen werden, um den Zugriff exklusiv auf autorisierte Benutzer zu beschränken.
 
 **Einschränkungen der Zugriffssteuerung:** Verwenden Sie die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC), um die Ressourcen in Ihrer Anwendung mithilfe von [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) zu verwalten. RBAC kann dazu verwendet werden, die Vorgänge einzuschränken, die von DevOps in den einzelnen Schichten ausgeführt werden können. Verwenden Sie beim Erteilen von Berechtigungen den [Ansatz der geringsten Rechte](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokollieren Sie alle Verwaltungsvorgänge, und führen Sie regelmäßig Überwachungen durch, um sicherzustellen, dass alle Konfigurationsänderungen auf Planung beruhen.
 

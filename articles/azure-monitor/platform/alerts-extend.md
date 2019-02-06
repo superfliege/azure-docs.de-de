@@ -1,5 +1,5 @@
 ---
-title: Erweitern (Kopieren) von Warnungen in Log Analytics nach Azure Alerts – Übersicht
+title: Erweitern (Kopieren) von Log Analytics-Warnungen in die Azure Government-Cloud
 description: Übersicht über den Prozess zum Kopieren von Warnungen aus Log Analytics im OMS-Portal nach Azure Alerts mit Details zur Berücksichtigung häufiger Bedenken auf Kundenseite.
 author: msvijayn
 services: azure-monitor
@@ -8,19 +8,21 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e2f2a739f78072a0479e77e68e84c8f4b395468f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422225"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099327"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Erweitern von Log Analytics-Warnungen nach Azure Alerts
 
 > [!NOTE]
 > Microsoft hat den in diesem Artikel beschriebenen Prozess für die öffentlichen Versionen von Azure bereits abgeschlossen. Er gilt jedoch weiterhin für US Government-Versionen.  
 
-Bis vor Kurzem enthielt Azure Log Analytics eigene Warnfunktionen, die Sie auf der Grundlage von Log Analytics-Daten proaktiv über Bedingungen benachrichtigen konnten. Sie haben im Microsoft Operations Management Suite-Portal Warnungsregeln verwaltet. Die neue Oberfläche für Warnungen bietet nun die übergreifende Warnungsanzeige für verschiedene Dienste in Microsoft Azure. Sie ist im Azure-Portal unter Azure Monitor als **Warnungen** verfügbar und unterstützt die Anzeige von Warnungen aus Aktivitätsprotokollen, Metriken und Protokollen von Log Analytics ebenso wie von Azure Application Insights. 
+Bis vor Kurzem enthielt Azure Log Analytics eigene Warnfunktionen, die Sie auf der Grundlage von Log Analytics-Daten proaktiv über Bedingungen benachrichtigen konnten. Sie haben im Microsoft Operations Management Suite-Portal Warnungsregeln verwaltet. Die neue Oberfläche für Warnungen bietet nun die übergreifende Warnungsanzeige für verschiedene Dienste in Microsoft Azure. Sie ist im Azure-Portal unter Azure Monitor als **Warnungen** verfügbar und unterstützt die Anzeige von Warnungen aus Aktivitätsprotokollen, Metriken und Protokollen von Log Analytics ebenso wie von Azure Application Insights.
+
+Kunden der Azure Government-Cloud, die das OMS-Portal verwenden, können ab **1. Februar 2019** [ihre Warnungsregeln freiwillig auf Azure ausdehnen](alerts-extend-tool.md). Ab **1. März 2019** führt Microsoft systematisch die automatische Erweiterung aller im OMS-Portal für Azure Government vorhandenen Warnungsregeln in Azure durch – ohne Ausfallzeiten oder Unterbrechung der Überwachung. Alle am oder nach dem **1. März 2019** im OMS-Portal der Azure Government-Cloud erstellten Arbeitsbereiche werden automatisch auf Azure erweitert.
 
 ## <a name="benefits-of-extending-your-alerts"></a>Vorteile des Erweiterns von Warnungen
 Das Erstellen und Verwalten von Warnungen im Azure-Portal bietet eine Reihe von Vorteilen, wie z. B.:

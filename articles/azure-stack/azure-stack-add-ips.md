@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: scottnap
-ms.openlocfilehash: b401139d417674cf58d2db264b442d7588cc34ba
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: d81374b110523e48e06725d3d3153e61135471cc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987101"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251621"
 ---
 # <a name="add-public-ip-addresses"></a>Hinzufügen öffentlicher IP-Adressen
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*  
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*  
 
 Erfahren Sie, wie Sie Azure Stack weitere öffentliche IP-Adressen hinzufügen können.  In diesem Artikel beziehen wir uns auf die externen Adressen als öffentliche IP-Adressen, aber in Azure Stack soll dies das Hinzufügen von IP-Adressblöcken zu Ihrem externen Netzwerk bedeuten.  Ob dieses externe Netzwerk öffentlich internetroutingfähig ist oder sich in einem Intranet befindet und einen privaten Adressraum verwendet, spielt für die Zwecke dieses Artikels keine Rolle.  Die Schritte sind identisch. 
 
@@ -49,7 +50,7 @@ Zunächst müssen Sie den Adressblock abrufen, den Sie Azure Stack hinzufügen m
 5.  Klicken Sie auf die Kachel für die Nutzung öffentlicher IP-Pools.
 6.  Klicken Sie auf die Schaltfläche „IP-Pool hinzufügen“.
 7.  Geben Sie einen Namen für den IP-Pool an.  Der von Ihnen ausgewählte Name dient nur dazu, den IP-Pool leicht zu identifizieren, sodass Sie einen beliebigen Namen verwenden können.  Es hat sich als bewährte Methode herausgestellt, den gleichen Namen wie der Adressbereich zu verwenden, aber das ist nicht erforderlich.
-8.   Geben Sie den Adressblock in CIDR-Notation ein, den Sie hinzufügen möchten.  Beispiel: 192.168.203.0/24
+8.   Geben Sie den Adressblock in CIDR-Notation ein, den Sie hinzufügen möchten.  Beispiel:  192.168.203.0/24
 9.  Wenn Sie einen gültigen CIDR-Bereich im Feld „Adressbereich“ (CIDR-Block) angeben, werden die Felder „IP-Startadresse“, „IP-Endadresse“ und „Verfügbare IP-Adressen“ automatisch mit Daten aufgefüllt.  Sie sind schreibgeschützt und werden automatisch generiert, sodass Sie diese Angaben nicht ändern können, ohne den Wert im Feld „Adressbereich“ zu ändern.
 10. Nach dem Überprüfen der Informationen auf dem Blatt und dem Bestätigen, dass alle Angaben richtig sind, klicken Sie auf „OK“, um die Änderung zu übernehmen und den Adressbereich Azure Stack hinzuzufügen.
 

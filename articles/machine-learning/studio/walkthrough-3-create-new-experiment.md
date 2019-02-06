@@ -1,6 +1,6 @@
 ---
-Titel: Schritt 3: Erstellen eines neuen Machine Learning Studio-Experiments titleSuffix: Azure Machine Learning Studio – Beschreibung: Schritt 3 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Schritt 3: Erstellen eines neuen Machine Learning Studio-Experiments titleSuffix: Azure Machine Learning Studio – Beschreibung: Schritt 3 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 23.03.2017
 ---

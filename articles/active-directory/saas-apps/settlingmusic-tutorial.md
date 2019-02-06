@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Settling music | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Settling music | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Settling music konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6f86a8a2-4bd0-40cc-b1b4-752fce123328
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: fda6ca2efb670c8087252428e417a3e0901fa748
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 900254e42410aafa0d8e58048c7d88efa94dfed5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449062"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178544"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Tutorial: Azure Active Directory-Integration in Settling music
+# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Tutorial: Azure Active Directory-Integration mit Settling music
 
 In diesem Tutorial erfahren Sie, wie Sie Settling music in Azure Active Directory (Azure AD) integrieren.
 
@@ -189,7 +189,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-settling-music-test-user"></a>Erstellen eines Testbenutzers für Settling music
 
-In diesem Abschnitt erstellen Sie in Settling music eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [Settling music-Supportteam](https://rakurakuseisan.jp/) zusammen, um die Benutzer der Settling music-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Settling music eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem  [Supportteam für den Settling music-Client](https://rakurakuseisan.jp/) zusammen, um die Benutzer der Settling music-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

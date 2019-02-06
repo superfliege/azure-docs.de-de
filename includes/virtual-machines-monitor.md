@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54404673"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147991"
 ---
 Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -41,7 +41,7 @@ Sie können [Warnungen](../articles/azure-monitor/platform/alerts-overview.md) a
 
 [Azure Resource Health](../articles/service-health/resource-health-overview.md) unterstützt Sie bei der Diagnose und bei Supportanfragen, wenn ein Problem mit Azure Auswirkungen auf Ihre Ressourcen hat. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Resource Health bietet technischen Support, wenn Sie Unterstützung bei Azure-Dienstproblemen benötigen.
 
-## <a name="logs"></a>Protokolle
+## <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 
 Das [Azure-Aktivitätsprotokoll](../articles/azure-monitor/platform/activity-logs-overview.md) ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieses Protokoll schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Sie können im Azure-Portal auf „Aktivitätsprotokoll“ klicken, um das Protokoll für Ihre VM anzuzeigen.
 
@@ -64,11 +64,13 @@ Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) ist ein Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er sammelt Daten, die von Ressourcen in Ihren cloudbasierten und lokalen Umgebungen sowie von anderen Überwachungstools generiert werden, um Analysen für mehrere Quellen zu ermöglichen. Sie können eine Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-oms.md) oder einer [Windows-VM](../articles/virtual-machines/windows/extensions-oms.md) installieren, mit der der Log Analytics-Agent installiert und die VM in einem vorhandenen Log Analytics-Arbeitsbereich registriert wird.
+- [Azure Monitor](../articles/azure-monitor/overview.md) ist ein Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er bietet eine umfassende Lösung für das Sammeln, Analysieren und Behandeln von Telemetriedaten aus Ihren Cloud- und lokalen Umgebungen. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen. Sie können eine Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-oms.md) oder einer [Windows-VM](../articles/virtual-machines/windows/extensions-oms.md) installieren, die den Log Analytics-Agent installiert, damit dieser Daten sammelt und in einem Log Analytics-Arbeitsbereich speichert.
 
-    Die empfohlene Methode zum Erfassen von Protokollen und Metriken für Windows- und Linux-VMs ist die Installation des Log Analytics-Agents. Die einfachste Möglichkeit zum Installieren des Log Analytics-Agents auf einer VM ist die [Log Analytics-VM-Erweiterung](../articles/log-analytics/log-analytics-azure-vm-extension.md). Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
+    Die empfohlene Methode zum Erfassen von Protokollen für Windows- und Linux-VMs ist die Installation des Log Analytics-Agents. Die einfachste Möglichkeit zum Installieren des Log Analytics-Agents auf einer VM ist die [Log Analytics-VM-Erweiterung](../articles/log-analytics/log-analytics-azure-vm-extension.md). Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
 
 - Mit dem [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) können Sie Ihre VM und die dazugehörigen Ressourcen überwachen, um zu ermitteln, welche Beziehung sie zum verwendeten Netzwerk aufweisen. Sie können die Network Watcher-Agent-Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-nwa.md) oder [Windows-VM](../articles/virtual-machines/windows/extensions-nwa.md) installieren.
+
+- [Azure Monitor für VMs](../articles/azure-monitor/insights/vminsights-overview.md) überwacht Ihre Azure-VMs nach Maß durch Analysieren der Leistung und Integrität der Windows- und Linux-VMs, einschließlich der verschiedenen Prozesse und miteinander verbundenen Abhängigkeiten von anderen Ressourcen und externen Prozessen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Führen Sie die Schritte unter [Überwachen eines virtuellen Windows-Computers mit Azure PowerShell](../articles/virtual-machines/windows/tutorial-monitoring.md) oder [Überwachen eines virtuellen Linux-Computers mit der Azure CLI](../articles/virtual-machines/linux/tutorial-monitoring.md) aus.

@@ -3,7 +3,7 @@ title: Installieren von Anwendungspaketen auf Computeknoten – Azure Batch | Mi
 description: Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zur einfachen Verwaltung mehrerer Anwendungen und Versionen für die Installation auf Batch-Serverknoten.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/15/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094134"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454606"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -115,7 +115,7 @@ In diesem Fenster werden die IDs aller Anwendungen in Ihrem Konto und die folgen
 
 * **Pakete**: Die Anzahl von Versionen, die dieser Anwendung zugeordnet sind.
 * **Standardversion**: Die Anwendungsversion, die installiert wird, wenn Sie beim Festlegen der Anwendung für einen Pool keine Version angeben. Diese Einstellung ist optional.
-* **Updates zulassen**: Der Wert, der angibt, ob Pakete aktualisiert, gelöscht und hinzugefügt werden dürfen. Ist diese Option auf **Nein**festgelegt, sind Paketaktualisierungen und -löschungen für die Anwendung deaktiviert. In diesem Fall können nur neue Anwendungspaketversionen hinzugefügt werden. Die Option ist standardmäßig auf **Ja**festgelegt.
+* **Updates zulassen**: Gibt an, ob Pakete aktualisiert, gelöscht und hinzugefügt werden dürfen. Ist diese Option auf **Nein**festgelegt, sind Paketaktualisierungen und -löschungen für die Anwendung deaktiviert. In diesem Fall können nur neue Anwendungspaketversionen hinzugefügt werden. Die Option ist standardmäßig auf **Ja**festgelegt.
 
 ### <a name="view-application-details"></a>Anzeigen von Anwendungsdetails
 Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster**Anwendungen** die entsprechende Anwendung aus.
@@ -124,8 +124,8 @@ Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster**
 
 In den Anwendungsdetails können Sie die folgenden Einstellungen für Ihre Anwendung konfigurieren.
 
-* **Updates zulassen**: Geben Sie an, ob die Anwendungspakete aktualisiert oder gelöscht werden können. Weitere Informationen finden Sie weiter unten in diesem Artikel unter „Aktualisieren oder Löschen eines Anwendungspakets“.
-* **Standardversion**: Geben Sie ein Standardanwendungspaket für die Bereitstellung auf Computeknoten an.
+* **Updates zulassen**: Gibt an, ob die Anwendungspakete aktualisiert oder gelöscht werden können. Weitere Informationen finden Sie weiter unten in diesem Artikel unter „Aktualisieren oder Löschen eines Anwendungspakets“.
+* **Standardversion**: Gibt ein Standardanwendungspaket für die Bereitstellung auf Computeknoten an.
 * **Anzeigename**: Geben Sie einen Anzeigenamen an, den Ihre Batch-Lösung zur Anzeige von anwendungsbezogenen Informationen verwenden kann (beispielsweise auf der Benutzeroberfläche eines Diensts, den Sie für Ihre Kunden über Batch bereitstellen).
 
 ### <a name="add-a-new-application"></a>Hinzufügen einer neuen Anwendung

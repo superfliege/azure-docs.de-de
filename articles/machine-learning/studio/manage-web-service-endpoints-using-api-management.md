@@ -1,6 +1,6 @@
 ---
-Titel: Verwalten von Machine Learning Studio-Webdiensten mit API Management titleSuffix: Azure Machine Learning Studio Beschreibung: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten. Verwalten Sie Ihre REST-API-Endpunkte, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Verwalten von Machine Learning Studio-Webdiensten mit API Management titleSuffix: Azure Machine Learning Studio Beschreibung: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten. Verwalten Sie Ihre REST-API-Endpunkte, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03.11.2017
 ---

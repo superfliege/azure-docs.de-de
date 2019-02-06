@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e2cb1a76bfde5bea7707cf3cc6658e3fc82163c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043089"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457665"
 ---
-# <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>Optimieren der Kosten für das Ausführen von Abfragen in Azure Cosmos DB
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimieren der Abfragekosten in Azure Cosmos DB
 
 Azure Cosmos DB bietet eine umfangreiche Sammlung von Datenbankvorgängen einschließlich relationalen und hierarchischen Abfragen, die für die Elemente in einem Container ausgeführt werden. Die Kosten im Zusammenhang mit diesen Vorgängen variieren basierend auf dem CPU-, E/A- und Speicheraufwand, der für den jeweiligen Vorgang erforderlich ist. Anstatt sich Gedanken über Hardwareressourcen und deren Verwaltung zu machen, können Sie sich eine Anforderungseinheit (RU) als alleinige Maßeinheit für die Ressourcen vorstellen, die für die verschiedenen Datenbankvorgänge zum Verarbeiten einer Anforderung erforderlich sind. In diesem Artikel wird beschrieben, wie Sie die berechneten Anforderungseinheiten für eine Abfrage auswerten und die Abfrage in Hinblick auf Leistung und Kosten optimieren. 
 

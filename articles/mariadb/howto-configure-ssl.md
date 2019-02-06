@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: 197281a4666179037cd689e7e8d488e73039174b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.date: 01/24/2019
+ms.openlocfilehash: 2966a2733904200f404d67c4e825d6b9deffdea2
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810294"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903025"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB
 Azure Database for MariaDB unterstützt die Verbindung Ihres Servers mit Azure Database for MariaDB mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -26,12 +26,14 @@ Konfigurieren Sie MySQL Workbench für eine sichere Verbindung über SSL. Navigi
 ![Speichern der benutzerdefinierten Kachel](./media/howto-configure-ssl/mysql-workbench-ssl.png): Für vorhandene Verbindungen können Sie SSL binden, indem Sie mit der rechten Maustaste auf das Verbindungssymbol klicken und dann „Bearbeiten“ auswählen. Navigieren Sie dann zur Registerkarte **SSL** und binden die Zertifikatsdatei.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Herstellen einer Verbindung mit dem Server mithilfe der MySQL-CLI über SSL
-Eine weitere Möglichkeit zum Binden des SSL-Zertifikats besteht im Verwenden der MySQL-Befehlszeilenschnittstelle und Ausführen des folgenden Befehls:
+Sie können das SSL-Zertifikat auch mithilfe der MySQL-Befehlszeilenschnittstelle und der folgenden Befehle binden: 
+
 ```bash
-mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
+mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+
 > [!NOTE]
-> Wenn Sie neuere Versionen der MySQL-Befehlszeilenschnittstelle für Windows verwenden, erhalten Sie möglicherweise eine Fehlermeldung `SSL connection error: Certificate signature check failed`. Ersetzen Sie in diesem Fall den `--ssl-ca={filepath}`-Parameter mit `--ssl`.
+> Wenn Sie die MySQL-Befehlszeilenschnittstelle unter Windows verwenden, erhalten Sie möglicherweise eine Fehlermeldung: `SSL connection error: Certificate signature check failed`. Ersetzen Sie in diesem Fall den Parameter `--ssl-mode=REQUIRED --ssl-ca={filepath}` durch `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Erzwingen von SSL-Verbindungen in Azure 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals

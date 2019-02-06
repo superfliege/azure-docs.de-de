@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 3eb1228ed9d15fb976f94df114f8725a8c41599d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230457"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216611"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -29,7 +29,7 @@ Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Lo
 - Überwachen Sie Administratoraktivitäten, um Konfigurationsänderungen oder Vorgänge mit erhöhten Rechten nachzuverfolgen.
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
-- Führen Sie eine operative Problembehandlung mithilfe der [Protokollsuchen](../../azure-monitor/log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+- Führen Sie eine operative Problembehandlung mithilfe der [Protokollsuchen](../log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wird.
@@ -40,7 +40,7 @@ Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wir
  
 
 ## <a name="management-packs"></a>Management Packs
-Bei dieser Lösung werden keine Management Packs in [verbundenen Verwaltungsgruppen](../../azure-monitor/platform/om-agents.md) installiert.
+Bei dieser Lösung werden keine Management Packs in [verbundenen Verwaltungsgruppen](../platform/om-agents.md) installiert.
   
 ## <a name="install-and-configure"></a>Installieren und konfigurieren
 Starten Sie durch Hinzufügen der [Office 365-Lösung zu Ihrem Abonnement](solutions.md#install-a-management-solution). Führen Sie nach dem Hinzufügen die Konfigurationsschritte in diesem Abschnitt aus, um den Zugriff auf Ihr Office 365-Abonnement zu ermöglichen.
@@ -158,7 +158,7 @@ Um das Administratorkonto zum ersten Mal zu aktivieren, müssen Sie die Administ
     AdminConsent -ErrorAction Stop
     ```
 
-2. Führen Sie das Skript mit dem folgenden Befehl aus:
+2. Führen Sie das Skript mit dem folgenden Befehl aus: Sie werden zweimal zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie zuerst die Anmeldeinformationen für Ihren Log Analytics-Arbeitsbereich und dann die globalen Administratoranmeldeinformationen für Ihren Office 365-Mandanten ein.
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
@@ -351,7 +351,7 @@ Als letzten Schritt müssen Sie die Anwendung für Ihren Log Analytics-Arbeitsbe
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie versuchen, ein Abonnement zu erstellen, wenn das Abonnement bereits vorhanden ist, wird möglicherweise der folgende Fehler angezeigt.
+Möglicherweise wird die folgende Fehlermeldung angezeigt, wenn Ihre Anwendung bereits für diesen Arbeitsbereich abonniert ist, oder wenn dieser Mandant ein Abonnement bei einem anderen Arbeitsbereich hat.
 
 ```
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -394,7 +394,7 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -476,7 +476,7 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
 
 ## <a name="data-collection"></a>Datensammlung
 ### <a name="supported-agents"></a>Unterstützte Agents
-Die Office 365-Lösung ruft keine Daten von [Log Analytics-Agents](../../azure-monitor/platform/agent-data-sources.md) ab.  Sie ruft Daten direkt aus Office 365 ab.
+Die Office 365-Lösung ruft keine Daten von [Log Analytics-Agents](../platform/agent-data-sources.md) ab.  Sie ruft Daten direkt aus Office 365 ab.
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
 Es kann einige Stunden dauern, bis die Daten gesammelt werden. Sobald die Sammlung begonnen hat, sendet Office 365 immer dann, wenn ein Datensatz erstellt wurde, eine [Webhookbenachrichtigung](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Log Analytics. Dieser Datensatz ist innerhalb weniger Minuten nach dem Empfang in Log Analytics verfügbar.
@@ -510,7 +510,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Typ | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |
 | OfficeWorkload | Office 365-Dienst, auf den sich der Datensatz bezieht.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Vorgang | Der Name der Benutzer- oder Administratoraktivität.  |
@@ -708,6 +708,6 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die Protokollsuche in [Log Analytics](../../azure-monitor/log-query/log-query-overview.md), um ausführliche Daten zu Updates anzuzeigen.
-* [Erstellen Sie eigene Dashboards](../../azure-monitor/platform/dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
-* [Erstellen Sie Warnungen](../../azure-monitor/platform/alerts-overview.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  
+* Verwenden Sie die Protokollsuche in [Log Analytics](../log-query/log-query-overview.md), um ausführliche Daten zu Updates anzuzeigen.
+* [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
+* [Erstellen Sie Warnungen](../platform/alerts-overview.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  

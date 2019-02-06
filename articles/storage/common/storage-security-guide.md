@@ -1,5 +1,5 @@
 ---
-title: Azure Storage-Sicherheitsleitfaden | Microsoft Docs
+title: Azure Storage-Sicherheitsleitfaden | Microsoft-Dokumentation
 description: Details der vielen Methoden zum Schützen von Azure Storage, einschließlich, aber nicht beschränkt auf RBAC, Storage Service Encryption, clientseitige Verschlüsselung, SMB 3.0 und Azure Disk Encryption.
 services: storage
 author: tamram
@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243793"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454486"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -307,7 +307,7 @@ Azure Disk Encryption ist ein neues Feature. Mit diesem Feature können Sie die 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
 * Integration in Azure Key Vault
-* Virtuelle Computer im Standard-Tarif: [Virtuelle IaaS-Computer der Serien A, D, DS, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Virtuelle Computer im Standard-Tarif: [IaaS-VMs der Serien A, D, DS, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Aktivieren der Verschlüsselung auf virtuellen Windows- und Linux-IaaS-Computern
 * Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für virtuelle Windows-IaaS-Computer
 * Deaktivieren der Verschlüsselung auf Datenlaufwerken für virtuelle Linux-IaaS-Computer
@@ -328,7 +328,7 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 
 
 > [!NOTE]
-> Die Verschlüsselung von Linux-Betriebssystemdatenträgern wird derzeit für die folgenden Linux-Distributionen unterstützt: RHEL 7.2, CentOS 7.2n und Ubuntu 16.04.
+> Die Verschlüsselung von Linux-Betriebssystemdatenträgern wird derzeit für die folgenden Linux-Distributionen unterstützt: RHEL 7.2, CentOS 7.2n, Ubuntu 16.04.
 >
 >
 
@@ -479,7 +479,7 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 * [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on MSDN (Unterstützung von Cross-Origin Resource Sharing [CORS] für die Azure Storage-Dienste unter MSDN)](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Dies ist die Referenzdokumentation für die CORS-Unterstützung für die Azure Storage-Dienste. Sie enthält Links zu Artikeln, die sich auf die einzelnen Speicherdienste beziehen, zeigt ein Beispiel und erläutert jedes Element in der CORS-Datei.
-* [Microsoft Azure Storage: Introducing CORS (Microsoft Azure Storage: Einführung in CORS)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: Einführung in CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   Dies ist ein Link zu dem ursprünglichen Blogartikel, der CORS ankündigt und Ihnen die Verwendung zeigt.
 

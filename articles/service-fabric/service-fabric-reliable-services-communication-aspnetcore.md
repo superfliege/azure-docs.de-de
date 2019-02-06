@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310248"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151089"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core in zuverlässigen Service Fabric-Diensten
 
@@ -62,7 +62,7 @@ Eine zuverlässige Dienstinstanz wird durch Ihre von `StatelessService` oder `St
 Die `ICommunicationListener`-Implementierungen für Kestrel und HttpSys in den NuGet-Paketen vom Typ `Microsoft.ServiceFabric.AspNetCore.*` haben ähnliche Verwendungsmuster, führen aber für jeden Webserver geringfügig andere Aktionen aus. 
 
 Beide Kommunikationslistener bieten einen Konstruktor, der folgende Argumente akzeptiert:
- - **`ServiceContext serviceContext`**: Das `ServiceContext`-Objekt mit Informationen zum ausgeführten Dienst.
+ - **`ServiceContext serviceContext`**: Das `ServiceContext`-Objekt mit Informationen zum ausgeführten Dienst
  - **`string endpointName`**: Der Name einer `Endpoint`-Konfiguration in „ServiceManifest.xml“. Hier liegt der Hauptunterschied zwischen den beiden Kommunikationslistenern: HttpSys **erfordert** eine `Endpoint`-Konfiguration, Kestrel hingegen nicht.
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Ein von Ihnen implementiertes Lambda, in dem Sie ein `IWebHost`-Element erstellen und zurückgeben. Dadurch können Sie `IWebHost` in einer ASP.NET Core-Anwendung wie gewohnt konfigurieren. Das Lambda stellt eine URL bereit, die für Sie in Abhängigkeit von den verwendeten Service Fabric-Integrationsoptionen und der angegebenen `Endpoint`-Konfiguration generiert wird. Diese URL kann anschließend geändert oder unverändert verwendet werden, um den Webserver zu starten.
 

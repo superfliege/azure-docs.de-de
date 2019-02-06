@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2019
+ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439152"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884927"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure 
 
@@ -47,7 +47,7 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
     3.  BCDR-Architektur (Business Continuity & Disaster Recovery)
     4.  Ausführliche Informationen zu den Supportpaketversionen für Betriebssystem, Datenbank, Kernel und SAP. Es kann nicht unbedingt davon ausgegangen werden, dass jedes Betriebssystemrelease, das von SAP NetWeaver oder S/4HANA unterstützt wird, auch von virtuellen Azure-Computern unterstützt wird. Das gilt auch für DBMS-Releases. Es ist zwingend erforderlich, die folgenden Quellen zu überprüfen, um die SAP-, DBMS- oder Betriebssystemreleases anzupassen und ggf. zu aktualisieren, damit sie von SAP und Azure unterstützt werden. Es ist zwingend erforderlich, die von SAP und Azure unterstützten Releasekombinationen einzuhalten, um vollen Support von SAP und Microsoft zu erhalten. Sie müssen ggf. Upgrades einiger Softwarekomponenten einplanen. Weitere Einzelheiten zur unterstützten SAP-, Betriebssystem- und DBMS-Software finden Sie an den folgenden Stellen:
         1.  SAP-Supporthinweis [#1928533](https://launchpad.support.sap.com/#/notes/1928533). In diesem Hinweis wird das minimale Betriebssystemrelease, das für Azure-VMs unterstützt wird, definiert. Außerdem werden die Mindestanforderungen für die Datenbankreleases, die für die meisten Nicht-HANA-Datenbanken erforderlich sind, definiert. Der Hinweis enthält auch Angaben zu den Größen der von SAP unterstützten Azure-VM-Typen.
-        2.  SAP-Supporthinweis [#2039619](https://launchpad.support.sap.com/#/notes/2039619). In diesem Hinweis wird die Oracle-Supportmatrix in Azure definiert. Beachten Sie, dass Oracle nur Windows und Oracle Linux als Gastbetriebssysteme für SAP-Workloads in Azure unterstützt. Dieser Supporthinweis gilt auch für die SAP-Anwendungsschicht, auf der die SAP-Instanzen ausgeführt werden. Oracle unterstützt jedoch keine Hochverfügbarkeit für SAP Central Services in Oracle Linux. Für Windows wird die von SAP unterstützte Windows-Failoverclusterlösung für SAP Central Services in Verbindung mit Oracle als DBMS-Ebene unterstützt. 
+        2.  SAP-Supporthinweis [#2039619](https://launchpad.support.sap.com/#/notes/2039619). In diesem Hinweis wird die Oracle-Supportmatrix in Azure definiert. Beachten Sie, dass Oracle nur Windows und Oracle Linux als Gastbetriebssysteme für SAP-Workloads in Azure unterstützt. Dieser Supporthinweis gilt auch für die SAP-Anwendungsschicht, auf der die SAP-Instanzen ausgeführt werden. Oracle unterstützt jedoch keine Hochverfügbarkeit für SAP Central Services in Oracle Linux über Pacemaker. Wenn Sie Hochverfügbarkeit für ASCS in Oracle Linux benötigen, müssen Sie die SIOS Protection Suite für Linux verwenden. Ausführliche SAP-Zertifizierungsdaten finden Sie im SAP-Supporthinweis [#1662610 - Support details for SIOS Protection Suite for Linux](https://launchpad.support.sap.com/#/notes/1662610) (1662610: Details zur Unterstützung der SIOS Protection Suite für Linux). Für Windows wird die von SAP unterstützte Windows-Failoverclusterlösung für SAP Central Services in Verbindung mit Oracle als DBMS-Ebene unterstützt. 
         3.  SAP-Supporthinweis [#2235581](https://launchpad.support.sap.com/#/notes/2235581) zum Abrufen der Supportmatrix für SAP HANA unter den verschiedenen Betriebssystemreleases
         4.  Von SAP HANA unterstützte Azure-VMs und [Hana (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) werden [hier](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) aufgeführt
         5.  [SAP-Produktverfügbarkeitsmatrix](https://support.sap.com/en/)
@@ -196,7 +196,7 @@ In dieser Phase sammeln Sie alle Erfahrungen und Erkenntnisse Ihrer Nichtprodukt
     2.  Verwenden Sie Sicherung/Wiederherstellung für kleinere Datenbanken.
     3.  Verwenden Sie SAP Migration Monitor für das Implementieren im SAP SWPM-Tool für heterogene Migrationsvorgänge.
     4.  Verwenden Sie den [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)-Prozess, wenn Sie gleichzeitig eine Aktualisierung der SAP-Release durchführen müssen. Bedenken Sie, dass nicht alle Kombinationen von Quell- und Ziel-DBMS unterstützt werden. Weitere Informationen finden Sie in den SAP-Supporthinweisen zu den verschiedenen DMO-Releases, z.B. [Database Migration Option (DMO) für SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
-    5.  Testen Sie, ob die Datenübertragung über das Internet oder über ExpressRoute einen besseren Durchsatz bietet, falls Sie Sicherungen oder SAP-Exportdateien verschieben müssen. Beachten Sie, dass Sie für das Verschieben von Daten über das Internet möglicherweise einige Ihrer NSG/ASG-Sicherheitsregeln, die Sie für zukünftige Produktionssysteme benötigen, ändern müssen.
+    5.  Testen Sie, ob die Datenübertragung über das Internet oder über ExpressRoute einen besseren Durchsatz bietet, falls Sie Sicherungen oder SAP-Exportdateien verschieben müssen. Für die Datenübertragung über das Internet müssen möglicherweise einige Ihrer NSG/ASG-Sicherheitsregeln geändert werden, die Sie für zukünftige Produktionssysteme benötigen.
 3.  Sammeln Sie vor dem Verschieben von Systemen von der alten Plattform zu Azure Ressourcenverbrauchsdaten wie CPU-Auslastung und Speicherdurchsatz sowie IOPS-Daten. Dies gilt insbesondere für Einheiten der DBMS-Schicht, aber auch für Einheiten der Anwendungsschicht. Messen Sie außerdem die Latenz von Netzwerk und Speicher.
 4.  Überprüfen Sie die Informationen in den SAP-Supporthinweisen, die Ressourcen im SAP HANA-Hardwareverzeichnis und SAP-PAM erneut, um sicherzustellen, dass keine Änderungen an den unterstützten virtuellen Computern für Azure, den unterstützten Betriebssystemreleases für diese VMs und den unterstützten SAP- und DBMS-Releases vorgenommen wurden. 
 4.  Passen Sie Bereitstellungsskripts an die neuesten Änderungen bei den VM-Typen und den Azure-Funktionen an.

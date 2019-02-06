@@ -1,6 +1,6 @@
 ---
-Titel: Einfaches Experiment titleSuffix: Azure Machine Learning Studio Beschreibung: In diesem Machine Learning-Tutorial werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: tutorial
+Titel: Einfaches Experiment titleSuffix: Azure Machine Learning Studio Beschreibung: In diesem Machine Learning-Tutorial werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: tutorial
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 20.03.2017
 ---

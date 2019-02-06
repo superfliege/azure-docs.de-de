@@ -1,5 +1,5 @@
 ---
-Titel: Definieren benutzerdefinierter R-Module titleSuffix: Azure Machine Learning Studio-Beschreibung: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Definieren benutzerdefinierter R-Module titleSuffix: Azure Machine Learning Studio-Beschreibung: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 29.11.2017
 ---

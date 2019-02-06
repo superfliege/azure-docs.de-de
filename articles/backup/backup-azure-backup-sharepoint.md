@@ -2,18 +2,18 @@
 title: DPM-/Azure Backup Server-Schutz einer SharePoint-Farm in Azure
 description: Dieser Artikel enthält eine Übersicht über den DPM-/Azure Backup Server-Schutz einer SharePoint-Farm in Azure.
 services: backup
-author: adigan
-manager: Nkolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 79b4962e1c37858fbd52d65aff56476e55ffa371
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946044"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296459"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Sichern einer SharePoint-Farm in Azure 
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von System Center Data Protection Manager (DPM) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit DPM können Sie lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -23,7 +23,7 @@ Azure Backup für DPM unterstützt folgende Szenarios:
 
 | Workload | Version | SharePoint-Bereitstellung | Art der DPM-Bereitstellung | DPM – System Center 2012 R2 | Schutz und Wiederherstellung |
 | --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Bereitstellung von SharePoint als physischer Server oder als virtueller Hyper-V-/VMware-Computer  <br> -------------- <br> SQL AlwaysOn |Physischer Server oder lokaler virtueller Hyper-V-Computer |Unterstützt das Sichern in Azure über Updaterollup 5 |Schutz der SharePoint-Farm-Wiederherstellungsoptionen: Wiederherstellung von Farm, Datenbank und Datei oder Listenelement aus Datenträger-Wiederherstellungspunkten.  Farm und Datenbankwiederherstellung aus Azure-Wiederherstellungspunkten. |
+| SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Bereitstellung von SharePoint als physischer Server oder als virtueller Hyper-V-/VMware-Computer  <br> -------------- <br>  SQL AlwaysOn |Physischer Server oder lokaler virtueller Hyper-V-Computer |Unterstützt das Sichern in Azure über Updaterollup 5 |Schutz der SharePoint-Farm-Wiederherstellungsoptionen: Wiederherstellung von Farm, Datenbank und Datei oder Listenelement aus Datenträger-Wiederherstellungspunkten.  Farm und Datenbankwiederherstellung aus Azure-Wiederherstellungspunkten. |
 
 ## <a name="before-you-start"></a>Vorbereitung
 Vor dem Sichern einer SharePoint-Farm in Azure müssen Sie ein paar Punkte bestätigen.

@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 07e65e6ff544d6372197010a2b9d7f3f647eeb0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900392"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166559"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -41,7 +41,7 @@ Acoustics belegt etwa 0,01 % der CPU pro Quelle pro Frame. Die Speicherauslastun
  
 ## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Muss ich die Pegelgeometrie vereinfachen? Muss ich die Anzahl der Dreiecke steuern? Muss ich Gittermodelle wasserdicht machen?
 
-Nein. Das System erfasst die detaillierte Pegelgeometrie direkt. Sie wird zur internen Verarbeitung in Voxels konvertiert.
+ Nein. Das System erfasst die detaillierte Pegelgeometrie direkt. Sie wird zur internen Verarbeitung in Voxels konvertiert.
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>Was befindet sich in der Nachschlagetabelle für die Runtime?
 
@@ -53,7 +53,7 @@ Ja, das Unity-Spatializer-Plug-In von **Microsoft Acoustics** schlägt bei jedem
  
 ## <a name="can-it-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Kann er dynamische Geometrie verarbeiten? Oder schließende Türen? Oder Wände, die entfernt werden?
 
-Nein. Die akustischen Parameter werden basierend auf dem statischen Zustand einer Spielstufe vorausberechnet. Wir empfehlen, die Türgeometrie aus der Akustik auszuklammern und anschließend basierend auf dem Zustand von zerstörbaren und beweglichen Spielobjekten mithilfe bewährter Verfahren zusätzliche Okklusion anzuwenden.
+ Nein. Die akustischen Parameter werden basierend auf dem statischen Zustand einer Spielstufe vorausberechnet. Wir empfehlen, die Türgeometrie aus der Akustik auszuklammern und anschließend basierend auf dem Zustand von zerstörbaren und beweglichen Spielobjekten mithilfe bewährter Verfahren zusätzliche Okklusion anzuwenden.
  
 ## <a name="does-it-handle-materials"></a>Kann er Materialien verarbeiten?
 

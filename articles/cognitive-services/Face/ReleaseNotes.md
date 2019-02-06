@@ -6,20 +6,28 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 6fd3d33d40b0ed142127e46dd7c9173de39947c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 40ad849525ab0afb36754012f735a52f6b5d520d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121990"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297360"
 ---
 # <a name="face-api-release-notes"></a>Anmerkungen zu dieser Version der Gesichtserkennungs-API
 
 Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
+
+### <a name="release-changes-in-january-2019"></a>Änderungen im Release vom Januar 2019
+
+* Momentaufnahmenfunktion zur Unterstützung der Datenmigration zwischen Abonnements hinzugefügt: [Momentaufnahme](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/face/snapshot).
+
+### <a name="release-changes-in-october-2018"></a>Änderungen im Release von Oktober 2018
+
+* Optimierte Beschreibung für `status`, `createdDateTime`, `lastActionDateTime` und `lastSuccessfulTrainingDateTime` in [PersonGroup - Get Training Status](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247), [LargePersonGroup - Get Training Status](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae32c6ac60f11b48b5aa5), and [LargeFaceList - Get Training Status](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a1582f8d2de3616c086f2cf).
 
 ### <a name="release-changes-in-may-2018"></a>Änderungen im Release vom Mai 2018
 
@@ -29,7 +37,7 @@ Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 
 ### <a name="release-changes-in-march-2018"></a>Änderungen im Release von März 2018
 
-* Die Million-Scale Container [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) und [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) wurden hinzugefügt. Weitere Informationen finden Sie unter [How to use the large-scale feature (Verwenden des Features für die Verarbeitung in großem Umfang)](Face-API-How-to-Topics/how-to-use-large-scale.md).
+* Million-Scale-Container hinzugefügt: [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) und [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d). Weitere Informationen finden Sie unter [How to use the large-scale feature (Verwenden des Features für die Verarbeitung in großem Umfang)](Face-API-How-to-Topics/how-to-use-large-scale.md).
 
 * Der [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)-Parameter `maxNumOfCandidatesReturned` wurde von [1, 5] auf [1, 100] erhöht und entspricht standardmäßig 10.
 
@@ -66,7 +74,7 @@ Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 * Die optionalen Parameter `start` und `top` wurden in [PersonGroup - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248) hinzugefügt, damit Benutzer den Startpunkt und die Gesamtzahl der aufzuführenden PersonGroups angeben können.
 
 ### <a name="v10-changes-from-v0"></a>Änderungen von V0 bis V1.0
-* Der Stammdienstendpunkt wurde von ```https://westus.api.cognitive.microsoft.com/face/v0/``` auf ```https://westus.api.cognitive.microsoft.com/face/v1.0/``` aktualisiert. Änderungen wurden an [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) und [Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) vorgenommen.
+* Der Stammdienstendpunkt wurde von ```https://westus.api.cognitive.microsoft.com/face/v0/``` auf ```https://westus.api.cognitive.microsoft.com/face/v1.0/``` aktualisiert. Änderungen werden vorgenommen an: [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) und [Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
 * Die minimal erkennbare Gesichtsgröße wurde auf 36×36 Pixel aktualisiert. Gesichter, die kleiner als 36×36 Pixel sind, werden nicht erkannt.
 

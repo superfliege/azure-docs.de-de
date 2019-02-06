@@ -1,8 +1,21 @@
 ---
-Titel: Entwicklung eines Machine Learning Studio-Modells zu einem Webdienst titleSuffix: Azure Machine Learning Studio – Beschreibung: Ein Überblick darüber, wie Ihr Azure Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 20.03.2017
+title: Vom Machine Learning-Modell zum Webdienst
+titleSuffix: Azure Machine Learning Studio
+description: Ein Überblick darüber, wie Ihr Azure Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 03/20/2017
+ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477980"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Entwicklung eines Machine Learning Studio-Modells von einem Experiment zu einem betriebsbereiten Webdienst
 Azure Machine Learning Studio bietet einen interaktiven Arbeitsbereich, in dem Sie ein ***Experiment*** entwickeln, ausführen, testen und durchlaufen können, das ein Vorhersageanalysemodell darstellt. Es gibt eine Vielzahl von Modulen, die Folgendes ermöglichen:
@@ -19,9 +32,9 @@ Sobald Sie mit dem Experiment zufrieden sind, können Sie es als ***klassischen 
 In diesem Artikel geben wir einen Überblick, wie Ihr Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
 
 > [!NOTE]
-> Es gibt noch weitere Methoden zum Entwickeln und Bereitstellen von Machine Learning-Modellen, aber dieser Artikel beschränkt sich auf die Verwendung von Machine Learning Studio. Eine Erläuterung zum Erstellen eines klassischen Vorhersagewebdiensts mit R finden Sie beispielsweise im Blogbeitrag [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx) (Erstellen und Bereitstellen von Vorhersage-Web-Apps mit RStudio und Azure ML).
-> 
-> 
+> Es gibt noch weitere Methoden zum Entwickeln und Bereitstellen von Machine Learning-Modellen, aber dieser Artikel beschränkt sich auf die Verwendung von Machine Learning Studio. Eine Erläuterung zum Erstellen eines klassischen Vorhersagewebdiensts mit R finden Sie beispielsweise im Blogbeitrag [Build & Deploy Predictive Web Apps Using RStudio and Azure Machine Learning Studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx) (Erstellen und Bereitstellen von Vorhersage-Web-Apps mit RStudio und Azure Machine Learning Studio).
+>
+>
 
 Azure Machine Learning Studio ist darauf ausgerichtet, Sie beim Entwickeln und Bereitstellen eines *Vorhersageanalysemodells* zu unterstützen. Es ist jedoch auch möglich, mithilfe von Studio ein Experiment zu entwickeln, das kein Vorhersageanalysemodell umfasst. Beispielsweise kann ein Experiment nur Daten eingeben, bearbeiten und anschließend die Ergebnisse ausgeben. Genau wie ein Vorhersageanalysemodell können Sie dieses Nicht-Vorhersageexperiment als Webdienst bereitstellen, es ist jedoch ein einfacherer Vorgang, da durch das Experiment kein Machine Learning-Modell trainiert oder bewertet wird. Auch wenn dies nicht das typische Einsatzgebiet von Studio ist, wird es in diesem Thema berücksichtigt, um Ihnen eine vollständige Erläuterung der Funktionsweise von Studio zu geben.
 
@@ -50,8 +63,8 @@ In diesem Konvertierungsprozess wird das Trainingsexperiment nicht verworfen. Na
 
 > [!NOTE]
 > Durch Klicken auf **Set Up Web Service** starten Sie einen automatischen Prozess zum Konvertieren des Trainingsexperiments in ein Vorhersageexperiment. In den meisten Fällen verläuft dieser reibungslos. Wenn das Trainingsexperiment komplex ist (z.B. mehrere Pfade für das Training verknüpft werden), möchten Sie diese Konvertierung vielleicht manuell ausführen. Weitere Informationen finden Sie unter [Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
-> 
-> 
+>
+>
 
 ### <a name="the-web-service"></a>Der Webdienst
 Sobald Sie mit Ihrem Vorhersageexperiment zufrieden sind, können Sie Ihren Dienst entweder als klassischen Webdienst oder neuen auf Azure Resource Manager basierenden Webdienst bereitstellen. Um das Modell durch Bereitstellung als *klassischen Machine Learning-Webdienst* in Betrieb zu nehmen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [Classic]**. Um es als *neuen Machine Learning-Webdienst* bereitzustellen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [New]**. Benutzer können jetzt über die REST-API des Webdiensts Daten an Ihr Modell senden und Ergebnisse zurückerhalten. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
@@ -84,7 +97,7 @@ Wenn Sie Ihr Machine Learning-Modell beibehalten, es aber mit neuen Daten neu tr
 
 1. **Neutrainieren des Modells, während der Webdienst ausgeführt wird**. Wenn Sie das Modell neu trainieren möchten, während der Vorhersagewebdienst ausgeführt wird, müssen Sie dazu ein paar Änderungen am Trainingsexperiment vornehmen, um es als ***Neutrainingsexperiment*** festzulegen. Anschließend können Sie es als ***Neutrainingswebdienst*** bereitstellen. Weitere Anweisungen hierzu finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](retrain-models-programmatically.md).
 2. **Zurückwechseln zum ursprünglichen Trainingsexperiment und Verwenden anderer Trainingsdaten zum Entwickeln Ihres Modells.** Ihr Vorhersageexperiment ist mit dem Webdienst verknüpft, aber das Trainingsexperiment ist nicht direkt auf diese Weise verknüpft. Wenn Sie das ursprüngliche Trainingsexperiment ändern und auf **Set Up Web Service** klicken, wird ein *neues* Vorhersageexperiment erstellt, das bei seiner Bereitstellung einen *neuen* Webdienst erstellt. Der ursprüngliche Webdienst wird nicht einfach aktualisiert.
-   
+
    Wenn Sie daher das Trainingsexperiment ändern müssen, öffnen Sie es, und klicken Sie auf **Save as** , um eine Kopie zu erstellen. Auf diese Weise bleiben das ursprüngliche Trainingsexperiment, das Vorhersageexperiment und der Webdienst erhalten. Jetzt können Sie einen neuen Webdienst mit Ihren Änderungen erstellen. Nachdem Sie den neuen Webdienst bereitgestellt haben, können Sie entscheiden, ob Sie den vorherigen Webdienst beenden oder weiterhin parallel zu dem neuen Webdienst ausführen möchten.
 
 **Sie möchten ein anderes Modell trainieren**

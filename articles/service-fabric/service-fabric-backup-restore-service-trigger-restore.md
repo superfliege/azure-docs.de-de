@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064830"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104642"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Wiederherstellen von Sicherungsdaten in Azure Service Fabric
 
@@ -229,7 +229,7 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
     ```
     
 3. **Success** (Erfolgreich), **Failure** (Fehler) oder **Timeout**: Eine angeforderte Wiederherstellung kann mit einem der folgenden Zustände abgeschlossen werden. Im Anschluss werden die Bedeutung und die Antwortdetails der einzelnen Zustände erläutert:
-    - **Success** (Erfolgreich): Der Wiederherstellungszustand _Success_ (Erfolgreich) gibt an, dass ein Partitionszustand wiederhergestellt wurde. Die Partition meldet die Zustände _RestoreEpoch_ und _RestordLSN_ sowie die Zeit im UTC-Format.
+    - **Erfolg**: Der Wiederherstellungszustand _Success_ (Erfolgreich) gibt an, dass ein Partitionszustand wiederhergestellt wurde. Die Partition meldet die Zustände _RestoredEpoch_ und _RestoredLSN_ sowie die Zeit im UTC-Format.
 
         ```
         RestoreState  : Success
@@ -237,7 +237,7 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
         RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
         RestoredLsn   : 3552
         ```        
-    - **Failure** (Fehler): Der Wiederherstellungszustand _Failure_ (Fehler) gibt an, dass die Wiederherstellungsanforderung nicht erfolgreich war. Die Ursache des Fehlers wird gemeldet.
+    - **Fehler**: Der Wiederherstellungszustand _Failure_ (Fehler) gibt an, dass die Wiederherstellungsanforderung nicht erfolgreich war. Die Ursache des Fehlers wird gemeldet.
 
         ```
         RestoreState  : Failure

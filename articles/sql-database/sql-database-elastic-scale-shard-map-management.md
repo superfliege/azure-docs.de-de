@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 77ef1fed7bbdb53898a688f14944b9b6b16773c7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200971"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476790"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontales Skalieren von Datenbanken mit dem Shardzuordnungs-Manager
 
@@ -40,11 +40,11 @@ Erstellen Sie für ein Modell mit einem einzelnen Mandanten eine **Listenzuordnu
 
 ![Listenzuordnung][1]
 
-Beim Modell mit mehreren Mandanten werden einer Datenbank mehrere Mandanten zugewiesen. Außerdem können Sie Mandantengruppen auf verschiedene Datenbanken verteilen. Verwenden Sie dieses Modell, wenn Sie erwarten, dass die einzelnen Mandanten geringe Datenanforderungen haben. In diesem Modell wird einer Datenbank mithilfe der **Bereichszuordnung** ein Bereich von Mandanten zugewiesen.
+Beim Modell mit mehreren Mandanten werden einer einzelnen Datenbank mehrere Mandanten zugewiesen. Außerdem können Sie Mandantengruppen auf verschiedene Datenbanken verteilen. Verwenden Sie dieses Modell, wenn Sie erwarten, dass die einzelnen Mandanten geringe Datenanforderungen haben. In diesem Modell wird einer Datenbank mithilfe der **Bereichszuordnung** ein Bereich von Mandanten zugewiesen.
 
 ![Bereichszuordnung][2]
 
-Wenn Sie einer Einzeldatenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu den Mandanten-IDs 1 und 5, DB2 zum Speichern von Daten für die Mandanten 7 und 10 verwendet.
+Wenn Sie einer einzelnen Datenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu den Mandanten-IDs 1 und 5, DB2 zum Speichern von Daten für die Mandanten 7 und 10 verwendet.
 
 ![Einzeldatenbank mit mehreren Mandanten][3]
 

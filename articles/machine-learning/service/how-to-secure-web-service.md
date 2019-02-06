@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie einen mit dem Azure Machine Learning-Dienst bereitgestellten Webdienst schützen. Mithilfe von SSL (Secure Sockets Layer) und schlüsselbasierter Authentifizierung können Sie den Zugriff auf Webdienste einschränken und die von Clients übermittelten Daten schützen.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c82c39de9b403e2e35f40c0290c8642c702790f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101180"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248060"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Verwenden von SSL zum Schützen von Webdiensten mit Azure Machine Learning Service
 
@@ -37,7 +37,7 @@ Ob Sie einen Webdienst mit aktiviertem SSL bereitstellen oder SSL für einen vor
 
 4. Aktualisieren Sie Ihren DNS, so dass er auf den Dienst verweist.
 
-Es bestehen bei den verschiedenen [Bereitstellungszielen](how-to-deploy-and-where.md) geringfügige Unterschiede beim Schützen von Webdiensten. 
+Es bestehen bei den verschiedenen [Bereitstellungszielen](how-to-deploy-and-where.md) geringfügige Unterschiede beim Schützen von Webdiensten.
 
 ## <a name="get-a-domain-name"></a>Abrufen eines Domänennamens
 
@@ -50,7 +50,7 @@ Es gibt viele Möglichkeiten, ein SSL-Zertifikat zu erhalten. Die verbreitetste 
 * Ein __Zertifikat__. Das Zertifikat muss die vollständige Zertifikatkette enthalten und PEM-codiert sein.
 * Einen __Schlüssel__. Der Schlüssel muss PEM-codiert sein.
 
-Wenn Sie ein Zertifikat anfordern, müssen Sie den vollqualifizierten Domänennamen (FQDN) der Adresse angeben, die Sie für den Webdienst verwenden möchten. Beispielsweise www.contoso.com. Die in das Zertifikat gestempelte Adresse und die von den Clients verwendete Adresse werden verglichen, wenn die Identität des Webdiensts überprüft wird. Wenn die Adressen nicht übereinstimmen, erhalten die Clients einen Fehler. 
+Wenn Sie ein Zertifikat anfordern, müssen Sie den vollqualifizierten Domänennamen (FQDN) der Adresse angeben, die Sie für den Webdienst verwenden möchten. Beispielsweise www.contoso.com. Die in das Zertifikat gestempelte Adresse und die von den Clients verwendete Adresse werden verglichen, wenn die Identität des Webdiensts überprüft wird. Wenn die Adressen nicht übereinstimmen, erhalten die Clients einen Fehler.
 
 > [!TIP]
 > Wenn die Zertifizierungsstelle das Zertifikat und den Schlüssel nicht als PEM-codierte Dateien bereitstellen kann, können Sie ein Hilfsprogramm wie [OpenSSL](https://www.openssl.org/) zum Ändern des Formats verwenden.
@@ -60,67 +60,47 @@ Wenn Sie ein Zertifikat anfordern, müssen Sie den vollqualifizierten Domänenna
 
 ## <a name="enable-ssl-and-deploy"></a>Aktivieren von SSL und Bereitstellen
 
-Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem SSL den `ssl_enabled`-Parameter auf `True` fest, wenn zutreffend. Legen Sie den `ssl_certificate`-Parameter auf den Wert der __Zertifikat__datei und den `ssl_key` auf den Wert der __Schlüssel__datei fest. 
+Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem SSL den `ssl_enabled`-Parameter auf `True` fest, wenn zutreffend. Legen Sie den `ssl_certificate`-Parameter auf den Wert der __Zertifikat__datei und den `ssl_key` auf den Wert der __Schlüssel__datei fest.
 
 + **Bereitstellen auf Azure Kubernetes Service (AKS)**
-  
+
   Geben Sie beim Bereitstellen des AKS-Clusters Werte für die auf SSL bezogenen Parameter ein, wie in diesem Codeausschnitt gezeigt:
 
     ```python
     from azureml.core.compute import AksCompute
-    
+
     provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
 + **Bereitstellen auf Azure Container Instances (ACI)**
- 
+
   Geben Sie beim Bereitstellen auf ACI Werte für die auf SSL bezogenen Parameter ein, wie in diesem Codeausschnitt gezeigt:
 
     ```python
     from azureml.core.webservice import AciWebservice
-    
+
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
-    ```
-
-+ **Bereitstellen auf Field-Programmable Gate Arrays (FPGA)**
-
-  Die Antwort vom `create_service`-Vorgang enthält die IP-Adresse des Diensts. Die IP-Adresse wird verwendet, wenn der DNS-Name der IP-Adresse des Diensts zugeordnet wird. Die Antwort enthält auch einen __Primärschlüssel__ und einen __Sekundärschlüssel__. Diese werden verwendet, um den Dienst zu nutzen. Geben Sie Werte für die auf SSL bezogenen Parameter ein, wie in diesem Codeausschnitt gezeigt:
-
-    ```python
-    from amlrealtimeai import DeploymentClient
-    
-    subscription_id = "<Your Azure Subscription ID>"
-    resource_group = "<Your Azure Resource Group Name>"
-    model_management_account = "<Your AzureML Model Management Account Name>"
-    location = "eastus2"
-    
-    model_name = "resnet50-model"
-    service_name = "quickstart-service"
-    
-    deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-    
-    with open('cert.pem','r') as cert_file:
-        with open('key.pem','r') as key_file:
-            cert = cert_file.read()
-            key = key_file.read()
-            service = deployment_client.create_service(service_name, model_id, ssl_enabled=True, ssl_certificate=cert, ssl_key=key)
     ```
 
 ## <a name="update-your-dns"></a>Aktualisieren Ihres DNS
 
 Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst verweist.
 
-+ **Für ACI und FPGA**:  
++ **Für ACI**:
 
-  Verwenden Sie die von Ihrer Domänennamen-Registrierungsstelle bereitgestellten Tools, um den DNS-Eintrag für Ihren Domänennamen zu aktualisieren. Der Eintrag muss auf die IP-Adresse des Diensts verweisen.  
+  Verwenden Sie die von Ihrer Domänennamen-Registrierungsstelle bereitgestellten Tools, um den DNS-Eintrag für Ihren Domänennamen zu aktualisieren. Der Eintrag muss auf die IP-Adresse des Diensts verweisen.
 
   Abhängig von der Registrierungsstelle und dem TTL-Wert (Time-to-Live), der für den Domänennamen konfiguriert ist, kann es einige Minuten bis mehrere Stunden dauern, bevor Clients den Domänennamen auflösen können.
 
-+ **Für AKS**: 
++ **Für AKS**:
 
   Aktualisieren Sie den DNS auf der Registerkarte „Konfiguration“ unter „öffentliche IP-Adresse“ des AKS-Clusters, wie in der Abbildung dargestellt. Sie finden die öffentliche IP-Adresse als einen der Ressourcentypen, die unter der Ressourcengruppe erstellt wurden, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
   ![Azure Machine Learning Service: Sichern von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
++ **Für FPGA**:
+
+Die Verwendung von SSL mit Diensten, die für FPGA bereitgestellt werden, wird derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

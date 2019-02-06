@@ -1,6 +1,6 @@
 ---
-Titel: Lokaler SQL Server titleSuffix: Azure Machine Learning Studio – Beschreibung: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit Azure Machine Learning Studio durchzuführen.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Lokaler SQL Server titleSuffix: Azure Machine Learning Studio – Beschreibung: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit Azure Machine Learning Studio durchzuführen.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 13.03.2017
 ---

@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: v-gedod
-ms.openlocfilehash: c2d1c97ad2af266558f9b664162526d5006d2092
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 03f7ac11b08d9cad633e207337ff963114f2c68f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830443"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149236"
 ---
 # <a name="bing-autosuggest-endpoint"></a>Endpunkt für die Bing-Vorschlagssuche
 
@@ -23,9 +23,9 @@ Die **Bing-Vorschlagssuche-API** enthält einen Endpunkt, der für einen Teil de
 
 ## <a name="endpoint"></a>Endpunkt
 
-Um mithilfe der Bing-API vorgeschlagene Abfragen zu erhalten, senden Sie eine `GET`-Anforderung an den folgenden Endpunkt. Verwenden Sie die Header und die URL-Parameter, um Spezifikationen genauer zu bestimmen.
+Um mithilfe der Bing-API vorgeschlagene Abfragen zu erhalten, senden Sie eine `GET`-Anforderung an den folgenden Endpunkt. Verwenden Sie die Header und die URL-Parameter, um Spezifikationen genauer zu definieren.
 
-**Endpunkt:** gibt Suchvorschläge als JSON-Ergebnisse zurück, die für die von `?q=""` definierte Eingabe des Benutzers relevant sind.
+**Endpunkt:** Gibt Suchvorschläge als JSON-Ergebnisse zurück, die für die mit `?q=""` definierte Eingabe des Benutzers relevant sind.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -39,7 +39,7 @@ Die Antwort auf eine Anforderung der Vorschlagssuche enthält Ergebnisse als JSO
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse gemäß ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.
+Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse gemäß ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.
 Alle Endpunkte unterstützen Abfragen, die eine bestimmte Sprache und/oder einen bestimmten Ort nach Längengrad, Breitengrad und Suchradius zurückgeben.
 
 Die umfassenden Informationen zu den Parametern, die von jedem Endpunkt unterstützt werden, finden Sie auf den Referenzseiten des jeweiligen Typs.

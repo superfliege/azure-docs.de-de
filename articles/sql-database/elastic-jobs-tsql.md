@@ -11,13 +11,13 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449400"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458090"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -75,9 +75,9 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>Ausschließen einer Einzeldatenbank
+## <a name="exclude-an-individual-database"></a>Ausschließen einer einzelnen Datenbank
 
-Im folgenden Beispiel wird gezeigt, wie ein Auftrag für alle Datenbanken auf einem Server ausgeführt wird, ausgenommen für die Datenbank mit dem Namen *MappingDB*.  
+Im folgenden Beispiel wird gezeigt, wie ein Auftrag für alle Datenbanken auf einem SQL-Datenbank-Server ausgeführt wird, ausgenommen für die Datenbank mit dem Namen *MappingDB*.  
 Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie den folgenden Befehl aus:
 
 ```sql
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -406,7 +406,7 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 
 
 
-|Gespeicherte Prozedur  |BESCHREIBUNG  |
+|Gespeicherte Prozedur  |Beschreibung  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     Fügt einen neuen Auftrag hinzu.    |
 |[sp_update_job ](#spupdatejob)    |      Aktualisiert einen vorhandenen Auftrag.   |
@@ -1032,10 +1032,10 @@ Gibt an, ob das Zielgruppenmitglied ein- bzw. ausgeschlossen wird. „target_gro
 Der Typ der Zieldatenbank oder der Sammlung von Datenbanken, einschließlich aller Datenbanken auf einem Server, alle Datenbanken in einem Pool für elastische Datenbanken, alle Datenbanken in einer Shardzuordnung oder einer einzelnen Datenbank. „target_type“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert. Gültige Werte für „target_type“ sind „SqlServer“, „SqlElasticPool“, „SqlDatabase“ oder „SqlShardMap“. 
 
 [ **@refresh_credential_name =** ] 'refresh_credential_name'  
-Der Name des logischen Servers. „refresh_credential_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
+Der Name des Azure SQL-Datenbank-Servers. „refresh_credential_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **@server_name =** ] 'server_name'  
-Der Name des logischen Servers, der der angegebenen Zielgruppe hinzugefügt werden soll. „server_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlServer“ aufweist. „server_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
+Der Name des SQL-Datenbank-Servers, der der angegebenen Zielgruppe hinzugefügt werden soll. „server_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlServer“ aufweist. „server_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
 
 [ **@database_name =** ] 'database_name'  
 Der Name der Datenbank, die der angegebenen Zielgruppe hinzugefügt werden soll. „database_name“ muss angegeben werden, wenn „target_type“ den Wert „SqlDatabase“ aufweist. „database_name“ ist vom Datentyp „nvarchar(128)“ ohne Standardwert.
@@ -1051,7 +1051,7 @@ Die Ziel-ID, die dem zu entfernenden Zielgruppenmitglied zugewiesen ist, wenn di
 Rückgabecodewerte: 0 (erfolgreich) oder 1 (fehlerhaft)
 
 #### <a name="remarks"></a>Anmerkungen
-Ein Auftrag wird zum Zeitpunkt der Ausführung bei allen Datenbanken auf einem Server oder bei einem Pool für elastische Datenbanken ausgeführt, wenn ein logischer Server oder Pool für elastische Datenbanken in der Zielgruppe enthalten ist.
+Ein Auftrag wird zum Zeitpunkt der Ausführung für alle Einzeldatenbanken auf einem SQL-Datenbank-Server oder in einem Pool für elastische Datenbanken ausgeführt, wenn ein SQL-Datenbank-Server oder Pool für elastische Datenbanken in der Zielgruppe enthalten ist.
 
 #### <a name="permissions"></a>Berechtigungen
 Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese gespeicherte Prozedur ausführen. Um einem Benutzer lediglich die Überwachung von Aufträgen zu ermöglichen, können Sie dem Benutzer die folgende Datenbankrolle in der Agent-Datenbank für Aufträge zuweisen, die beim Erstellen des Agent-Auftrags angegeben wurde:
@@ -1193,7 +1193,7 @@ GO
 Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) verfügbar.
 
 
-|Sicht  |BESCHREIBUNG  |
+|Sicht  |Beschreibung  |
 |---------|---------|
 |[jobs_executions](#jobsexecutions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
 |[jobs](#jobs-view)     |   Zeigt alle Aufträge an.      |
@@ -1211,7 +1211,7 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 Zeigt den Auftragsausführungsverlauf an.
 
 
-|Spaltenname|   Datentyp   |BESCHREIBUNG|
+|Spaltenname|   Datentyp   |Beschreibung|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  Eindeutige ID einer Instanz einer Auftragsausführung.
 |**job_name**   |nvarchar(128)  |Der Name des Auftrags.
@@ -1229,7 +1229,7 @@ Zeigt den Auftragsausführungsverlauf an.
 |**target_type**|   nvarchar(128)   |Der Typ der Zieldatenbank oder der Sammlung von Datenbanken, einschließlich aller Datenbanken auf einem Server, alle Datenbanken in einem Pool für elastische Datenbanken oder einer Datenbank. Gültige Werte für „target_type“ sind „SqlServer“, „SqlElasticPool“ oder „SqlDatabase“. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_id**  |uniqueidentifier|  Eindeutige ID des Zielgruppenmitglieds.  NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_group_name**  |nvarchar(128)  |Der Name der Zielgruppe. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
-|**target_server_name**|    nvarchar(256)|  Der Name des in der Zielgruppe enthaltenen logischen Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
+|**target_server_name**|    nvarchar(256)|  Der Name des in der Zielgruppe enthaltenen SQL-Datenbank-Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 |**target_database_name**   |nvarchar(128)| Der Name der in der Zielgruppe enthaltenen Datenbank. Wird nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist. NULL weist darauf hin, dass es sich hierbei um eine übergeordnete Auftragsausführung handelt.
 
 
@@ -1239,7 +1239,7 @@ Zeigt den Auftragsausführungsverlauf an.
 
 Zeigt alle Aufträge an.
 
-|Spaltenname|   Datentyp|  BESCHREIBUNG|
+|Spaltenname|   Datentyp|  Beschreibung|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
 |**job_id**|    uniqueidentifier    |Eindeutige ID des Auftrags.|
@@ -1253,11 +1253,11 @@ Zeigt alle Aufträge an.
 
 ### <a name="jobversions-view"></a>Ansicht „job_versions“
 
-[jobs].[job_verions]
+[jobs].[job_versions]
 
 Zeigt alle Auftragsversionen an.
 
-|Spaltenname|   Datentyp|  BESCHREIBUNG|
+|Spaltenname|   Datentyp|  Beschreibung|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
 |**job_id**|    uniqueidentifier    |Eindeutige ID des Auftrags.|
@@ -1270,7 +1270,7 @@ Zeigt alle Auftragsversionen an.
 
 Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.
 
-|Spaltenname    |Datentyp| BESCHREIBUNG|
+|Spaltenname    |Datentyp| Beschreibung|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| Der Name des Auftrags.|
 |**job_id** |uniqueidentifier   |Eindeutige ID des Auftrags.|
@@ -1311,7 +1311,7 @@ Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an. Das Schema is
 
 Listet alle Zielgruppen auf.
 
-|Spaltenname|Datentyp| BESCHREIBUNG|
+|Spaltenname|Datentyp| Beschreibung|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |Der Name der Zielgruppe, eine Sammlung von Datenbanken. 
 |**target_group_id**    |uniqueidentifier   |Eindeutige ID der Zielgruppe.
@@ -1322,7 +1322,7 @@ Listet alle Zielgruppen auf.
 
 Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 
-|Spaltenname|Datentyp| BESCHREIBUNG|
+|Spaltenname|Datentyp| Beschreibung|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|Der Name der Zielgruppe, eine Sammlung von Datenbanken. |
 |**target_group_id**    |uniqueidentifier   |Eindeutige ID der Zielgruppe.|
@@ -1332,7 +1332,7 @@ Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 |**refresh_credential_name**    |nvarchar(128)  |Name der datenbankweit gültigen Anmeldeinformationen, mit denen eine Verbindung mit dem Zielgruppenmitglied hergestellt werden soll.|
 |**subscription_id**    |uniqueidentifier|  Eindeutige ID des Abonnements.|
 |**resource_group_name**    |nvarchar(128)| Der Name der Ressourcengruppe, in der sich das Zielgruppenelement befindet.|
-|**server_name**    |nvarchar(128)  |Der Name des in der Zielgruppe enthaltenen logischen Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. |
+|**server_name**    |nvarchar(128)  |Der Name des in der Zielgruppe enthaltenen SQL-Datenbank-Servers. Nur angegeben, wenn „target_type“ den Wert „SqlServer“ aufweist. |
 |**database_name**  |nvarchar(128)  |Der Name der in der Zielgruppe enthaltenen Datenbank. Wird nur angegeben, wenn „target_type“ den Wert „SqlDatabase“ aufweist.|
 |**elastic_pool_name**  |nvarchar(128)| Der Name des in der Zielgruppe enthaltenen Pools für elastische Datenbanken. Wird nur angegeben, wenn „target_type“ den Wert „SqlElasticPool“ enthält.|
 |**shard_map_name** |nvarchar(128)| Der Name der in der Zielgruppe enthaltenen Shardzuordnung. Wird nur angegeben, wenn „target_type“ den Wert „SqlShardMap“ aufweist.|

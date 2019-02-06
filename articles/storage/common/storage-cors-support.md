@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529708"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473764"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
 Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](http://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](http://www.w3.org/TR/cors/).
@@ -67,11 +67,11 @@ Im Folgenden sehen Sie ein Beispiel für eine einzelne CORS-Regel, die in einem 
 
 Jedes in der CORS-Regel enthaltene Element wird unten beschrieben:
 
-* **AllowedOrigins**: Die Ursprungsdomänen, die über CORS eine Anforderung an den Speicherdienst senden dürfen. Die Ursprungsdomäne ist die Domäne, von der die Anforderung stammt. Beachten Sie, dass die Groß-/Kleinschreibung der Ursprungsdomäne genau mit der der Ursprungsdomäne übereinstimmen muss, die der Benutzer-Agent an den Dienst sendet. Sie können auch das Platzhalterzeichen "*" verwenden, um allen Ursprungsdomänen die Ausführung von CORS-Anforderungen zu erlauben. Im Beispiel oben können die Domänen [http://www.contoso.com](http://www.contoso.com) und [http://www.fabrikam.com](http://www.fabrikam.com) über CORS Anforderungen an den Dienst senden.
-* **AllowedMethods**: Die Methoden (HTTP-Anforderungsverben), die die Ursprungsdomäne für eine CORS-Anforderung verwenden kann. Im vorangehenden Beispiel sind PUT- und GET-Anforderungen zulässig.
-* **AllowedHeaders**: Die Anforderungsheader, die die Ursprungsdomäne für die CORS-Anforderung angeben kann. Im vorangehenden Beispiel sind alle Metadatenheader zulässig, die mit x-ms-meta-data, x-ms-meta-target und x-ms-meta-abc beginnen. Das Platzhalterzeichen "*" zeigt an, dass beliebige Header, die mit dem angegebenen Präfix beginnen, zulässig sind.
-* **ExposedHeaders**: Die Antwortheader, die in der Antwort an die CORS-Anforderung gesendet und vom Browser gegenüber dem Anforderungsaussteller verfügbar gemacht werden können. Im vorangehenden Beispiel wird der Browser angewiesen, beliebige Header, die mit x-ms-meta beginnen, verfügbar zu machen.
-* **MaxAgeInSeconds**: Die maximale Zeit, über die die OPTIONS-Preflight-Anforderung vom Browser zwischengespeichert werden soll.
+* **AllowedOrigins:** Die Ursprungsdomänen, die über CORS eine Anforderung an den Speicherdienst senden dürfen. Die Ursprungsdomäne ist die Domäne, von der die Anforderung stammt. Beachten Sie, dass die Groß-/Kleinschreibung der Ursprungsdomäne genau mit der der Ursprungsdomäne übereinstimmen muss, die der Benutzer-Agent an den Dienst sendet. Sie können auch das Platzhalterzeichen "*" verwenden, um allen Ursprungsdomänen die Ausführung von CORS-Anforderungen zu erlauben. Im Beispiel oben können die Domänen [http://www.contoso.com](http://www.contoso.com) und [http://www.fabrikam.com](http://www.fabrikam.com) über CORS Anforderungen an den Dienst senden.
+* **AllowedMethods:** Die Methoden (HTTP-Anforderungsverben), die die Ursprungsdomäne für eine CORS-Anforderung verwenden kann. Im vorangehenden Beispiel sind PUT- und GET-Anforderungen zulässig.
+* **AllowedHeaders:** Die Anforderungsheader, die die Ursprungsdomäne für die CORS-Anforderung angeben kann. Im vorangehenden Beispiel sind alle Metadatenheader zulässig, die mit x-ms-meta-data, x-ms-meta-target und x-ms-meta-abc beginnen. Das Platzhalterzeichen "*" zeigt an, dass beliebige Header, die mit dem angegebenen Präfix beginnen, zulässig sind.
+* **ExposedHeaders:** Die Antwortheader, die in der Antwort an die CORS-Anforderung gesendet und vom Browser gegenüber dem Anforderungsaussteller verfügbar gemacht werden können. Im vorangehenden Beispiel wird der Browser angewiesen, beliebige Header, die mit x-ms-meta beginnen, verfügbar zu machen.
+* **MaxAgeInSeconds:** Die maximale Zeit, über die die OPTIONS-Preflight-Anforderung vom Browser zwischengespeichert werden soll.
 
 Die Angabe von Headern mit Präfix wird von den Azure Storage-Diensten sowohl für das **AllowedHeaders**-Element als auch für das **ExposedHeaders**-Element unterstützt. Um eine Headerkategorie zuzulassen, können Sie für diese Kategorie ein gemeinsames Präfix angeben. Wenn Sie z.B. *x-ms-meta** als Header mit Präfix angeben, wird eine Regel erstellt, durch die alle Header abgeglichen werden, die mit „x-ms-meta“ beginnen.
 

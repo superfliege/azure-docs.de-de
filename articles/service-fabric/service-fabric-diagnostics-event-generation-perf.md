@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 114d71227e3cf3d0f235fc63135534b1030d4adc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290772"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188338"
 ---
 # <a name="performance-metrics"></a>Leistungsmetriken
 
@@ -80,7 +80,7 @@ Erfassen Sie die folgenden Leistungsindikatoren, wenn Sie .NET-Dienste an Ihren 
 
 Service Fabric generiert eine beträchtliche Menge an benutzerdefinierten Leistungsindikatoren. Wenn Sie das SDK installiert haben, sehen Sie eine umfassende Liste in Ihrer Leistungsmonitoranwendung auf Ihrem Windows-Computer (Start > Leistungsmonitor). 
 
-In der von Ihnen an Ihren Cluster bereitgestellten Anwendung können Sie Indikatoren über die Kategorien `Service Fabric Actor` und `Service Fabric Actor Method` hinzufügen, wenn Sie Reliable Actors verwenden (weitere Informationen finden Sie unter [Diagnose und Leistungsüberwachung für Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
+In der von Ihnen für Ihren Cluster bereitgestellten Anwendung können Sie Indikatoren über die Kategorien `Service Fabric Actor` und `Service Fabric Actor Method` hinzufügen, wenn Sie Reliable Actors verwenden. (Weitere Informationen finden Sie unter [Diagnose und Leistungsüberwachung für Reliable Actors](service-fabric-reliable-actors-diagnostics.md).)
 
 Bei Verwendung von Reliable Services oder Dienstremoting stehen analog dazu die Indikatorkategorien `Service Fabric Service` und `Service Fabric Service Method` zur Verfügung, aus denen Sie Leistungsindikatoren erfassen sollten (siehe [Diagnose und Leistungsüberwachung für Reliable ServiceRemoting](service-fabric-reliable-serviceremoting-diagnostics.md) bzw. [Leistungsindikatoren](service-fabric-reliable-services-diagnostics.md#performance-counters)). 
 

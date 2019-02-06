@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239301"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208634"
 ---
 # <a name="analyze-method"></a>analyze-Methode
 
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>Anforderungsparameter
 
-NAME | Typ | Erforderlich | BESCHREIBUNG
+NAME | Type | Erforderlich | BESCHREIBUNG
 -----|-------|----------|------------
 **language**    | Zeichenfolge | JA | Die zwei Buchstaben des ISO-Sprachcodes, der für die Analyse verwendet werden soll. Beispiel: „en“ für Englisch.
 **analyzerIds** | Liste von Zeichenfolgen | JA | Liste von GUIDs der Analysetools, die angewendet werden sollen. Weitere Informationen finden Sie in der Dokumentation zu Analysetools.
@@ -50,7 +50,7 @@ Ein Array von Analyseausgaben, eines für jedes in der Anforderung angegebene At
 
 Die Ergebnisse sehen wie folgt aus:
 
-NAME | Typ | BESCHREIBUNG
+NAME | Type | BESCHREIBUNG
 -----|------|--------------
 analyzerId | Zeichenfolge | GUID des angegebenen Analysetools
 result | object | Ergebnis des Analysetools
@@ -59,7 +59,7 @@ Beachten Sie, dass der Typ des Ergebnisses vom Typ des Eingabeanalysetools abhä
 
 ### <a name="tokens-response-json"></a>Tokenantwort (JSON)
 
-NAME | Typ | BESCHREIBUNG
+NAME | Type | BESCHREIBUNG
 -----|------|-------------
 result | Liste von Satzobjekten | Innerhalb des Texts identifizierte Satzbegrenzungen |
 result[x].Offset | int | Startzeichenoffset eines jeden Satzes |

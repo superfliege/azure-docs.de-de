@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653508"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901784"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
@@ -128,6 +128,10 @@ Bereiche der Diagnoseprotokollierung und Nachverfolgung, die für Apps nicht ver
 Apps verfügen über schreibgeschützten Zugriff auf einen großen Teil der Registrierung des virtuellen Computers (jedoch nicht auf die gesamte), auf dem sie ausgeführt werden. In der Praxis bedeutet das, dass Registrierungsschlüssel, die schreibgeschützten Zugriff auf lokale Benutzergruppen gewähren, für Apps zugänglich sind. Ein Bereich der Registrierung, der aktuell nicht für Lese- oder Schreibzugriff unterstützt wird, ist die Struktur HKEY\_CURRENT\_USER.
 
 Der Schreibzugriff auf die Registrierung ist blockiert, einschließlich des Zugriffs auf benutzerbezogene Registrierungsschlüssel. Aus Sicht der App sollte in einer Azure-Umgebung nie von Schreibzugriff auf eine Registrierung ausgegangen werden, da Apps über unterschiedliche virtuelle Computer migriert werden können (und dies auch geschieht). Der einzige dauerhaft beschreibbare Speicher, auf den sich eine App stützen kann, ist die Inhaltsverzeichnisstruktur jeder App, die auf UNC-Freigaben von App Service gespeichert wird. 
+
+## <a name="remote-desktop-access"></a>Remotedesktopzugriff
+
+App Service stellt keinen Remotedesktopzugriff auf die VM-Instanzen bereit.
 
 ## <a name="more-information"></a>Weitere Informationen
 

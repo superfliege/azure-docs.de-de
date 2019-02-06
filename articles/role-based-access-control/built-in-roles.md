@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/05/2018
+ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2d834c5f9f46f2ebe3c997c75dc50f30ed4bda7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558922"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081227"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die [rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern, Gruppen und Dienstprinzipalen zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Ressourcen in Azure zugreifen. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen.
@@ -37,6 +37,8 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender](#contributor) | Ermöglicht Ihnen das Verwalten aller Komponenten außer des Zugriffs auf Ressourcen. |
 | [Leser](#reader) | Sie können alles anzeigen, aber keine Änderungen vornehmen. |
 | [AcrImageSigner](#acrimagesigner) | ACR-Imagesignaturgeber |
+| [AcrPull](#acrpull) | ACR-Pullvorgang |
+| [AcrPush](#acrpush) | ACR-Pushvorgang |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR-Quarantänedatenleser |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR-Quarantänedatenschreiber |
 | [Mitwirkender des API-Verwaltungsdienstes](#api-management-service-contributor) | Kann Dienst und APIs verwalten. |
@@ -66,6 +68,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender für Cognitive Services](#cognitive-services-contributor) | Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten von Cognitive Services-Schlüsseln. |
 | [Cognitive Services-Benutzer](#cognitive-services-user) | Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. |
 | [Cosmos DB-Rolle „Kontoleser“](#cosmos-db-account-reader-role) | Kann Azure Cosmos DB-Kontodaten lesen. Informationen zum Verwalten von Azure Cosmos DB-Konten finden Sie unter [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor). |
+| [CosmosBackupOperator](#cosmosbackupoperator) | Kann eine Wiederherstellungsanforderung für eine Cosmos DB-Datenbank oder einen Container für ein Konto übermitteln. |
 | [Mitwirkender für Cost Management](#cost-management-contributor) | Ermöglicht Ihnen das Anzeigen der Kosten und das Verwalten der Kostenkonfiguration (z. B. Budgets, Exporte). |
 | [Cost Management-Leser](#cost-management-reader) | Ermöglicht Ihnen das Anzeigen der Kostendaten und -konfiguration (z. B. Budgets, Exporte). |
 | [Data Box-Mitwirkender](#data-box-contributor) | Ermöglicht Ihnen das Verwalten aller Komponenten unter dem Data Box-Dienst, mit Ausnahme der Gewährung des Zugriffs für andere Benutzer. |
@@ -76,8 +79,8 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [DevTest Labs-Benutzer](#devtest-labs-user) | Ermöglicht Ihnen das Verbinden, Starten, Neustarten und Herunterfahren Ihrer virtuellen Computer in Ihren Azure DevTest Labs. |
 | [DNS Zone Contributor](#dns-zone-contributor) | Ermöglicht Ihnen die Verwaltung von DNS-Zonen und Ressourceneintragssätzen in Azure DNS, aber nicht zu steuern, wer darauf Zugriff hat. |
 | [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) | Kann Azure Cosmos DB-Konten verwalten. Azure Cosmos DB wurde früher als DocumentDB bezeichnet. |
-| [EventGrid EventSubscription-Mitwirkender (Vorschau)](#eventgrid-eventsubscription-contributor-preview) | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. |
-| [EventGrid EventSubscription-Leser (Vorschau)](#eventgrid-eventsubscription-reader-preview) | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. |
+| [EventGrid EventSubscription-Mitwirkender](#eventgrid-eventsubscription-contributor) | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. |
+| [EventGrid EventSubscription-Leser](#eventgrid-eventsubscription-reader) | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. |
 | [Mitwirkender für die HDInsight-Domänendienste](#hdinsight-domain-services-contributor) | Ermöglicht Ihnen, Vorgänge im Zusammenhang mit Domänendiensten, die für das HDInsight Enterprise-Sicherheitspaket erforderlich sind, zu lesen, zu erstellen, zu ändern und zu löschen. |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) | Ermöglicht Ihnen das Verwalten von Intelligent Systems-Konten, nicht aber den Zugriff darauf. |
 | [Key Vault-Mitwirkender](#key-vault-contributor) | Ermöglicht Ihnen die Verwaltung von Schlüsseltresoren, aber nicht den Zugriff darauf. |
@@ -98,7 +101,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von virtuellem Netzwerk](#network-contributor) | Ermöglicht Ihnen das Verwalten von Netzwerken, nicht aber den Zugriff darauf. |
 | [Mitwirkender von New Relic APM-Konto](#new-relic-apm-account-contributor) | Ermöglicht Ihnen das Verwalten von New Relic Application Performance Management-Konten und -Anwendungen, nicht aber den Zugriff auf diese. |
 | [Lese- und Datenzugriff](#reader-and-data-access) | Ermöglicht Ihnen das Anzeigen sämtlicher Aspekte, jedoch nicht das Löschen oder Erstellen eines Speicherkontos oder einer darin enthaltenen Ressource. Sie können auch Lese-/Schreibzugriff auf alle Daten in einem Speicherkonto durch Zugriff auf Speicherkontoschlüssel gewähren. |
-| [Azure Cache for Redis Contributor (Azure Cache for Redis-Mitwirkender)](#redis-cache-contributor) | Ermöglicht Ihnen das Verwalten von Azure Cache for Redis, nicht aber den Zugriff darauf. |
+| [Mitwirkender von Redis-Cache](#redis-cache-contributor) | Ermöglicht Ihnen das Verwalten von Azure Cache for Redis, nicht aber den Zugriff darauf. |
 | [Mitwirkender an Ressourcenrichtlinien (Vorschau)](#resource-policy-contributor-preview) | (Vorschau) Über EA abgeglichene Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie. |
 | [Mitwirkender von Zeitplanungsauftragssammlung](#scheduler-job-collections-contributor) | Ermöglicht Ihnen das Verwalten von Scheduler-Auftragssammlungen, nicht aber den Zugriff darauf. |
 | [Mitwirkender von Suchdienst](#search-service-contributor) | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. |
@@ -114,7 +117,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von Speicherkonto](#storage-account-contributor) | Ermöglicht Ihnen das Verwalten von Speicherkonten, nicht aber den Zugriff darauf. |
 | [Dienstrolle „Speicherkonto-Schlüsseloperator“](#storage-account-key-operator-service-role) | Speicherkonto-Schlüsseloperatoren dürfen Schlüssel für Speicherkonten auflisten und neu generieren. |
 | [Mitwirkender an Storage-Blobdaten (Vorschau)](#storage-blob-data-contributor-preview) | Ermöglicht den Lese-, Schreib- und Löschzugriff auf Azure Storage-Blobcontainer und -Daten. |
-| [Besitzer von Speicherblobdaten (Vorschau):](#storage-blob-data-owner-preview) | Ermöglicht den Lese-, Schreib-, Lösch- und POSIX-Superuser-Zugriff auf Azure Storage-Blobcontainer und -Daten. |
+| [Besitzer von Speicherblobdaten (Vorschau):](#storage-blob-data-owner-preview) | Ermöglicht Vollzugriff auf Azure Storage-Blobcontainer und -Daten, einschließlich POSIX-Zugriffssteuerung. |
 | [Storage-Blobdatenleser (Vorschau)](#storage-blob-data-reader-preview) | Ermöglicht den Lesezugriff auf Azure Storage-Blobcontainer und -Daten. |
 | [Mitwirkender an Storage-Warteschlangendaten (Vorschau)](#storage-queue-data-contributor-preview) | Ermöglicht den Lese-, Schreib- und Löschzugriff auf Azure Storage-Warteschlangen und -Warteschlangennachrichten. |
 | [Storage-Warteschlangendatenleser (Vorschau)](#storage-queue-data-reader-preview) | Ermöglicht den Lesezugriff auf Azure Storage-Warteschlangen und -Warteschlangennachrichten. |
@@ -169,6 +172,25 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | Pushen/Pullen von Inhaltsvertrauen-Metadaten für eine Containerregistrierung |
+
+## <a name="acrpull"></a>AcrPull
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | ACR-Pullvorgang |
+> | **Id** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | **Aktionen** |  |
+> | Microsoft.ContainerRegistry/registries/pull/read | Pullen oder Abrufen von Images aus einer Containerregistrierung |
+
+## <a name="acrpush"></a>AcrPush
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | ACR-Pushvorgang |
+> | **Id** | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | **Aktionen** |  |
+> | Microsoft.ContainerRegistry/registries/pull/read | Pullen oder Abrufen von Images aus einer Containerregistrierung |
+> | Microsoft.ContainerRegistry/registries/push/write | Pushen oder Schreiben von Images in eine Containerregistrierung |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -385,7 +407,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualisiert die Containerliste. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Erstellen und Verwalten von Sicherungsaufträgen |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Gibt das Ergebnis des Vorgangs „Auftrag exportieren“ zurück. |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Erstellen und Verwalten von Metadaten in Zusammenhang mit der Sicherungsverwaltung |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Erstellen und Verwalten der Ergebnisse von Sicherungsverwaltungsvorgängen |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Erstellen und Verwalten von Sicherungsrichtlinien |
@@ -445,8 +467,8 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualisiert die Containerliste. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Erstellen und Verwalten von Sicherungsaufträgen |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Gibt das Ergebnis des Vorgangs „Auftrag exportieren“ zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Gibt Sicherungsverwaltungs-Metadaten für Recovery Services-Tresore zurück. |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
+> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Erstellen und Verwalten der Ergebnisse von Sicherungsverwaltungsvorgängen |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Dient zum Abrufen der Ergebnisse von Richtlinienvorgängen. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Gibt alle Schutzrichtlinien zurück. |
@@ -506,8 +528,8 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Gibt das Ergebnis von Auftragsvorgängen zurück. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Gibt alle Auftragsobjekte zurück. |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Dient zum Exportieren von Aufträgen. |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Gibt das Ergebnis des Vorgangs „Auftrag exportieren“ zurück. |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Gibt Sicherungsverwaltungs-Metadaten für Recovery Services-Tresore zurück. |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
+> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Gibt das Ergebnis eines Sicherungsvorgangs für Recovery Services-Tresore zurück. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Dient zum Abrufen der Ergebnisse von Richtlinienvorgängen. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Gibt alle Schutzrichtlinien zurück. |
@@ -754,6 +776,16 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
+## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Kann eine Wiederherstellungsanforderung für eine Cosmos DB-Datenbank oder einen Container für ein Konto übermitteln. |
+> | **Id** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
+> | **Aktionen** |  |
+> | Microsoft.DocumentDB/databaseAccounts/backup/action | Sendet eine Anforderung zum Konfigurieren der Sicherung. |
+> | Microsoft.DocumentDB/databaseAccounts/restore/action | Sendet eine Wiederherstellungsanforderung. |
+
 ## <a name="cost-management-contributor"></a>Mitwirkender für Cost Management
 > [!div class="mx-tableFixed"]
 > | | |
@@ -940,7 +972,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
-## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription-Mitwirkender (Vorschau)
+## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -957,7 +989,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
-## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription-Leser (Vorschau)
+## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription-Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1201,6 +1233,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
 > | Microsoft.Insights/actiongroups/* |  |
+> | Microsoft.Insights/activityLogAlerts/* |  |
 > | Microsoft.Insights/AlertRules/* | Lesen/Schreiben/Löschen von Warnungsregeln. |
 > | Microsoft.Insights/components/* | Kann Application Insights-Komponenten lesen/schreiben/delegieren. |
 > | Microsoft.Insights/DiagnosticSettings/* | Lesen/Schreiben/Löschen von Diagnoseeinstellungen. |
@@ -1285,7 +1318,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 
-## <a name="azure-cache-for-redis-contributor"></a>Azure Cache for Redis Contributor (Azure Cache for Redis-Mitwirkender)
+## <a name="redis-cache-contributor"></a>Mitwirkender von Redis-Cache
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1370,6 +1403,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Security/pricings/delete | Löscht die Tarifeinstellungen für den Bereich. |
 > | Microsoft.Security/securityContacts/delete | Löscht den Sicherheitskontakt. |
 > | Microsoft.Security/securityContacts/write | Aktualisiert den Sicherheitskontakt. |
+> | Microsoft.Security/InformationProtectionPolicies/write | Aktualisiert die Information Protection-Richtlinien für die Ressource. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ## <a name="security-manager-legacy"></a>Sicherheits-Manager (Legacy)
@@ -1430,7 +1464,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/* | Erstellen und Verwalten von Replikationsrichtlinien |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/* | Erstellen und Verwalten von Wiederherstellungsplänen |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/* | Erstellen und Verwalten der Speicherkonfiguration des Recovery Services-Tresors |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Gibt Tokeninformationen für Recovery Services-Tresore zurück. |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Der Vorgang „Tresortoken“ kann zum Abrufen des Tresortokens für Back-End-Vorgänge auf Tresorebene verwendet werden. |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Lesen von Warnungen für den Recovery Services-Tresor |
@@ -1497,7 +1531,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Lesen von Warnungen für den Recovery Services-Tresor |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Gibt Tokeninformationen für Recovery Services-Tresore zurück. |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Der Vorgang „Tresortoken“ kann zum Abrufen des Tresortokens für Back-End-Vorgänge auf Tresorebene verwendet werden. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
@@ -1540,7 +1574,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Dient zum Lesen beliebiger Richtlinien |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Dient zum Lesen beliebiger Wiederherstellungspläne |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Gibt Tokeninformationen für Recovery Services-Tresore zurück. |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Der Vorgang „Tresortoken“ kann zum Abrufen des Tresortokens für Back-End-Vorgänge auf Tresorebene verwendet werden. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
@@ -1565,6 +1599,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Insights/metricDefinitions/read | Dient zum Lesen von Metrikdefinitionen. |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Kann keine Überwachungsrichtlinien bearbeiten |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Überwachungsrichtlinien können nicht bearbeiten werden |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Dient zum Abrufen der Datensätze für die Datenbankblobüberwachung. |
@@ -1578,6 +1613,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="sql-security-manager"></a>SQL-Sicherheits-Manager
 > [!div class="mx-tableFixed"]
@@ -1593,6 +1629,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Erstellen und Verwalten von SQL Server-Überwachungsrichtlinien |
 > | Microsoft.Sql/servers/auditingSettings/* | Erstellen und Verwalten von SQL Server-Überwachungseinstellungen |
 > | Microsoft.Sql/servers/extendedAuditingSettings/read | Dient zum Abrufen von Details zur Richtlinie für die erweiterte Serverblobüberwachung, die für einen bestimmten Server konfiguriert ist. |
@@ -1616,6 +1653,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Sql/servers/firewallRules/* |  |
 > | Microsoft.Sql/servers/read | Gibt die Liste der Server zurück oder ruft die Eigenschaften für den angegebenen Server ab. |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Erstellen und Verwalten von Richtlinien für Sicherheitswarnungen von SQL Server |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 
 ## <a name="sql-server-contributor"></a>Mitwirkender von SQL Server
@@ -1637,6 +1675,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Insights/metricDefinitions/read | Dient zum Lesen von Metrikdefinitionen. |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Kann keine SQL Server-Überwachungsrichtlinien bearbeiten |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL Server-Überwachungseinstellungen können nicht bearbeitet werden |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Kann keine Überwachungsrichtlinien von SQL Server-Datenbanken bearbeiten |
@@ -1654,6 +1693,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Richtlinien für Sicherheitswarnungen von SQL Server können nicht bearbeitet werden |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>Mitwirkender von Speicherkonto
 > [!div class="mx-tableFixed"]
@@ -1690,8 +1730,8 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Gibt das Ergebnis beim Löschen eines Containers zurück. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Gibt einen Container oder eine Liste von Containern zurück. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Hiermit wird das Ergebnis des Vorgangs zum Festlegen oder Leasen eines Blobcontainers zurückgegeben. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Hiermit wird eine Liste von Containern zurückgegeben. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Gibt das Ergebnis des PUT-Vorgangs für den Blobcontainer zurück. |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
@@ -1701,16 +1741,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht den Lese-, Schreib-, Lösch- und POSIX-Superuser-Zugriff auf Azure Storage-Blobcontainer und -Daten. |
+> | **Beschreibung** | Ermöglicht Vollzugriff auf Azure Storage-Blobcontainer und -Daten, einschließlich POSIX-Zugriffssteuerung. |
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Aktionen** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Gibt das Ergebnis beim Löschen eines Containers zurück. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Gibt einen Container oder eine Liste von Containern zurück. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Hiermit wird das Ergebnis des Vorgangs zum Festlegen oder Leasen eines Blobcontainers zurückgegeben. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
 
 ## <a name="storage-blob-data-reader-preview"></a>Storage-Blobdatenleser (Vorschau)
 > [!div class="mx-tableFixed"]
@@ -1719,7 +1755,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Beschreibung** | Ermöglicht den Lesezugriff auf Azure Storage-Blobcontainer und -Daten. |
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Aktionen** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Gibt einen Container oder eine Liste von Containern zurück. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Hiermit wird eine Liste von Containern zurückgegeben. |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
 

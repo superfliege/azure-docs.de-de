@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
-ms.component: files
-ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623650"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470449"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -86,7 +86,7 @@ Es gibt mehrere Möglichkeiten, um zu überprüfen, ob eine Datei per Tiering au
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Wenn die Datei einen Analysepunkt enthält, sollte **Analysenkennungswert: 0x8000001e** angezeigt werden. Dieser Hexadezimalwert ist der Analysepunktwert, der der Azure-Dateisynchronisierung zuzuordnen ist. Die Ausgabe enthält außerdem die Analysedaten, die für den Pfad zu Ihrer Datei auf der Azure-Dateifreigabe stehen.
+        Wenn die Datei einen Analysepunkt enthält, sollte **Analysentagwert: 0x8000001e** angezeigt werden. Dieser Hexadezimalwert ist der Analysepunktwert, der der Azure-Dateisynchronisierung zuzuordnen ist. Die Ausgabe enthält außerdem die Analysedaten, die für den Pfad zu Ihrer Datei auf der Azure-Dateifreigabe stehen.
 
         > [!WARNING]  
         > Der Hilfsprogrammbefehl `fsutil reparsepoint` bietet außerdem die Möglichkeit, einen Analysepunkt zu löschen. Führen Sie diesen Befehl nur aus, wenn Sie vom Engineering-Team für die Azure-Dateisynchronisierung dazu aufgefordert werden. Bei der Ausführung dieses Befehls kann es zu Datenverlusten kommen. 

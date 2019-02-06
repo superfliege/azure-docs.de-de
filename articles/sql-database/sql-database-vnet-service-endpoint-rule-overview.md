@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390396"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453926"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL
 
@@ -162,7 +162,7 @@ Derzeit stehen Ihnen zwei Möglichkeiten zum Aktivieren der Überwachung für Ih
 
 ### <a name="impact-on-data-sync"></a>Auswirkungen auf die Datensynchronisierung
 
-Azure SQL-Datenbank verfügt über ein Datensynchronisierungsfeature, das unter Verwendung von Azure-IP-Adressen eine Verbindung mit Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten werden Sie wahrscheinlich den Zugriff **Allen Azure-Diensten Zugriff auf den Server erlauben** auf Ihrem logischen Server deaktivieren. Dadurch wird die Datensynchronisierungsfunktion unterbrochen.
+Azure SQL-Datenbank verfügt über ein Datensynchronisierungsfeature, das unter Verwendung von Azure-IP-Adressen eine Verbindung mit Ihren Datenbanken herstellt. Bei der Verwendung von Dienstendpunkten werden Sie wahrscheinlich den Zugriff **Allen Azure-Diensten Zugriff auf den Server erlauben** auf Ihrem SQL-Datenbank-Server deaktivieren. Dadurch wird die Datensynchronisierungsfunktion unterbrochen.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage
 
@@ -173,17 +173,18 @@ In Azure Storage ist dasselbe Feature implementiert, mit dem Sie die Konnektivit
 PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL Data Warehouse zu laden. Wenn das Azure Storage-Konto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Führen Sie die unten angegebenen Schritte aus, um PolyBase-Import- und -Exportszenarien zu ermöglichen, in denen Azure SQL Data Warehouse eine Verbindung mit Azure Storage (im VNET gesichert) herstellt:
 
 #### <a name="prerequisites"></a>Voraussetzungen
+
 1.  Installieren Sie Azure PowerShell anhand [dieses Leitfadens](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das Upgrade auf Version 2 des universellen Speicherkontos durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
 3.  Im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos muss die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein. Weitere Informationen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
  
 #### <a name="steps"></a>Schritte
-1.  **Registrieren Sie Ihren logischen SQL Server** in PowerShell mit Azure Active Directory (AAD):
+1.  **Registrieren Sie Ihren SQL-Datenbank-Server** in PowerShell mit Azure Active Directory (AAD):
 
     ```powershell
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“**, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) verwenden.
@@ -192,7 +193,7 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
     > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
     > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)**, und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie die RBAC-Rolle **Mitwirkender an Storage-Blobdaten (Vorschau)** Ihrer logischen SQL Server-Instanz zu.
+1.  Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)**, und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrem SQL-Datenbank-Server die RBAC-Rolle **Mitwirkender an Storage-Blobdaten (Vorschau)** zu.
 
     > [!NOTE] 
     > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

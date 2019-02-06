@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 95b63b525365a5a31856c2f14ac965aaa1113cff
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.lastreviewed: 11/08/2018
+ms.openlocfilehash: 0e5d799a5128f578900e4fa326b2e129964d0873
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515623"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243782"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Häufig gestellte Fragen zur Azure Stack-Nutzungs-API
 
@@ -30,355 +31,355 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 
 ### <a name="network"></a>Netzwerk
   
-**Meter ID**: F271A8A388C44D93956A063E1D2FA80B  
-**Messung:** Nutzung von statischen IP-Adressen  
+**ID der Verbrauchseinheit**: F271A8A388C44D93956A063E1D2FA80B  
+**Name der Verbrauchseinheit**: Nutzung von statischen IP-Adressen  
 **Einheit:** IP-Adressen  
-**Hinweise:** Anzahl verwendeter IP-Adressen. Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die IP-Adresse multipliziert mit der Anzahl von Stunden zurück.  
+**Hinweise**: Anzahl von verwendeten IP-Adressen; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die IP-Adresse multipliziert mit der Anzahl von Stunden zurück.  
   
-**Meter ID**: 9E2739BA86744796B465F64674B822BA  
-**Messung:** Nutzung von dynamischen IP-Adressen  
+**ID der Verbrauchseinheit**: 9E2739BA86744796B465F64674B822BA  
+**Name der Verbrauchseinheit**: Nutzung von dynamischen IP-Adressen  
 **Einheit:** IP-Adressen  
-**Hinweise:** Anzahl verwendeter IP-Adressen. Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die IP-Adresse multipliziert mit der Anzahl von Stunden zurück.  
+**Hinweise**: Anzahl von verwendeten IP-Adressen; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die IP-Adresse multipliziert mit der Anzahl von Stunden zurück.  
   
-### <a name="storage"></a>Speicher
+### <a name="storage"></a>Storage
   
-**Messungs-ID:** B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
-**Messung:** TableCapacity  
+**ID der Verbrauchseinheit**: B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
+**Name der Verbrauchseinheit**: TableCapacity  
 **Einheit:** GB\*Stunden  
-**Hinweise:** von Tabellen genutzte Kapazität  
+**Hinweise**: Von Tabellen genutzte Kapazität  
   
-**Messungs-ID:** B5C15376-6C94-4FDD-B655-1A69D138ACA3  
-**Messung:** PageBlobCapacity  
+**ID der Verbrauchseinheit**: B5C15376-6C94-4FDD-B655-1A69D138ACA3  
+**Name der Verbrauchseinheit**: PageBlobCapacity  
 **Einheit:** GB\*Stunden  
-**Hinweise:** von Seitenblobs genutzte Kapazität  
+**Hinweise**: Von Seitenblobs genutzte Kapazität  
   
-**Messungs-ID** B03C6AE7-B080-4BFA-84A3-22C800F315C6  
-**Messung:** QueueCapacity  
+**ID der Verbrauchseinheit**: B03C6AE7-B080-4BFA-84A3-22C800F315C6  
+**Name der Verbrauchseinheit**: QueueCapacity  
 **Einheit:** GB\*Stunden  
-**Hinweise:** von Warteschlangen genutzte Kapazität  
+**Hinweise**: Von Warteschlangen genutzte Kapazität  
   
-**Messungs-ID:** 09F8879E-87E9-4305-A572-4B7BE209F857  
-**Messung:** BlockBlobCapacity  
+**ID der Verbrauchseinheit**: 09F8879E-87E9-4305-A572-4B7BE209F857  
+**Name der Verbrauchseinheit**: BlockBlobCapacity  
 **Einheit:** GB\*Stunden  
-**Hinweise:** von Blockblobs genutzte Kapazität  
+**Hinweise**: Von Blockblobs genutzte Kapazität  
   
-**Messungs-ID:** B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
-**Messung:** TableTransactions  
+**ID der Verbrauchseinheit**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
+**Name der Verbrauchseinheit**: TableTransactions  
 **Einheit:** Anzahl von Anforderungen in 10.000  
-**Hinweise:** Table Storage-Anforderungen (in 10.000ern)  
+**Hinweise**: Tabellenspeicherdienst-Anforderungen (in 10.000ern)  
   
-**Messungs-ID:** 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
-**Messung:** TableDataTransIn  
-**Einheit:** eingehende Daten in GB  
-**Hinweise:** Eingang von Table Storage-Daten in GB  
+**ID der Verbrauchseinheit**: 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
+**Name der Verbrauchseinheit**: TableDataTransIn  
+**Einheit:** Dateneingang in GB  
+**Hinweise**: Eingang von Tabellenspeicherdienst-Daten in GB  
   
-**Meter ID**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
-**Messung:** TableDataTransOut  
-**Einheit:** ausgehende Daten in GB  
-**Hinweise:** Ausgang von Table Storage-Daten in GB  
+**ID der Verbrauchseinheit**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
+**Name der Verbrauchseinheit**: TableDataTransOut  
+**Einheit:** Ausgehende Daten in GB  
+**Hinweise**: Ausgang von Tabellenspeicherdienst-Daten in GB  
   
-**Messungs-ID:** 43DAF82B-4618-444A-B994-40C23F7CD438  
-**Messung:** BlobTransactions  
+**ID der Verbrauchseinheit**: 43DAF82B-4618-444A-B994-40C23F7CD438  
+**Name der Verbrauchseinheit**: BlobTransactions  
 **Einheit:** Anzahl von Anforderungen in 10.000  
-**Hinweise:** Blob-Dienstanforderungen (in 10.000)  
+**Hinweise**: Blob-Dienstanforderungen (in 10.000ern)  
   
-**Messungs-ID:** 9764F92C-E44A-498E-8DC1-AAD66587A810  
-**Messung:** BlobDataTransIn  
-**Einheit:** eingehende Daten in GB  
-**Hinweise:** Eingang von Blob-Dienstdaten in GB  
+**ID der Verbrauchseinheit**: 9764F92C-E44A-498E-8DC1-AAD66587A810  
+**Name der Verbrauchseinheit**: BlobDataTransIn  
+**Einheit:** Dateneingang in GB  
+**Hinweise**: Eingang von Blob-Dienstdaten in GB  
   
-**Messungs-ID:** 3023FEF4-ECA5-4D7B-87B3-CFBC061931E8  
-**Messung:** BlobDataTransOut  
-**Einheit:** ausgehende Daten in GB  
-**Hinweise:** ausgehender Datenverkehr von Blob-Dienstdaten in GB  
+**ID der Verbrauchseinheit**: 3023FEF4-ECA5-4D7B-87B3-CFBC061931E8  
+**Name der Verbrauchseinheit**: BlobDataTransOut  
+**Einheit:** Ausgehende Daten in GB  
+**Hinweise**: Ausgehender Datenverkehr von Blob-Dienstdaten in GB  
   
-**Messungs-ID:** EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
-**Messung:** QueueTransactions  
+**ID der Verbrauchseinheit**: EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
+**Name der Verbrauchseinheit**: QueueTransactions  
 **Einheit:** Anzahl von Anforderungen in 10.000  
-**Hinweise:** Warteschlangendienstanforderungen (in 10.000ern)  
+**Hinweise**: Warteschlangendienstanforderungen (in 10.000ern)  
   
-**Messungs-ID:** E518E809-E369-4A45-9274-2017B29FFF25  
-**Messung:** QueueDataTransIn  
-**Einheit:** eingehende Daten in GB  
-**Hinweise:** Eingang von Warteschlangendienstdaten in GB  
+**ID der Verbrauchseinheit**: E518E809-E369-4A45-9274-2017B29FFF25  
+**Name der Verbrauchseinheit**: QueueDataTransIn  
+**Einheit:** Dateneingang in GB  
+**Hinweise**: Eingang von Warteschlangendienstdaten in GB  
   
-**Meter ID**: DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2  
-**Messung:** QueueDataTransOut  
-**Einheit:** ausgehende Daten in GB  
-**Hinweise:** Ausgang von Warteschlangendienstdaten in GB  
+**ID der Verbrauchseinheit**: DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2  
+**Name der Verbrauchseinheit**: QueueDataTransOut  
+**Einheit:** Ausgehende Daten in GB  
+**Hinweise**: Ausgang von Warteschlangendienstdaten in GB  
 
 ### <a name="compute"></a>Compute 
   
-**Meter ID**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
-**Messung:** Basis-VM-Größe – Stunden  
-**Einheit:** virtueller Kern – Stunden  
-**Hinweise:** Anzahl virtueller Kerne multipliziert mit der Anzahl von Stunden, die der virtuelle Computer ausgeführt wurde  
+**ID der Verbrauchseinheit**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
+**Name der Verbrauchseinheit**: Base VM Size Hours  
+**Einheit:** Virtueller Kern Stunden  
+**Hinweise**: Anzahl von virtuellen Kernen multipliziert mit der Anzahl von Stunden, während denen der virtuelle Computer ausgeführt wurde  
   
-**Messungs-ID:** 9CD92D4C-BAFD-4492-B278-BEDC2DE8232A  
-**Messung:** Windows-VM-Größe – Stunden  
-**Einheit:** virtueller Kern – Stunden  
-**Hinweise:** Anzahl virtueller Kerne multipliziert mit der Anzahl von Stunden, die der virtuelle Computer ausgeführt wurde  
+**ID der Verbrauchseinheit**: 9CD92D4C-BAFD-4492-B278-BEDC2DE8232A  
+**Name der Verbrauchseinheit**: Windows VM Size Hours  
+**Einheit:** Virtueller Kern Stunden  
+**Hinweise**: Anzahl von virtuellen Kernen multipliziert mit der Anzahl von Stunden, während denen der virtuelle Computer ausgeführt wurde  
   
-**Messungs-ID:** 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
-**Messung:** VM-Größe – Stunden  
-**Einheit:** VM-Stunden  
-**Hinweise:** Erfasst sowohl die Basis- als auch die Windows-VM Wird für Kerne nicht angepasst  
+**ID der Verbrauchseinheit**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
+**Name der Verbrauchseinheit**: VM size hours  
+**Einheit:** VM Stunden  
+**Hinweise**: Erfasst sowohl die Basis- als auch die Windows-VM. Wird für Kerne nicht angepasst  
   
 ### <a name="managed-disks"></a>Managed Disks
 
 **ID der Verbrauchseinheit**: 380874f9-300c-48e0-95a0-d2d9a21ade8f   
 **Name der Verbrauchseinheit**: S4   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Standard – 32 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Standard – 32GB 
 
 **ID der Verbrauchseinheit**: 1b77d90f-427b-4435-b4f1-d78adec53222   
 **Name der Verbrauchseinheit**: S6   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Standard – 64 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Standard – 64GB 
 
 **ID der Verbrauchseinheit**: d5f7731b-f639-404a-89d0-e46186e22c8d   
 **Name der Verbrauchseinheit**: S10   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Standard – 128 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Standard – 128GB 
 
 **ID der Verbrauchseinheit**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
 **Name der Verbrauchseinheit**: S15   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Standard – 256 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Standard – 256GB 
 
 **ID der Verbrauchseinheit**: 88ea9228-457a-4091-adc9-ad5194f30b6e   
 **Name der Verbrauchseinheit**: S20   
-**Einheit**: Anzahl der Datenträger\*Monat      
-**Hinweise**: Managed Disks Standard – 512 GB 
+**Einheit:** Anzahl der Datenträger\*Monat      
+**Hinweise**: Verwalteter Datenträger Standard – 512GB 
 
 **ID der Verbrauchseinheit**: 5b1db88a-8596-4002-8052-347947c26940   
 **Name der Verbrauchseinheit**: S30   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Standard – 1.024 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Standard – 1.024GB 
 
 **ID der Verbrauchseinheit**: 7660b45b-b29d-49cb-b816-59f30fbab011   
 **Name der Verbrauchseinheit**: P4   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Premium – 32 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Premium – 32GB 
 
 **ID der Verbrauchseinheit**: 817007fd-a077-477f-bc01-b876f27205fd   
 **Name der Verbrauchseinheit**: P6   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Premium – 64 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Premium – 64GB 
 
 **ID der Verbrauchseinheit**: e554b6bc-96cd-4938-a5b5-0da990278519   
 **Name der Verbrauchseinheit**: P10   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Premium – 128 GB  
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Premium – 128GB  
 
 **ID der Verbrauchseinheit**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
 **Name der Verbrauchseinheit**: P15  
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Premium – 256 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Premium – 256GB 
 
 **ID der Verbrauchseinheit**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
 **Name der Verbrauchseinheit**: P20   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Premium – 512 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Premium – 512GB 
 
 **ID der Verbrauchseinheit**: 06bde724-9f94-43c0-84c3-d0fc54538369   
 **Name der Verbrauchseinheit**: P30   
-**Einheit**: Anzahl der Datenträger\*Monat   
-**Hinweise**: Managed Disks Premium – 1.024 GB 
+**Einheit:** Anzahl der Datenträger\*Monat   
+**Hinweise**: Verwalteter Datenträger Premium – 1.024GB 
 
 **ID der Verbrauchseinheit**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
 **Name der Verbrauchseinheit**: ActualStandardDiskSize   
-**Einheit**: GB\*Monat      
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Standard  
+**Einheit:** GB\*Monat      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Standard“  
 
 **ID der Verbrauchseinheit**: daef389a-06e5-4684-a7f7-8813d9f792d5  
 **Name der Verbrauchseinheit**: ActualPremiumDiskSize   
-**Einheit**: GB\*Monat      
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Premium 
+**Einheit:** GB\*Monat      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“ 
 
 **ID der Verbrauchseinheit**: 75d4b707-1027-4403-9986-6ec7c05579c8  
 **Name der Verbrauchseinheit**: ActualStandardSnapshotSize   
-**Einheit**: GB\*Monat   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Snapshot.  
+**Einheit:** GB\*Monat   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger der verwalteten Standardmomentaufnahme.  
 
 **ID der Verbrauchseinheit**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
 **Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
-**Einheit**: GB\*Monat   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Premium.   
+**Einheit:** GB\*Monat   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“   
 
 **ID der Verbrauchseinheit**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Name der Verbrauchseinheit**: S4   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard: 32 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Standard – 32GB (veraltet) 
 
 **ID der Verbrauchseinheit**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **Name der Verbrauchseinheit**: S6   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard: 64 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Standard – 64GB (veraltet) 
 
 **ID der Verbrauchseinheit**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **Name der Verbrauchseinheit**: S10   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard: 128 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Standard – 128GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **Name der Verbrauchseinheit**: S15   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard: 256 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Standard – 256GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
 **Name der Verbrauchseinheit**: S20   
-**Einheit**: Anzahl der Datenträger\*Stunden      
-**Hinweise**: Managed Disks Standard: 512 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden      
+**Hinweise**: Verwalteter Datenträger Standard – 512GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **Name der Verbrauchseinheit**: S30   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Standard: 1024 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Standard – 1.024GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **Name der Verbrauchseinheit**: P4   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium: 32 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Premium – 32GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 518b412b-1927-4f25-985f-4aea24e55c4f   
 **Name der Verbrauchseinheit**: P6   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium: 64 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Premium – 64GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **Name der Verbrauchseinheit**: P10   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium: 128 GB (veraltet)  
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Premium – 128GB (veraltet)  
 
 **ID der Verbrauchseinheit**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
 **Name der Verbrauchseinheit**: P15  
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium: 256 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Premium – 256GB (veraltet) 
 
 **ID der Verbrauchseinheit**: c7e7839c-293b-4761-ae4c-848eda91130b   
 **Name der Verbrauchseinheit**: P20   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium: 512 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Premium – 512GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **Name der Verbrauchseinheit**: P30   
-**Einheit**: Anzahl der Datenträger\*Stunden   
-**Hinweise**: Managed Disks Premium: 1024 GB (veraltet) 
+**Einheit:** Anzahl der Datenträger\*Stunden   
+**Hinweise**: Verwalteter Datenträger Premium – 1.024GB (veraltet) 
 
 **ID der Verbrauchseinheit**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **Name der Verbrauchseinheit**: ActualStandardDiskSize   
-**Einheit**: Byte\*Stunden      
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Standard (veraltet)  
+**Einheit:** Byte\*Stunden      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Standard“ (veraltet)  
 
 **ID der Verbrauchseinheit**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
 **Name der Verbrauchseinheit**: ActualPremiumDiskSize   
-**Einheit**: Byte\*Stunden      
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Premium (veraltet) 
+**Einheit:** Byte\*Stunden      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“ (veraltet) 
 
 **ID der Verbrauchseinheit**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
 **Name der Verbrauchseinheit**: ActualStandardSnapshotSize   
-**Einheit**: Byte\*Stunden   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Snapshot (veraltet) 
+**Einheit:** Byte\*Stunden   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger der verwalteten Standardmomentaufnahme (veraltet) 
 
 **ID der Verbrauchseinheit**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
-**Einheit**: Byte\*Stunden   
-**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Premium (veraltet) 
+**Einheit:** Byte\*Stunden   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von „Verwalteter Datenträger Premium“ (veraltet) 
 
 ### <a name="sql-rp"></a>Sql RP
   
-**Messungs-ID:** CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
-**Messung:** DatabaseSizeHourSqlMeter  
-**Einheit:** MB\*Stunden  
-**Hinweise:** Gesamtkapazität der Datenbank bei Erstellung Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.  
+**ID der Verbrauchseinheit**: CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
+**Name der Verbrauchseinheit**: DatabaseSizeHourSqlMeter  
+**Einheit:** MB \* Stunden  
+**Hinweise**: Gesamtkapazität der Datenbank bei Erstellung; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.  
   
 ### <a name="mysql-rp"></a>MySql RP   
   
-**Messungs-ID:** E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
-**Messung:** DatabaseSizeHourMySqlMeter  
-**Einheit:** MB\*Stunden  
-**Hinweise:** Gesamtkapazität der Datenbank bei Erstellung Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.    
+**ID der Verbrauchseinheit**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
+**Name der Verbrauchseinheit**: DatabaseSizeHourMySqlMeter  
+**Einheit:** MB \* Stunden  
+**Hinweise**: Gesamtkapazität der Datenbank bei Erstellung; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.    
 ### <a name="key-vault"></a>Key Vault   
   
-**Messungs-ID:** EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
-**Messung:** Key Vault-Transaktionen  
+**ID der Verbrauchseinheit**: EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
+**Name der Verbrauchseinheit**: Key Vault transactions  
 **Einheit:** Anzahl von Anforderungen in 10.000  
-**Hinweise:** Anzahl der REST-API-Anforderungen, die von der Key Vault-Datenebene empfangen werden  
+**Hinweise**: Zahl der REST-API-Anforderungen, die von der Key Vault-Datenebene empfangen werden  
   
-**Messungs-ID:** 2C354225-B2FE-42E5-AD89-14F0EA302C87  
-**Messung:** Transaktionen für erweiterte Schlüssel  
-**Einheit:** 10.000 Transaktionen  
-**Hinweise:** Transaktionen für RSA 3K/4K-, ECC-Schlüssel (Vorschauversion)  
+**ID der Verbrauchseinheit**: 2C354225-B2FE-42E5-AD89-14F0EA302C87  
+**Name der Verbrauchseinheit**: Transaktionen für erweiterte Schlüssel  
+**Einheit:**  10.000 Transaktionen  
+**Hinweise**: Transaktionen für RSA 3K/4K-, ECC-Schlüssel (Vorschauversion)  
   
 ### <a name="app-service"></a>App Service   
   
-**Messungs-ID:** 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
-**Messung:** App Service  
-**Einheit:** virtueller Kern – Stunden  
-**Hinweise:** Anzahl virtueller Kerne, die zum Ausführen des App-Diensts verwendet werden Hinweis: Microsoft verwendet diese Verbrauchseinheit, um App Service in Azure Stack in Rechnung zu stellen. Cloud-Dienstanbieter können die anderen App Service-Verbrauchseinheiten (unten) zum Berechnen der Nutzung für ihre Mandanten verwenden.  
+**ID der Verbrauchseinheit**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
+**Name der Verbrauchseinheit**: App Service  
+**Einheit:** Virtueller Kern Stunden  
+**Hinweise**: Anzahl der virtuellen Kerne, die zum Ausführen des App-Diensts verwendet werden Hinweis: Microsoft verwendet diese Verbrauchseinheit, um App Service in Azure Stack in Rechnung zu stellen. Cloud-Dienstanbieter können die anderen App Service-Verbrauchseinheiten (unten) zum Berechnen der Nutzung für ihre Mandanten verwenden.  
   
-**Messungs-ID:** 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
-**Messung:** Functions-Anforderungen  
+**ID der Verbrauchseinheit**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
+**Name der Verbrauchseinheit**: Functions-Anforderungen  
 **Einheit:** 10 Anforderungen  
-**Hinweise:** Gesamtzahl der angeforderten Ausführungen (pro 10 Ausführungen) Die Zählung erfolgt bei jeder Ausführung als Antwort auf ein Ereignis oder wird durch eine Bindung ausgelöst.  
+**Hinweise**: Gesamtzahl der angeforderten Ausführungen (pro 10 Ausführungen) Die Zählung erfolgt bei jeder Ausführung als Antwort auf ein Ereignis oder wird durch eine Bindung ausgelöst.  
   
-**Messungs-ID:** D1D04836-075C-4F27-BF65-0A1130EC60ED  
-**Messung:** Functions – Compute  
-**Einheit:** GB-s  
-**Hinweise:** Ressourcenverbrauch gemessen in Gigabytesekunden (GB/s). Der **gemessene Ressourcenverbrauch** wird durch Multiplikation der durchschnittlichen Speichergröße in GB mit der Zeit (in Millisekunden) berechnet, die für die Ausführung der Funktion aufgewendet wird. Der von einer Funktion genutzte Speicher wird auf die nächsten 128 MB gerundet bis zur maximalen Speichergröße von 1536 MB gemessen. Die Ausführungszeit wird durch Runden auf die nächste 1 ms berechnet. Die minimale Ausführungszeit und der minimale Arbeitsspeicher für die Ausführung einer einzelnen Funktion beträgt 100 ms bzw. 128 MB.  
+**ID der Verbrauchseinheit**: D1D04836-075C-4F27-BF65-0A1130EC60ED  
+**Name der Verbrauchseinheit**: Functions – Compute  
+**Einheit:**  GB-s  
+**Hinweise**:  Ressourcenverbrauch gemessen in Gigabytesekunden (GB-s) Der **gemessene Ressourcenverbrauch** wird durch Multiplikation der durchschnittlichen Speichergröße in GB mit der Zeit (in Millisekunden) berechnet, die für die Ausführung der Funktion aufgewendet wird. Der von einer Funktion genutzte Speicher wird auf die nächsten 128 MB gerundet bis zur maximalen Speichergröße von 1536 MB gemessen. Die Ausführungszeit wird durch Runden auf die nächste 1 ms berechnet. Die minimale Ausführungszeit und der minimale Arbeitsspeicher für die Ausführung einer einzelnen Funktion beträgt 100 ms bzw. 128 MB.  
   
-**Messungs-ID:** 957E9F36-2C14-45A1-B6A1-1723EF71A01D  
-**Messung:** Shared-App Service-Stunden  
+**ID der Verbrauchseinheit**: 957E9F36-2C14-45A1-B6A1-1723EF71A01D  
+**Name der Verbrauchseinheit**: Shared-App Service-Stunden  
 **Einheit:** 1 Stunde  
-**Hinweise:** Nutzung pro Stunde bei Shared-App Service-Plan Pläne werden auf App-Basis abgerechnet.  
+**Hinweise**: Nutzung pro Stunde bei Shared-App Service-Plan Pläne werden auf App-Basis abgerechnet.  
   
-**Messungs-ID:** 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
-**Messung:** Free-App Service-Stunden  
+**ID der Verbrauchseinheit**: 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
+**Name der Verbrauchseinheit**: Free-App Service-Stunden  
 **Einheit:** 1 Stunde  
-**Hinweise:** Nutzung pro Stunde bei Free-App Service-Plan. Pläne werden auf App-Basis abgerechnet.  
+**Hinweise**: Nutzung pro Stunde bei kostenlosem App Service-Plan Pläne werden auf App-Basis abgerechnet.  
   
-**Messungs-ID:** 88039D51-A206-3A89-E9DE-C5117E2D10A6  
-**Messung:** Standard-App Service-Stunden, klein  
+**ID der Verbrauchseinheit**: 88039D51-A206-3A89-E9DE-C5117E2D10A6  
+**Name der Verbrauchseinheit**: Standard-App Service-Stunden, klein  
 **Einheit:** 1 Stunde  
-**Hinweise:** wird anhand der Größe und Anzahl der Instanzen berechnet.  
+**Hinweise**: Wird anhand der Größe und Anzahl der Instanzen berechnet.  
   
-**Messungs-ID:** 83A2A13E-4788-78DD-5D55-2831B68ED825  
-**Messung:** Standard-App Service-Stunden, mittel  
+**ID der Verbrauchseinheit**: 83A2A13E-4788-78DD-5D55-2831B68ED825  
+**Name der Verbrauchseinheit**: Standard-App Service-Stunden, mittel  
 **Einheit:** 1 Stunde  
-**Hinweise:** wird anhand der Größe und Anzahl der Instanzen berechnet.  
+**Hinweise**: Wird anhand der Größe und Anzahl der Instanzen berechnet.  
   
-**Messungs-ID:** 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
-**Messung:** Standard-App Service-Stunden, groß  
+**ID der Verbrauchseinheit**: 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
+**Name der Verbrauchseinheit**: Standard-App Service-Stunden, groß  
 **Einheit:** 1 Stunde  
-**Hinweise:** wird anhand der Größe und Anzahl der Instanzen berechnet.  
+**Hinweise**: Wird anhand der Größe und Anzahl der Instanzen berechnet.  
   
 ### <a name="custom-worker-tiers"></a>Benutzerdefinierte Workertarife   
   
-**Messungs-ID:** *benutzerdefinierte Workertarife*  
-**Messung:** benutzerdefinierte Workertarife  
+**ID der Verbrauchseinheit**: *Benutzerdefinierte Workertarife*  
+**Name der Verbrauchseinheit**: Benutzerdefinierte Workertarife  
 **Einheit:** Stunden  
-**Hinweise:** ID der deterministischen Verbrauchseinheit wird basierend auf der SKU und dem Namen des benutzerdefinierten Workertarifs erstellt. Diese Verbrauchseinheit-ID ist für jeden benutzerdefinierten Workertarif eindeutig.  
+**Hinweise**: ID der deterministischen Verbrauchseinheit wird basierend auf der SKU und dem Namen des benutzerdefinierten Workertarifs erstellt. Diese Verbrauchseinheit-ID ist für jeden benutzerdefinierten Workertarif eindeutig.  
   
-**Meter ID**: 264ACB47-AD38-47F8-ADD3-47F01DC4F473  
-**Messung:** SNI SSL  
-**Einheit:** pro SNI SSL-Bindung  
-**Hinweise:** App Service unterstützt zwei Arten von SSL-Verbindungen: SSL-Verbindungen mit Servernamensanzeige (Server Name Indication, SNI) und SSL-Verbindungen für bestimmte IP-Adressen. SNI SSL wird von modernen Browsern unterstützt, IP-basiertes SSL funktioniert bei allen Browsern.  
+**ID der Verbrauchseinheit**: 264ACB47-AD38-47F8-ADD3-47F01DC4F473  
+**Name der Verbrauchseinheit**: SNI SSL  
+**Einheit:** Pro SNI SSL-Bindung  
+**Hinweise**: App Service unterstützt zwei Arten von SSL-Verbindungen: SSL-Verbindungen vom Typ „Servernamensanzeige“ (Server Name Indication, SNI) und SSL-Verbindungen vom Typ „IP-Adresse“. SNI SSL wird von modernen Browsern unterstützt, IP-basiertes SSL funktioniert bei allen Browsern.  
   
-**Messungs-ID:** 60B42D72-DC1C-472C-9895-6C516277EDB4  
-**Messung:** IP-SSL  
-**Einheit:** pro IP-basierter SSL-Bindung  
-**Hinweise:** App Service unterstützt zwei Arten von SSL-Verbindungen: SSL-Verbindungen mit Servernamensanzeige (Server Name Indication, SNI) und SSL-Verbindungen für bestimmte IP-Adressen. SNI SSL wird von modernen Browsern unterstützt, IP-basiertes SSL funktioniert bei allen Browsern.  
+**ID der Verbrauchseinheit**: 60B42D72-DC1C-472C-9895-6C516277EDB4  
+**Name der Verbrauchseinheit**: IP-SSL  
+**Einheit:** Pro IP-basierter SSL-Bindung  
+**Hinweise**: App Service unterstützt zwei Arten von SSL-Verbindungen: SSL-Verbindungen vom Typ „Servernamensanzeige“ (Server Name Indication, SNI) und SSL-Verbindungen vom Typ „IP-Adresse“. SNI SSL wird von modernen Browsern unterstützt, IP-basiertes SSL funktioniert bei allen Browsern.  
   
-**Messungs-ID:** 73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
-**Messung:** Webprozess  
+**ID der Verbrauchseinheit**: 73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
+**Name der Verbrauchseinheit**:  Webprozess  
 **Einheit:**  
-**Hinweise:** Wird pro aktive Website pro Stunde berechnet.  
+**Hinweise**: Wird pro aktive Website pro Stunde berechnet.  
   
-**Messungs-ID:** 5887D39B-0253-4E12-83C7-03E1A93DFFD9  
-**Messung:** externe Ausgangsbandbreite  
+**ID der Verbrauchseinheit**: 5887D39B-0253-4E12-83C7-03E1A93DFFD9  
+**Name der Verbrauchseinheit**: Externe Ausgangsbandbreite  
 **Einheit:** GB  
-**Hinweise:** Gesamtanzahl der eingehenden Anforderungsantwortbytes + Gesamtanzahl der ausgehenden Anforderungsantwortbytes + Gesamtanzahl der eingehenden FTP-Anforderungsantwortbytes + Gesamtanzahl der eingehenden Web Deploy-Anforderungsantwortbytes  
+**Hinweise**: Gesamtanzahl der eingehenden Anforderungsantwortbytes + Gesamtanzahl der ausgehenden Anforderungsantwortbytes + Gesamtanzahl der eingehenden FTP-Anforderungsantwortbytes + Gesamtanzahl der eingehenden Web Deploy-Anforderungsantwortbytes  
   
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsdocsmicrosoftcomazurebillingbilling-usage-rate-card-overviewazure-resource-usage-api-preview-currently-in-public-preview"></a>Wie unterscheiden sich die Azure Stack-Nutzungs-APIs von der [Azure-Nutzungs-API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (aktuell in der öffentlichen Vorschau)?

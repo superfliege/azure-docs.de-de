@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541614"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463955"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu SQL-Datenbank
 
@@ -43,7 +43,7 @@ Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für
 
 ## <a name="is-moving-to-the-vcore-based-model-required"></a>Ist eine Migration zum V-Kern-basierten Modell erforderlich?
 
-Nein. Mit der Einführung des V-Kern-basierten Modells bei den Bereitstellungsoptionen von Pools für elastische Datenbanken und Einzeldatenbanken möchten wir unseren Kunden eine größere Auswahl und Flexibilität bieten. Wenn Kunden weiterhin das DTU-basierte Modell nutzen möchten, müssen sie aufgrund dieser Ankündigung keine Schritte ausführen, und die Umgebung und Abrechnung ändert sich nicht.
+Nein. Mit der Einführung des V-Kern-basierten Modells bei den Bereitstellungsoptionen von Pools für elastische Datenbanken und Singletons möchten wir unseren Kunden eine größere Auswahl und Flexibilität bieten. Wenn Kunden weiterhin das DTU-basierte Modell nutzen möchten, müssen sie aufgrund dieser Ankündigung keine Schritte ausführen, und die Umgebung und Abrechnung ändert sich nicht.
 
 In vielen Fällen können Anwendungen von der Einfachheit eines vorkonfigurierten Ressourcenpakets profitieren. Aus diesem Grund bieten wir diese DTU-basierten Optionen weiterhin für unsere Kunden an. Falls Sie diese Optionen nutzen und Ihre Geschäftsanforderungen damit erfüllt werden, sollten Sie sie weiter verwenden.
 
@@ -141,9 +141,9 @@ Beliebig oft. Weitere Informationen finden Sie unter [Verwalten von Pools für e
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Wie lange dauert es, den Diensttarif oder die Computegröße einer Einzeldatenbank zu ändern oder eine Datenbank in einen oder aus einem Pool für elastische Datenbanken zu verschieben?
 
-Um den Diensttarif einer Datenbank zu ändern und ihn in einen Pool und aus einem Pool heraus zu verschieben, muss die Datenbank als Hintergrundvorgang auf die Plattform kopiert werden. Je nach Größe der Datenbanken kann das Ändern des Diensttarifs wenige Minuten oder mehrere Stunden dauern. In beiden Fällen bleiben die Datenbanken während des Verschiebens online und verfügbar. Weitere Informationen zum Ändern von Einzeldatenbanken finden Sie unter [Ändern der Dienstebene für eine Datenbank](sql-database-service-tiers-dtu.md).
+Um den Diensttarif einer Datenbank zu ändern und ihn in einen Pool und aus einem Pool heraus zu verschieben, muss die Datenbank als Hintergrundvorgang auf die Plattform kopiert werden. Je nach Größe der Datenbanken kann das Ändern des Diensttarifs wenige Minuten oder mehrere Stunden dauern. In beiden Fällen bleiben die Datenbanken während des Verschiebens online und verfügbar. Weitere Informationen zum Ändern von Einzeldatenbanken finden Sie unter [Ändern der Dienstebene für eine Datenbank](sql-database-single-database-scale.md).
 
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Wann sollten Einzeldatenbanken elastischen Datenbanken vorgezogen werden?
+## <a name="when-should-i-use-a-single-database-vs-elastic-pools"></a>Wann sollten Singletons Pools für elastische Datenbanken vorgezogen werden?
 
 Pools für elastische Datenbanken sind generell auf herkömmliche [SaaS-Anwendungsmuster (Software-as-a-Service)](sql-database-design-patterns-multi-tenancy-saas-applications.md) ausgelegt, in denen eine Datenbank pro Kunde oder Mandant vorhanden ist. Der Erwerb von Einzeldatenbanken und die Bereitstellung einer für den Normalfall zu großen Menge an Datenbankressourcen, um für jede Einzeldatenbank variierende Anforderungen oder Anforderungen zu Spitzenzeiten zu erfüllen, ist häufig keine kosteneffiziente Lösung. Mit Pools verwalten Sie die gesamte Leistung des Pools, und die Datenbanken werden automatisch nach oben und unten skaliert. Die intelligente Engine von Azure empfiehlt einen Pool für Datenbanken, wenn es ein entsprechendes Nutzungsmuster erkennt. Details finden Sie in der [Anleitung zu Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 

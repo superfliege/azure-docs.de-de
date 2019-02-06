@@ -1,17 +1,17 @@
 ---
 title: Aktivieren der Replikation von virtuellen VMware-Computern für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery die Replikation von virtuellen VMware-Computern für die VMware-Notfallwiederherstellung in Azure aktivieren.
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424153"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226332"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -86,18 +86,20 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 
 1. Klicken Sie auf **Einstellungen** > **Replizierte Elemente**, und wählen Sie dann den Computer aus. Die Seite **Zusammenfassung** enthält Informationen zu Computereinstellungen und -status.
 2. Unter **Eigenschaften** können Sie die Informationen zur Replikation und zum Failover für den virtuellen Computer anzeigen.
-3. Unter **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie den Namen und die Zielgröße des virtuellen Azure-Computers angeben. Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt.
+3. In **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie mehrere VM-Eigenschaften ändern:
+* Azure VM-Name: Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt.
+* Größe oder Typ der Ziel-VM: Die Standard-VM-Größe wird basierend auf der Quell-VM-Größe ausgewählt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert und nur nach dem Failover geändert werden kann. Erfahren Sie mehr über [Standard](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets)- und [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)-Datenträgergrößen und IOPS.
 
     ![Eigenschaften für Compute und Netzwerk](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der ein Computer nach einem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des Computers nicht mehr.
-5. Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Beachten Sie bei der Auswahl einer Verfügbarkeitsgruppe folgende Punkte:
+*  Ressourcengruppe: Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der ein Computer nach einem Failover angehört. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des Computers nicht mehr.
+* Verfügbarkeitsgruppe: Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Beachten Sie bei der Auswahl einer Verfügbarkeitsgruppe folgende Punkte:
 
     * Es werden nur Verfügbarkeitsgruppen aufgelistet, die der angegebenen Ressourcengruppe angehören.  
     * Computer mit unterschiedlichen virtuellen Netzwerken dürfen nicht der gleichen Verfügbarkeitsgruppe angehören.
     * Einer Verfügbarkeitsgruppe dürfen nur virtuelle Computer gleicher Größe angehören.
-5. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse, die der Azure-VM zugewiesen ist, anzeigen und hinzufügen.
-6. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert werden.
+4. Sie können auch Informationen zum Zielnetzwerk, zum Subnetz sowie zu der IP-Adresse, die der Azure-VM zugewiesen ist, anzeigen und hinzufügen.
+5. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert werden.
 
 ### <a name="configure-networks-and-ip-addresses"></a>Konfigurieren von Netzwerken und IP-Adressen
 
@@ -120,7 +122,7 @@ Weitere Informationen zum Azure-Hybridvorteil finden Sie [hier](https://aka.ms/a
 
 ## <a name="common-issues"></a>Häufige Probleme
 
-* Datenträger dürfen nicht größer sein als 1 TB.
+* Datenträger dürfen nicht größer sein als 4TB.
 * Bei dem Betriebssystem-Datenträger sollte es sich um einen Basisdatenträger anstelle eines dynamischen Datenträgers handeln.
 * Für Computer der zweiten Generation/virtuelle UEFI-Computer muss es sich bei der Betriebssystemfamilie um Windows handeln, und der Startdatenträger muss kleiner als 300 GB sein.
 
@@ -128,4 +130,5 @@ Weitere Informationen zum Azure-Hybridvorteil finden Sie [hier](https://aka.ms/a
 
 Sobald der Schutz abgeschlossen ist und der Computer den Zustand „Geschützt“ aufweist, können Sie ein [Failover](site-recovery-failover.md) durchführen, um zu überprüfen, ob Ihre Anwendung in Azure verfügbar gemacht wird.
 
-Wenn Sie den Schutz deaktivieren möchten, informieren Sie sich über das [Bereinigen von Registrierungs- und Schutzeinstellungen](site-recovery-manage-registration-and-protection.md).
+* Erfahren Sie, wie Sie [Registrierungs- und Schutzeinstellungen bereinigen](site-recovery-manage-registration-and-protection.md), um die Replikation zu deaktivieren.
+* Erfahren Sie, wie Sie [die Replikation für Ihre virtuellen Computer mithilfe von Powershell automatisieren](vmware-azure-disaster-recovery-powershell.md).

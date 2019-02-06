@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f9389a7c0e80f075c01f2236fa1bdf9dc9544ac6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 968afcba8b0a6ab9d46c5582eecbb4901975257c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987440"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101136"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer .NET Desktop-App (WPF-App)
 
@@ -64,7 +64,7 @@ Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azu
 6. Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 7. Wählen Sie auf der Seite **Einstellungen** zunächst **Erforderliche Berechtigungen** und dann **Hinzufügen** aus. Wählen Sie als API **Microsoft Graph** aus, und fügen Sie anschließend unter **Delegierte Berechtigungen** die Berechtigung **Verzeichnisdaten lesen** hinzu. Durch das Festlegen dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
 
-## <a name="step-2-install-and-configure-adal"></a>Schritt 2: Installieren und Konfigurieren von ADAL
+## <a name="step-2-install-and-configure-adal"></a>Schritt 2: Installieren und Konfigurieren der ADAL
 
 Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL installieren und Ihren identitätsbezogenen Code schreiben. Damit ADAL mit Azure AD kommunizieren kann, müssen Sie einige Informationen zur App-Registrierung bereitstellen.
 
@@ -80,7 +80,7 @@ Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL inst
   * `ida:ClientId` ist die Client-ID Ihrer Anwendung, die Sie aus dem Portal kopiert haben.
   * `ida:RedirectUri` ist die Umleitungs-URL, die Sie im Portal registriert haben.
 
-## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Schritt 3: Verwenden der ADAL zum Abrufen von Token aus Azure AD
+## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Schritt 3: Verwenden von ADAL zum Abrufen von Tokens aus Azure AD
 
 Das Grundprinzip von ADAL ist wie folgt: Wann immer Ihre Anwendung ein Zugriffstoken benötigt, ruft Ihre App einfach `authContext.AcquireTokenAsync(...)` auf, und ADAL erledigt alles Weitere.
 

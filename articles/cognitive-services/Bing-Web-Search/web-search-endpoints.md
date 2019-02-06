@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 794a2c77c5601b76f258b2b73f5a01f3c6b8f8c9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 2f7e6cd577b1eabbaabdfe87fca8ea0f036a062d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712295"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149389"
 ---
 # <a name="web-search-endpoint"></a>Websuche-Endpunkt
 
@@ -25,7 +25,7 @@ Die **Websuche-API** gibt Webseiten, Nachrichten, Bilder, Videos und [Entitäten
 
 Um mithilfe der Bing-API Websuchergebnisse zu erhalten, senden Sie eine `GET`-Anforderung an den folgenden Endpunkt. Die Header und die URL-Parameter definieren weitere Spezifikationen.
 
-**Endpunkt:** gibt Webergebnisse zurück, die für die von `?q=""` definierte Suchabfrage des Benutzers relevant sind
+**Endpunkt**: Gibt Webergebnisse zurück, die für die von `?q=""` definierte Suchabfrage des Benutzers relevant sind.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

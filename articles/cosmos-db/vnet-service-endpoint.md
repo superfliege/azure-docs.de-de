@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358727"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452039"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke
+# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Zugreifen auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 
 Sie können das Azure Cosmos DB-Konto so konfigurieren, dass der Zugriff nur aus einem bestimmten Subnetz des virtuellen Netzwerks (VNET) zugelassen wird. Wenn der [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wird, um auf Azure Cosmos DB im Subnetz innerhalb eines virtuellen Netzwerks zuzugreifen, wird der Datenverkehr dieses Subnetzes mit der Identität des Subnetzes und des virtuellen Netzwerks an Azure Cosmos DB gesendet. Sobald der Azure Cosmos DB-Dienstendpunkt aktiviert ist, können Sie den Zugriff auf das Subnetz einschränken, indem Sie es Ihrem Azure Cosmos DB-Konto hinzufügen.
 

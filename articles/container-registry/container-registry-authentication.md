@@ -2,19 +2,19 @@
 title: Authentifizieren mit einer Azure-Containerregistrierung
 description: Authentifizierungsoptionen für eine Azure-Containerregistrierung, wie etwa Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 services: container-registry
-author: stevelas
+author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/21/2018
-ms.author: stevelas
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 665ceabe062fce454db377a384b1d12ba6868c40
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 66f9c41e2551dffc32932f1cfa53fa444251b303
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851724"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301049"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 
@@ -32,9 +32,11 @@ Authentifizieren Sie sich bei der direkten Arbeit mit der Registrierung wie der 
 az acr login --name <acrName>
 ```
 
-Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie [az login](/cli/azure/reference-index#az-login) ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle benötigen weder einen Benutzernamen noch das Kennwort. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md).
+Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt wurde, als Sie [az login](/cli/azure/reference-index#az-login) ausgeführt haben, zur nahtlosen Authentifizierung Ihrer Sitzung mit Ihrer Registrierung. Sobald Sie sich auf diese Weise angemeldet haben, werden Ihre Anmeldeinformationen zwischengespeichert, und nachfolgende `docker`-Befehle in Ihrer Sitzung benötigen weder einen Benutzernamen noch das Kennwort. 
 
-In einigen Szenarien können Sie sich bei einer Registry mit Ihrer eigenen individuellen Identität in Azure AD anmelden. Für dienstübergreifende Szenarien oder um die Anforderungen einer Arbeitsgruppe zu erfüllen, in der Sie keinen individuellen Zugriff verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen](container-registry-authentication-managed-identity.md) anmelden.
+Für den Zugriff auf die Registrierung ist das von `az acr login` verwendete Token 1 Stunde lang gültig. Daher empfehlen wir Ihnen, sich immer in der Registrierung anzumelden, bevor Sie einen `docker`-Befehl ausführen. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. 
+
+Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md). In einigen Szenarien können Sie sich bei einer Registry mit Ihrer eigenen individuellen Identität in Azure AD anmelden. Für dienstübergreifende Szenarien oder um die Anforderungen einer Arbeitsgruppe zu erfüllen, in der Sie keinen individuellen Zugriff verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen](container-registry-authentication-managed-identity.md) anmelden.
 
 ## <a name="service-principal"></a>Dienstprinzipal
 
@@ -58,15 +60,13 @@ Dienstprinzipale ermöglichen monitorlose Verbindungen mit einer Registrierung i
 
   * *Push*: Erstellen von Containerimages und deren Übertragung per Pushvorgang in eine Registrierung mithilfe von Lösungen für Continuous Integration und Continuous Deployment wie Azure Pipelines oder Jenkins.
 
-Sie können sich auch direkt mit einem Dienstprinzipal anmelden. Geben Sie die App-ID und das Kennwort des Dienstprinzipals für den Befehl `docker login` ein:
+Sie können sich auch direkt mit einem Dienstprinzipal anmelden. Wenn Sie den folgenden Befehl ausführen, geben Sie bei Aufforderung interaktiv die Haupt-AppID (Benutzername) und das Kennwort des Dienstes an. Best Practices zur Verwaltung von Anmeldeinformationen finden Sie in der Befehlsreferenz [Docker-Anmeldung](https://docs.docker.com/engine/reference/commandline/login/):
 
-```
-docker login myregistry.azurecr.io -u <SP_APP_ID> -p <SP_PASSWD>
+```Docker
+docker login myregistry.azurecr.io
 ```
 
 Nach der Anmeldung speichert Docker die Anmeldeinformationen zwischen, sodass Sie die App-ID nicht im Kopf behalten müssen.
-
-Abhängig von der Docker-Version, die Sie installiert haben, wird möglicherweise eine Sicherheitswarnung angezeigt, die die Verwendung des `--password-stdin`-Parameters empfiehlt. Obwohl in diesem Artikel nicht auf dessen Verwendung eingegangen werden kann, wird empfohlen, diese bewährte Methode anzuwenden. Weitere Informationen finden Sie in der [docker login](https://docs.docker.com/engine/reference/commandline/login/)-Befehlsreferenz.
 
 > [!TIP]
 > Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) ausführen.
@@ -74,19 +74,18 @@ Abhängig von der Docker-Version, die Sie installiert haben, wird möglicherweis
 
 ## <a name="admin-account"></a>Administratorkonto
 
-Jede Containerregistrierung enthält ein Administratorbenutzerkonto, das standardmäßig deaktiviert ist. Sie können den Administratorbenutzer aktivieren und seine Anmeldeinformationen im [Azure-Portal](container-registry-get-started-portal.md#create-a-container-registry) oder mithilfe der Azure CLI oder anderer Azure-Tools verwalten.
+Jede Containerregistrierung enthält ein Administratorbenutzerkonto, das standardmäßig deaktiviert ist. Sie können den Administratorbenutzer aktivieren und seine Anmeldeinformationen im Azure-Portal oder mithilfe der Azure CLI oder anderer Azure-Tools verwalten.
 
 > [!IMPORTANT]
 > Das Administratorkonto ist dafür ausgelegt, dass ein einzelner Benutzer auf die Registrierung zugreift (hauptsächlich für Testzwecke). Sie sollten die Administratorkonto-Anmeldeinformationen nicht für mehrere Benutzer freigeben. Alle Benutzer, die sich mit dem Administratorkonto authentifizieren, werden als ein einzelner Benutzer mit Push- und Pullzugriff auf die Registrierung angezeigt. Wenn dieses Konto geändert oder deaktiviert wird, wird der Zugriff auf die Registrierung für alle Benutzer deaktiviert, die dessen Anmeldeinformationen verwenden. Für Benutzer und Dienstprinzipale wird für monitorlose Szenarien einzelne Identität empfohlen.
 >
 
-Das Administratorkonto erhält zwei Kennwörter, die beide erneut generiert werden können. Die beiden Kennwörter ermöglichen Ihnen, Verbindungen mit der Registrierung aufrechtzuerhalten, indem Sie ein Kennwort verwenden, während Sie das andere Kennwort neu generieren. Wenn das Administratorkonto aktiviert ist, können Sie den Benutzernamen und eines der Kennwörter an den Befehl `docker login` übergeben, um die Standardauthentifizierung für die Registrierung zu erhalten. Beispiel: 
+Das Administratorkonto erhält zwei Kennwörter, die beide erneut generiert werden können. Die beiden Kennwörter ermöglichen Ihnen, Verbindungen mit der Registrierung aufrechtzuerhalten, indem Sie ein Kennwort verwenden, während Sie das andere Kennwort neu generieren. Wenn das Administratorkonto aktiviert ist, können Sie den Benutzernamen und eines der Kennwörter bei Aufforderung an den Befehl `docker login` übergeben, um die Standardauthentifizierung für die Registrierung zu erhalten. Beispiel: 
 
-```
-docker login myregistry.azurecr.io -u myAdminName -p myPassword1
+```Docker
+docker login myregistry.azurecr.io 
 ```
 
-Auch hier empfiehlt Docker die Verwendung des `--password-stdin`-Parameters, anstatt es in der Befehlszeile für die erhöhte Sicherheit bereitzustellen. Sie können auch nur Ihren Benutzernamen ohne `-p` angeben und nach Aufforderung Ihr Kennwort eingeben.
 
 Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update)-Befehls in der Azure CLI verwenden:
 

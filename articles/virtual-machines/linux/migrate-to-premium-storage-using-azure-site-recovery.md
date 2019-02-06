@@ -9,13 +9,13 @@ ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.component: disks
-ms.openlocfilehash: 5c7a136149bac2fb5b6368bf891e5d8021e12bdd
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.subservice: disks
+ms.openlocfilehash: 6b5605a8e3a80d597a4a4a78d015fa556c282357
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715351"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465723"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
@@ -83,7 +83,7 @@ Sie können Site Recovery verwenden, um Azure IaaS-VMs zwischen Regionen oder in
 ### <a name="step-2-choose-your-protection-goals"></a>Schritt 2: Auswählen der Schutzziele 
 
 1. Öffnen Sie auf der VM, auf der Sie den Konfigurationsserver installieren möchten, das [Azure-Portal](https://portal.azure.com).
-2. Navigieren Sie zu **Recovery Services-Tresore** > **Einstellungen** > **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Schutzziel**.
+2. Navigieren Sie zu **Recovery Services-Tresore** > **Einstellungen** > **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
 
    ![Navigieren zum Bereich „Schutzziel“][2]
 
@@ -174,7 +174,7 @@ Falls sich Ihre virtuellen Computer in einer Verfügbarkeitsgruppe befinden, emp
  
 Sie können je nach Ihren Anforderungen ein Bereitstellungsmodell für die Zeit nach dem Failover wählen. Wenn Sie Azure Resource Manager als Bereitstellungsmodell für die Zeit nach dem Failover auswählen, können Sie ein Failover für einen virtuellen Computer (Resource Manager) auf einen virtuellen Computer (Resource Manager) oder ein Failover eines virtuellen Computers (klassisch) auf einen virtuellen Computer (Resource Manager) ausführen.
 
-### <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
+### <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
 
 Prüfen Sie, ob die Replikation abgeschlossen ist. Wählen Sie hierzu Ihre Site Recovery-Instanz und anschließend **Einstellungen** > **Replizierte Elemente** aus. Der Status und der Prozentsatz Ihres Replikationsprozesses werden angezeigt. 
 
@@ -196,8 +196,8 @@ Site Recovery erstellt eine VM-Instanz, deren Typ einem Storage Premium-fähigen
 ## <a name="post-migration-steps"></a>Schritte nach der Migration
 
 1. **Konfigurieren Sie replizierte VMs in der Verfügbarkeitsgruppe (falls zutreffend)**. Für Site Recovery wird das Migrieren von VMs zusammen mit der Verfügbarkeitsgruppe nicht unterstützt. Wählen Sie je nach Bereitstellungstyp Ihrer replizierten VM eine der folgenden Vorgehensweisen:
-   * Mit dem klassischen Bereitstellungsmodell erstellter virtueller Computer: Fügen Sie den virtuellen Computer im Azure-Portal der Verfügbarkeitsgruppe hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../linux/classic/configure-availability-classic.md).
-   * Mit dem Resource Manager-Bereitstellungsmodell erstellter virtueller Computer: Speichern Sie Ihre Konfiguration des virtuellen Computers, löschen Sie die virtuellen Computer in der Verfügbarkeitsgruppe, und erstellen Sie sie neu. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Machen Sie sich vor dem Ausführen dieses Skripts mit dessen Einschränkungen vertraut, und planen Sie Ihre Ausfallzeit.
+   * Für eine VM, die mit dem klassischen Bereitstellungsmodell erstellt wurde: Fügen Sie die VM zur Verfügbarkeitsgruppe im Azure-Portal hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../linux/classic/configure-availability-classic.md).
+   * Für eine VM, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde: Speichern Sie Ihre Konfiguration der VM. Löschen Sie dann die VMs, und erstellen Sie sie in der Verfügbarkeitsgruppe neu. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Machen Sie sich vor dem Ausführen dieses Skripts mit dessen Einschränkungen vertraut, und planen Sie Ihre Ausfallzeit.
 
 2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen virtuellen Computer die gleiche Funktion erfüllen wie die virtuellen Quellcomputer. Löschen Sie den virtuellen Computer, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Falls der Datenträger aufgrund eines Problems nicht gelöscht wird, obwohl Sie den virtuellen Computer gelöscht haben, lesen Sie [Problembehandlung bei Speicherressourcen-Löschfehlern](storage-resource-deletion-errors.md).
 
@@ -218,9 +218,9 @@ Informationen zu bestimmten Migrationsszenarien für virtuelle Computer finden S
 
 Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Azure Virtual Machines zu erfahren:
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/documentation/services/storage/)
 * [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](premium-storage.md)
+* [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

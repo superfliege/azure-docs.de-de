@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779259"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099776"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
@@ -51,7 +51,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
-| NoFault | Es wurde kein Fehler erkannt. |Ja|
+| NoFault | Es wurde kein Fehler erkannt. |JA|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
 | PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
 | UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein. | Nein  |
@@ -59,26 +59,26 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein |
 | ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein |
 | NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dieser Fehler ist nur eine Warnung.| Nein |
-| ConnectionsNotConnected | Es sind keine Verbindungen vorhanden. Dieser Fehler ist nur eine Warnung.| Ja|
-| GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | Ja |
+| ConnectionsNotConnected | Es sind keine Verbindungen vorhanden. Dieser Fehler ist nur eine Warnung.| JA|
+| GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | JA |
 
 ### <a name="connection"></a>Verbindung
 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
-| NoFault | Es wurde kein Fehler erkannt. |Ja|
+| NoFault | Es wurde kein Fehler erkannt. |JA|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
 | PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
 | UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein.  | Nein  |
 | VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein  |
 | ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein  |
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein |
-| ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
-| ConnectionMarkedStandy | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
-| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
-| PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
-| IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
-| WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|
+| ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | JA |
+| ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| JA|
+| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | JA|
+| PeerReachability | Das Peergateway ist nicht erreichbar. | JA|
+| IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | JA|
+| WfpParse-Fehler | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |JA|
 
 ## <a name="supported-gateway-types"></a>Unterstützte Gatewaytypen
 
@@ -107,7 +107,7 @@ Nach Abschluss der Problembehandlung werden die Protokolldateien zur Ressourcenp
 > [!NOTE]
 > In einigen Fällen wird nur eine Teilmenge der Protokolldateien in den Speicher geschrieben.
 
-Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](http://storageexplorer.com/).
+Anweisungen zum Herunterladen von Dateien von Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

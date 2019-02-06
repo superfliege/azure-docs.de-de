@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104729"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098577"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
@@ -38,7 +38,7 @@ Ihre Möglichkeiten:
 Überwachungs-Agents werden auf mehreren Servern (lokal und in Azure) installiert. Die Agents kommunizieren miteinander, senden jedoch keine Daten, sondern TCP-Handshakepakete. Die Kommunikation zwischen den Agents ermöglicht es Azure, die Netzwerktopologie und den Pfad zuzuordnen, die der Datenverkehr nutzen kann.
 
 1. Erstellen Sie einen NPM-Arbeitsbereich. Dies entspricht einem Log Analytics-Arbeitsbereich.
-2. Installieren und konfigurieren Sie Software-Agents: 
+2. Installieren und konfigurieren Sie Software-Agents. (Sie müssen keine Software-Agents installieren und konfigurieren, wenn die Überwachung nur über Microsoft-Peering erfolgen soll.) 
     * Installieren Sie Überwachungs-Agents auf den lokalen Servern und den virtuellen Azure-Computern (für das private Peering).
     * Konfigurieren Sie die Einstellungen der Server der Überwachungs-Agents, um diesen die Kommunikation zu ermöglichen. (Öffnen Sie die Firewallports usw.)
 3. Konfigurieren Sie Regeln für die Netzwerksicherheitsgruppen, um den auf virtuellen Azure-Computern installierten Überwachungs-Agents die Kommunikation mit den lokalen Überwachungs-Agents zu ermöglichen.

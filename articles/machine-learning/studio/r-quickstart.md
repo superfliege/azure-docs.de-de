@@ -1,6 +1,6 @@
 ---
-Titel: Schnellstart-Tutorial für die Sprache R titleSuffix: Azure Machine Learning Studio Beschreibung: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Schnellstart-Tutorial für die Sprache R titleSuffix: Azure Machine Learning Studio Beschreibung: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 06.01.2017
 ---

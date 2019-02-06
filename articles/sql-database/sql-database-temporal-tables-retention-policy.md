@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f339cadc63d5e5cd934d07e7b0fffc6342ca04c7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a6fc5f353eceab5ac02895e110aec6e11ddc5d0c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159096"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101900"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
 Temporale Tabellen können die Größe einer Datenbank mehr erhöhen als reguläre Tabellen, insbesondere, wenn Sie Verlaufsdaten für einen längeren Zeitraum beibehalten. Daher stellt eine Aufbewahrungsrichtlinie für Verlaufsdaten einen wichtigen Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle dar. Temporale Tabellen in Azure SQL-Datenbank verfügen über einen benutzerfreundlichen Aufbewahrungsmechanismus, der Sie bei dieser Aufgabe unterstützt.
@@ -26,26 +26,26 @@ Die temporale Verlaufsbeibehaltung kann auf der Ebene der einzelnen Tabelle konf
 
 Nachdem Sie die Aufbewahrungsrichtlinie definiert haben, prüft Azure SQL-Datenbank regelmäßig, ob Zeilen mit Verlaufsdaten vorhanden sind, die für eine automatische Datenbereinigung in Frage kommen. Die Ermittlung passender Zeilen und deren Löschung aus der Verlaufstabelle erfolgen transparent in der Hintergrundaufgabe, die vom System geplant und ausgeführt wird. Die Altersbedingung für die Verlaufstabellenzeilen wird anhand der Spalte geprüft, die das Ende des SYSTEM_TIME-Zeitraums markiert. Wenn als Aufbewahrungszeitraum beispielsweise sechs Monate festgelegt sind, erfüllen für die Bereinigung in Frage kommende Tabellenzeilen die folgende Bedingung:
 
-````
+```
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
-````
+```
 
 Im vorherigen Beispiel wird angenommen, dass die Spalte **ValidTo** dem Ende des SYSTEM_TIME-Zeitraums entspricht.
 
 ## <a name="how-to-configure-retention-policy"></a>Wie wird die Aufbewahrungsrichtlinie konfiguriert?
 Bevor Sie die Aufbewahrungsrichtlinie für eine temporale Tabelle konfigurieren, überprüfen Sie zunächst, ob die temporale Verlaufsdatenaufbewahrung *auf Datenbankebene* aktiviert ist.
 
-````
+```
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
-````
+```
 
 Das Datenbank-Flag **is_temporal_history_retention_enabled** ist standardmäßig auf ON gesetzt, Benutzer können es jedoch mit der ALTER DATABASE-Anweisung ändern. Nach dem Vorgang [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md) wird es außerdem automatisch auf OFF gesetzt. Um die Bereinigung der temporalen Verlaufsdatenaufbewahrung für Ihre Datenbank zu aktivieren, führen Sie die folgende Anweisung aus:
 
-````
+```
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
-````
+```
 
 > [!IMPORTANT]
 > Sie können die Aufbewahrungsdauer für temporale Tabellen selbst dann konfigurieren, wenn **is_temporal_history_retention_enabled** auf „OFF“ festgelegt ist. In diesem Fall wird jedoch keine automatische Bereinigung veralteter Zeilen ausgelöst.
@@ -54,7 +54,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 Die Aufbewahrungsrichtlinie wird beim Erstellen der Tabelle durch Angeben eines Werts für den Parameter HISTORY_RETENTION_PERIOD konfiguriert:
 
-````
+```
 CREATE TABLE dbo.WebsiteUserInfo
 (  
     [UserID] int NOT NULL PRIMARY KEY CLUSTERED
@@ -72,16 +72,16 @@ CREATE TABLE dbo.WebsiteUserInfo
         HISTORY_RETENTION_PERIOD = 6 MONTHS
      )
  );
-````
+```
 
-Mit Azure SQL-Datenbank können Sie den Aufbewahrungszeitraum mithilfe verschiedener Zeiteinheiten festlegen: TAGE, WOCHEN, MONATE oder JAHRE. Wenn HISTORY_RETENTION_PERIOD weggelassen wird, wird von einer unbegrenzten Aufbewahrungsdauer (INFINITE) ausgegangen. Sie können auch explizit das Schlüsselwort INFINITE verwenden.
+Mit Azure SQL-Datenbank können Sie den Aufbewahrungszeitraum mithilfe verschiedener Zeiteinheiten festlegen: TAGE, WOCHEN, MONATE und JAHRE. Wenn HISTORY_RETENTION_PERIOD weggelassen wird, wird von einer unbegrenzten Aufbewahrungsdauer (INFINITE) ausgegangen. Sie können auch explizit das Schlüsselwort INFINITE verwenden.
 
 In einigen Szenarios möchten Sie möglicherweise die Aufbewahrung nach dem Erstellen der Tabelle konfigurieren oder einen zuvor konfigurierten Wert ändern. Verwenden Sie in diesem Fall die Anweisung ALTER TABLE:
 
-````
+```
 ALTER TABLE dbo.WebsiteUserInfo
 SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
-````
+```
 
 > [!IMPORTANT]
 > Wenn Sie SYSTEM_VERSIONING auf OFF setzen, bleibt der Wert für die Beibehaltungsdauer *nicht* erhalten. Wenn Sie SYSTEM_VERSIONING auf ON setzen, ohne explizit HISTORY_RETENTION_PERIOD anzugeben, führt dies zu einer unbegrenzten Beibehaltungsdauer (INFINITE).
@@ -90,7 +90,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 
 Um den aktuellen Status der Aufbewahrungsrichtlinie zu überprüfen, verwenden Sie die folgende Abfrage, die das Flag für die Aktivierung der temporalen Beibehaltungsdauer auf Datenbankebene mit den Beibehaltungsdauern für einzelne Tabellen verknüpft:
 
-````
+```
 SELECT DB.is_temporal_history_retention_enabled,
 SCHEMA_NAME(T1.schema_id) AS TemporalTableSchema,
 T1.name as TemporalTableName,  SCHEMA_NAME(T2.schema_id) AS HistoryTableSchema,
@@ -101,7 +101,7 @@ OUTER APPLY (select is_temporal_history_retention_enabled from sys.databases
 where name = DB_NAME()) AS DB
 LEFT JOIN sys.tables T2   
 ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
-````
+```
 
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>Wie löscht SQL-Datenbank veraltete Zeilen?
@@ -127,7 +127,7 @@ Die Bereinigung des gruppierten Columnstore-Index funktioniert optimal, wenn Zei
 
 Vermeiden Sie eine Neuerstellung des gruppierten Columnstore-Index für die Verlaufstabelle mit begrenzter Beibehaltungsdauer, da hierdurch die Reihenfolge der Zeilengruppen verändert werden kann, die durch die Systemversionsverwaltung automatisch auferlegt wurde. Wenn Sie den gruppierten Columnstore-Index für die Verlaufstabelle neu erstellen müssen, erstellen Sie ihn hierzu auf Basis des kompatiblen B-Strukturindex neu. So behalten Sie die Reihenfolge der Zeilengruppen bei, die für eine regelmäßige Datenbereinigung erforderlich ist. Derselbe Ansatz sollte gewählt werden, wenn Sie eine temporale Tabelle mit einer vorhandenen Verlaufstabelle erstellen, die über einen gruppierten Spaltenindex ohne garantierte Datenreihenfolge verfügt:
 
-````
+```
 /*Create B-tree ordered by the end of period column*/
 CREATE CLUSTERED INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoHistory (ValidTo)
 WITH (DROP_EXISTING = ON);
@@ -135,13 +135,13 @@ GO
 /*Re-create clustered columnstore index*/
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON);
-````
+```
 
 Wenn eine begrenzte Beibehaltungsdauer für die Verlaufstabelle mit dem gruppierten Columnstore-Index konfiguriert ist, können Sie keine zusätzlichen ungruppierten B-Strukturindizes für diese Tabelle erstellen:
 
-````
+```
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
-````
+```
 
 Der Versuch, die obige Anweisung auszuführen, ist nicht erfolgreich, und es wird folgende Fehlermeldung ausgegeben:
 
@@ -152,9 +152,9 @@ Alle Abfragen für die temporale Tabelle filtern automatisch Zeilen mit Verlaufs
 
 Das folgende Bild zeigt den Abfrageplan für eine einfache Abfrage:
 
-````
+```
 SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
-````
+```
 
 Der Abfrageplan enthält einen zusätzlichen Filter, der auf die Spalte mit dem Zeitraumende (ValidTo) im Operator „Clustered Index Scan“ für die Verlaufstabelle angewendet wird (siehe Hervorhebung). In diesem Beispiel wird davon ausgegangen, dass in der Tabelle „WebsiteUserInfo“ eine Beibehaltungsdauer von einem MONAT festgelegt wurde.
 
@@ -173,10 +173,10 @@ Ein Beispiel: Für eine temporale Tabelle wurde eine Beibehaltungsdauer von eine
 
 Wenn Sie die temporale Aufbewahrungsbereinigung aktivieren möchten, führen Sie die folgende Transact-SQL-Anweisung nach der Point-in-Time-Wiederherstellung aus:
 
-````
+```
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
-````
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Verwendung temporaler Tabellen in Ihren Anwendungen finden Sie unter [Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank](sql-database-temporal-tables.md).

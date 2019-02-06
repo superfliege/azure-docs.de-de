@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438234"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888140"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
-Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./tutorial-dashboards.md) findet sich am Ende dieses Artikels.
+Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
 
 ## <a name="administrative"></a>Administrative
 Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehört das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement.
@@ -274,8 +274,8 @@ Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit de
 | submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId |Azure-Abonnement-ID |
 | Eigenschaften |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben.|
-| properties.title | Eine benutzerfreundliche Zeichenkette, die den Integritätsstatus der Ressource beschreibt. |
-| properties.details | Eine benutzerfreundliche Zeichenkette, die weitere Details zum Ereignis aufführt. |
+| properties.title | Eine benutzerfreundliche Zeichenfolge, die den Integritätsstatus der Ressource beschreibt. |
+| properties.details | Eine benutzerfreundliche Zeichenfolge, die weitere Details zum Ereignis beschreibt. |
 | properties.currentHealthStatus | Der aktuelle Integritätsstatus der Ressource. Einer der folgenden Werte: „Available“, „Unavailable“, „Degraded“ und „Unknown“. |
 | properties.previousHealthStatus | Der vorherige Integritätsstatus der Ressource. Einer der folgenden Werte: „Available“, „Unavailable“, „Degraded“ und „Unknown“. |
 | properties.type | Eine Beschreibung des Typs des Resource Health-Ereignisses. |
@@ -356,9 +356,9 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 | Beschreibung |Statische Beschreibung des Warnungsereignisses. |
 | eventDataId |Eindeutiger Bezeichner des Warnungsereignisses. |
 | level |Ebene des Ereignisses. Einer der folgenden Werte: „Critical“, „Error“, „Warning“ und „Informational“ |
-| resourceGroupName |Bei einer Metrikwarnung der Name der Ressourcengruppe für die betroffene Ressource. Bei anderen Warnungstypen ist dies der Name der Ressourcengruppe, die die Warnung selbst enthält. |
-| resourceProviderName |Bei einer Metrikwarnung der Name des Ressourcenanbieters für die betroffene Ressource. Bei anderen Warnungstypen ist dies der Name des Ressourcenanbieters für die Warnung selbst. |
-| Ressourcen-ID | Bei einer Metrikwarnung der Name der Ressourcen-ID für die betroffene Ressource. Bei anderen Warnungstypen ist dies die Ressourcen-ID der Warnungsressource selbst. |
+| resourceGroupName |Bei einer Metrikwarnung der Name der Ressourcengruppe für die betroffene Ressource. Bei anderen Warnungstypen der Name der Ressourcengruppe, die die Warnung selbst enthält. |
+| resourceProviderName |Bei einer Metrikwarnung der Name des Ressourcenanbieters für die betroffene Ressource. Bei anderen Warnungstypen der Name des Ressourcenanbieters für die Warnung selbst. |
+| Ressourcen-ID | Bei einer Metrikwarnung der Name der Ressourcen-ID für die betroffene Ressource. Bei anderen Warnungstypen die Ressourcen-ID der Warnungsressource selbst. |
 | operationId |Eine GUID, die von den Ereignissen eines einzelnen Vorgangs gemeinsam genutzt wird. |
 | operationName |Name des Vorgangs. |
 | Eigenschaften |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben. |
@@ -570,7 +570,7 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | subscriptionId |Die Azure-Abonnement-ID. |
 
 ## <a name="recommendation"></a>Empfehlung
-Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre Dienste generiert werden. Ein Beispiel für eine Empfehlung wäre „Verwenden Sie für eine verbesserte Fehlertoleranz Verfügbarkeitsgruppen“. Es gibt vier Typen von „Recommendation“-Ereignissen, die generiert werden können: „High Availability“, „Performance“, „Security“ und „Cost Optimization“. 
+Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre Dienste generiert werden. Ein Beispiel für eine Empfehlung wäre „Verwenden Sie für eine verbesserte Fehlertoleranz Verfügbarkeitsgruppen“. Vier Typen von Empfehlungsereignissen können generiert werden: „High Availability“, „Performance“, „Security“ und „Cost Optimization“. 
 
 ### <a name="sample-event"></a>Beispielereignis
 ```json
@@ -757,7 +757,7 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 | resourceType | Bei neuen Ressourcen ist dies der Typ, der ausgewertet wird. Bei vorhandenen Ressourcen wird „Microsoft.Resources/checkPolicyCompliance“ zurückgegeben. |
 | Ressourcen-ID | Die Ressourcen-ID der ausgewerteten Ressource. |
 | status | Eine Zeichenfolge, die den Status des Ergebnisses der Richtlinienauswertung beschreibt. Die meisten Richtlinienauswertungen geben „Succeeded“ zurück, doch wird bei einer „Deny“-Auswirkung „Failed“ zurückgegeben. Fehler in „AuditIfNotExists“ oder „DeployIfNotExists“ geben ebenfalls „Failed“ zurück. |
-| subStatus | Dieses Feld ist bei Richtlinienereignissen leer. |
+| subStatus | Das Feld ist bei Richtlinienereignissen leer. |
 | submissionTimestamp | Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
 | subscriptionId | Die Azure-Abonnement-ID. |
 | properties.isComplianceCheck | Gibt „False“ zurück, wenn eine neue Ressource bereitgestellt wird oder Resource Manager-Eigenschaften einer vorhandenen Ressource aktualisiert werden. Alle anderen [Auswertungsauslöser](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) ergeben „True“. |
@@ -768,7 +768,7 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 
 ## <a name="mapping-to-diagnostic-logs-schema"></a>Zuordnung zum Diagnoseprotokollschema
 
-Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder den Event Hubs-Namespace entsprechen die Daten dem [Azure-Diagnoseprotokollschema](./tutorial-dashboards.md). Hier finden Sie die Zuordnung der Eigenschaften aus dem oben genannten Schema zum Diagnoseprotokollschema:
+Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder den Event Hubs-Namespace entsprechen die Daten dem [Azure-Diagnoseprotokollschema](./diagnostic-logs-schema.md). Hier finden Sie die Zuordnung der Eigenschaften aus dem oben genannten Schema zum Diagnoseprotokollschema:
 
 | Eigenschaft im Diagnoseprotokollschema | Eigenschaft im REST-API-Schema des Aktivitätsprotokolls | Notizen |
 | --- | --- | --- |

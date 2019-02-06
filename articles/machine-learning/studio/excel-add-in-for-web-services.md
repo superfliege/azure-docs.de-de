@@ -1,6 +1,6 @@
 ---
-Titel: Excel-Add-In für Webdienste titleSuffix: Azure Machine Learning Studio Beschreibung: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste direkt in Excel ohne Erstellung von Code verwenden.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Excel-Add-In für Webdienste titleSuffix: Azure Machine Learning Studio Beschreibung: Hier wird erläutert, wie Sie Azure Machine Learning-Webdienste direkt in Excel ohne Erstellung von Code verwenden.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 01.02.2018
 ---

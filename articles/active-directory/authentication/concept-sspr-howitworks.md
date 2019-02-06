@@ -3,19 +3,19 @@ title: Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung – A
 description: Funktionsweise der Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: be7aa43ec6001be78fb405290914f19174559530
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 41bdc2497ff19f0033a5253814771072b47eef62
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435718"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475176"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -84,7 +84,7 @@ Sind für einen Benutzer nicht die mindestens erforderlichen Methoden registrier
 
 #### <a name="mobile-app-and-sspr-preview"></a>Mobile App und SSPR (Vorschauversion)
 
-Wenn Sie eine mobile App wie die Microsoft Authenticator-App als Methode zur Kennwortzurücksetzung verwenden, sollten Sie Folgendes beachten:
+Wenn Sie eine mobile App wie die Microsoft Authenticator-App als Methode zur Kennwortzurücksetzung verwenden, sollten Sie folgende Einschränkungen beachten:
 
 * Wenn Administratoren eine Methode zum Zurücksetzen von Kennwörtern erzwingen, steht als einzige Option der Prüfcode zur Verfügung.
 * Wenn Administratoren zwei Methoden für die Kennwortzurücksetzung erfordern, können Benutzer zum Zurücksetzen **ENTWEDER** die Option „Benachrichtigung“ **ODER** die Option „Prüfcode“ verwenden – zusätzlich zu anderen aktivierten Methoden.
@@ -119,7 +119,7 @@ Beispiel:
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>Erzwingen der Registrierung für Benutzer bei der Anmeldung
 
-Wenn diese Option aktiviert ist, muss ein Benutzer die Registrierung zur Kennwortzurücksetzung abschließen, wenn er sich mit Azure AD in Anwendungen anmelden möchte. Dies gilt für:
+Wenn diese Option aktiviert ist, muss ein Benutzer die Registrierung zur Kennwortzurücksetzung abschließen, wenn er sich mit Azure AD in Anwendungen anmelden möchte. Dieser Workflow schließt die folgenden Anwendungen ein:
 
 * Office 365
 * Azure-Portal
@@ -132,7 +132,7 @@ Wenn das Erzwingen der Registrierung deaktiviert ist, können Benutzer sich manu
 > [!NOTE]
 > Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf **Abbrechen** oder durch Schließen des Fensters schließen. Sie werden jedoch bei jeder Anmeldung zur Registrierung aufgefordert, bis die Registrierung durchgeführt wurde.
 >
-> Dadurch wird die Verbindung des Benutzers nicht unterbrochen, wenn er bereits angemeldet ist.
+> Hierdurch wird die Verbindung des Benutzers nicht unterbrochen, wenn er bereits angemeldet ist.
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Festlegen der Anzahl von Tagen, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
 
@@ -169,7 +169,7 @@ Auf dieser Seite erhalten Sie einen schnellen Überblick über den Status des lo
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Kennwörter in Ihr lokales Verzeichnis zurückschreiben?
 
-Dieses Steuerelement bestimmt, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. Wenn das Rückschreiben aktiviert ist, gibt es den Status des lokalen Diensts für das Rückschreiben an. Dies ist nützlich, wenn Sie das Rückschreiben von Kennwörtern vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.
+Dieses Steuerelement bestimmt, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. Wenn das Rückschreiben aktiviert ist, gibt es den Status des lokalen Diensts für das Rückschreiben an. Dieses Steuerelement ist nützlich, wenn Sie das Kennwortrückschreiben vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.
 
 * Wenn die Option auf **Ja** gesetzt ist, wird das Rückschreiben aktiviert, und Verbundbenutzer und Benutzer mit Pass-Through-Authentifizierung oder mit Kennworthashsynchronisierung können ihre Kennwörter zurücksetzen.
 * Wenn die Option auf **Nein** gesetzt ist, wird das Rückschreiben deaktiviert, und Verbundbenutzer und Benutzer mit Pass-Through-Authentifizierung oder mit Kennworthashsynchronisierung können ihre Kennwörter nicht zurücksetzen.
@@ -180,6 +180,10 @@ Dieses Steuerelement legt fest, ob Benutzer, die das Kennwortzurücksetzungsport
 
 * Bei der Einstellung **Ja** erhalten Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos oder die Option zum Entsperren des Kontos, ohne dass das Kennwort zurückgesetzt werden muss.
 * Bei der Einstellung **Nein** können Benutzer das Entsperren des Kontos nur in Kombination mit dem Zurücksetzen des Kennworts vornehmen.
+
+### <a name="on-premises-active-directory-password-filters"></a>Lokale Active Directory-Kennwortfilter
+
+Die Azure AD-Self-Service-Kennwortzurücksetzung ist äquivalent zu einer vom Administrator ausgelösten Kennwortzurücksetzung in Active Directory. Wenn Sie einen Kennwortfilter eines Drittanbieters verwenden, um benutzerdefinierte Kennwortrichtlinien durchzusetzen, und Sie die Überprüfung dieses Kennwortfilters während der Azure AD-Self-Service-Kennwortzurücksetzung als erforderlich festlegen, müssen Sie sicherstellen, dass der Kennwortfilter des Drittanbieters so konfiguriert ist, dass er im Szenario der Kennwortzurücksetzung durch den Administrator angewendet wird. Der [Azure AD-Kennwortschutz für Windows Server Active Directory](concept-password-ban-bad-on-premises.md) wird standardmäßig unterstützt.
 
 ## <a name="password-reset-for-b2b-users"></a>Kennwortzurücksetzung für B2B-Benutzer
 

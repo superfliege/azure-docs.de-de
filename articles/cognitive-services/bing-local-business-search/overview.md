@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: f6299a8241b4ce43dc9276070f06ae4cc6566d43
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: fd57c344c640974e9c73156902848fb1685861f2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748569"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163142"
 ---
 # <a name="what-is-bing-local-business-search"></a>Worum handelt es sich bei der API für die Bing-Suche nach ortsansässigen Unternehmen?
 Die API für die Bing-Suche nach ortsansässigen Unternehmen ist ein RESTful-Dienst, mit dem Ihre Anwendungen basierend auf Suchabfragen Informationen zu Unternehmen in der näheren Umgebung suchen können. Beispiel: `q=<business-name> in Redmond, Washington` oder `q=Italian restaurants near me`. 
@@ -33,7 +33,7 @@ Rufen Sie die API für die Bing-Suche nach ortsansässigen Unternehmen in einer 
 1. Erstellen Sie ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) erstellen.   
 2. Versehen Sie Ihre Suchbegriffe für den Abfrageparameter `q=""` mit URL-Codierung. Beispiel: `q=nearby+restaurant` oder `q=nearby%20restaurant`. Legen Sie bei Bedarf auch die Paginierung fest. 
 3. Senden Sie eine [Anforderung an die API für die Bing-Suche nach ortsansässigen Unternehmen](quickstarts/local-quickstart.md). 
-4. Analysieren Sie die JSON-Antwort. 
+4. Analysieren der JSON-Antwort 
 
 > [!NOTE]
 > Derzeit unterstützt die Suche nach ortsansässigen Unternehmen nur den Markt `en-US`. 
@@ -42,6 +42,6 @@ Rufen Sie die API für die Bing-Suche nach ortsansässigen Unternehmen in einer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Abfrage und Antwort](local-search-query-response.md)
-- [Schnellstart für die Suche nach ortsansässigen Unternehmen](quickstarts/local-quickstart.md)
+- [Schnellstart: Suche nach ortsansässigen Unternehmen](quickstarts/local-quickstart.md)
 - [Referenz zur API für die Suche nach ortsansässigen Unternehmen](local-search-reference.md)
 - [Verwenden und Anzeigen von Anforderungen](use-display-requirements.md)

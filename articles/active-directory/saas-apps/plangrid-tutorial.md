@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ba72432-9b49-4358-b756-14c982422be8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: b2225a48e78e8c609223510a32d3ed5c735ed3b6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5ceb5f09b599b6c42dea3359b18c319e7b44fed7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046059"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>Tutorial: Azure Active Directory-Integration mit PlanGrid
 
@@ -160,7 +160,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-plangrid-test-user"></a>Erstellen eines PlanGrid-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in PlanGrid einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [PlanGrid-Supportteam](mailto:help@plangrid.com) zusammen, um die Benutzer auf der PlanGrid-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in PlanGrid einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [PlanGrid-Supportteam](mailto:help@plangrid.com) zusammen, um die Benutzer auf der PlanGrid-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

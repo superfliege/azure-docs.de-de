@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389098"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457937"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>Datenbanktransaktionen und Steuerung für optimistische Nebenläufigkeit
+# <a name="transactions-and-optimistic-concurrency-control"></a>Transaktionen und Steuerung für optimistische Nebenläufigkeit
 
 Datenbanktransaktionen bieten ein sicheres und vorhersagbares Programmiermodell zur Verarbeitung von gleichzeitig an den Daten vorgenommenen Änderungen. In herkömmlichen relationalen Datenbanken wie SQL Server können Sie die Geschäftslogik mithilfe von gespeicherten Prozeduren und/oder Triggern schreiben und zur direkten Ausführung innerhalb der Datenbank-Engine an den Server senden. Mit herkömmlichen relationalen Datenbanken müssen Sie zwei verschiedene Programmiersprachen verwenden: die (nicht transaktionale) Anwendungsprogrammiersprache, z.B. JavaScript, Python, C#, Java usw., und die transaktionale Programmiersprache (T-SQL), die in der Datenbank nativ ausgeführt wird.
 

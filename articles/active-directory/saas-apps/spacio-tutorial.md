@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration von Spacio in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Spacio | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Spacio konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9df8d199-b955-483c-aa4e-cabad1a0b9d6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: aa5c91265a832ef8a66948086b407688fdcbbbc2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 76507fab4050f3ff762713081d2e588dc04f3f1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435473"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157821"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Tutorial: Integration von Spacio in Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Tutorial: Azure Active Directory-Integration mit Spacio
 
 In diesem Tutorial erfahren Sie, wie Sie Spacio in Azure Active Directory (Azure AD) integrieren.
 
@@ -159,7 +159,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-spacio-test-user"></a>Erstellen eines Spacio-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Spacio eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Spacio-Plattform ggf. vom [Spacio-Supportteam](mailto:support@spac.io) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Spacio eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Spacio-Plattform ggf. vom [Spacio-Supportteam](mailto:support@spac.io) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: cc71aba3e884214b054e0ac4e888a52e38b1c390
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812538"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079255"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -33,7 +33,7 @@ Azure Migrate ist ein Bewertungsdienst, mit dem Sie Ihre lokalen Workloads besti
 
 ### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>Was ist der Unterschied zwischen der Verwendung von Azure Migrate für Bewertungen und dem MAP Toolkit?
 
-[Azure Migrate](migrate-overview.md) bietet eine Migrationsbewertung speziell für die Unterstützung der Migrationsbereitschaft und die Auswertung lokaler Workloads in Azure. [Microsoft-Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) weist andere Funktionen auf. Beispiele sind die Migrationsplanung für neuere Versionen von Windows-Client- und -Server-Betriebssystemen, die Softwarenutzungs-Nachverfolgung usw. Verwenden Sie für diese Szenarien weiterhin das MAP Toolkit.
+[Azure Migrate](migrate-overview.md) bietet eine Migrationsbewertung speziell für die Unterstützung der Migrationsbereitschaft und die Auswertung lokaler Workloads in Azure. Das [Microsoft Assessment and Planning (MAP) Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=7826) bietet weitere Funktionen, beispielsweise die Migrationsplanung für neuere Versionen von Windows-Client- und -Serverbetriebssystemen sowie die Nachverfolgung der Softwarenutzung. Verwenden Sie für diese Szenarien weiterhin das MAP Toolkit.
 
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Was unterscheidet Azure Migrate von Azure Site Recovery-Bereitstellungsplaner?
@@ -198,7 +198,7 @@ Nein. Der Bericht über die Abhängigkeitsvisualisierung kann nicht exportiert w
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Wie kann ich die Installation von Microsoft Monitoring Agent (MMA) und des Dependency-Agents automatisieren?
 
-[Hier](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) ist ein Skript, das Sie für die Installation des Dependency-Agents verwenden können. Für MMA finden Sie [hier](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab) ein Skript auf TechNet, das Sie nutzen können.
+[Hier](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) ist ein Skript, das Sie für die Installation des Dependency-Agents verwenden können. [Hier](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) finden Sie Anweisungen zum Installieren von MMA mithilfe der Befehlszeile oder automatisierter Methoden. Für MMA können Sie auch ein Skript nutzen, das auf [TechNet](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab) verfügbar ist.
 
 Zusätzlich zu Skripts können Sie auch Bereitstellungstools wie System Center Configuration Manager (SCCM), [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) usw. zum Bereitstellen der Agents verwenden.
 
@@ -213,10 +213,10 @@ Die Liste der vom Dependency-Agent unterstützten Windows-Betriebssysteme finden
 Die Liste der vom Dependency-Agent unterstützten Linux-Betriebssysteme finden Sie [hier](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Kann ich Abhängigkeiten in Azure Migrate für länger als eine Stunde visualisieren?
-Nein. Azure Migrate ermöglicht Ihnen das Visualisieren von Abhängigkeiten für einen Zeitraum von bis zu einer Stunde. Mit Azure Migrate können Sie im Verlauf um bis zu einen Monat zu einem bestimmten Datum zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren. So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für gestern, jedoch nur für ein Zeitfenster von einer Stunde anzeigen.
+Nein. Azure Migrate ermöglicht Ihnen das Visualisieren von Abhängigkeiten für einen Zeitraum von bis zu einer Stunde. Mit Azure Migrate können Sie im Verlauf um bis zu einen Monat zu einem bestimmten Datum zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren. So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für gestern, jedoch nur für ein Zeitfenster von einer Stunde anzeigen. Sie können jedoch Log Analytics zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) über einen längeren Zeitraum verwenden.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Wird die Abhängigkeitsvisualisierung für Gruppen mit mehr als zehn VMs unterstützt?
-Sie können [Abhängigkeiten für Gruppen visualisieren](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies), die aus bis zu zehn VMs bestehen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
+Sie können [Abhängigkeiten für Gruppen visualisieren](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies), die bis zu zehn VMs umfassen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

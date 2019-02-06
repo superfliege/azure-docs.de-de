@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/25/2019
 ms.author: raiye
-ms.openlocfilehash: e621d526aed3c4d98d964dfdcd7ba01e8c1fb830
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9d2fa8497ac773ba086f3a4550e20ac5f5f0d882
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104861"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075464"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -43,6 +43,9 @@ Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Ent
 
 ## <a name="news-updates"></a>Neuigkeiten
 
+###### <a name="january-24-2019"></a>**24. Januar 2019**
+Das Gastbetriebssystem der Familie 6 (Windows Server 2019) wurde veröffentlicht.
+
 ###### <a name="january-7-2019"></a>**7. Januar 2019**
 Das Gastbetriebssystem für Dezember wurde veröffentlicht.
 
@@ -65,6 +68,21 @@ Das Gastbetriebssystem für Juli wurde veröffentlicht.
 Das Gastbetriebssystem für Juni wurde veröffentlicht.
 
 ## <a name="releases"></a>Releases
+
+## <a name="family-6-releases"></a>Releases von Familie 6
+**Windows Server 2019**
+
+Installierte .NET Framework-Versionen: 3.5, 4.7.2
+
+> [!NOTE]
+> Das Windows Azure SDK 3.0 für .NET kann [hier][Windows Azure SDK] heruntergeladen werden.
+>
+
+| Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
+| --- | --- | --- |
+| WA-GUEST-OS-6.2_201812-01 |24. Januar 2019 |Nach 6.4 |
+| WA-GUEST-OS-6.1_201811-01 |24. Januar 2019 |Nach 6.3 |
+
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
 
@@ -137,6 +155,7 @@ Obwohl die [Deaktivierungsrichtlinie für das Azure SDK][retire policy sdk] angi
 
 | Gastbetriebssystemfamilie | Kompatible SDK-Versionen |
 | --- | --- |
+| 6 |Version 2.9.6+ |
 | 5 |Version 2.9.5.1+ |
 | 4 |Version 2.1+ |
 | 3 |Version 1.8+ |
@@ -205,3 +224,4 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917

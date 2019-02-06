@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: afc3b0022056d529c69eeaabd229b809623e66ea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7e31f4f229e722d51f5de6b133e70dfb1c013533
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478585"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888157"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -194,7 +194,7 @@ Innerhalb eines gewissen Zeitraums erhalten Geräte mit nicht geöffneten Apps k
 
 ### <a name="is-there-audit-log-capability"></a>Steht ein Überwachungsprotokoll zur Verfügung?
 
-Alle Notification Hubs-Verwaltungsvorgänge werden in Vorgangsprotokollen erfasst, die im [Azure-Portal] zur Verfügung stehen.
+Ja. Alle Notification Hubs-Verwaltungsvorgänge aktualisieren das Azure-Aktivitätsprotokoll, das im [Azure-Portal] zur Verfügung steht. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst jedoch keine Lesevorgänge (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
 

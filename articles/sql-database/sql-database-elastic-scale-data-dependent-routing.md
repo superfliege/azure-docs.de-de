@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201107"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468647"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Verwenden des datenabhängigen Routings für das Weiterleiten einer Abfrage an die richtige Datenbank
 
-**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Datenabhängiges Routing stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der Klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
+**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Datenabhängiges Routing stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Datenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der Klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
 
 Es ist nicht erforderlich, dass die Anwendung die einzelnen Verbindungszeichenfolgen oder Datenbankspeicherorte verfolgt, die den Datenslices in der Shardingumgebung zugeordnet sind. Stattdessen öffnet bei Bedarf der [Shardzuordnungs-Manager](sql-database-elastic-scale-shard-map-management.md) basierend auf den Daten in der Shardzuordnung und dem Wert des Shardingschlüssels, der das Ziel der Anwendungsanforderung ist, Verbindungen zu den richtigen Datenbanken. Bei diesem Schlüssel handelt es sich in der Regel um *customer_id*, *tenant_id*, *date_key* oder einen anderen spezifischen Bezeichner, der ein grundlegender Parameter der Datenbankanforderung ist.
 

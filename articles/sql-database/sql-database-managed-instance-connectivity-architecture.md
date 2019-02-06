@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536048"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245666"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz
 
@@ -108,9 +108,12 @@ Sie können die verwaltete Instanz in einem dedizierten Subnetz (dem Subnetz der
 
 | NAME       |Port          |Protokoll|Quelle           |Ziel|Aktion|
 |------------|--------------|--------|-----------------|-----------|------|
-|management  |80, 443, 12000|TCP     |Beliebig              |Beliebig        |ZULASSEN |
+|management  |80, 443, 12000|TCP     |Beliebig              |Internet   |ZULASSEN |
 |mi_subnet   |Beliebig           |Beliebig     |Beliebig              |MI-SUBNETZ  |ZULASSEN |
 
+  > [!Note]
+  > MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal (über die Eigenschaften für das Subnetz).
+  
   > [!Note]
   > Obwohl obligatorische Eingangssicherheitsregeln den Datenverkehr von _allen_ Quellen an den Ports 9000 9003, 1438, 1440 und 1452 zulassen, sind diese Ports durch eine integrierte Firewall geschützt. In [diesem Artikel](sql-database-managed-instance-find-management-endpoint-ip-address.md) wird gezeigt, wie Sie die IP-Adresse des Verwaltungsendpunkts ermitteln und Firewallregeln überprüfen können. 
   

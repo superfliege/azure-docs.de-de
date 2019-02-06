@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 3eccb6ba18e6689c3726c8d930279b8a85ab1c92
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 775c9b155f080c8996a7680514cb2fb004a4e3fb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212526"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152250"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 Azure Service Fabric bietet ein [Integritätsmodell](service-fabric-health-introduction.md) , das fehlerhafte Cluster- und Anwendungsbedingungen auf bestimmten Entitäten kennzeichnet. Das Integritätsmodell verwendet **Integritäts-Reporter** (Systemkomponenten und Watchdogs). Das Ziel ist die einfache und schnelle Diagnose und Reparatur. Dienstautoren müssen im Vorfeld an die Integrität denken. Jede Bedingung, die zur Beeinträchtigung der Integrität führen kann, sollte gemeldet werden, insbesondere wenn damit die Ursachen von Problemen ermittelt werden können. Die Integritätsinformationen können Zeit und Aufwand beim Debuggen und Untersuchen einsparen. Besonders deutlich wird der Nutzen, wenn der Dienst im gewünschten Umfang in der Cloud ausgeführt wird (private oder Azure-Cloud).
@@ -57,9 +57,9 @@ Sobald das Design für die Integritätsberichterstellung feststeht, können Inte
 ## <a name="health-client"></a>Integritätsclient
 Die Integritätsberichte werden über einen Integritätsclient innerhalb des Fabric-Clients an den Integritätsspeicher gesendet. Der Integritätsclient kann mit folgenden Einstellungen konfiguriert werden:
 
-* **HealthReportSendInterval**: Die Verzögerung zwischen dem Hinzufügen des Berichts zum Client und dem Senden des Berichts an den Integritätsspeicher. Dadurch können Berichte in einer einzelnen Nachricht zusammengefasst werden, anstatt für jeden Bericht eine eigene Nachricht zu senden. So wird die Leistung verbessert. Standardwert: 30 Sekunden.
-* **HealthReportRetrySendInterval**: Das Intervall, in dem der Integritätsclient kumulierte Integritätsberichte erneut an den Integritätsspeicher sendet. Standardwert: 30 Sekunden.
-* **HealthOperationTimeout**: Das Zeitlimit für eine Berichtsnachricht, die an den Integritätsspeicher gesendet wurde. Wenn bei einer Nachricht das Zeitlimit überschritten wird, wiederholt der Integritätsclient den Sendevorgang, bis der Integritätsspeicher die Verarbeitung des Berichts bestätigt. Standardwert: 2 Minuten.
+* **HealthReportSendInterval:** Die Verzögerung zwischen dem Hinzufügen des Berichts zum Client und dem Senden des Berichts an den Integritätsspeicher. Dadurch können Berichte in einer einzelnen Nachricht zusammengefasst werden, anstatt für jeden Bericht eine eigene Nachricht zu senden. So wird die Leistung verbessert. Standardwert: 30 Sekunden.
+* **HealthReportRetrySendInterval:** Das Intervall, in dem der Integritätsclient kumulierte Integritätsberichte erneut an den Integritätsspeicher sendet. Standardwert: 30 Sekunden.
+* **HealthOperationTimeout:** Das Zeitlimit für eine Berichtsnachricht, die an den Integritätsspeicher gesendet wurde. Wenn bei einer Nachricht das Zeitlimit überschritten wird, wiederholt der Integritätsclient den Sendevorgang, bis der Integritätsspeicher die Verarbeitung des Berichts bestätigt. Standardwert: 2 Minuten.
 
 > [!NOTE]
 > Wenn die Berichte zusammengefasst werden, muss der Fabric-Client mindestens für die Dauer von „HealthReportSendInterval“ aktiv bleiben, um sicherzustellen, dass sie gesendet werden. Wenn die Nachricht verloren geht oder der Integritätsspeicher die Berichte aufgrund von vorübergehenden Fehlern nicht anwenden kann, muss der Fabric-Client länger aktiv bleiben, um einen erneuten Versuch zu ermöglichen.

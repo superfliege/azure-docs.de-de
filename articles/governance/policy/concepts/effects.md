@@ -4,17 +4,17 @@ description: Die Azure Policy-Definition hat verschiedene Auswirkungen, mit dene
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310843"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912508"
 ---
 # <a name="understand-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
 
@@ -22,29 +22,29 @@ Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese A
 
 Aktuell werden in einer Richtliniendefinition sechs Auswirkungen unterstützt:
 
-- Auswirkung „append“
-- Auswirkung „audit“
+- Anfügen
+- Audit
 - Auswirkung „AuditIfNotExists“
-- Auswirkung „deny“
+- Verweigern
 - Auswirkung „DeployIfNotExists“
-- Auswirkung „disabled“
+- Deaktiviert
 
 ## <a name="order-of-evaluation"></a>Reihenfolge der Auswertung
 
 Anforderungen zum Erstellen oder Aktualisieren einer Ressource über Azure Resource Manager werden von Policy zuerst ausgewertet. Policy erstellt eine Liste aller Zuweisungen, die auf die Ressource zutreffen, und wertet dann die Ressource anhand jeder Definition aus. Policy verarbeitet einige der Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird. Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht.
 
-- Zuerst wird **disabled** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
-- Anschließend wird **append** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
+- Zuerst wird **Deaktiviert** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
+- Anschließend wird **Anfügen** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
 - Anschließend wird **deny** ausgewertet. Durch die Auswertung von „deny“ vor „audit“ wird eine zweimalige Protokollierung einer unerwünschten Ressource verhindert.
 - Anschließend wird **audit** ausgewertet, bevor die Anforderung an den Ressourcenanbieter weitergeleitet wird.
 
 Nachdem der Ressourcenanbieter einen Erfolgscode zurückgegeben hat, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
 
-## <a name="disabled"></a>Auswirkung „disabled“
+## <a name="disabled"></a>Deaktiviert
 
 Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswirkung durch die Richtliniendefinition hilfreich. Aufgrund dieser Flexibilität kann eine einzelne Zuweisung deaktiviert werden, statt alle Zuweisungen dieser Richtlinie zu deaktivieren.
 
-## <a name="append"></a>Auswirkung „append“
+## <a name="append"></a>Anfügen
 
 „append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Ein gängiges Beispiel ist das Hinzufügen von Tags zu Ressourcen (z.B. „costCenter“) oder das Angeben zugelassener IP-Adressen für eine Speicherressource.
 
@@ -104,7 +104,7 @@ Beispiel 3: Einzelnes **field/value**-Paar mit einem [Alias](definition-structu
 }
 ```
 
-## <a name="deny"></a>Auswirkung „deny“
+## <a name="deny"></a>Verweigern
 
 Mit „deny“ werden Ressourcenanforderungen abgelehnt, welche die über eine Richtliniendefinition festgelegten Standards nicht erfüllen. Für die Anforderung wird anschließend ein Fehler ausgegeben.
 
@@ -128,7 +128,7 @@ Beispiel: Verwendung der Auswirkung „deny“
 }
 ```
 
-## <a name="audit"></a>Auswirkung „audit“
+## <a name="audit"></a>Audit
 
 Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivitätsprotokoll zu erstellen, wenn eine nicht konforme Ressource ausgewertet wird. Die Anforderung wird jedoch nicht beendet.
 
@@ -257,6 +257,11 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Beispielsweise könnte so überprüft werden, ob die übergeordnete Ressource (in der **if**-Bedingung) sich am selben Ressourcenstandort befindet wie die übereinstimmende Ressource.
 - **roleDefinitionIds** [erforderlich]
   - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
+- **DeploymentScope** (optional)
+  - Zulässige Werte sind _Subscription_ und _ResourceGroup_.
+  - Legt den Bereitstellungstyp fest, der ausgeführt werden soll. Mit _Subscription_ wird eine [Bereitstellung auf Abonnementebene](../../../azure-resource-manager/deploy-to-subscription.md) und mit _ResourceGroup_ eine Bereitstellung in einer Ressourcengruppe angegeben.
+  - Bei der Bereitstellung auf Abonnementebene muss in _Deployment_ eine _location_-Eigenschaft angegeben werden.
+  - Die Standardeinstellung ist _ResourceGroup_.
 - **Deployment** [erforderlich]
   - Diese Eigenschaft muss die vollständige Vorlagenbereitstellung enthalten, so wie sie an die PUT-API `Microsoft.Resources/deployments` übergeben würde. Weitere Informationen finden Sie im Artikel zur [REST-API für die Bereitstellung](/rest/api/resources/deployments).
 
@@ -347,7 +352,7 @@ Jede Zuweisung wird einzeln ausgewertet. Daher ist es nicht möglich, dass eine 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele.
+- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele
 - Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).

@@ -1,6 +1,6 @@
 ---
-Titel: Kopieren der Data Science-Beispiele von anderen titleSuffix: Azure Machine Learning Studio Beschreibung: „Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre Arbeit machen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.“
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Kopieren der Data Science-Beispiele von anderen titleSuffix: Azure Machine Learning Studio Beschreibung: „Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre Arbeit machen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.“
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 05.01.2018
 ---

@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 10/16/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b86d7938279133c303ad4eae840f520a4900e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394679"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195816"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Was ist die Self-Service-Registrierung für Azure Active Directory?
 Dieser Artikel beschreibt die Self-Service-Registrierung und deren Unterstützung in Azure Active Directory (Azure AD). Wenn Sie einen Domänennamen von einem nicht verwalteten Azure AD-Mandanten übernehmen möchten, lesen Sie [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator](domains-admin-takeover.md).
@@ -31,9 +31,9 @@ Dieser Artikel beschreibt die Self-Service-Registrierung und deren Unterstützun
 * Ein per Self-Service erstelltes Azure AD-Verzeichnis kann in ein verwaltetes Verzeichnis konvertiert werden, das für andere Dienste verwendet werden kann.
 
 ## <a name="terms-and-definitions"></a>Begriffe und Definitionen
-* **Self-Service-Registrierung**: Dies ist die Methode, mit der sich ein Benutzer für einen Clouddienst registriert, wobei für ihn basierend auf seiner E-Mail-Domäne automatisch eine Identität in Azure AD erstellt wird.
-* **Nicht verwaltetes Azure AD-Verzeichnis**: Dies ist das Verzeichnis, in dem diese Identität erstellt wird. Ein nicht verwaltetes Verzeichnis ist ein Verzeichnis ohne globalen Administrator.
-* **Über E-Mail verifizierter Benutzer**: Dies ist ein Typ von Benutzerkonto in Azure AD. Ein Benutzer, für den nach der Registrierung für ein Self-Service-Angebot automatisch eine Identität erstellt wird, wird als über E-Mail verifizierter Benutzer bezeichnet. Ein über E-Mail verifizierter Benutzer ist ein normales Mitglied eines Verzeichnisses mit der Kennzeichnung "creationmethod=EmailVerified".
+* **Self-Service-Registrierung:** Dies ist die Methode, mit der sich ein Benutzer für einen Clouddienst registriert, wobei für ihn basierend auf seiner E-Mail-Domäne automatisch eine Identität in Azure AD erstellt wird.
+* **Nicht verwaltetes Azure-Verzeichnis:** Dies ist das Verzeichnis, in dem die Identität erstellt wird. Ein nicht verwaltetes Verzeichnis ist ein Verzeichnis ohne globalen Administrator.
+* **Über E-Mail verifizierter Benutzer:** Dies ist ein Typ von Benutzerkonto in Azure AD. Ein Benutzer, für den nach der Registrierung für ein Self-Service-Angebot automatisch eine Identität erstellt wird, wird als über E-Mail verifizierter Benutzer bezeichnet. Ein über E-Mail verifizierter Benutzer ist ein normales Mitglied eines Verzeichnisses mit der Kennzeichnung "creationmethod=EmailVerified".
 
 ## <a name="how-do-i-control-self-service-settings"></a>Wie steuere ich Self-Service-Einstellungen?
 Administratoren stehen derzeit zwei Self-Service-Steuerungsmöglichkeiten zur Verfügung. Sie können steuern, ob:
@@ -63,9 +63,9 @@ Testregistrierungen für Flow und PowerApps werden durch die Einstellung **Allow
 ### <a name="how-do-the-controls-work-together"></a>Wie funktionieren diese Steuerungsmöglichkeiten zusammen?
 Diese beiden Parameter können zusammen verwendet werden, um eine genauere Steuerung der Self-Service-Registrierung zu definieren. Der folgende Befehl erlaubt Benutzern beispielsweise die Self-Service-Registrierung, jedoch nur, wenn die Benutzer bereits über ein Konto in Azure AD verfügen (d.h. dass für Benutzer, für die zuerst ein über E-Mail verifiziertes Konto erstellt werden müsste, die Self-Service-Registrierung nicht erlaubt ist):
 
-````powershell
+```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
-````
+```
 
 Im folgenden Flussdiagramm werden die verschiedenen Kombinationen für diese Parameter und die resultierenden Bedingungen für das Verzeichnis und die Self-Service-Registrierung erläutert.
 

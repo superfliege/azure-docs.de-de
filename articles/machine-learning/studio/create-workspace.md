@@ -1,6 +1,6 @@
 ---
-Titel: Erstellen eines Arbeitsbereichs titleSuffix: Azure Machine Learning Studio-Beschreibung: Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Erstellen eines Arbeitsbereichs titleSuffix: Azure Machine Learning Studio-Beschreibung: Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 07.12.2017
 ---

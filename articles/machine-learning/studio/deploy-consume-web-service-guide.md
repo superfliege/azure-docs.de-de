@@ -1,5 +1,5 @@
 ---
-Titel: Bereitstellung und Nutzung titleSuffix: Azure Machine Learning Studio Beschreibung: Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Bereitstellung und Nutzung titleSuffix: Azure Machine Learning Studio Beschreibung: Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 19.04.2017
 ---

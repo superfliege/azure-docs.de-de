@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung) | Microsoft Docs
+title: Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung) | Microsoft-Dokumentation
 description: Sie erfahren, wie Sie Abfragen für elastische Datenbanken für vertikal partitionierte Datenbanken verwenden.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/03/2018
-ms.openlocfilehash: c24fedcc2ab42825950ca6a93fc954d7e6d36b00
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 116a465a0ddc913e342e0ffcc1fb29f5bf969419
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464159"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung, Vorschau)
 
@@ -33,7 +33,7 @@ Es ist die Berechtigung ALTER ANY EXTERNAL DATA SOURCE erforderlich. Diese Berec
 
 ## <a name="create-the-sample-databases"></a>Erstellen der Beispieldatenbanken
 
-Zuerst müssen die beiden Datenbanken **Customers** (Kunden) und **Orders** (Bestellungen) erstellt werden, und zwar entweder auf demselben oder auf unterschiedlichen logischen Servern.
+Zuerst müssen die beiden Datenbanken **Customers** (Kunden) und **Orders** (Bestellungen) erstellt werden, und zwar entweder auf demselben oder auf unterschiedlichen SQL-Datenbank-Servern.
 
 Führen Sie die folgenden Abfragen in der Datenbank **Orders** aus, um die Tabelle **OrderInformation** zu erstellen und die Beispieldaten einzugeben.
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 72b1ba51f306203092b420e6f2d6186b3307d35d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3c2953d44587d72517c6f619ee9c9f05aabff186
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422744"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094375"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
@@ -37,7 +37,7 @@ Mithilfe des Im-Auftrag-von-Flusses (On-Behalf-Of, OBO) von OAuth 2.0 kann eine 
 
 Der OBO-Fluss beginnt, nachdem der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](v1-protocols-oauth-code.md) verwendet. Zu diesem Zeitpunkt sendet die Anwendung ein Zugriffstoken (Token A) an die Web-API der mittleren Ebene (API A), das die Ansprüche des Benutzers und die Genehmigung für den Zugriff auf API A enthält. Als Nächstes führt API A eine Authentifizierungsanforderung an die nachgeschaltete Web-API (API B) durch.
 
-Diese Schritte bilden den Im-Auftrag-von-Fluss: ![Im-Auftrag-von-Fluss von OAuth 2.0](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Diese Schritte bilden den On-Behalf-Of-Fluss: ![OAuth2.0 – On-Behalf-Of-Fluss](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Die Clientanwendung stellt mit Token A eine Anforderung an die API A.
 1. Die API A wird beim Azure AD-Tokenausstellungs-Endpunkt authentifiziert und fordert ein Token für den Zugriff auf die API B an.
@@ -181,7 +181,7 @@ Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750))](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Der durch das Token gewährte Zugriffsbereich. |
 | expires_in |Gibt an, wie lange das Zugriffstoken gültig ist (in Sekunden). |
 | expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
@@ -263,10 +263,10 @@ Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden P
 
 Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
 
-- **SubjectConfirmationData für eine SAML-Assertion, die von einem OBO-Aufruf stammen:** Wenn die Zielanwendung einen Empfängerwert in **SubjectConfirmationData** erfordert, muss der Wert als Antwort-URL ohne Platzhalter in der Konfiguration der Ressourcenanwendung festgelegt werden.
-- **SubjectConfirmationData-Knoten:** Der Knoten kann kein **InResponseTo**-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist. Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne **InResponseTo**-Attribut akzeptieren können.
+- **SubjectConfirmationData für eine SAML-Assertion von einem OBO-Aufruf:** Wenn die Zielanwendung einen Empfängerwert in **SubjectConfirmationData** erfordert, muss als Wert in der Konfiguration der Ressourcenanwendung die Antwort-URL ohne Platzhalter festgelegt werden.
+- **Der SubjectConfirmationData-Knoten:** Der Knoten darf kein **InResponseTo**-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist. Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne **InResponseTo**-Attribut akzeptieren können.
 
-- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Fluss enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
+- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Flow enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
 
 ### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
 

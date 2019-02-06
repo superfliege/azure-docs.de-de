@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: fab422612bc3f83c8dc75d0dd99f42369dfa1d26
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438081"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098458"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Serielle Konsole für virtuelle Computer für Linux
 
@@ -89,7 +89,7 @@ Falsche Firewallregeln | Greifen Sie auf die serielle Konsole zu, und korrigiere
 Dateisystembeschädigung/-überprüfung | Greifen Sie auf die serielle Konsole zu, und stellen Sie das Dateisystem wieder her.
 SSH/RDP-Konfigurationsprobleme | Greifen Sie auf die serielle Konsole zu, und ändern Sie die Einstellungen.
 Netzwerksperrsystem| Greifen Sie aus dem Azure-Portal auf die serielle Konsole zu, um das System zu verwalten.
-Interaktion mit Bootloader | Greifen Sie aus der seriellen Konsole auf GRUB zu. Weitere Informationen finden Sie unter [Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
+Interaktion mit Bootloader | Starten Sie auf dem Blatt der seriellen Konsole Ihren virtuellen Computer neu, um auf Ihrem virtuellen Linux-Computer auf GRUB zuzugreifen. Weitere Informationen finden Sie unter [Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Deaktivieren der seriellen Konsole
 Standardmäßig haben alle Abonnements Zugriff auf die serielle Konsole, die für alle virtuellen Computer aktiviert ist. Sie können die serielle Konsole auf Abonnement- oder VM-Ebene deaktivieren.

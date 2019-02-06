@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7e2a075df7d0d7f6bb68163414fab525aad25a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338514"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093443"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -152,7 +152,7 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
 - Löschen Sie die Entität, verwerfen Sie die Änderung, oder speichern Sie die Änderung.
 
 ## <a name="add-a-new-entity-to-monitor"></a>Hinzufügen einer neuen zu überwachenden Entität
-1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und klicken Sie im oberen Bereich auf **Einstellungen**. Die **Arbeitsbereichskonfiguration** wird geöffnet.
+1. Kehren Sie zum Dashboard **Überwachung der Dateiintegrität** zurück, und wählen Sie im oberen Bereich **Einstellungen** aus. Die **Arbeitsbereichskonfiguration** wird geöffnet.
 2. Klicken Sie unter **Arbeitsbereichskonfiguration** auf die Registerkarte für den Typ der Entität, die Sie hinzufügen möchten: Windows-Registrierung, Windows-Dateien oder Linux-Dateien. In diesem Beispiel wurde **Linux-Dateien** ausgewählt.
 
   ![Hinzufügen eines neuen zu überwachenden Elements][14]
@@ -181,7 +181,7 @@ Unter **Edit for Change Tracking** (Für die Änderungsnachverfolgung bearbeiten
 
   ![Festlegen von „Aktiviert“ auf „Falsch“][19]
 
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Ordner- und Pfadüberwachung mithilfe von Platzhaltern
 

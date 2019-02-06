@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c11cdd6d1cc24d639d837993e94f3b304228634a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307461"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299553"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Erstellen, Aktualisieren von Statistiken von Tabellen in Azure SQL Data Warehouse
 Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
@@ -38,7 +38,7 @@ Wenn AUTO_CREATE_STATISTICS nicht für Ihr Data Warehouse konfiguriert ist, soll
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-Die Anweisungen SELECT, INSERT-SELECT, CTAS, UPDATE, DELETE und EXPLAIN lösen die automatische Erstellung von Statistiken aus, wenn eine Verknüpfung enthalten ist oder das Vorhandensein eines Prädikats erkannt wird. 
+Durch die folgenden Anweisungen wird die automatische Erstellung von Statistiken ausgelöst: SELECT, INSERT-SELECT, CTAS, UPDATE, DELETE und EXPLAIN, wenn eine Verknüpfung enthalten ist oder das Vorhandensein eines Prädikats erkannt wird. 
 
 > [!NOTE]
 > Die automatische Erstellung von Statistiken ist nicht bei temporären oder externen Tabellen möglich.
@@ -50,7 +50,7 @@ Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherw
 > Die Erstellung von Statistiken wird zudem in [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) in einem anderen Benutzerkontext protokolliert.
 > 
 
-Bei der automatischen Erstellung von Statistiken weisen diese das folgende Muster auf: _WA_Sys_<8-stellige Spalten-ID im Hexadezimalformat>_<8-stellige Tabellen-ID im Hexadezimalformat>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) ausführen:
+Wenn automatische Statistiken erstellt werden, sehen Sie wie folgt aus: _WA_Sys_<8 digit column id in Hex>_<8 digit table id in Hex>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den Befehl [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) ausführen:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
@@ -337,7 +337,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Erstellen von erfassten Statistiken für alle Spalten 
 
-## <a name="examples-update-statistics"></a>Beispiele: Aktualisieren von Statistiken
+## <a name="examples-update-statistics"></a>Beispiele: Statistikaktualisierung
 Sie können wie folgt vorgehen, um Statistiken zu aktualisieren:
 
 - Aktualisieren Sie ein Statistikobjekt. Geben Sie den Namen des Statistikobjekts an, das Sie aktualisieren möchten.
@@ -416,7 +416,7 @@ SELECT
         sm.[name]                           AS [schema_name]
 ,       tb.[name]                           AS [table_name]
 ,       st.[name]                           AS [stats_name]
-,       st.[filter_definition]              AS [stats_filter_defiinition]
+,       st.[filter_definition]              AS [stats_filter_definition]
 ,       st.[has_filter]                     AS [stats_is_filtered]
 ,       STATS_DATE(st.[object_id],st.[stats_id])
                                             AS [stats_last_updated_date]

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 68c611b08524b5fc037598bafe46d75b3293886d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289497"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100197"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -37,7 +37,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 ### <a name="responses"></a>Antworten
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -127,9 +127,9 @@ Muss die Erstellung eines virtuellen Computers auf der Grundlage der Sicherungsd
 
 Das Auslösen der Datenträgerwiederherstellung erfolgt über eine *POST*-Anforderung. Weitere Informationen zum Wiederherstellen von Datenträgern finden Sie im Artikel zur [REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
-````http
+```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
-````
+```
 
 Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` ist „Azure“ und `{recoveryPointId}` ist das Feld `{name}` des [oben](#example-response) erwähnten Wiederherstellungspunkts.
 
@@ -137,7 +137,7 @@ Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` fin
 
 Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Eigenschaften     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -147,7 +147,7 @@ Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einze
 
 Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer Datenträgerwiederherstellung erforderlich sind.
 
-````json
+```json
 {
   "properties": {
     "objectType": "IaasVMRestoreRequest",
@@ -163,15 +163,15 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer D
     }
   }
 }
-````
+```
 
 ### <a name="response"></a>response
 
-Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass bei diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Zwei Antworten werden zurückgegeben: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
+Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -243,7 +243,7 @@ Sobald der Vorgang mit langer Ausführungsdauer abgeschlossen ist, sind die Date
 
 Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen der Wiederherstellung eines virtuellen Computers erforderlich sind.
 
-````json
+```json
 {
   "parameters": {
         "subscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -275,7 +275,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen der Wie
       }
     }
 }
-````
+```
 
 Die Antwort muss gemäß der Erläuterung im obigen Abschnitt zum [Wiederherstellen von Datenträgern](#response) verarbeitet werden.
 

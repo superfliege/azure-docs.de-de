@@ -7,20 +7,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0971b5abee872d9a7010f0ce931f09c47808eb80
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452138"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302103"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -53,6 +53,8 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Azure Information Protection – [Weitere Informationen](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
 - Azure RemoteApp
+
+- Azure SQL-Datenbank – [Weitere Informationen](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 
 - Microsoft Dynamics 365
 
@@ -149,7 +151,7 @@ Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen 
 |--- | ---|
 |path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |NAME | 1 |
-|Typ | REG_SZ (Zeichenfolge) |
+|Type | REG_SZ (Zeichenfolge) |
 |Daten | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windows 8.1 und 7** unterstützt wird:
@@ -158,7 +160,7 @@ Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windo
 |--- | ---|
 |path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |NAME | 1 |
-|Typ | REG_SZ (Zeichenfolge) |
+|Type | REG_SZ (Zeichenfolge) |
 |Daten | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird. 
@@ -242,7 +244,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 
 - Anforderung **Genehmigte Client-App erforderlich**:
 
-    - Unterstützt als [Geräteplattformbedingung](#device-platforms-condition) nur iOS und Android.
+    - Unterstützt als [Geräteplattformbedingung](#device-platform-condition) nur iOS und Android.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

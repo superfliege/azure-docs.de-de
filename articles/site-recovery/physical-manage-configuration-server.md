@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: ee5cc1f185640c9ea22ceb80b1fabb20df245fe2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 824c7c70cf3e79df3aa04bbe86674ed9486b79f2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823079"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300437"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -20,7 +20,7 @@ Sie richten einen lokalen Konfigurationsserver ein, wenn Sie den [Azure Site Rec
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des lokalen Konfigurationsservercomputers zusammengefasst:
+In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des lokalen Konfigurationsservercomputers zusammengefasst.
 
 | **Komponente** | **Anforderung** |
 | --- |---|
@@ -106,7 +106,7 @@ Führen Sie die Installationsdatei wie folgt aus:
 
 ### <a name="parameters"></a>Parameter
 
-|Parametername| Typ | BESCHREIBUNG| Werte|
+|Parametername| Type | BESCHREIBUNG| Werte|
 |-|-|-|-|
 | /ServerMode|Erforderlich|Gibt an, ob die Installation sowohl den Konfigurations- als auch den Prozessserver oder nur den Prozessserver umfassen soll.|CS<br>PS|
 |/InstallLocation|Erforderlich|Der Ordner, in dem die Komponenten installiert werden.| Beliebiger Ordner auf dem Computer|
@@ -128,7 +128,7 @@ Führen Sie die Installationsdatei wie folgt aus:
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>Erstellen einer Dateieingabe für „MYSQLCredsFilePath“
 
 Der MySQLCredsFilePath-Parameter nimmt eine Datei als Eingabe an. Erstellen Sie die Datei im folgenden Format, und übergeben Sie sie als Eingabe an den Parameter MySQLCredsFilePath.
-```
+```ini
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
@@ -136,7 +136,7 @@ MySQLUserPassword = "Password"
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>Erstellen einer Dateieingabe für „ProxySettingsFilePath“
 Der ProxySettingsFilePath-Parameter nimmt eine Datei als Eingabe an. Erstellen Sie die Datei im folgenden Format, und übergeben Sie sie als Eingabe an den Parameter ProxySettingsFilePath.
 
-```
+```ini
 [ProxySettings]
 ProxyAuthentication = "Yes/No"
 Proxy IP = "IP Address"
@@ -157,7 +157,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
 5. Geben Sie die Details des neuen Proxys an, und klicken Sie auf die Schaltfläche **Registrieren**.
 6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
 7. Führen Sie den folgenden Befehl aus:
-  ```
+  ```powershell
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
   net stop obengine
@@ -177,7 +177,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
   6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
   7. Führen Sie den folgenden Befehl aus
 
-      ```
+      ```powershell
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
       net stop obengine
@@ -205,7 +205,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
 6. Geben Sie die Details des Proxyservers an, und klicken Sie auf die Schaltfläche **Registrieren**.  
 7. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
 8. Führen Sie den folgenden Befehl aus
-    ```
+    ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
@@ -273,7 +273,7 @@ Aktualisieren Sie den Server wie folgt:
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  Richten Sie jetzt den Kontext für Ihren Tresor ein.
     
-    ```
+    ```powershell
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 105a836f609859825c273ed9fba9dd46237bcaa9
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9120e5f283f8d8da8da2c80959a335965a643409
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447937"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903892"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
@@ -24,14 +24,11 @@ Bei der Bereitstellung Ihrer Ressourcen geben Sie an, dass es sich bei der Berei
 
 ## <a name="incremental-and-complete-deployments"></a>Inkrementelle und vollständige Bereitstellungen
 
-Beim Bereitstellen von Ressourcen:
+In beiden Modi versucht Resource Manager, alle in der Vorlage angegebenen Ressourcen zu erstellen. Wenn die Ressource bereits in der Ressourcengruppe vorhanden ist und ihre Einstellungen unverändert sind, wird für diese Ressource kein Vorgang ausgeführt. Wenn Sie die Eigenschaftswerte für eine Ressource ändern, wird die Ressource mit diesen neuen Werten aktualisiert. Falls Sie versuchen, den Speicherort oder Typ einer vorhandenen Ressource zu aktualisieren, tritt bei der Bereitstellung ein Fehler auf. Stellen Sie stattdessen eine neue Ressource mit dem gewünschten Speicherort oder Typ bereit.
 
-* Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind. Ressourcen, die dennoch angegeben sind, aber aufgrund einer als FALSE ausgewerteten Bedingung nicht bereitgestellt werden, werden jedoch nicht gelöscht.
-* Im inkrementellen Modus lässt Resource Manager Ressourcen **unverändert**, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind.
+Im vollständigen-Modus **löscht** Resource Manager Ressourcen, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind. Ressourcen, die in der Vorlage angegeben, aber nicht bereitgestellt werden, weil [condition](resource-manager-templates-resources.md#condition) als „false“ ausgewertet wird, werden nicht gelöscht.
 
-In beiden Modi versucht Resource Manager, alle in der Vorlage angegebenen Ressourcen zu erstellen. Wenn die Ressource bereits in der Ressourcengruppe vorhanden ist und ihre Einstellungen unverändert sind, führt der Vorgang zu keiner Änderung. Wenn Sie die Eigenschaftswerte für eine Ressource ändern, wird die Ressource mit diesen neuen Werten aktualisiert. Falls Sie versuchen, den Speicherort oder Typ einer vorhandenen Ressource zu aktualisieren, tritt bei der Bereitstellung ein Fehler auf. Stellen Sie stattdessen eine neue Ressource mit dem gewünschten Speicherort oder Typ bereit.
-
-Wenn Sie eine Ressource im inkrementellen Modus erneut bereitstellen, sollten Sie alle Eigenschaftswerte für die Ressource angeben – nicht nur diejenigen, die Sie aktualisieren. Falls Sie bestimmte Eigenschaften nicht angeben, interpretiert Resource Manager das Update als Überschreibung dieser Werte.
+Im inkrementellen Modus lässt Resource Manager Ressourcen **unverändert**, die in der Ressourcengruppe vorhanden, aber nicht in der Vorlage angegeben sind. Wenn Sie eine Ressource im inkrementellen Modus erneut bereitstellen, sollten Sie alle Eigenschaftswerte für die Ressource angeben – nicht nur diejenigen, die Sie aktualisieren. Falls Sie bestimmte Eigenschaften nicht angeben, interpretiert Resource Manager das Update als Überschreibung dieser Werte.
 
 ## <a name="example-result"></a>Beispielergebnis
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c1c4b8e5c2701f3c419a58bc3fdc33f7e629bbd
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: ded91c6de498b130cc26109a70e89955dd70d862
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238533"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208985"
 ---
 # <a name="emotion-api-frequently-asked-questions"></a>Häufig gestellte Fragen zur Emotionen-API
 
@@ -27,15 +27,15 @@ ms.locfileid: "48238533"
 
 -----
 
-**Frage**: *Mit welchen Arten von Bildern werden mit der Emotionen-API die besten Ergebnisse erzielt?*
+**Frage:** *Mit welchen Arten von Bildern werden mit der Emotionen-API die besten Ergebnisse erzielt?*
 
-**Antwort**: Verwenden Sie für beste Ergebnisse unversperrte, vollständige frontale Gesichtsaufnahmen. Die Zuverlässigkeit nimmt bei partiellen Gesichtsflächen ab und die Emotionen-API erkennt möglicherweise keine Emotionen in Bildern, in denen das Gesicht um mehr als 45 Grad gedreht ist.
+**Antwort:** Verwenden Sie für beste Ergebnisse unversperrte, vollständige frontale Gesichtsaufnahmen. Die Zuverlässigkeit nimmt bei partiellen Gesichtsflächen ab und die Emotionen-API erkennt möglicherweise keine Emotionen in Bildern, in denen das Gesicht um mehr als 45 Grad gedreht ist.
 
 -----
 
-**Frage**: *Wie viele Emotionen kann die Emotionen-API erkennen?*
+**Frage:** *Wie viele Emotionen kann die Emotionen-API erkennen?*
 
-**Antwort**: Die Emotionen-API erkennt acht verschiedene allgemein akzeptierte Emotionen:
+**Antwort:** Die Emotionen-API erkennt acht verschiedene allgemein akzeptierte Emotionen:
 * Freude
 * Trauer
 * Überraschung
@@ -47,15 +47,15 @@ ms.locfileid: "48238533"
 
 -----
 
-**Frage**: *Gibt es eine Möglichkeit, einen Live-Videostream an die API weiterzuleiten und gleichzeitig das Ergebnis zu erhalten?*
+**Frage:** *Gibt es eine Möglichkeit, einen Live-Videostream an die API weiterzuleiten und gleichzeitig das Ergebnis zu erhalten?*
 
-**Antwort**: Verwenden Sie die bildbasierte Emotionen-API und rufen Sie sie bei jedem Frame auf oder überspringen Sie Frames für mehr Leistung.  Es sind Frame-für Frame-Analysebeispiele für Videos verfügbar.
+**Antwort:** Verwenden Sie die bildbasierte Emotionen-API und rufen Sie sie bei jedem Frame auf, oder überspringen Sie Frames für mehr Leistung.  Es sind Frame-für Frame-Analysebeispiele für Videos verfügbar.
 
 -----
 
-**Frage**: *Ich habe die binären Bilddaten eingegeben, erhalte aber den Fehler „Gesichtsbild ungültig“.**
+**Frage:** *Ich habe die binären Bilddaten eingegeben, erhalte aber die Fehlermeldung: „Gesichtsbild ungültig“.**
 
-**Antwort**: Diese Meldung bedeutet, dass der Algorithmus ein Problem mit dem Analysieren des Bilds hat.  
+**Antwort:** Diese Meldung bedeutet, dass der Algorithmus ein Problem mit dem Analysieren des Bilds hat.  
 * Als Eingabebildformate werden JPEG, PNG, GIF (der erste Frame), BMP unterstützt.
 * Bilddateien dürfen maximal 4 MB groß sein.
 * Die erkennbare Gesichtsgröße reicht von 36 x 36 bis 4.096 x 4.096 Pixel. Außerhalb dieses Bereichs liegende Gesichter werden nicht erkannt.

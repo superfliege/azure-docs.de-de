@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 804202149234a55de4f7f99b18dc40b8136463a3
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651044"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463751"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei
 
@@ -47,7 +47,7 @@ Um eine Datenbank über das [Azure-Portal](https://portal.azure.com) zu exportie
 
 ![Datenbankexport](./media/sql-database-export/database-export.png)
 
-Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den logischen Server mit der zu exportierenden Datenbank. Scrollen Sie nach unten bis zu **Vorgänge**, und klicken Sie dann auf **Import-/Exportverlauf**.
+Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den SQL-Datenbank-Server mit der zu exportierenden Datenbank. Scrollen Sie nach unten bis zu **Vorgänge**, und klicken Sie dann auf **Import-/Exportverlauf**.
 
 ![Exportverlaufs](./media/sql-database-export/export-history.png)
 ![Exportverlaufstatus](./media/sql-database-export/export-history2.png)

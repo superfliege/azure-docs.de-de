@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852978"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102764"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
 Der Reverseproxy ist ein optionaler Azure Service Fabric-Dienst, mit dessen Hilfe in einem Service Fabric-Cluster ausgeführte Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren können. Weitere Informationen finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md). In diesem Artikel wird das Einrichten und Konfigurieren eines Reverseproxys in Ihrem Cluster veranschaulicht. 
@@ -33,7 +33,7 @@ Um den Reverseproxy beim [Erstellen eines Clusters mithilfe des Azure-Portals](.
 1. Wählen Sie in **Schritt 2: Clusterkonfiguration** unter **Knotentypkonfiguration** die Option **Reverseproxy aktivieren** aus.
 
    ![Aktivieren des Reverseproxys im Portal](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Optional) Um einen sicheren Reverseproxy zu konfigurieren, müssen Sie ein SSL-Zertifikat konfigurieren. Wählen Sie in **Schritt 3: Sicherheit** auf **Clustersicherheitseinstellungen konfigurieren** unter **Konfigurationstyp** die Option **Benutzerdefiniert** aus. Wählen Sie dann unter **Reverseproxy-SSL-Zertifikat** die Option **SSL-Zertifikat für Reverseproxy einschließen** aus, und geben Sie die Details Ihres Zertifikats ein.
+2. (Optional) Um einen sicheren Reverseproxy zu konfigurieren, müssen Sie ein SSL-Zertifikat konfigurieren. Wählen Sie in **Schritt 3: Sicherheit** unter **Clustersicherheitseinstellungen konfigurieren** für **Konfigurationstyp** die Option **Benutzerdefiniert** aus. Wählen Sie dann unter **Reverseproxy-SSL-Zertifikat** die Option **SSL-Zertifikat für Reverseproxy einschließen** aus, und geben Sie die Details Ihres Zertifikats ein.
 
    ![Konfigurieren eines sicheren Reverseproxys im Portal](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 

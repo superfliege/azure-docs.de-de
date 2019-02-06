@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f4d63d4ad0841244cf2548b0842eea880e27a152
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1ab3abb2542b3fec461f1d9ff569ea8ab74458d3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463030"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251978"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -57,6 +57,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Azure Active Directory B2C
 * Azure Cosmos DB
 * Azure-Daten-Explorer
+* Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps – Azure DevOps-Unternehmen mit erworbenen Erweiterungen, die nicht von Microsoft stammen, müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
@@ -99,7 +100,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
-* Recovery Services-Tresor – Registrieren Sie Ihr Abonnement für die [eingeschränkte öffentliche Vorschau](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+* Recovery Services-Tresor – registrieren Sie sich für eine [private Vorschauversion](#recovery-services-limitations).
 * Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
@@ -176,7 +177,7 @@ Verwenden Sie die folgende Problemumgehung, um mit Azure Backup konfigurierte vi
 * Ermitteln Sie den Speicherort Ihres virtuellen Computers.
 * Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`, z. B. „AzureBackupRG_westus2_1“
 * Wenn Sie das Azure-Portal verwenden, aktivieren Sie die Option „Ausgeblendete Typen anzeigen“
-* Wenn Sie PowerShell verwenden, verwenden Sie das Cmdlet `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`
+* Wenn Sie PowerShell verwenden, verwenden Sie das Cmdlet `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`
 * Wenn Sie die CLI (Befehlszeilenschnittstelle) verwenden, verwenden Sie den Befehl `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Suchen Sie nach der Ressource mit dem Typ `Microsoft.Compute/restorePointCollections` und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`.
 * Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
@@ -307,7 +308,7 @@ Dieser Vorgang kann einige Minuten dauern.
 
 ### <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
 
- Registrieren Sie Ihr Abonnement für die [eingeschränkte öffentliche Vorschau](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault), um einen Recovery Services-Tresor zu verschieben.
+ Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine private Vorschauversion registrieren. Schreiben Sie an AskAzureBackupTeam@microsoft.com, um die Vorschauversion zu testen.
 
 Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden.
 
@@ -336,13 +337,15 @@ Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zu
 
 Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt werden. Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
 
+1. Quellen- und Zielabonnements müssen aktiv sein. Wenn beim Aktivieren eines Kontos, das deaktiviert wurde, Schwierigkeiten auftreten, [erstellen Sie eine Azure-Supportanfrage](../azure-supportability/how-to-create-azure-support-request.md). Wählen Sie **Abonnementverwaltung** als Problemtyp aus.
+
 1. Quell- und Zielabonnement müssen im selben [Azure Active Directory-Mandanten](../active-directory/develop/quickstart-create-new-tenant.md) vorhanden sein. Um zu überprüfen, ob beide Abonnements die gleiche Mandanten-ID aufweisen, verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle.
 
   Verwenden Sie für Azure PowerShell Folgendes:
 
   ```azurepowershell-interactive
-  (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
 
   Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
@@ -362,14 +365,14 @@ Vor dem Verschieben einer Ressource müssen einige wichtige Schritte ausgeführt
   Verwenden Sie für PowerShell die folgenden Befehle zum Abrufen des Registrierungsstatus:
 
   ```azurepowershell-interactive
-  Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
-  Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+  Set-AzContext -Subscription <destination-subscription-name-or-id>
+  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Verwenden Sie zum Registrieren eines Ressourcenanbieters Folgendes:
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
   Verwenden Sie für die Azure CLI die folgenden Befehle zum Abrufen des Registrierungsstatus:
@@ -473,12 +476,12 @@ Sobald der Vorgang abgeschlossen ist, werden Sie über das Ergebnis informiert.
 
 ### <a name="by-using-azure-powershell"></a>Mit Azure PowerShell
 
-Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) . Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden.
+Verwenden Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement den Befehl [Move-AzResource](/powershell/module/az.resources/move-azresource). Im folgenden Beispiel wird veranschaulicht, wie mehrere Ressourcen in eine neue Ressourcengruppe verschoben werden.
 
 ```azurepowershell-interactive
-$webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
 Um Ressourcen in ein neues Abonnement zu verschieben, schließen Sie einen Wert für den Parameter `DestinationSubscriptionId` ein.

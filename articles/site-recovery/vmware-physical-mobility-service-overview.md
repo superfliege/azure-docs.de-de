@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6319ef908b5b040bf61285451448c08bb3960fe2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956515"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215009"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
@@ -24,8 +24,8 @@ Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithi
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-VM-Agent
 
-- **Windows-VMs**: Ab Version 9.7.0.0 des Mobilitätsdiensts wird der [Azure VM-Agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) vom Mobilitätsdienst-Installer installiert. Damit wird sichergestellt, dass die Azure-VM die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen erfüllt, wenn ein Computer ein Failover zu Azure ausführt.
-- **Linux-VMs**: Der [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) muss nach dem Failover manuell auf der Azure-VM installiert werden.
+- **Virtuelle Windows-Computer:** Ab Version 9.7.0.0 des Mobilitätsdiensts wird der [Azure VM-Agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) vom Mobilitätsdienst-Installer installiert. Damit wird sichergestellt, dass die Azure-VM die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen erfüllt, wenn ein Computer ein Failover zu Azure ausführt.
+- **Virtuelle Linux-Computer:** Der [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) muss nach dem Failover manuell auf der Azure-VM installiert werden.
 
 ## <a name="installer-files"></a>Installerdateien
 
@@ -64,7 +64,7 @@ Wenn auf Computern, die Sie replizieren möchten, aktive Virenschutzsoftware aus
 
 5. Der Aktualisierungsauftrag für Mobility Service wird für jeden ausgewählten Computer gestartet.
 
-## <a name="update-the-acount-used-for-push-installation-of-the-mobility-service"></a>Aktualisieren des für die Pushinstallation des Mobilitätsdiensts verwendeten Kontos
+## <a name="update-the-account-used-for-push-installation-of-the-mobility-service"></a>Aktualisieren des für die Pushinstallation des Mobilitätsdiensts verwendeten Kontos
 
 Wenn Sie Site Recovery eingesetzt haben, um die Pushinstallation des Mobilitätsdiensts zu aktivieren, haben Sie ein Konto angegeben, über das der Site Recovery-Prozessserver auf die Computer zugreift und den Dienst installiert, wenn die Replikation für den Computer aktiviert ist. Wenn Sie die Anmeldeinformationen für dieses Konto aktualisieren möchten, führen Sie [diese Anweisungen](vmware-azure-manage-configuration-server.md) aus.
 

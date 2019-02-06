@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344924"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219769"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
@@ -75,8 +75,8 @@ Da der Microsoft Speech Service an einigen der Zustände beteiligt ist, definier
 
 Der Spracherkennungsdienst von Microsoft bietet Entwicklern zwei Möglichkeiten, ihre Apps mit Sprachfunktionen zu erweitern.
 
-- [REST-APIs:](GetStarted/GetStartedREST.md) Entwickler können in ihren Apps HTTP-Aufrufe an den Spracherkennungsdienst richten.
-- [Clientbibliotheken:](GetStarted/GetStartedClientLibraries.md) Entwickler, die erweiterte Features nutzen möchten, können Microsoft Speech-Clientbibliotheken herunterladen und in ihre Apps einbinden.  Die Clientbibliotheken sind für verschiedene Plattformen (Windows, Android, iOS) mit verschiedenen Sprachen (C#, Java, JavaScript, Objective-C) verfügbar.
+- [REST-APIs](GetStarted/GetStartedREST.md): Entwickler können in ihren Apps HTTP-Aufrufe an den Spracherkennungsdienst richten.
+- [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md): Entwickler, die erweiterte Features nutzen möchten, können Microsoft Speech-Clientbibliotheken herunterladen und in ihre Apps einbinden.  Die Clientbibliotheken sind für verschiedene Plattformen (Windows, Android, iOS) mit verschiedenen Sprachen (C#, Java, JavaScript, Objective-C) verfügbar.
 
 | Anwendungsfälle | [REST-APIs](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|

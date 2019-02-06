@@ -11,16 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359634"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104554"
 ---
 # <a name="streaming-endpoints"></a>Streamingendpunkte
 
-In Microsoft Azure Media Services (AMS) stellt die Entität [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt für eine Clientwiedergabeanwendung oder ein Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video-on-Demand-Medienobjekt in Ihrem Media Services-Konto sein. Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können zusätzliche Streamingendpunkte erstellt werden. Um das Streaming von Videos zu starten, muss der Streamingendpunkt gestartet werden, von dem aus Sie das Video streamen möchten. 
+In Microsoft Azure Media Services (AMS) stellt die Entität [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt für eine Clientwiedergabeanwendung oder ein Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des **Streamingendpunkt**-Diensts kann ein Livestream oder ein Video-on-Demand-Medienobjekt in Ihrem Media Services-Konto sein. Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können zusätzliche Streamingendpunkte erstellt werden. 
+
+> [!NOTE]
+> Um das Streaming von Videos zu starten, muss der **Streamingendpunkt**, von dem aus Sie das Video streamen möchten, gestartet werden. 
 
 ## <a name="naming-convention"></a>Benennungskonvention
 
@@ -34,7 +37,7 @@ Es gibt zwei **Streamingendpunkt**-Typen: **Standard** und **Premium**. Der Typ 
 
 Die Typen werden in der folgenden Tabelle beschrieben:  
 
-|Typ|Skalierungseinheiten|BESCHREIBUNG|
+|Type|Skalierungseinheiten|BESCHREIBUNG|
 |--------|--------|--------|  
 |**Standard-Streamingendpunkt** (empfohlen)|0|Der **Standard**-Typ ist die empfohlene Option für nahezu alle Streamingszenarien und Zielgruppengrößen. Mit dem **Standard**-Typ wird die ausgehende Bandbreite automatisch skaliert. <br/>Für Kunden mit äußerst anspruchsvollen Anforderungen umfasst Media Services **Premium**-Streamingendpunkte, mit denen die Kapazität für die größten Internetzielgruppen horizontal hochskaliert werden kann. Wenn Sie von großen Zielgruppen und einer großen Anzahl von gleichzeitigen Benutzern ausgehen, wenden Sie sich unter amsstreaming@microsoft.com an uns, um Informationen darüber zu erhalten, ob Sie zum **Premium**-Typ wechseln müssen. |
 |**Premium-Streamingendpunkt**|>0|**Premium**-Streamingendpunkte eignen sich für komplexere Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Zum **Premium**-Typ wechseln Sie, indem Sie `scaleUnits` anpassen. `scaleUnits` stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Bei Verwendung des **Premium**-Typs stellt jede aktivierte Einheit zusätzliche Bandbreitenkapazität für die Anwendung bereit. |

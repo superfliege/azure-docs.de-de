@@ -10,29 +10,29 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306487"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078779"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs
 ## <a name="executive-summary"></a>Kurzfassung
-Im Laufe der letzten Jahre wurden das Internet der Dinge (Internet of Things, IoT), alternative Energiequellen und Big Data zusammengeführt, um im Bereich der Versorgungsunternehmen und in der Energiebranche ein riesiges Potenzial für neue Entwicklungen zu schaffen. Gleichzeitig haben Versorger und der gesamte Energiesektor beobachten können, dass der Verbrauch zurückgegangen ist und dass die Konsumenten sich bessere Möglichkeiten zur Steuerung ihres Energieverbrauchs wünschen. Aus diesem Grund ist der Druck auf Versorger und Smart Grid-Unternehmen groß, was Innovationen und die Neuausrichtung des Unternehmens betrifft. Außerdem veralten viele Strom- und Versorgungsnetze immer mehr und sind mit hohen Kosten für die Wartung und Verwaltung verbunden. Im letzten Jahr war unser Team mit vielen Aktivitäten in der Energiebranche beschäftigt. Dabei kam es häufig vor, dass Versorger oder unabhängige Softwarehersteller (ISV, Independent Software Vendor) nach Möglichkeiten suchten, um den zukünftigen Energieverbrauch vorherzusagen. Diese Vorhersagen spielen eine wichtige Rolle für die derzeitige und zukünftige Geschäftstätigkeit dieser Unternehmen und sind zur Grundlage verschiedener Anwendungsfälle geworden. Hierzu gehören die Vorhersage der kurz- und langfristigen Stromlast, Handel, Lastenausgleich, Netzoptimierung usw. Big Data und Advanced Analytics-Methoden (AA), z. B. Machine Learning (ML), sind die wichtigsten Hilfsmittel zur Erstellung präziser und zuverlässiger Vorhersagen.  
+Im Laufe der letzten Jahre wurden das Internet der Dinge (Internet of Things, IoT), alternative Energiequellen und Big Data zusammengeführt, um im Bereich der Versorgungsunternehmen und in der Energiebranche ein riesiges Potenzial für neue Entwicklungen zu schaffen. Gleichzeitig haben Versorger und der gesamte Energiesektor beobachten können, dass der Verbrauch zurückgegangen ist und dass die Konsumenten sich bessere Möglichkeiten zur Steuerung ihres Energieverbrauchs wünschen. Aus diesem Grund ist der Druck auf Versorger und Smart Grid-Unternehmen groß, was Innovationen und die Neuausrichtung des Unternehmens betrifft. Außerdem veralten viele Strom- und Versorgungsnetze immer mehr und sind mit hohen Kosten für die Wartung und Verwaltung verbunden. Im letzten Jahr war unser Team mit vielen Aktivitäten in der Energiebranche beschäftigt. Dabei kam es häufig vor, dass Versorger oder unabhängige Softwarehersteller (ISV, Independent Software Vendor) nach Möglichkeiten suchten, um den zukünftigen Energieverbrauch vorherzusagen. Diese Vorhersagen spielen eine wichtige Rolle für die derzeitige und zukünftige Geschäftstätigkeit dieser Unternehmen und sind zur Grundlage verschiedener Anwendungsfälle geworden. Hierzu gehören die Vorhersage der kurz- und langfristigen Stromlast, Handel, Lastenausgleich, Netzoptimierung usw. Big Data und Advanced Analytics-Methoden (AA), z. B. Machine Learning (ML), sind die wichtigsten Hilfsmittel zur Erstellung präziser und zuverlässiger Vorhersagen.
 
 In diesem Playbook sind die geschäftlichen und analytischen Richtlinien zusammengefasst, die für eine erfolgreiche Entwicklung und Bereitstellung einer Lösung zum Vorhersagen des Energiebedarfs benötigt werden. Diese vorgeschlagenen Richtlinien können Versorger, Datenanalysten und Datentechniker bei der Erstellung von vollständig operationalisierten, cloudbasierten Lösungen für die Vorhersage des Bedarfs unterstützen. Für Unternehmen, die noch am Anfang ihres Big Data- und Advanced Analytics-Wegs stehen, kann eine Lösung dieser Art der Ausgangspunkt für eine langfristige Smart Grid-Strategie sein.
 
 > [!TIP]
-> Unter [Cortana Intelligence-Lösungsvorlage – Architektur für die Energienachfrageprognose](cortana-analytics-architecture-demand-forecasting-energy.md)können Sie ein Diagramm herunterladen, das eine Architekturübersicht zu dieser Vorlage enthält.  
-> 
-> 
+> Unter [Cortana Intelligence-Lösungsvorlage – Architektur für die Energienachfrageprognose](cortana-analytics-architecture-demand-forecasting-energy.md)können Sie ein Diagramm herunterladen, das eine Architekturübersicht zu dieser Vorlage enthält.
+>
+>
 
 ## <a name="overview"></a>Übersicht
-In diesem Dokument werden die geschäftlichen, datenbezogenen und technischen Aspekte der Verwendung von Cortana Intelligence und Azure Machine Learning (AML) zur Implementierung und Bereitstellung von Lösungen für die Vorhersage des Energiebedarfs (Energy Forecasting Solutions) beschrieben. Das Dokument besteht aus drei Hauptteilen:  
+In diesem Dokument werden die geschäftlichen, datenbezogenen und technischen Aspekte der Verwendung von Cortana Intelligence und Azure Machine Learning (AML) zur Implementierung und Bereitstellung von Lösungen für die Vorhersage des Energiebedarfs (Energy Forecasting Solutions) beschrieben. Das Dokument besteht aus drei Hauptteilen:
 
-1. Geschäftliche Aspekte  
-2. Datenaspekte  
+1. Geschäftliche Aspekte
+2. Datenaspekte
 3. Technische Implementierung
 
 Im Teil **Geschäftliche Aspekte** werden die geschäftlichen Aspekte beschrieben, die verinnerlicht und berücksichtigt werden müssen, bevor eine Investitionsentscheidung getroffen wird. Es wird erläutert, wie das vorliegende geschäftliche Problem qualifiziert werden kann, um sicherzustellen, dass Predictive Analytics- und Machine Learning-Maßnahmen wirklich effektiv und anwendbar sind. Im Dokument werden die Grundlagen von Machine Learning und die Nutzung zum Lösen von Problemen bei der Vorhersage des Energiebedarfs erläutert. Es werden die Voraussetzungen und Qualifizierungskriterien anhand eines Anwendungsfalls beschrieben. Als Beispiele werden auch einige Anwendungsfälle und Business Case-Szenarien geschildert.
@@ -43,7 +43,7 @@ Im dritten Teil des Dokuments wird die **Technische Implementierung** einer Lös
 
 Darüber hinaus enthält das Dokument Referenzmaterial, das Sie nutzen können, um den gesamten Bereich und die Technologie besser zu verstehen.
 
-Es ist wichtig zu beachten, dass in diesem Dokument nicht näher auf den Data Science-Prozess und seine mathematischen und technischen Aspekte eingegangen werden soll. Diese Informationen finden Sie unter [Azure ML-Dokumentation](https://azure.microsoft.com/services/machine-learning/) und in den [Blogs](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Es ist wichtig zu beachten, dass in diesem Dokument nicht näher auf den Data Science-Prozess und seine mathematischen und technischen Aspekte eingegangen werden soll. Diese Informationen finden Sie in der [Dokumentation zu Azure Machine Learning Service](https://azure.microsoft.com/services/machine-learning/) und in den [Blogs](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Zielgruppe
 Dieses Dokument ist sowohl für Manager als auch für Techniker bestimmt, die sich Wissen in Bezug auf Machine Learning-basierte Lösungen und deren spezielle Verwendung im Bereich der Vorhersage des Energiebedarfs aneignen möchten.
@@ -87,7 +87,7 @@ In Bezug auf den Energiebedarf ist die kurzfristige Vorhersage der Last (Short T
 * Lastenausgleich und Verhinderung von Überlastung
 * Langfristige Vorhersage der Last
 * Fehler- und Anomalieerkennung
-* Verkürzung/Ausgleich von Spitzen 
+* Verkürzung/Ausgleich von Spitzen
 
 STLF-Modelle basieren größtenteils auf den Verbrauchsdaten der unmittelbaren Vergangenheit (letzter Tag oder letzte Woche), und die vorhergesagten Temperaturen dienen als wichtige Größe für die Vorhersage. Die Beschaffung einer genauen Temperaturvorhersage für die nächste Stunde oder die nächsten 24 Stunden ist heutzutage kein großes Problem mehr. Diese Modelle sind weniger anfällig für saisonale Muster oder langfristige Verbrauchstrends.
 
@@ -189,9 +189,9 @@ Im folgenden Absatz wird dieser Prozess mit vier Schritten beschrieben:
 
 1. **Datensammlung:** Alle erweiterten Analyselösungen basieren auf Daten (siehe **Datenaspekte**). Vor allem bei Predictive Analytics und Vorhersagen ist ein fortlaufender, dynamischer Datenfluss unerlässlich. Bei der Vorhersage des Energiebedarfs können diese Daten direkt von Smart Metern stammen oder bereits in einer lokalen Datenbank aggregiert werden. Es werden auch andere externe Datenquellen verwendet, z. B. Wetter- und Temperaturdaten. Dieser ständige Datenfluss muss orchestriert, geplant und gespeichert werden. [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) ist das wichtigste Werkzeug bei der Erfüllung dieser Aufgabe.
 2. **Modellierung:** Um präzise und zuverlässige Vorhersagen des Energiebedarfs zu erhalten, muss ein gutes Modell entwickelt (trainiert) und gepflegt werden, bei dem die Verlaufsdaten genutzt und die aussagekräftigen Muster und Vorhersagemuster in den Daten extrahiert werden. Der Machine Learning-Bereich (ML) wächst ständig, und es werden regelmäßig immer anspruchsvollere Algorithmen entwickelt. Azure ML Studio verfügt über eine hervorragende Benutzeroberfläche, mit der auch die anspruchsvollsten ML-Algorithmen in einem Workflow genutzt werden können. Dieser Workflow ist in einem intuitiven Flussdiagramm dargestellt und enthält die Bereiche Datenvorbereitung, Featureextraktion, Modellierung und Modellauswertung. Benutzer können Hunderte von verschiedenen Modellen nutzen, die in dieser Umgebung enthalten sind. Am Ende dieser Phase verfügt ein Data Scientist über ein funktionierendes Modell, das vollständig evaluiert und fertig für die Bereitstellung ist.
-   
+
    Das folgende Diagramm enthält eine Darstellung eines typischen Workflows:
-   
+
    ![Workflow der Modellierung](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
 3. **Bereitstellung:** Nachdem Sie nun über ein funktionierendes Modell verfügen, ist der nächste Schritt die Bereitstellung. Hier wird das Modell in einen Webdienst konvertiert, mit dem eine RESTful-API verfügbar gemacht wird, die von verschiedenen Verbrauchsclients gleichzeitig über das Internet aufgerufen werden kann. Mit Azure ML ist es leicht möglich, ein Modell durch das Klicken auf eine Schaltfläche direkt aus Azure ML Studio bereitzustellen. Der gesamte Bereitstellungsprozess läuft im Hintergrund ab. Diese Lösung kann automatisch skaliert werden, um den erforderlichen Verbrauch zu decken.
 4. **Verbrauch:** In dieser Phase verwenden wir das Vorhersagemodell nun, um Vorhersagen zu produzieren. Der Verbrauch kann über eine Benutzeranwendung (*z.B.* ein Dashboard) oder direkt aus einem Betriebssystem bereitgestellt werden, z.B. einem System zum Abgleich von Bedarf und Versorgung oder einer Lösung zur Optimierung des Netzes. Mehrere Anwendungsfälle können über ein einzelnes Modell gesteuert werden.
@@ -321,8 +321,8 @@ In den letzten Jahren wurden erweiterte Algorithmen entwickelt, um die Zeitreihe
 
 > [!NOTE]
 > Dieser Abschnitt soll nicht als Übersicht über Machine Learning und Vorhersagen dienen, sondern als kurzer Überblick über Modellierungsverfahren, die für Bedarfsvorhersagen häufig eingesetzt werden. Falls Sie weitere Informationen und Lehrmittel zur Zeitreihenvorhersage benötigen, legen wir Ihnen die Onlinedokumentation [Forecasting: principles and practice](https://www.otexts.org/)(Vorhersagen: Prinzipien und Vorgehensweisen) ans Herz.
-> 
-> 
+>
+>
 
 #### <a name="ma-moving-average"></a>**MA (Moving Average, gleitender Durchschnitt)**
 Der gleitende Durchschnitt ist eines der ersten Analyseverfahren, das für die Zeitreihenvorhersage verwendet wurde, und ist immer noch eines der am häufigsten genutzten Verfahren. Außerdem ist es die Grundlage für anspruchsvollere Vorhersageverfahren. Mit dem gleitenden Durchschnitt sagen wir den nächsten Datenpunkt voraus, indem wir den Mittelwert der „K“ häufigsten Punkte bilden. „K“ steht hierbei für die Reihenfolge des gleitenden Durchschnitts.

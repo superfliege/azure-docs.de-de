@@ -1,6 +1,6 @@
 ---
 title: Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Daten mit Azure Data Factory auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz verschieben.
+description: Erfahren Sie, wie Sie Daten mit Azure Data Factory auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz verschieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,38 +10,42 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9cd2eaefb845b6ce9ca2f1cfcaf1234f8f96615c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025078"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300327"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory
+# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Sie können Daten von einer verwalteten Azure SQL-Datenbank-Instanz in einen beliebigen unterstützten Senkendatenspeicher oder Daten aus einem beliebigen unterstützten Quelldatenspeicher auf die verwaltete Instanz kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer verwalteten Azure SQL-Datenbank-Instanz in beliebige unterstützte Senkendatenspeicher und umgekehrt kopieren. Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher in eine verwaltete Instanz kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Diese verwaltete Azure SQL-Datenbank-Instanz unterstützt insbesondere Folgendes:
 
-- Kopieren von Dateien unter Verwendung der Authentifizierung des Typs **SQL** oder **Windows**
-- Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur.
+- Kopieren von Daten unter Verwendung der SQL- oder Windows-Authentifizierung
+- Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur
 - Als Senke das Anfügen von Daten an die Zieltabelle oder Aufrufen einer gespeicherten Prozedur mit benutzerdefinierter Logik während des Kopiervorgangs
+
+SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) wird derzeit nicht unterstützt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung des Kopierens von Daten von einer verwalteten Azure SQL-Datenbank-Instanz in einem VNET müssen Sie in demselben VNET eine selbstgehostete Integration Runtime einrichten, die Zugriff auf die Datenbank hat. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
+Richten Sie zur Verwendung des Kopierens von Daten von einer verwalteten Azure SQL-Datenbank-Instanz in ein virtuelles Netzwerk eine selbstgehostete Integration Runtime ein, die Zugriff auf die Datenbank hat. Weitere Informationen finden Sie unter [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md).
 
-## <a name="getting-started"></a>Erste Schritte
+Wenn Sie Ihre selbstgehostete Integration Runtime im gleichen virtuellen Netzwerk wie Ihre verwaltete Instanz bereitstellen, stellen Sie sicher, dass sich Ihr Computer mit der Integration Runtime in einem anderen Subnetz als Ihre verwaltete Instanz befindet. Wenn Sie Ihre selbstgehostete Integration Runtime mit einem anderen virtuellen Netzwerk bereitstellen als Ihre verwaltete Instanz, empfiehlt sich ein Peering virtueller Netzwerke oder eine Verbindung zwischen den virtuellen Netzwerken. Weitere Informationen finden Sie in [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md).
+
+## <a name="get-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Connector für die verwaltete Azure SQL-Datenbank-Instanz verwendet werden:
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Connector für die verwaltete Azure SQL-Datenbank-Instanz verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -49,16 +53,16 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SqlServer** | JA |
-| connectionString |Geben Sie „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Sehen Sie sich das folgende Beispiel an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |JA |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein  |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „userName“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein  |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Stellen Sie die selbstgehostete Integration Runtime in demselben VNET wie Ihre verwaltete Instanz bereit. |JA |
+| type | Die type-Eigenschaft muss auf **SqlServer** festgelegt sein. | Ja. |
+| connectionString |Diese Eigenschaft gibt die „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. Wählen Sie [SecureString](store-credentials-in-key-vault.md) aus, um die connectionString-Informationen sicher in Data Factory zu speichern, oder **verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis**. |Ja. |
+| userName |Diese Eigenschaft gibt einen Benutzernamen an, wenn Sie Windows-Authentifizierung verwenden. Ein Beispiel lautet **domainname\\username**. | Nein. |
+| password |Diese Eigenschaft gibt ein Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Wählen Sie [SecureString](store-credentials-in-key-vault.md) aus, um die connectionString-Informationen sicher in Data Factory zu speichern, oder **verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis**. | Nein. |
+| connectVia | Diese [Integration Runtime](concepts-integration-runtime.md) wird zum Herstellen einer Verbindung mit dem Datenspeicher verwendet. Stellen Sie die selbstgehostete Integration Runtime in demselben virtuellen Netzwerk wie Ihre verwaltete Instanz bereit. |Ja. |
 
 >[!TIP]
->Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
+>Möglicherweise wird der Fehlercode "UserErrorFailedToConnectToSqlServer" mit einer Meldung wie „Das Sitzungslimit für die Datenbank beträgt XXX und wurde erreicht“ angezeigt. Wenn dieser Fehler auftritt, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
 
-**Beispiel 1: Verwenden der SQL-Authentifizierung**
+**Beispiel 1: SQL-Authentifizierung verwenden**
 
 ```json
 {
@@ -79,7 +83,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 }
 ```
 
-**Beispiel 2: Verwenden der Windows-Authentifizierung**
+**Beispiel 2: Windows-Authentifizierung verwenden**
 
 ```json
 {
@@ -91,17 +95,17 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
                 "type": "SecureString",
                 "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
             },
-             "userName": "<domain\\username>",
-             "password": {
+            "userName": "<domain\\username>",
+            "password": {
                 "type": "SecureString",
                 "value": "<password>"
-             }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
         }
-     }
+    }
 }
 ```
 
@@ -109,12 +113,12 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste mit den Eigenschaften, die vom Dataset der verwalteten Azure SQL-Datenbank-Instanz unterstützt werden.
 
-Legen Sie die Typeigenschaft des Datasets auf **SqlServerTable** fest, um Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Instanz zu kopieren. Folgende Eigenschaften werden unterstützt:
+Legen Sie die type-Eigenschaft des Datasets auf **SqlServerTable** fest, um Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Instanz zu kopieren. Folgende Eigenschaften werden unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SqlServerTable** | JA |
-| tableName |Name der Tabelle oder Sicht in der Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Quelle: Nein, Senke: Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **SqlServerTable** festgelegt werden. | Ja. |
+| tableName |Diese Eigenschaft ist der Name der Tabelle oder Ansicht in der Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Nein für „Quelle“. Ja für „Senke“. |
 
 **Beispiel**
 
@@ -139,21 +143,21 @@ Legen Sie die Typeigenschaft des Datasets auf **SqlServerTable** fest, um Daten 
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste mit den Eigenschaften, die von der Quelle und Senke der verwalteten Azure SQL-Datenbank-Instanz unterstützt werden.
 
-### <a name="azure-sql-database-managed-instance-as-source"></a>Verwaltete Azure SQL-Datenbank-Instanz als Quelle
+### <a name="azure-sql-database-managed-instance-as-a-source"></a>Verwaltete Azure SQL-Datenbank-Instanz als Quelle
 
-Legen Sie zum Kopieren von Daten von der verwalteten Azure SQL-Datenbank-Instanz den Quelltyp in der Kopieraktivität auf **SqlSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten von der verwalteten Azure SQL-Datenbank-Instanz den Quelltyp in der Kopieraktivität auf **SqlSource** fest. Die folgenden Eigenschaften werden im Abschnitt „source“ der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SqlSource** | JA |
-| SqlReaderQuery |Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. |Nein  |
-| sqlReaderStoredProcedureName |Der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. |Nein  |
-| storedProcedureParameters |Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte: Name/Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein  |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlSource** festgelegt sein. | Ja. |
+| SqlReaderQuery |Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `select * from MyTable`. | Nein. |
+| sqlReaderStoredProcedureName |Diese Eigenschaft ist der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. | Nein. |
+| storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein. |
 
-**Wichtige Hinweise**
+Beachten Sie folgende Punkte:
 
-- Wenn **sqlReaderQuery** für „SqlSource“ angegeben ist, wendet die Kopieraktivität diese Abfrage auf die Quelle „Verwaltete Instanz“ an, um die Daten abzurufen. Alternativ dazu können Sie eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben (sofern die gespeicherten Prozeduren Parameter verwenden).
-- Ohne Angabe der Eigenschaft „sqlReaderQuery“ oder „sqlReaderStoredProcedureName“ werden die im Abschnitt „structure“ des Dataset-JSON-Bereichs definierten Spalten verwendet, um eine Abfrage (`select column1, column2 from mytable`) für die verwaltete Instanz zu erstellen. Falls die Datasetdefinition nicht den Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
+- Wenn **sqlReaderQuery** für **SqlSource** angegeben ist, wendet die Kopieraktivität diese Abfrage auf die Quelle „Verwaltete Instanz“ an, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
+- Ohne Angabe von **sqlReaderQuery** oder der Eigenschaft **sqlReaderStoredProcedureName** werden die im Abschnitt „structure“ des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage verwendet. Die Abfrage `select column1, column2 from mytable` wird für die verwaltete Instanz ausgeführt. Falls die Datasetdefinition keinen Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
 
 **Beispiel: Verwenden einer SQL-Abfrage**
 
@@ -234,30 +238,30 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
 ```
 
-### <a name="azure-sql-database-managed-instance-as-sink"></a>Verwaltete Azure SQL-Datenbank-Instanz als Senke
+### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Verwaltete Azure SQL-Datenbank-Instanz als Senke
 
-Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Die folgenden Eigenschaften werden im Abschnitt „sink“ der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **SqlSink** | JA |
-| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standardwert: 10.000) |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein  |
-| preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Copy-Aktivität an, ehe Daten auf die verwaltete Instanz geschrieben werden. Sie wird pro Ausführung der Copy-Aktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein  |
-| sqlWriterStoredProcedureName |Der Name der gespeicherten Prozedur, die definiert, wie Quelldaten in der Zieltabelle angewendet werden (etwa durch Ausführen von Upserts oder Transformationen mit eigener Geschäftslogik). <br/><br/>Beachten Sie, dass diese gespeicherte Prozedur **pro Batch aufgerufen wird**. Verwenden Sie bei einem Vorgang, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), die `preCopyScript`-Eigenschaft. |Nein  |
-| storedProcedureParameters |Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte: Name/Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein  |
-| sqlWriterTableType |Geben Sie einen Tabellentypnamen an, der in der gespeicherten Prozedur verwendet werden soll. Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. |Nein  |
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **SqlSink** festgelegt sein. | Ja. |
+| writeBatchSize |Diese Eigenschaft fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße „writeBatchSize“ erreicht.<br/>Zulässige Werte sind Integer-Werte für die Anzahl der Zeilen. |Nein (Standardwert: 10.000). |
+| writeBatchTimeout |Diese Eigenschaft gibt die Wartezeit für den Abschluss der Batcheinfügung an, bevor ein Timeout auftritt.<br/>Zulässige Werte werden für die Zeitspanne verwendet. Ein Beispiel ist „00:30:00“. Das sind 30 Minuten. | Nein. |
+| preCopyScript |Diese Eigenschaft gibt eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Daten auf die verwaltete Instanz geschrieben werden. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein. |
+| sqlWriterStoredProcedureName |Dies ist der Name der gespeicherten Prozedur, die definiert, wie Quelldaten auf eine Zieltabelle angewandt werden. Ein Beispiel für diese Prozedur ist die Ausführung eines Upsert-Vorgangs bzw. einer Transformation mithilfe einer eigenen Geschäftslogik. <br/><br/>Diese gespeicherte Prozedur wird *pro Batch aufgerufen*. Auf einen Vorgang auszuführen, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), verwenden Sie die `preCopyScript`-Eigenschaft. | Nein. |
+| storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein. |
+| sqlWriterTableType |Diese Eigenschaft gibt einen Tabellentypnamen an, der in der gespeicherten Prozedur verwendet werden soll. Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. | Nein. |
 
 > [!TIP]
-> Beim Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz fügt die Kopieraktivität standardmäßig Daten an die Senkentabelle an. Um einen UPSERT-Vorgang oder zusätzliche Geschäftslogik auszuführen, verwenden Sie die in „SqlSink“ gespeicherte Prozedur. Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur für die SQL-Senke](#invoking-stored-procedure-for-sql-sink).
+> Beim Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz fügt die Kopieraktivität standardmäßig Daten an die Senkentabelle an. Um einen UPSERT-Vorgang oder zusätzliche Geschäftslogik auszuführen, verwenden Sie die in „SqlSink“ gespeicherte Prozedur. Weitere Informationen finden Sie unter [Aufrufen von gespeicherten Prozeduren aus einer SQL-Senke](#invoke-a-stored-procedure-from-a-sql-sink).
 
 **Beispiel 1: Anfügen von Daten**
 
@@ -291,9 +295,9 @@ Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz 
 ]
 ```
 
-**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für den upsert-Vorgang**
+**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für einen Upsert-Vorgang**
 
-Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur für die SQL-Senke](#invoking-stored-procedure-for-sql-sink).
+Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur aus einer SQL-Senke](#invoke-a-stored-procedure-from-a-sql-sink).
 
 ```json
 "activities":[
@@ -332,15 +336,15 @@ Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur f�
 
 ## <a name="identity-columns-in-the-target-database"></a>Identitätsspalten in der Zieldatenbank
 
-Dieser Abschnitt enthält ein Beispiel zum Kopieren von Daten aus einer Quelltabelle ohne eine Identitätsspalte in eine Zieltabelle mit einer Identitätsspalte.
+Das folgende Beispiel kopiert Daten aus einer Quelltabelle ohne eine Identitätsspalte in eine Zieltabelle mit einer Identitätsspalte.
 
 **Quelltabelle**
 
 ```sql
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 
@@ -349,9 +353,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 
@@ -397,15 +401,15 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 }
 ```
 
-Beachten Sie, dass die Quell- und die Zieltabelle unterschiedliche Schemas besitzen (das Ziel verfügt über eine zusätzliche Spalte mit der Identität). In diesem Szenario müssen Sie eine **structure** -Eigenschaft in der Definition des Zieldatasets angeben, die nicht die Identitätsspalte enthält.
+Beachten Sie, dass Ihre Quell- und Zieltabelle unterschiedliche Schemas aufweisen. Die Zieltabelle enthält eine Identitätsspalte. In diesem Szenario müssen Sie eine „structure“-Eigenschaft in der Definition des Zieldatasets angeben, die nicht die Identitätsspalte enthält.
 
-## <a name="invoking-stored-procedure-for-sql-sink"></a> Aufrufen der gespeicherten Prozedur von der SQL-Senke
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Aufrufen der gespeicherten Prozedur von der SQL-Senke
 
-Beim Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz konnte eine vom Benutzer angegebene gespeicherte Prozedur konfiguriert und mit zusätzlichen Parametern aufgerufen werden.
+Beim Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz kann eine gespeicherte Prozedur konfiguriert und mit zusätzlichen Parametern aufgerufen werden, die Sie angeben.
 
-Eine gespeicherte Prozedur kann genutzt werden, wenn integrierte Kopiermechanismen nicht den Zweck erfüllen. Sie wird in der Regel genutzt, wenn ein upsert-Vorgang (Insert + Update, Einfügen + Aktualisieren) oder eine zusätzliche Verarbeitung (Zusammenführen von Spalten, Suchen nach zusätzlichen Werten, Einfügen in mehrere Tabellen usw.) vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle durchgeführt werden muss.
+Sie können eine gespeicherte Prozedur nutzen, wenn integrierte Kopiermechanismen nicht den Zweck erfüllen. Sie werden in der Regel verwendet, wenn ein Upsert-Vorgang (Update + Einfügen) oder eine zusätzliche Verarbeitung erfolgen muss, bevor die letzte Einfügung von Quelldaten in die Zieltabelle durchgeführt wird. Zusätzliche Verarbeitungen können Aufgaben wie das Zusammenführen von Spalten, die Suche nach zusätzlichen Werten und das Einfügen in mehrere Tabellen beinhalten.
 
-Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen upsert-Vorgang in eine Tabelle der verwalteten Instanz auszuführen. Wenn Eingabedaten vorhanden sind und die Senkentabelle „Marketing“ heißt, sind drei Spalten vorhanden: „ProfileID“, „State“ und „Category“. Führen Sie einen upsert-Vorgang basierend auf der Spalte „ProfileID“ aus, der nur für eine bestimmte Kategorie gelten soll.
+Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen upsert-Vorgang in eine Tabelle der verwalteten Instanz auszuführen. Im Beispiel wird angenommen, dass Eingabedaten vorhanden sind und die Senkentabelle „Marketing“ drei Spalten enthält: „ProfileID“, „State“ und „Category“. Führen Sie einen upsert-Vorgang basierend auf der Spalte „ProfileID“ aus, der nur für eine bestimmte Kategorie gelten soll.
 
 **Ausgabedataset**
 
@@ -426,7 +430,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 }
 ```
 
-Definieren Sie den Abschnitt „SqlSink“ in der Kopieraktivität wie folgt.
+Definieren Sie den Abschnitt „SqlSink“ in der Kopieraktivität wie folgt:
 
 ```json
 "sink": {
@@ -458,7 +462,7 @@ BEGIN
 END
 ```
 
-Definieren Sie in der Datenbank den Tabellentyp mit demselben Namen wie „sqlWriterTableType“. Beachten Sie, dass das Schema des Tabellentyps mit dem Schema übereinstimmen sollte, das von den Eingabedaten zurückgegeben wird.
+Definieren Sie in der Datenbank den Tabellentyp mit demselben Namen wie „sqlWriterTableType“. Das Schema des Tabellentyps muss mit dem Schema übereinstimmen, das von den Eingabedaten zurückgegeben wird.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -471,46 +475,49 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 Das Feature der gespeicherten Prozedur nutzt [Tabellenwertparameter](https://msdn.microsoft.com/library/bb675163.aspx).
 
 >[!NOTE]
->Wenn Sie durch Aufrufen einer gespeicherten Prozedur in den Datentyp „Money/Smallmoney“ schreiben, werden die Werte unter Umständen gerundet. Geben Sie den entsprechenden Datentyp im Tabellenwertparameter nicht als „Money/Smallmoney“, sondern als „Decimal“ an, um dies zu vermeiden. 
+>Wenn Sie durch Aufrufen einer gespeicherten Prozedur in den Datentyp **Money/Smallmoney** schreiben, werden die Werte unter Umständen gerundet. Geben Sie den entsprechenden Datentyp im Tabellenwertparameter nicht als **Money/Smallmoney**, sondern als **Decimal** an, um dieses Problem zu vermeiden. 
 
 ## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Datentypzuordnung für verwaltete Azure SQL-Datenbank-Instanz
 
-Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Instanz werden die folgenden Zuordnungen von Datentypen der verwalteten Instanz zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Instanz werden die folgenden Zuordnungen von Datentypen der verwalteten Azure SQL-Datenbank-Instanz zu Azure Data Factory-Zwischendatentypen verwendet. Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
-| Datentyp der verwalteten Azure SQL-Datenbank-Instanz | Data Factory-Zwischendatentyp |
+| Datentyp der verwalteten Azure SQL-Datenbank-Instanz | Azure Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
 | Bit |Boolescher Wert |
 | char |String, Char[] |
-| date |Datetime |
-| DateTime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| DateTime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| DECIMAL |DECIMAL |
+| Decimal |Decimal |
 | FILESTREAM-Attribut (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |DECIMAL |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |DECIMAL |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |DECIMAL |
-| sql_variant |Object * |
+| smallmoney |Decimal |
+| sql_variant |Objekt |
 | text |String, Char[] |
-| time |Zeitraum |
+| time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |
+
+>[!NOTE]
+> Für Datentypen, die dem Zwischentyp „Decimal“ zugeordnet sind, unterstützt Azure Data Factory derzeit eine Genauigkeit von bis zu 28. Wenn Ihre Daten eine höhere Genauigkeit als 28 erfordern, erwägen Sie, sie per SQL-Abfrage in eine Zeichenfolge zu konvertieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).

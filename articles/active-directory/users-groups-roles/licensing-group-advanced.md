@@ -10,16 +10,16 @@ editor: piotrci
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b2e52b1e9aad05af173bf86e769e0c6ff7d28d9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215411"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195155"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -69,7 +69,7 @@ Es kann sein, dass Benutzer eine Lizenz benötigen, eine andere Lizenz jedoch ni
 
 Ein Benutzer kann Mitglied mehrerer Gruppen mit Lizenzen sein. Folgende Punkte sollten berücksichtigt werden:
 
-- Mehrere Lizenzen für das gleiche Produkt können sich überlappen und führen dazu, dass alle aktivierten Dienste auf den Benutzer angewendet werden. Im folgenden Beispiel werden zwei Lizenzierungsgruppen veranschaulicht: *E3 base services* (E3-Basisdienste) enthält die grundlegenden Dienste, die wir zuerst für alle Benutzer bereitstellen möchten. *E3 extended services* (Erweiterte E3-Dienste) enthält zusätzliche Dienste (Sway und Planner), die nur für einige Benutzer bereitgestellt werden sollen. In diesem Beispiel wurde der Benutzer beiden Gruppen hinzugefügt:
+- Mehrere Lizenzen für das gleiche Produkt können sich überlappen und führen dazu, dass alle aktivierten Dienste auf den Benutzer angewendet werden. Das folgende Beispiel zeigt zwei Lizenzierungsgruppen: *E3 base services* (E3-Basisdienste) enthält die grundlegenden Dienste, die wir zuerst für alle Benutzer bereitstellen möchten. *E3 extended services* (Erweiterte E3-Dienste) enthält zusätzliche Dienste (Sway und Planner), die nur für einige Benutzer bereitgestellt werden sollen. In diesem Beispiel wurde der Benutzer beiden Gruppen hinzugefügt:
 
   ![Screenshot: Aktivierte Dienste](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -187,7 +187,7 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 > ```
 
 3. Legen Sie die folgenden Filter fest, um das vollständige Protokoll zur Verarbeitung einer Gruppe mit allen Benutzeränderungen anzuzeigen:
-  - **Initiiert von (Akteur)**: „Microsoft Azure AD Group-Based Licensing“ (Gruppenbasierte Microsoft Azure AD-Lizenzierung)
+  - **Initiiert von (Akteur)**: „Gruppenbasierte Microsoft Azure AD-Lizenzierung“
   - **Datumsbereich** (optional): Benutzerdefinierter Bereich für Verarbeitungsstart und -ende einer bestimmten Gruppe
 
 Diese Beispielausgabe zeigt den Start der Verarbeitung, alle sich ergebenden Benutzeränderungen und das Ende der Verarbeitung.
@@ -201,7 +201,7 @@ Diese Beispielausgabe zeigt den Start der Verarbeitung, alle sich ergebenden Ben
 
 Es ist nicht möglich, eine Gruppe mit einer aktiven zugewiesenen Lizenz zu löschen. Ein Administrator könnte andernfalls eine Gruppe löschen und nicht bemerken, dass hierdurch Lizenzen von Benutzern entfernt werden. Aus diesem Grund ist es erforderlich, dass Lizenzen zuerst aus der Gruppe entfernt werden, bevor sie gelöscht werden kann.
 
-Beim Versuch, eine Gruppe im Azure-Portal zu löschen, kann eine Fehlerbenachrichtigung wie die folgende angezeigt werden: ![Screenshot „Fehler beim Löschen der Gruppe“](./media/licensing-group-advanced/groupdeletionfailed.png).
+Beim Versuch, eine Gruppe im Azure-Portal zu löschen, kann eine Fehlerbenachrichtigung wie die folgende angezeigt werden: ![Screenshot „Fehler beim Löschen der Gruppe“](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Wechseln Sie auf die Registerkarte **Lizenzen** für die Gruppe, und stellen Sie fest, ob Lizenzen zugewiesen sind. Wenn dies der Fall ist, entfernen Sie diese Lizenzen, und versuchen Sie dann erneut, die Gruppe zu löschen.
 

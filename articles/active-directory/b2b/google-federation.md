@@ -3,25 +3,25 @@ title: Hinzufügen von Google als Identitätsanbieter für Azure Active Director
 description: Erstellen eines Verbunds mit Google, um Gastbenutzern die Anmeldung bei Ihren Azure AD-Apps mit ihren eigenen Gmail-Konten zu ermöglichen
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 329c12f76862addb6d14271f219b48089c615395
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: bc0a4d4ce13c4013d634748503f98451e5fae9be
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428731"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216148"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
 Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Google-Konten anzumelden, ohne dass sie Microsoft Accounts- (MSAs) oder Azure AD-Konten erstellen müssen.  
 > [!NOTE]
-> Ihre Google-Gastbenutzer müssen sich über einen Link anmelden, der den Mandantenkontext enthält, z.B. `https://myapps.microsoft.com/<tenant id>`. Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Die Verwendung beispielsweise von `https://myapps.microsoft.com`, `https://portal.azure.com` oder dem gemeinsamen Team-Endpunkt führt zu einem Fehler.
+> Ihre Google-Gastbenutzer müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z.B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Standarddomäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Die Verwendung beispielsweise von `https://myapps.microsoft.com`, `https://portal.azure.com` oder dem gemeinsamen Team-Endpunkt führt zu einem Fehler.
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wie läuft der Vorgang für Google-Benutzer ab?
 Wenn Sie eine Einladung an einen Google Gmail-Benutzer senden, sollte der Gastbenutzer auf Ihre freigegebenen Apps oder Ressourcen über einen Link, der den Mandantenkontext enthält, zugreifen. Der Ablauf hängt davon ab, ob er bereits bei Google angemeldet ist:

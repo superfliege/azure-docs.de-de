@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a91778f1646807a092a3c8cda66bd3bd104ff8b5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275328"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301882"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -269,7 +269,7 @@ context.log(message)
 Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablaufverfolgungsebene. Es sind zusätzliche Protokollierungsmethoden in `context.log` verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in das Funktionsprotokoll schreiben können:
 
 
-| Methode                 | BESCHREIBUNG                                |
+| Methode                 | Beschreibung                                |
 | ---------------------- | ------------------------------------------ |
 | **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
 | **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
@@ -326,7 +326,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>Konfigurieren der Ablaufverfolgungsebene für die Konsolenprotokollierung
 
-Mit Functions können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreiben in die Konsole definieren, sodass Sie mühelos mit Ihrer Funktion steuern können, wie Ablaufverfolgungen in die Konsole geschrieben werden. Legen Sie mit der `tracing.consoleLevel`-Eigenschaft in der Datei „host.json“ den Schwellenwert für alle Ablaufverfolgungen fest, die in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
+Mit Functions 1.x können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreiben in die Konsole definieren, sodass Sie mühelos mit Ihrer Funktion steuern können, wie Ablaufverfolgungen in die Konsole geschrieben werden. Legen Sie mit der `tracing.consoleLevel`-Eigenschaft in der Datei „host.json“ den Schwellenwert für alle Ablaufverfolgungen fest, die in die Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App. Im folgenden Beispiel wird der Schwellenwert für die Ablaufverfolgung festgelegt, um die ausführliche Protokollierung zu aktivieren:
 
 ```json
 {
@@ -336,7 +336,7 @@ Mit Functions können Sie den Ablaufverfolgungsebenen-Schwellenwert zum Schreibe
 }  
 ```
 
-Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
+Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json-v1.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP: Trigger und Bindungen
 
@@ -346,7 +346,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das `context.req`-Objekt (Anforderungsobjekt) weist die folgenden Eigenschaften auf:
 
-| Eigenschaft      | BESCHREIBUNG                                                    |
+| Eigenschaft      | Beschreibung                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Ein Objekt, das den Hauptteil der Anforderung enthält.               |
 | _headers_     | Ein Objekt, das die Header der Anforderung enthält.                   |
@@ -361,7 +361,7 @@ Das `context.req`-Objekt (Anforderungsobjekt) weist die folgenden Eigenschaften 
 
 Das `context.res`-Objekt (Antwortobjekt) weist die folgenden Eigenschaften auf:
 
-| Eigenschaft  | BESCHREIBUNG                                               |
+| Eigenschaft  | Beschreibung                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | Ein Objekt, das den Hauptteil der Antwort enthält.         |
 | _headers_ | Ein Objekt, das die Header der Antwort enthält.             |

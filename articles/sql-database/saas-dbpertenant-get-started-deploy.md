@@ -1,5 +1,5 @@
 ---
-title: Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft Docs
+title: Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Anwendung, mit der das Muster mit einer Datenbank pro Mandant und andere SaaS-Muster mithilfe von Azure SQL-Datenbank dargestellt werden, bereitstellen und erkunden.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232901"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453670"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -63,9 +63,9 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
     > [!IMPORTANT]
     > Der Schutz einiger Authentifizierungs- und Serverfirewalls wurde zu Vorführungszwecken absichtlich aufgehoben. Es wird empfohlen, eine neue Ressourcengruppe zu erstellen. Verwenden Sie keine vorhandenen Ressourcengruppen, Server oder Pools. Verwenden Sie diese Anwendung, die Skripts oder die damit bereitgestellten Ressourcen nicht für die Produktion. Wenn Sie sich umfassend mit der Anwendung vertraut gemacht haben, löschen Sie diese Ressourcengruppe, um die zugehörige Abrechnung einzustellen.
 
-    - **Ressourcengruppe:** Wählen Sie **Neu erstellen** aus, und geben Sie den eindeutigen Namen ein, den Sie zuvor für die Ressourcengruppe ausgewählt haben.
-    - **Standort:** Wählen Sie in der Dropdownliste einen Standort aus.
-    - **Benutzer:** Verwenden Sie den zuvor ausgewählten Wert für den Benutzernamen.
+    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie den eindeutigen Namen ein, den Sie zuvor für die Ressourcengruppe ausgewählt haben.
+    - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus.
+    - **Benutzer**: Verwenden Sie den zuvor ausgewählten Wert für den Benutzernamen.
 
 1. Stellen Sie die Anwendung bereit.
 
@@ -127,9 +127,9 @@ Die Wingtip-Anwendung verwendet  [*Azure Traffic Manager*](../traffic-manager/t
 
     In der folgenden Tabelle werden die Teile des oben genannten Formats erläutert.
 
-    | URL-Teil        | BESCHREIBUNG       |
+    | URL-Teil        | Beschreibung       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br /> Durch *-dpt* unterscheidet sich die Wingtip Tickets-Implementierung *mit einer Datenbank pro Mandant* von anderen Implementierungen, z.B. der *eigenständigen* Implementierung mit einer App pro Mandant (*-sa*) oder der Implementierung mit einer *mehrinstanzenfähigen Datenbank* (*-mt*). |
+    | http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br /> Durch *-dpt* unterscheidet sich die Wingtip Tickets-Implementierung *mit einer Datenbank pro Mandant* von anderen Implementierungen, z.B. der Implementierung mit einer *einzelnen* App pro Mandant (*-sa*) oder der Implementierung mit einer *mehrinstanzenfähigen Datenbank* (*-mt*). |
     | .*&lt;Benutzer&gt;* | Im Beispiel ist dies *af1*. |
     | .trafficmanager.net/ | Traffic Manager, Basis-URL |
     | fabrikamjazzclub | Gibt den Mandanten mit dem Namen „Fabrikam Jazz Club“ an. |
@@ -248,7 +248,7 @@ Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;**, und wählen Sie  *
 - Das erste Diagramm mit der Bezeichnung **Ressourcenverwendung** zeigt die eDTU-Nutzung des Pools.
 - Das zweite Diagramm zeigt die eDTU-Nutzung der fünf aktivsten Datenbanken im Pool.
 
-Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken und SQL-Datenbank gut für unvorhersehbare Workloads von SaaS-Anwendungen geeignet sind. Die Diagramme zeigen, dass vier Datenbanken jeweils mit Bursts auf bis zu 40 eDTUs kommen, aber dennoch in einem 50-eDTU-Pool problemlos unterstützt werden. Der 50-eDTU-Pool kann auch größere Workloads unterstützen. Wenn die Datenbanken als einzelne Datenbanken bereitgestellt werden, muss es sich bei jeder um eine S2-Datenbank (50 DTUs) handeln, damit die Bursts unterstützt werden. Die Kosten für vier eigenständige S2-Datenbanken würden fast den dreifachen Preis des Pools ausmachen. In der Praxis betreiben SQL-Datenbank-Kunden bis zu 500 Datenbanken in Pools mit 200 eDTUs. Weitere Informationen finden Sie im [Tutorial zur Leistungsüberwachung](saas-dbpertenant-performance-monitoring.md).
+Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken und SQL-Datenbank gut für unvorhersehbare Workloads von SaaS-Anwendungen geeignet sind. Die Diagramme zeigen, dass vier Datenbanken jeweils mit Bursts auf bis zu 40 eDTUs kommen, aber dennoch in einem 50-eDTU-Pool problemlos unterstützt werden. Der 50-eDTU-Pool kann auch größere Workloads unterstützen. Wenn die Datenbanken als einzelne Datenbanken bereitgestellt werden, muss es sich bei jeder um eine S2-Datenbank (50 DTUs) handeln, damit die Bursts unterstützt werden. Die Kosten für vier einzelne S2-Datenbanken würden fast den dreifachen Preis des Pools ausmachen. In der Praxis betreiben SQL-Datenbank-Kunden bis zu 500 Datenbanken in Pools mit 200 eDTUs. Weitere Informationen finden Sie im [Tutorial zur Leistungsüberwachung](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

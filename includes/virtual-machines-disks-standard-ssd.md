@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: da46687517dbfe189571286087d4ef29d50d1246
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572165"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906312"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Verwaltete Standard-SSD-Datenträger für Workloads virtueller Azure-Computer
 
@@ -21,14 +21,14 @@ Verwaltete Azure Standard-SSD-Datenträger stellen eine kostengünstige Speicher
 
 ## <a name="standard-ssd-features"></a>Standard-SSD-Features
 
-**Verwalteter Datenträger:** Standard-SSD-Datenträger sind nur als verwaltete Datenträger verfügbar. Nicht verwaltete Datenträger und Seitenblobs werden nicht für die Option „SSD Standard“ unterstützt. Legen Sie beim Erstellen des verwalteten Datenträgers als Datenträgertyp „SSD Standard“ fest, und geben Sie die Größe des Datenträgers an. Azure erstellt und verwaltet daraufhin den Datenträger für Sie.
+**Verwaltete Datenträger:** Standard-SSDs sind nur als verwaltete Datenträger verfügbar. Nicht verwaltete Datenträger und Seitenblobs werden nicht für die Option „SSD Standard“ unterstützt. Legen Sie beim Erstellen des verwalteten Datenträgers als Datenträgertyp „SSD Standard“ fest, und geben Sie die Größe des Datenträgers an. Azure erstellt und verwaltet daraufhin den Datenträger für Sie.
 Standard-SSDs unterstützen alle Vorgänge des klassischen Bereitstellungsmodells, die durch Managed Disks angeboten werden. Beispielsweise können Sie verwaltete SSD-Standard-Datenträger auf die gleiche Weise erstellen, kopieren und Momentaufnahmen für diese anfertigen wie im Fall von verwalteten Datenträgern.
 
-**Virtuelle Computer:** Standard-SSDs können mit allen virtuellen Azure-Computern einschließlich derjenigen, die keine Premium-Datenträger unterstützen, verwendet werden. Wenn Sie beispielsweise einen virtuellen Azure-Computer der Serie A, N oder DS verwenden, können Sie Standard-SSDs mit diesem virtuellen Computer verwenden. Mit der Einführung von Standard-SSDs können zahlreiche Workloads genutzt werden, für die vorher ein Wechsel von HDD- zu SSD-Datenträgern durchgeführt werden musste. Zusätzlich kann eine konstante Leistung, höhere Verfügbarkeit und eine verbesserte Latenz erzielt werden. Des Weiteren lassen sich alle Vorteile nutzen, die SSDs mit sich bringen.
+**Virtuelle Computer:** Standard-SSDs können mit allen virtuellen Azure-Computern verwendet werden, einschließlich solcher, die keine Premium-Datenträger unterstützen. Wenn Sie beispielsweise einen virtuellen Azure-Computer der Serie A, N oder DS verwenden, können Sie Standard-SSDs mit diesem virtuellen Computer verwenden. Mit der Einführung von Standard-SSDs können zahlreiche Workloads genutzt werden, für die vorher ein Wechsel von HDD- zu SSD-Datenträgern durchgeführt werden musste. Zusätzlich kann eine konstante Leistung, höhere Verfügbarkeit und eine verbesserte Latenz erzielt werden. Des Weiteren lassen sich alle Vorteile nutzen, die SSDs mit sich bringen.
 
-**Hochverfügbar und stabil:** Standard-SSDs werden auf derselben Azure-Datenträgerplattform erstellt, mit der bereits in der Vergangenheit Hochverfügbarkeit und Stabilität für Datenträger gewährleistet werden konnte. Azure-Datenträger sind für eine Verfügbarkeit von 99,999 % ausgelegt. Für Standard-SSDs steht ebenso wie für alle verwalteten Datenträger lokal redundanter Speicher (LRS) zur Verfügung. Mithilfe von LRS verwaltet die Plattform mehrere Datenreplikate für jeden Datenträger. Für IaaS-Datenträger kann eine Stabilität auf Unternehmensniveau und eine auf das Jahr umgerechnete Ausfallrate (Annualized Failure Rate, AFR) von 0 % erzielt werden. Dies sind branchenweite Bestwerte.
+**Hoch verfügbar und stabil:** Standard-SSDs werden auf derselben Azure-Datenträgerplattform erstellt, mit der bereits in der Vergangenheit Hochverfügbarkeit und Stabilität für Datenträger gewährleistet werden konnten. Azure-Datenträger sind für eine Verfügbarkeit von 99,999 % ausgelegt. Für Standard-SSDs steht ebenso wie für alle verwalteten Datenträger lokal redundanter Speicher (LRS) zur Verfügung. Mithilfe von LRS verwaltet die Plattform mehrere Datenreplikate für jeden Datenträger. Für IaaS-Datenträger kann eine Stabilität auf Unternehmensniveau und eine auf das Jahr umgerechnete Ausfallrate (Annualized Failure Rate, AFR) von 0 % erzielt werden. Dies sind branchenweite Bestwerte.
 
-**Momentaufnahmen:** Standard-SSDs unterstützen ebenso wie alle verwalteten Datenträger die Erstellung von Momentaufnahmen. Als Momentaufnahmetyp kann entweder „Standard (HDD)“ oder „Premium (SSD)“ festgelegt werden. Zur Einsparung von Kosten wird der Momentaufnahmetyp „Standard (HDD)“ für alle Azure-Datenträgertypen empfohlen. Hintergrund ist, dass Sie beim Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme immer die Möglichkeit haben, einen Tarif mit höheren Gebühren wie „Standard SSD“ oder „Premium SSD“ auszuwählen.
+**Momentaufnahmen**: Standard-SSDs unterstützen ebenso wie alle verwalteten Datenträger die Erstellung von Momentaufnahmen. Als Momentaufnahmetyp kann entweder „Standard (HDD)“ oder „Premium (SSD)“ festgelegt werden. Zur Einsparung von Kosten wird der Momentaufnahmetyp „Standard (HDD)“ für alle Azure-Datenträgertypen empfohlen. Hintergrund ist, dass Sie beim Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme immer die Möglichkeit haben, einen Tarif mit höheren Gebühren wie „Standard SSD“ oder „Premium SSD“ auszuwählen.
 
 ## <a name="scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele
 
@@ -36,6 +36,8 @@ Die folgende Tabelle enthält die Datenträgergrößen, die derzeit für „Stan
 
 |Standard-SSD-Datenträgertyp  |Datenträgergröße  |IOPS pro Datenträger  |Durchsatz pro Datenträger  |
 |---------|---------|---------|---------|
+|E4     |32 GiB         |Bis zu 120         |Bis zu 25 MiB pro Sekunde         |
+|E6     |64 GiB         |Bis zu 240         |Bis zu 50 MiB pro Sekunde         |
 |E10     |128 GB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
 |E15     |256 GiB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
 |E20     |512 GB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
@@ -61,13 +63,13 @@ Bei Verwendung von Standard-SSDs sind folgende Abrechnungsaspekte zu berücksich
 - Ausgehende Datenübertragungen
 - Transaktionen
 
-**Größe der verwalteten Datenträger:** Die Abrechnung für verwaltete Datenträger erfolgt nach bereitgestellter Größe. Azure ordnet die bereitgestellte Größe (aufgerundet) dem Angebot für die nächsthöhere Datenträgergröße zu. Details zu den angebotenen Datenträgergrößen finden Sie in der Tabelle im obigen Abschnitt zu Skalierbarkeits- und Leistungszielen. Jeder Datenträger wird der bereitgestellten Datenträgergröße zugeordnet und entsprechend abgerechnet. Wenn Sie z.B. einen Standard-SSD-Datenträger mit 200 GiB bereitstellen, wird das Datenträgerangebot E15 (256 GiB) zugeordnet. Die Abrechnung für bereitgestellte Datenträger erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs E10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das E10-Angebot anteilig für 20 Stunden. Welche Datenmenge tatsächlich auf den Datenträger geschrieben wurde, spielt keine Rolle.
+**Größe der verwalteten Datenträger:** Verwaltete Datenträger werden nach bereitgestellter Größe abgerechnet. Azure ordnet die bereitgestellte Größe (aufgerundet) dem Angebot für die nächsthöhere Datenträgergröße zu. Details zu den angebotenen Datenträgergrößen finden Sie in der Tabelle im obigen Abschnitt zu Skalierbarkeits- und Leistungszielen. Jeder Datenträger wird der bereitgestellten Datenträgergröße zugeordnet und entsprechend abgerechnet. Wenn Sie z.B. einen Standard-SSD-Datenträger mit 200 GiB bereitstellen, wird das Datenträgerangebot E15 (256 GiB) zugeordnet. Die Abrechnung für bereitgestellte Datenträger erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs E10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das E10-Angebot anteilig für 20 Stunden. Welche Datenmenge tatsächlich auf den Datenträger geschrieben wurde, spielt keine Rolle.
 
-**Momentaufnahmen:** Momentaufnahmen von verwalteten Datenträgern werden entsprechend der Kapazität abgerechnet, die von den ggf. vorhandenen Momentaufnahmen für Quelle und Ziel verwendet wird. Weitere Informationen zu Momentaufnahmen finden Sie unter [Momentaufnahmen von verwalteten Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
+**Momentaufnahmen**: Momentaufnahmen von verwalteten Datenträgern werden entsprechend der Kapazität abgerechnet, die von den Momentaufnahmen für Quelle und Ziel verwendet wird (sofern vorhanden). Weitere Informationen zu Momentaufnahmen finden Sie unter [Momentaufnahmen von verwalteten Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
 
-**Ausgehende Datenübertragungen:**[Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/bandwidth/) (Daten, die von den Azure-Rechenzentren ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
+**Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/bandwidth/) (Daten, die von den Azure-Datencentern ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 
-**Transaktionen:** Transaktionen auf Standard-SSDs verursachen ähnlich wie bei Standard-HDDs Kosten. Transaktionen umfassen Lese- und Schreibvorgänge auf dem Datenträger. Die Größe der E/A-Einheit für Abrechnungen von Transaktionen auf Standard-SSDs beträgt 256 KiB. Sind die E/A-Daten größer, werden sie als mehrere E/A der Größe 256 KiB gezählt.
+**Transaktionen:** Transaktionen auf Standard-SSDs verursachen ähnlich wie bei HDD Standard Kosten. Transaktionen umfassen Lese- und Schreibvorgänge auf dem Datenträger. Die Größe der E/A-Einheit für Abrechnungen von Transaktionen auf Standard-SSDs beträgt 256 KiB. Sind die E/A-Daten größer, werden sie als mehrere E/A der Größe 256 KiB gezählt.
 
 Weitere Informationen zu Preisen für virtuelle Computer und verwaltete Datenträger finden Sie unter:
 

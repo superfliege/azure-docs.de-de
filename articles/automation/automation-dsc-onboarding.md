@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 74587d05ec27e87d87aa3647c22f5c90a9cdcf58
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436397"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096703"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -168,7 +168,7 @@ Lokale Linux-Computer und Linux-Computer in Azure sowie in anderen Clouds könne
 1. Überprüfen Sie, ob die neueste Version der [PowerShell Desired State Configuration für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
 1. Gehen Sie folgendermaßen vor, wenn die [Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4) zu Ihrem Anwendungsfall passen, und Sie Computer so integrieren möchten, dass diese **sowohl** Informationen von Azure Automation DSC abrufen als auch Informationen an Azure Automation DSC senden:
 
-   - Verwenden Sie auf jedem Linux-Computer, den Sie in Azure Automation DSC integrieren möchten, `Register.py` für das Onboarding mit den Standardwerten des lokalen Konfigurations-Managers von PowerShell DSC:
+   - Verwenden Sie auf jedem Linux-Computer, den Sie in Azure Automation State Configuration integrieren möchten, `Register.py` für das Onboarding mit den Standardwerten des lokalen Konfigurations-Managers von PowerShell DSC:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

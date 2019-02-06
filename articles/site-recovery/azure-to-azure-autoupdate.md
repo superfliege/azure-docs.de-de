@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f31fccd2bf6d0daae03b025b53a41a0fad4ce2ef
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957690"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210130"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Aktualisierung von Mobility Service in der Replikation zwischen Azure-Standorten
 
@@ -25,7 +25,7 @@ Bei Azure Site Recovery werden in einem monatlichen Versionsrhythmus Verbesserun
  
 ## <a name="how-does-automatic-update-work"></a>Wie funktioniert das automatische Update?
 
-Sobald Sie das Verwalten von Updates durch Site Recovery zulassen, wird ein globales Runbook (das von Azure-Diensten verwendet wird) über ein Automatisierungskonto bereitgestellt, das im selben Abonnement wie der Tresor erstellt wird. Ein Automatisierungskonto wird für einen bestimmten Tresor verwendet. Das Runbook überprüft für jeden virtuellen Computer in einem Tresor, welche automatischen Updates eingeschaltet sind, und initiiert ein Upgrade der Mobility Service-Erweiterung, wenn eine neuere Version verfügbar ist. Der Standardzeitplan für das Runbook wird täglich um 12:00 Uhr gemäß der Zeitzone des geografischen Gebiets der replizierten VM ausgeführt. Der Runbook-Zeitplan kann auch ggf. über das Automatisierungskonto durch den Benutzer geändert werden. 
+Sobald Sie das Verwalten von Updates durch Site Recovery zulassen, wird ein globales Runbook (das von Azure-Diensten verwendet wird) über ein Automatisierungskonto bereitgestellt, das im selben Abonnement wie der Tresor erstellt wird. Ein Automatisierungskonto wird für einen bestimmten Tresor verwendet. Das Runbook überprüft für jeden virtuellen Computer in einem Tresor, welche automatischen Updates eingeschaltet sind, und initiiert ein Upgrade der Mobility Service-Erweiterung, wenn eine neuere Version verfügbar ist. Der Standardzeitplan für das Runbook wird täglich um 00:00 Uhr gemäß der Zeitzone des geografischen Gebiets der replizierten VM ausgeführt. Der Runbook-Zeitplan kann auch ggf. über das Automatisierungskonto durch den Benutzer geändert werden. 
 
 > [!NOTE]
 > Das Aktivieren von automatischen Updates erfordert keinen Neustart der virtuellen Azure-Computer und hat keinen Einfluss auf eine laufende Replikation.
@@ -53,7 +53,7 @@ Wenn Sie die Replikation für einen virtuellen Computer aktiveren, indem Sie ent
 1. Navigieren Sie im Tresor zu **Verwalten**-> **Site Recovery-Infrastruktur**.
 2. Klicken Sie unter **Für Azure-VMs**-> **Erweiterungsupdateeinstellungen** auf die Umschaltfläche, um Ihre Auswahl zwischen *Verwalten von Updates durch ASR zulassen* oder *Manuell verwalten* zu treffen. Klicken Sie auf **Speichern**.
 
-![vault-toggle-autuo-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![vault-toggle-auto-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important] 
 > Bei Auswahl von *Verwalten von Updates durch ASR zulassen* wird die Einstellung auf alle virtuellen Computer in dem entsprechenden Tresor angewendet.

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613094"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249679"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Häufig gestellte Fragen zum Azure Stack-Marketplace für Windows Server
 
@@ -39,7 +40,7 @@ Microsoft bietet zwei Versionen von Windows Server-Images über den Azure Stack-
 
 - **Nutzungsbasierte Bezahlung**: Diese Images führen die Windows-Verbrauchseinheiten zum vollen Preis aus. 
    Zielgruppe: Enterprise Agreement-Kunden (EA), die das *Nutzungsabrechnungsmodell* verwenden, sowie CSPs, die nicht die SPLA-Lizenzierung verwenden möchten.
-- **Bring Your Own License (BYOL)**: Diese Images führen grundlegende Verbrauchseinheiten aus.
+- **BYOL (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz)**: Diese Images führen grundlegende Verbrauchseinheiten aus.
    Zielgruppe: EA-Kunden mit einer Windows Server-Lizenz, und CSPs, die die SPLA-Lizenzierung verwenden.
 
 Der Azure-Hybridnutzungsvorteil (Azure Hybrid Use Benefit, AHUB) wird in Azure Stack nicht unterstützt. Kunden, die ihre Lizenz über das „Kapazitätsmodell“ bezogen haben, müssen das BYOL-Image verwenden. Wenn Sie das Azure Stack Development Kit (ASDK) testen, können Sie eine dieser Optionen verwenden.

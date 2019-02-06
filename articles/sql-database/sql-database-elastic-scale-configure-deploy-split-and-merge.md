@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e8a849fdc6674a0c6ab801bd8f26a01f89fb8857
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969582"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458056"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
 
@@ -204,7 +204,7 @@ Die enthaltenen Skriptdateien lauten:
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>Überprüfen der Bereitstellung mithilfe von PowerShell
 1. Öffnen Sie ein neues PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, in das Sie das Split-Merge-Paket heruntergeladen haben, und wechseln Sie dann in das Verzeichnis „powershell“.
-2. Erstellen Sie einen Azure SQL-Datenbankserver (oder wählen Sie einen vorhandenen Server aus), auf dem ShardMapManager und Shards erstellt werden.
+2. Erstellen Sie einen Azure SQL-Datenbank-Server (oder wählen Sie einen vorhandenen Server aus), auf dem ShardMapManager und Shards erstellt werden.
    
    > [!NOTE]
    > Das SetupSampleSplitMergeEnvironment.ps1-Skript erstellt alle diese Datenbanken standardmäßig auf dem gleichen Server, um das Skript einfach zu halten. Dies ist keine Einschränkung des Split-Merge-Diensts selbst.

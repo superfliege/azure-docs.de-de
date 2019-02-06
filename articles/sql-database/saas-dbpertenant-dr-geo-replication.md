@@ -11,20 +11,20 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/09/2018
-ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056334"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471146"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 
-In diesem Tutorial erkunden Sie ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Um die App vor einem Ausfall zu schützen, verwenden Sie [ _Georeplikation_](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), um Replikate für die Katalog- und Mandantendatenbanken in einer anderen Wiederherstellungsregion zu erstellen. Wenn es einen Ausfall gibt, können Sie schnell ein Failover zu diesen Replikaten ausführen, um den normalen Geschäftsbetrieb fortzusetzen. Bei einem Failover werden die Datenbanken in der ursprünglichen Region zu sekundären Replikaten der Datenbanken in der Wiederherstellungsregion. Sobald diese Replikate wieder online geschaltet wurden, werden sie automatisch in den Zustand versetzt, den die Datenbanken in der Wiederherstellungsregion haben. Nach Behebung des Ausfalls führen Sie ein Failback zu den Datenbanken in der ursprünglichen Produktionsregion aus.
+In diesem Tutorial erkunden Sie ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Um die App vor einem Ausfall zu schützen, verwenden Sie [ _Georeplikation_](sql-database-geo-replication-overview.md), um Replikate für die Katalog- und Mandantendatenbanken in einer anderen Wiederherstellungsregion zu erstellen. Wenn es einen Ausfall gibt, können Sie schnell ein Failover zu diesen Replikaten ausführen, um den normalen Geschäftsbetrieb fortzusetzen. Bei einem Failover werden die Datenbanken in der ursprünglichen Region zu sekundären Replikaten der Datenbanken in der Wiederherstellungsregion. Sobald diese Replikate wieder online geschaltet wurden, werden sie automatisch in den Zustand versetzt, den die Datenbanken in der Wiederherstellungsregion haben. Nach Behebung des Ausfalls führen Sie ein Failback zu den Datenbanken in der ursprünglichen Produktionsregion aus.
 
 In diesem Tutorial werden sowohl der Failover- als auch der Failbackworkflow erläutert. Sie lernen Folgendes:
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
 >* Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
@@ -53,9 +53,9 @@ Ein NW-Plan, der auf Georeplikation basiert, besteht aus drei eigenständigen Te
 Alle Teile müssen sorgfältig überlegt werden, insbesondere bei bedarfsorientiertem Betrieb. Insgesamt muss der Plan mehreren Zielen genügen:
 
 * Einrichtung
-    * Einrichten und Verwalten einer Spiegelimageumgebung in der Wiederherstellungsregion. Das Erstellen der Pools für elastische Datenbanken und Replizieren aller Einzeldatenbanken in dieser Wiederherstellungsumgebung reserviert Kapazität in der Wiederherstellungsregion. Das Verwalten dieser Umgebung umfasst das Replizieren von neuen Mandantendatenbanken, während sie bereitgestellt werden.  
+    * Einrichten und Verwalten einer Spiegelimageumgebung in der Wiederherstellungsregion. Das Erstellen der Pools für elastische Datenbanken und Replizieren aller Datenbanken in dieser Wiederherstellungsumgebung reserviert Kapazität in der Wiederherstellungsregion. Das Verwalten dieser Umgebung umfasst das Replizieren von neuen Mandantendatenbanken, während sie bereitgestellt werden.  
 * Wiederherstellen
-    * Sofern eine herunterskalierte Wiederherstellungsumgebung verwendet wird, um die täglichen Kosten zu minimieren, müssen Pools und Einzeldatenbanken hochskaliert werden, um vollständige Betriebskapazität in der Wiederherstellungsregion zu erreichen.
+    * Sofern eine herunterskalierte Wiederherstellungsumgebung verwendet wird, um die täglichen Kosten zu minimieren, müssen Pools und Datenbanken hochskaliert werden, um vollständige Betriebskapazität in der Wiederherstellungsregion zu erreichen.
     * Ermöglichen der Bereitstellung von neuen Mandanten in der Wiederherstellungsregion so bald wie möglich.  
     * Der Plan muss für ein Wiederherstellen der Mandanten in der Reihenfolge ihrer Priorität optimiert sein.
     * Der Plan muss dafür optimiert sein, Mandanten so schnell wie möglich online schalten zu können, indem Schritte nach Möglichkeit parallel ausgeführt werden.
@@ -67,10 +67,10 @@ Alle Teile müssen sorgfältig überlegt werden, insbesondere bei bedarfsorienti
 In diesem Tutorial werden diese Herausforderungen mit Funktionen von Azure SQL-Datenbank und der Azure-Plattform gemeistert:
 
 * [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), um jegliche erforderliche Kapazität so schnell wie möglich zu reservieren. Azure Resource Manager-Vorlagen werden verwendet, um ein Spiegelimage der Produkionsserver und der Pools für elastische Datenbanken in der Wiederherstellungsregion bereitzustellen.
-* [Georeplikation](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), um für alle Datenbanken asynchron replizierte schreibgeschützte sekundäre Datenbanken zu erstellen. Bei einem Ausfall führen Sie ein Failover zu den Replikaten in der Wiederherstellungsregion aus.  Nach Behebung des Ausfalls führen Sie ein Failback zu den Datenbanken in der ursprünglichen Region aus, ohne dass Daten verloren gehen.
+* [Georeplikation](sql-database-geo-replication-overview.md), um für alle Datenbanken asynchron replizierte schreibgeschützte sekundäre Datenbanken zu erstellen. Bei einem Ausfall führen Sie ein Failover zu den Replikaten in der Wiederherstellungsregion aus.  Nach Behebung des Ausfalls führen Sie ein Failback zu den Datenbanken in der ursprünglichen Region aus, ohne dass Daten verloren gehen.
 * [Asynchrone](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Failovervorgänge, die in der Prioritätsreihenfolge der Mandanten gesendet werden, um die Failoverzeit für eine große Anzahl von Datenbanken zu minimieren.
-* [Shardverwaltungs-Wiederherstellungsfunktionen](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager), um Datenbankeinträge im Katalog während einer Wiederherstellung und Rückführung zu ändern. Diese Funktionen ermöglichen es der Anwendung, Verbindungen mit den Mandantendatenbanken unabhängig vom Speicherort herzustellen, ohne die Anwendung neu konfigurieren zu müssen.
-* [DNS-Aliase für SQL-Server](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), um eine nahtlose Bereitstellung von neuen Mandanten zu ermöglichen, unabhängig davon, in welcher Region die Anwendung ausgeführt wird. DNS-Aliase werden auch verwendet, damit der Katalogsynchronisierungsprozess eine Verbindung mit dem aktiven Katalog herstellen kann, egal, wo sich dieser befindet.
+* [Shardverwaltungs-Wiederherstellungsfunktionen](sql-database-elastic-database-recovery-manager.md), um Datenbankeinträge im Katalog während einer Wiederherstellung und Rückführung zu ändern. Diese Funktionen ermöglichen es der Anwendung, Verbindungen mit den Mandantendatenbanken unabhängig vom Speicherort herzustellen, ohne die Anwendung neu konfigurieren zu müssen.
+* [DNS-Aliase für SQL-Server](dns-alias-overview.md), um eine nahtlose Bereitstellung von neuen Mandanten zu ermöglichen, unabhängig davon, in welcher Region die Anwendung ausgeführt wird. DNS-Aliase werden auch verwendet, damit der Katalogsynchronisierungsprozess eine Verbindung mit dem aktiven Katalog herstellen kann, egal, wo sich dieser befindet.
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Abrufen der Notfallwiederherstellungsskripts 
 
@@ -92,7 +92,7 @@ Später, in einem separaten Rückführungsschritt, führen Sie ein Failover des 
 Bevor Sie den Wiederherstellungsprozess starten, sollten Sie den normalen ordnungsgemäßen Zustand der Anwendung überprüfen.
 1. Öffnen Sie in Ihrem Webbrowser den Wingtip Tickets-Event Hub (http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net). Ersetzen Sie dabei &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
     * Scrollen Sie zum unteren Rand der Seite, und beachten Sie den Katalogservernamen und den Standort in der Fußzeile. Der Standort entspricht die Region, in der Sie die App bereitgestellt haben.
-    *Tipp: Zeigen Sie mit der Maus auf den Standort, um die Anzeige zu vergrößern.* 
+    *TIPP: Zeigen Sie mit der Maus auf den Standort, um die Anzeige zu vergrößern.* 
     ![Ordnungsgemäßer Zustand des Veranstaltungshubs in der ursprünglichen Region](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klicken Sie auf den Mandanten „Contoso Concert Hall“, um dessen Veranstaltungsseite zu öffnen.
@@ -126,7 +126,7 @@ Lassen Sie das PowerShell-Fenster im Hintergrund weiter laufen, und führen Sie 
 In dieser Aufgabe starten Sie einen Prozess, in dem eine duplizierte Anwendungsinstanz bereitgestellt wird sowie die Katalog- und alle Mandantendatenbanken in einer Wiederherstellungsregion repliziert werden.
 
 > [!Note]
-> In diesem Tutorial wird der Wingtip Tickets-Beispielanwendung Schutz durch Georeplikation hinzugefügt. In einem Produktionsszenario für eine Anwendung, für die Georeplikation verwendet wird, würde jeder Mandant von Anfang an mit einer georeplizierten Datenbank bereitgestellt. Weitere Informationen finden Sie unter [Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime).
+> In diesem Tutorial wird der Wingtip Tickets-Beispielanwendung Schutz durch Georeplikation hinzugefügt. In einem Produktionsszenario für eine Anwendung, für die Georeplikation verwendet wird, würde jeder Mandant von Anfang an mit einer georeplizierten Datenbank bereitgestellt. Weitere Informationen finden Sie unter [Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime).
 
 1. Öffnen Sie in *PowerShell ISE* das Skript „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1“, und legen Sie die folgenden Werte fest:
     * **$DemoScenario = 2**: Erstellen einer Spiegelimage-Wiederherstellungsumgebung und Replizieren von Katalog- und Mandantendatenbanken
@@ -135,12 +135,14 @@ In dieser Aufgabe starten Sie einen Prozess, in dem eine duplizierte Anwendungsi
 ![Synchronisierungsprozess](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>Überprüfen des normalen Anwendungszustands
+
 An diesem Punkt wird die Anwendung normal in der ursprünglichen Region ausgeführt, und sie ist durch Georeplikation geschützt.  Schreibgeschützte sekundäre Replikate befinden sich für alle Datenbanken in der Wiederherstellungsregion. 
+
 1. Sehen Sie sich im Azure-Portal Ihre Ressourcengruppen an, und Sie stellen fest, dass in der Wiederherstellungsregion eine Ressourcengruppe mit dem Suffix „-recovery“ erstellt wurde. 
 
-1. Untersuchen Sie die Ressourcen in der Wiederherstellungsressourcengruppe.  
+2. Untersuchen Sie die Ressourcen in der Wiederherstellungsressourcengruppe.  
 
-1. Klicken Sie auf die Contoso Concert Hall-Datenbank auf dem _tenants1-dpt -&lt;Benutzer&gt;-recovery_-Server.  Klicken Sie auf „Georeplikation“ auf der linken Seite. 
+3. Klicken Sie auf die Contoso Concert Hall-Datenbank auf dem _tenants1-dpt -&lt;Benutzer&gt;-recovery_-Server.  Klicken Sie auf „Georeplikation“ auf der linken Seite. 
 
     ![Georeplikationslink für Contoso Concert](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -193,6 +195,7 @@ Stellen Sie sich nun vor, dass es einen Ausfall in der Region gibt, in der die A
 > Um den Code für die Wiederherstellungsaufträge zu untersuchen, sehen Sie sich die PowerShell-Skripts an, die im Ordner „...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\RecoveryJobs“ enthalten sind.
 
 ### <a name="review-the-application-state-during-recovery"></a>Überprüfen des Anwendungszustands während der Wiederherstellung
+
 Solange der Anwendungsendpunkt in Traffic Manager deaktiviert ist, ist die Anwendung nicht verfügbar. Nachdem für den Katalog ein Failover zur Wiederherstellungsregion ausgeführt wurde und alle Mandanten als offline markiert wurden, wird die Anwendung wieder online geschaltet. Obwohl die Anwendung verfügbar ist, wird jeder Mandant im Veranstaltungshub (Events Hub) als offline angezeigt, bis ein Failover für seine Datenbank ausgeführt wurde. Sie müssen Ihre Anwendung so konzipieren, dass sie mit Mandantendatenbanken umgehen kann, die offline sind.
 
 1. Aktualisieren Sie den Wingtip Tickets-Veranstaltungshub (Events Hub) in Ihrem Webbrowser unmittelbar, nachdem die Katalogdatenbank wiederhergestellt wurde.
@@ -301,7 +304,7 @@ Mandantendatenbanken können während einer Rückführung für einige Zeit über
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* Synchronisieren der Datenbankinformationen sowie der Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog
 >* Einrichten einer Wiederherstellungsumgebung in einer anderen Region, wobei die Umgebung die Anwendung, Server und Pools umfasst
@@ -313,4 +316,4 @@ Weitere Informationen zu den Technologien, die Azure SQL-Datenbank bereitstellt,
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Zusätzliche Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [Zusätzliche Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

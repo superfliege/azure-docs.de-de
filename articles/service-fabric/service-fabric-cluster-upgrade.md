@@ -1,6 +1,6 @@
 ---
-title: Upgrade eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Upgrade für die Version oder Konfiguration eines Azure Service Fabric-Clusters durchführen.  In diesem Artikel wird beschrieben, wie Sie den Clusterupdatemodus festlegen, Zertifikatupgrades vornehmen, Anwendungsports hinzufügen und Betriebssystempatches anwenden. Außerdem wird erläutert, was Sie beim Durchführen der Upgrades erwarten können.
+title: Upgrade eines Azure Service Fabric-Clusters | Microsoft Docs
+description: Hier erfahren Sie, wie Sie ein Upgrade für die Version oder Konfiguration eines Azure Service Fabric-Clusters durchführen.  In diesem Artikel wird beschrieben, wie Sie den Clusterupdatemodus festlegen, Zertifikatupgrades vornehmen, Anwendungsports hinzufügen und Betriebssystempatches anwenden. Außerdem wird erläutert, was Sie beim Durchführen der Upgrades erwarten können.
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: a864d6423dc530857009e58a2fa90f0fa2cbc84f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2e5838046cdb60023495c7e9e111506c333cecc7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853284"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102395"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade und Update von Azure Service Fabric-Clustern
 
@@ -36,7 +36,7 @@ Sie können Ihren Cluster so konfigurieren, dass er Fabric-Upgrades automatisch 
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Fabric-Verhalten bei automatischen Upgrades
 Microsoft verwaltet den Fabric-Code und die Konfiguration, die in einem Azure-Cluster ausgeführt werden. Wir führen bei Bedarf automatische, überwachte Upgrades für die durch. Diese Upgrades können sich auf den Code, die Konfiguration oder beides beziehen. Um sicherzustellen, dass Ihre Anwendung während dieser Upgrades nicht oder nur minimal beeinträchtigt wird, führen wir die Upgrades in den folgenden Phasen durch:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Phase 1: Ein Upgrade erfolgt unter Befolgung aller Integritätsrichtlinien für den Cluster
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Phase 1: Ein Upgrade erfolgt unter Einhaltung aller Integritätsrichtlinien für den Cluster.
 In dieser Phase erfolgen die Upgrades nacheinander in den einzelnen Upgradedomänen. Die Anwendungen, die im Cluster ausgeführt wurden, werden ohne Ausfallzeit fortgesetzt. Bei dem Upgrade werden die Clusterintegritätsrichtlinien (eine Kombination aus Knotenintegrität und Integrität aller im Cluster ausgeführten Anwendungen) berücksichtigt.
 
 Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird das Upgrade zurückgesetzt. Anschließend wird eine E-Mail an den Besitzer des Abonnements gesendet. Die E-Mail enthält folgende Informationen:
@@ -49,7 +49,7 @@ Wir versuchen, dasselbe Upgrade ein paar weitere Male auszuführen, falls ein Up
 
 Wenn die Clusterintegritätsrichtlinien erfüllt sind, wird das Upgrade als erfolgreich betrachtet und als abgeschlossen markiert. Dies kann in dieser Phase während des anfänglichen Upgrades oder während einer der Wiederholungen des Upgrades erfolgen. Bei einer erfolgreichen Ausführung gibt es keine Bestätigung per E-Mail. Dadurch soll das Senden zu vieler E-Mails verhindert werden. Der Empfang einer E-Mail soll eine Ausnahme vom Normalfall sein. Wir erwarten, dass die meisten Clusterupgrades ohne Beeinträchtigung der Verfügbarkeit der Anwendung funktionieren.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Phase 2: Ein Upgrade erfolgt unter ausschließlicher Befolgung der Standardintegritätsrichtlinien
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Phase 2: Ein Upgrade erfolgt unter ausschließlicher Einhaltung der Standardintegritätsrichtlinien.
 Die Integritätsrichtlinien werden in dieser Phase so festgelegt, dass die Anzahl der Anwendungen, die am Anfang des Upgrades fehlerfrei waren, diesen Status für die Dauer des Upgradeprozesses beibehalten. Wie in Phase 1 erfolgen in Phase 2 die Upgrades nacheinander in den einzelnen Upgradedomänen. Die Anwendungen, die im Cluster ausgeführt wurden, werden ohne Ausfallzeit fortgesetzt. Die Clusterintegritätsrichtlinien (eine Kombination aus der Integrität der Knoten und aller im Cluster ausgeführten Anwendungen) werden während des Upgrades befolgt.
 
 Wenn die Integritätsrichtlinien des Clusters tatsächlich nicht erfüllt sind, wird das Upgrade zurückgesetzt. Anschließend wird eine E-Mail an den Besitzer des Abonnements gesendet. Die E-Mail enthält folgende Informationen:
@@ -62,7 +62,7 @@ Wir versuchen, dasselbe Upgrade ein paar weitere Male auszuführen, falls ein Up
 
 Wenn die Clusterintegritätsrichtlinien erfüllt sind, wird das Upgrade als erfolgreich betrachtet und als abgeschlossen markiert. Dies kann in dieser Phase während des anfänglichen Upgrades oder während einer der Wiederholungen des Upgrades erfolgen. Bei einer erfolgreichen Ausführung gibt es keine Bestätigung per E-Mail.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Phase 3: Ein Upgrade erfolgt unter Befolgung aggressiver Integritätsrichtlinien
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Phase 3: Ein Upgrade erfolgt unter Einhaltung aggressiver Integritätsrichtlinien.
 Diese Integritätsrichtlinien in dieser Phase zielen auf die Vervollständigung des Upgrades und nicht auf die Integrität der Anwendungen ab. Nur sehr wenige Clusterupgrades gelangen in diese Phase. Wenn Ihr Cluster in diese Phase gelangt, besteht eine hohe Wahrscheinlichkeit, dass Ihre Anwendung instabil wird und/oder Verfügbarkeit einbüßt.
 
 Ähnlich wie in den beiden anderen Phasen erfolgen Upgrades in Phase 3 nacheinander in den einzelnen Upgradedomänen.

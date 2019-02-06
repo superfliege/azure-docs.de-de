@@ -2,7 +2,7 @@
 layout: HubPage
 hide_bc: false
 title: Dokumentation zu Azure Monitor Application Insights – Tutorials, API-Referenz | Microsoft-Dokumentation
-description: TBD
+description: Azure Monitor Application Insights bietet eine umfassende Überwachung der Anwendungsleistung auf Codeebene.
 services: application-insights
 author: mrbullwinkle
 manager: carmonmills
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 713368ab02e72ad0b8e51d0bb312a20bd2df690c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f2c6475d67958e8ccd3e46598a46cc8bfee9ef54
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830116"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300675"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -122,7 +122,7 @@ ms.locfileid: "54830116"
                                                             <a href="./app/proactive-arm-config.md">Verwalten der intelligenten Erkennung mit Vorlagen</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Referenz</h3>
+                                                        <h3>Verweis</h3>
                                                         <p>
                                                             <a href="./app/auto-collect-dependencies.md">Automatisches Sammeln von Abhängigkeiten</a><br>
                                                             <a href="./app/correlation.md">Telemetriekorrelation</a><br>
@@ -220,7 +220,7 @@ ms.locfileid: "54830116"
                                                         <h3>Datenschutz, Sicherheit, Nutzung und Kosten</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Umgang mit personenbezogenen Daten</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Datensammlung, -aufbewahrung und -speicherung</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Datensammlung, -aufbewahrung und&amp; -speicherung</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Rollenbasierter Zugriff</a><br>
                                                             <a href="./app/ip-addresses.md">IP-Adressen und Firewallausnahmen</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Nutzung und geschätzte Kosten</a>

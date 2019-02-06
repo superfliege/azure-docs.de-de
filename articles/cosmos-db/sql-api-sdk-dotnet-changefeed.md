@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 03862f88bb5debc66940ebae5308771525f51b0b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351645"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300607"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -40,6 +40,12 @@ ms.locfileid: "54351645"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* Verbesserte Behandlung von Beobachterausnahmen.
+* Umfangreichere Informationen Beobachterfehlern:
+ * Wenn ein Beobachter aufgrund einer Ausnahme geschlossen wird, die von „ProcessChangesAsync“ des Beobachters ausgelöst wird, erhält „CloseAsync“ nun den reason-Parameter „ChangeFeedObserverCloseReason.ObserverError“.
+ * Hinzugefügte Ablaufverfolgungen zum Bestimmen von Fehlern im Benutzercode bei einem Beobachter.
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Unterstützung für die Verarbeitung von Aufteilungen von Sammlungen, die gemeinsam genutzten Datenbankdurchsatz verwenden, wurde hinzugefügt.
@@ -157,6 +163,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |29. Januar 2019 |--- |
 | [2.2.5](#2.2.5) |13. Dezember 2018 |--- |
 | [2.2.4](#2.2.4) |29. November 2018 |--- |
 | [2.2.3](#2.2.3) |19. November 2018 |--- |

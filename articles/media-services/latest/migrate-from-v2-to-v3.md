@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 12/18/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ec40de04f46d0be8f40c2223346f17d288eb580c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808730"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104064"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -35,7 +35,7 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 
 ### <a name="api-is-more-approachable"></a>Besser zugängliche API
 
-*  v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von Azure Resource Manager bereitstellt. Azure Resource Manager-Vorlagen können zum Erstellen und Bereitstellen von Transformationen, Streamingendpunkten, LiveEvents und mehr verwendet werden.
+*  v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von Azure Resource Manager bereitstellt. Azure Resource Manager-Vorlagen können zum Erstellen und Bereitstellen von Transformationen, Streamingendpunkten, Liveereignissen und mehr verwendet werden.
 * [Open API (oder auch Swagger)](https://aka.ms/ams-v3-rest-sdk)-Spezifikationsdokument.
     Macht das Schema für alle Dienstkomponenten verfügbar, einschließlich dateibasierter Codierung.
 * SDKs verfügbar für [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref) und Ruby.
@@ -45,12 +45,12 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 
 * Für dateibasierte Auftragsverarbeitung können Sie als Eingabe eine HTTP(S)-URL verwenden.<br/>Sie müssen noch keine Inhalte in Azure gespeichert haben und müssen auch keine Objekte erstellen.
 * Führt das Konzept von [Transformationen](transforms-jobs-concept.md) für dateibasierte Auftragsverarbeitung ein. Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren.
-* Ein Medienobjekt kann [mehrere StreamingLocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die dynamische Paketerstellung und dynamische Verschlüsselung haben.
+* Ein Medienobjekt kann mehrere [Streaminglocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die dynamische Paketerstellung und dynamische Verschlüsselung haben.
 * Der [Inhaltsschutz](content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln.
 * Wenn Media Services zum Transcodieren eines Beitragsfeeds mit Einzelbitrate in einen Ausgabestream mit mehreren Bitraten verwendet wird, können Sie Liveereignisse streamen, die bis zu 24 Stunden lang sind.
-* Neue Unterstützung für Livestreaming mit niedriger Latenz für LiveEvents. Weitere Informationen finden Sie unter [Latenz](live-event-latency.md).
-* Die LiveEvent-Vorschau unterstützt die dynamische Paketerstellung und dynamische Verschlüsselung. Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht.
-* LiveOutput ist einfacher zu verwenden als die Programmentität in den v2-APIs. 
+* Neue Unterstützung für Livestreaming mit niedriger Latenz für Liveereignisse. Weitere Informationen finden Sie unter [Latenz](live-event-latency.md).
+* Die Vorschau von Liveereignissen unterstützt die dynamische Paketerstellung und dynamische Verschlüsselung. Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht.
+* Die Liveausgabe ist einfacher zu verwenden als die Programmentität in den v2-APIs. 
 * Verbesserte RTMP-Unterstützung (höhere Stabilität und bessere Unterstützung für Quellcodierer).
 * Sichere RTMPS-Erfassung.<br/>Bei der Erstellung eines Liveereignisses erhalten Sie vier Erfassungs-URLs. Die vier Erfassungs-URLs sind nahezu identisch und verfügen über das gleiche Streamingtoken (AppId). Nur der Portnummernteil unterscheidet sich. Zwei der URLs dienen als primäre URL und Backup-URL für RTMPS.   
 * Sie verfügen über rollenbasierte Zugriffssteuerung (RBAC) für Ihre Entitäten. 
@@ -64,14 +64,14 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 * In den v3-APIs werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von v2 Media Encoder Standard. Beispielsweise würde die Bitrate in v2 mit 128 (Kbit/s), in v3 jedoch mit 12.8000 (Bits/Sekunde) angegeben. 
 * Entities AssetFiles, AccessPolicies und IngestManifests sind in v3 nicht vorhanden.
 * Die Eigenschaft „IAsset.ParentAssets“ ist in v3 nicht vorhanden.
-* ContentKeys ist jetzt keine Entität mehr, sondern eine Eigenschaft von StreamingLocator.
+* ContentKeys ist jetzt keine Entität mehr, sondern eine Eigenschaft des Streaminglocators.
 * Die Event Grid-Unterstützung ersetzt NotificationEndpoints.
 * Die folgenden Entitäten wurden umbenannt:
-    * JobOutput ersetzt Aufgabe und ist jetzt Teil eines Auftrags.
-    * StreamingLocator ersetzt Locator.
-    * LiveEvent ersetzt Kanal.<br/>Die LiveEvents-Abrechnung basiert auf Livekanal-Verbrauchseinheiten. Weitere Informationen finden Sie in der [Livestreaming-Übersicht](live-streaming-overview.md#billing) unter [Preise](https://azure.microsoft.com/pricing/details/media-services/).
-    * LiveOutput ersetzt Programm.
-* LiveOutputs müssen nicht explizit gestartet werden, sie werden bei der Erstellung gestartet und beim Löschen beendet. In den v2-APIs haben Programme anders funktioniert, sie mussten nach der Erstellung gestartet werden.
+    * Die Auftragsausgabe ersetzt die Aufgabe und ist jetzt Teil eines Auftrags.
+    * Der Streaminglocator ersetzt den Locator.
+    * Das Liveereignis ersetzt den Kanal.<br/>Die Liveereignisabrechnung basiert auf Livekanal-Verbrauchseinheiten. Weitere Informationen finden Sie unter [Zustandswerte von Liveereignissen und Abrechnung](live-event-states-billing.md) und [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
+    * Die Liveausgabe ersetzt das Programm.
+* Liveausgaben müssen nicht explizit gestartet werden, sie werden bei der Erstellung gestartet und beim Löschen beendet. In den v2-APIs haben Programme anders funktioniert, sie mussten nach der Erstellung gestartet werden.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Featurelücken in Bezug auf v2-APIs
 
@@ -84,7 +84,7 @@ Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Sc
     * Überlagerungen
     * Zuschneiden
     * Miniaturbild-Sprites
-* LiveEvents mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen oder Werbemarkereinfügungen über API-Aufrufe. 
+* Liveereignisse mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen und Werbemarkereinfügungen über API-Aufrufe. 
 
 > [!NOTE]
 > Erstellen Sie ein Lesezeichen für diesen Artikel, und überprüfen Sie ihn regelmäßig auf Aktualisierungen.
@@ -97,7 +97,7 @@ Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige
 |---|---|---|
 |Erstellen eines Medienobjekts und Hochladen einer Datei |[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Übermitteln eines Auftrags|[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Zeigt, wie zuerst eine Transformation erstellt und dann ein Auftrag übermittelt wird.|
-|Veröffentlichen eines Medienobjekts mit AES-Verschlüsselung |1. Erstellen von ContentKeyAuthorizationPolicyOption<br/>2. Erstellen von ContentKeyAuthorizationPolicy<br/>3. Erstellen von AssetDeliveryPolicy<br/>4. Erstellen eines Medienobjekts und Hochladen von Inhalten ODER Übermitteln eines Auftrags und Verwenden des Ausgabemedienobjekts<br/>5. Zuordnen von AssetDeliveryPolicy zu Medienobjekt<br/>6. Erstellen von ContentKey<br/>7. Zuordnen von ContentKey zu einem Medienobjekt<br/>8. Erstellen von AccessPolicy<br/>9. Erstellen von Locator<br/><br/>[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Erstellen einer Richtlinie für Inhaltsschlüssel<br/>2. Erstellen eines Medienobjekts<br/>3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput<br/>4. Erstellen von StreamingLocator<br/><br/>[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Veröffentlichen eines Medienobjekts mit AES-Verschlüsselung |1. Erstellen von ContentKeyAuthorizationPolicyOption<br/>2. Erstellen von ContentKeyAuthorizationPolicy<br/>3. Erstellen von AssetDeliveryPolicy<br/>4. Erstellen eines Medienobjekts und Hochladen von Inhalten ODER Übermitteln eines Auftrags und Verwenden des Ausgabemedienobjekts<br/>5. Zuordnen von AssetDeliveryPolicy zu Medienobjekt<br/>6. Erstellen von ContentKey<br/>7. Zuordnen von ContentKey zu einem Medienobjekt<br/>8. Erstellen von AccessPolicy<br/>9. Erstellen von Locator<br/><br/>[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Erstellen einer Richtlinie für Inhaltsschlüssel<br/>2. Erstellen eines Medienobjekts<br/>3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput<br/>4. Erstellen eines Streaminglocators<br/><br/>[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -106,7 +106,7 @@ Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige
 * Mit der v3-API erstellte Media Services-Entitäten können von der v2-API nicht verwaltet werden.  
 * Es wird nicht empfohlen, mit v2-APIs erstellte Entitäten über die v3-APIs zu verwalten. Es folgen Beispiele für die Unterschiede, aufgrund deren die Entitäten in zwei Versionen nicht kompatibel sind:   
     * In v2 erstellte Aufträge und Aufgaben werden in v3 nicht angezeigt, da sie keiner Transformation zugeordnet sind. Es wird empfohlen, zu v3-Transformationen und -Aufträge zu wechseln. Während des Wechsels müssen die aktiven v2-Aufträge für einen relativ kurzen Zeitraum überwacht werden.
-    * Mit v2 erstellte Kanäle und Programme (die LiveEvents und LiveOutputs in v3 zugeordnet sind) können nicht mehr mit v3 verwaltet werden. Es wird empfohlen, zu einem günstigen Zeitpunkt (beim Beenden des Kanals) zu v3-LiveEvents und LiveOutputs zu wechseln.<br/>Derzeit können Sie kontinuierlich ausgeführte Kanäle nicht migrieren.  
+    * Mit v2 erstellte Kanäle und Programme (die Liveereignissen und Liveausgaben in v3 zugeordnet sind) können nicht mehr mit v3 verwaltet werden. Es wird empfohlen, zu einem günstigen Zeitpunkt (beim Beenden des Kanals) zu v3-Liveereignissen und -Liveausgaben zu wechseln.<br/>Derzeit können Sie kontinuierlich ausgeführte Kanäle nicht migrieren.  
 
 > [!NOTE]
 > Diese Seite wird laufend aktualisiert, da das Media Services-Team die v3-APIs weiterhin verbessert und die Diskrepanz zwischen den Versionen behebt.

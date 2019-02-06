@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 508957f6-caa5-4234-a7f3-90015937e4eb
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d14cca505f85bdf0d8abd32a954487639fe54631
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f326e7d1599d3c797311c85635516d591fd681a6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444217"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardione"></a>Tutorial: Azure Active Directory-Integration mit YardiOne
 
@@ -162,7 +162,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in YardiOne. YardiOne unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf YardiOne ein neuer Benutzer erstellt.
 
 >[!Note]
->Setzen Sie sich mit dem [YardiOne-Supportteam](https://clientcentral.yardi.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Setzen Sie sich mit dem  [Supportteam von YardiOne](https://clientcentral.yardi.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

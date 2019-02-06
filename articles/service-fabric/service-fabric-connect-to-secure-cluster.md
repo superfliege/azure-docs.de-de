@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
+ms.date: 01/29/2019
 ms.author: ryanwi
-ms.openlocfilehash: f2a181fbae8ab1e08669021c42c5b4be08f66172
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 55564de4a3c5ff2d3ba3ddc5e68fa3d1b2d51e71
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364810"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296391"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 
@@ -33,7 +33,13 @@ Es gibt mehrere Möglichkeiten zum Herstellen einer Verbindung mit einem sichere
 
 Verwenden Sie den Befehl `sfctl cluster select`, um eine Verbindung mit einem Cluster herzustellen.
 
-Clientzertifikate können in zwei unterschiedlichen Größen dargestellt werden, entweder als ein Zertifikat- und Schlüsselpaar oder als eine einzelne Pem-Datei. Für kennwortgeschützte `pem`-Dateien, werden Sie automatisch zur Eingabe des Kennworts aufgefordert.
+Clientzertifikate können in zwei unterschiedlichen Größen dargestellt werden, entweder als ein Zertifikat- und Schlüsselpaar oder als eine einzelne PFX-Datei. Für kennwortgeschützte PEM-Dateien, werden Sie automatisch zur Eingabe des Kennworts aufgefordert. Wenn Sie das Clientzertifikat als PFX-Datei erhalten, müssen Sie sie zuerst mit dem folgenden Befehl in eine PEM-Datei konvertieren. 
+
+```bash
+openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
+```
+
+Wenn Ihre PFX-Datei nicht kennwortgeschützt ist, verwenden Sie „-passin pass:“ für den letzten Parameter.
 
 Wenn Sie das Clientzertifikat als Pem-Datei speichern möchten, geben Sie den Dateipfad im `--pem`-Argument an. Beispiel: 
 
@@ -341,7 +347,7 @@ Um [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) für ei
 
 Die vollständige URL steht auch im Cluster Essentials-Bereich des Azure-Portal zur Verfügung.
 
-Zum Herstellen einer Verbindung mit einem sicheren Cluster unter Windows oder OS X können Sie das Clientzertifikat importieren. Der Browser fordert Sie dann auf, das Zertifikat anzugeben, das zum Herstellen einer Verbindung mit dem Cluster verwendet werden soll.  Auf Linux-Computern muss das Zertifikat mithilfe von erweiterten Browsereinstellungen (jeder Browser verfügt über unterschiedliche Mechanismen) importiert werden, und es muss auf den Speicherort des Zertifikats auf dem Datenträger verwiesen werden.
+Zum Herstellen einer Verbindung mit einem sicheren Cluster unter Windows oder OS X können Sie das Clientzertifikat importieren. Der Browser fordert Sie dann auf, das Zertifikat anzugeben, das zum Herstellen einer Verbindung mit dem Cluster verwendet werden soll.  Auf Linux-Computern muss das Zertifikat mithilfe von erweiterten Browsereinstellungen (jeder Browser verfügt über unterschiedliche Mechanismen) importiert werden, und es muss auf den Speicherort des Zertifikats auf dem Datenträger verwiesen werden. Lesen [Einrichten eines Clientzertifikats](#connectsecureclustersetupclientcert) für weitere Informationen.
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit Azure Active Directory
 
@@ -360,24 +366,28 @@ Um eine Verbindung mit einem Cluster herzustellen, der mit Zertifikaten gesicher
 Sie werden automatisch aufgefordert, ein Clientzertifikat auszuwählen.
 
 <a id="connectsecureclustersetupclientcert"></a>
+
 ## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>Einrichten eines Clientzertifikats auf dem Remotecomputer
+
 Zum Schutz des Clusters müssen mindestens zwei Zertifikate verwendet werden: eines für den Cluster- und Serverzugriff und ein zweites für den Clientzugriff.  Wir empfehlen zudem, dass Sie zusätzliche sekundäre Zertifikate und Clientzugriffszertifikate nutzen.  Um die Kommunikation zwischen einem Client und einem Clusterknoten mit Zertifikatssicherheit zu schützen, müssen Sie zuerst das Clientzertifikat beziehen und installieren. Das Zertifikat kann im persönlichen Speicher (My) auf dem lokalen Computer oder im persönlichen Speicher des aktuellen Benutzers installiert werden.  Sie benötigen außerdem den Fingerabdruck des Serverzertifikats, damit der Cluster vom Client authentifiziert werden kann.
 
-Führen Sie das folgende PowerShell-Cmdlet aus, um das Clientzertifikat auf dem Computer einzurichten, auf dem Sie auf den Cluster zugreifen.
+* Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den PowerShell-Befehl verwenden:
 
-```powershell
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-        -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-        -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
 
-Falls es sich um ein selbstsigniertes Zertifikat handelt, müssen Sie es in den Speicher „Vertrauenswürdige Personen“ Ihres Computers importieren, bevor Sie es zum Herstellen einer Verbindung mit einem sicheren Cluster verwenden können.
+    Falls es sich um ein selbstsigniertes Zertifikat handelt, müssen Sie es in den Speicher „Vertrauenswürdige Personen“ Ihres Computers importieren, bevor Sie es zum Herstellen einer Verbindung mit einem sicheren Cluster verwenden können.
 
-```powershell
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
--FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
--Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
+    -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+    -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
+
+* Auf einem Macintosh: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

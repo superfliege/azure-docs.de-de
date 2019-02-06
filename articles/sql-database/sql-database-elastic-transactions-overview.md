@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: ae9f4d1ebcb84748b665579104f63dab3ee6f076
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720715"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463870"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
+
 Mithilfe elastischer Datenbanktransaktionen für Azure SQL-Datenbank (SQL-DB) können Sie übergreifende Transaktionen für mehrere Datenbanken in SQL-DB ausführen. Elastische Datenbanktransaktionen für SQL-DB stehen für .NET-Anwendungen über ADO.NET zur Verfügung und lassen sich mithilfe der Klassen vom Typ [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) in die vertraute Programmierumgebung integrieren. Informationen zum Abrufen der Bibliothek finden Sie unter [.NET Framework 4.6.1 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=49981).
 
 Lokal musste für ein solches Szenario normalerweise MSDTC (Microsoft Distributed Transaction Coordinator) ausgeführt werden. Da MSDTC in Azure nicht als Platform-as-a-Service-Anwendung verfügbar ist, wurde die Koordinierung verteilter Transaktionen nun direkt in SQL-DB integriert. Anwendungen können eine Verbindung mit einer beliebigen SQL-Datenbank herstellen, um verteilte Transaktionen zu starten, und eine der Datenbanken koordiniert auf transparente Weise die verteilte Transaktion, wie in der folgenden Abbildung zu sehen: 
@@ -27,6 +28,7 @@ Lokal musste für ein solches Szenario normalerweise MSDTC (Microsoft Distribute
   ![Verteilte Transaktionen mit Azure SQL-Datenbank unter Verwendung elastischer Datenbanktransaktionen ][1]
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
+
 Mit elastischen Datenbanktransaktionen für SQL-DB können Anwendungen unteilbare Änderungen an Daten vornehmen, die in mehreren verschiedenen SQL-Datenbanken gespeichert sind. Die Vorschau konzentriert sich auf clientseitige Entwicklungsoptionen in C# und .NET. Eine serverseitige Option mit T-SQL ist für einen späteren Zeitpunkt geplant.  
 Elastische Datenbanktransaktionen eignen sich für folgende Szenarien:
 
@@ -35,6 +37,7 @@ Elastische Datenbanktransaktionen eignen sich für folgende Szenarien:
   Elastische Datenbanktransaktionen verwenden ein Zweiphasencommit, um die datenbankübergreifende Unteilbarkeit von Transaktionen zu gewährleisten. Dies eignet sich gut für Transaktionen mit einer Beteiligung von weniger als 100 Datenbanken pro einzelner Transaktion. Diese Limits werden nicht erzwungen. Eine Überschreitung beeinträchtigt jedoch die Leistung und Erfolgsraten von elastischen Datenbanktransaktionen.
 
 ## <a name="installation-and-migration"></a>Installation und Migration
+
 Die Funktionen für elastische Datenbanktransaktionen in SQL-DB werden mittels Aktualisierung der .NET-Bibliotheken „System.Data.dll“ und „System.Transactions.dll“ bereitgestellt. Die DLLs gewährleisten, dass bei Bedarf das Zweiphasencommit verwendet wird, um die Unteilbarkeit sicherzustellen. Installieren Sie [.NET 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) oder eine höhere Version von .NET Framework, um mit dem Entwickeln von Anwendungen mit elastischen Datenbanktransaktionen zu beginnen. Bei der Ausführung unter einer älteren Version von .NET Framework lassen sich Transaktionen nicht zu einer verteilten Transaktion höher stufen, was eine Ausnahme zur Folge hat.
 
 Nach der Installation können Sie die APIs für verteilte Transaktionen in „System.Transactions“ für Verbindungen mit SQL-DB verwenden. Wenn Sie über MSDTC-Anwendungen verfügen, die diese APIs verwenden, erstellen Sie nach der Installation von .NET Framework 4.6.1 einfach Ihre vorhandenen Anwendungen für .NET Framework 4.6 neu. Falls Ihre Projekte auf .NET Framework 4.6 ausgerichtet sind, verwenden sie automatisch die aktualisierten DLLs der neuen .NET Framework-Version. Aufrufe der API für verteilte Transaktion können in Kombination mit Verbindungen zu SQL-DB erfolgreich ausgeführt werden.
@@ -42,7 +45,9 @@ Nach der Installation können Sie die APIs für verteilte Transaktionen in „Sy
 Beachten Sie, dass für elastische Datenbanktransaktionen keine Installation von MSDTC erforderlich ist. Elastische Datenbanktransaktionen werden stattdessen direkt durch (und innerhalb von) SQL-DB verwaltet. Dies vereinfacht Cloudszenarien erheblich, da die Verwendung verteilter Transaktionen mit SQL-DB keine MSDTC-Bereitstellung erfordert. Ausführlichere Informationen zum gemeinsamen Bereitstellen von elastischen Datenbanktransaktionen, .NET Framework und Ihren Cloudanwendungen in Azure finden Sie in Abschnitt 4.
 
 ## <a name="development-experience"></a>Entwicklungsumgebung
+
 ### <a name="multi-database-applications"></a>Multidatenbankanwendungen
+
 Der folgende Beispielcode verwendet die vertraute Programmierung mit „System.Transactions“ aus .NET. Die TransactionScope-Klasse erstellt eine Ambient-Transaktion in .NET. (Eine Ambient-Transaktion ist eine Transaktion aus dem aktuellen Thread.) Alle hergestellten Verbindungen innerhalb des Transaktionsbereichs sind an der Transaktion beteiligt. Bei Beteiligung verschiedener Datenbanken wird die Transaktion automatisch zu einer verteilten Transaktion höher gestuft. Zum Steuern des Transaktionsergebnisses wird der Bereich auf „Complete“ festgelegt, um einen Commit anzugeben.
 
     using (var scope = new TransactionScope())
@@ -67,6 +72,7 @@ Der folgende Beispielcode verwendet die vertraute Programmierung mit „System.T
     }
 
 ### <a name="sharded-database-applications"></a>Sharding-Datenbankanwendungen
+
 Elastische Datenbanktransaktionen für SQL-DB unterstützen auch die Koordinierung verteilter Transaktionen, bei denen Sie mithilfe der OpenConnectionForKey-Methode der Clientbibliothek für elastische Datenbanken Verbindungen für eine horizontal hochskalierte Datenschicht herstellen. Beispiele wären etwa Fälle, in denen Sie bei Änderungen Transaktionskonsistenz über verschiedene Sharding-Schlüsselwerte hinweg sicherstellen müssen. Verbindungen mit den Shards, die die verschiedenen Sharding-Schlüsselwerte hosten, werden mithilfe von „OpenConnectionForKey“ vermittelt. Grundsätzlich können die Verbindungen mit unterschiedlichen Shards hergestellt werden, sodass zur Gewährleistung von Transaktionsgarantien eine verteilte Transaktion erforderlich ist. Das folgende Codebeispiel veranschaulicht diese Vorgehensweise. Hierbei wird davon ausgegangen, dass eine Variable namens „shardmap“ eine Shardzuordnung aus der Clientbibliothek für elastische Datenbanken dargestellt:
 
     using (var scope = new TransactionScope())
@@ -92,6 +98,7 @@ Elastische Datenbanktransaktionen für SQL-DB unterstützen auch die Koordinieru
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Installation von .NET für Azure Cloud Services
+
 Azure stellt verschiedene Angebote zum Hosten von .NET-Anwendungen bereit. Einen Vergleich der verschiedenen Angebote finden Sie unter [Azure App Service, Cloud Services und Virtual Machines im Vergleich](../app-service/overview-compare.md). Wenn das Gastbetriebssystem des Angebots älter als .NET 4.6.1 ist (das für elastische Transaktionen erforderlich ist), müssen Sie das Gastbetriebssystem auf 4.6.1 aktualisieren. 
 
 Für Azure App Services werden Upgrades des Gastbetriebssystems derzeit nicht unterstützt. Melden Sie sich für Azure Virtual Machines einfach auf dem virtuellen Computer an, und führen Sie das Installationsprogramm für das neueste .NET Framework aus. Für Azure Cloud Services müssen Sie die Installation einer neueren Version von .NET in die Startaufgaben der Bereitstellung einschließen. Informationen zu den Konzepten und Schritten finden Sie unter [Installieren von .NET in einer Clouddienstrolle](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
@@ -118,15 +125,17 @@ Beachten Sie, dass das Installationsprogramm für .NET 4.6.1 während des Boots
     </Startup>
 
 ## <a name="transactions-across-multiple-servers"></a>Transaktionen über mehrere Server
-Elastische Datenbanktransaktionen werden auf verschiedenen logischen Servern in Azure SQL-Datenbank unterstützt. Bei Transaktionen über die Grenzen logischer Server hinweg müssen die beteiligten Server zuerst in eine Beziehung mit gegenseitiger Kommunikation gebracht werden. Sobald die Kommunikationsbeziehung eingerichtet wurde, kann eine Datenbank in einem der beiden Server an elastischen Transaktionen mit Datenbanken auf dem anderen Server teilnehmen. Mit Transaktionen über mehr als zwei logische Server hinweg muss eine Kommunikationsbeziehung für jedes Paar logischer Server vorhanden sein.
+
+Elastische Datenbanktransaktionen werden auf verschiedenen SQL-Datenbank-Servern in Azure SQL-Datenbank unterstützt. Bei Transaktionen über die Grenzen von SQL-Datenbank-Servern hinweg müssen die beteiligten Server zuerst in eine Beziehung mit gegenseitiger Kommunikation gebracht werden. Sobald die Kommunikationsbeziehung eingerichtet wurde, kann eine Datenbank in einem der beiden Server an elastischen Transaktionen mit Datenbanken auf dem anderen Server teilnehmen. Mit Transaktionen über mehr als zwei SQL-Datenbank-Server hinweg muss eine Kommunikationsbeziehung für jedes Paar von SQL-Datenbank-Servern vorhanden sein.
 
 Verwenden Sie die folgenden PowerShell-Cmdlets, um serverübergreifende Kommunikationsbeziehungen für elastische Transaktionen zu verwalten:
 
-* **New-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine neue Kommunikationsbeziehung zwischen zwei logischen Servern in Azure SQL-Datenbank erstellen. Die Beziehung ist symmetrisch, sodass beide Server Transaktionen mit dem jeweils anderen Server initiieren können.
+* **New-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine neue Kommunikationsbeziehung zwischen zwei SQL-Datenbank-Servern in Azure SQL-Datenbank erstellen. Die Beziehung ist symmetrisch, sodass beide Server Transaktionen mit dem jeweils anderen Server initiieren können.
 * **Get-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie vorhandene Kommunikationsbeziehungen und die zugehörigen Eigenschaften abrufen.
 * **Remove-AzureRmSqlServerCommunicationLink**: Mit diesem Cmdlet können Sie eine vorhandene Kommunikationsbeziehung entfernen. 
 
 ## <a name="monitoring-transaction-status"></a>Überwachen des Transaktionsstatus
+
 Verwenden Sie DMVs (Dynamic Management Views) in  SQL-SB, um Status und Fortschritt laufender elastischer Datenbanktransaktionen zu überwachen. Für verteilte Transaktionen in SQL-DB sind alle transaktionsbezogenen DMVs relevant. Die entsprechende DMV-Liste finden Sie hier: [Dynamische Verwaltungssichten für Transaktionen und Funktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
 
 Folgende DMVs sind besonders hilfreich:
@@ -136,6 +145,7 @@ Folgende DMVs sind besonders hilfreich:
 * **sys.dm\_tran\_locks**: Enthält Informationen zu den Sperren, die derzeit für laufende Transaktionen aktiv sind. Weitere Informationen finden Sie in der [DMV-Dokumentation](https://msdn.microsoft.com/library/ms190345.aspx).
 
 ## <a name="limitations"></a>Einschränkungen
+
 Derzeit gelten für elastische Datenbanktransaktionen in SQL-DB folgende Einschränkungen:
 
 * Es werden nur datenbankübergreifende Transaktionen in SQL-DB unterstützt. Andere Ressourcenanbieter für [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) sowie Datenbanken außerhalb von SQL-DB können nicht an elastischen Datenbanktransaktionen beteiligt werden. Das bedeutet, dass sich elastische Datenbanktransaktionen nicht über lokale SQL Server- und Azure SQL-Datenbanken erstrecken können. Für lokale verteilte Transaktionen muss weiterhin MSDTC verwendet werden. 
@@ -143,10 +153,8 @@ Derzeit gelten für elastische Datenbanktransaktionen in SQL-DB folgende Einschr
 * Transaktionen über WCF-Dienste werden nicht unterstützt. Nehmen wir beispielsweise eine WCF-Dienstmethode, die eine Transaktion ausführt. Das Umschließen des Aufrufs innerhalb eines Transaktionsbereichs schlägt als [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)fehl.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Bei Fragen erreichen Sie uns im [Forum für SQL-Datenbank](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [Feedbackforum für SQL-Datenbank](https://feedback.azure.com/forums/217321-sql-database/) einreichen.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
-
-
-

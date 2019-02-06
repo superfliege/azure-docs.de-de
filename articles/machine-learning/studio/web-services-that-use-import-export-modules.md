@@ -9,18 +9,18 @@ ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ca4c8c2d16e2cc44768785c26ffa070b59d5f8d7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251384"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478014"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von Azure Machine Learning Studio-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
 
@@ -44,9 +44,9 @@ So lesen Sie die Daten aus der Azure SQL-Tabelle:
 5. Wählen Sie im Bereich „Properties“ **Azure SQL Database** in the **Data Source** aus.
 6. Geben Sie in den Feldern **Database server name**, **Database name**, **User name** und **Password** die entsprechenden Informationen für Ihre Datenbank ein.
 7. Geben Sie im Abfragefeld „Database“ die folgende Abfrage ein.
-   
+
      select [age],
-   
+
         [workclass],
         [fnlwgt],
         [education],
@@ -68,17 +68,17 @@ So lesen Sie die Daten aus der Azure SQL-Tabelle:
 Als Nächstes richten Sie das Vorhersageexperiment ein, über das Sie Ihren Webdienst bereitstellen.
 
 1. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service**, und wählen Sie **Predictive Web Service [Recommended]**.
-2. Entfernen Sie die Module *Web Service Input* und *Web Service Output* aus dem Vorhersageexperiment. 
+2. Entfernen Sie die Module *Web Service Input* und *Web Service Output* aus dem Vorhersageexperiment.
 3. Geben Sie im Komponentensuchfeld „export“ ein.
 4. Fügen Sie aus der Ergebnisliste ein Modul *Export Data* im Experimentbereich hinzu.
-5. Verbinden Sie die Ausgabe des Moduls *Score Model* mit der Eingabe des Moduls *Export Data*. 
+5. Verbinden Sie die Ausgabe des Moduls *Score Model* mit der Eingabe des Moduls *Export Data*.
 6. Wählen Sie im Bereich „Properties“ **Azure SQL Database** in der Datenziel-Dropdownliste aus.
 7. Geben Sie in den Feldern **Database server name**, **Database name**, **Server user account name** und **Server user account password** die entsprechenden Informationen für Ihre Datenbank ein.
 8. Geben Sie in das Feld **Comma separated list of columns to be saved** „Scored Labels“ ein.
 9. Geben Sie in das Feld **Data table name**„dbo.ScoredLabels“ ein. Wenn die Tabelle nicht vorhanden ist, wird sie erstellt, wenn das Experiment ausgeführt oder der Webdienst aufgerufen wird.
 10. Geben Sie in das Feld **Comma separated list of datatable columns** „Scored Labels“ ein.
 
-Wenn Sie eine Anwendung schreiben, die den endgültigen Webdienst aufruft, möchten Sie vielleicht zur Laufzeit eine andere Eingabeabfrage oder Zieltabelle angeben. Um diese Eingaben und Ausgaben zu konfigurieren, legen Sie mit dem Feature „Web Service Parameters“ das Modul *Import Data*, die Eigenschaft *Data source* und die Modusdatenziel-Eigenschaft *Export Data* fest.  Weitere Informationen zu „Web Service Parameters“ finden Sie unter dem Eintrag [AzureML Web Service Parameters](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) im „Cortana Intelligence and Machine Learning Blog“.
+Wenn Sie eine Anwendung schreiben, die den endgültigen Webdienst aufruft, möchten Sie vielleicht zur Laufzeit eine andere Eingabeabfrage oder Zieltabelle angeben. Um diese Eingaben und Ausgaben zu konfigurieren, legen Sie mit dem Feature „Web Service Parameters“ das Modul *Import Data*, die Eigenschaft *Data source* und die Modusdatenziel-Eigenschaft *Export Data* fest.  Weitere Informationen zu „Web Service Parameters“ finden Sie unter dem Eintrag [Azure Machine Learning Studio Web Service Parameters](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) im „Cortana Intelligence and Machine Learning Blog“.
 
 So konfigurieren Sie die Webdienstparameter für die Importabfrage und die Zieltabelle:
 
@@ -108,22 +108,22 @@ So stellen Sie einen klassischen Webdienst bereit und erstellen eine Anwendung, 
 7. Kopieren Sie den C#-Beispielcode, fügen Sie ihn in die Datei „Program.cs“ ein, und entfernen Sie alle Verweise auf den Blobspeicher.
 8. Aktualisieren Sie den Wert der Variablen *apiKey* mit dem zuvor gespeicherten API-Schlüssel.
 9. Suchen Sie die Anforderungsdeklaration, und aktualisieren Sie die Werte der Webdienstparameter, die den Modulen *Import Data* und *Export Data* übergeben werden. In diesem Fall verwenden Sie die ursprüngliche Abfrage, definieren aber einen neuen Tabellennamen.
-   
-        var request = new BatchExecutionRequest() 
-        {           
+
+        var request = new BatchExecutionRequest()
+        {
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
             }
         };
-10. Führen Sie die Anwendung aus. 
+10. Führen Sie die Anwendung aus.
 
 Nach Abschluss der Ausführung wird der Datenbank eine neue Tabelle mit den Bewertungsergebnissen hinzugefügt.
 
 ### <a name="deploy-a-new-web-service"></a>Bereitstellen eines neuen Webdiensts
 
-> [!NOTE] 
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
+> [!NOTE]
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
 
 So stellen Sie einen neuen Webdienst bereit und erstellen eine Anwendung, die ihn verwendet:
 
@@ -136,9 +136,9 @@ So stellen Sie einen neuen Webdienst bereit und erstellen eine Anwendung, die ih
 7. Kopieren Sie den C#-Beispielcode, und fügen Sie ihn in die Datei „Program.cs“ ein.
 8. Aktualisieren Sie den Wert der Variablen *apiKey* mit dem **Primary Key** im Abschnitt **Basic consumption info**.
 9. Suchen Sie die Deklaration *scoreRequest*, und aktualisieren Sie die Werte der Webdienstparameter, die den Modulen *Import Data* und *Export Data* übergeben werden. In diesem Fall verwenden Sie die ursprüngliche Abfrage, definieren aber einen neuen Tabellennamen.
-   
+
         var scoreRequest = new
-        {       
+        {
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -147,5 +147,5 @@ So stellen Sie einen neuen Webdienst bereit und erstellen eine Anwendung, die ih
                 { "Table", "dbo.ScoredTable3" },
             }
         };
-10. Führen Sie die Anwendung aus. 
+10. Führen Sie die Anwendung aus.
 

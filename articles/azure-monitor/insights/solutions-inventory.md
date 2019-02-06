@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 14f373b5459aaa7a9e51ba284f6a30094c4e7617
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 48f1789d4909a1c3af9e9ca01d0b9d0a8e6e09f8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194180"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299639"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure
 Dieser Artikel enthält eine Liste mit verfügbaren [Verwaltungslösungen](solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. 
@@ -48,7 +48,7 @@ Erläuterung der Spalten:
 | [Warnungsverwaltung](../../azure-monitor/platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 Minute |
 | [Warnungsverwaltung](../../azure-monitor/platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 Minuten |
 | [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | – |
-| [Application Insights-Connector (Vorschau)](../../azure-monitor/platform/app-insights-connector.md) | Azure | | | |  |  | Bei Benachrichtigung |
+| [Application Insights-Connector (Veraltet)](../../azure-monitor/platform/app-insights-connector.md) | Azure | | | |  |  | Bei Benachrichtigung |
 | [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | – |
 | [Azure Application Gateway-Analyse](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | Bei Benachrichtigung |
 | **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure Storage** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |

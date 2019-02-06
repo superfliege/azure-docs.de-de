@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Vidyard| Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Vidyard| Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Vidyard konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bed7df23-6e13-4e7c-b4cc-53ed4804664d
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 871942db15d6a3cff45584e33b2191e21d2281a0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 683cdc43c8d671c14142d0770cd2594ad862b7ac
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426454"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196241"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Tutorial: Azure Active Directory-Integration in Vidyard
+# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Tutorial: Azure Active Directory-Integration mit Vidyard
 
 In diesem Tutorial erfahren Sie, wie Sie Vidyard in Azure Active Directory (Azure AD) integrieren.
 
@@ -215,7 +215,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 In diesem Abschnitt wird in Vidyard eine Benutzerin namens Britta Simon erstellt. Vidyard unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Vidyard ein neuer Benutzer erstellt.
 >[!Note]
->Wenn Sie einen Benutzer manuell erstellen möchten, wenden Sie sich an das [Vidyard-Supportteam](mailto:support@vidyard.com).
+>Setzen Sie sich mit dem  [Supportteam von Vidyard](mailto:support@vidyard.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

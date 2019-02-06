@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e7b269d6-3c4e-4bc4-a55f-5071d1f52591
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf012f276a300cb8f70590c306020993b448cc6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: faa1f4887502968e4deeee47e396b25480d0cd05
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427740"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>Tutorial: Azure Active Directory-Integration mit ContractWorks
 
@@ -141,7 +141,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     
     d. Klicken Sie auf **OK**.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und fügen Sie die URL in Editor ein.
     
     ![Configure single sign-on](./media/contractworks-tutorial/tutorial_metadataurl.png)
      
@@ -185,7 +185,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-contractworks-test-user"></a>Erstellen eines ContractWorks-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ContractWorks einen Benutzer namens Britta Simon. Wenden Sie sich an das [Supportteam von ContractWorks](mailto:support@contractworks.com), um die Benutzer der ContractWorks-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in ContractWorks einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Supportteam von ContractWorks](mailto:support@contractworks.com), um die Benutzer der ContractWorks-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

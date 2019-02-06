@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 03d29b7f072aaab09b0677031ee34bd61d876ce6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354137"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242840"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack
 
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Um eine produktionsfertige Bereitstellung von Azure App Service in Azure Stack einzurichten, müssen Sie die Kapazität planen, die Sie für das System erwarten.  
 
@@ -43,31 +44,31 @@ Sie können Ihre Strategie für die App Service-Kapazität mithilfe dieser Richt
 
 ## <a name="controller-role"></a>Controllerrolle
 
-**Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
+**Empfohlene Mindestanzahl**: Zwei Instanzen von A1 Standard
 
 Der Azure App Service-Controller verbraucht in der Regel nur wenig CPU-, Arbeitsspeicher- und Netzwerkressourcen. Für Hochverfügbarkeit benötigen Sie jedoch zwei Controller. Zwei Controller sind auch die maximale Anzahl zulässiger Controller. Sie können den zweiten Websitecontroller während der Bereitstellung direkt im Installationsprogramm erstellen.
 
 ## <a name="front-end-role"></a>Front-End-Rolle
 
-**Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
+**Empfohlene Mindestanzahl**: Zwei Instanzen von A1 Standard
 
 Das Front-End leitet Anforderungen abhängig von der Verfügbarkeit der Webworker an Webworker weiter. Für Hochverfügbarkeit sollten Sie über mehr als ein Front-End verfügen, auch mehr als zwei Front-Ends sind möglich. Beachten Sie bei der Kapazitätsplanung, dass jeder Kern ungefähr 100 Anforderungen pro Sekunde verarbeiten kann.
 
 ## <a name="management-role"></a>Verwaltungsrolle
 
-**Empfohlene Mindestanzahl:** zwei Instanzen von A3 Standard
+**Empfohlene Mindestanzahl**: Zwei Instanzen von A3 Standard
 
 Die Azure App Service-Verwaltungsrolle ist für die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten-, Functions-Portal) und den Datendienst von App Service zuständig. Die Verwaltungsserverrolle erfordert in einer Produktionsumgebung in der Regel nur etwa 4 GB RAM. Allerdings kann es zu einer hohen CPU-Auslastung kommen, wenn viele Verwaltungsaufgaben (z.B. Websiteerstellungen) ausgeführt werden. Für Hochverfügbarkeit sollten Sie dieser Rolle mehrere Server sowie jedem Server mindestens zwei Kerne zuweisen.
 
 ## <a name="publisher-role"></a>Herausgeberrolle
 
-**Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
+**Empfohlene Mindestanzahl**: Zwei Instanzen von A1 Standard
 
 Wenn viele Benutzer gleichzeitig veröffentlichen, kann die Herausgeberrolle eine hohe CPU-Auslastung verursachen. Für Hochverfügbarkeit stellen Sie sicher, dass mehrere Herausgeberrollen verfügbar sind. Der Herausgeber verarbeitet nur FTP-/FTPS-Datenverkehr.
 
 ## <a name="web-worker-role"></a>Webworkerrolle
 
-**Empfohlene Mindestanzahl:** zwei Instanzen von A1 Standard
+**Empfohlene Mindestanzahl**: Zwei Instanzen von A1 Standard
 
 Für Hochverfügbarkeit sollten Sie über mindestens vier Webworkerrollen verfügen: zwei für den Websitemodus „Shared“ und zwei für jede dedizierte Workerebene, die Sie anbieten möchten. Die freigegebenen und dedizierten Computemodi stellen Mandanten verschiedene Dienstebenen bereit. In folgenden Fällen benötigen Sie ggf. zusätzliche Webworker:
 
@@ -80,9 +81,9 @@ Für die Bereitstellung von Azure Functions für Benutzer im Verbrauchsplanmodel
 
 Beachten Sie bei der Entscheidung über die Anzahl der zu verwendenden freigegebenen Webworkerrollen folgende Überlegungen:
 
-- **Arbeitsspeicher:** Arbeitsspeicher ist die wichtigste Ressource für eine Webworkerrolle. Unzureichender Arbeitsspeicher wirkt sich auf die Websiteleistung aus, wenn virtueller Arbeitsspeicher vom Datenträger ausgelagert wird. Jeder Server benötigt ungefähr 1,2 GB Arbeitsspeicher für das Betriebssystem. Arbeitsspeicher oberhalb dieses Schwellenwerts kann für das Ausführen von Websites verwendet werden.
-- **Prozentsatz der aktiven Websites:** Normalerweise sind bei einer Azure Stack-Bereitstellung ungefähr 5 % der Anwendungen in Azure App Service aktiv. Der Prozentsatz der Anwendungen, die in einem gegebenen Moment aktiv sind, kann jedoch höher oder niedriger sein. Bei einer aktiven Anwendungsrate von 5 % sollte die maximale Anzahl von Anwendungen in Azure App Service bei einer Azure Stack-Bereitstellung kleiner als das 20-fache der Anzahl der aktiven Websites (5 x 20 = 100) sein.
-- **Durchschnittliche Arbeitsspeicheranforderung:** Die in Produktionsumgebungen ermittelte durchschnittliche Arbeitsspeicheranforderung für Anwendungen beträgt ungefähr 70 MB. Bei Verwendung dieser Arbeitsspeicheranforderung kann der allen Computern oder virtuellen Computern der Webworkerrolle zugewiesene Arbeitsspeicher wie folgt berechnet werden:
+- **Arbeitsspeicher**: Arbeitsspeicher ist die wichtigste Ressource für eine Webworkerrolle. Unzureichender Arbeitsspeicher wirkt sich auf die Websiteleistung aus, wenn virtueller Arbeitsspeicher vom Datenträger ausgelagert wird. Jeder Server benötigt ungefähr 1,2 GB Arbeitsspeicher für das Betriebssystem. Arbeitsspeicher oberhalb dieses Schwellenwerts kann für das Ausführen von Websites verwendet werden.
+- **Prozentsatz der aktiven Websites**: Normalerweise sind bei einer Azure Stack-Bereitstellung ungefähr 5% der Anwendungen in Azure App Service aktiv. Der Prozentsatz der Anwendungen, die in einem gegebenen Moment aktiv sind, kann jedoch höher oder niedriger sein. Bei einer aktiven Anwendungsrate von 5 % sollte die maximale Anzahl von Anwendungen in Azure App Service bei einer Azure Stack-Bereitstellung kleiner als das 20-fache der Anzahl der aktiven Websites (5 x 20 = 100) sein.
+- **Durchschnittliche Arbeitsspeicheranforderung**: Die in Produktionsumgebungen ermittelte durchschnittliche Arbeitsspeicheranforderung für Anwendungen beträgt ungefähr 70MB. Bei Verwendung dieser Arbeitsspeicheranforderung kann der allen Computern oder virtuellen Computern der Webworkerrolle zugewiesene Arbeitsspeicher wie folgt berechnet werden:
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 

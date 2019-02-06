@@ -6,16 +6,16 @@ services: cognitive-services
 author: priyaravi20
 manager: yanbo
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: db69a9e3beb819600109603a8c0129547db57fa5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343026"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215859"
 ---
 # <a name="bing-text-to-speech-api"></a>Text-to-Speech-API von Bing
 
@@ -179,7 +179,7 @@ Die Text-to-Speech-API von Microsoft unterstützt SSML 1.0 gemäß W3C-Definitio
   ```
 
 > [!NOTE]
-> Bei den Audiodaten muss es sich um eine WAV-Datei (8k oder 16k) im folgenden Format handeln: **CRC-Code** (CRC-32): 4 Bytes (DWORD) mit gültigem Bereich 0x00000000 ~ 0xFFFFFFFF; **Audioformatflag**: 4 Bytes (DWORD) mit gültigem Bereich 0x00000000 ~ 0xFFFFFFFF; **Beispielanzahl**: 4 Bytes (DWORD) mit gültigem Bereich 0x00000000 ~ 0x7FFFFFFF; **Größe des binären Textkörpers**: 4 Bytes (DWORD) mit gültigem Bereich 0x00000000 ~ 0x7FFFFFFF; **Binärer Textkörper**: n Bytes.
+> Beachten Sie, dass die Audiodaten in 8k- oder 16k-WAV-Dateien im folgenden Format vorliegen müssen: **CRC-Code** (CRC-32): 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0xFFFFFFFF; **Audioformatflag**: 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0xFFFFFFFF; **Beispielzahl**: 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0x7FFFFFFF; **Größe des binären Texts**: 4 Bytes (DWORD) mit gültigen Bereich 0x00000000 ~ 0x7FFFFFFF; **Binärer Text**: n Bytes.
 
 ## <a name="SampleApp"></a>Beispielanwendung
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242159"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478337"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -49,12 +49,12 @@ Die auf virtuellen Kernen basierenden Diensttarife unterscheiden sich in erster 
 | **Am besten geeignet für** |Alle|  Die meisten geschäftlichen Workloads. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Datenanwendungen mit hohem Datenkapazitätsbedarf und der Möglichkeit, Speicher automatisch zu skalieren und Computeressourcen nahtlos zu skalieren. | OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
 |  **Ressourcentyp** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
-| |Verwaltete Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | N/V | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
+| |Verwaltete Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | **Speichertyp** | Alle |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
 | **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
-| | Verwaltete Instanz  | 32 GB – 8 TB | N/V | 32 GB – 4 TB |
+| | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
 | **E/A-Durchsatz** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Noch unbekannt | 5.000 IOPS mit maximal 200.000 IOPS|
-| | Verwaltete Instanz | Hängt von der Größe der Datei ab | N/V | Verwaltete Instanz: Abhängig von der Dateigröße|
+| | Verwaltete Instanz | Hängt von der Größe der Datei ab | – | Verwaltete Instanz: Hängt von der Größe der Datei ab|
 |**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 15 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7-35 Tage (standardmäßig 7 Tage), konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PiTR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
 
@@ -73,11 +73,11 @@ Der Diensttarif „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die 
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Welche Regionen unterstützen derzeit Hyperscale?
 
-Hyperscale ist derzeit für Einzeldatenbanken in den folgenden Regionen verfügbar: „USA, Westen 1“, „USA, Westen 2“, „USA, Osten 1“, „USA, Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Japan, Osten“, „Korea, Mitte“, „Australien, Südosten“ und „Australien, Osten“.
+Hyperscale steht derzeit für Einzeldatenbanken in den folgenden Regionen zur Verfügung:  „USA, Westen 1“, „USA, Westen 2“, „USA, Osten 1“, „USA, Mitte“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Japan, Osten“, „Korea, Mitte“, „Australien, Südosten“ und „Australien, Osten“.
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Können mehrere Hyperscale-Datenbanken pro logischen Server erstellt werden?
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Können mehrere Hyperscale-Datenbanken pro SQL-Datenbankserver erstellt werden?
 
-Ja. Weitere Informationen und Beschränkungen hinsichtlich der Anzahl von Hyperscale-Datenbanken pro logischen Server finden Sie unter [Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken auf einem logischen Server](sql-database-resource-limits-logical-server.md).
+Ja. Weitere Informationen und Beschränkungen hinsichtlich der Anzahl von Hyperscale-Datenbanken pro SQL-Datenbankserver finden Sie unter [Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken auf einem SQL-Datenbankserver](sql-database-resource-limits-database-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Welche Leistungsmerkmale weist eine Hyperscale-Datenbank auf?
 
@@ -98,9 +98,9 @@ SQL-Datenbank Hyperscale bietet schnelle Skalierbarkeit basierend auf Ihrem Work
 
 ## <a name="deep-dive-questions"></a>Vertiefende Fragen
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>Können Hyperscale und Einzeldatenbanken mit einem logischen Server kombiniert werden?
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Können Hyperscale und Einzeldatenbanken mit einem SQL-Datenbankserver kombiniert werden?
 
-Ja, das ist möglich.
+ Ja, das ist möglich.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>Müssen für Hyperscale Änderungen am Anwendungsprogrammiermodell vorgenommen werden?
 
@@ -128,15 +128,15 @@ Wenn Sie Datenanalysen im großen Umfang mit komplexen Abfragen ausführen und P
 
 ### <a name="can-i-pause-my-compute-at-any-time"></a>Kann ich die Computebereitstellung jederzeit anhalten?
 
-Nein.
+ Nein.
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Kann ich Computeressourcen mit zusätzlichem RAM für speicherintensive Workloads bereitstellen?
 
-Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Gen4-Hardware bieten mehr RAM im Vergleich zu Gen5-Hardware. Weitere Informationen finden Sie unter [Diensttarif „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview).
+ Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Gen4-Hardware bieten mehr RAM im Vergleich zu Gen5-Hardware. Weitere Informationen finden Sie unter [Diensttarif „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Kann ich mehrere Computeknoten unterschiedlicher Größe bereitstellen?
 
-Nein.
+ Nein.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Wie viele Replikate mit Leseskalierung werden unterstützt?
 
@@ -212,7 +212,7 @@ Ja. Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen zu Hyperscale mig
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>Können Hyperscale-Datenbanken zu anderen Versionen migriert werden?
 
-Nein. Eine Hyperscale-Datenbank kann in der öffentlichen Vorschau nicht zu einem anderen Diensttarif migriert werden.
+ Nein. Eine Hyperscale-Datenbank kann in der öffentlichen Vorschau nicht zu einem anderen Diensttarif migriert werden.
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zum Diensttarif „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
 
@@ -235,11 +235,11 @@ Noch nicht bekannt (noch in der Vorschau)
 
 Sie können Daten aus Azure Storage lesen und in eine Hyperscale-Datenbank laden (genau wie bei einer gewöhnlichen Einzeldatenbank). PolyBase wird in Azure SQL-Datenbank derzeit nicht unterstützt. Mit [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) oder der Ausführung eines Spark-Auftrags in [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) mit dem [Spark-Connector für SQL](sql-database-spark-connector.md) können Sie PolyBase-Abfragen ausführen. Der Spark-Connector für SQL unterstützt Importe mit BULK INSERT.
 
-Einfache Wiederherstellungen oder Massenprotokollierungsmodelle werden in Hyperscale nicht unterstützt. Für die Bereitstellung von Hochverfügbarkeit ist das vollständige Wiederherstellungsmodell erforderlich. Hyperscale bietet aufgrund der neuen Protokollarchitektur jedoch eine bessere Datenerfassungsrate im Vergleich zu einer einzelnen Azure SQL-Datenbank.
+Einfache Wiederherstellungen oder Massenprotokollierungsmodelle werden in Hyperscale nicht unterstützt. Für die Bereitstellung von Hochverfügbarkeit ist das vollständige Wiederherstellungsmodell erforderlich. Hyperscale bietet aufgrund der neuen Protokollarchitektur jedoch eine bessere Datenerfassungsrate im Vergleich zu einer Einzeldatenbank.
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>Ermöglicht SQL-Datenbank Hyperscale die Bereitstellung mehrerer Knoten für die Erfassung von großen Datenmengen?
 
-Nein. Bei SQL-Datenbank Hyperscale handelt es sich um eine SMP-Architektur, nicht um asymmetrisches Multiprocessing oder eine Multimasterarchitektur. Sie können nur mehrere Replikate erstellen, um schreibgeschützte Workloads horizontal hochzuskalieren.
+ Nein. Bei SQL-Datenbank Hyperscale handelt es sich um eine SMP-Architektur, nicht um asymmetrisches Multiprocessing oder eine Multimasterarchitektur. Sie können nur mehrere Replikate erstellen, um schreibgeschützte Workloads horizontal hochzuskalieren.
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>Von welcher ältesten SQL Server-Version aus unterstützt SQL-Datenbank Hyperscale Migrationen?
 
@@ -273,7 +273,7 @@ Die RPO beträgt 0 Minuten. Das RTO-Ziel beträgt unabhängig von der Größe de
 
 ### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Wirken sich Sicherungen von großen Datenbanken auf die Computeleistung auf meinem primären Knoten aus?
 
-Nein. Sicherungen werden vom Speichersubsystem verwaltet und nutzen Dateimomentaufnahmen. Sie wirken sich nicht auf Benutzerworkloads auf dem primären Knoten aus.
+ Nein. Sicherungen werden vom Speichersubsystem verwaltet und nutzen Dateimomentaufnahmen. Sie wirken sich nicht auf Benutzerworkloads auf dem primären Knoten aus.
 
 ### <a name="can-i-perform-geo-restore-with-a-sql-database-hyperscale-database"></a>Kann bei einer SQL-Datenbank-Instanz mit Hyperscale eine Geowiederherstellung durchgeführt werden?
 
@@ -289,7 +289,7 @@ Nein, nicht in der öffentlichen Vorschau.
 
 ### <a name="can-i-take-a-sql-database-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-sql-server-in-vm"></a>Können Datenbanksicherungen mit SQL-Datenbank Hyperscale durchgeführt und diese auf einem lokalen Server oder auf SQL Server auf einer VM wiederhergestellt werden?
 
-Nein. Das Speicherformat für Hyperscale-Datenbanken unterscheidet sich vom konventionellen SQL Server. Dabei steuern Sie keine Sicherungen und haben keinen Zugriff auf diese. Um Ihre Daten aus SQL-Datenbank Hyperscale zu extrahieren, verwenden Sie entweder den Exportdienst oder Skripts mit BCP.
+ Nein. Das Speicherformat für Hyperscale-Datenbanken unterscheidet sich vom konventionellen SQL Server. Dabei steuern Sie keine Sicherungen und haben keinen Zugriff auf diese. Um Ihre Daten aus SQL-Datenbank Hyperscale zu extrahieren, verwenden Sie entweder den Exportdienst oder Skripts mit BCP.
 
 ## <a name="cross-feature-questions"></a>Fragen zu verschiedenen Features
 
@@ -299,15 +299,15 @@ Ja. Einige der Features von Azure SQL-Datenbank werden in Hyperscale in der öff
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Funktioniert PolyBase mit SQL-Datenbank Hyperscale?
 
-Nein. PolyBase wird in Azure SQL-Datenbank nicht unterstützt.
+ Nein. PolyBase wird in Azure SQL-Datenbank nicht unterstützt.
 
 ### <a name="does-the-compute-have-support-for-r-and-python"></a>Unterstützen die Computeknoten R und Python?
 
-Nein. R und Python werden in Azure SQL-Datenbank nicht unterstützt.
+ Nein. R und Python werden in Azure SQL-Datenbank nicht unterstützt.
 
 ### <a name="are-the-compute-nodes-containerized"></a>Sind die Computeknoten in Containern gepackt?
 
-Nein. Die Datenbank befindet sich auf einer Compute-VM und nicht in einem Container.
+ Nein. Die Datenbank befindet sich auf einer Compute-VM und nicht in einem Container.
 
 ## <a name="performance-questions"></a>Fragen zur Leistung
 
@@ -321,7 +321,7 @@ Noch nicht bekannt (noch in der Vorschau)
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Beeinträchtigen Sicherungen meinen Durchsatz?
 
-Nein. Die Computeknoten sind von der Speicherschicht entkoppelt, um eine Beeinträchtigung der Computeknoten zu verhindern.
+ Nein. Die Computeknoten sind von der Speicherschicht entkoppelt, um eine Beeinträchtigung der Computeknoten zu verhindern.
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-nodes"></a>Beeinträchtigt die Bereitstellung zusätzlicher Computeknoten den Durchsatz?
 
@@ -335,7 +335,7 @@ Mehrere Minuten.
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>Wird die Datenbank während des Vorgangs zum zentralen Hoch- bzw. Herunterskalieren offline geschaltet?
 
-Nein. Das zentrale Hoch- und Herunterskalieren erfolgt online.
+ Nein. Das zentrale Hoch- und Herunterskalieren erfolgt online.
 
 ### <a name="should-i-expect-connection-drop-when-the-scaling-operations-are-in-progress"></a>Wird die Verbindung bei Skalierungsvorgängen getrennt?
 
@@ -351,7 +351,7 @@ Ja. Die temp-Datenbank wird automatisch zentral hochskaliert, je größer der Co
 
 ### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Können mehrere primäre Computeknoten wie ein Multimastersystem bereitgestellt werden, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
 
-Nein. Nur der primäre Computeknoten akzeptiert Lese-/Schreibanforderungen. Sekundäre Computeknoten akzeptieren nur schreibgeschützte Anforderungen.
+ Nein. Nur der primäre Computeknoten akzeptiert Lese-/Schreibanforderungen. Sekundäre Computeknoten akzeptieren nur schreibgeschützte Anforderungen.
 
 ## <a name="read-scale-questions"></a>Fragen zur Leseskalierung
 
@@ -365,11 +365,11 @@ Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Compute
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Kann ein dedizierter Endpunkt für das Replikat mit Leseskalierung erstellt werden?
 
-Nein. In der öffentlichen Vorschau können Sie nur eine Verbindung mit Replikaten mit Leseskalierung herstellen, indem Sie `ApplicationIntent=ReadOnly` angeben.
+ Nein. In der öffentlichen Vorschau können Sie nur eine Verbindung mit Replikaten mit Leseskalierung herstellen, indem Sie `ApplicationIntent=ReadOnly` angeben.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Führt das System einen intelligenten Lastenausgleich für die Leseworkload durch?
 
-Nein. In der Vorschau wird die schreibgeschützte Workload an ein zufälliges Replikat mit Leseskalierung umgeleitet.
+ Nein. In der Vorschau wird die schreibgeschützte Workload an ein zufälliges Replikat mit Leseskalierung umgeleitet.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Können sekundäre Computeknoten unabhängig vom primären Computeknoten zentral hoch- oder herunterskaliert werden?
 
@@ -377,11 +377,11 @@ Nein, nicht in der öffentlichen Vorschau.
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Gelten für primäre Computeknoten und zusätzliche sekundäre Computeknoten unterschiedliche temp-Datenbankgrößen?
 
-Nein. Ihre `tempdb`-Datenbank ist in der öffentlichen Vorschau basierend auf der bereitgestellten Computegröße konfiguriert. Die sekundären Computeknoten weisen die gleiche Größe wie die primären Computeknoten auf.
+ Nein. Ihre `tempdb`-Datenbank ist in der öffentlichen Vorschau basierend auf der bereitgestellten Computegröße konfiguriert. Die sekundären Computeknoten weisen die gleiche Größe wie die primären Computeknoten auf.
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>Können Indizes und Ansichten für die sekundären Computeknoten hinzugefügt werden?
 
-Nein. Hyperscale-Datenbanken verfügen über einen gemeinsame Speicher, was bedeutet, dass alle Computeknoten die gleichen Tabellen, Indizes und Ansichten anzeigen. Wenn Sie zusätzliche für Lesevorgänge optimierte Indizes auf sekundären Knoten wünschen, müssen Sie sie zuerst auf dem primären Knoten hinzufügen.
+ Nein. Hyperscale-Datenbanken verfügen über einen gemeinsame Speicher, was bedeutet, dass alle Computeknoten die gleichen Tabellen, Indizes und Ansichten anzeigen. Wenn Sie zusätzliche für Lesevorgänge optimierte Indizes auf sekundären Knoten wünschen, müssen Sie sie zuerst auf dem primären Knoten hinzufügen.
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-node"></a>Wie lange dauert die Verzögerung zwischen dem primären und dem sekundären Computeknoten?
 

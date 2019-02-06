@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 14cb821152e6a380de1be4fddef76aa2edec4a8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042256"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454214"
 ---
-# <a name="working-with-azure-cosmos-db-stored-procedures-triggers-and-user-defined-functions"></a>Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
+# <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
 Azure Cosmos DB ermöglicht die in die JavaScript-Sprache integrierte, transaktionale Ausführung von JavaScript. Wenn Sie die SQL-API in Azure Cosmos DB verwenden, können Sie **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User-Defined Functions, UDFs) in der JavaScript-Sprache schreiben. Sie können Ihre Logik in JavaScript-Code schreiben, der in der Datenbank-Engine ausgeführt wird. Sie können Trigger, gespeicherte Prozeduren und benutzerdefinierte Funktionen im [Azure-Portal](https://portal.azure.com/), mithilfe der [JavaScript-Language Integrated Query-API in Azure Cosmos DB](javascript-query-api.md) oder mit den [SQL-API-Client-SDKs von Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md) erstellen und ausführen.
 

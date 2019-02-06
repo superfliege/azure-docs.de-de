@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1279b5319ddd52ff2f3f6b4e696b73e8fe67607
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4688acbb2742579e0f9f3fbb2604ffd8ef12bfd5
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468686"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081040"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Beheben des Fehlers vom Typ „SKU nicht verfügbar“
 
@@ -41,10 +41,10 @@ Sie erhalten diesen Fehler, wenn die ausgewählte Ressourcen-SKU (z.B. die Grö�
 
 ## <a name="solution-1---powershell"></a>Lösung 1: PowerShell
 
-Verwenden Sie den Befehl [Get AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku), um zu ermitteln, welche SKUs in einer Region verfügbar sind. Filtern Sie die Ergebnisse nach Standort. Für diesen Befehl benötigen Sie die aktuelle Version von PowerShell.
+Verwenden Sie den Befehl [Get AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku), um zu ermitteln, welche SKUs in einer Region verfügbar sind. Filtern Sie die Ergebnisse nach Standort. Für diesen Befehl benötigen Sie die aktuelle Version von PowerShell.
 
 ```azurepowershell-interactive
-Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "centralus"}
+Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
 Die Ergebnisse enthalten eine Liste von SKUs für den Standort und alle Einschränkungen für diese SKU. Beachten Sie, dass die SKU möglicherweise als `NotAvailableForSubscription` aufgeführt wird.

@@ -1,6 +1,6 @@
 ---
-Titel: Nutzen des Webdiensts in Excel titleSuffix: Azure Machine Learning Studio – Beschreibung: Mit Azure Machine Learning Studio können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Nutzen des Webdiensts in Excel titleSuffix: Azure Machine Learning Studio – Beschreibung: Mit Azure Machine Learning Studio können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 01.02.2018
 ---

@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 863f7340-b065-4f59-b092-daa67da6f703
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ca787be6d3697c84b8eeef637af8a14b190b428
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2588511ac3892575b5decadd5ddca474e29a0abc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428348"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Tutorial: Azure Active Directory-Integration mit Dynamic Signal
 
@@ -168,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Dynamic Signal. Dynamic Signal unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Dynamic Signal ein neuer Benutzer erstellt.
 
 >[!Note]
->Setzen Sie sich mit dem [Dynamic Signal-Supportteam](mailto:support@dynamicsignal.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Setzen Sie sich mit dem [Dynamic Signal-Supportteam](mailto:support@dynamicsignal.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

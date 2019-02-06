@@ -12,28 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: de3407b45fb82aa38bec7b84fef34c1654676122
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e2aa82143b8e58e36509ee5d3adf99b34be89c69
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016214"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076609"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
-Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Learning-Integration [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
+Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Learning-Integration [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
 
 ## <a name="overview"></a>Übersicht
 Im Rahmen der Operationalisierung von Azure Machine Learning-Modellen wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden.
 
-Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. Unter [Erneutes Trainieren eines Machine Learning-Modells](../machine-learning/machine-learning-retrain-machine-learning-model.md) finden Sie weitere Informationen, wie Sie ein Modell in Azure Machine Learning erneut trainieren können. 
+Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. Unter [Erneutes Trainieren eines Machine Learning-Modells](../machine-learning/machine-learning-retrain-machine-learning-model.md) finden Sie weitere Informationen, wie Sie ein Modell in Azure Machine Learning erneut trainieren können.
 
-Das erneute Training kann häufig durchgeführt werden. Mithilfe der Batchausführungs- und Ressourcenaktualisierungsaktivität können Sie das Azure Machine Learning-Modell erneut trainieren und den Vorhersagewebdienst mithilfe von Data Factory aktualisieren. 
+Das erneute Training kann häufig durchgeführt werden. Mithilfe der Batchausführungs- und Ressourcenaktualisierungsaktivität können Sie das Azure Machine Learning-Modell erneut trainieren und den Vorhersagewebdienst mithilfe von Data Factory aktualisieren.
 
-Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Vorhersagewebdiensten. 
+Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Vorhersagewebdiensten.
 
 ![WEB SERVICES](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning-Ressourcenaktualisierungsaktivität 
+## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning-Ressourcenaktualisierungsaktivität
 
 Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausführungsaktivität.
 
@@ -73,37 +73,37 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 
 ## <a name="end-to-end-workflow"></a>Kompletter Workflow
 
-Der gesamte Prozess der Operationalisierung des erneuten Trainierens eines Modells und Aktualisieren der Vorhersagewebdienste umfasst die folgenden Schritte: 
+Der gesamte Prozess der Operationalisierung des erneuten Trainierens eines Modells und Aktualisieren der Vorhersagewebdienste umfasst die folgenden Schritte:
 
-- Rufen Sie mithilfe der **Batchausführungsaktivität** den **Trainingswebdienst** auf. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Vorhersagewebdiensts unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Die Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die Sie zum Aktualisieren des Vorhersagewebdiensts verwenden können. 
-- Rufen Sie mithilfe der **Ressourcenaktualisierungsaktivität** den **Ressourcenaktualisierungsendpunkt** des **Vorhersagewebdiensts** auf, um den Webdienst mit dem neu trainierten Modell zu aktualisieren. 
+- Rufen Sie mithilfe der **Batchausführungsaktivität** den **Trainingswebdienst** auf. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Vorhersagewebdiensts unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Die Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die Sie zum Aktualisieren des Vorhersagewebdiensts verwenden können.
+- Rufen Sie mithilfe der **Ressourcenaktualisierungsaktivität** den **Ressourcenaktualisierungsendpunkt** des **Vorhersagewebdiensts** auf, um den Webdienst mit dem neu trainierten Modell zu aktualisieren.
 
 ## <a name="azure-machine-learning-linked-service"></a>Mit Azure Machine Learning verknüpfter Dienst
 
-Damit der zuvor erwähnte Workflow vollständig funktioniert, müssen Sie zwei mit Azure Machine Learning verknüpfte Dienste erstellen: 
+Damit der zuvor erwähnte Workflow vollständig funktioniert, müssen Sie zwei mit Azure Machine Learning verknüpfte Dienste erstellen:
 
-1. Einen mit Azure Machine Learning verknüpften Dienst für den Trainingswebdienst. Dieser verknüpfte Dienst wird von der Batchausführungsaktivität verwendet, wie unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) beschrieben. Der Unterschied bei der Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die dann von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts verwendet wird. 
-2. Ein mit Azure Machine Learning verknüpfter Dienste für den Ressourcenaktualisierungsendpunkt des Vorhersagewebdiensts. Dieser verknüpfte Dienst wird von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts mithilfe der im vorherigen Schritt zurückgegebenen „iLearner“-Datei verwendet. 
+1. Einen mit Azure Machine Learning verknüpften Dienst für den Trainingswebdienst. Dieser verknüpfte Dienst wird von der Batchausführungsaktivität verwendet, wie unter [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) beschrieben. Der Unterschied bei der Ausgabe des Trainingswebdiensts ist eine „iLearner“-Datei, die dann von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts verwendet wird.
+2. Ein mit Azure Machine Learning verknüpfter Dienste für den Ressourcenaktualisierungsendpunkt des Vorhersagewebdiensts. Dieser verknüpfte Dienst wird von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts mithilfe der im vorherigen Schritt zurückgegebenen „iLearner“-Datei verwendet.
 
-Für den zweiten mit Azure Machine Learning verknüpften Dienst unterscheidet sich die Konfiguration, wenn Ihr Azure Machine Learning-Webdienst ein klassischer oder neuer Webdienst ist. Die Unterschiede werden in den folgenden Abschnitten getrennt erläutert. 
+Für den zweiten mit Azure Machine Learning verknüpften Dienst unterscheidet sich die Konfiguration, wenn Ihr Azure Machine Learning-Webdienst ein klassischer oder neuer Webdienst ist. Die Unterschiede werden in den folgenden Abschnitten getrennt erläutert.
 
-## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webdienst ist ein Azure Resource Manager-Webdienst 
+## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webdienst ist ein Azure Resource Manager-Webdienst
 
-Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-Endpunkt verfügbar macht, müssen Sie den zweiten **nicht standardmäßigen** Endpunkt nicht hinzufügen. Das **updateResourceEndpoint**-Element im verknüpften Dienst hat das Format: 
+Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-Endpunkt verfügbar macht, müssen Sie den zweiten **nicht standardmäßigen** Endpunkt nicht hinzufügen. Das **updateResourceEndpoint**-Element im verknüpften Dienst hat das Format:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-Beim Abfragen des Webdiensts im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen. 
+Beim Abfragen des Webdiensts im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen.
 
 Der neue Typ des Ressourcenaktualisierungsendpunkts erfordert die Dienstprinzipalauthentifizierung. Um die Dienstprinzipalauthentifizierung zu verwenden, registrieren Sie eine Anwendungsentität in Azure Active Directory (Azure AD), und teilen Sie ihr die Rolle **Mitwirkender** oder **Besitzer** des Abonnements oder der Ressourcengruppe zu, zu der der Webdienst gehört. Informationen dazu finden Sie im Artikel zum [Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen zum Verwalten einer Azure-Ressource](../active-directory/develop/howto-create-service-principal-portal.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
 
 - Anwendungs-ID
-- Anwendungsschlüssel 
+- Anwendungsschlüssel
 - Mandanten-ID
 
-Hier sehen Sie ein Beispiel der Definition eines verknüpften Diensts: 
+Hier sehen Sie ein Beispiel der Definition eines verknüpften Diensts:
 
 ```json
 {
@@ -129,18 +129,18 @@ Hier sehen Sie ein Beispiel der Definition eines verknüpften Diensts:
 }
 ```
 
-Das folgende Szenario enthält weitere Details hierzu. Es enthält ein Beispiel für das erneute Trainieren und Aktualisieren von Azure ML-Modellen aus einer Azure Data Factory-Pipeline.
+Das folgende Szenario enthält weitere Details hierzu. Es zeigt ein Beispiel für das erneute Trainieren und Aktualisieren von Azure Machine Learning Studio-Modellen aus einer Azure Data Factory-Pipeline.
 
 
 ## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Beispiel: Erneutes Trainieren und Aktualisieren eines Azure Machine Learning-Modells
 
-Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Azure ML-Batchausführungsaktivität** zum erneuten Trainieren des Modells verwendet wird. Für die Pipeline wird außerdem die **Azure ML-Aktivität zum Aktualisieren von Ressourcen** verwendet, um das Modell im Bewertungswebdienst zu aktualisieren. Darüber hinaus enthält der Abschnitt JSON-Codeausschnitte für alle verknüpften Dienste, Datasets und Pipelines im Beispiel.
+Dieser Abschnitt enthält eine Beispielpipeline, bei der die **Azure Machine Learning Studio-Batchausführungsaktivität** zum erneuten Trainieren des Modells verwendet wird. Für die Pipeline wird außerdem die **Azure Machine Learning Studio-Aktivität zur Ressourcenaktualisierung** verwendet, um das Modell im Bewertungswebdienst zu aktualisieren. Darüber hinaus enthält der Abschnitt JSON-Codeausschnitte für alle verknüpften Dienste, Datasets und Pipelines im Beispiel.
 
 ### <a name="azure-blob-storage-linked-service"></a>Mit Azure Blob Storage verknüpfter Dienst:
 Der Azure-Speicher enthält die folgenden Daten:
 
-* Trainingsdaten: Die Eingabedaten für den Azure ML-Trainingswebdienst.  
-* iLearner-Datei: Die Ausgabe des Azure ML-Trainingswebdiensts. Die Datei dient darüber hinaus als Eingabe für die Aktivität zur Ressourcenaktualisierung.  
+* Trainingsdaten: Die Eingabedaten für den Azure Machine Learning Studio-Trainingswebdienst.
+* iLearner-Datei: Die Ausgabe des Azure Machine Learning Studio-Trainingswebdiensts. Die Datei dient darüber hinaus als Eingabe für die Aktivität zur Ressourcenaktualisierung.
 
 Dies ist die JSON-Beispieldefinition des verknüpften-Diensts:
 
@@ -156,11 +156,11 @@ Dies ist die JSON-Beispieldefinition des verknüpften-Diensts:
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Verknüpfter Dienst für den Azure ML-Trainingsendpunkt
+### <a name="linked-service-for-azure-machine-learning-studio-training-endpoint"></a>Verknüpfter Dienst für den Azure Machine Learning Studio-Trainingsendpunkt
 Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verknüpften Dienst, der auf den Standardendpunkt des Trainingswebdiensts verweist.
 
 ```JSON
-{    
+{
     "name": "trainingEndpoint",
       "properties": {
         "type": "AzureML",
@@ -172,16 +172,16 @@ Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verk
 }
 ```
 
-Führen Sie in **Azure ML Studio** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
+Führen Sie in **Azure Machine Learning Studio** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
 
 1. Klicken Sie im linken Menü auf **WEB SERVICES** .
 2. Klicken Sie in der Liste der Webdienste auf den **Trainingswebdienst** .
 3. Klicken Sie neben dem Textfeld **API-Schlüssel** auf „Kopieren“. Fügen Sie den Schlüssel aus der Zwischenablage in den Data Factory-JSON-Editor ein.
-4. Klicken Sie in **Azure ML Studio** auf den Link **BATCHAUSFÜHRUNG**.
-5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung**, und fügen Sie ihn in den Data Factory-JSON-Editor ein.   
+4. Klicken Sie in **Azure Machine Learning Studio** auf den Link **BATCHAUSFÜHRUNG**.
+5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung**, und fügen Sie ihn in den Data Factory-JSON-Editor ein.
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Azure ML-Bewertungsendpunkt:
-Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verknüpften Dienst, der auf den aktualisierbaren Endpunkt des Bewertungswebdiensts verweist.  
+### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Azure Machine Learning Studio-Bewertungsendpunkt:
+Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verknüpften Dienst, der auf den aktualisierbaren Endpunkt des Bewertungswebdiensts verweist.
 
 ```JSON
 {
@@ -201,7 +201,7 @@ Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verk
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine „iLearner“-Datei als Ausgabe. Die Ressourcenaktualisierungsaktivität verwendet anschließend diese „iLearner“-Datei zum Aktualisieren des Vorhersagewebdiensts. 
+Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine „iLearner“-Datei als Ausgabe. Die Ressourcenaktualisierungsaktivität verwendet anschließend diese „iLearner“-Datei zum Aktualisieren des Vorhersagewebdiensts.
 
 ```JSON
 {
@@ -222,25 +222,25 @@ Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureML
                             "LinkedServiceName":{
                                 "referenceName": "StorageLinkedService",
                                 "type": "LinkedServiceReference"
-                            }, 
+                            },
                             "FilePath":"azuremltesting/input"
-                        }, 
+                        },
                         "input2": {
                             "LinkedServiceName":{
                                 "referenceName": "StorageLinkedService",
-                                "type": "LinkedServiceReference" 
-                            }, 
+                                "type": "LinkedServiceReference"
+                            },
                             "FilePath":"azuremltesting/input"
-                        }        
+                        }
                     },
                     "webServiceOutputs": {
                         "output1": {
                             "LinkedServiceName":{
                                 "referenceName": "StorageLinkedService",
-                                "type": "LinkedServiceReference"   
-                            }, 
+                                "type": "LinkedServiceReference"
+                            },
                             "FilePath":"azuremltesting/output"
-                        }        
+                        }
                     }
                 }
             },
@@ -260,10 +260,10 @@ Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureML
                             },
                     "trainedModelFilePath": "azuremltesting/output/newModelForArm.ilearner"
                 },
-                "dependsOn": [ 
-                    { 
-                        "activity": "amlbeGetilearner", 
-                        "dependencyConditions": [ "Succeeded" ] 
+                "dependsOn": [
+                    {
+                        "activity": "amlbeGetilearner",
+                        "dependencyConditions": [ "Succeeded" ]
                     }
                  ]
 
@@ -273,7 +273,7 @@ Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureML
 }
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden: 
+In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden:
 
 * [U-SQL-Aktivität](transform-data-using-data-lake-analytics.md)
 * [Hive-Aktivität](transform-data-using-hadoop-hive.md)

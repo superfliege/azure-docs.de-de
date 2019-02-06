@@ -1,10 +1,22 @@
 ---
-Titel: Exportieren und Löschen von Daten aus Machine Learning Studio titleSuffix: Azure Machine Learning Studio – Beschreibung: Im Produkt enthaltene und von Azure Machine Learning Studio gespeicherte Daten stehen über das Azure-Portal sowie über authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: conceptual
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 25.05.2018
+title: Exportieren und Löschen von Daten aus Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: Im Produkt enthaltene und von Azure Machine Learning Studio gespeicherte Daten stehen über das Azure-Portal sowie über authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: conceptual
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 05/25/2018
+ms.openlocfilehash: d2276eb11ce904b485440a6ce91981846a980dbc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462187"
 ---
-
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportieren und Löschen von im Produkt enthaltenen Benutzerdaten aus Azure Machine Learning Studio
 
 Daten, die im Produkt enthalten sind und von Azure Machine Learning Studio gespeichert wurden, können Sie über das Azure-Portal, die Visual Studio-Schnittstelle, PowerShell sowie authentifizierte REST-APIs löschen oder exportieren. In diesem Artikel erfahren Sie, wie das geht. 

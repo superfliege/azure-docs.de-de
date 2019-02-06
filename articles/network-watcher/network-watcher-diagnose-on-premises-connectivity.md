@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: e51d31035a8b05238ef0f8d13dd6b6c3f9ad02e8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26374201"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099395"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
@@ -36,7 +36,7 @@ Sie möchten eine Site-to-Site-Verbindung zwischen Azure und dem lokalen Netzwer
 1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
 1. [Konfigurieren von FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Eine ausführliche Hilfestellung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter: [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
 Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Beachten Sie, dass diese Einstellungen wie bereits erwähnt nicht geändert werden können.  Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
 
@@ -80,34 +80,34 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
-| NoFault | Es wurde kein Fehler erkannt. |Ja|
-| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
-| PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein|
-| UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein. | Nein |
-| VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein |
-| PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein|
-| ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein|
-| NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dies ist nur eine Warnung.| Nein|
-| ConnectionsNotConnected | Es wurde keine der Verbindungen hergestellt. Dies ist nur eine Warnung.| Ja|
-| GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | Ja |
+| NoFault | Es wurde kein Fehler erkannt. |JA|
+| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
+| PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
+| UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein. | Nein  |
+| VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein  |
+| PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein |
+| ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein |
+| NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dies ist nur eine Warnung.| Nein |
+| ConnectionsNotConnected | Es wurde keine der Verbindungen hergestellt. Dies ist nur eine Warnung.| JA|
+| GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | JA |
 
 ### <a name="connection"></a>Verbindung
 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
-| NoFault | Es wurde kein Fehler erkannt. |Ja|
-| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
-| PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein|
-| UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein.  | Nein |
-| VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein |
-| ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein |
-| ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
-| ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
-| ConnectionMarkedStandy | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
-| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
-| PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
-| IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
-| WfpParse-Fehler | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|
+| NoFault | Es wurde kein Fehler erkannt. |JA|
+| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
+| PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
+| UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein.  | Nein  |
+| VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein  |
+| ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein  |
+| ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein |
+| ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | JA |
+| ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| JA|
+| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | JA|
+| PeerReachability | Das Peergateway ist nicht erreichbar. | JA|
+| IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | JA|
+| WfpParse-Fehler | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |JA|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

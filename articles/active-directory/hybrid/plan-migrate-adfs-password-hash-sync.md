@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/13/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c6c13d0e27edd5563f10df59ce7af585a345bfab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a24281f2b01b53ddb165d15bca4d8d43c26c5c05
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463336"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159846"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -30,7 +30,8 @@ Für die Migration von AD FS zur Kennworthashsynchronisierung gelten die folgend
 
 ### <a name="update-azure-ad-connect"></a>Aktualisieren von Azure AD Connect
 
-Damit Sie die Schritte zur Umstellung auf die Verwendung der Kennworthashsynchronisierung erfolgreich ausführen können, müssen Sie über [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 oder höher verfügen. Mit der Version Azure AD Connect 1.1.819.0 wurde die Durchführung der Anmeldekonvertierung erheblich geändert. Der zeitliche Gesamtaufwand für die Migration von AD FS zur Cloudauthentifizierung beträgt in dieser Version nicht mehr mehrere Stunden, sondern liegt nur noch im Minutenbereich.
+Für die erfolgreiche Durchführung der Schritte für die Migration zur Kennworthashsynchronisierung sollte mindestens [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) Version 1.1.819.0 vorhanden sein. Diese Version enthält wesentliche Änderungen an der Art und Weise, wie die Konvertierung der Anmeldung durchgeführt wird, und reduziert die Gesamtzeit für die Migration vom Verbund zur Cloudauthentifizierung von Stunden auf Minuten.
+
 
 > [!IMPORTANT]
 > Unter Umständen lesen Sie in veralteten Dokumentationen, Tools und Blogs noch, dass eine Benutzerkonvertierung erforderlich ist, wenn Sie Domänen von der Verbundidentität auf die verwaltete Identität umstellen. Das *Konvertieren von Benutzern* muss aber nicht mehr durchgeführt werden. Microsoft arbeitet an der Aktualisierung der Dokumentation und der Tools, damit diese Veränderung entsprechend widergespiegelt wird.
@@ -133,7 +134,7 @@ In diesem Abschnitt werden die Bereitstellungsaspekte und Details zur Verwendung
 
 Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität durchführen, sollten Sie sich genau ansehen, wie Sie AD FS derzeit für Azure AD, Office 365 und andere Anwendungen (Vertrauensstellungen der vertrauenden Seite) nutzen. Sehen Sie sich vor allem die Szenarien an, die in der folgenden Tabelle beschrieben sind:
 
-| Stand | Aktion |
+| Wenn | Dann |
 |-|-|
 | Sie planen, AD FS für andere Anwendungen (als Azure AD und Office 365) weiterzuverwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen erhält, z.B. Office 365) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|
@@ -189,7 +190,7 @@ Moderne Authentifizierungsclients (Office 2016-/Office 2013-, iOS- und Android-A
 > [!IMPORTANT]
 > Fahren Sie Ihre AD FS-Umgebung nicht herunter, und entfernen Sie die Vertrauensstellung der vertrauenden Seite in Office 365 nicht, bevor Sie überprüft haben, ob alle Benutzer die Cloudauthentifizierung erfolgreich nutzen können.
 
-### <a name="plan-for-rollback"></a>Planen eines Rollbacks
+### <a name="plan-for-rollback"></a>Planen der Zurücksetzung
 
 Falls ein größeres Problem besteht, das Sie nicht schnell lösen können, treffen Sie unter Umständen die Entscheidung, für die Lösung einen Rollback zurück zum Verbund auszuführen. Sie sollten unbedingt planen, was zu tun ist, wenn Ihre Bereitstellung nicht wie gewünscht verläuft. Wenn die Konvertierung von Domänen oder Benutzern während der Bereitstellung fehlschlägt oder Sie zum Verbund zurückkehren müssen, müssen Sie wissen, wie Sie Ausfälle minimieren und die Auswirkungen auf Ihre Benutzer reduzieren können.
 

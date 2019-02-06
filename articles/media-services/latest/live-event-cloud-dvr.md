@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-LiveEvent und ein Cloud-DVR | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, was LiveOutput ist und wie ein Cloud-DVR verwendet wird.
+title: Azure Media Services-Liveereignis und ein Cloud-DVR | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, was eine Liveausgabe ist und wie ein Cloud-DVR verwendet wird.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,31 +13,31 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3646c6167f901fe43080d39df42fdb127b1c7fc2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4dd14587ec7e1473953981c1ef8c32c59eb9a1d6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828144"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888524"
 ---
 # <a name="using-a-cloud-dvr"></a>Verwenden eines Cloud-DVR
 
-[LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) ermöglicht es Ihnen, die Eigenschaften des ausgehenden Livestreams zu steuern, z.B. wie viel des Streams aufgezeichnet wird (beispielsweise die Kapazität des Cloud-DVR) und ob die Zuschauer mit der Wiedergabe des Livestreams beginnen können oder nicht. Die Beziehung zwischen einem **LiveEvent** und dem zugehörigen **LiveOutput** ist ähnlich wie bei einer traditionellen Fernsehsendung, bei der ein Kanal (**LiveEvent**) einen konstanten Videodatenstrom darstellt und eine Aufzeichnung (**LiveOutput**) auf ein bestimmtes Zeitsegment (z.B. Abendnachrichten von 18:30 bis 19:00 Uhr) ausgerichtet ist. Sie können Fernsehsendungen mit einem digitalen Videorecorder (DVR) aufnehmen – die entsprechende Funktion in LiveEvents wird über die ArchiveWindowLength-Eigenschaft verwaltet. Es handelt sich um eine ISO-8601-Zeitspanne (z.B. PTHH:MM:SS), die die Kapazität des Digitalrecorders angibt. Diese kann von mindestens 3 Minuten auf bis zu maximal 25 Stunden eingestellt werden.
+[Liveausgaben](https://docs.microsoft.com/rest/api/media/liveoutputs) ermöglichen es Ihnen, die Eigenschaften des ausgehenden Livestreams zu steuern, etwa wie viel des Streams aufgezeichnet wird (z.B. die Kapazität des Cloud-DVR) und ob die Zuschauer mit der Wiedergabe des Livestreams beginnen können. Die Beziehung zwischen einem **Liveereignis** und der zugehörigen **Liveausgabe** ist ähnlich wie bei einer traditionellen Fernsehsendung, bei der ein Kanal (**Liveereignis**) einen konstanten Videodatenstrom darstellt und eine Aufzeichnung (**Liveausgabe**) auf ein bestimmtes Zeitsegment (z.B. Abendnachrichten von 18:30 bis 19:00 Uhr) ausgerichtet ist. Sie können Fernsehsendungen mit einem digitalen Videorecorder (DVR) aufnehmen – die entsprechende Funktion in Liveereignissen wird über die ArchiveWindowLength-Eigenschaft verwaltet. Es handelt sich um eine ISO-8601-Zeitspanne (z.B. PTHH:MM:SS), die die Kapazität des Digitalrecorders angibt. Diese kann von mindestens 3 Minuten auf bis zu maximal 25 Stunden eingestellt werden.
 
-## <a name="liveoutput"></a>LiveOutput
+## <a name="live-output"></a>Liveausgabe
 
 Der Wert **ArchiveWindowLength** legt fest, wie weit zurück ein Zuschauer von der aktuellen Liveposition aus suchen kann.  **ArchiveWindowLength** legt außerdem fest, auf welche Länge Clientmanifeste anwachsen können.
 
-Angenommen, Sie streamen ein Fußballspiel, und der Wert für **ArchiveWindowLength** ist nur auf 30 Minuten festgelegt. Ein Zuschauer, der 45 Minuten nach Spielbeginn damit beginnt, das Ereignis zu verfolgen, kann höchstens eine Suche bis zur 15-Minuten-Markierung durchführen. Ihr **LiveOutput** für das Spiel wird fortgesetzt, bis das **LiveEvent** beendet wird, aber Inhalt außerhalb von **ArchiveWindowLength** wird fortlaufend aus dem Speicher verworfen und ist nicht wiederherstellbar. In diesem Beispiel würden die Videodaten zwischen dem Ereignisstart und der 15-Minuten-Markierung von Ihrem DVR und aus dem Container im Blobspeicher für das [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) gelöscht werden. Das Archiv ist nicht wiederherstellbar und wird aus dem Container im Azure-Blobspeicher gelöscht.
+Angenommen, Sie streamen ein Fußballspiel, und der Wert für **ArchiveWindowLength** ist nur auf 30 Minuten festgelegt. Ein Zuschauer, der 45 Minuten nach Spielbeginn damit beginnt, das Ereignis zu verfolgen, kann höchstens eine Suche bis zur 15-Minuten-Markierung durchführen. Ihre **Liveausgabe** für das Spiel wird fortgesetzt, bis das **Liveereignis** beendet wird. Der Inhalt außerhalb von **ArchiveWindowLength** wird jedoch fortlaufend aus dem Speicher verworfen und ist nicht wiederherstellbar. In diesem Beispiel würden die Videodaten zwischen dem Ereignisstart und der 15-Minuten-Markierung von Ihrem DVR und aus dem Container im Blobspeicher für das [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) gelöscht werden. Das Archiv ist nicht wiederherstellbar und wird aus dem Container im Azure-Blobspeicher gelöscht.
 
-Jedem **LiveOutput**-Objekt ist ein **Medienobjekt** zugeordnet, das zum Aufzeichnen des Videos im zugeordneten Azure Blob Storage-Container verwendet wird. Zum Veröffentlichen von LiveOutput müssen Sie einen **StreamingLocator** für das zugehörige **Medienobjekt** erstellen. Nachdem ein [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie eine Streaming-URL erstellen, die Sie Ihren Zuschauern bereitstellen.
+Jeder **Liveausgabe** ist ein **Medienobjekt** zugeordnet, das zum Aufzeichnen des Videos im zugeordneten Azure Blob Storage-Container verwendet wird. Zum Veröffentlichen der Liveausgabe müssen Sie einen **Streaminglocator** für das zugehörige **Medienobjekt** erstellen. Nach dem Erstellen eines [Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators) können Sie eine Streaming-URL erstellen, die Sie Ihren Zuschauern bereitstellen.
 
-Ein **LiveEvent** unterstützt bis zu drei gleichzeitig ausgeführte **LiveOutput**-Objekte, sodass Sie maximal 3 Aufzeichnungen/Archive aus einem Livestream erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Angenommen, Sie müssen rund um die Uhr einen linearen Livefeed senden. Sie möchten jedoch den ganzen Tag über „Aufzeichnungen“ der unterschiedlichen Programme erstellen, die Sie Ihren Kunden auf Abruf zur Nachbetrachtung anbieten können. Für dieses Szenario erstellen Sie zunächst einen primären LiveOutput mit einem kurzen Archivfenster von maximal einer Stunde. Dies ist der primäre Livestream, in den sich die Zuschauer einschalten können. Sie erstellen einen **StreamingLocator** für diesen **LiveOutput** und veröffentlichen ihn als „Livefeed“ in Ihrer Anwendung oder auf Ihrer Website. Während das **LiveEvent** ausgeführt wird, können Sie programmgesteuert einen zweiten parallelen **LiveOutput** zu Beginn eines Programms erstellen (oder 5 Minuten früher, um Material zum späteren Schneiden bereitzustellen). Dieser zweite **LiveOutput** kann 5 Minuten nach Programmende gelöscht werden. Mit diesem zweiten **Medienobjekt** können Sie einen neuen **StreamingLocator** erstellen, um dieses Programm als On-Demand-Medienobjekt in Ihrem Anwendungskatalog bereitzustellen. Sie können diesen Vorgang für andere Programmgrenzen oder für Highlights, die Sie als On-Demand-Videos freischalten möchten, mehrfach wiederholen, während der „Livefeed“ für den ersten **LiveOutput** weiterhin den linearen Feed sendet. 
+Ein **Liveereignis** unterstützt bis zu drei gleichzeitig ausgeführte **Liveausgaben**, sodass Sie maximal drei Aufzeichnungen/Archive aus einem Livestream erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Angenommen, Sie müssen rund um die Uhr einen linearen Livefeed senden. Sie möchten jedoch den ganzen Tag über „Aufzeichnungen“ der unterschiedlichen Programme erstellen, die Sie Ihren Kunden auf Abruf zur Nachbetrachtung anbieten können. Für dieses Szenario erstellen Sie zunächst eine primäre Liveausgabe mit einem kurzen Archivfenster von maximal einer Stunde. Dies ist der primäre Livestream, in den sich die Zuschauer einschalten können. Sie erstellen einen **Streaminglocator** für diese **Liveausgabe** und veröffentlichen ihn als „Livefeed“ in Ihrer Anwendung oder auf Ihrer Website. Während das **Liveereignis** ausgeführt wird, können Sie programmgesteuert eine zweite parallele **Liveausgabe** zu Beginn eines Programms erstellen (oder 5 Minuten früher, um Material zum späteren Schneiden bereitzustellen). Diese zweite **Liveausgabe** kann 5 Minuten nach Programmende gelöscht werden. Mit diesem zweiten **Medienobjekt** können Sie einen neuen **Streaminglocator** erstellen, um dieses Programm als On-Demand-Medienobjekt in Ihrem Anwendungskatalog bereitzustellen. Sie können diesen Vorgang für andere Programmgrenzen oder für Highlights, die Sie als On-Demand-Videos freischalten möchten, mehrfach wiederholen, während der „Livefeed“ für die erste **Liveausgabe** weiterhin den linearen Feed sendet. 
 
 > [!NOTE]
-> **LiveOutput** wird bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie den **LiveOutput** löschen, werden das zugrunde liegende **Medienobjekt** und sein Inhalt nicht gelöscht. 
+> **Liveausgaben** werden bei der Erstellung gestartet und beim Löschen beendet. Wenn Sie die **Liveausgabe** löschen, werden das zugrunde liegende **Medienobjekt** und dessen Inhalt nicht gelöscht. 
 >
-> Wenn Sie das **LiveOutput**-Medienobjekt mit einem **StreamingLocator** veröffentlicht haben, ist das **LiveEvent** (bis zur DVR-Fensterlänge) weiterhin bis zu Ablauf oder Löschung des **StreamingLocators** sichtbar, je nachdem, was zuerst eintritt.
+> Wenn Sie das Medienobjekt der **Liveausgabe** mit einem **Streaminglocator** veröffentlicht haben, ist das **Liveereignis** (bis zur DVR-Fensterlänge) weiterhin bis zu Ablauf oder Löschung des **Streaminglocators** sichtbar, je nachdem, was zuerst eintritt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 115604d9b2aa21018742bbedbc737405b52599e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188945"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158816"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services
 
@@ -28,7 +28,11 @@ In diesem Artikel erfahren Sie, wie Sie einen HDInsight-Cluster mit ESP mit Azur
 ## <a name="enable-azure-ad-ds"></a>Aktivieren von Azure AD DS
 
 > [!NOTE]  
-> Nur Mandantenadministratoren verfügen über die Berechtigungen zum Aktivieren von Azure AD DS. Wenn es sich bei dem Clusterspeicher um Azure Data Lake Storage (ADLS) Gen1 oder Gen2 handelt, deaktivieren Sie Multi-Factor Authentication (MFA) nur für Benutzer, die auf den Cluster zugreifen müssen. Wenn der Clusterspeicher Azure Blob Storage (WASB) ist, deaktivieren Sie MFA nicht.
+> Nur Mandantenadministratoren verfügen über die Berechtigungen zum Aktivieren von Azure AD DS. Wenn es sich bei dem Clusterspeicher um Azure Data Lake Storage (ADLS) Gen1 oder Gen2 handelt, müssen Sie Multi-Factor Authentication (MFA) nur für Benutzer deaktivieren, die mittels Kerberos-Authentifizierung auf den Cluster zugreifen müssen. Sie können [vertrauenswürdige IP-Adressen](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) oder [bedingten Zugriff](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview) verwenden, um MFA nur für bestimmte Benutzer zu deaktivieren, wenn diese auf den VNET-IP-Adressbereich des HDInsight-Clusters zugreifen. Bei Verwendung von bedingtem Zugriff muss der AD-Dienstendpunkt im HDInsight-VNET aktiviert sein.
+>
+>Wenn der Clusterspeicher Azure Blob Storage (WASB) ist, deaktivieren Sie MFA nicht.
+
+
 
 Das Aktivieren von AD DS ist eine Voraussetzung zum Erstellen eines HDInsight-Clusters mit ESP. Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 

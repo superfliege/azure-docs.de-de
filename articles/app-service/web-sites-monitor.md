@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247254"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913157"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile Back-Ends und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -39,7 +39,7 @@ Wenn die App in einem Plan vom Typ *Basic*, *Standard* oder *Premium* gehostet w
 
 Im Folgenden sind die Kontingente für Free- oder Shared-Apps aufgelistet:
 
-| Kontingent | BESCHREIBUNG |
+| Kontingent | Beschreibung |
 | --- | --- |
 | **CPU (Short)** (CPU (kurz)) | Die zulässige CPU-Menge für diese App in einem Fünf-Minuten-Intervall. Dieses Kontingent wird alle fünf Minuten zurückgesetzt. |
 | **CPU (Day)** (CPU (Tag)) | Die zulässige CPU-Gesamtmenge für diese App für einen Tag. Dieses Kontingent wird alle 24 Stunden um Mitternacht (UTC) zurückgesetzt. |
@@ -69,13 +69,19 @@ Metriken liefern Informationen zur App oder zum Verhalten des App Service-Plans.
 
 Für eine App sind folgende Metriken verfügbar:
 
-| Metrik | BESCHREIBUNG |
+| Metrik | Beschreibung |
 | --- | --- |
 | **Durchschnittliche Antwortzeit** | Die durchschnittliche Zeit in Millisekunden, die die App zum Verarbeiten von Anforderungen benötigt. |
 | **Durchschnittlicher Arbeitssatz für Arbeitsspeicher** | Die durchschnittliche Menge an Arbeitsspeicher, die von der App verwendet wird, in Megabytes (MiB). |
+| **Verbindungen** | Die Anzahl gebundener Sockets in der Sandbox („w3wp.exe“ und untergeordnete Prozesse).  Ein gebundener Socket wird durch Aufrufen von bind()-/connect()-APIs erstellt und bleibt erhalten, bis er per „CloseHandle()“/“closesocket()“ geschlossen wird. |
 | **CPU-Zeit** | Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie unter [CPU-Zeit und CPU-Prozentsatz](#cpu-time-vs-cpu-percentage). |
+| **Aktuelle Assemblys** | Die aktuelle Anzahl von Assemblys, die in allen Anwendungsdomänen in dieser Anwendung geladen wurden. |
 | **Eingehende Daten** | Die Menge an eingehender Bandbreite in MiB, die von der App verbraucht wird. |
 | **Ausgehende Daten** | Die Menge an ausgehender Bandbreite in MiB, die von der App verbraucht wird. |
+| **Garbage Collections der Generation 0** | Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 0 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten.|
+| **Garbage Collections der Generation 1** | Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 1 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten.|
+| **Garbage Collections der Generation 2** | Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 2 ausgeführt wurde.|
+| **Anzahl Handles** | Die Gesamtanzahl von Handles, die aktuell durch den App-Prozess geöffnet sind.|
 | **HTTP 2xx** | Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode ≥ 200 und < 300 führen. |
 | **HTTP 3xx** | Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode ≥ 300 und < 400 führen. |
 | **HTTP 401** | Die Anzahl von Anforderungen, die zu einem HTTP 401-Statuscode führen. |
@@ -84,8 +90,20 @@ Für eine App sind folgende Metriken verfügbar:
 | **HTTP 406** | Die Anzahl von Anforderungen, die zu einem HTTP 406-Statuscode führen. |
 | **HTTP 4xx** | Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode ≥ 400 und < 500 führen. |
 | **HTTP-Serverfehler** | Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode ≥ 500 und < 600 führen. |
+| **IO Other Bytes Per Second** (E/A: Andere Bytes pro Sekunde) | Die Rate, mit der der App-Prozess Bytes an E/A-Vorgänge ausgibt, die keine Daten beinhalten (beispielsweise Steuerungsvorgänge).|
+| **IO Other Operations Per Second** (E/A: Andere Vorgänge pro Sekunde) | Die Rate, mit der der App-Prozess E/A-Vorgänge ausgibt, bei denen es sich weder um Lese- noch um Schreibvorgänge handelt.|
+| **E/A: Gelesene Bytes pro Sekunde** | Die Rate, mit der der App-Prozess Bytes aus E/A-Vorgängen liest.|
+| **E/A: Lesevorgänge pro Sekunde** | Die Rate, mit der der App-Prozess E/A-Lesevorgänge ausgibt.|
+| **E/A: Geschriebene Bytes pro Sekunde** | Die Rate, mit der der App-Prozess Bytes in E/A-Vorgänge schreibt.|
+| **E/A: Schreibvorgänge pro Sekunde** | Die Rate, mit der der App-Prozess E/A-Schreibvorgänge ausgibt.|
 | **Arbeitssatz für Arbeitsspeicher** | Die aktuelle Menge an Arbeitsspeicher in MiB, die von der App verwendet wird. |
+| **Private Bytes** | „Private Bytes“ gibt die aktuell durch den App-Prozess zugeordnete Größe des Arbeitsspeichers (in Bytes) an, die nicht mit anderen Prozessen geteilt werden kann.|
 | **Anforderungen** | Die Gesamtzahl von Anforderungen, unabhängig vom sich ergebenden HTTP-Statuscode. |
+| **Requests In Application Queue** (Anforderungen in der Anwendungswarteschlange) | Die Anzahl von Anforderungen in der Warteschlange für Anwendungsanforderungen.|
+| **Threadanzahl** | Die Anzahl von Threads, die derzeit im App-Prozess aktiv sind.|
+| **Anwendungsdomänen insgesamt** | Die Anzahl von Anwendungsdomänen, die aktuell in dieser Anwendung geladen sind.|
+| **Gesamtanzahl der entladenen Anwendungsdomänen** | Die Gesamtanzahl von Anwendungsdomänen, die seit dem Start der Anwendung entladen wurden.|
+
 
 Für einen App Service-Plan sind folgende Metriken verfügbar:
 
@@ -93,7 +111,7 @@ Für einen App Service-Plan sind folgende Metriken verfügbar:
 > Metriken für App Service-Pläne sind nur für Pläne in den Tarifen *Basic*, *Standard* und *Premium* verfügbar.
 > 
 
-| Metrik | BESCHREIBUNG |
+| Metrik | Beschreibung |
 | --- | --- |
 | **CPU-Prozentsatz** | Die durchschnittliche CPU-Nutzung über alle Instanzen des Plans hinweg. |
 | **Arbeitsspeicherprozentsatz** | Die durchschnittliche Arbeitsspeichernutzung über alle Instanzen des Plans hinweg. |

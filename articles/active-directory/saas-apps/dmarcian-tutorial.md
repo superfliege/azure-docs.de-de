@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 197e0cceb7457ffdd96ada7d4561de56c7ed10fc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039886"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Tutorial: Azure Active Directory-Integration mit dmarcian
 
@@ -157,15 +157,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Authentifizierung ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * Klicken Sie im Abschnitt **Add dmarcian to your Identity Provider** (dmarcian zum Identitätsanbieter hinzufügen) auf **Copy** (Kopieren), um die **Assertionsverbraucherdienst-URL** für Ihre Instanz zu kopieren, und fügen Sie sie im Azure-Portal im Abschnitt **Domäne und URLs für dmarcian** ins Textfeld **Antwort-URL** ein.
+    * Klicken Sie im Abschnitt **Add dmarcian to your Identity Provider** (dmarcian zum Identitätsanbieter hinzufügen) auf **Copy** (Kopieren), um die **Assertionsverbraucherdienst-URL** für Ihre Instanz zu kopieren, und fügen Sie sie im Azure-Portal im Abschnitt  **Domäne und URLs für dmarcian** ins Textfeld **Antwort-URL** ein.
 
-    * Klicken Sie im Abschnitt **Add dmarcian to your Identity Provider** (dmarcian zum Identitätsanbieter hinzufügen) auf **Copy** (Kopieren), um die **Entität-ID** für Ihre Instanz zu kopieren, und fügen Sie sie im Azure-Portal im Abschnitt **Domäne und URLs für dmarcian** ins Textfeld **Bezeichner** ein.
+    * Klicken Sie im Abschnitt **Add dmarcian to your Identity Provider** (dmarcian zum Identitätsanbieter hinzufügen) auf **Copy** (Kopieren), um die **Entitäts-ID** für Ihre Instanz zu kopieren, und fügen Sie sie im Azure-Portal im Abschnitt **Domäne und URLs für dmarcian** ins Textfeld **Bezeichner** ein.
 
     * Fügen Sie im Abschnitt **Set up Authentication** (Authentifizierung einrichten) im Textfeld **Identity Provider Metadata** (Metadaten des Identitätsanbieters) die **App-Verbundmetadaten-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
     * Fügen Sie im Abschnitt **Set up Authentication** (Authentifizierung einrichten) im Textfeld **Attribute Statements** (Attributanweisungen) die URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
-    * Kopieren Sie im Abschnitt **Set up Login URL** (Anmelde-URL einrichten) die **Anmelde-URL** für Ihre Instanz, und fügen Sie sie im Azure-Portal im Abschnitt **Domäne und URLs für dmarcian** ins Textfeld **Anmelde-URL** ein.
+    * Kopieren Sie im Abschnitt **Set up Login URL** (Anmelde-URL einrichten) die **Anmelde-URL** für Ihre Instanz, und fügen Sie sie im Azure-Portal im Abschnitt  **Domäne und URLs für dmarcian** ins Textfeld  **Anmelde-URL** ein.
 
         > [!Note]
         > Sie können die **Anmelde-URL** gemäß Ihrer Organisation anpassen.

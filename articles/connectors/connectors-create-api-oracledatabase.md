@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230232"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295356"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -57,7 +57,7 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Wählen Sie **Speichern**aus. Beim Speichern wird automatisch eine Anforderungs-URL generiert. 
+3. Wählen Sie **Speichern** aus. Beim Speichern wird automatisch eine Anforderungs-URL generiert. 
 
 4. Wählen Sie **Neuer Schritt** aus und anschließend **Aktion hinzufügen**. Geben Sie `oracle` ein, um die verfügbaren Aktionen anzuzeigen: 
 
@@ -97,25 +97,25 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 #### <a name="error-cannot-reach-the-gateway"></a>**Fehler**: Das Gateway ist nicht erreichbar.
 
-**Ursache**: Das lokale Datengateway kann keine Verbindung zur Cloud herstellen. 
+**Ursache:** Das lokale Datengateway kann keine Verbindung zur Cloud herstellen. 
 
 **Lösung**: Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.  Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt. Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler**: Der verwendete Anbieter ist veraltet: „System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware.“. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler**: Der verwendete Anbieter ist veraltet: System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
 
-**Ursache**: Das Oracle-Client-SDK ist nicht auf dem Computer installiert, auf dem das lokale Datengateway ausgeführt wird.  
+**Ursache:** Das Oracle-Client-SDK ist nicht auf dem Computer installiert, auf dem das lokale Datengateway ausgeführt wird.  
 
-**Lösung**: Laden Sie das Oracle-Client-SDK auf demselben Computer herunter, auf dem sich das lokale Datengateway befindet, und installieren Sie es.
+**Lösung:** Laden Sie das Oracle-Client-SDK auf demselben Computer herunter, auf dem sich das lokale Datengateway befindet, und installieren Sie es.
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fehler**: Für die Tabelle „[Tablename]“ sind keine Schlüsselspalten definiert.
 
-**Ursache**: Die Tabelle weist keinen Primärschlüssel auf.  
+**Ursache:** Die Tabelle weist keinen Primärschlüssel auf.  
 
-**Lösung**: Der Oracle-Datenbankconnector erfordert, dass eine Tabelle mit einer Primärschlüsselspalte verwendet wird.
+**Lösung:** Der Oracle-Datenbankconnector erfordert, dass eine Tabelle mit einer Primärschlüsselspalte verwendet wird.
 
 #### <a name="currently-not-supported"></a>Wird derzeit nicht unterstützt.
 
-* Ansichten und gespeicherte Verfahren 
+* Ansichten 
 * Tabellen mit zusammengesetzten Schlüsseln
 * Geschachtelte Objekttypen in Tabellen
  

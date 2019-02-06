@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Azure Policy mithilfe von Guest Configuratio
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 77d99c90e65647a1f4a4efb07ff5520596fa54cf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856399"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295167"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -63,6 +63,16 @@ In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jewei
 |Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby und Python werden durch die Erweiterung Guest Configuration installiert. |
 
+### <a name="validation-frequency"></a>Validierungshäufigkeit
+
+Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt.
+Sobald eine Gastzuweisung empfangen wird, werden die Einstellungen in einem 15-Minuten-Intervall überprüft.
+Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, sobald die Überwachung abgeschlossen ist.
+Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben.
+Dies bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet.
+Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab.
+Es wird jedoch keine neue Überwachung der Konfiguration innerhalb des virtuellen Computers ausgelöst.
+
 ### <a name="supported-client-types"></a>Unterstützte Clienttypen
 
 In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme aufgeführt:
@@ -90,7 +100,7 @@ In der folgenden Tabelle werden die Betriebssysteme aufgelistet, die nicht unter
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
-Für jede mit Guest Configuration ausgeführte Überprüfung werden die beiden Richtliniendefinitionen **DeployIfNotExists** und **AuditIfNotExists** benötigt. **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
+Für jede mit Guest Configuration ausgeführte Überprüfung werden die beiden Richtliniendefinitionen **DeployIfNotExists** und **Audit** benötigt. **DeployIfNotExists** dient zum Vorbereiten des virtuellen Computers mit dem Guest Configuration-Agent und anderen Komponenten zur Unterstützung der [Überprüfungstools](#validation-tools).
 
 Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Elemente überprüft und korrigiert:
 
@@ -99,14 +109,14 @@ Mit der Richtliniendefinition **DeployIfNotExists** werden die folgenden Element
   - Installieren Sie die neueste Version der Erweiterung **Microsoft.GuestConfiguration**.
   - Installieren Sie [Überprüfungstools](#validation-tools) und ggf. Abhängigkeiten.
 
-Sobald die Richtliniendefinition **DeployIfNotExists** konform ist, wird die Richtliniendefinition **AuditIfNotExists** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die zugewiesene Konfiguration konform ist. Das Überprüfungstool stellt die Ergebnisse dem Guest Configuration-Client zur Verfügung. Der Client leitet die Ergebnisse an die Guest-Erweiterung weiter, die sie über den Guest Configuration-Ressourcenanbieter bereitstellt.
+Sobald die Richtliniendefinition **DeployIfNotExists** konform ist, wird die Richtliniendefinition **Audit** verwendet, um mithilfe der lokalen Überprüfungstools zu ermitteln, ob die zugewiesene Konfiguration konform ist. Das Überprüfungstool stellt die Ergebnisse dem Guest Configuration-Client zur Verfügung. Der Client leitet die Ergebnisse an die Guest-Erweiterung weiter, die sie über den Guest Configuration-Ressourcenanbieter bereitstellt.
 
 Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configuration-Ressourcenanbieters, um die Konformität im Knoten **Konformität** zu melden. Weitere Informationen finden Sie unter [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Für jede Guest Configuration-Definition müssen die beiden Richtliniendefinitionen **DeployIfNotExists** und **AuditIfNotExists** vorhanden sein.
+> Für jede Guest Configuration-Definition müssen die beiden Richtliniendefinitionen **DeployIfNotExists** und **Audit** vorhanden sein.
 
-Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
+Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **Audit**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

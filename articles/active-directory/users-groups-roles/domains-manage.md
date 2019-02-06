@@ -1,5 +1,5 @@
 ---
-title: Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory | Microsoft-Dokumentation
+title: Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory | Microsoft Docs
 description: Verwaltungskonzepte und Vorgehensweisen für die Verwaltung eines Domänennamens in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 01/29/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 12c8b80b76c721962ca6180e531578b037997553
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854914"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294164"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -86,14 +86,14 @@ In folgenden Fällen wird ein Fehler zurückgegeben:
 
 ### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**F: Warum tritt beim Löschen einer Domäne ein Fehler auf, der besagt, dass ich über von Exchange verwaltete Gruppen mit diesem Domänennamen verfüge?** <br>
-**A**: Heute werden bestimmte Gruppen wie E-Mail-aktivierte Sicherheitsgruppen und verteilte Listen von Exchange bereitgestellt und müssen im [Exchange Admin Center (EAC)](https://outlook.office365.com/ecp/) manuell gelöscht werden. Möglicherweise sind noch Proxyadressen vorhanden, die den benutzerdefinierten Domänennamen verwenden und manuell auf einen anderen Domänennamen aktualisiert werden müssen. 
+**F: Warum tritt beim Löschen einer Domäne eine Fehlermeldung auf, die besagt, dass ich über von Exchange verwaltete Gruppen mit diesem Domänennamen verfüge?** <br>
+**A:** Heute werden bestimmte Gruppen wie E-Mail-aktivierte Sicherheitsgruppen und verteilte Listen von Exchange bereitgestellt und müssen im [Exchange Admin Center (EAC)](https://outlook.office365.com/ecp/) manuell gelöscht werden. Möglicherweise sind noch Proxyadressen vorhanden, die den benutzerdefinierten Domänennamen verwenden und manuell auf einen anderen Domänennamen aktualisiert werden müssen. 
 
 **F: Ich bin als „admin@contoso.com“ angemeldet, kann aber den Domänennamen „contoso.com“ nicht löschen?**<br>
-**A**: Sie können im Namen Ihres Benutzerkontos nicht auf den benutzerdefinierten Domänennamen verweisen, die Sie löschen möchten. Stellen Sie sicher, dass das Konto des globalen Administrators den anfänglichen Domänennamen (.onmicrosoft.com) verwendet, z.B. „admin@contoso.onmicrosoft.com“. Verwenden Sie für die Anmeldung ein anderes globales Administratorkonto wie z.B. „admin@contoso.onmicrosoft.com“ oder einen anderen benutzerdefinierten Domänenamen wie „fabrikam.com“, bei dem das Konto „admin@fabrikam.com“ lautet.
+**A:** Sie können im Namen Ihres Benutzerkontos nicht auf den benutzerdefinierten Domänennamen verweisen, den Sie löschen möchten. Stellen Sie sicher, dass das Konto des globalen Administrators den anfänglichen Domänennamen (.onmicrosoft.com) verwendet, z.B. „admin@contoso.onmicrosoft.com“. Verwenden Sie für die Anmeldung ein anderes globales Administratorkonto wie z.B. „admin@contoso.onmicrosoft.com“ oder einen anderen benutzerdefinierten Domänenamen wie „fabrikam.com“, bei dem das Konto „admin@fabrikam.com“ lautet.
 
 **F: Ich habe auf die Schaltfläche „Domäne löschen“ geklickt. Jetzt wird der Status `In Progress` für den Löschvorgang angezeigt. Wie lange dauert es? Was passiert, wenn der Vorgang nicht erfolgreich ausgeführt wird?**<br>
-**A**: Der Vorgang zum Löschen einer Domäne ist ein asynchroner Hintergrundtask, der alle Verweise auf den Domänennamen umbenennt. Dieser Vorgang sollte innerhalb von ein bis zwei Minuten abgeschlossen sein. Wenn eine Domäne nicht gelöscht werden kann, stellen Sie sicher, dass Folgendes nicht zutrifft:
+**A:** Der Vorgang zum Löschen einer Domäne ist ein asynchroner Hintergrundtask, der alle Verweise auf den Domänennamen umbenennt. Dieser Vorgang sollte innerhalb von ein bis zwei Minuten abgeschlossen sein. Wenn eine Domäne nicht gelöscht werden kann, stellen Sie sicher, dass Folgendes nicht zutrifft:
 
 * Apps sind im Domänennamen mit dem App-Bezeichner-URI konfiguriert.
 * Es ist eine E-Mail-aktivierte Gruppe vorhanden, die auf den benutzerdefinierten Domänennamen verweist.
@@ -112,5 +112,4 @@ Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory kö
 
 * [Hinzufügen benutzerdefinierter Domänennamen](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Entfernen von E-Mail-aktivierten Exchange-Sicherheitsgruppen in Exchange Admin Center für einen benutzerdefinierten Domänennamen in Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [Aktualisieren von Anwendungsverweisen auf eine andere Domäne in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad#updating-an-application)
 * [ForceDelete eines benutzerdefinierten Domänennamens mit der Microsoft Graph-API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)

@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7662d58c1686dfa4e545246eb897af134a67144c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473383"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239178"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Verwenden von Abonnementschlüsseln mit Ihrer LUIS-App
 
@@ -43,7 +43,7 @@ Dieser Schlüssel darf nur für Endpunkt-Vorhersageabfragen verwendet werden. Ve
 
     ![Azure-API-Auswahl](./media/luis-azure-subscription/azure-api-choice.png) 
 
-1. Sobald die Language Understanding-Ressource erstellt ist, werden die generierten Zugriffsschlüssel unter **Ressourcenverwaltung->Schlüssel** angezeigt. Lassen Sie die Schlüssel unverändert. Im nächsten Abschnitt wird gezeigt, wie Sie diese neue Ressource mit einer LUIS-App im LUIS-Portal verbinden. Sie benötigen den Namen der LUIS-Ressource aus Schritt 3.
+1. Sobald die Language Understanding-Ressource erstellt ist, werden die generierten Zugriffsschlüssel unter **Ressourcenverwaltung->Schlüssel** angezeigt. Im nächsten Abschnitt wird gezeigt, wie Sie diese neue Ressource mit einer LUIS-App im LUIS-Portal verbinden. Sie benötigen den Namen der LUIS-Ressource aus Schritt 3.
 
     ![Azure-Schlüssel](./media/luis-azure-subscription/azure-keys.png)
 
@@ -163,7 +163,7 @@ Für die Automatisierung, z.B. mit einer CI/CD-Pipeline, empfiehlt es sich, die 
 
     Diese POST-API erfordert folgende Einstellungen:
 
-    |Typ|Einstellung|Wert|
+    |Type|Einstellung|Wert|
     |--|--|--|
     |Header|`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Beachten Sie, dass dem Tokenwert das Wort `Bearer` und ein Leerzeichen vorangestellt werden müssen.|
     |Header|`Ocp-Apim-Subscription-Key`|Ihr [Erstellungsschlüssel](luis-how-to-account-settings.md).|

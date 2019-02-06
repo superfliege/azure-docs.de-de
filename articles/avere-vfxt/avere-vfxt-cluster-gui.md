@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 72d1676613de699abda2136a7743a974b2b17c01
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162859"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300471"
 ---
 # <a name="access-the-vfxt-cluster"></a>Zugreifen auf den vFXT-Cluster
 
@@ -25,7 +25,7 @@ Da sich der vFXT-Cluster in einem privaten virtuellen Netzwerk befindet, müssen
 > [!NOTE] 
 > In diesem Artikel wird davon ausgegangen, dass Sie eine öffentliche IP-Adresse auf dem Clustercontroller oder auf einem anderen virtuellen Computer innerhalb des virtuellen Netzwerks Ihres Clusters festgelegt haben. Dieser Artikel beschreibt, wie Sie diesen virtuellen Computer als Host für den Zugriff auf den Cluster verwenden. Wenn Sie ein VPN oder ExpressRoute für den VNet-Zugriff verwenden, wechseln Sie zu [Herstellen einer Verbindung mit der Avere-Systemsteuerung](#connect-to-the-avere-control-panel-in-a-browser).
 
-Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaar „public/private“, das Sie beim Erstellen des Clustercontrollers verwendet haben, auf Ihrem lokalen Computer installiert ist. Lesen Sie die Dokumentation zu SSH-Schlüsseln für [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) oder für [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), wenn Sie Hilfe benötigen.  
+Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaar „public/private“, das Sie beim Erstellen des Clustercontrollers verwendet haben, auf Ihrem lokalen Computer installiert ist. Lesen Sie die Dokumentation zu SSH-Schlüsseln für [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) oder für [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), wenn Sie Hilfe benötigen. (Wenn Sie ein Kennwort anstelle eines öffentlichen Schlüssels verwendet haben, werden Sie beim Verbinden aufgefordert, dieses einzugeben.) 
 
 ## <a name="ssh-tunnel-with-a-linux-host"></a>SSH-Tunnel mit einem Linux-Host
 
@@ -41,7 +41,7 @@ Beispiel:
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schlüssel zur Erstellung des Clusters verwendet haben und der passende Schlüssel auf dem Clientsystem installiert ist.
+Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schlüssel zur Erstellung des Clusters verwendet haben und der passende Schlüssel auf dem Clientsystem installiert ist. Wenn Sie ein Kennwort verwendet haben, fordert das System Sie zur Eingabe auf.
 
 ## <a name="ssh-tunnel-with-a-windows-host"></a>SSH-Tunnel mit einem Windows-Host
 
@@ -63,7 +63,7 @@ Im Fenster **Konfiguration**:
 
 ![Screenshot der Putty-Anwendung, der zeigt, wo Sie klicken müssen, um einen Tunnel hinzuzufügen](media/avere-vfxt-ptty-numbered.png)
 
-Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schlüssel zur Erstellung des Clusters verwendet haben und der passende Schlüssel auf dem Clientsystem installiert ist.
+Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schlüssel zur Erstellung des Clusters verwendet haben und der passende Schlüssel auf dem Clientsystem installiert ist. Wenn Sie ein Kennwort verwendet haben, fordert das System Sie zur Eingabe auf.
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Herstellen einer Verbindung mit der Avere-Systemsteuerung in einem Browser
 
@@ -77,7 +77,7 @@ Dieser Schritt verwendet einen Webbrowser, um eine Verbindung mit dem Konfigurat
 
 Je nach Browser müssen Sie möglicherweise auf **Erweitert** klicken und überprüfen, ob die Weiterleitung zur Seite sicher ist.
 
-Geben Sie den Benutzernamen `admin` und das Kennwort ein, das Sie beim Erstellen des Clusters angegeben haben.
+Geben Sie den Benutzernamen `admin` und das Administratorkennwort ein, das Sie beim Erstellen des Clusters angegeben haben.
 
 ![Screenshot der Avere-Anmeldeseite, die mit dem Benutzernamen „admin“ und einem Kennwort gefüllt ist](media/avere-vfxt-gui-login.png)
 

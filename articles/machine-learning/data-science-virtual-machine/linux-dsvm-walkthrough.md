@@ -10,19 +10,19 @@ editor: cgronlun
 ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157172"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245832"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -180,10 +180,10 @@ Wir probieren auch ein Modell mit einer zufälligen Gesamtstruktur aus. Mit zuf�
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>Bereitstellen eines Modells für Azure ML
-[Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) ist ein Clouddienst, der das Erstellen und Bereitstellen von Predictive Analytics-Modellen vereinfacht. Eine der sehr hilfreichen Features von AzureML ist die Fähigkeit, beliebige R-Funktionen als Webdienst zu veröffentlichen. Das R-Paket von AzureML ermöglicht die einfache Bereitstellung direkt in unserer R-Sitzung auf der DSVM.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Bereitstellen eines Modells in Azure Machine Learning Studio
+[Azure Machine Learning Studio](https://studio.azureml.net/) ist ein Clouddienst, der das Erstellen und Bereitstellen von Predictive Analytics-Modellen vereinfacht. Eine der sehr hilfreichen Funktionen von Azure Machine Learning Studio ist die Fähigkeit, beliebige R-Funktionen als Webdienst zu veröffentlichen. Das R-Paket von Azure Machine Learning Studio ermöglicht die einfache Bereitstellung direkt in unserer R-Sitzung auf der DSVM.
 
-Zum Bereitstellen des Entscheidungsbaumcodes aus dem vorherigen Bereich müssen Sie sich an Azure Machine Learning Studio anmelden. Sie benötigen für die Anmeldung Ihre Arbeitsbereich-ID und ein Autorisierungstoken. Gehen Sie wie folgt vor, um diese Werte zu ermitteln und die AzureML-Variablen damit zu initialisieren:
+Zum Bereitstellen des Entscheidungsbaumcodes aus dem vorherigen Bereich müssen Sie sich an Azure Machine Learning Studio anmelden. Sie benötigen für die Anmeldung Ihre Arbeitsbereich-ID und ein Autorisierungstoken. Gehen Sie wie folgt vor, um diese Werte zu ermitteln und die Azure Machine Learning-Variablen damit zu initialisieren:
 
 Wählen Sie links im Menü die Option **Einstellungen** . Notieren Sie sich Ihre **ARBEITSBEREICH-ID**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -270,7 +270,7 @@ Für die Entwicklung mit Python wurden die Anaconda Python-Distributionen 2.7 un
 Wir lesen nun einen Teil des Datasets „spambase“ ein und klassifizieren die E-Mails mit Support Vector Machines in „scikit-learn“:
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
 ms.reviewer: sngun
-ms.openlocfilehash: 35577f103979bf5f767e3b9d42548ed488e365c8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 64763ebc145685e4dc7a4559eac6db9923d31dc5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041899"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455557"
 ---
-# <a name="using-the-azure-cosmos-db-change-feed-processor-library"></a>Verwenden der Änderungsfeed-Prozessorbibliothek von Azure Cosmos DB
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB 
 
 Mit der [Änderungsfeed-Prozessorbibliothek von Azure Cosmos DB](sql-api-sdk-dotnet-changefeed.md) können Sie die Ereignisverarbeitung auf mehrere Consumer verteilen. Diese Bibliothek vereinfacht das Partitionen übergreifende Lesen von Änderungen und die Parallelverarbeitung mehrerer Threads.
 

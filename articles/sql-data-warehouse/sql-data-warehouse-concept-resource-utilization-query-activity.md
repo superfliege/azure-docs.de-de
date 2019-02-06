@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b53a3f99f601f540723a9a383e3bf7bd2908de23
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4613a16ee27168dd5c00435ee04fa5a7f95f4d97
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499570"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460419"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Überwachen von Ressourcennutzung und Abfrageaktivität in Azure SQL Data Warehouse
 Azure SQL Data Warehouse bietet umfassende Überwachungsfunktionen im Azure-Portal, um Erkenntnisse zu Ihrer Data Warehouse-Workload zu gewinnen. Das Azure-Portal ist das empfohlene Tool zum Überwachen Ihrer Data Warehouse-Instanz, weil es eine konfigurierbare Aufbewahrungsdauer, Warnungen, Empfehlungen und anpassbare Diagramme und Dashboards für Metriken und Protokolle bietet. Das Portal ermöglicht außerdem eine Integration weiterer Azure-Überwachungsdienste – z.B. Operations Management Suite (OMS)/Log Analytics und Azure Monitor –, um Ihnen eine umfassende und integrierte Überwachungsoberfläche für Data Warehouse sowie für Ihre gesamte Azure-Analyseplattform zu bieten. In dieser Dokumentation wird beschrieben, welche Überwachungsfunktionen zur Verfügung stehen, um Ihre Analyseplattform mit SQL Data Warehouse zu optimieren und zu verwalten. 
@@ -26,7 +26,7 @@ Im Azure-Portal stehen die folgenden Metriken für SQL Data Warehouse zur Verfü
 > [!NOTE]
 > Seit November 2018 befasst sich das Engineeringteam mit einem Problem, bei dem der CPU-Prozentsatz und der Daten-E/A-Prozentsatz zu niedrig ausgewiesen werden. Dies führt dazu, dass „DWU verwendet“ und der Prozentsatz ebenfalls zu niedrig ausgewiesen werden. 
 
-| Metrikname                           | BESCHREIBUNG     | Aggregationstyp |
+| Metrikname                           | Beschreibung     | Aggregationstyp |
 | --------------------------------------- | ---------------- | --------------------------------------- |
 | CPU-Prozentsatz                          | CPU-Auslastung für alle Knoten der Data Warehouse-Instanz | Maximum      |
 | E/A-Prozentsatz für Daten                      | E/A-Auslastung für alle Knoten der Data Warehouse-Instanz | Maximum   |

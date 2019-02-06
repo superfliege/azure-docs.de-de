@@ -1,5 +1,5 @@
 ---
-title: Beschreibung von Azure Service Fabric-Apps und -Diensten | Microsoft Docs
+title: Beschreibung von Azure Service Fabric-Apps und -Diensten | Microsoft-Dokumentation
 description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendungen und -Diensten verwendet werden.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3e390763255878384e7a767158210d0515b09958
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 9e8ca50970ff4a845174d7061b60a88a8f5ce578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653546"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465622"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -53,7 +53,7 @@ Das Dienstmanifest definiert deklarativ der Diensttyp und die Version. Es legt D
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -96,7 +96,7 @@ Weitere Informationen zum Konfigurieren von SetupEntryPoint finden Sie unter [Ko
 </Settings>
 ```
 
-**Ressourcen**, wie z. B. Endpunkte, die vom Dienst verwendet werden, um deklariert oder geändert zu werden, ohne den kompilierten Code ändern zu müssen.  Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das **SecurityGroup**-Element im Anwendungsmanifest gesteuert werden.  Wenn eine **Endpunkt**ressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, falls nicht explizit ein Port angegeben wird.  Erfahren Sie mehr über das [Angeben oder Überschreiben von Endpunktressourcen](service-fabric-service-manifest-resources.md).
+Ein Service Fabric-**Dienstendpunkt** ist ein Beispiel für eine Service Fabric-Ressource. Eine Service Fabric-Ressource kann ohne Änderung des kompilierten Codes deklariert/geändert werden. Der Zugriff auf die im Dienstmanifest angegebenen Service Fabric-Ressourcen kann über das **SecurityGroup**-Element im Anwendungsmanifest gesteuert werden. Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sofern nicht explizit ein Port angegeben wird. Erfahren Sie mehr über das [Angeben oder Überschreiben von Endpunktressourcen](service-fabric-service-manifest-resources.md).
 
 
 <!--

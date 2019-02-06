@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7681e3fabe9eb216da81d9f09dc584097bcbaf84
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 01/25/2019
+ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830004"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458124"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
 
@@ -161,7 +161,7 @@ Wenn Sie bereits einen neuen Mandanten in einer eigenen Datenbank bereitgestellt
 
 Das Skript stellt diesen Mandanten in einer separaten Datenbank bereit, registriert die Datenbank und den Mandanten im Katalog und öffnet die Ereignisseite des Mandanten im Browser. Aktualisieren Sie die Event Hub-Seite, um zu sehen, dass „Salix Salsa“ als Veranstaltungsort hinzugefügt wurde.
 
-## <a name="manage-performance-of-a-single-database"></a>Verwalten der Leistung einer einzelnen Datenbank
+## <a name="manage-performance-of-an-individual-database"></a>Verwalten der Leistung einer einzelnen Datenbank
 
 Wenn bei einem einzelnen Mandanten in einer mehrinstanzenfähigen Datenbank eine anhaltend hohe Last auftritt, verbraucht dieser möglicherweise zu viele Datenbankressourcen und hat damit Auswirkungen auf andere Mandanten in derselben Datenbank. Wenn die Aktivität voraussichtlich für einige Zeit fortgesetzt wird, kann der Mandant vorübergehend aus der Datenbank in eine eigene Datenbank mit nur einem Mandanten verschoben werden. Dadurch kann der Mandant die zusätzlich benötigten Ressourcen nutzen, und er wird gleichzeitig von den anderen Mandanten isoliert.
 

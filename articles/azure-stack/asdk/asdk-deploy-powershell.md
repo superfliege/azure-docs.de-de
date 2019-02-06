@@ -16,12 +16,13 @@ ms.custom: ''
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716025"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247730"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Bereitstellen des ASDK über die Befehlszeile
 Das ASDK ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Zur Einrichtung der Umgebung müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen. (Dies nimmt mehrere Stunden in Anspruch.) Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
@@ -105,7 +106,7 @@ Führen Sie die folgenden PowerShell-Befehle aus (indem Sie einfach den Paramete
 
 Bei AD FS-Bereitstellungen wird der standardmäßige Stampverzeichnisdienst als Identitätsanbieter verwendet. Das Standardkonto für die Anmeldung ist azurestackadmin@azurestack.local, und das Kennwort ist auf den Wert festgelegt, den sie für die PowerShell-Setupbefehle angegeben haben.
 
-Der Bereitstellungsprozess kann einige Stunden dauern, und während dieses Zeitraums wird das System automatisch einmal neu gestartet. Wenn die Bereitstellung erfolgreich verlaufen ist, zeigt die PowerShell-Konsole an: **ABGESCHLOSSEN: Aktion 'Bereitstellung'**. Wenn die Bereitstellung nicht erfolgreich ist, können Sie versuchen, das Skript erneut auszuführen, indem Sie den Parameter „-rerun“ verwenden. Alternativ dazu können Sie [ASDK auch ganz neu bereitstellen](asdk-redeploy.md).
+Der Bereitstellungsprozess kann einige Stunden dauern, und während dieses Zeitraums wird das System automatisch einmal neu gestartet. Wenn die Bereitstellung erfolgreich verlaufen ist, zeigt die PowerShell-Konsole folgende Meldung an: **ABGESCHLOSSEN: Aktion „Bereitstellung“**. Wenn die Bereitstellung nicht erfolgreich ist, können Sie versuchen, das Skript erneut auszuführen, indem Sie den Parameter „-rerun“ verwenden. Alternativ dazu können Sie [ASDK auch ganz neu bereitstellen](asdk-redeploy.md).
 
 > [!IMPORTANT]
 > Wenn Sie den Bereitstellungsstatus nach dem Neustart des ASDK-Hosts überwachen möchten, müssen Sie sich als „AzureStack\AzureStackAdmin“ anmelden. Der Bereitstellungsstatus wird nicht angezeigt, wenn Sie sich nach dem Neustart des Hostcomputers (und dem Beitritt zur Domäne „azurestack.local“) als lokaler Administrator anmelden. Führen Sie die Bereitstellung nicht erneut aus, sondern melden Sie sich stattdessen als „azurestack“ an, um zu überprüfen, ob sie ausgeführt wird.

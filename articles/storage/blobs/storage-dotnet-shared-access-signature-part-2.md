@@ -8,13 +8,13 @@ ms.topic: article
 ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240697"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244911"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage
 
@@ -28,9 +28,9 @@ ms.locfileid: "51240697"
 ## <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 In diesem Tutorial erstellen wir zwei Konsolenanwendungen, die die Erstellung und Verwendung von Shared Access Signatures für Container und Blobs demonstrieren:
 
-**Anwendung 1:** Verwaltungsanwendung. Generiert eine Shared Access Signature für einen Container und ein Blob. Enthält den Speicherkonto-Zugriffsschlüssel im Quellcode.
+**Anwendung 1**: Die Verwaltungsanwendung. Generiert eine Shared Access Signature für einen Container und ein Blob. Enthält den Speicherkonto-Zugriffsschlüssel im Quellcode.
 
-**Anwendung 2:** Clientanwendung. Greift über die mit der ersten Anwendung erstellten Shared Access Signatures auf Container- und Blobressourcen zu. Verwendet nur SAS für den Zugriff auf Container- und Blobressourcen. Der Speicherkonto-Zugriffsschlüssel ist *nicht* enthalten.
+**Anwendung 2**: Die Clientanwendung. Greift über die mit der ersten Anwendung erstellten Shared Access Signatures auf Container- und Blobressourcen zu. Verwendet nur SAS für den Zugriff auf Container- und Blobressourcen. Der Speicherkonto-Zugriffsschlüssel ist *nicht* enthalten.
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>Teil 1: Erstellen einer Konsolenanwendung zum Generieren von Shared Access Signatures
 Stellen Sie zunächst sicher, dass Sie die Azure-Speicher-Clientbibliothek für .NET installiert haben. Sie können das [NuGet-Paket](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet-Paket") mit den aktuellsten Assemblys für die Clientbibliothek installieren. Dies ist die empfohlene Methode, um sicherzustellen, dass Sie über die neuesten Fehlerbehebungen verfügen. Sie können die Clientbibliothek auch als Teil der aktuellen Version des [Azure SDK für .NET](https://azure.microsoft.com/downloads/) herunterladen.
@@ -589,7 +589,7 @@ Additional error information: The remote server returned an error: (403) Forbidd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Verwenden von Grundlegendes zum SAS-Modell](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md)
 * [Delegieren des Zugriffs mit einer Shared Access Signature (REST-API)](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Introducing Table and Queue SAS (Einführung in Tabellen- und Warteschlangen-SAS; in englischer Sprache)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

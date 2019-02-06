@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d2c854d5-101d-4d67-80e0-87749e1a0352
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
-ms.openlocfilehash: b7e026d9a27edeec3c48bbc9360992f80099230d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f8d088cf1f17eca5ec593ebb24db1e17a82679ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437422"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166899"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Tutorial: Azure Active Directory-Integration von IriusRisk
+# <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Tutorial: Azure Active Directory-Integration mit IriusRisk
 
 In diesem Tutorial erfahren Sie, wie Sie IriusRisk in Azure Active Directory (Azure AD) integrieren.
 
@@ -128,7 +128,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **IriusRisk** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [IriusRisk-Supportteam](mailto:info@continuumsecurity.net) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -168,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in IriusRisk. IriusRisk unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf IriusRisk ein neuer Benutzer erstellt.
 
 > [!Note]
-> Setzen Sie sich mit dem [IriusRisk-Supportteam](mailto:info@continuumsecurity.net) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+> Setzen Sie sich mit dem  [Supportteam von IriusRisk](mailto:info@continuumsecurity.net) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

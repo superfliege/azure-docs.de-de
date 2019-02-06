@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8af6846da78d12460b7866297c9802c5dab20a69
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5b721dfd7a229220836f273be58c5ca74c4284d1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967522"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097928"
 ---
-# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Schnellstart: Erstellen einer Xamarin-App, die Microsoft-Anmeldung integriert
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Schnellstart: Erstellen einer Xamarin-App, die die Microsoft-Anmeldung integriert
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -98,7 +98,7 @@ Nachdem Sie nun eine App in Azure AD erstellt haben, können Sie die ADAL instal
   * *clientId* ist die Client-ID der App, die Sie aus dem Portal kopiert haben.
   * *returnUri* ist der Umleitungs-URI, den Sie im Portal eingegeben haben (beispielsweise http://DirectorySearcher).
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Schritt 4: Verwenden der ADAL zum Abrufen von Token aus Azure AD
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Schritt 4: Verwenden von ADAL zum Abrufen von Tokens aus Azure AD
 
 Nahezu die gesamte Authentifizierungslogik der App befindet sich in `DirectorySearcher.SearchByAlias(...)`. In den plattformspezifischen Projekten müssen Sie an die PCL von `DirectorySearcher` daher nur noch einen kontextbezogenen Parameter übergeben.
 

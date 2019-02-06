@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339517"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296120"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
 
@@ -37,6 +37,15 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 ## <a name="troubleshooting-errors"></a>Fehler bei der Problembehandlung
 
 Verwenden Sie die Informationen in den folgenden Tabellen, um Probleme und Fehler zu beheben, die beim Schutz von SQL Server in Azure aufgetreten sind.
+
+## <a name="alerts"></a>Alerts
+
+### <a name="backup-type-unsupported"></a>Nicht unterstützter Sicherungstyp
+
+| Severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
+|---|---|---|---|
+| Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen keine bestimmten Typen von Sicherungen, die in der zugehörigen Richtlinie enthalten sind. | <li>**Master-Datenbank**: Auf der Master-Datenbank kann nur eine vollständige Datenbanksicherung durchgeführt werden; es sind weder **differentielle** Sicherungen noch Sicherungen von **Transaktionsprotokollen** möglich. </li> <li>Datenbanken im **einfachen Wiederherstellungsmodell** erlauben nicht die Sicherung von **Transaktionsprotokollen**.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Alternativ können Sie die aktuelle Richtlinie so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer Ad-Hoc Sicherung fehl.
+
 
 ## <a name="backup-failures"></a>Sicherungsfehler
 

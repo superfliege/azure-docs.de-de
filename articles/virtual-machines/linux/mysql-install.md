@@ -3,7 +3,7 @@ title: Einrichten von MySQL auf einem virtuellen Linux-Computer in Azure | Micro
 description: Erfahren Sie, wie Sie den MySQL-Stapel auf einem virtuellen Linux-Computer (Betriebssystem der Ubuntu- oder Red Hat-Familie) in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: zarhoads
-ms.openlocfilehash: f7120decd4a5d43f88b55e7d7e20992af34cadc4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469570"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888429"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Installieren von MySQL in Azure
 In diesem Artikel erfahren Sie, wie Sie MySQL auf einem virtuellen Azure-Computer, auf dem Linux ausgeführt wird, installieren und konfigurieren.
@@ -86,7 +86,7 @@ Wir verwenden in diesem Artikel eine Linux-VM mit Ubuntu von Azure.
 ### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>Installieren von MySQL in einer Red Hat-Betriebssystemfamilie, z. B. CentOS oder Oracle Linux
 Wir verwenden hier eine Linux-VM mit CentOS oder Oracle Linux.
 
-* Schritt 1: Hinzufügen von MySQL Yum-Repositorys – Wechseln zum Benutzer `root`:
+* Schritt 1: Hinzufügen der MySQL Yum-Repositorys – Wechseln zum Benutzer `root`:
   
             #[azureuser@mysqlnode:~]sudo su -
   
@@ -94,7 +94,7 @@ Wir verwenden hier eine Linux-VM mit CentOS oder Oracle Linux.
   
             #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
-* Schritt 2: Bearbeiten Sie die nachstehende Datei, um das MySQL-Repository für das Herunterladen des MySQL 5.6.-Pakets vorzubereiten.
+* Schritt 2: Bearbeiten Sie die nachstehende Datei, um das MySQL-Repository für das Herunterladen des MySQL 5.6.-Pakets vorzubereiten.
   
             #[root@mysqlnode ~]# vim /etc/yum.repos.d/mysql-community.repo
   
@@ -112,7 +112,7 @@ Wir verwenden hier eine Linux-VM mit CentOS oder Oracle Linux.
         gpgcheck=1
   
         gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-* Schritt 3: Installieren von MySQL aus dem des MySQL-Repository – Installieren von MySQL:
+* Schritt 3: Installieren von MySQL aus dem MySQL-Repository – Installieren von MySQL:
   
            #[root@mysqlnode ~]#yum install mysql-community-server
   

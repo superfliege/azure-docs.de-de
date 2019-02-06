@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 04ae99064723b1dba35dfe53721c185229f96252
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476902"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174617"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect-Synchronisierung: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Azure AD Graph-API-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://developer.microsoft.com/graph/) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) bzw. des [Microsoft Graph-Testers](https://developer.microsoft.com/graph/graph-explorer) anzeigen.
@@ -42,7 +42,7 @@ Sie konfigurieren im Installations-Assistenten im Pfad der benutzerdefinierten E
 
 
 >[!NOTE]
-> Azure AD Connect unterstützt die Synchronisierung von mehrwertigen Active Directory-Attributen in Azure AD als mehrwertige Verzeichniserweiterungen. Zurzeit unterstützt jedoch kein Feature in Azure AD die Verwendung von Verzeichniserweiterungen mit mehreren Werten.
+> Azure AD Connect unterstützt zwar das Synchronisieren mehrwertiger Active Directory-Attribute für Azure AD als mehrwertige Verzeichniserweiterungen, doch gibt es derzeit keine Möglichkeit, die in Attribute für mehrwertige Verzeichniserweiterungen hochgeladenen Daten abzurufen/zu nutzen.
 
 Die Attributliste wird aus dem Schemacache gelesen, der im Zuge der Installation von Azure AD Connect erstellt wird. Wenn Sie das Active Directory-Schema um zusätzliche Attribute erweitert haben, müssen Sie [das Schema aktualisieren](how-to-connect-installation-wizard.md#refresh-directory-schema), damit die neuen Attribute angezeigt werden.
 

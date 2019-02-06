@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b24435501ed1312e91ebec9b9c434971dbc94b55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091248"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163448"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Erstellen eines virtuellen Computers anhand einer VHD mithilfe des Azure-Portals
 
@@ -28,6 +28,8 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines virtuellen Computers (Virtual
 - Wenn Sie bereits über eine verwendbare virtuelle Festplatte (Virtual Hard Disk, VHD) verfügen oder die VHD von einem vorhandenen virtuellen Computer für die Verwendung kopieren möchten, können Sie einen neuen VM erstellen, indem Sie die VHD als Betriebssystemdatenträger an den neuen VM *anfügen*. 
 
 - Sie können einen neuen virtuellen Computer anhand der VHD eines virtuellen Computers erstellen, der gelöscht wurde. Wenn Sie beispielsweise über einen virtuellen Azure-Computer verfügen, der nicht ordnungsgemäß funktioniert, können Sie den VM löschen und dessen VHD verwenden, um einen neuen VM zu erstellen. Sie können entweder die gleiche VHD wiederverwenden oder eine Kopie der VHD erstellen, indem Sie eine Momentaufnahme und dann anhand dieser einen neuen verwalteten Datenträger erstellen. Beim Erstellen einer Momentaufnahme müssen zwar einige weitere Schritte ausgeführt werden, aber dafür bleibt die ursprüngliche VHD erhalten, und Sie können auf ein Fallback zurückgreifen.
+
+- Verwenden Sie auf einem klassischen virtuellen Computer die VHD, um einen neuen virtuellen Computer zu erstellen, der das Resource Manager-Bereitstellungsmodell und verwaltete Datenträger nutzt. **Beenden** Sie zum Erzielen optimaler Ergebnisse den klassischen virtuellen Computer im Azure-Portal, bevor Sie die Momentaufnahme erstellen.
  
 - Sie können einen virtuellen Azure-Computer anhand einer lokalen VHD erstellen, indem Sie die lokale VHD hochladen und an einen neuen virtuellen Computer anfügen. Verwenden Sie PowerShell oder ein anderes Tool, um die VHD in ein Speicherkonto hochzuladen, und erstellen Sie dann einen verwalteten Datenträger anhand der VHD. Weitere Informationen finden Sie unter [Hochladen einer speziellen VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 

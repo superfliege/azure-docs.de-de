@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: b1b4ea5775a661712838c1495ef0025a83b8c518
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: c2fe4f5377bfd73f327ef2d0ba8b5fdfff4fa8af
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607942"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243350"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Übersicht über App Service in Azure Stack
 
@@ -34,8 +35,8 @@ Mit Azure App Service können Sie Geschäftsprozesse automatisieren und Cloud-AP
 Hier sind einige wichtige Features und Funktionen von App Service aufgeführt:
 
 - **Mehrere Sprachen und Frameworks:** App Service verfügt über erstklassige Unterstützung für ASP.NET, Node.js, Java, PHP und Python. Außerdem können Sie Windows PowerShell und andere Skripts oder ausführbare Dateien auf App Service-VMs ausführen.
-- **DevOps-Optimierung:**  Richten Sie Continuous Integration und Continuous Deployment mit GitHub, einem lokalen Git oder Bitbucket ein. Sie können Updates über Test- und Stagingumgebungen bereitstellen und Ihre Apps in App Service verwalten, indem Sie Azure PowerShell oder die plattformübergreifende Befehlszeilenschnittstelle (CLI) verwenden.
-- **Visual Studio-Integration:**  Dedizierte Tools in Visual Studio optimieren das Erstellen und Bereitstellen von Anwendungen.
+- **DevOps-Optimierung**: Richten Sie Continuous Integration und Continuous Deployment mit GitHub, einem lokalen Git oder BitBucket ein. Sie können Updates über Test- und Stagingumgebungen bereitstellen und Ihre Apps in App Service verwalten, indem Sie Azure PowerShell oder die plattformübergreifende Befehlszeilenschnittstelle (CLI) verwenden.
+- **Visual Studio-Integration**: Dedizierte Tools in Visual Studio optimieren das Erstellen und Bereitstellen von Anwendungen.
 
 ## <a name="app-types-in-app-service"></a>App-Typen in App Service
 

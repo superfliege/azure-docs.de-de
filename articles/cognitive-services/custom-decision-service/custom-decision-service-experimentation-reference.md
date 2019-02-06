@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366553"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219820"
 ---
 # <a name="experimentation"></a>Experimentieren
 
@@ -36,7 +36,7 @@ Unter Verwendung der Protokolldatei wird beim Experimentieren die Richtlinie mit
 * Marginale Werte werden geprüft.
 * Quadratische Interaktionsfeatures werden geprüft:
    * **Brute-Force-Phase**: Alle Kombinationen mit `--q_bruteforce_terms`-Paaren oder weniger werden geprüft.
-   * **Greedy phase** (Gierige Phase): Fügt das beste Paar hinzu, bis es nach `--q_greedy_stop` Durchläufen keine Verbesserung gibt.
+   * **Gierige Phase**: Fügt das beste Paar hinzu, bis es nach `--q_greedy_stop` Durchläufen keine Verbesserung gibt.
 * Ein zweiter Sweep wird über Hyperparameter durchgeführt (`learning rate`, `L1 regularization` und `power_t`).
 
 Die Parameter, die diese Schritte steuern, enthalten einige Vowpal Wabbit-Argumente:
@@ -54,11 +54,11 @@ Eine ausführliche Erläuterung der obigen Argumente finden Sie unter [Vowpal Wa
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Vowpal Wabbit: Installiert und in Ihrem Pfad vorhanden.
-  - Windows: [Verwenden Sie den `.msi`-Installer](https://github.com/eisber/vowpal_wabbit/releases).
-  - Andere Plattformen: [Rufen Sie den Quellcode ab](https://github.com/JohnLangford/vowpal_wabbit/releases).
+  - Windows: [Verwenden des `.msi`-Installationsprogramms](https://github.com/eisber/vowpal_wabbit/releases).
+  - Andere Plattformen: [Abrufen des Quellcodes](https://github.com/JohnLangford/vowpal_wabbit/releases).
 - Python 3: Installiert und in Ihrem Pfad vorhanden.
 - NumPy: Verwenden Sie einen beliebigen Paket-Manager.
-- Das Repository *Microsoft/mwt-ds*: [Klonen des Repositorys](https://github.com/Microsoft/mwt-ds).
+- Das *Microsoft/mwt-ds*-Repository: [Klonen des Repositorys](https://github.com/Microsoft/mwt-ds).
 - JSON-Protokolldatei für Custom Decision Service: Der Basisbefehl enthält standardmäßig `--dsjson`, wodurch die Analyse der Eingabedatendatei ermöglicht wird. [Ein Beispiel dieses Formats](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json)
 
 ## <a name="usage"></a>Verwendung

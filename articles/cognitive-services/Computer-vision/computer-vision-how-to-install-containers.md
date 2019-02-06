@@ -6,21 +6,19 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: computer-vision
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f344bb893a453a5f0b00f5cb1d87528b5943f779
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1e7f62d35e9850202b7d55c3c3440ff88413931d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462945"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473492"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
-
-Die Verwendung von Containern ist ein Ansatz zur Softwareverteilung, bei dem eine Anwendung oder ein Dienst als Containerimage gepackt wird. Die Konfiguration und die Abhängigkeiten der Anwendung bzw. des Diensts sind im Containerimage enthalten. Das Containerimage kann anschließend mit geringer oder ganz ohne Bearbeitung auf einem Containerhost bereitgestellt werden. Container sind voneinander und vom zugrunde liegenden Betriebssystem isoliert und nehmen weniger Speicher in Anspruch als ein virtueller Computer. Container können für kurzfristige Aufgaben über Containerimages instanziiert und wieder entfernt werden, wenn Sie nicht mehr benötigt werden.
 
 Der Texterkennungsteil des maschinelles Sehens ist auch als Docker-Container verfügbar. Damit können Sie gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen und extrahieren. Hierzu zählen z.B. Belege, Poster, und Visitenkarten.  
 > [!IMPORTANT]
@@ -28,108 +26,101 @@ Der Texterkennungsteil des maschinelles Sehens ist auch als Docker-Container ver
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="preparation"></a>Vorbereitung
+## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung des Texterkennungscontainers müssen Sie die folgenden Voraussetzungen erfüllen:
+Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden Voraussetzungen erfüllen:
 
-**Docker-Engine:** Die Docker-Engine muss lokal installiert sein. Docker stellt Pakete zur Konfiguration der Docker-Umgebung unter [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms) und [Windows](https://docs.docker.com/docker-for-windows/) zur Verfügung. Unter Windows muss Docker für die Unterstützung von Linux-Containern konfiguriert werden. Docker-Container können auch direkt für [Azure Kubernetes Service](../../aks/index.yml), [Azure Container Instances](../../container-instances/index.yml) oder einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](../../azure-stack/index.yml) bereitgestellt werden. Weitere Informationen zum Bereitstellen von Kubernetes in Azure Stack finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+|Erforderlich|Zweck|
+|--|--|
+|Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
+|Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
+|Antwort der Texterkennung |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ [_Texterkennung_](vision-api-how-to-topics/howtosubscribe.md), um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite der Texterkennung zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{BILLING_KEY}**: Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}**: Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
-Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können.
-
-**Kenntnisse von Microsoft Container Registry und Docker:** Sie sollten über Grundkenntnisse der Konzepte von Microsoft Container Registry und Docker verfügen, einschließlich Registrierungen, Repositorys, Container und Containerimages, und die grundlegenden `docker`-Befehle kennen.  
-
-Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
-
-### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
-
-Für den Texterkennungscontainer sind mindestens 1 CPU-Kern, mindestens 2,6 Gigahertz (GHz) und 8 Gigabyte (GB) zugewiesener Arbeitsspeicher erforderlich. Wir empfehlen jedoch mindestens 2 CPU-Kerne und eine Speicherzuweisung von 8 GB.
 
 ## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
 
-Sie müssen zuerst das [Formular zum Anfordern von Cognitive Services-Containern für maschinelles Sehen](https://aka.ms/VisionContainersPreview) ausfüllen und senden, um Zugriff auf den Texterkennungscontainer anzufordern. Im Formular müssen Sie Informationen über Sie selbst, Ihr Unternehmen und das Benutzerszenario eintragen, für das Sie den Container verwenden möchten. Nach der Übermittlung überprüft das Azure Cognitive Services-Team das Formular, um sicherzustellen, dass Sie die Kriterien für den Zugriff auf die private Containerregistrierung erfüllen.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
 
-> [!IMPORTANT]
-> Sie müssen im Formular eine E-Mail-Adresse verwenden, die entweder einem Microsoft-Konto (MSA) oder einem Azure Active Directory-Konto (Azure AD) zugeordnet ist.
+### <a name="the-host-computer"></a>Der Hostcomputer
 
-Wenn Ihre Anforderung genehmigt wurde, erhalten Sie eine E-Mail mit Anweisungen zum Abrufen Ihrer Anmeldeinformationen und zum Zugreifen auf die private Containerregistrierung.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
-## <a name="create-a-computer-vision-resource-on-azure"></a>Erstellen einer Ressource für maschinelles Sehen in Azure
 
-Sie müssen in Azure eine Ressource für maschinelles Sehen erstellen, wenn Sie den Texterkennungscontainer verwenden möchten. Nachdem Sie die Ressource erstellt haben, verwenden Sie den Abonnementschlüssel und die Endpunkt-URL der Ressource zum Instanziieren des Containers. Weitere Informationen zum Instanziieren eines Containers finden Sie unter [Instanziieren eines Containers über ein heruntergeladenes Containerimage](#instantiate-a-container-from-a-downloaded-container-image).
+### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
-Führen Sie die folgenden Schritte aus, um eine Azure-Ressource zu erstellen und daraus Informationen abzurufen:
+In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Texterkennung zugeordnet werden.
 
-1. Erstellen Sie eine Azure-Ressource im Azure-Portal.  
-   Wenn Sie den Texterkennungscontainer verwenden möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Ressource für maschinelles Sehen erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](../cognitive-services-apis-create-account.md).
+| Container | Minimum | Empfohlen |
+|-----------|---------|-------------|
+|Texterkennung|1 Kern, 8 GB Arbeitsspeicher, 0,5 TPS|2 Kerne, 8 GB Arbeitsspeicher, 1 TPS|
 
-1. Rufen Sie die Endpunkt-URL und den Abonnementschlüssel für die Azure-Ressource ab.  
-   Nachdem die Azure-Ressource erstellt wurde, müssen Sie die Endpunkt-URL und den Abonnementschlüssel aus dieser Ressource verwenden, um den entsprechenden Texterkennungscontainer zu instanziieren. Sie können die Endpunkt-URL und den Abonnementschlüssel im Azure-Portal von den Seiten „Schnellstart“ bzw. „Schlüssel“ der Ressource für maschinelles Sehen kopieren.
+Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 
-## <a name="log-in-to-the-private-container-registry"></a>Anmelden bei der privaten Containerregistrierung
+Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
-Es gibt mehrere Möglichkeiten, sich bei der privaten Containerregistrierung für Cognitive Services-Container zu authentifizieren, aber die empfohlene Methode über die Befehlszeile ist die Verwendung der [Docker-CLI](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Verwenden Sie den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) wie im folgenden Beispiel gezeigt, um sich bei der privaten Containerregistrierung für Cognitive Services-Container (`containerpreview.azurecr.io`) anzumelden. Ersetzen Sie *\<username\>* durch den Benutzernamen und *\<password\>* durch das Kennwort. Diese Anmeldeinformationen wurden Ihnen vom Azure Cognitive Services-Team bereitgestellt.
+## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
 
-```docker
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
+Es stehen Containerimages für die Texterkennung zur Verfügung. 
 
-Wenn Sie Ihre Anmeldeinformationen in einer Textdatei gesichert haben, können Sie den Inhalt dieser Textdatei über den Befehl `cat` mit dem Befehl `docker login` verketten, wie im folgenden Beispiel gezeigt. Ersetzen Sie *\<passwordFile\>* durch den Pfad und den Namen der Textdatei mit dem Kennwort und *\<username\>* durch den Benutzernamen, der in Ihren Anmeldeinformationen angegeben wurde.
+| Container | Repository |
+|-----------|------------|
+|Texterkennung | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-```docker
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
+Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
 
-## <a name="download-container-images-from-the-private-container-registry"></a>Herunterladen von Containerimages aus der privaten Containerregistrierung
 
-Das Containerimage für den Texterkennungscontainer steht über eine private Docker-Containerregistrierung namens `containerpreview.azurecr.io` in Azure Container Registry zur Verfügung. Das Containerimage für den Texterkennungscontainer muss aus dem Repository heruntergeladen werden, um den Container lokal auszuführen.
-
-Verwenden Sie den Befehl [docker pull](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus dem Repository herunterzuladen. Verwenden Sie beispielsweise den folgenden Befehl, um das neueste Texterkennungscontainer-Image aus dem Repository herunterzuladen:
+### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-Pullvorgang für den Container für die Texterkennung
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
 ```
 
-Eine vollständige Beschreibung der verfügbaren Tags für den Texterkennungscontainer finden Sie unter [Recognize Text](https://go.microsoft.com/fwlink/?linkid=2018655) (Texterkennung) auf Docker Hub.
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-> [!TIP]
-> Mithilfe des Befehls [docker images](https://docs.docker.com/engine/reference/commandline/images/) können Sie Ihre heruntergeladenen Containerimages auflisten. Mit dem folgenden Befehl werden beispielsweise die ID, das Repository und das Tag jedes heruntergeladenen Containerimages in Form einer Tabelle aufgelistet:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->  ```
->
+## <a name="how-to-use-the-container"></a>Verwenden des Containers
 
-## <a name="instantiate-a-container-from-a-downloaded-container-image"></a>Instanziieren eines Containers über ein heruntergeladenes Containerimage
+Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
 
-Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um einen Container über ein heruntergeladenes Containerimage zu instanziieren. Der folgende Befehl führt beispielsweise folgende Aktionen durch:
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Abrechnungseinstellungen. Es sind noch weitere [Beispiele](computer-vision-resource-container-config.md) für den Befehl `docker run` verfügbar. 
+1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint) 
 
-* Instanziieren eines Containers über das Texterkennungscontainer-Image
-* Zuweisen von zwei CPU-Kernen und 8 GB Arbeitsspeicher
+## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
+
+Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um den Container auszuführen. Für den Befehl werden die folgenden Parameter verwendet:
+
+| Platzhalter | Wert |
+|-------------|-------|
+|{BILLING_KEY} | Dieser Schlüssel wird zum Starten des Containers verwendet und steht im Azure-Portal auf der Schlüsselseite der Texterkennung zur Verfügung.  |
+|{BILLING_ENDPOINT_URI} | Der Wert für den URI des Abrechnungsendpunkts.|
+
+Ersetzen Sie im folgenden Beispiel für den Befehl `docker run` diese Parameter durch Ihre eigenen Werte.
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}
+```
+
+Dieser Befehl:
+
+* Führt einen Erkennungscontainer auf der Grundlage des Containerimages aus
+* Weist einen einzelnen CPU-Kern und 4 GB Arbeitsspeicher zu
 * Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Automatisches Entfernen des Containers, nachdem er beendet wurde
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
 
-```docker
-docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westus.api.cognitive.microsoft.com/vision/v2.0 ApiKey=0123456789
-```
-
-Nach der Instanziierung können Sie Vorgänge aus dem Container über den Host-URI des Containers aufrufen. Beispielsweise steht der folgende Host-URI für den Texterkennungscontainer, der im vorherigen Beispiel instanziiert wurde:
-
-```http
-http://localhost:5000/
-```
+Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 
 > [!IMPORTANT]
-> Über den relativen `/swagger`-URI für einen Container können Sie auf die [OpenAPI-Spezifikation](https://swagger.io/docs/specification/about/) (früher Swagger-Spezifikation) zugreifen, in der die vom instanziierten Container unterstützten Vorgänge beschrieben werden. Der folgende URI bietet beispielsweise Zugriff auf die OpenAPI-Spezifikation für den Texterkennungscontainer, der im vorherigen Beispiel instanziiert wurde:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+> Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
 
-Zur asynchronen oder synchronen Texterkennung können Sie entweder die in Ihrem Container verfügbaren [REST-API-Vorgänge aufrufen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) oder die Clientbibliothek des [Azure Cognitive Services SDK für maschinelles Sehen](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) zum Aufrufen dieser Vorgänge verwenden.  
-> [!IMPORTANT]
-> Sie benötigen Version 3.2.0 oder höher des Azure Cognitive Services SDK für maschinelles Sehen, wenn Sie die Clientbibliothek mit Ihrem Container verwenden möchten.
+## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
+
+Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
+
+Verwenden Sie für Container-APIs den Host https://localhost:5000.
 
 ### <a name="asynchronous-text-recognition"></a>Asynchrone Texterkennung
 
@@ -139,33 +130,49 @@ Sie können die Vorgänge `POST /vision/v2.0/recognizeText` und `GET /vision/v2.
 
 Mit dem Vorgang `POST /vision/v2.0/recognizeTextDirect` können Sie gedruckten Text in einem Bild synchron erkennen. Da dieser Vorgang synchron ist, entspricht der Anforderungstext für diesen Vorgang dem des Vorgangs `POST /vision/v2.0/recognizeText`, aber der Antworttext für diesen Vorgang ist identisch mit dem des Vorgangs `GET /vision/v2.0/textOperations/*{id}*`.
 
-### <a name="billing"></a>Abrechnung
+## <a name="stop-the-container"></a>Beenden des Containers
 
-Der Texterkennungscontainer sendet Abrechnungsinformationen an Azure und verwendet dafür eine entsprechende Ressource für maschinelles Sehen in Ihrem Azure-Konto. Die folgenden Optionen werden zu Abrechnungszwecken vom Texterkennungscontainer verwendet:
+[!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](./computer-vision-resource-container-config.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+
+## <a name="containers-api-documentation"></a>API-Dokumentation des Containers
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+## <a name="billing"></a>Abrechnung
+
+Der Container für die Texterkennung sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Texterkennung_ in Ihrem Azure-Konto. 
+
+Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft. 
+
+Der Befehl `docker run` verwendet folgende Argumente für Abrechnungszwecke:
 
 | Option | BESCHREIBUNG |
 |--------|-------------|
-| `ApiKey` | Der API-Schlüssel der Ressource für maschinelles Sehen, der zum Nachzuverfolgen von Abrechnungsinformationen verwendet wird.<br/>Der Wert dieser Option muss für die bereitgestellte Azure-Ressource für maschinelles Sehen, die in `Billing` angegeben wurde, auf einen API-Schlüssel festgelegt werden. |
-| `Billing` | Der Endpunkt der Ressource für maschinelles Sehen, der zum Nachzuverfolgen von Abrechnungsinformationen verwendet wird.<br/>Der Wert dieser Option muss auf den Endpunkt-URI einer bereitgestellten Azure-Ressource für maschinelles Sehen festgelegt werden.|
-| `Eula` | Weist darauf hin, dass Sie die Lizenz für den Container akzeptiert haben.<br/>Der Wert dieser Option muss auf `accept` festgelegt werden. |
+| `ApiKey` | Der API-Schlüssel der Ressource vom Typ _Texterkennung_ zum Nachverfolgen von Abrechnungsinformationen. |
+| `Billing` | Der Endpunkt der Ressource vom Typ _Texterkennung_ zum Nachverfolgen von Abrechnungsinformationen.|
+| `Eula` | Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.<br/>Der Wert dieser Option muss auf `accept` festgelegt werden. |
 
 > [!IMPORTANT]
 > Alle drei Optionen müssen mit gültigen Werten angegeben werden, damit der Container gestartet wird.
 
-Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](computer-vision-resource-container-config.md).
+Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](./computer-vision-resource-container-config.md).
 
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für maschinelles Sehen kennengelernt. Zusammenfassung:
+In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Installieren und Ausführen von Containern für die Texterkennung kennengelernt. Zusammenfassung:
 
-* Maschinelles Sehen bietet einen Linux-Container für Docker, um gedruckten Text zu erkennen und zu extrahieren.
-* Containerimages werden aus einer privaten Containerregistrierung in Azure heruntergeladen.
+* Die Texterkennung stellt einen Linux-Container für Docker bereit, der die Texterkennung kapselt.
+* Containerimages werden aus Microsoft Container Registry (MCR) in Azure heruntergeladen.
 * Containerimages werden in Docker ausgeführt.
-* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für maschinelles Sehen über den Host-URI des Containers aufzurufen.
+* Sie können entweder die REST-API oder das SDK verwenden, um Vorgänge in Containern für die Texterkennung über den Host-URI des Containers aufzurufen.
 * Bei der Instanziierung eines Containers müssen Sie Abrechnungsinformationen angeben.
 
 > [!IMPORTANT]
-> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (z.B. das analysierte Bild oder den analysierten Text) an Microsoft.
+> Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten (etwa das analysierte Bild oder den analysierten Text) an Microsoft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

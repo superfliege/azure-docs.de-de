@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/3/2018
+ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ec1c24e4a9714506a4107fd5bfd53d1a562c8781
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022358"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098730"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Anpassen des Setups für Azure-SSIS Integration Runtime
 
@@ -27,6 +27,8 @@ Zur Konfiguration des benutzerdefinierten Setups müssen Sie ein Skript und die 
 
 Sie können sowohl kostenlose bzw. unlizenzierte als auch kostenpflichtige oder lizenzierte Komponenten installieren. ISVs sollten den Artikel [Entwicklung von kostenpflichtigen oder lizenzierten Komponenten für Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md) lesen.
 
+> [!IMPORTANT]
+> Knoten der v2-Serie der Azure-SSIS IR eignen sich nicht für ein benutzerdefiniertes Setup, daher sollten Sie stattdessen Knoten der v3-Serie verwenden.  Wenn Sie bereits Knoten der v2-Serie verwenden, wechseln Sie so bald wie möglich zu Knoten der v3-Serie.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
@@ -78,7 +80,7 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
        ![Erstellen eines Blobcontainers](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-    1.  Wählen Sie den neuen Container aus, und laden Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien hoch. Stellen Sie sicher, dass Sie `main.cmd` auf die oberste Ebene des Containers und nicht in einen Ordner hochladen. 
+    1.  Wählen Sie den neuen Container aus, und laden Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien hoch. Stellen Sie sicher, dass Sie `main.cmd` auf die oberste Ebene des Containers und nicht in einen Ordner hochladen. Vergewissern Sie sich außerdem, dass Ihr Container nur die erforderlichen Dateien für das benutzerdefinierte Setup enthält, damit das spätere Herunterladen in Ihre Azure-SSIS IR nicht so lange dauert.
 
        ![Hochladen von Dateien in den Blobcontainer](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -140,15 +142,15 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
        1. Ein Ordner `.NET FRAMEWORK 3.5` mit einem benutzerdefinierten Setup zum Installieren einer früheren Version von .NET Framework, das möglicherweise für benutzerdefinierte Komponenten auf jedem Knoten von Azure-SSIS IR erforderlich ist.
 
-       1. Ein Ordner `AAS`, der ein benutzerdefiniertes Setup enthält, um Clientbibliotheken auf jedem Knoten Ihrer Azure-SSIS IR zu installieren, die es Ihren Analysis Services-Tasks ermöglichen, eine Verbindung mit der Azure Analysis Services-Instanz (AAS) mithilfe von Dienstprinzipalauthentifizierung herzustellen. Laden Sie zunächst die neuesten **MSOLAP (amd64)**- und **AMO**- Clientbibliotheken/Windows Installer (z.B. `x64_15.0.900.108_SQL_AS_OLEDB.msi` und `x64_15.0.900.108_SQL_AS_AMO.msi`) von [hier](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers) herunter, und laden Sie dann alles zusammen mit `main.cmd` in Ihren Container hoch.  
-
        1. Ein Ordner `BCP` mit einem benutzerdefinierten Setup zum Installieren von SQL Server-Befehlszeilenprogrammen (`MsSqlCmdLnUtils.msi`), einschließlich des Massenkopierprogramms (`bcp`), auf jedem Knoten von Azure-SSIS IR.
 
        1. Ein Ordner `EXCEL` mit einem benutzerdefinierten Setup zum Installieren von Open Source-Assemblys (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll` und `ExcelDataReader.dll`) auf jedem Knoten von Azure-SSIS IR.
 
        1. Ein Ordner namens `ORACLE ENTERPRISE` mit einem benutzerdefinierten Setupskript (`main.cmd`) und einer Konfigurationsdatei für die unbeaufsichtigte Installation (`client.rsp`) zum Installieren der Oracle-Connectors und des OCI-Treibers auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie Oracle Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst Microsoft Connectors v5.0 für Oracle (`AttunitySSISOraAdaptersSetup.msi` und `AttunitySSISOraAdaptersSetup64.msi`) aus dem [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) und den neuesten Oracle-Client (z.B. `winx64_12102_client.zip`) von [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) herunter, und laden Sie dann alles zusammen mit `main.cmd` und `client.rsp` in Ihren Container hoch. Wenn Sie bei der Herstellung einer Verbindung mit Oracle TNS verwenden, müssen Sie auch `tnsnames.ora` herunterladen, bearbeiten und in Ihren Container hochladen, damit die Datei während des Setups in den Oracle-Installationsordner kopiert werden kann.
 
-       1. Ein Ordner `ORACLE STANDARD` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des Oracle ODP.NET-Treibers auf jedem Knoten von Azure-SSIS IR. Bei diesem Setup können Sie ADO.NET Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst den aktuellen Oracle ODP.NETe-Treiber – z.B. `ODP.NET_Managed_ODAC122cR1.zip` – von [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) herunter, und laden Sie ihn anschließend zusammen mit `main.cmd` in Ihren Container hoch.
+       1. Ein Ordner `ORACLE STANDARD ADO.NET` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des Oracle ODP.NET-Treibers auf jedem Knoten von Azure-SSIS IR. Bei diesem Setup können Sie ADO.NET Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst den aktuellen Oracle ODP.NETe-Treiber – z.B. `ODP.NET_Managed_ODAC122cR1.zip` – von [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) herunter, und laden Sie ihn anschließend zusammen mit `main.cmd` in Ihren Container hoch.
+       
+       1. Ein Ordner `ORACLE STANDARD ODBC` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des Oracle ODBC-Treibers und Konfigurieren von DSN auf jedem Knoten Ihrer Azure-SSIS IR. Bei diesem Setup können Sie den ODBC-Verbindungs-Manager (Quelle/Ziel) oder den Power Query-Verbindungs-Manager (Quelle) mit ODBC-Datenquellen verwenden, um eine Verbindung mit dem Oracle-Server herzustellen. Laden Sie zunächst den neuesten Oracle Instant Client (Basic-Paket oder Basic Lite-Paket) und das ODBC-Paket herunter – z.B. die 64-Bit-Pakete [hier](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (Basic-Paket: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, Basic Lite-Paket: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC-Paket: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) oder die 32-Bit-Pakete [hier](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (Basic-Paket: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, Basic Lite-Paket: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC-Paket: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`). Anschließend laden Sie diese zusammen mit `main.cmd` in Ihren Container hoch.
 
        1. Ein Ordner namens `SAP BW` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des .NET-Connector-Assemblys von SAP (`librfc32.dll`) auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie SAP BW-Verbindungs-Manager, Quelle und Ziel verwenden. Laden Sie zuerst die 64-Bit- oder 32-Bit-Version von `librfc32.dll` aus dem SAP-Installationsordner zusammen mit `main.cmd`in Ihren Container hoch. Das Skript kopiert dann während des Setups die SAP-Assembly in den Ordner `%windir%\SysWow64` oder `%windir%\System32`.
 

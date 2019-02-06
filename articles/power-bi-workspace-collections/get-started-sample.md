@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 630413d15df04d27599389f647c57876fff9d295
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246683"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094426"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Beispiel für die ersten Schritte mit Power BI-Arbeitsbereichssammlungen
 
@@ -24,7 +24,7 @@ Mit **Microsoft Power BI-Arbeitsbereichssammlungen** können Sie Power BI-Berich
 > [!IMPORTANT]
 > Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern. Diese Ressourcen sind hilfreich, wenn Sie Power BI-Berichte in die Beispiel-App (und auch in Ihre eigenen Apps) integrieren.
+Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern: Diese Ressourcen sind hilfreich, wenn Sie Power BI-Berichte in die Beispiel-App (und auch in Ihre eigenen Apps) integrieren.
 
 * [Beispiel für eine Arbeitsbereichs-Web-App](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [API-Referenz für Power BI-Arbeitsbereichssammlungen](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -93,7 +93,7 @@ Nachdem Sie auf einen Bericht geklickt haben, sieht die Webanwendung **EmbedSamp
 
 ## <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 
-Bei dem Beispiel für **Power BI-Arbeitsbereichssammlungen** handelt es sich um ein Beispiel einer Web-App, das zeigt, wie Sie **Power BI**-Berichte in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model-View-Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
+Bei dem Beispiel für **Power BI-Arbeitsbereichssammlungen** handelt es sich um ein Beispiel einer Web-App, das zeigt, wie Sie **Power BI**-Berichte in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model View Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
 
 Der Beispielcode für **Microsoft Power BI-Arbeitsbereichssammlungen** ist wie folgt unterteilt. Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
 
@@ -104,14 +104,14 @@ Der Beispielcode für **Microsoft Power BI-Arbeitsbereichssammlungen** ist wie f
 
 Das Beispiel umfasst ein **ReportsViewModel** und ein **ReportViewModel**.
 
-**ReportsViewModel.cs:** stellt Power BI-Berichte dar.
+**ReportsViewModel.cs:** Entspricht Power BI-Berichten.
 
     public class ReportsViewModel
     {
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs:** stellt einen Power BI-Bericht dar.
+**ReportViewModel.cs:** Entspricht einem Power BI-Bericht.
 
     public classReportViewModel
     {
@@ -128,7 +128,7 @@ Die Verbindungszeichenfolge muss folgendes Format aufweisen:
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-Die Verwendung allgemeiner Server- und Datenbankattribute ist nicht möglich. Zum Beispiel: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+Die Verwendung allgemeiner Server- und Datenbankattribute ist nicht möglich. Beispiel:  Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
 ### <a name="view"></a>Sicht
 
@@ -155,7 +155,7 @@ In der **Ansicht** wird die Anzeige von Power BI-**Berichten** und eines einzeln
         </div>
     </div>
 
-„Report.cshtml“: Legen Sie das **Model.AccessToken** und den Lambda-Ausdruck für **PowerBIReportFor** fest.
+„Report.cshtml“: Legen Sie das **Model.AccessToken** und den Lambdaausdruck für **PowerBIReportFor** fest.
 
     @model ReportViewModel
 
@@ -168,7 +168,7 @@ In der **Ansicht** wird die Anzeige von Power BI-**Berichten** und eines einzeln
 
 ### <a name="controller"></a>Controller
 
-**DashboardController.cs:** erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des **Signaturschlüssels** generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** werden zum Erstellen einer Instanz von **PowerBIClient** verwendet. Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
+**DashboardController.cs:** Erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des **Signaturschlüssels** generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** werden zum Erstellen einer Instanz von **PowerBIClient** verwendet. Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
 
 CreatePowerBIClient()
 
@@ -228,7 +228,7 @@ Sobald Sie über einen **Bericht** verfügen, können Sie den Power BI-**Bericht
 ```
 init: function() {
     var embedUrl = this.getEmbedUrl();
-    var iframeHtml = '<igrame style="width:100%;height:100%;" src="' + embedUrl + 
+    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 
         '" scrolling="no" allowfullscreen="true"></iframe>';
     this.element.innerHTML = iframeHtml;
     this.iframe = this.element.childNodes[0];

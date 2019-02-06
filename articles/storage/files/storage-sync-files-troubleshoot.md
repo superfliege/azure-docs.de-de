@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/25/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157631"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471401"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -804,24 +804,19 @@ Es gibt zwei Hauptklassen von Fehlern, die für jeden Fehlerpfad auftreten könn
 In den folgenden Abschnitten wird beschrieben, wie Sie Probleme mit dem Cloudtiering behandeln und ermitteln, ob ein Problem ein Cloudspeicherproblem oder ein Serverproblem ist.
 
 <a id="monitor-tiering-activity"></a>**Gewusst wie: Überwachen der Tieringaktivität auf einem Server**  
-Um die Tieringaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-ID 9002, 9003, 9016 und 9029 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
-
-- Die Ereignis-ID 9002 bietet Ghostingstatistiken für einen Serverendpunkt. Beispiele: TotalGhostedFileCount, SpaceReclaimedMB usw.
+Um die Tieringaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9003, 9016 und 9029 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
 - Die Ereignis-ID 9003 ermöglicht die Fehlerverteilung für einen Serverendpunkt. Beispiele: Gesamtfehlerzahl, ErrorCode usw. Beachten Sie, dass ein Ereignis pro Fehlercode protokolliert wird.
-
 - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiele: Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist usw.
-
-- Die Ereignis-ID 9029 bietet Informationen über die Ghostingsitzung. Beispiele: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die ein Tiering durchgeführt wurde, Anzahl der Dateien, für die bereits ein Tiering durchgeführt ist usw.
+- Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiele: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die ein Tiering durchgeführt wurde, Anzahl der Dateien, für die bereits ein Tiering durchgeführt ist usw.
 
 <a id="monitor-recall-activity"></a>**Gewusst wie: Überwachen der Rückrufaktivität auf einem Server**  
-Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-ID 9005, 9006 und 9007 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“). Beachten Sie, dass diese Ereignisse stündlich protokolliert werden.
+Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9005, 9006, 9009 und 9059 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
 - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiele: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
-
 - Die Ereignis-ID 9006 ermöglicht die Rückruffehlerverteilung für einen Serverendpunkt. Beispiele: Fehlerhafte Anforderungen insgesamt, ErrorCode usw. Beachten Sie, dass ein Ereignis pro Fehlercode protokolliert wird.
-
-- Die Ereignis-ID 9007 bietet Rückrufleistung für einen Serverendpunkt. Beispiele: TotalRecallIOSize, TotalRecallTimeTaken usw.
+- Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Hierzu zählen beispielsweise DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed usw.
+- Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Hierzu zählen beispielsweise ShareId, Anwendungsname und TotalEgressNetworkBytes.
 
 <a id="files-fail-tiering"></a>**Beheben von Problemen bei Dateien, bei denen kein Tiering möglich ist**  
 Wenn Tieringfehler von Dateien auf Azure Files auftreten:
@@ -858,6 +853,9 @@ Wenden Sie sich an den Softwareanbieter, um weitere Informationen zu den erforde
 
 Unbeabsichtigte Rückrufe können auch in anderen Szenarien auftreten, z.B. beim Durchsuchen von Dateien im Datei-Explorer. Das Öffnen eines Ordners, der Dateien mit Cloudtiering enthält, im Datei-Explorer auf dem Server kann zu unbeabsichtigten Rückrufen führen. Die Wahrscheinlichkeit dafür steigt, wenn auf dem Server eine Virenschutzlösung aktiviert ist.
 
+> [!NOTE]
+>Verwenden Sie Ereignis-ID 9059 im Telemetrieereignisprotokoll, um zu bestimmen, welche Anwendungen Rückrufe erzeugen. Dieses Ereignis stellt Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt bereit und wird einmal pro Stunde protokolliert.
+
 ## <a name="general-troubleshooting"></a>Allgemeine Problembehandlung
 Wenn Probleme mit der Azure-Dateisynchronisierung auf einem Server auftreten, führen Sie zunächst die folgenden Schritte aus:
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle.
@@ -884,6 +882,7 @@ Wenn das Problem nicht behoben wird, führen Sie das AFSDiag-Tool aus:
 6. Eine ZIP-Datei, die Protokolle und Ablaufverfolgungsdateien enthält, wird im angegebenen Ausgabeverzeichnis gespeichert.
 
 ## <a name="see-also"></a>Weitere Informationen
+- [Überwachen der Azure-Dateisynchronisierung](storage-sync-files-monitoring.md)
 - [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md)
 - [Behandeln von Azure Files-Problemen unter Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Behandeln von Azure Files-Problemen unter Linux](storage-troubleshoot-linux-file-connection-problems.md)

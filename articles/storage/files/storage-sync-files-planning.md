@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.subservice: files
+ms.openlocfilehash: 246b7ae21ceca80c2d1af74330691e527c73cf51
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452735"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -283,3 +283,4 @@ Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateis
 * [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 * [Bereitstellen von Azure Files](storage-files-deployment-guide.md)
 * [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md)
+* [Überwachen der Azure-Dateisynchronisierung](storage-sync-files-monitoring.md)

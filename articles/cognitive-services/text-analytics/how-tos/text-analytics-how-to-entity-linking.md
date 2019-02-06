@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230555"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220383"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse (Vorschauversion)
 
@@ -41,7 +41,7 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Unterstützte Typen für die Erkennung benannter Entitäten
 
-| Typ  | SubType | Beispiel |
+| Type  | SubType | Beispiel |
 |:-----------   |:------------- |:---------|
 | Person        | N/V\*         | „Jeff“, „Bill Gates“     |
 | Standort      | N/V\*         | „Redmond, Washington“, „Paris“  |
@@ -54,14 +54,14 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | Menge      | Currency      | „€10,99“     | 
 | Menge      | Dimension     | „10 Kilometer“, „40 cm“     | 
 | Menge      | Temperatur   | „32 Grad“    |
-| Datetime      | N/V\*         | „18:30 4. Februar 2012“      | 
-| Datetime      | Datum          | „2. Mai 2017“ und „02/05/2017“   | 
+| DateTime      | N/V\*         | „18:30 4. Februar 2012“      | 
+| DateTime      | Datum          | „2. Mai 2017“ und „02/05/2017“   | 
 | Datum und Uhrzeit     | Zeit          | „8:00“, „8 Uhr“  | 
-| Datetime      | DateRange     | „2. Mai bis 5. Mai“    | 
-| Datetime      | TimeRange     | „18: 00 Uhr bis 19 Uhr“     | 
-| Datetime      | Duration      | „1 Minute und 45 Sekunden“   | 
-| Datetime      | Set           | „jeden Dienstag“     | 
-| Datetime      | TimeZone      |    | 
+| DateTime      | DateRange     | „2. Mai bis 5. Mai“    | 
+| DateTime      | TimeRange     | „18: 00 Uhr bis 19 Uhr“     | 
+| DateTime      | Duration      | „1 Minute und 45 Sekunden“   | 
+| DateTime      | Set           | „jeden Dienstag“     | 
+| DateTime      | TimeZone      |    | 
 | URL           | N/V\*         | "http://www.bing.com"    |
 | E-Mail         | N/V\*         | "support@contoso.com" |
 \* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.
@@ -93,7 +93,7 @@ Die Dokumentgröße darf 5.000 Zeichen pro Dokument nicht übersteigen, und pro 
 
 Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber sind hier noch einmal einige Punkte aufgeführt:
 
-+ Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [API für Entitätsverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634).
++ Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [API für Entitätenverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
 + Legen Sie den HTTP-Endpunkt für die Entitätsextraktion fest. Er muss die Ressource `/entities` enthalten: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`.
 

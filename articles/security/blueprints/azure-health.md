@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315773"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103071"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -48,7 +48,7 @@ Mit diesem Entwurf soll eine modulare Grundlage geschaffen werden, auf der sich 
 
 -   **Architekturdiagramm.** Das Diagramm zeigt die für den Entwurf verwendete Referenzarchitektur und das Anwendungsfall-Beispielszenario.
 
--   [IaaS-Erweiterung](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md): Diese Lösung zeigt, wie eine lokale SQL-basierte Lösung in Azure migriert und eine PAW (Privileged Access Workstation) implementiert werden kann, um cloudbasierte Dienste und Lösungen sicher zu verwalten. 
+-   [IaaS-Erweiterung:](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) Diese Lösung zeigt, wie eine lokale SQL-basierte Lösung zu Azure migriert und eine Arbeitsstation mit privilegiertem Zugriff (Privileged Access Workstation, PAW) implementiert werden kann, um cloudbasierte Dienste und Lösungen sicher zu verwalten. 
 
 ## <a name="solution-components"></a>Lösungskomponenten
 
@@ -78,7 +78,7 @@ Der Siteadministrator ist für das Azure-Abonnement des Kunden verantwortlich. E
 
 -   Standardrollenzuweisungen: [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   Benutzerdefinierte Rollenzuweisungen: N/V
+-   Benutzerdefinierte Rollenzuweisungen: –
 
 -   Umfang: Abonnement
 
@@ -89,7 +89,7 @@ Er besitzt keinen Zugriff auf die Patientenakten.
 
 -   Integrierte Rollenzuweisungen: [Mitwirkender von SQL DB](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Mitwirkender von SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   Benutzerdefinierte Rollenzuweisungen: N/V
+-   Benutzerdefinierte Rollenzuweisungen: –
 
 -   Umfang: ResourceGroup
 
@@ -100,7 +100,7 @@ Der Data Scientist betreibt die Azure Machine Learning Studio-Instanz. Er kann D
 
 -   Integrierte Rollenzuweisungen: [Mitwirkender von Speicherkonto](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   Benutzerdefinierte Rollenzuweisungen: N/V
+-   Benutzerdefinierte Rollenzuweisungen: –
 
 -   Umfang: ResourceGroup
 
@@ -130,7 +130,7 @@ Der Prüfer wertet die Lösung bezüglich der Konformität aus. Er besitzt keine
 
 -   Integrierte Rollenzuweisungen: [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   Benutzerdefinierte Rollenzuweisungen: N/V
+-   Benutzerdefinierte Rollenzuweisungen: –
 
 -   Umfang: Abonnement
 

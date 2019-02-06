@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6698960cca39fb49fe8ba6e79b957be469ea7c50
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126121"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464992"
 ---
 # <a name="translator-text-api-30-detect"></a>Textübersetzungs-API 3.0: Detect
 
@@ -35,7 +35,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>api-version</td>
     <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
@@ -46,7 +46,7 @@ Anforderungsheader enthalten Folgendes:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>_Eine Autorisierung_<br/>_Header_</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
@@ -87,13 +87,13 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
   * `language`: Code der erkannten Sprache.
 
-  * `score`: ein float-Wert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
+  * `score`: Ein float-Wert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
 
-  * `isTranslationSupported`: ein boolescher Wert, der wahr ist (TRUE), wenn die erkannte Sprache eine der für die Textübersetzung unterstützte Sprache ist
+  * `isTranslationSupported`: Ein boolescher Wert, der TRUE lautet, wenn die erkannte Sprache eine der für die Textübersetzung unterstützten Sprachen ist.
 
-  * `isTransliterationSupported`: ein boolescher Wert, der wahr ist (TRUE), wenn die erkannte Sprache eine der für die Transliteration unterstützte Sprache ist
+  * `isTransliterationSupported`: Ein boolescher Wert, der TRUE lautet, wenn die erkannte Sprache eine der für die Transliteration unterstützten Sprachen ist.
   
-  * `alternatives`: ein Array anderer möglicher Sprachen. Jedes Element des Arrays ist ein anderes Objekt mit den gleichen Eigenschaften wie oben: `language`, `score`, `isTranslationSupported` und `isTransliterationSupported`.
+  * `alternatives`: Ein Array anderer möglicher Sprachen. Jedes Element des Arrays ist ein anderes Objekt mit den gleichen Eigenschaften wie oben: `language`, `score`, `isTranslationSupported` und `isTransliterationSupported`.
 
 Eine JSON-Beispielantwort lautet wie folgt:
 
@@ -126,7 +126,7 @@ Eine JSON-Beispielantwort lautet wie folgt:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>X-RequestId</td>
     <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
@@ -139,7 +139,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 <table width="100%">
   <th width="20%">Statuscode</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>200</td>
     <td>Erfolgreich.</td>

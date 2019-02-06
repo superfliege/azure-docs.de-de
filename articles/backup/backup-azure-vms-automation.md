@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0a18931c037a1cf34d8a296a6330264bc8d38af
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fa53a7e598b42e93e86eb059c36ff89f38bb7093
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424520"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300590"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Verwenden von PowerShell zum Sichern und Wiederherstellen von virtuellen Computern
 
@@ -355,11 +355,17 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Wiederherstellen von verwalteten Datenträgern
 
 > [!NOTE]
-> Wenn die gesicherte VM über verwaltete Datenträger verfügt und Sie diese als verwaltete Datenträger wiederherstellen möchten, können Sie die Funktion aus Azure PowerShell v6.7.0 oder höher nutzen.
+> Wenn die gesicherte VM über verwaltete Datenträger verfügt und Sie diese als verwaltete Datenträger wiederherstellen möchten, können Sie die Funktion aus Azure PowerShell RM-Modul v6.7.0 oder höher nutzen.
 >
 >
 
-Geben Sie den zusätzlichen Parameter **TargetResourceGroupName** an, um die RG festzulegen, in der die verwalteten Datenträger gespeichert werden.
+Geben Sie den zusätzlichen Parameter **TargetResourceGroupName** an, um die RG festzulegen, in der die verwalteten Datenträger gespeichert werden. 
+
+> [!NOTE]
+> Es wird dringend empfohlen, den Parameter **TargetResourceGroupName** für die Wiederherstellung verwalteter Datenträger zu verwenden, da dies zu erheblichen Leistungssteigerungen führt. Außerdem ist dieser Parameter ab Azure Powershell Az-Module 1.0 im Falle einer Wiederherstellung mit verwalteten Datenträgern obligatorisch.
+>
+>
+
 
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"

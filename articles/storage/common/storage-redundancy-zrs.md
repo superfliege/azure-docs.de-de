@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: common
+ms.openlocfilehash: 62c6e24776c1d9a4e6a82eea557244bb390ebd00
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868343"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471486"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -25,19 +25,20 @@ ZRS ist für Blockblobs, Seitenblobs ohne Datenträger, Dateien, Tabellen und Wa
 
 ZRS ist in den folgenden Regionen verfügbar:
 
+- Asien, Südosten
+- Europa, Westen
+- Europa, Norden
+- Frankreich, Mitte
+- Japan, Osten
 - USA, Osten
 - USA (Ost 2)
 - USA, Westen 2
 - USA, Mitte
-- Nordeuropa
-- Europa, Westen
-- Frankreich, Mitte
-- Asien, Südosten
 
 Microsoft arbeitet daran, ZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/) nach, um Informationen zu neuen Regionen zu erhalten.
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Was geschieht, wenn eine Zone nicht mehr verfügbar ist?
-Auf Ihre Daten kann weiterhin zugegriffen werden, auch wenn eine Zone nicht mehr verfügbar ist. Microsoft empfiehlt, Vorgehensweisen für die Behandlung vorübergehender Fehler anzuwenden. Zu diesen Vorgehensweisen gehört die Implementierung von Wiederholungsrichtlinien mit exponentiellem Backoff.
+Auf Ihre Daten kann weiterhin von Lese- und Schreibvorgängen zugegriffen werden, auch wenn eine Zone nicht mehr verfügbar ist. Microsoft empfiehlt, Vorgehensweisen für die Behandlung vorübergehender Fehler anzuwenden. Zu diesen Vorgehensweisen gehört die Implementierung von Wiederholungsrichtlinien mit exponentiellem Backoff.
 
 Wenn eine Zone nicht verfügbar ist, führt Azure Netzwerkupdates durch, z.B. durch die Festlegung neuer DNS-Ziele. Diese Updates können sich auf Ihre Anwendung auswirken, wenn Sie auf Ihre Daten zugreifen, bevor die Updates abgeschlossen sind.
 

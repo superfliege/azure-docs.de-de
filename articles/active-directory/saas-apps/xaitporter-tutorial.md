@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 12fb8e5b2b940c48de766a48f59ed0cc342b5356
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fe89b64fb5f188591ce123e8ed7ed410d3c5ab48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421065"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Tutorial: Azure Active Directory-Integration mit XaitPorter
 
@@ -183,7 +183,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-xaitporter-test-user"></a>Erstellen eines XaitPorter-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in XaitPorter einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam für den XaitPorter-Client](https://www.xait.com/support/), um die Benutzer auf der XaitPorter-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in XaitPorter einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das  [Supportteam für den XaitPorter-Client](https://www.xait.com/support/), um die Benutzer auf der XaitPorter-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

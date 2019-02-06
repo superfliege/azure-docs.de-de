@@ -2,20 +2,20 @@
 title: Analysieren von Daten mit Azure Machine Learning | Microsoft Docs
 description: Azure Machine Learning wird verwendet, um ein Predictive Machine Learning-Modell basierend auf in Azure SQL Data Warehouse gespeicherten Daten zu erstellen.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 4324b1ac343a0e2b77c21d7834beffae08403953
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247525"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477657"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analysieren von Daten mit Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Die Daten befinden sich in der Sicht „dbo.vTargetMail“ in der AdventureWorks
 
 1. Melden Sie sich bei [Azure Machine Learning Studio][Azure Machine Learning studio] an, und klicken Sie auf „Meine Experimente“.
 2. Klicken Sie auf **+ NEU**, und wählen Sie **Leeres Experiment**.
-3. Geben Sie einen Namen für das Experiment ein: Zielgerichtetes Marketing.
+3. Geben Sie einen Namen für Ihr Experiment ein: Gezieltes Marketing.
 4. Ziehen Sie das **Reader** -Modul aus dem Modulbereich in den Zeichenbereich.
 5. Geben Sie im Eigenschaftenbereich ausführliche Informationen zu Ihrer SQL Data Warehouse-Datenbank ein.
 6. Geben Sie die **Datenbankabfrage** zum Lesen der für Sie interessanten Daten an.
@@ -80,18 +80,18 @@ Löschen Sie einige Spalten, die für das Modell nicht relevant sind, um die Dat
 1. Ziehen Sie das Modul **Project Columns** in den Zeichenbereich.
 2. Klicken Sie im Eigenschaftenbereich auf **Spaltenauswahl starten** , um die zu löschenden Spalten anzugeben.
    ![Project Columns][4]
-3. Schließen Sie zwei Spalten aus: CustomerAlternateKey und GeographyKey.
+3. Schließen Sie zwei Spalten aus: „CustomerAlternateKey“ und „GeographyKey“.
    ![Entfernen überflüssiger Spalten][5]
 
 ## <a name="3-build-the-model"></a>3. Erstellen des Modells
-Wir teilen die Daten im Verhältnis 80:20: 80 Prozent zum Trainieren eines Machine Learning-Modells und 20 Prozent zum Testen des Modells. Für dieses binäre Klassifizierungsproblem nutzen wir die Zwei-Klassen-Algorithmen.
+Wir teilen die Daten im Verhältnis 80:20: 80 % zum Trainieren eines Machine Learning-Modells und 20 % zum Testen des Modells. Für dieses binäre Klassifizierungsproblem nutzen wir die Zwei-Klassen-Algorithmen.
 
 1. Ziehen Sie das Modul **Split** in den Zeichenbereich.
 2. Geben Sie im Eigenschaftenbereich für den Anteil der Zeilen im ersten Ausgabedatensatz „0,8“ ein.
    ![Aufteilen von Daten in Trainings- und Testsätze][6]
 3. Ziehen Sie das Modul **Two-Class Boosted Decision Tree** in den Zeichenbereich.
 4. Ziehen Sie das Modul **Modell trainieren** in den Zeichenbereich, und legen Sie die Eingaben fest. Klicken Sie im Eigenschaftenbereich auf **Spaltenauswahl starten** .
-   * Erste Eingabe: ML-Algorithmus
+   * Erste Eingabe: ML-Algorithmus.
    * Zweite Eingabe: Daten zum Trainieren des Algorithmus.
      ![Verbinden des „Modell trainieren“-Moduls][7]
 5. Wählen Sie die Spalte **BikeBuyer** als die vorherzusagende Spalte aus.
@@ -101,7 +101,7 @@ Wir teilen die Daten im Verhältnis 80:20: 80 Prozent zum Trainieren eines Mach
 Wir testen nun die Leistung des Modells mithilfe von Testdaten. Wir vergleichen zwei Algorithmen, um zu ermitteln, welcher Algorithmus die bessere Leistung erzielt.
 
 1. Ziehen Sie das Modul **Score Model** in den Zeichenbereich.
-    Erste Eingabe: Trainiertes Modell. Zweite Eingabe: Testdaten ![Bewertung des Modells][9]
+    Erste Eingabe: Trainiertes Modell, zweite Eingabe: Testdaten zum ![Bewerten des Modells][9]
 2. Ziehen Sie das Modul **Two-Class Bayes Point Machine** in den Experimentbereich. Wir sehen uns an, wie dieser Algorithmus im Vergleich zum Modul „Two-Class Boosted Decision Tree“ abschneidet.
 3. Kopieren Sie die Module „Train Model“ und „Score Model“, und fügen Sie sie im Zeichenbereich ein.
 4. Ziehen Sie das Modul **Evaluate Model** in den Zeichenbereich, um die beiden Algorithmen zu vergleichen.

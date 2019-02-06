@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: b997d03534fdd7c5075b1bd483dac9ad5e1ddbd3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c5eaa0944210e701c306180709bf97abdbb3b9e3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048326"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Tutorial: Azure Active Directory-Integration mit Accredible
 
@@ -132,7 +132,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 6. Zum Konfigurieren des einmaligen Anmeldens auf der **Accredible**-Seite müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Accredible-Supportteam](mailto:support@accredible.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -168,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
 ### <a name="create-an-accredible-test-user"></a>Erstellen eines Accredible-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Accredible eine Benutzerin namens „Britta Simon“. Sie müssen die E-Mail-ID des Benutzers/der Benutzerin an das [Accredible-Supportteam](mailto:support@accredible.com) senden, das die E-Mail-überprüft und Ihnen dann die Einladungs-E-Mail sendet, sodass Sie Benutzer zur Accredible-Plattform hinzufügen können.
+In diesem Abschnitt erstellen Sie in Accredible eine Benutzerin namens „Britta Simon“. Sie müssen die E-Mail-ID des Benutzers an das  [Accredible-Supportteam](mailto:support@accredible.com) senden, das die E-Mail-überprüft und Ihnen dann die Einladungs-E-Mail sendet, sodass Sie Benutzer zur Accredible-Plattform hinzufügen können.
  
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

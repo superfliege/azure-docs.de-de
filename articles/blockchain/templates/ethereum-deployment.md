@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/29/2018
+ms.date: 01/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260532"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098337"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“
 
 Mit der Projektmappenvorlage für „Ethereum – Proof-of-Work-Konsortium“ lässt sich ein entsprechendes Multi-Member-Netzwerk mit minimalen Kenntnissen in Azure und Ethereum schneller und einfacher bereitstellen und konfigurieren.
 
-Einige wenige Benutzereingaben und eine Einfachklick-Bereitstellung über das Azure-Portal reichen, damit jedes Mitglied seinen Netzwerk-Fußabdruck über Microsoft Azure Compute, Networking und weltweite Speicherdienste bereitstellen kann. Der Netzwerk-Fußabdruck jedes Mitglieds umfasst eine Reihe von Transaktionsknoten mit Lastenausgleich, über die eine Anwendung oder ein Benutzer interaktiv Transaktionen übermitteln kann, sowie eine Reihe von Miningknoten zum Aufzeichnen von Transaktionen und ein VPN-Gateway. Über einen nachfolgenden Verbindungsschritt werden die Gateways verbunden, um ein vollständig konfiguriertes Multi-Member-Blockchain-Netzwerk zu erstellen.
+Mit einer Azure Resource Manager-Vorlage kann jedes Mitglied seinen Netzwerkfußabdruck mit Compute-, Netzwerk- und Speicherdiensten von Microsoft Azure bereitstellen. Der Netzwerkfußabdruck jedes Mitglieds umfasst eine Reihe von Transaktionsknoten mit Lastenausgleich, über die eine Anwendung oder ein Benutzer interaktiv Transaktionen übermitteln kann, sowie eine Reihe von Miningknoten zum Aufzeichnen von Transaktionen und ein VPN-Gateway. Nach der Bereitstellung stellen Sie eine Verbindung mit den Gateways her, um ein vollständig konfiguriertes Multi-Member-Blockchain-Netzwerk zu erstellen.
 
 ## <a name="about-blockchain"></a>Über Blockchain
 
@@ -35,7 +35,7 @@ Ein Konsortiumsmitglied kann bis zu fünf Regionen bereitstellen, die mindestens
 
 Alle Knoten verfügen über eine stabile Version des Go Ethereum (Geth)-Clients und werden als Miningknoten konfiguriert. Wenn Sie keinen benutzerdefinierten Genesis-Block angegeben haben, verwenden alle Knoten dieselbe Ethereum-Adresse und dasselbe Schlüsselpaar, das durch das Kennwort des Ethereum-Kontos geschützt ist. Die angegebene Ethereum-Passphrase wird verwendet, um das Standardkonto (Coinbase) für die einzelnen Miningknoten zu generieren. Beim Miningvorgang können Miningknoten Gebühren verursachen, die diesem Konto hinzugerechnet werden.
 
-Die Anzahl der Miningknoten pro Konsortiumsmitglied hängt von der gewünschten Gesamtgröße des Netzwerks und der Hashleistung ab, die den einzelnen Mitgliedern zugeteilt wurde. Je größer das Netzwerk, desto mehr Knoten müssen kompromittiert werden, um einen unfairen Vorteil zu erlangen. Die Vorlage unterstützt bis zu 15 Miningknoten pro Region, die über VM-Skalierungsgruppen bereitgestellt werden.
+Die Anzahl von Miningknoten pro Konsortiumsmitglied hängt von der gewünschten Gesamtgröße des Netzwerks und der Hashleistung ab, die den einzelnen Mitgliedern zugeteilt wurde. Bei größeren Netzwerken müssen mehr Knoten kompromittiert werden, um einen unfairen Vorteil zu erlangen. Die Vorlage unterstützt bis zu 15 Miningknoten pro Region, die über VM-Skalierungsgruppen bereitgestellt werden.
 
 ### <a name="transaction-node-details"></a>Details zu Transaktionsknoten
 
@@ -45,11 +45,11 @@ Transaktionsknoten werden per Lastenausgleich in einer Verfügbarkeitsgruppe ver
 
 ### <a name="log-analytics-details"></a>Details zu Log Analytics
 
-Bei jeder Bereitstellung wird eine neue Log Analytics-Instanz erstellt oder der Beitritt zu einer vorhandenen Instanz vollzogen. Dies ermöglicht die Überwachung verschiedener Leistungsmetriken für einzelne virtuelle Computer, die das bereitgestellte Netzwerk bilden.
+Jede Bereitstellung erstellt auch eine neue Log Analytics-Instanz bzw. kann in eine vorhandene Instanz eingebunden werden. Log Analytics ermöglicht die Überwachung verschiedener Leistungsmetriken für einzelne virtuelle Computer, die das bereitgestellte Netzwerk bilden.
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 
-### <a name="description"></a>BESCHREIBUNG
+### <a name="description"></a>Beschreibung
 
 Mit dieser Projektmappenvorlage können Multi-Member-Netzwerke für Ethereum-Konsortien für eine oder mehrere Regionen bereitgestellt werden. Das virtuelle Netzwerk ist in den einzelnen Regionen über VNET-Gateways und Verbindungsressourcen mit anderen Regionen in einer Chaintopologie verbunden. Außerdem wird eine Registrierungsstelle bereitgestellt, die die erforderlichen Informationen aller Mining- und Transaktionsknoten enthält, die in den einzelnen Regionen bereitgestellt wurden.
 
@@ -88,15 +88,13 @@ Abonnement| Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird
 Ressourcengruppe| Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
 Standort| Die Azure-Region für die Ressourcengruppe. ||Nicht verfügbar
 
-
-
 ### <a name="operations-management-suite"></a>Operations Management Suite
 
-Das OMS (Operations Management Suite)-Blatt, über das Sie eine OMS-Ressource für das Netzwerk konfigurieren können. Mittels OMS werden nützliche Metriken und Protokolle aus dem Netzwerk gesammelt und angezeigt. So lassen sich Netzwerkintegrität oder Debugprobleme schnell überprüfen. Das kostenlose OMS-Angebot läuft kontrolliert aus, sobald die Kapazität aufgebraucht ist.
+Über die Operations Management Suite (OMS) können Sie eine OMS-Ressource für das Netzwerk konfigurieren. Mittels OMS werden nützliche Metriken und Protokolle aus dem Netzwerk gesammelt und angezeigt. So lassen sich Netzwerkintegrität oder Debugprobleme schnell überprüfen. Das kostenlose OMS-Angebot läuft kontrolliert aus, sobald die Kapazität aufgebraucht ist.
 
 ![Erstellen einer neuen OMS](./media/ethereum-deployment/new-oms.png)
 
-Parametername|BESCHREIBUNG| Zulässige Werte|Standardwerte
+Parametername|Beschreibung| Zulässige Werte|Standardwerte
 ---|---|---|---
 Mit vorhandener OMS verbinden|Erstellen Sie eine neue Log Analytics-Instanz, oder treten Sie einer vorhandenen Instanz bei.|Neu erstellen, Vorhandener beitreten|Neu erstellen, Log Analytics-Standort|Die Region, in der die neue Log Analytics-Instanz bereitgestellt wird (wird angezeigt, wenn *Neu erstellen* ausgewählt ist).
 Vorhandene OMS-Arbeitsbereichs-ID|Die Arbeitsbereichs-ID der vorhandenen Instanz (wird angezeigt, wenn *Vorhandener beitreten* ausgewählt ist). OMS-Dienstebene|Wählen Sie die Tarifstufe für die neue Instanz aus. Weitere Informationen finden Sie unter https://azure.microsoft.com/pricing/details/log-analytics/ (wird angezeigt, wenn *Vorhandener beitreten* ausgewählt ist).|Kostenlos, Eigenständig, Pro Knoten|Kostenlos
@@ -154,7 +152,7 @@ Schlüssel der Registrierungsstelle für Peerinformationen|Der primäre Schlüss
 
 ### <a name="summary"></a>Zusammenfassung
 
-Klicken Sie auf das Zusammenfassungsblatt, um die Eingaben zu überprüfen und eine Standardüberprüfung vor der Bereitstellung durchzuführen.
+Klicken Sie sich durch die Zusammenfassung, um die Eingaben zu überprüfen und eine grundlegende Überprüfung vor der Bereitstellung durchzuführen.
 
 ![Zusammenfassung](./media/ethereum-deployment/summary.png)
 
@@ -225,9 +223,9 @@ mn-ethwvu-reg1_2 |mn-ethwvu-reg1000002
 
 Wenn Sie das erste (oder ein verbundenes) Mitglied des Konsortiums sind, benötigen andere Mitglieder einige Informationen von Ihnen, damit sie beitreten und eine Verbindung herstellen können. Dies gilt insbesondere in folgenden Fällen:
 
-1. **Freigegebene Konfigurationsdaten für das Konsortium**: Eine Gruppe von Daten sorgt dafür, die Ethereum-Verbindung zwischen zwei Mitglieder zu orchestrieren. Die erforderlichen Informationen, einschließlich Genesis-Block, Konsortiumsnetzwerk-ID und Startknoten, werden in eine Datei auf den Transaktionsknoten der LEADER- oder einer anderen MEMBER-Bereitstellung geschrieben. Den Speicherort der Datei können Sie dem Ausgabeparameter **CONSORTIUM-DATA** der Vorlagenbereitstellung entnehmen.
-2. **Endpunkt für Peerinformationen**: Die Registrierungsstelle für den Endpunkt der Peerinformationen wird dazu verwendet, Informationen von allen Knoten abzurufen, die bereits mit dem Ethereum-Netzwerk der Leader-Bereitstellung oder der Bereitstellung eines anderen Mitglieds verbunden sind. Die Datenbank speichert Informationen zu jedem Knoten, der mit dem Netzwerk verbunden ist, z. B. den Hostnamen des Knotens, die private IP-Adresse usw. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_ENDPOINT** der Vorlagenbereitstellung entnehmen.
-3. **Primärer Schlüssel für Peerinformationen**: Der primäre Schlüssel für die Registrierungsstelle von Peerinformationen wird verwendet, um auf den primären Schlüssel für Peerinformationen des Leaders oder eines anderen Mitglieds zuzugreifen. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_PRIMARY_KEY** der Vorlagenbereitstellung entnehmen.
+1. **Freigegebene Konfigurationsdaten für das Konsortium:** Es gibt eine Gruppe von Daten, die zur Orchestrierung der Ethereum-Verbindung zwischen zwei Mitgliedern verwendet wird. Die erforderlichen Informationen, einschließlich Genesis-Block, Konsortiumsnetzwerk-ID und Startknoten, werden in eine Datei auf den Transaktionsknoten der LEADER- oder einer anderen MEMBER-Bereitstellung geschrieben. Den Speicherort der Datei können Sie dem Ausgabeparameter **CONSORTIUM-DATA** der Vorlagenbereitstellung entnehmen.
+2. **Endpunkt für Peerinformationen:** Die Registrierungsstelle für den Endpunkt der Peerinformationen wird verwendet, um aus der Leader-Bereitstellung oder aus der Bereitstellung eines anderen Mitglieds Informationen zu allen Knoten abzurufen, die bereits mit dem Ethereum-Netzwerk verbunden sind. Die Datenbank speichert Informationen zu jedem Knoten, der mit dem Netzwerk verbunden ist, z. B. den Hostnamen des Knotens, die private IP-Adresse usw. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_ENDPOINT** der Vorlagenbereitstellung entnehmen.
+3. **Primärer Schlüssel für Peerinformationen:** Der primäre Schlüssel für die Registrierungsstelle von Peerinformationen wird verwendet, um auf den primären Schlüssel für Peerinformationen des Leaders oder eines anderen Mitglieds zuzugreifen. Die Informationen können Sie dem Ausgabeparameter **PEER_INFO_PRIMARY_KEY** der Vorlagenbereitstellung entnehmen.
 
 
 4. **VNET-Gateway**: Jedes Mitglied stellt über ein vorhandenes Mitglied eine Verbindung mit dem gesamten Blockchain-Netzwerk her. Um sich mit VNET zu verbinden, benötigen Sie einen Ressourcenpfad zum VNET-Gateway des Mitglieds, mit dem Sie eine Verbindung herstellen. Die Informationen können Sie dem Ausgabeparameter **CONSORTIUM_MEMBER_GATEWAY_ID** der Vorlagenbereitstellung entnehmen.

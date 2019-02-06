@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463284"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296901"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -40,11 +40,7 @@ Um den LUIS-Container auszuführen, benötigen Sie Folgendes:
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
-Der **Host** ist der Computer, auf dem der Docker-Container ausgeführt wird. Dies kann ein lokaler Computer oder ein Docker-Hostingdienst in Azure sein, einschließlich:
-
-* [Azure Kubernetes Service](../../aks/index.yml)
-* [Azure Container Instances](../../container-instances/index.yml)
-* Ein in [Azure Stack](../../azure-stack/index.yml) bereitgestellter [Kubernetes](https://kubernetes.io/)-Cluster. Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
@@ -52,9 +48,11 @@ Dieser Container unterstützt Mindestwerte und empfohlene Werte für folgende Ei
 
 |Einstellung| Minimum | Empfohlen |
 |-----------|---------|-------------|
-|Kerne<BR>`--cpus`|1 Kern<BR>mindestens 2,6 GHz (Gigahertz)|1 Kern|
+|Kerne<BR>`--cpus`|1 Kern|1 Kern|
 |Arbeitsspeicher<BR>`--memory`|2 GB|4 GB|
 |Transaktionen pro Sekunde<BR>(TPS)|20 TPS|40 TPS|
+
+Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 
 Die Einstellungen `--cpus` und `--memory` werden im Befehl `docker run` verwendet.
 
@@ -66,17 +64,12 @@ Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/referenc
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
+
 Eine vollständige Beschreibung der verfügbaren Tags, wie das im vorherigen Befehl verwendete `latest`, finden Sie unter [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) im Docker-Hub.
 
-> [!TIP]
-> Mithilfe des Befehls [docker images](https://docs.docker.com/engine/reference/commandline/images/) können Sie Ihre heruntergeladenen Containerimages auflisten. Mit dem folgenden Befehl werden beispielsweise die ID, das Repository und das Tag jedes heruntergeladenen Containerimages in Form einer Tabelle aufgelistet:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers
 
@@ -268,7 +261,7 @@ Verwenden Sie für Container-APIs den Host https://localhost:5000.
 
 Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zurückgegeben wird:
 
-|Query parameter (Abfrageparameter)|Typ|Zweck|
+|Query parameter (Abfrageparameter)|Type|Zweck|
 |--|--|--|
 |`q`|Zeichenfolge|Die Äußerung des Benutzers.|
 |`timezoneOffset`|number|Das „timeZoneOffset“ ermöglicht das [Ändern der Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity), die von der vordefinierten datetimeV2-Entität verwendet wird.|
@@ -325,14 +318,7 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](luis-container-configu
 
 ## <a name="containers-api-documentation"></a>API-Dokumentation des Containers
 
-Der Container stellt eine umfassende Dokumentation für die Endpunkte sowie die Funktion `Try it now` bereit. Dieses Feature ermöglicht Ihnen die Eingabe Ihrer Einstellungen in einem webbasierten HTML-Formular, sodass Sie die Abfrage ausführen können, ohne Code schreiben zu müssen. Nach der Rückgabe der Abfrage wird ein cURL-Beispielbefehl bereitgestellt, der das erforderliche Format für HTTP-Header und -Text veranschaulicht. 
-
-> [!TIP]
-> In der [OpenAPI-Spezifikation](https://swagger.io/docs/specification/about/) werden die API-Vorgänge beschrieben, die vom Container vom relativen URI `/swagger` unterstützt werden. Beispiel: 
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Abrechnung
 

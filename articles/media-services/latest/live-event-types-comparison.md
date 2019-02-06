@@ -11,30 +11,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725931"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153962"
 ---
-# <a name="liveevent-types-comparison"></a>Vergleich der LiveEvent-Typen
+# <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
-In Azure Media Services gibt es zwei [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents)-Typen: Livecodierung und Passthrough. 
+In Azure Media Services gibt es zwei Arten von [Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents): Livecodierung und Pass-Through. 
 
 ## <a name="types-comparison"></a>Typenvergleich 
 
-In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglichen.
+In der folgenden Tabelle werden die Features der beiden Liveereignistypen verglichen.
 
-| Feature | LiveEvent „Pass-Through“ | LiveEvent „Standard“ |
+| Feature | Liveereignis vom Typ „Pass-Through“ | Standardliveereignis |
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
 | Maximale Videoauflösung für Beitragsfeeds |4K (4096 × 2160 bei 60 Frames/Sekunde) |1080p (1920 x 1088 bei 30 Frames/Sekunde)|
 | Empfohlene maximale Anzahl von Ebenen für Beitragsfeeds|Bis zu 12|Eine Audioebene|
 | Maximale Anzahl von Ebenen in der Ausgabe| Identisch mit der Eingabe|Bis zu 7|
-| Maximale aggregierte Bandbreite von Beitragsfeeds|60 MBit/s|N/V|
+| Maximale aggregierte Bandbreite von Beitragsfeeds|60 MBit/s|–|
 | Maximale Bitrate für eine einzelne Ebene im Beitrag |20 MBit/s|20 MBit/s|
 | Unterstützung von Audiotiteln mit mehreren Sprachen|JA|Nein |
 | Unterstützte Codecs für Videoeingang |H.264/AVC und H.265/HEVC|H.264/AVC|
@@ -50,10 +50,10 @@ In der folgenden Tabelle werden die Features der beiden LiveEvent-Typen verglich
 | Unterstützung für das Einfügen von Slates|Nein |Nein |
 | Unterstützung für Werbeeinblendungen über API| Nein |Nein |
 | Unterstützung für Werbeeinblendungen über SCTE-35 Inband|JA|JA|
-| Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag|JA|Nein (LiveEvent beginnt Slating nach 6 Sekunden ohne Eingabedaten)|
+| Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag|JA|Nein (Liveereignis beginnt Slating nach 6 Sekunden ohne Eingabedaten)|
 | Unterstützung für nicht einheitliche Eingabe-GOPs|JA|Nein, Eingabe erfordert feste GOP-Dauer|
 | Unterstützung für Eingaben mit variable Bildwiederholrate|JA|Nein, Eingabe muss eine feste Bildfrequenz aufweisen. Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Beitragsfeed kann die Bildfrequenz jedoch nicht verringern (z.B. auf 15 Frames/Sekunde).|
-| Automatische Abschaltung des LiveEvents, wenn der Eingabefeed verloren geht|Nein |Nach 12 Stunden, wenn kein LiveOutput erfolgt|
+| Automatische Abschaltung des Liveereignisses, wenn der Eingabefeed verloren geht|Nein |Nach 12 Stunden, wenn kein LiveOutput erfolgt|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

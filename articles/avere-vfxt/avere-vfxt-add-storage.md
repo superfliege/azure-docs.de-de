@@ -4,29 +4,23 @@ description: Hinzufügen eines Back-End-Speichersystems zu Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: procedural
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8cd9bece53cd7fb961c5d81ae0c709dc89300ab9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190842"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299451"
 ---
 # <a name="configure-storage"></a>Konfigurieren des Speichers
 
-In diesem Schritt wird das Back-End-Speichersystem für Ihren vFXT-Cluster eingerichtet.
+In diesem Schritt wird ein Back-End-Speichersystem für Ihren vFXT-Cluster eingerichtet.
 
 > [!TIP]
-> Wenn Sie das Prototypskript `create-cloudbacked-cluster` verwendet haben, um einen neuen Blobcontainer zusammen mit dem Avere vFXT-Cluster zu erstellen, ist dieser Container bereits für die Verwendung eingerichtet und Sie müssen keinen Speicher hinzufügen.
->
-> Wenn Ihr neuer Blobcontainer jedoch mit einem Standardverschlüsselungsschlüssel verschlüsselt wurde, müssen Sie entweder die Schlüsselwiederherstellungsdatei aus dem Cluster herunterladen oder den Standardschlüssel vor dem Speichern von Daten durch einen neuen Schlüssel ersetzen. Der Standardschlüssel wird nur im Cluster gespeichert und kann nicht abgerufen werden, wenn der Cluster verloren geht oder nicht mehr verfügbar ist.
->
-> Nachdem Sie eine Verbindung mit der Avere-Systemsteuerung hergestellt haben, klicken Sie auf die Registerkarte **Einstellungen**, und wählen Sie dann **Core Filer (Kernspeichereinheit)** > **Verschlüsselungseinstellungen für die Cloud (Cloud Encryption Settings)** aus. Wählen Sie im Abschnitt **Local Key Store (Lokaler Schlüsselspeicher)** eine der folgenden Optionen aus: 
-> * Verwenden Sie die Schaltfläche **Redownload Recovery File (Wiederherstellungsdatei erneut herunterladen)**, um die Wiederherstellungsdatei für den vorhandenen Schlüssel abzurufen. Die Wiederherstellungsdatei ist mit dem Clusteradministratorkennwort verschlüsselt. Stellen Sie sicher, dass die Datei an einem zuverlässigen Ort gespeichert wird. 
-> * Befolgen Sie die Anweisungen im Abschnitt **Neuen Hauptschlüssel generieren (Generate a New Master Key)** auf der Seite, um einen neuen Verschlüsselungsschlüssel zu erstellen, den Sie kontrollieren. Mit dieser Option können Sie eine eindeutige Passphrase angeben, und Sie müssen die Wiederherstellungsdatei hochladen und erneut herunterladen, um das Paar Passphrase/Datei zu überprüfen.
+> Wenn Sie einen neuen Azure-Blobcontainer zusammen mit dem Avere vFXT-Cluster erstellen, ist dieser Container bereits für die Verwendung eingerichtet und Sie müssen keinen Speicher hinzufügen.
 
-Befolgen Sie diese Anweisungen, wenn Sie das Prototypskript `create-minimal-cluster` für Ihren Cluster verwendet haben oder wenn Sie zusätzliche Hardware oder ein cloudbasiertes Speichersystem hinzufügen möchten.
+Befolgen Sie diese Anweisungen, wenn Sie keinen neuen Blob-Container mit Ihrem Cluster erstellt haben, oder wenn Sie zusätzliche Hardware oder ein cloudbasiertes Speichersystem hinzufügen möchten.
 
 Es gibt zwei Hauptaufgaben:
 
@@ -43,12 +37,11 @@ Diese Schritte werden über die Avere-Systemsteuerung durchgeführt. Information
 Wenn Sie eine Kernspeichereinheit hinzufügen möchten, wählen Sie einen der beiden Haupttypen von Kernspeichereinheiten aus:
 
   * [NAS-Kernspeichereinheit](#nas-core-filer): Beschreibt das Hinzufügen einer NAS-Kernspeichereinheit. 
-  * [Cloudkernspeichereinheit für Azure Storage-Konto](#azure-storage-account-cloud-core-filer): Beschreibt das Hinzufügen eines Azure Storage-Kontos als Cloudkernspeichereinheit.
+  * [Cloudkernspeichereinheit für Azure Storage](#azure-storage-cloud-core-filer): Beschreibt das Hinzufügen eines Azure Storage-Kontos als Cloudkernspeichereinheit.
 
 ### <a name="nas-core-filer"></a>NAS-Kernspeichereinheit
 
-Eine NAS-Kernspeichereinheit kann eine lokale NetApp oder Isilon sein bzw. ein NAS-Endpunkt in der Cloud.  
-Das Speichersystem muss über eine zuverlässige Hochgeschwindigkeitsverbindung zum Avere vFXT-Cluster verfügen – z. B. eine 1 GBit/s ExpressRoute-Verbindung (kein VPN) – und dem Cluster Root-Zugriff auf die verwendeten NAS-Exporte erteilen.
+Eine NAS-Kernspeichereinheit kann eine lokale NetApp oder Isilon sein bzw. ein NAS-Endpunkt in der Cloud. Das Speichersystem muss über eine zuverlässige Hochgeschwindigkeitsverbindung zum Avere vFXT-Cluster verfügen – z. B. eine 1 GBit/s ExpressRoute-Verbindung (kein VPN) – und dem Cluster Root-Zugriff auf die verwendeten NAS-Exporte erteilen.
 
 In den folgenden Schritten wird eine NAS-Kernspeichereinheit hinzugefügt:
 
@@ -79,7 +72,7 @@ Fahren Sie anschließend mit dem [Erstellen einer Verbindung](#create-a-junction
 Um den Azure-BLOB-Speicher als Back-End-Speicher Ihres vFXT-Clusters zu verwenden, benötigen Sie einen leeren Container, den Sie als Kernspeichereinheit hinzufügen können.
 
 > [!TIP] 
-> Das ``create-cloudbacked-cluster``-Beispielskript erstellt einen Speichercontainer, definiert ihn als Kernspeichereinheit und erstellt die Namespaceverbindung als Teil der vFXT-Clustererstellung. Das ``create-minimal-cluster``-Beispielskript erstellt keinen Azure-Speichercontainer. Verwenden Sie das Skript ``create-cloudbacked-cluster``, um Ihren vFXT-Cluster bereitzustellen, um zu vermeiden, dass Sie nach der Erstellung des Clusters eine Azure Storage-Kernspeichereinheit erstellen und konfigurieren müssen.
+> Wenn Sie einen Blob-Container gleichzeitig mit Ihrem Avere vFXT-Cluster erstellen, erstellt die Bereitstellungsvorlage oder das Skript einen Speichercontainer, definiert ihn als Kernspeichereinheit und erstellt die Namespaceverbindung als Teil der vFXT-Clustererstellung. 
 
 Das Hinzufügen von Blob-Speicher zu Ihrem Cluster erfordert folgende Aufgaben:
 

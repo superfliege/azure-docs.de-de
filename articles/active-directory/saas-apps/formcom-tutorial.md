@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: faa89ffd572733c580235b1c6dec58893de20503
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5748cad11e8e0e4bdfd1000b312ab44fc304059
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449620"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Tutorial: Azure Active Directory-Integration mit Form.com
 
@@ -123,11 +123,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, die tatsächliche Antwort-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Form.com](https://form.com/about/company/contact-us/), um diese Werte zu erhalten.
 
-1. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus:
     
     ![Configure single sign-on](./media/formcom-tutorial/tutorial_metadataurl.png)
 
-    a. Klicken Sie auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+    a. Klicken Sie auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
     b. Klicken Sie auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
      

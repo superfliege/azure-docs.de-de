@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273934"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455064"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
-Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
+Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
 
 > [!NOTE]
 > Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
@@ -50,7 +50,7 @@ Intelligent Insights erkennt automatisch auf Grundlage von Wartezeiten bei der A
 | [Tarifdowngrade](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Ein Tarifdowngrade hat die verfügbaren Ressourcen reduziert. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Ein Tarifdowngrade hat die verfügbaren Ressourcen reduziert. Dies beeinträchtigt die Datenbankleistung. |
 
 > [!TIP]
-> Aktivieren Sie für die fortlaufende Optimierung von SQL-Datenbank die [automatische Optimierung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Diese einzigartige Funktion der integrierten Logik von SQL-Datenbank überwacht Ihre SQL-Datenbank, optimiert automatisch Indizes und wendet Abfrageplankorrekturen an.
+> Aktivieren Sie für die fortlaufende Optimierung von SQL-Datenbank die [automatische Optimierung von Azure SQL-Datenbank](sql-database-automatic-tuning.md). Diese einzigartige Funktion der integrierten Logik von SQL-Datenbank überwacht Ihre SQL-Datenbank, optimiert automatisch Indizes und wendet Abfrageplankorrekturen an.
 >
 
 Im folgenden Abschnitt werden die erkennbaren Leistungsmuster genauer beschrieben.
@@ -61,7 +61,7 @@ Im folgenden Abschnitt werden die erkennbaren Leistungsmuster genauer beschriebe
 
 Dieses erkennbare Leistungsmuster kombiniert Leistungsprobleme im Zusammenhang mit dem Erreichen geltender Ressourcen-, Worker- und Sitzungsgrenzwerte. Sobald dieses Leistungsproblem erkannt wird, gibt ein Beschreibungsfeld im Diagnoseprotokoll an, ob es mit Ressourcen-, Worker- oder Sitzungsgrenzwerten zusammenhängt.
 
-Ressourcen in SQL-Datenbank werden in der Regel als [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)- oder [V-Kern](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore)-Ressourcen bezeichnet. Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
+Ressourcen in SQL-Datenbank werden in der Regel als [DTU](sql-database-what-is-a-dtu.md)- oder [V-Kern](sql-database-service-tiers-vcore.md)-Ressourcen bezeichnet. Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
 
 Die Ressourcengrenzwerte für Sitzungen beziehen sich auf die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der SQL-Datenbank-Instanz. Dieses Leistungsmuster wird dann erkannt, wenn Anwendungen, die mit den SQL-Datenbank-Instanzen verbunden sind, die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der Datenbank erreicht haben. Falls Anwendungen versuchen, mehr Sitzungen zu nutzen, als für eine Datenbank verfügbar sind, wird die Abfrageleistung beeinträchtigt.
 
@@ -73,7 +73,7 @@ Das Diagnoseprotokoll gibt Abfragehashes von Abfragen aus, die sich auf die Leis
 
 Wenn Sie die geltenden Sitzungsgrenzwerte erreicht haben, können Sie Ihre Anwendungen optimieren, indem Sie die Anzahl der Anmeldungen bei der Datenbank reduzieren. Wenn Sie die Anzahl der Anmeldungen von Ihrer Anwendung zur Datenbank nicht reduzieren können, erhöhen Sie ggf. den Tarif Ihrer Datenbank. Sie können Ihre Datenbank auch teilen und sie für eine ausgeglichenere Verteilung Ihrer Workload in mehrere Datenbanken verschieben.
 
-Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
+Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
 
 ## <a name="workload-increase"></a>Gestiegene Workload
 
@@ -332,4 +332,4 @@ Intelligent Insights benötigt in der Regel eine Stunde für die Fehlerursachena
 - Kennenlernen der [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte
 - [Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)
-- Informationen zum [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+- Informationen zum [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md)

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
@@ -17,18 +17,18 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2c7ccd8d2022631e32c240007a782d2382aac518
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9f0cc19ae220d27de620e5bd347fe78d9bfab2d5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422846"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093290"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Aktivieren von App-übergreifendem SSO auf Android mit ADAL
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Einmaliges Anmelden (Single Sign-On, SSO) macht es möglich, dass Benutzer ihre Anmeldeinformationen nur einmal eingeben und diese Anmeldeinformationen unabhängig vom Herausgeber anwendungsübergreifend und auf verschiedenen Plattformen verfügbar sind, die von anderen Anwendungen unter Umständen genutzt werden (etwa Microsoft-Konten oder Microsoft 365-Geschäftskonten).
+Einmaliges Anmelden (Single Sign-On, SSO) macht es möglich, dass Benutzer ihre Anmeldeinformationen nur ein Mal eingeben und diese Anmeldeinformationen unabhängig vom Herausgeber anwendungsübergreifend und auf verschiedenen Plattformen verfügbar sind, die von anderen Anwendungen unter Umständen genutzt werden (etwa Microsoft-Konten oder Microsoft 365-Geschäftskonten).
 
 Zusammen mit den SDKs erleichtert die Identitätsplattform von Microsoft die Aktivierung von SSO in Ihrer eigenen App-Suite. Mit der Brokerfunktion und Authentifizierungsanwendungen kann SSO für das gesamte Gerät bereitgestellt werden.
 

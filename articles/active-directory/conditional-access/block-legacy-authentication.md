@@ -7,22 +7,22 @@ documentationcenter: ''
 author: MarkusVi
 manager: daveba
 editor: ''
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 466e12877a63a32f461267a489573183b9da9734
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451305"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076842"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -120,6 +120,15 @@ Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird.
 Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung „Andere Clients“ auswählen. Die Endbenutzererfahrung ist jedoch immer die gleiche: Der Zugriff ist blockiert.
 
 Sie können alle anderen Bedingungen neben der Bedingung „Andere Clients“ konfigurieren.
+Wenn Sie nur ältere Authentifizierungen für mobile Geräte blockieren möchten, legen Sie z.B. die Bedingung **Geräteplattformen** fest, indem Sie Folgendes auswählen:
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/06.png)
 
 
 

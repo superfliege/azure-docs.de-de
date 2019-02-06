@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054754"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093147"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Die Lösung enthält drei Projekte:
 
 * **Das Schnittstellenprojekt (HelloWorld.Interfaces)**. Diese Projekt enthält die Schnittstellendefinition für den Actor. Actorschnittstellen können in jedem Projekt mit einem beliebigen Namen definiert werden.  Die Schnittstelle definiert den Actorvertrag. Dieser wird von der Actorimplementierung und den Clients, die den Actor aufrufen, gemeinsam genutzt.  Da Clientprojekte davon abhängig sein können, ist es in der Regel sinnvoll, ihn in einer Assembly zu definieren, die von der Actorimplementierung getrennt ist.
 
-* **Das Actordienst-Projekt (HelloWorld)**. Dieses Projekt definiert den Service Fabric-Dienst zum Hosten des Actors. Es enthält die Implementierung des Actors, *HellowWorld.cs*. Eine Actorimplementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt *MyActor.Interfaces* definierten Schnittstellen implementiert. Eine Actor-Klasse muss auch einen Konstruktor implementieren, der eine `ActorService`-Instanz und eine `ActorId` akzeptiert und diese an die `Actor`-Basisklasse übergibt.
+* **Das Actordienst-Projekt (HelloWorld)**. Dieses Projekt definiert den Service Fabric-Dienst zum Hosten des Actors. Es enthält die Implementierung des Akteurs, *HelloWorld.cs*. Eine Actorimplementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt *MyActor.Interfaces* definierten Schnittstellen implementiert. Eine Actor-Klasse muss auch einen Konstruktor implementieren, der eine `ActorService`-Instanz und eine `ActorId` akzeptiert und diese an die `Actor`-Basisklasse übergibt.
     
     Dieses Projekt enthält außerdem die Datei *Program.cs*, mit der Actor-Klassen mit der Service Fabric-Laufzeit mithilfe von `ActorRuntime.RegisterActorAsync<T>()` registriert werden. Die `HelloWorld`-Klasse ist bereits registriert. Alle zusätzlichen Actorimplementierungen, die dem Projekt hinzugefügt werden, müssen auch in der `Main()`-Methode registriert werden.
 

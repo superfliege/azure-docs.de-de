@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 30a1498ab41f263c77656400c4200313048cc331
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 447307c0c27fda9e7719e74e529f21d767c9f58d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436164"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Tutorial: Azure Active Directory-Integration mit Secret Server (On-Premises)
 
@@ -176,7 +176,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Erstellen eines Secret Server (On-Premises)-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Secret Server (On-Premises) einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Secret Server (On-Premises)-Plattform ggf. vom [Secret Server (On-Premises)-Supportteam](https://thycotic.force.com/support/s/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Secret Server (On-Premises) einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Secret Server (On-Premises)-Plattform ggf. vom [Secret Server (On-Premises)-Supportteam](https://thycotic.force.com/support/s/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

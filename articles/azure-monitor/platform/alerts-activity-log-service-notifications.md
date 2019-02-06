@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583730"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092213"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht
@@ -37,7 +37,7 @@ Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalte
 
 Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnungen mithilfe von Azure Resource Manager-Vorlagen siehe [Resource Manager-Vorlagen](alerts-activity-log.md).
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Warnung und neue Aktionsgruppe mit dem Azure-Portal
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Dienstintegrität** aus.
 
     ![Der Dienst „Dienstintegrität“](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -86,7 +86,7 @@ Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltu
 >
 >
 
-## <a name="create-an-alert-on-a-service-health-notification-for-an-existing-action-group-by-using-the-azure-portal"></a>Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine vorhandene Aktionsgruppe mit dem Azure-Portal
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Warnung mit vorhandener Aktionsgruppe mit dem Azure-Portal
 
 1. Führen Sie die Schritte 1 bis 7 im vorherigen Abschnitt aus, um Ihre Dienstintegritätsbenachrichtigung zu erstellen. 
 
@@ -96,7 +96,7 @@ Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltu
 
 Innerhalb weniger Minuten wird die Warnung aktiv und entsprechend den Bedingungen ausgelöst, die Sie während der Erstellung angegeben haben.
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-resource-manager-templates"></a>Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit den Azure Resource Manager-Vorlagen
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Warnung und neue Aktionsgruppe mit Azure Resource Manager-Vorlagen
 
 Nachfolgend sehen Sie ein Beispiel, das eine Aktionsgruppe mit einem E-Mail-Ziel erstellt und alle Dienstintegritätsbenachrichtigungen für das Zielabonnement aktiviert.
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 083a318f008799713f4d8d9aeacfe2e27f6ad195
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a816542860a96a8b0dbbeaa63202b6cba4d24acc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085933"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294977"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell
 
@@ -25,7 +25,7 @@ In diesem Artikel wird erläutert, wie Ihre Anwendung mit Azure PowerShell und R
 
 Die von Ihnen bereitgestellte Resource Manager-Vorlage kann entweder eine lokale Datei auf Ihrem Computer oder eine externe Datei sein, die sich in einem Repository wie GitHub befindet. Die Vorlage, die Sie in diesem Artikel bereitstellen, ist als [Speicherkontovorlage in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json) verfügbar.
 
-Installieren Sie bei Bedarf das Azure PowerShell-Modul anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+Installieren Sie bei Bedarf das Azure PowerShell-Modul anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 <a id="deploy-local-template" />
 
@@ -42,12 +42,12 @@ Eine Vorlage kann Parameter enthalten, mit denen Sie die Bereitstellung anpassen
 Im folgenden Beispiel wird eine Ressourcengruppe erstellt und eine Vorlage von Ihrem lokalen Computer aus bereitgestellt:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 
-Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
  
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
@@ -64,7 +64,7 @@ Anstatt Resource Manager-Vorlagen auf dem lokalen Computer zu speichern, könnte
 Verwenden Sie zum Bereitstellen einer externen Vorlage den **TemplateUri**-Parameter. Verwenden Sie den URI im Beispiel, um die Beispielvorlage aus GitHub bereitzustellen.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -storageAccountType Standard_GRS
 ```
@@ -76,8 +76,8 @@ Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlag
 Geben Sie in der Cloud Shell-Instanz folgende Befehle ein:
 
 ```powershell
-New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroup -Name ExampleResourceGroup -Location "South Central US"
+New-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri <copied URL> `
   -storageAccountType Standard_GRS
 ```
@@ -94,11 +94,11 @@ Zum Übergeben von Parameterwerten können Sie entweder Inlineparameter oder ein
 
 ### <a name="inline-parameters"></a>Inlineparameter
 
-Geben Sie zum Übergeben von Inlineparametern die Parameternamen mit dem Befehl `New-AzureRmResourceGroupDeployment` an. Wenn Sie beispielsweise eine Zeichenfolge und ein Array an eine Vorlage in einer Vorlage übergeben möchten, verwenden Sie Folgendes:
+Geben Sie zum Übergeben von Inlineparametern die Parameternamen mit dem Befehl `New-AzResourceGroupDeployment` an. Wenn Sie beispielsweise eine Zeichenfolge und ein Array an eine Vorlage in einer Vorlage übergeben möchten, verwenden Sie Folgendes:
 
 ```powershell
 $arrayParam = "value1", "value2"
-New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\demotemplate.json `
   -exampleString "inline string" `
   -exampleArray $arrayParam
@@ -108,7 +108,7 @@ Sie können auch den Inhalt einer Datei abrufen und als Inlineparameter übergeb
 
 ```powershell
 $arrayParam = "value1", "value2"
-New-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\demotemplate.json `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
@@ -141,7 +141,7 @@ Kopieren Sie das obige Beispiel, und speichern Sie es unter dem Dateinamen `stor
 Verwenden Sie den **TemplateParameterFile**-Parameter, um eine lokale Parameterdatei zu übergeben:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
@@ -149,7 +149,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
 Um eine externe Parameterdatei zu übergeben, verwenden Sie den **TemplateParameterUri**-Parameter:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
@@ -162,21 +162,21 @@ Bei Verwendung einer externen Parameterdatei können Sie jedoch keine anderen We
 
 ### <a name="parameter-name-conflicts"></a>Parameternamenskonflikte
 
-Wenn Ihre Vorlage einen Parameter enthält, der den gleichen Namen besitzt wie einer der Parameter des PowerShell-Befehls, zeigt PowerShell den Parameter der Vorlage mit dem Postfix **FromTemplate** an. Beispiel: Ein Parameter namens **ResourceGroupName** in Ihrer Vorlage verursacht einen Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment). Sie werden zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
+Wenn Ihre Vorlage einen Parameter enthält, der den gleichen Namen besitzt wie einer der Parameter des PowerShell-Befehls, zeigt PowerShell den Parameter der Vorlage mit dem Postfix **FromTemplate** an. Beispiel: Ein Parameter namens **ResourceGroupName** in Ihrer Vorlage verursacht einen Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Sie werden zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
 ## <a name="test-a-template-deployment"></a>Testen einer Vorlagenbereitstellung
 
-Verwenden Sie [Test-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment), um die Vorlage und die Parameterwerte zu testen, ohne dabei Ressourcen bereitzustellen. 
+Verwenden Sie [Test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment), um die Vorlage und die Parameterwerte zu testen, ohne dabei Ressourcen bereitzustellen. 
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
+Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
 Wenn keine Fehler erkannt werden, wird der Befehl ohne Antwort abgeschlossen. Wenn ein Fehler erkannt wird, gibt der Befehl eine Fehlermeldung zurück. Beispielsweise wird beim Übergeben eines falschen Werts für die Speicherkonto-SKU der folgende Fehler zurückgegeben:
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
+Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType badSku
 
 Code    : InvalidTemplate
@@ -189,7 +189,7 @@ Details :
 Wenn Ihre Vorlage einen Syntaxfehler aufweist, gibt der Befehl einen Fehler zurück, der angibt, dass die Vorlage nicht analysiert werden konnte. Die Meldung gibt Zeilennummer und Position des Analysefehlers an.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
+Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
   ". Path 'variables', line 31, position 3.
 ```
 

@@ -3,7 +3,7 @@ title: Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur | Micr
 description: Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung einer Beispielinfrastruktur in Azure.
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 794182e3988a353b1e305a36da0475bacdea69b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469849"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888957"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Linux-VMs
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich der Namenskonventionen, Verfügbarkeit, virtuellen Netzwerke und Lastenausgleichsmodule relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
@@ -61,7 +61,7 @@ Alle oben aufgeführten Elemente werden anhand der folgenden Namenskonventionen 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure-Abonnements und -Konten
 Adventure Works Cycles verwendet das Enterprise-Abonnement mit dem Namen „Adventure Works-Enterprise-Abonnement“ zur Abrechnung dieser IT-Workload.
 
-## <a name="storage"></a>Speicher
+## <a name="storage"></a>Storage
 Adventure Works Cycles bestimmt, dass Azure Managed Disks verwendet werden soll. Beim Erstellen der virtuellen Computer werden beide verfügbaren Speicherebenen verwendet:
 
 * **Storage Standard** für Webserver, Anwendungsserver und Domänencontroller und deren Datenträger
@@ -73,7 +73,7 @@ Da das virtuelle Netzwerk keine permanente Verbindung mit dem lokalen Netzwerk v
 Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folgenden Einstellungen über das Azure-Portal erstellt:
 
 * Name: AZOS-USE-VN01
-* Standort: East US 2
+* Standort: USA (Ost) 2
 * Adressraum des virtuellen Netzwerks: 10.0.0.0/8
 * Erstes Subnetz:
   * Name: FrontEnd

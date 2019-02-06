@@ -2,20 +2,20 @@
 title: Bedrohungserkennung – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Konfigurieren Sie die Bedrohungserkennung, und untersuchen Sie verdächtige Ereignisse in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 7ff23235e9681301984e13e346b23f277662bb5c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2f07699b49b7791894d1f183b0686161375ea17a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300933"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295416"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Bedrohungserkennung in Azure SQL Data Warehouse
 Konfigurieren Sie die Bedrohungserkennung, und untersuchen Sie verdächtige Ereignisse in Azure SQL Data Warehouse.
@@ -44,7 +44,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 
 ## <a name="explore-anomalous-data-warehouse-activities-upon-detection-of-a-suspicious-event"></a>Untersuchen anomaler Data Warehouse-Aktivitäten bei Erkennung eines verdächtigen Ereignisses
 1. Bei Erkennung anomaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachrichtigung. <br/>
-   Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
+    Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
    
     ![Navigationsbereich](media/sql-data-warehouse-security-threat-detection/4_td_email.png)
 2. Klicken Sie in der E-Mail auf den Link für das **Azure SQL-Überwachungsprotokoll**, um das Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.

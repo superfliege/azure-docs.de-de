@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902245"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169755"
 ---
 # <a name="bake-acoustics"></a>Baken von Akustik
 
@@ -255,10 +255,10 @@ Installieren und Konfigurieren von Docker auf dem PC, auf dem die Simulation ver
 
 Es gibt vier Datendateien, die von diesem Plug-In an verschiedenen Speicherorten erstellt wurden. Nur eine davon wird zur Laufzeit benötigt, deshalb befinden die anderen drei sich in Ordnern namens „Editor“, damit Sie nicht in das Projekt kompiliert werden.
 
-* **Assets/Editor/[SceneName]\_AcousticsParameters.asset:** Diese Datei speichert die Daten, die Sie in die Felder auf der Acoustics-Benutzeroberfläche eingeben. Der Speicherort und der Name dieser Datei können nicht geändert werden. In dieser Datei werden weitere Werte gespeichert, die sich auf den Bake-Vorgang auswirken, diese sind jedoch für fortgeschrittene Benutzer gedacht und sollten nicht geändert werden.
-* **Assets/AcousticsData/Acoustics\_[SceneName].ace.bytes:** Diese Datei wurde während der Bake-Simulation erstellt und enthält die Suchdaten, die von der Runtime verwendet wurden, um die Akustik der Szene zu rendern. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
-* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox:** Diese Datei speichert die in Voxels konvertierte Akustikgeometrie und die Materialeigenschaften. Diese wurden mithilfe der Schaltfläche **Calculate...** (Berechnen...) auf der Registerkarte „Probes“ (Tests) berechnet. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
-* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml:** Diese Datei speichert die Parameter, die mithilfe der Schaltfläche **Calculate...** (Berechnen...) auf der Registerkarte **Probes** (Tests) berechnet wurden. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
+* **Assets/Editor/[Szenenname]\_AcousticsParameters.asset:** Diese Datei speichert die Daten, die Sie in die Felder auf der Acoustics-Benutzeroberfläche eingeben. Der Speicherort und der Name dieser Datei können nicht geändert werden. In dieser Datei werden weitere Werte gespeichert, die sich auf den Bake-Vorgang auswirken, diese sind jedoch für fortgeschrittene Benutzer gedacht und sollten nicht geändert werden.
+* **Assets/AcousticsData/Acoustics\_[Szenenname].ace.bytes:** Diese Datei wurde während der Bake-Simulation erstellt und enthält die Suchdaten, die von der Runtime verwendet wurden, um die Akustik der Szene zu rendern. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
+* **Assets/AcousticsData/Editor/Acoustics_[Szenenname].vox:** Diese Datei speichert die in Voxel konvertierte Akustikgeometrie und die Materialeigenschaften. Diese wurden mithilfe der Schaltfläche **Calculate...** (Berechnen...) auf der Registerkarte „Probes“ (Tests) berechnet. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
+* **Assets/AcousticsData/Editor/Acoustics\_[Szenenname]\_config.xml:** Diese Datei speichert die Parameter, die mithilfe der Schaltfläche **Calculate...** (Berechnen...) auf der Registerkarte **Probes** (Tests) berechnet wurden. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
 
 Achten Sie darauf, die Datei „*.ace.bytes“ nicht zu löschen, die vom Bake-Vorgang heruntergeladen wurde. Diese Datei kann nicht wiederhergestellt werden, sondern kann nur durch eine Wiederholung des Bake-Vorgangs erneut generiert werden.
 

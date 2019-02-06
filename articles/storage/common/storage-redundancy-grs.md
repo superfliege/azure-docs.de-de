@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 85d69db2f94e4bddf1258233c34c64dcf78a3eeb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.subservice: common
+ms.openlocfilehash: 8ffd3c34628f96888145a3639ddfe4a190dffc7f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219221"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467066"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -34,9 +34,9 @@ Bei der Nutzung von RA-GRS sollten Sie einige Aspekte berücksichtigen:
 * Empfehlungen dazu, wie Sie mit RA-GRS Hochverfügbarkeit erreichen können, finden Sie unter [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](storage-designing-ha-apps-with-ragrs.md).
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>Was ist die RPO und RTO in Bezug auf GRS?
-**Recovery Point Objective (RPO)**: Bei GRS und RA-GRS führt der Speicherdienst eine asynchrone Georeplikation der Daten vom primären zum sekundären Standort durch. Bei einem schwerwiegenden regionalen Notfall in der primären Region führt Microsoft ein Failover zur sekundären Region durch. Bei einem Failover können kürzlich vorgenommene Änderungen, die noch nicht georepliziert wurden, verloren gehen. Die Anzahl von Minuten, in denen Daten potenziell verloren gehen können, wird als RPO bezeichnet. Die RPO gibt den Zeitpunkt an, auf den Daten wiederhergestellt werden können. Azure Storage weist normalerweise einen RPO-Wert von weniger als 15 Minuten auf, aber es gibt derzeit keine SLA zur Dauer der Georeplikation.
+**Recovery Point Objective (RPO):** Bei GRS und RA-GRS führt der Speicherdienst eine asynchrone Georeplikation der Daten vom primären zum sekundären Standort durch. Bei einem schwerwiegenden regionalen Notfall in der primären Region führt Microsoft ein Failover zur sekundären Region durch. Bei einem Failover können kürzlich vorgenommene Änderungen, die noch nicht georepliziert wurden, verloren gehen. Die Anzahl von Minuten, in denen Daten potenziell verloren gehen können, wird als RPO bezeichnet. Die RPO gibt den Zeitpunkt an, auf den Daten wiederhergestellt werden können. Azure Storage weist normalerweise einen RPO-Wert von weniger als 15 Minuten auf, aber es gibt derzeit keine SLA zur Dauer der Georeplikation.
 
-**Recovery Time Objective (RTO)**: Die RTO ist eine Kennzahl dafür, wie lange es dauert, bis das Failover durchgeführt wurde und das Speicherkonto wieder online ist. Die Zeit für die Durchführung des Failovers umfasst folgende Aktionen:
+**Recovery Time Objective (RTO):** Die RTO ist eine Kennzahl dafür, wie lange es dauert, bis das Failover durchgeführt wurde und das Speicherkonto wieder online ist. Die Zeit für die Durchführung des Failovers umfasst folgende Aktionen:
 
    * Feststellung seitens Microsoft, ob die Daten am primären Speicherort wiederhergestellt werden können oder ob ein Failover erforderlich ist
    * Durchführung eines Failovers des Speicherkontos, indem die primären DNS-Einträge so geändert werden, dass sie auf den sekundären Standort verweisen
@@ -44,7 +44,7 @@ Bei der Nutzung von RA-GRS sollten Sie einige Aspekte berücksichtigen:
 Microsoft nimmt seine Verantwortung bezüglich der Speicherung Ihrer Daten sehr ernst. Falls eine Möglichkeit zur Wiederherstellung der Daten in der primären Region besteht, verschiebt Microsoft das Failover und konzentriert sich zunächst auf die Wiederherstellung Ihrer Daten. 
 
 ## <a name="paired-regions"></a>Regionspaare 
-Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die gekoppelte sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. Weitere aktuelle Informationen zu unterstützten Azure-Regionen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](../../best-practices-availability-paired-regions.md).
+Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die gekoppelte sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. Weitere aktuelle Informationen zu unterstützten Azure-Regionen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung (BCDR): Azure-Regionspaare](../../best-practices-availability-paired-regions.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Storage-Replikation](storage-redundancy.md)

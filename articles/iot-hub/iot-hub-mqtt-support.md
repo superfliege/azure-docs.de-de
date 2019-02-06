@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052035"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913569"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -198,20 +198,18 @@ Als Erstes abonniert ein Gerät `$iothub/twin/res/#`, um die Antworten des Vorga
 
 Die Anforderungs-ID (request id) kann ein beliebiger gültiger Wert für den Eigenschaftswert einer Nachricht sein (siehe [Entwicklerhandbuch zum IoT Hub-Messaging][lnk-messaging]). Der Status wird als ganze Zahl validiert.
 
-Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwillings. Der folgende Codeausschnitt zeigt den Text des Eintrags in der Identitätsregistrierung, der auf den Member „properties“ beschränkt ist, z. B.:
+Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwillings, wie im folgenden Antwortbeispiel gezeigt:
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
@@ -220,7 +218,7 @@ Die möglichen Statuscodes lauten:
 
 |Status | BESCHREIBUNG |
 | ----- | ----------- |
-| 200 | Erfolgreich |
+| 204 | Erfolg (kein Inhalt) |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung][lnk-quotas] |
 | 5** | Serverfehler |
 
@@ -228,7 +226,7 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][ln
 
 ### <a name="update-device-twins-reported-properties"></a>Aktualisieren der gemeldeten Eigenschaften des Gerätezwillings
 
-Zum Aktualisieren der gemeldeten Eigenschaften gibt das Gerät eine Anforderung an den IoT Hub in Form einer Veröffentlichung über ein designiertes MQTT-Thema aus. Nach dem Verarbeiten dieser Anforderung antwortet IoT Hub mit dem Erfolgs- oder Fehlerstatus des Aktualisierungsvorgangs in Form einer Veröffentlichung unter einem anderen Thema. Dieses Thema kann vom Gerät abonniert werden, um es über das Ergebnis der Aktualisierungsanforderung seines Gerätezwillings zu benachrichtigen. Um diese Art von Anforderungs-/Antwortinteraktion in MQTT zu implementieren, nutzen wir das Konzept der Anforderungs-ID(`$rid`), die ursprünglich vom Gerät in seiner Aktualisierungsanforderung bereitgestellt wurde. Diese Anforderungs-ID ist ebenfalls in der Antwort von IoT Hub enthalten, um dem Gerät das Zuordnen der Antwort zu seiner einzelnen früheren Anforderung zu ermöglichen.
+Zum Aktualisieren der gemeldeten Eigenschaften gibt das Gerät eine Anforderung an den IoT Hub in Form einer Veröffentlichung über ein designiertes MQTT-Thema aus. Nach dem Verarbeiten dieser Anforderung antwortet IoT Hub mit dem Erfolgs- oder Fehlerstatus des Aktualisierungsvorgangs in Form einer Veröffentlichung unter einem anderen Thema. Dieses Thema kann vom Gerät abonniert werden, um es über das Ergebnis der Aktualisierungsanforderung seines Gerätezwillings zu benachrichtigen. Um diese Art von Anforderungs-/Antwortinteraktion in MQTT zu implementieren, nutzen wir das Konzept der Anforderungs-ID (`$rid`), die ursprünglich vom Gerät in seiner Aktualisierungsanforderung bereitgestellt wurde. Diese Anforderungs-ID ist ebenfalls in der Antwort von IoT Hub enthalten, um dem Gerät das Zuordnen der Antwort zu seiner einzelnen früheren Anforderung zu ermöglichen.
 
 Die folgende Sequenz beschreibt, wie ein Gerät die gemeldeten Eigenschaften in dem Gerätezwilling in IoT Hub aktualisiert:
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: bf6dbde725670030046aad4fccf41554b8d917fe
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c130c6cd5fcb5191195712f570db66408734200a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901276"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150871"
 ---
 # <a name="query-expression-syntax"></a>Syntax für Abfrageausdrücke
 
@@ -25,14 +25,14 @@ Sie können auch eigene Abfrageausdrücke erstellen und diese in einer **evaluat
 
 Jedes Entitätsattribut, das in einen Abfrageausdruck aufgenommen werden kann, hat einen bestimmten Datentyp und eine Reihe von möglichen Abfrageoperatoren. Die Entitätsattribute und unterstützten Operatoren für jedes Attribut sind in [Entitätsattribute](EntityAttributes.md) angegeben. Eine Einzelwertabfrage Wert benötigt das Attribut, um die *Equals*-Operation zu unterstützen. Eine Präfixabfrage benötigt das Attribut, um die *StartsWith*-Operation zu unterstützen. Wertebereichsabfragen benötigen das Attribut, um die *IsBetween*-Operation zu unterstützen.
 
-Einige der Entitätsdaten werden als zusammengesetzte Attribute gespeichert, die durch einen Punkt '.' im Attributnamen gekennzeichnet sind. Beispielsweise werden Informationen zu Autor/Zuordnung als ein zusammengesetztes Attribut dargestellt. Es besteht aus 4-Komponenten: AuN, AuId, AfN, AfId. Diese Komponenten sind separate Daten, die einen einzelen Entitätsattributwert bilden.
+Einige der Entitätsdaten werden als zusammengesetzte Attribute gespeichert, die durch einen Punkt '.' im Attributnamen gekennzeichnet sind. Beispielsweise werden Informationen zu Autor/Zuordnung als ein zusammengesetztes Attribut dargestellt. Es umfasst vier Komponenten: AuN, AuId, AfN, AfId. Diese Komponenten sind separate Daten, die einen einzelen Entitätsattributwert bilden.
 
 
-**Zeichenfolgenattribut: Einzelner Wert** (einschließlich Übereinstimmungen mit Synonymen)  
+**Zeichenfolgenattribut: Einzelwert** (einschließlich Übereinstimmungen mit Synonymen)  
 Ti='indexing by latent semantic analysis'  
 Composite(AA.AuN='sue dumais')
 
-**Zeichenfolgenattribut: Genauen Einzelwert** (nur Übereinstimmungen mit kanonischen Werten)  
+**Zeichenfolgenattribut: Exakter Einzelwert** (nur Übereinstimmungen mit kanonischen Werten)  
 Ti=='indexing by latent semantic analysis'  
 Composite(AA.AuN=='susan t dumais')
      
@@ -48,8 +48,8 @@ Y>2005
 Y>=2005  
 Y<2010  
 Y<=2010  
-Y=\[2010, 2012\) (enthält nur linke Begrenzungswert: 2010, 2011)  
-Y=\[2010, 2012\] (enthält beide Begrenzungswert: 2010, 2011, 2012)
+Y=\[2010, 2012\) (enthält nur den linken Begrenzungswert: 2010, 2011)  
+Y=\[2010, 2012\] (enthält beide Begrenzungswerte: 2010, 2011, 2012)
  
 **Numerisches Attribut: Präfixwert**  
 Y='19'... (jeder beliebige numerische Wert, der mit 19 beginnt) 
@@ -85,7 +85,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>In dieser Version erhalten wir alle Dokumente, bei denen einer der Autoren „Mike Smith“ ist und eine seiner Zuordnungen „Harvard“ lautet, da „Composite()“ auf den Autor und die Zugehörigkeit einzeln vor „And()“ angewendet wird. Dies ähnelt dem vorherigen Abfragebeispiel, aber es ist nicht dasselbe.
 
-Betrachten Sie im Allgemeinen das folgende Beispiel: Wir haben ein zusammengesetztes Attribut C mit zwei Komponenten A und B. Eine Entität kann mehrere Werte für C haben: Dies sind unsere Entitäten:
+Betrachten Sie ganz allgemein das folgende Beispiel: Wir haben ein zusammengesetztes Attribut C mit zwei Komponenten A und B. Eine Entität kann mehrere Werte für C haben. Dies sind unsere Entitäten:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

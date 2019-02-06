@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035422"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477810"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -42,7 +42,7 @@ Sie können diese Sicherungen für Folgendes verwenden:
 
 ## <a name="how-long-are-backups-kept"></a>Wie lange werden Sicherungen aufbewahrt?
 
-Der Aufbewahrungszeitraum der Sicherung beträgt für jede SQL-Datenbank-Instanz standardmäßig zwischen 7 und 35 Tagen, was von Kaufmodell und Dienstebene abhängt. Sie können den Aufbewahrungszeitraum der Sicherung für eine Datenbank auf Azure Logical Server aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
+Der Aufbewahrungszeitraum der Sicherung beträgt für jede SQL-Datenbank-Instanz standardmäßig zwischen 7 und 35 Tagen, was von Kaufmodell und Dienstebene abhängt. Sie können den Aufbewahrungszeitraum der Sicherung für eine Datenbank auf dem SQL-Datenbank-Server aktualisieren. Weitere Informationen finden Sie unter [Ändern des Zeitraums für die Aufbewahrung von Sicherungen](#how-to-change-the-pitr-backup-retention-period).
 
 Wenn Sie eine Datenbank löschen, bewahrt SQL-Datenbank die Sicherungen auf die gleiche Weise wie für eine Onlinedatenbank auf. Beim Löschen einer Datenbank vom Typ „Basic“, für die eine Aufbewahrungsdauer von sieben Tagen gilt, wird eine vier Tage alte Sicherung weitere drei Tage lang aufbewahrt.
 
@@ -63,7 +63,7 @@ Die Standardaufbewahrungsdauer für eine Datenbank, die mit dem DTU-basierten Ka
 
 #### <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Bei Verwendung des [auf virtuellen Kernen basierenden Kaufmodells](sql-database-service-tiers-vcore.md) beträgt die Standardaufbewahrungszeit 7 Tage (für Einzeldatenbanken, in einem Pool zusammengefasste Datenbanken und Datenbanken der verwalteten Instanz). Sie können für alle Azure SQL-Datenbanken (Einzeldatenbanken, in einem Pool zusammengefasste Datenbanken und Datenbanken der verwalteten Instanz) die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#how-to-change-the-pitr-backup-retention-period).
+Bei Verwendung des [auf virtuellen Kernen basierenden Kaufmodells](sql-database-service-tiers-vcore.md) beträgt die Standardaufbewahrungszeit 7 Tage (für eigenständige Datenbanken, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken). Sie können für alle Azure SQL-Datenbanken (eigenständige Datenbanken, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken) die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#how-to-change-the-pitr-backup-retention-period).
 
 > [!WARNING]
 > Wenn Sie die aktuelle Aufbewahrungsdauer reduzieren, sind alle vorhandenen Sicherungen, die außerhalb der neuen Aufbewahrungsdauer liegen, nicht mehr verfügbar. Wenn Sie die aktuelle Aufbewahrungsdauer erhöhen, behält SQL-Datenbank die vorhandenen Sicherungen bei, bis die längere Aufbewahrungsdauer erreicht ist.
@@ -80,7 +80,7 @@ Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-dat
 
 ### <a name="backups-for-long-term-retention"></a>Sicherungen für die langfristige Aufbewahrung
 
-SQL-Datenbank verfügt beim Hosten auf einem logischen Server über eine Option zum Konfigurieren der langfristigen Aufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
+Eigenständige und in einem Pool zusammengefasste Datenbanken verfügen über eine Option zum Konfigurieren der langfristigen Aufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
 
 Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
 
@@ -111,7 +111,7 @@ Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit 
 
 Um die Aufbewahrungsdauer der PITR-Sicherung über das Azure-Portal zu ändern, navigieren Sie zu dem Serverobjekt, dessen Aufbewahrungsdauer Sie innerhalb des Portals ändern möchten, und wählen Sie dann die entsprechende Option basierend auf dem Serverobjekt aus, das Sie ändern.
 
-#### <a name="change-pitr-for-a-logical-server"></a>Ändern von PITR für einen logischen Server
+#### <a name="change-pitr-for-a-sql-database-server"></a>Ändern von PITR für einen SQL-Datenbank-Server
 
 ![Ändern von PITR im Azure-Portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 

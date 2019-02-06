@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d5a94258e8c17d13e15f22f9fa96ef0647105abe
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807872"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904453"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -35,8 +35,8 @@ App Service bietet Diagnosefunktionen zum Protokollieren von Informationen sowoh
 Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
 * **Detaillierte Fehlerprotokollierung** - Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
-* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist nützlich, wenn Sie versuchen, die Leistung von Websites zu verbessern oder herauszufinden, warum ein bestimmter HTTP-Fehler zurückgegeben wird.
-* **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Dies ist hilfreich, wenn Sie allgemeine Websitemetriken ermitteln möchten, wie die Anzahl der verarbeiteten Anforderungen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse.
+* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist hilfreich, wenn Sie die Leistung der Website verbessern oder einen bestimmten HTTP-Fehler isolieren möchten.
+* **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Dies ist hilfreich, wenn Sie allgemeine Websitemetriken ermitteln möchten, z.B. die Anzahl der verarbeiteten Anforderungen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse.
 
 ### <a name="application-diagnostics"></a>Anwendungsdiagnose
 Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Beispiel: 
@@ -45,7 +45,7 @@ Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung 
 
 Sie können diese Protokolle zur Laufzeit abrufen und bei der Problembehandlung nutzen. Weitere Informationen finden Sie unter [Problembehandlung von Apps in Azure App Service mit Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
-App Service protokolliert auch Bereitstellungsinformationen, wenn Sie Inhalte in einer App veröffentlichen. Dies erfolgt automatisch, und es gibt keine Konfigurationseinstellung für die Bereitstellungsprotokollierung. Anhand der Bereitstellungsprotokollierung können Sie bestimmen, warum eine Bereitstellung fehlgeschlagen ist. Wenn Sie beispielsweise ein benutzerdefiniertes Bereitstellungsskript verwenden, können Sie die Bereitstellungsprotokollierung verwenden, um festzustellen, warum das Skript fehlgeschlagen ist.
+App Service protokolliert auch Bereitstellungsinformationen, wenn Sie Inhalte in einer App veröffentlichen. Dies erfolgt automatisch, und es gibt keine Konfigurationseinstellung für die Bereitstellungsprotokollierung. Anhand der Bereitstellungsprotokollierung können Sie bestimmen, warum eine Bereitstellung fehlgeschlagen ist. Wenn Sie beispielsweise ein benutzerdefiniertes Bereitstellungsskript verwenden, können Sie die Bereitstellungsprotokollierung verwenden, um festzustellen, warum beim Skript ein Fehler aufgetreten ist.
 
 ## <a name="enablediag"></a>Aktivieren der Diagnose
 Navigieren Sie zur Seite für Ihre App und klicken auf **Einstellungen > Diagnoseprotokolle**, um die Diagnose im [Azure-Portal](https://portal.azure.com) zu aktivieren.
@@ -53,12 +53,16 @@ Navigieren Sie zur Seite für Ihre App und klicken auf **Einstellungen > Diagnos
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Bereich „Protokolle“](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Diese Einstellung ermöglicht das Filtern der aufgezeichneten Informationen nach **Informationen**, **Warnungen** oder **Fehlern**. Sie können auch **Ausführlich** auswählen, um alle von der Anwendung erzeugten Informationen zu protokollieren.
+Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Die folgende Tabelle zeigt die Kategorien von Protokollen auf den einzelnen Ebenen:
 
-> [!NOTE]
-> Im Gegensatz zum Ändern der Datei "web.config" wird durch das Aktivieren der Anwendungsdiagnose oder durch das Ändern des Diagnoseprotokollumfangs nicht die Anwendungsdomäne neu gestartet, in der die Anwendung ausgeführt wird.
->
->
+| Ebene| Enthaltene Protokollkategorien |
+|-|-|
+|**Disabled** | Keine |
+|**Fehler** | Fehler, Kritisch |
+|**Warning** | Warnung, Fehler, Kritisch|
+|**Informationen** | Info, Warnung, Fehler, Kritisch|
+|**Ausführlich** | Ablaufverfolgung, Debugging, Info, Warnung, Fehler, Kritisch (alle Kategorien) |
+|-|-|
 
 Unter **Anwendungsprotokollierung** können Sie zum Debuggen vorübergehend die Dateisystemoption aktivieren. Diese Option wird in 12 Stunden automatisch deaktiviert. Sie können auch die Blob Storage-Option aktivieren, um einen Blobcontainer auszuwählen, in den Protokolle geschrieben werden sollen.
 
@@ -114,7 +118,7 @@ Zum Herunterladen der Protokolldateien mit der Azure-Befehlszeilenschnittstelle 
 Mit diesem Befehl werden die Protokolle für die App mit dem Namen „appname“ in der Datei **diagnostics.zip** im aktuellen Verzeichnis gespeichert.
 
 > [!NOTE]
-> Wenn Sie die Azure CLI nicht installiert oder nicht zur Verwendung Ihres Azure-Abonnements konfiguriert haben, gehen Sie wie unter [Verwenden der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) beschrieben vor.
+> Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht zur Verwendung Ihres Azure-Abonnements konfiguriert haben, gehen Sie wie unter [Verwenden der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) beschrieben vor.
 >
 >
 
@@ -157,7 +161,7 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
     az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Wenn Sie die Azure CLI nicht installiert oder nicht zur Verwendung Ihres Azure-Abonnements konfiguriert haben, gehen Sie wie unter [Verwenden der Azure CLI](../cli-install-nodejs.md) beschrieben vor.
+> Wenn Sie die Azure-Befehlszeilenschnittstelle nicht installiert oder nicht zur Verwendung Ihres Azure-Abonnements konfiguriert haben, gehen Sie wie unter [Verwenden der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) beschrieben vor.
 >
 >
 
@@ -165,7 +169,7 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
 ### <a name="application-diagnostics-logs"></a>Anwendungs-Diagnoseprotokolle
 Die Anwendungsdiagnose speichert Informationen in einem spezifischen Format für .NET-Anwendungen, je nachdem, ob Sie Protokolle im Dateisystem oder in Blob Storage speichern. 
 
-Die grundlegenden Daten, die gespeichert werden, sind für beide Speichertypen gleich: Datum und Uhrzeit des Ereignisses, Prozess-ID, die das Ereignis erzeugt hat, sowie Ereignistyp (Info, Warnung, Fehler) und Ereignismeldung. Die Verwendung des Dateisystems zum Speichern von Protokollen ist nützlich, wenn Sie zum Beheben eines Problems sofortigen Zugriff auf die Protokolle benötigen, da die Protokolldateien nahezu sofort aktualisiert werden. Blob Storage eignet sich zu Archivierungszwecken, da die Dateien zwischengespeichert und dann nach einem Zeitplan in den Speichercontainer geleert werden.
+Die grundlegenden Daten, die gespeichert werden, sind für beide Speichertypen gleich: Datum und Uhrzeit des Ereignisses, Prozess-ID, die das Ereignis erzeugt hat, sowie Ereignistyp (Info, Warnung, Fehler) und Ereignismeldung. Die Verwendung des Dateisystems zum Speichern von Protokollen ist nützlich, wenn Sie zum Beheben eines Problems sofortigen Zugriff auf die Protokolle benötigen, da die Protokolldateien nahezu sofort aktualisiert werden. Blob Storage wird zu Archivierungszwecken eingesetzt, da die Dateien zwischengespeichert und dann nach einem Zeitplan in den Speichercontainer geleert werden.
 
 **Dateisystem**
 

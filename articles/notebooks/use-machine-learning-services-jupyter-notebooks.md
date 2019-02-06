@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b6d3cbd56182b8dba3738f38798efa378c6b49d0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bdfc9b3e981a1b88fbae7805785d9bb4c823bccb
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254825"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55074461"
 ---
-# <a name="use-azure-machine-learning-services-in-a-notebook"></a>Verwenden von Azure Machine Learning Services in einem Notebook
+# <a name="use-azure-machine-learning-service-in-a-notebook"></a>Verwenden von Azure Machine Learning Service in einem Notebook
 
-Azure Notebooks ist mit der erforderlichen Umgebung für das Arbeiten mit [Azure Machine Learning Services](/azure/machine-learning/service/) vorkonfiguriert. Sie können einfach ein Beispielprojekt in Ihr Notebooks-Konto klonen, um eine Vielzahl von Machine Learning-Szenarien zu untersuchen.
+Azure Notebooks ist mit der erforderlichen Umgebung für das Arbeiten mit [Azure Machine Learning Service](/azure/machine-learning/service/) vorkonfiguriert. Sie können einfach ein Beispielprojekt in Ihr Notebooks-Konto klonen, um eine Vielzahl von Machine Learning-Szenarien zu untersuchen.
 
 ## <a name="clone-the-sample-into-your-account"></a>Klonen des Beispiels in Ihr Konto
 
 1. Melden Sie sich bei [Azure Notebooks](https://notebooks.azure.com/) an.
 1. Wählen Sie **Meine Projekte** aus, um zum Projektdashboard zu navigieren.
 1. Wählen Sie **Upload GitHub Repo** (GitHub-Repository hochladen, den Pfeil nach oben) aus, um das Popupfenster **Upload GitHub Repository** (GitHub-Repository hochladen) zu öffnen.
-1. Geben Sie im Popupfenster `Azure/MachineLearningNotebooks` in **GitHub-Repository** ein, geben Sie in **Project Name** (Projektname) einen Namen für das Projekt an, z. B. „Azure ML Services“, geben Sie einen Bezeichner in **Project ID** (Projekt-ID) ein, deaktivieren Sie ggf. **Public** (Öffentlich), und wählen Sie dann **Import** (Importieren) aus.
+1. Geben Sie im Popupfenster in **GitHub-Repository** den Text `Azure/MachineLearningNotebooks` ein, geben Sie in **Projektname** einen Namen für das Projekt an, z.B. „Azure Machine Learning Service“, geben Sie in **Projekt-ID** einen Bezeichner ein, deaktivieren Sie auf Wunsch **Öffentlich**, und wählen Sie dann **Importieren** aus.
 
     ![Importieren des Azure Machine Learning Notebook-Beispiels in Ihr Notebooks-Konto](media/azureml-import-project.png)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ca638f1374c2e15c3978cfe711295f0ebe249d68
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818165"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886763"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge
 
@@ -67,7 +67,7 @@ In diesem Abschnitt erstellen Sie eine neue Buildpipeline. Konfigurieren Sie die
 
       ![Starten mit einem leeren Prozess](./media/how-to-ci-cd/start-with-empty.png)
 
-4. Sobald die Pipeline erstellt ist, gelangen Sie zum Pipeline-Editor. Wählen Sie in der Pipelinebeschreibung basierend auf Ihrer Zielplattform den richtigen Agent-Pool aus: 
+4. Sobald die Pipeline erstellt wurde, gelangen Sie zum Pipeline-Editor. Wählen Sie in der Pipelinebeschreibung basierend auf Ihrer Zielplattform den richtigen Agent-Pool aus: 
     
     * Wenn Sie Ihre Module auf der Plattform amd64 für Linux-Container erstellen möchten, wählen Sie **Hosted Ubuntu 1604** aus.
 

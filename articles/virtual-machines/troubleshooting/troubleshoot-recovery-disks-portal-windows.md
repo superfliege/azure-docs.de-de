@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809096"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225928"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Beheben von Problemen einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM mit dem Azure-Portal
 Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
@@ -37,12 +37,11 @@ Mit Azure PowerShell können Sie für einen virtuellen Computer, der verwaltete 
 ## <a name="determine-boot-issues"></a>Bestimmen von Problemen beim Start
 Überprüfen Sie den Screenshot mit der Startdiagnose der VM, um zu bestimmen, warum Ihre VM nicht richtig gestartet werden kann. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate oder eine zugrunde liegende virtuelle Festplatte, die gelöscht oder verschoben wird.
 
-Wählen Sie Ihre VM im Portal aus, und scrollen Sie dann nach unten zum Abschnitt **Unterstützung + Problembehebung**. Klicken Sie auf **Boot diagnostics** (Startdiagnose), um den Screenshot anzuzeigen. Beachten Sie konkrete Fehlermeldungen oder Fehlercodes, um besser ermitteln zu können, warum für die VM ein Problem vorliegt. Das folgende Beispiel enthält eine VM, die auf das Beenden der Dienste wartet:
+Wählen Sie Ihre VM im Portal aus, und scrollen Sie dann nach unten zum Abschnitt **Unterstützung + Problembehebung**. Klicken Sie auf **Boot diagnostics** (Startdiagnose), um den Screenshot anzuzeigen. Beachten Sie konkrete Fehlermeldungen oder Fehlercodes, um besser ermitteln zu können, warum für die VM ein Problem vorliegt. 
 
 ![Anzeigen der Konsolenprotokolle für die VM-Startdiagnose](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
-Sie können auch auf **Screenshot** klicken, um eine Aufnahme des VM-Screenshots herunterzuladen.
-
+Sie können auch auf **Screenshot herunterladen** klicken, um eine Aufnahme des VM-Screenshots herunterzuladen.
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Anzeigen von Details vorhandener virtueller Festplatten
 Bevor Sie Ihre virtuelle Festplatte zu einer anderen VM hinzufügen können, müssen Sie den Namen der virtuellen Festplatte (VHD) identifizieren. 

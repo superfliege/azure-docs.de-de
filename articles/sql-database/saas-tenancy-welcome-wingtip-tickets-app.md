@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a05a8ad495e33734a531405902ce34e3591bfe15
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b27877e25dd3bdd4711d1c036e2f203e1b8c0e7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056317"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462136"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Die Wingtip Tickets SaaS-Anwendung
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-d
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Muster für mehrinstanzenfähige Datenbanken mit Sharding
 
-Mehrinstanzenfähige Datenbanken sind eine effektive Möglichkeit für Dienstanbieter, die die Kosten pro Mandant senken möchten und für die ein geringeres Maß an Isolation für die Mandanten kein Problem darstellt. Mit diesem Muster lässt sich eine große Anzahl von Mandanten mit einer einzigen Datenbank verwalten, wodurch die Kosten pro Mandant sinken. Durch Sharding (horizontales Partitionieren) der Mandanten über mehrere Datenbanken hinweg ist eine nahezu unbegrenzte Skalierung möglich. Die Mandanten werden über eine Katalogdatenbank den Datenbanken zugeordnet.  
+Mehrinstanzenfähige Datenbanken sind eine effektive Möglichkeit für Dienstanbieter, die die Kosten pro Mandant senken möchten und für die ein geringeres Maß an Isolation für die Mandanten kein Problem darstellt. Mit diesem Muster lässt sich eine große Anzahl von Mandanten mit einer einzelnen Datenbank verwalten, wodurch die Kosten pro Mandant sinken. Durch Sharding (horizontales Partitionieren) der Mandanten über mehrere Datenbanken hinweg ist eine nahezu unbegrenzte Skalierung möglich. Die Mandanten werden über eine Katalogdatenbank den Datenbanken zugeordnet.  
 
 Dieses Muster ermöglicht auch ein *hybrides* Modell, bei dem Sie durch Verwenden einer Datenbank für mehrere Mandanten die Kosten optimieren oder mit einem einzelnen Mandanten mit eigener Datenbank für eine optimale Isolierung sorgen können. Diese Entscheidung kann für jeden Mandanten einzeln getroffen werden, entweder während der Bereitstellung des Mandanten oder später – ohne Auswirkungen auf die Anwendung.  Dieses Modell lässt sich effektiv einsetzen, wenn Gruppen von Mandanten unterschiedlich behandelt werden müssen. Beispielsweise können kostengünstige Mandanten freigegebenen Datenbanken zugewiesen werden, während Premium-Mandanten eigene Datenbanken erhalten. 
 

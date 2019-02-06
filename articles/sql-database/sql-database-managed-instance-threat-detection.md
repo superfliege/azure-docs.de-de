@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 01/25/2019
+ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158668"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472064"
 ---
 # <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurieren der Bedrohungserkennung (Vorschau) für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -25,7 +25,7 @@ Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für eine [
 
 Sie können sich über [E-Mail-Benachrichtigungen](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) oder im [Azure-Portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
 
-Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestandteil des Angebots [SQL Advanced Threat Protection](sql-advanced-threat-protection.md) (ATP). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ATP-Portal möglich. Für den Bedrohungserkennungsdienst werden pro verwalteter Instanz 15 USD/Monat berechnet, hierbei sind die ersten 30 Tage kostenlos.
+Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestandteil des [SQL Advanced Data Security](sql-advanced-threat-protection.md)-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich. Für den Bedrohungserkennungsdienst werden pro verwalteter Instanz 15 USD/Monat berechnet, hierbei sind die ersten 30 Tage kostenlos.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Einrichten der Bedrohungserkennung für Ihre verwaltete Instanz im Azure-Portal
 
@@ -41,7 +41,7 @@ Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestand
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur [Bedrohungserkennung](sql-database-threat-detection-overview.md)
+- Weitere Informationen zur [Bedrohungserkennung](sql-database-threat-detection-overview.md).
 - Informationen zur verwalteten Instanz finden Sie hier: [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
 - Weitere Informationen zur [Bedrohungserkennung für eine Einzeldatenbank](sql-database-threat-detection.md)
 - Weitere Informationen zur [Überwachung einer verwalteten Instanz](https://go.microsoft.com/fwlink/?linkid=869430)

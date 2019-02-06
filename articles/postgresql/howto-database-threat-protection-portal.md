@@ -5,13 +5,13 @@ author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/20/2018
-ms.openlocfilehash: b7c1f873d47be0f2ec0125f769a47a399e492662
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536150"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095094"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Advanced Threat Protection für Azure Database for PostgreSQL
 
@@ -22,6 +22,9 @@ Advanced Threat Protection ist Teil des Angebots „Advanced Data Security“ (E
 > [!NOTE]
 > Das Advanced Threat Protection-Feature ist in den folgenden Azure Government- und Sovereign Cloud-Regionen **nicht** verfügbar: „US Gov Texas“, „US Gov Arizona“, „US Gov Iowa“, „US Gov Virginia“, „US DoD, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „Deutschland, Norden“, „China, Osten“, „China, Osten 2“. Informationen zur allgemeinen Produktverfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
 >
+
+> [!NOTE]
+> Dieses Feature steht in allen Regionen von Azure zur Verfügung, in denen Azure Database for PostgreSQL für universelle und arbeitsspeicheroptimierte Server bereitgestellt wird.
 
 ## <a name="set-up-threat-detection"></a>Einrichten der Bedrohungserkennung
 1. Starten Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
@@ -55,7 +58,7 @@ Warnungen von Advanced Threat Protection sind in [Azure Security Center](https:/
 
 Klicken Sie unter **BEDROHUNGSSCHUTZ** auf **Sicherheitswarnungen**, um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank erkannt wurden.
 
-  ![Bedrohungsschutz in Azure Security Center](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  ![Bedrohungsschutz – ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

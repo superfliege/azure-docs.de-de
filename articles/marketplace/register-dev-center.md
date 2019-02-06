@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834824"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179836"
 ---
 # <a name="register-in-dev-center"></a>Registrieren bei Dev Center  
 Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind, öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung.  
@@ -68,7 +68,7 @@ Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind
 
 9.  Überprüfen Sie im Abschnitt `Registration - Review` Ihre Kontoinformationen, und bestätigen Sie, dass alles korrekt ist.  
 
-    Lesen Sie die Nutzungsbedingungen der Microsoft Azure Marketplace-Herausgebervereinbarung.  
+    Lesen Sie die Nutzungsbedingungen der Microsoft Azure Marketplace-[Herausgebervereinbarung](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf).  
 
     Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Bedingungen gelesen und akzeptiert haben.  
     

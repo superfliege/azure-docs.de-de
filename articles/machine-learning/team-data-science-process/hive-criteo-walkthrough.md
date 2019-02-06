@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135813"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477215"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
@@ -33,14 +33,14 @@ Alle Datensätze im DataSet enthalten je 40 Spalten:
 * Die nächsten 13 Spalten sind numerische und
 * die letzten 26 nach Kategorien sortierte Spalten.
 
-Die Spalten werden anonymisiert und verwenden eine Reihe aufgezählter Namen: „Col1“ (für die Bezeichnungsspalte) bis „Col40“ (für die letzte kategorische Spalte).            
+Die Spalten werden anonymisiert und verwenden eine Reihe aufgezählter Namen: „Col1“ (für die Bezeichnungsspalte) bis „Col40“ (für die letzte kategorische Spalte).
 
 Hier finden Sie einen Auszug der ersten 20 Spalten der zwei Beobachtungen (Zeilen) aus diesem DataSet:
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
-    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
-    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
+    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
+    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
 
 Sowohl in den numerischen als auch den Kategoriespalten dieses DataSets fehlen Werte. Eine einfache Methode zum Umgang mit den fehlenden Werten wird beschrieben. Weitere Details der Daten werden beim Speichern in Hive-Tabellen untersucht.
 
@@ -50,9 +50,9 @@ Sowohl in den numerischen als auch den Kategoriespalten dieses DataSets fehlen W
 In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprobleme behandelt:
 
 1. **Binäre Klassifizierung**: Sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
-   
+
    * Klasse 0: Kein Klick
-   * Klasse 1: Klick
+   * Klasse 1: Klicken Sie auf 
 2. **Regression:** Sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
 
 ## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für Data Science
@@ -62,10 +62,10 @@ Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen
 
 1. [Erstellen Sie ein Speicherkonto](../../storage/common/storage-quickstart-create-account.md): Mit diesem Speicherkonto werden Daten in Azure Blob Storage gespeichert. Die in HDInsight-Clustern verwendeten Daten werden hier gespeichert.
 2. [Passen Sie Azure HDInsight Hadoop-Cluster für Data Science an](customize-hadoop-cluster.md): In diesem Schritt erstellen Sie einen Azure HDInsight Hadoop-Cluster, bei dem auf allen Knoten 64-Bit-Anaconda Python 2.7 installiert ist. Beim Anpassen des HDInsight-Clusters müssen zwei (in diesem Thema beschriebene) wichtige Schritte durchgeführt werden.
-   
+
    * Verknüpfen Sie das in Schritt 1 erstellte Speicherkonto mit dem HDInsight-Cluster. Mit diesem Speicherkonto wird auf Daten zugegriffen, die innerhalb des Clusters verarbeitet werden können.
    * Sie müssen nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters aktivieren. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von denen beim Erstellen des Clusters unterscheiden). Sie benötigen diese später, um die folgenden Schritte auszuführen.
-3. [Erstellen eines Azure ML-Arbeitsbereichs](../studio/create-workspace.md): Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
+3. [Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs:](../studio/create-workspace.md) Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
 
 ## <a name="getdata"></a>Abrufen und Verwenden von Daten aus einer öffentlichen Quelle
 Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) -DataSet zuzugreifen, klicken Sie auf den Link, akzeptieren Sie die Nutzungsbedingungen, und geben Sie einen Namen an. Hier sehen Sie eine Momentaufnahme:
@@ -74,10 +74,10 @@ Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-log
 
 Klicken Sie auf **Download fortsetzen** , um weitere Informationen über das DataSet und seine Verfügbarkeit zu erhalten.
 
-Die Daten befinden sich an einem öffentlichen [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)-Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. „wasb“ bezieht sich auf den Speicherort in Azure Blob Storage. 
+Die Daten befinden sich an einem öffentlichen [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)-Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. „wasb“ bezieht sich auf den Speicherort in Azure Blob Storage.
 
 1. Die Daten in diesem öffentlichen Blob-Speicher bestehen aus drei untergeordneten Ordnern mit extrahierten Daten.
-   
+
    1. Der Unterordner *raw/count/* enthält die Daten der ersten 21 Tage – von „day\_00“ bis „day\_20“.
    2. Der Unterordner *raw/train/* enthält nur die Daten des Tages „day\_21“.
    3. Der Unterordner *raw/test/* enthält die Daten der beiden Tage „day\_22“ und „day\_23“.
@@ -103,11 +103,11 @@ Nun sind Sie bereit für den ersten Teil der exemplarischen Vorgehensweise: Das 
 
 > [!NOTE]
 > Führen Sie alle Hive-Befehle dieser exemplarischen Vorgehensweise über die Eingabeaufforderung im Hive-Verzeichnis „bin/“ aus. So werden alle Pfadprobleme automatisch behoben. Die hier verwendeten Begriffe „Hive-Eingabeaufforderung“, „Hive-Eingabeaufforderung im bin-Verzeichnis“ und „Hadoop-Befehlszeile“ sind austauschbar.
-> 
+>
 > [!NOTE]
 > Um alle Hive-Abfragen auszuführen, können Sie einen der folgenden Befehle verwenden:
-> 
-> 
+>
+>
 
         cd %hive_home%\bin
         hive
@@ -158,13 +158,13 @@ Da all diese Tabellen extern sind, können Sie einfach auf ihren Azure Blob Stor
 **ALLE Hive-Abfragen können auf zwei Arten ausgeführt werden:**
 
 1. **Über die Hive REPL-Befehlszeile**: Zunächst wird ein „hive“-Befehl ausgegeben sowie eine Abfrage kopiert und in die Hive REPL-Befehlszeile kopiert. Gehen Sie hierfür folgendermaßen vor:
-   
+
         cd %hive_home%\bin
         hive
-   
+
      Wenn Sie die Abfrage nun in der REPL-Befehlszeile ausschneiden und einfügen, wird sie ausgeführt.
-2. **Speichern von Abfragen in einer Datei und Ausführen des Befehls**: Die zweiten Methode besteht im Speichern der Abfragen in einer HQL-Datei ([sample&amp;#95;hive&amp;#95;create&amp;#95;criteo&amp;#95;database&amp;#95;and&amp;#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)). Anschließend wird zum Ausführen der Abfrage folgender Befehl ausgegeben:
-   
+2. **Speichern von Abfragen in einer Datei und Ausführen des Befehls**: Die zweiten Methode besteht im Speichern der Abfragen in einer HQL-Datei ([sample&#95;hive&#95;create&#95;criteo&#95;database&#95;and&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)). Anschließend wird zum Ausführen der Abfrage folgender Befehl ausgegeben:
+
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
 ### <a name="confirm-database-and-table-creation"></a>Bestätigen des Erstellens der Datenbank und der Tabellen
@@ -294,7 +294,7 @@ Dies ergibt:
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-Die Verteilung der Prozentwerte in der Regel hängt eng mit der Histogrammverteilung beliebiger numerischer Variablen zusammen.         
+Die Verteilung der Prozentwerte in der Regel hängt eng mit der Histogrammverteilung beliebiger numerischer Variablen zusammen.
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Ermitteln der Anzahl der eindeutigen Werte für bestimmte Kategoriespalten im Trainings-DataSet
 Im weiteren Verlauf unserer Datenuntersuchung ermitteln Sie nun für einige Kategoriespalten die Anzahl der übernommenen eindeutigen Werte. Führen Sie hierzu die Inhalte von [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql) an:
@@ -455,11 +455,11 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 
 > [!NOTE]
 > Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.\*\*
-> 
-> 
+>
+>
 
 ### <a name="step2"></a> Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
-Unser Azure ML-Experiment sieht wie folgt aus:
+Unser Azure Machine Learning Studio-Experiment sieht folgendermaßen aus:
 
 ![Machine Learning-Experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
@@ -481,9 +481,9 @@ Zum Erstellen von Zählfunktionen verwenden Sie das **Build Counting Transform**
 ![Build Counting Transform-Moduleigenschaften](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![Build Counting Transform-Modul](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Geben Sie im Feld **Count columns** die Spalten ein, die Sie zählen möchten. In der Regel handelt es sich dabei (wie bereits erwähnt) um hochdimensionale kategorische Spalten. Bedenken Sie, dass das Criteo-DataSet über 26 Kategoriespalten verfügt: von Col15 bis Col40. Führen Sie für alle eine Zählung durch, und geben Sie die Indizes (von 15 bis 40, durch Kommas getrennt, wie gezeigt) an.
-> 
+>
 
 Zur Verwendung des Moduls im MapReduce-Modus (geeignet für große DataSets) benötigen Sie Zugriff auf einen HDInsight Hadoop-Cluster (dazu kann auch der zum Durchsuchen von Funktionen genutzte Cluster verwendet werden) und die Anmeldeinformationen. Die vorigen Abbildungen veranschaulichen die ausgefüllten Werte (ersetzen Sie die Beispielwerte durch die entsprechenden Werte für Ihren Anwendungsfall).
 
@@ -588,8 +588,8 @@ Da die Zahlentabelle groß ist, wählen Sie einige Zeilen mit Testdaten aus, und
 
 > [!NOTE]
 > Für das Eingabedatenformat verwenden Sie die AUSGABE des **Count Featurizer**-Moduls. Nach Abschluss der Ausführung dieses Experiments speichern Sie die Ausgabe des **Count Featurizer** -Moduls als DataSet. Dieses DataSet wird für die Eingabedaten des Webdiensts verwendet.
-> 
-> 
+>
+>
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Abstimmung des Experiments für den Veröffentlichungswebdienst
 Zuerst wird die Darstellung angezeigt. Die grundlegende Struktur ist ein **Score Model**-Modul, das unser Trainingsmodellobjekt und einige Zeilen der zuvor mit dem **Count Featurizer**-Modul generierten Eingabedaten akzeptiert. Verwenden Sie „Select Columns in Dataset“, um die „Scored Labels“ sowie die „Scored Probabilities“ auszublenden.

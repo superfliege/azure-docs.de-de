@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 3467b823e6c91d34ebd48c7f8bc29558a79c59e5
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3009cb42ac477b18d45ab5968d6f5793ce1cd36c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229545"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Tutorial: Azure Active Directory-Integration in moconavi
 
@@ -162,7 +162,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-moconavi-test-user"></a>Erstellen eines moconavi-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in moconavi eine Benutzerin namens Britta Simon. Das [moconavi-Supportteam](mailto:support@recomot.co.jp) kann Sie dabei unterstützen, Benutzer der moconavi-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in moconavi eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern auf der moconavi-Plattform ggf. vom  [moconavi-Supportteam](mailto:support@recomot.co.jp) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

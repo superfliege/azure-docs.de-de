@@ -5,15 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 6c1a0a4a13a70daec157ede98f850f87150f8d93
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/23/2019
+ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383863"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902654"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten über das Azure-Portal
+
+> [!IMPORTANT]
+> Das Feature für Lesereplikate befindet sich in der Public Preview-Phase.
+
+
 In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal Lesereplikate im Azure Database for PostgreSQL-Dienst erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Dokumentation der Konzepte](concepts-read-replicas.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -41,6 +46,7 @@ Der Parameter **azure.replication_support** muss auf dem Masterserver auf REPLIC
    ![Azure Database for PostgreSQL – Speicherbenachrichtigung](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
 6. Starten Sie den Server neu, um die Änderung nach dem Speichern zu übernehmen. Weitere Informationen zum Neustarten eines Servers finden Sie in der [Dokumentation zu Neustarts](howto-restart-server-portal.md).
+
 
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 Lesereplikate können anhand der folgenden Schritte erstellt werden:

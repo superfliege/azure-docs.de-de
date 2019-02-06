@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853815"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300403"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso-Migration: Bewerten lokaler Workloads für die Migration zu Azure
 
@@ -121,7 +121,7 @@ Contoso und andere Benutzer müssen für diese Bewertung die folgenden Vorausset
 - Eine lokale vCenter Server-Instanz mit Version 6.5, 6.0 oder 5.5.
 - Ein Konto mit Lesezugriff für vCenter Server bzw. Berechtigungen für die Kontoerstellung.
 - Berechtigungen zum Erstellen einer VM auf der vCenter Server-Instanz mit einer OVA-Vorlage.
-- Mindestens einen ESXi-Host mit Version 5.0 oder höher.
+- Mindestens einen ESXi-Host mit Version 5.5 oder höher.
 - Mindestens zwei lokale VMware-VMs (mit Ausführung einer SQL Server-Datenbank auf einer VM).
 - Berechtigungen zum Installieren von Azure Migrate-Agents auf jeder VM.
 - Die VMs sollten über eine direkte Internetverbindung verfügen.  
@@ -287,13 +287,7 @@ Vor der Bereitstellung der VM überprüft Contoso, ob die OVA-Datei sicher ist:
     **Beispiel**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Der generierte Hash muss den folgenden Einstellungen entsprechen (Version 1.0.9.15):
-
-    **Algorithmus** | **Hashwert**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. Der generierte Hash sollte mit den [hier](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery) aufgeführten Hashwerte übereinstimmen.
 
 ### <a name="create-the-collector-appliance"></a>Erstellen der Collectorappliance
 

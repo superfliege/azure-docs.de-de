@@ -1,5 +1,5 @@
 ---
-Titel: Bereitstellen eines Studio-Arbeitsbereichs mit Azure Resource Manager titleSuffix: Azure Machine Learning Studio Beschreibung: Gewusst wie: Bereitstellen eines Arbeitsbereichs für Azure Machine Learning mit Azure Resource Manager-Vorlagen Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+Titel: Bereitstellen eines Studio-Arbeitsbereichs mit Azure Resource Manager titleSuffix: Azure Machine Learning Studio-Beschreibung: Bereitstellen eines Arbeitsbereichs für Azure Machine Learning mit Azure Resource Manager-Vorlagen Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 05.02.2018
 ---
@@ -64,7 +64,7 @@ Speichern Sie diese Vorlage als mlworkspace.json-Datei unter „c:\temp“.
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>Bereitstellen einer Ressourcengruppe ausgehend von der Vorlage
 * Öffnen Sie PowerShell.
-* Installieren Sie die Module für Azure Resource Manager und Azure Service Management.  
+* Installieren Sie die Module für Azure Resource Manager und Azure Service Management.
 
 ```
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
@@ -74,9 +74,9 @@ Install-Module AzureRM -Scope CurrentUser
 Install-Module Azure -Scope CurrentUser
 ```
 
-   Mithilfe dieser Schritte werden die Module heruntergeladen und installiert, die zum Ausführen der verbleibenden Schritte erforderlich sind. Dies ist nur einmal in der Umgebung erforderlich, in der Sie die PowerShell-Befehle ausführen.   
+   Mithilfe dieser Schritte werden die Module heruntergeladen und installiert, die zum Ausführen der verbleibenden Schritte erforderlich sind. Dies ist nur einmal in der Umgebung erforderlich, in der Sie die PowerShell-Befehle ausführen.
 
-* Authentifizierung bei Azure  
+* Authentifizierung bei Azure
 
 ```
 # Authenticate (enter your credentials in the pop-up window)
@@ -110,22 +110,22 @@ $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\ml
 Nach Abschluss der Bereitstellung können Sie ganz einfach auf die Eigenschaften des bereitgestellten Arbeitsbereichs zugreifen. Sie können z.B. auf das Primärschlüsseltoken zugreifen.
 
 ```
-# Access Azure ML Workspace Token after its deployment.
+# Access Azure Machine Learning studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
 Eine weitere Möglichkeit zum Abrufen von Token des vorhandenen Arbeitsbereich ist der Befehl „Invoke-AzureRmResourceAction“. Beispielsweise können Sie die primären und sekundären Token aller Arbeitsbereiche auflisten.
 
-```  
+```
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
+Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 Nach der Bereitstellung des Arbeitsbereichs können Sie viele Azure Machine Learning Studio-Aufgaben mithilfe des [PowerShell-Moduls für Azure Machine Learning](https://aka.ms/amlps)automatisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über das [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md). 
-* Werfen Sie auch einen Blick auf das [Azure-Schnellstartvorlagen-Repository](https://github.com/Azure/azure-quickstart-templates). 
-* Sehen Sie sich dieses Video zum [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)an. 
+* Erfahren Sie mehr über das [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Werfen Sie auch einen Blick auf das [Azure-Schnellstartvorlagen-Repository](https://github.com/Azure/azure-quickstart-templates).
+* Sehen Sie sich dieses Video zum [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)an.
 * Informationen finden Sie in der [Hilfe zur Resource Manager-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 <!--Image references--> [1]: ./media/deploy-with-resource-manager-template/azuresubscription.png [2]: ./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png
 

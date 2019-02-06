@@ -1,6 +1,6 @@
 ---
-Titel: Importieren von Daten in Machine Learning Studio titleSuffix: Azure Machine Learning Studio-Beschreibung: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio importieren. Erfahren Sie, welche Datentypen und Datenformate unterstützt werden.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Importieren von Daten in Machine Learning Studio titleSuffix: Azure Machine Learning Studio-Beschreibung: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio importieren. Erfahren Sie, welche Datentypen und Datenformate unterstützt werden.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 29.11.2017
 ---
@@ -57,8 +57,8 @@ Die folgenden **Datentypen** werden von Machine Learning Studio erkannt:
 * Ganze Zahl 
 * Double
 * Boolescher Wert
-* Datetime
-* Zeitraum
+* DateTime
+* TimeSpan
 
 Machine Learning Studio verwendet einen internen Datentyp mit dem Namen ***Data Table*** zum Übergeben von Daten zwischen Modulen. Mit dem Modul [Convert to Dataset][convert-to-dataset] können Sie Daten explizit in das Data Table-Format konvertieren.
 

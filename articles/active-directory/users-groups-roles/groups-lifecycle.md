@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242227"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166168"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -91,45 +91,45 @@ Die Aufbewahrungsrichtlinie wird über das Security & Compliance Center konfigur
 Hier sind Beispiele dafür angegeben, wie Sie PowerShell-Cmdlets zum Konfigurieren der Ablaufeinstellungen für Office 365-Gruppen in Ihrem Mandanten verwenden können:
 
 1. Installieren Sie das PowerShell v2.0 Preview-Modul (2.0.0.137), und melden Sie sich an der PowerShell-Eingabeaufforderung an:
-  ````
+  ```
   Install-Module -Name AzureADPreview
   connect-azuread 
-  ````
-2. Konfigurieren Sie die Ablaufeinstellungen per „New-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die Lebensdauer für alle Office 365-Gruppen im Mandanten auf 365 Tage festlegen. Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
+  ```
+2. Konfigurieren Sie die Ablaufeinstellungen per „New-AzureADMSGroupLifecyclePolicy“:  Mit diesem Cmdlet können Sie die Lebensdauer für alle Office 365-Gruppen im Mandanten auf 365 Tage festlegen. Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
   
-  ````
+  ```
   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ````
-3. Abrufen der vorhandenen Richtlinie per „Get-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet werden die konfigurierten aktuellen Einstellungen zum Office 365-Gruppenablauf abgerufen. In diesem Beispiel sehen Sie Folgendes:
+  ```
+3. Abrufen der vorhandenen Richtlinie per „Get-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die aktuell konfigurierten Einstellungen zum Office 365-Gruppenablauf abrufen. In diesem Beispiel sehen Sie Folgendes:
   * Richtlinien-ID 
   * Festlegung der Lebensdauer für alle Office 365-Gruppen im Mandanten auf 365 Tage
   * Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
   
-  ````
+  ```
   Get-AzureADMSGroupLifecyclePolicy
   
   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
   --                                    ------------------- ----------------- ---------------------------
   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ```` 
+  ``` 
    
-4. Aktualisieren der vorhandenen Richtlinie per „Set-AzureADMSGroupLifecyclePolicy“: Dieses Cmdlet wird zum Aktualisieren einer vorhandenen Richtlinie verwendet. Im folgenden Beispiel wird die Lebensdauer der Gruppe in der vorhandenen Richtlinie von 365 Tagen in 180 Tage geändert. 
+4. Aktualisieren der vorhandenen Richtlinie per „Set-AzureADMSGroupLifecyclePolicy“: Dieses Cmdlet dient zum Aktualisieren einer vorhandenen Richtlinie. Im folgenden Beispiel wird die Lebensdauer der Gruppe in der vorhandenen Richtlinie von 365 Tagen in 180 Tage geändert. 
   
-  ````
+  ```
   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ````
+  ```
   
-5. Hinzufügen von spezifischen Gruppen zur Richtlinie per „Add-AzureADMSLifecyclePolicyGroup“: Mit diesem Cmdlet wird der Lebenszyklusrichtlinie eine Gruppe hinzugefügt. Beispiel: 
+5. Hinzufügen von spezifischen Gruppen zur Richtlinie per „Add-AzureADMSLifecyclePolicyGroup“: Mit diesem Cmdlet können Sie der Lebenszyklusrichtlinie eine Gruppe hinzufügen. Beispiel: 
   
-  ````
+  ```
   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ````
+  ```
   
-6. Entfernen der vorhandenen Richtlinie per „Policy Remove-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet werden die Einstellungen für den Office 365-Gruppenablauf gelöscht. Für diesen Vorgang ist aber die Richtlinien-ID erforderlich. Hierdurch wird der Ablauf für Office 365-Gruppen deaktiviert. 
+6. Entfernen der vorhandenen Richtlinie per „Policy Remove-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die Einstellungen für den Office 365-Gruppenablauf löschen (unter Angabe der die Richtlinien-ID). Hierdurch wird der Ablauf für Office 365-Gruppen deaktiviert. 
   
-  ````
+  ```
   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ````
+  ```
   
 Die folgenden Cmdlets können verwendet werden, um die Richtlinie ausführlicher zu konfigurieren. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 

@@ -2,18 +2,18 @@
 title: Konfigurieren von Knotenendpunkten im Azure Batch-Pool | Microsoft-Dokumentation
 description: Konfigurieren oder Deaktivieren des Zugriffs auf SSH- oder RDP-Ports auf Computeknoten in einem Azure Batch-Pool.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: danlep
-ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: lahugh
+ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358726"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457614"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurieren oder Deaktivieren des Remotezugriffs auf Computeknoten in einem Azure Batch-Pool
 
@@ -31,7 +31,7 @@ Jede NAT-Pool-Konfiguration enthält eine oder mehrere [Regeln für die Netzwerk
 * Sie können mehrere NSG-Regeln konfigurieren, wenn Sie einen NAT-Pool konfigurieren. Die Regeln werden gemäß ihrer Priorität geprüft. Sobald eine Regel als gültig erkannt wird, werden keine weiteren Regeln mehr geprüft.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Beispiel: Kompletten RDP-Datenverkehr verweigern
+## <a name="example-deny-all-rdp-traffic"></a>Beispiel: Verweigern des gesamten RDP-Datenverkehrs
 
 Im folgenden C#-Codeausschnitt sehen Sie, wie Sie den RDP-Endpunkt auf Computeknoten in einem Windows-Pool konfigurieren müssen, um sämtlichen Netzwerkdatenverkehr zu verweigern. Der Endpunkt verwendet einen Pool an Front-End-Ports im Bereich *60000–60099*. 
 
@@ -74,7 +74,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Beispiel: RDP-Datenverkehr von einer bestimmten IP-Adresse zulassen
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Beispiel: Zulassen von RDP-Datenverkehr von einer bestimmten IP-Adresse
 
 Im folgenden C#-Codeausschnitt sehen Sie, wie Sie den RDP-Endpunkt auf Computeknoten in einem Windows-Pool konfigurieren müssen, um den RDP-Zugriff nur von der IP-Adresse *198.51.100.7* zu gestatten. Die zweite NSG-Regel verweigert Datenverkehr, der nicht mit der IP-Adresse übereinstimmt.
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Beispiel: SSH-Datenverkehr von einer bestimmten IP-Adresse zulassen
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Beispiel: Zulassen von SSH-Datenverkehr von einer bestimmten IP-Adresse
 
 Im folgenden Python-Ausschnitt sehen Sie, wie Sie den SSH-Endpunkt auf Computeknoten in einem Linux-Pool konfigurieren müssen, um den Zugriff nur vom Subnetz *192.168.1.0/24* zu gestatten. Die zweite NSG-Regel verweigert Datenverkehr, der nicht mit dem Subnetz übereinstimmt.
 

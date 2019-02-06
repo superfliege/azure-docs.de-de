@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231009"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239773"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
@@ -76,12 +76,12 @@ In der folgenden Tabelle werden alle Attribute im Protokollnamen beschrieben:
 | Attribut | BESCHREIBUNG |
 | --- | --- |
 | <service-name> |Der Name des Speicherdiensts. Beispiel: Blob, Tabelle oder Warteschlange |
-| YYYY |Die vierstellige Jahresangabe für das Protokoll. Beispiel: 2011 |
-| MM |Die zweistellige Tagesangabe für das Protokoll. Beispiel: 07 |
-| DD |Die zweistellige Tagesangabe für das Protokoll. Beispiel: 07 |
-| hh |Die zweistellige Angabe der Stunde des Protokollbeginns im 24-Stunden-Format (UTC). Beispiel: 18 |
+| YYYY |Die vierstellige Jahresangabe für das Protokoll. Beispiel:  2011. |
+| MM |Die zweistellige Tagesangabe für das Protokoll. Beispiel:  07. |
+| DD |Die zweistellige Tagesangabe für das Protokoll. Beispiel:  07. |
+| hh |Die zweistellige Angabe der Stunde des Protokollbeginns im 24-Stunden-Format (UTC). Beispiel:  18. |
 | MM |Die zweistellige Zahl, mit der die Anfangsminute der Protokolle angegeben wird. Dieser Wert wird in der aktuellen Version der Speicheranalyse nicht unterstützt und ist immer 00. |
-| <counter> |Ein nullbasierter Zähler mit sechs Stellen, der die Anzahl der im Zeitraum von einer Stunde für den Speicherdienst generierten Protokoll-BLOBs angibt. Dieser Zähler beginnt bei 000000. Beispiel: 000001 |
+| <counter> |Ein nullbasierter Zähler mit sechs Stellen, der die Anzahl der im Zeitraum von einer Stunde für den Speicherdienst generierten Protokoll-BLOBs angibt. Dieser Zähler beginnt bei 000000. Beispiel:  000001. |
 
 In dem folgenden vollständigen Beispielprotokollnamen sind alle oben aufgeführten Beispiele enthalten:
 
@@ -99,8 +99,8 @@ Alle Protokoll-BLOBs werden mit Metadaten gespeichert, mit deren Hilfe die im BL
 | Attribut | BESCHREIBUNG |
 | --- | --- |
 | LogType |Gibt an, ob das Protokoll Informationen über Lese-, Schreib- oder Löschvorgänge enthält. Dieser Wert kann einen Typ oder eine durch Kommas getrennte Kombination aller drei Typen enthalten. Beispiel 1: write; Beispiel 2: read,write; Beispiel 3: read,write,delete |
-| StartTime |Der erste Zeitpunkt eines Eintrags im Protokoll, im Format YYYY-MM-DDThh:mm:ssZ. Beispiel: 2011-07-31T18:21:46Z. |
-| EndTime |Der letzte Zeitpunkt eines Eintrags im Protokoll, im Format YYYY-MM-DDThh:mm:ssZ. Beispiel: 2011-07-31T18:22:09Z. |
+| StartTime |Der erste Zeitpunkt eines Eintrags im Protokoll, im Format YYYY-MM-DDThh:mm:ssZ. Beispiel:  2011-07-31T18:21:46Z. |
+| EndTime |Der letzte Zeitpunkt eines Eintrags im Protokoll, im Format YYYY-MM-DDThh:mm:ssZ. Beispiel:  2011-07-31T18:22:09Z. |
 | LogVersion |Die Version des Protokollformats. Einziger derzeit unterstützter Wert: 1.0. |
 
 In der folgenden Liste werden alle Beispielmetadaten unter Verwendung der obigen Beispiele dargestellt:
@@ -136,7 +136,7 @@ Transaktionsmetriken werden sowohl für Anforderungen von Benutzern als auch fü
 Kapazitätsdaten werden für den Blob-Dienst eines Speicherkontos täglich aufgezeichnet, und es werden zwei Tabellenentitäten geschrieben. Eine Entität stellt Statistiken für Benutzerdaten bereit, während die andere Statistiken zum Blob-Container `$logs` bereitstellt, der von der Speicheranalyse verwendet wird. Die Tabelle `$MetricsCapacityBlob` enthält die folgenden Statistiken:
 
 * **Capacity**: Die Größe des vom Blob-Dienst des Speicherkontos genutzten Speichers in Byte.
-* **ContainerCount**: Die Anzahl der Blob-Container im Blob-Dienst des Speicherkontos.
+* **ContainerCount**: Die Anzahl von Blobcontainern im Blob-Dienst des Speicherkontos.
 * **ObjectCount**: Die Anzahl der Block- oder Seitenblobs mit und ohne ausgeführtem Commit im Blob-Dienst des Speicherkontos.
 
 Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/hh343264.aspx).
@@ -146,7 +146,7 @@ Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeich
 
 | Metrikebene | Tabellennamen | Unterstützte Versionen |
 | --- | --- | --- |
-| Stundenmetriken, primärer Standort |$MetricsTransactionsBlob  <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue |Nur Versionen vor dem 15.08.2013. Obwohl diese Namen weiterhin unterstützt werden, wird empfohlen, die unten aufgeführten Tabellen zu verwenden. |
+| Stundenmetriken, primärer Standort |$MetricsTransactionsBlob  <br/>$MetricsTransactionsTable <br/>  $MetricsTransactionsQueue |Nur Versionen vor dem 15.08.2013. Obwohl diese Namen weiterhin unterstützt werden, wird empfohlen, die unten aufgeführten Tabellen zu verwenden. |
 | Stundenmetriken, primärer Standort |$MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue |Alle Versionen einschließlich 2013-08-15. |
 | Minutenmetriken, primärer Standort |$MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue |Alle Versionen einschließlich 2013-08-15. |
 | Stundenmetriken, sekundärer Standort |$MetricsHourSecondaryTransactionsBlob  <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue |Alle Versionen einschließlich 2013-08-15. Georedundante Replikation mit Lesezugriff muss aktiviert sein. |

@@ -1,6 +1,6 @@
 ---
-Titel: Erneutes Trainieren eines Machine Learning Studio-Modells titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie ein Modell erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Erneutes Trainieren eines Machine Learning Studio-Modells titleSuffix: Azure Machine Learning Studio – Beschreibung: Erfahren Sie, wie Sie ein Modell erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 19.04.2017
 ---

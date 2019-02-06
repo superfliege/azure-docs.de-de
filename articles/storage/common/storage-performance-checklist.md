@@ -1,5 +1,5 @@
 ---
-title: Checkliste zu Leistung und Skalierbarkeit von Azure Storage | Microsoft Docs
+title: Checkliste zu Leistung und Skalierbarkeit von Azure Storage | Microsoft-Dokumentation
 description: Eine Checkliste mit bewährten Methoden für die Verwendung mit Azure Storage beim Entwickeln leistungsfähiger Anwendungen.
 services: storage
 author: roygara
@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: d627fa1ca52356c43c9a771f612ae6d043299678
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231787"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460827"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -147,7 +147,7 @@ Normalerweise lässt der Browser kein JavaScript auf einer Seite zu, die von ein
 Beide dieser Technologien können dabei helfen, unnötige Lasten (und Engpässe) in der Webanwendung zu vermeiden.  
 
 #### <a name="useful-resources"></a>Nützliche Ressourcen
-Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](../storage-dotnet-shared-access-signature-part-1.md).  
+Weitere Informationen zu SAS finden Sie unter [Shared Access Signatures, Teil 1: Grundlegendes zum SAS-Modell](../storage-dotnet-shared-access-signature-part-1.md).  
 
 Weitere Informationen zu CORS finden Sie unter [Cross-Origin Resource Sharing (CORS)-Support für den Azure-Speicherdienst](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
@@ -255,10 +255,10 @@ Um Blobs schnell hochzuladen, müssen Sie erst die folgende Frage beantworten: L
 #### <a name="subheading21"></a>Schnelles Hochladen eines großen Blobs
 Um einen großen Blob schnell hochzuladen, sollte Ihre Clientanwendung ihre Blöcke oder Seiten parallel hochladen (beachten Sie dabei die Skalierbarkeitsziele für einzelne Blobs sowie für das gesamte Speicherkonto).  Die offiziell von Microsoft bereitgestellten RTM-Speicherclientbibliotheken (.NET, Java) haben die Möglichkeiten dafür.  Verwenden Sie für die einzelnen Bibliotheken die unten angegebenen Objekte/Eigenschaften, um den Grad an Parallelität festzulegen.  
 
-* .NET: Stellen Sie "ParallelOperationThreadCount" für ein zu verwendendes BlobRequestOptions-Objekt ein.
-* Java/Android: Verwenden Sie "BlobRequestOptions.setConcurrentRequestCount()".
-* Node.js: Verwenden Sie "parallelOperationThreadCount" entweder für die Anforderungsoptionen oder für den Blobdienst.
-* C++: Verwenden Sie die Methode "blob_request_options::set_parallelism_factor".
+* .NET: Legen Sie „ParallelOperationThreadCount“ für ein zu verwendendes BlobRequestOptions-Objekt fest.
+* Java/Android: Verwenden Sie „BlobRequestOptions.setConcurrentRequestCount()“.
+* Node.js: Verwenden Sie „parallelOperationThreadCount“ entweder für die Anforderungsoptionen oder für den Blobdienst.
+* C++: Verwenden Sie die Methode „blob_request_options::set_parallelism_factor“.
 
 #### <a name="subheading22"></a>Schnelles Hochladen von mehreren Blobs
 Um viele Blobs schnell hochzuladen, laden Sie die Blobs parallel hoch. Dies funktioniert schneller als das Hochladen von jeweils einem Blob, dessen Blöcke parallel hochgeladen werden, da der Hochladevorgang auf mehrere Partitionen des Speicherdiensts verteilt wird. Ein einzelner Blob unterstützt einen Durchsatz von 60 MB/Sekunde (etwa 480 MBit/s). Zum Zeitpunkt der Texterstellung unterstützten US-basierte LRS-Konten bis zu 20 GBit/s für eingehende Daten, was einem viel höheren Durchsatz als bei einem einzelnen Blob entspricht.  [AzCopy](#subheading18) führt das Hochladen standardmäßig parallel aus, was für dieses Szenario ebenfalls empfohlen wird.  
@@ -286,7 +286,7 @@ In diesem Abschnitt sind verschiedene Schnellkonfigurationseinstellungen aufgeli
 #### <a name="subheading25"></a>Verwenden von JSON
 Ab Speicherdienstversion 2013-08-15 unterstützt der Tabellendienst die Verwendung von JSON anstelle des XML-basierten AtomPub-Formats für die Übertragung von Tabellendaten. Dies kann die Nutzlast um bis zu 75 % verringern und die Anwendungsleistung deutlich verbessern.
 
-Weitere Informationen finden Sie im Eintrag [Microsoft Azure-Tabellen: Einführung in JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) und [Nutzlastformat für Tabellenspeicherdienstvorgänge](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Weitere Informationen finden Sie im Beitrag [Microsoft Azure Tables: Introducing JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) (Microsoft Azure-Tabellen: Einführung in JSON) und [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx) (Nutzlastformat für Tabellendienstvorgänge).
 
 #### <a name="subheading26"></a>Deaktivieren von Nagle
 Der Nagle-Algorithmus ist in TCP/IP-Netzwerken weit verbreitet, um die Netzwerkleistung zu verbessern. Er ist jedoch nicht unter allen Umständen optimal (z. B. hoch interaktive Umgebungen). Für Azure Storage hat der Nagle-Algorithmus negative Auswirkungen auf Anforderungen an Tabellen- und Warteschlangendienste, daher sollten Sie ihn möglichst deaktivieren.  
@@ -359,8 +359,8 @@ Batchtransaktionen werden in Azure-Speicher als Entitätsgruppentransaktionen (E
 ##### <a name="subheading36"></a>Upsert
 Verwenden Sie wenn möglich den Tabellenvorgang **Upsert** zum Einfügen und Aktualisieren. Es gibt zwei **Upsert**-Typen, die beide effizienter als herkömmliche **Insert**- und **Update**-Vorgänge sind:  
 
-* **InsertOrMerge**: Verwenden Sie dies, wenn Sie eine Teilmenge der Entitätseigenschaften hochladen möchten, aber nicht sicher sind, ob die Entität bereits vorhanden ist. Falls die Entität vorhanden ist, aktualisiert dieser Aufruf die in **Upsert** enthaltenen Eigenschaften und lässt alle vorhandenen Eigenschaften unverändert – falls die Entität nicht vorhanden ist, wird die neue Entität eingefügt. Dies funktioniert ähnlich wie die Projektion in einer Abfrage, da Sie nur die geänderten Eigenschaften hochladen müssen.
-* **InsertOrReplace**: Verwenden Sie dies, wenn Sie eine neue Entität hochladen möchten, aber nicht sicher sind, ob diese bereits vorhanden ist. Sie sollten diese Option nur verwenden, wenn Sie wissen, dass die neu hochgeladene Entität komplett richtig ist, da sie die alte Entität vollständig überschreibt. Wenn Sie beispielsweise die Entität aktualisieren möchten, die den aktuellen Standort eines Benutzers speichert, unabhängig davon, ob die Anwendung zuvor Standortdaten für den Benutzer gespeichert hatte, ist die neue Entität komplett, da Sie keine Informationen aus der vorherigen Entität benötigen.
+* **InsertOrMerge**: Verwenden Sie diesen Aufruf, wenn Sie eine Teilmenge der Entitätseigenschaften hochladen möchten, aber nicht sicher sind, ob die Entität bereits vorhanden ist. Falls die Entität vorhanden ist, aktualisiert dieser Aufruf die in **Upsert** enthaltenen Eigenschaften und lässt alle vorhandenen Eigenschaften unverändert – falls die Entität nicht vorhanden ist, wird die neue Entität eingefügt. Dies funktioniert ähnlich wie die Projektion in einer Abfrage, da Sie nur die geänderten Eigenschaften hochladen müssen.
+* **InsertOrReplace**: Verwenden Sie diesen Aufruf, wenn Sie eine neue Entität hochladen möchten, aber nicht sicher sind, ob diese bereits vorhanden ist. Sie sollten diese Option nur verwenden, wenn Sie wissen, dass die neu hochgeladene Entität komplett richtig ist, da sie die alte Entität vollständig überschreibt. Wenn Sie beispielsweise die Entität aktualisieren möchten, die den aktuellen Standort eines Benutzers speichert, unabhängig davon, ob die Anwendung zuvor Standortdaten für den Benutzer gespeichert hatte, ist die neue Entität komplett, da Sie keine Informationen aus der vorherigen Entität benötigen.
 
 ##### <a name="subheading37"></a>Speichern von Datenreihen in einer einzigen Entität
 Manchmal speichert eine Anwendung eine Reihe von Daten, die sie häufig in einem Schritt abrufen muss: Beispielsweise kann eine Anwendung die CPU-Auslastung über einen bestimmten Zeitraum erfassen, um ein fortlaufendes Diagramm der Daten aus den letzten 24 Stunden zu plotten. Eine Möglichkeit ist es, eine Tabellenentität pro Stunde anzulegen, sodass jede Entität eine bestimmte Stunde darstellt und die CPU-Auslastung für diese Stunde speichert. Um diese Daten zu plotten, muss die Anwendung die Entitäten abrufen, welche die Daten aus den letzten 24 Stunden enthalten.  
@@ -395,7 +395,7 @@ Aktuelle Datenkosteninformationen finden Sie unter [Preise für Azure Storage](h
 ### <a name="subheading44"></a>UpdateMessage
 Sie können **UpdateMessage** verwenden, um das Unsichtbarkeits-Zeitlimit zu erhöhen oder die Statusinformationen einer Nachricht zu aktualisieren. Trotz der Möglichkeiten dieser Option sollten Sie beachten, dass jeder **UpdateMessage** -Vorgang für das Skalierbarkeitsziel zählt. Dies kann jedoch sehr viel effizienter sein als ein Workflow, der einen Auftrag von einer Warteschlange zur nächsten verschiebt, wenn der jeweilige Schritt abgeschlossen ist. Mithilfe des Vorgangs **UpdateMessage** kann Ihre Anwendung den Auftragsstatus in der Nachricht speichern und dann weiterarbeiten, statt die Nachricht jedes Mal für den nächsten Schritt erneut in die Warteschlange zu stellen.  
 
-Weitere Informationen finden Sie im Artikel [Ändern des Inhalts von Nachrichten in der Warteschlange](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
+Weitere Informationen finden Sie in diesem Artikel: [ Ändern des Inhalts von Nachrichten in der Warteschlange](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 
 ### <a name="subheading45"></a>Anwendungsarchitektur
 Verwenden Sie Warteschlangen, um die Anwendungsarchitektur skalierbar zu machen. Nachfolgend sind einige Möglichkeiten aufgelistet, wie Sie Warteschlangen verwenden können, um Ihre Anwendung skalierbarer zu gestalten:  

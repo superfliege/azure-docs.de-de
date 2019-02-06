@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: df0b031e432c91897ff61e2cd9fcadc86bb54ee2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d50bf7d865cb286f2a1421156b477dc92dc978d1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036867"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453602"
 ---
-# <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Verwalten von Daten mithilfe von Azure Cosmos DB Explorer 
+# <a name="work-with-data-using-azure-cosmos-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Cosmos-Explorer 
 
 Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten. Azure Cosmos DB Explorer entspricht der vorhandenen Registerkarte **Daten-Explorer**, die beim Erstellen eines Azure Cosmos DB-Kontos im Azure-Portal verfügbar ist. Die wichtigsten Vorteile von Azure Cosmos DB Explorer im Vergleich zum vorhandenen Daten-Explorer:
 

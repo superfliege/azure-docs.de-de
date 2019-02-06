@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 83694f121fb17f90aa89fb9ba99e8514cadd5b09
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 90b7638acf6df721a16bdcca6ceebb6f9d65ca2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723704"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096822"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
 
@@ -41,8 +41,8 @@ Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anw
 | Feld            | BESCHREIBUNG                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | NAME             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
-| Anwendungstyp | **Web-App/Web-API**: Eine Anwendung, die eine Web-App, eine Web-API oder beides repräsentiert. 
-| |**Nativ**: Eine Anwendung, die auf dem Gerät oder Computer eines Benutzers installiert werden kann.           |
+| Anwendungstyp | **Web-App/Web-API**: Fügen Sie eine Anwendung hinzu, die eine Webanwendung, eine Web-API oder beides repräsentiert. 
+| |**Nativ**: Eine Anwendung, die auf dem Gerät oder Computer eines Benutzers installiert werden kann           |
 | Anmelde-URL      | Die URL, unter der sich Benutzer bei Ihrer Anwendung anmelden können.                                  |
 
 Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im Azure-Portal registriert, und Sie werden auf die Anwendungsseite weitergeleitet. Mit der Schaltfläche **Einstellungen** im Bereich der Anwendung öffnen Sie die Einstellungsseite, die weitere Felder enthält, mit denen Sie Ihre Anwendung anpassen können. Die folgende Tabelle beschreibt alle Felder auf der Einstellungsseite. Beachten Sie, dass Ihnen möglicherweise nur ein Teil dieser Felder angezeigt wird, je nachdem, ob Sie eine Webanwendung oder eine native Anwendung erstellt haben.

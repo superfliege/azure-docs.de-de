@@ -4,17 +4,17 @@ description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalt
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847049"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101786"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
@@ -201,17 +201,34 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
   }
   ```
 
+   Weitere Informationen zum Erstellen einer Richtliniendefinition finden Sie unter [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).
+
 1. Führen Sie den folgenden Befehl aus, um eine Richtliniendefinition zu erstellen:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
+   Mit dem Befehl wird die Richtliniendefinition _Audit Storage Accounts Open to Public Networks_ erstellt.
+   Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create).
+
+   `az policy definition creation` speichert die Richtliniendefinition standardmäßig im ausgewählten Abonnement des Sitzungskontexts bei Aufruf ohne Speicherortparameter. Um die Definition an einem anderen Speicherort zu speichern, verwenden Sie die folgenden Parameter:
+
+   - **--subscription** zum Speichern in einem anderen Abonnement. Dieser Parameter erfordert einen _GUID-Wert_ für die Abonnement-ID oder einen _Zeichenfolgenwert_ für den Namen des Abonnements.
+   - **--management-group** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
+
 1. Verwenden Sie den folgenden Befehl, um eine Richtlinienzuweisung zu erstellen. Ersetzen Sie die in &lt;&gt; gesetzten Angaben durch Ihre eigenen Werte.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
+
+   Die Parameter **--scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **--scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
+
+   - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Ressourcengruppe: `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Abonnement: `/subscriptions/{subID}`
+   - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Sie können die ID der Richtliniendefinition abrufen, indem Sie PowerShell mit dem folgenden Befehl verwenden:
 

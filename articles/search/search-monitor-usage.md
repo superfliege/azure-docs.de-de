@@ -1,6 +1,6 @@
 ---
-title: Überwachen der Nutzung und Statistiken für einen Suchdienst – Azure Search
-description: Verfolgen Sie die Ressourcennutzung und Indexgröße für Azure Search nach, einem in Microsoft Azure gehosteten Cloudsuchdienst.
+title: Überwachen der Ressourcennutzung und Abfragemetriken für einen Suchdienst – Azure Search
+description: Aktivieren der Protokollierung, Abrufen von Abfrageaktivitätsmetriken, der Ressourcennutzung und anderer Daten von einem Azure Search-Dienst.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -8,97 +8,113 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: ed084520e092802ffa2a42e8a0c664ec09c4cbb7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631894"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093239"
 ---
-# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Überwachen eines Azure Search-Diensts im Azure-Portal
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
-Azure Search bietet verschiedene Ressourcen zum Nachverfolgen der Verwendung und Leistung von Suchdiensten. Sie haben Zugriff auf Metriken, Protokolle, Indexstatistiken und erweiterte Überwachungsfunktionen von Power BI. Dieser Artikel beschreibt das Aktivieren der verschiedenen Überwachungsstrategien und das Interpretieren der resultierenden Daten.
+Auf der Seite „Übersicht“ Ihres Azure Search-Diensts können Sie Systemdaten zur Ressourcennutzung, Abfragemetriken und das noch verfügbare Kontingent zum Erstellen von weiteren Indizes, Indexern und Datenquellen anzeigen. Sie können auch das Portal verwenden, um die Protokollanalyse oder eine andere für die persistente Datensammlung verwendete Ressource zu konfigurieren. 
 
-## <a name="azure-search-metrics"></a>Azure Search-Metriken
-Mit Metriken haben Sie nahezu einen Echtzeiteinblick in Ihren Suchdienst, und sie sind ohne zusätzliche Installation für jeden Dienst verfügbar. Damit können Sie die Leistung des Diensts bis zu 30 Tage nachverfolgen.
+Das Einrichten von Protokollen ist hilfreich für die Selbstdiagnose und die Beibehaltung des Verwendungsverlaufs. Intern werden Protokolle für einen kurzen Zeitraum im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie Protokollinformationen steuern und darauf zugreifen möchten, sollten Sie eine der in diesem Artikel beschriebenen Lösungen einrichten.
 
-Azure Search sammelt Daten für drei verschiedene Metriken:
+In diesem Artikel erhalten Sie Informationen zu den Überwachungsoptionen sowie zum Aktivieren der Protokollierung und des Protokollspeichers und zum Anzeigen von Protokollinhalten.
 
-* Suchlatenz: Die Zeit, die der Suchdienst für die Verarbeitung von Suchabfragen benötigt hat, auf Minutenbasis aggregiert.
-* Suchabfragen pro Sekunde (QPS): Anzahl der pro Sekunde empfangenen Suchabfragen, auf Minutenbasis aggregiert.
-* Gedrosselte Suchabfragen in Prozent: Prozentsatz der Suchabfragen, die gedrosselt wurden, zusammengefasst pro Minute.
+## <a name="metrics-at-a-glance"></a>Metriken auf einen Blick
 
-![Screenshot der QPS-Aktivität][1]
+In den auf der Seite „Übersicht“ integrierten Abschnitten **Nutzung** und **Überwachung** werden Metriken zum Ressourcenverbrauch und zur Abfrageausführung angezeigt. Diese Informationen stehen zur Verfügung, sobald Sie den Dienst verwenden, ohne dass eine Konfiguration erforderlich ist. Diese Seite wird alle paar Minuten aktualisiert. Wenn Sie Entscheidungen dazu treffen möchten, [welcher Tarif für Produktionsworkloads verwendet werden soll](search-sku-tier.md) oder ob [die Anzahl der aktiven Replikate und Partitionen angepasst wird](search-capacity-planning.md), können Sie diese Metriken heranziehen. Anhand der Metriken können Sie sehen, wie schnell Ressourcen verbraucht werden und wie die vorhandene Last in der aktuellen Konfiguration verarbeitet wird.
 
-### <a name="set-up-alerts"></a>Einrichten von Warnungen
-Auf der Metrikdetailseite können Sie Warnungen konfigurieren, um eine E-Mail-Benachrichtigung oder automatisierte Aktion auszulösen, wenn eine Metrik einen Schwellenwert passiert, den Sie definiert haben.
+Auf der Registerkarte **Nutzung** wird die Ressourcenverfügbarkeit relativ zu den aktuellen [Grenzwerten](search-limits-quotas-capacity.md) angezeigt. Die folgende Abbildung bezieht sich auf den kostenlosen Dienst, der auf 3 Objekte pro Typ und auf 50 MB Speicher begrenzt ist. Für einen Dienst mit dem Tarif „Basic“ oder „Standard“ gelten höhere Grenzwerte. Wenn Sie die Anzahl der Partitionen erhöhen, steigt der maximale Speicher proportional an.
 
-Weitere Informationen zu Metriken finden Sie in der vollständigen Dokumentation zu Azure-Monitor.  
+![Verwendungsstatus relativ zu tatsächlichen Grenzwerten](./media/search-monitor-usage/usage-tab.png
+ "Verwendungsstatus relativ zu tatsächlichen Grenzwerten")
 
-## <a name="how-to-track-resource-usage"></a>Nachverfolgen der Ressourcenverwendung
-Durch Nachverfolgen des Wachstums von Indizes und Dokumentgröße können Sie die Kapazität proaktiv anpassen, bevor die Obergrenze, die Sie für den Dienst festgelegt haben, erreicht wird. Dies ist im Portal oder programmgesteuert mithilfe der REST-API möglich.
+## <a name="queries-per-second-qps-and-other-metrics"></a>Abfragen pro Sekunde (QPS) und weitere Metriken
 
-### <a name="using-the-portal"></a>Verwenden des Portals
+Auf der Registerkarte **Überwachung** wird ein gleitender Durchschnitt für Metriken wie *Abfragen pro Sekunde* (QPS) auf Minutenbasis aggregiert. 
+*Wartezeit bei Suchvorgängen* ist die Zeit, die der Suchdienst aggregiert auf Minutenbasis für die Verarbeitung von Suchabfragen benötigt hat. *Prozentsatz gedrosselter Suchabfragen* (nicht angezeigt) ist der Prozentsatz der gedrosselten Suchabfragen und wird auch auf Minutenbasis aggregiert.
 
-Zum Überwachen der Ressourcennutzung zeigen Sie die Anzahl und die Statistik für den Dienst im [Portal](https://portal.azure.com) an.
+Diese Zahlen sind ungefähre Werte und sollen Ihnen eine allgemeine Übersicht darüber geben, wie gut Anforderungen in Ihrem System verarbeitet werden. Der tatsächliche Wert für die Abfragen pro Sekunde kann höher oder niedriger als im Portal aufgezeichnet sein.
 
-1. Melden Sie sich beim [Portal](https://portal.azure.com) an.
-2. Öffnen Sie das Service-Dashboard des Azure-Suchdiensts. Die Startseite enthält Kacheln für den Dienst, oder Sie können auch über „Durchsuchen“ auf der Indexleiste zum Dienst navigieren.
+![Aktivität zu Abfragen pro Sekunde](./media/search-monitor-usage/monitoring-tab.png "Aktivität zu Abfragen pro Sekunde")
 
-Der Abschnitt „Verwendung“ umfasst einen Verbrauchszähler, aus dem hervorgeht, welcher Teil des verfügbaren Ressourcen zurzeit verwendet wird. Informationen zu Einschränkungen für Indizes, Dokumente und Speicher pro Dienst finden Sie unter [Diensteinschränkungen](search-limits-quotas-capacity.md).
+## <a name="activity-logs"></a>Aktivitätsprotokolle
 
-  ![Kachel „Nutzung“][2]
+Im **Aktivitätsprotokoll** werden Informationen von Azure Resource Manager erfasst. Beispiele für die im Aktivitätsprotokoll aufgeführten Informationen sind u.a. Erstellen oder Löschen eines Diensts, Aktualisieren einer Ressourcengruppe, Überprüfen auf Namensverfügbarkeit oder Abrufen eines Dienstzugriffsschlüssels zur Verarbeitung einer Anforderung. 
 
-> [!NOTE]
-> Der oben dargestellte Screenshot bezieht sich auf den kostenlosen Dienst, der maximal je ein Replikat und eine Partition aufweist und nur drei Indizes, 10.000 Dokumente oder 50 MB an Daten (je nachdem, was zuerst eintritt) hosten kann. Dienste, die mit einem Basic- oder Standard-Tarif erstellt werden, weisen höhere Werte für die Diensteinschränkungen auf. Weitere Informationen zum Auswählen eines Tarifs finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](search-sku-tier.md).
->
->
+Auf das **Aktivitätsprotokoll** können Sie im linken Navigationsbereich, über „Benachrichtigungen“ auf der Befehlsleiste oben im Fenster oder über die Seite **Probleme diagnostizieren und beheben** zugreifen.
 
-### <a name="using-the-rest-api"></a>Verwenden der REST-API
-Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken.  Bei Verwendung von [Indexern](https://msdn.microsoft.com/library/azure/dn946891.aspx) zum Laden eines Index aus Azure SQL-Datenbank oder Azure Cosmos DB steht eine zusätzliche API zum Abrufen der benötigen Zahlen zur Verfügung.
+Für im Dienst enthaltene Aufgaben, z.B. Erstellen eines Index oder Löschen einer Datenquelle, werden für jede Anforderung generische Benachrichtigungen wie „Get Admin Key“ (Administratorschlüssel abrufen), jedoch nicht die jeweilige Aktion angezeigt. Für diese Informationsebene müssen Sie eine Add-On-Überwachungslösung aktivieren.
 
-* [Indexstatistiken abrufen](/rest/api/searchservice/get-index-statistics)
-* [Dokumentenanzahl](/rest/api/searchservice/count-documents)
-* [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
+## <a name="add-on-monitoring-solutions"></a>Add-On-Überwachungslösungen
 
-## <a name="how-to-export-logs-and-metrics"></a>Exportieren von Protokollen und Metriken
+In Azure Search werden neben den verwalteten Objekten keine weiteren Daten gespeichert, d.h, Protokolldaten müssen extern gespeichert werden. Wenn Sie Protokolldaten speichern möchten, können Sie eine der unten aufgeführten Ressourcen konfigurieren. 
 
-Sie können die Vorgangsprotokolle für den Dienst und die unformatierten Daten für die im vorherigen Abschnitt beschriebenen Metriken exportieren. Durch Vorgangsprotokolle erfahren Sie, wie der Dienst verwendet wird und von Power BI genutzt werden kann, wenn Daten in ein Speicherkonto kopiert werden. Azure Search bietet zu diesem Zweck ein Power BI-Inhaltspaket zur Überwachung.
+In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und Hinzufügen einer umfassenden Überwachung von Dienstvorgängen und Abfrageworkloads über Application Insights verglichen.
 
+| Ressource | Verwendung |
+|----------|----------|
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas und korreliert mit Benutzerereignissen in Ihrer App. Dies ist die einzige Lösung, bei der Benutzeraktionen oder Signale berücksichtigt werden, d.h., Ereignisse aus einer vom Benutzer initiierten Suche werden zugeordnet, anstatt dass die durch Anwendungscode übermittelten Anforderungen gefiltert werden. Um diese Lösung zu verwenden, kopieren Sie Instrumentationscode, und fügen Sie ihn in Ihren Quelldateien ein, um Anforderungsinformationen an Application Insights weiterzuleiten. Weitere Informationen finden Sie unter [Datenverkehrsanalyse durchsuchen](search-traffic-analytics.md). |
+| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Arbeitsbereich in Log Analytics protokolliert. Sie können Abfragen für einen Arbeitsbereich ausführen, um detaillierte Informationen aus dem Protokoll zurückzugeben. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
+| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Blobcontainer protokolliert und in JSON-Dateien gespeichert. Verwenden Sie einen JSON-Editor, um die Dateiinhalte anzuzeigen.|
+| [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den in diesem Artikel beschriebenen Schemas. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
 
-### <a name="enabling-monitoring"></a>Aktivieren der Überwachung
-Öffnen Sie Ihren Dienst von Azure Search im [Azure-Portal](https://portal.azure.com) unter der Option „Überwachung aktivieren“.
+Log Analytics und Blob Storage sind als kostenloser gemeinsamer Dienst verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/ricing/details/monitor/).)
 
-Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Log Analytics exportieren.
+Im nächsten Abschnitt werden die Schritte zum Aktivieren und Verwenden von Azure Blob Storage zum Erfassen von und Zugreifen auf Protokolldaten erläutert, die durch Azure Search-Vorgänge erstellt werden.
 
-![Aktivieren der Überwachung im Portal][3]
+## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-Informationen zur Aktivierung mit PowerShell oder Azure CLI finden Sie in [dieser](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs) Dokumentation.
+Die Protokollierung für die Indizierung und für Abfrageworkloads ist standardmäßig deaktiviert. Für die Protokollierungsstruktur und die langfristige externe Speicherung müssen Add-On-Lösungen eingesetzt werden. In Azure Search werden nur die in Azure Search erstellten und verwalteten Objekte gespeichert, sodass Protokolle an anderer Stelle gespeichert werden müssen.
 
-### <a name="logs-and-metrics-schemas"></a>Protokolle und Metrikenschemata
-Beim Kopieren in ein Speicherkonto werden die Daten im JSON-Format formatiert und in zwei Containern platziert:
+In diesem Abschnitt erfahren Sie, wie Sie protokollierte Ereignisse und Metrikdaten mithilfe von Blob Storage speichern.
+
+1. [Erstellen Sie ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), wenn Sie noch keines besitzen. Sie können es in der gleichen Ressourcengruppe wie Azure Search ablegen, um später die Bereinigung zu vereinfachen, wenn Sie alle in dieser Übung verwendeten Ressourcen löschen.
+
+2. Öffnen Sie die Seite „Übersicht“ für Ihren Suchdienst. Scrollen Sie im linken Navigationsbereich nach unten zu **Überwachung**, und klicken Sie auf **Überwachung aktivieren**.
+
+   ![Überwachung aktivieren](./media/search-monitor-usage/enable-monitoring.png "Überwachung aktivieren")
+
+3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Log Analytics exportieren.
+
+   Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten erstellt.
+
+   ![Konfigurieren des Blob Storage-Archivs](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurieren des Blob Storage-Archivs")
+
+4. Speichern Sie das Profil.
+
+5. Testen Sie die Protokollierung, indem Sie Objekte erstellen oder löschen (Protokollereignisse werden erstellt) und Abfragen übermitteln (Metriken werden generiert). 
+
+Die Protokollierung ist aktiviert, nachdem Sie das Profil gespeichert haben. Container werden nur erstellt, wenn eine Aktivität zum Protokollieren oder Messen vorhanden ist. Beim Kopieren der Daten in ein Speicherkonto werden sie im JSON-Format formatiert und in zwei Containern platziert:
 
 * „insights-logs-operationlogs“: für Suchdatenverkehrsprotokolle
 * „insights-metrics-pt1m“: für Metriken
 
-Es gibt einen Blob pro Stunde pro Container.
+Die Container werden nach einer Stunde in Blob Storage angezeigt. Es gibt einen Blob pro Stunde pro Container. 
 
-Beispiel-Pfad: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
+Die Container können Sie mithilfe von [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) oder eines anderen JSON-Editors anzeigen. 
 
-#### <a name="log-schema"></a>Protokollschema
-Die Protokollblobs enthalten die Datenverkehrprotokolle des Suchdiensts.
-Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
-Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde erfolgt sind.
+### <a name="example-path"></a>Beispielpfad
 
-| NAME | Typ | Beispiel | Notizen |
+```
+resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+```
+
+## <a name="log-schema"></a>Protokollschema
+Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprechend der Beschreibung in diesem Abschnitt strukturiert. Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
+
+| NAME | Type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| time |Datetime |„2015-12-07T00:00:43.6872559Z“ |Zeitstempel des Vorgangs |
+| time |Datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
 | Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs |
-| operationVersion |Zeichenfolge |„2015-02-28“ |Die verwendete API-Version |
+| operationVersion |Zeichenfolge |"2017-11-11" |Die verwendete API-Version |
 | category |Zeichenfolge |„OperationLogs“ |Konstante |
 | resultType |Zeichenfolge |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
 | resultSignature |int |200 |HTTP-Ergebniscode |
@@ -107,20 +123,22 @@ Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde
 
 **Eigenschaftsschema**
 
-| NAME | Typ | Beispiel | Notizen |
+| NAME | Type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | BESCHREIBUNG |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
-| Abfrage |Zeichenfolge |„?search=AzureSearch&$count=true&api-version=2015-02-28“ |Die Abfrageparameter |
+| Abfrage |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2017-11-11" |Die Abfrageparameter |
 | Dokumente |int |42 |Anzahl von verarbeiteten Dokumenten |
 | IndexName |Zeichenfolge |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
 
-#### <a name="metrics-schema"></a>Metrikenschema
+## <a name="metrics-schema"></a>Metrikenschema
 
-| NAME | Typ | Beispiel | Notizen |
+Metriken werden für Abfrageanforderungen erfasst.
+
+| NAME | Type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
-| in |Datetime |„2015-12-07T00:00:43.6872559Z“ |Der Zeitstempel des Vorgangs |
+| in |Datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
 | average |int |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
 | minimum |int |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall |
 | maximum |int |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
@@ -135,23 +153,28 @@ Beispiel: Innerhalb einer Minute kann es für eine Sekunde eine sehr hohe Last g
 
 Für „ThrottledSearchQueriesPercentage“ entsprechen der Mindest-, Höchst-, Durchschnitts- und Gesamtwert demselben Wert, nämlich dem Prozentsatz von Suchabfragen, die gedrosselt wurden, basierend auf der Gesamtanzahl von Suchabfragen während einer Minute.
 
-## <a name="analyzing-your-data-with-power-bi"></a>Analysieren Ihrer Daten mit Power BI
+## <a name="download-and-open-in-visual-studio-code"></a>Herunterladen und Öffnen in Visual Studio Code
 
-Zum Untersuchen und Visualisieren Ihrer Daten sollten Sie [Power BI](https://powerbi.microsoft.com) verwenden. Sie können ganz einfach eine Verbindung mit Ihrem Azure Storage-Konto herstellen und schnell mit der Analyse Ihrer Daten beginnen.
+Sie können die Protokolldatei mit einem beliebigen JSON-Editor anzeigen. Wenn Sie über keinen verfügen, empfiehlt sich die Verwendung von [Visual Studio Code](https://code.visualstudio.com/download).
 
-Azure Search bietet ein [Power BI-Inhaltspaket](https://app.powerbi.com/getdata/services/azure-search), dass Ihnen ermöglicht, mit vordefinierten Diagrammen und Tabellen Ihren Suchdatenverkehr zu überwachen und zu verstehen. Es enthält einen Satz von Power BI-Berichten, die automatisch eine Verbindung mit Ihren Daten herstellen und Ihnen visuell Erkenntnisse über Ihren Suchdienst vermitteln. Weitere Informationen finden Sie auf der [Hilfeseite zum Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
+1. Öffnen Sie Ihr Speicherkonto im Azure-Portal. 
 
-![Power BI-Dashboard für Azure Search][4]
+2. Klicken Sie im linken Navigationsbereich auf **Blobs**. **insights-logs-operationlogs** und **insights-metrics-pt1m** sollten angezeigt werden. Diese Container werden in Azure Search erstellt, wenn die Protokolldaten in Blob Storage exportiert werden.
+
+3. Klicken Sie in der Ordnerhierarchie nach unten bis zur JSON-Datei.  Verwenden Sie das Kontextmenü, um die Datei herunterzuladen.
+
+Nach dem Herunterladen der Datei können Sie sie in einem JSON-Editor öffnen und die Inhalte anzeigen.
+
+## <a name="use-system-apis"></a>Verwenden von System-APIs
+Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken, Index- und Indexerinformationen und die Anzahl von Dokumenten.
+
+* [Dienststatistiken abrufen](/rest/api/searchservice/get-service-statistics)
+* [Indexstatistiken abrufen](/rest/api/searchservice/get-index-statistics)
+* [Dokumentenanzahl](/rest/api/searchservice/count-documents)
+* [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
+
+Informationen zur Aktivierung mit PowerShell oder Azure CLI finden Sie in [dieser](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs) Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md) finden Sie Anleitungen dazu, wie Sie die Zuweisung von Partitionen und Replikaten für einen vorhandenen Dienst ausgleichen können.
 
-Besuchen Sie [Verwalten Ihres Suchdiensts in Microsoft Azure](search-manage.md), um weitere Informationen zur Dienstverwaltung zu erhalten, oder [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md) für eine Optimierungsanleitung.
-
-Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Informationen finden Sie unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/).
-
-<!--Image references-->
-[1]: ./media/search-monitor-usage/AzSearch-Monitor-BarChart.PNG
-[2]: ./media/search-monitor-usage/AzureSearch-Monitor1.PNG
-[3]: ./media/search-monitor-usage/AzureSearch-Enable-Monitoring.PNG
-[4]: ./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png
+Weitere Informationen zur Dienstverwaltung finden Sie unter [Verwalten Ihres Suchdiensts in Microsoft Azure](search-manage.md) und eine Optimierungsanleitung unter [Leistung und Optimierung](search-performance-optimization.md).

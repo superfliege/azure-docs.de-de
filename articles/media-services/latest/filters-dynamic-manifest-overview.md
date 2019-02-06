@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728039"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912032"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
@@ -124,8 +124,8 @@ Verwenden Sie diese Eigenschaft mit **Medienobjektfiltern**. Es wird nicht empfo
 |---|---|
 |**endTimestamp**|Die Grenze für den absoluten Endpunkt. Gilt für Video on Demand (VoD). Bei einer Livepräsentation wird diese Eigenschaft stillschweigend ignoriert und angewendet, wenn die Präsentation endet und der Stream zu VoD wird.<br/><br/>Der Wert repräsentiert einen absoluten Endpunkt des Streams. Er wird auf den nächstgelegenen GOP-Start gerundet.<br/><br/>Verwenden Sie „StartTimestamp“ und „EndTimestamp“, um die Wiedergabeliste (das Manifest) zu kürzen. Beispielsweise wird durch die Festlegung „StartTimestamp=40000000“ und „EndTimestamp = 100000000“ eine Wiedergabeliste generiert, die Medien zwischen „StartTimestamp“ und „EndTimestamp“ enthält. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in das Manifest aufgenommen.<br/><br/>Siehe auch die folgende Definition für **forceEndTimestamp**.|
 |**forceEndTimestamp**|Gilt für Livefilter.<br/><br/>**forceEndTimestamp** ist ein boolescher Wert. Er gibt an, ob **endTimestamp** auf einen gültigen Wert festgelegt wurde oder nicht. <br/><br/>Lautet der Wert **true**, muss **endTimestamp** angegeben werden. Erfolgt keine Angabe, wird eine fehlerhafte Anforderung zurückgegeben.<br/><br/>Wenn Sie beispielsweise einen Filter definieren möchten, der bei Minute 5 des Eingangsvideos beginnt und bis zum Ende des Streams dauert, würden Sie **forceEndTimestamp** auf „false“ festlegen und die Einstellung **endTimestamp** auslassen.|
-|**liveBackoffDuration**|Gilt nur für Liveereignisse. Die Eigenschaft wird verwendet, um die Position für die Livewiedergabe zu definieren. Mit dieser Regel können Sie die Livewiedergabeposition verzögern und einen serverseitigen Puffer für Spieler erstellen. „LiveBackoffDuration“ ist relativ zur Liveposition. Die maximal zulässige Wert für „LiveBackoffDuration“ beträgt 60 Sekunden.|
-|**presentationWindowDuration**|Gilt für Liveereignisse. Verwenden Sie **presentationWindowDuration**, um ein gleitendes Fenster auf die Wiedergabeliste anzuwenden. Legen Sie beispielsweise „presentationWindowDuration=1200000000“ fest, um ein gleitendes Fenster von 2 Minuten anzuwenden. Medien, die in einem 2-Minuten-Zeitraum um die Liveposition liegen, werden in die Wiedergabeliste aufgenommen. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in die Wiedergabeliste aufgenommen. Die Mindestdauer für das Präsentationsfenster beträgt 120 Sekunden.|
+|**liveBackoffDuration**|Gilt nur für Liveereignisse. Die Eigenschaft wird verwendet, um die Position für die Livewiedergabe zu definieren. Mit dieser Regel können Sie die Livewiedergabeposition verzögern und einen serverseitigen Puffer für Spieler erstellen. „LiveBackoffDuration“ ist relativ zur Liveposition. Der maximal zulässige Wert für „LiveBackoffDuration“ beträgt 300 Sekunden.|
+|**presentationWindowDuration**|Gilt für Liveereignisse. Verwenden Sie **presentationWindowDuration**, um ein gleitendes Fenster auf die Wiedergabeliste anzuwenden. Legen Sie beispielsweise „presentationWindowDuration=1200000000“ fest, um ein gleitendes Fenster von 2 Minuten anzuwenden. Medien, die in einem 2-Minuten-Zeitraum um die Liveposition liegen, werden in die Wiedergabeliste aufgenommen. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in die Wiedergabeliste aufgenommen. Die Mindestdauer für das Präsentationsfenster beträgt 60 Sekunden.|
 |**startTimestamp**|Gilt für VoD oder Livestreams. Der Wert repräsentiert einen absoluten Startpunkt des Streams. Er wird auf den nächstgelegenen GOP-Start gerundet.<br/><br/>Verwenden Sie **startTimestamp** und **endTimestamp**, um die Wiedergabeliste (das Manifest) zu kürzen. Beispielsweise wird durch die Festlegung „startTimestamp=40000000“ und „endTimestamp = 100000000“ eine Wiedergabeliste generiert, die Medien zwischen „StartTimestamp“ und „EndTimestamp“ enthält. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in das Manifest aufgenommen.|
 |**timescale**|Gilt für VoD oder Livestreams. Die Zeitskala, die von den oben angegebenen Zeitstempeln und Zeiträumen verwendet wird. Die standardmäßige Zeitskala lautet 10000000. Es kann eine alternative Zeitskala verwendet werden. Der Standard ist 10000000 HNS (hundert Nanosekunden).|
 

@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 5dd5920eae97399bae03c6917bb610103bd556c2
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069504"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912713"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -85,8 +85,6 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor<sup>3</sup> |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 
 * <sup>1</sup>365 Tage ist die explizite Maximallänge, die für diese Attribute festgelegt werden kann.
-* <sup>2</sup>Wenn **MaxAgeSessionSingleFactor** nicht festgelegt ist, wird der Wert **MaxAgeSingleFactor** angenommen. Wenn keiner der Parameter festgelegt ist, wird für die Eigenschaft der Standardwert (Bis zum Widerruf) verwendet.
-* <sup>3</sup>Wenn **MaxAgeSessionMultiFactor** nicht festgelegt ist, wird der Wert **MaxAgeMultiFactor** angenommen. Wenn keiner der Parameter festgelegt ist, wird für die Eigenschaft der Standardwert (Bis zum Widerruf) verwendet.
 
 ### <a name="exceptions"></a>Ausnahmen
 | Eigenschaft | Betrifft | Standard |
@@ -138,7 +136,7 @@ Alle hier verwendeten Zeiträume werden nach dem C#-Objekt [TimeSpan](https://ms
 
 **Betrifft:** Zugriffstoken, ID-Token
 
-**Zusammenfassung:** Diese Richtlinie gesteuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
 
 ### <a name="refresh-token-max-inactive-time"></a>Max. Zeit der Inaktivität für Aktualisierungstoken
 **Zeichenfolge:** MaxInactiveTime
@@ -156,7 +154,7 @@ Die Eigenschaft „Maximale Inaktivitätszeit Aktualisierungstoken“ muss auf e
 
 **Betrifft:** Aktualisierungstoken
 
-**Zusammenfassung:** Mit dieser Richtlinie wird gesteuert, wie lange ein Benutzer ein Aktualisierungstoken verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar zu erhalten, nachdem die letzte erfolgreiche Single-Factor-Authentifizierung durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhalten hat, kann er den Aktualisierungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht länger als für den Inaktivitätszeitraum ungenutzt bleibt.) An diesem Punkt wird der Benutzer zum erneuten Authentifizieren gezwungen, um ein neues Aktualisierungstoken zu erhalten.
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Aktualisierungstoken verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar abzurufen, nachdem die letzte erfolgreiche Authentifizierung mit einem einzigen Faktor durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhalten hat, kann er den Aktualisierungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht länger als für den Inaktivitätszeitraum ungenutzt bleibt.) An diesem Punkt wird der Benutzer zum erneuten Authentifizieren gezwungen, um ein neues Aktualisierungstoken zu erhalten.
 
 Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der kleiner oder gleich dem Wert für die Eigenschaft „Max. Alter Multi-Factor-Aktualisierungstoken“ ist.
 
@@ -165,7 +163,7 @@ Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authe
 
 **Betrifft:** Aktualisierungstoken
 
-**Zusammenfassung:** Mit dieser Richtlinie wird gesteuert, wie lange ein Benutzer ein Aktualisierungstoken verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar zu erhalten, nachdem die letzte erfolgreiche Authentifizierung mit mehreren Faktoren durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhalten hat, kann er den Aktualisierungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht länger als für den Inaktivitätszeitraum ungenutzt bleibt.) An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken zu erhalten.
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Aktualisierungstoken verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar abzurufen, nachdem die letzte erfolgreiche Authentifizierung mit mehreren Faktoren durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhalten hat, kann er den Aktualisierungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht länger als für den Inaktivitätszeitraum ungenutzt bleibt.) An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken zu erhalten.
 
 Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der größer oder gleich dem Wert für die Eigenschaft „Max. Alter Single-Factor-Aktualisierungstoken“ ist.
 
@@ -174,7 +172,7 @@ Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authe
 
 **Betrifft:** Sitzungstoken (beständig und nicht beständig)
 
-**Zusammenfassung:** Mit dieser Richtlinie wird gesteuert, wie lange ein Benutzer ein Sitzungstoken verwenden kann, um ein neues ID- und Sitzungstoken zu erhalten, nachdem die letzte erfolgreiche Authentifizierung mit einem Faktor durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhalten hat, kann er den Sitzungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Sitzungstoken nicht widerrufen wird und nicht abgelaufen ist.) Nach dem angegebenen Zeitraum wird der Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten.
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Sitzungstoken verwenden kann, um ein neues ID- und Sitzungstoken abrufen, nachdem die letzte erfolgreiche Authentifizierung mit einem einzigen Faktor durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhalten hat, kann er den Sitzungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Sitzungstoken nicht widerrufen wird und nicht abgelaufen ist.) Nach dem angegebenen Zeitraum wird der Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten.
 
 Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der kleiner oder gleich dem Wert für die Eigenschaft „Max. Alter Multi-Factor-Sitzungstoken“ ist.
 
@@ -183,7 +181,7 @@ Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authe
 
 **Betrifft:** Sitzungstoken (beständig und nicht beständig)
 
-**Zusammenfassung:** Mit dieser Richtlinie wird gesteuert, wie lange ein Benutzer ein Sitzungstoken verwenden kann, um ein neues ID- und Sitzungstoken zu erhalten, nachdem die letzte erfolgreiche Authentifizierung mit mehreren Faktoren durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhalten hat, kann er den Sitzungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Sitzungstoken nicht widerrufen wird und nicht abgelaufen ist.) Nach dem angegebenen Zeitraum wird der Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten.
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer ein Sitzungstoken verwenden kann, um ein neues ID- und Sitzungstoken abzurufen, nachdem die letzte erfolgreiche Authentifizierung mit mehreren Faktoren durchgeführt wurde. Nachdem sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhalten hat, kann er den Sitzungstokenflow für den angegebenen Zeitraum verwenden. (Dies gilt, solange das aktuelle Sitzungstoken nicht widerrufen wird und nicht abgelaufen ist.) Nach dem angegebenen Zeitraum wird der Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten.
 
 Durch die Reduzierung des maximalen Alters müssen sich Benutzer häufiger authentifizieren. Da die Single-Factor Authentication als weniger sicher als die Multi-Factor Authentication erachtet wird, wird empfohlen, diese Eigenschaft auf einen Wert festzulegen, der größer oder gleich dem Wert für die Eigenschaft „Max. Alter Single-Factor-Sitzungstoken“ ist.
 

@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433015"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301440"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -83,7 +83,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 |Pfadtyp     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „Datei“ und „Verzeichnis“)        |
 |Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
-|Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignorieren**: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen<br>**Folgen**: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein<br>**Verwalten**: Folgt den symbolischen Verknüpfungen und ermöglicht das Ändern von zurückgegebenen Inhalten     |
+|Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignorieren**: Symbolische Verknüpfungen werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Folgen**: Folgt den symbolischen Verknüpfungen bei der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein<br>**Verwalten**: Folgt den symbolischen Verknüpfungen und ermöglicht das Ändern von zurückgegebenen Inhalten     |
 |Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **True** und **False**.|
 
 > [!NOTE]
@@ -154,8 +154,7 @@ Weitere Einschränkungen:
 
 Die Lösung für die Änderungsnachverfolgung weist derzeit die folgenden Probleme auf:
 
-* Hotfix-Updates werden für Computer mit Windows 10 Creators Update und Windows Server 2016 Core RS3 nicht erfasst.
-* Für Windows-Dateien erkennt die Änderungsnachverfolgung derzeit nicht, dass einem nachverfolgten Ordnerpfad eine neue Datei hinzugefügt wurde.
+* Hotfix-Updates werden für Computer mit Windows Server 2016 Core RS3 nicht erfasst.
 
 ## <a name="change-tracking-data-collection-details"></a>Details zur Datensammlung für die Änderungsnachverfolgung
 
@@ -188,7 +187,7 @@ Die Standard-Sammelhäufigkeit für Windows-Dienste beträgt 30 Minuten. Um die 
 
 ![Windows-Dienste-Schieberegler](./media/automation-change-tracking/windowservices.png)
 
-Der Agent verfolgt nur Änderungen nach, dies optimiert seine Leistung. Wird ein zu hoher Schwellenwert festgelegt, können Änderungen verpasst werden, wenn der Dienst wieder in seinen ursprünglichen Zustand zurückgekehrt ist. Das Festlegen der Häufigkeit auf einen kleineren Wert ermöglicht es Ihnen, Änderungen zu erfassen, die sonst verpasst würden.
+Der Agent verfolgt nur Änderungen nach, dies optimiert seine Leistung. Durch das Einstellen eines hohen Schwellenwerts werden Änderungen möglicherweise übergangen, wenn der Dienst in seinen ursprünglichen Zustand zurückversetzt wurde. Das Festlegen der Häufigkeit auf einen kleineren Wert ermöglicht es Ihnen, Änderungen zu erfassen, die sonst verpasst würden.
 
 > [!NOTE]
 > Zwar kann der Agent Änderungen bis hinab zu einem 10-Sekunden-Intervall nachverfolgen, bis zur Anzeige der Daten im Portal vergehen jedoch einige Minuten. Änderungen, die zwischen der Erfassung und der Anzeige im Portal erfolgen, werden trotzdem nachverfolgt und protokolliert.
@@ -270,6 +269,41 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Änderungsdate
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Zeigt die aktuellen Bestandsdatensätze für Windows-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden.<br>Die Ergebnisse werden auf den aktuellen Datensatz für den betreffenden Softwarenamen und Computer beschränkt.      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|Zeigt die Änderungsdatensätze für entfernte Software an.|
+
+## <a name="alert-on-changes"></a>Warnung zu Änderungen
+
+Eine Schlüsselfunktion von Änderungsnachverfolgung und des Bestands ist die Möglichkeit, Warnungen zum Konfigurationsstatus und zu allen Änderungen am Konfigurationsstatus Ihrer Hybridumgebung auszugeben.  
+
+Im folgenden Beispiel zeigt der Screenshot, dass die Datei `C:\windows\system32\drivers\etc\hosts` auf einem Computer geändert wurde. Diese Datei ist wichtig, da die Hostdatei von Windows verwendet wird, um Hostnamen in IP-Adressen aufzulösen, und sogar vor DNS Vorrang hat, was zu Verbindungsproblemen oder der Umleitung von Datenverkehr auf bösartige oder anderweitig gefährliche Websites führen kann.
+
+![Ein Diagramm mit der Änderung an der Hostdatei](./media/automation-change-tracking/changes.png)
+
+Um diese Änderung weiter zu analysieren, gehen Sie zur Protokollsuche, indem Sie auf **Log Analytics** klicken. Suchen Sie in der Protokollsuche nach Inhaltsänderungen in der Hostdatei mit der Abfrage `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Diese Abfrage sucht nach Änderungen, die eine Änderung des Dateiinhalts für Dateien beinhalten, deren vollqualifizierter Pfad das Wort „hosts“ enthält. Sie können auch eine bestimmte Datei abfragen, indem Sie den Pfadabschnitt in seine vollqualifizierte Form ändern (z.B. `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+
+Nachdem die Abfrage die gewünschten Ergebnisse geliefert hat, klicken Sie auf die Schaltfläche **Neue Warnungsregel** in der Protokollsuchfunktion, um die Seite zur Erstellung von Warnungen zu öffnen. Sie können zu dieser Erfahrung auch über **Azur Monitor** im Azure-Portal navigieren. Überprüfen Sie die Abfrage bei der Warnungserstellung erneut, und ändern Sie die Warnungslogik. In diesem Fall soll die Warnung ausgelöst werden, wenn auch nur eine Änderung auf allen Computern in der Umgebung erkannt wird.
+
+![Ein Bild, das die Änderungsanfrage zeigt, um Änderungen an der Hostsdatei zu verfolgen](./media/automation-change-tracking/change-query.png)
+
+Nachdem die Bedingungslogik festgelegt wurde, weisen Sie Aktionsgruppen zu, um Aktionen als Reaktion auf die Auslösung der Warnung durchzuführen. In diesem Fall habe ich die zu versendenden E-Mails eingerichtet und ein ITSM-Ticket erstellt.  Viele andere nützliche Aktionen können ebenfalls ausgeführt werden, wie z.B. das Auslösen einer Azure-Funktion, eines Automation-Runbooks, eines Webhook oder einer Logik-App.
+
+![Ein Bild, das eine Aktionsgruppe konfiguriert, um hinsichtlich Änderungen zu warnen](./media/automation-change-tracking/action-groups.png)
+
+Nachdem alle Parameter und die Logik festgelegt sind, können wir die Warnung auf die Umgebung anwenden.
+
+### <a name="alert-suggestions"></a>Warnungsvorschläge
+
+Die Warnung zu Änderungen an der Hostdatei ist eine gute Anwendung von Warnungen für Änderungsnachverfolgung oder Bestandsdaten, aber es gibt noch viel mehr Szenarien für die Warnung, wie zum Beispiel die Fälle, die zusammen mit ihren Beispielabfragen im folgenden Abschnitt definiert sind.
+
+|Abfragen  |BESCHREIBUNG  |
+|---------|---------|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|Nützlich für das Nachverfolgen von Änderungen an kritischen Systemdateien|
+|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|Nützlich für das Nachverfolgen von Änderungen an wichtige Konfigurationsdateien|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|Nützlich für das Nachverfolgen von Änderungen an wichtigen Systemdienste|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState != "Running"|Nützlich für das Nachverfolgen von Änderungen an wichtigen Systemdienste|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|Nützlich für Umgebungen, in denen Softwarekonfigurationen gesperrt werden müssen|
+|ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion != "8.0.11081.0"|Nützlich, um zu sehen, auf welchen Computern eine veraltete oder nicht konforme Softwareversion installiert ist Es wird der letzte gemeldete Konfigurationsstatus ausgegeben, keine Änderungen.|
+|ConfigurationChange <br>&#124; where RegistryKey == "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Nützlich für das Nachverfolgen von Änderungen an wichtigen Virenschutzschlüsseln|
+|ConfigurationChange <br>&#124; where RegistryKey contains "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| Nützlich für das Nachverfolgen von Änderungen an Firewalleinstellungen|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

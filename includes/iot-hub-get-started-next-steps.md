@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 2b8041ee66e00b69b2628a0f439dd2577b6b92ec
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0ea9c06763e2e01d2f28daa5bc688e65bff037b8
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381496"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54899343"
 ---
-Informationen zu den weiteren ersten Schritten mit Azure IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
+Informationen zu den weiteren ersten Schritten mit Azure IoT Hub und zum Kennenlernen aller erweiterten IoT-Szenarien finden Sie in den folgenden Artikeln:
 
 - [Verwalten von Cloudgerätemessaging mit der Azure IoT Hub-Toolkiterweiterung für Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 

@@ -3,19 +3,19 @@ title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit | 
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 481fb929a8f937b1d822755e93fae09d9f585fad
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 36efb943855d36d1f830ba08554eabd0a8a88f50
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436823"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169330"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -73,7 +73,7 @@ Wenn Ihr Azure AD-Mandant das Basisverzeichnis für einen Benutzer ist, können 
  
 * Gastbenutzer, die sich mit einem Microsoft-Konto anmelden (z.B. guestuser@live.com), können ihre eigenen Kennwörter über die Self-Service-Kennwortzurücksetzung (SSPR) für Microsoft-Konten zurücksetzen. Informationen finden Sie unter [Zurücksetzen des Kennworts Ihres Microsoft-Kontos](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Gastbenutzer, die sich mit einem Google-Konto oder einem anderen externen Identitätsanbieter anmelden, können ihre eigenen Kennwörter mit der SSPR-Methode ihres Identitätsanbieters zurücksetzen. Beispielsweise kann ein Gastbenutzer mit dem Google-Konto guestuser@gmail.com sein Kennwort mithilfe der Anweisungen in [Passwort ändern oder zurücksetzen](https://support.google.com/accounts/answer/41078) zurücksetzen.
-* Wenn der Identitätsmandant ein Just-In-Time-Mandant (JIT) oder ein „viraler“ Mandant ist (es sich also um einen separaten, nicht verwalteten Azure-Mandanten handelt), kann nur der Gastbenutzer sein Kennwort zurücksetzen.
+* Wenn der Identitätsmandant ein Just-In-Time-Mandant (JIT) oder ein „viraler“ Mandant ist (es sich also um einen separaten, nicht verwalteten Azure-Mandanten handelt), kann nur der Gastbenutzer sein Kennwort zurücksetzen. In einigen Fällen [übernimmt die Organisation die Verwaltung der viralen Mandanten](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover), die erstellt werden, wenn Mitarbeiter ihre geschäftliche E-Mail-Adresse für die Anmeldung bei Diensten verwenden. Wenn die Organisation einen viralen Mandanten übernommen hat, kann nur ein Administrator in dieser Organisation das Kennwort des Benutzers zurücksetzen oder SSPR aktivieren. Bei Bedarf können Sie als einladende Organisation das Gastkonto für den Benutzer aus dem Verzeichnis entfernen und erneut eine Einladung senden.
 * Wenn das Basisverzeichnis des Gastbenutzers Ihr Azure AD-Mandant ist, können Sie das Kennwort des Benutzers zurücksetzen. Sie könnten beispielsweise einen Benutzer erstellen oder einen Benutzer über Ihr lokales Active Directory-Verzeichnis synchronisieren und „UserType“ auf „Gast“ festlegen. Da sich dieser Benutzer in Ihrem Verzeichnis befindet, können Sie sein Kennwort über das Azure-Portal zurücksetzen.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Bietet Microsoft Dynamics 365 Onlineunterstützung für die Azure AD B2B-Zusammenarbeit?

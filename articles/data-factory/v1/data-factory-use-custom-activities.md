@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4ed919b76ddebde8337337c18c04093bc6072e82
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121259"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077487"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -168,7 +168,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     /// Execute method is the only method of IDotNetActivity interface you must implement.
     /// In this sample, the method invokes the Calculate method to perform the core logic.
     /// </summary>
-    
+
     public IDictionary<string, string> Execute(
         IEnumerable<LinkedService> linkedServices,
         IEnumerable<Dataset> datasets,
@@ -201,7 +201,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
 
         // get type properties from the dataset object
         inputTypeProperties = inputDataset.Properties.TypeProperties as AzureBlobDataset;
-    
+
         // log linked services passed in linkedServices parameter
         // you will see two linked services of type: AzureStorage
         // one for input dataset and the other for output dataset
@@ -239,7 +239,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
                                      continuationToken,
                                      null,
                                      null);
-    
+
             // Calculate method returns the number of occurrences of
             // the search term (“Microsoft”) in each blob associated
             // with the data slice. definition of the method is shown in the next step.
@@ -257,7 +257,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path   
+        // log the output folder path
         logger.Write("Writing blob to the folder: {0}", folderPath);
 
         // create a storage object for the output blob.
@@ -293,7 +293,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
             return null;
         }
 
-        // get type properties of the dataset   
+        // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -307,30 +307,30 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
         if (dataArtifact == null || dataArtifact.Properties == null)
         {
             return null;
         }
-    
+
         // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
             return null;
         }
-    
+
         // return the blob/file name in the type properties
         return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
         string output = string.Empty;
@@ -379,7 +379,7 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
     > Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen sich auf der **obersten Ebene** befinden und dürfen keine Unterordner besitzen.
 
     ![Binäre Ausgabedateien](./media/data-factory-use-custom-activities/Binaries.png)
-14. Erstellen Sie einen Blobcontainer mit dem Namen **customactivitycontainer**, sofern er noch nicht vorhanden ist. 
+14. Erstellen Sie einen Blobcontainer mit dem Namen **customactivitycontainer**, sofern er noch nicht vorhanden ist.
 15. Laden Sie „MyDotNetActivity.zip“ als Blob in den customactivitycontainer in einer Azure Blob Storage-Instanz für **allgemeine Zwecke** hoch (keine Blob Storage-Instanz vom Typ „Hot“ oder „Cool“), auf den von AzureStorageLinkedService verwiesen wird.
 
 > [!IMPORTANT]
@@ -420,7 +420,7 @@ In diesem Abschnitt erstellen Sie Folgendes:
    1. Klicken Sie im Menü links auf **Ressource erstellen**.
    2. Klicken Sie auf dem Blatt **Neu** auf **Daten und Analysen**.
    3. Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
-   
+
     ![Menü für neue Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name „CustomActivityFactory“ ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
 
@@ -430,7 +430,7 @@ In diesem Abschnitt erstellen Sie Folgendes:
 5. Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
 6. Im **Dashboard** des Azure-Portals sehen Sie, dass die Data Factory erstellt wird.
 7. Nach erfolgreicher Erstellung der Data Factory wird das Data Factory-Blatt mit dem Inhalt der Data Factory angezeigt.
-    
+
     ![Blatt "Data Factory"](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>Schritt 2: Erstellen von verknüpften Diensten
@@ -439,7 +439,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 #### <a name="create-azure-storage-linked-service"></a>Erstellen des mit Azure Storage verknüpften Diensts
 1. Klicken Sie auf die Kachel **Erstellen und Bereitstellen** auf dem Blatt **DATA FACTORY** für **CustomActivityFactory**. Der Data Factory-Editor wird angezeigt.
 2. Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher** und wählen Sie **Azure Storage**. Das JSON-Skript zum Erstellen eines mit einem Azure-Speicher verknüpften Diensts sollte im Editor angezeigt werden.
-    
+
     ![Neuer Datenspeicher – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. Ersetzen Sie `<accountname>` durch den Namen Ihres Azure-Speicherkontos und `<accountkey>` durch den Zugriffsschlüssel des Azure Storage-Kontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-manage.md#access-keys).
 
@@ -1025,7 +1025,7 @@ Das Beispiel [Azure Data Factory – Lokale Umgebung](https://github.com/gbrueck
 | Beispiel | Aktion der benutzerdefinierten Aktivität |
 | --- | --- |
 | [Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Lädt Daten von einem HTTP-Endpunkt mit einer benutzerdefinierten C#-Aktivität in Data Factory in Azure Blob Storage herunter. |
-| [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Ruft ein Azure ML-Modell auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
+| [Beispiel zur Twitter-Stimmungsanalyse](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Ruft ein Azure Machine Learning Studio-Modell auf, um Stimmungsanalysen, Bewertungen, Vorhersagen usw. durchzuführen. |
 | [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Ruft ein R-Skript auf, indem „RScript.exe“ in Ihrem HDInsight-Cluster ausgeführt wird, in dem R bereits installiert ist. |
 | [Anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Verwendet andere Assemblyversionen als das Data Factory-Startprogramm |
 | [Erneutes Verarbeiten eines Modells in Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Erneutes Verarbeiten eines Modells in Azure Analysis Services |

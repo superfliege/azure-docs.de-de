@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: ec2b623650818877930ac6b95a17ee264f07efdf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959532"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297666"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric-Linux-Clusterereignisse in Syslog
 
@@ -35,7 +35,7 @@ Jedes Syslog-Ereignis besteht aus 4 Komponenten
 * Message
 * Severity
 
-SyslogConsumer schreibt alle Plattformereignisse mithilfe von Facility `Local0`. Sie können ein Update auf jede gültige Facility ausführen, indem Sie die Konfiguration ändern. Die verwendete Identität ist `ServicFabric`. Das Feld „Message“ enthält das gesamte Ereignis (im JSON-Format serialisiert), sodass es abgefragt und von einer Vielzahl von Tools genutzt werden kann. 
+SyslogConsumer schreibt alle Plattformereignisse mithilfe von Facility `Local0`. Sie können ein Update auf jede gültige Facility ausführen, indem Sie die Konfiguration ändern. Die verwendete Identität ist `ServiceFabric`. Das Feld „Message“ enthält das gesamte Ereignis (im JSON-Format serialisiert), sodass es abgefragt und von einer Vielzahl von Tools genutzt werden kann. 
 
 ## <a name="enable-syslogconsumer"></a>Aktivieren von SyslogConsumer
 

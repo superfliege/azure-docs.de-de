@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 333750e4959e0bdfea05347ef0e9a1d968b8f13c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 052839c679fc3efa61fca612b5139ede1991890c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214710"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080241"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,19 +25,19 @@ ms.locfileid: "54214710"
 
 [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) ermöglicht es Ihnen, Predictive Analytics-Lösungen zu erstellen, zu testen und bereitzustellen. Allgemein betrachtet, geschieht dies in drei Schritten:
 
-1. **Erstellen eines Trainingsexperiments**. Sie führen diesen Schritt mit Azure ML Studio aus. ML Studio ist eine visuelle Entwicklungsumgebung für die Zusammenarbeit, mit der Sie ein Predictive Analytics-Modell mithilfe von Trainingsdaten trainieren und testen können.
+1. **Erstellen eines Trainingsexperiments**. Dieser Schritt wird mithilfe von Azure Machine Learning Studio ausgeführt. Azure Machine Learning Studio ist eine zusammenarbeitsorientierte visuelle Entwicklungsumgebung, mit der Sie ein Predictive Analytics-Modell anhand von Trainingsdaten trainieren und testen können.
 2. **Konvertierten in ein Vorhersageexperiment**. Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf die Bewertung vor und optimieren es.
 3. **Bereitstellen des Experiments als Webdienst**. Sie können das Bewertungsexperiment als Azure-Webdienst veröffentlichen. Sie können Daten über diesen Webdienstendpunkt an Ihr Modell senden und Ergebnisvorhersagen vom Modell empfangen.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory und Machine Learning zusammen
-Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Mithilfe der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure ML-Webdienst aufrufen, um Vorhersagen zu den Daten im Batch zu machen.
+Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure Machine Learning Studio-Webdienst aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen.
 
-Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure ML-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Sie können ein Azure ML-Modell über eine Data Factory-Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
+Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure Machine Learning Studio-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Sie können ein Modell über eine Data Factory-Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
 
-1. Veröffentlichen Sie das Trainingsexperiment (nicht das Vorhersageexperiment) als Webdienst. Für diesen Schritt können Sie Azure ML Studio verwenden, wie Sie es beim Veröffentlichen des Vorhersageexperiments als Webdienst im vorherigen Szenario getan haben.
-2. Verwenden Sie die Azure ML-Batchausführungsaktivität, um den Webdienst für das Trainingsexperiment aufzurufen. Grundsätzlich können Sie die Azure ML-Batchausführungsaktivität verwenden, um den Trainingswebdienst und den Bewertungswebdienst aufzurufen.
+1. Veröffentlichen Sie das Trainingsexperiment (nicht das Vorhersageexperiment) als Webdienst. Für diesen Schritt können Sie Azure Machine Learning Studio verwenden (genau wie beim Veröffentlichen des Vorhersageexperiments als Webdienst im vorherigen Szenario).
+2. Verwenden Sie die Azure Machine Learning Studio-Batchausführungsaktivität, um den Webdienst für das Trainingsexperiment aufzurufen. Grundsätzlich können Sie mit der Azure Machine Learning Studio-Batchausführungsaktivität sowohl den Trainingswebdienst als auch den Bewertungswebdienst aufrufen.
 
-Nachdem Sie das erneute Training abgeschlossen haben, aktualisieren Sie den Bewertungswebdienst (das Vorhersageexperiment, das als Webdienst verfügbar gemacht wurde) mithilfe der **Azure ML-Aktivität zur Ressourcenaktualisierung** mit dem neu trainierten Modell. Einzelheiten finden Sie im Artikel [Aktualisieren von Modellen mithilfe der Ressourcenaktualisierungsaktivität](update-machine-learning-models.md).
+Nachdem Sie das erneute Trainieren abgeschlossen haben, aktualisieren Sie den Bewertungswebdienst (das Vorhersageexperiment, das als Webdienst verfügbar gemacht wurde) mithilfe der **Azure Machine Learning Studio-Aktivität zur Ressourcenaktualisierung** mit dem neu trainierten Modell. Einzelheiten finden Sie im Artikel [Aktualisieren von Modellen mithilfe der Ressourcenaktualisierungsaktivität](update-machine-learning-models.md).
 
 ## <a name="azure-machine-learning-linked-service"></a>Mit Azure Machine Learning verknüpfter Dienst
 
@@ -133,14 +133,14 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 | linkedServiceName | Mit dem verknüpften Azure Machine Learning-Dienst verknüpfte Dienste. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | JA      |
 | webServiceInputs  | Schlüssel, Wertepaare, Zuordnung der Namen von Eingaben in den Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Eingabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Eingabeblobs. | Nein        |
 | webServiceOutputs | Schlüssel, Wertepaare, Zuordnung der Namen von Ausgaben aus dem Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Ausgabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Ausgabeblobs. | Nein        |
-| globalParameters  | Schlüssel, Wertepaare, die an den Endpunkt des Azure ML-Batchausführungsdienst übergeben werden. Schlüssel müssen mit den Webdienstparametern übereinstimmen, die im veröffentlichten Azure ML-Webdienst definiert sind. Werte werden in der „GlobalParameters“-Eigenschaft der Azure ML-Batchausführungsanforderung übergeben. | Nein        |
+| globalParameters  | Schlüssel-Wert-Paare, die an den Endpunkt des Azure Machine Learning Studio-Batchausführungsdiensts übergeben werden. Die Schlüssel müssen mit den Webdienstparametern übereinstimmen, die im veröffentlichten Azure Machine Learning Studio-Webdienst definiert sind. Die Werte werden in der GlobalParameters-Eigenschaft der Azure Machine Learning Studio-Batchausführungsanforderung übergeben. | Nein        |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario 1: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
 
-In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Daten aus einer Datei in Azure Blob Storage Vorhersagen erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Auf die Eingabe- und Ausgabedaten in Azure Blob Storage wird über ein Paar aus „LinkedName“ und „FilePath“ verwiesen. In dem Beispiel des verknüpften Diensts sind die Ein- und Ausgaben unterschiedlich. Sie können verschiedene verknüpfte Dienste für alle Ihre Ein- und Ausgaben verwenden. Data Factory ist in der Lage, die richtigen Dateien auszuwählen und an den Azure ML-Webdienst zu senden.
+In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Daten aus einer Datei in Azure Blob Storage Vorhersagen erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Auf die Eingabe- und Ausgabedaten in Azure Blob Storage wird über ein Paar aus „LinkedName“ und „FilePath“ verwiesen. In dem Beispiel des verknüpften Diensts sind die Ein- und Ausgaben unterschiedlich. Sie können verschiedene verknüpfte Dienste für alle Ihre Ein- und Ausgaben verwenden. Data Factory ist in der Lage, die richtigen Dateien auszuwählen und an den Azure Machine Learning Studio-Webdienst zu senden.
 
 > [!IMPORTANT]
-> In Ihrem Azure ML-Experiment haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure ML-Endpunkt anzeigen, um die erwartete Zuordnung zu überprüfen.
+> In Ihrem Azure Machine Learning Studio-Experiment haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die exemplarische Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure Machine Learning Studio-Endpunkt anzeigen, um die erwartete Zuordnung zu überprüfen.
 >
 >
 
@@ -190,12 +190,12 @@ In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Da
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Szenario 2: Experimente mit Reader- und Writer-Modulen zum Verweisen auf Daten in verschiedenen Speichern
-Ein weiteres gängiges Szenario beim Erstellen von Azure ML-Experimenten ist die Verwendung der Module „Import Data“ und „Output Data“. Das Modul „Import Data“ wird verwendet, um Daten in ein Experiment zu laden, während mit dem Modul „Output Data“ Daten aus Ihren Experimenten gespeichert werden. Einzelheiten zu den Modulen „Import Data“ und „Output Data“ finden Sie in der MSDN Library in den Themen [Import Data](https://msdn.microsoft.com/library/azure/dn905997.aspx) und [Output Data](https://msdn.microsoft.com/library/azure/dn905984.aspx).
+Ein weiteres gängiges Szenario beim Erstellen von Azure Machine Learning Studio-Experimenten ist die Verwendung der Module „Import Data“ und „Output Data“. Das Modul „Import Data“ wird verwendet, um Daten in ein Experiment zu laden, während mit dem Modul „Output Data“ Daten aus Ihren Experimenten gespeichert werden. Einzelheiten zu den Modulen „Import Data“ und „Output Data“ finden Sie in der MSDN Library in den Themen [Import Data](https://msdn.microsoft.com/library/azure/dn905997.aspx) und [Output Data](https://msdn.microsoft.com/library/azure/dn905984.aspx).
 
 Bei Verwendung der Module „Import Data“ und „Output Data“ empfiehlt es sich, einen Webdienstparameter für jede Eigenschaft dieser Module zu verwenden. Durch diese Webparameter können Sie die Werte zur Laufzeit konfigurieren. Sie können beispielsweise ein Experiment mit einem Import Data-Modul erstellen, das eine Azure SQL-Datenbank mit dem Namen „XXX.database.windows.net“ verwendet. Nach Bereitstellung des Webdiensts sollen die Nutzer des Webdiensts eine weitere Azure SQL Server-Instanz mit dem Namen `YYY.database.windows.net` angeben können. Durch Verwendung eines Webdienstparameters wird ermöglicht, dass dieser Wert konfiguriert werden kann.
 
 > [!NOTE]
-> Eingaben und Ausgaben für den Webdienst unterscheiden sich von Webdienstparametern. Im ersten Szenario haben Sie gesehen, wie Eingaben und Ausgaben für einen Azure ML-Webdienst angegeben werden können. In diesem Szenario übergeben Sie Parameter für einen Webdienst, die Eigenschaften der Module „Import Data“ und „Output Data“ entsprechen.
+> Eingaben und Ausgaben für den Webdienst unterscheiden sich von Webdienstparametern. Im ersten Szenario haben Sie gesehen, wie Eingaben und Ausgaben für einen Azure Machine Learning Studio-Webdienst angegeben werden können. In diesem Szenario übergeben Sie Parameter für einen Webdienst, die Eigenschaften der Module „Import Data“ und „Output Data“ entsprechen.
 >
 >
 
@@ -216,7 +216,7 @@ Betrachten wir nun ein Szenario für die Verwendung von Webdienstparametern. Sie
 > Bei Webdienstparametern wird Groß-/Kleinschreibung unterschieden, weshalb Sie sicherstellen müssen, dass die Namen, die Sie im JSON-Code der Aktivität angeben, denjenigen entsprechen, die vom Webdienst verfügbar gemacht werden.
 >
 
-Nachdem Sie das erneute Training abgeschlossen haben, aktualisieren Sie den Bewertungswebdienst (das Vorhersageexperiment, das als Webdienst verfügbar gemacht wurde) mithilfe der **Azure ML-Aktivität zur Ressourcenaktualisierung** mit dem neu trainierten Modell. Einzelheiten finden Sie im Artikel [Aktualisieren von Modellen mithilfe der Ressourcenaktualisierungsaktivität](update-machine-learning-models.md).
+Nachdem Sie das erneute Trainieren abgeschlossen haben, aktualisieren Sie den Bewertungswebdienst (das Vorhersageexperiment, das als Webdienst verfügbar gemacht wurde) mithilfe der **Azure Machine Learning Studio-Aktivität zur Ressourcenaktualisierung** mit dem neu trainierten Modell. Einzelheiten finden Sie im Artikel [Aktualisieren von Modellen mithilfe der Ressourcenaktualisierungsaktivität](update-machine-learning-models.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden:

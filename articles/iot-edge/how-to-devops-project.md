@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 114b6b0cc0fd4e8e51a9dbf2cdc8d9e2a2261754
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823486"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881868"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Erstellen einer CI/CD-Pipeline für IoT Edge mit Azure DevOps Projects (Vorschauversion)
 
@@ -93,7 +93,7 @@ Von DevOps Projects wurde ein Git-Repository für Ihr Projekt in Azure Repos ers
 
 ## <a name="examine-the-cicd-pipeline"></a>Überprüfen der CI/CD-Pipeline
 
-In den vorherigen Abschnitten wurde von Azure DevOps Projects automatisch eine vollständige CI/CD-Pipeline für Ihre IoT Edge-Anwendung konfiguriert. Dann testeten Sie die Buildpipeline, indem Sie Änderungen an eine der Dateien committet haben. Untersuchen Sie nun die Pipeline, und passen Sie sie bei Bedarf an. Führen Sie die folgenden Schritte aus, um sich mit den Build- und Releasepipelines von Azure DevOps vertraut zu machen:
+In den vorherigen Abschnitten wurde von Azure DevOps Projects automatisch eine vollständige CI/CD-Pipeline für Ihre IoT Edge-Anwendung konfiguriert. Dann haben Sie die Buildpipeline getestet, indem Sie Änderungen für eine der Dateien committet haben. Untersuchen Sie nun die Pipeline, und passen Sie sie bei Bedarf an. Führen Sie die folgenden Schritte aus, um sich mit den Build- und Releasepipelines von Azure DevOps vertraut zu machen:
 
 1. Wählen Sie zum Anzeigen der Buildpipelines in Ihrem DevOps-Projekt **Buildpipelines** im Menü Ihres Projektdashboards aus. Über diesen Link werden eine Browserregisterkarte und die Azure DevOps-Buildpipeline für Ihr neues Projekt geöffnet.
 

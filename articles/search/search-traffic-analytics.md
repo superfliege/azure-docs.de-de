@@ -1,29 +1,29 @@
 ---
-title: Durchsuchen der Datenverkehrsanalyse – Azure Search
-description: Aktivieren Sie „Datenverkehrsanalyse durchsuchen“ für Azure Search, einen cloudgehosteten Suchdienst für Microsoft Azure, um Erkenntnisse über Ihre Benutzer und Daten zu gewinnen.
+title: Implementieren von „Datenverkehrsanalyse durchsuchen“ – Azure Search
+description: Aktivieren Sie „Datenverkehrsanalyse durchsuchen“ für Azure Search, um Protokolldateien Telemetriedaten und vom Benutzer initiierte Ereignisse hinzuzufügen.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2017
+ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4cc7434508e49715e95c87421db2bbed7e20de05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310239"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079663"
 ---
-# <a name="what-is-search-traffic-analytics"></a>Was ist „Datenverkehrsanalyse durchsuchen“?
+# <a name="implement-search-traffic-analytics-in-azure-search"></a>Implementieren von „Datenverkehrsanalyse durchsuchen“ in Azure Search
 „Datenverkehrsanalyse durchsuchen“ ist ein Muster für das Implementieren einer Feedbackschleife für Ihren Suchdienst. Dieses Muster beschreibt die erforderlichen Daten, und wie Sie sie mit Application Insights sammeln, einem branchenführenden Tool für die Überwachung von Diensten auf mehrere Plattformen.
 
 Mit „Datenverkehrsanalyse durchsuchen“ können Sie Einblicke in Ihren Suchdienst und Erkenntnisse über Ihre Benutzer und deren Verhalten gewinnen. Wenn Sie über Daten verfügen, die Ihnen mitteilen, was Ihre Benutzer wählen, können Sie Entscheidungen treffen, die Ihre Sucherfahrung weiter verbessern, und sich zurückziehen, wenn die Ergebnisse nicht den Erwartungen entsprechen.
 
 Azure Search bietet eine Telemetrielösung, die Azure Application Insights und Power BI integriert, um profunde Überwachung und Nachverfolgung zu ermöglichen. Da die Interaktion mit Azure Search nur über APIs erfolgt, muss die Telemetrie gemäß der Anweisungen auf dieser Seite durch die Entwickler implementiert werden, die die Suche verwenden.
 
-## <a name="identify-the-relevant-search-data"></a>Identifizieren der relevanten Suchdaten
+## <a name="identify-relevant-search-data"></a>Identifizieren von relevanten Suchdaten
 
 Um nützliche Suchmetriken zu erhalten, müssen einige Signale von den Benutzern der Suchanwendung protokolliert werden. Diese Signale kennzeichnen Inhalte, die Benutzer interessieren, und die sie als relevant für ihre Bedürfnisse einschätzen.
 
@@ -35,7 +35,7 @@ Um nützliche Suchmetriken zu erhalten, müssen einige Signale von den Benutzern
 
 Durch das Verknüpfen von Suche und Klickereignissen mit einer Korrelations-ID können Sie das Verhalten von Benutzern in Ihrer Anwendung analysieren. Diese Einblicke in die Suche können Sie nicht erhalten, wenn Sie ausschließlich Suchdatenverkehrsprotokolle verwenden.
 
-## <a name="how-to-implement-search-traffic-analytics"></a>Implementieren von „Datenverkehrsanalyse durchsuchen“
+## <a name="add-search-traffic-analytics"></a>Hinzufügen von „Datenverkehrsanalyse durchsuchen“
 
 Die im vorherigen Abschnitt erwähnten Signale müssen von der Suchanwendung erfasst werden, während der Benutzer mit ihr interagiert. Application Insights ist eine für mehrere Plattformen verfügbare erweiterbare Überwachungslösung mit flexiblen Instrumentierungsoptionen. Mit der Verwendung von Application Insights nutzen Sie die von Azure Search erstellten Power BI-Suchberichte zur Vereinfachung der Datenanalyse.
 
@@ -43,7 +43,7 @@ Auf der Seite des [Portals](https://portal.azure.com) für Ihren Dienst von Azur
 
 ![Anweisungen zu „Datenverkehrsanalyse durchsuchen“][1]
 
-### <a name="1-select-an-application-insights-resource"></a>1. Auswählen einer Application Insights-Ressource
+## <a name="1---select-a-resource"></a>1 – Auswählen einer Ressource
 
 Sie müssen eine zu verwendende Application Insights-Ressource auswählen oder sie erstellen, wenn Sie noch keine besitzen. Sie können eine Ressource verwenden, die bereits verwendet wird, um die erforderlichen benutzerdefinierten Ereignisse zu protokollieren.
 
@@ -51,11 +51,11 @@ Wenn Sie eine neue Application Insights-Ressource erstellen, sind alle Anwendung
 
 Sie benötigen den Instrumentierungsschlüssel, um den Telemetrieclient für Ihre Anwendung zu erstellen. Sie erhalten ihn über das Dashboard des Application Insights-Portals, oder rufen Sie ihn auf der Seite „Datenverkehrsanalyse durchsuchen“ ab, wozu Sie die Instanz auswählen, die Sie verwenden möchten.
 
-### <a name="2-instrument-your-application"></a>2. Instrumentieren Ihrer Anwendung
+## <a name="2---add-instrumentation"></a>2 – Hinzufügen der Instrumentierung
 
 In dieser Phase instrumentieren Sie Ihre eigene Suchanwendung mit der Application Insights-Ressource, die Sie im vorherigen Schritt erstellt haben. Dieser Prozess umfasst vier Schritte:
 
-**I. Erstellen eines Telemetrieclients** Dies ist das Objekt, das Ereignisse an die Application Insights-Ressource sendet.
+**Schritt 1: Erstellen eines Telemetrieclients** Dies ist das Objekt, das Ereignisse an die Application Insights-Ressource sendet.
 
 *C#*
 
@@ -73,7 +73,7 @@ In dieser Phase instrumentieren Sie Ihre eigene Suchanwendung mit der Applicatio
 
 Entnehmen Sie andere Sprachen und Plattformen bitte der vollständigen [Liste](https://docs.microsoft.com/azure/application-insights/app-insights-platforms).
 
-**II. Anfordern einer Such-ID für die Korrelation** Um Suchanforderungen mit Klicks zu korrelieren, ist eine Korrelations-ID erforderlich, die diese zwei unterschiedlichen Ereignisse miteinander in Beziehung setzt. Azure Search bietet Ihnen eine Such-ID, wenn Sie sie mit einem Header anfordern:
+**Schritt 2: Anfordern einer Such-ID für die Korrelation** Um Suchanforderungen mit Klicks zu korrelieren, ist eine Korrelations-ID erforderlich, die diese zwei unterschiedlichen Ereignisse miteinander in Beziehung setzt. Azure Search bietet Ihnen eine Such-ID, wenn Sie sie mit einem Header anfordern:
 
 *C#*
 
@@ -94,7 +94,7 @@ Entnehmen Sie andere Sprachen und Plattformen bitte der vollständigen [Liste](h
     request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
     var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
-**III. Protokollsuchereignisse**
+**Schritt 3: Protokollsuchereignisse**
 
 Bei jeder Suchanforderung eines Benutzers sollten Sie dies mit folgendem Schema als Suchereignis in einem benutzerdefinierten Application Insights-Ereignis protokollieren:
 
@@ -131,7 +131,7 @@ Bei jeder Suchanforderung eines Benutzers sollten Sie dies mit folgendem Schema 
     ScoringProfile: <scoring profile used>
     });
 
-**IV. Protokollieren von Klickereignissen**
+**Schritt 4: Protokollieren von Klickereignissen**
 
 Jedes Mal, wenn ein Benutzer auf ein Dokument klickt, ist dies ein Signal, dass für Suchanalysezwecke protokolliert werden muss. Verwenden Sie benutzerdefinierte Application Insights-Ereignisse, um diese Ereignisse mit dem folgenden Schema zu protokollieren:
 
@@ -160,32 +160,46 @@ Jedes Mal, wenn ein Benutzer auf ein Dokument klickt, ist dies ein Signal, dass 
         Rank: <clicked document position>
     });
 
-### <a name="3-analyze-with-power-bi-desktop"></a>3. Analysieren mit Power BI Desktop
+## <a name="3---analyze-in-power-bi"></a>3 – Analysieren in Power BI
 
-Nachdem Sie Ihre App instrumentiert und sichergestellt haben, dass die Anwendung ordnungsgemäß mit Application Insights verbunden ist, können Sie eine vordefinierte Vorlage verwenden, die von Azure Search für Power BI Desktop erstellt wird.
-Diese Vorlage enthält Diagramme und Tabellen, mit denen Sie fundiertere Entscheidungen treffen können, um Leistung und Relevanz Ihre Suche zu verbessern.
+Nachdem Sie Ihre App instrumentiert und sichergestellt haben, dass die Anwendung ordnungsgemäß mit Application Insights verbunden ist, können Sie eine vordefinierte Vorlage verwenden, die von Azure Search für Power BI Desktop erstellt wird. 
 
-Um die Power BI Desktop-Vorlage zu instanziieren, benötigen Sie drei Arten von Informationen über Application Insights. Diese Daten finden Sie bei der Auswahl der zu verwendenden Ressource auf der Seite „Datenverkehrsanalyse durchsuchen“.
+Azure Search umfasst ein [Power BI-Inhaltspaket](https://app.powerbi.com/getdata/services/azure-search) zur Überwachung, sodass Sie Protokolldaten analysieren können. Mit dem Inhaltspaket werden vordefinierte Diagramme und Tabellen hinzugefügt, die nützlich für die zusätzlichen zum Durchsuchen der Datenverkehrsanalyse erfassten Daten sind. Weitere Informationen finden Sie auf der [Hilfeseite zum Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
 
-![Application Insights-Daten auf dem Blatt „Datenverkehrsanalyse durchsuchen“][2]
+1. Klicken Sie im linken Navigationsbereich des Azure Search-Dashboards unter **Einstellungen** auf **Datenverkehrsanalyse durchsuchen**.
 
-In der Power BI Desktop-Vorlage enthaltene Metriken:
+2. Klicken Sie auf der Seite **Datenverkehrsanalyse durchsuchen** in Schritt 3 auf **Power BI Desktop abrufen**, um Power BI zu installieren.
 
-*   Click Through Rate (CTR): Das Verhältnis zwischen den Benutzern, die auf ein bestimmtes Dokument klicken, und der Gesamtzahl von Suchvorgängen.
-*   Suchvorgänge ohne Klicks: Begriffe für Spitzenabfragen, die keine Klicks registrieren.
-*   Meistgeklickte Dokumente: Die in den letzten 24 Stunden, 7 Tagen und 30 Tagen meistgeklickten Dokumente nach ID.
-*   Beliebte Begriff-Dokument-Paare: Begriffe, die dazu führen, dass auf das gleiche Dokument geklickt wird, geordnet nach Klicks.
-*   Zeit bis zum Klicken: Klicks, die nach der seit der Suchabfrage verstrichenen Zeit im Bucket gespeichert werden.
+   ![Abrufen von Power BI-Berichten](./media/search-traffic-analytics/get-use-power-bi.png "Abrufen von Power BI-Berichten")
 
-![Power BI-Vorlage für das Lesen aus Application Insights][3]
+2. Klicken Sie auf derselben Seite auf **Power BI-Bericht herunterladen**.
 
+3. Der Bericht wird in Power BI Desktop geöffnet, und Sie werden aufgefordert, eine Verbindung mit Application Insights herzustellen. Die entsprechenden Informationen finden Sie auf den Seiten des Azure-Portals für Ihre Application Insights-Ressource.
+
+   ![Herstellen einer Verbindung mit Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Herstellen einer Verbindung mit Application Insights")
+
+4. Klicken Sie auf **Laden**.
+
+Der Bericht enthält Diagramme und Tabellen, mit denen Sie fundiertere Entscheidungen treffen können, um Leistung und Relevanz der Suche zu verbessern.
+
+Die Metriken umfassen die folgenden Elemente:
+
+* Click Through Rate (CTR): Das Verhältnis zwischen den Benutzern, die auf ein bestimmtes Dokument klicken, und der Gesamtzahl von Suchvorgängen.
+* Suchvorgänge ohne Klicks: Begriffe für Spitzenabfragen, die keine Klicks registrieren.
+* Meistgeklickte Dokumente: Die in den letzten 24 Stunden, 7 Tagen und 30 Tagen meistgeklickten Dokumente nach ID.
+* Beliebte Begriff-Dokument-Paare: Begriffe, die dazu führen, dass auf das gleiche Dokument geklickt wird, geordnet nach Klicks.
+* Zeit bis zum Klicken: Klicks, die nach der seit der Suchabfrage verstrichenen Zeit im Bucket gespeichert werden.
+
+Im folgenden Screenshot sind die integrierten Berichte und Diagramme für die Analyse von „Datenverkehrsanalyse durchsuchen“ abgebildet.
+
+![Power BI-Dashboard für Azure Search](./media/search-traffic-analytics/AzureSearch-PowerBI-Dashboard.png "Power BI-Dashboard für Azure Search")
 
 ## <a name="next-steps"></a>Nächste Schritte
 Instrumentieren Sie Ihre Suchanwendung, um aussagekräftige Daten über Ihren Suchdienst zu erhalten.
 
-Weitere Informationen zu Application Insights finden Sie [hier](https://go.microsoft.com/fwlink/?linkid=842905). Besuchen Sie die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/) von Application Insights, um mehr über die verschiedenen Dienstebenen zu erfahren.
+Weitere Informationen finden Sie unter [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Besuchen Sie auch die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/), um mehr über die verschiedenen Diensttarife zu erfahren.
 
-Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Informationen finden Sie unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-getting-started/).
+Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Informationen finden Sie unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/).
 
 <!--Image references-->
 [1]: ./media/search-traffic-analytics/AzureSearch-TrafficAnalytics.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: c90715608b5d35520605c504b5cebb5e7a3ec021
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096632"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171455"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services: Beispiele für Anwendungs- und Dienstmanifeste
 Im Folgenden finden Sie Beispiele für die Anwendungs- und Dienstmanifeste einer Service Fabric-Anwendung mit einem ASP.NET Core Web-Front-End und einem zustandsbehafteten Back-End. Der Zweck dieser Beispiele besteht darin, zu zeigen, welche Einstellungen verfügbar sind und wie sie verwendet werden. Diese Anwendungs- und Dienstmanifeste basieren auf den [Service Fabric .NET-Schnellstart](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)manifesten.
@@ -198,7 +198,7 @@ Weitere Informationen zu bestimmten XML Elementen finden Sie unter [Anwendungsma
         the root of the code package regardless of where the EXE is defined in the code package directory. This is where the processes can write the data. Writing data 
         in the code package or code base is not recommended as those folders could be shared between different application instances and may get deleted.-->
         <WorkingFolder>CodePackage</WorkingFolder>
-        <!-- Warning! Do not use console rediriction in a production application, only use it for local development and debugging. Redirects console output from the startup
+        <!-- Warning! Do not use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup
         script to an output file in the application folder called "log" on the cluster node where the application is deployed and run. Also set the number of output files
         to retain and the maximum file size (in KB). -->
         <ConsoleRedirection FileRetentionCount="10" FileMaxSizeInKb="20480"/>
@@ -215,7 +215,7 @@ Weitere Informationen zu bestimmten XML Elementen finden Sie unter [Anwendungsma
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -402,7 +402,9 @@ Der Name der ausführbaren Datei.  Beispiel: „MySetup.bat“ oder „MyService
 Das Arbeitsverzeichnis für den Prozess im Codepaket auf dem Clusterknoten, auf dem die Anwendung bereitgestellt wird. Sie können drei Werte angeben: „Work“ (Standardwert), „CodePackage“ oder „CodeBase“. „CodeBase“ gibt an, dass das Arbeitsverzeichnis auf das Verzeichnis festgelegt ist, in dem die EXE-Datei im Codepaket definiert ist. „CodePackage“ legt das Arbeitsverzeichnis auf den Stamm des Codepakets unabhängig davon fest, wo die EXE-Datei im Codepaketverzeichnis definiert ist. „Work“ legt das Arbeitsverzeichnis auf einen eindeutigen Ordner fest, der auf dem Knoten erstellt wird.  Dieser Ordner ist für die gesamte Anwendungsinstanz identisch. Standardmäßig ist das Arbeitsverzeichnis aller Prozesse in der Anwendung auf den Arbeitsordner der Anwendung festgelegt. Hier können die Prozesse die Daten schreiben. Das Schreiben von Daten in das Codepaket oder die Codebasis wird nicht empfohlen, da diese Ordner von verschiedenen Anwendungsinstanzen gemeinsam verwendet werden können und ggf. gelöscht werden. Weitere Informationen finden Sie unter [WorkingFolder-Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType).
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection-Element
-Warnung! Verwenden Sie Konsolenumleitung nicht in einer Produktionsanwendung, sondern nur für die lokale Entwicklung und das Debuggen. Leitet die Konsolenausgabe aus dem Startskript in eine Ausgabedatei im Anwendungsordner namens „log“ auf dem Clusterknoten um, auf dem die Anwendung bereitgestellt und ausgeführt wird. Weitere Informationen finden Sie unter [ConsoleRedirection-Element](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType).
+
+> [!WARNING]
+> Verwenden Sie die Konsolenumleitung nicht in einer Produktionsanwendung, sondern nur für die lokale Entwicklung und beim Debuggen. Leitet die Konsolenausgabe aus dem Startskript in eine Ausgabedatei im Anwendungsordner namens „log“ auf dem Clusterknoten um, auf dem die Anwendung bereitgestellt und ausgeführt wird. Weitere Informationen finden Sie unter [ConsoleRedirection-Element](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType).
 
 ### <a name="entrypoint-element"></a>EntryPoint-Element
 Die durch „EntryPoint“ angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. Das Vorhandensein eines separaten Setupeinstiegspunkts vermeidet, dass der Diensthost über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von „EntryPoint“ angegebene ausführbare Datei wird ausgeführt, nachdem „SetupEntryPoint“ erfolgreich beendet wurde. Der resultierende Prozess wird überwacht und neu gestartet (er beginnt wieder mit „SetupEntryPoint“), sofern er beendet wird oder abstürzt. Weitere Informationen finden Sie unter [EntryPoint-Element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType).

@@ -1,9 +1,9 @@
 ---
-title: Vermeiden unerwarteter Kosten, Verwalten der Abrechnung in Azure | Microsoft-Dokumentation
+title: Vermeiden unerwarteter Kosten, Verwalten der Abrechnung in Azure | Microsoft Docs
 description: Hier erwarten Sie, wie Sie unerwartete Gebühren in Ihrer Azure-Abrechnung vermeiden. Verwenden Sie Kostenüberwachungs- und Kostenverwaltungsfunktionen für ein Microsoft Azure-Abonnement.
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: alherz
 editor: ''
 tags: billing
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: cwatson
-ms.openlocfilehash: 5aca80a4ebeadc9e54cf99fb4a220c6ee7c37cae
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.author: banders
+ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857011"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101650"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -75,8 +75,8 @@ In diesem Beispiel wird der Bericht **Actual Cost Over Time** (Ist-Kosten im Zei
 5. Wählen Sie die Registerkarte **Threshold** (Schwellenwert) und anschließend **Actual Cost vs. Threshold** (Tatsächliche Kosten im Vergleich zu Schwellenwert) aus. 
    1. Geben Sie im Schwellenwertfeld für die **rote Warnung** den Wert „10000“ ein. 
    2. Geben Sie im Schwellenwertfeld für die **gelbe Warnung** den Wert „9000“ ein. 
-   3. Geben Sie im Feld **Number of consecutive alerts** (Anzahl der aufeinanderfolgenden Warnungen) ein, wie viele aufeinanderfolgende Warnungen sie erhalten möchten. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr gesendet. 
-6. Wählen Sie **Save** (Speichern) aus.
+   3. Geben Sie im Feld **Number of consecutive alerts** (Anzahl der aufeinanderfolgenden Warnungen) ein, wie viele aufeinanderfolgende Warnungen sie erhalten möchten. Wenn Sie die festgelegte Gesamtzahl von Warnungen erhalten haben, werden keine weiteren Warnungen mehr versendet. 
+6. Wählen Sie **Speichern** aus.
 
     ![Beispiel für rote und gelbe Warnungen auf der Grundlage von Ausgabeschwellenwerten](./media/billing-getting-started/schedule-alert01.png)
 

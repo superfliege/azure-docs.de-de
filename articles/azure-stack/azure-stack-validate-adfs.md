@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 87e3f03ce5d4c65d5c4b1754300f5d57feca2a49
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 2200b9a48d7f83d6785c8dbb4a7b02be52fca75a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416510"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241065"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack"></a>Überprüfen der AD FS-Integration für Azure Stack
 
@@ -29,7 +30,7 @@ Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um z
 Bei der Überprüfung der Bereitschaft wird Folgendes geprüft:
 
 * Die *Verbundmetadaten* enthalten die gültigen XML-Elemente für den Verbund.
-* Das *AD FS-SSL-Zertifikat* kann abgerufen werden, und es kann eine Zertifikatvertrauenskette erstellt werden. Beim Stempel muss AD FS der SSL-Zertifikatkette vertrauen. Das Zertifikat muss von derselben *Zertifizierungsstelle* signiert werden wie die Azure Stack-Bereitstellungszertifikate oder von einem vertrauenswürdigen Stammzertifizierungsstellenpartner. Die vollständige Liste der vertrauenswürdigen Stammzertifizierungsstellenpartner finden Sie bei [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* Das *AD FS-SSL-Zertifikat* kann abgerufen werden, und es kann eine Zertifikatvertrauenskette erstellt werden. Beim Stempel muss AD FS der SSL-Zertifikatkette vertrauen. Das Zertifikat muss von derselben *Zertifizierungsstelle* signiert werden wie die Azure Stack-Bereitstellungszertifikate oder von einem vertrauenswürdigen Stammzertifizierungsstellen-Partner. Die vollständige Liste der vertrauenswürdigen Stammzertifizierungsstellenpartner finden Sie bei [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * Das *AD FS-Signaturzertifikat* ist vertrauenswürdig und läuft nicht in Kürze ab.
 
 Weitere Informationen zur Rechenzentrumsintegration mit Azure Stack finden Sie unter [Azure Stack-Rechenzentrumsintegration – Identität](azure-stack-integrate-identity.md).
@@ -101,8 +102,8 @@ Standardmäßig werden beide Dateien in `C:\Users\<username>\AppData\Local\Temp\
 
 Verwendung:
 
-* **-OutputPath:** *path*-Parameter am Ende der Befehlsausführung zum Angeben eines anderen Berichtsspeicherorts.
-* **-CleanReport:** Parameter am Ende der Befehlszeilenausführung zum Löschen von „AzsReadinessCheckerReport.json“ nach früheren Ausführungen des Tools. Weitere Informationen finden Sie unter [Azure Stack-Überprüfungsbericht](azure-stack-validation-report.md).
+* **-OutputPath**: Der *path*-Parameter am Ende der Befehlsausführung zum Angeben eines anderen Berichtsspeicherorts.
+* **-CleanReport**: Der Parameter am Ende der Befehlszeilenausführung zum Löschen der Datei „AzsReadinessCheckerReport.json“ mit früheren Berichtsinformationen. Weitere Informationen finden Sie unter [Azure Stack-Überprüfungsbericht](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Fehler bei der Überprüfung
 

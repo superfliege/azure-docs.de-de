@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 01/22/2019
-ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450880"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219718"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -39,6 +39,7 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle eNVM-SSD, virtueller Kern =1 LP (Hyperthread) |
 | Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
 | Arbeitsspeicher | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
+| In-Memory-OLTP-Speicher | 3GB pro virtuellem Kern | 2,6GB pro virtuellem Kern |
 | Maximaler Speicher (universell) |  8 TB | 1 TB |
 | Max. Speicherkapazität (unternehmenskritisch) | 8 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 

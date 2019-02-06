@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1c83ebd0153e7a28365317b02d3debbe43d976f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601575"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471666"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamisches Skalieren von Datenbankressourcen bei minimaler Downtime
 
@@ -54,9 +54,9 @@ Sie können [DTU-Dienstebenen](sql-database-service-tiers-dtu.md) oder [V-Kern-M
 
 Alle drei Arten von Azure SQL-Datenbank verfügen über Funktionen zum dynamischen Skalieren Ihrer Datenbanken:
 
-- In einer [Azure SQL-Einzeldatenbank](sql-database-single-database-scale.md) können Sie entweder [DTU](sql-database-dtu-resource-limits-single-databases.md)- oder [V-Kern](sql-database-vcore-resource-limits-single-databases.md)-Modelle nutzen, um die maximale Menge von Ressourcen zu definieren, die den einzelnen Datenbanken zugewiesen werden.
-- Für eine [verwaltete Azure SQL-Instanz](sql-database-managed-instance.md) wird der [V-Kern](sql-database-managed-instance.md#vcore-based-purchasing-model)-Modus verwendet, und Sie können die maximale Anzahl von CPU-Kernen und den maximalen Speicher für Ihre Instanz definieren. Alle Datenbanken innerhalb der Instanz nutzen die der Instanz zugeordneten Ressourcen gemeinsam.
-- Mit [Pools für elastische Azure SQL-Datenbanken](sql-database-elastic-pool-scale.md) können Sie das maximale Ressourcenlimit pro Datenbankgruppe im Pool definieren.
+- In einer [Einzeldatenbank](sql-database-single-database-scale.md) können Sie entweder [DTU](sql-database-dtu-resource-limits-single-databases.md)- oder [V-Kern](sql-database-vcore-resource-limits-single-databases.md)-Modelle nutzen, um die maximale Menge von Ressourcen zu definieren, die den einzelnen Datenbanken zugewiesen werden.
+- Für eine [verwaltete Instanz](sql-database-managed-instance.md) wird der [V-Kern](sql-database-managed-instance.md#vcore-based-purchasing-model)-Modus verwendet, und Sie können die maximale Anzahl von CPU-Kernen und den maximalen Speicher für Ihre Instanz definieren. Alle Datenbanken innerhalb der Instanz nutzen die der Instanz zugeordneten Ressourcen gemeinsam.
+- Bei [Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md) können Sie das maximale Ressourcenlimit pro Datenbankgruppe im Pool definieren.
 
 ## <a name="alternative-scale-methods"></a>Alternative Skalierungsmethoden
 

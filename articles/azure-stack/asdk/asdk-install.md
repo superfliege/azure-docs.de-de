@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 363e0868542f56df8c37639b2af7ac295be97da2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718224"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249904"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Installieren des Azure Stack Development Kits (ASDK)
 Nachdem Sie den [ASDK-Hostcomputer vorbereitet](asdk-prepare-host.md) haben, kann das ASDK mit den folgenden Schritten in diesem Artikel im Image „CloudBuilder.vhdx“ bereitgestellt werden.
@@ -81,7 +82,7 @@ Die Schritte in diesem Artikel zeigen, wie das ASDK mit einer grafischen Benutze
 
     ![](media/asdk-install/7.PNG)
 
-11. Der Bereitstellungsprozess nimmt einige Stunden in Anspruch, und während dieses Zeitraums wird der Hostcomputer automatisch einmal neu gestartet. Falls Sie den Status der Bereitstellung überwachen möchten, können Sie sich als „azurestack\AzureStackAdmin“ anmelden, nachdem der Development Kit-Host neu gestartet wurde. Wenn die Bereitstellung erfolgreich verlaufen ist, zeigt die PowerShell-Konsole folgende Meldung an: **ABGESCHLOSSEN: Aktion 'Bereitstellung'**. 
+11. Der Bereitstellungsprozess nimmt einige Stunden in Anspruch, und während dieses Zeitraums wird der Hostcomputer automatisch einmal neu gestartet. Falls Sie den Status der Bereitstellung überwachen möchten, können Sie sich als „azurestack\AzureStackAdmin“ anmelden, nachdem der Development Kit-Host neu gestartet wurde. Wenn die Bereitstellung erfolgreich verlaufen ist, zeigt die PowerShell-Konsole folgende Meldung an: **ABGESCHLOSSEN: Aktion „Bereitstellung“**. 
     > [!IMPORTANT]
     > Wenn Sie sich als lokaler Administrator anmelden, nachdem der Computer der Domäne beigetreten ist, wird der Bereitstellungsstatus nicht angezeigt. Führen Sie die Bereitstellung nicht erneut aus, sondern melden Sie sich stattdessen als „azurestack\AzureStackAdmin“ an, um zu überprüfen, ob sie ausgeführt wird.
 

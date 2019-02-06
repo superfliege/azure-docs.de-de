@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/15/2018
 ms.author: aljo
-ms.openlocfilehash: 75ba2ee378e9eddfeaeb2346b4d5bb584844afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636663"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903501"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Einrichten von Azure Active Directory für die Clientauthentifizierung
 
@@ -33,7 +33,7 @@ Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um einige Schritte
 > [!NOTE]
 > Vor der Clustererstellung müssen folgende Schritte ausgeführt werden. Da in den Skripts Clusternamen und Endpunkte erwartet werden, sollte es sich bei den Werten nicht um bereits erstellte, sondern um geplante Werte handeln.
 
-1. [Laden Sie die Skripts auf Ihren Computer herunter][sf-aad-ps-script-download].
+1. [Laden Sie die Skripts auf Ihren Computer herunter.](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)
 2. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Entsperren**, und klicken Sie anschließend auf **Übernehmen**.
 3. Extrahieren Sie die ZIP-Datei.
 4. Führen Sie `SetupApplications.ps1` aus, und geben Sie „TenantId“, „ClusterName“ und „WebApplicationReplyUrl“ als Parameter an. Beispiel: 
@@ -108,16 +108,16 @@ Dem Benutzer ist in der Azure AD-Clusteranwendung keine Rolle zugewiesen. Daher 
 #### <a name="solution"></a>Lösung
 Führen Sie die Schritte zum Einrichten von Azure AD aus, und weisen Sie Benutzerrollen zu. Darüber hinaus empfiehlt es sich, „Benutzerzuweisung für den Zugriff auf die App erforderlich“ zu aktivieren, wie dies bei `SetupApplications.ps1` der Fall ist.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Beim Herstellen der Verbindung mit PowerShell tritt der Fehler „Die angegebenen Anmeldeinformationen sind ungültig.“ auf.
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Beim Herstellen der Verbindung mit PowerShell tritt der folgende Fehler auf: „Die angegebenen Anmeldeinformationen sind ungültig.“
 #### <a name="problem"></a>Problem
 Wenn Sie die Verbindung mit dem Cluster über PowerShell und unter Verwendung des Sicherheitsmodus „AzureActiveDirectory“ herstellen, tritt nach erfolgreicher Anmeldung bei Azure AD folgender Verbindungsfehler auf: „Die angegebenen Anmeldeinformationen sind ungültig.“
 
 #### <a name="solution"></a>Lösung
 Siehe vorherige Lösung.
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer gibt bei der Anmeldung den Fehler „AADSTS50011“ zurück.
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer gibt bei der Anmeldung den folgenden Fehler zurück: „AADSTS50011“
 #### <a name="problem"></a>Problem
-Wenn Sie versuchen, sich in Service Fabric Explorer bei Azure AD anzumelden, wird der Fehler „AADSTS50011“ mit dem Hinweis zurückgegeben, dass die Antwortadresse &lt;URL&gt; nicht den für die Anwendung &lt;GUID&gt; konfigurierten Antwortadressen entspricht.
+Wenn Sie versuchen, sich in Service Fabric Explorer bei Azure AD anzumelden, wird der folgende Fehler zurückgegeben: „AADSTS50011: Die Antwortadresse &lt;URL&gt; stimmt nicht mit den Antwortadressen überein, die für die Anwendung konfiguriert wurden: &lt;GUID&gt;.“
 
 ![Die SFX-Antwortadresse stimmt nicht überein.][sfx-reply-address-not-match]
 

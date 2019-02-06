@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 3a20884dedf2d0f197cd73f0e67f412633736686
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a7c823493369735df23360645004b0bec85dbd7
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421574"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885506"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurieren der Sammlung von Azure PaaS-Ressourcenmetriken mit Log Analytics
 
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte durch, um das Skript herunterzuladen und ausz
 
 Das Skript wird für alle Ressourcen ausgeführt, die den ausgewählten Kriterien entspricht, und es aktiviert das Sammeln von Metriken für diese Ressourcen. Nachdem es abgeschlossen ist, wird eine Nachricht angezeigt, dass die Konfiguration abgeschlossen ist.  
 
-Kurz nach Abschluss des Vorgangs werden Daten aus der Azure PaaS-Ressource im Log Analytics-Repository angezeigt.  Ein Datensatz mit dem Typ `AzureMetrics` wird erstellt und das Analysieren dieser Datensätze wird von den Verwaltungslösungen [Azure SQL-Analyse](../../azure-monitor/insights/azure-sql.md) und [Azure Web-Apps-Analyse](../../azure-monitor/insights/azure-web-apps-analytics.md) unterstützt.   
+Kurz nach Abschluss des Vorgangs werden Daten aus der Azure PaaS-Ressource im Log Analytics-Repository angezeigt.  Ein Datensatz mit dem Typ `AzureMetrics` wird erstellt und das Analysieren dieser Datensätze wird von den Verwaltungslösungen [Azure SQL-Analyse](../insights/azure-sql.md) und [Azure Web-Apps-Analyse](../insights/azure-web-apps-analytics.md) unterstützt.   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>Aktualisieren einer Ressource zum Senden von Daten an einen anderen Arbeitsbereich
 Wenn Sie über eine Ressource verfügen, die bereits Daten an einen Log Analytics-Arbeitsbereich sendet, und Sie sich später entscheiden, sie so neu zu konfigurieren, dass sie auf einen anderen Arbeitsbereich verweist, können Sie das Skript mit dem Parameter `-Update` ausführen.  
@@ -79,8 +79,8 @@ Sie werden aufgefordert, dieselben Informationen wie beim Ausführen des Skripts
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Erfahren Sie mehr über [Protokollsuchvorgänge](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 
-* Verwenden Sie [benutzerdefinierte Felder](../../azure-monitor/platform/custom-fields.md), um die Ereignisdatensätze in einzelnen Feldern zu analysieren.
+* Verwenden Sie [benutzerdefinierte Felder](custom-fields.md), um die Ereignisdatensätze in einzelnen Feldern zu analysieren.
 
-* Lesen Sie [Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics](../../azure-monitor/platform/dashboards.md), um zu verstehen, wie Sie Ihre Protokollsuchen für die Organisation auf sinnvolle Weise darstellen.
+* Lesen Sie [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../learn/tutorial-logs-dashboards.md), um zu verstehen, wie Sie Ihre Protokollsuchen für die Organisation auf sinnvolle Weise darstellen.

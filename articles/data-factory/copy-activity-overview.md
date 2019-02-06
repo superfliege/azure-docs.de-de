@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014130"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296544"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -155,7 +155,10 @@ Klicken Sie auf diese Option, um die Liste mit den Aktivitäten in dieser Pipeli
 
 ![Überwachung der Aktivitätsausführungen](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistungsmerkmale für die Ausführung der Kopieraktivität anzuzeigen. Zu den angezeigten Informationen zählen neben Umfang/Zeilen/Dateien der Daten, die aus der Quelle in die Senke kopiert wurden, unter anderem der Durchsatz, die durchlaufenen Schritte und die jeweilige Dauer sowie die verwendeten Konfigurationen für Ihr Kopierszenario.
+Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistungsmerkmale für die Ausführung der Kopieraktivität anzuzeigen. Zu den angezeigten Informationen zählen neben Umfang/Zeilen/Dateien der Daten, die aus der Quelle in die Senke kopiert wurden, unter anderem der Durchsatz, die durchlaufenen Schritte und die jeweilige Dauer sowie die verwendeten Konfigurationen für Ihr Kopierszenario. 
+
+>[!TIP]
+>In einigen Szenarien finden Sie oben auf der Seite zur Kopierüberwachung auch **Tipps zur Leistungsoptimierung**, in denen der identifizierte Engpass aufgeführt ist, und Sie erfahren, welche Änderungen vorgenommen werden müssen, um den Kopiedurchsatz zu erhöhen, siehe Beispiel mit Details [hier](#performance-and-tuning).
 
 **Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Store**
 ![Überwachen von Details der Aktivitätsausführung](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -232,6 +235,14 @@ Standardmäßig beendet die Kopieraktivität das Kopieren von Daten und gibt ein
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md)beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken. Außerdem wird die beobachtete Leistung bei internen Tests aufgeführt und es werden verschiedene Methoden zur Optimierung der Leistung der Kopieraktivität erläutert.
+
+In einigen Fällen werden bei der Ausführung einer Kopieraktivität in ADF direkt **Tipps zur Leistungsoptimierung** oben auf der [Seite zur Überwachung der Kopieraktivität](#monitor-visually) angezeigt, wie im folgenden Beispiel dargestellt. Es wird nicht nur der im jeweiligen Kopiervorgang identifizierte Engpass angezeigt, sondern Sie erfahren auch, welche Änderungen Sie zum Erhöhen des Durchsatzes durchführen müssen. Die Tipps zur Leistungsoptimierung enthalten derzeit Vorschläge wie die Verwendung von PolyBase beim Kopieren von Daten in das Azure SQL Data Warehouse, um die Anzahl der Azure Cosmos DB-sRU oder Azure SQL DB-DTUs zu erhöhen, wenn die Ressource auf der Datenspeicherseite der Engpass ist, um die unnötig bereitgestellte Kopie zu entfernen usw. Die Regeln für die Leistungsoptimierung werden auch schrittweise ergänzt werden.
+
+**Beispiel: Kopieren in Azure SQL-Datenbank mit Tipps für die Leistungsoptimierung**
+
+In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke der Azure SQL-DB eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Daher wird vorgeschlagen, die Azure SQL DB-Ebene mit mehr DTU zu erhöhen. 
+
+![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Inkrementelles Kopieren 
 Data Factory unterstützt Szenarien für das inkrementelle Kopieren von Deltadaten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Informationen finden Sie unter [Inkrementelles Laden von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher](tutorial-incremental-copy-overview.md). 

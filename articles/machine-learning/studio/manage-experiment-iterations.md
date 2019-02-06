@@ -1,6 +1,6 @@
 ---
-Titel: Verwalten von Experimentiterationen in Machine Learning-Studio titleSuffix: Azure Machine Learning Studio – Beschreibung: Verwalten von Experimentiterationen in Azure Machine Learning Studio Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Verwalten von Experimentiterationen in Machine Learning-Studio titleSuffix: Azure Machine Learning Studio – Beschreibung: Verwalten von Experimentiterationen in Azure Machine Learning Studio Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 20.03.2017
 ---

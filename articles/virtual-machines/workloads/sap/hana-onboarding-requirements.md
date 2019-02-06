@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d287f79f4161c509f96b679d4b794c2906f2e020
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 9a445e5a7d230195472c2202d3f40458a23883e9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030365"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477849"
 ---
 # <a name="onboarding-requirements"></a>Onboardinganforderungen
 
@@ -33,7 +33,7 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 
 **Netzwerkkonnektivität**
 
-- ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie mindestens eine 1-GBit/s-Verbindung von Ihrem Internetdienstanbieter (ISP). 
+- ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie eine Verbindung mit mindestens 1 GBit/s von Ihrem Internetdienstanbieter (ISP). Für die Verbindungen zwischen HANA-Einheiten (große Instanzen) und Azure wird ebenfalls ExpressRoute-Technologie verwendet. Diese ExpressRoute-Verbindung zwischen den HANA-Einheiten (große Instanzen) und Azure ist im Preis für die HANA-Einheiten (große Instanzen) enthalten. Aus diesem Grund entstehen für Sie als Kunde über Ihre ExpressRoute-Verbindung zwischen lokalen Systemen und Azure hinaus keine zusätzlichen Kosten.
 
 **Betriebssystem**
 
@@ -50,7 +50,7 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 
 - Bereitstellung von Red Hat Subscription Manager in Azure auf einer VM. Der Red Hat Subscription Manager bietet die Möglichkeit, SAP HANA in Azure (große Instanzen) zu registrieren und entsprechend von Red Hat aktualisieren zu lassen. (In dem Mandanten, der im Azure-Umfeld der großen Instanz bereitgestellt wird, besteht kein direkter Internetzugriff.)
 - SAP setzt voraus, dass Sie auch einen Support-Vertrag mit Ihrem Linux-Anbieter haben. Diese Anforderung gilt auch bei der Verwendung von HANA (große Instanz) und trotz der Tatsache, dass Sie Linux in Azure ausführen. Anders als bei einigen der Images im Linux Azure-Katalog ist die Servicegebühr *nicht* im Lösungsangebot von HANA (große Instanz) enthalten. Es liegt in Ihrer Verantwortung, die Anforderungen von SAP bezüglich der Supportverträge mit dem Linux-Vertreiber zu erfüllen. 
-   - Die Anforderungen bezüglich der Supportverträge für SUSE Linux finden Sie in [SAP-Hinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise](https://launchpad.support.sap.com/#/notes/1984787) und [SAP-Hinweis 1056161 – SUSE-Prioritätssupport für SAP-Anwendungen](https://launchpad.support.sap.com/#/notes/1056161).
+   - Für SUSE Linux finden Sie die Anforderungen für Supportverträge in [SAP-Hinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise](https://launchpad.support.sap.com/#/notes/1984787) und [SAP-Hinweis 1056161 – SUSE-Prioritätssupport für SAP-Anwendungen](https://launchpad.support.sap.com/#/notes/1056161).
    - Für Red Hat Linux benötigen Sie die richtigen Abonnementebenen, die Support und Dienstupdates für die Betriebssysteme von HANA (große Instanz) umfassen. Red Hat empfiehlt das Red Hat Enterprise Linux-Abonnement für SAP-Lösungen. Lesen Sie https://access.redhat.com/solutions/3082481. 
 
 Die Supportmatrix der anderen SAP HANA-Versionen mit den verschiedenen Linux-Versionen finden Sie im [SAP-Hinweis 2235581](https://launchpad.support.sap.com/#/notes/2235581).
@@ -69,13 +69,13 @@ Die Kompatibilitätsmatrix des Betriebssystems und der HLI-Firmware-/Treibervers
 **Anwendungen**
 
 - Lizenzen und Softwareinstallationskomponenten für alle SAP-Anwendungen, die eine Verbindung mit SAP HANA herstellen, sowie zugehörige SAP-Supportverträge.
-- Lizenzen und Softwareinstallationskomponenten für alle Nicht-SAP-Anwendungen, die in Zusammenhang mit Umgebungen für SAP HANA in Azure (große Instanzen) verwendet werden, sowie zugehörige Supportverträge.
+- Lizenzen und Softwareinstallationskomponenten für alle Nicht-SAP-Anwendungen, die mit Umgebungen für SAP HANA in Azure (große Instanzen) verwendet werden, sowie zugehörige Supportverträge.
 
 **Fähigkeiten**
 
 - Erfahrung und Kenntnisse in Bezug auf IaaS und die zugehörigen Komponenten
 - Erfahrung und Kenntnisse in Bezug auf die Bereitstellung von SAP-Workloads in Azure
-- Für die Installation von SAP HANA zertifizierte Mitarbeiter
+- Für die SAP HANA-Installation zertifizierte Mitarbeiter.
 - Kenntnisse der SAP-Architektur zum Entwerfen der Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA
 
 **SAP**

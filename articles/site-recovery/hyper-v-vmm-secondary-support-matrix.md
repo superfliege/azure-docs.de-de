@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cd26eef236063eff72d909c0cd86c7f9485bfc4d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210028"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
@@ -72,7 +72,7 @@ Gast-VM – Multi-NIC | JA
 
 **Speicher (Host)** | **Unterstützt**
 --- | --- 
-NFS | N/V
+NFS | –
 SMB 3.0 |  JA
 SAN (ISCSI) | JA
 Multipfad (MPIO) | JA
@@ -81,15 +81,15 @@ Multipfad (MPIO) | JA
 
 **Konfiguration** | **Unterstützt**
 --- | --- | 
-VMDK |  N/V
+VMDK |  –
 VHD/VHDX | Ja (bis zu 16 Datenträger)
 Gen 2-VM | JA
 Freigegebener Clusterdatenträger | Nein 
 Verschlüsselter Datenträger | Nein 
-UEFI| N/V
+UEFI| –
 NFS | Nein 
 SMB 3.0 | Nein 
-RDM | N/V
+RDM | –
 Datenträger > 1 TB | JA
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | JA
 Speicherplätze | JA

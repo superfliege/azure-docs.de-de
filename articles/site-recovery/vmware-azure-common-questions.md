@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 12/31/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.author: mayg
+ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478098"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212230"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -42,6 +42,9 @@ Sie benötigen ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendu
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Benötigt mein Azure-Konto Berechtigungen zum Erstellen von virtuellen Computern?
 Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
+
+### <a name="can-i-use-guest-os-server-license-on-azure"></a>Kann ich die Gastbetriebssystem-Serverlizenz in Azure verwenden?
+Ja, Microsoft Software Assurance-Kunden können den Azure-Hybridvorteil nutzen, um Lizenzierungskosten für **Windows Server-Computer** zu sparen, die zu Azure migriert werden, oder um Azure für die Notfallwiederherstellung zu verwenden.
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Upgrade von Azure Site Recovery-Komponenten
 
@@ -250,7 +253,7 @@ Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback z
 Wenn Sie ein Failback von Azure ausführen, werden Daten aus Azure auf Ihren lokalen virtuellen Computer zurückkopiert und privater Zugriff ist erforderlich.
 
 ### <a name="can-i-resize-the-azure-vm-after-failover"></a>Kann ich die Größe der Azure-VM nach einem Failover ändern?
-Nein, Sie können die Größe der Ziel-VM nach dem Failover nicht ändern.
+Nein, Sie können die Größe oder den Typ der Ziel-VM nach dem Failover nicht ändern.
 
 
 ## <a name="automation-and-scripting"></a>Automatisierung und Skripterstellung

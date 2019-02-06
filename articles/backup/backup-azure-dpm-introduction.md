@@ -2,19 +2,18 @@
 title: Vorbereiten des DPM-Servers zum Sichern von Workloads in Azure
 description: Eine Einführung zur Sicherung von DPM-Daten in einem Azure Recovery Services-Tresor.
 services: backup
-author: adigan
-manager: nkolli
-keywords: System Center Data Protection Manager, Data Protection Manager, DPM-Sicherung
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 1f2defd2adb580aee71482a699c7987ca3fa7807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024476"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301066"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -51,7 +50,7 @@ DPM auf einem virtuellen Hyper-V-Computer | System Center 2012 SP1 oder höher, 
 DPM auf einem virtuellen VMware-Computer | System Center 2012 R2 mit Updaterollup 5 oder höher.
 Komponenten | Auf dem DPM-Server muss Azure PowerShell und .Net Framework 4.5 installiert sein.
 Unterstützte Apps | [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix), was DPM sichern kann.
-Unterstützte Dateitypen | Diese Dateitypen können mit Azure Backup gesichert werden: verschlüsselt (nur vollständige Sicherungen), komprimiert (inkrementelle Sicherungen unterstützt), platzsparend (inkrementelle Sicherungen unterstützt), komprimiert und platzsparend (als platzsparend behandelt).
+Unterstützte Dateitypen | Diese Dateitypen können mit Azure Backup gesichert werden: Verschlüsselt (nur vollständige Sicherungen), komprimiert (inkrementelle Sicherungen unterstützt), platzsparend (inkrementelle Sicherungen unterstützt), komprimiert und platzsparend (als platzsparend behandelt).
 Nicht unterstützte Dateitypen | Server auf Dateisystemen, bei denen die Groß-/Kleinschreibung beachtet werden muss, feste Links (übersprungen), Analysepunkte (übersprungen), verschlüsselt und komprimiert (übersprungen), verschlüsselt und platzsparend (übersprungen), komprimierter Stream, Analysestream.
 Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen.  Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
 Tresorspeicher | Es gibt keine Beschränkung der Datenmenge, die Sie in einem Azure Backup-Tresor sichern, aber die Größe einer Datenquelle (beispielsweise ein virtueller Computer oder eine Datenbank) darf 54.400 GB nicht überschreiten.

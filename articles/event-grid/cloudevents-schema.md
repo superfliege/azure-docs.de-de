@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: ff40ac0e5ab6176bcf192289c0506f57ebf04a11
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755086"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079867"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Verwenden des CloudEvents-Schemas mit Event Grid
 
@@ -60,7 +60,7 @@ Hier ist ein Beispiel für ein Azure Blob Storage-Ereignis im CloudEvents-Format
 
 CloudEvents v0.1 hat folgende Eigenschaften:
 
-| CloudEvents        | Typ     | JSON-Beispielwert             | BESCHREIBUNG                                                        | Event Grid-Zuordnung
+| CloudEvents        | Type     | JSON-Beispielwert             | BESCHREIBUNG                                                        | Event Grid-Zuordnung
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | Zeichenfolge   | "com.example.someevent"          | Typ des aufgetretenen Vorkommens                                   | eventType
 | eventTypeVersion   | Zeichenfolge   | "1.0"                            | Die Version des eventType (optional)                            | dataVersion

@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Video Indexer-API
+title: Verwenden der Video Indexer-API – Azure
 titlesuffix: Azure Media Services
 description: In diesem Artikel wird veranschaulicht, wie Sie in die Verwendung der Video Indexer-API einsteigen.
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: d7af0d8961d5fa4d3f76b76a48ec613d954298ad
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: fcde97c76e11c6ecbdb22befcb1a8d1ce0437942
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291836"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299026"
 ---
-# <a name="use-the-video-indexer-api"></a>Verwenden der Video Indexer-API
+# <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
 
 > [!Note]
 > Die v1-API von Video Indexer gilt ab dem 1. August 2018 als veraltet. Es ist ratsam, jetzt die v2-API von Video Indexer zu verwenden. <br/>Eine Anleitung zur Entwicklung mit den v2-APIs für Video Indexer finden Sie [hier](https://api-portal.videoindexer.ai/). 
@@ -82,7 +82,7 @@ Es gelten die in der folgenden Tabelle beschriebenen Werte. Der **Parameterwert*
 
 |**Name**|**Parameterwert**|**Beschreibung**|
 |---|---|---|
-|Testversion|Testversion|Wird für Testkonten verwendet.|
+|Testversion|trail|Wird für Testkonten verwendet.|
 |USA (Westen)|westus2|Wird für die Azure-Region „West US 2“ (USA, Westen 2) verwendet.|
 |Nordeuropa |northeurope|Wird für die Azure-Region „North Europe“ (Europa, Norden) verwendet.|
 |Asien, Osten|eastasia|Wird für die Azure-Region „East Asia“ (Asien, Osten) verwendet.|

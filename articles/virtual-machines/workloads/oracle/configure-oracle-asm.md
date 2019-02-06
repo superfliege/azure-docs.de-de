@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981024"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203588"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer  
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Erstellen einer VM
 
-Verwenden Sie den Befehl [az vm create](/cli/azure/vm#az_vm_create), um einen virtuellen Computer auf der Grundlage des Oracle Database-Images zu erstellen und diesen für Oracle ASM zu konfigurieren. 
+Verwenden Sie den Befehl [az vm create](/cli/azure/vm), um einen virtuellen Computer auf der Grundlage des Oracle Database-Images zu erstellen und diesen für Oracle ASM zu konfigurieren. 
 
 Im folgenden Beispiel wird ein virtueller Computer mit dem Namen „myVM“ erstellt, die die Größe „Standard_DS2_v2“ mit vier angefügten Datenträgern mit jeweils 50 GB aufweist. Darüber hinaus werden SSH-Schlüssel erstellt, falls diese nicht bereits am Standardschlüsselspeicherort vorhanden sind.  Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
@@ -540,7 +540,7 @@ Führen Sie zum Einrichten der Oracle ASM-Installation die folgenden Schritte au
 
 6. Wählen Sie **Exit** (Beenden), um ASM Configuration Assistant zu schließen.
 
-   ![Screenshot des Dialogfelds „ASM konfigurieren: Datenträgergruppen“ mit der Schaltfläche „Beenden“](./media/oracle-asm/asm05.png)
+   ![Screenshot des Dialogfelds „Configure ASM: Disk Groups“ (ASM konfigurieren: Datenträgergruppen) mit der Schaltfläche „Exit“ (Beenden)](./media/oracle-asm/asm05.png)
 
 ## <a name="create-the-database"></a>Erstellen der Datenbank
 

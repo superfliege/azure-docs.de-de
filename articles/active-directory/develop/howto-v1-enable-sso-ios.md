@@ -6,7 +6,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: de0d8d5fb538619e94595ef322eeb80c4de743be
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6c68070a9b94cf867f8c1c930874a5f02a685294
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426287"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096737"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
 
@@ -287,7 +287,7 @@ Im Anschluss sehen Sie an einem Beispiel, wie dies in der Projektkonfiguration a
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Schritt 3: Festlegen eines neuen Umleitungs-URIs mit Ihrem URL-Schema
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Schritt 3: Festlegen eines neuen Umleitungs-URI mit Ihrem URL-Schema
 
 Um sicherzustellen, dass die Anmeldeinformationstoken immer an die richtige Anwendung zurückgegeben werden, muss sichergestellt werden, dass der Rückruf an Ihre Anwendung in einer Weise erfolgt, die das iOS-Betriebssystem überprüfen kann. Das iOS-Betriebssystem meldet den Brokeranwendungen von Microsoft die Paket-ID der aufrufenden Anwendung. Diese kann nicht durch eine nicht autorisierte Anwendung ausgespäht werden. Deshalb nutzen wir den Hash gemeinsam mit dem URI unserer Brokeranwendung, um sicherzustellen, dass die Token an die richtige Anwendung zurückgegeben werden. Es ist erforderlich, dass Sie diesen eindeutigen Umleitungs-URI sowohl in Ihrer Anwendung als auch in unserem Entwicklerportal als Umleitungs-URI festlegen.
 

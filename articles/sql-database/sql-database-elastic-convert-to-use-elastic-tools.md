@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 03e1974a91a8c3cceacab777e28e8e4a01ccb313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251592"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455591"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrieren von vorhandenen Datenbanken für die horizontale Hochskalierung
 Verwalten Sie Ihre vorhandenen horizontal skalierten Sharddatenbanken mithilfe von Azure SQL-Datenbanktools (wie z.B. der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)). Konvertieren Sie zunächst eine vorhandene Gruppe von Datenbanken für die Verwendung des [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md). 
@@ -69,11 +69,11 @@ Erstellen Sie für ein Modell mit einem einzelnen Mandanten eine **Listenzuordnu
 
 ![Listenzuordnung][1]
 
-Beim Modell mit mehreren Mandanten werden einer Datenbank mehrere Mandanten zugewiesen. Außerdem können Sie Mandantengruppen auf verschiedene Datenbanken verteilen. Verwenden Sie dieses Modell, wenn Sie erwarten, dass die einzelnen Mandanten geringe Datenanforderungen haben. In diesem Modell wird einer Datenbank mithilfe der **Bereichszuordnung** ein Bereich von Mandanten zugewiesen. 
+Beim Modell mit mehreren Mandanten werden einer einzelnen Datenbank mehrere Mandanten zugewiesen. Außerdem können Sie Mandantengruppen auf verschiedene Datenbanken verteilen. Verwenden Sie dieses Modell, wenn Sie erwarten, dass die einzelnen Mandanten geringe Datenanforderungen haben. In diesem Modell wird einer Datenbank mithilfe der **Bereichszuordnung** ein Bereich von Mandanten zugewiesen. 
 
 ![Bereichszuordnung][2]
 
-Wenn Sie einer Einzeldatenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu den Mandanten-IDs 1 und 5, DB2 zum Speichern von Daten für die Mandanten 7 und 10 verwendet. 
+Wenn Sie einer einzelnen Datenbank mehrere Mandanten zuweisen möchten, kann das Datenbankmodell mit mehreren Mandanten auch unter Verwendung einer *Listenzuordnung* implementiert werden. Beispiel: DB1 wird zum Speichern von Informationen zu den Mandanten-IDs 1 und 5, DB2 zum Speichern von Daten für die Mandanten 7 und 10 verwendet. 
 
 ![Einzeldatenbank mit mehreren Mandanten][3] 
 
@@ -98,7 +98,7 @@ Bei Verwendung dieses Zuordnungsmusters müssen die Mandanten-IDs fortlaufende B
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>Option 3: Listenzuordnungen bei Einzeldatenbanken
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Option 3: Listenzuordnungen für eine einzelne Datenbank
 Für die Einrichtung dieses Musters muss auch eine Listenzuordnung erstellt werden, wie in Schritt 2, Option 1 gezeigt.
 
 ## <a name="step-3-prepare-individual-shards"></a>Schritt 3: Vorbereiten der einzelnen Shards
@@ -138,7 +138,7 @@ Fügen Sie die Bereichszuordnungen für alle Zuordnungen zwischen Mandanten-ID-B
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Schritt 4, Option 3: Zuordnen der Daten für mehrere Mandanten zu einer Einzeldatenbank
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Schritt 4, Option 3: Zuordnen der Daten für mehrere Mandanten zu einer einzelnen Datenbank
 Führen Sie für jeden Mandanten Add-ListMapping aus (Option 1). 
 
 ## <a name="checking-the-mappings"></a>Überprüfen der Zuordnungen
@@ -154,7 +154,7 @@ Nach der Einrichtung können Sie die Clientbibliothek für elastische Datenbanke
 ## <a name="next-steps"></a>Nächste Schritte
 Laden Sie die PowerShell-Skripts auf der Seite [Azure SQL DB – Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) (Azure SQL-Datenbank – Skripts für Tools für elastische Datenbanken) herunter.
 
-Sie finden diese Tools auch auf GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+Die Tools finden Sie auch auf GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
 
 Verschieben Sie Daten mithilfe des Split-Merge-Tools in das Modell mit mehreren Mandanten bzw. aus diesem Modell in ein Modell mit einem einzelnen Mandanten. Siehe [Split-Merge-Tool](sql-database-elastic-scale-get-started.md).
 

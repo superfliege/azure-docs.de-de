@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 39d49a223fb02d00af2309922ccd98a764264b4d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4e6912d13b4192b1f938acf5a9808221f5aa42f7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452512"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077657"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?
 
@@ -71,9 +71,15 @@ Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor d
 
 ### <a name="compliant-device"></a>Kompatibles Gerät
 
-Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von [verwalteten Geräten](require-managed-devices.md) aus zuzulassen. Eine Möglichkeit, zu definieren, was ein verwaltetes Gerät ist, besteht darin, ein konformes Gerät vorauszusetzen. Bei Verwendung dieser Option lässt die Richtlinie für bedingten Zugriff Zugriffsversuche mit Geräten zu, die bei Ihrem Azure Active Directory-Verzeichnis [registriert](../devices/overview.md) und von Intune (für ein beliebiges Gerätebetriebssystem) oder von Ihrer MDM-Drittanbieterlösung als mit Windows 10-Geräten kompatibel gekennzeichnet sind. MDM-Systeme von Drittanbietern für andere Arten von Gerätebetriebssystemen als Windows 10 werden nicht unterstützt.
+Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für bedingten Zugriff besteht darin, den Zugriff auf die ausgewählten Cloud-Apps nur über [verwaltete Geräte](require-managed-devices.md) zuzulassen. Das Vorschreiben der Markierung eines Geräts als konform ist eine Option, die Ihnen zur Verfügung steht, um den Zugriff auf verwaltete Geräte zu beschränken. Ein Gerät kann von Intune (jedes Gerätebetriebssystem) oder von Ihrem MDM-System eines Drittanbieters für Windows 10-Geräte als konform markiert werden. MDM-Systeme von Drittanbietern für andere Arten von Gerätebetriebssystemen als Windows 10 werden nicht unterstützt. 
 
-Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](require-managed-devices.md).
+Ihr Gerät muss in Azure AD registriert werden, bevor es als konform markiert werden kann. Zum Registrieren eines Geräts stehen Ihnen drei Optionen zur Auswahl: 
+
+- [In Azure AD registrierte Geräte](../devices/overview.md#azure-ad-registered-devices)
+- [In Azure AD eingebundene Geräte](../devices/overview.md#azure-ad-joined-devices)  
+- [Über Azure AD Hybrid Join eingebundene Geräte](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+Weitere Informationen finden Sie unter [Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Hybrid in Azure AD eingebundenes Gerät
 

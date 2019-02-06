@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,19 +16,19 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: e4ed0db3a08937c3c8b51e2c8af5e566b59df4c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970956"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097298"
 ---
 # <a name="web-api"></a>Web-API
 
 Web-API-Apps sind Webanwendungen, die Ressourcen von einer Web-API abrufen müssen. In diesem Szenario kann die Webanwendung für die Authentifizierung und den Aufruf der Web-API zwei Identitätstypen verwenden:
 
 - **Anwendungsidentität:** In diesem Szenario werden OAuth 2.0-Clientanmeldeinformationen verwendet, um die Anwendung zu authentifizieren und auf die Web-API zuzugreifen. Da die Web-API bei Verwendung einer Anwendungsidentität keine Informationen zum Benutzer erhält, kann sie nur erkennen, dass sie von der Webanwendung aufgerufen wird. Wenn die Anwendung Informationen zum Benutzer erhält, werden diese über das Anwendungsprotokoll gesendet und nicht von Azure AD signiert. Die Web-API vertraut darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet.
-- **Delegierte Benutzeridentität:** Dieses Szenario lässt sich auf zwei Arten realisieren – mit OpenID Connect oder mit der Gewährung über einen OAuth 2.0-Autorisierungscode und einem vertraulichen Client. Die Webanwendung ruft ein Zugriffstoken für den Benutzer ab, um gegenüber der Web-API zu belegen, dass der Benutzer erfolgreich bei der Webanwendung authentifiziert wurde und die Webanwendung für den Aufruf der Web-API eine delegierte Benutzeridentität erhalten hat. Dieses Zugriffstoken wird in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
+- **Delegierte Benutzeridentität:** Dieses Szenario lässt sich auf zwei Arten realisieren: mit OpenID Connect oder mit der Gewährung über einen OAuth 2.0-Autorisierungscode und einem vertraulichen Client. Die Webanwendung ruft ein Zugriffstoken für den Benutzer ab, um gegenüber der Web-API zu belegen, dass der Benutzer erfolgreich bei der Webanwendung authentifiziert wurde und die Webanwendung für den Aufruf der Web-API eine delegierte Benutzeridentität erhalten hat. Dieses Zugriffstoken wird in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
 
 Die Anwendungsidentität und die delegierte Benutzeridentität werden im folgenden Ablauf veranschaulicht. Der Hauptunterschied zwischen den beiden Typen besteht darin, dass bei der delegierten Benutzeridentität zuerst ein Autorisierungscode abgerufen werden muss, damit sich der Benutzer anmelden und auf die Web-API zugreifen kann.
 
@@ -68,7 +68,7 @@ Sehen Sie sich die Codebeispiele für Szenarien vom Typ „Webanwendung zu Web-A
 
 ## <a name="app-registration"></a>App-Registrierung
 
-Informationen zum Registrieren einer Anwendung beim Azure AD v1.0-Endpunkt finden Sie unter [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](quickstart-v1-add-azure-ad-app.md) (Schnellstart: Registrieren einer App mit dem Azure Active Directory v1.0-Endpunkt).
+Informationen zum Registrieren einer Anwendung beim Azure AD v1.0-Endpunkt finden Sie unter [Schnellstart: Registrieren einer App mit dem Azure Active Directory v1.0-Endpunkt](quickstart-v1-add-azure-ad-app.md).
 
 * Einzelinstanzanwendung: Webanwendung und Web-API müssen sowohl bei Verwendung der Anwendungsidentität als auch bei Verwendung der delegierten Benutzeridentität im gleichen Verzeichnis in Azure AD registriert werden. Die Web-API kann so konfiguriert werden, dass sie einen Satz von Berechtigungen verfügbar macht, die den Ressourcenzugriff der Webanwendung beschränken. Bei Verwendung einer delegierten Benutzeridentität muss die Webanwendung die gewünschten Berechtigungen aus dem Dropdownmenü **Berechtigungen für andere Anwendungen** im Azure-Portal auswählen. Bei Verwendung der Anwendungsidentität ist dieser Schritt nicht erforderlich.
 * Mehrinstanzenfähige Anwendung: Die Webanwendung wird so konfiguriert, dass sie die Berechtigungen angibt, die für eine ordnungsgemäße Verwendung erforderlich sind. Die Liste mit den erforderlichen Berechtigungen wird in einem Dialogfeld angezeigt, wenn ein Benutzer oder Administrator im Zielverzeichnis der Anwendung zustimmt. Dadurch wird die Anwendung in ihrer Organisation verfügbar. Einige Anwendungen benötigen nur Berechtigungen auf Benutzerebene. Diesen kann jeder Benutzer in der Organisation zustimmen. Andere Anwendungen benötigen Berechtigungen auf Administratorebene. Diesen kann ein Benutzer in der Organisation nicht zustimmen. Nur ein Verzeichnisadministrator kann seine Zustimmung für Anwendungen geben, die diese Berechtigungsebene erfordern. Wenn der Benutzer oder Administrator seine Zustimmung gibt, werden die Webanwendung und die Web-API in dessen Verzeichnis registriert.
@@ -79,5 +79,5 @@ Wenn die Webanwendung mithilfe ihres Autorisierungscodes ein JWT-Zugriffstoken a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu anderen [Anwendungstypen und Szenarien](app-types.md)
-- Weitere Informationen zu den [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md)
+- Weitere Informationen zu anderen [Anwendungstypen und -szenarien](app-types.md)
+- Weitere Informationen zu den [Authentifizierungsgrundlagen](authentication-scenarios.md) von Azure AD

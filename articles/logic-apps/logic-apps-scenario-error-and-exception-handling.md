@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124034"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098662"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -57,7 +57,7 @@ Da wir den aus Dynamics CRM Online stammenden Datensatz protokollieren möchten,
 
 Wir verwenden einen **Anforderungstrigger**, wie im folgenden Beispiel gezeigt:
 
-```` json
+``` json
 "triggers": {
         "request": {
           "type": "request",
@@ -90,7 +90,7 @@ Wir verwenden einen **Anforderungstrigger**, wie im folgenden Beispiel gezeigt:
         }
       },
 
-````
+```
 
 
 ## <a name="steps"></a>Schritte
@@ -402,7 +402,7 @@ Mit unserer Lösung haben wir den Funktionsumfang von [Azure Cosmos DB](https://
 Sie können eine MVC-Web-App erstellen, mit der die Fehlerdatensätze aus Cosmos DB angezeigt werden können. In der aktuellen Version sind die Vorgänge **Liste**, **Details**, **Bearbeiten** und **Löschen** enthalten.
 
 > [!NOTE]
-> Beim Bearbeitungsvorgang ersetzt Cosmos DB das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
+> Bearbeitungsvorgang: Cosmos DB ersetzt das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
 
 Im Anschluss finden Sie Beispiele für unsere MVC-App-Details, die auf der Grundlage des zuvor beschriebenen Konzepts erstellt wurden.
 

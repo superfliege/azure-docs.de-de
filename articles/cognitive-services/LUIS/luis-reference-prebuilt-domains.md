@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d17b6271468a9259314876e18ff7ead288c990bc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140964"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221010"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](luis-how-to-use-prebuilt-domains.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
@@ -163,7 +163,7 @@ Die Entertainment-Domäne enthält Absichten und Entitäten, die sich auf die Su
 | Person| Der Schauspieler, Regisseur, Produzent, Musiker oder Interpret eines Films, einer App, eines Spiels oder einer Fernsehsendung.|Madonna<br/>Stanley Kubrick|
 | Rolle| Die Rolle, die eine Person bei der Erstellung des Mediums gespielt hat.|Singt<br/>Regie<br/>nach|
 | Titel| Der Name eines Films, einer App, eines Spiels, einer Fernsehsendung oder eines Musiktitels.|Friends<br/>Minecraft|
-| Typ| Der Typ oder das Medienformat eines Films, einer App, eines Spiels, einer Fernsehsendung oder eines Musiktitels.|Musik<br/>MovieTV <br/>Show|
+| Type| Der Typ oder das Medienformat eines Films, einer App, eines Spiels, einer Fernsehsendung oder eines Musiktitels.|Musik<br/>MovieTV <br/>Show|
 | UserRating| Benutzerbewertung mit Stern oder Daumen.|5 Sterne<br/>3 Sterne<br/>4 Sterne|
 
 ## <a name="events"></a>Ereignisse 
@@ -182,7 +182,7 @@ Die Events-Domäne enthält Absichten und Entitäten zum Buchen von Tickets für
 | NAME | Der Name einer Veranstaltung.|Ruhrtriennale|
 | PlaceName| Der Name des Veranstaltungsorts.|Louvre<br/>Opernhaus<br/>Museumsmeile|
 | PlaceType | Der Typ des Orts, an dem die Veranstaltung stattfindet.|Cafe<br/>Kino<br/>Bibliothek|
-| Typ | Der Typ einer Veranstaltung.|Konzert<br/>Sportveranstaltung|
+| Type | Der Typ einer Veranstaltung.|Konzert<br/>Sportveranstaltung|
 
 ## <a name="fitness"></a>Fitness 
 Die Fitness-Domäne bietet Absichten und Entitäten für die Nachverfolgung von Fitnessaktivitäten. Zu den Absichten gehören das Speichern von Anmerkungen, die verbleibende Zeit oder Strecke oder das Speichern von Aktivitätsergebnissen.

@@ -7,13 +7,13 @@ author: tarcher
 services: devops
 custom: jenkins
 ms.date: 07/31/2018
-ms.component: common
-ms.openlocfilehash: 040f7ef8d9b50998ac2b84ed9d4e3712f4ed5835
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 22db4690ccbd05b25f907e2d2134fa7ce5233d60
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246870"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476892"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Verwenden von Azure Storage mit einer Jenkins-Lösung für Continuous Integration
 
@@ -127,9 +127,9 @@ Nach der Ausführung eines Builds können Sie die Build-Verlaufskonsolenausgabe 
 ## <a name="components-used-by-the-blob-service"></a>Vom Blob-Dienst verwendete Komponenten
 In diesem Abschnitt erhalten Sie einen Überblick über die Komponenten des Blob-Dienstes.
 
-* **Speicherkonto**: Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ein Speicherkonto ist die höchste Ebene des Namespaces für den Zugriff auf Blobs. Ein Konto kann eine beliebige Anzahl von Containern enthalten, solange deren Gesamtgröße 100 TB nicht überschreitet.
-* **Container**: Ein Container dient zur Gruppierung eines Blob-Satzes. Alle Blobs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein.
-* **Blob:** Eine Datei von beliebiger Art und Größe. Es gibt zwei Arten von Blobs, die im Azure-Speicher gespeichert werden können: Block- und Seitenblobs. Die meisten Dateien sind Block-BLOBs. Ein einzelner Block-Blob kann bis zu 200 GB groß sein. In diesem Tutorial werden Block-BLOBs verwendet. Der andere Blob-Typ, Seiten-Blobs, kann bis zu 1 TB groß sein und ist effizienter, wenn Byte-Bereiche in einer Datei häufig geändert werden. Weitere Informationen zu Blobs finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
+* **Storage Account** (Speicherkonto): Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ein Speicherkonto ist die höchste Ebene des Namespaces für den Zugriff auf Blobs. Ein Konto kann eine beliebige Anzahl von Containern enthalten, solange deren Gesamtgröße 100 TB nicht überschreitet.
+* **Container**: Ein Container dient zum Gruppieren mehrerer Blobs. Alle BLOBs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein.
+* **Blob**: Eine Datei von beliebiger Art und Größe. Es gibt zwei Arten von Blobs, die im Azure-Speicher gespeichert werden können: Block- und Seitenblobs. Die meisten Dateien sind Block-BLOBs. Ein einzelner Block-Blob kann bis zu 200 GB groß sein. In diesem Tutorial werden Block-BLOBs verwendet. Der andere Blob-Typ, Seiten-Blobs, kann bis zu 1 TB groß sein und ist effizienter, wenn Byte-Bereiche in einer Datei häufig geändert werden. Weitere Informationen zu Blobs finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 * **URL-Format:** Blobs können über das folgende URL-Format aufgerufen werden:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`

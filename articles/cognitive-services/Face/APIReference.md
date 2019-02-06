@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: be3e408b3f5f6393786a35108202d51ae871ea3b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6c5bfb052fc887bb189edb06247642419b14ecf7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679731"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296969"
 ---
 # <a name="api-reference"></a>API-Referenz
 
@@ -28,5 +28,6 @@ Die Gesichtserkennungs-API ist eine cloudbasierte API, die Algorithmen zur Gesic
 - [LargeFaceList Management APIs](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): Werden zum Verwalten eines LargeFaceList-Elements für [Find Similar](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar) (Suchen ähnlicher Elemente) verwendet.
 - [PersonGroup Person Management APIs](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): Werden zur Verwaltung von PersonGroup Person Faces-Elementen für [Identification](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify) (Identifikation) verwendet.
 - [PersonGroup Management APIs](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): Werden zur Verwaltung eines PersonGroup-Datasets für [Identification](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify) (Identifikation) verwendet.
+- [Momentaufnahmenverwaltungs-APIs](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot): Wird verwendet, um eine Momentaufnahme für die Datenmigration zwischen Abonnements zu verwalten.
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

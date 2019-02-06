@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4024ecddde4b0d020e2c657214a4a258ea0b2ea5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449009"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097808"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor (Public Preview)
 
@@ -21,7 +21,7 @@ Die Metrikwarnung mit Erkennung dynamischer Schwellenwerte nutzt erweitertes Mac
 
 Wenn eine Warnungsregel erstellt wurde, wird diese nur ausgelöst, wenn die überwachte Metrik nicht wie erwartet reagiert (basierend auf individuellen Schwellenwerten).
 
-Wir freuen uns auf Ihr Feedback: azurealertsfeedback@microsoft.com
+Wir freuen uns auf Ihr Feedback: <azurealertsfeedback@microsoft.com>
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Warum und wann ist der dynamische Bedingungstyp empfehlenswert?
 
@@ -37,7 +37,7 @@ Warnungen mit dynamischen Schwellenwerten können über Metrikwarnungen in Azure
 
 ## <a name="how-are-the-thresholds-calculated"></a>Wie werden die Schwellenwerte berechnet?
 
-Dynamische Schwellenwerte erfassen fortlaufend Daten der Metrikreihe und versuchen, sie mit einem Satz von Algorithmen und Methoden zu modellieren. Zudem versuchen sie, sie mit einem Satz von Algorithmen und Methoden modellieren. Sie erkennen Muster in den Daten, z.B. die Saisonalität (stündlich/täglich/wöchentlich), und können überflüssige Metriken (z.B. Geräte-CPU oder Arbeitsspeicher) sowie Metriken mit geringer Genauigkeit (z.B. die Verfügbarkeit und Fehler) verarbeiten.
+Dynamische Schwellenwerte erfassen fortlaufend Daten der Metrikreihe und versuchen, sie mit einem Satz von Algorithmen und Methoden zu modellieren. Sie erkennen Muster in den Daten, z.B. die Saisonalität (stündlich/täglich/wöchentlich), und können überflüssige Metriken (z.B. Geräte-CPU oder Arbeitsspeicher) sowie Metriken mit geringer Genauigkeit (z.B. die Verfügbarkeit und Fehler) verarbeiten.
 
 Die Schwellenwerte werden so ausgewählt, dass eine Abweichung von diesen Schwellenwerten eine Anomalie im Metrikverhalten ergibt.
 
@@ -80,3 +80,80 @@ Wahrscheinlich nicht. Dynamische Schwellenwerte eignen sich besser für die Erke
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Wie viele Daten werden für die Vorschau und die anschließende Berechnung der Schwellenwerte verwendet?
 
 Die im Diagramm angezeigten Schwellenwerte werden vor dem Erstellen einer Warnungsregel für die Metrik auf der Grundlage der Verlaufsdaten der letzten 10 Tage berechnet. Nach der Erstellung der Warnungsregel erfassen die dynamischen Schwellenwerte zusätzliche verfügbare Verlaufsdaten und berücksichtigen neue Daten, um die Präzision der Schwellenwerte zu verbessern.
+
+## <a name="dynamic-thresholds-best-practices"></a>Bewährte Methoden für dynamische Schwellenwerte
+
+Dynamische Schwellenwerte können auf jede beliebige Plattform oder benutzerdefinierte Metrik in Azure Monitor angewendet werden. Darüber hinaus wurde die Funktion auch für die gängigen Anwendungs- und Infrastrukturmetriken optimiert.
+In den folgenden bewährten Methoden wird gezeigt, wie Sie für einige dieser Metriken Warnungen mit dynamischen Schwellenwerten konfigurieren.
+
+### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamische Schwellenwerte für prozentuale VM-CPU-Metriken
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Überwachen**. In der Ansicht „Überwachen“ sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
+
+2. Klicken Sie auf **Warnungen** und dann auf **+ Neue Warnungsregel**.
+
+    > [!TIP]
+    > Die meisten Ressourcenblätter verfügen auch über **Warnungen** in ihrem Ressourcenmenü (unter **Überwachung**). Sie können auch von dort aus Benachrichtigungen erstellen.
+
+3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp „Virtual Machines“**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
+
+4. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
+
+5. Wählen Sie **CPU-Prozentsatz** aus.
+
+6. Optimieren Sie die Metrik optional durch Anpassen von **Zeitraum** und **Aggregation**. Es empfiehlt sich, für diesen Metriktyp nicht den Aggregationstyp „Maximum“ zu verwenden, da er für das Verhalten weniger repräsentativ ist. Für den Aggregationstyp „Maximum“ ist ggf. ein statischer Schwellenwert besser geeignet.
+
+7. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie die Warnungsparameter:
+    1. **Bedingungstyp:** Wählen Sie die Option „Dynamisch“ aus.
+    1. **Empfindlichkeit:** Wählen Sie eine mittlere/niedrige Empfindlichkeit aus, um überflüssige Warnungen zu verringern.
+    1. **Operator:** Wählen Sie „Größer als“ aus, es sei denn, das Verhalten stellt die Anwendungsnutzung dar.
+    1. **Häufigkeit:** Verwenden Sie abhängig von den geschäftlichen Auswirkungen der Warnung ggf. einen niedrigeren Wert.
+    1. **Failing Periods** (Zeiträume mit Fehler) (erweiterte Option): Das zurückliegende Zeitfenster muss mindestens 15 Minuten betragen. Ist der Zeitraum also beispielsweise auf fünf Minuten festgelegt, müssen die Zeiträume mit Fehler mindestens auf „3“ festgelegt werden.
+
+8. Das Metrikdiagramm zeigt die berechneten Schwellenwerte basierend auf aktuellen Daten an.
+
+9. Klicken Sie auf **Fertig**.
+
+10. Geben Sie **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+
+11. Fügen Sie der Warnung eine Aktionsgruppe hinzu, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+
+12. Klicken Sie auf **Fertig**, um die Metrikwarnungsregel zu speichern.
+
+> [!NOTE]
+> Über das Portal erstellte Metrikwarnungsregeln werden in derselben Ressourcengruppe erstellt wie die Zielressource.
+
+### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dynamische Schwellenwerte für die Ausführungszeit der HTTP-Anforderung von Application Insights
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Überwachen**. In der Ansicht „Überwachen“ sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
+
+2. Klicken Sie auf **Warnungen** und dann auf **+ Neue Warnungsregel**.
+
+    > [!TIP]
+    > Die meisten Ressourcenblätter verfügen auch über **Warnungen** in ihrem Ressourcenmenü (unter **Überwachung**). Sie können auch von dort aus Benachrichtigungen erstellen.
+
+3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp „Application Insights“**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
+
+4. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
+
+5. Wählen Sie die **Ausführungszeit der HTTP-Anforderung** aus.
+
+6. Optimieren Sie die Metrik optional durch Anpassen von **Zeitraum** und **Aggregation**. Es empfiehlt sich, für diesen Metriktyp nicht den Aggregationstyp „Maximum“ zu verwenden, da er für das Verhalten weniger repräsentativ ist. Für den Aggregationstyp „Maximum“ ist ggf. ein statischer Schwellenwert besser geeignet.
+
+7. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie die Warnungsparameter:
+    1. **Bedingungstyp:** Wählen Sie die Option „Dynamisch“ aus.
+    1. **Operator:** Wählen Sie „Größer als“ aus, um die Menge an ausgelösten Warnungen zur Optimierung der Dauer zu verringern.
+    1. **Häufigkeit:** Verwenden Sie abhängig von den geschäftlichen Auswirkungen der Warnung ggf. einen niedrigeren Wert.
+
+8. Das Metrikdiagramm zeigt die berechneten Schwellenwerte basierend auf aktuellen Daten an.
+
+9. Klicken Sie auf **Fertig**.
+
+10. Geben Sie **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+
+11. Fügen Sie der Warnung eine Aktionsgruppe hinzu, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+
+12. Klicken Sie auf **Fertig**, um die Metrikwarnungsregel zu speichern.
+
+> [!NOTE]
+> Über das Portal erstellte Metrikwarnungsregeln werden in derselben Ressourcengruppe erstellt wie die Zielressource.

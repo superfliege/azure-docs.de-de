@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f3aaf34283f4e7c81f97b8e2ec4987749f3935c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604428"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465281"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Überwachen der Leistung von Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 
@@ -549,7 +549,7 @@ Andere Anwendungstypen können denselben Graphen unter Umständen anders interpr
 Azure SQL-Datenbank macht die verbrauchten Ressourceninformationen für jede aktive Datenbank in der Sicht **sys.resource_stats** der **master**-Datenbank jedes Servers verfügbar. Die Daten in der Tabelle werden zu Intervallen von fünf Minuten zusammengefasst. Bei den Dienstebenen Basic, Standard und Premium kann es länger als fünf Minuten dauern, bis sie in der Tabelle angezeigt werden. Diese Daten sind also besser für Verlaufsanalysen als für Analysen nahezu in Echtzeit geeignet. Fragen Sie die Sicht **sys.resource_stats** ab, um den kürzlichen Verlauf einer Datenbank anzuzeigen und zu überprüfen, ob die gewählte Reservierung zur gewünschten Leistung zur richtigen Zeit geführt hat.
 
 > [!NOTE]
-> Sie müssen mit der **master**-Datenbank Ihres logischen SQL-Datenbankservers verbunden sein, um **sys.resource_stats** in den folgenden Beispielen abzufragen.
+> Sie benötigen eine Verbindung mit der **master**-Datenbank Ihres SQL-Datenbank-Servers, um **sys.resource_stats** in den folgenden Beispielen abzufragen.
 
 Dieses Beispiel veranschaulicht, wie die Daten in dieser Sicht verfügbar gemacht werden:
 

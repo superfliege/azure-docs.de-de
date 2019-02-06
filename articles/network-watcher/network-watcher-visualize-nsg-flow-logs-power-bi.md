@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822873"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913300"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
 
@@ -28,7 +28,7 @@ Mit Datenflussprotokollen von Netzwerksicherheitsgruppen können Sie Information
 Es kann schwierig sein, Erkenntnisse zu Datenflussprotokoll-Daten zu gewinnen, indem die Protokolldateien manuell durchsucht werden. In diesem Artikel stellen wir eine Lösung vor, mit der Sie Ihre aktuellen Datenflussprotokolle visualisieren und sich über den Datenverkehr in Ihrem Netzwerk informieren können.
 
 > [!Warning]  
-> In den folgenden Schritten wird Version 1 der Flowprotokolle verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
+> In den folgenden Schritten werden Flowprotokolle der Version 1 verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 ## <a name="scenario"></a>Szenario
 
@@ -46,7 +46,7 @@ Die bereitgestellte Vorlage kann bearbeitet werden. Sie können sie also ändern
 
 ## <a name="setup"></a>Einrichtung
 
-Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
+Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von Netzwerksicherheits-Flowprotokollen finden Sie in folgendem Artikel: [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, und auf dem Computer muss ausreichend freier Speicherplatz vorhanden sein, um die Protokolldaten, die in Ihrem Speicherkonto vorhanden sind, herunterzuladen und zu laden.
 

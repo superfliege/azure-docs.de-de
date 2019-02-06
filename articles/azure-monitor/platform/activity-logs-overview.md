@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439067"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883771"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -45,7 +45,7 @@ Das Aktivitätsprotokoll enthält verschiedene Kategorien von Daten. Umfassende 
 * **Autoskalierung**: Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die automatische Skalierung – basierend auf den Einstellungen für die automatische Skalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für Ereignisse in dieser Kategorie ist „Fehler beim automatischen zentralen Hochskalieren“. Mit der automatischen Skalierung können Sie die Anzahl der Instanzen eines unterstützten Ressourcentyps basierend auf der Tageszeit und/oder Lastdaten (Metrik) mithilfe einer Einstellung für die automatische Skalierung automatisch horizontal hoch- oder herunterskalieren. Wenn die Bedingungen zum zentralen Hoch- oder Herunterskalieren erfüllt sind, werden Ereignisse zum Start und zum Erfolg bzw. Fehler in dieser Kategorie aufgezeichnet.
 * **Empfehlung**: Diese Kategorie enthält Empfehlungsereignisse aus Azure Advisor.
 * **Sicherheit**: Diese Kategorie enthält Datensätze von Warnungen, die vom Azure Security Center generiert wurden. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
-* **Richtlinie**: Diese Kategorie enthält keine Ereignisse, sie ist für die zukünftige Verwendung reserviert. 
+* **Richtlinie**: Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, die von Azure Policy ausgeführt werden. Beispiele für Ereignistypen, die in dieser Kategorie angezeigt werden, sind „Audit“ und „Deny“. Jede Aktion, die von Policy ausgeführt wird, ist als ein Vorgang für eine Ressource modelliert.
 
 ## <a name="event-schema-per-category"></a>Ereignisschema nach Kategorie
 [Lesen Sie diesen Artikel, um sich über die Grundlagen des Aktivitätsprotokoll-Ereignisschemas nach Kategorie zu informieren.](../../azure-monitor/platform/activity-log-schema.md)
@@ -142,7 +142,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| NAME |JA |Name des Protokollprofils. |
+| Name |JA |Name des Protokollprofils. |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein  |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Standort |JA |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |

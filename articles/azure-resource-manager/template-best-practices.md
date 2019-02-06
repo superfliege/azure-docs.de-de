@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd54ae2c82d3baf716784c39951c5cad7ec364b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730718"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077937"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -82,7 +82,7 @@ Die Informationen in diesem Abschnitt können bei der Verwendung von [Parametern
 
 * Setzen Sie `allowedValues` sparsam ein. Verwenden sie dies nur, wenn Sie sicherstellen müssen, dass einige Werte nicht in die zulässigen Optionen eingeschlossen werden. Wenn Sie `allowedValues` zu großzügig verwenden, werden möglicherweise gültige Bereitstellungen blockiert, wenn Ihre Liste nicht auf dem neuesten Stand gehalten wird.
 
-* Wenn ein Parametername in Ihrer Vorlage einem Parameter im PowerShell-Bereitstellungsbefehl entspricht, löst Resource Manager diesen Namenskonflikt auf, indem dem Vorlagenparameter das Postfix **FromTemplate** hinzugefügt wird. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) verursacht. Während der Bereitstellung werden Sie zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert.
+* Wenn ein Parametername in Ihrer Vorlage einem Parameter im PowerShell-Bereitstellungsbefehl entspricht, löst Resource Manager diesen Namenskonflikt auf, indem dem Vorlagenparameter das Postfix **FromTemplate** hinzugefügt wird. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) verursacht. Während der Bereitstellung werden Sie zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert.
 
 ### <a name="security-recommendations-for-parameters"></a>Sicherheitsempfehlungen für Parameter
 

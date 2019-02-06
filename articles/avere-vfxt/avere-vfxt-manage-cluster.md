@@ -4,20 +4,20 @@ description: Verwalten des Avere-Clusters – Hinzufügen oder Entfernen von Kno
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189608"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300182"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
 Nach der Erstellung des Clusters müssen Sie möglicherweise Clusterknoten hinzufügen oder den Cluster beenden oder neu starten. Wenn Ihr Projekt abgeschlossen ist, müssen Sie zudem wissen, wie Sie den Cluster beenden und dauerhaft entfernen können. 
 
-Abhängig von der Aufgabe der Clusterverwaltung müssen Sie möglicherweise die Avere-Systemsteuerung, das vfxt.py-Skript zur Erstellung von Clustern oder das Azure-Portal verwenden. 
+Abhängig von der Aufgabe der Clusterverwaltung müssen Sie möglicherweise die Avere-Systemsteuerung, das vfxt.py-Befehlszeilenskript zur Erstellung von Clustern oder das Azure-Portal verwenden. 
 
 Diese Tabelle bietet eine Übersicht darüber, welche Tools für die einzelnen Aufgaben verwendet werden können. 
 
@@ -71,7 +71,11 @@ Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten vo
 
 Wenn ein Cluster heruntergefahren wird, veröffentlicht er zunächst Statusmeldungen auf der Registerkarte **Dashboard**. Nach einigen Augenblicken reagiert die Avere-Systemsteuerungssitzung nicht mehr, was darauf hinweist, dass der Cluster heruntergefahren ist.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>Verwalten des Clusters mit vfxt.py 
+## <a name="manage-the-cluster-with-vfxtpy"></a>Verwalten des Clusters mit vfxt.py
+
+vfxt.py ist ein Befehlszeilentool für die Erstellung und Verwaltung des Clusters. 
+
+vfxt.py ist auf der Clustercontroller-VM vorinstalliert. Wenn Sie es auf einem anderen System installieren möchten, lesen Sie die Dokumentation unter <https://github.com/Azure/AvereSDK>.
 
 Das Skript vfxt.py kann für folgende Aufgaben der Clusterverwaltung verwendet werden:
 
@@ -80,8 +84,6 @@ Das Skript vfxt.py kann für folgende Aufgaben der Clusterverwaltung verwendet w
 * Einen Cluster zerstören
 
 Wie bei der Avere-Systemsteuerung versuchen die vfxt.py-Operationen sicherzustellen, dass geänderte Daten dauerhaft im Back-End-Speicher gespeichert werden, bevor der Cluster oder Knoten heruntergefahren oder zerstört wird. Dadurch ist sie eine sicherere Option als das Avery-Portal.
-
-vfxt.py ist auf der Clustercontroller-VM vorinstalliert. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 Ein vollständiges Benutzerhandbuch zu „vfxt.py“ ist auf GitHub verfügbar: [Cloud cluster management with vfxt.py (Cloudclusterverwaltung mit „vfxt.py“)](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

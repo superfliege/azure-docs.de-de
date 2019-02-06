@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: cdda1a06f32e712df71ec815f190f6346bebc135
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4b6ef4823fc78c15dda31e96d8bd6c4f798c0e99
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711462"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097748"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -74,20 +74,20 @@ Der Reverseproxy verwendet ein bestimmtes URI-Format (Uniform Resource Identifie
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **HTTP(S):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Für die HTTPS-Weiterleitung lesen Sie die Informationen unter [Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy](service-fabric-reverseproxy-configure-secure-communication.md), nachdem Sie den Reverseproxy für das Lauschen von HTTPS eingerichtet haben.
-* **Voll qualifizierter Domänenname (Fully Qualified Domain Name, FQDN) des Clusters | interne IP**: Für externe Clients können Sie den Reverseproxy so konfigurieren, dass er über die Clusterdomäne erreichbar ist, z.B. „mycluster.eastus.cloudapp.azure.com“. Standardmäßig wird der Reverseproxy auf jedem Knoten ausgeführt. Für internen Datenverkehr ist der Reverseproxy unter „localhost“ oder einer beliebigen internen Knoten-IP (z.B. 10.0.0.1) erreichbar.
-* **Port:** Der Port, z.B. 19081, der für den Reverseproxy angegeben wurde.
-* **ServiceInstanceName:** Der vollqualifizierte Name der bereitgestellten Dienstinstanz, den Sie erreichen möchten, ohne das Schema „fabric:/“. Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
+* **http(s):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Für die HTTPS-Weiterleitung lesen Sie die Informationen unter [Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy](service-fabric-reverseproxy-configure-secure-communication.md), nachdem Sie den Reverseproxy für das Lauschen von HTTPS eingerichtet haben.
+* **Cluster fully qualified domain name (FQDN) | internal IP** (Voll qualifizierter Domänenname (Fully Qualified Domain Name, FQDN) des Clusters | interne IP): Für externe Clients können Sie den Reverseproxy so konfigurieren, dass er über die Clusterdomäne erreichbar ist, z.B. „mycluster.eastus.cloudapp.azure.com“. Standardmäßig wird der Reverseproxy auf jedem Knoten ausgeführt. Für internen Datenverkehr ist der Reverseproxy unter „localhost“ oder einer beliebigen internen Knoten-IP (z.B. 10.0.0.1) erreichbar.
+* **Port**: Der Port, z.B. 19081, der für den Reverseproxy angegeben wurde
+* **ServiceInstanceName**: Der vollqualifizierte Name der bereitgestellten Dienstinstanz, den Sie erreichen möchten, ohne das Schema „fabric:/“. Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
 
     Beim Dienstinstanznamen wird Groß-/Kleinschreibung beachtet. Eine andere Groß-/Kleinschreibung für den Dienstinstanznamen in der URL bewirkt, dass die Anforderungen mit 404 (Nicht gefunden) fehlschlagen.
-* **Suffixpfad:** Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten, z.B. *myapi/values/add/3*.
-* **PartitionKey:** Für einen partitionierten Dienst ist dies der berechnete Partitionsschlüssel der Partition, die Sie erreichen möchten. Beachten Sie, dass dies *nicht* die GUID der Partitions-ID ist. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
-* **PartitionKind:** Das Partitionsschema des Diensts. Dies kann „Int64Range“ oder „Named“ sein. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
+* **Suffix path** (Suffixpfad): Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten, z.B. *myapi/values/add/3*.
+* **PartitionKey**: Für einen partitionierten Dienst ist dies der berechnete Partitionsschlüssel der Partition, die Sie erreichen möchten. Beachten Sie, dass dies *nicht* die GUID der Partitions-ID ist. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
+* **PartitionKind**: Das Partitionsschema des Diensts. Dies kann „Int64Range“ oder „Named“ sein. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
 * **ListenerName** Die Endpunkte des Diensts weisen folgendes Format auf: {"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} Wenn der Dienst mehrere Endpunkte verfügbar macht, identifiziert dieser Parameter den Endpunkt, an den die Clientanforderung weitergeleitet werden soll. Dieser Parameter kann ausgelassen werden, wenn der Dienst nur über einen Listener verfügt.
 * **TargetReplicaSelector** Gibt an, wie das Zielreplikat oder die Zielinstanz ausgewählt werden soll.
-  * Wenn der Zieldienst zustandsbehaftet ist, kann der TargetReplicaSelector entweder „PrimaryReplica“, „RandomSecondaryReplica“ oder „RandomReplica“ sein. Ist dieser Parameter nicht angegeben, lautet der Standardwert „PrimaryReplica“.
+  * Wenn der Zieldienst zustandsbehaftet ist, kann „TargetReplicaSelector“ einen der folgenden Werte haben:  „PrimaryReplica“, „RandomSecondaryReplica“ oder „RandomReplica“. Ist dieser Parameter nicht angegeben, lautet der Standardwert „PrimaryReplica“.
   * Wenn der Zieldienst zustandslos ist, wählt der Reverseproxy eine zufällige Instanz der Dienstpartition aus, an die die Anforderung weitergeleitet wird.
-* **Timeout:** Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 60 Sekunden. Dieser Parameter ist optional.
+* **Timeout**:  Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert beträgt 60 Sekunden. Dieser Parameter ist optional.
 
 ### <a name="example-usage"></a>Beispielverwendung
 Nehmen wir als Beispiel den Dienst *fabric:/MyApp/MyService*, der einen HTTP-Listener für die folgende URL öffnet:

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 848d6ffbccc809df1ab5c012c38174e13eacc391
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bce28a2498793b7a1edb8aa0437a7d7c75a45ae9
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828255"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911947"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -60,7 +60,9 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
 
     Zum Testen von mit AES oder CENC (Widevine und/oder PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) verwenden. Stellen Sie sicher, dass Sie auf „Erweiterte Optionen“ klicken und Ihre Verschlüsselungsoptionen angeben.
 
-    Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome/Opera/Firefox für Widevine, Microsoft Edge/IE11 für PlayReady, Safari unter macOS für FairPlay.
+    Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. 
+    
+    Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome/Opera/Firefox für Widevine, Microsoft Edge/IE11 für PlayReady, Safari unter macOS für FairPlay.
 
 3. Sicherheitstokendienst (STS), der JSON Web Token (JWT) als Zugriffstoken für den Zugriff auf die Back-End-Ressource ausgibt. Sie können die AMS-Lizenzbereitstellungsdienste als Back-End-Ressource verwenden. Ein Sicherheitstokendienst muss Folgendes definieren:
 
@@ -69,7 +71,7 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
   * Symmetrische oder asymmetrische Überprüfung für die Signaturüberprüfung
   * Unterstützung des Schlüsselrollovers (sofern erforderlich)
 
-    Sie können [dieses STS-Tool](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) verwenden, um den Sicherheitstokendienst zu testen. Das Tool unterstützt alle drei Typen von Verifizierungsschlüssel: symmetrisch, asymmetrisch oder AAD mit Schlüsselrollover. 
+    Sie können [dieses STS-Tool](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) verwenden, um den Sicherheitstokendienst zu testen. Das Tool unterstützt alle drei Typen von Verifizierungsschlüsseln: symmetrisch, asymmetrisch oder Azure AD mit Schlüsselrollover. 
 
 > [!NOTE]
 > Es wird dringend empfohlen, jede Komponente umfassend einzurichten und vollständig zu testen (siehe Beschreibung weiter oben), bevor Sie mit der nächsten Komponente fortfahren. Verwenden Sie zum Testen Ihres Inhaltsschutzsystems die in der Aufstellung oben angegebenen Tools.  

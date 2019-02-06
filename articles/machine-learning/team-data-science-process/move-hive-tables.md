@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390935"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477852"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -25,12 +25,12 @@ In diesem Artikel werden allgemeine Hive-Abfragen beschrieben, mit denen Hive-Ta
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen, die Sie ggf. benötigen, finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
-* Sie haben einen angepassten Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt.  Anweisungen dazu finden Sie unter [Anpassen von Azure HDInsight Hadoop-Clustern für die erweiterte Analyse](customize-hadoop-cluster.md).
-* Sie haben den Remotezugriff auf den Cluster aktiviert, sich angemeldet und die Hadoop-Befehlszeilenkonsole geöffnet. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](customize-hadoop-cluster.md).
+* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen, die Sie ggf. benötigen, finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-introduction.md).
+* Sie haben einen angepassten Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt.  Anweisungen finden Sie unter [Einrichten von Clustern in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
+* Sie haben den Remotezugriff auf den Cluster aktiviert, sich angemeldet und die Hadoop-Befehlszeilenkonsole geöffnet. Anweisungen finden Sie unter [Verwalten von Apache Hadoop-Clustern](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure Blob Storage
-Wenn Sie einen virtuellen Azure-Computer mithilfe der Anweisungen in [Einrichten eines virtuellen Azure-Computers für die erweiterte Analyse](../data-science-virtual-machine/setup-virtual-machine.md) erstellt haben, wurde diese Skriptdatei bereits in das Verzeichnis *C:\\Users\\\<user name\>\\Documents\\Data Science Scripts* auf dem virtuellen Computer heruntergeladen. Sie müssen Ihr eigenes Datenschema implementieren und die Konfiguration von Azure Blob Storage in den entsprechenden Feldern dieser Abfragen vornehmen. Danach sollten diese Hive-Abfragen für die Übermittlung bereit sein.
+Wenn Sie einen virtuellen Azure-Computer mithilfe der Anweisungen in [Einrichten eines virtuellen Azure-Computers für die erweiterte Analyse](../../machine-learning/data-science-virtual-machine/overview.md) erstellt haben, wurde diese Skriptdatei bereits in das Verzeichnis *C:\\Users\\\<user name\>\\Documents\\Data Science Scripts* auf dem virtuellen Computer heruntergeladen. Sie müssen Ihr eigenes Datenschema implementieren und die Konfiguration von Azure Blob Storage in den entsprechenden Feldern dieser Abfragen vornehmen. Danach sollten diese Hive-Abfragen für die Übermittlung bereit sein.
 
 Es wird davon ausgegangen, dass die Daten für die Hive-Tabellen in einem **unkomprimierten** Tabellenformat vorliegen und dass die Daten in den Standardcontainer (oder einen zusätzlichen Container) des Speicherkontos hochgeladen wurden, das vom Hadoop-Cluster verwendet wird.
 
@@ -38,7 +38,7 @@ Wenn Sie mit den **NYC Taxi Trip-Daten**üben möchten, gehen Sie so vor:
 
 * **Laden** Sie die 24 [NYC Taxi Trip Data](http://www.andresmh.com/nyctaxitrips) -Dateien (12 Fahrtendateien und 12 Fahrpreisdateien) herunter.
 * **Entpacken** Sie alle Dateien als CSV-Dateien
-* **Laden** Sie diese Dateien in den Standardcontainer (oder einen anderen geeigneten Container) im Azure-Speicherkonto, das im Thema [Anpassen von Azure HDInsight Hadoop-Clustern für erweiterte Analyseprozesse und -technologien](customize-hadoop-cluster.md) erstellt wurde. Den Prozess zum Hochladen der CSV-Dateien in den Standardcontainer für das Speicherkonto finden Sie auf dieser [Seite](hive-walkthrough.md#upload).
+* **Laden** Sie sie in den Standardspeicherort (oder den entsprechenden Container) des Azure Storage-Kontos hoch. Optionen für ein solches Konto finden Sie im Thema [Verwenden von Azure Storage mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). Den Prozess zum Hochladen der CSV-Dateien in den Standardcontainer für das Speicherkonto finden Sie auf dieser [Seite](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Übermitteln von Hive-Abfragen
 Hive-Abfragen können folgendermaßen übermittelt werden:

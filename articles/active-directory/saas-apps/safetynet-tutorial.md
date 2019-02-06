@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration von SafetyNet in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit SafetyNet | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SafetyNet konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: caa96ea2-da21-4529-8fab-0e06367beb40
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 7756e943d25a02b3ec3e5a9150bb5eec8485eda7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4fb21f96c682775b4f7360abcdac7b64c78f76d9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421531"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158280"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Tutorial: Integration von SafetyNet in Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Tutorial: Azure Active Directory-Integration mit SafetyNet
 
 In diesem Tutorial erfahren Sie, wie Sie SafetyNet in Azure Active Directory (Azure AD) integrieren.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von SafetyNet](mailto:dev@predictivesolutions.com), um diese Werte zu erhalten.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+1. Klicken Sie im Abschnitt  **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
     ![Downloadlink für das Zertifikat](./media/safetynet-tutorial/tutorial_safetynet_certificate.png)
 
@@ -165,7 +165,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-safetynet-test-user"></a>Erstellen eines SafetyNet-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in SafetyNet eine Benutzerin namens Britta Simon. Arbeiten Sie beim Hinzufügen der Benutzer zur SafetyNet-Plattform mit dem [SafetyNet-Supportteam](mailto:dev@predictivesolutions.com) zusammen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in SafetyNet eine Benutzerin namens Britta Simon. Arbeiten Sie beim Hinzufügen der Benutzer zur SafetyNet-Plattform mit dem [SafetyNet-Supportteam](mailto:dev@predictivesolutions.com) zusammen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -1,36 +1,36 @@
 ---
-Titel: Azure AI Gallery titleSuffix: Azure Machine Learning Studio-Beschreibung: Teilen und entdecken Sie Analytics-Ressourcen und mehr in der Azure AI Gallery. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Azure AI Gallery titleSuffix: Azure Machine Learning Studio-Beschreibung: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure AI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11.01.11.2019
 ---
-# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Teilen und Entdecken von Ressourcen in Azure AI Gallery
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure AI-Katalog
 
 **[Azure AI Gallery](http://gallery.cortanaintelligence.com)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Azure-KI-Diensten erstellt wurden.
-Die Gallery enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
+Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
 
-## <a name="what-can-i-find-in-the-gallery"></a>Was finde ich in der Gallery?
+## <a name="what-can-i-find-in-the-gallery"></a>Was finde ich im Katalog?
 
-Azure AI Gallery enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Diese umfassen:
+Azure AI Gallery enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Das umfasst:
 
 * **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
 * **Tutorials**: In mehreren Tutorials werden Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben.
 * **Sammlungen**: Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
 * **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihrem Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
-* **Jupyter Notebooks**: Jupyter Notebooks umfassen Code, Datenvisualisierungen und Dokumentationen in einem einzelnen, interaktiven Zeichenbereich. Über Notebooks in der Gallery werden Tutorials und ausführliche Erklärungen von erweiterten Machine Learning-Verfahren und -Lösungen bereitgestellt.
+* **Jupyter Notebooks**: Jupyter Notebooks umfassen Code, Datenvisualisierungen und Dokumentationen in einem einzelnen, interaktiven Zeichenbereich. Über Notebooks im Katalog werden Tutorials und ausführliche Erklärungen von erweiterten Machine Learning-Verfahren und -Lösungen bereitgestellt.
 
 ## <a name="discover-and-contribute"></a>Entdecken und Mitwirken
 
 Jeder kann in der Gallery nach unterschiedlichen Arten von Ressourcen, die von Microsoft und der Data Science-Community bereitgestellt wurden, suchen.
 Mit diesen Ressourcen erfahren Sie mehr und verschaffen sich beim Lösen Ihrer eigenen Datenanalyseprobleme einen Vorsprung.
 
-In der Gallery finden Sie neu veröffentlichte und beliebte Ressourcen, oder Sie können nach Name, Tags, Algorithmen und anderen Attributen suchen.
-Klicken Sie im Gallery-Header auf **Browse all** (Alle durchsuchen), und wählen Sie dann links auf der Seite Optionen zur Verfeinerung der Suche aus, und geben Sie oben die Suchbegriffe ein.
+Im Katalog finden Sie neu veröffentlichte und beliebte Ressourcen, oder Sie können nach Name, Tags, Algorithmen und anderen Attributen suchen.
+Klicken Sie im Katalogheader auf **Browse all** (Alle durchsuchen), und wählen Sie dann links auf der Seite Optionen zur Verfeinerung der Suche aus, und geben Sie oben die Suchbegriffe ein.
 Zeigen Sie Beiträge eines bestimmten Verfassers an, indem Sie in den Kacheln auf seinen Namen klicken.
 Über den Kommentarbereich auf jeder Ressourcenseite können Sie Kommentare hinzufügen, Feedback geben oder Fragen stellen.
 Außerdem können Sie eine Ressource auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden oder einen Link per E-Mail versenden.
 
-Wenn Sie sich registrieren, werden Sie Mitglied der Gallery-Community. Sie können dann Ressourcen herunterladen oder eigene Gallery-Elemente bereitstellen, damit andere Benutzer von Ihren Lösungen profitieren können.
+Wenn Sie sich registrieren, werden Sie Mitglied der Katalog-Community. Sie können dann Ressourcen herunterladen oder eigene Gallery-Elemente bereitstellen, damit andere Benutzer von Ihren Lösungen profitieren können.
 
 Sie können **Experimente**, **benutzerdefinierte Module** und **Jupyter Notebooks** herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
 Sie können mit **Experimenten**, **Tutorials** und **Sammlungen** zur Gallery beitragen.
@@ -90,20 +90,20 @@ Zudem können Sie sich mit einem Diskussionstool wie Disqus anmelden und Benachr
    > [!TIP]
    > Die Textfelder für die Markdownbearbeitung und die Vorschau sind klein. Verfassen Sie Ihre Dokumentation Ihres Experiments am besten in einem Markdown-Editor (z.B. [Visual Studio Code](https://aka.ms/vscode)), und fügen Sie die fertige Dokumentation dann in das Textfeld in der Gallery ein.
 
-1. Wählen Sie auf der Seite **Bildauswahl** ein Miniaturbild für Ihr Experiment aus. Die Miniaturansicht wird oben auf der Detailseite des Experiments und in dessen Kachel angezeigt. Andere Benutzer sehen die Miniaturansicht, wenn sie die Gallery durchsuchen. Sie können Bilder von Ihrem Computer hochladen oder ein vorgefertigtes Bild aus die Gallery auswählen.
+1. Wählen Sie auf der Seite **Bildauswahl** ein Miniaturbild für Ihr Experiment aus. Die Miniaturansicht wird oben auf der Detailseite des Experiments und in dessen Kachel angezeigt. Andere Benutzer sehen die Miniaturansicht, wenn sie den Katalog durchsuchen. Sie können Bilder von Ihrem Computer hochladen oder ein vorgefertigtes Bild aus dem Katalog auswählen.
 
 1. Auf der Seite **Einstellungen** wählen Sie unter **Sichtbarkeit** aus, ob Sie Ihre Inhalte zur öffentlichen Verfügbarkeit veröffentlichen möchten (**Öffentlich**) oder nur für Personen, die über einen Link zur Seite verfügen (**Nicht aufgeführt**).
 
    > [!TIP]
    > Wenn Sie sicherstellen möchten, dass Ihre Dokumentation fehlerfrei ist, bevor Sie sie öffentlich freigeben, können Sie das Experiment als **Nicht aufgeführt** veröffentlichen. Sie können die Sichtbarkeit später auf der Detailseite des Experiments in **Öffentlich** ändern. Hinweis: Wenn Sie ein Experiment als **Öffentlich** festlegen, können Sie es nicht später nicht in **Nicht aufgeführt** ändern.
 
-1. Klicken Sie auf das Kontrollkästchen **OK**, um das Experiment in der Gallery zu veröffentlichen.
+1. Klicken Sie auf das Kontrollkästchen **OK**, um das Experiment im Katalog zu veröffentlichen.
 
 ### <a name="update-your-experiment"></a>Aktualisieren Sie Ihr Experiment
 
-Sie können bei Bedarf Änderungen am Workflow (Module, Parameter usw.) eines Experiments vornehmen, das Sie in der Gallery veröffentlicht haben. Nehmen Sie in Machine Learning Studio die gewünschten Änderungen am Experiment vor, und veröffentlichen Sie es dann erneut. Das veröffentlichte Experiment wird mit den Änderungen aktualisiert.
+Sie können bei Bedarf Änderungen am Workflow (Module, Parameter usw.) eines Experiments vornehmen, das Sie im Katalog veröffentlicht haben. Nehmen Sie in Machine Learning Studio die gewünschten Änderungen am Experiment vor, und veröffentlichen Sie es dann erneut. Das veröffentlichte Experiment wird mit den Änderungen aktualisiert.
 
-Sie können die folgenden Informationen Ihres Experiments direkt in der Gallery ändern:
+Sie können die folgenden Informationen Ihres Experiments direkt im Katalog ändern:
 
 * Experimentname
 * Zusammenfassung oder Beschreibung
@@ -111,20 +111,20 @@ Sie können die folgenden Informationen Ihres Experiments direkt in der Gallery 
 * Image
 * Sichtbarkeitseinstellung (**Öffentlich** oder **Nicht aufgeführt**)
 
-Sie können das Experiment auch aus der Gallery löschen.
+Sie können das Experiment auch aus dem Katalog löschen.
 
-Sie können diese Änderungen über die Detailseite des Experiments oder Ihre Profilseite in der Gallery vornehmen oder es dort löschen.
+Sie können diese Änderungen über die Detailseite des Experiments oder Ihre Profilseite im Katalog vornehmen oder es dort löschen.
 
-* Wählen Sie auf der Detailseite des Experiments **Bearbeiten** aus, um die Details für das Experiment zu ändern. Die Detailseite wechselt in den Bearbeitungsmodus. Um Änderungen vorzunehmen, wählen Sie neben dem Namen, der Zusammenfassung oder den Tags des Experiments **Bearbeiten** aus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Um die Sichtbarkeitseinstellungen des Experiments (**Öffentlich** oder **Nicht aufgeführt**) zu ändern oder um das Experiment aus der Gallery zu löschen, wählen Sie das Symbol **Einstellungen** aus.
+* Wählen Sie auf der Detailseite des Experiments **Bearbeiten** aus, um die Details für das Experiment zu ändern. Die Detailseite wechselt in den Bearbeitungsmodus. Um Änderungen vorzunehmen, wählen Sie neben dem Namen, der Zusammenfassung oder den Tags des Experiments **Bearbeiten** aus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Um die Sichtbarkeitseinstellungen des Experiments (**Öffentlich** oder **Nicht aufgeführt**) zu ändern oder um das Experiment aus dem Katalog zu löschen, wählen Sie das Symbol **Einstellungen** aus.
 
-* Wählen Sie auf Ihrer Profilseite den Pfeil nach unten für das Experiment aus, und wählen Sie dann **Bearbeiten** aus. Daraufhin gelangen Sie zur Detailseite des Experiments im Bearbeitungsmodus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Wählen Sie **Löschen** aus, um das Experiment aus der Gallery zu löschen.
+* Wählen Sie auf Ihrer Profilseite den Pfeil nach unten für das Experiment aus, und wählen Sie dann **Bearbeiten** aus. Daraufhin gelangen Sie zur Detailseite des Experiments im Bearbeitungsmodus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Wählen Sie **Löschen** aus, um das Experiment aus dem Katalog zu löschen.
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tipps zur Dokumentation und Veröffentlichung Ihres Experiments
 
 * Sie können davon ausgehen, dass der Leser bereits Data Science-Erfahrungen hat, es kann jedoch trotzdem hilfreich sein, einfache Sprache zu verwenden. Erklären Sie nach Möglichkeit alle Sachverhalte ausführlich.
 * Stellen Sie daher genügend Informationen und ausführliche Erklärungen bereit, um dem Leser beim Navigieren durch das Experiment zu helfen.
 * Visuelle Elemente können dem Leser beim Verständnis und der richtigen Verwendung der Dokumentation Ihres Experiments behilflich sein. Visuelle Elemente umfassen Experimentdiagramme und Screenshots von Daten.
-* Wenn Sie ein Dataset in Ihr Experiment einbeziehen (d.h., wenn Sie das Dataset nicht über das Modul „Import Data“ importieren), ist das Dataset Teil Ihres Experiments und wird in der Gallery veröffentlicht. Stellen Sie sicher, dass das veröffentlichte Dataset über Lizenzbestimmungen verfügt, die jedem Benutzer das Teilen und Herunterladen ermöglichen. Beiträge zur Gallery unterliegen den [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/)von Azure.
+* Wenn Sie ein Dataset in Ihr Experiment einbeziehen (d.h., wenn Sie das Dataset nicht über das Modul „Import Data“ importieren), ist das Dataset Teil Ihres Experiments und wird in der Gallery veröffentlicht. Stellen Sie sicher, dass das veröffentlichte Dataset über Lizenzbestimmungen verfügt, die jedem Benutzer das Teilen und Herunterladen ermöglichen. Beiträge zum Katalog unterliegen den [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/)von Azure.
 
 ## <a name="contribute-tutorials-and-collections"></a>Mitwirken in Form von Tutorials und Sammlungen
 
@@ -172,7 +172,7 @@ Mit den Bildern, die Sie mit Ihrem Beitrag übermitteln, wird eine Kachel erstel
 
 **Was geschieht mit dem Dataset, das ich in einem Experiment verwendet habe? Wird das Dataset auch in der Gallery veröffentlicht?**
 
-Wenn Ihr Dataset Teil des Experiments ist und nicht über das Modul „Import Data“ importiert wird, wird es als Teil des Experiments in der Gallery veröffentlicht. Stellen Sie sicher, dass das Dataset, das Sie mit Ihrem Experiment veröffentlichen, über die entsprechenden Lizenzbedingungen verfügt. Die Lizenzbedingungen sollten die Freigabe und den Download der Daten zulassen. Beiträge zur Gallery unterliegen den [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/)von Azure.
+Wenn Ihr Dataset Teil des Experiments ist und nicht über das Modul „Import Data“ importiert wird, wird es als Teil des Experiments in der Gallery veröffentlicht. Stellen Sie sicher, dass das Dataset, das Sie mit Ihrem Experiment veröffentlichen, über die entsprechenden Lizenzbedingungen verfügt. Die Lizenzbedingungen sollten die Freigabe und den Download der Daten zulassen. Beiträge zum Katalog unterliegen den [Nutzungsbedingungen](https://azure.microsoft.com/support/legal/website-terms-of-use/)von Azure.
 
 **Ich verwende ein Experiment, das über ein „Import Data“-Modul Daten aus HDInsight oder SQL Server abruft. Zum Abrufen der Daten werden meine Anmeldeinformationen verwendet. Kann ich diese Art von Experiment veröffentlichen? Wie kann ich sicher sein, dass meine Anmeldeinformationen nicht freigegeben werden?**
 
@@ -184,8 +184,8 @@ Nachdem Sie ein Tag eingegeben haben, drücken Sie die TAB-TASTE, um ein weitere
 
 ## <a name="we-want-to-hear-from-you"></a>Wir möchten von Ihnen hören!
 
-Die Gallery soll von unseren Benutzern für unsere Benutzer gestaltet werden. Teilen Sie uns mit dem Smiley auf der rechten Seite mit, was Sie an der Gallery schätzen oder daran ändern möchten.  
+Der Katalog soll von unseren Benutzern für unsere Benutzer gestaltet werden. Teilen Sie uns mit dem Smiley auf der rechten Seite mit, was Sie am Katalog schätzen oder daran ändern möchten.  
 
 ![Feedback](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[ZUR GALLERY &gt;&gt;](http://gallery.azure.ai)**
+**[ZUM KATALOG &gt;&gt;](http://gallery.azure.ai)**

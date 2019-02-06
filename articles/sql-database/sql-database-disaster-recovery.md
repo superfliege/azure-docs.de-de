@@ -1,5 +1,5 @@
 ---
-title: Notfallwiederherstellung für SQL-Datenbank | Microsoft Docs
+title: Notfallwiederherstellung für SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der Geowiederherstellung von Azure SQL-Datenbank wiederherstellen.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 889f8f597b0b744ea5fe6ef2f5c82f2d09629607
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605210"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474784"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 
@@ -37,7 +37,7 @@ Informationen über Szenarien zum Thema Geschäftskontinuität sowie über die F
 
 Um eine erfolgreiche Wiederherstellung in eine andere Datenregion mithilfe von Failovergruppen oder georedundanter Sicherungen durchzuführen, müssen Sie einen Server in einem anderen Rechenzentrum vorbereiten, um diesen bei einem Ausfall zum neuen primären Server hochstufen zu können. Darüber hinaus müssen Sie sorgfältig definierte Schritte dokumentiert und getestet haben, um eine reibungslose Wiederherstellung sicherzustellen. Folgende Vorbereitungsschritte sind erforderlich:
 
-- Identifizieren Sie den logischen Server in einer anderen Region, der der neue primäre Server werden soll. Bei der Geowiederherstellung ist dies im Allgemeinen ein Server in der [gekoppelten Region](../best-practices-availability-paired-regions.md) für die Region, in der sich Ihre Datenbank befindet. Hierdurch entfallen Kosten für zusätzlichen Datenverkehr während der Geowiederherstellungsvorgänge.
+- Identifizieren Sie den SQL-Datenbank-Server in einer anderen Region, der der neue primäre Server werden soll. Bei der Geowiederherstellung ist dies im Allgemeinen ein Server in der [gekoppelten Region](../best-practices-availability-paired-regions.md) für die Region, in der sich Ihre Datenbank befindet. Hierdurch entfallen Kosten für zusätzlichen Datenverkehr während der Geowiederherstellungsvorgänge.
 - Identifizieren Sie die Firewallregeln auf Serverebene, die erforderlich sind, damit Benutzer auf die neue primäre Datenbank zugreifen können. Optional können Sie diese Regeln auch neu definieren.
 - Legen Sie fest, wie Benutzer an den neuen primären Server umgeleitet werden sollen, indem Sie z.B. Verbindungszeichenfolgen oder DNS-Einträge ändern.
 - Identifizieren Sie die Anmeldeinformationen, die in der Masterdatenbank auf dem neuen primären Server vorhanden sein müssen, und stellen Sie sicher, dass die entsprechenden Benutzer über die geeigneten Berechtigungen in der Masterdatenbank verfügen. Optional können Sie diese Informationen auch neu erstellen. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).

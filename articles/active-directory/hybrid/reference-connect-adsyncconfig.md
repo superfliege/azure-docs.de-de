@@ -5,15 +5,15 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
-ms.component: hybrid
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 19b7cebd1c75e1a2bbfe34e3ab4e657051e8a6d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813577"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159515"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADSyncConfig
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADSyncConfig.psm1“, das in Azure AD Connect enthalten ist.
@@ -1215,7 +1215,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ### <a name="description"></a>Beschreibung
 Die Funktion „Set-ADSyncUnifiedGroupWritebackPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
-„Generisches Lesen/Schreiben“, „Löschen“, „Struktur löschen“ und „Untergeordnetes Objekt erstellen/löschen“ für alle Objekttypen und Unterobjekte
+„Generisches Lesen/Schreiben“, „Löschen“, „Struktur löschen“ und „Untergeordnetes Objekt erstellen/löschen“ für alle Gruppenobjekttypen und Unterobjekte
 
 Diese Berechtigungen gelten für alle Domänen in der Gesamtstruktur.
 Optional können Sie einen „DistinguishedName“ im Parameter „ADobjectDN“ bereitstellen, um diese Berechtigungen nur für das AD-Objekt (einschließlich Vererbung an Unterobjekte) festzulegen.

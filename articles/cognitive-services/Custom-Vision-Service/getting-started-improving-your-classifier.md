@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 2bee7f0af98bf03a13e376dea9dbf083b3f61815
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 72ba363201b27a8ca31c73af1d0cceb436de468d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340289"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209391"
 ---
 # <a name="how-to-improve-your-classifier"></a>Verbessern der Klassifizierung
 
@@ -41,11 +41,11 @@ Darüber hinaus sollten Sie sicherstellen, dass Ihre Daten ausgewogen sind. Wenn
 
 Stellen Sie Bilder bereit, die für die Elemente repräsentativ sind, die während der normalen Nutzung an die Klassifizierung übermittelt werden. Wenn Sie z.B. eine Klassifizierung für „Apfel“ nur mit Bildern von Äpfeln auf Tellern trainieren, ist Ihre Klassifizierung weniger genau, wenn Sie Vorhersagen zu Fotos von Äpfeln an Bäumen durchführen möchten. Indem Sie unterschiedliche Arten von Bildern eingeben, stellen Sie sicher, dass Ihre Klassifizierung nicht einseitig verfälscht wird und gut generalisieren kann. Im Folgenden finden Sie einige Möglichkeiten, um Ihren Trainingssatz vielseitiger zu machen:
 
-__Hintergrund__: Stellen Sie Bilder Ihres Objekts vor verschiedenen Hintergründen bereit (also Obst auf Tellern im Gegensatz zu Obst in einer Lebensmitteltüte). Fotos im Kontext eignen sich besser als Fotos vor neutralen Hintergründen, da erstere weitere Informationen für die Klassifizierung bereitstellen.
+__Hintergrund:__ Stellen Sie Bilder Ihres Objekts vor verschiedenen Hintergründen bereit (also Obst auf Tellern im Gegensatz zu Obst in einer Lebensmitteltüte). Fotos im Kontext eignen sich besser als Fotos vor neutralen Hintergründen, da erstere weitere Informationen für die Klassifizierung bereitstellen.
 
 ![Abbildung: Beispiele für Hintergründe](./media/getting-started-improving-your-classifier/background.png)
 
-__Beleuchtung__: Stellen Sie Bilder mit unterschiedlicher Beleuchtung bereit (also mit Blitz, hohem Belichtungswert usw.), insbesondere dann, wenn die für die Vorhersage verwendeten Bilder unterschiedlich ausgeleuchtet sind. Es ist auch hilfreich, Bilder mit unterschiedlichen Werten hinsichtlich Sättigung, Farbton und Helligkeit bereitzustellen.
+__Beleuchtung:__ Stellen Sie Bilder mit unterschiedlicher Beleuchtung bereit (also mit Blitz, hohem Belichtungswert usw.), insbesondere dann, wenn die für die Vorhersage verwendeten Bilder unterschiedlich ausgeleuchtet sind. Es ist auch hilfreich, Bilder mit unterschiedlichen Werten hinsichtlich Sättigung, Farbton und Helligkeit bereitzustellen.
 
 ![Abbildung: Beispiele für Beleuchtung](./media/getting-started-improving-your-classifier/lighting.png)
 

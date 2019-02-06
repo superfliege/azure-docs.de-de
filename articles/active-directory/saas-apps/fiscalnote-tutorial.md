@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von FiscalNote | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit FiscalNote | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Einmaliges Anmelden (Single Sign-On, SSO) zwischen Azure Active Directory und FiscalNote konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 55274f26-be7e-4514-964c-7186ecb55c4a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2dfc450fe53c543c1d5119cd9c6954aadaa3b3ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cea5c6ad57d8c391bd1d5264abbc1397fbad0f30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421422"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162004"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>Tutorial: Azure Active Directory-Integration von FiscalNote
+# <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>Tutorial: Azure Active Directory-Integration mit FiscalNote
 
 In diesem Tutorial erfahren Sie, wie Sie FiscalNote in Azure Active Directory (Azure AD) integrieren.
 
@@ -192,7 +192,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in FiscalNote. FiscalNote unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf FiscalNote ein neuer Benutzer erstellt.
 >[!Note]
->Wenden Sie sich an das [Supportteam von FiscalNote](mailto:support@fiscalnote.com), wenn Sie einen Benutzer manuell erstellen müssen.
+>Setzen Sie sich mit dem  [Supportteam von FiscalNote](mailto:support@fiscalnote.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

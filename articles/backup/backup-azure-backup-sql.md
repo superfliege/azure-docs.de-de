@@ -2,18 +2,18 @@
 title: Azure Backup für SQL Server-Workloads mit DPM
 description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe des Azure Backup-Diensts.
 services: backup
-author: adigan
-manager: Nkolli
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: 232885398c996d0c744ac55b6c6967fd398eec0b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945653"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300692"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup.
@@ -68,7 +68,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 
     ![Methode für die anfängliche Replikation](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Die anfängliche Sicherungskopie erfordert eine Übertragung der gesamten Datenquelle (SQL Server-Datenbank) vom Produktionsserver (SQL Server-Computer) zum DPM-Server. Der Umfang dieser Daten kann sehr groß sein, und die Übertragung der Daten über das Netzwerk überschreitet möglicherweise die Bandbreite. Aus diesem Grund stehen Administratoren zwei Optionen für die Übertragung der anfänglichen Sicherung zur Verfügung: 1. **Manuell** (mithilfe von Wechselmedien), um eine Überlastung der Bandbreite zu vermeiden. 2. **Automatisch über das Netzwerk** (zu einem bestimmten Zeitpunkt).
+    Die anfängliche Sicherungskopie erfordert eine Übertragung der gesamten Datenquelle (SQL Server-Datenbank) vom Produktionsserver (SQL Server-Computer) zum DPM-Server. Der Umfang dieser Daten kann sehr groß sein, und die Übertragung der Daten über das Netzwerk überschreitet möglicherweise die Bandbreite. Aus diesem Grund können Administratoren auswählen, die anfängliche Sicherung zu übertragen: **Manuell** (mithilfe von Wechselmedien), um eine Überlastung der Bandbreite zu vermeiden, oder **Automatisch über das Netzwerk** (zu einem bestimmten Zeitpunkt).
 
     Sobald die anfängliche Sicherung abgeschlossen ist, werden nur noch inkrementelle Sicherungen basierend auf der anfänglichen Sicherungskopie erstellt. Inkrementelle Sicherungen sind im Allgemeinen klein und lassen sich problemlos über das Netzwerk übertragen.
 10. Wählen Sie aus, wann die Konsistenzprüfung ausgeführt werden soll, und klicken Sie auf **Weiter**.
@@ -90,7 +90,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
     >
     >
 
-    **Best Practice**: Stellen Sie sicher, dass Azure Backup-Sicherungen so geplant sind, dass sie nach Abschluss der lokalen Datenträgersicherungen mithilfe von DPM ausgeführt werden. Auf diese Weise wird sichergestellt, dass die neueste Datenträgersicherung nach Azure kopiert wird.
+    **Bewährte Methode:** Stellen Sie sicher, dass Azure Backup-Sicherungen so geplant sind, dass sie nach Abschluss der lokalen Datenträgersicherungen mithilfe von DPM ausgeführt werden. Auf diese Weise wird sichergestellt, dass die neueste Datenträgersicherung nach Azure kopiert wird.
 
 13. Wählen Sie den Zeitplan für die Aufbewahrungsrichtlinie. Ausführliche Informationen zur Funktionsweise der Aufbewahrungsrichtlinie finden Sie im Artikel [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](backup-azure-backup-cloud-as-tape.md).
 

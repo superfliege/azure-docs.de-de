@@ -3,21 +3,21 @@ title: Azure SQL-Datenbank – auf DTU basierende Ressourcenlimits für Einzelda
 description: Diese Seite beschreibt einige allgemeine auf DTU basierende Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: sachinpMSFT
-ms.author: sachinp
-ms.reviewer: carlrab
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 5ddcacbf805ae9d2ce093058b21d53189457ffb9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: e73bb2f1908abd049ea6e2406c0d1db02381695f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233768"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455540"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das Kaufmodell auf DTU-Basis verwenden
 
@@ -30,7 +30,7 @@ Informationen zu Ressourcenlimits für Pools für elastische Datenbanken beim Ka
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Einzeldatenbank: Speicher- und Computegrößen
 
-Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken für alle Diensttarife und Computegrößen. Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
+Die folgende Tabelle enthält die verfügbaren Ressourcen für Singletons für alle Diensttarife und Computegrößen. Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) oder [REST-API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) Diensttarif, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
 
 ### <a name="basic-service-tier"></a>Basic-Dienstebene
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. DTU-Anzahl | 5 |
 | Inbegriffener Speicher (GB) | 2 |
 | Max. Speicherlösungen (GB) | 2 |
-| Max. In-Memory-OLTP-Speicher (GB) |N/V |
+| Max. In-Memory-OLTP-Speicher (GB) |– |
 | Max. gleichzeitige Worker (Anforderungen) | 30 |
 | Max. gleichzeitige Sitzungen | 300 |
 |||
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. DTU-Anzahl | 10 | 20 | 50 | 100 |
 | Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 |
 | Max. Speicherlösungen (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Max. In-Memory-OLTP-Speicher (GB) | N/V | N/V | N/V | N/V |
+| Max. In-Memory-OLTP-Speicher (GB) | – | – | – | – |
 | Max. gleichzeitige Worker (Anforderungen)| 60 | 90 | 120 | 200 |
 | Max. gleichzeitige Sitzungen |600 | 900 | 1200 | 2400 |
 ||||||
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. DTU-Anzahl | 200 | 400 | 800 | 1600 | 3000 |
 | Inbegriffener Speicher (GB) | 250 | 250 | 250 | 250 | 250 |
 | Max. Speicherlösungen (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Max. In-Memory-OLTP-Speicher (GB) | N/V | N/V | N/V | N/V |N/V |
+| Max. In-Memory-OLTP-Speicher (GB) | – | – | – | – |– |
 | Max. gleichzeitige Worker (Anforderungen)| 400 | 800 | 1600 | 3200 |6000 |
 | Max. gleichzeitige Sitzungen |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -81,17 +81,17 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |||||||
 
 > [!IMPORTANT]
-> Mehr als 1 TB Speicher im Premium-Tarif ist derzeit in allen Regionen verfügbar, mit Ausnahme von: „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „Vereinigtes Königreich, Norden“, „Vereinigtes Königreich, Süden“, „US DoD, Mitte“, „US DoD, Osten“, „US Gov, Mitte“, „USA, Westen-Mitte“.  In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „Vereinigtes Königreich, Norden“, „Vereinigtes Königreich, Süden“, „US DOD, Mitte“, „US DOD, Osten“, „US Government, Mitte“ und „USA, Westen-Mitte“.  In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt. Siehe [Aktuelle Einschränkungen für P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Einzeldatenbank: Ändern der Speichergröße
 
 - Der DTU-Preis für eine einzelne Datenbank enthält eine bestimmte Menge Speicher ohne zusätzliche Kosten. Zusätzlicher Speicher über die inbegriffene Speichermenge hinaus kann gegen zusätzliche Gebühren bis zur Obergrenze in Inkrementen von 250 GB bis zu 1 TB und dann in Inkrementen von 256 GB über 1 TB hinaus bereitgestellt werden. Informationen zu enthaltenen Speichermengen und Maximalgrößen finden Sie unter [Einzeldatenbank: Speicher- und Computegrößen](#single-database-storage-sizes-and-compute-sizes).
-- Zusätzlicher Speicher für eine einzelne Datenbank kann durch Erhöhen der maximalen Größe mithilfe von [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
+- Zusätzlicher Speicher für eine einzelne Datenbank kann durch Erhöhen der maximalen Größe mithilfe von [Azure-Portal](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-storage-size), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
 - Der Preis für zusätzlichen Speicher für eine einzelne Datenbank errechnet sich aus der Menge an zusätzlich bereitgestelltem Speicher multipliziert mit dem Einheitenpreis für zusätzlichen Speicher für die Dienstebene. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="single-database-change-dtus"></a>Einzeldatenbank: Ändern von DTUs
 
-Nach der ersten Auswahl des Diensttarifs, der Computegröße und Speichermenge können Sie eine Einzeldatenbank anhand der tatsächlichen Erfahrung über das [Azure-Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch hoch- oder herunterskalieren.
+Nach der ersten Auswahl des Diensttarifs, der Computegröße und Speichermenge können Sie eine Einzeldatenbank anhand der tatsächlichen Erfahrung über das [Azure-Portal](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch hoch- oder herunterskalieren.
 
 Das folgende Video zeigt die dynamische Änderung von Diensttarif und Computegröße zum Heraufsetzen verfügbarer DTUs für eine einzelne Datenbank.
 
@@ -103,8 +103,8 @@ Wenn Sie den Diensttarif und/oder die Computegröße einer Datenbank ändern, wi
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte eine 250-GB-Datenbank beim Wechsel in einen, aus einem oder innerhalb eines Standarddiensttarifs innerhalb von sechs Stunden zentral hochskalieren. Bei einer Datenbank der gleichen Größe, deren Computegrößen innerhalb des Diensttarifs „Premium“ geändert werden, sollte das zentrale Hochskalieren innerhalb von drei Stunden erfolgen.
 
 > [!TIP]
-> Weitere Informationen zum Überwachen laufender Vorgänge finden Sie unter [Verwalten von Vorgängen mithilfe der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
-), [Verwalten von Vorgängen mithilfe der Befehlszeilenschnittstelle](/cli/azure/sql/db/op) und [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Verwenden Sie auch diese beiden PowerShell-Befehle: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) und [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
+> Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
+), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) und [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
 - Wenn Sie ein Upgrade auf einen höheren Diensttarif oder eine höhere Computegröße durchführen, wird die maximale Datenbankgröße nicht erhöht, sofern Sie nicht ausdrücklich eine höhere Maximalgröße angeben.
 - Für das Downgrade einer Datenbank muss die verwendete Datenbankmenge kleiner als die maximal zulässige Größe des Zieldiensttarifs und der Zielcomputegröße sein.
@@ -124,14 +124,14 @@ Die folgenden Aspekte und Einschränkungen gelten für P11- und P15-Datenbanken 
 - Beim Erstellen oder Aktualisieren einer P11- oder P15-Datenbank können Sie nur in Inkrementen von 256 GB zwischen einer Maximalgröße von 1 TB und 4 TB wählen. Beim Erstellen einer P11-/P15-Datenbank ist die Standardspeicheroption von 1 TB vorausgewählt. Für Datenbanken, die sich in einer der unterstützten Regionen befinden, können Sie das Speichermaximum für eine neue oder vorhandene Einzeldatenbank auf maximal 4 TB erhöhen. Für alle anderen Regionen kann die Maximalgröße nicht mehr als 1 TB betragen. Der Preis ändert sich nicht, wenn Sie 4TB Speicher wählen.
 - Wenn die maximale Größe einer Datenbank auf mehr als 1 TB festgelegt ist, kann sie auch dann nicht in 1 TB geändert werden, wenn die tatsächlich verwendete Speichermenge unter 1 TB liegt. Folglich können Sie eine P11- oder P15-Datenbank mit einer maximalen Größe über 1 TB nicht auf eine 1-TB-P11- oder 1-TB-P15- oder niedrigere Computegröße (z.B. P1-P6) herabstufen. Diese Einschränkung gilt auch für Wiederherstellungs- und Kopierszenarien, einschließlich Point-in-Time- und Geowiederherstellung, langfristige Aufbewahrung von Sicherungen und Datenbankkopiervorgänge. Sobald eine Datenbank mit einer maximalen Größe über 1 TB konfiguriert wird, müssen alle Wiederherstellungsvorgänge dieser Datenbank für ein P11-/P15-Ziel mit einer maximalen Größe von über 1 TB ausgeführt werden.
 - Szenarien für aktive Georeplikation:
-  - Einrichten einer Georeplikationsbeziehung: Falls es sich bei der primären Datenbank um eine P11- oder P15-Datenbank handelt, müssen auch die sekundären Datenbanken vom Typ „P11“ oder „P15“ sein. Niedrigere Computegrößen werden für sekundäre Datenbanken abgelehnt, da sie nicht mehr als 1 TB unterstützen können.
+  - Einrichten einer Georeplikationsbeziehung: Falls es sich bei der primären Datenbank um eine P11- oder P15-Datenbank handelt, müssen auch die sekundären Datenbanken vom Typ „P11“ oder „P15“ sein. Eine niedrigere Computegröße wird für sekundäre Datenbanken abgelehnt, da sie nicht mehr als 1 TB unterstützen können.
   - Aktualisieren der primären Datenbank in einer Georeplikationsbeziehung: Die Änderung der maximalen Größe für eine primäre Datenbank in mehr als 1 TB löst die gleiche Änderung für die sekundäre Datenbank aus. Beide Upgrades müssen erfolgreich ausgeführt werden, damit die Änderung für die primäre Datenbank wirksam wird. Für die Option mit mehr als 1 TB gelten Regionseinschränkungen. Wenn sich die sekundäre Datenbank in einer Region befindet, die nicht mehr als 1 TB unterstützt, wird die primäre Datenbank nicht aktualisiert.
 - Die Verwendung des Import/Export-Diensts zum Laden von Datenbanken des Typs „P11-P15“ mit mehr als 1 TB wird nicht unterstützt. Verwenden Sie „SqlPackage.exe“, um Daten zu [importieren](sql-database-import.md) und [exportieren](sql-database-export.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md).
-- Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem logischen Server](sql-database-resource-limits-logical-server.md).
+- Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 - Informationen zu DTUs und eDTUs finden Sie unter [Datenbanktransaktionseinheiten (DTUs) und elastische Datenbanktransaktionseinheiten (eDTUs)](sql-database-service-tiers.md#dtu-based-purchasing-model).
 - Weitere Informationen zu Größenbeschränkungen für tempdb finden Sie unter [Einschränkungen für tempdb-Datenbanken in SQL-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

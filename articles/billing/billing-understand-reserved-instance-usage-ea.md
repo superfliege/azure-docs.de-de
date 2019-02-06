@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 87f6437f836d46fc24ae016823a1b091bcd81943
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 0f29544890fe10f4914de393a4b153cfe393a2ec
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582046"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904300"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt
 
@@ -76,7 +76,7 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 
 ## <a name="usage-summary-page-in-enterprise-portal"></a>Seite mit Übersicht über die Nutzung im Enterprise Portal
 
-Ihre Nutzung von Azure-Reservierungen wird darüber hinaus im Enterprise Portal im Abschnitt zur Nutzungsübersicht angezeigt: ![EA-Nutzungsübersicht (Enterprise Agreement)](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+Ihre Nutzung von Azure-Reservierungen wird darüber hinaus im Enterprise Portal im Abschnitt zur Nutzungsübersicht angezeigt: ![EA-Nutzungszusammenfassung (Enterprise Agreement)](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
 
 1. Die Hardwarekomponenten der VM werden nicht in Rechnung gestellt, da sie von der Reservierung abgedeckt sind. Bei einer SQL-Datenbank-Reservierung wird eine Zeile mit **Dienstnamen** als Nutzung von reservierten Azure SQL-Datenbank-Kapazitäten angezeigt.
 2. In diesem Beispiel verfügen Sie nicht über den Azure-Hybridvorteil, weshalb Ihnen die Kosten für die Windows-Software, die mit der VM verwendet wurde, in Rechnung gestellt werden.

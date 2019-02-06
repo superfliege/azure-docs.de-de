@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7f58e851ab7783e43cd6235b2169847cbf0ac5a4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 80ed88bbc901d2cbcd6bc8104e55de73549744f8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036629"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477827"
 ---
-# <a name="create-and-manage-azure-cosmos-db-resources-by-using-powershell"></a>Erstellen und Verwalten von Azure Cosmos DB-Ressourcen mit PowerShell
+# <a name="manage-azure-cosmos-resources-using-powershell"></a>Verwalten von Azure Cosmos-Ressourcen mit PowerShell
 
 Der folgende Leitfaden erläutert die Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Datenbankkonten mithilfe von Azure PowerShell. Er enthält auch Befehle zum Verwalten von Kontoschlüsseln und Failoverprioritäten in [Datenbankkonten in mehreren Regionen][distribute-data-globally]. Wenn Sie Ihr Datenbankkonto aktualisieren, können Sie Konsistenzrichtlinien ändern und Regionen hinzufügen bzw. entfernen. Zur plattformübergreifenden Verwaltung Ihres Azure Cosmos DB-Kontos können Sie die [Azure-Befehlszeilenschnittstelle](cli-samples.md), die [Ressourcenanbieter-REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
 

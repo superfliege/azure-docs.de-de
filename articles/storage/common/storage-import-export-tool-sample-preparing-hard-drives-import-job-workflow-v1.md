@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527287"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459044"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag
 Dieses Thema führt Sie durch den vollständigen Prozess zur Vorbereitung von Laufwerken für einen Importauftrag.  
   
 In diesem Beispiel werden die folgenden Daten in ein Microsoft Azure-Speicherkonto namens `mystorageaccount` importiert:  
   
-|Location|BESCHREIBUNG|  
+|Location|Beschreibung|  
 |--------------|-----------------|  
 |H:\Video|Eine Sammlung von Videos, insgesamt 5TB.|  
 |H:\Photo|Eine Sammlung von Fotos, insgesamt 30GB.|  
@@ -71,7 +71,7 @@ Darüber hinaus können Sie die folgenden Metadaten für alle Dateien festlegen:
   
 -   **DataSetName:** SampleData  
   
--   **CreationDate:** 1.10.2013  
+-   **CreationDate:** 10.01.2013  
   
 Um Metadaten für die importierten Dateien festzulegen, erstellen Sie die Textdatei `c:\WAImportExport\SampleMetadata.txt` mit folgendem Inhalt:  
   
@@ -88,7 +88,7 @@ Sie können auch bestimmte Eigenschaften für das Blob `FavoriteMovie.ISO` festl
   
 -   **Content-Type:** application/octet-stream  
   
--   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==  
+-   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ==  
   
 -   **Cache-Control:** no-cache  
   
@@ -169,4 +169,4 @@ Nach Abschluss der Kopiersitzungen können Sie die beiden Laufwerke vom Kopierco
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Vorbereiten von Festplatten für einen Importauftrag](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Kurzübersicht über häufig verwendete Befehle](../storage-import-export-tool-quick-reference-v1.md) 
+* [Kurzübersicht über häufig verwendete Befehle](../storage-import-export-tool-quick-reference-v1.md) 

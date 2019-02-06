@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
-ms.author: raynew
-ms.openlocfilehash: 3d07b7156800b50daa75978add3ad3922108f142
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 1/18/2019
+ms.author: mayg
+ms.openlocfilehash: 05a60ff2b2995642f797897d0e1f4db46c5b6741
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974011"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215842"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Ausführen eines Failovers für virtuelle Computer und physische Server 
 
@@ -27,7 +27,7 @@ Verwenden Sie folgende Tabelle, um mehr über die Failoveroptionen zu erfahren, 
 
 | Szenario | Anforderungen für die Anwendungswiederherstellung | Workflow für Hyper-V | Workflow für VMware
 |---|--|--|--|
-|Geplantes Failover aufgrund einer bevorstehenden Ausfallzeit des Datencenters| Kein Datenverlust für die Anwendung, wenn eine geplante Aktivität ausgeführt wird| Für Hyper-V repliziert ASR Daten mit einer vom Benutzer angegebenen Kopierfrequenz. Ein geplantes Failover wird verwendet, um die Frequenz zu überschreiben und die letzten Änderungen zu replizieren, bevor ein Failover initiiert wird. <br/> <br/> 1.    Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses Ihres Unternehmens. <br/><br/> 2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/> 3. Schalten Sie die benutzerseitige Anwendung offline.<br/><br/>4. Initiieren Sie das geplante Failover mithilfe des ASR-Portals. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Benutzer einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 24 Stunden für Hyper-V)| Für VMware repliziert ASR kontinuierlich Daten mithilfe von CDP. Ein Failover ermöglicht es dem Benutzer, ein Failover auf die neuesten Daten auszuführen (auch nach Herunterfahren der Anwendung).<br/><br/> 1. Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses. <br/><br/>2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/>3.    Schalten Sie die benutzerseitige Anwendung offline. <br/><br/>4.  Sobald die Anwendung offline ist, initiieren Sie mithilfe des ASR-Portals ein geplantes Failover zum letzten Punkt. Verwenden Sie im Portal die Option „Ungeplantes Failover“, und wählen Sie den letzten Punkt für das Failover aus. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Kunde einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 72 Stunden für VMware)
+|Geplantes Failover aufgrund einer bevorstehenden Ausfallzeit des Datencenters| Kein Datenverlust für die Anwendung, wenn eine geplante Aktivität ausgeführt wird| Für Hyper-V repliziert ASR Daten mit einer vom Benutzer angegebenen Kopierfrequenz. Ein geplantes Failover wird verwendet, um die Frequenz zu überschreiben und die letzten Änderungen zu replizieren, bevor ein Failover initiiert wird. <br/> <br/> 1.    Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses Ihres Unternehmens. <br/><br/> 2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/> 3. Schalten Sie die benutzerseitige Anwendung offline.<br/><br/>4. Initiieren Sie das geplante Failover mithilfe des ASR-Portals. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Benutzer einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 24 Stunden für Hyper-V) Wenn die Replikation außerhalb des Zeitrahmens des Aufbewahrungsfensters beendet wurde, können Kunden möglicherweise weiterhin mit den neuesten verfügbaren Wiederherstellungspunkten Failover durchführen. | Für VMware repliziert ASR kontinuierlich Daten mithilfe von CDP. Ein Failover ermöglicht es dem Benutzer, ein Failover auf die neuesten Daten auszuführen (auch nach Herunterfahren der Anwendung).<br/><br/> 1. Planen Sie ein Wartungsfenster gemäß des Change-Management-Prozesses. <br/><br/>2. Informieren Sie die Benutzer über bevorstehende Ausfallzeiten. <br/><br/>3.    Schalten Sie die benutzerseitige Anwendung offline. <br/><br/>4.  Sobald die Anwendung offline ist, initiieren Sie mithilfe des ASR-Portals ein geplantes Failover zum letzten Punkt. Verwenden Sie im Portal die Option „Ungeplantes Failover“, und wählen Sie den letzten Punkt für das Failover aus. Der lokale virtuelle Computer wird automatisch heruntergefahren.<br/><br/>Effektiver Datenverlust der Anwendung = 0 <br/><br/>Ein Journal der Wiederherstellungspunkte wird in einem Aufbewahrungsfenster bereitgestellt, falls ein Kunde einen älteren Wiederherstellungspunkt verwenden möchte. (Vermerkdauer: 72 Stunden für VMware) Wenn die Replikation außerhalb des Zeitrahmens des Aufbewahrungsfensters beendet wurde, können Kunden möglicherweise weiterhin mit den neuesten verfügbaren Wiederherstellungspunkten Failover durchführen.
 |Failover aufgrund einer ungeplanten Ausfallzeit des Datencenters (natürlich oder IT-Notfall) | Minimaler Datenverlust für die Anwendung | 1. Initiieren Sie den BCP-Plan der Organisation. <br/><br/>2. Initiieren Sie ein ungeplantes Failover zum letzten Punkt oder zu einem Punkt im Aufbewahrungsfenster (Journal) mithilfe des ASR-Portals.| 1. Initiieren Sie den BCP-Plan der Organisation. <br/><br/>2.  Initiieren Sie ein ungeplantes Failover zum letzten Punkt oder zu einem Punkt im Aufbewahrungsfenster (Journal) mithilfe des ASR-Portals.
 
 

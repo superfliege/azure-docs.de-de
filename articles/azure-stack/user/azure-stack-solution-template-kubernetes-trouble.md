@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung der Bereitstellung von Kubernetes in Azure Stack | Microsoft-Dokumentation
+title: Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Probleme bei Ihrer Bereitstellung von Kubernetes in Azure Stack behandeln können.
 services: azure-stack
 documentationcenter: ''
@@ -11,17 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390687"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237850"
 ---
-# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Problembehandlung der Bereitstellung von Kubernetes in Azure Stack
+# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
@@ -112,7 +113,7 @@ Sie können den Bereitstellungsstatus überprüfen, wenn Sie Ihren Kubernetes-Cl
     | Eigenschaft | BESCHREIBUNG |
     | ----     | ----        |
     | Ressource | Der Name der Ressource. |
-    | Typ | Der Ressourcenanbieter und der Typ der Ressource. |
+    | Type | Der Ressourcenanbieter und der Typ der Ressource. |
     | Status | Der Status des Elements. |
     | TimeStamp | Der UTC-Zeitstempel. |
     | Vorgangsdetails | Die Details des Vorgangs, z.B. der Ressourcenanbieter für den Vorgang, der Ressourcenendpunkt und der Name der Ressource. |

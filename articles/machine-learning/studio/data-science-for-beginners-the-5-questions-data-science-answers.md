@@ -1,6 +1,6 @@
 ---
 Titel: Data Science für Einsteiger titleSuffix: Azure Machine Learning Studio – Beschreibung: Data Science für Anfänger erläutert die grundlegenden Konzepte in fünf kurzen Videos, beginnend mit den fünf Fragen, die Data Science beantwortet. Aus Azure Machine Learning.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03.01.2018
 ---

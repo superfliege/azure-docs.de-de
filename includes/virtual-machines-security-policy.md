@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 801266ed13aa993ad04ed8a3b21d6a6b3e1d6603
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841418"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302358"
 ---
 Es ist wichtig, dass Sie in Bezug auf die ausgeführten Anwendungen auf den Schutz Ihres virtuellen Computers (VM) achten. Das Schützen Ihrer VMs kann einen oder mehrere Azure-Dienste und -Features enthalten, die für den sicheren Zugriff auf Ihre VMs und die sichere Speicherung Ihrer Daten sorgen. Dieser Artikel enthält Informationen dazu, wie Sie den Schutz Ihrer VM und Anwendungen aufrechterhalten.
 
@@ -20,6 +20,8 @@ Die Bedrohungslage für Cloudumgebungen ist dynamisch. Dies erhöht den Druck, e
 ## <a name="azure-security-center"></a>Azure Security Center
 
 Mit [Azure Security Center](../articles/security-center/security-center-intro.md) können Sie Bedrohungen Ihrer VMs verhindern, erkennen und bekämpfen. Security Center bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
+
+Der Just-In-Time-VM-Zugriff in Security Center kann auf alle VM-Bereitstellungen angewandt werden, um eingehenden Datenverkehr auf Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. Wenn Just-In-Time aktiviert ist und ein Benutzer Zugriff auf eine VM anfordert, überprüft Security Center, welche Berechtigungen der Benutzer für den virtuellen Computer hat. Wenn er über die passenden Berechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden von Security Center automatisch so konfiguriert, dass eingehender Datenverkehr zu den ausgewählten Ports für eine begrenzte Zeit zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her. 
 
 ## <a name="encryption"></a>Verschlüsselung
 

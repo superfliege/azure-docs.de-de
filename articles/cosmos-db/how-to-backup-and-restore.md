@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e21a3ae23ca6a856c9524e52e80f33362f53cae1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040845"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455931"
 ---
-# <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>Wiederherstellen von Azure Cosmos DB-Daten aus einer Sicherung
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Wiederherstellen von Daten aus einer Sicherung in Azure Cosmos DB 
 
 Falls Sie Ihre Datenbank oder Ihren Container versehentlich löschen, können Sie ein [Supportticket erstellen]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder sich [an den Azure Support wenden]( https://azure.microsoft.com/support/options/), um die Daten aus automatischen Onlinesicherungen wiederherstellen zu lassen. Der Azure-Support steht nur für ausgewählte Tarife wie **Standard** und **Developer** sowie für höhere Tarife zur Verfügung. Für den **Basic**-Tarif ist kein Azure-Support verfügbar. Weitere Informationen zu anderen Supportplänen finden Sie auf der Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/). 
 

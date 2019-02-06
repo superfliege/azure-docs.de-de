@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 835ba407fb72a8cb512425e59cf56ba1a1cc8a4b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020885"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301270"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -191,8 +191,8 @@ Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, u
 | Eigenschaft | Beschreibung | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | **enableStaging** |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
-| **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/>  Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
-| **path** |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/>  Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
+| **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
+| **path** |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
 | **enableCompression** |Gibt an, ob die Daten komprimiert werden sollen, bevor sie an das Ziel kopiert werden. Durch diese Einstellung wird die Menge der übertragenen Daten reduziert. |False |Nein  |
 
 >[!NOTE]
@@ -241,7 +241,17 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 
 1. **Einrichten einer Baseline**. Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Sammeln Sie Ausführungsdetails und Leistungsmerkmale, und folgen Sie dabei der [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
 
-2. **Analysieren und Optimieren der Leistung** Sollte die Leistung in der Praxis nicht Ihren Erwartungen entsprechen, müssen Sie Leistungsengpässe identifizieren. Anschließend können Sie die Leistung optimieren, um Engpässe zu beseitigen oder deren Auswirkungen zu minimieren. Eine vollständige Beschreibung der Leistungsdiagnose würde den Rahmen dieses Artikels sprengen, im Anschluss finden Sie jedoch einige allgemeine Aspekte:
+2. **Analysieren und Optimieren der Leistung** Sollte die Leistung in der Praxis nicht Ihren Erwartungen entsprechen, müssen Sie Leistungsengpässe identifizieren. Anschließend können Sie die Leistung optimieren, um Engpässe zu beseitigen oder deren Auswirkungen zu minimieren. 
+
+    In einigen Fällen werden bei der Ausführung einer Kopieraktivität in ADF direkt **Tipps zur Leistungsoptimierung** oben auf der [Seite zur Überwachung der Kopieraktivität](copy-activity-overview.md#monitor-visually) angezeigt, wie im folgenden Beispiel dargestellt. Es wird nicht nur der im jeweiligen Kopiervorgang identifizierte Engpass angezeigt, sondern Sie erfahren auch, welche Änderungen Sie zum Erhöhen des Durchsatzes durchführen müssen. Die Tipps zur Leistungsoptimierung enthalten derzeit Vorschläge wie die Verwendung von PolyBase beim Kopieren von Daten in das Azure SQL Data Warehouse, um die Anzahl der Azure Cosmos DB-sRU oder Azure SQL DB-DTUs zu erhöhen, wenn die Ressource auf der Datenspeicherseite der Engpass ist, um die unnötig bereitgestellte Kopie zu entfernen usw. Die Regeln für die Leistungsoptimierung werden auch schrittweise ergänzt werden.
+
+    **Beispiel: Kopieren in Azure SQL-Datenbank mit Tipps für die Leistungsoptimierung**
+
+    In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke der Azure SQL-DB eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Daher wird vorgeschlagen, die Azure SQL DB-Ebene mit mehr DTU zu erhöhen. 
+
+    ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Im Folgenden finden Sie einige allgemeine Aspekte. Eine vollständige Beschreibung der Leistungsdiagnose würde den Rahmen dieses Artikels sprengen.
 
    * Leistungsfeatures:
      * [Parallele Kopie](#parallel-copy)

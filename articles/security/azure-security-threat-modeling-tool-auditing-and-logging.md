@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 990f300055f7c0c7132dd44271dea73044649fc5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1d67f981991796b81ba3ab6540631e6d62be8077
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306997"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092147"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Sicherheitsrahmen: Überwachung und Protokollierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -27,7 +27,7 @@ ms.locfileid: "43306997"
 | **Dynamics CRM**    | <ul><li>[Identifizieren von vertraulichen Entitäten in der Lösung und Implementieren der Änderungsüberwachung](#sensitive-entities)</li></ul> |
 | **Web Application** | <ul><li>[Sicherstellen, dass Überwachung und Protokollierung für die Anwendung erzwungen werden](#auditing)</li><li>[Sicherstellen, dass die Protokollrotation und -trennung vorhanden sind](#log-rotation)</li><li>[Sicherstellen, dass die Anwendung keine sensiblen Benutzerdaten protokolliert](#log-sensitive-data)</li><li>[Sicherstellen, dass für die Überwachungs- und Protokolldateien der Zugriff eingeschränkt ist](#log-restricted-access)</li><li>[Sicherstellen, dass Ereignisse der Benutzerverwaltung protokolliert werden](#user-management)</li><li>[Sicherstellen, dass das System über integrierte Schutzmaßnahmen gegen missbräuchliche Nutzung verfügt](#inbuilt-defenses)</li><li>[Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](#diagnostics-logging)</li></ul> |
 | **Datenbank** | <ul><li>[Sicherstellen, dass die Anmeldungsüberwachung in SQL Server aktiviert ist](#identify-sensitive-entities)</li><li>[Aktivieren der Bedrohungserkennung in Azure SQL](#threat-detection)</li></ul> |
-| **Azure Storage** | <ul><li>[Verwenden der Azure-Speicheranalyse zum Überwachen des Zugriffs auf Azure Storage](#analytics)</li></ul> |
+| **Azure Storage (in englischer Sprache)** | <ul><li>[Verwenden der Azure-Speicheranalyse zum Überwachen des Zugriffs auf Azure Storage](#analytics)</li></ul> |
 | **WCF** | <ul><li>[Implementieren einer ausreichenden Protokollierung](#sufficient-logging)</li><li>[Implementieren einer ausreichenden Behandlung von Überwachungsfehlern](#audit-failure-handling)</li></ul> |
 | **Web-API** | <ul><li>[Sicherstellen, dass Überwachung und Protokollierung für die Web-API erzwungen werden](#logging-web-api)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Sicherstellen, dass geeignete Überwachung und Protokollierung auf dem Bereichsgateway erzwungen werden](#logging-field-gateway)</li></ul> |
@@ -196,7 +196,7 @@ Im Folgenden wird eine Beispielkonfiguration mit aktivierter Überwachung verans
 
 ### <a name="example"></a>Beispiel
 Das `<behavior/>`-Element der folgenden WCF-Konfigurationsdatei weist WCF an, die Anwendung nicht zu benachrichtigen, wenn WCF nicht in ein Überwachungsprotokoll schreiben kann.
-````
+```
 <behaviors>
     <serviceBehaviors>
         <behavior name="NewBehavior">
@@ -207,7 +207,7 @@ Das `<behavior/>`-Element der folgenden WCF-Konfigurationsdatei weist WCF an, di
         </behavior>
     </serviceBehaviors>
 </behaviors>
-````
+```
 Konfigurieren Sie WCF so, dass das Programm benachrichtigt wird, wenn nicht in ein Überwachungsprotokoll geschrieben werden kann. Im Programm sollte ein alternatives Benachrichtigungsschema vorhanden sein, um die Organisation zu informieren, dass Audit-Trails nicht verwaltet werden. 
 
 ## <a id="logging-web-api"></a>Sicherstellen, dass Überwachung und Protokollierung für die Web-API erzwungen werden

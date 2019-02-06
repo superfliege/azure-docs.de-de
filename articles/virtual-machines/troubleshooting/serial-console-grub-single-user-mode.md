@@ -14,29 +14,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580143"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103308"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
-GRUB steht für GRand Unified Bootloader. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
+GRUB ist der GRand Unified Bootloader und wahrscheinlich das Erste, was Sie beim Starten einer VM sehen. Da GRUB vor dem Start des Betriebssystems angezeigt wird, kann nicht über SSH auf diesen Bootloader zugegriffen werden. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
 
 Der Einzelbenutzermodus ist eine minimale Umgebung mit minimaler Funktionalität. Dieser Modus kann beim Untersuchen von Start-, Dateisystem- oder Netzwerkproblemen hilfreich sein. Es können weniger Dienste im Hintergrund ausgeführt werden, und je nach Ausführungsebene kann auch ein Dateisystem nicht automatisch eingebunden werden.
 
-Der Einzelbenutzermodus ist auch in Situationen hilfreich, in denen Ihr virtueller Computer nur für die Anmeldung mit SSH-Schlüsseln konfiguriert werden kann. In diesem Fall können Sie den Einzelbenutzermodus verwenden, um ein Konto mit Kennwortauthentifizierung zu erstellen.
+Der Einzelbenutzermodus ist auch in Situationen hilfreich, in denen Ihr virtueller Computer nur für die Anmeldung mit SSH-Schlüsseln konfiguriert werden kann. In diesem Fall können Sie den Einzelbenutzermodus verwenden, um ein Konto mit Kennwortauthentifizierung zu erstellen. Beachten Sie, dass über den Dienst für die serielle Konsole nur Benutzer, die mindestens über die Zugriffsebene „Mitwirkender“ verfügen, auf die serielle Konsole einer VM zugreifen können.
 
-Damit Sie in den Einzelbenutzermodus wechseln können, müssen Sie GRUB beim Starten Ihres virtuellen Computers aktivieren und dann die Startkonfiguration in GRUB ändern. Hierzu kann die serielle Konsole des virtuellen Computers verwendet werden.
+Damit Sie in den Einzelbenutzermodus wechseln können, müssen Sie GRUB beim Starten Ihres virtuellen Computers aktivieren und dann die Startkonfiguration in GRUB ändern. Ausführliche Anweisungen zum Aktivieren des GRUB-Modus finden Sie im Folgenden. Im Allgemeinen können Sie die Schaltfläche „Neu starten“ in der seriellen Konsole der VM verwenden, um Ihre VM zu starten und GRUB anzuzeigen (sofern die VM zur Anzeige von GRUB konfiguriert wurde).
+
+![Schaltfläche „Neu starten“ in der seriellen Konsole unter Linux](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
 ## <a name="general-grub-access"></a>Allgemeiner GRUB-Zugriff
 Damit Sie auf GRUB zugreifen können, müssen Sie Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist. Einige Distributionen erfordern Tastatureingaben zum Anzeigen von GRUB, während andere Distributionen GRUB automatisch ein paar Sekunden lang anzeigen und Benutzereingaben über die Tastatur zulassen, um das Timeout abzubrechen.
 
 Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie weiter unten und unter [diesem Link](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
-### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Neustarten Ihres virtuellen Computers zum Zugreifen auf GRUB in der seriellen Konsole
-Sie können Ihren virtuellen Computer neu starten, während das Blatt für die serielle Konsole geöffnet ist, indem Sie einen Befehl vom Typ „SysRq+`'b'`“ ausführen, wenn [SysRq](./serial-console-nmi-sysrq.md) aktiviert ist, oder indem Sie auf dem Blatt „Übersicht“ auf die Schaltfläche „Neu starten“ klicken. (Öffnen Sie den virtuellen Computer auf einer neuen Browserregisterkarte, um den Neustart auszuführen, ohne das Blatt für die serielle Konsole zu schließen.) Lesen Sie die distributionsspezifischen Anweisungen weiter unten, um zu erfahren, was bei einem Neustart von GRUB zu erwarten ist.
+### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Neustarten der VM zum Zugreifen auf GRUB in der seriellen Konsole
+Sie können Ihre VM in der seriellen Konsole neu starten, indem Sie zum Netzschalter navigieren und auf „VM neu starten“ klicken. Hierdurch wird ein Neustart der VM initiiert, und es wird eine Benachrichtigung hinsichtlich des Neustarts im Azure-Portal angezeigt.
+Sie können die VM auch mit einem SysRq-Befehl `'b'` neu starten, wenn [SysRq](./serial-console-nmi-sysrq.md) aktiviert ist. Lesen Sie die distributionsspezifischen Anweisungen weiter unten, um zu erfahren, was bei einem Neustart von GRUB zu erwarten ist.
+
+![Neustart in der seriellen Konsole unter Linux](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>Allgemeiner Zugriff auf den Einzelbenutzermodus
 Der manuelle Zugriff auf den Einzelbenutzermodus kann in Situationen erforderlich sein, in denen Sie kein Konto mit Kennwortauthentifizierung konfiguriert haben. Sie müssen die GRUB-Konfiguration ändern, um manuell in den Einzelbenutzermodus wechseln zu können. Lesen Sie anschließend den Abschnitt [Verwenden des Einzelbenutzermodus zum Zurücksetzen oder Hinzufügen eines Kennworts](#-Use-Single-User-Mode-to-reset-or-add-a-password), um weitere Informationen zu erhalten.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427932"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155305"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -143,9 +143,6 @@ Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](http
 
 Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
 
-> [!IMPORTANT]
-> V1.3.0 (die neueste Version) der Patchorchestrierungsanwendung weist ein bekanntes Problem auf, wenn es unter Windows Server 2012 ausgeführt wird. Wenn Sie Windows Server 2012 ausführen, laden Sie v1.2.2 der Anwendung [hier](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip) herunter. [SFPKG-Link](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
-
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
 Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen entsprechend konfiguriert werden. Überschreiben Sie die Standardwerte, indem Sie während der Erstellung bzw. Aktualisierung einer Anwendung den Anwendungsparameter übergeben. Anwendungsparameter können durch Angeben von `ApplicationParameter` in den Cmdlets `Start-ServiceFabricApplicationUpgrade` oder `New-ServiceFabricApplication` festgelegt werden.
@@ -156,7 +153,7 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)<br> Entscheiden Sie mithilfe des Abschnitts [Häufig gestellte Fragen](#frequently-asked-questions), welche Richtlinie für Ihren Cluster am besten geeignet ist.
 |LogsDiskQuotaInMB   |Long  <br> (Standard: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
 | WUQuery               | Zeichenfolge<br>(Standard: „IsInstalled=0“)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
-| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standardwert: TRUE)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
+| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standard: false)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
 | WUOperationTimeOutInMinutes | int <br>(Standard: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | int <br> (Standard: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
 | WURescheduleTimeInMinutes | int <br>(Standard: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
@@ -295,7 +292,7 @@ Basierend auf der Richtlinie für die Anwendung kann während eines Patchvorgang
 
 Nach Abschluss der Windows Update-Installation werden die Knoten neu gestartet und erneut aktiviert.
 
-Im folgenden Beispiel ist der Cluster vorübergehend in einen Fehlerzustand gewechselt, da zwei Knoten ausgefallen waren und die Richtlinie „MaxPercentageUnhealthNodes“ verletzt wurde. Dies ist ein temporärer Fehler, der nur auftritt, solange der Patchvorgang ausgeführt wird.
+Im folgenden Beispiel befand sich der Cluster vorübergehend in einem Fehlerzustand, da zwei Knoten ausgefallen waren und die Richtlinie „MaxPercentageUnhealthyNodes“ verletzt wurde. Dies ist ein temporärer Fehler, der nur auftritt, solange der Patchvorgang ausgeführt wird.
 
 ![Abbildung eines Clusters mit Fehler](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
@@ -330,7 +327,7 @@ F: **Wie lange dauert es, einen kompletten Cluster zu patchen?**
 A. Die zum Patchen eines kompletten Clusters benötigte Zeit hängt von den folgenden Faktoren ab:
 
 - Der zum Patchen eines Knotens benötigten Zeit.
-- Richtlinie des Koordinatordiensts. – Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird, was langsamer wäre als `UpgradeDomainWise`. Beispiel:  Das Patchen eines Knotens dauert ca. 1 Stunde. Ein Cluster mit 20 Knoten (gleichen Typs) mit 5 Upgradedomänen mit jeweils 4 Knoten soll gepatcht werden.
+- Richtlinie des Koordinatordiensts. – Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird, was langsamer wäre als `UpgradeDomainWise`. Beispiel:  Angenommen, das Patchen eines Knotens dauert etwa eine Stunde, und es wird ein Cluster mit 20 Knoten (gleichen Typs) gepatcht, bei denen es sich um fünf Upgradedomänen mit jeweils vier Knoten handelt.
     - Das Patchen des gesamten Clusters sollte mit Richtlinie `NodeWise` ca. 20 Stunden dauern.
     - Es sollte mit Richtlinie `UpgradeDomainWise` ca. 5 Stunden dauern.
 - Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload zu anderen verfügbaren Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, sind während dieser Zeit im Zustand [Deaktiviert](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, würde die Deaktivierung länger dauern. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.
@@ -411,3 +408,8 @@ Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anw
 - Nach dem Festlegen von InstallWindowsOSOnlyUpdates auf FALSE werden jetzt alle verfügbaren Updates installiert.
 - Die Logik für das Deaktivieren automatischer Updates wurde geändert. Dies behebt einen Fehler, durch den automatische Updates auf Server 2016 und höher nicht deaktiviert wurden.
 - Einschränkungen der parametrisierten Platzierung für beide Microservices von POA für erweiterte Anwendungsfälle.
+
+### <a name="version-131"></a>Version 1.3.1
+- Behebung der Regression, die dazu führt, dass POA 1.3.0 unter Windows Server 2012 R2 oder einer niedrigeren Version aufgrund eines Fehlers beim Deaktivieren automatischer Updates nicht funktioniert 
+- Behebung eines Fehlers, der dazu führt, dass die InstallWindowsOSOnlyUpdates-Konfiguration immer als „True“ verwendet wird
+- Änderung des Standardwerts von „InstallWindowsOSOnlyUpdates“ in „False“

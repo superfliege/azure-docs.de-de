@@ -6,18 +6,18 @@ author: MarkusVi
 manager: daveba
 tags: azuread
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450506"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081023"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory
 
@@ -54,9 +54,9 @@ Verwenden Sie die folgende Beispielvorlage, um Richtlinien für bedingten Zugrif
 
 |*Ereignis*:|*Auszuführende* Aktion:|
 |-|-|
-|Zugriffsversuch:<br>- Auf eine Cloud-App*<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Anmelderisiko)|Zugriff auf die Anwendung blockieren|
-|Zugriffsversuch:<br>- Auf eine Cloud-App*<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Anmelderisiko)|Zugriff gewähren mit (UND):<br>- Anforderung 1 (beispielsweise MFA)<br>- Anforderung 2 (beispielsweise Gerätekonformität)|
-|Zugriffsversuch:<br>- Auf eine Cloud-App*<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Anmelderisiko)|Zugriff gewähren mit (ODER):<br>- Anforderung 1 (beispielsweise MFA)<br>- Anforderung 2 (beispielsweise Gerätekonformität)|
+|Zugriffsversuch:<br>- Auf eine Cloud-App*<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Geräteplattformen)|Zugriff auf die Anwendung blockieren|
+|Zugriffsversuch:<br>- Auf eine Cloud-App*<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Geräteplattformen)|Zugriff gewähren mit (UND):<br>- Anforderung 1 (beispielsweise MFA)<br>- Anforderung 2 (beispielsweise Gerätekonformität)|
+|Zugriffsversuch:<br>- Auf eine Cloud-App*<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Geräteplattformen)|Zugriff gewähren mit (ODER):<br>- Anforderung 1 (beispielsweise MFA)<br>- Anforderung 2 (beispielsweise Gerätekonformität)|
 
 **Ereignis** definiert mindestens den Prinzipal (**wer**), der versucht, auf eine Cloud-App (**was**) zuzugreifen. Bei Bedarf können Sie auch mit einschließen, **wie** ein Zugriffsversuch erfolgt. Im Zusammenhang mit bedingtem Zugriff werden die Elemente, die das „Wer?“, „Was?“ und „Wie?“ definieren, als Bedingungen bezeichnet. Weitere Informationen finden Sie unter [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](conditions.md). 
 
@@ -76,22 +76,36 @@ Nun ist eine gute Gelegenheit, um sich für einen Benennungsstandard für Ihre R
 - Die Cloud-App, für die sie gilt
 - Die Antwort
 - Für wen sie gilt
-- Wann sie gilt 
+- Wann sie gilt (falls zutreffend)
  
 ![Benennungsstandard](./media/plan-conditional-access/11.png)
 
-
+Auch wenn ein aussagekräftiger Name hilft, die Übersicht über Ihre Implementierung für den bedingten Zugriff zu behalten, ist die Sequenznummer besonders dann hilfreich, wenn Sie in einer Konversation auf eine Richtlinie verweisen möchten. Wenn Sie beispielsweise mit einem anderen Administrator telefonieren, können Sie ihn auffordern, die Richtlinie EM063 zu öffnen, um ein Problem zu lösen.
 
 
 
 Dem folgenden Namen kann beispielsweise entnommen werden, dass die Richtlinie die MFA für Marketingbenutzer in externen Netzwerken vorschreibt, die die Dynamics-CRP-App verwenden:
 
-`CA01-Dynamics CRP: Require MFA For marketing When on external networks`
+`CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
 
-Neben Ihren aktiven Richtlinien sollten Sie auch deaktivierte Richtlinien implementieren, die als sekundäre [robuste Zugriffssteuerung für Ausfall-/Notfallszenarien](../authentication/concept-resilient-controls.md) fungieren. Es empfiehlt sich, diesen Zweck ebenfalls in Ihrem Benennungsstandard zu berücksichtigen, um die Aktivierung während eines Ausfalls zu erleichtern. Beispiel: 
+Neben Ihren aktiven Richtlinien sollten Sie auch deaktivierte Richtlinien implementieren, die als sekundäre [robuste Zugriffssteuerung für Ausfall-/Notfallszenarien](../authentication/concept-resilient-controls.md) fungieren. Ihr Benennungsstandard für die Notfallplan-Richtlinien sollte einige weitere Elemente enthalten: 
 
-`EM01-Finance app: Require MFA For Sales When on untrusted network`
+- `ENABLE IN EMERGENCY` am Anfang, damit sich der Name von denen anderer Richtlinien unterscheidet.
+
+- Der Name der Störungen, auf die sie angewandt werden soll.
+
+- Mithilfe einer Sequenznummer für die Sortierung wissen Administratoren sofort, in welcher Reihenfolge die Richtlinien aktiviert werden sollen. 
+
+
+Der folgende Name gibt beispielsweise an, dass diese Richtlinie die erste von vier Richtlinien ist, die Sie im Fall von MFA-Unterbrechungen aktivieren sollten:
+
+`EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
+
+
+
+
+
 
 
 ## <a name="plan-policies"></a>Planen von Richtlinien
@@ -184,8 +198,8 @@ Der Testplan ist wichtig, um die erwarteten Ergebnisse mit den tatsächlichen Er
 |[Anfordern der MFA, wenn nicht bei der Arbeit](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Ein autorisierter Benutzer meldet sich bei der *App* an, während er sich nicht an einem vertrauenswürdigen Ort/bei der Arbeit befindet.|Der Benutzer wird zur Verwendung der MFA aufgefordert und kann sich erfolgreich anmelden.| |
 |[Anfordern der MFA für Administratoren](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|Ein globaler Administrator meldet sich bei der *App* an.|Der Administrator wird zur Verwendung der MFA aufgefordert.| |
 |[Riskante Anmeldungen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Ein Benutzer meldet sich bei der *App* über einen [Tor-Browser](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook) an.|Der Administrator wird zur Verwendung der MFA aufgefordert.| |
-|[Verwalten von Geräten im Azure-Portal – Vorschau](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein autorisiertes Gerät anzumelden.|Der Zugriff wird gewährt.| |
-|[Verwalten von Geräten im Azure-Portal – Vorschau](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein nicht autorisiertes Gerät anzumelden.|Der Zugriff wird blockiert.| |
+|[Geräteverwaltung](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein autorisiertes Gerät anzumelden.|Der Zugriff wird gewährt.| |
+|[Geräteverwaltung](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein nicht autorisiertes Gerät anzumelden.|Der Zugriff wird blockiert.| |
 |[Kennwortänderung für riskante Benutzer](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Ein autorisierter Benutzer versucht, sich mit gefährdeten Anmeldeinformationen anzumelden (Anmeldung mit hohem Risiko).|Der Benutzer wird aufgefordert, das Kennwort zu ändern, oder der Zugriff wird blockiert (auf der Grundlage Ihrer Richtlinie).| |
 
 
@@ -214,7 +228,7 @@ Nachdem Sie nun Ihre Richtlinie für bedingten Zugriff konfiguriert haben, möch
 
 Führen Sie Testfälle gemäß Ihrem Testplan aus. In diesem Schritt wird jede Richtlinie für Ihre Testbenutzer umfassend getestet, um sicherzustellen, dass sie ordnungsgemäß funktioniert. Verwenden Sie bei den einzelnen Tests jeweils die oben erstellten Szenarien.
 
-Wichtig: Testen Sie unbedingt die Ausschlusskriterien einer Richtlinie. Sie können beispielsweise einen Benutzer oder eine Gruppe aus einer Richtlinie ausschließen, die die MFA erfordert. Daher empfiehlt es sich, zu testen, ob ausgeschlossene Benutzer zur Verwendung der MFA aufgefordert werden, weil die Kombination anderer Richtlinien möglicherweise die Verwendung der MFA für diese Benutzer vorschreibt.
+Wichtig: Testen Sie unbedingt die Ausschlusskriterien einer Richtlinie. Sie können beispielsweise einen Benutzer oder eine Gruppe aus einer Richtlinie ausschließen, die eine mehrstufige Authentifizierung (MFA) erfordert. Daher empfiehlt es sich, zu testen, ob ausgeschlossene Benutzer zur Verwendung der MFA aufgefordert werden, weil die Kombination anderer Richtlinien möglicherweise die Verwendung der MFA für diese Benutzer vorschreibt.
 
 
 ### <a name="cleanup"></a>Cleanup
@@ -232,7 +246,7 @@ Die Bereinigung umfasst folgende Schritte:
 
 ## <a name="move-to-production"></a>Überführen in die Produktion
 
-Wenn Sie bereit sind, eine neue Richtlinie in Ihrer Umgebung bereitzustellen, sollten Sie dies in mehreren Phasen tun:
+Wenn neue Richtlinien für Ihre Umgebung bereit sind, stellen Sie sie in Phasen bereit:
 
 - Informieren Sie die Endbenutzer intern über die Änderung.
 

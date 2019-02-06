@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 804b7c0ff31575e6d62497fd5166e1a38a273076
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7167e31261ce029a6a0a6fe070232d1086942162
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965582"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297700"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linux-Computer in Azure erstellen, bei dem standardmäßig zur Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Mit dem Azure-Portal erstellte VMs, Resource Manager-Vorlagen für Azure CLI oder andere Tools können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, die die Authentifizierung mit dem SSH-Schlüssel für SSH-Verbindungen einrichtet. 
@@ -38,7 +38,7 @@ Der private SSH-Schlüssel muss mit einer sehr sicheren Passphrase geschützt we
 
 ## <a name="ssh-keys-use-and-benefits"></a>Verwendung und Vorteile von SSH-Schlüsseln
 
-Wenn Sie eine Azure-VM erstellen, indem Sie den öffentlichen Schlüssel angeben, kopiert Azure den öffentlichen Schlüssel (im `.pub`-Format) auf dem virtuellen Computer in den `~/.ssh/authorized_keys`-Ordner. SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Anmeldeverbindung den entsprechenden privaten Schlüssel bereitzustellen. Bei einem virtuellen Azure-Computer unter Linux, bei dem SSH-Schlüssel für die Authentifizierung verwendet werden, konfiguriert Azure den SSHD-Server so, dass nur SSH-Schlüssel (und keine kennwortbasierten Anmeldungen) möglich sind. Wenn Sie also virtuelle Azure Linux-Computer mit SSH-Schlüsseln erstellen, können Sie zur Sicherung der Bereitstellung des virtuellen Computers beitragen, und der üblicherweise nachträglich auszuführende Konfigurationsschritt zum Deaktivieren von Kennwörtern in der Datei `sshd_config` entfällt.
+Wenn Sie eine Azure-VM erstellen, indem Sie den öffentlichen Schlüssel angeben, kopiert Azure den öffentlichen Schlüssel (im `.pub`-Format) auf dem virtuellen Computer in den `~/.ssh/authorized_keys`-Ordner. SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Verbindung den entsprechenden privaten Schlüssel bereitzustellen. Bei einem virtuellen Azure-Computer unter Linux, bei dem SSH-Schlüssel für die Authentifizierung verwendet werden, konfiguriert Azure den SSHD-Server so, dass nur SSH-Schlüssel (und keine kennwortbasierten Anmeldungen) möglich sind. Wenn Sie also virtuelle Azure Linux-Computer mit SSH-Schlüsseln erstellen, können Sie zur Sicherung der Bereitstellung des virtuellen Computers beitragen, und der üblicherweise nachträglich auszuführende Konfigurationsschritt zum Deaktivieren von Kennwörtern in der Datei `sshd_config` entfällt.
 
 Falls Sie keine SSH-Schlüssel verwenden möchten, können Sie Ihren virtuellen Linux-Computer für die Kennwortauthentifizierung einrichten. Bei virtuellen Computern ohne Internetverbindung sind Kennwörter unter Umständen ausreichend. Allerdings müssen Sie weiterhin Ihre Kennwörter für die einzelnen virtuellen Linux-Computer verwalten und sich um angemessene Kennwortrichtlinien und -verfahren kümmern, indem Sie beispielsweise eine Mindestlänge für Kennwörter festlegen und sicherstellen, dass sie regelmäßig aktualisiert werden. Die Verwendung von SSH-Schlüsseln reduziert die Komplexität der übergreifenden Verwaltung einzelner Anmeldeinformationen für mehrere virtuelle Computer.
 
@@ -148,7 +148,7 @@ Die Ausgabe sieht in etwa wie folgt aus (redigierte Darstellung):
 ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eShZzaXnt75gUmT1I2f75zFn2hlAIDGKWf4g12KWcZxy81TniUOTjUsVlwPymXUXxESL/UfJKfbdstBhTOdy5EG9rYWA0K43SJmwPhH28BpoLfXXXXXG+/ilsXXXXXKgRLiJ2W19MzXHp8z3Lxw7r9wx3HaVlP4XiFv9U4hGcp8RMI1MP1nNesFlOBpG4pV2bJRBTXNXeY4l6F8WZ3C4kuf8XxOo08mXaTpvZ3T1841altmNTZCcPkXuMrBjYSJbA8npoXAXNwiivyoe3X2KMXXXXXdXXXXXXXXXXCXXXXX/ azureuser@myserver
 ```
 
-Stellen Sie sicher, dass Sie weder zusätzliche Leerzeichen kopieren noch zusätzliche Zeilenumbrüche einfügen, wenn Sie den Inhalt der Datei mit dem öffentlichen Schlüssel im Azure-Portal oder in einer Resource Manager-Vorlage kopieren und einfügen. Bei Nutzung von macOS können Sie die Datei mit dem öffentlichen Schlüssel (standardmäßig `~/.ssh/id_rsa.pub`) beispielsweise per Pipe mit **pbcopy** verknüpfen, um den Inhalt zu kopieren (für diesen Zweck gibt es auch andere Linux-Programme, z.B. **xclip**).
+Stellen Sie sicher, dass Sie weder zusätzliche Leerzeichen kopieren noch zusätzliche Zeilenumbrüche einfügen, wenn Sie den Inhalt der Datei mit dem öffentlichen Schlüssel im Azure-Portal oder in einer Resource Manager-Vorlage kopieren und einfügen. Bei Nutzung von macOS können Sie die Datei mit dem öffentlichen Schlüssel (standardmäßig `~/.ssh/id_rsa.pub`) beispielsweise per Pipe mit **pbcopy** verknüpfen, um den Inhalt zu kopieren (für diesen Zweck gibt es auch andere Linux-Programme, z.B. `xclip`).
 
 Wenn Sie lieber einen öffentlichen Schlüssel verwenden möchten, der in einem mehrzeiligen Format vorliegt, können Sie aus dem öffentlichen Schlüssel, den Sie zuvor erstellt haben, in einem PEM-Container einen formatierten RFC4716-Schlüssel generieren.
 
@@ -169,6 +169,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Falls Sie beim Erstellen des Schlüsselpaars eine Passphrase angegeben haben, müssen Sie die Passphrase eingeben, wenn Sie während des Anmeldeprozesses dazu aufgefordert werden. (Der Server wird dem Ordner `~/.ssh/known_hosts` hinzugefügt, und Sie werden erst wieder zum Herstellen der Verbindung aufgefordert, wenn sich der öffentliche Schlüssel auf Ihrer Azure-VM ändert oder der Servername unter `~/.ssh/known_hosts` entfernt wird.)
+
+Wenn der virtuelle Computer die JIT-Zugriffsrichtlinie (Just-In-Time) verwendet, müssen Sie den Zugriff anfordern, bevor Sie eine Verbindung mit dem virtuellen Computer herstellen können. Weitere Informationen zur Just-In-Time-Richtlinie finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe der Just-In-Time-Richtlinie](../../security-center/security-center-just-in-time.md).
 
 ## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>Verwenden von „ssh-agent“ zum Speichern der Passphrase für den privaten Schlüssel
 

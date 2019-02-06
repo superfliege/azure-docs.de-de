@@ -11,22 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726030"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472013"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Kaufmodelle für Azure SQL-Datenbank
 
 Mit Azure SQL-Datenbank können Sie problemlos eine vollständig verwaltete PaaS-Datenbank-Engine erwerben, die an Ihre Anforderungen an Leistung und Kosten angepasst ist. Je nach Bereitstellungsmodell von Azure SQL-Datenbank können Sie das Kaufmodell auswählen, das Ihren Anforderungen entspricht:
+
 - Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) (empfohlen), mit dem Sie die genaue Menge an Speicherkapazität und Computeressourcen auswählen können, die Sie für Ihre Workload benötigen.
 - Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md), mit dem Sie Compute- und Speicherressourcen in Paketen auswählen können, die für gängige Workloads zusammengestellt wurden.
 
 In Azure SQL-Datenbank-Bereitstellungsmodellen sind verschiedene Kaufmodelle verfügbar:
-- [Logische Server](sql-database-logical-servers.md) in [Azure SQL-Datenbank](sql-database-technical-overview.md) bieten sowohl das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) als auch das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) an. Innerhalb dieses Kaufmodells können Sie [Einzeldatenbanken](sql-database-single-databases-manage.md) oder [Pools für elastische Datenbanken](sql-database-elastic-pool.md) auswählen.
+
+- [Einzeldatenbanken](sql-database-single-databases-manage.md) und [Pools für elastische Datenbanken](sql-database-elastic-pool.md) in [Azure SQL-Datenbank](sql-database-technical-overview.md) bieten sowohl das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) als auch das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) an. 
 - [Verwaltete Instanzen](sql-database-managed-instance.md) in Azure SQL-Datenbank bieten nur das auf [virtuellen Kernen basierende Kaufmodell](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -64,7 +66,7 @@ Mit einer Datenbanktransaktionseinheit (Database Transaction Unit, DTU) wird ein
 
 ### <a name="database-transaction-units-dtus"></a>Datenbanktransaktionseinheiten (DTUs)
 
-Für eine einzelne Azure SQL-Datenbank in einer bestimmten Computegröße innerhalb eines [Diensttarifs](sql-database-single-database-scale.md) garantiert Microsoft einen bestimmten Ressourcenumfang für diese Datenbank (unabhängig von jeder anderen Datenbank in der Azure-Cloud), wobei eine vorhersagbare Leistungsebene geboten wird. Der Ressourcenumfang wird als Anzahl von Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) berechnet. Es handelt sich dabei um ein Paket aus Compute-, Speicher- und E/A-Ressourcen. Das Verhältnis zwischen diesen Ressourcen wurde ursprünglich anhand einer [OLTP-Benchmark-Workload](sql-database-benchmark-overview.md) ermittelt, die für realistische OLTP-Workloads typisch ist. Wenn Ihre Workload den Umfang einer dieser Ressourcen überschreitet, wird der Durchsatz gedrosselt, wodurch eine niedrigere Leistung und Timeouts verursacht werden. Die Ressourcen, die von Ihrer Workload verwendet werden, wirken sich nicht auf die Ressourcen aus, die für andere SQL-Datenbanken in der Azure-Cloud verfügbar sind, und die von anderen Workloads verwendeten Ressourcen wirken sich nicht auf die Ressourcen aus, die für Ihre SQL-Datenbank verfügbar sind.
+Für eine einzelne Datenbank in einer bestimmten Computegröße innerhalb eines [Diensttarifs](sql-database-single-database-scale.md) garantiert Microsoft einen bestimmten Ressourcenumfang für diese Datenbank (unabhängig von jeder anderen Datenbank in der Azure-Cloud), wobei eine vorhersagbare Leistungsebene geboten wird. Der Ressourcenumfang wird als Anzahl von Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) berechnet. Es handelt sich dabei um ein Paket aus Compute-, Speicher- und E/A-Ressourcen. Das Verhältnis zwischen diesen Ressourcen wurde ursprünglich anhand einer [OLTP-Benchmark-Workload](sql-database-benchmark-overview.md) ermittelt, die für realistische OLTP-Workloads typisch ist. Wenn Ihre Workload den Umfang einer dieser Ressourcen überschreitet, wird der Durchsatz gedrosselt, wodurch eine niedrigere Leistung und Timeouts verursacht werden. Die Ressourcen, die von Ihrer Workload verwendet werden, wirken sich nicht auf die Ressourcen aus, die für andere SQL-Datenbanken in der Azure-Cloud verfügbar sind, und die von anderen Workloads verwendeten Ressourcen wirken sich nicht auf die Ressourcen aus, die für Ihre SQL-Datenbank verfügbar sind.
 
 ![Begrenzungsrahmen](./media/sql-database-what-is-a-dtu/bounding-box.png)
 

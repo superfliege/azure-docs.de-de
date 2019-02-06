@@ -1,5 +1,5 @@
 ---
-title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Azure Storage mit Lesezugriff (RA-GRS) | Microsoft Docs
+title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Azure Storage mit Lesezugriff (RA-GRS) | Microsoft-Dokumentation
 description: Verwenden Sie Azure-RA-GRS-Speicher, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann.
 services: storage
 author: tamram
@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231362"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454942"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -29,7 +29,7 @@ Welche primären Regionen welchen sekundären Regionen zugeordnet werden, erfahr
 Der Artikel enthält Codeausschnitte sowie am Ende einen Link zu einem vollständigen Beispiel, das Sie herunterladen und ausführen können.
 
 > [!NOTE]
-> Azure Storage unterstützt ab sofort zonenredundante Speicher (ZRS) für die Erstellung von hochverfügbaren Anwendungen. ZRS bieten eine einfache Lösung für die Redundanzanforderungen zahlreicher Anwendungen. ZRS bieten Schutz vor Hardwareausfällen oder schwerwiegenden Notfällen, die sich auf ein einzelnes Rechenzentrum auswirken. Weitere Informationen finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md).
+> Azure Storage unterstützt ab sofort zonenredundante Speicher (ZRS) für die Erstellung von hochverfügbaren Anwendungen. ZRS bieten eine einfache Lösung für die Redundanzanforderungen zahlreicher Anwendungen. ZRS bieten Schutz vor Hardwareausfällen oder schwerwiegenden Notfällen, die sich auf ein einzelnes Rechenzentrum auswirken. Weitere Informationen zu ZRS finden Sie unter [Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>Wichtige Features von RA-GRS
 

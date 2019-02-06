@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 27c7c62125f3f559fb1764292729cbbfdc1c4e5f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d2e890110194b1fbe0528191fa645628cc3a1345
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115594"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161358"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von C# Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -66,7 +66,7 @@ Die Anwendung wird jetzt in Ihrem VS Code-Arbeitsbereich angezeigt.
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Bereitstellen der Anwendung im lokalen Cluster
 Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster bereitstellen. 
 
-1. Klicken Sie in der **Befehlspalette** auf den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)**. Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
+1. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** aus. Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
 
    ![Befehl „Anwendung bereitstellen“ in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen und zu debuggen:
    
    ![Trennen vom Debugger](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. Wenn Sie mit dem Debuggen fertig sind, können Sie die Anwendung CounterService mit dem Befehl **Service Fabric: Anwendung entfernen** aus Ihrem lokalen Cluster entfernen. 
+7. Wenn Sie das Debuggen abgeschlossen haben, können Sie die CounterService-Anwendung mit dem Befehl **Service Fabric: Anwendung entfernen** aus Ihrem lokalen Cluster entfernen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

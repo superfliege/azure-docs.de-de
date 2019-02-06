@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847542"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904368"
 ---
 # <a name="manage-and-configure-projects"></a>Verwalten und Konfigurieren von Projekten
 
@@ -41,9 +41,9 @@ In der Dropdownliste **Ausführung** im Projektdashboard wählen Sie die Compute
 
 ![Dropdownliste „Computeebene“ im Projektdashboard](media/project-compute-tier-list.png)
 
-Sie können diese Einschränkungen umgehen, indem Sie eine anderen virtuellen Computer verwenden, den Sie in einem Azure-Abonnement bereitgestellt haben. Sie müssen auch auf diesem virtuellen Computer Jupyter installieren. Die Data Science Virtual Machine-Images sind eine gute Wahl, da diese Jupyter standardmäßig enthalten.
+Sie können diese Einschränkungen umgehen, indem Sie eine anderen virtuellen Computer verwenden, den Sie in einem Azure-Abonnement bereitgestellt haben. Sie müssen JupyterHub auf diesem virtuellen Computer installieren und ausführen. Die Data Science Virtual Machine-Images (beliebiges Betriebssystem) sind eine gute Wahl, da sie JupyterHub standardmäßig enthalten.
 
-Sie können sich mit einem entsprechend konfigurierten virtuellen Azure-Computer über die Option **Direktes Computing** in der Dropdownliste verbinden. Wenn Sie diese Option auswählen, werden Sie nach einem Namen (der in der Liste angezeigt werden soll), der IP-Adresse und dem Port der VM (typischerweise 8000, dem Standardport, der JupyterHub lauscht) und den VM-Anmeldeinformationen gefragt:
+Wenn Sie über einen entsprechend konfigurierten virtuellen Azure-Computer verfügen, wählen Sie in der Dropdownliste die Option **Direct Compute** (Compute direkt) aus. Sie werden nach einem Namen (für die Anzeige in der Liste), der IP-Adresse des virtuellen Computers mit dem zugehörigen Port (in der Regel 8000, der Standardport, an dem JupyterHub lauscht) und den VM-Anmeldeinformationen gefragt:
 
 ![Aufforderung zum Sammeln von Serverinformationen für die Option „Direktes Computing“](media/project-compute-tier-direct.png)
 
@@ -51,13 +51,13 @@ Wenn Sie die folgenden Bedingungen erfüllt sind, zeigt die Dropdownliste auch [
 
 - Sie sind bei Azure Notebooks mit einem Konto angemeldet, das Azure Active Directory (AAD) verwendet, wie beispielsweise ein Firmenkonto.
 - Ihr Konto ist mit einem Azure-Abonnement verbunden.
-- Sie haben einen oder mehrere virtuelle Computer in diesem Abonnement, mit mindestens Leserzugriff, die das Image „Data Science Virtual Machine for Linux“ (Ubuntu) verwenden.
+- Sie haben einen oder mehrere virtuelle Computer mit mindestens Lesezugriff in diesem Abonnement, die das Image „Data Science Virtual Machine for Linux (Ubuntu)“ verwenden.
 
 ![Data Science Virtual Machine-Instanzen in der Dropdownliste im Projektdashboard](media/project-compute-tier-dsvm.png)
 
 Wenn Sie eine DSVM-Instanz auswählen, werden Sie möglicherweise von Azure Notebooks zur Eingabe der spezifischen Computer-Anmeldeinformationen aufgefordert, die beim Erstellen der VM verwendet wurden.
 
-Um eine neue DSVM-Instanz zu erstellen, befolgen Sie die Anweisungen in [Erstellen einer Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Sie *müssen* das Image **Data Science Virtual Machine for Linux (Ubuntu)** verwenden, da Azure Notebooks keine DSVMs anzeigt, die Windows- oder CentOS-Images verwenden.
+Um eine neue DSVM-Instanz zu erstellen, befolgen Sie die Anweisungen in [Erstellen einer Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Verwenden Sie das Image **Data Science Virtual Machine for Linux (Ubuntu)**, wenn die DSVM in der Dropdownliste in Azure Notebooks angezeigt werden soll.  Wenn Sie aus anderen Gründen das Windows- oder CentOS-Image verwenden müssen, können Sie die Option **Direct Compute** (Compute direkt) verwenden, um eine manuelle Verbindung mit der DSVM herzustellen.
 
 ## <a name="edit-project-metadata"></a>Bearbeiten von Projektmetadaten
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Riskware | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Riskware | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Riskware konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c664fac99e93e94b46f5d917a63aa6530b695bd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3b4c979bf03b23280c9389a043375f088624efe6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437772"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163244"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration in Riskware
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration mit Riskware
 
 In diesem Tutorial erfahren Sie, wie Sie Riskware in Azure Active Directory (Azure AD) integrieren.
 
@@ -111,17 +111,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein:
     | Environment| URL-Muster|
     |--|--|
-    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein:
     | Environment| URL-Muster|
     |--|--|
-    | UAT| `https://riskcloud.net/uat` |
-    | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` |
+    | UAT| `https://riskcloud.net/uat` |
+    | PROD| `https://riskcloud.net/prod` |
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
@@ -167,7 +167,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     g. Geben Sie im Textfeld **XML Identity Tag Name** (Tagname der XML-Identität) das Attribut ein, das den eindeutigen Bezeichner in der SAML-Antwort enthält, z.B. „NameID“.
 
-    h. Öffnen Sie im Editor die **Metadaten-XML**-Datei, die Sie im Azure-Portal heruntergeladen haben, kopieren Sie das Zertifikat der Metadatendatei, und fügen Sie es in das Textfeld **Certificate** (Zertifikat) ein.
+    h. Öffnen Sie die aus dem Azure-Portal heruntergeladene  **Metadaten-XML** im Editor, kopieren Sie das Zertifikat aus der Metadatendatei, und fügen Sie es in das Textfeld **Certificate** (Zertifikat) ein.
 
     i. Fügen Sie in das Textfeld **Consumer URL** (Consumer-URL) den Wert der **Antwort-URL** ein, den Sie vom Supportteam erhalten.
 

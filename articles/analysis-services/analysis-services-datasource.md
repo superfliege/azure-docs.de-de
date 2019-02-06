@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188401"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299043"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -23,17 +23,20 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 
 |Datenquelle  |In-Memory  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL-Datenbank     |   JA      |    JA      |
+|Azure SQL-Datenbank<sup>[2](#azsqlmanaged)</sup>     |   JA      |    JA      |
 |Azure SQL Data Warehouse     |   JA      |   JA       |
-|Azure Blob Storage*     |   JA       |    Nein       |
-|Azure Table Storage*    |   JA       |    Nein       |
-|Azure Cosmos DB*     |  JA        |  Nein         |
-|Azure Data Lake Store*     |   JA       |    Nein       |
-|Azure HDInsight HDFS*     |     JA     |   Nein        |
-|Azure HDInsight Spark*     |   JA       |   Nein        |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   JA       |    Nein       |
+|Azure-Tabellenspeicher<sup>[1](#tab1400a)</sup>    |   JA       |    Nein       |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  JA        |  Nein         |
+|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   JA       |    Nein       |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     JA     |   Nein        |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   JA       |   Nein        |
 ||||
 
-\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
+<a name="tab1400a">1</a> Nur für tabellarische Modelle 1400 und höhere.   
+<a name="azsqlmanaged">2</a>Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz im Azure-VNet mit einer privaten IP-Adresse ausgeführt wird, ist ein lokales Datengateway erforderlich.   
+<a name="databricks">3</a> Azure Databricks unter Verwendung des Spark-Connectors wird derzeit nicht unterstützt.
+
 
 **Anbieter**   
 In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen herstellen, verwenden den .NET Framework-Datenanbieter für SQL Server.
@@ -57,31 +60,31 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 |Datenquelle  |  
 |---------|---------|
 |Access-Datenbank     |  
-|Active Directory*     |  
+|Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
 |Analytics Platform System     |  
-|Dynamics CRM*     |  
+|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Excel-Arbeitsmappe     |  
-|Exchange*     |  
-|Ordner*     |
-|IBM Informix* (Beta) |
-|JSON-Dokument*     |  
-|Zeilen aus Binärdatei*     | 
+|Exchange<sup>[1](#tab1400b)</sup>     |  
+|Ordner<sup>[1](#tab1400b)</sup>     |
+|IBM Informix<sup>[1](#tab1400b)</sup> (Beta) |
+|JSON-Dokument<sup>[1](#tab1400b)</sup>     |  
+|Zeilen aus Binärdatei<sup>[1](#tab1400b)</sup>     | 
 |MySQL Database     | 
-|OData-Feed*     |  
+|OData-Feed<sup>[1](#tab1400b)</sup>     |  
 |ODBC-Abfrage     | 
 |OLE DB     |   
-|Postgre SQL-Datenbank*    | 
-|Salesforce-Objekte* |  
-|Salesforce-Berichte* |
-|SAP HANA*    |  
-|SAP Business Warehouse*    |  
-|SharePoint*     |   
+|Postgre SQL-Datenbank<sup>[1](#tab1400b)</sup>    | 
+|Salesforce-Objekte<sup>[1](#tab1400b)</sup> |  
+|Salesforce-Berichte<sup>[1](#tab1400b)</sup> |
+|SAP HANA<sup>[1](#tab1400b)</sup>    |  
+|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
+|SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Sybase-Datenbank     |  
-|XML-Tabelle*    |  
+|XML-Tabellen<sup>[1](#tab1400b)</sup>    |  
 |||
  
-\* nur tabellarische Modelle mit Kompatibilitätsgrad 1400.
+<a name="tab1400b">1</a> Nur für tabellarische Modelle 1400 und höhere.
 
 ## <a name="specifying-a-different-provider"></a>Angeben eines anderen Herstellers
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 56dab93087249082330c0f685e5457bc2585664c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578768"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237930"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Bereitstellen eines Unterhaltungslernmodul-Bots
 
@@ -53,7 +53,7 @@ Nachfolgend wird beschrieben, wie Sie die Modell-ID abrufen:
 
 5. Der GUID „Modell-ID“ wird am oberen Rand der Seite angezeigt.
 
-## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Option 1: Bereitstellen eines Unterhaltungslernmodul-Bots zur lokalen Ausführung
+## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Option 1: Bereitstellen eines Conversation Learner-Bots zur lokalen Ausführung
 
 Hier wird ein Bot auf dem lokalen Computer bereitgestellt und gezeigt, wie Sie mit dem Bot Framework-Emulator darauf zugreifen können.
 
@@ -118,6 +118,7 @@ Im Folgenden finden Sie Schrittanleitungen zum Bereitstellen eines Unterhaltungs
         CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
         CONVERSATION_LEARNER_MODEL_ID      | Die über die Benutzeroberfläche des Unterhaltungslernmoduls unter den „Einstellungen“ für das Modell abgerufene ID (GUID)
         LUIS_AUTHORING_KEY               | LUIS-Erstellungsschlüssel für dieses Modell
+        LUIS_SUBSCRIPTION_KEY            | Nicht erforderlich, aber empfohlen für veröffentlichte Bots, um die Verwendung Ihres Kontingents für die Erstellung zu vermeiden.
     
     4. Klicken Sie am oberen Rand der Seite auf „Speichern“.
     5. Öffnen Sie auf der linken Seite das Navigationselement „Build“.

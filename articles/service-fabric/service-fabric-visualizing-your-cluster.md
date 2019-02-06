@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8a2a1b70290f48b3189bfae2f67dd19c5ef4c9f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972331"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093256"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 
@@ -49,6 +49,11 @@ Service Fabric Explorer kann über die folgenden Links als Desktopanwendung heru
 Service Fabric Explorer wird auch an einem HTTP-Verwaltungsendpunkt des Service Fabric-Clusters gehostet. Wenn Sie SFX in einem Webbrowser starten möchten, navigieren Sie in einem beliebigen Browser zum HTTP-Verwaltungsendpunkt des Clusters (beispielsweise https://clusterFQDN:19080).
 
 Zur Einrichtung einer Entwicklerarbeitsstation können Sie Service Fabric Explorer in Ihrem lokalen Cluster starten, indem Sie zu https://localhost:19080/Explorer navigieren. Informationen zum Vorbereiten Ihrer Entwicklungsumgebung finden Sie in [diesem Artikel](service-fabric-get-started.md).
+
+> [!NOTE]
+> Wenn der Cluster durch ein selbstsigniertes Zertifikat geschützt wird, wird im Webbrowser die Fehlermeldung „Diese Website ist nicht sicher“ angezeigt. In den meisten modernen Webbrowsern können Sie einfach fortfahren, indem Sie die Warnung ignorieren. In einer Produktionsumgebung sollte der Cluster mittels eines allgemeinen Namens und eines durch eine Zertifizierungsstelle ausgestellten Zertifikats geschützt werden. 
+>
+>
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Herstellen einer Verbindung mit einem Service Fabric-Cluster
 Für die Verbindungsherstellung mit einem Service Fabric-Cluster benötigen Sie den Verwaltungsendpunkt (FQDN/IP) und den Port des HTTP-Verwaltungsendpunkts für den Cluster (standardmäßig 19080). Beispiel: https://mysfcluster.westus.cloudapp.azure.com:19080. Aktivieren Sie das Kontrollkästchen „Mit Localhost verbinden“, falls Sie eine Verbindung mit einem lokalen Cluster auf Ihrer Arbeitsstation herstellen möchten.
@@ -95,7 +100,7 @@ Auf jeder Ebene der Struktur werden im Hauptbereich relevante Informationen zum 
 ### <a name="view-the-clusters-nodes"></a>Anzeigen der Knoten des Clusters
 Die Knotenansicht zeigt das physische Layout des Clusters. Für einen Knoten können Sie überprüfen, für welche Anwendungen Code auf dem Knoten bereitgestellt wurde. Genauer gesagt können Sie anzeigen, welche Replikate derzeit darauf ausgeführt werden.
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>Aktionen
 Service Fabric Explorer bietet eine schnelle Möglichkeit zum Aufrufen von Aktionen für die Knoten, Anwendungen und Dienste in Ihrem Cluster.
 
 Um beispielsweise eine Anwendungsinstanz zu löschen, wählen Sie die Anwendung in der Struktur auf der linken Seite und dann **Aktionen** > **Anwendung löschen** aus.
@@ -118,6 +123,18 @@ Sie können Service Fabric Explorer auch verwenden, um Anwendungsinstanzen für 
 >
 >
 
+## <a name="event-store"></a>EventStore
+EventStore ist eine Funktion der Plattform, mit der Ereignisse der Service Fabric-Plattform bereitgestellt werden, die in Service Fabric Explorer und über die REST-API verfügbar sind. Sie können eine Momentaufnahmeansicht der Vorgänge in Ihrem Cluster für jede Entität (z.B. Knoten, Dienst, Anwendung und Abfrage) basierend auf dem Zeitpunkt des Ereignisses anzeigen. Weitere Informationen zu EventStore finden Sie auch unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).   
+
+![EventStore][sfx-eventstore]
+
+>[!NOTE]
+>Ab Service Fabric-Version 6.4 ist EventStore nicht mehr standardmäßig aktiviert und muss in der Resource Manager-Vorlage aktiviert werden.
+
+>[!NOTE]
+>Ab Service Fabric-Version 6.4 sind die EventStore-APIs nur für in Azure ausgeführte Windows-Cluster verfügbar. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric-Anwendungsbereitstellung per PowerShell](service-fabric-deploy-remove-applications.md)
@@ -129,3 +146,4 @@ Sie können Service Fabric Explorer auch verwenden, um Anwendungsinstanzen für 
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png

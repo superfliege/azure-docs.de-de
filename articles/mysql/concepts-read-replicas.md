@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/22/2019
-ms.openlocfilehash: 6ebbaece66d9055fd2bff68eee873b012b4a6d50
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 1/23/2019
+ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462419"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903756"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
-Mit dem Feature der Lesereplikate (öffentliche Vorschau) können Sie Daten von einem Azure Database for MySQL-Server (Masterserver) auf bis zu fünf schreibgeschützte Server (Replikate) in derselben Azure-Region replizieren. Schreibgeschützte Replikate werden mit der nativen, auf der Position der Binärprotokolldatei (binlog) basierenden Replikationstechnologie der MySQL-Engine asynchron aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
+> [!IMPORTANT]
+> Das Feature für Lesereplikate befindet sich in der Public Preview-Phase.
+
+Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for MySQL-Server (Masterserver) auf bis zu fünf schreibgeschützten Servern (Replikate) in derselben Azure-Region replizieren. Schreibgeschützte Replikate werden mit der nativen, auf der Position der Binärprotokolldatei (binlog) basierenden Replikationstechnologie der MySQL-Engine asynchron aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
 Bei Replikaten, die im Azure Database for MySQL-Dienst erstellt werden, handelt es sich um neue Server, die genauso verwaltet werden können wie normale, eigenständige MySQL-Server. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen und der bereitgestellte Speicher in GB/Monat in Rechnung gestellt. 
 

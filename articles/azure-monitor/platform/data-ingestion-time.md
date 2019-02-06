@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2019
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213126"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900441"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Datenerfassungszeit in Log Analytics
 Azure Log Analytics ist ein Hochleistungs-Datendienst in Azure Monitor, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Daten bis zu ihrer Verfügbarkeit in Log Analytics zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -45,8 +45,15 @@ Agents und Managementlösungen verwenden verschiedene Strategien, um Daten eines
 ### <a name="agent-upload-frequency"></a>Uploadhäufigkeit des Agents
 Um einen schlanken Log Analytics-Agent zu gewährleisten, speichert der Agent Protokolle zwischen und lädt sie in regelmäßigen Abständen nach Log Analytics hoch. Die Uploadhäufigkeit schwankt zwischen 30 Sekunden und 2 Minuten, abhängig vom Datentyp. Die meisten Daten werden in unter 1 Minute hochgeladen. Die Netzwerkbedingungen können sich für diese Daten nachteilig auf die Wartezeit bis zum Erreichen des Log Analytics-Erfassungspunkts auswirken.
 
-### <a name="azure-logs-and-metrics"></a>Azure-Protokolle und -Metriken 
-Bis zur Verfügbarkeit von Daten des Aktivitätsprotokolls in Log Analytics vergehen ungefähr 5 Minuten. Für Daten aus Diagnoseprotokollen und Metriken kann es je nach Azure-Dienst 1–15 Minuten dauern, bis sie zur Verarbeitung zur Verfügbarkeit stehen. Sobald sie verfügbar sind, braucht es weitere 30–60 Sekunden bei Protokollen und 3 Minuten bei Metriken, bis die Daten an den Erfassungspunkt von Log Analytics gesendet werden.
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure-Aktivitätsprotokolle, -Diagnoseprotokolle und -Metriken
+Für Azure-Daten ist zusätzliche Zeit erforderlich, bis sie am Log Analytics-Erfassungspunkt zur Verarbeitung verfügbar sind:
+
+- Das Senden von Daten aus Diagnoseprotokollen nimmt je nach Azure-Dienst 2 bis 15 Minuten in Anspruch. Mit der [folgenden Abfrage](#checking-ingestion-time) können Sie die Wartezeit in Ihrer Umgebung ermitteln.
+- Das Senden von Metriken der Azure-Plattform an den Log Analytics-Erfassungspunkt nimmt drei Minuten in Anspruch.
+- Das Senden von Daten des Aktivitätsprotokolls an den Log Analytics-Erfassungspunkt nimmt 10 bis 15 Minuten in Anspruch.
+
+Sobald die Daten am Erfassungspunkt verfügbar sind, vergehen weitere zwei bis fünf Minuten, bis die Daten für Abfragen zur Verfügung stehen.
+
 
 ### <a name="management-solutions-collection"></a>Sammlung von Verwaltungslösungen
 Einige Lösungen sammeln ihre Daten nicht mithilfe eines Agents, sondern verwenden eine Erfassungsmethode, die zusätzliche Wartezeit mit sich bringt. Einige Lösungen erfassen Daten in regelmäßigen Intervallen, ohne eine Sammlung nahezu in Echtzeit zu versuchen. Dies sind einige spezifische Beispiele:

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Skyhigh Networks | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Skyhigh Networks | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Skyhigh Networks konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 48d6ddd1-4d3e-4019-8234-5e5212684d9c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 40237946adf0e9cf30367fd0464a6c32572c3aaf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6b66a7343c6ddaa9ff8cf36489798a96fbdf1c30
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423724"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175314"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Tutorial: Azure Active Directory-Integration in Skyhigh Networks
+# <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Tutorial: Azure Active Directory-Integration mit Skyhigh Networks
 
 In diesem Tutorial erfahren Sie, wie Sie Skyhigh Networks in Azure Active Directory (Azure AD) integrieren.
 
@@ -169,7 +169,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-skyhigh-networks-test-user"></a>Erstellen eines Skyhigh Networks-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Skyhigh Networks eine Benutzerin namens Britta Simon. Das [Skyhigh Networks-Supportteam](mailto:support@skyhighnetworks.com) kann Sie dabei unterstützen, Benutzer der Skyhigh Networks-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Skyhigh Networks eine Benutzerin namens Britta Simon. Das  [Skyhigh Networks-Supportteam](mailto:support@skyhighnetworks.com) kann Sie dabei unterstützen, Benutzer der Skyhigh Networks-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

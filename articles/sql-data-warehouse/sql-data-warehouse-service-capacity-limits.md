@@ -6,16 +6,16 @@ author: sachinpMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686601"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250555"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Kapazitätsgrenzen von SQL Data Warehouse
 Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Warehouse zulässig sind.
@@ -33,7 +33,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Wareho
 ## <a name="database-objects"></a>Datenbankobjekte
 | Category (Kategorie) | BESCHREIBUNG | Maximum |
 |:--- |:--- |:--- |
-| Datenbank |Max. Größe | Gen1: 240 TB, komprimiert auf dem Datenträger. Dieser Speicherplatz ist unabhängig von „tempdb“ oder vom Protokollspeicherplatz und daher für permanente Tabellen reserviert.  Komprimierung von gruppiertem Columnstore wird auf 5X geschätzt.  Diese Komprimierung ermöglicht der Datenbank einen Zuwachs auf ungefähr 1PB, wenn alle Tabellen mit gruppiertem Columnstore konfiguriert sind (die Standardtabellentyp). <br/><br/> Gen2: 240 TB für Rowstore- und unbegrenzter Speicher für Columnstore-Tabellen |
+| Datenbank |Max. Größe | Gen1: 240TB komprimiert auf dem Datenträger. Dieser Speicherplatz ist unabhängig von „tempdb“ oder vom Protokollspeicherplatz und daher für permanente Tabellen reserviert.  Komprimierung von gruppiertem Columnstore wird auf 5X geschätzt.  Diese Komprimierung ermöglicht der Datenbank einen Zuwachs auf ungefähr 1PB, wenn alle Tabellen mit gruppiertem Columnstore konfiguriert sind (die Standardtabellentyp). <br/><br/> Gen2: 240TB für Rowstore- und unbegrenzter Speicher für Columnstore-Tabellen |
 | Table |Max. Größe |60 TB komprimiert auf dem Datenträger |
 | Table |Tabellen pro Datenbank | 100.000 |
 | Table |Spalten pro Tabelle |1024 Spalten |
@@ -69,7 +69,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Wareho
 | SELECT |Spalten pro JOIN |1024 Spalten<br/><br/>Für einen JOIN sind maximal 1.024 Spalten zulässig. Es gibt keine Garantie, dass Sie stets über 1024 verfügen. Wenn der JOIN-Plan eine temporäre Tabelle mit mehr Spalten als das JOIN-Ergebnis erfordert, gilt die Grenze von 1024 für die temporäre Tabelle. |
 | SELECT |Bytes pro GROUP BY-Spalten. |8.060<br/><br/>Die Maximalgröße von Spalten in der GROUP BY-Klausel beträgt 8.060 Bytes. |
 | SELECT |Bytes pro ORDER BY-Spalten |8.060 Bytes<br/><br/>Die Maximalgröße von Spalten in der ORDER BY-Klausel beträgt 8.060 Bytes. |
-| Bezeichner pro Anweisung |Anzahl referenzierter Bezeichner |65.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
+| Bezeichner pro Anweisung |Anzahl referenzierter Bezeichner |65.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: Ein Ausdrucksdienstelimit wurde erreicht.](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a) |
 | Zeichenfolgenliterale | Anzahl von Zeichenfolgenliteralen in einer Anweisung | 20.000 <br/><br/>SQL Data Warehouse beschränkt die Anzahl von Zeichenfolgenkonstanten in einem einzelnen Ausdruck einer Abfrage. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632.|
 
 ## <a name="metadata"></a>Metadaten

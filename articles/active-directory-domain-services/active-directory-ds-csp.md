@@ -8,19 +8,19 @@ manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: cf205249c4d07cee1ff17c9c726283cfddca1fce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155219"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187095"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) Domain Services für Azure Cloud Solution Provider (CSP)
 In diesem Artikel wird erläutert, wie Sie Azure AD Domain Services in einem Azure CSP-Abonnement verwenden können.
@@ -74,16 +74,16 @@ Die folgenden wichtigen Überlegungen gelten für die Verwaltung einer verwaltet
 
 * **CSP-Administrator-Agents können eine verwaltete Domäne mit ihren Anmeldeinformationen bereitstellen:** Azure AD Domain Services unterstützt Azure CSP-Abonnements. Daher können Benutzer, die zur Gruppe der Administrator-Agents eines CSP-Partners gehören, eine neue durch Azure AD Domain Services verwaltete Domäne bereitstellen.
 
-* **CSPs können neue verwaltete Domänen für ihre Kunden mit einem Skript mithilfe von PowerShell erstellen:** Weitere Details dazu finden Sie unter [Aktivieren von Azure AD Domain Services mithilfe von PowerShell](active-directory-ds-enable-using-powershell.md).
+* **CSPs können Skripte für die Erstellung von neuen verwalteten Domänen für ihre Kunden mithilfe von PowerShell bereitstellen:** Nähere Informationen finden Sie unter [Aktivieren von Azure AD Domain Services mithilfe von PowerShell](active-directory-ds-enable-using-powershell.md).
 
-* **CSP-Administratoren können keine laufenden Verwaltungsaufgaben für die verwaltete Domäne mit ihren Anmeldeinformationen ausführen:** CSP-Administratorbenutzer können keine routinemäßigen Verwaltungsaufgaben innerhalb der verwalteten Domäne mit ihren Anmeldeinformationen ausführen. Diese Benutzer sind für das Azure AD-Verzeichnis des Kunden extern, und ihre Anmeldeinformationen sind im Azure AD-Verzeichnis des Kunden nicht verfügbar. Daher besitzt Azure AD Domain Services keinen Zugriff auf die Kerberos- und NTLM-Kennworthashes für diese Benutzer. Infolgedessen können solche Benutzer nicht für von Azure AD Domain Services verwaltete Domänen authentifiziert werden.
+* **CSP-Administrator-Agents können keine laufenden Verwaltungsaufgaben auf der verwalteten Domäne mit ihren Anmeldeinformationen ausführen:** CSP-Administrator-Benutzer können keine routinemäßigen Verwaltungsaufgaben innerhalb der verwalteten Domäne mit ihren Anmeldeinformationen ausführen. Diese Benutzer sind für das Azure AD-Verzeichnis des Kunden extern, und ihre Anmeldeinformationen sind im Azure AD-Verzeichnis des Kunden nicht verfügbar. Daher besitzt Azure AD Domain Services keinen Zugriff auf die Kerberos- und NTLM-Kennworthashes für diese Benutzer. Infolgedessen können solche Benutzer nicht für von Azure AD Domain Services verwaltete Domänen authentifiziert werden.
 
   > [!WARNING]
   > **Sie müssen ein Benutzerkonto im Verzeichnis des Kunden erstellen, um laufende Verwaltungsaufgaben für die verwaltete Domäne auszuführen.**
   > Sie können sich nicht mit den Anmeldeinformationen eines CSP-Administratorbenutzers bei der verwalteten Domäne anmelden. Verwenden Sie die Anmeldeinformationen eines Benutzerkontos, das zum Azure AD-Verzeichnis des Kunden gehört. Sie benötigen diese Anmeldeinformationen für Aufgaben wie das Verbinden virtueller Computer mit der verwalteten Domäne, das Verwalten von DNS, das Verwalten von Gruppenrichtlinien usw.
   >
 
-* **Das Benutzerkonto, das für laufende Verwaltungsaufgaben erstellt wurde, muss der Gruppe „AAD DC-Administratoren“ hinzugefügt werden:** Die Gruppe „AAD DC-Administratoren“ verfügt über die Berechtigung, bestimmte delegierte Verwaltungsaufgaben für die verwaltete Domäne auszuführen. Zu diesen Aufgaben gehören die Konfiguration von DNS, das Erstellen von Organisationseinheiten, die Verwaltung von Gruppenrichtlinien usw. Damit ein CSP-Partner solche Aufgaben für eine verwaltete Domäne ausführen kann, muss ein Benutzerkonto im Azure AD-Verzeichnis des Kunden erstellt werden. Die Anmeldeinformationen für dieses Konto müssen für die Administrator-Agents des CSP-Partners freigegeben werden. Außerdem muss dieses Benutzerkonto der Gruppe „AAD DC-Administratoren“ hinzugefügt werden, damit Konfigurationsaufgaben für die verwaltete Domäne mit diesem Benutzerkonto ausgeführt werden können.
+* **Das für die laufende Verwaltung erstellte Benutzerkonto muss der Gruppe „AAD DC Administrators“ hinzugefügt werden:** Die Gruppe „AAD DC Administrators“ verfügt über Berechtigungen, um bestimmte delegierte Verwaltungsaufgaben auf der verwalteten Domäne auszuführen. Zu diesen Aufgaben gehören die Konfiguration von DNS, das Erstellen von Organisationseinheiten, die Verwaltung von Gruppenrichtlinien usw. Damit ein CSP-Partner solche Aufgaben für eine verwaltete Domäne ausführen kann, muss ein Benutzerkonto im Azure AD-Verzeichnis des Kunden erstellt werden. Die Anmeldeinformationen für dieses Konto müssen für die Administrator-Agents des CSP-Partners freigegeben werden. Außerdem muss dieses Benutzerkonto der Gruppe „AAD DC-Administratoren“ hinzugefügt werden, damit Konfigurationsaufgaben für die verwaltete Domäne mit diesem Benutzerkonto ausgeführt werden können.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

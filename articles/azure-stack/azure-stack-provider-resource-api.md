@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.lastreviewed: 01/25/2018
+ms.openlocfilehash: 9568ac58e646be03d367fe466ae972955f23488c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945585"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252233"
 ---
 # <a name="provider-resource-usage-api"></a>Ressourcennutzungs-API für Anbieter
 Der Begriff *Anbieter* bezieht sich auf den Dienstadministrator und alle delegierten Anbieter. Azure Stack-Operators und delegierte Anbieter können die Nutzungs-API für Anbieter verwenden, um einen Einblick in die Nutzung ihrer direkten Mandanten zu erhalten. Wie im Diagramm dargestellt, kann P0 beispielsweise die Anbieter-API aufrufen, um die Nutzungsinformationen zur direkten Nutzung von P1 und P2 abzurufen, und P1 kann die Nutzungsinformationen von P3 und P4 abrufen.

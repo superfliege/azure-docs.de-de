@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: e3b1655207f3baba6ea6e3cf2f00e3540a3602ad
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969368"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294827"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
@@ -40,12 +40,7 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
-Der **Host** ist der Computer, auf dem der Docker-Container ausgeführt wird. Dies kann ein lokaler Computer oder ein Docker-Hostingdienst in Azure sein, einschließlich:
-
-* [Azure Kubernetes Service](../../../aks/index.yml)
-* [Azure Container Instances](../../../container-instances/index.yml)
-* Ein in [Azure Stack](../../../azure-stack/index.yml) bereitgestellter [Kubernetes](https://kubernetes.io/)-Cluster. Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
-
+[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
@@ -77,6 +72,8 @@ Eine vollständige Beschreibung der verfügbaren Tags für die Container für di
 * [Sprachenerkennung](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [Standpunktanalyse](https://go.microsoft.com/fwlink/?linkid=2018654)
 
+Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage herunterzuladen.
+
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Docker-Pullvorgang für den Schlüsselbegriffserkennungs-Container
 
@@ -96,13 +93,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
-### <a name="listing-the-containers"></a>Auflisten der Container
-
-Mithilfe des Befehls [docker images](https://docs.docker.com/engine/reference/commandline/images/) können Sie Ihre heruntergeladenen Containerimages auflisten. Mit dem folgenden Befehl werden beispielsweise die ID, das Repository und das Tag jedes heruntergeladenen Containerimages in Form einer Tabelle aufgelistet:
-
-```Docker
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
+[!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers
@@ -159,14 +150,7 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](../text-analytics-reso
 
 ## <a name="containers-api-documentation"></a>API-Dokumentation des Containers
 
-Der Container stellt eine umfassende Dokumentation für die Endpunkte sowie die Funktion `Try it now` bereit. Dieses Feature ermöglicht Ihnen die Eingabe Ihrer Einstellungen in einem webbasierten HTML-Formular, sodass Sie die Abfrage ausführen können, ohne Code schreiben zu müssen. Nach der Rückgabe der Abfrage wird ein cURL-Beispielbefehl bereitgestellt, der das erforderliche Format für HTTP-Header und -Text veranschaulicht. 
-
-> [!TIP]
-> In der [OpenAPI-Spezifikation](https://swagger.io/docs/specification/about/) werden die API-Vorgänge beschrieben, die vom Container vom relativen URI `/swagger` unterstützt werden. Beispiel: 
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Abrechnung
 
@@ -176,7 +160,7 @@ Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wen
 
 Der Befehl `docker run` verwendet folgende Argumente für Abrechnungszwecke:
 
-| Option | Beschreibung |
+| Option | BESCHREIBUNG |
 |--------|-------------|
 | `ApiKey` | Der API-Schlüssel der Ressource vom Typ _Textanalyse_ zum Nachverfolgen von Abrechnungsinformationen. |
 | `Billing` | Der Endpunkt der Ressource vom Typ _Textanalyse_ zum Nachverfolgen von Abrechnungsinformationen.|

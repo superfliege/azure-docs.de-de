@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5b64472c6388a642c817fb67c97e963ecfa14c2c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478653"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296596"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert
 
@@ -28,6 +28,34 @@ Wenn ein Objekt wie erwartet nicht mit Azure AD synchronisiert wird, kann das ve
 
 >[!IMPORTANT]
 >Verwenden Sie für die Bereitstellung von Azure Active Directory (AAD) Connect mit Version 1.1.749.0 oder höher den [Problembehandlungstask](tshoot-connect-objectsync.md) im Assistenten, um Probleme bei der Objektsynchronisierung zu beheben. 
+
+## <a name="synchronization-process"></a>Synchronisierungsvorgang
+
+Bevor wir Synchronisationsprobleme untersuchen, müssen wir den Synchronisationsprozess von **Azure AD Connect** verstehen:
+
+  ![Azure AD Connect-Synchronisierungsprozess](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**Terminologie**
+
+* **CS:** Connectorbereich, eine Tabelle in der Datenbank.
+* **MV:** Metaverse, eine Tabelle in der Datenbank.
+* **AD:** Active Directory
+* **AAD:** Azure Active Directory
+
+### <a name="synchronization-steps"></a>**Synchronisierungsschritte**
+Der Synchronisierungsprozess umfasst die folgenden Schritte:
+
+1. **Aus AD importieren:** **Active Directory**-Objekte werden in **AD CS** eingefügt.
+
+2. **Aus AAD importieren:** **Active Directory**-Objekte werden in **AAD CS** eingefügt.
+
+3. **Synchronisierung:** Es werden **eingehende Synchronisierungsregeln** und **ausgehende Synchronisierungsregeln** in der Reihenfolge der Priorität von niedrig zu hoch ausgeführt. Informationen zu den Synchronisierungsregeln finden Sie im **Synchronisierungsregel-Editor** in der Desktopanwendungen. Die **eingehenden Synchronisierungsregeln** übertragen den Daten aus CS zu MV. Die **ausgehenden Synchronisierungsregeln** verschieben Daten aus MV zu CS.
+
+4. **In AD exportieren:** Nach der Synchronisierung werden Objekte aus AD CS in das **Active Directory** exportiert.
+
+5. **In AAD exportieren:** Nach der Synchronisierung werden Objekte aus AAD CS in das **Azure Active Directory** exportiert.
+
+## <a name="troubleshooting"></a>Problembehandlung
 
 Um den Fehler zu finden, müssen Sie an einigen verschiedenen Stellen in folgender Reihenfolge suchen:
 
@@ -123,7 +151,28 @@ Klicken Sie im **Synchronization Service Manager** auf **Metaverse Search**(Meta
 
 Klicken Sie im Fenster **Suchergebnisse** auf das Objekt.
 
-Wenn Sie das Objekt nicht gefunden haben, dann hat es die Metaverse noch nicht erreicht. Suchen Sie das Objekt weiter im Active Directory-[Connectorbereich](#connector-space-object-properties). Möglicherweise liegt ein Fehler aus der Synchronisierung vor, der das Objekt daran hindert in die Metaverse zu gelangen, oder es könnte ein Filter angewendet werden.
+Wenn Sie das Objekt nicht gefunden haben, dann hat es die Metaverse noch nicht erreicht. Suchen Sie das Objekt weiter im **Active Directory**-[Connectorbereich](#connector-space-object-properties). Wenn Sie das Objekt im **Active Directory**-Connectorbereich finden, könnte ein Synchronisationsfehler vorliegen, der das Objekt daran hindert, zur Metaverse zu gelangen, oder es könnte ein Synchronisationsregelfilter angewendet werden.
+
+### <a name="object-not-found-in-the-mv"></a>Objekt in MV nicht gefunden
+Wenn sich das Objekt im **Active Directory** CS befindet, aber nicht im MV vorhanden ist, wird ein Bereichsfilter angewendet. 
+
+* Um sich den Bereichsfilter anzusehen, rufen Sie das Menü der Desktopanwendung auf, und klicken Sie auf **Synchronisierungsregel-Editor**. Filtern Sie die für das Objekt geltenden Regeln anhand der Filter unten.
+
+  ![Suche in den eingehenden Synchronisierungsregeln](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+* Zeigen Sie Regel in der Liste von oben nach unten an, und überprüfen Sie die **Bereichsfilter**. Wenn der Wert **isCriticalSystemObject** im Bereichsfilter unten „Null“ oder „False“ oder leer ist, gehört er zum Bereich.
+
+  ![Suche in den eingehenden Synchronisierungsregeln](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+* Gehen Sie zur Attributliste [CS Import](#cs-import), und überprüfen Sie, welcher Filter das Objekt blockiert, um es in die MV zu verschieben. Abgesehen davon zeigt die Attributliste **Connector Space** nur Attribute an, die nicht Null oder leer sind. Wenn beispielsweise **isCriticalSystemObject** nicht in der Liste erscheint, bedeutet dies, dass der Wert dieses Attributs Null oder leer ist.
+
+### <a name="object-not-found-in-the-aad-cs"></a>Objekt in AAD CS nicht gefunden
+Das Objekt ist nicht im **Connectorbereich** von **Azure Active Directory** vorhanden. Allerdings ist das Objekt in der MV vorhanden. Schauen Sie sich also den Bereichsfilter der **Ausgangsregel** des entsprechenden **Connectorbereichs** an, und überprüfen Sie, ob das Objekt herausgefiltert wurde, da die [MV-Attribute](#mv-attributes) nicht die Kriterien erfüllen.
+
+* Um den ausgehenden Bereichsfilter anzuzeigen, wählen Sie die für das Objekt anwendbaren Regeln aus, indem Sie den untenstehenden Filter anpassen. Zeigen Sie jede einzelne Regel an, und überprüfen Sie den entsprechenden Wert für das [MV-Attribut](#mv-attributes).
+
+  ![Suche in den ausgehenden Synchronisierungsregeln](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>MV-Attribute
 : Auf der Registerkarte „Attribute“ sehen Sie die Werte und den Connector, von dem sie stammen.  

@@ -3,7 +3,7 @@ title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool | Mic
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab41211fb0b0b6360bdbc255e367d0492c2438ed
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330676"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459841"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -195,7 +195,7 @@ Zum Definieren einer Formel für die automatische Skalierung stehen folgende vor
 | std(doubleVecList) |double |Die Stichproben-Standardabweichung der Werte in der doubleVecList wird zurückgegeben. |
 | stop() | |Beendet die Auswertung des Ausdrucks für die automatische Skalierung. |
 | sum(doubleVecList) |double |Die Summe aller Komponenten von doubleVecList wird zurückgegeben. |
-| time(string dateTime="") |timestamp |Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123. |
+| time(string dateTime="") | timestamp |Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123. |
 | val(doubleVec v, double i) |double |Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben. |
 
 Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel: 
@@ -297,7 +297,7 @@ Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch 
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Task</b></td>
+    <td><b>Aufgabe</b></td>
     <td><p>Aufgabenmetriken basieren auf dem Aufgabenstatus (z.B. „Aktiv“, „Ausstehend“ oder „Abgeschlossen“). Folgende vom Dienst definierte Variablen eignen sich für Poolgrößenanpassungen auf der Grundlage von Aufgabenmetriken:</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -579,7 +579,7 @@ Error:
 ## <a name="example-autoscale-formulas"></a>Beispiele für autoscale-Formeln
 Hier sind einige Formeln angegeben, die verschiedene Möglichkeiten zum Anpassen der Anzahl von Computeressourcen in einem Pool darstellen.
 
-### <a name="example-1-time-based-adjustment"></a>Beispiel 1: Zeitbasierte Anpassung
+### <a name="example-1-time-based-adjustment"></a>Beispiel 1: Zeitbasierte Anpassung
 Angenommen Sie möchten die Poolgröße basierend auf dem Wochentag und der Tageszeit anpassen. Dieses Beispiel zeigt, wie Sie die Knotenanzahl im Pool entsprechend Anzahl zum erhöhen oder verringern.
 
 Die Formel ruft zunächst die aktuelle Uhrzeit ab. Wenn es sich um einen Werktag (1 bis 5) handelt und der Wert innerhalb der Geschäftszeiten (8:00 Uhr bis 18:00 Uhr) liegt, wird die Zielgröße des Pools auf 20 Knoten festgelegt. Andernfalls wird der Wert auf 10 Knoten festgelegt.
@@ -592,7 +592,7 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 ```
 
-### <a name="example-2-task-based-adjustment"></a>Beispiel 2: Aufgabenbasierte Anpassung
+### <a name="example-2-task-based-adjustment"></a>Beispiel 2: Aufgabenbasierte Anpassung
 In diesem Beispiel wird die Größe des Pools basierend auf der Anzahl der Aufgaben in der Warteschlange angepasst. In Formelzeichenfolgen können sowohl Kommentare als auch Zeilenumbrüche verwendet werden.
 
 ```csharp
@@ -611,7 +611,7 @@ $TargetDedicatedNodes = max(0, min($targetVMs, 20));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>Beispiel 3: Berücksichtigung paralleler Aufgaben
+### <a name="example-3-accounting-for-parallel-tasks"></a>Beispiel 3: Berücksichtigung paralleler Aufgaben
 In diesem Beispiel wird die Poolgröße basierend auf der Anzahl von Aufgaben angepasst. Diese Formel berücksichtigt auch den für den Pool festgelegten Wert [MaxTasksPerComputeNode][net_maxtasks]. Dieser Ansatz ist besonders hilfreich, wenn in Ihrem Pool die [parallele Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert wurde.
 
 ```csharp

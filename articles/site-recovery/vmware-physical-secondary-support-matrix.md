@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: b03ee4ebf1113fd422d34ebf219461e75c4a5a45
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970762"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208175"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs und physischen Servern
 
@@ -75,7 +75,7 @@ Gast-VM – Multi-NIC | JA
 **Speicher (Host)** | **Unterstützt** 
 --- | --- 
 NFS | JA 
-SMB 3.0 | N/V 
+SMB 3.0 | – 
 SAN (ISCSI) | JA 
 Multipfad (MPIO) | JA 
 
@@ -84,8 +84,8 @@ Multipfad (MPIO) | JA
 **Konfiguration** | **Unterstützt** 
 --- | --- 
 VMDK | JA 
-VHD/VHDX | N/V 
-Gen 2-VM | N/V 
+VHD/VHDX | – 
+Gen 2-VM | – 
 Freigegebener Clusterdatenträger | JA 
 Verschlüsselter Datenträger | Nein  
 UEFI| JA 
@@ -97,7 +97,7 @@ Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | JA
 Speicherplätze | Nein  
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | JA 
 Ausschließen von Datenträgern | JA 
-Multipfad (MPIO) | N/V 
+Multipfad (MPIO) | – 
 
 ## <a name="vaults"></a>Tresore
 

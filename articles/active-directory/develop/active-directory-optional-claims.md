@@ -7,7 +7,7 @@ services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345486"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077241"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Vorgehensweise: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App (öffentliche Vorschau)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App (Public Preview)
 
 Dieses Feature wird von Anwendungsentwicklern verwendet, um anzugeben, welche Ansprüche in Token enthalten sein sollen, die an ihre Anwendung gesendet werden. Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 - Auswählen zusätzlicher Ansprüche, die in Token für Ihre Anwendung aufgenommen werden sollen
@@ -93,7 +93,7 @@ Diese Ansprüche sind in v1.0-Token immer enthalten, jedoch nie in v2.0-Token, s
 | `in_corp`     | Innerhalb des Unternehmensnetzwerks        | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten.   |       |
 | `nickname`    | Spitzname                        | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht. |       |                                                                                                                |       |
 | `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Azure AD-Benutzerobjekt an. <br>„family_name“: „Miller“ |       |
-| `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Festlegung im Azure AD-Benutzerobjekt an.<br>„given_name“: „Frank“                   |       |
+| `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Festlegung im Azure AD-Benutzerobjekt an.<br>"given_name": "Frank"                   |       |
 
 ### <a name="additional-properties-of-optional-claims"></a>Zusätzliche Eigenschaften optionaler Ansprüche
 
@@ -166,9 +166,9 @@ Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie da
 
 Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anwendung kann optionale Ansprüche so konfigurieren, dass sie in jedem der drei Tokentypen (ID-Token, Zugriffstoken, SAML 2-Token) zurückgegeben werden, die vom Sicherheitstokendienst empfangen werden können. Die Anwendung kann einen anderen Satz optionaler Ansprüche für die Rückgabe im jeweiligen Tokentyp konfigurieren. Die „OptionalClaims“-Eigenschaft der Anwendungsentität ist ein „OptionalClaims“-Objekt.
 
-**Tabelle 5: Eigenschaften des „OptionalClaims“-Typs**
+**Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| NAME        | Typ                       | BESCHREIBUNG                                           |
+| NAME        | Type                       | BESCHREIBUNG                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden. |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -179,9 +179,9 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 Enthält einen optionalen Anspruch, der einer Anwendung oder einem Dienstprinzipal zugeordnet ist. Die „idToken“-, „accessToken“- und „saml2Token“-Eigenschaften des [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type)-Typs ist eine Sammlung von „OptionalClaim“.
 Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalten von „OptionalClaim“ mithilfe des Felds „AdditionalProperties“ ändern.
 
-**Tabelle 6: Eigenschaften des „OptionalClaim“-Typs**
+**Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
 
-| NAME                 | Typ                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
+| NAME                 | Type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |

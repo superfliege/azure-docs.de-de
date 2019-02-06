@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816754"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104234"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -105,7 +105,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
 **Fehlermeldung**: Azure Backup unterstützt derzeit keine Datenträgergrößen von über 1.023 GB <br>
 
-Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Datenträgergröße von über 1.023 GB sichern, da für Ihren Tresor kein Upgrade auf die sofortige Wiederherstellung durchgeführt wird. Ein Upgrade auf die sofortige Wiederherstellung bietet Unterstützung für bis zu 4 TB. Weitere Informationen finden Sie in diesem [Artikel](backup-instant-restore-capability.md).  
+Beim Sicherungsvorgang kann ein Fehler auftreten, wenn Sie eine VM mit einer Datenträgergröße von über 1.023 GB sichern, da für Ihren Tresor kein Upgrade auf die sofortige Wiederherstellung durchgeführt wird. Ein Upgrade auf die sofortige Wiederherstellung bietet Unterstützung für bis zu 4 TB. Weitere Informationen finden Sie in diesem [Artikel](backup-instant-restore-capability.md#upgrading-to-instant-restore). Nach dem Upgrade dauert es bis zu zwei Stunden, bis diese Funktion für das Abonnement zur Verfügung steht. Planen Sie ausreichend Puffer ein, bevor Sie den Vorgang wiederholen.  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – Azure Backup unterstützt derzeit keine SSD Standard-Datenträger.
 
@@ -132,7 +132,6 @@ Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, we
 4. Führen Sie den Sicherungsvorgang erneut durch.
 
 Wenn der geplante Sicherungsvorgang länger mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#restore-considerations).
-
 
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen

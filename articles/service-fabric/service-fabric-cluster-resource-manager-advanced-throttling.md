@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e9db1070066a2a02b72b5cc051e59d8b04dc9928
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4c86655b650464f1debadab35fdd82611d17ad81
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205126"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092338"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Drosselung im Clusterressourcen-Manager von Service Fabric
 Auch wenn Sie den Clusterressourcen-Manager ordnungsgemäß konfiguriert haben, kann es für den Cluster zu Unterbrechungen kommen. Beispielsweise können Knoten und Fehlerdomänen gleichzeitig ausfallen. Was wäre, wenn dies während eines Upgrades passieren würde? Der Clusterressourcen-Manager versucht immer, alle Fehler zu beheben, und nutzt dabei die Ressourcen des Clusters, um ihn neu zu organisieren und zu reparieren. Drosselungen bieten eine Abfangfunktion, damit der Cluster Ressourcen zur Stabilisierung verwenden kann. Die Knoten kehren zurück, die Netzwerkpartitionen werden repariert und die korrigierten Komponenten werden bereitgestellt.
@@ -35,7 +35,7 @@ In den meisten Fällen stellen wir fest, dass Kunden Drosselungen verwendet habe
 
 Service Fabric bietet zwei Mechanismen für das Drosseln der Anzahl von Replikatverschiebungen. Beim Standardmechanismus, der vor Service Fabric 5.7 vorhanden war, gilt die Drosselung als eine absolute Anzahl von zulässigen Verschiebungen. Dies funktioniert nicht für Cluster jeder Größe. Insbesondere kann für große Cluster der Standardwert zu klein sein, sodass der Lastenausgleich erheblich verlangsamt wird, selbst wenn er erforderlich ist; in kleineren Clustern gibt es keine Auswirkung. Dieser frühere Mechanismus wurde durch auf Prozentsätzen basierende Drosselung ersetzt, die sich für dynamische Cluster, in denen sich die Anzahl der Dienste und Knoten regelmäßig ändert, besser skalieren lässt.
 
-Die Drosselungen basieren auf einem Prozentsatz der Anzahl von Replikaten in den Clustern. Auf Prozentsätzen basierende Drosselung ermöglichen z.B. das Ausdrücken der Regel: „Nicht mehr als 10% der Replikate in einem Intervall von 10 Minuten verlagern“.
+Die Drosselungen basieren auf einem Prozentsatz der Anzahl von Replikaten in den Clustern. Auf Prozentsätzen basierende Drosselungen ermöglichen beispielsweise das Ausdrücken der Regel: „Nicht mehr als 10% der Replikate in einem Intervall von 10 Minuten verlagern“.
 
 Die Konfigurationseinstellungen für die auf Prozentsätzen basierende Drosselung sind:
 

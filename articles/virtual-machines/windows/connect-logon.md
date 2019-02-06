@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit einem virtuellen Windows Server-Computer | Microsoft Docs
-description: Hier erfahren Sie, wie Sie unter Verwendung des Azure-Portals und des Resource Manager-Bereitstellungsmodells eine Verbindung mit einem virtuellen Windows-Computer herstellen und sich bei diesem Computer anmelden.
+description: Erfahren Sie, wie Sie unter Verwendung des Azure-Portals und des Resource Manager-Bereitstellungsmodells eine Verbindung mit einem virtuellen Windows-Computer herstellen und sich bei diesem Computer anmelden.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: fdd0c82f64b55c801ef04f1d533ed91683a07f9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4bfb17a7c50e97ae71908f052f7f38110cf376df
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867068"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296884"
 ---
-# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
-Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, danach melden Sie sich an.
+# <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
+Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, dann melden Sie sich an.
 
 Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzustellen, müssen Sie einen RDP-Client für Mac installieren, z.B. [Microsoft-Remotedesktop](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
@@ -32,9 +32,9 @@ Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzu
 2. Wählen Sie im linken Menü **Virtual Machines** aus.
 3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
 4. Klicken Sie oben auf der Seite für den virtuellen Computer auf die Schaltfläche **Verbinden**.
-2. Wählen Sie auf der Seite **Mit virtuellem Computer verbinden** die passenden Optionen aus, und klicken Sie anschließend auf **RDP-Datei herunterladen**.
+2. Wählen Sie auf der Seite **Mit virtuellem Computer verbinden** die entsprechende IP-Adresse und den Port aus. In den meisten Fällen sollten die Standard-IP-Adresse und der Standardport verwendet werden. Wählen Sie **RDP-Datei herunterladen**RDP-Datei herunterladen** aus. Wenn für den virtuellen Computer eine Just-In-Time-Richtlinie festgelegt wurde, müssen Sie zuerst die Schaltfläche **Zugriff anfordern** auswählen, um Zugriff anzufordern, bevor Sie die RDP-Datei herunterladen können. Weitere Informationen zur Just-In-Time-Richtlinie finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe der Just-In-Time-Richtlinie](../../security-center/security-center-just-in-time.md).
 2. Öffnen Sie die heruntergeladene RDP-Datei, und klicken Sie auf **Verbinden**, wenn Sie dazu aufgefordert werden. 
-2. Es wird eine Warnung mit dem Hinweis angezeigt, dass die RDP-Datei von einem unbekannten Herausgeber stammt. Dies entspricht dem erwarteten Verhalten. Klicken Sie im Fenster **Remotedesktopverbindung** auf **Verbinden**, um fortzufahren.
+2. Es wird eine Warnung mit dem Hinweis angezeigt, dass die `.rdp`-Datei von einem unbekannten Herausgeber stammt. Dies entspricht dem erwarteten Verhalten. Klicken Sie im Fenster **Remotedesktopverbindung** auf **Verbinden**, um fortzufahren.
    
     ![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/connect-logon/rdp-warn.png)
 3. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie die Anmeldeinformationen eines Kontos auf dem virtuellen Computer ein, und klicken Sie anschließend auf **OK**.

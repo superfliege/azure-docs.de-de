@@ -1,8 +1,21 @@
 ---
-Titel: Nutzen des Webdiensts titleSuffix: Azure Machine Learning Studio Beschreibung: Nachdem ein Machine Learning-Dienst über Azure Machine Learning Studio bereitgestellt wurde, kann der RESTFul-Webdienst als Anforderung/Antwort-Dienst in Echtzeit oder als Stapelausführungsdienst genutzt werden.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02.06.2017
+title: Verwenden eines Webdiensts
+titleSuffix: Azure Machine Learning Studio
+description: Nachdem ein Machine Learning-Dienst über Azure Machine Learning Studio bereitgestellt wurde, kann der RESTFul-Webdienst als Anforderung/Antwort-Dienst in Echtzeit oder als Stapelausführungsdienst genutzt werden.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 06/02/2017
+ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464380"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Nutzen eines Azure Machine Learning Studio-Webdiensts
 

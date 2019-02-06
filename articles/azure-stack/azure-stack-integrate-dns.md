@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
+ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339677"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252310"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integration des Azure Stack-Datencenters – DNS
 Für den Zugriff auf Azure Stack-Endpunkte ((**portal**, **adminportal**, **management**, **adminmanagement** usw.) von außerhalb von Azure Stack müssen Sie die Azure Stack-DNS-Dienste in die DNS-Server integrieren, die die DNS-Zonen hosten, die Sie in Azure Stack verwenden möchten.
@@ -121,7 +122,7 @@ Wenn der virtuelle Computer für die Bereitstellung nicht mehr verfügbar ist od
 
 Der einfachste und sicherste Weg, um Azure Stack in Ihre DNS-Infrastruktur zu integrieren, ist die bedingte Weiterleitung der Zone von dem Server aus, der die übergeordnete Zone hostet. Dieser Ansatz wird empfohlen, wenn Sie die direkte Kontrolle über die DNS-Server besitzen, die die übergeordnete Zone für Ihren externen DNS-Namespace von Azure Stack hosten.
 
-Wenn Sie nicht mit der bedingten Weiterleitung mit DNS vertraut sind, finden Sie weitere Informationen im TechNet-Artikel [Assign a Conditional Forwarder for a Domain Name (Zuweisen einer bedingten Weiterleitung für einen Domänennamen)](https://technet.microsoft.com/library/cc794735) oder in der spezifischen Dokumentation für Ihre DNS-Lösung.
+Wenn Sie nicht mit der bedingten Weiterleitung mit DNS vertraut sind, lesen Sie folgenden TechNet-Artikel: [Zuweisen einer bedingten Weiterleitung für einen Domänennamen](https://technet.microsoft.com/library/cc794735), oder die Dokumentation zu Ihrer DNS-Lösung.
 
 In Szenarios, in denen Sie angegeben haben, dass Ihre externe Azure Stack-DNS-Zone wie die untergeordnete Domäne des Namens Ihrer Unternehmensdomäne aussehen soll, kann die bedingte Weiterleitung nicht verwendet werden. Die DNS-Delegierung muss konfiguriert werden.
 

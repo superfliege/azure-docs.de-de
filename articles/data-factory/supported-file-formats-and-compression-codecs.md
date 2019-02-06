@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974359"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888565"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -39,7 +39,7 @@ Wenn Sie aus einer Textdatei lesen oder in eine Textdatei schreiben möchten, le
 | --- | --- | --- | --- |
 | columnDelimiter |Das Zeichen, das in einer Datei zum Trennen von Spalten verwendet wird. Sie können ein selten vorkommendes nicht druckbares Zeichen verwenden, das ggf. nicht in Ihren Daten vorkommt. Geben Sie beispielsweise „\u0001“ an, das den Anfang der Überschrift (Start of Heading, SOH) bedeutet. |Es ist nur ein Zeichen zulässig. Der **Standardwert** ist das **Komma (,)**. <br/><br/>Wenn Sie ein Unicode-Zeichen verwenden möchten, finden Sie unter [Unicode-Zeichen](https://en.wikipedia.org/wiki/List_of_Unicode_characters) den zugehörigen Code. |Nein  |
 | rowDelimiter |Das Zeichen, das in einer Datei zum Trennen von Zeilen verwendet wird. |Es ist nur ein Zeichen zulässig. Der **Standardwert** ist einer der folgenden: **[„\r\n“, „\r“, „\n“]** beim Lesen und **„\r\n“** beim Schreiben. |Nein  |
-| escapeChar |Das Sonderzeichen, das als Escapezeichen für das Spaltentrennzeichen im Inhalt der Eingabedatei dient. <br/><br/>Sie können für eine Tabelle nicht gleichzeitig escapeChar und quoteChar verwenden. |Es ist nur ein Zeichen zulässig. Kein Standardwert. <br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, aber das Kommazeichen im Text verwenden möchten (Beispiel: „Hello, world“), können Sie „$“ als Escapezeichen definieren und die Zeichenfolge „Hello$, world“ in der Quelle verwenden. |Nein  |
+| escapeChar |Das Sonderzeichen, das als Escapezeichen für das Spaltentrennzeichen im Inhalt der Eingabedatei dient. <br/><br/>Sie können für eine Tabelle nicht gleichzeitig escapeChar und quoteChar verwenden. |Es ist nur ein Zeichen zulässig. Kein Standardwert. <br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text verwenden möchten (Beispiel: "Hello, world"), können Sie „$“ als Escapezeichen definieren und die Zeichenfolge "Hello$, World" in der Quelle verwenden. |Nein  |
 | quoteChar |Das Zeichen, das verwendet wird, um einen Zeichenfolgenwert zu zitieren. Die Spalten- und Zeilentrennzeichen innerhalb der Anführungszeichen werden als Teil des Zeichenfolgenwerts behandelt. Diese Eigenschaft gilt für Eingabe- und Ausgabedatasets.<br/><br/>Sie können für eine Tabelle nicht gleichzeitig escapeChar und quoteChar verwenden. |Es ist nur ein Zeichen zulässig. Kein Standardwert. <br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text (Beispiel: <Hello, world>) verwenden möchten, können Sie das doppelte gerade Anführungszeichen (") als Escapezeichen definieren und die Zeichenfolge "Hello, world" in der Quelle verwenden. |Nein  |
 | nullValue |Ein oder mehrere Zeichen, das/die verwendet wird/werden, um einen Null-Wert darzustellen. |Ein oder mehrere Zeichen. Die **Standardwerte** lauten **„\N“ und „NULL“** beim Lesen und **„\N“** beim Schreiben. |Nein  |
 | encodingName |Geben Sie den Codierungsnamen an. |Ein gültiger Codierungsname. Siehe [Encoding.EncodingName-Eigenschaft](https://msdn.microsoft.com/library/system.text.encoding.aspx). Beispiel: windows-1250 oder shift_jis. Der **Standardwert** lautet **UTF-8**. |Nein  |
@@ -93,7 +93,7 @@ Wenn Sie JSON-Dateien analysieren oder die Daten im JSON-Format schreiben möcht
 | filePattern |Geben Sie das Muster der in jeder JSON-Datei gespeicherten Daten an. Zulässige Werte sind **setOfObjects** und **arrayOfObjects**. Der **Standardwert** ist **setOfObjects**. Weitere Informationen zu diesen Mustern finden Sie im Abschnitt [JSON-Dateimuster](#json-file-patterns). |Nein  |
 | jsonNodeReference | Falls Sie Daten durchlaufen und aus den Objekten in einem Arrayfeld mit demselben Muster extrahieren möchten, legen Sie den JSON-Pfad dieses Arrays fest. Diese Eigenschaft wird nur beim Kopieren von Daten **aus** JSON-Dateien unterstützt. | Nein  |
 | jsonPathDefinition | Geben Sie den JSON-Pfadausdruck für jede Spaltenzuordnung mit einem benutzerdefinierten Spaltennamen (beginnend mit einem Kleinbuchstaben) an. Diese Eigenschaft wird nur beim Kopieren von Daten **aus** JSON-Dateien unterstützt. Sie können zudem Daten aus dem Objekt oder Array extrahieren. <br/><br/> Bei Feldern unter dem Stammobjekt beginnen Sie mit Stamm „$“. Bei Feldern innerhalb des Arrays, die anhand der `jsonNodeReference`-Eigenschaft ausgewählt werden, beginnen Sie mit dem Arrayelement. Informationen zum Konfigurieren finden Sie im Abschnitt [JsonFormat-Beispiel](#jsonformat-example). | Nein  |
-| encodingName |Geben Sie den Codierungsnamen an. Die Liste mit den gültigen Codierungsnamen finden Sie unter: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx)-Eigenschaft. Beispiel: Windows-1250 oder Shift-JIS. Der **Standardwert** lautet: **UTF-8**. |Nein  |
+| encodingName |Geben Sie den Codierungsnamen an. Die Liste der gültigen Codierungsnamen finden Sie unter: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx)-Eigenschaft. Beispiel: Windows-1250 oder Shift-JIS. Der **Standardwert** lautet: **UTF-8**. |Nein  |
 | nestingSeparator |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. Der Standardwert ist „.“ (Punkt). |Nein  |
 
 ### <a name="json-file-patterns"></a>JSON-Dateimuster
@@ -414,21 +414,25 @@ Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten
 }
 ```
 
-> [!IMPORTANT]
-> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Beachten Sie folgende Punkte:
 
 * Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
 * Ein Leerzeichen im Spaltennamen wird nicht unterstützt.
-* Für die Parquet-Datei stehen die folgenden komprimierungsbezogenen Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus Parquet-Dateien in jedem der oben genannten komprimierten Formate mit Ausnahme von LZO. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+* Für die Parquet-Datei stehen die folgenden mit der Komprimierung zusammenhängenden Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus Parquet-Dateien in jedem der oben genannten komprimierten Formate mit Ausnahme von LZO. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+
+> [!IMPORTANT]
+> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime, z.B. zwischen lokalen Datenspeichern und der Cloud, Parquet-Dateien nicht **unverändert** kopieren, müssen Sie die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** auf Ihrem IR-Computer installieren. Weitere Details finden Sie im folgenden Absatz.
+
+Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von Parquet-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft. 
+
+- **Für JRE:** Die 64-Bit-Integration Runtime erfordert die 64-Bit-JRE. Diese steht [hier](https://go.microsoft.com/fwlink/?LinkId=808605) zur Verfügung.
+- **Für OpenJDK:** Die Unterstützung ist seit Version 3.13 der Integration Runtime verfügbar. Packen Sie die Datei „jvm.dll“ zusammen mit allen anderen erforderlichen OpenJDK-Assemblys in einem selbstgehosteten IR-Computer, und legen Sie die Umgebungsvariable JAVA_HOME des Systems entsprechend fest.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Datentypzuordnung für Parquet-Dateien
 
 | Data Factory-Zwischendatentyp | Primitiver Parquet-Typ | Ursprünglicher Parquet-Typ (Deserialisieren) | Ursprünglicher Parquet-Typ (Serialisieren) |
 |:--- |:--- |:--- |:--- |
-| Boolescher Wert | Boolescher Wert | N/V | N/V |
+| Boolescher Wert | Boolescher Wert | – | – |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -436,18 +440,18 @@ Beachten Sie folgende Punkte:
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/binär | UInt64 | DECIMAL |
-| Single | Float | N/V | N/V |
-| Double | Double | N/V | N/V |
-| DECIMAL | Binär | DECIMAL | DECIMAL |
+| UInt64 | Int64/binär | UInt64 | Decimal |
+| Single | Float | – | – |
+| Double | Double | – | – |
+| Decimal | Binär | Decimal | Decimal |
 | Zeichenfolge | Binär | Utf8 | Utf8 |
-| Datetime | Int96 | N/V | N/V |
-| Zeitraum | Int96 | N/V | N/V |
-| DateTimeOffset | Int96 | N/V | N/V |
-| ByteArray | Binär | N/V | N/V |
+| DateTime | Int96 | – | – |
+| TimeSpan | Int96 | – | – |
+| DateTimeOffset | Int96 | – | – |
+| ByteArray | Binär | – | – |
 | Guid | Binär | Utf8 | Utf8 |
 | Char | Binär | Utf8 | Utf8 |
-| CharArray | Nicht unterstützt | N/V | N/V |
+| CharArray | Nicht unterstützt | – | – |
 
 ## <a name="orc-format"></a>ORC-Format
 
@@ -460,15 +464,19 @@ Wenn Sie ORC-Dateien analysieren oder die Daten im ORC-Format schreiben möchten
 }
 ```
 
-> [!IMPORTANT]
-> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime-Infrastruktur, z.B. zwischen lokalen Datenspeichern und der Cloud, ORC-Dateien nicht **unverändert** kopieren, müssen Sie JRE 8 (Java Runtime Environment) auf Ihrem IR-Computer installieren. Ein 64-Bit-IR-Computer erfordert die 64-Bit-JRE. Beide Versionen finden Sie [hier](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Beachten Sie folgende Punkte:
 
 * Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
 * Ein Leerzeichen im Spaltennamen wird nicht unterstützt.
-* Für die ORC-Datei stehen drei [komprimierungsbezogene Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB und SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+* Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+
+> [!IMPORTANT]
+> Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime, z.B. zwischen lokalen Datenspeichern und der Cloud, ORC-Dateien nicht **unverändert** kopieren, müssen Sie die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** auf Ihrem IR-Computer installieren. Weitere Details finden Sie im folgenden Absatz.
+
+Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisierung/Deserialisierung von ORC-Dateien sucht ADF die Java Runtime Environment, indem es zunächst die Registrierung *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* auf JRE überprüft. Wird diese nicht gefunden, wird im nächsten Versuch die Systemvariable *`JAVA_HOME`* auf OpenJDK überprüft. 
+
+- **Für JRE:** Die 64-Bit-Integration Runtime erfordert die 64-Bit-JRE. Diese steht [hier](https://go.microsoft.com/fwlink/?LinkId=808605) zur Verfügung.
+- **Für OpenJDK:** Die Unterstützung ist seit Version 3.13 der Integration Runtime verfügbar. Packen Sie die Datei „jvm.dll“ zusammen mit allen anderen erforderlichen OpenJDK-Assemblys in einem selbstgehosteten IR-Computer, und legen Sie die Umgebungsvariable JAVA_HOME des Systems entsprechend fest.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Datentypzuordnung für ORC-Dateien
 
@@ -485,11 +493,11 @@ Beachten Sie folgende Punkte:
 | UInt64 | Zeichenfolge |
 | Single | Float |
 | Double | Double |
-| DECIMAL | DECIMAL |
+| Decimal | Decimal |
 | Zeichenfolge | Zeichenfolge |
-| Datetime | Zeitstempel |
+| DateTime | Zeitstempel |
 | DateTimeOffset | Zeitstempel |
-| Zeitraum | Zeitstempel |
+| TimeSpan | Zeitstempel |
 | ByteArray | Binär |
 | Guid | Zeichenfolge |
 | Char | Char(1) |

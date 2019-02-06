@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Edcor | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Edcor | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Edcor konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5b06f2d8-9cd7-498d-bdd6-88570a0a0a15
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 5065bfafe4781e9261a69b018d1238cba2941ed7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0b3ca7a101a0c3979058b7094f8e51ed80e02649
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053128"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174515"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Tutorial: Azure Active Directory-Integration in Edcor
+# <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Tutorial: Azure Active Directory-Integration mit Edcor
 
 In diesem Tutorial erfahren Sie, wie Sie Edcor in Azure Active Directory (Azure AD) integrieren.
 
@@ -128,7 +128,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 7. Um das einmalige Anmelden auf Seite von **Edcor** zu konfigurieren, müssen Sie die heruntergeladenen Daten für **Metadaten-XML**, **Abmelde-URL** und **SAML-Entitäts-ID** an das [Edcor-Supportteam](http://www.edcor.com/contact-us-2/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -165,7 +165,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-an-edcor-test-user"></a>Erstellen eines Edcor-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Edcor einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Edcor-Plattform ggf. vom [Edcor-Supportteam](http://www.edcor.com/contact-us-2/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.  
+In diesem Abschnitt erstellen Sie in Edcor einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Edcor-Plattform ggf. vom  [Edcor-Supportteam](http://www.edcor.com/contact-us-2/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -6,12 +6,12 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: dd62e0f4ff110ec8454031f1b66b56025328c33c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 55e9ef0f8bd268f36378c7d34cea95384c6f725e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101478"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099344"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Eine logische Partition definiert den Bereich für Datenbanktransaktionen. Sie k
 
 ## <a name="physical-partitions"></a>Physische Partitionen
 
-Ein Azure Cosmos-Container wird skaliert, indem die Daten und der Durchsatz auf eine große Anzahl von logischen Partitionen verteilt werden. Intern werden eine oder mehrere logische Partitionen einer **physischen Partition** zugeordnet, die aus einem auch als Replikatgruppe bezeichneten Satz von Replikaten besteht. Jede Replikatgruppe hostet eine Instanz der Azure Cosmos-Datenbank-Engine. Eine Replikatgruppe macht die in der physischen Partition gespeicherten Daten dauerhaft, hochverfügbar und konsistent. Eine physische Partition unterstützt eine feste, maximale Menge an Speicher und RUs. Jedes Replikat der physischen Partition erbt das Speicherkontingent. Und alle Replikate einer physischen Partition unterstützen den Durchsatz, der der physischen Partition zugeordnet wurde. Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
+Ein Azure Cosmos-Container wird skaliert, indem die Daten und der Durchsatz auf eine große Anzahl von logischen Partitionen verteilt werden. Intern werden eine oder mehrere logische Partitionen einer **physischen Partition** zugeordnet, die aus einem auch als Replikatgruppe bezeichneten Satz von Replikaten besteht. Jede Replikatgruppe hostet eine Instanz der Azure Cosmos-Datenbank-Engine. Eine Replikatgruppe macht die in der physischen Partition gespeicherten Daten dauerhaft, hochverfügbar und konsistent. Eine physische Partition unterstützt eine maximale Menge an Speicher und RUs. Jedes Replikat der physischen Partition erbt das Speicherkontingent. Und alle Replikate einer physischen Partition unterstützen den Durchsatz, der der physischen Partition zugeordnet wurde. Die folgende Abbildung zeigt, wie logische Partitionen physischen Partitionen zugeordnet werden, die global verteilt sind:
 
 ![Partitionierung in Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 

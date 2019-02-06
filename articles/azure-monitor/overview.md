@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1c53dfb1447b0abd5b96d109a657eae5f5947118
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401434"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098029"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -66,7 +66,7 @@ Azure Monitor kann mithilfe der [Datensammler-API](platform/data-collector-api.m
 
 
 ## <a name="insights"></a>Einblicke
-Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Azure Monitor enthält eine Reihe von Features und Tools, die wertvolle Einblicke in Ihre Anwendungen und weitere Ressourcen bieten, von denen sie abhängen. [Überwachungslösungen](insights/solutions.md) und -features wie [Application Insights](app/app-insights-overview.md) und Container Insights geben tiefe Einblicke in verschiedene Aspekte Ihrer Anwendung und bestimmter Azure-Dienste. 
+Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Azure Monitor enthält eine Reihe von Features und Tools, die wertvolle Einblicke in Ihre Anwendungen und weitere Ressourcen bieten, von denen sie abhängen. [Überwachungslösungen](insights/solutions.md) und -features wie [Application Insights](app/app-insights-overview.md) und [Azure Monitor für Container](insights/container-insights-overview.md) ermöglichen umfassende Einblicke in verschiedene Aspekte Ihrer Anwendung und bestimmter Azure-Dienste. 
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) überwacht Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendungen, gleich ob sie in der Cloud oder lokal gehostet sind. Es nutzt die leistungsstarke Datenanalyseplattform in Azure Monitor, um Ihnen tiefgreifende Einblicke in den Betrieb Ihrer Anwendung zu geben und Fehler zu analysieren, ohne auf die Meldung durch einen Benutzer zu warten. Application Insights beinhaltet Verbindungspunkte zu einer Vielzahl von Entwicklungstools und lässt sich in Visual Studio integrieren, um Ihre DevOps-Prozesse zu unterstützen.
@@ -74,12 +74,12 @@ Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den B
 ![App Insights](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
-Azure Monitor für Container ist ein Feature zum Überwachen der Leistung von Containerworkloads, die auf Managed Kubernetes-Clustern bereitgestellt und im Azure Kubernetes Service (AKS) gehostet sind. Es ermöglicht den Einblick in die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Speicher- und Prozessormetriken von Controllern, Knoten und Containern erfasst werden. Auch Containerprotokolle werden erfasst.  Nach der Aktivierung der Überwachung auf Kubernetes-Clustern werden diese Metriken und Protokolle für Sie automatisch mittels einer Containerversion des Log Analytics-Agents für Linux erfasst gespeichert.
+[Azure Monitor für Container](insights/container-insights-overview.md) ist ein Feature zum Überwachen der Leistung von Containerworkloads, die in Managed Kubernetes-Clustern bereitgestellt und in Azure Kubernetes Service (AKS) gehostet sind. Es ermöglicht den Einblick in die Leistung, indem anhand der Metrik-API die in Kubernetes verfügbaren Speicher- und Prozessormetriken von Controllern, Knoten und Containern erfasst werden. Auch Containerprotokolle werden erfasst.  Nach der Aktivierung der Überwachung auf Kubernetes-Clustern werden diese Metriken und Protokolle für Sie automatisch mittels einer Containerversion des Log Analytics-Agents für Linux erfasst gespeichert.
 
 ![Containerintegrität](media/overview/container-insights.png)
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
-Azure Monitor-VM-Insights überwacht Ihre Azure-VMs nach Maß durch Analysieren der Leistung und Integrität der Windows- und Linux-VMs, einschließlich ihrer verschiedenen Prozesse und miteinander verbundenen Abhängigkeiten von anderen Ressourcen und externen Prozessen. Die Lösung umfasst Unterstützung für die Überwachung von Leistung und Anwendungsabhängigkeiten für VMs, die lokal oder bei einem anderen Cloudanbieter gehostet sind.  
+[Azure Monitor für VMs](insights/vminsights-overview.md) überwacht Ihre virtuellen Azure-Computer im gewünschten Umfang, indem eine Analyse der Leistung und Integrität Ihrer Windows- und Linux-VMs durchgeführt wird. Dies schließt die verschiedenen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen ein. Die Lösung umfasst Unterstützung für die Überwachung von Leistung und Anwendungsabhängigkeiten für VMs, die lokal oder bei einem anderen Cloudanbieter gehostet sind.  
 
 
 ![VM Insights](media/overview/vm-insights.png)

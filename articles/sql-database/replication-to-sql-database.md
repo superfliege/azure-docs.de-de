@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/25/2019
+ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330159"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467695"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
 
-Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken auf einem [logischen Server](sql-database-logical-servers.md) in Azure SQL-Datenbank konfiguriert werden.  
+Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken auf einem [SQL Datenbank-Server](sql-database-servers.md) in Azure SQL-Datenbank konfiguriert werden.  
 
 ## <a name="supported-configurations"></a>**Unterstützte Konfigurationen**:
   
@@ -65,7 +65,7 @@ Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusamme
 
 1. Erstellen Sie eine Transaktionsreplikationsveröffentlichung in einer lokalen SQL Server-Datenbank-Instanz.  
 2. Erstellen Sie auf der lokalen SQL Server-Instanz mithilfe des **Assistenten für neue Abonnements** oder mithilfe von Transact-SQL-Anweisungen ein Pushabonnement in Azure SQL-Datenbank.  
-3. Bei Verwendung einzelner und poolbasierter Datenbanken in Azure SQL-Datenbank handelt es sich beim ersten Dataset um eine Momentaufnahme, die vom Momentaufnahmen-Agent erstellt und vom Verteilungs-Agent verteilt und angewendet wird. Bei Verwendung der verwalteten Azure SQL-Datenbank-Instanz können Sie auch eine Datenbanksicherung als Seed für die Abonnentendatenbank verwenden.
+3. Bei Verwendung einzelner und poolbasierter Datenbanken in Azure SQL-Datenbank handelt es sich beim ersten Dataset um eine Momentaufnahme, die vom Momentaufnahmen-Agent erstellt und vom Verteilungs-Agent verteilt und angewendet wird. Bei einer Datenbank mit verwalteter Instanz können Sie auch eine Datenbanksicherung für das Seeding der Abonnentendatenbank verwenden.
 
 ### <a name="data-migration-scenario"></a>Datenmigrationsszenario  
 
@@ -107,7 +107,7 @@ Die folgenden Optionen werden für Azure SQL-Datenbank-Abonnements nicht unterst
 Erstellen Sie eine Veröffentlichung und ein Pushabonnement. Weitere Informationen finden Sie unter
   
 - [Erstellen einer Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Erstellen eines Pushabonnements](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) mit dem logischen Servernamen von Azure SQL-Datenbank als Abonnent (z.B. **N'azuresqldbdns.database.windows.net'**) und dem Namen von Azure SQL-Datenbank als Zieldatenbank (z.B. **AdventureWorks**).  
+- [Erstellen eines Pushabonnements](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) mit dem Namen des Azure SQL-Datenbank-Servers als Abonnent (z.B. **N'azuresqldbdns.database.windows.net'**) und dem Namen von Azure SQL-Datenbank als Zieldatenbank (z.B. **AdventureWorks**).  
 
 ## <a name="see-also"></a>Siehe auch  
 

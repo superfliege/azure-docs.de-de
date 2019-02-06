@@ -2,7 +2,7 @@
 title: Beibehalten von Ergebnissen oder Protokollen von abgeschlossenen Aufträgen und Tasks in einem Datenspeicher – Azure Batch | Microsoft-Dokumentation
 description: Lernen Sie verschiedene Optionen zum Beibehalten von Ausgabedaten von Batch-Tasks und -Aufträgen kennen. Sie können Daten in Azure Storage oder in einem anderen Datenspeicher beibehalten.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 463c3605f96774b6f05235f3c9d7fe0e5a7139f2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: ff7224b342aa421c576c170f3c23ac64cad9f161
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705716"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474343"
 ---
 # <a name="persist-job-and-task-output"></a>Persistente Aufträge und Aufgabenausgabe
 
@@ -81,7 +81,7 @@ Berücksichtigen Sie beim Entwerfen Ihrer Batch-Lösung folgende Faktoren, die d
 
 - **Ausgabespeicher**: Azure Storage wird als Datenspeicher für die Taskausgabe empfohlen, aber Sie können auch jeden anderen persistenten Speicher verwenden. Das Schreiben der Taskausgabe in Azure Storage ist in der Batch-Dienst-API enthalten. Wenn Sie eine andere Form des permanenten Speichers verwenden, müssen Sie die Anwendungslogik selbst schreiben, um die Taskausgabe beizubehalten.
 
-- **Abrufen der Ausgabe**: Sie können die Taskausgabe direkt aus den Computeknoten im Pool oder von Azure Storage einem anderen Datenspeicher beibehalten, wenn Sie über persistente Taskausgabe verfügen. Um die Ausgabe eines Tasks direkt von einem Computeknoten abzurufen, benötigen Sie den Dateinamen und den Ausgabespeicherort auf dem Knoten. Wenn Sie die Taskausgabe in Azure Storage beibehalten, benötigen Sie den vollständigen Pfad zur Datei in Azure Storage, um die Ausgabedateien mit dem Azure Storage SDK herunterzuladen.
+- **Abrufen der Ausgabe**: Sie können die Taskausgabe direkt aus den Computeknoten im Pool oder von Azure Storage einem anderen Datenspeicher beibehalten, wenn Sie über eine persistente Taskausgabe verfügen. Um die Ausgabe eines Tasks direkt von einem Computeknoten abzurufen, benötigen Sie den Dateinamen und den Ausgabespeicherort auf dem Knoten. Wenn Sie die Taskausgabe in Azure Storage beibehalten, benötigen Sie den vollständigen Pfad zur Datei in Azure Storage, um die Ausgabedateien mit dem Azure Storage SDK herunterzuladen.
 
 - **Anzeigen der Ausgabe**: Wenn Sie im Azure-Portal zu einem Batch-Task navigieren und **Dateien auf Knoten** auswählen, werden Ihnen alle Dateien angezeigt, die mit dem Task verknüpft sind (nicht nur die Ausgabedateien, die Sie interessieren). Wie bereits erwähnt, sind Dateien auf Computeknoten nur verfügbar, solange der Knoten vorhanden ist, und nur für die Dateiaufbewahrungszeit, die Sie für den Task festgelegt haben. Um die Taskausgabe anzuzeigen, die Sie in Azure Storage beibehalten haben, können Sie das Azure-Portal oder eine Azure Storage-Clientanwendung wie z.B. den [Azure Storage-Explorer][storage_explorer] verwenden. Um Ausgabedaten in Azure Storage mit dem Portal oder einem anderen Tool anzuzeigen, müssen Sie den Speicherort der Datei kennen und direkt dorthin navigieren.
 

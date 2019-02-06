@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306739"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462544"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>Häufig gestellte Fragen zu SQL Data Warehouse
 
@@ -31,7 +31,7 @@ A. Auf der Seite [Microsoft-Compliance] finden Sie verschiedene nach Produkt sor
 
 F: Kann ich eine Verbindung mit PowerBI herstellen?
 
-A. Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten vorgesehen. Für die Verwendung von PowerBI in der Produktion wird die Nutzung von PowerBI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen. 
+A.  Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten vorgesehen. Für die Verwendung von PowerBI in der Produktion wird die Nutzung von PowerBI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen. 
 
 F: Welche Kapazitätsgrenzen hat SQL Data Warehouse?
 
@@ -49,7 +49,7 @@ A. Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVo
 
 F: Wo finde ich Informationen zu x?
 
-A. Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stapelüberlauf] stellen. 
+A. Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stack Overflow] stellen. 
 
 F: Wie übermittle ich ein Supportticket?
 
@@ -105,7 +105,7 @@ Weitere Informationen zu SQL Data Warehouse im Allgemeinen finden Sie auf der Se
 <!-- Article references -->
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Verbindungszeichenfolgen]: ./sql-data-warehouse-connection-strings.md
-[Stapelüberlauf]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Sicherheit]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft-Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings

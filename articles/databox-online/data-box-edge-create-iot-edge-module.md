@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465888"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094103"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)
 
@@ -48,7 +48,7 @@ Sobald sich die Datei in der Cloudfreigabe befindet, wird sie automatisch in Ihr
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie Folgendes sicher, bevor Sie beginnen:
+Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
 - Ein Data Box Edge-Gerät wird ausgeführt.
 
@@ -97,8 +97,8 @@ Mit den folgenden Schritten wird ein IoT Edge-Modulprojekt basierend auf dem .NE
 Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können.
 
 1. Wählen Sie in Visual Studio Code die Optionen **Ansicht > Befehlspalette** aus, um die VS Code-Befehlspalette zu öffnen.
-2. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus. Befolgen Sie die Anweisungen für die Anmeldung bei Ihrem Azure-Konto. Falls Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
-3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen:
+2. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus, und befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. Falls Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
+3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen:
 
     1. Wählen Sie den Ordner aus, in dem die Projektmappe erstellt werden soll.
     2. Geben Sie einen Namen für Ihre Projektmappe ein, oder übernehmen Sie den Standardnamen **EdgeSolution**.
@@ -143,7 +143,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
             static int counter;
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
-    ````
+    ```
 
     > [!IMPORTANT]
     > Notieren Sie sich `InputFolderPath` und `OutputFolderPath`. Sie müssen diese Pfade beim Bereitstellen des Moduls angeben.
@@ -269,7 +269,7 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und Code i
 
     Möglicherweise wird die folgende Warnung angezeigt, die Sie jedoch ignorieren können:
 
-    *Program.cs(77,44): Warnung CS1998: In dieser asynchronen Methode fehlen „Await“-Operatoren. Sie wird daher synchron ausgeführt. Ziehen Sie die Verwendung des „Await“-Operators zum Warten auf nicht blockierende API-Aufrufe in Betracht, oder verwenden Sie „Await Task.Run(...)“, um die CPU-gebundene Verarbeitung in einem Hintergrundthread auszuführen.*
+    *Program.cs(77,44): Warnung CS1998: Bei dieser asynchronen Methode fehlen „await“-Operatoren. Die Methode wird synchron ausgeführt. Ziehen Sie die Verwendung des „Await“-Operators zum Warten auf nicht blockierende API-Aufrufe in Betracht, oder verwenden Sie „Await Task.Run(...)“, um die CPU-gebundene Verarbeitung in einem Hintergrundthread auszuführen.*
 
 4. Sie können die vollständige Adresse des Containerimages mit Tag im integrierten VS Code-Terminal anzeigen. Die Imageadresse wird auf der Grundlage der Informationen in der Datei „module.json“ mit dem Format `<repository>:<version>-<platform>` erstellt. In diesem Artikel sollte sie wie folgt aussehen: `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 

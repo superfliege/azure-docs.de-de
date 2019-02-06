@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257290"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296918"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer mit TCP-Rücksetzung bei Leerlauf (öffentliche Vorschau)
 
-Sie können [Load Balancer Standard](load-balancer-standard-overview.md) verwenden, um ein besser vorhersagbares Anwendungsverhalten für Ihre Szenarios mit bidirektionalen TCP-Rücksetzungen (TCP-RST-Paketen) für jedes konfigurierbare Leerlauftimeout zu erhalten.  Das Standardverhalten von Load Balancer besteht darin, Flows ohne Rückmeldung zu verwerfen, wenn das Leerlauftimeout eines Flows erreicht ist.
+Sie können [Load Balancer Standard ](load-balancer-standard-overview.md) verwenden, um ein besser vorhersagbares Anwendungsverhalten für Ihre Szenarien zu erzielen, indem Sie für eine bestimmte Regel die TCP-Rücksetzung bei Leerlauf aktivieren. Das Standardverhalten von Load Balancer besteht darin, Flows ohne Rückmeldung zu verwerfen, wenn das Leerlauftimeout eines Flows erreicht ist.  Das Aktivieren dieser Funktion bewirkt, dass Load Balancer bidirektionale TCP-Rücksetzungen (TCP-RST-Paket) bei einem Leerlauftimeout sendet.  Dadurch werden Ihre Anwendungsendpunkte darüber informiert, dass bei der Verbindung ein Timeout aufgetreten ist und sie nicht mehr verwendet werden kann.  Die Endpunkte können dann bei Bedarf sofort eine neue Verbindung herstellen.
 
 ![Load Balancer mit TCP-Rücksetzung](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
@@ -69,31 +69,10 @@ Mithilfe der API-Version 2018-07-01 können Sie das Senden von bidirektionalen T
 
 ## <a name="regions"></a> Regionale Verfügbarkeit
 
-Dieser Parameter gilt zurzeit in den folgenden Regionen.  In hier nicht aufgeführten Regionen hat der Parameter keinerlei Auswirkungen.
-
-| Region |
-|---|
-| Asien, Südosten |
-| Brasilien Süd |
-| Kanada, Mitte |
-| Europa, Westen |
-| Indien, Mitte |
-| Indien, Westen |
-| Japan, Westen |
-| Korea, Mitte |
-| Korea, Süden |
-| Vereinigtes Königreich, Norden |
-| Vereinigtes Königreich, Süden 2 |
-| USA, Osten |
-| USA (Ost 2) |
-| Vereinigtes Königreich, Norden |
-| USA, Westen |
-
-Diese Tabelle wird aktualisiert, sobald die Vorschau auf weitere Regionen ausgeweitet wird.  
+In allen Regionen verfügbar.
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Eingeschränkte [regionale Verfügbarkeit](#regions).
 - Sie können TCP-Rücksetzungen im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.
 
 ## <a name="next-steps"></a>Nächste Schritte

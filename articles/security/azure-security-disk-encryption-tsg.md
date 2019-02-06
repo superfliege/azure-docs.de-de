@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/08/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103164"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468392"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
 
@@ -33,7 +33,23 @@ Dieser Fehler kann auftreten, wenn die Verschlüsselung von Betriebssystemdatent
 - Datenlaufwerke sind rekursiv im Verzeichnis „/mnt/“ oder gegenseitig bereitgestellt worden (z.B. „/mnt/data1“, „/mnt/data2“, „/data3 + /data3/data4“).
 - Andere Azure Disk Encryption-[Voraussetzungen](azure-security-disk-encryption-prerequisites.md) für Linux sind nicht erfüllt.
 
-## <a name="unable-to-encrypt"></a>Verschlüsselung nicht möglich
+## <a name="bkmk_Ubuntu14"></a> Aktualisieren des Standardkernels für Ubuntu 14.04 LTS
+
+Das Ubuntu 14.04 LTS-Image wird mit der Standardkernelversion 4.4 ausgeliefert. Diese Kernelversion weist ein bekanntes Problem auf, bei dem Out of Memory Killer den dd-Befehl während des Betriebssystem-Verschlüsselungsvorgangs nicht ordnungsgemäß beendet. Dieser Fehler wurde im aktuellen, für Azure optimierten Linux-Kernel behoben. Um diesen Fehler zu vermeiden, führen Sie vor dem Aktivieren der Verschlüsselung im Image ein Update auf den [für Azure optimierten Kernel 4.15](https://packages.ubuntu.com/trusty/linux-azure) aus. Verwenden Sie dazu die folgenden Befehle:
+
+```
+sudo apt-get update
+sudo apt-get install linux-azure
+sudo reboot
+```
+
+Nach dem Neustart des virtuellen Computers mit dem neuen Kernel kann die neue Kernelversion folgendermaßen überprüft werden:
+
+```
+uname -a
+```
+
+## <a name="unable-to-encrypt-linux-disks"></a>Verschlüsselung von Linux-Datenträgern nicht möglich
 
 In einigen Fällen hängt die Verschlüsselung des Linux-Datenträgers scheinbar bei „OS disk encryption started“, und SSH ist deaktiviert. Dieser Prozess kann bei einem normalen Katalogimage 3-16 Stunden bis zum Abschluss dauern. Wenn Datenträger mit mehreren Terabyte Daten hinzugefügt werden, kann der Prozess Tage dauern.
 
@@ -71,7 +87,7 @@ Wenn die Konnektivität durch eine Firewall, eine Proxyanforderung oder Einstell
 Für alle angewendeten Einstellungen von Netzwerksicherheitsgruppen muss es ermöglicht werden, dass der Endpunkt die dokumentierten [Voraussetzungen](azure-security-disk-encryption-prerequisites.md#bkmk_GPO) für die Netzwerkkonfiguration in Bezug auf die Datenträgerverschlüsselung erfüllt.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault hinter einer Firewall
-Die VM muss auf einen Schlüsseltresor zugreifen können. Lesen Sie den Leitfaden für den Zugriff auf den Schlüsseltresor hinter einer Firewall, die vom [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md)-Team verwaltet wird. 
+Wenn Verschlüsselung mit [Azure AD-Anmeldeinformationen](azure-security-disk-encryption-prerequisites-aad.md) aktiviert wird, muss die Ziel-VM Zugriff auf die Azure AD-Authentifizierungsendpunkte sowie die Key Vault-Endpunkte erhalten.  Weitere Informationen zu diesem Vorgang finden Sie im Leitfaden für den Zugriff auf Key Vault hinter einer Firewall, die vom [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md)-Team verwaltet wird. 
 
 ### <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst 
 Der virtuelle Computer muss Zugriff auf den [Azure-Instanzmetadatendienst](../virtual-machines/windows/instance-metadata-service.md)-Endpunkt haben, der eine bekannte nicht routingfähige IP-Adresse (`169.254.169.254`) verwendet, auf die nur von innerhalb des virtuellen Computers aus zugegriffen werden kann.

@@ -1,6 +1,6 @@
 ---
-Titel: Vorbereiten des Modells für die Bereitstellung titleSuffix: Azure Machine Learning Studio Beschreibung: Sie erfahren, wie Sie das trainierte Modell für die Bereitstellung als Webdienst vorbereiten, indem Sie Ihr Machine Learning Studio-Trainingsexperiment in ein Vorhersageexperiment konvertieren.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Vorbereiten des Modells für die Bereitstellung titleSuffix: Azure Machine Learning Studio Beschreibung: Sie erfahren, wie Sie das trainierte Modell für die Bereitstellung als Webdienst vorbereiten, indem Sie Ihr Machine Learning Studio-Trainingsexperiment in ein Vorhersageexperiment konvertieren.
+Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.date: 28.03.2017
 ---

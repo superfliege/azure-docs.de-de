@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 79ed6f1d2dc5495994d2522abf5af391cc79b705
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343690"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226042"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Schnellstart: Verwenden der Dienstbibliothek der Bing-Spracheingabe-API in C&#35; für .NET unter Windows
 
@@ -66,15 +66,15 @@ Drücken Sie STRG+UMSCHALT+B, oder klicken Sie auf dem Menüband auf **Erstellen
 
    * Arg[0]: Geben Sie eine WAV-Audioeingabedatei an.
    * Arg[1]: Geben Sie das Audiogebietsschema an.
-   * Arg[2]: Geben Sie die Erkennungsmodi an: *Kurz* für den Modus `ShortPhrase` und *Lang* für den Modus `LongDictation`.
+   * Arg[2]: Geben Sie die Spracherkennungsmodi an: *Short* für den `ShortPhrase`-Modus und *Long* für den `LongDictation`-Modus.
    * Arg[3]: Geben Sie den Abonnementschlüssel für den Zugriff auf den Spracherkennungsdienst an.
 
 ## <a name="samples-explained"></a>Erläuterung der Beispiele
 
 ### <a name="recognition-modes"></a>Erkennungsmodi
 
-* Modus `ShortPhrase`: Eine Äußerung mit einer Dauer von bis zu 15 Sekunden. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und ein bestmögliches Endergebnis.
-* Modus `LongDictation`: Eine Äußerung mit einer Dauer von bis zu zehn Minuten. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und mehrere Endergebnisse (abhängig davon, wo der Server Pausen zwischen Sätzen erkennt).
+* `ShortPhrase`-Modus: Eine Äußerung mit einer Dauer von bis zu 15 Sekunden. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und ein bestmögliches Endergebnis.
+* `LongDictation`-Modus: Eine Äußerung mit einer Dauer von bis zu zehn Minuten. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und mehrere Endergebnisse (abhängig davon, wo der Server Pausen zwischen Sätzen erkennt).
 
 ### <a name="supported-audio-formats"></a>Unterstützte Audioformate
 

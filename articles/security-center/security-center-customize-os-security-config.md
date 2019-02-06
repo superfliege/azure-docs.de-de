@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 16c7ad523bcd4a1f7b7b1f80d99e4d36dade72df
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334192"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102429"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
@@ -90,7 +90,7 @@ Die Anpassungsdatei enthält einen Regelsatz für jede unterstützte Betriebssys
 >
 >
 
-Wenn Sie die Anpassungsdatei bearbeiten, können Sie eine Regel oder alle Regeln ändern. Jeder Regelsatz enthält den Abschnitt *rules*, der in drei Kategorien unterteilt ist: Registry, AuditPolicy und SecurityPolicy, wie unten gezeigt:
+Wenn Sie die Anpassungsdatei bearbeiten, können Sie eine Regel oder alle Regeln ändern. Jeder Regelsatz enthält den Abschnitt *rules*, der in drei Kategorien unterteilt ist: Registrierung, Überwachungsrichtlinie und Sicherheitsrichtlinie, wie hier zu sehen:
 
 ![Drei Regelsatzkategorien](media/security-center-customize-os-security-config/rules-section.png)
 
@@ -98,7 +98,7 @@ Jede Kategorie hat einen eigenen Satz von Attributen. Sie können die folgenden 
 
 - **expectedValue**: Der Felddatentyp dieses Attributs muss mit den unterstützten Werten jedes *Regeltyps* übereinstimmen, beispielsweise:
 
-  - **baselineRegistryRules**: Der Wert sollte dem [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) entsprechen, der in dieser Regel definiert ist.
+  - **baselineRegistryRules**: Der Wert muss dem in dieser Regel definierten Element [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) entsprechen.
 
   - **baselineAuditPolicyRules**: Verwenden Sie einen der folgenden Zeichenfolgenwerte:
 
@@ -110,9 +110,9 @@ Jede Kategorie hat einen eigenen Satz von Attributen. Sie können die folgenden 
 
     - *Keiner*
 
-    - Liste der zulässigen Benutzergruppen, z.B.: *Administratoren*, *Sicherungsbenutzer*
+    - Liste der zulässigen Benutzergruppen. Beispiele: *Administratoren*, *Sicherungsoperatoren*
 
--   **state**: Diese Zeichenfolge kann die Optionen *Deaktiviert* oder *Aktiviert* enthalten. Bei dieser Private Preview-Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
+-   **state**: Diese Zeichenfolge kann die Option *Disabled* (Deaktiviert) oder *Enabled* (Aktiviert) enthalten. Bei dieser Private Preview-Version wird für die Zeichenfolge Groß-/Kleinschreibung beachtet.
 
 Dies sind die einzigen Felder, die konfiguriert werden können. Wenn Sie gegen das Dateiformat oder die Dateigröße verstoßen, können Sie die Änderung nicht speichern. Sie werden in einer Fehlermeldung darüber informiert, dass Sie eine gültige JSON-Konfigurationsdatei hochladen müssen.
 
@@ -121,7 +121,7 @@ Eine Liste weiterer möglicher Fehler finden Sie unter [Fehlercodes](#error-code
 Die folgenden drei Abschnitte enthalten Beispiele für die oben genannten Regeln. Die Attribute *expectedValue* und *state* können geändert werden.
 
 **baselineRegistryRules**
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -144,7 +144,7 @@ Die folgenden drei Abschnitte enthalten Beispiele für die oben genannten Regeln
 ```
 
 **baselineAuditPolicyRules**
-```
+```json
     {
     "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
     "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
@@ -161,7 +161,7 @@ Die folgenden drei Abschnitte enthalten Beispiele für die oben genannten Regeln
 ```
 
 **baselineSecurityPolicyRules**
-```
+```json
     {
     "sectionName": "Privilege Rights",
     "settingName": "SeIncreaseWorkingSetPrivilege",
@@ -202,7 +202,7 @@ Neue benutzerdefinierte Regeln werden mit einer neuen benutzerdefinierten Quelle
 
 -   **severity**: „Unbekannt“, „Kritisch“, „Warnung“ oder „Information“ (wählen Sie einen Wert aus).
 
--   **analyzeOperation**: Muss *Ist gleich* sein.
+-   **analyzeOperation**: Muss *Equals* (Gleich) lauten.
 
 -   **auditPolicyId**: Muss eine gültige GUID sein.
 
@@ -216,7 +216,7 @@ Neue benutzerdefinierte Regeln werden mit einer neuen benutzerdefinierten Quelle
 Beispiel einer neuen benutzerdefinierten Regel:
 
 **Registrierung**:
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -225,7 +225,7 @@ Beispiel einer neuen benutzerdefinierten Regel:
     "valueName": "MyValueName",
     "originalId": "",
     "cceId": "",
-    "ruleName": "My new registry rule”, "baselineRuleType": "Registry",
+    "ruleName": "My new registry rule", "baselineRuleType": "Registry",
     "expectedValue": "123", "severity": "Critical",
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
@@ -233,7 +233,7 @@ Beispiel einer neuen benutzerdefinierten Regel:
     }
 ```
 **Sicherheitsrichtlinie**:
-```
+```json
    {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
@@ -248,7 +248,7 @@ Beispiel einer neuen benutzerdefinierten Regel:
    }
 ```
 **Überwachungsrichtlinie**:
-```
+```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
    "originalId": "",
@@ -275,7 +275,7 @@ Alle potenziellen Fehler sind in der folgenden Tabelle aufgeführt:
 
 | **Fehler**                                | **Beschreibung**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | Die Eigenschaft *schemaVersion* war ungültig oder leer. Der Wert muss auf *{0}* festgelegt werden.                                                         |
+| BaselineConfigurationSchemaVersionError  | Die Eigenschaft *schemaVersion* war ungültig oder leer. Der Wert muss auf *{0}* festgelegt werden.                                                         |
 | BaselineInvalidStringError               | Die Eigenschaft *{0}* darf nicht *\\n* enthalten.                                                                                                         |
 | BaselineNullRuleError                    | Die Liste der Regeln für die Baselinekonfiguration enthält eine Regel mit dem Wert *NULL*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | Die CCE-ID *{0}* ist nicht eindeutig.                                                                                                                  |

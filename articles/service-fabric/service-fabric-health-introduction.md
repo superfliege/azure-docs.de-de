@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215229"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194286"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
@@ -46,7 +46,7 @@ Die Integritätsentitäten spiegeln die Service Fabric-Entitäten wider. (Beispi
 Die Integritätsentitäten und die Hierarchie ermöglichen das effektive Melden, Debuggen und Überwachen des Clusters und der Anwendungen. Das Integritätsmodell ermöglicht eine exakte, *differenzierte* Darstellung der Integrität der zahlreichen beweglichen Bestandteile eines Clusters.
 
 ![Integritätsentitäten][1].
-In einer Hierarchie organisierte Integritätsentitäten, basierend auf Beziehungen zwischen übergeordneten und untergeordneten Elementen.
+ In einer Hierarchie organisierte Integritätsentitäten, basierend auf Beziehungen zwischen übergeordneten und untergeordneten Elementen.
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
 
@@ -68,7 +68,7 @@ Die Integritätshierarchie besteht aus Beziehungen zwischen übergeordneten und 
 Die Integritätshierarchie stellt den aktuellen Zustand des Systems basierend auf den aktuellen Integritätsberichten dar, d. h., die Informationen sind nahezu in Echtzeit verfügbar.
 Interne und externe Watchdogs können auf der Grundlage von anwendungsspezifischer Logik oder benutzerdefinierten überwachten Bedingungen Berichte zu den gleichen Entitäten erstellen. Benutzerberichte können zusammen mit den Systemberichten verwendet werden.
 
-Setzen Sie sich bei der Gestaltung eines umfangreichen Clouddiensts mit der Frage auseinander, wie Integritätsprobleme gemeldet und behandelt werden sollen. Diese vorab geleistete Investition vereinfacht das Debugging, die Überwachung und den Betrieb des Diensts.
+Setzen Sie sich bei der Gestaltung eines umfangreichen Clouddiensts mit der Frage auseinander, wie Integritätsprobleme gemeldet und behandelt werden sollen. Diese vorab geleistete Investition vereinfacht das Debuggen, die Überwachung und den Betrieb des Diensts.
 
 ## <a name="health-states"></a>Integritätszustände
 Service Fabric verwendet drei Zustände, um die Integrität einer Entität zu beschreiben: „OK“, „Warning“ und „Error“. In jedem Bericht, der an den Integritätsspeicher gesendet wird, ist einer der Zustände angegeben. Das Ergebnis der Integritätsevaluierung ist einer dieser Zustände.

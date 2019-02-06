@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 43e842d6325897f484d9dff342505cace6640e78
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 64fb629e29de9771ca5f76d1c454ec5d14337a57
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472281"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104431"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor  
 
@@ -72,6 +72,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
     ![Option „Aggregieren auf“](media/alerts-log/aggregate-on.png)
 
 1.  *Protokollwarnungen*: Ist die Visualisierung eingerichtet, kann die **Warnungslogik** aus den angezeigten Optionen „Bedingung“, „Aggregation“ und schließlich „Schwellenwert“ ausgewählt werden. Geben Sie schließlich über die Option **Zeitraum** den Zeitraum für die Bewertung der angegebenen Bedingung in der Logik an. Legen Sie durch Auswahl der **Häufigkeit** außerdem fest, wie oft die Warnung ausgeführt werden soll.
+
 **Protokollwarnungen** können auf Folgendem basieren:
    - *Anzahl von Datensätzen*: Eine Warnung wird erstellt, wenn die Anzahl der von der Abfrage zurückgegebenen Datensätze entweder größer als oder kleiner als der Wert ist, den Sie angeben.
    - *Metrische Maßeinheit*: Eine Warnung wird erstellt, wenn die einzelnen *aggregierten Werte* in den Ergebnissen den angegebenen Schwellenwert überschreiten und *nach dem ausgewählten Wert gruppiert* werden. Die Anzahl von Sicherheitsverletzungen für eine Warnung ist die Anzahl der Häufigkeit, mit der im ausgewählten Zeitraum der Schwellenwert überschritten wird. Sie können „Sicherheitsverletzungen gesamt“ für eine beliebige Kombination aus Verletzungen in den Ergebnissen angeben oder „Aufeinanderfolgende Sicherheitsverletzungen“, um vorauszusetzen, dass die Sicherheitsverletzungen in aufeinanderfolgenden Stichproben auftreten müssen. Erfahren Sie mehr über [Protokollwarnungen und die zugehörigen Typen](../../azure-monitor/platform/alerts-unified-log.md).
@@ -108,7 +109,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
     Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
 Benutzer können ihre Analyseabfrage auch auf der Seite [Logs Analytics im Azure-Portal](../../azure-monitor/log-query/portals.md#log-analytics-page
-) abschließen und dann über die Schaltfläche „Warnung festlegen“ eine Warnung erstellen. Anschließend können sie den Anweisungen ab Schritt 6 im obigen Tutorial folgen.
+) abschließen und dann über die Schaltfläche „+ Neue Warnungsregel“ eine Warnung erstellen. Anschließend können sie die Anweisungen ab Schritt 6 im obigen Tutorial befolgen.
 
  ![Log Analytics – Warnung festlegen](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -125,35 +126,31 @@ Benutzer können ihre Analyseabfrage auch auf der Seite [Logs Analytics im Azure
     ![Verwalten von Warnungsregeln](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Verwalten von Protokollwarnungen mithilfe von Azure-Ressourcenvorlagen
-Derzeit können Protokollwarnungen mit zwei verschiedenen Ressourcenvorlagen erstellt werden, je nachdem, auf welcher Analyseplattform die Warnung basieren soll (d. h. Log Analytics oder Application Insights).
 
-Daher finden Sie im folgenden Abschnitt Details zur Verwendung der Ressourcenvorlage für Protokollwarnungen für jede Analyseplattform.
+Protokollwarnungen in Azure Monitor sind dem Ressourcentyp `Microsoft.Insights/scheduledQueryRules/` zugeordnet. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Protokollwarnungen für Application Insights oder Log Analytics können mithilfe der [Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) erstellt werden.
 
-### <a name="azure-resource-template-for-log-analytics"></a>Azure-Ressourcenvorlage für Log Analytics
-Protokollwarnungen für Log Analytics werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen. Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt. 
-
-Die Ressourcenvorlagen für die gespeicherte Suche von Log Analytics und Log Analytics-Warnungen stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr unter [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
-
-### <a name="azure-resource-template-for-application-insights"></a>Azure-Ressourcenvorlage für Application Insights
-Protokollwarnungen für Application Insights-Ressourcen sind vom Typ `Microsoft.Insights/scheduledQueryRules/`. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+> [!NOTE]
+> Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](../../azure-monitor/platform/api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../../azure-monitor/insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
 
 Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mit einem Stichprobendataset als Variablen.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0", 
     "parameters": {      
     },   
     "variables": {
-    "alertLocation": "southcentralus",
-    "alertName": "samplelogalert",
-    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-    "alertDescription": "Sample log search alert",
+    "alertLocation": "Region Name for your Application Insights App or Log Analytics Workspace",
+    "alertName": "sample log alert",
+    "alertDescr": "Sample log search alert",
     "alertStatus": "true",
+    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
     "alertSource":{
-        "Query":"requests",
-        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "Query":"union workspace("servicews").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
+        "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews", 
+        "Resource2": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceapp",
+        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "Type":"ResultCount"
          },
      "alertSchedule":{
@@ -161,17 +158,24 @@ Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Ers
          "Time": 60
          },
      "alertActions":{
-         "SeverityLevel": "4"
+         "SeverityLevel": "4",
+         "SuppressTimeinMin": 20
          },
       "alertTrigger":{
         "Operator":"GreaterThan",
         "Threshold":"1"
          },
+      "metricMeasurement": {
+          "thresholdOperator": "Equal",
+          "threshold": "1",
+          "metricTriggerType": "Consecutive",
+          "metricColumn": "Classification"
+      },
        "actionGrp":{
-        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG",
         "Subject": "Customized Email Header",
-        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
-         }
+        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+        }
   },
   "resources":[ {
     "name":"[variables('alertName')]",
@@ -180,28 +184,36 @@ Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Ers
     "location": "[variables('alertLocation')]",
     "tags":{"[variables('alertTag')]": "Resource"},
     "properties":{
-       "description": "[variables('alertDescription')]",
+       "description": "[variables('alertDescr')]",
        "enabled": "[variables('alertStatus')]",
        "source": {
            "query": "[variables('alertSource').Query]",
+           "authorizedResources": "[concat(array(variables('alertSource').Resource1), array(variables('alertSource').Resource2))]",
            "dataSourceId": "[variables('alertSource').SourceId]",
            "queryType":"[variables('alertSource').Type]"
        },
       "schedule":{
            "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
+           "timeWindowInMinutes": "[variables('alertSchedule').Time]"
        },
       "action":{
            "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
            "severity":"[variables('alertActions').SeverityLevel]",
+           "throttlingInMin": "[variables('alertActions').SuppressTimeinMin]",
            "aznsAction":{
-               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+               "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
                "emailSubject":"[variables('actionGrp').Subject]",
                "customWebhookPayload":"[variables('actionGrp').Webhook]"
            },
        "trigger":{
                "thresholdOperator":"[variables('alertTrigger').Operator]",
-               "threshold":"[variables('alertTrigger').Threshold]"
+               "threshold":"[variables('alertTrigger').Threshold]",
+               "metricTrigger":{
+                   "thresholdOperator": "[variables('metricMeasurement').thresholdOperator]",
+                   "threshold": "[variables('metricMeasurement').threshold]",
+                   "metricColumn": "[variables('metricMeasurement').metricColumn]",
+                   "metricTriggerType": "[variables('metricMeasurement').metricTriggerType]"
+               }
            }
        }
      }
@@ -212,34 +224,28 @@ Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Ers
 > [!IMPORTANT]
 > Das Tag-Feld mit einem ausgeblendetem Link zur Zielressource ist bei Verwendung des API-Aufrufs von [Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) oder der Ressourcenvorlage zwingend erforderlich. 
 
-Die Json-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z. B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
-
+Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>Verwalten von Protokollwarnungen mit PowerShell, CLI oder API
-Derzeit können Protokollwarnungen mit zwei verschiedenen APIs erstellt werden, die mit Resource Manager kompatibel sind, je nachdem, auf welcher Analyseplattform die Warnung basieren soll (d. h. Log Analytics oder Application Insights).
 
-Daher finden Sie im folgenden Abschnitt Details zur Verwendung der API über PowerShell oder CLI für Protokollwarnungen für die einzelnen Analyseplattformen.
+Azure Monitor – API für geplante Abfrageregeln](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) ist eine REST-API und vollständig kompatibel mit der Azure Resource Manager-REST-API. Daher kann es über Powershell mit dem Resource Manager-Cmdlet und der Azure CLI verwendet werden.
 
-### <a name="powershell-cli-or-api-for-log-analytics"></a>PowerShell, CLI oder API für Log Analytics
-Die REST-API für Log Analytics-Warnungen ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. Auf die API kann daher über die PowerShell-Befehlszeile zugegriffen werden. Die Suchergebnisse werden Ihnen im JSON-Format ausgegeben, und Sie können die Ergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
+> [!NOTE]
+> Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](../../azure-monitor/platform/api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../../azure-monitor/insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
 
-Erfahren Sie mehr über das [Erstellen und Verwalten von Warnungsregeln in Log Analytics mit REST-API](../../azure-monitor/platform/api-alerts.md). Hier finden Sie auch Beispiele für den Zugriff auf die API aus Powershell.
 
-### <a name="powershell-cli-or-api-for-application-insights"></a>PowerShell, CLI oder API für Application Insights
-[Azure Monitor – API für geplante Abfrageregeln](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) ist eine REST-API und vollständig kompatibel mit der Azure Resource Manager-REST-API. Daher kann es über Powershell mit dem Resource Manager-Cmdlet und der Azure CLI verwendet werden.
-
-Nachfolgend wird die Verwendung über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im [Abschnitt „Ressourcenvorlage“](#azure-resource-template-for-application-insights) dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) veranschaulicht:
+Protokollwarnungen verfügen derzeit über keine dedizierten PowerShell- oder CLI-Befehle. Sie können jedoch wie nachfolgend veranschaulicht über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im [Abschnitt „Ressourcenvorlage“](#azure-resource-template-for-application-insights) dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) verwendet werden:
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
+
 Nachfolgend wird die Verwendung über den Azure Resource Manager-Befehl in der Azure CLI für die weiter oben im [Abschnitt „Ressourcenvorlage“](#azure-resource-template-for-application-insights) dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) veranschaulicht:
 
 ```azurecli
-az group deployment create --resource-group myRG --template-file sampleScheduledQueryRule.json
+az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
 ```
+
 Bei erfolgreicher Ausführung wird 201 zurückgegeben, wenn eine neue Warnungsregel erstellt wurde, bzw. 200, wenn eine vorhandene Warnungsregel geändert wurde.
-
-
   
 ## <a name="next-steps"></a>Nächste Schritte
 

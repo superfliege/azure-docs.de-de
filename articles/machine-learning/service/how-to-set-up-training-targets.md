@@ -7,37 +7,38 @@ author: heatherbshapiro
 ms.author: hshapiro
 ms.reviewer: sgilley
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246329"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250706"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining
 
-Mit Azure Machine Learning Service können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-target) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  
+Mit Azure Machine Learning Service können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-target) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Sie können auch Computeziele für die Modellimplementierung erstellen, wie in [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md) beschrieben.
 
 Sie können Computeziele mit dem Azure Machine Learning SDK, im Azure-Portal oder über die Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning Service-Arbeitsbereich anfügen, um sie verwenden zu können.
  
-In diesem Artikel erfahren Sie, wie Sie die verschiedenen Computeziele verwenden.  Die Schritte für alle Computeziele führen Sie den gleichen Workflow:
+In diesem Artikel erfahren Sie, wie Sie verschiedene Computeziele für das Modelltraining verwenden.  Die Schritte für alle Computeziele führen Sie den gleichen Workflow:
 1. __Erstellen__ Sie ein Computeziel, wenn noch keines vorhanden ist.
 2. __Fügen__ Sie das Computeziel zu Ihrem Arbeitsbereich hinzu.
 3. __Konfigurieren__ Sie das Computeziel, sodass es die von Ihren Skript benötigte Python-Umgebung und Paketabhängigkeiten enthält.
 
+
 >[!NOTE]
 > Der Code in diesem Artikel wurde mit Version 1.0.6 des Azure Machine Learning SDK getestet.
 
-## <a name="supported-compute-targets"></a>Unterstützte Computeziele
+## <a name="compute-targets-for-training"></a>Computeziele für das Training
 
 Azure Machine Learning Service bietet unterschiedliche Unterstützung für die verschiedenen Computeziele. Ein typischer Modellentwicklungslebenszyklus beginnt mit der Entwicklung/Experimenten mit einer kleinen Menge von Daten. In dieser Phase empfehlen wir die Verwendung einer lokalen Umgebung. Verwenden Sie beispielsweise Ihren lokalen Computer oder eine cloudbasierte VM. Wenn Sie Ihr Training zur Verwendung größerer Datasets zentral hochskalieren oder sich für ein verteiltes Training entscheiden, empfehlen wir, mit Azure Machine Learning Compute einen Cluster mit einem einzelnen oder mehreren Knoten zu erstellen, der bei jeder Übermittlung einer Ausführung automatisch skaliert wird. Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien variiert jedoch wie unten beschrieben:
 
 
-|Computeziel| GPU-Beschleunigung | Automatisiert<br/> Hyperparameteroptimierung | Automatisiert</br> Machine Learning | Pipelineunterstützung|
+|Computeziel für das Training| GPU-Beschleunigung | Automatisiert<br/> Hyperparameteroptimierung | Automatisiert</br> Machine Learning | Pipelineunterstützung|
 |----|:----:|:----:|:----:|:----:|
 |[Lokaler Computer](#local)| Vielleicht | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |

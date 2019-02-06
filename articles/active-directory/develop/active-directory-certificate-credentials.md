@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d3796d8d4a5a2e292afaf9cd013ff04ffc082c5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d9e877fd648c28564f5eccc46f9c20741fe446f8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578669"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076314"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -45,12 +45,12 @@ Für die Berechnung der Assertion können Sie eine der zahlreichen [JSON Web Tok
 
 | Parameter |  Anmerkungen |
 | --- | --- |
-| `aud` | Zielgruppe: Muss **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten. |
+| `aud` | Audience: Sollte **https://login.microsoftonline.com/*Mandanten-ID*/oauth2/token** lauten |
 | `exp` | Ablaufdatum: Datum, an dem das Token abläuft. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) UTC bis zum Zeitpunkt dargestellt, an dem die Gültigkeit des Tokens abläuft.|
 | `iss` | Aussteller: Muss die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
 | `jti` | GUID: Die JWT-ID. |
 | `nbf` | Nicht vor: Datum, vor dem das Token nicht verwendet werden kann. Die Zeit wird als Anzahl der Sekunden ab dem 1. Januar 1970 (1970-01-01T0:0:0Z) (UTC) bis zur Zeit der Ausstellung des Tokens dargestellt. |
-| `sub` | Antragsteller: Muss wie bei `iss` die Client-ID (Anwendungs-ID des Clientdiensts) sein. |
+| `sub` | Antragsteller: Muss für `iss` die Client-ID (Anwendungs-ID des Clientdiensts) sein |
 
 ### <a name="signature"></a>Signatur
 
@@ -99,7 +99,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 In der Azure-App-Registrierung für die Clientanwendung:
 1. Wählen Sie **Einstellungen > Schlüssel** und dann **Öffentlichen Schlüssel hochladen** aus. 
 2. Wählen Sie die Zertifikatdatei aus, die Sie hochladen möchten.
-3. Wählen Sie **Speichern**aus. 
+3. Wählen Sie **Speichern** aus. 
    
    Daraufhin wird das Zertifikat hochgeladen, und der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt werden angezeigt. 
 

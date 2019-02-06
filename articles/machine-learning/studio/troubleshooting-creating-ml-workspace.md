@@ -1,6 +1,6 @@
 ---
-Titel: Problembehandlung: Erstellen eines Machine Learning Studio-Arbeitsbereichs und Verbindungsaufbau titleSuffix: Azure Machine Learning Studio – Beschreibung: Dieser Leitfaden bietet Lösungen zu einigen häufig auftretenden Schwierigkeiten beim Einrichten von Azure Machine Learning Studio-Arbeitsbereichen.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Problembehandlung: Erstellen eines Machine Learning Studio-Arbeitsbereichs und Verbindungsaufbau titleSuffix: Azure Machine Learning Studio – Beschreibung: Dieser Leitfaden bietet Lösungen zu einigen häufig auftretenden Schwierigkeiten beim Einrichten von Azure Machine Learning Studio-Arbeitsbereichen.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 20.03.2017
 ---

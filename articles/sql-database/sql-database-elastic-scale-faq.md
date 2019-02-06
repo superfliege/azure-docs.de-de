@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zur elastischen Skalierung von Azure SQL | Microsoft Docs
+title: Häufig gestellte Fragen zur elastischen Skalierung von Azure SQL | Microsoft-Dokumentation
 description: Häufig gestellte Fragen zur Elastic Scale-Funktion der Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: f3192aafb6f19695bc99310dd980382510bc633b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 01/25/2019
+ms.openlocfilehash: b5ba5fadd229fa7119f9af791f7eaedbc984c92a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457189"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Tools für elastische Datenbanken
 
@@ -43,13 +43,13 @@ Nein. Das Erstellen eines Shardzuordnungs-Managers (Beispiel: [ShardMapManagerFa
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Ich habe Fragen zur Verwendung von Tools für elastische Datenbanken. Wie erhalte ich Antworten?
 
-Wenden Sie sich bitte im [Azure SQL-Datenbankforum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)an uns.
+Wenden Sie sich bitte über das [SQL-Datenbank-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) an uns.
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Wenn ich eine Datenbankverbindung mithilfe eines Shardingschlüssels abrufe, kann ich weiterhin Daten für andere Shardingschlüssel auf dem gleichen Shard abfragen.  Ist dies beabsichtigt?
 
 Die APIs für elastische Skalierung stellen Ihnen eine Verbindung mit der richtigen Datenbank für Ihren Shardingschlüssel zur Verfügung, jedoch keine Filterung von Shardingschlüsseln.  Fügen Sie Ihrer Abfrage bei Bedarf **WHERE** -Klauseln hinzu, um den Bereich für den bereitgestellten Shardingschlüssel einzuschränken.
 
-## <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Kann ich eine andere Azure-Datenbankedition für jeden Shard in meiner Shardsammlung verwenden?
+## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>Kann ich eine andere SQL-Datenbank-Edition für jeden Shard in meiner Shardsammlung verwenden?
 
 Ja, das ist möglich. Ein Shard ist eine einzelne Datenbank, daher kann ein Shard z. B. eine Premium-Edition verwenden, ein anderer eine Standard-Edition. Außerdem kann die Edition eines Shards während der Lebensdauer eines Shards mehrmals horizontal oder vertikal skaliert werden.
 

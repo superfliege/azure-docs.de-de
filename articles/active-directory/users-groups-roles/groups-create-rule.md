@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: dabee3f4eb6fb2bf4f58ff8654068e138858dbbd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249665"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156920"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Erstellen einer dynamischen Gruppe und Überprüfen des Status
 
@@ -54,17 +54,17 @@ Auf der Seite **Übersicht** für die Gruppe sehen Sie den Verarbeitungsstatus d
 
 Für **Verarbeitungsstatus der Mitgliedschaft** können die folgenden Statusmeldungen angezeigt werden:
 
-* **Wird ausgewertet**: Die Gruppenänderung wurde empfangen, die Aktualisierungen werden ausgewertet.
-* **Wird verarbeitet**: Die Updates werden verarbeitet.
-* **Aktualisierung abgeschlossen**: Die Verarbeitung wurde abgeschlossen, alle anwendbaren Aktualisierungen wurden vorgenommen.
-* **Verarbeitungsfehler**: Bei der Auswertung der Mitgliedschaftsregel ist ein Fehler aufgetreten, sodass die Verarbeitung nicht abgeschlossen werden konnte.
-* **Aktualisierung angehalten**: Aktualisierungen der Regeln für die dynamische Mitgliedschaft wurden vom Administrator angehalten. „MembershipRuleProcessingState“ ist auf „Paused“ festgelegt.
+* **Auswertung wird durchgeführt:**  Die Gruppenänderung wurde empfangen, und die Aktualisierungen werden ausgewertet.
+* **Verarbeitung:** Die Updates werden verarbeitet.
+* **Aktualisierung abgeschlossen:** Die Verarbeitung wurde abgeschlossen, alle anwendbaren Aktualisierungen wurden vorgenommen.
+* **Verarbeitungsfehler:** Bei der Auswertung der Mitgliedschaftsregel ist ein Fehler aufgetreten, sodass die Verarbeitung nicht abgeschlossen werden konnte.
+* **Aktualisierung angehalten:** Aktualisierungen der Regeln für die dynamische Mitgliedschaft wurden vom Administrator angehalten. „MembershipRuleProcessingState“ ist auf „Paused“ festgelegt.
 
 Für **Letzte Aktualisierung der Mitgliedschaft** können die folgenden Statusmeldungen angezeigt werden:
 
-* &lt;**Datum und Uhrzeit**&gt;: Der Zeitpunkt der letzten Aktualisierung der Mitgliedschaft.
+* &lt;**Datum und Uhrzeit:**&gt; Der Zeitpunkt der letzten Aktualisierung der Mitgliedschaft.
 * **In Bearbeitung**: Aktualisierungen sind derzeit in Bearbeitung.
-* **Unbekannt**: Der Zeitpunkt der letzten Aktualisierung kann nicht abgerufen werden. Das kann daran liegen, dass die Gruppe neu erstellt wurde.
+* **Unbekannt:** Der Zeitpunkt der letzten Aktualisierung kann nicht abgerufen werden. Das kann daran liegen, dass die Gruppe neu erstellt wurde.
 
 Wenn bei der Verarbeitung der Mitgliedschaftsregel für eine bestimmte Gruppe ein Fehler auftritt, wird oben auf der Seite **Übersicht** der Gruppe eine Warnung angezeigt. Wenn für alle Gruppen innerhalb des Mandanten für mehr als 24 Stunden keine ausstehenden Aktualisierungen der dynamischen Mitgliedschaft verarbeitet werden können, wird oben in **Alle Gruppen** eine Warnung angezeigt.
 

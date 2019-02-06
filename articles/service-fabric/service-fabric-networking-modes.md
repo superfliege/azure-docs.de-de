@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024789"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093151"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -78,7 +78,7 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
             ],
     ```
     
-2. Richten Sie den Netzwerkprofilabschnitt der Virtual Machine Scale Set-Ressource ein. So können für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden. Im folgenden Beispiel werden für einen Windows/Linux Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. Über den Port auf jedem Knoten können fünf Dienstinstanzen lauschen. Damit die fünf IP-Adressen von Azure Load Balancer aus zugänglich sind, registrieren Sie die fünf IP-Adressen wie unten dargestellt im Back-End-Adresspool von Azure Load Balancer.  Sie werden auch die Variablen am Anfang der Vorlage im Variablenabschnitt hinzufügen müssen.
+2. Richten Sie den Netzwerkprofilabschnitt der Virtual Machine Scale Set-Ressource ein. So können für jeden Knoten des Clusters mehrere IP-Adressen konfiguriert werden. Im folgenden Beispiel werden für einen Windows/Linux Service Fabric-Cluster fünf IP-Adressen pro Knoten eingerichtet. Über den Port auf jedem Knoten können fünf Dienstinstanzen lauschen. Damit die fünf IP-Adressen von Azure Load Balancer aus zugänglich sind, registrieren Sie die fünf IP-Adressen wie unten dargestellt im Back-End-Adresspool von Azure Load Balancer.  Sie müssen auch die Variablen am Anfang der Vorlage im Variablenabschnitt hinzufügen.
 
     Fügen Sie diesen Abschnitt „Variables“ hinzu:
 

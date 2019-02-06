@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: b4c873e319dd611221c81deb948db3a64062631e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032600"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457648"
 ---
-# <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Optimieren der Kosten von Azure Cosmos DB bei Bereitstellungen in mehreren Regionen
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optimieren der Kosten bei mehreren Regionen in Azure Cosmos DB
 
 Sie können jederzeit Regionen zu Ihrem Azure Cosmos-Konto hinzufügen oder Regionen aus diesem entfernen. Der Durchsatz, den Sie für verschiedene Azure Cosmos-Datenbanken und -Container konfigurieren, wird in jeder Region, die Ihrem Konto zugeordnet ist, reserviert. Wenn der pro Stunde bereitgestellte Durchsatz (d. h. die Summe der RUs/Sek., die für alle Datenbanken und Container Ihres Azure Cosmos-Kontos konfiguriert wurden) `T` beträgt und sich die Anzahl der Azure-Regionen in Ihrem Datenbankkonto auf `N` beläuft, wird der insgesamt für Ihr Cosmos-Konto bereitgestellte Durchsatz für jede Stunde wie folgt berechnet:
 

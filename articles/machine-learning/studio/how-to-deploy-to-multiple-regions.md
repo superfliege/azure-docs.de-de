@@ -1,6 +1,6 @@
 ---
-Titel: Bereitstellen des Studio-Webdiensts in mehreren Regionen titleSuffix: Azure Machine Learning Studio – Beschreibung: Schritte zum Bereitstellen (Kopieren) eines neuen Webdiensts in anderen Regionen. Stellen Sie einfach einen Webdienst in mehreren Regionen bereit, ohne dass mehrere Abonnements oder Arbeitsbereiche erforderlich sind.
-Dienste: machine-learning ms.service: machine-learning ms.component: studio ms.topic: Artikel
+Titel: Bereitstellen des Studio-Webdiensts in mehreren Regionen titleSuffix: Azure Machine Learning Studio – Beschreibung: Schritte zum Bereitstellen (Kopieren) eines neuen Webdiensts in anderen Regionen. Stellen Sie einfach einen Webdienst in mehreren Regionen bereit, ohne dass mehrere Abonnements oder Arbeitsbereiche erforderlich sind.
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 19.04.2017
 ---

@@ -9,22 +9,27 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d98ff2c5b9d18c36e7d16ec19d3e136be03b8d4c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848001"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095615"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
-Falls gesamte Azure-Regionen oder -Datencenter ausfallen (wenn keine [Verfügbarkeitszonen](../availability-zones/az-overview.md) verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden kann. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Service Bus unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
+Falls gesamte Azure-Regionen oder -Datencenter ausfallen (wenn keine [Verfügbarkeitszonen](../availability-zones/az-overview.md) verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden kann. Daher ist die *georedundante Notfallwiederherstellung* eine wichtige Funktion für jedes Unternehmen. Azure Service Bus unterstützt die georedundante Notfallwiederherstellung auf Namespaceebene.
 
 Das Feature für die georedundante Notfallwiederherstellung ist für die Service Bus Premium-SKU global verfügbar. 
 
+>[!NOTE]
+> Mit der georedundanten Notfallwiederherstellung wird derzeit nur sichergestellt, dass die Metadaten (Warteschlangen, Themen, Abonnements und Filter) vom primären Namespace in den sekundären Namespace kopiert werden, wenn sie gekoppelt sind.
+
 ## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 
-Es ist wichtig, dass Sie den Unterschied zwischen „Ausfällen“ und „Notfällen“ kennen. Ein *Ausfall* ist die vorübergehende Nichtverfügbarkeit von Azure Service Bus und kann einige Komponenten des Diensts, z.B. einen Nachrichtenspeicher, oder selbst das gesamte Rechenzentrum betreffen. Nachdem das Problem behoben wurde, ist Service Bus aber wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für einen Ausfall ist ein Stromausfall im Rechenzentrum. Bei einigen Ausfällen handelt es sich nur um kurze Verbindungsunterbrechungen aufgrund von vorübergehenden Problemen bzw. Netzwerkproblemen. 
+Es ist wichtig, dass Sie den Unterschied zwischen „Ausfällen“ und „Notfällen“ kennen. 
+
+Ein *Ausfall* ist die vorübergehende Nichtverfügbarkeit von Azure Service Bus und kann einige Komponenten des Diensts, z.B. einen Nachrichtenspeicher, oder selbst das gesamte Rechenzentrum betreffen. Nachdem das Problem behoben wurde, ist Service Bus aber wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für einen Ausfall ist ein Stromausfall im Rechenzentrum. Bei einigen Ausfällen handelt es sich nur um kurze Verbindungsunterbrechungen aufgrund von vorübergehenden Problemen bzw. Netzwerkproblemen. 
 
 Ein *Notfall* ist als dauerhafter oder längerer Ausfall eines Service Bus-Clusters, einer Azure-Region oder eines Datencenters definiert. Die Region oder das Datencenter wird ggf. wieder verfügbar, kann aber auch für mehrere Stunden oder Tage ausfallen. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben. Ein Notfall, der dauerhaft wird, kann zum Verlust von Nachrichten, Ereignissen oder anderen Daten führen. In den meisten Fällen kommt es allerdings zu keinem Datenverlust, und Nachrichten können wiederhergestellt werden, sobald das Rechenzentrum gesichert ist.
 
@@ -36,33 +41,47 @@ Bei der Funktion zur Notfallwiederherstellung wird die Notfallwiederherstellung 
 
 In diesem Artikel werden die folgenden Begriffe verwendet:
 
--  *Alias*: Der Name für die Konfiguration einer von Ihnen eingerichteten Notfallwiederherstellung. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. 
+-  *Alias*: Der Name für die Konfiguration einer von Ihnen eingerichteten Notfallwiederherstellung. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. Mit einem Alias wird sichergestellt, dass die Verbindungszeichenfolge unverändert bleibt, wenn das Failover ausgelöst wird.
 
 -  *Primärer/sekundärer Namespace*: Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
 
--  *Metadaten*: Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert. 
+-  *Metadaten*: Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert.
 
 -  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
 
-## <a name="setup-and-failover-flow"></a>Setup und Failoverablauf
+## <a name="setup"></a>Einrichtung
 
-Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und erfahren, wie Sie das erste Failover einrichten. 
+Der folgende Abschnitt enthält eine Übersicht über die Einrichtung der Kopplung zwischen den Namespaces.
 
 ![1][]
 
-### <a name="setup"></a>Einrichtung
+Der Einrichtungsvorgang verläuft wie folgt:
 
-Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um zu ermitteln, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover sehr häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
+1. Sie stellen einen ***primären*** Service Bus Premium-Namespace bereit.
 
-### <a name="example"></a>Beispiel
+2. Sie stellen einen ***sekundären*** Service Bus Premium-Namespace in *einer anderen Region* als der Region bereit, in der der primäre Namespace bereitgestellt wird. Dies ermöglicht die Fehlerisolierung zwischen unterschiedlichen Rechenzentrumsregionen.
 
-In einem Beispiel für dieses Szenario geht es um eine POS-Lösung (Point of Sale), die entweder Nachrichten oder Ereignisse ausgibt. Service Bus übergibt diese Ereignisse an eine Lösung für die Zuordnung oder Neuformatierung, von der dann zugeordnete Daten zur weiteren Verarbeitung an ein anderes System weitergeleitet werden. An diesem Punkt werden all diese Systeme ggf. in derselben Azure-Region gehostet. Die Entscheidung darüber, wann für welchen Teil ein Failover durchgeführt wird, richtet sich nach dem Datenfluss in Ihrer Infrastruktur. 
+3. Sie erstellen die Kopplung zwischen dem primären und dem sekundären Namespace, um den ***Alias*** zu erhalten.
 
-Sie können das Failover entweder mit Überwachungssystemen oder mit benutzerdefinierten Überwachungslösungen automatisieren. Für diese Art der Automatisierung sind aber zusätzliche Planungs- und Arbeitsschritte erforderlich, was den Rahmen dieses Artikels sprengen würde.
+4. Mithilfe des ***Alias*** aus Schritt 3 verbinden Sie Ihre Clientanwendungen mit dem für die georedundante Notfallwiederherstellung aktivierten primären Namespace. Der Alias verweist zunächst auf den primären Namespace.
 
-### <a name="failover-flow"></a>Failoverablauf
+5. [Optional:] Sie fügen einige Überwachungsfunktionen hinzu, um zu ermitteln, ob ein Failover erforderlich ist.
 
-Im Zuge der Initiierung des Failovers müssen zwei Schritte ausgeführt werden:
+## <a name="failover-flow"></a>Failoverablauf
+
+Ein Failover wird manuell vom Kunden (explizit durch einen Befehl oder über Geschäftslogik des Clients, mit der der Befehl ausgelöst wird) und nie von Azure ausgelöst. Dadurch erhält der Kunde den vollständigen Besitz und die vollständige Transparenz für die Auflösung von Ausfällen im Backbone von Azure.
+
+![4][]
+
+Nach dem Auslösen des Failovers:
+
+1. Die Verbindungszeichenfolge des ***Alias*** wird so aktualisiert, dass sie auf den sekundären Premium-Namespace verweist.
+
+2. Clients (Sender und Empfänger) stellen automatisch eine Verbindung mit dem sekundären Namespace her.
+
+3. Die vorhandene Kopplung zwischen dem primären und sekundären Premium-Namespace wird getrennt.
+
+Nach dem Initiieren des Failovers:
 
 1. Bei einem weiteren Ausfall muss ein erneutes Failover möglich sein. Richten Sie daher einen weiteren passiven Namespace ein, und aktualisieren Sie die Kopplung. 
 
@@ -70,6 +89,8 @@ Im Zuge der Initiierung des Failovers müssen zwei Schritte ausgeführt werden:
 
 > [!NOTE]
 > Es wird nur die Semantik für „Fail Forward“ unterstützt. In diesem Szenario führen Sie das Failover und anschließend die Reparatur mit einem neuen Namespace durch. Ein Failback wird nicht unterstützt, z.B. in einem SQL-Cluster. 
+
+Sie können das Failover entweder mit Überwachungssystemen oder mit benutzerdefinierten Überwachungslösungen automatisieren. Für diese Art der Automatisierung sind aber zusätzliche Planungs- und Arbeitsschritte erforderlich, was den Rahmen dieses Artikels sprengen würde.
 
 ![2][]
 
@@ -95,20 +116,20 @@ In den [Beispielen auf GitHub](https://github.com/Azure/azure-service-bus/tree/m
 
 Beachten Sie für diesen Release Folgendes:
 
-1. Berücksichtigen Sie bei der Failoverplanung auch den Zeitfaktor. Falls beispielsweise länger als 15 bis 20 Minuten keine Konnektivität vorhanden ist, empfiehlt es sich unter Umständen, das Failover zu initiieren. 
- 
+1. Berücksichtigen Sie bei der Failoverplanung auch den Zeitfaktor. Falls beispielsweise länger als 15 bis 20 Minuten keine Konnektivität vorhanden ist, empfiehlt es sich unter Umständen, das Failover zu initiieren.
+
 2. Die Tatsache, dass keine Daten repliziert werden, bedeutet, dass derzeit keine aktiven Sitzungen repliziert werden. Außerdem kann es sein, dass die Duplikaterkennung und geplante Nachrichten nicht funktionieren. Neue Sitzungen, neue geplante Nachrichten und neue Duplikate funktionieren. 
 
-3. Die Durchführung eines Failovers für eine komplexe verteilte Infrastruktur sollte mindestens einmal [durchgespielt](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) werden. 
+3. Die Durchführung eines Failovers für eine komplexe verteilte Infrastruktur sollte mindestens einmal [durchgespielt](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) werden.
 
-4. Das Synchronisieren von Entitäten kann einige Zeit dauern, z.B. eine Minute für 50 bis 100 Entitäten. Abonnements und Regeln zählen ebenfalls zu den Entitäten. 
+4. Das Synchronisieren von Entitäten kann einige Zeit dauern, z.B. eine Minute für 50 bis 100 Entitäten. Abonnements und Regeln zählen ebenfalls zu den Entitäten.
 
-## <a name="availability-zones-preview"></a>Verfügbarkeitszonen (Vorschauversion)
+## <a name="availability-zones"></a>Verfügbarkeitszonen
 
-Die Service Bus-Premium-SKU unterstützt zudem [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. 
+Die Service Bus-Premium-SKU unterstützt zudem [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten.
 
 > [!NOTE]
-> Die Vorschau der Verfügbarkeitszonen wird nur für die Regionen **USA, Mitte**, **USA, Osten 2** und **Frankreich, Mitte** unterstützt.
+> Die Unterstützung für Verfügbarkeitszonen für Azure Service Bus Premium ist nur in [Azure-Regionen](../availability-zones/az-overview.md#regions-that-support-availability-zones) verfügbar, in denen Verfügbarkeitszonen vorhanden sind.
 
 Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal aktivieren. Service Bus bietet keine Unterstützung für die Migration vorhandener Namespaces. Sie können die Zonenredundanz nicht deaktivieren, wenn Sie sie für Ihren Namespace aktiviert haben.
 
@@ -127,6 +148,7 @@ Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Artikeln
 * [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 * [REST-API](/rest/api/servicebus/) 
 
-[1]: ./media/service-bus-geo-dr/geo1.png
+[1]: ./media/service-bus-geo-dr/geodr_setup_pairing.png
 [2]: ./media/service-bus-geo-dr/geo2.png
 [3]: ./media/service-bus-geo-dr/az.png
+[4]: ./media/service-bus-geo-dr/geodr_failover_alias_update.png

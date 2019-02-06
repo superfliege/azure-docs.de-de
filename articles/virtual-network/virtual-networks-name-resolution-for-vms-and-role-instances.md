@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 4a4a4c6a37e3c52054d7bc773ef04bf057709fdd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025095"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221197"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -157,7 +157,7 @@ Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, stellt Azure 
 
 Bei Bedarf kann das interne DNS-Suffix mithilfe von PowerShell oder der API ermittelt werden:
 
-* Für virtuelle Netzwerke in Azure Resource Manager-Bereitstellungsmodellen ist das Suffix über die [Netzwerkschnittstellen-REST-API](/rest/api/virtualnetwork/networkinterfaces/get), das PowerShell-Cmdlet [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) und den Azure CLI-Befehl [az network nic show](/cli/azure/network/nic#az-network-nic-show) verfügbar.
+* Für virtuelle Netzwerke in Azure Resource Manager-Bereitstellungsmodellen ist das Suffix über die [Netzwerkschnittstellen-REST-API](/rest/api/virtualnetwork/networkinterfaces), das PowerShell-Cmdlet [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) und den Azure CLI-Befehl [az network nic show](/cli/azure/network/nic#az-network-nic-show) verfügbar.
 * In klassischen Bereitstellungsmodellen steht das Suffix über einen Aufruf von [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) oder das Cmdlet [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) zur Verfügung.
 
 Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, sollten Sie eine eigene DNS-Lösung bereitstellen. Die DNS-Lösung muss Folgendes leisten:
@@ -195,6 +195,11 @@ Wenn Sie eigene DNS-Server verwenden, bietet Azure die Möglichkeit, für jedes 
 > 
 
 Wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, können Sie DNS-Server für ein virtuelles Netzwerk und eine Netzwerkschnittstelle angeben. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](manage-virtual-network.md) und [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md).
+
+> [!NOTE]
+> Wenn Sie sich für den benutzerdefinierten DNS-Server für Ihr virtuelles Netzwerk entscheiden, müssen Sie mindestens eine DNS-Server-IP-Adresse angeben; andernfalls ignoriert das virtuelle Netzwerk die Konfiguration und verwendet stattdessen das von Azure bereitgestellte DNS.
+> 
+> 
 
 Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server für das virtuelle Netzwerk im Portal oder in der [Netzwerkkonfigurationsdatei](https://msdn.microsoft.com/library/azure/jj157100) angeben. Für Clouddienste können Sie DNS-Server über die [Dienstkonfigurationsdatei](https://msdn.microsoft.com/library/azure/ee758710) oder mithilfe von PowerShell mit [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) angegeben.
 

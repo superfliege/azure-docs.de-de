@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84ce13f78a9c597c780cb0dfa0fa5d16e6175b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742999"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077725"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
@@ -42,13 +42,13 @@ Azure Machine Learning verfügt über Tools zur Modellierung von Predictive Anal
 
 ![Verfügbarkeit erweiterter Analysen für Hadoop mit Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 
-Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/studio/import-data.md) können Sie HiveQL-Abfragen von Azure ML ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
+Sie können Features für Daten in einem HDInsight Hadoop-Cluster mit [Hive-Abfragen](../machine-learning/team-data-science-process/create-features-hive.md) erstellen. Bei der *Featureentwicklung* wird versucht, die Vorhersageleistung der Lernalgorithmen durch Erstellen von Merkmalen aus Rohdaten zu verbessern und mit diesen den Lernprozess zu vereinfachen. Mithilfe des [Import Data-Moduls](../machine-learning/studio/import-data.md) können Sie HiveQL-Abfragen von Azure Machine Learning Studio ausführen und auf in Hive verarbeitete und in Blob Storage gespeicherte Daten zugreifen.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
 [Deep Learning](https://www.microsoft.com/en-us/research/group/dltc/) ist ein Nebenzweig des maschinellen Lernens, der neuronale Netze verwendet, die an die biologischen Prozesse des menschlichen Gehirns angelehnt sind. Viele Forscher sehen Deep Learning als vielversprechenden Ansatz zur Weiterentwicklung der künstlichen Intelligenz. Beispiele für Deep Learning sind Übersetzungssysteme für gesprochene Sprache, Bilderkennungssysteme und Machine Reasoning (maschinelles logisches Schlussfolgern).
 
-Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) entwickelt. Dieses Toolkit wird von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind. 
+Um seine eigenen Bestrebungen im Deep Learning voranzutreiben, hat Microsoft das kostenlose und bedienfreundliche Open-Source-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) entwickelt. Dieses Toolkit wird von einer Vielzahl verschiedener Microsoft-Produkte sowie von Firmen weltweit verwendet, die Deep Learning skaliert bereitstellen müssen, sowie von Studenten, die an den neuesten Algorithmen und Methoden interessiert sind.
 
 ## <a name="see-also"></a>Weitere Informationen
 

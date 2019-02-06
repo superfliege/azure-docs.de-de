@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma,carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: d8ff07d43d1efbadf1ddd397b6690c93c54c4f27
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 5100ef307bc125b21e1c42c87856492a4a496065
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603547"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455633"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurieren einer langfristig aufbewahrten Sicherung mit einem Azure Recovery Services-Tresor
 
@@ -71,7 +71,7 @@ Sie konfigurieren einen Azure Recovery Services-Tresor zur [Aufbewahrung von aut
    ![Tresor erstellen](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > Der Tresor muss sich in der gleichen Region wie der logische SQL Azure-Server befinden und die gleiche Ressourcengruppe wie der logische Server verwenden.
+   > Der Tresor muss sich in derselben Region wie der SQL-Datenbank-Server befinden und dieselbe Ressourcengruppe wie der SQL-Datenbank-Server verwenden.
 
 10. Führen Sie nach der Erstellung des neuen Tresors die notwendigen Schritte durch, um zur Seite **Recovery Services-Tresor** zurückzukehren.
 
@@ -154,7 +154,7 @@ Die folgenden Abschnitte zeigen Ihnen, wie Sie PowerShell zum Konfigurieren des 
 Erstellen Sie mithilfe des Cmdlets [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) einen neuen Recovery Services-Tresor.
 
 > [!IMPORTANT]
-> Der Tresor muss sich in der gleichen Region wie der logische SQL Azure-Server befinden und die gleiche Ressourcengruppe wie der logische Server verwenden.
+> Der Tresor muss sich in derselben Region wie der SQL-Datenbank-Server befinden und dieselbe Ressourcengruppe wie der SQL-Datenbank-Server verwenden.
 
 ```PowerShell
 # Create a recovery services vault

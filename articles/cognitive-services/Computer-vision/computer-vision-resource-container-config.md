@@ -6,171 +6,142 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 97de65acf724d12afd131ede25713e8f29d30bad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f29bb4ec8154c1d17eef18310037c42426d1522f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477633"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458651"
 ---
-# <a name="configure-recognize-text-containers"></a>Konfigurieren von Texterkennungscontainern
+# <a name="configure-recognize-text-docker-containers"></a>Konfigurieren von Docker-Containern für die Texterkennung
 
-Maschinelles Sehen stellt für den Texterkennungscontainer ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können.
+Die Runtimeumgebung für Container für die **Texterkennung** wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
+
+Containereinstellungen sind [hierarchisch](#hierarchical-settings) und können mit [Umgebungsvariablen](#environment-variable-settings) oder [Befehlszeilenargumenten](#command-line-argument-settings) für Docker festgelegt werden.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
-Die Konfigurationseinstellungen in Containern für Maschinelles Sehen sind hierarchisch, und alle Container verwenden eine Hierarchie mit folgender Hauptstruktur:
-
-* [ApiKey](#apikey-configuration-setting)
-* [ApplicationInsights](#applicationinsights-configuration-settings)
-* [Authentifizierung](#authentication-configuration-settings)
-* [Abrechnung](#billing-configuration-setting)
-* [Eula](#eula-configuration-setting)
-* [Fluentd](#fluentd-configuration-settings)
-* [Anmeldeinformationseinstellungen für HTTP-Proxy](#http-proxy-credentials-settings)
-* [Protokollierung](#logging-configuration-settings)
-* [Mounts](#mounts-configuration-settings)
-
-Verwenden Sie entweder [Umgebungsvariablen](#configuration-settings-as-environment-variables) oder [Befehlszeilenargumente](#configuration-settings-as-command-line-arguments), um Konfigurationseinstellungen anzugeben, wenn Sie über Container für Maschinelles Sehen einen Container instanziieren.
-
-Die Werte für Umgebungsvariablen haben Vorrang vor den Werten für Befehlszeilenargumente, welche wiederum Vorrang vor den Standardwerten für das Containerimage haben. Wenn Sie also in einer Umgebungsvariable und einem Befehlszeilenargument unterschiedliche Werte für die gleiche Konfigurationseinstellung (beispielsweise `Logging:Disk:LogLevel`) angeben und anschließend einen Container instanziieren, wird für diesen der Wert aus der Umgebungsvariable verwendet.
-
-### <a name="configuration-settings-as-environment-variables"></a>Konfigurationseinstellungen als Umgebungsvariablen
-
-Sie können die [ASP.NET Core-Syntax für Umgebungsvariablen](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider) verwenden, um Konfigurationseinstellungen anzugeben.
-
-Der Container liest Benutzerumgebungsvariablen, wenn er instanziiert wird. Ist eine Umgebungsvariable vorhanden, setzt deren Wert den Standardwert für die angegebene Konfigurationseinstellung außer Kraft. Die Verwendung von Umgebungsvariablen hat den Vorteil, dass vor dem Instanziieren von Containern mehrere Konfigurationseinstellungen festgelegt werden und mehrere Container automatisch den gleichen Satz von Konfigurationseinstellungen verwenden können.
-
-Die folgenden Befehle verwenden beispielsweise eine Umgebungsvariable, um die Protokollierungsstufe der Konsole auf [LogLevel.Information](https://msdn.microsoft.com) festzulegen und anschließend einen Container auf der Grundlage des Images für den Texterkennungscontainer zu instanziieren. Der Wert der Umgebungsvariablen überschreibt die Standardkonfigurationseinstellung.
-
-  ```Docker
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789
-  ```
-
-### <a name="configuration-settings-as-command-line-arguments"></a>Konfigurationseinstellungen als Befehlszeilenargumente
-
-Sie können die [ASP.NET Core-Syntax für Befehlszeilenargumente](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#arguments) verwenden, um Konfigurationseinstellungen anzugeben.
-
-Sie können Konfigurationseinstellungen im optionalen Parameter `ARGS` des Befehls [docker run](https://docs.docker.com/engine/reference/commandline/run/) angeben, mit dem ein Container auf der Grundlage eines heruntergeladenen Containerimages instanziiert wird. Die Verwendung von Befehlszeilenargumenten hat den Vorteil, dass jeder Container einen anderen benutzerdefinierten Satz von Konfigurationseinstellungen verwenden kann.
-
-Der folgende Befehl instanziiert beispielsweise einen Container auf der Grundlage des Images für den Texterkennungscontainer und legt die Protokollierungsstufe der Konsole auf „LogLevel.Information“ fest, wodurch die Standardkonfigurationseinstellung überschrieben wird.
-
-  ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Console:LogLevel=Information
-  ```
-
-## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung für den API-Schlüssel
-
-Die `ApiKey`-Konfigurationseinstellung gibt den Konfigurationsschlüssel der Maschinelles Sehen-Ressource in Azure an, der zum Nachverfolgen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen Konfigurationsschlüssel für die Maschinelles Sehen-Ressource handeln, die für Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
+[!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> Die Konfigurationseinstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-configuration-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md#billing).
+> Die Einstellungen [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting) und [`Eula`](#eula-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md#billing).
 
-## <a name="applicationinsights-configuration-settings"></a>Konfigurationseinstellungen für Application Insights
+## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
-Mithilfe der Konfigurationseinstellungen im Abschnitt `ApplicationInsights` können Sie Ihrem Container Unterstützung für [Azure Application Insights](https://docs.microsoft.com/azure/application-insights)-Telemetriedaten hinzufügen. Application Insights ermöglicht eine eingehende Überwachung Ihrer Container bis hinunter zur Codeebene. Sie können ganz einfach die Verfügbarkeit, Leistung und Nutzung Ihrer Container überwachen. Außerdem können Sie schnell Fehler in Ihrem Container erkennen und diagnostizieren, ohne darauf warten zu müssen, bis diese von Benutzern gemeldet werden.
+Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für „ApiKey“ angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Maschinelles Sehen_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-setting) angegeben wurde.
 
-In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die unter dem Abschnitt `ApplicationInsights` unterstützt werden.
+Diese Einstellung finden Sie hier:
 
-| NAME | Datentyp | BESCHREIBUNG |
-|------|-----------|-------------|
-| `InstrumentationKey` | Zeichenfolge | Der Instrumentierungsschlüssel der Application Insights-Instanz, an die Telemetriedaten für den Container gesendet werden. Weitere Informationen finden Sie unter [Application Insights für ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). |
+* Azure-Portal: Ressourcenverwaltung für **Maschinelles Sehen** (unter **Schlüssel**)
 
-## <a name="authentication-configuration-settings"></a>Konfigurationseinstellungen für die Authentifizierung
+## <a name="applicationinsights-setting"></a>ApplicationInsights-Einstellung
 
-Die `Authentication`-Konfigurationseinstellungen stellen Azure-Sicherheitsoptionen für Ihren Container bereit. Die Konfigurationseinstellungen in diesem Abschnitt sind zwar verfügbar, der Abschnitt wird vom Texterkennungscontainer jedoch nicht verwendet.
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-configuration-setting"></a>Konfigurationseinstellung „Billing“
 
-Die `Billing`-Konfigurationseinstellung gibt den Endpunkt-URI der Maschinelles Sehen-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine Maschinelles Sehen-Ressource in Azure handeln.
+Die `Billing`-Einstellung gibt den Endpunkt-URI der _Maschinelles Sehen_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine _Maschinelles Sehen_-Ressource in Azure handeln.
 
-> [!IMPORTANT]
-> Die Konfigurationseinstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-configuration-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md#billing).
+Diese Einstellung finden Sie hier:
 
-## <a name="eula-configuration-setting"></a>Konfigurationseinstellung „Eula“
+* Azure-Portal: Übersicht über **Maschinelles Sehen** mit der Bezeichnung `Endpoint`
 
-Die Konfigurationseinstellung `Eula` gibt an, dass Sie die Lizenz für den Container akzeptiert haben. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und der Wert muss auf `accept` festgelegt werden.
+|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|--|------|-----------|-------------|
+|JA| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
-> [!IMPORTANT]
-> Die Konfigurationseinstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-configuration-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md#billing).
+## <a name="eula-setting"></a>Eula-Einstellung
 
-Cognitive Services-Container werden unter [Ihrer Vereinbarung](https://go.microsoft.com/fwlink/?linkid=2018657) lizenziert und legen Ihre Nutzung von Azure fest. Wenn Sie über keine Vereinbarung zur Nutzung von Azure verfügen, bestätigen Sie, dass Ihre Vereinbarung zur Nutzung von Azure der [Microsoft Online-Abonnementvertrag](https://go.microsoft.com/fwlink/?linkid=2018755) ist, der die [Nutzungsbedingungen für Onlinedienste](https://go.microsoft.com/fwlink/?linkid=2018760) umfasst. Für Vorschauversionen stimmen Sie auch den [ergänzenden Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://go.microsoft.com/fwlink/?linkid=2018815) zu. Durch die Nutzung von Containern stimmen Sie diesen Bedingungen zu.
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-configuration-settings"></a>Konfigurationseinstellungen für Fluentd
+## <a name="fluentd-settings"></a>Fluentd-Einstellungen
 
-Der Abschnitt `Fluentd` dient zur Verwaltung von Konfigurationseinstellungen für [Fluentd](https://www.fluentd.org) (ein Open-Source-Datensammler für eine vereinheitlichte Protokollierung). Maschinelles Sehen-Container enthalten einen Fluentd-Protokollierungsanbieter, der es Ihrem Container ermöglicht, Protokolldaten (und optional auch Metrikdaten) auf einen Fluentd-Server zu schreiben.
-
-In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die unter dem Abschnitt `Fluentd` unterstützt werden.
-
-| NAME | Datentyp | BESCHREIBUNG |
-|------|-----------|-------------|
-| `Host` | Zeichenfolge | Die IP-Adresse oder der DNS-Hostname des Fluentd-Servers. |
-| `Port` | Ganze Zahl  | Der Port des Fluentd-Servers.<br/> Standardwert: 24224 |
-| `HeartbeatMs` | Ganze Zahl  | Das Heartbeatintervall in Millisekunden. Wurde bis zum Ablauf dieses Intervalls kein Ereignisdatenverkehr gesendet, wird ein Heartbeat an den Fluentd-Server gesendet. Standardwert: 60.000 Millisekunden (eine Minute) |
-| `SendBufferSize` | Ganze Zahl  | Der für Sendevorgänge zugeordnete Netzwerkpufferspeicher (in Byte). Standardwert: 32.768 Byte (32 KB) |
-| `TlsConnectionEstablishmentTimeoutMs` | Ganze Zahl  | Das Timeout (in Millisekunden) für die Herstellung einer SSL/TLS-Verbindung mit dem Fluentd-Server. Der Standardwert beträgt 10.000 Millisekunden (zehn Sekunden).<br/> Wenn `UseTLS` auf FALSE festgelegt ist, wird dieser Wert ignoriert. |
-| `UseTLS` | Boolescher Wert | Gibt an, ob der Container für die Kommunikation mit dem Fluentd-Server SSL/TLS verwenden soll. Der Standardwert ist „false“. |
-
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
 ## <a name="http-proxy-credentials-settings"></a>Anmeldeinformationseinstellungen für HTTP-Proxy
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-configuration-settings"></a>Konfigurationseinstellungen für die Protokollierung
+## <a name="logging-settings"></a>Logging-Einstellungen
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-Die `Logging`-Konfigurationseinstellungen dienen zur Verwaltung der ASP.NET Core-Protokollierungsunterstützung für Ihren Container. Sie können für Ihren Container die gleichen Konfigurationseinstellungen und Werte verwenden wie für eine ASP.NET Core-Anwendung. Von Maschinelles Sehen-Containern werden folgende Protokollanbieter unterstützt:
+## <a name="mount-settings"></a>Einbindungseinstellungen
 
-* [Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)  
-  Der ASP.NET Core-Protokollierungsanbieter `Console`. Alle ASP.NET Core-Konfigurationseinstellungen und Standardwerte für diesen Protokollanbieter werden unterstützt.
-* [Debuggen](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)  
-  Der ASP.NET Core-Protokollierungsanbieter `Debug`. Alle ASP.NET Core-Konfigurationseinstellungen und Standardwerte für diesen Protokollanbieter werden unterstützt.
-* Datenträger  
-  Der JSON-Protokollanbieter. Dieser Protokollanbieter schreibt Protokolldaten in die Ausgabeeinbindung.  
-  Der Protokollanbieter `Disk` unterstützt folgende Konfigurationseinstellungen:  
+Verwenden Sie Bindungsbereitstellungen zum Lesen und Schreiben von Daten im Container. Sie können eine Eingabe- oder Ausgabebereitstellung über die Option `--mount` im Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) angeben.
 
-  | NAME | Datentyp | BESCHREIBUNG |
-  |------|-----------|-------------|
-  | `Format` | Zeichenfolge | Das Ausgabeformat für Protokolldateien.<br/> **Hinweis:** Dieser Wert muss auf `json` festgelegt werden, um den Protokollanbieter zu aktivieren. Wenn dieser Wert bei der Containerinstanziierung angegeben wird, ohne eine Ausgabeeinbindung anzugeben, tritt ein Fehler auf. |
-  | `MaxFileSize` | Ganze Zahl  | Die maximale Größe einer Protokolldatei (in MB). Wenn die Größe der aktuellen Protokolldatei diesen Wert erreicht oder übersteigt, wird vom Protokollanbieter eine neue Protokolldatei erstellt. Bei Angabe von „-1“ wird die Größe der Protokolldatei nur durch die maximal zulässige Dateigröße für die Ausgabeeinbindung begrenzt (sofern vorhanden). Der Standardwert ist 1. |
+Die Container für Maschinelles Sehen verwenden keine Eingabe- oder Ausgabeeinbindungen zum Speichern von Trainings- oder Dienstdaten. 
 
-Weitere Informationen zum Konfigurieren der ASP.NET Core-Protokollierungsunterstützung finden Sie unter [Protokollierung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration).
+Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](computer-vision-how-to-install-containers.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-## <a name="mounts-configuration-settings"></a>Konfigurationseinstellungen für Einbindungen
+|Optional| NAME | Datentyp | BESCHREIBUNG |
+|-------|------|-----------|-------------|
+|Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für Maschinelles Sehen nicht verwendet.|
+|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-Die von Maschinelles Sehen bereitgestellten Docker-Container sind sowohl zustandslos als auch unveränderlich. In einem Container erstellte Dateien werden also auf einer schreibbaren Containerebene gespeichert, die nur während der Ausführung des Containers vorhanden ist und auf die nicht ohne Weiteres zugegriffen werden kann. Wird der Container beendet oder entfernt, gehen auch die darin erstellten Dateien verloren.
+## <a name="hierarchical-settings"></a>Hierarchische Einstellungen
 
-Da es sich jedoch um Docker-Container handelt, können Sie Docker-Speicheroptionen wie Volumes und Bindungseinbindungen verwenden, um gespeicherte Daten außerhalb des Containers zu lesen und zu schreiben, sofern der Container dies unterstützt. Weitere Informationen zum Angeben und Verwalten von Docker-Speicheroptionen finden Sie unter [Manage data in Docker](https://docs.docker.com/storage/) (Verwalten von Daten in Docker).
+[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
 
-> [!NOTE]
-> Die Werte für diese Konfigurationseinstellungen müssen in der Regel nicht geändert werden. Verwenden Sie die in diesen Konfigurationseinstellungen angegebenen Werte stattdessen als Ziele, wenn Sie Eingabe- und Ausgabeeinbindungen für Ihren Container angeben. Weitere Informationen zum Angeben von Eingabe- und Ausgabeeinbindungen finden Sie unter [Eingabe- und Ausgabeeinbindungen](#input-and-output-mounts).
+## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
 
-In der folgenden Tabelle werden die Konfigurationseinstellungen beschrieben, die unter dem Abschnitt `Mounts` unterstützt werden.
+Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](computer-vision-how-to-install-containers.md#stop-the-container).
 
-| NAME | Datentyp | BESCHREIBUNG |
-|------|-----------|-------------|
-| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`. |
-| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. |
+* **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
+* **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
 
-### <a name="input-and-output-mounts"></a>Eingabe- und Ausgabeeinbindungen
+Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
-Standardmäßig kann jeder Container eine *Eingabeeinbindung* unterstützen, aus der der Container Daten lesen kann, und eine *Ausgabeeinbindung*, an die der Container Daten schreiben kann. Container müssen allerdings nicht zwingend Eingabe- oder Ausgabeeinbindungen unterstützen, und jeder Container kann zusätzlich zu den von Maschinelles Sehen-Containern unterstützten Protokollierungsoptionen Eingabe- und Ausgabeeinbindungen für containerspezifische Zwecke verwenden.
+| Platzhalter | Wert | Format oder Beispiel |
+|-------------|-------|---|
+|{BILLING_KEY} | Der Endpunktschlüssel der Maschinelles Sehen-Ressource. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Der Wert für den Abrechnungsendpunkt, einschließlich Region.|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
-Der Texterkennungscontainer unterstützt keine Eingabeeinbindungen; Ausgabeeinbindungen werden optional unterstützt.
+> [!IMPORTANT]
+> Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](computer-vision-how-to-install-containers.md#billing).
+> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure-Ressource für Maschinelles Sehen. 
 
-Sie können eine Eingabe- oder Ausgabeeinbindung mithilfe der Option `--mount` im Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) angeben, mit dem ein Container auf der Grundlage eines heruntergeladenen Containerimages instanziiert wird. Standardmäßig verwendet die Eingabeeinbindung das Ziel `/input` und die Ausgabeeinbindung das Ziel `/output`. In der Option `--mount` kann jede beliebige Docker-Speicheroption angegeben werden, die für den Docker-Containerhost verfügbar ist.
+## <a name="recognize-text-container-docker-examples"></a>Beispiele für Docker-Container zur Texterkennung
 
-Der folgende Befehl definiert beispielsweise eine Docker-Bindungseinbindung für den Ordner `D:\Output` auf dem Hostcomputer als Ausgabeeinbindung und instanziiert anschließend einen Container auf der Grundlage des Images für den Texterkennungscontainer. Protokolldateien werden dabei im JSON-Format in der Ausgabeeinbindung gespeichert.
+Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennung. 
+
+### <a name="basic-example"></a>Einfaches Beispiel 
 
   ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={BILLING_ENDPOINT_URI} \
+  ApiKey={BILLING_KEY} 
+  ```
+
+### <a name="logging-example-with-command-line-arguments"></a>Beispiel für die Protokollierung mit Befehlszeilenargumenten
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={BILLING_ENDPOINT_URI} \
+  ApiKey={BILLING_KEY} \
+  Logging:Console:LogLevel=Information
+  ```
+
+### <a name="logging-example-with-environment-variable"></a>Beispiel für die Protokollierung mit Umgebungsvariablen
+
+  ```Docker
+  SET Logging:Console:LogLevel=Information
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={BILLING_ENDPOINT_URI} \
+  ApiKey={BILLING_KEY}
   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)
+* Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern](computer-vision-how-to-install-containers.md).

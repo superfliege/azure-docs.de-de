@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/25/2019
+ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052716"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478473"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
 
@@ -83,7 +83,7 @@ SQL-Datenbank bietet [zwei Authentifizierungsmethoden](sql-database-control-acce
 - [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 - SQL-Authentifizierung
 
-Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten logischen Server authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
+Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten SQL-Datenbankserver authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 
 |**Wenn Sie...**|**SQL-Datenbank/SQL Data Warehouse**|
 |---|---|
@@ -106,7 +106,7 @@ Es gibt mehrere Methoden, um Verbindungszugriffe für Ihre Anwendung optimal zu 
 
 #### <a name="firewall"></a>Firewall
 
-Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem logischen Server gewährt wird. Standardmäßig sind alle Verbindungen mit dem logischen Server und darauf enthaltenen Datenbanken unzulässig, es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den logischen Server gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
+Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem SQL-Datenbankserver gewährt wird. Standardmäßig sind alle Verbindungen mit dem SQL-Datenbankserver und darauf enthaltenen Datenbanken unzulässig – es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den SQL-Datenbankserver gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
 
 Firewallregeln können auf Server- oder auf Datenbankebene erstellt werden. Firewallregeln auf Serverebene können mithilfe des Azure-Portals oder mit SSMS erstellt werden. Weitere Informationen zum Festlegen von Firewallregeln auf Server- und Datenbankebene finden Sie unter: [Erstellen von Firewallregeln in SQL-Datenbank](sql-database-security-tutorial.md#create-firewall-rules).
 
@@ -165,7 +165,7 @@ Durch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-le
 
 ### <a name="how-do-i-manage-encryption-keys-in-the-cloud"></a>Wie werden Verschlüsselungsschlüssel in der Cloud verwaltet?
 
-Es gibt sowohl für die Methode Always Encrypted (clienstseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
+Es gibt sowohl für die Methode Always Encrypted (clientseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
 
 #### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
@@ -240,7 +240,7 @@ In SQL-Datenbank können Sie die Plattformfunktion „Intelligent Insights“ nu
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-Im Azure Portal wird die Nutzung einer Einzeldatenbank angezeigt, indem Sie die Datenbank auswählen und im Bereich „Übersicht“ auf das Diagramm klicken. Sie können das Diagramm ändern, sodass mehrere Metriken z.B. zum CPU-, DTU- und Data IO-Prozentsatz sowie zu den Sitzungen und Datenbankgrößen in Prozent angezeigt werden.
+Im Azure-Portal wird die Nutzung einer Datenbank angezeigt, indem Sie die Datenbank auswählen und im Bereich „Übersicht“ auf das Diagramm klicken. Sie können das Diagramm ändern, sodass mehrere Metriken z.B. zum CPU-, DTU- und Data IO-Prozentsatz sowie zu den Sitzungen und Datenbankgrößen in Prozent angezeigt werden.
 
 ![Überwachungsdiagramm](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
@@ -250,7 +250,7 @@ In diesem Diagramm können Sie außerdem Warnungen nach Ressourcen konfigurieren
 
 #### <a name="dynamic-management-views"></a>Dynamische Verwaltungssichten
 
-Sie können die dynamische Verwaltungssicht [sys.dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) abfragen, um den statistischen Verlauf des Ressourcenverbrauchs der letzten Stunde zurückzugeben. Ebenso können Sie die Systemkatalogsicht sys.resource_stats abfragen, um den Verlauf der letzten 14 Tage zurückzugeben.
+Sie können die dynamische Verwaltungssicht [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) abfragen, um den statistischen Verlauf des Ressourcenverbrauchs der letzten Stunde zurückzugeben. Ebenso können Sie die Systemkatalogsicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) abfragen, um den Verlauf der letzten 14 Tage zurückzugeben.
 
 #### <a name="query-performance-insight"></a>Query Performance Insight
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4d03ccfddab9a4aab4a1eacde02d68652bf5103a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342329"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219072"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Schnellstart: Verwenden der Bing-Spracheingabe-API in C&#35; für .NET unter Windows
 
@@ -78,9 +78,9 @@ Die Sprach-API ist Teil von Cognitive Services (ehemals Project Oxford). Über d
 
    Für jede Kategorie stehen drei Erkennungsmodi zur Verfügung:
 
-    * **ShortPhrase-Modus:** Eine Äußerung mit einer Dauer von bis zu 15 Sekunden. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und ein Endergebnis mit mehreren n besten Optionen.
-    * **LongDictation-Modus:** Eine Äußerung mit einer Dauer von bis zu zwei Minuten. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und mehrere Endergebnisse (abhängig davon, wo der Server Pausen zwischen Sätzen erkennt).
-    * **Absichtserkennung:** Der Server gibt zusätzliche strukturierte Informationen zur Spracheingabe zurück. Zur Verwendung der Absichtserkennung müssen Sie zunächst mithilfe von [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) ein Modell trainieren.
+    * **ShortPhrase-Modus**: Eine Äußerung mit einer Dauer von bis zu 15 Sekunden. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und ein Endergebnis mit mehreren n besten Optionen.
+    * **LongDictation-Modus**: Eine Äußerung mit einer Dauer von bis zu zwei Minuten. Während der Datenübermittlung an den Server erhält der Client mehrere Teilergebnisse und mehrere Endergebnisse (abhängig davon, wo der Server Pausen zwischen Sätzen erkennt).
+    * **Absichtserkennung**: Der Server gibt zusätzliche strukturierte Informationen zur Spracheingabe zurück. Zur Verwendung der Absichtserkennung müssen Sie zunächst mithilfe von [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) ein Modell trainieren.
 
 Verwenden Sie Beispielaudiodateien für diese Beispielanwendung. Die Dateien befinden sich in dem Repository, das Sie zusammen mit diesem Beispiel heruntergeladen haben (im Ordner „samples/SpeechRecognitionServiceExample“). Diese Beispielaudiodateien werden automatisch ausgeführt, wenn Sie keine anderen Dateien auswählen und als Spracheingabe die Option **Use wav file for ShortPhrase mode** (WAV-Datei für ShortPhrase-Modus auswählen) oder **Use wav file for LongDictation mode** (WAV-Datei für LongDictation-Modus auswählen) verwenden. Derzeit wird nur das WAV-Audioformat unterstützt.
 
@@ -90,9 +90,9 @@ Verwenden Sie Beispielaudiodateien für diese Beispielanwendung. Die Dateien bef
 
 ### <a name="recognition-events"></a>Erkennungsereignisse
 
-* **Ereignisse für Teilergebnisse:** Diese Ereignisse werden jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorauszusagen.
-* **Fehlerereignisse:** Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
-* **Absichtsereignisse:** Werden für Clients vom Typ „WithIntent“ (nur im ShortPhrase-Modus) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
+* **Ereignisse für Teilergebnisse**: Dieses Ereignis wird jedes Mal aufgerufen, wenn der Speech-Dienst noch während des Sprechens (bei Verwendung von `MicrophoneRecognitionClient`) oder noch vor Abschluss der Datenübermittlung (bei Verwendung von `DataRecognitionClient`) versucht, das Gesagte vorauszusagen.
+* **Fehlerereignisse**: Werden aufgerufen, wenn der Dienst einen Fehler erkennt.
+* **Absichtsereignisse**: Werden für Clients vom Typ „WithIntent“ (nur im ShortPhrase-Modus) aufgerufen, nachdem das Endergebnis der Erkennung analysiert und in eine strukturierte JSON-Absicht konvertiert wurde.
 * **Ergebnisereignisse:**
   * Im Modus `ShortPhrase` wird dieses Ereignis aufgerufen und gibt die n besten Ergebnisse zurück, wenn Sie mit Sprechen fertig sind.
   * Im Modus `LongDictation` kann der Ereignishandler mehrmals aufgerufen werden (abhängig davon, wo der Dienst Pausen zwischen Sätzen erkennt).

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/21/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80510b4f3f07b96b9084108fcb89c75e108cbc65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815227"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096842"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption für virtuelle IaaS-Computer – FAQ
 
@@ -42,8 +42,8 @@ Azure Disk Encryption wird für die folgenden Linux-Serverdistributionen und -Ve
 
 | Linux-Distribution | Version | Für die Verschlüsselung unterstützter Volumetyp|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | Betriebssystem- und andere Datenträger |
-| Ubuntu | 14.04.5-DAILY-LTS | Betriebssystem- und andere Datenträger |
+| Ubuntu | 16.04| Betriebssystem- und andere Datenträger |
+| Ubuntu | 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Betriebssystem- und andere Datenträger |
 | RHEL | 7,5 | Betriebssystem- und andere Datenträger* |
 | RHEL | 7.4 | Betriebssystem- und andere Datenträger* |
 | RHEL | 7.3 | Betriebssystem- und andere Datenträger* |
@@ -59,12 +59,10 @@ Azure Disk Encryption wird für die folgenden Linux-Serverdistributionen und -Ve
 | CentOS | 6.7 | Datenträger |
 | CentOS | 6.6 | Datenträger |
 | CentOS | 6,5 | Datenträger |
-| openSUSE | 13.2 | Datenträger |
-| SLES | 12 SP1 | Datenträger |
-| SLES | Priorität: 12-SP1 | Datenträger |
-| SLES | HPC 12 | Datenträger |
-| SLES | Priorität: 11-SP4 | Datenträger |
-| SLES | 11 SP4 | Datenträger |
+| openSUSE | SUSE:openSUSE-Leap:42.3:latest | Datenträger |
+| SLES | SUSE:SLES-Priority:12-SP4:latest | Datenträger |
+| SLES | SUSE:SLES-HPC:12-SP3:latest | Datenträger |
+| SLES | SUSE:SLES-Priority:12-SP3:latest | Datenträger |
 
 
 *__Eine neue ADE-Implementierung wird für Betriebssystem- und andere Datenträger für RHEL7-Images mit nutzungsbasierter Bezahlung unterstützt. ADE wird derzeit nicht für RHEL-BYOS-Images (Bring-Your-Own-Subscription) unterstützt. Weitere Informationen finden Sie unter [Azure Disk Encryption für Linux](azure-security-disk-encryption-linux.md).__

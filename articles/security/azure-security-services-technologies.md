@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2018
+ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6f571655bb0501f8ef4018bf47588c8db4cc2a3e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384886"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097662"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -84,7 +84,11 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Netzwerksicherheitsgruppen&nbsp;&nbsp;](../virtual-network/virtual-networks-nsg.md)| Ein netzwerkbasiertes Zugriffssteuerungsfeature, das Entscheidungen über das Zulassen oder Verweigern mithilfe eines 5-Tupels trifft  |
 | [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)| Ein als VPN-Endpunkt verwendetes Netzwerkgerät, das den standortübergreifenden Zugriff auf Azure Virtual Networks ermöglicht  |
 | [Azure Application Gateway](../application-gateway/application-gateway-introduction.md)|Ein erweiterter Webanwendungs-Lastenausgleich, der Datenverkehr anhand der URL weiterleiten und SSL-Abladung ausführen kann |
+|[Web Application Firewall](../application-gateway/waf-overview.md) (WAF)|Ein Feature von Application Gateway, das zentralisierten Schutz Ihrer Webanwendungen vor allgemeinen Exploits und Sicherheitsrisiken bietet|
 | [Azure-Lastenausgleich](../load-balancer/load-balancer-overview.md)|Ein TCP/UDP-Anwendungslastenausgleich für das Netzwerk |
 | [Azure ExpressRoute](../expressroute/expressroute-introduction.md)| Ein dedizierter WAN-Link zwischen einem lokalen Netzwerk und Azure Virtual Networks |
 | [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)| Ein globaler DNS-Lastenausgleich|
 | [Azure Anwendungsproxy](../active-directory/active-directory-application-proxy-get-started.md)| Ein Authentifizierungs-Front-End für den sicheren Remotezugriff auf lokal gehostete Webanwendungen |
+|[Azure Firewall](../firewall/overview.md)|Ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt.|
+|[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)|Schützt in Kombination mit bewährten Anwendungsentwurfsmethoden vor DDoS-Angriffen.|
+|[Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md)|Erweitern den privaten Adressraum Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste.|

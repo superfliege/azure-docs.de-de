@@ -4,23 +4,27 @@ titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie ein Webdienst mit einem Modell bereitgestellt wird, das auf einem FPGA mit Azure Machine Learning Service für extrem geringe Latenzzeiten ausgeführt wird.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 12/06/2018
+ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3148d4d63ad1464dbd45c361237ac9cd4ffd485a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a9c26a2a0eaf9c2669a71cdca729a6e64fe5cd5c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268239"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301304"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Bereitstellen eines Modells als Webdienst auf einem FPGA mit Azure Machine Learning Service
 
-Sie können ein Modell als Webdienst in [Field Programmable Gate Array (FPGAs)](concept-accelerate-with-fpgas.md) bereitstellen.  FPGAs bieten extrem geringe Latenzstörungen, sogar mit einer einzelnen Batchgröße.   
+Sie können ein Modell als Webdienst in [Field Programmable Gate Array (FPGAs)](concept-accelerate-with-fpgas.md) bereitstellen.  FPGAs bieten extrem geringe Latenzstörungen, sogar mit einer einzelnen Batchgröße.  Diese Modelle sind derzeit verfügbar:
+  - ResNet 50
+  - ResNet 152
+  - DenseNet-121
+  - VGG-16   
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +38,17 @@ Sie können ein Modell als Webdienst in [Field Programmable Gate Array (FPGAs)](
 
     ```shell
     pip install --upgrade azureml-sdk[contrib]
-    ```  
+    ```
+
+  - Derzeit wird nur die Tensorflow-Version<=1.10 unterstützt, also installieren Sie sie, nachdem alle anderen Installationen abgeschlossen sind:
+
+    ```shell
+    pip install "tensorflow==1.10"
+    ```
+
+### <a name="get-the-notebook"></a>Abrufen des Notebooks
+
+Dieses Tutorial steht Ihnen auch als Jupyter Notebook zur Verfügung. Befolgen Sie den Code hier oder führen Sie das [Schnellstart-Notebook](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb) aus.
 
 ## <a name="create-and-deploy-your-model"></a>Erstellen und Bereitstellen Ihres Modells
 Erstellen Sie eine Pipeline, um das Image vorzuverarbeiten, statten Sie es mit ResNet 50 auf einem FPGA mit Features aus, und führen Sie diese über einen anhand eines ImageNet-Datasets trainierten Klassifizierer aus.
@@ -69,7 +83,7 @@ print(image_tensors.shape)
 Initialisieren Sie das Modell und laden Sie einen TensorFlow-Checkpoint der quantisierten Version von ResNet50 herunter, der als Featurizer verwendet werden soll.
 
 ```python
-from azureml.contrib.brainwave.models import QuantizedResnet50, Resnet50
+from azureml.contrib.brainwave.models import QuantizedResnet50
 model_path = os.path.expanduser('~/models')
 model = QuantizedResnet50(model_path, is_frozen = True)
 feature_tensor = model.import_graph_def(image_tensors)
@@ -82,7 +96,7 @@ print(feature_tensor.shape)
 Dieser Klassifizierer wurde anhand eines ImageNet-Datasets trainiert.
 
 ```python
-classifier_input, classifier_output = Resnet50.get_default_classifier(feature_tensor, model_path)
+classifier_output = model.get_default_classifier(feature_tensor)
 ```
 
 ### <a name="create-service-definition"></a>Erstellen einer Dienstdefinition
@@ -94,13 +108,13 @@ Um eine TensorFlow-Stufe zu erstellen, geben Sie eine Sitzung an, die den Graph 
 from azureml.contrib.brainwave.pipeline import ModelDefinition, TensorflowStage, BrainWaveStage
 
 save_path = os.path.expanduser('~/models/save')
-model_def_path = os.path.join(save_path, 'service_def.zip')
+model_def_path = os.path.join(save_path, 'model_def.zip')
 
 model_def = ModelDefinition()
 with tf.Session() as sess:
     model_def.pipeline.append(TensorflowStage(sess, in_images, image_tensors))
     model_def.pipeline.append(BrainWaveStage(sess, model))
-    model_def.pipeline.append(TensorflowStage(sess, classifier_input, classifier_output))
+    model_def.pipeline.append(TensorflowStage(sess, feature_tensor, classifier_output))
     model_def.save(model_def_path)
     print(model_def_path)
 ```
@@ -129,7 +143,7 @@ except WebserviceException:
     image_config = BrainwaveImage.image_configuration()
     deployment_config = BrainwaveWebservice.deploy_configuration()
     service = Webservice.deploy_from_model(ws, service_name, [registered_model], image_config, deployment_config)
-    service.wait_for_deployment(true)
+    service.wait_for_deployment(True)
 ```
 
 ### <a name="test-the-service"></a>Testen des Diensts
@@ -165,7 +179,7 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>Sichere FPGA-Webdienste
 
-Auf FPGAs ausgeführte Azure Machine Learning-Modelle stellen SSL-Unterstützung und schlüsselbasierte Authentifizierung bereit. Dadurch können Sie den Zugriff auf Ihren Dienst einschränken und von Clients übermittelte Daten sichern. [Informationen zum Schutz des Webdiensts](how-to-secure-web-service.md).
+Das Sichern von FPGA-Webdiensten mit SSL wird derzeit nicht unterstützt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

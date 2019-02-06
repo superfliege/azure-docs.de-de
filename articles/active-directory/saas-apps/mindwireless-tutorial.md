@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bd00a339-27c9-4904-b66f-a95bf597ac3c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 6c6fe0a720795c67a7062f5a5971c699472fca07
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: deb7cf8368c5830bd575c617adf857448cfe2e48
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434345"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Tutorial: Azure Active Directory-Integration mit mindWireless
 
@@ -189,7 +189,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-mindwireless-test-user"></a>Erstellen eines mindWireless-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in mindWireless eine Benutzerin namens Britta Simon. Wenden Sie sich an das [Supportteam von mindWireless](mailto:sdulloor@mindwireless.com), um die Benutzer in der mindWireless-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in mindWireless eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur mindWireless-Plattform ggf. vom  [mindWireless-Supportteam](mailto:sdulloor@mindwireless.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
-ms.author: cwatson
-ms.openlocfilehash: b724fc7a887550b4115a988149b4b7a6c95de830
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584467"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902702"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Erläuterungen zur Rechnung für Azure-Kunden mit Enterprise Agreement
 
@@ -44,7 +44,7 @@ Sie erhalten in den folgenden Fällen eine oder mehrere Rechnungen:
     - Visual Studio Enterprise (jährlich)
     - Visual Studio Professional (monatlich)
     - Visual Studio Professional (jährlich)
-- **Marketplace-Gebühren:** Käufe und Nutzung im Azure Marketplace sind nicht vom Guthaben Ihrer Organisation abgedeckt und werden separat in Rechnung gestellt. Der Unternehmensadministrator kann Marketplace-Einkäufe für seine Organisation im Enterprise Portal aktivieren und deaktivieren. 
+- **Marketplace-Gebühren:** Käufe und Nutzung im Azure Marketplace sind nicht durch das Guthaben Ihrer Organisation abgedeckt und werden separat in Rechnung gestellt. Der Unternehmensadministrator kann Marketplace-Einkäufe für seine Organisation im Enterprise Portal aktivieren und deaktivieren. 
 
 Wenn sowohl Gebühren für Dienstüberschreitung als auch separat während des Abrechnungszeitraums abgerechnete Gebühren fällig sind, erhalten Sie eine Rechnung mit beiden Arten von Gebühren. Marketplace-Gebühren werden immer separat abgerechnet.
 

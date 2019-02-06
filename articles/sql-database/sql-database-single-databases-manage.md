@@ -1,9 +1,9 @@
 ---
 title: Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Erstellen und Verwalten von logischen Servern und Einzeldatenbanken.
+description: Erfahren Sie etwas über das Erstellen und Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,29 +11,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: f43c2cd5a3c155258cd698f6b55854bc0df9f861
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: 32b532cab7e970d01c3963729658c32ac4a020b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465043"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von logischen Servern und Einzeldatenbanken in Azure SQL-Datenbank
+# <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken in Azure SQL-Datenbank
 
-Sie können logische Server und einzelne Datenbanken in Azure SQL-Datenbank mit dem Azure-Portal, PowerShell, der Azure-Befehlszeilenschnittstelle, der REST-API oder Transact-SQL erstellen und verwalten.
+Sie können SQL-Datenbank-Server und -Einzeldatenbanken mit dem Azure-Portal, PowerShell, der Azure-Befehlszeilenschnittstelle, der REST-API oder Transact-SQL erstellen und verwalten.
 
-## <a name="azure-portal-manage-logical-servers-and-databases"></a>Azure-Portal: Verwalten von logischen Servern und Datenbanken
+## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Azure-Portal: Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken
 
 Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. Es existieren mehrere Methoden zum Erhalten eines Formulars für einen neuen SQL-Server. Sie erhalten ein solches entweder durch das Erstellen eines neuen SQL-Servers oder als Teil der Erstellung einer neuen Datenbank.
 
-### <a name="create-a-blank-sql-server-logical-server"></a>Erstellen eines leeren SQL-Servers (logischen Servers)
+### <a name="create-a-blank-sql-database-server"></a>Erstellen eines leeren SQL-Datenbank-Servers
 
-Um mithilfe des [Azure-Portals](https://portal.azure.com) einen Azure SQL-Datenbankserver (ohne eine Datenbank) zu erstellen, navigieren Sie zu einem leeren SQL-Server-Formular (logischer Server).  
+Um mithilfe des [Azure-Portals](https://portal.azure.com) einen SQL-Datenbank-Server zu erstellen, navigieren Sie zu einem leeren SQL-Server-Formular (logischer Server).  
 
-### <a name="create-a-blank-or-sample-sql-database"></a>Erstellen einer leeren oder einer Beispiel-SQL-Datenbank
+### <a name="create-a-blank-or-sample-sql-single-database"></a>Erstellen einer leeren oder einer Beispiel-SQL-Einzeldatenbank
 
-Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) navigieren Sie zu einem leeren SQL-Datenbank-Formular, und stellen Sie die erforderlichen Informationen bereit. Sie können die Ressourcengruppe und den logischen Server der Azure SQL-Datenbank im Voraus oder beim Erstellen der Datenbank selbst erstellen. Sie können eine leere Datenbank oder eine Beispieldatenbank basierend auf Adventure Works LT erstellen.
+Zum Erstellen einer Azure SQL-Einzeldatenbank mithilfe des [Azure-Portals](https://portal.azure.com) navigieren Sie zu einem leeren SQL-Datenbank-Formular, und geben Sie die erforderlichen Informationen an. Sie können die Ressourcengruppe für Azure SQL-Datenbank und den SQL-Datenbank-Server im Voraus oder beim Erstellen der Einzeldatenbank selbst erstellen. Sie können eine leere Datenbank oder eine Beispieldatenbank basierend auf Adventure Works LT erstellen.
 
   ![Datenbankerstellung 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,9 +42,9 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
 
 Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md)
 
-## <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
+## <a name="manage-an-existing-sql-database-server"></a>Verwalten eines vorhandenen SQL-Datenbank-Servers
 
-Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z.B. über eine bestimmte Seite der SQL-Datenbank, die Seite der **SQL-Server** oder die Seite **All resources** (Alle Ressourcen).
+Zum Verwalten eines vorhandenen SQL-Datenbank-Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z.B. über eine bestimmte Seite der SQL-Datenbank, die Seite der **SQL-Server** oder die Seite **Alle Ressourcen**.
 
 Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken**, und klicken Sie auf die Datenbank, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
 
@@ -55,12 +55,12 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 > [!TIP]
 > Eine Schnellstartanleitung zum Azure-Portal finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md).
 
-## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell: Verwalten von logischen Servern und Datenbanken
+## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell: Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken
 
-Verwenden Sie zum Erstellen und Verwalten von logischen Azure SQL-Servern, einzelnen und in Pools organisierten Datenbanken und Firewalls für logische Server mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Datenbank-Servern, eigenständigen und in Pools organisierten Datenbanken und Firewalls für SQL-Datenbank-Server mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
 
 > [!TIP]
-> PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel für logische Server](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL-Datenbank mithilfe von PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure SQL-Einzeldatenbank und Konfigurieren einer Firewallregel für SQL-Datenbank-Server](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer SQL-Einzeldatenbank mithilfe von PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
@@ -79,12 +79,12 @@ Verwenden Sie zum Erstellen und Verwalten von logischen Azure SQL-Servern, einze
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|Löscht eine Firewallregel von einem Server|
 | New-AzureRmSqlServerVirtualNetworkRule | Erstellt eine [*virtuelle Netzwerkregel*](sql-database-vnet-service-endpoint-rule-overview.md), die auf einem Subnetz basiert, das einen Dienstendpunkt für ein virtuelles Netzwerk darstellt. |
 
-## <a name="azure-cli-manage-logical-servers-and-databases"></a>Azure-Befehlszeilenschnittstelle: Verwalten von logischen Servern und Datenbanken
+## <a name="azure-cli-manage-sql-database-servers-and-single-databases"></a>Azure-Befehlszeilenschnittstelle: Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls in Azure SQL-Datenbank mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 > [!TIP]
-> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-cli-samples.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Einen Schnellstart zur Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen einer Azure SQL-Einzeldatenbank mithilfe der Azure-Befehlszeilenschnittstelle](sql-database-cli-samples.md). Beispielskripts für die Azure-Befehlszeilenschnittstelle finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Einzeldatenbank und Konfigurieren einer SQL-Datenbank-Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer Azure SQL-Datenbank-Einzeldatenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 | Cmdlet | BESCHREIBUNG |
@@ -109,7 +109,7 @@ Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualisiert eine Firewallregel|
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Löscht eine Firewallregel|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Verwalten von logischen Servern und Datenbanken
+## <a name="transact-sql-manage-sql-database-servers-and-single-databases"></a>Transact-SQL: Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL die folgenden T-SQL-Befehle. Sie können diese Befehle mit dem Azure-Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs) oder einem beliebigen anderen Programm ausführen, mit dem eine Verbindung mit einem Azure SQL-Datenbankserver hergestellt und Transact-SQL-Befehle übergeben werden können. Informationen zum Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
@@ -135,28 +135,28 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[sys.database_firewall_rules (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Datenbankebene im Zusammenhang mit Ihrer Microsoft Azure SQL-Datenbank zurück. |
 |[sp_delete_database_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Entfernt die Firewalleinstellung auf Datenbankebene von Ihrer Azure SQL-Datenbank oder SQL Data Warehouse. |
 
-## <a name="rest-api-manage-logical-servers-and-databases"></a>REST-API: Verwalten von logischen Servern und Datenbanken
+## <a name="rest-api-manage-sql-database-servers-and-single-databases"></a>REST-API: Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls diese REST-API-Anforderungen.
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[Servers - Create Or Update](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
+|[Servers - Create oder Update](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
 |[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|Löscht eine SQL Server-Instanz.|
 |[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Ruft einen Server ab.|
 |[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|Gibt eine Liste aller Server in einem Abonnement zurück.|
-|[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
+|[Servers - List by resource group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
 |[Server - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
-|[Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Databases - Create oder update](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
 |[Datenbanken – Löschen](https://docs.microsoft.com/rest/api/sql/databases/delete)|Löscht eine Datenbank.|
 |[Datenbanken – Abrufen](https://docs.microsoft.com/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
-|[Datenbanken – Auflisten nach Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
-|[Datenbanken – Auflisten nach Server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
-|[Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank.|
-|[Firewall Rules - Create Or Update](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|
-|[Firewall Rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Löscht eine Firewallregel.|
-|[Firewall Rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Ruft eine Firewallregel ab.|
-|[Firewall Rules - List By Server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Gibt eine Liste von Firewallregeln zurück.|
+|[Databases - List by elastic pool](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
+|[Databases - List by server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|
+|[Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualisiert eine vorhandene Datenbank|
+|[Firewall rules - Create oder update](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Erstellt oder aktualisiert eine Firewallregel.|
+|[Firewall rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Löscht eine Firewallregel.|
+|[Firewall rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Ruft eine Firewallregel ab.|
+|[Firewall rules - List by server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Gibt eine Liste von Firewallregeln zurück.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358584"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096669"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
 Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Hier erfahren Sie, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse bereitstellen. 
@@ -37,7 +37,7 @@ Sie können ein Service Fabric-Plug-In in Eclipse installieren. Das Plug-In kann
 
 Installieren Sie Eclipse Neon oder eine höhere Version (erhältlich auf der [Eclipse-Website](https://www.eclipse.org)).  Installieren Sie außerdem mindestens Version 2.2.1 von Buildship. (Das Service Fabric-Plug-In ist mit älteren Versionen von Buildship nicht kompatibel.)
 -   Die Versionen der installierten Komponenten können Sie in Eclipse unter **Hilfe** > **Über Eclipse** > **Installationsdetails** überprüfen.
--   Informationen zur Aktualisierung von Buildship finden Sie unter [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse-Plug-Ins für Gradle).
+-   Informationen zum Aktualisieren von Buildship finden Sie unter [Eclipse Buildship: Eclipse-Plug-Ins für Gradle][buildship-update].
 -   Unter **Hilfe** > **Nach Updates suchen** können Sie nach Updates für Eclipse suchen und diese installieren.
 
 Installieren Sie das Service Fabric-Plug-In. Navigieren Sie hierzu in Eclipse zu **Hilfe** > **Install New Software** (Neue Software installieren).
@@ -165,7 +165,7 @@ Um Ihre Anwendung in der Cloud zu veröffentlichen, führen Sie diese Schritte a
 
 Wenn Ihre Anwendung Reliable Services-Dienste enthält, müssen Sie in sicheren Linux-Clustern auch ein Zertifikat konfigurieren, mit denen Ihre Dienste Service Fabric-Runtime-APIs aufrufen können. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
-Eine schnelle Einführung zum Bereitstellen einer in Java geschriebenen Service Fabric-Reliable Services-Anwendung in einem sicheren Linux-Cluster finden Sie unter [Schnellstart: Bereitstellen einer Java Reliable Services-Anwendung in Service Fabric](./service-fabric-quickstart-java-reliable-services.md).
+Eine schnelle Einführung in die Bereitstellung einer in Java geschriebenen Service Fabric-Reliable Services-Anwendung in einem sicheren Linux-Cluster finden Sie unter [Schnellstart: Bereitstellen einer Java Reliable Services-Anwendung in Service Fabric](./service-fabric-quickstart-java-reliable-services.md).
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Bereitstellen einer Service Fabric-Anwendung mit Eclipse-Ausführungskonfigurationen
 

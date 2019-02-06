@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8f460b41cd2ce62b7a3e0138caa25f68e2fd22ad
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 57eac1dcc170e2ac7e35cab64b6980bbe053db39
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156492"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092737"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Skalieren eines Service Fabric-Clusters durch Hinzufügen einer VM-Skalierungsgruppe
 In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster skalieren, indem Sie eine neue VM-Skalierungsgruppe zu einem vorhandenen Cluster hinzufügen. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (die Ressourcen der Knoten ändern), ein Upgrade für das Betriebssystem der Knotentyp-VMs durchführen oder eine neue VM-Skalierungsgruppe zu einem vorhandenen Cluster hinzufügen.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster s
 Im Folgenden wird der Vorgang zum Aktualisieren der VM-Größe und des Betriebssystems der VMs des primären Knotentyps beschrieben.  Nach dem Upgrade weisen die VMs des primären Knotentyps die Größe „Standard D4_V2“ auf und werden unter Windows Server 2016 Datacenter mit Containern ausgeführt.
 
 > [!WARNING]
-> Bevor Sie versuchen, diesen Vorgang für einen Produktionscluster auszuführen, sollten Sie sich die Beispielvorlagen ansehen und den Vorgang mithilfe eines Testclusters überprüfen. Beachten Sie zudem, dass der Cluster zeitweilig nicht verfügbar ist. Sie können KEINE Änderungen an mehreren VMSS vornehmen, die parallel als dasselbe NodeType-Element deklariert sind. Sie müssen separate Bereitstellungsvorgänge durchführen, um Änderungen an jeder NodeType-VMSS einzeln anzuwenden.
+> Bevor Sie versuchen, diesen Vorgang für einen Produktionscluster auszuführen, sollten Sie sich die Beispielvorlagen ansehen und den Vorgang mithilfe eines Testclusters überprüfen. Beachten Sie zudem, dass der Cluster zeitweilig nicht verfügbar ist. Sie können KEINE Änderungen an mehreren VMSS vornehmen, die parallel als dasselbe NodeType-Element deklariert sind. Sie müssen separate Bereitstellungsvorgänge durchführen, um Änderungen auf jede NodeType-VMSS einzeln anzuwenden.
 
 1. Stellen Sie den Anfangscluster mit zwei Knotentypen und zwei Skalierungsgruppen (eine Skalierungsgruppe pro Knotentyp) mithilfe dieser [Beispielvorlage](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) und diesen [Parameterdateien](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) bereit.  Beide Skalierungsgruppen weisen die Größe „Standard D2_V2“ auf und werden unter Windows Server 2012 R2 Datacenter ausgeführt.  Warten Sie, bis das Baselineupgrade des Clusters abgeschlossen ist.   
 2. Optional: Stellen Sie ein zustandsbehaftetes Beispiel für den Cluster bereit.

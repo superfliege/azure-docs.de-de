@@ -5,15 +5,15 @@ author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 18a63497cb0df2ade495dfb721aaa881aa4e6ff7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 156c977e197084d18d8fd32f55e58c512a66ef9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464110"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156410"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, was Warnungen sind, welche Vorteile sie habe
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
 Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. 
 
-In diesem Artikel wird die einheitliche Oberfläche für Warnungen in Azure Monitor behandelt, das nun auch Log Analytics und Application Insights umfasst. Die [früheren Erfahrungen mit Warnungen](alerts-overview.md) und Warnungstypen werden als **klassische Warnungen** bezeichnet. Sie können diese älteren Erfahrungen und den älteren Warnungstyp anzeigen, indem Sie oben auf der Warnungsseite auf **Klassische Warnungen anzeigen** klicken. 
+In diesem Artikel wird die einheitliche Oberfläche für Warnungen in Azure Monitor behandelt, das nun auch Log Analytics und Application Insights umfasst. Die [früheren Erfahrungen mit Warnungen](alerts-classic.overview.md) und Warnungstypen werden als **klassische Warnungen** bezeichnet. Sie können diese älteren Erfahrungen und den älteren Warnungstyp anzeigen, indem Sie oben auf der Warnungsseite auf **Klassische Warnungen anzeigen** klicken. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -62,6 +62,13 @@ Sie können Warnungen gemäß der Beschreibung in [Überwachen von Datenquellen]
 - Aktivitätsprotokollereignisse
 - Integrität der zugrunde liegenden Azure-Plattform
 - Tests für die Verfügbarkeit von Websites
+
+Früher verfügten Azure Monitor-Metriken, Application Insights, Log Analytics und Service Health über separate Benachrichtigungsfunktionen. Im Laufe der Zeit verbesserte und kombinierte Azure sowohl die Benutzeroberfläche als auch verschiedene Benachrichtigungsmethoden. Diese Konsolidierung ist noch nicht abgeschlossen. Infolgedessen gibt es noch einige Benachrichtigungsfunktionen, die im neuen Warnungssystem noch nicht vorhanden sind.  
+
+| **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
+|-------------|----------------|-------------|
+| Dienstintegrität | Aktivitätsprotokoll  | Nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Webverfügbarkeitstests | Nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
 
 ## <a name="manage-alerts"></a>Warnungen verwalten
 Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt des Lösungsprozesses sie sich befindet. Wenn die in der Warnungsregel angegebenen Kriterien erfüllt sind, wird eine Warnung erstellt oder ausgelöst, die den Status *Neu* aufweist. Sie können den Status ändern, wenn Sie eine Warnung bestätigen oder schließen. Alle Statusänderungen werden im Warnungsverlauf gespeichert.
@@ -124,14 +131,7 @@ Bei dieser vereinfachten Erstellung müssen Sie nicht mehr die Überwachungsquel
 
 Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
 
-Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../../azure-monitor/overview.md). Die folgende Tabelle enthält eine Liste der in Azure verfügbaren Warnungsregeltypen. Sie gibt an, was derzeit in den einzelnen Benutzeroberflächen für Warnungen unterstützt wird.
-
-Früher verfügten Azure Monitor, Application Insights, Log Analytics und Service Health über separate Benachrichtigungsfunktionen. Im Laufe der Zeit verbesserte und kombinierte Azure sowohl die Benutzeroberfläche als auch verschiedene Benachrichtigungsmethoden. Diese Konsolidierung ist noch nicht abgeschlossen. Infolgedessen gibt es noch einige Benachrichtigungsfunktionen, die im neuen Warnungssystem noch nicht vorhanden sind.  
-
-| **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
-|-------------|----------------|-------------|
-| Dienstintegrität | Aktivitätsprotokoll  | Nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Webverfügbarkeitstests | Nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
+Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../../azure-monitor/overview.md). 
 
 
 ## <a name="all-alerts-page"></a>Seite „Alle Warnungen“ 

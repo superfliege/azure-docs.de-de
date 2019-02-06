@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 05c237eb071b48f2373ecfd78eeab6f7bceb8c5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 01/25/2019
+ms.openlocfilehash: 4c8e93948532da02c64eb9eb1277abb425abc250
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584157"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455745"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
@@ -34,9 +34,9 @@ Einzelheiten zur Berechnung der Reservierung von Kapazitäten für Unternehmensk
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Bestimmen der passenden SQL-Datenbank-Instanzgröße vor dem Kauf
 
-Die Größe der Reservierung sollte auf der Gesamtmenge der Computeressourcen basieren, die von den Einzeldatenbanken und/oder Pools für elastische Datenbanken in SQL-Datenbank, die bereits vorhanden sind oder in Kürze bereitgestellt werden, innerhalb einer bestimmten Region und unter Verwendung der gleichen Leistungsstufe und der gleichen Hardwaregeneration verwendet werden. 
+Die Größe der Reservierung sollte auf der Gesamtmenge der Computeressourcen basieren, die von den bereits vorhandenen oder in Kürze zu erstellenden Einzeldatenbanken und/oder Pools für elastische Datenbanken genutzt werden, die innerhalb einer bestimmten Region vorliegen und die gleiche Leistungsstufe und Hardwaregeneration verwenden. 
 
-Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenbanken mit der SKU „Universell“ und 16 virtuellen Kernen sowie zwei Gen5-Einzeldatenbanken mit der SKU „Unternehmenskritisch“ und 4 virtuellen Kernen aus. Sie möchten innerhalb des nächsten Monats einen weiteren Pool für elastische Gen5-Datenbanken mit der SKU „Universell“ und 16 virtuellen Kernen sowie einen Pool für elastische Gen5-Datenbanken mit der SKU „Unternehmenskritisch“ und 32 virtuellen Kernen bereitstellen. Darüber hinaus wissen Sie, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für Einzeldatenbanken oder Pools für elastische Datenbanken in SQL-Datenbank mit der SKU „Universell“ (Compute Gen5) und 32 virtuellen Kernen (2 x 16) sowie eine 1-Jahres-Reservierung für Einzeldatenbanken bzw. Pools für elastische Datenbanken in SQL-Datenbank (Compute Gen5) mit der SKU „Unternehmenskritisch“ und 40 virtuellen Kernen (2 x 4 + 32).
+Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenbanken mit der SKU „Universell“ und 16 virtuellen Kernen sowie zwei Gen5-Einzeldatenbanken mit der SKU „Unternehmenskritisch“ und 4 virtuellen Kernen aus. Sie möchten innerhalb des nächsten Monats einen weiteren Pool für elastische Gen5-Datenbanken mit der SKU „Universell“ und 16 virtuellen Kernen sowie einen Pool für elastische Gen5-Datenbanken mit der SKU „Unternehmenskritisch“ und 32 virtuellen Kernen bereitstellen. Darüber hinaus wissen Sie, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für eigenständige Datenbanken oder Pools für elastische Datenbanken in SQL-Datenbank mit der SKU „Universell“ (Compute Gen5) und 32 virtuellen Kernen (2 × 16) sowie eine 1-Jahres-Reservierung für eigenständige Datenbanken bzw. Pools für elastische Datenbanken in SQL-Datenbank (Compute Gen5) mit der SKU „Unternehmenskritisch“ und 40 virtuellen Kernen (2 × 4 + 32).
 
 ## <a name="buy-sql-database-reserved-capacity"></a>Kaufen einer reservierten SQL-Datenbank-Kapazität
 
@@ -47,10 +47,10 @@ Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenb
 
    ![Screenshot vor der Übermittlung des Kaufs der reservierten SQL-Datenbank-Kapazität](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
-    | Feld      | BESCHREIBUNG|
+    | Feld      | Beschreibung|
     |:------------|:--------------|
     |NAME        |Der Name dieser Reservierung| 
-    |Abonnement|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Als Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummer: MS-AZR-0017P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummer: MS-AZR-0003P) festgelegt werden. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|    
+    |Abonnement|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Der Abonnementtyp muss ein Enterprise Agreement (Angebotsnummer: MS-AZR-0017P) oder „Nutzungsbasierte Bezahlung“ (Angebotsnummer: MS-AZR-0003P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|    
     |Bereich       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>Einzelabonnement: Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewendet. </li><li>Gemeinsam: Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Reservierung dar und umfasst alle Abonnements (mit Ausnahme von Dev/Test-Abonnements) innerhalb der Reservierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</li></ul>|
     |Region      |Die Azure-Region, die durch die Reservierung von SQL-Datenbank-Kapazitäten abgedeckt wird.|    
     |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|

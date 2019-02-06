@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632856"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888990"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -54,7 +54,7 @@ Die DSC Linux-Erweiterung unterstützt alle [von Erweiterungen unterstützten Be
  
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Um die DSC-Erweiterung für Linux verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Die Registrierung von Erweiterungen beispielsweise setzt Konnektivität mit dem Automation-Dienst voraus. Für andere Aktionen, wie z.B. Pull oder Install, erfordert die Installation Konnektivität mit Azure-Speicher/GitHub. Entscheidend sind die vom Kunden bereitgestellten Einstellungen.
+Um die DSC-Erweiterung für Linux verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Die Registrierung von Erweiterungen beispielsweise setzt Konnektivität mit dem Automation-Dienst voraus. Für andere Aktionen, z.B. Pull, erfordert die Installation Konnektivität mit Azure Storage/GitHub. Entscheidend sind die vom Kunden bereitgestellten Einstellungen.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -68,7 +68,7 @@ Die folgenden öffentlichen Konfigurationsparameter werden unterstützt:
 * `NodeConfigurationName`: (optional, Zeichenfolge) Name einer anzuwendenden Knotenkonfiguration.
 * `RefreshFrequencyMins`: (optional, Int) Gibt an, wie oft (in Minuten) DSC versucht, die Konfiguration vom Pullserver abzurufen. 
        Wenn sich die Konfiguration auf dem Pullserver und die aktuelle auf dem Zielknoten unterscheiden, wird sie auf den ausstehenden Speicher kopiert und angewendet.
-* `ConfigurationMode`: (optional, Zeichenfolge) Gibt an, wie die Konfiguration von DSC angewendet werden soll. Mögliche Werte sind ApplyOnly, ApplyAndMonitior und ApplyAndAutoCorrect.
+* `ConfigurationMode`: (optional, Zeichenfolge) Gibt an, wie die Konfiguration von DSC angewendet werden soll. Gültige Werte sind: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (optional, Int) Gibt an, wie häufig (in Minuten) DSC wird sicherstellt, dass die Konfiguration im gewünschten Zustand ist.
 
 > [!NOTE]
@@ -424,8 +424,8 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Fehlercode: 51 stellt entweder eine nicht unterstützte Distribution oder eine nicht unterstützte Erweiterungsaktion dar.
-In einigen Fällen kann die DSC-Linus-Erweiterung OMI nicht installieren, wenn eine höhere Version von OMI bereits auf dem Rechner vorhanden ist. [Fehlerantwort: (000003) Downgrade nicht zulässig]
+Fehlercode: 51 stellt eine nicht unterstützte Distribution oder eine nicht unterstützte Erweiterungsaktion dar.
+In einigen Fällen kann die DSC-Linus-Erweiterung OMI nicht installieren, wenn eine höhere Version von OMI bereits auf dem Rechner vorhanden ist. [Fehlerantwort: (000003) Downgrade nicht zulässig.]
 
 
 

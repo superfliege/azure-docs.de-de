@@ -11,32 +11,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/16/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 588aeede123848900fac6fab663dd1f6c6c169b6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 17fead25840e45f98478a6eb6c146bcc261dfe75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719420"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158008"
 ---
-# <a name="liveevent-states-and-billing"></a>LiveEvent-Zustandswerte und Abrechnung
+# <a name="live-event-states-and-billing"></a>Zustandswerte von Liveereignissen und Abrechnung
 
-In Azure Media Services fallen für LiveEvent Gebühren an, sobald der Zustand **Wird ausgeführt** ausgewählt wird. Damit für LiveEvent keine Gebühren mehr anfallen, müssen Sie es beenden.
+In Azure Media Services fallen für ein Liveereignis Gebühren an, sobald der Zustand in **Wird ausgeführt** geändert wird. Damit für das Liveereignis keine Gebühren mehr anfallen, müssen Sie es beenden.
 
-Wenn **LiveEventEncodingType** für Ihr [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) auf „Standard“ festgelegt ist, schaltet Media Services jedes LiveEvent, das sich noch im Zustand **Wird ausgeführt** befindet, 12 Stunden nach dem Verlust des Eingangsfeeds automatisch ab. Es werden keine **LiveOutputs** mehr ausgeführt. Allerdings wird Ihnen die Zeit in Rechnung gestellt, in der LiveEvent den Zustand **Wird ausgeführt** hatte.
+Wenn **LiveEventEncodingType** für Ihr [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) auf „Standard“ festgelegt ist, schaltet Media Services jedes Liveereignis, das sich noch im Zustand **Wird ausgeführt** befindet, 12 Stunden nach dem Verlust des Eingangsfeeds automatisch ab. Es werden keine **Liveausgaben** mehr ausgeführt. Allerdings wird Ihnen die Zeit in Rechnung gestellt, in der das Liveereignis den Zustand **Wird ausgeführt** hatte.
 
 ## <a name="states"></a>Zustände
 
-LiveEvent kann folgende Zustandswerte aufweisen:
+Das Liveereignis kann folgende Zustandswerte aufweisen:
 
 |Zustand|BESCHREIBUNG|
 |---|---|
-|**Beendet**| Dies ist der anfängliche LiveEvent-Zustand nach der Erstellung (es sei denn, der automatische Start wurde auf TRUE festgelegt). In diesem Status werden keine Gebühren berechnet. In diesem Zustand können die LiveEvent-Eigenschaften aktualisiert werden, aber Streaming ist nicht zulässig.|
-|**Wird gestartet**| LiveEvent wird gestartet, und Ressourcen werden zugewiesen. In diesem Status werden keine Gebühren berechnet. In diesem Zustand sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird das LiveEvent in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|
-|**Wird ausgeführt**| Die LiveEvent-Ressourcen wurden zugewiesen, Erfassungs- und Vorschau-URLs wurden generiert, und Livestreams können empfangen werden. Zu diesem Zeitpunkt ist die Abrechnung aktiv. Sie müssen für die LiveEvent-Ressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen.|
-|**Wird beendet**| LiveEvent wird beendet und die Bereitstellung der Ressourcen aufgehoben. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Zustand sind weder Updates noch Streaming zulässig.|
-|**Wird gelöscht**.| Das LiveEvent wird gelöscht. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Zustand sind weder Updates noch Streaming zulässig.|
+|**Beendet**| Dies ist der anfängliche Zustand des Liveereignisses nach der Erstellung (es sei denn, der automatische Start wurde auf „true“ festgelegt). In diesem Status werden keine Gebühren berechnet. In diesem Zustand können die Eigenschaften des Liveereignisses aktualisiert werden, Streaming ist jedoch nicht zulässig.|
+|**Wird gestartet**| Das Liveereignis wird gestartet, und Ressourcen werden zugewiesen. In diesem Status werden keine Gebühren berechnet. In diesem Zustand sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird das Liveereignis in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|
+|**Wird ausgeführt**| Die Liveereignisressourcen wurden zugewiesen, Erfassungs- und Vorschau-URLs wurden generiert, und Livestreams können empfangen werden. Zu diesem Zeitpunkt ist die Abrechnung aktiv. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen.|
+|**Wird beendet**| Das Liveereignis wird beendet und die Bereitstellung der Ressourcen aufgehoben. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Zustand sind weder Updates noch Streaming zulässig.|
+|**Wird gelöscht**.| Das Liveereignis wird gelöscht. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Zustand sind weder Updates noch Streaming zulässig.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ed5f3db3f9f8f7231d8f865f69cd11c2430054b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024313"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297463"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory (Vorschauversion) 
 
@@ -42,9 +42,10 @@ Zum Kopieren von Daten aus Office 365 in Azure müssen Sie die folgenden Schritt
 - Ihr Office 365-Mandantenadministrator muss Onboardingaktionen ausführen, wie [hier](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) beschrieben.
 - Erstellen und konfigurieren Sie eine Azure AD-Webanwendung in Azure Active Directory.  Anweisungen finden Sie unter [Erstellen einer Azure AD-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts für Office 365 verwenden:
-    - Mandanten-ID.  Anweisungen finden Sie unter [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    - Mandanten-ID. Anweisungen finden Sie unter [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
     - Anwendungs-ID und Authentifizierungsschlüssel.  Anweisungen finden Sie unter [Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
-- Fügen Sie die Identität des Benutzers, der die Datenzugriffsanforderung erstellt, als Besitzer der Azure AD-Webanwendung hinzu (wählen Sie in der Azure AD-Webanwendung „Einstellungen > Besitzer > Besitzer hinzufügen“ aus).
+- Fügen Sie die Identität des Benutzers, der die Datenzugriffsanforderung erstellt, als Besitzer der Azure AD-Webanwendung hinzu (wählen Sie in der Azure AD-Webanwendung „Einstellungen > Besitzer > Besitzer hinzufügen“ aus). 
+    - Die Benutzeridentität muss sich in der Office 365-Organisation befinden, von der Sie Daten erhalten, und darf kein Gastbenutzer sein.
 
 ## <a name="approving-new-data-access-requests"></a>Genehmigen neuer Datenzugriffsanforderungen
 

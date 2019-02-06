@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 62bb9b6b4b0edd9e45b317c3c4e18872bae2eec4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8324b7bf97325c295fdf95819cc2b22fb0f3c14e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452835"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078949"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -47,14 +47,32 @@ Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
 |Was           | Vorgehensweise                                  | Warum|
 |:--            | :--                                  | :-- |
-|**Cloud-Apps** |Sie müssen eine oder mehrere Apps auswählen.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
-| **Benutzer und Gruppen** | Sie müssen mindestens einen Benutzer oder eine Gruppe auswählen, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
+|**Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
+| **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
 | **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind.|
 
 
 
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
+
+
+
+### <a name="how-are-conditional-access-policies-applied"></a>Wie werden Richtlinien für bedingten Zugriff angewendet?
+
+Beim Zugriff auf eine Cloud-App können mehrere Richtlinien für bedingten Zugriff gelten. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der MFA und die zweite Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. 
+
+Alle Richtlinien werden in zwei Phasen erzwungen:
+
+- In der **ersten** Phase werden alle Richtlinien ausgewertet und alle nicht erfüllten Zugriffssteuerungen gesammelt. 
+
+- In der **zweiten** Phase werden Sie aufgefordert, die nicht erfüllten Anforderungen zu erfüllen. Sollte eine der Richtlinien den Zugriff blockieren, werden Sie blockiert und nicht zur Erfüllung weiterer Richtlinienanforderungen aufgefordert. Falls Sie durch keine der Richtlinien blockiert wurden, werden Sie aufgefordert, weitere Richtlinienanforderungen zu erfüllen. Dabei gilt die folgende Reihenfolge:
+
+    ![Reihenfolge](./media/best-practices/06.png)
+    
+    Danach folgen externe MFA-Anbieter und die Nutzungsbedingungen.
+
+
 
 ### <a name="how-are-assignments-evaluated"></a>Wie werden Zuweisungen ausgewertet?
 
@@ -122,13 +140,13 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 
 Im ersten Schritt sollten Sie Ihre Richtlinie mit dem [Was-wäre-wenn-Tool](what-if-tool.md) bewerten.
 
-Wenn Sie bereit sind, eine neue Richtlinie in Ihrer Umgebung bereitzustellen, sollten Sie dies in mehreren Phasen tun:
+Wenn neue Richtlinien für Ihre Umgebung bereit sind, stellen Sie sie phasenweise bereit:
 
 1. Wenden Sie die Richtlinie auf eine kleine Gruppe von Benutzern an, und überprüfen Sie, ob sie sich erwartungsgemäß verhält. 
 
-2.  Wenn Sie die Richtlinie auf einen größeren Benutzerkreis erweitern, schließen Sie weiterhin alle Administratoren von der Richtlinie aus. So wird sichergestellt, dass Administratoren weiterhin Zugriff haben und die Richtlinie bei Bedarf aktualisieren können.
+2.  Wenn Sie eine Richtlinie auf einen größeren Benutzerkreis erweitern, schließen Sie dabei weiterhin alle Administratoren von der Richtlinie aus, um zu gewährleisten, dass sie weiterhin Zugriff haben und die Richtlinie bei Bedarf aktualisieren können.
 
-3. Wenden Sie eine Richtlinie nur dann auf alle Benutzer an, wenn es wirklich notwendig ist. 
+3. Wenden Sie eine Richtlinie nur dann auf alle Benutzer an, wenn dies erforderlich ist. 
 
 Es wird empfohlen, ein Benutzerkonto zu erstellen, für das Folgendes gilt:
 
@@ -154,4 +172,7 @@ Weitere Informationen finden Sie unter [Migrieren klassischer Richtlinien in das
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
+- Unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md) erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren.
+- Unter [Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md) erfahren Sie, wie Sie Ihre Richtlinien für bedingten Zugriff planen.

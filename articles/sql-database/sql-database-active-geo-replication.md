@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 157d7776cc9a8eff485bd18658527bc8d30f4df0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: ae57605b0fb2cba8cdb0c2f9ecfbab8eef7a5197
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602960"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468273"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Erstellen lesbarer sekundärer Datenbanken mithilfe aktiver Georeplikation
 
-Aktive Georeplikation ist eine Funktion in Azure SQL-Datenbank, mit der Sie lesbare sekundäre Datenbanken für einzelne Datenbanken auf einem logischen Server im gleichen oder einem anderen Rechenzentrum (Region) erstellen können.
+Die aktive Georeplikation ist eine Funktion in Azure SQL-Datenbank, mit der Sie lesbare sekundäre Datenbanken für einzelne Datenbanken auf einem SQL-Datenbank-Server im selben oder in einem anderen Rechenzentrum (Region) erstellen können.
 
 > [!NOTE]
-> Aktive Georeplikation wird von der verwalteten Instanz nicht unterstützt.
+> Die aktive Georeplikation wird von der verwalteten Instanz nicht unterstützt. Für ein geografisches Failover verwalteter Datenbanken verwenden Sie [Autofailover-Gruppen](sql-database-auto-failover-group.md).
 
 Aktive Georeplikation ist als Geschäftskontinuitätslösung konzipiert, die der Anwendung im Falle eines regionalen Notfalls oder größeren Ausfalls eine schnelle Notfallwiederherstellung einzelner Datenbanken ermöglicht. Wenn Georeplikation aktiviert ist, kann die Anwendung ein Failover auf eine sekundäre Datenbank in einer anderen Azure-Region initiieren. Bis zu vier sekundäre Datenbanken werden in derselben oder verschiedenen Regionen unterstützt, und die sekundären Datenbanken können auch für schreibgeschützten Abfragezugriff verwendet werden. Das Failover muss durch die Anwendung oder den Benutzer manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit aktiver Georeplikation.
 
@@ -90,7 +90,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Georeplikation von Datenbanken in einem Pool für elastische Datenbanken**
 
-  Jede sekundäre Datenbank kann einzeln in einem Pool für elastische Datenbanken enthalten sein oder sich in keinem Pool befinden. Die Auswahl des Pools für jede sekundäre Datenbank erfolgt einzeln und ist nicht von der Konfiguration einer anderen sekundären Datenbank abhängig (ob primär oder sekundär). Jeder Pool für elastische Datenbanken befindet sich innerhalb einer einzelnen Region, daher können mehrere sekundäre Datenbanken in derselben Topologie nie einen Pool für elastische Datenbanken gemeinsam verwenden.
+  Jede sekundäre Datenbank kann einzeln in einem Pool für elastische Datenbanken enthalten sein oder sich in keinem Pool befinden. Die Auswahl des Pools für jede sekundäre Datenbank erfolgt einzeln und ist nicht von der Konfiguration einer anderen sekundären Datenbank abhängig (ob primär oder sekundär). Jeder Pool für elastische Datenbanken befindet sich innerhalb einer einzelnen Region, daher können mehrere sekundäre Datenbanken in derselben Topologie einen Pool für elastische Datenbanken nie gemeinsam verwenden.
 
 - **Konfigurierbare Computegröße der sekundären Datenbank**
 
@@ -122,25 +122,25 @@ Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchro
 
 Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Verwalten des Failovers von Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL: Verwalten des Failovers von eigenständigen und in einem Pool zusammengefassten Datenbanken
 
 > [!IMPORTANT]
 > Diese Transact-SQL-Befehle gelten nur für die aktive Georeplikation und nicht für Failovergruppen. Daher gelten sie auch nicht für verwaltete Instanzen, da diese nur Failovergruppen unterstützen.
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover. |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden. |
-| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Gibt Informationen über alle vorhandenen Replikationsverknüpfungen für alle Datenbanken auf dem logischen Azure SQL-Datenbankserver zurück. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Gibt Informationen über alle vorhandenen Replikationsverknüpfungen für alle Datenbanken auf dem Azure SQL-Datenbank-Server zurück. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Ruft den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über die Replikationsverknüpfung für eine angegebene SQL-Datenbank ab. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zeigt den Status für alle Datenbankvorgänge an, einschließlich des Status der Replikationsverknüpfungen. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Verwalten des Failovers von Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>PowerShell: Verwalten des Failovers von eigenständigen und in einem Pool zusammengefassten Datenbanken
 
-| Cmdlet | BESCHREIBUNG |
+| Cmdlet | Beschreibung |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase) |Ruft mindestens eine Datenbank ab. |
 | [New-AzureRmSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
@@ -152,9 +152,9 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 > [!IMPORTANT]
 > Beispielskripts finden Sie unter [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) und [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST-API: Verwalten des Failovers von Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>REST-API: Verwalten des Failovers von eigenständigen und in einem Pool zusammengefassten Datenbanken
 
-| API | BESCHREIBUNG |
+| API | Beschreibung |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
 | [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Ruft den Status während eines Erstellungsvorgangs ab. |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c14267f6fc7f8c6be9199b9f25b6430b5f1aa5dd
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338803"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887409"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
@@ -34,13 +34,13 @@ Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Verwaltungslösung](../../azure-monitor/insights/solutions.md#install-a-management-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
+* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Verwaltungslösung](../insights/solutions.md#install-a-management-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Unterstützte VMware ESXi-Hosts
 vSphere ESXi-Host 5.5, 6.0 und 6.5
 
 #### <a name="prepare-a-linux-server"></a>Vorbereiten eines Linux-Servers
-Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [Log Analytics-Linux-Agent](../../azure-monitor/learn/quick-collect-linux-computer.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.
+Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [Log Analytics-Linux-Agent](../learn/quick-collect-linux-computer.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -129,7 +129,7 @@ In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
 
 Klicken Sie auf ein Blatt, um den Log Analytics-Suchbereich zu öffnen, der detaillierte Informationen für das Blatt enthält.
 
-Hier können Sie die Suchabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Einzelheiten zum Erstellen von Protokollsuchen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+Hier können Sie die Suchabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Einzelheiten zum Erstellen von Protokollsuchen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
@@ -158,12 +158,12 @@ Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer
 
 
 #### <a name="save-queries"></a>Speichern von Abfragen
-Das Speichern von Suchabfragen ist ein Standardfeature in Log Analytics und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../../azure-monitor/platform/dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
+Das Speichern von Suchabfragen ist ein Standardfeature in Log Analytics und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](../learn/tutorial-logs-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
 
 ![Docker-Dashboardansicht](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../../azure-monitor/platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
+Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](../platform/alerts-overview.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit Log Analytics).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Was muss ich bei den ESXi-Hosteinstellungen beachten? Wie wirken diese sich auf meine aktuelle Umgebung aus?
@@ -204,6 +204,6 @@ Dafür kann es mehrere Gründe geben:
     d. Wenn die Datei nicht vorhanden oder die Benutzer- und Gruppeneinstellung nicht richtig ist, beheben Sie das Problem durch [Vorbereiten eines Linux-Servers](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
-* [Erstellen Sie eigene Dashboards](../../azure-monitor/platform/dashboards.md), die VMware-Hostdaten anzeigen.
-* [Erstellen Sie Warnungen](../../azure-monitor/platform/alerts-overview.md) für das Auftreten bestimmter VMware-Hostereignisse.
+* Verwenden Sie [Protokollabfragen](../log-query/log-query-overview.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
+* [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), die VMware-Hostdaten anzeigen.
+* [Erstellen Sie Warnungen](../platform/alerts-overview.md) für das Auftreten bestimmter VMware-Hostereignisse.

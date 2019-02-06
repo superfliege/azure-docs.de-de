@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 5c904feacef4f5c15784c5f30c5f8bedf3940329
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425342"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097043"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
 Wenn Sie vielen Organisationen eine Software-as-a-Service-Anwendung (SaaS) anbieten, können Sie Ihre Anwendung so konfigurieren, dass Anmeldungen von beliebigen Azure Active Directory-Mandanten (Azure AD) akzeptiert werden. Diese Konfiguration wird als *mehrinstanzenfähige Anwendung* bezeichnet. Benutzer eines Azure AD-Mandanten können sich bei Ihrer Anwendung anmelden, nachdem sie zugestimmt haben, ihr Konto mit Ihrer Anwendung zu verwenden. 
 
@@ -59,7 +59,7 @@ Bei einer Anwendung mit einem einzigen Mandanten werden Anmeldeanforderungen an 
 
 Bei einer mehrinstanzenfähigen Anwendung weiß die Anwendung zunächst nicht, von welchem Mandanten der Benutzer stammt. Deshalb können Sie keine Anforderungen an den Endpunkt eines Mandanten senden. Stattdessen werden Anforderungen an einen Endpunkt gesendet, der sie per Multiplexverfahren an alle Azure AD-Mandanten verteilt: `https://login.microsoftonline.com/common`
 
-Wenn Azure AD eine Anforderung am Endpunkt „/common“ erhält, wird der Benutzer angemeldet, und dadurch wird der Mandant ermittelt, von dem der Benutzer stammt. Der Endpunkt „/common“ funktioniert mit allen von Azure AD unterstützten Authentifizierungsprotokollen: OpenID Connect, OAuth 2.0, SAML 2.0 und WS-Verbund.
+Wenn Azure AD eine Anforderung am Endpunkt „/common“ erhält, wird der Benutzer angemeldet, und dadurch wird der Mandant ermittelt, von dem der Benutzer stammt. Der Endpunkt „/common“ funktioniert mit allen von Azure AD unterstützten Authentifizierungsprotokollen:  OpenID Connect, OAuth 2.0, SAML 2.0 und WS-Verbund.
 
 Die Anmeldeantwort an die Anwendung enthält dann ein Token, das den Benutzer darstellt. Anhand des Ausstellerwerts im Token erfährt eine Anwendung, von welchem Mandanten der Benutzer stammt. Wenn eine Antwort vom Endpunkt „/common“ zurückgegeben wird, entspricht der Ausstellerwert im Token dem Mandanten des Benutzers. 
 

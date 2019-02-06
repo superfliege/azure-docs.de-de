@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae03e1498d948e7d044561c3e6bea8c343d7b165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713968"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297581"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA-Verfügbarkeit in verschiedenen Azure-Regionen
 
@@ -39,7 +39,7 @@ Azure Virtual Network verwendet einen anderen IP-Adressbereich. Die IP-Adressen 
 
 ## <a name="simple-availability-between-two-azure-regions"></a>Einfache Verfügbarkeit zwischen zwei Azure-Regionen
 
-Möglicherweise möchten Sie keine Verfügbarkeitskonfiguration innerhalb einer einzelnen Region einrichten, müssen aber dennoch dafür sorgen, dass die Workloads verarbeitet werden, wenn ein Notfall eintritt. Typische Fälle für solche Systeme sind Nicht-Produktionssysteme. Hier ist ein Systemausfall für einen halben oder sogar einen ganzen Tag möglicherweise tolerierbar, Sie können aber keinesfalls zulassen, dass das System 48 Stunden oder länger nicht verfügbar ist. Um das Setup kostengünstiger zu gestalten, führen Sie auf dem virtuellen Computer ein weiteres System aus, das weniger wichtig ist. Das andere System fungiert als Ziel. Sie können für den virtuellen Computer in der sekundären Region auch eine kleinere Größe festlegen und entscheiden, dass Daten nicht vorab geladen werden. Da das Failover manuell erfolgt und viele weitere Schritte umfasst, um ein Failover des vollständigen Anwendungsstapels auszuführen, ist die zusätzliche Zeit zum Herunterfahren des virtuellen Computers, zum Ändern der Größe und zum Neustarten des virtuellen Computers akzeptabel.
+Möglicherweise möchten Sie keine Verfügbarkeitskonfiguration innerhalb einer einzelnen Region einrichten, müssen aber dennoch dafür sorgen, dass die Workloads verarbeitet werden, wenn ein Notfall eintritt. Typische Fälle für solche Szenarios sind Nicht-Produktionssysteme. Hier ist ein Systemausfall für einen halben oder sogar einen ganzen Tag möglicherweise tolerierbar, Sie können aber keinesfalls zulassen, dass das System 48 Stunden oder länger nicht verfügbar ist. Um das Setup kostengünstiger zu gestalten, führen Sie auf dem virtuellen Computer ein weiteres System aus, das weniger wichtig ist. Das andere System fungiert als Ziel. Sie können für den virtuellen Computer in der sekundären Region auch eine kleinere Größe festlegen und entscheiden, dass Daten nicht vorab geladen werden. Da das Failover manuell erfolgt und viele weitere Schritte umfasst, um ein Failover des vollständigen Anwendungsstapels auszuführen, ist die zusätzliche Zeit zum Herunterfahren des virtuellen Computers, zum Ändern der Größe und zum Neustarten des virtuellen Computers akzeptabel.
 
 Wenn Sie das Szenario der Freigabe des DR-Ziels für ein QA-System auf einem virtuellen Computer verwenden, müssen Sie die folgenden Aspekte berücksichtigen:
 
@@ -67,6 +67,16 @@ Eine Kombination der regionsinternen und regionsübergreifenden Verfügbarkeit k
 In diesen Fällen können Sie mithilfe der HANA-Systemreplikation ein Setup konfigurieren, das in der Terminologie von SAP als [SAP HANA Multitier System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) (SAP HANA-Systemreplikation auf mehreren Ebenen) bezeichnet wird. Die Architektur sieht folgendermaßen aus:
 
 ![Diagramm mit drei virtuellen Computern in zwei Regionen](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
+
+SAP hat mit HANA 2.0 SPS3 die [Multi-Target-Systemreplikation](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) eingeführt. Die Multi-Target-Systemreplikation hat einige Vorteile für Updateszenarios. So ist beispielsweise die DR-Site (Region 2) nicht betroffen, wenn die sekundäre HA-Site wegen Wartung oder Updates ausfällt. [Hier](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html) finden Sie weitere Informationen zur Multi-Target-Systemreplikation von HANA.
+Eine mögliche Architektur mit Multi-Target-Replikation würde folgendermaßen aussehen:
+
+![Diagramm mit drei virtuellen Computern in zwei Multi-Target-Regionen](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
+
+Wenn das Unternehmen Anforderungen an die Hochverfügbarkeit in der zweiten (DR) Azure-Region hat, dann würde die Architektur so aussehen:
+
+![Diagramm mit drei virtuellen Computern in zwei Multi-Target-Regionen](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+
 
 Verwenden von „logreplay“ als Betriebsmodus: Diese Konfiguration stellt in der primären Region einen RPO-Wert von 0 und einen niedrigen RTO-Wert bereit. Die Konfiguration sorgt auch für eine annehmbare RPO, wenn eine Verlagerung in die zweite Region erforderlich ist. Die RTO-Zeiten in der zweiten Region richten sich danach, ob Daten vorab geladen werden. Viele Kunden verwenden den virtuellen Computer in der sekundären Region zum Ausführen eines Testsystems. In diesem Fall können die Daten nicht vorab geladen werden.
 

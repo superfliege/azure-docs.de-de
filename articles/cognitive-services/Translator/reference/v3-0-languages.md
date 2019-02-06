@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129640"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470925"
 ---
 # <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
 
@@ -34,7 +34,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>api-version</td>
     <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
@@ -49,7 +49,7 @@ Anforderungsheader:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>Accept-Language</td>
     <td>*Optionaler Anforderungsheader*.<br/>Die Sprache, die für Zeichenfolgen der Benutzeroberfläche verwendet werden soll. Einige der Felder in der Antwort sind Namen von Sprachen oder Namen von Regionen. Verwenden Sie diesen Parameter, um die Sprache zu definieren, in der diese Namen zurückgegeben werden. Die Sprache wird durch die Bereitstellung eines wohlgeformten BCP 47-Sprachtags angegeben. Verwenden Sie z.B. den Wert `fr` zum Anfordern von Namen in Französisch, oder verwenden Sie den Wert `zh-Hant` zum Anfordern von Namen in Chinesisch (traditionell).<br/>Namen werden in englischer Sprache bereitgestellt, wenn keine Zielsprache angegeben wird oder keine Lokalisierung verfügbar ist.
@@ -101,9 +101,9 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
   * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
 
-  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+  * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
-  Der folgende Code zeigt ein Beispiel:
+  Im folgenden Code wird ein Beispiel veranschaulicht:
           
   ```json
   {
@@ -135,7 +135,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
     * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für die Sprache ist.
 
-    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+    * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
     * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
 
@@ -192,19 +192,19 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
   * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
 
-  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+  * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
 
-  * `translations`: Die Liste der Sprachen mit alterativen Übersetzungen und Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
+  * `translations`: Die Liste der Sprachen mit alternativen Übersetzungen sowie Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
 
     * `name`: Der Anzeigename der Zielsprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
 
     * `nativeName`: Der Anzeigename der Zielsprache in dem Gebietsschema, das nativ für die Zielsprache ist.
 
-    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
+    * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
     
     * `code`: Sprachcode, der die Zielsprache identifiziert.
 
-  Der folgende Code zeigt ein Beispiel:
+  Im folgenden Code wird ein Beispiel veranschaulicht:
 
   ```json
   "es": {
@@ -230,7 +230,7 @@ Die Liste der unterstützten Sprachen ändert sich nicht häufig. Um Netzwerkban
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>ETag</td>
     <td>Der aktuelle Wert des Entitätstags für die angeforderten Gruppen unterstützter Sprachen. Um nachfolgende Anforderungen effizienter zu gestalten, kann der Client den `ETag`-Wert in einem `If-None-Match`-Headerfeld senden.
@@ -248,7 +248,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 <table width="100%">
   <th width="20%">Statuscode</th>
-  <th>BESCHREIBUNG</th>
+  <th>Beschreibung</th>
   <tr>
     <td>200</td>
     <td>Erfolgreich.</td>

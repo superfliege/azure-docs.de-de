@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.date: 01/25/2019
+ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227485"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471197"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -49,7 +49,7 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
 
 - **Mandantenisolation:**&nbsp; Datenisolation und Leistung (Auswirkungen der Workload eines Mandanten auf andere Workloads)
 
-- **Kosten pro Mandant:**&nbsp; Datenbankkosten
+- **Kosten pro Mandant:**&nbsp; Kosten für Datenbank
 
 - **Komplexität der Entwicklung:**
     - Änderungen am Schema

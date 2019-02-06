@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ace5901012c5bc66a560dafd3a403183d6ce8c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 81bbf2b69e0e492ea75e8cbbe980d7e83a86eae7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422830"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912849"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell
 
@@ -127,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Wie Sie in der vorherigen Ausgabe sehen, leitet die Route mit dem **AaddressPrefix** **0.0.0.0/0** den gesamten Datenverkehr, der nicht für Adressen in den Adresspräfixen anderer Routen bestimmt ist, mit einem nächsten Hop von **Internet** weiter. Wie Sie in der Ausgabe auch sehen können, ist zwar eine Standardroute zum Präfix 172.16.0.0/12 vorhanden, die die Adresse 172.31.0.100 enthält, aber **nextHopType** lautet **Keiner**. Azure erstellt eine Standardroute zu 172.16.0.0/12, gibt aber einen Typ des nächsten Hops erst dann an, wenn es einen Grund dafür gibt. Wenn Sie z. B. den Adressbereich 172.16.0.0/12 zum Adressraum des virtuellen Netzwerks hinzufügen, ändert Azure den **nextHopType** für die Route in **Virtuelles Netzwerk**. Bei einer Überprüfung würde dann **Virtuelles Netzwerk** als **nextHopType** angezeigt.
+Wie Sie in der vorherigen Ausgabe sehen, leitet die Route mit dem Wert **0.0.0.0/0** für **AddressPrefix** den gesamten Datenverkehr, der nicht für Adressen in den Adresspräfixen anderer Routen bestimmt ist, mit einem nächsten Hop von **Internet** weiter. Wie Sie in der Ausgabe auch sehen können, ist zwar eine Standardroute zum Präfix 172.16.0.0/12 vorhanden, die die Adresse 172.31.0.100 enthält, aber **nextHopType** lautet **Keiner**. Azure erstellt eine Standardroute zu 172.16.0.0/12, gibt aber einen Typ des nächsten Hops erst dann an, wenn es einen Grund dafür gibt. Wenn Sie z. B. den Adressbereich 172.16.0.0/12 zum Adressraum des virtuellen Netzwerks hinzufügen, ändert Azure den **nextHopType** für die Route in **Virtuelles Netzwerk**. Bei einer Überprüfung würde dann **Virtuelles Netzwerk** als **nextHopType** angezeigt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

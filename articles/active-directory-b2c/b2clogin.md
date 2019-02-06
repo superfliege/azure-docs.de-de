@@ -1,5 +1,5 @@
 ---
-title: Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C | Microsoft-Dokumentation
+title: Festlegen von Umleitungs-URLs zu b2clogin.com – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie mehr über das Verwenden von b2clogin.com in Umleitungs-URLs für Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/28/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 147d8e80c66bd47ed56400deca024532fc7e39c7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844925"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160903"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
@@ -23,8 +23,8 @@ Wenn Sie einen Identitätsanbieter für die Registrierung und Anmeldung in Ihrer
 
 Die Verwendung von b2clogin.com bietet zusätzliche Vorteile, z.B.:
 
-- Cookies werden nicht mehr mit anderen Microsoft-Diensten gemeinsam verwendet.
-- Ihre URLs enthalten keinen Verweis mehr auf Microsoft. Beispiel: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`.
+- Der im Cookieheader von Microsoft-Diensten verbrauchte Speicherplatz wird reduziert.
+- Ihre URLs enthalten keinen Verweis mehr auf Microsoft. Beispiel: `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
 
 Sehen Sie sich diese Einstellungen, die bei Verwendung von „b2clogin.com“ möglicherweise geändert werden müssen:
 
@@ -60,7 +60,9 @@ Die Azure AD B2C-Anwendung verweist wahrscheinlich an mehreren Stellen auf `logi
 
 ## <a name="set-the-validateauthority-property"></a>Festlegen der ValidateAuthority-Eigenschaft
 
-Wenn Sie MSAL verwenden, legen Sie **ValidateAuthority** auf `false` fest. Das folgende Beispiel zeigt eine Möglichkeit, wie Sie die Eigenschaft festlegen können:
+Wenn Sie MSAL verwenden, legen Sie die **ValidateAuthority**-Eigenschaft auf `false` fest. Wenn **ValidateAuthority** auf `false` festgelegt ist, sind Umleitungen an b2clogin.com zulässig. 
+
+Das folgende Beispiel zeigt eine Möglichkeit, wie Sie die Eigenschaft festlegen können:
 
 In [MSAL für .Net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet):
 
