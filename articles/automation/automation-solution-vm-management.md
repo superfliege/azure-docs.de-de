@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/04/2018
+ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846182"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476395"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -34,7 +34,7 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 > [!NOTE]
 > Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Virtuelle Computer werden weiterhin parallel in verschiedenen Clouddiensten verarbeitet.
 >
-> Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+> Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [**External_EnableClassicVMs**](#variables) nach der Bereitstellung in **False** ändern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    - Geben Sie einen Namen für den neuen **Log Analytics-Arbeitsbereich** ein, z.B. „ContosoLAWorkspace“.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
-   - Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden** und **Europa, Westen** verfügbar.
+   - Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden**, **Europa, Westen** und **USA, Westen 2** verfügbar.
    - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Log Analytics wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert und der Tarif „Pro GB“ ist die einzige Option.
 
 5. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen auf der Seite **Log Analytics-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
@@ -90,6 +90,9 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
 
 8. Nachdem Sie die erforderlichen Anfangseinstellungen für die Lösung konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen, und wählen Sie dann **Erstellen** aus. Nachdem alle Einstellungen überprüft wurden, wird die Lösung für Ihr Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
+> [!NOTE]
+> Wenn Sie ein Abonnement für Azure Cloud Solution Provider (Azure CSP) haben, wechseln Sie nach Abschluss der Bereitstellung in Ihrem Automation-Konto unter **Freigegebene Ressourcen** zu **Variablen**, und legen Sie die Variable [**External_EnableClassicVMs**](#variables) auf **False** fest. Dadurch hört die Lösung auf, nach klassischen VM-Ressourcen zu suchen.
+
 ## <a name="scenarios"></a>Szenarien
 
 Die Lösung umfasst drei unterschiedliche Szenarien. Es handelt sich um folgende Szenarien:
@@ -108,8 +111,8 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Festlegen der Aktionen zum Starten und Beenden für ein Abonnement und eine Ressourcengruppe
 
 1. Konfigurieren Sie die Variablen **External_Stop_ResourceGroupNames** und **External_ExcludeVMNames**, um die Ziel-VMs anzugeben.
-1. Aktivieren und aktualisieren Sie die Zeitpläne **Scheduled-StartVM** und **Scheduled-StopVM**.
-1. Führen Sie das Runbook **ScheduledStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** und den Parameter WHATIF auf **True** fest, um für die Änderungen eine Vorschau anzuzeigen.
+2. Aktivieren und aktualisieren Sie die Zeitpläne **Scheduled-StartVM** und **Scheduled-StopVM**.
+3. Führen Sie das Runbook **ScheduledStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** und den Parameter WHATIF auf **True** fest, um für die Änderungen eine Vorschau anzuzeigen.
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Festlegen der Aktionen zum Starten und Beenden über eine VM-Liste
 
@@ -205,6 +208,7 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_Threshold | Der Schwellenwert für die Azure-Warnungsregel, der in der Variablen _External_AutoStop_MetricName_ angegeben ist. Prozentwerte können zwischen 1 und 100 liegen.|
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewendet wird, um die Bedingung auszuwerten. Zulässige Werte sind **Average**, **Minimum**, **Maximum**, **Total** und **Last**.|
 |External_AutoStop_TimeWindow | Die Größe des Fensters, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
+|External_EnableClassicVMs| Gibt an, ob die Lösung klassische virtuelle Computer als Ziel verwendet. Der Standardwert lautet „True“. Diese Variable sollte bei CSP-Abonnements auf „False“ festgelegt werden.|
 |External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen.|
 |External_Start_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Startaktionen an.|
 |External_Stop_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Beendigungsaktionen an.|

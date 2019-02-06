@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 5c7216a419ba01c1b2df744e305bf059cf68104e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1cf3d29bd3d7af56f3e20c1d2344ed90095229bf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224388"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196666"
 ---
 # <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Starten einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM
 Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen veralteten Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen oder globale Administratoren regelmäßig Zugriffsüberprüfung erstellen, um Administratoren zur Überprüfung der Rollen aufzufordern, die den Benutzern zugewiesen wurden. Dieses Dokument beschreibt die Schritte zum Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management (PIM).
@@ -63,7 +63,7 @@ Bei der Durchführung einer Überprüfung gibt es drei Möglichkeiten: Sie könn
 2. Wählen Sie eine der Optionen aus:
    
    * **Prüfer auswählen**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
-   * **Ich**: Diese Option ist hilfreich, wenn Sie sich vorab mit der Funktionsweise von Zugriffsüberprüfungen auseinandersetzen oder eine Überprüfung für Personen durchführen möchten, die die Überprüfung nicht selbst durchführen können.
+   * **Ich**: Diese Option ist hilfreich, wenn Sie sich vorab mit der Funktionsweise von Zugriffsüberprüfungen auseinandersetzen oder eine Überprüfung für Personen durchführen möchten, die nicht dazu in der Lage sind.
    * **Selbstüberprüfung durch Mitglieder**: Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen.
 
 ### <a name="start-the-review"></a>Starten der Überprüfung

@@ -7,21 +7,21 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852302"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298737"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory B2C-Mandanten definieren. In diesem Artikel erfahren Sie, wie Sie eine benutzerdefinierte Richtlinie erstellen, die die Registrierung oder Anmeldung mit einem lokalen Konto über eine E-Mail-Adresse und ein Kennwort unterstützt. Zudem bereiten Sie Ihre Umgebung auf das Hinzufügen von Identitätsanbietern (z.B. Facebook oder Azure Active Directory) vor.
+[Benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory B2C-Mandanten definieren. In diesem Artikel erfahren Sie, wie Sie eine benutzerdefinierte Richtlinie erstellen, die die Registrierung oder Anmeldung mit einem lokalen Konto über eine E-Mail-Adresse und ein Kennwort unterstützt. Außerdem bereiten Sie Ihre Umgebung für das Hinzufügen von Identitätsanbietern vor.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,9 +31,6 @@ Wenn Sie noch nicht über einen [Azure AD B2C-Mandanten](tutorial-create-tenant.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen. 
-
-    ![Wechseln zu Ihrem Azure AD B2C-Mandanten](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
 3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 
@@ -72,7 +69,7 @@ Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registri
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrieren der IdentityExperienceFramework-Anwendung
 
-1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure Active Directory**, klicken Sie auf diese Option, und klicken Sie anschließend auf **App-Registrierungen**.
+1. Wählen Sie links oben im Azure-Portal **Alle Dienste** aus, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 2. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 3. Geben Sie unter **Name** `IdentityExperienceFramework` ein.
 4. Wählen Sie unter **Anwendungstyp** die Option **Web-App/API** aus.
@@ -105,8 +102,8 @@ Benutzerdefinierte Richtlinien sind ein Satz von XML-Dateien, die in Ihren Azure
 Die einzelnen Starter Packs enthalten Folgendes:
 
 - Die Basisdatei. Es sind einige Änderungen an der Basisdatei erforderlich.
-* Die Erweiterungsdatei.  In dieser Datei werden die meisten Konfigurationsänderungen vorgenommen.
-* Die Dateien der vertrauenden Seite. Aufgabenspezifische Dateien, die von Ihrer Anwendung aufgerufen werden.
+- Die Erweiterungsdatei.  In dieser Datei werden die meisten Konfigurationsänderungen vorgenommen.
+- Die Dateien der vertrauenden Seite. Aufgabenspezifische Dateien, die von Ihrer Anwendung aufgerufen werden.
 
 >[!NOTE]
 >Wenn Ihr XML-Editor Validierungen unterstützt, überprüfen Sie die Dateien anhand des XML-Schemas TrustFrameworkPolicy_0.3.0.0.xsd im Stammverzeichnis des Starter Packs . Durch die XML-Schemavalidierung werden vor dem Upload Fehler festgestellt.
@@ -117,17 +114,14 @@ Die einzelnen Starter Packs enthalten Folgendes:
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-2. Bearbeiten Sie im Ordner SocialAndLocalAccounts alle Dateien, indem Sie `yourtenant.onmicrosoft.com` durch den Namen Ihres Mandanten ersetzen. Beispiel: `contosoTenant.onmicrosoft.com`. Wenn Sie einen XML-Editor benötigen, können Sie [Visual Studio Code](https://code.visualstudio.com/download), einen einfachen plattformübergreifenden Editor, ausprobieren.
+2. Bearbeiten Sie im Ordner SocialAndLocalAccounts alle Dateien, indem Sie `yourtenant` durch den Namen Ihres Mandanten ersetzen. Beispiel: `contosoTenant.onmicrosoft.com`. Wenn Sie einen XML-Editor benötigen, können Sie [Visual Studio Code](https://code.visualstudio.com/download), einen einfachen plattformübergreifenden Editor, ausprobieren.
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Hinzufügen der Anwendungs-IDs zur benutzerdefinierten Richtlinie
 
 Fügen Sie die Anwendung-ID zur Erweiterungsdatei *TrustFrameworkExtensions.xml* hinzu.
 
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie das Element `<TechnicalProfile Id="login-NonInteractive">`.
-2. Ersetzen Sie beide Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, die Sie zuvor erstellt haben. Ersetzen Sie beide Instanzen von `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Anwendung des Frameworks für die Identitätsfunktion, die Sie zuvor erstellt haben. Im folgenden Beispiel sehen Sie, wie das technische Profil **login-NonInteractive** aussieht, nachdem die Änderungen vorgenommen wurden:
-
-    ![Anwendungs-IDs](./media/active-directory-b2c-get-started-custom/login-NonInteractive.png)
-
+2. Ersetzen Sie beide Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, die Sie zuvor erstellt haben. Ersetzen Sie beide Instanzen von `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Anwendung des Frameworks für die Identitätsfunktion, die Sie zuvor erstellt haben.
 3. Speichern Sie Ihre Erweiterungsdatei.
 
 ## <a name="upload-the-policies"></a>Hochladen der Richtlinien

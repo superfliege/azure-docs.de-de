@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit LoginRadius | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von LoginRadius | Microsoft-Dokumentation'
 description: Es wird beschrieben, wie Sie das einmalige Anmelden zwischen Azure Active Directory und LoginRadius konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5715579e-598f-4d2e-970a-107b80b97be4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c5ce02efb48b5b49f6e861dac90f4d59e4ded39
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 90fda216fc1e4bd4e96714c625aaa9c01d11a70c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437864"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160148"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Tutorial: Azure Active Directory-Integration mit LoginRadius
+# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Tutorial: Azure Active Directory-Integration von LoginRadius
 
 In diesem Tutorial erfahren Sie, wie Sie LoginRadius in Azure Active Directory (Azure AD) integrieren.
 
@@ -126,7 +126,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **LoginRadius** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [LoginRadius-Supportteam](mailto:support@loginradius.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -162,7 +162,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-loginradius-test-user"></a>Erstellen eines LoginRadius-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in LoginRadius einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [LoginRadius-Supportteam](mailto:support@loginradius.com) zusammen, um die Benutzer der LoginRadius-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in LoginRadius einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur LoginRadius-Plattform vom [LoginRadius-Supportteam](mailto:support@loginradius.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

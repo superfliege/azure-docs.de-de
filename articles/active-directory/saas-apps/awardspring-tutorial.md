@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit AwardSpring | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von AwardSpring | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AwardSpring konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2f115be6-4fbe-42aa-9319-7462e7a75736
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: f75c14989b46721e7043c06086cac02222f452a5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d633a9a4d162b921c360572ea8c6a942e4788d54
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431316"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168361"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>Tutorial: Azure Active Directory-Integration mit AwardSpring
+# <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>Tutorial: Azure Active Directory-Integration von AwardSpring
 
 In diesem Tutorial erfahren Sie, wie Sie AwardSpring in Azure Active Directory (Azure AD) integrieren.
 
@@ -199,7 +199,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in AwardSpring. AwardSpring unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf AwardSpring ein neuer Benutzer erstellt.
 
 >[!Note]
->Setzen Sie sich mit dem [AwardSpring-Supportteam](maito:support@awardspring.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [AwardSpring-Supportteam](maito:support@awardspring.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

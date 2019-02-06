@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Teamwork.com | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Teamwork.com | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Teamwork.com konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6be2c9a17e719fb53ab257af77605c49ffea9e86
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7775c8ae92ebf6015f12bdebf0934752a5240f0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437473"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172407"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Tutorial: Azure Active Directory-Integration mit Teamwork.com
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Tutorial: Azure Active Directory-Integration von Teamwork.com
 
 In diesem Tutorial erfahren Sie, wie Sie Teamwork.com in Azure Active Directory (Azure AD) integrieren.
 
@@ -166,7 +166,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-teamworkcom-test-user"></a>Erstellen einer Teamwork.com-Testbenutzerin
 
-In diesem Abschnitt erstellen Sie in Teamwork.com eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [Supportteam von Teamwork.com](mailto:support@teamwork.com) zusammen, um die Benutzer auf der Teamwork.com-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Teamwork.com eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Teamwork.com-Plattform vom [Teamwork.com-Supportteam](mailto:support@teamwork.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

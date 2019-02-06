@@ -1,5 +1,5 @@
 ---
-title: Verknüpfen eines Azure-Abonnements mit Azure Active Directory B2C | Microsoft-Dokumentation
+title: Verknüpfen eines Azure-Abonnements – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Vorgehensweise, mit der die Abrechnung für einen Azure AD B2C-Mandanten in einem Azure-Abonnement ermöglicht wird.
 services: active-directory-b2c
 author: davidmu1
@@ -7,27 +7,29 @@ manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e39b7472904e7635340327d311eb7d4b9123f51e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853186"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196173"
 ---
-# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure AD B2C-Mandanten
+# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure Active Directory B2C-Mandanten
 
 > [!IMPORTANT]
-> Die neuesten Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure AD B2C finden Sie auf der folgenden Seite: [Azure Active Directory B2C – Preise ](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Die aktuellen Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure Active Directory (Azure AD) B2C finden Sie unter [Azure AD B2C Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 Nutzungsgebühren für Azure AD B2C werden über ein Azure-Abonnement abgerechnet. Beim Erstellen eines Azure AD B2C-Mandanten muss der Mandantenadministrator den Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement verknüpfen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
 
 > [!NOTE]
 > Ein Abonnement, das mit einem Azure AD B2C-Mandanten verknüpft ist, kann für die Abrechnung der Azure AD B2C-Nutzung oder anderer Azure-Ressourcen einschließlich zusätzlicher Azure AD B2C-Ressourcen verwendet werden.  Das Abonnement kann nicht verwendet werden, um weitere lizenzbasierte Azure-Dienste oder Office 365-Lizenzen innerhalb des Azure AD B2C-Mandanten hinzuzufügen.
 
- Für die Abonnementverknüpfung wird innerhalb des Azure-Zielabonnements eine Azure AD B2C-Ressource erstellt. Viele Azure AD B2C-Ressourcen können innerhalb eines einzelnen Azure-Abonnements zusammen mit anderen Azure-Ressourcen (beispielsweise virtuelle Computer, Datenspeicher, Logik-Apps) erstellt werden. Alle Ressourcen innerhalb des Abonnements können Sie unter dem Azure AD-Mandanten anzeigen, dem das Abonnement zugeordnet ist.
+Für die Abonnementverknüpfung wird innerhalb des Azure-Zielabonnements eine Azure AD B2C-Ressource erstellt. Viele Azure AD B2C-Ressourcen können innerhalb eines einzelnen Azure-Abonnements zusammen mit anderen Azure-Ressourcen (beispielsweise virtuelle Computer, Datenspeicher, Logik-Apps) erstellt werden. Alle Ressourcen innerhalb des Abonnements können Sie unter dem Azure AD-Mandanten anzeigen, dem das Abonnement zugeordnet ist.
+
+Azure Cloud Solution Provider (CSP)-Abonnements werden in Azure AD B2C unterstützt. Die Funktionalität ist über APIs oder das Azure-Portal für Azure AD B2C und für alle Azure-Ressourcen verfügbar. CSP-Abonnementadministratoren können auf die gleiche Weise wie für alle anderen Azure-Ressourcen Beziehungen mit Azure AD B2C verknüpfen, verschieben und löschen. Die Verwaltung von Azure AD B2C mit der rollenbasierten Zugriffssteuerung wird durch die Zuordnung eines Azure AD B2C-Mandanten zu einem CSP-Abonnement nicht beeinflusst. Die rollenbasierte Zugriffssteuerung wird mithilfe von mandantenbasierten und nicht abonnementbasierten Rollen realisiert.
 
 Für die weitere Vorgehensweise wird ein gültiges Azure-Abonnement benötigt.
 
@@ -81,10 +83,6 @@ Diese Ressource ermöglicht Folgendes:
 ![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>Bekannte Probleme
-
-### <a name="csp-subscriptions"></a>CSP-Abonnements
-
-Derzeit kann ein Azure AD B2C-Mandant **keine** Verknüpfung mit CSP-Abonnements erstellen.
 
 ### <a name="self-imposed-restrictions"></a>Selbstauferlegte Einschränkungen
 

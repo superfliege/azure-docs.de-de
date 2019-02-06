@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Zwayam | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Zwayam | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Zwayam konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7754344c-34d6-4764-a368-e1dbfe876c0c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: jeedes
-ms.openlocfilehash: dd98886e2bdcaecdd685dd714b6d4bacd96e6e29
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e3b70c7c7ef50b536618517c6b8f2e670322a881
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438346"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180856"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>Tutorial: Azure Active Directory-Integration mit Zwayam
+# <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>Tutorial: Azure Active Directory-Integration von Zwayam
 
 In diesem Tutorial erfahren Sie, wie Sie Zwayam in Azure Active Directory (Azure AD) integrieren.
 
@@ -130,7 +130,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **Zwayam** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Zwayam-Supportteam](mailto:opendoors@zwayam.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -167,7 +167,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-zwayam-test-user"></a>Erstellen eines Zwayam-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Zwayam einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Zwayam-Plattform ggf. vom [Zwayam-Supportteam](mailto:opendoors@zwayam.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Zwayam einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Zwayam-Plattform vom [Zwayam-Supportteam](mailto:opendoors@zwayam.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

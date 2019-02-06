@@ -7,48 +7,48 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 983bf77a157de539264a6437ffbebb291d310840
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810413"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181417"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Anmelden mit der zweistufige Überprüfung oder einer Sicherheitsinformation
 
-Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Authentifizierungsmethode bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden.
+Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Authentifizierungsmethode bei Ihrem Konto anmelden.
 
 >[!Note]
 >Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Authentifizierungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md). Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Authentifizierungsmethoden mithilfe dieser Schrittanleitungen einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Anmelden mithilfe einer Authenticator-App-Benachrichtigung auf dem Mobilgerät
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Konto an.
 
 2. Wählen Sie in der Benachrichtigung, die an Ihr mobiles Gerät gesendet wird, die Option **Genehmigen** aus.
 
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Anmelden mithilfe eines Authenticator-App-Codes auf dem Mobilgerät
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Konto an.
 
 2. Öffnen Sie die Authenticator-App, und geben Sie den zufällig generierten Code für Ihr Konto in das Feld **Code eingeben** ein.
 
 
 ## <a name="sign-in-using-your-phone-number"></a>Anmelden mithilfe Ihrer Telefonnummer
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Konto an.
 
 2. Nehmen Sie das Gespräch entgegen, und befolgen Sie die Anweisungen.
 
 
 ## <a name="sign-in-using-a-text-message"></a>Anmelden mithilfe einer SMS
 
-1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Konto an.
 
 2. Öffnen Sie die SMS, und geben Sie den Code in der SMS in das Feld **Code eingeben** ein.
 

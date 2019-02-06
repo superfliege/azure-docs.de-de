@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: dfa90474632b2cf18055e0ba95994f120cb293ef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ac88d3accad8aa9ec523ecce5eb11b6c10eb913c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447783"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181485"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Tutorial: Integration von Elium in Azure Active Directory
 
@@ -233,7 +233,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in Elium. Elium unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Elium ein neuer Benutzer erstellt.
 >[!Note]
->Setzen Sie sich mit dem [Elium-Supportteam](mailto:support@elium.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Elium-Supportteam](mailto:support@elium.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

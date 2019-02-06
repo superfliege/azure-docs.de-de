@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8ec9e5a50f2350a17d5845f5c52954df10fa1d10
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856824"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176011"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ Im folgenden Beispiel wird ein **RelyingParty**-Element in der Richtliniendatei 
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" />
+      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -125,6 +125,7 @@ Das **SingleSignOn**-Element enthält das folgende Attribut:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Bereich | JA | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird. Bei einer SSO-Sitzung wird beispielsweise keine Sitzung für den Benutzer beibehalten, und er wird immer dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `TrustFramework` gibt an, dass das Verhalten für alle Richtlinien im Vertrauensframework angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
+| KeepAliveInDays | JA | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -159,7 +160,7 @@ Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| NAME | JA | Der Name des Schlüssel-Wert-Paars. |
+| Name | JA | Der Name des Schlüssel-Wert-Paars. |
 
 Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien](active-directory-b2c-ui-customization-custom-dynamic.md).
 
@@ -186,7 +187,7 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| NAME | JA | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. Verwenden Sie in der Produktion keine SAML-Token. |
+| Name | JA | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. Verwenden Sie in der Produktion keine SAML-Token. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

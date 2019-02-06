@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ab5a072d845bfdbaafabe1e0e7bdce2dfce6184d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: a4dbce678d5d3eac106363e958636810ea9040bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180210"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Verzeichnisrollen in PIM
 Im Privileged Identity Management-Überwachungsverlauf können Sie alle Benutzerzuweisungen und -aktivierungen für alle Rollen in einem bestimmten Zeitraum sehen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](../reports-monitoring/overview-reports.md)
@@ -64,4 +64,4 @@ Aktivieren oder deaktivieren Sie das Kontrollkästchen **Rolle** neben jeder Rol
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anzeigen des Überwachungsverlaufs für Azure-Ressourcenrollen in PIM](pim-resource-roles-use-the-audit-log.md)
+- [Anzeigen des Aktivitäts- und Überwachungsverlaufs für Azure-Ressourcenrollen in PIM](azure-pim-resource-rbac.md)

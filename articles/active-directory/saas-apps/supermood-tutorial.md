@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Supermood | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Supermood | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Supermood konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: afc04efa-2eba-4e47-8ce4-b71eb293cd09
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 98a39c52f206f19d3330695fd05f9a96c0bf4d36
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 54a1f4a8ef0ec4381374585df57dc62490337190
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443349"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173087"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>Tutorial: Azure Active Directory-Integration in Supermood
+# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>Tutorial: Azure Active Directory-Integration von Supermood
 
 In diesem Tutorial erfahren Sie, wie Sie Supermood in Azure Active Directory (Azure AD) integrieren.
 
@@ -203,7 +203,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 In diesem Abschnitt erstellen Sie in Supermood eine Benutzerin namens Britta Simon. Supermood unterstützt die Just-In-Time-Bereitstellung. Sie ist standardmäßig für die Benutzer aktiviert, deren E-Mail-Adressen den Domänen angehören, die Supermood bei der Konfiguration hinzugefügt werden. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Supermood ein neuer Benutzer erstellt.
 
 >[!Note]
->Wenn Sie einen Benutzer manuell erstellen möchten, wenden Sie sich an das [Supermood-Supportteam](mailto:hello@supermood.fr).
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supermood-Supportteam](mailto:hello@supermood.fr).
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers

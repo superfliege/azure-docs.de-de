@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Cisco Cloud | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Cisco Cloud | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Cisco Cloud konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: db1cea1d-ff0a-4f0d-b5fd-50ca32702d56
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: e5d7e195a3f61d32387d1101fbb24bfa1ac8bccb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c5809426da95e2295c5bf318b6f17345002f536d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431231"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197941"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Tutorial: Azure Active Directory-Integration mit Cisco Cloud
+# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Tutorial: Azure Active Directory-Integration von Cisco Cloud
 
 In diesem Tutorial erfahren Sie, wie Sie Cisco Cloud in Azure Active Directory (Azure AD) integrieren.
 
@@ -147,7 +147,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Klicken Sie auf **OK**.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+1. Klicken Sie im Abschnitt  **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
     ![Downloadlink für das Zertifikat](./media/ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
@@ -191,7 +191,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-cisco-cloud-test-user"></a>Erstellen eines Cisco Cloud-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Cisco Cloud einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Cisco Cloud-Plattform ggf. vom [Cisco Cloud-Supportteam](mailto:cpr-ops@cisco.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Cisco Cloud einen Benutzer mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Cisco Cloud-Plattform vom [Cisco Cloud-Supportteam](mailto:cpr-ops@cisco.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

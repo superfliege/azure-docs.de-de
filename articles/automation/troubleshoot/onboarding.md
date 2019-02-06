@@ -4,22 +4,40 @@ description: Erfahren Sie, wie Sie Fehler beim Integrieren von Lösungen für Up
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879637"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228779"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
 Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgung können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
+
+### <a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
+
+#### <a name="issue"></a>Problem
+
+Die folgende Meldung wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+
+```
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen Computer oder für den Benutzer verursacht.
+
+#### <a name="resolution"></a>Lösung
+
+Stellen Sie sicher, dass Sie die erforderlichen Berechtigungen zum Integrieren des virtuellen Computers haben. Überprüfen Sie noch einmal [die Berechtigungen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding), und wiederholen Sie das Onboarding für die Lösung.
 
 ### <a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
-ms.date: 08/30/2018
+ms.subservice: pim
+ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: d9a6ab49d619e487eee6fb13abe128cfc167b560
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e6548c2635afd8e1ac784a1930c2277548647cfd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306688"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192748"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Ermitteln von Azure-Ressourcen zur Verwaltung in PIM
 
@@ -52,12 +52,16 @@ Beim erstmaligen Einrichten von PIM für Azure-Ressourcen müssen Sie die Ressou
 
 1. Fügen Sie ein Häkchen neben nicht verwalteten Ressourcen hinzu, die Sie verwalten möchten.
 
+1. Klicken Sie auf **Ressource verwalten**, um mit dem Verwalten der ausgewählten Ressourcen zu beginnen.
+
     > [!NOTE]
     > Sobald eine Verwaltungsgruppe oder ein Abonnement auf „Verwaltet“ festgelegt ist, kann dies nicht mehr rückgängig gemacht werden. Dadurch wird verhindert, dass andere Ressourcenadministratoren PIM-Einstellungen entfernen.
 
     ![Ermittlung: Ressource verwalten](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Klicken Sie auf **Ressource verwalten**, um mit dem Verwalten der ausgewählten Ressourcen zu beginnen.
+1. Wenn eine Meldung angezeigt wird, in der Sie das Onboarding der ausgewählten Ressource zum Verwalten bestätigen sollen, klicken Sie auf **Ja**.
+
+    ![Meldung „Ermittlung: Ressource verwalten“](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

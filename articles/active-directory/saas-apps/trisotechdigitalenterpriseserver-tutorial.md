@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d54d20c-eca1-4fa6-b56a-4c3ed0593db0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e36a4be3a95b67c040855171d4b167e495a22496
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e3f90da177f46246d1a7453796b7b9a9c93f4a21
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439625"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Tutorial: Integration von Trisotech Digital Enterprise Server in Azure Active Directory
 
@@ -185,7 +185,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in Trisotech Digital Enterprise Server. Trisotech Digital Enterprise Server unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Trisotech Digital Enterprise Server ein neuer Benutzer erstellt.
 >[!Note]
->Wenn Sie manuell einen Benutzer erstellen müssen, wenden Sie sich an das [Trisotech Digital Enterprise Server-Supportteam](mailto:support@trisotech.com).
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Trisotech Digital Enterprise Server-Supportteam](mailto:support@trisotech.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

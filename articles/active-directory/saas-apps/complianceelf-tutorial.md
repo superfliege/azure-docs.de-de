@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Compliance ELF | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Compliance ELF | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Compliance ELF konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e5a7bfc51bcd1931def202d701127de701afb595
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 509bec49840537dbb5bb7f0ec69cc4dfb750244a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042859"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189424"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Tutorial: Azure Active Directory-Integration mit Compliance ELF
+# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Tutorial: Azure Active Directory-Integration von Compliance ELF
 
 In diesem Tutorial erfahren Sie, wie Sie Compliance ELF in Azure Active Directory (Azure AD) integrieren.
 
@@ -106,22 +106,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Dialogfeld „Einmaliges Anmelden“](./media/complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Compliance ELF** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+3. Führen Sie im Abschnitt **Domäne und URLs für Compliance ELF** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Compliance ELF](./media/complianceelf-tutorial/tutorial_complianceelf_url.png)
 
     Geben Sie im Textfeld **Bezeichner** eine URL wie Folgende ein: `https://sso.cordium.com`
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+4. Aktivieren Sie  **Erweiterte URL-Einstellungen anzeigen** , und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im  **SP** -initiierten Modus konfigurieren möchten:
 
     ![SSO-Domäne und -URLs für Compliance ELF](./media/complianceelf-tutorial/tutorial_complianceelf_url1.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.complianceelf.com`.
+    Geben Sie im Textfeld  **Anmelde-URL**  eine URL im folgenden Format ein:  `https://<subdomain>.complianceelf.com`.
     
     > [!NOTE] 
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Compliance ELF-Client](mailto:support@complianceelf.com), um diesen Wert zu erhalten.
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren, und fügen Sie die URL in Editor ein.
     
     ![Configure single sign-on](./media/complianceelf-tutorial/tutorial_metadataurl.png)
      

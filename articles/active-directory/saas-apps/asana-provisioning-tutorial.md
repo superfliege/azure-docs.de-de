@@ -8,7 +8,7 @@ writer: asmalser-msft
 manager: sakula
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 26642fefbb86b2709e110b13d782286fd18d5e60
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 11ab8bd5f5967f886d8bf1e03df4c9d88bf36b33
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348054"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156359"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Asana für die automatische Benutzerbereitstellung
 
@@ -85,7 +85,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das darunter befindliche Kontrollkästchen.
 
-1. Wählen Sie **Speichern**aus. 
+1. Wählen Sie **Speichern** aus. 
 
 1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Asana synchronisieren**.
 
@@ -93,7 +93,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API
 
 1. Um den Azure AD-Bereitstellungsdienst für Asana zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-1. Wählen Sie **Speichern**aus. 
+1. Wählen Sie **Speichern** aus. 
 
 Dadurch wird die Erstsynchronisierung aller Benutzer gestartet, die Asana im Abschnitt **Benutzer** zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Protokollen zur Bereitstellungsaktivität. In den Überwachungsprotokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Asana-App ausgeführt werden.
 

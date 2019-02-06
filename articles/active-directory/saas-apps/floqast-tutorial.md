@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit FloQast | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von FloQast | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und FloQast konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 013cb57d-567c-44d0-a119-e6ba6e607153
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 212e9b8c404cda330d2415b4f3274b668df8977b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f46714d2d4860abd1857e6ae16f98848678336aa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432207"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184772"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Tutorial: Azure Active Directory-Integration mit FloQast
+# <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Tutorial: Azure Active Directory-Integration von FloQast
 
 In diesem Tutorial erfahren Sie, wie Sie FloQast in Azure Active Directory (Azure AD) integrieren.
 
@@ -159,7 +159,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **FloQast** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [FloQast-Supportteam](mailto:support@floqast.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -195,7 +195,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-floqast-test-user"></a>Erstellen eines FloQast-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in FloQast einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur FloQast-Plattform ggf. vom [FloQast-Supportteam](mailto:support@floqast.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in FloQast einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur FloQast-Plattform vom [FloQast-Supportteam](mailto:support@floqast.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

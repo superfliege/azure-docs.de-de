@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Amazon Web Services (AWS) zum Verbinden mehrerer Konten | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration von Amazon Web Services (AWS) zum Verbinden mehrerer Konten | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure AD und mehreren Konten von Amazon Web Services (AWS) konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d8516a1923aaacc26db2eb9a9acfd0ddff737e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365661"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Tutorial: Azure Active Directory-Integration von mehreren Amazon Web Services-Konten (AWS-Konten)
 
@@ -202,13 +202,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Wählen Sie **SAML 2.0-Verbund** unter **Typ der vertrauenswürdige Entität auswählen**.
 
-    b. Wählen Sie unter **SAML 2.0-Anbieterabschnitt auswählen** den **SAML-Anbieter** aus, den Sie zuvor erstellt haben (Beispiel: *WAAD*).
+    b. Wählen Sie im**Abschnitt zum Auswählen eines SAML 2.0-Anbieters** den **SAML-Anbieter** aus, den Sie zuvor erstellt haben (Beispiel: *WAAD*).
 
     c. Wählen Sie **Programmgesteuerten und AWS Management Console-Zugriff zulassen** aus.
   
-    d. Klicken Sie auf **Weiter: Berechtigungen**.
+    d. Klicken Sie auf **Weiter: Permissions** (Weiter: Berechtigungen).
 
-16. Im Dialogfeld **Berechtigungsrichtlinien anfügen** muss keine Richtlinie angefügt werden. Klicken Sie auf **Weiter: Überprüfung**.  
+16. Im Dialogfeld **Berechtigungsrichtlinien anfügen** muss keine Richtlinie angefügt werden. Klicken Sie auf **Weiter: Review** (Weiter: Überprüfen).  
 
     ![Einmaliges Anmelden konfigurieren – Richtlinie][33]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Arc Publishing - SSO | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Arc Publishing - SSO | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Arc Publishing - SSO konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8c4922c817d9667b1a25846df53f9366e2018342
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187112"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Tutorial: Azure Active Directory-Integration in Arc Publishing - SSO
+# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Tutorial: Azure Active Directory-Integration von Arc Publishing - SSO
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in Arc Publishing - SSO integrieren.
 
@@ -202,7 +202,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Arc Publishing - SSO. Arc Publishing - SSO unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Arc Publishing - SSO ein neuer Benutzer erstellt.
 
 >[!Note]
->Setzen Sie sich mit dem [Supportteam von Arc Publishing - SSO](mailto:inf@washpost.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Arc Publishing - SSO](mailto:inf@washpost.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit DigiCert | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von DigiCert | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und DigiCert konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 646f3129-aa67-4875-9073-1d0b6a3173d9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: f37ac37d80562a402d6891ffaa2a687e04c3a8c0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 68f62fb51559c4eac49041c7c9653e76de95ee9f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434879"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181077"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Tutorial: Azure Active Directory-Integration mit DigiCert
+# <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Tutorial: Azure Active Directory-Integration von DigiCert
 
 In diesem Tutorial erfahren Sie, wie Sie DigiCert in Azure Active Directory (Azure AD) integrieren.
 

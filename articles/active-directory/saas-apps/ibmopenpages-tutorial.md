@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in IBM OpenPages | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von IBM OpenPages | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und IBM OpenPages konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 74d5dea5-2c48-464a-a7d0-cdd481c429d7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: dcc08596378f9e48bbeb379a5e939a77820bdc83
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a9efdc918340d127c554e84d29db2b2df784a4ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436334"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181621"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>Tutorial: Azure Active Directory-Integration in IBM OpenPages
+# <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>Tutorial: Azure Active Directory-Integration von IBM OpenPages
 
 In diesem Tutorial erfahren Sie, wie Sie IBM OpenPages in Azure Active Directory (Azure AD) integrieren.
 
@@ -128,7 +128,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 1. Zum Konfigurieren des einmaligen Anmeldens bei **IBM OpenPages** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [IBM OpenPages-Supportteam](https://www.ibm.com/support/home/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -165,7 +165,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-an-ibm-openpages-test-user"></a>Erstellen eines IBM OpenPages-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in IBM OpenPages einen Benutzer namens Britta Simon. Fügen Sie mithilfe des [IBM OpenPages-Supportteams](https://www.ibm.com/support/home/) die Benutzer in der IBM OpenPages-Plattform hinzu. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in IBM OpenPages einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur IBM OpenPages-Plattform vom [IBM OpenPages-Supportteam](https://www.ibm.com/support/home/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

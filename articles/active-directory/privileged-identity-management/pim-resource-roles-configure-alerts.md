@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 5d990d86124a7360dbc0398cf4250f9b088c183b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 564517052796ee5dbc022ff92afcaa0216bdf8ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465570"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196837"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure-Ressourcenrollen in PIM
 Privileged Identity Management (PIM) für Azure-Ressourcen generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie auf der Seite „Warnungen“ angezeigt. 
@@ -41,8 +41,8 @@ Wählen Sie eine Warnung aus, um einen Bericht mit den Benutzern oder Rollen, di
 
 ### <a name="severity"></a>Severity
 * **Hoch**: Aufgrund einer Richtlinienverletzung ist eine sofortige Aktion erforderlich. 
-* **Mittel**: Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
-* **Niedrig**: Es ist keine sofortige Aktion erforderlich, aber es wird eine vorzuziehende Richtlinienänderung vorgeschlagen.
+* **Mittel:** Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
+* **Niedrig**: Es ist keine sofortige Aktion erforderlich, aber es wird eine bevorzugte Richtlinienänderung vorgeschlagen.
 
 ## <a name="configure-security-alert-settings"></a>Konfigurieren der Einstellungen für Sicherheitswarnungen
 Navigieren Sie auf der Seite „Warnungen“ zu **Einstellungen**.

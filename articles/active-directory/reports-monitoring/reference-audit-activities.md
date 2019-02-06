@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
-ms.date: 11/13/2018
+ms.subservice: report-monitor
+ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a851d9cd4322f2460bfa7f74854c44e77a52e0a6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: da800b80c89aa0b63a386341a9b010d67f22e85a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818182"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186534"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -43,34 +43,36 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 
 |Überwachungskategorie|Aktivität|
 |---|---|
-|Verzeichnisverwaltung|Verwaltungseinheit hinzufügen|
-|Verzeichnisverwaltung|Mitglied der Verwaltungseinheit hinzufügen|
-|Verzeichnisverwaltung|Verwaltungseinheit löschen|
-|Verzeichnisverwaltung|Mitglied aus Verwaltungseinheit entfernen|
-|Verzeichnisverwaltung|Verwaltungseinheit aktualisieren|
-|Verzeichnisverwaltung|Verwaltung|
-|Benutzerverwaltung|Directory Operation (Verzeichnisvorgang)|
-|Benutzerverwaltung|Export|
-|Benutzerverwaltung|Importieren|
-|Benutzerverwaltung|Andere|
-|Benutzerverwaltung|Process Escrow (Hinterlegung verarbeiten)|
-|Benutzerverwaltung|Synchronization Rule Action (Synchronisierungsregelaktion)|
-|Benutzerverwaltung|Anwendung hinzufügen|
-|Benutzerverwaltung|Löschen der Anwendung|
-|Benutzerverwaltung|Aktualisieren der Anwendung|
-|Benutzerverwaltung|Update application Single Sign-On Mode (SSO-Modus der Anwendung aktualisieren)|
-|Benutzerverwaltung|Automatisiertes Kennwortrollover|
-|Benutzerverwaltung|Add V2 application permissions (V2-Anwendungsberechtigungen hinzufügen)|
-|Benutzerverwaltung|Create V1 application (V1-Anwendung erstellen)|
-|Benutzerverwaltung|Create V2 application (V2-Anwendung erstellen)|
-|Benutzerverwaltung|Delete V1 application (V1-Anwendung löschen)|
-|Benutzerverwaltung|Delete V2 application (V2-Anwendung löschen)|
-|Benutzerverwaltung|Delete V2 application permission grant (Berechtigungszuweisung für V2-Anwendung löschen)|
-|Benutzerverwaltung|Get V1 and V2 applications (V1- und V2-Anwendungen abrufen)|
-|Benutzerverwaltung|Get V1 application (V1-Anwendung abrufen)|
-|Benutzerverwaltung|Get V1 applications (V1-Anwendungen abrufen)|
-|Benutzerverwaltung|Get V2 application (V2-Anwendung abrufen)|
-|Benutzerverwaltung|Get V2 applications (V2-Anwendungen abrufen)|
+|Zugriffsüberprüfungen|Zugriffsüberprüfung beendet|
+|Zugriffsüberprüfungen|Genehmigende Person zu Anforderungsgenehmigung hinzufügen|
+|Zugriffsüberprüfungen|Reviewer zu Zugriffsüberprüfung hinzufügen|
+|Zugriffsüberprüfungen|Zugriffsüberprüfung anwenden|
+|Zugriffsüberprüfungen|Zugriffsüberprüfung erstellen|
+|Zugriffsüberprüfungen|Programm erstellen|
+|Zugriffsüberprüfungen|Anforderungsgenehmigung erstellen|
+|Zugriffsüberprüfungen|Zugriffsüberprüfung löschen|
+|Zugriffsüberprüfungen|Programm löschen|
+|Zugriffsüberprüfungen|Programmsteuerung verknüpfen|
+|Zugriffsüberprüfungen|Integration in Azure AD-Zugriffsüberprüfungen durchführen|
+|Zugriffsüberprüfungen|Reviewer aus Zugriffsüberprüfung entfernen|
+|Zugriffsüberprüfungen|Überprüfungsbeendigung anfordern|
+|Zugriffsüberprüfungen|Anwenden der Überprüfungsergebnisse anfordern|
+|Zugriffsüberprüfungen|RBAC-Rollenmitgliedschaft überprüfen|
+|Zugriffsüberprüfungen|App-Zuweisung überprüfen|
+|Zugriffsüberprüfungen|Gruppenmitgliedschaft überprüfen|
+|Zugriffsüberprüfungen|Genehmigungsanforderung überprüfen|
+|Zugriffsüberprüfungen|Verknüpfung der Programmsteuerung aufheben|
+|Zugriffsüberprüfungen|Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Onboardingstatus von Azure AD-Zugriffsüberprüfungen aktualisieren|
+|Zugriffsüberprüfungen|Einstellungen für E-Mail-Benachrichtigungen für Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Wiederholungsanzahl für Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Wiederholungsdauer (in Tagen) für Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Wiederholungsendtyp für Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Wiederholungstyp für Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Einstellungen für Erinnerungen für Zugriffsüberprüfung aktualisieren|
+|Zugriffsüberprüfungen|Programm aktualisieren|
+|Zugriffsüberprüfungen|Anforderungsgenehmigung aktualisieren|
+|Zugriffsüberprüfungen|Benutzer deaktiviert|
 
 ## <a name="account-provisioning"></a>Kontobereitstellung
 
@@ -526,23 +528,27 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 
 |Überwachungskategorie|Aktivität|
 |---|---|
-|Rollenverwaltung|Einstellungen für Erinnerungen für Zugriffsüberprüfung aktualisieren|
-|Rollenverwaltung|Anforderungsgenehmigung aktualisieren|
-|Rollenverwaltung|Add app role assignment grant to user (App-Rollenzuweisungsgewährung zu Benutzer hinzufügen)|
-|Rollenverwaltung|Benutzer hinzufügen|
-|Rollenverwaltung|Add users strong authentication phone app detail (Phone-App-Details für die strikte Authentifizierung der Benutzer hinzufügen)|
-|Rollenverwaltung|Benutzerlizenz ändern|
-|Rollenverwaltung|Benutzerkennwort ändern|
-|Rollenverwaltung|Convert federated user to managed (Verbundbenutzer in verwalteten Benutzer konvertieren)|
-|Rollenverwaltung|Create application password for user (Anwendungskennwort für Benutzer erstellen)|
-|Rollenverwaltung|Delete application password for user (Anwendungskennwort für Benutzer löschen)|
-|Rollenverwaltung|Benutzer löschen|
-|Rollenverwaltung|Disable account (Konto deaktivieren)|
-|Rollenverwaltung|Enable Strong Authentication (Strikte Authentifizierung aktivieren)|
-|Rollenverwaltung|Hard Delete user (Benutzer endgültig löschen)|
-|Rollenverwaltung|Remove app role assignment from user (App-Rollenzuweisung von Benutzer entfernen)|
-|Rollenverwaltung|Remove users strong authentication phone app detail (Phone-App-Details für die strenge Authentifizierung der Benutzer entfernen)|
-
+|PIM|ActivationAborted|
+|PIM|ActivationApproved|
+|PIM|ActivationCanceled|
+|PIM|ActivationDenied|
+|PIM|ActivationRequested|
+|PIM|Hinzugefügt|
+|PIM|AddedOutsidePIM|
+|PIM|Zuweisen|
+|PIM|DismissAlert|
+|PIM|Erhöhen|
+|PIM|ReactivateAlert|
+|PIM|Entfernt|
+|PIM|AddedOutsidePIM|
+|PIM|Überprüfungsbeendigung anfordern|
+|PIM|Änderungen für Rolleneinstellung|
+|PIM|ScanAlertsNow|
+|PIM|Signup|
+|PIM|Zuweisung aufheben|
+|PIM|Deautorisieren|
+|PIM|UpdateAlertSettings|
+|PIM|UpdateCurrentState|
 
 
 ## <a name="self-service-group-management"></a>Self-Service-Gruppenverwaltung
@@ -580,13 +586,16 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 
 |Überwachungskategorie|Aktivität|
 |---|---|
-|Richtlinienverwaltung|Change password (self-service) (Kennwort ändern (Self-Service))|
-|Richtlinienverwaltung|Reset password (by admin) (Kennwort zurücksetzen (durch Administrator))|
-|Richtlinienverwaltung|Reset password (self-service) (Kennwort zurücksetzen (Self-Service))|
-|Richtlinienverwaltung|Self serve password reset flow activity progress (Aktivitätsstatus des Self-Service-Kennwortzurücksetzungsablaufs)|
-|Richtlinienverwaltung|Self-service password reset flow activity progress (Aktivitätsstatus des Self-Service-Kennwortzurücksetzungsablaufs)|
-|Richtlinienverwaltung|Unlock user account (self-service) (Benutzerkonto entsperren (Self-Service))|
-|Richtlinienverwaltung|User registered for self-service password reset (Für Self-Service-Kennwortzurücksetzung registrierter Benutzer)|
+|Nutzungsbedingungen|Accept Terms Of Use (Nutzungsbedingungen akzeptieren)|
+|Nutzungsbedingungen|Create Terms Of Use (Nutzungsbedingungen erstellen)|
+|Nutzungsbedingungen|Decline Terms Of Use (Nutzungsbedingungen ablehnen)|
+|Nutzungsbedingungen|Zustimmung löschen|
+|Nutzungsbedingungen|Delete Terms Of Use (Nutzungsbedingungen löschen)|
+|Nutzungsbedingungen|Edit Terms Of Use (Nutzungsbedingungen bearbeiten)|
+|Nutzungsbedingungen|Ablauf von Nutzungsbedingungen|
+|Nutzungsbedingungen|Nutzungsbedingungen endgültig löschen|
+|Nutzungsbedingungen|Publish Terms Of Use (Nutzungsbedingungen veröffentlichen)|
+|Nutzungsbedingungen|Unpublish Terms Of Use (Veröffentlichung der Nutzungsbedingungen aufheben)|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

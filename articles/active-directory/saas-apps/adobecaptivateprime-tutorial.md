@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Adobe Captivate Prime | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Adobe Captivate Prime | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Adobe Captivate Prime konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2f95b226-1465-47f4-b8b7-de4b0772abbc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jeedes
-ms.openlocfilehash: bbeae2cadde3e64f17b20eafabaf5e2dbf5a5cc6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa20e4544fcd78330c0daa15b9aa058ba80af2d5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044070"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171948"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Tutorial: Azure Active Directory-Integration mit Adobe Captivate Prime
+# <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Tutorial: Azure Active Directory-Integration von Adobe Captivate Prime
 
 In diesem Tutorial erfahren Sie, wie Sie Adobe Captivate Prime in Azure Active Directory (Azure AD) integrieren.
 
@@ -160,7 +160,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
 ### <a name="create-an-adobe-captivate-prime-test-user"></a>Erstellen eines Adobe Captivate Prime-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Adobe Captivate Prime eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [Adobe Captivate Prime-Supportteam](mailto:captivateprimesupport@adobe.com) zusammen, um die Benutzer zur Adobe Captivate Prime-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Adobe Captivate Prime eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern zur Adobe Captivate Prime-Plattform vom [Adobe Captivate Prime-Supportteam](mailto:captivateprimesupport@adobe.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
