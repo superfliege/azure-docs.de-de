@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43badaada3de352ec7bafeb422965a047261a1e4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753964"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656833"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 
 Dieser Marketplace-Veröffentlichungsleitfaden soll neue und vorhandene Herausgeber dabei unterstützen, [Azure Marketplace](https://azuremarketplace.microsoft.com) und [Microsoft AppSource](https://appsource.microsoft.com) zu nutzen, um ihr Geschäft im Rahmen der Partnerschaft mit Microsoft auszubauen, indem sie Anwendungen und Dienste auflisten.
 
 >[!Note]
->Dieser Marketplace bezieht sich auf Azure Marketplace und AppSource.  Weitere Informationen finden Sie unter [Ein Marketplace, zwei Storefronts](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace).
+>Dieser Marketplace bezieht sich auf Azure Marketplace und AppSource.  Weitere Informationen finden Sie unter [Ein Marketplace, zwei Storefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 
 In diesem Leitfaden werden die folgenden Themen behandelt: 
 *   Definition und Funktionsweise des Marketplace 

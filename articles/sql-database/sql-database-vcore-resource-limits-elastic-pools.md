@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 48cdd064155bfbdfa2fef2ce5a8410e4c95e4c3b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/01/2019
+ms.openlocfilehash: cb4d3c4d15dded3c7f90a1e3cf118ca10371dcb1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461065"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700994"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Limits des V-Kern-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -42,7 +42,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|3|4|5|6|
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|512|756|756|1536|1536|1536|
 |Maximale Protokollgröße|154|227|227|461|461|461|
@@ -68,7 +68,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|168|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1536|2048|2048|2048|3.584|4096|
 |Maximale Protokollgröße (GB)|461|614|614|614|1075|1229|
@@ -94,7 +94,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
 |Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|512|756|756|1536|1536|1536|
 |Maximale Protokollgröße (GB)|154|227|227|461|461|461|461|
@@ -120,7 +120,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
 |Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|2048|2048|3072|3072|4096|4096|4096|
 |Maximale Protokollgröße (GB)|614|614|922|922|1229|1229|1229|
@@ -160,8 +160,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Max. Anzahl Datenbanken pro Pool|Nur einzelne Datenbanken werden für diese Computegröße unterstützt|50|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|–|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...3|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...5|0, 0,25, 0,5, 1...6|
 |Anzahl von Replikaten|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md).
@@ -186,8 +186,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Max. Anzahl Datenbanken pro Pool|100|100|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...7|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...9|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...10, 16|0, 0,25, 0,5, 1...10, 16, 24|
 |Anzahl von Replikaten|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md).
@@ -198,8 +198,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
-|Arbeitsspeicher (GB)|11|22|33|44|55|66|77|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maximale Protokollgröße (GB)|307|307|307|461|461|461|461|
@@ -212,8 +212,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Max. Anzahl Datenbanken pro Pool|Nur einzelne Datenbanken werden für diese Computegröße unterstützt|50|100|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|–|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...6|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...12|0, 0,25, 0,5, 1...14|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md).
@@ -225,7 +225,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
 |Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|15,768|18,139|20,51|25,252|37,936|52,22|131,64|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
@@ -238,8 +238,8 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 |Max. Anzahl Datenbanken pro Pool|100|100|100|100|100|100|100|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...20, 24, 32, 40|0, 0,25, 0,5, 1...20, 24, 32, 40, 80|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md).
@@ -250,7 +250,7 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 
 Die folgende Tabelle beschreibt die Eigenschaften von Datenbanken in einem Pool.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Maximale Anzahl virtueller Kerne pro Datenbank |Die maximale Anzahl von virtuellen Kernen, die jede Datenbank im Pool verwenden kann, sofern basierend auf der Nutzung durch andere Datenbanken im Pool verfügbar. Die maximale Anzahl von virtuellen Kernen pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Legen Sie die maximale Anzahl von virtuellen Kernen pro Datenbank hoch genug fest, sodass Lastspitzen bei der Datenbanknutzung verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind.|
 | Minimale Anzahl virtueller Kerne pro Datenbank |Die minimale Anzahl von virtuellen Kernen, die für jede Datenbank im Pool garantiert werden. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl von virtuellen Kernen pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen Nutzung der virtuellen Kerne pro Datenbank festgelegt. Das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von virtuellen Kernen pro Datenbank darf die tatsächliche Anzahl der virtuellen Kerne pro Pool nicht übersteigen.|

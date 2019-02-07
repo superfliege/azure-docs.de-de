@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 2523db3d817b4281b6435374ef0cca4e1d2da695
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 432f2495dd1b4c8aeb761d12904adf26f3c24c0b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005856"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660696"
 ---
 # <a name="available-event-hubs-apis"></a>Verfügbare Event Hubs-APIs
 
@@ -34,16 +34,16 @@ Weitere Informationen zum aktuellen Status der einzelnen Laufzeitbibliotheken fi
 | Sprache/Plattform | Clientpaket | EventProcessorHost-Paket | Repository |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | N/V |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | – |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| Knoten | [NPM](https://www.npmjs.com/package/azure-event-hubs) | N/V | [GitHub](https://github.com/Azure/azure-event-hubs-node) |
-| C | N/V | N/V | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| Knoten | [NPM](https://www.npmjs.com/package/azure-event-hubs) | – | [GitHub](https://github.com/Azure/azure-event-hubs-node) |
+| C | – | – | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>Zusätzliche Informationen
 
 #### <a name="net"></a>.NET
 
-Das .NET-Ökosystem enthält mehrere Laufzeiten, weshalb mehrere .NET-Bibliotheken für Event Hubs zur Verfügung stehen. Die .NET Standard-Bibliothek kann entweder mit .NET Core oder .NET Framework ausgeführt werden. Die .NET Framework-Bibliothek kann hingegen nur in einer .NET Framework-Umgebung ausgeführt werden. Weitere Informationen zu den .NET Framework-Versionen finden Sie unter [Framework-Versionen](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions).
+Das .NET-Ökosystem enthält mehrere Laufzeiten, weshalb mehrere .NET-Bibliotheken für Event Hubs zur Verfügung stehen. Die .NET Standard-Bibliothek kann entweder mit .NET Core oder .NET Framework ausgeführt werden. Die .NET Framework-Bibliothek kann hingegen nur in einer .NET Framework-Umgebung ausgeführt werden. Weitere Informationen zu den .NET Framework-Versionen finden Sie unter [Framework-Versionen](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
 #### <a name="node"></a>Knoten
 

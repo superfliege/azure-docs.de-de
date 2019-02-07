@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 395ff654bcacf1a4f70a9032492deb2a9d5202f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454758"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756749"
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
 Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Vorgänge durchzuführen:  
@@ -81,7 +81,7 @@ Die Kopierprotokolldatei gibt an, dass während des Herunterladens eines der Bl�
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Verwenden von „RepairExport“ zum Überprüfen der Laufwerkinhalte  
 Sie können Azure Import/Export auch mit der **RepairExport**-Option verwenden, um zu überprüfen, ob der Inhalt auf dem Laufwerk richtig ist. Die Manifestdatei auf den einzelnen Exportlaufwerken enthält MD5s für den Inhalt des Laufwerks.  
   
-Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md).  
+Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageimportexport/jobs)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md).  
   
 Im folgenden Beispiel wird gezeigt, wie Sie das Azure Import/Export-Tool mit den Parametern **/ManifestFile** und **/CopyLogFile** ausführen:  
   

@@ -8,26 +8,25 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 6d9370ce6a031377e37c4e830400337f3e57a62e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fea31bf1c5869164dde1eb7014b2aacc8fcc5e9c
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55084854"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757586"
 ---
 | Ressource | Ziel | Harte Grenze |
 |----------|--------------|------------|
-| Speichersynchronisierungsdienste pro Region | 15 Speichersynchronisierungsdienste | JA |
-| Synchronisierungsgruppen pro Speichersynchronisierungsdienst | 100 Synchronisierungsgruppen | JA |
-| Registrierte Server pro Speichersynchronisierungsdienst | 99 Server | JA |
-| Cloudendpunkte pro Synchronisierungsgruppe | 1 Cloudendpunkt | JA |
+| Speichersynchronisierungsdienste pro Region | 15 Speichersynchronisierungsdienste | Ja |
+| Synchronisierungsgruppen pro Speichersynchronisierungsdienst | 100 Synchronisierungsgruppen | Ja |
+| Registrierte Server pro Speichersynchronisierungsdienst | 99 Server | Ja |
+| Cloudendpunkte pro Synchronisierungsgruppe | 1 Cloudendpunkt | Ja |
 | Serverendpunkte pro Synchronisierungsgruppe | 50 Serverendpunkte | Nein  |
-| Serverendpunkte pro Server | 30 Serverendpunkte | JA |
+| Serverendpunkte pro Server | 30 Serverendpunkte | Ja |
 | Endpunktgröße | 4 TiB | Nein  |
 | Dateisystemobjekte (Verzeichnisse und Dateien) pro Synchronisierungsgruppe | 25 Millionen Objekte | Nein  |
-| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 200.000 Objekte | JA |
-| Maximale Objektnamenlänge (Verzeichnisse und Dateien) | 255 Zeichen | JA |
-| Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 4 KiB | JA |
+| Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 200.000 Objekte | Ja |
+| Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 4 KiB | Ja |
 | Dateigröße | 100 GB | Nein  |
-| Minimale Dateigröße für die Unterteilung einer Datei | 64 KiB | JA |
-| Gleichzeitige Synchronisierungssitzungen | V4-Agent: Limit variiert basierend auf verfügbaren Systemressourcen. <BR> V3-Agent: 2 aktive Synchronisierungssitzungen pro Prozessor oder maximal 8 aktive Synchronisierungssitzungen pro Server | JA
+| Minimale Dateigröße für die Unterteilung einer Datei | 64 KiB | Ja |
+| Gleichzeitige Synchronisierungssitzungen | V4-Agent: Limit variiert basierend auf verfügbaren Systemressourcen. <BR> V3-Agent: 2 aktive Synchronisierungssitzungen pro Prozessor oder maximal 8 aktive Synchronisierungssitzungen pro Server | Ja

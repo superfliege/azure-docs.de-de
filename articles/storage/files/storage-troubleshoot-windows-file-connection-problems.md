@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 384a277f3465ac97285fbb08fa299a5bed8c87c4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477691"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564441"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -61,7 +61,7 @@ Wenn Sie versuchen, eine Dateifreigabe aus einem lokalen oder einem anderen Date
 
 Um festzustellen, ob Port 445 durch Ihre Firewall oder Ihren Internetdienstanbieter blockiert wird, verwenden Sie das Tool [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) oder das Cmdlet `Test-NetConnection`. 
 
-Um das Cmdlet `Test-NetConnection` verwenden zu können, muss das AzureRM PowerShell-Modul installiert sein. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resoure-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
+Um das Cmdlet `Test-NetConnection` verwenden zu können, muss das AzureRM PowerShell-Modul installiert sein. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resource-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -265,11 +265,11 @@ Sie können den Wert beispielsweise auf 0x100000 festlegen und überprüfen, ob 
 
 ### <a name="cause"></a>Ursache
 
-Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure Active Directory-Authentifizierung (AAD) für Azure Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
+Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure Active Directory-Authentifizierung (AAD) für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
 
 ### <a name="solution"></a>Lösung
 
-Aktivieren Sie AAD DS im AAD-Mandanten des Abonnements, in dem Ihr Speicherkonto bereitgestellt ist. Sie benötigen Administratorrechte für den AAD-Mandanten, um eine verwaltete Domäne zu erstellen. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Aktivieren Sie AAD DS im AAD-Mandanten des Abonnements, in dem Ihr Speicherkonto bereitgestellt ist. Sie benötigen Administratorrechte für den AAD-Mandanten, um eine verwaltete Domäne zu erstellen. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

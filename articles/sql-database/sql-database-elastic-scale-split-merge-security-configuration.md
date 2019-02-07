@@ -11,33 +11,38 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599826"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563217"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
+
 Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemäß konfigurieren. Der Dienst ist Teil der Funktion Elastic Scale von Microsoft Azure SQL-Datenbank. Weitere Informationen finden Sie im [Lernprogramm zum Split-Merge-Dienst für die elastische Skalierung](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
 ## <a name="configuring-certificates"></a>Konfigurieren von Zertifikaten
+
 Zertifikate werden auf zwei Arten konfiguriert. 
 
 1. [So konfigurieren Sie das SSL-Zertifikat](#to-configure-the-ssl-certificate)
 2. [So konfigurieren Sie Clientzertifikate](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>So rufen Sie Zertifikate ab
+
 Zertifikate können von öffentlichen Zertifizierungsstellen (CAs) oder vom [Windows-Zertifikatdienst](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)abgerufen werden. Dies sind die bevorzugten Methoden für den Erhalt von Zertifikaten.
 
 Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifikate**generieren.
 
 ## <a name="tools-to-generate-certificates"></a>Tools zum Erstellen von Zertifikaten
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>So führen Sie die Tools aus
+
 * An einer Developer-Eingabeaufforderung für Visual Studio; weitere Einzelheiten finden Sie unter [Visual Studio-Eingabeaufforderung](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Falls installiert, gehen Sie zu:
@@ -46,9 +51,11 @@ Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifi
 * Abrufen des WDK unter [Windows 8.1: Herunterladen der Kits für die Windows-Hardwareentwicklung](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>So konfigurieren Sie das SSL-Zertifikat
+
 Ein SSL-Zertifikat ist zum Verschlüsseln der Kommunikation und Authentifizieren des Servers erforderlich. Wählen Sie das zutreffende unter den folgenden drei Szenarien, und führen Sie alle zugehörigen Schritte aus:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Erstellen eines neuen selbstsignierten Zertifikats
+
 1. [Erstellen eines selbstsignierten Zertifikats](#create-a-self-signed-certificate)
 2. [Erstellen einer PFX-Datei für ein selbstsigniertes SSL-Zertifikat](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [Hochladen des SSL-Zertifikats zum Clouddienst](#upload-ssl-certificate-to-cloud-service)

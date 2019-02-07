@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150547"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751496"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe der Azure CLI
 
@@ -43,7 +43,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Vor der Erstellung eines virtuellen Netzwerks müssen Sie eine Ressourcengruppe für das virtuelle Netzwerk und alle anderen in diesem Artikel erstellten Ressourcen erstellen. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Vor der Erstellung eines virtuellen Netzwerks müssen Sie eine Ressourcengruppe für das virtuelle Netzwerk und alle anderen in diesem Artikel erstellten Ressourcen erstellen. Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk mit einem Subnetz.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk mit einem Subnetz.
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Aktivieren eines Dienstendpunkts 
 
-Sie können Dienstendpunkte nur für Dienste aktivieren, die Dienstendpunkte unterstützen. Zeigen Sie dienstendpunktfähige Dienste, die an einen Azure-Standort verfügbar sind, mit [az network vnet list-endpoint-services](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services) an. Das folgende Beispiel gibt eine Liste der dienstendpunktfähigen Dienste zurück, die in der Region *eastus* verfügbar sind. Die Liste der zurückgegebenen Dienste wird im Lauf der Zeit länger werden, da immer mehr Azure-Dienste für Dienstendpunkte aktiviert werden.
+Sie können Dienstendpunkte nur für Dienste aktivieren, die Dienstendpunkte unterstützen. Zeigen Sie dienstendpunktfähige Dienste, die an einen Azure-Standort verfügbar sind, mit [az network vnet list-endpoint-services](/cli/azure/network/vnet) an. Das folgende Beispiel gibt eine Liste der dienstendpunktfähigen Dienste zurück, die in der Region *eastus* verfügbar sind. Die Liste der zurückgegebenen Dienste wird im Lauf der Zeit länger werden, da immer mehr Azure-Dienste für Dienstendpunkte aktiviert werden.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-Erstellen Sie Sicherheitsregeln mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Die folgende Regel erlaubt den ausgehenden Zugriff auf die öffentlichen IP-Adressen, die dem Azure Storage-Dienst zugewiesen sind: 
+Erstellen Sie Sicherheitsregeln mit [az network nsg rule create](/cli/azure/network/nsg/rule). Die folgende Regel erlaubt den ausgehenden Zugriff auf die öffentlichen IP-Adressen, die dem Azure Storage-Dienst zugewiesen sind: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -168,7 +168,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-Nachdem das Speicherkonto erstellt wurde, rufen Sie die Verbindungszeichenfolge für das Speicherkonto mit [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) in eine Variable ab. Die Verbindungszeichenfolge wird verwendet, um in einem späteren Schritt eine Dateifreigabe zu erstellen.
+Nachdem das Speicherkonto erstellt wurde, rufen Sie die Verbindungszeichenfolge für das Speicherkonto mit [az storage account show-connection-string](/cli/azure/storage/account) in eine Variable ab. Die Verbindungszeichenfolge wird verwendet, um in einem späteren Schritt eine Dateifreigabe zu erstellen.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -223,7 +223,7 @@ Zum Testen des Netzwerkzugriffs auf ein Speicherkonto stellen Sie einen virtuell
 
 ### <a name="create-the-first-virtual-machine"></a>Erstellen des ersten virtuellen Computers
 
-Erstellen Sie mit *az vm create* eine VM im Subnetz [Public](/cli/azure/vm#az_vm_create). Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.
+Erstellen Sie mit *az vm create* eine VM im Subnetz [Public](/cli/azure/vm). Wenn SSH-Schlüssel nicht bereits an einem Standardschlüsselspeicherort vorhanden sind, werden sie durch den Befehl erstellt. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -322,7 +322,7 @@ Der Zugriff wird verweigert, und Sie erhalten einen `mount error(13): Permission
 
 Beenden Sie die SSH-Sitzung mit dem virtuellen Computer *myVmPublic*.
 
-Versuchen Sie von Ihrem Computer aus, die Freigaben in Ihrem Speicherkonto mit [az storage share list](/cli/azure/storage/share?view=azure-cli-latest#az_storage_share_list) anzuzeigen. Ersetzen Sie `<account-name>` und `<account-key>` durch den Namen des Speicherkontos und den Schlüssel aus [Erstellen eines Speicherkontos](#create-a-storage-account):
+Versuchen Sie von Ihrem Computer aus, die Freigaben in Ihrem Speicherkonto mit [az storage share list](/cli/azure/storage/share?view=azure-cli-latest) anzuzeigen. Ersetzen Sie `<account-name>` und `<account-key>` durch den Namen des Speicherkontos und den Schlüssel aus [Erstellen eines Speicherkontos](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

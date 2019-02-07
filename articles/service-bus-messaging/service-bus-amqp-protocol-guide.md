@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: cf06be778fb1bd251b55adcc503db63a2adf3f8b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197924"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658265"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -134,7 +134,7 @@ Der Aufruf von „receive“ auf API-Ebene wird in eine *flow*-Performative übe
 
 Die Sperre der Nachricht wird aufgehoben, wenn für die Übertragung einer der Endzustände *accepted*, *rejected* oder *released* (Akzeptiert, Abgelehnt oder Freigegeben) erreicht wird. Die Nachricht wird aus Service Bus entfernt, wenn der Endzustand *accepted* (Akzeptiert) lautet wird. Sie verbleibt in Service Bus und wird dem nächsten Empfänger zugestellt, wenn die Übertragung einen der anderen Zustände erreicht. Service Bus verschiebt die Nachricht automatisch in die Warteschlange der Entität für unzustellbare Nachrichten, wenn die maximal zulässige Zustellungsanzahl der Entität erreicht wird, weil wiederholt Ablehnungen oder Freigaben aufgetreten sind.
 
-In den Service Bus-APIs wird eine Option dieser Art derzeit zwar nicht direkt verfügbar gemacht, aber ein AMQP-Protokollclient auf einer niedrigeren Ebene kann das Verknüpfungsguthaben-Modell nutzen: Umwandeln der „Pull“-Interaktion mit Ausgabe von einer Guthabeneinheit pro Empfangsanforderung in ein „Push“-Modell, indem eine große Zahl von Verknüpfungsguthaben ausgestellt wird und Nachrichten dann ohne weitere Interaktion empfangen werden, wenn sie verfügbar sind. Dieser Pushvorgang wird von den Eigenschafteneinstellungen [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) und [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) unterstützt. Wenn sie nicht null sind, nutzt der AMQP-Client sie als Verknüpfungsguthaben.
+In den Service Bus-APIs wird eine Option dieser Art derzeit zwar nicht direkt verfügbar gemacht, aber ein AMQP-Protokollclient auf einer niedrigeren Ebene kann das Verknüpfungsguthaben-Modell nutzen: Umwandeln der „Pull“-Interaktion mit Ausgabe von einer Guthabeneinheit pro Empfangsanforderung in ein „Push“-Modell, indem eine große Zahl von Verknüpfungsguthaben ausgestellt wird und Nachrichten dann ohne weitere Interaktion empfangen werden, wenn sie verfügbar sind. Dieser Pushvorgang wird von den Eigenschafteneinstellungen [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) und [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) unterstützt. Wenn sie nicht null sind, nutzt der AMQP-Client sie als Verknüpfungsguthaben.
 
 In diesem Kontext ist es wichtig zu verstehen, dass die Zeitmessung für den Ablauf der Sperre einer Nachricht in der Entität beginnt, wenn die Nachricht aus der Entität entnommen wird, und nicht beim Start der Übermittlung einer Nachricht. Immer wenn der Client die Bereitschaft zum Empfangen von Nachrichten anzeigt, indem Verknüpfungsguthaben ausgegeben wird, wird daher erwartet, dass er aktiv Nachrichten aus dem gesamten Netzwerk per Pullvorgang empfangen und anschließend verarbeiten kann. Andernfalls läuft die Nachrichtensperrung ggf. ab, bevor die Nachricht zugestellt wurde. Die Verwendung der Flusssteuerung mit Verknüpfungsguthaben sollte direkt die sofortige Bereitschaft widerspiegeln, an den Empfänger gesendete verfügbare Nachrichten zu verarbeiten.
 
@@ -214,7 +214,7 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 | --- | --- | --- |
 | durable |- |- |
 | priority |- |- |
-| ttl |Gültigkeitsdauer für diese Meldung |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
+| ttl |Gültigkeitsdauer für diese Meldung |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -222,17 +222,17 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 
 | Feldname | Verwendung | API-Name |
 | --- | --- | --- |
-| message-id |Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| message-id |Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Anwendungsdefinierte Benutzer-ID, von Service Bus nicht interpretiert. |Nicht über die Service Bus-API zugänglich. |
-| to |Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| subject |Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
-| reply-to |Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| to |Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to |Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Inhaltstyp |Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Anwendungsdefinierter Inhaltscodierungsindikator für den Haupttext, von Service Bus nicht interpretiert. |Nicht über die Service Bus-API zugänglich. |
-| absolute-expiry-time |Deklariert, zu welchem absolutem Zeitpunkt die Nachricht abläuft. Bei Eingabe ignoriert (Header-TTL wird beachtet), autoritativ bei Ausgabe. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
+| absolute-expiry-time |Deklariert, zu welchem absolutem Zeitpunkt die Nachricht abläuft. Bei Eingabe ignoriert (Header-TTL wird beachtet), autoritativ bei Ausgabe. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | creation-time |Deklariert, zu welchem Zeitpunkt die Nachricht erstellt wurde. Wird von Service Bus nicht verwendet. |Nicht über die Service Bus-API zugänglich. |
-| group-id |Anwendungsdefinierte ID für eine verwandte Nachrichtengruppe. Wird für Service Bus-Sitzungen verwendet. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
+| group-id |Anwendungsdefinierte ID für eine verwandte Nachrichtengruppe. Wird für Service Bus-Sitzungen verwendet. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | group-sequence |Indikator, der die relative Sequenznummer der Nachricht in einer Sitzung angibt. Wird von Service Bus ignoriert. |Nicht über die Service Bus-API zugänglich. |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -364,7 +364,7 @@ Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 | operation |Nein  |Zeichenfolge |**put-token** |
 | type |Nein  |Zeichenfolge |Der Typ des abgelegten Tokens. |
 | name |Nein  |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
-| expiration |JA |timestamp |Der Ablaufzeitpunkt des Tokens. |
+| expiration |Ja |timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
 
@@ -381,7 +381,7 @@ Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte
 | Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
 | status-code |Nein  |int |HTTP-Antwortcode **[RFC2616]** |
-| status-description |JA |Zeichenfolge |Beschreibung des Status |
+| status-description |Ja |Zeichenfolge |Beschreibung des Status |
 
 Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Das bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
 

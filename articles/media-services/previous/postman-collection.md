@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34eb7c48c8ebc36f9172f97dda845542b3840a19
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786319"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747678"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importieren einer Postman-Sammlung mit On-Demand-Streaming-Vorgängen
 
 Dieser Artikel enthält eine Definition der **Postman**-Sammlung, die gruppierte HTTP-Anforderungen enthält, die Azure Media Services-REST-APIs aufrufen. Informationen zum Konfigurieren von **Postman**, sodass es zum Aufrufen von Media Services REST-APIs verwendet werden kann, finden Sie im Tutorial [Konfigurieren von Postman für Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Services Operations",
@@ -4264,7 +4264,7 @@ Dieser Artikel enthält eine Definition der **Postman**-Sammlung, die gruppierte
                                 "MediaProcessors"
                             ]
                         },
-                        "description": "List MediaProcesors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List MediaProcessors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }

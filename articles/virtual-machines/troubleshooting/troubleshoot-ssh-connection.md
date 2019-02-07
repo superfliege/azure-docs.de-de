@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1454eb5dbf8c80dcf7024c150dbff6a2082dbd02
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d84881d4c86fd91fce430956705791097e200937
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100273"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753417"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 Dieser Artikel hilft Ihnen dabei, Probleme zu suchen und zu beheben, die aufgrund von SSH-Fehlern (Secure Shell), SSH-Verbindungsfehlern oder der Ablehnung einer SSH-Verbindung, wenn Sie versuchen, eine Verbindung mit einem virtuellen Linux-Computer herzustellen, auftreten. Sie können das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder die VM-Zugriffserweiterung für Linux verwenden, um Verbindungsproblemen zu ermitteln und zu beheben.
@@ -78,20 +78,20 @@ Verwenden Sie den Ansatz [Überprüfen des IP-Flusses](../../network-watcher/net
 Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen über das Azure-Portal](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
-Wenn nicht bereits geschehen, installieren Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an.
+Wenn nicht bereits geschehen, installieren Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an.
 
 Wenn Sie ein benutzerdefiniertes Linux-Datenträgerimage erstellt und hochgeladen haben, stellen Sie sicher, dass [Microsoft Azure Linux Agent](../extensions/agent-windows.md) Version 2.0.5 oder höher installiert ist. Bei virtuellen Computern, die über Images aus dem Katalog erstellt wurde, ist diese Zugriffserweiterung bereits installiert und konfiguriert.
 
 ### <a name="reset-ssh-configuration"></a>Zurücksetzen der SSH-Konfiguration
 Sie können zunächst versuchen, die SSH-Konfiguration auf die Standardwerte zurückzusetzen und den SSH-Server auf der VM neu zu starten. Hierdurch werden der Name, das Kennwort und die SSH-Schlüssel des Benutzerkontos nicht geändert.
-Im folgenden Beispiel wird mithilfe von [az vm user reset-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) die SSH-Konfiguration auf der VM mit dem Namen `myVM` in `myResourceGroup` zurückgesetzt. Verwenden Sie Ihre eigenen Werte wie folgt:
+Im folgenden Beispiel wird mithilfe von [az vm user reset-ssh](/cli/azure/vm/user) die SSH-Konfiguration auf der VM mit dem Namen `myVM` in `myResourceGroup` zurückgesetzt. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
-Im folgenden Beispiel werden mithilfe von [az vm user update](/cli/azure/vm/user#az_vm_user_update) die Anmeldeinformationen für `myUsername` auf den in `myPassword` angegebenen Wert zurückgesetzt, der auf der VM `myVM` in `myResourceGroup` angegeben ist. Verwenden Sie Ihre eigenen Werte wie folgt:
+Im folgenden Beispiel werden mithilfe von [az vm user update](/cli/azure/vm/user) die Anmeldeinformationen für `myUsername` auf den in `myPassword` angegebenen Wert zurückgesetzt, der auf der VM `myVM` in `myResourceGroup` angegeben ist. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -117,7 +117,7 @@ Erstellen Sie eine Datei namens `settings.json` mit folgendem Inhalt:
 }
 ```
 
-Rufen Sie dann über die Azure-Befehlszeilenschnittstelle die `VMAccessForLinux`-Erweiterung auf, und geben Sie die entsprechende JSON-Datei an, um Ihre SSHD-Verbindung zurückzusetzen. Im folgenden Beispiel wird mithilfe von [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) die SSHD auf der VM mit dem Namen `myVM` in `myResourceGroup` zurückgesetzt. Verwenden Sie Ihre eigenen Werte wie folgt:
+Rufen Sie dann über die Azure-Befehlszeilenschnittstelle die `VMAccessForLinux`-Erweiterung auf, und geben Sie die entsprechende JSON-Datei an, um Ihre SSHD-Verbindung zurückzusetzen. Im folgenden Beispiel wird mithilfe von [az vm extension set](/cli/azure/vm/extension) die SSHD auf der VM mit dem Namen `myVM` in `myResourceGroup` zurückgesetzt. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -191,7 +191,7 @@ Um einen virtuellen Computer über das Azure-Portal neu zu starten, wählen Sie 
 ![Neustarten eines virtuellen Computers im Azure-Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Im folgenden Beispiel wird mit [az vm restart](/cli/azure/vm#az_vm_restart) der virtuelle Computer `myVM` in der Ressourcengruppe `myResourceGroup` neu gestartet. Verwenden Sie Ihre eigenen Werte wie folgt:
+Im folgenden Beispiel wird mit [az vm restart](/cli/azure/vm) der virtuelle Computer `myVM` in der Ressourcengruppe `myResourceGroup` neu gestartet. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -218,7 +218,7 @@ Um einen virtuellen Computer über das Azure-Portal erneut bereitzustellen, wäh
 ![Erneutes Bereitstellen eines virtuellen Computers im Azure-Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Im folgenden Beispiel wird mit [az vm redeploy](/cli/azure/vm#az_vm_redeploy) die Bereitstellung des virtuellen Computers `myVM` in der Ressourcengruppe `myResourceGroup` erneuert. Verwenden Sie Ihre eigenen Werte wie folgt:
+Im folgenden Beispiel wird mit [az vm redeploy](/cli/azure/vm) die Bereitstellung des virtuellen Computers `myVM` in der Ressourcengruppe `myResourceGroup` erneuert. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM

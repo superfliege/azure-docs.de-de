@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226626"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736104"
 ---
 Bevor Sie die Azure-Befehlszeilenschnittstelle mit Resource Manager-Befehlen und -Vorlagen zur Bereitstellung von Azure-Ressourcen und -Workloads über Ressourcengruppen verwenden können, benötigen Sie ein Azure-Konto. Wenn Sie noch kein Konto haben, erhalten Sie [hier eine kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -44,7 +44,7 @@ Dieser Artikel behandelt die grundlegenden Befehle, die Sie mit der klassischen 
 | Löschen eines virtuellen Computers |`azure vm delete [options] <resource_group> <name>` |
 | Erfassen eines virtuellen Computers |`azure vm capture [options] <resource_group> <name>` |
 | Erstellen eines virtuellen Computers aus einem Benutzer-Image |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
-| Erstellen eines virtuellen Computers von einem speziellen Datenträger |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
+| Erstellen eines virtuellen Computers von einem speziellen Datenträger |`azure  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
 | Hinzufügen eines Datenträgers zu einem virtuellen Computer |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
 | Entfernen eines Datenträgers aus einem virtuellen Computer |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
 | Hinzufügen einer generischen Erweiterung zu einem virtuellen Computer |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |

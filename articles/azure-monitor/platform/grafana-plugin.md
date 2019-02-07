@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 9d0f814428a4d7bc57b4f0a01ff5adc658af1d91
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466984"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730899"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -66,7 +66,7 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
 
 3. Erstellen Sie einen Dienstprinzipal: Grafana verwendet zum Herstellen einer Verbindung mit Azure Monitor-APIs und zum Sammeln von Daten einen Azure Active Directory-Dienstprinzipal. Sie müssen einen Dienstprinzipal erstellen (oder einen vorhandenen Dienstprinzipal verwenden), um den Zugriff auf Ihre Azure-Ressourcen zu verwalten.
     * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
-    * Unter [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) finden Sie Informationen zum Zuweisen der Rolle „Leser“ zur Azure Active Directory-Anwendung auf der zu überwachenden Abonnement-, Ressourcengruppen- oder Ressourcenebene. 
+    * Unter [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) finden Sie Informationen zum Zuweisen der Rolle „Leser“ zur Azure Active Directory-Anwendung auf der zu überwachenden Abonnement-, Ressourcengruppen- oder Ressourcenebene. 
     Für die Log Analytics-API ist die [Rolle „Log Analytics-Leser“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) erforderlich, welche die Berechtigungen der Rolle "Leser" enthält und ergänzt.
 
 4. Geben Sie die Verbindungsdetails zu den APIs an, die Sie verwenden möchten. Sie können eine Verbindung zu allen oder nur zu einigen herstellen. 

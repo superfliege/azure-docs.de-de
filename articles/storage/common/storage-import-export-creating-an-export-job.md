@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 935af10c2ebcdc5273671ed058fdf72099059da3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475617"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731393"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Erstellen eines Exportauftrags für den Azure Import/Export-Dienst
 Zum Erstellen eines Exportauftrags für den Microsoft Azure Import/Export-Dienst per REST-API sind die folgenden Schritte erforderlich:
@@ -45,21 +45,21 @@ Zum Erstellen eines Exportauftrags für den Microsoft Azure Import/Export-Dienst
 
 -   Sie können alle Blobs und Momentaufnahmen im Speicherkonto exportieren.
 
- Weitere Informationen zum Angeben der zu exportierenden Blobs finden Sie in der Beschreibung des [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgangs.
+ Weitere Informationen zum Angeben der zu exportierenden Blobs finden Sie in der Beschreibung des [Put Job](/rest/api/storageimportexport/jobs)-Vorgangs.
 
 ## <a name="obtaining-your-shipping-location"></a>Beschaffen der Versandadresse
 Vor dem Erstellen eines Exportauftrags müssen Sie sich den Namen und die Adresse des Versandziels beschaffen, indem Sie den Vorgang [Get Location](https://portal.azure.com) oder [List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie können auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.
 
 Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen:
 
--   Ermitteln Sie den Namen des Standorts für Ihr Speicherkonto. Sie finden diesen Wert im Feld **Standort** im **Dashboard** für Ihr Speicherkonto im Azure-Portal, oder Sie können mit dem Vorgang [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) der Dienstverwaltungs-API eine Abfrage durchführen.
+-   Ermitteln Sie den Namen des Standorts für Ihr Speicherkonto. Sie finden diesen Wert im Feld **Standort** im **Dashboard** für Ihr Speicherkonto im Azure-Portal, oder Sie können mit dem Vorgang [Get Storage Account Properties](/rest/api/storagerp/storageaccounts) der Dienstverwaltungs-API eine Abfrage durchführen.
 
 -   Rufen Sie den Standort ab, der zum Verarbeiten des Speicherkontos verfügbar ist, indem Sie den Vorgang `Get Location` aufrufen.
 
 -   Wenn die `AlternateLocations`-Eigenschaft des Standorts den Standort selbst enthält, können Sie diesen verwenden. Rufen Sie andernfalls den Vorgang `Get Location` mit einem der anderen Standorte erneut auf. Es kann sein, dass der Originalstandort zu Wartungszwecken vorübergehend geschlossen ist.
 
 ## <a name="creating-the-export-job"></a>Erstellen des Exportauftrags
- Rufen Sie zum Erstellen des Exportauftrags den Vorgang [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) auf. Sie müssen die folgenden Informationen angeben:
+ Rufen Sie zum Erstellen des Exportauftrags den Vorgang [Put Job](/rest/api/storageimportexport/jobs) auf. Sie müssen die folgenden Informationen angeben:
 
 -   Einen Namen für den Auftrag
 
@@ -82,10 +82,10 @@ Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen
 >  Es ist erforderlich, Ihre Laufwerke über einen unterstützten Kurierdienst zu versenden, der für Ihr Paket eine Nachverfolgungsnummer bereitstellt.
 
 ## <a name="updating-the-export-job-with-your-package-information"></a>Aktualisieren des Exportauftrags mit den Paketinformationen
- Nachdem Sie die Nachverfolgungsnummer erhalten haben, rufen Sie den Vorgang [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) auf, um den Namen des Kurierdiensts und die Nachverfolgungsnummer für den Auftrag zu aktualisieren. Optional können Sie auch die Anzahl von Laufwerken, die Adresse für den Rückversand und das Versanddatum angeben.
+ Nachdem Sie die Nachverfolgungsnummer erhalten haben, rufen Sie den Vorgang [Update Job Properties](/rest/api/storageimportexport/jobs) auf, um den Namen des Kurierdiensts und die Nachverfolgungsnummer für den Auftrag zu aktualisieren. Optional können Sie auch die Anzahl von Laufwerken, die Adresse für den Rückversand und das Versanddatum angeben.
 
 ## <a name="receiving-the-package"></a>Empfangen des Pakets
- Nach der Verarbeitung des Exportauftrags werden Ihre Laufwerke mit den verschlüsselten Daten an Sie zurückgesendet. Sie können den BitLocker-Schlüssel für jedes Laufwerk durch Aufrufen des [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get)-Vorgangs abrufen. Anschließend können Sie das Laufwerk mit dem Schlüssel entsperren. Die Laufwerkmanifestdatei auf jedem Laufwerk enthält die Liste der Dateien auf dem Laufwerk sowie die ursprüngliche Blobadresse für jede Datei.
+ Nach der Verarbeitung des Exportauftrags werden Ihre Laufwerke mit den verschlüsselten Daten an Sie zurückgesendet. Sie können den BitLocker-Schlüssel für jedes Laufwerk durch Aufrufen des [Get Job](/rest/api/storageimportexport/jobs)-Vorgangs abrufen. Anschließend können Sie das Laufwerk mit dem Schlüssel entsperren. Die Laufwerkmanifestdatei auf jedem Laufwerk enthält die Liste der Dateien auf dem Laufwerk sowie die ursprüngliche Blobadresse für jede Datei.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

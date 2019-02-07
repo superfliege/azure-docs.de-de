@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 583223ccfd30468c047fc77c3b6598ce7b0a1973
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 3023d5d4010108d46424bba284029b58f5fd279c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214605"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658741"
 ---
 # <a name="add-a-shape-to-a-map"></a>Hinzufügen einer Form zu einer Karte
 
@@ -108,7 +108,7 @@ Mit dem ersten Block des obigen Codes wird ein Kartenobjekt erstellt. Eine Anlei
 
 Ein Punkt ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt der [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)-Klasse. Der zweite Codeblock initialisiert den Radiuswert für das HTML-Schiebereglerelement und erstellt und umschließt dann ein Point-Objekt in einem [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)-Klassenobjekt.
 
-Der dritte Codeblock erstellt eine Funktion, die den Wert aus dem HTML-Bereichsschieberegler-Element übernimmt und den Radiuswert mit der [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#addproperty)-Methode der Shape-Klasse ändert.
+Der dritte Codeblock erstellt eine Funktion, die den Wert aus dem HTML-Bereichsschieberegler-Element übernimmt und den Radiuswert mit der [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)-Methode der Shape-Klasse ändert.
 
 Im vierten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Dann wird der Punkt der Datenquelle hinzugefügt.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729162"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730168"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrieren von Daten aus der StorSimple-Serie 5000/7000 zur Azure-Dateisynchronisierung
 
@@ -57,7 +57,7 @@ Hier werden die Voraussetzungen für die Migration Ihres Legacygeräts der Serie
 - Der Host verfügt über ausreichend lokalen Speicher, um Ihre lokal zwischengespeicherten Daten zu speichern.
 - Zugriff auf Besitzerebene auf das Azure-Abonnement, das Sie zum Bereitstellen der Azure-Dateisynchronisierung verwenden. Beim Erstellen eines Cloudendpunkts für Ihre Synchronisierungsgruppe können Probleme auftreten, wenn Sie nicht über Berechtigungen auf Besitzer- oder Administratorebene verfügen.
 - Zugriff auf ein [Speicherkonto vom Typ „Allgemein v2“](https://docs.microsoft.com/azure/storage/common/storage-account-overview) mit einer Azure-Dateifreigabe, mit der eine Synchronisierung durchgeführt werden soll. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - [Erstellen einer Dateifreigabe über das Azure-Portal](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal).
+ - [Erstellen einer Dateifreigabe über das Azure-Portal](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Migrationsprozess
 

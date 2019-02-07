@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 529758a7b9fe4c8b669ade72273335389020fb65
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451202"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770583"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
@@ -98,7 +98,7 @@ Wenn Sie fertig sind, drücken Sie die **Esc** Taste, und geben Sie dann **:wq**
 
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
 
-Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie die Richtliniendefinition mit [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create).
+Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie die Richtliniendefinition mit [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest).
 
 In diesem Beispiel sind die Regeln und Parameter die Dateien, die Sie erstellt und als JSON-Dateien in Ihrer Cloud Shell gespeichert haben.
 
@@ -115,9 +115,9 @@ az policy definition create \
 
 ## <a name="assign-the-policy"></a>Zuweisen der Richtlinie
 
-In diesem Beispiel wird die Richtlinie mit [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die Linux VM Access- oder Custom Script-Erweiterungen für Linux zu installieren. Die Ressourcengruppe muss vorhanden sein, damit Sie die Richtlinie zuweisen können.
+In diesem Beispiel wird die Richtlinie mit [az policy assignment create](/cli/azure/policy/assignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die Linux VM Access- oder Custom Script-Erweiterungen für Linux zu installieren. Die Ressourcengruppe muss vorhanden sein, damit Sie die Richtlinie zuweisen können.
 
-Rufen Sie mit [az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel verwendeten nutzen.
+Rufen Sie mit [az account list](/cli/azure/account?view=azure-cli-latest) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel verwendeten nutzen.
 
 
 ```azurecli-interactive

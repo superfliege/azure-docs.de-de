@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c6b4ed787fa9e8881990801bdee77550a1a0bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473628"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699175"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -241,7 +241,7 @@ Jedes Speicherkonto unterstützt bis zu 100 IP-Netzwerkregeln, die mit [Regeln f
 
 Wenn Sie mit einer IP-Netzwerkregel den Zugriff über Ihre lokalen Netzwerke auf das Speicherkonto gewähren möchten, müssen Sie die von Ihrem Netzwerk verwendeten Internet-IP-Adressen ermitteln. Hilfe erhalten Sie von Ihrem Netzwerkadministrator.
 
-Sie können Ihr Netzwerk über [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbinden. Hier wird jede Verbindung mit zwei öffentlichen IP-Adressen konfiguriert. Sie befinden sich im Edgebereich von Microsoft und nutzen [öffentliches Azure-Peering](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains), um eine Verbindung mit Microsoft-Diensten wie Azure Storage herzustellen. Erstellen Sie IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindungen, um die Kommunikation mit Azure Storage zu ermöglichen. [Erstellen Sie ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) über das Azure-Portal, um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
+Sie können Ihr Netzwerk über [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbinden. Hier wird jede Verbindung mit zwei öffentlichen IP-Adressen konfiguriert. Sie befinden sich im Edgebereich von Microsoft und nutzen [öffentliches Azure-Peering](/azure/expressroute/expressroute-circuit-peerings), um eine Verbindung mit Microsoft-Diensten wie Azure Storage herzustellen. Erstellen Sie IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindungen, um die Kommunikation mit Azure Storage zu ermöglichen. [Erstellen Sie ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) über das Azure-Portal, um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
 
 ### <a name="managing-ip-network-rules"></a>Verwalten von IP-Netzwerkregeln
 
@@ -355,7 +355,7 @@ Wenn Sie die Ausnahme **Vertrauenswürdigen Microsoft-Diensten die Umgehung dies
 |Azure Event Grid|Microsoft.EventGrid|Aktivieren Sie Blob Storage-Ereignisveröffentlichung, und erlauben Sie Event Grid die Veröffentlichung in Speicherwarteschlangen. Erfahren Sie mehr über [Blob Storage-Ereignisse](/azure/event-grid/event-sources) und das [Veröffentlichen in Warteschlangen](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture. [Weitere Informationen](/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](/azure/network-watcher/network-watcher-packet-capture-overview)|
-|Azure Monitor|Microsoft.Insights|Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)|
+|Azure Monitor|Microsoft.Insights|Ermöglicht das Schreiben von Überwachungsdaten in ein gesichertes Speicherkonto. [Weitere Informationen](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)|
 |Azure SQL Data Warehouse|Microsoft.Sql|Ermöglicht Import- und Exportszenarien mit PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)|
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten
