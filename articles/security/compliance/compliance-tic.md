@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017098"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751921"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung
 
@@ -49,7 +49,7 @@ Es gibt mehrere Möglichkeiten, die TIC-Anforderungen aus Anhang H (Überlegunge
 
 Um die Verbindung von einem **Ministerium oder einer Behörde (Department/Agency, D/A)** mit Azure oder Office 365 zu ermöglichen, ohne den Datenverkehr über deren vertrauenswürdige Internetverbindung zu leiten, muss der D/A-Benutzer einen verschlüsselten Tunnel oder eine dedizierte Verbindung mit dem Cloud-Dienstanbieter (Cloud Service Provider, CSP) verwenden. Die CSP-Dienste können sicherstellen, dass die Konnektivität mit den D/A-Cloudressourcen nicht dem öffentlichen Internet für den direkten Zugriff durch Regierungsangestellte zur Verfügung gestellt wird.
 
-Office 365 ist mit TIC 2.0, Anhang H, konform und verwendet entweder ExpressRoute mit aktiviertem [Microsoft-Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) oder eine Internetverbindung, die den gesamten Datenverkehr mit TLS 1.2 verschlüsselt. D/A-Endbenutzer im D/A-Netzwerk können sich über ihr Behördennetzwerk und die TIC-Infrastruktur mit dem Internet verbinden. Der gesamte Remoteinternetzugriff auf Office 365 wird blockiert und über die Behörde geleitet. Der D/A-Benutzer kann sich auch über eine ExpressRoute-Verbindung mit Microsoft-Peering, einer Art öffentlichem Peering, mit Office 365 verbinden.  
+Office 365 ist mit TIC 2.0, Anhang H, konform und verwendet entweder ExpressRoute mit aktiviertem [Microsoft-Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings) oder eine Internetverbindung, die den gesamten Datenverkehr mit TLS 1.2 verschlüsselt. D/A-Endbenutzer im D/A-Netzwerk können sich über ihr Behördennetzwerk und die TIC-Infrastruktur mit dem Internet verbinden. Der gesamte Remoteinternetzugriff auf Office 365 wird blockiert und über die Behörde geleitet. Der D/A-Benutzer kann sich auch über eine ExpressRoute-Verbindung mit Microsoft-Peering, einer Art öffentlichem Peering, mit Office 365 verbinden.  
 
 Nur für Azure können die zweite Option (VPN) und die dritte Option (ExpressRoute) diese Anforderungen erfüllen, wenn sie in Verbindung mit Diensten verwendet werden, die den Zugang zum Internet einschränken.
 
@@ -249,25 +249,25 @@ Sie können den Zugriff für Microsoft Azure, Office 365 und Dynamics 365 proble
 
 | Category (Kategorie) | Workload | IaaS | Dedizierte PaaS/Einfügen in virtuelle Netzwerke  | Dienstendpunkte  |
 |---------|---------|---------|---------|--------|
-| Compute | Virtuelle Azure Linux-Computer | JA | | |
-| Compute | Virtuelle Azure Windows-Computer | JA | | |
-| Compute | VM-Skalierungsgruppen | JA | | |
+| Compute | Virtuelle Azure Linux-Computer | Ja | | |
+| Compute | Virtuelle Azure Windows-Computer | Ja | | |
+| Compute | VM-Skalierungsgruppen | Ja | | |
 | Compute | Azure-Funktionen | | App Service-Umgebung | |
 | Web und mobil | Interne Webanwendung | | App Service-Umgebung| |
 | Web und mobil | Interne mobile Anwendung | | App Service-Umgebung | |
 | Web und mobil | API-Anwendungen | | App Service-Umgebung | |
-| Container | Azure Container Service | | | JA |
-| Container | Azure Kubernetes Service (AKS) \* | | | JA |
+| Container | Azure Container Service | | | Ja |
+| Container | Azure Kubernetes Service (AKS) \* | | | Ja |
 | Datenbank | Azure SQL-Datenbank | | Verwaltete Azure SQL-Datenbank-Instanz \* | Azure SQL |
-| Datenbank | Azure Database for MySQL | | | JA |
-| Datenbank | Azure Database for PostgreSQL | | | JA |
-| Datenbank | Azure SQL Data Warehouse | | | JA |
-| Datenbank | Azure Cosmos DB | | | JA |
-| Datenbank | Azure Cache for Redis | | JA | |
-| Storage | Azure Blob Storage | JA | | |
-| Storage | Azure Files | JA | | |
-| Storage | Azure Queue Storage | JA | | |
-| Storage | Azure-Tabellenspeicher | JA | | |
-| Storage | Azure Disk Storage | JA | | |
+| Datenbank | Azure Database for MySQL | | | Ja |
+| Datenbank | Azure Database for PostgreSQL | | | Ja |
+| Datenbank | Azure SQL Data Warehouse | | | Ja |
+| Datenbank | Azure Cosmos DB | | | Ja |
+| Datenbank | Azure Cache for Redis | | Ja | |
+| Storage | Azure Blob Storage | Ja | | |
+| Storage | Azure Files | Ja | | |
+| Storage | Azure Queue Storage | Ja | | |
+| Storage | Azure-Tabellenspeicher | Ja | | |
+| Storage | Azure Disk Storage | Ja | | |
 
 \* Öffentliche Vorschauversion in Azure Government, Mai 2018

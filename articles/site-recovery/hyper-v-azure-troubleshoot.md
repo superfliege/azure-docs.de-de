@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228201"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756664"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -115,7 +115,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
         - Leistungsindikator: „Geschriebene Bytes/s“</br>
         - Die Datenänderungsrate erhöht sich oder bleibt hoch, abhängig von der Auslastung des virtuellen Computers oder der zugehörigen Apps.
         - Die durchschnittliche Datenänderung des Quelldatenträgers beläuft sich für den Standardspeicher für Site Recovery auf 2 MB/s. [Weitere Informationen](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Darüber hinaus können Sie [Skalierbarkeitsziele überprüfen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
+    - Darüber hinaus können Sie [Skalierbarkeitsziele überprüfen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
 8. Führen Sie den [Bereitstellungsplaner](hyper-v-deployment-planner-run.md) aus.
 9. Sehen Sie die Empfehlungen für das [Netzwerk](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) und den [Speicher](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) durch.
 

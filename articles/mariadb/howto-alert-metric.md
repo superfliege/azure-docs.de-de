@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244238"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661699"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MariaDB
 
@@ -27,7 +27,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
 * [Azure-Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure Monitor-REST-API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
+* [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Erstellen einer Warnungsregel für eine Metrik
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) den zu überwachenden Azure Database for MariaDB-Server aus.
@@ -50,21 +50,21 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
 7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation**, **Zeitraum**, die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit**.
    
-   Wählen Sie anschließend **Fertig**.
+   Wählen Sie anschließend **Fertig** aus.
 
    ![Metrik auswählen](./media/howto-alert-metric/7-set-threshold-time.png)
 
-8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen**, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
+8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
 9. Tragen Sie in das Formular „Aktionsgruppe hinzufügen“ einen Namen, Kurznamen, ein Abonnement und eine Ressourcengruppe ein.
 
 10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf**.
     
-   Wählen Sie „E-Mail an Azure Resource Manager-Rolle“, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
+   Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
    
    Geben Sie optional einen gültigen URI im Feld **Webhook** an, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
 
-   Wählen Sie **OK**, wenn Sie fertig sind.
+   Wählen Sie **OK** aus, wenn Sie fertig sind.
 
    ![Aktionsgruppe](./media/howto-alert-metric/10-action-group-type.png)
 

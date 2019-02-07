@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: af7f3b42aad41f103be6c86da84db2ff230ff226
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 5dda96786cde980fbec1b2f90bb7f755453b468a
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065219"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729658"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Linux-VM mit der Azure CLI
 
@@ -39,7 +39,7 @@ Wenn Sie es vorziehen, die Befehlszeilenschnittstelle lokal zu installieren und 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -47,7 +47,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer.
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm) einen virtuellen Computer.
 
 Im folgenden Beispiel wird eine VM mit dem Namen *myVM* erstellt und ein Benutzerkonto mit dem Namen *azureuser* hinzugefügt. Der Parameter `--generate-ssh-keys` wird genutzt, um automatisch einen SSH-Schlüssel zu generieren und am Speicherort für den Standardschlüssel abzulegen (*~/.ssh*). Um stattdessen einen bestimmten Satz mit Schlüsseln zu verwenden, können Sie die Option `--ssh-key-value` nutzen.
 
@@ -79,7 +79,7 @@ Beachten Sie Ihre eigene `publicIpAddress` in der Ausgabe Ihres virtuellen Compu
 
 ## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr
 
-Standardmäßig werden beim Erstellen eines virtuellen Linux-Computers in Azure nur die SSH-Verbindungen geöffnet. Verwenden Sie [az vm open-port](/cli/azure/vm#az_vm_open_port), um TCP-Port 80 für die Verwendung mit dem NGINX-Webserver zu öffnen:
+Standardmäßig werden beim Erstellen eines virtuellen Linux-Computers in Azure nur die SSH-Verbindungen geöffnet. Verwenden Sie [az vm open-port](/cli/azure/vm), um TCP-Port 80 für die Verwendung mit dem NGINX-Webserver zu öffnen:
 
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -112,7 +112,7 @@ Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von N
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen. 
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group) entfernen. 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

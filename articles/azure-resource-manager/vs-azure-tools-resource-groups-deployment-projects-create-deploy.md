@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ff49b3a08977b28ae6fa0971e5c7d72af158a46
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0b00bff2b32ac9dd16d4d38ee35be006c0247bb8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081210"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493433"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
+
 Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Sie können z. B. den Webhost, die Website und die Datenbank für Ihre App definieren und diese Infrastruktur zusammen mit dem Code bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App und SQL-Datenbank bereit.  
 
 In diesem Artikel erfahren Sie, wie Sie [Visual Studio 2017 mit den neuesten installierten Workloads für ASP.NET und die Azure-Entwicklung](/dotnet/azure/dotnet-tools) verwenden. Bei Verwendung von Visual Studio 2015 Update 2 und Microsoft Azure SDK für .NET 2.9 oder Visual Studio 2013 mit Azure SDK 2.9 ist der Ablauf größtenteils identisch.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
+
 In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vorlage **Web-App und SQL**.
 
 1. Klicken Sie in Visual Studio auf **Datei**, **Neues Projekt**, und wählen Sie entweder **C#** oder **Visual Basic** aus. (Die ausgewählte Sprache hat keine Auswirkung auf die späteren Phasen, da diese Projekte nur JSON- und PowerShell-Inhalte enthalten.) Wählen Sie dann **Cloud** und anschließend das Projekt **Azure-Ressourcengruppe** aus.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: ce031b5c0dba96ab1a51532ad771eebeafb5d599
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c0c9554a6c8868a8aeb90947dbbb0e251e42733f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413259"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733228"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder der Azure CLI.
@@ -42,7 +42,7 @@ Eine Skalierungsgruppe enthält ein Skalierungsgruppenmodell, das den *gewünsch
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
     ```
 
-- Azure CLI mit [az vmss show](/cli/azure/vmss#az_vmss_show):
+- Azure CLI mit [az vmss show](/cli/azure/vmss):
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -140,7 +140,7 @@ Nicht nur die Skalierungsgruppe verfügt über eine Modellansicht, sondern auch 
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI mit [az vmss show](/cli/azure/vmss#az_vmss_show):
+- Azure CLI mit [az vmss show](/cli/azure/vmss):
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -259,7 +259,7 @@ Wenn Sie eine globale Skalierungsgruppeneigenschaft aktualisieren möchten, müs
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
     ```
 
-- Azure CLI mit [az vmss update](/cli/azure/vmss#az_vmss_update):
+- Azure CLI mit [az vmss update](/cli/azure/vmss):
     - So ändern Sie eine Eigenschaft
 
         ```azurecli
@@ -306,7 +306,7 @@ Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie für jeden virtue
     Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- Azure CLI mit [az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances):
+- Azure CLI mit [az vmss update-instances](/cli/azure/vmss):
 
     ```azurecli
     az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
@@ -331,7 +331,7 @@ Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenomme
     Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI mit [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage):
+- Azure CLI mit [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -392,7 +392,7 @@ Möglicherweise verfügen Sie über eine Skalierungsgruppe mit einer alten Versi
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
     ```
 
-- Azure CLI mit [az vmss update](/cli/azure/vmss#az_vmss_update_instances):
+- Azure CLI mit [az vmss update](/cli/azure/vmss):
 
     ```azurecli
     az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
@@ -409,7 +409,7 @@ Alternativ können Sie auch das Image ändern, das Ihre Skalierungsgruppe verwen
         -ImageReferenceId /subscriptions/{subscriptionID}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myNewImage
     ```
 
-- Azure CLI mit [az vmss update](/cli/azure/vmss#az_vmss_update_instances):
+- Azure CLI mit [az vmss update](/cli/azure/vmss):
 
     ```azurecli
     az vmss update \
@@ -428,7 +428,7 @@ Angenommen, Sie besitzen eine Skalierungsgruppe mit Azure Load Balancer und möc
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss
     $vmss=Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
     
-    # Create a local PowerShell object for the new desired IP configuration, which includes the referencerence to the application gateway
+    # Create a local PowerShell object for the new desired IP configuration, which includes the reference to the application gateway
     $ipconf = New-AzureRmVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
     
     # Replace the existing IP configuration in the local PowerShell object (which contains the references to the current Azure Load Balancer) with the new IP configuration

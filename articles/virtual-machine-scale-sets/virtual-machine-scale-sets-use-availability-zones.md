@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886236"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816236"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 
@@ -65,7 +65,7 @@ Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie s
 Damit Verfügbarkeitszonen verwendet werden können, muss Ihre Skalierungsgruppe in einer [unterstützten Azure-Region](../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden. Sie können mit einer der folgenden Methoden eine Skalierungsgruppe erstellen, die Verfügbarkeitszonen verwendet:
 
 - [Azure-Portal](#use-the-azure-portal)
-- [Azure-Befehlszeilenschnittstelle](#use-the-azure-cli-20)
+- Azure-Befehlszeilenschnittstelle
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#use-azure-resource-manager-templates)
 
@@ -81,7 +81,7 @@ Die Skalierungsgruppe und die unterstützenden Ressourcen, wie etwa der Azure Lo
 
 Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-cli.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen.
 
-Fügen Sie dem [az vmss create](/cli/azure/vmss#az_vmss_create)-Befehl den `--zones`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). Im folgenden Beispiel wird eine Skalierungsgruppe mit einer Zone namens *myScaleSet* in Zone *1* erstellt:
+Fügen Sie dem [az vmss create](/cli/azure/vmss)-Befehl den `--zones`-Parameter hinzu, und geben Sie die zu verwendende Zone an (z. B. Zone *1*, *2* oder *3*). Im folgenden Beispiel wird eine Skalierungsgruppe mit einer Zone namens *myScaleSet* in Zone *1* erstellt:
 
 ```azurecli
 az vmss create \

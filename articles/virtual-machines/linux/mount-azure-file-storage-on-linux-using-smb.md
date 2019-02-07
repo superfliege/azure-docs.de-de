@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.subservice: files
-ms.openlocfilehash: ee56f77ef6ed3c759573a5a96d854c54f297b2ac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0aa291c3334af35ec90648cfbcbb7de7015deb99
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462357"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731443"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account#create) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT<random number>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
+Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT<random number>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -58,7 +58,7 @@ STORAGEACCT=$(az storage account create \
 
 Beim Erstellen eines Speicherkontos werden die Speicherkontoschlüssel als Paar erstellt, sodass eine Rotation der Schlüssel ohne Unterbrechung des Diensts möglich ist. Wenn Sie zum zweiten Schlüssel des Paars wechseln, erstellen Sie ein neues Schlüsselpaar. Neue Speicherkontoschlüssel werden stets als Paar erstellt, damit sichergestellt ist, dass immer mindestens ein ungenutzter Speicherkontoschlüssel vorhanden ist, zu dem gewechselt werden kann.
 
-Verwenden Sie [az storage account keys list](/cli/azure/storage/account/keys#list), um die Speicherkontoschlüssel anzuzeigen. In diesem Beispiel wird der Wert des Schlüssels 1 in der Variable **STORAGEKEY** gespeichert.
+Verwenden Sie [az storage account keys list](/cli/azure/storage/account/keys), um die Speicherkontoschlüssel anzuzeigen. In diesem Beispiel wird der Wert des Schlüssels 1 in der Variable **STORAGEKEY** gespeichert.
 
 ```bash
 STORAGEKEY=$(az storage account keys list \
@@ -69,7 +69,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 
-Erstellen Sie die Dateispeicherfreigabe mithilfe des Befehls [az storage share create](/cli/azure/storage/share#create). 
+Erstellen Sie die Dateispeicherfreigabe mithilfe des Befehls [az storage share create](/cli/azure/storage/share). 
 
 Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enthalten und dürfen nicht mit einem Bindestrich beginnen. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 

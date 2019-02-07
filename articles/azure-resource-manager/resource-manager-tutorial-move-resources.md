@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ae29146b1b44f3017d37b3cebf7ec4cf39115d0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3aadeb92fccc2baa445bce73e3d3111168aeecf6
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731755"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490261"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>Tutorial: Verschieben von Azure-Ressourcen in eine andere Ressourcengruppe oder ein anderes Abonnement
 
@@ -35,6 +35,8 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Bereinigen der Ressourcen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>Vorbereiten der Ressourcen
 
@@ -63,7 +65,7 @@ Wählen Sie **Ausprobieren** aus, um die Cloud Shell zu öffnen, und führen Sie
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"
-New-AzureRmDeployment `
+New-AzDeployment `
     -Name $projectname `
     -Location "centralus" `
     -TemplateUri "https://armtutorials.blob.core.windows.net/moveresources/azuredeploy.json" `
@@ -101,8 +103,8 @@ $resourceGroupSource = $projectName + "rg1"
 $resourceGroupDestination = $projectName + "rg2"
 $storageAccountName = $projectName + "store"
 
-$storageAccount = Get-AzureRmResource -ResourceGroupName $resourceGroupSource -ResourceName $storageAccountName
-Move-AzureRmResource -DestinationResourceGroupName $resourceGroupDestination -ResourceId $storageAccount.ResourceId
+$storageAccount = Get-AzResource -ResourceGroupName $resourceGroupSource -ResourceName $storageAccountName
+Move-AzResource -DestinationResourceGroupName $resourceGroupDestination -ResourceId $storageAccount.ResourceId
 ```
 
 Öffnen Sie das [Azure-Portal](https://portal.azure.com), überprüfen Sie, ob das Speicherkonto in die andere Ressourcengruppe verschoben wurde, und überprüfen Sie ebenfalls, ob der Standort des Speicherkontos weiterhin „USA, Osten“ ist.

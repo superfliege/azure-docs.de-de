@@ -1,8 +1,21 @@
 ---
-Titel: Lokaler SQL Server titleSuffix: Azure Machine Learning Studio – Beschreibung: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit Azure Machine Learning Studio durchzuführen.
-Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 13.03.2017
+title: Lokaler SQL Server
+titleSuffix: Azure Machine Learning Studio
+description: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit Azure Machine Learning Studio durchzuführen.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/13/2017
+ms.openlocfilehash: 61feb1365a5007a55d18f0f4366bd5c69148e88d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511155"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Durchführen von Analysen mit Azure Machine Learning Studio mit einer lokalen SQL Server-Datenbank
 

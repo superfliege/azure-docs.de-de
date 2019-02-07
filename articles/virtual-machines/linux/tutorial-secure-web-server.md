@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 85dbdc42dd55cdb262351511918d2b813212edb0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 79b694b877e7e26c5b9c71fb5cfbde3703ef3cb6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882207"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750918"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Linux-Computer in Azure mit in Key Vault gespeicherten SSL-Zertifikaten
 Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
@@ -44,13 +44,13 @@ Anstatt ein benutzerdefiniertes VM-Image zu verwenden, in dem die Zertifikate in
 
 
 ## <a name="create-an-azure-key-vault"></a>Erstellen einer Azure Key Vault-Instanz
-Bevor Sie eine Key Vault-Instanz und Zertifikate erstellen, müssen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupSecureWeb* am Standort *eastus* erstellt:
+Bevor Sie eine Key Vault-Instanz und Zertifikate erstellen, müssen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupSecureWeb* am Standort *eastus* erstellt:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Erstellen Sie anschließend eine Key Vault-Instanz mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create), und aktivieren Sie sie für die Verwendung, wenn Sie einen virtuellen Computer bereitstellen. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie *<mykeyvault>* im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
+Erstellen Sie anschließend eine Key Vault-Instanz mit [az keyvault create](/cli/azure/keyvault), und aktivieren Sie sie für die Verwendung, wenn Sie einen virtuellen Computer bereitstellen. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie *<mykeyvault>* im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -61,7 +61,7 @@ az keyvault create \
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Generieren eines Zertifikats und Speichern in Key Vault
-Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) generieren können, das die Standardzertifikatrichtlinie verwendet:
+Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [az keyvault certificate import](/cli/azure/keyvault/certificate) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [az keyvault certificate create](/cli/azure/keyvault/certificate) generieren können, das die Standardzertifikatrichtlinie verwendet:
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -71,7 +71,7 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Vorbereiten eines Zertifikats für die Verwendung mit einem virtuellen Computer
-Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) ab. Konvertieren Sie das Zertifikat mit [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format). Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
+Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret) ab. Konvertieren Sie das Zertifikat mit [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format). Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -111,7 +111,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>Erstellen eines sicheren virtuellen Computers
-Jetzt können Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen. Die Zertifikatsdaten werden mit dem `--secrets`-Parameter aus Key Vault eingefügt. Die cloud-init-Konfiguration wird mit dem Parameter `--custom-data` übergeben:
+Jetzt können Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer erstellen. Die Zertifikatsdaten werden mit dem `--secrets`-Parameter aus Key Vault eingefügt. Die cloud-init-Konfiguration wird mit dem Parameter `--custom-data` übergeben:
 
 ```azurecli-interactive 
 az vm create \
@@ -126,7 +126,7 @@ az vm create \
 
 Es dauert einige Minuten, den virtuellen Computer zu erstellen, die Pakete zu installieren und die App zu starten. Sobald der virtuelle Computer erstellt ist, notieren Sie die `publicIpAddress`, die von der Azure-CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf Ihre Website zuzugreifen.
 
-Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 443 über das Internet mit [az vm open-port](/cli/azure/vm#az_vm_open_port):
+Damit sicherer Webdatenverkehr Ihren virtuellen Computer erreicht, öffnen Sie Port 443 über das Internet mit [az vm open-port](/cli/azure/vm):
 
 ```azurecli-interactive 
 az vm open-port \

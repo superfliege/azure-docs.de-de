@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 63a6d1314b89181b5cccf8583883b7bead7099a4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8539c108409a5aea521f919eb9e015764eb0dd29
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221223"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490140"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Der LUIS-Bot in Node.js wird mit Bot Framework 3.x und dem Azure Web-App-Bot erstellt.
 
@@ -116,7 +116,7 @@ Wechseln Sie zum zweiten Browserfenster, wenn es noch geöffnet ist, oder verwen
 
 Öffnen Sie im Code-Editor `app.js`. Diese Datei enthält den folgenden Code:
 
-```nodejs
+```javascript
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -207,7 +207,7 @@ Die vorhandenen Absichten in „App.js“ werden ignoriert. Sie können diese un
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn `app.js` hinzu.
 
-```nodejs
+```javascript
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -224,7 +224,7 @@ Die Option [matches][matches] unter [triggerAction][triggerAction] für den Dial
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn `app.js` hinzu.
 
-```nodejs
+```javascript
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);
