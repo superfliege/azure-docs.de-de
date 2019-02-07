@@ -19,11 +19,13 @@ items:
   items:
   - name: 1. Erstellen eines B2C-Mandanten
     href: tutorial-create-tenant.md
-  - name: 2. Registrieren von Anwendungen
+  - name: 2. Registrieren einer Anwendung
     href: tutorial-register-applications.md
   - name: 3. Erstellen von Benutzerflows
     href: tutorial-create-user-flows.md
-  - name: 4. Anpassen der Benutzeroberfläche
+  - name: Hinzufügen von Identitätsanbietern
+    href: tutorial-add-identity-providers.md
+  - name: Anpassen der Benutzeroberfläche
     href: tutorial-customize-ui.md
   - name: Authentifizieren von Konten
     items:
@@ -75,7 +77,11 @@ items:
   items:
   - name: Zugreifen auf Überwachungsprotokolle
     href: active-directory-b2c-reference-audit-logs.md
-  - name: Altersbeschränkung
+  - name: Hinzufügen einer Web-API-Anwendung
+    href: add-web-application.md
+  - name: Hinzufügen einer nativen Clientanwendung
+    href: add-native-application.md
+  - name: Konfigurieren einer Altersbeschränkung
     href: basic-age-gating.md
   - name: Konfigurieren von Token
     href: active-directory-b2c-token-session-sso.md
@@ -318,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8aa1d5bf118330f6f04cfd35a59f2b60ce6e1ee8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240844"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751785"

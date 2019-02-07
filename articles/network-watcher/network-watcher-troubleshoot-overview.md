@@ -75,10 +75,10 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein |
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | JA |
 | ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| JA|
-| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | JA|
+| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | JA|
 | PeerReachability | Das Peergateway ist nicht erreichbar. | JA|
 | IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | JA|
-| WfpParse-Fehler | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |JA|
+| WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |JA|
 
 ## <a name="supported-gateway-types"></a>Unterstützte Gatewaytypen
 

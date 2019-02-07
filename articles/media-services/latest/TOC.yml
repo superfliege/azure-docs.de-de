@@ -29,39 +29,37 @@ items:
     href: cli-samples.md
 - name: Konzepte
   items:
-  - name: Migrieren von v2 zu v3
-    href: migrate-from-v2-to-v3.md
-  - name: Entitäten
-    href: entities-overview.md
+  - name: Erfassen
     items:
-    - name: Konto- und Medienobjektfilter
-      href: filters-dynamic-manifest-overview.md
     - name: Objekte
       href: assets-concept.md
-    - name: Richtlinien für Inhaltsschlüssel
-      href: content-key-policy-concept.md
-    - name: Liveereignisse und Liveausgaben
-      href: live-events-outputs-concept.md
+  - name: Codieren
+    href: encoding-concept.md
+    items:
+    - name: Transformationen und Aufträge
+      href: transforms-jobs-concept.md
+    - name: Media Encoder Standard-Formate
+      href: media-encoder-standard-formats.md
+    - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
+      href: autogen-bitrate-ladder.md
+  - name: Analysieren
+    href: analyzing-video-audio-files-concept.md
+    items:
+    - name: Transformationen und Aufträge
+      href: transforms-jobs-concept.md
+  - name: Datenstrom
+    items:
     - name: Streamingendpunkte
       href: streaming-endpoint-concept.md
     - name: Streaminglocators
       href: streaming-locators-concept.md
     - name: Streamingrichtlinien
       href: streaming-policy-concept.md
-    - name: Transformationen und Aufträge
-      href: transforms-jobs-concept.md
-  - name: Codieren von Inhalt
-    href: encoding-concept.md
-    items:
-    - name: Media Encoder Standard-Formate
-      href: media-encoder-standard-formats.md
-    - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
-      href: autogen-bitrate-ladder.md
-  - name: Analysieren von Inhalt
-    href: analyzing-video-audio-files-concept.md
-  - name: Streamen von Liveveranstaltungen
+  - name: Livestreaming
     href: live-streaming-overview.md
     items:
+    - name: Liveereignisse und Liveausgaben
+      href: live-events-outputs-concept.md
     - name: Empfohlene Liveencoder
       href: recommended-on-premises-live-encoders.md
     - name: Verwenden eines Cloud-DVR
@@ -72,13 +70,23 @@ items:
       href: live-event-states-billing.md
     - name: Latency
       href: live-event-latency.md
-  - name: Überwachung
+  - name: Bereitstellen
+    items:
+    - name: Filter und dynamisches Manifest
+      href: filters-dynamic-manifest-overview.md
+  - name: Überwachen
     items:
     - name: Event Grid
       href: reacting-to-media-services-events.md
-  - name: Schützen von Inhalten
+  - name: Schützen
     href: content-protection-overview.md
     items:
+    - name: Richtlinien für Inhaltsschlüssel
+      href: content-key-policy-concept.md
+    - name: Streamingrichtlinien
+      href: streaming-policy-concept.md
+    - name: Streaminglocators
+      href: streaming-locators-concept.md
     - name: Multi-DRM-System mit Zugriffssteuerung
       href: design-multi-drm-system-with-access-control.md
   - name: Wiedergabe
@@ -89,6 +97,10 @@ items:
       href: limits-quotas-constraints.md
     - name: Speicherkonten
       href: storage-account-concept.md
+  - name: Filtern, Sortieren und Einteilen in Seiten von Entitäten
+    href: entities-overview.md
+  - name: Migrieren von v2 zu v3
+    href: migrate-from-v2-to-v3.md
 - name: Anleitungen
   items:
   - name: Erste Schritte
@@ -199,15 +211,17 @@ items:
       href: https://aka.ms/ams-v3-nodejs-sdk
     - name: Ruby
       href: https://aka.ms/ams-v3-ruby-sdk
+  - name: AMSE
+    href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: Versionshinweise
     href: release-notes.md
   - name: Häufig gestellte Fragen
     href: frequently-asked-questions.md
   - name: Azure-Clouds und -Regionen
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0e748b32092ec9e27888c9fac039c27e6411b34a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cadf1d0b73c7d04b2748cb5fa60de7cca23beadc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693866"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744805"
