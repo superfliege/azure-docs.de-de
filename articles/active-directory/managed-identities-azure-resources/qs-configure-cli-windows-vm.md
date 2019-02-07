@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
-ms.openlocfilehash: a2e42b165596d26672ee22813e53d02ca0e3a7e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4c17128f07475b6aeaef9ae15a13bc4863d7e663
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195663"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699889"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -82,7 +82,7 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    az login
    ```
 
-2. Verwenden Sie [az vmss identity assign](/cli/azure/vm/identity/#az-vm-identity-assign) mit dem Befehl `identity assign`, um die vom System zugewiesene Identität auf einem vorhandenen virtuellen Computer zu aktivieren:
+2. Verwenden Sie [az vmss identity assign](/cli/azure/vm/identity/) mit dem Befehl `identity assign`, um die vom System zugewiesene Identität auf einem vorhandenen virtuellen Computer zu aktivieren:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -107,7 +107,7 @@ Bei einem virtuellen Computer, der nicht mehr die vom System zugewiesene Identit
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Um die VM-Erweiterung der verwalteten Identität für Azure-Ressourcen zu entfernen (diese gilt ab Januar 2019 veraltet), verwenden Sie den Schalter `-n ManagedIdentityExtensionForWindows` oder `-n ManagedIdentityExtensionForLinux` (abhängig vom Typ des virtuellen Computers) mit [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+Um die VM-Erweiterung der verwalteten Identität für Azure-Ressourcen zu entfernen (diese gilt ab Januar 2019 veraltet), verwenden Sie den Schalter `-n ManagedIdentityExtensionForWindows` oder `-n ManagedIdentityExtensionForLinux` (abhängig vom Typ des virtuellen Computers) mit [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -186,7 +186,7 @@ Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuel
    }
    ```
 
-2. Verwenden Sie [az vm identity assign](/cli/azure/vm#az-vm-identity-assign), um Ihrem virtuellen Computer die vom Benutzer zugewiesene Identität zuzuweisen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die im vorherigen Schritt `name`-Eigenschaft der der Ressource der vom Benutzer zugewiesenen verwalteten Identität:
+2. Verwenden Sie [az vm identity assign](/cli/azure/vm), um Ihrem virtuellen Computer die vom Benutzer zugewiesene Identität zuzuweisen. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. `<USER ASSIGNED IDENTITY NAME>` ist die im vorherigen Schritt `name`-Eigenschaft der der Ressource der vom Benutzer zugewiesenen verwalteten Identität:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: c16a0eeb674e712ec1c3678a2e0002a8ddcfc329
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dfed8ce93a97b31380b44f0ac7057c0cff60901e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464705"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497280"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Auch wenn ein Ressourcentyp den Verschiebevorgang unterstützt, kann dies bestimmten Bedingungen unterliegen, die das Verschieben der Ressource verhindern. Ausführliche Informationen über Bedingungen, die sich auf Verschiebevorgänge auswirken, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="find-resource-provider-and-resource-type"></a>Suchen des Ressourcenanbieters und Ressourcentyps
 
@@ -29,7 +31,7 @@ Sie müssen zunächst den entsprechenden Ressourcenanbieter und -typ ermitteln, 
 Verwenden Sie für PowerShell Folgendes:
 
 ```azurepowershell-interactive
-Get-AzureRmResource -ResourceGroupName demogroup | Select Name, ResourceType | Format-table
+Get-AzResource -ResourceGroupName demogroup | Select Name, ResourceType | Format-table
 ```
 
 Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
@@ -51,12 +53,12 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| servers | JA | JA |
+| servers | Ja | Ja |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | --------------- | ----------- |
-| service | JA | JA |
+| service | Ja | Ja |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -66,19 +68,19 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| automationaccounts | JA | JA |
-| automationaccounts/configurations | JA | JA |
-| automationaccounts/runbooks | JA | JA |
+| automationaccounts | Ja | Ja |
+| automationaccounts/configurations | Ja | Ja |
+| automationaccounts/runbooks | Ja | Ja |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| b2cdirectories | JA | JA |
+| b2cdirectories | Ja | Ja |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| registrations | JA | JA |
+| registrations | Ja | Ja |
 
 ## <a name="microsoftbackup"></a>Microsoft.Backup
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -88,7 +90,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| batchaccounts | JA | JA |
+| batchaccounts | Ja | Ja |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -98,7 +100,7 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| biztalk | JA | JA |
+| biztalk | Ja | Ja |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -108,29 +110,29 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| botservices | JA | JA |
+| botservices | Ja | Ja |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| redis | JA | JA |
+| redis | Ja | Ja |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| profiles | JA | JA |
-| profiles/endpoints | JA | JA |
+| profiles | JA | Ja |
+| profiles/endpoints | Ja | Ja |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| certificateorders | JA | JA |
+| certificateorders | Ja | Ja |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| domainnames | JA | Nein  |
-| virtualmachines | JA | Nein  |
+| domainnames | Ja | Nein  |
+| virtualmachines | Ja | Nein  |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -142,29 +144,29 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| storageaccounts | JA | Nein  |
+| storageaccounts | Ja | Nein  |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| availabilitysets | JA | JA |
-| disks | JA | JA |
+| availabilitysets | Ja | Ja |
+| disks | Ja | Ja |
 | galleries | Nein  | Nein  |
 | galleries/images | Nein  | Nein  |
 | galleries/images/versions | Nein  | Nein  |
-| images | JA | JA |
+| images | Ja | Ja |
 | restorepointcollections | Nein  | Nein  |
 | sharedvmimages | Nein  | Nein  |
 | sharedvmimages/versions | Nein  | Nein  |
-| snapshots | JA | JA |
-| virtualmachines | JA | JA |
-| virtualmachines/extensions | JA | JA |
-| virtualmachinescalesets | JA | JA |
+| snapshots | Ja | Ja |
+| virtualmachines | Ja | Ja |
+| virtualmachines/extensions | Ja | Ja |
+| virtualmachinescalesets | Ja | Ja |
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -179,11 +181,11 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| registries | JA | JA |
-| registries/buildtasks | JA | JA |
+| registries | Ja | Ja |
+| registries/buildtasks | Ja | Ja |
 | registries/replications | Nein  | Nein  |
-| registries/tasks | JA | JA |
-| registries/webhooks | JA | JA |
+| registries/tasks | Ja | Ja |
+| registries/webhooks | Ja | Ja |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -195,17 +197,17 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| applications | JA | JA |
+| applications | JA | Ja |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| connectors | JA | JA |
+| connectors | JA | Ja |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| hubs | JA | JA |
+| hubs | Ja | Ja |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -225,13 +227,13 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| catalogs | JA | JA |
+| catalogs | Ja | Ja |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| datafactories | JA | JA |
-| factories | JA | JA |
+| datafactories | Ja | Ja |
+| factories | Ja | Ja |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -241,12 +243,12 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -263,13 +265,13 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| servers | JA | JA |
+| servers | Ja | Ja |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
 | servergroups | Nein  | Nein  |
-| servers | JA | JA |
+| servers | Ja | Ja |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -283,16 +285,16 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| iothubs | JA | JA |
-| provisioningservices | JA | JA |
+| iothubs | Ja | Ja |
+| provisioningservices | Ja | Ja |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
 | labcenters | Nein  | Nein  |
-| labs | JA | Nein  |
-| labs/servicerunners | JA | JA |
-| labs/virtualmachines | JA | Nein  |
+| labs | Ja | Nein  |
+| labs/servicerunners | Ja | Ja |
+| labs/virtualmachines | Ja | Nein  |
 | schedules | Nein  | Nein  |
 
 ## <a name="microsoftdns"></a>microsoft.dns
@@ -311,28 +313,28 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| databaseaccounts | JA | JA |
+| databaseaccounts | Ja | Ja |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| domains | JA | JA |
+| domains | Ja | Ja |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| topics | JA | JA |
+| topics | Ja | Ja |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| clusters | JA | JA |
-| namespaces | JA | JA |
+| clusters | Ja | Ja |
+| namespaces | Ja | Ja |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| hanainstances | JA | JA |
+| hanainstances | Ja | Ja |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -342,103 +344,103 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| clusters | JA | JA |
+| clusters | Ja | Ja |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| jobs | JA | JA |
+| jobs | Ja | Ja |
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| actiongroups | JA | JA |
+| actiongroups | Ja | Ja |
 | activitylogalerts | Nein  | Nein  |
-| alertrules | JA | JA |
-| autoscalesettings | JA | JA |
-| components | JA | JA |
+| alertrules | Ja | Ja |
+| autoscalesettings | Ja | Ja |
+| components | Ja | Ja |
 | metricalerts | Nein  | Nein  |
-| scheduledqueryrules | JA | JA |
-| webtests | JA | JA |
-| workbooks | JA | JA |
+| scheduledqueryrules | Ja | Ja |
+| webtests | Ja | Ja |
+| workbooks | Ja | Ja |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| iotapps | JA | JA |
+| iotapps | Ja | Ja |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| vaults | JA | JA |
+| vaults | Ja | Ja |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| clusters | JA | JA |
+| clusters | Ja | Ja |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| labaccounts | JA | JA |
+| labaccounts | Ja | Ja |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| integrationaccounts | JA | JA |
-| workflows | JA | JA |
+| integrationaccounts | Ja | Ja |
+| workflows | Ja | Ja |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| commitmentplans | JA | JA |
-| webservices | JA | Nein  |
-| workspaces | JA | JA |
+| commitmentplans | Ja | Ja |
+| webservices | Ja | Nein  |
+| workspaces | Ja | Ja |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| operationalizationclusters | JA | JA |
+| operationalizationclusters | Ja | Ja |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
-| accounts/workspaces | JA | JA |
-| accounts/workspaces/projects | JA | JA |
-| teamaccounts | JA | JA |
-| teamaccounts/workspaces | JA | JA |
-| teamaccounts/workspaces/projects | JA | JA |
+| accounts | Ja | Ja |
+| accounts/workspaces | Ja | Ja |
+| accounts/workspaces/projects | Ja | Ja |
+| teamaccounts | Ja | Ja |
+| teamaccounts/workspaces | Ja | Ja |
+| teamaccounts/workspaces/projects | Ja | Ja |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| workspaces | JA | JA |
+| workspaces | Ja | Ja |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| userassignedidentities | JA | JA |
+| userassignedidentities | Ja | Ja |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| accounts | JA | JA |
+| accounts | Ja | Ja |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -448,9 +450,9 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| mediaservices | JA | JA |
-| mediaservices/liveevents | JA | JA |
-| mediaservices/streamingendpoints | JA | JA |
+| mediaservices | Ja | Ja |
+| mediaservices/liveevents | Ja | Ja |
+| mediaservices/streamingendpoints | Ja | Ja |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -461,85 +463,85 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
 | applicationgateways | Nein  | Nein  |
-| applicationsecuritygroups | JA | JA |
+| applicationsecuritygroups | Ja | Ja |
 | azurefirewalls | Nein  | Nein  |
-| connections | JA | JA |
+| connections | Ja | Ja |
 | ddosprotectionplans | Nein  | Nein  |
-| dnszones | JA | JA |
+| dnszones | Ja | Ja |
 | expressroutecircuits | Nein  | Nein  |
 | expressroutecrossconnections | Nein  | Nein  |
 | expressroutegateways | Nein  | Nein  |
 | expressrouteports | Nein  | Nein  |
-| frontdoors | JA | JA |
-| frontdoorwebapplicationfirewallpolicies | JA | JA |
+| frontdoors | Ja | Ja |
+| frontdoorwebapplicationfirewallpolicies | Ja | Ja |
 | interfaceendpoints | Nein  | Nein  |
-| loadbalancers | JA | JA |
-| localnetworkgateways | JA | JA |
-| networkintentpolicies | JA | JA |
-| networkinterfaces | JA | JA |
+| loadbalancers | Ja | Ja |
+| localnetworkgateways | Ja | Ja |
+| networkintentpolicies | Ja | Ja |
+| networkinterfaces | Ja | Ja |
 | networkprofiles | Nein  | Nein  |
-| networksecuritygroups | JA | JA |
-| networkwatchers | JA | JA |
-| networkwatchers/connectionmonitors | JA | JA |
-| networkwatchers/lenses | JA | JA |
-| networkwatchers/pingmeshes | JA | JA |
-| publicipaddresses | JA | JA |
-| publicipprefixes | JA | JA |
+| networksecuritygroups | Ja | Ja |
+| networkwatchers | Ja | Ja |
+| networkwatchers/connectionmonitors | Ja | Ja |
+| networkwatchers/lenses | Ja | Ja |
+| networkwatchers/pingmeshes | Ja | Ja |
+| publicipaddresses | Ja | Ja |
+| publicipprefixes | Ja | Ja |
 | routefilters | Nein  | Nein  |
-| routetables | JA | JA |
-| serviceendpointpolicies | JA | JA |
-| trafficmanagerprofiles | JA | JA |
-| virtualhubs | JA | JA |
-| virtualnetworkgateways | JA | JA |
-| virtualnetworks | JA | JA |
+| routetables | Ja | Ja |
+| serviceendpointpolicies | Ja | Ja |
+| trafficmanagerprofiles | Ja | Ja |
+| virtualhubs | Ja | Ja |
+| virtualnetworkgateways | Ja | Ja |
+| virtualnetworks | Ja | Ja |
 | virtualnetworktaps | Nein  | Nein  |
-| virtualwans | JA | JA |
-| vpngateways | JA | JA |
-| vpnsites | JA | JA |
-| webapplicationfirewallpolicies | JA | JA |
+| virtualwans | Ja | Ja |
+| vpngateways | Ja | Ja |
+| vpnsites | Ja | Ja |
+| webapplicationfirewallpolicies | Ja | Ja |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| namespaces | JA | JA |
-| namespaces/notificationhubs | JA | JA |
+| namespaces | Ja | Ja |
+| namespaces/notificationhubs | Ja | Ja |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| workspaces | JA | JA |
+| workspaces | Ja | Ja |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| managementconfigurations | JA | JA |
-| solutions | JA | JA |
-| views | JA | JA |
+| managementconfigurations | Ja | Ja |
+| solutions | Ja | JA |
+| views | JA | Ja |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| dashboards | JA | JA |
+| dashboards | Ja | Ja |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| workspacecollections | JA | JA |
+| workspacecollections | Ja | Ja |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| capacities | JA | JA |
+| capacities | Ja | Ja |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| vaults | JA | JA |
+| vaults | Ja | Ja |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| namespaces | JA | JA |
+| namespaces | Ja | Ja |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -549,35 +551,35 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| flows | JA | JA |
-| jobcollections | JA | JA |
+| flows | Ja | Ja |
+| jobcollections | Ja | Ja |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| searchservices | JA | JA |
+| searchservices | Ja | Ja |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| namespaces | JA | JA |
+| namespaces | Ja | Ja |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| clusters | JA | JA |
+| clusters | Ja | Ja |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
 | applications | JA | JA |
-| networks | JA | JA |
-| volumes | JA | JA |
+| networks | Ja | Ja |
+| volumes | Ja | Ja |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| signalr | JA | JA |
+| signalr | Ja | Ja |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -595,22 +597,22 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| managedinstances | JA | JA |
-| managedinstances/databases | JA | JA |
-| servers | JA | JA |
-| servers/databases | JA | JA |
-| servers/elasticpools | JA | JA |
-| virtualclusters | JA | JA |
+| managedinstances | Ja | Ja |
+| managedinstances/databases | Ja | Ja |
+| servers | Ja | Ja |
+| servers/databases | Ja | Ja |
+| servers/elasticpools | Ja | Ja |
+| virtualclusters | Ja | Ja |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| storageaccounts | JA | JA |
+| storageaccounts | Ja | Ja |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| storagesyncservices | JA | JA |
+| storagesyncservices | Ja | Ja |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -620,40 +622,40 @@ Wenn Sie den Ressourcenanbieter und den Ressourcentyp gefunden haben, verwenden 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| streamingjobs | JA | JA |
+| streamingjobs | Ja | Ja |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| environments | JA | JA |
-| environments/eventsources | JA | JA |
-| environments/referencedatasets | JA | JA |
+| environments | Ja | Ja |
+| environments/eventsources | Ja | Ja |
+| environments/referencedatasets | Ja | Ja |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| account | JA | JA |
-| account/extension | JA | JA |
-| account/project | JA | JA |
+| account | JA | Ja |
+| account/extension | Ja | Ja |
+| account/project | Ja | Ja |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| certificates | Nein  | JA |
+| certificates | Nein  | Ja |
 | classicmobileservices | Nein  | Nein  |
-| connectiongateways | JA | JA |
-| connections | JA | JA |
-| customapis | JA | JA |
+| connectiongateways | Ja | Ja |
+| connections | Ja | Ja |
+| customapis | Ja | Ja |
 | hostingenvironments | Nein  | Nein  |
-| serverfarms | JA | JA |
-| sites | JA | JA |
-| sites/premieraddons | JA | JA |
-| sites/slots | JA | JA |
+| serverfarms | Ja | Ja |
+| sites | Ja | Ja |
+| sites/premieraddons | Ja | Ja |
+| sites/slots | Ja | Ja |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | -------------- | ------------ |
-| deviceservices | JA | JA |
+| deviceservices | Ja | Ja |
 
 
 ## <a name="third-party-services"></a>Dienste von Drittanbietern

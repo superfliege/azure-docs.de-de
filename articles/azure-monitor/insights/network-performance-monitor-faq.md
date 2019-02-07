@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 554d837d9fa70c2af581f9b582001c7f32d442e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232341"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734554"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -134,7 +134,7 @@ Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jede
 Der Netzwerkleistungsmonitor kann die Konnektivität mit Diensten in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welche Regionen werden für den ExpressRoute-Monitor des Netzwerkleistungsmonitors unterstützt?
-Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](/azure/expressroute/how-to-npm#regions) gehostet werden muss.
+Der Netzwerkleistungsmonitor kann die ExpressRoute-Leitungen in jeder Azure-Region überwachen. Zur Integration in den Netzwerkleistungsmonitor benötigen Sie einen Log Analytics-Arbeitsbereich, der in einer der [unterstützten Regionen](/azure/expressroute/how-to-npm) gehostet werden muss.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

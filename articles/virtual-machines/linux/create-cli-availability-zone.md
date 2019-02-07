@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: c202379f236bcd2fea05ad9d135096bc724898e7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956420"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700620"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
 
@@ -29,13 +29,13 @@ In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Linux-Compu
 
 Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden.
 
-Stellen Sie sicher, dass Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und über [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
+Stellen Sie sicher, dass Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und über [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sind.
 
 
 ## <a name="check-vm-sku-availability"></a>Überprüfen der VM-SKU-Verfügbarkeit
 Die Verfügbarkeit von VM-Größen bzw. SKUs kann je nach Region und Zone variieren. Als Hilfe bei der Planung zur Verwendung von Verfügbarkeitszonen können Sie die verfügbaren VM-SKUs nach Azure-Region und -Zone auflisten. Hierdurch wird sichergestellt, dass Sie eine geeignete VM-Größe wählen und die gewünschte zonenübergreifende Resilienz erzielen. Weitere Informationen zu den verschiedenen VM-Typen und -Größen finden Sie unter [Übersicht über VM-Größen](sizes.md).
 
-Sie können die verfügbaren VM SKUs mit dem Befehl [az vm list-skus](/cli/azure/vm#az_vm_list_skus) auflisten. Im folgenden Beispiel werden die verfügbaren VM-SKUs in der Region *eastus2* aufgeführt:
+Sie können die verfügbaren VM SKUs mit dem Befehl [az vm list-skus](/cli/azure/vm) auflisten. Im folgenden Beispiel werden die verfügbaren VM-SKUs in der Region *eastus2* aufgeführt:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -62,7 +62,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe.  
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe.  
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus2* erstellt. „USA, Osten 2“ ist eine der Azure-Regionen, die Verfügbarkeitszonen unterstützen.
 
@@ -74,7 +74,7 @@ Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. 
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm) einen virtuellen Computer. 
 
 Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Festlegen der Datenträgergröße und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen *myVM* erstellt, auf dem Ubuntu Server ausgeführt wird. Der virtuelle Computer wird in der Verfügbarkeitszone *1* erstellt. Standardmäßig wird der virtuelle Computer mit der Größe *Standard_DS1_v2* erstellt.
 
@@ -102,7 +102,7 @@ Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtue
 
 Bei der Bereitstellung des virtuellen Computers in einer Verfügbarkeitszone wird in der gleichen Verfügbarkeitszone ein verwalteter Datenträger bereitgestellt. Standardmäßig wird in dieser Zone ebenfalls eine öffentliche IP-Adresse erstellt. Die folgenden Beispiele rufen Informationen zu diesen Ressourcen ab.
 
-Um sicherzustellen, dass der verwaltete Datenträger des virtuellen Computers sich in der Verfügbarkeitszone befindet, verwenden Sie den Befehl [az vm show](/cli/azure/vm#az_vm_show), um die Datenträger-ID zurückzugeben. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird. 
+Um sicherzustellen, dass der verwaltete Datenträger des virtuellen Computers sich in der Verfügbarkeitszone befindet, verwenden Sie den Befehl [az vm show](/cli/azure/vm), um die Datenträger-ID zurückzugeben. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -149,7 +149,7 @@ Die Ausgabe zeigt, dass sich der verwaltete Datenträger in der gleichen Verfüg
 }
 ```
 
-Verwenden Sie den Befehl [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses), um den Namen der öffentlichen IP-Adresse in *myVM* zurückzugeben. In diesem Beispiel wird der Name in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird.
+Verwenden Sie den Befehl [az vm list-ip-addresses](/cli/azure/vm), um den Namen der öffentlichen IP-Adresse in *myVM* zurückzugeben. In diesem Beispiel wird der Name in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird.
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)

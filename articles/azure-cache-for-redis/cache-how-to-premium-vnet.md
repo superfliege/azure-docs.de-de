@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c92b71a8f2b9fbeae9afc5f06b6d5412f6421a6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e71d92b2cf7888fd9e3c560beb6e0e7f18e7add0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021795"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822645"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
-Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNET ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
+Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
 
 > [!NOTE]
 > Azure Cache for Redis unterstützt sowohl klassische als auch Ressourcen-Manager-VNETs.
@@ -83,11 +83,11 @@ Um bei Verwenden eines VNET eine Verbindung mit Ihrer Azure Cache for Redis-Inst
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Häufig gestellte Fragen zu VNETs und Azure Cache for Redis
 Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierung von Azure Cache for Redis-Instanzen.
 
-* [Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Cache for Redis und VNETs auf?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Cache for Redis und VNETs auf?
 * [Wie kann ich sicherstellen, dass mein Cache in einem VNET funktioniert?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [Warum erhalte ich beim Versuch, eine Verbindung mit Azure Cache for Redis in einem VNET herzustellen, die Fehlermeldung, dass das Remotezertifikat ungültig ist?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Kann ich VNets mit einem Standard-Cache oder Basic-Cache verwenden?](#can-i-use-vnets-with-a-standard-or-basic-cache)
-* [Warum misslingt das Erstellen einer Azure Cache for Redis-Instanz in einigen Subnetzen, aber in anderen nicht?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+* Warum misslingt das Erstellen einer Azure Cache for Redis-Instanz in einigen Subnetzen, aber in anderen nicht?
 * [Welche Anforderungen gelten für den Subnetzadressraum?](#what-are-the-subnet-address-space-requirements)
 * [Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 

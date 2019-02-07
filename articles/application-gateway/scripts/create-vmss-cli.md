@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 638aa3bf0e278ce00c124d8217a1bf9104e878fb
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: b2485b65c54bdd5dcd523226e17c180bf1eb86a6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413777"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734197"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Verwalten von Webdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -48,8 +48,8 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-net) | Erstellen Sie ein virtuelles Netzwerk. |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) | Erstellt ein Subnetz in einem virtuellen Netzwerk. |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Erstellen Sie ein virtuelles Netzwerk. |
+| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnetwork) | Erstellt ein Subnetz in einem virtuellen Netzwerk. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Erstellt die öffentliche IP-Adresse für das Anwendungsgateway. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Erstellen eines Anwendungsgateways |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | Erstellt eine VM-Skalierungsgruppe. |

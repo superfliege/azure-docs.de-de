@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863532"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567008"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Erste Schritte mit Aufträgen für die elastische Datenbank
 
@@ -269,7 +269,7 @@ Für die standardmäßige Ausführungsrichtlinie werden diese Werte verwendet:
 
 * Name: Standardausführungsrichtlinie
 * Auftragstimeout: 1 Woche
-* Anfängliches Wiederholungsintervall:  100 ms
+* Anfängliches Wiederholungsintervall:  100 Millisekunden
 * Maximales Wiederholungsintervall: 30 Minuten
 * Wiederholungsintervallkoeffizient: 2
 * Versuche maximal: 2.147.483.647

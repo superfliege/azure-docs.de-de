@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 64aa936dc1dbb1d2a700a31253cf7a3caee6b66f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436773"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663603"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -51,9 +51,9 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 
     |Einstellung|Erforderlich?|Details|
     |---|---|---|
-    |NAME|JA|Muss für die Netzwerkschnittstelle eindeutig sein|
-    |Typ|JA|Da Sie die IP-Konfiguration einer vorhandenen Netzwerkschnittstelle hinzufügen und jede Netzwerkschnittstelle über eine [primäre](#primary) IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
-    |Zuweisungsmethode für private IP-Adressen|JA|[**Dynamisch**](#dynamic): Azure weist die nächste verfügbare Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird. [**Statisch**](#static): Sie weisen eine nicht verwendete Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird.|
+    |NAME|Ja|Muss für die Netzwerkschnittstelle eindeutig sein|
+    |Type|Ja|Da Sie die IP-Konfiguration einer vorhandenen Netzwerkschnittstelle hinzufügen und jede Netzwerkschnittstelle über eine [primäre](#primary) IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
+    |Zuweisungsmethode für private IP-Adressen|Ja|[**Dynamisch**](#dynamic): Azure weist die nächste verfügbare Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird. [**Statisch**](#static): Sie weisen eine nicht verwendete Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird.|
     |Öffentliche IP-Adresse|Nein |**Deaktiviert:** Der IP-Konfiguration ist derzeit keine öffentliche IP-Adressressource zugeordnet. **Aktiviert:** Wählen Sie eine vorhandene öffentliche IPv4-Adresse aus, oder erstellen Sie eine neue. Eine Anleitung zur Erstellung einer öffentlichen IP-Adresse finden Sie im Artikel [Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address) (Öffentliche IP-Adressen).|
 6. Fügen Sie dem Betriebssystem des virtuellen Computers manuell sekundäre private IP-Adressen hinzu. Gehen Sie dabei wie im Artikel [Zuweisen von mehreren IP-Adressen zu Betriebssystemen virtueller Computer](virtual-network-multiple-ip-addresses-portal.md#os-config) beschrieben vor. Spezielle Überlegungen vor dem manuellen Hinzufügen von IP-Adressen zum Betriebssystem virtueller Computer finden Sie unter [private](#private) IP-Adressen. Fügen Sie dem Betriebssystem des virtuellen Computers keine öffentlichen IP-Adressen hinzu.
 
@@ -61,7 +61,7 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Ändern von IP-Adresseinstellungen
@@ -82,7 +82,7 @@ Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Ad
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Entfernen von IP-Adressen
@@ -98,7 +98,7 @@ Sie können [private](#private) und [öffentliche](#public) IP-Adressen von eine
 
 |Tool|Get-Help|
 |---|---|
-|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|Befehlszeilenschnittstelle (CLI)|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP-Konfigurationen
@@ -144,7 +144,7 @@ Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betr
 4. Starten Sie den virtuellen Computer.
 5. [Konfigurieren Sie manuell](virtual-network-multiple-ip-addresses-portal.md#os-config) die sekundären IP-Adressen innerhalb des Betriebssystems (und auch die primäre IP-Adresse in Windows), damit diese mit Ihren Einstellungen in Azure übereinstimmen.
 
-Wenn Sie die angegebenen Schritte befolgen, bleibt die zugewiesene private IP-Adresse der Netzwerkschnittstelle in Azure und im Betriebssystem des virtuellen Computers unverändert. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) hinzufügen. Sie können beispielsweise „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
+Wenn Sie die angegebenen Schritte befolgen, bleibt die zugewiesene private IP-Adresse der Netzwerkschnittstelle in Azure und im Betriebssystem des virtuellen Computers unverändert. Zum Nachverfolgen der virtuelle Computer innerhalb Ihres Abonnements, für die Sie manuell IP-Adressen im Betriebssystem festgelegt haben, sollten Sie den virtuellen Computern ein Azure-[Tag](../azure-resource-manager/resource-group-using-tags.md) hinzufügen. Sie können beispielsweise „IP-Adresszuweisung: statisch“ verwenden. Auf diese Weise können Sie problemlos die virtuellen Computer in Ihrem Abonnement finden, für die Sie manuell die IP-Adresse innerhalb des Betriebssystems festgelegt haben.
 
 Zusätzlich zum Aktivieren der Kommunikation eines virtuellen Computers mit anderen Ressourcen innerhalb desselben Netzwerks oder in verbundenen virtuellen Netzwerken ermöglicht eine private IP-Adresse einem virtuellen Computer auch die ausgehende Kommunikation mit dem Internet. Für ausgehende Verbindungen erfolgt durch Azure eine Übersetzung der Quellnetzwerkadresse in eine nicht vorhersagbare öffentliche IP-Adresse. Weitere Informationen zu ausgehenden Internetverbindungen in Azure finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aus dem Internet ist keine eingehende Kommunikation mit dem privaten IP-Adressbereich eines virtuellen Computers möglich. Wenn Ihre ausgehenden Verbindungen eine vorhersagbare öffentliche IP-Adresse erfordern, ordnen Sie einer Netzwerkschnittstelle eine öffentliche IP-Adressressource zu.
 

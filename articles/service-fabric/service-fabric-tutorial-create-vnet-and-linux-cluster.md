@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: b494da1c87feafd1b9db8485d16a9dcf5b999e3d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 265e99d18d8660f149d33b1b4a37a7d32eae794d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101804"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755194"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -137,7 +137,7 @@ Richten Sie als Nächstes die Netzwerktopologie ein, und stellen Sie den Service
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Erstellen eines Clusters mit einem vorhandenen Zertifikat
 
-Im folgenden Skript werden der Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) und eine Vorlage verwendet, um einen neuen Cluster bereitzustellen, der durch ein vorhandenes Zertifikat geschützt ist. Außerdem wird mit dem Befehl ein neuer Schlüsseltresor in Azure erstellt und Ihr Zertifikat hochgeladen.
+Im folgenden Skript werden der Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) und eine Vorlage verwendet, um einen neuen Cluster bereitzustellen, der durch ein vorhandenes Zertifikat geschützt ist. Außerdem wird mit dem Befehl ein neuer Schlüsseltresor in Azure erstellt und Ihr Zertifikat hochgeladen.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -163,7 +163,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Erstellen eines Clusters mit einem neuen selbstsignierten Zertifikat
 
-Das folgende Skript verwendet den Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) und eine Vorlage, um einen neuen Cluster in Azure bereitzustellen. Der Befehl erstellt auch einen neuen Schlüsseltresor in Azure, fügt diesem ein neues selbstsigniertes Zertifikat hinzu und lädt das Zertifikat an einen lokalen Speicherort herunter.
+Das folgende Skript verwendet den Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) und eine Vorlage, um einen neuen Cluster in Azure bereitzustellen. Der Befehl erstellt auch einen neuen Schlüsseltresor in Azure, fügt diesem ein neues selbstsigniertes Zertifikat hinzu und lädt das Zertifikat an einen lokalen Speicherort herunter.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

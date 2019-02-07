@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694448f6e3c788c0c9d336e75d5df579b90137df
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: be4549b8b9cca3f4aa48a21fb9377dbd203dde69
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189866"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751122"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Tutorial: Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker
 
@@ -69,7 +69,7 @@ runcmd:
   - service jenkins restart
 ```
 
-Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe erstellen. In folgendem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupJenkins* am Standort *eastus* erstellt:
+Vor der Erstellung eines virtuellen Computers müssen Sie zunächst mit [az group create](/cli/azure/group) eine Ressourcengruppe erstellen. In folgendem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupJenkins* am Standort *eastus* erstellt:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
@@ -88,7 +88,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 Die Erstellung und Konfigurieren der VM dauert einige Minuten.
 
-Verwenden Sie [az vm open-port](/cli/azure/vm#az_vm_open_port), um Port *8080* für den Jenkins-Datenverkehr zu öffnen, und verwenden Sie Port *1337* für die Anwendung „node.js“, die zum Ausführen einer Beispiel-App verwendet wird. Damit lassen Sie den Webdatenverkehr zu:
+Verwenden Sie [az vm open-port](/cli/azure/vm), um Port *8080* für den Jenkins-Datenverkehr zu öffnen, und verwenden Sie Port *1337* für die Anwendung „node.js“, die zum Ausführen einer Beispiel-App verwendet wird. Damit lassen Sie den Webdatenverkehr zu:
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001
@@ -160,7 +160,7 @@ Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs**
 
 Kehren Sie zur GitHub-Web-UI zurück, und wählen Sie Ihr verzweigtes Repository aus. Wählen Sie anschließend die Datei **index.js** aus. Wählen Sie das Stiftsymbol, um diese Datei zu bearbeiten, sodass in der sechsten Zeile Folgendes steht:
 
-```nodejs
+```javascript
 response.end("Hello World!");
 ```
 

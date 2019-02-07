@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.openlocfilehash: 9e6ebd45f08d2479c73e0753fe1e8df3455df1e1
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 381958b462b668447a6548029a1be616df7a3a4b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265293"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750221"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
 
-Besuchen Sie [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster), um Informationen zum Erstellen der Domänenbenutzer **sales_user** und **marketing_user** zu erhalten. In einem Produktionsszenario stammen Domänenbenutzer aus Ihrem Active Directory-Mandanten.
+Besuchen Sie [Erstellen eines in die Domäne eingebundenen HDInsight-Clusters](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds), um Informationen zum Erstellen der Domänenbenutzer **sales_user** und **marketing_user** zu erhalten. In einem Produktionsszenario stammen Domänenbenutzer aus Ihrem Active Directory-Mandanten.
 
 ## <a name="create-ranger-policy"></a>Erstellen der Ranger-Richtlinie
 

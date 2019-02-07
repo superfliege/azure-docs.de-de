@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: fdd5e3577c91f288919b7223287d2d3722f0259c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e07937710dd36c14e7118caf6028a161ad7dc4ee
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543443"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753621"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Linux-Computer
 
@@ -74,7 +74,7 @@ Verwenden Sie Self-Service-Wartung am besten in den folgenden Fällen:
 
 ## <a name="find-vms-scheduled-for-maintenance-using-cli"></a>Ermitteln der virtuellen Computer mit geplanter Wartung über die Befehlszeilenschnittstelle
 
-Informationen zu geplanten Wartungen können mithilfe von [azure vm get-instance-view](/cli/azure/vm?view=azure-cli-latest#az_vm_get_instance_view) angezeigt werden.
+Informationen zu geplanten Wartungen können mithilfe von [azure vm get-instance-view](/cli/azure/vm?view=azure-cli-latest) angezeigt werden.
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung für den virtuellen Computer geplant, gibt der Befehl keine Wartungsinformationen zurück. 
 

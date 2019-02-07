@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 7d79e81f8670492d025727ed76d7d529dbd4719d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188319"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756473"
 ---
 # <a name="get-trending-images-from-the-web"></a>Abrufen von beliebten Bildern aus dem Web
 
@@ -90,7 +90,7 @@ Die Antwort enthält einen [TrendingImages](https://docs.microsoft.com/rest/api/
 
 Jede Kachel enthält ein Bild und die Optionen zum Abrufen verwandter Bilder. Um die verwandten Bilder zu erhalten, können Sie die Abfrage `text` verwenden, um die [Bildersuche-API](./search-the-web.md) aufzurufen und die verwandten Bilder selbst anzuzeigen. Alternativ können Sie die URL im `webSearchUrl` verwenden, um den Benutzer zur Seite der Bildersuchergebnisse von Bing zu leiten, auf der die verwandten Bilder zu finden sind.
 
-Wenn Sie die Bildersuche-API zum Abrufen der verwandten Bilder aufrufen, legen Sie für den [Id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id)-Abfrageparameter die ID im `id`-Feld fest. Durch die Angabe der ID wird sichergestellt, dass die Antwort das Bild (es ist das erste Bild in der Antwort) und die verwandten Bilder enthält. Legen Sie außerdem für den [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) -Abfrageparameter den Text im `text`-Feld des `query`-Objekts fest.
+Wenn Sie die Bildersuche-API zum Abrufen der verwandten Bilder aufrufen, legen Sie für den [Id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id)-Abfrageparameter die ID im `id`-Feld fest. Durch die Angabe der ID wird sichergestellt, dass die Antwort das Bild (es ist das erste Bild in der Antwort) und die verwandten Bilder enthält. Legen Sie außerdem für den [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) -Abfrageparameter den Text im `text`-Feld des `query`-Objekts fest.
 
 Das folgende Beispiel zeigt, wie die Bild-ID verwendet wird, um verwandte Bilder von Mr. Smith in der vorhergehenden Antwort der API für beliebte Bilder zu erhalten.
 

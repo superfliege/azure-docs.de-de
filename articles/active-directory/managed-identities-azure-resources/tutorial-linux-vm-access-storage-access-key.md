@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
-ms.openlocfilehash: 7617b19fe4f59b582b878d5dfe365810963ff51e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b27553e16225a7bc0d9ca74c7ec013a231d64e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158093"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755467"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage über Zugriffsschlüssel
 
@@ -198,4 +198,4 @@ Antwort:
 In diesem Tutorial haben Sie gelernt, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage unter Verwendung eines Zugriffsschlüssels erstellen.  Weitere Informationen zu Azure Storage-Zugriffsschlüsseln finden Sie hier:
 
 > [!div class="nextstepaction"]
->[Verwalten von Speicherzugriffsschlüsseln](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[Verwalten von Speicherzugriffsschlüsseln](/azure/storage/common/storage-create-storage-account)

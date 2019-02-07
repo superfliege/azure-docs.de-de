@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b5b6f1a1cbd4c06106b7817f9fc28d8d4a9cfc06
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f537ccfd18685cd5aa8ee06910fc80ac3d2056c9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306334"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750408"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die Python-API
 
@@ -170,7 +170,7 @@ Die Anzahl von Knoten und die VM-Größe werden mit definierten Konstanten festg
 
 Zusätzlich zu den Eigenschaften des physischen Knotens enthält diese Poolkonfiguration ein [StartTask](/python/api/azure.batch.models.starttask)-Objekt. Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. In diesem Beispiel führt die StartTask Bash-Shellbefehle aus, um das ffmpeg-Paket und Abhängigkeiten auf den Knoten zu installieren.
 
-Mit der [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add)-Methode wird der Pool an den Batch-Dienst übermittelt.
+Mit der [pool.add](/python/api/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -200,7 +200,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Für einen Batch-Auftrag werden ein Pool zum Ausführen von Aufgaben und optionale Einstellungen wie eine Priorität und ein Zeitplan für die Arbeitsschritte angegeben. Im Beispiel wird ein Auftrag mit einem Aufruf von `create_job` erstellt. Bei dieser definierten Funktion wird die [JobAddParameter](/python/api/azure.batch.models.jobaddparameter)-Klasse verwendet, um einen Auftrag in Ihrem Pool zu erstellen. Mit der [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add)-Methode wird der Pool an den Batch-Dienst übermittelt. Der Auftrag enthält ursprünglich keine Aufgaben.
+Für einen Batch-Auftrag werden ein Pool zum Ausführen von Aufgaben und optionale Einstellungen wie eine Priorität und ein Zeitplan für die Arbeitsschritte angegeben. Im Beispiel wird ein Auftrag mit einem Aufruf von `create_job` erstellt. Bei dieser definierten Funktion wird die [JobAddParameter](/python/api/azure.batch.models.jobaddparameter)-Klasse verwendet, um einen Auftrag in Ihrem Pool zu erstellen. Mit der [job.add](/python/api/azure.batch.operations.joboperations)-Methode wird der Pool an den Batch-Dienst übermittelt. Der Auftrag enthält ursprünglich keine Aufgaben.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -216,7 +216,7 @@ Die App erstellt Aufgaben im Auftrag per Aufruf von `add_tasks`. Diese benutzerd
 
 Im Beispiel wird nach der Ausführung über die Befehlszeile ein [OutputFile](/python/api/azure.batch.models.outputfile)-Objekt für die MP3-Datei erstellt. Die Ausgabedateien (in diesem Fall eine Datei) jeder Aufgabe werden in einen Container im verknüpften Speicherkonto hochgeladen, indem die `output_files`-Eigenschaft der Aufgabe verwendet wird.
 
-Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
+Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
 
 ```python
 tasks = list()

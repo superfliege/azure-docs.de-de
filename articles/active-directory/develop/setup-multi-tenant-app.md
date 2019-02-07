@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: b9e12f159f62d08056e3dbd54d9ba8ccc3773533
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 30e56c85023aeb1cb4c6ba7575005a5dac086cd7
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100868"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755491"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Konfigurieren einer neuen mehrinstanzenfähige Anwendung
 
 Im Folgenden finden Sie eine Liste mit empfohlenen Themen und weiterführende Informationen zu mehrinstanzenfähigen Anwendungen:
 
 - Allgemeine Übersicht über [mehrinstanzenfähige Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
-- Allgemeine Übersicht über [die Konfiguration mehrinstanzenfähiger Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-multi-tenant-applications)
-- Eine ausführliche Übersicht über das [Implementieren der Zustimmung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework), das für mehrinstanzenfähige Anwendungen erforderlich ist
+- Allgemeine Übersicht über [die Konfiguration mehrinstanzenfähiger Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+- Eine ausführliche Übersicht über das [Implementieren der Zustimmung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications), das für mehrinstanzenfähige Anwendungen erforderlich ist
 - Ausführlichere Informationen zur [Konfiguration mehrinstanzenfähiger Anwendungen und deren Programmierung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), einschließlich Informationen zum Registrieren, zum Verwenden des gemeinsamen Endpunkts, zur Implementierung von Benutzer- und Administratorzustimmung sowie zur Implementierung von fortgeschrittenen Szenarien mit mehreren Ebenen
 
 ## <a name="next-steps"></a>Nächste Schritte

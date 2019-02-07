@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229845"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729794"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -52,14 +52,14 @@ NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil de
 * Vereinigtes Königreich, Süden
 * US-Regierung Virginia
 
-Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Dokumentation](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions) verfügbar.
+Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Dokumentation](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117) verfügbar.
 
 
 ## <a name="set-up-and-configure"></a>Einrichten und Konfigurieren
 
 ### <a name="install-and-configure-agents"></a>Installieren und Konfigurieren von Agents 
 
-Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter [Verbinden von Windows-Computern mit Azure Log Analytics](../../azure-monitor/platform/om-agents.md) und [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../azure-monitor/platform/om-agents.md) beschrieben werden.
+Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter [Verbinden von Windows-Computern mit Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) und [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../azure-monitor/platform/om-agents.md) beschrieben werden.
 
 ### <a name="where-to-install-the-agents"></a>Bestimmen des Installationsorts für die Agents 
 

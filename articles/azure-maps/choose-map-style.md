@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c77467efbbc1c33be5bc2aaf3251a5803beee864
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 78e3f6a5f4a55fd4bf1925672205eb490e7c6b24
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317108"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695697"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Auswählen eines Kartenstils in Azure Maps
 
@@ -33,7 +33,7 @@ Mit dem Codeblock oben wird der Abonnementschlüssel festgelegt und ein Kartenob
 
 Mit dem Codeblock oben wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Im zweiten Codeblock wird die [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle)-Methode der Karte verwendet, um den Kartenstil auf „Satellit“ festzulegen.
+Im zweiten Codeblock wird die [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode der Karte verwendet, um den Kartenstil auf „Satellit“ festzulegen.
 
 ## <a name="add-the-style-picker"></a>Hinzufügen der Stilauswahl
 
@@ -44,7 +44,7 @@ Mit dem ersten Codeblock im Code oben wird der Abonnementschlüssel festgelegt u
 
 Im zweiten Codeblock wird mithilfe des Atlas-[StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol)-Konstruktors eine Stilauswahl erstellt.
 
-Mit einer Stilauswahl können Sie den Stil für die Karte auswählen. Im dritten Codeblock wird der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode der Karte die Stilauswahl hinzugefügt. Die Stilauswahl befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen wird.
+Mit einer Stilauswahl können Sie den Stil für die Karte auswählen. Im dritten Codeblock wird der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode der Karte die Stilauswahl hinzugefügt. Die Stilauswahl befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8e63b9854d9491ed2cbb2107c93237526a7f1ba8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243888"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766940"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Go in Azure Stack
 
@@ -68,7 +68,7 @@ So führen Sie ein Beispiel für Go-Code in Azure Stack aus
 
    > [!NOTE]  
    > Der **ResourceManagerUrl**-Wert im Azure Stack Development Kit (ASDK) lautet `https://management.local.azurestack.external/`.  
-   > Der **ResourceManagerUrl**-Wert in integrierten Systemen lautet `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.  
+   > Der **ResourceManagerUrl**-Wert in integrierten Systemen lautet `https://management.<region>.<fqdn>/`.  
    > Zum Abrufen der erforderlichen Metadaten verwenden Sie Folgendes: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
   
    JSON-Beispieldatei:
@@ -86,7 +86,7 @@ So führen Sie ein Beispiel für Go-Code in Azure Stack aus
 
 3. Erstellen Sie ein Abonnement, wenn keins verfügbar ist, und speichern Sie die Abonnement-ID zur späteren Verwendung. Informationen zum Erstellen eines Abonnements finden Sie unter [Erstellen von Abonnements für Angebote in Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
 
-4. Erstellen Sie einen Dienstprinzipal mit dem Bereich **Abonnement** und der Rolle **Besitzer**. Speichern Sie die ID und das Geheimnis des Dienstprinzipals. Informationen zum Erstellen eines Dienstprinzipals für Azure Stack finden Sie unter [Erstellen eines Dienstprinzipals](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad). Ihre Azure Stack-Umgebung ist nun eingerichtet.
+4. Erstellen Sie einen Dienstprinzipal mit dem Bereich **Abonnement** und der Rolle **Besitzer**. Speichern Sie die ID und das Geheimnis des Dienstprinzipals. Informationen zum Erstellen eines Dienstprinzipals für Azure Stack finden Sie unter [Erstellen eines Dienstprinzipals](azure-stack-create-service-principals.md). Ihre Azure Stack-Umgebung ist nun eingerichtet.
 
 5. Importieren Sie ein Dienstmodul aus dem Go SDK-Profil in Ihren Code. Die aktuelle Version des Azure Stack-Profils ist **2017-03-09**. Verwenden Sie zum Importieren eines Netzwerkmoduls aus dem Profiltyp **2017-03-09** den folgenden Code:
 
@@ -126,7 +126,7 @@ So führen Sie ein Beispiel für Go-Code in Azure Stack aus
 
 Ein vollständiges Beispiel zum Erstellen eines virtuellen Netzwerks in Azure Stack mithilfe des Go SDK-Profils finden Sie im [Beispiel](#example).
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Installieren Sie die **Go-AutoRest**-Module, um mithilfe des Go SDK die **Authorizer**-Eigenschaft aus Azure Active Directory abzurufen. Diese Module sollten bereits bei der Installation des Go SDK installiert worden sein. Ist dies nicht der Fall, installieren Sie das [Authentifizierungspaket von GitHub](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 

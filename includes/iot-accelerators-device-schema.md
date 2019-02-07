@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dc87079083b8f07ad18f5f871bff64de8d492ebd
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285645"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701181"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>Die Komponenten des Gerätemodellschemas
 
@@ -105,7 +105,7 @@ Der Abschnitt `Properties` des Schemas definiert die Eigenschaftswerte, die das 
 }
 ```
 
-Wenn die Lösung startet, fragt sie alle simulierten Geräte ab, um Werte vom Typ `Type` für die Benutzeroberfläche zu erstellen. Die Lösung verwendet die Eigenschaften `Latitiude` und `Longitude`, um der Karte auf dem Dashboard den Speicherort des Geräts hinzuzufügen.
+Wenn die Lösung startet, fragt sie alle simulierten Geräte ab, um Werte vom Typ `Type` für die Benutzeroberfläche zu erstellen. Die Lösung verwendet die Eigenschaften `Latitude` und `Longitude`, um der Karte auf dem Dashboard den Speicherort des Geräts hinzuzufügen.
 
 ## <a name="telemetry"></a>Telemetrie
 
@@ -145,7 +145,7 @@ Derzeit können Sie nur JSON-Nachrichtenschemas verwenden. Die im Schema aufgef�
 * Boolescher Wert
 * Ganze Zahl 
 * Double
-* Datetime
+* DateTime
 
 Fügen Sie dem Array `Telemetry` mehrere Telemetrietypen hinzu, um Telemetrienachrichten in verschiedenen Intervallen zu senden. Im folgenden Beispiel werden die Daten zur Temperatur und Luftfeuchtigkeit alle 10 Sekunden und der Status des Lichts einmal pro Minute gesendet:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5015bd59a417481303c6ef2156feec9092a95a5b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 59ec8d4f93b18469818c9ead2e965679e41360ae
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464594"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694651"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI-Skriptbeispiele: Erstellen einer DNS-Zone und eines Eintrags
 
@@ -76,7 +76,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Erstellt eine Azure DNS-Zone. |
 | [az network dns record-set a add-record](/cli/azure/network/dns/record-set) | Fügt einer DNS-Zone einen *A*-Datensatz hinzu. |
-| [az network dns record-set list](/cli/azure/network/dns/record-set#az-network-dns-record-set-a-list) | Auflisten aller *A*-Datensätze in einer DNS-Zone. |
+| [az network dns record-set list](/cli/azure/network/dns/record-set) | Auflisten aller *A*-Datensätze in einer DNS-Zone. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

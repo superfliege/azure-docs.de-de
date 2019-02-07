@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016647"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661240"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
@@ -27,9 +27,6 @@ Derzeit unterstützen mit Ausnahme von benutzerdefinierten Aktivitäten alle Akt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Diese Funktion basiert auf der Data Factory-Dienstidentität. Informationen zur Funktionsweise finden Sie unter [Data factory service identity](data-factory-service-identity.md) (Data Factory-Dienstidentität). Stellen Sie sicher, dass Ihrer Data Factory eine Dienstidentität zugeordnet ist.
-
->[!TIP]
->Wenn Sie in Azure Key Vault ein Geheimnis erstellen, **verwenden Sie den gesamten Wert einer Geheimniseigenschaft, die der verknüpfte ADF-Dienst anfordert (z.B. Verbindungszeichenfolge/Kennwort/Dienstprinzipalschlüssel/usw.)**. Verwenden Sie beispielsweise für den verknüpften Azure Storage-Dienst `DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` als AKV-Geheimnis, und verweisen Sie im Feld „connectionString“ von ADF darauf. Verwenden Sie für den verknüpften Dynamics-Dienst `myPassword` als AKV-Geheimnis, und verweisen Sie im Feld „password“ von ADF darauf. Weitere Informationen zu den unterstützten Eigenschaften finden Sie in den einzelnen Connector-/Computeartikeln.
 
 ## <a name="steps"></a>Schritte
 
@@ -46,8 +43,8 @@ Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst u
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureKeyVault**. | JA |
-| baseUrl | Geben Sie die Azure Key Vault-URL an. | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureKeyVault**. | Ja |
+| baseUrl | Geben Sie die Azure Key Vault-URL an. | Ja |
 
 **Verwendung der Erstellungsbenutzeroberfläche:**
 
@@ -79,10 +76,10 @@ Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verk
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Felds muss auf folgenden Wert festgelegt werden: **AzureKeyVaultSecret**. | JA |
-| secretName | Der Name des Geheimnisses im Azure-Schlüsseltresor. | JA |
+| type | Die type-Eigenschaft des Felds muss auf folgenden Wert festgelegt werden: **AzureKeyVaultSecret**. | Ja |
+| secretName | Der Name des Geheimnisses im Azure-Schlüsseltresor. | Ja |
 | secretVersion | Die Version des Geheimnisses im Azure-Schlüsseltresor.<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein  |
-| store | Verweist auf einen mit Azure Key Vault verknüpften Dienst, in dem Sie die Anmeldeinformationen speichern. | JA |
+| store | Verweist auf einen mit Azure Key Vault verknüpften Dienst, in dem Sie die Anmeldeinformationen speichern. | Ja |
 
 **Verwendung der Erstellungsbenutzeroberfläche:**
 

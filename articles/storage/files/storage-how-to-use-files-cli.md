@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d1a83dfd96dd6d4c2b37567c745998a6f0cbdb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473509"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750969"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
 In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -34,7 +34,7 @@ az login
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Falls Sie nicht bereits über eine Azure-Ressourcengruppe verfügen, können Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe erstellen. 
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Falls Sie nicht bereits über eine Azure-Ressourcengruppe verfügen, können Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe erstellen. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *East US* (USA, Osten) erstellt:
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 Ein Speicherkonto ist ein gemeinsam genutzter Pool mit Speicherplatz, den Sie zum Bereitstellen von Azure-Dateifreigaben oder anderen Speicherressourcen wie Blobs oder Warteschlangen verwenden können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Dateifreigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
 
-Im folgenden Beispiel wird mit dem Befehl [az storage account create](/cli/azure/storage/account#create) ein Speicherkonto mit dem Namen *mystorageaccount\<Zufallszahl\>* erstellt und der Name dieses Speicherkontos dann in die Variable `$STORAGEACCT` eingefügt. Namen von Speicherkonten müssen eindeutig sein. Mit `$RANDOM` wird eine Zahl an den Speicherkontonamen angefügt, damit er eindeutig ist. 
+Im folgenden Beispiel wird mit dem Befehl [az storage account create](/cli/azure/storage/account) ein Speicherkonto mit dem Namen *mystorageaccount\<Zufallszahl\>* erstellt und der Name dieses Speicherkontos dann in die Variable `$STORAGEACCT` eingefügt. Namen von Speicherkonten müssen eindeutig sein. Mit `$RANDOM` wird eine Zahl an den Speicherkontonamen angefügt, damit er eindeutig ist. 
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -57,7 +57,7 @@ STORAGEACCT=$(az storage account create \
 ```
 
 ### <a name="get-the-storage-account-key"></a>Abrufen des Speicherkontoschlüssels
-Mit Speicherkontoschlüsseln wird in einem Speicherkonto den Zugriff auf die Ressourcen gesteuert. Die Schlüssel werden automatisch erstellt, wenn Sie ein Speicherkonto erstellen. Sie können die Speicherkontoschlüssel für Ihr Speicherkonto mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys#list) abrufen: 
+Mit Speicherkontoschlüsseln wird in einem Speicherkonto den Zugriff auf die Ressourcen gesteuert. Die Schlüssel werden automatisch erstellt, wenn Sie ein Speicherkonto erstellen. Sie können die Speicherkontoschlüssel für Ihr Speicherkonto mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys) abrufen: 
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
-Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Erstellen Sie Dateifreigaben mit dem Befehl [az storage share create](/cli/azure/storage/share#create). In diesem Beispiel wird eine Azure-Dateifreigabe mit dem Namen *myshare* erstellt: 
+Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Erstellen Sie Dateifreigaben mit dem Befehl [az storage share create](/cli/azure/storage/share). In diesem Beispiel wird eine Azure-Dateifreigabe mit dem Namen *myshare* erstellt: 
 
 ```azurecli-interactive
 az storage share create \
@@ -98,7 +98,7 @@ Die meisten Benutzer werden ihre Azure-Dateifreigabe in Azure Files wahrscheinli
 Die folgenden Beispiele zeigen, wie Sie über die Azure CLI Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. 
 
 ### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
-Verwenden Sie den Befehl [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:
+Verwenden Sie den Befehl [`az storage directory create`](/cli/azure/storage/directory), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen:
 
 ```azurecli-interactive
 az storage directory create \
@@ -109,7 +109,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Hochladen einer Datei
-Zum Demonstrieren eines Dateiuploads mit dem Befehl [`az storage file upload`](/cli/azure/storage/file#az_storage_file_upload) erstellen Sie zuerst eine Datei zum Hochladen auf das temporäre Cloud Shell-Laufwerk. Im folgenden Beispiel erstellen Sie die Datei und laden diese anschließend hoch:
+Zum Demonstrieren eines Dateiuploads mit dem Befehl [`az storage file upload`](/cli/azure/storage/file) erstellen Sie zuerst eine Datei zum Hochladen auf das temporäre Cloud Shell-Laufwerk. Im folgenden Beispiel erstellen Sie die Datei und laden diese anschließend hoch:
 
 ```azurecli-interactive
 date > ~/clouddrive/SampleUpload.txt
@@ -124,7 +124,7 @@ az storage file upload \
 
 Beim lokalen Ausführen der Azure CLI ersetzen Sie `~/clouddrive` durch einen Pfad, der auf Ihrem Computer vorhanden ist.
 
-Nach dem Hochladen der Datei können Sie mit dem Befehl [`az storage file list`](/cli/azure/storage/file#az_storage_file_list) sicherstellen, dass die Datei auf Ihre Azure-Dateifreigabe hochgeladen wurde:
+Nach dem Hochladen der Datei können Sie mit dem Befehl [`az storage file list`](/cli/azure/storage/file) sicherstellen, dass die Datei auf Ihre Azure-Dateifreigabe hochgeladen wurde:
 
 ```azurecli-interactive
 az storage file list \
@@ -136,7 +136,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Herunterladen einer Datei
-Sie können den Befehl [`az storage file download`](/cli/azure/storage/file#az_storage_file_download) verwenden, um eine Kopie der Datei herunterzuladen, die Sie auf das temporäre Cloud Shell-Laufwerk hochgeladen haben:
+Sie können den Befehl [`az storage file download`](/cli/azure/storage/file) verwenden, um eine Kopie der Datei herunterzuladen, die Sie auf das temporäre Cloud Shell-Laufwerk hochgeladen haben:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -191,7 +191,7 @@ Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchfüh
 
 - Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
 - Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS
-- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme, etwa NTFS und ReFS. Mit dem Befehl [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) können Sie eine Freigabemomentaufnahme erstellen:
+- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme, etwa NTFS und ReFS. Mit dem Befehl [`az storage share snapshot`](/cli/azure/storage/share) können Sie eine Freigabemomentaufnahme erstellen:
 
 ```azurecli-interactive
 SNAPSHOT=$(az storage share snapshot \
@@ -250,7 +250,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Löschen einer Freigabemomentaufnahme
-Mit dem Befehl [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) können Sie eine Freigabemomentaufnahme löschen. Verwenden Sie die Variable, die den `$SNAPSHOT`-Verweis auf den Parameter `--snapshot` enthält:
+Mit dem Befehl [`az storage share delete`](/cli/azure/storage/share) können Sie eine Freigabemomentaufnahme löschen. Verwenden Sie die Variable, die den `$SNAPSHOT`-Verweis auf den Parameter `--snapshot` enthält:
 
 ```azurecli-interactive
 az storage share delete \
@@ -261,7 +261,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie den Vorgang abgeschlossen haben, können Sie den Befehl [`az group delete`](/cli/azure/group#delete) verwenden, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen: 
+Wenn Sie den Vorgang abgeschlossen haben, können Sie den Befehl [`az group delete`](/cli/azure/group) verwenden, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen: 
 
 ```azurecli-interactive 
 az group delete --name "myResourceGroup"

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4d9a6b8bf2b6a9a50ee315d5150c15a18f37462d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974708"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696047"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -344,7 +344,7 @@ Eine Azure-Bereitstellung umfasst mehrere Stufen der Netzwerkisolation. Das folg
 
 **Isolation des Datenverkehrs:** Für die Azure-Plattform werden [virtuelle Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) verwendet, um Datenverkehr zu isolieren. Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren – selbst dann nicht, wenn beide virtuellen Netzwerke durch denselben Kunden erstellt werden. Isolation ist eine wichtige Eigenschaft, mit der sichergestellt wird, dass VMs und die Kommunikation von Kunden innerhalb eines virtuellen Netzwerks privat bleiben.
 
-[Subnetze](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) ermöglichen eine zusätzliche Isolationsstufe in virtuellen Netzwerken basierend auf dem IP-Bereich. Mit IP-Adressen im virtuellen Netzwerk können Sie ein virtuelles Netzwerk zu Organisations- und Sicherheitszwecken in mehrere Subnetze unterteilen. VMs und PaaS-Rolleninstanzen, die in (denselben oder unterschiedlichen) Subnetzen in einem VNet bereitgestellt werden, können ohne zusätzliche Konfiguration miteinander kommunizieren. Außerdem können Sie [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) konfigurieren, um Netzwerkdatenverkehr für eine VM-Instanz anhand von Regeln zuzulassen oder abzulehnen, die in der Zugriffssteuerungsliste (Access Control List, ACL) einer NSG konfiguriert sind. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz.
+[Subnetze](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ermöglichen eine zusätzliche Isolationsstufe in virtuellen Netzwerken basierend auf dem IP-Bereich. Mit IP-Adressen im virtuellen Netzwerk können Sie ein virtuelles Netzwerk zu Organisations- und Sicherheitszwecken in mehrere Subnetze unterteilen. VMs und PaaS-Rolleninstanzen, die in (denselben oder unterschiedlichen) Subnetzen in einem VNet bereitgestellt werden, können ohne zusätzliche Konfiguration miteinander kommunizieren. Außerdem können Sie [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) konfigurieren, um Netzwerkdatenverkehr für eine VM-Instanz anhand von Regeln zuzulassen oder abzulehnen, die in der Zugriffssteuerungsliste (Access Control List, ACL) einer NSG konfiguriert sind. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

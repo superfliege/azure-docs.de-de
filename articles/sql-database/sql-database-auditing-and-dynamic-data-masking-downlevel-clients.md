@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 607351718ddffbea5fa4dbbae333d81aac230f9a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 01/14/2019
+ms.openlocfilehash: 76fe764d828a7fa6e4ebb015f98b9af485d5df5f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258950"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567084"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Tabellenüberwachung
 
@@ -79,4 +79,4 @@ Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
 | Kanada, Mitte |13.88.248.106, 13.88.248.110 |
 | Kanada, Osten |40.86.227.82, 40.86.225.194 |
 | Großbritannien, Norden |13.87.101.18, 13.87.100.232 |
-| Großbritannien, Süden 2 |13.87.32.202, 13.87.32.226 |
+| Vereinigtes Königreich, Süden 2 |13.87.32.202, 13.87.32.226 |

@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 61da59fd570b9acc58dce89907eb5a1726a28de9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 55866d5ff28c707c26141683bb90c8f2873b17c8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104398"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818905"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Schnellstart: Entfernen einer bei Microsoft Identity Platform registrierten Anwendung (Vorschauversion)
 
@@ -29,8 +29,8 @@ Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service), die Anwendunge
 
 In diesem Schnellstart erfahren Sie, wie die folgenden Aufgaben ausgeführt werden:
 
-* [Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde](#remove-an-application-authored-by-your-organization)
-* [Entfernen einer Anwendung, die von einer anderen Organisation erstellt wurde](#remove-an-application-authoried-by-another-organization)
+* Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde
+* Entfernen einer Anwendung, die von einer anderen Organisation erstellt wurde
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

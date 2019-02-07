@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 53945559be01b6e9f5778f5df096f7fcbb24a03f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8c913d618313a72f6fb05ea45847a220f6070d42
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214486"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765737"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -42,7 +42,7 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt: 
-* **Ubuntu 16.04** 
+* **Ubuntu 16.04+** 
 * **SLES 12 SP3** 
 * **RHEL 7.4**
 * **CentOS 7.4**
@@ -76,9 +76,9 @@ In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers m
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
+Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
-Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
+Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -86,7 +86,7 @@ az group create --name myResourceGroup --location centralus
 
 Wählen Sie aus der Auflistung unter [Beschleunigter Netzwerkbetrieb für Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) eine unterstützte Linux-Region aus.
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz erstellt:
 
 ```azurecli
 az network vnet create \
@@ -98,7 +98,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
-Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
+Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
 
 ```azurecli
 az network nsg create \
@@ -106,7 +106,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Die Netzwerksicherheitsgruppe enthält mehrere Standardregeln, von denen eine sämtlichen eingehenden Zugriff über das Internet deaktiviert. Öffnen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) einen Port, um SSH-Zugriff auf den virtuellen Computer zuzulassen:
+Die Netzwerksicherheitsgruppe enthält mehrere Standardregeln, von denen eine sämtlichen eingehenden Zugriff über das Internet deaktiviert. Öffnen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule) einen Port, um SSH-Zugriff auf den virtuellen Computer zuzulassen:
 
 ```azurecli
 az network nsg rule create \
@@ -125,7 +125,7 @@ az network nsg rule create \
 
 ### <a name="create-a-network-interface-with-accelerated-networking"></a>Erstellen einer Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb
 
-Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist keine öffentliche IP-Adresse erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
+Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist keine öffentliche IP-Adresse erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
 
 ```azurecli
 az network public-ip create \
@@ -133,7 +133,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) eine Netzwerkschnittstelle mit aktiviertem beschleunigtem Netzwerkbetrieb. Im folgenden Beispiel wird eine Netzwerkschnittstelle mit dem Namen *myNic* im Subnetz *mySubnet* des virtuellen Netzwerks *myVnet* erstellt und die Netzwerksicherheitsgruppe  *myNetworkSecurityGroup* der Netzwerkschnittstelle zugeordnet:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic) eine Netzwerkschnittstelle mit aktiviertem beschleunigtem Netzwerkbetrieb. Im folgenden Beispiel wird eine Netzwerkschnittstelle mit dem Namen *myNic* im Subnetz *mySubnet* des virtuellen Netzwerks *myVnet* erstellt und die Netzwerksicherheitsgruppe  *myNetworkSecurityGroup* der Netzwerkschnittstelle zugeordnet:
 
 ```azurecli
 az network nic create \
@@ -149,7 +149,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>Erstellen einer VM und Anfügen der NIC
 Geben Sie bei der Erstellung der VM mit `--nics` die NIC an, die Sie erstellt haben. Wählen Sie aus der Auflistung unter [Beschleunigter Netzwerkbetrieb für Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) eine Größe und eine Distribution aus. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
+Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \

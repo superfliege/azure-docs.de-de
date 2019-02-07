@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 13a762e9262bacc6c4d87b8be56eb286491ba75f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e7a9659a7796777cabb6dc73a41e3a361fd1733c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197690"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567961"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für Remoteüberwachung (Node.js)
 
@@ -40,7 +40,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie der Datei **remote_monitoring.js** die folgenden `require`-Anweisungen hinzu:
 
-    ```nodejs
+    ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
@@ -49,13 +49,13 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgenden Variablendeklarationen nach den `require` -Anweisungen hinzu. Ersetzen Sie den Platzhalterwert `{device connection string}` durch den Wert, den Sie für das in der Remoteüberwachungslösung bereitgestellte Gerät notiert haben:
 
-    ```nodejs
+    ```javascript
     var connectionString = '{device connection string}';
     ```
 
 1. Fügen Sie die folgenden Variablen hinzu, um einige grundlegende Telemetriedaten zu definieren:
 
-    ```nodejs
+    ```javascript
     var temperature = 50;
     var temperatureUnit = 'F';
     var humidity = 50;
@@ -66,7 +66,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgenden Variablen hinzu, um einige Eigenschaftswerte zu definieren:
 
-    ```nodejs
+    ```javascript
     var schema = "real-chiller;v1";
     var deviceType = "RealChiller";
     var deviceFirmware = "1.0.0";
@@ -79,7 +79,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgende Variable hinzu, um die gemeldeten Eigenschaften zu definieren, die an die Lösung gesendet werden. Zu diesen Eigenschaften zählen Metadaten, die in der Webbenutzeroberfläche angezeigt werden:
 
-    ```nodejs
+    ```javascript
     var reportedProperties = {
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
@@ -97,7 +97,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgende Hilfsfunktion hinzu, um Ergebnisse des Vorgangs auszugeben:
 
-    ```nodejs
+    ```javascript
     function printErrorFor(op) {
         return function printError(err) {
             if (err) console.log(op + ' error: ' + err.toString());
@@ -107,7 +107,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgende Hilfsfunktion für die zufällige Festlegung der Telemetriewerte hinzu:
 
-    ```nodejs
+    ```javascript
     function generateRandomIncrement() {
         return ((Math.random() * 2) - 1);
     }
@@ -115,7 +115,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgende generische Funktion zur Verarbeitung der direkten Methodenaufrufe aus der Lösung hinzu. Die Funktion zeigt Informationen über die direkte Methode an, die aufgerufen wurde, ändert aber in diesem Beispiel das Gerät in keiner Weise. Die Lösung verwendet direkte Methoden, die auf Geräte einwirken:
 
-    ```nodejs
+    ```javascript
     function onDirectMethod(request, response) {
       // Implement logic asynchronously here.
       console.log('Simulated ' + request.methodName);
@@ -130,7 +130,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgende Funktion zur Verarbeitung der direkten **FirmwareUpdate**-Methodenaufrufe aus der Lösung hinzu. Die Funktion überprüft die in der Nutzlast der direkten Methode übergebenen Parameter und führt dann asynchron eine Simulation der Firmwareaktualisierung aus:
 
-    ```nodejs
+    ```javascript
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -159,7 +159,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie die folgende Funktion hinzu, um einen Firmwareupdatefluss mit langer Ausführungsdauer zu simulieren, der den Fortschritt wieder an die Lösung meldet:
 
-    ```nodejs
+    ```javascript
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -237,7 +237,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie den folgenden Code zum Senden von Telemetriedaten an die Lösung hinzu. Die Clientanwendung fügt der Nachricht Eigenschaften zur Identifizierung des Nachrichtenschemas hinzu:
 
-    ```nodejs
+    ```javascript
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();
@@ -256,7 +256,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie den folgenden Code zum Erstellen einer Clientinstanz hinzu:
 
-    ```nodejs
+    ```javascript
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
@@ -268,7 +268,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
     * Registrieren des Handlers für die direkten Methoden. Das Beispiel verwendet einen separaten Handler für die direkte Firmwareupdatemethode.
     * Starten des Sendens von Telemetriedaten.
 
-    ```nodejs
+    ```javascript
     client.open(function (err) {
       if (err) {
         printErrorFor('open')(err);

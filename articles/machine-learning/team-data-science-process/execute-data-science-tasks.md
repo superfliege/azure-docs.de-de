@@ -10,19 +10,19 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 51d76e16e93ccffc1a069e64808563d62f428dbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476348"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731460"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
 Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und Bereitstellen. In diesem Artikel wird gezeigt, wie mit den Hilfsprogrammen **IDEAR (Interactive Data Exploration, Analysis, and Reporting)** und **AMAR (Automated Modeling and Reporting)** verschiedene häufige Data Science-Aufgaben wie interaktive Datendurchsuchung, Datenanalyse, Berichterstellung und Modellbildung ausgeführt werden. Es werden auch Optionen zum Bereitstellen eines Modells in einer Produktionsumgebung mit einer Vielzahl von Toolkits und Datenplattformen vorgestellt, etwa mit den folgenden:
 
 - [Azure Machine Learning](../service/index.yml)
-- [SQL Server mit ML-Diensten](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
+- [SQL Server mit ML-Diensten](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 

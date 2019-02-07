@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9e29f05c71f9dfe0bcd79135deb30d713fb3abb0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d96da4cc53299d978f8f69acb6a92d957c4f693e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477092"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697567"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Allgemeine Ausnahmen und Fehler bei der Arbeit mit FabricClient-APIs
 Mit [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-APIs können Cluster- und Anwendungsadministratoren administrative Aufgaben für eine Service Fabric-Anwendung, einen Service Fabric-Dienst oder einen Service Fabric-Cluster ausführen. Dazu zählen z. B. Anwendungsbereitstellung, Upgrade und Entfernung, Überprüfung der Integrität eines Clusters oder Testen eines Diensts. Anwendungsentwickler und Clusteradministratoren können die FabricClient-APIs verwenden, um Tools zum Verwalten der Service Fabric-Cluster und -Anwendungen zu entwickeln.
@@ -28,13 +28,13 @@ Viele verschiedene Vorgänge können mit FabricClient ausgeführt werden.  Jede 
 
 | Ausnahme | Grund für Auslösung |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |Das [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Objekt befindet sich im geschlossenen Zustand. Löschen Sie das [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Objekt, das Sie verwenden, und instanziieren Sie ein neues [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Objekt. |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |Beim Vorgang ist ein Timeout aufgetreten. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) wird zurückgegeben, wenn die Ausführung des Vorgangs länger dauert, als in MaxOperationTimeout vorgegeben. |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Die Zugriffsüberprüfung für den Vorgang ist fehlgeschlagen. „E_ACCESSDENIED“ wird zurückgegeben. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Beim Ausführen des Vorgangs ist ein Laufzeitfehler aufgetreten. Jede der FabricClient-Methoden kann potenziell [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) auslösen. Die [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode)-Eigenschaft gibt die genaue Ursache der Ausnahme an. Fehlercodes sind in der [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode)-Enumeration definiert. |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Der Vorgang ist aufgrund eines vorübergehenden Fehlerzustands beliebiger Art fehlgeschlagen. Beispielsweise kann ein Vorgang fehlschlagen, da ein Quorum von Replikaten vorübergehend nicht erreichbar ist. Vorübergehende Ausnahmen entsprechen fehlgeschlagenen Vorgängen, die wiederholt werden können. |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |Das [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Objekt befindet sich im geschlossenen Zustand. Löschen Sie das [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Objekt, das Sie verwenden, und instanziieren Sie ein neues [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Objekt. |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |Beim Vorgang ist ein Timeout aufgetreten. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) wird zurückgegeben, wenn die Ausführung des Vorgangs länger dauert, als in MaxOperationTimeout vorgegeben. |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |Die Zugriffsüberprüfung für den Vorgang ist fehlgeschlagen. „E_ACCESSDENIED“ wird zurückgegeben. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |Beim Ausführen des Vorgangs ist ein Laufzeitfehler aufgetreten. Jede der FabricClient-Methoden kann potenziell [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) auslösen. Die [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception_ErrorCode)-Eigenschaft gibt die genaue Ursache der Ausnahme an. Fehlercodes sind in der [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode)-Enumeration definiert. |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |Der Vorgang ist aufgrund eines vorübergehenden Fehlerzustands beliebiger Art fehlgeschlagen. Beispielsweise kann ein Vorgang fehlschlagen, da ein Quorum von Replikaten vorübergehend nicht erreichbar ist. Vorübergehende Ausnahmen entsprechen fehlgeschlagenen Vorgängen, die wiederholt werden können. |
 
-Einige häufige [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode)-Fehler, die in einer [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) zurückgegeben werden können:
+Einige häufige [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode)-Fehler, die in einer [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) zurückgegeben werden können:
 
 | Error | Bedingung |
 | --- |:--- |

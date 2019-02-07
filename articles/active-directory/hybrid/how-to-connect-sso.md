@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f89fde9040a106546e55f77e4a34e1ac861e46c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 46035da09bc2d02e89659e3c18fa313e947e1280
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195459"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489750"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -62,11 +62,11 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 
 | Betriebssystem/Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja\*|Nein |JA|Ja\*\*\*|–
-|Windows 8.1|Ja\*|–|JA|Ja\*\*\*|–
-|Windows 8|Ja\*|–|JA|Ja\*\*\*|–
-|Windows 7|Ja\*|–|JA|Ja\*\*\*|–
-|Windows Server 2012 R2 oder höher|Ja\*\*|–|JA|Ja\*\*\*|–
+|Windows 10|Ja\*|Nein |Ja|Ja\*\*\*|–
+|Windows 8.1|Ja\*|–|Ja|Ja\*\*\*|–
+|Windows 8|Ja\*|–|Ja|Ja\*\*\*|–
+|Windows 7|Ja\*|–|Ja|Ja\*\*\*|–
+|Windows Server 2012 R2 oder höher|Ja\*\*|–|Ja|Ja\*\*\*|–
 |Mac OS X|–|–|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: 2b8a0db21ab4beb2128ae0a1cebbf9fb42691f3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2ede7a172eda1122b0668984cc8e11937b3ae852
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177406"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768182"
 ---
 # <a name="get-help-with-two-step-verification"></a>Hilfe bei der zweistufigen Überprüfung
 
@@ -36,7 +36,7 @@ Es gibt verschiedene Gründe, weshalb Sie möglicherweise eine andere Überprüf
 
 - **Sie haben Ihr Smartphone verloren oder haben eine neue Telefonnummer.** Wenn Sie Ihr Smartphone verloren oder eine neue Nummer erhalten haben, können Sie sich mit einer anderen Methode anmelden oder Ihren Administrator bitten, Ihre Einstellungen zu löschen. Es wird dringend empfohlen, dass Sie Ihren Administrator informieren, wenn Sie Ihr Smartphone verloren haben oder wenn es gestohlen wurde, damit Ihr Konto entsprechend aktualisiert werden kann. Nachdem Ihre Einstellungen gelöscht wurden, werden Sie bei der nächsten Anmeldung aufgefordert, sich für die [zweistufige Überprüfung zu registrieren](multi-factor-authentication-end-user-first-time.md).
 
-- **Keinen Authentifizierungstext oder keinen Telefonanruf erhalten.** Es gibt verschiedene Gründe, warum Sie den Text oder den Telefonanruf möglicherweise nicht erhalten. Wenn Sie zuvor bereits erfolgreich SMS-Nachrichten oder Telefonanrufe erhalten haben, liegt das Problem möglicherweise beim Telefonanbieter, nicht bei Ihrem Konto. Wenn Sie häufig Verzögerungen aufgrund eines schlechten Empfangs bemerken, empfiehlt sich die Verwendung der [Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) auf Ihrem mobilen Gerät. Diese App kann zufällige Sicherheitscodes für die Anmeldung, generieren, ohne ein Mobilfunksignal oder eine Internetverbindung vorauszusetzen.<br><br>Wenn Sie eine SMS erhalten möchten, bitten Sie einem Freund, Ihnen eine Test-SMS zusenden, um sicherzustellen, dass Sie SMS-Nachrichten empfangen können. Wenn Sie mehrere Nachrichten erhalten haben, müssen Sie den Code der neuesten verwenden.
+- **Keinen Authentifizierungstext oder keinen Telefonanruf erhalten.** Es gibt verschiedene Gründe, warum Sie den Text oder den Telefonanruf möglicherweise nicht erhalten. Wenn Sie zuvor bereits erfolgreich SMS-Nachrichten oder Telefonanrufe erhalten haben, liegt das Problem möglicherweise beim Telefonanbieter, nicht bei Ihrem Konto. Wenn Sie häufig Verzögerungen aufgrund eines schlechten Empfangs bemerken, empfiehlt sich die Verwendung der [Microsoft Authenticator-App](user-help-auth-app-download-install.md) auf Ihrem mobilen Gerät. Diese App kann zufällige Sicherheitscodes für die Anmeldung, generieren, ohne ein Mobilfunksignal oder eine Internetverbindung vorauszusetzen.<br><br>Wenn Sie eine SMS erhalten möchten, bitten Sie einem Freund, Ihnen eine Test-SMS zusenden, um sicherzustellen, dass Sie SMS-Nachrichten empfangen können. Wenn Sie mehrere Nachrichten erhalten haben, müssen Sie den Code der neuesten verwenden.
 
 - **Ihre App-Kennwörter funktionieren nicht** App-Kennwörter ersetzen normale Kennwörter für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Stellen Sie zunächst sicher, dass Sie das Kennwort korrekt eingegeben haben. Wenn das Problem dadurch nicht behoben wird, [erstellen Sie ein neues App-Kennwort](multi-factor-authentication-end-user-app-passwords.md), oder wenden Sie sich an Ihren Administrator, um [Ihre vorhandenen App-Kennwörter zu löschen](../authentication/howto-mfa-userdevicesettings.md), damit Sie ein neues erstellen können.
 
@@ -61,4 +61,4 @@ Wenn Sie diese Schritte ausgeführt haben, aber weiterhin Problem auftreten, wen
 
 * [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md)
 
-* [Microsoft Authenticator-App – häufig gestellte Fragen](microsoft-authenticator-app-faq.md)
+* [Microsoft Authenticator-App – häufig gestellte Fragen](user-help-auth-app-faq.md)

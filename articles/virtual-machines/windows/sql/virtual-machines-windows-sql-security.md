@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 61cfc458ed965fd4f1446ff8cfb5e9a6e244f246
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332386"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731715"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
 
@@ -54,7 +54,7 @@ Für die ausgewählten Optionen im Portal werden Sicherheitsregeln für eingehen
 
 Zusätzlich zu NSG-Regeln zum Einschränken des Netzwerkdatenverkehrs können Sie auch die Windows-Firewall auf dem virtuellen Computer verwenden.
 
-Wenn Sie Endpunkte mit dem klassischen Bereitstellungsmodell verwenden, sollten Sie alle Endpunkte auf dem virtuellen Computer entfernen, sofern Sie sie nicht nutzen. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint) Dies ist nicht für VMs erforderlich, für die der Resource Manager verwendet wird.
+Wenn Sie Endpunkte mit dem klassischen Bereitstellungsmodell verwenden, sollten Sie alle Endpunkte auf dem virtuellen Computer entfernen, sofern Sie sie nicht nutzen. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint) Dies ist nicht für VMs erforderlich, für die der Resource Manager verwendet wird.
 
 Erwägen Sie schließlich die Aktivierung von verschlüsselten Verbindungen für die Instanz der SQL Server-Datenbank-Engine auf Ihrem virtuellen Azure-Computer. Konfigurieren Sie die SQL Server-Instanz mit einem signierten Zertifikat. Weitere Informationen finden Sie unter [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) und [Syntax für Verbindungszeichenfolgen](https://msdn.microsoft.com/library/ms254500.aspx).
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 892d142839fac67e2cfacbe70c8474cf730c90d4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 63dbdc7dc647a05da11192476076c3ee08a5e2bf
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161493"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768212"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -53,7 +53,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-backend-pools-and-ports"></a>Hinzufügen von Back-End-Pools und Ports
 
-Um die Back-End-Adresspools namens *imagesBackendPool* und *videoBackendPool* zu Ihrem Anwendungsgateway hinzuzufügen, verwenden Sie den Befehl [az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address-pool_create). Die Front-End-Ports für die Pools fügen Sie mit [az network application-gateway frontend-port create](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create) hinzu. 
+Um die Back-End-Adresspools namens *imagesBackendPool* und *videoBackendPool* zu Ihrem Anwendungsgateway hinzuzufügen, verwenden Sie den Befehl [az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool). Die Front-End-Ports für die Pools fügen Sie mit [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port) hinzu. 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -136,7 +136,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-listeners"></a>Hinzufügen der Listener
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) die Back-End-Listener namens *backendListener* und *redirectedListener* hinzu, die zum Weiterleiten des Datenverkehrs erforderlich sind.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener) die Back-End-Listener namens *backendListener* und *redirectedListener* hinzu, die zum Weiterleiten des Datenverkehrs erforderlich sind.
 
 
 ```azurecli-interactive
@@ -157,7 +157,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>Hinzufügen der standardmäßigen URL-Pfadzuordnung
 
-URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mithilfe der Befehle [az network application-gateway url-path-map create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_create) und [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_rule_create) die URL-Pfadzuordnungen *imagePathRule* und *videoPathRule* hinzufügen.
+URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mithilfe der Befehle [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) und [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) die URL-Pfadzuordnungen *imagePathRule* und *videoPathRule* hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -182,7 +182,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-redirection-configuration"></a>Hinzufügen der Umleitungskonfiguration
 
-Sie können die Umleitung für den Listener mithilfe von [az network application-gateway redirect-config create](/cli/azure/network/application-gateway) konfigurieren.
+Sie können die Umleitung für den Listener mithilfe von [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) konfigurieren.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -209,7 +209,7 @@ az network application-gateway url-path-map create \
 
 ### <a name="add-routing-rules"></a>Hinzufügen von Routingregeln
 
-Die Routingregel ordnet die URL-Pfadzuordnungen den von Ihnen erstellten Listenern zu. Sie können mit dem Befehl [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) die Regeln *defaultRule* und *redirectedRule* hinzufügen.
+Die Routingregel ordnet die URL-Pfadzuordnungen den von Ihnen erstellten Listenern zu. Sie können mit dem Befehl [az network application-gateway rule create](/cli/azure/network/application-gateway/rule) die Regeln *defaultRule* und *redirectedRule* hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -283,7 +283,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show). Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, *http://40.121.222.19:8080/video/test.htm* oder *http://40.121.222.19:8081/images/test.htm*.
+Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Beispiel: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, *http://40.121.222.19:8080/video/test.htm* oder *http://40.121.222.19:8081/images/test.htm*.
 
 ```azurepowershell-interactive
 az network public-ip show \

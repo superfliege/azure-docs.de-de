@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247747"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751394"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -90,7 +90,7 @@ Hier sehen Sie ein Beispiel für ein BlobCreated-Ereignis:
 Weitere Informationen finden Sie unter [Azure Blob Storage](../../event-grid/event-schema-blob-storage.md).
 
 ## <a name="filtering-events"></a>Filtern von Ereignissen
-Blobereignisabonnements können basierend auf dem Ereignistyp sowie auf dem Container- und Blobnamen des Objekts, das erstellt oder gelöscht wurde, gefiltert werden.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) des Ereignisabonnements oder [zu einem späteren Zeitpunkt](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) Filter angewendet werden. Betrefffilter funktionieren in Event Grid auf Grundlage von „beginnt mit“- und „endet mit“-Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Betreff an den Abonnenten übermittelt werden. 
+Blobereignisabonnements können basierend auf dem Ereignistyp sowie auf dem Container- und Blobnamen des Objekts, das erstellt oder gelöscht wurde, gefiltert werden.  Auf Ereignisabonnements können während der [Erstellung](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) des Ereignisabonnements oder [zu einem späteren Zeitpunkt](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) Filter angewendet werden. Betrefffilter funktionieren in Event Grid auf Grundlage von „beginnt mit“- und „endet mit“-Übereinstimmungen, sodass Ereignisse mit einem übereinstimmenden Betreff an den Abonnenten übermittelt werden. 
 
 Der Betreff von Blob Storage-Ereignissen verwendet das Format:
 

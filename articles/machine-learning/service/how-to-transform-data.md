@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f02d511c5afa6d515f29b9fc557be3b49223c501
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4291f6083cfe07d689ef9377df57c3e9a41772fc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243282"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812207"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
@@ -25,7 +25,7 @@ In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem [
 
 Derzeit sind Funktionen für die folgenden Aufgaben verfügbar:
 
-- [Hinzufügen einer Spalte mithilfe eines Ausdrucks](#column)
+- Hinzufügen einer Spalte mithilfe eines Ausdrucks
 - [Imputieren von fehlenden Werten](#impute-missing-values)
 - [Ableiten einer Spalte nach Beispiel](#derive-column-by-example)
 - [Filterung](#filtering)

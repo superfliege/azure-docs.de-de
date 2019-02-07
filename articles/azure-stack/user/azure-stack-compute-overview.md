@@ -10,12 +10,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 13454e7dfb18e4d0e87b9b041b53dbef155153a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cd42a347de236de2e3374d7ac854779f4c222a00
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251638"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768145"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Einführung in virtuelle Azure Stack-Computer
 
@@ -97,11 +97,11 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 
 |Ressource|Erforderlich|BESCHREIBUNG|
 |---------|---------|---------|
-|Ressourcengruppe|JA|Der virtuelle Computer muss sich in einer Ressourcengruppe befinden.|
+|Ressourcengruppe|Ja|Der virtuelle Computer muss sich in einer Ressourcengruppe befinden.|
 |Speicherkonto|Nein |Bei Verwendung von Managed Disks benötigt der virtuelle Computer das Speicherkonto nicht, um die virtuellen Festplatten zu speichern. <br>Bei Verwendung von nicht verwalteten Datenträgern benötigt der virtuelle Computer das Speicherkonto, um die virtuellen Festplatten zu speichern.|
-|Virtuelles Netzwerk|JA|Der virtuelle Computer muss einem virtuellen Netzwerk angehören.|
+|Virtuelles Netzwerk|Ja|Der virtuelle Computer muss einem virtuellen Netzwerk angehören.|
 |Öffentliche IP-Adresse|Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden.|
-|Netzwerkschnittstelle|JA|Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk.|
+|Netzwerkschnittstelle|Ja|Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk.|
 |Datenträger|Nein |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen.|
 
 ## <a name="create-your-first-vm"></a>Erstellen Ihres ersten virtuellen Computers

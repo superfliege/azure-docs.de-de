@@ -11,18 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/21/2018
-ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 09/25/2018
+ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196649"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567127"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
+
 Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.
 
 ## <a name="temporal-scenario"></a>Temporales Szenario
+
 Dieser Artikel beschreibt die Schritte zur Nutzung temporaler Tabellen in einem Anwendungsszenario. Stellen Sie sich vor, Sie möchten die Benutzeraktivität auf einer neuen Website nachverfolgen, die von Grund auf neu entwickelt wird, oder auf einer vorhandenen Website, die Sie mit der Benutzeraktivitätsanalyse erweitern möchten. In diesem vereinfachten Beispiel setzen wir voraus, dass die Anzahl der besuchten Webseiten während einer Zeitspanne ein Indikator ist, der in der Websitedatenbank aufgezeichnet und überwacht werden muss, die in der Azure SQL-Datenbank gehostet wird. Die Verlaufsanalyse der Benutzeraktivität soll Anregungen zum Neuentwurf der Website und bessere Erkenntnisse über die Besucher liefern.
 
 Das Datenbankmodell für dieses Szenario ist sehr einfach – die Metrik der Benutzeraktivität wird nur mit dem Ganzzahlfeld **PageVisited** dargestellt und zusammen mit grundlegenden Informationen im Benutzerprofil erfasst. Außerdem verwalten Sie für die zeitbasierte Analyse eine Reihe von Zeilen für jeden Benutzer, wobei jede Zeile die Anzahl von Seiten darstellt, die ein bestimmter Benutzer innerhalb einer bestimmten Zeitspanne besucht.

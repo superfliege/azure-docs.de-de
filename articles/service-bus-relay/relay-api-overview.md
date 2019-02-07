@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c7aec700a1077bc1a1b56afb5d8d07f47f4c6e8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700371"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663093"
 ---
 # <a name="available-relay-apis"></a>Verfügbare Relay-APIs
 
@@ -32,14 +32,14 @@ Der Abschnitt [Zusätzliche Informationen](#additional-information) enthält wei
 | Sprache/Plattform | Verfügbares Feature | Clientpaket | Repository |
 | --- | --- | --- | --- |
 | .NET Standard | Hybridverbindungen | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | WCF-Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/V |
+| .NET Framework | WCF-Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
 | Knoten | Hybridverbindungen | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-Anforderungen: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Zusätzliche Informationen
 
 #### <a name="net"></a>.NET
 
-Das .NET-Ökosystem enthält mehrere Runtimes, daher stehen mehrere .NET-Bibliotheken für Relay zur Verfügung. Die .NET Standard-Bibliothek kann entweder mit .NET Core oder .NET Framework ausgeführt werden. Die .NET Framework-Bibliothek kann hingegen nur in einer .NET Framework-Umgebung ausgeführt werden. Weitere Informationen zu .NET Frameworks finden Sie unter [Framework-Versionen](/dotnet/articles/standard/frameworks#framework-versions).
+Das .NET-Ökosystem enthält mehrere Runtimes, daher stehen mehrere .NET-Bibliotheken für Relay zur Verfügung. Die .NET Standard-Bibliothek kann entweder mit .NET Core oder .NET Framework ausgeführt werden. Die .NET Framework-Bibliothek kann hingegen nur in einer .NET Framework-Umgebung ausgeführt werden. Weitere Informationen zu .NET Frameworks finden Sie unter [Framework-Versionen](/dotnet/articles/standard/frameworks).
 
 Die .NET Framework-Bibliothek unterstützt nur das WCF-Programmiermodell und verwendet ein proprietäres binäres Protokoll, das auf dem WCF-Transport `net.tcp` basiert. Dieses Protokoll und die Bibliothek werden zur Abwärtskompatibilität mit vorhandenen Anwendungen weiterhin verwaltet.
 

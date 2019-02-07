@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/25/2018
+ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 704f854d7be9930923cb6e1955c3670f296035ed
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 950692a92152ac302ec573522fc5327f3acb91a2
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299825"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512311"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory?
 
@@ -35,6 +35,11 @@ In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermögli
 Die Geräteverwaltung stellt zudem die Grundlage für [gerätebasierten bedingten Zugriff](../conditional-access/require-managed-devices.md) dar. Mit dem gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit verwalteten Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.   
 
 In diesem Artikel wird erläutert, wie die Geräteverwaltung in Azure Active Directory funktioniert.
+
+
+
+> [!VIDEO https://www.youtube.com/embed/NeezfKhomQU]
+
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Steuern der Geräte über Azure AD
 

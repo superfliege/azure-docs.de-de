@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 67523641ff9650a5b35a142147a2f69adcfb3b1c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 744344c9427604f46c3f428d8dfcd279d8f2ffba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077300"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486333"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -67,7 +67,7 @@ Azure AD Connect Health wird mit Ausnahme des [Features zum Melden von Synchroni
 | Rollen | Features | In der Microsoft Cloud Deutschland unterstützt |
 | ------ | --------------- | --- |
 | Connect Health für Synchronisierung | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
-|  | Synchronisierungsfehlerbericht | JA |
+|  | Synchronisierungsfehlerbericht | Ja |
 | Connect Health für AD FS | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
 | Connect Health für AD DS | Überwachung/Erkenntnis/Warnungen/Analyse | Nein  |
 

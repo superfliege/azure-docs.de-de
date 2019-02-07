@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723891"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563183"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung
 
@@ -40,7 +40,7 @@ Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronis
 
 - [Die Leistung hat sich erheblich verschlechtert.](#sync-perf)
 
-- [Die folgende Meldung wird angezeigt: „Der Wert NULL kann nicht in die Spalte <column> einfügt werden. Die Spalte lässt keine NULL-Werte zu.“ Was bedeutet dies, und wie kann ich das Problem beheben?](#sync-nulls)
+- [Die folgende Meldung wird angezeigt: „Der Wert NULL kann nicht in die Spalte <column> einfügt werden. da die Spalte keine NULL-Werte zulässt. Was bedeutet dies, und wie kann ich das Problem beheben?](#sync-nulls)
 
 - [Wie geht die Datensynchronisierung mit Zirkelbezügen um? Diese liegen vor, wenn dieselben Daten in mehreren Synchronisierungsgruppen synchronisiert werden und sich daher ständig ändern.](#sync-circ)
 
@@ -105,7 +105,7 @@ Die Leistung verschlechtert sich deutlich – unter Umständen so weit, dass Sie
 
 - **Lösung**. Die beste Lösung ist Prävention. Vergewissern Sie sich, dass Ihre Synchronisierungsgruppen keine Zirkelbezüge enthalten. Eine Zeile, die von einer Synchronisierungsgruppe synchronisiert wird, darf nicht von einer anderen Synchronisierungsgruppe synchronisiert werden.
 
-### <a name="sync-nulls"></a>Die folgende Meldung wird angezeigt: „Der Wert NULL kann nicht in die Spalte <column> einfügt werden. Die Spalte lässt keine NULL-Werte zu.“ Was bedeutet dies, und wie kann ich das Problem beheben? 
+### <a name="sync-nulls"></a>Die folgende Meldung wird angezeigt: „Der Wert NULL kann nicht in die Spalte <column> einfügt werden. da die Spalte keine NULL-Werte zulässt. Was bedeutet dies, und wie kann ich das Problem beheben? 
 Diese Fehlermeldung besagt, dass eines der beiden folgenden Probleme aufgetreten ist:
 -  Eine Tabelle weist keinen Primärschlüssel auf. Um dieses Problem zu beheben, fügen Sie allen Tabellen, die Sie synchronisieren möchten, einen Primärschlüssel hinzu.
 -  Es gibt eine WHERE-Klausel in Ihrer CREATE INDEX-Anweisung. Die Datensynchronisierung verarbeitet diese Bedingung nicht. Um dieses Problem zu beheben, entfernen Sie die WHERE-Klausel, oder nehmen Sie die Änderungen an allen Datenbanken manuell vor. 

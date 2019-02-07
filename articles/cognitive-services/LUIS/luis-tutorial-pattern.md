@@ -9,14 +9,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: e5aadfc8319ff67e471123d457fddf468af4842a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b41054420f381ed4d39d35af82a464cf555cb13
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225770"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490888"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen
 
@@ -230,7 +230,7 @@ In diesem Tutorial fügen Sie zwei neue Absichten hinzu: `OrgChart-Manager` und 
 
 Sobald LUIS eine Vorhersage an die Clientanwendung zurückgibt, kann der Name der Absicht als Funktionsname in der Clientanwendung und die Entität „Employee“ als Parameter für diese Funktion verwendet werden.
 
-```nodejs
+```javascript
 OrgChartManager(employee){
     ///
 }

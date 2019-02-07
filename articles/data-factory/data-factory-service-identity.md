@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017683"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814199"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory-Dienstidentität
 
@@ -44,7 +44,7 @@ Sollte Ihrer Data Factory nach dem Schritt [Abrufen einer Dienstidentität](#ret
 
 - [Erstellen der Dienstidentität mit PowerShell](#generate-service-identity-using-powershell)
 - [Erstellen der Dienstidentität mit REST-API](#generate-service-identity-using-rest-api)
-- [Erstellen der Dienstidentität mithilfe einer Azure Resource Manager-Vorlage](#generate-service-identity-using-azure-resource-manager-template)
+- Erstellen der Dienstidentität mithilfe einer Azure Resource Manager-Vorlage
 - [Erstellen der Dienstidentität mit SDK](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -192,4 +192,4 @@ Lesen Sie die folgenden Themen, die Ihnen zeigen, wann und wie Sie die Data Fact
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopieren von Daten von/zu Azure Data Lake Store mit verwalteten Identitäten für die Ressourcenauthentifizierung mit Azure](connector-azure-data-lake-store.md)
 
-Weitere Hintergründe zu verwalteten Identitäten für Azure-Ressourcen (auf denen Data Factory-Dienstidentitäten basieren) finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](~/articles/active-directory/msi-overview.md). 
+Weitere Hintergründe zu verwalteten Identitäten für Azure-Ressourcen (auf denen Data Factory-Dienstidentitäten basieren) finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](/azure/active-directory/managed-identities-azure-resources/overview). 

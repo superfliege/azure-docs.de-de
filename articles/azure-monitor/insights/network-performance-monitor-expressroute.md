@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188774"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747457"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
@@ -118,23 +118,12 @@ Sie können die Benachrichtigungscodes sehen und über **LogAnalytics** Benachri
 
 | Benachrichtigungscode (Protokolle) | BESCHREIBUNG |
 | --- | --- |
-| 5101 | Hohe Latenz bei der untergeordneten Microsoft Edge-Schnittstelle. |
-| 5102 | Die untergeordnete Microsoft Edge-Schnittstelle löscht das Paket. | 
-| 5103 | Das ExpressRoute-Gateway befindet sich in einem fehlerhaften Zustand. | 
-| 5201 | Hohe Latenz für die Leitung des Dienstanbieters. |
-| 5202 | Pakete werden nicht von der gewünschten ExpressRoute-Leitung übermittelt. |
-| 5301 | Hohe Latenz beim Edgerouter des Kunden. | 
-| 5302 | Die Latenz wird durch das Gerät/die Verbindung in der Umgebung des Kunden verursacht. Das Problem scheint nicht in ExpressRoute-Leitung zu sein. | 
 | 5501 | Durchlaufen der sekundären Verbindung der ExpressRoute-Leitung nicht möglich. |
 | 5502 | Durchlaufen der primären Verbindung der ExpressRoute-Leitung nicht möglich. |
 | 5503 | Es wurde keine Leitung für das mit dem Arbeitsbereich verknüpfte Abonnement gefunden. | 
-| 5506 | Die Auslastung nähert sich der maximalen Kapazität. | 
-| 5507 | Die Auslastung ist niedrig. |
 | 5508 | Es kann nicht ermittelt werden, ob der Datenverkehr über eine Leitung geleitet wird. |
 | 5510 | Der Datenverkehr wird nicht über die vorgesehene Leitung geleitet. | 
 | 5511 | Der Datenverkehr wird nicht über das vorgesehene virtuelle Netzwerk geleitet. | 
-| 5512 | Es kann nicht ermittelt werden, ob der Datenverkehr über die vorgesehene Leitung geleitet wird. |
-
 
 **Die Verbindung ist nicht verfügbar:** Der Netzwerkleistungsmonitor informiert Sie, sobald die Konnektivität zwischen Ihren lokalen Ressourcen und virtuellen Azure-Netzwerken verloren geht. Durch diese Benachrichtigung können Sie proaktive Maßnahmen ergreifen und Ausfallzeiten verringern, bevor Benutzer das Problem eskalieren.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: d57a7baafc533aee52ec8012d410d5f25b510b60
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359951"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663187"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -57,7 +57,7 @@ Bereiten Sie zunächst Ihre Arbeitsstation vor, indem Sie ein Verzeichnis zum Sp
 
 Erstellen Sie ein Verzeichnis namens „C:\chef“.
 
-Laden Sie Ihre Azure PowerShell-[Veröffentlichungseinstellungen](https://docs.microsoft.com/en-us/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information) herunter.
+Laden Sie Ihre Azure PowerShell-[Veröffentlichungseinstellungen](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information) herunter.
 
 ## <a name="setup-chef-server"></a>Einrichten des Chef-Servers
 

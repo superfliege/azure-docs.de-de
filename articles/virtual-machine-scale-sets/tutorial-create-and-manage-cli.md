@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179479"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751020"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. In diesem Tutorial lernen Sie Folgendes:
@@ -41,7 +41,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor der VM-Skalierungsgruppe muss zunächst eine Ressourcengruppe erstellt werden. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt. 
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor der VM-Skalierungsgruppe muss zunächst eine Ressourcengruppe erstellt werden. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt. 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +66,7 @@ Die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierun
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Anzeigen der VM-Instanzen in einer Skalierungsgruppe
-Verwenden Sie [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances), um eine Liste mit den VM-Instanzen in einer Skalierungsgruppe anzuzeigen:
+Verwenden Sie [az vmss list-instances](/cli/azure/vmss), um eine Liste mit den VM-Instanzen in einer Skalierungsgruppe anzuzeigen:
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -85,7 +85,7 @@ Die folgende Beispielausgabe zeigt zwei VM-Instanzen in der Skalierungsgruppe:
 ```
 
 
-Die erste Spalte der Ausgabe enthält eine Instanz-ID (*InstanceId*). Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) den Parameter `--instance-id` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
+Die erste Spalte der Ausgabe enthält eine Instanz-ID (*InstanceId*). Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss) den Parameter `--instance-id` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -129,7 +129,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>Grundlegendes zu VM-Instanzimages
-Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurde als `--image` für die VM-Instanzen *UbuntuLTS* angegeben. Im Azure Marketplace stehen zahlreiche Images zur Verfügung, die Sie zum Erstellen von VM-Instanzen verwenden können. Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image#az_vm_image_list).
+Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurde als `--image` für die VM-Instanzen *UbuntuLTS* angegeben. Im Azure Marketplace stehen zahlreiche Images zur Verfügung, die Sie zum Erstellen von VM-Instanzen verwenden können. Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image).
 
 ```azurecli-interactive
 az vm image list --output table
@@ -243,7 +243,7 @@ az vmss create \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
 Bei der Erstellung der Skalierungsgruppe zu Beginn des Tutorials wurden standardmäßig zwei VM-Instanzen bereitgestellt. Sie können [az vmss create](/cli/azure/vmss) zusammen mit dem Parameter `--instance-count` angeben, um die Anzahl von Instanzen zu ändern, die mit einer Skalierungsgruppe erstellt werden. Wenn Sie die Anzahl von VM-Instanzen in Ihrer bereits vorhandenen Skalierungsgruppe erhöhen oder verringern möchten, können Sie manuell die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von VM-Instanzen und konfiguriert anschließend den Lastenausgleich für die Verteilung des Datenverkehrs.
 
-Die Anzahl von VM-Instanzen in der Skalierungsgruppe kann mit [az vmss scale](/cli/azure/vmss#az_vmss_scale) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
+Die Anzahl von VM-Instanzen in der Skalierungsgruppe kann mit [az vmss scale](/cli/azure/vmss) manuell erhöht oder verringert werden. Im folgenden Beispiel wird die Anzahl von VM-Instanzen in der Skalierungsgruppe auf *3* festgelegt:
 
 ```azurecli-interactive
 az vmss scale \
@@ -252,7 +252,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-Die Aktualisierung der Skalierungsgruppenkapazität dauert ein paar Minuten. Verwenden Sie [az vmss show](/cli/azure/vmss#az_vmss_show), und fragen Sie *sku.capacity* ab, um die Anzahl von Instanzen anzuzeigen, die momentan in der Skalierungsgruppe enthalten sind:
+Die Aktualisierung der Skalierungsgruppenkapazität dauert ein paar Minuten. Verwenden Sie [az vmss show](/cli/azure/vmss), und fragen Sie *sku.capacity* ab, um die Anzahl von Instanzen anzuzeigen, die momentan in der Skalierungsgruppe enthalten sind:
 
 ```azurecli-interactive
 az vmss show \
@@ -267,27 +267,27 @@ az vmss show \
 Sie können nun eine Skalierungsgruppe erstellen, Verbindungsinformationen auflisten und eine Verbindung mit VM-Instanzen herstellen. Sie haben gelernt, wie Sie ein anderes Betriebssystemimage für Ihre VM-Instanzen verwenden, eine andere VM-Größe auswählen oder manuell die Instanzenanzahl skalieren. Im Rahmen der alltäglichen Verwaltung kann es vorkommen, dass Sie die VM-Instanzen in der Skalierungsgruppe beenden, starten oder neu starten müssen.
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>Beenden von VM-Instanzen in einer Skalierungsgruppe und Aufheben ihrer Zuordnung
-Verwenden Sie [az vmss stop](/cli/azure/vmss#az_vmss_stop), um VM-Instanzen in einer Skalierungsgruppe zu beenden. Mit dem Parameter `--instance-ids` können Sie die zu beendenden VM-Instanzen angeben. Wenn Sie keine Instanz-ID angeben, werden alle VM-Instanzen in der Skalierungsgruppe beendet. Im folgenden Beispiel wird die Instanz *1* beendet:
+Verwenden Sie [az vmss stop](/cli/azure/vmss), um VM-Instanzen in einer Skalierungsgruppe zu beenden. Mit dem Parameter `--instance-ids` können Sie die zu beendenden VM-Instanzen angeben. Wenn Sie keine Instanz-ID angeben, werden alle VM-Instanzen in der Skalierungsgruppe beendet. Im folgenden Beispiel wird die Instanz *1* beendet:
 
 ```azurecli-interactive
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
-Beendete VM-Instanzen bleiben weiter zugeordnet, und es fallen weiterhin Computegebühren für sie an. Wenn Sie stattdessen die Zuordnung der VM-Instanzen aufheben möchten, sodass nur noch Speichergebühren anfallen, verwenden Sie [az vmss deallocate](/cli/azure/vmss#az_vmss_deallocate). Im folgenden Beispiel wird die Instanz *1* beendet und ihre Zuordnung aufgehoben:
+Beendete VM-Instanzen bleiben weiter zugeordnet, und es fallen weiterhin Computegebühren für sie an. Wenn Sie stattdessen die Zuordnung der VM-Instanzen aufheben möchten, sodass nur noch Speichergebühren anfallen, verwenden Sie [az vmss deallocate](/cli/azure/vmss). Im folgenden Beispiel wird die Instanz *1* beendet und ihre Zuordnung aufgehoben:
 
 ```azurecli-interactive
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>Starten von VM-Instanzen in einer Skalierungsgruppe
-Verwenden Sie [az vmss start](/cli/azure/vmss#az_vmss_start), um VM-Instanzen in einer Skalierungsgruppe zu starten. Mit dem Parameter `--instance-ids` können Sie die zu startenden VM-Instanzen angeben. Wenn Sie keine Instanz-ID angeben, werden alle VM-Instanzen in der Skalierungsgruppe gestartet. Im folgenden Beispiel wird die Instanz *1* gestartet:
+Verwenden Sie [az vmss start](/cli/azure/vmss), um VM-Instanzen in einer Skalierungsgruppe zu starten. Mit dem Parameter `--instance-ids` können Sie die zu startenden VM-Instanzen angeben. Wenn Sie keine Instanz-ID angeben, werden alle VM-Instanzen in der Skalierungsgruppe gestartet. Im folgenden Beispiel wird die Instanz *1* gestartet:
 
 ```azurecli-interactive
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>Neustarten von VM-Instanzen in einer Skalierungsgruppe
-Verwenden Sie [az vmss restart](/cli/azure/vmss#az_vm_restart), um VM-Instanzen in einer Skalierungsgruppe neu zu starten. Mit dem Parameter `--instance-ids` können Sie die neu zu startenden VM-Instanzen angeben. Wenn Sie keine Instanz-ID angeben, werden alle VM-Instanzen in der Skalierungsgruppe neu gestartet. Im folgenden Beispiel wird die Instanz *1* neu gestartet:
+Verwenden Sie [az vmss restart](/cli/azure/vmss), um VM-Instanzen in einer Skalierungsgruppe neu zu starten. Mit dem Parameter `--instance-ids` können Sie die neu zu startenden VM-Instanzen angeben. Wenn Sie keine Instanz-ID angeben, werden alle VM-Instanzen in der Skalierungsgruppe neu gestartet. Im folgenden Beispiel wird die Instanz *1* neu gestartet:
 
 ```azurecli-interactive
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 1

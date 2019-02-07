@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: e6fb14fc901b5ae5ad11d94c1e71453c2852239c
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 574c295c3b44d0c6146c852777f2bef3ad13ecdd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306249"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697917"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 
@@ -194,9 +194,9 @@ Die folgenden Typen authentifizierter und anonymer Anforderungen werden von Stor
 
 Die Netzwerkprotokollierung und -überwachung in Azure ist umfassend und unterteilt sich in zwei übergeordnete Kategorien:
 
-* [Network Watcher:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) Die szenariobasierte Netzwerküberwachung wird über Features in Network Watcher bereitgestellt. Dieser Dienst umfasst die Paketerfassung, „Nächster Hop“, die IP-Datenflussüberprüfung, die Sicherheitsgruppenansicht und NSG-Datenflussprotokolle. Die Überwachung auf Szenarioebene bietet im Gegensatz zur Überwachung einzelner Netzwerkressourcen eine End-to-End-Ansicht der Netzwerkressourcen.
+* [Network Watcher:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) Die szenariobasierte Netzwerküberwachung wird über Features in Network Watcher bereitgestellt. Dieser Dienst umfasst die Paketerfassung, „Nächster Hop“, die IP-Datenflussüberprüfung, die Sicherheitsgruppenansicht und NSG-Datenflussprotokolle. Die Überwachung auf Szenarioebene bietet im Gegensatz zur Überwachung einzelner Netzwerkressourcen eine End-to-End-Ansicht der Netzwerkressourcen.
 
-* [Ressourcenüberwachung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring) Die Überwachung auf Ressourcenebene umfasst vier Features: Diagnoseprotokolle, Metriken, Problembehandlung und Ressourcenintegrität. Alle diese Features arbeiten auf Netzwerkressourcenebene.
+* [Ressourcenüberwachung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) Die Überwachung auf Ressourcenebene umfasst vier Features: Diagnoseprotokolle, Metriken, Problembehandlung und Ressourcenintegrität. Alle diese Features arbeiten auf Netzwerkressourcenebene.
 
 ![Azure-Netzwerkprotokolle](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -238,7 +238,7 @@ Zusätzlich zu den oben aufgeführten Protokollierungsfunktionen umfasst Network
 
 * [Gateway des virtuellen Netzwerks und Problembehandlung für Verbindungen:](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) Hilft Ihnen bei der Problembehandlung von Gateways für virtuelle Netzwerke und von Verbindungen.
 
-* [Grenzwerte für Netzwerkabonnements:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits) Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
+* [Grenzwerte für Netzwerkabonnements:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -371,10 +371,10 @@ Log Integration unterstützt derzeit die Integration von Azure-Aktivitätsprotok
 
 | Protokolltyp | Log Analytics unterstützt JSON (Splunk, ArcSight und IBM Qradar) |
 | :------- | :-------------------------------------------------------- |
-|Azure AD-Überwachungsprotokolle|   JA|
-|Aktivitätsprotokolle| JA|
-|Security Center-Warnungen |JA|
-|Diagnoseprotokolle (Ressourcenprotokolle)|  JA|
+|Azure AD-Überwachungsprotokolle|   Ja|
+|Aktivitätsprotokolle| Ja|
+|Security Center-Warnungen |Ja|
+|Diagnoseprotokolle (Ressourcenprotokolle)|  Ja|
 |VM-Protokolle|   Ja, über weitergeleitete Ereignisse und nicht über JSON|
 
 [Erste Schritte mit Azure Log Integration:](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started) In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Azure Log Integration installieren und Protokolle aus Azure Storage sowie Azure-Aktivitätsprotokolle, Azure Security Center-Warnungen und Azure AD-Überwachungsprotokolle integrieren.

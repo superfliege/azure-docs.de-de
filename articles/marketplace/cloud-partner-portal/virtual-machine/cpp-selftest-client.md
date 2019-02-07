@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 82f7d69120cf3d6f44c981f985ae29f467ee0655
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7afa64ebedb38b4514bbd155bf8f29268d420d18
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198729"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745757"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Erstellen eines Selbsttestclients zur Vorabüberprüfung eines Azure-VM-Images
 
@@ -54,7 +54,7 @@ Das folgende Diagramm veranschaulicht die Funktionsweise der Autorisierung für 
 Die Selbsttest-API enthält einen einzelnen Endpunkt, der nur die POST-Methode unterstützt.  Sie hat die folgende Struktur.
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -215,7 +215,7 @@ Führen Sie zum Aufrufen der API mit cURL die folgenden Schritte aus:
 ```
 CURL POST -H "Content-Type:application/json" 
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest 
+https://isvapp.azurewebsites.net/selftest-vm 
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 
 ```
@@ -260,7 +260,7 @@ Führen Sie zum Registrieren der Client-App die folgenden Schritte aus.
 
    - **Name**: Geben Sie einen Anzeigenamen für die App ein. Beispiel: „SelfTestClient“.
    - **Anwendungstyp**: Wählen Sie **Web-App/API** aus.
-   - **Anmelde-URL**: Geben Sie „https://isvapp.azurewebsites.net/selftest“ ein.
+   - **Anmelde-URL**: Geben Sie „https://isvapp.azurewebsites.net/selftest-vm“ ein.
 
 4. Klicken Sie auf **Erstellen**.
 5. Kopieren Sie unter **App-Registrierungen** oder **Registrierte App** die **Anwendungs-ID**.
@@ -410,7 +410,7 @@ $token.AccessToken
 Übergeben Sie das Token mit dem folgenden Code im Autorisierungsheader an die Selbsttest-API:
 
 ```
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest’
+$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
