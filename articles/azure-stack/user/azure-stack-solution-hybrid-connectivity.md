@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 84e952514b88620af565cf7e9775c055476fb530
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247560"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752658"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Tutorial: Konfigurieren der Hybrid Cloud-Konnektivität mit Azure und Azure Stack
 
@@ -61,7 +61,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits über Grundkenntniss
 ### <a name="azure"></a>Azure
 
  - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein  [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)  erstellen, bevor Sie beginnen.
- - Erstellen Sie eine  [Web-App](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal) in Azure. Notieren Sie sich die Web-App-URL, da Sie sie im Tutorial benötigen.
+ - Erstellen Sie eine  [Web-App](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Notieren Sie sich die Web-App-URL, da Sie sie im Tutorial benötigen.
 
 ### <a name="azure-stack"></a>Azure Stack
 

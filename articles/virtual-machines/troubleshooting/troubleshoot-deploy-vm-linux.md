@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 45e15fa5b17f75dcc6cfdc7305861d38804f1266
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 56df020b7948ff41ee7710fca19d05924e118c81
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748135"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729709"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Behandlung von Problemen bei der Bereitstellung virtueller Linux-Computer in Azure
 
@@ -93,7 +93,7 @@ Sie können die Liste unter [Linux auf von Azure unterstützten Verteilungen](..
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Kann ich einen vorhandenen klassischen virtuellen Computer zu einer Verfügbarkeitsgruppe hinzufügen?
 
-Ja. Sie können einen vorhandenen klassischen virtuellen Computer in eine neue oder vorhandene Verfügbarkeitsgruppe hinzufügen. Weitere Informationen finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../windows/classic/configure-availability-classic.md#addmachine).
+Ja. Sie können einen vorhandenen klassischen virtuellen Computer in eine neue oder vorhandene Verfügbarkeitsgruppe hinzufügen. Weitere Informationen finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

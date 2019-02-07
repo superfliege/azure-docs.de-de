@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2a0fc7cc4e76c4a93f6ff71767d3074ea8ac6564
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168208"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729267"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
 
@@ -49,7 +49,7 @@ Sie aktivieren die Skriptausführung, indem Sie dem [RelyingParty](relyingparty.
 
 Beachten Sie die folgenden Richtlinien, wenn Sie die Benutzeroberfläche Ihrer Anwendung mit JavaScript anpassen:
 
-- Binden Sie kein Click-Ereignis an `<a>`-HTML-Elemente. 
+- Binden Sie kein Click-Ereignis an `<a>`-HTML-Elemente.
 - Machen Sie sich nicht von Azure AD B2C-Code oder Kommentaren abhängig.
 - Ändern Sie nicht die Reihenfolge oder die Hierarchie von Azure AD B2C-HTML-Elementen. Verwenden Sie eine Azure AD B2C-Richtlinie, um die Reihenfolge der Benutzeroberflächenelemente zu steuern.
 - Sie können jeden RESTful-Dienst unter Berücksichtigung der folgenden Überlegungen aufrufen:
@@ -113,9 +113,9 @@ function setupPwdTogglers(){
 setupPwdTogglers();
 ```
 
-### <a name="add-terms-of-use"></a>Hinzufügen von Nutzungsbedingungen 
+### <a name="add-terms-of-use"></a>Hinzufügen von Nutzungsbedingungen
 
-Fügen Sie den folgenden Code in die Seite ein, auf der Sie ein Kontrollkästchen für **Nutzungsbedingungen** hinzufügen möchten. Dieses Kontrollkästchen ist in der Regel auf Ihren Seiten für die Registrierung über ein lokales Konto und die Registrierung über ein Konto eines sozialen Netzwerks erforderlich.  
+Fügen Sie den folgenden Code in die Seite ein, auf der Sie ein Kontrollkästchen für **Nutzungsbedingungen** hinzufügen möchten. Dieses Kontrollkästchen ist in der Regel auf Ihren Seiten für die Registrierung über ein lokales Konto und die Registrierung über ein Konto eines sozialen Netzwerks erforderlich.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -124,18 +124,18 @@ function addTermsOfUseLink() {
     if (!termsOfUseLabel) {
         return;
     }
-      
+
     // get the label text
     var termsLabelText = termsOfUseLabel.innerHTML;
-      
-    // create a new <a> element with the same inner text 
+
+    // create a new <a> element with the same inner text
     var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
     termsOfUseLink.appendChild(document.createTextNode(termsLabelText));
 
-    // replace the label text with the new element 
+    // replace the label text with the new element
     termsOfUseLabel.replaceChild(termsOfUseLink, termsOfUseLabel.firstChild);
 }
 ```
@@ -145,4 +145,3 @@ Ersetzen Sie im Code den Platzhalter `terms-of-use-url` durch den Link zu Ihren 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen dazu, wie Sie die Benutzeroberfläche Ihrer Anwendungen anpassen können, finden Sie unter [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
-

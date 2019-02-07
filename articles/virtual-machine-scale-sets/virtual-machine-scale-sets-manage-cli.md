@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: dd75e21f94d342f521effb10f4557529fa3c2052
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b49182ebdcc93c4a51a55f27c3e0bf7a45307b7f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888599"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728893"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
@@ -29,7 +29,7 @@ Für diese Verwaltungsaufgaben benötigen Sie die aktuelle Azure CLI. Weitere In
 
 
 ## <a name="view-information-about-a-scale-set"></a>Anzeigen von Informationen zu einer Skalierungsgruppe
-Verwenden Sie [az vmss show](/cli/azure/vmss#az_vmss_show), um die allgemeinen Informationen zu einer Skalierungsgruppe anzuzeigen. Im folgenden Beispiel werden Informationen zur Skalierungsgruppe namens *myScaleSet* in der Ressourcengruppe *myResourceGroup* abgerufen. Geben Sie Ihre eigenen Namen wie folgt ein:
+Verwenden Sie [az vmss show](/cli/azure/vmss), um die allgemeinen Informationen zu einer Skalierungsgruppe anzuzeigen. Im folgenden Beispiel werden Informationen zur Skalierungsgruppe namens *myScaleSet* in der Ressourcengruppe *myResourceGroup* abgerufen. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -57,7 +57,7 @@ az vmss get-instance-view \
 
 
 ## <a name="list-connection-information-for-vms"></a>Auflisten von Verbindungsinformationen für virtuelle Computer
-Wenn Sie eine Verbindung mit den virtuellen Computern in einer Skalierungsgruppe herstellen möchten, stellen Sie eine SSH- oder RDP-Verbindung mit einer zugewiesenen öffentlichen IP-Adresse und Portnummer her. Standardmäßig werden dem Azure-Lastenausgleich, der den Datenverkehr von Remoteverbindungen an die einzelnen virtuellen Computer weiterleitet, Regeln für die Netzwerkadressübersetzung (Network Address Translation, NAT) hinzugefügt. Verwenden Sie [az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info), um die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe aufzulisten. Im folgenden Beispiel werden Verbindungsinformationen für VM-Instanzen in der Skalierungsgruppe namens *myScaleSet* und in der Ressourcengruppe *myResourceGroup* aufgeführt. Geben Sie für diese Namen Ihre eigenen Werte an:
+Wenn Sie eine Verbindung mit den virtuellen Computern in einer Skalierungsgruppe herstellen möchten, stellen Sie eine SSH- oder RDP-Verbindung mit einer zugewiesenen öffentlichen IP-Adresse und Portnummer her. Standardmäßig werden dem Azure-Lastenausgleich, der den Datenverkehr von Remoteverbindungen an die einzelnen virtuellen Computer weiterleitet, Regeln für die Netzwerkadressübersetzung (Network Address Translation, NAT) hinzugefügt. Verwenden Sie [az vmss list-instance-connection-info](/cli/azure/vmss), um die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe aufzulisten. Im folgenden Beispiel werden Verbindungsinformationen für VM-Instanzen in der Skalierungsgruppe namens *myScaleSet* und in der Ressourcengruppe *myResourceGroup* aufgeführt. Geben Sie für diese Namen Ihre eigenen Werte an:
 
 ```azurecli
 az vmss list-instance-connection-info \
@@ -69,7 +69,7 @@ az vmss list-instance-connection-info \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
 Die obigen Befehle dienen zum Anzeigen von Informationen zu Ihrer Skalierungsgruppe und zu den VM-Instanzen. Wenn Sie die Anzahl von Instanzen in der Skalierungsgruppe erhöhen oder verringern möchten, können Sie die Kapazität ändern. Die Skalierungsgruppe erstellt oder entfernt die erforderliche Anzahl von virtuellen Computern und konfiguriert die virtuellen Computer anschließend für den Empfang von Anwendungsdatenverkehr.
 
-Verwenden Sie [az vmss show](/cli/azure/vmss#az_vmss_show), und führen Sie eine Abfrage nach *sku.capacity* durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
+Verwenden Sie [az vmss show](/cli/azure/vmss), und führen Sie eine Abfrage nach *sku.capacity* durch, um die Anzahl der zurzeit in einer Skalierungsgruppe vorhandenen Instanzen anzuzeigen:
 
 ```azurecli
 az vmss show \
@@ -79,7 +79,7 @@ az vmss show \
     --output table
 ```
 
-Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss#az_vmss_scale) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *5* festgelegt:
+Sie können dann die Anzahl der virtuellen Computer in der Skalierungsgruppe mit [az vmss scale](/cli/azure/vmss) manuell erhöhen oder verringern. Im folgenden Beispiel wird die Anzahl der virtuellen Computer in der Skalierungsgruppe auf *5* festgelegt:
 
 ```azurecli
 az vmss scale \
@@ -100,7 +100,7 @@ Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *m
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-Beendete virtuelle Computer bleiben weiter zugeordnet, und es fallen weiterhin Compute-Gebühren für sie an. Wenn Sie stattdessen die Zuordnung der virtuellen Computer aufheben möchten, sodass nur noch Speichergebühren anfallen, verwenden Sie [az vmss deallocate](/cli/azure/vmss#az_vmss_deallocate). Wenn Sie die Zuordnung mehrerer virtueller Computer aufheben möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen. Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* beendet und ihre Zuordnung aufgehoben. Geben Sie Ihre eigenen Werte wie folgt an:
+Beendete virtuelle Computer bleiben weiter zugeordnet, und es fallen weiterhin Compute-Gebühren für sie an. Wenn Sie stattdessen die Zuordnung der virtuellen Computer aufheben möchten, sodass nur noch Speichergebühren anfallen, verwenden Sie [az vmss deallocate](/cli/azure/vmss). Wenn Sie die Zuordnung mehrerer virtueller Computer aufheben möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen. Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* beendet und ihre Zuordnung aufgehoben. Geben Sie Ihre eigenen Werte wie folgt an:
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -118,7 +118,7 @@ az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 
 
 
 ## <a name="restart-vms-in-a-scale-set"></a>Neustarten von virtuellen Computern in einer Skalierungsgruppe
-Verwenden Sie [az vmss restart](/cli/azure/vmss#az_vmss_restart), um virtuelle Computer in einer Skalierungsgruppe neu zu starten. Mit dem Parameter `--instance-ids` können Sie die neu zu startenden virtuellen Computer angeben. Wenn Sie keine Instanz-ID angeben, werden alle virtuellen Computer in der Skalierungsgruppe neu gestartet. Wenn Sie mehrere virtuelle Computer neu starten möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
+Verwenden Sie [az vmss restart](/cli/azure/vmss), um virtuelle Computer in einer Skalierungsgruppe neu zu starten. Mit dem Parameter `--instance-ids` können Sie die neu zu startenden virtuellen Computer angeben. Wenn Sie keine Instanz-ID angeben, werden alle virtuellen Computer in der Skalierungsgruppe neu gestartet. Wenn Sie mehrere virtuelle Computer neu starten möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
 
 Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* neu gestartet. Geben Sie Ihre eigenen Werte wie folgt an:
 
@@ -128,7 +128,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Entfernen von virtuellen Computern aus einer Skalierungsgruppe
-Verwenden Sie [az vmss delete-instances](/cli/azure/vmss#delete-instances), um virtuelle Computer in einer Skalierungsgruppe zu entfernen. Mit dem Parameter `--instance-ids` können Sie die zu entfernenden virtuellen Computer angeben. Wenn Sie für die Instanz-ID ein Sternchen (*) angeben, werden alle virtuellen Computer in der Skalierungsgruppe entfernt. Wenn Sie mehrere virtuelle Computer entfernen möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
+Verwenden Sie [az vmss delete-instances](/cli/azure/vmss), um virtuelle Computer in einer Skalierungsgruppe zu entfernen. Mit dem Parameter `--instance-ids` können Sie die zu entfernenden virtuellen Computer angeben. Wenn Sie für die Instanz-ID ein Sternchen (*) angeben, werden alle virtuellen Computer in der Skalierungsgruppe entfernt. Wenn Sie mehrere virtuelle Computer entfernen möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
 
 Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* entfernt. Geben Sie Ihre eigenen Werte wie folgt an:
 

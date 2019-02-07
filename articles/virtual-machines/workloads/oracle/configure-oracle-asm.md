@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8cf977f9c5bbf10c6a4d862a29fda98d3ce71844
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203588"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755688"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer  
 
@@ -42,7 +42,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl [az group create](/cli/azure/group#az_group_create). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel befindet sich eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus*.
+Verwenden Sie zum Erstellen einer Ressourcengruppe den Befehl [az group create](/cli/azure/group). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel befindet sich eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

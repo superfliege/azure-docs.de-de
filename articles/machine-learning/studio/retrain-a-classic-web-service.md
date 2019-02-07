@@ -1,8 +1,21 @@
 ---
-Titel: Erneutes Trainieren eines klassischen Webdiensts titleSuffix: Azure Machine Learning Studio-Beschreibung: Erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Azure Machine Learning verwendet.
-Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 19.04.2017
+title: Erneutes Trainieren eines klassischen Webdiensts
+titleSuffix: Azure Machine Learning Studio
+description: Erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Azure Machine Learning verwendet.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 04/19/2017
+ms.openlocfilehash: 04dac55feaa6826e1b8b591df61e8ad413f24dad
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509404"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>Erneutes Trainieren eines klassischen Azure Machine Learning Studio-Webdiensts
 Der von Ihnen bereitgestellte Vorhersagewebdienst ist der Standardbewertungsendpunkt. Standardendpunkte werden mit den ursprünglichen Trainings- und Bewertungsexperimenten synchronisiert. Daher kann das trainierte Modell für den Standardendpunkt nicht ersetzt werden. Zum erneuten Trainieren des Webdiensts müssen Sie dem Webdienst einen neuen Endpunkt hinzufügen.

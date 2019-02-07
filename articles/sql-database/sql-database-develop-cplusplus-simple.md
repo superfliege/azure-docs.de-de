@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: f1aa037afd0fa1cbe37add24a354e4dc62c13b9a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 12/12/2018
+ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310129"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755151"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Herstellen einer Verbindung mit SQL-Datenbank mit C und C++
+
 Dieser Beitrag ist für C- und C++-Entwickler gedacht, die eine Verbindung mit Azure SQL-Datenbank herstellen möchten. Er ist in Abschnitte unterteilt, damit Sie direkt auf den für Sie interessanten Abschnitt zugreifen können.
 
 ## <a name="prerequisites-for-the-cc-tutorial"></a>Voraussetzungen für das C/C++-Tutorial
+
 Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Konto. Wenn Sie kein Konto haben, können Sie sich für eine [kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
@@ -38,7 +40,7 @@ Azure verfügt derzeit über zwei Optionen zum Hosten von SQL Server-Workloads: 
 Das Herstellen einer Verbindung mit Azure SQL-Datenbank ist nicht viel anders. Derzeit gibt es zwei Möglichkeiten, eine Verbindung mit Datenbanken herzustellen: ODBC (Open Database Connectivity) und OLE DB (Object Linking and Embedding Database). In den letzten Jahren hat Microsoft eine [Anpassung an ODBC in Bezug auf den Zugriff auf native relationale Daten](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/) durchgeführt. ODBC ist relativ einfach und außerdem deutlich schneller als OLE DB. Der einzige Nachteil ist, dass für ODBC eine ältere API im C-Stil verwendet wird.
 
 ## <a id="Create"></a>Schritt 1:  Erstellen der Azure SQL-Datenbank
-Auf der [Seite für erste Schritte](sql-database-get-started-portal.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank.  Alternativ hierzu können Sie sich an dieses [kurze zweiminütige Video](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) halten, um mit dem Azure-Portal eine Azure SQL-Datenbank zu erstellen.
+Auf der [Seite für erste Schritte](sql-database-single-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank.  Alternativ hierzu können Sie sich an dieses [kurze zweiminütige Video](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) halten, um mit dem Azure-Portal eine Azure SQL-Datenbank zu erstellen.
 
 ## <a id="ConnectionString"></a>Schritt 2:  Abrufen der Verbindungszeichenfolge
 Nachdem Ihre Azure SQL-Datenbank bereitgestellt wurde, müssen Sie die folgenden Schritte ausführen, um die Verbindungsinformationen zu ermitteln und Ihre Client-IP für den Firewallzugriff hinzuzufügen.

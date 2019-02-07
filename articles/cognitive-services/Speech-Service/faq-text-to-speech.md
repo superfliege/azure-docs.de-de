@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228252"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754869"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zu Text-to-Speech
 
@@ -29,7 +29,7 @@ Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen fin
 
 **F: Wo fange ich an, wenn ich ein Standardstimmmodell verwenden möchte?**
 
-**A:** Mehr als 80 Standardstimmmodelle stehen in über 45 Sprachen über HTTP-Anforderungen zur Verfügung. Rufen Sie zunächst einen [Abonnementschlüssel](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Stimmmodelle finden Sie in der [REST-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A:** Mehr als 80 Standardstimmmodelle stehen in über 45 Sprachen über HTTP-Anforderungen zur Verfügung. Rufen Sie zunächst einen [Abonnementschlüssel](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Stimmmodelle finden Sie in der [REST-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 **F: Wenn ich ein benutzerdefiniertes Stimmmodell verwenden möchte, ist die API die gleiche wie für die Standardstimmen?**
 

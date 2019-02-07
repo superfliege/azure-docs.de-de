@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 8f3cdf366830549c3ebb9c5680ecf36d1053d1d9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df6330827a4fb8bb8e80af89855c3ea104584295
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075293"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662286"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 
@@ -32,7 +32,7 @@ Um zu gewährleisten, dass der Entwicklungsprozess sicher ist, werden Tool- und 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET- und .NET Core-Anwendungen
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Speichern Sie Geheimniseinstellungen im User Secret-Speicher, der sich außerhalb des Ordners für die Quellcodeverwaltung befindet.
-Wenn Sie schnell einen Prototyp erstellen oder keinen Internetzugriff haben, verschieben Sie zunächst Ihre Geheimniseinstellungen aus dem Ordner für die Quellcodeverwaltung in den User Secret-Speicher. Der User Secret-Speicher ist eine Datei, die unter dem Benutzerprofilordner gespeichert wird, sodass Geheimnisse nicht in die Quellcodeverwaltung eingecheckt werden. Im folgenden Diagramm ist dargestellt, wie [User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) funktioniert.
+Wenn Sie schnell einen Prototyp erstellen oder keinen Internetzugriff haben, verschieben Sie zunächst Ihre Geheimniseinstellungen aus dem Ordner für die Quellcodeverwaltung in den User Secret-Speicher. Der User Secret-Speicher ist eine Datei, die unter dem Benutzerprofilordner gespeichert wird, sodass Geheimnisse nicht in die Quellcodeverwaltung eingecheckt werden. Im folgenden Diagramm ist dargestellt, wie [User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) funktioniert.
 
 ![User Secret bewahrt Geheimniseinstellungen außerhalb der Quellcodeverwaltung auf](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 

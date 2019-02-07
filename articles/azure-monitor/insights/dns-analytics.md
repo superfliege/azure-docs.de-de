@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 29b76620494fbb325f8c43bf90a07c9df0faff56
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 21b44b1c739818206fdba9d10250a2976f1d90db
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266332"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746862"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -42,9 +42,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | **Verbundene Quelle** | **Unterstützung** | **Beschreibung** |
 | --- | --- | --- |
-| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | JA | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
+| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
 | [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein  | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
-| [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | JA | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung von Operations Manager mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
+| [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung von Operations Manager mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
 | [Azure-Speicherkonto](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nein  | Azure-Speicher wird von der Lösung nicht verwendet. |
 
 ### <a name="data-collection-details"></a>Details zur Datensammlung
@@ -105,7 +105,7 @@ Im Lösungsdashboard werden die folgenden Blätter angezeigt:
 
 ![Blatt „DNS-Sicherheit“](./media/dns-analytics/dns-security-blade.png)
 
-Wenn Sie auf eine Client-IP-Adresse in der Liste klicken, wird die Protokollsuche geöffnet und zeigt die Details der Suche für die jeweilige Abfrage an. Im folgenden Beispiel hat DNS Analytics erkannt, dass mit einem [IRCbot](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32/IRCbot) kommuniziert wurde:
+Wenn Sie auf eine Client-IP-Adresse in der Liste klicken, wird die Protokollsuche geöffnet und zeigt die Details der Suche für die jeweilige Abfrage an. Im folgenden Beispiel hat DNS Analytics erkannt, dass mit einem [IRCbot](https://www.microsoft.com/wdsi/threats/threat-search?query=Win32/IRCbot) kommuniziert wurde:
 
 ![Protokollsuchergebnisse mit IRCbot](./media/dns-analytics/ircbot.png)
 

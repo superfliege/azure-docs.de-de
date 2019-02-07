@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 5884c7df37ef4bd67f85ec614bdefe87522b6bc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe6ec751ed18af24e8a38d6993d8047b62eeed44
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171999"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769758"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit dem SDK für die visuelle Bing-Suche für C#
 
@@ -26,7 +26,7 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
 * Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition.
 * Unter Linux/macOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden
 * Das NuGet-Paket für die visuelle Suche. 
-    - Klicken Sie im Projektmappen-Explorer in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü `Manage NuGet Packages` (NuGet-Pakete verwalten) aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.CustomSearch`-Paket. Bei der Installation der NuGet-Pakete wird auch Folgendes installiert:
+    - Klicken Sie im Projektmappen-Explorer in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü `Manage NuGet Packages` (NuGet-Pakete verwalten) aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.VisualSearch`-Paket. Bei der Installation der NuGet-Pakete wird auch Folgendes installiert:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -48,7 +48,7 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
 2. Instanziieren Sie den Client mit Ihrem Abonnementschlüssel.
     
     ```csharp
-    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
     
 ## <a name="send-a-search-request"></a>Senden einer Suchanforderung 
@@ -56,7 +56,7 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
 1. Erstellen Sie einen `FileStream` für Ihre Bilder (in diesem Fall `TestImages/image.jpg`). Verwenden Sie anschließend den Client, um mit `client.Images.VisualSearchMethodAsync()` eine Suchanforderung zu senden. 
     
     ```csharp
-     System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open;
+     System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open);
      // The knowledgeRequest parameter is not required if an image binary is passed in the request body
      var visualSearchResults = client.Images.VisualSearchMethodAsync(image: stream, knowledgeRequest: (string)null).Result;
     ```
@@ -77,13 +77,13 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
     // List of tags
     if (visualSearchResults.Tags.Count > 0)
     {
-        var firstTagResult = visualSearchResults.Tags.First();
+        var firstTagResult = visualSearchResults.Tags[0];
         Console.WriteLine($"Visual search tag count: {visualSearchResults.Tags.Count}");
     
         // List of actions in first tag
         if (firstTagResult.Actions.Count > 0)
         {
-            var firstActionResult = firstTagResult.Actions.First();
+            var firstActionResult = firstTagResult.Actions[0];
             Console.WriteLine($"First tag action count: {firstTagResult.Actions.Count}");
             Console.WriteLine($"First tag action type: {firstActionResult.ActionType}");
         }
@@ -91,6 +91,7 @@ Verwenden Sie diese Schnellstartanleitung, um über den Dienst für die visuelle
         {
             Console.WriteLine("Couldn't find tag actions!");
         }
+    }
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

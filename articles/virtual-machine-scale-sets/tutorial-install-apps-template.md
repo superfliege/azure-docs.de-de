@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 81ab41518fea81b577738d30970d83f6d6d6f2bc
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 262d7a6a4399a72e762c4ad3c87a878c54e22af4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883992"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750391"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit einer Azure-Vorlage
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In einem vorherigen Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image erstellen und verwenden, um Ihre VM-Instanzen bereitzustellen. Dieses benutzerdefinierte Image umfasste manuelle Anwendungsinstallationen und -konfigurationen. Sie können die Installation von Anwendungen auch per Skalierungsgruppe automatisieren, nachdem die einzelnen VM-Instanzen bereitgestellt wurden, oder eine Anwendung aktualisieren, die bereits in einer Skalierungsgruppe ausgeführt wird. In diesem Tutorial lernen Sie Folgendes:
@@ -77,13 +77,13 @@ Ein vollständiges Beispiel für eine Azure-Vorlage, mit der eine Skalierungsgru
 
 
 ## <a name="create-a-scale-set"></a>Erstellen einer Skalierungsgruppe
-Wir verwenden die Beispielvorlage, um eine Skalierungsgruppe zu erstellen und die benutzerdefinierte Skripterweiterung anzuwenden. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Wir verwenden die Beispielvorlage, um eine Skalierungsgruppe zu erstellen und die benutzerdefinierte Skripterweiterung anzuwenden. Erstellen Sie zunächst mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Sie erstellen nun mit [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
+Sie erstellen nun mit [az group deployment create](/cli/azure/group/deployment) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung Ihren eigenen Benutzernamen mit dem dazugehörigen Kennwort jeweils als Anmeldeinformationen für eine VM-Instanz an:
 
 ```azurecli-interactive
 az group deployment create \
@@ -97,7 +97,7 @@ Jede VM-Instanz in der Skalierungsgruppe wird heruntergeladen und führt das Skr
 
 
 ## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Um den Webserver in Aktion zu sehen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip#show) die öffentliche IP-Adresse des Lastenausgleichsmoduls ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
+Um den Webserver in Aktion zu sehen, rufen Sie mit [az network public-ip show](/cli/azure/network/public-ip) die öffentliche IP-Adresse des Lastenausgleichsmoduls ab. Im folgenden Beispiel wird die IP-Adresse für *myScaleSetPublicIP* abgerufen, die als Teil der Skalierungsgruppe erstellt wurde:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ Um die Definition der benutzerdefinierten Skripterweiterung zu aktualisieren, ä
 }
 ```
 
-Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung erneut auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) verwenden. Die Vorlage *azuredeployv2.json* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden. In der Praxis ändern Sie die vorhandene Vorlage *azuredeploy.json* so, dass sie auf das aktualisierte Installationsskript verweist. Dies wurde im vorherigen Abschnitt veranschaulicht. Geben Sie bei entsprechender Aufforderung denselben Benutzernamen mit dem dazugehörigen Kennwort als Anmeldeinformationen ein, den Sie bei der ursprünglichen Erstellung der Skalierungsgruppe verwendet haben:
+Wenden Sie die Konfiguration der benutzerdefinierten Skripterweiterung erneut auf die VM-Instanzen in Ihrer Skalierungsgruppe an, indem Sie [az group deployment create](/cli/azure/group/deployment) verwenden. Die Vorlage *azuredeployv2.json* wird verwendet, um die aktualisierte Version der Anwendung anzuwenden. In der Praxis ändern Sie die vorhandene Vorlage *azuredeploy.json* so, dass sie auf das aktualisierte Installationsskript verweist. Dies wurde im vorherigen Abschnitt veranschaulicht. Geben Sie bei entsprechender Aufforderung denselben Benutzernamen mit dem dazugehörigen Kennwort als Anmeldeinformationen ein, den Sie bei der ursprünglichen Erstellung der Skalierungsgruppe verwendet haben:
 
 ```azurecli-interactive
 az group deployment create \
@@ -155,7 +155,7 @@ Alle VM-Instanzen in der Skalierungsgruppe werden automatisch mit der aktuellen 
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen mit [az group delete](/cli/azure/group#az_group_delete), um Ihre Skalierungsgruppe und die weiteren Ressourcen zu entfernen. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
+Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen mit [az group delete](/cli/azure/group), um Ihre Skalierungsgruppe und die weiteren Ressourcen zu entfernen. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

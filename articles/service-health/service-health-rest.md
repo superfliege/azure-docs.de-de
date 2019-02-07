@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095790"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750357"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Abrufen der Ressourcenintegrität mithilfe der REST-API 
 
@@ -44,7 +44,7 @@ Die folgenden Header sind erforderlich:
 
 | NAME | BESCHREIBUNG |
 | :--- | :---------- |
-| subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions): |
+| subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
 | api-version | API-Version, die für die Anforderung verwendet werden soll.<br /><br /> In diesem Dokument wird API-Version `2015-04-01` behandelt, die in der obigen URL enthalten ist.  |
 | $filter | Die Filteroption, um die Anzahl der zurückgegebenen Ergebnisse zu verringern. Die zulässigen Muster für diesen Parameter sind [in der Referenz für den Vorgang der Aktivitätsprotokolle](/rest/api/monitor/activitylogs/list#uri-parameters) verfügbar. Das gezeigte Beispiel erfasst alle Ereignisse in einem Zeitraum zwischen den Daten „2018-05-16“ und „2018-06-20“. |
 | &nbsp; | &nbsp; |

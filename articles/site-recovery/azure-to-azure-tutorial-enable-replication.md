@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0e73c0f94e0aa240349aec45b4a146ba5eb37dab
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103514"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700773"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -170,7 +170,7 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
     - **App-konsistente Momentaufnahmenhäufigkeit**: Standardmäßig erstellt Site Recovery alle 4 Stunden eine App-konsistente Momentaufnahme. Sie können einen Wert zwischen 1 und 12 Stunden konfigurieren. Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb der VM. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind.
     - **Replikationsgruppe**: Wenn für Ihre Anwendung VM-übergreifende Konsistenz mehrerer virtueller Computer erforderlich ist, können Sie eine Replikationsgruppe für diese VMs erstellen. Standardmäßig sind die ausgewählten VMs nicht Teil einer Replikationsgruppe.
 
-5. Wenn Sie VMs einer neuen oder vorhandenen Replikationsgruppe hinzufügen möchten, wählen Sie unter **Anpassen** die Option **Ja** für Multi-VM-Konsistenz aus, um die VMs einer Replikationsgruppe hinzuzufügen. Klicken Sie dann auf **OK**.
+5. Wenn Sie VMs einer neuen oder vorhandenen Replikationsgruppe hinzufügen möchten, wählen Sie unter **Anpassen** die Option **Ja** für Multi-VM-Konsistenz aus, Klicken Sie dann auf **OK**.
 
     - Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken (da der Vorgang CPU-intensiv ist) und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
     - Eine Replikationsgruppe kann maximal 16 virtuelle Computer enthalten.

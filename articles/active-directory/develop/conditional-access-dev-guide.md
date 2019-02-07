@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: c5df6d1b3480a93a0667aaec0bcf0e171d4a0fe6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b84d7a6f266ffae062d861c53a229225403e07c5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101752"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727992"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -77,7 +77,7 @@ Entwickler können diese Anforderung annehmen und an eine neue Anforderung an Az
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Der bedingte Zugriff von Azure AD ist ein Feature von [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis#choose-an-edition). Weitere Informationen zu Lizenzanforderungen finden Sie im [Bericht zu nicht lizenzierter Nutzung](../active-directory-conditional-access-unlicensed-usage-report.md). Entwickler können sich für das [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx) registrieren, das ein kostenloses Abonnement für die Enterprise Mobility Suite mit Azure AD Premium umfasst.
+Der bedingte Zugriff von Azure AD ist ein Feature von [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Weitere Informationen zu Lizenzanforderungen finden Sie im [Bericht zu nicht lizenzierter Nutzung](../active-directory-conditional-access-unlicensed-usage-report.md). Entwickler können sich für das [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx) registrieren, das ein kostenloses Abonnement für die Enterprise Mobility Suite mit Azure AD Premium umfasst.
 
 ### <a name="considerations-for-specific-scenarios"></a>Überlegungen für bestimmte Szenarien
 

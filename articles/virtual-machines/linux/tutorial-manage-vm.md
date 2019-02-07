@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466855"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749141"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
@@ -40,7 +40,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) eine Ressourcengruppe. 
+Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. 
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus* erstellt. 
 
@@ -52,7 +52,7 @@ Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit dem Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) einen virtuellen Computer. 
+Erstellen Sie mit dem Befehl [az vm create](https://docs.microsoft.com/cli/azure/vm) einen virtuellen Computer. 
 
 Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung – beispielsweise Betriebssystemimage, Datenträgergröße und Administratoranmeldeinformationen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* mit Ubuntu Server erstellt. Auf dem virtuellen Computer wird ein Benutzerkonto namens *azureuser* erstellt. Außerdem werden SSH-Schlüssel generiert, sofern sie am Standardspeicherort für Schlüssel (*~/.ssh*) nicht vorhanden sind:
 
@@ -98,7 +98,7 @@ exit
 
 Azure Marketplace bietet zahlreiche Images, die zum Erstellen virtueller Computer verwendet werden können. In den vorherigen Schritten wurde ein virtueller Computer mit einem Ubuntu-Image erstellt. In diesem Schritt wird der Marketplace mithilfe der Azure-Befehlszeilenschnittstelle nach einem CentOS-Image durchsucht, das anschließend zum Bereitstellen eines zweiten virtuellen Computers verwendet wird. 
 
-Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image#az_vm_image_list).
+Eine Liste mit den am häufigsten verwendeten Images erhalten Sie mithilfe des Befehls [az vm image list](/cli/azure/vm/image).
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -155,7 +155,7 @@ Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (
 
 In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.  
 
-| Typ                     | Größen           |    BESCHREIBUNG       |
+| Type                     | Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
@@ -167,7 +167,7 @@ In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.
 
 ### <a name="find-available-vm-sizes"></a>Ermitteln der verfügbaren VM-Größen
 
-Eine Liste mit den verfügbaren VM-Größen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes). 
+Eine Liste mit den verfügbaren VM-Größen einer bestimmten Region erhalten Sie mithilfe des Befehls [az vm list-sizes](/cli/azure/vm). 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -198,7 +198,7 @@ Hier sehen Sie einen Teil der Ausgabe:
 
 ### <a name="create-vm-with-specific-size"></a>Erstellen eines virtuellen Computers mit einer bestimmten Größe
 
-Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) und dem Argument `--size` ausgewählt werden. 
+Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm) und dem Argument `--size` ausgewählt werden. 
 
 ```azurecli-interactive 
 az vm create \
@@ -217,12 +217,12 @@ Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen Azure-Cluster verfügbar ist. Der Befehl [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) gibt die Größenliste zurück. 
+Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen Azure-Cluster verfügbar ist. Der Befehl [az vm list-vm-resize-options](/cli/azure/vm) gibt die Größenliste zurück. 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden. Verwenden Sie zum Vornehmen der Größenänderung den Befehl [az vm resize]( /cli/azure/vm#az_vm_resize).
+Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden. Verwenden Sie zum Vornehmen der Größenänderung den Befehl [az vm resize]( /cli/azure/vm).
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
@@ -264,7 +264,7 @@ Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweis
 
 ### <a name="find-the-power-state"></a>Ermitteln des Energiezustands
 
-Verwenden Sie zum Abrufen des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
+Verwenden Sie zum Abrufen des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get-instance-view](/cli/azure/vm). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

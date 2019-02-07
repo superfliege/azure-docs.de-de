@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines routenbasierten Azure-VPN-Gateways – CLI | Microsoft-Dokumentation
+title: 'Erstellen eines routenbasierten Azure-VPN-Gateways: CLI | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie ein VPN-Gateway mithilfe von CLI erstellen.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: b8ca2d74012418dbd8ca9e878f133a250ebb5991
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465099"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698189"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI
 
@@ -26,7 +26,7 @@ Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden m
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit dem Befehl [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen **VNet1** am Standort **USA, Osten** erstellt:
+Erstellen Sie mit dem Befehl [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen **VNet1** am Standort **USA, Osten** erstellt:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="PublicIP"></a>Anfordern einer öffentlichen IP-Adresse
@@ -67,12 +67,12 @@ Ein VPN-Gateway muss über eine dynamisch zugewiesene öffentliche IP-Adresse ve
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="CreateGateway"></a>Erstellen des VPN-Gateways
 
-Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/group#az_network_vnet_gateway_create).
+Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/group).
 
 Wenn Sie diesen Befehl mit dem Parameter `--no-wait` ausführen, werden kein Feedback und keine Ausgabe angezeigt. Der Parameter `--no-wait` ermöglicht die Erstellung des Gateways im Hintergrund. Das bedeutet nicht, dass die Erstellung des VPN-Gateways sofort abgeschlossen ist.
 
@@ -172,7 +172,7 @@ Beispielantwort:
 ```
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group#az_group_delete). Damit löschen Sie die Ressourcengruppe mit allen enthaltenen Ressourcen.
+Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group). Damit löschen Sie die Ressourcengruppe mit allen enthaltenen Ressourcen.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes

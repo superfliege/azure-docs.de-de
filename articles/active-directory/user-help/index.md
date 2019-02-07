@@ -10,12 +10,12 @@ ms.subservice: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 510ecfc217c5e3b3e1ac6cd285fcaf7001199aa4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5d69f4cbf78cf75cf018070a0d02c4b109689449
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149713"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769485"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung
 
@@ -87,10 +87,10 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                         <h3>Hilfe zur Microsoft Authenticator-App</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Übersicht</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Herunterladen und Installieren der App</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">Hinzufügen Ihrer Konten</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Anmelden mit der App</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">Sichern und Wiederherstellen von Kontoanmeldeinformationen</a>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">Herunterladen und Installieren der App</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">Hinzufügen Ihrer Konten</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">Anmelden mit der App</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">Sichern und Wiederherstellen von Kontoanmeldeinformationen</a>
                         </p>
                     </div>
                 </div>

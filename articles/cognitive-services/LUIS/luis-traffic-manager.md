@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: ecf79f5c294b7ef7d14eea49c9bd568f6921fb65
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 802a5cc629a467527c916c5a41a9c00d06e85600
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218020"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491721"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -340,7 +340,7 @@ Um zu überprüfen, ob die DNS-Antwort einen LUIS-Endpunkt zurückgibt, fordern 
 
 Der folgende Node.js-Code nimmt eine Anforderung des übergeordneten Profils vor und gibt einen LUIS-Endpunkt zurück:
 
-```nodejs
+```javascript
 const dns = require('dns');
 
 dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {

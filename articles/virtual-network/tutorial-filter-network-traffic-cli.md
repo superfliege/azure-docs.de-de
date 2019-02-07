@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 3252395c7a511a00e8da0a31139fce3b2763decb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 630eddc8494b32d93035913bcb2b55f00153b1be
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461840"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755508"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle
 
@@ -46,7 +46,7 @@ Eine Netzwerksicherheitsgruppe enthält Sicherheitsregeln. Sicherheitsregeln geb
 
 ### <a name="create-application-security-groups"></a>Erstellen von Anwendungssicherheitsgruppen
 
-Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe für alle in diesem Artikel erstellten Ressourcen. Das folgende Beispiel erstellt eine Ressourcengruppe am Standort *eastus*: 
+Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe für alle in diesem Artikel erstellten Ressourcen. Das folgende Beispiel erstellt eine Ressourcengruppe am Standort *eastus*: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Erstellen Sie mit [az network asg create](/cli/azure/network/asg#az_network_asg_create) eine Anwendungssicherheitsgruppe. Mit einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Anforderungen an die Portfilterung gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen.
+Erstellen Sie mit [az network asg create](/cli/azure/network/asg) eine Anwendungssicherheitsgruppe. Mit einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Anforderungen an die Portfilterung gruppieren. Das folgende Beispiel erstellt zwei Anwendungssicherheitsgruppen.
 
 ```azurecli-interactive
 az network asg create \
@@ -70,7 +70,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Das folgende Beispiel erstellt eine Netzwerksicherheitsgruppe namens *myNsg*: 
+Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg) eine Netzwerksicherheitsgruppe. Das folgende Beispiel erstellt eine Netzwerksicherheitsgruppe namens *myNsg*: 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -81,7 +81,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>Erstellen von Sicherheitsregeln
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Sicherheitsregel. Das folgende Beispiel erstellt eine Regel, die eingehenden Datenverkehr aus dem Internet in die Anwendungssicherheitsgruppe *myWebServers* über die Ports 80 und 443 zulässt:
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule) eine Sicherheitsregel. Das folgende Beispiel erstellt eine Regel, die eingehenden Datenverkehr aus dem Internet in die Anwendungssicherheitsgruppe *myWebServers* über die Ports 80 und 443 zulässt:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -119,7 +119,7 @@ In diesem Artikel wird SSH (Port 22) für den virtuellen Computer *myAsgMgmtServ
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Das folgende Beispiel erstellt ein virtuelles Netzwerk namens *myVirtualNetwork*:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk. Das folgende Beispiel erstellt ein virtuelles Netzwerk namens *myVirtualNetwork*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk, sodass Sie in einem späteren Schritt die Datenverkehrsfilterung überprüfen können. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver dienen wird. Durch die `--asgs myAsgWebServers`-Option fügt Azure die für den virtuellen Computer erstellte Netzwerkschnittstelle als Mitglied der Anwendungssicherheitsgruppe *myAsgWebServers* hinzu.
+Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Das folgende Beispiel erstellt einen virtuellen Computer, der als Webserver dienen wird. Durch die `--asgs myAsgWebServers`-Option fügt Azure die für den virtuellen Computer erstellte Netzwerkschnittstelle als Mitglied der Anwendungssicherheitsgruppe *myAsgWebServers* hinzu.
 
 Die `--nsg ""`-Option wird angegeben, um zu verhindern, dass Azure eine standardmäßige Netzwerksicherheitsgruppe für die Netzwerkschnittstelle erstellt, die Azure während der Erstellung des virtuellen Computers erstellt. Zur Vereinfachung dieses Artikels wird ein Kennwort verwendet. Schlüssel werden in der Regel in Produktionsbereitstellungen verwendet. Wenn Sie Schlüssel verwenden, müssen Sie für die verbleibenden Schritte außerdem die SSH-Agent-Weiterleitung konfigurieren. Weitere Informationen finden Sie in der Dokumentation Ihres SSH-Clients. Ersetzen Sie `<replace-with-your-password>` im folgenden Befehl durch ein Kennwort Ihrer Wahl.
 
@@ -234,7 +234,7 @@ Melden Sie sich vom virtuellen Computer *myVmMgmt* ab. Um zu bestätigen, dass S
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group#az_group_delete) entfernen.
+Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group) entfernen.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

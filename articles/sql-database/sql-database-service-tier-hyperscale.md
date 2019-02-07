@@ -3,7 +3,7 @@ title: Übersicht zu Hyperscale in Azure SQL-Datenbank | Microsoft-Dokumentation
 description: In diesem Artikel wird der Diensttarif „Hyperscale“ im V-Kern-basierten Tarifmodell in Azure SQL-Datenbank beschrieben. Zudem werden die Unterschiede zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ erläutert.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 25936fa1156dea4beff6e593646d0468a4687f36
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 524e10b93905372377fe388a38c5dc55fdcee877
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476178"
+ms.locfileid: "55509987"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Diensttarif „Hyperscale“ (Vorschau) für bis zu 100 TB
 

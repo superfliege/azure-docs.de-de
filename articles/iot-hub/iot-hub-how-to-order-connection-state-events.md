@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 06b917c956507de3eb3b1536356285d7a954fb8b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184048"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730075"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -273,7 +273,7 @@ Nachdem Ihr Ereignisabonnement eingerichtet wurde, testen Sie es, indem Sie ein 
 
 3. Geben Sie für **Geräte-ID** die Zeichenfolge `Demo-Device-1` ein.
 
-4. Wählen Sie **Speichern**aus. 
+4. Wählen Sie **Speichern** aus. 
 
 5. Sie können mehrere Geräte mit unterschiedlichen Geräte-IDs hinzufügen.
 
@@ -341,7 +341,7 @@ Auch wenn Sie Ihren IoT Hub behalten, sollten Sie das Ereignisabonnement, das Si
 
 3. Klicken Sie auf **Löschen**. 
 
-Wenn Sie ein Azure Cosmos DB-Konto aus dem Azure-Portal entfernen möchten, klicken Sie mit der rechten Maustaste auf den Kontonamen, und klicken Sie anschließend auf **Konto löschen**. Ausführliche Anweisungen finden Sie unter [Löschen eines Azure Cosmos DB-Kontos](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete).
+Wenn Sie ein Azure Cosmos DB-Konto aus dem Azure-Portal entfernen möchten, klicken Sie mit der rechten Maustaste auf den Kontonamen, und klicken Sie anschließend auf **Konto löschen**. Ausführliche Anweisungen finden Sie unter [Löschen eines Azure Cosmos DB-Kontos](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

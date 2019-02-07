@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 7281e6bb2dda5dc3fddb5f39bf271293ebb88a73
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163785"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732011"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von Node.js
 
@@ -36,7 +36,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
 Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und einen Event Hub zu erstellen, und fahren Sie dann mit den folgenden Schritten in diesem Tutorial fort.
 
-Gehen Sie wie im folgenden Artikel beschrieben vor, um die Verbindungszeichenfolge für den Event Hub-Namespace abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Die Verbindungszeichenfolge wird im weiteren Verlauf dieses Tutorials benötigt.
+Gehen Sie wie im folgenden Artikel beschrieben vor, um die Verbindungszeichenfolge für den Event Hub-Namespace abzurufen: [Rufen Sie die Verbindungszeichenfolge ab](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Die Verbindungszeichenfolge wird im weiteren Verlauf dieses Tutorials benötigt.
 
 ## <a name="clone-the-sample-git-repository"></a>Klonen des Git-Beispielrepositorys
 Klonen Sie das Git-Beispielrepository von [GitHub](https://github.com/Azure/azure-event-hubs-node) auf Ihren Computer. 
@@ -44,7 +44,7 @@ Klonen Sie das Git-Beispielrepository von [GitHub](https://github.com/Azure/azur
 ## <a name="install-nodejs-package"></a>Installieren des Node.js-Pakets
 Installieren Sie das Node.js-Paket für Azure Event Hubs auf Ihrem Computer. 
 
-```nodejs
+```shell
 npm install @azure/event-hubs
 ```
 
@@ -59,13 +59,13 @@ Das von Ihnen geklonte SDK enthält mehrere Beispiele, die veranschaulichen, wie
 3. Konfigurieren Sie die Verbindungszeichenfolge und den Namen Ihres Event Hubs sowie den Speicherendpunkt. Die Verbindungszeichenfolge für Ihren Event Hub können Sie im Azure-Portal auf der Event Hub-Seite unter **RootManageSharedAccessKey** aus **Verbindungszeichenfolge – Primärschlüssel** kopieren. Ausführliche Schritte finden Sie unter [Abrufen der Verbindungszeichenfolge](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Navigieren Sie in der Azure CLI zum Ordnerpfad **client**. Führen Sie die folgenden Befehle aus, um Node-Pakete zu installieren und das Projekt zu erstellen:
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. Starten Sie das Senden von Ereignissen mithilfe des folgenden Befehls: 
 
-    ```nodejs
+    ```shell
     node dist/examples/simpleSender.js
     ```
 
@@ -74,7 +74,7 @@ Das von Ihnen geklonte SDK enthält mehrere Beispiele, die veranschaulichen, wie
 Nachfolgend sehen Sie den Beispielcode zum Senden von Ereignissen an einen Event Hub mithilfe von Node.js. Sie können manuell eine Datei „sampleSender.js“ erstellen und ausführen, um Ereignisse an einen Event Hub zu senden. 
 
 
-```nodejs
+```javascript
 const { EventHubClient, EventPosition } = require('@azure/event-hubs');
 
 const client = EventHubClient.createFromConnectionString(process.env["EVENTHUB_CONNECTION_STRING"], process.env["EVENTHUB_NAME"]);
@@ -95,7 +95,7 @@ main().catch((err) => {
 
 Denken Sie daran, die Umgebungsvariablen festzulegen, bevor Sie das Skript ausführen. Die Konfiguration kann entweder über die Befehlszeile (siehe folgendes Beispiel) oder mithilfe des [dotenv-Pakets](https://www.npmjs.com/package/dotenv#dotenv) erfolgen. 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

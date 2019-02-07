@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 182dada35e0bea7101cc58ff62fde76fbcb8971e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: de78e70b30c4e0b03f87ad6b1bfe00356f897f43
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722276"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698239"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
 
@@ -168,7 +168,7 @@ Weitere Informationen finden Sie im [Node.js Developer Center (in englischer Spr
 [Verwendung einer einfachen Web-App]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK für .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: /powershell/azureps-cmdlets-docs#step-3-connect
+[Stellen Sie eine PowerShell-Verbindung mit Ihrem Abonnement her.]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: http://nodejs.org/
 [Übersicht zum Erstellen eines gehosteten Diensts für Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js Developer Center (in englischer Sprache)]: https://azure.microsoft.com/develop/nodejs/

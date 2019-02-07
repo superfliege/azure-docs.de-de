@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 85ee6505adafab9587f3583cd4c7182efcc43c11
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 01187a4dbcd8333f95cf20b5956b7b81559a19a8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853730"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730651"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Löschen von Containern basierend auf dem Präfix des Containernamens
 
@@ -49,10 +49,10 @@ Dieses Skript verwendet die folgenden Befehle, um basierend auf dem Präfix des 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Azure Storage-Konto in der angegebenen Ressourcengruppe. |
-| [az storage container create](/cli/azure/storage/container#az_storage_container_create) | Erstellt einen Container in Azure Blob Storage. |
+| [az storage account create](/cli/azure/storage/account) | Erstellt ein Azure Storage-Konto in der angegebenen Ressourcengruppe. |
+| [az storage container create](/cli/azure/storage/container) | Erstellt einen Container in Azure Blob Storage. |
 | [az storage container list](/cli/azure/storage/container) | Listet die Container in einem Azure Storage-Konto auf. |
-| [az storage container delete](/cli/azure/storage/container#az_storage_container_delete) | Löscht die Container in einem Azure Storage-Konto. |
+| [az storage container delete](/cli/azure/storage/container) | Löscht die Container in einem Azure Storage-Konto. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

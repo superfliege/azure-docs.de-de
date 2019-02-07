@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470959"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752346"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI
 
@@ -139,7 +139,7 @@ Die Befehlsausgabe enthält viele Details, aber achten Sie besonders auf das `ex
 
 ## <a name="view-task-output"></a>Anzeigen der Aufgabenausgabe
 
-Verwenden Sie zum Auflisten der Dateien, die von einer Aufgabe auf einem Computeknoten erstellt werden, den Befehl [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list). Mit dem folgenden Befehl werden die Dateien aufgeführt, die mit *mytask1* erstellt werden: 
+Verwenden Sie zum Auflisten der Dateien, die von einer Aufgabe auf einem Computeknoten erstellt werden, den Befehl [az batch task file list](/cli/azure/batch/task). Mit dem folgenden Befehl werden die Dateien aufgeführt, die mit *mytask1* erstellt werden: 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-Verwenden Sie den Befehl [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download), um eine der Ausgabedateien in ein lokales Verzeichnis herunterzuladen. In diesem Beispiel ist die Aufgabenausgabe in `stdout.txt` enthalten. 
+Verwenden Sie den Befehl [az batch task file download](/cli/azure/batch/task), um eine der Ausgabedateien in ein lokales Verzeichnis herunterzuladen. In diesem Beispiel ist die Aufgabenausgabe in `stdout.txt` enthalten. 
 
 ```azurecli-interactive
 az batch task file download \

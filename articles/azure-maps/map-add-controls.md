@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eefa639ca5f13d23c3b2048436d739a01bd0dfa
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 4947977fbed2b4fe4bd47adcc4de6516090573ad
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975617"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661308"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Hinzufügen von Kartensteuerelementen zu Azure Maps
 
-In diesem Artikel wird gezeigt, wie Sie einer Karte Kartensteuerelemente hinzufügen. Außerdem erfahren Sie, wie Sie eine Karte mit allen Steuerelementen und einer [Stilauswahl](https://docs.microsoft.com/azure/azure-maps/choose-map-style#adding-the-style-picker) erstellen.
+In diesem Artikel wird gezeigt, wie Sie einer Karte Kartensteuerelemente hinzufügen. Außerdem erfahren Sie, wie Sie eine Karte mit allen Steuerelementen und einer [Stilauswahl](https://docs.microsoft.com/azure/azure-maps/choose-map-style) erstellen.
 
 ## <a name="add-zoom-control"></a>Hinzufügen eines Zoomsteuerelements
 
@@ -26,7 +26,7 @@ In diesem Artikel wird gezeigt, wie Sie einer Karte Kartensteuerelemente hinzuf�
 
 Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Das Zoomsteuerelement fügt die Möglichkeit hinzu, die Karte zu vergrößern und zu verkleinern. Der zweite Codeblock erstellt ein Zoomsteuerelement-Objekt mit dem Atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu. Das Zoomsteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
+Das Zoomsteuerelement fügt die Möglichkeit hinzu, die Karte zu vergrößern und zu verkleinern. Der zweite Codeblock erstellt ein Zoomsteuerelement-Objekt mit dem Atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Das Zoomsteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
 
 ## <a name="add-pitch-control"></a>Hinzufügen eines Neigungssteuerelements
 
@@ -35,7 +35,7 @@ Das Zoomsteuerelement fügt die Möglichkeit hinzu, die Karte zu vergrößern un
 
 Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Das Neigungssteuerelement fügt die Möglichkeit hinzu, die Neigung der Karte zu ändern. Der zweite Codeblock erstellt ein Neigungssteuerelement-Objekt mit dem Atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu. Das Neigungssteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
+Das Neigungssteuerelement fügt die Möglichkeit hinzu, die Neigung der Karte zu ändern. Der zweite Codeblock erstellt ein Neigungssteuerelement-Objekt mit dem Atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Das Neigungssteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
 
 ## <a name="add-compass-control"></a>Hinzufügen eines Kompasssteuerelements
 
@@ -44,7 +44,7 @@ Das Neigungssteuerelement fügt die Möglichkeit hinzu, die Neigung der Karte zu
 
 Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol). Außerdem fügt er der Karte das Kompasssteuerelement mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu. Das Kompasssteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
+Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol). Außerdem fügt er der Karte das Kompasssteuerelement mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Das Kompasssteuerelement befindet sich im **Ereignislistener** der Karte, um sicherzustellen, dass es nach dem vollständigen Laden der Karte geladen wird.
 
 ## <a name="a-map-with-all-controls"></a>Eine Karte mit allen Steuerelementen
 
@@ -53,13 +53,13 @@ Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [Com
 
 Mit dem ersten Codeblock wird der Abonnementschlüssel festgelegt und ein Kartenobjekt erstellt. Der Stil wird nicht vorab festgelegt. Anweisungen zum Erstellen einer Karte finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu.
+Der zweite Codeblock erstellt ein Kompasssteuerelement-Objekt mit dem Atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu.
 
-Der dritte Codeblock erstellt ein Zoomsteuerelement-Objekt mit dem Atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu.
+Der dritte Codeblock erstellt ein Zoomsteuerelement-Objekt mit dem Atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu.
 
-Der vierte Codeblock erstellt ein Neigungssteuerelement-Objekt mit dem Atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu.
+Der vierte Codeblock erstellt ein Neigungssteuerelement-Objekt mit dem Atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu.
 
-Der letzte Codeblock erstellt ein Stilauswahlobjekt mit dem Atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)-Methode von Maps hinzu. Alle Steuerelementobjekte befinden sich im **Ereignislistener** der Karte, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen werden.
+Der letzte Codeblock erstellt ein Stilauswahlobjekt mit dem Atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) und fügt es der Karte mithilfe der [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)-Methode von Maps hinzu. Alle Steuerelementobjekte befinden sich im **Ereignislistener** der Karte, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen werden.
 
 Die Reihenfolge der Steuerelementobjekte im Skript bestimmt die Reihenfolge, in der sie auf der Karte angezeigt werden. Wenn Sie die Reihenfolge der Steuerelemente auf der Karte ändern möchten, ändern Sie ihre Reihenfolge im Skript.
 

@@ -11,15 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: da876152b55ee626025b6192a5004648a29545dc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604183"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561993"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
+
 Sie können mit einer [elastischen Abfrage](sql-database-elastic-query-overview.md)Berichte aus mehreren Azure SQL-Datenbanken über nur einen Verbindungspunkt erstellen. Die Datenbanken müssen horizontal partitioniert werden (auch als „Sharding“ bezeichnet).
 
 Wenn Sie über eine vorhandene Datenbank verfügen, finden Sie entsprechende Informationen unter [Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
@@ -27,6 +28,7 @@ Wenn Sie über eine vorhandene Datenbank verfügen, finden Sie entsprechende Inf
 Informationen zu den für Abfragen benötigten SQL-Objekten finden Sie unter [Ausführen von Abfragen über horizontal partitionierte Clouddatenbanken (Sharddatenbanken) hinweg](sql-database-elastic-query-horizontal-partitioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenbank](sql-database-elastic-scale-get-started.md)herunter, und führen Sie es aus.
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Erstellen eines Shardzuordnungs-Managers mithilfe der Beispiel-App

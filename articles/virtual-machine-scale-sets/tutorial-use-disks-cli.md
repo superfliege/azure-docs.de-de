@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163057"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751156"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mithilfe der Azure CLI
 Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten von VM-Instanzen verwendet. Beim Erstellen und Verwalten einer Skalierungsgruppe muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. In diesem Tutorial wird beschrieben, wie Sie VM-Datenträger erstellen und verwalten. In diesem Tutorial lernen Sie Folgendes:
@@ -95,13 +95,13 @@ In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, 
 Sie können Datenträger beim Erstellen einer Skalierungsgruppe oder für eine vorhandene Skalierungsgruppe erstellen und anfügen.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Anfügen von Datenträgern bei der Erstellung einer Skalierungsgruppe
-Erstellen Sie zunächst mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt.
+Erstellen Sie zunächst mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az vmss create](/cli/azure/vmss#az_vmss_create) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind. Mit dem Parameter `--data-disk-sizes-gb` werden zwei Datenträger erstellt. Der erste Datenträger hat eine Größe von *64*, und der zweite Datenträger hat eine Größe von *128* GB:
+Erstellen Sie mit dem Befehl [az vmss create](/cli/azure/vmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, und es werden SSH-Schlüssel generiert, falls sie noch nicht vorhanden sind. Mit dem Parameter `--data-disk-sizes-gb` werden zwei Datenträger erstellt. Der erste Datenträger hat eine Größe von *64*, und der zweite Datenträger hat eine Größe von *128* GB:
 
 ```azurecli-interactive
 az vmss create \
@@ -117,7 +117,7 @@ az vmss create \
 Die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe dauert einige Minuten.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Anfügen eines Datenträgers an eine vorhandene Skalierungsgruppe
-Sie können Datenträger auch an eine vorhandene Skalierungsgruppe anfügen. Verwenden Sie die im vorherigen Schritt erstellte Skalierungsgruppe, um mit [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) einen weiteren Datenträger hinzuzufügen. Im folgenden Beispiel wird ein zusätzlicher Datenträger mit *128* GB angefügt:
+Sie können Datenträger auch an eine vorhandene Skalierungsgruppe anfügen. Verwenden Sie die im vorherigen Schritt erstellte Skalierungsgruppe, um mit [az vmss disk attach](/cli/azure/vmss/disk) einen weiteren Datenträger hinzuzufügen. Im folgenden Beispiel wird ein zusätzlicher Datenträger mit *128* GB angefügt:
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -144,7 +144,7 @@ az vmss extension set \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 
-Stellen Sie eine SSH-Verbindung mit einer der VM-Instanzen her, um zu bestätigen, dass die Datenträger richtig vorbereitet wurden. Listen Sie mit [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) die Verbindungsinformationen für Ihre Skalierungsgruppe auf:
+Stellen Sie eine SSH-Verbindung mit einer der VM-Instanzen her, um zu bestätigen, dass die Datenträger richtig vorbereitet wurden. Listen Sie mit [az vmss list-instance-connection-info](/cli/azure/vmss) die Verbindungsinformationen für Ihre Skalierungsgruppe auf:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -225,7 +225,7 @@ exit
 
 
 ## <a name="list-attached-disks"></a>Auflisten von angefügten Datenträgern
-Verwenden Sie zum Anzeigen von Informationen zu den Datenträgern, die an eine Skalierungsgruppe angefügt sind, den Befehl [az vmss show](/cli/azure/vmss#az_vmss_show), und führen Sie eine Abfrage für *virtualMachineProfile.storageProfile.dataDisks* durch:
+Verwenden Sie zum Anzeigen von Informationen zu den Datenträgern, die an eine Skalierungsgruppe angefügt sind, den Befehl [az vmss show](/cli/azure/vmss), und führen Sie eine Abfrage für *virtualMachineProfile.storageProfile.dataDisks* durch:
 
 ```azurecli-interactive
 az vmss show \
@@ -279,7 +279,7 @@ Es werden Informationen zur Datenträgergröße, Speicherebene und logischen Ger
 
 
 ## <a name="detach-a-disk"></a>Trennen eines Datenträgers
-Wenn Sie einen bestimmten Datenträger nicht mehr benötigen, können Sie ihn von der Skalierungsgruppe trennen. Der Datenträger wird aus allen VM-Instanzen in der Skalierungsgruppe entfernt. Verwenden Sie zum Trennen eines Datenträgers von einer Skalierungsgruppe den Befehl [az vmss disk detach](/cli/azure/vmss/disk), und geben Sie die LUN des Datenträgers an. Die LUNs sind in der Ausgabe von [az vmss show](/cli/azure/vmss#az_vmss_show) im vorherigen Abschnitt enthalten. Im folgenden Beispiel wird LUN *2* von der Skalierungsgruppe getrennt:
+Wenn Sie einen bestimmten Datenträger nicht mehr benötigen, können Sie ihn von der Skalierungsgruppe trennen. Der Datenträger wird aus allen VM-Instanzen in der Skalierungsgruppe entfernt. Verwenden Sie zum Trennen eines Datenträgers von einer Skalierungsgruppe den Befehl [az vmss disk detach](/cli/azure/vmss/disk), und geben Sie die LUN des Datenträgers an. Die LUNs sind in der Ausgabe von [az vmss show](/cli/azure/vmss) im vorherigen Abschnitt enthalten. Im folgenden Beispiel wird LUN *2* von der Skalierungsgruppe getrennt:
 
 ```azurecli-interactive
 az vmss disk detach \
@@ -290,7 +290,7 @@ az vmss disk detach \
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen mit [az group delete](/cli/azure/group#az_group_delete), um Ihre Skalierungsgruppe und die Datenträger zu entfernen. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
+Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen mit [az group delete](/cli/azure/group), um Ihre Skalierungsgruppe und die Datenträger zu entfernen. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

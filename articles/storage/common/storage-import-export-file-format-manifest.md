@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463241"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692475"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Format der Manifestdateien des Azure Import/Export-Diensts
 Die Laufwerksmanifestdatei beschreibt die Zuordnung zwischen Blobs in Azure Blob Storage und Dateien auf dem Laufwerk, aus denen ein Import- oder Exportauftrag besteht. Für einen Importvorgang wird die Manifestdatei im Rahmen des Prozesses der Laufwerksvorbereitung erstellt und auf dem Laufwerk gespeichert, bevor dieses an das Azure-Rechenzentrum gesendet wird. Während eines Exportvorgangs wird das Manifest vom Azure-Import-/Exportdienst erstellt und auf dem Laufwerk gespeichert.  
@@ -97,7 +97,7 @@ Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in d
 |`Drive`|Geschachteltes XML-Element|Enthält das Manifest für jedes Laufwerk.|  
 |`DriveId`|Zeichenfolge|Der eindeutige Laufwerksbezeichner für das Laufwerk. Der Laufwerksbezeichner lässt sich durch Abfrage des Laufwerks nach der Seriennummer ermitteln. Die Seriennummer des Laufwerks ist üblicherweise auch auf der Außenseite des Laufwerks zu finden. Das `DriveID`-Element muss vor allen `BlobList`-Elementen in der Manifestdatei angezeigt werden.|  
 |`StorageAccountKey`|Zeichenfolge|Ist für Importaufträge erforderlich und nur dann, wenn `ContainerSas` nicht angegeben ist. Der Kontoschlüssel für das Azure-Speicherkonto, das dem Auftrag zugeordnet ist.<br /><br /> Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
-|`ContainerSas`|Zeichenfolge|Ist für Importaufträge erforderlich und nur dann, wenn `StorageAccountKey` nicht angegeben ist. Die Container-SAS für den Zugriff auf die Blobs, die dem Auftrag zugeordnet sind. Informationen finden Sie unter [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate). Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
+|`ContainerSas`|Zeichenfolge|Ist für Importaufträge erforderlich und nur dann, wenn `StorageAccountKey` nicht angegeben ist. Die Container-SAS für den Zugriff auf die Blobs, die dem Auftrag zugeordnet sind. Informationen finden Sie unter [Put Job](/rest/api/storageimportexport/jobs). Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
 |`ClientCreator`|Zeichenfolge|Gibt den Client an, der die XML-Datei erstellt hat. Dieser Wert wird vom Import-/Exportdienst nicht interpretiert.|  
 |`BlobList`|Geschachteltes XML-Element|Enthält eine Liste von Blobs, die zum Import- oder Exportauftrag gehören. Alle Blobs in einer Blobliste verwenden die gleichen Metadaten und Eigenschaften.|  
 |`BlobList/MetadataPath`|Zeichenfolge|Optional. Gibt auf dem Datenträger den relativen Pfad zu der Datei mit den Standardmetadaten an, die für die Blobs in der Blobliste für einen Importvorgang festgelegt werden. Diese Metadaten können optional für jedes einzelne Blob überschrieben werden.<br /><br /> Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  

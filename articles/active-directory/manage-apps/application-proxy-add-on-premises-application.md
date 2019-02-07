@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 2847cf4abdfdea7eb38bd965cb54a223f014fb68
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1f6962f0313b6b0ca187512185c990606789da6e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176912"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661954"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -181,7 +181,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
     | **Timeout der Back-End-Anwendung** | Legen Sie diesen Wert nur auf **Lang** fest, wenn Ihre Anwendung bei der Authentifizierung und dem Verbinden langsam ist. |
     | **Nur-HTTP-Cookie verwenden** | Legen Sie diesen Wert auf **Ja** fest, damit Anwendungsproxycookies das Flag HTTPOnly im HTTP-Antwortheader enthalten. Wenn Sie Remotedesktopdienste verwenden, sollten Sie diese Option auf **Nein** festlegen.|
     | **Sicheres Cookie verwenden**| Legen Sie diesen Wert auf **Ja** fest, um Cookies über einen sicheren Kanal zu übertragen, z.B. eine verschlüsselte HTTPS-Anforderung.
-    | **Beständiges Cookie verwenden**| Behalten Sie für diesen Wert die Einstellung **Nein** bei. Diese Einstellung sollte nur für Anwendungen verwendet werden, die keine Cookies zwischen Prozessen freigeben können. Weitere Informationen zu Cookieeinstellungen finden Sie unter [Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
+    | **Beständiges Cookie verwenden**| Behalten Sie für diesen Wert die Einstellung **Nein** bei. Diese Einstellung sollte nur für Anwendungen verwendet werden, die keine Cookies zwischen Prozessen freigeben können. Weitere Informationen zu Cookieeinstellungen finden Sie unter [Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
     | **URLs in Headern übersetzen** | Behalten Sie für diesen Wert **Ja** bei, wenn Ihre Anwendung den ursprünglichen Hostheader nicht in der Authentifizierungsanforderung erfordert. |
     | **URLs im Hauptteil der Anwendung übersetzen** | Behalten Sie für diesen Wert **Nein** bei, wenn Sie nicht über hartcodierte HTML-Links zu anderen lokalen Anwendungen verfügen, und verwenden Sie keine benutzerdefinierten Domänen. Weitere Informationen finden Sie unter [Linkübersetzung mit dem Anwendungsproxy](application-proxy-configure-hard-coded-link-translation.md).<br><br>Legen Sie diesen Wert auf **Ja** fest, wenn Sie diese Anwendung mit Microsoft Cloud App Security (MCAS) überwachen möchten. Weitere Informationen finden Sie unter [Konfigurieren der Echtzeitüberwachung des Anwendungszugriffs mit Microsoft Cloud App Security und Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
    

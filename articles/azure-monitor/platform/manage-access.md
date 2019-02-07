@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 6c8f48ce71e11d1de0c28b4dab5327ab03e54f28
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231783"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656752"
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -40,7 +40,7 @@ Ein Arbeitsbereich bietet jetzt Folgendes:
 
 * Einen geografischen Standort für die Speicherung von Daten
 * Datenisolation zum Definieren unterschiedlicher Benutzerzugriffsrechte
-* Bereich für die Konfiguration von Einstellungen wie [Tarif](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [Aufbewahrung](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) und [Datenobergrenzen](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#daily-cap) 
+* Bereich für die Konfiguration von Einstellungen wie [Tarif](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [Aufbewahrung](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) und [Datenobergrenzen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap) 
 
 Im Hinblick auf die Nutzung wird empfohlen, möglichst wenige Arbeitsbereiche zu erstellen. Dadurch werden Verwaltung und Abfragen einfacher und schneller. Auf der Grundlage der obigen Merkmale können Sie jedoch in folgenden Szenarien mehrere Arbeitsbereiche erstellen:
 
@@ -97,7 +97,7 @@ Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
 
 Die Rolle „Log Analytics-Leser“ umfasst die folgenden Azure-Aktionen:
 
-| Typ    | Berechtigung | BESCHREIBUNG |
+| Type    | Berechtigung | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
 | Aktion | `*/read`   | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
 | Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |

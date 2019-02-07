@@ -1,5 +1,5 @@
 ---
-title: Tools für elastische Datenbanken – Glossar | Microsoft-Dokumentation
+title: Tools für elastische Datenbanken – Glossar | Microsoft Docs
 description: Erläuterung von Begriffen, die für die Tools für flexible Datenbanken verwendet werden
 services: sql-database
 ms.service: sql-database
@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 75da9fd6dbd6218e46925eb2fc6cbec4969d5925
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867799"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561432"
 ---
 # <a name="elastic-database-tools-glossary"></a>Tools für elastische Datenbanken – Glossar
+
 Die folgenden Begriffe werden für die [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md), ein Feature von Azure SQL-Datenbank, definiert. Die Tools werden zur Verwaltung von [Shardzuordnungen](sql-database-elastic-scale-shard-map-management.md) verwendet. Sie beinhalten die [Clientbibliothek](sql-database-elastic-database-client-library.md), das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md), [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [Abfragen](sql-database-elastic-query-overview.md). 
 
 Diese Begriffe werden in [Hinzufügen eines Shards mithilfe der Tools für elastische Datenbanken](sql-database-elastic-scale-add-a-shard.md) und [Beheben von Problemen bei der Shardzuordnung mithilfe der RecoveryManager-Klasse](sql-database-elastic-database-recovery-manager.md) verwendet.

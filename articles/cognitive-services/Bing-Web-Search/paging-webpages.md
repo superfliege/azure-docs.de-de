@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: aahi
-ms.openlocfilehash: 1ff4b7aa804dc3576462b3a30b94fdab8e1945e1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e46c3c5722be6448999c4ed7f98b8babe609cd2c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164281"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734367"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Durchblättern der Suchergebnisse der Bing-Websuche-API
 
-Wenn Sie die API für die Websuche aufrufen, gibt Bing eine Liste mit Ergebnissen zurück. Bei der Liste handelt es sich um eine Teilmenge der gesamten Ergebnisse, die für die Abfrage relevant sein könnten. Um die geschätzte Gesamtzahl der verfügbaren Ergebnisse aufzurufen, greifen Sie auf das Feld [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#totalestimatedmatches) des Antwortobjekts zu.  
+Wenn Sie die API für die Websuche aufrufen, gibt Bing eine Liste mit Ergebnissen zurück. Bei der Liste handelt es sich um eine Teilmenge der gesamten Ergebnisse, die für die Abfrage relevant sein könnten. Um die geschätzte Gesamtzahl der verfügbaren Ergebnisse aufzurufen, greifen Sie auf das Feld [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) des Antwortobjekts zu.  
 
 Das folgende Beispiel zeigt das `totalEstimatedMatches`-Feld mit einer Webantwort.  
 

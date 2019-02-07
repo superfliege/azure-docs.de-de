@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 8a9b14423566e631ddb41b42048104c8ee085486
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: cc786b97c38c115fb288a5b9a0f73f566777e7df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886695"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734418"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
 
@@ -39,7 +39,7 @@ Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im 
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVM* mit dem Benutzer *azureuser* erstellt, indem die Authentifizierung mit einem öffentlichen SSH-Schlüssel verwendet wird
+Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVM* mit dem Benutzer *azureuser* erstellt, indem die Authentifizierung mit einem öffentlichen SSH-Schlüssel verwendet wird
 
 ```azurecli
 az vm create \
@@ -127,7 +127,7 @@ Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azur
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
+Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -178,7 +178,7 @@ Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI](/cli/azur
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *mongoAdminUsername*, *sizeOfDataDiskInGB* und *configNodeVmSize*:
+Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *mongoAdminUsername*, *sizeOfDataDiskInGB* und *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -200,7 +200,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Es kann über eine Stunde dauern, bis die Bereitstellung und die Konfiguration aller VM-Instanzen abgeschlossen ist. Das Flag `--no-wait` wird am Ende des vorherigen Befehls verwendet, sodass die Steuerung an die Eingabeaufforderung zurückgegeben wird, nachdem die Vorlagenbereitstellung auf der Azure-Plattform akzeptiert wurde. Sie können dann mit dem Befehl [az group deployment show](/cli/azure/group/deployment#az_group_deployment_show) den Bereitstellungsstatus anzeigen. Im folgenden Beispiel wird der Status für die Bereitstellung *myMongoDBCluster* in der Ressourcengruppe *myResourceGroup* angezeigt:
+Es kann über eine Stunde dauern, bis die Bereitstellung und die Konfiguration aller VM-Instanzen abgeschlossen ist. Das Flag `--no-wait` wird am Ende des vorherigen Befehls verwendet, sodass die Steuerung an die Eingabeaufforderung zurückgegeben wird, nachdem die Vorlagenbereitstellung auf der Azure-Plattform akzeptiert wurde. Sie können dann mit dem Befehl [az group deployment show](/cli/azure/group/deployment) den Bereitstellungsstatus anzeigen. Im folgenden Beispiel wird der Status für die Bereitstellung *myMongoDBCluster* in der Ressourcengruppe *myResourceGroup* angezeigt:
 
 ```azurecli
 az group deployment show \

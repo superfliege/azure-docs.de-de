@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 5447bcb0dc37cb3c923c4e6bbff4d69d987b6df6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244367"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691166"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
 Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
@@ -47,7 +47,7 @@ Azure Stack wurde so konzipiert, dass die Lösung am besten funktioniert, wenn s
 |VM-Bereitstellung mit Docker-Erweiterung zum Ausführen von Docker-Befehlen|Eingeschränkt: Docker durchsucht das Internet nach der neuesten Version, und diese Prüfung schlägt fehl.|
 |Dokumentationslinks im Azure Stack-Portal|Nicht verfügbar: Links, z.B. Feedback geben, Hilfe, Schnellstart usw., die eine Internet-URL verwenden, funktionieren nicht.|
 |Informationen zur Behebung von Warnungen, die auf eine online verfügbare Anleitung verweisen|Nicht verfügbar: Links zu einer Behebung von Warnungen, die eine Internet-URL verwenden, funktionieren nicht.|
-|Marketplace: Die Möglichkeit, Katalogpakete direkt aus Azure Marketplace auszuwählen und hinzuzufügen|Beeinträchtigt: Wenn Sie Azure Stack in einem nicht verbundenen Modus (ohne Internetverbindung) bereitstellen, können Sie keine Marketplace-Elemente über das Azure Stack-Portal herunterladen. Sie können jedoch das [Tool für die Marketplace-Syndikation](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) verwenden, um die Marketplace-Elemente auf einen Computer mit Internetverbindung herunterzuladen und anschließend in Ihre Azure Stack-Umgebung zu übertragen.|
+|Marketplace: Die Möglichkeit, Katalogpakete direkt aus Azure Marketplace auszuwählen und hinzuzufügen|Beeinträchtigt: Wenn Sie Azure Stack in einem nicht verbundenen Modus (ohne Internetverbindung) bereitstellen, können Sie keine Marketplace-Elemente über das Azure Stack-Portal herunterladen. Sie können jedoch das [Tool für die Marketplace-Syndikation](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) verwenden, um die Marketplace-Elemente auf einen Computer mit Internetverbindung herunterzuladen und anschließend in Ihre Azure Stack-Umgebung zu übertragen.|
 |Verwenden von Azure Active Directory-Verbundkonten zur Verwaltung einer Azure Stack-Bereitstellung|Nicht verfügbar: Hierfür ist eine Verbindung mit Azure erforderlich. Stattdessen muss AD FS mit einer lokalen Active Directory-Instanz verwendet werden.|
 |App-Dienste|Beeinträchtigt: WebApps erfordern möglicherweise Internetzugriff für aktualisierte Inhalte.|
 |Befehlszeilenschnittstelle (Command Line Interface, CLI)|Beeinträchtigt: Die Befehlszeilenschnittstelle bietet weniger Funktionalität in Bezug auf die Authentifizierung und Bereitstellung von Dienstprinzipalen.|

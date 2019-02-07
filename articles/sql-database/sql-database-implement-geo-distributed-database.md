@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/03/2018
-ms.openlocfilehash: 679a02c760d8b37d94a734bc9b023ed8fe59acad
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/10/2019
+ms.openlocfilehash: 11c1f34176e7852806464781e80d6dc0fd5345a4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198183"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750340"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Tutorial: Implementieren einer geografisch verteilten Datenbank
 
@@ -36,7 +36,7 @@ Für dieses Tutorial muss Folgendes installiert sein:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Eine Azure SQL-Datenbank. Verwenden Sie für die Erstellung Folgendes:
-  - [Portal](sql-database-get-started-portal.md)
+  - [Portal](sql-database-single-database-get-started.md)
   - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
@@ -48,7 +48,7 @@ Für dieses Tutorial muss Folgendes installiert sein:
 > [!IMPORTANT]
 > Richten Sie auf dem Computer, auf dem Sie die Schritte des Tutorials ausführen, Firewallregeln für die öffentliche IP-Adresse des Computers ein. Firewallregeln auf Datenbankebene werden automatisch auf den sekundären Server repliziert.
 >
-> Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Datenbankebene](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für Ihren Computer ermitteln, finden Sie unter [Erstellen einer Firewall auf Serverebene](sql-database-get-started-portal-firewall.md).  
+> Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Datenbankebene](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für Ihren Computer ermitteln, finden Sie unter [Erstellen einer Firewall auf Serverebene](sql-database-server-level-firewall-rule.md).  
 
 ## <a name="create-a-failover-group"></a>Erstellen einer Failovergruppe
 

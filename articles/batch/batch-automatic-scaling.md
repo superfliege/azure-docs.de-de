@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459841"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730005"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -551,7 +551,7 @@ In Batch .NET verfügt die Eigenschaft [CloudPool.AutoScaleRun](https://docs.mic
 * [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
 * [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-In der REST-API gibt die Anforderung zum [Abrufen von Informationen zu einem Pool](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) Informationen zum Pool zurück, z.B. zur letzten Ausführung der automatischen Skalierung in der Eigenschaft [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool#bk_autrun).
+In der REST-API gibt die Anforderung zum [Abrufen von Informationen zu einem Pool](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) Informationen zum Pool zurück, z.B. zur letzten Ausführung der automatischen Skalierung in der Eigenschaft [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool).
 
 Im folgenden C#-Codeausschnitt wird die Batch .NET-Bibliothek verwendet, um Informationen zur letzten Ausführung der automatischen Skalierung für den Pool _myPool_ auszugeben:
 

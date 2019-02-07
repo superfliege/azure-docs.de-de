@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: efeae877161b2632112938d63b6f6e31cce96ac5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077197"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696165"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Erstellen eines VM-Clusters mit Terraform mithilfe der Modulregistrierung
 
@@ -31,7 +31,7 @@ Weitere Informationen zu Terraform finden Sie in der [Terraform-Dokumentation](h
 ## <a name="set-up-authentication-with-azure"></a>Einrichten der Authentifizierung mit Azure
 
 > [!TIP]
-> Wenn Sie [Terraform-Umgebungsvariablen verwenden](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) oder dieses Tutorial in der [Azure Cloud Shell](/azure/cloud-shell/overview) ausführen, überspringen Sie diesen Schritt.
+> Wenn Sie [Terraform-Umgebungsvariablen verwenden](/azure/virtual-machines/linux/terraform-install-configure) oder dieses Tutorial in der [Azure Cloud Shell](/azure/cloud-shell/overview) ausführen, überspringen Sie diesen Schritt.
 
  Unter [Installieren von Terraform und Konfigurieren des Zugriffs auf Azure](/azure/virtual-machines/linux/terraform-install-configure) finden Sie Informationen zum Erstellen eines Azure-Dienstprinzipals. Verwenden Sie diesen Dienstprinzipal, um folgenden Code in die neue Datei `azureProviderAndCreds.tf` in einem leeren Verzeichnis einzufügen:
 

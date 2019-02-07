@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d13f97ff7ec25fd638b92dc1c057afcaeecc2bf9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6986a5c40b51300b631f3fdce6c3a88b43fb5b11
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434068"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730882"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von Node.js
 
@@ -49,7 +49,7 @@ Laden Sie das [Beispiel](https://github.com/Azure/azure-event-hubs-node/tree/mas
 ## <a name="install-the-eventprocessorhost"></a>Installieren des Ereignisprozessorhosts
 Installieren Sie den Ereignisprozessorhost für das Event Hubs-Modul. 
 
-```nodejs
+```shell
 npm install @azure/event-processor-host
 ```
 
@@ -61,20 +61,20 @@ Das von Ihnen geklonte SDK enthält mehrere Beispiele, die veranschaulichen, wie
 3. Konfigurieren Sie die Verbindungszeichenfolge und den Namen Ihres Event Hubs sowie den Speicherendpunkt. Die Verbindungszeichenfolge für Ihren Event Hub können Sie im Azure-Portal auf der Event Hub-Seite unter **RootManageSharedAccessKey** aus **Verbindungszeichenfolge – Primärschlüssel** kopieren. Ausführliche Schritte finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Navigieren Sie in der Azure-Befehlszeilenschnittstelle zum Ordnerpfad **processor**. Führen Sie die folgenden Befehle aus, um Knotenpakete zu installieren und das Projekt zu erstellen:
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. Führen Sie den folgenden Befehl aus, um Ereignisse mit Ihrem Ereignisprozessorhost zu empfangen:
 
-    ```nodejs
+    ```shell
     node dist/examples/singleEph.js
     ```
 
 ## <a name="review-the-sample-code"></a>Überprüfen des Beispielcodes 
 Nachfolgend sehen Sie den Beispielcode zum Empfangen von Ereignissen von einem Event Hub mithilfe von Node.js. Sie können manuell die Datei „sampleEph.js“ erstellen und ausführen, um Ereignisse von einem Event Hub zu empfangen. 
 
-  ```nodejs
+  ```javascript
   const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
   const path = process.env.EVENTHUB_NAME;
@@ -127,7 +127,7 @@ Nachfolgend sehen Sie den Beispielcode zum Empfangen von Ereignissen von einem E
 
 Legen Sie die Umgebungsvariablen fest, bevor Sie das Skript ausführen. Die Konfiguration kann entweder über die Befehlszeile (siehe folgendes Beispiel) oder mithilfe des [dotenv-Pakets](https://www.npmjs.com/package/dotenv#dotenv) erfolgen. 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

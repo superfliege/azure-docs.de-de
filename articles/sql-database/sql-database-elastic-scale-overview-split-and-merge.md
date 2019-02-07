@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken | Microsoft-Dokumentation
+title: Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken | Microsoft Docs
 description: Hier wird erläutert, wie Sie Shards manipulieren und Daten über einen selbst gehosteten Dienst mithilfe von APIs für elastische Datenbanken verschieben.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868462"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564934"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 

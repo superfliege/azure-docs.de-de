@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f740e6b16426f34adf391af37d365e0d6d672dfe
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413752"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755100"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -232,4 +232,4 @@ Die folgenden Optionen werden unterstützt:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [verwaltete Identitäten für Azure-Ressourcen](/azure/active-directory/managed-identities-azure-resources/).
-- Erfahren Sie mehr über Azure AD-[Authentifizierungsszenarien](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application).
+- Erfahren Sie mehr über Azure AD-[Authentifizierungsszenarien](/azure/active-directory/develop/active-directory-authentication-scenarios).

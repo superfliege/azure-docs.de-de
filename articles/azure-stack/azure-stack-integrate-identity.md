@@ -10,13 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-keywords: ''
-ms.openlocfilehash: f05d27effecee6a18a1395520b29d8cf1db1eaaa
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246246"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765789"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -306,7 +305,7 @@ Es gibt viele Szenarien, die die Verwendung eines Dienstprinzipalnamens (SPN) f�
 > [!Important]  
 > AD FS unterstützt nur interaktive Anmeldesitzungen. Wenn Sie eine nicht-interaktive Anmeldung für ein automatisiertes Szenario benötigen, müssen Sie einen SPN verwenden.
 
-Weitere Informationen zum Erstellen eines SPN finden Sie unter [Erstellen eines Dienstprinzipals für AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
+Weitere Informationen zum Erstellen eines SPN finden Sie unter [Erstellen eines Dienstprinzipals für AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 
 ## <a name="troubleshooting"></a>Problembehandlung

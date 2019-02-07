@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 529191cf867b6003b0c2eab5ed919087277c7095
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178034"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813533"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Probleme beim Anmelden bei einer Anwendung über den Zugriffsbereich
 
@@ -104,7 +104,7 @@ Für alle Anwendungen im Azure AD-Katalog mit Enterprise Single Sign-On ist ein 
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
--   [Hinzufügen einer Anwendung aus dem Azure AD-Katalog](#add-an-application)
+-   Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 
 -   [Konfigurieren der Metadatenwerte für die Anwendung in Azure AD (Anmelde-URL, ID, Antwort-URL)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
@@ -114,7 +114,7 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Konfigurieren von Azure AD-Metadatenwerten in der Anwendung (Anmelde-URL, Aussteller, Abmelde-URL und Zertifikat)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Zuweisen von Benutzern zur Anwendung](#assign-users-to-the-application)
+-   Zuweisen von Benutzern zur Anwendung
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 
@@ -362,9 +362,9 @@ Führen Sie zum Herunterladen der Metadaten für die Anwendung oder des Zertifik
 
 Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
--   [Hinzufügen einer Anwendung aus dem Azure AD-Katalog](#add-an-application)
+-   Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 
--   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application)
+-   Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Hinzufügen einer Anwendung aus dem Azure AD-Katalog
 

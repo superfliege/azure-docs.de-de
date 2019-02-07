@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 159f902326d76900e955c6488eb36e58f4b8f3dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f6e5ca57eaa4a4a1975c0295933fc91e5726ae4c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167477"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487930"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Planen des Hybrid-Identitätslebenszyklus
 Die Identität ist eine der Grundlagen Ihrer Strategie für Enterprise Mobility und Anwendungszugriff. Ihre Identität ist der Schlüssel zur Erlangung des allgemeinen Zugriffs – unabhängig davon, ob Sie sich auf Ihrem mobilen Gerät oder an Ihrer SaaS-App anmelden. Auf der höchsten Ebene umfasst eine Lösung für die Identitätsverwaltung die Vereinheitlichung und Synchronisierung zwischen Ihren Identitätsrepositorys, was auch die Automatisierung und Zentralisierung der Ressourcenbereitstellung einschließt. Die Identitätslösung sollte eine zentralisierte Identität für lokale Speicherorte und die Cloud sein und auch eine Form des Identitätsverbunds nutzen, um eine zentralisierte Authentifizierung sowie das sichere Teilen und Zusammenarbeiten mit externen Benutzern und Unternehmen zu ermöglichen. Die Ressourcen reichen von Betriebssystemen und Anwendungen bis zu Personen, die Teil des Unternehmens sind oder über eine Verbindung dazu verfügen. Die Organisationsstruktur kann geändert werden, um die Bereitstellungsrichtlinien und -verfahren abzudecken.

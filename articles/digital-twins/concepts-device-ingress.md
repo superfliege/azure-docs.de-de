@@ -8,18 +8,18 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e6d95d44dbfe2d66189be5103552d841ccbdf690
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117417"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729522"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Gerätekonnektivität und eingehende Telemetriedaten
 
 Die von Geräten und Sensoren gesendeten Telemetriedaten bilden das Rückgrat jeder IoT-Lösung. Die Entscheidung, wie diese unterschiedlichen Ressourcen dargestellt und im Kontext eines Standorts verwaltet werden, ist ein wichtiger Aspekt der IoT-App-Entwicklung. Azure Digital Twins vereinfacht die Entwicklung von IoT-Lösungen, indem Geräte und Sensoren mit einem Raumintelligenzgraphen kombiniert werden.
 
-Zunächst einmal muss eine Azure IoT Hub-Ressource am Stamm des Raumgraphen erstellt werden. Die IoT Hub-Ressource ermöglicht es allen Geräten unter dem Stammraum, Nachrichten zu senden. Nach Erstellung der IoT Hub-Instanz müssen Geräte mit Sensoren innerhalb der Digital Twins-Instanz registriert werden. Die Geräte können Daten über das [Azure IoT-Geräte-SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) an einen Digital Twins-Dienst senden.
+Zunächst einmal muss eine Azure IoT Hub-Ressource am Stamm des Raumgraphen erstellt werden. Die IoT Hub-Ressource ermöglicht es allen Geräten unter dem Stammraum, Nachrichten zu senden. Nach Erstellung der IoT Hub-Instanz müssen Geräte mit Sensoren innerhalb der Digital Twins-Instanz registriert werden. Die Geräte können Daten über das [Azure IoT-Geräte-SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) an einen Digital Twins-Dienst senden.
 
 Eine schrittweise Anleitung für das Onboarding von Geräten finden Sie im [Tutorial zum Bereitstellen und Konfigurieren von Digital Twins](tutorial-facilities-setup.md). In Kurzform sind dies folgende Schritte:
 
@@ -69,8 +69,8 @@ Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend de
 
 | Eigenschaftenname | Wert | Erforderlich | BESCHREIBUNG |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | JA | Ein konstanter Wert, der eine Nachricht an das System identifiziert. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | JA | Ein eindeutiger Bezeichner des Sensors, der die **Nachricht** sendet. Dieser Wert muss mit der **HardwareId**-Eigenschaft eines Objekts übereinstimmen, damit es vom System verarbeitet wird. Beispiel: `00FF0643BE88-CO2`. |
+| **DigitalTwins-Telemetry** | 1.0 | Ja | Ein konstanter Wert, der eine Nachricht an das System identifiziert. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Ein eindeutiger Bezeichner des Sensors, der die **Nachricht** sendet. Dieser Wert muss mit der **HardwareId**-Eigenschaft eines Objekts übereinstimmen, damit es vom System verarbeitet wird. Beispiel: `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nein  | Eine gemäß [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatierte Datumszeichenfolge, die den Zeitpunkt der Stichprobenentnahme für die Nutzlast angibt. Beispiel: `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nein  | Eine UUID zur Nachverfolgung von Ereignissen im gesamten System. Beispiel: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 

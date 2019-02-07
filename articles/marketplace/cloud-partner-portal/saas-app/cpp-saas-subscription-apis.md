@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a778723093b226ee0e681c2a95ce4db597a310e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198697"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695371"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS – Verkaufen über Azure: APIs
 
@@ -168,21 +168,21 @@ Eine POST-Aktion beim Auflösen des Endpunkts ermöglicht Benutzern das Auflöse
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser korreliert alle Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-| Inhaltstyp       | JA          | `application/json`                                        |
-| authorization      | JA          | JWT-Bearertoken (JSON Web Token)                    |
-| x-ms-marketplace-token| JA| Der Tokenabfrageparameter in der URL, wenn der Benutzer von Azure zur Website des SaaS-ISV umgeleitet wird. **Hinweis:** Dieses Token ist nur eine Stunde lang gültig. Führen Sie zusätzlich eine URL-Decodierung des Tokenwerts im Browser durch, bevor Sie ihn verwenden.|
+| Inhaltstyp       | Ja          | `application/json`                                        |
+| authorization      | Ja          | JWT-Bearertoken (JSON Web Token)                    |
+| x-ms-marketplace-token| Ja| Der Tokenabfrageparameter in der URL, wenn der Benutzer von Azure zur Website des SaaS-ISV umgeleitet wird. **Hinweis:** Dieses Token ist nur eine Stunde lang gültig. Führen Sie zusätzlich eine URL-Decodierung des Tokenwerts im Browser durch, bevor Sie ihn verwenden.|
 |  |  |  |
   
 
 *Antworttext*
 
- ``` json       
-    { 
-        “id”: “”, 
-        “subscriptionName”: “”,
-        “offerId”:””, 
-         “planId”:””
-    }     
+``` json
+{
+    "id": "",
+    "subscriptionName": "",
+    "offerId": "",
+    "planId": "",
+}
 ```
 
 | **Parametername** | **Datentyp** | **Beschreibung**                       |
@@ -210,9 +210,9 @@ Eine POST-Aktion beim Auflösen des Endpunkts ermöglicht Benutzern das Auflöse
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
 | Retry-After        | Nein            | Dieser Wert wird nur für die Antwort 429 festgelegt.                                                                   |
 |  |  |  |
 
@@ -238,17 +238,17 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 | x-ms-requestid         |   Nein          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | x-ms-correlationid     |   Nein          | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | If-Match/If-None-Match |   Nein          |   Starker ETag-Wert des Validierungssteuerelements.                                                          |
-| Inhaltstyp           |   JA        |    `application/json`                                                                   |
-|  authorization         |   JA        |    JWT-Bearertoken (JSON Web Token)                                               |
+| Inhaltstyp           |   Ja        |    `application/json`                                                                   |
+|  authorization         |   Ja        |    JWT-Bearertoken (JSON Web Token)                                               |
 | x-ms-marketplace-session-mode| Nein  | Flag zum Aktivieren des Probelaufmodus beim Abonnieren eines SaaS-Angebots. Wenn es festgelegt ist, wird das Abonnement nicht belastet. Nützlich für ISV-Testszenarien. Legen Sie es auf **„dryrun“** fest.|
 |  |  |  |
 
 *Text*
 
 ``` json
-  { 
-      “planId”:””
-   }      
+{
+    "lanId": "",
+}
 ```
 
 | **Elementname** | **Datentyp** | **Beschreibung**                      |
@@ -275,11 +275,11 @@ Verfolgen Sie für die Antwort 202 den Status des Anforderungsvorgangs am Header
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
-| Retry-After        | JA          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
-| Operation-Location | JA          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| Retry-After        | Ja          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
+| Operation-Location | Ja          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
 |  |  |  |
 
 ### <a name="change-plan-endpoint"></a>Endpunkt der Tarifänderung
@@ -303,19 +303,17 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 | x-ms-requestid          | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
 | x-ms-correlationid      | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | If-Match /If-None-Match | Nein            | Starker ETag-Wert des Validierungssteuerelements.                              |
-| Inhaltstyp            | JA          | `application/json`                                        |
-| authorization           | JA          | JWT-Bearertoken (JSON Web Token)                    |
+| Inhaltstyp            | Ja          | `application/json`                                        |
+| authorization           | Ja          | JWT-Bearertoken (JSON Web Token)                    |
 |  |  |  |
-
 
 *Text*
 
-``` json
-                { 
-                    “planId”:””
-                } 
+```json
+{
+    "planId": ""
+}
 ```
-
 
 |  **Elementname** |  **Datentyp**  | **Beschreibung**                              |
 |  ---------------- | -------------   | --------------------------------------       |
@@ -339,11 +337,11 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
-| Retry-After        | JA          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
-| Operation-Location | JA          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| Retry-After        | Ja          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
+| Operation-Location | Ja          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Löschen eines Abonnements
@@ -368,9 +366,8 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 |--------------------|--------------| ----------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.                                                           |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-| authorization      | JA          | JWT-Bearertoken (JSON Web Token)                    |
+| authorization      | Ja          | JWT-Bearertoken (JSON Web Token)                    |
 |  |  |  |
- 
 
 *Antwortcodes*
 
@@ -390,11 +387,11 @@ Verfolgen Sie für die Antwort 202 den Status des Anforderungsvorgangs am Header
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
-| Retry-After        | JA          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
-| Operation-Location | JA          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| Retry-After        | Ja          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
+| Operation-Location | Ja          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
 |   |  |  |
 
 ### <a name="get-operation-status"></a>Vorgangsstatus abrufen
@@ -413,27 +410,25 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-
 *Header*
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
-| authorization      | JA          | JWT-Bearertoken (JSON Web Token)                    |
+| authorization      | Ja          | JWT-Bearertoken (JSON Web Token)                    |
 |  |  |  | 
-  
 
 *Antworttext*
 
-``` json
-  { 
-      “id”: “”, 
-      “status”:””, 
-       “resourceLocation”:””, 
-      “created”:””, 
-      “lastModified”:”” 
-  } 
+```json
+{
+    "id": "",
+    "status": "",
+    "resourceLocation": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Parametername** | **Datentyp** | **Beschreibung**                                                                                                                                               |
@@ -461,10 +456,10 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
-| Retry-After        | JA          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| Retry-After        | Ja          | Intervall, in dem der Client den Status überprüfen kann.                                                       |
 |  |  |  |
 
 ### <a name="get-subscription"></a>Abonnement abrufen
@@ -489,21 +484,21 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.                                                           |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-| authorization      | JA          | JWT-Bearertoken (JSON Web Token)                                                                    |
+| authorization      | Ja          | JWT-Bearertoken (JSON Web Token)                                                                    |
 |  |  |  |
 
 *Antworttext*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “” 
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 | **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
@@ -532,13 +527,12 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
 | Retry-After        | Nein            | Intervall, in dem der Client den Status überprüfen kann.                                                       |
-| eTag               | JA          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
+| eTag               | Ja          | Link zu einer Ressource, um den Vorgangsstatus abzurufen.                                                        |
 |  |  |  |
-
 
 ### <a name="get-subscriptions"></a>Abonnements abrufen
 
@@ -561,22 +555,21 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.             |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
-| authorization      | JA          | JWT-Bearertoken (JSON Web Token)                    |
+| authorization      | Ja          | JWT-Bearertoken (JSON Web Token)                    |
 |  |  |  |
-
 
 *Antworttext*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “”
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Parametername**     | **Datentyp** | **Beschreibung**                               |
@@ -606,16 +599,15 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | JA          | Vom Client empfangene Anforderungs-ID.                                                                   |
-| x-ms-correlationid | JA          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
-| x-ms-activityid    | JA          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
+| x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
+| x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
+| x-ms-activityid    | Ja          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet. |
 | Retry-After        | Nein            | Intervall, in dem der Client den Status überprüfen kann.                                                       |
 |  |  |  |
 
 ### <a name="saas-webhook"></a>SaaS-Webhook
 
 Ein SaaS-Webhook wird verwendet, um Änderungen proaktiv an den SaaS-Dienst zu melden. Diese POST-API muss nicht authentifiziert werden und wird vom Microsoft-Dienst aufgerufen. Der SaaS-Dienst muss die API-Vorgänge zur Überprüfung und Autorisierung aufrufen, bevor er auf die Webhookbenachrichtigung reagieren kann. 
-
 
 *Text*
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3a2e48697efbe0f4969a8fae20c050a38645ed6f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462078"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754420"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Python-API
 
@@ -153,7 +153,7 @@ Zum Erstellen eines Batch-Pools verwendet die App die [PoolAddParameter](/python
 
 Die Anzahl von Knoten (`_POOL_NODE_COUNT`) und die VM-Größe (`_POOL_VM_SIZE`) sind definierte Konstanten. Im Beispiel wird standardmäßig ein Pool mit zwei Knoten der Größe *Standard_A1_v2* erstellt. Die vorgeschlagene Größe bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
 
-Mit der [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add)-Methode wird der Pool an den Batch-Dienst übermittelt.
+Mit der [pool.add](/python/api/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -187,7 +187,7 @@ batch_service_client.job.add(job)
 
 Die App erstellt eine Liste mit Aufgabenobjekten, indem die [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter)-Klasse verwendet wird. Jede Aufgabe verarbeitet ein `resource_files`-Eingabeobjekt, indem ein `command_line`-Parameter verwendet wird. Im Beispiel führt die Befehlszeile den Bash-Shellbefehl `cat` aus, um die Textdatei anzuzeigen. Dieser Befehl ist ein einfaches Beispiel für Demonstrationszwecke. Bei Verwendung von Batch befindet sich die Befehlszeile dort, wo Sie Ihre App bzw. Ihr Skript angeben. In Batch gibt es mehrere Möglichkeiten, Apps und Skripts auf Computeknoten bereitzustellen.
 
-Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
+Anschließend werden dem Auftrag von der App mit der [task.add_collection](/python/api/azure.batch.operations.taskoperations)-Methode Aufgaben hinzugefügt und für die Ausführung auf den Computeknoten in die Warteschlange eingereiht. 
 
 ```python
 tasks = list()

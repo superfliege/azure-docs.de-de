@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 65531b5507f9e3af3a9666074d9dcd9b7ee20271
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: df9dc7d25ff0304effadbf27751042e9961c75c0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231184"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562027"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Schnellstart für PowerShell in Azure Cloud Shell
 
@@ -27,6 +27,8 @@ Dieses Dokument erläutert die Verwendung von PowerShell in Cloud Shell im [Azur
 
 > [!NOTE]
 > Ein Schnellstart zu [Bash in Azure Cloud Shell](quickstart.md) ist ebenfalls verfügbar.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
 
@@ -48,7 +50,7 @@ PS Azure:\> Get-Date
 # Expected Output
 Friday, July 27, 2018 7:08:48 AM
 
-PS Azure:\> Get-AzureRmVM -Status
+PS Azure:\> Get-AzVM -Status
 
 # Expected Output
 ResourceGroupName       Name       Location                VmSize   OsType     ProvisioningState  PowerState
@@ -238,7 +240,7 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 
 # You can use Azure cmdlets to Start/Stop your web apps
-PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
+PS Azure:\MySubscriptionName\WebApps> Start-AzWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
@@ -266,7 +268,7 @@ Generieren Sie zum Authentifizieren für Server oder VMs per SSH das Paar aus ei
 ### <a name="using-ssh"></a>Verwenden von SSH
 
 Befolgen Sie die Anleitung [hier](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell), um eine neue VM-Konfiguration mit AzureRM-Cmdlets zu erstellen.
-Fügen Sie der VM-Konfiguration vor dem Aufrufen von `New-AzureRmVM` zum Starten der Bereitstellung den öffentlichen SSH-Schlüssel hinzu.
+Fügen Sie der VM-Konfiguration vor dem Aufrufen von `New-AzVM` zum Starten der Bereitstellung den öffentlichen SSH-Schlüssel hinzu.
 Die neu erstellte VM enthält den öffentlichen Schlüssel unter `~\.ssh\authorized_keys`, um für die VM eine SSH-Sitzung ohne Anmeldeinformationen zu ermöglichen.
 
 ```azurepowershell-interactive
@@ -277,10 +279,10 @@ ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa
 
 # Ensure VM config is updated with SSH keys
 $sshPublicKey = Get-Content "$HOME\.ssh\id_rsa.pub"
-Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+Add-AzVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 # Create a virtual machine
-New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
+New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
 
 # SSH to the VM
 ssh azureuser@MyVM.Domain.Com
@@ -288,7 +290,7 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>Auflisten verfügbarer Befehle
 
-Geben Sie unter dem Laufwerk `Azure` die Zeichenfolge `Get-AzureRmCommand` ein, um kontextabhängige Azure-Befehle zu erhalten.
+Geben Sie unter dem Laufwerk `Azure` die Zeichenfolge `Get-AzCommand` ein, um kontextabhängige Azure-Befehle zu erhalten.
 
 Alternativ können Sie immer `Get-Command *azurerm* -Module AzureRM.*` verwenden, um die verfügbaren Azure-Befehle zu ermitteln.
 
@@ -307,7 +309,7 @@ Get-Help
 Für einen bestimmten Befehl können Sie weiterhin `Get-Help` gefolgt von einem Cmdlet ausführen.
 
 ```azurepowershell-interactive
-Get-Help Get-AzureRmVM
+Get-Help Get-AzVM
 ```
 
 ## <a name="use-azure-files-to-store-your-data"></a>Verwenden von Azure Files zum Speichern Ihrer Daten

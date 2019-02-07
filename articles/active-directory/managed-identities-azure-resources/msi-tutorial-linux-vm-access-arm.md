@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: priyamo
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b0c46485a0b35762c4dc34134eb11c31d09d4fe0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 857991ee171dca8e579b1e6dbfd97551ee857530
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151344"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749933"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Tutorial: Zugreifen auf Azure Resource Manager mithilfe einer benutzerseitig zugewiesenen verwalteten Identität auf einem virtuellen Linux-Computer
 
@@ -84,7 +84,7 @@ Die Antwort enthält Details zu der erstellten benutzerseitig zugewiesenen verwa
 
 Eine benutzerseitig zugewiesene verwaltete Identität kann von Clients für mehrere Azure-Ressourcen verwendet werden. Verwenden Sie die folgenden Befehle, um einem einzelnen virtuellen Computer die benutzerseitig zugewiesene verwaltete Identität zuzuweisen. Verwenden Sie die Eigenschaft `Id`, die im vorherigen Schritt für den Parameter `-IdentityID` zurückgegeben wird.
 
-Weisen Sie mit [az vm identity assign](/cli/azure/vm#az-vm-identity-assign) Ihrem virtuellen Linux-Computer die benutzerseitig zugewiesene verwaltete Identität zu. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. Verwenden Sie die Eigenschaft `id`, die im vorherigen Schritt für den Parameterwert `--identities` zurückgegeben wird.
+Weisen Sie mit [az vm identity assign](/cli/azure/vm) Ihrem virtuellen Linux-Computer die benutzerseitig zugewiesene verwaltete Identität zu. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<VM NAME>` durch Ihre eigenen Werte. Verwenden Sie die Eigenschaft `id`, die im vorherigen Schritt für den Parameterwert `--identities` zurückgegeben wird.
 
 ```azurecli-interactive
 az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"

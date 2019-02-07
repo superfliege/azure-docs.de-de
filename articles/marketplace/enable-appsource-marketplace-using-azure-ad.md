@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351948"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732327"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
 
@@ -41,12 +41,12 @@ Die verschiedenen [Listenoptionen und Angebotsarten](https://docs.microsoft.com/
 | **Angebotstyp**    | **Azure AD-SSO erforderlich?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontaktformular | Testversion | Testversion | Transaktion |
-| Virtual Machine | N/V | Nein  | Nein  | Nein  |
-| Azure-Apps (Lösungsvorlage)  | N/V | N/V | N/V | N/V |
-| Verwaltete Apps  | N/V | N/V | N/V | Nein  |
-| SaaS  | Nein  | Ja | Ja | JA |
-| Container  | N/V | N/V | N/V | Nein  |
-| Beratungsdienste  | Nein  | N/V | N/V | N/V |
+| Virtual Machine | – | Nein  | Nein  | Nein  |
+| Azure-Apps (Lösungsvorlage)  | – | – | – | – |
+| Verwaltete Apps  | – | – | – | Nein  |
+| SaaS  | Nein  | Ja | Ja | Ja |
+| Container  | – | – | – | Nein  |
+| Beratungsdienste  | Nein  | – | – | – |
 
 Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
@@ -59,7 +59,7 @@ Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unte
 
 Eine automatisierte Kundeneinrichtung kann die Wahrscheinlichkeit einer Konvertierung erhöhen. Wenn Ihr Kunde Ihre Testauflistung auswählt und in Ihre Testumgebung umgeleitet wird, können Sie den Kunden direkt einrichten, ohne dass zusätzliche Anmeldeverfahren erforderlich sind.
 
-Während der Authentifizierung sendet Azure AD ein Token an Ihre App oder Ihr Angebot. Die vom Token bereitgestellten Benutzerinformationen ermöglichen die Erstellung eines Benutzerkontos in Ihrer App oder Ihrem Angebot. Weitere Informationen finden Sie unter [Beispieltoken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens).
+Während der Authentifizierung sendet Azure AD ein Token an Ihre App oder Ihr Angebot. Die vom Token bereitgestellten Benutzerinformationen ermöglichen die Erstellung eines Benutzerkontos in Ihrer App oder Ihrem Angebot. Weitere Informationen finden Sie unter [Beispieltoken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 Wenn Sie Azure AD verwenden, um die Authentifizierung mit einem Klick in Ihrer App oder Ihrer Testauflistung zu aktivieren, erreichen Sie Folgendes:
 

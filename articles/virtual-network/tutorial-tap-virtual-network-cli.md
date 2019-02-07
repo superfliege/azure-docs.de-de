@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kaanan
-ms.openlocfilehash: 36de5ec6f7384663106bfb88ee9f236cced6930a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0662b66d44533a888d491810ba45efac9a397aa1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997946"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700841"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Arbeiten mit einem TAP eines virtuellen Netzwerks über die Azure CLI
 
@@ -79,7 +79,7 @@ Lesen Sie die [Voraussetzungen](virtual-network-tap-overview.md#prerequisites), 
    - Rufen Sie die Front-End-IP-Konfiguration des internen Azure-Lastenausgleichs in einer Variable ab, die in einem späteren Schritt verwendet wird. Die ID ist der Endpunkt, der den TAP-Datenverkehr aggregiert. Das folgende Beispiel ruft die ID der Front-End-IP-Konfiguration *frontendipconfig1* für einen Lastenausgleich namens *myInternalLoadBalancer* in einer Ressourcengruppe mit dem Namen *myResourceGroup* ab:
 
       ```azurecli-interactive
-      FrondendIpConfigId=$(az network lb fronend-ip show \
+      FrontendIpConfigId=$(az network lb frontend-ip show \
       --name frontendipconfig1 \
       --lb-name myInternalLoadBalancer \
       --resource-group myResourceGroup \

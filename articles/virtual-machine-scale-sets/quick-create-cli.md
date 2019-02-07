@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 04c59cac8cd55acad0504337c57767c938835021
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b42c32936d6973468ace58572ee61eaad66053c2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884893"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733177"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In diesem Schnellstart erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit der Azure-Befehlszeilenschnittstelle bereit.
@@ -40,7 +40,7 @@ Vor der Erstellung einer Skalierungsgruppe müssen Sie zunächst mit [az group c
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie dann mit [az vmss create](/cli/azure/vmss#az_vmss_create) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, die automatisch aktualisiert wird, wenn Änderungen angewendet werden. Außerdem werden SSH-Schlüssel generiert, falls sie unter *~/.ssh/id_rsa* nicht vorhanden sind. Diese SSH-Schlüssel werden verwendet, wenn Sie sich an VM-Instanzen anmelden müssen. Wenn Sie einen vorhandenen Satz mit SSH-Schlüsseln verwenden möchten, können Sie den Parameter `--ssh-key-value` nutzen und den Speicherort Ihrer Schlüssel angeben.
+Erstellen Sie dann mit [az vmss create](/cli/azure/vmss) eine VM-Skalierungsgruppe. Im folgenden Beispiel wird eine Skalierungsgruppe mit dem Namen *myScaleSet* erstellt, die automatisch aktualisiert wird, wenn Änderungen angewendet werden. Außerdem werden SSH-Schlüssel generiert, falls sie unter *~/.ssh/id_rsa* nicht vorhanden sind. Diese SSH-Schlüssel werden verwendet, wenn Sie sich an VM-Instanzen anmelden müssen. Wenn Sie einen vorhandenen Satz mit SSH-Schlüsseln verwenden möchten, können Sie den Parameter `--ssh-key-value` nutzen und den Speicherort Ihrer Schlüssel angeben.
 
 ```azurecli-interactive
 az vmss create \
@@ -58,7 +58,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 ## <a name="deploy-sample-application"></a>Bereitstellen der Beispielanwendung
 Installieren Sie eine einfache Webanwendung, um Ihre Skalierungsgruppe zu testen. Die benutzerdefinierte Skripterweiterung von Azure wird zum Herunterladen und Ausführen eines Skripts verwendet, mit dem eine Anwendung auf den VM-Instanzen installiert wird. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/linux/extensions-customscript.md).
 
-Verwenden Sie die benutzerdefinierte Skripterweiterung, um einen einfachen NGINX-Webserver zu installieren. Wenden Sie die benutzerdefinierte Skripterweiterung für die Installation von NGINX mit [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) wie folgt an:
+Verwenden Sie die benutzerdefinierte Skripterweiterung, um einen einfachen NGINX-Webserver zu installieren. Wenden Sie die benutzerdefinierte Skripterweiterung für die Installation von NGINX mit [az vmss extension set](/cli/azure/vmss/extension) wie folgt an:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -72,7 +72,7 @@ az vmss extension set \
 
 
 ## <a name="allow-traffic-to-application"></a>Zulassen von Datenverkehr für die Anwendung
-Nachdem die Skalierungsgruppe erstellt wurde, wird automatisch ein Azure Load Balancer bereitgestellt. Der Load Balancer verteilt Datenverkehr auf die VM-Instanzen der Skalierungsgruppe. Damit Datenverkehr die Beispielwebanwendung erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Regel für den Lastenausgleich. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
+Nachdem die Skalierungsgruppe erstellt wurde, wird automatisch ein Azure Load Balancer bereitgestellt. Der Load Balancer verteilt Datenverkehr auf die VM-Instanzen der Skalierungsgruppe. Damit Datenverkehr die Beispielwebanwendung erreicht, erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule) eine Regel für den Lastenausgleich. Im folgenden Beispiel wird eine Regel namens *myLoadBalancerRuleWeb* erstellt:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ Geben Sie die öffentliche IP-Adresse des Lastenausgleichsmoduls in einen Webbro
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie die Ressourcengruppe, die Skalierungsgruppe und die dazugehörigen Ressourcen nicht mehr benötigen, können Sie sie wie folgt mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
+Wenn Sie die Ressourcengruppe, die Skalierungsgruppe und die dazugehörigen Ressourcen nicht mehr benötigen, können Sie sie wie folgt mit dem Befehl [az group delete](/cli/azure/group) entfernen. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

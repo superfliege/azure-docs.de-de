@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/01/2019
+ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546911"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660725"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -83,7 +83,7 @@ Wenn der Abfragespeicher aktiviert ist, speichert er Daten in Aggregationsfenste
 Die folgenden Optionen stehen für die Konfiguration der Abfragespeicherparameter zur Verfügung.
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Legt fest, welche Anweisungen nachverfolgt werden. | top | none, top, all |
+| pg_qs.query_capture_mode | Legt fest, welche Anweisungen nachverfolgt werden. | none | none, top, all |
 | pg_qs.max_query_text_length | Legt die maximale Abfragelänge fest, die gespeichert werden kann. Längere Abfragen werden abgeschnitten. | 6000 | 100 – 10.000 |
 | pg_qs.retention_period_in_days | Legt den Aufbewahrungszeitraum fest. | 7 | 1 – 30 |
 | pg_qs.track_utility | Legt fest, ob Dienstprogrammbefehle nachverfolgt werden. | on | on, off |

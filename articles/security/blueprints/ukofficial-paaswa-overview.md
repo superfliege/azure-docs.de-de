@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718493"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700977"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -73,7 +73,7 @@ Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung 
 
 #### <a name="identity-and-authentication"></a>Identität und Authentifizierung
 
-Mit dieser Vorlage wird sichergestellt, dass der Zugriff auf die Ressourcen mit Diensten für die Verzeichnis- und Identitätsverwaltung geschützt ist. Bei dieser Architektur wird die [Identität vollständig als Sicherheitsbereich genutzt](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter). 
+Mit dieser Vorlage wird sichergestellt, dass der Zugriff auf die Ressourcen mit Diensten für die Verzeichnis- und Identitätsverwaltung geschützt ist. Bei dieser Architektur wird die [Identität vollständig als Sicherheitsbereich genutzt](https://docs.microsoft.com/azure/security/security-paas-deployments). 
 
 Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-Umgebung:
 

@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc9907930283e07ef8df826d2e7653b96f116518
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f08ef19e6829fc1563eced54ade1e4f59c0c33be
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852047"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728570"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
@@ -62,7 +62,7 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
-| REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) (Standorte auflisten). |
+| REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) (Standorte auflisten). |
 | Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="vm-size"></a>Größe des virtuellen Computers
@@ -85,7 +85,7 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
 | Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *location*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST-APIs |[List image publishers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
-| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 
@@ -103,11 +103,11 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 
 | Ressource | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) |JA |Der virtuelle Computer muss sich in einer Ressourcengruppe befinden. |
-| [Speicherkonto](../../storage/common/storage-create-storage-account.md) |JA |Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten. |
-| [Virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) |JA |Der virtuelle Computer muss einem virtuellen Netzwerk angehören. |
+| [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) |Ja |Der virtuelle Computer muss sich in einer Ressourcengruppe befinden. |
+| [Speicherkonto](../../storage/common/storage-create-storage-account.md) |Ja |Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten. |
+| [Virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) |Ja |Der virtuelle Computer muss einem virtuellen Netzwerk angehören. |
 | [Öffentliche IP-Adresse](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Nein  |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden. |
-| [Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) |JA |Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk. |
+| [Netzwerkschnittstelle](../../virtual-network/virtual-network-network-interface.md) |Ja |Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk. |
 | [Datenträger](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nein  |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen. |
 
 ## <a name="how-do-i-create-my-first-vm"></a>Wie erstelle ich meinen ersten virtuellen Computer?

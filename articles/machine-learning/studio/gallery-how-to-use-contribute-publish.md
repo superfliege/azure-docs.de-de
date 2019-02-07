@@ -1,8 +1,21 @@
 ---
-Titel: Azure AI Gallery titleSuffix: Azure Machine Learning Studio-Beschreibung: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure AI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
-Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11.01.11.2019
+title: Azure AI-Katalog
+titleSuffix: Azure Machine Learning Studio
+description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure AI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/11/2019
+ms.openlocfilehash: b5a460f3449785721ac360ba398bc47d1945b954
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497694"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure AI-Katalog
 

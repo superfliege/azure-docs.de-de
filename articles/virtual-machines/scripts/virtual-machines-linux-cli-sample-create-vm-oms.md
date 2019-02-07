@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: eab5545b4d2b911051d9803560d5efd1a09dafb0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 70eb7ef93d4802f30bb1343c442c414cda48464b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158161"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732786"
 ---
 # <a name="monitor-a-vm-with-azure-monitoring"></a>Überwachen einer VM mit Azure-Überwachung
 
@@ -49,10 +49,10 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der NSG. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. In diesem Fall wird die Log Analytics-Agent-Erweiterung verwendet, um den Log Analytics-Agent zu installieren und die VM in einem Log Analytics-Arbeitsbereich zu registrieren. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Führt einen VM-Erweiterungs-Agent für einen virtuellen Computer aus. In diesem Fall wird die Log Analytics-Agent-Erweiterung verwendet, um den Log Analytics-Agent zu installieren und die VM in einem Log Analytics-Arbeitsbereich zu registrieren. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

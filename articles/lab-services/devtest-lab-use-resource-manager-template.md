@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 99c4f838c3c4e4708c3e21ff9c7e63b69a507dbe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686380"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746913"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -47,7 +47,7 @@ Im restlichen Teil dieses Artikels werden Resource Manager-Vorlagen beschrieben,
 Unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) finden Sie zuverlässige und leicht anzuwendende Richtlinien und Vorschläge zum Erstellen einer Azure Resource Manager-Vorlage.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Anzeigen und Speichern der Resource Manager-Vorlage eines virtuellen Computers
-1. Führen Sie die Schritte unter [Erstellen Ihres ersten virtuellen Computers in einem Lab in Azure DevTest Labs](devtest-lab-create-first-vm.md) aus, um mit dem Erstellen eines virtuellen Computers zu beginnen.
+1. Führen Sie die Schritte unter [Erstellen Ihres ersten virtuellen Computers in einem Lab in Azure DevTest Labs](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) aus, um mit dem Erstellen eines virtuellen Computers zu beginnen.
 1. Geben Sie die erforderlichen Informationen für Ihren virtuellen Computer ein, und fügen Sie alle gewünschten Artefakte für den virtuellen Computer hinzu.
 1. Wählen Sie unten im Fenster zum Konfigurieren der Einstellungen die Option **View ARM template** (ARM-Vorlage anzeigen).
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079255"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746311"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -108,7 +108,7 @@ Die Agent-basierte Ermittlung ist eine Option, die zusätzlicher zur applianceba
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Würden Leistungseinbußen in der analysierten ESXi-Hostumgebung auftreten?
 
-Im Fall des [Ansatzes mit einmaliger Erkennung](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) muss auf dem vCenter-Server zum Sammeln von Leistungsdaten die Statistikebene 3 festgelegt werden. Durch das Festlegen auf diese Ebene würde eine große Menge von Problembehandlungsdaten gesammelt und in der vCenter Server-Datenbank gespeichert werden. Dies kann zu einigen Leistungsproblemen bei vCenter Server führen. Auf dem ESXi-Host könnte die Auswirkung vernachlässigt werden.
+Im Fall des [Ansatzes mit einmaliger Erkennung](https://docs.microsoft.com/azure/migrate/concepts-collector) muss auf dem vCenter-Server zum Sammeln von Leistungsdaten die Statistikebene 3 festgelegt werden. Durch das Festlegen auf diese Ebene würde eine große Menge von Problembehandlungsdaten gesammelt und in der vCenter Server-Datenbank gespeichert werden. Dies kann zu einigen Leistungsproblemen bei vCenter Server führen. Auf dem ESXi-Host könnte die Auswirkung vernachlässigt werden.
 
 Wir haben eine kontinuierliche Profilerstellung von Leistungsdaten eingeführt (in der Vorschauversion). Mit kontinuierlicher Profilerstellung muss die Statistikebene von vCenter Server nicht mehr geändert werden, um eine leistungsbasierte Bewertung auszuführen. Die Collectorappliance erstellt jetzt ein Profil der lokalen Computer, um die Leistungsdaten der virtuellen Computer zu messen. Dies hätte auf den ESXi-Hosts, aber auch auf vCenter Server nahezu keine Auswirkungen auf die Leistung.
 

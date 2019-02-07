@@ -7,17 +7,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 9a12ca5deeadfb7272532f404cc9cf7c030fb6c0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994350"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661716"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
 > [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md). Es ist [geplant, klassische Warnungen einzustellen](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md). Es ist [geplant, klassische Warnungen einzustellen](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
 >
 
 Mit Warnungen können Sie Bedingungen für Daten konfigurieren und benachrichtigt werden, wenn die Bedingungen Übereinstimmungen mit den aktuellen Überwachungsdaten ergeben.

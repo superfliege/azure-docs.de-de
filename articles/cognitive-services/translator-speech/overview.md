@@ -10,12 +10,12 @@ ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: e2fd6f88f34ac34ea304b5298940f317b4c0d37e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1983ecbdee3d15efc73ad395fd07cbc7cd4f279c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472489"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769724"
 ---
 # <a name="what-is-translator-speech-api"></a>Was ist die Sprachübersetzungs-API?
 
@@ -23,7 +23,7 @@ ms.locfileid: "55472489"
 
 Mit der Sprachübersetzungs-API können Sie Anwendungen, Tools und Lösungen, die eine Sprachübersetzung für mehrere Sprachen erfordern, unabhängig vom Zielbetriebssystem oder den Entwicklungssprachen mit umfassenden Sprachübersetzungen in Echtzeit ausstatten. Die API kann sowohl für Sprache-zu-Sprache-Übersetzungen als auch für Sprache-zu-Text-Übersetzungen verwendet werden.
 
-Die Textübersetzungs-API ist ein Azure-Dienst und gehört zur [API-Sammlung von Azure Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
+Die Textübersetzungs-API ist ein Azure-Dienst und gehört zur [API-Sammlung von Azure Cognitive Services](https://docs.microsoft.com/azure/). Hierbei handelt es sich um eine Sammlung von Machine Learning- und KI-Algorithmen in der Cloud, die Sie direkt in Ihren Entwicklungsprojekten verwenden können.
 
 Mit der Sprachübersetzungs-API streamen Clientanwendungen Audio an den Dienst und empfangen einen Stream mit text- und audiobasierten Ergebnissen. Diese umfassen den erkannten Text in der Ausgangssprache und die entsprechende Übersetzung in der Zielsprache. Zur Generierung der Textergebnisse wird auf den eingehenden Audiostream eine auf neuronalen Netzwerken basierende automatische Spracherkennung (Automatic Speech Recognition, ASR) angewendet. Eine unformatierte ASR-Ausgabe wird mithilfe einer neuen Technik namens TrueText weiter verbessert, um die Benutzerabsicht noch besser zu erfassen. So entfernt TrueText beispielsweise Elemente, die den Textfluss stören (etwa „Hmm“ und Husten), sowie Wortwiederholungen und sorgt für eine ordnungsgemäße Interpunktion und Großschreibung. Es besteht auch die Möglichkeit, anstößige Ausdrücke zu maskieren oder auszuschließen. Die Erkennungs- und Übersetzungsengines werden speziell für die Verarbeitung von Konversationen trainiert. 
 
@@ -66,6 +66,6 @@ Weitere Informationen zur Funktionsweise von NMT finden Sie [hier](https://www.m
 > [Programmieren](quickstarts/csharp.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-- [Dokumentationsseite zu Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
+- [Dokumentationsseite zu Cognitive Services](https://docs.microsoft.com/azure/)
 - [Produktseite zu Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 - [Lösungs- und Preisinformationen](https://www.microsoft.com/en-us/translator/home.aspx) 

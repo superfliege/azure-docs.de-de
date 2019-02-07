@@ -1,5 +1,5 @@
 ---
-title: Erstellen von integrierten Lösungen mit SQL Data Warehouse | Microsoft-Dokumentation
+title: Erstellen von integrierten Lösungen mit SQL Data Warehouse | Microsoft Docs
 description: 'Tools und Partner mit Lösungen, die in SQL Data Warehouse integriert werden können. '
 services: sql-data-warehouse
 author: KavithaJonnakuti
@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 08e144022c79182a63fd99dbce48a5e505aba3f2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477997"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661937"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrieren anderer Dienste in SQL Data Warehouse
 Zusätzlich zur Kernfunktionalität ermöglicht SQL Data Warehouse Benutzern die Integration in viele andere Dienste in Azure. Zu diesen Diensten gehören u.a.:
@@ -41,7 +41,7 @@ Azure Data Factory bietet Benutzern eine verwaltete Plattform zur Erstellung kom
 * **Gespeicherte Prozeduren**: Orchestrieren Sie die Ausführung von gespeicherten Prozeduren in SQL Data Warehouse.
 * **Kopieren**: Verwenden Sie Azure Data Factory, um Daten nach SQL Data Warehouse zu verschieben. Dieser Vorgang kann im Hintergrund PolyBase oder den standardmäßigen Mechanismus von Azure Data Factory zum Verschieben von Daten verwenden. 
 
-Weitere Informationen finden Sie unter [Visualisieren von Daten mit Power BI](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
+Weitere Informationen finden Sie unter [Visualisieren von Daten mit Power BI](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning ist ein vollständig verwalteter Analytics-Dienst, mit dem Sie komplexe Modelle erstellen können, die einen großen Satz von Vorhersagetools nutzen. SQL Data Warehouse wird sowohl als Quelle als auch als Ziel für diese Modelle mit den folgenden Funktionen unterstützt:

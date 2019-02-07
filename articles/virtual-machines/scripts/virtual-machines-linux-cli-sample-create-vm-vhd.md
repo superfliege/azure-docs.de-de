@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 18bfdaaf75230cf91ea8f786188b9de9f7a6a5be
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478313"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696732"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Erstellen einer VM mit einer virtuellen Festplatte
 
@@ -53,16 +53,16 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Listet Speicherkonten auf |
-| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Stellt sicher, dass ein Speicherkontoname gültig und nicht bereits vorhanden ist |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | Listet Speicherkonten auf |
+| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account) | Stellt sicher, dass ein Speicherkontoname gültig und nicht bereits vorhanden ist |
 | [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | Listet Schlüssel für die Speicherkonten auf |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Überprüft, ob das Blob vorhanden ist |
-| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Erstellt einen Container in einem Speicherkonto |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Erstellt ein Blob im Container durch Hochladen der VHD |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Wird zusammen mit `--query` verwendet, um zu überprüfen, ob der Name der VM bereits verwendet wird | 
+| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob) | Überprüft, ob das Blob vorhanden ist |
+| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container) | Erstellt einen Container in einem Speicherkonto |
+| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | Erstellt ein Blob im Container durch Hochladen der VHD |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm) | Wird zusammen mit `--query` verwendet, um zu überprüfen, ob der Name der VM bereits verwendet wird | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Erstellt die virtuellen Computer |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Ruft die IP-Adresse des virtuellen Computers ab, der erstellt wurde |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm-ip-addresses) | Ruft die IP-Adresse des virtuellen Computers ab, der erstellt wurde |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

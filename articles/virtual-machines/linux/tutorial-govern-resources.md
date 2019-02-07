@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: e83d6e2f14f8665f8eb0c58a4dc41c7c2ecc792d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 040f073cc410911ea88112b3206623e90cece0ca
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464254"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756172"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Tutorial: Informationen zur Verwaltung von virtuellen Linux-Computern mit der Azure CLI
 
@@ -57,7 +57,7 @@ Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Ro
 
 Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, eine Azure Active Directory-Gruppe mit Benutzern zu verwenden, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Verwenden Sie in diesem Artikel entweder eine vorhandene Gruppe für die VM-Verwaltung, oder [erstellen Sie eine Azure Active Directory-Gruppe](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) über das Portal.
 
-Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die neue Azure Active Directory-Gruppe mithilfe des Befehls [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.
+Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die neue Azure Active Directory-Gruppe mithilfe des Befehls [az role assignment create](/cli/azure/role/assignment) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -71,7 +71,7 @@ In der Regel müssen Sie den Prozess für die Rollen *Mitwirkender von virtuelle
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../azure-policy/azure-policy-introduction.md) hilft Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Um die verfügbaren Richtliniendefinitionen anzuzeigen, verwenden Sie den Befehl [az policy definition list](/cli/azure/policy/definition#az_policy_definition_list):
+[Azure Policy](../../azure-policy/azure-policy-introduction.md) hilft Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Um die verfügbaren Richtliniendefinitionen anzuzeigen, verwenden Sie den Befehl [az policy definition list](/cli/azure/policy/definition):
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -83,7 +83,7 @@ Die vorhandenen Richtliniendefinitionen werden angezeigt. Der Richtlinientyp lau
 * Begrenzen der SKUs für virtuelle Computer
 * Überwachen von virtuellen Computern, die keine verwalteten Datenträger verwenden
 
-Im folgenden Beispiel rufen Sie drei Richtliniendefinitionen anhand des Anzeigenamens ab. Sie weisen diese Definitionen mit dem Befehl [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) den Ressourcengruppen zu. Für einige Richtlinien stellen Sie Parameterwerte bereit, um die zulässigen Werte anzugeben.
+Im folgenden Beispiel rufen Sie drei Richtliniendefinitionen anhand des Anzeigenamens ab. Sie weisen diese Definitionen mit dem Befehl [az policy assignment create](/cli/azure/policy/assignment) den Ressourcengruppen zu. Für einige Richtlinien stellen Sie Parameterwerte bereit, um die zulässigen Werte anzugeben.
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -145,7 +145,7 @@ Nach Abschluss der Bereitstellung können Sie weitere Verwaltungseinstellungen a
 
 Zum Erstellen oder Löschen von Verwaltungssperren benötigen Sie Zugriff auf `Microsoft.Authorization/locks/*`-Aktionen. Unter den integrierten Rollen können nur **Besitzer** und **Benutzerzugriffsadministrator** diese Aktionen ausführen.
 
-Zum Sperren des virtuellen Computers und der Netzwerksicherheitsgruppe verwenden Sie den Befehl [az lock create](/cli/azure/lock#az_lock_create):
+Zum Sperren des virtuellen Computers und der Netzwerksicherheitsgruppe verwenden Sie den Befehl [az lock create](/cli/azure/lock):
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -206,7 +206,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Um die Sperre zu entfernen, rufen Sie die IDs der Sperren ab, und übergeben Sie sie an den Befehl [az lock delete](/cli/azure/lock#az_lock_delete):
+Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Um die Sperre zu entfernen, rufen Sie die IDs der Sperren ab, und übergeben Sie sie an den Befehl [az lock delete](/cli/azure/lock):
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -220,7 +220,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen. Beenden Sie die SSH-Sitzung auf Ihrem virtuellen Computer, und löschen Sie die Ressourcen wie folgt:
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group) entfernen. Beenden Sie die SSH-Sitzung auf Ihrem virtuellen Computer, und löschen Sie die Ressourcen wie folgt:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

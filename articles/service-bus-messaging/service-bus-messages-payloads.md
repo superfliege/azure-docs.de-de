@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: aschhab
-ms.openlocfilehash: 6b03b1eb773c40a81c9efd76ac26b40936dca2cc
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849361"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733925"
 ---
 # <a name="messages-payloads-and-serialization"></a>Nachrichten, Nutzlasten und Serialisierung
 
@@ -28,7 +28,7 @@ Das Objektmodell der offiziellen Service Bus-Clients für. NET und Java spiegelt
  
 Eine Service Bus-Nachricht besteht aus einem binären Nutzlastabschnitt, den Service Bus in keiner Form auf Dienstseite verarbeitet, und zwei Gruppen von Eigenschaften. Die *Brokereigenschaften* sind vom System vordefiniert. Diese vordefinierten Eigenschaften steuern entweder die Funktionalität auf Nachrichtenebene innerhalb des Brokers oder sind gemeinsamen und standardisierten Metadatenelementen zugeordnet. Die *Benutzereigenschaften* sind eine Sammlung von Schlüssel-Wert-Paaren, die von der Anwendung definiert und festgelegt werden können.
  
-Die vordefinierten Brokereigenschaften sind in der folgenden Tabelle aufgeführt. Die Namen werden mit allen offiziellen Client-APIs und auch im JSON-Objekt [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Properties_) der HTTP-Protokollzuordnung verwendet.
+Die vordefinierten Brokereigenschaften sind in der folgenden Tabelle aufgeführt. Die Namen werden mit allen offiziellen Client-APIs und auch im JSON-Objekt [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) der HTTP-Protokollzuordnung verwendet.
  
 Die entsprechenden Namen auf AMQP-Protokollebene sind in Klammern aufgelistet. 
 

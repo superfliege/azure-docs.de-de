@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826172"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563931"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -57,7 +57,7 @@ Beispielsweise In einer normalen IoT-Lösung:
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Berechtigungen](#iot-hub-permissions).
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Azure IoT Hub gewährt Zugriff auf Endpunkte, indem ein Token zur Verifizierung mit gemeinsam genutzten Zugriffsrichtlinien und Sicherheitsanmeldeinformationen für die Identitätsregistrierung verglichen wird.
 
@@ -146,7 +146,7 @@ Hier sind die erwarteten Werte:
 
 Der folgende „Node.js“-Codeausschnitt zeigt eine Funktion namens **GenerateSasToken**, die das Token aus den Eingaben `resourceUri, signingKey, policyName, expiresInMins` berechnet. In den nächsten Abschnitten wird erläutert, wie die verschiedenen Eingaben für die verschiedenen Anwendungsfälle für Token initialisiert werden.
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -260,7 +260,7 @@ Beispielsweise muss ein Token, das für den Zugriff auf alle Gerätefunktionen e
 
 Ein Beispiel mit der oben genannten Node.js-Funktion:
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var deviceKey ="...";
 
@@ -294,7 +294,7 @@ Beispielsweise würde ein Tokendienst, der die vorab erstellte SAS-Richtlinie mi
 
 Ein Beispiel mit der oben genannten Node.js-Funktion:
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
 var policyName = 'device';
 var policyKey = '...';
@@ -328,7 +328,7 @@ Beispielsweise würde ein Dienst, der zum Generieren die vorab erstellte SAS-Ric
 * Richtlinienname: `registryRead`
 * Eine Ablaufzeit
 
-```nodejs
+```javascript
 var endpoint ="myhub.azure-devices.net/devices";
 var policyName = 'registryRead';
 var policyKey = '...';

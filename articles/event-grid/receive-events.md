@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094717"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728621"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Empfangen von Ereignissen an einem HTTP-Endpunkt
 
@@ -51,8 +51,6 @@ Klicken Sie in Ihrer Azure-Funktion (der Bereich ganz rechts im Azure Functions-
 ## <a name="endpoint-validation"></a>Endpunktüberprüfung
 
 Als Erstes sollten Ereignisse des Typs `Microsoft.EventGrid.SubscriptionValidationEvent` behandelt werden. Jedes Mal, wenn ein neues Ereignisabonnement erstellt wird, sendet Event Grid ein Überprüfungsereignis an den Endpunkt mit einem `validationCode`-Element in der Datennutzlast. Der Endpunkt muss diesen als Echo im Antworttext zurückgeben, um [nachzuweisen, dass der Endpunkt gültig ist und Sie der Besitzer sind](security-authentication.md#webhook-event-delivery). Wenn Sie einen [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md) statt einer durch WebHook ausgelösten Funktion verwenden, erfolgt die Endpunktüberprüfung automatisch. Wenn Sie einen API-Dienst eines Drittanbieters (etwa [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)) verwenden, können Sie den Überprüfungscode unter Umständen nicht programmgesteuert wiederholen. Für diese Dienste können Sie das Abonnement mithilfe einer Überprüfungs-URL manuell überprüfen, die im Abonnementüberprüfungsereignis gesendet wird. Kopieren Sie diese URL in der Eigenschaft `validationUrl`, und senden Sie entweder über einen REST-Client oder Ihren Webbrowser eine GET-Anforderung.
-
-Die manuelle Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für die [Azure CLI](/cli/azure/install-azure-cli) installieren, um es zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Stellen Sie bei Verwendung der REST-API sicher, dass Sie `api-version=2018-05-01-preview` verwenden.
 
 In C# deserialisiert die Funktion `DeserializeEventGridEvents()` die Event Grid-Ereignisse. Sie deserialisiert die Ereignisdaten in den entsprechenden Typ, z.B. StorageBlobCreatedEventData. Verwenden Sie die Klasse `Microsoft.Azure.EventGrid.EventTypes` zum Abrufen von unterstützten Ereignistypen und -namen.
 

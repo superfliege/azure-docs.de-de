@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 2c981d33c8108386e0287d4c2a800f065c9dc431
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452854"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754599"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Einrichten einer gemeinsamen Identität für Data Science Virtual Machine
 
@@ -31,7 +31,7 @@ Active Directory ist ein beliebter Identitätsanbieter und wird als Dienst in Az
 
 Wenn Sie bereits über Active Directory zum Verwalten von Identitäten verfügen, können Sie Active Directory als gemeinsamen Identitätsanbieter verwenden. Für den Fall, dass Sie nicht über Active Directory verfügen, können Sie eine verwaltete Active Directory-Instanz in Azure über einen Dienst namens [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) ausführen. 
 
-Die Dokumentation für [Azure AD](https://docs.microsoft.com/azure/active-directory/) bietet detaillierte [Anweisungen für die Verwaltung](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), einschließlich der Verbindung von Azure AD mit Ihrem lokalen Verzeichnis, sofern vorhanden. 
+Die Dokumentation für [Azure AD](https://docs.microsoft.com/azure/active-directory/) bietet detaillierte [Anweisungen für die Verwaltung](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution), einschließlich der Verbindung von Azure AD mit Ihrem lokalen Verzeichnis, sofern vorhanden. 
 
 Dieser Artikel beschreibt die Schritte zum Einrichten eines vollständig verwalteten Active Directory-Domänendiensts in Azure mithilfe der Azure AD DS. Sie können Ihre DSVM-Instanzen dann in die verwaltete Active Directory-Domäne einbinden, um Benutzern den Zugriff auf einen Pool von DSVM-Instanzen (und andere Azure-Ressourcen) mit einem gemeinsamen Benutzerkonto und gemeinsamen Benutzeranmeldeinformationen zu ermöglichen. 
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6b74c81f44ee747cdd80a1106b669d89c8c7fbc3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297139"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733636"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -22,7 +22,7 @@ Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In die
 - **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen über die vCenter Server-Version 5.5, 6.0, 6.5 oder 6.7 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.5 oder höher, um die Collector-VM bereitzustellen.
 - **vCenter-Konto**: Sie benötigen ein schreibgeschütztes Konto, um auf vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
 - **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
-- **Statistikeinstellungen**: Diese Anforderung gilt nur für das [Modell für einmalige Ermittlung](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), das nun veraltet ist. Für das Modell für einmalige Ermittlung sollten die Statistikeinstellungen für vCenter Server vor der Bereitstellung auf Ebene 3 festgelegt werden. Die Statistikebene muss für das Tages-, Wochen- und Monatssammlungsintervall jeweils auf 3 festgelegt werden. Bei einer niedrigeren Ebene für eines dieser Sammlungsintervalle wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden dann auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
+- **Statistikeinstellungen**: Diese Anforderung gilt nur für das [Modell für einmalige Ermittlung](https://docs.microsoft.com/azure/migrate/concepts-collector), das nun veraltet ist. Für das Modell für einmalige Ermittlung sollten die Statistikeinstellungen für vCenter Server vor der Bereitstellung auf Ebene 3 festgelegt werden. Die Statistikebene muss für das Tages-, Wochen- und Monatssammlungsintervall jeweils auf 3 festgelegt werden. Bei einer niedrigeren Ebene für eines dieser Sammlungsintervalle wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden dann auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 
 > [!NOTE]
 > Die Appliance zur einmaligen Ermittlung ist inzwischen veraltet, da diese Methode bei der Verfügbarkeit der Leistungsdatenpunkte von den Statistikeinstellungen von vCenter Server abhängig war und durchschnittliche Leistungsindikatoren erfasst hat, was zu unterdimensionierten virtuellen Computern für die Migration zu Azure führte.

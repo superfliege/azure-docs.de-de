@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 51869bcc2ee892bc150102595de09782eb01547c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716275"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770519"
 ---
 # <a name="what-is-azure-dns"></a>Was ist Azure DNS?
 
@@ -32,7 +32,7 @@ DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern geho
 
 * [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control), um zu steuern, wer Zugriff auf bestimmte Aktionen für Ihre Organisation hat.
 
-* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs), um nachzuverfolgen, wie ein Benutzer in Ihrer Organisation eine Ressource geändert hat, oder um im Rahmen der Problembehandlung Fehler zu finden.
+* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), um nachzuverfolgen, wie ein Benutzer in Ihrer Organisation eine Ressource geändert hat, oder um im Rahmen der Problembehandlung Fehler zu finden.
 
 * [Ressourcensperre](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources), um ein Abonnement, eine Ressourcengruppe oder eine Ressource zu sperren. Eine Sperre verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern.
 

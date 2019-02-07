@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 76f54674b6c292cfaecfe8440d12bfa17d5a5a5e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016579"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567314"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopieren von Daten aus HubSpot mithilfe von Azure Data Factory (Vorschau)
 
@@ -44,11 +44,11 @@ Folgende Eigenschaften werden für den mit HubSpot verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **HubSpot** | JA |
-| clientId | Die Client-ID, die Ihrer HubSpot-Anwendung zugeordnet ist.  | JA |
-| clientSecret | Der geheime Clientschlüssel, der Ihrer HubSpot-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
-| accessToken | Das Zugriffstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
-| refreshToken | Das Aktualisierungstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **HubSpot** | Ja |
+| clientId | Die Client-ID, die Ihrer HubSpot-Anwendung zugeordnet ist.  | Ja |
+| clientSecret | Der geheime Clientschlüssel, der Ihrer HubSpot-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| accessToken | Das Zugriffstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| refreshToken | Das Aktualisierungstoken, das Sie bei der ersten Authentifizierung Ihrer OAuth-Integration erhalten haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |
@@ -63,16 +63,16 @@ Folgende Eigenschaften werden für den mit HubSpot verknüpften Dienst unterstü
         "typeProperties": {
             "clientId" : "<clientId>",
             "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
+                "type": "SecureString",
+                "value": "<clientSecret>"
             },
             "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
+                "type": "SecureString",
+                "value": "<accessToken>"
             },
             "refreshToken": {
-                 "type": "SecureString",
-                 "value": "<refreshToken>"
+                "type": "SecureString",
+                "value": "<refreshToken>"
             }
         }
     }
@@ -87,7 +87,7 @@ Legen Sie zum Kopieren von Daten aus HubSpot die „type“-Eigenschaft des Data
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **HubspotObject** | JA |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **HubspotObject** | Ja |
 | tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -116,7 +116,7 @@ Legen Sie zum Kopieren von Daten aus HubSpot den Quelltyp in der Kopieraktivitä
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **HubspotSource** | JA |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **HubspotSource** | Ja |
 | query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Companies where Company_Id = xxx"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**

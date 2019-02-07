@@ -7,15 +7,15 @@ manager: carmonm
 keywords: Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen
 ms.service: backup
 ms.topic: overview
-ms.date: 8/2/2018
+ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f07bcf3cb1b489ad7ec06dff1437e49d83748998
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2601f81b4abecd98d645af9bc0d368e52534a04e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631157"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487879"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -116,11 +116,11 @@ Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. di
 ### <a name="storage"></a>Storage
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Recovery Services-Tresor |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
-| Datenträgerspeicher | |![JA][green] |![JA][green] | |
-| Bandspeicher | |![JA][green] | | |
-| Komprimierung <br/>(im Recovery Services-Tresor) |![JA][green] |![Ja][green] |![JA][green] | |
-| Inkrementelle Sicherung |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
+| Recovery Services-Tresor |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
+| Datenträgerspeicher | |![Ja][green] |![Ja][green] | |
+| Bandspeicher | |![Ja][green] | | |
+| Komprimierung <br/>(im Recovery Services-Tresor) |![Ja][green] |![Ja][green] |![Ja][green] | |
+| Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
 | Datenträgerdeduplizierung | |![Teilweise][yellow] |![Teilweise][yellow] | | |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
@@ -157,8 +157,8 @@ Die **inkrementelle Sicherung** bietet eine hohe Speicher- und Netzwerkeffizienz
 ### <a name="security"></a>Sicherheit
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Netzwerksicherheit<br/> (in Azure) |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
-| Datensicherheit<br/> (in Azure) |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
+| Netzwerksicherheit<br/> (in Azure) |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
+| Datensicherheit<br/> (in Azure) |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -176,8 +176,8 @@ Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselu
 ### <a name="network"></a>Netzwerk
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Netzwerkkomprimierung <br/>(auf **Sicherungsserver**) | |![JA][green] |![JA][green] | |
-| Netzwerkkomprimierung <br/>(zum **Recovery Services-Tresor**) |![JA][green] |![Ja][green] |![JA][green] | |
+| Netzwerkkomprimierung <br/>(auf **Sicherungsserver**) | |![Ja][green] |![Ja][green] | |
+| Netzwerkkomprimierung <br/>(zum **Recovery Services-Tresor**) |![Ja][green] |![Ja][green] |![Ja][green] | |
 | Netzwerkprotokoll <br/>(auf **Sicherungsserver**) | |TCP |TCP | |
 | Netzwerkprotokoll <br/>(zum **Recovery Services-Tresor**) |HTTPS |HTTPS |HTTPS |HTTPS |
 

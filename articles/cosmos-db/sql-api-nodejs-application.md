@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/10/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: fb0a2160991b3fd51b69822f3e3167b929581e50
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 47a4b3bc1e71c9dacc53ca3ff507768d4a0f20e9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352341"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510577"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Tutorial: Erstellen einer Node.js-Web-App mit dem JavaScript SDK zum Verwalten eines SQL API-Kontos in Azure Cosmos DB 
 
@@ -115,7 +115,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 3. Kopieren Sie den folgenden Code in die Datei **taskDao.js**:
 
-   ```nodejs
+   ```javascript
    // @ts-check
    const CosmosClient = require("@azure/cosmos").CosmosClient;
    const debug = require("debug")("todo:taskDao");
@@ -195,7 +195,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 2. Fügen Sie **tasklist.js**den folgenden Code hinzu. Dieser Code lädt die Module „CosmosClient“ und „async“, die von **tasklist.js** verwendet werden. Des Weiteren definiert er die Klasse **TaskList**, die als Instanz des zuvor definierten Objekts **TaskDao** übergeben wird:
    
-   ```nodejs
+   ```javascript
    const TaskDao = require("../models/TaskDao");
 
    class TaskList {
@@ -256,7 +256,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 2. Fügen Sie der Datei **config.cs** den folgenden Code hinzu. Mit diesem Code werden die für Ihre Anwendung erforderlichen Konfigurationseinstellungen und Werte definiert.
    
-   ```nodejs
+   ```javascript
    const config = {};
 
    config.host = process.env.HOST || "[the endpoint URI of your Azure Cosmos DB account]";
@@ -285,7 +285,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 2. Fügen Sie der Datei **app.js** den folgenden Code hinzu. Dieser Code definiert die zu verwendende Konfigurationsdatei und lädt die Werte in einige Variablen, die in den nächsten Abschnitten verwendet werden. 
    
-   ```nodejs
+   ```javascript
    const CosmosClient = require("@azure/cosmos").CosmosClient;
    const config = require("./config");
    const TaskList = require("./routes/tasklist");

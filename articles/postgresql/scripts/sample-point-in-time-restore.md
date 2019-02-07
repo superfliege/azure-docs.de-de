@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 721e385d7c8e6b401ce1fe6d3518006f3a96e4fe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1f772f710f0146048fcde04d884fbe3458722743
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541097"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754522"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for PostgreSQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses CLI-Beispielskript stellt den früheren Zustand eines einzelnen Azure Database for PostgreSQL-Servers wieder her.
@@ -35,10 +35,10 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 
 | **Befehl** | **Hinweise** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az group create](/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | Erstellt einen PostgreSQL-Server, der die Datenbanken hostet. |
 | [az postgresql server restore](/cli/azure/postgres/server#az-postgres-server-restore) | Stellt einen Server aus einer Sicherung wieder her |
-| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group delete](/cli/azure/group) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)

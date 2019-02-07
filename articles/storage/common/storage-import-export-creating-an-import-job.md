@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: efe7b6722a9cfa24ea86130a13a0599115e89821
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451664"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729403"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Erstellen eines Importauftrags für den Azure Import/Export-Dienst
 
@@ -61,14 +61,14 @@ Vor dem Erstellen eines Importauftrags müssen Sie sich die Versandadresse besch
 
  Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen:
 
--   Ermitteln Sie den Namen des Standorts für Ihr Speicherkonto. Sie finden diesen Wert im Feld **Standort** im **Dashboard** für Ihr Speicherkonto im Azure-Portal, oder Sie können mit dem Vorgang [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) der Dienstverwaltungs-API eine Abfrage durchführen.
+-   Ermitteln Sie den Namen des Standorts für Ihr Speicherkonto. Sie finden diesen Wert im Feld **Standort** im **Dashboard** für Ihr Speicherkonto im Azure-Portal, oder Sie können mit dem Vorgang [Get Storage Account Properties](/rest/api/storagerp/storageaccounts) der Dienstverwaltungs-API eine Abfrage durchführen.
 
 -   Rufen Sie den Standort ab, der zum Verarbeiten des Speicherkontos verfügbar ist, indem Sie den Vorgang `Get Location` aufrufen.
 
 -   Wenn die `AlternateLocations`-Eigenschaft des Standorts den Standort selbst enthält, können Sie diesen verwenden. Rufen Sie andernfalls den Vorgang `Get Location` mit einem der anderen Standorte erneut auf. Es kann sein, dass der Originalstandort zu Wartungszwecken vorübergehend geschlossen ist.
 
 ## <a name="creating-the-import-job"></a>Erstellen des Importauftrags
-Rufen Sie zum Erstellen des Importauftrags den Vorgang [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) auf. Sie müssen die folgenden Informationen angeben:
+Rufen Sie zum Erstellen des Importauftrags den Vorgang [Put Job](/rest/api/storageimportexport/jobs) auf. Sie müssen die folgenden Informationen angeben:
 
 -   Einen Namen für den Auftrag
 

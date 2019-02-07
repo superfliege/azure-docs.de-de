@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: e38f90acf1ffb0b63379727287f7451f99b6dd0d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/01/2019
+ms.openlocfilehash: 494b9b5d8be804842406aac98d3b328c7848570d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460164"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663977"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
@@ -39,7 +39,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|3|4|5|6|
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|
 |Maximale Protokollgröße (GB)|307|307|307|461|461|461|
@@ -61,7 +61,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|168|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1536|3072|3072|3072|4096|4096|
 |Maximale Protokollgröße (GB)|461|922|922|922|1229|1229|
@@ -83,7 +83,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
 |Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maximale Protokollgröße (GB)|307|307|307|461|461|461|461|
@@ -105,7 +105,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
 |Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
@@ -140,8 +140,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 2)
@@ -162,8 +162,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 1)
@@ -172,8 +172,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|2|4|6|8|10|12|14|
-|Arbeitsspeicher (GB)|11|22|33|44|55|66|77|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Arbeitsspeicher (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maximale Protokollgröße (GB)|307|307|307|461|461|461|461|
@@ -184,7 +184,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
@@ -194,8 +194,8 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
 |V-Kerne|16|18|20|24|32|40|80|
-|Arbeitsspeicher (GB)|88|99|110|132|176|220|440|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|JA|
+|Arbeitsspeicher (GB)|81,6|91,8|102|122,4|163,2|204|408|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|15,768|18,139|20,51|25,252|37,936|52,22|131,64|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
@@ -206,7 +206,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|4|4|4|4|4|4|
-|Multi-AZ|JA|Ja|Ja|Ja|Ja|JA|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
@@ -219,7 +219,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Hardwaregeneration|4|4|4|4|4|4|
 |V-Kerne|1|2|4|8|16|24|
 |Arbeitsspeicher (GB)|7|14|28|56|112|168|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |
@@ -231,7 +231,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|2|2|2|2|2|2|
 |Multi-AZ|–|–|–|–|–|–|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|JA|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|7|7|7|7|7|7|
 |||
 
@@ -242,7 +242,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
 |V-Kerne|2|4|8|16|24|32|40|80|
 |Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163,2|204|408|
-|Columnstore-Unterstützung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
@@ -254,7 +254,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|2|2|2|2|2|2|2|2|
 |Multi-AZ|–|–|–|–|–|–|–|–|
-|Horizontale Leseskalierung|JA|Ja|Ja|Ja|Ja|Ja|Ja|JA|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher (Grenzwert der Vorschau)|7|7|7|7|7|7|7|7|
 |||
 

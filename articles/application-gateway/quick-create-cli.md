@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d14b8c9c752c9d41a42f092662c5f3aa88840dc5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0ba18b1ef0ba6c0a73759577c83ab80550baa6f8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157716"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754743"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Wenn Sie ein virtuelles Netzwerk erstellen, kann das Anwendungsgateway mit anderen Ressourcen kommunizieren. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und das andere für die VMs. Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.
 
-Erstellen Sie das virtuelle Netzwerk und das Subnetz mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Führen Sie [az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) aus, um die öffentliche IP-Adresse zu erstellen.
+Erstellen Sie das virtuelle Netzwerk und das Subnetz mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Führen Sie [az network public-ip create](/cli/azure/network/public-ip) aus, um die öffentliche IP-Adresse zu erstellen.
 
 ```azurecli-interactive
 az network vnet create \
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Erstellen Sie mit [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) ein Anwendungsgateway. Wenn Sie über die Azure CLI ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Azure fügt dann die privaten IP-Adressen der Netzwerkschnittstellen als Server im Back-End-Pool des Anwendungsgateways hinzu.
+Erstellen Sie mit [az network application-gateway create](/cli/azure/network/application-gateway) ein Anwendungsgateway. Wenn Sie über die Azure CLI ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Azure fügt dann die privaten IP-Adressen der Netzwerkschnittstellen als Server im Back-End-Pool des Anwendungsgateways hinzu.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')

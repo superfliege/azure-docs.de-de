@@ -1,8 +1,21 @@
 ---
-Titel: Schritt 1: Erstellen eines Arbeitsbereichs titleSuffix: Azure Machine Learning Studio – Beschreibung: Schritt 1 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Erfahren Sie, wie Sie einen neuen Azure Machine Learning Studio-Arbeitsbereich einrichten.
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 23.03.2017
+title: 'Schritt 1: Erstellen eines Arbeitsbereichs'
+titleSuffix: Azure Machine Learning Studio
+description: 'Schritt 1 der exemplarischen Vorgehensweise „Entwickeln einer prädiktiven Lösung“: Erfahren Sie, wie Sie einen neuen Azure Machine Learning Studio-Arbeitsbereich einrichten.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/23/2017
+ms.openlocfilehash: c018988eb36e395372b3d927732a1acbcb5c2fa9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509507"
 ---
 # <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs
 Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md).

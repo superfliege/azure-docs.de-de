@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: e988a3c86302b875f8393264279e4a65c45ba1eb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041236"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755661"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Schützen von vertraulichen Daten und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
 
@@ -81,7 +81,7 @@ Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skr
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-Datenbank
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wechseln Sie zu **Ressource erstellen** > **Datenbanken** > **SQL-Datenbank**.
-3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Eine ausführliche Anleitung zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-get-started-portal.md).
+3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Eine ausführliche Anleitung zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-single-database-get-started.md).
    
     ![Leere Datenbank erstellen](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 

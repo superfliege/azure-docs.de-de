@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9c6729abefc62aeae232fff5ea48619377630635
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197618"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750000"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI
 
@@ -79,7 +79,7 @@ Zum Erstellen eines Images muss die Zuordnung des virtuellen Computers aufgehobe
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Legen Sie schließlich den Status der VM mit [az vm generalize](/cli//azure/vm#generalize) auf „generalisiert“ fest, damit die Azure-Plattform weiß, dass die VM generalisiert wurde. Sie können nur anhand einer generalisierten VM ein Image erstellen.
+Legen Sie schließlich den Status der VM mit [az vm generalize](/cli//azure/vm) auf „generalisiert“ fest, damit die Azure-Plattform weiß, dass die VM generalisiert wurde. Sie können nur anhand einer generalisierten VM ein Image erstellen.
    
 ```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
@@ -87,7 +87,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 ### <a name="create-the-image"></a>Erstellen des Images
 
-Jetzt können Sie mit [az image create](/cli//azure/image#create) ein Image des virtuellen Computers erstellen. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* vom virtuellen Computer *myVM* erstellt.
+Jetzt können Sie mit [az image create](/cli//azure/image) ein Image des virtuellen Computers erstellen. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* vom virtuellen Computer *myVM* erstellt.
    
 ```azurecli-interactive 
 az image create \
@@ -98,7 +98,7 @@ az image create \
  
 ## <a name="create-vms-from-the-image"></a>Erstellen von VMs anhand des Images
 
-Nachdem Sie ein Image erstellt haben, können Sie mithilfe von [az vm create](/cli/azure/vm#az_vm_create) anhand des Images eine oder mehrere neue VMs erstellen. Im folgenden Beispiel wird eine VM namens *myVMfromImage* anhand des Images *myImage* erstellt.
+Nachdem Sie ein Image erstellt haben, können Sie mithilfe von [az vm create](/cli/azure/vm) anhand des Images eine oder mehrere neue VMs erstellen. Im folgenden Beispiel wird eine VM namens *myVMfromImage* anhand des Images *myImage* erstellt.
 
 ```azurecli-interactive 
 az vm create \

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/30/2019
-ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd156a10faf396778b76687b3666887a6a60876c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451868"
+ms.locfileid: "55505698"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Welche Machine Learning-Produkte bietet Microsoft?
 
@@ -27,7 +27,7 @@ In der Azure-Cloud stehen die folgenden Optionen für maschinelles Lernen zur Ve
 
 | Cloudoptionen | Funktionsbeschreibung | Gebotene Möglichkeiten |
 |-|-|-|
-| [Azure Machine Learning Service](#azure-machine-learning-services) | Verwalteter Clouddienst für ML  | Trainieren, Bereitstellen und Verwalten von Modellen in Azure mithilfe von Python und CLI |
+| [Azure Machine Learning Service](#azure-machine-learning-service) | Verwalteter Clouddienst für ML  | Trainieren, Bereitstellen und Verwalten von Modellen in Azure mithilfe von Python und CLI |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio) | Visuelle Drag-&-Drop-Oberfläche für ML | Erstellen von, Experimentieren mit und Bereitstellen von Modellen mithilfe von vorkonfigurierten Algorithmen (Python und R)|
 | [Azure Databricks](#azure-databricks) | Spark-basierte Analyseplattform | Erstellen und Bereitstellen von Modellen und Datenworkflows |
 | [Azure Cognitive Services](#azure-cognitive-services) | Azure-Dienste mit vorkonfigurierten KI- und ML-Modellen | Fügen Sie Ihren Apps auf einfache Weise intelligente Features hinzu |

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 11eec492501f7ead639aa928fe0ddaafb2f1d1bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 400784fbc34a877b91ad0bdc2203b1992a537555
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033671"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509965"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB: Erstellen einer Node.js-Anwendung mit der Gremlin-API
 
@@ -78,7 +78,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „app.js“.
 
 * Der Gremlin-Client wird erstellt.
 
-    ```nodejs
+    ```javascript
     const client = Gremlin.createClient(
         443, 
         config.endpoint, 
@@ -94,7 +94,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „app.js“.
 
 * Eine Reihe von Funktionen wird definiert, um verschiedene Gremlin-Vorgänge auszuführen. Hierzu zählt beispielsweise Folgendes:
 
-    ```nodejs
+    ```javascript
     function addVertex1(callback)
     {
         console.log('Running Add Vertex1'); 
@@ -108,7 +108,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „app.js“.
 
 * Jede Funktion führt eine Methode vom Typ `client.execute` mit einem Gremlin-Abfragezeichenfolgenparameter aus. Beispiel für die Ausführung von `g.V().count()`:
 
-    ```nodejs
+    ```javascript
     console.log('Running Count'); 
     client.execute("g.V().count()", { }, (err, results) => {
         if (err) return console.error(err);
@@ -119,7 +119,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „app.js“.
 
 * Am Ende der Datei werden dann alle Methoden mithilfe der Methode `async.waterfall()` aufgerufen. So werden sie nacheinander ausgeführt:
 
-    ```nodejs
+    ```javascript
     try{
         async.waterfall([
             dropGraph,
@@ -158,7 +158,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „app.js“.
 
 Hier sehen Sie ein Beispiel dafür, wie Ihre fertige Datei „config.js“ aussehen sollte:
 
-```nodejs
+```javascript
 var config = {}
 
 // Note that this must not have HTTPS or the port number

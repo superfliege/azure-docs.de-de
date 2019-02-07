@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 7fbbcefde583d7e464633d9011e591b4c9bf6f65
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2787353230408d6374db36eb5621f98285245364
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460317"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766519"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -201,7 +201,7 @@ Sie können die Überwachung mithilfe des [Azure-Portals](https://portal.azure.c
 
 * Informationen zum Aktivieren und Anzeigen von Speichermetrikdaten mithilfe von PowerShell finden Sie unter [Aktivieren von Azure Storage-Metriken und Anzeigen von Metrikdaten](storage-enable-and-view-metrics.md#how-to-enable-metrics-using-powershell).
 
-* Weitere Informationen zum Aktivieren und Abrufen von Speicherprotokolldaten mithilfe von PowerShell finden Sie unter [Aktivieren der Speicherprotokollierung mithilfe von PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#how-to-enable-storage-logging-using-powershell) und [Suchen nach den Protokolldaten der Speicherprotokollierung](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#finding-your-storage-logging-log-data).
+* Weitere Informationen zum Aktivieren und Abrufen von Speicherprotokolldaten mithilfe von PowerShell finden Sie unter [Aktivieren der Speicherprotokollierung mithilfe von PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) und [Suchen nach den Protokolldaten der Speicherprotokollierung](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
 
 * Ausführliche Informationen zur Verwendung von Speichermetriken und der Speicherprotokollierung zum Beheben von Speicherproblemen finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
 

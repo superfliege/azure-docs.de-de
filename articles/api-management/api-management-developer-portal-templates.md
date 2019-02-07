@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 90084f6c4fb270c34165bf12763109d9be2398aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446958"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733058"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
 
@@ -45,15 +45,15 @@ In der Vorlagenliste werden verschiedene Vorlagenkategorien für die unterschied
 
 ![Entwicklerportal: Vorlagen][api-management-templates-menu]
 
-Wenn Sie auf eine Vorlage klicken, wird die Seite im Entwicklerportal geöffnet, die über diese Vorlage angepasst werden kann. In diesem Beispiel wird die Vorlage **Produktliste** angezeigt. Über die Vorlage **Produktliste** werden die Inhalte des Bereichs festgelegt, der auf der Abbildung in einem roten Rechteck dargestellt ist. 
+Wenn Sie auf eine Vorlage klicken, wird die Seite im Entwicklerportal geöffnet, die über diese Vorlage angepasst werden kann. In diesem Beispiel wird die Vorlage **Produktliste** angezeigt. Über die Vorlage **Produktliste** werden die Inhalte des Bereichs festgelegt, der auf der Abbildung in einem roten Rechteck dargestellt ist.
 
 ![Vorlage „Produktliste“][api-management-developer-portal-templates-overview]
 
-Mit einigen Vorlagen, z.B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst. 
+Mit einigen Vorlagen, z.B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst.
 
 ![Vorlage „Benutzerprofil“][api-management-user-profile-templates]
 
-Der Editor der einzelnen Vorlagen im Entwicklerportal verfügt über zwei Abschnitte, die im unteren Bildschirmbereich angezeigt werden. Auf der linken Seite befindet sich der Bearbeitungsbereich für die Vorlage, auf der rechten Seite das Datenmodell für die Vorlage. 
+Der Editor der einzelnen Vorlagen im Entwicklerportal verfügt über zwei Abschnitte, die im unteren Bildschirmbereich angezeigt werden. Auf der linken Seite befindet sich der Bearbeitungsbereich für die Vorlage, auf der rechten Seite das Datenmodell für die Vorlage.
 
 Der Bearbeitungsbereich der Vorlage umfasst das Markup, um das Aussehen und Verhalten der jeweiligen Seite im Entwicklerportal festzulegen. Für das Markup der Vorlage wird die [DotLiquid](http://dotliquidmarkup.org/)-Syntax verwendet. Ein beliebter Editor für DotLiquid ist [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Änderungen, die während der Bearbeitung an der Vorlage vorgenommen werden, werden in Echtzeit im Browser angezeigt. Für Ihre Kunden sind diese Änderungen jedoch erst sichtbar, wenn Sie die Vorlage [speichern](#to-save-a-template) und [veröffentlichen](#to-publish-a-template).
 
@@ -118,7 +118,7 @@ Das Markup der Vorlage **Produktliste** verarbeitet die Daten, um die gewünscht
         <li>
             <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
             {{product.description}}
-        </li>    
+        </li>
     {% endfor %}
     </ul>
     <paging-control></paging-control>
@@ -209,10 +209,3 @@ Eine Referenz zu Vorlagen im Entwicklerportal, Zeichenfolgenressourcen, Symbolen
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
-
-
-
-
-
-

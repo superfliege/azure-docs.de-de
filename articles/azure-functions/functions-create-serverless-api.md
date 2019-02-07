@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001463"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698237"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Erstellen einer serverlosen API mit Azure Functions
 
@@ -53,7 +53,7 @@ Standardmäßig ist Ihre über HTTP ausgelöste Funktion so konfiguriert, dass s
 
 1. Klicken Sie auf **Speichern**.
 
-Unter [HTTP- und Webhookbindungen in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint) erfahren Sie mehr über das Anpassen von HTTP-Funktionen.
+Unter [HTTP- und Webhookbindungen in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook) erfahren Sie mehr über das Anpassen von HTTP-Funktionen.
 
 ### <a name="test-your-api"></a>Testen der API
 
@@ -176,7 +176,7 @@ Als Nächstes fügen Sie Ihre Modell-API hinzu. Ersetzen Sie die Datei „proxie
 }
 ```
 
-Damit wird ein neuer Proxy „GetUserByName“ ohne die Eigenschaft „backendUri“ hinzugefügt. Statt eine andere Ressource aufzurufen, wird die Standardantwort von Proxys geändert, indem die Antwort überschrieben wird. Das Überschreiben von Anforderungen und Antworten kann auch in Verbindung mit einer Back-End-URL genutzt werden. Dies ist besonders nützlich, wenn Proxyfunktionen in einem Legacysystem verwendet werden, wo Sie möglicherweise Header, Abfrageparameter usw. ändern müssen. Weitere Informationen zum Überschreiben von Anforderungen und Antworten finden Sie unter [Ändern von Anforderungen und Antworten in Proxys](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
+Damit wird ein neuer Proxy „GetUserByName“ ohne die Eigenschaft „backendUri“ hinzugefügt. Statt eine andere Ressource aufzurufen, wird die Standardantwort von Proxys geändert, indem die Antwort überschrieben wird. Das Überschreiben von Anforderungen und Antworten kann auch in Verbindung mit einer Back-End-URL genutzt werden. Dies ist besonders nützlich, wenn Proxyfunktionen in einem Legacysystem verwendet werden, wo Sie möglicherweise Header, Abfrageparameter usw. ändern müssen. Weitere Informationen zum Überschreiben von Anforderungen und Antworten finden Sie unter [Ändern von Anforderungen und Antworten in Proxys](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
 Testen Sie Ihre Modell-API durch Aufrufen des Endpunkts `<YourProxyApp>.azurewebsites.net/api/users/{username}` mit einem Browser oder Ihrem bevorzugten REST-Client. Sie müssen _{username}_ mit einem Zeichenfolgenwert eines Benutzernamens ersetzen.
 

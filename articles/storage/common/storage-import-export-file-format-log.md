@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454843"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697831"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  
@@ -22,7 +22,7 @@ Es gibt zwei Protokolle, die vom Import/Export-Dienst geschrieben werden können
   
 -   Das Fehlerprotokoll wird bei einem Fehler immer generiert.  
   
--   Das ausführliche Protokoll ist standardmäßig nicht aktiviert, kann jedoch aktiviert werden, indem Sie die Eigenschaft `EnableVerboseLog` für einen [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)- oder [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update)-Vorgang festlegen.  
+-   Das ausführliche Protokoll ist standardmäßig nicht aktiviert, kann jedoch aktiviert werden, indem Sie die Eigenschaft `EnableVerboseLog` für einen [Put Job](/rest/api/storageimportexport/jobs)- oder [Update Job Properties](/rest/api/storageimportexport/jobs)-Vorgang festlegen.  
   
 ## <a name="log-file-location"></a>Speicherort der Protokolldatei  
 Protokolle werden in Blockblobs in dem Container oder virtuellen Verzeichnis geschrieben, dass mit der Einstellung `ImportExportStatesPath` angegeben wird, die Sie für einen `Put Job`-Vorgang festlegen können. Der Speicherort, in den die Protokolle geschrieben werden, hängt davon ab, wie die Authentifizierung für den Auftrag angegeben ist und welcher Wert für `ImportExportStatesPath` festgelegt wurde. Die Authentifizierung für den Auftrag kann über einen Speicherkontoschlüssel oder eine Container-SAS (Shared Access Signature) angegeben werden.  
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind die möglichen Optionen dargestellt:
 |Container-SAS|Standardwert|Ein virtuelles Verzeichnis namens `waimportexport` (der Standardname) unter dem Container, der in der SAS angegeben ist.<br /><br /> Beispiel: Wenn die für den Auftrag angegebene SAS `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` ist, wäre der Protokollspeicherort `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`.|  
 |Container-SAS|Vom Benutzer angegebener Wert|Ein virtuelles vom Benutzer benanntes Verzeichnis unter dem Container, der in der SAS angegeben ist.<br /><br /> Beispiel: Wenn die für den Auftrag angegebene SAS `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` ist und das angegebene virtuelle Verzeichnis `mylogblobs` heißt, wäre der Protokollspeicherort `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Sie können die URL für das Fehlerprotokoll und das ausführliche Protokoll durch Aufrufen des [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgangs abrufen. Die Protokolle sind verfügbar, nachdem die Verarbeitung des Laufwerks abgeschlossen wurde.  
+Sie können die URL für das Fehlerprotokoll und das ausführliche Protokoll durch Aufrufen des [Get Job](/rest/api/storageimportexport/jobs)-Vorgangs abrufen. Die Protokolle sind verfügbar, nachdem die Verarbeitung des Laufwerks abgeschlossen wurde.  
   
 ## <a name="log-file-format"></a>Protokolldateiformat  
 Das Format für beide Protokolle ist identisch: ein Blob mit XML-Beschreibungen der Ereignisse, die beim Kopieren von Blobs zwischen der Festplatte und dem Kundenkonto aufgetreten sind.  

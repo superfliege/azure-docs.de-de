@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: e6d6c47726b21a241b379366bd1fde6c6b90e223
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 76a29ce05aab39d9460dcf068ec8a7f60d1e8fac
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462011"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753281"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie die Azure CLI die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
@@ -43,7 +43,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
 ## <a name="determine-boot-issues"></a>Bestimmen von Problemen beim Start
 Überprüfen Sie die serielle Ausgabe, um zu bestimmen, warum Ihre VM nicht ordnungsgemäß starten kann. Ein gängiges Beispiel ist ein ungültiger Eintrag in `/etc/fstab` oder eine zugrunde liegende virtuelle Festplatte, die gelöscht oder verschoben wird.
 
-Rufen Sie mit [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) die Startprotokolle ab. Im folgenden Beispiel wird die serielle Ausgabe der VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` aufgerufen:
+Rufen Sie mit [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics) die Startprotokolle ab. Im folgenden Beispiel wird die serielle Ausgabe der VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` aufgerufen:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
@@ -55,7 +55,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ## <a name="view-existing-virtual-hard-disk-details"></a>Anzeigen von Details vorhandener virtueller Festplatten
 Damit Sie Ihre virtuelle Festplatte (VHD) an einen anderen virtuellen Computer anfügen können, müssen Sie den URI des Betriebssystemdatenträgers ermitteln. 
 
-Informationen zu Ihrem virtuellen Computer können Sie mit [az vm show](/cli/azure/vm#az_vm_show) anzeigen. Verwenden Sie das Flag `--query` zum Extrahieren des URI auf den Betriebssystemdatenträger. Im folgenden Beispiel werden Datenträgerinformationen für den virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` abgerufen:
+Informationen zu Ihrem virtuellen Computer können Sie mit [az vm show](/cli/azure/vm) anzeigen. Verwenden Sie das Flag `--query` zum Extrahieren des URI auf den Betriebssystemdatenträger. Im folgenden Beispiel werden Datenträgerinformationen für den virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` abgerufen:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM \
@@ -81,7 +81,7 @@ Warten Sie, bis die VM gelöscht wurde, bevor Sie die virtuelle Festplatte einer
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Hinzufügen einer vorhandenen virtuellen Festplatte zu einer anderen VM
 Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Fügen Sie die vorhandene virtuelle Festplatte zu dieser Problembehebungs-VM hinzu, um den Inhalt des Datenträgers zu durchsuchen und zu bearbeiten. Durch diesen Prozess können Sie z.B. alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Wählen Sie eine andere Problembehebungs-VM aus, oder erstellen Sie eine.
 
-Fügen Sie mit [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_attach) die vorhandene virtuelle Festplatte an. Wenn Sie die vorhandene virtuelle Festplatte anfügen, geben Sie den URI des Datenträgers an, der im vorherigen Befehl `az vm show` abgerufen wurde. Das folgende Beispiel fügt eine vorhandene virtuelle Festplatte zur Problembehebungs-VM namens `myVMRecovery` in der Ressourcengruppe mit dem Namen `myResourceGroup` hinzu:
+Fügen Sie mit [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk) die vorhandene virtuelle Festplatte an. Wenn Sie die vorhandene virtuelle Festplatte anfügen, geben Sie den URI des Datenträgers an, der im vorherigen Befehl `az vm show` abgerufen wurde. Das folgende Beispiel fügt eine vorhandene virtuelle Festplatte zur Problembehebungs-VM namens `myVMRecovery` in der Ressourcengruppe mit dem Namen `myResourceGroup` hinzu:
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -147,7 +147,7 @@ Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen S
     sudo umount /dev/sdc1
     ```
 
-2. Trennen Sie die virtuelle Festplatte von der VM. Beenden Sie die SSH-Sitzung zu Ihrer Problembehebungs-VM. Listen Sie mit [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_list) die an die Problembehandlungs-VM angefügten Datenträger auf. Im folgenden Beispiel werden die Datenträger aufgelistet, die zur VM namens `myVMRecovery` in der Ressourcengruppe namens `myResourceGroup` hinzugefügt wurden:
+2. Trennen Sie die virtuelle Festplatte von der VM. Beenden Sie die SSH-Sitzung zu Ihrer Problembehebungs-VM. Listen Sie mit [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk) die an die Problembehandlungs-VM angefügten Datenträger auf. Im folgenden Beispiel werden die Datenträger aufgelistet, die zur VM namens `myVMRecovery` in der Ressourcengruppe namens `myResourceGroup` hinzugefügt wurden:
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -156,7 +156,7 @@ Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen S
 
     Notieren Sie den Namen Ihrer vorhandenen virtuellen Festplatte. Der Name einer Festplatte mit dem URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** lautet beispielsweise **myVHD**. 
 
-    Trennen Sie mit [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach) den Datenträger von Ihrem virtuellen Computer. Im folgenden Beispiel wird der Datenträger mit dem Namen `myVHD` vom virtuellen Computer `myVMRecovery` in der Ressourcengruppe `myResourceGroup` getrennt:
+    Trennen Sie mit [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk) den Datenträger von Ihrem virtuellen Computer. Im folgenden Beispiel wird der Datenträger mit dem Namen `myVHD` vom virtuellen Computer `myVMRecovery` in der Ressourcengruppe `myResourceGroup` getrennt:
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -169,7 +169,7 @@ Verwenden Sie zum Erstellen einer VM von Ihrer ursprünglichen virtuellen Festpl
 
 - https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
 
-Mit der Vorlage wird anhand des VHD-URI aus dem Befehl weiter oben ein virtueller Computer bereitgestellt. Stellen Sie mit [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) die Vorlage bereit. Geben Sie wie folgt den URI für Ihre ursprüngliche virtuelle Festplatte und dann den Betriebssystemtyp sowie die Größe und den Namen des virtuellen Computers an:
+Mit der Vorlage wird anhand des VHD-URI aus dem Befehl weiter oben ein virtueller Computer bereitgestellt. Stellen Sie mit [az group deployment create](/cli/azure/group/deployment) die Vorlage bereit. Geben Sie wie folgt den URI für Ihre ursprüngliche virtuelle Festplatte und dann den Betriebssystemtyp sowie die Größe und den Namen des virtuellen Computers an:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \
@@ -181,7 +181,7 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```
 
 ## <a name="re-enable-boot-diagnostics"></a>Erneutes Aktivieren der Startdiagnose
-Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Startdiagnoseeinstellungen möglicherweise nicht automatisch aktiviert. Aktivieren Sie mit [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) die Startdiagnose. Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens `myDeployedVM` in der Ressourcengruppe namens `myResourceGroup` aktiviert:
+Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Startdiagnoseeinstellungen möglicherweise nicht automatisch aktiviert. Aktivieren Sie mit [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics) die Startdiagnose. Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens `myDeployedVM` in der Ressourcengruppe namens `myResourceGroup` aktiviert:
 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM

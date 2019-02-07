@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 887134f7d790e5ed7e878a94caa9ef2fb9356ae3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 28d1387e5c1efd85ab0b944f7cffc4fe215eb73f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102154"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734486"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
 
@@ -36,7 +36,7 @@ In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- al
 
 Azure AD definiert zwei Arten von Berechtigungen:
 
-* **Delegierte Berechtigungen:** Werden von Apps verwendet, für die ein angemeldeter Benutzer vorhanden ist. Für diese Apps stimmt entweder der Benutzer oder ein Administrator den von der App angeforderten Berechtigungen zu. An die App wird die Berechtigung delegiert, als angemeldeter Benutzer zu fungieren, wenn eine API aufgerufen wird. Je nach API kann der Benutzer unter Umständen der API nicht direkt zustimmen und [benötigt stattdessen einen Administrator, der seine Zustimmung erteilt](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+* **Delegierte Berechtigungen:** Werden von Apps verwendet, für die ein angemeldeter Benutzer vorhanden ist. Für diese Apps stimmt entweder der Benutzer oder ein Administrator den von der App angeforderten Berechtigungen zu. An die App wird die Berechtigung delegiert, als angemeldeter Benutzer zu fungieren, wenn eine API aufgerufen wird. Je nach API kann der Benutzer unter Umständen der API nicht direkt zustimmen und [benötigt stattdessen einen Administrator, der seine Zustimmung erteilt](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 * **Anwendungsberechtigungen:** Werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps ein, die als Hintergrunddienste oder Daemons ausgeführt werden. Anwendungsberechtigungen können ihre [Zustimmung nur durch einen Administrator](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) erhalten, da sie normalerweise leistungsfähig sind und den Zugriff auf Daten über Benutzergrenzen hinweg oder auf Daten zulassen, die sonst nur für Administratoren zugänglich sind.
 
 Effektive Berechtigungen sind die Berechtigungen, über die Ihre App verfügt, wenn Anforderungen an eine API gesendet werden. 
