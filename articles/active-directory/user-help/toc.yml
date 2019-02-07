@@ -48,24 +48,25 @@ items:
   - name: Übersicht
     href: user-help-auth-app-overview.md
   - name: Herunterladen und Installieren der App
-    href: microsoft-authenticator-app-how-to.md
+    href: user-help-auth-app-download-install.md
   - name: Übersicht über das Hinzufügen von Konten
-    href: microsoft-authenticator-app-add-accounts-overview.md
+    href: user-help-auth-app-add-account-overview.md
     items:
     - name: Hinzufügen eines Geschäfts-, Schul- oder Unikontos
-      href: microsoft-authenticator-app-add-work-account.md
+      href: user-help-auth-app-add-work-school-account.md
     - name: Hinzufügen eines persönlichen Microsoft-Kontos
-      href: microsoft-authenticator-app-add-personal-account.md
+      href: user-help-auth-app-add-personal-ms-account.md
     - name: Hinzufügen eines nicht von Microsoft stammenden Kontos
-      href: microsoft-authenticator-app-add-non-microsoft-account.md
+      href: user-help-auth-app-add-non-ms-account.md
     - name: Manuelles Hinzufügen eines Kontos
-      href: microsoft-authenticator-app-add-account-manual.md
+      href: user-help-auth-app-add-account-manual.md
+    expanded: true
   - name: Anmelden mit der Microsoft Authenticator-App
-    href: microsoft-authenticator-app-phone-signin-faq.md
+    href: user-help-auth-app-sign-in.md
   - name: Sichern und Wiederherstellen Ihrer Konten
-    href: microsoft-authenticator-app-backup-and-recovery.md
+    href: user-help-auth-app-backup-recovery.md
   - name: Häufig gestellte Fragen
-    href: microsoft-authenticator-app-faq.md
+    href: user-help-auth-app-faq.md
 - name: Hilfe zum Portal „Meine Apps“
   items:
   - name: Übersicht
@@ -84,9 +85,9 @@ items:
     href: user-help-register-device-on-network.md
   - name: Problembehandlung bei der Meldung „Zugriff nicht möglich“
     href: user-help-device-remediation.md
-ms.openlocfilehash: ed41c40adc0d09d60f43cf3826c6bb84a464c31f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755270"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816049"
