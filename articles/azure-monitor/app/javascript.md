@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 952dd97a06718d0c29f9c6f5abc79da592e6f3ae
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117809"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661512"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie [Application Insights](../../azure-monitor/app/app-insights-overview.md) Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen. Und indem Sie Ablaufverfolgungsaufrufe in JavaScript-Code einfügen, können Sie nachverfolgen, wie die verschiedenen Funktionen Ihre Webseitenanwendung genutzt werden.
@@ -206,7 +206,7 @@ Wählen Sie ein Ereignis, um weitere Details anzuzeigen. Klicken Sie auf der Det
 > 
 > 
 
-Sie können auch die leistungsfähige [Log Analytics-Abfragesprache](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) verwenden, um Seitenaufrufe zu durchsuchen.
+Sie können auch die leistungsfähige [Log Analytics-Abfragesprache](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour) verwenden, um Seitenaufrufe zu durchsuchen.
 
 ### <a name="page-view-properties"></a>Eigenschaften von Seitenansichten
 * **Dauer der Seitenansicht** 

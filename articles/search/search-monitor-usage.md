@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ed084520e092802ffa2a42e8a0c664ec09c4cbb7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093239"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745961"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
@@ -65,7 +65,7 @@ In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und H
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Blobcontainer protokolliert und in JSON-Dateien gespeichert. Verwenden Sie einen JSON-Editor, um die Dateiinhalte anzuzeigen.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den in diesem Artikel beschriebenen Schemas. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
 
-Log Analytics und Blob Storage sind als kostenloser gemeinsamer Dienst verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/ricing/details/monitor/).)
+Log Analytics und Blob Storage sind als kostenloser gemeinsamer Dienst verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).)
 
 Im nächsten Abschnitt werden die Schritte zum Aktivieren und Verwenden von Azure Blob Storage zum Erfassen von und Zugreifen auf Protokolldaten erläutert, die durch Azure Search-Vorgänge erstellt werden.
 
