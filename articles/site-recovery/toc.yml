@@ -424,6 +424,8 @@ items:
       href: site-recovery-failover-to-azure-troubleshoot.md
     - name: Problembehandlung beim erneuten Schutz und Failback von virtuellen VMware-Computern
       href: vmware-azure-troubleshoot-failback-reprotect.md
+    - name: Behandlung von Problemen beim Upgrade von Microsoft Azure Site Recovery-Anbietern
+      href: vmware-azure-troubleshoot-upgrade-failures.md
   - name: Hyper-V
     items:
     - name: Problembehandlung für die Hyper-V-Replikation
@@ -458,9 +460,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 89271625d4c05dd7e639cc3fef1ebfe97b710f03
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0b9c7300737ca91508111de9e414249441ba0916
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821796"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980212"
