@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245268"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809247"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Bereitstellen des Anwendungszugriffs auf Azure Stack
 
@@ -38,10 +38,10 @@ Der Ansatz mit Dienstprinzipalen ist dem Ausführen der App mit Ihren Anmeldeinf
 
 Je nachdem, wie Sie Azure Stack bereitgestellt haben, beginnen Sie mit dem Erstellen eines Dienstprinzipals. Dieses Dokument beschreibt das Erstellen eines Dienstprinzipals für:
 
-- [Azure Active Directory (Azure AD):](#create-service-principal-for-azure-ad) Azure AD ist ein mehrinstanzenfähiger cloudbasierter Verzeichnis- und Identitätsverwaltungsdienst. Sie können Azure AD mit einem verbundenen Azure Stack verwenden.
-- [Active Directory-Verbunddienste (AD FS)](#create-service-principal-for-ad-fs). AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Sie können AD FS sowohl mit verbundenen als auch mit getrennten Azure Stack-Instanzen verwenden.
+- Azure Active Directory (Azure AD): Azure AD ist ein mehrinstanzenfähiger cloudbasierter Verzeichnis- und Identitätsverwaltungsdienst. Sie können Azure AD mit einem verbundenen Azure Stack verwenden.
+- Active Directory-Verbunddienste (AD FS). AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Sie können AD FS sowohl mit verbundenen als auch mit getrennten Azure Stack-Instanzen verwenden.
 
-Nachdem Sie den Dienstprinzipal erstellt haben, können Sie einige Schritte ausführen, die für AD FS und Azure Active Directory gleich sind, um für die Rolle [Berechtigungen zu delegieren](#assign-role-to-service-principal).
+Nachdem Sie den Dienstprinzipal erstellt haben, können Sie einige Schritte ausführen, die für AD FS und Azure Active Directory gleich sind, um für die Rolle Berechtigungen zu delegieren.
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Verwalten des Dienstprinzipals für Azure AD
 
@@ -63,7 +63,7 @@ Beim programmgesteuerten Anmelden verwenden Sie die ID für Ihre Anwendung und e
 
 1. Wählen Sie in Active Directory unter **App Registrierungen** Ihre Anwendung aus.
 
-2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. Die Anwendungen im Abschnitt [Beispielanwendungen](#sample-applications) verweisen auf diesen Wert als Client-ID.
+2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. Die Anwendungen im Abschnitt „Beispielanwendungen“ verweisen auf diesen Wert als Client-ID.
 
      ![Client-ID](./media/azure-stack-create-service-principal/image12.png)
 3. Klicken Sie zum Generieren eines Authentifizierungsschlüssels für eine Web-App/API auf **Einstellungen** > **Schlüssel**. 
@@ -74,7 +74,7 @@ Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopi
 
 ![Gespeicherter Schlüssel](./media/azure-stack-create-service-principal/image15.png)
 
-Weisen Sie nach Abschluss des Vorgangs [Ihrer Anwendung eine Rolle zu](#assign-role-to-service-principal).
+Nach Abschluss des Vorgangs können Sie Ihrer Anwendung eine Rolle zuweisen.
 
 ## <a name="manage-service-principal-for-ad-fs"></a>Verwalten eines Dienstprinzipals für AD FS
 

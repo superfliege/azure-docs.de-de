@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 419b7c436e79b00d8f49d9e3801886f4e37e2c32
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: ff28fbb52b33308967051a37fdaa3c6c273fc282
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241643"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816090"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrieren einer externen Überwachungslösung mit Azure Stack
 
@@ -38,6 +38,9 @@ Jede Azure Stack-Lösung wird mit einem Hardwarelebenszyklushost ausgeliefert. A
 Das folgende Diagramm zeigt den Datenverkehrsfluss zwischen einem integrierten Azure Stack-System, dem Hardwarelebenszyklushost, einer externen Überwachungslösung und einem externen Ticketausstellungs-/Datensammlungssystem.
 
 ![Das Diagramm zeigt den Datenverkehr zwischen Azure Stack, der Überwachungs- und der Ticketausstellungslösung.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
+
+> [!NOTE]
+> Die direkte Integration externer Überwachung mit physischen Servern und Netzwerkgeräten ist nicht zulässig und wird aktiv durch Zugriffssteuerungslisten (ACLs) blockiert. 
 
 In diesem Artikel wird beschrieben, wie Sie Azure Stack in externe Überwachungslösungen wie System Center Operations Manager und Nagios integrieren können. Außerdem wird beschrieben, wie Sie mithilfe von PowerShell oder über REST-API-Aufrufe programmgesteuert mit Warnungen arbeiten können.
 

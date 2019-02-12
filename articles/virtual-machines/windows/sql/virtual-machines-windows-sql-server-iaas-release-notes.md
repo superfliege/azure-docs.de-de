@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2018
 ms.author: mathoma
-ms.openlocfilehash: e3f44181ca1a5ea64815aadf52aa7ea792a21416
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7c854759e9a0ba13b698dd07dabb25100895bc85
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358574"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766876"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server auf Azure-VMs – Versionshinweise
 
@@ -30,9 +30,9 @@ Mit Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 
 | **Änderung** | Details |
 | --- | --- |
-| **Neuer Ressourcenanbieter für SQL-Clustergruppen** | Es gibt ein neuen Ressourcenanbieter (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroup), der die Metadaten über den Windows-Failovercluster definiert. Ein Einbinden einer SQL Server-VM in die *SqlVirtualMachineGroup* startet den Windows-Failovercluster-Dienst und verknüpft den virtuellen Computer mit dem Cluster.  |
+| **Neuer Ressourcenanbieter für SQL-Clustergruppen** | Es gibt ein neuen Ressourcenanbieter (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups), der die Metadaten über den Windows-Failovercluster definiert. Ein Einbinden einer SQL Server-VM in die *SqlVirtualMachineGroups* startet den Windows-Failovercluster-Dienst und verknüpft den virtuellen Computer mit dem Cluster.  |
 |**Automatisieren des Einrichtens einer Verfügbarkeitsgruppenbereitstellung mit Azure-Schnellstartvorlagen** |Es ist jetzt möglich, mit zwei Azure-Schnellstartvorlagen den Windows-Failovercluster zu erstellen, SQL Server-VMs in diesen einzubinden, den Listener zu erstellen und den internen Load Balancer zu konfigurieren. Weitere Informationen finden Sie unter [Erstellen von WSFC und Listener sowie Konfigurieren von ILB für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage](virtual-machines-windows-sql-availability-group-quickstart-template.md). | 
-| **Automatische Registrierung beim SQL Server-Ressourcenanbieter** | SQL Server-VMs, die nach diesem Monat bereitgestellt werden, werden automatisch beim neuen SQL Server-Ressourcenanbieter registriert. SQL Server-VMs, die vor diesem Monat bereitgestellt wurden, müssen weiterhin manuell registriert werden. Weitere Informationen finden Sie unter [Registrieren vorhandener SQL-VMs beim neuen Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-new-resource-provider).|
+| **Automatische Registrierung beim SQL Server-Ressourcenanbieter** | SQL Server-VMs, die nach diesem Monat bereitgestellt werden, werden automatisch beim neuen SQL Server-Ressourcenanbieter registriert. SQL Server-VMs, die vor diesem Monat bereitgestellt wurden, müssen weiterhin manuell registriert werden. Weitere Informationen finden Sie unter [Registrieren vorhandener SQL-VMs beim neuen Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider).|
 | &nbsp; | &nbsp; |
 
 
@@ -40,7 +40,7 @@ Mit Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 
 | **Änderung** | Details |
 | --- | --- |
-| **Neuer SQL-VM-Ressourcenanbieter** |  Es gibt einen neuen Ressourcenanbieter für SQL Server-VMs (Microsoft.SqlVirtualMachine), der eine bessere Verwaltung Ihrer SQL Server-VM ermöglicht. Weitere Informationen zum Registrieren Ihrer VM finden Sie unter [Registrieren vorhandener SQL-VMs beim neuen Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-new-resource-provider). |
+| **Neuer SQL-VM-Ressourcenanbieter** |  Es gibt einen neuen Ressourcenanbieter für SQL Server-VMs (Microsoft.SqlVirtualMachine), der eine bessere Verwaltung Ihrer SQL Server-VM ermöglicht. Weitere Informationen zum Registrieren Ihrer VM finden Sie unter [Registrieren vorhandener SQL-VMs beim neuen Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider). |
 |**Wechsel des Lizenzierungsmodells** |Sie können nun mit der Azure CLI oder mit PowerShell für Ihre SQL-VM zwischen dem nutzungsbasierten Modell und dem BYOL-Modell (Bring-Your-Own-License) wechseln. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md). | 
 | &nbsp; | &nbsp; |
 

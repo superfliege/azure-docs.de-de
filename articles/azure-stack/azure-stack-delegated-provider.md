@@ -15,12 +15,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 1b22d465df12d313e05d3fd93437b461ef939ee7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b7a12494585cedd8f75fd9061f8eb29a0b5dc319
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242483"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747423"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegieren von Angeboten in Azure Stack
 
@@ -76,6 +76,9 @@ Für diese exemplarische Vorgehensweise benötigen Sie zusätzlich zu Ihrem Azur
 | --- | --- |
 | Delegierter Anbieter |Benutzer |
 | Benutzer |Benutzer |
+
+ > [!NOTE]
+   > Im Falle eines CSP-Handelspartners ist es zum Erstellen dieses delegierte Anbieters erforderlich, dass sich diese Benutzer im Mandantenverzeichnis (des Benutzer-AAD) befinden. Der Azure Stack-Betreiber muss [zuerst ein Onboarding](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-enable-multitenancy) dieses Mandanten-AAD durchführen und dann die Nutzung und Abrechnung gemäß [diesen Schritten](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-csp-howto-register-tenants) konfigurieren.
 
 ### <a name="identify-the-delegated-provider"></a>Identifizieren des delegierten Anbieters
 

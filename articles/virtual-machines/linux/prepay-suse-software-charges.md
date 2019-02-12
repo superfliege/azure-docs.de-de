@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/18/2019
 ms.author: yashar
-ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582189"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745978"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Vorauszahlen für SUSE-Softwarepläne aus Azure-Reservierungen
 
@@ -27,7 +27,7 @@ Bezahlen Sie Ihre SUSE-Nutzung im Voraus, und sparen Sie Geld gegenüber den Kos
 Sie können SUSE-Softwarepläne im Azure-Portal erwerben. Gehen Sie wie folgt vor, um einen Plan zu erwerben:
 
 - Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Zahlung zugeordnet sein.
-- In Enterprise-Abonnements müssen Reservierungskäufe im [EA-Portal](https://ea.azure.com) aktiviert werden.
+- Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
 - Für das Cloud Solution Provider-Programm (CSP) können die Administratoren oder Vertriebsmitarbeiter die SUSE-Pläne erwerben.
 
 ## <a name="buy-a-suse-software-plan"></a>Erwerben eines SUSE-Softwareplans
@@ -39,8 +39,8 @@ Sie können SUSE-Softwarepläne im Azure-Portal erwerben. Gehen Sie wie folgt vo
     | Feld      | BESCHREIBUNG|
     |:------------|:--------------|
     |NAME        |Der Name dieses Erwerbs.|
-    |Abonnement|Das zum Bezahlen dieses Plans verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Als Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummer: MS-AZR-0017P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummer: MS-AZR-0003P) festgelegt werden. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|
-    |Bereich       |Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>Einzelabonnement: Der Rabatt für den Plan wird auf die SUSE Linux-Nutzung in diesem Abonnement angewendet. </li><li>Freigegeben: Der Rabatt für den Plan wird auf die SUSE Linux-Nutzung in jedem Abonnement innerhalb des Abrechnungskontexts angewendet. Für Enterprise-Kunden stellt der freigegebene Bereich die Reservierung dar und umfasst alle Abonnements (mit Ausnahme von Dev/Test-Abonnements) innerhalb der Reservierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</li></ul>|
+    |Abonnement|Das zum Bezahlen dieses Plans verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|
+    |Bereich       |Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>Einzelabonnement: Der Rabatt für den Plan wird auf die SUSE Linux-Nutzung in diesem Abonnement angewendet. </li><li>Freigegeben: Der Rabatt für den Plan wird auf die SUSE Linux-Nutzung in jedem Abonnement innerhalb des Abrechnungskontexts angewendet. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</li></ul>|
     |Softwareplan     |Wählen Sie den SUSE Linux-Plan aus. Wenn Sie Hilfe beim Ermitteln des zu erwerbenden Plans benötigen, lesen Sie [Grundlegendes zur Anwendung des Rabatts für Reservierungen von SUSE Linux Enterprise-Software](../../billing/billing-understand-suse-reservation-charges.md).|
     |Größe des virtuellen Computers     |Die SUSE Linux-Preise sind von der Anzahl der vCPUs auf dem VM abhängig. Wählen Sie die Option aus, die der Anzahl der vCPUs auf Ihren virtuellen SUSE Linux-Computern entspricht.|
     |Begriff        |Ein Jahr oder drei Jahre|

@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: d8140966f3ba8674938a4e21b0990371390d3516
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071031"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813788"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Unter Windows wird beim Starten eines virtuellen Azure-Computers der Bluescreenfehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST) angezeigt.
 Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST), der unter Umständen beim Starten eines virtuellen Windows-Computers in Microsoft Azure angezeigt wird. Er enthält Schritte zum Beheben des Problems. 
 
 > [!NOTE] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel beschreibt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel beschreibt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptom"></a>Symptom 
 
 Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Startscreenshots unter [Startdiagnose](./boot-diagnostics.md) wird eine der folgenden Fehlermeldungen auf einem Bluescreen angezeigt:
 
-- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit http://windows.com/stopcode. If you call a support person, give them this info: Stop code: CRITICAL SERVICE FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Sie können ihn neu starten. Weitere Informationen zu diesem Problem und mögliche Fehlerbehebungen finden Sie unter http://windows.com/stopcode. Sollten Sie sich mit dem Support in Verbindung setzen, geben Sie folgende Info an: Stillstandcode: FEHLER BEIM KRITISCHEN DIENST.) 
-- „Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you. If you'd like to know more, you can search online later for this error: CRITICAL_SERVICE_FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Wir sammeln Fehlerinformationen und starten dann den PC für Sie neu. Wenn Sie weitere Informationen benötigen, können Sie später online nach dem folgenden Fehler suchen: CRITICAL_SERVICE_FAILED.)
+- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit http://windows.com/stopcode. If you call a support person, give them this info: Stop code: CRITICAL SERVICE FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Sie können ihn neu starten. Weitere Informationen zu diesem Problem und mögliche Fehlerbehebungen finden Sie unter http://windows.com/stopcode. Sollten Sie sich mit dem Support in Verbindung setzen, geben Sie folgende Info an:  Stillstandcode:  FEHLER BEIM KRITISCHEN DIENST.) 
+- „Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you. If you'd like to know more, you can search online later for this error: CRITICAL_SERVICE_FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Wir sammeln Fehlerinformationen und starten dann den PC für Sie neu. Wenn Sie weitere Informationen benötigen, können Sie später online nach dem folgenden Fehler suchen:  CRITICAL_SERVICE_FAILED.)
 
 ## <a name="cause"></a>Ursache
 
@@ -93,7 +93,7 @@ Um die Abbildprotokolle und die serielle Konsole zu aktivieren, führen Sie das 
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn dann erneut an den betroffenen virtuellen Computer an.](troubleshoot-recovery-disks-portal-windows.md) Der virtuelle Computer wird im abgesicherten Modus gestartet. Tritt der Fehler weiterhin auf, fahren Sie mit dem [optionalen Schritt](#optional-analysis-the-dump-logs-in-boot-debug-mode) fort.
+2. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn dann erneut an den betroffenen virtuellen Computer an.](troubleshoot-recovery-disks-portal-windows.md) Der virtuelle Computer wird im abgesicherten Modus gestartet. Tritt der Fehler weiterhin auf, fahren Sie mit dem optionalen Schritt fort.
 3. Öffnen Sie das Feld **Ausführen**,und führen Sie die **Überprüfung** aus, um den Treiberüberprüfungs-Manager zu starten.
 4. Aktivieren Sie **Nicht signierte Treiber automatisch wählen**, und klicken Sie dann auf **Weiter**.
 5. Daraufhin wird die Liste der unsignierten Treiberdateien ausgegeben. Notieren Sie die Dateinamen.
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte aus, um die Abbildprotokolle selbst zu analys
 9. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn dann erneut an den betroffenen virtuellen Computer an.](troubleshoot-recovery-disks-portal-windows.md)
 10. Starten Sie den virtuellen Computer, um festzustellen, ob eine Absturzabbildanalyse angezeigt wird. Suchen Sie die Datei, die nicht geladen wurde. Sie müssen diese Datei durch eine Datei vom funktionierenden virtuellen Computer ersetzen. 
 
-    Nachfolgend sehen Sie ein Beispiel für die Absturzabbildanalyse. Sie sehen, dass der **FEHLER** in „filecrypt.sys“ aufgetreten ist: FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys.
+    Nachfolgend sehen Sie ein Beispiel für die Absturzabbildanalyse. Sie sehen, dass der **FEHLER** in „filecrypt.sys“ aufgetreten ist:  „FAILURE_BUCKET_ID:  0x5A_c0000428_IMAGE_filecrypt.sys“.
 
     ```
     kd> !analyze -v 

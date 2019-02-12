@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237850"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752295"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes in Azure Stack befindet sich in der Vorschauphase.
+> Kubernetes in Azure Stack befindet sich in der Vorschauphase. Das Szenario mit nicht verbundenem Azure Stack wird von der Preview zurzeit nicht unterstützt.
 
 Der folgende Artikel beschäftigt sich mit der Problembehandlung Ihres Kubernetes-Clusters. Sie können die Bereitstellungswarnung untersuchen und den Status Ihrer Bereitstellung anhand der für die Bereitstellung erforderlichen Elemente überprüfen. Sie müssen möglicherweise die Bereitstellungsprotokolle von Azure Stack oder den Linux-VMs erfassen, die Kubernetes hosten. Darüber hinaus müssen Sie möglicherweise mit Ihrem Azure Stack-Administrator zusammenarbeiten, um Protokolle von einem Verwaltungsendpunkt abzurufen.
 
@@ -53,7 +53,7 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 
 2. Erstellen Sie die Bereitstellungs-VM und die benutzerdefinierte Skripterweiterung.
     -  Erstellen Sie die Linux-Bereitstellungs-VM mit dem Marketplace-Linux-Image **Ubuntu Server 16.04-LTS**.
-    -  Herunterladen Sie die benutzerdefinierte Skripterweiterung aus Marketplace herunter und führen Sie sie aus. Das Skript ist das **Benutzerdefinierte Skript für Linux 2.0**.
+    -  Laden Sie die benutzerdefinierte Skripterweiterung aus Marketplace herunter, und führen Sie sie aus. Das Skript ist das **Benutzerdefinierte Skript für Linux 2.0**.
     -  Führen Sie das benutzerdefinierte DVM-Skript aus. Das Skript führt folgende Aufgaben aus:
         1. Ruft den Katalogendpunkt aus dem Azure Resource Manager-Metadatenendpunkt ab.
         2. Ruft die Active Directory-Ressourcen-ID aus dem Azure Resource Manager-Metadatenendpunkt ab.
@@ -61,7 +61,7 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
         4. Stellt die ACS-Engine für den Kubernetes-Cluster bereit und speichert das Azure Stack-Cloudprofil in `/etc/kubernetes/azurestackcloud.json`.
 3. Erstellen Sie die Master-VMs.
 
-4. Laden Sie die Skripterweiterungen des Kunden herunter und führen Sie sie aus.
+4. Laden Sie die benutzerdefinierten Skripterweiterungen herunter, und führen Sie sie aus.
 
 5. Führen Sie das Masterskript aus.
 
@@ -75,7 +75,7 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
         3. Starten des Schedulerdiensts.
 6. Führen Sie die Agent-VMs aus.
 
-7. Laden Sie die Skripterweiterung des Kunden herunter und führen Sie sie aus.
+7. Laden Sie die benutzerdefinierte Skripterweiterung herunter, und führen Sie sie aus.
 
 7. Führen Sie das Agent-Skript aus. Das benutzerdefinierte Agent-Skript führt folgende Aufgaben aus:
     - Installiert etcd.

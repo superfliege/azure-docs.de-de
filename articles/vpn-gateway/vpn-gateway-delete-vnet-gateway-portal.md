@@ -1,5 +1,5 @@
 ---
-title: 'Löschen eines Gateways des virtuellen Netzwerks: Azure-Portal: Resource Manager | Microsoft-Dokumentation'
+title: 'Löschen eines Gateways für virtuelle Netzwerke über das Portal Azure-Portal: Resource Manager | Microsoft-Dokumentation'
 description: Löschen Sie ein Gateway des virtuellen Netzwerks über das Azure-Portal im Resource Manager-Bereitstellungsmodell.
 services: vpn-gateway
 documentationcenter: na
@@ -7,12 +7,12 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 78af43510e5fc2bed38e109a546944d4a649241c
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d0c54a00afd723b68bedc0a305cfb0f16edf4ac9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984110"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816253"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Löschen eines Gateways für virtuelle Netzwerke über das Portal
 
@@ -60,5 +60,5 @@ Zu diesem Zeitpunkt wird das virtuelle Netzwerkgateway gelöscht. In den nächst
 Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 
 1. Suchen Sie in **Alle Ressourcen** nach der Ressourcengruppe, und klicken Sie darauf, um das Blatt zu öffnen.
-2. Klicken Sie auf **Löschen**. Auf dem Blatt „Löschen“ werden die betroffenen Ressourcen angezeigt. Vergewissern Sie sich, dass alle diese Ressourcen gelöscht werden sollen. Führen Sie andernfalls die Schritte unter [Löschen eines VPN Gateway](#deletegw) am Anfang dieses Artikels aus.
+2. Klicken Sie auf **Löschen**. Auf dem Blatt „Löschen“ werden die betroffenen Ressourcen angezeigt. Vergewissern Sie sich, dass alle diese Ressourcen gelöscht werden sollen. Führen Sie andernfalls die Schritte unter „Löschen eines VPN Gateway“ am Anfang dieses Artikels aus.
 3. Geben Sie zum Fortfahren den Namen der zu löschenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.

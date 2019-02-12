@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 8fc2c487a374a34cd9a7642a45fd59c04061b398
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51252004"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817817"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Erstellen und Installieren von Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung
 
@@ -98,10 +98,10 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
 
 2. Navigieren Sie auf dem Mac zur Datei **mobileconfig**.
 
-   ![Speicherort der Datei „mobilconfig“](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
+   ![Speicherort der Datei „mobileconfig“](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
 
 3. Optionaler Schritt: Wenn Sie ein benutzerdefiniertes DNS angeben möchten, fügen Sie der Datei **mobileconfig** die folgenden Zeilen hinzu:
-```
+```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -260,7 +260,7 @@ Führen Sie die folgenden Schritte aus, um den nativen VPN-Client auf dem Mac f�
 
 Wenn Sie einen anderen Authentifizierungstyp (etwa OTP) oder ein anderes Authentifizierungsprotokoll (etwa PEAP-MSCHAPv2 anstelle von EAP-MSCHAPv2) verwenden möchten, müssen Sie ein eigenes VPN-Clientkonfigurationsprofil erstellen. Für die Erstellung des Profils benötigen Sie Informationen wie die IP-Adresse des Gateways für virtuelle Netzwerke, den Tunneltyp und Routen mit geteilten Tunneln. Diese Informationen können mit den folgenden Schritten abgerufen werden:
 
-1. Generieren Sie mit dem Cmdlet `Get-AzureRmVpnClientConfiguration` die VPN-Clientkonfiguration für EapMSChapv2. Anweisungen hierzu finden Sie in [diesem Abschnitt](#ccradius) des Artikels.
+1. Generieren Sie mit dem Cmdlet `Get-AzureRmVpnClientConfiguration` die VPN-Clientkonfiguration für EapMSChapv2. Anweisungen hierzu finden Sie in diesem Abschnitt des Artikels.
 
 2. Entzippen Sie die Datei „VpnClientConfiguration.zip“, und suchen Sie den Ordner **GenericDevice**. Ignorieren Sie die Ordner mit den Windows-Installationsprogrammen für 64-Bit- und 32-Bit-Architekturen.
  

@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurieren von BGP auf Azure VPN Gateways: Resource Manager: PowerShell | Microsoft-Dokumentation'
+title: 'Konfigurieren von BGP für Azure-VPN-Gateways: Resource Manager: PowerShell | Microsoft-Dokumentation'
 description: Dieser Artikel führt Sie durch die Konfiguration von BGP mit Azure VPN Gateways mithilfe von Azure Resource Manager-Manager und PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b48382c8f429576a3d15c624c9c9028cffec3872
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632584"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813023"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell
 Dieser Artikel beschreibt die Schritte zum Aktivieren von BGP auf einer standortübergreifenden Site-to-Site (S2)-VPN-Verbindung und einer VNet-to-VNet-Verbindung mithilfe des Resource Manager-Bereitstellungsmodells und PowerShell.
@@ -35,7 +35,7 @@ Unter [Übersicht über BGP mit Azure-VPN-Gateways](vpn-gateway-bgp-overview.md)
 In diesem Artikel erfahren Sie, wie Sie folgende Aufgaben ausführen:
 
 * [Teil 1: Aktivieren von BGP auf Ihrem Azure VPN Gateway](#enablebgp)
-* [Teil 2: Herstellen einer standortübergreifenden Verbindung mit BGP](#crossprembgp)
+* Teil 2: Herstellen einer standortübergreifenden Verbindung mit BGP
 * [Teil 3: Herstellen einer VNet-to-VNet-Verbindung mit BGP](#v2vbgp)
 
 Jeder Teil der Anweisungen ist ein zentraler Baustein zum Aktivieren von BGP in Ihrer Netzwerkverbindung. Wenn Sie alle drei Teile abgeschlossen haben, erstellen Sie die Topologie wie im folgenden Diagramm:
@@ -174,7 +174,7 @@ Stellen Sie sicher, dass die Verbindung mit Abonnement 1 noch besteht, bevor Si
 
 #### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Erstellen des lokalen Netzwerkgateways für Site5
 
-Erstellen Sie vor dem lokalen Netzwerkgateway zunächst die Ressourcengruppe (sofern noch nicht geschehen). Beachten Sie die zwei zusätzlichen Parameter für das lokale Netzwerkgateway: Asn und BgpPeerAddress.
+Erstellen Sie vor dem lokalen Netzwerkgateway zunächst die Ressourcengruppe (sofern noch nicht geschehen). Beachten Sie die beiden zusätzlichen Parameter für das lokale Netzwerkgateway: ASN und BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5

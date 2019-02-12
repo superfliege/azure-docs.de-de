@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452451"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817325"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
@@ -50,8 +50,8 @@ Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen benötig
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Behandlungsmöglichkeiten für RDP-Probleme
 Probleme mit virtuellen Computern, die unter Verwendung des Resource Manager-Bereitstellungsmodells erstellt wurden, können auf folgende Arten behandelt werden:
 
-* [Azure-Portal](#using-the-azure-portal): Ermöglicht das schnelle Zurücksetzen der RDP-Konfiguration oder Benutzeranmeldeinformationen, falls die Azure-Tools nicht installiert sind.
-* [Azure PowerShell](#using-azure-powershell): Benutzer, die mit der PowerShell-Eingabeaufforderung vertraut sind, können RDP-Konfiguration oder Benutzeranmeldeinformationen schnell mithilfe der Azure PowerShell-Cmdlets zurücksetzen.
+* Azure-Portal: Ermöglicht das schnelle Zurücksetzen der RDP-Konfiguration oder Benutzeranmeldeinformationen, falls die Azure-Tools nicht installiert sind.
+* Azure PowerShell: Benutzer, die mit der PowerShell-Eingabeaufforderung vertraut sind, können RDP-Konfiguration oder Benutzeranmeldeinformationen schnell mithilfe der Azure PowerShell-Cmdlets zurücksetzen.
 
 Schritte zum Behandeln von Problemen mit virtuellen Computern, die unter Verwendung des klassischen Bereitstellungsmodells erstellt wurden, finden Sie [hier](#troubleshoot-vms-created-using-the-classic-deployment-model).
 
@@ -236,7 +236,7 @@ Möglicherweise wird beim Herstellen der RDP-Verbindung mit Ihrem virtuellen Com
 * [Die Verbindung mit der Remotesitzung wurde getrennt, da keine Lizenzserver für Remotedesktop vorhanden sind](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Remotedesktop kann den Computer „Name“ nicht finden.](troubleshoot-specific-rdp-errors.md#rdpname)
 * [Authentifizierungsfehler. Die lokale Sicherheitsautorität (LSA) ist nicht erreichbar](troubleshoot-specific-rdp-errors.md#rdpauth).
-* [Fehler bei Windows-Sicherheit: Mit den Anmeldeinformationen konnte keine Verbindung hergestellt werden.](troubleshoot-specific-rdp-errors.md#wincred)
+* [Windows-Sicherheitsfehler: Ihre Anmeldeinformationen haben nicht funktioniert](troubleshoot-specific-rdp-errors.md#wincred).
 * [Dieser Computer kann keine Verbindung mit dem Remotecomputer herstellen.](troubleshoot-specific-rdp-errors.md#rdpconnect)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

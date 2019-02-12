@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 212506667a56befb4e3926dec7a9e3eb9772ebed
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285784"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736100"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Verwaltete SSD Ultra-Datenträger (Preview) für Workloads virtueller Azure-Computer
 
@@ -23,9 +23,9 @@ Azure SSD Ultra (Preview) bietet hohen Durchsatz, hohe IOPS und konsistenten Dat
 
 **Verwaltete Datenträger:** SSD Ultra-Datenträger sind nur als verwaltete Datenträger verfügbar. SSD Ultra-Datenträger können nicht als nicht verwaltete Datenträger oder als Seitenblobs bereitgestellt werden. Beim Erstellen eines verwalteten Datenträgers geben Sie den SKU-Typ des Datenträgers als „UltraSSD_LRS“ an sowie die IOPS und den benötigten Durchsatz. Azure erstellt und verwaltet daraufhin den Datenträger für Sie.  
 
-**Virtuelle Computer**: SSD Ultra-Datenträger sind so konzipiert, dass sie mit allen Azure Virtual Machine SKUs funktionieren, die SSD Premium-fähig sind. Aber da sie sich derzeit in der Vorschauphase befinden, haben die VMs die Größe ES/DS v3.
+**Virtuelle Computer:** SSD Ultra-Datenträger sind so konzipiert, dass sie mit allen Azure Virtual Machine SKUs funktionieren, die SSD Premium-fähig sind. Aber da sie sich derzeit in der Vorschauphase befinden, haben die VMs die Größe ES/DS v3.
 
-**Dynamische Leistungskonfiguration**: SSD Ultra-Datenträger erlauben es Ihnen, die Datenträgerleistung (IOPS und Durchsatz) dynamisch in Abstimmung mit Ihren Workloadanforderungen ändern zu können, ohne Ihre virtuellen Computer neu starten zu müssen.
+**Dynamische Leistungskonfiguration**:  SSD Ultra-Datenträger erlauben es Ihnen, die Datenträgerleistung (IOPS und Durchsatz) dynamisch in Abstimmung mit Ihren Workloadanforderungen ändern zu können, ohne Ihre virtuellen Computer neu starten zu müssen.
 
 ## <a name="scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele
 
@@ -34,8 +34,8 @@ Wenn Sie eine SSD Ultra bereitstellen, haben Sie die Option, die Kapazität und 
 Einige Hauptfunktionen von SSD Ultra-Datenträgern sind:
 
 - Datenträgerkapazität: SSD Ultra bietet Ihnen verschiedene Datenträgergrößen zwischen 4 GiB und 64 TiB.
-- Datenträger-IOPS: SSD Ultra-Datenträger unterstützen IOPS-Limits von 300 IOPS/GiB bis hin zu maximal 160.000 IOPS pro Datenträger. Um die bereitgestellten IOPS-Werte zu erreichen, stellen Sie sicher, dass der IOPS-Wert für den ausgewählten Datenträger unter dem für den virtuellen Computer liegt. Der Mindestwert für Datenträger-IOPS beträgt 100 IOPS.
-- Datenträgerdurchsatz: Mit SSD Ultra-Datenträgern beträgt das Durchsatzlimit für einen einzelnen Datenträger 256 KiB/s für jeden bereitgestellten IOPS-Wert bis zu maximal 2000 MB/s pro Datenträger (dabei ist 1 MB/s = 10^6 Byte pro Sekunde). Der Mindest-Datenträgerdurchsatz beträgt 1 MiB.
+- Datenträger-IOPS:  SSD Ultra-Datenträger unterstützen IOPS-Limits von 300 IOPS/GiB bis hin zu maximal 160.000 IOPS pro Datenträger. Um die bereitgestellten IOPS-Werte zu erreichen, stellen Sie sicher, dass der IOPS-Wert für den ausgewählten Datenträger unter dem für den virtuellen Computer liegt. Der Mindestwert für Datenträger-IOPS beträgt 100 IOPS.
+- Datenträgerdurchsatz:  Mit SSD Ultra-Datenträgern beträgt das Durchsatzlimit für einen einzelnen Datenträger 256 KiB/s für jeden bereitgestellten IOPS-Wert bis zu maximal 2000 MB/s pro Datenträger (dabei ist 1 MB/s = 10^6 Byte pro Sekunde). Der Mindest-Datenträgerdurchsatz beträgt 1 MiB.
 
 Die folgende Tabelle fasst die unterstützten Konfigurationen für die unterschiedlichen Datenträgergrößen zusammen:  
 
@@ -74,7 +74,7 @@ IOPS ist die Anzahl von Anforderungen, die Ihre Anwendung pro Sekunde an die Dat
 
 Durchsatz ist die Menge der Daten, die Ihre Anwendung in einem angegebenen Intervall an die Datenträger überträgt, gemessen in Bytes/Sekunde. Wenn Ihre Anwendung umfangreiche E/A-Vorgänge mit durchführt, benötigt sie hohen Durchsatz.  
 
-Zwischen Durchsatz und IOPS gibt es, wie in der folgenden Formel dargestellt, eine Beziehung: IOPS x E/A-Größe = Durchsatz
+Zwischen Durchsatz und IOPS gibt es, wie in der folgenden Formel dargestellt, eine Beziehung.  IOPS x E/A-Größe = Durchsatz
 
 Aus diesem Grund ist es wichtig, die optimalen Durchsatz- und IOPS-Werte zu bestimmen, die Ihre Anwendung benötigt. Beim Versuch, einen der Faktoren zu optimieren, ist der andere ebenfalls betroffen. Wir empfehlen, mit einem Durchsatz zu beginnen, der einer E/A-Größe von 16 KiB entspricht, und diesen dann anzupassen, wenn ein höherer Durchsatz benötigt wird.
 

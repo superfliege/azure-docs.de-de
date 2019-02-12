@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246533"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766094"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack-Update 1811
 
@@ -153,6 +153,9 @@ Dieses Update enthält die folgenden neuen Funktionen und Verbesserungen für Az
 
 <!-- 3190553 - IS ASDK -->
 - Ein Problem wurde behoben, bei dem falsch positive Warnungen generiert wurden, die anzeigten, dass eine Infrastrukturrolleninstanz nicht verfügbar ist oder dass der Knoten „Skalierungseinheit“ offline ist.
+
+<!-- 2724961 - IS ASDK -->
+- Ein Problem wurde behoben, bei dem die VM-Übersichtsseite das VM-Metrikendiagramm nicht ordnungsgemäß anzeigen kann. 
 
 ## <a name="changes"></a>Änderungen
 
@@ -297,11 +300,6 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 <!-- 1662991 IS ASDK --> 
 - Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren.  
-
-<!-- 2724961- IS ASDK --> 
-- Wenn Sie den **Microsoft.Insight**-Ressourcenanbieter in den Abonnementeinstellungen registrieren und einen virtuellen Windows-Computer mit aktivierter Gastbetriebssystemdiagnose erstellen, werden im Diagramm mit der CPU-Nutzung in Prozent auf der Übersichtsseite des virtuellen Computers keine Metrikdaten angezeigt.
-
-   Navigieren Sie zum Anzeigen von Metrikdaten (etwa das Diagramm „CPU-Prozentsatz“ für den virtuellen Computer) zum Fenster **Metriken**, und zeigen Sie alle unterstützten Metriken für Windows-VM-Gäste an.
 
 <!-- 3507629 - IS, ASDK --> 
 - Managed Disks erstellt zwei neue [Computekontingenttypen](azure-stack-quota-types.md#compute-quota-types) zur Begrenzung der maximalen Kapazität von verwalteten Datenträgern, die bereitgestellt werden können. Standardmäßig werden für jeden Kontingenttyp von verwalteten Datenträgern 2.048 GiB zugeordnet. Allerdings können die folgenden Probleme auftreten:

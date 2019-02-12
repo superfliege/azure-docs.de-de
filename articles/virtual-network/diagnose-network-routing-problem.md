@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 56dd13f5c2c0db4af65d8bc5d4ee5c072a161964
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429633"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819789"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnose des Routingproblems einer VM
 
@@ -116,7 +116,7 @@ Die Lösung von Routingproblemen erfolgt in der Regel folgendermaßen:
 - Stellen Sie sicher, dass die Routingtabelle, die benutzerdefinierte Routen enthält, die Sie definiert haben, dem Subnetz zugeordnet ist, in dem sich die Netzwerkschnittstelle befindet. Erfahren Sie, wie Sie [eine Routingtabelle einem Subnetz zuordnen](manage-route-table.md#associate-a-route-table-to-a-subnet).
 - Stellen Sie sicher, dass Geräte wie das Azure-VPN-Gateway oder virtuelle Netzwerkappliances, die Sie bereitgestellt haben, funktionsfähig sind. Verwenden Sie die [VPN-Diagnose](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) von Network Watcher, um Probleme mit einem Azure-VPN-Gateway zu bestimmen.
 
-Falls weiterhin Probleme mit der Kommunikation bestehen, lesen Sie die Abschnitte [Überlegungen](#considerations) und [Zusätzliche Diagnose](#additional-dignosis).
+Falls weiterhin Probleme mit der Kommunikation bestehen, lesen Sie die Abschnitte [Überlegungen](#considerations) und „Zusätzliche Diagnose“.
 
 ## <a name="considerations"></a>Überlegungen
 

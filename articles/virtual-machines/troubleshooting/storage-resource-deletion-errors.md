@@ -11,35 +11,35 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 1de70b3ddea84fc0067a0e20ec613f01024f0ed4
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5ab0a9a92297c46a4090583d41f22f2035bd310c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816185"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Behebung von Problemen mit Speicherressourcen-Löschfehlern
 
 In bestimmten Szenarios könnten Sie auf einen der folgenden Fehler treffen, wenn Sie versuchen, ein Azure-Speicherkonto, einen Container oder ein Blob in einer Azure Resource Manager-Bereitstellung zu löschen:
 
->**Fehler beim Löschen von Speicherkonto 'StorageAccountName'. Fehler: Das Speicherkonto kann nicht gelöscht werden, da zugehörige Artefakte gerade verwendet werden.**
+>**Fehler beim Löschen von Speicherkonto 'StorageAccountName'. Fehler Das Speicherkonto kann nicht gelöscht werden, da zugehörige Artefakte gerade verwendet werden.**
 
->**Fehler beim Löschen von # von # Containern:<br>vhds: Derzeit ist eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
+>**Fehler beim Löschen von # von # Container(n):<br>vhds: Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
 
->**Fehler beim Löschen von # von # Blobs:<br>BlobName.vhd: Derzeit ist eine Lease für den Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
+>**Fehler beim Löschen von # von # Blob(s):<br>BlobName.vhd: Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
 
 Die auf virtuellen Azure-Computern verwendeten VHDs sind VHD-Dateien, die als Seitenblobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Weitere Informationen zu Azure-Datenträgern finden Sie unter [Informationen zu Datenträgern für virtuelle Azure-Linux-Computer](../linux/about-disks-and-vhds.md). 
 
 Azure verhindert das Löschen eines an eine VM angefügten Datenträgers, um eine Beschädigung zu vermeiden. Zudem verhindert es das Löschen von Containern und Speicherkonten mit einem Seitenblob, das an einen virtuellen Computer angefügt ist. 
 
 Der Prozess zum Löschen eines Speicherkontos, Containers oder Blobs bei einem dieser Fehler umfasst folgende Schritte: 
-1. [Identifizieren von an eine VM angefügten Blobs](#step-1-identify-blobs-attached-to-a-vm)
+1. Identifizieren von an eine VM angefügten Blobs
 2. [Löschen von VMs mit angefügtem **Betriebssystemdatenträger**](#step-2-delete-vm-to-detach-os-disk)
 3. [Trennen aller **Datenträger** von verbleibenden VMs](#step-3-detach-data-disk-from-the-vm)
 
 Wenn Sie diese Schritte durchgeführt haben, versuchen Sie erneut, das Speicherkonto, einen Container bzw. ein Blob zu löschen.
 
-## <a name="step-1-identify-blob-attached-to-a-vm"></a>Schritt 1: Identifizieren von an eine VM angefügten Blobs
+## <a name="step-1-identify-blob-attached-to-a-vm"></a>Schritt 1: Identifizieren eines an eine VM angefügten Blobs
 
 ### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>Szenario 1: Löschen eines Blobs – Identifizieren einer angefügten VM
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -53,7 +53,7 @@ Wenn Sie diese Schritte durchgeführt haben, versuchen Sie erneut, das Speicherk
 
      ![Screenshot des Portals, in dem der Speicherbereich „Blobmetadaten“ geöffnet ist](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
 
-6. Wenn der Blobdatenträger vom Typ **OSDisk** ist, führen Sie [Schritt 2: Löschen einer VM beim Trennen eines Betriebssystemdatenträgers](#step-2-delete-vm-to-detach-os-disk) durch. Wenn der Blobdatenträger hingegen vom Typ **DataDisk** ist, befolgen Sie die Anweisungen unter [Schritt 3: Trennen eines Datenträgers von der VM](#step-3-detach-data-disk-from-the-vm). 
+6. Wenn der Blobdatenträger vom Typ **OSDisk** ist, führen Sie [Schritt 2:  Löschen einer VM beim Trennen eines Betriebssystemdatenträgers](#step-2-delete-vm-to-detach-os-disk) durch. Wenn der Blobdatenträger hingegen vom Typ **DataDisk** ist, befolgen Sie die Anweisungen unter [Schritt 3:  Trennen eines Datenträgers von der VM](#step-3-detach-data-disk-from-the-vm). 
 
 > [!IMPORTANT]
 > Wenn **MicrosoftAzureCompute_VMName** und **MicrosoftAzureCompute_DiskType** nicht in den Blobmetadaten angezeigt werden, bedeutet dies, dass das Blob explizit geleast und nicht an eine VM angefügt ist. Geleaste Blobs können erst gelöscht werden, wenn das Lease abgebrochen wurde. Um ein Lease abzubrechen, klicken Sie mit der rechten Maustaste auf das Blob, und wählen Sie **Lease abbrechen** aus. Geleaste Blobs, die nicht an einen virtuellen Computer angefügt sind, verhindern das Löschen des Blobs, jedoch nicht das Löschen eines Containers oder Speicherkontos.
@@ -61,7 +61,7 @@ Wenn Sie diese Schritte durchgeführt haben, versuchen Sie erneut, das Speicherk
 ### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>Szenario 2: Löschen eines Containers – Identifizieren aller Blobs in einem an VMs angefügten Container
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus. Wechseln Sie zum Speicherkonto, wählen Sie unter **Blobdienst** die Option **Container** aus, und machen Sie den Container ausfindig, der gelöscht werden soll.
-3. Klicken Sie darauf, um den Container zu öffnen. Daraufhin wird die Liste der darin enthaltenen Blobs angezeigt. Machen Sie in dieser Liste alle Blobs vom Blobtyp **Seitenblob** und mit dem Leasezustand **Geleast** ausfindig. Führen Sie die Schritte von [Szenario 1](#step-1-identify-blobs-attached-to-a-vm) durch, um die mit diesen Blobs verknüpfte VM zu identifizieren.
+3. Klicken Sie darauf, um den Container zu öffnen. Daraufhin wird die Liste der darin enthaltenen Blobs angezeigt. Machen Sie in dieser Liste alle Blobs vom Blobtyp **Seitenblob** und mit dem Leasezustand **Geleast** ausfindig. Führen Sie die Schritte von Szenario 1 durch, um die mit diesen Blobs verknüpfte VM zu identifizieren.
 
     ![Screenshot des Portals, in dem die Speicherkontoblobs und die Option „Leasezustand“ mit dem Wert „Geleast“ hervorgehoben sind](./media/troubleshoot-vhds/utd-disks-sm.png)
 
@@ -97,7 +97,7 @@ Wenn die VHD ein Datenträger ist, trennen Sie die VHD von der VM, um die Lease 
 
      ![Screenshot des Portals, in dem der Speicherbereich „Blobmetadaten“ geöffnet ist](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. Wählen Sie **Speichern**aus. Der Datenträger ist jetzt vom virtuellen Computer getrennt, und die VHD wird nicht mehr geleast. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Um sich zu vergewissern, dass das Lease aufgehoben wurde, navigieren Sie zum Blobspeicherort, und prüfen Sie im Bereich **Blobeigenschaften**, ob der **Leasezustand** den Zustand **Entsperrt** oder **Verfügbar** aufweist.
+9. Wählen Sie **Speichern** aus. Der Datenträger ist jetzt vom virtuellen Computer getrennt, und die VHD wird nicht mehr geleast. Es kann einige Minuten dauern, bis die Lease freigegeben wird. Um sich zu vergewissern, dass das Lease aufgehoben wurde, navigieren Sie zum Blobspeicherort, und prüfen Sie im Bereich **Blobeigenschaften**, ob der **Leasezustand** den Zustand **Entsperrt** oder **Verfügbar** aufweist.
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

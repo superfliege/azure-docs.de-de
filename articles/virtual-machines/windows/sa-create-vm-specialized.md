@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: da1fa2b182888e623f8df734c9119e208433e2bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0de7979edd741a7e4a1dc3354a8dc895929a9532
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012708"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811680"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 
@@ -61,7 +61,7 @@ Geben Sie zum Anzeigen der verfügbaren Speicherkonten Folgendes ein:
 Get-AzureRmStorageAccount
 ```
 
-Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, fahren Sie mit dem Abschnitt [Hochladen des VM-Images](#upload-the-vm-vhd-to-your-storage-account) fort.
+Wenn Sie ein vorhandenes Speicherkonto verwenden möchten, fahren Sie mit dem Abschnitt „Hochladen des VM-Images“ fort.
 
 Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
 
@@ -109,7 +109,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Abhängig von Ihrer Netzwerkverbindung und der Größe Ihrer VHD-Datei kann die Ausführung dieses Befehls einige Zeit dauern.
+Abhängig von Ihrer Netzwerkverbindung und der Größe der VHD-Datei kann die Ausführung dieses Befehls einige Zeit in Anspruch nehmen.
 
 
 ## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Option 2: Kopieren der VHD eines vorhandenen virtuellen Azure-Computers
@@ -125,8 +125,8 @@ Stellen Sie sicher, dass Sie:
 ### <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
 Heben Sie die Zuordnung der VM auf, wodurch die VHD zum Kopieren freigegeben wird. 
 
-* **Portal**: Klicken Sie auf **Virtuelle Computer** > **myVM** &gt; „Beenden“
-* **PowerShell:** Verwenden Sie [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm), um die Zuordnung des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** aufzuheben.
+* **Portal**: Klicken Sie auf **Virtuelle Computer** > **myVM** > „Beenden“
+* **Powershell**: Verwenden Sie [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm), um die Zuordnung des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** aufzuheben.
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
@@ -139,8 +139,8 @@ Sie benötigen die URLs der Quell- und Zielspeicherkonten. Die URLs sehen wie fo
 
 Sie können das Azure-Portal oder Azure PowerShell verwenden, um die URL abzurufen:
 
-* **Portal:** Klicken Sie auf **>** für **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Blobs**. Ihre VHD-Quelldatei befindet sich wahrscheinlich im Container **vhds**. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Sie benötigen die URLs des Quell- und des Zielcontainers. 
-* **PowerShell:** Verwenden Sie [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm), um die Informationen des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** abzurufen. Suchen Sie in den Ergebnissen im Abschnitt **Speicherprofil** nach dem **VHD-URI**. Der erste Teil des URI ist die URL zum Container, und der zweite Teil ist der Betriebssystem-VHD-Name für die VM.
+* **Portal**: Klicken Sie auf **>** für **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Blobs**. Ihre VHD-Quelldatei befindet sich wahrscheinlich im Container **vhds**. Klicken Sie für den Container auf **Eigenschaften**, und kopieren Sie den Text mit der Bezeichnung **URL**. Sie benötigen die URLs des Quell- und des Zielcontainers. 
+* **Powershell**: Verwenden Sie [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm), um die Informationen des virtuellen Computers **myVM** in der Ressourcengruppe **myResourceGroup** abzurufen. Suchen Sie in den Ergebnissen im Abschnitt **Speicherprofil** nach dem **VHD-URI**. Der erste Teil des URI ist die URL zum Container, und der zweite Teil ist der Betriebssystem-VHD-Name für die VM.
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -149,8 +149,8 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>Abrufen der Speicherzugriffsschlüssel
 Suchen Sie die Zugriffsschlüssel für die Quell- und Zielspeicherkonten. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
 
-* **Portal:** Klicken Sie auf **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Zugriffsschlüssel**. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
-* **PowerShell:** Verwenden Sie [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey), um den Speicherschlüssel für das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** abzurufen. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
+* **Portal**: Klicken Sie auf **Alle Dienste** > **Speicherkonten** > *Speicherkonto* > **Zugriffsschlüssel**. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
+* **Powershell**: Verwenden Sie [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey), um den Speicherschlüssel für das Speicherkonto **mystorageaccount** in der Ressourcengruppe **myResourceGroup** abzurufen. Kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
 
 ```powershell
 Get-AzureRmStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -321,5 +321,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Anmelden beim neuen virtuellen Computer Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md).
+Melden Sie sich bei Ihrem neuen virtuellen Computer an. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md).
 

@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 81501c79f00c2c0f8ef81532f3b8e7f61fc9eba0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250606"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694379"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack-Update 1809
 
@@ -50,7 +50,7 @@ Dieses Update enthält die folgenden Verbesserungen für Azure Stack:
 
 - Sie können die [Registrierungsressource in Azure zwischen Ressourcengruppen verschieben](azure-stack-registration.md#move-a-registration-resource), ohne sich erneut registrieren zu müssen. Cloudlösungsanbieter (Cloud Solution Providers, CSPs) können ebenfalls die Registrierungsressource zwischen Abonnements verschieben, sofern sowohl das alte als auch das neue Abonnement der gleichen CSP-Partner-ID zugeordnet sind. Dies wirkt sich nicht auf die vorhandenen Mandantenzuordnungen des Kunden aus. 
 
-- Unterstützung für das Zuweisen mehrerer IP-Adressen pro Netzwerkschnittstelle wurde hinzugefügt.  Ausführlichere Informationen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe von PowerShell](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
+- Unterstützung für das Zuweisen mehrerer IP-Adressen pro Netzwerkschnittstelle wurde hinzugefügt.  Ausführlichere Informationen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe von PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell).
 
 ### <a name="fixed-issues"></a>Behobene Probleme
 
@@ -135,7 +135,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Installieren Sie das neueste Azure Stack-Hotfix für 1808, bevor Sie 1809 anwenden. Weitere Informationen finden Sie hier: [KB 4481066 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). Zwar empfiehlt Microsoft den neuesten verfügbaren Hotfix, doch ist die mindestens erforderliche Version für die Installation von 1809 1.1808.5.110.
+- Installieren Sie das neueste Azure Stack-Hotfix für 1808, bevor Sie 1809 anwenden. Weitere Informationen finden Sie hier: [KB 4481066 – Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). Zwar empfiehlt Microsoft den neuesten verfügbaren Hotfix, doch ist die mindestens erforderliche Version für die Installation von 1809 „1.1808.5.110“.
 
   > [!TIP]  
   > Abonnieren Sie die folgenden *RRS*- oder *Atom*-Feeds, um im Hinblick auf Azure Stack-Hotfixes auf dem neuesten Stand zu bleiben:

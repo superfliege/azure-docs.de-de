@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff214460d919eff5c3c1a2e608958673867ddc55
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44492830"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822543"
 ---
 # <a name="disaster-recovery-principles"></a>Prinzipien für die Notfallwiederherstellung
 
@@ -48,7 +48,7 @@ In Fällen, in denen Sie die HANA Systemreplikation als Hochverfügbarkeitsfunkt
 
 
 >[!NOTE]
->Die Speicherreplikationsfunktion von HANA (große Instanzen) spiegelt und repliziert Speichermomentaufnahmen. Wenn Sie keine Speichermomentaufnahmen durchführen, wie in diesem Artikel im Abschnitt zur [Sicherung und Wiederherstellung](#backup-and-restore) erläutert, ist keine Replikation am Standort für die Notfallwiederherstellung möglich. Die Erstellung von Speichermomentaufnahmen ist eine Voraussetzung für die Speicherreplikation am Standort für die Notfallwiederherstellung.
+>Die Speicherreplikationsfunktion von HANA (große Instanzen) spiegelt und repliziert Speichermomentaufnahmen. Wenn Sie keine Speichermomentaufnahmen durchführen, wie in diesem Artikel im Abschnitt zur „Sicherung und Wiederherstellung“ erläutert, ist keine Replikation am Standort für die Notfallwiederherstellung möglich. Die Erstellung von Speichermomentaufnahmen ist eine Voraussetzung für die Speicherreplikation am Standort für die Notfallwiederherstellung.
 
 
 
@@ -81,7 +81,7 @@ Als Nächstes müssen Sie den Sicherungszeitplan für Speichermomentaufnahmen ei
 - Legen Sie für das Volume für die Transaktionsprotokollsicherung (Momentaufnahmetyp **logs**) fest, dass es alle drei Minuten an die entsprechenden Speichervolumeziele am Standort für die Notfallwiederherstellung repliziert wird.
 
 Richten Sie zur Minimierung der Recovery Point Objective Folgendes ein:
-- Führen Sie alle 30 bis 60 Minuten eine Speichermomentaufnahme vom Typ **hana** (siehe „Schritt 7: Durchführen von Momentaufnahmen“) durch.
+- Führen Sie alle 30 bis 60 Minuten eine Speichermomentaufnahme vom Typ **hana** (siehe „Schritt 7:  Durchführen von Momentaufnahmen“) durch.
 - Führen Sie alle fünf Minuten SAP HANA-Transaktionsprotokollsicherungen durch.
 - Führen Sie alle fünf bis 15 Minuten Speichermomentaufnahmen vom Typ **logs** durch. Mit diesem Intervall erzielen Sie einen RPO-Wert von etwa 15 bis 25 Minuten.
 

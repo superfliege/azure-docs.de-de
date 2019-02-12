@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bbbcc1b3b505aae4bcc6869359ca27a8cd3fd1be
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638108"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821557"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -31,8 +31,8 @@ In diesem Artikel erfahren Sie, wie Sie eine benutzerdefinierte virtuelle Festpl
 Wenn Sie auf der Grundlage Ihres benutzerdefinierten Datenträgers mehrere virtuelle Computer erstellen möchten, erstellen Sie zunächst ein Image ihres virtuellen Computers oder Ihrer VHD. Weitere Informationen finden Sie in [Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe der Befehlszeilenschnittstelle](tutorial-custom-images.md).
 
 Ein benutzerdefinierter Datenträger kann auf zwei Arten erstellt werden:
-* [Hochladen einer VHD-Datei](#option-1-upload-a-specialized-vhd)
-* [Kopieren einer vorhandenen Azure-VM](#option-2-copy-an-existing-azure-vm)
+* Hochladen einer VHD-Datei
+* Kopieren einer vorhandenen Azure-VM
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
@@ -73,7 +73,7 @@ Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte 
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES &amp; openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Sonstige: Nicht unterstützte Distributionen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Sonstige: nicht unterstützte Distributionen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Beachten Sie auch die [Installationshinweise für Linux](create-upload-generic.md#general-linux-installation-notes). Diese enthalten allgemeine Tipps zur Vorbereitung von Linux-Images für Azure.
 
@@ -82,7 +82,7 @@ Beachten Sie auch die [Installationshinweise für Linux](create-upload-generic.m
 > 
 > 
 
-## <a name="option-1-upload-a-vhd"></a>Option 1: Hochladen einer VHD
+## <a name="option-1-upload-a-vhd"></a>Option 1: Hochladen einer VHD-Datei
 
 Sie können eine benutzerdefinierte VHD hochladen, die bei Ihnen auf einem lokalen Computer ausgeführt wird oder die Sie aus einer anderen Cloud exportiert haben. Um eine VHD für die Erstellung eines neuen virtuellen Azure-Computers verwenden zu können, müssen Sie die VHD in ein Speicherkonto hochladen und aus ihr einen verwalteten Datenträger erstellen. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../windows/managed-disks-overview.md).
 
@@ -100,7 +100,7 @@ az group create \
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie mithilfe von [az storage account create](/cli/azure/storage/account#az-storageaccount-create) ein Speicherkonto für Ihren benutzerdefinierten Datenträger und die virtuellen Computer. Das folgende Beispiel erstellt ein Speicherkonto namens *mystorageaccount* in der zuvor erstellten Ressourcengruppe:
+Erstellen Sie mithilfe von [az storage account create](/cli/azure/storage/account) ein Speicherkonto für Ihren benutzerdefinierten Datenträger und die virtuellen Computer. Das folgende Beispiel erstellt ein Speicherkonto namens *mystorageaccount* in der zuvor erstellten Ressourcengruppe:
 
 ```azurecli
 az storage account create \

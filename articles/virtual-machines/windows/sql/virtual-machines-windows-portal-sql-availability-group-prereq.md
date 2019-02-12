@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 11e255c8cc32f17efa9fc9e8f39e869fba032d75
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359832"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818021"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
@@ -413,7 +413,7 @@ Fügen Sie nach dem Neustart aller virtuellen Computer als Mitglied der Domäne 
 
 ### <a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
 
-Legen Sie das SQL Server-Dienstkonto auf jedem virtuellen SQL Server-Computer fest. Verwenden Sie die Konten, die Sie beim [Konfigurieren der Domänenkonten](#DomainAccounts) erstellt haben.
+Legen Sie das SQL Server-Dienstkonto auf jedem virtuellen SQL Server-Computer fest. Verwenden Sie die Konten, die Sie beim Konfigurieren der Domänenkonten erstellt haben.
 
 1. Öffnen Sie den **SQL Server-Konfigurations-Manager**.
 2. Klicken Sie mit der rechten Maustaste auf den SQL Server-Dienst, und klicken Sie auf **Eigenschaften**.

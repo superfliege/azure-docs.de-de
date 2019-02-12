@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244248"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660118"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -49,7 +49,7 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Die PFX-Zertifikatdateien müssen die Werte „Serverauthentifizierung (1.3.6.1.5.5.7.3.1)“ und „Clientauthentifizierung (1.3.6.1.5.5.7.3.2)“ im Feld „Erweiterte Schlüsselverwendung“ aufweisen.
 - Das Feld „Ausgestellt für:“ des Zertifikats darf nicht mit dem Feld „Ausgestellt von:“ identisch sein.
 - Die Kennwörter aller PFX-Zertifikatdateien müssen zum Zeitpunkt der Bereitstellung identisch sein.
-- Für die PFX-Zertifikatdatei muss ein komplexes Kennwort verwendet werden.
+- Für die PFX-Zertifikatdatei muss ein komplexes Kennwort verwendet werden. Erstellen Sie ein Kennwort, das die folgenden Anforderungen an die Komplexität von Kennwörtern erfüllt. Mindestlänge von 8 Zeichen. Das Kennwort enthält mindestens drei der folgenden Elemente: Großbuchstaben, Kleinbuchstaben, Zahlen von 0–9, Sonderzeichen, alphabetische Zeichen, die weder Groß- noch Kleinbuchstaben sind. Notieren Sie sich dieses Kennwort. Sie verwenden es noch als Bereitstellungsparameter.
 - Stellen Sie sicher, dass die Antragstellernamen und alternativen Antragstellernamen in der Erweiterung für alternative Antragstellernamen (x509v3_config) übereinstimmen. Im Feld für den alternativen Antragstellernamen können Sie zusätzliche Hostnamen (Websites, IP-Adressen, allgemeine Namen) angeben, die durch ein einzelnes SSL-Zertifikat geschützt werden sollen.
 
 > [!NOTE]  

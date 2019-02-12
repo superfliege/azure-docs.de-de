@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 6ac5a44f941f8ebcecc3a1d7e6b5e9dccf5704de
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242206"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813159"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen
 
@@ -73,7 +73,7 @@ Beim programmgesteuerten Anmelden verwenden Sie die ID für Ihre Anwendung und e
 
 1. Wählen Sie in Active Directory unter **App Registrierungen** Ihre Anwendung aus.
 
-2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. In den [Beispielanwendungen](#sample-applications) wird für **Anwendungs-ID** der Begriff **Client-ID** verwendet.
+2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. In den Beispielanwendungen wird für die **Anwendungs-ID** der Begriff **Client-ID** verwendet.
 
      ![Anwendungs-ID für die Anwendung](./media/azure-stack-create-service-principal/image12.png)
 3. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.

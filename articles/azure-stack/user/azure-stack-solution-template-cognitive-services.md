@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 331a71d4f807e1e596a91c1463064e3f6dcbd1e1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810670"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Bereitstellen von Azure Cognitive Services in Azure Stack
 
@@ -144,7 +144,7 @@ Details zu den Schlüsselfeldern:
 | ImageLocation | Gibt den Speicherort für das spezifische Cognitive Service-Containerimage in ACR an. Beispielsweise der Gesichtserkennungsdienst: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |Die Endpunkt-URL, die Sie sich im Schritt [Erstellen von Azure-Ressourcen](#create-azure-resources) notiert haben |
 | ApiKey | Der Abonnementschlüssel, den Sie sich im Schritt [Erstellen von Azure-Ressourcen](#create-azure-resources) notiert haben |
-| SecretName | Der Geheimnisname, den Sie sich gerade im Schritt [Erstellen eines Kubernetes-Geheimnisses](#create-secrete-to-access-the-private-container-registry) für den Zugriff auf die private Containerregistrierung notiert haben |
+| SecretName | Der Geheimnisname, den Sie sich gerade im Schritt „Erstellen eines Kubernetes-Geheimnisses“ für den Zugriff auf die private Containerregistrierung notiert haben |
 
 ## <a name="deploy-the-cognitive-service"></a>Bereitstellen des Cognitive Service
 

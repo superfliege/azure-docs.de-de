@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 363e0868542f56df8c37639b2af7ac295be97da2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 20c96d1e25e0aef86d09c37ed919e61ec6058c6d
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249904"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747440"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Installieren des Azure Stack Development Kits (ASDK)
 Nachdem Sie den [ASDK-Hostcomputer vorbereitet](asdk-prepare-host.md) haben, kann das ASDK mit den folgenden Schritten in diesem Artikel im Image „CloudBuilder.vhdx“ bereitgestellt werden.
@@ -59,7 +59,7 @@ Die Schritte in diesem Artikel zeigen, wie das ASDK mit einer grafischen Benutze
     - Geben Sie eine gültige **Zeitserver-IP-Adresse** ein. In diesem Pflichtfeld wird der Zeitserver festgelegt, der vom Development Kit verwendet wird. Dieser Parameter muss als gültige Zeitserver-IP-Adresse angegeben werden. Servernamen werden nicht unterstützt.
 
       > [!TIP]
-      > Besuchen Sie zum Ermitteln der IP-Adresse eines Zeitservers [pool.ntp.org](http://pool.ntp.org), oder pingen Sie „time.windows.com“. 
+      > Besuchen Sie zum Ermitteln der IP-Adresse eines Zeitservers [ntppool.org](https://www.ntppool.org/), oder pingen Sie „time.windows.com“. 
 
     - **Optional** legen Sie die folgenden Werte fest:
         - **VLAN-ID**: Legt die VLAN-ID fest. Verwenden Sie diese Option nur, wenn für Host und AzS-BGPNAT01 eine VLAN-ID für den Zugriff auf das physische Netzwerk (und das Internet) konfiguriert werden muss. 

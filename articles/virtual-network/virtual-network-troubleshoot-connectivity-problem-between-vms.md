@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 7574ac1a5937fbe963ef764d42f04d00f6c02d69
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241768"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732514"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problembehandlung bei Konnektivitätsproblemen zwischen Azure-VMs
 
@@ -73,7 +73,7 @@ Bestimmen Sie mithilfe von [Einführung in die IP-Datenflussüberprüfung in Azu
 
 Deaktivieren Sie die Firewall, und testen Sie dann das Ergebnis. Wenn das Problem behoben ist, überprüfen Sie die Firewalleinstellungen, und aktivieren Sie die Firewall dann erneut.
 
-### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Schritt 4: Überprüfen Sie, ob VM-App oder -Dienst auf dem Port lauscht
+### <a name="step-4-check-whether-vm-app-or-service-is-listening-on-the-port"></a>Schritt 4: Überprüfen Sie, ob die VM-App oder der VM-Dienst an dem Port lauscht
 
 Sie können eine der folgenden Methoden verwenden, um zu überprüfen, ob die VM-App oder der VM-Dienst auf dem Port lauscht.
 
@@ -95,7 +95,7 @@ In einigen Szenarien wird der virtuelle Computer hinter einer Lastenausgleichsl�
 
 ### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>Schritt 6: Überprüfen Sie, ob Datenverkehr von ACLs für die klassische VM blockiert wird
 
-Mit einer Zugriffssteuerungsliste (Access Control List, ACL) können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Weitere Informationen finden Sie unter [Verwaltung der ACL für einen Endpunkt](../virtual-machines/windows/classic/setup-endpoints.md#manage-the-acl-on-an-endpoint).
+Mit einer Zugriffssteuerungsliste (Access Control List, ACL) können Sie selektiv Datenverkehr für einen Endpunkt eines virtuellen Computers zulassen oder verweigern. Weitere Informationen finden Sie unter [Verwaltung der ACL für einen Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Schritt 7: Überprüfen Sie, ob der Endpunkt für die klassische VM erstellt wird
 

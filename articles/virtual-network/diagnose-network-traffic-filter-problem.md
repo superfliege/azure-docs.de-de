@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424641"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821863"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -181,7 +181,7 @@ Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus 
 
 Wenn eingehender Datenverkehr in Azure verarbeitet wird, werden die Regeln in der NSG, die dem Subnetz zugeordnet sind (sofern eine zugeordnete NSG vorhanden ist), und dann die Regeln in der NSG verarbeitet, die der Netzwerkschnittstelle zugeordnet sind. Ist eine NSG der Netzwerkschnittstelle und dem Subnetz zugeordnet, muss der Port in beiden NSGs geöffnet sein, damit der Datenverkehr die VM erreicht. Um Probleme mit der Verwaltung und der Kommunikation einfacher beheben zu können, wird empfohlen, eine NSG einem Subnetz zuzuordnen statt einzelnen Netzwerkschnittstellen. Wenn VMs in einem Subnetz verschiedene Sicherheitsregeln erfordern, können Sie die Netzwerkschnittstellen zu Mitgliedern einer Anwendungssicherheitsgruppe (ASG) machen und eine ASG als Quelle und Ziel einer Sicherheitsregel angeben. Weitere Informationen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
 
-Falls weiterhin Probleme mit der Kommunikation bestehen, lesen Sie die Abschnitte [Überlegungen](#considerations) und [Zusätzliche Diagnose](#additional-dignosis).
+Falls weiterhin Probleme mit der Kommunikation bestehen, lesen Sie die Abschnitte [Überlegungen](#considerations) und „Zusätzliche Diagnose“.
 
 ## <a name="considerations"></a>Überlegungen
 

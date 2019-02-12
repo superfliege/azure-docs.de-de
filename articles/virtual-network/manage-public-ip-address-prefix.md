@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015286"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696821"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 
@@ -48,11 +48,11 @@ Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informat
 
    |Einstellung|Erforderlich?|Details|
    |---|---|---|
-   |Abonnement|JA|Muss im selben [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
-   |Ressourcengruppe|JA|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
-   |NAME|JA|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
-   |Region|JA|Muss in der gleichen [Region](https://azure.microsoft.com/regions) wie die öffentlichen IP-Adressen vorhanden sein, die Sie aus dem Bereich zuweisen. Das Präfix ist zurzeit in folgenden Regionen in der Vorschau verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“.|
-   |Präfixgröße|JA| Die benötigte Größe des Präfix. /28- oder 16-IP-Adressen sind der Standard. 
+   |Abonnement|Ja|Muss im selben [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
+   |Ressourcengruppe|Ja|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
+   |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
+   |Region|Ja|Muss in der gleichen [Region](https://azure.microsoft.com/regions) wie die öffentlichen IP-Adressen vorhanden sein, die Sie aus dem Bereich zuweisen. Das Präfix ist zurzeit in folgenden Regionen in der Vorschau verfügbar: „USA, Westen-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Mitte“, „Europa, Norden“, „Europa, Westen“ und „Asien, Südosten“.|
+   |Präfixgröße|Ja| Die benötigte Größe des Präfix. /28- oder 16-IP-Adressen sind der Standard. 
 
 **Befehle**
 
@@ -72,7 +72,7 @@ Sobald Sie ein Präfix erstellt haben, müssen Sie statische IP-Adressen aus dem
 
    |Einstellung|Erforderlich?|Details|
     |---|---|---|
-    |NAME|JA|Der Name der öffentlichen IP-Adresse muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
+    |NAME|Ja|Der Name der öffentlichen IP-Adresse muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein.|
    |Leerlaufzeitüberschreitung (Minuten)|Nein |Gibt an, wie viele Minuten eine TCP- oder HTTP-Verbindung geöffnet bleiben soll, ohne dass Clients Keep-Alive-Meldungen senden müssen. |
    |DNS-Namensbezeichnung|Nein |Muss in der Azure-Region, in der Sie den Namen erstellen, eindeutig sein (über alle Abonnements und Kunden hinweg). Azure registriert den Namen und die IP-Adresse automatisch im DNS, sodass Sie über den Namen eine Verbindung mit der Ressource herstellen können. Azure fügt ein Standardsubnetz wie etwa *location.cloudapp.azure.com* (wobei „location“ der Standort ist, den Sie auswählen) an den von Ihnen bereitgestellten Namen an, um den vollqualifizierten DNS-Namen zu erstellen. Weitere Informationen finden Sie unter [Verwenden von Azure DNS mit einer öffentlichen Azure-IP-Adresse](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 

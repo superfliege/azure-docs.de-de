@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7505715641462f4a07d999ea419632bd91e925fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438914"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822441"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
 
@@ -66,7 +66,7 @@ Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Ne
 2. Wählen Sie in der Liste die Netzwerksicherheitsgruppe aus, für die Sie Details anzeigen möchten. Unter **EINSTELLUNGEN** sehen Sie die **Eingangssicherheitsregeln** und **Ausgangssicherheitsregeln**, die **Netzwerkschnittstellen** und **Subnetze**, denen die Netzwerksicherheitsgruppe zugeordnet ist. Sie können auch **Diagnoseprotokolle** aktivieren oder deaktivieren und **Effektive Sicherheitsregeln** anzeigen. Weitere Informationen finden Sie unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](virtual-network-nsg-manage-log.md) und [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](diagnose-network-traffic-filter-problem.md).
 3. Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Sie in den folgenden Artikeln:
     *   [Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md)
-    *   [Zugriffssteuerung (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Zugriffssteuerung (IAM)](../role-based-access-control/overview.md)
     *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatisierungsskript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
@@ -92,7 +92,7 @@ Wie Sie eine Netzwerksicherheitsgruppe einer Netzwerkschnittstelle zuordnen bzw.
 
 ### <a name="delete-a-network-security-group"></a>Löschen einer Netzwerksicherheitsgruppe
 
-Wenn eine Netzwerksicherheitsgruppe Subnetzen bzw. Netzwerkschnittstellen zugeordnet ist, kann sie nicht gelöscht werden. [Trennen](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) Sie eine Netzwerksicherheitsgruppe von allen Subnetzen und Netzwerkschnittstellen, bevor Sie versuchen, sie zu löschen.
+Wenn eine Netzwerksicherheitsgruppe Subnetzen bzw. Netzwerkschnittstellen zugeordnet ist, kann sie nicht gelöscht werden. Trennen Sie eine Netzwerksicherheitsgruppe von allen Subnetzen und Netzwerkschnittstellen, bevor Sie versuchen, sie zu löschen.
 
 1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
 2. Wählen Sie die Netzwerksicherheitsgruppe, die Sie löschen möchten, in der Liste aus.

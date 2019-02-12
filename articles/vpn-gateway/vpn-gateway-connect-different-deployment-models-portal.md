@@ -1,5 +1,5 @@
 ---
-title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNETs: Portal | Microsoft Docs'
+title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNETs: Portal | Microsoft-Dokumentation'
 description: Schritte zum Verbinden klassischer VNETs mit Resource Manager-VNETs mithilfe von VPN Gateway und des Portals
 services: vpn-gateway
 author: cherylmc
@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405003"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508333"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -113,7 +113,7 @@ Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, da
 2. Klicken Sie auf **Optionale Gatewaykonfiguration**, um die Seite **Gatewaykonfiguration** zu öffnen.
 
   ![Öffnen der Seite „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen der Seite „Gatewaykonfiguration“")
-3. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert **GatewaySubnet** konfiguriert.
+3. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert konfiguriert: **GatewaySubnet**.
 4. **Adressbereich** bezieht sich auf den Bereich für das Gatewaysubnetz. Obwohl Sie ein Gatewaysubnetz mit einem /29-Adressbereich (3 Adressen) erstellen können, wird empfohlen, ein Gatewaysubnetz mit einer höheren Anzahl von IP-Adressen zu erstellen. Dadurch werden zukünftige Konfigurationen unterstützt, die möglicherweise eine höhere Anzahl von verfügbaren IP-Adressen erfordern. Verwenden Sie möglichst /27 oder /28. Sie können die [Beispielwerte](#values) nutzen, wenn Sie diese Schritte als Übung verwenden. In diesem Beispiel verwenden wir 10.0.0.32/28. Klicken Sie auf **OK**, um das Gatewaysubnetz zu erstellen.
 5. Auf der Seite **Gatewaykonfiguration** bezieht sich **Größe** auf die Gateway-SKU. Wählen Sie die Gateway-SKU für das VPN-Gateway aus.
 6. Vergewissern Sie sich, dass für **Routingtyp** der Wert **Dynamisch** festgelegt wurde, und klicken Sie auf **OK**, um zur Seite **Neue VPN-Verbindung** zurückzukehren.
@@ -261,7 +261,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. Anzeigen der Werte der Netzwerkkonfigurationsdatei
 
-Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure verwendet Name im Azure-Portal nicht zu sehen. Beispielsweise kann ein VNET, das im Azure-Portal als „ClassicVNet“ angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name kann etwa wie folgt aussehen: „Group ClassicRG ClassicVNet“. In den folgenden Schritten laden Sie die Netzwerkkonfigurationsdatei herunter und zeigen die Werte an.
+Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure verwendet Name im Azure-Portal nicht zu sehen. Beispielsweise kann ein VNET, das im Azure-Portal als „ClassicVNet“ angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name sieht möglicherweise wie folgt aus: 'Gruppe ClassicRG ClassicVNet'. In den folgenden Schritten laden Sie die Netzwerkkonfigurationsdatei herunter und zeigen die Werte an.
 
 Erstellen Sie auf Ihrem Computer ein Verzeichnis, und exportieren Sie die Netzwerkkonfigurationsdatei in das Verzeichnis. In diesem Beispiel wird die Netzwerkkonfigurationsdatei in das Verzeichnis „C:\AzureNet“ exportiert.
 

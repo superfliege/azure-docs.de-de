@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: bd74aca180d291042e597ba6893009c38aa22555
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 01ce4bb7b48e2f1331ebb57dc503c79b31bcc8b0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200903"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700030"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
 
@@ -148,7 +148,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
  
 * Für „-RadiusServer“ kann ein Name oder eine IP-Adresse angegeben werden. Wenn Sie den Namen angeben und sich der Server in der lokalen Umgebung befindet, kann das VPN-Gateway den Namen unter Umständen nicht auflösen. In diesem Fall ist es besser, die IP-Adresse des Servers anzugeben. 
 * „-RadiusSecret“ muss dem für den RADIUS-Server konfigurierten Wert entsprechen.
-* Bei „-VpnCientAddressPool“ handelt es sich um den Bereich, aus dem die VPN-Clients, die eine Verbindung herstellen, eine IP-Adresse erhalten. Verwenden Sie einen privaten IP-Adressbereich, der sich nicht mit dem lokalen Standort überschneidet, aus dem Sie Verbindungen herstellen möchten. Der Bereich darf sich auch nicht mit dem VNET überschneiden, mit dem Sie Verbindungen herstellen möchten. Stellen Sie sicher, dass der konfigurierte Adresspool groß genug ist.  
+* Bei „-VpnClientAddressPool“ handelt es sich um den Bereich, aus dem die VPN-Clients, die eine Verbindung herstellen, eine IP-Adresse erhalten. Verwenden Sie einen privaten IP-Adressbereich, der sich nicht mit dem lokalen Standort überschneidet, aus dem Sie Verbindungen herstellen möchten. Der Bereich darf sich auch nicht mit dem VNET überschneiden, mit dem Sie Verbindungen herstellen möchten. Stellen Sie sicher, dass der konfigurierte Adresspool groß genug ist.  
 
 1. Erstellen Sie eine sichere Zeichenfolge für das RADIUS-Geheimnis.
 
@@ -243,4 +243,4 @@ Diese häufig gestellten Fragen beziehen sich auf P2S mit RADIUS-Authentifizieru
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/linux/azure-vm-network-overview.md).
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/linux/azure-vm-network-overview.md).

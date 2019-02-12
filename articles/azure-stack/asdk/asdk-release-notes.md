@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 12/21/2018
-ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c60ba4f4106ddd0c3fc643288894fb55d3d27f8c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240343"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816457"
 ---
 # <a name="asdk-release-notes"></a>Versionshinweise zum ASDK 
  
@@ -60,7 +60,7 @@ Dieser Build enthält die folgenden Verbesserungen und Fehlerbehebungen für Azu
 - Ein Problem wurde behoben, das die Anwendung von RBAC-Richtlinien auf eine Benutzergruppe verhinderte, wenn ADFS verwendet wurde.
 
 <!--3463840 - IS, ASDK --> 
-- Ein Problem wurde behoben, bei dem Infrastruktursicherungen fehlschlugen, weil vom öffentlichen VIP-Netzwerk nicht auf den Dateiserver zugegriffen werden konnte. Diese Korrektur verschiebt den Dienst für die Infrastruktursicherung zurück in das öffentliche Infrastrukturnetzwerk. Wenn Sie den neueste [Azure Stack-Hotfix für 1809](#azure-stack-hotfixes) angewendet haben, der dieses Problem behebt, nimmt das 1811-Update keine weiteren Änderungen vor. 
+- Ein Problem wurde behoben, bei dem Infrastruktursicherungen fehlschlugen, weil vom öffentlichen VIP-Netzwerk nicht auf den Dateiserver zugegriffen werden konnte. Diese Korrektur verschiebt den Dienst für die Infrastruktursicherung zurück in das öffentliche Infrastrukturnetzwerk. Wenn Sie den neuesten Azure Stack-Hotfix für 1809 angewendet haben, der dieses Problem behebt, nimmt das 1811-Update keine weiteren Änderungen vor. 
 
 <!-- 2967387 – IS, ASDK --> 
 - Ein Problem wurde behoben, bei dem das Konto, mit dem Sie sich beim Administrator- oder Benutzerportal von Azure Stack angemeldet hatten, als **Unbekannter Benutzer** angezeigt wurde. Diese Meldung wurde angezeigt, wenn für das Konto kein *Vorname* oder *Nachname* angegeben war.   

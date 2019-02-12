@@ -1,5 +1,5 @@
 ---
-title: 'Verbinden eines virtuellen Azure-Netzwerks mit einem anderen VNet per VNet-zu-VNet-Verbindung: PowerShell | Microsoft-Dokumentation'
+title: 'Verbinden eines Azure Virtual Network mit einem anderen VNET per VNET-zu-VNET-Verbindung: PowerShell | Microsoft-Dokumentation'
 description: Stellen Sie mithilfe von PowerShell eine VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken her.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6624c28d686a584017d703889e57ef1a7126b16d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686958"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695508"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -68,11 +68,11 @@ Der Hauptunterschied zwischen den beiden Vorgehensweisen besteht darin, dass Sie
 
 Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünschte Konfiguration auswählen. Für alle Konfigurationen wird der Verbindungstyp „VNet-zu-VNet“ verwendet. Der Netzwerkdatenverkehr fließt zwischen den VNets, die direkt miteinander verbunden sind. In dieser Übung wird Datenverkehr von TestVNet4 nicht an TestVNet5 weitergeleitet.
 
-* [VNets, die sich unter demselben Abonnement befinden](#samesub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet4 verwendet.
+* [VNETs im gleichen Abonnement](#samesub): Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet4.
 
   ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [VNets, die sich unter verschiedenen Abonnements befinden](#difsub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet5 verwendet.
+* [VNETs in unterschiedlichen Abonnements](#difsub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet5 verwendet.
 
   ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -90,34 +90,34 @@ In den Beispielen werden die folgenden Werte verwendet:
 
 **Werte für TestVNet1:**
 
-* VNet-Name: TestVNet1
+* VNET-Name: TestVNet1
 * Ressourcengruppe: TestRG1
-* Standort: USA, Osten
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
-* FrontEnd: 10.11.0.0/24
-* BackEnd: 10.12.0.0/24
-* GatewaySubnet: 10.12.255.0/27
-* GatewayName: VNet1GW
+* Standort: USA (Ost)
+* TestVNet1: 10.11.0.0/16 und 10.12.0.0/16
+* Front-End: 10.11.0.0/24
+* Back-End: 10.12.0.0/24
+* Gatewaysubnetz: 10.12.255.0/27
+* Gatewayname: VNet1GW
 * Öffentliche IP-Adresse: VNet1GWIP
-* VPNType: RouteBased
-* Verbindung (1to4): VNet1toVNet4
-* Connection(1to5): VNet1toVNet5 (für VNETs in verschiedenen Abonnements)
-* ConnectionType: VNet2VNet
+* VPN-Typ: RouteBased
+* Verbindung (1 bis 4): VNet1toVNet4
+* Verbindung (1 bis 5): VNet1toVNet5 (für VNETs in verschiedenen Abonnements)
+* Verbindungstyp: VNet2VNet
 
 **Werte für TestVNet4:**
 
-* VNet-Name: TestVNet4
-* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* FrontEnd: 10.41.0.0/24
-* BackEnd: 10.42.0.0/24
-* GatewaySubnet: 10.42.255.0/27
+* VNET-Name: TestVNet4
+* TestVNet2: 10.41.0.0/16 und 10.42.0.0/16
+* Front-End: 10.41.0.0/24
+* Back-End: 10.42.0.0/24
+* Gatewaysubnetz: 10.42.255.0/27
 * Ressourcengruppe: TestRG4
-* Standort: USA, Westen
-* GatewayName: VNet4GW
+* Standort: USA (Westen)
+* Gatewayname: VNet4GW
 * Öffentliche IP-Adresse: VNet4GWIP
-* VPNType: RouteBased
+* VPN-Typ: RouteBased
 * Verbindung: VNet4toVNet1
-* ConnectionType: VNet2VNet
+* Verbindungstyp: VNet2VNet
 
 
 ### <a name="Step2"></a>Schritt 2: Erstellen und Konfigurieren von TestVNet1
@@ -303,18 +303,18 @@ Es ist wichtig sicherzustellen, dass sich der IP-Adressbereich des neuen virtuel
 
 **Werte für TestVNet5:**
 
-* VNet-Name: TestVNet5
+* VNET-Name: TestVNet5
 * Ressourcengruppe: TestRG5
 * Standort: Japan, Osten
-* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
-* FrontEnd: 10.51.0.0/24
-* BackEnd: 10.52.0.0/24
-* GatewaySubnet: 10.52.255.0.0/27
-* GatewayName: VNet5GW
+* TestVNet5: 10.51.0.0/16 und 10.52.0.0/16
+* Front-End: 10.51.0.0/24
+* Back-End: 10.52.0.0/24
+* Gatewaysubnetz: 10.52.255.0.0/27
+* Gatewayname: VNet5GW
 * Öffentliche IP-Adresse: VNet5GWIP
-* VPNType: RouteBased
+* VPN-Typ: RouteBased
 * Verbindung: VNet5toVNet1
-* ConnectionType: VNet2VNet
+* Verbindungstyp: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>Schritt 7: Erstellen und Konfigurieren von „TestVNet5“
 
@@ -476,5 +476,5 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Dokumentation zu Virtual Machines](https://docs.microsoft.com/azure/).
 * Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 93614d4889c9c884f25c5e05cd620e8303226323
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39357765"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819143"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
 Azure stellt die DNS-Namensauflösung standardmäßig für alle in einem einzelnen virtuellen Netzwerk enthaltenen virtuellen Computer bereit. Sie können Ihre eigene Lösung für die DNS-Namensauflösung implementieren, indem Sie auf Ihren in Azure gehosteten virtuellen Computern Ihre eigenen DNS-Dienste konfigurieren. Die folgenden Szenarien sollten Ihnen dabei helfen, situationsabhängig die jeweils am besten geeignete Lösung zu wählen.
@@ -33,7 +33,7 @@ In der folgenden Tabelle sind die Szenarien und entsprechenden Lösungen für di
 
 | **Szenario** | **Lösung** | **Suffix** |
 | --- | --- | --- |
-| Namensauflösung zwischen Rolleninstanzen oder virtuellen Computern im gleichen virtuellen Netzwerk |[Von Azure bereitgestellte Namensauflösung](#azure-provided-name-resolution) |Hostname oder vollqualifizierter Domänenname (FQDN) |
+| Namensauflösung zwischen Rolleninstanzen oder virtuellen Computern im gleichen virtuellen Netzwerk |Von Azure bereitgestellte Namensauflösung |Hostname oder vollqualifizierter Domänenname (FQDN) |
 | Namensauflösung zwischen Rolleninstanzen oder virtuellen Computern in unterschiedlichen virtuellen Netzwerken |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server). |Nur FQDN |
 | Auflösung lokaler Computer- und Dienstnamen von Rolleninstanzen oder virtuellen Computern in Azure |Vom Kunden verwaltete DNS-Server (z.B. lokale Domänencontroller, lokale schreibgeschützte Domänencontroller oder ein sekundärer DNS-Server, der mithilfe von Zonenübertragungen synchronisiert wird). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server). |Nur FQDN |
 | Auflösung von Azure-Hostnamen von lokalen Computern |Weiterleiten von Abfragen an einen vom Kunden verwalteten DNS-Proxyserver im zugehörigen virtuellen Netzwerk. Der Proxyserver leitet Abfragen zur Auflösung an Azure weiter. Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server). |Nur FQDN |
@@ -87,7 +87,7 @@ Verschiedene DNS-Cachingpakete, z.B. dnsmasq, stehen zur Verfügung. Es folgen d
 5. Starten Sie den Netzwerkdienst neu („service network restart“), um den Cache als lokale DNS-Auflösung festzulegen.
 
 > [!NOTE]
-> Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
+> : Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
 >
 >
 

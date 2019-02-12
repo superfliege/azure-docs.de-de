@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85b974e954fd99f6f10426f1961ea9f4a5343c59
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953870"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811102"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>VMs mit niedriger Priorität in Skalierungsgruppen (Vorschau)
 
@@ -43,13 +43,13 @@ Wenn Sie möchten, dass die virtuellen Computer in Ihrer Skalierungsgruppe mit n
 
 Zum Bereitstellen von VMs mit niedriger Priorität in Skalierungsgruppen können Sie das neue *Priorität*-Flag auf *Niedrig* setzen. Für alle virtuellen Computer in Ihrer Skalierungsgruppe wird niedrige Priorität festgelegt. Verwenden Sie zum Erstellen einer Skalierungsgruppe mit niedriger Priorität eine der folgenden Methoden:
 - [Azure-Portal](#use-the-azure-portal)
-- [Azure-CLI](#use-the-azure-cli-20)
+- Azure-Befehlszeilenschnittstelle
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird in diesem [Schnellstartartikel](quick-create-portal.md) ausführlich beschrieben. Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Flag für niedrige Priorität und die Entfernungsrichtlinie festlegen: ![Skalierungsgruppe mit MVs mit niedriger Priorität erstellen](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
+Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird in diesem [Schnellstartartikel](quick-create-portal.md) ausführlich beschrieben. Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Flag für niedrige Priorität und die Entfernungsrichtlinie festlegen:  ![Skalierungsgruppe mit MVs mit niedriger Priorität erstellen](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 

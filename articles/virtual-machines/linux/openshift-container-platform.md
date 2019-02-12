@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085885"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730712"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Bereitstellen von OpenShift Container Platform in Azure
 
@@ -31,13 +31,13 @@ Zum Bereitstellen von Container Platform in Azure können Sie zahlreiche Methode
 - Eine weitere Möglichkeit besteht darin, das [Azure Marketplace-Angebot](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview) zu nutzen.
 
 Für alle Optionen ist ein Red Hat-Abonnement erforderlich. Während der Bereitstellung wird die Red Hat Enterprise Linux-Instanz beim Red Hat-Abonnement registriert und an die Pool-ID, die die Berechtigungen für OpenShift Container Platform enthält, angefügt.
-Sie benötigen einen gültigen Benutzernamen, ein gültiges Kennwort und eine gültige Pool-ID für Red Hat Subscription Manager (RHSM). Sie können einen Aktivierungsschlüssel, eine Organisations-ID und eine Pool-ID verwenden. Sie können diese Informationen überprüfen, indem Sie sich hier anmelden: https://access.redhat.com.
+Stellen Sie sicher, dass Sie über einen gültigen Benutzernamen, ein gültiges Kennwort und eine gültige Pool-ID für Red Hat Subscription Manager (RHSM) verfügen. Sie können einen Aktivierungsschlüssel, eine Organisations-ID und eine Pool-ID verwenden. Sie können diese Informationen überprüfen, indem Sie sich hier anmelden: https://access.redhat.com.
 
 ## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>Bereitstellen mithilfe der Resource Manager-Vorlage für OpenShift Container Platform
 
 Bei der Bereitstellung mithilfe der Resource Manager-Vorlage werden die Eingabeparameter über eine Parameterdatei angegeben. Forken Sie zur weiteren Anpassung der Bereitstellung das GitHub-Repository, und ändern Sie die entsprechenden Elemente.
 
-Im Anschluss finden Sie eine Auswahl allgemeiner Optionen, die Sie anpassen können:
+Im Folgenden finden Sie eine Auswahl allgemeiner Optionen, die Sie anpassen können:
 
 - Größe der geschützten VM (Variable in „azuredeploy.json“)
 - Namenskonvention (Variable in „azuredeploy.json“)
@@ -265,13 +265,13 @@ Die einfachste Möglichkeit, OpenShift Container Platform in Azure bereitzustell
 Auch wenn dies die einfachste Option ist, bietet sie begrenzte Anpassungsmöglichkeiten. Das Marketplace-Angebot umfasst folgende Konfigurationsoptionen:
 
 - **Masterknoten**: Drei Masterknoten mit konfigurierbarem Instanztyp.
-- **Infrastrukturknoten**: Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
+- **Infrastrukturknoten**:  Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
 - **Knoten**: Knotenanzahl (zwischen zwei und neun) und Instanztyp sind konfigurierbar.
 - **Datenträgertyp**: Managed Disks wird verwendet.
 - **Netzwerk**: Unterstützung eines neuen oder bereits vorhandenen Netzwerks sowie eines benutzerdefinierten CIDR-Bereichs.
-- **CNS**: CNS kann aktiviert werden.
+- **CNS**:  CNS kann aktiviert werden.
 - **Metriken**: Metriken können aktiviert werden.
-- **Protokollierung**: Protokollierung kann aktiviert werden.
+- **Protokollierung:** Protokollierung kann aktiviert werden.
 - **Azure-Cloudanbieter**: Kann aktiviert werden.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Herstellen einer Verbindung mit dem OpenShift-Cluster
@@ -284,7 +284,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Ressourcengruppe, OpenShift-Cluster und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen.
+Wenn Ressourcengruppe, OpenShift-Cluster und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group) entfernen.
 
 ```azurecli 
 az group delete --name openshiftrg

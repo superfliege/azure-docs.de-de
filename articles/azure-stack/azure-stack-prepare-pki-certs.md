@@ -11,22 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 496a6c45c9f8930f77b3a3dab2f81db1b24c1801
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247203"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656718"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Vorbereiten von Azure Stack-PKI-Zertifikaten für die Verwendung bei der Bereitstellung oder Rotation
+
 Die [von der Zertifizierungsstelle Ihrer Wahl bezogenen](azure-stack-get-pki-certs.md) Zertifikatdateien müssen mit Eigenschaften importiert und exportiert werden, die mit den Zertifikatanforderungen von Azure Stack in Einklang stehen.
 
-
 ## <a name="prepare-certificates-for-deployment"></a>Vorbereiten von Zertifikaten für die Bereitstellung
+
 Verwenden Sie diese Schritte zum Vorbereiten und Überprüfen der Azure Stack-PKI-Zertifikate, die für die Bereitstellung einer neuen Azure Stack-Umgebung oder für die Geheimnisrotation in einer vorhandenen Azure Stack-Umgebung verwendet werden: 
 
 ### <a name="import-the-certificate"></a>Importieren des Zertifikats
@@ -83,7 +84,9 @@ Verwenden Sie diese Schritte zum Vorbereiten und Überprüfen der Azure Stack-PK
     
     ![Zertifikatexport-Assistent mit ausgewählten Optionen](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
-1. Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Merken Sie sich dieses Kennwort. Es wird als Bereitstellungsparameter verwendet. Klicken Sie auf **Weiter**.
+1. Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Erstellen Sie ein Kennwort, das die folgenden Anforderungen an die Komplexität von Kennwörtern erfüllt. Mindestlänge von 8 Zeichen. Das Kennwort enthält mindestens drei der folgenden Elemente: Großbuchstaben, Kleinbuchstaben, Zahlen von 0–9, Sonderzeichen, alphabetische Zeichen, die weder Groß- noch Kleinbuchstaben sind. Notieren Sie sich dieses Kennwort. Sie verwenden es noch als Bereitstellungsparameter.
+
+1. Klicken Sie auf **Weiter**.
 
 1. Wählen Sie einen Dateinamen und einen Speicherort für die zu exportierende PFX-Datei. Klicken Sie auf **Weiter**.
 

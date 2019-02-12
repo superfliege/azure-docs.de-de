@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814469"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
 GRUB ist der GRand Unified Bootloader und wahrscheinlich das Erste, was Sie beim Starten einer VM sehen. Da GRUB vor dem Start des Betriebssystems angezeigt wird, kann nicht über SSH auf diesen Bootloader zugegriffen werden. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -44,7 +44,7 @@ Sie können die VM auch mit einem SysRq-Befehl `'b'` neu starten, wenn [SysRq](.
 ![Neustart in der seriellen Konsole unter Linux](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>Allgemeiner Zugriff auf den Einzelbenutzermodus
-Der manuelle Zugriff auf den Einzelbenutzermodus kann in Situationen erforderlich sein, in denen Sie kein Konto mit Kennwortauthentifizierung konfiguriert haben. Sie müssen die GRUB-Konfiguration ändern, um manuell in den Einzelbenutzermodus wechseln zu können. Lesen Sie anschließend den Abschnitt [Verwenden des Einzelbenutzermodus zum Zurücksetzen oder Hinzufügen eines Kennworts](#-Use-Single-User-Mode-to-reset-or-add-a-password), um weitere Informationen zu erhalten.
+Der manuelle Zugriff auf den Einzelbenutzermodus kann in Situationen erforderlich sein, in denen Sie kein Konto mit Kennwortauthentifizierung konfiguriert haben. Sie müssen die GRUB-Konfiguration ändern, um manuell in den Einzelbenutzermodus wechseln zu können. Lesen Sie anschließend den Abschnitt „Verwenden des Einzelbenutzermodus zum Zurücksetzen oder Hinzufügen eines Kennworts“, um weitere Informationen zu erhalten.
 
 In Fällen, in denen der virtuelle Computer nicht gestartet werden kann, wird bei Distributionen häufig automatisch der Einzelbenutzer- oder Notfallmodus aktiviert. Andere erfordern jedoch eine zusätzliche Einrichtung, damit der Einzelbenutzer- oder Notfallmodus automatisch aktiviert werden kann (etwa das Einrichten eines root-Kennworts).
 

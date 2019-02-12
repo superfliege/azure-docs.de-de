@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ac3e01756ad66dcb44869556bb103eb20bc2658c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221484"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699615"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
@@ -63,7 +63,7 @@ Aus dem oben genannten SysRq-Administratorhandbuch entnommen:
 |``h``  |   Zeigt die Hilfe an (mit jeder anderen außer den hier genannten Tasten können Sie ebenfalls die Hilfe anzeigen, jedoch ist ``h`` einfacher zu merken :-)
 |``i``  |    Sendet ein SIGKILL-Signal an alle Prozesse, mit Ausnahme von „init“.
 |``j``  |    Zwangsweise „einfach reaktivieren“ – von FIFREEZE ioctl fixierte Dateisysteme.
-|``k``  |    Secure Access Key (SAK) beendet alle Programme auf der aktuellen virtuellen Konsole. HINWEIS: Beachten Sie die wichtigen Kommentare im SAK-Abschnitt weiter unten.
+|``k``  |    Secure Access Key (SAK) beendet alle Programme auf der aktuellen virtuellen Konsole. HINWEIS:  Beachten Sie die wichtigen Kommentare im SAK-Abschnitt weiter unten.
 |``l``  |    Zeigt einen Stack-Backtrace für alle aktiven CPUs.
 |``m``  |    Sichert die aktuellen Speicherinformationen in der Konsole.
 |``n``  |    Wird verwendet, um RT-Tasks ansprechend zu machen.
@@ -111,7 +111,7 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`, finden Sie unter [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`, finden Sie unter  [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
