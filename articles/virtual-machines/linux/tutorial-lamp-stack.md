@@ -3,7 +3,7 @@ title: Tutorial – Bereitstellen von LAMP auf einem virtuellen Linux-Computer i
 description: In diesem Tutorial erfahren Sie, wie Sie den LAMP-Stack auf einem virtuellen Linux-Computer in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: 5caed6fba607cb93a6168bded7531bc8bf63b9da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: c69c7055e420ffa64e547f5c3fe53d997cf90168
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970684"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753706"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LAMP-Webservers auf einem virtuellen Linux-Computer in Azure
 
@@ -50,15 +50,12 @@ Führen Sie den folgenden Befehl aus, um die Ubuntu-Paketquellen zu aktualisiere
 sudo apt update && sudo apt install lamp-server^
 ```
 
-
-Sie werden aufgefordert, die Pakete und andere Abhängigkeiten zu installieren. Legen Sie bei entsprechender Aufforderung ein Stammkennwort für MySQL fest, und drücken Sie dann die [Eingabetaste], um den Vorgang fortzusetzen. Befolgen Sie die restlichen Anweisungen. Dieser Prozess installiert die PHP-Erweiterungen, die mindestens für die Verwendung von PHP mit MySQL erforderlich sind. 
-
-![Seite für das MySQL-Stammkennwort][1]
+Sie werden aufgefordert, die Pakete und andere Abhängigkeiten zu installieren. Dieser Prozess installiert die PHP-Erweiterungen, die mindestens für die Verwendung von PHP mit MySQL erforderlich sind.  
 
 ## <a name="verify-installation-and-configuration"></a>Überprüfen der Installation und Konfiguration
 
 
-### <a name="apache"></a>Apache
+### <a name="verify-apache"></a>Überprüfen von Apache
 
 Überprüfen Sie die Version von Apache mit dem folgenden Befehl:
 ```bash
@@ -70,7 +67,7 @@ Nachdem Apache installiert und Port 80 für den virtuellen Computer geöffnet wu
 ![Apache-Standardseite][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>Überprüfen und Sichern von MySQL
 
 Überprüfen Sie die Version von MySQL mit dem folgenden Befehl (beachten Sie die Großschreibung des `V`-Parameters):
 
@@ -78,23 +75,23 @@ Nachdem Apache installiert und Port 80 für den virtuellen Computer geöffnet wu
 mysql -V
 ```
 
-Führen Sie zum Sichern der Installation von MySQL das Skript `mysql_secure_installation` aus. Falls Sie nur einen temporären Server einrichten, können Sie diesen Schritt überspringen.
+Führen Sie das Skript `mysql_secure_installation` aus, um die Installation von MySQL zu sichern, u.a. durch Festlegen eines Stammkennworts. 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-Geben Sie ein Stammkennwort für MySQL ein, und konfigurieren Sie die Sicherheitseinstellungen für Ihre Umgebung.
+Sie können optional das Plug-In zur Kennwortüberprüfung einrichten (empfohlen). Legen Sie dann ein Kennwort für den MySQL-Root-Benutzer fest, und konfigurieren Sie die übrigen Sicherheitseinstellungen für Ihre Umgebung. Es wird empfohlen, auf alle Fragen mit „Y“ (ja) zu antworten.
 
 Wenn Sie MySQL-Features (MySQL-Datenbank erstellen, Benutzer hinzufügen oder Konfigurationseinstellungen ändern) ausprobieren möchten, melden Sie sich bei MySQL an. Dieser Schritt ist für den Abschluss des Tutorials nicht erforderlich.
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 Beenden Sie anschließend die MySQL-Eingabeaufforderung durch Eingabe von `\q`.
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>Überprüfen von PHP
 
 Überprüfen Sie die Version von PHP mit dem folgenden Befehl:
 
@@ -114,7 +111,6 @@ Nun können Sie die erstellte PHP-Infoseite überprüfen. Öffnen Sie einen Brow
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie einen LAMP-Server in Azure bereitgestellt. Es wurde Folgendes vermittelt:
@@ -131,6 +127,5 @@ Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit SSL-Zertifikaten siche
 > [!div class="nextstepaction"]
 > [Sichern von Webservern mit SSL](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

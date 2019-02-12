@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301457"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756868"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -105,7 +105,7 @@ Jetzt müssen Sie die Funktions-App für die Verbindung mit dem Blob Storage-Kon
 
 ## <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
 
-Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Blob Storage-Konto. Der Funktionscode, den Sie im folgenden Schritt in Azure bereitstellen, sucht in der App-Einstellung „myblobstorage_STORAGE“ nach der Verbindungszeichenfolge und in der App-Einstellung „myContainerName“ nach dem Namen des Miniaturansichtcontainers. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) ab. Legen Sie Anwendungseinstellungen mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) fest.
+Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Blob Storage-Konto. Der Funktionscode, den Sie im folgenden Schritt in Azure bereitstellen, sucht in der App-Einstellung „myblobstorage_STORAGE“ nach der Verbindungszeichenfolge und in der App-Einstellung „myContainerName“ nach dem Namen des Miniaturansichtcontainers. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account) ab. Legen Sie Anwendungseinstellungen mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) fest.
 
 In den folgenden CLI-Befehlen ist `<blob_storage_account>` der Name des Blob Storage-Kontos, das Sie im vorherigen Tutorial erstellt haben.
 
@@ -128,7 +128,7 @@ Sie können nun ein Funktionscodeprojekt für diese Funktions-App bereitstellen.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Das C#-Beispielskript (.csx) für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) bereit. 
+Das C#-Beispielskript (.csx) für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit. 
 
 Im folgenden Befehl ist `<function_app>` der Name der zuvor erstellten Funktions-App.
 
@@ -137,7 +137,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) bereit.
+Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit.
 
 Im folgenden Befehl ist `<function_app>` der Name der zuvor erstellten Funktions-App.
 
@@ -184,8 +184,12 @@ Ein Ereignisabonnement gibt an, welche vom Anbieter generierten Ereignisse an ei
     | **Ereignistypen** | Blob erstellt | Deaktivieren Sie alle Typen außer **Blob erstellt**. Nur Ereignistypen mit `Microsoft.Storage.BlobCreated` werden an die Funktion übergeben.| 
     | **Abonnententyp** |  Automatisch generiert |  Als Webhook vordefiniert |
     | **Abonnentenendpunkt** | Automatisch generiert | Verwenden Sie die Endpunkt-URL, die für Sie generiert wird. | 
-4. *Optional*: Falls Sie im gleichen Blobspeicher in der Zukunft weitere Container für andere Zwecke erstellen müssen, können Sie **Betrefffilter** auf der Registerkarte **Filter** für eine feiner abgestimmte Zielgruppenadressierung von Blobereignissen verwenden, um sicherzustellen, dass Ihre Funktions-App nur aufgerufen wird, wenn Blobs speziell dem Container **Bilder** hinzugefügt werden. 
-5. Klicken Sie auf **Erstellen**, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das die Funktion `Thumbnail` auslöst, wenn ein Blob dem Container *images* hinzugefügt wird. Die Funktion passt die Größe der Bilder an und fügt sie dem Container *thumbnails* hinzu.
+4. Wechseln Sie zur Registerkarte **Filter**, und führen Sie die folgenden Aktionen durch:     
+    1. Wählen Sie die Option **Betrefffilter aktivieren** aus.
+    2. Geben Sie für **Betreff beginnt mit** den folgenden Wert ein: **/blobServices/default/containers/images/blobs/**.
+
+        ![Festlegen eines Filters für das Ereignisabonnement](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
+2. Wählen Sie **Erstellen** aus, um das Ereignisabonnement hinzuzufügen. Dadurch wird ein Ereignisabonnement erstellt, das die Funktion `Thumbnail` auslöst, wenn ein Blob dem Container `images` hinzugefügt wird. Die Funktion ändert die Größe der Bilder und fügt sie dem Container `thumbnails` hinzu.
 
 Nachdem die Back-End-Dienste konfiguriert wurden, testen Sie die Funktion für die Größenänderung von Bildern in der Beispiel-Web-App. 
 

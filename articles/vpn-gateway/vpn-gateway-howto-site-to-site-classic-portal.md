@@ -1,5 +1,5 @@
 ---
-title: 'Herstellen einer Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk: Site-to-Site-VPN (klassisch): Portal | Microsoft-Dokumentation'
+title: 'Verbinden Ihres lokalen Netzwerks mit einem virtuellen Azure-Netzwerk: Site-to-Site-VPN (klassisch): Portal | Microsoft-Dokumentation'
 description: Erstellen Sie über das öffentliche Internet eine IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und dem klassischen virtuellen Azure-Netzwerk.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b0fa60d709c2fa6c286e44797d53e8a4a8d47d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477895"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695603"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
 
@@ -54,19 +54,19 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
 
-* **VNET-Name:** TestVNet1
+* **VNet-Name:** TestVNet1
 * **Adressraum:** 
   * 10.11.0.0/16
   * 10.12.0.0/16 (für diese Übung optional)
 * **Subnetze:**
-  * FrontEnd: 10.11.0.0/24
-  * BackEnd: 10.12.0.0/24 (für diese Übung optional)
+  * Front-End: 10.11.0.0/24
+  * Back-End: 10.12.0.0/24 (für diese Übung optional)
 * **GatewaySubnet:** 10.11.255.0/27
 * **Ressourcengruppe:** TestRG1
-* **Standort:** USA, Osten
+* **Standort:** USA (Ost)
 * **DNS-Server:** 10.11.0.3 (für diese Übung optional)
 * **Name des lokalen Standorts:** Site2
-* **Clientadressraum:** Der Adressraum an Ihrem lokalen Standort
+* **Clientadressraum**: Der Adressraum an Ihrem lokalen Standort.
 
 ## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
 
@@ -129,7 +129,7 @@ Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enth�
 4. Klicken Sie auf **Lokaler Standort – Erforderliche Einstellungen konfigurieren**, um die Seite **Lokaler Standort** zu öffnen. Konfigurieren Sie die Einstellungen, und klicken Sie dann auf **OK**, um die Einstellungen zu speichern.
   - **Name:** Erstellen Sie einen Namen für Ihren lokalen Standort, damit Sie ihn leicht identifizieren können.
   - **IP-Adresse des VPN-Gateways:** Dies ist die öffentliche IP-Adresse des VPN-Geräts für Ihr lokales Netzwerk. Für das VPN-Gerät wird eine öffentliche IPv4-IP-Adresse benötigt. Geben Sie eine gültige öffentliche IP-Adresse für das VPN-Gerät an, mit dem Sie eine Verbindung herstellen möchten. Sie darf sich nicht hinter einer NAT befinden und muss für Azure erreichbar sein. Falls Sie die IP-Adresse Ihres VPN-Geräts nicht kennen, können Sie einfach einen Platzhalterwert (im Format einer gültigen öffentlichen IP-Adresse) angeben und den Wert später ändern.
-  - **Clientadressraum:** Listen Sie die IP-Adressbereiche auf, die über dieses Gateway an das lokale Netzwerk weitergeleitet werden sollen. Sie können mehrere Adressraumbereiche hinzufügen. Stellen Sie sicher, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke, mit denen für Ihr virtuelles Netzwerk Verbindungen hergestellt werden, oder mit den Adressbereichen des virtuellen Netzwerks selbst überlappen.
+  - **Clientadressraum**: Listen Sie die IP-Adressbereiche auf, die über dieses Gateway an das lokale Netzwerk weitergeleitet werden sollen. Sie können mehrere Adressraumbereiche hinzufügen. Stellen Sie sicher, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke, mit denen für Ihr virtuelles Netzwerk Verbindungen hergestellt werden, oder mit den Adressbereichen des virtuellen Netzwerks selbst überlappen.
 
   ![Lokaler Standort](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "Konfigurieren des lokalen Standorts")
 
@@ -208,7 +208,7 @@ Beim Verwenden von PowerShell und des klassischen Bereitstellungsmodells sind di
   Set-AzureVNetGatewayKey -VNetName 'Group TestRG1 TestVNet1' `
   -LocalNetworkSiteName 'D1BFC9CB_Site2' -SharedKey abc123
   ```
-Wenn die Verbindung erstellt wird, lautet das Ergebnis: **Status: Successful** (Status: Erfolgreich).
+Wenn die Verbindung erstellt wird, lautet das Ergebnis: **Status: Erfolgreich** zurückgegeben werden.
 
 ## <a name="verify"></a>9. Überprüfen der Verbindung
 
@@ -226,5 +226,5 @@ Eine Anleitung zum Ändern einer Gateway-SKU finden Sie unter [Arbeiten mit SKUs
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) .
+* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/) .
 * Weitere Informationen zur Tunnelerzwingung finden Sie unter [Informationen zur Tunnelerzwingung](vpn-gateway-about-forced-tunneling.md).

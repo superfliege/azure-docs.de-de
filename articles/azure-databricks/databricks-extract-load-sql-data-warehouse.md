@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Durchführen von ETL-Vorgängen mithilfe von Azure Databricks'
-description: Hier erfahren Sie, wie Sie Daten aus Data Lake Store in Azure Databricks extrahieren, transformieren und anschließend in Azure SQL Data Warehouse laden.
+description: Hier erfahren Sie, wie Sie Daten aus Data Lake Storage Gen2 in Azure Databricks extrahieren, transformieren und anschließend in Azure SQL Data Warehouse laden.
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
@@ -9,80 +9,74 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 11/19/2018
-ms.openlocfilehash: 4fab67a0ea93f287ddd3d5d0d5bc42a5dcfbe75c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 01/24/2019
+ms.openlocfilehash: c8b97ed5a1e1131e073783300a233ef72ef34110
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104710"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818650"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
-In diesem Tutorial führen Sie mithilfe von Azure Databricks einen ETL-Vorgang (Extrahieren, Transformieren und Laden) für Daten durch. Sie extrahieren Daten aus Azure Data Lake Store in Azure Databricks, führen Transformationen für die Daten in Azure Databricks aus und laden die transformierten Daten anschließend in Azure SQL Data Warehouse.
+In diesem Tutorial führen Sie mithilfe von Azure Databricks einen ETL-Vorgang (Extrahieren, Transformieren und Laden) für Daten durch. Sie extrahieren Daten aus Azure Data Lake Storage Gen2 in Azure Databricks, führen Transformationen für die Daten in Azure Databricks aus und laden die transformierten Daten anschließend in Azure SQL Data Warehouse.
 
 Bei den Schritten in diesem Tutorial wird für die Datenübertragung an Azure Databricks der SQL Data Warehouse-Connector für Azure Databricks verwendet. Dieser Connector verwendet wiederum Azure Blob Storage als temporären Speicher für die Daten, die zwischen einem Azure Databricks-Cluster und Azure SQL Data Warehouse übertragen werden.
-
-In der folgenden Abbildung ist der Anwendungsfluss dargestellt:
-
-![Azure Databricks mit Data Lake Store und SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks mit Data Lake Store und SQL Data Warehouse")
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
-> * Erstellen eines Azure Databricks-Arbeitsbereichs
+> * Erstellen Sie einen Azure Databricks-Dienst.
 > * Erstellen eines Spark-Clusters in Azure Databricks
-> * Erstellen eines Azure Data Lake-Speicherkontos
-> * Hochladen von Daten in Azure Data Lake Store
-> * Erstellen eines Notebooks in Azure Databricks
+> * Erstellen eines Dateisystems und Hochladen von Daten in Azure Data Lake Storage Gen2
+> * Erstellen eines Dienstprinzipals
 > * Extrahieren von Daten aus Data Lake Store
 > * Transformieren von Daten in Azure Databricks
 > * Laden von Daten in Azure SQL Data Warehouse
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
-- Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Befolgen Sie die Anweisungen unter [Schnellstart: Erstellen einer Azure SQL Data Warehouse-Instanz](../sql-data-warehouse/create-data-warehouse-portal.md)
-- Erstellen Sie einen Datenbank-Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Führen Sie dazu die unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key) angegebenen Schritte aus.
-- Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Befolgen Sie die Anweisungen unter [Schnellstart: Erstellen eines Azure Blob Storage-Kontos](../storage/blobs/storage-quickstart-blobs-portal.md).
+Schließen Sie diese Aufgaben ab, bevor Sie dieses Tutorial beginnen:
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+* Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+* Erstellen Sie einen Datenbank-Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-## <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
+* Erstellen Sie ein Azure Data Lake Storage Gen2-Konto. Informationen hierzu finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über das Azure-Portal.
+* Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Blob Storage-Kontos](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Daten + Analysen** > **Azure Databricks**.
+* Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+## <a name="create-an-azure-databricks-service"></a>Erstellen eines Azure Databricks-Diensts
+
+In diesem Abschnitt erstellen Sie einen Azure Databricks-Dienst über das Azure-Portal.
+
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Analysen** > **Azure Databricks**.
 
     ![Databricks im Azure-Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks im Azure-Portal")
 
-3. Geben Sie unter **Azure Databricks-Dienst** die Werte für die Erstellung eines Databricks-Arbeitsbereichs an.
+2. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Dienst zu erstellen:
 
-    ![Erstellen eines Azure Databricks-Arbeitsbereichs](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Erstellen eines Azure Databricks-Arbeitsbereichs")
-
-    Geben Sie außerdem die folgenden Werte an:
-    
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
     |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
-    |**Location**     | Wählen Sie **USA, Osten 2** aus. Informationen zu weiteren verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).        |
-    |**Tarif**     |  Wählen Sie zwischen **Standard** und **Premium**. Dieses Tutorial kann aufgrund von Einschränkungen bei der Kontingenterhöhung nicht mit einem kostenlosen Testabonnement absolviert werden. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Location**     | Wählen Sie **USA, Westen 2** aus.  Informationen zu weiteren verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).      |
+    |**Tarif**     |  Wählen Sie **Standard** aus.     |
 
-    Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie anschließend auf **Erstellen**.
+3. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie anschließend auf **Erstellen**.
 
-4. Die Kontoerstellung dauert einige Minuten. Während der Erstellung des Kontos wird im Portal auf der rechten Seite die Kachel **Submitting deployment for Azure Databricks** (Bereitstellung für Azure Databricks wird übermittelt) angezeigt. Möglicherweise müssen Sie im Dashboard nach rechts scrollen, um die Kachel zu sehen. Am oberen Bildschirmrand wird auch eine Statusanzeige angezeigt. Sie können den Status beider Bereiche beobachten.
+4. Die Kontoerstellung dauert einige Minuten. Während der Erstellung des Kontos wird im Portal auf der rechten Seite die Kachel **Bereitstellung für "Azure Databricks" wird gesendet** angezeigt. Den Status des Vorgangs können Sie anhand der Statusanzeige im oberen Bereich verfolgen.
 
     ![Kachel zur Bereitstellung von Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-deployment-tile.png "Kachel zur Bereitstellung von Databricks")
 
-## <a name="create-a-spark-cluster-in-databricks"></a>Erstellen eines Spark-Clusters in Databricks
+## <a name="create-a-spark-cluster-in-azure-databricks"></a>Erstellen eines Spark-Clusters in Azure Databricks
 
-1. Navigieren Sie im Azure-Portal zum erstellten Databricks-Arbeitsbereich, und klicken Sie auf **Launch Workspace** (Arbeitsbereich starten).
+1. Navigieren Sie im Azure-Portal zu dem erstellten Databricks-Dienst, und wählen Sie **Launch Workspace** (Arbeitsbereich starten) aus.
 
 2. Sie werden zum Azure Databricks-Portal weitergeleitet. Klicken Sie im Portal auf **Cluster**.
 
@@ -92,360 +86,268 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
 
-    Übernehmen Sie alle anderen Standardwerte bis auf die folgenden Werte:
+4. Geben Sie Werte für die folgenden Felder an, und übernehmen Sie bei den anderen Feldern die Standardwerte:
 
     * Geben Sie einen Namen für den Cluster ein.
-    * Erstellen Sie für diesen Artikel einen Cluster mit mindestens Version **4.1** der Runtime.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
-    
-    Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
-## <a name="create-an-azure-data-lake-store-account"></a>Erstellen eines Azure Data Lake-Speicherkontos
+    * Erstellen Sie für diesen Artikel einen Cluster mit der Runtime **5.1**.
 
-In diesem Abschnitt erstellen Sie ein Data Lake Store-Konto und ordnen ihm einen Azure Active Directory-Dienstprinzipal zu. Dieser Dienstprinzipal wird im weiteren Verlauf des Tutorials in Azure Databricks für den Zugriff auf Azure Data Lake Store verwendet.
+    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Falls der Cluster nicht verwendet wird, geben Sie an, nach wie vielen Minuten er beendet werden soll.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen** > **Speicher** > **Data Lake Store**.
-3. Geben Sie auf dem Blatt **Neuer Data Lake Store** die Werte wie im folgenden Screenshot gezeigt an:
+    * Klicken Sie auf **Cluster erstellen**. Wenn der Cluster ausgeführt wird, können Sie Notebooks an den Cluster anfügen und Spark-Aufträge ausführen.
 
-    ![Erstellen eines neuen Azure Data Lake Store-Kontos](./media/databricks-extract-load-sql-data-warehouse/create-new-datalake-store.png "Erstellen eines neuen Azure Data Lake-Kontos")
+## <a name="create-a-file-system-and-upload-sample-data"></a>Erstellen eines Dateisystems und Hochladen von Beispieldaten
 
-    Geben Sie außerdem die folgenden Werte an:
-    
-    |Eigenschaft  |BESCHREIBUNG  |
-    |---------|---------|
-    |**Name**     | Geben Sie einen eindeutigen Namen für das Data Lake Store-Konto ein.        |
-    |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-    |**Ressourcengruppe**     | Wählen Sie für dieses Tutorial die gleiche Ressourcengruppe aus, die Sie auch beim Erstellen des Azure Databricks-Arbeitsbereichs verwendet haben.  |
-    |**Location**     | Wählen Sie **USA, Osten 2** aus.  |
-    |**Preispaket**     |  Klicken Sie auf **Nutzungsbasierte Bezahlung**. |
-    | **Verschlüsselungseinstellungen** | Behalten Sie die Standardeinstellungen bei. |
+Erstellen Sie zunächst ein Dateisystem in Ihrem Data Lake Storage Gen2-Konto. Anschließend können Sie eine Beispieldatendatei in Data Lake Store hochladen. Für diese Datei werden später in Azure Databricks einige Transformationen ausgeführt.
 
-    Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie anschließend auf **Erstellen**.
+1. Laden Sie die Beispieldatendatei [small_radio_json.json](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) auf Ihr lokales Dateisystem herunter.
 
-Als Nächstes erstellen Sie einen Azure Active Directory-Dienstprinzipal und ordnen ihn dem erstellten Data Lake Store-Konto zu.
+2. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu dem Data Lake Storage Gen2-Konto, das Sie als Voraussetzung für dieses Tutorial erstellt haben.
 
-### <a name="create-an-azure-active-directory-service-principal"></a>Erstellen eines Azure Active Directory-Dienstprinzipals
+3. Wählen Sie auf der Seite **Übersicht** des Speicherkontos die Option **In Explorer öffnen**.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Alle Dienste**, und suchen Sie nach **Azure Active Directory**.
+   ![Öffnen von Storage-Explorer](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer.png "Öffnen von Storage-Explorer")
 
-2. Wählen Sie **App-Registrierungen** aus.
+4. Wählen Sie **Azure Storage-Explorer öffnen**, um Storage-Explorer zu öffnen.
 
-   ![App-Registrierungen auswählen](./media/databricks-extract-load-sql-data-warehouse/select-app-registrations.png)
+   ![Zweite Aufforderung zum Öffnen von Storage-Explorer](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer-2.png "Zweite Aufforderung zum Öffnen von Storage-Explorer")
 
-3. Wählen Sie **Registrierung einer neuen Anwendung** aus.
+   Storage-Explorer wird geöffnet. Sie können anhand der Anweisungen im folgenden Thema ein Dateisystem erstellen und die Beispieldaten hochladen: [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher](../storage/blobs/data-lake-storage-explorer.md).
 
-   ![App hinzufügen](./media/databricks-extract-load-sql-data-warehouse/select-add-app.png)
+<a id="service-principal"/>
 
-4. Geben Sie einen Namen und eine URL für die Anwendung an. Wählen Sie als Typ für die zu erstellende Anwendung **Web-App/API** aus. Geben Sie eine Anmelde-URL an, und klicken Sie auf **Erstellen**.
+## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-   ![Anwendung benennen](./media/databricks-extract-load-sql-data-warehouse/create-app.png)
+Erstellen Sie gemäß den Anleitungen im folgenden Thema einen Dienstprinzipal: [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Um in Azure Databricks auf das Data Lake Store-Konto zugreifen zu können, benötigen Sie folgende Werte für den erstellten Azure Active Directory Dienstprinzipal:
-- Anwendungs-ID
-- Authentifizierungsschlüssel
-- Mandanten-ID
+Im Zusammenhang mit den Schritten in diesem Artikel müssen einige Aktionen ausgeführt werden.
 
-In den folgenden Abschnitten rufen Sie diese Werte für den zuvor erstellten Azure Active Directory-Dienstprinzipal ab.
+:heavy_check_mark: Stellen Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels sicher, dass Ihre Anwendung der Rolle **Blob Storage Contributor** (Blob Storage-Mitwirkender) zugewiesen ist.
 
-### <a name="get-application-id-and-authentication-key-for-the-service-principal"></a>Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels für den Dienstprinzipal
+:heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, Anwendungs-ID und Authentifizierungsschlüssel in eine Textdatei ein. Sie benötigen sie in Kürze.
+Erstellen Sie zunächst ein Notebook in Ihrem Azure Databricks-Arbeitsbereich, und führen Sie anschließend Codeausschnitte aus, um das Dateisystem in Ihrem Speicherkonto zu erstellen.
 
-Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung und einen Authentifizierungsschlüssel. Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
-
-1. Wählen Sie in Azure Active Directory unter **App-Registrierungen** Ihre Anwendung aus.
-
-   ![Anwendung auswählen](./media/databricks-extract-load-sql-data-warehouse/select-app.png)
-
-2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. In einigen [Beispielanwendungen](#log-in-as-the-application) wird dieser Wert als „Client-ID“ bezeichnet.
-
-   ![Client-ID](./media/databricks-extract-load-sql-data-warehouse/copy-app-id.png)
-
-3. Klicken Sie zum Generieren eines Authentifizierungsschlüssels auf **Einstellungen**.
-
-   ![Klicken auf „Einstellungen“](./media/databricks-extract-load-sql-data-warehouse/select-settings.png)
-
-4. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
-
-   ![Schlüssel auswählen](./media/databricks-extract-load-sql-data-warehouse/select-keys.png)
-
-5. Geben Sie eine Beschreibung des Schlüssels und eine Dauer für den Schlüssel ein. Wählen Sie dann die Option **Schließen**.
-
-   ![Schlüssel speichern](./media/databricks-extract-load-sql-data-warehouse/save-key.png)
-
-   Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopieren Sie diesen Wert jetzt, da Sie ihn später nicht mehr abrufen können. Sie geben den Schlüsselwert zusammen mit der Anwendungs-ID ein, um sich als Anwendung anzumelden. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
-
-   ![gespeicherter Schlüssel](./media/databricks-extract-load-sql-data-warehouse/copy-key.png)
-
-### <a name="get-tenant-id"></a>Abrufen der Mandanten-ID
-
-Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben.
-
-1. Wählen Sie **Azure Active Directory**.
-
-   ![Azure Active Directory auswählen](./media/databricks-extract-load-sql-data-warehouse/select-active-directory.png)
-
-1. Wählen Sie zum Abrufen der Mandanten-ID die Option **Eigenschaften** für Ihren Azure AD-Mandanten aus.
-
-   ![Auswählen von Azure AD-Eigenschaften](./media/databricks-extract-load-sql-data-warehouse/select-ad-properties.png)
-
-1. Kopieren Sie die **-Verzeichnis-ID**. Dieser Wert ist Ihre Mandanten-ID.
-
-   ![tenant ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
-
-## <a name="upload-data-to-data-lake-store"></a>Hochladen von Daten in den Data Lake-Speicher
-
-In diesem Abschnitt laden Sie eine Beispieldatendatei in Data Lake Store hoch. Für diese Datei werden später in Azure Databricks einige Transformationen ausgeführt. Die in diesem Tutorial verwendeten Beispieldaten (**small_radio_json.json**) stehen in [diesem GitHub-Repository](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) zur Verfügung.
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das erstellte Data Lake Store-Konto aus.
-
-2. Klicken Sie auf der Registerkarte **Übersicht** auf **Daten-Explorer**.
-
-    ![Öffnen des Daten-Explorers](./media/databricks-extract-load-sql-data-warehouse/open-data-explorer.png "Öffnen des Daten-Explorers")
-
-3. Klicken Sie im Daten-Explorer auf **Hochladen**.
-
-    ![Option „Hochladen“](./media/databricks-extract-load-sql-data-warehouse/upload-to-data-lake-store.png "Option „Hochladen“")
-
-4. Navigieren Sie unter **Dateien hochladen** zum Speicherort Ihrer Beispieldatendatei, und klicken Sie anschließend auf **Ausgewählte Dateien hinzufügen**.
-
-    ![Option „Hochladen“](./media/databricks-extract-load-sql-data-warehouse/upload-data.png "Option „Hochladen“")
-
-5. In diesem Tutorial haben Sie die Datendatei in das Stammverzeichnis von Data Lake Store hochgeladen. Die Datei befindet sich daher unter `adl://<YOUR_DATA_LAKE_STORE_ACCOUNT_NAME>.azuredatalakestore.net/small_radio_json.json`.
-
-## <a name="associate-service-principal-with-azure-data-lake-store"></a>Zuordnen des Dienstprinzipals zu Azure Data Lake Store
-
-In diesem Abschnitt ordnen Sie die Daten des Data Lake Store-Kontos dem erstellten Azure Active Directory-Dienstprinzipal zu. Dadurch wird sichergestellt, dass Sie von Azure Databricks aus auf das Data Lake Store-Konto zugreifen können. Für das Szenario in diesem Artikel lesen Sie die Daten in Data Lake Store aus, um damit eine Tabelle in SQL Data Warehouse aufzufüllen. Laut [Übersicht über die Zugriffssteuerung in Data Lake Store](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions) benötigen Sie Folgendes, um über Lesezugriff auf eine Datei in Data Lake Store zu verfügen:
-
-- **Ausführen**-Berechtigungen für alle Ordner der Ordnerstruktur bis zum Speicherort der Datei.
-- **Lesen**-Berechtigungen für die Datei.
-
-Führen Sie die folgenden Schritte aus, um diese Berechtigungen zu gewähren.
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das Data Lake Store-Konto aus, das Sie erstellt haben, und wählen Sie anschließend **Daten-Explorer**.
-
-    ![Starten von Daten-Explorer](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-data-explorer.png "Starten von Daten-Explorer")
-
-2. Da sich die Datei mit den Beispieldaten im Stammverzeichnis der Ordnerstruktur befindet, müssen Sie nur **Ausführen**-Berechtigungen für das Stammverzeichnis zuweisen. Wählen Sie hierzu im Stammverzeichnis des Daten-Explorers die Option **Zugriff**.
-
-    ![Hinzufügen von ACLs für den Ordner](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-1.png "Hinzufügen von ACLs für den Ordner")
-
-3. Wählen Sie unter **Zugriff** die Option **Hinzufügen**.
-
-    ![Hinzufügen von ACLs für den Ordner](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-2.png "Hinzufügen von ACLs für den Ordner")
-
-4. Klicken Sie unter **Berechtigungen zuweisen** auf **Benutzer oder Gruppe auswählen**, und suchen Sie nach dem Azure Active Directory-Dienstprinzipal, den Sie zuvor erstellt haben.
-
-    ![Hinzufügen von Data Lake Store-Zugriff](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Hinzufügen von Data Lake Store-Zugriff")
-
-    Wählen Sie den AAD-Dienstprinzipal aus, den Sie zuweisen möchten, und klicken Sie auf **Auswählen**.
-
-5. Klicken Sie unter **Berechtigungen zuweisen** auf **Berechtigungen auswählen** > **Ausführen**. Behalten Sie die anderen Standardwerte bei, und wählen Sie unter **Berechtigungen auswählen** und dann unter **Berechtigungen zuweisen** jeweils **OK**.
-
-    ![Hinzufügen von Data Lake Store-Zugriff](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-4.png "Hinzufügen von Data Lake Store-Zugriff")
-
-6. Wechseln Sie zurück zum Daten-Explorer, und klicken Sie nun auf die Datei, die Sie der Leseberechtigung zuweisen möchten. Wählen Sie unter **Dateivorschau** die Option **Zugriff**.
-
-    ![Hinzufügen von Data Lake Store-Zugriff](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-1.png "Hinzufügen von Data Lake Store-Zugriff")
-
-7. Wählen Sie unter **Zugriff** die Option **Hinzufügen**. Klicken Sie unter **Berechtigungen zuweisen** auf **Benutzer oder Gruppe auswählen**, und suchen Sie nach dem Azure Active Directory-Dienstprinzipal, den Sie zuvor erstellt haben.
-
-    ![Hinzufügen von Data Lake Store-Zugriff](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Hinzufügen von Data Lake Store-Zugriff")
-
-    Wählen Sie den AAD-Dienstprinzipal aus, den Sie zuweisen möchten, und klicken Sie auf **Auswählen**.
-
-8. Klicken Sie unter **Berechtigungen zuweisen** auf **Berechtigungen auswählen** > **Lesen**. Wählen Sie unter **Berechtigungen auswählen** und dann unter **Berechtigungen zuweisen** jeweils **OK**.
-
-    ![Hinzufügen von Data Lake Store-Zugriff](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-2.png "Hinzufügen von Data Lake Store-Zugriff")
-
-    Der Dienstprinzipal verfügt jetzt über ausreichende Berechtigungen zum Lesen der Datei mit den Beispieldaten aus Azure Data Lake Store.
-
-## <a name="extract-data-from-data-lake-store"></a>Extrahieren von Daten aus Data Lake Store
+## <a name="extract-data-from-the-data-lake-store"></a>Extrahieren von Daten aus Data Lake Store
 
 In diesem Abschnitt erstellen Sie ein Notebook im Azure Databricks-Arbeitsbereich und führen anschließend Codeausschnitte aus, um Daten aus Data Lake Store in Azure Databricks zu extrahieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum erstellten Azure Databricks-Arbeitsbereich, und klicken Sie auf **Launch Workspace** (Arbeitsbereich starten).
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem erstellten Azure Databricks-Dienst, und wählen Sie **Launch Workspace** (Arbeitsbereich starten) aus.
 
-2. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** > **Notebook** aus.
+2. Wählen Sie im linken Bereich die Option **Arbeitsbereich** aus. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** > **Notebook** aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
-2. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen für das Notebook ein. Wählen Sie **Scala** als Sprache und anschließend den zuvor erstellten Spark-Cluster aus.
+3. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen für das Notebook ein. Wählen Sie **Scala** als Sprache und anschließend den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
+    ![Angeben von Details für ein Notebook in Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Angeben von Details für ein Notebook in Databricks")
 
-    Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Erstellen**.
 
-3. Fügen Sie den folgenden Codeausschnitt in eine leere Codezelle ein, und ersetzen Sie die Platzhalterwerte durch die Werte, die Sie zuvor für den Azure Active Directory-Dienstprinzipal gespeichert haben:
+5. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in die erste Zelle ein:
 
-        spark.conf.set("dfs.adls.oauth2.access.token.provider.type", "ClientCredential")
-        spark.conf.set("dfs.adls.oauth2.client.id", "<APPLICATION-ID>")
-        spark.conf.set("dfs.adls.oauth2.credential", "<AUTHENTICATION-KEY>")
-        spark.conf.set("dfs.adls.oauth2.refresh.url", "https://login.microsoftonline.com/<TENANT-ID>/oauth2/token")
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   ```
 
-    Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
+6. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte im Abschnitt [Bereithalten der Speicherkontokonfiguration](#config) notiert haben. Ersetzen Sie den Platzhalterwert `storage-account-name` durch den Namen Ihres Speicherkontos.
 
-4. Nun können Sie die JSON-Beispieldatei in Data Lake Store als Datenrahmen in Azure Databricks laden. Fügen Sie den folgenden Codeausschnitt in eine neue Codezelle ein, ersetzen Sie den Platzhalterwert, und drücken Sie anschließend**UMSCHALT+EINGABE**.
+7. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
-        val df = spark.read.json("adl://<DATA LAKE STORE NAME>.azuredatalakestore.net/small_radio_json.json")
+8. Nun können Sie die JSON-Beispieldatei als Datenrahmen in Azure Databricks laden. Fügen Sie den folgenden Code in eine neue Zelle ein. Ersetzen Sie die in Klammern angegebenen Platzhalter durch Ihre Werte.
 
-5. Führen Sie den folgenden Codeausschnitt aus, um den Inhalt des Datenrahmens anzuzeigen:
+   ```scala
+   val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
+   ```
 
-        df.show()
+   * Ersetzen Sie den Platzhalterwert `file-system-name` durch den Namen, den Sie für Ihr Dateisystem in Storage-Explorer angegeben haben.
 
-    Es wird ungefähr folgender Codeausschnitt angezeigt:
+   * Ersetzen Sie den Platzhalter `storage-account-name` durch den Namen Ihres Speicherkontos.
 
-        +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
-        |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
-        +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
-        | El Arrebato         |Logged In| Annalyse|     F|            2|Montgomery|234.57914| free  |  Killeen-Temple, TX|   PUT|NextSong|1384448062332|     1879|Quiero Quererte Q...|   200|1409318650332|   309|
-        | Creedence Clearwa...|Logged In|   Dylann|     M|            9|    Thomas|340.87138| paid  |       Anchorage, AK|   PUT|NextSong|1400723739332|       10|        Born To Move|   200|1409318653332|    11|
-        | Gorillaz            |Logged In|     Liam|     M|           11|     Watts|246.17751| paid  |New York-Newark-J...|   PUT|NextSong|1406279422332|     2047|                DARE|   200|1409318685332|   201|
-        ...
-        ...
+9. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
-Sie haben die Daten aus Azure Data Lake Store in Azure Databricks extrahiert.
+10. Führen Sie den folgenden Code aus, um den Inhalt des Datenrahmens anzuzeigen:
+
+    ```scala
+    df.show()
+    ```
+   Es wird ungefähr folgender Codeausschnitt angezeigt:
+
+   ```bash
+   +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
+   |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
+   +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
+   | El Arrebato         |Logged In| Annalyse|     F|            2|Montgomery|234.57914| free  |  Killeen-Temple, TX|   PUT|NextSong|1384448062332|     1879|Quiero Quererte Q...|   200|1409318650332|   309|
+   | Creedence Clearwa...|Logged In|   Dylann|     M|            9|    Thomas|340.87138| paid  |       Anchorage, AK|   PUT|NextSong|1400723739332|       10|        Born To Move|   200|1409318653332|    11|
+   | Gorillaz            |Logged In|     Liam|     M|           11|     Watts|246.17751| paid  |New York-Newark-J...|   PUT|NextSong|1406279422332|     2047|                DARE|   200|1409318685332|   201|
+   ...
+   ...
+   ```
+
+   Damit haben Sie die Daten aus Azure Data Lake Storage Gen2 in Azure Databricks extrahiert.
 
 ## <a name="transform-data-in-azure-databricks"></a>Transformieren von Daten in Azure Databricks
 
-Die unformatierten Beispieldaten aus **small_radio_json.json** dienen zur Erfassung der Zuhörer eines Radiosenders und enthalten eine Reihe von Spalten. In diesem Abschnitt transformieren Sie die Daten, um nur bestimmte Spalten aus dem Dataset abzurufen.
+Die unformatierten Beispieldaten aus der Datei **small_radio_json.json** dienen zur Erfassung der Zuhörer eines Radiosenders und enthalten eine Reihe von Spalten. In diesem Abschnitt transformieren Sie die Daten, um nur bestimmte Spalten aus dem Dataset abzurufen.
 
-1. Rufen Sie zunächst nur die Spalten *firstName*, *lastName*, *gender*, *location* und *level* aus dem bereits erstellten Datenrahmen ab.
+1. Rufen Sie zunächst nur die Spalten **firstName**, **lastName**, **gender**, **location** und **level** aus dem bereits erstellten Datenrahmen ab.
 
-        val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
-        specificColumnsDf.show()
+   ```scala
+   val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+   specificColumnsDf.show()
+   ```
 
-    Daraufhin erhalten Sie eine Ausgabe wie die folgende:
+   Daraufhin erhalten Sie eine Ausgabe wie die folgende:
 
-        +---------+----------+------+--------------------+-----+
-        |firstname|  lastname|gender|            location|level|
-        +---------+----------+------+--------------------+-----+
-        | Annalyse|Montgomery|     F|  Killeen-Temple, TX| free|
-        |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
-        |     Liam|     Watts|     M|New York-Newark-J...| paid|
-        |     Tess|  Townsend|     F|Nashville-Davidso...| free|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-        |     Alan|     Morse|     M|Chicago-Napervill...| paid|
-        |Gabriella|   Shelton|     F|San Jose-Sunnyval...| free|
-        |   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-        |     Tess|  Townsend|     F|Nashville-Davidso...| free|
-        |     Alan|     Morse|     M|Chicago-Napervill...| paid|
-        |     Liam|     Watts|     M|New York-Newark-J...| paid|
-        |     Liam|     Watts|     M|New York-Newark-J...| paid|
-        |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
-        |     Alan|     Morse|     M|Chicago-Napervill...| paid|
-        |   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-        |     Alan|     Morse|     M|Chicago-Napervill...| paid|
-        |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
-        +---------+----------+------+--------------------+-----+
+   ```bash
+   +---------+----------+------+--------------------+-----+
+   |firstname|  lastname|gender|            location|level|
+   +---------+----------+------+--------------------+-----+
+   | Annalyse|Montgomery|     F|  Killeen-Temple, TX| free|
+   |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
+   |     Liam|     Watts|     M|New York-Newark-J...| paid|
+   |     Tess|  Townsend|     F|Nashville-Davidso...| free|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |Gabriella|   Shelton|     F|San Jose-Sunnyval...| free|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   |     Tess|  Townsend|     F|Nashville-Davidso...| free|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |     Liam|     Watts|     M|New York-Newark-J...| paid|
+   |     Liam|     Watts|     M|New York-Newark-J...| paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...| paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   |     Alan|     Morse|     M|Chicago-Napervill...| paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK| paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
+   +---------+----------+------+--------------------+-----+
+   ```
 
 2. Diese Daten können noch weiter transformiert werden, um die Spalte **level** in **subscription_type** umzubenennen:
 
-        val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
-        renamedColumnsDf.show()
+   ```scala
+   val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+   renamedColumnsDF.show()
+   ```
 
-    Daraufhin erhalten Sie eine Ausgabe wie die folgende:
+   Daraufhin erhalten Sie eine Ausgabe wie die folgende:
 
-        +---------+----------+------+--------------------+-----------------+
-        |firstname|  lastname|gender|            location|subscription_type|
-        +---------+----------+------+--------------------+-----------------+
-        | Annalyse|Montgomery|     F|  Killeen-Temple, TX|             free|
-        |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
-        |     Liam|     Watts|     M|New York-Newark-J...|             paid|
-        |     Tess|  Townsend|     F|Nashville-Davidso...|             free|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-        |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-        |Gabriella|   Shelton|     F|San Jose-Sunnyval...|             free|
-        |   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-        |     Tess|  Townsend|     F|Nashville-Davidso...|             free|
-        |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-        |     Liam|     Watts|     M|New York-Newark-J...|             paid|
-        |     Liam|     Watts|     M|New York-Newark-J...|             paid|
-        |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
-        |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-        |   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-        |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
-        |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
-        |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
-        +---------+----------+------+--------------------+-----------------+
+   ```bash
+   +---------+----------+------+--------------------+-----------------+
+   |firstname|  lastname|gender|            location|subscription_type|
+   +---------+----------+------+--------------------+-----------------+
+   | Annalyse|Montgomery|     F|  Killeen-Temple, TX|             free|
+   |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
+   |     Liam|     Watts|     M|New York-Newark-J...|             paid|
+   |     Tess|  Townsend|     F|Nashville-Davidso...|             free|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |Gabriella|   Shelton|     F|San Jose-Sunnyval...|             free|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   |     Tess|  Townsend|     F|Nashville-Davidso...|             free|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |     Liam|     Watts|     M|New York-Newark-J...|             paid|
+   |     Liam|     Watts|     M|New York-Newark-J...|             paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |   Elijah|  Williams|     M|Detroit-Warren-De...|             paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   |     Alan|     Morse|     M|Chicago-Napervill...|             paid|
+   |   Dylann|    Thomas|     M|       Anchorage, AK|             paid|
+   |  Margaux|     Smith|     F|Atlanta-Sandy Spr...|             free|
+   +---------+----------+------+--------------------+-----------------+
+   ```
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>Laden von Daten in Azure SQL Data Warehouse
 
-In diesem Abschnitt laden Sie die transformierten Daten in Azure SQL Data Warehouse hoch. Mithilfe des Azure SQL Data Warehouse-Connectors für Azure Databricks können Sie einen Datenrahmen direkt als Tabelle in SQL Data Warehouse hochladen.
+In diesem Abschnitt laden Sie die transformierten Daten in Azure SQL Data Warehouse hoch. Sie verwenden den Azure SQL Data Warehouse-Connector für Azure Databricks, um einen Datenrahmen direkt als Tabelle in eine SQL Data Warehouse-Instanz hochzuladen.
 
-Der SQL Data Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicherort, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
+Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Storage als temporären Speicher, um Daten zwischen Azure Databricks und Azure SQL Data Warehouse hochzuladen. Geben Sie daher zunächst die Konfiguration für die Verbindungsherstellung mit dem Speicherkonto an. Das Konto muss im Rahmen der Vorbereitung für diesen Artikel bereits erstellt worden sein.
 
-1. Geben Sie die Konfiguration für den Zugriff auf das Azure Storage-Konto über Azure Databricks an. Entfernen Sie beim Kopieren der URL für Ihren Blobspeicher aus dem Portal unbedingt die Zeichenfolge *https://* am Anfang.
+1. Geben Sie die Konfiguration für den Zugriff auf das Azure Storage-Konto über Azure Databricks an.
 
-        val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
-        val blobContainer = "<CONTAINER NAME>"
-        val blobAccessKey = "<ACCESS KEY>"
+   ```scala
+   val blobStorage = "<blob-storage-account-name>.blob.core.windows.net"
+   val blobContainer = "<blob-container-name>"
+   val blobAccessKey =  "<access-key>"
+   ```
 
-2. Geben Sie einen temporären Ordner an, der beim Verschieben von Daten zwischen Azure Databricks und Azure SQL Data Warehouse verwendet werden soll.
+2. Geben Sie einen temporären Ordner für die Verschiebung von Daten zwischen Azure Databricks und Azure SQL Data Warehouse an.
 
-        val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+   ```scala
+   val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+   ```
 
 3. Führen Sie den folgenden Codeausschnitt aus, um Azure Blob-Speicherzugriffsschlüssel in der Konfiguration zu speichern. Dadurch wird sichergestellt, dass Sie den Zugriffsschlüssel im Notebook nicht als Klartext speichern müssen.
 
-        val acntInfo = "fs.azure.account.key."+ blobStorage
-        sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
+   ```scala
+   val acntInfo = "fs.azure.account.key."+ blobStorage
+   sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
+   ```
 
 4. Geben Sie die Werte für die Verbindungsherstellung mit der Azure SQL Data Warehouse-Instanz an. Im Rahmen der Vorbereitung muss bereits eine SQL Data Warehouse-Instanz erstellt worden sein.
 
-        //SQL Data Warehouse related settings
-        val dwDatabase = "<DATABASE NAME>"
-        val dwServer = "<DATABASE SERVER NAME>"
-        val dwUser = "<USER NAME>"
-        val dwPass = "<PASSWORD>"
-        val dwJdbcPort = "1433"
-        val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
-        val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
-        val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
+   ```scala
+   //SQL Data Warehouse related settings
+   val dwDatabase = "<database-name>"
+   val dwServer = "<database-server-name>"
+   val dwUser = "<user-name>"
+   val dwPass = "<password>"
+   val dwJdbcPort =  "1433"
+   val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
+   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
+   ```
 
-5. Führen Sie den folgenden Codeausschnitt aus, um den transformierten Datenrahmen (**renamedColumnsDf**) als Tabelle in SQL Data Warehouse zu laden. Dieser Codeausschnitt erstellt in der SQL-Datenbank eine Tabelle namens **SampleTable**. Beachten Sie, dass für Azure SQL DW ein Masterschlüssel erforderlich ist. Sie können einen Hauptschlüssel erstellen, indem Sie in SQL Server Management Studio den Befehl „CREATE MASTER KEY;“ ausführen.
+5. Führen Sie den folgenden Codeausschnitt aus, um den transformierten Datenrahmen (**renamedColumnsDF**) als Tabelle in einer SQL Data Warehouse-Instanz zu laden. Dieser Codeausschnitt erstellt in der SQL-Datenbank eine Tabelle namens **SampleTable**.
 
-        spark.conf.set(
-          "spark.sql.parquet.writeLegacyFormat",
-          "true")
-    
-        renamedColumnsDf.write
-            .format("com.databricks.spark.sqldw")
-            .option("url", sqlDwUrlSmall)
-            .option("dbtable", "SampleTable")
-            .option( "forward_spark_azure_storage_credentials","True")
-            .option("tempdir", tempDir)
-            .mode("overwrite")
-            .save()
+   ```scala
+   spark.conf.set(
+       "spark.sql.parquet.writeLegacyFormat",
+       "true")
 
-6. Stellen Sie eine Verbindung mit der SQL-Datenbank her, und vergewissern Sie sich, dass eine Tabelle namens **SampleTable** vorhanden ist.
+   renamedColumnsDF.write
+       .format("com.databricks.spark.sqldw")
+       .option("url", sqlDwUrlSmall) 
+       .option("dbtable", "SampleTable")
+       .option( "forward_spark_azure_storage_credentials","True")
+       .option("tempdir", tempDir)
+       .mode("overwrite")
+       .save()
+   ```
 
-    ![Überprüfen der Beispieltabelle](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Überprüfen der Beispieltabelle")
+6. Stellen Sie eine Verbindung mit der SQL-Datenbank her, und vergewissern Sie sich, dass eine Datenbank namens **SampleTable** vorhanden ist.
 
-7. Führen Sie zur Überprüfung des Tabelleninhalts eine SELECT-Abfrage aus. Es sollten die gleichen Daten wie im Datenrahmen **renamedColumnsDf** enthalten sein.
+   ![Überprüfen der Beispieltabelle](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Überprüfen der Beispieltabelle")
+
+7. Führen Sie zur Überprüfung des Tabelleninhalts eine SELECT-Abfrage aus. Die Tabelle sollte die gleichen Daten enthalten wie der Datenrahmen **renamedColumnsDF**.
 
     ![Überprüfen des Inhalts der Beispieltabelle](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "Überprüfen des Inhalts der Beispieltabelle")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Nach Abschluss des Tutorials können Sie den Cluster beenden. Klicken Sie hierzu im linken Bereich des Azure Databricks-Arbeitsbereichs auf **Cluster**. Bewegen Sie den Cursor zum Beenden des Clusters auf die Auslassungspunkte in der Spalte **Aktionen**, und klicken Sie auf das Symbol **Beenden**.
+Nach Abschluss des Tutorials können Sie den Cluster beenden. Wählen Sie hierzu im linken Bereich des Azure Databricks-Arbeitsbereichs die Option **Cluster** aus. Zeigen Sie zum Beenden des Clusters unter **Aktionen** auf die Auslassungspunkte (...), und wählen Sie das Symbol **Beenden** aus.
 
 ![Beenden eines Databricks-Clusters](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Beenden eines Databricks-Clusters")
 
-Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
+Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden) aktiviert haben. In diesem Fall wird der Cluster automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen eines Azure Databricks-Arbeitsbereichs
+> * Erstellen eines Azure Databricks-Diensts
 > * Erstellen eines Spark-Clusters in Azure Databricks
-> * Erstellen eines Azure Data Lake-Speicherkontos
-> * Hochladen von Daten in Azure Data Lake Store
 > * Erstellen eines Notebooks in Azure Databricks
-> * Extrahieren von Daten aus Data Lake Store
+> * Extrahieren von Daten aus einem Data Lake Storage Gen2-Konto
 > * Transformieren von Daten in Azure Databricks
 > * Laden von Daten in Azure SQL Data Warehouse
 

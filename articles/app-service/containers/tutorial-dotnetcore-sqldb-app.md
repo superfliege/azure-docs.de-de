@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9695c3d40ee85cf1a46e078776c88ad2f61ed839
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9d4aee884e91c52be48c8a44f185f188b0c93ab5
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465402"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511138"
 ---
 # <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Erstellen einer .NET Core- und SQL-Datenbank-App in Azure App Service unter Linux
 
@@ -359,6 +359,35 @@ Wechseln Sie nach Abschluss des Vorgangs `git push` zu Ihrer Azure-App, und test
 ![Azure-App nach Code First-Migration](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
 Ihre gesamten vorhandenen Aufgaben werden weiterhin angezeigt. Wenn Sie die .NET Core-App erneut veröffentlichen, gehen in der SQL-Datenbank vorhandene Daten nicht verloren. Außerdem wird durch Entity Framework Core-Migrationen nur das Datenschema geändert, die vorhandenen Daten bleiben unverändert.
+
+## <a name="stream-diagnostic-logs"></a>Streaming des Diagnoseprotokolls
+
+Im Beispielprojekt wird die Anleitung unter [Protokollierung in ASP.NET Core.](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) mit zwei Konfigurationsänderungen bereits befolgt:
+
+- Enthält einen Verweis auf `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
+- Ruft `loggerFactory.AddAzureWebAppDiagnostics()` in *Startup.cs* auf.
+
+> [!NOTE]
+> Die Protokollebene des Projekts ist in *appsettings.json* auf `Information` festgelegt.
+> 
+
+In App Service unter Linux werden Apps in einem Container eines Docker-Standardimages ausgeführt. Sie können auf die Konsolenprotokolle zugreifen, die aus dem Container generiert werden. Aktivieren Sie zum Abrufen der Protokolle zuerst die Containerprotokollierung, indem Sie in Cloud Shell den Befehl [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) ausführen.
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
+```
+
+Sobald die Containerprotokollierung aktiviert ist, überwachen Sie den Protokolldatenstrom durch Ausführen des Befehls [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in Cloud Shell.
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
+
+Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
+
+Weitere Informationen zum Anpassen der ASP.NET Core-Protokolle finden Sie unter [Protokollierung in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
 ## <a name="manage-your-azure-app"></a>Verwalten der Azure-App
 

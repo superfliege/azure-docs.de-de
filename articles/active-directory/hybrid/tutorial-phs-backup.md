@@ -7,16 +7,16 @@ author: billmath
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/30/2019
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7e7c9ca30659fd1e99989bb77406b653a8ed9e7f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 5219241de9b18008032a3eb78c6aab25a2713370
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302979"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660407"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Tutorial:  Einrichten der Kennworthashsynchronisierung als Sicherung für AD FS in Azure AD Connect
 
@@ -43,7 +43,7 @@ Gehen Sie wie folgt vor:
 10. Das ist alles!  Fertig.  Die Kennworthashsynchronisierung wird jetzt durchgeführt und kann als Sicherung verwendet werden, falls AD FS nicht verfügbar ist.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Umstellung auf die Kennworthashsynchronisierung
-Nachfolgend wird veranschaulicht, wie Sie auf die Kennworthashsynchronisierung umstellen können, falls dies erforderlich ist.  Gehen Sie wie folgt vor:
+Nachfolgend wird veranschaulicht, wie Sie auf die Kennworthashsynchronisierung umstellen. Bevor Sie beginnen, überlegen Sie, unter welchen Bedingungen Sie die Umstellung vornehmen sollten. Nehmen Sie die Umstellung nicht aus vorübergehenden Gründen vor, wie einem Netzwerkausfall, einem kleinen Problem mit AD FS oder einem Problem, das eine Teilmenge Ihrer Benutzer betrifft. Wenn Sie sich für die Umstellung entscheiden, da das Beheben des Problems zu lange dauern würde, führen Sie folgende Schritte aus:
 
 1. Doppelklicken Sie auf das Azure AD Connect-Symbol, das auf dem Desktop erstellt wurde.
 2.  Klicken Sie auf **Konfigurieren**.

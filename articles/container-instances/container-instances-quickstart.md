@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70d1bc9003d98f0154b9f38738f1b8e82b0c506d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 93a41610035d91774256410cea6af1d06b085d30
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189607"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562061"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-the-azure-cli"></a>Schnellstart: Ausführen einer Containeranwendung in Azure Container Instances mit der Azure-Befehlszeilenschnittstelle
 
@@ -39,7 +39,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Sie besitzen eine Ressourcengruppe und können nun einen Container in Azure ausführen. Geben Sie zum Erstellen einer Containerinstanz mit der Azure-Befehlszeilenschnittstelle einen Ressourcengruppennamen, einen Containerinstanznamen und ein Docker-Containerimage im Befehl [az container create][az-container-create] an. Sie können Ihre Container über das Internet verfügbar machen, indem Sie mindestens einen zu öffnenden Port und/oder eine DNS-Namensbezeichnung angeben. In dieser Schnellstartanleitung stellen Sie einen Container mit einer DNS-Namensbezeichnung bereit, der eine kleine in Node.js geschriebene Web-App hostet.
+Sie besitzen eine Ressourcengruppe und können nun einen Container in Azure ausführen. Geben Sie zum Erstellen einer Containerinstanz mit der Azure-Befehlszeilenschnittstelle einen Ressourcengruppennamen, einen Containerinstanznamen und ein Docker-Containerimage im Befehl [az container create][az-container-create] an. In diesem Schnellstart verwenden Sie das `microsoft/aci-helloworld`-Image aus der öffentlichen Docker Hub-Registrierung. Dieses Image verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient.
+
+Sie können Ihre Container über das Internet verfügbar machen, indem Sie mindestens einen zu öffnenden Port und/oder eine DNS-Namensbezeichnung angeben. In diesem Schnellstart stellen Sie einen Container mit einer DNS-Namensbezeichnung bereit, damit die Web-App öffentlich erreichbar ist.
 
 Führen Sie den folgenden Befehl aus, um eine Containerinstanz zu starten. Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Instanz erstellen, eindeutig sein. Wird die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt, verwenden Sie eine andere DNS-Namensbezeichnung.
 
@@ -92,7 +94,7 @@ listening on port 80
 
 Zusätzlich zum Anzeigen der Protokolle können Sie Ihre lokalen Standardausgabestreams und Standardfehlerstreams an die Streams des Containers anfügen.
 
-Führen Sie zunächst den Befehl [az container attach][az-container-attach] aus, um Ihrer lokalen Konsole die Ausgabestreams des Containers anzufügen:
+Führen Sie zunächst den Befehl [az container attach][az-container-attach] aus, um Ihre lokale Konsole den Ausgabestreams des Containers anzufügen:
 
 ```azurecli-interactive
 az container attach --resource-group myResourceGroup -n mycontainer
@@ -145,7 +147,7 @@ In dieser Schnellstartanleitung haben Sie eine Azure-Containerinstanz mithilfe e
 > [!div class="nextstepaction"]
 > [Azure Container Instances-Tutorial](./container-instances-tutorial-prepare-app.md)
 
-Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azure zu testen, lesen Sie die Schnellstartanleitung für [Service Fabric][service-fabric] oder [Azure Kubernetes Service (AKS)][container-service].
+Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azure zu testen, lesen Sie die Schnellstartanleitung für [Azure Kubernetes Service (AKS)][container-service].
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
@@ -166,4 +168,3 @@ Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azur
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md
-[service-fabric]: ../service-fabric/service-fabric-quickstart-containers.md

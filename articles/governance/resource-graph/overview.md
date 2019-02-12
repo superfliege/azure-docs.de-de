@@ -4,16 +4,16 @@ description: Azure Resource Graph ist ein Dienst in Azure, der komplexe bedarfsa
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ed64f6317fefb9e82dbe14e806499965d926d434
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316198"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813278"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -45,6 +45,10 @@ Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwend
 ## <a name="permissions-in-azure-resource-graph"></a>Berechtigungen in Azure Resource Graph
 
 Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte für die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) und mindestens über Lesezugriff auf die abzufragenden Ressourcen verfügen. Wenn Sie nicht mindestens `read`-Berechtigungen für das Azure-Objekt bzw. die Objektgruppe haben, werden keine Ergebnisse zurückgegeben.
+
+## <a name="throttling"></a>Drosselung
+
+Abfragen an Ressource Graph werden gedrosselt, um für alle Kunden die beste Erfahrung und Antwortzeit bereitzustellen. Wenn Ihre Organisation die Resource Graph-API für umfangreiche und häufige Abfragen verwenden möchte, verwenden Sie das Feedback-Portal auf der Resource Graph-Seite. Geben Sie Ihr Geschäftsszenario an, und aktivieren Sie das Kontrollkästchen „Microsoft darf mich bezüglich meines Feedbacks per E-Mail kontaktieren“, damit das Team Sie kontaktiert.
 
 ## <a name="running-your-first-query"></a>Ausführen Ihrer ersten Abfrage
 

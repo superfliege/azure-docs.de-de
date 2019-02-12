@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/12/2018
+ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: f49f6f03b6d9f1c51cada58ae782bbc364fc9d66
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7ea9ce47b82dd4ad31caf935fd10e04daa07faba
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427286"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699977"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell
 
@@ -34,12 +34,14 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um dieses Lernprogramm abzuschließen, benötigen Sie:
 
 - Berechtigungen zum Erstellen von benutzerdefinierten Rollen, etwa [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator)
-- [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (lokal installiert)
+- [Azure PowerShell](/powershell/azure/install-az-ps) (lokal installiert)
 
 ## <a name="sign-in-to-azure-powershell"></a>Anmelden bei Azure PowerShell
 
@@ -49,10 +51,10 @@ Melden Sie sich bei [Azure PowerShell](/powershell/azure/authenticate-azureps) a
 
 Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer integrierten Rolle, bearbeiten sie und erstellen dann eine neue Rolle.
 
-1. Verwenden Sie in PowerShell den Befehl [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation), um die Liste der Vorgänge für den Ressourcenanbieter „Microsoft.Support“ abzurufen. Es ist hilfreich, die Vorgänge zu kennen, die zum Erstellen der Berechtigungen verfügbar sind. Eine Liste der verfügbaren Vorgänge finden Sie auch unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md#microsoftsupport).
+1. Verwenden Sie in PowerShell den Befehl [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation), um die Liste der Vorgänge für den Ressourcenanbieter „Microsoft.Support“ abzurufen. Es ist hilfreich, die Vorgänge zu kennen, die zum Erstellen der Berechtigungen verfügbar sind. Eine Liste der verfügbaren Vorgänge finden Sie auch unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md#microsoftsupport).
 
     ```azurepowershell
-    Get-AzureRMProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
+    Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
     ```
     
     ```Output
@@ -63,10 +65,10 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
     Microsoft.Support/supportTickets/write Creates or Updates a Support Ticket. You can create a Support Tic...
     ```
 
-1. Verwenden Sie den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), um die Rolle [Leser](built-in-roles.md#reader) im JSON-Format auszugeben.
+1. Verwenden Sie den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition), um die Rolle [Leser](built-in-roles.md#reader) im JSON-Format auszugeben.
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
     ```
 
 1. Öffnen Sie die Datei **ReaderSupportRole.json** in einem Editor.
@@ -75,34 +77,28 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
 
     ```json
     {
-        "Name":  "Reader",
-        "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-        "IsCustom":  false,
-        "Description":  "Lets you view everything, but not make any changes.",
-        "Actions":  [
-                        "*/read"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/"
-                             ]
+      "Name": "Reader",
+      "Id": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+      "IsCustom": false,
+      "Description": "Lets you view everything, but not make any changes.",
+      "Actions": [
+        "*/read"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/"
+      ]
     }
     ```
     
 1. Bearbeiten Sie die JSON-Datei, um den Vorgang `"Microsoft.Support/*"` zur Eigenschaft `Actions` hinzuzufügen. Achten Sie darauf, ein Komma nach dem Lesevorgang einzufügen. Diese Aktion ermöglicht dem Benutzer das Erstellen von Supporttickets.
 
-1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) ab.
+1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) ab.
 
     ```azurepowershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 1. Fügen Sie in `AssignableScopes` Ihre Abonnement-ID im folgenden Format ein: `"/subscriptions/00000000-0000-0000-0000-000000000000"`.
@@ -113,36 +109,30 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
 
 1. Ändern Sie die Eigenschaften `Name` und `Description` in „Reader Support Tickets“ und „View everything in the subscription and also open support tickets“.
 
-    Ihre JSON-Datei sollte folgendermaßen aussehen:
+    Ihre JSON-Datei sollte wie folgt aussehen:
 
     ```json
     {
-        "Name":  "Reader Support Tickets",
-        "IsCustom":  true,
-        "Description":  "View everything in the subscription and also open support tickets.",
-        "Actions":  [
-                        "*/read",
-                        "Microsoft.Support/*"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/00000000-0000-0000-0000-000000000000"
-                             ]
+      "Name": "Reader Support Tickets",
+      "IsCustom": true,
+      "Description": "View everything in the subscription and also open support tickets.",
+      "Actions": [
+        "*/read",
+        "Microsoft.Support/*"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
     }
     ```
     
-1. Zum Erstellen der neuen benutzerdefinierten Rolle verwenden Sie den Befehl [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) und geben die JSON-Rollendefinitionsdatei an.
+1. Zum Erstellen der neuen benutzerdefinierten Rolle verwenden Sie den Befehl [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) und geben die JSON-Rollendefinitionsdatei an.
 
     ```azurepowershell
-    New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
+    New-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
     ```
 
     ```Output
@@ -161,10 +151,10 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
 
 ## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen 
 
-- Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+- Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+    Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
     ```
 
     ```Output
@@ -181,10 +171,10 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
 
 Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei aktualisieren oder das Objekt `PSRoleDefinition` verwenden.
 
-1. Verwenden Sie zum Aktualisieren der JSON-Datei den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), um die benutzerdefinierte Rolle im JSON-Format auszugeben.
+1. Verwenden Sie zum Aktualisieren der JSON-Datei den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition), um die benutzerdefinierte Rolle im JSON-Format auszugeben.
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
+    Get-AzRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
     ```
 
 1. Öffnen Sie die Datei in einem Editor.
@@ -195,34 +185,28 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
 
     ```json
     {
-        "Name":  "Reader Support Tickets",
-        "Id":  "22222222-2222-2222-2222-222222222222",
-        "IsCustom":  true,
-        "Description":  "View everything in the subscription and also open support tickets.",
-        "Actions":  [
-                        "*/read",
-                        "Microsoft.Support/*",
-                        "Microsoft.Resources/deployments/*"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/00000000-0000-0000-0000-000000000000"
-                             ]
+      "Name": "Reader Support Tickets",
+      "Id": "22222222-2222-2222-2222-222222222222",
+      "IsCustom": true,
+      "Description": "View everything in the subscription and also open support tickets.",
+      "Actions": [
+        "*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
     }
     ```
         
-1. Führen Sie zum Aktualisieren der benutzerdefinierten Rolle den Befehl [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) aus, und geben Sie die aktualisierte JSON-Datei an.
+1. Führen Sie zum Aktualisieren der benutzerdefinierten Rolle den Befehl [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) aus, und geben Sie die aktualisierte JSON-Datei an.
 
     ```azurepowershell
-    Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
+    Set-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
     ```
 
     ```Output
@@ -237,10 +221,10 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. Wenn Sie zum Aktualisieren der benutzerdefinierten Rolle das Objekt `PSRoleDefintion` verwenden möchten, führen Sie zuerst den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) aus, um die Rolle abzurufen.
+1. Wenn Sie zum Aktualisieren der benutzerdefinierten Rolle das Objekt `PSRoleDefintion` verwenden möchten, führen Sie zuerst den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) aus, um die Rolle abzurufen.
 
     ```azurepowershell
-    $role = Get-AzureRmRoleDefinition "Reader Support Tickets"
+    $role = Get-AzRoleDefinition "Reader Support Tickets"
     ```
     
 1. Rufen Sie die Methode `Add` auf, um den Vorgang zum Lesen der Diagnoseeinstellungen hinzuzufügen.
@@ -249,10 +233,10 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")
     ```
 
-1. Aktualisieren Sie die Rolle mithilfe von [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition).
+1. Aktualisieren Sie die Rolle mithilfe von [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition).
 
     ```azurepowershell
-    Set-AzureRmRoleDefinition -Role $role
+    Set-AzRoleDefinition -Role $role
     ```
     
     ```Output
@@ -270,16 +254,16 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
     
 ## <a name="delete-a-custom-role"></a>Löschen einer benutzerdefinierten Rolle
 
-1. Verwenden Sie zum Abrufen der ID der benutzerdefinierten Rolle den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+1. Verwenden Sie zum Abrufen der ID der benutzerdefinierten Rolle den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition "Reader Support Tickets"
+    Get-AzRoleDefinition "Reader Support Tickets"
     ```
 
-1. Verwenden Sie den Befehl [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition), und geben Sie die Rollen-ID an, um die benutzerdefinierte Rolle zu löschen.
+1. Verwenden Sie den Befehl [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition), und geben Sie die Rollen-ID an, um die benutzerdefinierte Rolle zu löschen.
 
     ```azurepowershell
-    Remove-AzureRmRoleDefinition -Id "22222222-2222-2222-2222-222222222222"
+    Remove-AzRoleDefinition -Id "22222222-2222-2222-2222-222222222222"
     ```
 
     ```Output

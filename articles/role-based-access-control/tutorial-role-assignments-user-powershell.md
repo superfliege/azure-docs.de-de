@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/11/2018
+ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 27b48e1d6aabf9cde7152bfb0dbf3e58bc619107
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301727"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696777"
 ---
 # <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell
 
@@ -32,6 +32,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Zugriff entfernen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -79,10 +81,10 @@ Zum Zuweisen einer Rolle benötigen Sie einen Benutzer, eine Gruppe oder einen D
 
 Sie verwenden eine Ressourcengruppe, um zu veranschaulichen, wie eine Rolle im Ressourcengruppenbereich zugewiesen wird.
 
-1. Rufen Sie mit dem Befehl [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) eine Liste der Regionsstandorte ab.
+1. Rufen Sie mit dem Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation) eine Liste der Regionsstandorte ab.
 
    ```azurepowershell
-   Get-AzureRmLocation | select Location
+   Get-AzLocation | select Location
    ```
 
 1. Wählen Sie einen Standort in Ihrer Nähe, und weisen Sie ihn einer Variablen zu.
@@ -91,10 +93,10 @@ Sie verwenden eine Ressourcengruppe, um zu veranschaulichen, wie eine Rolle im R
    $location = "westus"
    ```
 
-1. Erstellen Sie mit dem Befehl [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine neue Ressourcengruppe.
+1. Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine neue Ressourcengruppe.
 
    ```azurepowershell
-   New-AzureRmResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
+   New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
    ```
 
    ```Example
@@ -107,12 +109,12 @@ Sie verwenden eine Ressourcengruppe, um zu veranschaulichen, wie eine Rolle im R
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
-Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) zum Zuweisen einer Rolle. Sie müssen den Sicherheitsprinzipal, die Rollendefinition und den Bereich angeben.
+Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) zum Zuweisen einer Rolle. Sie müssen den Sicherheitsprinzipal, die Rollendefinition und den Bereich angeben.
 
-1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) ab.
+1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) ab.
 
     ```azurepowershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     ```Example
@@ -131,7 +133,7 @@ Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRm
 1. Weisen Sie die Rolle [Leser](built-in-roles.md#reader) dem Benutzer im Abonnementbereich zu.
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    New-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -151,7 +153,7 @@ Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRm
 1. Weisen Sie die Rolle [Mitwirkender](built-in-roles.md#contributor) dem Benutzer im Ressourcengruppenbereich zu.
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    New-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -170,10 +172,10 @@ Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRm
 
 ## <a name="list-access"></a>Auflisten des Zugriffs
 
-1. Um den Zugriff für das Abonnement zu überprüfen, listen Sie mithilfe des Befehls [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) die Rollenzuweisungen auf.
+1. Um den Zugriff für das Abonnement zu überprüfen, listen Sie mithilfe des Befehls [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) die Rollenzuweisungen auf.
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
+    Get-AzRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
     ```
 
     ```Example
@@ -190,10 +192,10 @@ Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRm
 
     In der Ausgabe sehen Sie, dass die Rolle „Leser“ dem Benutzer des RBAC-Tutorials im Abonnementbereich zugewiesen ist.
 
-1. Um den Zugriff für die Ressourcengruppe zu überprüfen, listen Sie mit dem Befehl [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) die Rollenzuweisungen auf.
+1. Um den Zugriff für die Ressourcengruppe zu überprüfen, listen Sie mit dem Befehl [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) die Rollenzuweisungen auf.
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
+    Get-AzRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
     ```
 
     ```Example
@@ -232,12 +234,12 @@ Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRm
 
 ## <a name="remove-access"></a>Zugriff entfernen
 
-Verwenden Sie zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment), um eine Rollenzuweisung zu entfernen.
+Verwenden Sie zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment), um eine Rollenzuweisung zu entfernen.
 
 1. Verwenden Sie den folgenden Befehl, um die Zuweisung der Rolle „Mitwirkender“ für den Benutzer im Ressourcengruppenbereich zu entfernen.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    Remove-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -245,7 +247,7 @@ Verwenden Sie zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen 
 1. Verwenden Sie den folgenden Befehl, um die Zuweisung der Rolle „Leser“ für den Benutzer im Abonnementbereich zu entfernen.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    Remove-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -254,10 +256,10 @@ Verwenden Sie zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen 
 
 Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen löschen Sie die Ressourcengruppe und den Benutzer.
 
-1. Löschen Sie die Ressourcengruppe mithilfe des Befehls [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+1. Löschen Sie die Ressourcengruppe mithilfe des Befehls [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
     ```azurepowershell
-    Remove-AzureRmResourceGroup -Name "rbac-tutorial-resource-group"
+    Remove-AzResourceGroup -Name "rbac-tutorial-resource-group"
     ```
 
     ```Example

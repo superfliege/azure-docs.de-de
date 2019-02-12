@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
-ms.date: 12/04/2018
+ms.date: 02/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7be1bf8c003315fc4dbed449283f7c92850edced
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251281"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752040"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
@@ -33,34 +33,71 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Transformieren von Daten mithilfe intelligenter Transformationen, um neue Features zu erstellen
 > * Speichern Ihres Dataflowobjekts für die Verwendung in einem Regressionsmodell
 
-Sie können Ihre Daten in Python mit dem [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) vorbereiten.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="get-the-notebook"></a>Abrufen des Notebooks
+Fahren Sie mit dem Abschnitt [Einrichten Ihrer Entwicklungsumgebung](#start) fort, um mehr zu den Schritten mit Notebooks zu erfahren, oder rufen Sie anhand der nachfolgenden Anweisungen das Notebook ab, und führen Sie es unter Azure Notebooks oder auf Ihrem eigenen Notebook-Server aus. Für die Ausführung des Notebooks ist Folgendes erforderlich:
 
-Dieses Tutorial wird auch als [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) bereitgestellt. Führen Sie das Notebook **regression-part1-data-prep.ipynb** entweder in [Azure Notebooks](https://notebooks.azure.com/) oder auf Ihrem eigenen Jupyter Notebook-Server aus.
+* Ein Python 3.6-Notebook-Server mit folgenden Komponenten:
+    * Das Datenaufbereitungs-SDK für Python von Azure Machine Learning
+* Das Tutorial-Notebook
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Wie Sie diese erforderlichen Komponenten beziehen, erfahren Sie in den jeweiligen Abschnitten:
 
-## <a name="import-packages"></a>Importieren von Paketen
+* Verwenden von [Azure Notebooks](#azure)
+* Verwenden [Ihres eigenen Notebook-Servers](#server)
 
-Importieren Sie zunächst das SDK.
+### <a name="azure"></a>Verwenden von Azure Notebooks: Kostenlose Jupyter-Notebooks in der Cloud
 
-```python
-import azureml.dataprep as dprep
-```
+Der Einstieg in Azure Notebooks ist einfach! Das [Datenaufbereitungs-SDK für Python von Azure Machine Learning](https://aka.ms/data-prep-sdk) wurde unter [Azure Notebooks](https://notebooks.azure.com/) bereits für Sie installiert und konfiguriert. Die Installation und zukünftige Updates werden automatisch über Azure-Dienste verwaltet.
 
-Wenn Sie das Tutorial in Ihrer eigenen Python-Umgebung durchführen, verwenden Sie den folgenden Befehl, um die erforderlichen Pakete zu installieren:
+Führen Sie nach den folgenden Schritten das Notebook **tutorials/regression-part1-data-prep.ipynb** in Ihrem Projekt **Erste Schritte** aus.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>Verwenden Ihres eigenen Jupyter Notebook-Servers
+
+Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Notebook-Server zu erstellen.  Führen Sie nach den Schritten das Notebook **tutorials/regression-part1-data-prep.ipynb** aus.
+
+1. Führen Sie die Schritte unter [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-create-workspace-with-python.md) aus, um eine Miniconda-Umgebung zu erstellen.  Den Abschnitt **Erstellen eines Arbeitsbereichs** können Sie überspringen, wenn Sie möchten, Sie benötigen ihn jedoch für [Teil 2](tutorial-auto-train-models.md) dieser Tutorialreihe.
+1. Installieren Sie das Datenaufbereitungs-SDK mithilfe von `pip install azureml-dataprep` in Ihrer Umgebung.
+1. Klonen Sie das [GitHub-Repository](https://aka.ms/aml-notebooks).
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Starten Sie den Notebook-Server aus Ihrem geklonten Verzeichnis.
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+
+### Install and import packages
+
+Use the following to install necessary packages if you don't already have them.
 
 ```shell
 pip install azureml-dataprep
+```
+
+Importieren Sie das SDK.
+
+```python
+import azureml.dataprep as dprep
 ```
 
 ## <a name="load-data"></a>Laden von Daten
 
 Laden Sie zwei verschiedene Datasets für New Yorker Taxis in Dataflowobjekte herunter. Die Felder dieser Datasets unterscheiden sich geringfügig. Die Methode `auto_read_file()` erkennt automatisch die Art der Eingabedatei.
 
-
 ```python
+from IPython.display import display
 dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
 green_path = "/".join([dataset_root, "green-small/*"])
@@ -283,24 +320,24 @@ combined_df.keep_columns(columns=[
       <th></th>
       <th>Type</th>
       <th>Min</th>
-      <th>max</th>
+      <th>Max</th>
       <th>Count</th>
-      <th>Fehlt (Anzahl)</th>
-      <th>Fehlt nicht (Anzahl)</th>
-      <th>Fehlt (Prozent)</th>
-      <th>Fehler (Anzahl)</th>
-      <th>Leer (Anzahl)</th>
-      <th>0,1 % Quantil</th>
-      <th>1 % Quantil</th>
-      <th>5 % Quantil</th>
-      <th>25 % Quantil</th>
-      <th>50 % Quantil</th>
-      <th>75 % Quantil</th>
-      <th>95 % Quantil</th>
-      <th>99 % Quantil</th>
-      <th>99,9 % Quantil</th>
+      <th>Missing Count</th>
+      <th>Not Missing Count</th>
+      <th>Percent missing</th>
+      <th>Error Count</th>
+      <th>Empty count</th>
+      <th>0.1% Quantile</th>
+      <th>1% Quantile</th>
+      <th>5% Quantile</th>
+      <th>25% Quantile</th>
+      <th>50% Quantile</th>
+      <th>75% Quantile</th>
+      <th>95% Quantile</th>
+      <th>99% Quantile</th>
+      <th>99.9% Quantile</th>
       <th>Standardabweichung</th>
-      <th>Mittelwert</th>
+      <th>Mean</th>
     </tr>
   </thead>
   <tbody>
@@ -435,24 +472,24 @@ latlong_filtered_df.keep_columns(columns=[
       <th></th>
       <th>Type</th>
       <th>Min</th>
-      <th>max</th>
+      <th>Max</th>
       <th>Count</th>
-      <th>Fehlt (Anzahl)</th>
-      <th>Fehlt nicht (Anzahl)</th>
-      <th>Fehlt (Prozent)</th>
-      <th>Fehler (Anzahl)</th>
-      <th>Leer (Anzahl)</th>
-      <th>0,1 % Quantil</th>
-      <th>1 % Quantil</th>
-      <th>5 % Quantil</th>
-      <th>25 % Quantil</th>
-      <th>50 % Quantil</th>
-      <th>75 % Quantil</th>
-      <th>95 % Quantil</th>
-      <th>99 % Quantil</th>
-      <th>99,9 % Quantil</th>
-      <th>Standardabweichung</th>
-      <th>Mittelwert</th>
+      <th>Missing Count</th>
+      <th>Not Missing Count</th>
+      <th>Percent missing</th>
+      <th>Percent missing</th>
+      <th>Empty count</th>
+      <th>0.1% Quantile</th>
+      <th>1% Quantile</th>
+      <th>5% Quantile</th>
+      <th>25% Quantile</th>
+      <th>50% Quantile</th>
+      <th>75% Quantile</th>
+      <th>95% Quantile</th>
+      <th>99% Quantile</th>
+      <th>99.9% Quantile</th>
+      <th>Standard Deviation</th>
+      <th>Mean</th>
     </tr>
   </thead>
   <tbody>
@@ -569,24 +606,24 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
       <th></th>
       <th>Type</th>
       <th>Min</th>
-      <th>max</th>
+      <th>Max</th>
       <th>Count</th>
-      <th>Fehlt (Anzahl)</th>
-      <th>Fehlt nicht (Anzahl)</th>
-      <th>Fehlt (Prozent)</th>
-      <th>Fehler (Anzahl)</th>
-      <th>Leer (Anzahl)</th>
-      <th>0,1 % Quantil</th>
-      <th>1 % Quantil</th>
-      <th>5 % Quantil</th>
-      <th>25 % Quantil</th>
-      <th>50 % Quantil</th>
-      <th>75 % Quantil</th>
-      <th>95 % Quantil</th>
-      <th>99 % Quantil</th>
-      <th>99,9 % Quantil</th>
-      <th>Standardabweichung</th>
-      <th>Mittelwert</th>
+      <th>Missing Count</th>
+      <th>Not Missing Count</th>
+      <th>Percent missing</th>
+      <th>Error Count</th>
+      <th>Empty count</th>
+      <th>0.1% Quantile</th>
+      <th>1% Quantile</th>
+      <th>5% Quantile</th>
+      <th>25% Quantile</th>
+      <th>50% Quantile</th>
+      <th>75% Quantile</th>
+      <th>95% Quantile</th>
+      <th>99% Quantile</th>
+      <th>99.9% Quantile</th>
+      <th>Standard Deviation</th>
+      <th>Mean</th>
     </tr>
   </thead>
   <tbody>

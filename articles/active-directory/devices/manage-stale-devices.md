@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Lebenszyklus von Geräten in Azure AD | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Geräteverwaltung Kontrolle über die Geräte erhalten, die auf Ressourcen in Ihrer Umgebung zugreifen.
+title: Verwalten von veralteten Geräten in Azure AD | Microsoft-Dokumentation
+description: Aufgrund von verloren gegangenen, gestohlenen und beschädigten Geräten oder Neuinstallationen des Betriebssystems enthält Ihre Umgebung normalerweise veraltete Geräte. Erfahren Sie, wie veraltete Geräte aus der Datenbank der registrierten Geräte in Azure Active Directory (Azure AD) entfernt werden.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092155"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493311"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Anleitung: Verwalten der veralteten Geräte in Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
 Idealerweise sollte die Registrierung von registrierten Geräten aufgehoben werden, wenn sie nicht mehr benötigt werden, um den Lebenszyklus abzuschließen. Ihre Umgebung enthält normalerweise aber noch veraltete Geräte, z.B. aufgrund von verloren gegangenen, gestohlenen und beschädigten Geräten oder Neuinstallationen des Betriebssystems. Als IT-Administrator wünschen Sie sich wahrscheinlich eine Methode zum Entfernen von veralteten Geräten, damit Sie Ihre Ressourcen für die Verwaltung der Geräte einsetzen können, für die dies tatsächlich erforderlich ist.
 

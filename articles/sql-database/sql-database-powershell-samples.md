@@ -11,25 +11,32 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 5e1319857e16032b6a4922594a33dbed9554d2f8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/01/2019
+ms.openlocfilehash: 07e530a30898e57916b91632c4bf49d43d69471a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476722"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564849"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-Beispiele für Azure SQL-Datenbank
+
+Azure SQL-Datenbank ermöglicht Ihnen das Konfigurieren Ihrer Datenbanken, Instanzen und Pools mithilfe von Azure PowerShell.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
+## <a name="single-database-and-elastic-pools"></a>Einzeldatenbank und Pools für elastische Datenbanken
 
 Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azure SQL-Datenbank.
 
 | |  |
 |---|---|
-|**Erstellen und Konfigurieren von verwalteten Instanzen, Einzeldatenbanken und Pools für elastische Datenbanken**||
+|**Erstellen und Konfigurieren von Einzeldatenbanken und Pools für elastische Datenbanken**||
 | [Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und zum Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dieses PowerShell-Skript erstellt eine einzelne Azure SQL-Datenbank und konfiguriert eine Firewallregel auf Serverebene. |
 | [Create elastic pools and move databases between pools and out of a pool using PowerShell](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) (Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool mit PowerShell) | Dieses PowerShell-Skript erstellt Pools für elastische Azure SQL-Datenbank-Instanzen, verschiebt in einem Pool zusammengefasste Datenbanken und ändert Computegrößen.|
-| [Erstellen und Verwalten einer verwalteten Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) | Dieses PowerShell-Skript zeigt, wie Sie mithilfe von Azure PowerShell eine verwaltete Instanz erstellen und verwalten. |
-| [Create and manage a Managed Instance using Azure Resource Manager template](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) (Erstellen und Verwalten einer verwalteten Instanz mithilfe einer Azure Resource Manager-Vorlage) | Dieses PowerShell-Skript zeigt, wie Sie mithilfe von Azure PowerShell und einer Azure Resource Manager-Vorlage eine verwaltete Instanz erstellen und verwalten.|
 |**Konfigurieren von Georeplikation und Failover**||
 | [Configure and failover a single database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) (Konfiguration und Failover einer einzelnen Datenbank mithilfe von aktiver Georeplikation)| Dieses PowerShell-Skript konfiguriert die aktive Georeplikation für eine einzelne Azure SQL-Datenbank und führt ein Failover zum sekundären Replikat aus. |
 | [Configure and failover a pooled database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) (Konfiguration und Failover einer gepoolten Datenbank mithilfe von aktiver Georeplikation)| Dieses PowerShell-Skript konfiguriert die aktive Georeplikation für eine Azure SQL-Datenbank in einem Pool für elastische SQL-Datenbanken und führt ein Failover zum sekundären Replikat aus. |
@@ -47,6 +54,21 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azu
 | [Synchronisieren von Daten zwischen SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | In diesem PowerShell-Skript wird die Datensynchronisierung für die Synchronisierung zwischen mehreren Azure SQL-Datenbanken konfiguriert. |
 | [Synchronisieren von Daten zwischen SQL-Datenbank und lokalem SQL Server](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dieses PowerShell-Skript konfiguriert die Datensynchronisierung für die Synchronisierung zwischen einer Azure SQL-Datenbank und einem lokalen SQL-Server. |
 | [Aktualisieren des Synchronisierungsschemas der SQL-Datensynchronisierung](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Dieses PowerShell-Skript fügt dem Synchronisierungsschema der Datensynchronisierung Elemente hinzu oder entfernt sie daraus. |
+|||
+
+Erfahren Sie mehr über die [Azure PowerShell-API für Einzeldatenbanken](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases).
+
+## <a name="managed-instance"></a>Verwaltete Instanz
+
+Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für verwaltete Azure SQL-Datenbank-Instanzen.
+
+| |  |
+|---|---|
+|**Erstellen und Konfigurieren von verwalteten Instanzen**||
+| [Erstellen und Verwalten einer verwalteten Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) | Dieses PowerShell-Skript zeigt, wie Sie mithilfe von Azure PowerShell eine verwaltete Instanz erstellen und verwalten. |
+| [Create and manage a Managed Instance using Azure Resource Manager template](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) (Erstellen und Verwalten einer verwalteten Instanz mithilfe einer Azure Resource Manager-Vorlage) | Dieses PowerShell-Skript zeigt, wie Sie mithilfe von Azure PowerShell und einer Azure Resource Manager-Vorlage eine verwaltete Instanz erstellen und verwalten.|
 | **Konfigurieren von Transparent Data Encryption (TDE)**||
 | [Verwalten von Transparent Data Encryption in einer verwalteten Instanz mithilfe eines eigenen Azure Key Vault-Schlüssels](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| In diesem PowerShell-Skript wird Transparent Data Encryption (TDE) in einem Bring Your Own Key-Szenario (BYOK) für eine verwaltete Azure SQL-Datenbank-Instanz unter Verwendung eines Schlüssels aus Azure Key Vault konfiguriert.|
 |||
+
+Erfahren Sie mehr über die [Azure PowerShell-API für verwaltete Instanzen](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances).

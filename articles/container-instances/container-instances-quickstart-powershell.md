@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87cf0f09cbeeee90492e070b25b713546c6631e5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e8efcbe080cc33cb6153d97d4435bcb477587980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438863"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565852"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Schnellstart: Ausführen einer Containeranwendung in Azure Container Instances mit Azure PowerShell
 
@@ -39,7 +39,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Sie besitzen eine Ressourcengruppe und können nun einen Container in Azure ausführen. Geben Sie zum Erstellen einer Containerinstanz mit Azure PowerShell einen Ressourcengruppennamen, einen Containerinstanznamen und ein Docker-Containerimage im Cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup] an. Sie können Ihre Container über das Internet verfügbar machen, indem Sie mindestens einen zu öffnenden Port und/oder eine DNS-Namensbezeichnung angeben. In dieser Schnellstartanleitung stellen Sie einen Container mit einer DNS-Namensbezeichnung bereit, der eine per Nano Server ausgeführte Instanz von Internetinformationsdienste (IIS) hostet.
+Sie besitzen eine Ressourcengruppe und können nun einen Container in Azure ausführen. Geben Sie zum Erstellen einer Containerinstanz mit Azure PowerShell einen Ressourcengruppennamen, einen Containerinstanznamen und ein Docker-Containerimage im Cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup] an. In diesem Schnellstart verwenden Sie das Windows-Image `microsoft/iis:nanoserver` aus der öffentlichen Docker Hub-Registrierung. Dieses Image verpackt Internetinformationsdienste (IIS) für die Ausführung in Nano Server.
+
+Sie können Ihre Container über das Internet verfügbar machen, indem Sie mindestens einen zu öffnenden Port und/oder eine DNS-Namensbezeichnung angeben. In diesem Schnellstart stellen Sie einen Container mit einer DNS-Namensbezeichnung bereit, damit IIS öffentlich erreichbar ist.
 
 Führen Sie den folgenden Befehl aus, um eine Containerinstanz zu starten. Der Wert `-DnsNameLabel` muss innerhalb der Azure-Region, in der Sie die Instanz erstellen, eindeutig sein. Falls die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt wird, sollten Sie eine andere DNS-Namensbezeichnung verwenden.
 

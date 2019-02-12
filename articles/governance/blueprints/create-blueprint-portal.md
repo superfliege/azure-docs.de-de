@@ -4,17 +4,17 @@ description: Erstellen, Definieren und Bereitstellen von Artefakten mithilfe von
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eebf1a2d1c173e2e37d24ff083e5d7ae011a900
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315297"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566311"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definieren und Zuweisen einer Azure-Blaupause im Portal
 
@@ -42,10 +42,7 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    ![Erstellen einer Blaupause](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Geben Sie einen **Blaupausenname** wie z.B. „MyBlueprint“ (Buchstaben und Zahlen – bis zu 48 Zeichen, jedoch keine Leerzeichen oder Sonderzeichen) für die Blaupause an, aber lassen Sie die **Blaupausenbeschreibung** vorerst leer.  Klicken Sie im Feld **Speicherort der Definition** auf die Auslassungspunkte auf der rechten Seite, wählen Sie die [Verwaltungsgruppe](../management-groups/overview.md) aus, in der Sie die Blaupause speichern möchten, und klicken Sie auf **Auswählen**.
-
-   > [!NOTE]
-   > Blaupausendefinitionen können nur in Verwaltungsgruppen gespeichert werden. Führen Sie zum Erstellen Ihrer ersten Verwaltungsgruppe [diese Schritte](../management-groups/create.md) aus.
+1. Geben Sie einen **Blaupausenname** wie z.B. „MyBlueprint“ (Buchstaben und Zahlen – bis zu 48 Zeichen, jedoch keine Leerzeichen oder Sonderzeichen) für die Blaupause an, aber lassen Sie die **Blaupausenbeschreibung** vorerst leer.  Klicken Sie im Feld **Speicherort der Definition** auf die Auslassungspunkte auf der rechten Seite, wählen Sie die [Verwaltungsgruppe](../management-groups/overview.md) oder das Abonnement aus, in der bzw. dem Sie die Blaupause speichern möchten, und klicken Sie auf **Auswählen**.
 
 1. Überprüfen Sie, ob die Informationen korrekt sind (die Felder **Blaupausenname** und **Speicherort der Definition** können später nicht geändert werden), und klicken Sie unten auf der Seite auf **Weiter: Artefakte** oder oben auf der Seite auf die Registerkarte **Artefakte**.
 
@@ -154,7 +151,7 @@ Durch die Veröffentlichung kann sie einem Abonnement zugewiesen werden.
 
 ## <a name="assign-a-blueprint"></a>Zuweisen einer Blaupause
 
-Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen werden. Weisen Sie die erstellte Blaupause einem der Abonnements unter Ihrer Verwaltungsgruppenhierarchie zu.
+Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen werden. Weisen Sie die erstellte Blaupause einem der Abonnements unter Ihrer Verwaltungsgruppenhierarchie zu. Wenn die Blaupause in einem Abonnement gespeichert wird, kann sie nur diesem Abonnement zugewiesen werden.
 
 1. Wählen Sie auf der Seite links **Blaupausendefinitionen** aus.
 

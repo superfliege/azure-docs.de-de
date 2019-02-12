@@ -4,17 +4,17 @@ description: Azure Blueprint ist ein Dienst in Azure, den Sie zum Erstellen, Def
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246244"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563370"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -56,17 +56,14 @@ Eine Blaupause besteht aus _Artefakten_. Azure Blueprint unterstützt derzeit di
 
 |Ressource  | Hierarchieoptionen| BESCHREIBUNG  |
 |---------|---------|---------|
-|Ressourcengruppen     | Abonnement | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und Azure Resource Manager-Vorlagen.         |
-|Azure Resource Manager-Vorlage      | Abonnement, Ressourcengruppe | Vorlagen werden verwendet, um komplexe Umgebungen zusammenzustellen. Beispielumgebungen: SharePoint-Farm, Azure Automation State Configuration oder Log Analytics-Arbeitsbereich. |
-|Richtlinienzuweisung     | Abonnement, Ressourcengruppe | Ermöglicht die Zuweisung einer Richtlinie oder Initiative zum Abonnement, dem die Blaupause zugewiesen ist. Die Richtlinie oder Initiative muss innerhalb des Bereichs der Blaupause liegen (in der Verwaltungsgruppe der Blaupause oder darunter). Wenn die Richtlinie oder Initiative über Parameter verfügt, werden diese bei der Erstellung der Blaupause oder bei der Blaupausenzuweisung zugewiesen.       |
-|Rollenzuweisung   | Abonnement, Ressourcengruppe | Fügt einer integrierten Rolle einen vorhandenen Benutzer oder eine vorhandene Gruppe zu, um sicherzustellen, dass die richtigen Personen geeigneten Zugriff auf Ihre Ressourcen haben. Rollenzuweisungen können für das gesamte Abonnement definiert oder in einer bestimmten in der Blaupause enthaltenen Ressourcengruppe geschachtelt werden. |
+|Ressourcengruppen | Abonnement | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und Azure Resource Manager-Vorlagen. |
+|Azure Resource Manager-Vorlage | Abonnement, Ressourcengruppe | Vorlagen werden verwendet, um komplexe Umgebungen zusammenzustellen. Beispielumgebungen: SharePoint-Farm, Azure Automation State Configuration oder Log Analytics-Arbeitsbereich. |
+|Richtlinienzuweisung | Abonnement, Ressourcengruppe | Ermöglicht die Zuweisung einer Richtlinie oder Initiative zum Abonnement, dem die Blaupause zugewiesen ist. Die Richtlinie oder Initiative muss innerhalb des Bereichs des Definitionsspeicherorts der Blaupause liegen. Wenn die Richtlinie oder Initiative über Parameter verfügt, werden diese bei der Erstellung der Blaupause oder bei der Blaupausenzuweisung zugewiesen. |
+|Rollenzuweisung | Abonnement, Ressourcengruppe | Fügt einer integrierten Rolle einen vorhandenen Benutzer oder eine vorhandene Gruppe zu, um sicherzustellen, dass die richtigen Personen geeigneten Zugriff auf Ihre Ressourcen haben. Rollenzuweisungen können für das gesamte Abonnement definiert oder in einer bestimmten in der Blaupause enthaltenen Ressourcengruppe geschachtelt werden. |
 
-### <a name="blueprints-and-management-groups"></a>Blaupausen und Verwaltungsgruppen
+### <a name="blueprint-definition-locations"></a>Definitionsspeicherorte von Blaupausen
 
-Bei der Erstellung einer Blaupausendefinition legen Sie fest, wo die Blaupause gespeichert wird. Derzeit können Blaupausen nur in einer [Verwaltungsgruppe](../management-groups/overview.md) gespeichert werden, für die Sie über den Zugriff **Mitwirkender** verfügen. Die Blaupause kann dann jedem untergeordneten Element dieser Verwaltungsgruppe zugewiesen werden.
-
-> [!IMPORTANT]
-> Wenn Sie keinen Zugriff auf Verwaltungsgruppen haben oder keine Verwaltungsgruppen konfiguriert sind, wird dies beim Laden der Liste der Blaupausendefinitionen angezeigt. Beim Klicken auf **Bereich** wird ein Fenster mit einer Abrufwarnung für Verwaltungsgruppen angezeigt. Um dies zu beheben, stellen Sie sicher, dass das Abonnement, auf das Sie entsprechenden Zugriff haben, Teil einer [Verwaltungsgruppe](../management-groups/overview.md) ist.
+Bei der Erstellung einer Blaupausendefinition legen Sie fest, wo die Blaupause gespeichert wird. Blaupausen können in einer [Verwaltungsgruppe](../management-groups/overview.md) oder in einem Abonnement gespeichert werden, für die bzw. das Sie über den Zugriff **Mitwirkender** verfügen. Wenn der Speicherort eine Verwaltungsgruppe ist, kann Blaupause jedem untergeordneten Abonnement dieser Verwaltungsgruppe zugewiesen werden.
 
 ### <a name="blueprint-parameters"></a>Blaupausenparameter
 
@@ -101,7 +98,7 @@ Zum Löschen von Blaupausen sind für Ihr Konto die folgenden Berechtigungen erf
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> Da Blaupausendefinitionen in einer Verwaltungsgruppe erstellt werden, müssen die Berechtigungen für Blaupausendefinitionen in einem Verwaltungsgruppenbereich erteilt oder vererbt werden.
+> Die Berechtigungen für die Blaupausendefinition müssen im Bereich der Verwaltungsgruppe oder des Abonnements, in der bzw. dem sie gespeichert ist, erteilt oder geerbt werden.
 
 Zum Zuweisen oder zum Aufheben der Zuweisung einer Blaupause sind für Ihr Konto die folgenden Berechtigungen erforderlich:
 

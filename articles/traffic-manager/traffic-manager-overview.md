@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 1698b89cd32fd7fd90a178ece25ee6869c1aa3e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7fa72df04b0507a915a75688b38e26ed0f21e5a5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229692"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486009"
 ---
 # <a name="what-is-traffic-manager"></a>Was ist Traffic Manager?
 Azure Traffic Manager ist ein DNS-basierter Lastenausgleich für Datenverkehr, der es Ihnen ermöglicht, den Datenverkehr optimal auf Dienste in den globalen Azure-Regionen zu verteilen, und gleichzeitig Hochverfügbarkeit und Reaktionsfähigkeit sicherzustellen.
@@ -26,9 +26,9 @@ Azure Traffic Manager ist ein DNS-basierter Lastenausgleich für Datenverkehr, d
 Traffic Manager verwendet DNS, um Clientanforderungen auf der Grundlage einer Datenverkehrsrouting-Methode und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten. Ein Endpunkt ist ein Dienst mit Internetzugriff, der innerhalb oder außerhalb von Azure gehostet wird. Traffic Manager bietet eine Reihe von [Datenverkehrsrouting-Methoden](traffic-manager-routing-methods.md) und [Endpunktüberwachungsoptionen](traffic-manager-monitoring.md), die verschiedene Anwendungsanforderungen erfüllen sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
 
 >[!NOTE]
-> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, lesen Sie den Artikel [Application Gateway](../application-gateway/application-gateway-introduction.md). Informationen zum regionalen Ausgleich finden Sie unter [Load Balancer](../load-balancer/load-balancer-overview.md). Für Ihre End-to-End-Szenarios kann es von Vorteil sein, diese Lösungen nach Bedarf zu kombinieren.
+> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, lesen Sie den Artikel [Application Gateway](../application-gateway/application-gateway-introduction.md). Informationen zum regionalen Lastenausgleich finden Sie unter [Load Balancer](../load-balancer/load-balancer-overview.md). Für Ihre End-to-End-Szenarios kann es von Vorteil sein, diese Lösungen nach Bedarf zu kombinieren.
 
-Die folgenden Features sind in Traffic Manager enthalten:
+Traffic Manager bietet folgende Funktionen:
 
 ## <a name="increase-application-availability"></a>Steigern der Anwendungsverfügbarkeit
 
@@ -40,7 +40,7 @@ Azure ermöglicht die Ausführung von Cloud-Diensten oder Websites in Datencente
 
 ## <a name="perform-service-maintenance-without-downtime"></a>Ausführen von Dienstwartungsarbeiten ohne Ausfallzeiten
 
-Geplante Wartungsarbeiten für Ihre Anwendungen können ohne Ausfallzeiten für Ihre Anwendungen durchgeführt werden. Hierzu wird der Datenverkehr während der Wartung von Traffic Manager an andere Endpunkte weitergeleitet.
+Geplante Wartungsarbeiten für Ihre Anwendungen können ohne Ausfallzeiten für Ihre Anwendungen durchgeführt werden. Hierzu kann Traffic Manager den Datenverkehr während der Wartung an andere Endpunkte weiterleiten.
 
 ## <a name="combine-hybrid-applications"></a>Kombinieren von Hybridanwendungen
 
@@ -48,7 +48,7 @@ Traffic Manager unterstützt externe, Azure-fremde Endpunkte und kann somit in h
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>Verteilen des Datenverkehrs für komplexe Bereitstellungen
 
-Datenverkehrsrouting-Methoden können mit [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md) zu komplexen und flexiblen Regeln kombiniert werden, die auch den Anforderungen umfangreicher und komplexer Bereitstellungen gerecht werden.
+Mehrere Datenverkehrsrouting-Methoden können mit [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md) zu komplexen und flexiblen Regeln kombiniert werden, die auch den Anforderungen umfangreicher und komplexer Bereitstellungen gerecht werden.
 
 ## <a name="pricing"></a>Preise
 

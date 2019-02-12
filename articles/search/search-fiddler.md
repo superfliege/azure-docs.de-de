@@ -1,5 +1,5 @@
 ---
-title: Untersuchen von REST-APIs in Fiddler oder Postman (webbasierte HTTP-Testtools) – Azure Search
+title: Untersuchen von REST-APIs in Postman oder Fiddler (webbasierte HTTP-Testtools) – Azure Search
 description: Es wird beschrieben, wie Sie Fiddler oder Postman zum Senden von HTTP-Anforderungen und REST-API-Aufrufen an Azure Search verwenden.
 author: HeidiSteen
 manager: cgronlun
@@ -10,16 +10,16 @@ ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5946ff5e75e7c3fedf42c23200f61e821c0d9d61
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 06e2667b59b27039ad3c62379f654dd693999f99
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631395"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756074"
 ---
-# <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman
+# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler
 
-Eine der einfachsten Möglichkeiten zum Untersuchen der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice) ist die Verwendung von Fiddler oder Postman, um HTTP-Anforderungen zu formulieren und die Antworten zu prüfen. Mit den richtigen Tools und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
+Eine der einfachsten Möglichkeiten zum Untersuchen der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice) ist die Verwendung von Postman oder Fiddler, um HTTP-Anforderungen zu formulieren und die Antworten zu prüfen. Mit den richtigen Tools und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
 
 > [!div class="checklist"]
 > * Herunterladen eines Web-API-Testtools

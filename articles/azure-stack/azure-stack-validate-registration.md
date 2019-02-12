@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 0281186be4fae71c56b65327e0c67da3f252a33c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 614f8a3e3738e1c99f5a089410814765d278d3fe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239518"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743838"
 ---
 # <a name="validate-azure-registration"></a>Überprüfen der Azure-Registrierung
  
@@ -67,6 +67,8 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
+> [!NOTE]
+  > Wenn Sie als CSP ein Shared Services- oder IUR-Abonnement nutzen, müssen Sie die Anmeldeinformationen eines Benutzers aus der entsprechenden AAD-Instanz angeben. Diese sehen in der Regel etwa wie folgt aus: `subscriptionowner@iurcontoso.onmicrosoft.com`. Dieser Benutzer benötigt wie oben beschrieben die entsprechenden Anmeldeinformationen.
 
 3. Führen Sie an der PowerShell-Eingabeaufforderung Folgendes aus, um `$subscriptionID` als zu verwendendes Azure-Abonnement festzulegen. Ersetzen Sie `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` durch Ihre eigene Abonnement-ID:
    ```powershell

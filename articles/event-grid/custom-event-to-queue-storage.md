@@ -9,12 +9,12 @@ ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ba48473b0370c2ee0acbb7b03834eb36922db556
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474981"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728044"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Queue Storage mit Azure-CLI und Event Grid
 
@@ -24,9 +24,12 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Queue Storage ist 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="install-preview-feature"></a>Installieren des Vorschaufeatures
+Wenn Sie die Azure CLI oder Azure PowerShell auf Ihrem lokalen Computer anstatt Cloud Shell im Azure-Portal verwenden, stellen Sie sicher, dass Sie über die folgenden Versionen der Azure CLI und von Azure PowerShell verfügen. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+- Azure CLI Version 2.0.56 oder höher. Anweisungen zum Installieren der aktuellen Version der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
+- Azure PowerShell Version 1.1.0 oder höher. Laden Sie die aktuelle Version von Azure PowerShell [Azure-Downloads – Befehlszeilentools](https://azure.microsoft.com/downloads/) auf Ihren Windows-Computer herunter. 
+
+In diesem Artikel finden Sie Befehle für die Verwendung der Azure CLI. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -47,10 +50,6 @@ az group create --name gridResourceGroup --location westus2
 Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die Veröffentlichung Ihrer Ereignisse. Im folgenden Beispiel wird das benutzerdefinierte Thema in Ihrer Ressourcengruppe erstellt. Ersetzen Sie `<topic_name>` durch einen eindeutigen Namen für Ihr benutzerdefiniertes Thema. Der Name des Event Grid-Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird.
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 

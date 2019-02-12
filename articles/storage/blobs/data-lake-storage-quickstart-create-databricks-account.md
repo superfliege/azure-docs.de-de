@@ -8,12 +8,12 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 01/24/2019
-ms.openlocfilehash: cbd17ef81f5bcdf1c5c2f14f11388fd4f23e5da6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e5a1a17e60d73a041bf7850875287c753aeda16f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239916"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694166"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Schnellstart: Analysieren von Daten in Azure Data Lake Storage Gen2 mit Azure Databricks
 
@@ -29,15 +29,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 <a id="config"/>
 
-## <a name="set-aside-storage-account-configuration"></a>Bereithalten der Speicherkontokonfiguration
-
-Sie benötigen den Namen Ihres Speicherkontos und den URI eines Dateisystemendpunkts.
+## <a name="get-the-name-of-your-storage-account"></a>Abrufen des Namens Ihres Speicherkontos
 
 Wählen Sie zum Abrufen des Namens Ihres Speicherkontos im Azure-Portal **Alle Dienste** aus, und filtern Sie nach dem Begriff *Speicher*. Wählen Sie anschließend **Speicherkonten** aus, und suchen Sie Ihr Speicherkonto.
 
-Wählen Sie zum Abrufen des Dateisystemendpunkt-URIs **Eigenschaften** aus, und suchen Sie im Eigenschaftenbereich den Wert des Felds **Primärer ADLS-Dateisystemendpunkt** .
-
-Fügen Sie beide Werte in eine Textdatei ein. Sie benötigen sie in Kürze.
+Fügen Sie diesen Namen in eine Textdatei ein. Sie benötigen ihn in Kürze.
 
 <a id="service-principal"/>
 
@@ -46,8 +42,6 @@ Fügen Sie beide Werte in eine Textdatei ein. Sie benötigen sie in Kürze.
 Erstellen Sie gemäß den Anleitungen im folgenden Thema einen Dienstprinzipal: [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
-
-:heavy_check_mark: Geben Sie beim Ausführen der Schritte im Abschnitt [Erstellen einer Azure Active Directory-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) des Artikels im Dialogfeld **Erstellen** im Feld **Anmelde-URL** unbedingt den Endpunkt-URI an, den Sie eben abgerufen haben.
 
 :heavy_check_mark: Stellen Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels sicher, dass Ihre Anwendung der Rolle **Blob Storage Contributor** (Blob Storage-Mitwirkender) zugewiesen ist.
 
@@ -136,7 +130,7 @@ In diesem Abschnitt erstellen Sie ein Notizbuch im Azure Databricks-Arbeitsberei
     > [!NOTE]
     > Dieser Codeblock greift direkt über OAuth auf den Data Lake Gen2-Endpunkt zu. Es gibt jedoch noch andere Methoden zum Verknüpfen des Databricks-Arbeitsbereichs mit Ihrem Data Lake Storage Gen2-Konto. Beispielsweise können Sie das Dateisystem mithilfe von OAuth einbinden oder den Direktzugriff mit gemeinsam verwendetem Schlüssel nutzen. <br>Beispiele für diese Ansätze finden Sie auf der Azure Databricks-Website im Artikel zu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).
 
-5. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte in den Abschnitten [Bereithalten der Speicherkontokonfiguration](#config) und [Erstellen eines Dienstprinzipals](#service-principal) dieses Artikels notiert haben.  Legen Sie für den Platzhalterwert `file-system-name` den gewünschten Namen für das Dateisystem fest.
+5. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte in den Abschnitten [Abrufen des Namens Ihres Speicherkontos](#config) und [Erstellen eines Dienstprinzipals](#service-principal) dieses Artikels notiert haben.  Legen Sie für den Platzhalterwert `file-system-name` den gewünschten Namen für das Dateisystem fest.
 
 6. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
