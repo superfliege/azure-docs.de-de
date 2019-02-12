@@ -4,7 +4,7 @@ description: In diesem Schnellstart erstellen Sie Ihre erste Windows-Containeran
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
-manager: timlt
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 01/31/2019
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 2855d28a3d5414413ca1657a7bef9c060f6d4424
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 816f12ca5837fa99b4e945c965f9cbad406c63bb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300335"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749796"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Windows-Containern in Service Fabric
 
@@ -63,11 +63,12 @@ Nennen Sie den Dienst „MyContainerService“, und klicken Sie auf **OK**.
 ![Dialogfeld „Neuer Dienst“][new-service]
 
 ## <a name="specify-the-os-build-for-your-container-image"></a>Angeben des Betriebssystembuilds für Ihr Containerimage
+
 Mit einer bestimmten Windows Server-Version erstellte Container können unter Umständen nicht auf einem Host mit einer anderen Version von Windows Server ausgeführt werden. Beispielsweise können Container, die mit Windows Server 1709 erstellt wurden, nicht auf Hosts mit Windows Server 2016 ausgeführt werden. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). 
 
 Bei Version 6.1 oder höheren Version der Service Fabric-Runtime können Sie mehrere Betriebssystemimages pro Container angeben und jedes Image mit der Buildversion des Betriebssystems markieren, unter dem es bereitgestellt werden soll. Dadurch wird sichergestellt, dass Ihre Anwendung auf Hosts mit verschiedenen Versionen des Windows-Betriebssystems ausgeführt wird. Weitere Informationen finden Sie unter [Angeben spezifischer Containerimages für den Build des Betriebssystems](service-fabric-get-started-containers.md#specify-os-build-specific-container-images). 
 
-Microsoft veröffentlicht verschiedene Images für IIS-Versionen, die auf unterschiedlichen Versionen von Windows Server basieren. Fügen Sie der Datei *ApplicationManifest.xml* die folgenden Zeilen hinzu, um sicherzustellen, dass Service Fabric einen mit der Version von Windows Server kompatiblen Container bereitstellt, die auf den Clusterknoten ausgeführt wird, auf denen Ihre Anwendung bereitgestellt wird. Die Buildversion für Windows Server 2016 lautet 14393, und die Buildversion für Windows Server-Version 1709 lautet 16299. 
+Microsoft veröffentlicht verschiedene Images für IIS-Versionen, die auf unterschiedlichen Versionen von Windows Server basieren. Fügen Sie der Datei *ApplicationManifest.xml* die folgenden Zeilen hinzu, um sicherzustellen, dass Service Fabric einen mit der Version von Windows Server kompatiblen Container bereitstellt, die auf den Clusterknoten ausgeführt wird, auf denen Ihre Anwendung bereitgestellt wird. Die Buildversion für Windows Server 2016 lautet 14393, und die Buildversion für Windows Server-Version 1709 lautet 16299.
 
 ```xml
     <ContainerHostPolicies CodePackageRef="Code"> 
@@ -80,34 +81,57 @@ Microsoft veröffentlicht verschiedene Images für IIS-Versionen, die auf unters
     </ContainerHostPolicies> 
 ```
 
-Das Dienstmanifest gibt weiterhin nur ein Image für den Nanoserver `microsoft/iis:nanoserver` an. 
+Das Dienstmanifest gibt weiterhin nur ein Image für den Nanoserver `microsoft/iis:nanoserver` an.
+
+Ändern Sie außerdem in der Datei *ApplicationManifest.xml* den Wert von **PasswordEncrypted** in **false**. Konto und Kennwort sind für das öffentliche Containerimage im Docker-Hub leer. Da die Verschlüsselung eines leeren Kennworts einen Buildfehler zur Folge hätte, deaktivieren wir die Verschlüsselung.
+
+```xml
+<RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
+```
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
-Sie können einem Partycluster beitreten, um die Anwendung in einem Cluster in Azure bereitzustellen. Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann.  Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. Partycluster unterstützen Container. Wenn Sie einen eigenen Cluster einrichten und verwenden möchten, muss der Cluster unter einer SKU ausgeführt werden, die Container unterstützt (beispielsweise Windows Server 2016 Datacenter mit Containern).
+Das folgende Beispielskript erstellt einen Service Fabric-Cluster mit fünf Knoten, der mit einem X.509-Zertifikat geschützt wird. Der Befehl erstellt ein selbstsigniertes Zertifikat und lädt es in einen neuen Key Vault hoch. Das Zertifikat wird außerdem in ein lokales Verzeichnis kopiert. Weitere Informationen zum Erstellen eines Clusters mithilfe dieses Skripts finden Sie unter [Erstellen von Service Fabric-Clustern](scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
-Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](https://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Klicken Sie auf den Link **How to connect to a secure Party cluster?** (Herstellen einer Verbindung mit einem sicheren Partycluster), und kopieren Sie das Zertifikatkennwort. Das Zertifikat, das Zertifikatkennwort und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
+Installieren Sie bei Bedarf Azure PowerShell anhand der Anweisungen im [Azure PowerShell-Handbuch](/powershell/azure/overview).
 
-![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+Führen Sie vor der Ausführung des folgenden Skripts zunächst `Connect-AzureRmAccount` in PowerShell aus, um eine Verbindung mit Azure zu erstellen.
 
-> [!Note]
-> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte aus dem [Tutorial zum Bereitstellen einer .NET-App](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) ausführen, um in Ihrem Azure-Abonnement einen Service Fabric-Cluster zu erstellen und die Anwendung darin bereitzustellen. Der über Visual Studio erstellte Cluster unterstützt Container. Nachdem Sie die Anwendung in Ihrem Cluster bereitgestellt und überprüft haben, können Sie direkt mit [Vollständige Beispiele für Service Fabric-Anwendungs- und Dienstmanifeste](#complete-example-service-fabric-application-and-service-manifests) in dieser Schnellstartanleitung fortfahren.
->
+Kopieren Sie das folgende Skript in die Zwischenablage, und öffnen Sie **Windows PowerShell ISE**.  Fügen Sie den Inhalt in das leere Fenster „Untitled1.ps1“ ein. Geben Sie anschließend Werte für die Variablen im Skript an: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd` usw.  Das Verzeichnis, das Sie für `certfolder` angeben, muss vorhanden sein, wenn Sie das Skript ausführen.
 
-Installieren Sie das PFX-Zertifikat auf einem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+[!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
+
+Nachdem Sie Ihre Werte für die Variablen angegeben haben, drücken Sie**** F5, um das Skript auszuführen.
+
+Warten Sie, bis das Skript ausgeführt und der Cluster erstellt wurde, und suchen Sie dann in der Ausgabe nach `ClusterEndpoint`. Beispiel: 
+
+```PowerShell
+...
+ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/clusters/b76e757d-0b97-4037-a184-9046a7c818c0
+```
+
+### <a name="install-the-certificate-for-the-cluster"></a>Installieren des Zertifikats für den Cluster
+
+Als Nächstes installieren wir das PFX-Zertifikat im Zertifikatspeicher *CurrentUser\My*. Die PFX-Datei befindet sich in dem Verzeichnis, das Sie mithilfe der Umgebungsvariablen `certfolder` im obigen PowerShell-Skript angegeben haben.
+
+Navigieren Sie zu diesem Verzeichnis, und führen Sie den folgenden PowerShell-Befehl aus. Fügen Sie dabei den Namen der PFX-Datei aus dem Verzeichnis `certfolder` sowie das Kennwort ein, das Sie in der Variablen `certpwd` angegeben haben. In diesem Beispiel ist das aktuelle Verzeichnis auf das Verzeichnis festgelegt, das durch die Variable `certfolder` im PowerShell-Skript angegeben ist. Von dort aus wird der Befehl `Import-PfxCertificate` ausgeführt:
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
+```
 
+Der Befehl gibt den Fingerabdruck zurück:
 
+```powershell
+  ...
   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
 
 Thumbprint                                Subject
 ----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+0AC30A2FA770BEF566226CFCF75A6515D73FC686  CN=mysfcluster.SouthCentralUS.cloudapp.azure.com
 ```
 
-Notieren Sie sich den Fingerabdruck für den nächsten Schritt.
+Speichern Sie den Fingerabdruckwert für den nächsten Schritt.
 
 ## <a name="deploy-the-application-to-azure-using-visual-studio"></a>Bereitstellen der Anwendung für Azure mithilfe von Visual Studio
 
@@ -115,15 +139,23 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen** aus. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und überprüfen Sie die Informationen zu den Verbindungsparametern.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des im vorherigen Schritt installierten Zertifikats entsprechen.
+Kopieren Sie den Inhalt, der nach Ausführung des Befehls `Import-PfxCertificate` im PowerShell-Fenster nach **CN=** angegeben war, und fügen Sie ihm den Port `19000` hinzu. Beispiel: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Kopieren Sie ihn in das Feld **Verbindungsendpunkt**. Speichern Sie diesen Wert. Er wird in einem späteren Schritt benötigt.
+
+Klicken Sie auf **Erweiterte Verbindungsparameter**, und überprüfen Sie die Informationen zu den Verbindungsparametern.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des Zertifikats entsprechen, das Sie im vorherigen Schritt durch Ausführen von `Import-PfxCertificate` installiert haben.
 
 ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-containers/publish-app.png)
 
 Klicken Sie auf **Veröffentlichen**.
 
-Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen.  Bei Partyclustern handelt es sich jedoch um eine öffentliche, freigegebene Umgebung, und unter Umständen tritt in einer vorhandenen Anwendung ein Konflikt auf.  Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
+Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen. Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
 
-Navigieren Sie in einem Browser zu dem **Verbindungsendpunkt**, der auf der Partyclusterseite angegeben ist. Sie können der URL optional den Schemabezeichner (`http://`) voranstellen und den Port (`:80`) an die URL anfügen. Beispiel: http://zwin7fh14scd.westus.cloudapp.azure.com:80. Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
+Navigieren Sie in einem Browser zu der Adresse, die Sie im vorherigen Schritt im Feld **Verbindungsendpunkt** angegeben haben. Sie können der URL optional den Schemabezeichner (`http://`) voranstellen und den Port (`:80`) an die URL anfügen. Beispiel: http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
+
+ Die IIS-Standardwebseite sollte angezeigt werden: ![IIS-Standardwebseite][iis-default]
+
+## <a name="clean-up"></a>Bereinigen
+
+Während der Ausführung des Clusters fallen weiterhin Gebühren an. Daher empfiehlt es sich ggf,. den Cluster zu [löschen](service-fabric-cluster-delete.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

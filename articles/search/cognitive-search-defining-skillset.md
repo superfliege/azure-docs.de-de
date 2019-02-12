@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320794"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751972"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Erstellen eines Skillsets in einer Anreicherungspipeline
 
@@ -142,11 +142,11 @@ Das nächste Segment im Skillset ist ein Array von Skills. Man kann sich jeden S
 
 ## <a name="add-predefined-skills"></a>Hinzufügen vordefinierter Skills
 
-Betrachten Sie den ersten Skill, bei dem es sich um den vordefinierten [Skill zur Erkennung von Entitäten](cognitive-search-skill-named-entity-recognition.md) handelt:
+Betrachten Sie den ersten Skill, bei dem es sich um den vordefinierten [Skill zur Erkennung von Entitäten](cognitive-search-skill-entity-recognition.md) handelt:
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -155,7 +155,8 @@ Betrachten Sie den ersten Skill, bei dem es sich um den vordefinierten [Skill zu
           "name": "text",
           "source": "/document/content"
         }
-      ],      "outputs": [
+      ],
+      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -228,7 +229,7 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
     }
 ```
 
-Diese Definition ist ein benutzerdefinierter Skill, der eine Web-API als Teil des Anreicherungsprozesses aufruft. Für jede Organisation, die durch die Erkennung von benannten Entitäten identifiziert wird, ruft dieser Skill eine Web-API auf, um die Beschreibung dieser Organisation zu suchen. Eine interne Anreicherungs-Engine regelt die Orchestrierung, wann die Web-API aufgerufen werden soll und wie die empfangenen Informationen weitergeleitet werden sollen. Die für den Aufruf dieser benutzerdefinierten API erforderliche Initialisierung muss jedoch über das JSON-Dokument bereitgestellt werden (z.B. URI, HTTP-Header und die erwarteten Eingaben). Informationen zum Erstellen einer benutzerdefinierten Web-API für die Anreicherungspipeline finden Sie unter [Definieren einer benutzerdefinierten Schnittstelle](cognitive-search-custom-skill-interface.md).
+Diese Definition ist ein [benutzerdefinierter Skill](cognitive-search-custom-skill-web-api.md), der eine Web-API als Teil des Anreicherungsprozesses aufruft. Für jede Organisation, die durch die Erkennung von benannten Entitäten identifiziert wird, ruft dieser Skill eine Web-API auf, um die Beschreibung dieser Organisation zu suchen. Eine interne Anreicherungs-Engine regelt die Orchestrierung, wann die Web-API aufgerufen werden soll und wie die empfangenen Informationen weitergeleitet werden sollen. Die für den Aufruf dieser benutzerdefinierten API erforderliche Initialisierung muss jedoch über das JSON-Dokument bereitgestellt werden (z.B. URI, HTTP-Header und die erwarteten Eingaben). Informationen zum Erstellen einer benutzerdefinierten Web-API für die Anreicherungspipeline finden Sie unter [Definieren einer benutzerdefinierten Schnittstelle](cognitive-search-custom-skill-interface.md).
 
 Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/organizations/*"``` gesetzt ist, d.h. der Anreicherungsschritt wird *für jede* Organisation unter ```"/document/organizations"``` aufgerufen. 
 

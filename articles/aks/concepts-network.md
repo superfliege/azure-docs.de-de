@@ -1,18 +1,18 @@
 ---
 title: Konzepte – Netzwerke in Azure Kubernetes Service (AKS)
-description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, einschließlich grundlegende und erweiterte Netzwerke, Eingangscontroller, Lastenausgleichsmodule und statische IP-Adressen.
+description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, einschließlich kubenet- und Azure CNI-Netzwerke, Eingangscontroller, Lastenausgleichsmodule und statische IP-Adressen.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 62ba98f221041d5bbf9bb095a02d052218eb0fd0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380655"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820129"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Net
 - [Dienste](#services)
 - [Virtuelle Azure-Netzwerke](#azure-virtual-networks)
 - [Eingangscontroller](#ingress-controllers)
-- [Netzwerkrichtlinien](#network-policies)
+- Netzwerkrichtlinien
 
 ## <a name="kubernetes-basics"></a>Kubernetes-Grundlagen
 
@@ -61,37 +61,32 @@ Es können sowohl *interne* als auch *externe* Lastenausgleichsmodule erstellt w
 
 In AKS können Sie einen Cluster bereitstellen, der eines der beiden folgenden Netzwerkmodelle verwendet:
 
-- *Grundlegende* Netzwerke: Die Netzwerkressourcen werden bei der Bereitstellung des AKS-Clusters erstellt und konfiguriert.
-- *Erweiterte* Netzwerke: Der AKS-Cluster wird mit vorhandenen virtuellen Netzwerkressourcen und -konfigurationen verbunden.
+- *Kubenet*-Netzwerke: Die Netzwerkressourcen werden normalerweise bei der Bereitstellung des AKS-Clusters erstellt und konfiguriert.
+- *Azure Container Networking Interface (CNI)*-Netzwerke: Der AKS-Cluster wird mit vorhandenen virtuellen Netzwerkressourcen und -konfigurationen verbunden.
 
-### <a name="basic-networking"></a>Grundlegende Netzwerke
+### <a name="kubenet-basic-networking"></a>Kubenet-Netzwerke – „Basic“ (Grundlegend)
 
-Die Netzwerkoption *Basic* (Grundlegend) ist die Standardkonfiguration für die AKS-Clustererstellung. Die Azure-Plattform verwaltet die Netzwerkkonfiguration von Cluster und Pods. Grundlegende Netzwerke eignen sich für Bereitstellungen, die keine benutzerdefinierte virtuelle Netzwerkkonfiguration erfordern. Bei grundlegenden Netzwerken können Sie keine Netzwerkkonfiguration (z. B. Subnetznamen oder dem AKS-Cluster zugewiesene IP-Adressbereiche) definieren.
+Die Netzwerkoption *kubenet* ist die Standardkonfiguration für die AKS-Clustererstellung. Mit *kubenet* erhalten Knoten eine IP-Adresse aus dem Azure Virtual Network-Subnetz. Pods erhalten eine IP-Adresse von einem logisch unterschiedlichen Adressraum zum Azure Virtual Network-Subnetz der Knoten. Die Netzwerkadressübersetzung (NAT) wird dann so konfiguriert, dass die Pods Ressourcen im virtuellen Azure-Netzwerk erreichen können. Die Quell-IP-Adresse des Datenverkehrs wird mit NAT in die primäre IP-Adresse des Knotens übersetzt.
 
-Für Knoten in einem AKS-Cluster, für das die Netzwerkoption „Basic“ (Grundlegend) konfiguriert ist, wird das Kubernetes-Plug-In [kubenet][kubenet] verwendet.
+Knoten verwenden das Kubernetes-Plug-In [kubenet][kubenet]. Sie können die Azure-Plattform die virtuellen Netzwerke für Sie erstellen und konfigurieren lassen oder Ihren AKS-Cluster in einem bestehenden Subnetz des virtuellen Netzwerks bereitstellen. Auch hier wird NAT nur von den Knoten, die eine routingfähige IP-Adresse erhalten, und den Pods verwendet, um mit anderen Ressourcen außerhalb des AKS-Clusters zu kommunizieren. Dieser Ansatz reduziert die Anzahl der IP-Adressen, die Sie in Ihrem Netzwerkadressraum für die Verwendung von Pods reservieren müssen, erheblich.
 
-Grundlegende Netzwerke verfügen über folgende Funktionen:
+Weitere Informationen finden Sie unter [Konfigurieren von kubernet-Netzwerken für AKS-Cluster][aks-configure-kubenet-networking].
 
-- Machen Sie einen Kubernetes-Dienst extern oder intern über den Azure Load Balancer verfügbar.
-- Pods können auf Ressourcen im öffentlichen Internet zugreifen.
+### <a name="azure-cni-advanced-networking"></a>Azure CNI-Netzwerke – „Advanced“ (Erweitert)
 
-### <a name="advanced-networking"></a>Erweiterte Netzwerke
+Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über ein Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
 
-Bei Auswahl der Netzwerkoption *Advanced* (Erweitert) werden Ihre Pods in einem virtuellen Azure-Netzwerk angeordnet, das Sie konfigurieren. Dieses virtuelle Netzwerk stellt eine automatische Verbindung mit anderen Azure-Ressourcen und die Integration in einen umfangreichen Funktionssatz bereit. Erweiterte Netzwerke eignen sich für Bereitstellungen, die bestimmte virtuelle Netzwerkkonfigurationen erfordern (z. B. Verwendung eines bestehenden Subnetzes und vorhandener Konnektivität). Bei erweiterten Netzwerken können Sie Subnetznamen und IP-Adressbereiche definieren.
-
-Für Knoten in einem AKS-Cluster, für das die Netzwerkoption „Advanced“ (Erweitert) konfiguriert ist, wird das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking] verwendet.
+Knoten verwenden das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking].
 
 ![Diagramm mit zwei Knoten jeweils mit Bridges für die Verbindungsherstellung mit einem Azure VNET][advanced-networking-diagram]
 
-Erweiterte Netzwerke verfügen gegenüber grundlegenden Netzwerken über folgende zusätzliche Funktionen:
+Azure CNI bietet die folgenden Funktionen über kubenet-Netzwerke:
 
-- Sie können Ihren AKS-Cluster in einem vorhandenen virtuellen Azure-Netzwerk bereitstellen oder ein neues virtuelles Netzwerk und Subnetz für Ihren Cluster erstellen.
 - Jedem Pod im Cluster wird eine IP-Adresse im virtuellen Netzwerk zugewiesen. Die Pods können direkt mit anderen Pods im Cluster und mit anderen Knoten im virtuellen Netzwerk kommunizieren.
-- Ein Pod kann eine Verbindung mit anderen Diensten in einem mittels Peering verknüpften virtuellen Netzwerk herstellen. Dazu zählen auch Verbindungen mit lokalen Netzwerken über ExpressRoute- und Site-to-Site-VPN-Verbindungen (S2S). Pods sind auch über die lokale Umgebung erreichbar.
 - Pods in einem Subnetz mit aktivierten Dienstendpunkten können eine sichere Verbindung mit Azure-Diensten (z. B. Azure Storage und SQL-Datenbank) herstellen.
 - Sie können benutzerdefinierte Routen (UDRs) zum Weiterleiten von Datenverkehr von Pods an virtuelle Netzwerkgeräte erstellen.
 
-Weitere Informationen finden Sie unter [Konfigurieren erweiterter Netzwerke für AKS-Cluster][aks-configure-advanced-networking].
+Weitere Informationen finden Sie unter [Konfigurieren der Azure CNI für ein AKS-Cluster][aks-configure-advanced-networking].
 
 ## <a name="ingress-controllers"></a>Eingangscontroller
 
@@ -113,7 +108,7 @@ Es gibt standardmäßige Netzwerksicherheitsgruppen-Regeln für Datenverkehr wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die ersten Schritte mit AKS-Netzwerken sind unter [Erstellen und Konfigurieren erweiterter Netzwerke für einen AKS-Cluster][aks-configure-advanced-networking] beschrieben.
+Um mit AKS-Netzwerken zu beginnen, erstellen und konfigurieren Sie einen AKS-Cluster mit Ihren eigenen IP-Adressbereichen unter Verwendung von [kubenet][aks-configure-kubenet-networking] oder [Azure CNI][aks-configure-advanced-networking].
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 
@@ -137,7 +132,8 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
 [aks-ingress-tls]: ingress.md
-[aks-configure-advanced-networking]: configure-advanced-networking.md
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-scale]: concepts-scale.md

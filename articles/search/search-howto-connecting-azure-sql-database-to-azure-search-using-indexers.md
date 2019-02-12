@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633026"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752891"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Azure Search-Indexern
 
@@ -210,6 +210,9 @@ Um diese Richtlinie zu verwenden, erstellen oder aktualisieren Sie die Datenquel
 
 Wenn Sie die Richtlinie für die integrierte SQL-Änderungsnachverfolgung verwenden, geben Sie keine separate Richtlinie für das Erkennen gelöschter Daten an. Die Identifizierung gelöschter Zeilen wird von der Richtlinie bereits unterstützt. Damit die Löschvorgänge „automatisch“ erkannt werden, muss der Dokumentschlüssel im Suchindex allerdings mit dem Primärschlüssel in der SQL-Tabelle übereinstimmen. 
 
+> [!NOTE]  
+> Wenn Sie [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) verwenden, um eine große Anzahl von Zeilen aus einer SQL-Tabelle zu entfernen, muss der Indexer [zurückgesetzt](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) werden, um den Änderungsverfolgungszustand zurückzusetzen und Zeilenlöschungen aufzunehmen.
+
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>Richtlinie zum Erkennen von Änderungen mit oberem Grenzwert
@@ -294,8 +297,8 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
 | smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |Es werden nur Geography-Instanzen vom Typ POINT mit SRID 4326 (Standard) unterstützt. |
-| rowversion |N/V |rowversion-Spalten können nicht im Suchindex gespeichert werden, sie können jedoch für die Änderungsnachverfolgung verwendet werden. |
-| time, timespan, binary, varbinary, image, xml, geometry, CLR types |N/V |Nicht unterstützt |
+| rowversion |– |rowversion-Spalten können nicht im Suchindex gespeichert werden, sie können jedoch für die Änderungsnachverfolgung verwendet werden. |
+| time, timespan, binary, varbinary, image, xml, geometry, CLR types |– |Nicht unterstützt |
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 SQL-Indexer verfügt über mehrere Konfigurationseinstellungen:

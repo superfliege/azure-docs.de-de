@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 9958f5f0f1435af231c1426a249c745f4a2352c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382446"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816610"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ Bei der Verwaltung von Clustern in Azure Kubernetes Service (AKS) ist die Betrie
 Dieser Artikel zu Best Practices in diesem Bereich stellt Überlegungen vor, die Sie bei der Planung der Geschäftskontinuität und Notfallwiederherstellung in AKS berücksichtigen sollten. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-* [Planen von AKS-Clustern in mehreren Regionen](#region-planning)
-* [Weiterleiten des Datenverkehrs über mehrere Cluster hinweg mithilfe von Azure Traffic Manager](#ingress-traffic)
-* [Verwenden der Georeplikation für Ihre Containerimageregistrierungen](#container-registry)
-* [Planen des Anwendungszustands über mehrere Cluster hinweg](#managing-application-state)
-* [Replizieren des Speichers über mehrere Regionen hinweg](#storage)
+* Planen von AKS-Clustern in mehreren Regionen
+* Weiterleiten des Datenverkehrs über mehrere Cluster hinweg mithilfe von Azure Traffic Manager
+* Verwenden der Georeplikation für Ihre Containerimageregistrierungen
+* Planen des Anwendungszustands über mehrere Cluster hinweg
+* Replizieren des Speichers über mehrere Regionen hinweg
 
 ## <a name="plan-for-multi-region-deployment"></a>Planen der Bereitstellung in mehreren Regionen
 

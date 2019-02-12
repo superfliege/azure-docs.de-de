@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3a4b62fb16745a3b226bda6c0574812278a34456
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430225"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495002"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)
 
@@ -43,6 +43,8 @@ Mit logischer Isolation kann ein einzelner AKS-Cluster für mehrere Workloads, T
 ![Logische Isolierung eines Kubernetes-Clusters in AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 Die logische Trennung der Cluster bietet in der Regel eine höhere Poddichte als physisch isolierte Cluster. Weniger überschüssige Computekapazität befindet sich im Leerlauf im Cluster. In Kombination mit der automatischen Clusterskalierung in Kubernetes können Sie die Anzahl von Knoten gemäß der Anforderungen nach oben oder unten skalieren. Dieser Best Practice-Ansatz zur automatischen Skalierung ermöglicht Ihnen, nur die erforderliche Anzahl von Knoten auszuführen und die Kosten zu minimieren.
+
+Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfunktionen wie *Pod Security Policy* und differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
 
 ## <a name="physically-isolate-clusters"></a>Physisches Isolieren von Clustern
 

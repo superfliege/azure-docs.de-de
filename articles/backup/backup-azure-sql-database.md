@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa154b79625fffb8174c510156b3a67df8bff785
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224240"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770431"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -202,6 +202,7 @@ Vermeiden Sie bei der Benennung von Datenbanken Folgendes, um reibungslose Siche
 
   * Nachgestellte/führende Leerzeichen
   * Führende Ausrufezeichen
+  * Schließende eckige Klammer „]“
 
 Obwohl ein Aliasing für nicht unterstützte Zeichen aus Azure-Tabellen möglich ist, wird empfohlen, diese Zeichen zu vermeiden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
@@ -721,6 +722,8 @@ Wenn Sie den Schutz für eine SQL Server-Datenbank beenden, müssen Sie in Azure
 * Beenden aller zukünftigen Sicherungsaufträge und Beibehalten der Wiederherstellungspunkte
 
 Wenn Sie „Sicherung mit ‚Daten beibehalten‘ beenden“ auswählen, werden die Wiederherstellungspunkte gemäß der Sicherungsrichtlinie bereinigt. Sie zahlen die Gebühr für die geschützte SQL-Instanz zuzüglich des Speicherverbrauchs, bis alle Wiederherstellungspunkte bereinigt wurden. Weitere Informationen zu den Preisen von Azure Backup für SQL finden Sie auf der Seite mit der [Azure Backup-Preisübersicht](https://azure.microsoft.com/pricing/details/backup/).
+
+Wenn Sie eine Sicherung mit der Option „Daten beibehalten“ beenden, laufen Wiederherstellungspunkte gemäß der Aufbewahrungsrichtlinie ab. Azure Backup behält jedoch immer mindestens einen letzten Wiederherstellungspunkt bei, bis Sie Sicherungsdaten explizit löschen. Ebenso gilt: Wenn Sie eine Datenquelle ohne Beenden der Sicherung löschen, schlagen neue Sicherungen fehl, und alte Wiederherstellungspunkte laufen gemäß der Aufbewahrungsrichtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherung mit der Option „Daten löschen“ beenden.
 
 Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198145"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816542"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Worum handelt es sich bei der Maschinelles Sehen-API Version 1.0?
 
@@ -26,17 +26,17 @@ ms.locfileid: "55198145"
 >- [Maschinelles Sehen-API Version 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
 Über die cloudbasierte Maschinelles Sehen-API haben Entwickler Zugriff auf erweiterte Algorithmen zum Verarbeiten von Bildern und zum Zurückgeben von Informationen. Durch das Hochladen eines Bilds oder das Angeben einer Bild-URL können Microsoft-Algorithmen für maschinelles Sehen visuelle Inhalte basierend auf Eingaben und der Benutzerauswahl auf unterschiedliche Arten analysieren. Mit der Maschinelles Sehen-API können Benutzer Bilder zu folgenden Zwecken analysieren:
-* [Taggen von Bildern basierend auf dem Inhalt](#Tagging)
-* [Kategorisieren von Bildern](#Categorizing)
-* [Identifizieren des Typs und der Qualität von Bildern](#Identifying)
+* Taggen von Bildern basierend auf dem Inhalt
+* Kategorisieren von Bildern
+* Identifizieren des Typs und der Qualität von Bildern
 * [Erkennen menschlicher Gesichter und Zurückgeben ihrer Koordinaten ](#Faces)
-* [Erkennen domänenspezifischer Inhalte](#Domain-Specific)
-* [Generieren von Beschreibungen der Inhalte](#Descriptions)
-* [Verwenden der optischen Zeichenerkennung zum Identifizieren von gedrucktem Text in Bildern](#OCR)
-* [Erkennen von handschriftlichem Text](#RecognizeText)
-* [Unterscheiden von Farbschemas](#Color)
-* [Kennzeichnen nicht jugendfreier Inhalte](#Adult)
-* [Zuschneiden von Fotos zur Verwendung als Miniaturbilder](#Thumbnails)
+* Erkennen domänenspezifischer Inhalte
+* Generieren von Beschreibungen der Inhalte
+* Verwenden der optischen Zeichenerkennung zum Identifizieren von gedrucktem Text in Bildern
+* Erkennen von handschriftlichem Text
+* Unterscheiden von Farbschemas
+* Kennzeichnen nicht jugendfreier Inhalte
+* Zuschneiden von Fotos zur Verwendung als Miniaturbilder
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 * Unterstützte Eingabemethoden: Rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL

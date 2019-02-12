@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 3e460df8c4841a23c76ef8d7b254938ce46a2b45
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380560"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819109"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 - [Manuelles Skalieren](#manually-scale-pods-or-nodes)
 - [Horizontale automatische Podskalierung (Horizontal Pod Autoscaler, HPA)](#horizontal-pod-autoscaler)
 - [Automatische Clusterskalierung ](#cluster-autoscaler)
-- [Integration von Azure Container Instances (ACI) in AKS](#burst-to-azure-container-instance)
+- Integration von Azure Container Instances (ACI) in AKS
 
 ## <a name="manually-scale-pods-or-nodes"></a>Manuelles Skalieren von Pods oder Knoten
 
@@ -65,7 +65,7 @@ Wenn ein Knoten nicht über ausreichende Computeressourcen zum Ausführen eines 
 
 Wenn die automatische Clusterskalierung Pods erkennt, die aufgrund von Einschränkungen von Knotenpoolressourcen nicht eingeplant werden können, wird die Anzahl von Knoten innerhalb des Knotenpools heraufgesetzt, um die zusätzlichen Computeressourcen bereitzustellen. Wenn diese zusätzlichen Knoten erfolgreich bereitgestellt werden und für die Verwendung innerhalb des Knotenpools verfügbar sind, werden die Pods zur Ausführung darauf eingeplant.
 
-Wenn Ihre Anwendung schnell skalieren muss, bleiben einige Pods möglicherweise in einem Zustand des Wartens darauf, eingeplant zu werden, bis die zusätzlichen, von der automatischen Clusterskalierung bereitgestellten Knoten die eingeplanten Pods annehmen können. Für Anwendungen mit hohen Burstanforderungen können Sie [mit virtuellen Knoten und Azure Container Instances skalieren ](#burst-to-azure-container-instance).
+Wenn Ihre Anwendung schnell skalieren muss, bleiben einige Pods möglicherweise in einem Zustand des Wartens darauf, eingeplant zu werden, bis die zusätzlichen, von der automatischen Clusterskalierung bereitgestellten Knoten die eingeplanten Pods annehmen können. Für Anwendungen mit hohen Burstanforderungen können Sie mit virtuellen Knoten und Azure Container Instances skalieren.
 
 ### <a name="scale-down-events"></a>Zentrales Herunterskalieren
 

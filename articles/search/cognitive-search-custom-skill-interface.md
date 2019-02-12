@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: e4fe511228f6e80a17af8325ee74ae0927a760bd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628271"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754726"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche
 
-Eine [Pipeline für die Indizierung der kognitive Suche](cognitive-search-concept-intro.md) in Azure Search kann aus [vordefinierten Skills](cognitive-search-predefined-skills.md) und benutzerdefinierten Skills zusammengestellt werden, die Sie persönlich erstellen und der Pipeline hinzufügen. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Skill erstellen, der eine Schnittstelle verfügbar macht, sodass er in eine Pipeline für die kognitive Suche eingefügt werden kann. 
+Eine [Pipeline für die Indizierung der kognitive Suche](cognitive-search-concept-intro.md) in Azure Search kann aus [vordefinierten Skills](cognitive-search-predefined-skills.md) und [benutzerdefinierten Skills](cognitive-search-custom-skill-web-api.md) zusammengestellt werden, die Sie persönlich erstellen und der Pipeline hinzufügen. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Skill erstellen, der eine Schnittstelle verfügbar macht, sodass er in eine Pipeline für die kognitive Suche eingefügt werden kann. 
 
 Das Erstellen eines benutzerdefinierten Skills gibt Ihnen die Möglichkeit, Transformationen einzufügen, die für Ihren Inhalt eindeutig sind. Ein benutzerdefinierter Skill wird unabhängig ausgeführt, wobei jeder gewünschte Anreicherungsschritt angewendet wird. Sie können beispielsweise feldspezifische benutzerdefinierte Entitäten definieren, benutzerdefinierte Klassifizierungsmodelle erstellen, um Geschäfts- und Finanzverträge und -dokumente zu unterscheiden, oder einen Spracherkennungsskill hinzufügen, um selbst in Audiodateien relevante Inhalte zu erreichen. Ein Beispiel mit Schrittanleitung finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills](cognitive-search-create-custom-skill-example.md).
 
@@ -27,7 +27,14 @@ Das Erstellen eines benutzerdefinierten Skills gibt Ihnen die Möglichkeit, Tran
 
 ## <a name="web-api-custom-skill-interface"></a>Web-API-Schnittstelle für benutzerdefinierte Skills
 
-Benutzerdefinierte Web-API-Skillendpunkte müssen innerhalb eines Zeitfensters von 5 Minuten eine Antwort zurückgeben. Die Indizierungspipeline ist synchron, und die Indizierung erzeugt ein Timeoutfehler, wenn in diesem Zeitraum keine Antwort empfangen wird.
+Benutzerdefinierte WebAPI-Skill-Endpunkte nach Standardtimeout, wenn sie innerhalb eines 30-Sekunden-Fensters keine Antwort zurückgeben. Die Indizierungspipeline ist synchron, und die Indizierung erzeugt ein Timeoutfehler, wenn in diesem Zeitraum keine Antwort empfangen wird.  Durch Festlegen des Timeoutparameters ist es möglich, den Timeout auf bis zu 90 Sekunden zu konfigurieren:
+
+```json
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "This skill has a 90 second timeout",
+        "uri": "https://[your custom skill uri goes here]",
+        "timeout": "PT90S",
+```
 
 Derzeit ist die einzige Methode für die Interaktion mit einem benutzerdefinierten Skill über eine Web-API-Schnittstelle. Die Web-API-Anforderungen müssen die in diesem Abschnitt beschriebenen Voraussetzungen erfüllen.
 

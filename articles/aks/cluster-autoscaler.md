@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b2302e69c9412170b55df4bfd8c1df5a9f75ef3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479138"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754641"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -63,6 +63,9 @@ Die zwei Methoden für die automatische Skalierung können zusammenarbeiten und 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>Erstellen eines AKS-Clusters und Aktivieren der Autoskalierung für Cluster
 
 Wenn Sie einen AKS-Cluster erstellen müssen, verwenden Sie den Befehl [az aks create][az-aks-create]. Geben Sie eine *--kubernetes-version* an, die der mindestens erforderlichen Version entspricht oder diese übersteigt, wie im vorstehenden Abschnitt [Bevor Sie beginnen](#before-you-begin) beschrieben. Um Autoskalierung für Cluster zu aktivieren und zu konfigurieren, verwenden Sie den Parameter *--enable-cluster-autoscaler* und geben einen *--min-count*- und einen *--max-count*-Wert für die Knoten an.
+
+> [!IMPORTANT]
+> Bei der automatischen Clusterskalierungsfunktion handelt es sich um eine Kubernetes-Komponente. Obwohl der AKS-Cluster eine VM-Skalierungsgruppe für die Knoten verwendet, sollten Sie die Einstellungen für die automatische Skalierung für die Skalierungsgruppe im Azure-Portal oder über die Azure CLI nicht manuell aktivieren oder bearbeiten. Lassen Sie die automatische Skalierungsfunktion für den Kubernetes-Cluster die erforderlichen Skalierungseinstellungen verwalten. Weitere Informationen finden Sie unter [Kann ich die AKS-Ressourcen in der Ressourcengruppe MC_ ändern?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)
 
 Im folgenden Beispiel wird ein AKS-Cluster erstellt, in dem VM-Skalierungsgruppen und die Autoskalierung für Cluster aktiviert sind. Darüber hinaus wird ein Mindestwert von *1* Knoten und ein Höchstwert von *3* Knoten festgelegt:
 

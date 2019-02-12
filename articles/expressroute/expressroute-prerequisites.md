@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: c44eb4bbf4945973e075ff88bccde19053b812be
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2458dadb8a97deee67a6df9b00ca5390fccb2902
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133475"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812275"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
 Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRoute müssen Sie sicherstellen, dass die unten in den Abschnitten genannten Voraussetzungen erfüllt sind.
@@ -22,7 +22,7 @@ Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRou
 
 ## <a name="azure-account"></a>Azure-Konto
 * Ein gültiges und aktives Microsoft Azure-Konto. Dieses Konto ist zum Einrichten der ExpressRoute-Verbindung erforderlich. Bei ExpressRoute-Verbindungen handelt es sich um Ressourcen in Azure-Abonnements. Ein Azure-Abonnement ist Voraussetzung, auch wenn die Konnektivität auf andere Microsoft-Clouddienste (nicht Azure) wie Office 365 und Dynamics 365 beschränkt ist.
-* Ein aktives Office 365-Abonnement (bei Nutzung von Office 365-Diensten). Weitere Informationen finden Sie im Abschnitt [Besondere Vorgaben für Office 365](#office-365-specific-requirements) dieses Artikels.
+* Ein aktives Office 365-Abonnement (bei Nutzung von Office 365-Diensten). Weitere Informationen finden Sie im Abschnitt „Besondere Vorgaben für Office 365“ dieses Artikels.
 
 ## <a name="connectivity-provider"></a>Konnektivitätsanbieter
 

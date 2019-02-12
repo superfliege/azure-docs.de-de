@@ -6,28 +6,32 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312023"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751377"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurieren einer Verbindung eines Azure Search-Indexers mit SQL Server auf einer Azure-VM
 Wie in [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq) erläutert, wird das Erstellen von Indexern für **SQL Server auf Azure-VMs** (oder kurz **SQL Azure-VMs**) von Azure Search unterstützt. Zunächst müssen aber einige sicherheitsbezogene Voraussetzungen erfüllt werden. 
 
-**Aufgabendauer:** Ca. 30 Minuten, vorausgesetzt, Sie haben auf der VM bereits ein Zertifikat installiert.
+Verbindungen von Azure Search zu SQL Server auf einer VM erfolgen über eine öffentliche Internetverbindung. Alle Sicherheitsmaßnahmen, die Sie normalerweise für diese Verbindungen befolgen würden, gelten auch hier:
+
++ Erhalten Sie ein Zertifikat von einem [Zertifizierungsstellenanbieter](https://en.wikipedia.org/wiki/Certificate_authority#Providers) für den voll qualifizierten Domänennamen der SQL Server-Instanz auf der Azure-VM.
++ Installieren Sie das Zertifikat auf der VM, und aktivieren und konfigurieren Sie dann verschlüsselte Verbindungen auf der VM mithilfe der Anweisungen in diesem Artikel.
 
 ## <a name="enable-encrypted-connections"></a>Aktivieren von verschlüsselten Verbindungen
 Für Azure Search ist für alle Indexeranforderungen über eine öffentliche Internetverbindung ein verschlüsselter Kanal erforderlich. In diesem Abschnitt sind die entsprechenden Schritte angegeben.
 
 1. Überprüfen Sie die Eigenschaften des Zertifikats, um sicherzustellen, dass der Antragstellername der vollqualifizierte Domänenname (FQDN) der Azure-VM ist. Sie können ein Tool wie CertUtils oder das Zertifikat-Snap-In zum Anzeigen der Eigenschaften verwenden. Sie finden den vollqualifizierten Domänennamen im **Azure-Portal** auf dem Blatt des VM-Diensts unter „Zusammenfassung“ im Feld [Öffentliche IP-Adresse/DNS-Namensbezeichnung](https://portal.azure.com/).
    
-   * Für VMs, die mit der neueren **Resource Manager**-Vorlage erstellt wurden, hat der FQDN das Format `<your-VM-name>.<region>.cloudapp.azure.com`. 
-   * Für ältere virtuelle Computer, die als **klassische** VM erstellt wurden, hat der FQDN das Format `<your-cloud-service-name.cloudapp.net>`. 
+   * Für VMs, die mit der neueren **Resource Manager**-Vorlage erstellt wurden, hat der FQDN das Format `<your-VM-name>.<region>.cloudapp.azure.com`.
+   * Für ältere virtuelle Computer, die als **klassische** VM erstellt wurden, hat der FQDN das Format `<your-cloud-service-name.cloudapp.net>`.
+
 2. Konfigurieren Sie SQL Server für die Verwendung des Zertifikats mit dem Registrierungs-Editor (regedit). 
    
     SQL Server-Konfigurations-Manager wird zwar häufig für diese Aufgabe verwendet, aber für dieses Szenario ist dies nicht möglich. Das importierte Zertifikat kann nicht gefunden werden, da der FQDN der VM unter Azure nicht mit dem von der VM ermittelten FQDN übereinstimmt (Domäne wird entweder als lokaler Computer oder als Netzwerkdomäne identifiziert, für die der Beitritt durchgeführt wurde). Verwenden Sie „regedit“, um das Zertifikat anzugeben, wenn die Namen nicht übereinstimmen.
@@ -38,9 +42,11 @@ Für Azure Search ist für alle Indexeranforderungen über eine öffentliche Int
    * Legen Sie den Wert des Schlüssels **Certificate** (Zertifikat) auf den **Thumbprint** (Fingerabdruck) des SSL-Zertifikats fest, das Sie in die VM importiert haben.
      
      Es gibt mehrere Möglichkeiten zur Beschaffung des Fingerabdrucks, von denen einige besser als andere geeignet sind. Wenn Sie ihn aus dem **Zertifikate**-Snap-In in MMC kopieren, ist unter Umständen ein unsichtbares vorangestelltes Zeichen enthalten. Dies führt zu einem Fehler, wenn Sie versuchen, die Verbindung herzustellen. [Informationen hierzu finden Sie in diesem Supportartikel](https://support.microsoft.com/kb/2023869/). Für dieses Problem gibt es mehrere Lösungen. Die einfachste Methode ist die Verwendung der Rückschritttaste und das erneute Eingeben des ersten Zeichens des Fingerabdrucks, um das vorangestellte Zeichen im Schlüsselwertfeld des Registrierungs-Editors zu entfernen. Alternativ dazu können Sie auch ein anderes Tool zum Kopieren des Fingerabdrucks verwenden.
+
 3. Gewähren Sie Berechtigungen für das Dienstkonto. 
    
     Stellen Sie sicher, dass dem SQL Server-Dienstkonto die entsprechende Berechtigung für den privaten Schlüssel des SSL-Zertifikats gewährt wird. Wenn Sie diesen Schritt übersehen, startet SQL Server nicht. Sie können das **Zertifikate**-Snap-In oder **CertUtils** für diese Aufgabe verwenden.
+    
 4. Starten Sie den SQL Server-Dienst neu.
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurieren der SQL Server-Konnektivität in der VM

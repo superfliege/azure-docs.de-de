@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e29b94f270b295725400103f288f3d3bd0c2a2eb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380563"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818990"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 - [Knotensicherheit](#node-security)
 - [Clusterupgrades](#cluster-upgrades)
 - [Netzwerksicherheit](#network-security)
-- [Kubernetes-Geheimnisse](#secrets)
+- Kubernetes-Geheimnisse
 
 ## <a name="master-security"></a>Sicherheit der Masterkomponenten
 
@@ -41,6 +41,8 @@ Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspat
 Knoten werden in einem Subnetz des privaten virtuellen Netzwerks ohne öffentliche IP-Adresse bereitgestellt. Zur Problembehandlung und Verwaltung ist SSH standardmäßig aktiviert. Dieser SSH-Zugriff ist nur über die interne IP-Adresse verfügbar. Mit den Netzwerksicherheitsgruppen-Regeln von Azure können Sie den Zugriff im IP-Adressbereich weiter auf die AKS-Knoten einschränken. Wenn Sie die standardmäßige SSH-Netzwerksicherheitsgruppen-Regel löschen und den SSH-Dienst auf den Knoten deaktivieren, kann die Azure-Plattform keine Wartungsaufgaben mehr ausführen.
 
 Die Knoten verwenden Azure Managed Disks, um Speicher bereitzustellen. Bei den meisten VM-Knotengrößen handelt es sich um Premium-Datenträger, die von Hochleistungs-SSDs unterstützt werden. Die auf verwalteten Datenträgern gespeicherten Daten werden im Ruhezustand auf der Azure-Plattform automatisch verschlüsselt. Zur Verbesserung der Redundanz werden diese Datenträger außerdem sicher im Azure-Rechenzentrum repliziert.
+
+Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind derzeit nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfunktionen wie *Pod Security Policies* oder differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden. Weitere Informationen zu Möglichkeiten zur Isolierung von Workloads finden Sie unter [Bewährte Methoden für die Isolierung der Cluster in AKS][cluster-isolation],
 
 ## <a name="cluster-upgrades"></a>Clusterupgrades
 
@@ -96,3 +98,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[cluster-isolation]: operator-best-practices-cluster-isolation.md

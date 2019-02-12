@@ -1,27 +1,25 @@
 ---
-title: Abrufen von Videoinformationen – Bing-Videosuche
+title: Abrufen von Videoinformationen mithilfe der Bing-Videosuche-API
 titlesuffix: Azure Cognitive Services
-description: Zeigt, wie die Bing-Videosuche-API verwendet wird, um weitere Informationen zu einem Video abzurufen.
+description: Erfahren Sie, wie Sie die Bing-Videosuche-API verwenden, um weitere Informationen zu Videos abzurufen, z.B. verwandte Videos.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9c36208a35d66fcd6df6ac2ccd4a28c55ed92937
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5abc5ee96c503bed9509e3d35b442ea5e0330ac7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170778"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568208"
 ---
 # <a name="get-insights-about-a-video"></a>Abrufen von Auswertungen zu einem Video
 
-Jedes Video enthält eine Video-ID, die Sie verwenden können, um weitere Informationen zum Video (z.B. verwandte Videos) abzurufen.  
-  
-Erfassen Sie zum Abrufen von Auswertungen zu einem Video dessen [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid)-Token in der Antwort. 
+Jedes Video von der Bing-Videosuche-API zurückgegebene Video enthält eine Video-ID, die Sie verwenden können, um weitere Informationen zum Video (z.B. verwandte Videos) abzurufen. Verwenden Sie zum Abrufen von Auswertungen zu einem Video dessen [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid)-Token in der API-Antwort. 
 
 ```json
     "value" : [
@@ -36,9 +34,9 @@ Erfassen Sie zum Abrufen von Auswertungen zu einem Video dessen [videoId](https:
     ],
 ```
 
-Senden Sie dann die folgende GET-Anforderung an den Videodetailsendpunkt. Legen Sie den [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id)-Abfrageparameter auf das `videoId`-Token fest. Um die Auswertungen anzugeben, die Sie abrufen möchten, legen Sie den [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested)-Abfrageparameter fest. Um alle Auswertungen abzurufen, legen Sie `modules` auf „Alle“ fest. Die Antwort enthält alle Auswertungen, die Sie angefordert haben (wenn verfügbar).
+Senden Sie dann eine GET-Anforderung an den Videodetailsendpunkt mit der ID. Legen Sie den [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id)-Abfrageparameter auf das `videoId`-Token fest. Um die Auswertungen anzugeben, die Sie abrufen möchten, legen Sie den [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested)-Abfrageparameter fest. Um alle Auswertungen abzurufen, legen Sie `modules` auf „Alle“ fest. Die Antwort enthält alle Auswertungen, die Sie angefordert haben (wenn verfügbar).
 
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -50,9 +48,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Abrufen von Auswertungen zu verwandten Videos  
 
-Um Videos abzurufen, die mit dem angegebenen Video verwandt sind, legen Sie den [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested)-Abfrageparameter auf „RelatedVideos“ fest.
+Um Videos abzurufen, die mit dem angegebenen Video verwandt sind, legen Sie den [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested)-Abfrageparameter auf `RelatedVideos` fest.
   
-```  
+```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -61,10 +59,10 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```  
+
+Die Antwort auf diese Anforderung wird ein [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails)-Objekt auf oberster Ebene anstelle eines [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos)-Objekts enthalten.  
   
-Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Das Objekt auf oberster Ebene ist ein [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails)-Objekt und kein [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos)-Objekt.  
-  
-```  
+```json
 {
     "_type" : "Api.VideoDetails.VideoDetails",
     "relatedVideos" : {
@@ -95,3 +93,9 @@ Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Das Objek
     }
 }
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Suchen Sie nach beliebten Videos](trending-videos.md)
+

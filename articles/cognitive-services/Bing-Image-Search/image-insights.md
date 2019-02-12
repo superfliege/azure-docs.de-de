@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157240"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818684"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Abrufen von Bildauswertungen mit der Bing-Bildersuche-API
 
@@ -221,7 +221,7 @@ Die Werte des Rechtecks sind relativ zur Breite und Höhe des ursprünglichen Bi
 -   Rechts: 290 : 300 = 0,9667...  
 -   Unten: 150 : 200 = 0,75  
 
-Sie können den Bereich, den Bing zurückgibt, in nachfolgenden Auswertungsaufrufen verwenden. Beispielsweise zum Abrufen visuell ähnlicher Bilder für die erkannte Entität. Weitere Informationen finden Sie unter [Zuschneiden von Bildern zur Verwendung mit Modulen für visuelle Ähnlichkeit und Entitätserkennung](#croppingimages). Das folgende Beispiel zeigt die Zuordnung zwischen den Bereichsfeldern und den Abfrageparametern, die Sie zum Zuschneiden von Bildern verwenden.  
+Sie können den Bereich, den Bing zurückgibt, in nachfolgenden Auswertungsaufrufen verwenden. Beispielsweise zum Abrufen visuell ähnlicher Bilder für die erkannte Entität. Weitere Informationen finden Sie unter „Zuschneiden von Bildern zur Verwendung mit Modulen für visuelle Ähnlichkeit und Entitätserkennung“. Das folgende Beispiel zeigt die Zuordnung zwischen den Bereichsfeldern und den Abfrageparametern, die Sie zum Zuschneiden von Bildern verwenden.  
 
 -   Links wird [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal) zugeordnet.  
 -   Oben wird [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat) zugeordnet.  

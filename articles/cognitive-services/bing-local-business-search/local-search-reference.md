@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 22d83eb617c544a374f1f6b502803d4ead214492
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182233"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820741"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenz für die API für die Bing-Suche nach ortsansässigen Unternehmen v7
 
@@ -53,7 +53,7 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 |Header|BESCHREIBUNG|  
 |------------|-----------------|  
 |Akzeptieren|Optionaler Anforderungsheader.<br /><br /> Der Standardmedientyp ist application/json. Um anzugeben, dass die Antwort [JSON-LD](http://json-ld.org/) verwenden soll, legen Sie den Accept-Header auf application/ld+json fest.|  
-|<a name="acceptlanguage" />Accept-Language|Optionaler Anforderungsheader.<br /><br /> Eine durch Kommas getrennte Liste mit Sprachen, die für Zeichenfolgen der Benutzeroberfläche verwendet werden sollen. Die Liste ist absteigend nach Präferenz sortiert. Weitere Informationen hierzu (sowie zum erwarteten Format) finden Sie unter [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Dieser Header und der Abfrageparameter [setLang](#setlang) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Wenn Sie diesen Header festlegen, müssen Sie auch den Abfrageparameter [cc](#cc) angeben. Bing verwendet die erste unterstützte Sprache aus der Liste, um den Markt zu bestimmen, für den Ergebnisse zurückgegeben werden sollen, und kombiniert sie mit dem Parameterwert `cc`. Enthält die Liste keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die bzw. der die Anforderung unterstützt. Alternativ dazu wird für die Ergebnisse ein aggregierter oder Standardmarkt verwendet. Wenn Sie sehen möchten, welchen Markt Bing verwendet hat, untersuchen Sie den Header „BingAPIs-Market“.<br /><br /> Verwenden Sie diesen Header und den `cc`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Verwenden Sie andernfalls die Abfrageparameter [mkt](#mkt) und [setLang](#setlang).<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die Links zu Eigenschaften von Bing.com in den Antwortobjekten verwenden die angegebene Sprache.|  
+|<a name="acceptlanguage" />Accept-Language|Optionaler Anforderungsheader.<br /><br /> Eine durch Kommas getrennte Liste mit Sprachen, die für Zeichenfolgen der Benutzeroberfläche verwendet werden sollen. Die Liste ist absteigend nach Präferenz sortiert. Weitere Informationen hierzu (sowie zum erwarteten Format) finden Sie unter [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Dieser Header und der Abfrageparameter [setLang](#setlang) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Wenn Sie diesen Header festlegen, müssen Sie auch den Abfrageparameter „cc“ angeben. Bing verwendet die erste unterstützte Sprache aus der Liste, um den Markt zu bestimmen, für den Ergebnisse zurückgegeben werden sollen, und kombiniert sie mit dem Parameterwert `cc`. Enthält die Liste keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die bzw. der die Anforderung unterstützt. Alternativ dazu wird für die Ergebnisse ein aggregierter oder Standardmarkt verwendet. Wenn Sie sehen möchten, welchen Markt Bing verwendet hat, untersuchen Sie den Header „BingAPIs-Market“.<br /><br /> Verwenden Sie diesen Header und den `cc`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Verwenden Sie andernfalls die Abfrageparameter [mkt](#mkt) und [setLang](#setlang).<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die Links zu Eigenschaften von Bing.com in den Antwortobjekten verwenden die angegebene Sprache.|  
 |<a name="market" />BingAPIs-Market|Antwortheader.<br /><br /> Der von der Anforderung verwendete Markt. Das Format lautet \<Sprachcode\>-\<Ländercode\>. Beispiel: en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Antwortheader.<br /><br /> Die ID des Protokolleintrags, der die Details der Anforderung enthält. Erfassen Sie diese ID, wenn ein Fehler auftritt. Wenn Sie das Problem nicht ermitteln und beheben können, übermitteln Sie diese ID und weitere Informationen an das Supportteam.|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Erforderlicher Anforderungsheader.<br /><br /> Der Abonnementschlüssel, den Sie bei der Registrierung für diesen Dienst in [Cognitive Services](https://www.microsoft.com/cognitive-services/) erhalten haben.|  
@@ -75,7 +75,7 @@ Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderliche
 |----------|-----------|----------|--------------|
 |<a name="count" />count|Die Anzahl der zurückzugebenden Ergebnisse, beginnend mit dem durch den Parameter `offset` angegebenen Index.|Zeichenfolge|Nein |   
 |<a name="localCategories" />localCategories|Liste der Optionen, die die Suche nach Unternehmenskategorie definieren.  Weitere Informationen finden Sie unter [Kategorien für die Suche nach ortsansässigen Unternehmen](local-categories.md).|Zeichenfolge|Nein |  
-|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter [Marktcodes](#market-codes).<br /><br /> **HINWEIS:** Die API für die Suche nach ortsansässigen Unternehmen unterstützt zurzeit nur den Markt und die Sprache „en-us“.<br /><br />|Zeichenfolge|JA|
+|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter „Marktcodes“.<br /><br /> **HINWEIS:** Die API für die Suche nach ortsansässigen Unternehmen unterstützt zurzeit nur den Markt und die Sprache „en-us“.<br /><br />|Zeichenfolge|Ja|
 |<a name="offset"/>offset|Der Index, der die Ergebnisse startet, die durch den Parameter `count` angegeben werden.|Ganze Zahl |Nein |  
 |<a name="query" />q|Der Suchbegriff des Benutzers.|Zeichenfolge|Nein |  
 |<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />  Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](http://json-ld.org/).|Zeichenfolge|Nein |  
@@ -154,8 +154,8 @@ Definiert Informationen zu einem ortsansässigen Unternehmen, z.B. ein Restauran
 |NAME|Wert|Type|  
 |----------|-----------|----------|  
 |_type|Der Typhinweis, die auf einen der folgenden Werte festgelegt werden kann:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurant</ul><li>|Zeichenfolge|  
-|address|Die Postadresse, an der sich die Entität befindet.|[PostalAddress](#postaladdress)|  
-|entityPresentationInfo|Weitere Informationen zur Entität z.B. Hinweise, die Sie zum Bestimmen des Entitätstypen verwenden können. Beispielsweise, ob es sich um ein Restaurant oder Hotel handelt. Die Feld `entityScenario` auf „ListItem“ festgelegt.|[EntityPresentationInfo](#entitypresentationinfo)|  
+|address|Die Postadresse, an der sich die Entität befindet.|PostalAddress|  
+|entityPresentationInfo|Weitere Informationen zur Entität z.B. Hinweise, die Sie zum Bestimmen des Entitätstypen verwenden können. Beispielsweise, ob es sich um ein Restaurant oder Hotel handelt. Die Feld `entityScenario` auf „ListItem“ festgelegt.|EntityPresentationInfo|  
 |name|Der Name der Entität.|Zeichenfolge|  
 |telephone|Die Telefonnummer der Entität.|Zeichenfolge|  
 |URL|Die URL zur Website der Entität.<br /><br /> Verwenden Sie diese URL zusammen mit dem Namen der Entität, um einen Hyperlink zu erstellen, der den Benutzer beim Anklicken auf die Website der Entität führt.|Zeichenfolge|  

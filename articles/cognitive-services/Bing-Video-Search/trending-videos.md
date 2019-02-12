@@ -1,27 +1,31 @@
 ---
-title: Durchsuchen des Internets nach beliebten Videos – Bing-Videosuche
+title: Durchsuchen des Internets nach beliebten Videos mithilfe der Bing-Videosuche-API
 titlesuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie das Internet mithilfe der Bing-Videosuche-API nach beliebten Videos durchsuchen.
+description: Erfahren Sie, wie Sie das Internet mithilfe der Bing-Videosuche-API nach beliebten Videos durchsuchen.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 71dd888199e9e630835c4916d35f6308431bab62
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55f29a31a9574c7c32e6708565e961950520593f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203554"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566074"
 ---
-# <a name="get-trending-videos"></a>Abrufen von beliebten Videos  
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Abrufen beliebter Videos mit der Bing-Videosuche-API 
 
-Um die heutigen beliebten Videos zu erhalten, senden Sie die folgenden GET-Anforderung:  
+Die Bing-Videosuche-API ermöglicht es Ihnen, die aktuellen Trendvideos aus dem gesamten Web und in verschiedenen Kategorien zu finden. 
+
+## <a name="get-request"></a>GET-Anforderung
+
+Um mit der Bing-Videosuche-API die aktuellen Trendvideos abzurufen, senden Sie die folgenden GET-Anforderung:  
   
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -30,6 +34,8 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```
+
+## <a name="market-support"></a>Marktunterstützung
 
 Die folgenden Märkte unterstützen beliebte Videos.  
  
@@ -47,10 +53,11 @@ Die folgenden Märkte unterstützen beliebte Videos.
 -   en-ZA (Englisch, Südafrika)  
 -   zh-CN (Chinesisch, China)
 
-  
-Das folgende Beispiel zeigt eine Antwort, die beliebte Videos enthält.  
+## <a name="example-json-response"></a>JSON-Beispielantwort  
 
-```  
+Das folgende Beispiel zeigt eine API-Antwort, die Trendvideos enthält, die nach Kategorie und Unterkategorie aufgelistet sind. Die Antwort enthält auch Bannervideos, das heißt, die beliebtesten Videos, die aus einer oder mehreren Kategorien stammen können.  
+
+```json
 {  
     "_type" : "TrendingVideos",  
     "bannerTiles" : [
@@ -112,8 +119,9 @@ Das folgende Beispiel zeigt eine Antwort, die beliebte Videos enthält.
     ]  
 }  
   
-```  
-Die Antwort enthält eine Liste der Videos geordnet nach Kategorie und Unterkategorie. Wenn die Liste der Kategorien beispielsweise eine Kategorie „Musikvideo“ enthielt und eine ihrer Unterkategorien „Top“ war, können Sie eine Kategorie „Top-Musikvideo“ in Ihrer Benutzererfahrung erstellen. Sie können dann die Felder `thumbnailUrl`, `displayText` und `webSearchUrl` verwenden, um eine klickbare Kachel unter jeder Kategorie zu erstellen (z.B. Top-Musikvideos). Wenn der Benutzer auf die Kachel klickt, wird er zu Bings Videobrowser weitergeleitet, wo das Video abgespielt wird.
+```
 
-Die Antwort enthält auch Bannervideos, die die beliebtesten Videos sind. Die Bannervideos können aus einer oder mehr Kategorien stammen.  
-  
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+[Gewinnen von Erkenntnissen aus Videos](video-insights.md)

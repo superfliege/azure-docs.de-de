@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d9ce2661fbdca0a28f917e27e27a3e3f954a9999
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717210"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488380"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -51,6 +51,9 @@ Weitere Informationen zur Integration in Azure AD und RBAC finden Sie unter [Zug
 Genauso wie Sie Benutzern und Gruppen nur die minimal notwendigen Berechtigungen gewähren sollten, sollten Sie auch Container auf die Aktionen und Prozesse beschränken, die sie benötigen. Konfigurieren Sie keine Anwendungen und Container, die ausgeweitete Berechtigungen oder Stammzugriff benötigen, um das Risiko einer Attacke so gering wie möglich zu halten. Legen Sie im Podmanifest beispielsweise `allowPrivilegeEscalation: false` fest. Diese *Podsicherheitskontexte* sind in Kubernetes integriert und ermöglichen es Ihnen, zusätzliche Berechtigungen festzulegen, z. B. welche Ausführungsberechtigungen Benutzer und Gruppen haben oder welche Linux-Funktionen zur Verfügung gestellt werden. Weitere Best Practices finden Sie unter [Secure pod access to ressources (Sichern des Podzugriffs auf Ressourcen)][pod-security-contexts].
 
 Wenn Sie die Steuerungsmöglichkeiten für Containeraktionen noch feiner abstimmen möchten, können Sie dazu auch integrierte Linux-Sicherheitsfeatures wie *AppArmor* und *seccomp* verwenden. Diese Features sind auf der Knotenebene definiert und werden dann über ein Podmanifest implementiert.
+
+> [!NOTE]
+> Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfunktionen wie *AppArmor*, *seccomp*, *Pod Security Policies* oder differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
 
 ### <a name="app-armor"></a>AppArmor
 

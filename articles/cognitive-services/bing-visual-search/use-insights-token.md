@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6017fc957d511aa21f8e28cf011378e8012123cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b3e948c2eafb43f804b330287b114ef9307b0aac
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151718"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813363"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Verwenden eines Erkenntnistokens zum Gewinnen von Erkenntnissen zu einem Bild
 
 Die API für die visuelle Bing-Suche gibt Informationen zu einem von Ihnen bereitgestellten Bild zurück. Sie können ein Bild über die Bild-URL, ein Erkenntnistoken oder durch Hochladen des Bilds bereitstellen. Informationen zu diesen Optionen finden Sie unter [Was ist die API für die visuelle Bing-Suche?](overview.md). Dieser Artikel erläutert die Verwendung eines Erkenntnistokens. Beispiele für das Hochladen eines Bilds zum Gewinnen von Erkenntnissen finden Sie in den Schnellstartanleitungen ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
 
 
-Wenn Sie der visuellen Suche ein Bildtoken oder eine URL senden, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten, und der `name`-Parameter muss auf „knowledgeRequest“ festgelegt sein. Einzelheiten zum `imageInfo`-Objekt finden Sie unter [Die Anforderung](#the-request).
+Wenn Sie der visuellen Suche ein Bildtoken oder eine URL senden, müssen Sie die folgenden Formulardaten in den Text der POST-Anforderung einfügen. Die Formulardaten müssen den Header „Content-Disposition“ enthalten, und der `name`-Parameter muss auf „knowledgeRequest“ festgelegt sein. Einzelheiten zum `imageInfo`-Objekt finden Sie unter „Die Anforderung“.
 
 ```json
 {

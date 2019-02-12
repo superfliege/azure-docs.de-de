@@ -1,36 +1,38 @@
 ---
 title: Verwenden der Rangfolge zum Anzeigen von Antworten – Bing-Entitätssuche
 titlesuffix: Azure Cognitive Services
-description: Hier wird gezeigt, wie Sie die Rangfolge zum Anzeigen der von der Bing-Entitätssuche-API zurückgegebenen Antworten verwenden.
+description: Erfahren Sie, wie Sie die Rangfolge zum Anzeigen der von der Bing-Entitätssuche-API zurückgegebenen Antworten verwenden.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: f0cae32acf2db62a5d3c060ea944b1131252beda
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 56215bfa17343576b6bebec3a5dc5076ac56073c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195918"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754131"
 ---
-# <a name="using-ranking-to-display-results"></a>Verwenden der Rangfolge zum Anzeigen von Ergebnissen  
+# <a name="using-ranking-to-display-entity-search-results"></a>Verwenden der Rangfolge zum Anzeigen von Ergebnissen der Entitätssuche  
 
-Jedes Ergebnis einer Entitätssuche enthält eine [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)-Antwort, die der im Ergebnis einer Bing-Websuche ähnelt und angibt, wie die Suchergebnisse angezeigt werden müssen. Anhand der Rangfolgeantwort werden die Ergebnisse in Spitzenpositions-, Hauptbereichs- und Randleisteninhalte gruppiert. Das Spitzenpositionsergebnis ist das wichtigste oder hervorstechendste Ergebnis und sollte zuerst angezeigt werden. Wenn Sie die übrigen Ergebnisse nicht in einem herkömmlichen Hauptbereichs- und Randleistenformat anzeigen, müssen Sie dem Hauptbereichsinhalt höhere Sichtbarkeit als dem Randleisteninhalt zuweisen. 
+Jedes Ergebnis einer Entitätssuche enthält eine [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)-Antwort, die angibt, wie die von der Bing-Entitätssuche-API zurückgegebenen Suchergebnisse angezeigt werden müssen. Anhand der Rangfolgeantwort werden die Ergebnisse in Spitzenpositions-, Hauptbereichs- und Randleisteninhalte gruppiert. Das Spitzenpositionsergebnis ist das wichtigste oder hervorstechendste Ergebnis und sollte zuerst angezeigt werden. Wenn Sie die übrigen Ergebnisse nicht in einem herkömmlichen Hauptbereichs- und Randleistenformat anzeigen, müssen Sie dem Hauptbereichsinhalt höhere Sichtbarkeit als dem Randleisteninhalt zuweisen. 
   
 Innerhalb jeder Gruppe gibt das [Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)-Array die Reihenfolge an, in der die Inhalte angezeigt werden müssen. Jedes Element bietet zwei Möglichkeiten zur Angabe des Ergebnisses in einer Antwort.  
+ 
+
+|Feld | BESCHREIBUNG  |
+|---------|---------|
+|`answerType` und `resultIndex` | `answerType` bezeichnet die Antwort (entweder eine Entität oder ein Ort) und `resultIndex` bezeichnet ein Ergebnis in dieser Antwort (z.B. eine Entität). Der Index beginnt bei 0.|
+|`value`    | `value` enthält eine ID, die entweder der ID einer Antwort oder eines Ergebnisses in der Antwort entspricht. Die ID ist entweder in der Antwort oder den Ergebnissen enthalten, jedoch nicht in beidem. |
   
--   `answerType` und `resultIndex`: Das `answerType`-Feld bezeichnet die Antwort (entweder eine Entität oder ein Ort) und `resultIndex` bezeichnet ein Ergebnis in der Antwort (z.B. eine Entität). Der Index ist nullbasiert.  
-  
--   `value`: Das `value`-Feld enthält eine ID, die entweder der ID einer Antwort oder eines Ergebnisses in der Antwort entspricht. Die ID ist entweder in der Antwort oder den Ergebnissen enthalten, jedoch nicht in beidem.  
-  
+Die Verwendung von `answerType` und `resultIndex` ist ein zweistufiger Prozess. Verwenden Sie zuerst `answerType`, um die Antwort anzugeben, in der die anzuzeigenden Ergebnisse enthalten sind. Verwenden Sie dann `resultIndex` zum Indizieren in die Ergebnisse dieser Antwort, um das anzuzeigende Ergebnis abzurufen. (Der Wert für `answerType` ist der Name des Felds im [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse)-Objekt.) Wenn alle Ergebnisse der Antwort zusammen angezeigt werden sollen, weist das Element der Rangfolgeantwort kein `resultIndex`-Feld auf.
+
 Bei Verwendung der ID muss die Rangfolgen-ID mit der ID einer Antwort oder eines ihrer Ergebnisse übereinstimmen. Wenn ein Antwortobjekt ein `id`-Feld enthält, werden alle Ergebnisse der Antwort zusammen angezeigt. Enthält beispielsweise das `Entities`-Objekt das `id`-Feld, werden alle Entitätsartikel zusammen angezeigt. Wenn das `Entities`-Objekt das `id`-Feld nicht enthält, weist jede Entität ein `id`-Feld auf, und in der Rangfolgeantwort sind die Entitäten mit den Ergebnissen für Orte gemischt.  
   
-Die Verwendung von `answerType` und `resultIndex` ist ein zweistufiger Prozess. Zuerst verwenden Sie `answerType`, um die Antwort anzugeben, in der die anzuzeigenden Ergebnisse enthalten sind. Dann verwenden Sie `resultIndex` zum Indizieren in die Ergebnisse dieser Antwort, um das anzuzeigende Ergebnis abzurufen. (Der Wert für `answerType` ist der Name des Felds im [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse)-Objekt.) Wenn alle Ergebnisse der Antwort zusammen angezeigt werden sollen, weist das Element der Rangfolgeantwort kein `resultIndex`-Feld auf.
-
 ## <a name="ranking-response-example"></a>Beispiel einer Rangfolgeantwort
 
 Nachfolgend sehen Sie ein Beispiel für [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
@@ -70,4 +72,4 @@ Auf Grundlage dieser Rangfolgeantwort werden in der Randleiste die beiden Entit�
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial zur Bing-Entitätssuche](tutorial-bing-entities-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App](tutorial-bing-entities-search-single-page-app.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 0ad6ab27a51cf082be71262b887a459f6c7cc906
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101971"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699124"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -21,44 +21,44 @@ Beim Erstellen und Verwalten von Clustern in Azure Kubernetes Service (AKS) stel
 In diesem Artikel zu bewährten Methoden liegt der Schwerpunkt auf der Netzwerkkonnektivität und der Sicherheit für Clusteroperatoren. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * Vergleichen der grundlegenden und erweiterten Netzwerkmodi in AKS
+> * Vergleichen der Netzwerkmodi „kubenet“ und „Azure CNI“ in AKS
 > * Planen der erforderlichen IP-Adressierung und -Konnektivität
 > * Verteilen von Datenverkehr mit Lastenausgleichsmodulen, Controllern für eingehenden Datenverkehr oder einer Web Application Firewall (WAF)
 > * Herstellen sicherer Verbindungen mit Clusterknoten
 
 ## <a name="choose-the-appropriate-network-model"></a>Auswählen des geeigneten Netzwerkmodells
 
-**Best Practice-Anleitung** – Für die Integration in bestehende virtuelle Netzwerke oder lokale Netzwerke verwenden Sie erweiterte Netzwerke in AKS. Dieses Netzwerkmodell ermöglicht zudem eine stärkere Trennung von Ressourcen und Steuerelementen in einer Unternehmensumgebung.
+**Best Practice-Anleitung** – Für die Integration in bestehende virtuelle Netzwerke oder lokale Netzwerke verwenden Sie Azure CNI-Netzwerke in AKS. Dieses Netzwerkmodell ermöglicht zudem eine stärkere Trennung von Ressourcen und Steuerelementen in einer Unternehmensumgebung.
 
 Virtuelle Netzwerke bieten die grundlegende Konnektivität für AKS-Knoten und Kunden für den Zugriff auf Ihre Anwendungen. Es gibt zwei verschiedene Möglichkeiten, AKS-Cluster in virtuellen Netzwerken bereitzustellen:
 
-* **Basisnetzwerke** – Azure verwaltet die virtuellen Netzwerkressourcen während der Bereitstellung des Clusters und verwendet das Kubernetes-Plug-In [kubenet][kubenet].
-* **Erweiterte Netzwerke** – Führt die Bereitstellung in ein bestehendes virtuelles Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
+* **kubenet-Netzwerke** – Azure verwaltet die virtuellen Netzwerkressourcen während der Bereitstellung des Clusters und verwendet das Kubernetes-Plug-In [kubenet][kubenet].
+* **Azure CNI-Netzwerke** – Führt die Bereitstellung in ein bestehendes virtuelles Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
 
 Die Container Networking Interface (CNI) ist ein herstellerneutrales Protokoll, mit dem die Containerlaufzeit Anfragen an einen Netzwerkanbieter richten kann. Azure CNI weist Pods und Knoten IP-Adressen zu und stellt Features zur IP-Adressverwaltung (IPAM) bereit, wenn Sie die Verbindung zu bestehenden virtuellen Azure-Netzwerken herstellen. Jeder Knoten und jede Podressource erhält eine IP-Adresse im virtuellen Azure-Netzwerk, und es ist kein zusätzliches Routing erforderlich, um mit anderen Ressourcen oder Diensten zu kommunizieren.
 
 ![Diagramm mit zwei Knoten jeweils mit Bridges für die Verbindungsherstellung mit einem Azure VNET](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-Für die meisten Produktionsbereitstellungen sollten Sie erweiterte Netzwerke verwenden. Dieses Netzwerkmodell ermöglicht eine Trennung von Steuerung und Verwaltung von Ressourcen. Aus Sicherheitssicht möchten Sie diese Ressourcen oft von verschiedenen Teams verwalten und absichern lassen. Mit erweiterten Netzwerken können Sie die Verbindung zu vorhandenen Azure-Ressourcen, lokalen Ressourcen oder anderen Diensten direkt über die jedem Pod zugeordneten IP-Adressen herstellen.
+Für die meisten Produktionsbereitstellungen sollten Sie Azure CNI-Netzwerke verwenden. Dieses Netzwerkmodell ermöglicht eine Trennung von Steuerung und Verwaltung von Ressourcen. Aus Sicherheitssicht möchten Sie diese Ressourcen oft von verschiedenen Teams verwalten und absichern lassen. Mit Azure CNI-Netzwerken können Sie die Verbindung zu vorhandenen Azure-Ressourcen, lokalen Ressourcen oder anderen Diensten direkt über die jedem Pod zugeordneten IP-Adressen herstellen.
 
-Wenn Sie erweiterte Netzwerke verwenden, befindet sich die virtuelle Netzwerkressource in einer vom AKS-Cluster getrennten Ressourcengruppe. Delegieren Sie Berechtigungen für den AKS-Dienstprinzipal, um auf diese Ressourcen zuzugreifen und sie zu verwalten. Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkressource in einer vom AKS-Cluster getrennten Ressourcengruppe. Delegieren Sie Berechtigungen für den AKS-Dienstprinzipal, um auf diese Ressourcen zuzugreifen und sie zu verwalten. Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 Weitere Informationen zur AKS-Dienstprinzipaldelegation finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation].
 
-Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem Basis- bzw. erweiterten Netzwerk ausführen kann. Um Skalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen.
+Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Skalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen.
 
-Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren erweiterter Netzwerke in AKS][advanced-networking].
+Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
 
-### <a name="basic-networking-with-kubenet"></a>Basisnetzwerke mit Kubernetes
+### <a name="kubenet-networking"></a>Kubenet-Netzwerke
 
-Für Basisnetzwerke ist es zwar nicht erforderlich, dass Sie die virtuellen Netzwerke vor der Bereitstellung des Clusters einrichten, aber es gibt Nachteile:
+Für „kubernet“ ist es zwar nicht erforderlich, dass Sie die virtuellen Netzwerke vor der Bereitstellung des Clusters einrichten, aber es gibt Nachteile:
 
-* Knoten und Pods werden in unterschiedliche IP-Subnetze platziert. Benutzerdefiniertes Routing (UDR) und IP-Weiterleitung werden verwendet, um den Datenverkehr zwischen Pods und Knoten zu routen. Dieses zusätzliche Routing reduziert die Netzwerkleistung.
-* Verbindungen zu bestehenden lokalen Netzwerken oder das Peering mit anderen virtuellen Netzwerken von Azure sind komplex.
+* Knoten und Pods werden in unterschiedliche IP-Subnetze platziert. Benutzerdefiniertes Routing (UDR) und IP-Weiterleitung werden verwendet, um den Datenverkehr zwischen Pods und Knoten zu routen. Dieses zusätzliche Routing kann die Netzwerkleistung reduzieren.
+* Verbindungen zu bestehenden lokalen Netzwerken oder das Peering mit anderen virtuellen Netzwerken von Azure können komplex sein.
 
-Basisnetzwerke eignen sich für kleine Entwicklungs- oder Testworkloads, da Sie das virtuelle Netzwerk und die Subnetze nicht getrennt vom AKS-Cluster erstellen müssen. Einfache Websites mit geringem Datenverkehr oder das Verschieben von Workloads in Container per Lift & Shift können ebenfalls von der Einfachheit der mit Basisnetzwerken bereitgestellten AKS-Cluster profitieren. Für die meisten Produktionsbereitstellungen sollten Sie erweiterte Netzwerke planen und verwenden.
+„Kubernet“ eignet sich für kleine Entwicklungs- oder Testworkloads, da Sie das virtuelle Netzwerk und die Subnetze nicht getrennt vom AKS-Cluster erstellen müssen. Einfache Websites mit geringem Datenverkehr oder das Verschieben von Workloads in Container per Lift & Shift können ebenfalls von der Einfachheit der mit kubernet-Netzwerken bereitgestellten AKS-Cluster profitieren. Für die meisten Produktionsbereitstellungen sollten Sie Azure CNI-Netzwerke planen und verwenden. Sie können auch [Ihre eigenen IP-Adressbereiche und virtuellen Netzwerke mit kubenet][aks-configure-kubenet-networking] konfigurieren.
 
 ## <a name="distribute-ingress-traffic"></a>Verteilen des Eingangsdatenverkehrs
 
@@ -155,4 +155,5 @@ Dieser Artikel konzentriert sich auf Netzwerkkonnektivität und Sicherheit. Weit
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
-[advanced-networking]: configure-advanced-networking.md
+[advanced-networking]: configure-azure-cni.md
+[aks-configure-kubenet-networking]: configure-kubenet.md

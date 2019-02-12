@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/08/2018
+ms.date: 01/30/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 4aa1b170b0c0c515faa67118772ad14d34c7276b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 508a20e826c2f7bf1260bde6858eb4472c16a5c0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278252"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496524"
 ---
 # <a name="expressroute-nat-requirements"></a>NAT-Anforderungen für ExpressRoute
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie NATs einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten von NAT als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Wenn dies nicht der Fall ist, müssen Sie die unten beschriebenen Anforderungen erfüllen. 
@@ -41,6 +41,11 @@ Mit dem Microsoft-Peeringpfad können Sie eine Verbindung mit den Clouddiensten 
 ![Asymmetrisches Routing mit ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="nat-requirements-for-azure-public-peering"></a>NAT-Anforderungen für öffentliches Azure-Peering
+
+> [!NOTE]
+> Öffentliches Azure-Peering ist für neue Verbindungen nicht verfügbar.
+> 
+
 Der öffentliche Azure-Peeringpfad ermöglicht, dass Sie zu allen in Azure gehosteten Diensten über die öffentliche IP-Adresse eine Verbindung herstellen können. Dazu zählen Dienste, die unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md) aufgeführt sind und die von ISVs auf Microsoft Azure gehostet werden. 
 
 > [!IMPORTANT]

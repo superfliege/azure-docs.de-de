@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 70229a0b211acd08d285ad7a943f39285fad8012
+ms.openlocfilehash: bbede01844f20c0240b154fd319b818a43463131
 ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810421"
+ms.locfileid: "55824565"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
-Es gibt verschiedene Szenarien, in denen Sie sich dafür entscheiden sollten, Ihre vorhandenen Azure IaaS-VMs von einer Region in eine andere zu verschieben: zum Verbessern der Zuverlässigkeit und Verfügbarkeit Ihrer vorhandenen VMs, zum Verbessern der Verwaltbarkeit, aus Gründen der Governance usw. Ausführliche Informationen finden Sie [hier](azure-to-azure-move-overview.md). Zusätzlich zur Verwendung des Diensts [Azure Site Recovery](site-recovery-overview.md) zur Verwaltung und Orchestrierung der Notfallwiederherstellung von lokalen Computern und virtuellen Azure-Computern für BCDR-Zwecke (Business Continuity/Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung) können Sie mit Site Recovery auch die Migration von virtuellen Azure-Computern zu einer sekundären Region verwalten.       
+Es gibt verschiedene Szenarien, in denen Sie sich dafür entscheiden sollten, Ihre vorhandenen Azure IaaS-VMs von einer Region in eine andere zu verschieben: zum Verbessern der Zuverlässigkeit und Verfügbarkeit Ihrer vorhandenen VMs, zum Verbessern der Verwaltbarkeit, aus Gründen der Governance usw. 
 
 In diesem Tutorial erfahren Sie, wie Sie Azure-VMs mithilfe von Azure Site Recovery in eine andere Region verschieben. In diesem Tutorial lernen Sie Folgendes:
 
@@ -26,20 +26,20 @@ In diesem Tutorial erfahren Sie, wie Sie Azure-VMs mithilfe von Azure Site Recov
 > * [Vorbereiten der Quell-VMs](#prepare-the-source-vms)
 > * [Vorbereiten der Zielregion](#prepare-the-target-region)
 > * [Kopieren von Daten in die Zielregion](#copy-data-to-the-target-region)
-> * [Testen der Konfiguration](#test-the-configuration) 
-> * [Durchführen der Verschiebung](#perform-the-move-to-the-target-region-and-confirm) 
-> * [Verwerfen der Ressourcen in der Quellregion](#discard-the-resource-in-the-source-region) 
+> * [Testen der Konfiguration](#test-the-configuration)
+> * [Durchführen der Verschiebung](#perform-the-move-to-the-target-region-and-confirm)
+> * [Verwerfen der Ressourcen in der Quellregion](#discard-the-resource-in-the-source-region)
 
 > [!IMPORTANT]
-> In diesem Dokument wird Schritt für Schritt erläutert, wie Sie Azure-VMs von einer Region in eine andere verschieben. Falls Sie die Verfügbarkeit durch das Migrieren von VMs in einer Verfügbarkeitsgruppe zu an Zonen angehefteten VMs verbessern möchten, finden Sie in diesem Tutorial weitere Informationen.
+> In diesem Dokument wird Schritt für Schritt erläutert, wie Sie Azure-VMs von einer Region in eine andere verschieben. Falls Sie die Verfügbarkeit Ihrer Infrastruktur durch das Verschieben von VMs in Verfügbarkeitszonen verbessern möchten, finden Sie in diesem Tutorial weitere Informationen.
 
 ## <a name="verify-prerequisites"></a>Überprüfen der Voraussetzungen
 
-- Stellen Sie sicher, dass Sie in der Azure-Region, von der Sie migrieren möchten, über virtuelle Azure-Computer verfügen.
+- Stellen Sie sicher, dass in der Azure-Quellregion, aus der Sie VMs verschieben möchten, Azure-VMs vorhanden sind.
 - Überprüfen Sie, ob die von Ihnen ausgewählte [Kombination von Quell- und Zielregion unterstützt wird](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support), und treffen Sie eine fundierte Entscheidung bezüglich der Zielregion.
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](azure-to-azure-architecture.md) verstehen.
 - Lesen Sie die [Einschränkungen und Anforderungen der Unterstützung](azure-to-azure-support-matrix.md).
-- Überprüfen der Kontoberechtigungen: Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind Sie der Administrator dieses Abonnements. Wenn Sie nicht der Abonnementadministrator sind, wenden Sie sich an den Administrator, damit dieser die erforderlichen Berechtigungen zuweist. Um die Replikation für eine VM zu aktivieren und Daten mithilfe von Azure Site Recovery zu kopieren, benötigen Sie Folgendes:
+- Überprüfen der Kontoberechtigungen: Wenn Sie gerade ein kostenloses Azure-Konto erstellt haben, sind Sie der Administrator dieses Abonnements. Wenn Sie nicht der Abonnementadministrator sind, wenden Sie sich an den Administrator, damit dieser die erforderlichen Berechtigungen zuweist. Um die Replikation für eine VM zu aktivieren und Daten schließlich mithilfe von Azure Site Recovery in die Zielregion zu kopieren, benötigen Sie Folgendes:
 
     1. Berechtigungen zum Erstellen einer VM in Azure-Ressourcen. Die integrierte Rolle „Mitwirkender für virtuelle Computer“ verfügt über diese Berechtigungen, zu den die folgenden gehören:
         - Berechtigung zum Erstellen einer VM in der ausgewählten Ressourcengruppe
@@ -56,18 +56,18 @@ In diesem Tutorial erfahren Sie, wie Sie Azure-VMs mithilfe von Azure Site Recov
     - Befolgen Sie bei Linux-VMs die Anleitung Ihres Linux-Händlers, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatssperrliste auf der VM abzurufen.
 2. Stellen Sie sicher, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für virtuelle Computer zu steuern, die Sie migrieren möchten.
 3. Wenn die VM, die Sie verschieben möchten, keinen Zugriff auf das Internet hat und einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, überprüfen Sie die [hier](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity) aufgeführten Anforderungen.
-4. Identifizieren Sie das Quellnetzwerklayout und alle Ressourcen, die Sie derzeit verwenden (einschließlich, aber nicht beschränkt auf Lastenausgleichsmodule, Netzwerksicherheitsgruppen, öffentliche IP-Adressen usw.).
+4. Identifizieren Sie das Quellnetzwerklayout und alle Ressourcen, die Sie derzeit verwenden (einschließlich, aber nicht beschränkt auf Lastenausgleichsmodule, Netzwerksicherheitsgruppen, öffentliche IP-Adressen usw.), und listen Sie sie zur Überprüfung auf.
 
 ## <a name="prepare-the-target-region"></a>Vorbereiten der Zielregion
 
-1. Vergewissern Sie sich, dass Ihr Azure-Abonnement das Erstellen von VMs in der für die Notfallwiederherstellung verwendeten Zielregion zulässt. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
+1. Vergewissern Sie sich, dass Ihr Azure-Abonnement das Erstellen von VMs in der für die Notfallwiederherstellung verwendeten Zielregion zulässt. Wenden Sie sich ggf. an den Support, um das erforderliche Kontingent zu aktivieren.
 
 2. Stellen Sie sicher, dass Ihr Abonnement über ausreichend Ressourcen verfügt, um VMs zu unterstützen, die so groß wie die Quell-VMs sind. Wenn Sie Site Recovery verwenden, um Daten in die Zielregion zu kopieren, wird dieselbe oder eine möglichst ähnliche Größe für die Ziel-VM ausgewählt.
 
 3. Achten Sie darauf, dass Sie für jede im Quellnetzwerklayout identifizierte Komponente eine Ressource erstellen. Dadurch wird sichergestellt, dass Ihre VMs nach dem Verschieben in die Zielregion über alle Funktionen und Features verfügen, die Sie in der Quellregion genutzt haben.
 
     > [!NOTE]
-    > Azure Site Recovery ermittelt und erstellt automatisch ein virtuelles Netzwerk, wenn Sie die Replikation für die Quell-VM aktivieren. Alternativ können Sie vorab ein Netzwerk erstellen und es der VM beim Aktivieren der Replikation zuweisen. Alle anderen Ressourcen (siehe unten) müssen jedoch manuell in der Zielregion erstellt werden.
+    > Azure Site Recovery ermittelt und erstellt automatisch ein virtuelles Netzwerk und ein Speicherkonto, wenn Sie die Replikation für die Quell-VM aktivieren. Alternativ können Sie diese Ressourcen vorab erstellen und der VM beim Aktivieren der Replikation zuweisen. Alle anderen Ressourcen (siehe unten) müssen jedoch manuell in der Zielregion erstellt werden.
 
      Informationen zum Erstellen der für Sie relevanten am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten.
 
@@ -102,7 +102,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 1. Gehen Sie im nächsten Schritt wie folgt vor: Wählen Sie den virtuellen Computer aus, den Sie migrieren möchten. Klicken Sie dann auf **OK**.
 3. Klicken Sie in den **Einstellungen** auf **Notfallwiederherstellung**.
 4. Wählen Sie unter **Configure disaster recovery** (Notfallwiederherstellung konfigurieren) > **Zielregion** die Zielregion aus, in die Sie replizieren möchten.
-5. Übernehmen Sie für dieses Tutorial die anderen Standardwerte.
+5. Sie können entweder die Standardzielressourcen oder die vorab erstellten Ressourcen verwenden.
 6. Klicken Sie auf **Replikation aktivieren**. Dadurch wird ein Auftrag gestartet, um die Replikation der VM zu aktivieren.
 
     ![Replikation aktivieren](media/tutorial-migrate-azure-to-azure/settings.png)
@@ -122,7 +122,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 3. Wählen Sie das virtuelle Azure-Zielnetzwerk aus, in das die Azure-VMs zum Testen der Konfiguration verschoben werden sollen. 
 
 > [!IMPORTANT]
-> Wir empfehlen, für das Testfailover ein separates Azure-VM-Netzwerk zu verwenden und nicht das beim Aktivieren der Replikation eingerichtete Produktionsnetzwerk in der Zielregion, in das Sie Ihre VMs letztlich verschieben möchten.
+> Wir empfehlen, für das Testfailover ein separates Azure-VM-Netzwerk zu verwenden und nicht das Produktionsnetzwerk in der Zielregion, in das Sie Ihre VMs letztlich verschieben möchten.
 
 4. Klicken Sie zum Testen der Verschiebung auf **OK**. Klicken Sie zum Überwachen des Fortschritts auf die VM, um die Eigenschaften aufzurufen. Alternativ können Sie auf den Auftrag **Testfailover** unter dem Tresornamen und dann auf **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** klicken.
 5. Nach Abschluss des Failovers wird der virtuelle Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt. Stellen Sie sicher, dass die VM ausgeführt wird, die passende Größe hat und mit dem entsprechenden Netzwerk verbunden ist.
@@ -141,14 +141,12 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 1. Navigieren Sie zur VM.  Klicken Sie auf **Replikation deaktivieren**.  Dadurch wird der Prozess zum Kopieren der Daten für die VM angehalten.  
 
 > [!IMPORTANT]
-> Führen Sie diesen Schritt unbedingt aus. Andernfalls werden Ihnen Gebühren für die Azure Site Recovery-Replikation in Rechnung gestellt.
+> Führen Sie diesen Schritt unbedingt aus. Andernfalls werden Ihnen nach der Verschiebung Gebühren für die Site Recovery-Replikation in Rechnung gestellt.
 
 Falls Sie nicht vorhaben, die Quellressourcen wiederzuverwenden, fahren Sie mit den nächsten Schritten fort.
 
 1. Löschen Sie alle relevanten Netzwerkressourcen in der Quellregion, die Sie in Schritt 4 [Vorbereiten der Quell-VMs](#prepare-the-source-vms) aufgelistet haben. 
 2. Löschen Sie das entsprechende Speicherkonto in der Quellregion.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
