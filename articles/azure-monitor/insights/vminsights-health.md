@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 58da86140b97c5292d390b6f91502b7f0622986a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476841"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563336"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschauversion)
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -30,11 +30,11 @@ Dieser Artikel soll Ihr Verständnis dafür schärfen, wie Sie erkannte Integrit
 Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](vminsights-onboard.md) (Aktivieren von Azure Monitor for VMs).
 
 >[!NOTE]
->Ab 15. Februar 2019 beginnen wir mit der Migration des aktuellen Integritätsmodells in der Integritätsfunktion „Azure Monitor für VMs“, das derzeit in der Integritätsdiagnose angezeigt wird, zu einer neuen Version des Integritätsmodells. Diese Aktualisierung verbessert die Leistung der Integritätsrollupverarbeitung und umfasst ein optimiertes Integritätsmodell, das in der Ansicht der Integritätsdiagnose angezeigt wird. 
+>Ab 11. Februar 2019 beginnen wir mit der Migration des aktuellen Integritätsmodells in der Integritätsfunktion „Azure Monitor für VMs“, das derzeit in der Integritätsdiagnose angezeigt wird, zu einer neuen Version des Integritätsmodells. Diese Aktualisierung verbessert die Leistung der Integritätsrollupverarbeitung und umfasst ein optimiertes Integritätsmodell, das in der Ansicht der Integritätsdiagnose angezeigt wird. 
 >
 >Mit dem neuen Integritätsmodell wird der Rollup von untergeordneten Integritätskriterien zu Integritätskriterien auf übergeordneter oder Entitätsebene schneller ausgeführt und so der Integritätszustand auf übergeordneter Ebene mit geringerer Latenz auf den gewünschten oder Zielzustand aktualisiert. Im Unterschied zur bisherigen, auf Registerkarten basierenden Methode zum Auswählen einer Kategorie in der Ansicht können Sie die Integritätskriterien unter den Kategorien **Leistung** und **Verfügbarkeit** filtern.
 >
->Weitere Informationen zu der neuen Benutzeroberfläche der Integritätsdiagnose finden Sie im Abschnitt zur Integritätsdiagnose[in diesem Artikel](#health-diagnostics). 
+>Weitere Informationen zur Benutzeroberfläche der Integritätsdiagnose finden Sie im Abschnitt zur Integritätsdiagnose[in diesem Artikel](#health-diagnostics). 
 >
 >Diese Aktualisierung bringt folgende Verbesserungen mit sich: 
 >
@@ -106,14 +106,16 @@ Um die Integrität einer Azure-VM anzuzeigen, wählen Sie im linken Bereich der 
 
 ![Azure Monitor for VMs-Integritätsübersicht einer ausgewählten Azure-VM](./media/vminsights-health/vminsights-directvm-health.png)
 
-Auf der Registerkarte **Integrität** zeigt die Tabelle unter dem Abschnitt **Integrität der Gast-VM** den aktuellen Integritätsstatus Ihrer VM und die Gesamtzahl der VM-Integritätswarnungen an, die von einer Komponente mit eingeschränkter Integrität ausgelöst wurden. Weitere Details finden Sie unter [Alerting and an alert management](#alerting-and-alert-management) (Warnungen und Warnungsverwaltung).  
+Auf der Registerkarte **Integrität** zeigt die Tabelle unter dem Abschnitt **Integrität der Gast-VM** den aktuellen Integritätsstatus Ihrer VM und die Gesamtzahl der VM-Integritätswarnungen an, die von einer Komponente mit eingeschränkter Integrität ausgelöst wurden. Weitere Informationen zur Benachrichtigungsumgebung finden Sie im Abschnitt [Warnungen](#alerting-and-alert-management).  
 
-Diese Integritätsstatus sind für eine VM definiert: 
+Die für eine VM definierten Integritätszustände sind in der folgenden Tabelle beschrieben: 
 
-* **Fehlerfrei** – es wurden keine Probleme für die VM erkannt, und sie funktioniert wie erforderlich.  
-* **Kritisch** – mindestens ein kritischer Fehler wurde entdeckt, der behandelt werden muss, um die normale Funktionsweise wiederherzustellen. 
-* **Warnung** – es wurde mindestens ein Problem entdeckt, das behandelt werden muss, weil sonst der Übergang zu einem kritischen Integritätszustand erfolgen kann.  
-* **Unbekannt** – wenn der Dienst keine Verbindung mit einer VM herstellen konnte, wechselt der Status zu „Unbekannt“.  
+|Symbol |Integritätsstatus |Bedeutung |
+|-----|-------------|------------|
+| |Healthy |Der Integritätszustand lautet „Fehlerfrei“, wenn er innerhalb des Bereichs der definierten Integritätsbedingungen liegt, für den virtuellen Computer keine Probleme erkannt werden und dieser wie erwartet ausgeführt wird. Im Fall eines übergeordneten Rollupmonitors wird ein Rollup der Integrität durchgeführt, die dann den Best-Case- oder Worst-Case-Status des untergeordneten Elements wiedergibt.|
+| |Kritisch |Der Integritätszustand lautet „Kritisch“, wenn er nicht innerhalb des Bereichs der definierten Integritätsbedingung liegt und ein oder mehrere kritische Probleme erkannt wurden, die behoben werden müssen, um die normale Funktionsweise wiederherzustellen. Im Fall eines übergeordneten Rollupmonitors wird ein Rollup der Integrität durchgeführt, die dann den Best-Case- oder Worst-Case-Status des untergeordneten Elements wiedergibt.|
+| |Warnung |Der Integritätszustand lautet „Warnung“, wenn er zwischen zwei Schwellenwerten für die definierte Integritätsbedingung liegt, wobei ein Wert den Zustand *Warnung* und der andere Wert den Zustand *kritisch* angibt (drei Schwellenwerte für den Integritätszustand können konfiguriert werden), oder wenn ein nicht kritisches Problem erkannt wird, das zu kritischen Problemen führen kann, wenn es nicht behoben wird. Im Fall eines übergeordneten Rollupmonitors erhält das übergeordnete Element den Zustand *Warnung*, wenn mindestens eines der untergeordneten Elemente den Zustand „Warnung“ aufweist. Wenn ein untergeordnetes Element vorhanden ist, das den Status *Kritisch* und zugleich ein weiteres untergeordnetes Element den Status *Warnung* aufweist, weist das übergeordnete Rollup den Integritätsstatus *Kritisch* aus.|
+| |Unknown |Der Integritätszustand lautet *Unbekannt*, wenn er aus verschiedenen Gründen nicht berechnet werden kann, etwa wegen fehlender Möglichkeit zum Erfassen von Daten, fehlender Dienstinitialisierung usw. Dieser Integritätszustand ist nicht konfigurierbar.| 
 
 Durch Auswählen von **Integritätsdiagnose anzeigen** wird eine Seite geöffnet, auf der alle Komponenten der VM mit den ihnen zugeordneten Integritätskriterien, Statusänderungen und sonstigen wichtigen Problemen dargestellt sind, die durch Überwachung der mit der VM zusammenhängenden Komponenten gefunden wurden. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics). 
 
@@ -140,13 +142,6 @@ Hier können Sie die kritischsten der erkannten Probleme anhand der Integritäts
 Die Liste **VM-Verteilung nach Betriebssystem** zeigt die VMs nach Windows-Edition oder Linux-Distribution zusammen mit den jeweiligen Versionen an. In jeder Betriebssystemkategorie sind die VMs basierend auf der Integrität weiter aufgeschlüsselt. 
 
 ![Distributionsperspektive von virtuellen Maschinen in VM Insights](./media/vminsights-health/vminsights-vmdistribution-by-os.png)
-
-Diese Integritätsstatus sind für eine VM definiert: 
-
-* **Fehlerfrei** – es wurden keine Probleme für die VM erkannt, und sie funktioniert wie erforderlich.  
-* **Kritisch** – mindestens ein kritischer Fehler wurde entdeckt, der behandelt werden muss, um die normale Funktionsweise wiederherzustellen. 
-* **Warnung** – es wurde mindestens ein Problem entdeckt, das behandelt werden muss, weil sonst der Übergang zu einem kritischen Integritätszustand erfolgen kann.  
-* **Unbekannt** – wenn der Dienst keine Verbindung mit einer VM herstellen konnte, wechselt der Status zu „Unbekannt“.  
 
 Sie können auf ein beliebiges Spaltenelement klicken – **VM-Anzahl**, **Kritisch**, **Warnung**, **Fehlerfrei** oder **Unbekannt** –, um auf der Seite **Virtual Machines** eine Liste der gefilterten Ergebnisse passend zur ausgewählten Spalte anzuzeigen. Wenn Sie beispielsweise alle VMs überprüfen möchten, die **Red Hat Enterprise Linux, Version 7.5** ausführen, klicken Sie auf den Wert von **VM-Anzahl** für dieses Betriebssystem. Dann wird die folgende Seite geöffnet, auf der die VMs, die diesem Filterkriterium entsprechen, mit ihrem aktuell bekannten Integritätszustand aufgelistet sind.  
 
@@ -191,16 +186,7 @@ In Integritätsdiagnosen sind die Integritätsinformationen nach den folgenden K
  
 Alle für eine bestimmte Komponente (z.B. logischer Datenträger oder CPU) definierten Integritätskriterien werden angezeigt. Zudem ist die Kategorie der Überwachung daneben in der Spalte **Integritätskriterien** zu sehen.  
 
-Integritätskriterien werden durch einen dieser vier Zustände definiert: *Kritisch*, *Warnung*, *Fehlerfrei* und *Unbekannt*. Die ersten drei sind konfigurierbar, d.h., Sie können die Schwellenwerte der Überwachung mit der [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update) ändern. *Unbekannt* kann nicht konfiguriert werden und ist entsprechend der Beschreibung in der folgenden Tabelle für bestimmte Szenarien reserviert.  
-
-Die nachfolgende Tabelle enthält Details zu den Integritätszuständen in der Integritätsdiagnose.
-
-|Symbol |Integritätsstatus |Bedeutung |
-|-----|-------------|------------|
-| |Healthy |Der Integritätszustand lautet „Fehlerfrei“, wenn er innerhalb des Bereichs der definierten Integritätsbedingungen liegt und für den virtuellen Computer keine Probleme erkannt werden, sodass dieser wie erwartet ausgeführt wird. Im Fall eines übergeordneten Rollupmonitors wird ein Rollup der Integrität durchgeführt, die dann den Best-Case- oder Worst-Case-Status des untergeordneten Elements wiedergibt.|
-| |Kritisch |Der Integritätszustand lautet „Kritisch“, wenn er nicht innerhalb des Bereichs der definierten Integritätsbedingung liegt und ein oder mehrere kritische Probleme erkannt wurden, die behoben werden müssen, um die normale Funktionsweise wiederherzustellen. Im Fall eines übergeordneten Rollupmonitors wird ein Rollup der Integrität durchgeführt, die dann den Best-Case- oder Worst-Case-Status des untergeordneten Elements wiedergibt.|
-| |Warnung |Der Integritätszustand lautet „Warnung“, wenn er zwischen zwei Schwellenwerten für die definierte Integritätsbedingung liegt, wobei ein Wert den Zustand *Warnung* und der andere Wert den Zustand *kritisch* angibt (drei benutzergesteuerte Zustände sind möglich), oder wenn ein nicht kritisches Problem erkannt wird, das zu kritischen Problemen führen kann, wenn es nicht behoben wird. Im Fall eines übergeordneten Rollupmonitors erhält das übergeordnete Element den Zustand *Warnung*, wenn mindestens eines der untergeordneten Elemente den Zustand „Warnung“ aufweist. Wenn ein untergeordnetes Element vorhanden ist, das den Status *Kritisch* und zugleich ein weiteres untergeordnetes Element den Status *Warnung* aufweist, weist das übergeordnete Rollup den Integritätsstatus *Kritisch* aus.|
-| |Unknown |Der Integritätszustand lautet *Unbekannt*, wenn er aus verschiedenen Gründen nicht berechnet werden kann, etwa wegen fehlender Möglichkeit zum Erfassen von Daten, fehlender Dienstinitialisierung usw. Dies ist kein benutzergesteuerter Zustand.| 
+Integritätskriterien werden durch einen dieser vier Zustände definiert: *Kritisch*, *Warnung*, *Fehlerfrei* und *Unbekannt*. Die ersten drei sind konfigurierbar, d.h., Sie können die Schwellenwerte der Überwachung mit der [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update) ändern. *Unbekannt* kann nicht konfiguriert werden und ist für bestimmte Szenarien reserviert.  
 
 Die Seite „Integritätsdiagnose“ weist drei Hauptabschnitte auf:
 
@@ -233,7 +219,7 @@ Für Integritätskriterien vom Typ **Einheit** kann die Konfiguration durch Klic
 Durch Verwendung des Beispiels **Mittlere Dauer pro Schreibvorgang** im Konfigurationsbereich für das ausgewählte Integritätskriterium kann der zugehörige Schwellenwert mit einem anderen numerischen Wert konfiguriert werden. Es handelt sich um eine Überwachung mit zwei Zuständen, d.h., es ist nur eine Änderung von „Fehlerfrei“ in „Warnung“ möglich. Andere Integritätskriterien können drei Zustände aufweisen; bei diesen können Sie den Wert für den Warnungsschwellenwert und den Schwellenwert für den kritischen Zustand konfigurieren.  
 
 >[!NOTE]
->Das Anwenden einer Konfigurationsänderung auf Integritätskriterien wirkt sich auf alle überwachten Instanzen aus.  Wenn Sie beispielsweise **Physischer Datenträger –1 D:** auswählen und den Schwellenwert **Mittlere Dauer pro Schreibvorgang** ändern, gilt die Änderung nicht nur für diese Instanz, sondern für alle auf dem virtuellen Computer erkannten und überwachten Instanzen von Datenträgern.
+>Das Anwenden einer Konfigurationsänderung auf Integritätskriterien wirkt sich auf alle überwachten Instanzen aus.  Wenn Sie beispielsweise **Datenträger –1 D:** auswählen und den Schwellenwert **Mittlere Dauer pro Schreibvorgang** ändern, gilt die Änderung nicht nur für diese Instanz, sondern für alle auf dem virtuellen Computer erkannten und überwachten Instanzen von Datenträgern.
 >
 
 ![Beispiel für das Konfigurieren eines Integritätskriteriums für einen Einheitenmonitor](./media/vminsights-health/health-diagnostics-criteria-config-01.png)
@@ -252,7 +238,7 @@ Die drei Spalten sind miteinander verknüpft. Wenn Sie eine erkannte Instanz im 
 
 ![Beispiel zum Auswählen einer überwachten Instanz mit Ergebnissen](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-Wenn Sie im Beispiel oben **Physischer Datenträger – 1 D:** auswählen, wird die Struktur der Integritätskriterien nach **Physischer Datenträger – 1 D:** gefiltert. In der Spalte **Zustandsänderung** wird die Zustandsänderung basierend auf der Verfügbarkeit von **Physischer Datenträger – 1 D:** angezeigt. 
+Wenn Sie im Beispiel oben **Datenträger – 1 D:** auswählen, wird die Struktur der Integritätskriterien nach **Datenträger – 1 D:** gefiltert. In der Spalte **Zustandsänderung** wird die Zustandsänderung basierend auf der Verfügbarkeit von **Datenträger – 1 D:** angezeigt. 
 
 Um den aktualisierten Integritätszustand anzuzeigen, können Sie die Seite „Integritätsdiagnose“ aktualisieren, indem Sie auf den Link **Aktualisieren** klicken.  Wenn basierend auf dem vordefinierten Abrufintervall eine Aktualisierung des Integritätsstatus des Integritätskriteriums erfolgt, können Sie mit dieser Aufgabe Wartezeiten vermeiden und den aktuellen Integritätsstatus anzeigen.  Der **Zustand der Integritätskriterien** ist ein Filter, über den Sie den Bereich der Ergebnisse basierend auf dem ausgewählten Integritätszustand – *Fehlerfrei*, *Warnung*, *Kritisch*, *Unbekannt* und *Alle* – festlegen können.  Die Zeitangabe **Letzte Aktualisierung** oben rechts stellt den Zeitpunkt der letzten Aktualisierung der Seite „Integritätsdiagnose“ dar.  
 

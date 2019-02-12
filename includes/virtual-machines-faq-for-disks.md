@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2018
+ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841417"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55648615"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -223,7 +223,7 @@ Ja. Derzeit ist Azure-zu-Azure-Schutz mit Azure Site Recovery für virtuelle Com
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, zu verwalteten Datenträgern migrieren?**
 
-JA
+Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks und Storage Service Encryption
 
@@ -260,7 +260,7 @@ Ja. Alle verwalteten Momentaufnahmen und Bilder, die nach dem 9. Juni 2017 erste
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, in verwaltete Datenträger konvertieren?**
 
-JA
+Ja
 
 **Wird eine exportierte VHD-Datei von einem verwalteten Datenträger oder eine Momentaufnahme auch verschlüsselt?**
 
@@ -347,7 +347,7 @@ Um für SSD Standard und HDD Standard mit großen Datenträgern (> 4 TB) einen D
 
 **In welchen Regionen werden Größen von mehr als 4 TiB für verwaltete Datenträger unterstützt?**
 
-Zum Zeitpunkt der Vorschau werden die Größen verwalteter Datenträger nur in den USA, Westen-Mitte, unterstützt.
+Zu diesem Zeitpunkt werden in der Preview die verwalteten Datenträgergrößen in „USA, Westen-Mitte“, „Europa, Norden“, „Europa, Westen“, „USA, Westen 2“, „USA, Osten 2“, „USA, Osten“ unterstützt.
 
 **Wird die Aktivierung der Hostzwischenspeicherung auf den neueren Datenträgergrößen unterstützt?**
 

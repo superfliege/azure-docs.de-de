@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: afbf2bc32aa737eb5f6dde41035b206d6e260252
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117076"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813760"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigation und Dashboards im Application Insights-Portal
 Nachdem Sie [Application Insights für Ihr Projekt eingerichtet haben](../../azure-monitor/app/app-insights-overview.md), werden Telemetriedaten zur Leistung und Nutzung Ihrer App in der Application Insights-Ressource Ihres Projekts im [Azure-Portal](https://portal.azure.com) angezeigt.
@@ -62,7 +62,7 @@ Das Diagramm wird automatisch mit einer Häufigkeit aktualisiert, die vom Zeitbe
 * Zeitbereich über 24 Stunden: (Zeitbereich) / 60.
 
 ### <a name="pin-any-query-in-analytics"></a>Anheften von beliebigen Abfragen in Analytics
-Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](../../azure-monitor/log-query/get-started-portal.md). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. 
+Sie können [Analysediagramme auch an ein freigegebenes Dashboard anheften](../../azure-monitor/log-query/get-started-portal.md). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. 
 
 Die Ergebnisse werden automatisch einmal pro Stunde neu berechnet. Klicken Sie auf das Aktualisierungssymbol im Diagramm, um die Neuberechnung sofort auszuführen. (Durch die Aktualisierung des Browserfensters erfolgt keine Neuberechnung.)
 

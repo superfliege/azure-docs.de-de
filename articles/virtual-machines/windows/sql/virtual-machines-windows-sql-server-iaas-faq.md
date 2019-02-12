@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358982"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767337"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -86,7 +86,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
 
-   Ja. Sie können problemlos und unabhängig vom ursprünglich bereitgestellten Image zwischen den beiden Lizenzierungsmodellen wechseln. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md).
+   Ja. Sie können problemlos zwischen den beiden Lizenzierungsmodellen wechseln, wenn Sie ursprünglich mit einem Katalogimage mit nutzungsbasierter Bezahlung begonnen haben. Allerdings können Sie nicht Ihre Lizenz in nutzungsbasierte Bezahlung umwanden, wenn Sie ursprünglich mit einem BYOL-Image begonnen haben. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für eine SQL Server-VM](virtual-machines-windows-sql-ahb.md).
 
 1. **Sollte ich zum Erstellen neuer SQL-VMs BYOL-Images oder den SQL-VM-Ressourcenanbieter verwenden?**
 
@@ -94,11 +94,11 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Sind für den Wechsel des Lizenzierungsmodells Ausfallzeiten für SQL Server erforderlich?**
 
-    Nein. Das [Ändern das Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. 
+    Nein. Das [Ändern das Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. Um jedoch Ihre SQL Server-VM bei dem SQL VM-Ressourcenanbieter zu registrieren, ist die [SQL IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) eine Voraussetzung, und durch die Installation der SQL IaaS-Erweiterung wird der SQL Server-Dienst neu gestartet. Somit sollte die Installation der SQL IaaS-Erweiterung, falls diese erforderlich ist, während eines Wartungsfensters erfolgen. 
 
 1. **Können CSP-Abonnements den Azure-Hybridvorteil aktivieren?**
 
-   Ja. Das [Ändern das Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md) ist für CSP-Abonnements verfügbar. 
+   Ja, der Azure-Hybridvorteil ist für CSP-Abonnements verfügbar. CSP-Kunden sollten zunächst ein Image mit nutzungsbasierter Bezahlung bereitstellen und dann [das Lizenzierungsmodell ändern](virtual-machines-windows-sql-ahb.md) in BYOL (Bring-Your-Own-License).  
 
 1. **Fallen für das Registrieren meines virtuellen Computers beim neuen SQL-VM-Ressourcenanbieter zusätzliche Kosten an?**
 
