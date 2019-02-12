@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/17/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f995c727f46957d663cb6a6a32ac1d4313c71e8f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458158"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697144"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit Python
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Derzeit ist ein Endpunkt für die Textübersetzung verfügbar, der als `base_url` festgelegt ist. `path` legt die `translate`-Route fest und gibt die gewünschte Version der API (Version 3) an.
+Der globale Endpunkt der Textübersetzung ist als die `base_url` festgelegt. `path` legt die `translate`-Route fest und gibt die gewünschte Version der API (Version 3) an.
 
 `params` wird zum Festlegen der Ausgabesprachen verwendet. In diesem Beispiel wird aus dem Englischen ins Italienische und Deutsche übersetzt: `it` und `de`.
 

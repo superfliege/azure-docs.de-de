@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 167dce168f9adfa59a96c09c62548c7c6e253b09
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 53e975719b911a27667afc8565bd86261f927068
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211405"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820979"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -239,7 +239,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
     [![Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-1. [Trainieren](#train) und [veröffentlichen](#publish) Sie die App erneut, um die Begriffsliste zu verwenden.
+1. Trainieren und veröffentlichen Sie die App erneut, um die Begriffsliste zu verwenden.
 
 1. Fragen Sie den Endpunkt erneut mit der gleichen Äußerung ab: `This is the lead welder paperwork.`
 

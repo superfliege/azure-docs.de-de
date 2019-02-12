@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f0e8bf922f142b795dd1a2ded4b3ec265c43481a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: bd9cb76557c65832de5d249cdccdc36101edf646
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249993"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821285"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz (öffentliche Vorschauversion)
 
@@ -50,7 +50,7 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
     **Region**: Wählen Sie eine Region in Ihrer Nähe aus, die Teil der Vorschau ist. In diesem Tutorial wird `westus2` verwendet. Ein Failover kann nur zwischen geografisch gekoppelten Azure-Regionen ausgeführt werden. Die mit „westus2“ geografisch gekoppelte Region ist „WestCentralUS“.
     
    > [!NOTE]
-   > Das manuelle Failover befindet sich derzeit in der öffentlichen Vorschauphase und ist in den folgenden Azure-Regionen *nicht* verfügbar: USA, Osten; USA, Westen; Europa, Norden; Europa, Westen; Brasilien, Süden und USA, Süden-Mitte.
+   > Das manuelle Failover ist derzeit nur in der öffentlichen Vorschauversion und *nicht* in den folgenden Azure-Regionen verfügbar: USA (Osten, Westen, Süden-Mitte), Europa (Norden, Westen) und Brasilien (Süden).
 
    **IoT Hub-Name**: Geben Sie einen Namen für Ihren IoT-Hub an. Der Hubname muss global eindeutig sein. 
 
@@ -112,7 +112,7 @@ Ein Failback wird genau wie ein manuelles Failover ausgeführt. Hier sind die Sc
 
    ![Screenshot der Anforderung für ein manuelles Failback](./media/tutorial-manual-failover/trigger-failback-01-regions.png)
 
-   Die Banner werden wie im Abschnitt [Ausführen eines Failovers](#perform-a-failover) angezeigt. Nach Abschluss des Failbacks wird wie ursprünglich festgelegt erneut `westus2` als primärer Standort und `WestCentralUS` als sekundärer Standort angezeigt.
+   Die Banner werden wie im Abschnitt „Ausführen eines Failovers“ angezeigt. Nach Abschluss des Failbacks wird wie ursprünglich festgelegt erneut `westus2` als primärer Standort und `WestCentralUS` als sekundärer Standort angezeigt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 

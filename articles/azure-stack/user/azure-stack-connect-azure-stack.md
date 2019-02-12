@@ -15,19 +15,19 @@ ms.topic: get-started-article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b7f9bda37d63956ea672528c28b81eaaac9891a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc4387dd56de96edd17fcd8e5672cfda96cf67b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243765"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816406"
 ---
 # <a name="connect-to-azure-stack"></a>Herstellen einer Verbindung mit Azure Stack
 
 Zum Verwalten von Ressourcen müssen Sie eine Verbindung mit dem Azure Stack Development Kit herstellen. Dieser Artikel enthält Informationen zu den Schritten, die zum Herstellen einer Verbindung mit dem Development Kit erforderlich sind. Sie können eine der folgenden Verbindungsoptionen verwenden:
 
-* [Remotedesktop](#connect-with-remote-desktop): Ermöglicht einem einzelnen gleichzeitigen Benutzer die schnelle Verbindungsherstellung über das Development Kit.
-* [Virtuelles privates Netzwerk (VPN)](#connect-with-vpn): Ermöglicht mehreren gleichzeitigen Benutzern die Verbindungsherstellung von Clients, die außerhalb der Azure Stack-Infrastruktur angeordnet sind (Konfiguration erforderlich).
+* Remotedesktop: Ermöglicht einem einzelnen gleichzeitigen Benutzer die schnelle Verbindungsherstellung über das Development Kit.
+* Virtuelles privates Netzwerk (VPN): Ermöglicht mehreren gleichzeitigen Benutzern die Verbindungsherstellung von Clients, die außerhalb der Azure Stack-Infrastruktur angeordnet sind (Konfiguration erforderlich).
 
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>Herstellen einer Verbindung mit Azure Stack per Remotedesktop
 Bei einer Remotedesktopverbindung kann ein einzelner gleichzeitiger Benutzer das Portal verwenden, um Ressourcen zu verwalten.

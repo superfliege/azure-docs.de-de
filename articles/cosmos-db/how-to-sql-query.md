@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5884295e93a14d74a125c27ea597f2311478042a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459025"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822407"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>SQL-Abfragebeispiele für Azure Cosmos DB
 
@@ -1365,29 +1365,29 @@ Jede mathematische Funktion führt eine Berechnung durch, basierend auf Eingabew
 
 | Verwendung | BESCHREIBUNG |
 |----------|--------|
-| [[ABS (num_expr)](#bk_abs) | Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück. |
-| [CEILING (num_expr)](#bk_ceiling) | Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist. |
-| [FLOOR (num_expr)](#bk_floor) | Gibt den größten ganzzahligen Wert zurück, der kleiner oder gleich dem angegebenen numerischen Ausdruck ist. |
-| [EXP (num_expr)](#bk_exp) | Gibt den Exponenten des angegebenen numerischen Ausdrucks zurück. |
+| [ABS (num_expr) | Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück. |
+| CEILING (num_expr) | Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist. |
+| FLOOR (num_expr) | Gibt den größten ganzzahligen Wert zurück, der kleiner oder gleich dem angegebenen numerischen Ausdruck ist. |
+| EXP (num_expr) | Gibt den Exponenten des angegebenen numerischen Ausdrucks zurück. |
 | [LOG (num_expr [,base])](#bk_log) | Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks oder den Logarithmus basierend auf der angegebenen Basis zurück. |
-| [LOG10 (num_expr)](#bk_log10) | Gibt den dekadischen Logarithmuswert des angegebenen numerischen Ausdrucks zurück. |
-| [ROUND (num_expr)](#bk_round) | Gibt einen numerischen Wert zurück, gerundet auf den nächsten ganzzahligen Wert. |
-| [TRUNC (num_expr)](#bk_trunc) | Gibt einen numerischen Wert zurück, gekürzt auf den nächsten ganzzahligen Wert. |
-| [SQRT (num_expr)](#bk_sqrt) | Gibt die Quadratwurzel des angegebenen numerischen Ausdrucks zurück. |
-| [SQUARE (num_expr)](#bk_square) | Gibt das Quadrat des angegebenen numerischen Ausdrucks zurück. |
+| LOG10 (num_expr) | Gibt den dekadischen Logarithmuswert des angegebenen numerischen Ausdrucks zurück. |
+| ROUND (num_expr) | Gibt einen numerischen Wert zurück, gerundet auf den nächsten ganzzahligen Wert. |
+| TRUNC (num_expr) | Gibt einen numerischen Wert zurück, gekürzt auf den nächsten ganzzahligen Wert. |
+| SQRT (num_expr) | Gibt die Quadratwurzel des angegebenen numerischen Ausdrucks zurück. |
+| SQUARE (num_expr) | Gibt das Quadrat des angegebenen numerischen Ausdrucks zurück. |
 | [POWER (num_expr, num_expr)](#bk_power) | Gibt die Potenz des angegebenen numerischen Ausdrucks über den angegebenen Wert zurück. |
-| [SIGN (num_expr)](#bk_sign) | Gibt den Vorzeichenwert (-1, 0, 1) des angegebenen numerischen Ausdrucks zurück. |
-| [ACOS (num_expr)](#bk_acos) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Kosinus der angegebene numerische Ausdruck ist. Wird auch als Arkuskosinus bezeichnet. |
-| [ASIN (num_expr)](#bk_asin) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Sinus der angegebene numerische Ausdruck ist. Diese Funktion wird auch als Arkussinus bezeichnet. |
-| [ATAN (num_expr)](#bk_atan) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Tangens der angegebene numerische Ausdruck ist. Wird auch als Arkustangens bezeichnet. |
-| [ATN2 (num_expr)](#bk_atn2) | Gibt den Winkel in „rad“ (Bogenmaß) zwischen der positiven X-Achse und dem Strahl vom Ursprung zum Punkt (y, x) zurück, wobei x und y die Werte der beiden angegebenen float-Ausdrücke sind. |
-| [COS (num_expr)](#bk_cos) | Gibt den trigonometrischen Kosinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück. |
-| [COT (num_expr)](#bk_cot) | Gibt den trigonometrischen Kotangens des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen numerischen Ausdruck zurück. |
-| [DEGREES (num_expr)](#bk_degrees) | Gibt den entsprechenden Winkel in Grad für einen in „rad“ (Bogenmaß) angegebenen Winkel zurück. |
-| [PI ()](#bk_pi) | Gibt den konstanten Wert von PI zurück. |
-| [RADIANS (num_expr)](#bk_radians) | Gibt das Bogenmaß zurück, wenn ein numerischer Ausdruck in Grad eingegeben wird. |
-| [SIN (num_expr)](#bk_sin) | Gibt den trigonometrischen Sinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück. |
-| [TAN (num_expr)](#bk_tan) | Gibt den Tangens des Eingabeausdrucks im angegebenen Ausdruck zurück. |
+| SIGN (num_expr) | Gibt den Vorzeichenwert (-1, 0, 1) des angegebenen numerischen Ausdrucks zurück. |
+| ACOS (num_expr) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Kosinus der angegebene numerische Ausdruck ist. Wird auch als Arkuskosinus bezeichnet. |
+| ASIN (num_expr) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Sinus der angegebene numerische Ausdruck ist. Diese Funktion wird auch als Arkussinus bezeichnet. |
+| ATAN (num_expr) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Tangens der angegebene numerische Ausdruck ist. Wird auch als Arkustangens bezeichnet. |
+| ATN2 (num_expr) | Gibt den Winkel in „rad“ (Bogenmaß) zwischen der positiven X-Achse und dem Strahl vom Ursprung zum Punkt (y, x) zurück, wobei x und y die Werte der beiden angegebenen float-Ausdrücke sind. |
+| COS (num_expr) | Gibt den trigonometrischen Kosinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück. |
+| COT (num_expr) | Gibt den trigonometrischen Kotangens des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen numerischen Ausdruck zurück. |
+| DEGREES (num_expr) | Gibt den entsprechenden Winkel in Grad für einen in „rad“ (Bogenmaß) angegebenen Winkel zurück. |
+| PI () | Gibt den konstanten Wert von PI zurück. |
+| RADIANS (num_expr) | Gibt das Bogenmaß zurück, wenn ein numerischer Ausdruck in Grad eingegeben wird. |
+| SIN (num_expr) | Gibt den trigonometrischen Sinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück. |
+| TAN (num_expr) | Gibt den Tangens des Eingabeausdrucks im angegebenen Ausdruck zurück. |
 
 Sie können nun beispielsweise Abfragen wie die folgende ausführen:
 

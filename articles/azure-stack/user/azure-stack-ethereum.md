@@ -5,19 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/02/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 11/02/2018
-ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/04/2019
+ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239229"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697472"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Bereitstellen eines Ethereum-Blockchainnetzwerks in Azure Stack
 
@@ -25,7 +25,7 @@ Mit der Ethereum-Projektmappenvorlage lässt sich ein Multimember-Blockchainnetz
 
 Mit einigen wenigen Benutzereingaben und einer Bereitstellung mit nur einem Klick über das Azure Stack-Mandantenportal kann jedes Member seinen Netzwerkfußabdruck bereitstellen. Der Netzwerkfußabdruck jedes Members umfasst eine Reihe von Transaktionsknoten mit Lastenausgleich, über die eine Anwendung oder ein Benutzer interaktiv Transaktionen übermitteln kann, sowie eine Reihe von Miningknoten zum Aufzeichnen von Transaktionen und ein virtuelles Netzwerkgerät. Über einen nachfolgenden Verbindungsschritt werden die virtuellen Netzwerkappliances verbunden, sodass ein vollständig konfiguriertes Multimember-Blockchainnetzwerk erstellt wird.
 
-Für die Einrichtung führen Sie folgende Schritte aus:
+Einrichtung:
 
 - Auswählen der Bereitstellungsarchitektur
 - Bereitstellen eines eigenständigen Netzwerks oder eines Netzwerks vom Typ „Konsortium-Leader“ oder „Konsortiumsmitglied“
@@ -157,7 +157,7 @@ Navigieren Sie zum Überprüfen der Bereitstellung des Members zu dessen Adminsi
 
 ![Zusammenfassung der Memberbereitstellung](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-Wie in der Abbildung gezeigt wird, lautet der Knotenstatus des Members **Wird nicht ausgeführt**. Dies ist darauf zurückzuführen, dass die Verbindung zwischen Leader und Member nicht hergestellt wurde. Die Verbindung zwischen Member und Leader ist bidirektional. Wenn Sie das Member bereitstellen, erstellt die Vorlage automatisch die Verbindung vom Member zum Leader. Zum Erstellen der Verbindung vom Leader zum Mitglied fahren Sie mit dem nächsten Schritt fort.
+Wie in der Abbildung gezeigt wird, lautet der Knotenstatus des Members **Wird nicht ausgeführt**. Dieser Status ist darauf zurückzuführen, dass die Verbindung zwischen Leader und Member nicht hergestellt wurde. Die Verbindung zwischen Member und Leader ist bidirektional. Wenn Sie das Member bereitstellen, erstellt die Vorlage automatisch die Verbindung vom Member zum Leader. Zum Erstellen der Verbindung vom Leader zum Mitglied fahren Sie mit dem nächsten Schritt fort.
 
 ### <a name="connect-member-and-leader"></a>Verbinden von Member und Leader
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d51052f4e04a1497ccf2e91427e3465bdc5bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5117d426ac9595dfe25828013c1bd8c7fa81f92c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476824"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812360"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -63,7 +63,7 @@ Um die Azure CLI mit Batch zu verwenden, müssen Sie sich anmelden und authentif
 Es gibt verschiedenen Möglichkeiten, sich bei Azure anzumelden. Diese werden unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli) ausführlich beschrieben:
 
 1. [Interaktiv anmelden](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Melden Sie sich interaktiv an, wenn Sie Azure CLI-Befehle selbst an der Befehlszeile ausführen.
-2. [Anmelden mit einem Dienstprinzipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
+2. [Anmelden mit einem Dienstprinzipal](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Melden Sie sich mit einem Dienstprinzipal an, wenn Sie Azure CLI-Befehle über ein Skript oder aus einer Anwendung heraus ausführen.
 
 Im Rahmen dieses Artikels veranschaulichen wir die interaktive Anmeldung bei Azure. Geben Sie [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) an der Befehlszeile ein:
 
@@ -76,7 +76,7 @@ Der Befehl `az login` gibt, wie hier gezeigt, ein Token zurück, das Sie zur Aut
 
 ![Anmelden an Azure](./media/batch-cli-get-started/az-login.png)
 
-Die im Abschnitt [Beispielskripts für die Shell](#sample-shell-scripts) aufgeführten Beispiele zeigen auch, wie Sie Ihre Azure CLI-Sitzung starten, indem Sie sich interaktiv bei Azure anmelden. Nachdem Sie sich angemeldet haben, können Sie Befehle aufrufen, um mit Batch Management-Ressourcen wie Batch-Konten, -Schlüsseln, -Anwendungspaketen und -Kontingenten zu arbeiten.  
+Die im Abschnitt „Beispielskripts für die Shell“ aufgeführten Beispiele zeigen auch, wie Sie Ihre Azure CLI-Sitzung starten, indem Sie sich interaktiv bei Azure anmelden. Nachdem Sie sich angemeldet haben, können Sie Befehle aufrufen, um mit Batch Management-Ressourcen wie Batch-Konten, -Schlüsseln, -Anwendungspaketen und -Kontingenten zu arbeiten.  
 
 ### <a name="log-in-to-your-batch-account"></a>Anmelden bei Ihrem Batch-Konto
 
@@ -110,7 +110,7 @@ Für die Authentifizierung bei Ihrem Batch-Konto stehen Ihnen zwei Optionen zur 
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-Die im Abschnitt [Beispielskripts für die Shell](#sample-shell-scripts) aufgeführten Beispiele zeigen, wie Sie sowohl Azure AD als auch einen gemeinsam verwendeten Schlüssel verwenden, um sich über die Azure CLI bei Ihrem Batch-Konto anzumelden.
+Die im Abschnitt „Beispielskripts für die Shell“ aufgeführten Beispiele zeigen, wie Sie sowohl Azure AD als auch einen gemeinsam verwendeten Schlüssel verwenden, um sich über die Azure CLI bei Ihrem Batch-Konto anzumelden.
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Verwenden der Befehle der Azure Batch-CLI-Erweiterung
 
@@ -168,7 +168,7 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 
 * Verwenden Sie `-h` , um **Hilfetext** für Befehle der Befehlszeilenschnittstelle anzuzeigen.
 * Verwenden Sie `-v` und `-vv`, um eine **ausführliche** Befehlsausgabe anzuzeigen. Wenn das `-vv`-Flag enthalten ist, zeigt die Azure CLI die tatsächlichen REST-Anforderungen und -Antworten. Mit diesen praktischen Switches können Sie die vollständige Fehlerausgabe anzeigen.
-* Mit der Option `--json` können Sie die **Befehlsausgabe als JSON** anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter [JSON-Dateien](#json-files)).
+* Mit der Option `--json` können Sie die **Befehlsausgabe als JSON** anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter „JSON-Dateien“).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>Nächste Schritte

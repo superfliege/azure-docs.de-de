@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: priyamo
-ms.openlocfilehash: a79a776e088461b702a3fe5217eceb6c7234919c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d107e8283e68043a49c080fd1b021b29b917c6f7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186637"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812457"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Cosmos DB 
 
@@ -87,7 +87,7 @@ Die Antwort enthält die Details der systemseitig zugewiesenen verwalteten Ident
 
 Cosmos DB unterstützt die Azure AD-Authentifizierung nicht nativ. Sie können eine verwaltete Identität aber zum Abrufen eines Cosmos DB-Zugriffsschlüssels aus Resource Manager verwenden und mithilfe des Schlüssels auf Cosmos DB zugreifen. In diesem Schritt gewähren Sie der systemseitig zugewiesenen verwalteten Identität Zugriff auf die Schlüssel des Cosmos DB-Kontos.
 
-Um der systemseitig zugewiesenen verwalteten Identität über die Azure-Befehlszeilenschnittstelle Zugriff auf das Cosmos DB-Konto in Azure Resource Manager zu gewähren, aktualisieren Sie die Werte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<COSMOS DB ACCOUNT NAME>` für Ihre Umgebung. Ersetzen Sie `<MI PRINCIPALID>` durch die Eigenschaft `principalId`, die nach Ausführung des Befehls `az resource show` unter [Abrufen der principalID für die verwaltete Identität des virtuellen Linux-Computers](#retrieve-the-principalID-of-the-linux-VM's-system-assigned-identity) zurückgegeben wird.  Cosmos DB unterstützt beim Verwenden von Zugriffsschlüsseln zwei Granularitätsebenen: Lese-/Schreibzugriff auf das Konto und schreibgeschützter Zugriff auf das Konto.  Weisen Sie die Rolle `DocumentDB Account Contributor` zu, wenn Sie die Schlüssel für Lese-/Schreibzugriff für das Konto abrufen möchten, oder weisen Sie die Rolle `Cosmos DB Account Reader Role` zu, wenn Sie die Schlüssel für schreibgeschützten Zugriff auf das Konto abrufen möchten:
+Um der systemseitig zugewiesenen verwalteten Identität über die Azure-Befehlszeilenschnittstelle Zugriff auf das Cosmos DB-Konto in Azure Resource Manager zu gewähren, aktualisieren Sie die Werte für `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` und `<COSMOS DB ACCOUNT NAME>` für Ihre Umgebung. Ersetzen Sie `<MI PRINCIPALID>` durch die Eigenschaft `principalId`, die nach Ausführung des Befehls `az resource show` unter „Abrufen der principalID für die verwaltete Identität des virtuellen Linux-Computers“ zurückgegeben wird.  Cosmos DB unterstützt beim Verwenden von Zugriffsschlüsseln zwei Granularitätsebenen: Lese-/Schreibzugriff auf das Konto und schreibgeschützter Zugriff auf das Konto.  Weisen Sie die Rolle `DocumentDB Account Contributor` zu, wenn Sie die Schlüssel für Lese-/Schreibzugriff für das Konto abrufen möchten, oder weisen Sie die Rolle `Cosmos DB Account Reader Role` zu, wenn Sie die Schlüssel für schreibgeschützten Zugriff auf das Konto abrufen möchten:
 
 ```azurecli-interactive
 az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"

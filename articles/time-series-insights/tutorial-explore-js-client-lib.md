@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540373"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812071"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Tutorial: Erkunden der Azure Time Series Insights-JavaScript-Clientbibliothek
 
@@ -101,7 +101,7 @@ Die TSI-Clientbibliothek **tsclient.js** stellt eine Abstraktion für zwei wicht
 
 Die folgenden Konzepte sind universell und gelten ganz allgemein für die TSI-Clientbibliotheks-APIs.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Wie bereits erwähnt, handelt es sich bei diesem Beispiel um eine Single-Page-Anwendung (SPA), die zur Benutzerauthentifizierung die OAuth 2.0-Unterstützung in der ADAL verwendet. In diesem Abschnitt des Skripts finden sich einige interessante Punkte:
 
@@ -147,7 +147,7 @@ Das Auffüllen und Rendern von Diagrammsteuerelementen folgt einem allgemeinen M
    | `splitByObject`   | Die Zeichenfolgeneigenschaft, nach der die Aufteilung erfolgen soll (optional – darf nicht NULL sein). | `{property: 'Station', type: 'String'}` |
    | `color`         | Die Farbe der Objekte, die Sie rendern möchten. | `'pink'` |
    | `alias`           | Ein Anzeigename für den Aggregatausdruck. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Ein Array aus Aktionen, die an die Zeitreihenobjekte in einer Visualisierung gebunden werden sollen (optional). | Weitere Informationen finden Sie unter [„Popupkontextmenüs“ im Abschnitt „Erweiterte Funktionen“](#popup-context-menus). |
+   | `contextMenuActions` | Ein Array aus Aktionen, die an die Zeitreihenobjekte in einer Visualisierung gebunden werden sollen (optional). | Weitere Informationen finden Sie unter „Popupkontextmenüs“ im Abschnitt „Erweiterte Funktionen“. |
 
 3. Rufen Sie mithilfe von `TsiClient.Server`-APIs eine TSI-Abfrage auf, um die Aggregatdaten anzufordern:
 
@@ -260,7 +260,7 @@ Im Screenshot sind die Diagramme mit ihren jeweiligen Popupkontextmenüs dargest
 
 Pinsel werden zum Angeben eines Zeitbereichs verwendet, um Aktionen wie das Zoomen und Untersuchen zu definieren.
 
-Der Code, der zum Veranschaulichen von Pinseln verwendet wird, wurde im vorherigen Beispiel „Line Chart with Context Menu to Create Pie/Bar Chart“ gezeigt, in dem [Popupkontextmenüs](#popup-context-menus-section) beschrieben wurden.
+Der Code, der zum Veranschaulichen von Pinseln verwendet wird, wurde im vorherigen Beispiel „Line Chart with Context Menu to Create Pie/Bar Chart“ gezeigt, in dem Popupkontextmenüs beschrieben wurden.
 
 1. Pinselaktionen ähneln einem Kontextmenü darin, dass sie eine Reihe von benutzerdefinierten Aktionen für den Pinsel definieren. Jede Aktion enthält ein Array mit einem oder mehreren Elementen. Mit jedem Element wird ein einzelnes Kontextmenüelement definiert:
    - `name`: Der Text, der für das Menüelement verwendet wird: "Parameter an der Konsole ausgeben".

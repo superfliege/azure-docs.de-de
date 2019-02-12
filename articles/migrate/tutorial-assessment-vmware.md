@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie lokale virtuelle VMware-Com
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 58a4f60a5ef01f8f2757aeb04c2dd7165d68179a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298720"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730763"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -78,7 +78,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     > [!NOTE]
     > Die Appliance zur einmaligen Ermittlung ist inzwischen veraltet, da diese Methode bei der Verfügbarkeit der Leistungsdatenpunkte von den Statistikeinstellungen von vCenter Server abhängig war und durchschnittliche Leistungsindikatoren erfasst hat, was zu unterdimensionierten virtuellen Computern für die Migration zu Azure führte.
 
-    **Sofortige Ergebnisse:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um sofortige Ergebnisse zu erzielen. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
+    **Schnellbewertungen:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um Schnellbewertungen zu erhalten. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
 
     Die Appliance erfasst nur Leistungsdaten kontinuierlich. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (also hinzugefügte virtuelle Computer, Löschvorgänge, hinzugefügte Datenträger und Ähnliches). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
 
@@ -185,7 +185,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
     - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert. [Hier](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) finden Sie weitere Informationen zu den Anforderungen für Internetkonnektivität und die [Liste der URLs](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls), auf die der Collector zugreift.
 
       > [!NOTE]
-      > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt. Bei Verwendung eines abfangenden Proxys tritt bei der Internetverbindung unter Umständen zunächst ein Fehler auf, wenn Sie das Proxyzertifikat nicht importiert haben. Wie Sie dieses Problem beheben, indem Sie das Proxyzertifikat als vertrauenswürdiges Zertifikat auf dem virtuellen Collectorcomputer importieren, erfahren Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy).
+      > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt. Bei Verwendung eines abfangenden Proxys tritt bei der Internetverbindung unter Umständen zunächst ein Fehler auf, wenn Sie das Proxyzertifikat nicht importiert haben. Wie Sie dieses Problem beheben, indem Sie das Proxyzertifikat als vertrauenswürdiges Zertifikat auf dem virtuellen Collectorcomputer importieren, erfahren Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
     - Der Collector überprüft, ob der Collector-Dienst ausgeführt wird. Der Dienst wird standardmäßig auf dem virtuellen Collectorcomputer installiert.
     - Laden Sie die VMware PowerCLI herunter, und installieren Sie sie.
@@ -196,7 +196,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
     - Wählen Sie unter **Sammlungsbereich** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1500 VMs umfassen. [Erfahren Sie mehr](how-to-scale-assessment.md) über die Möglichkeiten zum Erkennen einer größeren Umgebung.
 
 7. Geben Sie unter **Migrationsprojekt angeben** die ID und den Schlüssel für das Azure Migrate-Projekt an, die sie im Portal kopiert haben. Wenn Sie diese Angaben nicht kopiert haben, öffnen Sie das Azure-Portal über den virtuellen Collectorcomputer. Klicken Sie auf der Seite **Übersicht** des Projekts auf **Computer ermitteln**, und kopieren Sie die Werte.  
-8. Überwachen Sie in **Sammlungsfortschritt anzeigen** den Ermittlungsstatus. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) über die vom Azure Migrate-Collector gesammelten Daten.
+8. Überwachen Sie in **Sammlungsfortschritt anzeigen** den Ermittlungsstatus. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/concepts-collector) über die vom Azure Migrate-Collector gesammelten Daten.
 
 > [!NOTE]
 > Der Collector unterstützt nur „Englisch (USA)“ als Sprache des Betriebssystems und die Sprache der Collectorschnittstelle.

@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409575"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821806"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Beispiele für die Integration von Azure Service Bus in Azure Event Grid
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure-Funktion und eine Logik-App einrichten, die jeweils basierend auf dem Empfang eines Ereignisses von Azure Event Grid Nachrichten erhalten. Hierbei gehen Sie wie folgt vor:
  
-* Erstellen Sie eine einfache [Azure-Testfunktion](#test-function-setup) zum Debuggen und Anzeigen des ursprünglichen Ereignisflusses aus Event Grid. Führen Sie diesen Schritt unabhängig davon aus, ob Sie die anderen Schritte ausführen.
-* Erstellen Sie eine [Azure-Funktion zum Empfangen und Verarbeiten von Azure Service Bus-Nachrichten](#receive-messages-using-azure-function) basierend auf Event Grid-Ereignissen.
-* Nutzen Sie das [Logic Apps-Feature von Azure App Service](#receive-messages-using-azure-logic-app).
+* Erstellen Sie eine einfache Azure-Testfunktion zum Debuggen und Anzeigen des ursprünglichen Ereignisflusses aus Event Grid. Führen Sie diesen Schritt unabhängig davon aus, ob Sie die anderen Schritte ausführen.
+* Erstellen Sie eine Azure-Funktion zum Empfangen und Verarbeiten von Azure Service Bus-Nachrichten basierend auf Event Grid-Ereignissen.
+* Nutzen Sie das Logic Apps-Feature von Azure App Service.
 
 Im von Ihnen erstellten Beispiel wird vorausgesetzt, dass das Service Bus-Thema über zwei Abonnements verfügt. Außerdem wird im Beispiel davon ausgegangen, dass das Event Grid-Abonnement erstellt wurde, um nur für ein Service Bus-Abonnement Ereignisse zu senden. 
 

@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 022dd937ae0557ca848a329039703f3b94ad0885
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b5254b45fcd71901876d9e77d1f29c0a0d40ce3f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245353"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813873"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Erstellen von VM-Datenträgerspeicher in Azure Stack
 
@@ -50,7 +50,7 @@ In der folgenden Tabelle ist zusammengefasst, wie Sie Datenträger über das Por
 
 | Methode | Optionen
 |-|-|
-|[Benutzerportal](#use-the-portal-to-add-additional-disks-to-a-vm)|- Fügen Sie einer vorhandenen VM neue Datenträger für Daten hinzu. Von Azure Stack werden neue Datenträger erstellt. </br> </br>- Fügen Sie eine vorhandene Datenträgerdatei (.vhd) einem vorab erstellten virtuellen Computer hinzu. Zu diesem Zweck müssen Sie die VHD vorbereiten und die Datei dann in Azure Stack hochladen. |
+|Benutzerportal|- Fügen Sie einer vorhandenen VM neue Datenträger für Daten hinzu. Von Azure Stack werden neue Datenträger erstellt. </br> </br>- Fügen Sie eine vorhandene Datenträgerdatei (.vhd) einem vorab erstellten virtuellen Computer hinzu. Zu diesem Zweck müssen Sie die VHD vorbereiten und die Datei dann in Azure Stack hochladen. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - Erstellen Sie einen neuen virtuellen Computer mit einem Betriebssystem-Datenträger, und fügen Sie dem virtuellen Computer gleichzeitig einen oder mehrere Datenträger für Daten hinzu. |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Verwenden des Portals zum Hinzufügen von Datenträgern zu einer VM

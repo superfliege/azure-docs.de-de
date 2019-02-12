@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: mmontwil
-ms.openlocfilehash: 9dc219078377d8b8da5d1700fb2a93133649d924
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1840a451fc9354b32950283b335455d67ccbf43
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475772"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657245"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Erste Schritte in Azure Dev Spaces mit Java
 
@@ -226,4 +226,4 @@ Aktualisieren Sie die Web-App im Browser. Daraufhin sollte Ihre benutzerdefinier
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zur Teamentwicklung](team-development-java.md)
+> [Informationen zur Entwicklung mit mehreren Diensten](multi-service-java.md)

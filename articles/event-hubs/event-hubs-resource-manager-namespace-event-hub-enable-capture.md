@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/16/2018
+ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 1ec0945996f0232553c9c1e0469289235f506611
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3228783b3f827ddb0dce947c9c1894110bf41fb7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818769"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
@@ -317,6 +317,7 @@ Erstellt einen Namespace vom Typ **EventHub** mit einem einzelnen Event Hub und 
             "partitionCount": "[parameters('partitionCount')]",
             "captureDescription": {
               "enabled": "true",
+              "skipEmptyArchives": false,
               "encoding": "[parameters('captureEncodingFormat')]",
               "intervalInSeconds": "[parameters('captureTime')]",
               "sizeLimitInBytes": "[parameters('captureSize')]",
@@ -364,6 +365,7 @@ Erstellt einen Namespace vom Typ **EventHubs** mit einem einzelnen Event Hub und
                         "path": "[parameters('eventHubName')]",
                         "captureDescription": {
                             "enabled": "true",
+                            "skipEmptyArchives": false,
                             "encoding": "[parameters('archiveEncodingFormat')]",
                             "intervalInSeconds": "[parameters('captureTime')]",
                             "sizeLimitInBytes": "[parameters('captureSize')]",
@@ -383,6 +385,9 @@ Erstellt einen Namespace vom Typ **EventHubs** mit einem einzelnen Event Hub und
         }
     ]
 ```
+
+> [!NOTE]
+> Sie können die Ausgabe leerer Dateien, wenn während des Erfassungszeitfensters keine Ereignisse auftreten, mithilfe der Eigenschaft **skipEmptyArchives** aktivieren oder deaktivieren. 
 
 ## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 

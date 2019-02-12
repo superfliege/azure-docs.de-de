@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288712"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694005"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>IoT-Technologien und -Lösungen (Internet of Things, Internet der Dinge): PaaS und SaaS
 
@@ -58,7 +58,7 @@ Unternehmen mit weniger Gerätemodellen, besser vorhersehbaren Szenarien und ein
 
 ### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Vergleich von Azure IoT Solution Accelerators und Azure IoT Central
 
-Zum Implementieren einer typischen [IoT-Lösungsarchitektur](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture) bietet Azure IoT mehrere Optionen ([Azure IoT Solution Accelerators](/azure/iot-suite) und [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)), die jeweils für verschiedene Gruppen von Kundenanforderungen geeignet sind.
+Zum Implementieren einer typischen [IoT-Lösungsarchitektur](/azure/iot-fundamentals/iot-introduction) bietet Azure IoT mehrere Optionen ([Azure IoT Solution Accelerators](/azure/iot-suite) und [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)), die jeweils für verschiedene Gruppen von Kundenanforderungen geeignet sind.
 
 [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) ist die Azure-PaaS-Kernanwendung, die sowohl von Azure IoT Central als auch von Azure IoT Solution Accelerators genutzt wird. IoT Hub ermöglicht die zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einer Cloudlösung. Mit IoT Hub können Sie beispielsweise folgende Anforderungen der IoT-Implementierung erfüllen:
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: c3b8f4f8188a6a28cca8b77f169a00657b11dfc5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154810"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731528"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung
 
@@ -109,9 +109,11 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 
    Erfahren Sie mehr über das [Befehlszeilentool](https://www.npmjs.com/package/dps-keygen).
 
-1. Laden Sie das Tool „dps_cstr“ von [GitHub](https://github.com/Azure/dps-keygen/tree/master/bin) herunter, und entzippen Sie es (Windows).
+1. Laden Sie das Tool „dps_cstr“ von [GitHub](https://github.com/Azure/dps-keygen/archive/master.zip) herunter, und entzippen Sie es (Windows).
 
-    Achten Sie darauf, das passende Tool für Ihre Plattform auszuwählen. Unter Windows sollten nun beispielsweise die Datei „dps_cstr.exe“ und die DLL-Dateien in Ihrem Ordner verfügbar sein. 
+)
+
+    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Die Verbindungszeichenfolge für eine Geräteinstanz in Ihrer Anwendung wird auf der Grundlage von Geräteinformationen generiert, die von IoT Central bereitgestellt werden.
 

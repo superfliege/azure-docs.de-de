@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 245710d1ae3e7af4db5286a5db985fe35549ad3a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0646488c3dde4b0702d58bbd8905f4ae6bee1485
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098769"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821669"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -99,7 +99,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 - **Einstellungen des Gateways für virtuelle Netzwerke** 
     - **Name**: Geben Sie *TestVNet1GW* ein.
     - **Gatewaytyp**: Wählen Sie **VPN** aus.
-    - **VPN-Typ**: Wählen Sie **Routenbasiert** aus.
+    - **VPN-Typ:** Wählen Sie **Routenbasiert** aus.
     - **SKU**: Wählen Sie die gewünschte Gateway-SKU aus.
     - **Öffentliche IP-Adresse**: Geben Sie *TestVNet1GWIP* ein.
     - **Connection** 
@@ -125,7 +125,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 - **Einstellungen des Gateways für virtuelle Netzwerke** 
     - **Name**: Geben Sie *TestVNet4GW* ein.
     - **Gatewaytyp**: Wählen Sie **VPN** aus.
-    - **VPN-Typ**: Wählen Sie **Routenbasiert** aus.
+    - **VPN-Typ:** Wählen Sie **Routenbasiert** aus.
     - **SKU**: Wählen Sie die gewünschte Gateway-SKU aus.
     - **Öffentliche IP-Adresse**: Geben Sie *TestVNet4GWIP* ein.
     - **Connection** 
@@ -133,7 +133,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
        - **Gemeinsam verwendeter Schlüssel**: Geben Sie *abc123* ein. Sie können den gemeinsam verwendeten Schlüssel selbst erstellen. Wenn Sie die Verbindung zwischen den VNETs herstellen, müssen die Werte übereinstimmen.
 
 ## <a name="create-and-configure-testvnet1"></a>Erstellen und Konfigurieren von „TestVNet1“
-Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Einstellungen mit Ihrem Entwurf des VPN Gateways kompatibel sind. Achten Sie besonders auf Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei. Wenn Ihr VNET mit den richtigen Einstellungen konfiguriert wurde, können Sie mit den Schritten im Abschnitt [Angeben eines DNS-Servers](#dns) beginnen.
+Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Einstellungen mit Ihrem Entwurf des VPN Gateways kompatibel sind. Achten Sie besonders auf Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei. Wenn Ihr VNET mit den richtigen Einstellungen konfiguriert wurde, können Sie mit den Schritten im Abschnitt „Angeben eines DNS-Servers“ beginnen.
 
 ### <a name="to-create-a-virtual-network"></a>So erstellen Sie ein virtuelles Netzwerk
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]

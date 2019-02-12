@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458262"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691469"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von Python
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Derzeit ist ein Endpunkt für die Textübersetzung verfügbar, der als `base_url` festgelegt ist. `path` legt die `dictionary/lookup`-Route fest und gibt die gewünschte Version der API (Version 3) an.
+Der globale Endpunkt der Textübersetzung ist als die `base_url` festgelegt. `path` legt die `dictionary/lookup`-Route fest und gibt die gewünschte Version der API (Version 3) an.
 
 Die Parameter (`params`) werden zum Festlegen der Quelle und Ausgeben von Sprachen verwendet. In diesem Beispiel werden Englisch und Spanisch genutzt, also `en` und `es`.
 

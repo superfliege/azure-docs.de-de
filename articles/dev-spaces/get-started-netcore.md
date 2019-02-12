@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cecb11494926444249c8061f1ec93622e4d6c78
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467134"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700697"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Erste Schritte in Azure Dev Spaces mit .NET Core
 
@@ -99,13 +99,7 @@ VS Code bietet .NET Core- und Node.js-Entwicklern umfangreiche Features wie etwa
 In diesem Abschnitt erstellen Sie eine ASP.NET Core-Web-App und bereiten sie für die Ausführung in einem Container in Kubernetes vor.
 
 ### <a name="create-an-aspnet-core-web-app"></a>Erstellen einer ASP.NET Core-Web-App
-Wenn [.NET Core](https://www.microsoft.com/net) installiert ist, können Sie schnell eine ASP.NET Core-Web-App in einem Ordner namens `webfrontend` erstellen.
-    
-```cmd
-dotnet new mvc --name webfrontend
-```
-
-Oder **laden Sie Beispielcode von GitHub herunter**. Navigieren Sie dazu zu https://github.com/Azure/dev-spaces, und klicken Sie auf **Klonen oder herunterladen**, um das GitHub-Repository in Ihre lokale Umgebung herunterzuladen. Der Code für diese Anleitung befindet sich in `samples/dotnetcore/getting-started/webfrontend`.
+Klonen Sie die [Azure Dev Spaces-Beispielanwendung](https://github.com/Azure/dev-spaces), oder laden Sie sie herunter. In diesem Artikel wird Code im Verzeichnis *samples/dotnetcore/getting-started/webfrontend* verwendet.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Vorbereiten von Code für die Entwicklung mit Docker und Kubernetes
 Bisher verfügen Sie über eine einfache Web-App, die lokal ausgeführt werden kann. Jetzt werden Sie die App containerisieren, indem Sie Ressourcen erstellen, die den Container und die Bereitstellung der App für Kubernetes definieren. Diese Aufgabe kann ganz einfach mit Azure Dev Spaces ausgeführt werden: 
@@ -245,4 +239,4 @@ Aktualisieren Sie die Web-App im Browser, und wechseln Sie zur Seite „Info“.
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zur Teamentwicklung](team-development-netcore.md)
+> [Informationen zur Entwicklung mit mehreren Diensten](multi-service-netcore.md)

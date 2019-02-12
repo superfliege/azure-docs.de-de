@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1589ef94946a6396ee51b8fecfe2ed3e80db08e5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212223"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819772"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Tutorial: Artikelpersonalisierung für die kontextbezogene Entscheidungsfindung
 
@@ -44,7 +44,7 @@ Jeder Feed stellt eine Liste von Artikeln bereit. In RSS wird jede Liste durch e
 </channel></rss>
 ```
 
-Die Reihenfolge der Artikel ist von Bedeutung. Es wird die Standardrangfolge angegeben, also Ihre Vermutung, welche Reihenfolge die Artikel aufweisen sollten. Die Standardrangfolge wird dann für einen Leistungsvergleich auf dem [Dashboard](#performance-dashboard) verwendet.
+Die Reihenfolge der Artikel ist von Bedeutung. Es wird die Standardrangfolge angegeben, also Ihre Vermutung, welche Reihenfolge die Artikel aufweisen sollten. Die Standardrangfolge wird dann für einen Leistungsvergleich auf dem Dashboard verwendet.
 
 Weitere Informationen zum Feedformat finden Sie in der [API-Referenz](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 

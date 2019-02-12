@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: caeeaae4dca99a2522d767a5a4a18f0818a2fa7f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044109"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816091"
 ---
-# <a name="what-is-durable-functions"></a>Was ist Durable Functions?
+# <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
 *Durable Functions* ist eine Erweiterung von [Azure Functions](../functions-overview.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben können. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051310"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812343"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)
 
@@ -154,7 +154,7 @@ Für Richtlinien für Dienstendpunkte steht keine zentrale Protokollierung zur V
 ### <a name="troubleshooting-scenarios"></a>Problembehandlungsszenarien
 - Der Zugriff auf Speicherkonten, die in den Endpunktrichtlinien nicht aufgeführt sind, wird zugelassen.
   - Netzwerksicherheitsgruppen lassen möglicherweise den Zugriff auf das Internet oder auf Azure Storage-Konten in anderen Regionen zu.
-  - Netzwerksicherheitsgruppen sollten so konfiguriert werden, dass sämtlicher Internetdatenverkehr verweigert und nur Datenverkehr zu bestimmten Azure Storage-Regionen zugelassen wird. Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen](#network-security-groups).
+  - Netzwerksicherheitsgruppen sollten so konfiguriert werden, dass sämtlicher Internetdatenverkehr verweigert und nur Datenverkehr zu bestimmten Azure Storage-Regionen zugelassen wird. Weitere Informationen finden Sie unter „Netzwerksicherheitsgruppen“.
 - Der Zugriff wird für Konten verweigert, die in den Endpunktrichtlinien aufgeführt sind.
   - Netzwerksicherheitsgruppen oder Firewallfilter blockieren möglicherweise den Zugriff.
   - Wenn das Entfernen bzw. erneute Anwenden der Richtlinie zu Konnektivitätsverlust führt, gehen Sie folgendermaßen vor:

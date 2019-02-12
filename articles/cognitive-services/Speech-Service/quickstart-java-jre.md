@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 86a57704b20790628a89bce0f8cda4e0599fd103
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9185d8d236b2a3283cf5a542002adadd0ac74686
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220568"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820537"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für Java
 
@@ -41,6 +41,10 @@ Stellen Sie beim Ausführen von Ubuntu 16.04/18.04 sicher, dass diese Abhängigk
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
 ```
+
+Wenn Sie Windows (64-Bit) ausführen, stellen Sie sicher, dass Sie Microsoft Visual C++ Redistributable für Ihre Plattform installiert haben.
+* [Microsoft Visual C++ Redistributable für Visual Studio 2017 herunterladen](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
 
 ## <a name="create-and-configure-project"></a>Erstellen und Konfigurieren des Projekts
 

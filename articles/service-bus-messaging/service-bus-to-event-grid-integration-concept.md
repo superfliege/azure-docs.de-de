@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: aschhab
-ms.openlocfilehash: 41514ca5911544da8608e0c7ebad18b33c33b494
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 640c01b2c73509ac897218fdea3841d016767a49
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856909"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818260"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 
@@ -43,7 +43,7 @@ Navigieren Sie zu Ihrem Service Bus-Namespace, und wählen Sie **Zugriffssteueru
 Service Bus sendet derzeit Ereignisse für zwei Szenarien:
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
+* DeadletterMessagesAvailable
 
 Darüber hinaus verwendet Service Bus die Standardsicherheit und die [Authentifizierungsmechanismen](https://docs.microsoft.com/azure/event-grid/security-authentication) von Event Grid.
 
@@ -115,7 +115,7 @@ Wenn Sie beispielsweise nur Ereignisse aus einer bestimmten Warteschlange oder a
 
 Event Grid-Abonnements für Service Bus-Namespaces können auf drei Arten erstellt werden:
 
-* Gehen Sie im [Azure-Portal](#portal-instructions) wie folgt vor:
+* Im Azure-Portal
 * Über die [Azure-Befehlszeilenschnittstelle](#azure-cli-instructions)
 * In [PowerShell](#powershell-instructions)
 
@@ -168,7 +168,7 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
 ```
 
-Als Nächstes können Sie sich die anderen Setupoptionen ansehen oder [sich vergewissern, dass Ereignisse fließen](#test-that-events-are-flowing).
+Als Nächstes können Sie sich die anderen Setupoptionen ansehen oder sich vergewissern, dass Ereignisse fließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

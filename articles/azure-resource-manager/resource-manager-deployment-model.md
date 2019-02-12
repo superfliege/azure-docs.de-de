@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382795"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486808"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager und klassische Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
@@ -30,6 +30,8 @@ In diesem Artikel wird sowohl das Azure Resource Manager-Bereitstellungsmodell a
 Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung von Resource Manager für alle neuen Ressourcen. Darüber hinaus empfiehlt Microsoft nach Möglichkeit die erneute Bereitstellung vorhandener Ressourcen über den Resource Manager.
 
 Falls der Resource Manager neu für Sie ist, ist es ratsam, zuerst die Terminologiedefinitionen unter [Übersicht über Azure Resource Manager](resource-group-overview.md)durchzulesen.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>Verlauf der Bereitstellungsmodelle
 In Azure war ursprünglich nur das klassische Bereitstellungsmodell verfügbar. In diesem Modell war jede Ressource unabhängig von den anderen vorhanden. Zusammengehörige Ressourcen konnten nicht gruppiert werden. Stattdessen mussten Sie manuell nachverfolgen, aus welchen Ressourcen die Lösung oder Anwendung bestand, und daran denken, sie mit einem koordinierten Ansatz zu verwalten. Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das Portal oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
@@ -57,7 +59,7 @@ Für virtuelle Computer, Speicherkonten und virtuelle Netzwerke gilt: Wenn die R
 In einigen Fällen können Sie mithilfe eines Resource Manager-Befehls Informationen zu einer mit der klassischen Bereitstellung erstellten Ressource abrufen oder eine administrative Aufgabe ausführen, z.B. eine klassische Ressource in eine andere Ressourcengruppe verschieben. Dies sollte jedoch nicht zu der Annahme verleiten, dass der entsprechende Ressourcentyp Resource Manager-Vorgänge unterstützt. Nehmen Sie beispielsweise an, Sie verfügen über eine Ressourcengruppe, die einen mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computer umfasst. Bei Ausführung des folgenden Resource Manager-PowerShell-Befehls:
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 Der virtuelle Computer wird zurückgegeben:
@@ -72,10 +74,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Das Resource Manager-Cmdlet **Get-AzureRmVM** gibt aber nur per Resource Manager bereitgestellte virtuelle Computer zurück. Mit dem folgenden Befehl wird der über das klassische Bereitstellungsmodell erstellte virtuelle Computer nicht zurückgegeben.
+Das Resource Manager-Cmdlet **Get-AzVM** gibt aber nur per Resource Manager bereitgestellte virtuelle Computer zurück. Mit dem folgenden Befehl wird der über das klassische Bereitstellungsmodell erstellte virtuelle Computer nicht zurückgegeben.
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 Nur Ressourcen, die mit dem Ressourcen-Manager erstellt wurden, unterstützen Tags. Sie können keine Tags auf klassische Ressourcen anwenden.

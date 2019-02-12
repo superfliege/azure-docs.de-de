@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6bfc12c17b38543f0c6979b5f5eeada562483bfa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352813"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819347"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -26,7 +26,7 @@ Mit Microsoft Azure Media Services (AMS) können Sie Video- oder Audioinhalte au
 
 AMS wird in mehreren Datencentern weltweit betrieben. Diese Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Sie können die [Liste der Regionen und Standorte](https://azure.microsoft.com/regions/)überprüfen. 
 
-Dieses Thema enthält allgemeine Szenarien für die Übermittlung von Inhalten ([live](#live_scenarios) oder [bedarfsgesteuert](#vod_scenarios)). Außerdem finden Sie hier Details zur datencenterübergreifenden Verfügbarkeit von Medienfeatures und -diensten.
+Dieses Thema enthält allgemeine Szenarien für die Übermittlung von Inhalten ([live](#live_scenarios) oder bedarfsgesteuert). Außerdem finden Sie hier Details zur datencenterübergreifenden Verfügbarkeit von Medienfeatures und -diensten.
 
 ## <a name="overview"></a>Übersicht
 
@@ -183,7 +183,7 @@ Media Services-Kunden haben die Wahl zwischen einem **Standard**-Streamingendpun
 
 #### <a name="availability"></a>Verfügbarkeit
 
-Verfügbar in allen Datencentern außer „Deutschland“, „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „Indien, Mitte“. 
+Verfügbar in allen Datencentern außer: „Deutschland“, „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „Indien, Mitte“. 
 
 ### <a name="encoding-media-processors"></a>Medienprozessoren für die Codierung
 
@@ -222,7 +222,7 @@ Microsoft Azure Media Services ermöglicht die Sicherung Ihrer Medien ab dem Zei
 
 |Verschlüsselung|Status|Rechenzentren|
 |---|---|---| 
-|Speicher|Allgemein verfügbar|Alle|
+|Storage|Allgemein verfügbar|Alle|
 |AES-128-Schlüssel|Allgemein verfügbar|Alle|
 |FairPlay|Allgemein verfügbar|Alle|
 |PlayReady|Allgemein verfügbar|Alle|
@@ -240,7 +240,7 @@ In allen Datencentern verfügbar.
 
 ### <a name="reserved-unit-ru-type"></a>Art der reservierten Einheit (RU)
 
-Ein Media Services-Konto ist einem RU-Typ zugeordnet, der die Geschwindigkeit bestimmt, mit der Medienverarbeitungsaufgaben ausgeführt werden. Folgende RU-Typen stehen zur Auswahl: S1, S2 oder S3.
+Ein Media Services-Konto ist einem RU-Typ zugeordnet, der die Geschwindigkeit bestimmt, mit der Medienverarbeitungsaufgaben ausgeführt werden. Sie können zwischen den folgenden reservierten Einheitentypen wählen: S1, S2 oder S3.
 
 Weitere Informationen finden Sie im [Abschnitt zur Skalierung](#scaling).
 

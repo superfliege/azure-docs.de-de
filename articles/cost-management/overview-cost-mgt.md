@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997119"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768656"
 ---
 # <a name="what-is-azure-cost-management"></a>Was ist Azure-Kostenverwaltung?
 
-Die Kostenverwaltung ist der Prozess, bei dem Sie die Kosten Ihrer Geschäftstätigkeit effektiv planen und steuern. Kostenverwaltungsaufgaben werden im Allgemeinen durch die Finanz-, Management- und App-Teams ausgeführt. Azure Cost Management ermöglicht Organisationen mit Microsoft Enterprise Agreements (EA) das kostenbewusste Planen. Zudem können damit Kosten effektiv analysiert werden, und es können Maßnahmen zum Optimieren der Cloudausgaben ergriffen werden. Wenn Sie sich weiter über den Kostenverwaltungsansatz von Organisationen informieren möchten, sehen Sie den Artikel [Azure Cost Management – bewährte Methoden](cost-mgt-best-practices.md) ein.
+Die Kostenverwaltung ist der Prozess, bei dem Sie die Kosten Ihrer Geschäftstätigkeit effektiv planen und steuern. Kostenverwaltungsaufgaben werden im Allgemeinen durch die Finanz-, Management- und App-Teams ausgeführt. Azure Cost Management unterstützt Organisationen bei der Planung unter Berücksichtigung von Kosten. Zudem können damit Kosten effektiv analysiert werden, und es können Maßnahmen zum Optimieren der Cloudausgaben ergriffen werden. Wenn Sie sich weiter über den Kostenverwaltungsansatz von Organisationen informieren möchten, sehen Sie den Artikel [Azure Cost Management – bewährte Methoden](cost-mgt-best-practices.md) ein.
 
 Die Abrechnung steht zwar in enger Beziehung zur Kostenverwaltung, ist jedoch nicht identisch mit dieser. Bei der Abrechnung werden Kunden Waren oder Dienstleistungen in Rechnungen gestellt, zudem werden Geschäftsbeziehungen verwaltet.  Für Abrechnungsaufgaben sind in der Regel die Beschaffungs- und Finanzteams zuständig.
 
@@ -45,7 +45,7 @@ Wenn Sie Kostenverwaltungsdaten mithilfe externer Systeme abrufen und prüfen, k
 
 ## <a name="additional-azure-tools"></a>Zusätzliche Azure-Tools
 
-Azure bietet weitere Tools, die im Azure Cost Management-Funktionsumfang nicht enthalten sind. Sie können dennoch eine wichtige Rolle im Kostenverwaltungsprozess spielen. Weitere Informationen zu diesen Tools finden Sie unter den folgenden Links.
+Azure bietet weitere Tools, die im Azure Cost Management-Funktionsumfang nicht enthalten sind. Sie spielen dennoch eine wichtige Rolle im Kostenverwaltungsprozess. Weitere Informationen zu diesen Tools finden Sie unter den folgenden Links.
 
 - [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/): Mit diesem Tool können Sie Ihre im Voraus anfallenden Cloudkosten schätzen.
 - [Azure Migrate](../migrate/migrate-overview.md): Bewerten Sie die aktuelle Arbeitsauslastung Ihrer Rechenzentren, und stellen Sie fest, welche Anforderungen eine Azure-Austauschlösung erfüllen muss.

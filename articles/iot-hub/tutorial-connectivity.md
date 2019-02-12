@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685349"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745808"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutorial: Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub
 
@@ -75,7 +75,7 @@ Klicken Sie zum Abrufen der Verbindungszeichenfolge für **MyTestDevice** in der
 
 Führen Sie zum Simulieren des Sendens von Telemetriedaten an Ihren IoT Hub per **MyTestDevice** die Node.js-Anwendung für die Gerätesimulation aus, die Sie zuvor heruntergeladen haben.
 
-Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
+Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests**.
 
 Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken zu installieren und die Anwendung zur Simulation eines Geräts auszuführen. Verwenden Sie die Verbindungszeichenfolge des Geräts, die Sie beim Hinzufügen des Geräts im Portal notiert haben.
 

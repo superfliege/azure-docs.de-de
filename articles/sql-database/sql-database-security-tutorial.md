@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461201"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752516"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Tutorial: Sichern einer eigenständigen oder in einem Pool zusammengefassten Datenbank
 
@@ -45,7 +45,7 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Azure SQL-Server und -Datenbank
-  - Erstellen Sie sie über das [Azure-Portal](sql-database-get-started-portal.md), mithilfe der [Befehlszeilenschnittstelle](sql-database-cli-samples.md) oder mithilfe von [PowerShell](sql-database-powershell-samples.md).
+  - Erstellen Sie sie über das [Azure-Portal](sql-database-single-database-get-started.md), mithilfe der [Befehlszeilenschnittstelle](sql-database-cli-samples.md) oder mithilfe von [PowerShell](sql-database-powershell-samples.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -64,7 +64,7 @@ Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste 
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>Einrichten von Firewallregeln für SQL-Datenbankserver
 
-Firewallregeln auf Serverebene gelten für alle Datenbanken auf dem gleichen SQL-Datenbankserver.
+IP-Firewallregeln auf Serverebene gelten für alle Datenbanken auf dem gleichen SQL-Datenbankserver.
 
 So richten Sie eine Firewallregel auf Serverebene ein:
 
@@ -231,7 +231,7 @@ So kopieren Sie eine sichere Verbindungszeichenfolge:
 
 ## <a name="enable-security-features"></a>Aktivieren der Sicherheitsfeatures
 
-Azure SQL-Datenbank bietet Sicherheitsfeatures, die über das Azure-Portal zur Verfügung stehen. Diese Features sind sowohl für die Datenbank als auch für den Server verfügbar (mit Ausnahme der Datenmaskierung, die nur für die Datenbank zur Verfügung steht). Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure SQL-Datenbank](sql-advanced-threat-protection.md), [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md), [Dynamische Datenmaskierung für SQL-Datenbank](sql-database-dynamic-data-masking-get-started.md) und [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](transparent-data-encryption-azure-sql.md).
+Azure SQL-Datenbank bietet Sicherheitsfeatures, die über das Azure-Portal zur Verfügung stehen. Diese Features sind sowohl für die Datenbank als auch für den Server verfügbar (mit Ausnahme der Datenmaskierung, die nur für die Datenbank zur Verfügung steht). Weitere Informationen finden Sie unter [Advanced Threat Protection für Azure SQL-Datenbank](sql-database-advanced-data-security.md), [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md), [Dynamische Datenmaskierung für SQL-Datenbank](sql-database-dynamic-data-masking-get-started.md) und [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](transparent-data-encryption-azure-sql.md).
 
 ### <a name="advanced-data-security"></a>Advanced Data Security
 

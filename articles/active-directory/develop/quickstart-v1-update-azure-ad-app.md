@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093307"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819092"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Schnellstart: Aktualisieren einer Anwendung in Azure Active Directory
 
@@ -156,7 +156,7 @@ Wenn Sie eine Anwendung in Azure AD registrieren, möchten Sie ggf. erreichen, d
 Es ist wichtig, die Unterschiede zwischen einer Einzelinstanzanwendung und einer mehrinstanzenfähigen Anwendung zu verstehen:  
 
 - Eine Einzelinstanzanwendung ist für die Verwendung in einem einzelnen Unternehmen gedacht. Es handelt sich dabei zumeist um eine Branchenanwendung (Line-of-Business, LOB), die von einem Unternehmensentwickler geschrieben wurde. Auf eine Anwendung mit nur einem Mandanten kann nur von Benutzern mit Konten unter demselben Mandanten wie die Anwendungsregistrierung zugegriffen werden. Daher ist die Bereitstellung in nur einem Verzeichnis erforderlich.
-- Eine mehrinstanzenfähige Anwendung ist für die Verwendung in vielen Organisationen vorgesehen. Sie wird als SaaS-Webanwendung (Software-as-a-Service) bezeichnet, die in der Regel von einem unabhängigen Softwarehersteller (ISV, Independent Software Vendor) geschrieben wurde. Mehrinstanzenfähige Anwendungen müssen unter jedem Mandanten bereitgestellt werden, auf den Benutzer Zugriff benötigen. Für andere Mandanten als der Mandant mit der Anwendungsregistrierung ist die Zustimmung durch Benutzer oder Administratoren erforderlich, um sie zu registrieren. Beachten Sie, dass native Clientanwendungen standardmäßig mehrinstanzenfähig sind, da sie auf dem Gerät des Ressourcenbesitzers installiert sind. Weitere Informationen zum Zustimmungs-Framework finden Sie oben in der [Übersicht über das Zustimmungs-Framework](#overview-of-the-consent-framework).
+- Eine mehrinstanzenfähige Anwendung ist für die Verwendung in vielen Organisationen vorgesehen. Sie wird als SaaS-Webanwendung (Software-as-a-Service) bezeichnet, die in der Regel von einem unabhängigen Softwarehersteller (ISV, Independent Software Vendor) geschrieben wurde. Mehrinstanzenfähige Anwendungen müssen unter jedem Mandanten bereitgestellt werden, auf den Benutzer Zugriff benötigen. Für andere Mandanten als der Mandant mit der Anwendungsregistrierung ist die Zustimmung durch Benutzer oder Administratoren erforderlich, um sie zu registrieren. Beachten Sie, dass native Clientanwendungen standardmäßig mehrinstanzenfähig sind, da sie auf dem Gerät des Ressourcenbesitzers installiert sind. Weitere Informationen zum Zustimmungs-Framework finden Sie oben in der Übersicht über das Zustimmungs-Framework.
 
 Um eine Anwendung mehrinstanzenfähig zu machen, sind sowohl Änderungen der Anwendungsregistrierung als auch Änderungen der Webanwendung selbst erforderlich. Beides wird in den folgenden Abschnitten beschrieben.
 
@@ -184,7 +184,7 @@ Die Unterstützung für mehrinstanzenfähige Anwendungen ist stark vom Zustimmun
 Ihre Webanwendung kann auch folgende Optionen anbieten:
 
 - Die Möglichkeit „Mein Unternehmen registrieren“ für Administratoren. Dieser Prozess wird als „Zustimmung des Administrators“ bezeichnet und ermöglicht einem Administrator das Gewähren der Zustimmung im Namen *aller Benutzer* der Organisation. Nur ein Benutzer, der sich mit einem Konto authentifiziert, das zur globalen Administratorrolle gehört, kann die Zustimmung des Administrators erteilen. Andere Benutzer erhalten eine Fehlermeldung.
-- Eine Registrierungsbenutzeroberfläche für Benutzer. Es wird erwartet, dass für Benutzer die Schaltfläche „Registrieren“ bereitgestellt wird, mit der der Browser an den Azure AD OAuth 2.0-Endpunkt `/authorize` oder einen OpenID Connect-Endpunkt vom Typ `/userinfo` weitergeleitet wird. Diese Endpunkte ermöglichen es der Anwendung, Informationen zum neuen Benutzer durch Untersuchen des id_token-Objekts abzurufen. Nach der Registrierungsphase wird der Benutzer, ähnlich wie im Abschnitt [Übersicht über das Zustimmungs-Framework](#overview-of-the-consent-framework) gezeigt, zum Erteilen der Zustimmung aufgefordert.
+- Eine Registrierungsbenutzeroberfläche für Benutzer. Es wird erwartet, dass für Benutzer die Schaltfläche „Registrieren“ bereitgestellt wird, mit der der Browser an den Azure AD OAuth 2.0-Endpunkt `/authorize` oder einen OpenID Connect-Endpunkt vom Typ `/userinfo` weitergeleitet wird. Diese Endpunkte ermöglichen es der Anwendung, Informationen zum neuen Benutzer durch Untersuchen des id_token-Objekts abzurufen. Nach der Registrierungsphase wird der Benutzer, ähnlich wie im Abschnitt „Übersicht über das Zustimmungs-Framework“ gezeigt, zum Erteilen der Zustimmung aufgefordert.
 
 Weitere Informationen zu den Anwendungsänderungen, die zur Unterstützung von mehrinstanzenfähigen Benutzeroberflächen für Zugriff und Anmeldung/Registrierung erforderlich sind, finden Sie hier:
 

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
-ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 34f6a03fc091fb4d86739af9d56993943ce44956
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183406"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662107"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -102,6 +102,9 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Wie kann ich verwaltete Identitäten für Azure-Ressourcen verwenden?
 
 In den folgenden Tutorials erfahren Sie mehr darüber, wie Sie verwaltete Identitäten für den Zugriff auf verschiedene Azure-Ressourcen verwenden können.
+
+> [!NOTE]
+> Im Kurs [Implementing Managed Identities for Microsoft Azure Resources](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing) (Implementierung von verwalteten Identitäten für Microsoft Azure-Ressourcen) finden Sie weitere Informationen zu verwalteten Identitäten, einschließlich exemplarischer Vorgehensweise per Video zu mehreren unterstützten Szenarien.
 
 Erfahren Sie, wie Sie eine verwaltete Identität mit einer Windows-VM verwenden:
 

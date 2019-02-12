@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c06e60b5f7dce3038706e0b95ec598126526cc64
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f45f1831572387aa6997700432a7fe156d9b6a92
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099174"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495444"
 ---
 # <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js-App in Azure App Service für Linux
 
@@ -63,6 +63,10 @@ remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
 Unpacking objects: 100% (40/40), done.
 Checking connectivity... done.
 ```
+
+> [!NOTE]
+> Die Beispieldatei „index.js“ legt den Lauschport auf „process.env.PORT“ fest. Diese Umgebungsvariable wird von App Service zugewiesen.
+>
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 

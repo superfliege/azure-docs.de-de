@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 705d23a93b25c513d413f2115c47d52ff6ef2bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229212"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770281"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
 Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf einem virtuellen CentOS-Computer zu konfigurieren – zusammen mit Ansible und einer Reihe von Tools, die für die Arbeit mit Azure konfiguriert sind. Zu diesen Tools zählen:

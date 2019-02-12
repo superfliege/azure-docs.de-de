@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 953615a9c6b716db1db0c7bfb993f3d47aefd7a9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474801"
+ms.locfileid: "55507772"
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -130,13 +130,13 @@ Die Speicherclientbibliotheken enthalten Methoden, die Sie zum programmgesteuert
 
 Weitere Informationen zur clientseitigen Verschlüsselung finden Sie unter [Clientseitige Verschlüsselung mit .NET für Microsoft Azure Storage](storage-client-side-encryption.md).
 
-## <a name="replication"></a>Replikation
+## <a name="redundancy"></a>Redundanz
 
-Um die Dauerhaftigkeit Ihrer Daten zu gewährleisten, repliziert Azure Storage mehrere Kopien Ihrer Daten. Beim Einrichten Ihres Speicherkontos wählen Sie einen Replikationstyp aus. In den meisten Fällen kann diese Einstellung nach der Erstellung des Speicherkontos angepasst werden. 
+Um die Dauerhaftigkeit Ihrer Daten zu gewährleisten, repliziert Azure Storage mehrere Kopien Ihrer Daten. Beim Einrichten Ihres Speicherkontos wählen Sie eine Redundanzoption aus. 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Informationen zur Notfallwiederherstellung finden Sie unter [What to do if an Azure Storage outage occurs](storage-disaster-recovery-guidance.md) (Vorgehensweise beim Ausfall von Azure Storage).
+Weitere Informationen zur Notfallwiederherstellung finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](storage-disaster-recovery-guidance.md).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Übertragen von Daten in und aus Azure Storage
 

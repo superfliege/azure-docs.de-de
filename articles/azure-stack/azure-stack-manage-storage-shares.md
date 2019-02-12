@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 96145906d40e465d2427a8100b3ad9333eec3f29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249094"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819517"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack 
 
@@ -51,7 +51,7 @@ Da die Speicherdienstfreigaben ausschließlich von den Speicherdiensten genutzt 
 
 Freigaben auf Volumes enthalten Mandantendaten. Zu Mandantendaten zählen Seitenblobs, Blockblobs, Anfügeblobs, Tabellen, Warteschlangen, Datenbanken sowie dazugehörige Metadatenspeicher. Da die Speicherobjekte (Blobs usw.) jeweils in einer einzelnen Freigabe enthalten sind, darf die maximale Größe der jeweiligen Objekte die Größe einer Freigabe nicht übersteigen. Die maximale Größe neuer Objekte hängt von der Restkapazität ab, die in einer Freigabe zum Zeitpunkt der Objekterstellung in Form von nicht genutztem Speicherplatz zur Verfügung steht.
 
-Wenn der freie Speicherplatz einer Freigabe knapp wird und Aktionen zum [Freigeben von Speicherplatz](#reclaim-capacity) nicht erfolgreich oder verfügbar sind, kann der Azure Stack-Cloudbetreiber die Blobcontainer zwischen Freigaben [migrieren](#migrate-a-container-between).
+Wenn der freie Speicherplatz einer Freigabe knapp wird und Aktionen zum [Freigeben](#reclaim-capacity) von Speicherplatz nicht erfolgreich oder verfügbar sind, kann der Azure Stack-Cloudbetreiber die Blobcontainer zwischen Freigaben migrieren.
 
 - Weitere Informationen zu Containern und Blobs finden Sie im Artikel „Wichtige Features und Konzepte in Azure Stack“ unter [Blob Storage](azure-stack-key-features.md#blob-storage).
 - Informationen zur Verwendung von Blobspeicher in Azure Stack durch Mandantenbenutzer finden Sie unter [Azure Stack-Speicherdienste](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: b4d0ee26cb9f7283cac871c70737cd701fb74c91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754066"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818582"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -62,7 +62,7 @@ Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tas
   * [Startaufgabe](#start-task)
   * [Auftrags-Manager-Aufgabe](#job-manager-task)
   * [Tasks zur Auftragsvorbereitung und -freigabe](#job-preparation-and-release-tasks)
-  * [Task mit mehreren Instanzen](#multi-instance-tasks)
+  * Aufgabe mit mehreren Instanzen (MPI)
   * [Abhängigkeiten von Aufgaben](#task-dependencies)
 * [Anwendungspakete](#application-packages)
 
@@ -153,7 +153,7 @@ Ausführliche Informationen zu den Anforderungen und Schritten finden Sie unter 
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Containerunterstützung in VM-Pools
 
-Wenn Sie mithilfe der Batch-APIs einen VM-Konfigurationspool erstellen, können Sie den Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. Derzeit müssen Sie den Pool unter Verwendung eines Images erstellen, das Docker-Container unterstützt. Verwenden Sie das Image „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace, oder stellen Sie ein benutzerdefiniertes VM-Image mit Docker Community Edition oder Enterprise Edition und allen erforderlichen Treibern bereit. Die Pooleinstellungen müssen eine [Containerkonfiguration](/rest/api/batchservice/pool/add#definitions_containerconfiguration) enthalten, die bei der Poolerstellung Containerimages auf die virtuellen Computer kopiert. Für den Pool ausgeführte Aufgaben können dann auf die Containerimages und auf die Containerausführungsoptionen verweisen.
+Wenn Sie mithilfe der Batch-APIs einen VM-Konfigurationspool erstellen, können Sie den Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. Derzeit müssen Sie den Pool unter Verwendung eines Images erstellen, das Docker-Container unterstützt. Verwenden Sie das Image „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace, oder stellen Sie ein benutzerdefiniertes VM-Image mit Docker Community Edition oder Enterprise Edition und allen erforderlichen Treibern bereit. Die Pooleinstellungen müssen eine [Containerkonfiguration](/rest/api/batchservice/pool/add) enthalten, die bei der Poolerstellung Containerimages auf die virtuellen Computer kopiert. Für den Pool ausgeführte Aufgaben können dann auf die Containerimages und auf die Containerausführungsoptionen verweisen.
 
 Weitere Informationen finden Sie unter [Ausführen von Docker-Containeranwendungen in Azure Batch](batch-docker-container-workloads.md).
 
@@ -215,7 +215,7 @@ Sie können [Anwendungspakete](#application-packages) für die Bereitstellung au
 
 ### <a name="network-configuration"></a>Netzwerkkonfiguration
 
-Sie können das Subnetz eines [virtuellen Azure-Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md), in dem die Serverknoten des Pools erstellt werden sollen, festlegen. Weitere Informationen finden Sie im Abschnitt [Konfiguration von Poolnetzwerken](#pool-network-configuration).
+Sie können das Subnetz eines [virtuellen Azure-Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md), in dem die Serverknoten des Pools erstellt werden sollen, festlegen. Weitere Informationen finden Sie im Abschnitt „Konfiguration von Poolnetzwerken“.
 
 
 ## <a name="job"></a>Auftrag
@@ -271,7 +271,7 @@ Zusätzlich zu Tasks, die Sie zur Berechnung auf einem Knoten definieren, werden
 * [Startaufgabe](#start-task)
 * [Auftrags-Manager-Aufgabe](#job-manager-task)
 * [Tasks zur Auftragsvorbereitung und -freigabe](#job-preparation-and-release-tasks)
-* [Tasks mit mehreren Instanzen](#multi-instance-tasks)
+* Aufgaben mit mehreren Instanzen (MPI)
 * [Abhängigkeiten von Aufgaben](#task-dependencies)
 
 ### <a name="start-task"></a>Startaufgabe
@@ -357,7 +357,7 @@ Das Stammverzeichnis enthält die folgenden Verzeichnisstruktur:
 
 * **shared**: Dieses Verzeichnis bietet Lese-/Schreibzugriff auf *alle* Tasks, die auf einem Knoten ausgeführt werden. Mit jedem Task, der auf dem Knoten ausgeführt wird, können Dateien in diesem Verzeichnis erstellt, gelesen, aktualisiert und gelöscht werden. Tasks können auf dieses Verzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_SHARED_DIR` verweisen.
 * **startup**: Dieses Verzeichnis wird von einem Starttask als Arbeitsverzeichnis verwendet. Alle Dateien, die vom Starttask auf den Knoten heruntergeladen werden, werden hier gespeichert. Der Starttask kann Dateien unter diesem Verzeichnis erstellen, lesen, aktualisieren und löschen. Tasks können auf dieses Verzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_STARTUP_DIR` verweisen.
-* **Tasks**: Für jeden Task, der auf dem Knoten ausgeführt wird, wird ein Verzeichnis erstellt. Der Zugriff erfolgt durch einen Verweis auf die Umgebungsvariable `AZ_BATCH_TASK_DIR`.
+* **Tasks**: Für jeden Task, der auf dem Knoten ausgeführt wird, wird ein Verzeichnis erstellt. Der Zugriff erfolgt durch einen Verweis auf die Umgebungsvariable `AZ_BATCH_TASK_DIR` .
 
     Innerhalb jedes Taskverzeichnisses erstellt der Batch-Dienst ein Arbeitsverzeichnis (`wd`), dessen eindeutiger Pfad durch die `AZ_BATCH_TASK_WORKING_DIR`-Umgebungsvariable angegeben wird. Dieses Verzeichnis bietet Lese-/Schreibzugriff auf den Task. Die Aufgabe kann Dateien unter diesem Verzeichnis erstellen, lesen, aktualisieren und löschen. Dieses Verzeichnis wird auf der Grundlage der für den Vorgang angegebenen Einschränkung *RetentionTime* beibehalten.
 

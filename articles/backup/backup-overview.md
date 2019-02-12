@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7156042243b1ba28cea712dc3722600b9fc46c42
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 298c9fabca9d1994e0b952fdf8b48b70370c3ec2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360627"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490668"
 ---
 # <a name="what-is-azure-backup"></a>Was ist Azure Backup?
 
@@ -47,8 +47,8 @@ Der Azure Backup-Dienst und der Azure Site Recovery-Dienst tragen beide zur Stra
 
 Beide Dienste bieten unterschiedliche Funktionen, die sich gegenseitig ergänzen.
 
-- **Azure Site Recovery:** Site Recovery bietet eine Notfallwiederherstellungslösung für lokale Computer und virtuelle Azure-Computer. Hierzu werden Computer eines primären Standorts an einem sekundären Standort repliziert. Bei einem Notfall wird für die Computer ein Failover zum sekundären Standort ausgeführt, sodass Sie von dort aus auf sie zugreifen können. Wenn später alles wieder wie gewohnt funktioniert, wird für die Computer ein Failback ausgeführt, um sie am primären Standort wiederherzustellen.
-- **Azure Backup:** Der Azure Backup-Dienst sichert Daten von lokalen Computern und virtuellen Azure-Computern. Daten können präzise gesichert und wiederhergestellt werden. So können Sie unter anderem Dateien, Ordner und den Systemstatus des Computers sichern sowie App-fähige Datensicherungen erstellen. Azure Backup ermöglicht einen präziseren Umgang mit Daten als Site Recovery. Wenn also beispielsweise eine Präsentation auf Ihrem Laptop beschädigt wurde, können Sie sie mithilfe von Azure Backup wiederherstellen. Mit Site Recovery können Sie eine VM-Konfiguration und die Daten des virtuellen Computers schützen und deren Verfügbarkeit sicherstellen.  
+- **Azure Site Recovery**: Site Recovery bietet eine Notfallwiederherstellungslösung für lokale Computer und virtuelle Azure-Computer. Hierzu werden Computer eines primären Standorts an einem sekundären Standort repliziert. Bei einem Notfall wird für die Computer ein Failover zum sekundären Standort ausgeführt, sodass Sie von dort aus auf sie zugreifen können. Wenn später alles wieder wie gewohnt funktioniert, wird für die Computer ein Failback ausgeführt, um sie am primären Standort wiederherzustellen.
+- **Azure Backup**: Der Azure Backup-Dienst sichert Daten von lokalen Computern und virtuellen Azure-Computern. Daten können präzise gesichert und wiederhergestellt werden. So können Sie unter anderem Dateien, Ordner und den Systemstatus des Computers sichern sowie App-fähige Datensicherungen erstellen. Azure Backup ermöglicht einen präziseren Umgang mit Daten als Site Recovery. Wenn also beispielsweise eine Präsentation auf Ihrem Laptop beschädigt wurde, können Sie sie mithilfe von Azure Backup wiederherstellen. Mit Site Recovery können Sie eine VM-Konfiguration und die Daten des virtuellen Computers schützen und deren Verfügbarkeit sicherstellen.  
 
 Die folgende Tabelle enthält hilfreiche Punkte, um Sie bei der Ermittlung Ihrer BCDR-Anforderungen zu unterstützen: 
 
@@ -85,7 +85,7 @@ Wenn Daten zuerst mit DPM/MABS und anschließend in einem Tresor gesichert werde
 
 ## <a name="what-can-be-backed-up"></a>Was kann gesichert werden?
 
-**Computer** | **Sicherungsserver** | **Sicherung**
+**Computer** | **Sicherungsserver** | **Sichern**
 --- | --- | ---
 Lokale virtuelle Windows-Computer | Keine Sicherung mit DPM oder MABS | Sicherung von Dateien, Ordnern und Systemstatus
 Virtuelle Azure-Computer (Windows und Linux) | Keine Sicherung mit DPM oder MABS | Sicherung von Dateien, Ordnern und Systemstatus<br/><br/> Sicherungen für Windows-Computer sind App-fähig, Sicherungen für Linux-Computer sind dateifähig.

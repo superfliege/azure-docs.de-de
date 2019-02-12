@@ -1,10 +1,22 @@
 ---
-Titel: Einfaches Experiment titleSuffix: Azure Machine Learning Studio Beschreibung: In diesem Machine Learning-Tutorial werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
-Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: tutorial
-
-Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 20.03.2017
+title: Einfaches Experiment
+titleSuffix: Azure Machine Learning Studio
+description: In diesem Machine Learning-Tutorial werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: tutorial
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488378"
 ---
-
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Tutorial: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
 
 Wenn Sie **Azure Machine Learning Studio** noch nie zuvor verwendet haben, hilft Ihnen dieses Tutorial.
