@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/08/2018
 ms.author: carolz
-ms.openlocfilehash: 742e6a556045874d57c810373f2297582ca8140e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: dce69041176840765817d561f61a0d5f3d2b9a66
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979665"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998024"
 ---
-# <a name="media-services-documentation-legacy"></a>Dokumentation zu Media Services (Legacy)
+# <a name="media-services-documentation"></a>Dokumentation zu Media Services  
 
 Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) Videos in Broadcastqualität streamen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
 
