@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412868"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694056"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -230,7 +230,7 @@ Ja. Weitere Informationen zur Verwendung von folgenden Tools:
 VNET-Peering (das Peering virtueller Netzwerke) ermöglicht Ihnen das Verbinden von virtuellen Netzwerken. Über eine VNET-Peeringverbindung zwischen virtuellen Netzwerken können Sie Datenverkehr zwischen diesen privat über IPv4-Adressen weiterleiten. Virtuelle Computer in den mittels Peering verknüpften VNETs können miteinander kommunizieren, als ob sie sich im gleichen Netzwerks befinden. Diese virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen (dann auch als globales VNET-Peering bezeichnet) befinden. VNET-Peeringverbindungen können auch über mehrere Azure-Abonnements hinweg erstellt werden.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Kann ich eine Peeringverbindung mit einem VNET in einer anderen Region herstellen?
-Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNET-Peering ist in allen öffentlichen Azure-Regionen verfügbar. Globales Peering von öffentlichen Azure-Regionen mit nationalen Clouds ist nicht möglich. Globales Peering ist in nationalen Clouds zurzeit nicht verfügbar.
+Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNET-Peering ist in allen öffentlichen Azure- und China-Cloudregionen verfügbar. Globales Peering von öffentlichen Azure-Regionen mit nationalen Cloudregionen ist nicht möglich. Globales Peering ist in der Government Cloud zurzeit nicht verfügbar.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Kann ich VNET-Peering aktivieren, wenn meine virtuellen Netzwerke zu Abonnements in verschiedenen Azure Active Directory-Mandanten gehören?
 Ja. Es ist möglich, VNET-Peering (lokal oder global) einzurichten, wenn Ihre Abonnements zu verschiedenen Azure Active Directory-Mandanten gehören. Dies kann mittels PowerShell oder CLI erfolgen. Das Portal wird noch nicht unterstützt.
@@ -329,7 +329,7 @@ Standardmäßig sind Azure-Dienstressourcen, die auf virtuelle Netzwerke beschr�
 Aktivieren Sie zum Schützen von Azure-Diensten in mehreren Subnetzen innerhalb eines virtuellen Netzwerks oder mehrerer virtueller Netzwerke netzwerkseitige Dienstendpunkte in den einzelnen Subnetzen unabhängig voneinander, und schützen Sie Azure-Dienstressourcen dann in allen diesen Subnetzen, indem Sie geeignete VNET-ACLs auf der Azure-Dienstseite einrichten.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Wie kann ich ausgehenden Datenverkehr aus einem virtuellen Netzwerk an Azure-Dienste filtern und weiterhin Dienstendpunkte verwenden?
-Wenn Sie den Datenverkehr, der aus dem virtuellen Netzwerk an einen Azure-Dienst fließen soll, untersuchen und filtern möchten, können Sie in diesem virtuellen Netzwerk ein virtuelles Netzwerkgerät bereitstellen. Anschließend können Sie Dienstendpunkte auf das Subnetz anwenden, in dem das virtuelle Netzwerkgerät bereitgestellt wurde, und Ressourcen des Azure-Diensts mithilfe von VNET-ACLs auf dieses Subnetz beschränken. Dieses Szenario kann auch hilfreich sein, wenn Sie den Zugriff auf den Azure-Dienst aus Ihrem virtuellen Netzwerk per Filterung durch ein virtuelles Netzwerkgerät nur auf bestimmte Azure-Ressourcen beschränken möchten. Weitere Informationen finden Sie unter [egress with network virtual appliances](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Ausgehender Datenverkehr mit virtuellen Netzwerkgeräten).
+Wenn Sie den Datenverkehr, der aus dem virtuellen Netzwerk an einen Azure-Dienst fließen soll, untersuchen und filtern möchten, können Sie in diesem virtuellen Netzwerk ein virtuelles Netzwerkgerät bereitstellen. Anschließend können Sie Dienstendpunkte auf das Subnetz anwenden, in dem das virtuelle Netzwerkgerät bereitgestellt wurde, und Ressourcen des Azure-Diensts mithilfe von VNET-ACLs auf dieses Subnetz beschränken. Dieses Szenario kann auch hilfreich sein, wenn Sie den Zugriff auf den Azure-Dienst aus Ihrem virtuellen Netzwerk per Filterung durch ein virtuelles Netzwerkgerät nur auf bestimmte Azure-Ressourcen beschränken möchten. Weitere Informationen finden Sie unter [egress with network virtual appliances](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha) (Ausgehender Datenverkehr mit virtuellen Netzwerkgeräten).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Was passiert, wenn von außerhalb des VNET auf ein Azure-Dienstkonto zugegriffen wird, für das eine VNET-Zugriffssteuerungsliste (ACL) aktiviert ist?
 Es wird einer der HTTP-Fehler 403 oder 404 zurückgegeben.
